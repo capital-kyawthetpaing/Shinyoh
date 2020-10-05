@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinyoh", "Shinyoh\Shinyoh.csproj", "{697E1304-F141-4CCE-B816-9CC225F441C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{C2E966EB-8344-4491-BEFE-A809331521FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{697E1304-F141-4CCE-B816-9CC225F441C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{697E1304-F141-4CCE-B816-9CC225F441C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{697E1304-F141-4CCE-B816-9CC225F441C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{697E1304-F141-4CCE-B816-9CC225F441C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2E966EB-8344-4491-BEFE-A809331521FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2E966EB-8344-4491-BEFE-A809331521FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2E966EB-8344-4491-BEFE-A809331521FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2E966EB-8344-4491-BEFE-A809331521FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2CB53DE7-F17F-4927-9607-2B1AA82D8FA9}
+	EndGlobalSection
+EndGlobal
