@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinyoh", "Shinyoh\Shinyoh.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{C2E966EB-8344-4491-BEFE-A809331521FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_Souko", "MasterTouroku_Souko\MasterTouroku_Souko.csproj", "{682E2872-CB95-4F2B-AF11-81713D0A1184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinyoh_Controls", "Shinyoh_Controls\Shinyoh_Controls.csproj", "{B15A285F-DDEC-443D-8BD0-762B893BB937}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{C2E966EB-8344-4491-BEFE-A809331521FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E966EB-8344-4491-BEFE-A809331521FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E966EB-8344-4491-BEFE-A809331521FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{682E2872-CB95-4F2B-AF11-81713D0A1184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{682E2872-CB95-4F2B-AF11-81713D0A1184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{682E2872-CB95-4F2B-AF11-81713D0A1184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{682E2872-CB95-4F2B-AF11-81713D0A1184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B15A285F-DDEC-443D-8BD0-762B893BB937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15A285F-DDEC-443D-8BD0-762B893BB937}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15A285F-DDEC-443D-8BD0-762B893BB937}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15A285F-DDEC-443D-8BD0-762B893BB937}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

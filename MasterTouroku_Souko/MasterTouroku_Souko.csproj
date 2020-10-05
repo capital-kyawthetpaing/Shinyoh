@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{697E1304-F141-4CCE-B816-9CC225F441C4}</ProjectGuid>
+    <ProjectGuid>{682E2872-CB95-4F2B-AF11-81713D0A1184}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Shinyoh</RootNamespace>
-    <AssemblyName>Shinyoh</AssemblyName>
+    <RootNamespace>MasterTouroku_Souko</RootNamespace>
+    <AssemblyName>MasterTouroku_Souko</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,13 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKM_CommonFunction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>RequireDLL\CKM_CommonFunction.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseForm.cs">
+    <Compile Include="MasterTourokuSouko.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BaseForm.Designer.cs">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <Compile Include="MasterTourokuSouko.Designer.cs">
+      <DependentUpon>MasterTourokuSouko.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="BaseForm.resx">
-      <DependentUpon>BaseForm.cs</DependentUpon>
+    <EmbeddedResource Include="MasterTourokuSouko.resx">
+      <DependentUpon>MasterTourokuSouko.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -73,7 +66,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -88,11 +80,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RequireDLL\CKM_CommonFunction.dll" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Shinyoh\Shinyoh.csproj">
+      <Project>{697e1304-f141-4cce-b816-9cc225f441c4}</Project>
+      <Name>Shinyoh</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
-      <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
+      <Project>{B15A285F-DDEC-443D-8BD0-762B893BB937}</Project>
       <Name>Shinyoh_Controls</Name>
     </ProjectReference>
   </ItemGroup>
