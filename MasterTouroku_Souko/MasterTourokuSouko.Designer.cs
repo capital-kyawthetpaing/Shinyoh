@@ -28,60 +28,318 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lBox_Buff10 = new Shinyoh_Controls.LBox_Buff();
+            this.lBox_Buff9 = new Shinyoh_Controls.LBox_Buff();
             this.label1 = new System.Windows.Forms.Label();
-            this.lBox1 = new Shinyoh_Controls.LBox();
-            this.lBox2 = new Shinyoh_Controls.LBox();
+            this.txtSearch = new Shinyoh_Controls.TBox();
+            this.txtRemark = new Shinyoh_Controls.TBox();
+            this.txtFax = new Shinyoh_Controls.TBox();
+            this.txtPhone = new Shinyoh_Controls.TBox();
+            this.txtAddress_2 = new Shinyoh_Controls.TBox();
+            this.txtAddress_1 = new Shinyoh_Controls.TBox();
+            this.txtPostal_2 = new Shinyoh_Controls.TBox();
+            this.txtPostal_1 = new Shinyoh_Controls.TBox();
+            this.txtKaNa_Name = new Shinyoh_Controls.TBox();
+            this.txtSoko_Name = new Shinyoh_Controls.TBox();
+            this.lBox_Buff8 = new Shinyoh_Controls.LBox_Buff();
+            this.lBox_Buff7 = new Shinyoh_Controls.LBox_Buff();
+            this.lBox_Buff6 = new Shinyoh_Controls.LBox_Buff();
+            this.lBox_Buff5 = new Shinyoh_Controls.LBox_Buff();
+            this.lBox_Buff4 = new Shinyoh_Controls.LBox_Buff();
+            this.lBox_Buff3 = new Shinyoh_Controls.LBox_Buff();
+            this.lBox_Red1 = new Shinyoh_Controls.LBox_Red();
+            this.lBox_Buff2 = new Shinyoh_Controls.LBox_Buff();
+            this.lBox_Buff1 = new Shinyoh_Controls.LBox_Buff();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.lBox_Buff10);
+            this.panel2.Controls.Add(this.lBox_Buff9);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txtSearch);
+            this.panel2.Controls.Add(this.txtRemark);
+            this.panel2.Controls.Add(this.txtFax);
+            this.panel2.Controls.Add(this.txtPhone);
+            this.panel2.Controls.Add(this.txtAddress_2);
+            this.panel2.Controls.Add(this.txtAddress_1);
+            this.panel2.Controls.Add(this.txtPostal_2);
+            this.panel2.Controls.Add(this.txtPostal_1);
+            this.panel2.Controls.Add(this.txtKaNa_Name);
+            this.panel2.Controls.Add(this.txtSoko_Name);
+            this.panel2.Controls.Add(this.lBox_Buff8);
+            this.panel2.Controls.Add(this.lBox_Buff7);
+            this.panel2.Controls.Add(this.lBox_Buff6);
+            this.panel2.Controls.Add(this.lBox_Buff5);
+            this.panel2.Controls.Add(this.lBox_Buff4);
+            this.panel2.Controls.Add(this.lBox_Buff3);
+            this.panel2.Controls.Add(this.lBox_Red1);
+            this.panel2.Location = new System.Drawing.Point(0, 82);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(928, 341);
+            this.panel2.TabIndex = 3;
+            // 
+            // lBox_Buff10
+            // 
+            this.lBox_Buff10.AutoSize = true;
+            this.lBox_Buff10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff10.Location = new System.Drawing.Point(1, 74);
+            this.lBox_Buff10.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff10.Name = "lBox_Buff10";
+            this.lBox_Buff10.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff10.TabIndex = 21;
+            this.lBox_Buff10.Text = "郵便番号";
+            this.lBox_Buff10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBox_Buff9
+            // 
+            this.lBox_Buff9.AutoSize = true;
+            this.lBox_Buff9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff9.Location = new System.Drawing.Point(1, 37);
+            this.lBox_Buff9.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff9.Name = "lBox_Buff9";
+            this.lBox_Buff9.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff9.TabIndex = 20;
+            this.lBox_Buff9.Text = "カナ名";
+            this.lBox_Buff9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.Moccasin;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(17, 72);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(177, 74);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 18);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "label1";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Size = new System.Drawing.Size(15, 20);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "-";
             // 
-            // lBox1
+            // txtSearch
             // 
-            this.lBox1.BackColor = System.Drawing.Color.Yellow;
-            this.lBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lBox1.Location = new System.Drawing.Point(17, 120);
-            this.lBox1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lBox1.Name = "lBox1";
-            this.lBox1.Size = new System.Drawing.Size(66, 24);
-            this.lBox1.TabIndex = 6;
-            this.lBox1.Text = "lBox1";
-            this.lBox1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtSearch.Location = new System.Drawing.Point(101, 307);
+            this.txtSearch.Multiline = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(95, 25);
+            this.txtSearch.TabIndex = 18;
             // 
-            // lBox2
+            // txtRemark
             // 
-            this.lBox2.BackColor = System.Drawing.Color.Yellow;
-            this.lBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lBox2.Location = new System.Drawing.Point(86, 102);
-            this.lBox2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lBox2.Name = "lBox2";
-            this.lBox2.Size = new System.Drawing.Size(108, 50);
-            this.lBox2.TabIndex = 7;
-            this.lBox2.Text = "lBox2";
-            this.lBox2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtRemark.Location = new System.Drawing.Point(101, 270);
+            this.txtRemark.Multiline = true;
+            this.txtRemark.Name = "txtRemark";
+            this.txtRemark.Size = new System.Drawing.Size(527, 25);
+            this.txtRemark.TabIndex = 17;
+            // 
+            // txtFax
+            // 
+            this.txtFax.Location = new System.Drawing.Point(101, 231);
+            this.txtFax.Multiline = true;
+            this.txtFax.Name = "txtFax";
+            this.txtFax.Size = new System.Drawing.Size(177, 25);
+            this.txtFax.TabIndex = 16;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Location = new System.Drawing.Point(101, 192);
+            this.txtPhone.Multiline = true;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(177, 25);
+            this.txtPhone.TabIndex = 15;
+            // 
+            // txtAddress_2
+            // 
+            this.txtAddress_2.Location = new System.Drawing.Point(101, 153);
+            this.txtAddress_2.Multiline = true;
+            this.txtAddress_2.Name = "txtAddress_2";
+            this.txtAddress_2.Size = new System.Drawing.Size(527, 25);
+            this.txtAddress_2.TabIndex = 14;
+            // 
+            // txtAddress_1
+            // 
+            this.txtAddress_1.Location = new System.Drawing.Point(101, 112);
+            this.txtAddress_1.Multiline = true;
+            this.txtAddress_1.Name = "txtAddress_1";
+            this.txtAddress_1.Size = new System.Drawing.Size(527, 25);
+            this.txtAddress_1.TabIndex = 13;
+            // 
+            // txtPostal_2
+            // 
+            this.txtPostal_2.Location = new System.Drawing.Point(199, 74);
+            this.txtPostal_2.Multiline = true;
+            this.txtPostal_2.Name = "txtPostal_2";
+            this.txtPostal_2.Size = new System.Drawing.Size(79, 25);
+            this.txtPostal_2.TabIndex = 12;
+            // 
+            // txtPostal_1
+            // 
+            this.txtPostal_1.Location = new System.Drawing.Point(101, 74);
+            this.txtPostal_1.Multiline = true;
+            this.txtPostal_1.Name = "txtPostal_1";
+            this.txtPostal_1.Size = new System.Drawing.Size(70, 25);
+            this.txtPostal_1.TabIndex = 11;
+            // 
+            // txtKaNa_Name
+            // 
+            this.txtKaNa_Name.Location = new System.Drawing.Point(101, 37);
+            this.txtKaNa_Name.Multiline = true;
+            this.txtKaNa_Name.Name = "txtKaNa_Name";
+            this.txtKaNa_Name.Size = new System.Drawing.Size(357, 25);
+            this.txtKaNa_Name.TabIndex = 10;
+            // 
+            // txtSoko_Name
+            // 
+            this.txtSoko_Name.Location = new System.Drawing.Point(101, 1);
+            this.txtSoko_Name.Multiline = true;
+            this.txtSoko_Name.Name = "txtSoko_Name";
+            this.txtSoko_Name.Size = new System.Drawing.Size(357, 25);
+            this.txtSoko_Name.TabIndex = 9;
+            // 
+            // lBox_Buff8
+            // 
+            this.lBox_Buff8.AutoSize = true;
+            this.lBox_Buff8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff8.Location = new System.Drawing.Point(2, 307);
+            this.lBox_Buff8.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff8.Name = "lBox_Buff8";
+            this.lBox_Buff8.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff8.TabIndex = 8;
+            this.lBox_Buff8.Text = "検索表示順";
+            this.lBox_Buff8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBox_Buff7
+            // 
+            this.lBox_Buff7.AutoSize = true;
+            this.lBox_Buff7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff7.Location = new System.Drawing.Point(1, 270);
+            this.lBox_Buff7.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff7.Name = "lBox_Buff7";
+            this.lBox_Buff7.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff7.TabIndex = 7;
+            this.lBox_Buff7.Text = "備考";
+            this.lBox_Buff7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBox_Buff6
+            // 
+            this.lBox_Buff6.AutoSize = true;
+            this.lBox_Buff6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff6.Location = new System.Drawing.Point(2, 231);
+            this.lBox_Buff6.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff6.Name = "lBox_Buff6";
+            this.lBox_Buff6.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff6.TabIndex = 6;
+            this.lBox_Buff6.Text = "FAX番号";
+            this.lBox_Buff6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBox_Buff5
+            // 
+            this.lBox_Buff5.AutoSize = true;
+            this.lBox_Buff5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff5.Location = new System.Drawing.Point(2, 192);
+            this.lBox_Buff5.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff5.Name = "lBox_Buff5";
+            this.lBox_Buff5.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff5.TabIndex = 5;
+            this.lBox_Buff5.Text = "電話番号";
+            this.lBox_Buff5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBox_Buff4
+            // 
+            this.lBox_Buff4.AutoSize = true;
+            this.lBox_Buff4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff4.Location = new System.Drawing.Point(1, 152);
+            this.lBox_Buff4.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff4.Name = "lBox_Buff4";
+            this.lBox_Buff4.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff4.TabIndex = 4;
+            this.lBox_Buff4.Text = "住所２";
+            this.lBox_Buff4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBox_Buff3
+            // 
+            this.lBox_Buff3.AutoSize = true;
+            this.lBox_Buff3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff3.Location = new System.Drawing.Point(2, 112);
+            this.lBox_Buff3.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff3.Name = "lBox_Buff3";
+            this.lBox_Buff3.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff3.TabIndex = 3;
+            this.lBox_Buff3.Text = "住所１";
+            this.lBox_Buff3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBox_Red1
+            // 
+            this.lBox_Red1.AutoSize = true;
+            this.lBox_Red1.BackColor = System.Drawing.Color.Red;
+            this.lBox_Red1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Red1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Red1.ForeColor = System.Drawing.Color.White;
+            this.lBox_Red1.Location = new System.Drawing.Point(1, 1);
+            this.lBox_Red1.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Red1.Name = "lBox_Red1";
+            this.lBox_Red1.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Red1.TabIndex = 0;
+            this.lBox_Red1.Text = "倉庫名";
+            this.lBox_Red1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBox_Buff2
+            // 
+            this.lBox_Buff2.AutoSize = true;
+            this.lBox_Buff2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff2.Location = new System.Drawing.Point(2, 74);
+            this.lBox_Buff2.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff2.Name = "lBox_Buff2";
+            this.lBox_Buff2.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff2.TabIndex = 2;
+            this.lBox_Buff2.Text = "郵便番号";
+            this.lBox_Buff2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBox_Buff1
+            // 
+            this.lBox_Buff1.AutoSize = true;
+            this.lBox_Buff1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff1.Location = new System.Drawing.Point(2, 37);
+            this.lBox_Buff1.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff1.Name = "lBox_Buff1";
+            this.lBox_Buff1.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff1.TabIndex = 1;
+            this.lBox_Buff1.Text = "カナ名";
+            this.lBox_Buff1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MasterTourokuSouko
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(400, 234);
-            this.Controls.Add(this.lBox2);
-            this.Controls.Add(this.lBox1);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.ClientSize = new System.Drawing.Size(928, 504);
+            this.Controls.Add(this.panel2);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MasterTourokuSouko";
-            this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.lBox1, 0);
-            this.Controls.SetChildIndex(this.lBox2, 0);
+            this.Controls.SetChildIndex(this.panel2, 0);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,9 +347,29 @@
 
         #endregion
 
+        private System.Windows.Forms.Panel panel2;
+        private Shinyoh_Controls.LBox_Buff lBox_Buff8;
+        private Shinyoh_Controls.LBox_Buff lBox_Buff7;
+        private Shinyoh_Controls.LBox_Buff lBox_Buff6;
+        private Shinyoh_Controls.LBox_Buff lBox_Buff5;
+        private Shinyoh_Controls.LBox_Buff lBox_Buff4;
+        private Shinyoh_Controls.LBox_Buff lBox_Buff3;
+        private Shinyoh_Controls.LBox_Buff lBox_Buff2;
+        private Shinyoh_Controls.LBox_Buff lBox_Buff1;
+        private Shinyoh_Controls.LBox_Red lBox_Red1;
+        private Shinyoh_Controls.TBox txtSearch;
+        private Shinyoh_Controls.TBox txtRemark;
+        private Shinyoh_Controls.TBox txtFax;
+        private Shinyoh_Controls.TBox txtPhone;
+        private Shinyoh_Controls.TBox txtAddress_2;
+        private Shinyoh_Controls.TBox txtAddress_1;
+        private Shinyoh_Controls.TBox txtPostal_2;
+        private Shinyoh_Controls.TBox txtPostal_1;
+        private Shinyoh_Controls.TBox txtKaNa_Name;
+        private Shinyoh_Controls.TBox txtSoko_Name;
         private System.Windows.Forms.Label label1;
-        private Shinyoh_Controls.LBox lBox1;
-        private Shinyoh_Controls.LBox lBox2;
+        private Shinyoh_Controls.LBox_Buff lBox_Buff10;
+        private Shinyoh_Controls.LBox_Buff lBox_Buff9;
     }
 }
 

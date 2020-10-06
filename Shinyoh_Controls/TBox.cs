@@ -4,6 +4,10 @@ namespace Shinyoh_Controls
 {
     public class TBox : TextBox
     {
-    //nwemarwin
+        public TBox()
+        {
+            Multiline = true;
+            Height = 25;
+        }
     }
 }
