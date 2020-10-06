@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
@@ -66,7 +67,7 @@ namespace Shinyoh
             return true;
         }
 
-        public void txtDate_Enter(object sender, System.EventArgs e)
+        public void txtDate_Enter(object sender, EventArgs e)
         {
             TextBox tb = sender as TextBox;
             if (tb != null)
@@ -75,7 +76,7 @@ namespace Shinyoh
             }
         }
 
-        public void txtDate_Leave(object sender, System.EventArgs e)
+        public void txtDate_Leave(object sender, EventArgs e)
         {
             TextBox tb = sender as TextBox;
             if (tb != null)

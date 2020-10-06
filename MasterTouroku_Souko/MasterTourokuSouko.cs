@@ -18,7 +18,7 @@ namespace MasterTouroku_Souko
             InitializeComponent();
         }
 
-        private void txtSearch_Enter(object sender, EventArgs e)
+        public void txtSearch_Enter(object sender, EventArgs e)
         {
             TextBox tb = sender as TextBox;
             if (tb != null)
@@ -27,7 +27,7 @@ namespace MasterTouroku_Souko
             }
         }
 
-        private void txtSearch_Leave(object sender, EventArgs e)
+        public void txtSearch_Leave(object sender, EventArgs e)
         {
             TextBox tb = sender as TextBox;
             if (tb != null)
