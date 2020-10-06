@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 using CKM_CommonFunction;
 using Newtonsoft.Json;
@@ -65,6 +66,22 @@ namespace Shinyoh
             return true;
         }
 
-      
+        public void txtDate_Enter(object sender, System.EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb != null)
+            {
+                tb.BackColor = Color.Silver;
+            }
+        }
+
+        public void txtDate_Leave(object sender, System.EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb != null)
+            {
+                tb.BackColor = Color.White;
+            }
+        }
     }
 }

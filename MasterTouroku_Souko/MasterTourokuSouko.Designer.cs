@@ -116,7 +116,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(177, 74);
+            this.label1.Location = new System.Drawing.Point(177, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 19;
@@ -129,6 +129,8 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(95, 25);
             this.txtSearch.TabIndex = 18;
+            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtRemark
             // 
@@ -137,6 +139,8 @@
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(527, 25);
             this.txtRemark.TabIndex = 17;
+            this.txtRemark.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtRemark.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtFax
             // 
@@ -145,6 +149,8 @@
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(177, 25);
             this.txtFax.TabIndex = 16;
+            this.txtFax.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtFax.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtPhone
             // 
@@ -153,6 +159,8 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(177, 25);
             this.txtPhone.TabIndex = 15;
+            this.txtPhone.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtPhone.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtAddress_2
             // 
@@ -161,6 +169,8 @@
             this.txtAddress_2.Name = "txtAddress_2";
             this.txtAddress_2.Size = new System.Drawing.Size(527, 25);
             this.txtAddress_2.TabIndex = 14;
+            this.txtAddress_2.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtAddress_2.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtAddress_1
             // 
@@ -169,6 +179,8 @@
             this.txtAddress_1.Name = "txtAddress_1";
             this.txtAddress_1.Size = new System.Drawing.Size(527, 25);
             this.txtAddress_1.TabIndex = 13;
+            this.txtAddress_1.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtAddress_1.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtPostal_2
             // 
@@ -177,6 +189,8 @@
             this.txtPostal_2.Name = "txtPostal_2";
             this.txtPostal_2.Size = new System.Drawing.Size(79, 25);
             this.txtPostal_2.TabIndex = 12;
+            this.txtPostal_2.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtPostal_2.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtPostal_1
             // 
@@ -185,6 +199,8 @@
             this.txtPostal_1.Name = "txtPostal_1";
             this.txtPostal_1.Size = new System.Drawing.Size(70, 25);
             this.txtPostal_1.TabIndex = 11;
+            this.txtPostal_1.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtPostal_1.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtKaNa_Name
             // 
@@ -193,6 +209,8 @@
             this.txtKaNa_Name.Name = "txtKaNa_Name";
             this.txtKaNa_Name.Size = new System.Drawing.Size(357, 25);
             this.txtKaNa_Name.TabIndex = 10;
+            this.txtKaNa_Name.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtKaNa_Name.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtSoko_Name
             // 
@@ -201,6 +219,8 @@
             this.txtSoko_Name.Name = "txtSoko_Name";
             this.txtSoko_Name.Size = new System.Drawing.Size(357, 25);
             this.txtSoko_Name.TabIndex = 9;
+            this.txtSoko_Name.Enter += new System.EventHandler(this.txtSearch_Enter);
+            this.txtSoko_Name.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // lBox_Buff8
             // 
@@ -335,6 +355,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(928, 504);
             this.Controls.Add(this.panel2);
+            this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MasterTourokuSouko";
             this.Controls.SetChildIndex(this.panel2, 0);
