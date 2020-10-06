@@ -52,7 +52,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1751, 52);
+            this.panel1.Size = new System.Drawing.Size(937, 52);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -89,7 +89,7 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1751, 50);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(937, 50);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // bBox12
@@ -97,9 +97,9 @@
             this.bBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.bBox12.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.bBox12.Location = new System.Drawing.Point(874, 4);
+            this.bBox12.Location = new System.Drawing.Point(466, 4);
             this.bBox12.Name = "bBox12";
-            this.bBox12.Size = new System.Drawing.Size(138, 42);
+            this.bBox12.Size = new System.Drawing.Size(70, 42);
             this.bBox12.TabIndex = 12;
             this.bBox12.UseVisualStyleBackColor = false;
             // 
@@ -108,9 +108,9 @@
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnCancel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnCancel.Location = new System.Drawing.Point(729, 4);
+            this.btnCancel.Location = new System.Drawing.Point(389, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(138, 42);
+            this.btnCancel.Size = new System.Drawing.Size(70, 42);
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "キャンセル(F6)";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -120,9 +120,9 @@
             this.bBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.bBox10.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.bBox10.Location = new System.Drawing.Point(1019, 4);
+            this.bBox10.Location = new System.Drawing.Point(543, 4);
             this.bBox10.Name = "bBox10";
-            this.bBox10.Size = new System.Drawing.Size(138, 42);
+            this.bBox10.Size = new System.Drawing.Size(70, 42);
             this.bBox10.TabIndex = 10;
             this.bBox10.UseVisualStyleBackColor = false;
             // 
@@ -131,9 +131,9 @@
             this.bBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.bBox9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.bBox9.Location = new System.Drawing.Point(1309, 4);
+            this.bBox9.Location = new System.Drawing.Point(697, 4);
             this.bBox9.Name = "bBox9";
-            this.bBox9.Size = new System.Drawing.Size(138, 42);
+            this.bBox9.Size = new System.Drawing.Size(70, 42);
             this.bBox9.TabIndex = 9;
             this.bBox9.UseVisualStyleBackColor = false;
             // 
@@ -142,9 +142,9 @@
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnSearch.Location = new System.Drawing.Point(1164, 4);
+            this.btnSearch.Location = new System.Drawing.Point(620, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(138, 42);
+            this.btnSearch.Size = new System.Drawing.Size(70, 42);
             this.btnSearch.TabIndex = 8;
             this.btnSearch.Text = "検索(F9)";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -154,9 +154,9 @@
             this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnNew.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnNew.Location = new System.Drawing.Point(149, 4);
+            this.btnNew.Location = new System.Drawing.Point(81, 4);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(138, 42);
+            this.btnNew.Size = new System.Drawing.Size(70, 42);
             this.btnNew.TabIndex = 7;
             this.btnNew.Text = "新規(F2)";
             this.btnNew.UseVisualStyleBackColor = false;
@@ -168,7 +168,7 @@
             this.btnFinish.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.btnFinish.Location = new System.Drawing.Point(4, 4);
             this.btnFinish.Name = "btnFinish";
-            this.btnFinish.Size = new System.Drawing.Size(138, 42);
+            this.btnFinish.Size = new System.Drawing.Size(70, 42);
             this.btnFinish.TabIndex = 6;
             this.btnFinish.Text = "終了(F1)";
             this.btnFinish.UseVisualStyleBackColor = false;
@@ -178,9 +178,9 @@
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnUpdate.Location = new System.Drawing.Point(294, 4);
+            this.btnUpdate.Location = new System.Drawing.Point(158, 4);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(138, 42);
+            this.btnUpdate.Size = new System.Drawing.Size(70, 42);
             this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "変更(F3)";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -190,9 +190,9 @@
             this.btnInquiry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnInquiry.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnInquiry.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnInquiry.Location = new System.Drawing.Point(584, 4);
+            this.btnInquiry.Location = new System.Drawing.Point(312, 4);
             this.btnInquiry.Name = "btnInquiry";
-            this.btnInquiry.Size = new System.Drawing.Size(138, 42);
+            this.btnInquiry.Size = new System.Drawing.Size(70, 42);
             this.btnInquiry.TabIndex = 4;
             this.btnInquiry.Text = "照会(F5)";
             this.btnInquiry.UseVisualStyleBackColor = false;
@@ -202,9 +202,9 @@
             this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnRegister.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnRegister.Location = new System.Drawing.Point(1599, 4);
+            this.btnRegister.Location = new System.Drawing.Point(851, 4);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(148, 42);
+            this.btnRegister.Size = new System.Drawing.Size(82, 42);
             this.btnRegister.TabIndex = 3;
             this.btnRegister.Text = "登録(F12)";
             this.btnRegister.UseVisualStyleBackColor = false;
@@ -214,9 +214,9 @@
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDelete.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.btnDelete.Location = new System.Drawing.Point(439, 4);
+            this.btnDelete.Location = new System.Drawing.Point(235, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(138, 42);
+            this.btnDelete.Size = new System.Drawing.Size(70, 42);
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "削除(F4)";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -226,9 +226,9 @@
             this.bBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.bBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.bBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.bBox2.Location = new System.Drawing.Point(1454, 4);
+            this.bBox2.Location = new System.Drawing.Point(774, 4);
             this.bBox2.Name = "bBox2";
-            this.bBox2.Size = new System.Drawing.Size(138, 42);
+            this.bBox2.Size = new System.Drawing.Size(70, 42);
             this.bBox2.TabIndex = 2;
             this.bBox2.UseVisualStyleBackColor = false;
             // 
@@ -236,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1751, 306);
+            this.ClientSize = new System.Drawing.Size(937, 306);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
