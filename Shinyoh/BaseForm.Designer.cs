@@ -66,7 +66,7 @@
             // 
             // txtDate
             // 
-            this.txtDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDate.Location = new System.Drawing.Point(716, 39);
             this.txtDate.Multiline = true;
             this.txtDate.Name = "txtDate";
@@ -75,7 +75,7 @@
             // 
             // txtOperator
             // 
-            this.txtOperator.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtOperator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOperator.Location = new System.Drawing.Point(716, 9);
             this.txtOperator.Multiline = true;
             this.txtOperator.Name = "txtOperator";
@@ -84,7 +84,7 @@
             // 
             // lBox_Buff1
             // 
-            this.lBox_Buff1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lBox_Buff1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lBox_Buff1.AutoSize = true;
             this.lBox_Buff1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lBox_Buff1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -99,7 +99,7 @@
             // 
             // lBox_Buff2
             // 
-            this.lBox_Buff2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lBox_Buff2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lBox_Buff2.AutoSize = true;
             this.lBox_Buff2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lBox_Buff2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
