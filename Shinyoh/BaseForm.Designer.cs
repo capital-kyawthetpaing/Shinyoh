@@ -30,9 +30,9 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtDate = new Shinyoh_Controls.TBox();
-            this.lBox_Buff2 = new Shinyoh_Controls.LBox_Buff();
             this.txtOperator = new Shinyoh_Controls.TBox();
             this.lBox_Buff1 = new Shinyoh_Controls.LBox_Buff();
+            this.lBox_Buff2 = new Shinyoh_Controls.LBox_Buff();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.bBox12 = new Shinyoh_Controls.BBox();
             this.btnCancel = new Shinyoh_Controls.BBox();
@@ -73,21 +73,6 @@
             this.txtDate.Size = new System.Drawing.Size(131, 25);
             this.txtDate.TabIndex = 3;
             // 
-            // lBox_Buff2
-            // 
-            this.lBox_Buff2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lBox_Buff2.AutoSize = true;
-            this.lBox_Buff2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lBox_Buff2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lBox_Buff2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff2.Location = new System.Drawing.Point(616, 39);
-            this.lBox_Buff2.MinimumSize = new System.Drawing.Size(100, 25);
-            this.lBox_Buff2.Name = "lBox_Buff2";
-            this.lBox_Buff2.Size = new System.Drawing.Size(100, 25);
-            this.lBox_Buff2.TabIndex = 1;
-            this.lBox_Buff2.Text = "基準日";
-            this.lBox_Buff2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // txtOperator
             // 
             this.txtOperator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -111,6 +96,21 @@
             this.lBox_Buff1.TabIndex = 0;
             this.lBox_Buff1.Text = "オペレータ";
             this.lBox_Buff1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lBox_Buff2
+            // 
+            this.lBox_Buff2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lBox_Buff2.AutoSize = true;
+            this.lBox_Buff2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lBox_Buff2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lBox_Buff2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            this.lBox_Buff2.Location = new System.Drawing.Point(616, 39);
+            this.lBox_Buff2.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lBox_Buff2.Name = "lBox_Buff2";
+            this.lBox_Buff2.Size = new System.Drawing.Size(100, 25);
+            this.lBox_Buff2.TabIndex = 1;
+            this.lBox_Buff2.Text = "基準日";
+            this.lBox_Buff2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 
