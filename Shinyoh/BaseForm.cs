@@ -84,5 +84,10 @@ namespace Shinyoh
                 tb.BackColor = Color.White;
             }
         }
+
+        private void btnFunctionClick(object sender,EventArgs e)
+        {
+
+        }
     }
 }

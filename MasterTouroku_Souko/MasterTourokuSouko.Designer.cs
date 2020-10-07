@@ -81,7 +81,7 @@
             this.panel2.Controls.Add(this.lBox_Red1);
             this.panel2.Location = new System.Drawing.Point(0, 82);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(928, 341);
+            this.panel2.Size = new System.Drawing.Size(1393, 341);
             this.panel2.TabIndex = 3;
             // 
             // lBox_Buff10
@@ -90,7 +90,7 @@
             this.lBox_Buff10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lBox_Buff10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lBox_Buff10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff10.Location = new System.Drawing.Point(1, 74);
+            this.lBox_Buff10.Location = new System.Drawing.Point(41, 74);
             this.lBox_Buff10.MinimumSize = new System.Drawing.Size(100, 25);
             this.lBox_Buff10.Name = "lBox_Buff10";
             this.lBox_Buff10.Size = new System.Drawing.Size(100, 25);
@@ -104,7 +104,7 @@
             this.lBox_Buff9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lBox_Buff9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lBox_Buff9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff9.Location = new System.Drawing.Point(1, 37);
+            this.lBox_Buff9.Location = new System.Drawing.Point(41, 37);
             this.lBox_Buff9.MinimumSize = new System.Drawing.Size(100, 25);
             this.lBox_Buff9.Name = "lBox_Buff9";
             this.lBox_Buff9.Size = new System.Drawing.Size(100, 25);
@@ -116,7 +116,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(177, 75);
+            this.label1.Location = new System.Drawing.Point(217, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 19;
@@ -124,7 +124,7 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(101, 307);
+            this.txtSearch.Location = new System.Drawing.Point(141, 307);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(95, 25);
@@ -134,7 +134,7 @@
             // 
             // txtRemark
             // 
-            this.txtRemark.Location = new System.Drawing.Point(101, 270);
+            this.txtRemark.Location = new System.Drawing.Point(141, 270);
             this.txtRemark.Multiline = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(527, 25);
@@ -144,7 +144,7 @@
             // 
             // txtFax
             // 
-            this.txtFax.Location = new System.Drawing.Point(101, 231);
+            this.txtFax.Location = new System.Drawing.Point(141, 231);
             this.txtFax.Multiline = true;
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(177, 25);
@@ -154,7 +154,7 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(101, 192);
+            this.txtPhone.Location = new System.Drawing.Point(141, 192);
             this.txtPhone.Multiline = true;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(177, 25);
@@ -164,7 +164,7 @@
             // 
             // txtAddress_2
             // 
-            this.txtAddress_2.Location = new System.Drawing.Point(101, 153);
+            this.txtAddress_2.Location = new System.Drawing.Point(141, 153);
             this.txtAddress_2.Multiline = true;
             this.txtAddress_2.Name = "txtAddress_2";
             this.txtAddress_2.Size = new System.Drawing.Size(527, 25);
@@ -174,7 +174,7 @@
             // 
             // txtAddress_1
             // 
-            this.txtAddress_1.Location = new System.Drawing.Point(101, 112);
+            this.txtAddress_1.Location = new System.Drawing.Point(141, 112);
             this.txtAddress_1.Multiline = true;
             this.txtAddress_1.Name = "txtAddress_1";
             this.txtAddress_1.Size = new System.Drawing.Size(527, 25);
@@ -184,7 +184,7 @@
             // 
             // txtPostal_2
             // 
-            this.txtPostal_2.Location = new System.Drawing.Point(199, 74);
+            this.txtPostal_2.Location = new System.Drawing.Point(239, 74);
             this.txtPostal_2.Multiline = true;
             this.txtPostal_2.Name = "txtPostal_2";
             this.txtPostal_2.Size = new System.Drawing.Size(79, 25);
@@ -194,7 +194,7 @@
             // 
             // txtPostal_1
             // 
-            this.txtPostal_1.Location = new System.Drawing.Point(101, 74);
+            this.txtPostal_1.Location = new System.Drawing.Point(141, 74);
             this.txtPostal_1.Multiline = true;
             this.txtPostal_1.Name = "txtPostal_1";
             this.txtPostal_1.Size = new System.Drawing.Size(70, 25);
@@ -204,7 +204,7 @@
             // 
             // txtKaNa_Name
             // 
-            this.txtKaNa_Name.Location = new System.Drawing.Point(101, 37);
+            this.txtKaNa_Name.Location = new System.Drawing.Point(141, 37);
             this.txtKaNa_Name.Multiline = true;
             this.txtKaNa_Name.Name = "txtKaNa_Name";
             this.txtKaNa_Name.Size = new System.Drawing.Size(357, 25);
@@ -214,7 +214,7 @@
             // 
             // txtSoko_Name
             // 
-            this.txtSoko_Name.Location = new System.Drawing.Point(101, 1);
+            this.txtSoko_Name.Location = new System.Drawing.Point(141, 1);
             this.txtSoko_Name.Multiline = true;
             this.txtSoko_Name.Name = "txtSoko_Name";
             this.txtSoko_Name.Size = new System.Drawing.Size(357, 25);
@@ -228,7 +228,7 @@
             this.lBox_Buff8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lBox_Buff8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lBox_Buff8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff8.Location = new System.Drawing.Point(2, 307);
+            this.lBox_Buff8.Location = new System.Drawing.Point(42, 307);
             this.lBox_Buff8.MinimumSize = new System.Drawing.Size(100, 25);
             this.lBox_Buff8.Name = "lBox_Buff8";
             this.lBox_Buff8.Size = new System.Drawing.Size(100, 25);
@@ -242,7 +242,7 @@
             this.lBox_Buff7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lBox_Buff7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lBox_Buff7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff7.Location = new System.Drawing.Point(1, 270);
+            this.lBox_Buff7.Location = new System.Drawing.Point(41, 270);
             this.lBox_Buff7.MinimumSize = new System.Drawing.Size(100, 25);
             this.lBox_Buff7.Name = "lBox_Buff7";
             this.lBox_Buff7.Size = new System.Drawing.Size(100, 25);
@@ -256,7 +256,7 @@
             this.lBox_Buff6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lBox_Buff6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lBox_Buff6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff6.Location = new System.Drawing.Point(2, 231);
+            this.lBox_Buff6.Location = new System.Drawing.Point(42, 231);
             this.lBox_Buff6.MinimumSize = new System.Drawing.Size(100, 25);
             this.lBox_Buff6.Name = "lBox_Buff6";
             this.lBox_Buff6.Size = new System.Drawing.Size(100, 25);
@@ -270,7 +270,7 @@
             this.lBox_Buff5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lBox_Buff5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lBox_Buff5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff5.Location = new System.Drawing.Point(2, 192);
+            this.lBox_Buff5.Location = new System.Drawing.Point(42, 192);
             this.lBox_Buff5.MinimumSize = new System.Drawing.Size(100, 25);
             this.lBox_Buff5.Name = "lBox_Buff5";
             this.lBox_Buff5.Size = new System.Drawing.Size(100, 25);
@@ -284,7 +284,7 @@
             this.lBox_Buff4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lBox_Buff4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lBox_Buff4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff4.Location = new System.Drawing.Point(1, 152);
+            this.lBox_Buff4.Location = new System.Drawing.Point(41, 152);
             this.lBox_Buff4.MinimumSize = new System.Drawing.Size(100, 25);
             this.lBox_Buff4.Name = "lBox_Buff4";
             this.lBox_Buff4.Size = new System.Drawing.Size(100, 25);
@@ -298,7 +298,7 @@
             this.lBox_Buff3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lBox_Buff3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lBox_Buff3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff3.Location = new System.Drawing.Point(2, 112);
+            this.lBox_Buff3.Location = new System.Drawing.Point(42, 112);
             this.lBox_Buff3.MinimumSize = new System.Drawing.Size(100, 25);
             this.lBox_Buff3.Name = "lBox_Buff3";
             this.lBox_Buff3.Size = new System.Drawing.Size(100, 25);
@@ -313,7 +313,7 @@
             this.lBox_Red1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lBox_Red1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.lBox_Red1.ForeColor = System.Drawing.Color.White;
-            this.lBox_Red1.Location = new System.Drawing.Point(1, 1);
+            this.lBox_Red1.Location = new System.Drawing.Point(41, 1);
             this.lBox_Red1.MinimumSize = new System.Drawing.Size(100, 25);
             this.lBox_Red1.Name = "lBox_Red1";
             this.lBox_Red1.Size = new System.Drawing.Size(100, 25);
@@ -353,7 +353,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 504);
+            this.ClientSize = new System.Drawing.Size(1393, 504);
             this.Controls.Add(this.panel2);
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(1);
