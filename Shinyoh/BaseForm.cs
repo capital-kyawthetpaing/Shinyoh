@@ -4,7 +4,8 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using CKM_CommonFunction;
-using Newtonsoft.Json;
+using BL;
+using Entity;
 
 namespace Shinyoh
 {
@@ -16,12 +17,12 @@ namespace Shinyoh
         protected string PCID { get; set; }
         #endregion
 
-        CKMFunction ckmfun;
+        FileFunction ff;
 
         public BaseForm()
         {
             InitializeComponent();
-            ckmfun = new CKMFunction();
+            ff = new FileFunction();
 
         }
 
@@ -37,13 +38,20 @@ namespace Shinyoh
             {
                 filePath = @"C:\\DBConfig\\CKM.ini";
             }
-            Dictionary<string, string> dicConfig = ckmfun.ReadConfig(filePath, "DataBase", "ShinyohDB");
+            Dictionary<string, string> dicConfig = ff.ReadConfig(filePath, "DataBase", "ShinyohDB");
             if (this.GetCmdLine() == false || dicConfig.Count == 0)
             {
                 //起動時エラー    DB接続不可能
                 this.Close();
                 System.Environment.Exit(0);
             }
+
+            BaseBL.IEntity.DatabaseServer = dicConfig["DatabaseServer"];
+            BaseBL.IEntity.DatabaseName = dicConfig["DatabaseName"];
+            BaseBL.IEntity.DatabaseLoginID = dicConfig["DatabaseLoginID"];
+            BaseBL.IEntity.DatabasePassword = dicConfig["DatabasePassword"];
+
+
 
 
         }

@@ -89,8 +89,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="RequireDLL\CKM_CommonFunction.dll" />
+    <Content Include="RequireDLL\CKM_DataLayer.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{c2e966eb-8344-4491-befe-a809331521fe}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{0cc4487d-c081-4d4f-87d5-028552310763}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>

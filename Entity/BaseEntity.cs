@@ -1,0 +1,10 @@
+﻿using System.Data.SqlClient;
+
+namespace Entity
+{
+    public class BaseEntity
+    {
+        public string SPName { get; set; }
+        public SqlParameter[] Sqlprms { get; set; }
+    }
+}
