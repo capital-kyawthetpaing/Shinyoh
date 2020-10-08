@@ -58,6 +58,9 @@
     <Compile Include="LBox_Red.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SLabel.cs">
       <SubType>Component</SubType>
     </Compile>
