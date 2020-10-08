@@ -59,8 +59,11 @@ namespace Shinyoh
                 StaffCD = OperatorCD
             };
 
+            //set LoginName & LoginDate
             staffEntity = staffBL.GetStaffEntity(staffEntity);
 
+
+            ProgramEntity programEntity = staffBL.Staff_AccessCheck(staffEntity);
 
 
         }
@@ -82,24 +85,6 @@ namespace Shinyoh
                 return false;
 
             return true;
-        }
-
-        public void txtDate_Enter(object sender, EventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            if (tb != null)
-            {
-                tb.BackColor = Color.Silver;
-            }
-        }
-
-        public void txtDate_Leave(object sender, EventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            if (tb != null)
-            {
-                tb.BackColor = Color.White;
-            }
         }
 
         private void btnFunctionClick(object sender,EventArgs e)
