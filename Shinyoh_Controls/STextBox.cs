@@ -73,7 +73,7 @@ namespace Shinyoh_Controls
             cf = new CommonFunction();
             bbl = new BaseBL();
 
-            base.MinimumSize = new Size(100, 23);
+            base.MinimumSize = new Size(100, 25);
         }
 
         public override bool AutoSize 
@@ -125,6 +125,13 @@ namespace Shinyoh_Controls
             bbl.ShowMessage(messageID);
             this.SelectionStart = 0;
             this.SelectionLength = this.Text.Length;
+        }
+
+        protected override void InitLayout()
+        {
+            base.InitLayout();
+            base.AutoSize = false;
+            base.Height = 25;
         }
     }
 }
