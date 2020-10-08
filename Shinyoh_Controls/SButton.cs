@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace Shinyoh_Controls
 {
@@ -6,7 +7,10 @@ namespace Shinyoh_Controls
     {
         public SButton()
         {
-
+            this.BackColor = ColorTranslator.FromHtml("#BFBFBF");
+            this.Font = new Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.TextAlign = ContentAlignment.MiddleCenter;
+            this.Dock = DockStyle.Bottom;
         }
     }
 }
