@@ -11,7 +11,7 @@ namespace Shinyoh_Controls
             BackColor = Color.FromArgb(255, 230, 153);
             base.AutoSize = false;
             TextAlign = ContentAlignment.MiddleCenter;
-            BorderStyle = BorderStyle.None;
+            BorderStyle = BorderStyle.FixedSingle;
             FlatStyle = FlatStyle.Flat;
             base.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
         }
