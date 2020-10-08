@@ -1,18 +1,32 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
+using System.ComponentModel;
 
 namespace Shinyoh_Controls
 {
     public class SLabel : Label
     {
-        public SLabel()
+        public SLabel():base()
         {
             BackColor = Color.FromArgb(255, 230, 153);
-            AutoSize = false;
+            base.AutoSize = false;
             TextAlign = ContentAlignment.MiddleCenter;
             BorderStyle = BorderStyle.None;
             FlatStyle = FlatStyle.Flat;
-            Font = new Font(this.Font, FontStyle.Bold);
+            base.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+        }
+
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public override bool AutoSize
+        {
+            get { return base.AutoSize; }
+            set { base.AutoSize = value; }
+        }
+
+        protected override void InitLayout()
+        {
+            base.InitLayout();
+            base.AutoSize = false;
         }
     }
 }

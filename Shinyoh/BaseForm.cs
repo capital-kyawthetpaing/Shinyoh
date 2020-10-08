@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using CKM_CommonFunction;
 using BL;
 using Entity;
+using System.Data;
 
 namespace Shinyoh
 {
@@ -18,12 +19,13 @@ namespace Shinyoh
         #endregion
 
         FileFunction ff;
+        StaffBL staffBL;
 
         public BaseForm()
         {
             InitializeComponent();
             ff = new FileFunction();
-
+            staffBL = new StaffBL();
         }
 
         protected void StartProgram()
@@ -51,6 +53,13 @@ namespace Shinyoh
             BaseBL.IEntity.DatabaseLoginID = dicConfig["DatabaseLoginID"];
             BaseBL.IEntity.DatabasePassword = dicConfig["DatabasePassword"];
 
+
+            StaffEntity staffEntity = new StaffEntity
+            {
+                StaffCD = OperatorCD
+            };
+
+            staffEntity = staffBL.GetStaffEntity(staffEntity);
 
 
 
