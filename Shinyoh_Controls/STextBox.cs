@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using CKM_CommonFunction;
 using BL;
+using System.Drawing;
 
 namespace Shinyoh_Controls
 {
@@ -69,8 +70,16 @@ namespace Shinyoh_Controls
         {
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            
             cf = new CommonFunction();
             bbl = new BaseBL();
+
+            base.MinimumSize = new Size(100, 23);
+        }
+
+        public override bool AutoSize 
+        { 
+            get => base.AutoSize; set => base.AutoSize = value; 
         }
 
         //restrict key
