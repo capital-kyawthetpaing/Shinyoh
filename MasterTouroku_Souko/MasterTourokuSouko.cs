@@ -17,5 +17,29 @@ namespace MasterTouroku_Souko
         {
             InitializeComponent();
         }
+
+        private void txtSearch_Enter(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb != null)
+            {
+                tb.BackColor = Color.Silver;
+            }
+        }
+
+        private void txtSearch_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb != null)
+            {
+                tb.BackColor = Color.White;
+            }
+        }
+
+        private void MasterTourokuSouko_Load(object sender, EventArgs e)
+        {
+            StartProgram();
+            SetButton(ButtonType.Insert, F1, "新規");
+        }
     }
 }
