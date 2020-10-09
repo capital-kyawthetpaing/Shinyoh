@@ -154,21 +154,23 @@
             this.tableLayoutPanel1.Controls.Add(this.sButton7, 9, 0);
             this.tableLayoutPanel1.Controls.Add(this.sButton8, 10, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 541);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 547);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1524, 50);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1524, 44);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDelete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDelete.Location = new System.Drawing.Point(379, 4);
+            this.btnDelete.Location = new System.Drawing.Point(376, 1);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(0);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(118, 42);
+            this.btnDelete.Size = new System.Drawing.Size(124, 42);
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "削除(F4)";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -176,11 +178,13 @@
             // btnInquiry
             // 
             this.btnInquiry.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnInquiry.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnInquiry.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnInquiry.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInquiry.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnInquiry.Location = new System.Drawing.Point(504, 4);
+            this.btnInquiry.Location = new System.Drawing.Point(501, 1);
+            this.btnInquiry.Margin = new System.Windows.Forms.Padding(0);
             this.btnInquiry.Name = "btnInquiry";
-            this.btnInquiry.Size = new System.Drawing.Size(118, 42);
+            this.btnInquiry.Size = new System.Drawing.Size(124, 42);
             this.btnInquiry.TabIndex = 7;
             this.btnInquiry.Text = "照会(F5)";
             this.btnInquiry.UseVisualStyleBackColor = false;
@@ -188,11 +192,13 @@
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Location = new System.Drawing.Point(629, 4);
+            this.btnCancel.Location = new System.Drawing.Point(626, 1);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(0);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(131, 42);
+            this.btnCancel.Size = new System.Drawing.Size(137, 42);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "キャンセル(F6)";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -200,11 +206,13 @@
             // btnUpdate
             // 
             this.btnUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUpdate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnUpdate.Location = new System.Drawing.Point(254, 4);
+            this.btnUpdate.Location = new System.Drawing.Point(251, 1);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(0);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(118, 42);
+            this.btnUpdate.Size = new System.Drawing.Size(124, 42);
             this.btnUpdate.TabIndex = 17;
             this.btnUpdate.Text = "変更(F3)";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -212,11 +220,13 @@
             // btnNew
             // 
             this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnNew.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnNew.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnNew.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnNew.Location = new System.Drawing.Point(129, 4);
+            this.btnNew.Location = new System.Drawing.Point(126, 1);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(0);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(118, 42);
+            this.btnNew.Size = new System.Drawing.Size(124, 42);
             this.btnNew.TabIndex = 16;
             this.btnNew.Text = "新規(F2)";
             this.btnNew.UseVisualStyleBackColor = false;
@@ -224,22 +234,26 @@
             // sButton4
             // 
             this.sButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.sButton4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.sButton4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sButton4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.sButton4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sButton4.Location = new System.Drawing.Point(767, 4);
+            this.sButton4.Location = new System.Drawing.Point(764, 1);
+            this.sButton4.Margin = new System.Windows.Forms.Padding(0);
             this.sButton4.Name = "sButton4";
-            this.sButton4.Size = new System.Drawing.Size(118, 42);
+            this.sButton4.Size = new System.Drawing.Size(124, 42);
             this.sButton4.TabIndex = 9;
             this.sButton4.UseVisualStyleBackColor = false;
             // 
             // btnFinish
             // 
             this.btnFinish.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnFinish.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnFinish.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnFinish.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFinish.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnFinish.Location = new System.Drawing.Point(4, 4);
+            this.btnFinish.Location = new System.Drawing.Point(1, 1);
+            this.btnFinish.Margin = new System.Windows.Forms.Padding(0);
             this.btnFinish.Name = "btnFinish";
-            this.btnFinish.Size = new System.Drawing.Size(118, 42);
+            this.btnFinish.Size = new System.Drawing.Size(124, 42);
             this.btnFinish.TabIndex = 15;
             this.btnFinish.Text = "終了(F1)";
             this.btnFinish.UseVisualStyleBackColor = false;
@@ -247,22 +261,26 @@
             // sButton5
             // 
             this.sButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.sButton5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.sButton5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sButton5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.sButton5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sButton5.Location = new System.Drawing.Point(892, 4);
+            this.sButton5.Location = new System.Drawing.Point(889, 1);
+            this.sButton5.Margin = new System.Windows.Forms.Padding(0);
             this.sButton5.Name = "sButton5";
-            this.sButton5.Size = new System.Drawing.Size(118, 42);
+            this.sButton5.Size = new System.Drawing.Size(124, 42);
             this.sButton5.TabIndex = 10;
             this.sButton5.UseVisualStyleBackColor = false;
             // 
             // btnRegister
             // 
             this.btnRegister.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnRegister.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnRegister.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRegister.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnRegister.Location = new System.Drawing.Point(1392, 4);
+            this.btnRegister.Location = new System.Drawing.Point(1389, 1);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(0);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(128, 42);
+            this.btnRegister.Size = new System.Drawing.Size(134, 42);
             this.btnRegister.TabIndex = 14;
             this.btnRegister.Text = "登録(F12)";
             this.btnRegister.UseVisualStyleBackColor = false;
@@ -270,11 +288,13 @@
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.Location = new System.Drawing.Point(1017, 4);
+            this.btnSearch.Location = new System.Drawing.Point(1014, 1);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(0);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(118, 42);
+            this.btnSearch.Size = new System.Drawing.Size(124, 42);
             this.btnSearch.TabIndex = 11;
             this.btnSearch.Text = "検索(F9)";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -282,22 +302,26 @@
             // sButton7
             // 
             this.sButton7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.sButton7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.sButton7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sButton7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.sButton7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sButton7.Location = new System.Drawing.Point(1142, 4);
+            this.sButton7.Location = new System.Drawing.Point(1139, 1);
+            this.sButton7.Margin = new System.Windows.Forms.Padding(0);
             this.sButton7.Name = "sButton7";
-            this.sButton7.Size = new System.Drawing.Size(118, 42);
+            this.sButton7.Size = new System.Drawing.Size(124, 42);
             this.sButton7.TabIndex = 12;
             this.sButton7.UseVisualStyleBackColor = false;
             // 
             // sButton8
             // 
             this.sButton8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.sButton8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.sButton8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.sButton8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.sButton8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sButton8.Location = new System.Drawing.Point(1267, 4);
+            this.sButton8.Location = new System.Drawing.Point(1264, 1);
+            this.sButton8.Margin = new System.Windows.Forms.Padding(0);
             this.sButton8.Name = "sButton8";
-            this.sButton8.Size = new System.Drawing.Size(118, 42);
+            this.sButton8.Size = new System.Drawing.Size(124, 42);
             this.sButton8.TabIndex = 13;
             this.sButton8.UseVisualStyleBackColor = false;
             // 

@@ -10,8 +10,6 @@ namespace Shinyoh_Controls
             this.BackColor = ColorTranslator.FromHtml("#BFBFBF");
             this.Font = new Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.TextAlign = ContentAlignment.MiddleCenter;
-            this.Size = new Size(116, 42);
-            this.Dock = DockStyle.Bottom;
             this.FlatStyle = FlatStyle.Popup;
         }
     }
