@@ -108,28 +108,35 @@ namespace Shinyoh
             switch(buttonType)
             {
                 case ButtonType.Insert:
-                    if (programEntity.Insertable.Equals("0"))
-                    {
-                        button.Text = string.Empty;
-                        button.Enabled = false;
-                    }
-                    else
-                    {
-                        button.Text = Text;
-                        button.Enabled = true;
-                    }
+                    CheckButton(programEntity.Insertable, buttonText, button);
                     break;
                 case ButtonType.Update:
-                    if(programEntity.Updatable.Equals("0"))
-                    {
-                        button.Text = string.Empty;
-                    }
+                    CheckButton(programEntity.Updatable, buttonText, button);
+                    break;
+                case ButtonType.Delete:
+                    CheckButton(programEntity.Deletable, buttonText, button);
+                    break;
+                case ButtonType.Inquiry:
+                    CheckButton(programEntity.Inquirable, buttonText, button);
+                    break;
+                case ButtonType.Print:
+                    CheckButton(programEntity.Printable, buttonText, button);
+                    break;
             }
         }
 
-        private void CheckButton()
+        private void CheckButton(string Value,string Text,Button button)
         {
-
+            if(Value.Equals("0"))
+            {
+                button.Text = string.Empty;
+                button.Enabled = false;
+            }
+            else
+            {
+                button.Text = Text;
+                button.Enabled = true;
+            }
         }
     }
 }
