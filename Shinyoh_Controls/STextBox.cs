@@ -119,7 +119,16 @@ namespace Shinyoh_Controls
 
             base.OnKeyDown(e);
         }
-
+        protected override void OnEnter(EventArgs e)
+        {
+            this.BackColor = Color.Silver;
+            base.OnEnter(e);
+        }
+        protected override void OnLeave(EventArgs e)
+        {
+            this.BackColor = Color.White;
+            base.OnLeave(e);
+        }
         private void ShowErrorMessage(string messageID)
         {
             bbl.ShowMessage(messageID);

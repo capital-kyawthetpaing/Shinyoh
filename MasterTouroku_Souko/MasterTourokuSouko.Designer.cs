@@ -91,14 +91,12 @@
             this.txtSearch.DecimalPlace = 0;
             this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.txtSearch.IntegerPart = 0;
-            this.txtSearch.Location = new System.Drawing.Point(141, 324);
+            this.txtSearch.Location = new System.Drawing.Point(142, 324);
             this.txtSearch.MinimumSize = new System.Drawing.Size(100, 25);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 25);
             this.txtSearch.TabIndex = 40;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // lblSearch
             // 
@@ -121,14 +119,12 @@
             this.txtRemark.DecimalPlace = 0;
             this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.txtRemark.IntegerPart = 0;
-            this.txtRemark.Location = new System.Drawing.Point(141, 287);
+            this.txtRemark.Location = new System.Drawing.Point(142, 287);
             this.txtRemark.MinimumSize = new System.Drawing.Size(100, 25);
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.Size = new System.Drawing.Size(527, 25);
             this.txtRemark.TabIndex = 38;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtRemark.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtRemark.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // lblRemark
             // 
@@ -157,8 +153,6 @@
             this.txtFAX.Size = new System.Drawing.Size(177, 25);
             this.txtFAX.TabIndex = 36;
             this.txtFAX.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtFAX.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtFAX.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // lblFAX
             // 
@@ -187,8 +181,6 @@
             this.txtPhNo.Size = new System.Drawing.Size(177, 25);
             this.txtPhNo.TabIndex = 34;
             this.txtPhNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtPhNo.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtPhNo.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // lblPhNo
             // 
@@ -217,8 +209,6 @@
             this.txtAddress2.Size = new System.Drawing.Size(527, 25);
             this.txtAddress2.TabIndex = 32;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtAddress2.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtAddress2.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // lblAddress2
             // 
@@ -247,8 +237,6 @@
             this.txtAddress1.Size = new System.Drawing.Size(527, 25);
             this.txtAddress1.TabIndex = 30;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtAddress1.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtAddress1.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // lblAddress1
             // 
@@ -277,8 +265,6 @@
             this.txtYubin2.Size = new System.Drawing.Size(100, 25);
             this.txtYubin2.TabIndex = 28;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtYubin2.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtYubin2.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // txtYubin1
             // 
@@ -293,8 +279,6 @@
             this.txtYubin1.Size = new System.Drawing.Size(100, 25);
             this.txtYubin1.TabIndex = 27;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtYubin1.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtYubin1.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // lblYubinNo
             // 
@@ -323,8 +307,6 @@
             this.txtKanaName.Size = new System.Drawing.Size(357, 25);
             this.txtKanaName.TabIndex = 25;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtKanaName.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtKanaName.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // lblKanaName
             // 
@@ -353,8 +335,6 @@
             this.txtSokouName.Size = new System.Drawing.Size(357, 25);
             this.txtSokouName.TabIndex = 23;
             this.txtSokouName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtSokouName.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtSokouName.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
             // lblSokouName
             // 
