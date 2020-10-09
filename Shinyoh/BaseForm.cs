@@ -91,5 +91,23 @@ namespace Shinyoh
         {
 
         }
+
+        private void txtDate_Enter(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb != null)
+            {
+                tb.BackColor = Color.Silver;
+            }
+        }
+
+        private void txtDate_Leave(object sender, EventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            if (tb != null)
+            {
+                tb.BackColor = Color.White;
+            }
+        }
     }
 }

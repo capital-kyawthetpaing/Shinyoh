@@ -8,7 +8,7 @@ namespace Shinyoh_Controls {
             this.BackColor = ColorTranslator.FromHtml("#c0c0c0");
             this.Font  = new Font("Microsoft Sans Serif", 15);
             this.TextAlign = ContentAlignment.MiddleCenter;
-            this.Dock = DockStyle.Bottom;
+            this.Dock = DockStyle.None;
 
         }
     }
