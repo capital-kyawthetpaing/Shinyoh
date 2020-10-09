@@ -7,6 +7,7 @@ using CKM_CommonFunction;
 using BL;
 using Entity;
 using System.Data;
+using Shinyoh_Controls;
 
 namespace Shinyoh
 {
@@ -20,6 +21,17 @@ namespace Shinyoh
 
         FileFunction ff;
         StaffBL staffBL;
+        ProgramEntity programEntity;
+
+        protected enum ButtonType
+        {
+            Insert,
+            Update,
+            Delete,
+            Inquiry,
+            Print,
+            Run
+        }
 
         public BaseForm()
         {
@@ -61,11 +73,10 @@ namespace Shinyoh
 
             //set LoginName & LoginDate
             staffEntity = staffBL.GetStaffEntity(staffEntity);
+            txtOperator.Text = staffEntity.StaffName;
+            txtDate.Text = staffEntity.LoginDate;
 
-
-            ProgramEntity programEntity = staffBL.Staff_AccessCheck(staffEntity);
-
-
+            programEntity = staffBL.Staff_AccessCheck(staffEntity);
         }
 
         private bool GetCmdLine()
@@ -88,6 +99,35 @@ namespace Shinyoh
         }
 
         private void btnFunctionClick(object sender,EventArgs e)
+        {
+
+        }
+
+        private void SetButton(ButtonType buttonType,Button button,string buttonText)
+        {
+            switch(buttonType)
+            {
+                case ButtonType.Insert:
+                    if (programEntity.Insertable.Equals("0"))
+                    {
+                        button.Text = string.Empty;
+                        button.Enabled = false;
+                    }
+                    else
+                    {
+                        button.Text = Text;
+                        button.Enabled = true;
+                    }
+                    break;
+                case ButtonType.Update:
+                    if(programEntity.Updatable.Equals("0"))
+                    {
+                        button.Text = string.Empty;
+                    }
+            }
+        }
+
+        private void CheckButton()
         {
 
         }

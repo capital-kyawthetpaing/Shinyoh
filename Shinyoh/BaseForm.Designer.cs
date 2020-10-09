@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtDate = new Shinyoh_Controls.STextBox();
+            this.txtOperator = new Shinyoh_Controls.STextBox();
+            this.lblDate = new Shinyoh_Controls.SLabel();
+            this.lblOperator = new Shinyoh_Controls.SLabel();
             this.sTextBox1 = new Shinyoh_Controls.STextBox();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -44,10 +48,6 @@
             this.btnRegister = new Shinyoh_Controls.BBox();
             this.btnF4 = new Shinyoh_Controls.BBox();
             this.bBox2 = new Shinyoh_Controls.BBox();
-            this.lblOperator = new Shinyoh_Controls.SLabel();
-            this.lblDate = new Shinyoh_Controls.SLabel();
-            this.txtOperator = new Shinyoh_Controls.STextBox();
-            this.txtDate = new Shinyoh_Controls.STextBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +67,66 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1524, 75);
             this.panel1.TabIndex = 0;
+            // 
+            // txtDate
+            // 
+            this.txtDate.AllowMinus = false;
+            this.txtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDate.DecimalPlace = 0;
+            this.txtDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtDate.IntegerPart = 0;
+            this.txtDate.Location = new System.Drawing.Point(1281, 39);
+            this.txtDate.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtDate.Name = "txtDate";
+            this.txtDate.Size = new System.Drawing.Size(100, 25);
+            this.txtDate.TabIndex = 9;
+            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
+            // txtOperator
+            // 
+            this.txtOperator.AllowMinus = false;
+            this.txtOperator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOperator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtOperator.DecimalPlace = 0;
+            this.txtOperator.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtOperator.IntegerPart = 0;
+            this.txtOperator.Location = new System.Drawing.Point(1282, 9);
+            this.txtOperator.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtOperator.Name = "txtOperator";
+            this.txtOperator.Size = new System.Drawing.Size(198, 25);
+            this.txtOperator.TabIndex = 8;
+            this.txtOperator.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
+            // lblDate
+            // 
+            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblDate.Location = new System.Drawing.Point(1183, 39);
+            this.lblDate.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(100, 25);
+            this.lblDate.TabIndex = 7;
+            this.lblDate.Text = "基準日";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblOperator
+            // 
+            this.lblOperator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblOperator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblOperator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblOperator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblOperator.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblOperator.Location = new System.Drawing.Point(1183, 9);
+            this.lblOperator.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblOperator.Name = "lblOperator";
+            this.lblOperator.Size = new System.Drawing.Size(100, 25);
+            this.lblOperator.TabIndex = 6;
+            this.lblOperator.Text = "オペレータ";
+            this.lblOperator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sTextBox1
             // 
@@ -304,66 +364,6 @@
             this.bBox2.Tag = "11";
             this.bBox2.UseVisualStyleBackColor = false;
             this.bBox2.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // lblOperator
-            // 
-            this.lblOperator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblOperator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lblOperator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblOperator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblOperator.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblOperator.Location = new System.Drawing.Point(1183, 9);
-            this.lblOperator.MinimumSize = new System.Drawing.Size(100, 25);
-            this.lblOperator.Name = "lblOperator";
-            this.lblOperator.Size = new System.Drawing.Size(100, 25);
-            this.lblOperator.TabIndex = 6;
-            this.lblOperator.Text = "オペレータ";
-            this.lblOperator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDate
-            // 
-            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lblDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDate.Location = new System.Drawing.Point(1183, 39);
-            this.lblDate.MinimumSize = new System.Drawing.Size(100, 25);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(100, 25);
-            this.lblDate.TabIndex = 7;
-            this.lblDate.Text = "基準日";
-            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtOperator
-            // 
-            this.txtOperator.AllowMinus = false;
-            this.txtOperator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtOperator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtOperator.DecimalPlace = 0;
-            this.txtOperator.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.txtOperator.IntegerPart = 0;
-            this.txtOperator.Location = new System.Drawing.Point(1282, 9);
-            this.txtOperator.MinimumSize = new System.Drawing.Size(100, 25);
-            this.txtOperator.Name = "txtOperator";
-            this.txtOperator.Size = new System.Drawing.Size(198, 25);
-            this.txtOperator.TabIndex = 8;
-            this.txtOperator.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // txtDate
-            // 
-            this.txtDate.AllowMinus = false;
-            this.txtDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDate.DecimalPlace = 0;
-            this.txtDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.txtDate.IntegerPart = 0;
-            this.txtDate.Location = new System.Drawing.Point(1281, 39);
-            this.txtDate.MinimumSize = new System.Drawing.Size(100, 25);
-            this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(100, 25);
-            this.txtDate.TabIndex = 9;
-            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // BaseForm
             // 
