@@ -78,8 +78,6 @@
             this.txtDate.Size = new System.Drawing.Size(100, 25);
             this.txtDate.TabIndex = 9;
             this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtDate.Enter += new System.EventHandler(this.txtDate_Enter);
-            this.txtDate.Leave += new System.EventHandler(this.txtDate_Leave);
             // 
             // txtOperator
             // 
@@ -95,8 +93,6 @@
             this.txtOperator.Size = new System.Drawing.Size(198, 25);
             this.txtOperator.TabIndex = 8;
             this.txtOperator.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtOperator.Enter += new System.EventHandler(this.txtDate_Enter);
-            this.txtOperator.Leave += new System.EventHandler(this.txtDate_Leave);
             // 
             // lblDate
             // 

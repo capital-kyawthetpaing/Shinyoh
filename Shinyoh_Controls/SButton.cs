@@ -12,6 +12,7 @@ namespace Shinyoh_Controls
             this.TextAlign = ContentAlignment.MiddleCenter;
             this.Size = new Size(116, 42);
             this.Dock = DockStyle.Bottom;
+            this.FlatStyle = FlatStyle.Popup;
         }
     }
 }
