@@ -35,5 +35,11 @@ namespace MasterTouroku_Souko
                 tb.BackColor = Color.White;
             }
         }
+
+        private void MasterTourokuSouko_Load(object sender, EventArgs e)
+        {
+            StartProgram();
+            SetButton(ButtonType.Insert, F1, "新規");
+        }
     }
 }
