@@ -80,6 +80,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{0cc4487d-c081-4d4f-87d5-028552310763}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shinyoh\Shinyoh.csproj">
       <Project>{697e1304-f141-4cce-b816-9cc225f441c4}</Project>
       <Name>Shinyoh</Name>

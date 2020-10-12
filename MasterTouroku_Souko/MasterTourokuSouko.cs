@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Shinyoh;
+using Entity;
 
 namespace MasterTouroku_Souko
 {
@@ -38,6 +39,7 @@ namespace MasterTouroku_Souko
 
         private void MasterTourokuSouko_Load(object sender, EventArgs e)
         {
+            ProgramID = "MasterTourokuSouko";
             StartProgram();
             SetButton(ButtonType.Insert, F1, "新規");
         }

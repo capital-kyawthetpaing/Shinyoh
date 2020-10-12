@@ -22,6 +22,7 @@ namespace Shinyoh
         FileFunction ff;
         StaffBL staffBL;
         ProgramEntity programEntity;
+        protected string ProgramID { get; set; }
 
         #region Function Button
         protected SButton F1 { get => BtnF1; set => BtnF1 = value; }
@@ -51,6 +52,7 @@ namespace Shinyoh
         public BaseForm()
         {
             InitializeComponent();
+            programEntity = new ProgramEntity();
             ff = new FileFunction();
             staffBL = new StaffBL();
         }
@@ -91,7 +93,13 @@ namespace Shinyoh
             txtOperator.Text = staffEntity.StaffName;
             txtDate.Text = staffEntity.LoginDate;
 
+            staffEntity.ProgramID = ProgramID;
             programEntity = staffBL.Staff_AccessCheck(staffEntity);
+            if(programEntity == null)
+            {
+                this.Close();
+                System.Environment.Exit(0);
+            }
         }
 
         private bool GetCmdLine()
