@@ -174,11 +174,14 @@ namespace Shinyoh
                 if(ActiveControl is STextBox)
                 {
                     STextBox stxt = ActiveControl as STextBox;
-                    Control[] ctlArr = this.Controls.Find(stxt.NextControlName, true);
-                    if (ctlArr.Length > 0)
+                    if(!string.IsNullOrWhiteSpace(stxt.NextControlName))
                     {
-                        stxt.NextControl = ctlArr[0];
-                    }
+                        Control[] ctlArr = this.Controls.Find(stxt.NextControlName, true);
+                        if (ctlArr.Length > 0)
+                        {
+                            stxt.NextControl = ctlArr[0];
+                        }
+                    }                   
                 }
             }
         }

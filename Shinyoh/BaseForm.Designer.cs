@@ -302,9 +302,11 @@
             this.txtDate.MinimumSize = new System.Drawing.Size(100, 25);
             this.txtDate.MoveNext = true;
             this.txtDate.Name = "txtDate";
+            this.txtDate.NextControl = null;
             this.txtDate.NextControlName = null;
             this.txtDate.Size = new System.Drawing.Size(100, 25);
             this.txtDate.TabIndex = 9;
+            this.txtDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtOperator
@@ -320,9 +322,11 @@
             this.txtOperator.MinimumSize = new System.Drawing.Size(100, 25);
             this.txtOperator.MoveNext = true;
             this.txtOperator.Name = "txtOperator";
+            this.txtOperator.NextControl = null;
             this.txtOperator.NextControlName = null;
             this.txtOperator.Size = new System.Drawing.Size(198, 25);
             this.txtOperator.TabIndex = 8;
+            this.txtOperator.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtOperator.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblDate

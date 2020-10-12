@@ -14,7 +14,7 @@ namespace Shinyoh_Controls
             BorderStyle = BorderStyle.FixedSingle;
             FlatStyle = FlatStyle.Flat;
             base.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            base.MinimumSize = new Size(100,25);
+            base.Size = new Size(100, 19);
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -28,7 +28,7 @@ namespace Shinyoh_Controls
         {
             base.InitLayout();
             base.AutoSize = false;
-            base.Height = 25;
+            base.Height = 19;
         }
     }
 }
