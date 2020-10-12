@@ -90,8 +90,8 @@ namespace Shinyoh
 
             //set LoginName & LoginDate
             staffEntity = staffBL.GetStaffEntity(staffEntity);
-            txtOperator.Text = staffEntity.StaffName;
-            txtDate.Text = staffEntity.LoginDate;
+            sLabel1.Text = staffEntity.StaffName;
+            sLabel2.Text = staffEntity.LoginDate;
 
             staffEntity.ProgramID = ProgramID;
             programEntity = staffBL.Staff_AccessCheck(staffEntity);

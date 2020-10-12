@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.sTextBox1 = new Shinyoh_Controls.STextBox();
-            this.sLabel1 = new Shinyoh_Controls.SLabel();
             this.txtSearch = new Shinyoh_Controls.STextBox();
             this.lblSearch = new Shinyoh_Controls.SLabel();
             this.txtRemark = new Shinyoh_Controls.STextBox();
@@ -51,6 +49,7 @@
             this.txtSokouName = new Shinyoh_Controls.STextBox();
             this.lblSokouName = new Shinyoh_Controls.SLabel();
             this.label1 = new System.Windows.Forms.Label();
+            this.sLabel1 = new Shinyoh_Controls.SLabel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,8 +58,6 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.sTextBox1);
-            this.panel2.Controls.Add(this.sLabel1);
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.lblSearch);
             this.panel2.Controls.Add(this.txtRemark);
@@ -86,38 +83,6 @@
             this.panel2.Size = new System.Drawing.Size(1485, 379);
             this.panel2.TabIndex = 3;
             // 
-            // sTextBox1
-            // 
-            this.sTextBox1.AllowMinus = false;
-            this.sTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sTextBox1.DecimalPlace = 0;
-            this.sTextBox1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sTextBox1.IntegerPart = 0;
-            this.sTextBox1.IsRequire = false;
-            this.sTextBox1.Location = new System.Drawing.Point(777, 60);
-            this.sTextBox1.MinimumSize = new System.Drawing.Size(100, 19);
-            this.sTextBox1.MoveNext = true;
-            this.sTextBox1.Name = "sTextBox1";
-            this.sTextBox1.NextControl = null;
-            this.sTextBox1.NextControlName = null;
-            this.sTextBox1.Size = new System.Drawing.Size(100, 19);
-            this.sTextBox1.TabIndex = 42;
-            this.sTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.sTextBox1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // sLabel1
-            // 
-            this.sLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel1.Location = new System.Drawing.Point(677, 60);
-            this.sLabel1.Name = "sLabel1";
-            this.sLabel1.Size = new System.Drawing.Size(100, 19);
-            this.sLabel1.TabIndex = 41;
-            this.sLabel1.Text = "倉庫名";
-            this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // txtSearch
             // 
             this.txtSearch.AllowMinus = false;
@@ -127,12 +92,12 @@
             this.txtSearch.IntegerPart = 0;
             this.txtSearch.IsRequire = false;
             this.txtSearch.Location = new System.Drawing.Point(142, 324);
-            this.txtSearch.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.NextControl = null;
             this.txtSearch.NextControlName = null;
-            this.txtSearch.Size = new System.Drawing.Size(100, 25);
+            this.txtSearch.Size = new System.Drawing.Size(100, 19);
             this.txtSearch.TabIndex = 40;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -144,9 +109,9 @@
             this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSearch.Location = new System.Drawing.Point(42, 324);
-            this.lblSearch.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(100, 25);
+            this.lblSearch.Size = new System.Drawing.Size(100, 19);
             this.lblSearch.TabIndex = 39;
             this.lblSearch.Text = "検索表示順";
             this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -160,12 +125,12 @@
             this.txtRemark.IntegerPart = 0;
             this.txtRemark.IsRequire = false;
             this.txtRemark.Location = new System.Drawing.Point(142, 287);
-            this.txtRemark.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRemark.MoveNext = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.NextControl = null;
             this.txtRemark.NextControlName = null;
-            this.txtRemark.Size = new System.Drawing.Size(527, 25);
+            this.txtRemark.Size = new System.Drawing.Size(527, 19);
             this.txtRemark.TabIndex = 38;
             this.txtRemark.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -177,9 +142,9 @@
             this.lblRemark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRemark.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblRemark.Location = new System.Drawing.Point(42, 287);
-            this.lblRemark.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblRemark.Name = "lblRemark";
-            this.lblRemark.Size = new System.Drawing.Size(100, 25);
+            this.lblRemark.Size = new System.Drawing.Size(100, 19);
             this.lblRemark.TabIndex = 37;
             this.lblRemark.Text = "備考";
             this.lblRemark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -193,12 +158,12 @@
             this.txtFAX.IntegerPart = 0;
             this.txtFAX.IsRequire = false;
             this.txtFAX.Location = new System.Drawing.Point(141, 248);
-            this.txtFAX.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtFAX.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtFAX.MoveNext = true;
             this.txtFAX.Name = "txtFAX";
             this.txtFAX.NextControl = null;
             this.txtFAX.NextControlName = null;
-            this.txtFAX.Size = new System.Drawing.Size(177, 25);
+            this.txtFAX.Size = new System.Drawing.Size(177, 19);
             this.txtFAX.TabIndex = 36;
             this.txtFAX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtFAX.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -210,9 +175,9 @@
             this.lblFAX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblFAX.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblFAX.Location = new System.Drawing.Point(41, 248);
-            this.lblFAX.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblFAX.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblFAX.Name = "lblFAX";
-            this.lblFAX.Size = new System.Drawing.Size(100, 25);
+            this.lblFAX.Size = new System.Drawing.Size(100, 19);
             this.lblFAX.TabIndex = 35;
             this.lblFAX.Text = "FAX番号";
             this.lblFAX.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -226,12 +191,12 @@
             this.txtPhNo.IntegerPart = 0;
             this.txtPhNo.IsRequire = false;
             this.txtPhNo.Location = new System.Drawing.Point(141, 209);
-            this.txtPhNo.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtPhNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPhNo.MoveNext = true;
             this.txtPhNo.Name = "txtPhNo";
             this.txtPhNo.NextControl = null;
             this.txtPhNo.NextControlName = null;
-            this.txtPhNo.Size = new System.Drawing.Size(177, 25);
+            this.txtPhNo.Size = new System.Drawing.Size(177, 19);
             this.txtPhNo.TabIndex = 34;
             this.txtPhNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPhNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -243,9 +208,9 @@
             this.lblPhNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPhNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblPhNo.Location = new System.Drawing.Point(41, 209);
-            this.lblPhNo.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblPhNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblPhNo.Name = "lblPhNo";
-            this.lblPhNo.Size = new System.Drawing.Size(100, 25);
+            this.lblPhNo.Size = new System.Drawing.Size(100, 19);
             this.lblPhNo.TabIndex = 33;
             this.lblPhNo.Text = "電話番号";
             this.lblPhNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -259,12 +224,12 @@
             this.txtAddress2.IntegerPart = 0;
             this.txtAddress2.IsRequire = false;
             this.txtAddress2.Location = new System.Drawing.Point(141, 170);
-            this.txtAddress2.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtAddress2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress2.MoveNext = true;
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.NextControl = null;
             this.txtAddress2.NextControlName = null;
-            this.txtAddress2.Size = new System.Drawing.Size(527, 25);
+            this.txtAddress2.Size = new System.Drawing.Size(527, 19);
             this.txtAddress2.TabIndex = 32;
             this.txtAddress2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -276,9 +241,9 @@
             this.lblAddress2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAddress2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblAddress2.Location = new System.Drawing.Point(41, 170);
-            this.lblAddress2.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblAddress2.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblAddress2.Name = "lblAddress2";
-            this.lblAddress2.Size = new System.Drawing.Size(100, 25);
+            this.lblAddress2.Size = new System.Drawing.Size(100, 19);
             this.lblAddress2.TabIndex = 31;
             this.lblAddress2.Text = "住所2";
             this.lblAddress2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -292,12 +257,12 @@
             this.txtAddress1.IntegerPart = 0;
             this.txtAddress1.IsRequire = false;
             this.txtAddress1.Location = new System.Drawing.Point(141, 129);
-            this.txtAddress1.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress1.MoveNext = true;
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.NextControl = null;
             this.txtAddress1.NextControlName = null;
-            this.txtAddress1.Size = new System.Drawing.Size(527, 25);
+            this.txtAddress1.Size = new System.Drawing.Size(527, 19);
             this.txtAddress1.TabIndex = 30;
             this.txtAddress1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -309,9 +274,9 @@
             this.lblAddress1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAddress1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblAddress1.Location = new System.Drawing.Point(41, 129);
-            this.lblAddress1.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblAddress1.Name = "lblAddress1";
-            this.lblAddress1.Size = new System.Drawing.Size(100, 25);
+            this.lblAddress1.Size = new System.Drawing.Size(100, 19);
             this.lblAddress1.TabIndex = 29;
             this.lblAddress1.Text = "住所１";
             this.lblAddress1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -325,12 +290,12 @@
             this.txtYubin2.IntegerPart = 0;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.Location = new System.Drawing.Point(280, 91);
-            this.txtYubin2.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtYubin2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtYubin2.MoveNext = true;
             this.txtYubin2.Name = "txtYubin2";
             this.txtYubin2.NextControl = null;
             this.txtYubin2.NextControlName = null;
-            this.txtYubin2.Size = new System.Drawing.Size(100, 25);
+            this.txtYubin2.Size = new System.Drawing.Size(100, 19);
             this.txtYubin2.TabIndex = 28;
             this.txtYubin2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -344,12 +309,12 @@
             this.txtYubin1.IntegerPart = 0;
             this.txtYubin1.IsRequire = false;
             this.txtYubin1.Location = new System.Drawing.Point(141, 91);
-            this.txtYubin1.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtYubin1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtYubin1.MoveNext = true;
             this.txtYubin1.Name = "txtYubin1";
             this.txtYubin1.NextControl = null;
             this.txtYubin1.NextControlName = null;
-            this.txtYubin1.Size = new System.Drawing.Size(100, 25);
+            this.txtYubin1.Size = new System.Drawing.Size(100, 19);
             this.txtYubin1.TabIndex = 27;
             this.txtYubin1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -361,9 +326,9 @@
             this.lblYubinNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblYubinNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblYubinNo.Location = new System.Drawing.Point(41, 91);
-            this.lblYubinNo.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblYubinNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblYubinNo.Name = "lblYubinNo";
-            this.lblYubinNo.Size = new System.Drawing.Size(100, 25);
+            this.lblYubinNo.Size = new System.Drawing.Size(100, 19);
             this.lblYubinNo.TabIndex = 26;
             this.lblYubinNo.Text = "郵便番号";
             this.lblYubinNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -377,12 +342,12 @@
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(141, 54);
-            this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
             this.txtKanaName.NextControl = null;
             this.txtKanaName.NextControlName = null;
-            this.txtKanaName.Size = new System.Drawing.Size(357, 25);
+            this.txtKanaName.Size = new System.Drawing.Size(357, 19);
             this.txtKanaName.TabIndex = 25;
             this.txtKanaName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -394,9 +359,9 @@
             this.lblKanaName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblKanaName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblKanaName.Location = new System.Drawing.Point(41, 54);
-            this.lblKanaName.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblKanaName.Name = "lblKanaName";
-            this.lblKanaName.Size = new System.Drawing.Size(100, 25);
+            this.lblKanaName.Size = new System.Drawing.Size(100, 19);
             this.lblKanaName.TabIndex = 24;
             this.lblKanaName.Text = "カナ名";
             this.lblKanaName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -410,12 +375,12 @@
             this.txtSokouName.IntegerPart = 0;
             this.txtSokouName.IsRequire = false;
             this.txtSokouName.Location = new System.Drawing.Point(141, 18);
-            this.txtSokouName.MinimumSize = new System.Drawing.Size(100, 25);
+            this.txtSokouName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSokouName.MoveNext = true;
             this.txtSokouName.Name = "txtSokouName";
             this.txtSokouName.NextControl = null;
             this.txtSokouName.NextControlName = "txtKanaName";
-            this.txtSokouName.Size = new System.Drawing.Size(357, 25);
+            this.txtSokouName.Size = new System.Drawing.Size(357, 19);
             this.txtSokouName.TabIndex = 23;
             this.txtSokouName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSokouName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -428,9 +393,9 @@
             this.lblSokouName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSokouName.ForeColor = System.Drawing.Color.White;
             this.lblSokouName.Location = new System.Drawing.Point(41, 18);
-            this.lblSokouName.MinimumSize = new System.Drawing.Size(100, 25);
+            this.lblSokouName.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblSokouName.Name = "lblSokouName";
-            this.lblSokouName.Size = new System.Drawing.Size(100, 25);
+            this.lblSokouName.Size = new System.Drawing.Size(100, 19);
             this.lblSokouName.TabIndex = 22;
             this.lblSokouName.Text = "倉庫名";
             this.lblSokouName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -439,11 +404,24 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(254, 94);
+            this.label1.Location = new System.Drawing.Point(253, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 19;
             this.label1.Text = "-";
+            // 
+            // sLabel1
+            // 
+            this.sLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel1.Location = new System.Drawing.Point(677, 60);
+            this.sLabel1.Name = "sLabel1";
+            this.sLabel1.Size = new System.Drawing.Size(100, 19);
+            this.sLabel1.TabIndex = 41;
+            this.sLabel1.Text = "倉庫名";
+            this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MasterTourokuSouko
             // 
@@ -487,7 +465,6 @@
         private Shinyoh_Controls.SLabel lblFAX;
         private Shinyoh_Controls.STextBox txtPhNo;
         private Shinyoh_Controls.SLabel lblPhNo;
-        private Shinyoh_Controls.STextBox sTextBox1;
         private Shinyoh_Controls.SLabel sLabel1;
     }
 }
