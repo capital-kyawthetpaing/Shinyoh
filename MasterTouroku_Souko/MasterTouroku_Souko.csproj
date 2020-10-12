@@ -89,7 +89,7 @@
       <Name>Shinyoh</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
-      <Project>{B15A285F-DDEC-443D-8BD0-762B893BB937}</Project>
+      <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
     </ProjectReference>
   </ItemGroup>

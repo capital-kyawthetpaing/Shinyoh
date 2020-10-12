@@ -8,7 +8,7 @@ using System.Drawing;
 namespace Shinyoh_Controls
 {
     public class STextBox : TextBox
-    {
+    {        
         CommonFunction cf;
         BaseBL bbl;
         public enum STextBoxType
@@ -57,14 +57,15 @@ namespace Shinyoh_Controls
         [Category("Shinyoh Properties")]
         [Description("IsRequire")]
         [DisplayName("IsRequire")]
-        private bool IsRequire { get; set; } = false;
+        public bool IsRequire { get; set; } = false;
 
         [Browsable(true)]
         [Category("Shinyoh Properties")]
         [Description("NextControlName")]
         [DisplayName("NextControlName")]
-        private string NextControlName { get; set; }
-
+        public string NextControlName { get; set; }
+        public bool MoveNext { get; set; } = true;
+        public Control NextControl { get; set; }
         //Constructor
         public STextBox()
         {
@@ -84,24 +85,24 @@ namespace Shinyoh_Controls
         //restrict key
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
-            if (SType == STextBoxType.Price)
-            {
-                e.Handled = !cf.IsPriceKey(e.KeyChar, AllowMinus);
-            }
-            else if (SType == STextBoxType.Number)
-            {  
-                e.Handled = !cf.IsNumberKey(e.KeyChar, AllowMinus);
-            }
-            else if (SType == STextBoxType.YearMonth)
-            {
-                e.Handled = !cf.IsYYYYMMKey(e.KeyChar);
-            }
-            else
-            {
-                e.Handled = false;
-            }
+            //if (SType == STextBoxType.Price)
+            //{
+            //    e.Handled = !cf.IsPriceKey(e.KeyChar, AllowMinus);
+            //}
+            //else if (SType == STextBoxType.Number)
+            //{  
+            //    e.Handled = !cf.IsNumberKey(e.KeyChar, AllowMinus);
+            //}
+            //else if (SType == STextBoxType.YearMonth)
+            //{
+            //    e.Handled = !cf.IsYYYYMMKey(e.KeyChar);
+            //}
+            //else
+            //{
+            //    e.Handled = false;
+            //}
+            base.OnKeyPress(e);
         }
-
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -117,11 +118,13 @@ namespace Shinyoh_Controls
                 }
             }
 
+            if(NextControl != null)
+                NextControl.Focus();
             base.OnKeyDown(e);
         }
         protected override void OnEnter(EventArgs e)
         {
-            this.BackColor = Color.Silver;
+            this.BackColor = Color.Cyan;
             base.OnEnter(e);
         }
         protected override void OnLeave(EventArgs e)
@@ -135,7 +138,6 @@ namespace Shinyoh_Controls
             this.SelectionStart = 0;
             this.SelectionLength = this.Text.Length;
         }
-
         protected override void InitLayout()
         {
             base.InitLayout();

@@ -166,5 +166,21 @@ namespace Shinyoh
                 button.Enabled = true;
             }
         }
+
+        private void BaseForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                if(ActiveControl is STextBox)
+                {
+                    STextBox stxt = ActiveControl as STextBox;
+                    Control[] ctlArr = this.Controls.Find(stxt.NextControlName, true);
+                    if (ctlArr.Length > 0)
+                    {
+                        stxt.NextControl = ctlArr[0];
+                    }
+                }
+            }
+        }
     }
 }
