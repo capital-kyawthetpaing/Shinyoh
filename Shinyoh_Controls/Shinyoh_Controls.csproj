@@ -46,18 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="LBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="LBox_Buff.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="LBox_Red.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="SButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -65,9 +53,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="STextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="TBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

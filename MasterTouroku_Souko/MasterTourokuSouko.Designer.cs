@@ -49,8 +49,6 @@
             this.txtSokouName = new Shinyoh_Controls.STextBox();
             this.lblSokouName = new Shinyoh_Controls.SLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.lBox_Buff2 = new Shinyoh_Controls.LBox_Buff();
-            this.lBox_Buff1 = new Shinyoh_Controls.LBox_Buff();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -390,34 +388,7 @@
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 19;
             this.label1.Text = "-";
-            // 
-            // lBox_Buff2
-            // 
-            this.lBox_Buff2.AutoSize = true;
-            this.lBox_Buff2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lBox_Buff2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lBox_Buff2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff2.Location = new System.Drawing.Point(2, 74);
-            this.lBox_Buff2.MinimumSize = new System.Drawing.Size(100, 25);
-            this.lBox_Buff2.Name = "lBox_Buff2";
-            this.lBox_Buff2.Size = new System.Drawing.Size(100, 25);
-            this.lBox_Buff2.TabIndex = 2;
-            this.lBox_Buff2.Text = "郵便番号";
-            this.lBox_Buff2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lBox_Buff1
-            // 
-            this.lBox_Buff1.AutoSize = true;
-            this.lBox_Buff1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lBox_Buff1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lBox_Buff1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            this.lBox_Buff1.Location = new System.Drawing.Point(2, 37);
-            this.lBox_Buff1.MinimumSize = new System.Drawing.Size(100, 25);
-            this.lBox_Buff1.Name = "lBox_Buff1";
-            this.lBox_Buff1.Size = new System.Drawing.Size(100, 25);
-            this.lBox_Buff1.TabIndex = 1;
-            this.lBox_Buff1.Text = "カナ名";
-            this.lBox_Buff1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
             // 
             // MasterTourokuSouko
             // 
@@ -440,8 +411,7 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private Shinyoh_Controls.LBox_Buff lBox_Buff2;
-        private Shinyoh_Controls.LBox_Buff lBox_Buff1;
+
         private System.Windows.Forms.Label label1;
         private Shinyoh_Controls.SLabel lblSokouName;
         private Shinyoh_Controls.STextBox txtYubin2;

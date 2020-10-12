@@ -75,7 +75,7 @@ namespace Shinyoh_Controls
             cf = new CommonFunction();
             bbl = new BaseBL();
 
-            base.MinimumSize = new Size(100, 25);
+            base.MinimumSize = new Size(100, 19);
         }
 
         public override bool AutoSize 
@@ -86,22 +86,22 @@ namespace Shinyoh_Controls
         //restrict key
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
-            //if (SType == STextBoxType.Price)
-            //{
-            //    e.Handled = !cf.IsPriceKey(e.KeyChar, AllowMinus);
-            //}
-            //else if (SType == STextBoxType.Number)
-            //{  
-            //    e.Handled = !cf.IsNumberKey(e.KeyChar, AllowMinus);
-            //}
-            //else if (SType == STextBoxType.YearMonth)
-            //{
-            //    e.Handled = !cf.IsYYYYMMKey(e.KeyChar);
-            //}
-            //else
-            //{
-            //    e.Handled = false;
-            //}
+            if (SType == STextBoxType.Price)
+            {
+                e.Handled = !cf.IsPriceKey(e.KeyChar, AllowMinus);
+            }
+            else if (SType == STextBoxType.Number)
+            {
+                e.Handled = !cf.IsNumberKey(e.KeyChar, AllowMinus);
+            }
+            else if (SType == STextBoxType.YearMonth)
+            {
+                e.Handled = !cf.IsYYYYMMKey(e.KeyChar);
+            }
+            else
+            {
+                e.Handled = false;
+            }
             base.OnKeyPress(e);
         }
         protected override void OnKeyDown(KeyEventArgs e)
@@ -143,7 +143,7 @@ namespace Shinyoh_Controls
         {
             base.InitLayout();
             base.AutoSize = false;
-            base.Height = 25;
+            base.Height = 19;
         }
     }
 }
