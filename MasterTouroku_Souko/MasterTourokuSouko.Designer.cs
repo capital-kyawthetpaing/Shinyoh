@@ -98,7 +98,7 @@
             this.txtSearch.NextControl = null;
             this.txtSearch.NextControlName = null;
             this.txtSearch.Size = new System.Drawing.Size(100, 19);
-            this.txtSearch.TabIndex = 40;
+            this.txtSearch.TabIndex = 9;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -129,9 +129,9 @@
             this.txtRemark.MoveNext = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.NextControl = null;
-            this.txtRemark.NextControlName = null;
+            this.txtRemark.NextControlName = "txtSearch";
             this.txtRemark.Size = new System.Drawing.Size(527, 19);
-            this.txtRemark.TabIndex = 38;
+            this.txtRemark.TabIndex = 8;
             this.txtRemark.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -162,9 +162,9 @@
             this.txtFAX.MoveNext = true;
             this.txtFAX.Name = "txtFAX";
             this.txtFAX.NextControl = null;
-            this.txtFAX.NextControlName = null;
+            this.txtFAX.NextControlName = "txtRemark";
             this.txtFAX.Size = new System.Drawing.Size(177, 19);
-            this.txtFAX.TabIndex = 36;
+            this.txtFAX.TabIndex = 7;
             this.txtFAX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtFAX.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -195,9 +195,9 @@
             this.txtPhNo.MoveNext = true;
             this.txtPhNo.Name = "txtPhNo";
             this.txtPhNo.NextControl = null;
-            this.txtPhNo.NextControlName = null;
+            this.txtPhNo.NextControlName = "txtFAX";
             this.txtPhNo.Size = new System.Drawing.Size(177, 19);
-            this.txtPhNo.TabIndex = 34;
+            this.txtPhNo.TabIndex = 6;
             this.txtPhNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPhNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -228,9 +228,9 @@
             this.txtAddress2.MoveNext = true;
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.NextControl = null;
-            this.txtAddress2.NextControlName = null;
+            this.txtAddress2.NextControlName = "txtPhNo";
             this.txtAddress2.Size = new System.Drawing.Size(527, 19);
-            this.txtAddress2.TabIndex = 32;
+            this.txtAddress2.TabIndex = 5;
             this.txtAddress2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -261,9 +261,9 @@
             this.txtAddress1.MoveNext = true;
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.NextControl = null;
-            this.txtAddress1.NextControlName = null;
+            this.txtAddress1.NextControlName = "txtAddress2";
             this.txtAddress1.Size = new System.Drawing.Size(527, 19);
-            this.txtAddress1.TabIndex = 30;
+            this.txtAddress1.TabIndex = 4;
             this.txtAddress1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -294,9 +294,9 @@
             this.txtYubin2.MoveNext = true;
             this.txtYubin2.Name = "txtYubin2";
             this.txtYubin2.NextControl = null;
-            this.txtYubin2.NextControlName = null;
+            this.txtYubin2.NextControlName = "txtAddress1";
             this.txtYubin2.Size = new System.Drawing.Size(100, 19);
-            this.txtYubin2.TabIndex = 28;
+            this.txtYubin2.TabIndex = 3;
             this.txtYubin2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -313,9 +313,9 @@
             this.txtYubin1.MoveNext = true;
             this.txtYubin1.Name = "txtYubin1";
             this.txtYubin1.NextControl = null;
-            this.txtYubin1.NextControlName = null;
+            this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.Size = new System.Drawing.Size(100, 19);
-            this.txtYubin1.TabIndex = 27;
+            this.txtYubin1.TabIndex = 2;
             this.txtYubin1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -346,9 +346,9 @@
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
             this.txtKanaName.NextControl = null;
-            this.txtKanaName.NextControlName = null;
+            this.txtKanaName.NextControlName = "txtYubin1";
             this.txtKanaName.Size = new System.Drawing.Size(357, 19);
-            this.txtKanaName.TabIndex = 25;
+            this.txtKanaName.TabIndex = 1;
             this.txtKanaName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -381,7 +381,7 @@
             this.txtSokouName.NextControl = null;
             this.txtSokouName.NextControlName = "txtKanaName";
             this.txtSokouName.Size = new System.Drawing.Size(357, 19);
-            this.txtSokouName.TabIndex = 23;
+            this.txtSokouName.TabIndex = 0;
             this.txtSokouName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSokouName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
