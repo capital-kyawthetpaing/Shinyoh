@@ -171,7 +171,7 @@
             this.BtnF4.Size = new System.Drawing.Size(124, 42);
             this.BtnF4.TabIndex = 3;
             this.BtnF4.Tag = "4";
-            this.BtnF4.Text = "削除(F4)";
+            this.BtnF4.Text = "(F4)";
             this.BtnF4.UseVisualStyleBackColor = false;
             this.BtnF4.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -187,7 +187,7 @@
             this.BtnF5.Size = new System.Drawing.Size(124, 42);
             this.BtnF5.TabIndex = 7;
             this.BtnF5.Tag = "5";
-            this.BtnF5.Text = "照会(F5)";
+            this.BtnF5.Text = "(F5)";
             this.BtnF5.UseVisualStyleBackColor = false;
             this.BtnF5.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -203,7 +203,7 @@
             this.BtnF6.Size = new System.Drawing.Size(137, 42);
             this.BtnF6.TabIndex = 8;
             this.BtnF6.Tag = "6";
-            this.BtnF6.Text = "キャンセル(F6)";
+            this.BtnF6.Text = "(F6)";
             this.BtnF6.UseVisualStyleBackColor = false;
             this.BtnF6.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -219,7 +219,7 @@
             this.BtnF3.Size = new System.Drawing.Size(124, 42);
             this.BtnF3.TabIndex = 17;
             this.BtnF3.Tag = "3";
-            this.BtnF3.Text = "変更(F3)";
+            this.BtnF3.Text = "(F3)";
             this.BtnF3.UseVisualStyleBackColor = false;
             this.BtnF3.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -235,7 +235,7 @@
             this.BtnF2.Size = new System.Drawing.Size(124, 42);
             this.BtnF2.TabIndex = 16;
             this.BtnF2.Tag = "2";
-            this.BtnF2.Text = "新規(F2)";
+            this.BtnF2.Text = "(F2)";
             this.BtnF2.UseVisualStyleBackColor = false;
             this.BtnF2.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -251,6 +251,7 @@
             this.BtnF7.Size = new System.Drawing.Size(124, 42);
             this.BtnF7.TabIndex = 9;
             this.BtnF7.Tag = "7";
+            this.BtnF7.Text = "(F7)";
             this.BtnF7.UseVisualStyleBackColor = false;
             this.BtnF7.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -266,7 +267,7 @@
             this.BtnF1.Size = new System.Drawing.Size(124, 42);
             this.BtnF1.TabIndex = 15;
             this.BtnF1.Tag = "1";
-            this.BtnF1.Text = "終了(F1)";
+            this.BtnF1.Text = "(F1)";
             this.BtnF1.UseVisualStyleBackColor = false;
             this.BtnF1.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -282,6 +283,7 @@
             this.BtnF8.Size = new System.Drawing.Size(124, 42);
             this.BtnF8.TabIndex = 10;
             this.BtnF8.Tag = "8";
+            this.BtnF8.Text = "(F8)";
             this.BtnF8.UseVisualStyleBackColor = false;
             this.BtnF8.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -297,7 +299,7 @@
             this.BtnF12.Size = new System.Drawing.Size(134, 42);
             this.BtnF12.TabIndex = 14;
             this.BtnF12.Tag = "12";
-            this.BtnF12.Text = "登録(F12)";
+            this.BtnF12.Text = "(F12)";
             this.BtnF12.UseVisualStyleBackColor = false;
             this.BtnF12.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -313,7 +315,7 @@
             this.BtnF9.Size = new System.Drawing.Size(124, 42);
             this.BtnF9.TabIndex = 11;
             this.BtnF9.Tag = "9";
-            this.BtnF9.Text = "検索(F9)";
+            this.BtnF9.Text = "(F9)";
             this.BtnF9.UseVisualStyleBackColor = false;
             this.BtnF9.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -329,6 +331,7 @@
             this.BtnF10.Size = new System.Drawing.Size(124, 42);
             this.BtnF10.TabIndex = 12;
             this.BtnF10.Tag = "10";
+            this.BtnF10.Text = "(F10)";
             this.BtnF10.UseVisualStyleBackColor = false;
             this.BtnF10.Click += new System.EventHandler(this.btnFunctionClick);
             // 
@@ -344,6 +347,7 @@
             this.BtnF11.Size = new System.Drawing.Size(124, 42);
             this.BtnF11.TabIndex = 13;
             this.BtnF11.Tag = "11";
+            this.BtnF11.Text = "(F11)";
             this.BtnF11.UseVisualStyleBackColor = false;
             this.BtnF11.Click += new System.EventHandler(this.btnFunctionClick);
             // 
