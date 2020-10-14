@@ -54,6 +54,7 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.sTextBox2 = new Shinyoh_Controls.STextBox();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
+            this.sCombo1 = new Shinyoh_Controls.SCombo();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +76,7 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.sCombo1);
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.lblSearch);
             this.panel2.Controls.Add(this.txtRemark);
@@ -508,6 +510,15 @@
             this.sLabel4.Text = "倉庫名";
             this.sLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // sCombo1
+            // 
+            this.sCombo1.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.sCombo1.FormattingEnabled = true;
+            this.sCombo1.Location = new System.Drawing.Point(867, 129);
+            this.sCombo1.Name = "sCombo1";
+            this.sCombo1.Size = new System.Drawing.Size(121, 21);
+            this.sCombo1.TabIndex = 40;
+            // 
             // MasterTourokuSouko
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -557,6 +568,7 @@
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.STextBox sTextBox1;
         private Shinyoh_Controls.SLabel sLabel3;
+        private Shinyoh_Controls.SCombo sCombo1;
     }
 }
 

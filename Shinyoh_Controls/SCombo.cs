@@ -7,7 +7,7 @@ namespace Shinyoh_Controls
     public class SCombo : ComboBox
     {
         [Browsable(true)]
-        [Category("CKM Properties")]
+        [Category("Shinyoh Properties")]
         [Description("tableName")]
         [DisplayName("Type")]
         public CType ComboType { get; set; }
@@ -16,7 +16,7 @@ namespace Shinyoh_Controls
             Mode1
         }
 
-        public void BindCombo()
+        public void Bind()
         {
             DataTable dtCombo;
             switch (ComboType)
