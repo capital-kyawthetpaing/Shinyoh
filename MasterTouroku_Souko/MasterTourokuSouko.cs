@@ -41,6 +41,7 @@ namespace MasterTouroku_Souko
         {
             ProgramID = "MasterTourokuSouko";
             StartProgram();
+         //   sCombo1.Bind();
               SetButton(ButtonType.Insert,F1, "F1(新規)");
               SetButton(ButtonType.Update, F2,"F2(変更)");
               SetButton(ButtonType.Delete, F3, "F3(削除)");

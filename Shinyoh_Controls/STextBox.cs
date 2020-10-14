@@ -69,7 +69,6 @@ namespace Shinyoh_Controls
         //Constructor
         public STextBox()
         {
-            this.TextAlign = HorizontalAlignment.Center;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             cf = new CommonFunction();
