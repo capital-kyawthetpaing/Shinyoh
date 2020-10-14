@@ -54,12 +54,14 @@
             this.lblCopySouko = new Shinyoh_Controls.SLabel();
             this.txtSouko = new Shinyoh_Controls.STextBox();
             this.txtCopySouko = new Shinyoh_Controls.STextBox();
+            this.cboName = new Shinyoh_Controls.SCombo();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cboName);
             this.panel1.Controls.Add(this.txtCopySouko);
             this.panel1.Controls.Add(this.txtSouko);
             this.panel1.Controls.Add(this.lblCopySouko);
@@ -69,6 +71,7 @@
             this.panel1.Controls.SetChildIndex(this.lblCopySouko, 0);
             this.panel1.Controls.SetChildIndex(this.txtSouko, 0);
             this.panel1.Controls.SetChildIndex(this.txtCopySouko, 0);
+            this.panel1.Controls.SetChildIndex(this.cboName, 0);
             // 
             // panel2
             // 
@@ -486,6 +489,16 @@
             this.txtCopySouko.TabIndex = 1;
             this.txtCopySouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
+            // cboName
+            // 
+            this.cboName.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.cboName.FormattingEnabled = true;
+            this.cboName.Location = new System.Drawing.Point(43, 7);
+            this.cboName.Name = "cboName";
+            this.cboName.Size = new System.Drawing.Size(90, 21);
+            this.cboName.TabIndex = 27;
+            this.cboName.SelectedIndexChanged += new System.EventHandler(this.cboName_SelectedIndexChanged);
+            // 
             // MasterTourokuSouko
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -535,6 +548,7 @@
         private Shinyoh_Controls.SLabel lblSouko;
         private Shinyoh_Controls.STextBox txtSouko;
         private Shinyoh_Controls.STextBox txtCopySouko;
+        private Shinyoh_Controls.SCombo cboName;
     }
 }
 
