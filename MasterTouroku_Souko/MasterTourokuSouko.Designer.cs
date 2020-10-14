@@ -425,7 +425,6 @@
             // lblSouko
             // 
             this.lblSouko.BackColor = System.Drawing.Color.Red;
-            this.lblSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSouko.ForeColor = System.Drawing.Color.White;
@@ -440,7 +439,6 @@
             // lblCopySouko
             // 
             this.lblCopySouko.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lblCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCopySouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblCopySouko.ForeColor = System.Drawing.Color.Black;
