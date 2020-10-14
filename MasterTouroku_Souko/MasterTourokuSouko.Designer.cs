@@ -50,8 +50,25 @@
             this.lblSokouName = new Shinyoh_Controls.SLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
+            this.sTextBox1 = new Shinyoh_Controls.STextBox();
+            this.sLabel3 = new Shinyoh_Controls.SLabel();
+            this.sTextBox2 = new Shinyoh_Controls.STextBox();
+            this.sLabel4 = new Shinyoh_Controls.SLabel();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.sTextBox2);
+            this.panel1.Controls.Add(this.sLabel4);
+            this.panel1.Controls.Add(this.sTextBox1);
+            this.panel1.Controls.Add(this.sLabel3);
+            this.panel1.Size = new System.Drawing.Size(1485, 75);
+            this.panel1.Controls.SetChildIndex(this.sLabel3, 0);
+            this.panel1.Controls.SetChildIndex(this.sTextBox1, 0);
+            this.panel1.Controls.SetChildIndex(this.sLabel4, 0);
+            this.panel1.Controls.SetChildIndex(this.sTextBox2, 0);
             // 
             // panel2
             // 
@@ -423,6 +440,74 @@
             this.sLabel1.Text = "倉庫名";
             this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // sTextBox1
+            // 
+            this.sTextBox1.AllowMinus = false;
+            this.sTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sTextBox1.DecimalPlace = 0;
+            this.sTextBox1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sTextBox1.IntegerPart = 0;
+            this.sTextBox1.IsRequire = false;
+            this.sTextBox1.Location = new System.Drawing.Point(245, 12);
+            this.sTextBox1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sTextBox1.MoveNext = true;
+            this.sTextBox1.Name = "sTextBox1";
+            this.sTextBox1.NextControl = null;
+            this.sTextBox1.NextControlName = "txtKanaName";
+            this.sTextBox1.Size = new System.Drawing.Size(357, 19);
+            this.sTextBox1.TabIndex = 23;
+            this.sTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sTextBox1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
+            // sLabel3
+            // 
+            this.sLabel3.BackColor = System.Drawing.Color.Red;
+            this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel3.ForeColor = System.Drawing.Color.White;
+            this.sLabel3.Location = new System.Drawing.Point(145, 12);
+            this.sLabel3.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sLabel3.Name = "sLabel3";
+            this.sLabel3.Size = new System.Drawing.Size(100, 19);
+            this.sLabel3.TabIndex = 24;
+            this.sLabel3.Text = "倉庫名";
+            this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sTextBox2
+            // 
+            this.sTextBox2.AllowMinus = false;
+            this.sTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sTextBox2.DecimalPlace = 0;
+            this.sTextBox2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sTextBox2.IntegerPart = 0;
+            this.sTextBox2.IsRequire = false;
+            this.sTextBox2.Location = new System.Drawing.Point(245, 37);
+            this.sTextBox2.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sTextBox2.MoveNext = true;
+            this.sTextBox2.Name = "sTextBox2";
+            this.sTextBox2.NextControl = null;
+            this.sTextBox2.NextControlName = "txtKanaName";
+            this.sTextBox2.Size = new System.Drawing.Size(357, 19);
+            this.sTextBox2.TabIndex = 25;
+            this.sTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sTextBox2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
+            // sLabel4
+            // 
+            this.sLabel4.BackColor = System.Drawing.Color.Red;
+            this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel4.ForeColor = System.Drawing.Color.White;
+            this.sLabel4.Location = new System.Drawing.Point(145, 37);
+            this.sLabel4.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sLabel4.Name = "sLabel4";
+            this.sLabel4.Size = new System.Drawing.Size(100, 19);
+            this.sLabel4.TabIndex = 26;
+            this.sLabel4.Text = "倉庫名";
+            this.sLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MasterTourokuSouko
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,7 +518,9 @@
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MasterTourokuSouko";
             this.Load += new System.EventHandler(this.MasterTourokuSouko_Load);
+            this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
+            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -466,6 +553,10 @@
         private Shinyoh_Controls.STextBox txtPhNo;
         private Shinyoh_Controls.SLabel lblPhNo;
         private Shinyoh_Controls.SLabel sLabel1;
+        private Shinyoh_Controls.STextBox sTextBox2;
+        private Shinyoh_Controls.SLabel sLabel4;
+        private Shinyoh_Controls.STextBox sTextBox1;
+        private Shinyoh_Controls.SLabel sLabel3;
     }
 }
 
