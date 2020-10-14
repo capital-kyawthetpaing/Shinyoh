@@ -50,32 +50,33 @@
             this.lblSokouName = new Shinyoh_Controls.SLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
-            this.lblSouko = new Shinyoh_Controls.SLabel();
-            this.lblCopySouko = new Shinyoh_Controls.SLabel();
-            this.txtSouko = new Shinyoh_Controls.STextBox();
-            this.txtCopySouko = new Shinyoh_Controls.STextBox();
+            this.sTextBox1 = new Shinyoh_Controls.STextBox();
+            this.sLabel3 = new Shinyoh_Controls.SLabel();
+            this.sTextBox2 = new Shinyoh_Controls.STextBox();
+            this.sLabel4 = new Shinyoh_Controls.SLabel();
+            this.sCombo1 = new Shinyoh_Controls.SCombo();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtCopySouko);
-            this.panel1.Controls.Add(this.txtSouko);
-            this.panel1.Controls.Add(this.lblCopySouko);
-            this.panel1.Controls.Add(this.lblSouko);
+            this.panel1.Controls.Add(this.sTextBox2);
+            this.panel1.Controls.Add(this.sLabel4);
+            this.panel1.Controls.Add(this.sTextBox1);
+            this.panel1.Controls.Add(this.sLabel3);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
-            this.panel1.Controls.SetChildIndex(this.lblSouko, 0);
-            this.panel1.Controls.SetChildIndex(this.lblCopySouko, 0);
-            this.panel1.Controls.SetChildIndex(this.txtSouko, 0);
-            this.panel1.Controls.SetChildIndex(this.txtCopySouko, 0);
+            this.panel1.Controls.SetChildIndex(this.sLabel3, 0);
+            this.panel1.Controls.SetChildIndex(this.sTextBox1, 0);
+            this.panel1.Controls.SetChildIndex(this.sLabel4, 0);
+            this.panel1.Controls.SetChildIndex(this.sTextBox2, 0);
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.panel2.Controls.Add(this.sCombo1);
             this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.lblSearch);
             this.panel2.Controls.Add(this.txtRemark);
@@ -116,13 +117,14 @@
             this.txtSearch.NextControl = null;
             this.txtSearch.NextControlName = null;
             this.txtSearch.Size = new System.Drawing.Size(100, 19);
-            this.txtSearch.TabIndex = 11;
-            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSearch.TabIndex = 9;
+            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblSearch
             // 
             this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSearch.Location = new System.Drawing.Point(42, 324);
@@ -148,12 +150,14 @@
             this.txtRemark.NextControl = null;
             this.txtRemark.NextControlName = "txtSearch";
             this.txtRemark.Size = new System.Drawing.Size(527, 19);
-            this.txtRemark.TabIndex = 10;
+            this.txtRemark.TabIndex = 8;
+            this.txtRemark.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblRemark
             // 
             this.lblRemark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRemark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRemark.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblRemark.Location = new System.Drawing.Point(42, 287);
@@ -179,12 +183,14 @@
             this.txtFAX.NextControl = null;
             this.txtFAX.NextControlName = "txtRemark";
             this.txtFAX.Size = new System.Drawing.Size(177, 19);
-            this.txtFAX.TabIndex = 9;
+            this.txtFAX.TabIndex = 7;
+            this.txtFAX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtFAX.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblFAX
             // 
             this.lblFAX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblFAX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblFAX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblFAX.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblFAX.Location = new System.Drawing.Point(41, 248);
@@ -210,12 +216,14 @@
             this.txtPhNo.NextControl = null;
             this.txtPhNo.NextControlName = "txtFAX";
             this.txtPhNo.Size = new System.Drawing.Size(177, 19);
-            this.txtPhNo.TabIndex = 8;
+            this.txtPhNo.TabIndex = 6;
+            this.txtPhNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPhNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblPhNo
             // 
             this.lblPhNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblPhNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPhNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPhNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblPhNo.Location = new System.Drawing.Point(41, 209);
@@ -241,12 +249,14 @@
             this.txtAddress2.NextControl = null;
             this.txtAddress2.NextControlName = "txtPhNo";
             this.txtAddress2.Size = new System.Drawing.Size(527, 19);
-            this.txtAddress2.TabIndex = 7;
+            this.txtAddress2.TabIndex = 5;
+            this.txtAddress2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress2
             // 
             this.lblAddress2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAddress2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAddress2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblAddress2.Location = new System.Drawing.Point(41, 170);
@@ -272,12 +282,14 @@
             this.txtAddress1.NextControl = null;
             this.txtAddress1.NextControlName = "txtAddress2";
             this.txtAddress1.Size = new System.Drawing.Size(527, 19);
-            this.txtAddress1.TabIndex = 6;
+            this.txtAddress1.TabIndex = 4;
+            this.txtAddress1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress1
             // 
             this.lblAddress1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAddress1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAddress1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblAddress1.Location = new System.Drawing.Point(41, 129);
@@ -303,7 +315,8 @@
             this.txtYubin2.NextControl = null;
             this.txtYubin2.NextControlName = "txtAddress1";
             this.txtYubin2.Size = new System.Drawing.Size(100, 19);
-            this.txtYubin2.TabIndex = 5;
+            this.txtYubin2.TabIndex = 3;
+            this.txtYubin2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtYubin1
@@ -321,12 +334,14 @@
             this.txtYubin1.NextControl = null;
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.Size = new System.Drawing.Size(100, 19);
-            this.txtYubin1.TabIndex = 4;
+            this.txtYubin1.TabIndex = 2;
+            this.txtYubin1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblYubinNo
             // 
             this.lblYubinNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblYubinNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblYubinNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblYubinNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblYubinNo.Location = new System.Drawing.Point(41, 91);
@@ -352,12 +367,14 @@
             this.txtKanaName.NextControl = null;
             this.txtKanaName.NextControlName = "txtYubin1";
             this.txtKanaName.Size = new System.Drawing.Size(357, 19);
-            this.txtKanaName.TabIndex = 3;
+            this.txtKanaName.TabIndex = 1;
+            this.txtKanaName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblKanaName
             // 
             this.lblKanaName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblKanaName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblKanaName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblKanaName.Location = new System.Drawing.Point(41, 54);
@@ -383,12 +400,14 @@
             this.txtSokouName.NextControl = null;
             this.txtSokouName.NextControlName = "txtKanaName";
             this.txtSokouName.Size = new System.Drawing.Size(357, 19);
-            this.txtSokouName.TabIndex = 2;
+            this.txtSokouName.TabIndex = 0;
+            this.txtSokouName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSokouName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblSokouName
             // 
             this.lblSokouName.BackColor = System.Drawing.Color.Red;
+            this.lblSokouName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSokouName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSokouName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSokouName.ForeColor = System.Drawing.Color.White;
@@ -423,69 +442,82 @@
             this.sLabel1.Text = "倉庫名";
             this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblSouko
+            // sTextBox1
             // 
-            this.lblSouko.BackColor = System.Drawing.Color.Red;
-            this.lblSouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSouko.ForeColor = System.Drawing.Color.White;
-            this.lblSouko.Location = new System.Drawing.Point(141, 9);
-            this.lblSouko.MinimumSize = new System.Drawing.Size(100, 19);
-            this.lblSouko.Name = "lblSouko";
-            this.lblSouko.Size = new System.Drawing.Size(100, 19);
-            this.lblSouko.TabIndex = 24;
-            this.lblSouko.Text = "倉庫";
-            this.lblSouko.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sTextBox1.AllowMinus = false;
+            this.sTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sTextBox1.DecimalPlace = 0;
+            this.sTextBox1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sTextBox1.IntegerPart = 0;
+            this.sTextBox1.IsRequire = false;
+            this.sTextBox1.Location = new System.Drawing.Point(245, 12);
+            this.sTextBox1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sTextBox1.MoveNext = true;
+            this.sTextBox1.Name = "sTextBox1";
+            this.sTextBox1.NextControl = null;
+            this.sTextBox1.NextControlName = "txtKanaName";
+            this.sTextBox1.Size = new System.Drawing.Size(357, 19);
+            this.sTextBox1.TabIndex = 23;
+            this.sTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sTextBox1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // lblCopySouko
+            // sLabel3
             // 
-            this.lblCopySouko.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lblCopySouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCopySouko.ForeColor = System.Drawing.Color.Black;
-            this.lblCopySouko.Location = new System.Drawing.Point(141, 39);
-            this.lblCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
-            this.lblCopySouko.Name = "lblCopySouko";
-            this.lblCopySouko.Size = new System.Drawing.Size(100, 19);
-            this.lblCopySouko.TabIndex = 26;
-            this.lblCopySouko.Text = "複写元倉庫";
-            this.lblCopySouko.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sLabel3.BackColor = System.Drawing.Color.Red;
+            this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel3.ForeColor = System.Drawing.Color.White;
+            this.sLabel3.Location = new System.Drawing.Point(145, 12);
+            this.sLabel3.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sLabel3.Name = "sLabel3";
+            this.sLabel3.Size = new System.Drawing.Size(100, 19);
+            this.sLabel3.TabIndex = 24;
+            this.sLabel3.Text = "倉庫名";
+            this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtSouko
+            // sTextBox2
             // 
-            this.txtSouko.AllowMinus = false;
-            this.txtSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSouko.DecimalPlace = 0;
-            this.txtSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.txtSouko.IntegerPart = 0;
-            this.txtSouko.IsRequire = false;
-            this.txtSouko.Location = new System.Drawing.Point(239, 9);
-            this.txtSouko.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtSouko.MoveNext = true;
-            this.txtSouko.Name = "txtSouko";
-            this.txtSouko.NextControl = null;
-            this.txtSouko.NextControlName = "txtCopySouko";
-            this.txtSouko.Size = new System.Drawing.Size(100, 19);
-            this.txtSouko.TabIndex = 0;
-            this.txtSouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sTextBox2.AllowMinus = false;
+            this.sTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sTextBox2.DecimalPlace = 0;
+            this.sTextBox2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sTextBox2.IntegerPart = 0;
+            this.sTextBox2.IsRequire = false;
+            this.sTextBox2.Location = new System.Drawing.Point(245, 37);
+            this.sTextBox2.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sTextBox2.MoveNext = true;
+            this.sTextBox2.Name = "sTextBox2";
+            this.sTextBox2.NextControl = null;
+            this.sTextBox2.NextControlName = "txtKanaName";
+            this.sTextBox2.Size = new System.Drawing.Size(357, 19);
+            this.sTextBox2.TabIndex = 25;
+            this.sTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.sTextBox2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtCopySouko
+            // sLabel4
             // 
-            this.txtCopySouko.AllowMinus = false;
-            this.txtCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopySouko.DecimalPlace = 0;
-            this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.txtCopySouko.IntegerPart = 0;
-            this.txtCopySouko.IsRequire = false;
-            this.txtCopySouko.Location = new System.Drawing.Point(239, 39);
-            this.txtCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtCopySouko.MoveNext = true;
-            this.txtCopySouko.Name = "txtCopySouko";
-            this.txtCopySouko.NextControl = null;
-            this.txtCopySouko.NextControlName = "txtSokouName";
-            this.txtCopySouko.Size = new System.Drawing.Size(100, 19);
-            this.txtCopySouko.TabIndex = 1;
-            this.txtCopySouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sLabel4.BackColor = System.Drawing.Color.Red;
+            this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel4.ForeColor = System.Drawing.Color.White;
+            this.sLabel4.Location = new System.Drawing.Point(145, 37);
+            this.sLabel4.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sLabel4.Name = "sLabel4";
+            this.sLabel4.Size = new System.Drawing.Size(100, 19);
+            this.sLabel4.TabIndex = 26;
+            this.sLabel4.Text = "倉庫名";
+            this.sLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sCombo1
+            // 
+            this.sCombo1.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.sCombo1.FormattingEnabled = true;
+            this.sCombo1.Location = new System.Drawing.Point(867, 129);
+            this.sCombo1.Name = "sCombo1";
+            this.sCombo1.Size = new System.Drawing.Size(121, 21);
+            this.sCombo1.TabIndex = 40;
             // 
             // MasterTourokuSouko
             // 
@@ -496,7 +528,6 @@
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MasterTourokuSouko";
-            this.Text = "倉庫マスタ";
             this.Load += new System.EventHandler(this.MasterTourokuSouko_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
@@ -533,10 +564,11 @@
         private Shinyoh_Controls.STextBox txtPhNo;
         private Shinyoh_Controls.SLabel lblPhNo;
         private Shinyoh_Controls.SLabel sLabel1;
-        private Shinyoh_Controls.SLabel lblCopySouko;
-        private Shinyoh_Controls.SLabel lblSouko;
-        private Shinyoh_Controls.STextBox txtCopySouko;
-        private Shinyoh_Controls.STextBox txtSouko;
+        private Shinyoh_Controls.STextBox sTextBox2;
+        private Shinyoh_Controls.SLabel sLabel4;
+        private Shinyoh_Controls.STextBox sTextBox1;
+        private Shinyoh_Controls.SLabel sLabel3;
+        private Shinyoh_Controls.SCombo sCombo1;
     }
 }
 
