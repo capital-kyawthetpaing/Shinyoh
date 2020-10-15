@@ -46,7 +46,8 @@ namespace Shinyoh
             Delete,
             Inquiry,
             Print,
-            Run
+            Run,
+            Close
         }
 
         public BaseForm()
@@ -149,6 +150,9 @@ namespace Shinyoh
                     break;
                 case ButtonType.Print:
                     CheckButton(programEntity.Printable, buttonText, button);
+                    break;
+                case ButtonType.Close:buttonText = "aaaa";
+                  //  if (button == F1) { buttonText = "aaa"; };
                     break;
             }
         }

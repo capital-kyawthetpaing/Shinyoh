@@ -42,7 +42,7 @@ namespace MasterTouroku_Souko
             ProgramID = "MasterTourokuSouko";
             StartProgram();
             cboName.Bind();
-              SetButton(ButtonType.Insert,F1, "F1(新規)");
+            //  SetButton(ButtonType.Insert,F1, "F1(新規)");
               SetButton(ButtonType.Update, F2,"F2(変更)");
               SetButton(ButtonType.Delete, F3, "F3(削除)");
               SetButton(ButtonType.Inquiry, F4, "F4(照会)");
@@ -52,16 +52,15 @@ namespace MasterTouroku_Souko
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = cboName.SelectedIndex.ToString();
-            if (item == "1")
+            if (item == "1" || item == "0")
             {
                 txtSouko.Enabled = true;
                 txtCopySouko.Enabled = true;
             }
             else
             {
-                txtSouko.Enabled = true;
                 txtCopySouko.Enabled = false;
-
+                txtSouko.Enabled = true;
             }
         }
     }
