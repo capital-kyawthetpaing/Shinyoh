@@ -136,6 +136,9 @@ namespace Shinyoh
         {
             switch(buttonType)
             {
+                case ButtonType.Close:
+                    button.Text = buttonText;
+                    break;
                 case ButtonType.Insert:
                     CheckButton(programEntity.Insertable, buttonText, button);
                     break;
@@ -150,9 +153,6 @@ namespace Shinyoh
                     break;
                 case ButtonType.Print:
                     CheckButton(programEntity.Printable, buttonText, button);
-                    break;
-                case ButtonType.Close:buttonText = "aaaa";
-                  //  if (button == F1) { buttonText = "aaa"; };
                     break;
             }
         }
