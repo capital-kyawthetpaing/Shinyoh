@@ -125,6 +125,7 @@
             // lblSearch
             // 
             this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSearch.Location = new System.Drawing.Point(42, 324);
@@ -156,6 +157,7 @@
             // lblRemark
             // 
             this.lblRemark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRemark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRemark.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblRemark.Location = new System.Drawing.Point(42, 287);
@@ -187,6 +189,7 @@
             // lblFAX
             // 
             this.lblFAX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblFAX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblFAX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblFAX.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblFAX.Location = new System.Drawing.Point(41, 248);
@@ -218,6 +221,7 @@
             // lblPhNo
             // 
             this.lblPhNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblPhNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPhNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPhNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblPhNo.Location = new System.Drawing.Point(41, 209);
@@ -249,6 +253,7 @@
             // lblAddress2
             // 
             this.lblAddress2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAddress2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAddress2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblAddress2.Location = new System.Drawing.Point(41, 170);
@@ -280,6 +285,7 @@
             // lblAddress1
             // 
             this.lblAddress1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAddress1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAddress1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblAddress1.Location = new System.Drawing.Point(41, 129);
@@ -329,6 +335,7 @@
             // lblYubinNo
             // 
             this.lblYubinNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblYubinNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblYubinNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblYubinNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblYubinNo.Location = new System.Drawing.Point(41, 91);
@@ -360,6 +367,7 @@
             // lblKanaName
             // 
             this.lblKanaName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblKanaName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblKanaName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblKanaName.Location = new System.Drawing.Point(41, 54);
@@ -391,6 +399,7 @@
             // lblSokouName
             // 
             this.lblSokouName.BackColor = System.Drawing.Color.Red;
+            this.lblSokouName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSokouName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSokouName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSokouName.ForeColor = System.Drawing.Color.White;
@@ -428,6 +437,7 @@
             // lblSouko
             // 
             this.lblSouko.BackColor = System.Drawing.Color.Red;
+            this.lblSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSouko.ForeColor = System.Drawing.Color.White;
@@ -442,6 +452,7 @@
             // lblCopySouko
             // 
             this.lblCopySouko.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCopySouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblCopySouko.ForeColor = System.Drawing.Color.Black;
@@ -498,6 +509,7 @@
             this.cboName.Size = new System.Drawing.Size(90, 21);
             this.cboName.TabIndex = 27;
             this.cboName.SelectedIndexChanged += new System.EventHandler(this.cboName_SelectedIndexChanged);
+            this.cboName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboName_KeyDown);
             // 
             // MasterTourokuSouko
             // 
