@@ -57,11 +57,7 @@ namespace MasterTouroku_Souko
         {
             if (e.KeyCode == Keys.F9)
             {
-                cboName.Focus();
-                if (cboName.SelectedIndex > 0)
-                {
-                    cboName.DroppedDown = true;
-                }
+                cboName.DroppedDown = true;
             }
         }
     }
