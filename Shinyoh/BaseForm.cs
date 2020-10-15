@@ -124,10 +124,10 @@ namespace Shinyoh
         private void btnFunctionClick(object sender,EventArgs e)
         {
             Button btn = (Button)sender;
-            FunctionProcess((int)btn.Tag);
+            FunctionProcess(btn.Tag.ToString());
         }
 
-        public virtual void FunctionProcess(int Index)
+        public virtual void FunctionProcess(string tagID)
         {
         }
 
