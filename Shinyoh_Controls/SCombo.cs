@@ -48,5 +48,14 @@ namespace Shinyoh_Controls
             DisplayMember = value;
             ValueMember = key;
         }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F9)
+            {
+                this.DroppedDown = true;
+            }
+            base.OnKeyDown(e);
+        }
     }
 }

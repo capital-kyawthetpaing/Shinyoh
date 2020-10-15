@@ -509,7 +509,6 @@
             this.cboName.Size = new System.Drawing.Size(90, 21);
             this.cboName.TabIndex = 27;
             this.cboName.SelectedIndexChanged += new System.EventHandler(this.cboName_SelectedIndexChanged);
-            this.cboName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cboName_KeyDown);
             // 
             // MasterTourokuSouko
             // 

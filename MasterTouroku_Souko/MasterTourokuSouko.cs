@@ -53,12 +53,5 @@ namespace MasterTouroku_Souko
                 txtSouko.Enabled = true;
             }
         }
-        private void cboName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F9)
-            {
-                cboName.DroppedDown = true;
-            }
-        }
     }
 }
