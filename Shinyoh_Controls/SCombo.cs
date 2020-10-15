@@ -16,7 +16,7 @@ namespace Shinyoh_Controls
             Mode1
         }
 
-        public void Bind()
+        public void Bind(bool UseBlankRow)
         {
             DataTable dtCombo;
             switch (ComboType)
@@ -30,16 +30,20 @@ namespace Shinyoh_Controls
                     dtCombo.Rows.Add("3", "削除");
                     dtCombo.Rows.Add("4", "照会");
 
-                    BindCombo("ID", "Mode",dtCombo);
+                    BindCombo("ID", "Mode",dtCombo,UseBlankRow);
                     break;
             }
         }
 
-        private void BindCombo(string key, string value, DataTable dt)
+        private void BindCombo(string key, string value, DataTable dt,bool UseBlankRow)
         {
-            DataRow dr = dt.NewRow();
-            dr[key] = "-1";
-            dt.Rows.InsertAt(dr, 0);
+            if(UseBlankRow)
+            {
+                DataRow dr = dt.NewRow();
+                dr[key] = "-1";
+                dt.Rows.InsertAt(dr, 0);
+            }
+
             DataSource = dt;
             DisplayMember = value;
             ValueMember = key;
