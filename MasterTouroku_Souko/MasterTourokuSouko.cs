@@ -42,11 +42,20 @@ namespace MasterTouroku_Souko
             ProgramID = "MasterTourokuSouko";
             StartProgram();
             cboName.Bind();
-            SetButton(ButtonType.Insert,F1, "F1(新規)");
-            SetButton(ButtonType.Update, F2,"F2(変更)");
-            SetButton(ButtonType.Delete, F3, "F3(削除)");
-            SetButton(ButtonType.Inquiry, F4, "F4(照会)");
-            SetButton(ButtonType.Print, F5, "F5(印刷)");
+            SetButton(ButtonType.Close,F1, "F1(終了)");
+            SetButton(ButtonType.Save, F2, "F2(新規)");
+            SetButton(ButtonType.Update, F3,"F3(変更)");
+            SetButton(ButtonType.Delete, F4, "F4(削除)");
+            SetButton(ButtonType.Inquiry, F5, "F5(照会)");
+            SetButton(ButtonType.Cancel, F6, "F6(ｷｬﾝｾﾙ)");
+            SetButton(ButtonType.Search, F9, "F9(検索)");
+            SetButton(ButtonType.Insert, F12, "F12(登録)");
+            SetButton(ButtonType.Empty1, F7, "");
+            SetButton(ButtonType.Empty2, F8, "");
+            SetButton(ButtonType.Empty3, F10, "");
+            SetButton(ButtonType.Empty4, F11, "");
+
+
         }
 
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
