@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Shinyoh;
 using Entity;
+using Shinyoh_Controls;
 
 namespace MasterTouroku_Souko
 {
@@ -19,25 +20,6 @@ namespace MasterTouroku_Souko
         {
             InitializeComponent();
         }
-
-        private void txtSearch_Enter(object sender, EventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            if (tb != null)
-            {
-                tb.BackColor = Color.Silver;
-            }
-        }
-
-        private void txtSearch_Leave(object sender, EventArgs e)
-        {
-            TextBox tb = sender as TextBox;
-            if (tb != null)
-            {
-                tb.BackColor = Color.White;
-            }
-        }
-
         private void MasterTourokuSouko_Load(object sender, EventArgs e)
         {
             ProgramID = "MasterTourokuSouko";
@@ -76,7 +58,10 @@ namespace MasterTouroku_Souko
             if (e.KeyCode == Keys.F9)
             {
                 cboName.Focus();
-               
+                if (cboName.SelectedIndex > 0)
+                {
+                    cboName.DroppedDown = true;
+                }
             }
         }
     }
