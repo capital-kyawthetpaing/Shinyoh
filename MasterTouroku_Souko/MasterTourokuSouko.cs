@@ -71,17 +71,6 @@ namespace MasterTouroku_Souko
                 txtSouko.Enabled = true;
             }
         }
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-           // KeyEventArgs e = new KeyEventArgs(keyData);
-            if(msg.WParam.ToInt32() == (int)Keys.F9)
-            {
-                cboName.Focus();
-                cboName.DroppedDown = true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
         private void cboName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F9)
