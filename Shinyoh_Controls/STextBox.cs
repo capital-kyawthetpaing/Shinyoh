@@ -116,11 +116,11 @@ namespace Shinyoh_Controls
                 {
                     MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
 
-            if(NextControl != null)
-                NextControl.Focus();
-            base.OnKeyDown(e);
+                if (NextControl != null)
+                    NextControl.Focus();
+                base.OnKeyDown(e);
+            }
         }
         protected override void OnEnter(EventArgs e)
         {
