@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.sLabel2 = new Shinyoh_Controls.SLabel();
+            this.sLabel1 = new Shinyoh_Controls.SLabel();
+            this.lblDate = new Shinyoh_Controls.SLabel();
+            this.lblOperator = new Shinyoh_Controls.SLabel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnF4 = new Shinyoh_Controls.SButton();
             this.BtnF5 = new Shinyoh_Controls.SButton();
@@ -42,10 +46,6 @@
             this.BtnF9 = new Shinyoh_Controls.SButton();
             this.BtnF10 = new Shinyoh_Controls.SButton();
             this.BtnF11 = new Shinyoh_Controls.SButton();
-            this.sLabel2 = new Shinyoh_Controls.SLabel();
-            this.sLabel1 = new Shinyoh_Controls.SLabel();
-            this.lblDate = new Shinyoh_Controls.SLabel();
-            this.lblOperator = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,235 +63,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1524, 75);
             this.panel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 12;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.329234F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
-            this.tableLayoutPanel1.Controls.Add(this.BtnF4, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF5, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF6, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF7, 6, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF8, 7, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF12, 11, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF9, 8, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF10, 9, 0);
-            this.tableLayoutPanel1.Controls.Add(this.BtnF11, 10, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 547);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1524, 44);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // BtnF4
-            // 
-            this.BtnF4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF4.Location = new System.Drawing.Point(379, 1);
-            this.BtnF4.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF4.Name = "BtnF4";
-            this.BtnF4.Size = new System.Drawing.Size(125, 42);
-            this.BtnF4.TabIndex = 15;
-            this.BtnF4.Tag = "4";
-            this.BtnF4.Text = "(F4)";
-            this.BtnF4.UseVisualStyleBackColor = false;
-            this.BtnF4.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF5
-            // 
-            this.BtnF5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF5.Location = new System.Drawing.Point(505, 1);
-            this.BtnF5.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF5.Name = "BtnF5";
-            this.BtnF5.Size = new System.Drawing.Size(125, 42);
-            this.BtnF5.TabIndex = 16;
-            this.BtnF5.Tag = "5";
-            this.BtnF5.Text = "(F5)";
-            this.BtnF5.UseVisualStyleBackColor = false;
-            this.BtnF5.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF6
-            // 
-            this.BtnF6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF6.Location = new System.Drawing.Point(631, 1);
-            this.BtnF6.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF6.Name = "BtnF6";
-            this.BtnF6.Size = new System.Drawing.Size(125, 42);
-            this.BtnF6.TabIndex = 17;
-            this.BtnF6.Tag = "6";
-            this.BtnF6.Text = "(F6)";
-            this.BtnF6.UseVisualStyleBackColor = false;
-            this.BtnF6.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF3
-            // 
-            this.BtnF3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF3.Location = new System.Drawing.Point(253, 1);
-            this.BtnF3.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF3.Name = "BtnF3";
-            this.BtnF3.Size = new System.Drawing.Size(125, 42);
-            this.BtnF3.TabIndex = 14;
-            this.BtnF3.Tag = "3";
-            this.BtnF3.Text = "(F3)";
-            this.BtnF3.UseVisualStyleBackColor = false;
-            this.BtnF3.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF2
-            // 
-            this.BtnF2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF2.Location = new System.Drawing.Point(127, 1);
-            this.BtnF2.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF2.Name = "BtnF2";
-            this.BtnF2.Size = new System.Drawing.Size(125, 42);
-            this.BtnF2.TabIndex = 13;
-            this.BtnF2.Tag = "2";
-            this.BtnF2.Text = "(F2)";
-            this.BtnF2.UseVisualStyleBackColor = false;
-            this.BtnF2.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF7
-            // 
-            this.BtnF7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF7.Location = new System.Drawing.Point(757, 1);
-            this.BtnF7.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF7.Name = "BtnF7";
-            this.BtnF7.Size = new System.Drawing.Size(125, 42);
-            this.BtnF7.TabIndex = 18;
-            this.BtnF7.Tag = "7";
-            this.BtnF7.Text = "(F7)";
-            this.BtnF7.UseVisualStyleBackColor = false;
-            this.BtnF7.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF1
-            // 
-            this.BtnF1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF1.Location = new System.Drawing.Point(1, 1);
-            this.BtnF1.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF1.Name = "BtnF1";
-            this.BtnF1.Size = new System.Drawing.Size(125, 42);
-            this.BtnF1.TabIndex = 12;
-            this.BtnF1.Tag = "1";
-            this.BtnF1.Text = "(F1)";
-            this.BtnF1.UseVisualStyleBackColor = false;
-            this.BtnF1.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF8
-            // 
-            this.BtnF8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF8.Location = new System.Drawing.Point(883, 1);
-            this.BtnF8.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF8.Name = "BtnF8";
-            this.BtnF8.Size = new System.Drawing.Size(125, 42);
-            this.BtnF8.TabIndex = 19;
-            this.BtnF8.Tag = "8";
-            this.BtnF8.Text = "(F8)";
-            this.BtnF8.UseVisualStyleBackColor = false;
-            this.BtnF8.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF12
-            // 
-            this.BtnF12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF12.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF12.Location = new System.Drawing.Point(1387, 1);
-            this.BtnF12.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF12.Name = "BtnF12";
-            this.BtnF12.Size = new System.Drawing.Size(136, 42);
-            this.BtnF12.TabIndex = 23;
-            this.BtnF12.Tag = "12";
-            this.BtnF12.Text = "(F12)";
-            this.BtnF12.UseVisualStyleBackColor = false;
-            this.BtnF12.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF9
-            // 
-            this.BtnF9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF9.Location = new System.Drawing.Point(1009, 1);
-            this.BtnF9.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF9.Name = "BtnF9";
-            this.BtnF9.Size = new System.Drawing.Size(125, 42);
-            this.BtnF9.TabIndex = 20;
-            this.BtnF9.Tag = "9";
-            this.BtnF9.Text = "(F9)";
-            this.BtnF9.UseVisualStyleBackColor = false;
-            this.BtnF9.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF10
-            // 
-            this.BtnF10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF10.Location = new System.Drawing.Point(1135, 1);
-            this.BtnF10.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF10.Name = "BtnF10";
-            this.BtnF10.Size = new System.Drawing.Size(125, 42);
-            this.BtnF10.TabIndex = 21;
-            this.BtnF10.Tag = "10";
-            this.BtnF10.Text = "(F10)";
-            this.BtnF10.UseVisualStyleBackColor = false;
-            this.BtnF10.Click += new System.EventHandler(this.btnFunctionClick);
-            // 
-            // BtnF11
-            // 
-            this.BtnF11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.BtnF11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BtnF11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF11.Location = new System.Drawing.Point(1261, 1);
-            this.BtnF11.Margin = new System.Windows.Forms.Padding(0);
-            this.BtnF11.Name = "BtnF11";
-            this.BtnF11.Size = new System.Drawing.Size(125, 42);
-            this.BtnF11.TabIndex = 22;
-            this.BtnF11.Tag = "11";
-            this.BtnF11.Text = "(F11)";
-            this.BtnF11.UseVisualStyleBackColor = false;
-            this.BtnF11.Click += new System.EventHandler(this.btnFunctionClick);
             // 
             // sLabel2
             // 
@@ -348,6 +119,259 @@
             this.lblOperator.TabIndex = 6;
             this.lblOperator.Text = "オペレータ";
             this.lblOperator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 12;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.329234F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333707F));
+            this.tableLayoutPanel1.Controls.Add(this.BtnF4, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF5, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF6, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF2, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF7, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF8, 7, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF12, 11, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF9, 8, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF10, 9, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF11, 10, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 547);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1524, 44);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // BtnF4
+            // 
+            this.BtnF4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF4.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF4.Location = new System.Drawing.Point(379, 1);
+            this.BtnF4.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF4.Name = "BtnF4";
+            this.BtnF4.Size = new System.Drawing.Size(125, 42);
+            this.BtnF4.TabIndex = 15;
+            this.BtnF4.Tag = "4";
+            this.BtnF4.Text = "(F4)";
+            this.BtnF4.UseVisualStyleBackColor = false;
+            this.BtnF4.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF4.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF5
+            // 
+            this.BtnF5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF5.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF5.Location = new System.Drawing.Point(505, 1);
+            this.BtnF5.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF5.Name = "BtnF5";
+            this.BtnF5.Size = new System.Drawing.Size(125, 42);
+            this.BtnF5.TabIndex = 16;
+            this.BtnF5.Tag = "5";
+            this.BtnF5.Text = "(F5)";
+            this.BtnF5.UseVisualStyleBackColor = false;
+            this.BtnF5.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF5.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF6
+            // 
+            this.BtnF6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF6.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF6.Location = new System.Drawing.Point(631, 1);
+            this.BtnF6.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF6.Name = "BtnF6";
+            this.BtnF6.Size = new System.Drawing.Size(125, 42);
+            this.BtnF6.TabIndex = 17;
+            this.BtnF6.Tag = "6";
+            this.BtnF6.Text = "(F6)";
+            this.BtnF6.UseVisualStyleBackColor = false;
+            this.BtnF6.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF6.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF3
+            // 
+            this.BtnF3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF3.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF3.Location = new System.Drawing.Point(253, 1);
+            this.BtnF3.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF3.Name = "BtnF3";
+            this.BtnF3.Size = new System.Drawing.Size(125, 42);
+            this.BtnF3.TabIndex = 14;
+            this.BtnF3.Tag = "3";
+            this.BtnF3.Text = "(F3)";
+            this.BtnF3.UseVisualStyleBackColor = false;
+            this.BtnF3.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF3.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF2
+            // 
+            this.BtnF2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF2.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF2.Location = new System.Drawing.Point(127, 1);
+            this.BtnF2.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF2.Name = "BtnF2";
+            this.BtnF2.Size = new System.Drawing.Size(125, 42);
+            this.BtnF2.TabIndex = 13;
+            this.BtnF2.Tag = "2";
+            this.BtnF2.Text = "(F2)";
+            this.BtnF2.UseVisualStyleBackColor = false;
+            this.BtnF2.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF2.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF7
+            // 
+            this.BtnF7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF7.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF7.Location = new System.Drawing.Point(757, 1);
+            this.BtnF7.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF7.Name = "BtnF7";
+            this.BtnF7.Size = new System.Drawing.Size(125, 42);
+            this.BtnF7.TabIndex = 18;
+            this.BtnF7.Tag = "7";
+            this.BtnF7.Text = "(F7)";
+            this.BtnF7.UseVisualStyleBackColor = false;
+            this.BtnF7.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF7.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF1
+            // 
+            this.BtnF1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF1.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF1.Location = new System.Drawing.Point(1, 1);
+            this.BtnF1.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF1.Name = "BtnF1";
+            this.BtnF1.Size = new System.Drawing.Size(125, 42);
+            this.BtnF1.TabIndex = 12;
+            this.BtnF1.Tag = "1";
+            this.BtnF1.Text = "(F1)";
+            this.BtnF1.UseVisualStyleBackColor = false;
+            this.BtnF1.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF1.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF8
+            // 
+            this.BtnF8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF8.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF8.Location = new System.Drawing.Point(883, 1);
+            this.BtnF8.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF8.Name = "BtnF8";
+            this.BtnF8.Size = new System.Drawing.Size(125, 42);
+            this.BtnF8.TabIndex = 19;
+            this.BtnF8.Tag = "8";
+            this.BtnF8.Text = "(F8)";
+            this.BtnF8.UseVisualStyleBackColor = false;
+            this.BtnF8.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF8.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF12
+            // 
+            this.BtnF12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF12.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF12.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF12.Location = new System.Drawing.Point(1387, 1);
+            this.BtnF12.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF12.Name = "BtnF12";
+            this.BtnF12.Size = new System.Drawing.Size(136, 42);
+            this.BtnF12.TabIndex = 23;
+            this.BtnF12.Tag = "12";
+            this.BtnF12.Text = "(F12)";
+            this.BtnF12.UseVisualStyleBackColor = false;
+            this.BtnF12.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF12.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF9
+            // 
+            this.BtnF9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF9.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF9.Location = new System.Drawing.Point(1009, 1);
+            this.BtnF9.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF9.Name = "BtnF9";
+            this.BtnF9.Size = new System.Drawing.Size(125, 42);
+            this.BtnF9.TabIndex = 20;
+            this.BtnF9.Tag = "9";
+            this.BtnF9.Text = "(F9)";
+            this.BtnF9.UseVisualStyleBackColor = false;
+            this.BtnF9.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF9.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF10
+            // 
+            this.BtnF10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF10.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF10.Location = new System.Drawing.Point(1135, 1);
+            this.BtnF10.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF10.Name = "BtnF10";
+            this.BtnF10.Size = new System.Drawing.Size(125, 42);
+            this.BtnF10.TabIndex = 21;
+            this.BtnF10.Tag = "10";
+            this.BtnF10.Text = "(F10)";
+            this.BtnF10.UseVisualStyleBackColor = false;
+            this.BtnF10.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF10.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // BtnF11
+            // 
+            this.BtnF11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF11.ButtonType = Entity.ButtonType.BType.New;
+            this.BtnF11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF11.Location = new System.Drawing.Point(1261, 1);
+            this.BtnF11.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF11.Name = "BtnF11";
+            this.BtnF11.Size = new System.Drawing.Size(125, 42);
+            this.BtnF11.TabIndex = 22;
+            this.BtnF11.Tag = "11";
+            this.BtnF11.Text = "(F11)";
+            this.BtnF11.UseVisualStyleBackColor = false;
+            this.BtnF11.Click += new System.EventHandler(this.btnFunctionClick);
+            this.BtnF11.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
             // 
             // BaseForm
             // 
