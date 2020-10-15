@@ -51,10 +51,7 @@ namespace Shinyoh
             Save,
             Cancel,
             Search,
-            Empty1,
-            Empty2,
-            Empty3,
-            Empty4
+            Empty
         }
 
         public BaseForm()
@@ -155,16 +152,7 @@ namespace Shinyoh
                 case ButtonType.Search:
                     button.Text = buttonText;
                     break;
-                case ButtonType.Empty1:
-                    button.Text = buttonText;
-                    break;
-                case ButtonType.Empty2:
-                    button.Text = buttonText;
-                    break;
-                case ButtonType.Empty3:
-                    button.Text = buttonText;
-                    break;
-                case ButtonType.Empty4:
+                case ButtonType.Empty:
                     button.Text = buttonText;
                     break;
                 case ButtonType.Insert:

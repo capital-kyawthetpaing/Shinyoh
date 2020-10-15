@@ -50,10 +50,10 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.Cancel, F6, "F6(ｷｬﾝｾﾙ)");
             SetButton(ButtonType.Search, F9, "F9(検索)");
             SetButton(ButtonType.Insert, F12, "F12(登録)");
-            SetButton(ButtonType.Empty1, F7, "");
-            SetButton(ButtonType.Empty2, F8, "");
-            SetButton(ButtonType.Empty3, F10, "");
-            SetButton(ButtonType.Empty4, F11, "");
+            SetButton(ButtonType.Empty, F7, "");
+            SetButton(ButtonType.Empty, F8, "");
+            SetButton(ButtonType.Empty, F10, "");
+            SetButton(ButtonType.Empty, F11, "");
 
 
         }
