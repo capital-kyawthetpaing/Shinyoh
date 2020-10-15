@@ -54,8 +54,6 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.Empty, F8, "");
             SetButton(ButtonType.Empty, F10, "");
             SetButton(ButtonType.Empty, F11, "");
-
-
         }
 
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,6 +69,16 @@ namespace MasterTouroku_Souko
                 txtCopySouko.Enabled = false;
                 txtSouko.Enabled = true;
             }
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            KeyEventArgs e = new KeyEventArgs(keyData);
+            if(msg.WParam.ToInt32() == (int)Keys.F9)
+            {
+                cboName.Focus();
+                cboName.DroppedDown = true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
