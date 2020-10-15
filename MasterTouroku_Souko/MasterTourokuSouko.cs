@@ -14,6 +14,7 @@ namespace MasterTouroku_Souko
 {
     public partial class MasterTourokuSouko : BaseForm
     {
+        ButtonType type = new ButtonType();
         public MasterTourokuSouko()
         {
             InitializeComponent();
@@ -42,20 +43,18 @@ namespace MasterTouroku_Souko
             ProgramID = "MasterTourokuSouko";
             StartProgram();
             cboName.Bind(false);
-            SetButton(ButtonType.Close,F1, "F1(終了)");
-            SetButton(ButtonType.Save, F2, "F2(新規)");
-            SetButton(ButtonType.Update, F3,"F3(変更)");
-            SetButton(ButtonType.Delete, F4, "F4(削除)");
-            SetButton(ButtonType.Inquiry, F5, "F5(照会)");
-            SetButton(ButtonType.Cancel, F6, "F6(ｷｬﾝｾﾙ)");
-            SetButton(ButtonType.Search, F9, "F9(検索)");
-            SetButton(ButtonType.Insert, F12, "F12(登録)");
-            SetButton(ButtonType.Empty, F7, "");
-            SetButton(ButtonType.Empty, F8, "");
-            SetButton(ButtonType.Empty, F10, "");
-            SetButton(ButtonType.Empty, F11, "");
-
-
+            SetButton(ButtonType.BType.Close,F1, "F1(終了)");
+            SetButton(ButtonType.BType.New, F2, "F2(新規)");
+            SetButton(ButtonType.BType.Update, F3,"F3(変更)");
+            SetButton(ButtonType.BType.Delete, F4, "F4(削除)");
+            SetButton(ButtonType.BType.Inquiry, F5, "F5(照会)");
+            SetButton(ButtonType.BType.Cancel, F6, "F6(ｷｬﾝｾﾙ)");
+            SetButton(ButtonType.BType.Search, F9, "F9(検索)");
+            SetButton(ButtonType.BType.Save, F12, "F12(登録)");
+            SetButton(ButtonType.BType.Empty, F7, "");
+            SetButton(ButtonType.BType.Empty, F8, "");
+            SetButton(ButtonType.BType.Empty, F10, "");
+            SetButton(ButtonType.BType.Empty, F11, "");
         }
 
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)

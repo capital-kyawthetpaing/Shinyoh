@@ -19,10 +19,12 @@ namespace Shinyoh
         protected string PCID { get; set; }
         #endregion
 
+        BaseBL bbl;
         FileFunction ff;
         StaffBL staffBL;
         ProgramEntity programEntity;
         protected string ProgramID { get; set; }
+        protected Control PreviousCtrl { get; set; }
 
         #region Function Button
         protected SButton F1 { get => BtnF1; set => BtnF1 = value; }
@@ -39,25 +41,11 @@ namespace Shinyoh
         protected SButton F12 { get => BtnF12; set => BtnF12 = value; }
         #endregion
 
-        protected enum ButtonType
-        {
-            Insert,
-            Update,
-            Delete,
-            Inquiry,
-            Print,
-            Run,
-            Close,
-            Save,
-            Cancel,
-            Search,
-            Empty
-        }
-
         public BaseForm()
         {
             InitializeComponent();
             programEntity = new ProgramEntity();
+            bbl = new BaseBL();
             ff = new FileFunction();
             staffBL = new StaffBL();
         }
@@ -128,46 +116,73 @@ namespace Shinyoh
 
         private void btnFunctionClick(object sender,EventArgs e)
         {
-            Button btn = (Button)sender;
-            FunctionProcess(btn.Tag.ToString());
+            SButton btn = (SButton)sender;
+            FireClickEvent(btn);
+        }
+
+        private void FireClickEvent(SButton btn)
+        {
+            switch(btn.ButtonType)
+            {
+                case ButtonType.BType.Close:
+                    if (bbl.ShowMessage("Q003") == DialogResult.Yes)
+                    {
+                        this.Close();
+                    }
+                    break;
+                case ButtonType.BType.New:
+                case ButtonType.BType.Update:
+                case ButtonType.BType.Delete:
+                case ButtonType.BType.Inquiry:
+                    if (bbl.ShowMessage("Q005") != DialogResult.Yes)
+                    {
+                        if(PreviousCtrl != null)
+                            PreviousCtrl.Focus();
+                        return;
+                    }
+                    else
+                        FunctionProcess(btn.Tag.ToString());
+                    break;
+            }
         }
 
         public virtual void FunctionProcess(string tagID)
         {
         }
 
-        protected void SetButton(ButtonType buttonType,Button button,string buttonText)
+        protected void SetButton(ButtonType.BType buttonType,SButton button,string buttonText)
         {
+            button.ButtonType = buttonType;
             switch(buttonType)
             {
-                case ButtonType.Close:
+                case ButtonType.BType.Close:
                     button.Text = buttonText;
                     break;
-                case ButtonType.Save:
+                case ButtonType.BType.Save:
                     button.Text = buttonText;
                     break;
-                case ButtonType.Cancel:
+                case ButtonType.BType.Cancel:
                     button.Text = buttonText;
                     break;
-                case ButtonType.Search:
+                case ButtonType.BType.Search:
                     button.Text = buttonText;
                     break;
-                case ButtonType.Empty:
+                case ButtonType.BType.Empty:
                     button.Text = buttonText;
                     break;
-                case ButtonType.Insert:
+                case ButtonType.BType.New:
                     CheckButton(programEntity.Insertable, buttonText, button);
                     break;
-                case ButtonType.Update:
+                case ButtonType.BType.Update:
                     CheckButton(programEntity.Updatable, buttonText, button);
                     break;
-                case ButtonType.Delete:
+                case ButtonType.BType.Delete:
                     CheckButton(programEntity.Deletable, buttonText, button);
                     break;
-                case ButtonType.Inquiry:
+                case ButtonType.BType.Inquiry:
                     CheckButton(programEntity.Inquirable, buttonText, button);
                     break;
-                case ButtonType.Print:
+                case ButtonType.BType.Print:
                     CheckButton(programEntity.Printable, buttonText, button);
                     break;
             }
@@ -189,21 +204,44 @@ namespace Shinyoh
 
         private void BaseForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Enter)
+            switch(e.KeyCode)
             {
-                if(ActiveControl is STextBox)
-                {
-                    STextBox stxt = ActiveControl as STextBox;
-                    if(!string.IsNullOrWhiteSpace(stxt.NextControlName))
+                case Keys.F1:
+                case Keys.F2:
+                case Keys.F3:
+                case Keys.F4:
+                case Keys.F5:
+                case Keys.F6:
+                case Keys.F7:
+                case Keys.F8:
+                case Keys.F9:
+                case Keys.F10:
+                case Keys.F11:
+                case Keys.F12:
+                    SButton btn = this.Controls.Find("Btn" + e.KeyCode.ToString(),true)[0] as SButton;
+                    FireClickEvent(btn);
+                    break;
+                case Keys.Enter:
+                    if (ActiveControl is STextBox)
                     {
-                        Control[] ctlArr = this.Controls.Find(stxt.NextControlName, true);
-                        if (ctlArr.Length > 0)
+                        STextBox stxt = ActiveControl as STextBox;
+                        if (!string.IsNullOrWhiteSpace(stxt.NextControlName))
                         {
-                            stxt.NextControl = ctlArr[0];
+                            Control[] ctlArr = this.Controls.Find(stxt.NextControlName, true);
+                            if (ctlArr.Length > 0)
+                            {
+                                stxt.NextControl = ctlArr[0];
+                            }
                         }
-                    }                   
-                }
-            }
+                    }
+                    break;
+
+            }    
+        }
+
+        private void FuctionButton_MouseEnter(object sender, EventArgs e)
+        {
+            PreviousCtrl = this.ActiveControl;
         }
     }
 }

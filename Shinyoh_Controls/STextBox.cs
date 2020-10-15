@@ -70,7 +70,7 @@ namespace Shinyoh_Controls
         public STextBox()
         {
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular);
             cf = new CommonFunction();
             bbl = new BaseBL();
 
