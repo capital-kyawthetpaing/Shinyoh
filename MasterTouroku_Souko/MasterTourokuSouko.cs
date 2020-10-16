@@ -42,7 +42,7 @@ namespace MasterTouroku_Souko
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = cboName.SelectedIndex.ToString();
-            if (item == "1" || item == "0")
+            if (item == "0")
             {
                 txtSouko.Enabled = true;
                 txtCopySouko.Enabled = true;
