@@ -25,18 +25,18 @@ namespace MasterTouroku_Souko
             ProgramID = "MasterTourokuSouko";
             StartProgram();
             cboName.Bind(false);
-            SetButton(ButtonType.BType.Close, F1, "F1(終了)");
-            SetButton(ButtonType.BType.New, F2, "F2(新規)");
-            SetButton(ButtonType.BType.Update, F3, "F3(変更)");
-            SetButton(ButtonType.BType.Delete, F4, "F4(削除)");
-            SetButton(ButtonType.BType.Inquiry, F5, "F5(照会)");
-            SetButton(ButtonType.BType.Cancel, F6, "F6(ｷｬﾝｾﾙ)");
-            SetButton(ButtonType.BType.Search, F9, "F9(検索)");
-            SetButton(ButtonType.BType.Save, F12, "F12(登録)");
-            SetButton(ButtonType.BType.Empty, F7, "");
-            SetButton(ButtonType.BType.Empty, F8, "");
-            SetButton(ButtonType.BType.Empty, F10, "");
-            SetButton(ButtonType.BType.Empty, F11, "");
+            SetButton(ButtonType.BType.Close, F1, "F1(終了)",true);
+            SetButton(ButtonType.BType.New, F2, "F2(新規)",true);
+            SetButton(ButtonType.BType.Update, F3, "F3(変更)",true);
+            SetButton(ButtonType.BType.Delete, F4, "F4(削除)",true);
+            SetButton(ButtonType.BType.Inquiry, F5, "F5(照会)",true);
+            SetButton(ButtonType.BType.Cancel, F6, "F6(ｷｬﾝｾﾙ)",true);
+            SetButton(ButtonType.BType.Search, F9, "F9(検索)",false);
+            SetButton(ButtonType.BType.Save, F12, "F12(登録)",true);
+            SetButton(ButtonType.BType.Empty, F7, "",false);
+            SetButton(ButtonType.BType.Empty, F8, "",false);
+            SetButton(ButtonType.BType.Empty, F10, "",false);
+            SetButton(ButtonType.BType.Empty, F11, "",false);
         }
 
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)

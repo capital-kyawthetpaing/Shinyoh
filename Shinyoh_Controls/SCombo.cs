@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 
@@ -56,6 +57,27 @@ namespace Shinyoh_Controls
                 this.DroppedDown = true;
             }
             base.OnKeyDown(e);
+        }
+
+        protected override void OnGotFocus(EventArgs e)
+        {
+            Control btnF9 = this.TopLevelControl.Controls.Find("BtnF9",true)[0];
+            btnF9.Visible = true;
+            base.OnGotFocus(e);
+        }
+
+        protected override void OnLostFocus(EventArgs e)
+        {
+            Control btnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+            btnF9.Visible = false;
+            base.OnLostFocus(e);
+        }
+
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {
+            if( (e.KeyChar != (char)Keys.F9)  && (e.KeyChar != (char)Keys.Escape) && (e.KeyChar != (char)Keys.Escape))
+                e.Handled = true;
+            base.OnKeyPress(e);
         }
     }
 }

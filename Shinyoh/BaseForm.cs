@@ -150,7 +150,7 @@ namespace Shinyoh
         {
         }
 
-        protected void SetButton(ButtonType.BType buttonType,SButton button,string buttonText)
+        protected void SetButton(ButtonType.BType buttonType,SButton button,string buttonText,bool visible)
         {
             button.ButtonType = buttonType;
             switch(buttonType)
@@ -186,6 +186,8 @@ namespace Shinyoh
                     CheckButton(programEntity.Printable, buttonText, button);
                     break;
             }
+
+            button.Visible = visible;
         }
 
         private void CheckButton(string Value,string Text,Button button)
