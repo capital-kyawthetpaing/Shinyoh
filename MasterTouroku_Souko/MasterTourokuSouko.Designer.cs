@@ -117,10 +117,11 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.NextControl = null;
             this.txtSearch.NextControlName = null;
+            this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(100, 19);
             this.txtSearch.TabIndex = 11;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblSearch
             // 
@@ -150,6 +151,7 @@
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.NextControl = null;
             this.txtRemark.NextControlName = "txtSearch";
+            this.txtRemark.SearchType = Entity.SearchType.ScType.None;
             this.txtRemark.Size = new System.Drawing.Size(527, 19);
             this.txtRemark.TabIndex = 10;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -182,9 +184,10 @@
             this.txtFAX.Name = "txtFAX";
             this.txtFAX.NextControl = null;
             this.txtFAX.NextControlName = "txtRemark";
+            this.txtFAX.SearchType = Entity.SearchType.ScType.None;
             this.txtFAX.Size = new System.Drawing.Size(177, 19);
             this.txtFAX.TabIndex = 9;
-            this.txtFAX.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtFAX.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblFAX
             // 
@@ -214,9 +217,10 @@
             this.txtPhNo.Name = "txtPhNo";
             this.txtPhNo.NextControl = null;
             this.txtPhNo.NextControlName = "txtFAX";
+            this.txtPhNo.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNo.Size = new System.Drawing.Size(177, 19);
             this.txtPhNo.TabIndex = 8;
-            this.txtPhNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPhNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhNo
             // 
@@ -246,6 +250,7 @@
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.NextControl = null;
             this.txtAddress2.NextControlName = "txtPhNo";
+            this.txtAddress2.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress2.Size = new System.Drawing.Size(527, 19);
             this.txtAddress2.TabIndex = 7;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -278,6 +283,7 @@
             this.txtAddress1.Name = "txtAddress1";
             this.txtAddress1.NextControl = null;
             this.txtAddress1.NextControlName = "txtAddress2";
+            this.txtAddress1.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress1.Size = new System.Drawing.Size(527, 19);
             this.txtAddress1.TabIndex = 6;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -310,9 +316,10 @@
             this.txtYubin2.Name = "txtYubin2";
             this.txtYubin2.NextControl = null;
             this.txtYubin2.NextControlName = "txtAddress1";
+            this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin2.Size = new System.Drawing.Size(100, 19);
             this.txtYubin2.TabIndex = 5;
-            this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtYubin1
             // 
@@ -328,9 +335,10 @@
             this.txtYubin1.Name = "txtYubin1";
             this.txtYubin1.NextControl = null;
             this.txtYubin1.NextControlName = "txtYubin2";
+            this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin1.Size = new System.Drawing.Size(100, 19);
             this.txtYubin1.TabIndex = 4;
-            this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblYubinNo
             // 
@@ -360,6 +368,7 @@
             this.txtKanaName.Name = "txtKanaName";
             this.txtKanaName.NextControl = null;
             this.txtKanaName.NextControlName = "txtYubin1";
+            this.txtKanaName.SearchType = Entity.SearchType.ScType.None;
             this.txtKanaName.Size = new System.Drawing.Size(357, 19);
             this.txtKanaName.TabIndex = 3;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -392,6 +401,7 @@
             this.txtSokouName.Name = "txtSokouName";
             this.txtSokouName.NextControl = null;
             this.txtSokouName.NextControlName = "txtKanaName";
+            this.txtSokouName.SearchType = Entity.SearchType.ScType.None;
             this.txtSokouName.Size = new System.Drawing.Size(357, 19);
             this.txtSokouName.TabIndex = 2;
             this.txtSokouName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -478,6 +488,7 @@
             this.txtSouko.Name = "txtSouko";
             this.txtSouko.NextControl = null;
             this.txtSouko.NextControlName = "txtCopySouko";
+            this.txtSouko.SearchType = Entity.SearchType.ScType.None;
             this.txtSouko.Size = new System.Drawing.Size(100, 19);
             this.txtSouko.TabIndex = 0;
             this.txtSouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -496,6 +507,7 @@
             this.txtCopySouko.Name = "txtCopySouko";
             this.txtCopySouko.NextControl = null;
             this.txtCopySouko.NextControlName = "txtSokouName";
+            this.txtCopySouko.SearchType = Entity.SearchType.ScType.None;
             this.txtCopySouko.Size = new System.Drawing.Size(100, 19);
             this.txtCopySouko.TabIndex = 1;
             this.txtCopySouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
