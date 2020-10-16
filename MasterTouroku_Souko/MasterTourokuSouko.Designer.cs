@@ -112,6 +112,7 @@
             this.txtSearch.IntegerPart = 0;
             this.txtSearch.IsRequire = false;
             this.txtSearch.Location = new System.Drawing.Point(142, 324);
+            this.txtSearch.MaxLength = 5;
             this.txtSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
@@ -146,6 +147,7 @@
             this.txtRemark.IntegerPart = 0;
             this.txtRemark.IsRequire = false;
             this.txtRemark.Location = new System.Drawing.Point(142, 287);
+            this.txtRemark.MaxLength = 80;
             this.txtRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRemark.MoveNext = true;
             this.txtRemark.Name = "txtRemark";
@@ -179,6 +181,7 @@
             this.txtFAX.IntegerPart = 0;
             this.txtFAX.IsRequire = false;
             this.txtFAX.Location = new System.Drawing.Point(141, 248);
+            this.txtFAX.MaxLength = 15;
             this.txtFAX.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtFAX.MoveNext = true;
             this.txtFAX.Name = "txtFAX";
@@ -212,6 +215,7 @@
             this.txtPhNo.IntegerPart = 0;
             this.txtPhNo.IsRequire = false;
             this.txtPhNo.Location = new System.Drawing.Point(141, 209);
+            this.txtPhNo.MaxLength = 15;
             this.txtPhNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPhNo.MoveNext = true;
             this.txtPhNo.Name = "txtPhNo";
@@ -245,6 +249,7 @@
             this.txtAddress2.IntegerPart = 0;
             this.txtAddress2.IsRequire = false;
             this.txtAddress2.Location = new System.Drawing.Point(141, 170);
+            this.txtAddress2.MaxLength = 80;
             this.txtAddress2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress2.MoveNext = true;
             this.txtAddress2.Name = "txtAddress2";
@@ -278,6 +283,7 @@
             this.txtAddress1.IntegerPart = 0;
             this.txtAddress1.IsRequire = false;
             this.txtAddress1.Location = new System.Drawing.Point(141, 129);
+            this.txtAddress1.MaxLength = 80;
             this.txtAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress1.MoveNext = true;
             this.txtAddress1.Name = "txtAddress1";
@@ -311,6 +317,7 @@
             this.txtYubin2.IntegerPart = 0;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.Location = new System.Drawing.Point(280, 91);
+            this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtYubin2.MoveNext = true;
             this.txtYubin2.Name = "txtYubin2";
@@ -330,6 +337,7 @@
             this.txtYubin1.IntegerPart = 0;
             this.txtYubin1.IsRequire = false;
             this.txtYubin1.Location = new System.Drawing.Point(141, 91);
+            this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtYubin1.MoveNext = true;
             this.txtYubin1.Name = "txtYubin1";
@@ -363,6 +371,7 @@
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(141, 54);
+            this.txtKanaName.MaxLength = 50;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
@@ -396,6 +405,7 @@
             this.txtSokouName.IntegerPart = 0;
             this.txtSokouName.IsRequire = false;
             this.txtSokouName.Location = new System.Drawing.Point(141, 18);
+            this.txtSokouName.MaxLength = 50;
             this.txtSokouName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSokouName.MoveNext = true;
             this.txtSokouName.Name = "txtSokouName";
@@ -483,6 +493,7 @@
             this.txtSouko.IntegerPart = 0;
             this.txtSouko.IsRequire = false;
             this.txtSouko.Location = new System.Drawing.Point(241, 9);
+            this.txtSouko.MaxLength = 10;
             this.txtSouko.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSouko.MoveNext = true;
             this.txtSouko.Name = "txtSouko";
@@ -502,6 +513,7 @@
             this.txtCopySouko.IntegerPart = 0;
             this.txtCopySouko.IsRequire = false;
             this.txtCopySouko.Location = new System.Drawing.Point(241, 37);
+            this.txtCopySouko.MaxLength = 10;
             this.txtCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCopySouko.MoveNext = true;
             this.txtCopySouko.Name = "txtCopySouko";
