@@ -108,7 +108,7 @@
             this.txtSearch.AllowMinus = false;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.DecimalPlace = 0;
-            this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSearch.IntegerPart = 0;
             this.txtSearch.IsRequire = false;
             this.txtSearch.Location = new System.Drawing.Point(142, 324);
@@ -141,7 +141,7 @@
             this.txtRemark.AllowMinus = false;
             this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemark.DecimalPlace = 0;
-            this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtRemark.IntegerPart = 0;
             this.txtRemark.IsRequire = false;
             this.txtRemark.Location = new System.Drawing.Point(142, 287);
@@ -173,7 +173,7 @@
             this.txtFAX.AllowMinus = false;
             this.txtFAX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFAX.DecimalPlace = 0;
-            this.txtFAX.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtFAX.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtFAX.IntegerPart = 0;
             this.txtFAX.IsRequire = false;
             this.txtFAX.Location = new System.Drawing.Point(141, 248);
@@ -205,7 +205,7 @@
             this.txtPhNo.AllowMinus = false;
             this.txtPhNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo.DecimalPlace = 0;
-            this.txtPhNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtPhNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo.IntegerPart = 0;
             this.txtPhNo.IsRequire = false;
             this.txtPhNo.Location = new System.Drawing.Point(141, 209);
@@ -237,7 +237,7 @@
             this.txtAddress2.AllowMinus = false;
             this.txtAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress2.DecimalPlace = 0;
-            this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
             this.txtAddress2.IsRequire = false;
             this.txtAddress2.Location = new System.Drawing.Point(141, 170);
@@ -269,7 +269,7 @@
             this.txtAddress1.AllowMinus = false;
             this.txtAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress1.DecimalPlace = 0;
-            this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
             this.txtAddress1.IsRequire = false;
             this.txtAddress1.Location = new System.Drawing.Point(141, 129);
@@ -301,7 +301,7 @@
             this.txtYubin2.AllowMinus = false;
             this.txtYubin2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin2.DecimalPlace = 0;
-            this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.Location = new System.Drawing.Point(280, 91);
@@ -319,7 +319,7 @@
             this.txtYubin1.AllowMinus = false;
             this.txtYubin1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin1.DecimalPlace = 0;
-            this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
             this.txtYubin1.IsRequire = false;
             this.txtYubin1.Location = new System.Drawing.Point(141, 91);
@@ -351,7 +351,7 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
-            this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(141, 54);
@@ -383,7 +383,7 @@
             this.txtSokouName.AllowMinus = false;
             this.txtSokouName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSokouName.DecimalPlace = 0;
-            this.txtSokouName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtSokouName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSokouName.IntegerPart = 0;
             this.txtSokouName.IsRequire = false;
             this.txtSokouName.Location = new System.Drawing.Point(141, 18);
