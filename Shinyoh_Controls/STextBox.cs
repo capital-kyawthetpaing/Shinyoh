@@ -4,6 +4,9 @@ using System.Windows.Forms;
 using CKM_CommonFunction;
 using BL;
 using System.Drawing;
+using Entity;
+using static Entity.SearchType;
+using System.Diagnostics.Tracing;
 
 namespace Shinyoh_Controls
 {
@@ -58,6 +61,12 @@ namespace Shinyoh_Controls
         [Description("IsRequire")]
         [DisplayName("IsRequire")]
         public bool IsRequire { get; set; } = false;
+
+        [Browsable(true)]
+        [Category("Shinyoh Properties")]
+        [Description("SearchType")]
+        [DisplayName("SearchType")]
+        public ScType SearchType { get; set; }
 
         [Browsable(true)]
         [Category("Shinyoh Properties")]
@@ -121,6 +130,21 @@ namespace Shinyoh_Controls
                     NextControl.Focus();
                 base.OnKeyDown(e);
             }
+        }
+        protected override void OnGotFocus(EventArgs e)
+        {
+            if (SearchType == ScType.None)
+            {
+                Control btnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                btnF9.Visible = false;
+            }
+            else
+            {
+                Control btnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                btnF9.Visible = true;
+            }
+
+            base.OnGotFocus(e);
         }
         protected override void OnEnter(EventArgs e)
         {

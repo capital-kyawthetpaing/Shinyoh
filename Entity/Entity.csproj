@@ -47,6 +47,7 @@
     <Compile Include="IniEntity.cs" />
     <Compile Include="MessageEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchType.cs" />
     <Compile Include="StaffEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
