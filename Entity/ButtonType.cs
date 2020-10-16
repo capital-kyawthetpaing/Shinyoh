@@ -10,7 +10,8 @@ namespace Entity
     {
         public BType BtnType { get; set; }
         public enum BType
-        {
+        {  
+            Normal,
             New,//新規
             Update,//変更
             Delete,//削除
