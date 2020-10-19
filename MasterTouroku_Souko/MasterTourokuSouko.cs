@@ -56,6 +56,26 @@ namespace MasterTouroku_Souko
 
         public override void FunctionProcess(string tagID)
         {
+            if (tagID == "2")
+            {
+                cboName.SelectedIndex = -1;
+                cboName.SelectedIndex = cboName.SelectedIndex + 1;
+            }
+            if(tagID == "3")
+            {
+                cboName.SelectedIndex = -1;
+                cboName.SelectedIndex = cboName.SelectedIndex +2;
+            }
+            if (tagID == "4")
+            {
+                cboName.SelectedIndex = -1;
+                cboName.SelectedIndex = cboName.SelectedIndex + 3;
+            }
+            if (tagID == "5")
+            {
+                cboName.SelectedIndex = -1;
+                cboName.SelectedIndex = cboName.SelectedIndex + 4;
+            }
             base.FunctionProcess(tagID);
         }
     }
