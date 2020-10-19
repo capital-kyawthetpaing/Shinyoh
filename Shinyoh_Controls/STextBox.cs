@@ -14,6 +14,7 @@ namespace Shinyoh_Controls
     {        
         CommonFunction cf;
         BaseBL bbl;
+        ErrorCheck errchk;
         public enum STextBoxType
         {
             Normal = 0,
@@ -75,6 +76,18 @@ namespace Shinyoh_Controls
         public string NextControlName { get; set; }
         public bool MoveNext { get; set; } = true;
         public Control NextControl { get; set; }
+
+        public bool IsRequireCheck;
+        public bool IsZipCheck;
+
+        private string zipOnLoad;
+        private string zip1;
+        private string zip2;
+
+
+        public Control ctrlZip1;
+        public Control ctrlZip2;
+
         //Constructor
         public STextBox()
         {
@@ -82,6 +95,7 @@ namespace Shinyoh_Controls
             this.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular);
             cf = new CommonFunction();
             bbl = new BaseBL();
+            errchk = new ErrorCheck();
 
             base.MinimumSize = new Size(100, 19);
         }
@@ -116,10 +130,7 @@ namespace Shinyoh_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if ((IsRequire && string.IsNullOrWhiteSpace(Text)))
-                {
-                    ShowErrorMessage("E102");
-                }
+                string result = errchk.Check(this);
 
                 if(cf.IsByteLengthOver(MaxLength,Text))
                 {
@@ -167,6 +178,19 @@ namespace Shinyoh_Controls
             base.InitLayout();
             base.AutoSize = false;
             base.Height = 19;
+        }
+
+        public void RequiredCeck(bool value)
+        {
+            IsRequireCheck  = value;
+        }
+
+        public void ZipCheck(bool value,Control zip1,Control zip2,string zipOnLoad)
+        {
+            this.IsZipCheck = value;
+            this.ctrlZip1 = zip1;
+            this.ctrlZip2 = zip2;
+            this.zipOnLoad = zipOnLoad;
         }
     }
 }
