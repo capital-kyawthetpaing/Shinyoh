@@ -24,7 +24,7 @@ namespace MasterTouroku_Souko
         {
             ProgramID = "MasterTourokuSouko";
             StartProgram();
-            cboName.Bind(false);
+            cboMode.Bind(false);
             SetButton(ButtonType.BType.Close, F1, "F1(終了)",true);
             SetButton(ButtonType.BType.New, F2, "F2(新規)",true);
             SetButton(ButtonType.BType.Update, F3, "F3(変更)",true);
@@ -41,7 +41,7 @@ namespace MasterTouroku_Souko
 
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string item = cboName.SelectedIndex.ToString();
+            string item = cboMode.SelectedIndex.ToString();
             if (item == "0")
             {
                 txtSouko.Enabled = true;
@@ -58,31 +58,40 @@ namespace MasterTouroku_Souko
         {
             if (tagID == "2")
             {
-                cboName.SelectedIndex = -1;
-                cboName.SelectedIndex = cboName.SelectedIndex + 1;
+                cboMode.SelectedIndex = -1;
+                cboMode.SelectedIndex = cboMode.SelectedIndex + 1;
             }
             if(tagID == "3")
             {
-                cboName.SelectedIndex = -1;
-                cboName.SelectedIndex = cboName.SelectedIndex +2;
+                cboMode.SelectedIndex = -1;
+                cboMode.SelectedIndex = cboMode.SelectedIndex +2;
             }
             if (tagID == "4")
             {
-                cboName.SelectedIndex = -1;
-                cboName.SelectedIndex = cboName.SelectedIndex + 3;
+                cboMode.SelectedIndex = -1;
+                cboMode.SelectedIndex = cboMode.SelectedIndex + 3;
             }
             if (tagID == "5")
             {
-                cboName.SelectedIndex = -1;
-                cboName.SelectedIndex = cboName.SelectedIndex + 4;
+                cboMode.SelectedIndex = -1;
+                cboMode.SelectedIndex = cboMode.SelectedIndex + 4;
             }
             if(tagID == "12")
             {
-                souko(); 
+                DBProcess();
             }
             base.FunctionProcess(tagID);
         }
-        private void souko()
+
+        private void DBProcess()
+        {
+            SoukoEntity soukoEntity = GetSouko();
+            if(cboMode.SelectedValue.Equals("0"))
+            {
+                DoInsert();
+            }
+        }
+        private SoukoEntity GetSouko()
         {
             SoukoEntity soukoEntity = new SoukoEntity();
             soukoEntity.SoukoCD = txtSouko.ToString();
@@ -96,8 +105,13 @@ namespace MasterTouroku_Souko
             soukoEntity.TelNO = txtPhNo.Text.ToString();
             soukoEntity.FaxNO = txtFAX.Text.ToString();
             soukoEntity.Remarks = txtRemark.Text.ToString();
-            soukoEntity.Mode = cboName.SelectedIndex.ToString();
+            soukoEntity.Mode = cboMode.SelectedIndex.ToString();
 
+            return soukoEntity;
         }
+
+        private void DoInsert() { }
+        private void DoUpdate() { }
+        private void DoDelete() { }
     }
 }
