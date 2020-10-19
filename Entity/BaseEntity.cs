@@ -8,5 +8,6 @@ namespace Entity
         public SqlParameter[] Sqlprms { get; set; }
         public string LoginDate { get; set; }
         public string PC { get; set; }
+        public string Mode { get; set; }
     }
 }
