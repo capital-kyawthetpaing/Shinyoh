@@ -53,5 +53,10 @@ namespace MasterTouroku_Souko
                 txtSouko.Enabled = true;
             }
         }
+
+        public override void FunctionProcess(string tagID)
+        {
+            base.FunctionProcess(tagID);
+        }
     }
 }
