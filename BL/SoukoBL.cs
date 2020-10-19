@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace BL {
   public class SoukoBL : BaseBL{
-        public SoukoEntity M_Souko_CUD(SoukoEntity soukoEntity)
+        public string M_Souko_CUD(SoukoEntity soukoEntity)
         {
-            CKMDL cKMDL = new CKMDL();
+            CKMDL ckmdl = new CKMDL();
             soukoEntity.Sqlprms = new SqlParameter[12];
             soukoEntity.Sqlprms[0] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = soukoEntity.SoukoCD };
             soukoEntity.Sqlprms[1] = new SqlParameter("@SoukoName", SqlDbType.VarChar) { Value = soukoEntity.SoukoName };
@@ -26,7 +26,7 @@ namespace BL {
             soukoEntity.Sqlprms[9] = new SqlParameter("@FaxNO", SqlDbType.VarChar) { Value = soukoEntity.FaxNO };
             soukoEntity.Sqlprms[10] = new SqlParameter("@Remarks", SqlDbType.VarChar) { Value = soukoEntity.Remarks };
             soukoEntity.Sqlprms[11] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = soukoEntity.Mode };
-            return null; ;
+            return ckmdl.InsertUpdateDeleteData("M_Souko_CUD",GetConnectionString(),soukoEntity.Sqlprms);
         }
 
     }

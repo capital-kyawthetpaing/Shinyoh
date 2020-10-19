@@ -9,7 +9,7 @@ namespace Entity {
         public string SoukoCD { get; set; }
 		public string SoukoName { get; set; }
 		public string KanaName { get; set; }
-		public int KensakuHyouziJun { get; set; }
+		public string KensakuHyouziJun { get; set; }
 		public string YuubinNO1 { get; set; }
 		public string YuubinNO2 { get; set; }
 		public string Juusho1 { get; set; }

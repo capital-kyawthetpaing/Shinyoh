@@ -76,7 +76,28 @@ namespace MasterTouroku_Souko
                 cboName.SelectedIndex = -1;
                 cboName.SelectedIndex = cboName.SelectedIndex + 4;
             }
+            if(tagID == "12")
+            {
+                souko(); 
+            }
             base.FunctionProcess(tagID);
+        }
+        private void souko()
+        {
+            SoukoEntity soukoEntity = new SoukoEntity();
+            soukoEntity.SoukoCD = txtSouko.ToString();
+            soukoEntity.SoukoName = txtSokouName.Text.ToString();
+            soukoEntity.KanaName = txtKanaName.Text.ToString();
+            soukoEntity.KensakuHyouziJun = txtSearch.Text.ToString();
+            soukoEntity.YuubinNO1 = txtYubin1.Text.ToString();
+            soukoEntity.YuubinNO2 = txtYubin2.Text.ToString();
+            soukoEntity.Juusho1 = txtAddress1.Text.ToString();
+            soukoEntity.Juusho2 = txtAddress2.Text.ToString();
+            soukoEntity.TelNO = txtPhNo.Text.ToString();
+            soukoEntity.FaxNO = txtFAX.Text.ToString();
+            soukoEntity.Remarks = txtRemark.Text.ToString();
+            soukoEntity.Mode = cboName.SelectedIndex.ToString();
+
         }
     }
 }
