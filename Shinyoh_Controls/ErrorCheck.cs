@@ -23,7 +23,7 @@ namespace Shinyoh_Controls
 
         private string TextBoxErrorCheck(STextBox sTextBox)
         {
-            if(sTextBox.IsRequireCheck)
+            if(sTextBox.E102)
             {
                 if (string.IsNullOrWhiteSpace(sTextBox.Text))
                 {
@@ -33,18 +33,18 @@ namespace Shinyoh_Controls
                 }                    
             }
 
-            if(sTextBox.IsZipCheck)
+            if(sTextBox.E102Multi)
             {
-                if(string.IsNullOrWhiteSpace(sTextBox.ctrlZip1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlZip2.Text))
+                if(string.IsNullOrWhiteSpace(sTextBox.ctrlE102_1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlE102_2.Text))
                 {
                     ShowErrorMessage("E102");
-                    sTextBox.ctrlZip1.Focus();
+                    sTextBox.ctrlE102_1.Focus();
                     return "1";
                 }
-                else if(!string.IsNullOrWhiteSpace(sTextBox.ctrlZip1.Text) && string.IsNullOrWhiteSpace(sTextBox.ctrlZip2.Text))
+                else if(!string.IsNullOrWhiteSpace(sTextBox.ctrlE102_1.Text) && string.IsNullOrWhiteSpace(sTextBox.ctrlE102_2.Text))
                 {
                     ShowErrorMessage("E102");
-                    sTextBox.ctrlZip2.Focus();
+                    sTextBox.ctrlE102_2.Focus();
                     return "1";
                 }
             }

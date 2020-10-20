@@ -47,9 +47,9 @@ namespace MasterTouroku_Souko
             switch(mode)
             {
                 case Mode.New:
-                    txtSouko.RequiredCheck(true);
-                    txtSoukoName.RequiredCheck(true);
-                    txtYubin2.ZipCheck(true,txtYubin1, txtYubin2, string.Empty);
+                    txtSouko.E102Check(true);
+                    txtSoukoName.E102Check(true);
+                    txtYubin2.E102MultiCheck(true,txtYubin1, txtYubin2);
                     break;
             }
         }
