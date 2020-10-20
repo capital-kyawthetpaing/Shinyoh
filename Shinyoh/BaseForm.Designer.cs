@@ -46,6 +46,7 @@
             this.BtnF9 = new Shinyoh_Controls.SButton();
             this.BtnF10 = new Shinyoh_Controls.SButton();
             this.BtnF11 = new Shinyoh_Controls.SButton();
+            this.PanelTitle = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.PanelTitle);
             this.panel1.Controls.Add(this.sLabel2);
             this.panel1.Controls.Add(this.sLabel1);
             this.panel1.Controls.Add(this.lblDate);
@@ -171,7 +173,7 @@
             this.BtnF4.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF4.Name = "BtnF4";
             this.BtnF4.Size = new System.Drawing.Size(125, 42);
-            this.BtnF4.TabIndex = 15;
+            this.BtnF4.TabIndex = 16;
             this.BtnF4.Tag = "4";
             this.BtnF4.Text = "(F4)";
             this.BtnF4.UseVisualStyleBackColor = false;
@@ -189,7 +191,7 @@
             this.BtnF5.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF5.Name = "BtnF5";
             this.BtnF5.Size = new System.Drawing.Size(125, 42);
-            this.BtnF5.TabIndex = 16;
+            this.BtnF5.TabIndex = 17;
             this.BtnF5.Tag = "5";
             this.BtnF5.Text = "(F5)";
             this.BtnF5.UseVisualStyleBackColor = false;
@@ -207,7 +209,7 @@
             this.BtnF6.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF6.Name = "BtnF6";
             this.BtnF6.Size = new System.Drawing.Size(125, 42);
-            this.BtnF6.TabIndex = 17;
+            this.BtnF6.TabIndex = 18;
             this.BtnF6.Tag = "6";
             this.BtnF6.Text = "(F6)";
             this.BtnF6.UseVisualStyleBackColor = false;
@@ -225,7 +227,7 @@
             this.BtnF3.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF3.Name = "BtnF3";
             this.BtnF3.Size = new System.Drawing.Size(125, 42);
-            this.BtnF3.TabIndex = 14;
+            this.BtnF3.TabIndex = 15;
             this.BtnF3.Tag = "3";
             this.BtnF3.Text = "(F3)";
             this.BtnF3.UseVisualStyleBackColor = false;
@@ -243,7 +245,7 @@
             this.BtnF2.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF2.Name = "BtnF2";
             this.BtnF2.Size = new System.Drawing.Size(125, 42);
-            this.BtnF2.TabIndex = 13;
+            this.BtnF2.TabIndex = 14;
             this.BtnF2.Tag = "2";
             this.BtnF2.Text = "(F2)";
             this.BtnF2.UseVisualStyleBackColor = false;
@@ -261,7 +263,7 @@
             this.BtnF7.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF7.Name = "BtnF7";
             this.BtnF7.Size = new System.Drawing.Size(125, 42);
-            this.BtnF7.TabIndex = 18;
+            this.BtnF7.TabIndex = 19;
             this.BtnF7.Tag = "7";
             this.BtnF7.Text = "(F7)";
             this.BtnF7.UseVisualStyleBackColor = false;
@@ -279,7 +281,7 @@
             this.BtnF1.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF1.Name = "BtnF1";
             this.BtnF1.Size = new System.Drawing.Size(125, 42);
-            this.BtnF1.TabIndex = 12;
+            this.BtnF1.TabIndex = 13;
             this.BtnF1.Tag = "1";
             this.BtnF1.Text = "(F1)";
             this.BtnF1.UseVisualStyleBackColor = false;
@@ -297,7 +299,7 @@
             this.BtnF8.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF8.Name = "BtnF8";
             this.BtnF8.Size = new System.Drawing.Size(125, 42);
-            this.BtnF8.TabIndex = 19;
+            this.BtnF8.TabIndex = 20;
             this.BtnF8.Tag = "8";
             this.BtnF8.Text = "(F8)";
             this.BtnF8.UseVisualStyleBackColor = false;
@@ -315,7 +317,7 @@
             this.BtnF12.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF12.Name = "BtnF12";
             this.BtnF12.Size = new System.Drawing.Size(136, 42);
-            this.BtnF12.TabIndex = 23;
+            this.BtnF12.TabIndex = 24;
             this.BtnF12.Tag = "12";
             this.BtnF12.Text = "(F12)";
             this.BtnF12.UseVisualStyleBackColor = false;
@@ -333,7 +335,7 @@
             this.BtnF9.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF9.Name = "BtnF9";
             this.BtnF9.Size = new System.Drawing.Size(125, 42);
-            this.BtnF9.TabIndex = 20;
+            this.BtnF9.TabIndex = 21;
             this.BtnF9.Tag = "9";
             this.BtnF9.Text = "(F9)";
             this.BtnF9.UseVisualStyleBackColor = false;
@@ -351,7 +353,7 @@
             this.BtnF10.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF10.Name = "BtnF10";
             this.BtnF10.Size = new System.Drawing.Size(125, 42);
-            this.BtnF10.TabIndex = 21;
+            this.BtnF10.TabIndex = 22;
             this.BtnF10.Tag = "10";
             this.BtnF10.Text = "(F10)";
             this.BtnF10.UseVisualStyleBackColor = false;
@@ -369,12 +371,20 @@
             this.BtnF11.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF11.Name = "BtnF11";
             this.BtnF11.Size = new System.Drawing.Size(125, 42);
-            this.BtnF11.TabIndex = 22;
+            this.BtnF11.TabIndex = 23;
             this.BtnF11.Tag = "11";
             this.BtnF11.Text = "(F11)";
             this.BtnF11.UseVisualStyleBackColor = false;
             this.BtnF11.Click += new System.EventHandler(this.btnFunctionClick);
             this.BtnF11.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
+            // 
+            // PanelTitle
+            // 
+            this.PanelTitle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PanelTitle.Location = new System.Drawing.Point(0, 0);
+            this.PanelTitle.Name = "PanelTitle";
+            this.PanelTitle.Size = new System.Drawing.Size(695, 75);
+            this.PanelTitle.TabIndex = 8;
             // 
             // BaseForm
             // 
@@ -415,6 +425,7 @@
         private Shinyoh_Controls.SLabel sLabel2;
         private Shinyoh_Controls.SLabel sLabel1;
         protected System.Windows.Forms.Panel panel1;
+        protected System.Windows.Forms.Panel PanelTitle;
     }
 }
 

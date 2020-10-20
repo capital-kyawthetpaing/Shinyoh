@@ -49,37 +49,35 @@
             this.txtSoukoName = new Shinyoh_Controls.STextBox();
             this.lblSokouName = new Shinyoh_Controls.SLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.sLabel1 = new Shinyoh_Controls.SLabel();
-            this.lblSouko = new Shinyoh_Controls.SLabel();
-            this.lblCopySouko = new Shinyoh_Controls.SLabel();
-            this.txtSouko = new Shinyoh_Controls.STextBox();
-            this.txtCopySouko = new Shinyoh_Controls.STextBox();
             this.cboMode = new Shinyoh_Controls.SCombo();
+            this.txtCopySouko = new Shinyoh_Controls.STextBox();
+            this.txtSouko = new Shinyoh_Controls.STextBox();
+            this.lblCopySouko = new Shinyoh_Controls.SLabel();
+            this.lblSouko = new Shinyoh_Controls.SLabel();
+            this.sLabel1 = new Shinyoh_Controls.SLabel();
+            this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
+            this.PanelTitle.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.cboMode);
-            this.panel1.Controls.Add(this.txtCopySouko);
-            this.panel1.Controls.Add(this.txtSouko);
-            this.panel1.Controls.Add(this.lblCopySouko);
-            this.panel1.Controls.Add(this.lblSouko);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
-            this.panel1.Controls.SetChildIndex(this.lblSouko, 0);
-            this.panel1.Controls.SetChildIndex(this.lblCopySouko, 0);
-            this.panel1.Controls.SetChildIndex(this.txtSouko, 0);
-            this.panel1.Controls.SetChildIndex(this.txtCopySouko, 0);
-            this.panel1.Controls.SetChildIndex(this.cboMode, 0);
+            // 
+            // PanelTitle
+            // 
+            this.PanelTitle.Controls.Add(this.cboMode);
+            this.PanelTitle.Controls.Add(this.lblSouko);
+            this.PanelTitle.Controls.Add(this.txtSouko);
+            this.PanelTitle.Controls.Add(this.lblCopySouko);
+            this.PanelTitle.Controls.Add(this.txtCopySouko);
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.txtSearch);
-            this.panel2.Controls.Add(this.lblSearch);
             this.panel2.Controls.Add(this.txtRemark);
             this.panel2.Controls.Add(this.lblRemark);
             this.panel2.Controls.Add(this.txtFAX);
@@ -120,7 +118,7 @@
             this.txtSearch.NextControlName = null;
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(100, 19);
-            this.txtSearch.TabIndex = 11;
+            this.txtSearch.TabIndex = 12;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -155,7 +153,7 @@
             this.txtRemark.NextControlName = "txtSearch";
             this.txtRemark.SearchType = Entity.SearchType.ScType.None;
             this.txtRemark.Size = new System.Drawing.Size(527, 19);
-            this.txtRemark.TabIndex = 10;
+            this.txtRemark.TabIndex = 11;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblRemark
@@ -189,7 +187,7 @@
             this.txtFAX.NextControlName = "txtRemark";
             this.txtFAX.SearchType = Entity.SearchType.ScType.None;
             this.txtFAX.Size = new System.Drawing.Size(177, 19);
-            this.txtFAX.TabIndex = 9;
+            this.txtFAX.TabIndex = 10;
             this.txtFAX.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblFAX
@@ -223,7 +221,7 @@
             this.txtPhNo.NextControlName = "txtFAX";
             this.txtPhNo.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNo.Size = new System.Drawing.Size(177, 19);
-            this.txtPhNo.TabIndex = 8;
+            this.txtPhNo.TabIndex = 9;
             this.txtPhNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhNo
@@ -257,7 +255,7 @@
             this.txtAddress2.NextControlName = "txtPhNo";
             this.txtAddress2.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress2.Size = new System.Drawing.Size(527, 19);
-            this.txtAddress2.TabIndex = 7;
+            this.txtAddress2.TabIndex = 8;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress2
@@ -291,7 +289,7 @@
             this.txtAddress1.NextControlName = "txtAddress2";
             this.txtAddress1.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress1.Size = new System.Drawing.Size(527, 19);
-            this.txtAddress1.TabIndex = 6;
+            this.txtAddress1.TabIndex = 7;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress1
@@ -325,7 +323,7 @@
             this.txtYubin2.NextControlName = "txtAddress1";
             this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin2.Size = new System.Drawing.Size(100, 19);
-            this.txtYubin2.TabIndex = 5;
+            this.txtYubin2.TabIndex = 6;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtYubin1
@@ -345,7 +343,7 @@
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin1.Size = new System.Drawing.Size(100, 19);
-            this.txtYubin1.TabIndex = 4;
+            this.txtYubin1.TabIndex = 5;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblYubinNo
@@ -379,7 +377,7 @@
             this.txtKanaName.NextControlName = "txtYubin1";
             this.txtKanaName.SearchType = Entity.SearchType.ScType.None;
             this.txtKanaName.Size = new System.Drawing.Size(357, 19);
-            this.txtKanaName.TabIndex = 3;
+            this.txtKanaName.TabIndex = 4;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblKanaName
@@ -413,7 +411,7 @@
             this.txtSoukoName.NextControlName = "txtKanaName";
             this.txtSoukoName.SearchType = Entity.SearchType.ScType.None;
             this.txtSoukoName.Size = new System.Drawing.Size(357, 19);
-            this.txtSoukoName.TabIndex = 2;
+            this.txtSoukoName.TabIndex = 3;
             this.txtSoukoName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblSokouName
@@ -441,48 +439,39 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "-";
             // 
-            // sLabel1
+            // cboMode
             // 
-            this.sLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel1.Location = new System.Drawing.Point(677, 60);
-            this.sLabel1.Name = "sLabel1";
-            this.sLabel1.Size = new System.Drawing.Size(100, 19);
-            this.sLabel1.TabIndex = 41;
-            this.sLabel1.Text = "倉庫名";
-            this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.cboMode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.cboMode.FormattingEnabled = true;
+            this.cboMode.Location = new System.Drawing.Point(43, 7);
+            this.cboMode.MoveNext = true;
+            this.cboMode.Name = "cboMode";
+            this.cboMode.NextControl = null;
+            this.cboMode.NextControlName = "txtSouko";
+            this.cboMode.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cboMode.Size = new System.Drawing.Size(90, 21);
+            this.cboMode.TabIndex = 0;
+            this.cboMode.SelectedIndexChanged += new System.EventHandler(this.cboName_SelectedIndexChanged);
             // 
-            // lblSouko
+            // txtCopySouko
             // 
-            this.lblSouko.BackColor = System.Drawing.Color.Red;
-            this.lblSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblSouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSouko.ForeColor = System.Drawing.Color.White;
-            this.lblSouko.Location = new System.Drawing.Point(142, 9);
-            this.lblSouko.MinimumSize = new System.Drawing.Size(100, 19);
-            this.lblSouko.Name = "lblSouko";
-            this.lblSouko.Size = new System.Drawing.Size(100, 19);
-            this.lblSouko.TabIndex = 24;
-            this.lblSouko.Text = "倉庫";
-            this.lblSouko.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblCopySouko
-            // 
-            this.lblCopySouko.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lblCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCopySouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCopySouko.ForeColor = System.Drawing.Color.Black;
-            this.lblCopySouko.Location = new System.Drawing.Point(142, 37);
-            this.lblCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
-            this.lblCopySouko.Name = "lblCopySouko";
-            this.lblCopySouko.Size = new System.Drawing.Size(100, 19);
-            this.lblCopySouko.TabIndex = 26;
-            this.lblCopySouko.Text = "複写元倉庫";
-            this.lblCopySouko.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtCopySouko.AllowMinus = false;
+            this.txtCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCopySouko.DecimalPlace = 0;
+            this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtCopySouko.IntegerPart = 0;
+            this.txtCopySouko.IsRequire = false;
+            this.txtCopySouko.Location = new System.Drawing.Point(241, 37);
+            this.txtCopySouko.MaxLength = 10;
+            this.txtCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtCopySouko.MoveNext = true;
+            this.txtCopySouko.Name = "txtCopySouko";
+            this.txtCopySouko.NextControl = null;
+            this.txtCopySouko.NextControlName = "txtSoukoName";
+            this.txtCopySouko.SearchType = Entity.SearchType.ScType.None;
+            this.txtCopySouko.Size = new System.Drawing.Size(100, 19);
+            this.txtCopySouko.TabIndex = 2;
+            this.txtCopySouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtSouko
             // 
@@ -501,38 +490,64 @@
             this.txtSouko.NextControlName = "txtCopySouko";
             this.txtSouko.SearchType = Entity.SearchType.ScType.None;
             this.txtSouko.Size = new System.Drawing.Size(100, 19);
-            this.txtSouko.TabIndex = 0;
+            this.txtSouko.TabIndex = 1;
             this.txtSouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtCopySouko
+            // lblCopySouko
             // 
-            this.txtCopySouko.AllowMinus = false;
-            this.txtCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopySouko.DecimalPlace = 0;
-            this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.txtCopySouko.IntegerPart = 0;
-            this.txtCopySouko.IsRequire = false;
-            this.txtCopySouko.Location = new System.Drawing.Point(241, 37);
-            this.txtCopySouko.MaxLength = 10;
-            this.txtCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtCopySouko.MoveNext = true;
-            this.txtCopySouko.Name = "txtCopySouko";
-            this.txtCopySouko.NextControl = null;
-            this.txtCopySouko.NextControlName = "txtSokouName";
-            this.txtCopySouko.SearchType = Entity.SearchType.ScType.None;
-            this.txtCopySouko.Size = new System.Drawing.Size(100, 19);
-            this.txtCopySouko.TabIndex = 1;
-            this.txtCopySouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.lblCopySouko.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblCopySouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblCopySouko.ForeColor = System.Drawing.Color.Black;
+            this.lblCopySouko.Location = new System.Drawing.Point(142, 37);
+            this.lblCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
+            this.lblCopySouko.Name = "lblCopySouko";
+            this.lblCopySouko.Size = new System.Drawing.Size(100, 19);
+            this.lblCopySouko.TabIndex = 26;
+            this.lblCopySouko.Text = "複写元倉庫";
+            this.lblCopySouko.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cboMode
+            // lblSouko
             // 
-            this.cboMode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
-            this.cboMode.FormattingEnabled = true;
-            this.cboMode.Location = new System.Drawing.Point(43, 7);
-            this.cboMode.Name = "cboMode";
-            this.cboMode.Size = new System.Drawing.Size(90, 21);
-            this.cboMode.TabIndex = 27;
-            this.cboMode.SelectedIndexChanged += new System.EventHandler(this.cboName_SelectedIndexChanged);
+            this.lblSouko.BackColor = System.Drawing.Color.Red;
+            this.lblSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSouko.ForeColor = System.Drawing.Color.White;
+            this.lblSouko.Location = new System.Drawing.Point(142, 9);
+            this.lblSouko.MinimumSize = new System.Drawing.Size(100, 19);
+            this.lblSouko.Name = "lblSouko";
+            this.lblSouko.Size = new System.Drawing.Size(100, 19);
+            this.lblSouko.TabIndex = 24;
+            this.lblSouko.Text = "倉庫";
+            this.lblSouko.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sLabel1
+            // 
+            this.sLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel1.Location = new System.Drawing.Point(677, 60);
+            this.sLabel1.Name = "sLabel1";
+            this.sLabel1.Size = new System.Drawing.Size(100, 19);
+            this.sLabel1.TabIndex = 41;
+            this.sLabel1.Text = "倉庫名";
+            this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sLabel3
+            // 
+            this.sLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel3.Location = new System.Drawing.Point(473, 49);
+            this.sLabel3.Name = "sLabel3";
+            this.sLabel3.Size = new System.Drawing.Size(100, 19);
+            this.sLabel3.TabIndex = 0;
+            this.sLabel3.Text = "sLabel3";
+            this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MasterTourokuSouko
             // 
@@ -547,6 +562,7 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.panel1.ResumeLayout(false);
+            this.PanelTitle.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -584,6 +600,7 @@
         private Shinyoh_Controls.STextBox txtSouko;
         private Shinyoh_Controls.STextBox txtCopySouko;
         private Shinyoh_Controls.SCombo cboMode;
+        private Shinyoh_Controls.SLabel sLabel3;
     }
 }
 

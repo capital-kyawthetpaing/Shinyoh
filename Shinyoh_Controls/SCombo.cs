@@ -9,6 +9,14 @@ namespace Shinyoh_Controls
     {
         [Browsable(true)]
         [Category("Shinyoh Properties")]
+        [Description("NextControlName")]
+        [DisplayName("NextControlName")]
+        public string NextControlName { get; set; }
+        public bool MoveNext { get; set; } = true;
+        public Control NextControl { get; set; }
+
+        [Browsable(true)]
+        [Category("Shinyoh Properties")]
         [Description("tableName")]
         [DisplayName("Type")]
         public CType ComboType { get; set; }
@@ -55,6 +63,11 @@ namespace Shinyoh_Controls
             if (e.KeyCode == Keys.F9)
             {
                 this.DroppedDown = true;
+            }
+            else if(e.KeyCode == Keys.Enter)
+            {
+                Control nextControl = this.TopLevelControl.Controls.Find(NextControlName, true)[0];
+                nextControl.Focus();
             }
             base.OnKeyDown(e);
         }
