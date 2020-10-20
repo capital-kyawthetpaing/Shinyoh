@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Shinyoh;
 using Entity;
 using Shinyoh_Controls;
+using BL;
 
 namespace MasterTouroku_Souko
 {
@@ -88,13 +89,13 @@ namespace MasterTouroku_Souko
             SoukoEntity soukoEntity = GetSouko();
             if(cboMode.SelectedValue.Equals("0"))
             {
-                DoInsert();
+                DoInsert(soukoEntity);
             }
         }
         private SoukoEntity GetSouko()
         {
             SoukoEntity soukoEntity = new SoukoEntity();
-            soukoEntity.SoukoCD = txtSouko.ToString();
+            soukoEntity.SoukoCD = txtSouko.Text.ToString();
             soukoEntity.SoukoName = txtSokouName.Text.ToString();
             soukoEntity.KanaName = txtKanaName.Text.ToString();
             soukoEntity.KensakuHyouziJun = txtSearch.Text.ToString();
@@ -106,11 +107,12 @@ namespace MasterTouroku_Souko
             soukoEntity.FaxNO = txtFAX.Text.ToString();
             soukoEntity.Remarks = txtRemark.Text.ToString();
             soukoEntity.Mode = cboMode.SelectedIndex.ToString();
-
             return soukoEntity;
         }
-
-        private void DoInsert() { }
+        private void DoInsert(SoukoEntity ss) {
+            SoukoBL souko = new SoukoBL();
+            souko.M_Souko_CUD(ss);
+        }
         private void DoUpdate() { }
         private void DoDelete() { }
     }

@@ -121,7 +121,6 @@
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType3.RequireCheck = false;
             checkType3.ZipCDCheck = false;
-            this.txtSearch.checkType = checkType3;
             this.txtSearch.DecimalPlace = 0;
             this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSearch.IntegerPart = 0;
@@ -159,7 +158,6 @@
             this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType4.RequireCheck = false;
             checkType4.ZipCDCheck = false;
-            this.txtRemark.checkType = checkType4;
             this.txtRemark.DecimalPlace = 0;
             this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtRemark.IntegerPart = 0;
@@ -196,7 +194,6 @@
             this.txtFAX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType5.RequireCheck = false;
             checkType5.ZipCDCheck = false;
-            this.txtFAX.checkType = checkType5;
             this.txtFAX.DecimalPlace = 0;
             this.txtFAX.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtFAX.IntegerPart = 0;
@@ -233,7 +230,6 @@
             this.txtPhNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType6.RequireCheck = false;
             checkType6.ZipCDCheck = false;
-            this.txtPhNo.checkType = checkType6;
             this.txtPhNo.DecimalPlace = 0;
             this.txtPhNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo.IntegerPart = 0;
@@ -270,7 +266,6 @@
             this.txtAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType7.RequireCheck = false;
             checkType7.ZipCDCheck = false;
-            this.txtAddress2.checkType = checkType7;
             this.txtAddress2.DecimalPlace = 0;
             this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
@@ -307,7 +302,6 @@
             this.txtAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType8.RequireCheck = false;
             checkType8.ZipCDCheck = false;
-            this.txtAddress1.checkType = checkType8;
             this.txtAddress1.DecimalPlace = 0;
             this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
@@ -344,7 +338,6 @@
             this.txtYubin2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType9.RequireCheck = false;
             checkType9.ZipCDCheck = false;
-            this.txtYubin2.checkType = checkType9;
             this.txtYubin2.DecimalPlace = 0;
             this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
@@ -367,7 +360,6 @@
             this.txtYubin1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType10.RequireCheck = false;
             checkType10.ZipCDCheck = false;
-            this.txtYubin1.checkType = checkType10;
             this.txtYubin1.DecimalPlace = 0;
             this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
@@ -404,7 +396,6 @@
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType11.RequireCheck = false;
             checkType11.ZipCDCheck = false;
-            this.txtKanaName.checkType = checkType11;
             this.txtKanaName.DecimalPlace = 0;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
@@ -441,7 +432,6 @@
             this.txtSokouName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType12.RequireCheck = false;
             checkType12.ZipCDCheck = false;
-            this.txtSokouName.checkType = checkType12;
             this.txtSokouName.DecimalPlace = 0;
             this.txtSokouName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSokouName.IntegerPart = 0;
@@ -532,7 +522,6 @@
             this.txtSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType2.RequireCheck = false;
             checkType2.ZipCDCheck = false;
-            this.txtSouko.checkType = checkType2;
             this.txtSouko.DecimalPlace = 0;
             this.txtSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.txtSouko.IntegerPart = 0;
@@ -555,7 +544,6 @@
             this.txtCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             checkType1.RequireCheck = false;
             checkType1.ZipCDCheck = false;
-            this.txtCopySouko.checkType = checkType1;
             this.txtCopySouko.DecimalPlace = 0;
             this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.txtCopySouko.IntegerPart = 0;
