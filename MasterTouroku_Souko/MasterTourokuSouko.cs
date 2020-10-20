@@ -92,6 +92,16 @@ namespace MasterTouroku_Souko
                 soukoEntity.Mode = "New";
                 DoInsert(soukoEntity);
             }
+            else if(cboMode.SelectedValue.Equals("2"))
+            {
+                soukoEntity.Mode = "Update";
+                DoUpdate(soukoEntity);
+            }
+            else if(cboMode.SelectedValue.Equals("3"))
+            {
+                soukoEntity.Mode = "Delete";
+                DoDelete(soukoEntity);
+            }
         }
         private SoukoEntity GetSouko()
         {
@@ -110,11 +120,17 @@ namespace MasterTouroku_Souko
             soukoEntity.Mode = cboMode.SelectedIndex.ToString();
             return soukoEntity;
         }
-        private void DoInsert(SoukoEntity ss) {
+        private void DoInsert(SoukoEntity soukoInsert) {
             SoukoBL souko = new SoukoBL();
-            souko.M_Souko_CUD(ss);
+            souko.M_Souko_CUD(soukoInsert);
         }
-        private void DoUpdate() { }
-        private void DoDelete() { }
+        private void DoUpdate(SoukoEntity soukoUpdate) {
+            SoukoBL souko = new SoukoBL();
+            souko.M_Souko_CUD(soukoUpdate);
+        }
+        private void DoDelete(SoukoEntity soukoDelete) {
+            SoukoBL souko = new SoukoBL();
+            souko.M_Souko_CUD(soukoDelete);
+        }
     }
 }
