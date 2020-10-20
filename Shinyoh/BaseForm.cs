@@ -143,6 +143,10 @@ namespace Shinyoh
                     else
                         FunctionProcess(btn.Tag.ToString());
                     break;
+                case ButtonType.BType.Save:
+                    FunctionProcess(btn.Tag.ToString());
+                    break;
+
             }
         }
 

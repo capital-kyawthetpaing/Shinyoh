@@ -87,7 +87,7 @@ namespace MasterTouroku_Souko
         private void DBProcess()
         {
             SoukoEntity soukoEntity = GetSouko();
-            if(cboMode.SelectedValue.Equals("0"))
+            if(cboMode.SelectedValue.Equals("1"))
             {
                 DoInsert(soukoEntity);
             }
