@@ -425,7 +425,7 @@
         private Shinyoh_Controls.SLabel sLabel2;
         private Shinyoh_Controls.SLabel sLabel1;
         protected System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel PanelTitle;
+        protected System.Windows.Forms.Panel PanelTitle;
     }
 }
 
