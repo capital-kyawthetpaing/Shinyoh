@@ -120,7 +120,7 @@
             this.txtSearch.NextControlName = null;
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(100, 19);
-            this.txtSearch.TabIndex = 11;
+            this.txtSearch.TabIndex = 12;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -155,7 +155,7 @@
             this.txtRemark.NextControlName = "txtSearch";
             this.txtRemark.SearchType = Entity.SearchType.ScType.None;
             this.txtRemark.Size = new System.Drawing.Size(527, 19);
-            this.txtRemark.TabIndex = 10;
+            this.txtRemark.TabIndex = 11;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblRemark
@@ -189,7 +189,7 @@
             this.txtFAX.NextControlName = "txtRemark";
             this.txtFAX.SearchType = Entity.SearchType.ScType.None;
             this.txtFAX.Size = new System.Drawing.Size(177, 19);
-            this.txtFAX.TabIndex = 9;
+            this.txtFAX.TabIndex = 10;
             this.txtFAX.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblFAX
@@ -223,7 +223,7 @@
             this.txtPhNo.NextControlName = "txtFAX";
             this.txtPhNo.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNo.Size = new System.Drawing.Size(177, 19);
-            this.txtPhNo.TabIndex = 8;
+            this.txtPhNo.TabIndex = 9;
             this.txtPhNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhNo
@@ -257,7 +257,7 @@
             this.txtAddress2.NextControlName = "txtPhNo";
             this.txtAddress2.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress2.Size = new System.Drawing.Size(527, 19);
-            this.txtAddress2.TabIndex = 7;
+            this.txtAddress2.TabIndex = 8;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress2
@@ -291,7 +291,7 @@
             this.txtAddress1.NextControlName = "txtAddress2";
             this.txtAddress1.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress1.Size = new System.Drawing.Size(527, 19);
-            this.txtAddress1.TabIndex = 6;
+            this.txtAddress1.TabIndex = 7;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress1
@@ -325,7 +325,7 @@
             this.txtYubin2.NextControlName = "txtAddress1";
             this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin2.Size = new System.Drawing.Size(100, 19);
-            this.txtYubin2.TabIndex = 5;
+            this.txtYubin2.TabIndex = 6;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtYubin1
@@ -345,7 +345,7 @@
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin1.Size = new System.Drawing.Size(100, 19);
-            this.txtYubin1.TabIndex = 4;
+            this.txtYubin1.TabIndex = 5;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblYubinNo
@@ -379,7 +379,7 @@
             this.txtKanaName.NextControlName = "txtYubin1";
             this.txtKanaName.SearchType = Entity.SearchType.ScType.None;
             this.txtKanaName.Size = new System.Drawing.Size(357, 19);
-            this.txtKanaName.TabIndex = 3;
+            this.txtKanaName.TabIndex = 4;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblKanaName
@@ -413,7 +413,7 @@
             this.txtSoukoName.NextControlName = "txtKanaName";
             this.txtSoukoName.SearchType = Entity.SearchType.ScType.None;
             this.txtSoukoName.Size = new System.Drawing.Size(357, 19);
-            this.txtSoukoName.TabIndex = 2;
+            this.txtSoukoName.TabIndex = 3;
             this.txtSoukoName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblSokouName
@@ -501,7 +501,7 @@
             this.txtSouko.NextControlName = "txtCopySouko";
             this.txtSouko.SearchType = Entity.SearchType.ScType.None;
             this.txtSouko.Size = new System.Drawing.Size(100, 19);
-            this.txtSouko.TabIndex = 0;
+            this.txtSouko.TabIndex = 1;
             this.txtSouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtCopySouko
@@ -518,10 +518,10 @@
             this.txtCopySouko.MoveNext = true;
             this.txtCopySouko.Name = "txtCopySouko";
             this.txtCopySouko.NextControl = null;
-            this.txtCopySouko.NextControlName = "txtSokouName";
+            this.txtCopySouko.NextControlName = "txtSoukoName";
             this.txtCopySouko.SearchType = Entity.SearchType.ScType.None;
             this.txtCopySouko.Size = new System.Drawing.Size(100, 19);
-            this.txtCopySouko.TabIndex = 1;
+            this.txtCopySouko.TabIndex = 2;
             this.txtCopySouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // cboMode
@@ -529,9 +529,13 @@
             this.cboMode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
             this.cboMode.FormattingEnabled = true;
             this.cboMode.Location = new System.Drawing.Point(43, 7);
+            this.cboMode.MoveNext = true;
             this.cboMode.Name = "cboMode";
+            this.cboMode.NextControl = null;
+            this.cboMode.NextControlName = "txtSouko";
+            this.cboMode.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cboMode.Size = new System.Drawing.Size(90, 21);
-            this.cboMode.TabIndex = 27;
+            this.cboMode.TabIndex = 0;
             this.cboMode.SelectedIndexChanged += new System.EventHandler(this.cboName_SelectedIndexChanged);
             // 
             // MasterTourokuSouko
