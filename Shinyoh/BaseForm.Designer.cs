@@ -46,6 +46,7 @@
             this.BtnF9 = new Shinyoh_Controls.SButton();
             this.BtnF10 = new Shinyoh_Controls.SButton();
             this.BtnF11 = new Shinyoh_Controls.SButton();
+            this.PanelTitle = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.PanelTitle);
             this.panel1.Controls.Add(this.sLabel2);
             this.panel1.Controls.Add(this.sLabel1);
             this.panel1.Controls.Add(this.lblDate);
@@ -376,6 +378,14 @@
             this.BtnF11.Click += new System.EventHandler(this.btnFunctionClick);
             this.BtnF11.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
             // 
+            // PanelTitle
+            // 
+            this.PanelTitle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.PanelTitle.Location = new System.Drawing.Point(0, 0);
+            this.PanelTitle.Name = "PanelTitle";
+            this.PanelTitle.Size = new System.Drawing.Size(695, 75);
+            this.PanelTitle.TabIndex = 8;
+            // 
             // BaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -415,6 +425,7 @@
         private Shinyoh_Controls.SLabel sLabel2;
         private Shinyoh_Controls.SLabel sLabel1;
         protected System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel PanelTitle;
     }
 }
 

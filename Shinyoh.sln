@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30517.126
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1169
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinyoh", "Shinyoh\Shinyoh.csproj", "{697E1304-F141-4CCE-B816-9CC225F441C4}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinyoh_Controls", "Shinyoh_Controls\Shinyoh_Controls.csproj", "{B15A285F-DDEC-443D-8BD0-762B893BB937}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{0CC4487D-C081-4D4F-87D5-028552310763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_Staff", "MasterTouroku_Staff\MasterTouroku_Staff.csproj", "{3B48B106-2F72-4876-8EFF-7BF1F2FAC61A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{0CC4487D-C081-4D4F-87D5-028552310763}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CC4487D-C081-4D4F-87D5-028552310763}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CC4487D-C081-4D4F-87D5-028552310763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B48B106-2F72-4876-8EFF-7BF1F2FAC61A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B48B106-2F72-4876-8EFF-7BF1F2FAC61A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B48B106-2F72-4876-8EFF-7BF1F2FAC61A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B48B106-2F72-4876-8EFF-7BF1F2FAC61A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
