@@ -26,6 +26,16 @@ namespace Shinyoh
         protected string ProgramID { get; set; }
         protected Control PreviousCtrl { get; set; }
 
+        #region ProcessMode
+        public enum Mode
+        {
+            New,
+            Update,
+            Delete,
+            Inquiry
+        }
+        #endregion
+
         #region Function Button
         protected SButton F1 { get => BtnF1; set => BtnF1 = value; }
         protected SButton F2 { get => BtnF2; set => BtnF2 = value; }

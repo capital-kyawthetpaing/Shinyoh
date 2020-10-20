@@ -1,9 +1,15 @@
 ﻿using System.Windows.Forms;
+using BL;
 
 namespace Shinyoh_Controls
 {
     public class ErrorCheck
     {
+        public void ShowErrorMessage(string messageID)
+        {
+            BaseBL bbl = new BaseBL();
+            bbl.ShowMessage(messageID);
+        }
         public string Check(Control ctrl)
         {
             if(ctrl is STextBox)
@@ -17,23 +23,29 @@ namespace Shinyoh_Controls
 
         private string TextBoxErrorCheck(STextBox sTextBox)
         {
-            if(sTextBox.IsRequireCheck)
+            if(sTextBox.E102)
             {
-                if (!string.IsNullOrWhiteSpace(sTextBox.Text))
-                    return "E102";
+                if (string.IsNullOrWhiteSpace(sTextBox.Text))
+                {
+                    ShowErrorMessage("E102");
+                    sTextBox.Focus();
+                    return "1";
+                }                    
             }
 
-            if(sTextBox.IsZipCheck)
+            if(sTextBox.E102Multi)
             {
-                if(string.IsNullOrWhiteSpace(sTextBox.ctrlZip1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlZip2.Text))
+                if(string.IsNullOrWhiteSpace(sTextBox.ctrlE102_1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlE102_2.Text))
                 {
-                    sTextBox.ctrlZip1.Focus();
-                    return "E102";
+                    ShowErrorMessage("E102");
+                    sTextBox.ctrlE102_1.Focus();
+                    return "1";
                 }
-                else if(!string.IsNullOrWhiteSpace(sTextBox.ctrlZip1.Text) && string.IsNullOrWhiteSpace(sTextBox.ctrlZip2.Text))
+                else if(!string.IsNullOrWhiteSpace(sTextBox.ctrlE102_1.Text) && string.IsNullOrWhiteSpace(sTextBox.ctrlE102_2.Text))
                 {
-                    sTextBox.ctrlZip2.Focus();
-                    return "E102";
+                    ShowErrorMessage("E102");
+                    sTextBox.ctrlE102_2.Focus();
+                    return "1";
                 }
             }
 

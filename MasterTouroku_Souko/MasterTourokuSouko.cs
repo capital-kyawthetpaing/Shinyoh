@@ -38,6 +38,20 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.BType.Empty, F8, "",false);
             SetButton(ButtonType.BType.Empty, F10, "",false);
             SetButton(ButtonType.BType.Empty, F11, "",false);
+
+            ChangeMode(Mode.New);
+        }
+
+        private void ChangeMode(Mode mode)
+        {
+            switch(mode)
+            {
+                case Mode.New:
+                    txtSouko.E102Check(true);
+                    txtSoukoName.E102Check(true);
+                    txtYubin2.E102MultiCheck(true,txtYubin1, txtYubin2);
+                    break;
+            }
         }
 
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
@@ -92,12 +106,22 @@ namespace MasterTouroku_Souko
                 soukoEntity.Mode = "New";
                 DoInsert(soukoEntity);
             }
+            else if(cboMode.SelectedValue.Equals("2"))
+            {
+                soukoEntity.Mode = "Update";
+                DoUpdate(soukoEntity);
+            }
+            else if(cboMode.SelectedValue.Equals("3"))
+            {
+                soukoEntity.Mode = "Delete";
+                DoDelete(soukoEntity);
+            }
         }
         private SoukoEntity GetSouko()
         {
             SoukoEntity soukoEntity = new SoukoEntity();
             soukoEntity.SoukoCD = txtSouko.Text.ToString();
-            soukoEntity.SoukoName = txtSokouName.Text.ToString();
+            soukoEntity.SoukoName = txtSoukoName.Text.ToString();
             soukoEntity.KanaName = txtKanaName.Text.ToString();
             soukoEntity.KensakuHyouziJun = txtSearch.Text.ToString();
             soukoEntity.YuubinNO1 = txtYubin1.Text.ToString();
@@ -110,11 +134,17 @@ namespace MasterTouroku_Souko
             soukoEntity.Mode = cboMode.SelectedIndex.ToString();
             return soukoEntity;
         }
-        private void DoInsert(SoukoEntity ss) {
+        private void DoInsert(SoukoEntity soukoInsert) {
             SoukoBL souko = new SoukoBL();
-            souko.M_Souko_CUD(ss);
+            souko.M_Souko_CUD(soukoInsert);
         }
-        private void DoUpdate() { }
-        private void DoDelete() { }
+        private void DoUpdate(SoukoEntity soukoUpdate) {
+            SoukoBL souko = new SoukoBL();
+            souko.M_Souko_CUD(soukoUpdate);
+        }
+        private void DoDelete(SoukoEntity soukoDelete) {
+            SoukoBL souko = new SoukoBL();
+            souko.M_Souko_CUD(soukoDelete);
+        }
     }
 }

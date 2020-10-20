@@ -6,7 +6,6 @@ using BL;
 using System.Drawing;
 using Entity;
 using static Entity.SearchType;
-using System.Diagnostics.Tracing;
 
 namespace Shinyoh_Controls
 {
@@ -77,16 +76,11 @@ namespace Shinyoh_Controls
         public bool MoveNext { get; set; } = true;
         public Control NextControl { get; set; }
 
-        public bool IsRequireCheck;
-        public bool IsZipCheck;
+        public bool E102;
+        public bool E102Multi;
 
-        private string zipOnLoad;
-        private string zip1;
-        private string zip2;
-
-
-        public Control ctrlZip1;
-        public Control ctrlZip2;
+        public Control ctrlE102_1;
+        public Control ctrlE102_2;
 
         //Constructor
         public STextBox()
@@ -132,13 +126,17 @@ namespace Shinyoh_Controls
             {
                 string result = errchk.Check(this);
 
+                if(result.Equals("0"))
+                {
+                    if (NextControl != null)
+                        NextControl.Focus();
+                }
+
                 if(cf.IsByteLengthOver(MaxLength,Text))
                 {
                     MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                if (NextControl != null)
-                    NextControl.Focus();
                 base.OnKeyDown(e);
             }
         }
@@ -167,12 +165,7 @@ namespace Shinyoh_Controls
             this.BackColor = Color.White;
             base.OnLeave(e);
         }
-        private void ShowErrorMessage(string messageID)
-        {
-            bbl.ShowMessage(messageID);
-            this.SelectionStart = 0;
-            this.SelectionLength = this.Text.Length;
-        }
+
         protected override void InitLayout()
         {
             base.InitLayout();
@@ -180,17 +173,16 @@ namespace Shinyoh_Controls
             base.Height = 19;
         }
 
-        public void RequiredCeck(bool value)
+        public void E102Check(bool value)
         {
-            IsRequireCheck  = value;
+            E102  = value;
         }
 
-        public void ZipCheck(bool value,Control zip1,Control zip2,string zipOnLoad)
+        public void E102MultiCheck(bool value,Control ctrl1,Control ctrl2)
         {
-            this.IsZipCheck = value;
-            this.ctrlZip1 = zip1;
-            this.ctrlZip2 = zip2;
-            this.zipOnLoad = zipOnLoad;
+            this.E102 = value;
+            this.ctrlE102_1 = ctrl1;
+            this.ctrlE102_2 = ctrl2;
         }
     }
 }

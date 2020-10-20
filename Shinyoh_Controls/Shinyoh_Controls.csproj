@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckType.cs" />
+    <Compile Include="Common.cs" />
     <Compile Include="ErrorCheck.cs" />
     <Compile Include="SButton.cs">
       <SubType>Component</SubType>
