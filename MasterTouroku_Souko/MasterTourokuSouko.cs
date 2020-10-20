@@ -89,6 +89,7 @@ namespace MasterTouroku_Souko
             SoukoEntity soukoEntity = GetSouko();
             if(cboMode.SelectedValue.Equals("1"))
             {
+                soukoEntity.Mode = "New";
                 DoInsert(soukoEntity);
             }
         }
