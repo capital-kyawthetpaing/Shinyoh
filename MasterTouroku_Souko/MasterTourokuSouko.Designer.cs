@@ -28,18 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Shinyoh_Controls.CheckType checkType3 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType4 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType5 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType6 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType7 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType8 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType9 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType10 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType11 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType12 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType2 = new Shinyoh_Controls.CheckType();
-            Shinyoh_Controls.CheckType checkType1 = new Shinyoh_Controls.CheckType();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtSearch = new Shinyoh_Controls.STextBox();
             this.lblSearch = new Shinyoh_Controls.SLabel();
@@ -58,7 +46,7 @@
             this.lblYubinNo = new Shinyoh_Controls.SLabel();
             this.txtKanaName = new Shinyoh_Controls.STextBox();
             this.lblKanaName = new Shinyoh_Controls.SLabel();
-            this.txtSokouName = new Shinyoh_Controls.STextBox();
+            this.txtSoukoName = new Shinyoh_Controls.STextBox();
             this.lblSokouName = new Shinyoh_Controls.SLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
@@ -107,7 +95,7 @@
             this.panel2.Controls.Add(this.lblYubinNo);
             this.panel2.Controls.Add(this.txtKanaName);
             this.panel2.Controls.Add(this.lblKanaName);
-            this.panel2.Controls.Add(this.txtSokouName);
+            this.panel2.Controls.Add(this.txtSoukoName);
             this.panel2.Controls.Add(this.lblSokouName);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(0, 75);
@@ -119,8 +107,6 @@
             // 
             this.txtSearch.AllowMinus = false;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType3.RequireCheck = false;
-            checkType3.ZipCDCheck = false;
             this.txtSearch.DecimalPlace = 0;
             this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSearch.IntegerPart = 0;
@@ -156,8 +142,6 @@
             // 
             this.txtRemark.AllowMinus = false;
             this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType4.RequireCheck = false;
-            checkType4.ZipCDCheck = false;
             this.txtRemark.DecimalPlace = 0;
             this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtRemark.IntegerPart = 0;
@@ -192,8 +176,6 @@
             // 
             this.txtFAX.AllowMinus = false;
             this.txtFAX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType5.RequireCheck = false;
-            checkType5.ZipCDCheck = false;
             this.txtFAX.DecimalPlace = 0;
             this.txtFAX.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtFAX.IntegerPart = 0;
@@ -228,8 +210,6 @@
             // 
             this.txtPhNo.AllowMinus = false;
             this.txtPhNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType6.RequireCheck = false;
-            checkType6.ZipCDCheck = false;
             this.txtPhNo.DecimalPlace = 0;
             this.txtPhNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo.IntegerPart = 0;
@@ -264,8 +244,6 @@
             // 
             this.txtAddress2.AllowMinus = false;
             this.txtAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType7.RequireCheck = false;
-            checkType7.ZipCDCheck = false;
             this.txtAddress2.DecimalPlace = 0;
             this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
@@ -300,8 +278,6 @@
             // 
             this.txtAddress1.AllowMinus = false;
             this.txtAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType8.RequireCheck = false;
-            checkType8.ZipCDCheck = false;
             this.txtAddress1.DecimalPlace = 0;
             this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
@@ -336,8 +312,6 @@
             // 
             this.txtYubin2.AllowMinus = false;
             this.txtYubin2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType9.RequireCheck = false;
-            checkType9.ZipCDCheck = false;
             this.txtYubin2.DecimalPlace = 0;
             this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
@@ -358,8 +332,6 @@
             // 
             this.txtYubin1.AllowMinus = false;
             this.txtYubin1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType10.RequireCheck = false;
-            checkType10.ZipCDCheck = false;
             this.txtYubin1.DecimalPlace = 0;
             this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
@@ -394,8 +366,6 @@
             // 
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType11.RequireCheck = false;
-            checkType11.ZipCDCheck = false;
             this.txtKanaName.DecimalPlace = 0;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
@@ -426,27 +396,25 @@
             this.lblKanaName.Text = "カナ名";
             this.lblKanaName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtSokouName
+            // txtSoukoName
             // 
-            this.txtSokouName.AllowMinus = false;
-            this.txtSokouName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType12.RequireCheck = false;
-            checkType12.ZipCDCheck = false;
-            this.txtSokouName.DecimalPlace = 0;
-            this.txtSokouName.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtSokouName.IntegerPart = 0;
-            this.txtSokouName.IsRequire = false;
-            this.txtSokouName.Location = new System.Drawing.Point(141, 18);
-            this.txtSokouName.MaxLength = 50;
-            this.txtSokouName.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtSokouName.MoveNext = true;
-            this.txtSokouName.Name = "txtSokouName";
-            this.txtSokouName.NextControl = null;
-            this.txtSokouName.NextControlName = "txtKanaName";
-            this.txtSokouName.SearchType = Entity.SearchType.ScType.None;
-            this.txtSokouName.Size = new System.Drawing.Size(357, 19);
-            this.txtSokouName.TabIndex = 2;
-            this.txtSokouName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSoukoName.AllowMinus = false;
+            this.txtSoukoName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSoukoName.DecimalPlace = 0;
+            this.txtSoukoName.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSoukoName.IntegerPart = 0;
+            this.txtSoukoName.IsRequire = false;
+            this.txtSoukoName.Location = new System.Drawing.Point(141, 18);
+            this.txtSoukoName.MaxLength = 50;
+            this.txtSoukoName.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSoukoName.MoveNext = true;
+            this.txtSoukoName.Name = "txtSoukoName";
+            this.txtSoukoName.NextControl = null;
+            this.txtSoukoName.NextControlName = "txtKanaName";
+            this.txtSoukoName.SearchType = Entity.SearchType.ScType.None;
+            this.txtSoukoName.Size = new System.Drawing.Size(357, 19);
+            this.txtSoukoName.TabIndex = 2;
+            this.txtSoukoName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblSokouName
             // 
@@ -520,8 +488,6 @@
             // 
             this.txtSouko.AllowMinus = false;
             this.txtSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType2.RequireCheck = false;
-            checkType2.ZipCDCheck = false;
             this.txtSouko.DecimalPlace = 0;
             this.txtSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.txtSouko.IntegerPart = 0;
@@ -542,8 +508,6 @@
             // 
             this.txtCopySouko.AllowMinus = false;
             this.txtCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            checkType1.RequireCheck = false;
-            checkType1.ZipCDCheck = false;
             this.txtCopySouko.DecimalPlace = 0;
             this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.txtCopySouko.IntegerPart = 0;
@@ -601,7 +565,7 @@
         private Shinyoh_Controls.SLabel lblYubinNo;
         private Shinyoh_Controls.STextBox txtKanaName;
         private Shinyoh_Controls.SLabel lblKanaName;
-        private Shinyoh_Controls.STextBox txtSokouName;
+        private Shinyoh_Controls.STextBox txtSoukoName;
         private Shinyoh_Controls.STextBox txtAddress2;
         private Shinyoh_Controls.SLabel lblAddress2;
         private Shinyoh_Controls.STextBox txtAddress1;

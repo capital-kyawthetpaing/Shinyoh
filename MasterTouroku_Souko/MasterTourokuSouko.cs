@@ -38,6 +38,20 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.BType.Empty, F8, "",false);
             SetButton(ButtonType.BType.Empty, F10, "",false);
             SetButton(ButtonType.BType.Empty, F11, "",false);
+
+            ChangeMode(Mode.New);
+        }
+
+        private void ChangeMode(Mode mode)
+        {
+            switch(mode)
+            {
+                case Mode.New:
+                    txtSouko.RequiredCheck(true);
+                    txtSoukoName.RequiredCheck(true);
+                    txtYubin2.ZipCheck(true,txtYubin1, txtYubin2, string.Empty);
+                    break;
+            }
         }
 
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
@@ -97,7 +111,7 @@ namespace MasterTouroku_Souko
         {
             SoukoEntity soukoEntity = new SoukoEntity();
             soukoEntity.SoukoCD = txtSouko.Text.ToString();
-            soukoEntity.SoukoName = txtSokouName.Text.ToString();
+            soukoEntity.SoukoName = txtSoukoName.Text.ToString();
             soukoEntity.KanaName = txtKanaName.Text.ToString();
             soukoEntity.KensakuHyouziJun = txtSearch.Text.ToString();
             soukoEntity.YuubinNO1 = txtYubin1.Text.ToString();

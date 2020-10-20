@@ -6,7 +6,6 @@ using BL;
 using System.Drawing;
 using Entity;
 using static Entity.SearchType;
-using System.Diagnostics.Tracing;
 
 namespace Shinyoh_Controls
 {
@@ -132,13 +131,17 @@ namespace Shinyoh_Controls
             {
                 string result = errchk.Check(this);
 
+                if(result.Equals("0"))
+                {
+                    if (NextControl != null)
+                        NextControl.Focus();
+                }
+
                 if(cf.IsByteLengthOver(MaxLength,Text))
                 {
                     MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                if (NextControl != null)
-                    NextControl.Focus();
                 base.OnKeyDown(e);
             }
         }
@@ -167,12 +170,7 @@ namespace Shinyoh_Controls
             this.BackColor = Color.White;
             base.OnLeave(e);
         }
-        private void ShowErrorMessage(string messageID)
-        {
-            bbl.ShowMessage(messageID);
-            this.SelectionStart = 0;
-            this.SelectionLength = this.Text.Length;
-        }
+
         protected override void InitLayout()
         {
             base.InitLayout();
@@ -180,7 +178,7 @@ namespace Shinyoh_Controls
             base.Height = 19;
         }
 
-        public void RequiredCeck(bool value)
+        public void RequiredCheck(bool value)
         {
             IsRequireCheck  = value;
         }
