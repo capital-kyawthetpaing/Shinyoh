@@ -49,6 +49,16 @@ namespace Shinyoh_Controls
                 }
             }
 
+            if(sTextBox.E166)
+            {
+                if (!sTextBox.ctrlE166_1.Text.Equals(sTextBox.ctrlE166_2.Text))
+                {
+                    ShowErrorMessage("E166");
+                    sTextBox.Focus();
+                    return "1";
+                }
+            }
+
             return "0";
         }
     }
