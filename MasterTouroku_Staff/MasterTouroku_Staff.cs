@@ -22,9 +22,11 @@ namespace MasterTouroku_Staff
 
         private void MasterTouroku_Staff_Load(object sender, EventArgs e)
         {
-            ProgramID = "MasterTouroku_Staff";
+            ProgramID = "MasterTourokuStaff";
             StartProgram();
             cboStaff_Mode.Bind(false);
+            cboStaff_Menu.Bind(false);
+            cboStaff_authority.Bind(false);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
             SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);

@@ -73,5 +73,12 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("M_Menu_Select", GetConnectionString(),parameters);
             return dt;
         }
+        //Nwe Mar Win(2020-10-21)
+        public DataTable GetAuthorization()
+        {
+            var parameters = new SqlParameter[] { };
+            DataTable dt = ckmdl.SelectDatatable("M_Authorization_Select", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }
