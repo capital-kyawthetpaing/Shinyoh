@@ -80,6 +80,7 @@
             this.panel1.Controls.Add(this.lblStaff);
             this.panel1.Controls.Add(this.cboStaff_Mode);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
+            this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
             this.panel1.Controls.SetChildIndex(this.cboStaff_Mode, 0);
             this.panel1.Controls.SetChildIndex(this.lblStaff, 0);
             this.panel1.Controls.SetChildIndex(this.sLabel5, 0);
@@ -336,16 +337,22 @@
             this.cboStaff_Position.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
             this.cboStaff_Position.FormattingEnabled = true;
             this.cboStaff_Position.Location = new System.Drawing.Point(141, 200);
+            this.cboStaff_Position.MoveNext = true;
             this.cboStaff_Position.Name = "cboStaff_Position";
+            this.cboStaff_Position.NextControl = null;
+            this.cboStaff_Position.NextControlName = null;
             this.cboStaff_Position.Size = new System.Drawing.Size(180, 21);
             this.cboStaff_Position.TabIndex = 36;
             // 
             // cboStaff_authority
             // 
-            this.cboStaff_authority.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.cboStaff_authority.ComboType = Shinyoh_Controls.SCombo.CType.Authorization;
             this.cboStaff_authority.FormattingEnabled = true;
             this.cboStaff_authority.Location = new System.Drawing.Point(141, 164);
+            this.cboStaff_authority.MoveNext = true;
             this.cboStaff_authority.Name = "cboStaff_authority";
+            this.cboStaff_authority.NextControl = null;
+            this.cboStaff_authority.NextControlName = null;
             this.cboStaff_authority.Size = new System.Drawing.Size(370, 21);
             this.cboStaff_authority.TabIndex = 34;
             // 
@@ -364,10 +371,13 @@
             // 
             // cboStaff_Menu
             // 
-            this.cboStaff_Menu.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.cboStaff_Menu.ComboType = Shinyoh_Controls.SCombo.CType.Menu;
             this.cboStaff_Menu.FormattingEnabled = true;
             this.cboStaff_Menu.Location = new System.Drawing.Point(141, 127);
+            this.cboStaff_Menu.MoveNext = true;
             this.cboStaff_Menu.Name = "cboStaff_Menu";
+            this.cboStaff_Menu.NextControl = null;
+            this.cboStaff_Menu.NextControlName = null;
             this.cboStaff_Menu.Size = new System.Drawing.Size(370, 21);
             this.cboStaff_Menu.TabIndex = 32;
             // 
@@ -517,7 +527,10 @@
             this.cboStaff_Mode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
             this.cboStaff_Mode.FormattingEnabled = true;
             this.cboStaff_Mode.Location = new System.Drawing.Point(63, 9);
+            this.cboStaff_Mode.MoveNext = true;
             this.cboStaff_Mode.Name = "cboStaff_Mode";
+            this.cboStaff_Mode.NextControl = null;
+            this.cboStaff_Mode.NextControlName = null;
             this.cboStaff_Mode.Size = new System.Drawing.Size(90, 21);
             this.cboStaff_Mode.TabIndex = 32;
             // 
