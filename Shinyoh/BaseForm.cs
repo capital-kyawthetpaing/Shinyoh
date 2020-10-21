@@ -139,6 +139,12 @@ namespace Shinyoh
                     {
                         this.Close();
                     }
+                    else
+                    {
+                        if (PreviousCtrl != null)
+                            PreviousCtrl.Focus();
+                        return;
+                    }
                     break;
                 case ButtonType.BType.New:
                 case ButtonType.BType.Update:
