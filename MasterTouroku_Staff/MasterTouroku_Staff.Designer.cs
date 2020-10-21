@@ -346,7 +346,7 @@
             // 
             // cboStaff_authority
             // 
-            this.cboStaff_authority.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.cboStaff_authority.ComboType = Shinyoh_Controls.SCombo.CType.Authorization;
             this.cboStaff_authority.FormattingEnabled = true;
             this.cboStaff_authority.Location = new System.Drawing.Point(141, 164);
             this.cboStaff_authority.MoveNext = true;
