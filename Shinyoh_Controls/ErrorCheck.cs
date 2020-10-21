@@ -95,9 +95,15 @@ namespace Shinyoh_Controls
                 }
                 if (result.Equals("E101"))
                 {
-                    ShowErrorMessage("E101");
-                    sTextBox.Focus();
-                    return "1";
+                    if (string.IsNullOrWhiteSpace(sTextBox.ctrlE101_1.Text))
+                    {
+                        sTextBox.ctrlE101_1.Focus();
+                    }
+                    else
+                    {
+                        ShowErrorMessage("E101");
+                        return "1";
+                    }
                 }
             }
 
