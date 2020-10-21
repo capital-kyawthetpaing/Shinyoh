@@ -50,6 +50,7 @@ namespace MasterTouroku_Souko
             {
                 case Mode.New:
                     txtSouko.E102Check(true);
+                    txtSouko.E132Check(true,"souko",null,null,null);
                     txtSoukoName.E102Check(true);
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
                     break;
