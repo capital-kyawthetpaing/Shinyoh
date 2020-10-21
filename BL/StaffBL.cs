@@ -65,5 +65,13 @@ namespace BL
                 return null;
             }
         }
+
+        //Nwe Mar Win (2020-10-21)
+        public DataTable GetMenu()
+        {
+            var parameters = new SqlParameter[] { };
+            DataTable dt = ckmdl.SelectDatatable("M_Menu_Select", GetConnectionString(),parameters);
+            return dt;
+        }
     }
 }

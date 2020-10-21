@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
+using BL;
 
 namespace Shinyoh_Controls
 {
@@ -26,6 +27,7 @@ namespace Shinyoh_Controls
             Menu
         }
 
+        StaffBL bl;
         public void Bind(bool UseBlankRow)
         {
             DataTable dtCombo;
@@ -43,10 +45,17 @@ namespace Shinyoh_Controls
                     BindCombo("ID", "Mode",dtCombo,UseBlankRow);
                     break;
                 case CType.Menu:
+                    dtCombo = new DataTable();
+                    dtCombo.Columns.Add("MenuID");
+                    dtCombo.Columns.Add("MenuName");
+                    for(int i=0;i<bl.GetMenu().Rows.Count;i++)
+                    {
+                        dtCombo.Rows.Add(bl.GetMenu().Rows[i]["MenuID"], bl.GetMenu().Rows[i]["MenuName"]);
+                    }
                     break;
             }
         }
-
+        
         private void BindCombo(string key, string value, DataTable dt,bool UseBlankRow)
         {
             if(UseBlankRow)
