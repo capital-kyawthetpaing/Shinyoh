@@ -22,7 +22,8 @@ namespace Shinyoh_Controls
         public CType ComboType { get; set; }
         public enum CType
         {
-            Mode1
+            Mode1,
+            Menu
         }
 
         public void Bind(bool UseBlankRow)
@@ -40,6 +41,8 @@ namespace Shinyoh_Controls
                     dtCombo.Rows.Add("4", "照会");
 
                     BindCombo("ID", "Mode",dtCombo,UseBlankRow);
+                    break;
+                case CType.Menu:
                     break;
             }
         }
