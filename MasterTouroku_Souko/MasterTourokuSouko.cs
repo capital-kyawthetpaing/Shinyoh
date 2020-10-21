@@ -38,8 +38,10 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.BType.Empty, F8, "",false);
             SetButton(ButtonType.BType.Empty, F10, "",false);
             SetButton(ButtonType.BType.Empty, F11, "",false);
-
+          
             ChangeMode(Mode.New);
+
+
         }
 
         private void ChangeMode(Mode mode)
@@ -49,7 +51,7 @@ namespace MasterTouroku_Souko
                 case Mode.New:
                     txtSouko.E102Check(true);
                     txtSoukoName.E102Check(true);
-                    txtYubin2.E102MultiCheck(true,txtYubin1, txtYubin2);
+                    txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
                     break;
             }
         }
