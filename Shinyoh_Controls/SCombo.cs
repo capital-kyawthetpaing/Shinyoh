@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
+using BL;
 
 namespace Shinyoh_Controls
 {
@@ -23,11 +24,13 @@ namespace Shinyoh_Controls
         public enum CType
         {
             Mode1,
-            Menu
+            Menu,
+            Authorization
         }
-
+       
         public void Bind(bool UseBlankRow)
         {
+            StaffBL staffBL = new StaffBL();
             DataTable dtCombo;
             switch (ComboType)
             {       
@@ -43,10 +46,31 @@ namespace Shinyoh_Controls
                     BindCombo("ID", "Mode",dtCombo,UseBlankRow);
                     break;
                 case CType.Menu:
+                    dtCombo = new DataTable();
+                    dtCombo.Columns.Add("MenuID");
+                    dtCombo.Columns.Add("MenuName");
+                    DataTable dt = staffBL.GetMenu();
+                    for(int i=0;i< dt.Rows.Count;i++)
+                    {
+                        dtCombo.Rows.Add(dt.Rows[i]["MenuID"], dt.Rows[i]["MenuName"]);
+                    }
+                    BindCombo("MenuID", "MenuName", dtCombo, UseBlankRow);
                     break;
+                case CType.Authorization:
+                    dtCombo = new DataTable();
+                    dtCombo.Columns.Add("AuthorizationsCD");
+                    dtCombo.Columns.Add("AuthorizationsName");
+                    DataTable dtA = staffBL.GetAuthorization();
+                    for (int i = 0; i < dtA.Rows.Count; i++)
+                    {
+                        dtCombo.Rows.Add(dtA.Rows[i]["AuthorizationsCD"], dtA.Rows[i]["AuthorizationsName"]);
+                    }
+                    BindCombo("AuthorizationsCD", "AuthorizationsName", dtCombo, UseBlankRow);
+                    break;
+
             }
         }
-
+        
         private void BindCombo(string key, string value, DataTable dt,bool UseBlankRow)
         {
             if(UseBlankRow)

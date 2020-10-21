@@ -28,6 +28,23 @@ namespace BL {
             soukoEntity.Sqlprms[11] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = soukoEntity.Mode };
             return ckmdl.InsertUpdateDeleteData("M_Souko_CUD",GetConnectionString(),soukoEntity.Sqlprms);
         }
+        public SoukoEntity Souko_Select(SoukoEntity soukoEntity)
+        {
+            CKMDL ckmdl = new CKMDL();
+            soukoEntity.Sqlprms = new SqlParameter[1];
+            soukoEntity.Sqlprms[0] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = soukoEntity.SoukoCD };
+            DataTable dt=ckmdl.SelectDatatable("Souko_Select", GetConnectionString(),soukoEntity.Sqlprms);
+            if(dt.Rows.Count > 0)
+            {
+                soukoEntity.MessageID = dt.Rows[0]["MessageID"].ToString();
+                if (soukoEntity.MessageID.Equals("E132"))
+                {
+                    soukoEntity.SoukoName = dt.Rows[0]["SoukoName"].ToString();
+                }
+
+            }
+            return soukoEntity;           
+        }
 
     }
 }

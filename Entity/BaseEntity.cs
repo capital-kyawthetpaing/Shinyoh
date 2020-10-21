@@ -9,5 +9,6 @@ namespace Entity
         public string LoginDate { get; set; }
         public string PC { get; set; }
         public string Mode { get; set; }
+        public string MessageID { get; set; }
     }
 }
