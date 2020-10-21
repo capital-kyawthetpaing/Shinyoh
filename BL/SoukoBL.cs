@@ -37,11 +37,6 @@ namespace BL {
             if(dt.Rows.Count > 0)
             {
                 soukoEntity.MessageID = dt.Rows[0]["MessageID"].ToString();
-                if (soukoEntity.MessageID.Equals("E132"))
-                {
-                    soukoEntity.SoukoName = dt.Rows[0]["SoukoName"].ToString();
-                }
-
             }
             return soukoEntity;           
         }

@@ -80,6 +80,26 @@ namespace Shinyoh_Controls
                     return "1";
                 }
             }
+            if (sTextBox.E101)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E101Type)
+                {
+                    case "copySouko":
+                        SoukoBL bl = new SoukoBL();
+                        SoukoEntity soukoEntity = new SoukoEntity();
+                        soukoEntity.SoukoCD = sTextBox.Text;
+                        soukoEntity = bl.Souko_Select(soukoEntity);
+                        result = soukoEntity.MessageID;
+                        break;
+                }
+                if (result.Equals("E101"))
+                {
+                    ShowErrorMessage("E101");
+                    sTextBox.Focus();
+                    return "1";
+                }
+            }
 
             return "0";
         }
