@@ -80,7 +80,7 @@ namespace Shinyoh_Controls
                     return "1";
                 }
             }
-            if (sTextBox.E101)
+            if (sTextBox.E101 && !string.IsNullOrWhiteSpace(sTextBox.Text))
             {
                 string result = string.Empty;
                 switch (sTextBox.E101Type)
@@ -95,15 +95,9 @@ namespace Shinyoh_Controls
                 }
                 if (result.Equals("E101"))
                 {
-                    if (string.IsNullOrWhiteSpace(sTextBox.ctrlE101_1.Text))
-                    {
-                        sTextBox.ctrlE101_1.Focus();
-                    }
-                    else
-                    {
-                        ShowErrorMessage("E101");
-                        return "1";
-                    }
+                    ShowErrorMessage("E101");
+                    sTextBox.Focus();
+                    return "1";
                 }
             }
 
