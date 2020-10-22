@@ -47,8 +47,8 @@
             this.txtSoukoName = new Shinyoh_Controls.STextBox();
             this.lblSokouName = new Shinyoh_Controls.SLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtSearch = new Shinyoh_Controls.STextBox();
             this.lblSearch = new Shinyoh_Controls.SLabel();
+            this.txtSearch = new Shinyoh_Controls.STextBox();
             this.cboMode = new Shinyoh_Controls.SCombo();
             this.txtCopySouko = new Shinyoh_Controls.STextBox();
             this.txtSouko = new Shinyoh_Controls.STextBox();
@@ -117,7 +117,7 @@
             this.txtRemark.MoveNext = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.NextControl = null;
-            this.txtRemark.NextControlName = "BtnF1";
+            this.txtRemark.NextControlName = "txtSearch";
             this.txtRemark.SearchType = Entity.SearchType.ScType.None;
             this.txtRemark.Size = new System.Drawing.Size(527, 19);
             this.txtRemark.TabIndex = 11;
@@ -406,6 +406,20 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "-";
             // 
+            // lblSearch
+            // 
+            this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSearch.Location = new System.Drawing.Point(42, 324);
+            this.lblSearch.MinimumSize = new System.Drawing.Size(100, 19);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(100, 19);
+            this.lblSearch.TabIndex = 39;
+            this.lblSearch.Text = "検索表示順";
+            this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // txtSearch
             // 
             this.txtSearch.AllowMinus = false;
@@ -420,26 +434,12 @@
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.NextControl = null;
-            this.txtSearch.NextControlName = null;
+            this.txtSearch.NextControlName = "BtnF1";
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(100, 19);
             this.txtSearch.TabIndex = 12;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSearch.Location = new System.Drawing.Point(42, 324);
-            this.lblSearch.MinimumSize = new System.Drawing.Size(100, 19);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(100, 19);
-            this.lblSearch.TabIndex = 39;
-            this.lblSearch.Text = "検索表示順";
-            this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cboMode
             // 
