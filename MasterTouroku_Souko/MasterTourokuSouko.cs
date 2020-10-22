@@ -124,6 +124,7 @@ namespace MasterTouroku_Souko
                 DoDelete(soukoEntity);
             }
         }
+
         private SoukoEntity GetSouko()
         {
             SoukoEntity soukoEntity = new SoukoEntity();
