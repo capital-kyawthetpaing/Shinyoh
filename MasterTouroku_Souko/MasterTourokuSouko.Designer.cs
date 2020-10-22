@@ -117,7 +117,7 @@
             this.txtRemark.MoveNext = true;
             this.txtRemark.Name = "txtRemark";
             this.txtRemark.NextControl = null;
-            this.txtRemark.NextControlName = "txtSearch";
+            this.txtRemark.NextControlName = "BtnF1";
             this.txtRemark.SearchType = Entity.SearchType.ScType.None;
             this.txtRemark.Size = new System.Drawing.Size(527, 19);
             this.txtRemark.TabIndex = 11;
