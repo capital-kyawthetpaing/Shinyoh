@@ -52,6 +52,8 @@ namespace MasterTouroku_Souko
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
 
+                    cf.DisablePanel(PanelDetail);
+
                     cboMode.SelectedValue = 1;
                     break;
             }

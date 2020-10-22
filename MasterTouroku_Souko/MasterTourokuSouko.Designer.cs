@@ -460,7 +460,7 @@
             this.txtCopySouko.AllowMinus = false;
             this.txtCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCopySouko.DecimalPlace = 0;
-            this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCopySouko.IntegerPart = 0;
             this.txtCopySouko.IsRequire = false;
             this.txtCopySouko.Location = new System.Drawing.Point(241, 37);
@@ -480,7 +480,7 @@
             this.txtSouko.AllowMinus = false;
             this.txtSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSouko.DecimalPlace = 0;
-            this.txtSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtSouko.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSouko.IntegerPart = 0;
             this.txtSouko.IsRequire = false;
             this.txtSouko.Location = new System.Drawing.Point(241, 9);
