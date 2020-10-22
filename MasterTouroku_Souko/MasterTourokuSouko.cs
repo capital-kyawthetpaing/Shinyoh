@@ -40,7 +40,7 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.BType.Empty, F11, "",false);
           
             ChangeMode(Mode.New);
-
+            txtSouko.Focus();
 
         }
 

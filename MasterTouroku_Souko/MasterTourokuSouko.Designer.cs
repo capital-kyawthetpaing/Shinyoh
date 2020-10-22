@@ -101,7 +101,7 @@
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1485, 379);
-            this.PanelDetail.TabIndex = 3;
+            this.PanelDetail.TabIndex = 1;
             // 
             // txtRemark
             // 
