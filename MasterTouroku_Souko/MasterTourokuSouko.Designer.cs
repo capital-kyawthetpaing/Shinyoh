@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtSearch = new Shinyoh_Controls.STextBox();
-            this.lblSearch = new Shinyoh_Controls.SLabel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
             this.txtRemark = new Shinyoh_Controls.STextBox();
             this.lblRemark = new Shinyoh_Controls.SLabel();
             this.txtFAX = new Shinyoh_Controls.STextBox();
@@ -49,6 +47,8 @@
             this.txtSoukoName = new Shinyoh_Controls.STextBox();
             this.lblSokouName = new Shinyoh_Controls.SLabel();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblSearch = new Shinyoh_Controls.SLabel();
+            this.txtSearch = new Shinyoh_Controls.STextBox();
             this.cboMode = new Shinyoh_Controls.SCombo();
             this.txtCopySouko = new Shinyoh_Controls.STextBox();
             this.txtSouko = new Shinyoh_Controls.STextBox();
@@ -58,7 +58,7 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -73,68 +73,35 @@
             this.PanelTitle.Controls.Add(this.lblCopySouko);
             this.PanelTitle.Controls.Add(this.txtCopySouko);
             // 
-            // panel2
+            // PanelDetail
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.txtRemark);
-            this.panel2.Controls.Add(this.lblRemark);
-            this.panel2.Controls.Add(this.txtFAX);
-            this.panel2.Controls.Add(this.lblFAX);
-            this.panel2.Controls.Add(this.txtPhNo);
-            this.panel2.Controls.Add(this.lblPhNo);
-            this.panel2.Controls.Add(this.txtAddress2);
-            this.panel2.Controls.Add(this.lblAddress2);
-            this.panel2.Controls.Add(this.txtAddress1);
-            this.panel2.Controls.Add(this.lblAddress1);
-            this.panel2.Controls.Add(this.txtYubin2);
-            this.panel2.Controls.Add(this.txtYubin1);
-            this.panel2.Controls.Add(this.lblYubinNo);
-            this.panel2.Controls.Add(this.txtKanaName);
-            this.panel2.Controls.Add(this.lblKanaName);
-            this.panel2.Controls.Add(this.txtSoukoName);
-            this.panel2.Controls.Add(this.lblSokouName);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(0, 75);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1485, 379);
-            this.panel2.TabIndex = 3;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.AllowMinus = false;
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.DecimalPlace = 0;
-            this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtSearch.IntegerPart = 0;
-            this.txtSearch.IsRequire = false;
-            this.txtSearch.Location = new System.Drawing.Point(142, 324);
-            this.txtSearch.MaxLength = 5;
-            this.txtSearch.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtSearch.MoveNext = true;
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.NextControl = null;
-            this.txtSearch.NextControlName = null;
-            this.txtSearch.SearchType = Entity.SearchType.ScType.None;
-            this.txtSearch.Size = new System.Drawing.Size(100, 19);
-            this.txtSearch.TabIndex = 12;
-            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSearch.Location = new System.Drawing.Point(42, 324);
-            this.lblSearch.MinimumSize = new System.Drawing.Size(100, 19);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(100, 19);
-            this.lblSearch.TabIndex = 39;
-            this.lblSearch.Text = "検索表示順";
-            this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PanelDetail.Controls.Add(this.txtRemark);
+            this.PanelDetail.Controls.Add(this.lblRemark);
+            this.PanelDetail.Controls.Add(this.txtFAX);
+            this.PanelDetail.Controls.Add(this.lblFAX);
+            this.PanelDetail.Controls.Add(this.txtPhNo);
+            this.PanelDetail.Controls.Add(this.lblPhNo);
+            this.PanelDetail.Controls.Add(this.txtAddress2);
+            this.PanelDetail.Controls.Add(this.lblAddress2);
+            this.PanelDetail.Controls.Add(this.txtAddress1);
+            this.PanelDetail.Controls.Add(this.lblAddress1);
+            this.PanelDetail.Controls.Add(this.txtYubin2);
+            this.PanelDetail.Controls.Add(this.txtYubin1);
+            this.PanelDetail.Controls.Add(this.lblYubinNo);
+            this.PanelDetail.Controls.Add(this.txtKanaName);
+            this.PanelDetail.Controls.Add(this.lblKanaName);
+            this.PanelDetail.Controls.Add(this.txtSoukoName);
+            this.PanelDetail.Controls.Add(this.lblSokouName);
+            this.PanelDetail.Controls.Add(this.label1);
+            this.PanelDetail.Controls.Add(this.lblSearch);
+            this.PanelDetail.Controls.Add(this.txtSearch);
+            this.PanelDetail.Location = new System.Drawing.Point(0, 75);
+            this.PanelDetail.Name = "PanelDetail";
+            this.PanelDetail.Size = new System.Drawing.Size(1485, 379);
+            this.PanelDetail.TabIndex = 1;
             // 
             // txtRemark
             // 
@@ -439,6 +406,41 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "-";
             // 
+            // lblSearch
+            // 
+            this.lblSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSearch.Location = new System.Drawing.Point(42, 324);
+            this.lblSearch.MinimumSize = new System.Drawing.Size(100, 19);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(100, 19);
+            this.lblSearch.TabIndex = 39;
+            this.lblSearch.Text = "検索表示順";
+            this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.AllowMinus = false;
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.DecimalPlace = 0;
+            this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSearch.IntegerPart = 0;
+            this.txtSearch.IsRequire = false;
+            this.txtSearch.Location = new System.Drawing.Point(142, 324);
+            this.txtSearch.MaxLength = 5;
+            this.txtSearch.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSearch.MoveNext = true;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.NextControl = null;
+            this.txtSearch.NextControlName = "BtnF1";
+            this.txtSearch.SearchType = Entity.SearchType.ScType.None;
+            this.txtSearch.Size = new System.Drawing.Size(100, 19);
+            this.txtSearch.TabIndex = 12;
+            this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            // 
             // cboMode
             // 
             this.cboMode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
@@ -554,17 +556,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1485, 504);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MasterTourokuSouko";
             this.Load += new System.EventHandler(this.MasterTourokuSouko_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.panel2, 0);
+            this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.PanelDetail.ResumeLayout(false);
+            this.PanelDetail.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -572,7 +574,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel PanelDetail;
 
         private System.Windows.Forms.Label label1;
         private Shinyoh_Controls.SLabel lblSokouName;

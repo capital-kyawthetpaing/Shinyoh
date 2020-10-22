@@ -79,11 +79,21 @@ namespace Shinyoh_Controls
         public bool E102;
         public bool E102Multi;
         public bool E166;
+        public bool E132;
+        public string E132Type;
+        public bool E101;
+        public string E101Type;
 
         public Control ctrlE102_1;
         public Control ctrlE102_2;
         public Control ctrlE166_1;
         public Control ctrlE166_2;
+        public Control ctrlE132_1;
+        public Control ctrlE132_2;
+        public Control ctrlE132_3;
+        public Control ctrlE101_1;
+        public Control ctrlE101_2;
+        public Control ctrlE101_3;
 
         //Constructor
         public STextBox()
@@ -185,6 +195,22 @@ namespace Shinyoh_Controls
             E102Multi = value;
             ctrlE102_1 = ctrl1;
             ctrlE102_2 = ctrl2;
+        }
+        public void E132Check(bool value,string type,Control ctrl1,Control ctrl2,Control ctrl3)
+        {
+            E132 = value;
+            E132Type = type;
+            ctrlE132_1 = ctrl1;
+            ctrlE132_2 = ctrl2;
+            ctrlE132_3 = ctrl3;
+        }
+        public void E101Check(bool value, string type, Control ctrl1, Control ctrl2, Control ctrl3)
+        {
+            E101 = value;
+            E101Type = type;
+            ctrlE101_1 = ctrl1;
+            ctrlE101_2 = ctrl2;
+            ctrlE101_3 = ctrl3;
         }
         public void E166Check(bool value,Control ctrl1,Control ctrl2)
         {

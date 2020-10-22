@@ -8,7 +8,6 @@ namespace Entity
 {
     public class MessageEntity : BaseEntity
     {
-        public string MessageID { get; set; }
         public string MessageText1 { get; set; }
         public string MessageText2 { get; set; }
         public string MessageText3 { get; set; }
