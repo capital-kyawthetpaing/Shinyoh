@@ -16,5 +16,10 @@ namespace Shinyoh
         {
             InitializeComponent();
         }
+
+        private void sButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
