@@ -31,7 +31,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnShow = new Shinyoh_Controls.SButton();
             this.btnF12 = new Shinyoh_Controls.SButton();
             this.btnF1 = new Shinyoh_Controls.SButton();
             this.txtKanaName = new Shinyoh_Controls.STextBox();
@@ -44,6 +43,7 @@
             this.lblSouko = new Shinyoh_Controls.SLabel();
             this.sButton3 = new Shinyoh_Controls.SButton();
             this.sButton1 = new Shinyoh_Controls.SButton();
+            this.btnShow = new Shinyoh_Controls.SButton();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -103,21 +103,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(768, 37);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // btnShow
-            // 
-            this.btnShow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnShow.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnShow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShow.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnShow.Location = new System.Drawing.Point(310, 4);
-            this.btnShow.MinimumSize = new System.Drawing.Size(100, 10);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(146, 29);
-            this.btnShow.TabIndex = 5;
-            this.btnShow.Text = "表示(F11)";
-            this.btnShow.UseVisualStyleBackColor = false;
             // 
             // btnF12
             // 
@@ -309,7 +294,21 @@
             this.sButton1.TabIndex = 6;
             this.sButton1.UseVisualStyleBackColor = false;
             this.sButton1.Visible = false;
-            this.sButton1.Click += new System.EventHandler(this.sButton1_Click);
+            // 
+            // btnShow
+            // 
+            this.btnShow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnShow.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btnShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnShow.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnShow.Location = new System.Drawing.Point(310, 4);
+            this.btnShow.MinimumSize = new System.Drawing.Size(100, 10);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(146, 29);
+            this.btnShow.TabIndex = 5;
+            this.btnShow.Text = "表示(F11)";
+            this.btnShow.UseVisualStyleBackColor = false;
             // 
             // SearchBase
             // 
@@ -344,8 +343,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Shinyoh_Controls.SButton sButton1;
         private Shinyoh_Controls.SButton btnF1;
-        private Shinyoh_Controls.SButton btnShow;
         private Shinyoh_Controls.SButton btnF12;
         private Shinyoh_Controls.SButton sButton3;
+        private Shinyoh_Controls.SButton btnShow;
     }
 }
