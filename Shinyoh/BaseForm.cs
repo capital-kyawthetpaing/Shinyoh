@@ -265,5 +265,13 @@ namespace Shinyoh
         {
             PreviousCtrl = this.ActiveControl;
         }
+        public LogEntity GetLogData()
+        {
+            LogEntity obj = new LogEntity();
+            obj.InsertOperator = OperatorCD;
+            obj.Program = ProgramID;
+            obj.PC = PCID;
+            return obj;
+        }
     }
 }
