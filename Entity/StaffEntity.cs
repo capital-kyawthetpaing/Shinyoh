@@ -12,4 +12,25 @@ namespace Entity
         public string StaffName { get; set; }
         public string ProgramID { get; set; }
     }
+    public class MasterTourokuStaff:BaseEntity
+    {
+        //Total count 17
+        public string StaffCD { get; set; }  //--スタッフCD
+        public DateTime ChangeDate { get; set; } //--改定日 
+        public string StaffName { get; set; } //--スタッフ名
+        public string KanaName { get; set; }  //-- カナ名
+        public int KensakuHyouziJun { get; set; } // --検索表示順
+        public string MenuCD { get; set; } //  --メニューCD
+        public string AuthorizationsCD { get; set; } //  --権限CD
+        public string PositionCD { get; set; } // --役職CD
+        public DateTime JoinDate { get; set; } // --入社日
+        public DateTime LeaveDate { get; set; } //--退職日
+        public string Passward { get; set; } // --パスワード
+        public string Remarks { get; set; } //  --備考
+        public int UsedFlg { get; set; } //DEFAULT(0)      --使用済FLG[1:既にデータ発生済]
+        public string InsertOperator { get; set; }//--新規登録者
+        public DateTime InsertDateTime { get; set; } // --新規登録日時
+        public string UpdateOperator { get; set; }//  --変更登録者
+        public DateTime UpdateDateTime { get; set; } //--退職日       
+    }
 }

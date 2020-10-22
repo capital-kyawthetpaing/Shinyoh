@@ -25,7 +25,8 @@ namespace Shinyoh_Controls
         {
             Mode1,
             Menu,
-            Authorization
+            Authorization,
+            Position
         }
        
         public void Bind(bool UseBlankRow)
@@ -66,6 +67,17 @@ namespace Shinyoh_Controls
                         dtCombo.Rows.Add(dtA.Rows[i]["AuthorizationsCD"], dtA.Rows[i]["AuthorizationsName"]);
                     }
                     BindCombo("AuthorizationsCD", "AuthorizationsName", dtCombo, UseBlankRow);
+                    break;
+                case CType.Position:
+                    dtCombo = new DataTable();
+                    dtCombo.Columns.Add("Key");
+                    dtCombo.Columns.Add("Char1");
+                    DataTable dtP = staffBL.GetPosition();
+                    for (int i = 0; i < dtP.Rows.Count; i++)
+                    {
+                        dtCombo.Rows.Add(dtP.Rows[i]["Key"], dtP.Rows[i]["Char20"]);
+                    }
+                    BindCombo("Key", "Char1", dtCombo, UseBlankRow);
                     break;
 
             }
@@ -134,6 +146,13 @@ namespace Shinyoh_Controls
             if( (e.KeyChar != (char)Keys.F9)  && (e.KeyChar != (char)Keys.Escape) && (e.KeyChar != (char)Keys.Escape))
                 e.Handled = true;
             base.OnKeyPress(e);
+        }
+
+        
+        public bool E102;
+        public void E102Check(bool value)
+        {
+            E102 = value;
         }
     }
 }

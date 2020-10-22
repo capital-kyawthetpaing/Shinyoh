@@ -178,6 +178,15 @@ namespace Shinyoh_Controls
             this.BackColor = Color.White;
             base.OnLeave(e);
         }
+        protected override void OnEnabledChanged(EventArgs e)
+        {
+            if (!Enabled)
+                this.BackColor = Color.FromArgb(255, 230, 153);
+            else
+                this.BackColor = SystemColors.Window;
+
+            base.OnEnabledChanged(e);
+        }
 
         protected override void InitLayout()
         {

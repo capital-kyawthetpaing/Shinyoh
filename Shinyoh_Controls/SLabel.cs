@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
 using System.ComponentModel;
+using System;
 
 namespace Shinyoh_Controls
 {
