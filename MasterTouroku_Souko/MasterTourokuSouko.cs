@@ -53,7 +53,8 @@ namespace MasterTouroku_Souko
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
 
-                    cf.DisablePanel(PanelDetail);
+                   // PanelDetail.Enabled = false;
+                   cf.DisablePanel(PanelDetail);
 
                     cboMode.SelectedValue = 1;
                     break;
@@ -164,7 +165,9 @@ namespace MasterTouroku_Souko
             {
                 if (!txtCopySouko.IsErrorOccurs)
                 {
-
+                    cf.EnablePanel(PanelDetail);
+                    //PanelDetail.Enabled = true;
+                    txtSoukoName.Focus();
                 }
             }           
         }
