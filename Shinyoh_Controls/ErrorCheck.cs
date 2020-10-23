@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Data;
+using System.Windows.Forms;
 using BL;
 using Entity;
 
@@ -18,7 +20,6 @@ namespace Shinyoh_Controls
                 STextBox sTextBox = ctrl as STextBox;
                 return TextBoxErrorCheck(sTextBox);
             }
-
             return "0";
         }
 
@@ -34,7 +35,32 @@ namespace Shinyoh_Controls
                 }                    
             }
 
-            if(sTextBox.E102Multi)
+            //NMW(2020-10-22)
+            if (sTextBox.E103)
+            {
+                DateTime dt;
+                bool bl = (DateTime.TryParse(sTextBox.Text.ToString(), out dt));
+                if (!bl)
+                {
+                    ShowErrorMessage("E103");
+                    sTextBox.Focus();
+                    return "1";
+                }
+            }
+            //NMW(2020-10-23)
+            if (sTextBox.E104)
+            {
+                DateTime JDate = Convert.ToDateTime(sTextBox.ctrlE104_1.Text);
+                DateTime LDate = Convert.ToDateTime(sTextBox.ctrlE104_2.Text);
+                if (JDate.Date>LDate.Date)
+                {
+                    ShowErrorMessage("E104");
+                    sTextBox.Focus();
+                    return "1";
+                }
+            }
+
+            if (sTextBox.E102Multi)
             {
                 if(string.IsNullOrWhiteSpace(sTextBox.ctrlE102_1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlE102_2.Text))
                 {
@@ -72,6 +98,10 @@ namespace Shinyoh_Controls
                         soukoEntity= bl.Souko_Select(soukoEntity);
                         result= soukoEntity.MessageID;
                         break;
+                    case "M_Staff":// NMW(2020-10-22)
+                        StaffBL sBL = new StaffBL();
+                        result = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text,Convert.ToDateTime(sTextBox.ctrlE132_2.Text));                        
+                        break;
                 }
                 if (result.Equals("E132"))
                 {
@@ -80,7 +110,25 @@ namespace Shinyoh_Controls
                     return "1";
                 }
             }
-            if (sTextBox.E101 && !string.IsNullOrWhiteSpace(sTextBox.Text))
+            if (sTextBox.E133)//NMW(2020-10-23)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E133Type)
+                {
+                    case "M_Staff":// NMW(2020-10-22)
+                        StaffBL sBL = new StaffBL();
+                        result = sBL.Staff_Select_Check(sTextBox.ctrlE133_1.Text, Convert.ToDateTime(sTextBox.ctrlE133_2.Text));
+                        break;
+                }
+                if (result.Equals("E133"))
+                {
+                    ShowErrorMessage("E133");
+                    sTextBox.Focus();
+                    return "1";
+                }
+            }
+
+            if(sTextBox.E101 && !string.IsNullOrWhiteSpace(sTextBox.Text))
             {
                 string result = string.Empty;
                 switch (sTextBox.E101Type)
@@ -99,9 +147,10 @@ namespace Shinyoh_Controls
                     sTextBox.Focus();
                     return "1";
                 }
-            }
+            }           
 
             return "0";
         }
+        
     }
 }

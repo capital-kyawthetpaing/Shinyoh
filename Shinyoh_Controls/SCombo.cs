@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using BL;
 
@@ -153,6 +154,26 @@ namespace Shinyoh_Controls
         public void E102Check(bool value)
         {
             E102 = value;
+        }
+
+        //NMW (Copy From STextBox)
+        protected override void OnEnter(EventArgs e)
+        {
+            this.BackColor = Color.Cyan;
+            base.OnEnter(e);
+        }
+        //NMW (Copy From STextBox)
+        protected override void OnLeave(EventArgs e)
+        {
+            this.BackColor = Color.White;
+            base.OnLeave(e);
+        }
+        //NMW (Copy From STextBox)
+        protected override void InitLayout()
+        {
+            base.InitLayout();
+            base.AutoSize = false;
+            base.Height = 19;
         }
     }
 }

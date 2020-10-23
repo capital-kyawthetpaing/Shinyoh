@@ -157,7 +157,7 @@
             this.txtStaff_Search.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Search.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_Search.TabIndex = 49;
-            this.txtStaff_Search.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaff_Search.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblStaff_Remark
             // 
@@ -535,6 +535,7 @@
             this.cboStaff_Mode.NextControlName = "txt_Staff";
             this.cboStaff_Mode.Size = new System.Drawing.Size(90, 21);
             this.cboStaff_Mode.TabIndex = 32;
+            this.cboStaff_Mode.SelectedIndexChanged += new System.EventHandler(this.cboStaff_Mode_SelectedIndexChanged);
             // 
             // lblStaff
             // 
@@ -575,11 +576,11 @@
             this.txt_Staff.MoveNext = true;
             this.txt_Staff.Name = "txt_Staff";
             this.txt_Staff.NextControl = null;
-            this.txt_Staff.NextControlName = "txtStaff_Copy";
+            this.txt_Staff.NextControlName = "txtStaff_CDate";
             this.txt_Staff.SearchType = Entity.SearchType.ScType.None;
             this.txt_Staff.Size = new System.Drawing.Size(100, 19);
-            this.txt_Staff.TabIndex = 51;
-            this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txt_Staff.TabIndex = 1;
+            this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtStaff_CDate
             // 
@@ -594,7 +595,7 @@
             this.txtStaff_CDate.MoveNext = true;
             this.txtStaff_CDate.Name = "txtStaff_CDate";
             this.txtStaff_CDate.NextControl = null;
-            this.txtStaff_CDate.NextControlName = "txtStaff_CopyDate";
+            this.txtStaff_CDate.NextControlName = "txtStaff_Copy";
             this.txtStaff_CDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_CDate.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_CDate.TabIndex = 53;
@@ -626,11 +627,11 @@
             this.txtStaff_Copy.MoveNext = true;
             this.txtStaff_Copy.Name = "txtStaff_Copy";
             this.txtStaff_Copy.NextControl = null;
-            this.txtStaff_Copy.NextControlName = "txtStaff_CDate";
+            this.txtStaff_Copy.NextControlName = "txtStaff_CopyDate";
             this.txtStaff_Copy.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Copy.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_Copy.TabIndex = 54;
-            this.txtStaff_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtStaff_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtStaff_CopyDate
             // 

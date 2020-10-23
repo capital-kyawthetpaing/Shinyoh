@@ -2,6 +2,7 @@
 using Entity;
 using CKM_DataLayer;
 using System.Data.SqlClient;
+using System;
 
 namespace BL
 {
@@ -93,7 +94,7 @@ namespace BL
             CKMDL ckmdl = new CKMDL();
             obj.Sqlprms = new SqlParameter[18];
             obj.Sqlprms[0] = new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = obj.StaffCD };
-            obj.Sqlprms[1] = new SqlParameter("@ChangeDate", SqlDbType.Date) { Value = obj.ChangeDate };
+            obj.Sqlprms[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate.Date };
             obj.Sqlprms[2] = new SqlParameter("@StaffName", SqlDbType.VarChar) { Value = obj.StaffName };
             obj.Sqlprms[3] = new SqlParameter("@KanaName", SqlDbType.VarChar) { Value = obj.KanaName };
             obj.Sqlprms[4] = new SqlParameter("@KensakuHyouziJun", SqlDbType.Int) { Value = obj.KensakuHyouziJun };
@@ -124,6 +125,22 @@ namespace BL
             obj.Sqlprms[3] = new SqlParameter("@OperateMode", SqlDbType.VarChar) { Value = obj.Mode };
             obj.Sqlprms[4] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
             return ckmdl.InsertUpdateDeleteData("L_Log_Insert", GetConnectionString(), obj.Sqlprms);
+        }
+        //Nwe Mar Win(2020-10-22)
+        public string Staff_Select_Check(string staffCD,DateTime cDate)
+        {
+            string str = string.Empty;
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0]= new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = staffCD };
+            parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = cDate.Date };
+            DataTable dt = ckmdl.SelectDatatable("Staff_Select_Check", GetConnectionString(), parameters);
+            if (dt.Rows.Count > 0)
+            {
+                str = dt.Rows[0]["MessageID"].ToString();
+            }
+            return str;
+           
         }
     }
 }
