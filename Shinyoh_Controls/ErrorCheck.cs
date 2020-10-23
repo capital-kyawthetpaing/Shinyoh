@@ -45,7 +45,7 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E103");
                     sTextBox.Focus();
-                    return "1";
+                    return true;
                 }
             }
             //NMW(2020-10-23)
@@ -57,7 +57,7 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E104");
                     sTextBox.Focus();
-                    return "1";
+                    return true;
                 }
             }
 
@@ -125,7 +125,7 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E133");
                     sTextBox.Focus();
-                    return "1";
+                    return true;
                 }
             }
 
