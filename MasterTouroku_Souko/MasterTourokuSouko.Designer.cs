@@ -474,6 +474,7 @@
             this.txtCopySouko.Size = new System.Drawing.Size(100, 19);
             this.txtCopySouko.TabIndex = 2;
             this.txtCopySouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtCopySouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopySouko_KeyDown);
             // 
             // txtSouko
             // 

@@ -141,7 +141,7 @@ namespace Shinyoh_Controls
             {
                 IsErrorOccurs = errchk.Check(this);
 
-                if(IsErrorOccurs)
+                if(!IsErrorOccurs)
                 {
                     if (NextControl != null)
                         NextControl.Focus();

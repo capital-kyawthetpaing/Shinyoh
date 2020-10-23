@@ -3,6 +3,7 @@ using Shinyoh;
 using Entity;
 using BL;
 using CKM_CommonFunction;
+using System.Windows.Forms;
 
 namespace MasterTouroku_Souko
 {
@@ -155,6 +156,17 @@ namespace MasterTouroku_Souko
         private void DoDelete(SoukoEntity soukoDelete) {
             SoukoBL souko = new SoukoBL();
             souko.M_Souko_CUD(soukoDelete);
+        }
+
+        private void txtCopySouko_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtCopySouko.IsErrorOccurs)
+                {
+
+                }
+            }           
         }
     }
 }
