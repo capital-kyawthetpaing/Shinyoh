@@ -16,7 +16,7 @@ namespace Shinyoh
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BaseForm());
+            Application.Run(new SearchBase());
         }
     }
 }

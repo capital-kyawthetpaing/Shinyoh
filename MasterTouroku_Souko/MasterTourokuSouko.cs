@@ -1,25 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Shinyoh;
 using Entity;
-using Shinyoh_Controls;
 using BL;
+using CKM_CommonFunction;
+using System.Windows.Forms;
 
 namespace MasterTouroku_Souko
 {
     public partial class MasterTourokuSouko : BaseForm
     {
         ButtonType type = new ButtonType();
+        CommonFunction cf;
         public MasterTourokuSouko()
         {
             InitializeComponent();
+            cf = new CommonFunction();
         }
         private void MasterTourokuSouko_Load(object sender, EventArgs e)
         {
@@ -54,6 +49,14 @@ namespace MasterTouroku_Souko
                     txtCopySouko.E101Check(true,"copySouko",null,null,null);
                     txtSoukoName.E102Check(true);
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+
+                    cf.Clear(PanelTitle);
+                    cf.Clear(PanelDetail);
+
+                   // PanelDetail.Enabled = false;
+                   cf.DisablePanel(PanelDetail);
+
+                    cboMode.SelectedValue = 1;
                     break;
             }
         }
@@ -79,11 +82,15 @@ namespace MasterTouroku_Souko
             {
                 cboMode.SelectedIndex = -1;
                 cboMode.SelectedIndex = cboMode.SelectedIndex + 1;
+
+                ChangeMode(Mode.New);
             }
             if(tagID == "3")
             {
                 cboMode.SelectedIndex = -1;
                 cboMode.SelectedIndex = cboMode.SelectedIndex +2;
+
+                ChangeMode(Mode.Update);
             }
             if (tagID == "4")
             {
@@ -150,6 +157,19 @@ namespace MasterTouroku_Souko
         private void DoDelete(SoukoEntity soukoDelete) {
             SoukoBL souko = new SoukoBL();
             souko.M_Souko_CUD(soukoDelete);
+        }
+
+        private void txtCopySouko_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtCopySouko.IsErrorOccurs)
+                {
+                    cf.EnablePanel(PanelDetail);
+                    //PanelDetail.Enabled = true;
+                    txtSoukoName.Focus();
+                }
+            }           
         }
     }
 }

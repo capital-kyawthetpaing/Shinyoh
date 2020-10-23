@@ -10,7 +10,7 @@ using static Entity.SearchType;
 namespace Shinyoh_Controls
 {
     public class STextBox : TextBox
-    {        
+    {
         CommonFunction cf;
         BaseBL bbl;
         ErrorCheck errchk;
@@ -75,6 +75,8 @@ namespace Shinyoh_Controls
         public string NextControlName { get; set; }
         public bool MoveNext { get; set; } = true;
         public Control NextControl { get; set; }
+
+        public bool IsErrorOccurs { get; set; }
 
         public bool E102;
         public bool E102Multi;
@@ -149,9 +151,9 @@ namespace Shinyoh_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                string result = errchk.Check(this);
+                IsErrorOccurs = errchk.Check(this);
 
-                if(result.Equals("0"))
+                if(!IsErrorOccurs)
                 {
                     if (NextControl != null)
                         NextControl.Focus();
@@ -188,6 +190,15 @@ namespace Shinyoh_Controls
         {
             this.BackColor = Color.White;
             base.OnLeave(e);
+        }
+        protected override void OnEnabledChanged(EventArgs e)
+        {
+            if (!Enabled)
+                this.BackColor = Color.FromArgb(255, 230, 153);
+            else
+                this.BackColor = SystemColors.Window;
+
+            base.OnEnabledChanged(e);
         }
 
         protected override void InitLayout()
