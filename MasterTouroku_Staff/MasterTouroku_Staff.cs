@@ -18,10 +18,10 @@ namespace MasterTouroku_Staff
         {
             ProgramID = "MasterTourokuStaff";
             StartProgram();
-            cboStaff_Mode.Bind(false);
-            cboStaff_Menu.Bind(false);
-            cboStaff_authority.Bind(false);
-            cboStaff_Position.Bind(false);
+            cboStaff_Mode.Bind(true);
+            cboStaff_Menu.Bind(true);
+            cboStaff_authority.Bind(true);
+            cboStaff_Position.Bind(true);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
             SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
@@ -202,8 +202,7 @@ namespace MasterTouroku_Staff
             txtStaff_LDate.Text=string.Empty;
             txtStaff_Passward.Text=string.Empty;
             txtStaff_Confirm.Text = string.Empty;
-            txtStaff_Remark.Text = string.Empty;
-            
+            txtStaff_Remark.Text = string.Empty;            
         }
     }
 }
