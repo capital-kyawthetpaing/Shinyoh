@@ -11,7 +11,7 @@ namespace Shinyoh_Controls
             BaseBL bbl = new BaseBL();
             bbl.ShowMessage(messageID);
         }
-        public string Check(Control ctrl)
+        public bool Check(Control ctrl)
         {
             if(ctrl is STextBox)
             {
@@ -19,10 +19,10 @@ namespace Shinyoh_Controls
                 return TextBoxErrorCheck(sTextBox);
             }
 
-            return "0";
+            return false;
         }
 
-        private string TextBoxErrorCheck(STextBox sTextBox)
+        private bool TextBoxErrorCheck(STextBox sTextBox)
         {
             if(sTextBox.E102)
             {
@@ -30,7 +30,7 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E102");
                     sTextBox.Focus();
-                    return "1";
+                    return true;
                 }                    
             }
 
@@ -40,13 +40,13 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E102");
                     sTextBox.ctrlE102_1.Focus();
-                    return "1";
+                    return true;
                 }
                 else if(!string.IsNullOrWhiteSpace(sTextBox.ctrlE102_1.Text) && string.IsNullOrWhiteSpace(sTextBox.ctrlE102_2.Text))
                 {
                     ShowErrorMessage("E102");
                     sTextBox.ctrlE102_2.Focus();
-                    return "1";
+                    return true;
                 }
             }
 
@@ -56,7 +56,7 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E166");
                     sTextBox.Focus();
-                    return "1";
+                    return true;
                 }
             }
 
@@ -77,7 +77,7 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E132");
                     sTextBox.Focus();
-                    return "1";
+                    return true;
                 }
             }
             if (sTextBox.E101 && !string.IsNullOrWhiteSpace(sTextBox.Text))
@@ -97,11 +97,11 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E101");
                     sTextBox.Focus();
-                    return "1";
+                    return true;
                 }
             }
 
-            return "0";
+            return false;
         }
     }
 }

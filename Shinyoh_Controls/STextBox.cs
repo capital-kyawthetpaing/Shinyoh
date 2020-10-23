@@ -10,7 +10,7 @@ using static Entity.SearchType;
 namespace Shinyoh_Controls
 {
     public class STextBox : TextBox
-    {        
+    {
         CommonFunction cf;
         BaseBL bbl;
         ErrorCheck errchk;
@@ -76,6 +76,8 @@ namespace Shinyoh_Controls
         public bool MoveNext { get; set; } = true;
         public Control NextControl { get; set; }
 
+        public bool IsErrorOccurs { get; set; }
+
         public bool E102;
         public bool E102Multi;
         public bool E166;
@@ -137,9 +139,9 @@ namespace Shinyoh_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                string result = errchk.Check(this);
+                IsErrorOccurs = errchk.Check(this);
 
-                if(result.Equals("0"))
+                if(IsErrorOccurs)
                 {
                     if (NextControl != null)
                         NextControl.Focus();
