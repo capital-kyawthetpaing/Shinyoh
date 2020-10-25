@@ -135,12 +135,18 @@ namespace BL
             parameters[0]= new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = staffCD };
             parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = cDate.Date };
             DataTable dt = ckmdl.SelectDatatable("Staff_Select_Check", GetConnectionString(), parameters);
+            
             if (dt.Rows.Count > 0)
             {
                 str = dt.Rows[0]["MessageID"].ToString();
             }
             return str;
+            //Staff_Copy_DB(dt);
+            //return dt;
            
         }
+       
     }
+
+    
 }
