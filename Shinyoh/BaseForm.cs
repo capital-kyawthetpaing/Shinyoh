@@ -130,7 +130,7 @@ namespace Shinyoh
             FireClickEvent(btn);
         }
 
-        private void FireClickEvent(SButton btn)
+        protected void FireClickEvent(SButton btn)
         {
             switch(btn.ButtonType)
             {
@@ -157,11 +157,7 @@ namespace Shinyoh
                         return;
                     }
                     else
-                    {
-                        if (PreviousCtrl != null)
-                            PreviousCtrl.Focus();
                         FunctionProcess(btn.Tag.ToString());
-                    }
                     break;
                 case ButtonType.BType.Save:
                     FunctionProcess(btn.Tag.ToString());
@@ -276,6 +272,16 @@ namespace Shinyoh
             obj.Program = ProgramID;
             obj.PC = PCID;
             return obj;
+        }
+
+        private void cboMode_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void SetDefaultMode(string value)
+        {
+            cboMode.SelectedIndex = cboMode.FindString(value);
         }
     }
 }
