@@ -33,7 +33,8 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.BType.Empty, F8, "",false);
             SetButton(ButtonType.BType.Empty, F10, "",false);
             SetButton(ButtonType.BType.Empty, F11, "",false);
-          
+
+            SetDefaultMode("1");
             ChangeMode(Mode.New);
             txtSouko.Focus();
 
@@ -53,7 +54,6 @@ namespace MasterTouroku_Souko
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
                     cf.DisablePanel(PanelDetail);
-                    cboMode.SelectedValue = 1;
 
                     txtSouko.Enabled = true;
                     txtCopySouko.Enabled = true;
@@ -70,7 +70,6 @@ namespace MasterTouroku_Souko
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
                     cf.DisablePanel(PanelDetail);
-                    cboMode.SelectedValue = 2;
 
                     txtCopySouko.Enabled = false;
                     txtSouko.Enabled = true;
@@ -87,7 +86,6 @@ namespace MasterTouroku_Souko
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
                     cf.DisablePanel(PanelDetail);
-                    cboMode.SelectedValue = 3;
 
                     txtCopySouko.Enabled = false;
                     txtSouko.Enabled = true;
@@ -104,7 +102,6 @@ namespace MasterTouroku_Souko
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
                     cf.DisablePanel(PanelDetail);
-                    cboMode.SelectedValue = 4;
 
                     txtCopySouko.Enabled = false;
                     txtSouko.Enabled = true;
@@ -116,47 +113,22 @@ namespace MasterTouroku_Souko
             }
         }
 
-        private void cboName_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string item = cboMode.SelectedIndex.ToString();
-            if (item.Equals("1"))
-            {
-               // ChangeMode(Mode.New);
-            }
-            else if (item.Equals("2"))
-            {
-               // ChangeMode(Mode.Update);
-            }
-        }
-
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
             {
-                cboMode.SelectedIndex = -1;
-                cboMode.SelectedIndex = cboMode.SelectedIndex + 1;
-
                 ChangeMode(Mode.New);
             }
             if(tagID == "3")
             {
-                cboMode.SelectedIndex = -1;
-                cboMode.SelectedIndex = cboMode.SelectedIndex +2;
-
                 ChangeMode(Mode.Update);
             }
             if (tagID == "4")
             {
-                cboMode.SelectedIndex = -1;
-                cboMode.SelectedIndex = cboMode.SelectedIndex + 3;
-
                 ChangeMode(Mode.Delete);
             }
             if (tagID == "5")
             {
-                cboMode.SelectedIndex = -1;
-                cboMode.SelectedIndex = cboMode.SelectedIndex + 4;
-
                 ChangeMode(Mode.Inquiry);
             }
             if(tagID == "12")

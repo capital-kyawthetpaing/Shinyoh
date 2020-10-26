@@ -49,7 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblSearch = new Shinyoh_Controls.SLabel();
             this.txtSearch = new Shinyoh_Controls.STextBox();
-            this.cboMode = new Shinyoh_Controls.SCombo();
             this.txtCopySouko = new Shinyoh_Controls.STextBox();
             this.txtSouko = new Shinyoh_Controls.STextBox();
             this.lblCopySouko = new Shinyoh_Controls.SLabel();
@@ -67,11 +66,19 @@
             // 
             // PanelTitle
             // 
-            this.PanelTitle.Controls.Add(this.cboMode);
             this.PanelTitle.Controls.Add(this.lblSouko);
             this.PanelTitle.Controls.Add(this.txtSouko);
             this.PanelTitle.Controls.Add(this.lblCopySouko);
             this.PanelTitle.Controls.Add(this.txtCopySouko);
+            this.PanelTitle.Controls.SetChildIndex(this.txtCopySouko, 0);
+            this.PanelTitle.Controls.SetChildIndex(this.lblCopySouko, 0);
+            this.PanelTitle.Controls.SetChildIndex(this.txtSouko, 0);
+            this.PanelTitle.Controls.SetChildIndex(this.lblSouko, 0);
+            this.PanelTitle.Controls.SetChildIndex(this.cboMode, 0);
+            // 
+            // cboMode
+            // 
+            this.cboMode.BackColor = System.Drawing.Color.Cyan;
             // 
             // PanelDetail
             // 
@@ -451,20 +458,6 @@
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
-            // cboMode
-            // 
-            this.cboMode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
-            this.cboMode.FormattingEnabled = true;
-            this.cboMode.Location = new System.Drawing.Point(43, 7);
-            this.cboMode.MoveNext = true;
-            this.cboMode.Name = "cboMode";
-            this.cboMode.NextControl = null;
-            this.cboMode.NextControlName = "txtSouko";
-            this.cboMode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cboMode.Size = new System.Drawing.Size(90, 21);
-            this.cboMode.TabIndex = 0;
-            this.cboMode.SelectedIndexChanged += new System.EventHandler(this.cboName_SelectedIndexChanged);
-            // 
             // txtCopySouko
             // 
             this.txtCopySouko.AllowMinus = false;
@@ -615,7 +608,6 @@
         private Shinyoh_Controls.SLabel lblSouko;
         private Shinyoh_Controls.STextBox txtSouko;
         private Shinyoh_Controls.STextBox txtCopySouko;
-        private Shinyoh_Controls.SCombo cboMode;
         private Shinyoh_Controls.SLabel sLabel3;
     }
 }
