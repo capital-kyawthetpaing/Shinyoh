@@ -127,7 +127,7 @@ namespace BL
             return ckmdl.InsertUpdateDeleteData("L_Log_Insert", GetConnectionString(), obj.Sqlprms);
         }
         //Nwe Mar Win(2020-10-22)
-        public string Staff_Select_Check(string staffCD,DateTime cDate)
+        public DataTable Staff_Select_Check(string staffCD,DateTime cDate)
         {
             string str = string.Empty;
             CKMDL ckmdl = new CKMDL();
@@ -135,15 +135,13 @@ namespace BL
             parameters[0]= new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = staffCD };
             parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = cDate.Date };
             DataTable dt = ckmdl.SelectDatatable("Staff_Select_Check", GetConnectionString(), parameters);
-            
-            if (dt.Rows.Count > 0)
-            {
-                str = dt.Rows[0]["MessageID"].ToString();
-            }
-            return str;
-            //Staff_Copy_DB(dt);
-            //return dt;
-           
+
+            //if (dt.Rows.Count > 0)
+            //{
+            //    str = dt.Rows[0]["MessageID"].ToString();
+            //}
+            //return str;
+            return dt;
         }
        
     }

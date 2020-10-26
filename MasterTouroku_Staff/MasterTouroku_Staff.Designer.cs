@@ -613,7 +613,7 @@
             this.txtStaff_CDate.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_CDate.TabIndex = 2;
             this.txtStaff_CDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
-           
+            this.txtStaff_CDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaff_CDate_KeyDown);
             // 
             // lblStaff_Copy
             // 

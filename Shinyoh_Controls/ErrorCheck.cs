@@ -102,6 +102,7 @@ namespace Shinyoh_Controls
             if (sTextBox.E132)
             {
                 string result = string.Empty;
+                DataTable dt = new DataTable();
                 switch (sTextBox.E132Type)
                 {
                     case "souko":
@@ -113,8 +114,8 @@ namespace Shinyoh_Controls
                         break;
                     case "M_Staff":// NMW(2020-10-22)
                         StaffBL sBL = new StaffBL();
-                        //DataTable dt = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text));
-                        result = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text));
+                        dt = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text));
+                        result = dt.Rows[0]["MessageID"].ToString();
                         break;
                 }
                 if (result.Equals("E132"))
@@ -127,13 +128,17 @@ namespace Shinyoh_Controls
 
             if (sTextBox.E133)//NMW(2020-10-23)
             {
-                
+                DataTable dt = new DataTable();
                 string result = string.Empty;
                 StaffBL sBL = new StaffBL();
                 switch (sTextBox.E133Type)
                 {
                     case "M_Staff":// NMW(2020-10-22)
-                        result = sBL.Staff_Select_Check(sTextBox.ctrlE133_1.Text, Convert.ToDateTime(sTextBox.ctrlE133_2.Text));
+                        if(!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
+                        {
+                            dt = sBL.Staff_Select_Check(sTextBox.ctrlE133_1.Text, Convert.ToDateTime(sTextBox.ctrlE133_2.Text));
+                            result = dt.Rows[0]["MessageID"].ToString();
+                        }
                         break;
                 }
                 if (result.Equals("E133"))
