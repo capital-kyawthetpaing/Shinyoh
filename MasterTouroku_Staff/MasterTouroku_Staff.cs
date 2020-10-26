@@ -112,7 +112,7 @@ namespace MasterTouroku_Staff
             if (tagID == "12")
             {
                 DBProcess();
-                ChangeMode(Mode.New);
+                cboStaff_Mode.SelectedValue = "1";
                 cf.DisablePanel(Panel_Staff);
                 Clear();
             }
@@ -202,8 +202,6 @@ namespace MasterTouroku_Staff
             if (item == "0")
             {
                 ChangeMode(Mode.New);
-
-
                 txtStaff_CDate.NextControlName = txtStaff_Copy.Name;
                 txtStaff_Copy.Enabled = true;
                 txtStaff_CopyDate.Enabled = true;
