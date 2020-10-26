@@ -75,6 +75,7 @@ namespace MasterTouroku_Souko
 
                     txtCopySouko.Enabled = false;
                     txtSouko.Enabled = true;
+                    txtSouko.Focus();
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
@@ -92,6 +93,7 @@ namespace MasterTouroku_Souko
 
                     txtCopySouko.Enabled = false;
                     txtSouko.Enabled = true;
+                    txtSouko.Focus();
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -109,6 +111,7 @@ namespace MasterTouroku_Souko
 
                     txtCopySouko.Enabled = false;
                     txtSouko.Enabled = true;
+                    txtSouko.Focus();
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
