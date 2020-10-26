@@ -152,7 +152,7 @@ namespace Shinyoh
                 case ButtonType.BType.Inquiry:
                     if (bbl.ShowMessage("Q005") != DialogResult.Yes)
                     {
-                        if(PreviousCtrl != null)
+                        if (PreviousCtrl != null)
                             PreviousCtrl.Focus();
                         return;
                     }
