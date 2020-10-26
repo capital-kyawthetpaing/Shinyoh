@@ -4,11 +4,13 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using BL;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Controls
 {
     public class SCombo : ComboBox
     {
+       
         [Browsable(true)]
         [Category("Shinyoh Properties")]
         [Description("NextControlName")]
@@ -148,8 +150,8 @@ namespace Shinyoh_Controls
                 e.Handled = true;
             base.OnKeyPress(e);
         }
+       
 
-        
         public bool E102;
         public void E102Check(bool value)
         {
@@ -174,6 +176,16 @@ namespace Shinyoh_Controls
             base.InitLayout();
             base.AutoSize = false;
             base.Height = 19;
+        }
+        //NMW (Copy from STextBox)
+        protected override void OnEnabledChanged(EventArgs e)
+        {
+            if (!Enabled)
+                this.BackColor = Color.FromArgb(255, 230, 153);
+            else
+                this.BackColor = SystemColors.Window;
+
+            base.OnEnabledChanged(e);
         }
     }
 }
