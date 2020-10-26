@@ -110,6 +110,7 @@
             this.txtRemark.DecimalPlace = 0;
             this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtRemark.IntegerPart = 0;
+            this.txtRemark.IsErrorOccurs = false;
             this.txtRemark.IsRequire = false;
             this.txtRemark.Location = new System.Drawing.Point(142, 287);
             this.txtRemark.MaxLength = 80;
@@ -144,6 +145,7 @@
             this.txtFAX.DecimalPlace = 0;
             this.txtFAX.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtFAX.IntegerPart = 0;
+            this.txtFAX.IsErrorOccurs = false;
             this.txtFAX.IsRequire = false;
             this.txtFAX.Location = new System.Drawing.Point(141, 248);
             this.txtFAX.MaxLength = 15;
@@ -178,6 +180,7 @@
             this.txtPhNo.DecimalPlace = 0;
             this.txtPhNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo.IntegerPart = 0;
+            this.txtPhNo.IsErrorOccurs = false;
             this.txtPhNo.IsRequire = false;
             this.txtPhNo.Location = new System.Drawing.Point(141, 209);
             this.txtPhNo.MaxLength = 15;
@@ -212,6 +215,7 @@
             this.txtAddress2.DecimalPlace = 0;
             this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
+            this.txtAddress2.IsErrorOccurs = false;
             this.txtAddress2.IsRequire = false;
             this.txtAddress2.Location = new System.Drawing.Point(141, 170);
             this.txtAddress2.MaxLength = 80;
@@ -246,6 +250,7 @@
             this.txtAddress1.DecimalPlace = 0;
             this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
+            this.txtAddress1.IsErrorOccurs = false;
             this.txtAddress1.IsRequire = false;
             this.txtAddress1.Location = new System.Drawing.Point(141, 129);
             this.txtAddress1.MaxLength = 80;
@@ -280,6 +285,7 @@
             this.txtYubin2.DecimalPlace = 0;
             this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
+            this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.Location = new System.Drawing.Point(280, 91);
             this.txtYubin2.MaxLength = 4;
@@ -300,6 +306,7 @@
             this.txtYubin1.DecimalPlace = 0;
             this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
+            this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
             this.txtYubin1.Location = new System.Drawing.Point(141, 91);
             this.txtYubin1.MaxLength = 3;
@@ -334,6 +341,7 @@
             this.txtKanaName.DecimalPlace = 0;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
+            this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(141, 54);
             this.txtKanaName.MaxLength = 50;
@@ -368,6 +376,7 @@
             this.txtSoukoName.DecimalPlace = 0;
             this.txtSoukoName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSoukoName.IntegerPart = 0;
+            this.txtSoukoName.IsErrorOccurs = false;
             this.txtSoukoName.IsRequire = false;
             this.txtSoukoName.Location = new System.Drawing.Point(141, 18);
             this.txtSoukoName.MaxLength = 50;
@@ -427,6 +436,7 @@
             this.txtSearch.DecimalPlace = 0;
             this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSearch.IntegerPart = 0;
+            this.txtSearch.IsErrorOccurs = false;
             this.txtSearch.IsRequire = false;
             this.txtSearch.Location = new System.Drawing.Point(142, 324);
             this.txtSearch.MaxLength = 5;
@@ -462,6 +472,7 @@
             this.txtCopySouko.DecimalPlace = 0;
             this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCopySouko.IntegerPart = 0;
+            this.txtCopySouko.IsErrorOccurs = false;
             this.txtCopySouko.IsRequire = false;
             this.txtCopySouko.Location = new System.Drawing.Point(241, 37);
             this.txtCopySouko.MaxLength = 10;
@@ -483,6 +494,7 @@
             this.txtSouko.DecimalPlace = 0;
             this.txtSouko.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSouko.IntegerPart = 0;
+            this.txtSouko.IsErrorOccurs = false;
             this.txtSouko.IsRequire = false;
             this.txtSouko.Location = new System.Drawing.Point(241, 9);
             this.txtSouko.MaxLength = 10;
@@ -495,6 +507,7 @@
             this.txtSouko.Size = new System.Drawing.Size(100, 19);
             this.txtSouko.TabIndex = 1;
             this.txtSouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSouko_KeyDown);
             // 
             // lblCopySouko
             // 

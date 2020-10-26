@@ -52,11 +52,66 @@ namespace MasterTouroku_Souko
 
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
-
-                   // PanelDetail.Enabled = false;
-                   cf.DisablePanel(PanelDetail);
-
+                    cf.DisablePanel(PanelDetail);
                     cboMode.SelectedValue = 1;
+
+                    txtSouko.Enabled = true;
+                    txtCopySouko.Enabled = true;
+
+                    Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnNew.Visible = true;
+
+                    break;
+                case Mode.Update:
+                    txtSouko.E102Check(true);
+                    txtSouko.E132Check(false, null, null, null, null);
+                    txtSouko.E101Check(true, "souko", null, null, null);
+
+                    cf.Clear(PanelTitle);
+                    cf.Clear(PanelDetail);
+                    cf.DisablePanel(PanelDetail);
+                    cboMode.SelectedValue = 2;
+
+                    txtCopySouko.Enabled = false;
+                    txtSouko.Enabled = true;
+
+                    Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnUpdate.Visible = true;
+
+                    break;
+                case Mode.Delete:
+                    txtSouko.E102Check(true);
+                    txtSouko.E132Check(false, null, null, null, null);
+                    txtSouko.E101Check(true, "souko", null, null, null);
+
+                    cf.Clear(PanelTitle);
+                    cf.Clear(PanelDetail);
+                    cf.DisablePanel(PanelDetail);
+                    cboMode.SelectedValue = 3;
+
+                    txtCopySouko.Enabled = false;
+                    txtSouko.Enabled = true;
+
+                    Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnDelete.Visible = true;
+
+                    break;
+                case Mode.Inquiry:
+                    txtSouko.E102Check(true);
+                    txtSouko.E132Check(false, null, null, null, null);
+                    txtSouko.E101Check(true, "souko", null, null, null);
+
+                    cf.Clear(PanelTitle);
+                    cf.Clear(PanelDetail);
+                    cf.DisablePanel(PanelDetail);
+                    cboMode.SelectedValue = 4;
+
+                    txtCopySouko.Enabled = false;
+                    txtSouko.Enabled = true;
+
+                    Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnInquiry.Visible = false;
+
                     break;
             }
         }
@@ -64,15 +119,13 @@ namespace MasterTouroku_Souko
         private void cboName_SelectedIndexChanged(object sender, EventArgs e)
         {
             string item = cboMode.SelectedIndex.ToString();
-            if (item == "0")
+            if (item.Equals("1"))
             {
-                txtSouko.Enabled = true;
-                txtCopySouko.Enabled = true;
+               // ChangeMode(Mode.New);
             }
-            else
+            else if (item.Equals("2"))
             {
-                txtCopySouko.Enabled = false;
-                txtSouko.Enabled = true;
+               // ChangeMode(Mode.Update);
             }
         }
 
@@ -96,11 +149,15 @@ namespace MasterTouroku_Souko
             {
                 cboMode.SelectedIndex = -1;
                 cboMode.SelectedIndex = cboMode.SelectedIndex + 3;
+
+                ChangeMode(Mode.Delete);
             }
             if (tagID == "5")
             {
                 cboMode.SelectedIndex = -1;
                 cboMode.SelectedIndex = cboMode.SelectedIndex + 4;
+
+                ChangeMode(Mode.Inquiry);
             }
             if(tagID == "12")
             {
@@ -166,10 +223,32 @@ namespace MasterTouroku_Souko
                 if (!txtCopySouko.IsErrorOccurs)
                 {
                     cf.EnablePanel(PanelDetail);
-                    //PanelDetail.Enabled = true;
                     txtSoukoName.Focus();
                 }
             }           
+        }
+
+        private void txtSouko_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!txtSouko.IsErrorOccurs)
+            {
+                SoukoBL bl = new SoukoBL();
+                SoukoEntity soukoEntity = GetSouko();
+                soukoEntity = bl.Souko_Select(soukoEntity);
+                txtSoukoName.Text = soukoEntity.SoukoName.ToString();
+                txtKanaName.Text = soukoEntity.KanaName.ToString();
+                txtSearch.Text = soukoEntity.KensakuHyouziJun.ToString();
+                txtYubin1.Text = soukoEntity.YuubinNO1.ToString();
+                txtYubin2.Text = soukoEntity.YuubinNO2.ToString();
+                txtAddress1.Text = soukoEntity.Juusho1.ToString();
+                txtAddress2.Text = soukoEntity.Juusho2.ToString();
+                txtPhNo.Text = soukoEntity.TelNO.ToString();
+                txtFAX.Text = soukoEntity.FaxNO.ToString();
+                txtRemark.Text = soukoEntity.Remarks.ToString();
+
+                cf.EnablePanel(PanelDetail);
+                txtSoukoName.Focus();
+            }
         }
     }
 }

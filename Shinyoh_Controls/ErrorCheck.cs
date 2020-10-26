@@ -149,9 +149,20 @@ namespace Shinyoh_Controls
                 }
             }
 
-            if (sTextBox.E166)
+            if(sTextBox.E101 && !string.IsNullOrWhiteSpace(sTextBox.Text))
             {
-                if (!sTextBox.ctrlE166_1.Text.Equals(sTextBox.ctrlE166_2.Text))
+                string result = string.Empty;
+                switch (sTextBox.E101Type)
+                {
+                    case "copySouko":
+                        SoukoBL bl = new SoukoBL();
+                        SoukoEntity soukoEntity = new SoukoEntity();
+                        soukoEntity.SoukoCD = sTextBox.Text;
+                        soukoEntity = bl.Souko_Select(soukoEntity);
+                        result = soukoEntity.MessageID;
+                        break;
+                }
+                if (result.Equals("E101"))
                 {
                     ShowErrorMessage("E166");
                     sTextBox.Focus();
