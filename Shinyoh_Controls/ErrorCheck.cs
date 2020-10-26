@@ -85,7 +85,7 @@ namespace Shinyoh_Controls
                 string result = string.Empty;
                 switch (sTextBox.E101Type)
                 {
-                    case "copySouko":
+                    case "souko":
                         SoukoBL bl = new SoukoBL();
                         SoukoEntity soukoEntity = new SoukoEntity();
                         soukoEntity.SoukoCD = sTextBox.Text;

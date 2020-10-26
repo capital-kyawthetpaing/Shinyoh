@@ -37,6 +37,19 @@ namespace BL {
             if(dt.Rows.Count > 0)
             {
                 soukoEntity.MessageID = dt.Rows[0]["MessageID"].ToString();
+                if (soukoEntity.MessageID.Equals("E132"))
+                {
+                    soukoEntity.SoukoName = dt.Rows[0]["SoukoName"].ToString();
+                    soukoEntity.KanaName = dt.Rows[0]["KanaName"].ToString();
+                    soukoEntity.KensakuHyouziJun = dt.Rows[0]["KensakuHyouziJun"].ToString();
+                    soukoEntity.YuubinNO1 = dt.Rows[0]["YuubinNO1"].ToString();
+                    soukoEntity.YuubinNO2 = dt.Rows[0]["YuubinNO2"].ToString();
+                    soukoEntity.Juusho1 = dt.Rows[0]["Juusho1"].ToString();
+                    soukoEntity.Juusho2 = dt.Rows[0]["Juusho2"].ToString();
+                    soukoEntity.TelNO = dt.Rows[0]["TelNO"].ToString();
+                    soukoEntity.FaxNO = dt.Rows[0]["FaxNO"].ToString();
+                    soukoEntity.Remarks = dt.Rows[0]["Remarks"].ToString();
+                }
             }
             return soukoEntity;           
         }
