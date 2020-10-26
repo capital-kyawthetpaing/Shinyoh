@@ -58,17 +58,22 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E102Check(true);
                     txtStaff_CopyDate.E102MultiCheck(true, txtStaff_Copy, txtStaff_CopyDate);
                     //E132
-                   // txtStaff_CDate.E132Check(true,"M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txtStaff_CDate.E132Check(true,"M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
+                    txtStaff_CDate.E133Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     txtStaff_CopyDate.E133Check(true, "M_Staff", txtStaff_Copy, txtStaff_CopyDate, null);                    
                     break;
                 case Mode.Update:
                     ErrorChek();
+                    //E132
+                    txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
                     txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     break;
                 case Mode.Delete:
                 case Mode.Inquiry:
+                    //E132
+                    txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
                     txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);                    
                     break;
@@ -85,7 +90,7 @@ namespace MasterTouroku_Staff
             txtStaff_JDate.E102Check(true);
             //E103
             txtStaff_CDate.E103Check(true);
-           // txtStaff_CopyDate.E103Check(true);
+            txtStaff_CopyDate.E103Check(true);
             txtStaff_JDate.E103Check(true);
             txtStaff_LDate.E103Check(true);
             //E04
@@ -105,7 +110,12 @@ namespace MasterTouroku_Staff
             if (tagID == "5")
                 cboStaff_Mode.SelectedValue = "4";
             if (tagID == "12")
+            {
                 DBProcess();
+                ChangeMode(Mode.New);
+                cf.DisablePanel(Panel_Staff);
+                Clear();
+            }
             base.FunctionProcess(tagID);
         }
         private void DBProcess()
@@ -240,20 +250,7 @@ namespace MasterTouroku_Staff
                 {
                     if(!string.IsNullOrEmpty(txtStaff_Copy.Text) && !string.IsNullOrEmpty(txtStaff_CopyDate.Text))
                     {
-                        DataTable dt = new DataTable();
-                        dt = bl.Staff_Select_Check(txtStaff_Copy.Text, Convert.ToDateTime(txtStaff_CopyDate.Text));
-                        if(dt.Rows[0]["MessageID"].ToString()=="E132")
-                        {
-                            txtStaff_Name.Text = dt.Rows[0]["StaffName"].ToString();
-                            txtStaff_KanaName.Text = dt.Rows[0]["KanaName"].ToString();
-                            txtStaff_Search.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
-                            cboStaff_Menu.SelectedValue = dt.Rows[0]["MenuCD"].ToString();
-                            cboStaff_authority.SelectedValue = dt.Rows[0]["AuthorizationsCD"].ToString();
-                            cboStaff_Position.SelectedValue = dt.Rows[0]["PositionCD"].ToString();
-                            txtStaff_JDate.Text = Convert.ToDateTime(dt.Rows[0]["JoinDate"].ToString()).ToString("yyyy-MM-dd");
-                            txtStaff_LDate.Text = Convert.ToDateTime(dt.Rows[0]["LeaveDate"].ToString()).ToString("yyyy-MM-dd");
-                            txtStaff_Remark.Text = dt.Rows[0]["Remarks"].ToString();
-                        }
+                        From_DB_To_Form(txtStaff_Copy.Text, Convert.ToDateTime(txtStaff_CopyDate.Text));                        
                     }                    
                     EnablePanel();
                 } 
@@ -270,12 +267,34 @@ namespace MasterTouroku_Staff
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!txtStaff_CopyDate.IsErrorOccurs)
+                if (!txtStaff_CDate.IsErrorOccurs)
                 {
                     if (cboStaff_Mode.SelectedValue.ToString() == "2")
+                    {
                         EnablePanel();
+                    }
+                    From_DB_To_Form(txt_Staff.Text, Convert.ToDateTime(txtStaff_CDate.Text));
                 }
             }
         }
+
+        private void From_DB_To_Form(string cd,DateTime cd_date)
+        {
+            DataTable dt = new DataTable();
+            dt = bl.Staff_Select_Check(cd, cd_date);
+            if (dt.Rows[0]["MessageID"].ToString() == "E132")
+            {
+                txtStaff_Name.Text = dt.Rows[0]["StaffName"].ToString();
+                txtStaff_KanaName.Text = dt.Rows[0]["KanaName"].ToString();
+                txtStaff_Search.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
+                cboStaff_Menu.SelectedValue = dt.Rows[0]["MenuCD"].ToString();
+                cboStaff_authority.SelectedValue = dt.Rows[0]["AuthorizationsCD"].ToString();
+                cboStaff_Position.SelectedValue = dt.Rows[0]["PositionCD"].ToString();
+                txtStaff_JDate.Text = Convert.ToDateTime(dt.Rows[0]["JoinDate"].ToString()).ToString("yyyy-MM-dd");
+                txtStaff_LDate.Text = Convert.ToDateTime(dt.Rows[0]["LeaveDate"].ToString()).ToString("yyyy-MM-dd");
+                txtStaff_Remark.Text = dt.Rows[0]["Remarks"].ToString();
+            }
+        }
+
     }
 }
