@@ -157,11 +157,7 @@ namespace Shinyoh
                         return;
                     }
                     else
-                    {
-                        if (PreviousCtrl != null)
-                            PreviousCtrl.Focus();
                         FunctionProcess(btn.Tag.ToString());
-                    }
                     break;
                 case ButtonType.BType.Save:
                     FunctionProcess(btn.Tag.ToString());
