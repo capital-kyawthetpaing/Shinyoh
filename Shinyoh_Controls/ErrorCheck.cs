@@ -154,7 +154,7 @@ namespace Shinyoh_Controls
                 string result = string.Empty;
                 switch (sTextBox.E101Type)
                 {
-                    case "copySouko":
+                    case "souko":
                         SoukoBL bl = new SoukoBL();
                         SoukoEntity soukoEntity = new SoukoEntity();
                         soukoEntity.SoukoCD = sTextBox.Text;
@@ -164,7 +164,7 @@ namespace Shinyoh_Controls
                 }
                 if (result.Equals("E101"))
                 {
-                    ShowErrorMessage("E166");
+                    ShowErrorMessage("E101");
                     sTextBox.Focus();
                     return true;
                 }
