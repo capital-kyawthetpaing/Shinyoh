@@ -147,6 +147,7 @@
             this.txtStaff_Search.DecimalPlace = 0;
             this.txtStaff_Search.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Search.IntegerPart = 0;
+            this.txtStaff_Search.IsErrorOccurs = false;
             this.txtStaff_Search.IsRequire = false;
             this.txtStaff_Search.Location = new System.Drawing.Point(141, 384);
             this.txtStaff_Search.MinimumSize = new System.Drawing.Size(100, 19);
@@ -156,8 +157,8 @@
             this.txtStaff_Search.NextControlName = null;
             this.txtStaff_Search.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Search.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff_Search.TabIndex = 49;
-            this.txtStaff_Search.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaff_Search.TabIndex = 17;
+            this.txtStaff_Search.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblStaff_Remark
             // 
@@ -179,6 +180,7 @@
             this.txtStaff_Remark.DecimalPlace = 0;
             this.txtStaff_Remark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Remark.IntegerPart = 0;
+            this.txtStaff_Remark.IsErrorOccurs = false;
             this.txtStaff_Remark.IsRequire = false;
             this.txtStaff_Remark.Location = new System.Drawing.Point(141, 348);
             this.txtStaff_Remark.MinimumSize = new System.Drawing.Size(100, 19);
@@ -188,7 +190,7 @@
             this.txtStaff_Remark.NextControlName = "txtStaff_Search";
             this.txtStaff_Remark.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Remark.Size = new System.Drawing.Size(527, 19);
-            this.txtStaff_Remark.TabIndex = 47;
+            this.txtStaff_Remark.TabIndex = 16;
             this.txtStaff_Remark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // sLabel3
@@ -211,6 +213,7 @@
             this.txtStaff_LDate.DecimalPlace = 0;
             this.txtStaff_LDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_LDate.IntegerPart = 0;
+            this.txtStaff_LDate.IsErrorOccurs = false;
             this.txtStaff_LDate.IsRequire = false;
             this.txtStaff_LDate.Location = new System.Drawing.Point(141, 313);
             this.txtStaff_LDate.MinimumSize = new System.Drawing.Size(100, 19);
@@ -220,7 +223,7 @@
             this.txtStaff_LDate.NextControlName = "txtStaff_Remark";
             this.txtStaff_LDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_LDate.Size = new System.Drawing.Size(130, 19);
-            this.txtStaff_LDate.TabIndex = 45;
+            this.txtStaff_LDate.TabIndex = 15;
             this.txtStaff_LDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtStaff_JDate
@@ -230,6 +233,7 @@
             this.txtStaff_JDate.DecimalPlace = 0;
             this.txtStaff_JDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_JDate.IntegerPart = 0;
+            this.txtStaff_JDate.IsErrorOccurs = false;
             this.txtStaff_JDate.IsRequire = false;
             this.txtStaff_JDate.Location = new System.Drawing.Point(141, 275);
             this.txtStaff_JDate.MinimumSize = new System.Drawing.Size(100, 19);
@@ -239,7 +243,7 @@
             this.txtStaff_JDate.NextControlName = "txtStaff_LDate";
             this.txtStaff_JDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_JDate.Size = new System.Drawing.Size(130, 19);
-            this.txtStaff_JDate.TabIndex = 43;
+            this.txtStaff_JDate.TabIndex = 14;
             this.txtStaff_JDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblStaff_SDate
@@ -262,6 +266,7 @@
             this.txtStaff_Confirm.DecimalPlace = 0;
             this.txtStaff_Confirm.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Confirm.IntegerPart = 0;
+            this.txtStaff_Confirm.IsErrorOccurs = false;
             this.txtStaff_Confirm.IsRequire = false;
             this.txtStaff_Confirm.Location = new System.Drawing.Point(369, 238);
             this.txtStaff_Confirm.MinimumSize = new System.Drawing.Size(100, 19);
@@ -271,7 +276,7 @@
             this.txtStaff_Confirm.NextControlName = "txtStaff_JDate";
             this.txtStaff_Confirm.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Confirm.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff_Confirm.TabIndex = 41;
+            this.txtStaff_Confirm.TabIndex = 13;
             this.txtStaff_Confirm.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaff_Confirm.UseSystemPasswordChar = true;
             // 
@@ -295,6 +300,7 @@
             this.txtStaff_Passward.DecimalPlace = 0;
             this.txtStaff_Passward.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Passward.IntegerPart = 0;
+            this.txtStaff_Passward.IsErrorOccurs = false;
             this.txtStaff_Passward.IsRequire = false;
             this.txtStaff_Passward.Location = new System.Drawing.Point(141, 238);
             this.txtStaff_Passward.MinimumSize = new System.Drawing.Size(100, 19);
@@ -304,7 +310,7 @@
             this.txtStaff_Passward.NextControlName = "txtStaff_Confirm";
             this.txtStaff_Passward.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Passward.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff_Passward.TabIndex = 39;
+            this.txtStaff_Passward.TabIndex = 12;
             this.txtStaff_Passward.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaff_Passward.UseSystemPasswordChar = true;
             // 
@@ -344,7 +350,7 @@
             this.cboStaff_Position.NextControl = null;
             this.cboStaff_Position.NextControlName = "txtStaff_Passward";
             this.cboStaff_Position.Size = new System.Drawing.Size(180, 21);
-            this.cboStaff_Position.TabIndex = 36;
+            this.cboStaff_Position.TabIndex = 11;
             // 
             // cboStaff_authority
             // 
@@ -356,7 +362,7 @@
             this.cboStaff_authority.NextControl = null;
             this.cboStaff_authority.NextControlName = "cboStaff_Position";
             this.cboStaff_authority.Size = new System.Drawing.Size(370, 21);
-            this.cboStaff_authority.TabIndex = 34;
+            this.cboStaff_authority.TabIndex = 10;
             // 
             // lblStaff_authority
             // 
@@ -381,7 +387,7 @@
             this.cboStaff_Menu.NextControl = null;
             this.cboStaff_Menu.NextControlName = "cboStaff_authority";
             this.cboStaff_Menu.Size = new System.Drawing.Size(370, 21);
-            this.cboStaff_Menu.TabIndex = 32;
+            this.cboStaff_Menu.TabIndex = 9;
             // 
             // lblStaff_Menu
             // 
@@ -403,6 +409,7 @@
             this.txtStaff_Yubin2.DecimalPlace = 0;
             this.txtStaff_Yubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Yubin2.IntegerPart = 0;
+            this.txtStaff_Yubin2.IsErrorOccurs = false;
             this.txtStaff_Yubin2.IsRequire = false;
             this.txtStaff_Yubin2.Location = new System.Drawing.Point(280, 92);
             this.txtStaff_Yubin2.MaxLength = 4;
@@ -413,7 +420,7 @@
             this.txtStaff_Yubin2.NextControlName = "cboStaff_Menu";
             this.txtStaff_Yubin2.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Yubin2.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff_Yubin2.TabIndex = 28;
+            this.txtStaff_Yubin2.TabIndex = 8;
             this.txtStaff_Yubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtStaff_Yubin1
@@ -423,6 +430,7 @@
             this.txtStaff_Yubin1.DecimalPlace = 0;
             this.txtStaff_Yubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Yubin1.IntegerPart = 0;
+            this.txtStaff_Yubin1.IsErrorOccurs = false;
             this.txtStaff_Yubin1.IsRequire = false;
             this.txtStaff_Yubin1.Location = new System.Drawing.Point(141, 92);
             this.txtStaff_Yubin1.MaxLength = 3;
@@ -433,7 +441,7 @@
             this.txtStaff_Yubin1.NextControlName = "txtStaff_Yubin2";
             this.txtStaff_Yubin1.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Yubin1.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff_Yubin1.TabIndex = 27;
+            this.txtStaff_Yubin1.TabIndex = 7;
             this.txtStaff_Yubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblStaff_YubinNo
@@ -467,6 +475,7 @@
             this.txtStaff_KanaName.DecimalPlace = 0;
             this.txtStaff_KanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_KanaName.IntegerPart = 0;
+            this.txtStaff_KanaName.IsErrorOccurs = false;
             this.txtStaff_KanaName.IsRequire = false;
             this.txtStaff_KanaName.Location = new System.Drawing.Point(141, 54);
             this.txtStaff_KanaName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -476,7 +485,7 @@
             this.txtStaff_KanaName.NextControlName = "txtStaff_Yubin1";
             this.txtStaff_KanaName.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_KanaName.Size = new System.Drawing.Size(357, 19);
-            this.txtStaff_KanaName.TabIndex = 3;
+            this.txtStaff_KanaName.TabIndex = 6;
             this.txtStaff_KanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblStaff_KanaName
@@ -499,6 +508,7 @@
             this.txtStaff_Name.DecimalPlace = 0;
             this.txtStaff_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Name.IntegerPart = 0;
+            this.txtStaff_Name.IsErrorOccurs = false;
             this.txtStaff_Name.IsRequire = false;
             this.txtStaff_Name.Location = new System.Drawing.Point(141, 18);
             this.txtStaff_Name.MinimumSize = new System.Drawing.Size(100, 19);
@@ -508,7 +518,7 @@
             this.txtStaff_Name.NextControlName = "txtStaff_KanaName";
             this.txtStaff_Name.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Name.Size = new System.Drawing.Size(357, 19);
-            this.txtStaff_Name.TabIndex = 1;
+            this.txtStaff_Name.TabIndex = 5;
             this.txtStaff_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblStaffName
@@ -534,7 +544,8 @@
             this.cboStaff_Mode.NextControl = null;
             this.cboStaff_Mode.NextControlName = "txt_Staff";
             this.cboStaff_Mode.Size = new System.Drawing.Size(90, 21);
-            this.cboStaff_Mode.TabIndex = 32;
+            this.cboStaff_Mode.TabIndex = 0;
+            this.cboStaff_Mode.SelectedIndexChanged += new System.EventHandler(this.cboStaff_Mode_SelectedIndexChanged);
             // 
             // lblStaff
             // 
@@ -569,17 +580,18 @@
             this.txt_Staff.DecimalPlace = 0;
             this.txt_Staff.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txt_Staff.IntegerPart = 0;
+            this.txt_Staff.IsErrorOccurs = false;
             this.txt_Staff.IsRequire = false;
             this.txt_Staff.Location = new System.Drawing.Point(269, 10);
             this.txt_Staff.MinimumSize = new System.Drawing.Size(100, 19);
             this.txt_Staff.MoveNext = true;
             this.txt_Staff.Name = "txt_Staff";
             this.txt_Staff.NextControl = null;
-            this.txt_Staff.NextControlName = "txtStaff_Copy";
+            this.txt_Staff.NextControlName = "txtStaff_CDate";
             this.txt_Staff.SearchType = Entity.SearchType.ScType.None;
             this.txt_Staff.Size = new System.Drawing.Size(100, 19);
-            this.txt_Staff.TabIndex = 51;
-            this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txt_Staff.TabIndex = 1;
+            this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtStaff_CDate
             // 
@@ -588,16 +600,17 @@
             this.txtStaff_CDate.DecimalPlace = 0;
             this.txtStaff_CDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_CDate.IntegerPart = 0;
+            this.txtStaff_CDate.IsErrorOccurs = false;
             this.txtStaff_CDate.IsRequire = false;
             this.txtStaff_CDate.Location = new System.Drawing.Point(269, 35);
             this.txtStaff_CDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_CDate.MoveNext = true;
             this.txtStaff_CDate.Name = "txtStaff_CDate";
             this.txtStaff_CDate.NextControl = null;
-            this.txtStaff_CDate.NextControlName = "txtStaff_CopyDate";
+            this.txtStaff_CDate.NextControlName = "txtStaff_Name";
             this.txtStaff_CDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_CDate.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff_CDate.TabIndex = 53;
+            this.txtStaff_CDate.TabIndex = 2;
             this.txtStaff_CDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblStaff_Copy
@@ -620,17 +633,18 @@
             this.txtStaff_Copy.DecimalPlace = 0;
             this.txtStaff_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Copy.IntegerPart = 0;
+            this.txtStaff_Copy.IsErrorOccurs = false;
             this.txtStaff_Copy.IsRequire = false;
             this.txtStaff_Copy.Location = new System.Drawing.Point(498, 11);
             this.txtStaff_Copy.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Copy.MoveNext = true;
             this.txtStaff_Copy.Name = "txtStaff_Copy";
             this.txtStaff_Copy.NextControl = null;
-            this.txtStaff_Copy.NextControlName = "txtStaff_CDate";
+            this.txtStaff_Copy.NextControlName = "txtStaff_CopyDate";
             this.txtStaff_Copy.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Copy.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff_Copy.TabIndex = 54;
-            this.txtStaff_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtStaff_Copy.TabIndex = 3;
+            this.txtStaff_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtStaff_CopyDate
             // 
@@ -639,6 +653,7 @@
             this.txtStaff_CopyDate.DecimalPlace = 0;
             this.txtStaff_CopyDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_CopyDate.IntegerPart = 0;
+            this.txtStaff_CopyDate.IsErrorOccurs = false;
             this.txtStaff_CopyDate.IsRequire = false;
             this.txtStaff_CopyDate.Location = new System.Drawing.Point(498, 35);
             this.txtStaff_CopyDate.MinimumSize = new System.Drawing.Size(100, 19);
@@ -648,7 +663,7 @@
             this.txtStaff_CopyDate.NextControlName = "txtStaff_Name";
             this.txtStaff_CopyDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_CopyDate.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff_CopyDate.TabIndex = 56;
+            this.txtStaff_CopyDate.TabIndex = 4;
             this.txtStaff_CopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblStaff_CopyDate

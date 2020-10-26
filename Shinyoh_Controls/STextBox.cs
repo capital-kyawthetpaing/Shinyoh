@@ -85,6 +85,11 @@ namespace Shinyoh_Controls
         public string E132Type;
         public bool E101;
         public string E101Type;
+        //Nwe Mar Win
+        public bool E103;//(2020-10-22)
+        public bool E133;//(2020-10-23)
+        public string E133Type;
+        public bool E104;
 
         public Control ctrlE102_1;
         public Control ctrlE102_2;
@@ -96,6 +101,12 @@ namespace Shinyoh_Controls
         public Control ctrlE101_1;
         public Control ctrlE101_2;
         public Control ctrlE101_3;
+        //NMW (2020-10-23)
+        public Control ctrlE133_1;
+        public Control ctrlE133_2;
+        public Control ctrlE133_3;
+        public Control ctrlE104_1;
+        public Control ctrlE104_2;
 
         //Constructor
         public STextBox()
@@ -135,6 +146,7 @@ namespace Shinyoh_Controls
             }
             base.OnKeyPress(e);
         }
+        
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -146,15 +158,14 @@ namespace Shinyoh_Controls
                     if (NextControl != null)
                         NextControl.Focus();
                 }
-
                 if(cf.IsByteLengthOver(MaxLength,Text))
                 {
                     MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
                 base.OnKeyDown(e);
             }
         }
+        
         protected override void OnGotFocus(EventArgs e)
         {
             if (SearchType == ScType.None)
@@ -228,6 +239,27 @@ namespace Shinyoh_Controls
             E166 = value;
             ctrlE166_1 = ctrl1;
             ctrlE166_2 = ctrl2;
+        }
+        //NMW(2020-10-22)
+        public void E103Check(bool value)
+        {
+            E103 = value;
+        }
+        //NMW(2020-10-23)
+        public void E133Check(bool value, string type, Control ctrl1, Control ctrl2, Control ctrl3)
+        {
+            E133 = value;
+            E133Type = type;
+            ctrlE133_1 = ctrl1;
+            ctrlE133_2 = ctrl2;
+            ctrlE133_3 = ctrl3;
+        }
+        public void E104Check(bool value, Control ctrl1, Control ctrl2)
+        {
+            E104 = value;
+            ctrlE104_1 = ctrl1;
+            ctrlE104_2 = ctrl2;
+            
         }
     }
 }
