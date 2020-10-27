@@ -65,6 +65,7 @@
             this.txtStaff_CopyDate = new Shinyoh_Controls.STextBox();
             this.lblStaff_CopyDate = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
+            this.PanelTitle.SuspendLayout();
             this.Panel_Staff.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,10 +79,8 @@
             this.panel1.Controls.Add(this.txt_Staff);
             this.panel1.Controls.Add(this.sLabel5);
             this.panel1.Controls.Add(this.lblStaff);
-            this.panel1.Controls.Add(this.cboStaff_Mode);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
             this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
-            this.panel1.Controls.SetChildIndex(this.cboStaff_Mode, 0);
             this.panel1.Controls.SetChildIndex(this.lblStaff, 0);
             this.panel1.Controls.SetChildIndex(this.sLabel5, 0);
             this.panel1.Controls.SetChildIndex(this.txt_Staff, 0);
@@ -90,6 +89,17 @@
             this.panel1.Controls.SetChildIndex(this.txtStaff_Copy, 0);
             this.panel1.Controls.SetChildIndex(this.lblStaff_CopyDate, 0);
             this.panel1.Controls.SetChildIndex(this.txtStaff_CopyDate, 0);
+            // 
+            // PanelTitle
+            // 
+            this.PanelTitle.Controls.Add(this.cboStaff_Mode);
+            this.PanelTitle.Controls.SetChildIndex(this.cboStaff_Mode, 0);
+            this.PanelTitle.Controls.SetChildIndex(this.cboMode, 0);
+            // 
+            // cboMode
+            // 
+            this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.Location = new System.Drawing.Point(43, 48);
             // 
             // Panel_Staff
             // 
@@ -147,6 +157,7 @@
             this.txtStaff_Search.DecimalPlace = 0;
             this.txtStaff_Search.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Search.IntegerPart = 0;
+            this.txtStaff_Search.IsDatatableOccurs = null;
             this.txtStaff_Search.IsErrorOccurs = false;
             this.txtStaff_Search.IsRequire = false;
             this.txtStaff_Search.Location = new System.Drawing.Point(141, 384);
@@ -180,6 +191,7 @@
             this.txtStaff_Remark.DecimalPlace = 0;
             this.txtStaff_Remark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Remark.IntegerPart = 0;
+            this.txtStaff_Remark.IsDatatableOccurs = null;
             this.txtStaff_Remark.IsErrorOccurs = false;
             this.txtStaff_Remark.IsRequire = false;
             this.txtStaff_Remark.Location = new System.Drawing.Point(141, 348);
@@ -213,6 +225,7 @@
             this.txtStaff_LDate.DecimalPlace = 0;
             this.txtStaff_LDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_LDate.IntegerPart = 0;
+            this.txtStaff_LDate.IsDatatableOccurs = null;
             this.txtStaff_LDate.IsErrorOccurs = false;
             this.txtStaff_LDate.IsRequire = false;
             this.txtStaff_LDate.Location = new System.Drawing.Point(141, 313);
@@ -233,6 +246,7 @@
             this.txtStaff_JDate.DecimalPlace = 0;
             this.txtStaff_JDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_JDate.IntegerPart = 0;
+            this.txtStaff_JDate.IsDatatableOccurs = null;
             this.txtStaff_JDate.IsErrorOccurs = false;
             this.txtStaff_JDate.IsRequire = false;
             this.txtStaff_JDate.Location = new System.Drawing.Point(141, 275);
@@ -266,6 +280,7 @@
             this.txtStaff_Confirm.DecimalPlace = 0;
             this.txtStaff_Confirm.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Confirm.IntegerPart = 0;
+            this.txtStaff_Confirm.IsDatatableOccurs = null;
             this.txtStaff_Confirm.IsErrorOccurs = false;
             this.txtStaff_Confirm.IsRequire = false;
             this.txtStaff_Confirm.Location = new System.Drawing.Point(369, 238);
@@ -300,6 +315,7 @@
             this.txtStaff_Passward.DecimalPlace = 0;
             this.txtStaff_Passward.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Passward.IntegerPart = 0;
+            this.txtStaff_Passward.IsDatatableOccurs = null;
             this.txtStaff_Passward.IsErrorOccurs = false;
             this.txtStaff_Passward.IsRequire = false;
             this.txtStaff_Passward.Location = new System.Drawing.Point(141, 238);
@@ -409,6 +425,7 @@
             this.txtStaff_Yubin2.DecimalPlace = 0;
             this.txtStaff_Yubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Yubin2.IntegerPart = 0;
+            this.txtStaff_Yubin2.IsDatatableOccurs = null;
             this.txtStaff_Yubin2.IsErrorOccurs = false;
             this.txtStaff_Yubin2.IsRequire = false;
             this.txtStaff_Yubin2.Location = new System.Drawing.Point(280, 92);
@@ -430,6 +447,7 @@
             this.txtStaff_Yubin1.DecimalPlace = 0;
             this.txtStaff_Yubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Yubin1.IntegerPart = 0;
+            this.txtStaff_Yubin1.IsDatatableOccurs = null;
             this.txtStaff_Yubin1.IsErrorOccurs = false;
             this.txtStaff_Yubin1.IsRequire = false;
             this.txtStaff_Yubin1.Location = new System.Drawing.Point(141, 92);
@@ -475,6 +493,7 @@
             this.txtStaff_KanaName.DecimalPlace = 0;
             this.txtStaff_KanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_KanaName.IntegerPart = 0;
+            this.txtStaff_KanaName.IsDatatableOccurs = null;
             this.txtStaff_KanaName.IsErrorOccurs = false;
             this.txtStaff_KanaName.IsRequire = false;
             this.txtStaff_KanaName.Location = new System.Drawing.Point(141, 54);
@@ -508,6 +527,7 @@
             this.txtStaff_Name.DecimalPlace = 0;
             this.txtStaff_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Name.IntegerPart = 0;
+            this.txtStaff_Name.IsDatatableOccurs = null;
             this.txtStaff_Name.IsErrorOccurs = false;
             this.txtStaff_Name.IsRequire = false;
             this.txtStaff_Name.Location = new System.Drawing.Point(141, 18);
@@ -538,7 +558,7 @@
             // 
             this.cboStaff_Mode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
             this.cboStaff_Mode.FormattingEnabled = true;
-            this.cboStaff_Mode.Location = new System.Drawing.Point(63, 9);
+            this.cboStaff_Mode.Location = new System.Drawing.Point(43, 12);
             this.cboStaff_Mode.MoveNext = true;
             this.cboStaff_Mode.Name = "cboStaff_Mode";
             this.cboStaff_Mode.NextControl = null;
@@ -581,6 +601,7 @@
             this.txt_Staff.DecimalPlace = 0;
             this.txt_Staff.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txt_Staff.IntegerPart = 0;
+            this.txt_Staff.IsDatatableOccurs = null;
             this.txt_Staff.IsErrorOccurs = false;
             this.txt_Staff.IsRequire = false;
             this.txt_Staff.Location = new System.Drawing.Point(269, 10);
@@ -601,6 +622,7 @@
             this.txtStaff_CDate.DecimalPlace = 0;
             this.txtStaff_CDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_CDate.IntegerPart = 0;
+            this.txtStaff_CDate.IsDatatableOccurs = null;
             this.txtStaff_CDate.IsErrorOccurs = false;
             this.txtStaff_CDate.IsRequire = false;
             this.txtStaff_CDate.Location = new System.Drawing.Point(269, 35);
@@ -635,6 +657,7 @@
             this.txtStaff_Copy.DecimalPlace = 0;
             this.txtStaff_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Copy.IntegerPart = 0;
+            this.txtStaff_Copy.IsDatatableOccurs = null;
             this.txtStaff_Copy.IsErrorOccurs = false;
             this.txtStaff_Copy.IsRequire = false;
             this.txtStaff_Copy.Location = new System.Drawing.Point(498, 11);
@@ -655,6 +678,7 @@
             this.txtStaff_CopyDate.DecimalPlace = 0;
             this.txtStaff_CopyDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_CopyDate.IntegerPart = 0;
+            this.txtStaff_CopyDate.IsDatatableOccurs = null;
             this.txtStaff_CopyDate.IsErrorOccurs = false;
             this.txtStaff_CopyDate.IsRequire = false;
             this.txtStaff_CopyDate.Location = new System.Drawing.Point(498, 35);
@@ -695,6 +719,7 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.Panel_Staff, 0);
             this.panel1.ResumeLayout(false);
+            this.PanelTitle.ResumeLayout(false);
             this.Panel_Staff.ResumeLayout(false);
             this.Panel_Staff.PerformLayout();
             this.ResumeLayout(false);

@@ -42,7 +42,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ButtonType.cs" />
-    <Compile Include="LogEntity.cs" />
     <Compile Include="ProgramEntity.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="IniEntity.cs" />

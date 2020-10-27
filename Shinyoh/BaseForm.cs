@@ -265,11 +265,11 @@ namespace Shinyoh
         {
             PreviousCtrl = this.ActiveControl;
         }
-        public LogEntity GetLogData()
+        public StaffEntity GetBaseData()
         {
-            LogEntity obj = new LogEntity();
-            obj.InsertOperator = OperatorCD;
-            obj.Program = ProgramID;
+            StaffEntity obj = new StaffEntity();
+            obj.StaffCD = OperatorCD;
+            obj.ProgramID = ProgramID;
             obj.PC = PCID;
             return obj;
         }

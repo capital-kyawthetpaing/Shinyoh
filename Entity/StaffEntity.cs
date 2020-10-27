@@ -28,9 +28,10 @@ namespace Entity
         public string Passward { get; set; } // --パスワード
         public string Remarks { get; set; } //  --備考
         public int UsedFlg { get; set; } //DEFAULT(0)      --使用済FLG[1:既にデータ発生済]
-        public string InsertOperator { get; set; }//--新規登録者
-        public DateTime InsertDateTime { get; set; } // --新規登録日時
-        public string UpdateOperator { get; set; }//  --変更登録者
-        public DateTime UpdateDateTime { get; set; } //--退職日       
+        public string InsertOperator { get; set; }//--新規登録者        
+        public string UpdateOperator { get; set; }//  --変更登録者       
+
+        //for Log Table
+        public string KeyItem { get; set; } //--退職日    
     }
 }

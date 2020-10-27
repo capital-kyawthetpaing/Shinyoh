@@ -92,7 +92,7 @@ namespace BL
         public string M_Staff_CUD(MasterTourokuStaff obj)
         {
             CKMDL ckmdl = new CKMDL();
-            obj.Sqlprms = new SqlParameter[18];
+            obj.Sqlprms = new SqlParameter[19];
             obj.Sqlprms[0] = new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = obj.StaffCD };
             obj.Sqlprms[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate.Date };
             obj.Sqlprms[2] = new SqlParameter("@StaffName", SqlDbType.VarChar) { Value = obj.StaffName };
@@ -107,24 +107,12 @@ namespace BL
             obj.Sqlprms[11] = new SqlParameter("@Remarks", SqlDbType.VarChar) { Value = obj.Remarks };
             obj.Sqlprms[12] = new SqlParameter("@UsedFlg", SqlDbType.TinyInt) { Value = obj.UsedFlg };
             obj.Sqlprms[13] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = obj.InsertOperator };
-            obj.Sqlprms[14] = new SqlParameter("@InsertDateTime", SqlDbType.DateTime) { Value = obj.InsertDateTime };
-            obj.Sqlprms[15] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = obj.UpdateOperator };
-            obj.Sqlprms[16] = new SqlParameter("@UpdateDateTime", SqlDbType.DateTime) { Value = obj.UpdateDateTime };
-            obj.Sqlprms[17] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = obj.Mode };
+            obj.Sqlprms[14] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = obj.UpdateOperator };
+            obj.Sqlprms[15] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = obj.Mode };
+            obj.Sqlprms[16] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = "MasterTourokuStaff" };
+            obj.Sqlprms[17] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
+            obj.Sqlprms[18] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
             return ckmdl.InsertUpdateDeleteData("M_Staff_CUD", GetConnectionString(), obj.Sqlprms);
-        }
-
-        //Nwe Mar Win(2020-10-22)
-        public string L_Log_CUD(LogEntity obj)
-        {
-            CKMDL ckmdl = new CKMDL();
-            obj.Sqlprms = new SqlParameter[5];
-            obj.Sqlprms[0] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = obj.InsertOperator };
-            obj.Sqlprms[1] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = obj.Program };
-            obj.Sqlprms[2] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
-            obj.Sqlprms[3] = new SqlParameter("@OperateMode", SqlDbType.VarChar) { Value = obj.Mode };
-            obj.Sqlprms[4] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
-            return ckmdl.InsertUpdateDeleteData("L_Log_Insert", GetConnectionString(), obj.Sqlprms);
         }
         //Nwe Mar Win(2020-10-22)
         public DataTable Staff_Select_Check(string staffCD,DateTime cDate)

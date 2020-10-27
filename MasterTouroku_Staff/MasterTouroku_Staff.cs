@@ -12,7 +12,7 @@ namespace MasterTouroku_Staff
     public partial class MasterTouroku_Staff : BaseForm
     {
         ButtonType type = new ButtonType();
-        LogEntity objLog_Entity;
+        StaffEntity staff_Entity;
         CommonFunction cf;
         StaffBL bl = new StaffBL();
         public MasterTouroku_Staff()
@@ -46,7 +46,7 @@ namespace MasterTouroku_Staff
             ChangeMode(Mode.New);
 
             txt_Staff.Focus();
-            objLog_Entity = GetLogData();    
+            staff_Entity = GetBaseData();    
         }
         private void ChangeMode(Mode mode)
         {
@@ -125,29 +125,18 @@ namespace MasterTouroku_Staff
             if (cboStaff_Mode.SelectedValue.Equals("1"))
             {
                 entity.Mode = "New";
-                objLog_Entity.Mode = "New";
-                objLog_Entity.KeyItem= txt_Staff.Text.ToString() + " " + Convert.ToDateTime(txtStaff_CDate.Text).ToString("dd-MM-yyyy");
-
                 DoInsert(entity);
-                DoInsert_Log(objLog_Entity);
+              
             }
             else if (cboStaff_Mode.SelectedValue.Equals("2"))
             {
                 entity.Mode = "Update";
-                objLog_Entity.Mode = "Update";
-                objLog_Entity.KeyItem = txt_Staff.Text.ToString() + " " + Convert.ToDateTime(txtStaff_CDate.Text).ToString("dd-MM-yyyy");
-
                 DoUpdate(entity);
-                DoInsert_Log(objLog_Entity);
             }
             else if (cboStaff_Mode.SelectedValue.Equals("3"))
             {
                 entity.Mode = "Delete";
-                objLog_Entity.Mode = "Delete";
-                objLog_Entity.KeyItem = txt_Staff.Text.ToString() + " " + Convert.ToDateTime(txtStaff_CDate.Text).ToString("dd-MM-yyyy");
-
                 DoDelete(entity);
-                DoInsert_Log(objLog_Entity);
             }
         }
         
@@ -167,21 +156,17 @@ namespace MasterTouroku_Staff
             obj.Passward = txtStaff_Passward.Text;
             obj.Remarks = txtStaff_Remark.Text;
             obj.UsedFlg = 0;
-            obj.InsertOperator = objLog_Entity.InsertOperator;
-            obj.InsertDateTime = DateTime.Now;
-            obj.UpdateOperator = objLog_Entity.InsertOperator;
-            obj.UpdateDateTime = DateTime.Now;           
+            obj.InsertOperator = staff_Entity.StaffCD;
+            obj.UpdateOperator = staff_Entity.StaffCD;
+
+            //for log table
+            obj.KeyItem = txt_Staff.Text.ToString() + " " + Convert.ToDateTime(txtStaff_CDate.Text).ToString("dd-MM-yyyy");
             return obj;
         }        
         private void DoInsert(MasterTourokuStaff obj)
         {
             StaffBL objMethod = new StaffBL();
             objMethod.M_Staff_CUD(obj);
-        }
-        public void DoInsert_Log(LogEntity obj)
-        {
-            StaffBL objMethod = new StaffBL();
-            objMethod.L_Log_CUD(obj);
         }
         //NMW(2020-10-23)
         private void DoUpdate(MasterTourokuStaff obj)
