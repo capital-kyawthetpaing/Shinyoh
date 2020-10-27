@@ -246,12 +246,11 @@ namespace MasterTouroku_Staff
             {
                 if (!txtStaff_CopyDate.IsErrorOccurs)
                 {
-                    if(!string.IsNullOrEmpty(txtStaff_Copy.Text) && !string.IsNullOrEmpty(txtStaff_CopyDate.Text))
-                    {
-                        From_DB_To_Form(txtStaff_Copy.Text, Convert.ToDateTime(txtStaff_CopyDate.Text));                        
-                    }                    
                     EnablePanel();
-                } 
+                    DataTable dt = txtStaff_CopyDate.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        From_DB_To_Form(dt);
+                }
             }
         }
         
@@ -271,15 +270,18 @@ namespace MasterTouroku_Staff
                     {
                         EnablePanel();
                     }
-                    From_DB_To_Form(txt_Staff.Text, Convert.ToDateTime(txtStaff_CDate.Text));
                 }
+                DataTable dt = txtStaff_CDate.IsDatatableOccurs;
+                if(dt.Rows.Count>0 && cboStaff_Mode.SelectedValue.ToString() != "1")
+                {
+                    From_DB_To_Form(dt);
+                }
+                
             }
         }
 
-        private void From_DB_To_Form(string cd,DateTime cd_date)
+        private void From_DB_To_Form(DataTable dt)
         {
-            DataTable dt = new DataTable();
-            dt = bl.Staff_Select_Check(cd, cd_date);
             if (dt.Rows[0]["MessageID"].ToString() == "E132")
             {
                 txtStaff_Name.Text = dt.Rows[0]["StaffName"].ToString();
