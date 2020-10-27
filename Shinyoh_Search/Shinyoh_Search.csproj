@@ -54,6 +54,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoukoSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SoukoSearch.Designer.cs">
+      <DependentUpon>SoukoSearch.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +69,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SoukoSearch.resx">
+      <DependentUpon>SoukoSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +84,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{c2e966eb-8344-4491-befe-a809331521fe}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{0cc4487d-c081-4d4f-87d5-028552310763}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh\Shinyoh.csproj">
+      <Project>{697e1304-f141-4cce-b816-9cc225f441c4}</Project>
+      <Name>Shinyoh</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
+      <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
+      <Name>Shinyoh_Controls</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

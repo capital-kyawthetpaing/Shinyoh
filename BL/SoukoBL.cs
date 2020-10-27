@@ -53,6 +53,18 @@ namespace BL {
             }
             return soukoEntity;           
         }
+        public DataTable Souko_Search(SoukoEntity soukoEntity)
+        {
+            CKMDL ckmdl = new CKMDL();
+            soukoEntity.Sqlprms = new SqlParameter[4];
+            soukoEntity.Sqlprms[0] = new SqlParameter("@SoukoCD1", SqlDbType.VarChar) { Value = soukoEntity.SoukoCD };
+            soukoEntity.Sqlprms[1] = new SqlParameter("@SoukoCD2", SqlDbType.VarChar) { Value = soukoEntity.SoukoCD };
+            soukoEntity.Sqlprms[2] = new SqlParameter("@SoukoName", SqlDbType.VarChar) { Value = soukoEntity.SoukoName };
+            soukoEntity.Sqlprms[3] = new SqlParameter("@KanaName", SqlDbType.VarChar) { Value = soukoEntity.KanaName };
+            DataTable dt= ckmdl.SelectDatatable("Souko_Search", GetConnectionString(), soukoEntity.Sqlprms);         
+            return dt;
+         
+        }
 
     }
 }
