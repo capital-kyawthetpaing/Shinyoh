@@ -3,31 +3,73 @@ using System.Data;
 using System.Windows.Forms;
 using BL;
 using Entity;
-
-
+using CKM_CommonFunction;
 
 namespace Shinyoh_Controls
 {
     public class ErrorCheck
     {
+        CommonFunction cf;
         public void ShowErrorMessage(string messageID)
         {
             BaseBL bbl = new BaseBL();
             bbl.ShowMessage(messageID);
         }
-        public bool Check(Control ctrl)
+
+        public (bool,DataTable) Check(Control ctrl)
         {
-            if(ctrl is STextBox)
+            DataTable dt = new DataTable();
+            if (ctrl is STextBox)
             {
                 STextBox sTextBox = ctrl as STextBox;
-                return TextBoxErrorCheck(sTextBox);
+                (bool,DataTable) r_value= TextBoxErrorCheck(sTextBox);
+                return r_value;
             }
-
-            return false;
+            return (false,dt);
         }
 
-        private bool TextBoxErrorCheck(STextBox sTextBox)
+        //public (bool, DataTable) GetTest(Control ctrl)
+        //{
+        //    DataTable dt = new DataTable();
+        //    STextBox sTextBox = ctrl as STextBox;
+        //    (bool, DataTable) r_value = TestCheck(sTextBox);
+        //    return r_value;
+        //}
+        //private (bool, DataTable) TestCheck(STextBox sTextBox)
+        //{
+        //    DataTable rDt = new DataTable();
+        //    if (sTextBox.E132)
+        //    {
+        //        string result = string.Empty;
+        //        DataTable dt = new DataTable();
+        //        switch (sTextBox.E132Type)
+        //        {
+        //            case "souko":
+        //                SoukoBL bl = new SoukoBL();
+        //                SoukoEntity soukoEntity = new SoukoEntity();
+        //                soukoEntity.SoukoCD = sTextBox.Text;
+        //                soukoEntity = bl.Souko_Select(soukoEntity);
+        //                result = soukoEntity.MessageID;
+        //                break;
+        //            case "M_Staff":// NMW(2020-10-22)
+        //                StaffBL sBL = new StaffBL();
+        //                dt = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text));
+        //                result = dt.Rows[0]["MessageID"].ToString();
+        //                break;
+        //        }
+        //        if (result.Equals("E132"))
+        //        {
+        //            ShowErrorMessage("E132");
+        //            sTextBox.Focus();
+        //            return (true,dt);
+        //        }
+        //    }
+        //    return (false, rDt);
+        //}
+
+        private (bool,DataTable) TextBoxErrorCheck(STextBox sTextBox)
         {
+            DataTable rDt = new DataTable();
             if (sTextBox.E101 && !string.IsNullOrWhiteSpace(sTextBox.Text))
             {
                 string result = string.Empty;
@@ -45,7 +87,7 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E101");
                     sTextBox.Focus();
-                    return true;
+                    return (true,rDt);
                 }
             }
 
@@ -55,8 +97,8 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E102");
                     sTextBox.Focus();
-                    return true;
-                }                    
+                    return (true, rDt);
+                }
             }
 
             if (sTextBox.E102Multi)
@@ -65,25 +107,25 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E102");
                     sTextBox.ctrlE102_1.Focus();
-                    return true;
+                    return (true, rDt);
                 }
                 else if (!string.IsNullOrWhiteSpace(sTextBox.ctrlE102_1.Text) && string.IsNullOrWhiteSpace(sTextBox.ctrlE102_2.Text))
                 {
                     ShowErrorMessage("E102");
                     sTextBox.ctrlE102_2.Focus();
-                    return true;
+                    return (true, rDt);
                 }
             }
             //NMW(2020-10-22)
             if (sTextBox.E103)
             {
-                DateTime dt;
-                bool bl = (DateTime.TryParse(sTextBox.Text.ToString(), out dt));
-                if (!bl)
+                cf = new CommonFunction();
+                if(!cf.DateCheck(sTextBox))
                 {
                     ShowErrorMessage("E103");
                     sTextBox.Focus();
-                    return true;
+
+                    return (true, rDt);
                 }
             }
             //NMW(2020-10-23)
@@ -91,11 +133,11 @@ namespace Shinyoh_Controls
             {
                 DateTime JDate = Convert.ToDateTime(sTextBox.ctrlE104_1.Text);
                 DateTime LDate = Convert.ToDateTime(sTextBox.ctrlE104_2.Text);
-                if (JDate.Date>LDate.Date)
+                if (JDate.Date > LDate.Date)
                 {
                     ShowErrorMessage("E104");
                     sTextBox.Focus();
-                    return true;
+                    return (true, rDt);
                 }
             }
 
@@ -115,6 +157,7 @@ namespace Shinyoh_Controls
                     case "M_Staff":// NMW(2020-10-22)
                         StaffBL sBL = new StaffBL();
                         dt = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text));
+                        rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
                 }
@@ -122,7 +165,7 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E132");
                     sTextBox.Focus();
-                    return true;
+                    return (true, rDt);
                 }
             }
 
@@ -134,9 +177,10 @@ namespace Shinyoh_Controls
                 switch (sTextBox.E133Type)
                 {
                     case "M_Staff":// NMW(2020-10-22)
-                        if(!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
                         {
                             dt = sBL.Staff_Select_Check(sTextBox.ctrlE133_1.Text, Convert.ToDateTime(sTextBox.ctrlE133_2.Text));
+                            rDt = dt;
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
                         break;
@@ -145,7 +189,7 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E133");
                     sTextBox.Focus();
-                    return true;
+                    return (true, rDt);
                 }
             }
 
@@ -155,11 +199,10 @@ namespace Shinyoh_Controls
                 {
                     ShowErrorMessage("E166");
                     sTextBox.Focus();
-                    return true;
+                    return (true, rDt);
                 }
             }
-
-            return false;
+            return (false, rDt);
         }
     }
 }

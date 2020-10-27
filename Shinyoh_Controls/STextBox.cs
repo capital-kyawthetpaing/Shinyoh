@@ -6,6 +6,7 @@ using BL;
 using System.Drawing;
 using Entity;
 using static Entity.SearchType;
+using System.Data;
 
 namespace Shinyoh_Controls
 {
@@ -77,6 +78,7 @@ namespace Shinyoh_Controls
         public Control NextControl { get; set; }
 
         public bool IsErrorOccurs { get; set; }
+        public DataTable IsDatatableOccurs { get; set; }
 
         public bool E102;
         public bool E102Multi;
@@ -146,26 +148,34 @@ namespace Shinyoh_Controls
             }
             base.OnKeyPress(e);
         }
-        
+
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                IsErrorOccurs = errchk.Check(this);
-
-                if(!IsErrorOccurs)
-                {
-                    if (NextControl != null)
-                        NextControl.Focus();
-                }
-                if(cf.IsByteLengthOver(MaxLength,Text))
-                {
-                    MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                ErrorCheck();
                 base.OnKeyDown(e);
             }
         }
-        
+
+        public bool ErrorCheck()
+        {
+            (bool, DataTable) r_value = errchk.Check(this);
+            IsErrorOccurs = r_value.Item1;
+            IsDatatableOccurs = r_value.Item2;
+            if (!IsErrorOccurs)
+            {
+                if (NextControl != null)
+                    NextControl.Focus();
+            }
+            if (cf.IsByteLengthOver(MaxLength, Text))
+            {
+                MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return IsErrorOccurs;
+        }
+
         protected override void OnGotFocus(EventArgs e)
         {
             if (SearchType == ScType.None)
@@ -275,7 +285,6 @@ namespace Shinyoh_Controls
             E104 = value;
             ctrlE104_1 = ctrl1;
             ctrlE104_2 = ctrl2;
-            
         }
     }
 }
