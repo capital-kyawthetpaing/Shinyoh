@@ -42,7 +42,7 @@ namespace MasterTouroku_Staff
             SetButton(ButtonType.BType.Empty, F10, "", false);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
-            SetDefaultMode("1");
+            //SetDefaultMode("1");
             ChangeMode(Mode.New);
 
             txt_Staff.Focus();

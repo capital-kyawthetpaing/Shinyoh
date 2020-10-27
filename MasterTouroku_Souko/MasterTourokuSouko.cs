@@ -36,7 +36,7 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.BType.Empty, F11, "",false);
             ChangeMode(Mode.New);
             txtSouko.Focus();
-            SetDefaultMode("1");
+            //SetDefaultMode("1");
         }
 
         private void ChangeMode(Mode mode)
@@ -44,10 +44,15 @@ namespace MasterTouroku_Souko
             switch(mode)
             {
                 case Mode.New:
+                    if(string.IsNullOrWhiteSpace(txtSouko.Text))
+                    {
+                        MessageBox.Show("E102");
+                    }
+
                     txtSouko.E102Check(true);
-                    txtSouko.E132Check(true,"souko",null,null,null);
+                    txtSouko.E132Check(true, "souko", null, null, null);
                     txtSouko.E101Check(false, null, null, null, null);
-                    txtCopySouko.E101Check(true, "souko", null,null,null);
+                    txtCopySouko.E101Check(true, "souko", null, null, null);
                     txtSoukoName.E102Check(true);
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
 
@@ -63,6 +68,10 @@ namespace MasterTouroku_Souko
 
                     break;
                 case Mode.Update:
+                    if (string.IsNullOrWhiteSpace(txtSouko.Text))
+                    {
+                        MessageBox.Show("E102");
+                    }
                     txtSouko.E102Check(true);
                     txtSouko.E132Check(false, null, null, null, null);
                     txtSouko.E101Check(true, "souko", null, null, null);
@@ -121,18 +130,22 @@ namespace MasterTouroku_Souko
             if (tagID == "2")
             {
                 ChangeMode(Mode.New);
+                //SetDefaultMode("1");
             }
             if(tagID == "3")
             {
                 ChangeMode(Mode.Update);
+                //SetDefaultMode("2");
             }
             if (tagID == "4")
             {
                 ChangeMode(Mode.Delete);
+                //SetDefaultMode("3");
             }
             if (tagID == "5")
             {
                 ChangeMode(Mode.Inquiry);
+                //SetDefaultMode("4");
             }
             if(tagID == "12")
             {

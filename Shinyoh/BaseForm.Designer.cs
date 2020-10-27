@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.PanelTitle = new System.Windows.Forms.Panel();
             this.cboMode = new Shinyoh_Controls.SCombo();
+            this.PanelTitle = new System.Windows.Forms.Panel();
             this.sLabel2 = new Shinyoh_Controls.SLabel();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
             this.lblDate = new Shinyoh_Controls.SLabel();
@@ -68,13 +68,6 @@
             this.panel1.Size = new System.Drawing.Size(1524, 75);
             this.panel1.TabIndex = 0;
             // 
-            // PanelTitle
-            // 
-            this.PanelTitle.Location = new System.Drawing.Point(139, 0);
-            this.PanelTitle.Name = "PanelTitle";
-            this.PanelTitle.Size = new System.Drawing.Size(556, 75);
-            this.PanelTitle.TabIndex = 8;
-            // 
             // cboMode
             // 
             this.cboMode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
@@ -87,6 +80,14 @@
             this.cboMode.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.cboMode.Size = new System.Drawing.Size(90, 21);
             this.cboMode.TabIndex = 1;
+            this.cboMode.SelectedIndexChanged += new System.EventHandler(this.cboMode_SelectedValueChanged);
+            // 
+            // PanelTitle
+            // 
+            this.PanelTitle.Location = new System.Drawing.Point(139, 0);
+            this.PanelTitle.Name = "PanelTitle";
+            this.PanelTitle.Size = new System.Drawing.Size(556, 75);
+            this.PanelTitle.TabIndex = 8;
             // 
             // sLabel2
             // 
