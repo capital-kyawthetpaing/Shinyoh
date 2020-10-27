@@ -152,9 +152,7 @@ namespace Shinyoh_Controls
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
-               
-
+            {             
                 (bool,DataTable) r_value = errchk.Check(this);
                 IsErrorOccurs = r_value.Item1;
                 IsDatatableOccurs = r_value.Item2;

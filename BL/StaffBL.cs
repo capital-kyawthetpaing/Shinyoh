@@ -133,7 +133,7 @@ namespace BL
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[2];
             parameters[0]= new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = staffCD };
-            parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = cDate.Date };
+            parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.Date) { Value = cDate.Date };
             DataTable dt = ckmdl.SelectDatatable("Staff_Select_Check", GetConnectionString(), parameters);
 
             //if (dt.Rows.Count > 0)

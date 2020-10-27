@@ -3,10 +3,13 @@ using System.Data;
 using System.Windows.Forms;
 using BL;
 using Entity;
+using CKM_CommonFunction;
+
 namespace Shinyoh_Controls
 {
     public class ErrorCheck
     {
+        CommonFunction cf;
         public void ShowErrorMessage(string messageID)
         {
             BaseBL bbl = new BaseBL();
@@ -116,12 +119,12 @@ namespace Shinyoh_Controls
             //NMW(2020-10-22)
             if (sTextBox.E103)
             {
-                DateTime dt;
-                bool bl = (DateTime.TryParse(sTextBox.Text.ToString(), out dt));
-                if (!bl)
+                cf = new CommonFunction();
+                if(!cf.DateCheck(sTextBox))
                 {
                     ShowErrorMessage("E103");
                     sTextBox.Focus();
+
                     return (true, rDt);
                 }
             }
