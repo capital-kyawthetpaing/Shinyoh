@@ -26,6 +26,8 @@ namespace Shinyoh
         protected string ProgramID { get; set; }
         protected Control PreviousCtrl { get; set; }
 
+        protected string LastSelectedMode { get; set; }
+
         #region ProcessMode
         public enum Mode
         {
@@ -127,10 +129,10 @@ namespace Shinyoh
         private void btnFunctionClick(object sender,EventArgs e)
         {
             SButton btn = (SButton)sender;
-            FireClickEvent(btn);
+            FireClickEvent(btn,1);
         }
 
-        protected void FireClickEvent(SButton btn)
+        protected void FireClickEvent(SButton btn,int type)
         {
             switch(btn.ButtonType)
             {
@@ -154,10 +156,18 @@ namespace Shinyoh
                     {
                         if (PreviousCtrl != null)
                             PreviousCtrl.Focus();
+
+                        cboMode.SelectedValueChanged -= cboMode_SelectedValueChanged;
+                        cboMode.SelectedValue = Convert.ToInt32(LastSelectedMode);
+                        cboMode.SelectedValueChanged += cboMode_SelectedValueChanged;
                         return;
                     }
                     else
+                    {
+                        LastSelectedMode = cboMode.SelectedValue.ToString();
                         FunctionProcess(btn.Tag.ToString());
+                    }
+                        
                     break;
                 case ButtonType.BType.Save:
                     FunctionProcess(btn.Tag.ToString());
@@ -241,7 +251,7 @@ namespace Shinyoh
                 case Keys.F11:
                 case Keys.F12:
                     SButton btn = this.Controls.Find("Btn" + e.KeyCode.ToString(),true)[0] as SButton;
-                    FireClickEvent(btn);
+                    FireClickEvent(btn,1);
                     break;
                 case Keys.Enter:
                     if (ActiveControl is STextBox)
@@ -276,12 +286,30 @@ namespace Shinyoh
 
         private void cboMode_SelectedValueChanged(object sender, EventArgs e)
         {
-
+            if(cboMode.SelectedValue.ToString().Equals("1"))
+            {
+                FireClickEvent(F2,2);
+            }
+            else if (cboMode.SelectedValue.ToString().Equals("2"))
+            {
+                FireClickEvent(F3,2);
+            }
+            else if (cboMode.SelectedValue.ToString().Equals("3"))
+            {
+                FireClickEvent(F4,2);
+            }
+            else if (cboMode.SelectedValue.ToString().Equals("4"))
+            {
+                FireClickEvent(F5,2);
+            }
         }
 
         protected void SetDefaultMode(string value)
         {
-            cboMode.SelectedIndex = cboMode.FindString(value);
+            cboMode.SelectedValueChanged -= cboMode_SelectedValueChanged;
+            cboMode.SelectedValue = Convert.ToInt32(value);
+            LastSelectedMode = value;
+            cboMode.SelectedValueChanged += cboMode_SelectedValueChanged;
         }
     }
 }

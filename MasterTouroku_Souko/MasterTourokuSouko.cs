@@ -33,11 +33,9 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.BType.Empty, F8, "",false);
             SetButton(ButtonType.BType.Empty, F10, "",false);
             SetButton(ButtonType.BType.Empty, F11, "",false);
-
-            SetDefaultMode("1");
             ChangeMode(Mode.New);
             txtSouko.Focus();
-
+            SetDefaultMode("1");
         }
 
         private void ChangeMode(Mode mode)
