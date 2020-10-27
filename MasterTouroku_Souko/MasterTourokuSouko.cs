@@ -4,6 +4,7 @@ using Entity;
 using BL;
 using CKM_CommonFunction;
 using System.Windows.Forms;
+using Shinyoh_Controls;
 
 namespace MasterTouroku_Souko
 {
@@ -135,7 +136,8 @@ namespace MasterTouroku_Souko
             }
             if(tagID == "12")
             {
-                DBProcess();
+                if(ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                    DBProcess();
             }
             base.FunctionProcess(tagID);
         }

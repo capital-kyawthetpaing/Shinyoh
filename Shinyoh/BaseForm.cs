@@ -311,5 +311,19 @@ namespace Shinyoh
             LastSelectedMode = value;
             cboMode.SelectedValueChanged += cboMode_SelectedValueChanged;
         }
+
+        protected bool ErrorCheck(Panel panel)
+        {
+            foreach (Control ctrl in panel.Controls)
+            {
+                if ((ctrl is STextBox))
+                {
+                    STextBox st = ctrl as STextBox;
+                    if (st.ErrorCheck())
+                        return false;
+                }
+            }
+            return true;
+        }
     }
 }

@@ -152,21 +152,28 @@ namespace Shinyoh_Controls
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {             
-                (bool,DataTable) r_value = errchk.Check(this);
-                IsErrorOccurs = r_value.Item1;
-                IsDatatableOccurs = r_value.Item2;
-                if (!IsErrorOccurs)
-                {
-                    if (NextControl != null)
-                        NextControl.Focus();
-                }
-                if (cf.IsByteLengthOver(MaxLength, Text))
-                {
-                    MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            {
+                ErrorCheck();
                 base.OnKeyDown(e);
             }
+        }
+
+        public bool ErrorCheck()
+        {
+            (bool, DataTable) r_value = errchk.Check(this);
+            IsErrorOccurs = r_value.Item1;
+            IsDatatableOccurs = r_value.Item2;
+            if (!IsErrorOccurs)
+            {
+                if (NextControl != null)
+                    NextControl.Focus();
+            }
+            if (cf.IsByteLengthOver(MaxLength, Text))
+            {
+                MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return IsErrorOccurs;
         }
 
         protected override void OnGotFocus(EventArgs e)
