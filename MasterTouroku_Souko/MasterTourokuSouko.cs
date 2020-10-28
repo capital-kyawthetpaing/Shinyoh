@@ -44,11 +44,6 @@ namespace MasterTouroku_Souko
             switch(mode)
             {
                 case Mode.New:
-                    if(string.IsNullOrWhiteSpace(txtSouko.Text))
-                    {
-                        MessageBox.Show("E102");
-                    }
-
                     txtSouko.E102Check(true);
                     txtSouko.E132Check(true, "souko", null, null, null);
                     txtSouko.E101Check(false, null, null, null, null);
@@ -68,10 +63,6 @@ namespace MasterTouroku_Souko
 
                     break;
                 case Mode.Update:
-                    if (string.IsNullOrWhiteSpace(txtSouko.Text))
-                    {
-                        MessageBox.Show("E102");
-                    }
                     txtSouko.E102Check(true);
                     txtSouko.E132Check(false, null, null, null, null);
                     txtSouko.E101Check(true, "souko", null, null, null);

@@ -193,8 +193,10 @@ namespace Shinyoh
                 else
                 {
                     index = cboMode.SelectedIndex;
+
                 }
             }
+            FunctionProcess(btn.Tag.ToString());
         }
 
         public virtual void FunctionProcess(string tagID)
@@ -325,9 +327,6 @@ namespace Shinyoh
                 FireClickEvent(F5, 2);
             }
         }
-
-
-
         //protected void SetDefaultMode(string value)
         //{
         //    cboMode.SelectedValueChanged -= cboMode_SelectedValueChanged;
