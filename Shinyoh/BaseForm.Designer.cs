@@ -81,6 +81,7 @@
             this.cboMode.Size = new System.Drawing.Size(90, 21);
             this.cboMode.TabIndex = 1;
             this.cboMode.SelectedIndexChanged += new System.EventHandler(this.cboMode_SelectedValueChanged);
+            
             // 
             // PanelTitle
             // 

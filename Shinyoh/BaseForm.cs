@@ -154,27 +154,19 @@ namespace Shinyoh
                     }
                     break;
                 case ButtonType.BType.New:
-                    cboMode.SelectedValueChanged -= cboMode_SelectedValueChanged;
                     cboMode.SelectedValue = "1";
-                    cboMode.SelectedValueChanged += cboMode_SelectedValueChanged;
                     SetMode(btn);
                     break;
                 case ButtonType.BType.Update:
-                    cboMode.SelectedValueChanged -= cboMode_SelectedValueChanged;
                     cboMode.SelectedValue = "2";
-                    cboMode.SelectedValueChanged += cboMode_SelectedValueChanged;
                     SetMode(btn);
                     break;
                 case ButtonType.BType.Delete:
-                    cboMode.SelectedValueChanged -= cboMode_SelectedValueChanged;
                     cboMode.SelectedValue = "3";
-                    cboMode.SelectedValueChanged += cboMode_SelectedValueChanged;
                     SetMode(btn);
                     break;
                 case ButtonType.BType.Inquiry:
-                    cboMode.SelectedValueChanged -= cboMode_SelectedValueChanged;
                     cboMode.SelectedValue = "4";
-                    cboMode.SelectedValueChanged += cboMode_SelectedValueChanged;
                     SetMode(btn);
                     break;
 
@@ -185,22 +177,23 @@ namespace Shinyoh
             }
         }
 
+        public static int index = 0;
         private void SetMode(SButton btn)
         {
-            if (bbl.ShowMessage("Q005") != DialogResult.Yes)
+            if (index >= 0 && cboMode.SelectedIndex != index)
             {
-                if (PreviousCtrl != null)
-                    PreviousCtrl.Focus();
+                if (bbl.ShowMessage("Q005") != DialogResult.Yes)
+                {
+                    if (PreviousCtrl != null)
+                        PreviousCtrl.Focus();
 
-                cboMode.SelectedValueChanged -= cboMode_SelectedValueChanged;
-                cboMode.SelectedValue = Convert.ToInt32(LastSelectedMode);
-                cboMode.SelectedValueChanged += cboMode_SelectedValueChanged;
-                return;
-            }
-            else
-            {
-                LastSelectedMode = cboMode.SelectedValue.ToString();
-                FunctionProcess(btn.Tag.ToString());
+                    cboMode.SelectedIndex = index;
+                    return;
+                }
+                else
+                {
+                    index = cboMode.SelectedIndex;
+                }
             }
         }
 
@@ -312,6 +305,7 @@ namespace Shinyoh
             return obj;
         }
 
+        
         private void cboMode_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cboMode.SelectedValue.ToString().Equals("1"))
@@ -331,6 +325,8 @@ namespace Shinyoh
                 FireClickEvent(F5, 2);
             }
         }
+
+
 
         //protected void SetDefaultMode(string value)
         //{
@@ -353,5 +349,7 @@ namespace Shinyoh
             }
             return true;
         }
+
+       
     }
 }
