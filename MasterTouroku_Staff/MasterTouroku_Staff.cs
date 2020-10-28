@@ -46,10 +46,15 @@ namespace MasterTouroku_Staff
             ChangeMode(Mode.New);
 
             txt_Staff.Focus();
-            staff_Entity = GetBaseData();    
+            staff_Entity = GetBaseData();
+
+            
         }
         private void ChangeMode(Mode mode)
         {
+            cf.DisablePanel(Panel_Staff);
+            cf.Clear(Panel_Staff);
+            cf.Clear(PanelTitle);
             switch (mode)
             {
                 case Mode.New:
@@ -61,7 +66,13 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E132Check(true,"M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
                     txtStaff_CDate.E133Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
-                    txtStaff_CopyDate.E133Check(true, "M_Staff", txtStaff_Copy, txtStaff_CopyDate, null);                    
+                    txtStaff_CopyDate.E133Check(true, "M_Staff", txtStaff_Copy, txtStaff_CopyDate, null);
+
+                    //Enable && Disable
+                    txtStaff_CDate.NextControlName = txtStaff_Copy.Name;
+                    txtStaff_Copy.Enabled = true;
+                    txtStaff_CopyDate.Enabled = true;
+                    
                     break;
                 case Mode.Update:
                     ErrorChek();
@@ -69,13 +80,19 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
                     txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+
+                    //Enable && Disable
+                    txtStaff_Copy.Enabled = true;
+                    txtStaff_CopyDate.Enabled = true;
+                    
                     break;
                 case Mode.Delete:
                 case Mode.Inquiry:
                     //E132
                     txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
-                    txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);                    
+                    txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    
                     break;
             }
         }
@@ -101,6 +118,22 @@ namespace MasterTouroku_Staff
         }
         public override void FunctionProcess(string tagID)
         {
+            if (tagID == "2")
+            {
+                ChangeMode(Mode.New);
+            }
+            if (tagID == "3")
+            {
+                ChangeMode(Mode.Update);
+            }
+            if (tagID == "4")
+            {
+                ChangeMode(Mode.Delete);
+            }
+            if (tagID == "5")
+            {
+                ChangeMode(Mode.Inquiry);
+            }
             if (tagID == "12")
             {
                 DBProcess();
@@ -111,7 +144,7 @@ namespace MasterTouroku_Staff
         }
         private void DBProcess()
         {
-            MasterTourokuStaff entity = GetInsertStaff();
+            MasterTourokuStaff entity = GetInsertStaff();            
             
             if (cboMode.SelectedValue.Equals("1"))
             {
@@ -170,31 +203,6 @@ namespace MasterTouroku_Staff
             StaffBL objMethod = new StaffBL();
             objMethod.M_Staff_CUD(obj);
         }
-
-        private void cboStaff_Mode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ////Clear();
-            ////string item = cboMode.SelectedIndex.ToString();           
-            ////if (item == "0")
-            ////{
-            ////    ChangeMode(Mode.New);
-            ////    txtStaff_CDate.NextControlName = txtStaff_Copy.Name;
-            ////    txtStaff_Copy.Enabled = true;
-            ////    txtStaff_CopyDate.Enabled = true;
-            ////}
-            ////else
-            ////{
-            ////    txtStaff_Copy.Enabled = false;
-            ////    txtStaff_CopyDate.Enabled = false;
-            ////    if (item == "1")
-            ////        ChangeMode(Mode.Update);
-            ////    else if (item == "2")
-            ////        ChangeMode(Mode.Delete);
-            ////    else if (item == "3")
-            ////        ChangeMode(Mode.Inquiry);
-            ////}
-            ////cf.DisablePanel(Panel_Staff);
-        }
         private void Clear()
         {
             txt_Staff.Text = string.Empty;
@@ -242,7 +250,7 @@ namespace MasterTouroku_Staff
             {
                 if (!txtStaff_CDate.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "2")
+                    if (cboMode.SelectedValue.ToString() == "2")//update
                     {
                         EnablePanel();
                     }

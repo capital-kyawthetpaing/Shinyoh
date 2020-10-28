@@ -64,7 +64,6 @@
             this.txtStaff_CopyDate = new Shinyoh_Controls.STextBox();
             this.lblStaff_CopyDate = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
-            this.PanelTitle.SuspendLayout();
             this.Panel_Staff.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +88,11 @@
             this.panel1.Controls.SetChildIndex(this.txtStaff_Copy, 0);
             this.panel1.Controls.SetChildIndex(this.lblStaff_CopyDate, 0);
             this.panel1.Controls.SetChildIndex(this.txtStaff_CopyDate, 0);
+            // 
+            // cboMode
+            // 
+            this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.NextControlName = "txt_Staff";
             // 
             // Panel_Staff
             // 
@@ -543,20 +547,6 @@
             this.lblStaffName.Text = "スタッフ名";
             this.lblStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cboStaff_Mode
-            // 
-            this.cboStaff_Mode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
-            this.cboStaff_Mode.FormattingEnabled = true;
-            this.cboStaff_Mode.Location = new System.Drawing.Point(63, 9);
-            this.cboStaff_Mode.MoveNext = true;
-            this.cboStaff_Mode.Name = "cboStaff_Mode";
-            this.cboStaff_Mode.NextControl = null;
-            this.cboStaff_Mode.NextControlName = "txt_Staff";
-            this.cboStaff_Mode.Size = new System.Drawing.Size(90, 21);
-            this.cboStaff_Mode.TabIndex = 0;
-            this.cboStaff_Mode.Tag = "";
-            this.cboStaff_Mode.SelectedIndexChanged += new System.EventHandler(this.cboStaff_Mode_SelectedIndexChanged);
-            // 
             // lblStaff
             // 
             this.lblStaff.BackColor = System.Drawing.Color.Red;
@@ -708,7 +698,6 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.Panel_Staff, 0);
             this.panel1.ResumeLayout(false);
-            this.PanelTitle.ResumeLayout(false);
             this.Panel_Staff.ResumeLayout(false);
             this.Panel_Staff.PerformLayout();
             this.ResumeLayout(false);
