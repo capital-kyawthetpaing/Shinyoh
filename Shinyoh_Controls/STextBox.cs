@@ -75,12 +75,12 @@ namespace Shinyoh_Controls
         [DisplayName("NextControlName")]
         public string NextControlName { get; set; }
         public bool MoveNext { get; set; } = true;
-        public Control NextControl { get; set; }
+        public Control NextControl { get; set; } 
 
         public bool IsErrorOccurs { get; set; }
         public DataTable IsDatatableOccurs { get; set; }
 
-        public bool E102;
+        public bool E102; string add_val, set_val;
         public bool E102Multi;
         public bool E166;
         public bool E132;
@@ -109,6 +109,8 @@ namespace Shinyoh_Controls
         public Control ctrlE133_3;
         public Control ctrlE104_1;
         public Control ctrlE104_2;
+
+       
 
         //Constructor
         public STextBox()
@@ -153,7 +155,25 @@ namespace Shinyoh_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ErrorCheck();
+                if (this.TopLevelControl != null)
+                {
+
+                    Control[] ctrlArr = this.TopLevelControl.Controls.Find("cboMode", true);
+                    if (ctrlArr.Length > 0)
+                    {
+                        ComboBox cbo = ctrlArr[0] as ComboBox;
+                        string cbo_select = cbo.SelectedValue.ToString();
+                        if (cbo_select == "1")
+                        {
+                            ErrorCheck_Test("New");
+                        }
+                        else if (cbo_select == "2")
+                        {
+                            ErrorCheck_Test("Update");
+                        }
+                    }
+                }
+                //ErrorCheck_Test();
                 base.OnKeyDown(e);
             }
         }
@@ -172,7 +192,18 @@ namespace Shinyoh_Controls
             {
                 MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            return IsErrorOccurs;
+        }
+        public bool ErrorCheck_Test(string str)
+        {
+            (bool, DataTable) r_value = errchk.Check_Test(this,str);
+            IsErrorOccurs = r_value.Item1;
+            IsDatatableOccurs = r_value.Item2;
+            if (!IsErrorOccurs)
+            {
+                if (NextControl != null)
+                    NextControl.Focus();
+            }
             return IsErrorOccurs;
         }
 
@@ -286,5 +317,30 @@ namespace Shinyoh_Controls
             ctrlE104_1 = ctrl1;
             ctrlE104_2 = ctrl2;
         }
+        public string E102_Add;
+        public string E102_Set;
+        public void New_E102Check(string add_ret,string set_ret)
+        {
+            E102_Add = add_ret;
+            E102_Set = set_ret;
+        }
+        public string E132_Add, E132_Set;
+        public void New_E132Check(string type, Control ctrl1, Control ctrl2, string add_ret, string set_ret)
+        {
+            E132Type = type;
+            ctrlE132_1 = ctrl1;
+            ctrlE132_2 = ctrl2;
+            E132_Add = add_ret;
+            E132_Set = set_ret;
+        }
+        public string E133_Add, E133_Set;
+        public void New_E133Check(string type, Control ctrl1, Control ctrl2, string add_ret, string set_ret)
+        {
+            E133Type = type;
+            ctrlE133_1 = ctrl1;
+            ctrlE133_2 = ctrl2;
+            E133_Add = add_ret;
+            E133_Set = set_ret;
+        }       
     }
 }

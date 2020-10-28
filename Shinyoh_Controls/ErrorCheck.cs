@@ -27,46 +27,6 @@ namespace Shinyoh_Controls
             }
             return (false,dt);
         }
-
-        //public (bool, DataTable) GetTest(Control ctrl)
-        //{
-        //    DataTable dt = new DataTable();
-        //    STextBox sTextBox = ctrl as STextBox;
-        //    (bool, DataTable) r_value = TestCheck(sTextBox);
-        //    return r_value;
-        //}
-        //private (bool, DataTable) TestCheck(STextBox sTextBox)
-        //{
-        //    DataTable rDt = new DataTable();
-        //    if (sTextBox.E132)
-        //    {
-        //        string result = string.Empty;
-        //        DataTable dt = new DataTable();
-        //        switch (sTextBox.E132Type)
-        //        {
-        //            case "souko":
-        //                SoukoBL bl = new SoukoBL();
-        //                SoukoEntity soukoEntity = new SoukoEntity();
-        //                soukoEntity.SoukoCD = sTextBox.Text;
-        //                soukoEntity = bl.Souko_Select(soukoEntity);
-        //                result = soukoEntity.MessageID;
-        //                break;
-        //            case "M_Staff":// NMW(2020-10-22)
-        //                StaffBL sBL = new StaffBL();
-        //                dt = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text));
-        //                result = dt.Rows[0]["MessageID"].ToString();
-        //                break;
-        //        }
-        //        if (result.Equals("E132"))
-        //        {
-        //            ShowErrorMessage("E132");
-        //            sTextBox.Focus();
-        //            return (true,dt);
-        //        }
-        //    }
-        //    return (false, rDt);
-        //}
-
         private (bool,DataTable) TextBoxErrorCheck(STextBox sTextBox)
         {
             DataTable rDt = new DataTable();
@@ -198,6 +158,87 @@ namespace Shinyoh_Controls
                 if (!sTextBox.ctrlE166_1.Text.Equals(sTextBox.ctrlE166_2.Text))
                 {
                     ShowErrorMessage("E166");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            return (false, rDt);
+        }
+
+        public (bool, DataTable) Check_Test(Control ctrl,string str)
+        {
+            DataTable dt = new DataTable();
+            if (ctrl is STextBox)
+            {
+                STextBox sTextBox = ctrl as STextBox;
+                (bool, DataTable) r_value = TextBoxErrorCheck_Test(sTextBox,str);
+                return r_value;
+            }
+            return (false, dt);
+        }
+        private (bool, DataTable) TextBoxErrorCheck_Test(STextBox sTextBox,string str)
+        {
+            DataTable rDt = new DataTable();
+            
+            //E102
+            if (sTextBox.E102_Add == str || sTextBox.E102_Set == str)
+            {
+                if (string.IsNullOrWhiteSpace(sTextBox.Text))
+                {
+                    ShowErrorMessage("E102");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+
+            //E132
+            if (sTextBox.E132_Add == str)
+            {
+                string result = string.Empty;
+                DataTable dt = new DataTable();
+                switch (sTextBox.E132Type)
+                {
+                    case "souko":
+                        SoukoBL bl = new SoukoBL();
+                        SoukoEntity soukoEntity = new SoukoEntity();
+                        soukoEntity.SoukoCD = sTextBox.Text;
+                        soukoEntity = bl.Souko_Select(soukoEntity);
+                        result = soukoEntity.MessageID;
+                        break;
+                    case "M_Staff":
+                        StaffBL sBL = new StaffBL();
+                        dt = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text));
+                        rDt = dt;
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E132"))
+                {
+                    ShowErrorMessage("E132");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            //E103
+            if (sTextBox.E133_Set == str)
+            {
+                DataTable dt = new DataTable();
+                string result = string.Empty;
+                StaffBL sBL = new StaffBL();
+                switch (sTextBox.E133Type)
+                {
+                    case "M_Staff":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
+                        {
+                            dt = sBL.Staff_Select_Check(sTextBox.ctrlE133_1.Text, Convert.ToDateTime(sTextBox.ctrlE133_2.Text));
+                            rDt = dt;
+                            result = dt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                }
+                if (result.Equals("E133"))
+                {
+                    ShowErrorMessage("E133");
                     sTextBox.Focus();
                     return (true, rDt);
                 }

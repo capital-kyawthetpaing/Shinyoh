@@ -193,10 +193,9 @@ namespace Shinyoh
                 else
                 {
                     index = cboMode.SelectedIndex;
-
                 }
+                FunctionProcess(btn.Tag.ToString());
             }
-            FunctionProcess(btn.Tag.ToString());
         }
 
         public virtual void FunctionProcess(string tagID)
@@ -306,7 +305,6 @@ namespace Shinyoh
             obj.PC = PCID;
             return obj;
         }
-
         
         private void cboMode_SelectedValueChanged(object sender, EventArgs e)
         {

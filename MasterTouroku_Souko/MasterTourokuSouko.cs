@@ -38,7 +38,7 @@ namespace MasterTouroku_Souko
             txtSouko.Focus();
             //SetDefaultMode("1");
         }
-
+        
         private void ChangeMode(Mode mode)
         {
             switch(mode)
