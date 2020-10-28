@@ -4,6 +4,7 @@ using Entity;
 using BL;
 using CKM_CommonFunction;
 using System.Windows.Forms;
+using Shinyoh_Controls;
 
 namespace MasterTouroku_Souko
 {
@@ -33,11 +34,9 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.BType.Empty, F8, "",false);
             SetButton(ButtonType.BType.Empty, F10, "",false);
             SetButton(ButtonType.BType.Empty, F11, "",false);
-
-            SetDefaultMode("1");
             ChangeMode(Mode.New);
             txtSouko.Focus();
-
+            SetDefaultMode("1");
         }
 
         private void ChangeMode(Mode mode)
@@ -137,7 +136,8 @@ namespace MasterTouroku_Souko
             }
             if(tagID == "12")
             {
-                DBProcess();
+                if(ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                    DBProcess();
             }
             base.FunctionProcess(tagID);
         }

@@ -70,15 +70,10 @@
             this.PanelTitle.Controls.Add(this.txtSouko);
             this.PanelTitle.Controls.Add(this.lblCopySouko);
             this.PanelTitle.Controls.Add(this.txtCopySouko);
-            this.PanelTitle.Controls.SetChildIndex(this.txtCopySouko, 0);
-            this.PanelTitle.Controls.SetChildIndex(this.lblCopySouko, 0);
-            this.PanelTitle.Controls.SetChildIndex(this.txtSouko, 0);
-            this.PanelTitle.Controls.SetChildIndex(this.lblSouko, 0);
-            this.PanelTitle.Controls.SetChildIndex(this.cboMode, 0);
             // 
             // cboMode
             // 
-            this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             // 
             // PanelDetail
             // 

@@ -55,7 +55,6 @@
             this.lblStaff_KanaName = new Shinyoh_Controls.SLabel();
             this.txtStaff_Name = new Shinyoh_Controls.STextBox();
             this.lblStaffName = new Shinyoh_Controls.SLabel();
-            this.cboStaff_Mode = new Shinyoh_Controls.SCombo();
             this.lblStaff = new Shinyoh_Controls.SLabel();
             this.sLabel5 = new Shinyoh_Controls.SLabel();
             this.txt_Staff = new Shinyoh_Controls.STextBox();
@@ -80,6 +79,7 @@
             this.panel1.Controls.Add(this.sLabel5);
             this.panel1.Controls.Add(this.lblStaff);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
+            this.panel1.Controls.SetChildIndex(this.cboMode, 0);
             this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
             this.panel1.Controls.SetChildIndex(this.lblStaff, 0);
             this.panel1.Controls.SetChildIndex(this.sLabel5, 0);
@@ -89,17 +89,6 @@
             this.panel1.Controls.SetChildIndex(this.txtStaff_Copy, 0);
             this.panel1.Controls.SetChildIndex(this.lblStaff_CopyDate, 0);
             this.panel1.Controls.SetChildIndex(this.txtStaff_CopyDate, 0);
-            // 
-            // PanelTitle
-            // 
-            this.PanelTitle.Controls.Add(this.cboStaff_Mode);
-            this.PanelTitle.Controls.SetChildIndex(this.cboStaff_Mode, 0);
-            this.PanelTitle.Controls.SetChildIndex(this.cboMode, 0);
-            // 
-            // cboMode
-            // 
-            this.cboMode.BackColor = System.Drawing.Color.Cyan;
-            this.cboMode.Location = new System.Drawing.Point(43, 48);
             // 
             // Panel_Staff
             // 
@@ -558,7 +547,7 @@
             // 
             this.cboStaff_Mode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
             this.cboStaff_Mode.FormattingEnabled = true;
-            this.cboStaff_Mode.Location = new System.Drawing.Point(43, 12);
+            this.cboStaff_Mode.Location = new System.Drawing.Point(63, 9);
             this.cboStaff_Mode.MoveNext = true;
             this.cboStaff_Mode.Name = "cboStaff_Mode";
             this.cboStaff_Mode.NextControl = null;
@@ -756,7 +745,6 @@
         private Shinyoh_Controls.STextBox txtStaff_Remark;
         private Shinyoh_Controls.SLabel lblStaff_Search;
         private Shinyoh_Controls.STextBox txtStaff_Search;
-        private Shinyoh_Controls.SCombo cboStaff_Mode;
         private Shinyoh_Controls.SLabel sLabel5;
         private Shinyoh_Controls.SLabel lblStaff;
         private Shinyoh_Controls.STextBox txtStaff_CDate;

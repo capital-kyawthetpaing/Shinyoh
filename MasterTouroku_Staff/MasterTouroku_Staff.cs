@@ -25,7 +25,7 @@ namespace MasterTouroku_Staff
         {
             ProgramID = "MasterTourokuStaff";
             StartProgram();
-            cboStaff_Mode.Bind(false);
+            cboMode.Bind(false);
             cboStaff_Menu.Bind(true);
             cboStaff_authority.Bind(true);
             cboStaff_Position.Bind(true);
@@ -42,7 +42,7 @@ namespace MasterTouroku_Staff
             SetButton(ButtonType.BType.Empty, F10, "", false);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
-            
+            SetDefaultMode("1");
             ChangeMode(Mode.New);
 
             txt_Staff.Focus();
@@ -101,18 +101,9 @@ namespace MasterTouroku_Staff
         }
         public override void FunctionProcess(string tagID)
         {
-            if (tagID == "2")
-                cboStaff_Mode.SelectedValue = "1";              
-            if (tagID == "3")
-                cboStaff_Mode.SelectedValue = "2";           
-            if (tagID == "4")
-                cboStaff_Mode.SelectedValue = "3";            
-            if (tagID == "5")
-                cboStaff_Mode.SelectedValue = "4";
             if (tagID == "12")
             {
                 DBProcess();
-                cboStaff_Mode.SelectedValue = "1";
                 cf.DisablePanel(Panel_Staff);
                 Clear();
             }
@@ -122,18 +113,18 @@ namespace MasterTouroku_Staff
         {
             MasterTourokuStaff entity = GetInsertStaff();
             
-            if (cboStaff_Mode.SelectedValue.Equals("1"))
+            if (cboMode.SelectedValue.Equals("1"))
             {
                 entity.Mode = "New";
                 DoInsert(entity);
               
             }
-            else if (cboStaff_Mode.SelectedValue.Equals("2"))
+            else if (cboMode.SelectedValue.Equals("2"))
             {
                 entity.Mode = "Update";
                 DoUpdate(entity);
             }
-            else if (cboStaff_Mode.SelectedValue.Equals("3"))
+            else if (cboMode.SelectedValue.Equals("3"))
             {
                 entity.Mode = "Delete";
                 DoDelete(entity);
@@ -182,27 +173,27 @@ namespace MasterTouroku_Staff
 
         private void cboStaff_Mode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Clear();
-            string item = cboStaff_Mode.SelectedIndex.ToString();           
-            if (item == "0")
-            {
-                ChangeMode(Mode.New);
-                txtStaff_CDate.NextControlName = txtStaff_Copy.Name;
-                txtStaff_Copy.Enabled = true;
-                txtStaff_CopyDate.Enabled = true;
-            }
-            else
-            {
-                txtStaff_Copy.Enabled = false;
-                txtStaff_CopyDate.Enabled = false;
-                if (item == "1")
-                    ChangeMode(Mode.Update);
-                else if (item == "2")
-                    ChangeMode(Mode.Delete);
-                else if (item == "3")
-                    ChangeMode(Mode.Inquiry);
-            }
-            cf.DisablePanel(Panel_Staff);
+            ////Clear();
+            ////string item = cboMode.SelectedIndex.ToString();           
+            ////if (item == "0")
+            ////{
+            ////    ChangeMode(Mode.New);
+            ////    txtStaff_CDate.NextControlName = txtStaff_Copy.Name;
+            ////    txtStaff_Copy.Enabled = true;
+            ////    txtStaff_CopyDate.Enabled = true;
+            ////}
+            ////else
+            ////{
+            ////    txtStaff_Copy.Enabled = false;
+            ////    txtStaff_CopyDate.Enabled = false;
+            ////    if (item == "1")
+            ////        ChangeMode(Mode.Update);
+            ////    else if (item == "2")
+            ////        ChangeMode(Mode.Delete);
+            ////    else if (item == "3")
+            ////        ChangeMode(Mode.Inquiry);
+            ////}
+            ////cf.DisablePanel(Panel_Staff);
         }
         private void Clear()
         {
@@ -227,7 +218,7 @@ namespace MasterTouroku_Staff
 
         private void txtStaff_CopyDate_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && cboStaff_Mode.SelectedValue.ToString() == "1")
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
                 if (!txtStaff_CopyDate.IsErrorOccurs)
                 {
@@ -251,13 +242,13 @@ namespace MasterTouroku_Staff
             {
                 if (!txtStaff_CDate.IsErrorOccurs)
                 {
-                    if (cboStaff_Mode.SelectedValue.ToString() == "2")
+                    if (cboMode.SelectedValue.ToString() == "2")
                     {
                         EnablePanel();
                     }
                 }
                 DataTable dt = txtStaff_CDate.IsDatatableOccurs;
-                if(dt.Rows.Count>0 && cboStaff_Mode.SelectedValue.ToString() != "1")
+                if(dt.Rows.Count>0 && cboMode.SelectedValue.ToString() != "1")
                 {
                     From_DB_To_Form(dt);
                 }
