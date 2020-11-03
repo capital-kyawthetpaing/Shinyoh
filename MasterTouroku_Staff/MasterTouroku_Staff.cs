@@ -296,9 +296,24 @@ namespace MasterTouroku_Staff
                 cboStaff_Menu.SelectedValue = dt.Rows[0]["MenuCD"].ToString();
                 cboStaff_authority.SelectedValue = dt.Rows[0]["AuthorizationsCD"].ToString();
                 cboStaff_Position.SelectedValue = dt.Rows[0]["PositionCD"].ToString();
+                txtStaff_Passward.Text = dt.Rows[0]["Passward"].ToString();
+                txtStaff_Confirm.Text = dt.Rows[0]["Passward"].ToString();
                 txtStaff_JDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["JoinDate"]);
                 txtStaff_LDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["LeaveDate"]);
                 txtStaff_Remark.Text = dt.Rows[0]["Remarks"].ToString();
+            }
+        }
+
+        private void txtStaff_Search_TextChanged(object sender, EventArgs e)
+        {
+            string value = txtStaff_Search.Text.Replace(",", "");
+            ulong ul;
+            if (ulong.TryParse(value, out ul))
+            {
+                txtStaff_Search.TextChanged -= txtStaff_Search_TextChanged;
+                txtStaff_Search.Text = string.Format("{0:#,#}", ul);
+                txtStaff_Search.SelectionStart = txtStaff_Search.Text.Length;
+                txtStaff_Search.TextChanged += txtStaff_Search_TextChanged;
             }
         }
     }

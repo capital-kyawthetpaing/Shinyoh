@@ -98,10 +98,10 @@ namespace Shinyoh_Controls
             
             if (sTextBox.E104)
             {
-                DateTime JDate = Convert.ToDateTime(sTextBox.ctrlE104_1.Text);
                 if(!string.IsNullOrEmpty(sTextBox.ctrlE104_2.Text))
                 {
                     DateTime LDate = Convert.ToDateTime(sTextBox.ctrlE104_2.Text);
+                    DateTime JDate = Convert.ToDateTime(sTextBox.ctrlE104_1.Text);
                     if (JDate.Date > LDate.Date)
                     {
                         ShowErrorMessage("E104");
