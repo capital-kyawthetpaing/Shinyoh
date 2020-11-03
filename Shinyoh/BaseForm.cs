@@ -344,6 +344,12 @@ namespace Shinyoh
                     if (st.ErrorCheck())
                         return false;
                 }
+                if(ctrl is SCombo)
+                {
+                    SCombo sc = ctrl as SCombo;
+                    if (sc.ErrorCheck())
+                        return false;
+                }
             }
             return true;
         }

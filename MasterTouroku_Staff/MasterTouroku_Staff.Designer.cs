@@ -156,7 +156,9 @@
             this.txtStaff_Search.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Search.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_Search.TabIndex = 15;
+            this.txtStaff_Search.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtStaff_Search.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtStaff_Search.TextChanged += new System.EventHandler(this.txtStaff_Search_TextChanged);
             // 
             // lblStaff_Remark
             // 
@@ -182,6 +184,7 @@
             this.txtStaff_Remark.IsErrorOccurs = false;
             this.txtStaff_Remark.IsRequire = false;
             this.txtStaff_Remark.Location = new System.Drawing.Point(141, 348);
+            this.txtStaff_Remark.MaxLength = 80;
             this.txtStaff_Remark.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Remark.MoveNext = true;
             this.txtStaff_Remark.Name = "txtStaff_Remark";
@@ -216,6 +219,7 @@
             this.txtStaff_LDate.IsErrorOccurs = false;
             this.txtStaff_LDate.IsRequire = false;
             this.txtStaff_LDate.Location = new System.Drawing.Point(141, 313);
+            this.txtStaff_LDate.MaxLength = 10;
             this.txtStaff_LDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_LDate.MoveNext = true;
             this.txtStaff_LDate.Name = "txtStaff_LDate";
@@ -237,6 +241,7 @@
             this.txtStaff_JDate.IsErrorOccurs = false;
             this.txtStaff_JDate.IsRequire = false;
             this.txtStaff_JDate.Location = new System.Drawing.Point(141, 275);
+            this.txtStaff_JDate.MaxLength = 10;
             this.txtStaff_JDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_JDate.MoveNext = true;
             this.txtStaff_JDate.Name = "txtStaff_JDate";
@@ -271,6 +276,7 @@
             this.txtStaff_Confirm.IsErrorOccurs = false;
             this.txtStaff_Confirm.IsRequire = false;
             this.txtStaff_Confirm.Location = new System.Drawing.Point(369, 238);
+            this.txtStaff_Confirm.MaxLength = 10;
             this.txtStaff_Confirm.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Confirm.MoveNext = true;
             this.txtStaff_Confirm.Name = "txtStaff_Confirm";
@@ -306,6 +312,7 @@
             this.txtStaff_Passward.IsErrorOccurs = false;
             this.txtStaff_Passward.IsRequire = false;
             this.txtStaff_Passward.Location = new System.Drawing.Point(141, 238);
+            this.txtStaff_Passward.MaxLength = 10;
             this.txtStaff_Passward.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Passward.MoveNext = true;
             this.txtStaff_Passward.Name = "txtStaff_Passward";
@@ -346,25 +353,33 @@
             // cboStaff_Position
             // 
             this.cboStaff_Position.ComboType = Shinyoh_Controls.SCombo.CType.Position;
+            this.cboStaff_Position.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.cboStaff_Position.FormattingEnabled = true;
+            this.cboStaff_Position.IsDatatableOccurs = null;
+            this.cboStaff_Position.IsErrorOccurs = false;
             this.cboStaff_Position.Location = new System.Drawing.Point(141, 200);
+            this.cboStaff_Position.MinimumSize = new System.Drawing.Size(100, 0);
             this.cboStaff_Position.MoveNext = true;
             this.cboStaff_Position.Name = "cboStaff_Position";
             this.cboStaff_Position.NextControl = null;
             this.cboStaff_Position.NextControlName = "txtStaff_Passward";
-            this.cboStaff_Position.Size = new System.Drawing.Size(180, 21);
+            this.cboStaff_Position.Size = new System.Drawing.Size(180, 20);
             this.cboStaff_Position.TabIndex = 9;
             // 
             // cboStaff_authority
             // 
             this.cboStaff_authority.ComboType = Shinyoh_Controls.SCombo.CType.Authorization;
+            this.cboStaff_authority.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.cboStaff_authority.FormattingEnabled = true;
+            this.cboStaff_authority.IsDatatableOccurs = null;
+            this.cboStaff_authority.IsErrorOccurs = false;
             this.cboStaff_authority.Location = new System.Drawing.Point(141, 164);
+            this.cboStaff_authority.MinimumSize = new System.Drawing.Size(100, 0);
             this.cboStaff_authority.MoveNext = true;
             this.cboStaff_authority.Name = "cboStaff_authority";
             this.cboStaff_authority.NextControl = null;
             this.cboStaff_authority.NextControlName = "cboStaff_Position";
-            this.cboStaff_authority.Size = new System.Drawing.Size(357, 21);
+            this.cboStaff_authority.Size = new System.Drawing.Size(357, 20);
             this.cboStaff_authority.TabIndex = 8;
             // 
             // lblStaff_authority
@@ -383,13 +398,17 @@
             // cboStaff_Menu
             // 
             this.cboStaff_Menu.ComboType = Shinyoh_Controls.SCombo.CType.Menu;
+            this.cboStaff_Menu.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.cboStaff_Menu.FormattingEnabled = true;
+            this.cboStaff_Menu.IsDatatableOccurs = null;
+            this.cboStaff_Menu.IsErrorOccurs = false;
             this.cboStaff_Menu.Location = new System.Drawing.Point(141, 127);
+            this.cboStaff_Menu.MinimumSize = new System.Drawing.Size(100, 0);
             this.cboStaff_Menu.MoveNext = true;
             this.cboStaff_Menu.Name = "cboStaff_Menu";
             this.cboStaff_Menu.NextControl = null;
             this.cboStaff_Menu.NextControlName = "cboStaff_authority";
-            this.cboStaff_Menu.Size = new System.Drawing.Size(357, 21);
+            this.cboStaff_Menu.Size = new System.Drawing.Size(357, 20);
             this.cboStaff_Menu.TabIndex = 7;
             // 
             // lblStaff_Menu
@@ -484,6 +503,7 @@
             this.txtStaff_KanaName.IsErrorOccurs = false;
             this.txtStaff_KanaName.IsRequire = false;
             this.txtStaff_KanaName.Location = new System.Drawing.Point(141, 54);
+            this.txtStaff_KanaName.MaxLength = 40;
             this.txtStaff_KanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_KanaName.MoveNext = true;
             this.txtStaff_KanaName.Name = "txtStaff_KanaName";
@@ -518,6 +538,7 @@
             this.txtStaff_Name.IsErrorOccurs = false;
             this.txtStaff_Name.IsRequire = false;
             this.txtStaff_Name.Location = new System.Drawing.Point(141, 18);
+            this.txtStaff_Name.MaxLength = 40;
             this.txtStaff_Name.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Name.MoveNext = true;
             this.txtStaff_Name.Name = "txtStaff_Name";
@@ -578,6 +599,7 @@
             this.txt_Staff.IsErrorOccurs = false;
             this.txt_Staff.IsRequire = false;
             this.txt_Staff.Location = new System.Drawing.Point(117, 9);
+            this.txt_Staff.MaxLength = 10;
             this.txt_Staff.MinimumSize = new System.Drawing.Size(100, 19);
             this.txt_Staff.MoveNext = true;
             this.txt_Staff.Name = "txt_Staff";
@@ -587,7 +609,6 @@
             this.txt_Staff.Size = new System.Drawing.Size(100, 19);
             this.txt_Staff.TabIndex = 1;
             this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            
             // 
             // txtStaff_CDate
             // 
@@ -600,6 +621,7 @@
             this.txtStaff_CDate.IsErrorOccurs = false;
             this.txtStaff_CDate.IsRequire = false;
             this.txtStaff_CDate.Location = new System.Drawing.Point(117, 34);
+            this.txtStaff_CDate.MaxLength = 10;
             this.txtStaff_CDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_CDate.MoveNext = true;
             this.txtStaff_CDate.Name = "txtStaff_CDate";
@@ -635,6 +657,7 @@
             this.txtStaff_Copy.IsErrorOccurs = false;
             this.txtStaff_Copy.IsRequire = false;
             this.txtStaff_Copy.Location = new System.Drawing.Point(346, 10);
+            this.txtStaff_Copy.MaxLength = 10;
             this.txtStaff_Copy.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Copy.MoveNext = true;
             this.txtStaff_Copy.Name = "txtStaff_Copy";
@@ -656,6 +679,7 @@
             this.txtStaff_CopyDate.IsErrorOccurs = false;
             this.txtStaff_CopyDate.IsRequire = false;
             this.txtStaff_CopyDate.Location = new System.Drawing.Point(346, 34);
+            this.txtStaff_CopyDate.MaxLength = 10;
             this.txtStaff_CopyDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_CopyDate.MoveNext = true;
             this.txtStaff_CopyDate.Name = "txtStaff_CopyDate";
