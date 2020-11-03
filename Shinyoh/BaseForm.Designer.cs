@@ -71,17 +71,20 @@
             // cboMode
             // 
             this.cboMode.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.cboMode.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.cboMode.FormattingEnabled = true;
-            this.cboMode.Location = new System.Drawing.Point(43, 7);
+            this.cboMode.IsDatatableOccurs = null;
+            this.cboMode.IsErrorOccurs = false;
+            this.cboMode.Location = new System.Drawing.Point(42, 9);
+            this.cboMode.MinimumSize = new System.Drawing.Size(100, 0);
             this.cboMode.MoveNext = true;
             this.cboMode.Name = "cboMode";
             this.cboMode.NextControl = null;
             this.cboMode.NextControlName = "txtSouko";
             this.cboMode.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.cboMode.Size = new System.Drawing.Size(90, 21);
+            this.cboMode.Size = new System.Drawing.Size(100, 20);
             this.cboMode.TabIndex = 1;
             this.cboMode.SelectedIndexChanged += new System.EventHandler(this.cboMode_SelectedValueChanged);
-            
             // 
             // PanelTitle
             // 
