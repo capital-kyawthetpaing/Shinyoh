@@ -80,16 +80,16 @@ namespace Shinyoh_Controls
         public bool IsErrorOccurs { get; set; }
         public DataTable IsDatatableOccurs { get; set; }
 
-        public bool E102; string add_val, set_val;
+        public bool E102; 
         public bool E102Multi;
         public bool E166;
         public bool E132;
         public string E132Type;
         public bool E101;
         public string E101Type;
-        //Nwe Mar Win
-        public bool E103;//(2020-10-22)
-        public bool E133;//(2020-10-23)
+        
+        public bool E103;
+        public bool E133;
         public string E133Type;
         public bool E104;
 
@@ -103,7 +103,7 @@ namespace Shinyoh_Controls
         public Control ctrlE101_1;
         public Control ctrlE101_2;
         public Control ctrlE101_3;
-        //NMW (2020-10-23)
+       
         public Control ctrlE133_1;
         public Control ctrlE133_2;
         public Control ctrlE133_3;
@@ -155,25 +155,7 @@ namespace Shinyoh_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (this.TopLevelControl != null)
-                {
-
-                    Control[] ctrlArr = this.TopLevelControl.Controls.Find("cboMode", true);
-                    if (ctrlArr.Length > 0)
-                    {
-                        ComboBox cbo = ctrlArr[0] as ComboBox;
-                        string cbo_select = cbo.SelectedValue.ToString();
-                        if (cbo_select == "1")
-                        {
-                            ErrorCheck_Test("New");
-                        }
-                        else if (cbo_select == "2")
-                        {
-                            ErrorCheck_Test("Update");
-                        }
-                    }
-                }
-                //ErrorCheck_Test();
+                ErrorCheck();
                 base.OnKeyDown(e);
             }
         }
@@ -194,18 +176,7 @@ namespace Shinyoh_Controls
             }
             return IsErrorOccurs;
         }
-        public bool ErrorCheck_Test(string str)
-        {
-            (bool, DataTable) r_value = errchk.Check_Test(this,str);
-            IsErrorOccurs = r_value.Item1;
-            IsDatatableOccurs = r_value.Item2;
-            if (!IsErrorOccurs)
-            {
-                if (NextControl != null)
-                    NextControl.Focus();
-            }
-            return IsErrorOccurs;
-        }
+        
 
         protected override void OnGotFocus(EventArgs e)
         {
@@ -235,7 +206,6 @@ namespace Shinyoh_Controls
                     }
                 }
             }
-
             base.OnGotFocus(e);
         }
         protected override void OnEnter(EventArgs e)
@@ -264,7 +234,14 @@ namespace Shinyoh_Controls
             base.AutoSize = false;
             base.Height = 19;
         }
-
+        public void E101Check(bool value, string type, Control ctrl1, Control ctrl2, Control ctrl3)
+        {
+            E101 = value;
+            E101Type = type;
+            ctrlE101_1 = ctrl1;
+            ctrlE101_2 = ctrl2;
+            ctrlE101_3 = ctrl3;
+        }
         public void E102Check(bool value)
         {
             E102  = value;
@@ -275,6 +252,16 @@ namespace Shinyoh_Controls
             ctrlE102_1 = ctrl1;
             ctrlE102_2 = ctrl2;
         }
+        public void E103Check(bool value)
+        {
+            E103 = value;
+        }
+        public void E104Check(bool value, Control ctrl1, Control ctrl2)
+        {
+            E104 = value;
+            ctrlE104_1 = ctrl1;
+            ctrlE104_2 = ctrl2;
+        }
         public void E132Check(bool value,string type,Control ctrl1,Control ctrl2,Control ctrl3)
         {
             E132 = value;
@@ -283,26 +270,6 @@ namespace Shinyoh_Controls
             ctrlE132_2 = ctrl2;
             ctrlE132_3 = ctrl3;
         }
-        public void E101Check(bool value, string type, Control ctrl1, Control ctrl2, Control ctrl3)
-        {
-            E101 = value;
-            E101Type = type;
-            ctrlE101_1 = ctrl1;
-            ctrlE101_2 = ctrl2;
-            ctrlE101_3 = ctrl3;
-        }
-        public void E166Check(bool value,Control ctrl1,Control ctrl2)
-        {
-            E166 = value;
-            ctrlE166_1 = ctrl1;
-            ctrlE166_2 = ctrl2;
-        }
-        //NMW(2020-10-22)
-        public void E103Check(bool value)
-        {
-            E103 = value;
-        }
-        //NMW(2020-10-23)
         public void E133Check(bool value, string type, Control ctrl1, Control ctrl2, Control ctrl3)
         {
             E133 = value;
@@ -311,36 +278,11 @@ namespace Shinyoh_Controls
             ctrlE133_2 = ctrl2;
             ctrlE133_3 = ctrl3;
         }
-        public void E104Check(bool value, Control ctrl1, Control ctrl2)
+        public void E166Check(bool value,Control ctrl1,Control ctrl2)
         {
-            E104 = value;
-            ctrlE104_1 = ctrl1;
-            ctrlE104_2 = ctrl2;
+            E166 = value;
+            ctrlE166_1 = ctrl1;
+            ctrlE166_2 = ctrl2;
         }
-        public string E102_Add;
-        public string E102_Set;
-        public void New_E102Check(string add_ret,string set_ret)
-        {
-            E102_Add = add_ret;
-            E102_Set = set_ret;
-        }
-        public string E132_Add, E132_Set;
-        public void New_E132Check(string type, Control ctrl1, Control ctrl2, string add_ret, string set_ret)
-        {
-            E132Type = type;
-            ctrlE132_1 = ctrl1;
-            ctrlE132_2 = ctrl2;
-            E132_Add = add_ret;
-            E132_Set = set_ret;
-        }
-        public string E133_Add, E133_Set;
-        public void New_E133Check(string type, Control ctrl1, Control ctrl2, string add_ret, string set_ret)
-        {
-            E133Type = type;
-            ctrlE133_1 = ctrl1;
-            ctrlE133_2 = ctrl2;
-            E133_Add = add_ret;
-            E133_Set = set_ret;
-        }       
     }
 }

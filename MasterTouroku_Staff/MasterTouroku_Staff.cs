@@ -42,65 +42,88 @@ namespace MasterTouroku_Staff
             SetButton(ButtonType.BType.Empty, F8, "", false);
             SetButton(ButtonType.BType.Empty, F10, "", false);
             SetButton(ButtonType.BType.Empty, F11, "", false);
-
-            //SetDefaultMode("1");
-           // ChangeMode(Mode.New);
+            
+            ChangeMode(Mode.New);
 
             txt_Staff.Focus();
             staff_Entity = GetBaseData();
-
-            txt_Staff.New_E102Check(Mode.New.ToString(),Mode.Update.ToString());
-            txtStaff_CDate.New_E102Check(Mode.New.ToString(), Mode.Update.ToString());
-
-            txtStaff_CDate.New_E132Check("M_Staff", txt_Staff, txtStaff_CDate, Mode.New.ToString(),null);
-            txtStaff_CDate.New_E133Check("M_Staff", txt_Staff, txtStaff_CDate, null, Mode.Update.ToString());
-
         }
 
-        //private void ChangeMode(Mode mode)
-        //{
-        //    cf.DisablePanel(Panel_Staff);
-        //    cf.Clear(Panel_Staff);
-        //    cf.Clear(PanelTitle);
-        //    switch (mode)
-        //    {
-        //        case Mode.New:                    
-        //             ErrorChek();
-        //            //E102
-        //            txtStaff_CDate.E102Check(true);
-        //            txtStaff_CopyDate.E102MultiCheck(true, txtStaff_Copy, txtStaff_CopyDate);
-        //            //E132
-        //            txtStaff_CDate.E132Check(true,"M_Staff", txt_Staff, txtStaff_CDate, null);
-        //            //E133
-        //            txtStaff_CDate.E133Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
-        //            txtStaff_CopyDate.E133Check(true, "M_Staff", txtStaff_Copy, txtStaff_CopyDate, null);
-
-        //            //Enable && Disable
-        //            txtStaff_CDate.NextControlName = txtStaff_Copy.Name;
-        //            txtStaff_Copy.Enabled = true;
-        //            txtStaff_CopyDate.Enabled = true;                    
-        //            break;
-        //        case Mode.Update:
-        //            //ErrorChek();
-        //            //E132
-        //            txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
-        //            //E133
-        //            txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
-
-        //            //Enable && Disable
-        //            txtStaff_Copy.Enabled = true;
-        //            txtStaff_CopyDate.Enabled = true;
+        private void ChangeMode(Mode mode)
+        {
+            
+            switch (mode)
+            {
+                case Mode.New:
                     
-        //            break;
-        //        case Mode.Delete:
-        //        case Mode.Inquiry:
-        //            //E132
-        //            txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
-        //            //E133
-        //            txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);                    
-        //            break;
-        //    }
-        //}
+                    ErrorChek();
+                    //E102
+                    txtStaff_CDate.E102Check(true);
+                    txtStaff_CopyDate.E102MultiCheck(true, txtStaff_Copy, txtStaff_CopyDate);
+                    //E132
+                    txtStaff_CDate.E132Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    //E133
+                    txtStaff_CDate.E133Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txtStaff_CopyDate.E133Check(true, "M_Staff", txtStaff_Copy, txtStaff_CopyDate, null);
+
+                    //Enable && Disable
+                    cf.Clear(PanelTitle);
+                    cf.Clear(Panel_Staff);
+                    cf.EnablePanel(PanelTitle);
+                    cf.DisablePanel(Panel_Staff);
+
+                    txtStaff_CDate.NextControlName = txtStaff_Copy.Name;
+                    txtStaff_Copy.Enabled = true;
+                    txtStaff_CopyDate.Enabled = true;                   
+
+                    Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnNew.Visible = true;
+                    break;
+
+                case Mode.Update:                    
+                    ErrorChek();
+                    //E132
+                    txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    //E133
+                    txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+
+                    //Enable && Disable
+                    txtStaff_Copy.Enabled = false;
+                    txtStaff_CopyDate.Enabled = false;
+                   
+
+                    Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnUpdate.Visible = true;
+                    break;
+                case Mode.Delete:
+                    //E132
+                    txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    //E133
+                    txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+
+                    //Enable && Disable
+                    txtStaff_Copy.Enabled = false;
+                    txtStaff_CopyDate.Enabled = false;
+
+                    Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnDelete.Visible = true;
+
+                    break;
+                case Mode.Inquiry:
+                    //E132
+                    txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    //E133
+                    txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+
+                    //Enable && Disable
+                    txtStaff_Copy.Enabled = false;
+                    txtStaff_CopyDate.Enabled = false;
+
+                    Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnInquiry.Visible = false;
+                    break;
+            }
+        }
 
         private void ErrorChek()
         {
@@ -125,27 +148,26 @@ namespace MasterTouroku_Staff
 
         public override void FunctionProcess(string tagID)
         {
-            //if (tagID == "2")
-            //{
-            //    ChangeMode(Mode.New);
-            //}
-            //if (tagID == "3")
-            //{
-            //    ChangeMode(Mode.Update);
-            //}
-            //if (tagID == "4")
-            //{
-            //    ChangeMode(Mode.Delete);
-            //}
-            //if (tagID == "5")
-            //{
-            //    ChangeMode(Mode.Inquiry);
-            //}
+            if (tagID == "2")
+            {
+                ChangeMode(Mode.New);
+            }
+            if (tagID == "3")
+            {
+                ChangeMode(Mode.Update);
+            }
+            if (tagID == "4")
+            {
+                ChangeMode(Mode.Delete);
+            }
+            if (tagID == "5")
+            {
+                ChangeMode(Mode.Inquiry);
+            }
             if (tagID == "12")
             {
-                DBProcess();
-                cf.DisablePanel(Panel_Staff);
-                Clear();
+                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Staff))
+                    DBProcess();
             }
             base.FunctionProcess(tagID);
         }
@@ -201,7 +223,7 @@ namespace MasterTouroku_Staff
             StaffBL objMethod = new StaffBL();
             objMethod.M_Staff_CUD(obj);
         }
-        //NMW(2020-10-23)
+        
         private void DoUpdate(MasterTourokuStaff obj)
         {
             StaffBL objMethod = new StaffBL();
@@ -213,28 +235,6 @@ namespace MasterTouroku_Staff
             StaffBL objMethod = new StaffBL();
             objMethod.M_Staff_CUD(obj);
         }
-
-        private void Clear()
-        {
-            txt_Staff.Text = string.Empty;
-            txtStaff_CDate.Text= string.Empty;
-            txtStaff_Copy.Text = string.Empty;
-            txtStaff_CopyDate.Text = string.Empty;
-            txtStaff_Name.Text= string.Empty;
-            txtStaff_KanaName.Text= string.Empty;
-            txtStaff_Search.Text= string.Empty;
-            cboStaff_Menu.SelectedIndex = -1;
-            cboStaff_authority.SelectedIndex=-1;
-            cboStaff_Position.SelectedIndex = -1;
-            txtStaff_JDate.Text=string.Empty;
-            txtStaff_LDate.Text=string.Empty;
-            txtStaff_Passward.Text=string.Empty;
-            txtStaff_Confirm.Text = string.Empty;
-            txtStaff_Remark.Text = string.Empty;
-            txtStaff_Yubin1.Text = string.Empty;
-            txtStaff_Yubin2.Text = string.Empty;
-        }
-
         private void txtStaff_CopyDate_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
@@ -253,6 +253,7 @@ namespace MasterTouroku_Staff
         {
             cf.EnablePanel(Panel_Staff);
             txtStaff_Name.Focus();
+            cf.DisablePanel(PanelTitle);
         }
 
         private void txtStaff_CDate_KeyDown(object sender, KeyEventArgs e)
@@ -271,7 +272,6 @@ namespace MasterTouroku_Staff
                 {
                     From_DB_To_Form(dt);
                 }
-                
             }
         }
 
