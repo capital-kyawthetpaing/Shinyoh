@@ -51,7 +51,13 @@ namespace MasterTouroku_Staff
 
         private void ChangeMode(Mode mode)
         {
-            
+            //Enable && Disable
+            cf.Clear(PanelTitle);
+            cf.Clear(Panel_Staff);
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(Panel_Staff);
+            txt_Staff.Focus();
+
             switch (mode)
             {
                 case Mode.New:
@@ -65,12 +71,6 @@ namespace MasterTouroku_Staff
                     //E133
                     txtStaff_CDate.E133Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     txtStaff_CopyDate.E133Check(true, "M_Staff", txtStaff_Copy, txtStaff_CopyDate, null);
-
-                    //Enable && Disable
-                    cf.Clear(PanelTitle);
-                    cf.Clear(Panel_Staff);
-                    cf.EnablePanel(PanelTitle);
-                    cf.DisablePanel(Panel_Staff);
 
                     txtStaff_CDate.NextControlName = txtStaff_Copy.Name;
                     txtStaff_Copy.Enabled = true;
@@ -167,7 +167,17 @@ namespace MasterTouroku_Staff
             if (tagID == "12")
             {
                 if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Staff))
+                {
                     DBProcess();
+
+                    ChangeMode(Mode.New);
+                    //Enable && Disable
+                    cf.Clear(PanelTitle);
+                    cf.Clear(Panel_Staff);
+                    cf.EnablePanel(PanelTitle);
+                    cf.DisablePanel(Panel_Staff);
+                    txt_Staff.Focus();
+                }
             }
             base.FunctionProcess(tagID);
         }
@@ -285,45 +295,10 @@ namespace MasterTouroku_Staff
                 cboStaff_Menu.SelectedValue = dt.Rows[0]["MenuCD"].ToString();
                 cboStaff_authority.SelectedValue = dt.Rows[0]["AuthorizationsCD"].ToString();
                 cboStaff_Position.SelectedValue = dt.Rows[0]["PositionCD"].ToString();
-                txtStaff_JDate.Text = Convert.ToDateTime(dt.Rows[0]["JoinDate"].ToString()).ToString("yyyy-MM-dd");
-                txtStaff_LDate.Text = Convert.ToDateTime(dt.Rows[0]["LeaveDate"].ToString()).ToString("yyyy-MM-dd");
+                txtStaff_JDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["JoinDate"]);
+                txtStaff_LDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["LeaveDate"]);
                 txtStaff_Remark.Text = dt.Rows[0]["Remarks"].ToString();
             }
-        }
-
-        private void lblStaff_CopyDate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtStaff_CDate_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sLabel5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_Staff_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtStaff_CopyDate_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblStaff_Copy_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtStaff_Copy_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

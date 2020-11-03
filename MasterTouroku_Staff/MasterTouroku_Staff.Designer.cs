@@ -566,7 +566,6 @@
             this.sLabel5.TabIndex = 52;
             this.sLabel5.Text = "改定日";
             this.sLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.sLabel5.Click += new System.EventHandler(this.sLabel5_Click);
             // 
             // txt_Staff
             // 
@@ -588,7 +587,7 @@
             this.txt_Staff.Size = new System.Drawing.Size(100, 19);
             this.txt_Staff.TabIndex = 1;
             this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txt_Staff.TextChanged += new System.EventHandler(this.txt_Staff_TextChanged);
+            
             // 
             // txtStaff_CDate
             // 
@@ -610,7 +609,6 @@
             this.txtStaff_CDate.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_CDate.TabIndex = 2;
             this.txtStaff_CDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
-            this.txtStaff_CDate.TextChanged += new System.EventHandler(this.txtStaff_CDate_TextChanged);
             this.txtStaff_CDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaff_CDate_KeyDown);
             // 
             // lblStaff_Copy
@@ -625,7 +623,6 @@
             this.lblStaff_Copy.TabIndex = 51;
             this.lblStaff_Copy.Text = "複写元スタッフ";
             this.lblStaff_Copy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblStaff_Copy.Click += new System.EventHandler(this.lblStaff_Copy_Click);
             // 
             // txtStaff_Copy
             // 
@@ -647,7 +644,6 @@
             this.txtStaff_Copy.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_Copy.TabIndex = 3;
             this.txtStaff_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaff_Copy.TextChanged += new System.EventHandler(this.txtStaff_Copy_TextChanged);
             // 
             // txtStaff_CopyDate
             // 
@@ -669,7 +665,6 @@
             this.txtStaff_CopyDate.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_CopyDate.TabIndex = 4;
             this.txtStaff_CopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
-            this.txtStaff_CopyDate.TextChanged += new System.EventHandler(this.txtStaff_CopyDate_TextChanged);
             this.txtStaff_CopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaff_CopyDate_KeyDown);
             // 
             // lblStaff_CopyDate
@@ -684,7 +679,6 @@
             this.lblStaff_CopyDate.TabIndex = 55;
             this.lblStaff_CopyDate.Text = "複写元改定日";
             this.lblStaff_CopyDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblStaff_CopyDate.Click += new System.EventHandler(this.lblStaff_CopyDate_Click);
             // 
             // MasterTouroku_Staff
             // 

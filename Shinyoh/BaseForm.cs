@@ -297,6 +297,7 @@ namespace Shinyoh
         {
             PreviousCtrl = this.ActiveControl;
         }
+
         public StaffEntity GetBaseData()
         {
             StaffEntity obj = new StaffEntity();

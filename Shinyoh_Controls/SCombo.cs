@@ -10,7 +10,10 @@ namespace Shinyoh_Controls
 {
     public class SCombo : ComboBox
     {
-       
+        CommonFunction cf;
+        BaseBL bbl;
+        ErrorCheck errchk;
+
         [Browsable(true)]
         [Category("Shinyoh Properties")]
         [Description("NextControlName")]
@@ -31,7 +34,23 @@ namespace Shinyoh_Controls
             Authorization,
             Position
         }
-       
+
+        public bool IsErrorOccurs { get; set; }
+        public DataTable IsDatatableOccurs { get; set; }
+
+        public bool E102;
+
+        //Constructor
+        public SCombo()
+        {
+            this.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular);
+            cf = new CommonFunction();
+            bbl = new BaseBL();
+            errchk = new ErrorCheck();
+
+            base.MinimumSize = new Size(100, 19);
+        }
+
         public void Bind(bool UseBlankRow)
         {
             StaffBL staffBL = new StaffBL();
@@ -108,10 +127,23 @@ namespace Shinyoh_Controls
             }
             else if(e.KeyCode == Keys.Enter)
             {
-                Control nextControl = this.TopLevelControl.Controls.Find(NextControlName, true)[0];
-                nextControl.Focus();
+                ErrorCheck();
+                //Control nextControl = this.TopLevelControl.Controls.Find(NextControlName, true)[0];
+                //nextControl.Focus();
             }
             base.OnKeyDown(e);
+        }
+        public bool ErrorCheck()
+        {
+            (bool, DataTable) r_value = errchk.Check(this);
+            IsErrorOccurs = r_value.Item1;
+            IsDatatableOccurs = r_value.Item2;
+            if (!IsErrorOccurs)
+            {
+                if (NextControl != null)
+                    NextControl.Focus();
+            }
+            return IsErrorOccurs;
         }
 
         protected override void OnGotFocus(EventArgs e)
@@ -150,34 +182,23 @@ namespace Shinyoh_Controls
                 e.Handled = true;
             base.OnKeyPress(e);
         }
-       
-
-        public bool E102;
-        public void E102Check(bool value)
-        {
-            E102 = value;
-        }
-
-        //NMW (Copy From STextBox)
+        
         protected override void OnEnter(EventArgs e)
         {
             this.BackColor = Color.Cyan;
             base.OnEnter(e);
         }
-        //NMW (Copy From STextBox)
         protected override void OnLeave(EventArgs e)
         {
             this.BackColor = Color.White;
             base.OnLeave(e);
         }
-        //NMW (Copy From STextBox)
         protected override void InitLayout()
         {
             base.InitLayout();
             base.AutoSize = false;
             base.Height = 19;
         }
-        //NMW (Copy from STextBox)
         protected override void OnEnabledChanged(EventArgs e)
         {
             if (!Enabled)
@@ -186,6 +207,11 @@ namespace Shinyoh_Controls
                 this.BackColor = SystemColors.Window;
 
             base.OnEnabledChanged(e);
+        }
+
+        public void E102Check(bool value)
+        {
+            E102 = value;
         }
     }
 }

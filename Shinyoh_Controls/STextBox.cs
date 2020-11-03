@@ -205,6 +205,7 @@ namespace Shinyoh_Controls
             }
             base.OnGotFocus(e);
         }
+
         protected override void OnEnter(EventArgs e)
         {
             this.BackColor = Color.Cyan;

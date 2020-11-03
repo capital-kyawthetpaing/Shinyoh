@@ -25,8 +25,15 @@ namespace Shinyoh_Controls
                 (bool,DataTable) r_value= TextBoxErrorCheck(sTextBox);
                 return r_value;
             }
+            if(ctrl is ComboBox)
+            {
+                ComboBox sCombo = ctrl as SCombo;
+                (bool, DataTable) r_value = ComboErrorCheck(sCombo);
+                return r_value;
+            }
             return (false,dt);
         }
+
         private (bool,DataTable) TextBoxErrorCheck(STextBox sTextBox)
         {
             DataTable rDt = new DataTable();
@@ -92,12 +99,15 @@ namespace Shinyoh_Controls
             if (sTextBox.E104)
             {
                 DateTime JDate = Convert.ToDateTime(sTextBox.ctrlE104_1.Text);
-                DateTime LDate = Convert.ToDateTime(sTextBox.ctrlE104_2.Text);
-                if (JDate.Date > LDate.Date)
+                if(!string.IsNullOrEmpty(sTextBox.ctrlE104_2.Text))
                 {
-                    ShowErrorMessage("E104");
-                    sTextBox.Focus();
-                    return (true, rDt);
+                    DateTime LDate = Convert.ToDateTime(sTextBox.ctrlE104_2.Text);
+                    if (JDate.Date > LDate.Date)
+                    {
+                        ShowErrorMessage("E104");
+                        sTextBox.Focus();
+                        return (true, rDt);
+                    }
                 }
             }
 
@@ -162,6 +172,23 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
+            return (false, rDt);
+        }
+
+        private (bool, DataTable) ComboErrorCheck(ComboBox sCombo)
+        {
+            DataTable rDt = new DataTable();
+
+            if (sCombo.E102)
+            {
+                if (string.IsNullOrWhiteSpace(sCombo.SelectedValue.ToString()))
+                {
+                    ShowErrorMessage("E102");
+                    sCombo.Focus();
+                    return (true, rDt);
+                }
+            }
+
             return (false, rDt);
         }
     }
