@@ -291,5 +291,39 @@ namespace MasterTouroku_Staff
             }
         }
 
+        private void lblStaff_CopyDate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStaff_CDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_Staff_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStaff_CopyDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblStaff_Copy_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStaff_Copy_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
