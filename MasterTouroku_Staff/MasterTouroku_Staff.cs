@@ -225,6 +225,7 @@ namespace MasterTouroku_Staff
 
             //for log table
             obj.KeyItem = txt_Staff.Text.ToString() + " " + txtStaff_CDate.Text;
+            obj.PC = staff_Entity.PC;
             return obj;
         }        
 
