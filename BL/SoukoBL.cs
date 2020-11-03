@@ -13,7 +13,7 @@ namespace BL {
         public string M_Souko_CUD(SoukoEntity soukoEntity)
         {
             CKMDL ckmdl = new CKMDL();
-            soukoEntity.Sqlprms = new SqlParameter[12];
+            soukoEntity.Sqlprms = new SqlParameter[17];
             soukoEntity.Sqlprms[0] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = soukoEntity.SoukoCD };
             soukoEntity.Sqlprms[1] = new SqlParameter("@SoukoName", SqlDbType.VarChar) { Value = soukoEntity.SoukoName };
             soukoEntity.Sqlprms[2] = new SqlParameter("@KanaName", SqlDbType.VarChar) { Value = soukoEntity.KanaName };
@@ -25,7 +25,12 @@ namespace BL {
             soukoEntity.Sqlprms[8] = new SqlParameter("@TelNO", SqlDbType.VarChar) { Value = soukoEntity.TelNO };
             soukoEntity.Sqlprms[9] = new SqlParameter("@FaxNO", SqlDbType.VarChar) { Value = soukoEntity.FaxNO };
             soukoEntity.Sqlprms[10] = new SqlParameter("@Remarks", SqlDbType.VarChar) { Value = soukoEntity.Remarks };
-            soukoEntity.Sqlprms[11] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = soukoEntity.Mode };
+            soukoEntity.Sqlprms[11] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = soukoEntity.InsertOperator };
+            soukoEntity.Sqlprms[12] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = soukoEntity.UpdateOperator };
+            soukoEntity.Sqlprms[13] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = soukoEntity.Mode };
+            soukoEntity.Sqlprms[14] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = soukoEntity.ProgramID };
+            soukoEntity.Sqlprms[15] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = soukoEntity.PC };
+            soukoEntity.Sqlprms[16] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = soukoEntity.KeyItem };
             return ckmdl.InsertUpdateDeleteData("M_Souko_CUD",GetConnectionString(),soukoEntity.Sqlprms);
         }
         public SoukoEntity Souko_Select(SoukoEntity soukoEntity)

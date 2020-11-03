@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entity {
    public class SoukoEntity:BaseEntity {
-        public string SoukoCD { get; set; }
+		public string ProgramID { get; set; }
+		public string SoukoCD { get; set; }
 		public string SoukoName { get; set; }
 		public string KanaName { get; set; }
 		public string KensakuHyouziJun { get; set; }
@@ -22,6 +23,8 @@ namespace Entity {
 		public DateTime InsertDateTime { get; set; }
 		public string UpdateOperator { get; set; }
 		public DateTime UpdateDateTime { get; set; }
+		//for Log Table
+		public string KeyItem { get; set; } 
 
 	}
 }
