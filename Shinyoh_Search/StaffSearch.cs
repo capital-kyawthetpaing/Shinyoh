@@ -17,5 +17,15 @@ namespace Shinyoh_Search
         {
             InitializeComponent();
         }
+
+        private void StaffSearch_Load(object sender, EventArgs e)
+        {
+            txtStaff1.Focus();
+        }
+
+        private void txtStaff2_KeyDown(object sender, KeyEventArgs e)
+        {
+            txtStaff2.E106Check(true, txtStaff1, txtStaff2);
+        }
     }
 }

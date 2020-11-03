@@ -110,6 +110,20 @@ namespace Shinyoh_Controls
                     }
                 }
             }
+            if (sTextBox.E106)
+            {
+                if (!string.IsNullOrEmpty(sTextBox.ctrlE106_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE106_2.Text))
+                {
+                    int from_val = int.Parse(sTextBox.ctrlE106_1.Text);
+                    int to_val = int.Parse(sTextBox.ctrlE106_2.Text);
+                    if (from_val > to_val)
+                    {
+                        ShowErrorMessage("E106");
+                        sTextBox.Focus();
+                        return (true, rDt);
+                    }
+                }
+            }
 
             if (sTextBox.E132)
             {

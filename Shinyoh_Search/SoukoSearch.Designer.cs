@@ -78,6 +78,7 @@
             this.txtKanaName.DecimalPlace = 0;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
+            this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(120, 68);
@@ -99,6 +100,7 @@
             this.txtSoukoName.DecimalPlace = 0;
             this.txtSoukoName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSoukoName.IntegerPart = 0;
+            this.txtSoukoName.IsDatatableOccurs = null;
             this.txtSoukoName.IsErrorOccurs = false;
             this.txtSoukoName.IsRequire = false;
             this.txtSoukoName.Location = new System.Drawing.Point(120, 39);
@@ -120,6 +122,7 @@
             this.txtSouko2.DecimalPlace = 0;
             this.txtSouko2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSouko2.IntegerPart = 0;
+            this.txtSouko2.IsDatatableOccurs = null;
             this.txtSouko2.IsErrorOccurs = false;
             this.txtSouko2.IsRequire = false;
             this.txtSouko2.Location = new System.Drawing.Point(277, 10);
@@ -141,6 +144,7 @@
             this.txtSouko1.DecimalPlace = 0;
             this.txtSouko1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSouko1.IntegerPart = 0;
+            this.txtSouko1.IsDatatableOccurs = null;
             this.txtSouko1.IsErrorOccurs = false;
             this.txtSouko1.IsRequire = false;
             this.txtSouko1.Location = new System.Drawing.Point(120, 9);
@@ -211,6 +215,9 @@
             // 
             // gvSouko
             // 
+            this.gvSouko.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvSouko.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvSouko.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSouko,
