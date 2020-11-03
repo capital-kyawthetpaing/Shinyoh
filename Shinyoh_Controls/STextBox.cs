@@ -80,36 +80,33 @@ namespace Shinyoh_Controls
         public bool IsErrorOccurs { get; set; }
         public DataTable IsDatatableOccurs { get; set; }
 
-        public bool E102; 
-        public bool E102Multi;
-        public bool E166;
-        public bool E132;
-        public string E132Type;
         public bool E101;
         public string E101Type;
-        
+        public bool E102; 
+        public bool E102Multi;
         public bool E103;
+        public bool E104;       
+        public bool E132;
+        public string E132Type;  
         public bool E133;
         public string E133Type;
-        public bool E104;
+        public bool E166;
 
-        public Control ctrlE102_1;
-        public Control ctrlE102_2;
-        public Control ctrlE166_1;
-        public Control ctrlE166_2;
-        public Control ctrlE132_1;
-        public Control ctrlE132_2;
-        public Control ctrlE132_3;
         public Control ctrlE101_1;
         public Control ctrlE101_2;
         public Control ctrlE101_3;
-       
+        public Control ctrlE102_1;
+        public Control ctrlE102_2;
+        public Control ctrlE104_1;
+        public Control ctrlE104_2;
+        public Control ctrlE132_1;
+        public Control ctrlE132_2;
+        public Control ctrlE132_3;
         public Control ctrlE133_1;
         public Control ctrlE133_2;
         public Control ctrlE133_3;
-        public Control ctrlE104_1;
-        public Control ctrlE104_2;
-
+        public Control ctrlE166_1;
+        public Control ctrlE166_2;
        
 
         //Constructor
