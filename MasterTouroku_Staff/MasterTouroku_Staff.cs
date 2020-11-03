@@ -208,15 +208,15 @@ namespace MasterTouroku_Staff
         {
             MasterTourokuStaff obj = new MasterTourokuStaff();
             obj.StaffCD = txt_Staff.Text.ToString();
-            obj.ChangeDate = Convert.ToDateTime(txtStaff_CDate.Text.ToString());
+            obj.ChangeDate = txtStaff_CDate.Text.ToString();
             obj.StaffName = txtStaff_Name.Text.ToString();
             obj.KanaName = txtStaff_KanaName.Text.ToString();
-            obj.KensakuHyouziJun = Convert.ToInt32(txtStaff_Search.Text);
+            obj.KensakuHyouziJun =txtStaff_Search.Text;            
             obj.MenuCD = cboStaff_Menu.SelectedValue.ToString();
             obj.AuthorizationsCD = cboStaff_authority.SelectedValue.ToString();
             obj.PositionCD = cboStaff_Position.SelectedValue.ToString();
-            obj.JoinDate = Convert.ToDateTime(txtStaff_JDate.Text.ToString());
-            obj.LeaveDate = Convert.ToDateTime(txtStaff_LDate.Text.ToString());
+            obj.JoinDate = txtStaff_JDate.Text.ToString();
+            obj.LeaveDate = txtStaff_LDate.Text.ToString();
             obj.Passward = txtStaff_Passward.Text;
             obj.Remarks = txtStaff_Remark.Text;
             obj.UsedFlg = 0;

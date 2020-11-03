@@ -128,8 +128,6 @@ namespace Shinyoh_Controls
             else if(e.KeyCode == Keys.Enter)
             {
                 ErrorCheck();
-                //Control nextControl = this.TopLevelControl.Controls.Find(NextControlName, true)[0];
-                //nextControl.Focus();
             }
             base.OnKeyDown(e);
         }
@@ -140,8 +138,8 @@ namespace Shinyoh_Controls
             IsDatatableOccurs = r_value.Item2;
             if (!IsErrorOccurs)
             {
-                if (NextControl != null)
-                    NextControl.Focus();
+                Control nextControl = this.TopLevelControl.Controls.Find(NextControlName, true)[0];
+                nextControl.Focus();
             }
             return IsErrorOccurs;
         }

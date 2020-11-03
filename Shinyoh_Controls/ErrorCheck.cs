@@ -27,7 +27,7 @@ namespace Shinyoh_Controls
             }
             if(ctrl is ComboBox)
             {
-                ComboBox sCombo = ctrl as SCombo;
+                SCombo  sCombo = ctrl as SCombo;
                 (bool, DataTable) r_value = ComboErrorCheck(sCombo);
                 return r_value;
             }
@@ -175,13 +175,13 @@ namespace Shinyoh_Controls
             return (false, rDt);
         }
 
-        private (bool, DataTable) ComboErrorCheck(ComboBox sCombo)
+        private (bool, DataTable) ComboErrorCheck(SCombo sCombo)
         {
             DataTable rDt = new DataTable();
 
             if (sCombo.E102)
             {
-                if (string.IsNullOrWhiteSpace(sCombo.SelectedValue.ToString()))
+                if (sCombo.SelectedValue.ToString()=="-1")
                 {
                     ShowErrorMessage("E102");
                     sCombo.Focus();
