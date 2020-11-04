@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.PanelDetail = new System.Windows.Forms.Panel();
-            this.searchBox1 = new Shinyoh_Search.SearchBox();
             this.txtRemark = new Shinyoh_Controls.STextBox();
             this.lblRemark = new Shinyoh_Controls.SLabel();
             this.txtFAX = new Shinyoh_Controls.STextBox();
@@ -50,6 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblSearch = new Shinyoh_Controls.SLabel();
             this.txtSearch = new Shinyoh_Controls.STextBox();
+            this.searchBox1 = new Shinyoh_Search.SearchBox();
             this.txtCopySouko = new Shinyoh_Controls.STextBox();
             this.txtSouko = new Shinyoh_Controls.STextBox();
             this.lblCopySouko = new Shinyoh_Controls.SLabel();
@@ -106,27 +106,6 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1485, 379);
             this.PanelDetail.TabIndex = 1;
-            // 
-            // searchBox1
-            // 
-            this.searchBox1.AllowMinus = false;
-            this.searchBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.searchBox1.DecimalPlace = 0;
-            this.searchBox1.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.searchBox1.IntegerPart = 0;
-            this.searchBox1.IsDatatableOccurs = null;
-            this.searchBox1.IsErrorOccurs = false;
-            this.searchBox1.IsRequire = false;
-            this.searchBox1.Location = new System.Drawing.Point(430, 53);
-            this.searchBox1.MinimumSize = new System.Drawing.Size(100, 19);
-            this.searchBox1.MoveNext = true;
-            this.searchBox1.Name = "searchBox1";
-            this.searchBox1.NextControl = null;
-            this.searchBox1.NextControlName = null;
-            this.searchBox1.SearchType = Entity.SearchType.ScType.Souko;
-            this.searchBox1.Size = new System.Drawing.Size(100, 19);
-            this.searchBox1.TabIndex = 40;
-            this.searchBox1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtRemark
             // 
@@ -485,6 +464,28 @@
             this.txtSearch.TabIndex = 12;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // searchBox1
+            // 
+            this.searchBox1.AllowMinus = false;
+            this.searchBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchBox1.DecimalPlace = 0;
+            this.searchBox1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.searchBox1.IntegerPart = 0;
+            this.searchBox1.IsDatatableOccurs = null;
+            this.searchBox1.IsErrorOccurs = false;
+            this.searchBox1.IsRequire = false;
+            this.searchBox1.Location = new System.Drawing.Point(430, 53);
+            this.searchBox1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.searchBox1.MoveNext = true;
+            this.searchBox1.Name = "searchBox1";
+            this.searchBox1.NextControl = null;
+            this.searchBox1.NextControlName = null;
+            this.searchBox1.SearchType = Entity.SearchType.ScType.Souko;
+            this.searchBox1.Size = new System.Drawing.Size(100, 19);
+            this.searchBox1.TabIndex = 40;
+            this.searchBox1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtCopySouko
             // 

@@ -17,12 +17,26 @@ namespace Shinyoh_Search {
         {
             InitializeComponent();
         }
+        SoukoBL bl = new SoukoBL();
+        SoukoEntity soukoEntity = new SoukoEntity();
+        private void SoukoSearch_Load(object sender, EventArgs e)
+        {
+            txtSouko1.Focus();
+            DataTable dt = bl.Souko_Search(soukoEntity);
+            gvSouko.DataSource = dt;
+        }
         private void btnF11_Click(object sender, EventArgs e)
         {
-            SoukoBL bl = new SoukoBL();
-            SoukoEntity soukoEntity = new SoukoEntity();
-            DataTable dt= bl.Souko_Search(soukoEntity);
+            soukoEntity.SoukoCD = txtSouko1.Text;
+            soukoEntity.FaxNO = txtSouko2.Text;
+            soukoEntity.SoukoName = txtSoukoName.Text;
+            soukoEntity.KanaName = txtKanaName.Text;
+            DataTable dt = bl.Souko_Search(soukoEntity);
             gvSouko.DataSource = dt;
+        }
+        private void txtSouko2_KeyDown(object sender, KeyEventArgs e)
+        {
+            txtSouko2.E106Check(true, txtSouko1, txtSouko2);
         }
     }
 }
