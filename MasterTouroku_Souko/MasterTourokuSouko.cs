@@ -241,7 +241,7 @@ namespace MasterTouroku_Souko
        
         private void txtCopySouko_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
-            form = new SoukoSearch(this);
+            //form = new SoukoSearch(this);
             if (cboMode.SelectedValue.Equals("1"))
             {
                 if (e.KeyCode == Keys.Enter)
