@@ -38,7 +38,6 @@ namespace MasterTouroku_Souko
             ChangeMode(Mode.New);
             txtSouko.Focus();
             souko = GetData();
-            //SetDefaultMode("1");
         }
         public SoukoEntity GetData()
         {
@@ -50,7 +49,13 @@ namespace MasterTouroku_Souko
         }
         private void ChangeMode(Mode mode)
         {
-            switch(mode)
+            //Enable && Disable
+            cf.Clear(PanelTitle);
+            cf.Clear(PanelDetail);
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(PanelDetail);
+            txtSouko.Focus();
+            switch (mode)
             {
                 case Mode.New:
                     txtSouko.E102Check(true);
@@ -131,27 +136,40 @@ namespace MasterTouroku_Souko
             if (tagID == "2")
             {
                 ChangeMode(Mode.New);
-                //SetDefaultMode("1");
             }
             if(tagID == "3")
             {
                 ChangeMode(Mode.Update);
-                //SetDefaultMode("2");
             }
             if (tagID == "4")
             {
                 ChangeMode(Mode.Delete);
-                //SetDefaultMode("3");
             }
             if (tagID == "5")
             {
                 ChangeMode(Mode.Inquiry);
-                //SetDefaultMode("4");
             }
             if(tagID == "12")
             {
-                if(ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                {
                     DBProcess();
+                    switch (cboMode.SelectedValue)
+                    {
+                        case "1":
+                            ChangeMode(Mode.New);
+                            break;
+                        case "2":
+                            ChangeMode(Mode.Update);
+                            break;
+                        case "3":
+                            ChangeMode(Mode.Delete);
+                            break;
+                        case "4":
+                            ChangeMode(Mode.Inquiry);
+                            break;
+                    }
+                }
             }
             base.FunctionProcess(tagID);
         }
@@ -261,6 +279,7 @@ namespace MasterTouroku_Souko
                     if (e.KeyCode == Keys.Enter)
                     {
                         EnableAndDisablePanel();
+                        cf.DisablePanel(PanelDetail);
                     }
                 }
             }
@@ -283,19 +302,6 @@ namespace MasterTouroku_Souko
             cf.EnablePanel(PanelDetail);
             txtSoukoName.Focus();
             cf.DisablePanel(PanelTitle);
-        }
-
-        public string SokoCD
-        {
-            get { return txtSouko.Text; }
-            set { txtSouko.Text = value; }
-
-        }
-        public string SouKoName
-        {
-            get { return txtSoukoName.Text; }
-            set { txtSoukoName.Text = value; }
-
         }
     }
 }
