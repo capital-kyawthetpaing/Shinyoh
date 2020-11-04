@@ -40,6 +40,10 @@ namespace Shinyoh_Search {
         {
             SoukoBL bl = new SoukoBL();
             SoukoEntity soukoEntity = new SoukoEntity();
+            soukoEntity.SoukoCD = txtSouko1.Text;
+            soukoEntity.FaxNO = txtSouko2.Text;
+            soukoEntity.SoukoName = txtSoukoName.Text;
+            soukoEntity.KanaName = txtKanaName.Text;
             DataTable dt = bl.Souko_Search(soukoEntity);
             gvSouko.DataSource = dt;
         }
@@ -47,11 +51,13 @@ namespace Shinyoh_Search {
         private void BtnF11_Soko_Click(object sender, EventArgs e)
         {
             FunctionProcess(BtnF11_Soko.Tag.ToString());
+            GetDatatable();
+
         }
 
         private void gvSouko_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-           
+            
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = gvSouko.Rows[e.RowIndex];

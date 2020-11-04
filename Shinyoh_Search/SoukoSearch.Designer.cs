@@ -136,7 +136,6 @@
             this.txtSouko2.Size = new System.Drawing.Size(100, 19);
             this.txtSouko2.TabIndex = 1;
             this.txtSouko2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtSouko2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSouko2_KeyDown);
             // 
             // txtSouko1
             // 
@@ -253,7 +252,6 @@
             this.Name = "SoukoSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoukoSearch";
-            this.Load += new System.EventHandler(this.SoukoSearch_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gvSouko, 0);
             this.panel1.ResumeLayout(false);

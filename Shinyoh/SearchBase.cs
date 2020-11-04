@@ -70,12 +70,12 @@ namespace Shinyoh
         private void SetMode(SButton btn)
         {
            
-                if (bbl.ShowMessage("Q005") != DialogResult.Yes)
-                {
-                    if (PreviousCtrl != null)
-                        PreviousCtrl.Focus();                   
-                    return;
-                }
+                //if (bbl.ShowMessage("Q005") != DialogResult.Yes)
+                //{
+                //    if (PreviousCtrl != null)
+                //        PreviousCtrl.Focus();                   
+                //    return;
+                //}
                 FunctionProcess(btn.Tag.ToString());
         }
         protected void SetButton(ButtonType.BType buttonType, SButton button, string buttonText, bool visible)
