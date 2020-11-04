@@ -284,5 +284,18 @@ namespace MasterTouroku_Souko
             txtSoukoName.Focus();
             cf.DisablePanel(PanelTitle);
         }
+
+        public string SokoCD
+        {
+            get { return txtSouko.Text; }
+            set { txtSouko.Text = value; }
+
+        }
+        public string SouKoName
+        {
+            get { return txtSoukoName.Text; }
+            set { txtSoukoName.Text = value; }
+
+        }
     }
 }

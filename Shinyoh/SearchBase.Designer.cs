@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnF1 = new Shinyoh_Controls.SButton();
-            this.btnF12 = new Shinyoh_Controls.SButton();
+            this.BtnF1 = new Shinyoh_Controls.SButton();
+            this.BtnF12 = new Shinyoh_Controls.SButton();
             this.sButton3 = new Shinyoh_Controls.SButton();
-            this.btnShow = new Shinyoh_Controls.SButton();
+            this.BtnF11 = new Shinyoh_Controls.SButton();
             this.sButton1 = new Shinyoh_Controls.SButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -54,10 +54,10 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.btnF1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnF12, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF12, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.sButton3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnShow, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF11, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.sButton1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 413);
@@ -67,37 +67,41 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(768, 37);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // btnF1
+            // BtnF1
             // 
-            this.btnF1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnF1.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnF1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnF1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnF1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnF1.Location = new System.Drawing.Point(1, 1);
-            this.btnF1.Margin = new System.Windows.Forms.Padding(0);
-            this.btnF1.MinimumSize = new System.Drawing.Size(100, 10);
-            this.btnF1.Name = "btnF1";
-            this.btnF1.Size = new System.Drawing.Size(152, 35);
-            this.btnF1.TabIndex = 5;
-            this.btnF1.Text = "戻る(F1)";
-            this.btnF1.UseVisualStyleBackColor = false;
+            this.BtnF1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF1.ButtonType = Entity.ButtonType.BType.Close;
+            this.BtnF1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF1.Location = new System.Drawing.Point(1, 1);
+            this.BtnF1.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF1.MinimumSize = new System.Drawing.Size(100, 10);
+            this.BtnF1.Name = "BtnF1";
+            this.BtnF1.Size = new System.Drawing.Size(152, 35);
+            this.BtnF1.TabIndex = 1;
+            this.BtnF1.Tag = "1";
+            this.BtnF1.Text = "(F1)";
+            this.BtnF1.UseVisualStyleBackColor = false;
+            this.BtnF1.Click += new System.EventHandler(this.btnFunctionClick);
             // 
-            // btnF12
+            // BtnF12
             // 
-            this.btnF12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnF12.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnF12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnF12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnF12.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnF12.Location = new System.Drawing.Point(613, 1);
-            this.btnF12.Margin = new System.Windows.Forms.Padding(0);
-            this.btnF12.MinimumSize = new System.Drawing.Size(100, 10);
-            this.btnF12.Name = "btnF12";
-            this.btnF12.Size = new System.Drawing.Size(154, 35);
-            this.btnF12.TabIndex = 9;
-            this.btnF12.Text = "確定(F12)";
-            this.btnF12.UseVisualStyleBackColor = false;
+            this.BtnF12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF12.ButtonType = Entity.ButtonType.BType.Save;
+            this.BtnF12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF12.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF12.Location = new System.Drawing.Point(613, 1);
+            this.BtnF12.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF12.MinimumSize = new System.Drawing.Size(100, 10);
+            this.BtnF12.Name = "BtnF12";
+            this.BtnF12.Size = new System.Drawing.Size(154, 35);
+            this.BtnF12.TabIndex = 3;
+            this.BtnF12.Tag = "3";
+            this.BtnF12.Text = "(F12)";
+            this.BtnF12.UseVisualStyleBackColor = false;
+            this.BtnF12.Click += new System.EventHandler(this.btnFunctionClick);
             // 
             // sButton3
             // 
@@ -115,21 +119,23 @@
             this.sButton3.UseVisualStyleBackColor = false;
             this.sButton3.Visible = false;
             // 
-            // btnShow
+            // BtnF11
             // 
-            this.btnShow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnShow.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnShow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShow.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnShow.Location = new System.Drawing.Point(460, 1);
-            this.btnShow.Margin = new System.Windows.Forms.Padding(0);
-            this.btnShow.MinimumSize = new System.Drawing.Size(100, 10);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(152, 35);
-            this.btnShow.TabIndex = 8;
-            this.btnShow.Text = "表示(F11)";
-            this.btnShow.UseVisualStyleBackColor = false;
+            this.BtnF11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF11.ButtonType = Entity.ButtonType.BType.Search;
+            this.BtnF11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF11.Location = new System.Drawing.Point(460, 1);
+            this.BtnF11.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF11.MinimumSize = new System.Drawing.Size(100, 10);
+            this.BtnF11.Name = "BtnF11";
+            this.BtnF11.Size = new System.Drawing.Size(152, 35);
+            this.BtnF11.TabIndex = 2;
+            this.BtnF11.Tag = "2";
+            this.BtnF11.Text = "(F11)";
+            this.BtnF11.UseVisualStyleBackColor = false;
+            this.BtnF11.Click += new System.EventHandler(this.btnFunctionClick);
             // 
             // sButton1
             // 
@@ -155,6 +161,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "SearchBase";
             this.Text = "SearchBase";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchBase_KeyDown);
+            this.KeyPreview = true;
+            this.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -163,9 +172,9 @@
         #endregion
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private Shinyoh_Controls.SButton sButton1;
-        private Shinyoh_Controls.SButton btnF1;
-        private Shinyoh_Controls.SButton btnF12;
+        private Shinyoh_Controls.SButton BtnF1;
+        private Shinyoh_Controls.SButton BtnF12;
         private Shinyoh_Controls.SButton sButton3;
-        private Shinyoh_Controls.SButton btnShow;
+        private Shinyoh_Controls.SButton BtnF11;
     }
 }

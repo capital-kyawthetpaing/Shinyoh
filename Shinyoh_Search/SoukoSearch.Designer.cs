@@ -33,7 +33,7 @@
             this.txtSouko2 = new Shinyoh_Controls.STextBox();
             this.txtSouko1 = new Shinyoh_Controls.STextBox();
             this.lblKanaName = new Shinyoh_Controls.SLabel();
-            this.btnF11 = new Shinyoh_Controls.SButton();
+            this.BtnF11_Soko = new Shinyoh_Controls.SButton();
             this.lblSoukoName = new Shinyoh_Controls.SLabel();
             this.lblSouko = new Shinyoh_Controls.SLabel();
             this.gvSouko = new Shinyoh_Controls.SGridView();
@@ -52,13 +52,13 @@
             this.panel1.Controls.Add(this.txtSouko2);
             this.panel1.Controls.Add(this.txtSouko1);
             this.panel1.Controls.Add(this.lblKanaName);
-            this.panel1.Controls.Add(this.btnF11);
+            this.panel1.Controls.Add(this.BtnF11_Soko);
             this.panel1.Controls.Add(this.lblSoukoName);
             this.panel1.Controls.Add(this.lblSouko);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 100);
+            this.panel1.Size = new System.Drawing.Size(943, 100);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -172,20 +172,21 @@
             this.lblKanaName.Text = "カナ名";
             this.lblKanaName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnF11
+            // BtnF11_Soko
             // 
-            this.btnF11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnF11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnF11.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnF11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnF11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnF11.Location = new System.Drawing.Point(671, 74);
-            this.btnF11.Name = "btnF11";
-            this.btnF11.Size = new System.Drawing.Size(106, 23);
-            this.btnF11.TabIndex = 4;
-            this.btnF11.Text = "表示(F11)";
-            this.btnF11.UseVisualStyleBackColor = false;
-            this.btnF11.Click += new System.EventHandler(this.btnF11_Click);
+            this.BtnF11_Soko.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnF11_Soko.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF11_Soko.ButtonType = Entity.ButtonType.BType.Search;
+            this.BtnF11_Soko.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF11_Soko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF11_Soko.Location = new System.Drawing.Point(814, 74);
+            this.BtnF11_Soko.Name = "BtnF11_Soko";
+            this.BtnF11_Soko.Size = new System.Drawing.Size(106, 23);
+            this.BtnF11_Soko.TabIndex = 4;
+            this.BtnF11_Soko.Tag = "2";
+            this.BtnF11_Soko.Text = "表示(F11)";
+            this.BtnF11_Soko.UseVisualStyleBackColor = false;
+            this.BtnF11_Soko.Click += new System.EventHandler(this.BtnF11_Soko_Click);
             // 
             // lblSoukoName
             // 
@@ -224,8 +225,9 @@
             this.colSoukoName});
             this.gvSouko.Location = new System.Drawing.Point(45, 117);
             this.gvSouko.Name = "gvSouko";
-            this.gvSouko.Size = new System.Drawing.Size(543, 280);
+            this.gvSouko.Size = new System.Drawing.Size(707, 302);
             this.gvSouko.TabIndex = 2;
+            this.gvSouko.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSouko_CellMouseClick);
             // 
             // colSouko
             // 
@@ -244,10 +246,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(943, 472);
             this.Controls.Add(this.gvSouko);
             this.Controls.Add(this.panel1);
             this.Name = "SoukoSearch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoukoSearch";
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gvSouko, 0);
@@ -267,7 +270,7 @@
         private Shinyoh_Controls.STextBox txtSouko2;
         private Shinyoh_Controls.STextBox txtSouko1;
         private Shinyoh_Controls.SLabel lblKanaName;
-        private Shinyoh_Controls.SButton btnF11;
+        private Shinyoh_Controls.SButton BtnF11_Soko;
         private Shinyoh_Controls.SLabel lblSoukoName;
         private Shinyoh_Controls.SLabel lblSouko;
         private Shinyoh_Controls.SGridView gvSouko;
