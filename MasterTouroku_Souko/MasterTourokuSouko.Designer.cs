@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.searchBox1 = new Shinyoh_Search.SearchBox();
             this.txtRemark = new Shinyoh_Controls.STextBox();
             this.lblRemark = new Shinyoh_Controls.SLabel();
             this.txtFAX = new Shinyoh_Controls.STextBox();
@@ -66,6 +67,7 @@
             // 
             // PanelTitle
             // 
+            this.PanelTitle.Controls.Add(this.searchBox1);
             this.PanelTitle.Controls.Add(this.lblSouko);
             this.PanelTitle.Controls.Add(this.txtSouko);
             this.PanelTitle.Controls.Add(this.lblCopySouko);
@@ -105,6 +107,27 @@
             this.PanelDetail.Size = new System.Drawing.Size(1485, 379);
             this.PanelDetail.TabIndex = 1;
             // 
+            // searchBox1
+            // 
+            this.searchBox1.AllowMinus = false;
+            this.searchBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchBox1.DecimalPlace = 0;
+            this.searchBox1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.searchBox1.IntegerPart = 0;
+            this.searchBox1.IsDatatableOccurs = null;
+            this.searchBox1.IsErrorOccurs = false;
+            this.searchBox1.IsRequire = false;
+            this.searchBox1.Location = new System.Drawing.Point(430, 53);
+            this.searchBox1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.searchBox1.MoveNext = true;
+            this.searchBox1.Name = "searchBox1";
+            this.searchBox1.NextControl = null;
+            this.searchBox1.NextControlName = null;
+            this.searchBox1.SearchType = Entity.SearchType.ScType.Souko;
+            this.searchBox1.Size = new System.Drawing.Size(100, 19);
+            this.searchBox1.TabIndex = 40;
+            this.searchBox1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
             // txtRemark
             // 
             this.txtRemark.AllowMinus = false;
@@ -112,6 +135,7 @@
             this.txtRemark.DecimalPlace = 0;
             this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtRemark.IntegerPart = 0;
+            this.txtRemark.IsDatatableOccurs = null;
             this.txtRemark.IsErrorOccurs = false;
             this.txtRemark.IsRequire = false;
             this.txtRemark.Location = new System.Drawing.Point(142, 287);
@@ -147,6 +171,7 @@
             this.txtFAX.DecimalPlace = 0;
             this.txtFAX.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtFAX.IntegerPart = 0;
+            this.txtFAX.IsDatatableOccurs = null;
             this.txtFAX.IsErrorOccurs = false;
             this.txtFAX.IsRequire = false;
             this.txtFAX.Location = new System.Drawing.Point(141, 248);
@@ -182,6 +207,7 @@
             this.txtPhNo.DecimalPlace = 0;
             this.txtPhNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo.IntegerPart = 0;
+            this.txtPhNo.IsDatatableOccurs = null;
             this.txtPhNo.IsErrorOccurs = false;
             this.txtPhNo.IsRequire = false;
             this.txtPhNo.Location = new System.Drawing.Point(141, 209);
@@ -217,6 +243,7 @@
             this.txtAddress2.DecimalPlace = 0;
             this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
+            this.txtAddress2.IsDatatableOccurs = null;
             this.txtAddress2.IsErrorOccurs = false;
             this.txtAddress2.IsRequire = false;
             this.txtAddress2.Location = new System.Drawing.Point(141, 170);
@@ -252,6 +279,7 @@
             this.txtAddress1.DecimalPlace = 0;
             this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
+            this.txtAddress1.IsDatatableOccurs = null;
             this.txtAddress1.IsErrorOccurs = false;
             this.txtAddress1.IsRequire = false;
             this.txtAddress1.Location = new System.Drawing.Point(141, 129);
@@ -287,6 +315,7 @@
             this.txtYubin2.DecimalPlace = 0;
             this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
+            this.txtYubin2.IsDatatableOccurs = null;
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.Location = new System.Drawing.Point(280, 91);
@@ -308,6 +337,7 @@
             this.txtYubin1.DecimalPlace = 0;
             this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
+            this.txtYubin1.IsDatatableOccurs = null;
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
             this.txtYubin1.Location = new System.Drawing.Point(141, 91);
@@ -343,6 +373,7 @@
             this.txtKanaName.DecimalPlace = 0;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
+            this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(141, 54);
@@ -378,6 +409,7 @@
             this.txtSoukoName.DecimalPlace = 0;
             this.txtSoukoName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSoukoName.IntegerPart = 0;
+            this.txtSoukoName.IsDatatableOccurs = null;
             this.txtSoukoName.IsErrorOccurs = false;
             this.txtSoukoName.IsRequire = false;
             this.txtSoukoName.Location = new System.Drawing.Point(141, 18);
@@ -438,6 +470,7 @@
             this.txtSearch.DecimalPlace = 0;
             this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSearch.IntegerPart = 0;
+            this.txtSearch.IsDatatableOccurs = null;
             this.txtSearch.IsErrorOccurs = false;
             this.txtSearch.IsRequire = false;
             this.txtSearch.Location = new System.Drawing.Point(142, 324);
@@ -460,6 +493,7 @@
             this.txtCopySouko.DecimalPlace = 0;
             this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCopySouko.IntegerPart = 0;
+            this.txtCopySouko.IsDatatableOccurs = null;
             this.txtCopySouko.IsErrorOccurs = false;
             this.txtCopySouko.IsRequire = false;
             this.txtCopySouko.Location = new System.Drawing.Point(241, 37);
@@ -482,6 +516,7 @@
             this.txtSouko.DecimalPlace = 0;
             this.txtSouko.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSouko.IntegerPart = 0;
+            this.txtSouko.IsDatatableOccurs = null;
             this.txtSouko.IsErrorOccurs = false;
             this.txtSouko.IsRequire = false;
             this.txtSouko.Location = new System.Drawing.Point(241, 9);
@@ -604,6 +639,7 @@
         private Shinyoh_Controls.STextBox txtSouko;
         private Shinyoh_Controls.STextBox txtCopySouko;
         private Shinyoh_Controls.SLabel sLabel3;
+        private Shinyoh_Search.SearchBox searchBox1;
     }
 }
 

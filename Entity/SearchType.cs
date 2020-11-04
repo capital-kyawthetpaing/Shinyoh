@@ -9,6 +9,8 @@ namespace Entity {
         public ScType SchType { get; set; }
         public enum ScType {
            None,
+           Souko,
+           Staff
         }
     }
 }
