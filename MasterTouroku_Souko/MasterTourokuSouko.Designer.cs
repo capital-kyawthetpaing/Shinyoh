@@ -573,6 +573,7 @@
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "MasterTourokuSouko";
+            this.Text = "MasterTourokuSouko";
             this.Load += new System.EventHandler(this.MasterTourokuSouko_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.PanelDetail, 0);
