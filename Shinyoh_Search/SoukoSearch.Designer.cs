@@ -252,6 +252,7 @@
             this.Name = "SoukoSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoukoSearch";
+            this.Load += new System.EventHandler(this.SoukoSearch_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gvSouko, 0);
             this.panel1.ResumeLayout(false);

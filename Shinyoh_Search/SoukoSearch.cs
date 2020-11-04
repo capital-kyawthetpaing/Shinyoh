@@ -22,7 +22,6 @@ namespace Shinyoh_Search {
         {
             InitializeComponent();
         }
-        
         private void SoukoSearch_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
@@ -31,7 +30,6 @@ namespace Shinyoh_Search {
 
             GetDatatable();
         }
-
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
@@ -75,6 +73,5 @@ namespace Shinyoh_Search {
                 this.Close();
             }
         }
-        
     }
 }
