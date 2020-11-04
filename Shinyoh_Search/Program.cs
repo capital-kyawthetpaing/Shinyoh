@@ -16,8 +16,8 @@ namespace Shinyoh_Search
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-             Application.Run(new SoukoSearch());
-           // Application.Run(new StaffSearch());
+            // Application.Run(new SoukoSearch());
+            Application.Run(new StaffSearch());
         }
     }
 }

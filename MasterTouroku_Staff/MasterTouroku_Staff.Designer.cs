@@ -63,6 +63,7 @@
             this.txtStaff_Copy = new Shinyoh_Controls.STextBox();
             this.txtStaff_CopyDate = new Shinyoh_Controls.STextBox();
             this.lblStaff_CopyDate = new Shinyoh_Controls.SLabel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Staff.SuspendLayout();
@@ -93,6 +94,7 @@
             this.Panel_Staff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_Staff.Controls.Add(this.button1);
             this.Panel_Staff.Controls.Add(this.lblStaff_Search);
             this.Panel_Staff.Controls.Add(this.txtStaff_Search);
             this.Panel_Staff.Controls.Add(this.lblStaff_Remark);
@@ -704,6 +706,16 @@
             this.lblStaff_CopyDate.Text = "複写元改定日";
             this.lblStaff_CopyDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(888, 355);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 51;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MasterTouroku_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -762,6 +774,7 @@
         private Shinyoh_Controls.SLabel lblStaff_Copy;
         private Shinyoh_Controls.STextBox txtStaff_CopyDate;
         private Shinyoh_Controls.SLabel lblStaff_CopyDate;
+        private System.Windows.Forms.Button button1;
     }
 }
 

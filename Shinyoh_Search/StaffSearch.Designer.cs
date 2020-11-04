@@ -115,6 +115,7 @@
             this.btnStaff_F11.TabIndex = 7;
             this.btnStaff_F11.Text = "表示(F11)";
             this.btnStaff_F11.UseVisualStyleBackColor = false;
+            this.btnStaff_F11.Click += new System.EventHandler(this.btnStaff_F11_Click);
             // 
             // txtKanaName
             // 
@@ -320,7 +321,7 @@
             // 
             // colChangeDate
             // 
-            this.colChangeDate.DataPropertyName = "ChangeDate\t\t";
+            this.colChangeDate.DataPropertyName = "ChangeDate\t";
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.Width = 125;
@@ -362,9 +363,9 @@
         private Shinyoh_Controls.SButton btnStaff_F11;
         private Shinyoh_Controls.SLabel lblDate;
         private Shinyoh_Controls.SGridView gvStaff;
+        private Shinyoh_Controls.SLabel lbl_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChangeDate;
-        private Shinyoh_Controls.SLabel lbl_Date;
     }
 }
