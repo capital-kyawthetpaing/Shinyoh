@@ -42,10 +42,6 @@ namespace MasterTouroku_Souko
             txtSouko.Focus();
             souko = GetData();
 
-            ////for search value return
-            txtSouko.Text = SoukoSearch.sokoCD;
-            txtSoukoName.Text = SoukoSearch.sokoName;
-
             //form.CloseButtonClicked += userControl11_CloseButtonClicked;
         }
        

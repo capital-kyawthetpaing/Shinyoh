@@ -21,6 +21,7 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Souko:
                         SoukoSearch soukoSearch = new SoukoSearch();
                         soukoSearch.ShowDialog();
+                        this.Text = soukoSearch.sokoCD;
                         break;
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();
