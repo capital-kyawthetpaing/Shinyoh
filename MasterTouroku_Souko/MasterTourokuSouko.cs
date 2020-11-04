@@ -5,11 +5,15 @@ using BL;
 using CKM_CommonFunction;
 using System.Windows.Forms;
 using Shinyoh_Controls;
+using Shinyoh_Search;
 
 namespace MasterTouroku_Souko
 {
     public partial class MasterTourokuSouko : BaseForm
     {
+        public static string sokoCD = "";
+        public static string sokoName = "";
+
         ButtonType type = new ButtonType();
         SoukoEntity souko;
         CommonFunction cf;
@@ -17,6 +21,7 @@ namespace MasterTouroku_Souko
         {
             InitializeComponent();
             cf = new CommonFunction();
+            
         }
         private void MasterTourokuSouko_Load(object sender, EventArgs e)
         {
@@ -38,6 +43,13 @@ namespace MasterTouroku_Souko
             ChangeMode(Mode.New);
             txtSouko.Focus();
             souko = GetData();
+
+            //for search value return
+            //txtSouko.Text = SoukoSearch.sokoCD;
+            //txtSoukoName.Text = SoukoSearch.sokoName;
+
+            txtSouko.Text = sokoCD;
+            txtSoukoName.Text = sokoName;
         }
         public SoukoEntity GetData()
         {
@@ -303,5 +315,6 @@ namespace MasterTouroku_Souko
             txtSoukoName.Focus();
             cf.DisablePanel(PanelTitle);
         }
+        
     }
 }
