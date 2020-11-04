@@ -11,7 +11,6 @@ namespace MasterTouroku_Souko
 {
     public partial class MasterTourokuSouko : BaseForm
     {
-        SoukoSearch form;
         ButtonType type = new ButtonType();
         SoukoEntity souko;
         CommonFunction cf;
@@ -53,6 +52,7 @@ namespace MasterTouroku_Souko
             souko.PC = PCID;
             return souko;
         }
+
         private void ChangeMode(Mode mode)
         {
             //Enable && Disable
@@ -226,6 +226,7 @@ namespace MasterTouroku_Souko
             SoukoBL souko = new SoukoBL();
             souko.M_Souko_CUD(soukoInsert);
         }
+
         private void DoUpdate(SoukoEntity soukoUpdate) {
             SoukoBL souko = new SoukoBL();
             souko.M_Souko_CUD(soukoUpdate);
@@ -310,16 +311,5 @@ namespace MasterTouroku_Souko
             txtSoukoName.Focus();
             cf.DisablePanel(PanelTitle);
         }
-
-        
-        
-
-        //Close the form when you received the notification
-        private void userControl11_CloseButtonClicked(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        
     }
 }
