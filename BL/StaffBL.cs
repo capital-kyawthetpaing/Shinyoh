@@ -102,10 +102,7 @@ namespace BL
             obj.Sqlprms[6] = new SqlParameter("@AuthorizationsCD", SqlDbType.VarChar) { Value = obj.AuthorizationsCD };
             obj.Sqlprms[7] = new SqlParameter("@PositionCD", SqlDbType.VarChar) { Value = obj.PositionCD };
             obj.Sqlprms[8] = new SqlParameter("@JoinDate", SqlDbType.VarChar) { Value = obj.JoinDate };
-            if(string.IsNullOrEmpty(obj.LeaveDate))
-                obj.Sqlprms[9] = new SqlParameter("@LeaveDate", SqlDbType.VarChar) { Value = DBNull.Value };
-            else
-                obj.Sqlprms[9] = new SqlParameter("@LeaveDate", SqlDbType.VarChar) { Value = obj.LeaveDate };
+            obj.Sqlprms[9] = new SqlParameter("@LeaveDate", SqlDbType.VarChar) { Value = obj.LeaveDate };
             obj.Sqlprms[10] = new SqlParameter("@Passward", SqlDbType.VarChar) { Value = obj.Passward };
             obj.Sqlprms[11] = new SqlParameter("@Remarks", SqlDbType.VarChar) { Value = obj.Remarks };
             obj.Sqlprms[12] = new SqlParameter("@UsedFlg", SqlDbType.VarChar) { Value = obj.UsedFlg };

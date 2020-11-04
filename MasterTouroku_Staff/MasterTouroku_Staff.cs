@@ -170,14 +170,21 @@ namespace MasterTouroku_Staff
                 if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Staff))
                 {
                     DBProcess();
-
-                    ChangeMode(Mode.New);
-                    //Enable && Disable
-                    cf.Clear(PanelTitle);
-                    cf.Clear(Panel_Staff);
-                    cf.EnablePanel(PanelTitle);
-                    cf.DisablePanel(Panel_Staff);
-                    txt_Staff.Focus();
+                    switch (cboMode.SelectedValue)
+                    {
+                        case "1":
+                            ChangeMode(Mode.New);
+                            break;
+                        case "2":
+                            ChangeMode(Mode.Update);
+                            break;
+                        case "3":
+                            ChangeMode(Mode.Delete);
+                            break;
+                        case "4":
+                            ChangeMode(Mode.Inquiry);
+                            break;
+                    }
                 }
             }
            
@@ -317,12 +324,6 @@ namespace MasterTouroku_Staff
                 txtStaff_Search.SelectionStart = txtStaff_Search.Text.Length;
                 txtStaff_Search.TextChanged += txtStaff_Search_TextChanged;
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            StaffSearch form = new StaffSearch();
-            form.Show();
         }
     }
 }
