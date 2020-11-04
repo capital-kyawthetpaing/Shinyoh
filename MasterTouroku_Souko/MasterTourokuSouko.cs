@@ -11,9 +11,7 @@ namespace MasterTouroku_Souko
 {
     public partial class MasterTourokuSouko : BaseForm
     {
-        public static string sokoCD = "";
-        public static string sokoName = "";
-
+        SoukoSearch form;
         ButtonType type = new ButtonType();
         SoukoEntity souko;
         CommonFunction cf;
@@ -44,13 +42,13 @@ namespace MasterTouroku_Souko
             txtSouko.Focus();
             souko = GetData();
 
-            //for search value return
-            //txtSouko.Text = SoukoSearch.sokoCD;
-            //txtSoukoName.Text = SoukoSearch.sokoName;
+            ////for search value return
+            txtSouko.Text = SoukoSearch.sokoCD;
+            txtSoukoName.Text = SoukoSearch.sokoName;
 
-            txtSouko.Text = sokoCD;
-            txtSoukoName.Text = sokoName;
+            //form.CloseButtonClicked += userControl11_CloseButtonClicked;
         }
+       
         public SoukoEntity GetData()
         {
             SoukoEntity souko = new SoukoEntity();
@@ -240,9 +238,10 @@ namespace MasterTouroku_Souko
             SoukoBL souko = new SoukoBL();
             souko.M_Souko_CUD(soukoDelete);
         }
-
+       
         private void txtCopySouko_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
         {
+            form = new SoukoSearch(this);
             if (cboMode.SelectedValue.Equals("1"))
             {
                 if (e.KeyCode == Keys.Enter)
@@ -315,6 +314,16 @@ namespace MasterTouroku_Souko
             txtSoukoName.Focus();
             cf.DisablePanel(PanelTitle);
         }
+
+        
+        
+
+        //Close the form when you received the notification
+        private void userControl11_CloseButtonClicked(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         
     }
 }

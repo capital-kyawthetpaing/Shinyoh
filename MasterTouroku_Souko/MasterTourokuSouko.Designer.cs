@@ -55,6 +55,7 @@
             this.lblSouko = new Shinyoh_Controls.SLabel();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
+            this.sButton1 = new Shinyoh_Controls.SButton();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -66,6 +67,7 @@
             // 
             // PanelTitle
             // 
+            this.PanelTitle.Controls.Add(this.sButton1);
             this.PanelTitle.Controls.Add(this.txtSouko);
             this.PanelTitle.Controls.Add(this.lblSouko);
             this.PanelTitle.Controls.Add(this.lblCopySouko);
@@ -564,6 +566,20 @@
             this.sLabel3.Text = "sLabel3";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // sButton1
+            // 
+            this.sButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.sButton1.ButtonType = Entity.ButtonType.BType.Normal;
+            this.sButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.sButton1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sButton1.Location = new System.Drawing.Point(438, 18);
+            this.sButton1.Name = "sButton1";
+            this.sButton1.Size = new System.Drawing.Size(75, 23);
+            this.sButton1.TabIndex = 27;
+            this.sButton1.Text = "sButton1";
+            this.sButton1.UseVisualStyleBackColor = false;
+            
+            // 
             // MasterTourokuSouko
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -616,6 +632,7 @@
         private Shinyoh_Controls.STextBox txtCopySouko;
         private Shinyoh_Controls.SLabel sLabel3;
         private Shinyoh_Search.SearchBox txtSouko;
+        private Shinyoh_Controls.SButton sButton1;
     }
 }
 
