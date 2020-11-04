@@ -15,6 +15,8 @@ namespace Shinyoh_Search
 {
     public partial class StaffSearch : SearchBase
     {
+        public string staffCD = string.Empty;
+        public string changeDate = string.Empty;
         public StaffSearch()
         {
             InitializeComponent();

@@ -11,6 +11,7 @@ namespace Shinyoh_Search
 {
     public class SearchBox : STextBox
     {
+        protected STextBox changeDate { get; set; }
         protected override void OnKeyDown(KeyEventArgs e)
         {
             
@@ -26,6 +27,8 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();
                         staffSearch.ShowDialog();
+                        this.Text = staffSearch.staffCD;
+                        changeDate.Text = staffSearch.changeDate;
                         break;
                 }
                 
