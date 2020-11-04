@@ -47,7 +47,7 @@ namespace MasterTouroku_Staff
             ChangeMode(Mode.New);
 
             txt_Staff.Focus();
-            staff_Entity = GetBaseData();
+            staff_Entity = GetBaseData();      
         }
 
         private void ChangeMode(Mode mode)
