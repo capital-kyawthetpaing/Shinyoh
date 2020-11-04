@@ -6,6 +6,7 @@ using CKM_CommonFunction;
 using System.Windows.Forms;
 using System.Data;
 using Shinyoh_Controls;
+using Shinyoh_Search;
 
 namespace MasterTouroku_Staff
 {
@@ -36,7 +37,7 @@ namespace MasterTouroku_Staff
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
+            SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
@@ -179,6 +180,7 @@ namespace MasterTouroku_Staff
                     txt_Staff.Focus();
                 }
             }
+           
             base.FunctionProcess(tagID);
         }
 
@@ -225,6 +227,7 @@ namespace MasterTouroku_Staff
 
             //for log table
             obj.KeyItem = txt_Staff.Text.ToString() + " " + txtStaff_CDate.Text;
+            obj.PC = staff_Entity.PC;
             return obj;
         }        
 
@@ -295,10 +298,31 @@ namespace MasterTouroku_Staff
                 cboStaff_Menu.SelectedValue = dt.Rows[0]["MenuCD"].ToString();
                 cboStaff_authority.SelectedValue = dt.Rows[0]["AuthorizationsCD"].ToString();
                 cboStaff_Position.SelectedValue = dt.Rows[0]["PositionCD"].ToString();
+                txtStaff_Passward.Text = dt.Rows[0]["Passward"].ToString();
+                txtStaff_Confirm.Text = dt.Rows[0]["Passward"].ToString();
                 txtStaff_JDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["JoinDate"]);
                 txtStaff_LDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["LeaveDate"]);
                 txtStaff_Remark.Text = dt.Rows[0]["Remarks"].ToString();
             }
+        }
+
+        private void txtStaff_Search_TextChanged(object sender, EventArgs e)
+        {
+            string value = txtStaff_Search.Text.Replace(",", "");
+            ulong ul;
+            if (ulong.TryParse(value, out ul))
+            {
+                txtStaff_Search.TextChanged -= txtStaff_Search_TextChanged;
+                txtStaff_Search.Text = string.Format("{0:#,#}", ul);
+                txtStaff_Search.SelectionStart = txtStaff_Search.Text.Length;
+                txtStaff_Search.TextChanged += txtStaff_Search_TextChanged;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StaffSearch form = new StaffSearch();
+            form.Show();
         }
     }
 }

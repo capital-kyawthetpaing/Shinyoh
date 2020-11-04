@@ -14,7 +14,7 @@ namespace Entity
     }
     public class MasterTourokuStaff:BaseEntity
     {
-        //Total count 17
+        //Total count 16
         public string StaffCD { get; set; }  //--スタッフCD
         public string ChangeDate { get; set; } //--改定日 
         public string StaffName { get; set; } //--スタッフ名

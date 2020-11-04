@@ -85,7 +85,8 @@ namespace Shinyoh_Controls
         public bool E102; 
         public bool E102Multi;
         public bool E103;
-        public bool E104;       
+        public bool E104;
+        public bool E106;
         public bool E132;
         public string E132Type;  
         public bool E133;
@@ -99,6 +100,8 @@ namespace Shinyoh_Controls
         public Control ctrlE102_2;
         public Control ctrlE104_1;
         public Control ctrlE104_2;
+        public Control ctrlE106_1;
+        public Control ctrlE106_2;
         public Control ctrlE132_1;
         public Control ctrlE132_2;
         public Control ctrlE132_3;
@@ -152,8 +155,8 @@ namespace Shinyoh_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ErrorCheck();
-                base.OnKeyDown(e);
+               ErrorCheck();
+               base.OnKeyDown(e);
             }
         }
 
@@ -260,6 +263,13 @@ namespace Shinyoh_Controls
             ctrlE104_1 = ctrl1;
             ctrlE104_2 = ctrl2;
         }
+        public void E106Check(bool value, Control ctrl1, Control ctrl2)
+        {
+            E106 = value;
+            ctrlE106_1 = ctrl1;
+            ctrlE106_2 = ctrl2;
+        }
+        
         public void E132Check(bool value,string type,Control ctrl1,Control ctrl2,Control ctrl3)
         {
             E132 = value;

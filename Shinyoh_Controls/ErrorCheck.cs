@@ -98,13 +98,27 @@ namespace Shinyoh_Controls
             
             if (sTextBox.E104)
             {
-                DateTime JDate = Convert.ToDateTime(sTextBox.ctrlE104_1.Text);
                 if(!string.IsNullOrEmpty(sTextBox.ctrlE104_2.Text))
                 {
                     DateTime LDate = Convert.ToDateTime(sTextBox.ctrlE104_2.Text);
+                    DateTime JDate = Convert.ToDateTime(sTextBox.ctrlE104_1.Text);
                     if (JDate.Date > LDate.Date)
                     {
                         ShowErrorMessage("E104");
+                        sTextBox.Focus();
+                        return (true, rDt);
+                    }
+                }
+            }
+            if (sTextBox.E106)
+            {
+                if (!string.IsNullOrEmpty(sTextBox.ctrlE106_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE106_2.Text))
+                {
+                    int from_val = int.Parse(sTextBox.ctrlE106_1.Text);
+                    int to_val = int.Parse(sTextBox.ctrlE106_2.Text);
+                    if (from_val > to_val)
+                    {
+                        ShowErrorMessage("E106");
                         sTextBox.Focus();
                         return (true, rDt);
                     }

@@ -496,7 +496,7 @@
             this.txtCopySouko.IsDatatableOccurs = null;
             this.txtCopySouko.IsErrorOccurs = false;
             this.txtCopySouko.IsRequire = false;
-            this.txtCopySouko.Location = new System.Drawing.Point(241, 37);
+            this.txtCopySouko.Location = new System.Drawing.Point(104, 37);
             this.txtCopySouko.MaxLength = 10;
             this.txtCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCopySouko.MoveNext = true;
@@ -519,7 +519,7 @@
             this.txtSouko.IsDatatableOccurs = null;
             this.txtSouko.IsErrorOccurs = false;
             this.txtSouko.IsRequire = false;
-            this.txtSouko.Location = new System.Drawing.Point(241, 9);
+            this.txtSouko.Location = new System.Drawing.Point(104, 9);
             this.txtSouko.MaxLength = 10;
             this.txtSouko.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSouko.MoveNext = true;
@@ -539,7 +539,7 @@
             this.lblCopySouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblCopySouko.ForeColor = System.Drawing.Color.Black;
-            this.lblCopySouko.Location = new System.Drawing.Point(142, 37);
+            this.lblCopySouko.Location = new System.Drawing.Point(5, 37);
             this.lblCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblCopySouko.Name = "lblCopySouko";
             this.lblCopySouko.Size = new System.Drawing.Size(100, 19);
@@ -554,7 +554,7 @@
             this.lblSouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSouko.ForeColor = System.Drawing.Color.White;
-            this.lblSouko.Location = new System.Drawing.Point(142, 9);
+            this.lblSouko.Location = new System.Drawing.Point(5, 9);
             this.lblSouko.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblSouko.Name = "lblSouko";
             this.lblSouko.Size = new System.Drawing.Size(100, 19);

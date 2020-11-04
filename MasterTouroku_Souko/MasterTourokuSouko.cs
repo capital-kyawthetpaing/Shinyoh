@@ -66,6 +66,7 @@ namespace MasterTouroku_Souko
 
                     txtSouko.Enabled = true;
                     txtCopySouko.Enabled = true;
+                    txtSouko.Focus();
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -218,11 +219,12 @@ namespace MasterTouroku_Souko
                 {
                     if (!txtCopySouko.IsErrorOccurs)
                     {
-                        cf.EnablePanel(PanelDetail);
                         txtSoukoName.Focus();
+                        cf.EnablePanel(PanelDetail);
+                        cf.DisablePanel(PanelTitle);
                     }
                 }
-            }       
+            }
         }
         private void soukoSelect()
         {
@@ -246,24 +248,41 @@ namespace MasterTouroku_Souko
             {
                 if (!txtSouko.IsErrorOccurs)
                 {
-                    soukoSelect();
-                    cf.EnablePanel(PanelDetail);
-                    txtSoukoName.Focus();
+                    if(e.KeyCode == Keys.Enter)
+                    {
+                        EnableAndDisablePanel();
+                    }
                 }
-            }else if (cboMode.SelectedValue.Equals("3"))
+            }
+            else if (cboMode.SelectedValue.Equals("3"))
             {
                 if (!txtSouko.IsErrorOccurs)
                 {
-                    soukoSelect();
+                    if (e.KeyCode == Keys.Enter)
+                    {
+                        EnableAndDisablePanel();
+                    }
                 }
             }
-            else 
+            else if (cboMode.SelectedValue.Equals("4"))
             {
                 if (!txtSouko.IsErrorOccurs)
                 {
-                    soukoSelect();
+                    if (e.KeyCode == Keys.Enter)
+                    {
+                        EnableAndDisablePanel();
+                        cf.DisablePanel(PanelDetail);
+                    }
                 }
             }
+        }
+
+        private void EnableAndDisablePanel()
+        {
+            soukoSelect();
+            cf.EnablePanel(PanelDetail);
+            txtSoukoName.Focus();
+            cf.DisablePanel(PanelTitle);
         }
     }
 }

@@ -67,28 +67,28 @@ namespace BL
             }
         }
 
-        //Nwe Mar Win (2020-10-21)
+        
         public DataTable GetMenu()
         {
             var parameters = new SqlParameter[] { };
             DataTable dt = ckmdl.SelectDatatable("M_Menu_Select", GetConnectionString(),parameters);
             return dt;
         }
-        //Nwe Mar Win(2020-10-21)
+        
         public DataTable GetAuthorization()
         {
             var parameters = new SqlParameter[] { };
             DataTable dt = ckmdl.SelectDatatable("M_Authorization_Select", GetConnectionString(), parameters);
             return dt;
         }
-        //Nwe Mar Win(2020-10-21)
+        
         public DataTable GetPosition()
         {
             var parameters = new SqlParameter[] { };
             DataTable dt = ckmdl.SelectDatatable("M_MultiPorpose_Select", GetConnectionString(), parameters);
             return dt;
         }
-        //Nwe Mar Win (2020-10-21)
+       
         public string M_Staff_CUD(MasterTourokuStaff obj)
         {
             CKMDL ckmdl = new CKMDL();
@@ -114,7 +114,7 @@ namespace BL
             obj.Sqlprms[18] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
             return ckmdl.InsertUpdateDeleteData("M_Staff_CUD", GetConnectionString(), obj.Sqlprms);
         }
-        //Nwe Mar Win(2020-10-22)
+       
         public DataTable Staff_Select_Check(string staffCD,DateTime cDate)
         {
             string str = string.Empty;
@@ -125,7 +125,19 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("Staff_Select_Check", GetConnectionString(), parameters);
             return dt;
         }
-       
+
+        public DataTable Staff_Search(MasterTourokuStaff obj)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@StaffCD1", SqlDbType.VarChar) { Value = obj.StaffCD };
+            parameters[1] = new SqlParameter("@StaffCD2", SqlDbType.VarChar) { Value = obj.Passward };
+            parameters[2] = new SqlParameter("@StaffName", SqlDbType.VarChar) { Value = obj.StaffName };
+            parameters[3] = new SqlParameter("@KanaName", SqlDbType.VarChar) { Value = obj.KanaName };
+            DataTable dt = ckmdl.SelectDatatable("Staff_Search", GetConnectionString(), parameters);
+            return dt;
+        }
+
     }
 
     
