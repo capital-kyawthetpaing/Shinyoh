@@ -311,5 +311,18 @@ namespace MasterTouroku_Souko
             txtSoukoName.Focus();
             cf.DisablePanel(PanelTitle);
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string value = txtSearch.Text.Replace(",", "");
+            ulong ul;
+            if (ulong.TryParse(value, out ul))
+            {
+                txtSearch.TextChanged -= txtSearch_TextChanged;
+                txtSearch.Text = string.Format("{0:#,#}", ul);
+                txtSearch.SelectionStart = txtSearch.Text.Length;
+                txtSearch.TextChanged += txtSearch_TextChanged;
+            }
+        }
     }
 }

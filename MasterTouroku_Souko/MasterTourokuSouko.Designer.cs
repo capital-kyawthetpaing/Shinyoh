@@ -453,7 +453,7 @@
             this.txtSearch.IsErrorOccurs = false;
             this.txtSearch.IsRequire = false;
             this.txtSearch.Location = new System.Drawing.Point(142, 324);
-            this.txtSearch.MaxLength = 5;
+            this.txtSearch.MaxLength = 6;
             this.txtSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
@@ -464,6 +464,7 @@
             this.txtSearch.TabIndex = 12;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // txtSouko
             // 
@@ -481,7 +482,7 @@
             this.txtSouko.MoveNext = true;
             this.txtSouko.Name = "txtSouko";
             this.txtSouko.NextControl = null;
-            this.txtSouko.NextControlName = "txtSoukoName";
+            this.txtSouko.NextControlName = "txtCopySouko";
             this.txtSouko.SearchType = Entity.SearchType.ScType.Souko;
             this.txtSouko.Size = new System.Drawing.Size(100, 19);
             this.txtSouko.TabIndex = 1;
@@ -578,7 +579,6 @@
             this.sButton1.TabIndex = 27;
             this.sButton1.Text = "sButton1";
             this.sButton1.UseVisualStyleBackColor = false;
-            
             // 
             // MasterTourokuSouko
             // 
