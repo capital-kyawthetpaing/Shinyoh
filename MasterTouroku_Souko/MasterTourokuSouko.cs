@@ -269,33 +269,20 @@ namespace MasterTouroku_Souko
         }
         private void txtSouko_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "2")
+            if (e.KeyCode == Keys.Enter)
             {
                 if (!txtSouko.IsErrorOccurs)
                 {
-                    EnableAndDisablePanel();
-                    DataTable dt = txtCopySouko.IsDatatableOccurs;
-                    soukoSelect(dt);
+                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    {
+                        EnableAndDisablePanel();
+                    }
                 }
-            }
-            else if(e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "3")
-            {
-                if (!txtSouko.IsErrorOccurs)
+                DataTable dt = txtSouko.IsDatatableOccurs;
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
-                    EnableAndDisablePanel();
-                    cf.DisablePanel(PanelDetail);
-                    DataTable dt = txtCopySouko.IsDatatableOccurs;
                     soukoSelect(dt);
-                }
-            }
-            else if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "4")
-            {
-                if (!txtSouko.IsErrorOccurs)
-                {
-                    EnableAndDisablePanel();
-                    cf.DisablePanel(PanelDetail);
-                    DataTable dt = txtCopySouko.IsDatatableOccurs;
-                    soukoSelect(dt);
+                    cf.DisablePanel(PanelTitle);
                 }
             }
         }
