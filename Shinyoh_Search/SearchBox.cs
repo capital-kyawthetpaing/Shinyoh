@@ -33,6 +33,10 @@ namespace Shinyoh_Search
                 }
                 
             }
+            if (e.KeyCode == Keys.Enter)
+            {
+                base.OnKeyDown(e);
+            }
         }
     }
 }

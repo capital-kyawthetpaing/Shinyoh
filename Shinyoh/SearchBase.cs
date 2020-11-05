@@ -58,7 +58,7 @@ namespace Shinyoh
                     break;
                 case ButtonType.BType.Search:
                 case ButtonType.BType.Save:
-                    SetMode(btn);
+                    FunctionProcess(btn.Tag.ToString());
                     break;
 
             }

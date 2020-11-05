@@ -28,7 +28,7 @@ namespace Shinyoh_Search {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-
+            
             GetDatatable();
         }
         public override void FunctionProcess(string tagID)
@@ -60,7 +60,6 @@ namespace Shinyoh_Search {
         {
             FunctionProcess(BtnF11_Soko.Tag.ToString());
             GetDatatable();
-
         }
 
         private void gvSouko_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -72,10 +71,18 @@ namespace Shinyoh_Search {
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            DataGridViewRow row = gvrow;
-            sokoCD = row.Cells[0].Value.ToString();
-            sokoName = row.Cells[1].Value.ToString();
-            this.Close();
+            if (gvrow != null)
+            {
+                DataGridViewRow row = gvrow;
+                sokoCD = row.Cells[0].Value.ToString();
+                sokoName = row.Cells[1].Value.ToString();
+                this.Close();
+            }
+        }
+
+        private void txtSouko2_KeyDown(object sender, KeyEventArgs e)
+        {
+            txtSouko2.E106Check(true, txtSouko1, txtSouko2);
         }
     }
 }
