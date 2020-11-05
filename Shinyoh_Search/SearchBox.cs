@@ -20,9 +20,13 @@ namespace Shinyoh_Search
                 switch(this.SearchType)
                 {
                     case Entity.SearchType.ScType.Souko:
-                        SoukoSearch soukoSearch = new SoukoSearch();
-                        soukoSearch.ShowDialog();
-                        this.Text = soukoSearch.sokoCD;
+                        Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+                        if (cbo.Text != "新規")
+                        {
+                            SoukoSearch soukoSearch = new SoukoSearch();
+                            soukoSearch.ShowDialog();
+                            this.Text = soukoSearch.sokoCD;
+                        }
                         break;
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();
