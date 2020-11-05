@@ -479,7 +479,7 @@
             this.txtSouko.MoveNext = true;
             this.txtSouko.Name = "txtSouko";
             this.txtSouko.NextControl = null;
-            this.txtSouko.NextControlName = "txtSoukoName";
+            this.txtSouko.NextControlName = "txtCopySouko";
             this.txtSouko.SearchType = Entity.SearchType.ScType.Souko;
             this.txtSouko.Size = new System.Drawing.Size(100, 19);
             this.txtSouko.TabIndex = 1;
