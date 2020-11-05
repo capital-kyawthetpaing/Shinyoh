@@ -39,7 +39,8 @@ namespace Shinyoh_Search {
             }
             if (tagID == "3")
             {
-
+                DataGridViewRow row = gvSouko.CurrentRow;
+                GetGridviewData(row);
             }
             base.FunctionProcess(tagID);
         }
@@ -64,15 +65,17 @@ namespace Shinyoh_Search {
 
         private void gvSouko_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-           
-            if (e.RowIndex >= 0)
+            if(e.RowIndex>0)
             {
-                DataGridViewRow row = gvSouko.Rows[e.RowIndex];
-                sokoCD = row.Cells[0].Value.ToString();
-                sokoName = row.Cells[1].Value.ToString();
-                this.Close();
-            }
+                GetGridviewData(gvSouko.Rows[e.RowIndex]);
+            }     
         }
-        
+        private void GetGridviewData(DataGridViewRow gvrow)
+        {
+            DataGridViewRow row = gvrow;
+            sokoCD = row.Cells[0].Value.ToString();
+            sokoName = row.Cells[1].Value.ToString();
+            this.Close();
+        }
     }
 }
