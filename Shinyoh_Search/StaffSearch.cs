@@ -24,6 +24,11 @@ namespace Shinyoh_Search
 
         private void StaffSearch_Load(object sender, EventArgs e)
         {
+            SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
+            SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+
+            DataGridviewBind();
             txtStaff1.Focus();
         }
 
@@ -31,8 +36,24 @@ namespace Shinyoh_Search
         {
             txtStaff2.E106Check(true, txtStaff1, txtStaff2);
         }
-
+        public override void FunctionProcess(string tagID)
+        {
+            if (tagID == "2")
+            {
+                DataGridviewBind();
+            }
+            if (tagID == "3")
+            {
+                DataGridViewRow row = gvStaff.CurrentRow;
+                GetGridviewData(row);
+            }
+            base.FunctionProcess(tagID);
+        }
         private void btnStaff_F11_Click(object sender, EventArgs e)
+        {
+            DataGridviewBind();
+        }
+        private void DataGridviewBind()
         {
             MasterTourokuStaff obj = new MasterTourokuStaff();
             obj.StaffCD = txtStaff1.Text;
@@ -41,8 +62,23 @@ namespace Shinyoh_Search
             obj.KanaName = txtKanaName.Text;
 
             StaffBL objMethod = new StaffBL();
-            DataTable dt=  objMethod.Staff_Search(obj);
+            DataTable dt = objMethod.Staff_Search(obj);
             gvStaff.DataSource = dt;
+        }
+
+        private void gvStaff_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+             GetGridviewData(gvStaff.Rows[e.RowIndex]);
+        }
+        private void GetGridviewData(DataGridViewRow gvrow)
+        {
+            if (gvrow != null)
+            {
+                DataGridViewRow row = gvrow;
+                staffCD = row.Cells["colStaffCD"].Value.ToString();
+                changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");// String.Format("{0:yyyy/MM/dd}", row.Cells["colChangeDate"].Value.ToString()); 
+                this.Close();
+            }
         }
     }
 }
