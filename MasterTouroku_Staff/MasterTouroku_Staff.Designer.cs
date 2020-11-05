@@ -79,8 +79,8 @@
             this.PanelTitle.Controls.Add(this.lblStaff);
             this.PanelTitle.Controls.Add(this.sLabel5);
             this.PanelTitle.Controls.Add(this.lblStaff_CopyDate);
-            this.PanelTitle.Controls.Add(this.txtStaff_CDate);
             this.PanelTitle.Controls.Add(this.txtStaff_Copy);
+            this.PanelTitle.Controls.Add(this.txtStaff_CDate);
             this.PanelTitle.Controls.Add(this.lblStaff_Copy);
             // 
             // cboMode
@@ -599,7 +599,7 @@
             this.txtStaff_CDate.IsDatatableOccurs = null;
             this.txtStaff_CDate.IsErrorOccurs = false;
             this.txtStaff_CDate.IsRequire = false;
-            this.txtStaff_CDate.Location = new System.Drawing.Point(118, 34);
+            this.txtStaff_CDate.Location = new System.Drawing.Point(117, 34);
             this.txtStaff_CDate.MaxLength = 10;
             this.txtStaff_CDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_CDate.MoveNext = true;
@@ -608,8 +608,9 @@
             this.txtStaff_CDate.NextControlName = "txtStaff_Name";
             this.txtStaff_CDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_CDate.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff_CDate.TabIndex = 1;
+            this.txtStaff_CDate.TabIndex = 2;
             this.txtStaff_CDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtStaff_CDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaff_CDate_KeyDown);
             // 
             // lblStaff_Copy
             // 
@@ -701,7 +702,7 @@
             this.txt_Staff.SearchType = Entity.SearchType.ScType.Staff;
             this.txt_Staff.Size = new System.Drawing.Size(100, 19);
             this.txt_Staff.TabIndex = 56;
-            this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // MasterTouroku_Staff
             // 

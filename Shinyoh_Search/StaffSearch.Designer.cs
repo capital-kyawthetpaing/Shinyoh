@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.lblDate = new Shinyoh_Controls.SLabel();
@@ -45,6 +46,7 @@
             this.lblDisplay = new Shinyoh_Controls.SLabel();
             this.lblStaff = new Shinyoh_Controls.SLabel();
             this.gvStaff = new Shinyoh_Controls.SGridView();
+            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStaffCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChangeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,9 +112,9 @@
             this.btnStaff_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnStaff_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStaff_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnStaff_F11.Location = new System.Drawing.Point(814, 97);
+            this.btnStaff_F11.Location = new System.Drawing.Point(763, 82);
             this.btnStaff_F11.Name = "btnStaff_F11";
-            this.btnStaff_F11.Size = new System.Drawing.Size(106, 23);
+            this.btnStaff_F11.Size = new System.Drawing.Size(160, 32);
             this.btnStaff_F11.TabIndex = 7;
             this.btnStaff_F11.Text = "表示(F11)";
             this.btnStaff_F11.UseVisualStyleBackColor = false;
@@ -295,16 +297,28 @@
             // 
             // gvStaff
             // 
+            this.gvStaff.AllowUserToAddRows = false;
             this.gvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvStaff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NO,
             this.colStaffCD,
             this.colStaffName,
             this.colChangeDate});
             this.gvStaff.Location = new System.Drawing.Point(45, 146);
             this.gvStaff.Name = "gvStaff";
+            this.gvStaff.RowHeadersVisible = false;
             this.gvStaff.Size = new System.Drawing.Size(768, 302);
             this.gvStaff.TabIndex = 3;
             this.gvStaff.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvStaff_CellMouseClick);
+            this.gvStaff.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gvStaff_DataBindingComplete);
+            // 
+            // NO
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NO.DefaultCellStyle = dataGridViewCellStyle3;
+            this.NO.HeaderText = "No.";
+            this.NO.Name = "NO";
+            this.NO.Width = 45;
             // 
             // colStaffCD
             // 
@@ -323,9 +337,9 @@
             // colChangeDate
             // 
             this.colChangeDate.DataPropertyName = "ChangeDate";
-            dataGridViewCellStyle1.Format = "yyyy/MM/dd";
-            dataGridViewCellStyle1.NullValue = null;
-            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Format = "yyyy/MM/dd";
+            dataGridViewCellStyle4.NullValue = null;
+            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.Width = 200;
@@ -368,6 +382,7 @@
         private Shinyoh_Controls.SLabel lblDate;
         private Shinyoh_Controls.SGridView gvStaff;
         private Shinyoh_Controls.SLabel lbl_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChangeDate;

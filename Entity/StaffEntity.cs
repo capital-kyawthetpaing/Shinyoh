@@ -33,5 +33,6 @@ namespace Entity
 
         //for Log Table
         public string KeyItem { get; set; } //--退職日    
+       
     }
 }

@@ -35,13 +35,8 @@ namespace Shinyoh_Search
                             StaffSearch staffSearch = new StaffSearch();
                             staffSearch.ShowDialog();
                             this.Text = staffSearch.staffCD;
-                            this.NextControl.Text = staffSearch.changeDate;
                             ChangeDate.Text = staffSearch.changeDate;
-                           // MessageBox.Show(this.NextControl.Text);
                         }
-                       
-                       // this.NextControl.Text = staffSearch.changeDate;
-                       // txtStaff_CDate.Text = staffSearch.changeDate;
                         break;
                 }
                 

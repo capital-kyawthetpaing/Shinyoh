@@ -20,6 +20,7 @@ namespace Shinyoh_Search
         public StaffSearch()
         {
             InitializeComponent();
+            this.gvStaff.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gvStaff_RowPostPaint);
         }
 
         private void StaffSearch_Load(object sender, EventArgs e)
@@ -60,7 +61,11 @@ namespace Shinyoh_Search
             obj.Passward = txtStaff2.Text;//using tempory for assign data
             obj.StaffName = txtStaffName.Text;
             obj.KanaName = txtKanaName.Text;
-
+            obj.Remarks = string.Empty;
+            if (rdo_Date.Checked)
+                obj.Remarks = "RevisionDate";
+            if(rdo_All.Checked)
+                obj.Remarks = "All";
             StaffBL objMethod = new StaffBL();
             DataTable dt = objMethod.Staff_Search(obj);
             gvStaff.DataSource = dt;
@@ -72,13 +77,28 @@ namespace Shinyoh_Search
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow != null)
+            if (gvrow.DataBoundItem != null)
             {
                 DataGridViewRow row = gvrow;
                 staffCD = row.Cells["colStaffCD"].Value.ToString();
-                changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");// String.Format("{0:yyyy/MM/dd}", row.Cells["colChangeDate"].Value.ToString()); 
+                changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
                 this.Close();
             }
+        }
+
+        private void gvStaff_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {
+
+        }
+
+        private void gvStaff_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            if (gvStaff == null)
+                return;
+            int no = 1;
+            foreach (DataGridViewRow row in gvStaff.Rows)
+                row.Cells["NO"].Value = no++;
+           
         }
     }
 }
