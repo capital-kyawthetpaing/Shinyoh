@@ -6,6 +6,7 @@ using CKM_CommonFunction;
 using System.Windows.Forms;
 using Shinyoh_Controls;
 using Shinyoh_Search;
+using System.Data;
 
 namespace MasterTouroku_Souko
 {
@@ -40,8 +41,6 @@ namespace MasterTouroku_Souko
             ChangeMode(Mode.New);
             txtSouko.Focus();
             souko = GetData();
-
-            //form.CloseButtonClicked += userControl11_CloseButtonClicked;
         }
        
         public SoukoEntity GetData()
@@ -236,77 +235,73 @@ namespace MasterTouroku_Souko
             souko.M_Souko_CUD(soukoDelete);
         }
        
-        private void txtCopySouko_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        private void txtCopySouko_KeyDown(object sender, KeyEventArgs e)
         {
-            //form = new SoukoSearch(this);
-            if (cboMode.SelectedValue.Equals("1"))
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (e.KeyCode == Keys.Enter)
+                if (!txtCopySouko.IsErrorOccurs)
                 {
-                    if (!txtCopySouko.IsErrorOccurs)
-                    {
-                        txtSoukoName.Focus();
-                        cf.EnablePanel(PanelDetail);
-                        cf.DisablePanel(PanelTitle);
-                    }
+                    EnableAndDisablePanel();
+                    DataTable dt = txtCopySouko.IsDatatableOccurs;
+                    soukoSelect(dt);
                 }
             }
         }
-        private void soukoSelect()
+        private void soukoSelect(DataTable dt)
         {
-            SoukoBL bl = new SoukoBL();
-            SoukoEntity soukoEntity = GetSouko();
-            soukoEntity = bl.Souko_Select(soukoEntity);
-            txtSoukoName.Text = soukoEntity.SoukoName.ToString();
-            txtKanaName.Text = soukoEntity.KanaName.ToString();
-            txtSearch.Text = soukoEntity.KensakuHyouziJun.ToString();
-            txtYubin1.Text = soukoEntity.YuubinNO1.ToString();
-            txtYubin2.Text = soukoEntity.YuubinNO2.ToString();
-            txtAddress1.Text = soukoEntity.Juusho1.ToString();
-            txtAddress2.Text = soukoEntity.Juusho2.ToString();
-            txtPhNo.Text = soukoEntity.TelNO.ToString();
-            txtFAX.Text = soukoEntity.FaxNO.ToString();
-            txtRemark.Text = soukoEntity.Remarks.ToString();
+           if(dt.Rows.Count > 0)
+            {
+                if (dt.Rows[0]["MessageID"].ToString() == "E132")
+                {
+                    txtSoukoName.Text = dt.Rows[0]["SoukoName"].ToString();
+                    txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
+                    txtSearch.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
+                    txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
+                    txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
+                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                    txtPhNo.Text = dt.Rows[0]["TelNO"].ToString();
+                    txtFAX.Text = dt.Rows[0]["FaxNO"].ToString();
+                    txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
+
+                }
+            }
         }
         private void txtSouko_KeyDown(object sender, KeyEventArgs e)
         {
-            if (cboMode.SelectedValue.Equals("2"))
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "2")
             {
                 if (!txtSouko.IsErrorOccurs)
                 {
-                    if(e.KeyCode == Keys.Enter)
-                    {
-                        EnableAndDisablePanel();
-                    }
+                    EnableAndDisablePanel();
+                    DataTable dt = txtCopySouko.IsDatatableOccurs;
+                    soukoSelect(dt);
                 }
             }
-            else if (cboMode.SelectedValue.Equals("3"))
+            else if(e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "3")
             {
                 if (!txtSouko.IsErrorOccurs)
                 {
-                    if (e.KeyCode == Keys.Enter)
-                    {
-                        EnableAndDisablePanel();
-                        cf.DisablePanel(PanelDetail);
-                    }
+                    EnableAndDisablePanel();
+                    cf.DisablePanel(PanelDetail);
+                    DataTable dt = txtCopySouko.IsDatatableOccurs;
+                    soukoSelect(dt);
                 }
             }
-            else if (cboMode.SelectedValue.Equals("4"))
+            else if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "4")
             {
                 if (!txtSouko.IsErrorOccurs)
                 {
-                    if (e.KeyCode == Keys.Enter)
-                    {
-                        EnableAndDisablePanel();
-                        cf.DisablePanel(PanelDetail);
-                    }
+                    EnableAndDisablePanel();
+                    cf.DisablePanel(PanelDetail);
+                    DataTable dt = txtCopySouko.IsDatatableOccurs;
+                    soukoSelect(dt);
                 }
             }
         }
 
         private void EnableAndDisablePanel()
         {
-            soukoSelect();
             cf.EnablePanel(PanelDetail);
             txtSoukoName.Focus();
             cf.DisablePanel(PanelTitle);
