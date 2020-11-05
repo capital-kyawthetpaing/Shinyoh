@@ -11,7 +11,7 @@ namespace Shinyoh_Search
 {
     public class SearchBox : STextBox
     {
-        protected STextBox txtStaff_CDate { get; set; }
+        public static STextBox ChangeDate { get; set; }
         protected override void OnKeyDown(KeyEventArgs e)
         {
             
@@ -29,10 +29,17 @@ namespace Shinyoh_Search
                         }
                         break;
                     case Entity.SearchType.ScType.Staff:
-                        StaffSearch staffSearch = new StaffSearch();
-                        staffSearch.ShowDialog();
-                        this.Text = staffSearch.staffCD;
-                        MessageBox.Show(this.NextControl.Text);
+                        Control cbo_staff = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+                        if (cbo_staff.Text != "新規")
+                        {
+                            StaffSearch staffSearch = new StaffSearch();
+                            staffSearch.ShowDialog();
+                            this.Text = staffSearch.staffCD;
+                            this.NextControl.Text = staffSearch.changeDate;
+                            ChangeDate.Text = staffSearch.changeDate;
+                           // MessageBox.Show(this.NextControl.Text);
+                        }
+                       
                        // this.NextControl.Text = staffSearch.changeDate;
                        // txtStaff_CDate.Text = staffSearch.changeDate;
                         break;
