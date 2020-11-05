@@ -60,6 +60,9 @@
     <Compile Include="SLabel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SRadio.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="STextBox.cs">
       <SubType>Component</SubType>
     </Compile>

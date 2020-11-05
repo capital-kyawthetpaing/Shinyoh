@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
+            this.rdo_All = new Shinyoh_Controls.SRadio();
+            this.rdo_Date = new Shinyoh_Controls.SRadio();
             this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.lblDate = new Shinyoh_Controls.SLabel();
             this.btnStaff_F11 = new Shinyoh_Controls.SButton();
@@ -39,8 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtStaff2 = new Shinyoh_Controls.STextBox();
             this.txtStaff1 = new Shinyoh_Controls.STextBox();
-            this.rdo_All = new System.Windows.Forms.RadioButton();
-            this.rdo_Date = new System.Windows.Forms.RadioButton();
             this.lblStaff_Kana = new Shinyoh_Controls.SLabel();
             this.lblStaffName = new Shinyoh_Controls.SLabel();
             this.lblDisplay = new Shinyoh_Controls.SLabel();
@@ -57,6 +57,8 @@
             // PanelTitle
             // 
             this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.PanelTitle.Controls.Add(this.rdo_All);
+            this.PanelTitle.Controls.Add(this.rdo_Date);
             this.PanelTitle.Controls.Add(this.lbl_Date);
             this.PanelTitle.Controls.Add(this.lblDate);
             this.PanelTitle.Controls.Add(this.btnStaff_F11);
@@ -65,8 +67,6 @@
             this.PanelTitle.Controls.Add(this.label1);
             this.PanelTitle.Controls.Add(this.txtStaff2);
             this.PanelTitle.Controls.Add(this.txtStaff1);
-            this.PanelTitle.Controls.Add(this.rdo_All);
-            this.PanelTitle.Controls.Add(this.rdo_Date);
             this.PanelTitle.Controls.Add(this.lblStaff_Kana);
             this.PanelTitle.Controls.Add(this.lblStaffName);
             this.PanelTitle.Controls.Add(this.lblDisplay);
@@ -76,6 +76,36 @@
             this.PanelTitle.Name = "PanelTitle";
             this.PanelTitle.Size = new System.Drawing.Size(935, 126);
             this.PanelTitle.TabIndex = 0;
+            // 
+            // rdo_All
+            // 
+            this.rdo_All.AutoSize = true;
+            this.rdo_All.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.rdo_All.Location = new System.Drawing.Point(280, 9);
+            this.rdo_All.MoveNext = true;
+            this.rdo_All.Name = "rdo_All";
+            this.rdo_All.NextControl = null;
+            this.rdo_All.NextControlName = "txtStaff1";
+            this.rdo_All.Size = new System.Drawing.Size(49, 16);
+            this.rdo_All.TabIndex = 2;
+            this.rdo_All.TabStop = true;
+            this.rdo_All.Text = "全て";
+            this.rdo_All.UseVisualStyleBackColor = true;
+            // 
+            // rdo_Date
+            // 
+            this.rdo_Date.AutoSize = true;
+            this.rdo_Date.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.rdo_Date.Location = new System.Drawing.Point(140, 9);
+            this.rdo_Date.MoveNext = true;
+            this.rdo_Date.Name = "rdo_Date";
+            this.rdo_Date.NextControl = null;
+            this.rdo_Date.NextControlName = "txtStaff1";
+            this.rdo_Date.Size = new System.Drawing.Size(88, 16);
+            this.rdo_Date.TabIndex = 1;
+            this.rdo_Date.TabStop = true;
+            this.rdo_Date.Text = "改定日直近";
+            this.rdo_Date.UseVisualStyleBackColor = true;
             // 
             // lbl_Date
             // 
@@ -219,30 +249,6 @@
             this.txtStaff1.TabIndex = 3;
             this.txtStaff1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // rdo_All
-            // 
-            this.rdo_All.AutoSize = true;
-            this.rdo_All.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_All.Location = new System.Drawing.Point(284, 10);
-            this.rdo_All.Name = "rdo_All";
-            this.rdo_All.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.rdo_All.Size = new System.Drawing.Size(49, 16);
-            this.rdo_All.TabIndex = 2;
-            this.rdo_All.Text = "全て\t\t\t\t";
-            this.rdo_All.UseVisualStyleBackColor = true;
-            // 
-            // rdo_Date
-            // 
-            this.rdo_Date.AutoSize = true;
-            this.rdo_Date.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Date.Location = new System.Drawing.Point(160, 10);
-            this.rdo_Date.Name = "rdo_Date";
-            this.rdo_Date.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.rdo_Date.Size = new System.Drawing.Size(88, 16);
-            this.rdo_Date.TabIndex = 1;
-            this.rdo_Date.Text = "改定日直近\t\t\t\t\t";
-            this.rdo_Date.UseVisualStyleBackColor = true;
-            // 
             // lblStaff_Kana
             // 
             this.lblStaff_Kana.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
@@ -314,8 +320,8 @@
             // 
             // NO
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NO.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.NO.DefaultCellStyle = dataGridViewCellStyle1;
             this.NO.HeaderText = "No.";
             this.NO.Name = "NO";
             this.NO.Width = 45;
@@ -337,9 +343,9 @@
             // colChangeDate
             // 
             this.colChangeDate.DataPropertyName = "ChangeDate";
-            dataGridViewCellStyle4.Format = "yyyy/MM/dd";
-            dataGridViewCellStyle4.NullValue = null;
-            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Format = "yyyy/MM/dd";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.Width = 200;
@@ -371,8 +377,6 @@
         private Shinyoh_Controls.SLabel lblStaff;
         private Shinyoh_Controls.SLabel lblDisplay;
         private Shinyoh_Controls.SLabel lblStaff_Kana;
-        private System.Windows.Forms.RadioButton rdo_All;
-        private System.Windows.Forms.RadioButton rdo_Date;
         private System.Windows.Forms.Label label1;
         private Shinyoh_Controls.STextBox txtStaff2;
         private Shinyoh_Controls.STextBox txtStaff1;
@@ -386,5 +390,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChangeDate;
+        private Shinyoh_Controls.SRadio rdo_All;
+        private Shinyoh_Controls.SRadio rdo_Date;
     }
 }

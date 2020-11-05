@@ -67,17 +67,6 @@ namespace Shinyoh
         public virtual void FunctionProcess(string tagID)
         {
         }
-        private void SetMode(SButton btn)
-        {
-           
-                //if (bbl.ShowMessage("Q005") != DialogResult.Yes)
-                //{
-                //    if (PreviousCtrl != null)
-                //        PreviousCtrl.Focus();                   
-                //    return;
-                //}
-                FunctionProcess(btn.Tag.ToString());
-        }
         protected void SetButton(ButtonType.BType buttonType, SButton button, string buttonText, bool visible)
         {
             button.ButtonType = buttonType;
@@ -120,6 +109,19 @@ namespace Shinyoh
                             }
                         }
                     }
+                    if (ActiveControl is SRadio)
+                    {
+                        SRadio radio = ActiveControl as SRadio;
+                        if (!string.IsNullOrWhiteSpace(radio.NextControlName))
+                        {
+                            Control[] ctlArr = this.Controls.Find(radio.NextControlName, true);
+                            if (ctlArr.Length > 0)
+                            {
+                                radio.NextControl = ctlArr[0];
+                            }
+                        }
+                    }
+                    
                     break;
             }
         }

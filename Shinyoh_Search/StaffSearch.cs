@@ -30,7 +30,8 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
             DataGridviewBind();
-            txtStaff1.Focus();
+            
+            rdo_Date.Focus();
         }
 
         private void txtStaff2_KeyDown(object sender, KeyEventArgs e)
