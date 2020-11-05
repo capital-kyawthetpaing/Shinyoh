@@ -102,7 +102,7 @@
             this.PanelDetail.Controls.Add(this.txtSearch);
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1485, 379);
+            this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
             this.PanelDetail.TabIndex = 1;
             // 
             // txtRemark
@@ -473,7 +473,7 @@
             this.txtSouko.IsDatatableOccurs = null;
             this.txtSouko.IsErrorOccurs = false;
             this.txtSouko.IsRequire = false;
-            this.txtSouko.Location = new System.Drawing.Point(104, 9);
+            this.txtSouko.Location = new System.Drawing.Point(118, 9);
             this.txtSouko.MaxLength = 10;
             this.txtSouko.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSouko.MoveNext = true;
@@ -496,7 +496,7 @@
             this.txtCopySouko.IsDatatableOccurs = null;
             this.txtCopySouko.IsErrorOccurs = false;
             this.txtCopySouko.IsRequire = false;
-            this.txtCopySouko.Location = new System.Drawing.Point(104, 37);
+            this.txtCopySouko.Location = new System.Drawing.Point(118, 37);
             this.txtCopySouko.MaxLength = 10;
             this.txtCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCopySouko.MoveNext = true;
@@ -516,7 +516,7 @@
             this.lblCopySouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblCopySouko.ForeColor = System.Drawing.Color.Black;
-            this.lblCopySouko.Location = new System.Drawing.Point(5, 37);
+            this.lblCopySouko.Location = new System.Drawing.Point(19, 37);
             this.lblCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblCopySouko.Name = "lblCopySouko";
             this.lblCopySouko.Size = new System.Drawing.Size(100, 19);
@@ -531,7 +531,7 @@
             this.lblSouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSouko.ForeColor = System.Drawing.Color.White;
-            this.lblSouko.Location = new System.Drawing.Point(5, 9);
+            this.lblSouko.Location = new System.Drawing.Point(19, 9);
             this.lblSouko.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblSouko.Name = "lblSouko";
             this.lblSouko.Size = new System.Drawing.Size(100, 19);
@@ -569,7 +569,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 504);
+            this.ClientSize = new System.Drawing.Size(1485, 644);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(1);
