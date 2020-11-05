@@ -33,30 +33,13 @@ namespace BL {
             soukoEntity.Sqlprms[16] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = soukoEntity.KeyItem };
             return ckmdl.InsertUpdateDeleteData("M_Souko_CUD",GetConnectionString(),soukoEntity.Sqlprms);
         }
-        public SoukoEntity Souko_Select(SoukoEntity soukoEntity)
+        public DataTable Souko_Select(SoukoEntity soukoEntity)
         {
             CKMDL ckmdl = new CKMDL();
             soukoEntity.Sqlprms = new SqlParameter[1];
             soukoEntity.Sqlprms[0] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = soukoEntity.SoukoCD };
             DataTable dt=ckmdl.SelectDatatable("Souko_Select", GetConnectionString(),soukoEntity.Sqlprms);
-            if(dt.Rows.Count > 0)
-            {
-                soukoEntity.MessageID = dt.Rows[0]["MessageID"].ToString();
-                if (soukoEntity.MessageID.Equals("E132"))
-                {
-                    soukoEntity.SoukoName = dt.Rows[0]["SoukoName"].ToString();
-                    soukoEntity.KanaName = dt.Rows[0]["KanaName"].ToString();
-                    soukoEntity.KensakuHyouziJun = dt.Rows[0]["KensakuHyouziJun"].ToString();
-                    soukoEntity.YuubinNO1 = dt.Rows[0]["YuubinNO1"].ToString();
-                    soukoEntity.YuubinNO2 = dt.Rows[0]["YuubinNO2"].ToString();
-                    soukoEntity.Juusho1 = dt.Rows[0]["Juusho1"].ToString();
-                    soukoEntity.Juusho2 = dt.Rows[0]["Juusho2"].ToString();
-                    soukoEntity.TelNO = dt.Rows[0]["TelNO"].ToString();
-                    soukoEntity.FaxNO = dt.Rows[0]["FaxNO"].ToString();
-                    soukoEntity.Remarks = dt.Rows[0]["Remarks"].ToString();
-                }
-            }
-            return soukoEntity;           
+            return dt;
         }
         public DataTable Souko_Search(SoukoEntity soukoEntity)
         {

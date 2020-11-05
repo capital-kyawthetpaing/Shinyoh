@@ -46,8 +46,8 @@ namespace Shinyoh_Controls
                         SoukoBL bl = new SoukoBL();
                         SoukoEntity soukoEntity = new SoukoEntity();
                         soukoEntity.SoukoCD = sTextBox.Text;
-                        soukoEntity = bl.Souko_Select(soukoEntity);
-                        result = soukoEntity.MessageID;
+                        rDt = bl.Souko_Select(soukoEntity);
+                        result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
                 if (result.Equals("E101"))
@@ -135,8 +135,9 @@ namespace Shinyoh_Controls
                         SoukoBL bl = new SoukoBL();
                         SoukoEntity soukoEntity = new SoukoEntity();
                         soukoEntity.SoukoCD = sTextBox.Text;
-                        soukoEntity = bl.Souko_Select(soukoEntity);
-                        result = soukoEntity.MessageID;
+                        rDt = bl.Souko_Select(soukoEntity);
+                     
+                        result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                     case "M_Staff":// NMW(2020-10-22)
                         StaffBL sBL = new StaffBL();
