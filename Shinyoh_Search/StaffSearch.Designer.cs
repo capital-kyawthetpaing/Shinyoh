@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.lblDate = new Shinyoh_Controls.SLabel();
@@ -38,8 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtStaff2 = new Shinyoh_Controls.STextBox();
             this.txtStaff1 = new Shinyoh_Controls.STextBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rdo_All = new System.Windows.Forms.RadioButton();
+            this.rdo_Date = new System.Windows.Forms.RadioButton();
             this.lblStaff_Kana = new Shinyoh_Controls.SLabel();
             this.lblStaffName = new Shinyoh_Controls.SLabel();
             this.lblDisplay = new Shinyoh_Controls.SLabel();
@@ -63,8 +63,8 @@
             this.PanelTitle.Controls.Add(this.label1);
             this.PanelTitle.Controls.Add(this.txtStaff2);
             this.PanelTitle.Controls.Add(this.txtStaff1);
-            this.PanelTitle.Controls.Add(this.radioButton2);
-            this.PanelTitle.Controls.Add(this.radioButton1);
+            this.PanelTitle.Controls.Add(this.rdo_All);
+            this.PanelTitle.Controls.Add(this.rdo_Date);
             this.PanelTitle.Controls.Add(this.lblStaff_Kana);
             this.PanelTitle.Controls.Add(this.lblStaffName);
             this.PanelTitle.Controls.Add(this.lblDisplay);
@@ -217,31 +217,29 @@
             this.txtStaff1.TabIndex = 3;
             this.txtStaff1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // radioButton2
+            // rdo_All
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.radioButton2.Location = new System.Drawing.Point(284, 10);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.radioButton2.Size = new System.Drawing.Size(49, 16);
-            this.radioButton2.TabIndex = 2;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "全て\t\t\t\t";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdo_All.AutoSize = true;
+            this.rdo_All.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.rdo_All.Location = new System.Drawing.Point(284, 10);
+            this.rdo_All.Name = "rdo_All";
+            this.rdo_All.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.rdo_All.Size = new System.Drawing.Size(49, 16);
+            this.rdo_All.TabIndex = 2;
+            this.rdo_All.Text = "全て\t\t\t\t";
+            this.rdo_All.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdo_Date
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.radioButton1.Location = new System.Drawing.Point(160, 10);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.radioButton1.Size = new System.Drawing.Size(88, 16);
-            this.radioButton1.TabIndex = 8;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "改定日直近\t\t\t\t\t";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdo_Date.AutoSize = true;
+            this.rdo_Date.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.rdo_Date.Location = new System.Drawing.Point(160, 10);
+            this.rdo_Date.Name = "rdo_Date";
+            this.rdo_Date.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.rdo_Date.Size = new System.Drawing.Size(88, 16);
+            this.rdo_Date.TabIndex = 1;
+            this.rdo_Date.Text = "改定日直近\t\t\t\t\t";
+            this.rdo_Date.UseVisualStyleBackColor = true;
             // 
             // lblStaff_Kana
             // 
@@ -306,29 +304,31 @@
             this.gvStaff.Name = "gvStaff";
             this.gvStaff.Size = new System.Drawing.Size(768, 302);
             this.gvStaff.TabIndex = 3;
+            this.gvStaff.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvStaff_CellMouseClick);
             // 
             // colStaffCD
             // 
             this.colStaffCD.DataPropertyName = "StaffCD";
             this.colStaffCD.HeaderText = "スタッフ";
             this.colStaffCD.Name = "colStaffCD";
+            this.colStaffCD.Width = 125;
             // 
             // colStaffName
             // 
             this.colStaffName.DataPropertyName = "StaffName";
             this.colStaffName.HeaderText = "スタッフ名";
             this.colStaffName.Name = "colStaffName";
-            this.colStaffName.Width = 375;
+            this.colStaffName.Width = 400;
             // 
             // colChangeDate
             // 
-            this.colChangeDate.DataPropertyName = "ChangeDate\t";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colChangeDate.DataPropertyName = "ChangeDate";
+            dataGridViewCellStyle1.Format = "yyyy/MM/dd";
+            dataGridViewCellStyle1.NullValue = null;
+            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
-            this.colChangeDate.Width = 125;
+            this.colChangeDate.Width = 200;
             // 
             // StaffSearch
             // 
@@ -357,8 +357,8 @@
         private Shinyoh_Controls.SLabel lblStaff;
         private Shinyoh_Controls.SLabel lblDisplay;
         private Shinyoh_Controls.SLabel lblStaff_Kana;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rdo_All;
+        private System.Windows.Forms.RadioButton rdo_Date;
         private System.Windows.Forms.Label label1;
         private Shinyoh_Controls.STextBox txtStaff2;
         private Shinyoh_Controls.STextBox txtStaff1;

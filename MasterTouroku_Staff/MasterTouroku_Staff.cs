@@ -65,15 +65,15 @@ namespace MasterTouroku_Staff
                     
                     ErrorChek();
                     //E102
-                    txtStaff_CDate.E102Check(true);
+                    txt_Staff.E102Check(true);
                     txtStaff_CopyDate.E102MultiCheck(true, txtStaff_Copy, txtStaff_CopyDate);
                     //E132
-                    txtStaff_CDate.E132Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txt_Staff.E132Check(true, "M_Staff", txtStaff_CDate, txt_Staff, null);
                     //E133
-                    txtStaff_CDate.E133Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txt_Staff.E133Check(false, "M_Staff", txtStaff_CDate, txt_Staff, null);
                     txtStaff_CopyDate.E133Check(true, "M_Staff", txtStaff_Copy, txtStaff_CopyDate, null);
 
-                    txtStaff_CDate.NextControlName = txtStaff_Copy.Name;
+                    txt_Staff.NextControlName = txtStaff_Copy.Name;
                     txtStaff_Copy.Enabled = true;
                     txtStaff_CopyDate.Enabled = true;                   
 
@@ -84,9 +84,9 @@ namespace MasterTouroku_Staff
                 case Mode.Update:                    
                     ErrorChek();
                     //E132
-                    txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txt_Staff.E132Check(false, "M_Staff", txtStaff_CDate, txt_Staff, null);
                     //E133
-                    txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txt_Staff.E133Check(true, "M_Staff", txtStaff_CDate, txt_Staff, null);
 
                     //Enable && Disable
                     txtStaff_Copy.Enabled = false;
@@ -98,9 +98,9 @@ namespace MasterTouroku_Staff
                     break;
                 case Mode.Delete:
                     //E132
-                    txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txt_Staff.E132Check(false, "M_Staff", txtStaff_CDate, txt_Staff, null);
                     //E133
-                    txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txt_Staff.E133Check(true, "M_Staff", txtStaff_CDate, txt_Staff, null);
 
                     //Enable && Disable
                     txtStaff_Copy.Enabled = false;
@@ -112,9 +112,9 @@ namespace MasterTouroku_Staff
                     break;
                 case Mode.Inquiry:
                     //E132
-                    txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txt_Staff.E132Check(false, "M_Staff", txtStaff_CDate, txt_Staff, null);
                     //E133
-                    txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txt_Staff.E133Check(true, "M_Staff", txtStaff_CDate, txt_Staff, null);
 
                     //Enable && Disable
                     txtStaff_Copy.Enabled = false;
@@ -129,14 +129,14 @@ namespace MasterTouroku_Staff
         private void ErrorChek()
         {
             //E102
-            txt_Staff.E102Check(true);            
+            txtStaff_CDate.E102Check(true);            
             txtStaff_Name.E102Check(true);
             cboStaff_Menu.E102Check(true);
             cboStaff_authority.E102Check(true);
             txtStaff_Passward.E102Check(true);
             txtStaff_JDate.E102Check(true);
             //E103
-            txtStaff_CDate.E103Check(true);
+            txt_Staff.E103Check(true);
             txtStaff_CopyDate.E103Check(true);
             txtStaff_JDate.E103Check(true);
             txtStaff_LDate.E103Check(true);
@@ -216,8 +216,8 @@ namespace MasterTouroku_Staff
         private MasterTourokuStaff GetInsertStaff()
         {
             MasterTourokuStaff obj = new MasterTourokuStaff();
-            obj.StaffCD = txt_Staff.Text.ToString();
-            obj.ChangeDate = txtStaff_CDate.Text.ToString();
+            obj.StaffCD = txtStaff_CDate.Text.ToString();
+            obj.ChangeDate = txt_Staff.Text.ToString();
             obj.StaffName = txtStaff_Name.Text.ToString();
             obj.KanaName = txtStaff_KanaName.Text.ToString();
             obj.KensakuHyouziJun =txtStaff_Search.Text;            
@@ -233,7 +233,7 @@ namespace MasterTouroku_Staff
             obj.UpdateOperator = staff_Entity.StaffCD;
 
             //for log table
-            obj.KeyItem = txt_Staff.Text.ToString() + " " + txtStaff_CDate.Text;
+            obj.KeyItem = txtStaff_CDate.Text.ToString() + " " + txt_Staff.Text;
             obj.PC = staff_Entity.PC;
             return obj;
         }        
@@ -272,7 +272,7 @@ namespace MasterTouroku_Staff
         private void EnablePanel()
         {
             cf.EnablePanel(Panel_Staff);
-            txtStaff_Name.Focus();
+            txt_Staff.Focus();
             cf.DisablePanel(PanelTitle);
         }
 
