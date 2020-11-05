@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.lblDate = new Shinyoh_Controls.SLabel();
@@ -72,7 +72,7 @@
             this.PanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelTitle.Location = new System.Drawing.Point(0, 0);
             this.PanelTitle.Name = "PanelTitle";
-            this.PanelTitle.Size = new System.Drawing.Size(790, 126);
+            this.PanelTitle.Size = new System.Drawing.Size(935, 126);
             this.PanelTitle.TabIndex = 0;
             // 
             // lbl_Date
@@ -82,7 +82,7 @@
             this.lbl_Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Date.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lbl_Date.Location = new System.Drawing.Point(659, 10);
+            this.lbl_Date.Location = new System.Drawing.Point(804, 10);
             this.lbl_Date.Name = "lbl_Date";
             this.lbl_Date.Size = new System.Drawing.Size(100, 19);
             this.lbl_Date.TabIndex = 15;
@@ -96,7 +96,7 @@
             this.lblDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDate.Location = new System.Drawing.Point(580, 10);
+            this.lblDate.Location = new System.Drawing.Point(725, 10);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(80, 19);
             this.lblDate.TabIndex = 14;
@@ -110,7 +110,7 @@
             this.btnStaff_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnStaff_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStaff_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnStaff_F11.Location = new System.Drawing.Point(669, 97);
+            this.btnStaff_F11.Location = new System.Drawing.Point(814, 97);
             this.btnStaff_F11.Name = "btnStaff_F11";
             this.btnStaff_F11.Size = new System.Drawing.Size(106, 23);
             this.btnStaff_F11.TabIndex = 7;
@@ -302,9 +302,9 @@
             this.colStaffCD,
             this.colStaffName,
             this.colChangeDate});
-            this.gvStaff.Location = new System.Drawing.Point(45, 152);
+            this.gvStaff.Location = new System.Drawing.Point(45, 146);
             this.gvStaff.Name = "gvStaff";
-            this.gvStaff.Size = new System.Drawing.Size(643, 302);
+            this.gvStaff.Size = new System.Drawing.Size(768, 302);
             this.gvStaff.TabIndex = 3;
             // 
             // colStaffCD
@@ -323,9 +323,9 @@
             // colChangeDate
             // 
             this.colChangeDate.DataPropertyName = "ChangeDate\t";
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.Width = 125;
@@ -334,12 +334,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(790, 517);
+            this.ClientSize = new System.Drawing.Size(935, 506);
             this.Controls.Add(this.gvStaff);
             this.Controls.Add(this.PanelTitle);
             this.Name = "StaffSearch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StaffSearch";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.StaffSearch_Load);
             this.Controls.SetChildIndex(this.PanelTitle, 0);
             this.Controls.SetChildIndex(this.gvStaff, 0);

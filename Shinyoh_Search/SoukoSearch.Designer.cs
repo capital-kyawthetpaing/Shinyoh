@@ -58,7 +58,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(943, 100);
+            this.panel1.Size = new System.Drawing.Size(935, 100);
             this.panel1.TabIndex = 1;
             // 
             // label1
@@ -180,7 +180,7 @@
             this.BtnF11_Soko.ButtonType = Entity.ButtonType.BType.Search;
             this.BtnF11_Soko.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF11_Soko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF11_Soko.Location = new System.Drawing.Point(814, 74);
+            this.BtnF11_Soko.Location = new System.Drawing.Point(806, 74);
             this.BtnF11_Soko.Name = "BtnF11_Soko";
             this.BtnF11_Soko.Size = new System.Drawing.Size(106, 23);
             this.BtnF11_Soko.TabIndex = 4;
@@ -224,9 +224,9 @@
             this.gvSouko.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSouko,
             this.colSoukoName});
-            this.gvSouko.Location = new System.Drawing.Point(45, 117);
+            this.gvSouko.Location = new System.Drawing.Point(45, 142);
             this.gvSouko.Name = "gvSouko";
-            this.gvSouko.Size = new System.Drawing.Size(707, 302);
+            this.gvSouko.Size = new System.Drawing.Size(768, 302);
             this.gvSouko.TabIndex = 2;
             this.gvSouko.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSouko_CellMouseClick);
             // 
@@ -247,7 +247,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 472);
+            this.ClientSize = new System.Drawing.Size(935, 506);
             this.Controls.Add(this.gvSouko);
             this.Controls.Add(this.panel1);
             this.Name = "SoukoSearch";
