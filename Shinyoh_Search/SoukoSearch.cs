@@ -15,8 +15,7 @@ namespace Shinyoh_Search {
 
     public partial class SoukoSearch : SearchBase {
 
-        public string sokoCD = "";
-        public string sokoName = "";
+        public string soukoCD = string.Empty;
 
         public SoukoSearch()
         {
@@ -28,14 +27,15 @@ namespace Shinyoh_Search {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-            
-            GetDatatable();
+
+            gvSouko.UseRowNo(true);
+            GridViewBind();
         }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
             {
-                GetDatatable();
+                GridViewBind();
             }
             if (tagID == "3")
             {
@@ -44,7 +44,7 @@ namespace Shinyoh_Search {
             }
             base.FunctionProcess(tagID);
         }
-        private void GetDatatable()
+        private void GridViewBind()
         {
             SoukoBL bl = new SoukoBL();
             SoukoEntity soukoEntity = new SoukoEntity();
@@ -59,23 +59,19 @@ namespace Shinyoh_Search {
         private void BtnF11_Soko_Click(object sender, EventArgs e)
         {
             FunctionProcess(BtnF11_Soko.Tag.ToString());
-            GetDatatable();
+            GridViewBind();
         }
 
         private void gvSouko_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if(e.RowIndex>0)
-            {
-                GetGridviewData(gvSouko.Rows[e.RowIndex]);
-            }     
+            GetGridviewData(gvSouko.Rows[e.RowIndex]);
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow != null)
+            if (gvrow.DataBoundItem != null)
             {
                 DataGridViewRow row = gvrow;
-                sokoCD = row.Cells[0].Value.ToString();
-                sokoName = row.Cells[1].Value.ToString();
+                soukoCD= row.Cells["colSouko"].Value.ToString();
                 this.Close();
             }
         }

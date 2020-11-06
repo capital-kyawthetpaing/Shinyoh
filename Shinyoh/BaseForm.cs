@@ -169,7 +169,14 @@ namespace Shinyoh
                     cboMode.SelectedValue = "4";
                     SetMode(btn);
                     break;
-
+                case ButtonType.BType.Cancel:
+                    if (bbl.ShowMessage("Q004") != DialogResult.Yes)
+                    {
+                        PreviousCtrl.Focus();
+                    }
+                    else
+                        FunctionProcess(btn.Tag.ToString());
+                    break;
                 case ButtonType.BType.Save:
                     FunctionProcess(btn.Tag.ToString());
                     break;
@@ -326,13 +333,6 @@ namespace Shinyoh
                 FireClickEvent(F5, 2);
             }
         }
-        //protected void SetDefaultMode(string value)
-        //{
-        //    cboMode.SelectedValueChanged -= cboMode_SelectedValueChanged;
-        //    cboMode.SelectedValue = Convert.ToInt32(value);
-        //    LastSelectedMode = value;
-        //    cboMode.SelectedValueChanged += cboMode_SelectedValueChanged;
-        //}
 
         protected bool ErrorCheck(Panel panel)
         {

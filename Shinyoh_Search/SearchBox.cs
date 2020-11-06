@@ -25,7 +25,8 @@ namespace Shinyoh_Search
                         {
                             SoukoSearch soukoSearch = new SoukoSearch();
                             soukoSearch.ShowDialog();
-                            this.Text = soukoSearch.sokoCD;
+                            this.Text = soukoSearch.soukoCD;
+                            SendKeys.Send("{ENTER}");
                         }
                         break;
                     case Entity.SearchType.ScType.Staff:
@@ -36,6 +37,8 @@ namespace Shinyoh_Search
                             staffSearch.ShowDialog();
                             this.Text = staffSearch.staffCD;
                             ChangeDate.Text = staffSearch.changeDate;
+                            ChangeDate.Focus();
+                            SendKeys.Send("{ENTER}");
                         }
                         break;
                 }
