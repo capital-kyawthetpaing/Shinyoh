@@ -435,15 +435,15 @@
             this.txtStaff_Yubin2.IsDatatableOccurs = null;
             this.txtStaff_Yubin2.IsErrorOccurs = false;
             this.txtStaff_Yubin2.IsRequire = false;
-            this.txtStaff_Yubin2.Location = new System.Drawing.Point(280, 92);
+            this.txtStaff_Yubin2.Location = new System.Drawing.Point(214, 92);
             this.txtStaff_Yubin2.MaxLength = 4;
-            this.txtStaff_Yubin2.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtStaff_Yubin2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtStaff_Yubin2.MoveNext = true;
             this.txtStaff_Yubin2.Name = "txtStaff_Yubin2";
             this.txtStaff_Yubin2.NextControl = null;
             this.txtStaff_Yubin2.NextControlName = "cboStaff_Menu";
             this.txtStaff_Yubin2.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_Yubin2.Size = new System.Drawing.Size(100, 19);
+            this.txtStaff_Yubin2.Size = new System.Drawing.Size(70, 19);
             this.txtStaff_Yubin2.TabIndex = 6;
             this.txtStaff_Yubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -459,13 +459,13 @@
             this.txtStaff_Yubin1.IsRequire = false;
             this.txtStaff_Yubin1.Location = new System.Drawing.Point(141, 92);
             this.txtStaff_Yubin1.MaxLength = 3;
-            this.txtStaff_Yubin1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtStaff_Yubin1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtStaff_Yubin1.MoveNext = true;
             this.txtStaff_Yubin1.Name = "txtStaff_Yubin1";
             this.txtStaff_Yubin1.NextControl = null;
             this.txtStaff_Yubin1.NextControlName = "txtStaff_Yubin2";
             this.txtStaff_Yubin1.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_Yubin1.Size = new System.Drawing.Size(100, 19);
+            this.txtStaff_Yubin1.Size = new System.Drawing.Size(50, 19);
             this.txtStaff_Yubin1.TabIndex = 5;
             this.txtStaff_Yubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -487,7 +487,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(253, 90);
+            this.label1.Location = new System.Drawing.Point(195, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 29;
@@ -637,13 +637,13 @@
             this.txtStaff_Copy.IsRequire = false;
             this.txtStaff_Copy.Location = new System.Drawing.Point(346, 9);
             this.txtStaff_Copy.MaxLength = 10;
-            this.txtStaff_Copy.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtStaff_Copy.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtStaff_Copy.MoveNext = true;
             this.txtStaff_Copy.Name = "txtStaff_Copy";
             this.txtStaff_Copy.NextControl = null;
             this.txtStaff_Copy.NextControlName = "txtStaff_CopyDate";
             this.txtStaff_Copy.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_Copy.Size = new System.Drawing.Size(100, 19);
+            this.txtStaff_Copy.Size = new System.Drawing.Size(90, 19);
             this.txtStaff_Copy.TabIndex = 3;
             this.txtStaff_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -694,13 +694,13 @@
             this.txt_Staff.IsErrorOccurs = false;
             this.txt_Staff.IsRequire = false;
             this.txt_Staff.Location = new System.Drawing.Point(118, 9);
-            this.txt_Staff.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txt_Staff.MinimumSize = new System.Drawing.Size(90, 19);
             this.txt_Staff.MoveNext = true;
             this.txt_Staff.Name = "txt_Staff";
             this.txt_Staff.NextControl = null;
             this.txt_Staff.NextControlName = "txtStaff_CDate";
             this.txt_Staff.SearchType = Entity.SearchType.ScType.Staff;
-            this.txt_Staff.Size = new System.Drawing.Size(100, 19);
+            this.txt_Staff.Size = new System.Drawing.Size(90, 19);
             this.txt_Staff.TabIndex = 56;
             this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
