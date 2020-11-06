@@ -28,7 +28,7 @@ namespace Shinyoh_Search {
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
-            gvSouko.UseRowNo(false);
+            gvSouko.UseRowNo(true);
             GridViewBind();
         }
         public override void FunctionProcess(string tagID)
