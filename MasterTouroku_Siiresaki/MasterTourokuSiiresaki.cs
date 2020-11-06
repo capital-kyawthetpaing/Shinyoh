@@ -22,6 +22,7 @@ namespace MasterTouroku_Siiresaki
         {
             ProgramID = "MasterTourokuSiiresaki";
             StartProgram();
+
         }
     }
 }
