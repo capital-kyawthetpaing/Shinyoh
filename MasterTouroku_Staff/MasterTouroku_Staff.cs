@@ -289,6 +289,10 @@ namespace MasterTouroku_Staff
                     {
                         EnablePanel();
                     }
+                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                    }
                 }
                 DataTable dt = txtStaff_CDate.IsDatatableOccurs;
                 if(dt.Rows.Count>0 && cboMode.SelectedValue.ToString() != "1")
