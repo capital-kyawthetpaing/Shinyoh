@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.rdo_All = new Shinyoh_Controls.SRadio();
             this.rdo_Date = new Shinyoh_Controls.SRadio();
@@ -46,7 +45,6 @@
             this.lblDisplay = new Shinyoh_Controls.SLabel();
             this.lblStaff = new Shinyoh_Controls.SLabel();
             this.gvStaff = new Shinyoh_Controls.SGridView();
-            this.NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStaffCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChangeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -303,28 +301,16 @@
             // 
             // gvStaff
             // 
-            this.gvStaff.AllowUserToAddRows = false;
             this.gvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvStaff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NO,
             this.colStaffCD,
             this.colStaffName,
             this.colChangeDate});
             this.gvStaff.Location = new System.Drawing.Point(45, 146);
             this.gvStaff.Name = "gvStaff";
-            this.gvStaff.RowHeadersVisible = false;
             this.gvStaff.Size = new System.Drawing.Size(768, 302);
             this.gvStaff.TabIndex = 3;
             this.gvStaff.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvStaff_CellMouseClick);
-            this.gvStaff.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.gvStaff_DataBindingComplete);
-            // 
-            // NO
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.NO.DefaultCellStyle = dataGridViewCellStyle1;
-            this.NO.HeaderText = "No.";
-            this.NO.Name = "NO";
-            this.NO.Width = 45;
             // 
             // colStaffCD
             // 
@@ -343,9 +329,9 @@
             // colChangeDate
             // 
             this.colChangeDate.DataPropertyName = "ChangeDate";
-            dataGridViewCellStyle2.Format = "yyyy/MM/dd";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "yyyy/MM/dd";
+            dataGridViewCellStyle1.NullValue = null;
+            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.Width = 200;
@@ -386,11 +372,10 @@
         private Shinyoh_Controls.SLabel lblDate;
         private Shinyoh_Controls.SGridView gvStaff;
         private Shinyoh_Controls.SLabel lbl_Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NO;
+        private Shinyoh_Controls.SRadio rdo_All;
+        private Shinyoh_Controls.SRadio rdo_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChangeDate;
-        private Shinyoh_Controls.SRadio rdo_All;
-        private Shinyoh_Controls.SRadio rdo_Date;
     }
 }

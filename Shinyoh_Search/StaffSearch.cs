@@ -20,7 +20,6 @@ namespace Shinyoh_Search
         public StaffSearch()
         {
             InitializeComponent();
-            this.gvStaff.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gvStaff_RowPostPaint);
         }
 
         private void StaffSearch_Load(object sender, EventArgs e)
@@ -29,8 +28,9 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
-            DataGridviewBind();
-            
+            gvStaff.UseRowNo(true);
+            DataGridviewBind();            
+
             rdo_Date.Focus();
         }
 
@@ -85,21 +85,6 @@ namespace Shinyoh_Search
                 changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
                 this.Close();
             }
-        }
-
-        private void gvStaff_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
-        {
-
-        }
-
-        private void gvStaff_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            if (gvStaff == null)
-                return;
-            int no = 1;
-            foreach (DataGridViewRow row in gvStaff.Rows)
-                row.Cells["NO"].Value = no++;
-           
         }
     }
 }
