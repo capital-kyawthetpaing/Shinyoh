@@ -301,6 +301,7 @@
             // 
             // gvStaff
             // 
+            this.gvStaff.AllowUserToAddRows = false;
             this.gvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvStaff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colStaffCD,
