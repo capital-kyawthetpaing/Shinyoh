@@ -129,7 +129,13 @@ namespace Shinyoh
         private void btnFunctionClick(object sender, EventArgs e)
         {
             SButton btn = (SButton)sender;
-            FireClickEvent(btn, 1);
+            if(btn.ButtonType == ButtonType.BType.Search)
+            {
+                PreviousCtrl.Focus();
+                SendKeys.Send("{F9}");
+            }
+            else
+                FireClickEvent(btn, 1);
         }
 
         /// <summary>
