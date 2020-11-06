@@ -22,7 +22,9 @@ namespace Entity
             Run,
             Close,//完了    
             Search,//検索
-            Empty//
+            Empty,//
+            Confirm, //確認
+            Display
         }
     }
 }

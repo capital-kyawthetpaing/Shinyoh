@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Shinyoh_Search</RootNamespace>
-    <AssemblyName>Shinyoh_Search</AssemblyName>
+    <ProjectGuid>{2F8DB9C1-F413-4E41-85BD-47CEDF4F25B0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ChakuniNyuuryoku</RootNamespace>
+    <AssemblyName>ChakuniNyuuryoku</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,10 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CKM_CommonFunction">
+      <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,37 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArrivalNOSearch.cs">
+    <Compile Include="ChakuniNyuuryoku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ArrivalNOSearch.Designer.cs">
-      <DependentUpon>ArrivalNOSearch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ChakuniNyuuryoku.Designer.cs">
+      <DependentUpon>ChakuniNyuuryoku.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SearchBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="SoukoSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SoukoSearch.Designer.cs">
-      <DependentUpon>SoukoSearch.cs</DependentUpon>
-    </Compile>
-    <Compile Include="StaffSearch.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="StaffSearch.Designer.cs">
-      <DependentUpon>StaffSearch.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="ArrivalNOSearch.resx">
-      <DependentUpon>ArrivalNOSearch.cs</DependentUpon>
+    <EmbeddedResource Include="ChakuniNyuuryoku.resx">
+      <DependentUpon>ChakuniNyuuryoku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,12 +69,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SoukoSearch.resx">
-      <DependentUpon>SoukoSearch.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="StaffSearch.resx">
-      <DependentUpon>StaffSearch.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -125,6 +98,10 @@
     <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
+      <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>
+      <Name>Shinyoh_Search</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
