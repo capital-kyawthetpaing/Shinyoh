@@ -50,7 +50,7 @@
     <Compile Include="SearchType.cs" />
     <Compile Include="SoukoEntity.cs" />
     <Compile Include="StaffEntity.cs" />
-    <Compile Include="SupplierEntity.cs" />
+    <Compile Include="VendorEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

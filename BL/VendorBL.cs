@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entity
+namespace BL
 {
-    public class SupplierEntity
+    public class VendorBL
     {
     }
 }
