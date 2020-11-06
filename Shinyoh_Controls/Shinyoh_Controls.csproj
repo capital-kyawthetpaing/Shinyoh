@@ -51,6 +51,9 @@
     <Compile Include="SButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="SCombo.cs">
       <SubType>Component</SubType>
     </Compile>

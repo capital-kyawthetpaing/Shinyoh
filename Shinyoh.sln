@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_Staff", "Mast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinyoh_Search", "Shinyoh_Search\Shinyoh_Search.csproj", "{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_Siiresaki", "MasterTouroku_Siiresaki\MasterTouroku_Siiresaki.csproj", "{693D0778-C77F-48E2-9C30-9E0D643CF02C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{693D0778-C77F-48E2-9C30-9E0D643CF02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{693D0778-C77F-48E2-9C30-9E0D643CF02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{693D0778-C77F-48E2-9C30-9E0D643CF02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{693D0778-C77F-48E2-9C30-9E0D643CF02C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
