@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinyoh_Search", "Shinyoh_S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_Tokuisaki", "MasterTouroku_Tokuisaki\MasterTouroku_Tokuisaki.csproj", "{2ADD956B-69FB-4B2F-8F34-D4C8568D4ADC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_Siiresaki", "MasterTouroku_Siiresaki\MasterTouroku_Siiresaki.csproj", "{693D0778-C77F-48E2-9C30-9E0D643CF02C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{2ADD956B-69FB-4B2F-8F34-D4C8568D4ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ADD956B-69FB-4B2F-8F34-D4C8568D4ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ADD956B-69FB-4B2F-8F34-D4C8568D4ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{693D0778-C77F-48E2-9C30-9E0D643CF02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{693D0778-C77F-48E2-9C30-9E0D643CF02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{693D0778-C77F-48E2-9C30-9E0D643CF02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{693D0778-C77F-48E2-9C30-9E0D643CF02C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
