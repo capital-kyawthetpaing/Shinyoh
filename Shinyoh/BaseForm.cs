@@ -129,7 +129,13 @@ namespace Shinyoh
         private void btnFunctionClick(object sender, EventArgs e)
         {
             SButton btn = (SButton)sender;
-            FireClickEvent(btn, 1);
+            if(btn.ButtonType == ButtonType.BType.Search)
+            {
+                PreviousCtrl.Focus();
+                SendKeys.Send("{F9}");
+            }
+            else
+                FireClickEvent(btn, 1);
         }
 
         /// <summary>
@@ -169,7 +175,14 @@ namespace Shinyoh
                     cboMode.SelectedValue = "4";
                     SetMode(btn);
                     break;
-
+                case ButtonType.BType.Cancel:
+                    if (bbl.ShowMessage("Q004") != DialogResult.Yes)
+                    {
+                        PreviousCtrl.Focus();
+                    }
+                    else
+                        FunctionProcess(btn.Tag.ToString());
+                    break;
                 case ButtonType.BType.Save:
                     FunctionProcess(btn.Tag.ToString());
                     break;
@@ -326,13 +339,6 @@ namespace Shinyoh
                 FireClickEvent(F5, 2);
             }
         }
-        //protected void SetDefaultMode(string value)
-        //{
-        //    cboMode.SelectedValueChanged -= cboMode_SelectedValueChanged;
-        //    cboMode.SelectedValue = Convert.ToInt32(value);
-        //    LastSelectedMode = value;
-        //    cboMode.SelectedValueChanged += cboMode_SelectedValueChanged;
-        //}
 
         protected bool ErrorCheck(Panel panel)
         {
