@@ -618,7 +618,7 @@
             this.lblStaff_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff_Copy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff_Copy.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff_Copy.Location = new System.Drawing.Point(246, 10);
+            this.lblStaff_Copy.Location = new System.Drawing.Point(246, 9);
             this.lblStaff_Copy.Name = "lblStaff_Copy";
             this.lblStaff_Copy.Size = new System.Drawing.Size(100, 19);
             this.lblStaff_Copy.TabIndex = 51;
@@ -635,7 +635,7 @@
             this.txtStaff_Copy.IsDatatableOccurs = null;
             this.txtStaff_Copy.IsErrorOccurs = false;
             this.txtStaff_Copy.IsRequire = false;
-            this.txtStaff_Copy.Location = new System.Drawing.Point(346, 10);
+            this.txtStaff_Copy.Location = new System.Drawing.Point(346, 9);
             this.txtStaff_Copy.MaxLength = 10;
             this.txtStaff_Copy.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Copy.MoveNext = true;
