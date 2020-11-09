@@ -701,7 +701,7 @@
             this.txt_Staff.NextControlName = "txtStaff_CDate";
             this.txt_Staff.SearchType = Entity.SearchType.ScType.Staff;
             this.txt_Staff.Size = new System.Drawing.Size(90, 19);
-            this.txt_Staff.TabIndex = 56;
+            this.txt_Staff.TabIndex = 1;
             this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // MasterTouroku_Staff
