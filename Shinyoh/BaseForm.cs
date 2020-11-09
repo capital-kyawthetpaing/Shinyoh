@@ -289,6 +289,7 @@ namespace Shinyoh
                     FireClickEvent(btn,1);
                     break;
                 case Keys.Enter:
+
                     if (ActiveControl is STextBox)
                     {
                         STextBox stxt = ActiveControl as STextBox;
@@ -298,6 +299,30 @@ namespace Shinyoh
                             if (ctlArr.Length > 0)
                             {
                                 stxt.NextControl = ctlArr[0];
+                            }
+                        }
+                    }
+                    if (ActiveControl is SRadio)
+                    {
+                        SRadio radio = ActiveControl as SRadio;
+                        if (!string.IsNullOrWhiteSpace(radio.NextControlName))
+                        {
+                            Control[] ctlArr = this.Controls.Find(radio.NextControlName, true);
+                            if (ctlArr.Length > 0)
+                            {
+                                radio.NextControl = ctlArr[0];
+                            }
+                        }
+                    }
+                    if (ActiveControl is SCheckBox)
+                    {
+                        SCheckBox checkbox = ActiveControl as SCheckBox;
+                        if (!string.IsNullOrWhiteSpace(checkbox.NextControlName))
+                        {
+                            Control[] ctlArr = this.Controls.Find(checkbox.NextControlName, true);
+                            if (ctlArr.Length > 0)
+                            {
+                                checkbox.NextControl = ctlArr[0];
                             }
                         }
                     }
@@ -354,6 +379,12 @@ namespace Shinyoh
                 {
                     SCombo sc = ctrl as SCombo;
                     if (sc.ErrorCheck())
+                        return false;
+                }
+                if (ctrl is SCheckBox)
+                {
+                    SCheckBox sch = ctrl as SCheckBox;
+                    if (sch.ErrorCheck())
                         return false;
                 }
             }

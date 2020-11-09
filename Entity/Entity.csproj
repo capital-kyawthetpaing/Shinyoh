@@ -52,7 +52,7 @@
     <Compile Include="SearchType.cs" />
     <Compile Include="SoukoEntity.cs" />
     <Compile Include="StaffEntity.cs" />
-    <Compile Include="VendorEntity.cs" />
+    <Compile Include="SiiresakiEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

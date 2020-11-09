@@ -23,18 +23,17 @@ namespace MasterTouroku_Souko
         }
         private void MasterTourokuSouko_Load(object sender, EventArgs e)
         {
-            multipurposeEntity multipurpose_entity = new multipurposeEntity();
             ProgramID = "MasterTourokuSouko";
             StartProgram();
-            cboMode.Bind(false, multipurpose_entity);
-            SetButton(ButtonType.BType.Close, F1, "F1(終了)",true);
-            SetButton(ButtonType.BType.New, F2, "F2(新規)",true);
-            SetButton(ButtonType.BType.Update, F3, "F3(変更)",true);
-            SetButton(ButtonType.BType.Delete, F4, "F4(削除)",true);
-            SetButton(ButtonType.BType.Inquiry, F5, "F5(照会)",true);
-            SetButton(ButtonType.BType.Cancel, F6, "F6(ｷｬﾝｾﾙ)",true);
-            SetButton(ButtonType.BType.Search, F9, "F9(検索)",false);
-            SetButton(ButtonType.BType.Save, F12, "F12(登録)",true);
+            cboMode.Bind(false);
+            SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
+            SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
+            SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
+            SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
+            SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
+            SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
+            SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
+            SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "",false);
             SetButton(ButtonType.BType.Empty, F8, "",false);
             SetButton(ButtonType.BType.Empty, F10, "",false);
