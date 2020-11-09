@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseBL.cs" />
+    <Compile Include="ChakuniNyuuryokuBL.cs" />
     <Compile Include="LoginBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SoukoBL.cs" />

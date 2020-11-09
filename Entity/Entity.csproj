@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ButtonType.cs" />
+    <Compile Include="ChakuniNyuuryokuEntity.cs" />
     <Compile Include="ProgramEntity.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="IniEntity.cs" />
