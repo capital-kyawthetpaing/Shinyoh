@@ -295,15 +295,15 @@
             this.txtYubin2.IsDatatableOccurs = null;
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
-            this.txtYubin2.Location = new System.Drawing.Point(280, 91);
+            this.txtYubin2.Location = new System.Drawing.Point(217, 91);
             this.txtYubin2.MaxLength = 4;
-            this.txtYubin2.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtYubin2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYubin2.MoveNext = true;
             this.txtYubin2.Name = "txtYubin2";
             this.txtYubin2.NextControl = null;
             this.txtYubin2.NextControlName = "txtAddress1";
             this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
-            this.txtYubin2.Size = new System.Drawing.Size(100, 19);
+            this.txtYubin2.Size = new System.Drawing.Size(70, 19);
             this.txtYubin2.TabIndex = 6;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -319,13 +319,13 @@
             this.txtYubin1.IsRequire = false;
             this.txtYubin1.Location = new System.Drawing.Point(141, 91);
             this.txtYubin1.MaxLength = 3;
-            this.txtYubin1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtYubin1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin1.MoveNext = true;
             this.txtYubin1.Name = "txtYubin1";
             this.txtYubin1.NextControl = null;
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
-            this.txtYubin1.Size = new System.Drawing.Size(100, 19);
+            this.txtYubin1.Size = new System.Drawing.Size(50, 19);
             this.txtYubin1.TabIndex = 5;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -420,7 +420,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(253, 89);
+            this.label1.Location = new System.Drawing.Point(196, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 19;

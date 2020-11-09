@@ -58,6 +58,7 @@
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.NextControlName = "cbDivision";
             // 
             // lbl1
             // 
@@ -100,7 +101,7 @@
             // 
             // cbDivision
             // 
-            this.cbDivision.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.cbDivision.ComboType = Shinyoh_Controls.SCombo.CType.Position;
             this.cbDivision.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.cbDivision.FormattingEnabled = true;
             this.cbDivision.IsDatatableOccurs = null;
@@ -110,7 +111,7 @@
             this.cbDivision.MoveNext = true;
             this.cbDivision.Name = "cbDivision";
             this.cbDivision.NextControl = null;
-            this.cbDivision.NextControlName = null;
+            this.cbDivision.NextControlName = "txtSEQNO";
             this.cbDivision.Size = new System.Drawing.Size(121, 20);
             this.cbDivision.TabIndex = 3;
             // 
@@ -130,7 +131,7 @@
             this.txtSEQNO.MoveNext = true;
             this.txtSEQNO.Name = "txtSEQNO";
             this.txtSEQNO.NextControl = null;
-            this.txtSEQNO.NextControlName = null;
+            this.txtSEQNO.NextControlName = "txtPrefix";
             this.txtSEQNO.SearchType = Entity.SearchType.ScType.None;
             this.txtSEQNO.Size = new System.Drawing.Size(100, 19);
             this.txtSEQNO.TabIndex = 4;
@@ -152,10 +153,11 @@
             this.txtPrefix.MoveNext = true;
             this.txtPrefix.Name = "txtPrefix";
             this.txtPrefix.NextControl = null;
-            this.txtPrefix.NextControlName = null;
+            this.txtPrefix.NextControlName = "txtCounter";
             this.txtPrefix.SearchType = Entity.SearchType.ScType.None;
             this.txtPrefix.Size = new System.Drawing.Size(100, 19);
             this.txtPrefix.TabIndex = 5;
+            this.txtPrefix.Tag = "";
             this.txtPrefix.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lbl4

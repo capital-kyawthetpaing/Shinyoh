@@ -42,7 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ButtonType.cs" />
-    <Compile Include="ChakuniNyuuryokuEntity.cs" />
+    <Compile Include="DenpyouNOEntity.cs" />
+    <Compile Include="multipurposeEntity.cs" />
     <Compile Include="ProgramEntity.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="IniEntity.cs" />
@@ -51,7 +52,8 @@
     <Compile Include="SearchType.cs" />
     <Compile Include="SoukoEntity.cs" />
     <Compile Include="StaffEntity.cs" />
-    <Compile Include="VendorEntity.cs" />
+    <Compile Include="SiiresakiEntity.cs" />
+    <Compile Include="TokuisakiEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
