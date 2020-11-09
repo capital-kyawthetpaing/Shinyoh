@@ -23,9 +23,10 @@ namespace MasterTouroku_Siiresaki
 
         private void MasterTourokuSiiresaki_Load(object sender, EventArgs e)
         {
+            multipurposeEntity multipurposeEntity = new multipurposeEntity();
             ProgramID = "MasterTourokuSiiresaki";
             StartProgram();
-            cboMode.Bind(false);
+            cboMode.Bind(false,multipurposeEntity);
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);

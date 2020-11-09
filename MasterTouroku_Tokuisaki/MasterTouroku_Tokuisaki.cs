@@ -21,9 +21,10 @@ namespace MasterTouroku_Tokuisaki {
 
         private void MasterTouroku_Tokuisaki_Load(object sender, EventArgs e)
         {
+            multipurposeEntity multipurposeEntity = new multipurposeEntity();
             ProgramID = "MasterTourokuTokuisaki";
             StartProgram();
-            cboMode.Bind(false);
+            cboMode.Bind(false,multipurposeEntity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
             SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
