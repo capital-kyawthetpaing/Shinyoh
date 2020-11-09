@@ -1,21 +1,18 @@
 ﻿using BL;
+using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MasterTouroku_Siiresaki
 {
     public partial class MasterTourokuSiiresaki : BaseForm
     {
+        CommonFunction cf;
         StaffEntity staff_Entity;
+        multipurposeEntity multi_Entity;
         public MasterTourokuSiiresaki()
         {
             InitializeComponent();
@@ -23,10 +20,9 @@ namespace MasterTouroku_Siiresaki
 
         private void MasterTourokuSiiresaki_Load(object sender, EventArgs e)
         {
-            multipurposeEntity multipurposeEntity = new multipurposeEntity();
             ProgramID = "MasterTourokuSiiresaki";
             StartProgram();
-            cboMode.Bind(false,multipurposeEntity);
+            cboMode.Bind(false, multi_Entity);
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
@@ -52,6 +48,30 @@ namespace MasterTouroku_Siiresaki
             switch (mode)
             {
                 case Mode.New:
+                    txtSupplierCD.E102Check(true);
+                    txtChangeDate.E102Check(true);
+                    txtChangeDate.E103Check(true);
+                    txtChangeDate.E132Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate,null);
+                    txtChangeDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
+
+                    txtCopyDate.E103Check(true);
+                    txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
+                    txtCopyDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
+
+                    txtSupplierName.E102Check(true);
+                    txtShort_Name.E102Check(true);
+                    txtPayCD.E102Check(true);
+                    txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty , string.Empty);
+
+                    txtCurrency.E102Check(true);
+                    txtStaffCD.E102Check(true);
+                    txtStaffCD.E101Check(true, "M_Siiresaki", txtStaffCD, txtChangeDate, null);
+
+                    txtStartDate.E103Check(true);
+                    txtEndDate.E103Check(true);
+                    txtEndDate.E106Check(true, txtStartDate, txtEndDate);
+
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
@@ -98,25 +118,26 @@ namespace MasterTouroku_Siiresaki
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
-                {
-                    DBProcess();
-                    switch (cboMode.SelectedValue)
-                    {
-                        case "1":
-                            ChangeMode(Mode.New);
-                            break;
-                        case "2":
-                            ChangeMode(Mode.Update);
-                            break;
-                        case "3":
-                            ChangeMode(Mode.Delete);
-                            break;
-                        case "4":
-                            ChangeMode(Mode.Inquiry);
-                            break;
-                    }
-                }
+                DBProcess();
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
+                //{
+                //    DBProcess();
+                //    switch (cboMode.SelectedValue)
+                //    {
+                //        case "1":
+                //            ChangeMode(Mode.New);
+                //            break;
+                //        case "2":
+                //            ChangeMode(Mode.Update);
+                //            break;
+                //        case "3":
+                //            ChangeMode(Mode.Delete);
+                //            break;
+                //        case "4":
+                //            ChangeMode(Mode.Inquiry);
+                //            break;
+                //    }
+                //}
             }
 
             base.FunctionProcess(tagID);
@@ -134,10 +155,12 @@ namespace MasterTouroku_Siiresaki
             else if (cboMode.SelectedValue.Equals("2"))
             {
                 entity.Mode = "Update";
+                DoUpdate(entity);
             }
             else if (cboMode.SelectedValue.Equals("3"))
             {
                 entity.Mode = "Delete";
+                DoDelete(entity);
             }
         }
 
@@ -185,6 +208,58 @@ namespace MasterTouroku_Siiresaki
         {
             SiiresakiBL objMethod = new SiiresakiBL();
             objMethod.M_Siiresaki_CUD(obj);
+        }
+        private void DoUpdate(SiiresakiEntity obj)
+        {
+            SiiresakiBL objMethod = new SiiresakiBL();
+            objMethod.M_Siiresaki_CUD(obj);
+        }
+        private void DoDelete(SiiresakiEntity obj)
+        {
+            SiiresakiBL objMethod = new SiiresakiBL();
+            objMethod.M_Siiresaki_CUD(obj);
+        }
+
+        private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count>0)
+                {
+                    DataTable dt = txtYubin2.IsDatatableOccurs;
+                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                }
+            }
+        }
+
+        private void txtChangeDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtChangeDate.IsErrorOccurs)
+                {
+                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    {
+                        EnablePanel();
+                    }
+                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                    }
+                }
+                DataTable dt = txtChangeDate.IsDatatableOccurs;
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                {
+                   // From_DB_To_Form(dt);
+                }
+            }
+        }
+        private void EnablePanel()
+        {
+            cf.EnablePanel(Panel_Detail);
+            txtSupplierCD.Focus();
+            cf.DisablePanel(PanelTitle);
         }
     }
 }

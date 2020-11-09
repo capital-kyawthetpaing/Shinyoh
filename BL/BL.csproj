@@ -54,6 +54,7 @@
     <Compile Include="StaffBL.cs" />
     <Compile Include="SiiresakiBL.cs" />
     <Compile Include="TokuisakiBL.cs" />
+    <Compile Include="YuubinNOBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entity\Entity.csproj">

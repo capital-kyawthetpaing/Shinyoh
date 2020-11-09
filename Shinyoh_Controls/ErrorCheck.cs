@@ -139,9 +139,15 @@ namespace Shinyoh_Controls
                      
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
-                    case "M_Staff":// NMW(2020-10-22)
+                    case "M_Staff":
                         StaffBL sBL = new StaffBL();
                         dt = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text));
+                        rDt = dt;
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "M_Siiresaki":
+                        SiiresakiBL obj = new SiiresakiBL();
+                        dt = obj.Siiresaki_Select_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text);
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
@@ -185,6 +191,17 @@ namespace Shinyoh_Controls
                     ShowErrorMessage("E166");
                     sTextBox.Focus();
                     return (true, rDt);
+                }
+            }
+            if(sTextBox.CYuubin_Juusho)
+            {
+                if (sTextBox.ctrl1Yuubin_Juusho.Text != sTextBox.check1Yuubin_Juusho  && sTextBox.ctrl2Yuubin_Juusho.Text != sTextBox.check2Yuubin_Juusho)
+                {
+                    YuubinNOBL obj = new YuubinNOBL();
+                    YuubinNOEntity entity = new YuubinNOEntity();
+                    entity.YuubinNO1 = sTextBox.ctrl1Yuubin_Juusho.Text;
+                    entity.YuubinNO2 = sTextBox.ctrl2Yuubin_Juusho.Text;
+                    rDt = obj.Yuubin_Search(entity);
                 }
             }
             return (false, rDt);

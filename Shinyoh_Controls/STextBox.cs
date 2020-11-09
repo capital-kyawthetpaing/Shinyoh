@@ -92,6 +92,7 @@ namespace Shinyoh_Controls
         public bool E133;
         public string E133Type;
         public bool E166;
+        public bool CYuubin_Juusho;
 
         public Control ctrlE101_1;
         public Control ctrlE101_2;
@@ -110,7 +111,12 @@ namespace Shinyoh_Controls
         public Control ctrlE133_3;
         public Control ctrlE166_1;
         public Control ctrlE166_2;
-       
+
+        public Control ctrl1Yuubin_Juusho;
+        public Control ctrl2Yuubin_Juusho;
+        public string check1Yuubin_Juusho;
+        public string check2Yuubin_Juusho;
+
 
         //Constructor
         public STextBox()
@@ -295,6 +301,15 @@ namespace Shinyoh_Controls
             E166 = value;
             ctrlE166_1 = ctrl1;
             ctrlE166_2 = ctrl2;
+        }
+
+        public void Yuubin_Juusho(bool value,Control ctrl1, Control ctrl2,string check_Yuu1,string check_Yuu2)
+        {
+            CYuubin_Juusho = value;
+            ctrl1Yuubin_Juusho = ctrl1;
+            ctrl2Yuubin_Juusho = ctrl2;
+            check1Yuubin_Juusho = check_Yuu1;
+            check2Yuubin_Juusho = check_Yuu2;
         }
     }
 }
