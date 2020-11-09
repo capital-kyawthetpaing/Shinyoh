@@ -56,6 +56,17 @@ namespace Shinyoh_Search
                         
                     }
                     break;
+                case Entity.SearchType.ScType.Denpyou:
+                    Control cbo_denpyou = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+                    if (cbo_denpyou.Text != "新規")
+                    {
+                        DenpyouNoSearch denpyouSearch = new DenpyouNoSearch();
+                        denpyouSearch.ShowDialog();
+                        this.Text = denpyouSearch.counter;
+                        if (!string.IsNullOrWhiteSpace(denpyouSearch.counter))
+                            SendKeys.Send("{ENTER}");
+                    }
+                    break;
             }
         }
     }

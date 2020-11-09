@@ -48,7 +48,7 @@ namespace MasterTouroku_DenpyouNO
         public DenpyouNOEntity GetData()
         {
             DenpyouNOEntity entity = new DenpyouNOEntity();
-            entity.RenbenKBN = OperatorCD;
+            entity.OperatorCD = OperatorCD;
             entity.ProgramID = ProgramID;
             entity.PC = PCID;
             return entity;
@@ -65,12 +65,20 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.New:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
+                    Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnNew.Visible = true;
                     break;
                 case Mode.Update:
+                    Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
+                    Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
+                    Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnInquiry.Visible = false;
                     break;
             }
         }
@@ -120,34 +128,102 @@ namespace MasterTouroku_DenpyouNO
 
         private void DBProcess()
         {
-            //SoukoEntity soukoEntity = GetSouko();
-            //if (cboMode.SelectedValue.Equals("1"))
-            //{
-            //    soukoEntity.Mode = "New";
-            //    DoInsert(soukoEntity);
-            //}
-            //else if (cboMode.SelectedValue.Equals("2"))
-            //{
-            //    soukoEntity.Mode = "Update";
-            //    DoUpdate(soukoEntity);
-            //}
-            //else if (cboMode.SelectedValue.Equals("3"))
-            //{
-            //    soukoEntity.Mode = "Delete";
-            //    DoDelete(soukoEntity);
-            //}
+            DenpyouNOEntity DNOEntity = getDenpyou();
+            if (cboMode.SelectedValue.Equals("1"))
+            {
+                DNOEntity.Mode = "New";
+                Insert(DNOEntity);
+            }
+            else if (cboMode.SelectedValue.Equals("2"))
+            {
+                DNOEntity.Mode = "Update";
+                Update(DNOEntity);
+            }
+            else if (cboMode.SelectedValue.Equals("3"))
+            {
+                DNOEntity.Mode = "Delete";
+                Delete(DNOEntity);
+            }
         }
 
-        //private DenpyouNOEntity getDenpyou()
-        //{
-        //    DenpyouNOEntity DNOentity = new DenpyouNOEntity();
-        //    DNOentity.division1 = cbDivision.SelectedIndex.ToString();
-        //    DNOentity.seqno = txtSEQNO.Text;
-        //    DNOentity.prefix = txtPrefix.Text;
-        //    DNOentity.InsertOperator = entity.SoukoCD;
-        //    DNOentity.UpdateOperator = entity.SoukoCD;
-        //    DNOentity.PC = entity.PC;
-        //    DNOentity.ProgramID = entity.ProgramID;
-        //}
+        private DenpyouNOEntity getDenpyou()
+        {
+            DenpyouNOEntity DNOentity = new DenpyouNOEntity();
+            DNOentity.RenbenKBN = cbDivision.SelectedIndex.ToString();
+            DNOentity.seqno = txtSEQNO.Text;
+            DNOentity.prefix = txtPrefix.Text;
+            DNOentity.InsertOperator = entity.OperatorCD;
+            DNOentity.UpdateOperator = entity.OperatorCD;
+            DNOentity.PC = entity.PC;
+            DNOentity.ProgramID = entity.ProgramID;
+            DNOentity.KeyItem = txtSEQNO.Text;
+            return DNOentity;
+        }
+
+        private void Insert(DenpyouNOEntity DNOEntity)
+        {
+
+        }
+
+        private void Update(DenpyouNOEntity DNOEntity)
+        {
+
+        }
+
+        private void Delete(DenpyouNOEntity DNOEntity)
+        {
+
+        }
+
+        private void txtSEQNO_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtSEQNO.IsErrorOccurs)
+                {
+                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    {
+                        EnableAndDisablePanel();
+                    }
+                }
+                DataTable dt = txtSEQNO.IsDatatableOccurs;
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                {
+                    soukoSelect(dt);
+                    cf.DisablePanel(PanelTitle);
+                }
+            }
+        }
+
+        private void EnableAndDisablePanel()
+        {
+            cf.EnablePanel(PanelDetail);
+            txtCounter.Focus();
+            cf.DisablePanel(PanelTitle);
+        }
+
+        private void soukoSelect(DataTable dt)
+        {
+            if (dt.Rows.Count > 0)
+            {
+                if (dt.Rows[0]["MessageID"].ToString() == "E132")
+                {
+                    txtCounter.Text = dt.Rows[0]["Counter"].ToString();
+                }
+            }
+        }
+
+        private void txtPrefix_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
+            {
+                if (!txtPrefix.IsErrorOccurs)
+                {
+                    EnableAndDisablePanel();
+                    DataTable dt = txtPrefix.IsDatatableOccurs;
+                    soukoSelect(dt);
+                }
+            }
+        }
     }
 }
