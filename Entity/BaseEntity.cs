@@ -11,6 +11,7 @@ namespace Entity
         public string PC { get; set; }
         public string Mode { get; set; }
         public string MessageID { get; set; }
+        public string OperatorCD { get; set; }
         public string ProgramID { get; set; }
         public string InsertOperator { get; set; }
         public DateTime InsertDateTime { get; set; }
