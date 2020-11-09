@@ -185,14 +185,14 @@
             // 
             // rdo_Registragion
             // 
-            this.rdo_Registragion.AutoSize = true;
+            this.rdo_Registragion.Checked = true;
             this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.rdo_Registragion.Location = new System.Drawing.Point(615, 9);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
             this.rdo_Registragion.NextControl = null;
             this.rdo_Registragion.NextControlName = "chk_Flag";
-            this.rdo_Registragion.Size = new System.Drawing.Size(49, 16);
+            this.rdo_Registragion.Size = new System.Drawing.Size(49, 19);
             this.rdo_Registragion.TabIndex = 5;
             this.rdo_Registragion.TabStop = true;
             this.rdo_Registragion.Text = "登録";
@@ -200,16 +200,14 @@
             // 
             // rdo_Delete
             // 
-            this.rdo_Delete.AutoSize = true;
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.rdo_Delete.Location = new System.Drawing.Point(712, 9);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
             this.rdo_Delete.NextControlName = "chk_Flag";
-            this.rdo_Delete.Size = new System.Drawing.Size(49, 16);
+            this.rdo_Delete.Size = new System.Drawing.Size(49, 19);
             this.rdo_Delete.TabIndex = 0;
-            this.rdo_Delete.TabStop = true;
             this.rdo_Delete.Text = "削除";
             this.rdo_Delete.UseVisualStyleBackColor = true;
             // 
@@ -324,6 +322,7 @@
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(90, 19);
             this.txtSearch.TabIndex = 30;
+            this.txtSearch.Text = "0";
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -943,6 +942,7 @@
             this.txtYubin2.Size = new System.Drawing.Size(70, 19);
             this.txtYubin2.TabIndex = 12;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
             // 
             // txtYubin1
             // 
@@ -1186,6 +1186,7 @@
             this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
             this.txtChangeDate.TabIndex = 2;
             this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtChangeDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChangeDate_KeyDown);
             // 
             // txtCopyCD
             // 
@@ -1245,7 +1246,6 @@
             this.Controls.SetChildIndex(this.Panel_Detail, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
-            this.PanelTitle.PerformLayout();
             this.Panel_Detail.ResumeLayout(false);
             this.Panel_Detail.PerformLayout();
             this.ResumeLayout(false);

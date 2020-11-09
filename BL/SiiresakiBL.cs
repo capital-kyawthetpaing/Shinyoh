@@ -15,7 +15,7 @@ namespace BL
         public string M_Siiresaki_CUD(SiiresakiEntity obj)
         {
             CKMDL ckmdl = new CKMDL();
-            obj.Sqlprms = new SqlParameter[30];
+            obj.Sqlprms = new SqlParameter[34];
             obj.Sqlprms[0] = new SqlParameter("@SiiresakiCD", SqlDbType.VarChar) { Value = obj.SiiresakiCD };
             obj.Sqlprms[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate };
             obj.Sqlprms[2] = new SqlParameter("@ShokutiFLG", SqlDbType.VarChar) { Value = obj.ShokutiFLG };
@@ -43,14 +43,24 @@ namespace BL
             obj.Sqlprms[24] = new SqlParameter("@TorihikiShuuryouDate", SqlDbType.VarChar) { Value = obj.TorihikiShuuryouDate };
             obj.Sqlprms[25] = new SqlParameter("@Remarks", SqlDbType.VarChar) { Value = obj.Remarks };
             obj.Sqlprms[26] = new SqlParameter("@KensakuHyouziJun", SqlDbType.VarChar) { Value = obj.KensakuHyouziJun };
+            obj.Sqlprms[27] = new SqlParameter("@UsedFlg", SqlDbType.VarChar) { Value = obj.UsedFlg };
 
-            obj.Sqlprms[27] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = obj.InsertOperator };
-            obj.Sqlprms[28] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = obj.UpdateOperator };
-            obj.Sqlprms[29] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = obj.Mode };
-            obj.Sqlprms[30] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = "MasterTourokuSiiresaki" };
-            obj.Sqlprms[31] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
+            obj.Sqlprms[28] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = obj.InsertOperator };
+            obj.Sqlprms[29] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = obj.UpdateOperator };
+            obj.Sqlprms[30] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = obj.Mode };
+            obj.Sqlprms[31] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = "MasterTourokuSiiresaki" };
+            obj.Sqlprms[32] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
+            obj.Sqlprms[33] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
             return ckmdl.InsertUpdateDeleteData("M_Siiresaki_CUD", GetConnectionString(), obj.Sqlprms);
         }
-
+        public DataTable Siiresaki_Select_Check(string supplierCD,string changeDate)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@SiiresakiCD", SqlDbType.VarChar) { Value = supplierCD };
+            parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = changeDate };
+            DataTable dt = ckmdl.SelectDatatable("Siiresaki_Select_Check", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }

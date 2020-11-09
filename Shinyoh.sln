@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30621.155
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinyoh", "Shinyoh\Shinyoh.csproj", "{697E1304-F141-4CCE-B816-9CC225F441C4}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_Siiresaki", "MasterTouroku_Siiresaki\MasterTouroku_Siiresaki.csproj", "{693D0778-C77F-48E2-9C30-9E0D643CF02C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_DenpyouNO", "MasterTouroku_DenpyouNO\MasterTouroku_DenpyouNO.csproj", "{EDA3E08A-CA50-4BAB-A004-BCB284ABE3E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChakuniNyuuryoku", "..\..\..\..\..\..\SES\ShinyonBackup\ChakuniNyuuryoku.csproj", "{2F8DB9C1-F413-4E41-85BD-47CEDF4F25B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{EDA3E08A-CA50-4BAB-A004-BCB284ABE3E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDA3E08A-CA50-4BAB-A004-BCB284ABE3E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDA3E08A-CA50-4BAB-A004-BCB284ABE3E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F8DB9C1-F413-4E41-85BD-47CEDF4F25B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F8DB9C1-F413-4E41-85BD-47CEDF4F25B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F8DB9C1-F413-4E41-85BD-47CEDF4F25B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F8DB9C1-F413-4E41-85BD-47CEDF4F25B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

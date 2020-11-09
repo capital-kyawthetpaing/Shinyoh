@@ -15,6 +15,7 @@ namespace Shinyoh_Search
 {
     public partial class ArrivalNOSearch : SearchBase
     {
+        public string ChakuniNO = string.Empty;
         public ArrivalNOSearch()
         {
             InitializeComponent();
@@ -44,20 +45,24 @@ namespace Shinyoh_Search
         {
             
         }
-
+        private void GetGridviewData(DataGridViewRow gvrow)
+        {
+            if (gvrow.DataBoundItem != null)
+            {
+                DataGridViewRow row = gvrow;
+                ChakuniNO = row.Cells["colChakuniNO"].Value.ToString();
+                this.Close();
+            }
+        }
         private void sButton2_Click(object sender, EventArgs e)
         {
-            FunctionProcess(sButton2.Tag.ToString());
+            FunctionProcess(btnSearch.Tag.ToString());
             GridViewBind();
         }
 
         private void gvArrivalNo_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvArrivalNo.Rows[e.RowIndex]);
-        }
-        private void GetGridviewData(DataGridViewRow gvrow)
-        {
-            
         }
         private void ErrorCheck()
         {
@@ -67,6 +72,7 @@ namespace Shinyoh_Search
             txtExpectedDateFrom.E103Check(true);
             txtExpectedDateTo.E103Check(true);
             txtExpectedDateTo.E106Check(true, txtExpectedDateFrom, txtExpectedDateTo);
+            sbStaff.E101Check(true, "staff", null, null, null);
             txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
             txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
         }
