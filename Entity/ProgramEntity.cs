@@ -2,7 +2,6 @@
 {
     public class ProgramEntity : BaseEntity
     {
-        public string ProgramID { get; set; }
         public string ProgramName { get; set; }
         public string Insertable { get; set; }
         public string Updatable { get; set; }
