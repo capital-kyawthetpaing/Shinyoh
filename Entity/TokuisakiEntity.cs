@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entity {
    public class TokuisakiEntity : BaseEntity{
-        //Total count 31
+        //Total count 29
         public string TokuisakiCD { get; set; } // --得意先
         public string ChangeDate { get; set; } //--改定日
         public int ShokutiFLG { get; set; } //--諸口区分[1:諸口]
@@ -36,10 +36,5 @@ namespace Entity {
         public int ShukkaSizishoHuyouKBN { get; set; }
         public string Remarks { get; set; } // --備考
         public int UsedFlg { get; set; } //  --使用済FLG[1:既にデータ発生済]
-        public string InsertOperator { get; set; }//--  新規登録者 
-        public string UpdateOperator { get; set; }//  --  変更登録者   
-
-        //for log table
-        public string KeyItem { get; set; }
     }
 }

@@ -97,6 +97,7 @@ namespace MasterTouroku_Tokuisaki {
                 {
                     DBProcess();
                 }
+                
                 //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
                 //{
                 //    if(sRadRegister.Checked == true)
@@ -121,7 +122,7 @@ namespace MasterTouroku_Tokuisaki {
                 //}
             }
 
-            base.FunctionProcess(tagID);
+                base.FunctionProcess(tagID);
         }
 
         private void DBProcess()
@@ -136,10 +137,12 @@ namespace MasterTouroku_Tokuisaki {
             else if (cboMode.SelectedValue.Equals("2"))
             {
                 tokuisaki.Mode = "Update";
+                DoUpdate(tokuisaki);
             }
             else if (cboMode.SelectedValue.Equals("3"))
             {
                 tokuisaki.Mode = "Delete";
+                DoDelete(tokuisaki);
             }
         }
 
@@ -192,6 +195,80 @@ namespace MasterTouroku_Tokuisaki {
         {
             TokuisakiBL bl = new TokuisakiBL();
             bl.M_Tokuisaki_CUD(tokuisakiEntity);
+        }
+        private void DoUpdate(TokuisakiEntity tokuisakiEntity)
+        {
+            TokuisakiBL bl = new TokuisakiBL();
+            bl.M_Tokuisaki_CUD(tokuisakiEntity);
+        }
+        private void DoDelete(TokuisakiEntity tokuisakiEntity)
+        {
+            TokuisakiBL bl = new TokuisakiBL();
+            bl.M_Tokuisaki_CUD(tokuisakiEntity);
+        }
+        private void From_DB_To_TokuForm(DataTable dt)
+        {
+           if(dt.Rows.Count > 0)
+            {
+                if (dt.Rows[0]["MessageID"].ToString() == "E132")
+                {
+                    //if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
+                    //{
+                    //    chk.Checked = true;
+                    //}
+                    //else
+                    //    chk.Checked = false;
+                    txtTokuisakiName.Text = dt.Rows[0]["TokuisakiName"].ToString();
+                    txtShortName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                    txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
+                    txtBillAddress.Text = dt.Rows[0]["SeikyuusakiCD"].ToString();
+
+                    //if (dt.Rows[0]["AliasKBN"].ToString().Equals("1"))
+                    //{
+                    //    RadSaMa.Checked = true;
+                    //}
+                    //else
+                    //    RadSaMa.Checked = false;
+
+                    txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
+                    txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
+                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                    txtPhNo1.Text = dt.Rows[0]["Tel11"].ToString();
+                    txtPhNo2.Text = dt.Rows[0]["Tel12"].ToString();
+                    txtPhNo3.Text = dt.Rows[0]["Tel13"].ToString();
+                    txtPhNo4.Text = dt.Rows[0]["Tel21"].ToString();
+                    txtPhNo5.Text = dt.Rows[0]["Tel22"].ToString();
+                    txtPhNo6.Text = dt.Rows[0]["Tel23"].ToString();
+                    txtDepCharge.Text = dt.Rows[0]["TantouBusho"].ToString();
+                    txtJobTitle.Text = dt.Rows[0]["TantouYakushoku"].ToString();
+                    txtPersonCharge.Text = dt.Rows[0]["TantoushaName"].ToString();
+                    txtMailAddress.Text = dt.Rows[0]["MailAddress"].ToString();
+                    txtStaffCharge.Text = dt.Rows[0]["StaffCD"].ToString();
+                    txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
+                    txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
+                    txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
+                    txtSearch.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
+                }
+            }
+        }
+
+        private void txtTokuisaki_CopyDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
+            {
+                txtTokuisakiName.Focus();
+                DataTable dt = txtTokuisaki_CopyDate.IsDatatableOccurs;
+                if (dt.Rows.Count > 0)
+                    From_DB_To_TokuForm(dt);
+                //if (!txtTokuisaki_CopyDate.IsErrorOccurs)
+                //{
+                //   // EnablePanel();
+                //    DataTable dt = txtTokuisaki_CopyDate.IsDatatableOccurs;
+                //    if (dt.Rows.Count > 0)
+                //        From_DB_To_TokuForm(dt);
+                //}
+            }
         }
     }
 }

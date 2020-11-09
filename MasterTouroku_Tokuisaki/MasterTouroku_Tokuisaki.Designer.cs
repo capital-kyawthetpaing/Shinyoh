@@ -161,6 +161,7 @@
             this.txtTokuisaki_CopyDate.Size = new System.Drawing.Size(100, 19);
             this.txtTokuisaki_CopyDate.TabIndex = 4;
             this.txtTokuisaki_CopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtTokuisaki_CopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisaki_CopyDate_KeyDown);
             // 
             // lblTokuisaki
             // 
