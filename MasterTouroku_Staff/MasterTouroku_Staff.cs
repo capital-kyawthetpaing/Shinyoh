@@ -25,12 +25,14 @@ namespace MasterTouroku_Staff
 
         private void MasterTouroku_Staff_Load(object sender, EventArgs e)
         {
+            multipurposeEntity multipurpose_entity = new multipurposeEntity();
+            multipurpose_entity.id = 214;
             ProgramID = "MasterTourokuStaff";
             StartProgram();
-            cboMode.Bind(false);
-            cboStaff_Menu.Bind(true);
-            cboStaff_authority.Bind(true);
-            cboStaff_Position.Bind(true);
+            cboMode.Bind(false, multipurpose_entity);
+            cboStaff_Menu.Bind(true, multipurpose_entity);
+            cboStaff_authority.Bind(true, multipurpose_entity);
+            cboStaff_Position.Bind(true, multipurpose_entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
             SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);

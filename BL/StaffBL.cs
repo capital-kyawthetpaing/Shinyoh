@@ -29,6 +29,7 @@ namespace BL
             if(dtStaff.Rows.Count>0)
             {
                 staffEntity.StaffName = dtStaff.Rows[0]["StaffName"].ToString();
+                staffEntity.LoginDate = dtStaff.Rows[0]["LoginDate"].ToString();
             }
 
             return staffEntity;
@@ -66,29 +67,7 @@ namespace BL
                 return null;
             }
         }
-
-        
-        public DataTable GetMenu()
-        {
-            var parameters = new SqlParameter[] { };
-            DataTable dt = ckmdl.SelectDatatable("M_Menu_Select", GetConnectionString(),parameters);
-            return dt;
-        }
-        
-        public DataTable GetAuthorization()
-        {
-            var parameters = new SqlParameter[] { };
-            DataTable dt = ckmdl.SelectDatatable("M_Authorization_Select", GetConnectionString(), parameters);
-            return dt;
-        }
-        
-        public DataTable GetPosition()
-        {
-            var parameters = new SqlParameter[] { };
-            DataTable dt = ckmdl.SelectDatatable("M_MultiPorpose_Select", GetConnectionString(), parameters);
-            return dt;
-        }
-       
+               
         public string M_Staff_CUD(MasterTourokuStaff obj)
         {
             CKMDL ckmdl = new CKMDL();

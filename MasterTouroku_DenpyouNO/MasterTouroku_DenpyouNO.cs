@@ -21,10 +21,12 @@ namespace MasterTouroku_DenpyouNO
 
         private void MasterTouroku_DenpyouNO_Load(object sender, EventArgs e)
         {
+            multipurposeEntity multipurpose_entity = new multipurposeEntity();
+            multipurpose_entity.id = 101;
             ProgramID = "MasterTourokuSouko";
             StartProgram();
-            cboMode.Bind(false);
-            cbDivision.Bind(true);
+            cboMode.Bind(false, multipurpose_entity);
+            cbDivision.Bind(true, multipurpose_entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
             SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);

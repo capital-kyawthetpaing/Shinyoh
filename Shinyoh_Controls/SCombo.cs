@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using BL;
 using CKM_CommonFunction;
+using Entity;
 
 namespace Shinyoh_Controls
 {
@@ -51,9 +52,9 @@ namespace Shinyoh_Controls
             base.MinimumSize = new Size(100, 19);
         }
 
-        public void Bind(bool UseBlankRow)
+        public void Bind(bool UseBlankRow, multipurposeEntity multipurpose_entity)
         {
-            StaffBL staffBL = new StaffBL();
+            multipurposeBL multipurposeBL = new multipurposeBL();
             DataTable dtCombo;
             switch (ComboType)
             {       
@@ -72,7 +73,7 @@ namespace Shinyoh_Controls
                     dtCombo = new DataTable();
                     dtCombo.Columns.Add("MenuID");
                     dtCombo.Columns.Add("MenuName");
-                    DataTable dt = staffBL.GetMenu();
+                    DataTable dt = multipurposeBL.GetMenu();
                     for(int i=0;i< dt.Rows.Count;i++)
                     {
                         dtCombo.Rows.Add(dt.Rows[i]["MenuID"], dt.Rows[i]["MenuName"]);
@@ -83,7 +84,7 @@ namespace Shinyoh_Controls
                     dtCombo = new DataTable();
                     dtCombo.Columns.Add("AuthorizationsCD");
                     dtCombo.Columns.Add("AuthorizationsName");
-                    DataTable dtA = staffBL.GetAuthorization();
+                    DataTable dtA = multipurposeBL.GetAuthorization();
                     for (int i = 0; i < dtA.Rows.Count; i++)
                     {
                         dtCombo.Rows.Add(dtA.Rows[i]["AuthorizationsCD"], dtA.Rows[i]["AuthorizationsName"]);
@@ -94,7 +95,7 @@ namespace Shinyoh_Controls
                     dtCombo = new DataTable();
                     dtCombo.Columns.Add("Key");
                     dtCombo.Columns.Add("Char1");
-                    DataTable dtP = staffBL.GetPosition();
+                    DataTable dtP = multipurposeBL.GetPosition(multipurpose_entity);
                     for (int i = 0; i < dtP.Rows.Count; i++)
                     {
                         dtCombo.Rows.Add(dtP.Rows[i]["Key"], dtP.Rows[i]["Char20"]);
