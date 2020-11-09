@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using BL;
+using Entity;
 using Shinyoh;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ using System.Windows.Forms;
 
 namespace MasterTouroku_Tokuisaki {
     public partial class MasterTouroku_Tokuisaki : BaseForm {
+        StaffEntity staff_Entity;
         public MasterTouroku_Tokuisaki()
         {
             InitializeComponent();
@@ -35,6 +37,161 @@ namespace MasterTouroku_Tokuisaki {
             SetButton(ButtonType.BType.Empty, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             txt_Tokuisaki.Focus();
+            ChangeMode(Mode.New);
+            sRadRegister.Checked = true;
+            staff_Entity = GetBaseData();
+        }
+
+        private void ChangeMode(Mode mode)
+        {
+            switch (mode)
+            {
+                case Mode.New:
+                    Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnNew.Visible = true;
+                    break;
+
+                case Mode.Update:
+
+
+                    Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnUpdate.Visible = true;
+                    break;
+                case Mode.Delete:
+
+
+                    Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnDelete.Visible = true;
+
+                    break;
+                case Mode.Inquiry:
+
+
+                    Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btnInquiry.Visible = false;
+                    break;
+            }
+        }
+        public override void FunctionProcess(string tagID)
+        {
+            if (tagID == "2")
+            {
+                ChangeMode(Mode.New);
+            }
+            if (tagID == "3")
+            {
+                ChangeMode(Mode.Update);
+            }
+            if (tagID == "4")
+            {
+                ChangeMode(Mode.Delete);
+            }
+            if (tagID == "5")
+            {
+                ChangeMode(Mode.Inquiry);
+            }
+            if (tagID == "12")
+            {
+                if (sRadRegister.Checked == true)
+                {
+                    DBProcess();
+                }
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                //{
+                //    if(sRadRegister.Checked == true)
+                //    {
+                //        DBProcess();
+                //    }
+                //    switch (cboMode.SelectedValue)
+                //    {
+                //        case "1":
+                //            ChangeMode(Mode.New);
+                //            break;
+                //        case "2":
+                //            ChangeMode(Mode.Update);
+                //            break;
+                //        case "3":
+                //            ChangeMode(Mode.Delete);
+                //            break;
+                //        case "4":
+                //            ChangeMode(Mode.Inquiry);
+                //            break;
+                //    }
+                //}
+            }
+
+            base.FunctionProcess(tagID);
+        }
+
+        private void DBProcess()
+        {
+            TokuisakiEntity tokuisaki = GetInsert();
+
+            if (cboMode.SelectedValue.Equals("1"))
+            {
+                tokuisaki.Mode = "New";
+                DoInsert(tokuisaki);
+            }
+            else if (cboMode.SelectedValue.Equals("2"))
+            {
+                tokuisaki.Mode = "Update";
+            }
+            else if (cboMode.SelectedValue.Equals("3"))
+            {
+                tokuisaki.Mode = "Delete";
+            }
+        }
+
+        private TokuisakiEntity GetInsert()
+        {
+            TokuisakiEntity obj = new TokuisakiEntity();
+            obj.TokuisakiCD = txt_Tokuisaki.Text;
+            obj.ChangeDate = txtChange_Date.Text;
+            obj.ShokutiFLG = chk.Checked ? 1 : 0;
+            if (RadSaMa.Checked == true || RadOnchuu.Checked == true)
+            {
+                obj.AliasKBN = 1;
+            }else
+                obj.AliasKBN = 0;
+            obj.ShukkaSizishoHuyouKBN = 0;
+            obj.TokuisakiName = txtTokuisakiName.Text;
+            obj.TokuisakiRyakuName = txtShortName.Text;
+            obj.KanaName = txtKanaName.Text;
+            obj.SeikyuusakiCD = txtBillAddress.Text;
+            obj.YuubinNO1 = txtYubin1.Text;
+            obj.YuubinNO2 = txtYubin2.Text;
+            obj.Juusho1 = txtAddress1.Text;
+            obj.Juusho2 = txtAddress2.Text;
+            obj.Tel11 = txtPhNo1.Text;
+            obj.Tel12 = txtPhNo2.Text;
+            obj.Tel13 = txtPhNo3.Text;
+            obj.Tel21 = txtPhNo4.Text;
+            obj.Tel22 = txtPhNo5.Text;
+            obj.Tel23 = txtPhNo6.Text;
+            obj.TantouBusho = txtDepCharge.Text;
+            obj.TantouYakushoku = txtJobTitle.Text;
+            obj.TantoushaName = txtPersonCharge.Text;
+            obj.MailAddress = txtMailAddress.Text;
+            obj.StaffCD = txtStaffCharge.Text;
+            obj.TorihikiKaisiDate = txtStartDate.Text;
+            obj.TorihikiShuuryouDate = txtEndDate.Text;
+            obj.Remarks = txtRemark.Text;
+            obj.KensakuHyouziJun = txtSearch.Text;
+            obj.UsedFlg = 0;
+            obj.InsertOperator = staff_Entity.StaffCD;
+            obj.UpdateOperator = staff_Entity.StaffCD;
+
+            //for log table
+            obj.PC = staff_Entity.PC;
+            obj.KeyItem = txt_Tokuisaki.Text + " " + txtChange_Date.Text;
+            return obj;
+        }
+
+        private void DoInsert(TokuisakiEntity tokuisakiEntity)
+        {
+            TokuisakiBL bl = new TokuisakiBL();
+            bl.M_Tokuisaki_CUD(tokuisakiEntity);
         }
     }
 }
+

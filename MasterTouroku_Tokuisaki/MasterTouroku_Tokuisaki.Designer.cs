@@ -32,7 +32,7 @@
             this.lblDate1 = new Shinyoh_Controls.SLabel();
             this.lblTokuisaki_CopyDate = new Shinyoh_Controls.SLabel();
             this.txtTokuisaki_Copy = new Shinyoh_Controls.STextBox();
-            this.txtTokuisaki_Date = new Shinyoh_Controls.STextBox();
+            this.txtChange_Date = new Shinyoh_Controls.STextBox();
             this.lblTokuisaki_Copy = new Shinyoh_Controls.SLabel();
             this.lbImportClassification = new Shinyoh_Controls.SLabel();
             this.sRadRegister = new Shinyoh_Controls.SRadio();
@@ -109,7 +109,7 @@
             this.PanelTitle.Controls.Add(this.lblDate1);
             this.PanelTitle.Controls.Add(this.lblTokuisaki_CopyDate);
             this.PanelTitle.Controls.Add(this.txtTokuisaki_Copy);
-            this.PanelTitle.Controls.Add(this.txtTokuisaki_Date);
+            this.PanelTitle.Controls.Add(this.txtChange_Date);
             this.PanelTitle.Controls.Add(this.lblTokuisaki_Copy);
             this.PanelTitle.Size = new System.Drawing.Size(1000, 75);
             // 
@@ -134,7 +134,7 @@
             this.txt_Tokuisaki.MoveNext = true;
             this.txt_Tokuisaki.Name = "txt_Tokuisaki";
             this.txt_Tokuisaki.NextControl = null;
-            this.txt_Tokuisaki.NextControlName = "txtTokuisaki_Date";
+            this.txt_Tokuisaki.NextControlName = "txtChange_Date";
             this.txt_Tokuisaki.SearchType = Entity.SearchType.ScType.Staff;
             this.txt_Tokuisaki.Size = new System.Drawing.Size(80, 19);
             this.txt_Tokuisaki.TabIndex = 1;
@@ -223,27 +223,27 @@
             this.txtTokuisaki_Copy.TabIndex = 3;
             this.txtTokuisaki_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtTokuisaki_Date
+            // txtChange_Date
             // 
-            this.txtTokuisaki_Date.AllowMinus = false;
-            this.txtTokuisaki_Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTokuisaki_Date.DecimalPlace = 0;
-            this.txtTokuisaki_Date.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtTokuisaki_Date.IntegerPart = 0;
-            this.txtTokuisaki_Date.IsDatatableOccurs = null;
-            this.txtTokuisaki_Date.IsErrorOccurs = false;
-            this.txtTokuisaki_Date.IsRequire = false;
-            this.txtTokuisaki_Date.Location = new System.Drawing.Point(117, 34);
-            this.txtTokuisaki_Date.MaxLength = 10;
-            this.txtTokuisaki_Date.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtTokuisaki_Date.MoveNext = true;
-            this.txtTokuisaki_Date.Name = "txtTokuisaki_Date";
-            this.txtTokuisaki_Date.NextControl = null;
-            this.txtTokuisaki_Date.NextControlName = "txtTokuisaki_Copy";
-            this.txtTokuisaki_Date.SearchType = Entity.SearchType.ScType.None;
-            this.txtTokuisaki_Date.Size = new System.Drawing.Size(100, 19);
-            this.txtTokuisaki_Date.TabIndex = 2;
-            this.txtTokuisaki_Date.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtChange_Date.AllowMinus = false;
+            this.txtChange_Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtChange_Date.DecimalPlace = 0;
+            this.txtChange_Date.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtChange_Date.IntegerPart = 0;
+            this.txtChange_Date.IsDatatableOccurs = null;
+            this.txtChange_Date.IsErrorOccurs = false;
+            this.txtChange_Date.IsRequire = false;
+            this.txtChange_Date.Location = new System.Drawing.Point(117, 34);
+            this.txtChange_Date.MaxLength = 10;
+            this.txtChange_Date.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtChange_Date.MoveNext = true;
+            this.txtChange_Date.Name = "txtChange_Date";
+            this.txtChange_Date.NextControl = null;
+            this.txtChange_Date.NextControlName = "txtTokuisaki_Copy";
+            this.txtChange_Date.SearchType = Entity.SearchType.ScType.None;
+            this.txtChange_Date.Size = new System.Drawing.Size(100, 19);
+            this.txtChange_Date.TabIndex = 2;
+            this.txtChange_Date.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblTokuisaki_Copy
             // 
@@ -273,14 +273,13 @@
             // 
             // sRadRegister
             // 
-            this.sRadRegister.AutoSize = true;
             this.sRadRegister.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sRadRegister.Location = new System.Drawing.Point(668, 11);
             this.sRadRegister.MoveNext = true;
             this.sRadRegister.Name = "sRadRegister";
             this.sRadRegister.NextControl = null;
             this.sRadRegister.NextControlName = "sRadDelete";
-            this.sRadRegister.Size = new System.Drawing.Size(49, 16);
+            this.sRadRegister.Size = new System.Drawing.Size(49, 19);
             this.sRadRegister.TabIndex = 5;
             this.sRadRegister.TabStop = true;
             this.sRadRegister.Text = "登録";
@@ -288,14 +287,13 @@
             // 
             // sRadDelete
             // 
-            this.sRadDelete.AutoSize = true;
             this.sRadDelete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sRadDelete.Location = new System.Drawing.Point(740, 11);
             this.sRadDelete.MoveNext = true;
             this.sRadDelete.Name = "sRadDelete";
             this.sRadDelete.NextControl = null;
             this.sRadDelete.NextControlName = "chk";
-            this.sRadDelete.Size = new System.Drawing.Size(49, 16);
+            this.sRadDelete.Size = new System.Drawing.Size(49, 19);
             this.sRadDelete.TabIndex = 6;
             this.sRadDelete.TabStop = true;
             this.sRadDelete.Text = "削除";
@@ -364,11 +362,15 @@
             // 
             // chk
             // 
-            this.chk.AutoSize = true;
             this.chk.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.chk.IsDatatableOccurs = null;
+            this.chk.IsErrorOccurs = false;
             this.chk.Location = new System.Drawing.Point(152, 21);
+            this.chk.MoveNext = true;
             this.chk.Name = "chk";
-            this.chk.Size = new System.Drawing.Size(15, 14);
+            this.chk.NextControl = null;
+            this.chk.NextControlName = "txtTokuisakiName";
+            this.chk.Size = new System.Drawing.Size(15, 19);
             this.chk.TabIndex = 7;
             this.chk.UseVisualStyleBackColor = true;
             // 
@@ -775,14 +777,13 @@
             // 
             // RadOnchuu
             // 
-            this.RadOnchuu.AutoSize = true;
             this.RadOnchuu.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.RadOnchuu.Location = new System.Drawing.Point(233, 189);
             this.RadOnchuu.MoveNext = true;
             this.RadOnchuu.Name = "RadOnchuu";
             this.RadOnchuu.NextControl = null;
             this.RadOnchuu.NextControlName = "txtYubin1";
-            this.RadOnchuu.Size = new System.Drawing.Size(49, 16);
+            this.RadOnchuu.Size = new System.Drawing.Size(49, 19);
             this.RadOnchuu.TabIndex = 13;
             this.RadOnchuu.TabStop = true;
             this.RadOnchuu.Text = "御中\t\t";
@@ -790,14 +791,13 @@
             // 
             // RadSaMa
             // 
-            this.RadSaMa.AutoSize = true;
             this.RadSaMa.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.RadSaMa.Location = new System.Drawing.Point(161, 189);
             this.RadSaMa.MoveNext = true;
             this.RadSaMa.Name = "RadSaMa";
             this.RadSaMa.NextControl = null;
             this.RadSaMa.NextControlName = "RadOnchuu";
-            this.RadSaMa.Size = new System.Drawing.Size(36, 16);
+            this.RadSaMa.Size = new System.Drawing.Size(36, 19);
             this.RadSaMa.TabIndex = 12;
             this.RadSaMa.TabStop = true;
             this.RadSaMa.Text = "様\t\t";
@@ -909,7 +909,7 @@
             this.txtShortName.SearchType = Entity.SearchType.ScType.None;
             this.txtShortName.Size = new System.Drawing.Size(250, 19);
             this.txtShortName.TabIndex = 9;
-            this.txtShortName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtShortName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblShortName
             // 
@@ -1255,7 +1255,6 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
-            this.PanelTitle.PerformLayout();
             this.PanelDetail.ResumeLayout(false);
             this.PanelDetail.PerformLayout();
             this.ResumeLayout(false);
@@ -1271,7 +1270,7 @@
         private Shinyoh_Controls.SLabel lblDate1;
         private Shinyoh_Controls.SLabel lblTokuisaki_CopyDate;
         private Shinyoh_Controls.STextBox txtTokuisaki_Copy;
-        private Shinyoh_Controls.STextBox txtTokuisaki_Date;
+        private Shinyoh_Controls.STextBox txtChange_Date;
         private Shinyoh_Controls.SLabel lblTokuisaki_Copy;
         private Shinyoh_Controls.SLabel lbImportClassification;
         private Shinyoh_Controls.SRadio sRadDelete;

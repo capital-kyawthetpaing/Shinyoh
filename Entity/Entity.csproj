@@ -51,6 +51,7 @@
     <Compile Include="SoukoEntity.cs" />
     <Compile Include="StaffEntity.cs" />
     <Compile Include="SiiresakiEntity.cs" />
+    <Compile Include="TokuisakiEntity.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
