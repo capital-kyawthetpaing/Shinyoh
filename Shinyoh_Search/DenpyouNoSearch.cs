@@ -17,9 +17,7 @@ namespace Shinyoh_Search
     {
         DenpyouNOBL denpyoubl;
         DenpyouNOEntity denpyou_entity;
-        public static string division = "";
-        public static string seqno = "";
-        public static string prefix = "";
+        public string counter = "";
 
         public DenpyouNoSearch()
         {
@@ -29,6 +27,10 @@ namespace Shinyoh_Search
 
         private void DenpyouNoSearch_Load(object sender, EventArgs e)
         {
+            multipurposeEntity multi_entity = new multipurposeEntity();
+            multi_entity.id = 101;
+            cbDivision1.Bind(true, multi_entity);
+            cbDivision2.Bind(true, multi_entity);
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
@@ -77,9 +79,7 @@ namespace Shinyoh_Search
             if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
-                division = row.Cells[1].Value.ToString();
-                seqno = row.Cells[2].Value.ToString();
-                prefix = row.Cells[3].Value.ToString();
+                counter = row.Cells[4].Value.ToString();
                 this.Close();
             }
         }

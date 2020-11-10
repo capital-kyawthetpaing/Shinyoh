@@ -42,7 +42,6 @@ namespace BL {
             obj.Sqlprms[25] = new SqlParameter("@ShukkaSizishoHuyouKBN", SqlDbType.VarChar) { Value = obj.ShukkaSizishoHuyouKBN };
             obj.Sqlprms[26] = new SqlParameter("@Remarks", SqlDbType.VarChar) { Value = obj.Remarks };
             obj.Sqlprms[27] = new SqlParameter("@KensakuHyouziJun", SqlDbType.VarChar) { Value = obj.KensakuHyouziJun };
-
             obj.Sqlprms[28] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = obj.InsertOperator };
             obj.Sqlprms[29] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = obj.UpdateOperator };
             obj.Sqlprms[30] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = obj.Mode };
@@ -51,6 +50,16 @@ namespace BL {
             obj.Sqlprms[33] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
             obj.Sqlprms[34] = new SqlParameter("@UsedFlg", SqlDbType.VarChar) { Value = obj.UsedFlg };
             return ckmdl.InsertUpdateDeleteData("M_Tokuisaki_CUD", GetConnectionString(), obj.Sqlprms);
+        }
+        public DataTable M_Tokuisaki_Select(string tokuisakiCD, DateTime cDate)
+        {
+            string str = string.Empty;
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = tokuisakiCD };
+            parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.Date) { Value = cDate.Date };
+            DataTable dt = ckmdl.SelectDatatable("M_Tokuisaki_Select", GetConnectionString(), parameters);
+            return dt;
         }
     }
 }

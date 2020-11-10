@@ -10,7 +10,8 @@ namespace Entity {
         public enum ScType {
            None,
            Souko,
-           Staff
+           Staff,
+           Denpyou
         }
     }
 }
