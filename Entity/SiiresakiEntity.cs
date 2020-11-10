@@ -38,10 +38,10 @@ namespace Entity
         public string Remarks { get; set; } // --備考
         public int UsedFlg { get; set; } //  --使用済FLG[1:既にデータ発生済]
 
-        public string InsertOperator { get; set; }//--  新規登録者 
-        public string UpdateOperator { get; set; }//  --  変更登録者   
+        //public string InsertOperator { get; set; }//--  新規登録者 
+        //public string UpdateOperator { get; set; }//  --  変更登録者   
 
-        //for log table
-        public string KeyItem { get; set; }
+        ////for log table
+        //public string KeyItem { get; set; }
     }
 }

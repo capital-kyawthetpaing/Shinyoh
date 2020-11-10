@@ -11,7 +11,7 @@ namespace MasterTouroku_Siiresaki
     public partial class MasterTourokuSiiresaki : BaseForm
     {
         CommonFunction cf;
-        StaffEntity staff_Entity;
+        BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
         public MasterTourokuSiiresaki()
         {
@@ -41,7 +41,7 @@ namespace MasterTouroku_Siiresaki
             ChangeMode(Mode.New);
             txtSupplierCD.Focus();
 
-            staff_Entity = GetBaseData(); 
+            base_Entity = _GetBaseData(); 
         }
 
         private void ChangeMode(Mode mode)
@@ -49,37 +49,29 @@ namespace MasterTouroku_Siiresaki
             //Enable && Disable
             cf.Clear(PanelTitle);
             cf.Clear(Panel_Detail);
+            lblStaffCD_Name.Text = string.Empty;
+
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(Panel_Detail);
             txtSupplierCD.Focus();
             txtSearch.Text = "0";
+            lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
             switch (mode)
             {
                 case Mode.New:
-                    txtSupplierCD.E102Check(true);
-                    txtChangeDate.E102Check(true);
-                    txtChangeDate.E103Check(true);
+                    ErrorCheck();
+
                     txtChangeDate.E132Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate,null);
+                    txtChangeDate.E133Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
+                    txtChangeDate.E270Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate);
+
 
                     txtCopyDate.E103Check(true);
                     txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
                     txtCopyDate.E133Check(true, "M_Siiresaki", txtCopyCD, txtCopyDate, null);
 
-                    txtSupplierName.E102Check(true);
-                    txtShort_Name.E102Check(true);
-                    txtPayCD.E102Check(true);
-                    txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
-                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty , string.Empty);
-
-                    txtCurrency.E102Check(true);
-                    txtStaffCD.E102Check(true);
-                    txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
-
-                    txtStartDate.E103Check(true);
-                    txtEndDate.E103Check(true);
-                    txtEndDate.E104Check(true, txtStartDate, txtEndDate);
-
+                    
                     txtChangeDate.NextControlName = txtCopyCD.Name;
                     txtCopyCD.Enabled = true;
                     txtCopyDate.Enabled = true;
@@ -89,27 +81,69 @@ namespace MasterTouroku_Siiresaki
                     break;
 
                 case Mode.Update:
-                   
+                    ErrorCheck();
 
+                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
+
+                    txtChangeDate.E132Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
+                    txtChangeDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
+                    txtChangeDate.E270Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate);
+
+                    Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
-                   
+                    txtChangeDate.E132Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
+                    txtChangeDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
 
+                    txtChangeDate.E270Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate);
+
+                    Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
 
                     break;
                 case Mode.Inquiry:
-                    
+                    txtChangeDate.E132Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
+                    txtChangeDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
 
+                    Disable_UDI_Mode();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
             }
         }
+        public void Disable_UDI_Mode()
+        {
+            txtCopyCD.Enabled = false;
+            txtCopyDate.Enabled = false;
+            rdo_Registragion.Enabled = false;
+            rdo_Delete.Enabled = false;
+        }
+        public void ErrorCheck()
+        {
+            txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
+            txtSupplierCD.E102Check(true);
+            txtChangeDate.E102Check(true);
+            txtChangeDate.E103Check(true);
+
+            txtSupplierName.E102Check(true);
+            txtShort_Name.E102Check(true);
+            txtPayCD.E102Check(true);
+            txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+            
+
+            txtCurrency.E102Check(true);
+            txtStaffCD.E102Check(true);
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
+
+            txtStartDate.E103Check(true);
+            txtEndDate.E103Check(true);
+            txtEndDate.E104Check(true, txtStartDate, txtEndDate);
+
+        }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
@@ -206,11 +240,12 @@ namespace MasterTouroku_Siiresaki
             obj.Remarks = txtRemark.Text;
             obj.KensakuHyouziJun = txtSearch.Text;
             obj.UsedFlg = 0;
-            obj.InsertOperator = staff_Entity.StaffCD;
-            obj.UpdateOperator = staff_Entity.StaffCD;
+            obj.InsertOperator = base_Entity.OperatorCD;
+            obj.UpdateOperator = base_Entity.OperatorCD;
 
             //for log table
-            obj.PC = staff_Entity.PC;
+            obj.PC = base_Entity.PC;
+            obj.ProgramID = base_Entity.ProgramID;
             obj.KeyItem = txtSupplierCD.Text + " " + txtChangeDate.Text;
             return obj;
         }
@@ -251,7 +286,7 @@ namespace MasterTouroku_Siiresaki
             {
                 if (!txtChangeDate.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    if (cboMode.SelectedValue.ToString() == "2")
                     {
                         EnablePanel();
                     }
@@ -306,6 +341,8 @@ namespace MasterTouroku_Siiresaki
                 txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
                 txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
                 txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
+
+                txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, dt.Rows[0]["YuubinNO1"].ToString(), dt.Rows[0]["YuubinNO2"].ToString());
             }
         }
 

@@ -17,12 +17,14 @@ namespace Shinyoh_Search
     {
         DenpyouNOBL denpyoubl;
         DenpyouNOEntity denpyou_entity;
-        public string counter = "";
+        public string renbanKBN = string.Empty;
+        public string seqno = string.Empty;
+        public string prefix = string.Empty;
+        public string counter = string.Empty;
 
         public DenpyouNoSearch()
         {
             InitializeComponent(); 
-            this.gvDenpyouNo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.gvDenpyouNo_RowPostPaint);
         }
 
         private void DenpyouNoSearch_Load(object sender, EventArgs e)
@@ -34,6 +36,8 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+            gvDenpyouNo.UseRowNo(false);
+            BindDataGrid();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -79,6 +83,9 @@ namespace Shinyoh_Search
             if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
+                renbanKBN = row.Cells[1].Value.ToString();
+                seqno = row.Cells[2].Value.ToString();
+                prefix = row.Cells[3].Value.ToString();
                 counter = row.Cells[4].Value.ToString();
                 this.Close();
             }
@@ -86,10 +93,6 @@ namespace Shinyoh_Search
 
         private void gvDenpyouNo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            using (SolidBrush b = new SolidBrush(gvDenpyouNo.RowHeadersDefaultCellStyle.ForeColor))
-            {
-                e.Graphics.DrawString((e.RowIndex + 1).ToString(), e.InheritedRowStyle.Font, b, e.RowBounds.Location.X + 10, e.RowBounds.Location.Y + 4);
-            }
         }
     }
 }

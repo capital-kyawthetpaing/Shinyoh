@@ -48,17 +48,18 @@ namespace BL
             obj.Sqlprms[28] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = obj.InsertOperator };
             obj.Sqlprms[29] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = obj.UpdateOperator };
             obj.Sqlprms[30] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = obj.Mode };
-            obj.Sqlprms[31] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = "MasterTourokuSiiresaki" };
+            obj.Sqlprms[31] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = obj.ProgramID };
             obj.Sqlprms[32] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
             obj.Sqlprms[33] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
             return ckmdl.InsertUpdateDeleteData("M_Siiresaki_CUD", GetConnectionString(), obj.Sqlprms);
         }
-        public DataTable Siiresaki_Select_Check(string supplierCD,string changeDate)
+        public DataTable Siiresaki_Select_Check(string supplierCD,string changeDate,string error_type)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[2];
+            var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@SiiresakiCD", SqlDbType.VarChar) { Value = supplierCD };
             parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = changeDate };
+            parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_type };
             DataTable dt = ckmdl.SelectDatatable("Siiresaki_Select_Check", GetConnectionString(), parameters);
             return dt;
         }

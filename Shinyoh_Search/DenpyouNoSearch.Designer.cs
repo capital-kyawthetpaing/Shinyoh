@@ -113,7 +113,7 @@
             // 
             // cbDivision2
             // 
-            this.cbDivision2.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.cbDivision2.ComboType = Shinyoh_Controls.SCombo.CType.Position;
             this.cbDivision2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.cbDivision2.FormattingEnabled = true;
             this.cbDivision2.IsDatatableOccurs = null;
@@ -138,7 +138,7 @@
             // 
             // cbDivision1
             // 
-            this.cbDivision1.ComboType = Shinyoh_Controls.SCombo.CType.Mode1;
+            this.cbDivision1.ComboType = Shinyoh_Controls.SCombo.CType.Position;
             this.cbDivision1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.cbDivision1.FormattingEnabled = true;
             this.cbDivision1.IsDatatableOccurs = null;
@@ -185,32 +185,30 @@
             this.gvDenpyouNo.TabIndex = 3;
             this.gvDenpyouNo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvDenpyouNo_CellContentClick);
             // 
-            // no
-            // 
-            this.no.HeaderText = "No.";
-            this.no.Name = "no";
-            this.no.Width = 50;
-            // 
             // RenbanKBN
             // 
+            this.RenbanKBN.DataPropertyName = "RenbanKBN";
             this.RenbanKBN.HeaderText = "連番区分";
             this.RenbanKBN.Name = "RenbanKBN";
             this.RenbanKBN.Width = 150;
             // 
             // Settouti
             // 
+            this.Settouti.DataPropertyName = "Settouti";
             this.Settouti.HeaderText = "接頭値";
             this.Settouti.Name = "Settouti";
             this.Settouti.Width = 70;
             // 
             // SEQ_NO
             // 
+            this.SEQ_NO.DataPropertyName = "SEQ_NO";
             this.SEQ_NO.HeaderText = "SEQNO";
             this.SEQ_NO.Name = "SEQ_NO";
             this.SEQ_NO.Width = 80;
             // 
             // Counter
             // 
+            this.Counter.DataPropertyName = "Counter";
             this.Counter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Counter.HeaderText = "カウンタ";
             this.Counter.Name = "Counter";
@@ -229,6 +227,7 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gvDenpyouNo, 0);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvDenpyouNo)).EndInit();
             this.ResumeLayout(false);
 

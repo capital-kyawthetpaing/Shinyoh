@@ -344,7 +344,16 @@ namespace Shinyoh
             obj.PC = PCID;
             return obj;
         }
-        
+
+        public BaseEntity _GetBaseData()
+        {
+            BaseEntity obj = new BaseEntity();
+            obj.OperatorCD = OperatorCD;
+            obj.ProgramID = ProgramID;
+            obj.PC = PCID;
+            return obj;
+        }
+
         private void cboMode_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cboMode.SelectedValue.ToString().Equals("1"))
@@ -381,12 +390,12 @@ namespace Shinyoh
                     if (sc.ErrorCheck())
                         return false;
                 }
-                if (ctrl is SCheckBox)
-                {
-                    SCheckBox sch = ctrl as SCheckBox;
-                    if (sch.ErrorCheck())
-                        return false;
-                }
+                //if (ctrl is SCheckBox)
+                //{
+                //    SCheckBox sch = ctrl as SCheckBox;
+                //    if (sch.ErrorCheck())
+                //        return false;
+                //}
             }
             return true;
         }
