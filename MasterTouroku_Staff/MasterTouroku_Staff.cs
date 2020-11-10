@@ -237,9 +237,10 @@ namespace MasterTouroku_Staff
             obj.UsedFlg = 0;
             obj.InsertOperator = base_Entity.OperatorCD;
             obj.UpdateOperator = base_Entity.OperatorCD;
-            
+
 
             //for log table
+            obj.ProgramID = base_Entity.ProgramID;
             obj.KeyItem = txt_Staff.Text.ToString() + " " + txtStaff_CDate.Text;
             obj.PC = base_Entity.PC;            
             return obj;
