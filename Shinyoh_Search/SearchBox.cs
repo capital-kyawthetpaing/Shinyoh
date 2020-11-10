@@ -62,8 +62,8 @@ namespace Shinyoh_Search
                     {
                         DenpyouNoSearch denpyouSearch = new DenpyouNoSearch();
                         denpyouSearch.ShowDialog();
-                        this.Text = denpyouSearch.counter;
-                        if (!string.IsNullOrWhiteSpace(denpyouSearch.counter))
+                        this.Text = denpyouSearch.seqno;
+                        if (!string.IsNullOrWhiteSpace(denpyouSearch.seqno))
                             SendKeys.Send("{ENTER}");
                     }
                     break;

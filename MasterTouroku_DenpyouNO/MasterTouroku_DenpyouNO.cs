@@ -14,6 +14,7 @@ namespace MasterTouroku_DenpyouNO
     {
         DenpyouNOEntity entity;
         CommonFunction cf;
+        BaseBL bl = new BaseBL();
         public MasterTouroku_DenpyouNO()
         {
             InitializeComponent();
@@ -65,18 +66,28 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.New:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
+                    txtPrefix.E102Check(true);
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
+                    cbDivision.E102Check(true);
+                    txtSEQNO.E102Check(true);
+                    txtPrefix.E102Check(true);
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
+                    cbDivision.E102Check(true);
+                    txtSEQNO.E102Check(true);
+                    txtPrefix.E102Check(true);
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
+                    cbDivision.E102Check(true);
+                    txtSEQNO.E102Check(true);
+                    txtPrefix.E102Check(true);
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
@@ -149,8 +160,8 @@ namespace MasterTouroku_DenpyouNO
         private DenpyouNOEntity getDenpyou()
         {
             DenpyouNOEntity DNOentity = new DenpyouNOEntity();
-            DNOentity.RenbenKBN = cbDivision.SelectedIndex.ToString();
-            DNOentity.seqno = txtSEQNO.Text;
+            DNOentity.RenbenKBN = Convert.ToInt32(cbDivision.SelectedIndex.ToString());
+            DNOentity.seqno = Convert.ToInt32(txtSEQNO.Text);
             DNOentity.prefix = txtPrefix.Text;
             DNOentity.InsertOperator = entity.OperatorCD;
             DNOentity.UpdateOperator = entity.OperatorCD;
@@ -162,17 +173,26 @@ namespace MasterTouroku_DenpyouNO
 
         private void Insert(DenpyouNOEntity DNOEntity)
         {
-
+            DenpyouNOBL denpyoubl = new DenpyouNOBL();
+            DataTable dt = denpyoubl.DenpyouNO_Check(DNOEntity);
+            if (dt.Rows.Count < 1)
+            {
+                denpyoubl.DenpyouNO_IUD(DNOEntity);
+            }
+            else
+                bl.ShowMessage("E132");
         }
 
         private void Update(DenpyouNOEntity DNOEntity)
         {
-
+            DenpyouNOBL denpyoubl = new DenpyouNOBL();
+            denpyoubl.DenpyouNO_IUD(DNOEntity);
         }
 
         private void Delete(DenpyouNOEntity DNOEntity)
         {
-
+            DenpyouNOBL denpyoubl = new DenpyouNOBL();
+            denpyoubl.DenpyouNO_IUD(DNOEntity);
         }
 
         private void txtSEQNO_KeyDown(object sender, KeyEventArgs e)
@@ -189,7 +209,7 @@ namespace MasterTouroku_DenpyouNO
                 DataTable dt = txtSEQNO.IsDatatableOccurs;
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
-                    soukoSelect(dt);
+                    DenpyouSelect(dt);
                     cf.DisablePanel(PanelTitle);
                 }
             }
@@ -202,7 +222,7 @@ namespace MasterTouroku_DenpyouNO
             cf.DisablePanel(PanelTitle);
         }
 
-        private void soukoSelect(DataTable dt)
+        private void DenpyouSelect(DataTable dt)
         {
             if (dt.Rows.Count > 0)
             {
@@ -221,7 +241,7 @@ namespace MasterTouroku_DenpyouNO
                 {
                     EnableAndDisablePanel();
                     DataTable dt = txtPrefix.IsDatatableOccurs;
-                    soukoSelect(dt);
+                    DenpyouSelect(dt);
                 }
             }
         }
