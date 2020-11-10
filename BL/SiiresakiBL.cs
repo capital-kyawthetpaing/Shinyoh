@@ -53,12 +53,13 @@ namespace BL
             obj.Sqlprms[33] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
             return ckmdl.InsertUpdateDeleteData("M_Siiresaki_CUD", GetConnectionString(), obj.Sqlprms);
         }
-        public DataTable Siiresaki_Select_Check(string supplierCD,string changeDate)
+        public DataTable Siiresaki_Select_Check(string supplierCD,string changeDate,string error_type)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[2];
+            var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@SiiresakiCD", SqlDbType.VarChar) { Value = supplierCD };
             parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = changeDate };
+            parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_type };
             DataTable dt = ckmdl.SelectDatatable("Siiresaki_Select_Check", GetConnectionString(), parameters);
             return dt;
         }

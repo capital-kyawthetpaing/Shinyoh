@@ -107,7 +107,7 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
                     txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
-
+                    
                     //Enable && Disable
                     txtStaff_Copy.Enabled = false;
                     txtStaff_CopyDate.Enabled = false;

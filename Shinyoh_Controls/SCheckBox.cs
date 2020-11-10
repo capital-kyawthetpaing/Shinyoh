@@ -69,17 +69,17 @@ namespace Shinyoh_Controls
             base.Height = 19;
         }
 
-        public bool ErrorCheck()
-        {
-            (bool, DataTable) r_value = errchk.Check(this);
-            IsErrorOccurs = r_value.Item1;
-            IsDatatableOccurs = r_value.Item2;
-            if (!IsErrorOccurs)
-            {
-                Control nextControl = this.TopLevelControl.Controls.Find(NextControlName, true)[0];
-                nextControl.Focus();
-            }
-            return IsErrorOccurs;
-        }
+        //public bool ErrorCheck()
+        //{
+        //    (bool, DataTable) r_value = errchk.Check(this);
+        //    IsErrorOccurs = r_value.Item1;
+        //    IsDatatableOccurs = r_value.Item2;
+        //    if (!IsErrorOccurs)
+        //    {
+        //        Control nextControl = this.TopLevelControl.Controls.Find(NextControlName, true)[0];
+        //        nextControl.Focus();
+        //    }
+        //    return IsErrorOccurs;
+        //}
     }
 }

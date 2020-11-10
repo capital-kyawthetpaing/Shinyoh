@@ -381,12 +381,12 @@ namespace Shinyoh
                     if (sc.ErrorCheck())
                         return false;
                 }
-                if (ctrl is SCheckBox)
-                {
-                    SCheckBox sch = ctrl as SCheckBox;
-                    if (sch.ErrorCheck())
-                        return false;
-                }
+                //if (ctrl is SCheckBox)
+                //{
+                //    SCheckBox sch = ctrl as SCheckBox;
+                //    if (sch.ErrorCheck())
+                //        return false;
+                //}
             }
             return true;
         }

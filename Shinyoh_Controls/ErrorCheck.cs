@@ -152,7 +152,7 @@ namespace Shinyoh_Controls
                         break;
                     case "M_Siiresaki":
                         SiiresakiBL obj = new SiiresakiBL();
-                        dt = obj.Siiresaki_Select_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text);
+                        dt = obj.Siiresaki_Select_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text,string.Empty);
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
@@ -184,7 +184,7 @@ namespace Shinyoh_Controls
                         if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
                         {
                             SiiresakiBL obj = new SiiresakiBL();
-                            dt = obj.Siiresaki_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text);
+                            dt = obj.Siiresaki_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text,string.Empty);
                             rDt = dt;
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
@@ -197,7 +197,6 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
-
             if (sTextBox.E166)
             {
                 if (!sTextBox.ctrlE166_1.Text.Equals(sTextBox.ctrlE166_2.Text))
@@ -207,7 +206,31 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
-            if(sTextBox.CYuubin_Juusho)
+            if (sTextBox.E270)
+            {
+                DataTable dt = new DataTable();
+                string result = string.Empty;
+                StaffBL sBL = new StaffBL();
+                switch (sTextBox.E270Type)
+                {
+                    case "M_Siiresaki":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE270_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE270_2.Text))
+                        {
+                            SiiresakiBL obj = new SiiresakiBL();
+                            dt = obj.Siiresaki_Select_Check(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, "E270" );
+                            rDt = dt;
+                            result = dt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                }
+                if (result.Equals("E270"))
+                {
+                    ShowErrorMessage("E270");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            if (sTextBox.CYuubin_Juusho)
             {
                 if (sTextBox.ctrl1Yuubin_Juusho.Text != sTextBox.check1Yuubin_Juusho  && sTextBox.ctrl2Yuubin_Juusho.Text != sTextBox.check2Yuubin_Juusho)
                 {
