@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace MasterTouroku_Tokuisaki {
     public partial class MasterTouroku_Tokuisaki : BaseForm {
-        StaffEntity staff_Entity;
+        BaseEntity base_Entity;
         CommonFunction cf;
 
         public MasterTouroku_Tokuisaki()
@@ -44,7 +44,7 @@ namespace MasterTouroku_Tokuisaki {
             txt_Tokuisaki.Focus();
             ChangeMode(Mode.New);
             sRadRegister.Checked = true;
-            staff_Entity = GetBaseData();
+            base_Entity = _GetBaseData();
         }
 
         private void ChangeMode(Mode mode)
@@ -214,11 +214,11 @@ namespace MasterTouroku_Tokuisaki {
             obj.Remarks = txtRemark.Text;
             obj.KensakuHyouziJun = txtSearch.Text;
             obj.UsedFlg = 0;
-            obj.InsertOperator = staff_Entity.StaffCD;
-            obj.UpdateOperator = staff_Entity.StaffCD;
+            obj.InsertOperator = base_Entity.OperatorCD;
+            obj.UpdateOperator = base_Entity.OperatorCD;
 
             //for log table
-            obj.PC = staff_Entity.PC;
+            obj.PC = base_Entity.PC;
             obj.KeyItem = txt_Tokuisaki.Text + " " + txtChange_Date.Text;
             return obj;
         }
