@@ -63,6 +63,7 @@ namespace MasterTouroku_Staff
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(Panel_Staff);
             txt_Staff.Focus();
+            txtStaff_Search.Text = "0";
 
             switch (mode)
             {
@@ -329,9 +330,13 @@ namespace MasterTouroku_Staff
             if (ulong.TryParse(value, out ul))
             {
                 txtStaff_Search.TextChanged -= txtStaff_Search_TextChanged;
-                txtStaff_Search.Text = string.Format("{0:#,#}", ul);
+                txtStaff_Search.Text = string.Format("{0:#,#0}", ul);
                 txtStaff_Search.SelectionStart = txtStaff_Search.Text.Length;
                 txtStaff_Search.TextChanged += txtStaff_Search_TextChanged;
+            }
+            else
+            {
+                txtStaff_Search.Text = "0";
             }
         }
     }

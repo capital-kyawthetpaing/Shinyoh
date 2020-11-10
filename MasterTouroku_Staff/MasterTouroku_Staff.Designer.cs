@@ -153,10 +153,11 @@
             this.txtStaff_Search.MoveNext = true;
             this.txtStaff_Search.Name = "txtStaff_Search";
             this.txtStaff_Search.NextControl = null;
-            this.txtStaff_Search.NextControlName = null;
+            this.txtStaff_Search.NextControlName = "BtnF1";
             this.txtStaff_Search.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Search.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_Search.TabIndex = 15;
+            this.txtStaff_Search.Text = "0";
             this.txtStaff_Search.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtStaff_Search.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtStaff_Search.TextChanged += new System.EventHandler(this.txtStaff_Search_TextChanged);

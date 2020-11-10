@@ -16,6 +16,7 @@ namespace MasterTouroku_Siiresaki
         public MasterTourokuSiiresaki()
         {
             InitializeComponent();
+            cf = new CommonFunction();
         }
 
         private void MasterTourokuSiiresaki_Load(object sender, EventArgs e)
@@ -34,7 +35,7 @@ namespace MasterTouroku_Siiresaki
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Empty, F10, "CSV取込(F10)", false);
+            SetButton(ButtonType.BType.Empty, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             ChangeMode(Mode.New);
@@ -45,6 +46,14 @@ namespace MasterTouroku_Siiresaki
 
         private void ChangeMode(Mode mode)
         {
+            //Enable && Disable
+            cf.Clear(PanelTitle);
+            cf.Clear(Panel_Detail);
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(Panel_Detail);
+            txtSupplierCD.Focus();
+            txtSearch.Text = "0";
+
             switch (mode)
             {
                 case Mode.New:
@@ -52,11 +61,10 @@ namespace MasterTouroku_Siiresaki
                     txtChangeDate.E102Check(true);
                     txtChangeDate.E103Check(true);
                     txtChangeDate.E132Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate,null);
-                    txtChangeDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
 
                     txtCopyDate.E103Check(true);
                     txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
-                    txtCopyDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
+                    txtCopyDate.E133Check(true, "M_Siiresaki", txtCopyCD, txtCopyDate, null);
 
                     txtSupplierName.E102Check(true);
                     txtShort_Name.E102Check(true);
@@ -66,11 +74,15 @@ namespace MasterTouroku_Siiresaki
 
                     txtCurrency.E102Check(true);
                     txtStaffCD.E102Check(true);
-                    txtStaffCD.E101Check(true, "M_Siiresaki", txtStaffCD, txtChangeDate, null);
+                    txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
 
                     txtStartDate.E103Check(true);
                     txtEndDate.E103Check(true);
-                    txtEndDate.E106Check(true, txtStartDate, txtEndDate);
+                    txtEndDate.E104Check(true, txtStartDate, txtEndDate);
+
+                    txtChangeDate.NextControlName = txtCopyCD.Name;
+                    txtCopyCD.Enabled = true;
+                    txtCopyDate.Enabled = true;
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -118,26 +130,25 @@ namespace MasterTouroku_Siiresaki
             }
             if (tagID == "12")
             {
-                DBProcess();
-                //if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
-                //{
-                //    DBProcess();
-                //    switch (cboMode.SelectedValue)
-                //    {
-                //        case "1":
-                //            ChangeMode(Mode.New);
-                //            break;
-                //        case "2":
-                //            ChangeMode(Mode.Update);
-                //            break;
-                //        case "3":
-                //            ChangeMode(Mode.Delete);
-                //            break;
-                //        case "4":
-                //            ChangeMode(Mode.Inquiry);
-                //            break;
-                //    }
-                //}
+                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
+                {
+                    DBProcess();
+                    switch (cboMode.SelectedValue)
+                    {
+                        case "1":
+                            ChangeMode(Mode.New);
+                            break;
+                        case "2":
+                            ChangeMode(Mode.Update);
+                            break;
+                        case "3":
+                            ChangeMode(Mode.Delete);
+                            break;
+                        case "4":
+                            ChangeMode(Mode.Inquiry);
+                            break;
+                    }
+                }
             }
 
             base.FunctionProcess(tagID);
@@ -222,6 +233,7 @@ namespace MasterTouroku_Siiresaki
 
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (e.KeyCode == Keys.Enter)
             {
                 if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count>0)
@@ -251,15 +263,91 @@ namespace MasterTouroku_Siiresaki
                 DataTable dt = txtChangeDate.IsDatatableOccurs;
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
-                   // From_DB_To_Form(dt);
+                    From_DB_To_Form(dt);
                 }
             }
         }
         private void EnablePanel()
         {
             cf.EnablePanel(Panel_Detail);
-            txtSupplierCD.Focus();
+            chk_Flag.Focus();
             cf.DisablePanel(PanelTitle);
+        }
+
+        private void From_DB_To_Form(DataTable dt)
+        {
+            if (dt.Rows[0]["MessageID"].ToString() == "E132")
+            {
+                if (Convert.ToInt32(dt.Rows[0]["ShokutiFLG"]) == 1)
+                    chk_Flag.Checked = true;
+                else chk_Flag.Checked = false;
+                txtSupplierName.Text = dt.Rows[0]["SiiresakiName"].ToString();
+                txtShort_Name.Text = dt.Rows[0]["SiiresakiRyakuName"].ToString();
+                txtLong_Name.Text = dt.Rows[0]["KanaName"].ToString();
+                txtSearch.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
+                txtPayCD.Text = dt.Rows[0]["SiharaisakiCD"].ToString();
+                txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
+                txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
+                txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                txtPhone1_1.Text = dt.Rows[0]["Tel11"].ToString();
+                txtPhone1_2.Text = dt.Rows[0]["Tel12"].ToString();
+                txtPhone1_3.Text = dt.Rows[0]["Tel13"].ToString();
+                txtPhone2_1.Text = dt.Rows[0]["Tel21"].ToString();
+                txtPhone2_2.Text = dt.Rows[0]["Tel22"].ToString();
+                txtPhone2_3.Text = dt.Rows[0]["Tel23"].ToString();
+                txtTantouBusho.Text = dt.Rows[0]["TantouBusho"].ToString();
+                txtTantouYakushoku.Text = dt.Rows[0]["TantouYakushoku"].ToString();
+                txtTantoushaName.Text = dt.Rows[0]["TantoushaName"].ToString();
+                txtMail.Text = dt.Rows[0]["MailAddress"].ToString();
+                txtCurrency.Text = dt.Rows[0]["TuukaCD"].ToString();
+                txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
+                lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
+                txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
+                txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
+                txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
+            }
+        }
+
+        private void txtCopyDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
+            {
+                if (!txtCopyDate.IsErrorOccurs)
+                {
+                    EnablePanel();
+                    DataTable dt = txtCopyDate.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        From_DB_To_Form(dt);
+                }
+            }
+        }
+
+        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!txtStaffCD.IsErrorOccurs)
+            {
+                DataTable dt = txtStaffCD.IsDatatableOccurs;
+                if (dt.Rows.Count > 0)
+                    lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string value = txtSearch.Text.Replace(",", "");
+            ulong ul;
+            if (ulong.TryParse(value, out ul))
+            {
+                txtSearch.TextChanged -= txtSearch_TextChanged;
+                txtSearch.Text = string.Format("{0:#,#0}", ul);
+                txtSearch.SelectionStart = txtSearch.Text.Length;
+                txtSearch.TextChanged += txtSearch_TextChanged;
+            }
+            else
+            {
+                txtSearch.Text = "0";
+            }
         }
     }
 }
