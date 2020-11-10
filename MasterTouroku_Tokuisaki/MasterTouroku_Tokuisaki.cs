@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace MasterTouroku_Tokuisaki {
     public partial class MasterTouroku_Tokuisaki : BaseForm {
-        StaffEntity staff_Entity;
+        BaseEntity base_Entity;
         CommonFunction cf;
 
         public MasterTouroku_Tokuisaki()
@@ -44,41 +44,44 @@ namespace MasterTouroku_Tokuisaki {
             txt_Tokuisaki.Focus();
             ChangeMode(Mode.New);
             sRadRegister.Checked = true;
-            staff_Entity = GetBaseData();
+            base_Entity = _GetBaseData();
         }
 
         private void ChangeMode(Mode mode)
         {
+            //Enable && Disable
             cf.Clear(PanelTitle);
             cf.Clear(PanelDetail);
+            lblStaff.Text = string.Empty;
+
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
             txt_Tokuisaki.Focus();
             txtSearch.Text = "0";
+            lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
             switch (mode)
             {
                 case Mode.New:
-                    txt_Tokuisaki.E102Check(true);
-                    txtChange_Date.E102Check(true);
-                    txtChange_Date.E103Check(true);
+                    ErrorCheck();
                     txtChange_Date.E132Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
+                    txtChange_Date.E133Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
 
-                    txtTokuisaki_CopyDate.E103Check(true);
-                    txtTokuisaki_CopyDate.E102MultiCheck(true, txtTokuisaki_Copy, txtTokuisaki_CopyDate);
-                    txtTokuisaki_CopyDate.E133Check(true, "M_Tokuisaki", txtTokuisaki_Copy, txtTokuisaki_CopyDate, null);
+                    //txtTokuisaki_CopyDate.E103Check(true);
+                    //txtTokuisaki_CopyDate.E102MultiCheck(true, txtTokuisaki_Copy, txtTokuisaki_CopyDate);
+                    //txtTokuisaki_CopyDate.E133Check(true, "M_Tokuisaki", txtTokuisaki_Copy, txtTokuisaki_CopyDate, null);
 
-                    txtTokuisakiName.E102Check(true);
-                    txtShortName.E102Check(true);
-                    txtBillAddress.E102Check(true);
-                    txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
-                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
+                    //txtTokuisakiName.E102Check(true);
+                    //txtShortName.E102Check(true);
+                    //txtBillAddress.E102Check(true);
+                    //txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+                    //txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
-                    txtStaffCharge.E102Check(true);
-                    txtStaffCharge.E101Check(true, "M_Staff", txtStaffCharge, txtChange_Date, null);
+                    //txtStaffCharge.E102Check(true);
+                    //txtStaffCharge.E101Check(true, "M_Staff", txtStaffCharge, txtChange_Date, null);
 
-                    txtStartDate.E103Check(true);
-                    txtEndDate.E103Check(true);
-                    txtEndDate.E104Check(true, txtStartDate, txtEndDate);
+                    //txtStartDate.E103Check(true);
+                    //txtEndDate.E103Check(true);
+                    //txtEndDate.E104Check(true, txtStartDate, txtEndDate);
 
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
@@ -108,6 +111,27 @@ namespace MasterTouroku_Tokuisaki {
                     btnInquiry.Visible = false;
                     break;
             }
+        }
+        public void ErrorCheck()
+        {
+            txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+            txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
+
+            txt_Tokuisaki.E102Check(true);
+            txtChange_Date.E102Check(true);
+            txtChange_Date.E103Check(true);
+
+            txtTokuisakiName.E102Check(true);
+            txtShortName.E102Check(true);
+            txtBillAddress.E102Check(true);
+
+            txtStaffCharge.E102Check(true);
+            txtStaffCharge.E101Check(true, "M_Staff", txtStaffCharge, txtChange_Date, null);
+
+            txtStartDate.E103Check(true);
+            txtEndDate.E103Check(true);
+            txtEndDate.E104Check(true, txtStartDate, txtEndDate);
+
         }
         public override void FunctionProcess(string tagID)
         {
@@ -214,11 +238,11 @@ namespace MasterTouroku_Tokuisaki {
             obj.Remarks = txtRemark.Text;
             obj.KensakuHyouziJun = txtSearch.Text;
             obj.UsedFlg = 0;
-            obj.InsertOperator = staff_Entity.StaffCD;
-            obj.UpdateOperator = staff_Entity.StaffCD;
+            obj.InsertOperator = base_Entity.OperatorCD;
+            obj.UpdateOperator = base_Entity.OperatorCD;
 
             //for log table
-            obj.PC = staff_Entity.PC;
+            obj.PC = base_Entity.PC;
             obj.KeyItem = txt_Tokuisaki.Text + " " + txtChange_Date.Text;
             return obj;
         }

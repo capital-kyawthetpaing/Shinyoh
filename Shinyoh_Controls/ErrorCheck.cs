@@ -158,7 +158,7 @@ namespace Shinyoh_Controls
                         break;
                     case "M_Tokuisaki":
                         TokuisakiBL tokuisakiBL = new TokuisakiBL();
-                        dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text);
+                        dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text,string.Empty);
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
@@ -199,7 +199,7 @@ namespace Shinyoh_Controls
                         if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
                         {
                             TokuisakiBL tokuisakiBL = new TokuisakiBL();
-                            dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text);
+                            dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text,string.Empty);
                             rDt = dt;
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
