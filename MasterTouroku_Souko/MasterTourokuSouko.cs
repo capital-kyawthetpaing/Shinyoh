@@ -13,7 +13,7 @@ namespace MasterTouroku_Souko
     public partial class MasterTourokuSouko : BaseForm
     {
         ButtonType type = new ButtonType();
-        SoukoEntity souko;
+        BaseEntity base_Entity;
         CommonFunction cf;
         public MasterTourokuSouko()
         {
@@ -41,18 +41,8 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.BType.Empty, F11, "",false);
             ChangeMode(Mode.New);
             txtSouko.Focus();
-            souko = GetData();
+            base_Entity = _GetBaseData();
         }
-       
-        public SoukoEntity GetData()
-        {
-            SoukoEntity souko = new SoukoEntity();
-            souko.SoukoCD = OperatorCD;
-            souko.ProgramID = ProgramID;
-            souko.PC = PCID;
-            return souko;
-        }
-
         private void ChangeMode(Mode mode)
         {
             //Enable && Disable
@@ -215,11 +205,11 @@ namespace MasterTouroku_Souko
             soukoEntity.FaxNO = txtFAX.Text.ToString();
             soukoEntity.Remarks = txtRemark.Text.ToString();
             soukoEntity.Mode = cboMode.SelectedIndex.ToString();
-            soukoEntity.InsertOperator = souko.SoukoCD;
-            soukoEntity.UpdateOperator = souko.SoukoCD;
+            soukoEntity.InsertOperator = base_Entity.OperatorCD;
+            soukoEntity.UpdateOperator = base_Entity.OperatorCD;
             soukoEntity.KeyItem = txtSouko.Text;
-            soukoEntity.PC = souko.PC;
-            soukoEntity.ProgramID = souko.ProgramID;
+            soukoEntity.PC = base_Entity.PC;
+            soukoEntity.ProgramID = base_Entity.ProgramID;
             return soukoEntity;
         }
         private void DoInsert(SoukoEntity soukoInsert) {
