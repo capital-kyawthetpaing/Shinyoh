@@ -580,7 +580,7 @@
             this.txtStaffCharge.IsErrorOccurs = false;
             this.txtStaffCharge.IsRequire = false;
             this.txtStaffCharge.Location = new System.Drawing.Point(142, 544);
-            this.txtStaffCharge.MaxLength = 3;
+            this.txtStaffCharge.MaxLength = 10;
             this.txtStaffCharge.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtStaffCharge.MoveNext = true;
             this.txtStaffCharge.Name = "txtStaffCharge";
@@ -589,7 +589,7 @@
             this.txtStaffCharge.SearchType = Entity.SearchType.ScType.None;
             this.txtStaffCharge.Size = new System.Drawing.Size(70, 19);
             this.txtStaffCharge.TabIndex = 28;
-            this.txtStaffCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtStaffCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblStaffCharge
             // 
@@ -1121,6 +1121,7 @@
             this.txtYubin2.Size = new System.Drawing.Size(70, 19);
             this.txtYubin2.TabIndex = 15;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
             // 
             // txtYubin1
             // 

@@ -48,6 +48,28 @@ namespace MasterTouroku_Tokuisaki {
             switch (mode)
             {
                 case Mode.New:
+                    txt_Tokuisaki.E102Check(true);
+                    txtChange_Date.E102Check(true);
+                    txtChange_Date.E103Check(true);
+                    txtChange_Date.E132Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
+                 //   txtChange_Date.E133Check(true, "M_Siiresaki", txt_Tokuisaki, txtChange_Date, null);
+
+                    txtTokuisaki_CopyDate.E103Check(true);
+                    txtTokuisaki_CopyDate.E102MultiCheck(true, txtTokuisaki_Copy, txtTokuisaki_CopyDate);
+                 //   txtTokuisaki_CopyDate.E133Check(true, "M_Siiresaki", txt_Tokuisaki, txtChange_Date, null);
+
+                    txtTokuisakiName.E102Check(true);
+                    txtShortName.E102Check(true);
+                    txtBillAddress.E102Check(true);
+                    txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
+
+                    txtStaffCharge.E102Check(true);
+               //     txtStaffCharge.E101Check(true, "M_Tokuisaki", txtStaffCharge, txtChange_Date, null);
+
+                    txtStartDate.E103Check(true);
+                    txtEndDate.E103Check(true);
+                    txtEndDate.E106Check(true, txtStartDate, txtEndDate);
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
@@ -268,6 +290,19 @@ namespace MasterTouroku_Tokuisaki {
                 //    if (dt.Rows.Count > 0)
                 //        From_DB_To_TokuForm(dt);
                 //}
+            }
+        }
+
+        private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                {
+                    DataTable dt = txtYubin2.IsDatatableOccurs;
+                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                }
             }
         }
     }
