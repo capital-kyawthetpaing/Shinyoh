@@ -94,13 +94,14 @@ namespace BL
             return ckmdl.InsertUpdateDeleteData("M_Staff_CUD", GetConnectionString(), obj.Sqlprms);
         }
        
-        public DataTable Staff_Select_Check(string staffCD,DateTime cDate)
+        public DataTable Staff_Select_Check(string staffCD,DateTime cDate,string error_Type)
         {
             string str = string.Empty;
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[2];
+            var parameters = new SqlParameter[3];
             parameters[0]= new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = staffCD };
             parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.Date) { Value = cDate.Date };
+            parameters[2] = new SqlParameter("@Error", SqlDbType.VarChar) { Value = error_Type};
             DataTable dt = ckmdl.SelectDatatable("Staff_Select_Check", GetConnectionString(), parameters);
             return dt;
         }

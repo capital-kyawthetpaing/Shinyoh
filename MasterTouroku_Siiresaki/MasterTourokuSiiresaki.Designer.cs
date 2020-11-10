@@ -36,6 +36,7 @@
             this.rdo_Registragion = new Shinyoh_Controls.SRadio();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.lblStaffCD_Name = new System.Windows.Forms.Label();
             this.chk_Flag = new Shinyoh_Controls.SCheckBox();
             this.lblSearch = new Shinyoh_Controls.SLabel();
             this.txtSearch = new Shinyoh_Controls.STextBox();
@@ -216,6 +217,7 @@
             this.Panel_Detail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_Detail.Controls.Add(this.lblStaffCD_Name);
             this.Panel_Detail.Controls.Add(this.chk_Flag);
             this.Panel_Detail.Controls.Add(this.lblSearch);
             this.Panel_Detail.Controls.Add(this.txtSearch);
@@ -271,6 +273,15 @@
             this.Panel_Detail.Size = new System.Drawing.Size(1485, 707);
             this.Panel_Detail.TabIndex = 1;
             // 
+            // lblStaffCD_Name
+            // 
+            this.lblStaffCD_Name.AutoSize = true;
+            this.lblStaffCD_Name.Location = new System.Drawing.Point(212, 536);
+            this.lblStaffCD_Name.Name = "lblStaffCD_Name";
+            this.lblStaffCD_Name.Size = new System.Drawing.Size(0, 13);
+            this.lblStaffCD_Name.TabIndex = 71;
+            this.lblStaffCD_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // chk_Flag
             // 
             this.chk_Flag.BackColor = System.Drawing.SystemColors.Menu;
@@ -325,6 +336,7 @@
             this.txtSearch.Text = "0";
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblRemark
             // 
@@ -454,6 +466,7 @@
             this.txtStaffCD.Size = new System.Drawing.Size(70, 19);
             this.txtStaffCD.TabIndex = 26;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
             // 
             // sLabel4
             // 
@@ -1231,6 +1244,7 @@
             this.txtCopyDate.Size = new System.Drawing.Size(100, 19);
             this.txtCopyDate.TabIndex = 4;
             this.txtCopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtCopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyDate_KeyDown);
             // 
             // MasterTourokuSiiresaki
             // 
@@ -1317,6 +1331,7 @@
         private Shinyoh_Controls.STextBox txtChangeDate;
         private Shinyoh_Controls.STextBox txtSupplierCD;
         private Shinyoh_Controls.SCheckBox chk_Flag;
+        private System.Windows.Forms.Label lblStaffCD_Name;
     }
 }
 

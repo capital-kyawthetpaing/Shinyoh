@@ -49,13 +49,11 @@ namespace Shinyoh_Controls
                         rDt = bl.Souko_Select(soukoEntity);
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
-                    //case "M_Tokuisaki":
-                    //    DataTable dt = new DataTable();
-                    //    StaffBL sBL = new StaffBL();
-                    //    dt = sBL.Staff_Select_Check(sTextBox.ctrlE101_1.Text, Convert.ToDateTime(sTextBox.ctrlE101_1.Text));
-                    //    rDt = dt;
-                    //    result = dt.Rows[0]["MessageID"].ToString();
-                    //    break;
+                    case "M_Staff":
+                        StaffBL sBL = new StaffBL();
+                        rDt = sBL.Staff_Select_Check(sTextBox.ctrlE101_1.Text, Convert.ToDateTime(sTextBox.ctrlE101_2.Text),"E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E101"))
                 {
@@ -148,19 +146,13 @@ namespace Shinyoh_Controls
                         break;
                     case "M_Staff":
                         StaffBL sBL = new StaffBL();
-                        dt = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text));
+                        dt = sBL.Staff_Select_Check(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text),string.Empty);
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
                     case "M_Siiresaki":
                         SiiresakiBL obj = new SiiresakiBL();
                         dt = obj.Siiresaki_Select_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text);
-                        rDt = dt;
-                        result = dt.Rows[0]["MessageID"].ToString();
-                        break;
-                    case "M_Tokuisaki":
-                        TokuisakiBL tokuisakiBL = new TokuisakiBL();
-                        dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE132_1.Text, Convert.ToDateTime(sTextBox.ctrlE132_2.Text));
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
@@ -173,17 +165,26 @@ namespace Shinyoh_Controls
                 }
             }
 
-            if (sTextBox.E133)//NMW(2020-10-23)
+            if (sTextBox.E133)
             {
                 DataTable dt = new DataTable();
                 string result = string.Empty;
                 StaffBL sBL = new StaffBL();
                 switch (sTextBox.E133Type)
                 {
-                    case "M_Staff":// NMW(2020-10-22)
+                    case "M_Staff":
                         if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
                         {
-                            dt = sBL.Staff_Select_Check(sTextBox.ctrlE133_1.Text, Convert.ToDateTime(sTextBox.ctrlE133_2.Text));
+                            dt = sBL.Staff_Select_Check(sTextBox.ctrlE133_1.Text, Convert.ToDateTime(sTextBox.ctrlE133_2.Text),string.Empty);
+                            rDt = dt;
+                            result = dt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                    case "M_Siiresaki":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
+                        {
+                            SiiresakiBL obj = new SiiresakiBL();
+                            dt = obj.Siiresaki_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text);
                             rDt = dt;
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
