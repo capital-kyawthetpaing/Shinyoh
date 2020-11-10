@@ -38,6 +38,7 @@
             this.sRadRegister = new Shinyoh_Controls.SRadio();
             this.sRadDelete = new Shinyoh_Controls.SRadio();
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.lblStaff = new System.Windows.Forms.Label();
             this.chk = new Shinyoh_Controls.SCheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -89,6 +90,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblSearch = new Shinyoh_Controls.SLabel();
             this.txtSearch = new Shinyoh_Controls.STextBox();
+            this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -306,6 +308,8 @@
             this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
+            this.PanelDetail.Controls.Add(this.lblStaff);
             this.PanelDetail.Controls.Add(this.chk);
             this.PanelDetail.Controls.Add(this.label4);
             this.PanelDetail.Controls.Add(this.label5);
@@ -361,6 +365,14 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1485, 719);
             this.PanelDetail.TabIndex = 3;
+            // 
+            // lblStaff
+            // 
+            this.lblStaff.AutoSize = true;
+            this.lblStaff.Location = new System.Drawing.Point(223, 547);
+            this.lblStaff.Name = "lblStaff";
+            this.lblStaff.Size = new System.Drawing.Size(0, 13);
+            this.lblStaff.TabIndex = 93;
             // 
             // chk
             // 
@@ -591,6 +603,7 @@
             this.txtStaffCharge.Size = new System.Drawing.Size(70, 19);
             this.txtStaffCharge.TabIndex = 28;
             this.txtStaffCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCharge.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCharge_KeyDown);
             // 
             // lblStaffCharge
             // 
@@ -1243,6 +1256,19 @@
             this.txtSearch.TabIndex = 32;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // lblStaffCD_Name
+            // 
+            this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
+            this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblStaffCD_Name.Location = new System.Drawing.Point(212, 544);
+            this.lblStaffCD_Name.Name = "lblStaffCD_Name";
+            this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblStaffCD_Name.TabIndex = 94;
+            this.lblStaffCD_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MasterTouroku_Tokuisaki
             // 
@@ -1330,6 +1356,8 @@
         private Shinyoh_Controls.STextBox txtPhNo2;
         private Shinyoh_Controls.STextBox txtPhNo1;
         private Shinyoh_Controls.SCheckBox chk;
+        private System.Windows.Forms.Label lblStaff;
+        private Shinyoh_Controls.SLabel lblStaffCD_Name;
     }
 }
 

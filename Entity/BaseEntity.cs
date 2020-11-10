@@ -14,10 +14,9 @@ namespace Entity
 
         public string OperatorCD { get; set; }
         public string ProgramID { get; set; }
-        public string InsertOperator { get; set; }
-        public DateTime InsertDateTime { get; set; }
+        public string InsertOperator { get; set; }        
         public string UpdateOperator { get; set; }
-        public DateTime UpdateDateTime { get; set; }
+        
         //for Log Table
         public string KeyItem { get; set; }
     }

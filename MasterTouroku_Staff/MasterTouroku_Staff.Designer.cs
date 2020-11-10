@@ -59,9 +59,9 @@
             this.sLabel5 = new Shinyoh_Controls.SLabel();
             this.txtStaff_CDate = new Shinyoh_Controls.STextBox();
             this.lblStaff_Copy = new Shinyoh_Controls.SLabel();
-            this.txtStaff_Copy = new Shinyoh_Controls.STextBox();
             this.txtStaff_CopyDate = new Shinyoh_Controls.STextBox();
             this.lblStaff_CopyDate = new Shinyoh_Controls.SLabel();
+            this.txtStaff_Copy = new Shinyoh_Search.SearchBox();
             this.txt_Staff = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
@@ -74,12 +74,12 @@
             // 
             // PanelTitle
             // 
+            this.PanelTitle.Controls.Add(this.txtStaff_Copy);
             this.PanelTitle.Controls.Add(this.txt_Staff);
             this.PanelTitle.Controls.Add(this.txtStaff_CopyDate);
             this.PanelTitle.Controls.Add(this.lblStaff);
             this.PanelTitle.Controls.Add(this.sLabel5);
             this.PanelTitle.Controls.Add(this.lblStaff_CopyDate);
-            this.PanelTitle.Controls.Add(this.txtStaff_Copy);
             this.PanelTitle.Controls.Add(this.txtStaff_CDate);
             this.PanelTitle.Controls.Add(this.lblStaff_Copy);
             // 
@@ -148,7 +148,7 @@
             this.txtStaff_Search.IsErrorOccurs = false;
             this.txtStaff_Search.IsRequire = false;
             this.txtStaff_Search.Location = new System.Drawing.Point(141, 384);
-            this.txtStaff_Search.MaxLength = 5;
+            this.txtStaff_Search.MaxLength = 6;
             this.txtStaff_Search.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Search.MoveNext = true;
             this.txtStaff_Search.Name = "txtStaff_Search";
@@ -626,28 +626,6 @@
             this.lblStaff_Copy.Text = "複写元スタッフ";
             this.lblStaff_Copy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtStaff_Copy
-            // 
-            this.txtStaff_Copy.AllowMinus = false;
-            this.txtStaff_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaff_Copy.DecimalPlace = 0;
-            this.txtStaff_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaff_Copy.IntegerPart = 0;
-            this.txtStaff_Copy.IsDatatableOccurs = null;
-            this.txtStaff_Copy.IsErrorOccurs = false;
-            this.txtStaff_Copy.IsRequire = false;
-            this.txtStaff_Copy.Location = new System.Drawing.Point(346, 9);
-            this.txtStaff_Copy.MaxLength = 10;
-            this.txtStaff_Copy.MinimumSize = new System.Drawing.Size(90, 19);
-            this.txtStaff_Copy.MoveNext = true;
-            this.txtStaff_Copy.Name = "txtStaff_Copy";
-            this.txtStaff_Copy.NextControl = null;
-            this.txtStaff_Copy.NextControlName = "txtStaff_CopyDate";
-            this.txtStaff_Copy.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_Copy.Size = new System.Drawing.Size(90, 19);
-            this.txtStaff_Copy.TabIndex = 3;
-            this.txtStaff_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
             // txtStaff_CopyDate
             // 
             this.txtStaff_CopyDate.AllowMinus = false;
@@ -684,6 +662,28 @@
             this.lblStaff_CopyDate.Text = "複写元改定日";
             this.lblStaff_CopyDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // txtStaff_Copy
+            // 
+            this.txtStaff_Copy.AllowMinus = false;
+            this.txtStaff_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStaff_Copy.DecimalPlace = 0;
+            this.txtStaff_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtStaff_Copy.IntegerPart = 0;
+            this.txtStaff_Copy.IsDatatableOccurs = null;
+            this.txtStaff_Copy.IsErrorOccurs = false;
+            this.txtStaff_Copy.IsRequire = false;
+            this.txtStaff_Copy.Location = new System.Drawing.Point(346, 9);
+            this.txtStaff_Copy.MaxLength = 10;
+            this.txtStaff_Copy.MinimumSize = new System.Drawing.Size(90, 19);
+            this.txtStaff_Copy.MoveNext = true;
+            this.txtStaff_Copy.Name = "txtStaff_Copy";
+            this.txtStaff_Copy.NextControl = null;
+            this.txtStaff_Copy.NextControlName = "txtStaff_CopyDate";
+            this.txtStaff_Copy.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtStaff_Copy.Size = new System.Drawing.Size(90, 19);
+            this.txtStaff_Copy.TabIndex = 3;
+            this.txtStaff_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
             // txt_Staff
             // 
             this.txt_Staff.AllowMinus = false;
@@ -700,7 +700,7 @@
             this.txt_Staff.Name = "txt_Staff";
             this.txt_Staff.NextControl = null;
             this.txt_Staff.NextControlName = "txtStaff_CDate";
-            this.txt_Staff.SearchType = Entity.SearchType.ScType.Staff;
+            this.txt_Staff.SearchType = Entity.SearchType.ScType.None;
             this.txt_Staff.Size = new System.Drawing.Size(90, 19);
             this.txt_Staff.TabIndex = 1;
             this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -758,11 +758,11 @@
         private Shinyoh_Controls.SLabel sLabel5;
         private Shinyoh_Controls.SLabel lblStaff;
         private Shinyoh_Controls.STextBox txtStaff_CDate;
-        private Shinyoh_Controls.STextBox txtStaff_Copy;
         private Shinyoh_Controls.SLabel lblStaff_Copy;
         private Shinyoh_Controls.STextBox txtStaff_CopyDate;
         private Shinyoh_Controls.SLabel lblStaff_CopyDate;
         private Shinyoh_Search.SearchBox txt_Staff;
+        private Shinyoh_Search.SearchBox txtStaff_Copy;
     }
 }
 

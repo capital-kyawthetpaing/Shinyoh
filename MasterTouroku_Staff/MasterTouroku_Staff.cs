@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Data;
 using Shinyoh_Controls;
 using Shinyoh_Search;
+using System.Globalization;
 
 namespace MasterTouroku_Staff
 {
@@ -77,11 +78,14 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E132Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
                     txtStaff_CDate.E133Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    
                     txtStaff_CopyDate.E133Check(true, "M_Staff", txtStaff_Copy, txtStaff_CopyDate, null);
+
+                    txtStaff_CDate.E270Check(false, "M_Staff", txt_Staff, txtStaff_CDate);
 
                     txtStaff_CDate.NextControlName = txtStaff_Copy.Name;
                     txtStaff_Copy.Enabled = true;
-                    txtStaff_CopyDate.Enabled = true;                   
+                    txtStaff_CopyDate.Enabled = true;
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -93,12 +97,13 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
                     txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txtStaff_CDate.E270Check(false, "M_Staff", txt_Staff, txtStaff_CDate);
 
                     //Enable && Disable
                     txtStaff_Copy.Enabled = false;
                     txtStaff_CopyDate.Enabled = false;
-                   
 
+                    txt_Staff.SearchType = SearchType.ScType.Staff;
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
@@ -107,11 +112,13 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
                     txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
-                    
+                    txtStaff_CDate.E270Check(true, "M_Staff", txt_Staff, txtStaff_CDate);
+
                     //Enable && Disable
                     txtStaff_Copy.Enabled = false;
                     txtStaff_CopyDate.Enabled = false;
 
+                    txt_Staff.SearchType = SearchType.ScType.Staff;
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
 
@@ -121,11 +128,13 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133
                     txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
+                    txtStaff_CDate.E270Check(false, "M_Staff", txt_Staff, txtStaff_CDate);
 
                     //Enable && Disable
                     txtStaff_Copy.Enabled = false;
                     txtStaff_CopyDate.Enabled = false;
 
+                    txt_Staff.SearchType = SearchType.ScType.Staff;
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
@@ -226,7 +235,9 @@ namespace MasterTouroku_Staff
             obj.ChangeDate = txtStaff_CDate.Text.ToString();
             obj.StaffName = txtStaff_Name.Text.ToString();
             obj.KanaName = txtStaff_KanaName.Text.ToString();
-            obj.KensakuHyouziJun =txtStaff_Search.Text;            
+            int int_val = 0;
+            int.TryParse(txtStaff_Search.Text, NumberStyles.Any,CultureInfo.CurrentCulture, out int_val);
+            obj.KensakuHyouziJun = int_val.ToString();         
             obj.MenuCD = cboStaff_Menu.SelectedValue.ToString();
             obj.AuthorizationsCD = cboStaff_authority.SelectedValue.ToString();
             obj.PositionCD = cboStaff_Position.SelectedValue.ToString();
@@ -237,9 +248,10 @@ namespace MasterTouroku_Staff
             obj.UsedFlg = 0;
             obj.InsertOperator = base_Entity.OperatorCD;
             obj.UpdateOperator = base_Entity.OperatorCD;
-            
+
 
             //for log table
+            obj.ProgramID = base_Entity.ProgramID;
             obj.KeyItem = txt_Staff.Text.ToString() + " " + txtStaff_CDate.Text;
             obj.PC = base_Entity.PC;            
             return obj;
