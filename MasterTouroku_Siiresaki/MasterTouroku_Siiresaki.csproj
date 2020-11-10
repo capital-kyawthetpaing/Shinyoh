@@ -100,6 +100,10 @@
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
+      <Project>{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}</Project>
+      <Name>Shinyoh_Search</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -71,6 +71,12 @@ namespace Shinyoh_Controls
 
         [Browsable(true)]
         [Category("Shinyoh Properties")]
+        [Description("DepandOnMode")]
+        [DisplayName("DepandOnMode")]
+        public bool DepandOnMode { get; set; } = true;
+
+        [Browsable(true)]
+        [Category("Shinyoh Properties")]
         [Description("NextControlName")]
         [DisplayName("NextControlName")]
         public string NextControlName { get; set; }
@@ -208,7 +214,20 @@ namespace Shinyoh_Controls
                 if (this.TopLevelControl != null)
                 {
                     Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
-                    if (cbo.Text != "新規")
+                    if(DepandOnMode)
+                    {
+                        if (cbo.Text != "新規")
+                        {
+                            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                            if (ctrlArr.Length > 0)
+                            {
+                                Control btnF9 = ctrlArr[0];
+                                if (btnF9 != null)
+                                    btnF9.Visible = true;
+                            }
+                        }
+                    }
+                    else
                     {
                         Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
                         if (ctrlArr.Length > 0)
@@ -217,7 +236,8 @@ namespace Shinyoh_Controls
                             if (btnF9 != null)
                                 btnF9.Visible = true;
                         }
-                    }                       
+                    }
+                                  
                 }
             }
             base.OnGotFocus(e);

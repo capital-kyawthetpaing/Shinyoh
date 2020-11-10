@@ -36,6 +36,7 @@
             this.rdo_Registragion = new Shinyoh_Controls.SRadio();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.lblPayName = new Shinyoh_Controls.SLabel();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.chk_Flag = new Shinyoh_Controls.SCheckBox();
             this.lblSearch = new Shinyoh_Controls.SLabel();
@@ -91,6 +92,7 @@
             this.txtChangeDate = new Shinyoh_Controls.STextBox();
             this.txtCopyCD = new Shinyoh_Controls.STextBox();
             this.txtCopyDate = new Shinyoh_Controls.STextBox();
+            this.sbStaff = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -218,6 +220,8 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_Detail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.Panel_Detail.Controls.Add(this.sbStaff);
+            this.Panel_Detail.Controls.Add(this.lblPayName);
             this.Panel_Detail.Controls.Add(this.lblStaffCD_Name);
             this.Panel_Detail.Controls.Add(this.chk_Flag);
             this.Panel_Detail.Controls.Add(this.lblSearch);
@@ -274,6 +278,18 @@
             this.Panel_Detail.Size = new System.Drawing.Size(1485, 707);
             this.Panel_Detail.TabIndex = 1;
             // 
+            // lblPayName
+            // 
+            this.lblPayName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblPayName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblPayName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblPayName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblPayName.Location = new System.Drawing.Point(231, 160);
+            this.lblPayName.Name = "lblPayName";
+            this.lblPayName.Size = new System.Drawing.Size(310, 19);
+            this.lblPayName.TabIndex = 71;
+            this.lblPayName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lblStaffCD_Name
             // 
             this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
@@ -322,6 +338,7 @@
             this.txtSearch.AllowMinus = false;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.DecimalPlace = 0;
+            this.txtSearch.DepandOnMode = true;
             this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSearch.IntegerPart = 0;
             this.txtSearch.IsDatatableOccurs = null;
@@ -360,6 +377,7 @@
             this.txtRemark.AllowMinus = false;
             this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemark.DecimalPlace = 0;
+            this.txtRemark.DepandOnMode = true;
             this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtRemark.IntegerPart = 0;
             this.txtRemark.IsDatatableOccurs = null;
@@ -382,6 +400,7 @@
             this.txtEndDate.AllowMinus = false;
             this.txtEndDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEndDate.DecimalPlace = 0;
+            this.txtEndDate.DepandOnMode = true;
             this.txtEndDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtEndDate.IntegerPart = 0;
             this.txtEndDate.IsDatatableOccurs = null;
@@ -418,6 +437,7 @@
             this.txtStartDate.AllowMinus = false;
             this.txtStartDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStartDate.DecimalPlace = 0;
+            this.txtStartDate.DepandOnMode = true;
             this.txtStartDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStartDate.IntegerPart = 0;
             this.txtStartDate.IsDatatableOccurs = null;
@@ -454,12 +474,13 @@
             this.txtStaffCD.AllowMinus = false;
             this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaffCD.DecimalPlace = 0;
+            this.txtStaffCD.DepandOnMode = true;
             this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaffCD.IntegerPart = 0;
             this.txtStaffCD.IsDatatableOccurs = null;
             this.txtStaffCD.IsErrorOccurs = false;
             this.txtStaffCD.IsRequire = false;
-            this.txtStaffCD.Location = new System.Drawing.Point(141, 532);
+            this.txtStaffCD.Location = new System.Drawing.Point(492, 532);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtStaffCD.MoveNext = true;
@@ -491,6 +512,7 @@
             this.txtCurrency.AllowMinus = false;
             this.txtCurrency.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCurrency.DecimalPlace = 0;
+            this.txtCurrency.DepandOnMode = true;
             this.txtCurrency.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCurrency.IntegerPart = 0;
             this.txtCurrency.IsDatatableOccurs = null;
@@ -527,6 +549,7 @@
             this.txtMail.AllowMinus = false;
             this.txtMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMail.DecimalPlace = 0;
+            this.txtMail.DepandOnMode = true;
             this.txtMail.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtMail.IntegerPart = 0;
             this.txtMail.IsDatatableOccurs = null;
@@ -563,6 +586,7 @@
             this.txtTantoushaName.AllowMinus = false;
             this.txtTantoushaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTantoushaName.DecimalPlace = 0;
+            this.txtTantoushaName.DepandOnMode = true;
             this.txtTantoushaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTantoushaName.IntegerPart = 0;
             this.txtTantoushaName.IsDatatableOccurs = null;
@@ -599,6 +623,7 @@
             this.txtTantouYakushoku.AllowMinus = false;
             this.txtTantouYakushoku.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTantouYakushoku.DecimalPlace = 0;
+            this.txtTantouYakushoku.DepandOnMode = true;
             this.txtTantouYakushoku.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTantouYakushoku.IntegerPart = 0;
             this.txtTantouYakushoku.IsDatatableOccurs = null;
@@ -635,6 +660,7 @@
             this.txtTantouBusho.AllowMinus = false;
             this.txtTantouBusho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTantouBusho.DecimalPlace = 0;
+            this.txtTantouBusho.DepandOnMode = true;
             this.txtTantouBusho.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTantouBusho.IntegerPart = 0;
             this.txtTantouBusho.IsDatatableOccurs = null;
@@ -691,6 +717,7 @@
             this.txtPhone2_3.AllowMinus = false;
             this.txtPhone2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone2_3.DecimalPlace = 0;
+            this.txtPhone2_3.DepandOnMode = true;
             this.txtPhone2_3.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone2_3.IntegerPart = 0;
             this.txtPhone2_3.IsDatatableOccurs = null;
@@ -713,6 +740,7 @@
             this.txtPhone2_2.AllowMinus = false;
             this.txtPhone2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone2_2.DecimalPlace = 0;
+            this.txtPhone2_2.DepandOnMode = true;
             this.txtPhone2_2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone2_2.IntegerPart = 0;
             this.txtPhone2_2.IsDatatableOccurs = null;
@@ -735,6 +763,7 @@
             this.txtPhone2_1.AllowMinus = false;
             this.txtPhone2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone2_1.DecimalPlace = 0;
+            this.txtPhone2_1.DepandOnMode = true;
             this.txtPhone2_1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone2_1.IntegerPart = 0;
             this.txtPhone2_1.IsDatatableOccurs = null;
@@ -791,6 +820,7 @@
             this.txtPhone1_3.AllowMinus = false;
             this.txtPhone1_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone1_3.DecimalPlace = 0;
+            this.txtPhone1_3.DepandOnMode = true;
             this.txtPhone1_3.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone1_3.IntegerPart = 0;
             this.txtPhone1_3.IsDatatableOccurs = null;
@@ -813,6 +843,7 @@
             this.txtPhone1_2.AllowMinus = false;
             this.txtPhone1_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone1_2.DecimalPlace = 0;
+            this.txtPhone1_2.DepandOnMode = true;
             this.txtPhone1_2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone1_2.IntegerPart = 0;
             this.txtPhone1_2.IsDatatableOccurs = null;
@@ -835,6 +866,7 @@
             this.txtPhone1_1.AllowMinus = false;
             this.txtPhone1_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone1_1.DecimalPlace = 0;
+            this.txtPhone1_1.DepandOnMode = true;
             this.txtPhone1_1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone1_1.IntegerPart = 0;
             this.txtPhone1_1.IsDatatableOccurs = null;
@@ -871,6 +903,7 @@
             this.txtAddress2.AllowMinus = false;
             this.txtAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress2.DecimalPlace = 0;
+            this.txtAddress2.DepandOnMode = true;
             this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
             this.txtAddress2.IsDatatableOccurs = null;
@@ -907,6 +940,7 @@
             this.txtAddress1.AllowMinus = false;
             this.txtAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress1.DecimalPlace = 0;
+            this.txtAddress1.DepandOnMode = true;
             this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
             this.txtAddress1.IsDatatableOccurs = null;
@@ -943,6 +977,7 @@
             this.txtYubin2.AllowMinus = false;
             this.txtYubin2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin2.DecimalPlace = 0;
+            this.txtYubin2.DepandOnMode = true;
             this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
             this.txtYubin2.IsDatatableOccurs = null;
@@ -966,6 +1001,7 @@
             this.txtYubin1.AllowMinus = false;
             this.txtYubin1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin1.DecimalPlace = 0;
+            this.txtYubin1.DepandOnMode = true;
             this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
             this.txtYubin1.IsDatatableOccurs = null;
@@ -1012,6 +1048,7 @@
             this.txtPayCD.AllowMinus = false;
             this.txtPayCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPayCD.DecimalPlace = 0;
+            this.txtPayCD.DepandOnMode = true;
             this.txtPayCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPayCD.IntegerPart = 0;
             this.txtPayCD.IsDatatableOccurs = null;
@@ -1047,6 +1084,7 @@
             this.txtLong_Name.AllowMinus = false;
             this.txtLong_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLong_Name.DecimalPlace = 0;
+            this.txtLong_Name.DepandOnMode = true;
             this.txtLong_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtLong_Name.IntegerPart = 0;
             this.txtLong_Name.IsDatatableOccurs = null;
@@ -1082,6 +1120,7 @@
             this.txtShort_Name.AllowMinus = false;
             this.txtShort_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtShort_Name.DecimalPlace = 0;
+            this.txtShort_Name.DepandOnMode = true;
             this.txtShort_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShort_Name.IntegerPart = 0;
             this.txtShort_Name.IsDatatableOccurs = null;
@@ -1117,6 +1156,7 @@
             this.txtSupplierName.AllowMinus = false;
             this.txtSupplierName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSupplierName.DecimalPlace = 0;
+            this.txtSupplierName.DepandOnMode = true;
             this.txtSupplierName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSupplierName.IntegerPart = 0;
             this.txtSupplierName.IsDatatableOccurs = null;
@@ -1165,6 +1205,7 @@
             this.txtSupplierCD.AllowMinus = false;
             this.txtSupplierCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSupplierCD.DecimalPlace = 0;
+            this.txtSupplierCD.DepandOnMode = true;
             this.txtSupplierCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSupplierCD.IntegerPart = 0;
             this.txtSupplierCD.IsDatatableOccurs = null;
@@ -1187,6 +1228,7 @@
             this.txtChangeDate.AllowMinus = false;
             this.txtChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtChangeDate.DecimalPlace = 0;
+            this.txtChangeDate.DepandOnMode = true;
             this.txtChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtChangeDate.IntegerPart = 0;
             this.txtChangeDate.IsDatatableOccurs = null;
@@ -1210,6 +1252,7 @@
             this.txtCopyCD.AllowMinus = false;
             this.txtCopyCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCopyCD.DecimalPlace = 0;
+            this.txtCopyCD.DepandOnMode = true;
             this.txtCopyCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCopyCD.IntegerPart = 0;
             this.txtCopyCD.IsDatatableOccurs = null;
@@ -1232,6 +1275,7 @@
             this.txtCopyDate.AllowMinus = false;
             this.txtCopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCopyDate.DecimalPlace = 0;
+            this.txtCopyDate.DepandOnMode = true;
             this.txtCopyDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCopyDate.IntegerPart = 0;
             this.txtCopyDate.IsDatatableOccurs = null;
@@ -1249,6 +1293,30 @@
             this.txtCopyDate.TabIndex = 4;
             this.txtCopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtCopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyDate_KeyDown);
+            // 
+            // sbStaff
+            // 
+            this.sbStaff.AllowMinus = false;
+            this.sbStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sbStaff.ChangeDate = null;
+            this.sbStaff.DecimalPlace = 0;
+            this.sbStaff.DepandOnMode = false;
+            this.sbStaff.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.sbStaff.IntegerPart = 0;
+            this.sbStaff.IsDatatableOccurs = null;
+            this.sbStaff.IsErrorOccurs = false;
+            this.sbStaff.IsRequire = false;
+            this.sbStaff.lblName = null;
+            this.sbStaff.Location = new System.Drawing.Point(141, 532);
+            this.sbStaff.MinimumSize = new System.Drawing.Size(70, 19);
+            this.sbStaff.MoveNext = true;
+            this.sbStaff.Name = "sbStaff";
+            this.sbStaff.NextControl = null;
+            this.sbStaff.NextControlName = "txtStartDate";
+            this.sbStaff.SearchType = Entity.SearchType.ScType.Staff;
+            this.sbStaff.Size = new System.Drawing.Size(70, 19);
+            this.sbStaff.TabIndex = 72;
+            this.sbStaff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // MasterTourokuSiiresaki
             // 
@@ -1336,6 +1404,8 @@
         private Shinyoh_Controls.STextBox txtSupplierCD;
         private Shinyoh_Controls.SCheckBox chk_Flag;
         private Shinyoh_Controls.SLabel lblStaffCD_Name;
+        private Shinyoh_Controls.SLabel lblPayName;
+        private Shinyoh_Search.SearchBox sbStaff;
     }
 }
 
