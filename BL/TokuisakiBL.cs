@@ -51,13 +51,13 @@ namespace BL {
             obj.Sqlprms[34] = new SqlParameter("@UsedFlg", SqlDbType.VarChar) { Value = obj.UsedFlg };
             return ckmdl.InsertUpdateDeleteData("M_Tokuisaki_CUD", GetConnectionString(), obj.Sqlprms);
         }
-        public DataTable M_Tokuisaki_Select(string tokuisakiCD, DateTime cDate)
+        public DataTable M_Tokuisaki_Select(string tokuisakiCD, string changeDate)
         {
             string str = string.Empty;
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = tokuisakiCD };
-            parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.Date) { Value = cDate.Date };
+            parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.Date) { Value = changeDate };
             DataTable dt = ckmdl.SelectDatatable("M_Tokuisaki_Select", GetConnectionString(), parameters);
             return dt;
         }

@@ -156,6 +156,12 @@ namespace Shinyoh_Controls
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Tokuisaki":
+                        TokuisakiBL tokuisakiBL = new TokuisakiBL();
+                        dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text);
+                        rDt = dt;
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E132"))
                 {
@@ -185,6 +191,15 @@ namespace Shinyoh_Controls
                         {
                             SiiresakiBL obj = new SiiresakiBL();
                             dt = obj.Siiresaki_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text,string.Empty);
+                            rDt = dt;
+                            result = dt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                    case "M_Tokuisaki":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
+                        {
+                            TokuisakiBL tokuisakiBL = new TokuisakiBL();
+                            dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text);
                             rDt = dt;
                             result = dt.Rows[0]["MessageID"].ToString();
                         }

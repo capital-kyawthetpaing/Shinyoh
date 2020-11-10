@@ -20,6 +20,7 @@ namespace MasterTouroku_Tokuisaki {
         public MasterTouroku_Tokuisaki()
         {
             InitializeComponent();
+            cf = new CommonFunction();
         }
 
         private void MasterTouroku_Tokuisaki_Load(object sender, EventArgs e)
@@ -53,6 +54,7 @@ namespace MasterTouroku_Tokuisaki {
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
             txt_Tokuisaki.Focus();
+            txtSearch.Text = "0";
             switch (mode)
             {
                 case Mode.New:
@@ -60,11 +62,10 @@ namespace MasterTouroku_Tokuisaki {
                     txtChange_Date.E102Check(true);
                     txtChange_Date.E103Check(true);
                     txtChange_Date.E132Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
-                 //   txtChange_Date.E133Check(true, "M_Siiresaki", txt_Tokuisaki, txtChange_Date, null);
 
                     txtTokuisaki_CopyDate.E103Check(true);
                     txtTokuisaki_CopyDate.E102MultiCheck(true, txtTokuisaki_Copy, txtTokuisaki_CopyDate);
-                 //   txtTokuisaki_CopyDate.E133Check(true, "M_Siiresaki", txt_Tokuisaki, txtChange_Date, null);
+                    txtTokuisaki_CopyDate.E133Check(true, "M_Tokuisaki", txtTokuisaki_Copy, txtTokuisaki_CopyDate, null);
 
                     txtTokuisakiName.E102Check(true);
                     txtShortName.E102Check(true);
@@ -73,11 +74,11 @@ namespace MasterTouroku_Tokuisaki {
                     txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
                     txtStaffCharge.E102Check(true);
-               //     txtStaffCharge.E101Check(true, "M_Tokuisaki", txtStaffCharge, txtChange_Date, null);
+                    txtStaffCharge.E101Check(true, "M_Staff", txtStaffCharge, txtChange_Date, null);
 
                     txtStartDate.E103Check(true);
                     txtEndDate.E103Check(true);
-                    txtEndDate.E106Check(true, txtStartDate, txtEndDate);
+                    txtEndDate.E104Check(true, txtStartDate, txtEndDate);
 
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
@@ -128,33 +129,29 @@ namespace MasterTouroku_Tokuisaki {
             }
             if (tagID == "12")
             {
-                if (sRadRegister.Checked == true)
+                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
                 {
+                    //if (sRadRegister.Checked == true)
+                    //{
+                    //    DBProcess();
+                    //}
                     DBProcess();
+                    switch (cboMode.SelectedValue)
+                    {
+                        case "1":
+                            ChangeMode(Mode.New);
+                            break;
+                        case "2":
+                            ChangeMode(Mode.Update);
+                            break;
+                        case "3":
+                            ChangeMode(Mode.Delete);
+                            break;
+                        case "4":
+                            ChangeMode(Mode.Inquiry);
+                            break;
+                    }
                 }
-                
-                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
-                //{
-                //    if(sRadRegister.Checked == true)
-                //    {
-                //        DBProcess();
-                //    }
-                //    switch (cboMode.SelectedValue)
-                //    {
-                //        case "1":
-                //            ChangeMode(Mode.New);
-                //            break;
-                //        case "2":
-                //            ChangeMode(Mode.Update);
-                //            break;
-                //        case "3":
-                //            ChangeMode(Mode.Delete);
-                //            break;
-                //        case "4":
-                //            ChangeMode(Mode.Inquiry);
-                //            break;
-                //    }
-                //}
             }
 
                 base.FunctionProcess(tagID);
@@ -247,12 +244,12 @@ namespace MasterTouroku_Tokuisaki {
             {
                 if (dt.Rows[0]["MessageID"].ToString() == "E132")
                 {
-                    //if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
-                    //{
-                    //    chk.Checked = true;
-                    //}
-                    //else
-                    //    chk.Checked = false;
+                    if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
+                    {
+                        chk.Checked = true;
+                    }
+                    else
+                        chk.Checked = false;
                     txtTokuisakiName.Text = dt.Rows[0]["TokuisakiName"].ToString();
                     txtShortName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
                     txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
@@ -292,10 +289,6 @@ namespace MasterTouroku_Tokuisaki {
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                //txtTokuisakiName.Focus();
-                //DataTable dt = txtTokuisaki_CopyDate.IsDatatableOccurs;
-                //if (dt.Rows.Count > 0)
-                //    From_DB_To_TokuForm(dt);
                 if (!txtTokuisaki_CopyDate.IsErrorOccurs)
                 {
                     EnablePanel();
@@ -345,6 +338,33 @@ namespace MasterTouroku_Tokuisaki {
             cf.EnablePanel(PanelDetail);
             txt_Tokuisaki.Focus();
             cf.DisablePanel(PanelTitle);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string value = txtSearch.Text.Replace(",", "");
+            ulong ul;
+            if (ulong.TryParse(value, out ul))
+            {
+                txtSearch.TextChanged -= txtSearch_TextChanged;
+                txtSearch.Text = string.Format("{0:#,#0}", ul);
+                txtSearch.SelectionStart = txtSearch.Text.Length;
+                txtSearch.TextChanged += txtSearch_TextChanged;
+            }
+            else
+            {
+                txtSearch.Text = "0";
+            }
+        }
+
+        private void txtStaffCharge_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!txtStaffCharge.IsErrorOccurs)
+            {
+                DataTable dt = txtStaffCharge.IsDatatableOccurs;
+                if (dt.Rows.Count > 0)
+                    lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
+            }
         }
     }
 }
