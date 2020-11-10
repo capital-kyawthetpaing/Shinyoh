@@ -14,7 +14,7 @@ namespace Shinyoh_Controls
     public class SCheckBox : CheckBox
     {
         CommonFunction cf;
-        ErrorCheck errchk;
+        //ErrorCheck errchk;
 
         [Browsable(true)]
         [Category("Shinyoh Properties")]

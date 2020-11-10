@@ -36,6 +36,7 @@
             this.rdo_Registragion = new Shinyoh_Controls.SRadio();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.chk_Flag = new Shinyoh_Controls.SCheckBox();
             this.lblSearch = new Shinyoh_Controls.SLabel();
             this.txtSearch = new Shinyoh_Controls.STextBox();
@@ -90,7 +91,6 @@
             this.txtChangeDate = new Shinyoh_Controls.STextBox();
             this.txtCopyCD = new Shinyoh_Controls.STextBox();
             this.txtCopyDate = new Shinyoh_Controls.STextBox();
-            this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -274,6 +274,18 @@
             this.Panel_Detail.Size = new System.Drawing.Size(1485, 707);
             this.Panel_Detail.TabIndex = 1;
             // 
+            // lblStaffCD_Name
+            // 
+            this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
+            this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblStaffCD_Name.Location = new System.Drawing.Point(211, 532);
+            this.lblStaffCD_Name.Name = "lblStaffCD_Name";
+            this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblStaffCD_Name.TabIndex = 0;
+            this.lblStaffCD_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // chk_Flag
             // 
             this.chk_Flag.BackColor = System.Drawing.SystemColors.Menu;
@@ -321,7 +333,7 @@
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.NextControl = null;
-            this.txtSearch.NextControlName = null;
+            this.txtSearch.NextControlName = "BtnF1";
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(90, 19);
             this.txtSearch.TabIndex = 30;
@@ -1237,17 +1249,6 @@
             this.txtCopyDate.TabIndex = 4;
             this.txtCopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtCopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyDate_KeyDown);
-            // 
-            // lblStaffCD_Name
-            // 
-            this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
-            this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaffCD_Name.Location = new System.Drawing.Point(211, 533);
-            this.lblStaffCD_Name.Name = "lblStaffCD_Name";
-            this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
-            this.lblStaffCD_Name.TabIndex = 0;
-            this.lblStaffCD_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MasterTourokuSiiresaki
             // 

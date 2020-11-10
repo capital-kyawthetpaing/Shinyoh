@@ -11,7 +11,7 @@ namespace MasterTouroku_Siiresaki
     public partial class MasterTourokuSiiresaki : BaseForm
     {
         CommonFunction cf;
-        StaffEntity staff_Entity;
+        BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
         public MasterTourokuSiiresaki()
         {
@@ -41,7 +41,7 @@ namespace MasterTouroku_Siiresaki
             ChangeMode(Mode.New);
             txtSupplierCD.Focus();
 
-            staff_Entity = GetBaseData(); 
+            base_Entity = _GetBaseData(); 
         }
 
         private void ChangeMode(Mode mode)
@@ -240,11 +240,12 @@ namespace MasterTouroku_Siiresaki
             obj.Remarks = txtRemark.Text;
             obj.KensakuHyouziJun = txtSearch.Text;
             obj.UsedFlg = 0;
-            obj.InsertOperator = staff_Entity.StaffCD;
-            obj.UpdateOperator = staff_Entity.StaffCD;
+            obj.InsertOperator = base_Entity.OperatorCD;
+            obj.UpdateOperator = base_Entity.OperatorCD;
 
             //for log table
-            obj.PC = staff_Entity.PC;
+            obj.PC = base_Entity.PC;
+            obj.ProgramID = base_Entity.ProgramID;
             obj.KeyItem = txtSupplierCD.Text + " " + txtChangeDate.Text;
             return obj;
         }

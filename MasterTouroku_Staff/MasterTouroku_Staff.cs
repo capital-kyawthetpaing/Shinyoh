@@ -13,7 +13,7 @@ namespace MasterTouroku_Staff
     public partial class MasterTouroku_Staff : BaseForm
     {
         ButtonType type = new ButtonType();
-        StaffEntity staff_Entity;
+        BaseEntity base_Entity;
         CommonFunction cf;
         StaffBL bl = new StaffBL();
 
@@ -49,7 +49,7 @@ namespace MasterTouroku_Staff
             ChangeMode(Mode.New);
 
             txt_Staff.Focus();
-            staff_Entity = GetBaseData();
+            base_Entity = _GetBaseData();
 
             SearchBox.ChangeDate = txtStaff_CDate;
             
@@ -235,12 +235,13 @@ namespace MasterTouroku_Staff
             obj.Passward = txtStaff_Passward.Text;
             obj.Remarks = txtStaff_Remark.Text;
             obj.UsedFlg = 0;
-            obj.InsertOperator = staff_Entity.StaffCD;
-            obj.UpdateOperator = staff_Entity.StaffCD;
+            obj.InsertOperator = base_Entity.OperatorCD;
+            obj.UpdateOperator = base_Entity.OperatorCD;
+            
 
             //for log table
             obj.KeyItem = txt_Staff.Text.ToString() + " " + txtStaff_CDate.Text;
-            obj.PC = staff_Entity.PC;
+            obj.PC = base_Entity.PC;            
             return obj;
         }        
 
