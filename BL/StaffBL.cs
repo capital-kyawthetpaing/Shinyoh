@@ -88,7 +88,7 @@ namespace BL
             obj.Sqlprms[13] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = obj.InsertOperator };
             obj.Sqlprms[14] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = obj.UpdateOperator };
             obj.Sqlprms[15] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = obj.Mode };
-            obj.Sqlprms[16] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = "MasterTourokuStaff" };
+            obj.Sqlprms[16] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = obj.ProgramID };
             obj.Sqlprms[17] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
             obj.Sqlprms[18] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
             return ckmdl.InsertUpdateDeleteData("M_Staff_CUD", GetConnectionString(), obj.Sqlprms);
