@@ -1,4 +1,5 @@
 ﻿using BL;
+using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
 using System;
@@ -14,6 +15,8 @@ using System.Windows.Forms;
 namespace MasterTouroku_Tokuisaki {
     public partial class MasterTouroku_Tokuisaki : BaseForm {
         StaffEntity staff_Entity;
+        CommonFunction cf;
+
         public MasterTouroku_Tokuisaki()
         {
             InitializeComponent();
@@ -45,6 +48,11 @@ namespace MasterTouroku_Tokuisaki {
 
         private void ChangeMode(Mode mode)
         {
+            cf.Clear(PanelTitle);
+            cf.Clear(PanelDetail);
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(PanelDetail);
+            txt_Tokuisaki.Focus();
             switch (mode)
             {
                 case Mode.New:
@@ -70,25 +78,30 @@ namespace MasterTouroku_Tokuisaki {
                     txtStartDate.E103Check(true);
                     txtEndDate.E103Check(true);
                     txtEndDate.E106Check(true, txtStartDate, txtEndDate);
+
+                    cf.Clear(PanelTitle);
+                    cf.Clear(PanelDetail);
+                    cf.DisablePanel(PanelDetail);
+
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
 
                 case Mode.Update:
-
+                  //  txtChange_Date.E132Check(false,null,null,null,null);
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
-
+                //    txtChange_Date.E132Check(false, null, null, null, null);
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
 
                     break;
                 case Mode.Inquiry:
-
+                  //  txtChange_Date.E132Check(false, null, null, null, null);
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
@@ -279,17 +292,17 @@ namespace MasterTouroku_Tokuisaki {
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                txtTokuisakiName.Focus();
-                DataTable dt = txtTokuisaki_CopyDate.IsDatatableOccurs;
-                if (dt.Rows.Count > 0)
-                    From_DB_To_TokuForm(dt);
-                //if (!txtTokuisaki_CopyDate.IsErrorOccurs)
-                //{
-                //   // EnablePanel();
-                //    DataTable dt = txtTokuisaki_CopyDate.IsDatatableOccurs;
-                //    if (dt.Rows.Count > 0)
-                //        From_DB_To_TokuForm(dt);
-                //}
+                //txtTokuisakiName.Focus();
+                //DataTable dt = txtTokuisaki_CopyDate.IsDatatableOccurs;
+                //if (dt.Rows.Count > 0)
+                //    From_DB_To_TokuForm(dt);
+                if (!txtTokuisaki_CopyDate.IsErrorOccurs)
+                {
+                    EnablePanel();
+                    DataTable dt = txtTokuisaki_CopyDate.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        From_DB_To_TokuForm(dt);
+                }
             }
         }
 
@@ -304,6 +317,34 @@ namespace MasterTouroku_Tokuisaki {
                     txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
                 }
             }
+        }
+        private void txtChange_Date_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtChange_Date.IsErrorOccurs)
+                {
+                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    {
+                        EnablePanel();
+                    }
+                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                    }
+                }
+                DataTable dt = txtChange_Date.IsDatatableOccurs;
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                {
+                    From_DB_To_TokuForm(dt);
+                }
+            }
+        }
+        private void EnablePanel()
+        {
+            cf.EnablePanel(PanelDetail);
+            txt_Tokuisaki.Focus();
+            cf.DisablePanel(PanelTitle);
         }
     }
 }
