@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -236,6 +237,9 @@ namespace MasterTouroku_Tokuisaki {
             obj.TorihikiKaisiDate = txtStartDate.Text;
             obj.TorihikiShuuryouDate = txtEndDate.Text;
             obj.Remarks = txtRemark.Text;
+            int int_val = 0;
+            int.TryParse(txtSearch.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out int_val);
+            obj.KensakuHyouziJun = int_val.ToString();
             obj.KensakuHyouziJun = txtSearch.Text;
             obj.UsedFlg = 0;
             obj.InsertOperator = base_Entity.OperatorCD;
