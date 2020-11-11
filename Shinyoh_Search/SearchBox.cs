@@ -62,7 +62,7 @@ namespace Shinyoh_Search
                         SoukoSearch soukoSearch = new SoukoSearch();
                         soukoSearch.ShowDialog();
                         CD = soukoSearch.soukoCD;
-                        this.Text = soukoSearch.soukoCD;
+                        CDate = soukoSearch.soukoCD;
                         break;
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();
@@ -79,6 +79,7 @@ namespace Shinyoh_Search
                 }
 
                 this.Text = CD;
+                this.Text = CDate;
                 if(lblName != null)
                 {
                     lblName.Text = name;
