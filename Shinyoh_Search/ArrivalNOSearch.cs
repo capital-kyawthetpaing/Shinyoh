@@ -28,6 +28,7 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
             gvArrivalNo.UseRowNo(true);
+            GridViewBind();
         }
         public override void FunctionProcess(string tagID)
         {
@@ -43,7 +44,21 @@ namespace Shinyoh_Search
         }
         private void GridViewBind()
         {
-            
+            chakuniNyuuryoku_BL ab = new chakuniNyuuryoku_BL();
+            ArrivalNOEntity ane = new ArrivalNOEntity();
+            ane.ChakuniDateFrom = txtDateFrom.Text;
+            ane.ChakuniDateTo = txtDateTo.Text;
+            ane.SiiresakiCD = sbSupplier.Text;
+            ane.StaffCD = sbStaff.Text;
+            ane.ShouhinName = txtProductName.Text;
+            ane.ChakuniYoteiDateFrom = txtExpectedDateFrom.Text;
+            ane.ChakuniYoteiDateTo = txtExpectedDateTo.Text;
+            ane.KanriNOFrom = txtControlNoFrom.Text;
+            ane.KanriNOTo = txtControlNoTo.Text;
+            ane.ShouhinCDFrom = txtProductFrom.Text;
+            ane.ShouhinCDTo = txtProductTo.Text;
+            DataTable dt = ab.ArrivalNO_Search(ane);
+            gvArrivalNo.DataSource = dt;
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
@@ -68,13 +83,10 @@ namespace Shinyoh_Search
         {
             txtDateFrom.E103Check(true);
             txtDateTo.E103Check(true);
-            txtDateTo.E106Check(true, txtDateFrom, txtDateTo);
             txtExpectedDateFrom.E103Check(true);
             txtExpectedDateTo.E103Check(true);
             txtExpectedDateTo.E106Check(true, txtExpectedDateFrom, txtExpectedDateTo);
             sbStaff.E101Check(true, "staff", null, null, null);
-            txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
-            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
         }
         private void txtDateTo_KeyDown(object sender, KeyEventArgs e)
         {
