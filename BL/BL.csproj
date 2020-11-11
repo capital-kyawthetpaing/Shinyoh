@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="chakuniNyuuryoku_BL.cs" />
     <Compile Include="BaseBL.cs" />
     <Compile Include="DenpyouNOBL.cs" />
     <Compile Include="LoginBL.cs" />
