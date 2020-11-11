@@ -1,6 +1,6 @@
 ﻿namespace Shinyoh_Search
 {
-    partial class StaffSearch
+    partial class SiiresakiSearch
     {
         /// <summary>
         /// Required designer variable.
@@ -28,28 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.rdo_All = new Shinyoh_Controls.SRadio();
             this.rdo_Date = new Shinyoh_Controls.SRadio();
             this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.lblDate = new Shinyoh_Controls.SLabel();
-            this.btnStaff_F11 = new Shinyoh_Controls.SButton();
+            this.btnSupplier_F11 = new Shinyoh_Controls.SButton();
             this.txtKanaName = new Shinyoh_Controls.STextBox();
-            this.txtStaffName = new Shinyoh_Controls.STextBox();
+            this.txtSupplierName = new Shinyoh_Controls.STextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtStaff2 = new Shinyoh_Controls.STextBox();
-            this.txtStaff1 = new Shinyoh_Controls.STextBox();
+            this.txtSupplier2 = new Shinyoh_Controls.STextBox();
+            this.txtSupplier1 = new Shinyoh_Controls.STextBox();
             this.lblStaff_Kana = new Shinyoh_Controls.SLabel();
             this.lblStaffName = new Shinyoh_Controls.SLabel();
             this.lblDisplay = new Shinyoh_Controls.SLabel();
             this.lblStaff = new Shinyoh_Controls.SLabel();
-            this.gvStaff = new Shinyoh_Controls.SGridView();
-            this.colStaffCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colChangeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PanelTitle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvStaff)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelTitle
@@ -59,12 +53,12 @@
             this.PanelTitle.Controls.Add(this.rdo_Date);
             this.PanelTitle.Controls.Add(this.lbl_Date);
             this.PanelTitle.Controls.Add(this.lblDate);
-            this.PanelTitle.Controls.Add(this.btnStaff_F11);
+            this.PanelTitle.Controls.Add(this.btnSupplier_F11);
             this.PanelTitle.Controls.Add(this.txtKanaName);
-            this.PanelTitle.Controls.Add(this.txtStaffName);
+            this.PanelTitle.Controls.Add(this.txtSupplierName);
             this.PanelTitle.Controls.Add(this.label1);
-            this.PanelTitle.Controls.Add(this.txtStaff2);
-            this.PanelTitle.Controls.Add(this.txtStaff1);
+            this.PanelTitle.Controls.Add(this.txtSupplier2);
+            this.PanelTitle.Controls.Add(this.txtSupplier1);
             this.PanelTitle.Controls.Add(this.lblStaff_Kana);
             this.PanelTitle.Controls.Add(this.lblStaffName);
             this.PanelTitle.Controls.Add(this.lblDisplay);
@@ -73,7 +67,7 @@
             this.PanelTitle.Location = new System.Drawing.Point(0, 0);
             this.PanelTitle.Name = "PanelTitle";
             this.PanelTitle.Size = new System.Drawing.Size(935, 126);
-            this.PanelTitle.TabIndex = 0;
+            this.PanelTitle.TabIndex = 2;
             // 
             // rdo_All
             // 
@@ -100,7 +94,7 @@
             this.rdo_Date.Size = new System.Drawing.Size(88, 19);
             this.rdo_Date.TabIndex = 1;
             this.rdo_Date.TabStop = true;
-            this.rdo_Date.Text = "改定日直近";
+            this.rdo_Date.Text = "改定日直近\t\t";
             this.rdo_Date.UseVisualStyleBackColor = true;
             // 
             // lbl_Date
@@ -131,20 +125,19 @@
             this.lblDate.Text = "基準日";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnStaff_F11
+            // btnSupplier_F11
             // 
-            this.btnStaff_F11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStaff_F11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnStaff_F11.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnStaff_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnStaff_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnStaff_F11.Location = new System.Drawing.Point(763, 82);
-            this.btnStaff_F11.Name = "btnStaff_F11";
-            this.btnStaff_F11.Size = new System.Drawing.Size(160, 32);
-            this.btnStaff_F11.TabIndex = 7;
-            this.btnStaff_F11.Text = "表示(F11)";
-            this.btnStaff_F11.UseVisualStyleBackColor = false;
-            this.btnStaff_F11.Click += new System.EventHandler(this.btnStaff_F11_Click);
+            this.btnSupplier_F11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSupplier_F11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnSupplier_F11.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btnSupplier_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSupplier_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSupplier_F11.Location = new System.Drawing.Point(763, 82);
+            this.btnSupplier_F11.Name = "btnSupplier_F11";
+            this.btnSupplier_F11.Size = new System.Drawing.Size(160, 32);
+            this.btnSupplier_F11.TabIndex = 7;
+            this.btnSupplier_F11.Text = "表示(F11)";
+            this.btnSupplier_F11.UseVisualStyleBackColor = false;
             // 
             // txtKanaName
             // 
@@ -168,27 +161,27 @@
             this.txtKanaName.TabIndex = 6;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtStaffName
+            // txtSupplierName
             // 
-            this.txtStaffName.AllowMinus = false;
-            this.txtStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaffName.DecimalPlace = 0;
-            this.txtStaffName.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaffName.IntegerPart = 0;
-            this.txtStaffName.IsDatatableOccurs = null;
-            this.txtStaffName.IsErrorOccurs = false;
-            this.txtStaffName.IsRequire = false;
-            this.txtStaffName.Location = new System.Drawing.Point(123, 68);
-            this.txtStaffName.MaxLength = 40;
-            this.txtStaffName.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtStaffName.MoveNext = true;
-            this.txtStaffName.Name = "txtStaffName";
-            this.txtStaffName.NextControl = null;
-            this.txtStaffName.NextControlName = "txtKanaName";
-            this.txtStaffName.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaffName.Size = new System.Drawing.Size(353, 19);
-            this.txtStaffName.TabIndex = 5;
-            this.txtStaffName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSupplierName.AllowMinus = false;
+            this.txtSupplierName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSupplierName.DecimalPlace = 0;
+            this.txtSupplierName.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSupplierName.IntegerPart = 0;
+            this.txtSupplierName.IsDatatableOccurs = null;
+            this.txtSupplierName.IsErrorOccurs = false;
+            this.txtSupplierName.IsRequire = false;
+            this.txtSupplierName.Location = new System.Drawing.Point(123, 68);
+            this.txtSupplierName.MaxLength = 40;
+            this.txtSupplierName.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSupplierName.MoveNext = true;
+            this.txtSupplierName.Name = "txtSupplierName";
+            this.txtSupplierName.NextControl = null;
+            this.txtSupplierName.NextControlName = "txtKanaName";
+            this.txtSupplierName.SearchType = Entity.SearchType.ScType.None;
+            this.txtSupplierName.Size = new System.Drawing.Size(353, 19);
+            this.txtSupplierName.TabIndex = 5;
+            this.txtSupplierName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label1
             // 
@@ -200,50 +193,49 @@
             this.label1.TabIndex = 12;
             this.label1.Text = "~";
             // 
-            // txtStaff2
+            // txtSupplier2
             // 
-            this.txtStaff2.AllowMinus = false;
-            this.txtStaff2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaff2.DecimalPlace = 0;
-            this.txtStaff2.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaff2.IntegerPart = 0;
-            this.txtStaff2.IsDatatableOccurs = null;
-            this.txtStaff2.IsErrorOccurs = false;
-            this.txtStaff2.IsRequire = false;
-            this.txtStaff2.Location = new System.Drawing.Point(280, 40);
-            this.txtStaff2.MaxLength = 10;
-            this.txtStaff2.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtStaff2.MoveNext = true;
-            this.txtStaff2.Name = "txtStaff2";
-            this.txtStaff2.NextControl = null;
-            this.txtStaff2.NextControlName = "txtStaffName";
-            this.txtStaff2.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff2.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff2.TabIndex = 4;
-            this.txtStaff2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaff2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaff2_KeyDown);
+            this.txtSupplier2.AllowMinus = false;
+            this.txtSupplier2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSupplier2.DecimalPlace = 0;
+            this.txtSupplier2.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSupplier2.IntegerPart = 0;
+            this.txtSupplier2.IsDatatableOccurs = null;
+            this.txtSupplier2.IsErrorOccurs = false;
+            this.txtSupplier2.IsRequire = false;
+            this.txtSupplier2.Location = new System.Drawing.Point(280, 40);
+            this.txtSupplier2.MaxLength = 10;
+            this.txtSupplier2.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSupplier2.MoveNext = true;
+            this.txtSupplier2.Name = "txtSupplier2";
+            this.txtSupplier2.NextControl = null;
+            this.txtSupplier2.NextControlName = "txtStaffName";
+            this.txtSupplier2.SearchType = Entity.SearchType.ScType.None;
+            this.txtSupplier2.Size = new System.Drawing.Size(100, 19);
+            this.txtSupplier2.TabIndex = 4;
+            this.txtSupplier2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtStaff1
+            // txtSupplier1
             // 
-            this.txtStaff1.AllowMinus = false;
-            this.txtStaff1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaff1.DecimalPlace = 0;
-            this.txtStaff1.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaff1.IntegerPart = 0;
-            this.txtStaff1.IsDatatableOccurs = null;
-            this.txtStaff1.IsErrorOccurs = false;
-            this.txtStaff1.IsRequire = false;
-            this.txtStaff1.Location = new System.Drawing.Point(123, 39);
-            this.txtStaff1.MaxLength = 10;
-            this.txtStaff1.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtStaff1.MoveNext = true;
-            this.txtStaff1.Name = "txtStaff1";
-            this.txtStaff1.NextControl = null;
-            this.txtStaff1.NextControlName = "txtStaff2";
-            this.txtStaff1.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff1.Size = new System.Drawing.Size(100, 19);
-            this.txtStaff1.TabIndex = 3;
-            this.txtStaff1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSupplier1.AllowMinus = false;
+            this.txtSupplier1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSupplier1.DecimalPlace = 0;
+            this.txtSupplier1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSupplier1.IntegerPart = 0;
+            this.txtSupplier1.IsDatatableOccurs = null;
+            this.txtSupplier1.IsErrorOccurs = false;
+            this.txtSupplier1.IsRequire = false;
+            this.txtSupplier1.Location = new System.Drawing.Point(123, 39);
+            this.txtSupplier1.MaxLength = 10;
+            this.txtSupplier1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSupplier1.MoveNext = true;
+            this.txtSupplier1.Name = "txtSupplier1";
+            this.txtSupplier1.NextControl = null;
+            this.txtSupplier1.NextControlName = "txtStaff2";
+            this.txtSupplier1.SearchType = Entity.SearchType.ScType.None;
+            this.txtSupplier1.Size = new System.Drawing.Size(100, 19);
+            this.txtSupplier1.TabIndex = 3;
+            this.txtSupplier1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblStaff_Kana
             // 
@@ -268,7 +260,7 @@
             this.lblStaffName.Name = "lblStaffName";
             this.lblStaffName.Size = new System.Drawing.Size(80, 19);
             this.lblStaffName.TabIndex = 0;
-            this.lblStaffName.Text = "スタッフ名";
+            this.lblStaffName.Text = "仕入先名";
             this.lblStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblDisplay
@@ -294,63 +286,21 @@
             this.lblStaff.Name = "lblStaff";
             this.lblStaff.Size = new System.Drawing.Size(80, 19);
             this.lblStaff.TabIndex = 0;
-            this.lblStaff.Text = "スタッフ";
+            this.lblStaff.Text = "仕入先";
             this.lblStaff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gvStaff
-            // 
-            this.gvStaff.AllowUserToAddRows = false;
-            this.gvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvStaff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colStaffCD,
-            this.colStaffName,
-            this.colChangeDate});
-            this.gvStaff.Location = new System.Drawing.Point(45, 146);
-            this.gvStaff.Name = "gvStaff";
-            this.gvStaff.Size = new System.Drawing.Size(768, 302);
-            this.gvStaff.TabIndex = 3;
-            this.gvStaff.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvStaff_CellMouseClick);
-            // 
-            // colStaffCD
-            // 
-            this.colStaffCD.DataPropertyName = "StaffCD";
-            this.colStaffCD.HeaderText = "スタッフ";
-            this.colStaffCD.Name = "colStaffCD";
-            this.colStaffCD.Width = 125;
-            // 
-            // colStaffName
-            // 
-            this.colStaffName.DataPropertyName = "StaffName";
-            this.colStaffName.HeaderText = "スタッフ名";
-            this.colStaffName.Name = "colStaffName";
-            this.colStaffName.Width = 400;
-            // 
-            // colChangeDate
-            // 
-            this.colChangeDate.DataPropertyName = "ChangeDate";
-            dataGridViewCellStyle1.Format = "yyyy/MM/dd";
-            dataGridViewCellStyle1.NullValue = null;
-            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colChangeDate.HeaderText = "改定日";
-            this.colChangeDate.Name = "colChangeDate";
-            this.colChangeDate.Width = 200;
-            // 
-            // StaffSearch
+            // SiiresakiSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 506);
-            this.Controls.Add(this.gvStaff);
             this.Controls.Add(this.PanelTitle);
-            this.Name = "StaffSearch";
+            this.Name = "SiiresakiSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StaffSearch";
-            this.Load += new System.EventHandler(this.StaffSearch_Load);
+            this.Text = "SiiresakiSearch";
             this.Controls.SetChildIndex(this.PanelTitle, 0);
-            this.Controls.SetChildIndex(this.gvStaff, 0);
             this.PanelTitle.ResumeLayout(false);
             this.PanelTitle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvStaff)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -358,23 +308,19 @@
         #endregion
 
         private System.Windows.Forms.Panel PanelTitle;
-        private Shinyoh_Controls.SLabel lblStaffName;
-        private Shinyoh_Controls.SLabel lblStaff;
-        private Shinyoh_Controls.SLabel lblDisplay;
-        private Shinyoh_Controls.SLabel lblStaff_Kana;
-        private System.Windows.Forms.Label label1;
-        private Shinyoh_Controls.STextBox txtStaff2;
-        private Shinyoh_Controls.STextBox txtStaff1;
-        private Shinyoh_Controls.STextBox txtKanaName;
-        private Shinyoh_Controls.STextBox txtStaffName;
-        private Shinyoh_Controls.SButton btnStaff_F11;
-        private Shinyoh_Controls.SLabel lblDate;
-        private Shinyoh_Controls.SGridView gvStaff;
-        private Shinyoh_Controls.SLabel lbl_Date;
         private Shinyoh_Controls.SRadio rdo_All;
         private Shinyoh_Controls.SRadio rdo_Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStaffCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStaffName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colChangeDate;
+        private Shinyoh_Controls.SLabel lbl_Date;
+        private Shinyoh_Controls.SLabel lblDate;
+        private Shinyoh_Controls.SButton btnSupplier_F11;
+        private Shinyoh_Controls.STextBox txtKanaName;
+        private Shinyoh_Controls.STextBox txtSupplierName;
+        private System.Windows.Forms.Label label1;
+        private Shinyoh_Controls.STextBox txtSupplier2;
+        private Shinyoh_Controls.STextBox txtSupplier1;
+        private Shinyoh_Controls.SLabel lblStaff_Kana;
+        private Shinyoh_Controls.SLabel lblStaffName;
+        private Shinyoh_Controls.SLabel lblDisplay;
+        private Shinyoh_Controls.SLabel lblStaff;
     }
 }

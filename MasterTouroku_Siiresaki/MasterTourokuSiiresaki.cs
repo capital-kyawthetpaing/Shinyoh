@@ -4,6 +4,7 @@ using Entity;
 using Shinyoh;
 using System;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace MasterTouroku_Siiresaki
@@ -238,7 +239,9 @@ namespace MasterTouroku_Siiresaki
             obj.TorihikiKaisiDate = txtStartDate.Text;
             obj.TorihikiShuuryouDate = txtEndDate.Text;
             obj.Remarks = txtRemark.Text;
-            obj.KensakuHyouziJun = txtSearch.Text;
+            int int_val = 0;
+            int.TryParse(txtSearch.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out int_val);
+            obj.KensakuHyouziJun = int_val.ToString();
             obj.UsedFlg = 0;
             obj.InsertOperator = base_Entity.OperatorCD;
             obj.UpdateOperator = base_Entity.OperatorCD;
