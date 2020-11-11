@@ -61,11 +61,6 @@ namespace Shinyoh_Search {
             FunctionProcess(BtnF11_Soko.Tag.ToString());
             GridViewBind();
         }
-
-        private void gvSouko_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            GetGridviewData(gvSouko.Rows[e.RowIndex]);
-        }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
             if (gvrow.DataBoundItem != null)
@@ -79,6 +74,10 @@ namespace Shinyoh_Search {
         private void txtSouko2_KeyDown(object sender, KeyEventArgs e)
         {
             txtSouko2.E106Check(true, txtSouko1, txtSouko2);
+        }
+        private void gvSouko_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            GetGridviewData(gvSouko.Rows[e.RowIndex]);
         }
     }
 }

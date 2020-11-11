@@ -30,7 +30,7 @@ namespace MasterTouroku_Tokuisaki {
             ProgramID = "MasterTourokuTokuisaki";
             StartProgram();
             cboMode.Bind(false,multipurposeEntity);
-           // txtStaffCharge.lblName = lblStaffCD_Name;
+            txtStaffCharge.lblName = lblStaffCD_Name;
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
@@ -136,8 +136,8 @@ namespace MasterTouroku_Tokuisaki {
             txtShortName.E102Check(true);
             txtBillAddress.E102Check(true);
 
-            txtStaffCharges.E102Check(true);
-            txtStaffCharges.E101Check(true, "M_Staff", txtStaffCharges, txtChange_Date, null);
+            txtStaffCharge.E102Check(true);
+            txtStaffCharge.E101Check(true, "M_Staff", txtStaffCharge, txtChange_Date, null);
 
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
@@ -243,7 +243,7 @@ namespace MasterTouroku_Tokuisaki {
             obj.TantouYakushoku = txtJobTitle.Text;
             obj.TantoushaName = txtPersonCharge.Text;
             obj.MailAddress = txtMailAddress.Text;
-            obj.StaffCD = txtStaffCharges.Text;
+            obj.StaffCD = txtStaffCharge.Text;
             obj.TorihikiKaisiDate = txtStartDate.Text;
             obj.TorihikiShuuryouDate = txtEndDate.Text;
             obj.Remarks = txtRemark.Text;
@@ -313,7 +313,7 @@ namespace MasterTouroku_Tokuisaki {
                     txtJobTitle.Text = dt.Rows[0]["TantouYakushoku"].ToString();
                     txtPersonCharge.Text = dt.Rows[0]["TantoushaName"].ToString();
                     txtMailAddress.Text = dt.Rows[0]["MailAddress"].ToString();
-                    txtStaffCharges.Text = dt.Rows[0]["StaffCD"].ToString();
+                    txtStaffCharge.Text = dt.Rows[0]["StaffCD"].ToString();
                     txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
                     txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
                     txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
@@ -391,16 +391,6 @@ namespace MasterTouroku_Tokuisaki {
             else
             {
                 txtSearch.Text = "0";
-            }
-        }
-
-        private void txtStaffCharge_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!txtStaffCharges.IsErrorOccurs)
-            {
-                DataTable dt = txtStaffCharges.IsDatatableOccurs;
-                if (dt.Rows.Count > 0)
-                    lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
             }
         }
     }
