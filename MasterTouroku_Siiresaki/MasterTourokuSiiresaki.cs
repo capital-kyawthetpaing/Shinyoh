@@ -140,6 +140,8 @@ namespace MasterTouroku_Siiresaki
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
 
+            sbStaff.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
+
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
             txtEndDate.E104Check(true, txtStartDate, txtEndDate);
@@ -363,12 +365,12 @@ namespace MasterTouroku_Siiresaki
 
         private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
         {
-            //if (!txtStaffCD.IsErrorOccurs)
-            //{
-            //    DataTable dt = txtStaffCD.IsDatatableOccurs;
-            //    if (dt.Rows.Count > 0)
-            //        lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
-            //}
+            if (!txtStaffCD.IsErrorOccurs)
+            {
+                DataTable dt = txtStaffCD.IsDatatableOccurs;
+                if (dt.Rows.Count > 0)
+                    lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
+            }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

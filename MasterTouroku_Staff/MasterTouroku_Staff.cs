@@ -53,7 +53,9 @@ namespace MasterTouroku_Staff
             base_Entity = _GetBaseData();
 
             txt_Staff.ChangeDate = txtStaff_CDate;
-            
+            txtStaff_Copy.ChangeDate = txtStaff_CopyDate;
+
+
         }
 
         private void ChangeMode(Mode mode)

@@ -47,8 +47,7 @@ namespace Shinyoh_Search
                 {
                     if(lblName!=null)
                         lblName.Text = dt.Rows[0][colName].ToString();
-                }
-                    
+                }                   
             }
         }
 
