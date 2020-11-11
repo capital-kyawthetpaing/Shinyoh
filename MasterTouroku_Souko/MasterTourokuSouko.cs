@@ -43,9 +43,8 @@ namespace MasterTouroku_Souko
             ChangeMode(Mode.New);
             txtSouko.Focus();
             base_Entity = _GetBaseData();
-
-            txtSouko.ChangeDate = txtSoukoName;
-            searchBox1.ChangeDate = txtSoukoName;
+            txtSouko.ChangeDate = txtSouko;
+            txtCopySouko.ChangeDate = txtSoukoName;
         }
         private void ChangeMode(Mode mode)
         {
@@ -65,6 +64,7 @@ namespace MasterTouroku_Souko
                     txtCopySouko.E101Check(true, "souko", null, null, null);
                     txtSoukoName.E102Check(true);
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
@@ -82,6 +82,8 @@ namespace MasterTouroku_Souko
                     txtSouko.E102Check(true);
                     txtSouko.E132Check(false, null, null, null, null);
                     txtSouko.E101Check(true, "souko", null, null, null);
+                    txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
@@ -204,7 +206,6 @@ namespace MasterTouroku_Souko
             int int_val = 0;
             int.TryParse(txtSearch.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out int_val);
             soukoEntity.KensakuHyouziJun = int_val.ToString();
-            soukoEntity.KensakuHyouziJun = txtSearch.Text.ToString();
             soukoEntity.YuubinNO1 = txtYubin1.Text.ToString();
             soukoEntity.YuubinNO2 = txtYubin2.Text.ToString();
             soukoEntity.Juusho1 = txtAddress1.Text.ToString();
@@ -238,10 +239,10 @@ namespace MasterTouroku_Souko
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtCopySouko.IsErrorOccurs)
+                if (!txtCopySoukos.IsErrorOccurs)
                 {
                     EnableAndDisablePanel();
-                    DataTable dt = txtCopySouko.IsDatatableOccurs;
+                    DataTable dt = txtCopySoukos.IsDatatableOccurs;
                     soukoSelect(dt);
                 }
             }
@@ -292,7 +293,18 @@ namespace MasterTouroku_Souko
             txtSoukoName.Focus();
             cf.DisablePanel(PanelTitle);
         }
-
+        private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                {
+                    DataTable dt = txtYubin2.IsDatatableOccurs;
+                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                }
+            }
+        }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             string value = txtSearch.Text.Replace(",", "");
@@ -300,7 +312,7 @@ namespace MasterTouroku_Souko
             if (ulong.TryParse(value, out ul))
             {
                 txtSearch.TextChanged -= txtSearch_TextChanged;
-                txtSearch.Text = string.Format("{0:#,#}", ul);
+                txtSearch.Text = string.Format("{0:#,#0}", ul);
                 txtSearch.SelectionStart = txtSearch.Text.Length;
                 txtSearch.TextChanged += txtSearch_TextChanged;
             }

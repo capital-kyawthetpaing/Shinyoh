@@ -38,6 +38,7 @@
             this.sRadRegister = new Shinyoh_Controls.SRadio();
             this.sRadDelete = new Shinyoh_Controls.SRadio();
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.lblStaff = new System.Windows.Forms.Label();
             this.chk = new Shinyoh_Controls.SCheckBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -90,7 +91,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblSearch = new Shinyoh_Controls.SLabel();
             this.txtSearch = new Shinyoh_Controls.STextBox();
-            this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -124,12 +124,15 @@
             // 
             this.txt_Tokuisaki.AllowMinus = false;
             this.txt_Tokuisaki.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_Tokuisaki.ChangeDate = null;
             this.txt_Tokuisaki.DecimalPlace = 0;
+            this.txt_Tokuisaki.DepandOnMode = true;
             this.txt_Tokuisaki.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txt_Tokuisaki.IntegerPart = 0;
             this.txt_Tokuisaki.IsDatatableOccurs = null;
             this.txt_Tokuisaki.IsErrorOccurs = false;
             this.txt_Tokuisaki.IsRequire = false;
+            this.txt_Tokuisaki.lblName = null;
             this.txt_Tokuisaki.Location = new System.Drawing.Point(118, 9);
             this.txt_Tokuisaki.MaxLength = 10;
             this.txt_Tokuisaki.MinimumSize = new System.Drawing.Size(80, 19);
@@ -147,6 +150,7 @@
             this.txtTokuisaki_CopyDate.AllowMinus = false;
             this.txtTokuisaki_CopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTokuisaki_CopyDate.DecimalPlace = 0;
+            this.txtTokuisaki_CopyDate.DepandOnMode = true;
             this.txtTokuisaki_CopyDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisaki_CopyDate.IntegerPart = 0;
             this.txtTokuisaki_CopyDate.IsDatatableOccurs = null;
@@ -209,6 +213,7 @@
             this.txtTokuisaki_Copy.AllowMinus = false;
             this.txtTokuisaki_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTokuisaki_Copy.DecimalPlace = 0;
+            this.txtTokuisaki_Copy.DepandOnMode = true;
             this.txtTokuisaki_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisaki_Copy.IntegerPart = 0;
             this.txtTokuisaki_Copy.IsDatatableOccurs = null;
@@ -231,6 +236,7 @@
             this.txtChange_Date.AllowMinus = false;
             this.txtChange_Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtChange_Date.DecimalPlace = 0;
+            this.txtChange_Date.DepandOnMode = true;
             this.txtChange_Date.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtChange_Date.IntegerPart = 0;
             this.txtChange_Date.IsDatatableOccurs = null;
@@ -366,6 +372,18 @@
             this.PanelDetail.Size = new System.Drawing.Size(1485, 719);
             this.PanelDetail.TabIndex = 3;
             // 
+            // lblStaffCD_Name
+            // 
+            this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
+            this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblStaffCD_Name.Location = new System.Drawing.Point(212, 544);
+            this.lblStaffCD_Name.Name = "lblStaffCD_Name";
+            this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblStaffCD_Name.TabIndex = 94;
+            this.lblStaffCD_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // lblStaff
             // 
             this.lblStaff.AutoSize = true;
@@ -413,13 +431,14 @@
             this.txtPhNo6.AllowMinus = false;
             this.txtPhNo6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo6.DecimalPlace = 0;
+            this.txtPhNo6.DepandOnMode = true;
             this.txtPhNo6.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo6.IntegerPart = 0;
             this.txtPhNo6.IsDatatableOccurs = null;
             this.txtPhNo6.IsErrorOccurs = false;
             this.txtPhNo6.IsRequire = false;
             this.txtPhNo6.Location = new System.Drawing.Point(370, 370);
-            this.txtPhNo6.MaxLength = 80;
+            this.txtPhNo6.MaxLength = 4;
             this.txtPhNo6.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo6.MoveNext = true;
             this.txtPhNo6.Name = "txtPhNo6";
@@ -435,13 +454,14 @@
             this.txtPhNo5.AllowMinus = false;
             this.txtPhNo5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo5.DecimalPlace = 0;
+            this.txtPhNo5.DepandOnMode = true;
             this.txtPhNo5.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo5.IntegerPart = 0;
             this.txtPhNo5.IsDatatableOccurs = null;
             this.txtPhNo5.IsErrorOccurs = false;
             this.txtPhNo5.IsRequire = false;
             this.txtPhNo5.Location = new System.Drawing.Point(247, 370);
-            this.txtPhNo5.MaxLength = 80;
+            this.txtPhNo5.MaxLength = 4;
             this.txtPhNo5.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo5.MoveNext = true;
             this.txtPhNo5.Name = "txtPhNo5";
@@ -457,13 +477,14 @@
             this.txtPhNo4.AllowMinus = false;
             this.txtPhNo4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo4.DecimalPlace = 0;
+            this.txtPhNo4.DepandOnMode = true;
             this.txtPhNo4.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo4.IntegerPart = 0;
             this.txtPhNo4.IsDatatableOccurs = null;
             this.txtPhNo4.IsErrorOccurs = false;
             this.txtPhNo4.IsRequire = false;
             this.txtPhNo4.Location = new System.Drawing.Point(141, 369);
-            this.txtPhNo4.MaxLength = 80;
+            this.txtPhNo4.MaxLength = 5;
             this.txtPhNo4.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo4.MoveNext = true;
             this.txtPhNo4.Name = "txtPhNo4";
@@ -499,13 +520,14 @@
             this.txtPhNo3.AllowMinus = false;
             this.txtPhNo3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo3.DecimalPlace = 0;
+            this.txtPhNo3.DepandOnMode = true;
             this.txtPhNo3.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo3.IntegerPart = 0;
             this.txtPhNo3.IsDatatableOccurs = null;
             this.txtPhNo3.IsErrorOccurs = false;
             this.txtPhNo3.IsRequire = false;
             this.txtPhNo3.Location = new System.Drawing.Point(370, 336);
-            this.txtPhNo3.MaxLength = 80;
+            this.txtPhNo3.MaxLength = 4;
             this.txtPhNo3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo3.MoveNext = true;
             this.txtPhNo3.Name = "txtPhNo3";
@@ -521,13 +543,14 @@
             this.txtPhNo2.AllowMinus = false;
             this.txtPhNo2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo2.DecimalPlace = 0;
+            this.txtPhNo2.DepandOnMode = true;
             this.txtPhNo2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo2.IntegerPart = 0;
             this.txtPhNo2.IsDatatableOccurs = null;
             this.txtPhNo2.IsErrorOccurs = false;
             this.txtPhNo2.IsRequire = false;
             this.txtPhNo2.Location = new System.Drawing.Point(247, 336);
-            this.txtPhNo2.MaxLength = 80;
+            this.txtPhNo2.MaxLength = 4;
             this.txtPhNo2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo2.MoveNext = true;
             this.txtPhNo2.Name = "txtPhNo2";
@@ -543,13 +566,14 @@
             this.txtPhNo1.AllowMinus = false;
             this.txtPhNo1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo1.DecimalPlace = 0;
+            this.txtPhNo1.DepandOnMode = true;
             this.txtPhNo1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo1.IntegerPart = 0;
             this.txtPhNo1.IsDatatableOccurs = null;
             this.txtPhNo1.IsErrorOccurs = false;
             this.txtPhNo1.IsRequire = false;
             this.txtPhNo1.Location = new System.Drawing.Point(141, 335);
-            this.txtPhNo1.MaxLength = 80;
+            this.txtPhNo1.MaxLength = 5;
             this.txtPhNo1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo1.MoveNext = true;
             this.txtPhNo1.Name = "txtPhNo1";
@@ -565,13 +589,14 @@
             this.txtStartDate.AllowMinus = false;
             this.txtStartDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStartDate.DecimalPlace = 0;
+            this.txtStartDate.DepandOnMode = true;
             this.txtStartDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStartDate.IntegerPart = 0;
             this.txtStartDate.IsDatatableOccurs = null;
             this.txtStartDate.IsErrorOccurs = false;
             this.txtStartDate.IsRequire = false;
             this.txtStartDate.Location = new System.Drawing.Point(142, 578);
-            this.txtStartDate.MaxLength = 3;
+            this.txtStartDate.MaxLength = 10;
             this.txtStartDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStartDate.MoveNext = true;
             this.txtStartDate.Name = "txtStartDate";
@@ -580,13 +605,14 @@
             this.txtStartDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStartDate.Size = new System.Drawing.Size(100, 19);
             this.txtStartDate.TabIndex = 29;
-            this.txtStartDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtStartDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtStaffCharge
             // 
             this.txtStaffCharge.AllowMinus = false;
             this.txtStaffCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaffCharge.DecimalPlace = 0;
+            this.txtStaffCharge.DepandOnMode = true;
             this.txtStaffCharge.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaffCharge.IntegerPart = 0;
             this.txtStaffCharge.IsDatatableOccurs = null;
@@ -637,22 +663,23 @@
             this.txtEndDate.AllowMinus = false;
             this.txtEndDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEndDate.DecimalPlace = 0;
+            this.txtEndDate.DepandOnMode = true;
             this.txtEndDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtEndDate.IntegerPart = 0;
             this.txtEndDate.IsDatatableOccurs = null;
             this.txtEndDate.IsErrorOccurs = false;
             this.txtEndDate.IsRequire = false;
             this.txtEndDate.Location = new System.Drawing.Point(142, 612);
-            this.txtEndDate.MaxLength = 15;
+            this.txtEndDate.MaxLength = 10;
             this.txtEndDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtEndDate.MoveNext = true;
             this.txtEndDate.Name = "txtEndDate";
             this.txtEndDate.NextControl = null;
             this.txtEndDate.NextControlName = "txtRemark";
             this.txtEndDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtEndDate.Size = new System.Drawing.Size(250, 19);
+            this.txtEndDate.Size = new System.Drawing.Size(100, 19);
             this.txtEndDate.TabIndex = 30;
-            this.txtEndDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtEndDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblFinishDate
             // 
@@ -673,13 +700,14 @@
             this.txtMailAddress.AllowMinus = false;
             this.txtMailAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMailAddress.DecimalPlace = 0;
+            this.txtMailAddress.DepandOnMode = true;
             this.txtMailAddress.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtMailAddress.IntegerPart = 0;
             this.txtMailAddress.IsDatatableOccurs = null;
             this.txtMailAddress.IsErrorOccurs = false;
             this.txtMailAddress.IsRequire = false;
             this.txtMailAddress.Location = new System.Drawing.Point(142, 507);
-            this.txtMailAddress.MaxLength = 80;
+            this.txtMailAddress.MaxLength = 100;
             this.txtMailAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtMailAddress.MoveNext = true;
             this.txtMailAddress.Name = "txtMailAddress";
@@ -695,13 +723,14 @@
             this.txtPersonCharge.AllowMinus = false;
             this.txtPersonCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPersonCharge.DecimalPlace = 0;
+            this.txtPersonCharge.DepandOnMode = true;
             this.txtPersonCharge.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPersonCharge.IntegerPart = 0;
             this.txtPersonCharge.IsDatatableOccurs = null;
             this.txtPersonCharge.IsErrorOccurs = false;
             this.txtPersonCharge.IsRequire = false;
             this.txtPersonCharge.Location = new System.Drawing.Point(142, 473);
-            this.txtPersonCharge.MaxLength = 15;
+            this.txtPersonCharge.MaxLength = 40;
             this.txtPersonCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPersonCharge.MoveNext = true;
             this.txtPersonCharge.Name = "txtPersonCharge";
@@ -710,7 +739,7 @@
             this.txtPersonCharge.SearchType = Entity.SearchType.ScType.None;
             this.txtPersonCharge.Size = new System.Drawing.Size(307, 19);
             this.txtPersonCharge.TabIndex = 26;
-            this.txtPersonCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtPersonCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblPersonCharge
             // 
@@ -745,13 +774,14 @@
             this.txtJobTitle.AllowMinus = false;
             this.txtJobTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtJobTitle.DecimalPlace = 0;
+            this.txtJobTitle.DepandOnMode = true;
             this.txtJobTitle.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtJobTitle.IntegerPart = 0;
             this.txtJobTitle.IsDatatableOccurs = null;
             this.txtJobTitle.IsErrorOccurs = false;
             this.txtJobTitle.IsRequire = false;
             this.txtJobTitle.Location = new System.Drawing.Point(142, 439);
-            this.txtJobTitle.MaxLength = 15;
+            this.txtJobTitle.MaxLength = 40;
             this.txtJobTitle.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJobTitle.MoveNext = true;
             this.txtJobTitle.Name = "txtJobTitle";
@@ -760,7 +790,7 @@
             this.txtJobTitle.SearchType = Entity.SearchType.ScType.None;
             this.txtJobTitle.Size = new System.Drawing.Size(307, 19);
             this.txtJobTitle.TabIndex = 25;
-            this.txtJobTitle.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtJobTitle.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblJobTitle
             // 
@@ -836,13 +866,14 @@
             this.txtBillAddress.AllowMinus = false;
             this.txtBillAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBillAddress.DecimalPlace = 0;
+            this.txtBillAddress.DepandOnMode = true;
             this.txtBillAddress.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtBillAddress.IntegerPart = 0;
             this.txtBillAddress.IsDatatableOccurs = null;
             this.txtBillAddress.IsErrorOccurs = false;
             this.txtBillAddress.IsRequire = false;
             this.txtBillAddress.Location = new System.Drawing.Point(142, 156);
-            this.txtBillAddress.MaxLength = 3;
+            this.txtBillAddress.MaxLength = 10;
             this.txtBillAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtBillAddress.MoveNext = true;
             this.txtBillAddress.Name = "txtBillAddress";
@@ -851,7 +882,7 @@
             this.txtBillAddress.SearchType = Entity.SearchType.ScType.None;
             this.txtBillAddress.Size = new System.Drawing.Size(100, 19);
             this.txtBillAddress.TabIndex = 11;
-            this.txtBillAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtBillAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblBillAddress
             // 
@@ -887,13 +918,14 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
+            this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(141, 122);
-            this.txtKanaName.MaxLength = 50;
+            this.txtKanaName.MaxLength = 80;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
@@ -909,13 +941,14 @@
             this.txtShortName.AllowMinus = false;
             this.txtShortName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtShortName.DecimalPlace = 0;
+            this.txtShortName.DepandOnMode = true;
             this.txtShortName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShortName.IntegerPart = 0;
             this.txtShortName.IsDatatableOccurs = null;
             this.txtShortName.IsErrorOccurs = false;
             this.txtShortName.IsRequire = false;
             this.txtShortName.Location = new System.Drawing.Point(142, 86);
-            this.txtShortName.MaxLength = 15;
+            this.txtShortName.MaxLength = 40;
             this.txtShortName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShortName.MoveNext = true;
             this.txtShortName.Name = "txtShortName";
@@ -961,6 +994,7 @@
             this.txtRemark.AllowMinus = false;
             this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemark.DecimalPlace = 0;
+            this.txtRemark.DepandOnMode = true;
             this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtRemark.IntegerPart = 0;
             this.txtRemark.IsDatatableOccurs = null;
@@ -997,13 +1031,14 @@
             this.txtDepCharge.AllowMinus = false;
             this.txtDepCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDepCharge.DecimalPlace = 0;
+            this.txtDepCharge.DepandOnMode = true;
             this.txtDepCharge.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtDepCharge.IntegerPart = 0;
             this.txtDepCharge.IsDatatableOccurs = null;
             this.txtDepCharge.IsErrorOccurs = false;
             this.txtDepCharge.IsRequire = false;
             this.txtDepCharge.Location = new System.Drawing.Point(141, 403);
-            this.txtDepCharge.MaxLength = 15;
+            this.txtDepCharge.MaxLength = 40;
             this.txtDepCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDepCharge.MoveNext = true;
             this.txtDepCharge.Name = "txtDepCharge";
@@ -1012,7 +1047,7 @@
             this.txtDepCharge.SearchType = Entity.SearchType.ScType.None;
             this.txtDepCharge.Size = new System.Drawing.Size(307, 19);
             this.txtDepCharge.TabIndex = 24;
-            this.txtDepCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtDepCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblDepCharge
             // 
@@ -1047,6 +1082,7 @@
             this.txtAddress2.AllowMinus = false;
             this.txtAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress2.DecimalPlace = 0;
+            this.txtAddress2.DepandOnMode = true;
             this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
             this.txtAddress2.IsDatatableOccurs = null;
@@ -1083,6 +1119,7 @@
             this.txtAddress1.AllowMinus = false;
             this.txtAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress1.DecimalPlace = 0;
+            this.txtAddress1.DepandOnMode = true;
             this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
             this.txtAddress1.IsDatatableOccurs = null;
@@ -1119,6 +1156,7 @@
             this.txtYubin2.AllowMinus = false;
             this.txtYubin2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin2.DecimalPlace = 0;
+            this.txtYubin2.DepandOnMode = true;
             this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
             this.txtYubin2.IsDatatableOccurs = null;
@@ -1142,6 +1180,7 @@
             this.txtYubin1.AllowMinus = false;
             this.txtYubin1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin1.DecimalPlace = 0;
+            this.txtYubin1.DepandOnMode = true;
             this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
             this.txtYubin1.IsDatatableOccurs = null;
@@ -1178,13 +1217,14 @@
             this.txtTokuisakiName.AllowMinus = false;
             this.txtTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTokuisakiName.DecimalPlace = 0;
+            this.txtTokuisakiName.DepandOnMode = true;
             this.txtTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiName.IntegerPart = 0;
             this.txtTokuisakiName.IsDatatableOccurs = null;
             this.txtTokuisakiName.IsErrorOccurs = false;
             this.txtTokuisakiName.IsRequire = false;
             this.txtTokuisakiName.Location = new System.Drawing.Point(139, 50);
-            this.txtTokuisakiName.MaxLength = 50;
+            this.txtTokuisakiName.MaxLength = 80;
             this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiName.MoveNext = true;
             this.txtTokuisakiName.Name = "txtTokuisakiName";
@@ -1239,13 +1279,14 @@
             this.txtSearch.AllowMinus = false;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.DecimalPlace = 0;
+            this.txtSearch.DepandOnMode = true;
             this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSearch.IntegerPart = 0;
             this.txtSearch.IsDatatableOccurs = null;
             this.txtSearch.IsErrorOccurs = false;
             this.txtSearch.IsRequire = false;
             this.txtSearch.Location = new System.Drawing.Point(142, 682);
-            this.txtSearch.MaxLength = 5;
+            this.txtSearch.MaxLength = 6;
             this.txtSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
@@ -1254,21 +1295,10 @@
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(100, 19);
             this.txtSearch.TabIndex = 32;
+            this.txtSearch.Text = "0";
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-            // 
-            // lblStaffCD_Name
-            // 
-            this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
-            this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaffCD_Name.Location = new System.Drawing.Point(212, 544);
-            this.lblStaffCD_Name.Name = "lblStaffCD_Name";
-            this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
-            this.lblStaffCD_Name.TabIndex = 94;
-            this.lblStaffCD_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MasterTouroku_Tokuisaki
             // 
