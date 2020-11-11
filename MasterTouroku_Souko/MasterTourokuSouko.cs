@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Shinyoh_Controls;
 using Shinyoh_Search;
 using System.Data;
+using System.Globalization;
 
 namespace MasterTouroku_Souko
 {
@@ -51,6 +52,7 @@ namespace MasterTouroku_Souko
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
             txtSouko.Focus();
+            txtSearch.Text = "0";
             switch (mode)
             {
                 case Mode.New:
@@ -196,6 +198,9 @@ namespace MasterTouroku_Souko
             soukoEntity.SoukoCD = txtSouko.Text.ToString();
             soukoEntity.SoukoName = txtSoukoName.Text.ToString();
             soukoEntity.KanaName = txtKanaName.Text.ToString();
+            int int_val = 0;
+            int.TryParse(txtSearch.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out int_val);
+            soukoEntity.KensakuHyouziJun = int_val.ToString();
             soukoEntity.KensakuHyouziJun = txtSearch.Text.ToString();
             soukoEntity.YuubinNO1 = txtYubin1.Text.ToString();
             soukoEntity.YuubinNO2 = txtYubin2.Text.ToString();
@@ -295,6 +300,10 @@ namespace MasterTouroku_Souko
                 txtSearch.Text = string.Format("{0:#,#}", ul);
                 txtSearch.SelectionStart = txtSearch.Text.Length;
                 txtSearch.TextChanged += txtSearch_TextChanged;
+            }
+            else
+            {
+                txtSearch.Text = "0";
             }
         }
     }
