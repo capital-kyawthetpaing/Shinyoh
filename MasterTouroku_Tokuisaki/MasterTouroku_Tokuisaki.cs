@@ -45,6 +45,7 @@ namespace MasterTouroku_Tokuisaki {
             txt_Tokuisaki.Focus();
             ChangeMode(Mode.New);
             sRadRegister.Checked = true;
+            RadSaMa.Checked = true;
             base_Entity = _GetBaseData();
         }
 
@@ -209,10 +210,10 @@ namespace MasterTouroku_Tokuisaki {
             obj.TokuisakiCD = txt_Tokuisaki.Text;
             obj.ChangeDate = txtChange_Date.Text;
             obj.ShokutiFLG = chk.Checked ? 1 : 0;
-            if (RadSaMa.Checked == true || RadOnchuu.Checked == true)
+            if (RadSaMa.Checked == true)
             {
                 obj.AliasKBN = 1;
-            }else
+            }else if(RadOnchuu.Checked == true)
                 obj.AliasKBN = 0;
             obj.ShukkaSizishoHuyouKBN = 0;
             obj.TokuisakiName = txtTokuisakiName.Text;
@@ -282,12 +283,12 @@ namespace MasterTouroku_Tokuisaki {
                     txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
                     txtBillAddress.Text = dt.Rows[0]["SeikyuusakiCD"].ToString();
 
-                    //if (dt.Rows[0]["AliasKBN"].ToString().Equals("1"))
-                    //{
-                    //    RadSaMa.Checked = true;
-                    //}
-                    //else
-                    //    RadSaMa.Checked = false;
+                    if (dt.Rows[0]["AliasKBN"].ToString().Equals("1"))
+                    {
+                        RadSaMa.Checked = true;
+                    }
+                    else
+                        RadOnchuu.Checked = true;
 
                     txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
                     txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
