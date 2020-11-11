@@ -12,7 +12,7 @@ namespace MasterTouroku_DenpyouNO
 {
     public partial class MasterTouroku_DenpyouNO : BaseForm
     {
-        DenpyouNOEntity entity;
+        BaseEntity entity;
         CommonFunction cf;
         BaseBL bl = new BaseBL();
         public MasterTouroku_DenpyouNO()
@@ -42,18 +42,10 @@ namespace MasterTouroku_DenpyouNO
             SetButton(ButtonType.BType.Empty, F10, "", false);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             ChangeMode(Mode.New);
-            entity = GetData();
+            entity = _GetBaseData();
 
             txtSEQNO.Combo = cbDivision;
-        }
-
-        public DenpyouNOEntity GetData()
-        {
-            DenpyouNOEntity entity = new DenpyouNOEntity();
-            entity.OperatorCD = OperatorCD;
-            entity.ProgramID = ProgramID;
-            entity.PC = PCID;
-            return entity;
+            txtSEQNO.ctrlE102_c = cbDivision;
         }
 
         private void ChangeMode(Mode mode)

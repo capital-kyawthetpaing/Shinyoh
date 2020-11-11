@@ -207,6 +207,7 @@
             this.txtPrefix.Size = new System.Drawing.Size(100, 19);
             this.txtPrefix.TabIndex = 3;
             this.txtPrefix.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPrefix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrefix_KeyDown);
             // 
             // MasterTouroku_DenpyouNO
             // 
