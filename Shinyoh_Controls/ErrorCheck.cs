@@ -242,6 +242,14 @@ namespace Shinyoh_Controls
                             result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;
+                    case "M_Tokuisaki":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE270_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE270_2.Text))
+                        {
+                            TokuisakiBL tBL = new TokuisakiBL();
+                            rDt = tBL.M_Tokuisaki_Select(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, "E270");
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
                 }
                 if (result.Equals("E270"))
                 {
