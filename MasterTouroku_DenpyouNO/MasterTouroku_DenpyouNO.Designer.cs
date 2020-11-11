@@ -140,6 +140,7 @@
             this.txtCounter.IsErrorOccurs = false;
             this.txtCounter.IsRequire = false;
             this.txtCounter.Location = new System.Drawing.Point(122, 11);
+            this.txtCounter.MaxLength = 12;
             this.txtCounter.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCounter.MoveNext = true;
             this.txtCounter.Name = "txtCounter";
@@ -148,7 +149,7 @@
             this.txtCounter.SearchType = Entity.SearchType.ScType.None;
             this.txtCounter.Size = new System.Drawing.Size(100, 19);
             this.txtCounter.TabIndex = 4;
-            this.txtCounter.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtCounter.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // PanelDetail
             // 
@@ -175,6 +176,7 @@
             this.txtSEQNO.IsRequire = false;
             this.txtSEQNO.lblName = null;
             this.txtSEQNO.Location = new System.Drawing.Point(124, 28);
+            this.txtSEQNO.MaxLength = 2;
             this.txtSEQNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSEQNO.MoveNext = true;
             this.txtSEQNO.Name = "txtSEQNO";
@@ -183,7 +185,7 @@
             this.txtSEQNO.SearchType = Entity.SearchType.ScType.Denpyou;
             this.txtSEQNO.Size = new System.Drawing.Size(100, 19);
             this.txtSEQNO.TabIndex = 2;
-            this.txtSEQNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSEQNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtSEQNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSEQNO_KeyDown);
             // 
             // txtPrefix
@@ -198,6 +200,7 @@
             this.txtPrefix.IsErrorOccurs = false;
             this.txtPrefix.IsRequire = false;
             this.txtPrefix.Location = new System.Drawing.Point(124, 48);
+            this.txtPrefix.MaxLength = 4;
             this.txtPrefix.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPrefix.MoveNext = true;
             this.txtPrefix.Name = "txtPrefix";
