@@ -4,6 +4,7 @@ using Entity;
 using Shinyoh;
 using System;
 using System.Data;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace MasterTouroku_Siiresaki
@@ -140,6 +141,8 @@ namespace MasterTouroku_Siiresaki
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
 
+            sbStaff.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
+
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
             txtEndDate.E104Check(true, txtStartDate, txtEndDate);
@@ -239,7 +242,9 @@ namespace MasterTouroku_Siiresaki
             obj.TorihikiKaisiDate = txtStartDate.Text;
             obj.TorihikiShuuryouDate = txtEndDate.Text;
             obj.Remarks = txtRemark.Text;
-            obj.KensakuHyouziJun = txtSearch.Text;
+            int int_val = 0;
+            int.TryParse(txtSearch.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out int_val);
+            obj.KensakuHyouziJun = int_val.ToString();
             obj.UsedFlg = 0;
             obj.InsertOperator = base_Entity.OperatorCD;
             obj.UpdateOperator = base_Entity.OperatorCD;
@@ -363,12 +368,12 @@ namespace MasterTouroku_Siiresaki
 
         private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
         {
-            //if (!txtStaffCD.IsErrorOccurs)
-            //{
-            //    DataTable dt = txtStaffCD.IsDatatableOccurs;
-            //    if (dt.Rows.Count > 0)
-            //        lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
-            //}
+            if (!txtStaffCD.IsErrorOccurs)
+            {
+                DataTable dt = txtStaffCD.IsDatatableOccurs;
+                if (dt.Rows.Count > 0)
+                    lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
+            }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

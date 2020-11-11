@@ -36,6 +36,7 @@
             this.rdo_Registragion = new Shinyoh_Controls.SRadio();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.sbStaff = new Shinyoh_Search.SearchBox();
             this.lblPayName = new Shinyoh_Controls.SLabel();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.chk_Flag = new Shinyoh_Controls.SCheckBox();
@@ -92,7 +93,6 @@
             this.txtChangeDate = new Shinyoh_Controls.STextBox();
             this.txtCopyCD = new Shinyoh_Controls.STextBox();
             this.txtCopyDate = new Shinyoh_Controls.STextBox();
-            this.sbStaff = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -277,6 +277,30 @@
             this.Panel_Detail.Name = "Panel_Detail";
             this.Panel_Detail.Size = new System.Drawing.Size(1485, 707);
             this.Panel_Detail.TabIndex = 1;
+            // 
+            // sbStaff
+            // 
+            this.sbStaff.AllowMinus = false;
+            this.sbStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sbStaff.ChangeDate = null;
+            this.sbStaff.DecimalPlace = 0;
+            this.sbStaff.DepandOnMode = false;
+            this.sbStaff.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.sbStaff.IntegerPart = 0;
+            this.sbStaff.IsDatatableOccurs = null;
+            this.sbStaff.IsErrorOccurs = false;
+            this.sbStaff.IsRequire = false;
+            this.sbStaff.lblName = null;
+            this.sbStaff.Location = new System.Drawing.Point(141, 532);
+            this.sbStaff.MinimumSize = new System.Drawing.Size(70, 19);
+            this.sbStaff.MoveNext = true;
+            this.sbStaff.Name = "sbStaff";
+            this.sbStaff.NextControl = null;
+            this.sbStaff.NextControlName = "txtStartDate";
+            this.sbStaff.SearchType = Entity.SearchType.ScType.Staff;
+            this.sbStaff.Size = new System.Drawing.Size(70, 19);
+            this.sbStaff.TabIndex = 72;
+            this.sbStaff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblPayName
             // 
@@ -1252,7 +1276,7 @@
             this.txtCopyCD.AllowMinus = false;
             this.txtCopyCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCopyCD.DecimalPlace = 0;
-            this.txtCopyCD.DepandOnMode = true;
+            this.txtCopyCD.DepandOnMode = false;
             this.txtCopyCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCopyCD.IntegerPart = 0;
             this.txtCopyCD.IsDatatableOccurs = null;
@@ -1293,30 +1317,6 @@
             this.txtCopyDate.TabIndex = 4;
             this.txtCopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtCopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyDate_KeyDown);
-            // 
-            // sbStaff
-            // 
-            this.sbStaff.AllowMinus = false;
-            this.sbStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sbStaff.ChangeDate = null;
-            this.sbStaff.DecimalPlace = 0;
-            this.sbStaff.DepandOnMode = false;
-            this.sbStaff.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.sbStaff.IntegerPart = 0;
-            this.sbStaff.IsDatatableOccurs = null;
-            this.sbStaff.IsErrorOccurs = false;
-            this.sbStaff.IsRequire = false;
-            this.sbStaff.lblName = null;
-            this.sbStaff.Location = new System.Drawing.Point(141, 532);
-            this.sbStaff.MinimumSize = new System.Drawing.Size(70, 19);
-            this.sbStaff.MoveNext = true;
-            this.sbStaff.Name = "sbStaff";
-            this.sbStaff.NextControl = null;
-            this.sbStaff.NextControlName = "txtStartDate";
-            this.sbStaff.SearchType = Entity.SearchType.ScType.Staff;
-            this.sbStaff.Size = new System.Drawing.Size(70, 19);
-            this.sbStaff.TabIndex = 72;
-            this.sbStaff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // MasterTourokuSiiresaki
             // 

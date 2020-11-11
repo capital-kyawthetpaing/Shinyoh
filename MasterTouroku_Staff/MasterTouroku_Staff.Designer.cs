@@ -142,6 +142,7 @@
             this.txtStaff_Search.AllowMinus = false;
             this.txtStaff_Search.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_Search.DecimalPlace = 0;
+            this.txtStaff_Search.DepandOnMode = true;
             this.txtStaff_Search.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Search.IntegerPart = 0;
             this.txtStaff_Search.IsDatatableOccurs = null;
@@ -180,6 +181,7 @@
             this.txtStaff_Remark.AllowMinus = false;
             this.txtStaff_Remark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_Remark.DecimalPlace = 0;
+            this.txtStaff_Remark.DepandOnMode = true;
             this.txtStaff_Remark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Remark.IntegerPart = 0;
             this.txtStaff_Remark.IsDatatableOccurs = null;
@@ -215,6 +217,7 @@
             this.txtStaff_LDate.AllowMinus = false;
             this.txtStaff_LDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_LDate.DecimalPlace = 0;
+            this.txtStaff_LDate.DepandOnMode = true;
             this.txtStaff_LDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_LDate.IntegerPart = 0;
             this.txtStaff_LDate.IsDatatableOccurs = null;
@@ -237,6 +240,7 @@
             this.txtStaff_JDate.AllowMinus = false;
             this.txtStaff_JDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_JDate.DecimalPlace = 0;
+            this.txtStaff_JDate.DepandOnMode = true;
             this.txtStaff_JDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_JDate.IntegerPart = 0;
             this.txtStaff_JDate.IsDatatableOccurs = null;
@@ -272,6 +276,7 @@
             this.txtStaff_Confirm.AllowMinus = false;
             this.txtStaff_Confirm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_Confirm.DecimalPlace = 0;
+            this.txtStaff_Confirm.DepandOnMode = true;
             this.txtStaff_Confirm.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Confirm.IntegerPart = 0;
             this.txtStaff_Confirm.IsDatatableOccurs = null;
@@ -308,6 +313,7 @@
             this.txtStaff_Passward.AllowMinus = false;
             this.txtStaff_Passward.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_Passward.DecimalPlace = 0;
+            this.txtStaff_Passward.DepandOnMode = true;
             this.txtStaff_Passward.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Passward.IntegerPart = 0;
             this.txtStaff_Passward.IsDatatableOccurs = null;
@@ -431,6 +437,7 @@
             this.txtStaff_Yubin2.AllowMinus = false;
             this.txtStaff_Yubin2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_Yubin2.DecimalPlace = 0;
+            this.txtStaff_Yubin2.DepandOnMode = true;
             this.txtStaff_Yubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Yubin2.IntegerPart = 0;
             this.txtStaff_Yubin2.IsDatatableOccurs = null;
@@ -453,6 +460,7 @@
             this.txtStaff_Yubin1.AllowMinus = false;
             this.txtStaff_Yubin1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_Yubin1.DecimalPlace = 0;
+            this.txtStaff_Yubin1.DepandOnMode = true;
             this.txtStaff_Yubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Yubin1.IntegerPart = 0;
             this.txtStaff_Yubin1.IsDatatableOccurs = null;
@@ -499,6 +507,7 @@
             this.txtStaff_KanaName.AllowMinus = false;
             this.txtStaff_KanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_KanaName.DecimalPlace = 0;
+            this.txtStaff_KanaName.DepandOnMode = true;
             this.txtStaff_KanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_KanaName.IntegerPart = 0;
             this.txtStaff_KanaName.IsDatatableOccurs = null;
@@ -534,6 +543,7 @@
             this.txtStaff_Name.AllowMinus = false;
             this.txtStaff_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_Name.DecimalPlace = 0;
+            this.txtStaff_Name.DepandOnMode = true;
             this.txtStaff_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Name.IntegerPart = 0;
             this.txtStaff_Name.IsDatatableOccurs = null;
@@ -595,6 +605,7 @@
             this.txtStaff_CDate.AllowMinus = false;
             this.txtStaff_CDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_CDate.DecimalPlace = 0;
+            this.txtStaff_CDate.DepandOnMode = true;
             this.txtStaff_CDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_CDate.IntegerPart = 0;
             this.txtStaff_CDate.IsDatatableOccurs = null;
@@ -631,6 +642,7 @@
             this.txtStaff_CopyDate.AllowMinus = false;
             this.txtStaff_CopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_CopyDate.DecimalPlace = 0;
+            this.txtStaff_CopyDate.DepandOnMode = true;
             this.txtStaff_CopyDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_CopyDate.IntegerPart = 0;
             this.txtStaff_CopyDate.IsDatatableOccurs = null;
@@ -666,12 +678,15 @@
             // 
             this.txtStaff_Copy.AllowMinus = false;
             this.txtStaff_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStaff_Copy.ChangeDate = null;
             this.txtStaff_Copy.DecimalPlace = 0;
+            this.txtStaff_Copy.DepandOnMode = false;
             this.txtStaff_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff_Copy.IntegerPart = 0;
             this.txtStaff_Copy.IsDatatableOccurs = null;
             this.txtStaff_Copy.IsErrorOccurs = false;
             this.txtStaff_Copy.IsRequire = false;
+            this.txtStaff_Copy.lblName = null;
             this.txtStaff_Copy.Location = new System.Drawing.Point(346, 9);
             this.txtStaff_Copy.MaxLength = 10;
             this.txtStaff_Copy.MinimumSize = new System.Drawing.Size(90, 19);
@@ -688,12 +703,15 @@
             // 
             this.txt_Staff.AllowMinus = false;
             this.txt_Staff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_Staff.ChangeDate = null;
             this.txt_Staff.DecimalPlace = 0;
+            this.txt_Staff.DepandOnMode = true;
             this.txt_Staff.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txt_Staff.IntegerPart = 0;
             this.txt_Staff.IsDatatableOccurs = null;
             this.txt_Staff.IsErrorOccurs = false;
             this.txt_Staff.IsRequire = false;
+            this.txt_Staff.lblName = null;
             this.txt_Staff.Location = new System.Drawing.Point(118, 9);
             this.txt_Staff.MinimumSize = new System.Drawing.Size(90, 19);
             this.txt_Staff.MoveNext = true;

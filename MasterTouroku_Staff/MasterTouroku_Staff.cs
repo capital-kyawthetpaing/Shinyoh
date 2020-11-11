@@ -53,7 +53,9 @@ namespace MasterTouroku_Staff
             base_Entity = _GetBaseData();
 
             txt_Staff.ChangeDate = txtStaff_CDate;
-            
+            txtStaff_Copy.ChangeDate = txtStaff_CopyDate;
+
+
         }
 
         private void ChangeMode(Mode mode)
@@ -240,7 +242,7 @@ namespace MasterTouroku_Staff
             obj.KensakuHyouziJun = int_val.ToString();         
             obj.MenuCD = cboStaff_Menu.SelectedValue.ToString();
             obj.AuthorizationsCD = cboStaff_authority.SelectedValue.ToString();
-            obj.PositionCD = cboStaff_Position.SelectedValue.ToString();
+            obj.PositionCD = cboStaff_Position.SelectedValue.ToString() == "-1" ? "" : cboStaff_Position.SelectedValue.ToString();
             obj.JoinDate = txtStaff_JDate.Text.ToString();
             obj.LeaveDate = txtStaff_LDate.Text.ToString();
             obj.Passward = txtStaff_Passward.Text;
