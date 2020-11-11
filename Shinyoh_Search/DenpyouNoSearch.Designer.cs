@@ -37,11 +37,10 @@
             this.cbDivision1 = new Shinyoh_Controls.SCombo();
             this.lbl1 = new Shinyoh_Controls.SLabel();
             this.gvDenpyouNo = new Shinyoh_Controls.SGridView();
-            this.no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RenbanKBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Settouti = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SEQ_NO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Counter = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RenbanKBN1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SEQNO1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prefix1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Counter1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvDenpyouNo)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +67,7 @@
             this.btnSearch.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.Location = new System.Drawing.Point(693, 60);
+            this.btnSearch.Location = new System.Drawing.Point(816, 60);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(106, 23);
             this.btnSearch.TabIndex = 5;
@@ -82,19 +81,20 @@
             this.txtDate.AllowMinus = false;
             this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDate.DecimalPlace = 0;
+            this.txtDate.DepandOnMode = true;
             this.txtDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtDate.IntegerPart = 0;
             this.txtDate.IsDatatableOccurs = null;
             this.txtDate.IsErrorOccurs = false;
             this.txtDate.IsRequire = false;
-            this.txtDate.Location = new System.Drawing.Point(699, 24);
+            this.txtDate.Location = new System.Drawing.Point(816, 23);
             this.txtDate.MinimumSize = new System.Drawing.Size(100, 20);
             this.txtDate.MoveNext = true;
             this.txtDate.Name = "txtDate";
             this.txtDate.NextControl = null;
             this.txtDate.NextControlName = null;
             this.txtDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtDate.Size = new System.Drawing.Size(100, 20);
+            this.txtDate.Size = new System.Drawing.Size(107, 20);
             this.txtDate.TabIndex = 4;
             this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -104,9 +104,9 @@
             this.lbl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lbl2.Location = new System.Drawing.Point(600, 24);
+            this.lbl2.Location = new System.Drawing.Point(716, 23);
             this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(100, 20);
+            this.lbl2.Size = new System.Drawing.Size(100, 19);
             this.lbl2.TabIndex = 3;
             this.lbl2.Text = "基準日";
             this.lbl2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -158,9 +158,9 @@
             this.lbl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lbl1.Location = new System.Drawing.Point(12, 24);
+            this.lbl1.Location = new System.Drawing.Point(11, 24);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(100, 20);
+            this.lbl1.Size = new System.Drawing.Size(100, 19);
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "連番区分";
             this.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -168,50 +168,58 @@
             // gvDenpyouNo
             // 
             this.gvDenpyouNo.AllowUserToAddRows = false;
+            this.gvDenpyouNo.AllowUserToDeleteRows = false;
+            this.gvDenpyouNo.AllowUserToResizeColumns = false;
+            this.gvDenpyouNo.AllowUserToResizeRows = false;
             this.gvDenpyouNo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gvDenpyouNo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvDenpyouNo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.no,
-            this.RenbanKBN,
-            this.Settouti,
-            this.SEQ_NO,
-            this.Counter});
-            this.gvDenpyouNo.Location = new System.Drawing.Point(12, 106);
+            this.RenbanKBN1,
+            this.SEQNO1,
+            this.Prefix1,
+            this.Counter1});
+            this.gvDenpyouNo.Location = new System.Drawing.Point(11, 106);
+            this.gvDenpyouNo.MultiSelect = false;
             this.gvDenpyouNo.Name = "gvDenpyouNo";
-            this.gvDenpyouNo.RowHeadersVisible = false;
-            this.gvDenpyouNo.Size = new System.Drawing.Size(531, 150);
+            this.gvDenpyouNo.ReadOnly = true;
+            this.gvDenpyouNo.Size = new System.Drawing.Size(493, 357);
             this.gvDenpyouNo.TabIndex = 3;
             this.gvDenpyouNo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvDenpyouNo_CellContentClick);
             // 
-            // RenbanKBN
+            // RenbanKBN1
             // 
-            this.RenbanKBN.DataPropertyName = "RenbanKBN";
-            this.RenbanKBN.HeaderText = "連番区分";
-            this.RenbanKBN.Name = "RenbanKBN";
-            this.RenbanKBN.Width = 150;
+            this.RenbanKBN1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.RenbanKBN1.DataPropertyName = "RenbanKBN";
+            this.RenbanKBN1.FillWeight = 120F;
+            this.RenbanKBN1.HeaderText = "連番区分";
+            this.RenbanKBN1.Name = "RenbanKBN1";
+            this.RenbanKBN1.ReadOnly = true;
             // 
-            // Settouti
+            // SEQNO1
             // 
-            this.Settouti.DataPropertyName = "Settouti";
-            this.Settouti.HeaderText = "接頭値";
-            this.Settouti.Name = "Settouti";
-            this.Settouti.Width = 70;
+            this.SEQNO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SEQNO1.DataPropertyName = "SEQNO";
+            this.SEQNO1.FillWeight = 60F;
+            this.SEQNO1.HeaderText = "SEQNO";
+            this.SEQNO1.Name = "SEQNO1";
+            this.SEQNO1.ReadOnly = true;
             // 
-            // SEQ_NO
+            // Prefix1
             // 
-            this.SEQ_NO.DataPropertyName = "SEQ_NO";
-            this.SEQ_NO.HeaderText = "SEQNO";
-            this.SEQ_NO.Name = "SEQ_NO";
-            this.SEQ_NO.Width = 80;
+            this.Prefix1.DataPropertyName = "Settouti";
+            this.Prefix1.HeaderText = "接頭値";
+            this.Prefix1.Name = "Prefix1";
+            this.Prefix1.ReadOnly = true;
             // 
-            // Counter
+            // Counter1
             // 
-            this.Counter.DataPropertyName = "Counter";
-            this.Counter.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Counter.HeaderText = "カウンタ";
-            this.Counter.Name = "Counter";
+            this.Counter1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Counter1.DataPropertyName = "Counter";
+            this.Counter1.HeaderText = "カウンタ";
+            this.Counter1.Name = "Counter1";
+            this.Counter1.ReadOnly = true;
             // 
             // DenpyouNoSearch
             // 
@@ -227,7 +235,6 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gvDenpyouNo, 0);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvDenpyouNo)).EndInit();
             this.ResumeLayout(false);
 
@@ -244,10 +251,9 @@
         private Shinyoh_Controls.STextBox txtDate;
         private Shinyoh_Controls.SLabel lbl2;
         private Shinyoh_Controls.SGridView gvDenpyouNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn no;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RenbanKBN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Settouti;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SEQ_NO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Counter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RenbanKBN1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SEQNO1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prefix1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Counter1;
     }
 }

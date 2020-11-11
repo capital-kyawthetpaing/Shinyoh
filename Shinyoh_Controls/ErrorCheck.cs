@@ -71,6 +71,24 @@ namespace Shinyoh_Controls
                     sTextBox.Focus();
                     return (true, rDt);
                 }
+                else
+                {
+                    string result = string.Empty;
+                    switch (sTextBox.E102Type)
+                    {
+                        case "denpyou":
+                            DenpyouNOEntity denpyou_entity = new DenpyouNOEntity();
+                            DenpyouNOBL denpyou_bl = new DenpyouNOBL();
+                            denpyou_entity.RenbenKBN = Convert.ToInt32(sTextBox.ctrlE102_c.SelectedValue.ToString());
+                            denpyou_entity.seqno = Convert.ToInt32(sTextBox.Text);
+                            denpyou_entity.Mode = "E102";
+                            rDt = denpyou_bl.DenpyouNO_Check(denpyou_entity);
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                            break;
+                    }
+                    if (result == "0")
+                        return (false, rDt);
+                }
             }
 
             if (sTextBox.E102Multi)

@@ -17,10 +17,9 @@ namespace Shinyoh_Search
     {
         DenpyouNOBL denpyoubl;
         DenpyouNOEntity denpyou_entity;
-        public string renbanKBN = string.Empty;
+        public string renban = "0";
         public string seqno = string.Empty;
-        public string prefix = string.Empty;
-        public string counter = string.Empty;
+        //public string prefix = string.Empty;
 
         public DenpyouNoSearch()
         {
@@ -70,29 +69,21 @@ namespace Shinyoh_Search
             gvDenpyouNo.DataSource = denpyoubl.DenpyouNO_Search(denpyou_entity);
         }
 
-        private void gvDenpyouNo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if(e.RowIndex > 0)
-            {
-                GetGridviewData(gvDenpyouNo.Rows[e.RowIndex]);
-            }
-        }
-
         private void GetGridviewData(DataGridViewRow gvrow)
         {
             if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
-                renbanKBN = row.Cells[1].Value.ToString();
-                seqno = row.Cells[2].Value.ToString();
-                prefix = row.Cells[3].Value.ToString();
-                counter = row.Cells[4].Value.ToString();
+                renban = row.Cells[0].Value.ToString();
+                seqno = row.Cells[1].Value.ToString();
+                //prefix = row.Cells[2].Value.ToString();
                 this.Close();
             }
         }
 
-        private void gvDenpyouNo_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        private void gvDenpyouNo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            GetGridviewData(gvDenpyouNo.Rows[e.RowIndex]);
         }
     }
 }
