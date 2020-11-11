@@ -22,7 +22,7 @@ namespace Shinyoh_Controls
         public SRadio() : base()
         {
             base.AutoSize = false;
-            base.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            base.Font = new System.Drawing.Font("MS Gothic", 9F);
             base.Size = new Size(100, 19);
         }
         protected override bool ShowFocusCues

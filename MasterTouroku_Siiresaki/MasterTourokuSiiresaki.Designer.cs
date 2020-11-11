@@ -189,7 +189,7 @@
             // rdo_Registragion
             // 
             this.rdo_Registragion.Checked = true;
-            this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.rdo_Registragion.Location = new System.Drawing.Point(615, 9);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
@@ -203,7 +203,7 @@
             // 
             // rdo_Delete
             // 
-            this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.rdo_Delete.Location = new System.Drawing.Point(712, 9);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
@@ -291,7 +291,7 @@
             this.sbStaff.IsErrorOccurs = false;
             this.sbStaff.IsRequire = false;
             this.sbStaff.lblName = null;
-            this.sbStaff.Location = new System.Drawing.Point(141, 532);
+            this.sbStaff.Location = new System.Drawing.Point(615, 533);
             this.sbStaff.MinimumSize = new System.Drawing.Size(70, 19);
             this.sbStaff.MoveNext = true;
             this.sbStaff.Name = "sbStaff";
@@ -317,7 +317,6 @@
             // lblStaffCD_Name
             // 
             this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
-            this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblStaffCD_Name.Location = new System.Drawing.Point(211, 532);
@@ -504,7 +503,7 @@
             this.txtStaffCD.IsDatatableOccurs = null;
             this.txtStaffCD.IsErrorOccurs = false;
             this.txtStaffCD.IsRequire = false;
-            this.txtStaffCD.Location = new System.Drawing.Point(492, 532);
+            this.txtStaffCD.Location = new System.Drawing.Point(141, 532);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtStaffCD.MoveNext = true;

@@ -88,5 +88,15 @@ namespace Shinyoh_Search
                 this.Close();
             }
         }
+
+        private void gvStaff_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            GetGridviewData(gvStaff.Rows[e.RowIndex]);
+        }
+
+        private void gvStaff_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            GetGridviewData(gvStaff.Rows[e.RowIndex]);
+        }
     }
 }
