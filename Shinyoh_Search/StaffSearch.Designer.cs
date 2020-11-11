@@ -151,6 +151,7 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
+            this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsDatatableOccurs = null;
@@ -173,6 +174,7 @@
             this.txtStaffName.AllowMinus = false;
             this.txtStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaffName.DecimalPlace = 0;
+            this.txtStaffName.DepandOnMode = true;
             this.txtStaffName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaffName.IntegerPart = 0;
             this.txtStaffName.IsDatatableOccurs = null;
@@ -205,6 +207,7 @@
             this.txtStaff2.AllowMinus = false;
             this.txtStaff2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff2.DecimalPlace = 0;
+            this.txtStaff2.DepandOnMode = true;
             this.txtStaff2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff2.IntegerPart = 0;
             this.txtStaff2.IsDatatableOccurs = null;
@@ -228,6 +231,7 @@
             this.txtStaff1.AllowMinus = false;
             this.txtStaff1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff1.DecimalPlace = 0;
+            this.txtStaff1.DepandOnMode = true;
             this.txtStaff1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff1.IntegerPart = 0;
             this.txtStaff1.IsDatatableOccurs = null;
@@ -309,7 +313,7 @@
             this.gvStaff.Name = "gvStaff";
             this.gvStaff.Size = new System.Drawing.Size(768, 302);
             this.gvStaff.TabIndex = 3;
-            this.gvStaff.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvStaff_CellMouseClick);
+            this.gvStaff.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvStaff_CellMouseDoubleClick);
             // 
             // colStaffCD
             // 
@@ -328,6 +332,7 @@
             // colChangeDate
             // 
             this.colChangeDate.DataPropertyName = "ChangeDate";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.Format = "yyyy/MM/dd";
             dataGridViewCellStyle1.NullValue = null;
             this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle1;

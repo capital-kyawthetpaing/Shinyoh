@@ -32,6 +32,7 @@
             this.txtRemark = new Shinyoh_Controls.STextBox();
             this.lblRemark = new Shinyoh_Controls.SLabel();
             this.txtFAX = new Shinyoh_Controls.STextBox();
+            this.txtCopySoukos = new Shinyoh_Controls.STextBox();
             this.lblFAX = new Shinyoh_Controls.SLabel();
             this.txtPhNo = new Shinyoh_Controls.STextBox();
             this.lblPhNo = new Shinyoh_Controls.SLabel();
@@ -50,7 +51,6 @@
             this.lblSearch = new Shinyoh_Controls.SLabel();
             this.txtSearch = new Shinyoh_Controls.STextBox();
             this.txtSouko = new Shinyoh_Search.SearchBox();
-            this.txtCopySoukos = new Shinyoh_Controls.STextBox();
             this.lblCopySouko = new Shinyoh_Controls.SLabel();
             this.lblSouko = new Shinyoh_Controls.SLabel();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
@@ -166,6 +166,30 @@
             this.txtFAX.Size = new System.Drawing.Size(177, 19);
             this.txtFAX.TabIndex = 10;
             this.txtFAX.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            // 
+            // txtCopySoukos
+            // 
+            this.txtCopySoukos.AllowMinus = false;
+            this.txtCopySoukos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCopySoukos.CausesValidation = false;
+            this.txtCopySoukos.DecimalPlace = 0;
+            this.txtCopySoukos.DepandOnMode = true;
+            this.txtCopySoukos.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtCopySoukos.IntegerPart = 0;
+            this.txtCopySoukos.IsDatatableOccurs = null;
+            this.txtCopySoukos.IsErrorOccurs = false;
+            this.txtCopySoukos.IsRequire = false;
+            this.txtCopySoukos.Location = new System.Drawing.Point(795, 141);
+            this.txtCopySoukos.MaxLength = 10;
+            this.txtCopySoukos.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtCopySoukos.MoveNext = true;
+            this.txtCopySoukos.Name = "txtCopySoukos";
+            this.txtCopySoukos.NextControl = null;
+            this.txtCopySoukos.NextControlName = "txtSoukoName";
+            this.txtCopySoukos.SearchType = Entity.SearchType.ScType.None;
+            this.txtCopySoukos.Size = new System.Drawing.Size(100, 19);
+            this.txtCopySoukos.TabIndex = 2;
+            this.txtCopySoukos.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblFAX
             // 
@@ -481,7 +505,7 @@
             // 
             this.txtSouko.AllowMinus = false;
             this.txtSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSouko.ChangeDate = null;
+            this.txtSouko.ChangeDate = this.txtSoukoName;
             this.txtSouko.DecimalPlace = 0;
             this.txtSouko.DepandOnMode = true;
             this.txtSouko.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -502,31 +526,6 @@
             this.txtSouko.TabIndex = 1;
             this.txtSouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSouko_KeyDown);
-            // 
-            // txtCopySoukos
-            // 
-            this.txtCopySoukos.AllowMinus = false;
-            this.txtCopySoukos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopySoukos.CausesValidation = false;
-            this.txtCopySoukos.DecimalPlace = 0;
-            this.txtCopySoukos.DepandOnMode = true;
-            this.txtCopySoukos.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCopySoukos.IntegerPart = 0;
-            this.txtCopySoukos.IsDatatableOccurs = null;
-            this.txtCopySoukos.IsErrorOccurs = false;
-            this.txtCopySoukos.IsRequire = false;
-            this.txtCopySoukos.Location = new System.Drawing.Point(795, 141);
-            this.txtCopySoukos.MaxLength = 10;
-            this.txtCopySoukos.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtCopySoukos.MoveNext = true;
-            this.txtCopySoukos.Name = "txtCopySoukos";
-            this.txtCopySoukos.NextControl = null;
-            this.txtCopySoukos.NextControlName = "txtSoukoName";
-            this.txtCopySoukos.SearchType = Entity.SearchType.ScType.None;
-            this.txtCopySoukos.Size = new System.Drawing.Size(100, 19);
-            this.txtCopySoukos.TabIndex = 2;
-            this.txtCopySoukos.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtCopySoukos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopySouko_KeyDown);
             // 
             // lblCopySouko
             // 
@@ -588,7 +587,7 @@
             // 
             this.txtCopySouko.AllowMinus = false;
             this.txtCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopySouko.ChangeDate = null;
+            this.txtCopySouko.ChangeDate = this.txtSoukoName;
             this.txtCopySouko.DecimalPlace = 0;
             this.txtCopySouko.DepandOnMode = false;
             this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -608,6 +607,7 @@
             this.txtCopySouko.Size = new System.Drawing.Size(100, 19);
             this.txtCopySouko.TabIndex = 27;
             this.txtCopySouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtCopySouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopySouko_KeyDown);
             // 
             // MasterTourokuSouko
             // 

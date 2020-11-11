@@ -54,8 +54,6 @@ namespace MasterTouroku_Staff
 
             txt_Staff.ChangeDate = txtStaff_CDate;
             txtStaff_Copy.ChangeDate = txtStaff_CopyDate;
-
-
         }
 
         private void ChangeMode(Mode mode)
