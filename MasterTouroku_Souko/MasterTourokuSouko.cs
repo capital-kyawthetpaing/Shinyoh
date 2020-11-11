@@ -43,6 +43,9 @@ namespace MasterTouroku_Souko
             ChangeMode(Mode.New);
             txtSouko.Focus();
             base_Entity = _GetBaseData();
+
+            txtSouko.ChangeDate = txtSoukoName;
+            searchBox1.ChangeDate = txtSoukoName;
         }
         private void ChangeMode(Mode mode)
         {

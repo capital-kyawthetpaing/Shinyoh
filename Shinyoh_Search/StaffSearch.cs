@@ -29,6 +29,8 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
+            gvStaff.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             gvStaff.UseRowNo(true);
             DataGridviewBind();            
 
@@ -70,13 +72,13 @@ namespace Shinyoh_Search
                 obj.Remarks = "All";
             StaffBL objMethod = new StaffBL();
             DataTable dt = objMethod.Staff_Search(obj);
+            if(dt.Columns.Contains("CurrentDay"))
+            {
+                lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+            }
             gvStaff.DataSource = dt;
         }
-
-        private void gvStaff_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-             GetGridviewData(gvStaff.Rows[e.RowIndex]);
-        }
+        
         private void GetGridviewData(DataGridViewRow gvrow)
         {
             if (gvrow.DataBoundItem != null)
@@ -87,11 +89,6 @@ namespace Shinyoh_Search
                 staffName = row.Cells["colStaffName"].Value.ToString();
                 this.Close();
             }
-        }
-
-        private void gvStaff_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            GetGridviewData(gvStaff.Rows[e.RowIndex]);
         }
 
         private void gvStaff_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

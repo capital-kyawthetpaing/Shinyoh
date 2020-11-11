@@ -240,7 +240,7 @@ namespace MasterTouroku_Tokuisaki {
             int int_val = 0;
             int.TryParse(txtSearch.Text, NumberStyles.Any, CultureInfo.CurrentCulture, out int_val);
             obj.KensakuHyouziJun = int_val.ToString();
-            obj.KensakuHyouziJun = txtSearch.Text;
+            //obj.KensakuHyouziJun = txtSearch.Text;
             obj.UsedFlg = 0;
             obj.InsertOperator = base_Entity.OperatorCD;
             obj.UpdateOperator = base_Entity.OperatorCD;

@@ -25,7 +25,8 @@ namespace MasterTouroku_Siiresaki
             ProgramID = "MasterTourokuSiiresaki";
             StartProgram();
             cboMode.Bind(false, multi_Entity);
-            sbStaff.lblName = lblStaffCD_Name;
+
+            txtStaffCD.lblName = lblStaffCD_Name;
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
@@ -43,7 +44,9 @@ namespace MasterTouroku_Siiresaki
             ChangeMode(Mode.New);
             txtSupplierCD.Focus();
 
-            base_Entity = _GetBaseData(); 
+            base_Entity = _GetBaseData();
+            txtSupplierCD.ChangeDate = txtChangeDate;
+            txtCopyCD.ChangeDate = txtCopyDate;
         }
 
         private void ChangeMode(Mode mode)
@@ -139,9 +142,7 @@ namespace MasterTouroku_Siiresaki
 
             txtCurrency.E102Check(true);
             txtStaffCD.E102Check(true);
-            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
-
-            sbStaff.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);           
 
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
@@ -366,15 +367,15 @@ namespace MasterTouroku_Siiresaki
             }
         }
 
-        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!txtStaffCD.IsErrorOccurs)
-            {
-                DataTable dt = txtStaffCD.IsDatatableOccurs;
-                if (dt.Rows.Count > 0)
-                    lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
-            }
-        }
+        //private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (!txtStaffCD.IsErrorOccurs)
+        //    {
+        //        DataTable dt = txtStaffCD.IsDatatableOccurs;
+        //        if (dt.Rows.Count > 0)
+        //            lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
+        //    }
+        //}
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {

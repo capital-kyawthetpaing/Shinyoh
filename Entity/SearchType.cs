@@ -11,7 +11,8 @@ namespace Entity {
            None,
            Souko,
            Staff,
-           Denpyou
+           Denpyou,
+           Siiresaki
         }
     }
 }

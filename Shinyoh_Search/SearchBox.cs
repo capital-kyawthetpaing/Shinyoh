@@ -76,6 +76,12 @@ namespace Shinyoh_Search
                         denpyouSearch.ShowDialog();
                         CD = denpyouSearch.seqno;
                         break;
+                    case Entity.SearchType.ScType.Siiresaki:
+                        SiiresakiSearch siiresakiSearch = new SiiresakiSearch();
+                        siiresakiSearch.ShowDialog();
+                        CD = siiresakiSearch.SiiresakiCD;
+                        CDate = siiresakiSearch.changeDate;
+                        break;
                 }
 
                 this.Text = CD;
