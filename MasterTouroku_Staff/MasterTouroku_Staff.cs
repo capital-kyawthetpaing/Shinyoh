@@ -52,7 +52,7 @@ namespace MasterTouroku_Staff
             txt_Staff.Focus();
             base_Entity = _GetBaseData();
 
-            SearchBox.ChangeDate = txtStaff_CDate;
+            txt_Staff.ChangeDate = txtStaff_CDate;
             
         }
 

@@ -25,6 +25,7 @@ namespace MasterTouroku_Siiresaki
             ProgramID = "MasterTourokuSiiresaki";
             StartProgram();
             cboMode.Bind(false, multi_Entity);
+            sbStaff.lblName = lblStaffCD_Name;
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
@@ -365,12 +366,12 @@ namespace MasterTouroku_Siiresaki
 
         private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!txtStaffCD.IsErrorOccurs)
-            {
-                DataTable dt = txtStaffCD.IsDatatableOccurs;
-                if (dt.Rows.Count > 0)
-                    lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
-            }
+            //if (!txtStaffCD.IsErrorOccurs)
+            //{
+            //    DataTable dt = txtStaffCD.IsDatatableOccurs;
+            //    if (dt.Rows.Count > 0)
+            //        lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
+            //}
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

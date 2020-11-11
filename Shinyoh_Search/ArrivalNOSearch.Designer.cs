@@ -525,27 +525,32 @@
             // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "ChakuniDate";
             this.Column2.HeaderText = "着荷日";
             this.Column2.Name = "Column2";
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "ChakuniYoteiDate";
             this.Column3.HeaderText = "着荷予定日";
             this.Column3.Name = "Column3";
             // 
             // Column4
             // 
+            this.Column4.DataPropertyName = "SiiresakiCD";
             this.Column4.HeaderText = "仕入先";
             this.Column4.Name = "Column4";
             // 
             // Column5
             // 
+            this.Column5.DataPropertyName = "SiiresakiRyakuName";
             this.Column5.HeaderText = "仕入先名";
             this.Column5.Name = "Column5";
             this.Column5.Width = 200;
             // 
             // Column6
             // 
+            this.Column6.DataPropertyName = "KanriNO";
             this.Column6.HeaderText = "管理番号";
             this.Column6.Name = "Column6";
             // 

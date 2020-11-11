@@ -17,6 +17,7 @@ namespace Shinyoh_Search
     {
         public string staffCD = string.Empty;
         public string changeDate = string.Empty;
+        public string staffName = string.Empty;
         public StaffSearch()
         {
             InitializeComponent();
@@ -83,6 +84,7 @@ namespace Shinyoh_Search
                 DataGridViewRow row = gvrow;
                 staffCD = row.Cells["colStaffCD"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
+                staffName = row.Cells["colStaffName"].Value.ToString();
                 this.Close();
             }
         }
