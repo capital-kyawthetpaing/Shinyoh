@@ -13,7 +13,15 @@ namespace BL
 {
     public class chakuniNyuuryoku_BL:BaseBL
     {
-        public DataTable ArrivalNO_Search(ArrivalNOEntity ane)
+        public DataTable ChakuniNyuuryoku_Search(ChakuniNyuuryoku_Entity cne)
+        {
+            CKMDL ckmdl = new CKMDL();
+            cne.Sqlprms = new SqlParameter[1];
+            cne.Sqlprms[0] = new SqlParameter("@ChakuniNO", SqlDbType.VarChar) { Value = cne.ChakuniNO};
+            DataTable dt = ckmdl.SelectDatatable("ChakuniNyuuryoku_Search", GetConnectionString(), cne.Sqlprms);
+            return dt;
+        }
+        public DataTable ArrivalNO_Search(ChakuniNyuuryoku_Entity ane)
         {
             CKMDL ckmdl = new CKMDL();
             ane.Sqlprms = new SqlParameter[11];
