@@ -43,7 +43,8 @@ namespace MasterTouroku_Souko
             ChangeMode(Mode.New);
             txtSouko.Focus();
             base_Entity = _GetBaseData();
-            txtSouko.ChangeDate = txtSouko;
+
+            txtSouko.ChangeDate = txtSoukoName;
             txtCopySouko.ChangeDate = txtSoukoName;
         }
         private void ChangeMode(Mode mode)
@@ -234,19 +235,6 @@ namespace MasterTouroku_Souko
             SoukoBL souko = new SoukoBL();
             souko.M_Souko_CUD(soukoDelete);
         }
-       
-        private void txtCopySouko_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
-            {
-                if (!txtCopySoukos.IsErrorOccurs)
-                {
-                    EnableAndDisablePanel();
-                    DataTable dt = txtCopySoukos.IsDatatableOccurs;
-                    soukoSelect(dt);
-                }
-            }
-        }
         private void soukoSelect(DataTable dt)
         {
            if(dt.Rows.Count > 0)
@@ -319,6 +307,20 @@ namespace MasterTouroku_Souko
             else
             {
                 txtSearch.Text = "0";
+            }
+        }
+
+        private void txtCopySouko_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
+            {
+                if (!txtCopySouko.IsErrorOccurs)
+                {
+                    EnableAndDisablePanel();
+                    DataTable dt = txtCopySouko.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        soukoSelect(dt);
+                }
             }
         }
     }

@@ -62,7 +62,7 @@ namespace Shinyoh_Search
                         SoukoSearch soukoSearch = new SoukoSearch();
                         soukoSearch.ShowDialog();
                         CD = soukoSearch.soukoCD;
-                        CDate = soukoSearch.soukoCD;
+                        //this.CD = soukoSearch.soukoCD;
                         break;
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();
@@ -85,12 +85,11 @@ namespace Shinyoh_Search
                 }
 
                 this.Text = CD;
-                this.Text = CDate;
-                if(lblName != null)
+                if (lblName != null)
                 {
                     lblName.Text = name;
                 }
-                if(ChangeDate != null)
+                if (ChangeDate != null)
                 {
                     ChangeDate.Text = CDate;
                     ChangeDate.Focus();
@@ -101,7 +100,7 @@ namespace Shinyoh_Search
                     Control control = this.TopLevelControl.Controls.Find(this.NextControlName, true)[0];
                     control.Focus();
                 }
-                
+
             }            
         }
     }
