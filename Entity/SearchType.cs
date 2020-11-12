@@ -12,7 +12,8 @@ namespace Entity {
            Souko,
            Staff,
            Denpyou,
-           Siiresaki
+           Siiresaki,
+           Tokuisaki
         }
     }
 }

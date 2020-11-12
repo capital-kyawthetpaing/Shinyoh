@@ -61,5 +61,17 @@ namespace BL {
             DataTable dt = ckmdl.SelectDatatable("M_Tokuisaki_Select", GetConnectionString(), parameters);
             return dt;
         }
+        public DataTable Tokuisaki_Search(TokuisakiEntity obj)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@TokuisakiCD1", SqlDbType.VarChar) { Value = obj.TokuisakiCD };
+            parameters[1] = new SqlParameter("@TokuisakiCD2", SqlDbType.VarChar) { Value = obj.TokuisakiRyakuName };
+            parameters[2] = new SqlParameter("@TokuisakiName", SqlDbType.VarChar) { Value = obj.TokuisakiName };
+            parameters[3] = new SqlParameter("@KanaName", SqlDbType.VarChar) { Value = obj.KanaName };
+            parameters[4] = new SqlParameter("@RadioCheck", SqlDbType.VarChar) { Value = obj.Remarks };
+            DataTable dt = ckmdl.SelectDatatable("Tokuisaki_Search", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }

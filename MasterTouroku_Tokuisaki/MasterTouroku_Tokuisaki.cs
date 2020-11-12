@@ -46,9 +46,10 @@ namespace MasterTouroku_Tokuisaki {
             SetButton(ButtonType.BType.Empty, F11, "", false);
             txt_Tokuisaki.Focus();
             ChangeMode(Mode.New);
-            sRadRegister.Checked = true;
-            RadSaMa.Checked = true;
             base_Entity = _GetBaseData();
+
+            txt_Tokuisaki.ChangeDate = txtChange_Date;
+            txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;
         }
 
         private void ChangeMode(Mode mode)
@@ -56,13 +57,13 @@ namespace MasterTouroku_Tokuisaki {
             //Enable && Disable
             cf.Clear(PanelTitle);
             cf.Clear(PanelDetail);
-            lblStaff.Text = string.Empty;
+            lblStaffCD_Name.Text = string.Empty;
 
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
             txt_Tokuisaki.Focus();
             txtSearch.Text = "0";
-            lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             switch (mode)
             {
                 case Mode.New:
@@ -72,8 +73,8 @@ namespace MasterTouroku_Tokuisaki {
                     txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
                     txtTokuisaki_CopyDate.E103Check(true);
-                    txtTokuisaki_CopyDate.E102MultiCheck(true, txtTokuisaki_Copy, txtTokuisaki_CopyDate);
-                    txtTokuisaki_CopyDate.E133Check(true, "M_Tokuisaki", txtTokuisaki_Copy, txtTokuisaki_CopyDate, null);
+                    txtTokuisaki_CopyDate.E102MultiCheck(true, txtTokuisakiCopy, txtTokuisaki_CopyDate);
+                    txtTokuisaki_CopyDate.E133Check(true, "M_Tokuisaki", txtTokuisakiCopy, txtTokuisaki_CopyDate, null);
 
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
@@ -106,6 +107,7 @@ namespace MasterTouroku_Tokuisaki {
                 case Mode.Inquiry:
                     txtChange_Date.E132Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
+                    txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
                     Disable_UDI_Mode();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -118,7 +120,7 @@ namespace MasterTouroku_Tokuisaki {
             cf.Clear(PanelTitle);
             cf.Clear(PanelDetail);
             cf.DisablePanel(PanelDetail);
-            txtTokuisaki_Copy.Enabled = false;
+            txtTokuisakiCopy.Enabled = false;
             txtTokuisaki_CopyDate.Enabled = false;
             sRadRegister.Enabled = false;
             sRadDelete.Enabled = false;
@@ -373,7 +375,7 @@ namespace MasterTouroku_Tokuisaki {
         private void EnablePanel()
         {
             cf.EnablePanel(PanelDetail);
-            txt_Tokuisaki.Focus();
+            chk.Focus();
             cf.DisablePanel(PanelTitle);
         }
 

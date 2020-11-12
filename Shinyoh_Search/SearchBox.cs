@@ -82,6 +82,12 @@ namespace Shinyoh_Search
                         CD = siiresakiSearch.SiiresakiCD;
                         CDate = siiresakiSearch.changeDate;
                         break;
+                    case Entity.SearchType.ScType.Tokuisaki:
+                        TokuisakiSearch tokuisakiSearch = new TokuisakiSearch();
+                        tokuisakiSearch.ShowDialog();
+                        CD = tokuisakiSearch.Tokuisaki;
+                        CDate = tokuisakiSearch.ChangeDate;
+                        break;
                 }
 
                 this.Text = CD;
