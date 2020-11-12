@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.rdo_All = new Shinyoh_Controls.SRadio();
             this.rdo_Date = new Shinyoh_Controls.SRadio();
@@ -85,12 +85,12 @@
             this.rdo_All.NextControlName = "txtStaff1";
             this.rdo_All.Size = new System.Drawing.Size(49, 19);
             this.rdo_All.TabIndex = 2;
-            this.rdo_All.TabStop = true;
             this.rdo_All.Text = "全て";
             this.rdo_All.UseVisualStyleBackColor = true;
             // 
             // rdo_Date
             // 
+            this.rdo_Date.Checked = true;
             this.rdo_Date.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.rdo_Date.Location = new System.Drawing.Point(140, 9);
             this.rdo_Date.MoveNext = true;
@@ -332,10 +332,10 @@
             // colChangeDate
             // 
             this.colChangeDate.DataPropertyName = "ChangeDate";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.Format = "yyyy/MM/dd";
-            dataGridViewCellStyle1.NullValue = null;
-            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "yyyy/MM/dd";
+            dataGridViewCellStyle3.NullValue = null;
+            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle3;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.Width = 200;

@@ -22,9 +22,10 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
-            gvSupplier.UseRowNo(true);
-            gvSupplier.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             rdo_Date.Focus();
+
+            gvSupplier.UseRowNo(true);
+            gvSupplier.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;            
             DataGridviewBind();
         }
 
@@ -35,7 +36,7 @@ namespace Shinyoh_Search
 
         private void btnSupplier_F11_Click(object sender, System.EventArgs e)
         {
-
+            DataGridviewBind();
         }
         public override void FunctionProcess(string tagID)
         {
@@ -46,6 +47,7 @@ namespace Shinyoh_Search
             if (tagID == "3")
             {
                 DataGridViewRow row = gvSupplier.CurrentRow;
+                GetGridviewData(row);
             }
             base.FunctionProcess(tagID);
         }
@@ -63,6 +65,10 @@ namespace Shinyoh_Search
                 obj.Remarks = "All";
             SiiresakiBL objMethod = new SiiresakiBL();
             DataTable dt = objMethod.Siiresaki_Search(obj);
+            if (dt.Columns.Contains("CurrentDay"))
+            {
+                lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+            }
             gvSupplier.DataSource = dt;
         }
 
