@@ -103,7 +103,7 @@ namespace MasterTouroku_Souko
                 case Mode.Delete:
                     txtSouko.E102Check(true);
                     txtSouko.E132Check(false, "souko", txtSouko, null, null);
-                    txtSouko.E101Check(false, "souko", txtSouko, null, null);
+                    txtSouko.E101Check(true, "souko", txtSouko, null, null);
                     txtSouko.E270Check(true, "souko", txtSouko, null);
 
                     cf.Clear(PanelTitle);
@@ -270,12 +270,15 @@ namespace MasterTouroku_Souko
                     {
                         EnableAndDisablePanel();
                     }
+                    else if(cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                    }
                 }
                 DataTable dt = txtSouko.IsDatatableOccurs;
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
                     soukoSelect(dt);
-                    cf.DisablePanel(PanelTitle);
                 }
             }
         }
