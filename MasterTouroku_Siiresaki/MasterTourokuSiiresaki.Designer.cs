@@ -36,6 +36,7 @@
             this.rdo_Registragion = new Shinyoh_Controls.SRadio();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.chk_Flag = new Shinyoh_Controls.SCheckBox();
             this.lblSearch = new Shinyoh_Controls.SLabel();
@@ -88,7 +89,6 @@
             this.lblMorokuchi = new Shinyoh_Controls.SLabel();
             this.txtChangeDate = new Shinyoh_Controls.STextBox();
             this.txtCopyDate = new Shinyoh_Controls.STextBox();
-            this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.txtCopyCD = new Shinyoh_Search.SearchBox();
             this.txtSupplierCD = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
@@ -273,6 +273,32 @@
             this.Panel_Detail.Name = "Panel_Detail";
             this.Panel_Detail.Size = new System.Drawing.Size(1485, 707);
             this.Panel_Detail.TabIndex = 1;
+            // 
+            // txtStaffCD
+            // 
+            this.txtStaffCD.AllowMinus = false;
+            this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStaffCD.ChangeDate = null;
+            this.txtStaffCD.Combo = null;
+            this.txtStaffCD.DecimalPlace = 0;
+            this.txtStaffCD.DepandOnMode = false;
+            this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtStaffCD.IntegerPart = 0;
+            this.txtStaffCD.IsDatatableOccurs = null;
+            this.txtStaffCD.IsErrorOccurs = false;
+            this.txtStaffCD.IsRequire = false;
+            this.txtStaffCD.lblName = null;
+            this.txtStaffCD.Location = new System.Drawing.Point(141, 532);
+            this.txtStaffCD.MaxLength = 10;
+            this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
+            this.txtStaffCD.MoveNext = true;
+            this.txtStaffCD.Name = "txtStaffCD";
+            this.txtStaffCD.NextControl = null;
+            this.txtStaffCD.NextControlName = "txtStartDate";
+            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtStaffCD.Size = new System.Drawing.Size(70, 19);
+            this.txtStaffCD.TabIndex = 26;
+            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblStaffCD_Name
             // 
@@ -1208,36 +1234,12 @@
             this.txtCopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtCopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyDate_KeyDown);
             // 
-            // txtStaffCD
-            // 
-            this.txtStaffCD.AllowMinus = false;
-            this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaffCD.ChangeDate = null;
-            this.txtStaffCD.DecimalPlace = 0;
-            this.txtStaffCD.DepandOnMode = false;
-            this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaffCD.IntegerPart = 0;
-            this.txtStaffCD.IsDatatableOccurs = null;
-            this.txtStaffCD.IsErrorOccurs = false;
-            this.txtStaffCD.IsRequire = false;
-            this.txtStaffCD.lblName = null;
-            this.txtStaffCD.Location = new System.Drawing.Point(141, 532);
-            this.txtStaffCD.MaxLength = 10;
-            this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
-            this.txtStaffCD.MoveNext = true;
-            this.txtStaffCD.Name = "txtStaffCD";
-            this.txtStaffCD.NextControl = null;
-            this.txtStaffCD.NextControlName = "txtStartDate";
-            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
-            this.txtStaffCD.Size = new System.Drawing.Size(70, 19);
-            this.txtStaffCD.TabIndex = 26;
-            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
             // txtCopyCD
             // 
             this.txtCopyCD.AllowMinus = false;
             this.txtCopyCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCopyCD.ChangeDate = null;
+            this.txtCopyCD.Combo = null;
             this.txtCopyCD.DecimalPlace = 0;
             this.txtCopyCD.DepandOnMode = false;
             this.txtCopyCD.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -1263,6 +1265,7 @@
             this.txtSupplierCD.AllowMinus = false;
             this.txtSupplierCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSupplierCD.ChangeDate = null;
+            this.txtSupplierCD.Combo = null;
             this.txtSupplierCD.DecimalPlace = 0;
             this.txtSupplierCD.DepandOnMode = true;
             this.txtSupplierCD.Font = new System.Drawing.Font("MS Gothic", 9F);

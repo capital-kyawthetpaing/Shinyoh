@@ -3,8 +3,10 @@ using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Windows.Forms;
 
 namespace MasterTouroku_Siiresaki
@@ -38,7 +40,7 @@ namespace MasterTouroku_Siiresaki
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Empty, F10, "CSV取込(F10)", true);
+            SetButton(ButtonType.BType.Import, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             ChangeMode(Mode.New);
@@ -166,6 +168,14 @@ namespace MasterTouroku_Siiresaki
             if (tagID == "5")
             {
                 ChangeMode(Mode.Inquiry);
+            }
+            if (tagID == "10")
+            {
+                if(ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
+                {
+                    ChooseFile();
+                }
+                
             }
             if (tagID == "12")
             {
@@ -393,5 +403,86 @@ namespace MasterTouroku_Siiresaki
                 txtSearch.Text = "0";
             }
         }
+
+        private void ChooseFile()
+        {
+
+            var filePath = string.Empty;
+            List<string> lst_SiiresakiCD = new List<string>();
+            List<string> lst_ChangeDate = new List<string>();
+            List<string> lst_ShokutiFLG = new List<string>();
+            List<string> lst_SiiresakiName = new List<string>();
+            List<string> lst_SiiresakiRyakuName = new List<string>();
+            List<string> lst_KanaName = new List<string>();
+            List<string> lst_KensakuHyouziJun = new List<string>();
+            List<string> lst_SiharaisakiCD = new List<string>();
+            List<string> lst_YuubinNO1 = new List<string>();
+            List<string> lst_YuubinNO2 = new List<string>();
+            List<string> lst_Juusho1 = new List<string>();
+            List<string> lst_Juusho2 = new List<string>();
+            List<string> lst_Tel11 = new List<string>();
+            List<string> lst_Tel12 = new List<string>();
+            List<string> lst_Tel13 = new List<string>();
+            List<string> lst_Tel21 = new List<string>();
+            List<string> lst_Tel22 = new List<string>();
+            List<string> lst_Tel23 = new List<string>();
+            List<string> lst_TantouBusho = new List<string>();
+            List<string> lst_TantouYakushoku = new List<string>();
+            List<string> lst_TantoushaName = new List<string>();
+            List<string> lst_MailAddress = new List<string>();
+            List<string> lst_TuukaCD = new List<string>();
+            List<string> lst_StaffCD = new List<string>();
+            List<string> lst_TorihikiKaisiDate = new List<string>();
+            List<string> lst_TorihikiShuuryouDate = new List<string>();
+            List<string> lst_Remarks = new List<string>();
+
+
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "C:\\Shinyoh\\CSV Folder\\";
+                openFileDialog.Title = "Browse CSV Files";
+                openFileDialog.Filter = "csv files (*.csv)|*.csv";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = openFileDialog.FileName;
+                    string[] csvRows = File.ReadAllLines(filePath);
+                    for (int i = 1; i < csvRows.Length; i++)
+                    {
+                        var splits = csvRows[i].Split(',');
+                        lst_SiiresakiCD.Add(splits[0]);
+                        lst_ChangeDate.Add(splits[1]);
+                        lst_ShokutiFLG.Add(splits[2]);
+                        lst_SiiresakiName.Add(splits[3]);
+                        lst_SiiresakiRyakuName.Add(splits[4]);
+                        lst_KanaName.Add(splits[5]);
+                        lst_KensakuHyouziJun.Add(splits[6]);
+                        lst_SiharaisakiCD.Add(splits[7]);
+                        lst_YuubinNO1.Add(splits[8]);
+                        lst_YuubinNO2.Add(splits[9]);
+                        lst_Juusho1.Add(splits[10]);
+                        lst_Juusho2.Add(splits[11]);
+                        lst_Tel11.Add(splits[12]);
+                        lst_Tel12.Add(splits[13]);
+                        lst_Tel13.Add(splits[14]);
+                        lst_Tel21.Add(splits[15]);
+                        lst_Tel22.Add(splits[16]);
+                        lst_Tel23.Add(splits[17]);
+                        lst_TantouBusho.Add(splits[18]);
+                        lst_TantouYakushoku.Add(splits[19]);
+                        lst_TantoushaName.Add(splits[20]);
+                        lst_MailAddress.Add(splits[21]);
+                        lst_TuukaCD.Add(splits[22]);
+                        lst_StaffCD.Add(splits[23]);
+                        lst_TorihikiKaisiDate.Add(splits[24]);
+                        lst_TorihikiShuuryouDate.Add(splits[25]);
+                        lst_Remarks.Add(splits[26]);
+                    }
+                }
+            }
+        }
     }
 }
+

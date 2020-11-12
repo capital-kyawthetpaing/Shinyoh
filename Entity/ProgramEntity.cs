@@ -11,6 +11,7 @@
         public string Outputable { get; set; }
         public string Runable { get; set; }
         public string Type { get; set; }
+        public string Importable { get; set; }
 
     }
 }

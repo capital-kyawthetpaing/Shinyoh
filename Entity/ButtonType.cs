@@ -24,7 +24,8 @@ namespace Entity
             Search,//検索
             Empty,//
             Confirm, //確認
-            Display
+            Display,
+            Import //取込
         }
     }
 }
