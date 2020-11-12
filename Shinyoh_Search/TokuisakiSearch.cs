@@ -58,6 +58,10 @@ namespace Shinyoh_Search {
                 obj.Remarks = "All";
             TokuisakiBL tBL = new TokuisakiBL();
             DataTable dt = tBL.Tokuisaki_Search(obj);
+            if (dt.Columns.Contains("CurrentDay"))
+            {
+                lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+            }
             gvTokuisaki.DataSource = dt;
         }
 
