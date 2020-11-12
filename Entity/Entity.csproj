@@ -51,6 +51,7 @@
     <Compile Include="MessageEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchType.cs" />
+    <Compile Include="ShouhinEntity.cs" />
     <Compile Include="SoukoEntity.cs" />
     <Compile Include="StaffEntity.cs" />
     <Compile Include="SiiresakiEntity.cs" />

@@ -35,8 +35,8 @@ namespace BL
             denpyou_entity.Sqlprms = new SqlParameter[4];
             denpyou_entity.Sqlprms[0] = new SqlParameter("@RenbenKBN", SqlDbType.Int) { Value = denpyou_entity.RenbenKBN };
             denpyou_entity.Sqlprms[1] = new SqlParameter("@seqno", SqlDbType.Int) { Value = denpyou_entity.seqno };
-            denpyou_entity.Sqlprms[2] = new SqlParameter("@prefix", SqlDbType.NVarChar) { Value = denpyou_entity.prefix };
-            denpyou_entity.Sqlprms[3] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = denpyou_entity.Mode };
+            denpyou_entity.Sqlprms[2] = new SqlParameter("@prefix", SqlDbType.VarChar) { Value = denpyou_entity.prefix };
+            denpyou_entity.Sqlprms[3] = new SqlParameter("@messageid", SqlDbType.NVarChar) { Value = denpyou_entity.MessageID };
             return ckmdl.SelectDatatable("sp_DenpyouNO_Check", GetConnectionString(), denpyou_entity.Sqlprms);
         }
 

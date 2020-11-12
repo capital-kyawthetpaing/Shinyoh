@@ -14,7 +14,6 @@ namespace MasterTouroku_DenpyouNO
     {
         BaseEntity entity;
         CommonFunction cf;
-        BaseBL bl = new BaseBL();
         public MasterTouroku_DenpyouNO()
         {
             InitializeComponent();
@@ -45,7 +44,9 @@ namespace MasterTouroku_DenpyouNO
             entity = _GetBaseData();
 
             txtSEQNO.Combo = cbDivision;
+            txtSEQNO.ChangeDate = txtPrefix;
             txtSEQNO.ctrlE102_c = cbDivision;
+            txtPrefix.ctrlE102_c = cbDivision;
         }
 
         private void ChangeMode(Mode mode)
@@ -60,7 +61,10 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.New:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
+                    txtSEQNO.E132Check(true, "denpyou", txtSEQNO, txtPrefix, null);
+                    txtSEQNO.E133Check(false, null, null, null, null);
                     txtPrefix.E102Check(true);
+                    txtPrefix.E132Check(true, "denpyou", txtSEQNO, txtPrefix, null);
                     txtCounter.E102Check(true);
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -68,7 +72,10 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.Update:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
+                    txtSEQNO.E132Check(false, null, null, null, null);
+                    txtSEQNO.E133Check(true, "denpyou", txtPrefix, null, null);
                     txtPrefix.E102Check(true);
+                    txtPrefix.E132Check(false, null, null, null, null);
                     txtCounter.E102Check(true);
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
@@ -76,7 +83,10 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.Delete:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
+                    txtSEQNO.E132Check(false, null, null, null, null);
+                    txtSEQNO.E133Check(true, "denpyou", txtPrefix, null, null);
                     txtPrefix.E102Check(true);
+                    txtPrefix.E132Check(false, null, null, null, null);
                     txtCounter.E102Check(true);
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -84,7 +94,10 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.Inquiry:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
+                    txtSEQNO.E132Check(false, null, null, null, null);
+                    txtSEQNO.E133Check(true, "denpyou", txtPrefix, null, null);
                     txtPrefix.E102Check(true);
+                    txtPrefix.E132Check(false, null, null, null, null);
                     txtCounter.E102Check(true);
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
@@ -151,11 +164,7 @@ namespace MasterTouroku_DenpyouNO
                     DNOEntity.Mode = "Delete";
                     break;
             }
-            DataTable dt = denpyoubl.DenpyouNO_Check(DNOEntity);
-            if (string.IsNullOrWhiteSpace(dt.Rows[0]["MessageID"].ToString()))
-                Denpyou_IUD(DNOEntity);
-            else
-                bl.ShowMessage(dt.Rows[0]["MessageID"].ToString());
+            Denpyou_IUD(DNOEntity);
         }
 
         private DenpyouNOEntity getDenpyou()
@@ -193,8 +202,11 @@ namespace MasterTouroku_DenpyouNO
                 DataTable dt = txtSEQNO.IsDatatableOccurs;
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
-                    DenpyouSelect(dt);
-                    EnableAndDisablePanel();
+                    if(dt.Rows[0]["MessageID"].ToString() != "E133")
+                    {
+                        DenpyouSelect(dt);
+                        EnableAndDisablePanel();
+                    }
                 }
             }
         }
@@ -210,11 +222,7 @@ namespace MasterTouroku_DenpyouNO
         {
             if (dt.Rows.Count > 0)
             {
-                if (dt.Rows[0]["MessageID"].ToString() == "0")
-                {
-                    txtPrefix.Text = dt.Rows[0]["Settouti"].ToString();
-                    txtCounter.Text = dt.Rows[0]["Counter"].ToString();
-                }
+                txtCounter.Text = dt.Rows[0]["Counter"].ToString();
             }
         }
 
@@ -226,7 +234,8 @@ namespace MasterTouroku_DenpyouNO
                 {
                     EnableAndDisablePanel();
                     DataTable dt = txtPrefix.IsDatatableOccurs;
-                    DenpyouSelect(dt);
+                    if(dt.Rows[0]["MessageID"].ToString() != "0")
+                        DenpyouSelect(dt);
                 }
             }
         }

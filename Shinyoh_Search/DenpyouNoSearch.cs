@@ -19,7 +19,7 @@ namespace Shinyoh_Search
         DenpyouNOEntity denpyou_entity;
         public string renban = "0";
         public string seqno = string.Empty;
-        //public string prefix = string.Empty;
+        public string prefix = string.Empty;
 
         public DenpyouNoSearch()
         {
@@ -76,12 +76,12 @@ namespace Shinyoh_Search
                 DataGridViewRow row = gvrow;
                 renban = row.Cells[0].Value.ToString();
                 seqno = row.Cells[1].Value.ToString();
-                //prefix = row.Cells[2].Value.ToString();
+                prefix = row.Cells[2].Value.ToString();
                 this.Close();
             }
         }
 
-        private void gvDenpyouNo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void gvDenpyouNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvDenpyouNo.Rows[e.RowIndex]);
         }
