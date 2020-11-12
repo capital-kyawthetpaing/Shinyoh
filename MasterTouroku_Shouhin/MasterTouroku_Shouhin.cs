@@ -88,7 +88,7 @@ namespace MasterTouroku_Shouhin
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                if (ErrorCheck(PanelTitle))// && ErrorCheck(PanelDetail))
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -126,7 +126,7 @@ namespace MasterTouroku_Shouhin
                     shouhin_entity.Mode = "Delete";
                     break;
             }
-            Denpyou_IUD(shouhin_entity);
+            Shouhin_IUD(shouhin_entity);
         }
 
         private ShouhinEntity getShouhin()
@@ -136,10 +136,10 @@ namespace MasterTouroku_Shouhin
             return shouhin_entity;
         }
 
-        private void Denpyou_IUD(ShouhinEntity shouhin_entity)
+        private void Shouhin_IUD(ShouhinEntity shouhin_entity)
         {
-            ShouhinBL denpyoubl = new ShouhinBL();
-            denpyoubl.DenpyouNO_IUD(shouhin_entity);
+            ShouhinBL shouhinbl = new ShouhinBL();
+            shouhinbl.Shouhin_IUD(shouhin_entity);
         }
 
     }

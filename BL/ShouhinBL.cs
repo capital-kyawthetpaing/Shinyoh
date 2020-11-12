@@ -12,7 +12,7 @@ namespace BL
 {
     public class ShouhinBL : BaseBL
     {
-        public string DenpyouNO_IUD(ShouhinEntity shouhin_entity)
+        public string Shouhin_IUD(ShouhinEntity shouhin_entity)
         {
             CKMDL ckmdl = new CKMDL();
             shouhin_entity.Sqlprms = new SqlParameter[1];
