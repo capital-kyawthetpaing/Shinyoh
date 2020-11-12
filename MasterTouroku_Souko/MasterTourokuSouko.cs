@@ -60,12 +60,13 @@ namespace MasterTouroku_Souko
             {
                 case Mode.New:
                     txtSouko.E102Check(true);
-                    txtSouko.E132Check(true, "souko", null, null, null);
-                    txtSouko.E101Check(false, null, null, null, null);
+                    txtSouko.E132Check(true, "souko", txtSouko, null, null);
+                    txtSouko.E101Check(false, "souko", txtSouko, null, null);
                     txtCopySouko.E101Check(true, "souko", null, null, null);
                     txtSoukoName.E102Check(true);
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
                     txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
+                    txtSouko.E270Check(false, "souko", txtSouko, null);
 
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
@@ -81,8 +82,9 @@ namespace MasterTouroku_Souko
                     break;
                 case Mode.Update:
                     txtSouko.E102Check(true);
-                    txtSouko.E132Check(false, null, null, null, null);
-                    txtSouko.E101Check(true, "souko", null, null, null);
+                    txtSouko.E132Check(false, "souko", txtSouko, null, null);
+                    txtSouko.E101Check(true, "souko", txtSouko, null, null);
+                    txtSouko.E270Check(false, "souko", txtSouko, null);
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
                     txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
@@ -100,8 +102,9 @@ namespace MasterTouroku_Souko
                     break;
                 case Mode.Delete:
                     txtSouko.E102Check(true);
-                    txtSouko.E132Check(false, null, null, null, null);
-                    txtSouko.E101Check(true, "souko", null, null, null);
+                    txtSouko.E132Check(false, "souko", txtSouko, null, null);
+                    txtSouko.E101Check(false, "souko", txtSouko, null, null);
+                    txtSouko.E270Check(true, "souko", txtSouko, null);
 
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
@@ -117,8 +120,9 @@ namespace MasterTouroku_Souko
                     break;
                 case Mode.Inquiry:
                     txtSouko.E102Check(true);
-                    txtSouko.E132Check(false, null, null, null, null);
-                    txtSouko.E101Check(true, "souko", null, null, null);
+                    txtSouko.E132Check(false, "souko", txtSouko, null, null);
+                    txtSouko.E101Check(false, "souko", txtSouko, null, null);
+                    txtSouko.E270Check(false, "souko", txtSouko, null);
 
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
@@ -220,6 +224,7 @@ namespace MasterTouroku_Souko
             soukoEntity.KeyItem = txtSouko.Text;
             soukoEntity.PC = base_Entity.PC;
             soukoEntity.ProgramID = base_Entity.ProgramID;
+            soukoEntity.UsedFlg = 0;
             return soukoEntity;
         }
         private void DoInsert(SoukoEntity soukoInsert) {
@@ -281,18 +286,6 @@ namespace MasterTouroku_Souko
             txtSoukoName.Focus();
             cf.DisablePanel(PanelTitle);
         }
-        private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count > 0)
-                {
-                    DataTable dt = txtYubin2.IsDatatableOccurs;
-                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
-                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
-                }
-            }
-        }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             string value = txtSearch.Text.Replace(",", "");
@@ -320,6 +313,18 @@ namespace MasterTouroku_Souko
                     DataTable dt = txtCopySouko.IsDatatableOccurs;
                     if (dt.Rows.Count > 0)
                         soukoSelect(dt);
+                }
+            }
+        }
+        private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                {
+                    DataTable dt = txtYubin2.IsDatatableOccurs;
+                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
                 }
             }
         }
