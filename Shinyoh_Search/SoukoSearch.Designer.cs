@@ -76,6 +76,7 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
+            this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsDatatableOccurs = null;
@@ -98,6 +99,7 @@
             this.txtSoukoName.AllowMinus = false;
             this.txtSoukoName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSoukoName.DecimalPlace = 0;
+            this.txtSoukoName.DepandOnMode = true;
             this.txtSoukoName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSoukoName.IntegerPart = 0;
             this.txtSoukoName.IsDatatableOccurs = null;
@@ -120,6 +122,7 @@
             this.txtSouko2.AllowMinus = false;
             this.txtSouko2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSouko2.DecimalPlace = 0;
+            this.txtSouko2.DepandOnMode = true;
             this.txtSouko2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSouko2.IntegerPart = 0;
             this.txtSouko2.IsDatatableOccurs = null;
@@ -143,6 +146,7 @@
             this.txtSouko1.AllowMinus = false;
             this.txtSouko1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSouko1.DecimalPlace = 0;
+            this.txtSouko1.DepandOnMode = true;
             this.txtSouko1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSouko1.IntegerPart = 0;
             this.txtSouko1.IsDatatableOccurs = null;
@@ -229,7 +233,7 @@
             this.gvSouko.Name = "gvSouko";
             this.gvSouko.Size = new System.Drawing.Size(768, 302);
             this.gvSouko.TabIndex = 2;
-            this.gvSouko.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSouko_CellMouseClick);
+            this.gvSouko.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSouko_CellMouseDoubleClick);
             // 
             // colSouko
             // 

@@ -29,6 +29,7 @@ namespace Shinyoh_Search
 
             gvArrivalNo.UseRowNo(true);
             GridViewBind();
+            txtDateFrom.Focus();
         }
         public override void FunctionProcess(string tagID)
         {
@@ -45,7 +46,7 @@ namespace Shinyoh_Search
         private void GridViewBind()
         {
             chakuniNyuuryoku_BL ab = new chakuniNyuuryoku_BL();
-            ArrivalNOEntity ane = new ArrivalNOEntity();
+            ChakuniNyuuryoku_Entity ane = new ChakuniNyuuryoku_Entity();
             ane.ChakuniDateFrom = txtDateFrom.Text;
             ane.ChakuniDateTo = txtDateTo.Text;
             ane.SiiresakiCD = sbSupplier.Text;

@@ -32,10 +32,11 @@ namespace BL
         public DataTable DenpyouNO_Check(DenpyouNOEntity denpyou_entity)
         {
             CKMDL ckmdl = new CKMDL();
-            denpyou_entity.Sqlprms = new SqlParameter[3];
+            denpyou_entity.Sqlprms = new SqlParameter[4];
             denpyou_entity.Sqlprms[0] = new SqlParameter("@RenbenKBN", SqlDbType.Int) { Value = denpyou_entity.RenbenKBN };
             denpyou_entity.Sqlprms[1] = new SqlParameter("@seqno", SqlDbType.Int) { Value = denpyou_entity.seqno };
             denpyou_entity.Sqlprms[2] = new SqlParameter("@prefix", SqlDbType.NVarChar) { Value = denpyou_entity.prefix };
+            denpyou_entity.Sqlprms[3] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = denpyou_entity.Mode };
             return ckmdl.SelectDatatable("sp_DenpyouNO_Check", GetConnectionString(), denpyou_entity.Sqlprms);
         }
 

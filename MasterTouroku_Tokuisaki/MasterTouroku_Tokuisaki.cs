@@ -30,6 +30,8 @@ namespace MasterTouroku_Tokuisaki {
             ProgramID = "MasterTourokuTokuisaki";
             StartProgram();
             cboMode.Bind(false,multipurposeEntity);
+            txtStaffCharge.lblName = lblStaffCD_Name;
+
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
             SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
@@ -67,23 +69,11 @@ namespace MasterTouroku_Tokuisaki {
                     ErrorCheck();
                     txtChange_Date.E132Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E133Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
+                    txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
-                    //txtTokuisaki_CopyDate.E103Check(true);
-                    //txtTokuisaki_CopyDate.E102MultiCheck(true, txtTokuisaki_Copy, txtTokuisaki_CopyDate);
-                    //txtTokuisaki_CopyDate.E133Check(true, "M_Tokuisaki", txtTokuisaki_Copy, txtTokuisaki_CopyDate, null);
-
-                    //txtTokuisakiName.E102Check(true);
-                    //txtShortName.E102Check(true);
-                    //txtBillAddress.E102Check(true);
-                    //txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
-                    //txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
-
-                    //txtStaffCharge.E102Check(true);
-                    //txtStaffCharge.E101Check(true, "M_Staff", txtStaffCharge, txtChange_Date, null);
-
-                    //txtStartDate.E103Check(true);
-                    //txtEndDate.E103Check(true);
-                    //txtEndDate.E104Check(true, txtStartDate, txtEndDate);
+                    txtTokuisaki_CopyDate.E103Check(true);
+                    txtTokuisaki_CopyDate.E102MultiCheck(true, txtTokuisaki_Copy, txtTokuisaki_CopyDate);
+                    txtTokuisaki_CopyDate.E133Check(true, "M_Tokuisaki", txtTokuisaki_Copy, txtTokuisaki_CopyDate, null);
 
                     cf.Clear(PanelTitle);
                     cf.Clear(PanelDetail);
@@ -94,25 +84,44 @@ namespace MasterTouroku_Tokuisaki {
                     break;
 
                 case Mode.Update:
-                  //  txtChange_Date.E132Check(false,null,null,null,null);
+                    ErrorCheck();
+                    txtChange_Date.E132Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
+                    txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
+                    txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
+                    Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
-                //    txtChange_Date.E132Check(false, null, null, null, null);
+                    txtChange_Date.E132Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
+                    txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
+                    txtChange_Date.E270Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
+                    Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
 
                     break;
                 case Mode.Inquiry:
-                  //  txtChange_Date.E132Check(false, null, null, null, null);
+                    txtChange_Date.E132Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
+                    txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
 
+                    Disable_UDI_Mode();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
             }
+        }
+        public void Disable_UDI_Mode()
+        {
+            cf.Clear(PanelTitle);
+            cf.Clear(PanelDetail);
+            cf.DisablePanel(PanelDetail);
+            txtTokuisaki_Copy.Enabled = false;
+            txtTokuisaki_CopyDate.Enabled = false;
+            sRadRegister.Enabled = false;
+            sRadDelete.Enabled = false;
         }
         public void ErrorCheck()
         {
@@ -382,16 +391,6 @@ namespace MasterTouroku_Tokuisaki {
             else
             {
                 txtSearch.Text = "0";
-            }
-        }
-
-        private void txtStaffCharge_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!txtStaffCharge.IsErrorOccurs)
-            {
-                DataTable dt = txtStaffCharge.IsDatatableOccurs;
-                if (dt.Rows.Count > 0)
-                    lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
             }
         }
     }

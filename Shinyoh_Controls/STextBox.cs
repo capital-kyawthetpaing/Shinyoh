@@ -88,7 +88,8 @@ namespace Shinyoh_Controls
 
         public bool E101;
         public string E101Type;
-        public bool E102; 
+        public bool E102;
+        public string E102Type;
         public bool E102Multi;
         public bool E103;
         public bool E104;
@@ -127,6 +128,7 @@ namespace Shinyoh_Controls
         public string check1Yuubin_Juusho;
         public string check2Yuubin_Juusho;
 
+        public SCombo ctrlE102_c;
 
         //Constructor
         public STextBox()
@@ -265,9 +267,10 @@ namespace Shinyoh_Controls
             ctrlE101_2 = ctrl2;
             ctrlE101_3 = ctrl3;
         }
-        public void E102Check(bool value)
+        public void E102Check(bool value, string type)
         {
             E102  = value;
+            E102Type = type;
         }
         public void E102MultiCheck(bool value,Control ctrl1,Control ctrl2)
         {
