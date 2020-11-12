@@ -81,7 +81,7 @@ namespace Shinyoh_Search
             }
         }
 
-        private void gvDenpyouNo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void gvDenpyouNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvDenpyouNo.Rows[e.RowIndex]);
         }
