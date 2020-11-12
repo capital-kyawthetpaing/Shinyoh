@@ -9,11 +9,13 @@ namespace Entity
     public class ChakuniNyuuryoku_Entity : BaseEntity
     {
         public string ChakuniNO { get; set; }
+        public string ChakuniYoteiNO { get; set; }
+        public string BrandCD { get; set; }
         public string ChakuniDate { get; set; }
         public string ChakuniDateFrom { get; set; }
         public string ChakuniDateTo { get; set; }
         public string SiiresakiCD { get; set; }
-        public string SiiresakiRyakuName { get; set; }
+        public string CheckValue { get; set; }
         public string SiiresakiName { get; set; }
         public string SiiresakiYuubinNO1 { get; set; }
         public string SiiresakiYuubinNO2 { get; set; }
@@ -32,9 +34,9 @@ namespace Entity
         public string ColorRyakuName { get; set; }
         public string ColorNO { get; set; }
         public string SizeNO { get; set; }
-        public string ChakuniYoteiDate { get; set; }
-        public string ChakuniYoteiSuu { get; set; }
-        public string ChakuniZumiSuu { get; set; }
+        public string YearTerm { get; set; }
+        public string SeasonSS { get; set; }
+        public string SeasonFW { get; set; }
         public string ChakuniSuu { get; set; }
         public string ChakuniMeisaiTekiyou { get; set; }
         public string JANCD { get; set; }
@@ -43,6 +45,7 @@ namespace Entity
         public string HacchuuGyouNO { get; set; }
         public string ChakuniYoteiDateFrom { get; set; }
         public string ChakuniYoteiDateTo { get; set; }
+        public string KanriNO { get; set; }
         public string KanriNOFrom { get; set; }
         public string KanriNOTo { get; set; }
         public string ShouhinCDFrom { get; set; }

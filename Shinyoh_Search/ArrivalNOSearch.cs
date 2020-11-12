@@ -49,7 +49,7 @@ namespace Shinyoh_Search
             ChakuniNyuuryoku_Entity ane = new ChakuniNyuuryoku_Entity();
             ane.ChakuniDateFrom = txtDateFrom.Text;
             ane.ChakuniDateTo = txtDateTo.Text;
-            ane.SiiresakiCD = sbSupplier.Text;
+            ane.SiiresakiCD = sbSiiresaki.Text;
             ane.StaffCD = sbStaff.Text;
             ane.ShouhinName = txtProductName.Text;
             ane.ChakuniYoteiDateFrom = txtExpectedDateFrom.Text;
@@ -75,7 +75,6 @@ namespace Shinyoh_Search
             FunctionProcess(btnSearch.Tag.ToString());
             GridViewBind();
         }
-
         private void gvArrivalNo_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvArrivalNo.Rows[e.RowIndex]);
