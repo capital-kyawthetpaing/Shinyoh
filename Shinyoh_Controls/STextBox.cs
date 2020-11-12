@@ -267,10 +267,9 @@ namespace Shinyoh_Controls
             ctrlE101_2 = ctrl2;
             ctrlE101_3 = ctrl3;
         }
-        public void E102Check(bool value, string type)
+        public void E102Check(bool value)
         {
             E102  = value;
-            E102Type = type;
         }
         public void E102MultiCheck(bool value,Control ctrl1,Control ctrl2)
         {

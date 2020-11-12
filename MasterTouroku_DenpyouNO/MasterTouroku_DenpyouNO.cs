@@ -59,33 +59,33 @@ namespace MasterTouroku_DenpyouNO
             {
                 case Mode.New:
                     cbDivision.E102Check(true);
-                    txtSEQNO.E102Check(true, "denpyou");
-                    txtPrefix.E102Check(true, null);
-                    txtCounter.E102Check(true, null);
+                    txtSEQNO.E102Check(true);
+                    txtPrefix.E102Check(true);
+                    txtCounter.E102Check(true);
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
                     cbDivision.E102Check(true);
-                    txtSEQNO.E102Check(true, "denpyou");
-                    txtPrefix.E102Check(true, null);
-                    txtCounter.E102Check(true, null);
+                    txtSEQNO.E102Check(true);
+                    txtPrefix.E102Check(true);
+                    txtCounter.E102Check(true);
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
                     cbDivision.E102Check(true);
-                    txtSEQNO.E102Check(true, "denpyou");
-                    txtPrefix.E102Check(true, null);
-                    txtCounter.E102Check(true, null);
+                    txtSEQNO.E102Check(true);
+                    txtPrefix.E102Check(true);
+                    txtCounter.E102Check(true);
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
                     cbDivision.E102Check(true);
-                    txtSEQNO.E102Check(true, "denpyou");
-                    txtPrefix.E102Check(true, null);
-                    txtCounter.E102Check(true, null);
+                    txtSEQNO.E102Check(true);
+                    txtPrefix.E102Check(true);
+                    txtCounter.E102Check(true);
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
