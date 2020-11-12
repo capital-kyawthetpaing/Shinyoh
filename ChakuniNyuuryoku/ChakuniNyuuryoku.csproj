@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKM_CommonFunction">
-      <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
+      <HintPath>..\..\Users\Shwe Eain San\source\repos\capital-kyawthetpaing\Shinyoh\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -83,23 +83,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
+    <ProjectReference Include="..\..\Users\Shwe Eain San\source\repos\capital-kyawthetpaing\Shinyoh\BL\BL.csproj">
       <Project>{c2e966eb-8344-4491-befe-a809331521fe}</Project>
       <Name>BL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Entity\Entity.csproj">
+    <ProjectReference Include="..\..\Users\Shwe Eain San\source\repos\capital-kyawthetpaing\Shinyoh\Entity\Entity.csproj">
       <Project>{0cc4487d-c081-4d4f-87d5-028552310763}</Project>
       <Name>Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shinyoh\Shinyoh.csproj">
+    <ProjectReference Include="..\..\Users\Shwe Eain San\source\repos\capital-kyawthetpaing\Shinyoh\Shinyoh\Shinyoh.csproj">
       <Project>{697e1304-f141-4cce-b816-9cc225f441c4}</Project>
       <Name>Shinyoh</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
+    <ProjectReference Include="..\..\Users\Shwe Eain San\source\repos\capital-kyawthetpaing\Shinyoh\Shinyoh_Controls\Shinyoh_Controls.csproj">
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
+    <ProjectReference Include="..\..\Users\Shwe Eain San\source\repos\capital-kyawthetpaing\Shinyoh\Shinyoh_Search\Shinyoh_Search.csproj">
       <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>
       <Name>Shinyoh_Search</Name>
     </ProjectReference>
