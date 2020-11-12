@@ -186,7 +186,7 @@
             this.gvDenpyouNo.ReadOnly = true;
             this.gvDenpyouNo.Size = new System.Drawing.Size(493, 357);
             this.gvDenpyouNo.TabIndex = 3;
-            this.gvDenpyouNo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvDenpyouNo_CellContentClick);
+            this.gvDenpyouNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvDenpyouNo_CellMouseDoubleClick);
             // 
             // RenbanKBN1
             // 

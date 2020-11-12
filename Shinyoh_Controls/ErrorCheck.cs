@@ -44,9 +44,7 @@ namespace Shinyoh_Controls
                 {
                     case "souko":
                         SoukoBL bl = new SoukoBL();
-                        SoukoEntity soukoEntity = new SoukoEntity();
-                        soukoEntity.SoukoCD = sTextBox.Text;
-                        rDt = bl.Souko_Select(soukoEntity);
+                        rDt = bl.Souko_Select(sTextBox.ctrlE101_1.Text, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                     case "M_Staff":
@@ -138,10 +136,7 @@ namespace Shinyoh_Controls
                 {
                     case "souko":
                         SoukoBL bl = new SoukoBL();
-                        SoukoEntity soukoEntity = new SoukoEntity();
-                        soukoEntity.SoukoCD = sTextBox.Text;
-                        rDt = bl.Souko_Select(soukoEntity);
-                     
+                        rDt = bl.Souko_Select(sTextBox.ctrlE132_1.Text, "E132");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                     case "M_Staff":
@@ -161,6 +156,16 @@ namespace Shinyoh_Controls
                         dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text,string.Empty);
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "denpyou":
+                        DenpyouNOEntity denpyou_entity = new DenpyouNOEntity();
+                        DenpyouNOBL denpyou_bl = new DenpyouNOBL();
+                        denpyou_entity.RenbenKBN = Convert.ToInt32(sTextBox.ctrlE102_c.SelectedValue.ToString());
+                        denpyou_entity.seqno = Convert.ToInt32(sTextBox.ctrlE132_1.Text);
+                        denpyou_entity.prefix = sTextBox.ctrlE132_2.Text;
+                        denpyou_entity.MessageID = "E132";
+                        rDt = denpyou_bl.DenpyouNO_Check(denpyou_entity);
+                        result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
                 if (result.Equals("E132"))
@@ -204,6 +209,16 @@ namespace Shinyoh_Controls
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
                         break;
+                    case "denpyou":
+                        DenpyouNOEntity denpyou_entity = new DenpyouNOEntity();
+                        DenpyouNOBL denpyou_bl = new DenpyouNOBL();
+                        denpyou_entity.RenbenKBN = Convert.ToInt32(sTextBox.ctrlE102_c.SelectedValue.ToString());
+                        denpyou_entity.seqno = Convert.ToInt32(sTextBox.Text);
+                        denpyou_entity.prefix = sTextBox.ctrlE133_1.Text;
+                        denpyou_entity.MessageID = "E133";
+                        rDt = denpyou_bl.DenpyouNO_Check(denpyou_entity);
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E133"))
                 {
@@ -226,6 +241,14 @@ namespace Shinyoh_Controls
                 string result = string.Empty;                
                 switch (sTextBox.E270Type)
                 {
+                    case "souko":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE270_1.Text))
+                        {
+                            SoukoBL sBL = new SoukoBL();
+                            rDt = sBL.Souko_Select(sTextBox.ctrlE270_1.Text,"E270");
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
                     case "M_Staff":
                         if (!string.IsNullOrEmpty(sTextBox.ctrlE270_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE270_2.Text))
                         {

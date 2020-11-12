@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChakuniNyuuryoku
+namespace MasterTouroku_Shouhin
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace ChakuniNyuuryoku
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ChakuniNyuuryoku());
+            Application.Run(new MasterTouroku_Shouhin());
         }
     }
 }

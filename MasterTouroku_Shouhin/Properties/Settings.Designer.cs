@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ChakuniNyuuryoku.Properties
+namespace MasterTouroku_Shouhin.Properties
 {
 
 

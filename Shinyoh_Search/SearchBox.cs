@@ -77,12 +77,19 @@ namespace Shinyoh_Search
                         denpyouSearch.ShowDialog();
                         Combo.SelectedIndex = Convert.ToInt32(denpyouSearch.renban);
                         CD = denpyouSearch.seqno;
+                        CDate = denpyouSearch.prefix;
                         break;
                     case Entity.SearchType.ScType.Siiresaki:
                         SiiresakiSearch siiresakiSearch = new SiiresakiSearch();
                         siiresakiSearch.ShowDialog();
                         CD = siiresakiSearch.SiiresakiCD;
                         CDate = siiresakiSearch.changeDate;
+                        break;
+                    case Entity.SearchType.ScType.Tokuisaki:
+                        TokuisakiSearch tokuisakiSearch = new TokuisakiSearch();
+                        tokuisakiSearch.ShowDialog();
+                        CD = tokuisakiSearch.Tokuisaki;
+                        CDate = tokuisakiSearch.ChangeDate;
                         break;
                 }
 
@@ -91,15 +98,17 @@ namespace Shinyoh_Search
                 {
                     lblName.Text = name;
                 }
-                if (ChangeDate != null)
+                if (Combo != null)
+                {
+                    ChangeDate.Text = CDate;
+                    this.ctrlE133_1 = ChangeDate;
+                    this.ctrlE102_c = Combo;
+                    SendKeys.Send("{ENTER}");
+                }
+                else if (ChangeDate != null)
                 {
                     ChangeDate.Text = CDate;
                     ChangeDate.Focus();
-                    SendKeys.Send("{ENTER}");
-                }
-                else if (Combo != null)
-                {
-                    this.ctrlE102_c = Combo;
                     SendKeys.Send("{ENTER}");
                 }
                 else

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ChakuniNyuuryoku")]
+[assembly: AssemblyTitle("MasterTouroku_Shouhin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ChakuniNyuuryoku")]
+[assembly: AssemblyProduct("MasterTouroku_Shouhin")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2f8db9c1-f413-4e41-85bd-47cedf4f25b0")]
+[assembly: Guid("91a4ff22-d9ca-4d31-920b-6e649e703948")]
 
 // Version information for an assembly consists of the following four values:
 //

@@ -13,7 +13,7 @@ namespace BL {
         public string M_Souko_CUD(SoukoEntity soukoEntity)
         {
             CKMDL ckmdl = new CKMDL();
-            soukoEntity.Sqlprms = new SqlParameter[17];
+            soukoEntity.Sqlprms = new SqlParameter[18];
             soukoEntity.Sqlprms[0] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = soukoEntity.SoukoCD };
             soukoEntity.Sqlprms[1] = new SqlParameter("@SoukoName", SqlDbType.VarChar) { Value = soukoEntity.SoukoName };
             soukoEntity.Sqlprms[2] = new SqlParameter("@KanaName", SqlDbType.VarChar) { Value = soukoEntity.KanaName };
@@ -31,14 +31,16 @@ namespace BL {
             soukoEntity.Sqlprms[14] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = soukoEntity.ProgramID };
             soukoEntity.Sqlprms[15] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = soukoEntity.PC };
             soukoEntity.Sqlprms[16] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = soukoEntity.KeyItem };
+            soukoEntity.Sqlprms[17] = new SqlParameter("@UsedFlg", SqlDbType.VarChar) { Value = soukoEntity.UsedFlg };
             return ckmdl.InsertUpdateDeleteData("M_Souko_CUD",GetConnectionString(),soukoEntity.Sqlprms);
         }
-        public DataTable Souko_Select(SoukoEntity soukoEntity)
+        public DataTable Souko_Select(string soukoCD,string errorType)
         {
             CKMDL ckmdl = new CKMDL();
-            soukoEntity.Sqlprms = new SqlParameter[1];
-            soukoEntity.Sqlprms[0] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = soukoEntity.SoukoCD };
-            DataTable dt=ckmdl.SelectDatatable("Souko_Select", GetConnectionString(),soukoEntity.Sqlprms);
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = soukoCD };
+            parameters[1] = new SqlParameter("@ErrorType", SqlDbType.VarChar) { Value = errorType };
+            DataTable dt=ckmdl.SelectDatatable("Souko_Select", GetConnectionString(),parameters);
             return dt;
         }
         public DataTable Souko_Search(SoukoEntity soukoEntity)
