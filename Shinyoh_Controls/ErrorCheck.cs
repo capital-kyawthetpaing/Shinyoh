@@ -44,8 +44,6 @@ namespace Shinyoh_Controls
                 {
                     case "souko":
                         SoukoBL bl = new SoukoBL();
-                       // SoukoEntity soukoEntity = new SoukoEntity();
-                       // soukoEntity.SoukoCD = sTextBox.Text;
                         rDt = bl.Souko_Select(sTextBox.ctrlE101_1.Text, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
@@ -138,10 +136,7 @@ namespace Shinyoh_Controls
                 {
                     case "souko":
                         SoukoBL bl = new SoukoBL();
-                        //SoukoEntity soukoEntity = new SoukoEntity();
-                       // soukoEntity.SoukoCD = sTextBox.Text;
                         rDt = bl.Souko_Select(sTextBox.ctrlE132_1.Text, "E132");
-
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                     case "M_Staff":

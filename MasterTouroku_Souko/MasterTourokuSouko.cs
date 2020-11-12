@@ -62,7 +62,7 @@ namespace MasterTouroku_Souko
                     txtSouko.E102Check(true);
                     txtSouko.E132Check(true, "souko", txtSouko, null, null);
                     txtSouko.E101Check(false, "souko", txtSouko, null, null);
-                    txtCopySouko.E101Check(true, "souko", null, null, null);
+                    txtCopySouko.E101Check(true, "souko", txtCopySouko, null, null);
                     txtSoukoName.E102Check(true);
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
                     txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
@@ -121,7 +121,7 @@ namespace MasterTouroku_Souko
                 case Mode.Inquiry:
                     txtSouko.E102Check(true);
                     txtSouko.E132Check(false, "souko", txtSouko, null, null);
-                    txtSouko.E101Check(false, "souko", txtSouko, null, null);
+                    txtSouko.E101Check(true, "souko", txtSouko, null, null);
                     txtSouko.E270Check(false, "souko", txtSouko, null);
 
                     cf.Clear(PanelTitle);
