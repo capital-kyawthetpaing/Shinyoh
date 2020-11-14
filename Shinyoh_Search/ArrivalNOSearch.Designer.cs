@@ -158,8 +158,9 @@
             this.sbSiiresaki.AllowMinus = false;
             this.sbSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sbSiiresaki.ChangeDate = null;
+            this.sbSiiresaki.Combo = null;
             this.sbSiiresaki.DecimalPlace = 0;
-            this.sbSiiresaki.DepandOnMode = true;
+            this.sbSiiresaki.DepandOnMode = false;
             this.sbSiiresaki.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.sbSiiresaki.IntegerPart = 0;
             this.sbSiiresaki.IsDatatableOccurs = null;
@@ -171,8 +172,8 @@
             this.sbSiiresaki.MoveNext = true;
             this.sbSiiresaki.Name = "sbSiiresaki";
             this.sbSiiresaki.NextControl = null;
-            this.sbSiiresaki.NextControlName = null;
-            this.sbSiiresaki.SearchType = Entity.SearchType.ScType.None;
+            this.sbSiiresaki.NextControlName = "sbStaff";
+            this.sbSiiresaki.SearchType = Entity.SearchType.ScType.Siiresaki;
             this.sbSiiresaki.Size = new System.Drawing.Size(100, 19);
             this.sbSiiresaki.TabIndex = 25;
             this.sbSiiresaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -187,7 +188,6 @@
             this.lblStaff.Name = "lblStaff";
             this.lblStaff.Size = new System.Drawing.Size(250, 19);
             this.lblStaff.TabIndex = 24;
-            this.lblStaff.Text = "ＸＸＸＸＸＸＸＸ10ＸＸＸＸＸＸＸＸ20";
             this.lblStaff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblSiiresaki
@@ -200,7 +200,6 @@
             this.lblSiiresaki.Name = "lblSiiresaki";
             this.lblSiiresaki.Size = new System.Drawing.Size(250, 19);
             this.lblSiiresaki.TabIndex = 23;
-            this.lblSiiresaki.Text = "ＸＸＸＸＸＸＸＸ10ＸＸＸＸＸＸＸＸ20";
             this.lblSiiresaki.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sbStaff
@@ -208,8 +207,9 @@
             this.sbStaff.AllowMinus = false;
             this.sbStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sbStaff.ChangeDate = null;
+            this.sbStaff.Combo = null;
             this.sbStaff.DecimalPlace = 0;
-            this.sbStaff.DepandOnMode = true;
+            this.sbStaff.DepandOnMode = false;
             this.sbStaff.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.sbStaff.IntegerPart = 0;
             this.sbStaff.IsDatatableOccurs = null;
