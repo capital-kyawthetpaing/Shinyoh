@@ -8,6 +8,7 @@ using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using Shinyoh_Controls;
 
 namespace MasterTouroku_Siiresaki
 {
@@ -16,6 +17,7 @@ namespace MasterTouroku_Siiresaki
         CommonFunction cf;
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
+        ErrorCheck err = new ErrorCheck();
         public MasterTourokuSiiresaki()
         {
             InitializeComponent();
@@ -436,7 +438,8 @@ namespace MasterTouroku_Siiresaki
             List<string> lst_TorihikiShuuryouDate = new List<string>();
             List<string> lst_Remarks = new List<string>();
 
-
+           
+            SiiresakiEntity obj = new SiiresakiEntity();
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "C:\\Shinyoh\\CSV Folder\\";
@@ -452,36 +455,110 @@ namespace MasterTouroku_Siiresaki
                     for (int i = 1; i < csvRows.Length; i++)
                     {
                         var splits = csvRows[i].Split(',');
-                        lst_SiiresakiCD.Add(splits[0]);
-                        lst_ChangeDate.Add(splits[1]);
-                        lst_ShokutiFLG.Add(splits[2]);
-                        lst_SiiresakiName.Add(splits[3]);
-                        lst_SiiresakiRyakuName.Add(splits[4]);
-                        lst_KanaName.Add(splits[5]);
-                        lst_KensakuHyouziJun.Add(splits[6]);
-                        lst_SiharaisakiCD.Add(splits[7]);
-                        lst_YuubinNO1.Add(splits[8]);
-                        lst_YuubinNO2.Add(splits[9]);
-                        lst_Juusho1.Add(splits[10]);
-                        lst_Juusho2.Add(splits[11]);
-                        lst_Tel11.Add(splits[12]);
-                        lst_Tel12.Add(splits[13]);
-                        lst_Tel13.Add(splits[14]);
-                        lst_Tel21.Add(splits[15]);
-                        lst_Tel22.Add(splits[16]);
-                        lst_Tel23.Add(splits[17]);
-                        lst_TantouBusho.Add(splits[18]);
-                        lst_TantouYakushoku.Add(splits[19]);
-                        lst_TantoushaName.Add(splits[20]);
-                        lst_MailAddress.Add(splits[21]);
-                        lst_TuukaCD.Add(splits[22]);
-                        lst_StaffCD.Add(splits[23]);
-                        lst_TorihikiKaisiDate.Add(splits[24]);
-                        lst_TorihikiShuuryouDate.Add(splits[25]);
-                        lst_Remarks.Add(splits[26]);
+                        //lst_SiiresakiCD.Add(splits[0]);
+                        //lst_ChangeDate.Add(splits[1]);
+                        //lst_ShokutiFLG.Add(splits[2]);
+                        //lst_SiiresakiName.Add(splits[3]);
+                        //lst_SiiresakiRyakuName.Add(splits[4]);
+                        //lst_KanaName.Add(splits[5]);
+                        //lst_KensakuHyouziJun.Add(splits[6]);
+                        //lst_SiharaisakiCD.Add(splits[7]);
+                        //lst_YuubinNO1.Add(splits[8]);
+                        //lst_YuubinNO2.Add(splits[9]);
+                        //lst_Juusho1.Add(splits[10]);
+                        //lst_Juusho2.Add(splits[11]);
+                        //lst_Tel11.Add(splits[12]);
+                        //lst_Tel12.Add(splits[13]);
+                        //lst_Tel13.Add(splits[14]);
+                        //lst_Tel21.Add(splits[15]);
+                        //lst_Tel22.Add(splits[16]);
+                        //lst_Tel23.Add(splits[17]);
+                        //lst_TantouBusho.Add(splits[18]);
+                        //lst_TantouYakushoku.Add(splits[19]);
+                        //lst_TantoushaName.Add(splits[20]);
+                        //lst_MailAddress.Add(splits[21]);
+                        //lst_TuukaCD.Add(splits[22]);
+                        //lst_StaffCD.Add(splits[23]);
+                        //lst_TorihikiKaisiDate.Add(splits[24]);
+                        //lst_TorihikiShuuryouDate.Add(splits[25]);
+                        //lst_Remarks.Add(splits[26]);
+
+
+                        obj.SiiresakiCD = splits[0];
+                        Byte_Check(10, obj.SiiresakiCD);
+                        obj.ChangeDate = splits[1];
+                        Date_Check(obj.ChangeDate);
+                        obj.ShokutiFLG = Convert.ToInt32(splits[2]);
+                        if (!(obj.ShokutiFLG == 0 || obj.ShokutiFLG == 1))
+                            err.ShowErrorMessage("E117");
+                        obj.SiiresakiName = splits[3];
+                        Byte_Check(80, obj.SiiresakiName);
+                        obj.SiiresakiRyakuName = splits[4];
+                        Byte_Check(40, obj.SiiresakiRyakuName);
+                        obj.KanaName = splits[5];
+                        Byte_Check(80, obj.KanaName);
+                        //obj.KensakuHyouziJun = splits[6];
+                        //Byte_Check(obj.KensakuHyouziJun.Length, obj.KensakuHyouziJun);
+                        obj.SiharaisakiCD = splits[7];
+                        Byte_Check(10, obj.SiharaisakiCD);
+                        obj.YuubinNO1 = splits[8];
+                        Byte_Check(3, obj.YuubinNO1);
+                        obj.YuubinNO2 = splits[9];
+                        Byte_Check(4, obj.YuubinNO2);
+                        obj.Juusho1 = splits[10];
+                        Byte_Check(80, obj.Juusho1);
+                        obj.Juusho2 = splits[11];
+                        Byte_Check(80, obj.Juusho2);
+                        obj.Tel11 = splits[12];
+                        Byte_Check(6, obj.Tel11);
+                        obj.Tel12 = splits[13];
+                        Byte_Check(5, obj.Tel12);
+                        obj.Tel13 = splits[14];
+                        Byte_Check(5, obj.Tel13);
+                        obj.Tel21 = splits[15];
+                        Byte_Check(6, obj.Tel21);
+                        obj.Tel22 = splits[16];
+                        Byte_Check(5, obj.Tel22);
+                        obj.Tel23 = splits[17];
+                        Byte_Check(5, obj.Tel23);
+                        obj.TantouBusho = splits[18];
+                        Byte_Check(40, obj.TantouBusho);
+                        obj.TantouYakushoku = splits[19];
+                        Byte_Check(40, obj.TantouYakushoku);
+                        obj.TantoushaName = splits[20];
+                        Byte_Check(40, obj.TantoushaName);
+                        obj.MailAddress = splits[21];
+                        Byte_Check(100, obj.MailAddress);
+                        obj.TuukaCD = splits[22];
+                        Byte_Check(3, obj.TuukaCD);
+                        obj.StaffCD = splits[23];
+                        Byte_Check(10, obj.StaffCD);
+                        obj.TorihikiKaisiDate = splits[24];
+                        //
+                        Date_Check(obj.TorihikiKaisiDate);
+                        obj.TorihikiShuuryouDate = splits[25];
+                        //
+                        Date_Check(obj.TorihikiShuuryouDate);
+
+                        obj.Remarks = splits[26];                        
+                        Byte_Check(80, obj.Remarks);
+
+                        //E101
+                        
+
                     }
                 }
             }
+        }
+
+        private void Byte_Check(int obj_len,string obj_text)
+        {
+            if (cf.IsByteLengthOver(obj_len, obj_text))
+                err.ShowErrorMessage("E142");
+        }
+        public void Date_Check(string csv_Date)
+        {
+
         }
     }
 }

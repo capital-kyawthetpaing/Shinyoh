@@ -227,6 +227,15 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
+            //if (sTextBox.E142)
+            //{
+            //    if (string.IsNullOrWhiteSpace(sTextBox.Text))
+            //    {
+            //        ShowErrorMessage("E142");
+            //        sTextBox.Focus();
+            //        return (true, rDt);
+            //    }
+            //}
             if (sTextBox.E166)
             {
                 if (!sTextBox.ctrlE166_1.Text.Equals(sTextBox.ctrlE166_2.Text))
