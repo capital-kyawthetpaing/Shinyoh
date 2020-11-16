@@ -186,7 +186,11 @@ namespace MasterTouroku_Siiresaki
                     else
                     {
                         SiiresakiBL bl = new SiiresakiBL();
-                        bl.CSV_M_Siiresaki_CUD(Xml);
+                        string chk_val = string.Empty;
+                        if (rdo_Registragion.Checked)
+                            chk_val = "create_update";
+                        else chk_val = "delete";
+                        bl.CSV_M_Siiresaki_CUD(Xml,chk_val);
                     }
                 }
 
@@ -557,7 +561,7 @@ namespace MasterTouroku_Siiresaki
                         if (dt.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             err.ShowErrorMessage("E101");
-                            bl_List.Add(true);
+                           // bl_List.Add(true);
                         }
 
                         string error = string.Empty;

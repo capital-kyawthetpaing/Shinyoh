@@ -76,11 +76,12 @@ namespace BL
             return dt;
         }
 
-        public string CSV_M_Siiresaki_CUD(string obj)
+        public string CSV_M_Siiresaki_CUD(string obj,string condition)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[1];
+            var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@xml", SqlDbType.Xml) { Value = obj };
+            parameters[1] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = condition };
             return ckmdl.InsertUpdateDeleteData("CSV_M_Siiresaki_CUD", GetConnectionString(), parameters);
         }
     }
