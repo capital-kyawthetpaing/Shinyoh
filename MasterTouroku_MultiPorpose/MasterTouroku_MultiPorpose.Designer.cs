@@ -62,27 +62,23 @@
             this.txtDate1 = new Shinyoh_Controls.STextBox();
             this.txtDate2 = new Shinyoh_Controls.STextBox();
             this.txtDate3 = new Shinyoh_Controls.STextBox();
-            this.sTextBox17 = new Shinyoh_Controls.STextBox();
+            this.txtCopyID = new Shinyoh_Controls.STextBox();
             this.txtKEYCopy = new Shinyoh_Controls.STextBox();
             this.panelDetails = new System.Windows.Forms.Panel();
+            this.panelTitle2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.panelDetails.SuspendLayout();
+            this.panelTitle2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtKEYCopy);
-            this.panel1.Controls.Add(this.sTextBox17);
-            this.panel1.Controls.Add(this.sLabel6);
-            this.panel1.Controls.Add(this.txtIDCopy);
+            this.panel1.Controls.Add(this.panelTitle2);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
             this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
             this.panel1.Controls.SetChildIndex(this.cboMode, 0);
-            this.panel1.Controls.SetChildIndex(this.txtIDCopy, 0);
-            this.panel1.Controls.SetChildIndex(this.sLabel6, 0);
-            this.panel1.Controls.SetChildIndex(this.sTextBox17, 0);
-            this.panel1.Controls.SetChildIndex(this.txtKEYCopy, 0);
+            this.panel1.Controls.SetChildIndex(this.panelTitle2, 0);
             // 
             // PanelTitle
             // 
@@ -127,7 +123,7 @@
             this.txtIDCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIDCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtIDCopy.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.txtIDCopy.Location = new System.Drawing.Point(706, 15);
+            this.txtIDCopy.Location = new System.Drawing.Point(21, 14);
             this.txtIDCopy.Name = "txtIDCopy";
             this.txtIDCopy.Size = new System.Drawing.Size(100, 19);
             this.txtIDCopy.TabIndex = 9;
@@ -140,7 +136,7 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(706, 46);
+            this.sLabel6.Location = new System.Drawing.Point(21, 45);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
             this.sLabel6.TabIndex = 10;
@@ -153,7 +149,7 @@
             this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel7.Location = new System.Drawing.Point(89, 13);
+            this.sLabel7.Location = new System.Drawing.Point(83, 13);
             this.sLabel7.Name = "sLabel7";
             this.sLabel7.Size = new System.Drawing.Size(100, 19);
             this.sLabel7.TabIndex = 3;
@@ -166,7 +162,7 @@
             this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel8.Location = new System.Drawing.Point(89, 42);
+            this.sLabel8.Location = new System.Drawing.Point(83, 42);
             this.sLabel8.Name = "sLabel8";
             this.sLabel8.Size = new System.Drawing.Size(100, 19);
             this.sLabel8.TabIndex = 4;
@@ -179,7 +175,7 @@
             this.sLabel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel9.Location = new System.Drawing.Point(90, 71);
+            this.sLabel9.Location = new System.Drawing.Point(84, 71);
             this.sLabel9.Name = "sLabel9";
             this.sLabel9.Size = new System.Drawing.Size(100, 19);
             this.sLabel9.TabIndex = 5;
@@ -192,7 +188,7 @@
             this.sLabel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel10.Location = new System.Drawing.Point(90, 101);
+            this.sLabel10.Location = new System.Drawing.Point(84, 101);
             this.sLabel10.Name = "sLabel10";
             this.sLabel10.Size = new System.Drawing.Size(100, 19);
             this.sLabel10.TabIndex = 6;
@@ -205,7 +201,7 @@
             this.sLabel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel11.Location = new System.Drawing.Point(90, 130);
+            this.sLabel11.Location = new System.Drawing.Point(84, 130);
             this.sLabel11.Name = "sLabel11";
             this.sLabel11.Size = new System.Drawing.Size(100, 19);
             this.sLabel11.TabIndex = 7;
@@ -218,7 +214,7 @@
             this.sLabel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel12.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel12.Location = new System.Drawing.Point(91, 161);
+            this.sLabel12.Location = new System.Drawing.Point(85, 161);
             this.sLabel12.Name = "sLabel12";
             this.sLabel12.Size = new System.Drawing.Size(100, 19);
             this.sLabel12.TabIndex = 8;
@@ -231,7 +227,7 @@
             this.sLabel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel13.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel13.Location = new System.Drawing.Point(91, 193);
+            this.sLabel13.Location = new System.Drawing.Point(85, 193);
             this.sLabel13.Name = "sLabel13";
             this.sLabel13.Size = new System.Drawing.Size(100, 19);
             this.sLabel13.TabIndex = 9;
@@ -244,7 +240,7 @@
             this.sLabel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel14.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel14.Location = new System.Drawing.Point(91, 227);
+            this.sLabel14.Location = new System.Drawing.Point(85, 227);
             this.sLabel14.Name = "sLabel14";
             this.sLabel14.Size = new System.Drawing.Size(100, 19);
             this.sLabel14.TabIndex = 10;
@@ -257,7 +253,7 @@
             this.sLabel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel15.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel15.Location = new System.Drawing.Point(91, 259);
+            this.sLabel15.Location = new System.Drawing.Point(85, 259);
             this.sLabel15.Name = "sLabel15";
             this.sLabel15.Size = new System.Drawing.Size(100, 19);
             this.sLabel15.TabIndex = 11;
@@ -270,7 +266,7 @@
             this.sLabel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel16.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel16.Location = new System.Drawing.Point(91, 291);
+            this.sLabel16.Location = new System.Drawing.Point(85, 291);
             this.sLabel16.Name = "sLabel16";
             this.sLabel16.Size = new System.Drawing.Size(100, 19);
             this.sLabel16.TabIndex = 12;
@@ -283,7 +279,7 @@
             this.sLabel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel17.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel17.Location = new System.Drawing.Point(91, 323);
+            this.sLabel17.Location = new System.Drawing.Point(85, 323);
             this.sLabel17.Name = "sLabel17";
             this.sLabel17.Size = new System.Drawing.Size(100, 19);
             this.sLabel17.TabIndex = 13;
@@ -296,7 +292,7 @@
             this.sLabel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel18.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel18.Location = new System.Drawing.Point(91, 354);
+            this.sLabel18.Location = new System.Drawing.Point(85, 354);
             this.sLabel18.Name = "sLabel18";
             this.sLabel18.Size = new System.Drawing.Size(100, 19);
             this.sLabel18.TabIndex = 14;
@@ -309,7 +305,7 @@
             this.sLabel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel19.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel19.Location = new System.Drawing.Point(91, 385);
+            this.sLabel19.Location = new System.Drawing.Point(85, 385);
             this.sLabel19.Name = "sLabel19";
             this.sLabel19.Size = new System.Drawing.Size(100, 19);
             this.sLabel19.TabIndex = 15;
@@ -322,7 +318,7 @@
             this.sLabel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel20.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel20.Location = new System.Drawing.Point(91, 417);
+            this.sLabel20.Location = new System.Drawing.Point(85, 417);
             this.sLabel20.Name = "sLabel20";
             this.sLabel20.Size = new System.Drawing.Size(100, 19);
             this.sLabel20.TabIndex = 16;
@@ -345,7 +341,7 @@
             this.txtID.MoveNext = true;
             this.txtID.Name = "txtID";
             this.txtID.NextControl = null;
-            this.txtID.NextControlName = null;
+            this.txtID.NextControlName = "txtKEY";
             this.txtID.SearchType = Entity.SearchType.ScType.None;
             this.txtID.Size = new System.Drawing.Size(100, 19);
             this.txtID.TabIndex = 2;
@@ -367,7 +363,7 @@
             this.txtKEY.MoveNext = true;
             this.txtKEY.Name = "txtKEY";
             this.txtKEY.NextControl = null;
-            this.txtKEY.NextControlName = null;
+            this.txtKEY.NextControlName = "txtIDName";
             this.txtKEY.SearchType = Entity.SearchType.ScType.None;
             this.txtKEY.Size = new System.Drawing.Size(250, 19);
             this.txtKEY.TabIndex = 3;
@@ -384,12 +380,12 @@
             this.txtIDName.IsDatatableOccurs = null;
             this.txtIDName.IsErrorOccurs = false;
             this.txtIDName.IsRequire = false;
-            this.txtIDName.Location = new System.Drawing.Point(189, 13);
+            this.txtIDName.Location = new System.Drawing.Point(183, 13);
             this.txtIDName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtIDName.MoveNext = true;
             this.txtIDName.Name = "txtIDName";
             this.txtIDName.NextControl = null;
-            this.txtIDName.NextControlName = null;
+            this.txtIDName.NextControlName = "txtChar1";
             this.txtIDName.SearchType = Entity.SearchType.ScType.None;
             this.txtIDName.Size = new System.Drawing.Size(100, 19);
             this.txtIDName.TabIndex = 17;
@@ -406,12 +402,12 @@
             this.txtChar1.IsDatatableOccurs = null;
             this.txtChar1.IsErrorOccurs = false;
             this.txtChar1.IsRequire = false;
-            this.txtChar1.Location = new System.Drawing.Point(189, 42);
+            this.txtChar1.Location = new System.Drawing.Point(183, 42);
             this.txtChar1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtChar1.MoveNext = true;
             this.txtChar1.Name = "txtChar1";
             this.txtChar1.NextControl = null;
-            this.txtChar1.NextControlName = null;
+            this.txtChar1.NextControlName = "txtChar2";
             this.txtChar1.SearchType = Entity.SearchType.ScType.None;
             this.txtChar1.Size = new System.Drawing.Size(100, 19);
             this.txtChar1.TabIndex = 18;
@@ -428,12 +424,12 @@
             this.txtChar2.IsDatatableOccurs = null;
             this.txtChar2.IsErrorOccurs = false;
             this.txtChar2.IsRequire = false;
-            this.txtChar2.Location = new System.Drawing.Point(190, 71);
+            this.txtChar2.Location = new System.Drawing.Point(184, 71);
             this.txtChar2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtChar2.MoveNext = true;
             this.txtChar2.Name = "txtChar2";
             this.txtChar2.NextControl = null;
-            this.txtChar2.NextControlName = null;
+            this.txtChar2.NextControlName = "txtChar3";
             this.txtChar2.SearchType = Entity.SearchType.ScType.None;
             this.txtChar2.Size = new System.Drawing.Size(100, 19);
             this.txtChar2.TabIndex = 19;
@@ -450,12 +446,12 @@
             this.txtChar3.IsDatatableOccurs = null;
             this.txtChar3.IsErrorOccurs = false;
             this.txtChar3.IsRequire = false;
-            this.txtChar3.Location = new System.Drawing.Point(190, 101);
+            this.txtChar3.Location = new System.Drawing.Point(184, 101);
             this.txtChar3.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtChar3.MoveNext = true;
             this.txtChar3.Name = "txtChar3";
             this.txtChar3.NextControl = null;
-            this.txtChar3.NextControlName = null;
+            this.txtChar3.NextControlName = "txtChar4";
             this.txtChar3.SearchType = Entity.SearchType.ScType.None;
             this.txtChar3.Size = new System.Drawing.Size(100, 19);
             this.txtChar3.TabIndex = 20;
@@ -472,12 +468,12 @@
             this.txtChar4.IsDatatableOccurs = null;
             this.txtChar4.IsErrorOccurs = false;
             this.txtChar4.IsRequire = false;
-            this.txtChar4.Location = new System.Drawing.Point(190, 130);
+            this.txtChar4.Location = new System.Drawing.Point(184, 130);
             this.txtChar4.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtChar4.MoveNext = true;
             this.txtChar4.Name = "txtChar4";
             this.txtChar4.NextControl = null;
-            this.txtChar4.NextControlName = null;
+            this.txtChar4.NextControlName = "txtChar5";
             this.txtChar4.SearchType = Entity.SearchType.ScType.None;
             this.txtChar4.Size = new System.Drawing.Size(100, 19);
             this.txtChar4.TabIndex = 21;
@@ -494,12 +490,12 @@
             this.txtChar5.IsDatatableOccurs = null;
             this.txtChar5.IsErrorOccurs = false;
             this.txtChar5.IsRequire = false;
-            this.txtChar5.Location = new System.Drawing.Point(191, 161);
+            this.txtChar5.Location = new System.Drawing.Point(185, 161);
             this.txtChar5.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtChar5.MoveNext = true;
             this.txtChar5.Name = "txtChar5";
             this.txtChar5.NextControl = null;
-            this.txtChar5.NextControlName = null;
+            this.txtChar5.NextControlName = "txtNum1";
             this.txtChar5.SearchType = Entity.SearchType.ScType.None;
             this.txtChar5.Size = new System.Drawing.Size(100, 19);
             this.txtChar5.TabIndex = 22;
@@ -516,12 +512,12 @@
             this.txtNum1.IsDatatableOccurs = null;
             this.txtNum1.IsErrorOccurs = false;
             this.txtNum1.IsRequire = false;
-            this.txtNum1.Location = new System.Drawing.Point(190, 193);
+            this.txtNum1.Location = new System.Drawing.Point(184, 193);
             this.txtNum1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum1.MoveNext = true;
             this.txtNum1.Name = "txtNum1";
             this.txtNum1.NextControl = null;
-            this.txtNum1.NextControlName = null;
+            this.txtNum1.NextControlName = "txtNum2";
             this.txtNum1.SearchType = Entity.SearchType.ScType.None;
             this.txtNum1.Size = new System.Drawing.Size(100, 19);
             this.txtNum1.TabIndex = 23;
@@ -538,12 +534,12 @@
             this.txtNum2.IsDatatableOccurs = null;
             this.txtNum2.IsErrorOccurs = false;
             this.txtNum2.IsRequire = false;
-            this.txtNum2.Location = new System.Drawing.Point(191, 227);
+            this.txtNum2.Location = new System.Drawing.Point(185, 227);
             this.txtNum2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum2.MoveNext = true;
             this.txtNum2.Name = "txtNum2";
             this.txtNum2.NextControl = null;
-            this.txtNum2.NextControlName = null;
+            this.txtNum2.NextControlName = "txtNum3";
             this.txtNum2.SearchType = Entity.SearchType.ScType.None;
             this.txtNum2.Size = new System.Drawing.Size(100, 19);
             this.txtNum2.TabIndex = 24;
@@ -560,12 +556,12 @@
             this.txtNum3.IsDatatableOccurs = null;
             this.txtNum3.IsErrorOccurs = false;
             this.txtNum3.IsRequire = false;
-            this.txtNum3.Location = new System.Drawing.Point(191, 259);
+            this.txtNum3.Location = new System.Drawing.Point(185, 259);
             this.txtNum3.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum3.MoveNext = true;
             this.txtNum3.Name = "txtNum3";
             this.txtNum3.NextControl = null;
-            this.txtNum3.NextControlName = null;
+            this.txtNum3.NextControlName = "txtNum4";
             this.txtNum3.SearchType = Entity.SearchType.ScType.None;
             this.txtNum3.Size = new System.Drawing.Size(100, 19);
             this.txtNum3.TabIndex = 25;
@@ -582,12 +578,12 @@
             this.txtNum4.IsDatatableOccurs = null;
             this.txtNum4.IsErrorOccurs = false;
             this.txtNum4.IsRequire = false;
-            this.txtNum4.Location = new System.Drawing.Point(191, 291);
+            this.txtNum4.Location = new System.Drawing.Point(185, 291);
             this.txtNum4.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum4.MoveNext = true;
             this.txtNum4.Name = "txtNum4";
             this.txtNum4.NextControl = null;
-            this.txtNum4.NextControlName = null;
+            this.txtNum4.NextControlName = "txtNum5";
             this.txtNum4.SearchType = Entity.SearchType.ScType.None;
             this.txtNum4.Size = new System.Drawing.Size(100, 19);
             this.txtNum4.TabIndex = 26;
@@ -604,12 +600,12 @@
             this.txtNum5.IsDatatableOccurs = null;
             this.txtNum5.IsErrorOccurs = false;
             this.txtNum5.IsRequire = false;
-            this.txtNum5.Location = new System.Drawing.Point(191, 323);
+            this.txtNum5.Location = new System.Drawing.Point(185, 323);
             this.txtNum5.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum5.MoveNext = true;
             this.txtNum5.Name = "txtNum5";
             this.txtNum5.NextControl = null;
-            this.txtNum5.NextControlName = null;
+            this.txtNum5.NextControlName = "txtDate1";
             this.txtNum5.SearchType = Entity.SearchType.ScType.None;
             this.txtNum5.Size = new System.Drawing.Size(100, 19);
             this.txtNum5.TabIndex = 27;
@@ -626,12 +622,12 @@
             this.txtDate1.IsDatatableOccurs = null;
             this.txtDate1.IsErrorOccurs = false;
             this.txtDate1.IsRequire = false;
-            this.txtDate1.Location = new System.Drawing.Point(191, 354);
+            this.txtDate1.Location = new System.Drawing.Point(185, 354);
             this.txtDate1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate1.MoveNext = true;
             this.txtDate1.Name = "txtDate1";
             this.txtDate1.NextControl = null;
-            this.txtDate1.NextControlName = null;
+            this.txtDate1.NextControlName = "txtDate2";
             this.txtDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtDate1.Size = new System.Drawing.Size(100, 19);
             this.txtDate1.TabIndex = 28;
@@ -648,12 +644,12 @@
             this.txtDate2.IsDatatableOccurs = null;
             this.txtDate2.IsErrorOccurs = false;
             this.txtDate2.IsRequire = false;
-            this.txtDate2.Location = new System.Drawing.Point(191, 385);
+            this.txtDate2.Location = new System.Drawing.Point(185, 385);
             this.txtDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate2.MoveNext = true;
             this.txtDate2.Name = "txtDate2";
             this.txtDate2.NextControl = null;
-            this.txtDate2.NextControlName = null;
+            this.txtDate2.NextControlName = "txtDate3";
             this.txtDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtDate2.Size = new System.Drawing.Size(100, 19);
             this.txtDate2.TabIndex = 29;
@@ -670,7 +666,7 @@
             this.txtDate3.IsDatatableOccurs = null;
             this.txtDate3.IsErrorOccurs = false;
             this.txtDate3.IsRequire = false;
-            this.txtDate3.Location = new System.Drawing.Point(191, 417);
+            this.txtDate3.Location = new System.Drawing.Point(185, 417);
             this.txtDate3.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate3.MoveNext = true;
             this.txtDate3.Name = "txtDate3";
@@ -681,27 +677,27 @@
             this.txtDate3.TabIndex = 30;
             this.txtDate3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
-            // sTextBox17
+            // txtCopyID
             // 
-            this.sTextBox17.AllowMinus = false;
-            this.sTextBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sTextBox17.DecimalPlace = 0;
-            this.sTextBox17.DepandOnMode = true;
-            this.sTextBox17.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.sTextBox17.IntegerPart = 0;
-            this.sTextBox17.IsDatatableOccurs = null;
-            this.sTextBox17.IsErrorOccurs = false;
-            this.sTextBox17.IsRequire = false;
-            this.sTextBox17.Location = new System.Drawing.Point(805, 15);
-            this.sTextBox17.MinimumSize = new System.Drawing.Size(100, 19);
-            this.sTextBox17.MoveNext = true;
-            this.sTextBox17.Name = "sTextBox17";
-            this.sTextBox17.NextControl = null;
-            this.sTextBox17.NextControlName = null;
-            this.sTextBox17.SearchType = Entity.SearchType.ScType.None;
-            this.sTextBox17.Size = new System.Drawing.Size(100, 19);
-            this.sTextBox17.TabIndex = 11;
-            this.sTextBox17.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtCopyID.AllowMinus = false;
+            this.txtCopyID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCopyID.DecimalPlace = 0;
+            this.txtCopyID.DepandOnMode = true;
+            this.txtCopyID.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtCopyID.IntegerPart = 0;
+            this.txtCopyID.IsDatatableOccurs = null;
+            this.txtCopyID.IsErrorOccurs = false;
+            this.txtCopyID.IsRequire = false;
+            this.txtCopyID.Location = new System.Drawing.Point(120, 14);
+            this.txtCopyID.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtCopyID.MoveNext = true;
+            this.txtCopyID.Name = "txtCopyID";
+            this.txtCopyID.NextControl = null;
+            this.txtCopyID.NextControlName = null;
+            this.txtCopyID.SearchType = Entity.SearchType.ScType.None;
+            this.txtCopyID.Size = new System.Drawing.Size(100, 19);
+            this.txtCopyID.TabIndex = 11;
+            this.txtCopyID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtKEYCopy
             // 
@@ -714,7 +710,7 @@
             this.txtKEYCopy.IsDatatableOccurs = null;
             this.txtKEYCopy.IsErrorOccurs = false;
             this.txtKEYCopy.IsRequire = false;
-            this.txtKEYCopy.Location = new System.Drawing.Point(805, 46);
+            this.txtKEYCopy.Location = new System.Drawing.Point(120, 45);
             this.txtKEYCopy.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKEYCopy.MoveNext = true;
             this.txtKEYCopy.Name = "txtKEYCopy";
@@ -760,6 +756,17 @@
             this.panelDetails.Size = new System.Drawing.Size(1480, 700);
             this.panelDetails.TabIndex = 31;
             // 
+            // panelTitle2
+            // 
+            this.panelTitle2.Controls.Add(this.txtKEYCopy);
+            this.panelTitle2.Controls.Add(this.txtCopyID);
+            this.panelTitle2.Controls.Add(this.txtIDCopy);
+            this.panelTitle2.Controls.Add(this.sLabel6);
+            this.panelTitle2.Location = new System.Drawing.Point(695, 1);
+            this.panelTitle2.Name = "panelTitle2";
+            this.panelTitle2.Size = new System.Drawing.Size(480, 75);
+            this.panelTitle2.TabIndex = 9;
+            // 
             // MasterTouroku_MultiPorpose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -775,6 +782,7 @@
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
             this.panelDetails.ResumeLayout(false);
+            this.panelTitle2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -817,8 +825,9 @@
         private Shinyoh_Controls.STextBox txtDate2;
         private Shinyoh_Controls.STextBox txtDate3;
         private Shinyoh_Controls.STextBox txtKEYCopy;
-        private Shinyoh_Controls.STextBox sTextBox17;
+        private Shinyoh_Controls.STextBox txtCopyID;
         private System.Windows.Forms.Panel panelDetails;
+        private System.Windows.Forms.Panel panelTitle2;
     }
 }
 
