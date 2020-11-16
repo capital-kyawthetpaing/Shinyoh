@@ -30,8 +30,6 @@
         {
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
-            this.txtIDCopy = new Shinyoh_Controls.SLabel();
-            this.sLabel6 = new Shinyoh_Controls.SLabel();
             this.sLabel7 = new Shinyoh_Controls.SLabel();
             this.sLabel8 = new Shinyoh_Controls.SLabel();
             this.sLabel9 = new Shinyoh_Controls.SLabel();
@@ -62,30 +60,31 @@
             this.txtDate1 = new Shinyoh_Controls.STextBox();
             this.txtDate2 = new Shinyoh_Controls.STextBox();
             this.txtDate3 = new Shinyoh_Controls.STextBox();
+            this.panelDetails = new System.Windows.Forms.Panel();
+            this.sLabel6 = new Shinyoh_Controls.SLabel();
+            this.txtIDCopy = new Shinyoh_Controls.SLabel();
             this.txtCopyID = new Shinyoh_Controls.STextBox();
             this.txtKEYCopy = new Shinyoh_Controls.STextBox();
-            this.panelDetails = new System.Windows.Forms.Panel();
-            this.panelTitle2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.panelDetails.SuspendLayout();
-            this.panelTitle2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.panelTitle2);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
-            this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
-            this.panel1.Controls.SetChildIndex(this.cboMode, 0);
-            this.panel1.Controls.SetChildIndex(this.panelTitle2, 0);
             // 
             // PanelTitle
             // 
+            this.PanelTitle.Controls.Add(this.txtKEYCopy);
+            this.PanelTitle.Controls.Add(this.txtCopyID);
             this.PanelTitle.Controls.Add(this.txtKEY);
+            this.PanelTitle.Controls.Add(this.txtIDCopy);
             this.PanelTitle.Controls.Add(this.txtID);
+            this.PanelTitle.Controls.Add(this.sLabel6);
             this.PanelTitle.Controls.Add(this.sLabel4);
             this.PanelTitle.Controls.Add(this.sLabel3);
+            this.PanelTitle.Size = new System.Drawing.Size(1000, 75);
             // 
             // cboMode
             // 
@@ -116,32 +115,6 @@
             this.sLabel4.TabIndex = 1;
             this.sLabel4.Text = "KEY";
             this.sLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtIDCopy
-            // 
-            this.txtIDCopy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.txtIDCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIDCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.txtIDCopy.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.txtIDCopy.Location = new System.Drawing.Point(21, 14);
-            this.txtIDCopy.Name = "txtIDCopy";
-            this.txtIDCopy.Size = new System.Drawing.Size(100, 19);
-            this.txtIDCopy.TabIndex = 9;
-            this.txtIDCopy.Text = "複写元ID";
-            this.txtIDCopy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // sLabel6
-            // 
-            this.sLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(21, 45);
-            this.sLabel6.Name = "sLabel6";
-            this.sLabel6.Size = new System.Drawing.Size(100, 19);
-            this.sLabel6.TabIndex = 10;
-            this.sLabel6.Text = "複写元KEY";
-            this.sLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sLabel7
             // 
@@ -363,11 +336,12 @@
             this.txtKEY.MoveNext = true;
             this.txtKEY.Name = "txtKEY";
             this.txtKEY.NextControl = null;
-            this.txtKEY.NextControlName = "txtIDName";
+            this.txtKEY.NextControlName = "txtCopyID";
             this.txtKEY.SearchType = Entity.SearchType.ScType.None;
             this.txtKEY.Size = new System.Drawing.Size(250, 19);
             this.txtKEY.TabIndex = 3;
             this.txtKEY.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtKEY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKEY_KeyDown);
             // 
             // txtIDName
             // 
@@ -677,50 +651,6 @@
             this.txtDate3.TabIndex = 30;
             this.txtDate3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
-            // txtCopyID
-            // 
-            this.txtCopyID.AllowMinus = false;
-            this.txtCopyID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopyID.DecimalPlace = 0;
-            this.txtCopyID.DepandOnMode = true;
-            this.txtCopyID.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCopyID.IntegerPart = 0;
-            this.txtCopyID.IsDatatableOccurs = null;
-            this.txtCopyID.IsErrorOccurs = false;
-            this.txtCopyID.IsRequire = false;
-            this.txtCopyID.Location = new System.Drawing.Point(120, 14);
-            this.txtCopyID.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtCopyID.MoveNext = true;
-            this.txtCopyID.Name = "txtCopyID";
-            this.txtCopyID.NextControl = null;
-            this.txtCopyID.NextControlName = null;
-            this.txtCopyID.SearchType = Entity.SearchType.ScType.None;
-            this.txtCopyID.Size = new System.Drawing.Size(100, 19);
-            this.txtCopyID.TabIndex = 11;
-            this.txtCopyID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            // 
-            // txtKEYCopy
-            // 
-            this.txtKEYCopy.AllowMinus = false;
-            this.txtKEYCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtKEYCopy.DecimalPlace = 0;
-            this.txtKEYCopy.DepandOnMode = true;
-            this.txtKEYCopy.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtKEYCopy.IntegerPart = 0;
-            this.txtKEYCopy.IsDatatableOccurs = null;
-            this.txtKEYCopy.IsErrorOccurs = false;
-            this.txtKEYCopy.IsRequire = false;
-            this.txtKEYCopy.Location = new System.Drawing.Point(120, 45);
-            this.txtKEYCopy.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtKEYCopy.MoveNext = true;
-            this.txtKEYCopy.Name = "txtKEYCopy";
-            this.txtKEYCopy.NextControl = null;
-            this.txtKEYCopy.NextControlName = null;
-            this.txtKEYCopy.SearchType = Entity.SearchType.ScType.None;
-            this.txtKEYCopy.Size = new System.Drawing.Size(250, 19);
-            this.txtKEYCopy.TabIndex = 12;
-            this.txtKEYCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
             // panelDetails
             // 
             this.panelDetails.Controls.Add(this.txtDate3);
@@ -756,16 +686,75 @@
             this.panelDetails.Size = new System.Drawing.Size(1480, 700);
             this.panelDetails.TabIndex = 31;
             // 
-            // panelTitle2
+            // sLabel6
             // 
-            this.panelTitle2.Controls.Add(this.txtKEYCopy);
-            this.panelTitle2.Controls.Add(this.txtCopyID);
-            this.panelTitle2.Controls.Add(this.txtIDCopy);
-            this.panelTitle2.Controls.Add(this.sLabel6);
-            this.panelTitle2.Location = new System.Drawing.Point(695, 1);
-            this.panelTitle2.Name = "panelTitle2";
-            this.panelTitle2.Size = new System.Drawing.Size(480, 75);
-            this.panelTitle2.TabIndex = 9;
+            this.sLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel6.Location = new System.Drawing.Point(527, 47);
+            this.sLabel6.Name = "sLabel6";
+            this.sLabel6.Size = new System.Drawing.Size(100, 19);
+            this.sLabel6.TabIndex = 10;
+            this.sLabel6.Text = "複写元KEY";
+            this.sLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtIDCopy
+            // 
+            this.txtIDCopy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.txtIDCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIDCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.txtIDCopy.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.txtIDCopy.Location = new System.Drawing.Point(529, 15);
+            this.txtIDCopy.Name = "txtIDCopy";
+            this.txtIDCopy.Size = new System.Drawing.Size(100, 19);
+            this.txtIDCopy.TabIndex = 9;
+            this.txtIDCopy.Text = "複写元ID";
+            this.txtIDCopy.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtCopyID
+            // 
+            this.txtCopyID.AllowMinus = false;
+            this.txtCopyID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCopyID.DecimalPlace = 0;
+            this.txtCopyID.DepandOnMode = true;
+            this.txtCopyID.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtCopyID.IntegerPart = 0;
+            this.txtCopyID.IsDatatableOccurs = null;
+            this.txtCopyID.IsErrorOccurs = false;
+            this.txtCopyID.IsRequire = false;
+            this.txtCopyID.Location = new System.Drawing.Point(626, 15);
+            this.txtCopyID.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtCopyID.MoveNext = true;
+            this.txtCopyID.Name = "txtCopyID";
+            this.txtCopyID.NextControl = null;
+            this.txtCopyID.NextControlName = "txtKEYCopy";
+            this.txtCopyID.SearchType = Entity.SearchType.ScType.None;
+            this.txtCopyID.Size = new System.Drawing.Size(100, 19);
+            this.txtCopyID.TabIndex = 11;
+            this.txtCopyID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            // 
+            // txtKEYCopy
+            // 
+            this.txtKEYCopy.AllowMinus = false;
+            this.txtKEYCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtKEYCopy.DecimalPlace = 0;
+            this.txtKEYCopy.DepandOnMode = true;
+            this.txtKEYCopy.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtKEYCopy.IntegerPart = 0;
+            this.txtKEYCopy.IsDatatableOccurs = null;
+            this.txtKEYCopy.IsErrorOccurs = false;
+            this.txtKEYCopy.IsRequire = false;
+            this.txtKEYCopy.Location = new System.Drawing.Point(626, 47);
+            this.txtKEYCopy.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtKEYCopy.MoveNext = true;
+            this.txtKEYCopy.Name = "txtKEYCopy";
+            this.txtKEYCopy.NextControl = null;
+            this.txtKEYCopy.NextControlName = "txtIDName";
+            this.txtKEYCopy.SearchType = Entity.SearchType.ScType.None;
+            this.txtKEYCopy.Size = new System.Drawing.Size(250, 19);
+            this.txtKEYCopy.TabIndex = 12;
+            this.txtKEYCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // MasterTouroku_MultiPorpose
             // 
@@ -782,16 +771,12 @@
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
             this.panelDetails.ResumeLayout(false);
-            this.panelTitle2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private Shinyoh_Controls.SLabel sLabel6;
-        private Shinyoh_Controls.SLabel txtIDCopy;
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.SLabel sLabel3;
         private Shinyoh_Controls.SLabel sLabel7;
@@ -824,10 +809,11 @@
         private Shinyoh_Controls.STextBox txtDate1;
         private Shinyoh_Controls.STextBox txtDate2;
         private Shinyoh_Controls.STextBox txtDate3;
-        private Shinyoh_Controls.STextBox txtKEYCopy;
-        private Shinyoh_Controls.STextBox txtCopyID;
         private System.Windows.Forms.Panel panelDetails;
-        private System.Windows.Forms.Panel panelTitle2;
+        private Shinyoh_Controls.STextBox txtKEYCopy;
+        private Shinyoh_Controls.SLabel sLabel6;
+        private Shinyoh_Controls.STextBox txtCopyID;
+        private Shinyoh_Controls.SLabel txtIDCopy;
     }
 }
 

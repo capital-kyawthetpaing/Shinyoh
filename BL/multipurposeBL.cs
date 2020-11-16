@@ -42,7 +42,7 @@ namespace BL
         {
             ckmdl = new CKMDL();
             multipurpose_entity.Sqlprms = new SqlParameter[22];
-            multipurpose_entity.Sqlprms[0] = new SqlParameter("@id", DbType.Int32) { Value = multipurpose_entity.id };
+            multipurpose_entity.Sqlprms[0] = new SqlParameter("@id", DbType.Int32) { Value = multipurpose_entity.ID };
             multipurpose_entity.Sqlprms[1] = new SqlParameter("@Key", DbType.Int32) { Value = multipurpose_entity.Key };
             multipurpose_entity.Sqlprms[2] = new SqlParameter("@IdName", SqlDbType.VarChar) { Value = multipurpose_entity.IdName };
             multipurpose_entity.Sqlprms[3] = new SqlParameter("@Char1", SqlDbType.VarChar) { Value = multipurpose_entity.Char1 };
@@ -79,5 +79,15 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("M_Multiporpose_Search", GetConnectionString(), multipurpose_entity.Sqlprms);
             return dt;
         }
+
+       public DataTable M_Multiporpose_SelectData(string Id,string Key)
+       {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@Id", DbType.Int32) { Value = Id };
+            parameters[1] = new SqlParameter("@Key", DbType.Int32) { Value = Key };
+            DataTable dt = ckmdl.SelectDatatable("M_Multiporpose_SelectData", GetConnectionString(), parameters);
+            return dt;
+       }
     }
 }

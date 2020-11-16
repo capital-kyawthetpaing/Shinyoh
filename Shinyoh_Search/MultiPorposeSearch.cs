@@ -40,6 +40,7 @@ namespace Shinyoh_Search
             if (tagID == "3")
             {
                 DataGridViewRow row = gvMultiporpose.CurrentRow;
+                GetGridviewData(row);
             }
             base.FunctionProcess(tagID);
         }
@@ -63,6 +64,10 @@ namespace Shinyoh_Search
                 
                 this.Close();
             }
+        }
+        private void gvMultiporpose_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            GetGridviewData(gvMultiporpose.Rows[e.RowIndex]);
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
