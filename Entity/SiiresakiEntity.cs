@@ -11,7 +11,7 @@ namespace Entity
         //Total count 30
         public string SiiresakiCD { get; set; } // --仕入先CD
         public string ChangeDate { get; set; } //--改定日
-        public int ShokutiFLG { get; set; } //--諸口区分[1:諸口]
+        public string ShokutiFLG { get; set; } //--諸口区分[1:諸口]
         public string SiiresakiName { get; set; } //--仕入先名
         public string SiiresakiRyakuName { get; set; }  //--略名
         public string KanaName { get; set; }// --カナ名

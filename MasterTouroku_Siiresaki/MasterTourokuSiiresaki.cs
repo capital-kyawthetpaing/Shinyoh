@@ -247,7 +247,7 @@ namespace MasterTouroku_Siiresaki
             SiiresakiEntity obj = new SiiresakiEntity();
             obj.SiiresakiCD = txtSupplierCD.Text;
             obj.ChangeDate = txtChangeDate.Text;
-            obj.ShokutiFLG = chk_Flag.Checked ? 1 : 0;
+            obj.ShokutiFLG = chk_Flag.Checked ? "1" : "0";
             obj.SiiresakiName = txtSupplierName.Text;
             obj.SiiresakiRyakuName = txtShort_Name.Text;
             obj.KanaName = txtLong_Name.Text;
@@ -455,13 +455,13 @@ namespace MasterTouroku_Siiresaki
                         bl_List.Add(Date_Check(obj.ChangeDate));
                         
                         //
-                        obj.ShokutiFLG = Convert.ToInt32(splits[2]);
-                        if (!(obj.ShokutiFLG == 0 || obj.ShokutiFLG == 1))
+                        obj.ShokutiFLG = string.IsNullOrEmpty(splits[2])? "" : splits[2];
+                        bl_List.Add(Null_Check(obj.ShokutiFLG));
+                        if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
                             err.ShowErrorMessage("E117");
                             bl_List.Add(true);
                         }
-                        bl_List.Add(Null_Check(obj.ShokutiFLG.ToString()));
                         //
                         obj.SiiresakiName = splits[3];
                         bl_List.Add(Null_Check(obj.SiiresakiName));
@@ -569,7 +569,7 @@ namespace MasterTouroku_Siiresaki
                         if (dt.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             err.ShowErrorMessage("E101");
-                            bl_List.Add(true);
+                           // bl_List.Add(true);
                         }
 
                         string error = string.Empty;
@@ -597,6 +597,7 @@ namespace MasterTouroku_Siiresaki
             }
             return Xml;
         }
+
         private bool Null_Check(string obj_text)
         {
             bool bl = false;

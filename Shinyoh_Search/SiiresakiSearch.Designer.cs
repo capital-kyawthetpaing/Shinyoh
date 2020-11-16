@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.rdo_All = new Shinyoh_Controls.SRadio();
             this.rdo_Date = new Shinyoh_Controls.SRadio();
@@ -332,10 +332,10 @@
             // colChangeDate
             // 
             this.colChangeDate.DataPropertyName = "ChangeDate";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "yyyy/MM/dd";
-            dataGridViewCellStyle4.NullValue = null;
-            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "yyyy/MM/dd";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.Width = 200;
