@@ -568,6 +568,9 @@ namespace MasterTouroku_Siiresaki
                         DataRow dr = create_dt.NewRow();
                         for (int j=0;j<splits.Length;j++)
                         {
+                            if (string.IsNullOrEmpty(splits[j]))
+                                dr[j] = DBNull.Value;
+                            else
                             dr[j] = splits[j].ToString();
                         }
                         dr[27] = "0";
