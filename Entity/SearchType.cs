@@ -13,7 +13,8 @@ namespace Entity {
            Staff,
            Denpyou,
            Siiresaki,
-           Tokuisaki
+           Tokuisaki,
+           multiporpose
         }
     }
 }

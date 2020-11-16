@@ -41,9 +41,9 @@
             this.sLabel2 = new Shinyoh_Controls.SLabel();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
             this.gvMultiporpose = new Shinyoh_Controls.SGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvMultiporpose)).BeginInit();
             this.SuspendLayout();
@@ -255,32 +255,35 @@
             this.gvMultiporpose.AllowUserToAddRows = false;
             this.gvMultiporpose.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvMultiporpose.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
+            this.colID,
+            this.colKey,
+            this.colName});
             this.gvMultiporpose.Location = new System.Drawing.Point(24, 133);
             this.gvMultiporpose.Name = "gvMultiporpose";
             this.gvMultiporpose.Size = new System.Drawing.Size(720, 302);
             this.gvMultiporpose.TabIndex = 3;
             this.gvMultiporpose.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvMultiporpose_CellMouseDoubleClick);
             // 
-            // Column1
+            // colID
             // 
-            this.Column1.HeaderText = "ID";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 110;
+            this.colID.DataPropertyName = "ID";
+            this.colID.HeaderText = "ID";
+            this.colID.Name = "colID";
+            this.colID.Width = 110;
             // 
-            // Column2
+            // colKey
             // 
-            this.Column2.HeaderText = "KEY";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 280;
+            this.colKey.DataPropertyName = "Key";
+            this.colKey.HeaderText = "KEY";
+            this.colKey.Name = "colKey";
+            this.colKey.Width = 280;
             // 
-            // Column3
+            // colName
             // 
-            this.Column3.HeaderText = "ID名";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 280;
+            this.colName.DataPropertyName = "IDName";
+            this.colName.HeaderText = "ID名";
+            this.colName.Name = "colName";
+            this.colName.Width = 280;
             // 
             // MultiPorposeSearch
             // 
@@ -315,9 +318,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private Shinyoh_Controls.SGridView gvMultiporpose;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private Shinyoh_Controls.SButton btnDisplay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colKey;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
     }
 }
