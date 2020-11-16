@@ -335,8 +335,8 @@
             this.txtKEY.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKEY.MoveNext = true;
             this.txtKEY.Name = "txtKEY";
-            this.txtKEY.NextControl = this.txtIDName;
-            this.txtKEY.NextControlName = "txtIDName";
+            this.txtKEY.NextControl = null;
+            this.txtKEY.NextControlName = "txtCopyID";
             this.txtKEY.SearchType = Entity.SearchType.ScType.None;
             this.txtKEY.Size = new System.Drawing.Size(250, 19);
             this.txtKEY.TabIndex = 3;
@@ -750,7 +750,7 @@
             this.txtKEYCopy.MoveNext = true;
             this.txtKEYCopy.Name = "txtKEYCopy";
             this.txtKEYCopy.NextControl = null;
-            this.txtKEYCopy.NextControlName = null;
+            this.txtKEYCopy.NextControlName = "txtIDName";
             this.txtKEYCopy.SearchType = Entity.SearchType.ScType.None;
             this.txtKEYCopy.Size = new System.Drawing.Size(250, 19);
             this.txtKEYCopy.TabIndex = 12;
