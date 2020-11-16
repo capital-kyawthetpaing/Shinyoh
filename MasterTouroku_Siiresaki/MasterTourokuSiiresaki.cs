@@ -561,7 +561,7 @@ namespace MasterTouroku_Siiresaki
                         if (dt.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             err.ShowErrorMessage("E101");
-                           // bl_List.Add(true);
+                            bl_List.Add(true);
                         }
 
                         string error = string.Empty;
