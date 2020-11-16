@@ -67,6 +67,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MultiPorposeSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MultiPorposeSearch.Designer.cs">
+      <DependentUpon>MultiPorposeSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchBox.cs">
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DenpyouNoSearch.resx">
       <DependentUpon>DenpyouNoSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MultiPorposeSearch.resx">
+      <DependentUpon>MultiPorposeSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
