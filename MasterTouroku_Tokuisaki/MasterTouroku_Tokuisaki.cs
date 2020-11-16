@@ -17,11 +17,13 @@ namespace MasterTouroku_Tokuisaki {
     public partial class MasterTouroku_Tokuisaki : BaseForm {
         BaseEntity base_Entity;
         CommonFunction cf;
+        BaseBL bl;
 
         public MasterTouroku_Tokuisaki()
         {
             InitializeComponent();
             cf = new CommonFunction();
+            bl= new BaseBL();
         }
 
         private void MasterTouroku_Tokuisaki_Load(object sender, EventArgs e)
@@ -200,16 +202,28 @@ namespace MasterTouroku_Tokuisaki {
 
             if (cboMode.SelectedValue.Equals("1"))
             {
+                if (bl.ShowMessage("Q101") != DialogResult.Yes)
+                {
+                    PreviousCtrl.Focus();
+                }
                 tokuisaki.Mode = "New";
                 DoInsert(tokuisaki);
             }
             else if (cboMode.SelectedValue.Equals("2"))
             {
+                if (bl.ShowMessage("Q101") != DialogResult.Yes)
+                {
+                    PreviousCtrl.Focus();
+                }
                 tokuisaki.Mode = "Update";
                 DoUpdate(tokuisaki);
             }
             else if (cboMode.SelectedValue.Equals("3"))
             {
+                if (bl.ShowMessage("Q102") != DialogResult.Yes)
+                {
+                    PreviousCtrl.Focus();
+                }
                 tokuisaki.Mode = "Delete";
                 DoDelete(tokuisaki);
             }
