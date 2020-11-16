@@ -262,6 +262,7 @@
             this.gvMultiporpose.Name = "gvMultiporpose";
             this.gvMultiporpose.Size = new System.Drawing.Size(720, 302);
             this.gvMultiporpose.TabIndex = 3;
+            this.gvMultiporpose.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvMultiporpose_CellMouseDoubleClick);
             // 
             // Column1
             // 
