@@ -18,6 +18,7 @@ namespace MasterTouroku_Siiresaki
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
         ErrorCheck err = new ErrorCheck();
+
         
         public MasterTourokuSiiresaki()
         {
@@ -459,7 +460,9 @@ namespace MasterTouroku_Siiresaki
                         bl_List.Add(Null_Check(obj.ShokutiFLG));
                         if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
-                            err.ShowErrorMessage("E117");
+                            BaseBL bbl = new BaseBL();
+                            bbl.ShowMessage("E117","0","1");
+                           // err.ShowErrorMessage("E117");
                             bl_List.Add(true);
                         }
                         //
@@ -569,7 +572,7 @@ namespace MasterTouroku_Siiresaki
                         if (dt.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             err.ShowErrorMessage("E101");
-                           // bl_List.Add(true);
+                            bl_List.Add(true);
                         }
 
                         string error = string.Empty;
