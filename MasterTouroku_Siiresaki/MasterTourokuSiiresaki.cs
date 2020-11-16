@@ -18,6 +18,7 @@ namespace MasterTouroku_Siiresaki
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
         ErrorCheck err = new ErrorCheck();
+        
         public MasterTourokuSiiresaki()
         {
             InitializeComponent();
@@ -175,9 +176,20 @@ namespace MasterTouroku_Siiresaki
             {
                 if(ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
                 {
-                    ChooseFile();
+                    string Xml= ChooseFile();
+
+                    BaseBL bbl=new BaseBL();
+                    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                    {
+                        PreviousCtrl.Focus();
+                    }
+                    else
+                    {
+                        SiiresakiBL bl = new SiiresakiBL();
+                        bl.CSV_M_Siiresaki_CUD(Xml);
+                    }
                 }
-                
+
             }
             if (tagID == "12")
             {
@@ -406,40 +418,12 @@ namespace MasterTouroku_Siiresaki
             }
         }
 
-        private void ChooseFile()
+        private string ChooseFile()
         {
 
-            var filePath = string.Empty;
-            List<string> lst_SiiresakiCD = new List<string>();
-            List<string> lst_ChangeDate = new List<string>();
-            List<string> lst_ShokutiFLG = new List<string>();
-            List<string> lst_SiiresakiName = new List<string>();
-            List<string> lst_SiiresakiRyakuName = new List<string>();
-            List<string> lst_KanaName = new List<string>();
-            List<string> lst_KensakuHyouziJun = new List<string>();
-            List<string> lst_SiharaisakiCD = new List<string>();
-            List<string> lst_YuubinNO1 = new List<string>();
-            List<string> lst_YuubinNO2 = new List<string>();
-            List<string> lst_Juusho1 = new List<string>();
-            List<string> lst_Juusho2 = new List<string>();
-            List<string> lst_Tel11 = new List<string>();
-            List<string> lst_Tel12 = new List<string>();
-            List<string> lst_Tel13 = new List<string>();
-            List<string> lst_Tel21 = new List<string>();
-            List<string> lst_Tel22 = new List<string>();
-            List<string> lst_Tel23 = new List<string>();
-            List<string> lst_TantouBusho = new List<string>();
-            List<string> lst_TantouYakushoku = new List<string>();
-            List<string> lst_TantoushaName = new List<string>();
-            List<string> lst_MailAddress = new List<string>();
-            List<string> lst_TuukaCD = new List<string>();
-            List<string> lst_StaffCD = new List<string>();
-            List<string> lst_TorihikiKaisiDate = new List<string>();
-            List<string> lst_TorihikiShuuryouDate = new List<string>();
-            List<string> lst_Remarks = new List<string>();
-
-           
+            var filePath = string.Empty;            
             SiiresakiEntity obj = new SiiresakiEntity();
+            string Xml = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "C:\\Shinyoh\\CSV Folder\\";
@@ -447,118 +431,214 @@ namespace MasterTouroku_Siiresaki
                 openFileDialog.Filter = "csv files (*.csv)|*.csv";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
-
+                DataTable create_dt = new DataTable();
+                Create_Datatable_Column(create_dt);
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
                     string[] csvRows = File.ReadAllLines(filePath);
+                    var bl_List = new List<bool>(28);
                     for (int i = 1; i < csvRows.Length; i++)
                     {
                         var splits = csvRows[i].Split(',');
-                        //lst_SiiresakiCD.Add(splits[0]);
-                        //lst_ChangeDate.Add(splits[1]);
-                        //lst_ShokutiFLG.Add(splits[2]);
-                        //lst_SiiresakiName.Add(splits[3]);
-                        //lst_SiiresakiRyakuName.Add(splits[4]);
-                        //lst_KanaName.Add(splits[5]);
-                        //lst_KensakuHyouziJun.Add(splits[6]);
-                        //lst_SiharaisakiCD.Add(splits[7]);
-                        //lst_YuubinNO1.Add(splits[8]);
-                        //lst_YuubinNO2.Add(splits[9]);
-                        //lst_Juusho1.Add(splits[10]);
-                        //lst_Juusho2.Add(splits[11]);
-                        //lst_Tel11.Add(splits[12]);
-                        //lst_Tel12.Add(splits[13]);
-                        //lst_Tel13.Add(splits[14]);
-                        //lst_Tel21.Add(splits[15]);
-                        //lst_Tel22.Add(splits[16]);
-                        //lst_Tel23.Add(splits[17]);
-                        //lst_TantouBusho.Add(splits[18]);
-                        //lst_TantouYakushoku.Add(splits[19]);
-                        //lst_TantoushaName.Add(splits[20]);
-                        //lst_MailAddress.Add(splits[21]);
-                        //lst_TuukaCD.Add(splits[22]);
-                        //lst_StaffCD.Add(splits[23]);
-                        //lst_TorihikiKaisiDate.Add(splits[24]);
-                        //lst_TorihikiShuuryouDate.Add(splits[25]);
-                        //lst_Remarks.Add(splits[26]);
-
-
                         obj.SiiresakiCD = splits[0];
-                        Byte_Check(10, obj.SiiresakiCD);
+                        bl_List.Add(Byte_Check(10, obj.SiiresakiCD));
+                        
+                        //
                         obj.ChangeDate = splits[1];
-                        Date_Check(obj.ChangeDate);
+                        bl_List.Add(Date_Check(obj.ChangeDate));
+                        
+                        //
                         obj.ShokutiFLG = Convert.ToInt32(splits[2]);
                         if (!(obj.ShokutiFLG == 0 || obj.ShokutiFLG == 1))
+                        {
                             err.ShowErrorMessage("E117");
+                            bl_List.Add(false);
+                        }                       
+                        //
                         obj.SiiresakiName = splits[3];
-                        Byte_Check(80, obj.SiiresakiName);
-                        obj.SiiresakiRyakuName = splits[4];
-                        Byte_Check(40, obj.SiiresakiRyakuName);
-                        obj.KanaName = splits[5];
-                        Byte_Check(80, obj.KanaName);
-                        //obj.KensakuHyouziJun = splits[6];
-                        //Byte_Check(obj.KensakuHyouziJun.Length, obj.KensakuHyouziJun);
-                        obj.SiharaisakiCD = splits[7];
-                        Byte_Check(10, obj.SiharaisakiCD);
-                        obj.YuubinNO1 = splits[8];
-                        Byte_Check(3, obj.YuubinNO1);
-                        obj.YuubinNO2 = splits[9];
-                        Byte_Check(4, obj.YuubinNO2);
-                        obj.Juusho1 = splits[10];
-                        Byte_Check(80, obj.Juusho1);
-                        obj.Juusho2 = splits[11];
-                        Byte_Check(80, obj.Juusho2);
-                        obj.Tel11 = splits[12];
-                        Byte_Check(6, obj.Tel11);
-                        obj.Tel12 = splits[13];
-                        Byte_Check(5, obj.Tel12);
-                        obj.Tel13 = splits[14];
-                        Byte_Check(5, obj.Tel13);
-                        obj.Tel21 = splits[15];
-                        Byte_Check(6, obj.Tel21);
-                        obj.Tel22 = splits[16];
-                        Byte_Check(5, obj.Tel22);
-                        obj.Tel23 = splits[17];
-                        Byte_Check(5, obj.Tel23);
-                        obj.TantouBusho = splits[18];
-                        Byte_Check(40, obj.TantouBusho);
-                        obj.TantouYakushoku = splits[19];
-                        Byte_Check(40, obj.TantouYakushoku);
-                        obj.TantoushaName = splits[20];
-                        Byte_Check(40, obj.TantoushaName);
-                        obj.MailAddress = splits[21];
-                        Byte_Check(100, obj.MailAddress);
-                        obj.TuukaCD = splits[22];
-                        Byte_Check(3, obj.TuukaCD);
-                        obj.StaffCD = splits[23];
-                        Byte_Check(10, obj.StaffCD);
-                        obj.TorihikiKaisiDate = splits[24];
-                        //
-                        Date_Check(obj.TorihikiKaisiDate);
-                        obj.TorihikiShuuryouDate = splits[25];
-                        //
-                        Date_Check(obj.TorihikiShuuryouDate);
-
-                        obj.Remarks = splits[26];                        
-                        Byte_Check(80, obj.Remarks);
-
-                        //E101
+                        bl_List.Add(Byte_Check(80, obj.SiiresakiName));
                         
+                        //
+                        obj.SiiresakiRyakuName = splits[4];
+                        bl_List.Add(Byte_Check(40, obj.SiiresakiRyakuName));
+                        
+                        //
+                        obj.KanaName = splits[5];
+                        bl_List.Add(Byte_Check(80, obj.KanaName));
+                        
+                        //no error check
+                        obj.KensakuHyouziJun = splits[6];
 
+                        //
+                        obj.SiharaisakiCD = splits[7];
+                        bl_List.Add(Byte_Check(10, obj.SiharaisakiCD));
+                        
+                        //
+                        obj.YuubinNO1 = splits[8];
+                        bl_List.Add(Byte_Check(3, obj.YuubinNO1));
+                       
+                        //
+                        obj.YuubinNO2 = splits[9];
+                        bl_List.Add(Byte_Check(4, obj.YuubinNO2));
+                       
+                        //
+                        obj.Juusho1 = splits[10];
+                        bl_List.Add(Byte_Check(80, obj.Juusho1));
+                        
+                        //
+                        obj.Juusho2 = splits[11];
+                        bl_List.Add(Byte_Check(80, obj.Juusho2));
+                        
+                        //
+                        obj.Tel11 = splits[12];
+                        bl_List.Add(Byte_Check(6, obj.Tel11));
+                        
+                        //
+                        obj.Tel12 = splits[13];
+                        bl_List.Add(Byte_Check(5, obj.Tel12));
+                       
+                        //
+                        obj.Tel13 = splits[14];
+                        bl_List.Add(Byte_Check(5, obj.Tel13));
+                        
+                        //
+                        obj.Tel21 = splits[15];
+                        bl_List.Add(Byte_Check(6, obj.Tel21));
+                        
+                        //
+                        obj.Tel22 = splits[16];
+                        bl_List.Add(Byte_Check(5, obj.Tel22));
+                        
+                        //
+                        obj.Tel23 = splits[17];
+                        bl_List.Add(Byte_Check(5, obj.Tel23));
+                        
+                        //
+                        obj.TantouBusho = splits[18];
+                        bl_List.Add(Byte_Check(40, obj.TantouBusho));
+                        
+                        //
+                        obj.TantouYakushoku = splits[19];
+                        bl_List.Add(Byte_Check(40, obj.TantouYakushoku));
+                        
+                        //
+                        obj.TantoushaName = splits[20];
+                        bl_List.Add(Byte_Check(40, obj.TantoushaName));
+                        
+                        //
+                        obj.MailAddress = splits[21];
+                        bl_List.Add(Byte_Check(100, obj.MailAddress));
+                        
+                        //
+                        obj.TuukaCD = splits[22];
+                        bl_List.Add(Byte_Check(3, obj.TuukaCD));
+                        
+                        //
+                        obj.StaffCD = splits[23];
+                        bl_List.Add(Byte_Check(10, obj.StaffCD));
+                        
+                        //
+                        obj.TorihikiKaisiDate = splits[24];
+                        bl_List.Add(Date_Check(obj.TorihikiKaisiDate));
+                        
+                        //
+                        obj.TorihikiShuuryouDate = splits[25];
+                        bl_List.Add(Date_Check(obj.TorihikiShuuryouDate));
+                       
+                        //
+                        obj.Remarks = splits[26];
+                        bl_List.Add(Byte_Check(80, obj.Remarks));
+
+                        //
+                        DataTable dt = new DataTable();
+                        StaffBL sBL = new StaffBL();
+                        dt = sBL.Staff_Select_Check(obj.StaffCD, obj.ChangeDate, "E101");
+                        if (dt.Rows[0]["MessageID"].ToString() == "E101")
+                        {
+                            err.ShowErrorMessage("E101");
+                            bl_List.Add(false);
+                        }
+
+                        string error = string.Empty;
+                        if (bl_List.Contains(false))
+                            error = "false";
+                        else error = "true";
+
+                        DataRow dr = create_dt.NewRow();
+                        for (int j=0;j<splits.Length;j++)
+                        {
+                            dr[j] = splits[j].ToString();
+                        }
+                        dr[27] = "0";
+                        dr[28] = base_Entity.OperatorCD;
+                        dr[29] = base_Entity.OperatorCD;
+                        //dr[30] = error;
+                        create_dt.Rows.Add(dr);
                     }
+
+                    Xml = cf.DataTableToXml(create_dt);
                 }
             }
+            return Xml;
         }
 
-        private void Byte_Check(int obj_len,string obj_text)
+        private bool Byte_Check(int obj_len,string obj_text)
         {
+            bool bl = true;
             if (cf.IsByteLengthOver(obj_len, obj_text))
+            {
                 err.ShowErrorMessage("E142");
+                bl = false;
+            }
+            return bl;
         }
-        public void Date_Check(string csv_Date)
+        public bool Date_Check(string csv_Date)
         {
-
+            bool bl = true;
+            if(!string.IsNullOrEmpty(csv_Date))
+            {
+                if (!cf.CheckDateValue(csv_Date))
+                {
+                    err.ShowErrorMessage("E103");
+                    bl = false;
+                }
+            }
+            return bl;  
+        }
+        public void Create_Datatable_Column(DataTable create_dt)
+        {
+            create_dt.Columns.Add("SiiresakiCD");
+            create_dt.Columns.Add("ChangeDate");
+            create_dt.Columns.Add("ShokutiFLG");
+            create_dt.Columns.Add("SiiresakiName");
+            create_dt.Columns.Add("SiiresakiRyakuName");
+            create_dt.Columns.Add("KanaName");
+            create_dt.Columns.Add("KensakuHyouziJun");
+            create_dt.Columns.Add("SiharaisakiCD");
+            create_dt.Columns.Add("YuubinNO1");
+            create_dt.Columns.Add("YuubinNO2");
+            create_dt.Columns.Add("Juusho1");
+            create_dt.Columns.Add("Juusho2");
+            create_dt.Columns.Add("Tel11");
+            create_dt.Columns.Add("Tel12");
+            create_dt.Columns.Add("Tel13");
+            create_dt.Columns.Add("Tel21");
+            create_dt.Columns.Add("Tel22");
+            create_dt.Columns.Add("Tel23");
+            create_dt.Columns.Add("TantouBusho");
+            create_dt.Columns.Add("TantouYakushoku");
+            create_dt.Columns.Add("TantoushaName");
+            create_dt.Columns.Add("MailAddress");
+            create_dt.Columns.Add("TuukaCD");
+            create_dt.Columns.Add("StaffCD");
+            create_dt.Columns.Add("TorihikiKaisiDate");
+            create_dt.Columns.Add("TorihikiShuuryouDate");
+            create_dt.Columns.Add("Remarks");
+            create_dt.Columns.Add("UsedFlg");
+            create_dt.Columns.Add("InsertOperator");
+            create_dt.Columns.Add("UpdateOperator");
+            //create_dt.Columns.Add("Errors");
         }
     }
 }

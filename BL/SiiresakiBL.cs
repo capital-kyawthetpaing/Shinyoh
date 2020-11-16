@@ -75,5 +75,13 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("Siiresaki_Search", GetConnectionString(), parameters);
             return dt;
         }
+
+        public string CSV_M_Siiresaki_CUD(string obj)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@xml", SqlDbType.Xml) { Value = obj };
+            return ckmdl.InsertUpdateDeleteData("CSV_M_Siiresaki_CUD", GetConnectionString(), parameters);
+        }
     }
 }

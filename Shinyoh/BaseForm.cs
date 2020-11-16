@@ -184,11 +184,11 @@ namespace Shinyoh
                         FunctionProcess(btn.Tag.ToString());
                     break;
                 case ButtonType.BType.Import:
-                    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
-                    {
-                        PreviousCtrl.Focus();
-                    }
-                    else
+                    //if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                    //{
+                    //    PreviousCtrl.Focus();
+                    //}
+                    //else
                         FunctionProcess(btn.Tag.ToString());
                     break;
                 case ButtonType.BType.Save:
