@@ -116,7 +116,7 @@
             this.txtRemark.IsDatatableOccurs = null;
             this.txtRemark.IsErrorOccurs = false;
             this.txtRemark.IsRequire = false;
-            this.txtRemark.Location = new System.Drawing.Point(142, 287);
+            this.txtRemark.Location = new System.Drawing.Point(141, 287);
             this.txtRemark.MaxLength = 80;
             this.txtRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRemark.MoveNext = true;
@@ -134,7 +134,7 @@
             this.lblRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRemark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRemark.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblRemark.Location = new System.Drawing.Point(42, 287);
+            this.lblRemark.Location = new System.Drawing.Point(41, 287);
             this.lblRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblRemark.Name = "lblRemark";
             this.lblRemark.Size = new System.Drawing.Size(100, 19);
@@ -442,7 +442,7 @@
             this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSearch.Location = new System.Drawing.Point(42, 324);
+            this.lblSearch.Location = new System.Drawing.Point(41, 324);
             this.lblSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(100, 19);
@@ -461,7 +461,7 @@
             this.txtSearch.IsDatatableOccurs = null;
             this.txtSearch.IsErrorOccurs = false;
             this.txtSearch.IsRequire = false;
-            this.txtSearch.Location = new System.Drawing.Point(142, 324);
+            this.txtSearch.Location = new System.Drawing.Point(141, 324);
             this.txtSearch.MaxLength = 5;
             this.txtSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSearch.MoveNext = true;
@@ -481,6 +481,7 @@
             this.txtSouko.AllowMinus = false;
             this.txtSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSouko.ChangeDate = this.txtSoukoName;
+            this.txtSouko.Combo = null;
             this.txtSouko.DecimalPlace = 0;
             this.txtSouko.DepandOnMode = true;
             this.txtSouko.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -563,6 +564,7 @@
             this.txtCopySouko.AllowMinus = false;
             this.txtCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCopySouko.ChangeDate = this.txtSoukoName;
+            this.txtCopySouko.Combo = null;
             this.txtCopySouko.DecimalPlace = 0;
             this.txtCopySouko.DepandOnMode = false;
             this.txtCopySouko.Font = new System.Drawing.Font("MS Gothic", 9F);

@@ -329,6 +329,7 @@
             this.txtStaffCharge.AllowMinus = false;
             this.txtStaffCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaffCharge.ChangeDate = null;
+            this.txtStaffCharge.Combo = null;
             this.txtStaffCharge.DecimalPlace = 0;
             this.txtStaffCharge.DepandOnMode = false;
             this.txtStaffCharge.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -337,7 +338,7 @@
             this.txtStaffCharge.IsErrorOccurs = false;
             this.txtStaffCharge.IsRequire = false;
             this.txtStaffCharge.lblName = null;
-            this.txtStaffCharge.Location = new System.Drawing.Point(142, 544);
+            this.txtStaffCharge.Location = new System.Drawing.Point(141, 544);
             this.txtStaffCharge.MaxLength = 10;
             this.txtStaffCharge.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtStaffCharge.MoveNext = true;
@@ -355,7 +356,7 @@
             this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaffCD_Name.Location = new System.Drawing.Point(212, 544);
+            this.lblStaffCD_Name.Location = new System.Drawing.Point(211, 544);
             this.lblStaffCD_Name.Name = "lblStaffCD_Name";
             this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
             this.lblStaffCD_Name.TabIndex = 94;
@@ -572,7 +573,7 @@
             this.txtStartDate.IsDatatableOccurs = null;
             this.txtStartDate.IsErrorOccurs = false;
             this.txtStartDate.IsRequire = false;
-            this.txtStartDate.Location = new System.Drawing.Point(142, 578);
+            this.txtStartDate.Location = new System.Drawing.Point(141, 578);
             this.txtStartDate.MaxLength = 10;
             this.txtStartDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStartDate.MoveNext = true;
@@ -590,7 +591,7 @@
             this.lblStaffCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffCharge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaffCharge.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaffCharge.Location = new System.Drawing.Point(42, 544);
+            this.lblStaffCharge.Location = new System.Drawing.Point(41, 544);
             this.lblStaffCharge.Name = "lblStaffCharge";
             this.lblStaffCharge.Size = new System.Drawing.Size(100, 19);
             this.lblStaffCharge.TabIndex = 80;
@@ -603,7 +604,7 @@
             this.lblStartDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStartDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStartDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStartDate.Location = new System.Drawing.Point(42, 578);
+            this.lblStartDate.Location = new System.Drawing.Point(41, 578);
             this.lblStartDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblStartDate.Name = "lblStartDate";
             this.lblStartDate.Size = new System.Drawing.Size(100, 19);
@@ -622,7 +623,7 @@
             this.txtEndDate.IsDatatableOccurs = null;
             this.txtEndDate.IsErrorOccurs = false;
             this.txtEndDate.IsRequire = false;
-            this.txtEndDate.Location = new System.Drawing.Point(142, 612);
+            this.txtEndDate.Location = new System.Drawing.Point(141, 612);
             this.txtEndDate.MaxLength = 10;
             this.txtEndDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtEndDate.MoveNext = true;
@@ -640,7 +641,7 @@
             this.lblFinishDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblFinishDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblFinishDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblFinishDate.Location = new System.Drawing.Point(42, 612);
+            this.lblFinishDate.Location = new System.Drawing.Point(41, 612);
             this.lblFinishDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblFinishDate.Name = "lblFinishDate";
             this.lblFinishDate.Size = new System.Drawing.Size(100, 19);
@@ -659,7 +660,7 @@
             this.txtMailAddress.IsDatatableOccurs = null;
             this.txtMailAddress.IsErrorOccurs = false;
             this.txtMailAddress.IsRequire = false;
-            this.txtMailAddress.Location = new System.Drawing.Point(142, 507);
+            this.txtMailAddress.Location = new System.Drawing.Point(141, 507);
             this.txtMailAddress.MaxLength = 100;
             this.txtMailAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtMailAddress.MoveNext = true;
@@ -682,7 +683,7 @@
             this.txtPersonCharge.IsDatatableOccurs = null;
             this.txtPersonCharge.IsErrorOccurs = false;
             this.txtPersonCharge.IsRequire = false;
-            this.txtPersonCharge.Location = new System.Drawing.Point(142, 473);
+            this.txtPersonCharge.Location = new System.Drawing.Point(141, 473);
             this.txtPersonCharge.MaxLength = 40;
             this.txtPersonCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPersonCharge.MoveNext = true;
@@ -700,7 +701,7 @@
             this.lblPersonCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPersonCharge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPersonCharge.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblPersonCharge.Location = new System.Drawing.Point(42, 473);
+            this.lblPersonCharge.Location = new System.Drawing.Point(41, 473);
             this.lblPersonCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblPersonCharge.Name = "lblPersonCharge";
             this.lblPersonCharge.Size = new System.Drawing.Size(100, 19);
@@ -714,7 +715,7 @@
             this.lblMailAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMailAddress.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblMailAddress.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblMailAddress.Location = new System.Drawing.Point(42, 507);
+            this.lblMailAddress.Location = new System.Drawing.Point(41, 507);
             this.lblMailAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblMailAddress.Name = "lblMailAddress";
             this.lblMailAddress.Size = new System.Drawing.Size(100, 19);
@@ -733,7 +734,7 @@
             this.txtJobTitle.IsDatatableOccurs = null;
             this.txtJobTitle.IsErrorOccurs = false;
             this.txtJobTitle.IsRequire = false;
-            this.txtJobTitle.Location = new System.Drawing.Point(142, 439);
+            this.txtJobTitle.Location = new System.Drawing.Point(141, 439);
             this.txtJobTitle.MaxLength = 40;
             this.txtJobTitle.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJobTitle.MoveNext = true;
@@ -751,7 +752,7 @@
             this.lblJobTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblJobTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblJobTitle.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblJobTitle.Location = new System.Drawing.Point(42, 439);
+            this.lblJobTitle.Location = new System.Drawing.Point(41, 439);
             this.lblJobTitle.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblJobTitle.Name = "lblJobTitle";
             this.lblJobTitle.Size = new System.Drawing.Size(100, 19);
@@ -807,7 +808,7 @@
             this.lblTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTitle.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(42, 188);
+            this.lblTitle.Location = new System.Drawing.Point(41, 188);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(100, 19);
             this.lblTitle.TabIndex = 64;
@@ -825,7 +826,7 @@
             this.txtBillAddress.IsDatatableOccurs = null;
             this.txtBillAddress.IsErrorOccurs = false;
             this.txtBillAddress.IsRequire = false;
-            this.txtBillAddress.Location = new System.Drawing.Point(142, 156);
+            this.txtBillAddress.Location = new System.Drawing.Point(141, 156);
             this.txtBillAddress.MaxLength = 10;
             this.txtBillAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtBillAddress.MoveNext = true;
@@ -844,7 +845,7 @@
             this.lblBillAddress.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBillAddress.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblBillAddress.ForeColor = System.Drawing.Color.White;
-            this.lblBillAddress.Location = new System.Drawing.Point(42, 156);
+            this.lblBillAddress.Location = new System.Drawing.Point(41, 156);
             this.lblBillAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblBillAddress.Name = "lblBillAddress";
             this.lblBillAddress.Size = new System.Drawing.Size(100, 19);
@@ -900,7 +901,7 @@
             this.txtShortName.IsDatatableOccurs = null;
             this.txtShortName.IsErrorOccurs = false;
             this.txtShortName.IsRequire = false;
-            this.txtShortName.Location = new System.Drawing.Point(142, 86);
+            this.txtShortName.Location = new System.Drawing.Point(141, 86);
             this.txtShortName.MaxLength = 40;
             this.txtShortName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShortName.MoveNext = true;
@@ -919,7 +920,7 @@
             this.lblShortName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShortName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblShortName.ForeColor = System.Drawing.Color.White;
-            this.lblShortName.Location = new System.Drawing.Point(42, 86);
+            this.lblShortName.Location = new System.Drawing.Point(41, 86);
             this.lblShortName.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblShortName.Name = "lblShortName";
             this.lblShortName.Size = new System.Drawing.Size(100, 19);
@@ -953,7 +954,7 @@
             this.txtRemark.IsDatatableOccurs = null;
             this.txtRemark.IsErrorOccurs = false;
             this.txtRemark.IsRequire = false;
-            this.txtRemark.Location = new System.Drawing.Point(142, 647);
+            this.txtRemark.Location = new System.Drawing.Point(141, 647);
             this.txtRemark.MaxLength = 80;
             this.txtRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRemark.MoveNext = true;
@@ -971,7 +972,7 @@
             this.lblRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRemark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRemark.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblRemark.Location = new System.Drawing.Point(42, 647);
+            this.lblRemark.Location = new System.Drawing.Point(41, 647);
             this.lblRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblRemark.Name = "lblRemark";
             this.lblRemark.Size = new System.Drawing.Size(100, 19);
@@ -1219,7 +1220,7 @@
             this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSearch.Location = new System.Drawing.Point(42, 682);
+            this.lblSearch.Location = new System.Drawing.Point(41, 682);
             this.lblSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Size = new System.Drawing.Size(100, 19);
@@ -1238,7 +1239,7 @@
             this.txtSearch.IsDatatableOccurs = null;
             this.txtSearch.IsErrorOccurs = false;
             this.txtSearch.IsRequire = false;
-            this.txtSearch.Location = new System.Drawing.Point(142, 682);
+            this.txtSearch.Location = new System.Drawing.Point(141, 682);
             this.txtSearch.MaxLength = 6;
             this.txtSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSearch.MoveNext = true;
@@ -1258,6 +1259,7 @@
             this.txtTokuisakiCopy.AllowMinus = false;
             this.txtTokuisakiCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTokuisakiCopy.ChangeDate = null;
+            this.txtTokuisakiCopy.Combo = null;
             this.txtTokuisakiCopy.DecimalPlace = 0;
             this.txtTokuisakiCopy.DepandOnMode = false;
             this.txtTokuisakiCopy.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -1282,6 +1284,7 @@
             this.txt_Tokuisaki.AllowMinus = false;
             this.txt_Tokuisaki.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_Tokuisaki.ChangeDate = null;
+            this.txt_Tokuisaki.Combo = null;
             this.txt_Tokuisaki.DecimalPlace = 0;
             this.txt_Tokuisaki.DepandOnMode = true;
             this.txt_Tokuisaki.Font = new System.Drawing.Font("MS Gothic", 9F);
