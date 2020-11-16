@@ -448,105 +448,113 @@ namespace MasterTouroku_Tokuisaki {
                 {
                     filePath = openFileDialog.FileName;
                     string[] csvRows = File.ReadAllLines(filePath);
-                    var bl_List = new List<bool>(28);
+                    var bl_List = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
                     {
                         var splits = csvRows[i].Split(',');
                         obj.TokuisakiCD = splits[0];
+                        bl_List.Add(Null_Check(obj.TokuisakiCD));
                         bl_List.Add(Byte_Check(10, obj.TokuisakiCD));
 
+                        //
                         obj.ChangeDate = splits[1];
+                        bl_List.Add(Null_Check(obj.ChangeDate));
                         bl_List.Add(Date_Check(obj.ChangeDate));
 
+                        //
                         obj.ShokutiFLG = Convert.ToInt32(splits[2]);
                         if (!(obj.ShokutiFLG == 0 || obj.ShokutiFLG == 1))
                         {
                             err.ShowErrorMessage("E117");
                             bl_List.Add(true);
                         }
+                        bl_List.Add(Null_Check(obj.ShokutiFLG.ToString()));
 
-                        obj.AliasKBN = Convert.ToInt32(splits[3]);
-                        if (!(obj.AliasKBN == 0 || obj.AliasKBN == 1))
-                        {
-                            err.ShowErrorMessage("E117");
-                            bl_List.Add(true);
-                        }
-                       
-                        obj.TokuisakiName = splits[4];
+                        //
+                        obj.TokuisakiName = splits[3];
+                        bl_List.Add(Null_Check(obj.TokuisakiName.ToString()));
                         bl_List.Add(Byte_Check(80, obj.TokuisakiName));
 
-                        obj.TokuisakiRyakuName = splits[5];
+                        //
+                        obj.TokuisakiRyakuName = splits[4];
+                        bl_List.Add(Null_Check(obj.TokuisakiRyakuName.ToString()));
                         bl_List.Add(Byte_Check(40, obj.TokuisakiRyakuName));
 
-                        obj.KanaName = splits[6];
+                        //
+                        obj.KanaName = splits[5];
                         bl_List.Add(Byte_Check(80, obj.KanaName));
 
                         //no error check
                         obj.KensakuHyouziJun = splits[6];
 
-                        //
-                       // obj.SiharaisakiCD = splits[7];
-                       // bl_List.Add(Byte_Check(10, obj.SiharaisakiCD));
+                        obj.SeikyuusakiCD = splits[7];
+                        bl_List.Add(Null_Check(obj.SeikyuusakiCD.ToString()));
+                        bl_List.Add(Byte_Check(10, obj.SeikyuusakiCD));
 
                         //
-                        obj.YuubinNO1 = splits[8];
+                        obj.AliasKBN = Convert.ToInt32(splits[8]);
+                        if (!(obj.AliasKBN == 0 || obj.AliasKBN == 1))
+                        {
+                            err.ShowErrorMessage("E117");
+                            bl_List.Add(true);
+                        }
+                        bl_List.Add(Null_Check(obj.AliasKBN.ToString()));              
+
+                        //
+                        obj.YuubinNO1 = splits[9];
                         bl_List.Add(Byte_Check(3, obj.YuubinNO1));
 
                         //
-                        obj.YuubinNO2 = splits[9];
+                        obj.YuubinNO2 = splits[10];
                         bl_List.Add(Byte_Check(4, obj.YuubinNO2));
 
                         //
-                        obj.Juusho1 = splits[10];
+                        obj.Juusho1 = splits[11];
                         bl_List.Add(Byte_Check(80, obj.Juusho1));
 
                         //
-                        obj.Juusho2 = splits[11];
+                        obj.Juusho2 = splits[12];
                         bl_List.Add(Byte_Check(80, obj.Juusho2));
 
                         //
-                        obj.Tel11 = splits[12];
+                        obj.Tel11 = splits[13];
                         bl_List.Add(Byte_Check(6, obj.Tel11));
 
                         //
-                        obj.Tel12 = splits[13];
+                        obj.Tel12 = splits[14];
                         bl_List.Add(Byte_Check(5, obj.Tel12));
 
                         //
-                        obj.Tel13 = splits[14];
+                        obj.Tel13 = splits[15];
                         bl_List.Add(Byte_Check(5, obj.Tel13));
 
                         //
-                        obj.Tel21 = splits[15];
+                        obj.Tel21 = splits[16];
                         bl_List.Add(Byte_Check(6, obj.Tel21));
 
                         //
-                        obj.Tel22 = splits[16];
+                        obj.Tel22 = splits[17];
                         bl_List.Add(Byte_Check(5, obj.Tel22));
 
                         //
-                        obj.Tel23 = splits[17];
+                        obj.Tel23 = splits[18];
                         bl_List.Add(Byte_Check(5, obj.Tel23));
 
                         //
-                        obj.TantouBusho = splits[18];
+                        obj.TantouBusho = splits[19];
                         bl_List.Add(Byte_Check(40, obj.TantouBusho));
 
                         //
-                        obj.TantouYakushoku = splits[19];
+                        obj.TantouYakushoku = splits[20];
                         bl_List.Add(Byte_Check(40, obj.TantouYakushoku));
 
                         //
-                        obj.TantoushaName = splits[20];
+                        obj.TantoushaName = splits[21];
                         bl_List.Add(Byte_Check(40, obj.TantoushaName));
 
                         //
-                        obj.MailAddress = splits[21];
+                        obj.MailAddress = splits[22];
                         bl_List.Add(Byte_Check(100, obj.MailAddress));
-
-                        //
-                       // obj.TuukaCD = splits[22];
-                       // bl_List.Add(Byte_Check(3, obj.TuukaCD));
 
                         //
                         obj.StaffCD = splits[23];
@@ -599,7 +607,16 @@ namespace MasterTouroku_Tokuisaki {
             }
             return Xml;
         }
-
+        private bool Null_Check(string obj_text)
+        {
+            bool bl = false;
+            if (string.IsNullOrWhiteSpace(obj_text))
+            {
+                err.ShowErrorMessage("E102");
+                bl = true;
+            }
+            return bl;
+        }
         private bool Byte_Check(int obj_len, string obj_text)
         {
             bool bl = false;
@@ -651,7 +668,6 @@ namespace MasterTouroku_Tokuisaki {
             create_dt.Columns.Add("StaffCD");
             create_dt.Columns.Add("TorihikiKaisiDate");
             create_dt.Columns.Add("TorihikiShuuryouDate");
-            create_dt.Columns.Add("ShukkaSizishoHuyouKBN");
             create_dt.Columns.Add("Remarks");
             create_dt.Columns.Add("UsedFlg");
             create_dt.Columns.Add("InsertOperator");
