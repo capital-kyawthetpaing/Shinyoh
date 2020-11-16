@@ -111,7 +111,7 @@ namespace MasterTouroku_MultiPorpose
                     cf.EnablePanel(panelDetails);
 
                     txtID.Enabled = true;
-                    txtIDCopy.Enabled = true;
+                    txtCopyID.Enabled = true;
                     txtID.Focus();
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -122,9 +122,7 @@ namespace MasterTouroku_MultiPorpose
                     txtID.E102Check(true);
                     txtKEY.E102Check(true);
                     txtIDName.E102Check(true);
-                    txtKEY.E132Check(false, "M_Multiporpose", txtID, txtKEY, null);
-
-                    txtIDCopy.Enabled = false;
+                    txtCopyID.Enabled = false;
                     txtKEYCopy.Enabled = false;
                     txtID.Enabled = true;
                     txtID.Focus();
@@ -144,7 +142,7 @@ namespace MasterTouroku_MultiPorpose
                     cf.Clear(panelDetails);
                     cf.DisablePanel(panelDetails);
 
-                    txtIDCopy.Enabled = false;
+                    txtCopyID.Enabled = false;
                     txtID.Enabled = true;
                     txtID.Focus();
 
@@ -160,7 +158,7 @@ namespace MasterTouroku_MultiPorpose
                     cf.Clear(panelDetails);
                     cf.DisablePanel(panelDetails);
 
-                    txtIDCopy.Enabled = false;
+                    txtCopyID.Enabled = false;
                     txtKEYCopy.Enabled = false;
                     txtID.Enabled = true;
                     txtID.Focus();
@@ -271,8 +269,7 @@ namespace MasterTouroku_MultiPorpose
             mentity.KeyItem = txtID.Text + " " + txtKEY.Text;
             return mentity;
         }
-
-        private void txtKEY_KeyDown(object sender, KeyEventArgs e)
+        private void txtKEY_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
@@ -291,7 +288,7 @@ namespace MasterTouroku_MultiPorpose
                 }
                 DataTable dt = new DataTable();
                 GetData();
-                dt = mbl.M_Multiporpose_SelectData(txtID.Text,txtKEY.Text);
+                dt = mbl.M_Multiporpose_SelectData(txtID.Text, txtKEY.Text);
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
                     DisplayData(dt);

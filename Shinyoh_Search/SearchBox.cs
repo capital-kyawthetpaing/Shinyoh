@@ -91,6 +91,14 @@ namespace Shinyoh_Search
                         CD = tokuisakiSearch.Tokuisaki;
                         CDate = tokuisakiSearch.ChangeDate;
                         break;
+                    case Entity.SearchType.ScType.multiporpose:
+                        MultiPorposeSearch msearch = new MultiPorposeSearch();
+                        msearch.ShowDialog();
+                        if(this.Name== "txtID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        break;
                 }
 
                 this.Text = CD;
