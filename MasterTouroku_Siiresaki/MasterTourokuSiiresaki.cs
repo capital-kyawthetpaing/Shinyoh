@@ -453,7 +453,7 @@ namespace MasterTouroku_Siiresaki
                         if (!(obj.ShokutiFLG == 0 || obj.ShokutiFLG == 1))
                         {
                             err.ShowErrorMessage("E117");
-                            bl_List.Add(false);
+                            bl_List.Add(true);
                         }                       
                         //
                         obj.SiiresakiName = splits[3];
@@ -557,13 +557,13 @@ namespace MasterTouroku_Siiresaki
                         if (dt.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             err.ShowErrorMessage("E101");
-                            bl_List.Add(false);
+                            //bl_List.Add(true);
                         }
 
                         string error = string.Empty;
-                        if (bl_List.Contains(false))
-                            error = "false";
-                        else error = "true";
+                        if (bl_List.Contains(true))
+                            error = "true";
+                        else error = "false";
 
                         DataRow dr = create_dt.NewRow();
                         for (int j=0;j<splits.Length;j++)
@@ -576,7 +576,7 @@ namespace MasterTouroku_Siiresaki
                         dr[27] = "0";
                         dr[28] = base_Entity.OperatorCD;
                         dr[29] = base_Entity.OperatorCD;
-                        //dr[30] = error;
+                        dr[30] = error;
                         create_dt.Rows.Add(dr);
                     }
 
@@ -588,23 +588,23 @@ namespace MasterTouroku_Siiresaki
 
         private bool Byte_Check(int obj_len,string obj_text)
         {
-            bool bl = true;
+            bool bl = false;
             if (cf.IsByteLengthOver(obj_len, obj_text))
             {
                 err.ShowErrorMessage("E142");
-                bl = false;
+                bl = true;
             }
             return bl;
         }
         public bool Date_Check(string csv_Date)
         {
-            bool bl = true;
+            bool bl = false;
             if(!string.IsNullOrEmpty(csv_Date))
             {
                 if (!cf.CheckDateValue(csv_Date))
                 {
                     err.ShowErrorMessage("E103");
-                    bl = false;
+                    bl = true;
                 }
             }
             return bl;  
@@ -641,7 +641,7 @@ namespace MasterTouroku_Siiresaki
             create_dt.Columns.Add("UsedFlg");
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
-            //create_dt.Columns.Add("Errors");
+            create_dt.Columns.Add("Error");
         }
     }
 }
