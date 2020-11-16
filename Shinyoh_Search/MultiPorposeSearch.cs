@@ -16,6 +16,8 @@ namespace Shinyoh_Search
 {
     public partial class MultiPorposeSearch : SearchBase
     {
+        public string Id = string.Empty;
+        public string Key = string.Empty; 
         public MultiPorposeSearch()
         {
             InitializeComponent();
@@ -39,8 +41,9 @@ namespace Shinyoh_Search
             }
             if (tagID == "3")
             {
-                DataGridViewRow row = gvMultiporpose.CurrentRow;
-                GetGridviewData(row);
+                //DataGridViewRow row = gvMultiporpose.CurrentRow;
+                //GetGridviewData(row);
+                GetGridviewData();
             }
             base.FunctionProcess(tagID);
         }
@@ -56,22 +59,27 @@ namespace Shinyoh_Search
             DataTable dt = bl.M_Multiporpose_Search(mentity);
             gvMultiporpose.DataSource = dt;
         }
-        private void GetGridviewData(DataGridViewRow gvrow)
+        private void GetGridviewData()
         {
-            if (gvrow.DataBoundItem != null)
+            //if (gvrow.DataBoundItem != null)
+            //{
+            //    DataGridViewRow row = gvrow;
+            if (gvMultiporpose.CurrentRow != null && gvMultiporpose.CurrentRow.Index >= 0)
             {
-                DataGridViewRow row = gvrow;
-                
+                //Id = row.Cells["colID"].Value.ToString();
+                Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
+                Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
                 this.Close();
             }
         }
         private void gvMultiporpose_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            GetGridviewData(gvMultiporpose.Rows[e.RowIndex]);
+            //GetGridviewData(gvMultiporpose.Rows[e.RowIndex]);
+            GetGridviewData();
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            FunctionProcess(btnDisplay.Tag.ToString());
+            //FunctionProcess(btnDisplay.Tag.ToString());
             GridViewBind();
         }
         private void txtID2_KeyDown(object sender, KeyEventArgs e)
