@@ -116,15 +116,21 @@ namespace Shinyoh_Search
                 else if (ChangeDate != null)
                 {
                     ChangeDate.Text = CDate;
-                    ChangeDate.Focus();
-                    SendKeys.Send("{ENTER}");
+                    if (string.IsNullOrEmpty(this.Text))
+                    {
+                        this.Focus();
+                    }
+                    else
+                    {
+                        ChangeDate.Focus();
+                        SendKeys.Send("{ENTER}");
+                    }
                 }
                 else
                 {
                     Control control = this.TopLevelControl.Controls.Find(this.NextControlName, true)[0];
                     control.Focus();
                 }
-
             }            
         }
     }

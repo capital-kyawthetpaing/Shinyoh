@@ -18,6 +18,7 @@ namespace MasterTouroku_Siiresaki
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
         ErrorCheck err = new ErrorCheck();
+
         
         public MasterTourokuSiiresaki()
         {
@@ -39,7 +40,7 @@ namespace MasterTouroku_Siiresaki
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
+            SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
@@ -128,8 +129,8 @@ namespace MasterTouroku_Siiresaki
         {
             txtCopyCD.Enabled = false;
             txtCopyDate.Enabled = false;
-            rdo_Registragion.Enabled = false;
-            rdo_Delete.Enabled = false;
+            //rdo_Registragion.Enabled = false;
+            //rdo_Delete.Enabled = false;
         }
         public void ErrorCheck()
         {
@@ -459,7 +460,9 @@ namespace MasterTouroku_Siiresaki
                         bl_List.Add(Null_Check(obj.ShokutiFLG));
                         if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
-                            err.ShowErrorMessage("E117");
+                            BaseBL bbl = new BaseBL();
+                            bbl.ShowMessage("E117","0","1");
+                           // err.ShowErrorMessage("E117");
                             bl_List.Add(true);
                         }
                         //
@@ -502,27 +505,27 @@ namespace MasterTouroku_Siiresaki
                         
                         //
                         obj.Tel11 = splits[12];
-                        bl_List.Add(Byte_Check(6, obj.Tel11));
+                        bl_List.Add(Byte_Check(5, obj.Tel11));
                         
                         //
                         obj.Tel12 = splits[13];
-                        bl_List.Add(Byte_Check(5, obj.Tel12));
+                        bl_List.Add(Byte_Check(4, obj.Tel12));
                        
                         //
                         obj.Tel13 = splits[14];
-                        bl_List.Add(Byte_Check(5, obj.Tel13));
+                        bl_List.Add(Byte_Check(4, obj.Tel13));
                         
                         //
                         obj.Tel21 = splits[15];
-                        bl_List.Add(Byte_Check(6, obj.Tel21));
+                        bl_List.Add(Byte_Check(5, obj.Tel21));
                         
                         //
                         obj.Tel22 = splits[16];
-                        bl_List.Add(Byte_Check(5, obj.Tel22));
+                        bl_List.Add(Byte_Check(4, obj.Tel22));
                         
                         //
                         obj.Tel23 = splits[17];
-                        bl_List.Add(Byte_Check(5, obj.Tel23));
+                        bl_List.Add(Byte_Check(4, obj.Tel23));
                         
                         //
                         obj.TantouBusho = splits[18];
