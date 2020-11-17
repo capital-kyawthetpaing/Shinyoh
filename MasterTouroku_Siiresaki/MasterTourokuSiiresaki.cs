@@ -40,7 +40,7 @@ namespace MasterTouroku_Siiresaki
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
+            SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
@@ -129,8 +129,8 @@ namespace MasterTouroku_Siiresaki
         {
             txtCopyCD.Enabled = false;
             txtCopyDate.Enabled = false;
-            rdo_Registragion.Enabled = false;
-            rdo_Delete.Enabled = false;
+            //rdo_Registragion.Enabled = false;
+            //rdo_Delete.Enabled = false;
         }
         public void ErrorCheck()
         {
