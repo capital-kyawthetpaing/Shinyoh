@@ -127,7 +127,24 @@ namespace Shinyoh_Controls
                     }
                 }
             }
-
+            if(sTextBox.E115)
+            {
+                DataTable dt = new DataTable();
+                string result = string.Empty;
+                switch(sTextBox.E115Type)
+                {
+                    case "ChakuniNyuuryoku":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE115_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE115_2.Text))
+                        {
+                            chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
+                            dt = cbl.ChakuniNyuuryoku_Select(null, sTextBox.ctrlE115_2.Text, "E115");
+                            rDt = dt;
+                            result = dt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                }
+                
+            }
             if (sTextBox.E132)
             {
                 string result = string.Empty;
@@ -205,6 +222,15 @@ namespace Shinyoh_Controls
                         {
                             TokuisakiBL tokuisakiBL = new TokuisakiBL();
                             dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text,string.Empty);
+                            rDt = dt;
+                            result = dt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                    case "ChakuniNyuuryoku":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text))
+                        {
+                            chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
+                            dt = bl.ChakuniNyuuryoku_Select(sTextBox.ctrlE133_1.Text, null, "E133");
                             rDt = dt;
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
