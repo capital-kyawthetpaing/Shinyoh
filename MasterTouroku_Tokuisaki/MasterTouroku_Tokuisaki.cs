@@ -47,7 +47,7 @@ namespace MasterTouroku_Tokuisaki {
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Empty, F10, "CSV取込(F10)", true);
+            SetButton(ButtonType.BType.Import, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             txt_Tokuisaki.Focus();
             ChangeMode(Mode.New);
@@ -171,8 +171,8 @@ namespace MasterTouroku_Tokuisaki {
             }
             if (tagID == "10")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
-                {
+              //  if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+              //  {
                     string Xml = ChooseFile();
                     BaseBL bbl = new BaseBL();
                     if (bbl.ShowMessage("Q206") != DialogResult.Yes)
@@ -188,7 +188,7 @@ namespace MasterTouroku_Tokuisaki {
                         else chk_val = "delete";
                         bl.CSV_M_Tokuisaki_CUD(Xml, chk_val);
                     }
-                }
+              //  }
             }
             if (tagID == "12")
             {
@@ -259,7 +259,7 @@ namespace MasterTouroku_Tokuisaki {
             {
                 obj.AliasKBN = 1;
             }else if(RadOnchuu.Checked == true)
-                obj.AliasKBN = 0;
+                obj.AliasKBN = 2;
             obj.ShukkaSizishoHuyouKBN = 0;
             obj.TokuisakiName = txtTokuisakiName.Text;
             obj.TokuisakiRyakuName = txtShortName.Text;
@@ -332,7 +332,7 @@ namespace MasterTouroku_Tokuisaki {
                     {
                         RadSaMa.Checked = true;
                     }
-                    else
+                    else if(dt.Rows[0]["AliasKBN"].ToString().Equals("2"))
                         RadOnchuu.Checked = true;
 
                     txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
@@ -465,7 +465,8 @@ namespace MasterTouroku_Tokuisaki {
                         obj.ShokutiFLG = Convert.ToInt32(splits[2]);
                         if (!(obj.ShokutiFLG == 0 || obj.ShokutiFLG == 1))
                         {
-                            err.ShowErrorMessage("E117");
+                            bl.ShowMessage("E117", "0", "1");
+                            //err.ShowErrorMessage("E117");
                             bl_List.Add(true);
                         }
                         bl_List.Add(Null_Check(obj.ShokutiFLG.ToString()));
@@ -493,9 +494,9 @@ namespace MasterTouroku_Tokuisaki {
 
                         //
                         obj.AliasKBN = Convert.ToInt32(splits[8]);
-                        if (!(obj.AliasKBN == 0 || obj.AliasKBN == 1))
+                        if (!(obj.AliasKBN == 1 || obj.AliasKBN == 2))
                         {
-                            err.ShowErrorMessage("E117");
+                            bl.ShowMessage("E117","1","2");
                             bl_List.Add(true);
                         }
                         bl_List.Add(Null_Check(obj.AliasKBN.ToString()));              
@@ -579,7 +580,7 @@ namespace MasterTouroku_Tokuisaki {
                         if (dt.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             err.ShowErrorMessage("E101");
-                            bl_List.Add(true);
+                           // bl_List.Add(true);
                         }
 
                         string error = string.Empty;
