@@ -202,7 +202,6 @@ namespace MasterTouroku_Staff
                     }
                 }
             }
-           
             base.FunctionProcess(tagID);
         }
 
