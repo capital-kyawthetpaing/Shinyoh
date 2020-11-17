@@ -106,6 +106,9 @@ namespace MasterTouroku_MultiPorpose
             {
                 case Mode.New:
                     txtIDName.E102Check(true);
+                    txtDate1.E103Check(true);
+                    txtDate2.E103Check(true);
+                    txtDate3.E103Check(true);
                     txtKEY.E132Check(false, "M_Multiporpose", txtID, txtKEY, null);
                     cf.EnablePanel(PanelTitle);
                     cf.EnablePanel(panelDetails);
@@ -122,6 +125,9 @@ namespace MasterTouroku_MultiPorpose
                     txtID.E102Check(true);
                     txtKEY.E102Check(true);
                     txtIDName.E102Check(true);
+                    txtDate1.E103Check(true);
+                    txtDate2.E103Check(true);
+                    txtDate3.E103Check(true);
                     txtCopyID.Enabled = false;
                     txtKEYCopy.Enabled = false;
                     txtID.Enabled = true;
