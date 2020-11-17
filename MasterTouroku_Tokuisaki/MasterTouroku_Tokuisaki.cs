@@ -259,7 +259,7 @@ namespace MasterTouroku_Tokuisaki {
             {
                 obj.AliasKBN = 1;
             }else if(RadOnchuu.Checked == true)
-                obj.AliasKBN = 0;
+                obj.AliasKBN = 2;
             obj.ShukkaSizishoHuyouKBN = 0;
             obj.TokuisakiName = txtTokuisakiName.Text;
             obj.TokuisakiRyakuName = txtShortName.Text;
@@ -332,7 +332,7 @@ namespace MasterTouroku_Tokuisaki {
                     {
                         RadSaMa.Checked = true;
                     }
-                    else
+                    else if(dt.Rows[0]["AliasKBN"].ToString().Equals("2"))
                         RadOnchuu.Checked = true;
 
                     txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
@@ -465,7 +465,8 @@ namespace MasterTouroku_Tokuisaki {
                         obj.ShokutiFLG = Convert.ToInt32(splits[2]);
                         if (!(obj.ShokutiFLG == 0 || obj.ShokutiFLG == 1))
                         {
-                            err.ShowErrorMessage("E117");
+                            bl.ShowMessage("E117", "0", "1");
+                            //err.ShowErrorMessage("E117");
                             bl_List.Add(true);
                         }
                         bl_List.Add(Null_Check(obj.ShokutiFLG.ToString()));
@@ -493,9 +494,9 @@ namespace MasterTouroku_Tokuisaki {
 
                         //
                         obj.AliasKBN = Convert.ToInt32(splits[8]);
-                        if (!(obj.AliasKBN == 0 || obj.AliasKBN == 1))
+                        if (!(obj.AliasKBN == 1 || obj.AliasKBN == 2))
                         {
-                            err.ShowErrorMessage("E117");
+                            bl.ShowMessage("E117","1","2");
                             bl_List.Add(true);
                         }
                         bl_List.Add(Null_Check(obj.AliasKBN.ToString()));              
