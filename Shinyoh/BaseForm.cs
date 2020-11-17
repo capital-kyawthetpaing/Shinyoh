@@ -184,17 +184,24 @@ namespace Shinyoh
                         FunctionProcess(btn.Tag.ToString());
                     break;
                 case ButtonType.BType.Import:
-                    //if (bbl.ShowMessage("Q206") != DialogResult.Yes)
-                    //{
-                    //    PreviousCtrl.Focus();
-                    //}
-                    //else
                         FunctionProcess(btn.Tag.ToString());
                     break;
                 case ButtonType.BType.Save:
-                    FunctionProcess(btn.Tag.ToString());
+                    if(cboMode.SelectedValue.ToString() =="1" || cboMode.SelectedValue.ToString() =="2")
+                    {
+                        if (bbl.ShowMessage("Q101") != DialogResult.Yes)
+                            PreviousCtrl.Focus();
+                        else
+                            FunctionProcess(btn.Tag.ToString());
+                    }
+                    else if(cboMode.SelectedValue.ToString()=="3")
+                    {
+                        if (bbl.ShowMessage("Q102") != DialogResult.Yes)
+                            PreviousCtrl.Focus();
+                        else
+                            FunctionProcess(btn.Tag.ToString());
+                    }
                     break;
-
             }
         }
 
