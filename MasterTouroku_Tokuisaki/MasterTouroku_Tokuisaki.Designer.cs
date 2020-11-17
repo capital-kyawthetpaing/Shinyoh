@@ -416,7 +416,7 @@
             this.txtPhNo6.IsErrorOccurs = false;
             this.txtPhNo6.IsRequire = false;
             this.txtPhNo6.Location = new System.Drawing.Point(370, 370);
-            this.txtPhNo6.MaxLength = 5;
+            this.txtPhNo6.MaxLength = 4;
             this.txtPhNo6.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo6.MoveNext = true;
             this.txtPhNo6.Name = "txtPhNo6";
@@ -439,7 +439,7 @@
             this.txtPhNo5.IsErrorOccurs = false;
             this.txtPhNo5.IsRequire = false;
             this.txtPhNo5.Location = new System.Drawing.Point(247, 370);
-            this.txtPhNo5.MaxLength = 5;
+            this.txtPhNo5.MaxLength = 4;
             this.txtPhNo5.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo5.MoveNext = true;
             this.txtPhNo5.Name = "txtPhNo5";
@@ -462,7 +462,7 @@
             this.txtPhNo4.IsErrorOccurs = false;
             this.txtPhNo4.IsRequire = false;
             this.txtPhNo4.Location = new System.Drawing.Point(141, 369);
-            this.txtPhNo4.MaxLength = 6;
+            this.txtPhNo4.MaxLength = 5;
             this.txtPhNo4.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo4.MoveNext = true;
             this.txtPhNo4.Name = "txtPhNo4";
@@ -505,7 +505,7 @@
             this.txtPhNo3.IsErrorOccurs = false;
             this.txtPhNo3.IsRequire = false;
             this.txtPhNo3.Location = new System.Drawing.Point(370, 336);
-            this.txtPhNo3.MaxLength = 5;
+            this.txtPhNo3.MaxLength = 4;
             this.txtPhNo3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo3.MoveNext = true;
             this.txtPhNo3.Name = "txtPhNo3";
@@ -528,7 +528,7 @@
             this.txtPhNo2.IsErrorOccurs = false;
             this.txtPhNo2.IsRequire = false;
             this.txtPhNo2.Location = new System.Drawing.Point(247, 336);
-            this.txtPhNo2.MaxLength = 5;
+            this.txtPhNo2.MaxLength = 4;
             this.txtPhNo2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo2.MoveNext = true;
             this.txtPhNo2.Name = "txtPhNo2";
@@ -551,7 +551,7 @@
             this.txtPhNo1.IsErrorOccurs = false;
             this.txtPhNo1.IsRequire = false;
             this.txtPhNo1.Location = new System.Drawing.Point(141, 335);
-            this.txtPhNo1.MaxLength = 6;
+            this.txtPhNo1.MaxLength = 5;
             this.txtPhNo1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo1.MoveNext = true;
             this.txtPhNo1.Name = "txtPhNo1";
