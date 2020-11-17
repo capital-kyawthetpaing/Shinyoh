@@ -117,10 +117,14 @@ namespace Shinyoh_Search
                 {
                     ChangeDate.Text = CDate;
                     if (string.IsNullOrEmpty(this.Text))
+                    {
                         this.Focus();
+                    }
                     else
-                    ChangeDate.Focus();
-                    SendKeys.Send("{ENTER}");
+                    {
+                        ChangeDate.Focus();
+                        SendKeys.Send("{ENTER}");
+                    }
                 }
                 else
                 {
