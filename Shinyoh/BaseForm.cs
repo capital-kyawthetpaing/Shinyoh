@@ -17,6 +17,7 @@ namespace Shinyoh
         protected string CompanyCD { get; set; }
         protected string OperatorCD { get; set; }
         protected string PCID { get; set; }
+        protected string LoginDate { get;set;}
         #endregion
 
         BaseBL bbl;
@@ -97,6 +98,7 @@ namespace Shinyoh
             staffEntity = staffBL.GetStaffEntity(staffEntity);
             sLabel1.Text = staffEntity.StaffName;
             sLabel2.Text = staffEntity.LoginDate;
+            LoginDate = staffEntity.LoginDate;
 
             staffEntity.ProgramID = ProgramID;
             programEntity = staffBL.Staff_AccessCheck(staffEntity);
@@ -369,6 +371,7 @@ namespace Shinyoh
             obj.OperatorCD = OperatorCD;
             obj.ProgramID = ProgramID;
             obj.PC = PCID;
+            obj.LoginDate = LoginDate;
             return obj;
         }
 

@@ -78,6 +78,7 @@ namespace ChakuniNyuuryoku
                     break;
                 case Mode.Delete:
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
+                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
@@ -89,6 +90,7 @@ namespace ChakuniNyuuryoku
                     break;
                 case Mode.Inquiry:
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
+                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
@@ -315,6 +317,16 @@ namespace ChakuniNyuuryoku
         {
             //FunctionProcess(btnDisplay.Tag.ToString());
             GetData();
+        }
+
+        private void sbBrand_KeyDown(object sender, KeyEventArgs e)
+        {
+            multipurposeBL bl = new multipurposeBL();
+            string a = sbBrand.Text.ToString();
+            DataTable dt = bl.M_Multiporpose_SelectData(a, 1, string.Empty, string.Empty);
+
+            if (dt.Rows.Count > 0)
+                lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
         }
     }
 }

@@ -93,6 +93,7 @@
             this.lblMorokuchi = new Shinyoh_Controls.SLabel();
             this.txtCopyCD = new Shinyoh_Search.SearchBox();
             this.txtKouritenCD = new Shinyoh_Search.SearchBox();
+            this.btn_Copy = new Shinyoh_Controls.SButton();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -267,6 +268,7 @@
             this.Panel_Detail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_Detail.Controls.Add(this.btn_Copy);
             this.Panel_Detail.Controls.Add(this.lblTokuisakiRyakuName);
             this.Panel_Detail.Controls.Add(this.txtTokuisakiCD);
             this.Panel_Detail.Controls.Add(this.rdo_AliasKBN2);
@@ -1312,6 +1314,19 @@
             this.txtKouritenCD.TabIndex = 1;
             this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
+            // btn_Copy
+            // 
+            this.btn_Copy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btn_Copy.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btn_Copy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Copy.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_Copy.Location = new System.Drawing.Point(466, 15);
+            this.btn_Copy.Name = "btn_Copy";
+            this.btn_Copy.Size = new System.Drawing.Size(75, 23);
+            this.btn_Copy.TabIndex = 77;
+            this.btn_Copy.Text = "コピー";
+            this.btn_Copy.UseVisualStyleBackColor = false;
+            // 
             // MasterTourokuKouriten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1400,6 +1415,7 @@
         private Shinyoh_Controls.SLabel lblTitle;
         private Shinyoh_Search.SearchBox txtTokuisakiCD;
         private Shinyoh_Controls.SLabel lblTokuisakiRyakuName;
+        private Shinyoh_Controls.SButton btn_Copy;
     }
 }
 
