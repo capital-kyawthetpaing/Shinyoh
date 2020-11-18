@@ -52,6 +52,11 @@ namespace Shinyoh_Controls
                         rDt = sBL.Staff_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text,"E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Tokuisaki":
+                        TokuisakiBL tBL = new TokuisakiBL();
+                        rDt = tBL.M_Tokuisaki_Select(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E101"))
                 {
@@ -127,24 +132,7 @@ namespace Shinyoh_Controls
                     }
                 }
             }
-            if(sTextBox.E115)
-            {
-                DataTable dt = new DataTable();
-                string result = string.Empty;
-                switch(sTextBox.E115Type)
-                {
-                    case "ChakuniNyuuryoku":
-                        if (!string.IsNullOrEmpty(sTextBox.ctrlE115_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE115_2.Text))
-                        {
-                            chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
-                            dt = cbl.ChakuniNyuuryoku_Select(null, sTextBox.ctrlE115_2.Text, "E115");
-                            rDt = dt;
-                            result = dt.Rows[0]["MessageID"].ToString();
-                        }
-                        break;
-                }
-                
-            }
+
             if (sTextBox.E132)
             {
                 string result = string.Empty;
@@ -171,6 +159,12 @@ namespace Shinyoh_Controls
                     case "M_Tokuisaki":
                         TokuisakiBL tokuisakiBL = new TokuisakiBL();
                         dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text,string.Empty);
+                        rDt = dt;
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "M_Kouriten":
+                        KouritenBL objK = new KouritenBL();
+                        dt = objK.Kouriten_Select_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text, string.Empty);
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
@@ -232,11 +226,11 @@ namespace Shinyoh_Controls
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
                         break;
-                    case "ChakuniNyuuryoku":
-                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text))
+                    case "M_Kouriten":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
                         {
-                            chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
-                            dt = bl.ChakuniNyuuryoku_Select(sTextBox.ctrlE133_1.Text, null, "E133");
+                            KouritenBL objK = new KouritenBL();
+                            dt = objK.Kouriten_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty);
                             rDt = dt;
                             result = dt.Rows[0]["MessageID"].ToString();
                         }

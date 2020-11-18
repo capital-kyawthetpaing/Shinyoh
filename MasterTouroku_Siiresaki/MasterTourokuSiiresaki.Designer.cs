@@ -151,7 +151,7 @@
             this.lblSupplier_CopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplier_CopyDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplier_CopyDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSupplier_CopyDate.Location = new System.Drawing.Point(246, 34);
+            this.lblSupplier_CopyDate.Location = new System.Drawing.Point(247, 34);
             this.lblSupplier_CopyDate.Name = "lblSupplier_CopyDate";
             this.lblSupplier_CopyDate.Size = new System.Drawing.Size(100, 19);
             this.lblSupplier_CopyDate.TabIndex = 59;
@@ -164,7 +164,7 @@
             this.lblSupplier_CopyCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplier_CopyCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplier_CopyCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSupplier_CopyCD.Location = new System.Drawing.Point(246, 9);
+            this.lblSupplier_CopyCD.Location = new System.Drawing.Point(247, 9);
             this.lblSupplier_CopyCD.Name = "lblSupplier_CopyCD";
             this.lblSupplier_CopyCD.Size = new System.Drawing.Size(100, 19);
             this.lblSupplier_CopyCD.TabIndex = 58;
@@ -177,7 +177,7 @@
             this.lblClassification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblClassification.Location = new System.Drawing.Point(477, 9);
+            this.lblClassification.Location = new System.Drawing.Point(478, 9);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
             this.lblClassification.TabIndex = 60;
@@ -188,7 +188,7 @@
             // 
             this.rdo_Registragion.Checked = true;
             this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Registragion.Location = new System.Drawing.Point(615, 9);
+            this.rdo_Registragion.Location = new System.Drawing.Point(616, 9);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
             this.rdo_Registragion.NextControl = null;
@@ -202,7 +202,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Delete.Location = new System.Drawing.Point(712, 9);
+            this.rdo_Delete.Location = new System.Drawing.Point(713, 9);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -217,7 +217,6 @@
             this.Panel_Detail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Panel_Detail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Panel_Detail.Controls.Add(this.txtStaffCD);
             this.Panel_Detail.Controls.Add(this.lblStaffCD_Name);
             this.Panel_Detail.Controls.Add(this.chk_Flag);
@@ -269,7 +268,7 @@
             this.Panel_Detail.Controls.Add(this.txtSupplierName);
             this.Panel_Detail.Controls.Add(this.lblSupplierName);
             this.Panel_Detail.Controls.Add(this.lblMorokuchi);
-            this.Panel_Detail.Location = new System.Drawing.Point(-1, 75);
+            this.Panel_Detail.Location = new System.Drawing.Point(0, 75);
             this.Panel_Detail.Name = "Panel_Detail";
             this.Panel_Detail.Size = new System.Drawing.Size(1485, 707);
             this.Panel_Detail.TabIndex = 1;
@@ -1221,7 +1220,7 @@
             this.txtCopyDate.IsDatatableOccurs = null;
             this.txtCopyDate.IsErrorOccurs = false;
             this.txtCopyDate.IsRequire = false;
-            this.txtCopyDate.Location = new System.Drawing.Point(345, 34);
+            this.txtCopyDate.Location = new System.Drawing.Point(346, 34);
             this.txtCopyDate.MaxLength = 10;
             this.txtCopyDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCopyDate.MoveNext = true;
@@ -1248,7 +1247,7 @@
             this.txtCopyCD.IsErrorOccurs = false;
             this.txtCopyCD.IsRequire = false;
             this.txtCopyCD.lblName = null;
-            this.txtCopyCD.Location = new System.Drawing.Point(345, 9);
+            this.txtCopyCD.Location = new System.Drawing.Point(346, 9);
             this.txtCopyCD.MaxLength = 13;
             this.txtCopyCD.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtCopyCD.MoveNext = true;
