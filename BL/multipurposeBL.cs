@@ -80,11 +80,14 @@ namespace BL
             return dt;
         }
 
-       public DataTable M_Multiporpose_SelectData(string brandCD)
+       public DataTable M_Multiporpose_SelectData(string brandCD,int type,int id,int key)
        {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[1];
+            var parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@BrandCD",DbType.Int32) { Value = brandCD };
+            parameters[1] = new SqlParameter("@Type", DbType.Int32) { Value = type };
+            parameters[2] = new SqlParameter("@ID", DbType.Int32) { Value = id };
+            parameters[3] = new SqlParameter("@Key", DbType.Int32) { Value = key };
             DataTable dt = ckmdl.SelectDatatable("M_Multiporpose_SelectData", GetConnectionString(), parameters);
             return dt;
        }
