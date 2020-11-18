@@ -15,6 +15,7 @@ namespace Shinyoh_Search {
     public partial class TokuisakiSearch : SearchBase {
         public string Tokuisaki = string.Empty;
         public string ChangeDate = string.Empty;
+        public string TokuisakiRyakuName = string.Empty;
         public TokuisakiSearch()
         {
             InitializeComponent();
@@ -61,6 +62,7 @@ namespace Shinyoh_Search {
             if (dt.Columns.Contains("CurrentDay"))
             {
                 lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                dt.Columns.Remove("CurrentDay");
             }
             gvTokuisaki.DataSource = dt;
         }
@@ -76,6 +78,7 @@ namespace Shinyoh_Search {
                 DataGridViewRow row = gvrow;
                 Tokuisaki = row.Cells["colTokuisakiCD"].Value.ToString();
                 ChangeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
+                TokuisakiRyakuName = row.Cells["colTokuisakiRyakuName"].Value.ToString();
                 this.Close();
             }
         }

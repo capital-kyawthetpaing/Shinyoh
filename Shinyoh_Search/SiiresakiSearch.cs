@@ -3,6 +3,7 @@ using Entity;
 using Shinyoh;
 using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Shinyoh_Search
