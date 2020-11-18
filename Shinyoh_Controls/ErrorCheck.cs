@@ -168,6 +168,12 @@ namespace Shinyoh_Controls
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "ChakuniNyuuryoku":
+                        chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
+                        dt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE133_1.Text, null, "E132");
+                        rDt = dt;
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
                     case "denpyou":
                         DenpyouNOEntity denpyou_entity = new DenpyouNOEntity();
                         DenpyouNOBL denpyou_bl = new DenpyouNOBL();
@@ -238,6 +244,12 @@ namespace Shinyoh_Controls
                         denpyou_entity.MessageID = "E133";
                         rDt = denpyou_bl.DenpyouNO_Check(denpyou_entity);
                         result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "ChakuniNyuuryoku":
+                        chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
+                        dt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE133_1.Text, null, "E133");
+                        rDt = dt;
+                        result = dt.Rows[0]["MessageID"].ToString();
                         break;
                 }
                 if (result.Equals("E133"))
