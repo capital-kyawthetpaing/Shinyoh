@@ -98,8 +98,8 @@ namespace Shinyoh_Controls
         public string E132Type;  
         public bool E133;
         public string E133Type;
-        public bool E115;//ses
-        public string E115Type;
+        public bool E268;
+        public string E268Type;
         //public bool E142;
         public bool E166;
         public bool E270;
@@ -113,11 +113,10 @@ namespace Shinyoh_Controls
         public Control ctrlE102_2;
         public Control ctrlE104_1;
         public Control ctrlE104_2;
+        public Control ctrlE268_1;
+        public Control ctrlE268_2;
         public Control ctrlE106_1;
         public Control ctrlE106_2;
-        public Control ctrlE115_1;
-        public Control ctrlE115_2;
-        public Control ctrlE115_3;
         public Control ctrlE132_1;
         public Control ctrlE132_2;
         public Control ctrlE132_3;
@@ -293,12 +292,7 @@ namespace Shinyoh_Controls
             ctrlE104_1 = ctrl1;
             ctrlE104_2 = ctrl2;
         }
-        public void E115Check(bool value, string v, Control ctrl1, STextBox txtArrivalDate, Control ctrl2)
-        {
-            E104 = value;
-            ctrlE115_1 = ctrl1;
-            ctrlE115_2 = ctrl2;
-        }
+       
         public void E106Check(bool value, Control ctrl1, Control ctrl2)
         {
             E106 = value;
@@ -321,6 +315,13 @@ namespace Shinyoh_Controls
             ctrlE133_1 = ctrl1;
             ctrlE133_2 = ctrl2;
             ctrlE133_3 = ctrl3;
+        }
+        public void E268Check(bool value, string type, Control ctrl1, Control ctrl2)
+        {
+            E268 = value;
+            E268Type = type;
+            ctrlE268_1 = ctrl1;
+            ctrlE268_2 = ctrl2;
         }
         //public void E142Check(bool value)
         //{

@@ -66,7 +66,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Update:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku",txtArrivalNO,null,null);
-                    txtArrivalDate.E115Check(true, "ChakuniNyuuryoku", txtArrivalNO, txtArrivalDate, null);
+                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
@@ -263,6 +263,7 @@ namespace ChakuniNyuuryoku
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             sbWareHouse.E102Check(true);
             sbWareHouse.E101Check(true, "souko", sbWareHouse, null, null);
+            txtScheduledNo.E133Check(true, "M_Siiresaki", txtScheduledNo, txtArrivalDate, null);
         }
         private void txtArrivalNO_KeyDown(object sender, KeyEventArgs e)
         {

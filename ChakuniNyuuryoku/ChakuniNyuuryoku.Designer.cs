@@ -44,7 +44,6 @@
             this.sLabel9 = new Shinyoh_Controls.SLabel();
             this.sLabel10 = new Shinyoh_Controls.SLabel();
             this.sLabel11 = new Shinyoh_Controls.SLabel();
-            this.txtScheduledNo = new Shinyoh_Controls.STextBox();
             this.txtShouhinCD = new Shinyoh_Controls.STextBox();
             this.txtShouhinName = new Shinyoh_Controls.STextBox();
             this.txtControlNo = new Shinyoh_Controls.STextBox();
@@ -86,6 +85,7 @@
             this.lblWareHouse = new Shinyoh_Controls.SLabel();
             this.lblBrandName = new Shinyoh_Controls.SLabel();
             this.panelDetails = new System.Windows.Forms.Panel();
+            this.txtScheduledNo = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
@@ -373,28 +373,6 @@
             this.sLabel11.TabIndex = 11;
             this.sLabel11.Text = "JANCD";
             this.sLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtScheduledNo
-            // 
-            this.txtScheduledNo.AllowMinus = false;
-            this.txtScheduledNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtScheduledNo.DecimalPlace = 0;
-            this.txtScheduledNo.DepandOnMode = true;
-            this.txtScheduledNo.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtScheduledNo.IntegerPart = 0;
-            this.txtScheduledNo.IsDatatableOccurs = null;
-            this.txtScheduledNo.IsErrorOccurs = false;
-            this.txtScheduledNo.IsRequire = false;
-            this.txtScheduledNo.Location = new System.Drawing.Point(264, 118);
-            this.txtScheduledNo.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtScheduledNo.MoveNext = true;
-            this.txtScheduledNo.Name = "txtScheduledNo";
-            this.txtScheduledNo.NextControl = this.txtShouhinCD;
-            this.txtScheduledNo.NextControlName = null;
-            this.txtScheduledNo.SearchType = Entity.SearchType.ScType.None;
-            this.txtScheduledNo.Size = new System.Drawing.Size(100, 19);
-            this.txtScheduledNo.TabIndex = 12;
-            this.txtScheduledNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtShouhinCD
             // 
@@ -897,6 +875,7 @@
             // 
             // panelDetails
             // 
+            this.panelDetails.Controls.Add(this.txtScheduledNo);
             this.panelDetails.Controls.Add(this.txtStaffCD);
             this.panelDetails.Controls.Add(this.txtSiiresaki);
             this.panelDetails.Controls.Add(this.sLabel4);
@@ -929,7 +908,6 @@
             this.panelDetails.Controls.Add(this.sLabel15);
             this.panelDetails.Controls.Add(this.sLabel14);
             this.panelDetails.Controls.Add(this.sLabel9);
-            this.panelDetails.Controls.Add(this.txtScheduledNo);
             this.panelDetails.Controls.Add(this.txtShouhinName);
             this.panelDetails.Controls.Add(this.txtJANCD);
             this.panelDetails.Controls.Add(this.sLabel10);
@@ -942,6 +920,31 @@
             this.panelDetails.Name = "panelDetails";
             this.panelDetails.Size = new System.Drawing.Size(1480, 500);
             this.panelDetails.TabIndex = 45;
+            // 
+            // txtScheduledNo
+            // 
+            this.txtScheduledNo.AllowMinus = false;
+            this.txtScheduledNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtScheduledNo.ChangeDate = null;
+            this.txtScheduledNo.Combo = null;
+            this.txtScheduledNo.DecimalPlace = 0;
+            this.txtScheduledNo.DepandOnMode = false;
+            this.txtScheduledNo.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtScheduledNo.IntegerPart = 0;
+            this.txtScheduledNo.IsDatatableOccurs = null;
+            this.txtScheduledNo.IsErrorOccurs = false;
+            this.txtScheduledNo.IsRequire = false;
+            this.txtScheduledNo.lblName = null;
+            this.txtScheduledNo.Location = new System.Drawing.Point(264, 118);
+            this.txtScheduledNo.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtScheduledNo.MoveNext = true;
+            this.txtScheduledNo.Name = "txtScheduledNo";
+            this.txtScheduledNo.NextControl = null;
+            this.txtScheduledNo.NextControlName = "txtShouhinCD";
+            this.txtScheduledNo.SearchType = Entity.SearchType.ScType.Siiresaki;
+            this.txtScheduledNo.Size = new System.Drawing.Size(100, 19);
+            this.txtScheduledNo.TabIndex = 47;
+            this.txtScheduledNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // ChakuniNyuuryoku
             // 
@@ -978,7 +981,6 @@
         private Shinyoh_Controls.SLabel sLabel9;
         private Shinyoh_Controls.SLabel sLabel10;
         private Shinyoh_Controls.SLabel sLabel11;
-        private Shinyoh_Controls.STextBox txtScheduledNo;
         private Shinyoh_Controls.STextBox txtShouhinCD;
         private Shinyoh_Controls.STextBox txtShouhinName;
         private Shinyoh_Controls.STextBox txtControlNo;
@@ -1025,6 +1027,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colOrderNo;
         private Shinyoh_Search.SearchBox txtSiiresaki;
         private Shinyoh_Search.SearchBox txtStaffCD;
+        private Shinyoh_Search.SearchBox txtScheduledNo;
     }
 }
 
