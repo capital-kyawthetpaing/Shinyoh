@@ -73,6 +73,7 @@
             this.lblOrderNo = new Shinyoh_Controls.SLabel();
             this.lblOrderDate = new Shinyoh_Controls.SLabel();
             this.lblName = new Shinyoh_Controls.SLabel();
+            this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +91,7 @@
             this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
             this.PanelDetail.Controls.Add(this.lblKanzen2);
             this.PanelDetail.Controls.Add(this.label5);
             this.PanelDetail.Controls.Add(this.label6);
@@ -921,6 +923,18 @@
             this.lblName.Text = "名称";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblStaffCD_Name
+            // 
+            this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
+            this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblStaffCD_Name.Location = new System.Drawing.Point(221, 120);
+            this.lblStaffCD_Name.Name = "lblStaffCD_Name";
+            this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblStaffCD_Name.TabIndex = 98;
+            this.lblStaffCD_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // JuchuuList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -990,6 +1004,7 @@
         private Shinyoh_Controls.STextBox txtPhNo2;
         private Shinyoh_Controls.STextBox txtPhNo1;
         private Shinyoh_Controls.SLabel lblPhNo;
+        private Shinyoh_Controls.SLabel lblStaffCD_Name;
     }
 }
 
