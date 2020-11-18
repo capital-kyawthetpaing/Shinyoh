@@ -56,7 +56,9 @@ namespace MasterTouroku_Kouriten
             //Enable && Disable
             cf.Clear(PanelTitle);
             cf.Clear(Panel_Detail);
+            rdo_AliasKBN1.Checked = true;
             lblStaffCD_Name.Text = string.Empty;
+            lblTokuisakiRyakuName.Text = string.Empty;
 
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(Panel_Detail);
@@ -64,6 +66,7 @@ namespace MasterTouroku_Kouriten
             txtKouritenCD.Focus();
             txtKensakuHyouziJun.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
             switch (mode)
             {
@@ -91,7 +94,7 @@ namespace MasterTouroku_Kouriten
                 case Mode.Update:
                     ErrorCheck();
 
-                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, txtYubin1.Text, txtYubin2.Text);
+                    //txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, txtYubin1.Text, txtYubin2.Text);
 
                     txtChangeDate.E132Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
@@ -115,6 +118,7 @@ namespace MasterTouroku_Kouriten
                 case Mode.Inquiry:
                     txtChangeDate.E132Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
+                    txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
                     Disable_UDI_Mode();
 
@@ -134,7 +138,7 @@ namespace MasterTouroku_Kouriten
 
             txtKouritenName.E102Check(true);
             txtKouritenRyakuName.E102Check(true);
-            txtKanaName.E102Check(true);
+            //txtKanaName.E102Check(true);
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
 
             txtTokuisakiCD.E102Check(true);
@@ -340,6 +344,10 @@ namespace MasterTouroku_Kouriten
                 txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
                 txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
                 txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
+                lblTokuisakiRyakuName.Text= dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                if (dt.Rows[0]["AliasKBN"].ToString() == "1")
+                    rdo_AliasKBN1.Checked = true;
+                else rdo_AliasKBN2.Checked = true;
                 txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
                 txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
                 txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
@@ -414,7 +422,17 @@ namespace MasterTouroku_Kouriten
             {
                 DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
                 if (dt.Rows.Count > 0)
-                    sLabel6.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                    lblTokuisakiRyakuName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+            }
+        }
+
+        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!txtStaffCD.IsErrorOccurs)
+            {
+                DataTable dt = txtStaffCD.IsDatatableOccurs;
+                if (dt.Rows.Count > 0)
+                    lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
             }
         }
     }

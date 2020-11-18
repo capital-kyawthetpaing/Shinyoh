@@ -40,7 +40,7 @@
             this.txtKouritenCD = new Shinyoh_Search.SearchBox();
             this.txtCopyCD = new Shinyoh_Search.SearchBox();
             this.Panel_Detail = new System.Windows.Forms.Panel();
-            this.sLabel6 = new Shinyoh_Controls.SLabel();
+            this.lblTokuisakiRyakuName = new Shinyoh_Controls.SLabel();
             this.txtTokuisakiCD = new Shinyoh_Search.SearchBox();
             this.rdo_AliasKBN2 = new Shinyoh_Controls.SRadio();
             this.rdo_AliasKBN1 = new Shinyoh_Controls.SRadio();
@@ -319,7 +319,7 @@
             this.Panel_Detail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Panel_Detail.Controls.Add(this.sLabel6);
+            this.Panel_Detail.Controls.Add(this.lblTokuisakiRyakuName);
             this.Panel_Detail.Controls.Add(this.txtTokuisakiCD);
             this.Panel_Detail.Controls.Add(this.rdo_AliasKBN2);
             this.Panel_Detail.Controls.Add(this.rdo_AliasKBN1);
@@ -377,17 +377,17 @@
             this.Panel_Detail.Size = new System.Drawing.Size(1485, 707);
             this.Panel_Detail.TabIndex = 1;
             // 
-            // sLabel6
+            // lblTokuisakiRyakuName
             // 
-            this.sLabel6.BackColor = System.Drawing.SystemColors.Control;
-            this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.sLabel6.Location = new System.Drawing.Point(386, 31);
-            this.sLabel6.Name = "sLabel6";
-            this.sLabel6.Size = new System.Drawing.Size(200, 19);
-            this.sLabel6.TabIndex = 76;
-            this.sLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTokuisakiRyakuName.BackColor = System.Drawing.SystemColors.Control;
+            this.lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTokuisakiRyakuName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTokuisakiRyakuName.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.lblTokuisakiRyakuName.Location = new System.Drawing.Point(241, 16);
+            this.lblTokuisakiRyakuName.Name = "lblTokuisakiRyakuName";
+            this.lblTokuisakiRyakuName.Size = new System.Drawing.Size(200, 19);
+            this.lblTokuisakiRyakuName.TabIndex = 76;
+            this.lblTokuisakiRyakuName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtTokuisakiCD
             // 
@@ -495,6 +495,7 @@
             this.txtStaffCD.Size = new System.Drawing.Size(70, 19);
             this.txtStaffCD.TabIndex = 26;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
             // 
             // lblStaffCD_Name
             // 
@@ -1396,7 +1397,7 @@
         private Shinyoh_Controls.SRadio rdo_AliasKBN1;
         private Shinyoh_Controls.SLabel lblTitle;
         private Shinyoh_Search.SearchBox txtTokuisakiCD;
-        private Shinyoh_Controls.SLabel sLabel6;
+        private Shinyoh_Controls.SLabel lblTokuisakiRyakuName;
     }
 }
 
