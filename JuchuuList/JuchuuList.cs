@@ -26,6 +26,7 @@ namespace JuchuuList {
             txtOrderDate1.Focus();
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             txtStaffCD.lblName = lblStaffCD_Name;
             string today = DateTime.Today.ToString("yyyy/MM/dd");
             txtOrderDate1.Text = today;
@@ -49,7 +50,11 @@ namespace JuchuuList {
         }
         private void ErrorCheck()
         {
-            //txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, , null);
+            //txtStaffCD.E101Check(true, "M_Staff", txtStaffCD,null , null);
+           // txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, null, null);
+
+            txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+            txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
             txtOrderDate1.E102Check(true);
             txtOrderDate2.E102Check(true);
@@ -72,6 +77,18 @@ namespace JuchuuList {
 
             if (dt.Rows.Count > 0)
                 lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
+        }
+
+        private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                {
+                    DataTable dt = txtYubin2.IsDatatableOccurs;
+                    txtAddress.Text = dt.Rows[0]["Juusho1"].ToString();
+                }
+            }
         }
     }
 }

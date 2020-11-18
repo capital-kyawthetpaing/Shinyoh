@@ -27,6 +27,7 @@
         private void InitializeComponent()
         {
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.lblBrandName = new Shinyoh_Controls.SLabel();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.lblKanzen2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -74,7 +75,7 @@
             this.lblOrderNo = new Shinyoh_Controls.SLabel();
             this.lblOrderDate = new Shinyoh_Controls.SLabel();
             this.lblName = new Shinyoh_Controls.SLabel();
-            this.lblBrandName = new Shinyoh_Controls.SLabel();
+            this.lblTokuisakiName = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
@@ -92,6 +93,7 @@
             this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelDetail.Controls.Add(this.lblTokuisakiName);
             this.PanelDetail.Controls.Add(this.lblBrandName);
             this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
             this.PanelDetail.Controls.Add(this.lblKanzen2);
@@ -144,6 +146,18 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
             this.PanelDetail.TabIndex = 3;
+            // 
+            // lblBrandName
+            // 
+            this.lblBrandName.BackColor = System.Drawing.SystemColors.Control;
+            this.lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblBrandName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblBrandName.Location = new System.Drawing.Point(221, 154);
+            this.lblBrandName.Name = "lblBrandName";
+            this.lblBrandName.Size = new System.Drawing.Size(200, 19);
+            this.lblBrandName.TabIndex = 99;
+            this.lblBrandName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblStaffCD_Name
             // 
@@ -309,6 +323,7 @@
             this.txtYubin2.Size = new System.Drawing.Size(70, 19);
             this.txtYubin2.TabIndex = 17;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
             // 
             // txtYubin1
             // 
@@ -562,7 +577,7 @@
             this.txtTokuisaki.Name = "txtTokuisaki";
             this.txtTokuisaki.NextControl = null;
             this.txtTokuisaki.NextControlName = "txtStore";
-            this.txtTokuisaki.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtTokuisaki.SearchType = Entity.SearchType.ScType.Tokuisaki;
             this.txtTokuisaki.Size = new System.Drawing.Size(80, 19);
             this.txtTokuisaki.TabIndex = 12;
             this.txtTokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -938,17 +953,17 @@
             this.lblName.Text = "名称";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblBrandName
+            // lblTokuisakiName
             // 
-            this.lblBrandName.BackColor = System.Drawing.SystemColors.Control;
-            this.lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblBrandName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblBrandName.Location = new System.Drawing.Point(221, 154);
-            this.lblBrandName.Name = "lblBrandName";
-            this.lblBrandName.Size = new System.Drawing.Size(200, 19);
-            this.lblBrandName.TabIndex = 99;
-            this.lblBrandName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblTokuisakiName.BackColor = System.Drawing.SystemColors.Control;
+            this.lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTokuisakiName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTokuisakiName.Location = new System.Drawing.Point(221, 188);
+            this.lblTokuisakiName.Name = "lblTokuisakiName";
+            this.lblTokuisakiName.Size = new System.Drawing.Size(200, 19);
+            this.lblTokuisakiName.TabIndex = 100;
+            this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // JuchuuList
             // 
@@ -1021,6 +1036,7 @@
         private Shinyoh_Controls.SLabel lblPhNo;
         private Shinyoh_Controls.SLabel lblStaffCD_Name;
         private Shinyoh_Controls.SLabel lblBrandName;
+        private Shinyoh_Controls.SLabel lblTokuisakiName;
     }
 }
 
