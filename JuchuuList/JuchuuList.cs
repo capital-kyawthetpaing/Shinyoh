@@ -72,8 +72,8 @@ namespace JuchuuList {
         private void txtBrand_KeyDown(object sender, KeyEventArgs e)
         {
             multipurposeBL bl = new multipurposeBL();
-            string a = txtBrand.Text.ToString();
-            DataTable dt = bl.M_Multiporpose_SelectData(a,1,1,1);
+            string brandName = txtBrand.Text.ToString();
+            DataTable dt = bl.M_Multiporpose_SelectData(brandName, 1,string.Empty,string.Empty);
 
             if (dt.Rows.Count > 0)
                 lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
