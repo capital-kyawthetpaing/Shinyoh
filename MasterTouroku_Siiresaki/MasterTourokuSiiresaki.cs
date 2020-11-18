@@ -118,6 +118,7 @@ namespace MasterTouroku_Siiresaki
                 case Mode.Inquiry:
                     txtChangeDate.E132Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
+                    txtChangeDate.E270Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate);
 
                     Disable_UDI_Mode();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
