@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 namespace JuchuuList {
     public partial class JuchuuList : BaseForm {
+        BaseEntity baseEntity=new BaseEntity();
         public JuchuuList()
         {
             InitializeComponent();
@@ -50,8 +51,9 @@ namespace JuchuuList {
         }
         private void ErrorCheck()
         {
+            txtDate.Text = baseEntity.LoginDate;
             //txtStaffCD.E101Check(true, "M_Staff", txtStaffCD,null , null);
-           // txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, null, null);
+            txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtDate, null);
 
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
