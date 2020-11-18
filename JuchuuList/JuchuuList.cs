@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using BL;
+using Entity;
 using Shinyoh;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace JuchuuList {
             cboMode.Visible = false;
             txtOrderDate1.Focus();
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             txtStaffCD.lblName = lblStaffCD_Name;
             string today = DateTime.Today.ToString("yyyy/MM/dd");
             txtOrderDate1.Text = today;
@@ -61,6 +63,15 @@ namespace JuchuuList {
 
             txtOrderNo2.E106Check(true, txtOrderNo1, txtOrderNo2);
 
+        }
+        private void txtBrand_KeyDown(object sender, KeyEventArgs e)
+        {
+            multipurposeBL bl = new multipurposeBL();
+            string a = txtBrand.Text.ToString();
+            DataTable dt = bl.M_Multiporpose_SelectData(a);
+
+            if (dt.Rows.Count > 0)
+                lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
         }
     }
 }
