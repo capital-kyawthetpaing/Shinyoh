@@ -27,6 +27,7 @@
         private void InitializeComponent()
         {
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.txtDate = new Shinyoh_Controls.STextBox();
             this.lblTokuisakiName = new Shinyoh_Controls.SLabel();
             this.lblBrandName = new Shinyoh_Controls.SLabel();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
@@ -76,7 +77,6 @@
             this.lblOrderNo = new Shinyoh_Controls.SLabel();
             this.lblOrderDate = new Shinyoh_Controls.SLabel();
             this.lblName = new Shinyoh_Controls.SLabel();
-            this.txtDate = new Shinyoh_Controls.STextBox();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
@@ -148,6 +148,29 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
             this.PanelDetail.TabIndex = 3;
+            // 
+            // txtDate
+            // 
+            this.txtDate.AllowMinus = false;
+            this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDate.DecimalPlace = 0;
+            this.txtDate.DepandOnMode = true;
+            this.txtDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtDate.IntegerPart = 0;
+            this.txtDate.IsDatatableOccurs = null;
+            this.txtDate.IsErrorOccurs = false;
+            this.txtDate.IsRequire = false;
+            this.txtDate.Location = new System.Drawing.Point(1105, 51);
+            this.txtDate.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtDate.MoveNext = true;
+            this.txtDate.Name = "txtDate";
+            this.txtDate.NextControl = null;
+            this.txtDate.NextControlName = null;
+            this.txtDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtDate.Size = new System.Drawing.Size(100, 19);
+            this.txtDate.TabIndex = 101;
+            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtDate.Visible = false;
             // 
             // lblTokuisakiName
             // 
@@ -595,6 +618,7 @@
             this.txtTokuisaki.Size = new System.Drawing.Size(80, 19);
             this.txtTokuisaki.TabIndex = 12;
             this.txtTokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTokuisaki.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisaki_KeyDown);
             // 
             // txtBrand
             // 
@@ -966,29 +990,6 @@
             this.lblName.TabIndex = 39;
             this.lblName.Text = "名称";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtDate
-            // 
-            this.txtDate.AllowMinus = false;
-            this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDate.DecimalPlace = 0;
-            this.txtDate.DepandOnMode = true;
-            this.txtDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtDate.IntegerPart = 0;
-            this.txtDate.IsDatatableOccurs = null;
-            this.txtDate.IsErrorOccurs = false;
-            this.txtDate.IsRequire = false;
-            this.txtDate.Location = new System.Drawing.Point(1105, 51);
-            this.txtDate.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtDate.MoveNext = true;
-            this.txtDate.Name = "txtDate";
-            this.txtDate.NextControl = null;
-            this.txtDate.NextControlName = null;
-            this.txtDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtDate.Size = new System.Drawing.Size(100, 19);
-            this.txtDate.TabIndex = 101;
-            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtDate.Visible = false;
             // 
             // JuchuuList
             // 

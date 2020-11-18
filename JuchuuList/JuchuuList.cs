@@ -29,11 +29,11 @@ namespace JuchuuList {
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             txtStaffCD.lblName = lblStaffCD_Name;
-            string today = DateTime.Today.ToString("yyyy/MM/dd");
-            txtOrderDate1.Text = today;
-            txtOrderDate2.Text = today;
-            txtInputDate1.Text = today;
-            txtInputDate2.Text = today;
+           // string today = DateTime.Today.ToString("yyyy/MM/dd");
+             txtOrderDate1.Text = baseEntity.LoginDate;
+            //txtOrderDate2.Text = today;
+            //txtInputDate1.Text = today;
+            //txtInputDate2.Text = today;
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", false);
@@ -89,6 +89,26 @@ namespace JuchuuList {
                 {
                     DataTable dt = txtYubin2.IsDatatableOccurs;
                     txtAddress.Text = dt.Rows[0]["Juusho1"].ToString();
+                }
+            }
+        }
+
+        private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
+        
+        {
+            if (!txtTokuisaki.IsErrorOccurs)
+            {
+                TokuisakiBL bl = new TokuisakiBL();
+                DataTable dt = bl.M_Tokuisaki_Select(txtTokuisaki.Text,txtDate.Text, "E101");
+                if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("0"))
+                {
+                    txtName.Enabled = false;
+                    txtYubin1.Enabled = false;
+                    txtYubin2.Enabled = false;
+                    txtAddress.Enabled = false;
+                    txtPhNo1.Enabled = false;
+                    txtPhNo2.Enabled = false;
+                    txtPhNo3.Enabled = false;
                 }
             }
         }
