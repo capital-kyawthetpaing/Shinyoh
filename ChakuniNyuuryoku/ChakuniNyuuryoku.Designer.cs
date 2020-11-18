@@ -901,6 +901,7 @@
             // 
             // colArrivalNo
             // 
+            this.colArrivalNo.DataPropertyName = "ChakuniYoteiSuu";
             this.colArrivalNo.HeaderText = "着荷予定数";
             this.colArrivalNo.Name = "colArrivalNo";
             // 
@@ -924,6 +925,7 @@
             // 
             // colDetails
             // 
+            this.colDetails.DataPropertyName = "null";
             this.colDetails.HeaderText = "明細摘要";
             this.colDetails.Name = "colDetails";
             this.colDetails.Width = 260;
