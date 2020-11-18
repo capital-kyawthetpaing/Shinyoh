@@ -182,7 +182,7 @@
             this.txtPhNo3.IsErrorOccurs = false;
             this.txtPhNo3.IsRequire = false;
             this.txtPhNo3.Location = new System.Drawing.Point(370, 422);
-            this.txtPhNo3.MaxLength = 4;
+            this.txtPhNo3.MaxLength = 5;
             this.txtPhNo3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo3.MoveNext = true;
             this.txtPhNo3.Name = "txtPhNo3";
@@ -205,7 +205,7 @@
             this.txtPhNo2.IsErrorOccurs = false;
             this.txtPhNo2.IsRequire = false;
             this.txtPhNo2.Location = new System.Drawing.Point(247, 422);
-            this.txtPhNo2.MaxLength = 4;
+            this.txtPhNo2.MaxLength = 5;
             this.txtPhNo2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo2.MoveNext = true;
             this.txtPhNo2.Name = "txtPhNo2";
@@ -228,7 +228,7 @@
             this.txtPhNo1.IsErrorOccurs = false;
             this.txtPhNo1.IsRequire = false;
             this.txtPhNo1.Location = new System.Drawing.Point(141, 421);
-            this.txtPhNo1.MaxLength = 5;
+            this.txtPhNo1.MaxLength = 6;
             this.txtPhNo1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo1.MoveNext = true;
             this.txtPhNo1.Name = "txtPhNo1";
@@ -342,6 +342,7 @@
             this.txtAddress.IsRequire = false;
             this.txtAddress.lblName = null;
             this.txtAddress.Location = new System.Drawing.Point(141, 387);
+            this.txtAddress.MaxLength = 40;
             this.txtAddress.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtAddress.MoveNext = true;
             this.txtAddress.Name = "txtAddress";
@@ -401,7 +402,7 @@
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = false;
             this.txtName.Location = new System.Drawing.Point(141, 321);
-            this.txtName.MaxLength = 10;
+            this.txtName.MaxLength = 20;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtName.MoveNext = true;
             this.txtName.Name = "txtName";
@@ -473,7 +474,7 @@
             this.txtYear.IsErrorOccurs = false;
             this.txtYear.IsRequire = false;
             this.txtYear.Location = new System.Drawing.Point(615, 154);
-            this.txtYear.MaxLength = 10;
+            this.txtYear.MaxLength = 4;
             this.txtYear.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYear.MoveNext = true;
             this.txtYear.Name = "txtYear";
@@ -513,6 +514,7 @@
             this.txtStore.IsRequire = false;
             this.txtStore.lblName = null;
             this.txtStore.Location = new System.Drawing.Point(141, 223);
+            this.txtStore.MaxLength = 10;
             this.txtStore.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtStore.MoveNext = true;
             this.txtStore.Name = "txtStore";
@@ -538,6 +540,7 @@
             this.txtTokuisaki.IsRequire = false;
             this.txtTokuisaki.lblName = null;
             this.txtTokuisaki.Location = new System.Drawing.Point(141, 188);
+            this.txtTokuisaki.MaxLength = 10;
             this.txtTokuisaki.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtTokuisaki.MoveNext = true;
             this.txtTokuisaki.Name = "txtTokuisaki";
@@ -563,6 +566,7 @@
             this.txtBrand.IsRequire = false;
             this.txtBrand.lblName = null;
             this.txtBrand.Location = new System.Drawing.Point(141, 154);
+            this.txtBrand.MaxLength = 10;
             this.txtBrand.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtBrand.MoveNext = true;
             this.txtBrand.Name = "txtBrand";
@@ -588,6 +592,7 @@
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.lblName = null;
             this.txtStaffCD.Location = new System.Drawing.Point(141, 120);
+            this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtStaffCD.MoveNext = true;
             this.txtStaffCD.Name = "txtStaffCD";
@@ -676,7 +681,7 @@
             this.txtOrderNo2.IsErrorOccurs = false;
             this.txtOrderNo2.IsRequire = false;
             this.txtOrderNo2.Location = new System.Drawing.Point(298, 52);
-            this.txtOrderNo2.MaxLength = 10;
+            this.txtOrderNo2.MaxLength = 12;
             this.txtOrderNo2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtOrderNo2.MoveNext = true;
             this.txtOrderNo2.Name = "txtOrderNo2";
@@ -699,7 +704,7 @@
             this.txtOrderNo1.IsErrorOccurs = false;
             this.txtOrderNo1.IsRequire = false;
             this.txtOrderNo1.Location = new System.Drawing.Point(141, 51);
-            this.txtOrderNo1.MaxLength = 10;
+            this.txtOrderNo1.MaxLength = 12;
             this.txtOrderNo1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtOrderNo1.MoveNext = true;
             this.txtOrderNo1.Name = "txtOrderNo1";
@@ -778,7 +783,7 @@
             this.txtDestOrderNo.IsErrorOccurs = false;
             this.txtDestOrderNo.IsRequire = false;
             this.txtDestOrderNo.Location = new System.Drawing.Point(141, 258);
-            this.txtDestOrderNo.MaxLength = 80;
+            this.txtDestOrderNo.MaxLength = 20;
             this.txtDestOrderNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDestOrderNo.MoveNext = true;
             this.txtDestOrderNo.Name = "txtDestOrderNo";
