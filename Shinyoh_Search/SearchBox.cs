@@ -41,6 +41,9 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Staff:
                         colName = "StaffName";
                         break;
+                    case Entity.SearchType.ScType.Tokuisaki:
+                        colName = "TokuisakiRyakuName";
+                        break;
                 }
 
                 DataTable dt = this.IsDatatableOccurs;
@@ -90,6 +93,7 @@ namespace Shinyoh_Search
                         tokuisakiSearch.ShowDialog();
                         CD = tokuisakiSearch.Tokuisaki;
                         CDate = tokuisakiSearch.ChangeDate;
+                        name = tokuisakiSearch.TokuisakiRyakuName;
                         break;
                     case Entity.SearchType.ScType.multiporpose:
                         MultiPorposeSearch msearch = new MultiPorposeSearch();
@@ -98,6 +102,12 @@ namespace Shinyoh_Search
                             CD = msearch.Id;
                         else
                             CD = msearch.Key;
+                        break;
+                    case Entity.SearchType.ScType.Kouriten:
+                        KouritenSearch kSearch = new KouritenSearch();
+                        kSearch.ShowDialog();
+                        CD = kSearch.KouritenCD;
+                        CDate = kSearch.changeDate;
                         break;
                 }
 
@@ -128,8 +138,15 @@ namespace Shinyoh_Search
                 }
                 else
                 {
-                    Control control = this.TopLevelControl.Controls.Find(this.NextControlName, true)[0];
-                    control.Focus();
+                    if(this.Text=="")
+                    {
+                        this.Focus();
+                    }
+                    else
+                    {
+                        Control control = this.TopLevelControl.Controls.Find(this.NextControlName, true)[0];
+                        control.Focus();
+                    }
                 }
             }            
         }

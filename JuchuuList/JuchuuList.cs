@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 namespace JuchuuList {
     public partial class JuchuuList : BaseForm {
+        BaseEntity baseEntity=new BaseEntity();
         public JuchuuList()
         {
             InitializeComponent();
@@ -50,8 +51,9 @@ namespace JuchuuList {
         }
         private void ErrorCheck()
         {
+            txtDate.Text = baseEntity.LoginDate;
             //txtStaffCD.E101Check(true, "M_Staff", txtStaffCD,null , null);
-           // txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, null, null);
+            txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtDate, null);
 
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
@@ -72,8 +74,8 @@ namespace JuchuuList {
         private void txtBrand_KeyDown(object sender, KeyEventArgs e)
         {
             multipurposeBL bl = new multipurposeBL();
-            string a = txtBrand.Text.ToString();
-            DataTable dt = bl.M_Multiporpose_SelectData(a,1,1,1);
+            string brandName = txtBrand.Text.ToString();
+            DataTable dt = bl.M_Multiporpose_SelectData(brandName, 1,string.Empty,string.Empty);
 
             if (dt.Rows.Count > 0)
                 lblBrandName.Text = dt.Rows[0]["Char1"].ToString();

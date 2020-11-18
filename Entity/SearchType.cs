@@ -14,7 +14,8 @@ namespace Entity {
            Denpyou,
            Siiresaki,
            Tokuisaki,
-           multiporpose
+           multiporpose,
+            Kouriten
         }
     }
 }
