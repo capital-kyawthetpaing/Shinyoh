@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D8C6138D-32C2-4824-B667-D689882B5365}</ProjectGuid>
+    <ProjectGuid>{2F8DB9C1-F413-4E41-85BD-47CEDF4F25B0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MasterTouroku_Kouriten</RootNamespace>
-    <AssemblyName>MasterTouroku_Kouriten</AssemblyName>
+    <RootNamespace>ChakuniNyuuryoku</RootNamespace>
+    <AssemblyName>ChakuniNyuuryoku</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKM_CommonFunction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
+    <Reference Include="CKM_CommonFunction">
+      <HintPath>..\..\Users\Shwe Eain San\source\repos\capital-kyawthetpaing\Shinyoh\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,16 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MasterTourokuKouriten.cs">
+    <Compile Include="ChakuniNyuuryoku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MasterTourokuKouriten.Designer.cs">
-      <DependentUpon>MasterTourokuKouriten.cs</DependentUpon>
+    <Compile Include="ChakuniNyuuryoku.Designer.cs">
+      <DependentUpon>ChakuniNyuuryoku.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MasterTourokuKouriten.resx">
-      <DependentUpon>MasterTourokuKouriten.cs</DependentUpon>
+    <EmbeddedResource Include="ChakuniNyuuryoku.resx">
+      <DependentUpon>ChakuniNyuuryoku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,7 +100,7 @@
       <Name>Shinyoh_Controls</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
-      <Project>{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}</Project>
+      <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>
       <Name>Shinyoh_Search</Name>
     </ProjectReference>
   </ItemGroup>
