@@ -65,7 +65,7 @@
             this.btnDisplay = new Shinyoh_Controls.SButton();
             this.btnSave = new Shinyoh_Controls.SButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.sGridView1 = new Shinyoh_Controls.SGridView();
+            this.gvChakuniNyuuryoku = new Shinyoh_Controls.SGridView();
             this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,7 +88,7 @@
             this.panelDetails = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
             this.panelDetails.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -723,11 +723,11 @@
             this.label2.TabIndex = 34;
             this.label2.Text = "年";
             // 
-            // sGridView1
+            // gvChakuniNyuuryoku
             // 
-            this.sGridView1.AllowUserToAddRows = false;
-            this.sGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.sGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gvChakuniNyuuryoku.AllowUserToAddRows = false;
+            this.gvChakuniNyuuryoku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvChakuniNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
             this.colShouhinName,
             this.colColorRyakuName,
@@ -742,10 +742,10 @@
             this.colJANCD,
             this.colScheduledArrivalNo,
             this.colOrderNo});
-            this.sGridView1.Location = new System.Drawing.Point(2, 216);
-            this.sGridView1.Name = "sGridView1";
-            this.sGridView1.Size = new System.Drawing.Size(1475, 150);
-            this.sGridView1.TabIndex = 35;
+            this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(2, 216);
+            this.gvChakuniNyuuryoku.Name = "gvChakuniNyuuryoku";
+            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1475, 150);
+            this.gvChakuniNyuuryoku.TabIndex = 35;
             // 
             // colShouhinCD
             // 
@@ -900,7 +900,7 @@
             this.panelDetails.Controls.Add(this.txtStaffCD);
             this.panelDetails.Controls.Add(this.txtSiiresaki);
             this.panelDetails.Controls.Add(this.sLabel4);
-            this.panelDetails.Controls.Add(this.sGridView1);
+            this.panelDetails.Controls.Add(this.gvChakuniNyuuryoku);
             this.panelDetails.Controls.Add(this.lblBrandName);
             this.panelDetails.Controls.Add(this.btnSave);
             this.panelDetails.Controls.Add(this.label2);
@@ -957,7 +957,7 @@
             this.Controls.SetChildIndex(this.panelDetails, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.sGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).EndInit();
             this.panelDetails.ResumeLayout(false);
             this.panelDetails.PerformLayout();
             this.ResumeLayout(false);
@@ -1000,7 +1000,7 @@
         private Shinyoh_Controls.SButton btnDisplay;
         private Shinyoh_Controls.SButton btnSave;
         private System.Windows.Forms.Label label2;
-        private Shinyoh_Controls.SGridView sGridView1;
+        private Shinyoh_Controls.SGridView gvChakuniNyuuryoku;
         private Shinyoh_Controls.SButton sButton4;
         private Shinyoh_Controls.SLabel lblSiiresaki;
         private Shinyoh_Controls.SLabel lblStaff;
