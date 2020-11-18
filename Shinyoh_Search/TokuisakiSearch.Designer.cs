@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.rdo_All = new Shinyoh_Controls.SRadio();
             this.rdo_Date = new Shinyoh_Controls.SRadio();
@@ -46,6 +46,7 @@
             this.colTokuisakiCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTokuisakiName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChangeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTokuisakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvTokuisaki)).BeginInit();
             this.SuspendLayout();
@@ -306,7 +307,8 @@
             this.gvTokuisaki.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTokuisakiCD,
             this.colTokuisakiName,
-            this.colChangeDate});
+            this.colChangeDate,
+            this.colTokuisakiRyakuName});
             this.gvTokuisaki.Location = new System.Drawing.Point(45, 147);
             this.gvTokuisaki.Name = "gvTokuisaki";
             this.gvTokuisaki.Size = new System.Drawing.Size(768, 302);
@@ -330,13 +332,19 @@
             // colChangeDate
             // 
             this.colChangeDate.DataPropertyName = "ChangeDate";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Format = "yyyy/MM/dd";
-            dataGridViewCellStyle5.NullValue = null;
-            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Format = "yyyy/MM/dd";
+            dataGridViewCellStyle1.NullValue = null;
+            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.Width = 200;
+            // 
+            // colTokuisakiRyakuName
+            // 
+            this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
+            this.colTokuisakiRyakuName.HeaderText = "TokuisakiRyakuName";
+            this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
             // 
             // TokuisakiSearch
             // 
@@ -379,5 +387,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChangeDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiRyakuName;
     }
 }

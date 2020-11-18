@@ -33,6 +33,7 @@ namespace MasterTouroku_Siiresaki
             cboMode.Bind(false, multi_Entity);
 
             txtStaffCD.lblName = lblStaffCD_Name;
+            
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);

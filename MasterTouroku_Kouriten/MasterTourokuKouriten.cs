@@ -32,6 +32,9 @@ namespace MasterTouroku_Kouriten
             StartProgram();
             cboMode.Bind(false, multi_Entity);
 
+            txtStaffCD.lblName = lblStaffCD_Name;
+            txtTokuisakiCD.lblName = lblTokuisakiRyakuName;
+
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
             SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
@@ -49,6 +52,9 @@ namespace MasterTouroku_Kouriten
             txtKouritenCD.Focus();
 
             base_Entity = _GetBaseData();
+
+            txtKouritenCD.ChangeDate = txtChangeDate;
+            txtCopyCD.ChangeDate = txtCopyDate;
         }
 
         private void ChangeMode(Mode mode)
@@ -254,7 +260,9 @@ namespace MasterTouroku_Kouriten
             obj.KouritenRyakuName = txtKouritenRyakuName.Text;
             obj.KanaName = txtKanaName.Text;
             if (rdo_AliasKBN1.Checked)
+            {
                 obj.AliasKBN = "1";
+            }
             else obj.AliasKBN = "2";
             obj.YuubinNO1 = txtYubin1.Text;
             obj.YuubinNO2 = txtYubin2.Text;
@@ -434,6 +442,19 @@ namespace MasterTouroku_Kouriten
                 if (dt.Rows.Count > 0)
                     lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
             }
+        }
+
+        private void rdo_AliasKBN1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdo_AliasKBN1.Checked == true)
+                rdo_AliasKBN2.Checked = false;
+        }
+
+        private void rdo_AliasKBN2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdo_AliasKBN2.Checked == true)
+                rdo_AliasKBN1.Checked = false;
+           
         }
     }
 }

@@ -67,6 +67,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="KouritenSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KouritenSearch.Designer.cs">
+      <DependentUpon>KouritenSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="MultiPorposeSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DenpyouNoSearch.resx">
       <DependentUpon>DenpyouNoSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KouritenSearch.resx">
+      <DependentUpon>KouritenSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MultiPorposeSearch.resx">
       <DependentUpon>MultiPorposeSearch.cs</DependentUpon>
