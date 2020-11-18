@@ -294,7 +294,7 @@ namespace MasterTouroku_MultiPorpose
                 }
                 DataTable dt = new DataTable();
                 GetData();
-                dt = mbl.M_Multiporpose_SelectData(txtID.Text, txtKEY.Text);
+                dt = mbl.M_Multiporpose_SelectData(string.Empty,2,txtID.Text, txtKEY.Text);
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
                     DisplayData(dt);

@@ -132,7 +132,25 @@ namespace Shinyoh_Controls
                     }
                 }
             }
-
+            if(sTextBox.E268)
+            {
+                string result = string.Empty;
+                DataTable dt = new DataTable();
+                switch (sTextBox.E268Type)
+                {
+                    case "ChakuniNyuuryoku":
+                        chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
+                        rDt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE268_1.Text,string.Empty, "E268");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E268"))
+                {
+                    ShowErrorMessage("E268");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
             if (sTextBox.E132)
             {
                 string result = string.Empty;
@@ -170,7 +188,7 @@ namespace Shinyoh_Controls
                         break;
                     case "ChakuniNyuuryoku":
                         chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
-                        dt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE133_1.Text, null, "E132");
+                        dt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE132_1.Text, null, string.Empty);
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
@@ -247,7 +265,7 @@ namespace Shinyoh_Controls
                         break;
                     case "ChakuniNyuuryoku":
                         chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
-                        dt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE133_1.Text, null, "E133");
+                        dt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE133_1.Text,string.Empty, "E133");
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;

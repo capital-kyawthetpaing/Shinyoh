@@ -66,7 +66,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Update:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku",txtArrivalNO,null,null);
-                    txtArrivalDate.E115Check(true, "ChakuniNyuuryoku", txtArrivalNO, txtArrivalDate, null);
+                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
@@ -77,6 +77,7 @@ namespace ChakuniNyuuryoku
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
+                    txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
@@ -87,6 +88,7 @@ namespace ChakuniNyuuryoku
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
+                    txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
@@ -223,7 +225,7 @@ namespace ChakuniNyuuryoku
             //chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
             //chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
             DataTable dt = ab.ChakuniNyuuryoku_Display(chkEntity);
-            sGridView1.DataSource = dt;
+            gvChakuniNyuuryoku.DataSource = dt;
         }
         public string CheckValue()
         {
@@ -260,7 +262,8 @@ namespace ChakuniNyuuryoku
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             sbWareHouse.E102Check(true);
-            sbWareHouse.E101Check(false, "souko", sbWareHouse, null, null);
+            sbWareHouse.E101Check(true, "souko", sbWareHouse, null, null);
+            txtScheduledNo.E133Check(true, "M_Siiresaki", txtScheduledNo, txtArrivalDate, null);
         }
         private void txtArrivalNO_KeyDown(object sender, KeyEventArgs e)
         {
@@ -295,12 +298,14 @@ namespace ChakuniNyuuryoku
                     sbWareHouse.Text = dt.Rows[0]["SoukoCD"].ToString();
                     lblWareHouse.Text = dt.Rows[0]["SoukoName"].ToString();
                     txtDescription.Text = dt.Rows[0]["ChakuniDenpyouTekiyou"].ToString();
-                    txtScheduledNo.Text = dt.Rows[0]["ChakuniYoteiNO "].ToString();
+                    //txtScheduledNo.Text = dt.Rows[0]["ChakuniYoteiNO "].ToString();
                     txtShouhinCD.Text = dt.Rows[0]["ShouhinCD"].ToString();
                     txtShouhinName.Text = dt.Rows[0]["ShouhinName"].ToString();
+                    sbBrand.Text = dt.Rows[0]["BrandCD"].ToString();
                     txtJANCD.Text = dt.Rows[0]["JANCD"].ToString();
                     txtSize.Text = dt.Rows[0]["SizeNO"].ToString();
                     txtColor.Text = dt.Rows[0]["ColorNO"].ToString();
+                    gvChakuniNyuuryoku.DataSource = dt;
                 }
             }
         }
