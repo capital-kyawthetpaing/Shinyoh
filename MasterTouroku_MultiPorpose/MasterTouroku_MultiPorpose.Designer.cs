@@ -291,7 +291,7 @@
             this.sLabel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel20.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel20.Location = new System.Drawing.Point(40, 515);
+            this.sLabel20.Location = new System.Drawing.Point(40, 517);
             this.sLabel20.Name = "sLabel20";
             this.sLabel20.Size = new System.Drawing.Size(100, 19);
             this.sLabel20.TabIndex = 16;
@@ -595,7 +595,7 @@
             this.txtDate3.IsDatatableOccurs = null;
             this.txtDate3.IsErrorOccurs = false;
             this.txtDate3.IsRequire = false;
-            this.txtDate3.Location = new System.Drawing.Point(140, 515);
+            this.txtDate3.Location = new System.Drawing.Point(140, 517);
             this.txtDate3.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate3.MoveNext = true;
             this.txtDate3.Name = "txtDate3";
