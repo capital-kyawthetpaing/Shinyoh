@@ -25,7 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_DenpyouNO", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_Shouhin", "MasterTouroku_Shouhin\MasterTouroku_Shouhin.csproj", "{91A4FF22-D9CA-4D31-920B-6E649E703948}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChakuniNyuuryoku", "..\SES\ShinyonBackup\ChakuniNyuuryoku.csproj", "{2F8DB9C1-F413-4E41-85BD-47CEDF4F25B0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChakuniNyuuryoku", "ChakuniNyuuryoku\ChakuniNyuuryoku.csproj", "{2F8DB9C1-F413-4E41-85BD-47CEDF4F25B0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterTouroku_MultiPorpose", "MasterTouroku_MultiPorpose\MasterTouroku_MultiPorpose.csproj", "{ED085102-532C-4487-B495-1A1DAFB8DF40}"
 EndProject
