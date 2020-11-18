@@ -52,6 +52,11 @@ namespace Shinyoh_Controls
                         rDt = sBL.Staff_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text,"E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Tokuisaki":
+                        TokuisakiBL tBL = new TokuisakiBL();
+                        rDt = tBL.M_Tokuisaki_Select(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E101"))
                 {
@@ -157,6 +162,12 @@ namespace Shinyoh_Controls
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Kouriten":
+                        KouritenBL objK = new KouritenBL();
+                        dt = objK.Kouriten_Select_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text, string.Empty);
+                        rDt = dt;
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
                     case "denpyou":
                         DenpyouNOEntity denpyou_entity = new DenpyouNOEntity();
                         DenpyouNOBL denpyou_bl = new DenpyouNOBL();
@@ -205,6 +216,15 @@ namespace Shinyoh_Controls
                         {
                             TokuisakiBL tokuisakiBL = new TokuisakiBL();
                             dt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text,string.Empty);
+                            rDt = dt;
+                            result = dt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                    case "M_Kouriten":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
+                        {
+                            KouritenBL objK = new KouritenBL();
+                            dt = objK.Kouriten_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty);
                             rDt = dt;
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
