@@ -302,6 +302,14 @@ namespace Shinyoh_Controls
                             result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;
+                    case "M_Kouriten":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE270_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE270_2.Text))
+                        {
+                            KouritenBL objK = new KouritenBL();
+                            rDt = objK.Kouriten_Select_Check(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, "E270");
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
                 }
                 if (result.Equals("E270"))
                 {
