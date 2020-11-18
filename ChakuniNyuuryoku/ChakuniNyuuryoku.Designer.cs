@@ -65,6 +65,13 @@
             this.btnSave = new Shinyoh_Controls.SButton();
             this.label2 = new System.Windows.Forms.Label();
             this.gvChakuniNyuuryoku = new Shinyoh_Controls.SGridView();
+            this.sButton4 = new Shinyoh_Controls.SButton();
+            this.lblSiiresaki = new Shinyoh_Controls.SLabel();
+            this.lblStaff = new Shinyoh_Controls.SLabel();
+            this.lblWareHouse = new Shinyoh_Controls.SLabel();
+            this.lblBrandName = new Shinyoh_Controls.SLabel();
+            this.panelDetails = new System.Windows.Forms.Panel();
+            this.txtScheduledNo = new Shinyoh_Search.SearchBox();
             this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,13 +86,6 @@
             this.colJANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colScheduledArrivalNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colOrderNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sButton4 = new Shinyoh_Controls.SButton();
-            this.lblSiiresaki = new Shinyoh_Controls.SLabel();
-            this.lblStaff = new Shinyoh_Controls.SLabel();
-            this.lblWareHouse = new Shinyoh_Controls.SLabel();
-            this.lblBrandName = new Shinyoh_Controls.SLabel();
-            this.panelDetails = new System.Windows.Forms.Panel();
-            this.txtScheduledNo = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
@@ -487,6 +487,7 @@
             this.sbBrand.Size = new System.Drawing.Size(100, 19);
             this.sbBrand.TabIndex = 43;
             this.sbBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sbBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbBrand_KeyDown);
             // 
             // txtColor
             // 
@@ -725,93 +726,6 @@
             this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1475, 150);
             this.gvChakuniNyuuryoku.TabIndex = 35;
             // 
-            // colShouhinCD
-            // 
-            this.colShouhinCD.DataPropertyName = "ShouhinCD";
-            this.colShouhinCD.HeaderText = "商品";
-            this.colShouhinCD.Name = "colShouhinCD";
-            this.colShouhinCD.Width = 150;
-            // 
-            // colShouhinName
-            // 
-            this.colShouhinName.DataPropertyName = "ShouhinName";
-            this.colShouhinName.HeaderText = "商品名";
-            this.colShouhinName.Name = "colShouhinName";
-            this.colShouhinName.Width = 200;
-            // 
-            // colColorRyakuName
-            // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            this.colColorRyakuName.Width = 150;
-            // 
-            // colColorNO
-            // 
-            this.colColorNO.DataPropertyName = "ColorNO";
-            this.colColorNO.HeaderText = "カラー";
-            this.colColorNO.Name = "colColorNO";
-            // 
-            // colSizeNO
-            // 
-            this.colSizeNO.DataPropertyName = "SizeNO";
-            this.colSizeNO.HeaderText = "サイズ";
-            this.colSizeNO.Name = "colSizeNO";
-            // 
-            // colChakuniYoteiSuu
-            // 
-            this.colChakuniYoteiSuu.DataPropertyName = "ChakuniYoteiSuu";
-            this.colChakuniYoteiSuu.HeaderText = "着荷予定日";
-            this.colChakuniYoteiSuu.Name = "colChakuniYoteiSuu";
-            // 
-            // colArrivalNo
-            // 
-            this.colArrivalNo.HeaderText = "着荷予定数";
-            this.colArrivalNo.Name = "colArrivalNo";
-            // 
-            // colChakuniZumiSuu
-            // 
-            this.colChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
-            this.colChakuniZumiSuu.HeaderText = "着荷済数";
-            this.colChakuniZumiSuu.Name = "colChakuniZumiSuu";
-            // 
-            // colArrivalTime
-            // 
-            this.colArrivalTime.DataPropertyName = "ChakuniYoteiSuu - ChakuniZumiSuu";
-            this.colArrivalTime.HeaderText = "今回着荷数";
-            this.colArrivalTime.Name = "colArrivalTime";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "完了";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 70;
-            // 
-            // colDetails
-            // 
-            this.colDetails.HeaderText = "明細摘要";
-            this.colDetails.Name = "colDetails";
-            this.colDetails.Width = 260;
-            // 
-            // colJANCD
-            // 
-            this.colJANCD.DataPropertyName = "JANCD";
-            this.colJANCD.HeaderText = "JANCD";
-            this.colJANCD.Name = "colJANCD";
-            // 
-            // colScheduledArrivalNo
-            // 
-            this.colScheduledArrivalNo.DataPropertyName = "ChakuniYoteiNO + \'-\' + ChakuniYoteiGyouNO";
-            this.colScheduledArrivalNo.HeaderText = "着荷予定番号-行番号";
-            this.colScheduledArrivalNo.Name = "colScheduledArrivalNo";
-            this.colScheduledArrivalNo.Width = 150;
-            // 
-            // colOrderNo
-            // 
-            this.colOrderNo.DataPropertyName = "HacchuuNO + \'-\' + HacchuuGyouNO";
-            this.colOrderNo.HeaderText = "発注番号-行番号";
-            this.colOrderNo.Name = "colOrderNo";
-            // 
             // sButton4
             // 
             this.sButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -946,6 +860,95 @@
             this.txtScheduledNo.TabIndex = 47;
             this.txtScheduledNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
+            // colShouhinCD
+            // 
+            this.colShouhinCD.DataPropertyName = "ShouhinCD";
+            this.colShouhinCD.HeaderText = "商品";
+            this.colShouhinCD.Name = "colShouhinCD";
+            this.colShouhinCD.Width = 150;
+            // 
+            // colShouhinName
+            // 
+            this.colShouhinName.DataPropertyName = "ShouhinName";
+            this.colShouhinName.HeaderText = "商品名";
+            this.colShouhinName.Name = "colShouhinName";
+            this.colShouhinName.Width = 200;
+            // 
+            // colColorRyakuName
+            // 
+            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
+            this.colColorRyakuName.HeaderText = "カラー略名";
+            this.colColorRyakuName.Name = "colColorRyakuName";
+            this.colColorRyakuName.Width = 150;
+            // 
+            // colColorNO
+            // 
+            this.colColorNO.DataPropertyName = "ColorNO";
+            this.colColorNO.HeaderText = "カラー";
+            this.colColorNO.Name = "colColorNO";
+            // 
+            // colSizeNO
+            // 
+            this.colSizeNO.DataPropertyName = "SizeNO";
+            this.colSizeNO.HeaderText = "サイズ";
+            this.colSizeNO.Name = "colSizeNO";
+            // 
+            // colChakuniYoteiSuu
+            // 
+            this.colChakuniYoteiSuu.DataPropertyName = "ChakuniYoteiSuu";
+            this.colChakuniYoteiSuu.HeaderText = "着荷予定日";
+            this.colChakuniYoteiSuu.Name = "colChakuniYoteiSuu";
+            // 
+            // colArrivalNo
+            // 
+            this.colArrivalNo.DataPropertyName = "ChakuniYoteiSuu";
+            this.colArrivalNo.HeaderText = "着荷予定数";
+            this.colArrivalNo.Name = "colArrivalNo";
+            // 
+            // colChakuniZumiSuu
+            // 
+            this.colChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
+            this.colChakuniZumiSuu.HeaderText = "着荷済数";
+            this.colChakuniZumiSuu.Name = "colChakuniZumiSuu";
+            // 
+            // colArrivalTime
+            // 
+            this.colArrivalTime.DataPropertyName = "c";
+            this.colArrivalTime.HeaderText = "今回着荷数";
+            this.colArrivalTime.Name = "colArrivalTime";
+            // 
+            // Column10
+            // 
+            this.Column10.HeaderText = "完了";
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 70;
+            // 
+            // colDetails
+            // 
+            this.colDetails.DataPropertyName = "null";
+            this.colDetails.HeaderText = "明細摘要";
+            this.colDetails.Name = "colDetails";
+            this.colDetails.Width = 260;
+            // 
+            // colJANCD
+            // 
+            this.colJANCD.DataPropertyName = "JANCD";
+            this.colJANCD.HeaderText = "JANCD";
+            this.colJANCD.Name = "colJANCD";
+            // 
+            // colScheduledArrivalNo
+            // 
+            this.colScheduledArrivalNo.DataPropertyName = "a";
+            this.colScheduledArrivalNo.HeaderText = "着荷予定番号-行番号";
+            this.colScheduledArrivalNo.Name = "colScheduledArrivalNo";
+            this.colScheduledArrivalNo.Width = 150;
+            // 
+            // colOrderNo
+            // 
+            this.colOrderNo.DataPropertyName = "b";
+            this.colOrderNo.HeaderText = "発注番号-行番号";
+            this.colOrderNo.Name = "colOrderNo";
+            // 
             // ChakuniNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1011,6 +1014,9 @@
         private Shinyoh_Search.SearchBox sbBrand;
         private Shinyoh_Controls.SLabel lblBrandName;
         private System.Windows.Forms.Panel panelDetails;
+        private Shinyoh_Search.SearchBox txtSiiresaki;
+        private Shinyoh_Search.SearchBox txtStaffCD;
+        private Shinyoh_Search.SearchBox txtScheduledNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorRyakuName;
@@ -1025,9 +1031,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colJANCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colScheduledArrivalNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colOrderNo;
-        private Shinyoh_Search.SearchBox txtSiiresaki;
-        private Shinyoh_Search.SearchBox txtStaffCD;
-        private Shinyoh_Search.SearchBox txtScheduledNo;
     }
 }
 
