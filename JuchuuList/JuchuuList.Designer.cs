@@ -27,7 +27,7 @@
         private void InitializeComponent()
         {
             this.PanelDetail = new System.Windows.Forms.Panel();
-            this.lblTokuisakiName = new Shinyoh_Controls.SLabel();
+            this.txtDate = new Shinyoh_Controls.STextBox();
             this.lblBrandName = new Shinyoh_Controls.SLabel();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.lblKanzen2 = new System.Windows.Forms.Label();
@@ -76,7 +76,6 @@
             this.lblOrderNo = new Shinyoh_Controls.SLabel();
             this.lblOrderDate = new Shinyoh_Controls.SLabel();
             this.lblName = new Shinyoh_Controls.SLabel();
-            this.txtDate = new Shinyoh_Controls.STextBox();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
@@ -95,7 +94,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelDetail.Controls.Add(this.txtDate);
-            this.PanelDetail.Controls.Add(this.lblTokuisakiName);
             this.PanelDetail.Controls.Add(this.lblBrandName);
             this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
             this.PanelDetail.Controls.Add(this.lblKanzen2);
@@ -149,17 +147,28 @@
             this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
             this.PanelDetail.TabIndex = 3;
             // 
-            // lblTokuisakiName
+            // txtDate
             // 
-            this.lblTokuisakiName.BackColor = System.Drawing.SystemColors.Control;
-            this.lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTokuisakiName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblTokuisakiName.Location = new System.Drawing.Point(221, 188);
-            this.lblTokuisakiName.Name = "lblTokuisakiName";
-            this.lblTokuisakiName.Size = new System.Drawing.Size(200, 19);
-            this.lblTokuisakiName.TabIndex = 100;
-            this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtDate.AllowMinus = false;
+            this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDate.DecimalPlace = 0;
+            this.txtDate.DepandOnMode = true;
+            this.txtDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtDate.IntegerPart = 0;
+            this.txtDate.IsDatatableOccurs = null;
+            this.txtDate.IsErrorOccurs = false;
+            this.txtDate.IsRequire = false;
+            this.txtDate.Location = new System.Drawing.Point(1105, 51);
+            this.txtDate.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtDate.MoveNext = true;
+            this.txtDate.Name = "txtDate";
+            this.txtDate.NextControl = null;
+            this.txtDate.NextControlName = null;
+            this.txtDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtDate.Size = new System.Drawing.Size(100, 19);
+            this.txtDate.TabIndex = 101;
+            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtDate.Visible = false;
             // 
             // lblBrandName
             // 
@@ -565,7 +574,7 @@
             this.txtStore.Name = "txtStore";
             this.txtStore.NextControl = null;
             this.txtStore.NextControlName = "txtDestOrderNo";
-            this.txtStore.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtStore.SearchType = Entity.SearchType.ScType.Kouriten;
             this.txtStore.Size = new System.Drawing.Size(80, 19);
             this.txtStore.TabIndex = 13;
             this.txtStore.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -595,6 +604,7 @@
             this.txtTokuisaki.Size = new System.Drawing.Size(80, 19);
             this.txtTokuisaki.TabIndex = 12;
             this.txtTokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTokuisaki.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisaki_KeyDown);
             // 
             // txtBrand
             // 
@@ -967,29 +977,6 @@
             this.lblName.Text = "名称";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtDate
-            // 
-            this.txtDate.AllowMinus = false;
-            this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDate.DecimalPlace = 0;
-            this.txtDate.DepandOnMode = true;
-            this.txtDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtDate.IntegerPart = 0;
-            this.txtDate.IsDatatableOccurs = null;
-            this.txtDate.IsErrorOccurs = false;
-            this.txtDate.IsRequire = false;
-            this.txtDate.Location = new System.Drawing.Point(1105, 51);
-            this.txtDate.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtDate.MoveNext = true;
-            this.txtDate.Name = "txtDate";
-            this.txtDate.NextControl = null;
-            this.txtDate.NextControlName = null;
-            this.txtDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtDate.Size = new System.Drawing.Size(100, 19);
-            this.txtDate.TabIndex = 101;
-            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtDate.Visible = false;
-            // 
             // JuchuuList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1061,7 +1048,6 @@
         private Shinyoh_Controls.SLabel lblPhNo;
         private Shinyoh_Controls.SLabel lblStaffCD_Name;
         private Shinyoh_Controls.SLabel lblBrandName;
-        private Shinyoh_Controls.SLabel lblTokuisakiName;
         private Shinyoh_Controls.STextBox txtDate;
     }
 }

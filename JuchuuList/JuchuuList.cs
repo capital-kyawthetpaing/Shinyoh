@@ -2,18 +2,12 @@
 using Entity;
 using Shinyoh;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace JuchuuList {
     public partial class JuchuuList : BaseForm {
-        BaseEntity baseEntity=new BaseEntity();
+       
         public JuchuuList()
         {
             InitializeComponent();
@@ -21,19 +15,14 @@ namespace JuchuuList {
 
         private void JuchuuList_Load(object sender, EventArgs e)
         {
+           
             ProgramID = "JuchuuList";
             StartProgram();
             cboMode.Visible = false;
             txtOrderDate1.Focus();
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             txtStaffCD.lblName = lblStaffCD_Name;
-            string today = DateTime.Today.ToString("yyyy/MM/dd");
-            txtOrderDate1.Text = today;
-            txtOrderDate2.Text = today;
-            txtInputDate1.Text = today;
-            txtInputDate2.Text = today;
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", false);
@@ -48,12 +37,21 @@ namespace JuchuuList {
             SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             ErrorCheck();
+
+            BaseEntity baseEntity = _GetBaseData();
+            txtOrderDate1.Text = baseEntity.LoginDate;
+            txtOrderDate2.Text = baseEntity.LoginDate;
+            txtInputDate1.Text = baseEntity.LoginDate;
+            txtInputDate2.Text = baseEntity.LoginDate;
+            txtDate.Text = baseEntity.LoginDate;
         }
         private void ErrorCheck()
         {
-            txtDate.Text = baseEntity.LoginDate;
-            //txtStaffCD.E101Check(true, "M_Staff", txtStaffCD,null , null);
+           
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD,txtDate , null);
             txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtDate, null);
+            // txtStore.E101Check(true, "M_Kouriten", txtStore, txtDate, null);
+           // txtBrand.E101Check(true, "JuchuuList", txtBrand, null, null);
 
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
@@ -92,5 +90,38 @@ namespace JuchuuList {
                 }
             }
         }
+
+        private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
+        
+        {
+            if (!txtTokuisaki.IsErrorOccurs)
+            {
+                TokuisakiBL bl = new TokuisakiBL();
+                DataTable dt = bl.M_Tokuisaki_Select(txtTokuisaki.Text, txtDate.Text, "E101");
+
+                if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
+                {
+                    txtName.Enabled = true;
+                    txtYubin1.Enabled = true;
+                    txtYubin2.Enabled = true;
+                    txtAddress.Enabled = true;
+                    txtPhNo1.Enabled = true;
+                    txtPhNo2.Enabled = true;
+                    txtPhNo3.Enabled = true;
+                }
+                else
+                {
+                    txtName.Enabled = false;
+                    txtYubin1.Enabled = false;
+                    txtYubin2.Enabled = false;
+                    txtAddress.Enabled = false;
+                    txtPhNo1.Enabled = false;
+                    txtPhNo2.Enabled = false;
+                    txtPhNo3.Enabled = false;
+                }
+            }
+        }
+
+       
     }
 }
