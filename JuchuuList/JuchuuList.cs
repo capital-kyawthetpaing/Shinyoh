@@ -36,6 +36,7 @@ namespace JuchuuList {
             SetButton(ButtonType.BType.Empty, F8, "", false);
             SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
+
             ErrorCheck();
 
             BaseEntity baseEntity = _GetBaseData();

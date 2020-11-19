@@ -58,16 +58,18 @@ namespace MasterTouroku_Siiresaki
 
         private void ChangeMode(Mode mode)
         {
-            //Enable && Disable
-            cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
-            lblStaffCD_Name.Text = string.Empty;
+            ////Enable && Disable
+            //cf.Clear(PanelTitle);
+            //cf.Clear(Panel_Detail);
+            //lblStaffCD_Name.Text = string.Empty;
 
-            cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
-            txtSupplierCD.Focus();
-            txtSearch.Text = "0";
-            lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            //cf.EnablePanel(PanelTitle);
+            //cf.DisablePanel(Panel_Detail);
+            //txtSupplierCD.Focus();
+            //txtSearch.Text = "0";
+            //lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
+            Mode_Setting();
 
             switch (mode)
             {
@@ -154,6 +156,18 @@ namespace MasterTouroku_Siiresaki
             txtEndDate.E103Check(true);
             txtEndDate.E104Check(true, txtStartDate, txtEndDate);
         }
+        private void Mode_Setting()
+        {
+            cf.Clear(PanelTitle);
+            cf.Clear(Panel_Detail);
+            lblStaffCD_Name.Text = string.Empty;
+
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(Panel_Detail);
+            txtSupplierCD.Focus();
+            txtSearch.Text = "0";
+            lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+        }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
@@ -171,6 +185,10 @@ namespace MasterTouroku_Siiresaki
             if (tagID == "5")
             {
                 ChangeMode(Mode.Inquiry);
+            }
+            if (tagID == "6")
+            {
+                Mode_Setting();
             }
             if (tagID == "10")
             {

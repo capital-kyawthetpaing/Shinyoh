@@ -142,7 +142,7 @@
             this.PanelDetail.Controls.Add(this.lblOrderNo);
             this.PanelDetail.Controls.Add(this.lblOrderDate);
             this.PanelDetail.Controls.Add(this.lblName);
-            this.PanelDetail.Location = new System.Drawing.Point(0, 63);
+            this.PanelDetail.Location = new System.Drawing.Point(0, 76);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
             this.PanelDetail.TabIndex = 3;

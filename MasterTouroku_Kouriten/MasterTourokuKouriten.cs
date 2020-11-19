@@ -65,20 +65,7 @@ namespace MasterTouroku_Kouriten
 
         private void ChangeMode(Mode mode)
         {
-            //Enable && Disable
-            cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
-            rdo_AliasKBN1.Checked = true;
-            lblStaffCD_Name.Text = string.Empty;
-            lblTokuisakiRyakuName.Text = string.Empty;
-
-            cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
-
-            txtKouritenCD.Focus();
-            txtKensakuHyouziJun.Text = "0";
-            lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            Mode_Setting();
 
             switch (mode)
             {
@@ -137,6 +124,22 @@ namespace MasterTouroku_Kouriten
                     break;
             }
         }
+        private void Mode_Setting()
+        {
+            cf.Clear(PanelTitle);
+            cf.Clear(Panel_Detail);
+            rdo_AliasKBN1.Checked = true;
+            lblStaffCD_Name.Text = string.Empty;
+            lblTokuisakiRyakuName.Text = string.Empty;
+
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(Panel_Detail);
+
+            txtKouritenCD.Focus();
+            txtKensakuHyouziJun.Text = "0";
+            lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+        }
         public void ErrorCheck()
         {
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
@@ -182,6 +185,10 @@ namespace MasterTouroku_Kouriten
             if (tagID == "5")
             {
                 ChangeMode(Mode.Inquiry);
+            }
+            if (tagID == "6")
+            {
+                Mode_Setting();
             }
             if (tagID == "10")
             {
