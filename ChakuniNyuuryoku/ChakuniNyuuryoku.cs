@@ -150,26 +150,9 @@ namespace ChakuniNyuuryoku
         }
         public void Clear()
         {
-            txtArrivalNO.Clear();
-            txtArrivalDate.Clear();
-            txtSiiresaki.Clear();
-            lblSiiresaki.Text = string.Empty;
-            txtStaffCD.Clear();
-            lblStaff.Text = string.Empty;
-            txtScheduledNo.Clear();
-            txtShouhinCD.Clear();
-            txtShouhinName.Clear();
-            txtControlNo.Clear();
-            txtJANCD.Clear();
-            sbWareHouse.Clear();
-            lblWareHouse.Text = string.Empty;
-            txtDescription.Clear();
-            sbBrand.Clear();
-            sbBrand.Text = string.Empty;
-            txtColor.Clear();
-            txtExhibition.Clear();
-            txtSize.Clear();
-            txtArrivalNO.Focus();
+            cf.Clear(PanelTitle);
+            cf.Clear(panelDetails);
+            txtArrivalNO.Focus(); 
         }
         private void DBProcess()
         {
@@ -226,8 +209,27 @@ namespace ChakuniNyuuryoku
             chkEntity.SoukoCD = txtExhibition.Text;
             //chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
             //chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
-            DataTable dt = ab.ChakuniNyuuryoku_Display(chkEntity);
-            gvChakuniNyuuryoku.DataSource = dt;
+            DataTable dtmain  = ab.ChakuniNyuuryoku_Display(chkEntity);
+            
+            DataTable dtcha = new DataTable();
+            dtcha = dtmain.Copy();
+            dtcha.Columns.Remove("JANCD");
+            dtcha.Columns.Remove("a");
+            dtcha.Columns.Remove("b");
+            gvChakuniNyuuryoku.DataSource = dtcha;
+            DataTable dtcopy = new DataTable();
+            dtcopy = dtmain.Copy();
+            dtcopy.Columns.Remove("ShouhinCD");
+            dtcopy.Columns.Remove("ShouhinName");
+            dtcopy.Columns.Remove("ColorRyakuName");
+            dtcopy.Columns.Remove("ColorNO");
+            dtcopy.Columns.Remove("SizeNO");
+            dtcopy.Columns.Remove("ChakuniYoteiDate");
+            dtcopy.Columns.Remove("ChakuniYoteiSuu");
+            dtcopy.Columns.Remove("ChakuniZumiSuu");
+            dtcopy.Columns.Remove("c");
+            dtcopy.Columns.Remove("d");
+            gvJancd.DataSource = dtcopy;
         }
         public string CheckValue()
         {
@@ -315,8 +317,10 @@ namespace ChakuniNyuuryoku
 
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            //FunctionProcess(btnDisplay.Tag.ToString());
-            GetData();
+            if(cboMode.SelectedValue.ToString()=="2" || cboMode.SelectedValue.ToString()=="4")
+            {
+                GetData();
+            }
         }
 
         private void sbBrand_KeyDown(object sender, KeyEventArgs e)
