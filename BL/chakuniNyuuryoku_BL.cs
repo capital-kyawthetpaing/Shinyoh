@@ -39,7 +39,7 @@ namespace BL
             cne.Sqlprms[9] = new SqlParameter("@YearTerm", SqlDbType.VarChar) { Value = cne.YearTerm };
             cne.Sqlprms[10] = new SqlParameter("@SeasonSS", SqlDbType.VarChar) { Value = cne.SeasonSS };
             cne.Sqlprms[11] = new SqlParameter("@SeasonFW", SqlDbType.VarChar) { Value = cne.SeasonFW };
-            cne.Sqlprms[12] = new SqlParameter("@chkValue", SqlDbType.VarChar) { Value = cne.Mode };
+            cne.Sqlprms[12] = new SqlParameter("@chkValue", SqlDbType.VarChar) { Value = cne.CheckValue };
             DataTable dt = ckmdl.SelectDatatable("D_ChakuniYotei_Display", GetConnectionString(), cne.Sqlprms);
             return dt;
         }
