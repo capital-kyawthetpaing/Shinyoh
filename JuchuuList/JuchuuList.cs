@@ -22,7 +22,6 @@ namespace JuchuuList {
             txtOrderDate1.Focus();
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             txtStaffCD.lblName = lblStaffCD_Name;
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
@@ -49,8 +48,10 @@ namespace JuchuuList {
         private void ErrorCheck()
         {
            
-            //txtStaffCD.E101Check(true, "M_Staff", txtStaffCD,null , null);
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD,txtDate , null);
             txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtDate, null);
+            // txtStore.E101Check(true, "M_Kouriten", txtStore, txtDate, null);
+           // txtBrand.E101Check(true, "JuchuuList", txtBrand, null, null);
 
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
