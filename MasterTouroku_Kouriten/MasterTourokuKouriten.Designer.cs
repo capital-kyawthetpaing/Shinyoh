@@ -38,6 +38,7 @@
             this.lblChangeDate = new Shinyoh_Controls.SLabel();
             this.lblKouriten = new Shinyoh_Controls.SLabel();
             this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.btn_Copy = new Shinyoh_Controls.SButton();
             this.lblTokuisakiRyakuName = new Shinyoh_Controls.SLabel();
             this.txtTokuisakiCD = new Shinyoh_Search.SearchBox();
             this.rdo_AliasKBN2 = new Shinyoh_Controls.SRadio();
@@ -93,7 +94,6 @@
             this.lblMorokuchi = new Shinyoh_Controls.SLabel();
             this.txtCopyCD = new Shinyoh_Search.SearchBox();
             this.txtKouritenCD = new Shinyoh_Search.SearchBox();
-            this.btn_Copy = new Shinyoh_Controls.SButton();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -327,6 +327,20 @@
             this.Panel_Detail.Size = new System.Drawing.Size(1485, 707);
             this.Panel_Detail.TabIndex = 1;
             // 
+            // btn_Copy
+            // 
+            this.btn_Copy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btn_Copy.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btn_Copy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Copy.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_Copy.Location = new System.Drawing.Point(466, 15);
+            this.btn_Copy.Name = "btn_Copy";
+            this.btn_Copy.Size = new System.Drawing.Size(75, 23);
+            this.btn_Copy.TabIndex = 77;
+            this.btn_Copy.Text = "コピー";
+            this.btn_Copy.UseVisualStyleBackColor = false;
+            this.btn_Copy.Click += new System.EventHandler(this.btn_Copy_Click);
+            // 
             // lblTokuisakiRyakuName
             // 
             this.lblTokuisakiRyakuName.BackColor = System.Drawing.SystemColors.Control;
@@ -364,7 +378,6 @@
             this.txtTokuisakiCD.Size = new System.Drawing.Size(100, 19);
             this.txtTokuisakiCD.TabIndex = 6;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtTokuisakiCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisakiCD_KeyDown);
             // 
             // rdo_AliasKBN2
             // 
@@ -447,7 +460,6 @@
             this.txtStaffCD.Size = new System.Drawing.Size(70, 19);
             this.txtStaffCD.TabIndex = 26;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
             // 
             // lblStaffCD_Name
             // 
@@ -822,7 +834,7 @@
             this.txtPhone2_3.IsErrorOccurs = false;
             this.txtPhone2_3.IsRequire = false;
             this.txtPhone2_3.Location = new System.Drawing.Point(374, 356);
-            this.txtPhone2_3.MaxLength = 4;
+            this.txtPhone2_3.MaxLength = 5;
             this.txtPhone2_3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2_3.MoveNext = true;
             this.txtPhone2_3.Name = "txtPhone2_3";
@@ -845,7 +857,7 @@
             this.txtPhone2_2.IsErrorOccurs = false;
             this.txtPhone2_2.IsRequire = false;
             this.txtPhone2_2.Location = new System.Drawing.Point(251, 356);
-            this.txtPhone2_2.MaxLength = 4;
+            this.txtPhone2_2.MaxLength = 5;
             this.txtPhone2_2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2_2.MoveNext = true;
             this.txtPhone2_2.Name = "txtPhone2_2";
@@ -868,7 +880,7 @@
             this.txtPhone2_1.IsErrorOccurs = false;
             this.txtPhone2_1.IsRequire = false;
             this.txtPhone2_1.Location = new System.Drawing.Point(141, 355);
-            this.txtPhone2_1.MaxLength = 5;
+            this.txtPhone2_1.MaxLength = 6;
             this.txtPhone2_1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2_1.MoveNext = true;
             this.txtPhone2_1.Name = "txtPhone2_1";
@@ -925,7 +937,7 @@
             this.txtPhone1_3.IsErrorOccurs = false;
             this.txtPhone1_3.IsRequire = false;
             this.txtPhone1_3.Location = new System.Drawing.Point(374, 323);
-            this.txtPhone1_3.MaxLength = 4;
+            this.txtPhone1_3.MaxLength = 5;
             this.txtPhone1_3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1_3.MoveNext = true;
             this.txtPhone1_3.Name = "txtPhone1_3";
@@ -948,7 +960,7 @@
             this.txtPhone1_2.IsErrorOccurs = false;
             this.txtPhone1_2.IsRequire = false;
             this.txtPhone1_2.Location = new System.Drawing.Point(251, 323);
-            this.txtPhone1_2.MaxLength = 4;
+            this.txtPhone1_2.MaxLength = 5;
             this.txtPhone1_2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1_2.MoveNext = true;
             this.txtPhone1_2.Name = "txtPhone1_2";
@@ -971,7 +983,7 @@
             this.txtPhone1_1.IsErrorOccurs = false;
             this.txtPhone1_1.IsRequire = false;
             this.txtPhone1_1.Location = new System.Drawing.Point(141, 322);
-            this.txtPhone1_1.MaxLength = 5;
+            this.txtPhone1_1.MaxLength = 6;
             this.txtPhone1_1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1_1.MoveNext = true;
             this.txtPhone1_1.Name = "txtPhone1_1";
@@ -1313,19 +1325,6 @@
             this.txtKouritenCD.Size = new System.Drawing.Size(90, 19);
             this.txtKouritenCD.TabIndex = 1;
             this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // btn_Copy
-            // 
-            this.btn_Copy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btn_Copy.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btn_Copy.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Copy.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_Copy.Location = new System.Drawing.Point(466, 15);
-            this.btn_Copy.Name = "btn_Copy";
-            this.btn_Copy.Size = new System.Drawing.Size(75, 23);
-            this.btn_Copy.TabIndex = 77;
-            this.btn_Copy.Text = "コピー";
-            this.btn_Copy.UseVisualStyleBackColor = false;
             // 
             // MasterTourokuKouriten
             // 

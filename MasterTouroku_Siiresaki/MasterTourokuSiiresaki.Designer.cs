@@ -709,7 +709,7 @@
             this.txtPhone2_3.IsErrorOccurs = false;
             this.txtPhone2_3.IsRequire = false;
             this.txtPhone2_3.Location = new System.Drawing.Point(374, 332);
-            this.txtPhone2_3.MaxLength = 4;
+            this.txtPhone2_3.MaxLength = 5;
             this.txtPhone2_3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2_3.MoveNext = true;
             this.txtPhone2_3.Name = "txtPhone2_3";
@@ -732,7 +732,7 @@
             this.txtPhone2_2.IsErrorOccurs = false;
             this.txtPhone2_2.IsRequire = false;
             this.txtPhone2_2.Location = new System.Drawing.Point(251, 332);
-            this.txtPhone2_2.MaxLength = 4;
+            this.txtPhone2_2.MaxLength = 5;
             this.txtPhone2_2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2_2.MoveNext = true;
             this.txtPhone2_2.Name = "txtPhone2_2";
@@ -755,7 +755,7 @@
             this.txtPhone2_1.IsErrorOccurs = false;
             this.txtPhone2_1.IsRequire = false;
             this.txtPhone2_1.Location = new System.Drawing.Point(141, 331);
-            this.txtPhone2_1.MaxLength = 5;
+            this.txtPhone2_1.MaxLength = 6;
             this.txtPhone2_1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2_1.MoveNext = true;
             this.txtPhone2_1.Name = "txtPhone2_1";
@@ -812,7 +812,7 @@
             this.txtPhone1_3.IsErrorOccurs = false;
             this.txtPhone1_3.IsRequire = false;
             this.txtPhone1_3.Location = new System.Drawing.Point(374, 299);
-            this.txtPhone1_3.MaxLength = 4;
+            this.txtPhone1_3.MaxLength = 5;
             this.txtPhone1_3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1_3.MoveNext = true;
             this.txtPhone1_3.Name = "txtPhone1_3";
@@ -835,7 +835,7 @@
             this.txtPhone1_2.IsErrorOccurs = false;
             this.txtPhone1_2.IsRequire = false;
             this.txtPhone1_2.Location = new System.Drawing.Point(251, 299);
-            this.txtPhone1_2.MaxLength = 4;
+            this.txtPhone1_2.MaxLength = 5;
             this.txtPhone1_2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1_2.MoveNext = true;
             this.txtPhone1_2.Name = "txtPhone1_2";
@@ -858,7 +858,7 @@
             this.txtPhone1_1.IsErrorOccurs = false;
             this.txtPhone1_1.IsRequire = false;
             this.txtPhone1_1.Location = new System.Drawing.Point(141, 298);
-            this.txtPhone1_1.MaxLength = 5;
+            this.txtPhone1_1.MaxLength = 6;
             this.txtPhone1_1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1_1.MoveNext = true;
             this.txtPhone1_1.Name = "txtPhone1_1";
