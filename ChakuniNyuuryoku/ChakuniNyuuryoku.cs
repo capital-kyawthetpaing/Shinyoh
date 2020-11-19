@@ -90,7 +90,7 @@ namespace ChakuniNyuuryoku
                     break;
                 case Mode.Inquiry:
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
-                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
+                    //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
@@ -152,6 +152,10 @@ namespace ChakuniNyuuryoku
         {
             cf.Clear(PanelTitle);
             cf.Clear(panelDetails);
+            lblSiiresaki.Text = string.Empty;
+            lblStaff.Text = string.Empty;
+            lblBrandName.Text = string.Empty;
+            lblWareHouse.Text = string.Empty;
             txtArrivalNO.Focus(); 
         }
         private void DBProcess()
@@ -204,9 +208,10 @@ namespace ChakuniNyuuryoku
             chkEntity.BrandCD = sbBrand.Text;
             chkEntity.ColorNO = txtColor.Text;
             chkEntity.SizeNO = txtSize.Text;
-            chkEntity.YearTerm = CheckValue();
+            chkEntity.YearTerm = txtExhibition.Text;
             chkEntity.KanriNO = txtControlNo.Text;
-            chkEntity.SoukoCD = txtExhibition.Text;
+            chkEntity.SoukoCD = sbWareHouse.Text;
+            chkEntity.CheckValue = CheckValue();
             //chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
             //chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
             DataTable dtmain  = ab.ChakuniNyuuryoku_Display(chkEntity);
@@ -250,12 +255,6 @@ namespace ChakuniNyuuryoku
                 return string.Empty;
             }
         }
-       private void EnableAndDisablePanel()
-        {
-            cf.EnablePanel(panelDetails);
-            txtArrivalNO.Focus();
-            cf.DisablePanel(PanelTitle);
-        }
        public void ErrorCheck()
        {
             txtArrivalNO.E102Check(true);
@@ -277,7 +276,9 @@ namespace ChakuniNyuuryoku
                 {
                     if (cboMode.SelectedValue.ToString() == "2")
                     {
-                        EnableAndDisablePanel();
+                        cf.EnablePanel(panelDetails);
+                        cf.DisablePanel(PanelTitle);
+                        txtArrivalDate.Focus();
                     }
                 }
                 DataTable dt = txtArrivalNO.IsDatatableOccurs;
@@ -331,6 +332,11 @@ namespace ChakuniNyuuryoku
 
             if (dt.Rows.Count > 0)
                 lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
+        }
+
+        private void sButton4_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
