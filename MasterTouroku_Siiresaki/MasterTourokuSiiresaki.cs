@@ -95,8 +95,6 @@ namespace MasterTouroku_Siiresaki
                 case Mode.Update:
                     ErrorCheck();
 
-                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, txtYubin1.Text, txtYubin2.Text);
-
                     txtChangeDate.E132Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
                     txtChangeDate.E270Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate);
@@ -136,7 +134,6 @@ namespace MasterTouroku_Siiresaki
         }
         public void ErrorCheck()
         {
-            txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
             txtSupplierCD.E102Check(true);
@@ -156,7 +153,6 @@ namespace MasterTouroku_Siiresaki
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
             txtEndDate.E104Check(true, txtStartDate, txtEndDate);
-
         }
         public override void FunctionProcess(string tagID)
         {

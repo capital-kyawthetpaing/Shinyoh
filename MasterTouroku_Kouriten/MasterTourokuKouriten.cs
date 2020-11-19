@@ -106,8 +106,6 @@ namespace MasterTouroku_Kouriten
                 case Mode.Update:
                     ErrorCheck();
 
-                    //txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, txtYubin1.Text, txtYubin2.Text);
-
                     txtChangeDate.E132Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
@@ -150,7 +148,6 @@ namespace MasterTouroku_Kouriten
 
             txtKouritenName.E102Check(true);
             txtKouritenRyakuName.E102Check(true);
-            //txtKanaName.E102Check(true);
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
 
             txtTokuisakiCD.E102Check(true);
@@ -547,13 +544,13 @@ namespace MasterTouroku_Kouriten
 
                         //
                         obj.ShokutiFLG = splits[2];
+                        bl_List.Add(Null_Check(obj.ShokutiFLG.ToString()));
                         if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
                             base_bl.ShowMessage("E117", "0", "1");
                             //err.ShowErrorMessage("E117");
                             bl_List.Add(true);
                         }
-                        bl_List.Add(Null_Check(obj.ShokutiFLG.ToString()));
 
                         //
                         obj.KouritenName = splits[3];
