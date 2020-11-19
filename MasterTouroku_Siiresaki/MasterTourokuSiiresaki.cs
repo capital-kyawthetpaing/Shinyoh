@@ -58,16 +58,18 @@ namespace MasterTouroku_Siiresaki
 
         private void ChangeMode(Mode mode)
         {
-            //Enable && Disable
-            cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
-            lblStaffCD_Name.Text = string.Empty;
+            ////Enable && Disable
+            //cf.Clear(PanelTitle);
+            //cf.Clear(Panel_Detail);
+            //lblStaffCD_Name.Text = string.Empty;
 
-            cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
-            txtSupplierCD.Focus();
-            txtSearch.Text = "0";
-            lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            //cf.EnablePanel(PanelTitle);
+            //cf.DisablePanel(Panel_Detail);
+            //txtSupplierCD.Focus();
+            //txtSearch.Text = "0";
+            //lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
+            Mode_Setting();
 
             switch (mode)
             {
@@ -94,8 +96,6 @@ namespace MasterTouroku_Siiresaki
 
                 case Mode.Update:
                     ErrorCheck();
-
-                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, txtYubin1.Text, txtYubin2.Text);
 
                     txtChangeDate.E132Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
@@ -136,7 +136,6 @@ namespace MasterTouroku_Siiresaki
         }
         public void ErrorCheck()
         {
-            txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
             txtSupplierCD.E102Check(true);
@@ -156,7 +155,18 @@ namespace MasterTouroku_Siiresaki
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
             txtEndDate.E104Check(true, txtStartDate, txtEndDate);
+        }
+        private void Mode_Setting()
+        {
+            cf.Clear(PanelTitle);
+            cf.Clear(Panel_Detail);
+            lblStaffCD_Name.Text = string.Empty;
 
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(Panel_Detail);
+            txtSupplierCD.Focus();
+            txtSearch.Text = "0";
+            lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -175,6 +185,10 @@ namespace MasterTouroku_Siiresaki
             if (tagID == "5")
             {
                 ChangeMode(Mode.Inquiry);
+            }
+            if (tagID == "6")
+            {
+                Mode_Setting();
             }
             if (tagID == "10")
             {
@@ -508,27 +522,27 @@ namespace MasterTouroku_Siiresaki
                         
                         //
                         obj.Tel11 = splits[12];
-                        bl_List.Add(Byte_Check(5, obj.Tel11));
+                        bl_List.Add(Byte_Check(6, obj.Tel11));
                         
                         //
                         obj.Tel12 = splits[13];
-                        bl_List.Add(Byte_Check(4, obj.Tel12));
+                        bl_List.Add(Byte_Check(5, obj.Tel12));
                        
                         //
                         obj.Tel13 = splits[14];
-                        bl_List.Add(Byte_Check(4, obj.Tel13));
+                        bl_List.Add(Byte_Check(5, obj.Tel13));
                         
                         //
                         obj.Tel21 = splits[15];
-                        bl_List.Add(Byte_Check(5, obj.Tel21));
+                        bl_List.Add(Byte_Check(6, obj.Tel21));
                         
                         //
                         obj.Tel22 = splits[16];
-                        bl_List.Add(Byte_Check(4, obj.Tel22));
+                        bl_List.Add(Byte_Check(5, obj.Tel22));
                         
                         //
                         obj.Tel23 = splits[17];
-                        bl_List.Add(Byte_Check(4, obj.Tel23));
+                        bl_List.Add(Byte_Check(5, obj.Tel23));
                         
                         //
                         obj.TantouBusho = splits[18];

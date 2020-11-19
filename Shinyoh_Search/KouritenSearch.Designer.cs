@@ -91,7 +91,7 @@
             this.PanelTitle.Location = new System.Drawing.Point(0, 0);
             this.PanelTitle.Name = "PanelTitle";
             this.PanelTitle.Size = new System.Drawing.Size(1184, 126);
-            this.PanelTitle.TabIndex = 2;
+            this.PanelTitle.TabIndex = 1;
             // 
             // txtTokuisaki_Kana
             // 

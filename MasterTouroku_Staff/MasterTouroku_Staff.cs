@@ -59,12 +59,14 @@ namespace MasterTouroku_Staff
         private void ChangeMode(Mode mode)
         {
             //Enable && Disable
-            cf.Clear(PanelTitle);
-            cf.Clear(Panel_Staff);
-            cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Staff);
-            txt_Staff.Focus();
-            txtStaff_Search.Text = "0";
+            //cf.Clear(PanelTitle);
+            //cf.Clear(Panel_Staff);
+            //cf.EnablePanel(PanelTitle);
+            //cf.DisablePanel(Panel_Staff);
+            //txt_Staff.Focus();
+            //txtStaff_Search.Text = "0";
+
+            Mode_Setting();
 
             switch (mode)
             {
@@ -140,7 +142,15 @@ namespace MasterTouroku_Staff
                     break;
             }
         }
-
+        private void Mode_Setting()
+        {
+            cf.Clear(PanelTitle);
+            cf.Clear(Panel_Staff);
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(Panel_Staff);
+            txt_Staff.Focus();
+            txtStaff_Search.Text = "0";
+        }
         private void ErrorChek()
         {
             //E102
@@ -179,6 +189,10 @@ namespace MasterTouroku_Staff
             if (tagID == "5")
             {
                 ChangeMode(Mode.Inquiry);
+            }
+            if (tagID == "6")
+            {
+                Mode_Setting();
             }
             if (tagID == "12")
             {

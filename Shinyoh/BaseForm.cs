@@ -147,63 +147,66 @@ namespace Shinyoh
         /// <param name="type">1--> button click, 2 --> combo Mode change</param>
         protected void FireClickEvent(SButton btn, int type)
         {
-            switch (btn.ButtonType)
+            if (btn.Visible)
             {
-                case ButtonType.BType.Close:
-                    if (bbl.ShowMessage("Q003") == DialogResult.Yes)
-                    {
-                        this.Close();
-                    }
-                    else
-                    {
-                        if (PreviousCtrl != null)
+                switch (btn.ButtonType)
+                {
+                    case ButtonType.BType.Close:
+                        if (bbl.ShowMessage("Q003") == DialogResult.Yes)
+                        {
+                            this.Close();
+                        }
+                        else
+                        {
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
+                            return;
+                        }
+                        break;
+                    case ButtonType.BType.New:
+                        cboMode.SelectedValue = "1";
+                        SetMode(btn);
+                        break;
+                    case ButtonType.BType.Update:
+                        cboMode.SelectedValue = "2";
+                        SetMode(btn);
+                        break;
+                    case ButtonType.BType.Delete:
+                        cboMode.SelectedValue = "3";
+                        SetMode(btn);
+                        break;
+                    case ButtonType.BType.Inquiry:
+                        cboMode.SelectedValue = "4";
+                        SetMode(btn);
+                        break;
+                    case ButtonType.BType.Cancel:
+                        if (bbl.ShowMessage("Q004") != DialogResult.Yes)
+                        {
                             PreviousCtrl.Focus();
-                        return;
-                    }
-                    break;
-                case ButtonType.BType.New:
-                    cboMode.SelectedValue = "1";
-                    SetMode(btn);
-                    break;
-                case ButtonType.BType.Update:
-                    cboMode.SelectedValue = "2";
-                    SetMode(btn);
-                    break;
-                case ButtonType.BType.Delete:
-                    cboMode.SelectedValue = "3";
-                    SetMode(btn);
-                    break;
-                case ButtonType.BType.Inquiry:
-                    cboMode.SelectedValue = "4";
-                    SetMode(btn);
-                    break;
-                case ButtonType.BType.Cancel:
-                    if (bbl.ShowMessage("Q004") != DialogResult.Yes)
-                    {
-                        PreviousCtrl.Focus();
-                    }
-                    else
-                        FunctionProcess(btn.Tag.ToString());
-                    break;
-                case ButtonType.BType.Import:
-                        FunctionProcess(btn.Tag.ToString());
-                    break;
-                case ButtonType.BType.Save:
-                    if(cboMode.SelectedValue.ToString() =="1" || cboMode.SelectedValue.ToString() =="2")
-                    {
-                        if (bbl.ShowMessage("Q101") != DialogResult.Yes)
-                            PreviousCtrl.Focus();
+                        }
                         else
                             FunctionProcess(btn.Tag.ToString());
-                    }
-                    else if(cboMode.SelectedValue.ToString()=="3")
-                    {
-                        if (bbl.ShowMessage("Q102") != DialogResult.Yes)
-                            PreviousCtrl.Focus();
-                        else
-                            FunctionProcess(btn.Tag.ToString());
-                    }
-                    break;
+                        break;
+                    case ButtonType.BType.Import:
+                        FunctionProcess(btn.Tag.ToString());
+                        break;
+                    case ButtonType.BType.Save:
+                        if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
+                        {
+                            if (bbl.ShowMessage("Q101") != DialogResult.Yes)
+                                PreviousCtrl.Focus();
+                            else
+                                FunctionProcess(btn.Tag.ToString());
+                        }
+                        else if (cboMode.SelectedValue.ToString() == "3")
+                        {
+                            if (bbl.ShowMessage("Q102") != DialogResult.Yes)
+                                PreviousCtrl.Focus();
+                            else
+                                FunctionProcess(btn.Tag.ToString());
+                        }
+                        break;
+                }
             }
         }
 
