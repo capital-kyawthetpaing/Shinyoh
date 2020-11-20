@@ -604,7 +604,7 @@
             this.txtTokuisaki.Size = new System.Drawing.Size(80, 19);
             this.txtTokuisaki.TabIndex = 12;
             this.txtTokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtTokuisaki.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisaki_KeyDown);
+            this.txtTokuisaki.Leave += new System.EventHandler(this.txtTokuisaki_Leave);
             // 
             // txtBrand
             // 

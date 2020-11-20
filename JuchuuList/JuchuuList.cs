@@ -91,9 +91,7 @@ namespace JuchuuList {
                 }
             }
         }
-
-        private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
-        
+        private void txtTokuisaki_Leave(object sender, EventArgs e)
         {
             if (!txtTokuisaki.IsErrorOccurs)
             {
