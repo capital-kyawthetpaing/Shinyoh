@@ -55,9 +55,6 @@ namespace MasterTouroku_Tokuisaki {
 
             txt_Tokuisaki.ChangeDate = txtChange_Date;
             txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;
-
-           // RadSaMa.Checked = true;
-            RadNeed.Checked = true;
             
         }
 
