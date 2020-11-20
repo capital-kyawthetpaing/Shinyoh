@@ -50,6 +50,8 @@ namespace Entity
         public string KanriNOTo { get; set; }
         public string ShouhinCDFrom { get; set; }
         public string ShouhinCDTo { get; set; }
+        public int DataKBN { get; set; }
+        public string Number { get; set; }
     }
     
 }

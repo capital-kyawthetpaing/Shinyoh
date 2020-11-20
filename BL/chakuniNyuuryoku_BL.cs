@@ -43,6 +43,27 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("D_ChakuniYotei_Display", GetConnectionString(), cne.Sqlprms);
             return dt;
         }
+        public DataTable D_Exclusive_Insert(ChakuniNyuuryoku_Entity cne)
+        {
+            CKMDL ckmdl = new CKMDL();
+            cne.Sqlprms = new SqlParameter[5];
+            cne.Sqlprms[0] = new SqlParameter("@DataKBN", SqlDbType.TinyInt) { Value = cne.DataKBN.ToString() };
+            cne.Sqlprms[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = cne.Number };
+            cne.Sqlprms[2] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cne.InsertOperator};
+            cne.Sqlprms[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cne.ProgramID};
+            cne.Sqlprms[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cne.PC};
+            DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Insert", GetConnectionString(), cne.Sqlprms);
+            return dt;
+        }
+        public DataTable D_Exclusive_Delete(ChakuniNyuuryoku_Entity cne)
+        {
+            CKMDL ckmdl = new CKMDL();
+            cne.Sqlprms = new SqlParameter[2];
+            cne.Sqlprms[0] = new SqlParameter("@DataKBN", SqlDbType.TinyInt) { Value = cne.DataKBN.ToString() };
+            cne.Sqlprms[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = cne.Number };
+            DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Delete", GetConnectionString(), cne.Sqlprms);
+            return dt;
+        }
         public DataTable ArrivalNO_Search(ChakuniNyuuryoku_Entity ane)
         {
             CKMDL ckmdl = new CKMDL();

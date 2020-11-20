@@ -556,6 +556,7 @@
             this.txtSize.Size = new System.Drawing.Size(120, 19);
             this.txtSize.TabIndex = 28;
             this.txtSize.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSize_KeyDown);
             // 
             // sLabel12
             // 
@@ -808,7 +809,6 @@
             this.sButton4.TabIndex = 36;
             this.sButton4.Text = "詳細";
             this.sButton4.UseVisualStyleBackColor = false;
-            this.sButton4.Click += new System.EventHandler(this.sButton4_Click);
             // 
             // lblSiiresaki
             // 
