@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.txtTempDate = new Shinyoh_Controls.STextBox();
+            this.txtHacchuuNO1 = new Shinyoh_Search.SearchBox();
+            this.txtBrandCD = new Shinyoh_Search.SearchBox();
+            this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.lblYear = new Shinyoh_Controls.SLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.txtUpdate_JuchuuDate2 = new Shinyoh_Controls.STextBox();
@@ -57,7 +61,6 @@
             this.lblUpdate_HacchuuDate = new Shinyoh_Controls.SLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtHacchuuNO2 = new Shinyoh_Controls.STextBox();
-            this.txtHacchuuNO1 = new Shinyoh_Controls.STextBox();
             this.lblHacchuuNO = new Shinyoh_Controls.SLabel();
             this.rdo_Juc = new Shinyoh_Controls.SRadio();
             this.rdo_Hac = new Shinyoh_Controls.SRadio();
@@ -65,8 +68,6 @@
             this.txtHacchuuDate2 = new Shinyoh_Controls.STextBox();
             this.txtHacchuuDate1 = new Shinyoh_Controls.STextBox();
             this.lblHacchuuDate = new Shinyoh_Controls.SLabel();
-            this.txtStaffCD = new Shinyoh_Search.SearchBox();
-            this.txtBrandCD = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +82,8 @@
             // 
             // Panel_Detail
             // 
+            this.Panel_Detail.Controls.Add(this.txtTempDate);
+            this.Panel_Detail.Controls.Add(this.txtHacchuuNO1);
             this.Panel_Detail.Controls.Add(this.txtBrandCD);
             this.Panel_Detail.Controls.Add(this.txtStaffCD);
             this.Panel_Detail.Controls.Add(this.lblYear);
@@ -111,7 +114,6 @@
             this.Panel_Detail.Controls.Add(this.lblUpdate_HacchuuDate);
             this.Panel_Detail.Controls.Add(this.label3);
             this.Panel_Detail.Controls.Add(this.txtHacchuuNO2);
-            this.Panel_Detail.Controls.Add(this.txtHacchuuNO1);
             this.Panel_Detail.Controls.Add(this.lblHacchuuNO);
             this.Panel_Detail.Controls.Add(this.rdo_Juc);
             this.Panel_Detail.Controls.Add(this.rdo_Hac);
@@ -123,6 +125,108 @@
             this.Panel_Detail.Name = "Panel_Detail";
             this.Panel_Detail.Size = new System.Drawing.Size(1484, 518);
             this.Panel_Detail.TabIndex = 1;
+            // 
+            // txtTempDate
+            // 
+            this.txtTempDate.AllowMinus = false;
+            this.txtTempDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTempDate.DecimalPlace = 0;
+            this.txtTempDate.DepandOnMode = true;
+            this.txtTempDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtTempDate.IntegerPart = 0;
+            this.txtTempDate.IsDatatableOccurs = null;
+            this.txtTempDate.IsErrorOccurs = false;
+            this.txtTempDate.IsRequire = false;
+            this.txtTempDate.Location = new System.Drawing.Point(41, 372);
+            this.txtTempDate.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtTempDate.MoveNext = true;
+            this.txtTempDate.Name = "txtTempDate";
+            this.txtTempDate.NextControl = null;
+            this.txtTempDate.NextControlName = null;
+            this.txtTempDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtTempDate.Size = new System.Drawing.Size(100, 19);
+            this.txtTempDate.TabIndex = 0;
+            this.txtTempDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTempDate.Visible = false;
+            // 
+            // txtHacchuuNO1
+            // 
+            this.txtHacchuuNO1.AllowMinus = false;
+            this.txtHacchuuNO1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHacchuuNO1.ChangeDate = null;
+            this.txtHacchuuNO1.Combo = null;
+            this.txtHacchuuNO1.DecimalPlace = 0;
+            this.txtHacchuuNO1.DepandOnMode = true;
+            this.txtHacchuuNO1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtHacchuuNO1.IntegerPart = 0;
+            this.txtHacchuuNO1.IsDatatableOccurs = null;
+            this.txtHacchuuNO1.IsErrorOccurs = false;
+            this.txtHacchuuNO1.IsRequire = false;
+            this.txtHacchuuNO1.lblName = null;
+            this.txtHacchuuNO1.Location = new System.Drawing.Point(139, 84);
+            this.txtHacchuuNO1.MaxLength = 12;
+            this.txtHacchuuNO1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtHacchuuNO1.MoveNext = true;
+            this.txtHacchuuNO1.Name = "txtHacchuuNO1";
+            this.txtHacchuuNO1.NextControl = null;
+            this.txtHacchuuNO1.NextControlName = "txtHacchuuNO2";
+            this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.None;
+            this.txtHacchuuNO1.Size = new System.Drawing.Size(100, 19);
+            this.txtHacchuuNO1.TabIndex = 4;
+            this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
+            // txtBrandCD
+            // 
+            this.txtBrandCD.AllowMinus = false;
+            this.txtBrandCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBrandCD.ChangeDate = null;
+            this.txtBrandCD.Combo = null;
+            this.txtBrandCD.DecimalPlace = 0;
+            this.txtBrandCD.DepandOnMode = true;
+            this.txtBrandCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtBrandCD.IntegerPart = 0;
+            this.txtBrandCD.IsDatatableOccurs = null;
+            this.txtBrandCD.IsErrorOccurs = false;
+            this.txtBrandCD.IsRequire = false;
+            this.txtBrandCD.lblName = null;
+            this.txtBrandCD.Location = new System.Drawing.Point(141, 183);
+            this.txtBrandCD.MaxLength = 10;
+            this.txtBrandCD.MinimumSize = new System.Drawing.Size(90, 19);
+            this.txtBrandCD.MoveNext = true;
+            this.txtBrandCD.Name = "txtBrandCD";
+            this.txtBrandCD.NextControl = null;
+            this.txtBrandCD.NextControlName = "txtYear";
+            this.txtBrandCD.SearchType = Entity.SearchType.ScType.None;
+            this.txtBrandCD.Size = new System.Drawing.Size(90, 19);
+            this.txtBrandCD.TabIndex = 9;
+            this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtBrandCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrandCD_KeyDown);
+            // 
+            // txtStaffCD
+            // 
+            this.txtStaffCD.AllowMinus = false;
+            this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStaffCD.ChangeDate = null;
+            this.txtStaffCD.Combo = null;
+            this.txtStaffCD.DecimalPlace = 0;
+            this.txtStaffCD.DepandOnMode = true;
+            this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtStaffCD.IntegerPart = 0;
+            this.txtStaffCD.IsDatatableOccurs = null;
+            this.txtStaffCD.IsErrorOccurs = false;
+            this.txtStaffCD.IsRequire = false;
+            this.txtStaffCD.lblName = null;
+            this.txtStaffCD.Location = new System.Drawing.Point(141, 149);
+            this.txtStaffCD.MaxLength = 10;
+            this.txtStaffCD.MinimumSize = new System.Drawing.Size(90, 19);
+            this.txtStaffCD.MoveNext = true;
+            this.txtStaffCD.Name = "txtStaffCD";
+            this.txtStaffCD.NextControl = null;
+            this.txtStaffCD.NextControlName = "txtBrandCD";
+            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
+            this.txtStaffCD.TabIndex = 8;
+            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblYear
             // 
@@ -430,6 +534,7 @@
             // lblBrand_Name
             // 
             this.lblBrand_Name.BackColor = System.Drawing.SystemColors.Menu;
+            this.lblBrand_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblBrand_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBrand_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblBrand_Name.Location = new System.Drawing.Point(231, 183);
@@ -441,6 +546,7 @@
             // lblStaff_Name
             // 
             this.lblStaff_Name.BackColor = System.Drawing.SystemColors.Menu;
+            this.lblStaff_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblStaff_Name.Location = new System.Drawing.Point(231, 149);
@@ -580,29 +686,6 @@
             this.txtHacchuuNO2.TabIndex = 5;
             this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtHacchuuNO1
-            // 
-            this.txtHacchuuNO1.AllowMinus = false;
-            this.txtHacchuuNO1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHacchuuNO1.DecimalPlace = 0;
-            this.txtHacchuuNO1.DepandOnMode = true;
-            this.txtHacchuuNO1.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtHacchuuNO1.IntegerPart = 0;
-            this.txtHacchuuNO1.IsDatatableOccurs = null;
-            this.txtHacchuuNO1.IsErrorOccurs = false;
-            this.txtHacchuuNO1.IsRequire = false;
-            this.txtHacchuuNO1.Location = new System.Drawing.Point(141, 84);
-            this.txtHacchuuNO1.MaxLength = 12;
-            this.txtHacchuuNO1.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtHacchuuNO1.MoveNext = true;
-            this.txtHacchuuNO1.Name = "txtHacchuuNO1";
-            this.txtHacchuuNO1.NextControl = null;
-            this.txtHacchuuNO1.NextControlName = "txtHacchuuNO2";
-            this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.None;
-            this.txtHacchuuNO1.Size = new System.Drawing.Size(100, 19);
-            this.txtHacchuuNO1.TabIndex = 4;
-            this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
             // lblHacchuuNO
             // 
             this.lblHacchuuNO.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
@@ -629,6 +712,7 @@
             this.rdo_Juc.TabIndex = 1;
             this.rdo_Juc.Text = "受注分含む\t\t\t";
             this.rdo_Juc.UseVisualStyleBackColor = true;
+            this.rdo_Juc.CheckedChanged += new System.EventHandler(this.rdo_Juc_CheckedChanged);
             // 
             // rdo_Hac
             // 
@@ -644,6 +728,7 @@
             this.rdo_Hac.TabStop = true;
             this.rdo_Hac.Text = "発注入力分のみ\t\t";
             this.rdo_Hac.UseVisualStyleBackColor = true;
+            this.rdo_Hac.CheckedChanged += new System.EventHandler(this.rdo_Hac_CheckedChanged);
             // 
             // label2
             // 
@@ -716,58 +801,6 @@
             this.lblHacchuuDate.Text = "発注日";
             this.lblHacchuuDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtStaffCD
-            // 
-            this.txtStaffCD.AllowMinus = false;
-            this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaffCD.ChangeDate = null;
-            this.txtStaffCD.Combo = null;
-            this.txtStaffCD.DecimalPlace = 0;
-            this.txtStaffCD.DepandOnMode = true;
-            this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaffCD.IntegerPart = 0;
-            this.txtStaffCD.IsDatatableOccurs = null;
-            this.txtStaffCD.IsErrorOccurs = false;
-            this.txtStaffCD.IsRequire = false;
-            this.txtStaffCD.lblName = null;
-            this.txtStaffCD.Location = new System.Drawing.Point(141, 149);
-            this.txtStaffCD.MaxLength = 10;
-            this.txtStaffCD.MinimumSize = new System.Drawing.Size(90, 19);
-            this.txtStaffCD.MoveNext = true;
-            this.txtStaffCD.Name = "txtStaffCD";
-            this.txtStaffCD.NextControl = null;
-            this.txtStaffCD.NextControlName = "txtBrandCD";
-            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
-            this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
-            this.txtStaffCD.TabIndex = 8;
-            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // txtBrandCD
-            // 
-            this.txtBrandCD.AllowMinus = false;
-            this.txtBrandCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBrandCD.ChangeDate = null;
-            this.txtBrandCD.Combo = null;
-            this.txtBrandCD.DecimalPlace = 0;
-            this.txtBrandCD.DepandOnMode = true;
-            this.txtBrandCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtBrandCD.IntegerPart = 0;
-            this.txtBrandCD.IsDatatableOccurs = null;
-            this.txtBrandCD.IsErrorOccurs = false;
-            this.txtBrandCD.IsRequire = false;
-            this.txtBrandCD.lblName = null;
-            this.txtBrandCD.Location = new System.Drawing.Point(141, 183);
-            this.txtBrandCD.MaxLength = 9;
-            this.txtBrandCD.MinimumSize = new System.Drawing.Size(90, 19);
-            this.txtBrandCD.MoveNext = true;
-            this.txtBrandCD.Name = "txtBrandCD";
-            this.txtBrandCD.NextControl = null;
-            this.txtBrandCD.NextControlName = "txtYear";
-            this.txtBrandCD.SearchType = Entity.SearchType.ScType.None;
-            this.txtBrandCD.Size = new System.Drawing.Size(90, 19);
-            this.txtBrandCD.TabIndex = 9;
-            this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
             // HacchuuList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -804,7 +837,6 @@
         private Shinyoh_Controls.SLabel lblUpdate_HacchuuDate;
         private System.Windows.Forms.Label label3;
         private Shinyoh_Controls.STextBox txtHacchuuNO2;
-        private Shinyoh_Controls.STextBox txtHacchuuNO1;
         private Shinyoh_Controls.SLabel lblHacchuuNO;
         private Shinyoh_Controls.SLabel lblBrand_Name;
         private Shinyoh_Controls.SLabel lblStaff_Name;
@@ -829,6 +861,8 @@
         private Shinyoh_Controls.SLabel lblYear;
         private Shinyoh_Search.SearchBox txtStaffCD;
         private Shinyoh_Search.SearchBox txtBrandCD;
+        private Shinyoh_Search.SearchBox txtHacchuuNO1;
+        private Shinyoh_Controls.STextBox txtTempDate;
     }
 }
 
