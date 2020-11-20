@@ -140,7 +140,6 @@ namespace Shinyoh_Search
                 {
                     if(this.Text=="")
                     {
-                        SendKeys.Send("{ENTER}");
                         this.Focus();
                     }
                     else
