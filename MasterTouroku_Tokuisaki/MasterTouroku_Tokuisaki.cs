@@ -55,6 +55,10 @@ namespace MasterTouroku_Tokuisaki {
 
             txt_Tokuisaki.ChangeDate = txtChange_Date;
             txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;
+
+           // RadSaMa.Checked = true;
+            RadNeed.Checked = true;
+            
         }
 
         private void ChangeMode(Mode mode)
@@ -258,7 +262,11 @@ namespace MasterTouroku_Tokuisaki {
                 obj.AliasKBN = 1;
             }else if(RadOnchuu.Checked == true)
                 obj.AliasKBN = 2;
-            obj.ShukkaSizishoHuyouKBN = 0;
+            if(RadNeed.Checked == true)
+            {
+                obj.ShukkaSizishoHuyouKBN = 0;
+            }else if(RadNoNeed.Checked == true)
+                obj.ShukkaSizishoHuyouKBN = 1;
             obj.TokuisakiName = txtTokuisakiName.Text;
             obj.TokuisakiRyakuName = txtShortName.Text;
             obj.KanaName = txtKanaName.Text;
@@ -350,6 +358,14 @@ namespace MasterTouroku_Tokuisaki {
                     txtStaffCharge.Text = dt.Rows[0]["StaffCD"].ToString();
                     txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
                     txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
+
+                    if (dt.Rows[0]["ShukkaSizishoHuyouKBN"].ToString().Equals("0"))
+                    {
+                        RadNeed.Checked = true;
+                    }
+                    else if (dt.Rows[0]["ShukkaSizishoHuyouKBN"].ToString().Equals("1"))
+                        RadNoNeed.Checked = true;
+
                     txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
                     txtSearch.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
 
@@ -570,7 +586,16 @@ namespace MasterTouroku_Tokuisaki {
                         bl_List.Add(Date_Check(obj.TorihikiShuuryouDate));
 
                         //
-                        obj.Remarks = splits[26];
+                        obj.ShukkaSizishoHuyouKBN = Convert.ToInt32(splits[26]);
+                        if (!(obj.ShukkaSizishoHuyouKBN == 0 || obj.ShukkaSizishoHuyouKBN == 1))
+                        {
+                            bl.ShowMessage("E117", "0", "1");
+                            bl_List.Add(true);
+                        }
+                        bl_List.Add(Null_Check(obj.ShukkaSizishoHuyouKBN.ToString()));
+
+                        //
+                        obj.Remarks = splits[27];
                         bl_List.Add(Byte_Check(80, obj.Remarks));
 
                         //
@@ -669,6 +694,7 @@ namespace MasterTouroku_Tokuisaki {
             create_dt.Columns.Add("StaffCD");
             create_dt.Columns.Add("TorihikiKaisiDate");
             create_dt.Columns.Add("TorihikiShuuryouDate");
+            create_dt.Columns.Add("ShukkaSizishoHuyouKBN");
             create_dt.Columns.Add("Remarks");
             create_dt.Columns.Add("UsedFlg");
             create_dt.Columns.Add("InsertOperator");

@@ -91,6 +91,9 @@
             this.txtSearch = new Shinyoh_Controls.STextBox();
             this.txtTokuisakiCopy = new Shinyoh_Search.SearchBox();
             this.txt_Tokuisaki = new Shinyoh_Search.SearchBox();
+            this.RadNeed = new Shinyoh_Controls.SRadio();
+            this.RadNoNeed = new Shinyoh_Controls.SRadio();
+            this.lblShukaKBN = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -266,6 +269,9 @@
             this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelDetail.Controls.Add(this.RadNeed);
+            this.PanelDetail.Controls.Add(this.RadNoNeed);
+            this.PanelDetail.Controls.Add(this.lblShukaKBN);
             this.PanelDetail.Controls.Add(this.txtStaffCharge);
             this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
             this.PanelDetail.Controls.Add(this.lblStaff);
@@ -321,7 +327,7 @@
             this.PanelDetail.Controls.Add(this.txtSearch);
             this.PanelDetail.Location = new System.Drawing.Point(0, 63);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1485, 719);
+            this.PanelDetail.Size = new System.Drawing.Size(1485, 786);
             this.PanelDetail.TabIndex = 3;
             // 
             // txtStaffCharge
@@ -338,7 +344,7 @@
             this.txtStaffCharge.IsErrorOccurs = false;
             this.txtStaffCharge.IsRequire = false;
             this.txtStaffCharge.lblName = null;
-            this.txtStaffCharge.Location = new System.Drawing.Point(141, 544);
+            this.txtStaffCharge.Location = new System.Drawing.Point(181, 544);
             this.txtStaffCharge.MaxLength = 10;
             this.txtStaffCharge.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtStaffCharge.MoveNext = true;
@@ -356,7 +362,7 @@
             this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaffCD_Name.Location = new System.Drawing.Point(211, 544);
+            this.lblStaffCD_Name.Location = new System.Drawing.Point(198, 544);
             this.lblStaffCD_Name.Name = "lblStaffCD_Name";
             this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
             this.lblStaffCD_Name.TabIndex = 94;
@@ -375,7 +381,7 @@
             this.chk.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk.IsDatatableOccurs = null;
             this.chk.IsErrorOccurs = false;
-            this.chk.Location = new System.Drawing.Point(152, 21);
+            this.chk.Location = new System.Drawing.Point(192, 20);
             this.chk.MoveNext = true;
             this.chk.Name = "chk";
             this.chk.NextControl = null;
@@ -388,7 +394,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(340, 370);
+            this.label4.Location = new System.Drawing.Point(383, 370);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 92;
@@ -398,7 +404,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(221, 370);
+            this.label5.Location = new System.Drawing.Point(265, 369);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 20);
             this.label5.TabIndex = 91;
@@ -415,7 +421,7 @@
             this.txtPhNo6.IsDatatableOccurs = null;
             this.txtPhNo6.IsErrorOccurs = false;
             this.txtPhNo6.IsRequire = false;
-            this.txtPhNo6.Location = new System.Drawing.Point(370, 370);
+            this.txtPhNo6.Location = new System.Drawing.Point(417, 370);
             this.txtPhNo6.MaxLength = 5;
             this.txtPhNo6.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo6.MoveNext = true;
@@ -438,7 +444,7 @@
             this.txtPhNo5.IsDatatableOccurs = null;
             this.txtPhNo5.IsErrorOccurs = false;
             this.txtPhNo5.IsRequire = false;
-            this.txtPhNo5.Location = new System.Drawing.Point(247, 370);
+            this.txtPhNo5.Location = new System.Drawing.Point(294, 370);
             this.txtPhNo5.MaxLength = 5;
             this.txtPhNo5.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo5.MoveNext = true;
@@ -461,7 +467,7 @@
             this.txtPhNo4.IsDatatableOccurs = null;
             this.txtPhNo4.IsErrorOccurs = false;
             this.txtPhNo4.IsRequire = false;
-            this.txtPhNo4.Location = new System.Drawing.Point(141, 369);
+            this.txtPhNo4.Location = new System.Drawing.Point(181, 369);
             this.txtPhNo4.MaxLength = 6;
             this.txtPhNo4.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo4.MoveNext = true;
@@ -477,7 +483,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(339, 336);
+            this.label3.Location = new System.Drawing.Point(383, 336);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 20);
             this.label3.TabIndex = 90;
@@ -487,7 +493,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(221, 336);
+            this.label2.Location = new System.Drawing.Point(264, 335);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(15, 20);
             this.label2.TabIndex = 89;
@@ -504,7 +510,7 @@
             this.txtPhNo3.IsDatatableOccurs = null;
             this.txtPhNo3.IsErrorOccurs = false;
             this.txtPhNo3.IsRequire = false;
-            this.txtPhNo3.Location = new System.Drawing.Point(370, 336);
+            this.txtPhNo3.Location = new System.Drawing.Point(417, 336);
             this.txtPhNo3.MaxLength = 5;
             this.txtPhNo3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo3.MoveNext = true;
@@ -527,7 +533,7 @@
             this.txtPhNo2.IsDatatableOccurs = null;
             this.txtPhNo2.IsErrorOccurs = false;
             this.txtPhNo2.IsRequire = false;
-            this.txtPhNo2.Location = new System.Drawing.Point(247, 336);
+            this.txtPhNo2.Location = new System.Drawing.Point(294, 336);
             this.txtPhNo2.MaxLength = 5;
             this.txtPhNo2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo2.MoveNext = true;
@@ -550,7 +556,7 @@
             this.txtPhNo1.IsDatatableOccurs = null;
             this.txtPhNo1.IsErrorOccurs = false;
             this.txtPhNo1.IsRequire = false;
-            this.txtPhNo1.Location = new System.Drawing.Point(141, 335);
+            this.txtPhNo1.Location = new System.Drawing.Point(181, 335);
             this.txtPhNo1.MaxLength = 6;
             this.txtPhNo1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo1.MoveNext = true;
@@ -573,7 +579,7 @@
             this.txtStartDate.IsDatatableOccurs = null;
             this.txtStartDate.IsErrorOccurs = false;
             this.txtStartDate.IsRequire = false;
-            this.txtStartDate.Location = new System.Drawing.Point(141, 578);
+            this.txtStartDate.Location = new System.Drawing.Point(181, 578);
             this.txtStartDate.MaxLength = 10;
             this.txtStartDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStartDate.MoveNext = true;
@@ -593,7 +599,7 @@
             this.lblStaffCharge.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblStaffCharge.Location = new System.Drawing.Point(41, 544);
             this.lblStaffCharge.Name = "lblStaffCharge";
-            this.lblStaffCharge.Size = new System.Drawing.Size(100, 19);
+            this.lblStaffCharge.Size = new System.Drawing.Size(140, 19);
             this.lblStaffCharge.TabIndex = 80;
             this.lblStaffCharge.Text = "担当スタッフ\t\t";
             this.lblStaffCharge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -607,7 +613,7 @@
             this.lblStartDate.Location = new System.Drawing.Point(41, 578);
             this.lblStartDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblStartDate.Name = "lblStartDate";
-            this.lblStartDate.Size = new System.Drawing.Size(100, 19);
+            this.lblStartDate.Size = new System.Drawing.Size(140, 19);
             this.lblStartDate.TabIndex = 79;
             this.lblStartDate.Text = "取引開始日\t";
             this.lblStartDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -623,13 +629,13 @@
             this.txtEndDate.IsDatatableOccurs = null;
             this.txtEndDate.IsErrorOccurs = false;
             this.txtEndDate.IsRequire = false;
-            this.txtEndDate.Location = new System.Drawing.Point(141, 612);
+            this.txtEndDate.Location = new System.Drawing.Point(181, 612);
             this.txtEndDate.MaxLength = 10;
             this.txtEndDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtEndDate.MoveNext = true;
             this.txtEndDate.Name = "txtEndDate";
             this.txtEndDate.NextControl = null;
-            this.txtEndDate.NextControlName = "txtRemark";
+            this.txtEndDate.NextControlName = "RadNeed";
             this.txtEndDate.SearchType = Entity.SearchType.ScType.None;
             this.txtEndDate.Size = new System.Drawing.Size(100, 19);
             this.txtEndDate.TabIndex = 30;
@@ -644,7 +650,7 @@
             this.lblFinishDate.Location = new System.Drawing.Point(41, 612);
             this.lblFinishDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblFinishDate.Name = "lblFinishDate";
-            this.lblFinishDate.Size = new System.Drawing.Size(100, 19);
+            this.lblFinishDate.Size = new System.Drawing.Size(140, 19);
             this.lblFinishDate.TabIndex = 77;
             this.lblFinishDate.Text = "取引終了日\t\t";
             this.lblFinishDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -660,7 +666,7 @@
             this.txtMailAddress.IsDatatableOccurs = null;
             this.txtMailAddress.IsErrorOccurs = false;
             this.txtMailAddress.IsRequire = false;
-            this.txtMailAddress.Location = new System.Drawing.Point(141, 507);
+            this.txtMailAddress.Location = new System.Drawing.Point(181, 507);
             this.txtMailAddress.MaxLength = 100;
             this.txtMailAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtMailAddress.MoveNext = true;
@@ -683,7 +689,7 @@
             this.txtPersonCharge.IsDatatableOccurs = null;
             this.txtPersonCharge.IsErrorOccurs = false;
             this.txtPersonCharge.IsRequire = false;
-            this.txtPersonCharge.Location = new System.Drawing.Point(141, 473);
+            this.txtPersonCharge.Location = new System.Drawing.Point(181, 473);
             this.txtPersonCharge.MaxLength = 40;
             this.txtPersonCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPersonCharge.MoveNext = true;
@@ -704,7 +710,7 @@
             this.lblPersonCharge.Location = new System.Drawing.Point(41, 473);
             this.lblPersonCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblPersonCharge.Name = "lblPersonCharge";
-            this.lblPersonCharge.Size = new System.Drawing.Size(100, 19);
+            this.lblPersonCharge.Size = new System.Drawing.Size(140, 19);
             this.lblPersonCharge.TabIndex = 72;
             this.lblPersonCharge.Text = "担当者名\t\t\t\t\t";
             this.lblPersonCharge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -718,7 +724,7 @@
             this.lblMailAddress.Location = new System.Drawing.Point(41, 507);
             this.lblMailAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblMailAddress.Name = "lblMailAddress";
-            this.lblMailAddress.Size = new System.Drawing.Size(100, 19);
+            this.lblMailAddress.Size = new System.Drawing.Size(140, 19);
             this.lblMailAddress.TabIndex = 70;
             this.lblMailAddress.Text = "メールアドレス\t";
             this.lblMailAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -734,7 +740,7 @@
             this.txtJobTitle.IsDatatableOccurs = null;
             this.txtJobTitle.IsErrorOccurs = false;
             this.txtJobTitle.IsRequire = false;
-            this.txtJobTitle.Location = new System.Drawing.Point(141, 439);
+            this.txtJobTitle.Location = new System.Drawing.Point(181, 439);
             this.txtJobTitle.MaxLength = 40;
             this.txtJobTitle.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJobTitle.MoveNext = true;
@@ -755,7 +761,7 @@
             this.lblJobTitle.Location = new System.Drawing.Point(41, 439);
             this.lblJobTitle.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblJobTitle.Name = "lblJobTitle";
-            this.lblJobTitle.Size = new System.Drawing.Size(100, 19);
+            this.lblJobTitle.Size = new System.Drawing.Size(140, 19);
             this.lblJobTitle.TabIndex = 69;
             this.lblJobTitle.Text = "担当役職\t\t";
             this.lblJobTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -769,7 +775,7 @@
             this.lblPhNo2.Location = new System.Drawing.Point(41, 369);
             this.lblPhNo2.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblPhNo2.Name = "lblPhNo2";
-            this.lblPhNo2.Size = new System.Drawing.Size(100, 19);
+            this.lblPhNo2.Size = new System.Drawing.Size(140, 19);
             this.lblPhNo2.TabIndex = 66;
             this.lblPhNo2.Text = "電話番号②\t\t";
             this.lblPhNo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -777,7 +783,7 @@
             // RadOnchuu
             // 
             this.RadOnchuu.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadOnchuu.Location = new System.Drawing.Point(233, 189);
+            this.RadOnchuu.Location = new System.Drawing.Point(281, 189);
             this.RadOnchuu.MoveNext = true;
             this.RadOnchuu.Name = "RadOnchuu";
             this.RadOnchuu.NextControl = null;
@@ -791,7 +797,7 @@
             // 
             this.RadSaMa.Checked = true;
             this.RadSaMa.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadSaMa.Location = new System.Drawing.Point(161, 189);
+            this.RadSaMa.Location = new System.Drawing.Point(201, 189);
             this.RadSaMa.MoveNext = true;
             this.RadSaMa.Name = "RadSaMa";
             this.RadSaMa.NextControl = null;
@@ -810,7 +816,7 @@
             this.lblTitle.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblTitle.Location = new System.Drawing.Point(41, 188);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(100, 19);
+            this.lblTitle.Size = new System.Drawing.Size(140, 19);
             this.lblTitle.TabIndex = 64;
             this.lblTitle.Text = "敬称\t";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -826,7 +832,7 @@
             this.txtBillAddress.IsDatatableOccurs = null;
             this.txtBillAddress.IsErrorOccurs = false;
             this.txtBillAddress.IsRequire = false;
-            this.txtBillAddress.Location = new System.Drawing.Point(141, 156);
+            this.txtBillAddress.Location = new System.Drawing.Point(181, 156);
             this.txtBillAddress.MaxLength = 10;
             this.txtBillAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtBillAddress.MoveNext = true;
@@ -848,7 +854,7 @@
             this.lblBillAddress.Location = new System.Drawing.Point(41, 156);
             this.lblBillAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblBillAddress.Name = "lblBillAddress";
-            this.lblBillAddress.Size = new System.Drawing.Size(100, 19);
+            this.lblBillAddress.Size = new System.Drawing.Size(140, 19);
             this.lblBillAddress.TabIndex = 46;
             this.lblBillAddress.Text = "請求先\t\t\t";
             this.lblBillAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -862,7 +868,7 @@
             this.lblKanaName.Location = new System.Drawing.Point(41, 122);
             this.lblKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblKanaName.Name = "lblKanaName";
-            this.lblKanaName.Size = new System.Drawing.Size(100, 19);
+            this.lblKanaName.Size = new System.Drawing.Size(140, 19);
             this.lblKanaName.TabIndex = 45;
             this.lblKanaName.Text = "カナ名";
             this.lblKanaName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -878,7 +884,7 @@
             this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
-            this.txtKanaName.Location = new System.Drawing.Point(141, 122);
+            this.txtKanaName.Location = new System.Drawing.Point(181, 122);
             this.txtKanaName.MaxLength = 80;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
@@ -901,7 +907,7 @@
             this.txtShortName.IsDatatableOccurs = null;
             this.txtShortName.IsErrorOccurs = false;
             this.txtShortName.IsRequire = false;
-            this.txtShortName.Location = new System.Drawing.Point(141, 86);
+            this.txtShortName.Location = new System.Drawing.Point(181, 86);
             this.txtShortName.MaxLength = 40;
             this.txtShortName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShortName.MoveNext = true;
@@ -923,7 +929,7 @@
             this.lblShortName.Location = new System.Drawing.Point(41, 86);
             this.lblShortName.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblShortName.Name = "lblShortName";
-            this.lblShortName.Size = new System.Drawing.Size(100, 19);
+            this.lblShortName.Size = new System.Drawing.Size(140, 19);
             this.lblShortName.TabIndex = 41;
             this.lblShortName.Text = "略名\t\t";
             this.lblShortName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -938,7 +944,7 @@
             this.lblTokuisakiName.Location = new System.Drawing.Point(41, 50);
             this.lblTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblTokuisakiName.Name = "lblTokuisakiName";
-            this.lblTokuisakiName.Size = new System.Drawing.Size(100, 19);
+            this.lblTokuisakiName.Size = new System.Drawing.Size(140, 19);
             this.lblTokuisakiName.TabIndex = 40;
             this.lblTokuisakiName.Text = "得意先名\t\t";
             this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -954,7 +960,7 @@
             this.txtRemark.IsDatatableOccurs = null;
             this.txtRemark.IsErrorOccurs = false;
             this.txtRemark.IsRequire = false;
-            this.txtRemark.Location = new System.Drawing.Point(141, 647);
+            this.txtRemark.Location = new System.Drawing.Point(181, 680);
             this.txtRemark.MaxLength = 80;
             this.txtRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRemark.MoveNext = true;
@@ -963,7 +969,7 @@
             this.txtRemark.NextControlName = "txtSearch";
             this.txtRemark.SearchType = Entity.SearchType.ScType.None;
             this.txtRemark.Size = new System.Drawing.Size(445, 19);
-            this.txtRemark.TabIndex = 31;
+            this.txtRemark.TabIndex = 33;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblRemark
@@ -972,10 +978,10 @@
             this.lblRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRemark.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRemark.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblRemark.Location = new System.Drawing.Point(41, 647);
+            this.lblRemark.Location = new System.Drawing.Point(41, 680);
             this.lblRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblRemark.Name = "lblRemark";
-            this.lblRemark.Size = new System.Drawing.Size(100, 19);
+            this.lblRemark.Size = new System.Drawing.Size(140, 19);
             this.lblRemark.TabIndex = 37;
             this.lblRemark.Text = "備考";
             this.lblRemark.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -991,7 +997,7 @@
             this.txtDepCharge.IsDatatableOccurs = null;
             this.txtDepCharge.IsErrorOccurs = false;
             this.txtDepCharge.IsRequire = false;
-            this.txtDepCharge.Location = new System.Drawing.Point(141, 403);
+            this.txtDepCharge.Location = new System.Drawing.Point(181, 403);
             this.txtDepCharge.MaxLength = 40;
             this.txtDepCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDepCharge.MoveNext = true;
@@ -1012,7 +1018,7 @@
             this.lblDepCharge.Location = new System.Drawing.Point(41, 403);
             this.lblDepCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblDepCharge.Name = "lblDepCharge";
-            this.lblDepCharge.Size = new System.Drawing.Size(100, 19);
+            this.lblDepCharge.Size = new System.Drawing.Size(140, 19);
             this.lblDepCharge.TabIndex = 35;
             this.lblDepCharge.Text = "担当部署\t\t";
             this.lblDepCharge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1026,7 +1032,7 @@
             this.lblPhNo1.Location = new System.Drawing.Point(41, 335);
             this.lblPhNo1.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblPhNo1.Name = "lblPhNo1";
-            this.lblPhNo1.Size = new System.Drawing.Size(100, 19);
+            this.lblPhNo1.Size = new System.Drawing.Size(140, 19);
             this.lblPhNo1.TabIndex = 33;
             this.lblPhNo1.Text = "電話番号①\t\t";
             this.lblPhNo1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1042,7 +1048,7 @@
             this.txtAddress2.IsDatatableOccurs = null;
             this.txtAddress2.IsErrorOccurs = false;
             this.txtAddress2.IsRequire = false;
-            this.txtAddress2.Location = new System.Drawing.Point(141, 299);
+            this.txtAddress2.Location = new System.Drawing.Point(181, 299);
             this.txtAddress2.MaxLength = 80;
             this.txtAddress2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress2.MoveNext = true;
@@ -1063,7 +1069,7 @@
             this.lblAddress2.Location = new System.Drawing.Point(41, 299);
             this.lblAddress2.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblAddress2.Name = "lblAddress2";
-            this.lblAddress2.Size = new System.Drawing.Size(100, 19);
+            this.lblAddress2.Size = new System.Drawing.Size(140, 19);
             this.lblAddress2.TabIndex = 31;
             this.lblAddress2.Text = "住所2";
             this.lblAddress2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1079,7 +1085,7 @@
             this.txtAddress1.IsDatatableOccurs = null;
             this.txtAddress1.IsErrorOccurs = false;
             this.txtAddress1.IsRequire = false;
-            this.txtAddress1.Location = new System.Drawing.Point(141, 262);
+            this.txtAddress1.Location = new System.Drawing.Point(181, 262);
             this.txtAddress1.MaxLength = 80;
             this.txtAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress1.MoveNext = true;
@@ -1100,7 +1106,7 @@
             this.lblAddress1.Location = new System.Drawing.Point(41, 262);
             this.lblAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblAddress1.Name = "lblAddress1";
-            this.lblAddress1.Size = new System.Drawing.Size(100, 19);
+            this.lblAddress1.Size = new System.Drawing.Size(140, 19);
             this.lblAddress1.TabIndex = 29;
             this.lblAddress1.Text = "住所１";
             this.lblAddress1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1116,7 +1122,7 @@
             this.txtYubin2.IsDatatableOccurs = null;
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
-            this.txtYubin2.Location = new System.Drawing.Point(234, 225);
+            this.txtYubin2.Location = new System.Drawing.Point(287, 225);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYubin2.MoveNext = true;
@@ -1140,7 +1146,7 @@
             this.txtYubin1.IsDatatableOccurs = null;
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
-            this.txtYubin1.Location = new System.Drawing.Point(141, 225);
+            this.txtYubin1.Location = new System.Drawing.Point(181, 225);
             this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin1.MoveNext = true;
@@ -1161,7 +1167,7 @@
             this.lblYubinNo.Location = new System.Drawing.Point(41, 225);
             this.lblYubinNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblYubinNo.Name = "lblYubinNo";
-            this.lblYubinNo.Size = new System.Drawing.Size(100, 19);
+            this.lblYubinNo.Size = new System.Drawing.Size(140, 19);
             this.lblYubinNo.TabIndex = 26;
             this.lblYubinNo.Text = "郵便番号";
             this.lblYubinNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1177,7 +1183,7 @@
             this.txtTokuisakiName.IsDatatableOccurs = null;
             this.txtTokuisakiName.IsErrorOccurs = false;
             this.txtTokuisakiName.IsRequire = false;
-            this.txtTokuisakiName.Location = new System.Drawing.Point(139, 50);
+            this.txtTokuisakiName.Location = new System.Drawing.Point(179, 50);
             this.txtTokuisakiName.MaxLength = 80;
             this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiName.MoveNext = true;
@@ -1199,7 +1205,7 @@
             this.lblObjects.Location = new System.Drawing.Point(41, 18);
             this.lblObjects.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblObjects.Name = "lblObjects";
-            this.lblObjects.Size = new System.Drawing.Size(100, 19);
+            this.lblObjects.Size = new System.Drawing.Size(140, 19);
             this.lblObjects.TabIndex = 22;
             this.lblObjects.Text = "諸口";
             this.lblObjects.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1208,7 +1214,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(203, 223);
+            this.label1.Location = new System.Drawing.Point(252, 223);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 19;
@@ -1220,10 +1226,10 @@
             this.lblSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSearch.Location = new System.Drawing.Point(41, 682);
+            this.lblSearch.Location = new System.Drawing.Point(41, 714);
             this.lblSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(100, 19);
+            this.lblSearch.Size = new System.Drawing.Size(140, 19);
             this.lblSearch.TabIndex = 39;
             this.lblSearch.Text = "検索表示順";
             this.lblSearch.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1239,7 +1245,7 @@
             this.txtSearch.IsDatatableOccurs = null;
             this.txtSearch.IsErrorOccurs = false;
             this.txtSearch.IsRequire = false;
-            this.txtSearch.Location = new System.Drawing.Point(141, 682);
+            this.txtSearch.Location = new System.Drawing.Point(181, 714);
             this.txtSearch.MaxLength = 6;
             this.txtSearch.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSearch.MoveNext = true;
@@ -1248,7 +1254,7 @@
             this.txtSearch.NextControlName = "BtnF1";
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(100, 19);
-            this.txtSearch.TabIndex = 32;
+            this.txtSearch.TabIndex = 34;
             this.txtSearch.Text = "0";
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -1305,11 +1311,50 @@
             this.txt_Tokuisaki.TabIndex = 1;
             this.txt_Tokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
+            // RadNeed
+            // 
+            this.RadNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadNeed.Location = new System.Drawing.Point(201, 646);
+            this.RadNeed.MoveNext = true;
+            this.RadNeed.Name = "RadNeed";
+            this.RadNeed.NextControl = null;
+            this.RadNeed.NextControlName = "RadNoNeed";
+            this.RadNeed.Size = new System.Drawing.Size(49, 19);
+            this.RadNeed.TabIndex = 31;
+            this.RadNeed.Text = "必要\t\t\t";
+            this.RadNeed.UseVisualStyleBackColor = true;
+            // 
+            // RadNoNeed
+            // 
+            this.RadNoNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadNoNeed.Location = new System.Drawing.Point(281, 646);
+            this.RadNoNeed.MoveNext = true;
+            this.RadNoNeed.Name = "RadNoNeed";
+            this.RadNoNeed.NextControl = null;
+            this.RadNoNeed.NextControlName = "txtRemark";
+            this.RadNoNeed.Size = new System.Drawing.Size(50, 19);
+            this.RadNoNeed.TabIndex = 32;
+            this.RadNoNeed.Text = "不要\t\t\t\t";
+            this.RadNoNeed.UseVisualStyleBackColor = true;
+            // 
+            // lblShukaKBN
+            // 
+            this.lblShukaKBN.BackColor = System.Drawing.Color.Red;
+            this.lblShukaKBN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblShukaKBN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblShukaKBN.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblShukaKBN.Location = new System.Drawing.Point(41, 646);
+            this.lblShukaKBN.Name = "lblShukaKBN";
+            this.lblShukaKBN.Size = new System.Drawing.Size(140, 19);
+            this.lblShukaKBN.TabIndex = 97;
+            this.lblShukaKBN.Text = "出荷指示書不要区分\t";
+            this.lblShukaKBN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // MasterTouroku_Tokuisaki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 844);
+            this.ClientSize = new System.Drawing.Size(1485, 911);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_Tokuisaki";
@@ -1393,6 +1438,9 @@
         private Shinyoh_Controls.SLabel lblStaffCD_Name;
         private Shinyoh_Search.SearchBox txtStaffCharge;
         private Shinyoh_Search.SearchBox txtTokuisakiCopy;
+        private Shinyoh_Controls.SRadio RadNeed;
+        private Shinyoh_Controls.SRadio RadNoNeed;
+        private Shinyoh_Controls.SLabel lblShukaKBN;
     }
 }
 
