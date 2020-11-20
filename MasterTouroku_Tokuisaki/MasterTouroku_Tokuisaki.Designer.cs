@@ -36,6 +36,9 @@
             this.sRadRegister = new Shinyoh_Controls.SRadio();
             this.sRadDelete = new Shinyoh_Controls.SRadio();
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.RadNeed = new Shinyoh_Controls.SRadio();
+            this.RadNoNeed = new Shinyoh_Controls.SRadio();
+            this.lblShukaKBN = new Shinyoh_Controls.SLabel();
             this.txtStaffCharge = new Shinyoh_Search.SearchBox();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.lblStaff = new System.Windows.Forms.Label();
@@ -91,12 +94,13 @@
             this.txtSearch = new Shinyoh_Controls.STextBox();
             this.txtTokuisakiCopy = new Shinyoh_Search.SearchBox();
             this.txt_Tokuisaki = new Shinyoh_Search.SearchBox();
-            this.RadNeed = new Shinyoh_Controls.SRadio();
-            this.RadNoNeed = new Shinyoh_Controls.SRadio();
-            this.lblShukaKBN = new Shinyoh_Controls.SLabel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.sRadio1 = new Shinyoh_Controls.SRadio();
+            this.sRadio2 = new Shinyoh_Controls.SRadio();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -269,6 +273,7 @@
             this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelDetail.Controls.Add(this.panel2);
             this.PanelDetail.Controls.Add(this.RadNeed);
             this.PanelDetail.Controls.Add(this.RadNoNeed);
             this.PanelDetail.Controls.Add(this.lblShukaKBN);
@@ -329,6 +334,45 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1485, 786);
             this.PanelDetail.TabIndex = 3;
+            // 
+            // RadNeed
+            // 
+            this.RadNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadNeed.Location = new System.Drawing.Point(201, 646);
+            this.RadNeed.MoveNext = true;
+            this.RadNeed.Name = "RadNeed";
+            this.RadNeed.NextControl = null;
+            this.RadNeed.NextControlName = "RadNoNeed";
+            this.RadNeed.Size = new System.Drawing.Size(49, 19);
+            this.RadNeed.TabIndex = 31;
+            this.RadNeed.Text = "必要\t\t\t";
+            this.RadNeed.UseVisualStyleBackColor = true;
+            // 
+            // RadNoNeed
+            // 
+            this.RadNoNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadNoNeed.Location = new System.Drawing.Point(281, 646);
+            this.RadNoNeed.MoveNext = true;
+            this.RadNoNeed.Name = "RadNoNeed";
+            this.RadNoNeed.NextControl = null;
+            this.RadNoNeed.NextControlName = "txtRemark";
+            this.RadNoNeed.Size = new System.Drawing.Size(50, 19);
+            this.RadNoNeed.TabIndex = 32;
+            this.RadNoNeed.Text = "不要\t\t\t\t";
+            this.RadNoNeed.UseVisualStyleBackColor = true;
+            // 
+            // lblShukaKBN
+            // 
+            this.lblShukaKBN.BackColor = System.Drawing.Color.Red;
+            this.lblShukaKBN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblShukaKBN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblShukaKBN.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblShukaKBN.Location = new System.Drawing.Point(41, 646);
+            this.lblShukaKBN.Name = "lblShukaKBN";
+            this.lblShukaKBN.Size = new System.Drawing.Size(140, 19);
+            this.lblShukaKBN.TabIndex = 97;
+            this.lblShukaKBN.Text = "出荷指示書不要区分\t";
+            this.lblShukaKBN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtStaffCharge
             // 
@@ -1311,44 +1355,42 @@
             this.txt_Tokuisaki.TabIndex = 1;
             this.txt_Tokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // RadNeed
+            // panel2
             // 
-            this.RadNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadNeed.Location = new System.Drawing.Point(201, 646);
-            this.RadNeed.MoveNext = true;
-            this.RadNeed.Name = "RadNeed";
-            this.RadNeed.NextControl = null;
-            this.RadNeed.NextControlName = "RadNoNeed";
-            this.RadNeed.Size = new System.Drawing.Size(49, 19);
-            this.RadNeed.TabIndex = 31;
-            this.RadNeed.Text = "必要\t\t\t";
-            this.RadNeed.UseVisualStyleBackColor = true;
+            this.panel2.Controls.Add(this.sRadio1);
+            this.panel2.Controls.Add(this.sRadio2);
+            this.panel2.Location = new System.Drawing.Point(791, 586);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 100);
+            this.panel2.TabIndex = 98;
             // 
-            // RadNoNeed
+            // sRadio1
             // 
-            this.RadNoNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadNoNeed.Location = new System.Drawing.Point(281, 646);
-            this.RadNoNeed.MoveNext = true;
-            this.RadNoNeed.Name = "RadNoNeed";
-            this.RadNoNeed.NextControl = null;
-            this.RadNoNeed.NextControlName = "txtRemark";
-            this.RadNoNeed.Size = new System.Drawing.Size(50, 19);
-            this.RadNoNeed.TabIndex = 32;
-            this.RadNoNeed.Text = "不要\t\t\t\t";
-            this.RadNoNeed.UseVisualStyleBackColor = true;
+            this.sRadio1.Checked = true;
+            this.sRadio1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sRadio1.Location = new System.Drawing.Point(35, 41);
+            this.sRadio1.MoveNext = true;
+            this.sRadio1.Name = "sRadio1";
+            this.sRadio1.NextControl = null;
+            this.sRadio1.NextControlName = "RadNoNeed";
+            this.sRadio1.Size = new System.Drawing.Size(49, 19);
+            this.sRadio1.TabIndex = 35;
+            this.sRadio1.TabStop = true;
+            this.sRadio1.Text = "必要\t\t\t";
+            this.sRadio1.UseVisualStyleBackColor = true;
             // 
-            // lblShukaKBN
+            // sRadio2
             // 
-            this.lblShukaKBN.BackColor = System.Drawing.Color.Red;
-            this.lblShukaKBN.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblShukaKBN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblShukaKBN.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblShukaKBN.Location = new System.Drawing.Point(41, 646);
-            this.lblShukaKBN.Name = "lblShukaKBN";
-            this.lblShukaKBN.Size = new System.Drawing.Size(140, 19);
-            this.lblShukaKBN.TabIndex = 97;
-            this.lblShukaKBN.Text = "出荷指示書不要区分\t";
-            this.lblShukaKBN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sRadio2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sRadio2.Location = new System.Drawing.Point(115, 41);
+            this.sRadio2.MoveNext = true;
+            this.sRadio2.Name = "sRadio2";
+            this.sRadio2.NextControl = null;
+            this.sRadio2.NextControlName = "txtRemark";
+            this.sRadio2.Size = new System.Drawing.Size(50, 19);
+            this.sRadio2.TabIndex = 34;
+            this.sRadio2.Text = "不要\t\t\t\t";
+            this.sRadio2.UseVisualStyleBackColor = true;
             // 
             // MasterTouroku_Tokuisaki
             // 
@@ -1366,6 +1408,7 @@
             this.PanelTitle.ResumeLayout(false);
             this.PanelDetail.ResumeLayout(false);
             this.PanelDetail.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1441,6 +1484,9 @@
         private Shinyoh_Controls.SRadio RadNeed;
         private Shinyoh_Controls.SRadio RadNoNeed;
         private Shinyoh_Controls.SLabel lblShukaKBN;
+        private System.Windows.Forms.Panel panel2;
+        private Shinyoh_Controls.SRadio sRadio1;
+        private Shinyoh_Controls.SRadio sRadio2;
     }
 }
 

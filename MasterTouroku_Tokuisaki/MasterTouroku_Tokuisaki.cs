@@ -621,10 +621,10 @@ namespace MasterTouroku_Tokuisaki {
                             else
                                 dr[j] = splits[j].ToString();
                         }
-                        dr[27] = "0";
-                        dr[28] = base_Entity.OperatorCD;
+                        dr[28] = "0";
                         dr[29] = base_Entity.OperatorCD;
-                        dr[30] = error;
+                        dr[30] = base_Entity.OperatorCD;
+                        dr[31] = error;
                         create_dt.Rows.Add(dr);
                     }
 
