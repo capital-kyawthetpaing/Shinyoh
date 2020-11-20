@@ -132,25 +132,6 @@ namespace Shinyoh_Controls
                     }
                 }
             }
-            if(sTextBox.E268)
-            {
-                string result = string.Empty;
-                DataTable dt = new DataTable();
-                switch (sTextBox.E268Type)
-                {
-                    case "ChakuniNyuuryoku":
-                        chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
-                        rDt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE268_1.Text,string.Empty, "E268");
-                        result = rDt.Rows[0]["MessageID"].ToString();
-                        break;
-                }
-                if (result.Equals("E268"))
-                {
-                    ShowErrorMessage("E268");
-                    sTextBox.Focus();
-                    return (true, rDt);
-                }
-            }
             if (sTextBox.E132)
             {
                 string result = string.Empty;
@@ -291,6 +272,25 @@ namespace Shinyoh_Controls
                 if (!sTextBox.ctrlE166_1.Text.Equals(sTextBox.ctrlE166_2.Text))
                 {
                     ShowErrorMessage("E166");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            if (sTextBox.E268)
+            {
+                string result = string.Empty;
+                DataTable dt = new DataTable();
+                switch (sTextBox.E268Type)
+                {
+                    case "ChakuniNyuuryoku":
+                        chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
+                        rDt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE268_1.Text, string.Empty, "E268");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E268"))
+                {
+                    ShowErrorMessage("E268");
                     sTextBox.Focus();
                     return (true, rDt);
                 }
