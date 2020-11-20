@@ -59,16 +59,7 @@ namespace MasterTouroku_Tokuisaki {
 
         private void ChangeMode(Mode mode)
         {
-            //Enable && Disable
-            cf.Clear(PanelTitle);
-            cf.Clear(PanelDetail);
-            lblStaffCD_Name.Text = string.Empty;
-
-            cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(PanelDetail);
-            txt_Tokuisaki.Focus();
-            txtSearch.Text = "0";
-            lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            Mode_Setting();
             switch (mode)
             {
                 case Mode.New:
@@ -81,9 +72,9 @@ namespace MasterTouroku_Tokuisaki {
                     txtTokuisaki_CopyDate.E102MultiCheck(true, txtTokuisakiCopy, txtTokuisaki_CopyDate);
                     txtTokuisaki_CopyDate.E133Check(true, "M_Tokuisaki", txtTokuisakiCopy, txtTokuisaki_CopyDate, null);
 
-                    cf.Clear(PanelTitle);
-                    cf.Clear(PanelDetail);
-                    cf.DisablePanel(PanelDetail);
+                    //cf.Clear(PanelTitle);
+                    //cf.Clear(PanelDetail);
+                    //cf.DisablePanel(PanelDetail);
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -95,7 +86,7 @@ namespace MasterTouroku_Tokuisaki {
                     txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
-                    Disable_UDI_Mode();
+                   // Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
@@ -104,7 +95,7 @@ namespace MasterTouroku_Tokuisaki {
                     txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E270Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
-                    Disable_UDI_Mode();
+                    //Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
 
@@ -114,19 +105,36 @@ namespace MasterTouroku_Tokuisaki {
                     txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
-                    Disable_UDI_Mode();
+                    //Disable_UDI_Mode();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
             }
         }
-        public void Disable_UDI_Mode()
+        //public void Disable_UDI_Mode()
+        //{
+        //    cf.Clear(PanelTitle);
+        //    cf.Clear(PanelDetail);
+        //    cf.DisablePanel(PanelDetail);
+        //    txtTokuisakiCopy.Enabled = false;
+        //    txtTokuisaki_CopyDate.Enabled = false;
+        //}
+        private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
             cf.Clear(PanelDetail);
+            lblStaffCD_Name.Text = string.Empty;
+
+            cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
-            txtTokuisakiCopy.Enabled = false;
-            txtTokuisaki_CopyDate.Enabled = false;
+            txt_Tokuisaki.Focus();
+            txtSearch.Text = "0";
+            lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
+            {
+                txtTokuisakiCopy.Enabled = false;
+                txtTokuisaki_CopyDate.Enabled = false;
+            }
         }
         public void ErrorCheck()
         {
@@ -166,6 +174,10 @@ namespace MasterTouroku_Tokuisaki {
             if (tagID == "5")
             {
                 ChangeMode(Mode.Inquiry);
+            }
+            if (tagID == "6")
+            {
+                Mode_Setting();
             }
             if (tagID == "10")
             {
@@ -340,6 +352,8 @@ namespace MasterTouroku_Tokuisaki {
                     txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
                     txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
                     txtSearch.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
+
+                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, dt.Rows[0]["YuubinNO1"].ToString(), dt.Rows[0]["YuubinNO2"].ToString());
                 }
             }
         }
