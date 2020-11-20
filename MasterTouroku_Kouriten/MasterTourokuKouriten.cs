@@ -189,6 +189,10 @@ namespace MasterTouroku_Kouriten
             if (tagID == "6")
             {
                 Mode_Setting();
+                if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
+                {
+                    Disable_UDI_Mode();
+                }
             }
             if (tagID == "10")
             {

@@ -101,9 +101,7 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E133Check(true, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     txtStaff_CDate.E270Check(false, "M_Staff", txt_Staff, txtStaff_CDate);
 
-                    //Enable && Disable
-                    txtStaff_Copy.Enabled = false;
-                    txtStaff_CopyDate.Enabled = false;
+                    Disable_UDI_Mode();
 
                     txt_Staff.SearchType = SearchType.ScType.Staff;
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -117,8 +115,7 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E270Check(true, "M_Staff", txt_Staff, txtStaff_CDate);
 
                     //Enable && Disable
-                    txtStaff_Copy.Enabled = false;
-                    txtStaff_CopyDate.Enabled = false;
+                    Disable_UDI_Mode();
 
                     txt_Staff.SearchType = SearchType.ScType.Staff;
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -133,8 +130,7 @@ namespace MasterTouroku_Staff
                     txtStaff_CDate.E270Check(false, "M_Staff", txt_Staff, txtStaff_CDate);
 
                     //Enable && Disable
-                    txtStaff_Copy.Enabled = false;
-                    txtStaff_CopyDate.Enabled = false;
+                    Disable_UDI_Mode();
 
                     txt_Staff.SearchType = SearchType.ScType.Staff;
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -151,6 +147,13 @@ namespace MasterTouroku_Staff
             txt_Staff.Focus();
             txtStaff_Search.Text = "0";
         }
+        public void Disable_UDI_Mode()
+        {
+            //Enable && Disable
+            txtStaff_Copy.Enabled = false;
+            txtStaff_CopyDate.Enabled = false;
+        }
+
         private void ErrorChek()
         {
             //E102
@@ -193,6 +196,10 @@ namespace MasterTouroku_Staff
             if (tagID == "6")
             {
                 Mode_Setting();
+                if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
+                {
+                    Disable_UDI_Mode();
+                }
             }
             if (tagID == "12")
             {

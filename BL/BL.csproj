@@ -48,6 +48,7 @@
     <Compile Include="chakuniNyuuryoku_BL.cs" />
     <Compile Include="BaseBL.cs" />
     <Compile Include="DenpyouNOBL.cs" />
+    <Compile Include="HacchuuListBL.cs" />
     <Compile Include="KouritenBL.cs" />
     <Compile Include="LoginBL.cs" />
     <Compile Include="multipurposeBL.cs" />
