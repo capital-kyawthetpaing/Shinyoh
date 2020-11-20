@@ -519,27 +519,27 @@ namespace MasterTouroku_Tokuisaki {
 
                         //
                         obj.Tel11 = splits[13];
-                        bl_List.Add(Byte_Check(5, obj.Tel11));
+                        bl_List.Add(Byte_Check(6, obj.Tel11));
 
                         //
                         obj.Tel12 = splits[14];
-                        bl_List.Add(Byte_Check(4, obj.Tel12));
+                        bl_List.Add(Byte_Check(5, obj.Tel12));
 
                         //
                         obj.Tel13 = splits[15];
-                        bl_List.Add(Byte_Check(4, obj.Tel13));
+                        bl_List.Add(Byte_Check(5, obj.Tel13));
 
                         //
                         obj.Tel21 = splits[16];
-                        bl_List.Add(Byte_Check(5, obj.Tel21));
+                        bl_List.Add(Byte_Check(6, obj.Tel21));
 
                         //
                         obj.Tel22 = splits[17];
-                        bl_List.Add(Byte_Check(4, obj.Tel22));
+                        bl_List.Add(Byte_Check(5, obj.Tel22));
 
                         //
                         obj.Tel23 = splits[18];
-                        bl_List.Add(Byte_Check(4, obj.Tel23));
+                        bl_List.Add(Byte_Check(5, obj.Tel23));
 
                         //
                         obj.TantouBusho = splits[19];
