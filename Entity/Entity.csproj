@@ -45,6 +45,7 @@
     <Compile Include="ButtonType.cs" />
     <Compile Include="DenpyouNOEntity.cs" />
     <Compile Include="HacchuuEntity.cs" />
+    <Compile Include="JuchuuEntity.cs" />
     <Compile Include="KouritenEntity.cs" />
     <Compile Include="multipurposeEntity.cs" />
     <Compile Include="ProgramEntity.cs" />
