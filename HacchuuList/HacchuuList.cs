@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,7 +36,7 @@ namespace HacchuuList
             ProgramID = "HacchuuList";
             StartProgram();
 
-            rdo_Hac.Focus();
+            txtHacchuuDate1.Focus();
 
             cboMode.Visible = false;
 
@@ -60,14 +62,18 @@ namespace HacchuuList
             ErrorCheck();
 
             baseEntity = _GetBaseData();
+            Date_Setting();
+
+            txtStaffCD.lblName = lblStaff_Name;
+            Disable_Method();
+        }
+        private void Date_Setting()
+        {
             txtHacchuuDate1.Text = baseEntity.LoginDate;
             txtHacchuuDate2.Text = baseEntity.LoginDate;
             txtUpdate_HacchuuDate1.Text = baseEntity.LoginDate;
             txtUpdate_HacchuuDate2.Text = baseEntity.LoginDate;
             txtTempDate.Text = baseEntity.LoginDate;
-
-            txtStaffCD.lblName = lblStaff_Name;
-            Disable_Method();
         }
         private void ErrorCheck()
         {
@@ -86,7 +92,7 @@ namespace HacchuuList
             txtUpdate_JuchuuDate1.E103Check(true);
             txtUpdate_JuchuuDate2.E103Check(true);
             txtJuchuuDate2.E104Check(true, txtJuchuuDate1, txtJuchuuDate2);
-            txtUpdate_JuchuuDate2.E106Check(true, txtUpdate_JuchuuDate1, txtUpdate_JuchuuDate2);
+            txtUpdate_JuchuuDate2.E104Check(true, txtUpdate_JuchuuDate1, txtUpdate_JuchuuDate2);
 
             txtJuchuuNO2.E106Check(true, txtJuchuuNO1, txtJuchuuNO2);
 
@@ -97,11 +103,14 @@ namespace HacchuuList
             if (tagID == "6")
             {
                 cf.Clear(Panel_Detail);
-                rdo_Hac.Focus();
+                rdo_Hac.Checked = true;
+                txtHacchuuDate1.Focus();
+                Date_Setting();
             }
             if (tagID == "10")
             {
-                DataTable dt = Get_Form_Object();
+                DataTable dt = new DataTable { TableName = "MyTableName" };
+                dt = Get_Form_Object();
                 //if(dt.Rows.Count>0)
                 //{
                
@@ -131,70 +140,97 @@ namespace HacchuuList
                     dt.Columns["SiiresakiCD"].ColumnName = "発注先";
                     dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
                     dt.Columns["SoukoName"].ColumnName = "倉庫";
-                // ExportDataSetToExcel(dt);
-                //dt.WriteXml("C:\\Shinyoh\\Project_Excel\\発注リスト.xlsx");
-                // Datatable_To_Excel(dt);
-                // }
 
-                
+                    DataRow row = dt.NewRow();//Datatable Record is NUll. Therefore create temp new row.
+                    dt.Rows.Add(row);
+
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.InitialDirectory = @"C:\Shinyoh\Project_Excel";
+                saveFileDialog1.DefaultExt = "xls";
+                saveFileDialog1.Filter = "ExcelFile|*.xls";
+                saveFileDialog1.FileName = "発注リスト.xls";
+                saveFileDialog1.RestoreDirectory = true;
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    ExportDataTableToExcel(dt, saveFileDialog1.FileName);
+                }
+
+                // }
             }
             base.FunctionProcess(tagID);
         }
-        private void Datatable_To_Excel(DataTable dt)
+
+        public static bool ExportDataTableToExcel(DataTable dt, string filepath)
         {
-            Microsoft.Office.Interop.Excel.Application excel;
-            Microsoft.Office.Interop.Excel.Workbook excelworkBook;
-            Microsoft.Office.Interop.Excel.Worksheet excelSheet;
-            Microsoft.Office.Interop.Excel.Range excelCellrange;
 
-            // Start Excel and get Application object.  
-            excel = new Microsoft.Office.Interop.Excel.Application();
-            // for making Excel visible  
-            excel.Visible = false;
-            excel.DisplayAlerts = false;
-            // Creation a new Workbook  
-            excelworkBook = excel.Workbooks.Add(Type.Missing);
-            // Workk sheet  
-            excelSheet = (Microsoft.Office.Interop.Excel.Worksheet)excelworkBook.ActiveSheet;
-            excelSheet.Name = "発注リスト";
-            excelCellrange = excelSheet.Range[excelSheet.Cells[1, 1], excelSheet.Cells[dt.Columns.Count, dt.Columns.Count]];
-            excelCellrange.EntireColumn.AutoFit();
-            Microsoft.Office.Interop.Excel.Borders border = excelCellrange.Borders;
-            border.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
-            border.Weight = 2d;
-        }
+            Excel.Application oXL;
+            Excel.Workbook oWB;
+            Excel.Worksheet oSheet;
+            
+            try
+            {
+                // Start Excel and get Application object. 
+                oXL = new Excel.Application();
 
-        private void ExportDataSetToExcel(DataTable dt)
-        {
-            //Creae an Excel application instance
-            Excel.Application excelApp = new Excel.Application();
+                // Set some properties 
+                oXL.Visible = false;
+                oXL.DisplayAlerts = false;
 
-            //Create an Excel workbook instance and open it from the predefined location
-             Excel.Workbook excelWorkBook = excelApp.Workbooks.Open(@"C:\\Org.xlsx");
+                // Get a new workbook. 
+                oWB = oXL.Workbooks.Add(Missing.Value);
 
-           
-                //Add a new worksheet to workbook with the Datatable name
-                Excel.Worksheet excelWorkSheet = excelWorkBook.Sheets.Add();
-                excelWorkSheet.Name = "発注リスト";
+                // Get the Active sheet 
+                oSheet = (Excel.Worksheet)oWB.ActiveSheet;
+                oSheet.Name = "発注リスト";
 
-                for (int i = 1; i < dt.Columns.Count + 1; i++)
+                int rowCount = 1;
+                foreach (DataRow dr in dt.Rows)
                 {
-                    excelWorkSheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
-                }
-
-                for (int j = 0; j < dt.Rows.Count; j++)
-                {
-                    for (int k = 0; k < dt.Columns.Count; k++)
+                    rowCount += 1;
+                    for (int i = 1; i < dt.Columns.Count + 1; i++)
                     {
-                        excelWorkSheet.Cells[j + 2, k + 1] = dt.Rows[j].ItemArray[k].ToString();
+                        // Add the header the first time through 
+                        if (rowCount == 2)
+                        {
+                            oSheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
+                        }
+                        oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
                     }
+                    oSheet.Columns.AutoFit();
                 }
-           
 
-            excelWorkBook.Save();
-            excelWorkBook.Close();
-            excelApp.Quit();
+                // color the columns 
+                oSheet.Range["A1", "Z1"].Interior.Color = Excel.XlRgbColor.rgbOrange;
+                oSheet.Range["A1", "Z1"].Font.Color = Excel.XlRgbColor.rgbBlack;
+
+
+                // Save the sheet and close 
+                oSheet = null;
+                oWB.SaveAs(filepath, Excel.XlFileFormat.xlWorkbookNormal,
+                    Missing.Value, Missing.Value, Missing.Value, Missing.Value,
+                    Excel.XlSaveAsAccessMode.xlExclusive,
+                    Missing.Value, Missing.Value, Missing.Value,
+                    Missing.Value, Missing.Value);
+                oWB.Close(Missing.Value, Missing.Value, Missing.Value);
+                oWB = null;
+                oXL.Quit();
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                // Clean up 
+                // NOTE: When in release mode, this does the trick 
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
+            return true;
         }
+
         private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
         {
             multipurposeBL bl = new multipurposeBL();
@@ -222,6 +258,13 @@ namespace HacchuuList
         }
         private void Disable_Method()
         {
+            txtJuchuuDate1.Text = string.Empty;
+            txtJuchuuDate2.Text = string.Empty;
+            txtJuchuuNO1.Text = string.Empty;
+            txtJuchuuNO2.Text = string.Empty;
+            txtUpdate_JuchuuDate1.Text = string.Empty;
+            txtUpdate_JuchuuDate2.Text = string.Empty;
+
             txtJuchuuDate1.Enabled = false;
             txtJuchuuDate2.Enabled = false;
             txtJuchuuNO1.Enabled = false;

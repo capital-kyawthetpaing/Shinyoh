@@ -163,7 +163,7 @@
             this.txtHacchuuNO1.IsErrorOccurs = false;
             this.txtHacchuuNO1.IsRequire = false;
             this.txtHacchuuNO1.lblName = null;
-            this.txtHacchuuNO1.Location = new System.Drawing.Point(139, 84);
+            this.txtHacchuuNO1.Location = new System.Drawing.Point(141, 84);
             this.txtHacchuuNO1.MaxLength = 12;
             this.txtHacchuuNO1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO1.MoveNext = true;
@@ -173,7 +173,7 @@
             this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtHacchuuNO1.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO1.TabIndex = 4;
-            this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtBrandCD
             // 
@@ -342,7 +342,7 @@
             this.txtJuchuuNO2.SearchType = Entity.SearchType.ScType.None;
             this.txtJuchuuNO2.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO2.TabIndex = 16;
-            this.txtJuchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJuchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtJuchuuNO1
             // 
@@ -365,7 +365,7 @@
             this.txtJuchuuNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtJuchuuNO1.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO1.TabIndex = 15;
-            this.txtJuchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJuchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblJuchuuNO
             // 
@@ -674,7 +674,7 @@
             this.txtHacchuuNO2.IsDatatableOccurs = null;
             this.txtHacchuuNO2.IsErrorOccurs = false;
             this.txtHacchuuNO2.IsRequire = false;
-            this.txtHacchuuNO2.Location = new System.Drawing.Point(298, 85);
+            this.txtHacchuuNO2.Location = new System.Drawing.Point(298, 84);
             this.txtHacchuuNO2.MaxLength = 12;
             this.txtHacchuuNO2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO2.MoveNext = true;
@@ -684,7 +684,7 @@
             this.txtHacchuuNO2.SearchType = Entity.SearchType.ScType.None;
             this.txtHacchuuNO2.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO2.TabIndex = 5;
-            this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblHacchuuNO
             // 
@@ -751,7 +751,7 @@
             this.txtHacchuuDate2.IsDatatableOccurs = null;
             this.txtHacchuuDate2.IsErrorOccurs = false;
             this.txtHacchuuDate2.IsRequire = false;
-            this.txtHacchuuDate2.Location = new System.Drawing.Point(293, 49);
+            this.txtHacchuuDate2.Location = new System.Drawing.Point(298, 48);
             this.txtHacchuuDate2.MaxLength = 10;
             this.txtHacchuuDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuDate2.MoveNext = true;

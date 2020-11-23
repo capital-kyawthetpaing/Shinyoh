@@ -27,7 +27,7 @@
         private void InitializeComponent()
         {
             this.PanelDetail = new System.Windows.Forms.Panel();
-            this.txtDate = new Shinyoh_Controls.STextBox();
+            this.txtTempDate = new Shinyoh_Controls.STextBox();
             this.lblBrandName = new Shinyoh_Controls.SLabel();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.lblKanzen2 = new System.Windows.Forms.Label();
@@ -93,7 +93,7 @@
             this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelDetail.Controls.Add(this.txtDate);
+            this.PanelDetail.Controls.Add(this.txtTempDate);
             this.PanelDetail.Controls.Add(this.lblBrandName);
             this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
             this.PanelDetail.Controls.Add(this.lblKanzen2);
@@ -147,28 +147,28 @@
             this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
             this.PanelDetail.TabIndex = 3;
             // 
-            // txtDate
+            // txtTempDate
             // 
-            this.txtDate.AllowMinus = false;
-            this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDate.DecimalPlace = 0;
-            this.txtDate.DepandOnMode = true;
-            this.txtDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtDate.IntegerPart = 0;
-            this.txtDate.IsDatatableOccurs = null;
-            this.txtDate.IsErrorOccurs = false;
-            this.txtDate.IsRequire = false;
-            this.txtDate.Location = new System.Drawing.Point(1105, 51);
-            this.txtDate.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtDate.MoveNext = true;
-            this.txtDate.Name = "txtDate";
-            this.txtDate.NextControl = null;
-            this.txtDate.NextControlName = null;
-            this.txtDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtDate.Size = new System.Drawing.Size(100, 19);
-            this.txtDate.TabIndex = 101;
-            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtDate.Visible = false;
+            this.txtTempDate.AllowMinus = false;
+            this.txtTempDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTempDate.DecimalPlace = 0;
+            this.txtTempDate.DepandOnMode = true;
+            this.txtTempDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtTempDate.IntegerPart = 0;
+            this.txtTempDate.IsDatatableOccurs = null;
+            this.txtTempDate.IsErrorOccurs = false;
+            this.txtTempDate.IsRequire = false;
+            this.txtTempDate.Location = new System.Drawing.Point(1105, 51);
+            this.txtTempDate.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtTempDate.MoveNext = true;
+            this.txtTempDate.Name = "txtTempDate";
+            this.txtTempDate.NextControl = null;
+            this.txtTempDate.NextControlName = null;
+            this.txtTempDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtTempDate.Size = new System.Drawing.Size(100, 19);
+            this.txtTempDate.TabIndex = 101;
+            this.txtTempDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTempDate.Visible = false;
             // 
             // lblBrandName
             // 
@@ -1048,7 +1048,7 @@
         private Shinyoh_Controls.SLabel lblPhNo;
         private Shinyoh_Controls.SLabel lblStaffCD_Name;
         private Shinyoh_Controls.SLabel lblBrandName;
-        private Shinyoh_Controls.STextBox txtDate;
+        private Shinyoh_Controls.STextBox txtTempDate;
     }
 }
 
