@@ -7,10 +7,13 @@ using System.Windows.Forms;
 
 namespace JuchuuList {
     public partial class JuchuuList : BaseForm {
-       
+        BaseEntity baseEntity;
+        JuchuuListBL juchuuListBL;
         public JuchuuList()
         {
             InitializeComponent();
+            baseEntity = new BaseEntity();
+            juchuuListBL = new JuchuuListBL();
         }
 
         private void JuchuuList_Load(object sender, EventArgs e)
@@ -96,7 +99,7 @@ namespace JuchuuList {
             if (!txtTokuisaki.IsErrorOccurs)
             {
                 TokuisakiBL bl = new TokuisakiBL();
-                DataTable dt = bl.M_Tokuisaki_Select(txtTokuisaki.Text, txtDate.Text, "E101");
+                DataTable dt = bl.M_Tokuisaki_Select(txtTokuisaki.Text, string.Empty, string.Empty);
 
                 if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
                 {
@@ -119,6 +122,42 @@ namespace JuchuuList {
                     txtPhNo3.Enabled = false;
                 }
             }
+        }
+        private DataTable Get_Form_Object()
+        {
+            JuchuuEntity obj = new JuchuuEntity();
+            obj.JuhuuDate1 = txtOrderDate1.Text;
+            obj.JuhuuDate2 = txtOrderDate2.Text;
+            obj.JuhuuNO1 = txtInputDate1.Text;
+            obj.JuhuuNO2 = txtInputDate2.Text;
+            obj.InputDate1 = txtInputDate1.Text;
+            obj.InputDate2 = txtInputDate2.Text;
+            obj.StaffCD = txtStaffCD.Text;
+            obj.BrandCD = txtBrand.Text;
+            obj.Year = txtYear.Text;
+            obj.SS = chk_SS.Checked == true ? "1" : "0";
+            obj.FW = chk_FW.Checked == true ? "1" : "0";
+            obj.Store = txtStore.Text;
+            obj.DestOrderNo = txtDestOrderNo.Text;
+            obj.Name = txtName.Text;
+            obj.YuubinNo1 = txtYubin1.Text;
+            obj.YuubinNo2 = txtYubin2.Text;
+            obj.Juusho = txtAddress.Text;
+            obj.Tel1 = txtPhNo1.Text;
+            obj.Tel2 = txtPhNo2.Text;
+            obj.Tel3 = txtPhNo3.Text;
+
+            TokuisakiBL bl = new TokuisakiBL();
+            DataTable dt = bl.M_Tokuisaki_Select(txtTokuisaki.Text, string.Empty, string.Empty);
+
+            if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
+            {
+                obj.Condition = "Tokuisaki";
+            }
+            else obj.Condition = "Juchuu";
+            obj.LoginDate = baseEntity.LoginDate;
+            DataTable dataTable = juchuuListBL.JuchuuList_Excel(obj);
+            return dataTable;
         }
     }
 }
