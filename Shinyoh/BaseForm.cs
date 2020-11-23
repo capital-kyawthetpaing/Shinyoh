@@ -101,6 +101,7 @@ namespace Shinyoh
             LoginDate = staffEntity.LoginDate;
 
             staffEntity.ProgramID = ProgramID;
+            staffEntity.PC = PCID;
             programEntity = staffBL.Staff_AccessCheck(staffEntity);
             if (programEntity == null)
             {

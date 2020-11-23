@@ -36,7 +36,7 @@ namespace HacchuuList
             ProgramID = "HacchuuList";
             StartProgram();
 
-            rdo_Hac.Focus();
+            txtHacchuuDate1.Focus();
 
             cboMode.Visible = false;
 
@@ -62,14 +62,18 @@ namespace HacchuuList
             ErrorCheck();
 
             baseEntity = _GetBaseData();
+            Date_Setting();
+
+            txtStaffCD.lblName = lblStaff_Name;
+            Disable_Method();
+        }
+        private void Date_Setting()
+        {
             txtHacchuuDate1.Text = baseEntity.LoginDate;
             txtHacchuuDate2.Text = baseEntity.LoginDate;
             txtUpdate_HacchuuDate1.Text = baseEntity.LoginDate;
             txtUpdate_HacchuuDate2.Text = baseEntity.LoginDate;
             txtTempDate.Text = baseEntity.LoginDate;
-
-            txtStaffCD.lblName = lblStaff_Name;
-            Disable_Method();
         }
         private void ErrorCheck()
         {
@@ -88,7 +92,7 @@ namespace HacchuuList
             txtUpdate_JuchuuDate1.E103Check(true);
             txtUpdate_JuchuuDate2.E103Check(true);
             txtJuchuuDate2.E104Check(true, txtJuchuuDate1, txtJuchuuDate2);
-            txtUpdate_JuchuuDate2.E106Check(true, txtUpdate_JuchuuDate1, txtUpdate_JuchuuDate2);
+            txtUpdate_JuchuuDate2.E104Check(true, txtUpdate_JuchuuDate1, txtUpdate_JuchuuDate2);
 
             txtJuchuuNO2.E106Check(true, txtJuchuuNO1, txtJuchuuNO2);
 
@@ -99,7 +103,9 @@ namespace HacchuuList
             if (tagID == "6")
             {
                 cf.Clear(Panel_Detail);
-                rdo_Hac.Focus();
+                rdo_Hac.Checked = true;
+                txtHacchuuDate1.Focus();
+                Date_Setting();
             }
             if (tagID == "10")
             {
@@ -135,7 +141,7 @@ namespace HacchuuList
                     dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
                     dt.Columns["SoukoName"].ColumnName = "倉庫";
 
-                    DataRow row = dt.NewRow();
+                    DataRow row = dt.NewRow();//Datatable Record is NUll. Therefore create temp new row.
                     dt.Rows.Add(row);
 
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
@@ -252,6 +258,13 @@ namespace HacchuuList
         }
         private void Disable_Method()
         {
+            txtJuchuuDate1.Text = string.Empty;
+            txtJuchuuDate2.Text = string.Empty;
+            txtJuchuuNO1.Text = string.Empty;
+            txtJuchuuNO2.Text = string.Empty;
+            txtUpdate_JuchuuDate1.Text = string.Empty;
+            txtUpdate_JuchuuDate2.Text = string.Empty;
+
             txtJuchuuDate1.Enabled = false;
             txtJuchuuDate2.Enabled = false;
             txtJuchuuNO1.Enabled = false;
