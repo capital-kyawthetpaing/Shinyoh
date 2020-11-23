@@ -57,6 +57,11 @@ namespace Shinyoh_Controls
                         rDt = tBL.M_Tokuisaki_Select(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Kouriten":
+                        KouritenBL kBL = new KouritenBL();
+                        rDt = kBL.Kouriten_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E101"))
                 {

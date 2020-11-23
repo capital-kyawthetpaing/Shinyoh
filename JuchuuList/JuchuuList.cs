@@ -53,14 +53,14 @@ namespace JuchuuList {
             txtOrderDate2.Text = baseEntity.LoginDate;
             txtInputDate1.Text = baseEntity.LoginDate;
             txtInputDate2.Text = baseEntity.LoginDate;
-            txtDate.Text = baseEntity.LoginDate;
+            txtTempDate.Text = baseEntity.LoginDate;
         }
         private void ErrorCheck()
         {
            
-            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD,txtDate , null);
-            txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtDate, null);
-            // txtStore.E101Check(true, "M_Kouriten", txtStore, txtDate, null);
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD,txtTempDate , null);
+            txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtTempDate, null);
+            txtStore.E101Check(true, "M_Kouriten", txtStore, txtTempDate, null);
            // txtBrand.E101Check(true, "JuchuuList", txtBrand, null, null);
 
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
@@ -105,7 +105,7 @@ namespace JuchuuList {
             if (!txtTokuisaki.IsErrorOccurs)
             {
                 TokuisakiBL bl = new TokuisakiBL();
-                DataTable dt = bl.M_Tokuisaki_Select(txtTokuisaki.Text, string.Empty, string.Empty);
+                DataTable dt = bl.M_Tokuisaki_Select(txtTokuisaki.Text, txtTempDate.Text, "E101");
 
                 if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
                 {
