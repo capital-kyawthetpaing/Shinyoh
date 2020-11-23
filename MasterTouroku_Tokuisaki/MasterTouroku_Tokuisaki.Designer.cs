@@ -36,8 +36,12 @@
             this.sRadRegister = new Shinyoh_Controls.SRadio();
             this.sRadDelete = new Shinyoh_Controls.SRadio();
             this.PanelDetail = new System.Windows.Forms.Panel();
-            this.RadNeed = new Shinyoh_Controls.SRadio();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.RadNoNeed = new Shinyoh_Controls.SRadio();
+            this.RadNeed = new Shinyoh_Controls.SRadio();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.RadOnchuu = new Shinyoh_Controls.SRadio();
+            this.RadSaMa = new Shinyoh_Controls.SRadio();
             this.lblShukaKBN = new Shinyoh_Controls.SLabel();
             this.txtStaffCharge = new Shinyoh_Search.SearchBox();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
@@ -65,8 +69,6 @@
             this.txtJobTitle = new Shinyoh_Controls.STextBox();
             this.lblJobTitle = new Shinyoh_Controls.SLabel();
             this.lblPhNo2 = new Shinyoh_Controls.SLabel();
-            this.RadOnchuu = new Shinyoh_Controls.SRadio();
-            this.RadSaMa = new Shinyoh_Controls.SRadio();
             this.lblTitle = new Shinyoh_Controls.SLabel();
             this.txtBillAddress = new Shinyoh_Controls.STextBox();
             this.lblBillAddress = new Shinyoh_Controls.SLabel();
@@ -94,12 +96,10 @@
             this.txtSearch = new Shinyoh_Controls.STextBox();
             this.txtTokuisakiCopy = new Shinyoh_Search.SearchBox();
             this.txt_Tokuisaki = new Shinyoh_Search.SearchBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.sRadio1 = new Shinyoh_Controls.SRadio();
-            this.sRadio2 = new Shinyoh_Controls.SRadio();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -273,9 +273,8 @@
             this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelDetail.Controls.Add(this.panel3);
             this.PanelDetail.Controls.Add(this.panel2);
-            this.PanelDetail.Controls.Add(this.RadNeed);
-            this.PanelDetail.Controls.Add(this.RadNoNeed);
             this.PanelDetail.Controls.Add(this.lblShukaKBN);
             this.PanelDetail.Controls.Add(this.txtStaffCharge);
             this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
@@ -303,8 +302,6 @@
             this.PanelDetail.Controls.Add(this.txtJobTitle);
             this.PanelDetail.Controls.Add(this.lblJobTitle);
             this.PanelDetail.Controls.Add(this.lblPhNo2);
-            this.PanelDetail.Controls.Add(this.RadOnchuu);
-            this.PanelDetail.Controls.Add(this.RadSaMa);
             this.PanelDetail.Controls.Add(this.lblTitle);
             this.PanelDetail.Controls.Add(this.txtBillAddress);
             this.PanelDetail.Controls.Add(this.lblBillAddress);
@@ -335,23 +332,19 @@
             this.PanelDetail.Size = new System.Drawing.Size(1485, 786);
             this.PanelDetail.TabIndex = 3;
             // 
-            // RadNeed
+            // panel3
             // 
-            this.RadNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadNeed.Location = new System.Drawing.Point(201, 646);
-            this.RadNeed.MoveNext = true;
-            this.RadNeed.Name = "RadNeed";
-            this.RadNeed.NextControl = null;
-            this.RadNeed.NextControlName = "RadNoNeed";
-            this.RadNeed.Size = new System.Drawing.Size(49, 19);
-            this.RadNeed.TabIndex = 31;
-            this.RadNeed.Text = "必要\t\t\t";
-            this.RadNeed.UseVisualStyleBackColor = true;
+            this.panel3.Controls.Add(this.RadNoNeed);
+            this.panel3.Controls.Add(this.RadNeed);
+            this.panel3.Location = new System.Drawing.Point(187, 642);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 30);
+            this.panel3.TabIndex = 99;
             // 
             // RadNoNeed
             // 
             this.RadNoNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadNoNeed.Location = new System.Drawing.Point(281, 646);
+            this.RadNoNeed.Location = new System.Drawing.Point(111, 6);
             this.RadNoNeed.MoveNext = true;
             this.RadNoNeed.Name = "RadNoNeed";
             this.RadNoNeed.NextControl = null;
@@ -360,6 +353,58 @@
             this.RadNoNeed.TabIndex = 32;
             this.RadNoNeed.Text = "不要\t\t\t\t";
             this.RadNoNeed.UseVisualStyleBackColor = true;
+            // 
+            // RadNeed
+            // 
+            this.RadNeed.Checked = true;
+            this.RadNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadNeed.Location = new System.Drawing.Point(22, 5);
+            this.RadNeed.MoveNext = true;
+            this.RadNeed.Name = "RadNeed";
+            this.RadNeed.NextControl = null;
+            this.RadNeed.NextControlName = "RadNoNeed";
+            this.RadNeed.Size = new System.Drawing.Size(49, 19);
+            this.RadNeed.TabIndex = 31;
+            this.RadNeed.TabStop = true;
+            this.RadNeed.Text = "必要\t\t\t";
+            this.RadNeed.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.RadOnchuu);
+            this.panel2.Controls.Add(this.RadSaMa);
+            this.panel2.Location = new System.Drawing.Point(187, 181);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 30);
+            this.panel2.TabIndex = 98;
+            // 
+            // RadOnchuu
+            // 
+            this.RadOnchuu.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadOnchuu.Location = new System.Drawing.Point(111, 6);
+            this.RadOnchuu.MoveNext = true;
+            this.RadOnchuu.Name = "RadOnchuu";
+            this.RadOnchuu.NextControl = null;
+            this.RadOnchuu.NextControlName = "txtYubin1";
+            this.RadOnchuu.Size = new System.Drawing.Size(49, 19);
+            this.RadOnchuu.TabIndex = 13;
+            this.RadOnchuu.Text = "御中\t\t";
+            this.RadOnchuu.UseVisualStyleBackColor = true;
+            // 
+            // RadSaMa
+            // 
+            this.RadSaMa.Checked = true;
+            this.RadSaMa.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RadSaMa.Location = new System.Drawing.Point(31, 6);
+            this.RadSaMa.MoveNext = true;
+            this.RadSaMa.Name = "RadSaMa";
+            this.RadSaMa.NextControl = null;
+            this.RadSaMa.NextControlName = "RadOnchuu";
+            this.RadSaMa.Size = new System.Drawing.Size(36, 19);
+            this.RadSaMa.TabIndex = 12;
+            this.RadSaMa.TabStop = true;
+            this.RadSaMa.Text = "様\t\t";
+            this.RadSaMa.UseVisualStyleBackColor = true;
             // 
             // lblShukaKBN
             // 
@@ -823,34 +868,6 @@
             this.lblPhNo2.TabIndex = 66;
             this.lblPhNo2.Text = "電話番号②\t\t";
             this.lblPhNo2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // RadOnchuu
-            // 
-            this.RadOnchuu.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadOnchuu.Location = new System.Drawing.Point(281, 189);
-            this.RadOnchuu.MoveNext = true;
-            this.RadOnchuu.Name = "RadOnchuu";
-            this.RadOnchuu.NextControl = null;
-            this.RadOnchuu.NextControlName = "txtYubin1";
-            this.RadOnchuu.Size = new System.Drawing.Size(49, 19);
-            this.RadOnchuu.TabIndex = 13;
-            this.RadOnchuu.Text = "御中\t\t";
-            this.RadOnchuu.UseVisualStyleBackColor = true;
-            // 
-            // RadSaMa
-            // 
-            this.RadSaMa.Checked = true;
-            this.RadSaMa.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RadSaMa.Location = new System.Drawing.Point(201, 189);
-            this.RadSaMa.MoveNext = true;
-            this.RadSaMa.Name = "RadSaMa";
-            this.RadSaMa.NextControl = null;
-            this.RadSaMa.NextControlName = "RadOnchuu";
-            this.RadSaMa.Size = new System.Drawing.Size(36, 19);
-            this.RadSaMa.TabIndex = 12;
-            this.RadSaMa.TabStop = true;
-            this.RadSaMa.Text = "様\t\t";
-            this.RadSaMa.UseVisualStyleBackColor = true;
             // 
             // lblTitle
             // 
@@ -1355,43 +1372,6 @@
             this.txt_Tokuisaki.TabIndex = 1;
             this.txt_Tokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.sRadio1);
-            this.panel2.Controls.Add(this.sRadio2);
-            this.panel2.Location = new System.Drawing.Point(791, 586);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
-            this.panel2.TabIndex = 98;
-            // 
-            // sRadio1
-            // 
-            this.sRadio1.Checked = true;
-            this.sRadio1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadio1.Location = new System.Drawing.Point(35, 41);
-            this.sRadio1.MoveNext = true;
-            this.sRadio1.Name = "sRadio1";
-            this.sRadio1.NextControl = null;
-            this.sRadio1.NextControlName = "RadNoNeed";
-            this.sRadio1.Size = new System.Drawing.Size(49, 19);
-            this.sRadio1.TabIndex = 35;
-            this.sRadio1.TabStop = true;
-            this.sRadio1.Text = "必要\t\t\t";
-            this.sRadio1.UseVisualStyleBackColor = true;
-            // 
-            // sRadio2
-            // 
-            this.sRadio2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadio2.Location = new System.Drawing.Point(115, 41);
-            this.sRadio2.MoveNext = true;
-            this.sRadio2.Name = "sRadio2";
-            this.sRadio2.NextControl = null;
-            this.sRadio2.NextControlName = "txtRemark";
-            this.sRadio2.Size = new System.Drawing.Size(50, 19);
-            this.sRadio2.TabIndex = 34;
-            this.sRadio2.Text = "不要\t\t\t\t";
-            this.sRadio2.UseVisualStyleBackColor = true;
-            // 
             // MasterTouroku_Tokuisaki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1408,6 +1388,7 @@
             this.PanelTitle.ResumeLayout(false);
             this.PanelDetail.ResumeLayout(false);
             this.PanelDetail.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1485,8 +1466,7 @@
         private Shinyoh_Controls.SRadio RadNoNeed;
         private Shinyoh_Controls.SLabel lblShukaKBN;
         private System.Windows.Forms.Panel panel2;
-        private Shinyoh_Controls.SRadio sRadio1;
-        private Shinyoh_Controls.SRadio sRadio2;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 
