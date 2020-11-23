@@ -20,5 +20,14 @@ namespace Entity {
         public string FW { get; set; }
         public string Store { get; set; }
         public string DestOrderNo { get; set; }
+        public string Name { get; set; }
+        public string YuubinNo1 { get; set; }
+        public string YuubinNo2 { get; set; }
+        public string Juusho { get; set; }
+        public string Tel1 { get; set; }
+        public string Tel2 { get; set; }
+        public string Tel3 { get; set; }
+        public string Condition { get; set; }
+
     }
 }
