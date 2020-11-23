@@ -134,18 +134,22 @@ namespace HacchuuList
                     dt.Columns["SiiresakiCD"].ColumnName = "発注先";
                     dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
                     dt.Columns["SoukoName"].ColumnName = "倉庫";
-                // ExportDataSetToExcel(dt);
 
+                    DataRow row = dt.NewRow();
+                    dt.Rows.Add(row);
 
-                DataRow row = dt.NewRow();
-                dt.Rows.Add(row);
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.InitialDirectory = @"C:\Shinyoh\Project_Excel";
+                saveFileDialog1.DefaultExt = "xls";
+                saveFileDialog1.Filter = "ExcelFile|*.xls";
+                saveFileDialog1.FileName = "発注リスト.xls";
+                saveFileDialog1.RestoreDirectory = true;
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    ExportDataTableToExcel(dt, saveFileDialog1.FileName);
+                }
 
-                //dt.WriteXml("C:\\Shinyoh\\Project_Excel\\発注リスト.xlsx");
-                // Datatable_To_Excel(dt);
                 // }
-                ExportDataTableToExcel(dt, "C:\\Shinyoh\\Project_Excel\\発注リスト.xls");
-
-
             }
             base.FunctionProcess(tagID);
         }
@@ -163,7 +167,7 @@ namespace HacchuuList
                 oXL = new Excel.Application();
 
                 // Set some properties 
-                oXL.Visible = true;
+                oXL.Visible = false;
                 oXL.DisplayAlerts = false;
 
                 // Get a new workbook. 
@@ -196,8 +200,6 @@ namespace HacchuuList
 
                 // Save the sheet and close 
                 oSheet = null;
-               
-
                 oWB.SaveAs(filepath, Excel.XlFileFormat.xlWorkbookNormal,
                     Missing.Value, Missing.Value, Missing.Value, Missing.Value,
                     Excel.XlSaveAsAccessMode.xlExclusive,
