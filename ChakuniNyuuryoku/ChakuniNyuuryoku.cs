@@ -16,12 +16,16 @@ namespace ChakuniNyuuryoku
         multipurposeEntity multi_Entity;
         chakuniNyuuryoku_BL cbl;
         BaseBL bbl;
+        DataTable dtmain;
+        DataTable dtTemp;
         public ChakuniNyuuryoku()
         {
             InitializeComponent();
             cf = new CommonFunction();
             bbl = new BaseBL();
             cbl = new chakuniNyuuryoku_BL();
+            dtmain = new DataTable();
+            dtTemp = new DataTable();
         }
 
         private void ChakuniNyuuryoku_Load(object sender, EventArgs e)
@@ -197,7 +201,6 @@ namespace ChakuniNyuuryoku
         }
         private void GetData()
         {
-            chakuniNyuuryoku_BL ab = new chakuniNyuuryoku_BL();
             ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity();
             chkEntity.ChakuniNO = txtArrivalNO.Text;
             chkEntity.ChakuniDate = txtArrivalDate.Text;
@@ -214,7 +217,7 @@ namespace ChakuniNyuuryoku
             chkEntity.CheckValue = CheckValue();
             //chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
             //chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
-            DataTable dtmain  = ab.ChakuniNyuuryoku_Display(chkEntity);
+            dtmain  = cbl.ChakuniNyuuryoku_Display(chkEntity);
             
             DataTable dtcha = new DataTable();
             dtcha = dtmain.Copy();
@@ -310,7 +313,6 @@ namespace ChakuniNyuuryoku
                     txtJANCD.Text = dt.Rows[0]["JANCD"].ToString();
                     txtSize.Text = dt.Rows[0]["SizeNO"].ToString();
                     txtColor.Text = dt.Rows[0]["ColorNO"].ToString();
-                    DataTable dtmain = new DataTable();
                     dtmain = dt.Copy();
                     if (dtmain.Columns.Contains("SiiresakiCD"))
                     {
@@ -396,10 +398,10 @@ namespace ChakuniNyuuryoku
             if (gvChakuniNyuuryoku.Columns[e.ColumnIndex].Name == "colArrivalTime")
             {
                string value = gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString();
-                if (!String.IsNullOrWhiteSpace(value))
+                if (Convert.ToInt32(value.ToString())<0)
                 {
-                    ChakuniNyuuryoku_Entity chkentity = new ChakuniNyuuryoku_Entity();
-                    chkentity.ChakuniSuu = value;
+                    bbl.ShowMessage("E109");
+                    e.Cancel = true;
                 }
             }
         }
