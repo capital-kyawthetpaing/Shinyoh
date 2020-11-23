@@ -90,7 +90,7 @@ namespace ChakuniNyuuryoku
                     break;
                 case Mode.Inquiry:
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
-                    //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
+                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
@@ -255,7 +255,7 @@ namespace ChakuniNyuuryoku
                 return string.Empty;
             }
         }
-       public void ErrorCheck()
+        public void ErrorCheck()
        {
             txtArrivalNO.E102Check(true);
             txtArrivalDate.E102Check(true);
@@ -383,6 +383,25 @@ namespace ChakuniNyuuryoku
         private void txtSize_KeyDown(object sender, KeyEventArgs e)
         {
             GetData();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Clear();
+            txtScheduledNo.Focus();
+        }
+
+        private void gvChakuniNyuuryoku_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (gvChakuniNyuuryoku.Columns[e.ColumnIndex].Name == "colArrivalTime")
+            {
+               string value = gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString();
+                if (!String.IsNullOrWhiteSpace(value))
+                {
+                    ChakuniNyuuryoku_Entity chkentity = new ChakuniNyuuryoku_Entity();
+                    chkentity.ChakuniSuu = value;
+                }
+            }
         }
     }
 }
