@@ -30,7 +30,7 @@ namespace MasterTouroku_Souko
             cboMode.Bind(false, multipurpose_entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
-            SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
+            SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
