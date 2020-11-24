@@ -215,6 +215,7 @@
             this.txtStaffCD.Size = new System.Drawing.Size(100, 19);
             this.txtStaffCD.TabIndex = 46;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
             // 
             // sbWareHouse
             // 
