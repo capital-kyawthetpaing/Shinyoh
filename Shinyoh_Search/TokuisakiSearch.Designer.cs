@@ -355,7 +355,7 @@
             this.Controls.Add(this.PanelTitle);
             this.Name = "TokuisakiSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TokuisakiSearch";
+            this.Text = "得意先検索";
             this.Load += new System.EventHandler(this.TokuisakiSearch_Load);
             this.Controls.SetChildIndex(this.PanelTitle, 0);
             this.Controls.SetChildIndex(this.gvTokuisaki, 0);

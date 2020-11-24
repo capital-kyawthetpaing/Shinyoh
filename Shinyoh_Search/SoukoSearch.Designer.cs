@@ -138,7 +138,7 @@
             this.txtSouko2.SearchType = Entity.SearchType.ScType.None;
             this.txtSouko2.Size = new System.Drawing.Size(100, 19);
             this.txtSouko2.TabIndex = 1;
-            this.txtSouko2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSouko2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtSouko2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSouko2_KeyDown);
             // 
             // txtSouko1
@@ -162,7 +162,7 @@
             this.txtSouko1.SearchType = Entity.SearchType.ScType.None;
             this.txtSouko1.Size = new System.Drawing.Size(100, 19);
             this.txtSouko1.TabIndex = 0;
-            this.txtSouko1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSouko1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblKanaName
             // 
@@ -257,7 +257,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "SoukoSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SoukoSearch";
+            this.Text = "倉庫検索";
             this.Load += new System.EventHandler(this.SoukoSearch_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gvSouko, 0);

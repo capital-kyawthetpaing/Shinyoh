@@ -28,7 +28,7 @@ namespace Shinyoh_Search {
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
-            gvSouko.UseRowNo(false);
+            gvSouko.UseRowNo(true);
             GridViewBind();
         }
         public override void FunctionProcess(string tagID)
@@ -49,7 +49,7 @@ namespace Shinyoh_Search {
             SoukoBL bl = new SoukoBL();
             SoukoEntity soukoEntity = new SoukoEntity();
             soukoEntity.SoukoCD = txtSouko1.Text;
-            soukoEntity.FaxNO = txtSouko2.Text;
+            soukoEntity.Tel11 = txtSouko2.Text; //for temp value
             soukoEntity.SoukoName = txtSoukoName.Text;
             soukoEntity.KanaName = txtKanaName.Text;
             DataTable dt = bl.Souko_Search(soukoEntity);

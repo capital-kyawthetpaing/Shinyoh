@@ -30,7 +30,7 @@ namespace MasterTouroku_Souko
             cboMode.Bind(false, multipurpose_entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
-            SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
+            SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
@@ -55,7 +55,7 @@ namespace MasterTouroku_Souko
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
             txtSouko.Focus();
-            txtSearch.Text = "0";
+            //txtSearch.Text = "0";
             switch (mode)
             {
                 case Mode.New:
@@ -67,14 +67,6 @@ namespace MasterTouroku_Souko
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
                     txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
                     txtSouko.E270Check(false, "souko", txtSouko, null);
-
-                    cf.Clear(PanelTitle);
-                    cf.Clear(PanelDetail);
-                    cf.DisablePanel(PanelDetail);
-
-                    txtSouko.Enabled = true;
-                    txtCopySouko.Enabled = true;
-                    txtSouko.Focus();
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -88,13 +80,7 @@ namespace MasterTouroku_Souko
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
                     txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
-                    cf.Clear(PanelTitle);
-                    cf.Clear(PanelDetail);
-                    cf.DisablePanel(PanelDetail);
-
-                    txtCopySouko.Enabled = false;
-                    txtSouko.Enabled = true;
-                    txtSouko.Focus();
+                    Disable_UDI_Mode();
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
@@ -106,13 +92,7 @@ namespace MasterTouroku_Souko
                     txtSouko.E101Check(true, "souko", txtSouko, null, null);
                     txtSouko.E270Check(true, "souko", txtSouko, null);
 
-                    cf.Clear(PanelTitle);
-                    cf.Clear(PanelDetail);
-                    cf.DisablePanel(PanelDetail);
-
-                    txtCopySouko.Enabled = false;
-                    txtSouko.Enabled = true;
-                    txtSouko.Focus();
+                    Disable_UDI_Mode();
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -124,19 +104,26 @@ namespace MasterTouroku_Souko
                     txtSouko.E101Check(true, "souko", txtSouko, null, null);
                     txtSouko.E270Check(false, "souko", txtSouko, null);
 
-                    cf.Clear(PanelTitle);
-                    cf.Clear(PanelDetail);
-                    cf.DisablePanel(PanelDetail);
-
-                    txtCopySouko.Enabled = false;
-                    txtSouko.Enabled = true;
-                    txtSouko.Focus();
+                    Disable_UDI_Mode();
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
 
                     break;
             }
+        }
+        public void Disable_UDI_Mode()
+        {
+            txtCopySouko.Enabled = false;
+            txtSouko.Enabled = true;
+        }
+        public void Mode_Setting()
+        {
+            cf.Clear(PanelTitle);
+            cf.Clear(PanelDetail);
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(PanelDetail);
+            txtSouko.Focus();
         }
 
         public override void FunctionProcess(string tagID)
@@ -157,7 +144,15 @@ namespace MasterTouroku_Souko
             {
                 ChangeMode(Mode.Inquiry);
             }
-            if(tagID == "12")
+            if (tagID == "6")
+            {
+                Mode_Setting();
+                if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
+                {
+                    Disable_UDI_Mode();
+                }
+            }
+            if (tagID == "12")
             {
                 if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
                 {
@@ -215,8 +210,12 @@ namespace MasterTouroku_Souko
             soukoEntity.YuubinNO2 = txtYubin2.Text.ToString();
             soukoEntity.Juusho1 = txtAddress1.Text.ToString();
             soukoEntity.Juusho2 = txtAddress2.Text.ToString();
-            soukoEntity.TelNO = txtPhNo.Text.ToString();
-            soukoEntity.FaxNO = txtFAX.Text.ToString();
+            soukoEntity.Tel11 = txtPhone1_1.Text.ToString();
+            soukoEntity.Tel12 = txtPhone1_2.Text.ToString();
+            soukoEntity.Tel13 = txtPhone1_3.Text.ToString();
+            soukoEntity.Tel21 = txtPhone2_1.Text.ToString();
+            soukoEntity.Tel22 = txtPhone2_2.Text.ToString();
+            soukoEntity.Tel23 = txtPhone2_3.Text.ToString();
             soukoEntity.Remarks = txtRemark.Text.ToString();
             soukoEntity.Mode = cboMode.SelectedIndex.ToString();
             soukoEntity.InsertOperator = base_Entity.OperatorCD;
@@ -253,8 +252,12 @@ namespace MasterTouroku_Souko
                     txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
                     txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
                     txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
-                    txtPhNo.Text = dt.Rows[0]["TelNO"].ToString();
-                    txtFAX.Text = dt.Rows[0]["FaxNO"].ToString();
+                    txtPhone1_1.Text = dt.Rows[0]["Tel11"].ToString();
+                    txtPhone1_2.Text = dt.Rows[0]["Tel12"].ToString();
+                    txtPhone1_3.Text = dt.Rows[0]["Tel13"].ToString();
+                    txtPhone2_1.Text = dt.Rows[0]["Tel21"].ToString();
+                    txtPhone2_2.Text = dt.Rows[0]["Tel22"].ToString();
+                    txtPhone2_3.Text = dt.Rows[0]["Tel23"].ToString();
                     txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
 
                 }
@@ -291,19 +294,19 @@ namespace MasterTouroku_Souko
         }
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            string value = txtSearch.Text.Replace(",", "");
-            ulong ul;
-            if (ulong.TryParse(value, out ul))
-            {
-                txtSearch.TextChanged -= txtSearch_TextChanged;
-                txtSearch.Text = string.Format("{0:#,#0}", ul);
-                txtSearch.SelectionStart = txtSearch.Text.Length;
-                txtSearch.TextChanged += txtSearch_TextChanged;
-            }
-            else
-            {
-                txtSearch.Text = "0";
-            }
+            //string value = txtSearch.Text.Replace(",", "");
+            //ulong ul;
+            //if (ulong.TryParse(value, out ul))
+            //{
+            //    txtSearch.TextChanged -= txtSearch_TextChanged;
+            //    txtSearch.Text = string.Format("{0:#,#0}", ul);
+            //    txtSearch.SelectionStart = txtSearch.Text.Length;
+            //    txtSearch.TextChanged += txtSearch_TextChanged;
+            //}
+            //else
+            //{
+            //    txtSearch.Text = "0";
+            //}
         }
 
         private void txtCopySouko_KeyDown(object sender, KeyEventArgs e)
