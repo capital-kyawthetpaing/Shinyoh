@@ -1380,7 +1380,7 @@
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_Tokuisaki";
-            this.Text = "MasterTouroku_Tokuisaki";
+            this.Text = "得意先マスタ\t";
             this.Load += new System.EventHandler(this.MasterTouroku_Tokuisaki_Load);
             this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
