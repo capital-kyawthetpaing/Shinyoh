@@ -257,7 +257,7 @@
             this.txtDescription.MoveNext = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.NextControl = null;
-            this.txtDescription.NextControlName = null;
+            this.txtDescription.NextControlName = "txtScheduledNo";
             this.txtDescription.SearchType = Entity.SearchType.ScType.None;
             this.txtDescription.Size = new System.Drawing.Size(400, 19);
             this.txtDescription.TabIndex = 20;

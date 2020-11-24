@@ -593,7 +593,7 @@ namespace MasterTouroku_Siiresaki
                         if (dt.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             err.ShowErrorMessage("E101");
-                            bl_List.Add(true);
+                           // bl_List.Add(true);
                         }
 
                         string error = string.Empty;
@@ -607,7 +607,7 @@ namespace MasterTouroku_Siiresaki
                             if (string.IsNullOrEmpty(splits[j]))
                                 dr[j] = DBNull.Value;
                             else
-                            dr[j] = splits[j].ToString();
+                                dr[j] = splits[j].ToString();
                         }
                         dr[27] = "0";
                         dr[28] = base_Entity.OperatorCD;
