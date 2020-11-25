@@ -271,6 +271,8 @@ namespace ChakuniNyuuryoku
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
+            txtSiiresaki.E227Check(true, "M_Tokuisaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E267Check(true, "M_Tokuisaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             sbWareHouse.E102Check(true);
