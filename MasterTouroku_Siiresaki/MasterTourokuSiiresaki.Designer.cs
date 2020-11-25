@@ -98,7 +98,15 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.rdo_Delete);
+            this.panel1.Controls.Add(this.rdo_Registragion);
+            this.panel1.Controls.Add(this.lblClassification);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
+            this.panel1.Controls.SetChildIndex(this.lblClassification, 0);
+            this.panel1.Controls.SetChildIndex(this.rdo_Registragion, 0);
+            this.panel1.Controls.SetChildIndex(this.rdo_Delete, 0);
+            this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.cboMode, 0);
             // 
             // PanelTitle
             // 
@@ -106,14 +114,11 @@
             this.PanelTitle.Controls.Add(this.txtSupplierCD);
             this.PanelTitle.Controls.Add(this.txtCopyDate);
             this.PanelTitle.Controls.Add(this.txtChangeDate);
-            this.PanelTitle.Controls.Add(this.rdo_Delete);
-            this.PanelTitle.Controls.Add(this.rdo_Registragion);
-            this.PanelTitle.Controls.Add(this.lblClassification);
             this.PanelTitle.Controls.Add(this.lblSupplier_CopyDate);
             this.PanelTitle.Controls.Add(this.lblSupplier_CopyCD);
             this.PanelTitle.Controls.Add(this.lblChangeDate);
             this.PanelTitle.Controls.Add(this.lblSupplier);
-            this.PanelTitle.Size = new System.Drawing.Size(1000, 75);
+            this.PanelTitle.Size = new System.Drawing.Size(500, 75);
             // 
             // cboMode
             // 
@@ -177,7 +182,7 @@
             this.lblClassification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblClassification.Location = new System.Drawing.Point(478, 9);
+            this.lblClassification.Location = new System.Drawing.Point(674, 9);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
             this.lblClassification.TabIndex = 60;
@@ -188,7 +193,7 @@
             // 
             this.rdo_Registragion.Checked = true;
             this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Registragion.Location = new System.Drawing.Point(616, 9);
+            this.rdo_Registragion.Location = new System.Drawing.Point(812, 9);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
             this.rdo_Registragion.NextControl = null;
@@ -202,7 +207,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Delete.Location = new System.Drawing.Point(713, 9);
+            this.rdo_Delete.Location = new System.Drawing.Point(909, 9);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;

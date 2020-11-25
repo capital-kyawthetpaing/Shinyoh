@@ -53,9 +53,10 @@ namespace MasterTouroku_Tokuisaki {
             ChangeMode(Mode.New);
             base_Entity = _GetBaseData();
 
+            txtStaffCharge.ChangeDate = txtChange_Date;
             txt_Tokuisaki.ChangeDate = txtChange_Date;
             txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;
-            
+           
         }
 
         private void ChangeMode(Mode mode)
@@ -403,7 +404,7 @@ namespace MasterTouroku_Tokuisaki {
                     From_DB_To_TokuForm(dt);
                 }
 
-                txtStaffCharge.ChangeDate = txtChange_Date;
+                //txtStaffCharge.ChangeDate = txtChange_Date;
             }
         }
         private void EnablePanel()
