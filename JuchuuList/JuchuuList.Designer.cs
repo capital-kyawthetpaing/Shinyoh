@@ -207,7 +207,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(339, 422);
+            this.label5.Location = new System.Drawing.Point(335, 422);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 20);
             this.label5.TabIndex = 96;
@@ -234,7 +234,7 @@
             this.txtPhNo3.IsDatatableOccurs = null;
             this.txtPhNo3.IsErrorOccurs = false;
             this.txtPhNo3.IsRequire = false;
-            this.txtPhNo3.Location = new System.Drawing.Point(370, 422);
+            this.txtPhNo3.Location = new System.Drawing.Point(363, 422);
             this.txtPhNo3.MaxLength = 5;
             this.txtPhNo3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo3.MoveNext = true;
@@ -244,7 +244,7 @@
             this.txtPhNo3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNo3.Size = new System.Drawing.Size(70, 19);
             this.txtPhNo3.TabIndex = 21;
-            this.txtPhNo3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPhNo3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhNo2
             // 
@@ -267,7 +267,7 @@
             this.txtPhNo2.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNo2.Size = new System.Drawing.Size(70, 19);
             this.txtPhNo2.TabIndex = 20;
-            this.txtPhNo2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPhNo2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhNo1
             // 
@@ -290,7 +290,7 @@
             this.txtPhNo1.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNo1.Size = new System.Drawing.Size(70, 19);
             this.txtPhNo1.TabIndex = 19;
-            this.txtPhNo1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPhNo1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhNo
             // 
@@ -402,7 +402,7 @@
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.NextControl = null;
             this.txtAddress.NextControlName = "txtPhNo1";
-            this.txtAddress.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtAddress.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress.Size = new System.Drawing.Size(450, 19);
             this.txtAddress.TabIndex = 18;
             this.txtAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -537,7 +537,7 @@
             this.txtYear.SearchType = Entity.SearchType.ScType.None;
             this.txtYear.Size = new System.Drawing.Size(70, 19);
             this.txtYear.TabIndex = 9;
-            this.txtYear.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtYear.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblTenjikai
             // 
@@ -630,7 +630,7 @@
             this.txtBrand.SearchType = Entity.SearchType.ScType.Staff;
             this.txtBrand.Size = new System.Drawing.Size(80, 19);
             this.txtBrand.TabIndex = 8;
-            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrand_KeyDown);
             // 
             // txtStaffCD
@@ -690,7 +690,7 @@
             this.txtInputDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtInputDate2.Size = new System.Drawing.Size(100, 19);
             this.txtInputDate2.TabIndex = 6;
-            this.txtInputDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtInputDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtInputDate1
             // 
@@ -713,7 +713,7 @@
             this.txtInputDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtInputDate1.Size = new System.Drawing.Size(100, 19);
             this.txtInputDate1.TabIndex = 5;
-            this.txtInputDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtInputDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // label3
             // 
@@ -802,7 +802,7 @@
             this.txtOrderDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtOrderDate2.Size = new System.Drawing.Size(100, 19);
             this.txtOrderDate2.TabIndex = 2;
-            this.txtOrderDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtOrderDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtOrderDate1
             // 
@@ -825,7 +825,7 @@
             this.txtOrderDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtOrderDate1.Size = new System.Drawing.Size(100, 19);
             this.txtOrderDate1.TabIndex = 1;
-            this.txtOrderDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtOrderDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtDestOrderNo
             // 
