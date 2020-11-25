@@ -138,7 +138,7 @@
             this.txtSouko2.SearchType = Entity.SearchType.ScType.None;
             this.txtSouko2.Size = new System.Drawing.Size(100, 19);
             this.txtSouko2.TabIndex = 1;
-            this.txtSouko2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtSouko2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSouko2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSouko2_KeyDown);
             // 
             // txtSouko1
@@ -162,7 +162,7 @@
             this.txtSouko1.SearchType = Entity.SearchType.ScType.None;
             this.txtSouko1.Size = new System.Drawing.Size(100, 19);
             this.txtSouko1.TabIndex = 0;
-            this.txtSouko1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtSouko1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblKanaName
             // 
