@@ -70,10 +70,6 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();
-                        if (string.IsNullOrEmpty(ChangeDate.Text))
-                        {
-                            ChangeDate.Text = "";                        
-                        }
                         staffSearch.changeDate_Access = ChangeDate.Text.ToString();
                         staffSearch.ShowDialog();
                         CD = staffSearch.staffCD;
