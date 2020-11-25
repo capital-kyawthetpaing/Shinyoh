@@ -779,7 +779,7 @@
             this.txtPersonCharge.IsErrorOccurs = false;
             this.txtPersonCharge.IsRequire = false;
             this.txtPersonCharge.Location = new System.Drawing.Point(181, 473);
-            this.txtPersonCharge.MaxLength = 20;
+            this.txtPersonCharge.MaxLength = 40;
             this.txtPersonCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPersonCharge.MoveNext = true;
             this.txtPersonCharge.Name = "txtPersonCharge";
@@ -830,7 +830,7 @@
             this.txtJobTitle.IsErrorOccurs = false;
             this.txtJobTitle.IsRequire = false;
             this.txtJobTitle.Location = new System.Drawing.Point(181, 439);
-            this.txtJobTitle.MaxLength = 20;
+            this.txtJobTitle.MaxLength = 40;
             this.txtJobTitle.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJobTitle.MoveNext = true;
             this.txtJobTitle.Name = "txtJobTitle";
@@ -946,7 +946,7 @@
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(181, 122);
-            this.txtKanaName.MaxLength = 40;
+            this.txtKanaName.MaxLength = 80;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
@@ -969,7 +969,7 @@
             this.txtShortName.IsErrorOccurs = false;
             this.txtShortName.IsRequire = false;
             this.txtShortName.Location = new System.Drawing.Point(181, 86);
-            this.txtShortName.MaxLength = 20;
+            this.txtShortName.MaxLength = 40;
             this.txtShortName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShortName.MoveNext = true;
             this.txtShortName.Name = "txtShortName";
@@ -1022,7 +1022,7 @@
             this.txtRemark.IsErrorOccurs = false;
             this.txtRemark.IsRequire = false;
             this.txtRemark.Location = new System.Drawing.Point(181, 680);
-            this.txtRemark.MaxLength = 40;
+            this.txtRemark.MaxLength = 80;
             this.txtRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRemark.MoveNext = true;
             this.txtRemark.Name = "txtRemark";
@@ -1059,7 +1059,7 @@
             this.txtDepCharge.IsErrorOccurs = false;
             this.txtDepCharge.IsRequire = false;
             this.txtDepCharge.Location = new System.Drawing.Point(181, 403);
-            this.txtDepCharge.MaxLength = 20;
+            this.txtDepCharge.MaxLength = 40;
             this.txtDepCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDepCharge.MoveNext = true;
             this.txtDepCharge.Name = "txtDepCharge";
@@ -1110,7 +1110,7 @@
             this.txtAddress2.IsErrorOccurs = false;
             this.txtAddress2.IsRequire = false;
             this.txtAddress2.Location = new System.Drawing.Point(181, 299);
-            this.txtAddress2.MaxLength = 40;
+            this.txtAddress2.MaxLength = 80;
             this.txtAddress2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress2.MoveNext = true;
             this.txtAddress2.Name = "txtAddress2";
@@ -1147,7 +1147,7 @@
             this.txtAddress1.IsErrorOccurs = false;
             this.txtAddress1.IsRequire = false;
             this.txtAddress1.Location = new System.Drawing.Point(181, 262);
-            this.txtAddress1.MaxLength = 40;
+            this.txtAddress1.MaxLength = 80;
             this.txtAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress1.MoveNext = true;
             this.txtAddress1.Name = "txtAddress1";
@@ -1245,7 +1245,7 @@
             this.txtTokuisakiName.IsErrorOccurs = false;
             this.txtTokuisakiName.IsRequire = false;
             this.txtTokuisakiName.Location = new System.Drawing.Point(179, 50);
-            this.txtTokuisakiName.MaxLength = 40;
+            this.txtTokuisakiName.MaxLength = 80;
             this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiName.MoveNext = true;
             this.txtTokuisakiName.Name = "txtTokuisakiName";

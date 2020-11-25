@@ -83,7 +83,7 @@
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(120, 68);
-            this.txtKanaName.MaxLength = 25;
+            this.txtKanaName.MaxLength = 50;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
@@ -106,7 +106,7 @@
             this.txtSoukoName.IsErrorOccurs = false;
             this.txtSoukoName.IsRequire = false;
             this.txtSoukoName.Location = new System.Drawing.Point(120, 39);
-            this.txtSoukoName.MaxLength = 25;
+            this.txtSoukoName.MaxLength = 50;
             this.txtSoukoName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSoukoName.MoveNext = true;
             this.txtSoukoName.Name = "txtSoukoName";
@@ -240,6 +240,7 @@
             this.colSouko.DataPropertyName = "SoukoCD";
             this.colSouko.HeaderText = "倉庫";
             this.colSouko.Name = "colSouko";
+            this.colSouko.Width = 150;
             // 
             // colSoukoName
             // 

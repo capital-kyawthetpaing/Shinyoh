@@ -396,7 +396,7 @@
             this.txtAddress.IsRequire = false;
             this.txtAddress.lblName = null;
             this.txtAddress.Location = new System.Drawing.Point(141, 387);
-            this.txtAddress.MaxLength = 40;
+            this.txtAddress.MaxLength = 80;
             this.txtAddress.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtAddress.MoveNext = true;
             this.txtAddress.Name = "txtAddress";
@@ -456,7 +456,7 @@
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = false;
             this.txtName.Location = new System.Drawing.Point(141, 321);
-            this.txtName.MaxLength = 20;
+            this.txtName.MaxLength = 40;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtName.MoveNext = true;
             this.txtName.Name = "txtName";
