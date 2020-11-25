@@ -175,7 +175,7 @@
             this.lblBrandName.BackColor = System.Drawing.SystemColors.Control;
             this.lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblBrandName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBrandName.Location = new System.Drawing.Point(221, 154);
             this.lblBrandName.Name = "lblBrandName";
             this.lblBrandName.Size = new System.Drawing.Size(200, 19);
@@ -187,7 +187,7 @@
             this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
             this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStaffCD_Name.Location = new System.Drawing.Point(221, 120);
             this.lblStaffCD_Name.Name = "lblStaffCD_Name";
             this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
@@ -396,7 +396,7 @@
             this.txtAddress.IsRequire = false;
             this.txtAddress.lblName = null;
             this.txtAddress.Location = new System.Drawing.Point(141, 387);
-            this.txtAddress.MaxLength = 40;
+            this.txtAddress.MaxLength = 80;
             this.txtAddress.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtAddress.MoveNext = true;
             this.txtAddress.Name = "txtAddress";
@@ -456,7 +456,7 @@
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = false;
             this.txtName.Location = new System.Drawing.Point(141, 321);
-            this.txtName.MaxLength = 20;
+            this.txtName.MaxLength = 40;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtName.MoveNext = true;
             this.txtName.Name = "txtName";
@@ -627,7 +627,7 @@
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.NextControl = null;
             this.txtBrand.NextControlName = "txtYear";
-            this.txtBrand.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtBrand.SearchType = Entity.SearchType.ScType.None;
             this.txtBrand.Size = new System.Drawing.Size(80, 19);
             this.txtBrand.TabIndex = 8;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;

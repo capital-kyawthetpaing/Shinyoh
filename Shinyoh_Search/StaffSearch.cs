@@ -78,6 +78,7 @@ namespace Shinyoh_Search
             if(dt.Columns.Contains("CurrentDay"))
             {
                 lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                dt.Columns.Remove("CurrentDay");
             }
             gvStaff.DataSource = dt;
         }
