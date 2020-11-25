@@ -55,8 +55,6 @@ namespace MasterTouroku_Tokuisaki {
 
             txt_Tokuisaki.ChangeDate = txtChange_Date;
             txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;
-
-            txtStaffCharge.ChangeDate = txtChange_Date;
             
         }
 
@@ -404,6 +402,8 @@ namespace MasterTouroku_Tokuisaki {
                 {
                     From_DB_To_TokuForm(dt);
                 }
+
+                txtStaffCharge.ChangeDate = txtChange_Date;
             }
         }
         private void EnablePanel()
