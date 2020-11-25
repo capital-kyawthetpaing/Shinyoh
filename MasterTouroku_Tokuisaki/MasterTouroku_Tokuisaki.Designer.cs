@@ -105,22 +105,27 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.sRadDelete);
+            this.panel1.Controls.Add(this.sRadRegister);
+            this.panel1.Controls.Add(this.lbImportClassification);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
+            this.panel1.Controls.SetChildIndex(this.lbImportClassification, 0);
+            this.panel1.Controls.SetChildIndex(this.sRadRegister, 0);
+            this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.sRadDelete, 0);
+            this.panel1.Controls.SetChildIndex(this.cboMode, 0);
             // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtTokuisakiCopy);
-            this.PanelTitle.Controls.Add(this.sRadDelete);
             this.PanelTitle.Controls.Add(this.txt_Tokuisaki);
             this.PanelTitle.Controls.Add(this.txtTokuisaki_CopyDate);
-            this.PanelTitle.Controls.Add(this.sRadRegister);
             this.PanelTitle.Controls.Add(this.lblTokuisaki);
-            this.PanelTitle.Controls.Add(this.lbImportClassification);
             this.PanelTitle.Controls.Add(this.lblDate1);
             this.PanelTitle.Controls.Add(this.lblTokuisaki_CopyDate);
             this.PanelTitle.Controls.Add(this.txtChange_Date);
             this.PanelTitle.Controls.Add(this.lblTokuisaki_Copy);
-            this.PanelTitle.Size = new System.Drawing.Size(1000, 75);
+            this.PanelTitle.Size = new System.Drawing.Size(500, 75);
             // 
             // cboMode
             // 
@@ -233,7 +238,7 @@
             this.lbImportClassification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbImportClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbImportClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lbImportClassification.Location = new System.Drawing.Point(548, 10);
+            this.lbImportClassification.Location = new System.Drawing.Point(742, 11);
             this.lbImportClassification.Name = "lbImportClassification";
             this.lbImportClassification.Size = new System.Drawing.Size(100, 19);
             this.lbImportClassification.TabIndex = 61;
@@ -244,7 +249,7 @@
             // 
             this.sRadRegister.Checked = true;
             this.sRadRegister.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadRegister.Location = new System.Drawing.Point(668, 11);
+            this.sRadRegister.Location = new System.Drawing.Point(862, 12);
             this.sRadRegister.MoveNext = true;
             this.sRadRegister.Name = "sRadRegister";
             this.sRadRegister.NextControl = null;
@@ -258,7 +263,7 @@
             // sRadDelete
             // 
             this.sRadDelete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadDelete.Location = new System.Drawing.Point(740, 11);
+            this.sRadDelete.Location = new System.Drawing.Point(934, 12);
             this.sRadDelete.MoveNext = true;
             this.sRadDelete.Name = "sRadDelete";
             this.sRadDelete.NextControl = null;
@@ -450,8 +455,8 @@
             this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
             this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaffCD_Name.Location = new System.Drawing.Point(198, 544);
+            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaffCD_Name.Location = new System.Drawing.Point(251, 544);
             this.lblStaffCD_Name.Name = "lblStaffCD_Name";
             this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
             this.lblStaffCD_Name.TabIndex = 94;
@@ -779,7 +784,7 @@
             this.txtPersonCharge.IsErrorOccurs = false;
             this.txtPersonCharge.IsRequire = false;
             this.txtPersonCharge.Location = new System.Drawing.Point(181, 473);
-            this.txtPersonCharge.MaxLength = 20;
+            this.txtPersonCharge.MaxLength = 40;
             this.txtPersonCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPersonCharge.MoveNext = true;
             this.txtPersonCharge.Name = "txtPersonCharge";
@@ -830,7 +835,7 @@
             this.txtJobTitle.IsErrorOccurs = false;
             this.txtJobTitle.IsRequire = false;
             this.txtJobTitle.Location = new System.Drawing.Point(181, 439);
-            this.txtJobTitle.MaxLength = 20;
+            this.txtJobTitle.MaxLength = 40;
             this.txtJobTitle.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJobTitle.MoveNext = true;
             this.txtJobTitle.Name = "txtJobTitle";
@@ -946,7 +951,7 @@
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(181, 122);
-            this.txtKanaName.MaxLength = 40;
+            this.txtKanaName.MaxLength = 80;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
@@ -969,7 +974,7 @@
             this.txtShortName.IsErrorOccurs = false;
             this.txtShortName.IsRequire = false;
             this.txtShortName.Location = new System.Drawing.Point(181, 86);
-            this.txtShortName.MaxLength = 20;
+            this.txtShortName.MaxLength = 40;
             this.txtShortName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShortName.MoveNext = true;
             this.txtShortName.Name = "txtShortName";
@@ -1022,7 +1027,7 @@
             this.txtRemark.IsErrorOccurs = false;
             this.txtRemark.IsRequire = false;
             this.txtRemark.Location = new System.Drawing.Point(181, 680);
-            this.txtRemark.MaxLength = 40;
+            this.txtRemark.MaxLength = 80;
             this.txtRemark.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRemark.MoveNext = true;
             this.txtRemark.Name = "txtRemark";
@@ -1059,7 +1064,7 @@
             this.txtDepCharge.IsErrorOccurs = false;
             this.txtDepCharge.IsRequire = false;
             this.txtDepCharge.Location = new System.Drawing.Point(181, 403);
-            this.txtDepCharge.MaxLength = 20;
+            this.txtDepCharge.MaxLength = 40;
             this.txtDepCharge.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDepCharge.MoveNext = true;
             this.txtDepCharge.Name = "txtDepCharge";
@@ -1110,7 +1115,7 @@
             this.txtAddress2.IsErrorOccurs = false;
             this.txtAddress2.IsRequire = false;
             this.txtAddress2.Location = new System.Drawing.Point(181, 299);
-            this.txtAddress2.MaxLength = 40;
+            this.txtAddress2.MaxLength = 80;
             this.txtAddress2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress2.MoveNext = true;
             this.txtAddress2.Name = "txtAddress2";
@@ -1147,7 +1152,7 @@
             this.txtAddress1.IsErrorOccurs = false;
             this.txtAddress1.IsRequire = false;
             this.txtAddress1.Location = new System.Drawing.Point(181, 262);
-            this.txtAddress1.MaxLength = 40;
+            this.txtAddress1.MaxLength = 80;
             this.txtAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress1.MoveNext = true;
             this.txtAddress1.Name = "txtAddress1";
@@ -1245,7 +1250,7 @@
             this.txtTokuisakiName.IsErrorOccurs = false;
             this.txtTokuisakiName.IsRequire = false;
             this.txtTokuisakiName.Location = new System.Drawing.Point(179, 50);
-            this.txtTokuisakiName.MaxLength = 40;
+            this.txtTokuisakiName.MaxLength = 80;
             this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiName.MoveNext = true;
             this.txtTokuisakiName.Name = "txtTokuisakiName";

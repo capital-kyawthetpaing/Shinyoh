@@ -157,7 +157,7 @@
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.Location = new System.Drawing.Point(124, 95);
-            this.txtKanaName.MaxLength = 40;
+            this.txtKanaName.MaxLength = 80;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
@@ -180,7 +180,7 @@
             this.txtTokuisakiName.IsErrorOccurs = false;
             this.txtTokuisakiName.IsRequire = false;
             this.txtTokuisakiName.Location = new System.Drawing.Point(123, 68);
-            this.txtTokuisakiName.MaxLength = 40;
+            this.txtTokuisakiName.MaxLength = 80;
             this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiName.MoveNext = true;
             this.txtTokuisakiName.Name = "txtTokuisakiName";
@@ -303,6 +303,9 @@
             // gvTokuisaki
             // 
             this.gvTokuisaki.AllowUserToAddRows = false;
+            this.gvTokuisaki.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvTokuisaki.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvTokuisaki.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTokuisakiCD,
@@ -342,6 +345,7 @@
             // 
             // colTokuisakiRyakuName
             // 
+            this.colTokuisakiRyakuName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
             this.colTokuisakiRyakuName.HeaderText = "TokuisakiRyakuName";
             this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";

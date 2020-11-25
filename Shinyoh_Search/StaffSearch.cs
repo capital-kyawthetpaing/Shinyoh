@@ -15,9 +15,11 @@ namespace Shinyoh_Search
 {
     public partial class StaffSearch : SearchBase
     {
+        public string changeDate_Access;
         public string staffCD = string.Empty;
         public string changeDate = string.Empty;
         public string staffName = string.Empty;
+
         public StaffSearch()
         {
             InitializeComponent();
@@ -61,6 +63,7 @@ namespace Shinyoh_Search
         private void DataGridviewBind()
         {
             MasterTourokuStaff obj = new MasterTourokuStaff();
+            obj.ChangeDate = changeDate_Access;
             obj.StaffCD = txtStaff1.Text;
             obj.Passward = txtStaff2.Text;//using tempory for assign data
             obj.StaffName = txtStaffName.Text;
@@ -75,6 +78,7 @@ namespace Shinyoh_Search
             if(dt.Columns.Contains("CurrentDay"))
             {
                 lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                dt.Columns.Remove("CurrentDay");
             }
             gvStaff.DataSource = dt;
         }

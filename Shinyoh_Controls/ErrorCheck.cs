@@ -10,9 +10,9 @@ namespace Shinyoh_Controls
     public class ErrorCheck
     {
         CommonFunction cf;
+        BaseBL bbl = new BaseBL();
         public void ShowErrorMessage(string messageID)
         {
-            BaseBL bbl = new BaseBL();
             bbl.ShowMessage(messageID);
         }
 
@@ -137,6 +137,24 @@ namespace Shinyoh_Controls
                     }
                 }
             }
+            if (sTextBox.E115)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E115Type)
+                {
+                    case "JuchuuNyuuryoku":
+                        JuchuuListBL jbl = new JuchuuListBL();
+                        rDt = jbl.JuchuuNyuuryoku_Select_Check(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E115"))
+                {
+                    ShowErrorMessage("E115");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
             if (sTextBox.E132)
             {
                 string result = string.Empty;
@@ -196,7 +214,28 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
+            if (sTextBox.E135)
+            {
 
+                string result = string.Empty;
+                switch (sTextBox.E135Type)
+                {
+                    case "M_Staff":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
+                        {
+                            StaffBL bl = new StaffBL();
+                            rDt = bl.Staff_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty);
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                }
+                if (result.Equals("E135"))
+                {
+                    ShowErrorMessage("E135");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
             if (sTextBox.E133)
             {
                 DataTable dt = new DataTable();
@@ -255,6 +294,11 @@ namespace Shinyoh_Controls
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "JuchuuNyuuryoku":
+                        JuchuuListBL jbl = new JuchuuListBL();
+                        rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E133"))
                 {
@@ -263,20 +307,76 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
-            //if (sTextBox.E142)
-            //{
-            //    if (string.IsNullOrWhiteSpace(sTextBox.Text))
-            //    {
-            //        ShowErrorMessage("E142");
-            //        sTextBox.Focus();
-            //        return (true, rDt);
-            //    }
-            //}
+            if (sTextBox.E160)
+            {
+                
+                string result = string.Empty;
+                switch (sTextBox.E160Type)
+                {
+                    case "JuchuuNyuuryoku":
+                        JuchuuListBL jbl = new JuchuuListBL();
+                        rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, "E160");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E160"))
+                {
+                    ShowErrorMessage("E160");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
             if (sTextBox.E166)
             {
                 if (!sTextBox.ctrlE166_1.Text.Equals(sTextBox.ctrlE166_2.Text))
                 {
                     ShowErrorMessage("E166");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            if (sTextBox.E227)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E227Type)
+                {
+                    case "M_Tokuisaki":
+                        TokuisakiBL t_bl = new TokuisakiBL();
+                        rDt = t_bl.M_Tokuisaki_Select(sTextBox.ctrlE227_1.Text, sTextBox.ctrlE227_2.Text, "E227");
+                        result = rDt.Rows[0]["MessageID"].ToString(); 
+                        break;
+                    case "M_Kouriten":
+                        KouritenBL k_bl = new KouritenBL();
+                        rDt = k_bl.Kouriten_Select_Check(sTextBox.ctrlE227_1.Text, sTextBox.ctrlE227_2.Text, "E227");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E227"))
+                {
+                    bbl.ShowMessage("E227",string.IsNullOrEmpty(sTextBox.ctrlE227_1.Text)? rDt.Rows[0]["currentDate"].ToString():sTextBox.ctrlE227_1.Text);
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            if (sTextBox.E267)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E267Type)
+                {
+                    case "M_Tokuisaki":
+                        TokuisakiBL t_bl = new TokuisakiBL();
+                        rDt = t_bl.M_Tokuisaki_Select(sTextBox.ctrlE267_1.Text, sTextBox.ctrlE267_2.Text, "E267");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "M_Kouriten":
+                        KouritenBL k_bl = new KouritenBL();
+                        rDt = k_bl.Kouriten_Select_Check(sTextBox.ctrlE267_1.Text, sTextBox.ctrlE267_1.Text, "E267");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E267"))
+                {
+                    bbl.ShowMessage("E267", string.IsNullOrEmpty(sTextBox.ctrlE267_1.Text) ? rDt.Rows[0]["currentDate"].ToString() : sTextBox.ctrlE267_1.Text);
                     sTextBox.Focus();
                     return (true, rDt);
                 }

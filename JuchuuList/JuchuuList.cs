@@ -54,6 +54,8 @@ namespace JuchuuList {
             txtInputDate1.Text = baseEntity.LoginDate;
             txtInputDate2.Text = baseEntity.LoginDate;
             txtTempDate.Text = baseEntity.LoginDate;
+
+            txtStaffCD.ChangeDate = txtTempDate;
         }
         private void ErrorCheck()
         {

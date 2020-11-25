@@ -70,9 +70,10 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();
+                        staffSearch.changeDate_Access = ChangeDate.Text.ToString();
                         staffSearch.ShowDialog();
                         CD = staffSearch.staffCD;
-                        CDate = staffSearch.changeDate;
+                        CDate = staffSearch.changeDate_Access;
                         name = staffSearch.staffName;
                         break;
                     case Entity.SearchType.ScType.Denpyou:

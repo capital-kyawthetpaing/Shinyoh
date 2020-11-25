@@ -109,12 +109,13 @@ namespace BL
         public DataTable Staff_Search(MasterTourokuStaff obj)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[5];
+            var parameters = new SqlParameter[6];
             parameters[0] = new SqlParameter("@StaffCD1", SqlDbType.VarChar) { Value = obj.StaffCD };
             parameters[1] = new SqlParameter("@StaffCD2", SqlDbType.VarChar) { Value = obj.Passward };
             parameters[2] = new SqlParameter("@StaffName", SqlDbType.VarChar) { Value = obj.StaffName };
             parameters[3] = new SqlParameter("@KanaName", SqlDbType.VarChar) { Value = obj.KanaName };
             parameters[4] = new SqlParameter("@RadioCheck", SqlDbType.VarChar) { Value = obj.Remarks };
+            parameters[5] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate };
             DataTable dt = ckmdl.SelectDatatable("Staff_Search", GetConnectionString(), parameters);
             return dt;
         }

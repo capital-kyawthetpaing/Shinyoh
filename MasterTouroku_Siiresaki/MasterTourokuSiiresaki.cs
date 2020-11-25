@@ -615,7 +615,6 @@ namespace MasterTouroku_Siiresaki
                         dr[30] = error;
                         create_dt.Rows.Add(dr);
                     }
-
                     Xml = cf.DataTableToXml(create_dt);
                 }
             }
