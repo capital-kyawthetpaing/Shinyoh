@@ -112,6 +112,19 @@ namespace JuchuuNyuuryoku
         }
         public void ErrorCheck()
         {
+            txtJuchuuDate.E102Check(true);
+            txtJuchuuDate.E103Check(true);
+            txtJuchuuDate.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
+            txtTokuisakiCD.E102Check(true);
+            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtJuchuuDate, null);
+            txtTokuisakiCD.E227Check(true, "M_Tokuisaki", txtTokuisakiCD, txtJuchuuDate);
+            txtTokuisakiCD.E267Check(true, "M_Tokuisaki", txtTokuisakiCD, txtJuchuuDate);
+            txtKouritenCD.E102Check(true);
+            txtKouritenCD.E101Check(true, "M_Kouriten", txtKouritenCD, txtJuchuuDate, null);
+            txtKouritenCD.E227Check(true, "M_Kouriten", txtTokuisakiCD, txtJuchuuDate);
+            txtKouritenCD.E267Check(true, "M_Kouriten", txtTokuisakiCD, txtJuchuuDate);
+            txtStaffCD.E102Check(true);
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtJuchuuDate, null);
             
         }
         public void Disable_UDI_Mode()
@@ -128,6 +141,65 @@ namespace JuchuuNyuuryoku
         {
             KouritenDetail detail = new KouritenDetail();
             detail.ShowDialog();
+        }
+
+        private void txtTokuisakiCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtTokuisakiCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        Call_To_TokuisakiDetail(dt);
+                }
+            }
+        }
+        private void Call_To_TokuisakiDetail(DataTable dt)
+        {
+            if (dt.Rows[0]["MessageID"].ToString() == "E132")
+            {
+                TokuisakiDetail detail = new TokuisakiDetail();
+                detail.Datatable_Access(dt);
+                detail.ShowDialog();
+            }
+        }
+
+        private void txtKouritenCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtKouritenCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtKouritenCD.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        Call_To_KouritenDetail(dt);
+                }
+            }
+        }
+        private void Call_To_KouritenDetail(DataTable dt)
+        {
+            if (dt.Rows[0]["MessageID"].ToString() == "E132")
+            {
+                KouritenDetail detail = new KouritenDetail();
+                detail.Datatable_Access(dt);
+                detail.ShowDialog();
+            }
+        }
+
+        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtStaffCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtStaffCD.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() == "E132")
+                    {
+                        lblStaff_Name.Text = dt.Rows[0]["StaffName"].ToString();
+                    }
+                }
+            }
         }
     }
 }
