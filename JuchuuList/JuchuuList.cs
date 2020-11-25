@@ -39,7 +39,7 @@ namespace JuchuuList {
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", false);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", false);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
+            SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
@@ -106,28 +106,35 @@ namespace JuchuuList {
             {
                 TokuisakiBL bl = new TokuisakiBL();
                 DataTable dt = bl.M_Tokuisaki_Select(txtTokuisaki.Text, txtTempDate.Text, "E101");
-
-                if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
+                if (string.IsNullOrEmpty(txtTokuisaki.Text))
                 {
-                    txtName.Enabled = true;
-                    txtYubin1.Enabled = true;
-                    txtYubin2.Enabled = true;
-                    txtAddress.Enabled = true;
-                    txtPhNo1.Enabled = true;
-                    txtPhNo2.Enabled = true;
-                    txtPhNo3.Enabled = true;
-                    chk = "1";
+                    Control control = this.TopLevelControl.Controls.Find("txtStore", true)[0];
+                    control.Focus();
                 }
                 else
                 {
-                    txtName.Enabled = false;
-                    txtYubin1.Enabled = false;
-                    txtYubin2.Enabled = false;
-                    txtAddress.Enabled = false;
-                    txtPhNo1.Enabled = false;
-                    txtPhNo2.Enabled = false;
-                    txtPhNo3.Enabled = false;
-                    chk = "0";
+                    if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
+                    {
+                        txtName.Enabled = true;
+                        txtYubin1.Enabled = true;
+                        txtYubin2.Enabled = true;
+                        txtAddress.Enabled = true;
+                        txtPhNo1.Enabled = true;
+                        txtPhNo2.Enabled = true;
+                        txtPhNo3.Enabled = true;
+                        chk = "1";
+                    }
+                    else
+                    {
+                        txtName.Enabled = false;
+                        txtYubin1.Enabled = false;
+                        txtYubin2.Enabled = false;
+                        txtAddress.Enabled = false;
+                        txtPhNo1.Enabled = false;
+                        txtPhNo2.Enabled = false;
+                        txtPhNo3.Enabled = false;
+                        chk = "0";
+                    }
                 }
             }
         }
@@ -136,6 +143,7 @@ namespace JuchuuList {
             if (tagID == "6")
             {
                 cf.Clear(PanelDetail);
+                txtOrderDate1.Focus();
             }
             if (tagID == "10")
             {

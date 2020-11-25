@@ -215,6 +215,7 @@
             this.txtStaffCD.Size = new System.Drawing.Size(100, 19);
             this.txtStaffCD.TabIndex = 46;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
             // 
             // sbWareHouse
             // 
@@ -257,7 +258,7 @@
             this.txtDescription.MoveNext = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.NextControl = null;
-            this.txtDescription.NextControlName = null;
+            this.txtDescription.NextControlName = "txtScheduledNo";
             this.txtDescription.SearchType = Entity.SearchType.ScType.None;
             this.txtDescription.Size = new System.Drawing.Size(400, 19);
             this.txtDescription.TabIndex = 20;

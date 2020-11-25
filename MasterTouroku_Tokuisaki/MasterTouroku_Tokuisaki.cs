@@ -55,6 +55,8 @@ namespace MasterTouroku_Tokuisaki {
 
             txt_Tokuisaki.ChangeDate = txtChange_Date;
             txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;
+
+            txtStaffCharge.ChangeDate = txtChange_Date;
             
         }
 
@@ -73,10 +75,6 @@ namespace MasterTouroku_Tokuisaki {
                     txtTokuisaki_CopyDate.E102MultiCheck(true, txtTokuisakiCopy, txtTokuisaki_CopyDate);
                     txtTokuisaki_CopyDate.E133Check(true, "M_Tokuisaki", txtTokuisakiCopy, txtTokuisaki_CopyDate, null);
 
-                    //cf.Clear(PanelTitle);
-                    //cf.Clear(PanelDetail);
-                    //cf.DisablePanel(PanelDetail);
-
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
@@ -87,7 +85,6 @@ namespace MasterTouroku_Tokuisaki {
                     txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
-                   // Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
@@ -96,7 +93,6 @@ namespace MasterTouroku_Tokuisaki {
                     txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E270Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
-                    //Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
 
@@ -106,20 +102,11 @@ namespace MasterTouroku_Tokuisaki {
                     txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
 
-                    //Disable_UDI_Mode();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
             }
         }
-        //public void Disable_UDI_Mode()
-        //{
-        //    cf.Clear(PanelTitle);
-        //    cf.Clear(PanelDetail);
-        //    cf.DisablePanel(PanelDetail);
-        //    txtTokuisakiCopy.Enabled = false;
-        //    txtTokuisaki_CopyDate.Enabled = false;
-        //}
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
@@ -129,7 +116,7 @@ namespace MasterTouroku_Tokuisaki {
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
             txt_Tokuisaki.Focus();
-            txtSearch.Text = "0";
+            //txtSearch.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
             {
@@ -182,8 +169,8 @@ namespace MasterTouroku_Tokuisaki {
             }
             if (tagID == "10")
             {
-              //  if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
-              //  {
+               // if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+               // {
                     string Xml = ChooseFile();
                     BaseBL bbl = new BaseBL();
                     if (bbl.ShowMessage("Q206") != DialogResult.Yes)
@@ -199,7 +186,7 @@ namespace MasterTouroku_Tokuisaki {
                         else chk_val = "delete";
                         bl.CSV_M_Tokuisaki_CUD(Xml, chk_val);
                     }
-              //  }
+               // }
             }
             if (tagID == "12")
             {
@@ -428,19 +415,19 @@ namespace MasterTouroku_Tokuisaki {
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            string value = txtSearch.Text.Replace(",", "");
-            ulong ul;
-            if (ulong.TryParse(value, out ul))
-            {
-                txtSearch.TextChanged -= txtSearch_TextChanged;
-                txtSearch.Text = string.Format("{0:#,#0}", ul);
-                txtSearch.SelectionStart = txtSearch.Text.Length;
-                txtSearch.TextChanged += txtSearch_TextChanged;
-            }
-            else
-            {
-                txtSearch.Text = "0";
-            }
+            //string value = txtSearch.Text.Replace(",", "");
+            //ulong ul;
+            //if (ulong.TryParse(value, out ul))
+            //{
+            //    txtSearch.TextChanged -= txtSearch_TextChanged;
+            //    txtSearch.Text = string.Format("{0:#,#0}", ul);
+            //    txtSearch.SelectionStart = txtSearch.Text.Length;
+            //    txtSearch.TextChanged += txtSearch_TextChanged;
+            //}
+            //else
+            //{
+            //    txtSearch.Text = "0";
+            //}
         }
         private string ChooseFile()
         {
