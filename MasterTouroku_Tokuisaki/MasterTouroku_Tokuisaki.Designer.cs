@@ -105,22 +105,27 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.sRadDelete);
+            this.panel1.Controls.Add(this.sRadRegister);
+            this.panel1.Controls.Add(this.lbImportClassification);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
+            this.panel1.Controls.SetChildIndex(this.lbImportClassification, 0);
+            this.panel1.Controls.SetChildIndex(this.sRadRegister, 0);
+            this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.sRadDelete, 0);
+            this.panel1.Controls.SetChildIndex(this.cboMode, 0);
             // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtTokuisakiCopy);
-            this.PanelTitle.Controls.Add(this.sRadDelete);
             this.PanelTitle.Controls.Add(this.txt_Tokuisaki);
             this.PanelTitle.Controls.Add(this.txtTokuisaki_CopyDate);
-            this.PanelTitle.Controls.Add(this.sRadRegister);
             this.PanelTitle.Controls.Add(this.lblTokuisaki);
-            this.PanelTitle.Controls.Add(this.lbImportClassification);
             this.PanelTitle.Controls.Add(this.lblDate1);
             this.PanelTitle.Controls.Add(this.lblTokuisaki_CopyDate);
             this.PanelTitle.Controls.Add(this.txtChange_Date);
             this.PanelTitle.Controls.Add(this.lblTokuisaki_Copy);
-            this.PanelTitle.Size = new System.Drawing.Size(1000, 75);
+            this.PanelTitle.Size = new System.Drawing.Size(500, 75);
             // 
             // cboMode
             // 
@@ -233,7 +238,7 @@
             this.lbImportClassification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbImportClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbImportClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lbImportClassification.Location = new System.Drawing.Point(548, 10);
+            this.lbImportClassification.Location = new System.Drawing.Point(742, 11);
             this.lbImportClassification.Name = "lbImportClassification";
             this.lbImportClassification.Size = new System.Drawing.Size(100, 19);
             this.lbImportClassification.TabIndex = 61;
@@ -244,7 +249,7 @@
             // 
             this.sRadRegister.Checked = true;
             this.sRadRegister.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadRegister.Location = new System.Drawing.Point(668, 11);
+            this.sRadRegister.Location = new System.Drawing.Point(862, 12);
             this.sRadRegister.MoveNext = true;
             this.sRadRegister.Name = "sRadRegister";
             this.sRadRegister.NextControl = null;
@@ -258,7 +263,7 @@
             // sRadDelete
             // 
             this.sRadDelete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadDelete.Location = new System.Drawing.Point(740, 11);
+            this.sRadDelete.Location = new System.Drawing.Point(934, 12);
             this.sRadDelete.MoveNext = true;
             this.sRadDelete.Name = "sRadDelete";
             this.sRadDelete.NextControl = null;
@@ -450,8 +455,8 @@
             this.lblStaffCD_Name.BackColor = System.Drawing.SystemColors.Control;
             this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaffCD_Name.Location = new System.Drawing.Point(198, 544);
+            this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaffCD_Name.Location = new System.Drawing.Point(251, 544);
             this.lblStaffCD_Name.Name = "lblStaffCD_Name";
             this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
             this.lblStaffCD_Name.TabIndex = 94;
