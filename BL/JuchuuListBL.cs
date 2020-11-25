@@ -40,5 +40,14 @@ namespace BL {
             DataTable dt = ckmdl.SelectDatatable("JuchuuList_Excel", GetConnectionString(), parameters);
             return dt;
         }
+        public DataTable JuchuuNyuuryoku_Select_Check(string juchuuNo,string juchuuDate,string err)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@JuchuuNo", SqlDbType.VarChar) { Value = juchuuNo };
+            parameters[1] = new SqlParameter("@ErrorType", SqlDbType.VarChar) { Value = err };
+            DataTable dt = ckmdl.SelectDatatable("JuchuuNyuuryoku_Select_Check", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }

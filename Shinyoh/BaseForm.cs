@@ -256,6 +256,9 @@ namespace Shinyoh
                 case ButtonType.BType.Empty:
                     button.Text = buttonText;
                     break;
+                case ButtonType.BType.Display:
+                    button.Text = buttonText;
+                    break;
                 case ButtonType.BType.New:
                     CheckButton(programEntity.Insertable, buttonText, button);
                     break;

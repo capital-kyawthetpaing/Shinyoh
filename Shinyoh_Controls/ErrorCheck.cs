@@ -255,6 +255,11 @@ namespace Shinyoh_Controls
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "JuchuuNyuuryoku":
+                        JuchuuListBL jbl = new JuchuuListBL();
+                        rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E133"))
                 {
@@ -263,15 +268,25 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
-            //if (sTextBox.E142)
-            //{
-            //    if (string.IsNullOrWhiteSpace(sTextBox.Text))
-            //    {
-            //        ShowErrorMessage("E142");
-            //        sTextBox.Focus();
-            //        return (true, rDt);
-            //    }
-            //}
+            if (sTextBox.E160)
+            {
+                
+                string result = string.Empty;
+                switch (sTextBox.E160Type)
+                {
+                    case "JuchuuNyuuryoku":
+                        JuchuuListBL jbl = new JuchuuListBL();
+                        rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, "E160");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E160"))
+                {
+                    ShowErrorMessage("E160");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
             if (sTextBox.E166)
             {
                 if (!sTextBox.ctrlE166_1.Text.Equals(sTextBox.ctrlE166_2.Text))

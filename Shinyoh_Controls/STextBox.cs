@@ -100,8 +100,9 @@ namespace Shinyoh_Controls
         public string E133Type;
         public bool E268;
         public string E268Type;
-        //public bool E142;
+        public bool E160;
         public bool E166;
+        public string E160Type;
         public bool E270;
         public string E270Type;
         public bool CYuubin_Juusho;
@@ -123,6 +124,8 @@ namespace Shinyoh_Controls
         public Control ctrlE133_1;
         public Control ctrlE133_2;
         public Control ctrlE133_3;
+        public Control ctrlE160_1;
+        public Control ctrlE160_2;
         public Control ctrlE166_1;
         public Control ctrlE166_2;
         public Control ctrlE270_1;
@@ -316,22 +319,25 @@ namespace Shinyoh_Controls
             ctrlE133_2 = ctrl2;
             ctrlE133_3 = ctrl3;
         }
+        public void E160Check(bool value,string type, Control ctrl1, Control ctrl2)
+        {
+            E160 = value;
+            E160Type = type;
+            ctrlE160_1 = ctrl1;
+            ctrlE160_2 = ctrl2;
+        }
+        public void E166Check(bool value,Control ctrl1,Control ctrl2)
+        {
+            E166 = value;
+            ctrlE166_1 = ctrl1;
+            ctrlE166_2 = ctrl2;
+        }
         public void E268Check(bool value, string type, Control ctrl1, Control ctrl2)
         {
             E268 = value;
             E268Type = type;
             ctrlE268_1 = ctrl1;
             ctrlE268_2 = ctrl2;
-        }
-        //public void E142Check(bool value)
-        //{
-        //    E142 = value;
-        //}
-        public void E166Check(bool value,Control ctrl1,Control ctrl2)
-        {
-            E166 = value;
-            ctrlE166_1 = ctrl1;
-            ctrlE166_2 = ctrl2;
         }
         public void E270Check(bool value, string type, Control ctrl1, Control ctrl2)
         {
@@ -340,7 +346,7 @@ namespace Shinyoh_Controls
             ctrlE270_1 = ctrl1;
             ctrlE270_2 = ctrl2;
         }
-
+        
         public void Yuubin_Juusho(bool value,Control ctrl1, Control ctrl2,string check_Yuu1,string check_Yuu2)
         {
             CYuubin_Juusho = value;
