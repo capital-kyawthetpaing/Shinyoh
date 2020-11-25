@@ -128,6 +128,10 @@ namespace ChakuniNyuuryoku
             {
                 Clear();
             }
+            if(tagID=="10")
+            {
+                GetData();
+            }
             if (tagID == "12")
             {
                 if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails))
@@ -185,7 +189,7 @@ namespace ChakuniNyuuryoku
         private ChakuniNyuuryoku_Entity getData()
         {
             ChakuniNyuuryoku_Entity chk = new ChakuniNyuuryoku_Entity();
-
+            
             return chk;
         }
         private void DoInsert(ChakuniNyuuryoku_Entity insert)
@@ -202,6 +206,7 @@ namespace ChakuniNyuuryoku
         }
         private void GetData()
         {
+            string Xml = string.Empty;
             ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity();
             chkEntity.ChakuniNO = txtArrivalNO.Text;
             chkEntity.ChakuniDate = txtArrivalDate.Text;
@@ -218,7 +223,7 @@ namespace ChakuniNyuuryoku
             chkEntity.CheckValue = CheckValue();
             //chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
             //chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
-            dtmain  = cbl.ChakuniNyuuryoku_Display(chkEntity);
+            dtmain  = cbl.ChakuniNyuuryoku_Display(chkEntity,Xml);
             
             DataTable dtcha = new DataTable();
             dtcha = dtmain.Copy();
@@ -236,7 +241,7 @@ namespace ChakuniNyuuryoku
             dtcopy.Columns.Remove("ChakuniYoteiDate");
             dtcopy.Columns.Remove("ChakuniYoteiSuu");
             dtcopy.Columns.Remove("ChakuniZumiSuu");
-            dtcopy.Columns.Remove("c");
+            dtcopy.Columns.Remove("ChakuniSuu");
             dtcopy.Columns.Remove("d");
             gvJancd.DataSource = dtcopy;
         }
@@ -392,9 +397,10 @@ namespace ChakuniNyuuryoku
         {
             string Xml = string.Empty;
             DataTable dtGridSource = new DataTable();
+            ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity();
             dtGridSource = (DataTable)gvChakuniNyuuryoku.DataSource;
             Xml = cf.DataTableToXml(dtGridSource);
-
+            dtmain = cbl.ChakuniNyuuryoku_Display(chkEntity, Xml);
             Clear();
             txtScheduledNo.Focus();
         }
@@ -414,19 +420,28 @@ namespace ChakuniNyuuryoku
 
         private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
         {
-            chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
-            ChakuniNyuuryoku_Entity ane = new ChakuniNyuuryoku_Entity();
-            DataTable dt = bl.DateCheck(ane);
+            if(e.KeyCode==Keys.Enter)
+            {
+                chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
+                ChakuniNyuuryoku_Entity ane = new ChakuniNyuuryoku_Entity();
+                DataTable dt = bl.DateCheck(ane);
 
-            if (dt.Rows.Count > 0)
-            {
-                lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
+                if (dt.Rows.Count > 0)
+                {
+                    lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
+                }
+                else
+                {
+                    bbl.ShowMessage("E135");
+                    txtStaffCD.Focus();
+                }
             }
-            else
-            {
-                bbl.ShowMessage("E135");
-                txtStaffCD.Focus();
-            }
+        }
+
+        private void sButton4_Click(object sender, EventArgs e)
+        {
+            SiiresakiDetails dd = new SiiresakiDetails();
+            dd.ShowDialog();
         }
     }
 }
