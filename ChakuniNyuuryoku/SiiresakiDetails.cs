@@ -21,9 +21,6 @@ namespace ChakuniNyuuryoku
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             SetButton(ButtonType.BType.Search, F11, "", false);
             sbSupplier.Focus();
-        }
-        private void ErrorCheck()
-        {
             txtSupplierCD.E102Check(true);
             txtSupplierName.E102Check(true);
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
