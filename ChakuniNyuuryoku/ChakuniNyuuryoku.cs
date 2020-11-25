@@ -150,6 +150,7 @@ namespace ChakuniNyuuryoku
                     }
                 }
             }
+            Clear();
             base.FunctionProcess(tagID);
         }
         public void Clear()
@@ -389,6 +390,11 @@ namespace ChakuniNyuuryoku
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            string Xml = string.Empty;
+            DataTable dtGridSource = new DataTable();
+            dtGridSource = (DataTable)gvChakuniNyuuryoku.DataSource;
+            Xml = cf.DataTableToXml(dtGridSource);
+
             Clear();
             txtScheduledNo.Focus();
         }
@@ -403,6 +409,23 @@ namespace ChakuniNyuuryoku
                     bbl.ShowMessage("E109");
                     e.Cancel = true;
                 }
+            }
+        }
+
+        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
+            ChakuniNyuuryoku_Entity ane = new ChakuniNyuuryoku_Entity();
+            DataTable dt = bl.DateCheck(ane);
+
+            if (dt.Rows.Count > 0)
+            {
+                lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
+            }
+            else
+            {
+                bbl.ShowMessage("E135");
+                txtStaffCD.Focus();
             }
         }
     }
