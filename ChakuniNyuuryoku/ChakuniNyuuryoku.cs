@@ -128,10 +128,6 @@ namespace ChakuniNyuuryoku
             {
                 Clear();
             }
-            if(tagID=="10")
-            {
-                GetData();
-            }
             if (tagID == "12")
             {
                 if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails))
@@ -299,7 +295,6 @@ namespace ChakuniNyuuryoku
                 }
             }
         }
-
         private void ChakuniNyuuryokuSelect(DataTable dt)
         {
             if (dt.Rows.Count > 0)
@@ -373,8 +368,6 @@ namespace ChakuniNyuuryoku
                 }
             }
         }
-
-
         private void btnDisplay_Click(object sender, EventArgs e)
         {
            GetData();
@@ -411,8 +404,8 @@ namespace ChakuniNyuuryoku
         {
             if (gvChakuniNyuuryoku.Columns[e.ColumnIndex].Name == "colArrivalTime")
             {
-               string value = gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString();
-                if (Convert.ToInt32(value.ToString())<0)
+               string value =gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString();
+                if (Convert.ToDecimal(value)<0)
                 {
                     bbl.ShowMessage("E109");
                     e.Cancel = true;
