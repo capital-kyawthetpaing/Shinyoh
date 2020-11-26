@@ -19,6 +19,8 @@ namespace Shinyoh_Search
         private string CDate = string.Empty;
         private string name = string.Empty;
         private string colName = string.Empty;
+
+       
         protected override void OnKeyDown(KeyEventArgs e)
         {         
             if(e.KeyCode == Keys.F9)
@@ -63,6 +65,7 @@ namespace Shinyoh_Search
                 switch (this.SearchType)
                 {
                     case Entity.SearchType.ScType.Souko:
+                        
                         SoukoSearch soukoSearch = new SoukoSearch();
                         soukoSearch.ShowDialog();
                         CD = soukoSearch.soukoCD;
@@ -73,7 +76,7 @@ namespace Shinyoh_Search
                         staffSearch.changeDate_Access = ChangeDate.Text.ToString();
                         staffSearch.ShowDialog();
                         CD = staffSearch.staffCD;
-                        CDate = staffSearch.changeDate_Access;
+                        CDate = staffSearch.changeDate;
                         name = staffSearch.staffName;
                         break;
                     case Entity.SearchType.ScType.Denpyou:
@@ -126,7 +129,8 @@ namespace Shinyoh_Search
                 }
                 else if (ChangeDate != null)
                 {
-                    ChangeDate.Text = CDate;
+                    if (ChangeDate.Name == this.NextControlName)
+                        ChangeDate.Text = CDate;
                     if (string.IsNullOrEmpty(this.Text))
                     {
                         this.Focus();
