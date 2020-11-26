@@ -173,7 +173,7 @@
             this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtHacchuuNO1.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO1.TabIndex = 4;
-            this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtBrandCD
             // 
@@ -342,7 +342,7 @@
             this.txtJuchuuNO2.SearchType = Entity.SearchType.ScType.None;
             this.txtJuchuuNO2.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO2.TabIndex = 16;
-            this.txtJuchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtJuchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtJuchuuNO1
             // 
@@ -365,7 +365,7 @@
             this.txtJuchuuNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtJuchuuNO1.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO1.TabIndex = 15;
-            this.txtJuchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtJuchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblJuchuuNO
             // 
@@ -515,7 +515,7 @@
             this.txtYear.SearchType = Entity.SearchType.ScType.None;
             this.txtYear.Size = new System.Drawing.Size(50, 19);
             this.txtYear.TabIndex = 10;
-            this.txtYear.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtYear.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // sLabel8
             // 
@@ -684,7 +684,7 @@
             this.txtHacchuuNO2.SearchType = Entity.SearchType.ScType.None;
             this.txtHacchuuNO2.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO2.TabIndex = 5;
-            this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblHacchuuNO
             // 
@@ -703,7 +703,7 @@
             // rdo_Juc
             // 
             this.rdo_Juc.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Juc.Location = new System.Drawing.Point(197, 18);
+            this.rdo_Juc.Location = new System.Drawing.Point(202, 18);
             this.rdo_Juc.MoveNext = true;
             this.rdo_Juc.Name = "rdo_Juc";
             this.rdo_Juc.NextControl = null;
@@ -718,7 +718,7 @@
             // 
             this.rdo_Hac.Checked = true;
             this.rdo_Hac.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Hac.Location = new System.Drawing.Point(41, 19);
+            this.rdo_Hac.Location = new System.Drawing.Point(46, 19);
             this.rdo_Hac.MoveNext = true;
             this.rdo_Hac.Name = "rdo_Hac";
             this.rdo_Hac.NextControl = null;
@@ -809,7 +809,7 @@
             this.Controls.Add(this.Panel_Detail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "HacchuuList";
-            this.Text = "HacchuuList";
+            this.Text = "発注リスト\t";
             this.Load += new System.EventHandler(this.HacchuuList_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.Panel_Detail, 0);

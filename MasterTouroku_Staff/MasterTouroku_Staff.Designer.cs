@@ -149,7 +149,7 @@
             this.txtStaff_Search.IsErrorOccurs = false;
             this.txtStaff_Search.IsRequire = false;
             this.txtStaff_Search.Location = new System.Drawing.Point(141, 384);
-            this.txtStaff_Search.MaxLength = 6;
+            this.txtStaff_Search.MaxLength = 5;
             this.txtStaff_Search.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Search.MoveNext = true;
             this.txtStaff_Search.Name = "txtStaff_Search";
@@ -514,7 +514,7 @@
             this.txtStaff_KanaName.IsErrorOccurs = false;
             this.txtStaff_KanaName.IsRequire = false;
             this.txtStaff_KanaName.Location = new System.Drawing.Point(141, 54);
-            this.txtStaff_KanaName.MaxLength = 40;
+            this.txtStaff_KanaName.MaxLength = 50;
             this.txtStaff_KanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_KanaName.MoveNext = true;
             this.txtStaff_KanaName.Name = "txtStaff_KanaName";
@@ -550,7 +550,7 @@
             this.txtStaff_Name.IsErrorOccurs = false;
             this.txtStaff_Name.IsRequire = false;
             this.txtStaff_Name.Location = new System.Drawing.Point(141, 18);
-            this.txtStaff_Name.MaxLength = 40;
+            this.txtStaff_Name.MaxLength = 50;
             this.txtStaff_Name.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Name.MoveNext = true;
             this.txtStaff_Name.Name = "txtStaff_Name";
@@ -679,6 +679,7 @@
             this.txtStaff_Copy.AllowMinus = false;
             this.txtStaff_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff_Copy.ChangeDate = null;
+            this.txtStaff_Copy.Combo = null;
             this.txtStaff_Copy.DecimalPlace = 0;
             this.txtStaff_Copy.DepandOnMode = false;
             this.txtStaff_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -704,6 +705,7 @@
             this.txt_Staff.AllowMinus = false;
             this.txt_Staff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_Staff.ChangeDate = null;
+            this.txt_Staff.Combo = null;
             this.txt_Staff.DecimalPlace = 0;
             this.txt_Staff.DepandOnMode = true;
             this.txt_Staff.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -713,6 +715,7 @@
             this.txt_Staff.IsRequire = false;
             this.txt_Staff.lblName = null;
             this.txt_Staff.Location = new System.Drawing.Point(118, 9);
+            this.txt_Staff.MaxLength = 10;
             this.txt_Staff.MinimumSize = new System.Drawing.Size(90, 19);
             this.txt_Staff.MoveNext = true;
             this.txt_Staff.Name = "txt_Staff";
