@@ -40,7 +40,9 @@ namespace Shinyoh_Controls
         public DataTable IsDatatableOccurs { get; set; }
 
         public bool E102;
-
+        public bool E106;//ses
+        public Control ctrlE106_1;
+        public Control ctrlE106_2;
         //Constructor
         public SCombo()
         {
@@ -211,6 +213,12 @@ namespace Shinyoh_Controls
         public void E102Check(bool value)
         {
             E102 = value;
+        }
+        public void E106Check(bool value, Control ctrl1, Control ctrl2)
+        {
+            E106 = value;
+            ctrlE106_1 = ctrl1;
+            ctrlE106_2 = ctrl2;
         }
     }
 }

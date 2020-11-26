@@ -479,7 +479,19 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
-
+            else if(sCombo.E106)
+            {
+                if (!string.IsNullOrEmpty(sCombo.ctrlE106_1.Text) && !string.IsNullOrEmpty(sCombo.ctrlE106_2.Text))
+                {
+                    bool bl = Matches(sCombo.ctrlE106_2.Text, sCombo.ctrlE106_1.Text);
+                    if (!bl)
+                    {
+                        ShowErrorMessage("E106");
+                        sCombo.Focus();
+                        return (true, rDt);
+                    }
+                }
+            }
             return (false, rDt);
         }
 
