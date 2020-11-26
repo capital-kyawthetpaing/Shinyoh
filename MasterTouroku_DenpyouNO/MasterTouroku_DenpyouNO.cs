@@ -24,7 +24,7 @@ namespace MasterTouroku_DenpyouNO
         {
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
             multipurpose_entity.id = 101;
-            ProgramID = "MasterTourokuSouko";
+            ProgramID = "MasterTouroku_DenpyouNO";
             StartProgram();
             cboMode.Bind(false, multipurpose_entity);
             cbDivision.Bind(true, multipurpose_entity);

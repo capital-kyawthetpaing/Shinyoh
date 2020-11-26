@@ -793,7 +793,7 @@
             this.Controls.Add(this.panelDetails);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_MultiPorpose";
-            this.Text = "MasterTouroku_MultiPorpose";
+            this.Text = "汎用マスタ";
             this.Load += new System.EventHandler(this.MasterTouroku_MultiPorpose_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panelDetails, 0);
