@@ -65,7 +65,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(240, 13);
+            this.label1.Location = new System.Drawing.Point(217, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 20);
             this.label1.TabIndex = 8;
@@ -82,7 +82,7 @@
             this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
-            this.txtKanaName.Location = new System.Drawing.Point(120, 68);
+            this.txtKanaName.Location = new System.Drawing.Point(97, 68);
             this.txtKanaName.MaxLength = 50;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
@@ -105,7 +105,7 @@
             this.txtSoukoName.IsDatatableOccurs = null;
             this.txtSoukoName.IsErrorOccurs = false;
             this.txtSoukoName.IsRequire = false;
-            this.txtSoukoName.Location = new System.Drawing.Point(120, 39);
+            this.txtSoukoName.Location = new System.Drawing.Point(97, 39);
             this.txtSoukoName.MaxLength = 50;
             this.txtSoukoName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSoukoName.MoveNext = true;
@@ -128,7 +128,7 @@
             this.txtSouko2.IsDatatableOccurs = null;
             this.txtSouko2.IsErrorOccurs = false;
             this.txtSouko2.IsRequire = false;
-            this.txtSouko2.Location = new System.Drawing.Point(277, 10);
+            this.txtSouko2.Location = new System.Drawing.Point(254, 10);
             this.txtSouko2.MaxLength = 10;
             this.txtSouko2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSouko2.MoveNext = true;
@@ -152,7 +152,7 @@
             this.txtSouko1.IsDatatableOccurs = null;
             this.txtSouko1.IsErrorOccurs = false;
             this.txtSouko1.IsRequire = false;
-            this.txtSouko1.Location = new System.Drawing.Point(120, 9);
+            this.txtSouko1.Location = new System.Drawing.Point(97, 9);
             this.txtSouko1.MaxLength = 10;
             this.txtSouko1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSouko1.MoveNext = true;
@@ -170,7 +170,7 @@
             this.lblKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblKanaName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblKanaName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblKanaName.Location = new System.Drawing.Point(45, 68);
+            this.lblKanaName.Location = new System.Drawing.Point(22, 68);
             this.lblKanaName.Name = "lblKanaName";
             this.lblKanaName.Size = new System.Drawing.Size(80, 19);
             this.lblKanaName.TabIndex = 3;
@@ -199,7 +199,7 @@
             this.lblSoukoName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSoukoName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSoukoName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSoukoName.Location = new System.Drawing.Point(45, 39);
+            this.lblSoukoName.Location = new System.Drawing.Point(22, 39);
             this.lblSoukoName.Name = "lblSoukoName";
             this.lblSoukoName.Size = new System.Drawing.Size(80, 19);
             this.lblSoukoName.TabIndex = 2;
@@ -212,7 +212,7 @@
             this.lblSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSouko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSouko.Location = new System.Drawing.Point(45, 9);
+            this.lblSouko.Location = new System.Drawing.Point(22, 9);
             this.lblSouko.Name = "lblSouko";
             this.lblSouko.Size = new System.Drawing.Size(80, 19);
             this.lblSouko.TabIndex = 1;
@@ -229,9 +229,9 @@
             this.gvSouko.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSouko,
             this.colSoukoName});
-            this.gvSouko.Location = new System.Drawing.Point(45, 142);
+            this.gvSouko.Location = new System.Drawing.Point(22, 117);
             this.gvSouko.Name = "gvSouko";
-            this.gvSouko.Size = new System.Drawing.Size(768, 302);
+            this.gvSouko.Size = new System.Drawing.Size(620, 302);
             this.gvSouko.TabIndex = 2;
             this.gvSouko.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSouko_CellMouseDoubleClick);
             // 
@@ -240,14 +240,14 @@
             this.colSouko.DataPropertyName = "SoukoCD";
             this.colSouko.HeaderText = "倉庫";
             this.colSouko.Name = "colSouko";
-            this.colSouko.Width = 150;
+            this.colSouko.Width = 110;
             // 
             // colSoukoName
             // 
-            this.colSoukoName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colSoukoName.DataPropertyName = "SoukoName";
             this.colSoukoName.HeaderText = "倉庫名";
             this.colSoukoName.Name = "colSoukoName";
+            this.colSoukoName.Width = 467;
             // 
             // SoukoSearch
             // 
