@@ -73,7 +73,7 @@ namespace Shinyoh_Search {
 
         private void txtSouko2_KeyDown(object sender, KeyEventArgs e)
         {
-            txtSouko2.E106Check(true, txtSouko1, txtSouko2);
+             txtSouko2.E106Check(true, txtSouko1, txtSouko2);
         }
         private void gvSouko_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
