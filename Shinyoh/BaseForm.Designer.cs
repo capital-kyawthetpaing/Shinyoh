@@ -195,7 +195,7 @@
             this.BtnF4.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF4.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF4.Location = new System.Drawing.Point(379, 1);
             this.BtnF4.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF4.Name = "BtnF4";
@@ -213,7 +213,7 @@
             this.BtnF5.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF5.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF5.Location = new System.Drawing.Point(505, 1);
             this.BtnF5.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF5.Name = "BtnF5";
@@ -231,7 +231,7 @@
             this.BtnF6.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF6.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF6.Location = new System.Drawing.Point(631, 1);
             this.BtnF6.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF6.Name = "BtnF6";
@@ -249,7 +249,7 @@
             this.BtnF3.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF3.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF3.Location = new System.Drawing.Point(253, 1);
             this.BtnF3.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF3.Name = "BtnF3";
@@ -267,7 +267,7 @@
             this.BtnF2.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF2.Location = new System.Drawing.Point(127, 1);
             this.BtnF2.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF2.Name = "BtnF2";
@@ -285,7 +285,7 @@
             this.BtnF7.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF7.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF7.Location = new System.Drawing.Point(757, 1);
             this.BtnF7.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF7.Name = "BtnF7";
@@ -303,7 +303,7 @@
             this.BtnF1.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF1.Location = new System.Drawing.Point(1, 1);
             this.BtnF1.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF1.Name = "BtnF1";
@@ -321,7 +321,7 @@
             this.BtnF8.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF8.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF8.Location = new System.Drawing.Point(883, 1);
             this.BtnF8.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF8.Name = "BtnF8";
@@ -339,7 +339,7 @@
             this.BtnF12.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF12.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF12.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF12.Location = new System.Drawing.Point(1387, 1);
             this.BtnF12.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF12.Name = "BtnF12";
@@ -357,7 +357,7 @@
             this.BtnF9.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF9.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF9.Location = new System.Drawing.Point(1009, 1);
             this.BtnF9.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF9.Name = "BtnF9";
@@ -375,7 +375,7 @@
             this.BtnF10.ButtonType = Entity.ButtonType.BType.Import;
             this.BtnF10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF10.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF10.Location = new System.Drawing.Point(1135, 1);
             this.BtnF10.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF10.Name = "BtnF10";
@@ -393,7 +393,7 @@
             this.BtnF11.ButtonType = Entity.ButtonType.BType.New;
             this.BtnF11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF11.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF11.Location = new System.Drawing.Point(1261, 1);
             this.BtnF11.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF11.Name = "BtnF11";
