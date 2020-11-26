@@ -224,7 +224,6 @@
             this.txtTokuisaki2.Size = new System.Drawing.Size(100, 19);
             this.txtTokuisaki2.TabIndex = 4;
             this.txtTokuisaki2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtTokuisaki2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisaki2_KeyDown);
             // 
             // txtTokuisaki1
             // 

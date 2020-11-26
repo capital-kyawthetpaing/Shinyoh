@@ -225,7 +225,6 @@
             this.txtStaff2.Size = new System.Drawing.Size(100, 19);
             this.txtStaff2.TabIndex = 4;
             this.txtStaff2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaff2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaff2_KeyDown);
             // 
             // txtStaff1
             // 
