@@ -28,12 +28,9 @@ namespace Shinyoh_Search
             gvSupplier.UseRowNo(true);
             gvSupplier.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;            
             DataGridviewBind();
-        }
 
-        private void txtSupplier2_KeyDown(object sender, KeyEventArgs e)
-        {
             txtSupplier2.E106Check(true, txtSupplier1, txtSupplier2);
-        }
+        }    
 
         private void btnSupplier_F11_Click(object sender, System.EventArgs e)
         {

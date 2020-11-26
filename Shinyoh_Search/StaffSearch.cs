@@ -37,10 +37,6 @@ namespace Shinyoh_Search
             DataGridviewBind();            
 
             rdo_Date.Focus();
-        }
-
-        private void txtStaff2_KeyDown(object sender, KeyEventArgs e)
-        {
             txtStaff2.E106Check(true, txtStaff1, txtStaff2);
         }
         public override void FunctionProcess(string tagID)
