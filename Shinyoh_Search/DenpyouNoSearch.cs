@@ -37,6 +37,7 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             gvDenpyouNo.UseRowNo(true);
             BindDataGrid();
+            txtDate.E103Check(true);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
