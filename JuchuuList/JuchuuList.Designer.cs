@@ -76,6 +76,8 @@
             this.lblOrderNo = new Shinyoh_Controls.SLabel();
             this.lblOrderDate = new Shinyoh_Controls.SLabel();
             this.lblName = new Shinyoh_Controls.SLabel();
+            this.lblTokuisakiName = new Shinyoh_Controls.SLabel();
+            this.lblKouritenName = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
@@ -93,6 +95,8 @@
             this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelDetail.Controls.Add(this.lblKouritenName);
+            this.PanelDetail.Controls.Add(this.lblTokuisakiName);
             this.PanelDetail.Controls.Add(this.txtTempDate);
             this.PanelDetail.Controls.Add(this.lblBrandName);
             this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
@@ -390,6 +394,7 @@
             this.txtAddress.DecimalPlace = 0;
             this.txtAddress.DepandOnMode = false;
             this.txtAddress.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtAddress.ImeMode = System.Windows.Forms.ImeMode.Katakana;
             this.txtAddress.IntegerPart = 0;
             this.txtAddress.IsDatatableOccurs = null;
             this.txtAddress.IsErrorOccurs = false;
@@ -451,6 +456,7 @@
             this.txtName.DecimalPlace = 0;
             this.txtName.DepandOnMode = true;
             this.txtName.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtName.ImeMode = System.Windows.Forms.ImeMode.Katakana;
             this.txtName.IntegerPart = 0;
             this.txtName.IsDatatableOccurs = null;
             this.txtName.IsErrorOccurs = false;
@@ -562,6 +568,7 @@
             this.txtStore.DecimalPlace = 0;
             this.txtStore.DepandOnMode = false;
             this.txtStore.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtStore.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.txtStore.IntegerPart = 0;
             this.txtStore.IsDatatableOccurs = null;
             this.txtStore.IsErrorOccurs = false;
@@ -615,6 +622,7 @@
             this.txtBrand.DecimalPlace = 0;
             this.txtBrand.DepandOnMode = false;
             this.txtBrand.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtBrand.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.txtBrand.IntegerPart = 0;
             this.txtBrand.IsDatatableOccurs = null;
             this.txtBrand.IsErrorOccurs = false;
@@ -630,7 +638,7 @@
             this.txtBrand.SearchType = Entity.SearchType.ScType.None;
             this.txtBrand.Size = new System.Drawing.Size(80, 19);
             this.txtBrand.TabIndex = 8;
-            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrand_KeyDown);
             // 
             // txtStaffCD
@@ -642,6 +650,7 @@
             this.txtStaffCD.DecimalPlace = 0;
             this.txtStaffCD.DepandOnMode = false;
             this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtStaffCD.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.txtStaffCD.IntegerPart = 0;
             this.txtStaffCD.IsDatatableOccurs = null;
             this.txtStaffCD.IsErrorOccurs = false;
@@ -732,6 +741,7 @@
             this.txtOrderNo2.DecimalPlace = 0;
             this.txtOrderNo2.DepandOnMode = true;
             this.txtOrderNo2.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtOrderNo2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.txtOrderNo2.IntegerPart = 0;
             this.txtOrderNo2.IsDatatableOccurs = null;
             this.txtOrderNo2.IsErrorOccurs = false;
@@ -755,6 +765,7 @@
             this.txtOrderNo1.DecimalPlace = 0;
             this.txtOrderNo1.DepandOnMode = true;
             this.txtOrderNo1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtOrderNo1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.txtOrderNo1.IntegerPart = 0;
             this.txtOrderNo1.IsDatatableOccurs = null;
             this.txtOrderNo1.IsErrorOccurs = false;
@@ -834,6 +845,7 @@
             this.txtDestOrderNo.DecimalPlace = 0;
             this.txtDestOrderNo.DepandOnMode = true;
             this.txtDestOrderNo.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtDestOrderNo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.txtDestOrderNo.IntegerPart = 0;
             this.txtDestOrderNo.IsDatatableOccurs = null;
             this.txtDestOrderNo.IsErrorOccurs = false;
@@ -977,6 +989,30 @@
             this.lblName.Text = "名称";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblTokuisakiName
+            // 
+            this.lblTokuisakiName.BackColor = System.Drawing.SystemColors.Control;
+            this.lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTokuisakiName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTokuisakiName.Location = new System.Drawing.Point(221, 188);
+            this.lblTokuisakiName.Name = "lblTokuisakiName";
+            this.lblTokuisakiName.Size = new System.Drawing.Size(200, 19);
+            this.lblTokuisakiName.TabIndex = 102;
+            this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblKouritenName
+            // 
+            this.lblKouritenName.BackColor = System.Drawing.SystemColors.Control;
+            this.lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblKouritenName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblKouritenName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKouritenName.Location = new System.Drawing.Point(221, 223);
+            this.lblKouritenName.Name = "lblKouritenName";
+            this.lblKouritenName.Size = new System.Drawing.Size(200, 19);
+            this.lblKouritenName.TabIndex = 103;
+            this.lblKouritenName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // JuchuuList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1049,6 +1085,8 @@
         private Shinyoh_Controls.SLabel lblStaffCD_Name;
         private Shinyoh_Controls.SLabel lblBrandName;
         private Shinyoh_Controls.STextBox txtTempDate;
+        private Shinyoh_Controls.SLabel lblKouritenName;
+        private Shinyoh_Controls.SLabel lblTokuisakiName;
     }
 }
 
