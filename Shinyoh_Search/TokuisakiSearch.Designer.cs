@@ -26,6 +26,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.rdo_All = new Shinyoh_Controls.SRadio();
@@ -77,7 +78,7 @@
             // rdo_All
             // 
             this.rdo_All.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_All.Location = new System.Drawing.Point(280, 9);
+            this.rdo_All.Location = new System.Drawing.Point(258, 9);
             this.rdo_All.MoveNext = true;
             this.rdo_All.Name = "rdo_All";
             this.rdo_All.NextControl = null;
@@ -91,7 +92,7 @@
             // 
             this.rdo_Date.Checked = true;
             this.rdo_Date.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Date.Location = new System.Drawing.Point(140, 9);
+            this.rdo_Date.Location = new System.Drawing.Point(118, 9);
             this.rdo_Date.MoveNext = true;
             this.rdo_Date.Name = "rdo_Date";
             this.rdo_Date.NextControl = null;
@@ -156,7 +157,7 @@
             this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
-            this.txtKanaName.Location = new System.Drawing.Point(124, 95);
+            this.txtKanaName.Location = new System.Drawing.Point(102, 95);
             this.txtKanaName.MaxLength = 80;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
@@ -164,7 +165,7 @@
             this.txtKanaName.NextControl = null;
             this.txtKanaName.NextControlName = "btnStaff_F11";
             this.txtKanaName.SearchType = Entity.SearchType.ScType.None;
-            this.txtKanaName.Size = new System.Drawing.Size(353, 19);
+            this.txtKanaName.Size = new System.Drawing.Size(400, 19);
             this.txtKanaName.TabIndex = 6;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -179,7 +180,7 @@
             this.txtTokuisakiName.IsDatatableOccurs = null;
             this.txtTokuisakiName.IsErrorOccurs = false;
             this.txtTokuisakiName.IsRequire = false;
-            this.txtTokuisakiName.Location = new System.Drawing.Point(123, 68);
+            this.txtTokuisakiName.Location = new System.Drawing.Point(101, 68);
             this.txtTokuisakiName.MaxLength = 80;
             this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiName.MoveNext = true;
@@ -187,7 +188,7 @@
             this.txtTokuisakiName.NextControl = null;
             this.txtTokuisakiName.NextControlName = "txtKanaName";
             this.txtTokuisakiName.SearchType = Entity.SearchType.ScType.None;
-            this.txtTokuisakiName.Size = new System.Drawing.Size(353, 19);
+            this.txtTokuisakiName.Size = new System.Drawing.Size(400, 19);
             this.txtTokuisakiName.TabIndex = 5;
             this.txtTokuisakiName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -195,7 +196,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(243, 43);
+            this.label1.Location = new System.Drawing.Point(221, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 20);
             this.label1.TabIndex = 12;
@@ -212,7 +213,7 @@
             this.txtTokuisaki2.IsDatatableOccurs = null;
             this.txtTokuisaki2.IsErrorOccurs = false;
             this.txtTokuisaki2.IsRequire = false;
-            this.txtTokuisaki2.Location = new System.Drawing.Point(280, 40);
+            this.txtTokuisaki2.Location = new System.Drawing.Point(258, 40);
             this.txtTokuisaki2.MaxLength = 10;
             this.txtTokuisaki2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisaki2.MoveNext = true;
@@ -236,7 +237,7 @@
             this.txtTokuisaki1.IsDatatableOccurs = null;
             this.txtTokuisaki1.IsErrorOccurs = false;
             this.txtTokuisaki1.IsRequire = false;
-            this.txtTokuisaki1.Location = new System.Drawing.Point(123, 39);
+            this.txtTokuisaki1.Location = new System.Drawing.Point(101, 39);
             this.txtTokuisaki1.MaxLength = 10;
             this.txtTokuisaki1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisaki1.MoveNext = true;
@@ -254,7 +255,7 @@
             this.lblStaff_Kana.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff_Kana.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff_Kana.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff_Kana.Location = new System.Drawing.Point(45, 95);
+            this.lblStaff_Kana.Location = new System.Drawing.Point(23, 95);
             this.lblStaff_Kana.Name = "lblStaff_Kana";
             this.lblStaff_Kana.Size = new System.Drawing.Size(80, 19);
             this.lblStaff_Kana.TabIndex = 0;
@@ -267,7 +268,7 @@
             this.lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaffName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaffName.Location = new System.Drawing.Point(45, 68);
+            this.lblStaffName.Location = new System.Drawing.Point(23, 68);
             this.lblStaffName.Name = "lblStaffName";
             this.lblStaffName.Size = new System.Drawing.Size(80, 19);
             this.lblStaffName.TabIndex = 0;
@@ -280,7 +281,7 @@
             this.lblDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDisplay.Location = new System.Drawing.Point(45, 9);
+            this.lblDisplay.Location = new System.Drawing.Point(23, 9);
             this.lblDisplay.Name = "lblDisplay";
             this.lblDisplay.Size = new System.Drawing.Size(80, 19);
             this.lblDisplay.TabIndex = 0;
@@ -293,7 +294,7 @@
             this.lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff.Location = new System.Drawing.Point(45, 39);
+            this.lblStaff.Location = new System.Drawing.Point(23, 39);
             this.lblStaff.Name = "lblStaff";
             this.lblStaff.Size = new System.Drawing.Size(80, 19);
             this.lblStaff.TabIndex = 0;
@@ -312,9 +313,17 @@
             this.colTokuisakiName,
             this.colChangeDate,
             this.colTokuisakiRyakuName});
-            this.gvTokuisaki.Location = new System.Drawing.Point(45, 147);
+            this.gvTokuisaki.Location = new System.Drawing.Point(26, 147);
             this.gvTokuisaki.Name = "gvTokuisaki";
-            this.gvTokuisaki.Size = new System.Drawing.Size(768, 302);
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvTokuisaki.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gvTokuisaki.Size = new System.Drawing.Size(660, 302);
             this.gvTokuisaki.TabIndex = 5;
             this.gvTokuisaki.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvTokuisaki_CellMouseDoubleClick);
             // 
@@ -330,7 +339,7 @@
             this.colTokuisakiName.DataPropertyName = "TokuisakiName";
             this.colTokuisakiName.HeaderText = "得意先名\t\t\t\t\t\t";
             this.colTokuisakiName.Name = "colTokuisakiName";
-            this.colTokuisakiName.Width = 400;
+            this.colTokuisakiName.Width = 350;
             // 
             // colChangeDate
             // 
@@ -341,7 +350,7 @@
             this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
-            this.colChangeDate.Width = 200;
+            this.colChangeDate.Width = 150;
             // 
             // colTokuisakiRyakuName
             // 
@@ -349,6 +358,7 @@
             this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
             this.colTokuisakiRyakuName.HeaderText = "TokuisakiRyakuName";
             this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
+            this.colTokuisakiRyakuName.Visible = false;
             // 
             // TokuisakiSearch
             // 

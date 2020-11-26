@@ -361,7 +361,7 @@
             this.Controls.Add(this.PanelTitle);
             this.Name = "StaffSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StaffSearch";
+            this.Text = "スタッフ検索";
             this.Load += new System.EventHandler(this.StaffSearch_Load);
             this.Controls.SetChildIndex(this.PanelTitle, 0);
             this.Controls.SetChildIndex(this.gvStaff, 0);
