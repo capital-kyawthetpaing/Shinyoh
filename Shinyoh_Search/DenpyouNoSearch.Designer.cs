@@ -67,7 +67,7 @@
             this.btnSearch.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.Location = new System.Drawing.Point(816, 60);
+            this.btnSearch.Location = new System.Drawing.Point(817, 60);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(106, 23);
             this.btnSearch.TabIndex = 5;
@@ -92,11 +92,11 @@
             this.txtDate.MoveNext = true;
             this.txtDate.Name = "txtDate";
             this.txtDate.NextControl = null;
-            this.txtDate.NextControlName = null;
+            this.txtDate.NextControlName = "btnSearch";
             this.txtDate.SearchType = Entity.SearchType.ScType.None;
             this.txtDate.Size = new System.Drawing.Size(107, 20);
             this.txtDate.TabIndex = 4;
-            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lbl2
             // 
@@ -118,18 +118,19 @@
             this.cbDivision2.FormattingEnabled = true;
             this.cbDivision2.IsDatatableOccurs = null;
             this.cbDivision2.IsErrorOccurs = false;
-            this.cbDivision2.Location = new System.Drawing.Point(270, 24);
+            this.cbDivision2.Location = new System.Drawing.Point(314, 24);
             this.cbDivision2.MinimumSize = new System.Drawing.Size(100, 0);
             this.cbDivision2.MoveNext = true;
             this.cbDivision2.Name = "cbDivision2";
             this.cbDivision2.NextControl = null;
-            this.cbDivision2.NextControlName = null;
+            this.cbDivision2.NextControlName = "txtDate";
             this.cbDivision2.Size = new System.Drawing.Size(121, 20);
             this.cbDivision2.TabIndex = 2;
+            this.cbDivision2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbDivision2_KeyDown);
             // 
             // lblSign
             // 
-            this.lblSign.Location = new System.Drawing.Point(233, 24);
+            this.lblSign.Location = new System.Drawing.Point(256, 24);
             this.lblSign.Name = "lblSign";
             this.lblSign.Size = new System.Drawing.Size(35, 20);
             this.lblSign.TabIndex = 1;
@@ -184,27 +185,28 @@
             this.gvDenpyouNo.MultiSelect = false;
             this.gvDenpyouNo.Name = "gvDenpyouNo";
             this.gvDenpyouNo.ReadOnly = true;
-            this.gvDenpyouNo.Size = new System.Drawing.Size(493, 357);
+            this.gvDenpyouNo.Size = new System.Drawing.Size(394, 357);
             this.gvDenpyouNo.TabIndex = 3;
             this.gvDenpyouNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvDenpyouNo_CellMouseDoubleClick);
             // 
             // RenbanKBN1
             // 
-            this.RenbanKBN1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.RenbanKBN1.DataPropertyName = "RenbanKBN";
-            this.RenbanKBN1.FillWeight = 120F;
+            this.RenbanKBN1.FillWeight = 74.00188F;
             this.RenbanKBN1.HeaderText = "連番区分";
             this.RenbanKBN1.Name = "RenbanKBN1";
             this.RenbanKBN1.ReadOnly = true;
+            this.RenbanKBN1.Width = 120;
             // 
             // SEQNO1
             // 
-            this.SEQNO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SEQNO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.SEQNO1.DataPropertyName = "SEQNO";
-            this.SEQNO1.FillWeight = 60F;
+            this.SEQNO1.FillWeight = 144.3299F;
             this.SEQNO1.HeaderText = "SEQNO";
             this.SEQNO1.Name = "SEQNO1";
             this.SEQNO1.ReadOnly = true;
+            this.SEQNO1.Width = 60;
             // 
             // Prefix1
             // 
@@ -212,11 +214,12 @@
             this.Prefix1.HeaderText = "接頭値";
             this.Prefix1.Name = "Prefix1";
             this.Prefix1.ReadOnly = true;
+            this.Prefix1.Width = 70;
             // 
             // Counter1
             // 
-            this.Counter1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Counter1.DataPropertyName = "Counter";
+            this.Counter1.FillWeight = 61.66823F;
             this.Counter1.HeaderText = "カウンタ";
             this.Counter1.Name = "Counter1";
             this.Counter1.ReadOnly = true;

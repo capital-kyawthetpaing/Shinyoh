@@ -66,7 +66,6 @@ namespace Shinyoh_Search
             //    DataGridViewRow row = gvrow;
             if (gvMultiporpose.CurrentRow != null && gvMultiporpose.CurrentRow.Index >= 0)
             {
-                //Id = row.Cells["colID"].Value.ToString();
                 Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
                 Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
                 this.Close();
