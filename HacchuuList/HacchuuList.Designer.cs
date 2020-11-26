@@ -342,7 +342,7 @@
             this.txtJuchuuNO2.SearchType = Entity.SearchType.ScType.None;
             this.txtJuchuuNO2.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO2.TabIndex = 16;
-            this.txtJuchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtJuchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtJuchuuNO1
             // 
@@ -365,7 +365,7 @@
             this.txtJuchuuNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtJuchuuNO1.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO1.TabIndex = 15;
-            this.txtJuchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtJuchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblJuchuuNO
             // 
@@ -515,7 +515,7 @@
             this.txtYear.SearchType = Entity.SearchType.ScType.None;
             this.txtYear.Size = new System.Drawing.Size(50, 19);
             this.txtYear.TabIndex = 10;
-            this.txtYear.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtYear.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // sLabel8
             // 
@@ -703,7 +703,7 @@
             // rdo_Juc
             // 
             this.rdo_Juc.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Juc.Location = new System.Drawing.Point(197, 18);
+            this.rdo_Juc.Location = new System.Drawing.Point(202, 18);
             this.rdo_Juc.MoveNext = true;
             this.rdo_Juc.Name = "rdo_Juc";
             this.rdo_Juc.NextControl = null;
@@ -718,7 +718,7 @@
             // 
             this.rdo_Hac.Checked = true;
             this.rdo_Hac.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Hac.Location = new System.Drawing.Point(41, 19);
+            this.rdo_Hac.Location = new System.Drawing.Point(46, 19);
             this.rdo_Hac.MoveNext = true;
             this.rdo_Hac.Name = "rdo_Hac";
             this.rdo_Hac.NextControl = null;

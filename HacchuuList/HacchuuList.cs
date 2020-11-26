@@ -52,7 +52,7 @@ namespace HacchuuList
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", false);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", false);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
+            SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
@@ -66,6 +66,8 @@ namespace HacchuuList
 
             txtStaffCD.lblName = lblStaff_Name;
             Disable_Method();
+
+            txtStaffCD.ChangeDate = txtTempDate;
         }
         private void Date_Setting()
         {
@@ -106,6 +108,8 @@ namespace HacchuuList
                 rdo_Hac.Checked = true;
                 txtHacchuuDate1.Focus();
                 Date_Setting();
+                lblStaff_Name.Text = "";
+                lblBrand_Name.Text = "";
             }
             if (tagID == "10")
             {
@@ -118,18 +122,18 @@ namespace HacchuuList
                     dt.Columns["JuchuuNO"].ColumnName = "受注番号";
                     dt.Columns["HacchuuDate"].ColumnName = "受発注日";
                     dt.Columns["StaffName"].ColumnName = "担当者	";
-                    dt.Columns["TokuisakiCD"].ColumnName = "得意先";
+                    dt.Columns["TokuisakiCD"].ColumnName = "得意先コード";
                     dt.Columns["TokuisakiRyakuName"].ColumnName = "得意先名";
-                    dt.Columns["KouritenCD"].ColumnName = "小売店";
-                    dt.Columns["KouritenRyakuName"].ColumnName = "小売店名";
+                    dt.Columns["KouritenCD"].ColumnName = "小売店コード";
+                    dt.Columns["KouritenRyakuName"].ColumnName = "小売店";
                     dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注番号";
                     dt.Columns["SenpouBusho"].ColumnName = "先方部署	";
                     dt.Columns["KibouNouki"].ColumnName = "希望納期";
                     dt.Columns["HacchuuDenpyouTekiyou"].ColumnName = "伝票摘要";
                     dt.Columns["Char1"].ColumnName = "ブランド名";
                     dt.Columns["Exhibition"].ColumnName = "展示会";
-                    dt.Columns["JANCD"].ColumnName = "JANCD";
-                    dt.Columns["ShouhinCD"].ColumnName = "商品";
+                    dt.Columns["JANCD"].ColumnName = "JANコード";
+                    dt.Columns["ShouhinCD"].ColumnName = "商品番";
                     dt.Columns["ShouhinName"].ColumnName = "商品名";
                     dt.Columns["ColorRyakuName"].ColumnName = "カラー";
                     dt.Columns["SizeNO"].ColumnName = "サイズ";
@@ -139,6 +143,7 @@ namespace HacchuuList
                     dt.Columns["HacchuuMeisaiTekiyou"].ColumnName = "明細摘要";
                     dt.Columns["SiiresakiCD"].ColumnName = "発注先";
                     dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
+                    dt.Columns.Remove("発注先名");                              //not include in Excel
                     dt.Columns["SoukoName"].ColumnName = "倉庫";
 
                     DataRow row = dt.NewRow();//Datatable Record is NUll. Therefore create temp new row.

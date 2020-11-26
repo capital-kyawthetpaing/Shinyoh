@@ -30,6 +30,12 @@ namespace Shinyoh_Search
             gvArrivalNo.UseRowNo(true);
             GridViewBind();
             txtDateFrom.Focus();
+            txtDateFrom.E103Check(true);
+            txtDateTo.E103Check(true);
+            txtExpectedDateFrom.E103Check(true);
+            txtExpectedDateTo.E103Check(true);
+            txtExpectedDateTo.E106Check(true, txtExpectedDateFrom, txtExpectedDateTo);
+            sbStaff.E101Check(true, "staff", null, null, null);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -78,15 +84,6 @@ namespace Shinyoh_Search
         private void gvArrivalNo_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvArrivalNo.Rows[e.RowIndex]);
-        }
-        private void ErrorCheck()
-        {
-            txtDateFrom.E103Check(true);
-            txtDateTo.E103Check(true);
-            txtExpectedDateFrom.E103Check(true);
-            txtExpectedDateTo.E103Check(true);
-            txtExpectedDateTo.E106Check(true, txtExpectedDateFrom, txtExpectedDateTo);
-            sbStaff.E101Check(true, "staff", null, null, null);
         }
         private void txtDateTo_KeyDown(object sender, KeyEventArgs e)
         {
