@@ -18,7 +18,21 @@ namespace JuchuuNyuuryoku
         {
             InitializeComponent();
         }
-
+        public void Datatable_Access(DataTable dt)
+        {
+            txtShort_Name.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
+            txtLong_Name.Text = dt.Rows[0]["KouritenName"].ToString();
+            txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
+            txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
+            txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+            txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+            txtPhone1_1.Text = dt.Rows[0]["Tel11"].ToString();
+            txtPhone1_2.Text = dt.Rows[0]["Tel12"].ToString();
+            txtPhone1_3.Text = dt.Rows[0]["Tel13"].ToString();
+            txtPhone2_1.Text = dt.Rows[0]["Tel21"].ToString();
+            txtPhone2_2.Text = dt.Rows[0]["Tel22"].ToString();
+            txtPhone2_3.Text = dt.Rows[0]["Tel23"].ToString();
+        }
         private void KouritenDetail_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);

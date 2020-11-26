@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.sLabel1 = new Shinyoh_Controls.SLabel();
-            this.sbSupplier = new Shinyoh_Search.SearchBox();
             this.sLabel2 = new Shinyoh_Controls.SLabel();
+            this.sbSupplier = new Shinyoh_Search.SearchBox();
+            this.sLabel1 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.sLabel5 = new Shinyoh_Controls.SLabel();
@@ -39,18 +39,18 @@
             this.sLabel7 = new Shinyoh_Controls.SLabel();
             this.sLabel8 = new Shinyoh_Controls.SLabel();
             this.sLabel9 = new Shinyoh_Controls.SLabel();
-            this.txtSupplierabbreviation = new Shinyoh_Controls.STextBox();
+            this.txtSupplierCD = new Shinyoh_Controls.STextBox();
             this.txtSupplierName = new Shinyoh_Controls.STextBox();
-            this.txtCode1 = new Shinyoh_Controls.STextBox();
-            this.txtCode2 = new Shinyoh_Controls.STextBox();
+            this.txtYubin1 = new Shinyoh_Controls.STextBox();
+            this.txtYubin2 = new Shinyoh_Controls.STextBox();
             this.txtAddress1 = new Shinyoh_Controls.STextBox();
             this.txtAddress2 = new Shinyoh_Controls.STextBox();
-            this.txtPhNo11 = new Shinyoh_Controls.STextBox();
-            this.txtPhNo12 = new Shinyoh_Controls.STextBox();
-            this.txtPhNo13 = new Shinyoh_Controls.STextBox();
-            this.txtPhNo21 = new Shinyoh_Controls.STextBox();
-            this.txtPhNo22 = new Shinyoh_Controls.STextBox();
-            this.txtPhNo23 = new Shinyoh_Controls.STextBox();
+            this.txtPhNo1 = new Shinyoh_Controls.STextBox();
+            this.txtPhNo2 = new Shinyoh_Controls.STextBox();
+            this.txtPhNo3 = new Shinyoh_Controls.STextBox();
+            this.txtPhNo4 = new Shinyoh_Controls.STextBox();
+            this.txtPhNo5 = new Shinyoh_Controls.STextBox();
+            this.txtPhNo6 = new Shinyoh_Controls.STextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,18 +70,17 @@
             this.panel1.Size = new System.Drawing.Size(935, 70);
             this.panel1.TabIndex = 2;
             // 
-            // sLabel1
+            // sLabel2
             // 
-            this.sLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel1.Location = new System.Drawing.Point(33, 28);
-            this.sLabel1.Name = "sLabel1";
-            this.sLabel1.Size = new System.Drawing.Size(100, 19);
-            this.sLabel1.TabIndex = 0;
-            this.sLabel1.Text = "仕入先";
-            this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sLabel2.BackColor = System.Drawing.Color.White;
+            this.sLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel2.Location = new System.Drawing.Point(232, 28);
+            this.sLabel2.Name = "sLabel2";
+            this.sLabel2.Size = new System.Drawing.Size(100, 19);
+            this.sLabel2.TabIndex = 2;
+            this.sLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sbSupplier
             // 
@@ -102,23 +101,24 @@
             this.sbSupplier.MoveNext = true;
             this.sbSupplier.Name = "sbSupplier";
             this.sbSupplier.NextControl = null;
-            this.sbSupplier.NextControlName = "txtSupplierabbreviation";
+            this.sbSupplier.NextControlName = "txtSupplierCD";
             this.sbSupplier.SearchType = Entity.SearchType.ScType.None;
             this.sbSupplier.Size = new System.Drawing.Size(100, 19);
             this.sbSupplier.TabIndex = 1;
             this.sbSupplier.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // sLabel2
+            // sLabel1
             // 
-            this.sLabel2.BackColor = System.Drawing.Color.White;
-            this.sLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel2.Location = new System.Drawing.Point(232, 28);
-            this.sLabel2.Name = "sLabel2";
-            this.sLabel2.Size = new System.Drawing.Size(100, 19);
-            this.sLabel2.TabIndex = 2;
-            this.sLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.sLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel1.Location = new System.Drawing.Point(33, 28);
+            this.sLabel1.Name = "sLabel1";
+            this.sLabel1.Size = new System.Drawing.Size(100, 19);
+            this.sLabel1.TabIndex = 0;
+            this.sLabel1.Text = "仕入先";
+            this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sLabel3
             // 
@@ -211,27 +211,27 @@
             this.sLabel9.Text = "電話番号②";
             this.sLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtSupplierabbreviation
+            // txtSupplierCD
             // 
-            this.txtSupplierabbreviation.AllowMinus = false;
-            this.txtSupplierabbreviation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSupplierabbreviation.DecimalPlace = 0;
-            this.txtSupplierabbreviation.DepandOnMode = true;
-            this.txtSupplierabbreviation.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtSupplierabbreviation.IntegerPart = 0;
-            this.txtSupplierabbreviation.IsDatatableOccurs = null;
-            this.txtSupplierabbreviation.IsErrorOccurs = false;
-            this.txtSupplierabbreviation.IsRequire = false;
-            this.txtSupplierabbreviation.Location = new System.Drawing.Point(136, 89);
-            this.txtSupplierabbreviation.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtSupplierabbreviation.MoveNext = true;
-            this.txtSupplierabbreviation.Name = "txtSupplierabbreviation";
-            this.txtSupplierabbreviation.NextControl = null;
-            this.txtSupplierabbreviation.NextControlName = "txtSupplierName";
-            this.txtSupplierabbreviation.SearchType = Entity.SearchType.ScType.None;
-            this.txtSupplierabbreviation.Size = new System.Drawing.Size(250, 19);
-            this.txtSupplierabbreviation.TabIndex = 10;
-            this.txtSupplierabbreviation.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSupplierCD.AllowMinus = false;
+            this.txtSupplierCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSupplierCD.DecimalPlace = 0;
+            this.txtSupplierCD.DepandOnMode = true;
+            this.txtSupplierCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSupplierCD.IntegerPart = 0;
+            this.txtSupplierCD.IsDatatableOccurs = null;
+            this.txtSupplierCD.IsErrorOccurs = false;
+            this.txtSupplierCD.IsRequire = false;
+            this.txtSupplierCD.Location = new System.Drawing.Point(136, 89);
+            this.txtSupplierCD.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSupplierCD.MoveNext = true;
+            this.txtSupplierCD.Name = "txtSupplierCD";
+            this.txtSupplierCD.NextControl = null;
+            this.txtSupplierCD.NextControlName = "txtSupplierName";
+            this.txtSupplierCD.SearchType = Entity.SearchType.ScType.None;
+            this.txtSupplierCD.Size = new System.Drawing.Size(250, 19);
+            this.txtSupplierCD.TabIndex = 10;
+            this.txtSupplierCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtSupplierName
             // 
@@ -249,55 +249,56 @@
             this.txtSupplierName.MoveNext = true;
             this.txtSupplierName.Name = "txtSupplierName";
             this.txtSupplierName.NextControl = null;
-            this.txtSupplierName.NextControlName = "txtCode1";
+            this.txtSupplierName.NextControlName = "txtYubin1";
             this.txtSupplierName.SearchType = Entity.SearchType.ScType.None;
             this.txtSupplierName.Size = new System.Drawing.Size(400, 19);
             this.txtSupplierName.TabIndex = 11;
             this.txtSupplierName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtCode1
+            // txtYubin1
             // 
-            this.txtCode1.AllowMinus = false;
-            this.txtCode1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCode1.DecimalPlace = 0;
-            this.txtCode1.DepandOnMode = true;
-            this.txtCode1.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCode1.IntegerPart = 0;
-            this.txtCode1.IsDatatableOccurs = null;
-            this.txtCode1.IsErrorOccurs = false;
-            this.txtCode1.IsRequire = false;
-            this.txtCode1.Location = new System.Drawing.Point(137, 159);
-            this.txtCode1.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtCode1.MoveNext = true;
-            this.txtCode1.Name = "txtCode1";
-            this.txtCode1.NextControl = null;
-            this.txtCode1.NextControlName = "txtCode2";
-            this.txtCode1.SearchType = Entity.SearchType.ScType.None;
-            this.txtCode1.Size = new System.Drawing.Size(100, 19);
-            this.txtCode1.TabIndex = 12;
-            this.txtCode1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtYubin1.AllowMinus = false;
+            this.txtYubin1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtYubin1.DecimalPlace = 0;
+            this.txtYubin1.DepandOnMode = true;
+            this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtYubin1.IntegerPart = 0;
+            this.txtYubin1.IsDatatableOccurs = null;
+            this.txtYubin1.IsErrorOccurs = false;
+            this.txtYubin1.IsRequire = false;
+            this.txtYubin1.Location = new System.Drawing.Point(137, 159);
+            this.txtYubin1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtYubin1.MoveNext = true;
+            this.txtYubin1.Name = "txtYubin1";
+            this.txtYubin1.NextControl = null;
+            this.txtYubin1.NextControlName = "txtYubin2";
+            this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
+            this.txtYubin1.Size = new System.Drawing.Size(100, 19);
+            this.txtYubin1.TabIndex = 12;
+            this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtCode2
+            // txtYubin2
             // 
-            this.txtCode2.AllowMinus = false;
-            this.txtCode2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCode2.DecimalPlace = 0;
-            this.txtCode2.DepandOnMode = true;
-            this.txtCode2.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCode2.IntegerPart = 0;
-            this.txtCode2.IsDatatableOccurs = null;
-            this.txtCode2.IsErrorOccurs = false;
-            this.txtCode2.IsRequire = false;
-            this.txtCode2.Location = new System.Drawing.Point(268, 160);
-            this.txtCode2.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtCode2.MoveNext = true;
-            this.txtCode2.Name = "txtCode2";
-            this.txtCode2.NextControl = null;
-            this.txtCode2.NextControlName = "txtAddress1";
-            this.txtCode2.SearchType = Entity.SearchType.ScType.None;
-            this.txtCode2.Size = new System.Drawing.Size(100, 19);
-            this.txtCode2.TabIndex = 13;
-            this.txtCode2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtYubin2.AllowMinus = false;
+            this.txtYubin2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtYubin2.DecimalPlace = 0;
+            this.txtYubin2.DepandOnMode = true;
+            this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtYubin2.IntegerPart = 0;
+            this.txtYubin2.IsDatatableOccurs = null;
+            this.txtYubin2.IsErrorOccurs = false;
+            this.txtYubin2.IsRequire = false;
+            this.txtYubin2.Location = new System.Drawing.Point(268, 160);
+            this.txtYubin2.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtYubin2.MoveNext = true;
+            this.txtYubin2.Name = "txtYubin2";
+            this.txtYubin2.NextControl = null;
+            this.txtYubin2.NextControlName = "txtAddress1";
+            this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
+            this.txtYubin2.Size = new System.Drawing.Size(100, 19);
+            this.txtYubin2.TabIndex = 13;
+            this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.YuubinNO2_KeyDown);
             // 
             // txtAddress1
             // 
@@ -337,143 +338,143 @@
             this.txtAddress2.MoveNext = true;
             this.txtAddress2.Name = "txtAddress2";
             this.txtAddress2.NextControl = null;
-            this.txtAddress2.NextControlName = "txtPhNo11";
+            this.txtAddress2.NextControlName = "txtPhNo1";
             this.txtAddress2.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress2.Size = new System.Drawing.Size(400, 19);
             this.txtAddress2.TabIndex = 15;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtPhNo11
+            // txtPhNo1
             // 
-            this.txtPhNo11.AllowMinus = false;
-            this.txtPhNo11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPhNo11.DecimalPlace = 0;
-            this.txtPhNo11.DepandOnMode = true;
-            this.txtPhNo11.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtPhNo11.IntegerPart = 0;
-            this.txtPhNo11.IsDatatableOccurs = null;
-            this.txtPhNo11.IsErrorOccurs = false;
-            this.txtPhNo11.IsRequire = false;
-            this.txtPhNo11.Location = new System.Drawing.Point(140, 276);
-            this.txtPhNo11.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtPhNo11.MoveNext = true;
-            this.txtPhNo11.Name = "txtPhNo11";
-            this.txtPhNo11.NextControl = null;
-            this.txtPhNo11.NextControlName = "txtPhNo12";
-            this.txtPhNo11.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhNo11.Size = new System.Drawing.Size(100, 19);
-            this.txtPhNo11.TabIndex = 16;
-            this.txtPhNo11.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPhNo1.AllowMinus = false;
+            this.txtPhNo1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhNo1.DecimalPlace = 0;
+            this.txtPhNo1.DepandOnMode = true;
+            this.txtPhNo1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtPhNo1.IntegerPart = 0;
+            this.txtPhNo1.IsDatatableOccurs = null;
+            this.txtPhNo1.IsErrorOccurs = false;
+            this.txtPhNo1.IsRequire = false;
+            this.txtPhNo1.Location = new System.Drawing.Point(140, 276);
+            this.txtPhNo1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtPhNo1.MoveNext = true;
+            this.txtPhNo1.Name = "txtPhNo1";
+            this.txtPhNo1.NextControl = null;
+            this.txtPhNo1.NextControlName = "txtPhNo2";
+            this.txtPhNo1.SearchType = Entity.SearchType.ScType.None;
+            this.txtPhNo1.Size = new System.Drawing.Size(100, 19);
+            this.txtPhNo1.TabIndex = 16;
+            this.txtPhNo1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtPhNo12
+            // txtPhNo2
             // 
-            this.txtPhNo12.AllowMinus = false;
-            this.txtPhNo12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPhNo12.DecimalPlace = 0;
-            this.txtPhNo12.DepandOnMode = true;
-            this.txtPhNo12.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtPhNo12.IntegerPart = 0;
-            this.txtPhNo12.IsDatatableOccurs = null;
-            this.txtPhNo12.IsErrorOccurs = false;
-            this.txtPhNo12.IsRequire = false;
-            this.txtPhNo12.Location = new System.Drawing.Point(274, 276);
-            this.txtPhNo12.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtPhNo12.MoveNext = true;
-            this.txtPhNo12.Name = "txtPhNo12";
-            this.txtPhNo12.NextControl = null;
-            this.txtPhNo12.NextControlName = "txtPhNo13";
-            this.txtPhNo12.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhNo12.Size = new System.Drawing.Size(100, 19);
-            this.txtPhNo12.TabIndex = 17;
-            this.txtPhNo12.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPhNo2.AllowMinus = false;
+            this.txtPhNo2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhNo2.DecimalPlace = 0;
+            this.txtPhNo2.DepandOnMode = true;
+            this.txtPhNo2.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtPhNo2.IntegerPart = 0;
+            this.txtPhNo2.IsDatatableOccurs = null;
+            this.txtPhNo2.IsErrorOccurs = false;
+            this.txtPhNo2.IsRequire = false;
+            this.txtPhNo2.Location = new System.Drawing.Point(274, 276);
+            this.txtPhNo2.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtPhNo2.MoveNext = true;
+            this.txtPhNo2.Name = "txtPhNo2";
+            this.txtPhNo2.NextControl = null;
+            this.txtPhNo2.NextControlName = "txtPhNo3";
+            this.txtPhNo2.SearchType = Entity.SearchType.ScType.None;
+            this.txtPhNo2.Size = new System.Drawing.Size(100, 19);
+            this.txtPhNo2.TabIndex = 17;
+            this.txtPhNo2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtPhNo13
+            // txtPhNo3
             // 
-            this.txtPhNo13.AllowMinus = false;
-            this.txtPhNo13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPhNo13.DecimalPlace = 0;
-            this.txtPhNo13.DepandOnMode = true;
-            this.txtPhNo13.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtPhNo13.IntegerPart = 0;
-            this.txtPhNo13.IsDatatableOccurs = null;
-            this.txtPhNo13.IsErrorOccurs = false;
-            this.txtPhNo13.IsRequire = false;
-            this.txtPhNo13.Location = new System.Drawing.Point(410, 276);
-            this.txtPhNo13.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtPhNo13.MoveNext = true;
-            this.txtPhNo13.Name = "txtPhNo13";
-            this.txtPhNo13.NextControl = null;
-            this.txtPhNo13.NextControlName = "txtPhNo21";
-            this.txtPhNo13.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhNo13.Size = new System.Drawing.Size(100, 19);
-            this.txtPhNo13.TabIndex = 18;
-            this.txtPhNo13.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPhNo3.AllowMinus = false;
+            this.txtPhNo3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhNo3.DecimalPlace = 0;
+            this.txtPhNo3.DepandOnMode = true;
+            this.txtPhNo3.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtPhNo3.IntegerPart = 0;
+            this.txtPhNo3.IsDatatableOccurs = null;
+            this.txtPhNo3.IsErrorOccurs = false;
+            this.txtPhNo3.IsRequire = false;
+            this.txtPhNo3.Location = new System.Drawing.Point(410, 276);
+            this.txtPhNo3.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtPhNo3.MoveNext = true;
+            this.txtPhNo3.Name = "txtPhNo3";
+            this.txtPhNo3.NextControl = null;
+            this.txtPhNo3.NextControlName = "txtPhNo4";
+            this.txtPhNo3.SearchType = Entity.SearchType.ScType.None;
+            this.txtPhNo3.Size = new System.Drawing.Size(100, 19);
+            this.txtPhNo3.TabIndex = 18;
+            this.txtPhNo3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtPhNo21
+            // txtPhNo4
             // 
-            this.txtPhNo21.AllowMinus = false;
-            this.txtPhNo21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPhNo21.DecimalPlace = 0;
-            this.txtPhNo21.DepandOnMode = true;
-            this.txtPhNo21.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtPhNo21.IntegerPart = 0;
-            this.txtPhNo21.IsDatatableOccurs = null;
-            this.txtPhNo21.IsErrorOccurs = false;
-            this.txtPhNo21.IsRequire = false;
-            this.txtPhNo21.Location = new System.Drawing.Point(141, 318);
-            this.txtPhNo21.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtPhNo21.MoveNext = true;
-            this.txtPhNo21.Name = "txtPhNo21";
-            this.txtPhNo21.NextControl = null;
-            this.txtPhNo21.NextControlName = "txtPhNo22";
-            this.txtPhNo21.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhNo21.Size = new System.Drawing.Size(100, 19);
-            this.txtPhNo21.TabIndex = 19;
-            this.txtPhNo21.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPhNo4.AllowMinus = false;
+            this.txtPhNo4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhNo4.DecimalPlace = 0;
+            this.txtPhNo4.DepandOnMode = true;
+            this.txtPhNo4.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtPhNo4.IntegerPart = 0;
+            this.txtPhNo4.IsDatatableOccurs = null;
+            this.txtPhNo4.IsErrorOccurs = false;
+            this.txtPhNo4.IsRequire = false;
+            this.txtPhNo4.Location = new System.Drawing.Point(141, 318);
+            this.txtPhNo4.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtPhNo4.MoveNext = true;
+            this.txtPhNo4.Name = "txtPhNo4";
+            this.txtPhNo4.NextControl = null;
+            this.txtPhNo4.NextControlName = "txtPhNo5";
+            this.txtPhNo4.SearchType = Entity.SearchType.ScType.None;
+            this.txtPhNo4.Size = new System.Drawing.Size(100, 19);
+            this.txtPhNo4.TabIndex = 19;
+            this.txtPhNo4.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtPhNo22
+            // txtPhNo5
             // 
-            this.txtPhNo22.AllowMinus = false;
-            this.txtPhNo22.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPhNo22.DecimalPlace = 0;
-            this.txtPhNo22.DepandOnMode = true;
-            this.txtPhNo22.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtPhNo22.IntegerPart = 0;
-            this.txtPhNo22.IsDatatableOccurs = null;
-            this.txtPhNo22.IsErrorOccurs = false;
-            this.txtPhNo22.IsRequire = false;
-            this.txtPhNo22.Location = new System.Drawing.Point(274, 319);
-            this.txtPhNo22.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtPhNo22.MoveNext = true;
-            this.txtPhNo22.Name = "txtPhNo22";
-            this.txtPhNo22.NextControl = null;
-            this.txtPhNo22.NextControlName = "txtPhNo23";
-            this.txtPhNo22.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhNo22.Size = new System.Drawing.Size(100, 19);
-            this.txtPhNo22.TabIndex = 20;
-            this.txtPhNo22.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPhNo5.AllowMinus = false;
+            this.txtPhNo5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhNo5.DecimalPlace = 0;
+            this.txtPhNo5.DepandOnMode = true;
+            this.txtPhNo5.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtPhNo5.IntegerPart = 0;
+            this.txtPhNo5.IsDatatableOccurs = null;
+            this.txtPhNo5.IsErrorOccurs = false;
+            this.txtPhNo5.IsRequire = false;
+            this.txtPhNo5.Location = new System.Drawing.Point(274, 319);
+            this.txtPhNo5.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtPhNo5.MoveNext = true;
+            this.txtPhNo5.Name = "txtPhNo5";
+            this.txtPhNo5.NextControl = null;
+            this.txtPhNo5.NextControlName = "txtPhNo6";
+            this.txtPhNo5.SearchType = Entity.SearchType.ScType.None;
+            this.txtPhNo5.Size = new System.Drawing.Size(100, 19);
+            this.txtPhNo5.TabIndex = 20;
+            this.txtPhNo5.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtPhNo23
+            // txtPhNo6
             // 
-            this.txtPhNo23.AllowMinus = false;
-            this.txtPhNo23.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPhNo23.DecimalPlace = 0;
-            this.txtPhNo23.DepandOnMode = true;
-            this.txtPhNo23.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtPhNo23.IntegerPart = 0;
-            this.txtPhNo23.IsDatatableOccurs = null;
-            this.txtPhNo23.IsErrorOccurs = false;
-            this.txtPhNo23.IsRequire = false;
-            this.txtPhNo23.Location = new System.Drawing.Point(411, 320);
-            this.txtPhNo23.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtPhNo23.MoveNext = true;
-            this.txtPhNo23.Name = "txtPhNo23";
-            this.txtPhNo23.NextControl = null;
-            this.txtPhNo23.NextControlName = null;
-            this.txtPhNo23.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhNo23.Size = new System.Drawing.Size(100, 19);
-            this.txtPhNo23.TabIndex = 21;
-            this.txtPhNo23.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPhNo6.AllowMinus = false;
+            this.txtPhNo6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhNo6.DecimalPlace = 0;
+            this.txtPhNo6.DepandOnMode = true;
+            this.txtPhNo6.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtPhNo6.IntegerPart = 0;
+            this.txtPhNo6.IsDatatableOccurs = null;
+            this.txtPhNo6.IsErrorOccurs = false;
+            this.txtPhNo6.IsRequire = false;
+            this.txtPhNo6.Location = new System.Drawing.Point(411, 320);
+            this.txtPhNo6.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtPhNo6.MoveNext = true;
+            this.txtPhNo6.Name = "txtPhNo6";
+            this.txtPhNo6.NextControl = null;
+            this.txtPhNo6.NextControlName = null;
+            this.txtPhNo6.SearchType = Entity.SearchType.ScType.None;
+            this.txtPhNo6.Size = new System.Drawing.Size(100, 19);
+            this.txtPhNo6.TabIndex = 21;
+            this.txtPhNo6.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label1
             // 
@@ -530,18 +531,18 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtPhNo23);
-            this.Controls.Add(this.txtPhNo22);
-            this.Controls.Add(this.txtPhNo21);
-            this.Controls.Add(this.txtPhNo13);
-            this.Controls.Add(this.txtPhNo12);
-            this.Controls.Add(this.txtPhNo11);
+            this.Controls.Add(this.txtPhNo6);
+            this.Controls.Add(this.txtPhNo5);
+            this.Controls.Add(this.txtPhNo4);
+            this.Controls.Add(this.txtPhNo3);
+            this.Controls.Add(this.txtPhNo2);
+            this.Controls.Add(this.txtPhNo1);
             this.Controls.Add(this.txtAddress2);
             this.Controls.Add(this.txtAddress1);
-            this.Controls.Add(this.txtCode2);
-            this.Controls.Add(this.txtCode1);
+            this.Controls.Add(this.txtYubin2);
+            this.Controls.Add(this.txtYubin1);
             this.Controls.Add(this.txtSupplierName);
-            this.Controls.Add(this.txtSupplierabbreviation);
+            this.Controls.Add(this.txtSupplierCD);
             this.Controls.Add(this.sLabel9);
             this.Controls.Add(this.sLabel8);
             this.Controls.Add(this.sLabel7);
@@ -561,18 +562,18 @@
             this.Controls.SetChildIndex(this.sLabel7, 0);
             this.Controls.SetChildIndex(this.sLabel8, 0);
             this.Controls.SetChildIndex(this.sLabel9, 0);
-            this.Controls.SetChildIndex(this.txtSupplierabbreviation, 0);
+            this.Controls.SetChildIndex(this.txtSupplierCD, 0);
             this.Controls.SetChildIndex(this.txtSupplierName, 0);
-            this.Controls.SetChildIndex(this.txtCode1, 0);
-            this.Controls.SetChildIndex(this.txtCode2, 0);
+            this.Controls.SetChildIndex(this.txtYubin1, 0);
+            this.Controls.SetChildIndex(this.txtYubin2, 0);
             this.Controls.SetChildIndex(this.txtAddress1, 0);
             this.Controls.SetChildIndex(this.txtAddress2, 0);
-            this.Controls.SetChildIndex(this.txtPhNo11, 0);
-            this.Controls.SetChildIndex(this.txtPhNo12, 0);
-            this.Controls.SetChildIndex(this.txtPhNo13, 0);
-            this.Controls.SetChildIndex(this.txtPhNo21, 0);
-            this.Controls.SetChildIndex(this.txtPhNo22, 0);
-            this.Controls.SetChildIndex(this.txtPhNo23, 0);
+            this.Controls.SetChildIndex(this.txtPhNo1, 0);
+            this.Controls.SetChildIndex(this.txtPhNo2, 0);
+            this.Controls.SetChildIndex(this.txtPhNo3, 0);
+            this.Controls.SetChildIndex(this.txtPhNo4, 0);
+            this.Controls.SetChildIndex(this.txtPhNo5, 0);
+            this.Controls.SetChildIndex(this.txtPhNo6, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.label2, 0);
             this.Controls.SetChildIndex(this.label3, 0);
@@ -597,18 +598,18 @@
         private Shinyoh_Controls.SLabel sLabel7;
         private Shinyoh_Controls.SLabel sLabel8;
         private Shinyoh_Controls.SLabel sLabel9;
-        private Shinyoh_Controls.STextBox txtSupplierabbreviation;
+        private Shinyoh_Controls.STextBox txtSupplierCD;
         private Shinyoh_Controls.STextBox txtSupplierName;
-        private Shinyoh_Controls.STextBox txtCode1;
-        private Shinyoh_Controls.STextBox txtCode2;
+        private Shinyoh_Controls.STextBox txtYubin1;
+        private Shinyoh_Controls.STextBox txtYubin2;
         private Shinyoh_Controls.STextBox txtAddress1;
         private Shinyoh_Controls.STextBox txtAddress2;
-        private Shinyoh_Controls.STextBox txtPhNo11;
-        private Shinyoh_Controls.STextBox txtPhNo12;
-        private Shinyoh_Controls.STextBox txtPhNo13;
-        private Shinyoh_Controls.STextBox txtPhNo21;
-        private Shinyoh_Controls.STextBox txtPhNo22;
-        private Shinyoh_Controls.STextBox txtPhNo23;
+        private Shinyoh_Controls.STextBox txtPhNo1;
+        private Shinyoh_Controls.STextBox txtPhNo2;
+        private Shinyoh_Controls.STextBox txtPhNo3;
+        private Shinyoh_Controls.STextBox txtPhNo4;
+        private Shinyoh_Controls.STextBox txtPhNo5;
+        private Shinyoh_Controls.STextBox txtPhNo6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
