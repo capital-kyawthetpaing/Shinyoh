@@ -35,7 +35,7 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-            gvDenpyouNo.UseRowNo(false);
+            gvDenpyouNo.UseRowNo(true);
             BindDataGrid();
         }
 

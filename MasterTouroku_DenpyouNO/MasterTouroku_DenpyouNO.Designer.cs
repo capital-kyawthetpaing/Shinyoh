@@ -35,8 +35,8 @@
             this.lbl4 = new Shinyoh_Controls.SLabel();
             this.txtCounter = new Shinyoh_Controls.STextBox();
             this.PanelDetail = new System.Windows.Forms.Panel();
-            this.txtSEQNO = new Shinyoh_Search.SearchBox();
             this.txtPrefix = new Shinyoh_Controls.STextBox();
+            this.txtSEQNO = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -54,10 +54,12 @@
             this.PanelTitle.Controls.Add(this.lbl3);
             this.PanelTitle.Controls.Add(this.lbl2);
             this.PanelTitle.Controls.Add(this.lbl1);
+            this.PanelTitle.Location = new System.Drawing.Point(101, 0);
             // 
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.Location = new System.Drawing.Point(22, 8);
             this.cboMode.NextControlName = "cbDivision";
             // 
             // lbl1
@@ -121,7 +123,7 @@
             this.lbl4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lbl4.Location = new System.Drawing.Point(23, 11);
+            this.lbl4.Location = new System.Drawing.Point(27, 11);
             this.lbl4.Name = "lbl4";
             this.lbl4.Size = new System.Drawing.Size(100, 19);
             this.lbl4.TabIndex = 3;
@@ -139,7 +141,7 @@
             this.txtCounter.IsDatatableOccurs = null;
             this.txtCounter.IsErrorOccurs = false;
             this.txtCounter.IsRequire = false;
-            this.txtCounter.Location = new System.Drawing.Point(122, 11);
+            this.txtCounter.Location = new System.Drawing.Point(126, 11);
             this.txtCounter.MaxLength = 12;
             this.txtCounter.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCounter.MoveNext = true;
@@ -160,33 +162,6 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1485, 385);
             this.PanelDetail.TabIndex = 5;
-            // 
-            // txtSEQNO
-            // 
-            this.txtSEQNO.AllowMinus = false;
-            this.txtSEQNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSEQNO.ChangeDate = null;
-            this.txtSEQNO.Combo = null;
-            this.txtSEQNO.DecimalPlace = 0;
-            this.txtSEQNO.DepandOnMode = true;
-            this.txtSEQNO.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtSEQNO.IntegerPart = 0;
-            this.txtSEQNO.IsDatatableOccurs = null;
-            this.txtSEQNO.IsErrorOccurs = false;
-            this.txtSEQNO.IsRequire = false;
-            this.txtSEQNO.lblName = null;
-            this.txtSEQNO.Location = new System.Drawing.Point(124, 28);
-            this.txtSEQNO.MaxLength = 2;
-            this.txtSEQNO.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtSEQNO.MoveNext = true;
-            this.txtSEQNO.Name = "txtSEQNO";
-            this.txtSEQNO.NextControl = null;
-            this.txtSEQNO.NextControlName = "txtPrefix";
-            this.txtSEQNO.SearchType = Entity.SearchType.ScType.Denpyou;
-            this.txtSEQNO.Size = new System.Drawing.Size(100, 19);
-            this.txtSEQNO.TabIndex = 2;
-            this.txtSEQNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            this.txtSEQNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSEQNO_KeyDown);
             // 
             // txtPrefix
             // 
@@ -211,6 +186,33 @@
             this.txtPrefix.TabIndex = 3;
             this.txtPrefix.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtPrefix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrefix_KeyDown);
+            // 
+            // txtSEQNO
+            // 
+            this.txtSEQNO.AllowMinus = false;
+            this.txtSEQNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSEQNO.ChangeDate = null;
+            this.txtSEQNO.Combo = null;
+            this.txtSEQNO.DecimalPlace = 0;
+            this.txtSEQNO.DepandOnMode = true;
+            this.txtSEQNO.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSEQNO.IntegerPart = 0;
+            this.txtSEQNO.IsDatatableOccurs = null;
+            this.txtSEQNO.IsErrorOccurs = false;
+            this.txtSEQNO.IsRequire = false;
+            this.txtSEQNO.lblName = null;
+            this.txtSEQNO.Location = new System.Drawing.Point(124, 28);
+            this.txtSEQNO.MaxLength = 3;
+            this.txtSEQNO.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSEQNO.MoveNext = true;
+            this.txtSEQNO.Name = "txtSEQNO";
+            this.txtSEQNO.NextControl = null;
+            this.txtSEQNO.NextControlName = "txtPrefix";
+            this.txtSEQNO.SearchType = Entity.SearchType.ScType.Denpyou;
+            this.txtSEQNO.Size = new System.Drawing.Size(100, 19);
+            this.txtSEQNO.TabIndex = 2;
+            this.txtSEQNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtSEQNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSEQNO_KeyDown);
             // 
             // MasterTouroku_DenpyouNO
             // 

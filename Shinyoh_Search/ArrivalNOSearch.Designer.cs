@@ -29,12 +29,6 @@
         private void InitializeComponent()
         {
             this.gvArrivalNo = new Shinyoh_Controls.SGridView();
-            this.colChakuniNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.sbSiiresaki = new Shinyoh_Search.SearchBox();
             this.lblStaff = new Shinyoh_Controls.SLabel();
@@ -61,6 +55,12 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.sLabel2 = new Shinyoh_Controls.SLabel();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
+            this.colChakuniNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvArrivalNo)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -76,49 +76,11 @@
             this.Column4,
             this.Column5,
             this.Column6});
-            this.gvArrivalNo.Location = new System.Drawing.Point(34, 140);
+            this.gvArrivalNo.Location = new System.Drawing.Point(24, 140);
             this.gvArrivalNo.Name = "gvArrivalNo";
-            this.gvArrivalNo.Size = new System.Drawing.Size(796, 302);
+            this.gvArrivalNo.Size = new System.Drawing.Size(716, 302);
             this.gvArrivalNo.TabIndex = 1;
             this.gvArrivalNo.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvArrivalNo_CellMouseClick);
-            // 
-            // colChakuniNO
-            // 
-            this.colChakuniNO.DataPropertyName = "ChakuniNO";
-            this.colChakuniNO.HeaderText = "着荷番号";
-            this.colChakuniNO.Name = "colChakuniNO";
-            this.colChakuniNO.Width = 150;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "ChakuniDate";
-            this.Column2.HeaderText = "着荷日";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "ChakuniYoteiDate";
-            this.Column3.HeaderText = "着荷予定日";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "SiiresakiCD";
-            this.Column4.HeaderText = "仕入先";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "SiiresakiRyakuName";
-            this.Column5.HeaderText = "仕入先名";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 200;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "KanriNO";
-            this.Column6.HeaderText = "管理番号";
-            this.Column6.Name = "Column6";
             // 
             // panel1
             // 
@@ -167,7 +129,7 @@
             this.sbSiiresaki.IsErrorOccurs = false;
             this.sbSiiresaki.IsRequire = false;
             this.sbSiiresaki.lblName = null;
-            this.sbSiiresaki.Location = new System.Drawing.Point(117, 33);
+            this.sbSiiresaki.Location = new System.Drawing.Point(102, 33);
             this.sbSiiresaki.MinimumSize = new System.Drawing.Size(100, 19);
             this.sbSiiresaki.MoveNext = true;
             this.sbSiiresaki.Name = "sbSiiresaki";
@@ -184,7 +146,7 @@
             this.lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff.Location = new System.Drawing.Point(217, 60);
+            this.lblStaff.Location = new System.Drawing.Point(202, 60);
             this.lblStaff.Name = "lblStaff";
             this.lblStaff.Size = new System.Drawing.Size(250, 19);
             this.lblStaff.TabIndex = 24;
@@ -196,7 +158,7 @@
             this.lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSiiresaki.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSiiresaki.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSiiresaki.Location = new System.Drawing.Point(217, 33);
+            this.lblSiiresaki.Location = new System.Drawing.Point(202, 33);
             this.lblSiiresaki.Name = "lblSiiresaki";
             this.lblSiiresaki.Size = new System.Drawing.Size(250, 19);
             this.lblSiiresaki.TabIndex = 23;
@@ -216,7 +178,7 @@
             this.sbStaff.IsErrorOccurs = false;
             this.sbStaff.IsRequire = false;
             this.sbStaff.lblName = null;
-            this.sbStaff.Location = new System.Drawing.Point(117, 60);
+            this.sbStaff.Location = new System.Drawing.Point(102, 60);
             this.sbStaff.MinimumSize = new System.Drawing.Size(100, 19);
             this.sbStaff.MoveNext = true;
             this.sbStaff.Name = "sbStaff";
@@ -233,9 +195,9 @@
             this.btnSearch.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.Location = new System.Drawing.Point(767, 83);
+            this.btnSearch.Location = new System.Drawing.Point(799, 83);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(160, 32);
+            this.btnSearch.Size = new System.Drawing.Size(130, 28);
             this.btnSearch.TabIndex = 20;
             this.btnSearch.Text = "表示(F11)";
             this.btnSearch.UseVisualStyleBackColor = false;
@@ -262,7 +224,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(667, 10);
+            this.label2.Location = new System.Drawing.Point(668, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(14, 13);
             this.label2.TabIndex = 17;
@@ -271,7 +233,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(229, 9);
+            this.label1.Location = new System.Drawing.Point(215, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 13);
             this.label1.TabIndex = 16;
@@ -288,7 +250,7 @@
             this.txtProductTo.IsDatatableOccurs = null;
             this.txtProductTo.IsErrorOccurs = false;
             this.txtProductTo.IsRequire = false;
-            this.txtProductTo.Location = new System.Drawing.Point(736, 60);
+            this.txtProductTo.Location = new System.Drawing.Point(752, 60);
             this.txtProductTo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtProductTo.MoveNext = true;
             this.txtProductTo.Name = "txtProductTo";
@@ -423,7 +385,7 @@
             this.txtProductName.IsDatatableOccurs = null;
             this.txtProductName.IsErrorOccurs = false;
             this.txtProductName.IsRequire = false;
-            this.txtProductName.Location = new System.Drawing.Point(117, 87);
+            this.txtProductName.Location = new System.Drawing.Point(102, 87);
             this.txtProductName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtProductName.MoveNext = true;
             this.txtProductName.Name = "txtProductName";
@@ -445,7 +407,7 @@
             this.txtDateTo.IsDatatableOccurs = null;
             this.txtDateTo.IsErrorOccurs = false;
             this.txtDateTo.IsRequire = false;
-            this.txtDateTo.Location = new System.Drawing.Point(256, 7);
+            this.txtDateTo.Location = new System.Drawing.Point(241, 7);
             this.txtDateTo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDateTo.MoveNext = true;
             this.txtDateTo.Name = "txtDateTo";
@@ -468,7 +430,7 @@
             this.txtDateFrom.IsDatatableOccurs = null;
             this.txtDateFrom.IsErrorOccurs = false;
             this.txtDateFrom.IsRequire = false;
-            this.txtDateFrom.Location = new System.Drawing.Point(117, 7);
+            this.txtDateFrom.Location = new System.Drawing.Point(102, 7);
             this.txtDateFrom.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDateFrom.MoveNext = true;
             this.txtDateFrom.Name = "txtDateFrom";
@@ -524,7 +486,7 @@
             this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel4.Location = new System.Drawing.Point(37, 87);
+            this.sLabel4.Location = new System.Drawing.Point(22, 87);
             this.sLabel4.Name = "sLabel4";
             this.sLabel4.Size = new System.Drawing.Size(80, 19);
             this.sLabel4.TabIndex = 3;
@@ -537,7 +499,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(37, 60);
+            this.sLabel3.Location = new System.Drawing.Point(22, 60);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(80, 19);
             this.sLabel3.TabIndex = 2;
@@ -550,7 +512,7 @@
             this.sLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel2.Location = new System.Drawing.Point(37, 33);
+            this.sLabel2.Location = new System.Drawing.Point(22, 33);
             this.sLabel2.Name = "sLabel2";
             this.sLabel2.Size = new System.Drawing.Size(80, 19);
             this.sLabel2.TabIndex = 1;
@@ -563,12 +525,51 @@
             this.sLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel1.Location = new System.Drawing.Point(37, 7);
+            this.sLabel1.Location = new System.Drawing.Point(22, 7);
             this.sLabel1.Name = "sLabel1";
             this.sLabel1.Size = new System.Drawing.Size(80, 19);
             this.sLabel1.TabIndex = 0;
             this.sLabel1.Text = "着荷日";
             this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // colChakuniNO
+            // 
+            this.colChakuniNO.DataPropertyName = "ChakuniNO";
+            this.colChakuniNO.HeaderText = "着荷番号";
+            this.colChakuniNO.Name = "colChakuniNO";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ChakuniDate";
+            this.Column2.HeaderText = "着荷日";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "ChakuniYoteiDate";
+            this.Column3.HeaderText = "着荷予定日";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "SiiresakiCD";
+            this.Column4.HeaderText = "仕入先";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 80;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "SiiresakiRyakuName";
+            this.Column5.HeaderText = "仕入先名";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 213;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "KanriNO";
+            this.Column6.HeaderText = "管理番号";
+            this.Column6.Name = "Column6";
             // 
             // ArrivalNOSearch
             // 
@@ -578,7 +579,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.gvArrivalNo);
             this.Name = "ArrivalNOSearch";
-            this.Text = "ArrivalNOSearch";
+            this.Text = "着荷番号検索";
             this.Load += new System.EventHandler(this.ArrivalNOSearch_Load);
             this.Controls.SetChildIndex(this.gvArrivalNo, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
@@ -616,12 +617,12 @@
         private Shinyoh_Controls.SLabel lblStaff;
         private Shinyoh_Controls.SLabel lblSiiresaki;
         private SearchBox sbStaff;
+        private SearchBox sbSiiresaki;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private SearchBox sbSiiresaki;
     }
 }

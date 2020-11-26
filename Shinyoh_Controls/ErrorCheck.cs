@@ -127,7 +127,7 @@ namespace Shinyoh_Controls
             {
                 if (!string.IsNullOrEmpty(sTextBox.ctrlE106_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE106_2.Text))
                 {
-                    bool bl = Matches(sTextBox.ctrlE106_1.Text, sTextBox.ctrlE106_2.Text);
+                    bool bl = Matches(sTextBox.ctrlE106_2.Text, sTextBox.ctrlE106_1.Text);
                     if (!bl)
                     {
                         ShowErrorMessage("E106");
