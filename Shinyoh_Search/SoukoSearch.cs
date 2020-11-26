@@ -30,6 +30,7 @@ namespace Shinyoh_Search {
 
             gvSouko.UseRowNo(true);
             GridViewBind();
+            txtSouko2.E106Check(true, txtSouko1, txtSouko2);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -69,11 +70,6 @@ namespace Shinyoh_Search {
                 soukoCD= row.Cells["colSouko"].Value.ToString();
                 this.Close();
             }
-        }
-
-        private void txtSouko2_KeyDown(object sender, KeyEventArgs e)
-        {
-             txtSouko2.E106Check(true, txtSouko1, txtSouko2);
         }
         private void gvSouko_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {

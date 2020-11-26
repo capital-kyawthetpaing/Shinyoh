@@ -83,13 +83,7 @@ namespace Shinyoh_Search {
                 TokuisakiRyakuName = row.Cells["colTokuisakiRyakuName"].Value.ToString();
                 this.Close();
             }
-        }
-
-        private void txtTokuisaki2_KeyDown(object sender, KeyEventArgs e)
-        {
-           // txtTokuisaki2.E106Check(true, txtTokuisaki1, txtTokuisaki2);
-        }
-
+        }  
         private void btnTokuisaki_F11_Click(object sender, EventArgs e)
         {
             DataGridviewBind();

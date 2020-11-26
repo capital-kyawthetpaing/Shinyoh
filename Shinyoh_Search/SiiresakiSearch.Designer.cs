@@ -225,7 +225,6 @@
             this.txtSupplier2.Size = new System.Drawing.Size(100, 19);
             this.txtSupplier2.TabIndex = 4;
             this.txtSupplier2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtSupplier2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSupplier2_KeyDown);
             // 
             // txtSupplier1
             // 
