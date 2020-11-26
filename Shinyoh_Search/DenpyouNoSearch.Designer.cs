@@ -96,7 +96,7 @@
             this.txtDate.SearchType = Entity.SearchType.ScType.None;
             this.txtDate.Size = new System.Drawing.Size(107, 20);
             this.txtDate.TabIndex = 4;
-            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lbl2
             // 
