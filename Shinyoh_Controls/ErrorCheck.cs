@@ -127,9 +127,8 @@ namespace Shinyoh_Controls
             {
                 if (!string.IsNullOrEmpty(sTextBox.ctrlE106_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE106_2.Text))
                 {
-                    int from_val = int.Parse(sTextBox.ctrlE106_1.Text);
-                    int to_val = int.Parse(sTextBox.ctrlE106_2.Text);
-                    if (from_val > to_val)
+                    bool bl = Matches(sTextBox.ctrlE106_1.Text, sTextBox.ctrlE106_2.Text);
+                    if (!bl)
                     {
                         ShowErrorMessage("E106");
                         sTextBox.Focus();
@@ -482,6 +481,33 @@ namespace Shinyoh_Controls
             }
 
             return (false, rDt);
+        }
+
+        
+
+        public static bool Matches(string left_, string right_)
+        {
+            string _customAlphanumericOrder = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            int maxLength = Math.Max(left_.Length, right_.Length);
+
+            left_ = left_.PadRight(maxLength, '0').ToUpperInvariant();
+            right_ = right_.PadRight(maxLength, '0').ToUpperInvariant();
+
+            for (int index = 0; index < maxLength; index++)
+            {
+                int leftOrderPosition = _customAlphanumericOrder.IndexOf(left_[index]);
+                int rightOrderPosition = _customAlphanumericOrder.IndexOf(right_[index]);
+
+                if (leftOrderPosition > rightOrderPosition)
+                {
+                    return true;
+                }
+                if (leftOrderPosition < rightOrderPosition)
+                {
+                    return false;
+                }
+            }
+            return false;
         }
     }
 }
