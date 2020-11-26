@@ -186,7 +186,7 @@
             this.BtnF11_Soko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.BtnF11_Soko.Location = new System.Drawing.Point(763, 61);
             this.BtnF11_Soko.Name = "BtnF11_Soko";
-            this.BtnF11_Soko.Size = new System.Drawing.Size(160, 32);
+            this.BtnF11_Soko.Size = new System.Drawing.Size(140, 32);
             this.BtnF11_Soko.TabIndex = 4;
             this.BtnF11_Soko.Tag = "2";
             this.BtnF11_Soko.Text = "表示(F11)";

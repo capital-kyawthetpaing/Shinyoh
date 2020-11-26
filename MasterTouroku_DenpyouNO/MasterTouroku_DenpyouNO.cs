@@ -123,6 +123,10 @@ namespace MasterTouroku_DenpyouNO
             {
                 ChangeMode(Mode.Inquiry);
             }
+            if(tagID=="6")
+            {
+                Clear();
+            }
             if (tagID == "12")
             {
                 if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
@@ -147,7 +151,12 @@ namespace MasterTouroku_DenpyouNO
             }
             base.FunctionProcess(tagID);
         }
-
+        public void Clear()
+        {
+            cf.Clear(PanelTitle);
+            cf.Clear(PanelDetail);
+            cbDivision.Select();
+        }
         private void DBProcess()
         {
             DenpyouNOBL denpyoubl = new DenpyouNOBL();
