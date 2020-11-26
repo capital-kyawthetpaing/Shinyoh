@@ -22,27 +22,6 @@ namespace Shinyoh_Controls
             {
                 if (UseRow)
                 {
-                    ////列ヘッダーかどうか調べる
-                    //if (e.ColumnIndex < 0 && e.RowIndex >= 0)
-                    //{
-                    //    //セルを描画する
-                    //    e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
-
-                    //    //行番号を描画する範囲を決定する
-                    //    //e.AdvancedBorderStyleやe.CellStyle.Paddingは無視しています
-                    //    Rectangle indexRect = e.CellBounds;
-                    //    indexRect.Inflate(-2, -2);
-                    //    //行番号を描画する
-                    //    TextRenderer.DrawText(e.Graphics,
-                    //        (e.RowIndex + 1).ToString(),
-                    //        e.CellStyle.Font,
-                    //        indexRect,
-                    //        e.CellStyle.ForeColor,
-                    //        TextFormatFlags.Right | TextFormatFlags.VerticalCenter);
-                    //    //描画が完了したことを知らせる
-                    //    e.Handled = true;
-                    //}
-
                     if (e.ColumnIndex == -1 && e.RowIndex == -1)
                     {
                         //セルを描画する
@@ -55,6 +34,26 @@ namespace Shinyoh_Controls
                         //行番号を描画する
                         TextRenderer.DrawText(e.Graphics,
                             "No",
+                            e.CellStyle.Font,
+                            indexRect,
+                            e.CellStyle.ForeColor,
+                            TextFormatFlags.Right | TextFormatFlags.VerticalCenter);
+                        //描画が完了したことを知らせる
+                        e.Handled = true;
+                    }
+                    //列ヘッダーかどうか調べる
+                    if (e.ColumnIndex < 0 && e.RowIndex >= 0)
+                    {
+                        //セルを描画する
+                        e.Paint(e.ClipBounds, DataGridViewPaintParts.All);
+
+                        //行番号を描画する範囲を決定する
+                        //e.AdvancedBorderStyleやe.CellStyle.Paddingは無視しています
+                        Rectangle indexRect = e.CellBounds;
+                        indexRect.Inflate(-2, -2);
+                        //行番号を描画する
+                        TextRenderer.DrawText(e.Graphics,
+                            (e.RowIndex + 1).ToString(),
                             e.CellStyle.Font,
                             indexRect,
                             e.CellStyle.ForeColor,
