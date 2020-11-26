@@ -31,6 +31,8 @@ namespace Shinyoh_Search {
             gvTokuisaki.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             rdo_Date.Focus();
             DataGridviewBind();
+
+            txtTokuisaki2.E106Check(true, txtTokuisaki1, txtTokuisaki2);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -85,7 +87,7 @@ namespace Shinyoh_Search {
 
         private void txtTokuisaki2_KeyDown(object sender, KeyEventArgs e)
         {
-            txtTokuisaki2.E106Check(true, txtTokuisaki1, txtTokuisaki2);
+           // txtTokuisaki2.E106Check(true, txtTokuisaki1, txtTokuisaki2);
         }
 
         private void btnTokuisaki_F11_Click(object sender, EventArgs e)
