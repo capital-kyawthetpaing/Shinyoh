@@ -40,7 +40,7 @@ namespace MasterTouroku_Staff
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
+            SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
@@ -145,7 +145,7 @@ namespace MasterTouroku_Staff
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(Panel_Staff);
             txt_Staff.Focus();
-            txtStaff_Search.Text = "0";
+           // txtStaff_Search.Text = "0";
         }
         public void Disable_UDI_Mode()
         {
@@ -358,19 +358,19 @@ namespace MasterTouroku_Staff
 
         private void txtStaff_Search_TextChanged(object sender, EventArgs e)
         {
-            string value = txtStaff_Search.Text.Replace(",", "");
-            ulong ul;
-            if (ulong.TryParse(value, out ul))
-            {
-                txtStaff_Search.TextChanged -= txtStaff_Search_TextChanged;
-                txtStaff_Search.Text = string.Format("{0:#,#0}", ul);
-                txtStaff_Search.SelectionStart = txtStaff_Search.Text.Length;
-                txtStaff_Search.TextChanged += txtStaff_Search_TextChanged;
-            }
-            else
-            {
-                txtStaff_Search.Text = "0";
-            }
+            //string value = txtStaff_Search.Text.Replace(",", "");
+            //ulong ul;
+            //if (ulong.TryParse(value, out ul))
+            //{
+            //    txtStaff_Search.TextChanged -= txtStaff_Search_TextChanged;
+            //    txtStaff_Search.Text = string.Format("{0:#,#0}", ul);
+            //    txtStaff_Search.SelectionStart = txtStaff_Search.Text.Length;
+            //    txtStaff_Search.TextChanged += txtStaff_Search_TextChanged;
+            //}
+            //else
+            //{
+            //    txtStaff_Search.Text = "0";
+            //}
         }
     }
 }
