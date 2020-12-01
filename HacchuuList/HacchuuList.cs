@@ -113,59 +113,54 @@ namespace HacchuuList
             }
             if (tagID == "10")
             {
-                DataTable dt = new DataTable { TableName = "MyTableName" };
-                dt = Get_Form_Object();
-                //if (dt.Rows.Count > 0)
-                //{
-
-                    dt.Columns["HacchuuNO"].ColumnName = "発注番号";
-                    dt.Columns["JuchuuNO"].ColumnName = "受注番号";
-                    dt.Columns["HacchuuDate"].ColumnName = "受発注日";
-                    dt.Columns["StaffName"].ColumnName = "担当者	";
-                    dt.Columns["TokuisakiCD"].ColumnName = "得意先コード";
-                    dt.Columns["TokuisakiRyakuName"].ColumnName = "得意先名";
-                    dt.Columns["KouritenCD"].ColumnName = "小売店コード";
-                    dt.Columns["KouritenRyakuName"].ColumnName = "小売店";
-                    dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注番号";
-                    dt.Columns["SenpouBusho"].ColumnName = "先方部署	";
-                    dt.Columns["KibouNouki"].ColumnName = "希望納期";
-                    dt.Columns["HacchuuDenpyouTekiyou"].ColumnName = "伝票摘要";
-                    dt.Columns["Char1"].ColumnName = "ブランド名";
-                    dt.Columns["Exhibition"].ColumnName = "展示会";
-                    dt.Columns["JANCD"].ColumnName = "JANコード";
-                    dt.Columns["ShouhinCD"].ColumnName = "商品番";
-                    dt.Columns["ShouhinName"].ColumnName = "商品名";
-                    dt.Columns["ColorRyakuName"].ColumnName = "カラー";
-                    dt.Columns["SizeNO"].ColumnName = "サイズ";
-                    dt.Columns["HacchuuSuu"].ColumnName = "数量";
-                    dt.Columns["UriageTanka"].ColumnName = "上代	";
-                    dt.Columns["HacchuuTanka"].ColumnName = "下代";
-                    dt.Columns["HacchuuMeisaiTekiyou"].ColumnName = "明細摘要";
-                    dt.Columns["SiiresakiCD"].ColumnName = "発注先";
-                    dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
-                    dt.Columns.Remove("発注先名");                              //not include in Excel
-                    dt.Columns["SoukoName"].ColumnName = "倉庫";
-
-                    DataRow row = dt.NewRow();//Datatable Record is NUll. Therefore create temp new row.
-                    
-                    if (row != null)
-                    {
-                        dt.Rows.Add(row);
-                    }
-
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Shinyoh\Project_Excel";
-                saveFileDialog1.DefaultExt = "xls";
-                saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "発注リスト.xls";
-                saveFileDialog1.RestoreDirectory = true;
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                if (ErrorCheck(Panel_Detail))
                 {
-                    ExportDataTableToExcel(dt, saveFileDialog1.FileName);
-                }
+                    DataTable dt = new DataTable { TableName = "MyTableName" };
+                    dt = Get_Form_Object();
+                    if (dt.Rows.Count > 0)
+                    {
 
-                 //}
-        }
+                        dt.Columns["HacchuuNO"].ColumnName = "発注番号";
+                        dt.Columns["JuchuuNO"].ColumnName = "受注番号";
+                        dt.Columns["HacchuuDate"].ColumnName = "受発注日";
+                        dt.Columns["StaffName"].ColumnName = "担当者	";
+                        dt.Columns["TokuisakiCD"].ColumnName = "得意先コード";
+                        dt.Columns["TokuisakiRyakuName"].ColumnName = "得意先名";
+                        dt.Columns["KouritenCD"].ColumnName = "小売店コード";
+                        dt.Columns["KouritenRyakuName"].ColumnName = "小売店";
+                        dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注番号";
+                        dt.Columns["SenpouBusho"].ColumnName = "先方部署	";
+                        dt.Columns["KibouNouki"].ColumnName = "希望納期";
+                        dt.Columns["HacchuuDenpyouTekiyou"].ColumnName = "伝票摘要";
+                        dt.Columns["Char1"].ColumnName = "ブランド名";
+                        dt.Columns["Exhibition"].ColumnName = "展示会";
+                        dt.Columns["JANCD"].ColumnName = "JANコード";
+                        dt.Columns["ShouhinCD"].ColumnName = "商品番";
+                        dt.Columns["ShouhinName"].ColumnName = "商品名";
+                        dt.Columns["ColorRyakuName"].ColumnName = "カラー";
+                        dt.Columns["SizeNO"].ColumnName = "サイズ";
+                        dt.Columns["HacchuuSuu"].ColumnName = "数量";
+                        dt.Columns["UriageTanka"].ColumnName = "上代	";
+                        dt.Columns["HacchuuTanka"].ColumnName = "下代";
+                        dt.Columns["HacchuuMeisaiTekiyou"].ColumnName = "明細摘要";
+                        dt.Columns["SiiresakiCD"].ColumnName = "発注先";
+                        dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
+                        dt.Columns.Remove("発注先名");                              //not include in Excel
+                        dt.Columns["SoukoName"].ColumnName = "倉庫";
+
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.InitialDirectory = @"C:\Shinyoh\Project_Excel";
+                        saveFileDialog1.DefaultExt = "xls";
+                        saveFileDialog1.Filter = "ExcelFile|*.xls";
+                        saveFileDialog1.FileName = "発注リスト.xls";
+                        saveFileDialog1.RestoreDirectory = true;
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            ExportDataTableToExcel(dt, saveFileDialog1.FileName);
+                        }
+                    }
+                }
+            }
             base.FunctionProcess(tagID);
         }
 
@@ -175,6 +170,7 @@ namespace HacchuuList
             Excel.Application oXL;
             Excel.Workbook oWB;
             Excel.Worksheet oSheet;
+            Excel.Range rg;
             
             try
             {
@@ -209,9 +205,13 @@ namespace HacchuuList
                 }
 
                 // color the columns 
-                oSheet.Range["A1", "Z1"].Interior.Color = Excel.XlRgbColor.rgbOrange;
-                oSheet.Range["A1", "Z1"].Font.Color = Excel.XlRgbColor.rgbBlack;
-
+                oSheet.Range["A1", "Y1"].Interior.Color = Excel.XlRgbColor.rgbOrange;
+                oSheet.Range["A1", "Y1"].Font.Color = Excel.XlRgbColor.rgbBlack;
+                //Change date format
+                rg = (Excel.Range)oSheet.Cells[3,3];
+                rg.EntireColumn.NumberFormat = "YYYY/MM/DD";
+                //left alignment
+                rg.EntireColumn.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
 
                 // Save the sheet and close 
                 oSheet = null;
