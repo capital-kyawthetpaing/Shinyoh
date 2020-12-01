@@ -114,7 +114,7 @@
             this.cbDivision2.MoveNext = true;
             this.cbDivision2.Name = "cbDivision2";
             this.cbDivision2.NextControl = null;
-            this.cbDivision2.NextControlName = "txtDate";
+            this.cbDivision2.NextControlName = "lbl_Date";
             this.cbDivision2.Size = new System.Drawing.Size(121, 20);
             this.cbDivision2.TabIndex = 2;
             this.cbDivision2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbDivision2_KeyDown);
