@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.btnSearch = new Shinyoh_Controls.SButton();
-            this.txtDate = new Shinyoh_Controls.STextBox();
             this.lbl2 = new Shinyoh_Controls.SLabel();
             this.cbDivision2 = new Shinyoh_Controls.SCombo();
             this.lblSign = new System.Windows.Forms.Label();
@@ -48,8 +48,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.lbl_Date);
             this.panel1.Controls.Add(this.btnSearch);
-            this.panel1.Controls.Add(this.txtDate);
             this.panel1.Controls.Add(this.lbl2);
             this.panel1.Controls.Add(this.cbDivision2);
             this.panel1.Controls.Add(this.lblSign);
@@ -60,6 +60,19 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(935, 100);
             this.panel1.TabIndex = 2;
+            // 
+            // lbl_Date
+            // 
+            this.lbl_Date.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.lbl_Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_Date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_Date.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Date.Location = new System.Drawing.Point(816, 23);
+            this.lbl_Date.Name = "lbl_Date";
+            this.lbl_Date.Size = new System.Drawing.Size(100, 19);
+            this.lbl_Date.TabIndex = 6;
+            this.lbl_Date.Text = "YYYY/MM/DD";
+            this.lbl_Date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSearch
             // 
@@ -75,28 +88,6 @@
             this.btnSearch.Text = "表示(F11)";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // txtDate
-            // 
-            this.txtDate.AllowMinus = false;
-            this.txtDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDate.DecimalPlace = 0;
-            this.txtDate.DepandOnMode = true;
-            this.txtDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtDate.IntegerPart = 0;
-            this.txtDate.IsDatatableOccurs = null;
-            this.txtDate.IsErrorOccurs = false;
-            this.txtDate.IsRequire = false;
-            this.txtDate.Location = new System.Drawing.Point(816, 23);
-            this.txtDate.MinimumSize = new System.Drawing.Size(100, 20);
-            this.txtDate.MoveNext = true;
-            this.txtDate.Name = "txtDate";
-            this.txtDate.NextControl = null;
-            this.txtDate.NextControlName = "btnSearch";
-            this.txtDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtDate.Size = new System.Drawing.Size(107, 20);
-            this.txtDate.TabIndex = 4;
-            this.txtDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lbl2
             // 
@@ -251,12 +242,12 @@
         private Shinyoh_Controls.SCombo cbDivision2;
         private System.Windows.Forms.Label lblSign;
         private Shinyoh_Controls.SButton btnSearch;
-        private Shinyoh_Controls.STextBox txtDate;
         private Shinyoh_Controls.SLabel lbl2;
         private Shinyoh_Controls.SGridView gvDenpyouNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn RenbanKBN1;
         private System.Windows.Forms.DataGridViewTextBoxColumn SEQNO1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prefix1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Counter1;
+        private Shinyoh_Controls.SLabel lbl_Date;
     }
 }

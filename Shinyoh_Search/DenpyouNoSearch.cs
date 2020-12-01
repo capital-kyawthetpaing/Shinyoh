@@ -37,8 +37,8 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             gvDenpyouNo.UseRowNo(true);
             BindDataGrid();
-            txtDate.E103Check(true);
             cbDivision2.E106Check(true, cbDivision1, cbDivision2);
+            lbl_Date.Text = DateTime.Now.ToString("yyyy/MM/dd");
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace Shinyoh_Search
             denpyou_entity = new DenpyouNOEntity();
             denpyou_entity.division1 = cbDivision1.SelectedValue.ToString();
             denpyou_entity.division2 = cbDivision2.SelectedValue.ToString();
-            denpyou_entity.date = txtDate.Text;
+            //denpyou_entity.date = txtDate.Text;
             gvDenpyouNo.DataSource = denpyoubl.DenpyouNO_Search(denpyou_entity);
         }
 
