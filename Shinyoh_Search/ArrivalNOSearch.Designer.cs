@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.gvArrivalNo = new Shinyoh_Controls.SGridView();
+            this.colChakuniNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.sbSiiresaki = new Shinyoh_Search.SearchBox();
             this.lblStaff = new Shinyoh_Controls.SLabel();
@@ -55,12 +61,6 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.sLabel2 = new Shinyoh_Controls.SLabel();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
-            this.colChakuniNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvArrivalNo)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +80,46 @@
             this.gvArrivalNo.Name = "gvArrivalNo";
             this.gvArrivalNo.Size = new System.Drawing.Size(716, 302);
             this.gvArrivalNo.TabIndex = 1;
-            this.gvArrivalNo.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvArrivalNo_CellMouseClick);
+            this.gvArrivalNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvArrivalNo_CellMouseDoubleClick);
+            // 
+            // colChakuniNO
+            // 
+            this.colChakuniNO.DataPropertyName = "ChakuniNO";
+            this.colChakuniNO.HeaderText = "着荷番号";
+            this.colChakuniNO.Name = "colChakuniNO";
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ChakuniDate";
+            this.Column2.HeaderText = "着荷日";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "ChakuniYoteiDate";
+            this.Column3.HeaderText = "着荷予定日";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "SiiresakiCD";
+            this.Column4.HeaderText = "仕入先";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 80;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "SiiresakiRyakuName";
+            this.Column5.HeaderText = "仕入先名";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 213;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "KanriNO";
+            this.Column6.HeaderText = "管理番号";
+            this.Column6.Name = "Column6";
             // 
             // panel1
             // 
@@ -531,45 +570,6 @@
             this.sLabel1.TabIndex = 0;
             this.sLabel1.Text = "着荷日";
             this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // colChakuniNO
-            // 
-            this.colChakuniNO.DataPropertyName = "ChakuniNO";
-            this.colChakuniNO.HeaderText = "着荷番号";
-            this.colChakuniNO.Name = "colChakuniNO";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "ChakuniDate";
-            this.Column2.HeaderText = "着荷日";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 80;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "ChakuniYoteiDate";
-            this.Column3.HeaderText = "着荷予定日";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "SiiresakiCD";
-            this.Column4.HeaderText = "仕入先";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 80;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "SiiresakiRyakuName";
-            this.Column5.HeaderText = "仕入先名";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 213;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "KanriNO";
-            this.Column6.HeaderText = "管理番号";
-            this.Column6.Name = "Column6";
             // 
             // ArrivalNOSearch
             // 
