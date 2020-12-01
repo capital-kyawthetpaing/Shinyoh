@@ -46,6 +46,9 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Tokuisaki:
                         colName = "TokuisakiRyakuName";
                         break;
+                    case Entity.SearchType.ScType.Kouriten:
+                        colName = "KouritenRyakuName";
+                        break;
                 }
 
                 DataTable dt = this.IsDatatableOccurs;
@@ -112,6 +115,7 @@ namespace Shinyoh_Search
                         kSearch.ShowDialog();
                         CD = kSearch.KouritenCD;
                         CDate = kSearch.changeDate;
+                        name = kSearch.KouritenRyakuName;
                         break;
                 }
 

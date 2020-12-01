@@ -81,10 +81,6 @@ namespace Shinyoh_Search
             FunctionProcess(btnSearch.Tag.ToString());
             GridViewBind();
         }
-        private void gvArrivalNo_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            GetGridviewData(gvArrivalNo.Rows[e.RowIndex]);
-        }
         private void txtDateTo_KeyDown(object sender, KeyEventArgs e)
         {
             txtDateTo.E106Check(true, txtDateFrom, txtDateTo);
@@ -103,6 +99,11 @@ namespace Shinyoh_Search
         private void txtProductTo_KeyDown(object sender, KeyEventArgs e)
         {
             txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
+        }
+
+        private void gvArrivalNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            GetGridviewData(gvArrivalNo.Rows[e.RowIndex]);
         }
     }
 }
