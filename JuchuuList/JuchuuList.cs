@@ -157,8 +157,8 @@ namespace JuchuuList {
             {
                 DataTable dt = new DataTable { TableName = "MyTableName" };
                 dt = Get_Form_Object();
-                //if(dt.Rows.Count>0)
-                //{
+                if (dt.Rows.Count > 0)
+                {
 
                 dt.Columns["JuchuuNO"].ColumnName = "受注番号";
                 dt.Columns["JuchuuDate"].ColumnName = "受発注日";
@@ -201,7 +201,7 @@ namespace JuchuuList {
                     ExportDataTableToExcel(dt, saveFileDialog1.FileName);
                 }
 
-                // }
+                }
             }
             base.FunctionProcess(tagID);
         }
@@ -281,8 +281,8 @@ namespace JuchuuList {
             JuchuuEntity obj = new JuchuuEntity();
             obj.JuhuuDate1 = txtOrderDate1.Text;
             obj.JuhuuDate2 = txtOrderDate2.Text;
-            obj.JuhuuNO1 = txtInputDate1.Text;
-            obj.JuhuuNO2 = txtInputDate2.Text;
+            obj.JuhuuNO1 = txtOrderNo1.Text;
+            obj.JuhuuNO2 = txtOrderNo2.Text;
             obj.InputDate1 = txtInputDate1.Text;
             obj.InputDate2 = txtInputDate2.Text;
             obj.StaffCD = txtStaffCD.Text;
