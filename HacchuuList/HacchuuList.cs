@@ -115,10 +115,10 @@ namespace HacchuuList
             {
                 DataTable dt = new DataTable { TableName = "MyTableName" };
                 dt = Get_Form_Object();
-                //if(dt.Rows.Count>0)
+                //if (dt.Rows.Count > 0)
                 //{
-               
-                  dt.Columns["HacchuuNO"].ColumnName = "発注番号";
+
+                    dt.Columns["HacchuuNO"].ColumnName = "発注番号";
                     dt.Columns["JuchuuNO"].ColumnName = "受注番号";
                     dt.Columns["HacchuuDate"].ColumnName = "受発注日";
                     dt.Columns["StaffName"].ColumnName = "担当者	";
@@ -147,7 +147,11 @@ namespace HacchuuList
                     dt.Columns["SoukoName"].ColumnName = "倉庫";
 
                     DataRow row = dt.NewRow();//Datatable Record is NUll. Therefore create temp new row.
-                    dt.Rows.Add(row);
+                    
+                    if (row != null)
+                    {
+                        dt.Rows.Add(row);
+                    }
 
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 saveFileDialog1.InitialDirectory = @"C:\Shinyoh\Project_Excel";
@@ -160,8 +164,8 @@ namespace HacchuuList
                     ExportDataTableToExcel(dt, saveFileDialog1.FileName);
                 }
 
-                // }
-            }
+                 //}
+        }
             base.FunctionProcess(tagID);
         }
 

@@ -158,6 +158,7 @@
             this.txtHacchuuNO1.DecimalPlace = 0;
             this.txtHacchuuNO1.DepandOnMode = true;
             this.txtHacchuuNO1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtHacchuuNO1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtHacchuuNO1.IntegerPart = 0;
             this.txtHacchuuNO1.IsDatatableOccurs = null;
             this.txtHacchuuNO1.IsErrorOccurs = false;
