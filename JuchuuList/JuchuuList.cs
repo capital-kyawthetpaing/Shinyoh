@@ -51,8 +51,13 @@ namespace JuchuuList {
             SetButton(ButtonType.BType.Empty, F8, "", false);
             SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
-
+            Date_Setting();
             ErrorCheck();
+
+            txtStaffCD.ChangeDate = txtTempDate;
+        }
+        private void Date_Setting()
+        {
 
             BaseEntity baseEntity = _GetBaseData();
             txtOrderDate1.Text = baseEntity.LoginDate;
@@ -60,8 +65,6 @@ namespace JuchuuList {
             txtInputDate1.Text = baseEntity.LoginDate;
             txtInputDate2.Text = baseEntity.LoginDate;
             txtTempDate.Text = baseEntity.LoginDate;
-
-            txtStaffCD.ChangeDate = txtTempDate;
         }
         private void ErrorCheck()
         {
@@ -146,12 +149,21 @@ namespace JuchuuList {
                 }
             }
         }
+        private void Clear()
+        {
+            cf.Clear(PanelDetail);
+            txtOrderDate1.Focus();
+            Date_Setting();
+            lblStaffCD_Name.Text = "";
+            lblBrandName.Text = "";
+            lblTokuisakiName.Text = "";
+            lblKouritenName.Text = "";
+        }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "6")
             {
-                cf.Clear(PanelDetail);
-                txtOrderDate1.Focus();
+                Clear();
             }
             if (tagID == "10")
             {
@@ -189,7 +201,7 @@ namespace JuchuuList {
 
 
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Project_Excel";
+                saveFileDialog1.InitialDirectory = @"C:\";
                 saveFileDialog1.DefaultExt = "xls";
                 saveFileDialog1.Filter = "ExcelFile|*.xls";
                 saveFileDialog1.FileName = "受注リスト.xls";
@@ -197,6 +209,10 @@ namespace JuchuuList {
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     ExportDataTableToExcel(dt, saveFileDialog1.FileName);
+                }
+                if (true)
+                {
+                    Clear();
                 }
 
                 }
