@@ -37,6 +37,8 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             gvDenpyouNo.UseRowNo(true);
             BindDataGrid();
+            txtDate.E103Check(true);
+            cbDivision2.E106Check(true, cbDivision1, cbDivision2);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -84,6 +86,11 @@ namespace Shinyoh_Search
         private void gvDenpyouNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvDenpyouNo.Rows[e.RowIndex]);
+        }
+
+        private void cbDivision2_KeyDown(object sender, KeyEventArgs e)
+        {
+           // cbDivision2.E106Check(true, cbDivision1, cbDivision2);
         }
     }
 }

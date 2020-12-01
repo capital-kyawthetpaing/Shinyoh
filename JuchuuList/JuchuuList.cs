@@ -31,7 +31,13 @@ namespace JuchuuList {
             txtOrderDate1.Focus();
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
             txtStaffCD.lblName = lblStaffCD_Name;
+            txtBrand.lblName = lblBrandName;
+            txtTokuisaki.lblName = lblTokuisakiName;
+            txtStore.lblName = lblKouritenName;
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", false);

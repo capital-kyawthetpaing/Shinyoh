@@ -73,9 +73,9 @@
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDisplay.Location = new System.Drawing.Point(752, 82);
+            this.btnDisplay.Location = new System.Drawing.Point(765, 82);
             this.btnDisplay.Name = "btnDisplay";
-            this.btnDisplay.Size = new System.Drawing.Size(160, 32);
+            this.btnDisplay.Size = new System.Drawing.Size(140, 32);
             this.btnDisplay.TabIndex = 10;
             this.btnDisplay.Text = "表示(F11)";
             this.btnDisplay.UseVisualStyleBackColor = false;
@@ -84,16 +84,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(428, 50);
+            this.label2.Location = new System.Drawing.Point(420, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(14, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "~";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(233, 16);
+            this.label1.Location = new System.Drawing.Point(225, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 13);
             this.label1.TabIndex = 8;
@@ -110,7 +111,7 @@
             this.txtIDName.IsDatatableOccurs = null;
             this.txtIDName.IsErrorOccurs = false;
             this.txtIDName.IsRequire = false;
-            this.txtIDName.Location = new System.Drawing.Point(125, 83);
+            this.txtIDName.Location = new System.Drawing.Point(117, 83);
             this.txtIDName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtIDName.MoveNext = true;
             this.txtIDName.Name = "txtIDName";
@@ -132,7 +133,7 @@
             this.txtKey2.IsDatatableOccurs = null;
             this.txtKey2.IsErrorOccurs = false;
             this.txtKey2.IsRequire = false;
-            this.txtKey2.Location = new System.Drawing.Point(446, 48);
+            this.txtKey2.Location = new System.Drawing.Point(437, 48);
             this.txtKey2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKey2.MoveNext = true;
             this.txtKey2.Name = "txtKey2";
@@ -155,7 +156,7 @@
             this.txtKey1.IsDatatableOccurs = null;
             this.txtKey1.IsErrorOccurs = false;
             this.txtKey1.IsRequire = false;
-            this.txtKey1.Location = new System.Drawing.Point(125, 47);
+            this.txtKey1.Location = new System.Drawing.Point(117, 47);
             this.txtKey1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKey1.MoveNext = true;
             this.txtKey1.Name = "txtKey1";
@@ -177,7 +178,7 @@
             this.txtID2.IsDatatableOccurs = null;
             this.txtID2.IsErrorOccurs = false;
             this.txtID2.IsRequire = false;
-            this.txtID2.Location = new System.Drawing.Point(255, 14);
+            this.txtID2.Location = new System.Drawing.Point(247, 14);
             this.txtID2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtID2.MoveNext = true;
             this.txtID2.Name = "txtID2";
@@ -200,7 +201,7 @@
             this.txtID1.IsDatatableOccurs = null;
             this.txtID1.IsErrorOccurs = false;
             this.txtID1.IsRequire = false;
-            this.txtID1.Location = new System.Drawing.Point(125, 13);
+            this.txtID1.Location = new System.Drawing.Point(117, 13);
             this.txtID1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtID1.MoveNext = true;
             this.txtID1.Name = "txtID1";
@@ -217,7 +218,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(25, 83);
+            this.sLabel3.Location = new System.Drawing.Point(17, 83);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 2;
@@ -230,7 +231,7 @@
             this.sLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel2.Location = new System.Drawing.Point(25, 47);
+            this.sLabel2.Location = new System.Drawing.Point(17, 47);
             this.sLabel2.Name = "sLabel2";
             this.sLabel2.Size = new System.Drawing.Size(100, 19);
             this.sLabel2.TabIndex = 1;
@@ -243,7 +244,7 @@
             this.sLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel1.Location = new System.Drawing.Point(25, 13);
+            this.sLabel1.Location = new System.Drawing.Point(17, 13);
             this.sLabel1.Name = "sLabel1";
             this.sLabel1.Size = new System.Drawing.Size(100, 19);
             this.sLabel1.TabIndex = 0;
@@ -258,7 +259,7 @@
             this.colID,
             this.colKey,
             this.colName});
-            this.gvMultiporpose.Location = new System.Drawing.Point(24, 133);
+            this.gvMultiporpose.Location = new System.Drawing.Point(17, 133);
             this.gvMultiporpose.Name = "gvMultiporpose";
             this.gvMultiporpose.Size = new System.Drawing.Size(720, 302);
             this.gvMultiporpose.TabIndex = 3;
@@ -269,21 +270,20 @@
             this.colID.DataPropertyName = "ID";
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
-            this.colID.Width = 110;
             // 
             // colKey
             // 
             this.colKey.DataPropertyName = "Key";
             this.colKey.HeaderText = "KEY";
             this.colKey.Name = "colKey";
-            this.colKey.Width = 280;
+            this.colKey.Width = 290;
             // 
             // colName
             // 
             this.colName.DataPropertyName = "IDName";
             this.colName.HeaderText = "ID名";
             this.colName.Name = "colName";
-            this.colName.Width = 280;
+            this.colName.Width = 285;
             // 
             // MultiPorposeSearch
             // 
@@ -293,7 +293,7 @@
             this.Controls.Add(this.gvMultiporpose);
             this.Controls.Add(this.panel1);
             this.Name = "MultiPorposeSearch";
-            this.Text = "MultiPorposeSearch";
+            this.Text = "汎用検索";
             this.Load += new System.EventHandler(this.MultiPorposeSearch_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gvMultiporpose, 0);

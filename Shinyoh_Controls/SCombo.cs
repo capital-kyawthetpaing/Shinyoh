@@ -40,7 +40,9 @@ namespace Shinyoh_Controls
         public DataTable IsDatatableOccurs { get; set; }
 
         public bool E102;
-
+        public bool E106;//ses
+        public SCombo ctrlE106_1;
+        public SCombo ctrlE106_2;
         //Constructor
         public SCombo()
         {
@@ -129,9 +131,10 @@ namespace Shinyoh_Controls
             else if(e.KeyCode == Keys.Enter)
             {
                 ErrorCheck();
+                base.OnKeyDown(e);
             }
-            base.OnKeyDown(e);
         }
+            
         public bool ErrorCheck()
         {
             (bool, DataTable) r_value = errchk.Check(this);
@@ -211,6 +214,12 @@ namespace Shinyoh_Controls
         public void E102Check(bool value)
         {
             E102 = value;
+        }
+        public void E106Check(bool value, SCombo ctrl1, SCombo ctrl2)
+        {
+            E106 = value;
+            ctrlE106_1 = ctrl1;
+            ctrlE106_2 = ctrl2;
         }
     }
 }
