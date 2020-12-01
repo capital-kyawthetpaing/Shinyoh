@@ -51,8 +51,13 @@ namespace JuchuuList {
             SetButton(ButtonType.BType.Empty, F8, "", false);
             SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
-
+            Date_Setting();
             ErrorCheck();
+
+            txtStaffCD.ChangeDate = txtTempDate;
+        }
+        private void Date_Setting()
+        {
 
             BaseEntity baseEntity = _GetBaseData();
             txtOrderDate1.Text = baseEntity.LoginDate;
@@ -60,8 +65,6 @@ namespace JuchuuList {
             txtInputDate1.Text = baseEntity.LoginDate;
             txtInputDate2.Text = baseEntity.LoginDate;
             txtTempDate.Text = baseEntity.LoginDate;
-
-            txtStaffCD.ChangeDate = txtTempDate;
         }
         private void ErrorCheck()
         {
@@ -146,16 +149,25 @@ namespace JuchuuList {
                 }
             }
         }
+        private void Clear()
+        {
+            cf.Clear(PanelDetail);
+            txtOrderDate1.Focus();
+            Date_Setting();
+            lblStaffCD_Name.Text = "";
+            lblBrandName.Text = "";
+            lblTokuisakiName.Text = "";
+            lblKouritenName.Text = "";
+        }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "6")
             {
-                cf.Clear(PanelDetail);
-                txtOrderDate1.Focus();
+                Clear();
             }
             if (tagID == "10")
             {
-                DataTable dt = new DataTable { TableName = "MyTableName" };
+                DataTable dt = new DataTable { TableName = "JuchuuListTable" };
                 dt = Get_Form_Object();
                 if (dt.Rows.Count > 0)
                 {
@@ -166,7 +178,7 @@ namespace JuchuuList {
                 dt.Columns["TokuisakiCD"].ColumnName = "得意先コード";
                 dt.Columns["TokuisakiRyakuName"].ColumnName = "得意先名";
                 dt.Columns["KouritenCD"].ColumnName = "小売店コード";
-                dt.Columns["KouritenRyakuName"].ColumnName = "小売店名";
+                dt.Columns["KouritenRyakuName"].ColumnName = "小売店";
                 dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注番号";
                 dt.Columns["SenpouBusho"].ColumnName = "先方部署	";
                 dt.Columns["KibouNouki"].ColumnName = "希望納期";
@@ -174,8 +186,8 @@ namespace JuchuuList {
                 dt.Columns["Char1"].ColumnName = "ブランド";
                 dt.Columns["Exhibition"].ColumnName = "展示会";
                 dt.Columns["JANCD"].ColumnName = "JANコード";
-                dt.Columns["ShouhinCD"].ColumnName = "商品品番";
-                dt.Columns["ShouhinName"].ColumnName = "商品名";
+                dt.Columns["ShouhinCD"].ColumnName = "商品";
+                dt.Columns["ShouhinName"].ColumnName = "品名";
                 dt.Columns["ColorRyakuName"].ColumnName = "カラー";
                 dt.Columns["SizeNO"].ColumnName = "サイズ";
                 dt.Columns["JuchuuSuu"].ColumnName = "数量";
@@ -187,18 +199,20 @@ namespace JuchuuList {
                 dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
                 dt.Columns["SoukoName"].ColumnName = "倉庫";
 
-                DataRow row = dt.NewRow();
-                dt.Rows.Add(row);
 
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Project_Excel";
+                saveFileDialog1.InitialDirectory = @"C:\";
                 saveFileDialog1.DefaultExt = "xls";
                 saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "発注リスト.xls";
+                saveFileDialog1.FileName = "受注リスト.xls";
                 saveFileDialog1.RestoreDirectory = true;
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     ExportDataTableToExcel(dt, saveFileDialog1.FileName);
+                }
+                if (true)
+                {
+                    Clear();
                 }
 
                 }
@@ -212,6 +226,7 @@ namespace JuchuuList {
             Excel.Application oXL;
             Excel.Workbook oWB;
             Excel.Worksheet oSheet;
+            Excel.Range rg;
 
             try
             {
@@ -227,7 +242,7 @@ namespace JuchuuList {
 
                 // Get the Active sheet 
                 oSheet = (Excel.Worksheet)oWB.ActiveSheet;
-                oSheet.Name = "発注リスト";
+                oSheet.Name = "受注リスト";
 
                 int rowCount = 1;
                 foreach (DataRow dr in dt.Rows)
@@ -248,8 +263,32 @@ namespace JuchuuList {
                 // color the columns 
                 oSheet.Range["A1", "Z1"].Interior.Color = Excel.XlRgbColor.rgbOrange;
                 oSheet.Range["A1", "Z1"].Font.Color = Excel.XlRgbColor.rgbBlack;
+                //Change date format
+                rg = (Excel.Range)oSheet.Cells[2, 2];
+                rg.EntireColumn.NumberFormat = "YYYY/MM/DD";
 
+                //left alignment
+                Excel.Range last = oSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+                Excel.Range range = oSheet.get_Range("A2", last);
+                range.EntireColumn.HorizontalAlignment= Excel.XlHAlign.xlHAlignLeft;
 
+                //no border 
+                oXL.Windows.Application.ActiveWindow.DisplayGridlines = false;
+
+                Microsoft.Office.Interop.Excel.Range range1 = oSheet.UsedRange;
+                Microsoft.Office.Interop.Excel.Range cell = range.Cells[2][1];
+                Microsoft.Office.Interop.Excel.Borders border = cell.Borders;
+                border[Excel.XlBordersIndex.xlEdgeLeft].LineStyle =
+                    Microsoft.Office.Interop.Excel.XlLineStyle.xlLineStyleNone;
+                border[Excel.XlBordersIndex.xlEdgeTop].LineStyle =
+                    Microsoft.Office.Interop.Excel.XlLineStyle.xlLineStyleNone;
+                border[Excel.XlBordersIndex.xlEdgeBottom].LineStyle =
+                    Microsoft.Office.Interop.Excel.XlLineStyle.xlLineStyleNone;
+                border[Excel.XlBordersIndex.xlEdgeRight].LineStyle =
+                    Microsoft.Office.Interop.Excel.XlLineStyle.xlLineStyleNone;
+
+                range.EntireColumn.Borders.LineStyle = Excel.XlLineStyle.xlLineStyleNone;
+                range.EntireRow.Borders.LineStyle = Excel.XlLineStyle.xlLineStyleNone;
                 // Save the sheet and close 
                 oSheet = null;
                 oWB.SaveAs(filepath, Excel.XlFileFormat.xlWorkbookNormal,

@@ -100,16 +100,20 @@ namespace HacchuuList
 
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtTempDate, null);           
         }
+        private void Clear()
+        {
+            cf.Clear(Panel_Detail);
+            rdo_Hac.Checked = true;
+            txtHacchuuDate1.Focus();
+            Date_Setting();
+            lblStaff_Name.Text = "";
+            lblBrand_Name.Text = "";
+        }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "6")
             {
-                cf.Clear(Panel_Detail);
-                rdo_Hac.Checked = true;
-                txtHacchuuDate1.Focus();
-                Date_Setting();
-                lblStaff_Name.Text = "";
-                lblBrand_Name.Text = "";
+                Clear();
             }
             if (tagID == "10")
             {
@@ -149,7 +153,7 @@ namespace HacchuuList
                         dt.Columns["SoukoName"].ColumnName = "倉庫";
 
                         SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                        saveFileDialog1.InitialDirectory = @"C:\Shinyoh\Project_Excel";
+                        saveFileDialog1.InitialDirectory = @"C:\";
                         saveFileDialog1.DefaultExt = "xls";
                         saveFileDialog1.Filter = "ExcelFile|*.xls";
                         saveFileDialog1.FileName = "発注リスト.xls";
@@ -158,9 +162,13 @@ namespace HacchuuList
                         {
                             ExportDataTableToExcel(dt, saveFileDialog1.FileName);
                         }
+                        if (true)
+                        {
+                            Clear();
+                        }
                     }
                 }
-            }
+            }         
             base.FunctionProcess(tagID);
         }
 
@@ -211,7 +219,12 @@ namespace HacchuuList
                 rg = (Excel.Range)oSheet.Cells[3,3];
                 rg.EntireColumn.NumberFormat = "YYYY/MM/DD";
                 //left alignment
-                rg.EntireColumn.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                Excel.Range last = oSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+                Excel.Range range = oSheet.get_Range("A2", last);
+                range.EntireColumn.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+                //no border 
+                oXL.Windows.Application.ActiveWindow.DisplayGridlines = false;
 
                 // Save the sheet and close 
                 oSheet = null;

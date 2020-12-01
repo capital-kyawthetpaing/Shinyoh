@@ -17,6 +17,7 @@ namespace Shinyoh_Search
     {
         public string KouritenCD = string.Empty;
         public string changeDate = string.Empty;
+        public string KouritenRyakuName = string.Empty;
         public KouritenSearch()
         {
             InitializeComponent();
@@ -97,6 +98,7 @@ namespace Shinyoh_Search
                 DataGridViewRow row = gvrow;
                 KouritenCD = row.Cells["colKouritenCD"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
+                KouritenRyakuName = row.Cells["colKouritenRyakuName"].Value.ToString();
                 this.Close();
             }
         }
