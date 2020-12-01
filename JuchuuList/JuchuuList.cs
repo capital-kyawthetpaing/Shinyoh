@@ -256,15 +256,23 @@ namespace JuchuuList {
                 Excel.Range range = oSheet.get_Range("A2", last);
                 range.EntireColumn.HorizontalAlignment= Excel.XlHAlign.xlHAlignLeft;
 
-                //no border                
-                //Excel.Borders borders = oSheet.Cells.Borders;
-                //borders[Excel.XlBordersIndex.xlDiagonalUp].LineStyle = Excel.XlLineStyle.xlLineStyleNone;
-                //borders[Excel.XlBordersIndex.xlDiagonalDown].LineStyle = Excel.XlLineStyle.xlLineStyleNone;
-                //borders[Excel.XlBordersIndex.xlEdgeLeft].LineStyle = Excel.XlLineStyle.xlLineStyleNone;
-                //borders[Excel.XlBordersIndex.xlEdgeTop].LineStyle = Excel.XlLineStyle.xlLineStyleNone;
-                //borders[Excel.XlBordersIndex.xlEdgeBottom].LineStyle = Excel.XlLineStyle.xlLineStyleNone;
-                //borders[Excel.XlBordersIndex.xlEdgeRight].LineStyle = Excel.XlLineStyle.xlLineStyleNone;
+                //no border 
+                oXL.Windows.Application.ActiveWindow.DisplayGridlines = false;
 
+                Microsoft.Office.Interop.Excel.Range range1 = oSheet.UsedRange;
+                Microsoft.Office.Interop.Excel.Range cell = range.Cells[2][1];
+                Microsoft.Office.Interop.Excel.Borders border = cell.Borders;
+                border[Excel.XlBordersIndex.xlEdgeLeft].LineStyle =
+                    Microsoft.Office.Interop.Excel.XlLineStyle.xlLineStyleNone;
+                border[Excel.XlBordersIndex.xlEdgeTop].LineStyle =
+                    Microsoft.Office.Interop.Excel.XlLineStyle.xlLineStyleNone;
+                border[Excel.XlBordersIndex.xlEdgeBottom].LineStyle =
+                    Microsoft.Office.Interop.Excel.XlLineStyle.xlLineStyleNone;
+                border[Excel.XlBordersIndex.xlEdgeRight].LineStyle =
+                    Microsoft.Office.Interop.Excel.XlLineStyle.xlLineStyleNone;
+
+                range.EntireColumn.Borders.LineStyle = Excel.XlLineStyle.xlLineStyleNone;
+                range.EntireRow.Borders.LineStyle = Excel.XlLineStyle.xlLineStyleNone;
                 // Save the sheet and close 
                 oSheet = null;
                 oWB.SaveAs(filepath, Excel.XlFileFormat.xlWorkbookNormal,

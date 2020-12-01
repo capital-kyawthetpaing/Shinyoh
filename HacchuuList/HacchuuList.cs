@@ -211,7 +211,12 @@ namespace HacchuuList
                 rg = (Excel.Range)oSheet.Cells[3,3];
                 rg.EntireColumn.NumberFormat = "YYYY/MM/DD";
                 //left alignment
-                rg.EntireColumn.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+                Excel.Range last = oSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
+                Excel.Range range = oSheet.get_Range("A2", last);
+                range.EntireColumn.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
+
+                //no border 
+                oXL.Windows.Application.ActiveWindow.DisplayGridlines = false;
 
                 // Save the sheet and close 
                 oSheet = null;
