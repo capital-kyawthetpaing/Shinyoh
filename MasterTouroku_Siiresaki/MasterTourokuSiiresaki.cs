@@ -54,6 +54,7 @@ namespace MasterTouroku_Siiresaki
             base_Entity = _GetBaseData();
             txtSupplierCD.ChangeDate = txtChangeDate;
             txtCopyCD.ChangeDate = txtCopyDate;
+            txtStaffCD.ChangeDate = txtChangeDate;
         }
 
         private void ChangeMode(Mode mode)
@@ -165,7 +166,7 @@ namespace MasterTouroku_Siiresaki
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(Panel_Detail);
             txtSupplierCD.Focus();
-            txtSearch.Text = "0";
+           // txtSearch.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
         }
         public override void FunctionProcess(string tagID)
@@ -429,19 +430,19 @@ namespace MasterTouroku_Siiresaki
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            string value = txtSearch.Text.Replace(",", "");
-            ulong ul;
-            if (ulong.TryParse(value, out ul))
-            {
-                txtSearch.TextChanged -= txtSearch_TextChanged;
-                txtSearch.Text = string.Format("{0:#,#0}", ul);
-                txtSearch.SelectionStart = txtSearch.Text.Length;
-                txtSearch.TextChanged += txtSearch_TextChanged;
-            }
-            else
-            {
-                txtSearch.Text = "0";
-            }
+            //string value = txtSearch.Text.Replace(",", "");
+            //ulong ul;
+            //if (ulong.TryParse(value, out ul))
+            //{
+            //    txtSearch.TextChanged -= txtSearch_TextChanged;
+            //    txtSearch.Text = string.Format("{0:#,#0}", ul);
+            //    txtSearch.SelectionStart = txtSearch.Text.Length;
+            //    txtSearch.TextChanged += txtSearch_TextChanged;
+            //}
+            //else
+            //{
+            //    txtSearch.Text = "0";
+            //}
         }
 
         private string ChooseFile()
@@ -452,7 +453,7 @@ namespace MasterTouroku_Siiresaki
             string Xml = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "C:\\Shinyoh\\CSV Folder\\";
+                openFileDialog.InitialDirectory = "C:\\CSV Folder\\CSV\\";
                 openFileDialog.Title = "Browse CSV Files";
                 openFileDialog.Filter = "csv files (*.csv)|*.csv";
                 openFileDialog.FilterIndex = 2;
@@ -468,9 +469,10 @@ namespace MasterTouroku_Siiresaki
                     {
                         var splits = csvRows[i].Split(',');
                         obj.SiiresakiCD = splits[0];
+                        bl_List.Add(E276_Check(obj.SiiresakiCD));
                         bl_List.Add(Null_Check(obj.SiiresakiCD));
                         bl_List.Add(Byte_Check(10, obj.SiiresakiCD));
-                        
+                     
                         //
                         obj.ChangeDate = splits[1];
                         bl_List.Add(Null_Check(obj.ChangeDate));
@@ -620,7 +622,17 @@ namespace MasterTouroku_Siiresaki
             }
             return Xml;
         }
-
+        private bool E276_Check(string obj_text)
+        {
+            bool bl = false;
+            if (!string.IsNullOrWhiteSpace(obj_text))
+            {
+               
+                err.ShowErrorMessage("E276");
+                bl = true;
+            }
+            return bl;
+        }
         private bool Null_Check(string obj_text)
         {
             bool bl = false;

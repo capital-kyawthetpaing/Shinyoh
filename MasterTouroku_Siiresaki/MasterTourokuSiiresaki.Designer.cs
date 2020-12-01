@@ -130,7 +130,7 @@
             this.lblSupplier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplier.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSupplier.Location = new System.Drawing.Point(19, 9);
+            this.lblSupplier.Location = new System.Drawing.Point(6, 9);
             this.lblSupplier.Name = "lblSupplier";
             this.lblSupplier.Size = new System.Drawing.Size(100, 19);
             this.lblSupplier.TabIndex = 53;
@@ -143,7 +143,7 @@
             this.lblChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblChangeDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblChangeDate.Location = new System.Drawing.Point(19, 34);
+            this.lblChangeDate.Location = new System.Drawing.Point(6, 34);
             this.lblChangeDate.Name = "lblChangeDate";
             this.lblChangeDate.Size = new System.Drawing.Size(100, 19);
             this.lblChangeDate.TabIndex = 55;
@@ -156,7 +156,7 @@
             this.lblSupplier_CopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplier_CopyDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplier_CopyDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSupplier_CopyDate.Location = new System.Drawing.Point(247, 34);
+            this.lblSupplier_CopyDate.Location = new System.Drawing.Point(272, 34);
             this.lblSupplier_CopyDate.Name = "lblSupplier_CopyDate";
             this.lblSupplier_CopyDate.Size = new System.Drawing.Size(100, 19);
             this.lblSupplier_CopyDate.TabIndex = 59;
@@ -169,7 +169,7 @@
             this.lblSupplier_CopyCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplier_CopyCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplier_CopyCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSupplier_CopyCD.Location = new System.Drawing.Point(247, 9);
+            this.lblSupplier_CopyCD.Location = new System.Drawing.Point(272, 9);
             this.lblSupplier_CopyCD.Name = "lblSupplier_CopyCD";
             this.lblSupplier_CopyCD.Size = new System.Drawing.Size(100, 19);
             this.lblSupplier_CopyCD.TabIndex = 58;
@@ -182,7 +182,7 @@
             this.lblClassification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblClassification.Location = new System.Drawing.Point(674, 9);
+            this.lblClassification.Location = new System.Drawing.Point(747, 9);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
             this.lblClassification.TabIndex = 60;
@@ -193,7 +193,7 @@
             // 
             this.rdo_Registragion.Checked = true;
             this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Registragion.Location = new System.Drawing.Point(812, 9);
+            this.rdo_Registragion.Location = new System.Drawing.Point(885, 9);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
             this.rdo_Registragion.NextControl = null;
@@ -207,7 +207,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Delete.Location = new System.Drawing.Point(909, 9);
+            this.rdo_Delete.Location = new System.Drawing.Point(982, 9);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -324,7 +324,7 @@
             this.chk_Flag.ForeColor = System.Drawing.SystemColors.WindowText;
             this.chk_Flag.IsDatatableOccurs = null;
             this.chk_Flag.IsErrorOccurs = false;
-            this.chk_Flag.Location = new System.Drawing.Point(161, 20);
+            this.chk_Flag.Location = new System.Drawing.Point(145, 18);
             this.chk_Flag.MoveNext = true;
             this.chk_Flag.Name = "chk_Flag";
             this.chk_Flag.NextControl = null;
@@ -359,7 +359,7 @@
             this.txtSearch.IsErrorOccurs = false;
             this.txtSearch.IsRequire = false;
             this.txtSearch.Location = new System.Drawing.Point(141, 666);
-            this.txtSearch.MaxLength = 6;
+            this.txtSearch.MaxLength = 5;
             this.txtSearch.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
@@ -368,7 +368,6 @@
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(90, 19);
             this.txtSearch.TabIndex = 30;
-            this.txtSearch.Text = "0";
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
@@ -1201,7 +1200,7 @@
             this.txtChangeDate.IsDatatableOccurs = null;
             this.txtChangeDate.IsErrorOccurs = false;
             this.txtChangeDate.IsRequire = false;
-            this.txtChangeDate.Location = new System.Drawing.Point(118, 34);
+            this.txtChangeDate.Location = new System.Drawing.Point(105, 34);
             this.txtChangeDate.MaxLength = 10;
             this.txtChangeDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtChangeDate.MoveNext = true;
@@ -1225,7 +1224,7 @@
             this.txtCopyDate.IsDatatableOccurs = null;
             this.txtCopyDate.IsErrorOccurs = false;
             this.txtCopyDate.IsRequire = false;
-            this.txtCopyDate.Location = new System.Drawing.Point(346, 34);
+            this.txtCopyDate.Location = new System.Drawing.Point(371, 34);
             this.txtCopyDate.MaxLength = 10;
             this.txtCopyDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCopyDate.MoveNext = true;
@@ -1252,7 +1251,7 @@
             this.txtCopyCD.IsErrorOccurs = false;
             this.txtCopyCD.IsRequire = false;
             this.txtCopyCD.lblName = null;
-            this.txtCopyCD.Location = new System.Drawing.Point(346, 9);
+            this.txtCopyCD.Location = new System.Drawing.Point(371, 9);
             this.txtCopyCD.MaxLength = 13;
             this.txtCopyCD.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtCopyCD.MoveNext = true;
@@ -1278,7 +1277,7 @@
             this.txtSupplierCD.IsErrorOccurs = false;
             this.txtSupplierCD.IsRequire = false;
             this.txtSupplierCD.lblName = null;
-            this.txtSupplierCD.Location = new System.Drawing.Point(118, 9);
+            this.txtSupplierCD.Location = new System.Drawing.Point(105, 9);
             this.txtSupplierCD.MaxLength = 13;
             this.txtSupplierCD.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtSupplierCD.MoveNext = true;
@@ -1298,7 +1297,7 @@
             this.Controls.Add(this.Panel_Detail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTourokuSiiresaki";
-            this.Text = "MasterTourokuSiiresaki";
+            this.Text = "仕入先マスタ\t";
             this.Load += new System.EventHandler(this.MasterTourokuSiiresaki_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.Panel_Detail, 0);

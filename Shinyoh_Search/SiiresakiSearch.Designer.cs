@@ -360,7 +360,7 @@
             this.Controls.Add(this.PanelTitle);
             this.Name = "SiiresakiSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SiiresakiSearch";
+            this.Text = "仕入先検索\t\t";
             this.Load += new System.EventHandler(this.SiiresakiSearch_Load);
             this.Controls.SetChildIndex(this.PanelTitle, 0);
             this.Controls.SetChildIndex(this.gvSupplier, 0);
