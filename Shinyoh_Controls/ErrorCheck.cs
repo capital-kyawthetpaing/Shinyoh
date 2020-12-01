@@ -479,11 +479,11 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
-            else if(sCombo.E106)
+            if(sCombo.E106)
             {
-                if (!string.IsNullOrEmpty(sCombo.ctrlE106_1.Text) && !string.IsNullOrEmpty(sCombo.ctrlE106_2.Text))
+                if (!string.IsNullOrEmpty(sCombo.ctrlE106_1.SelectedValue.ToString()) && !string.IsNullOrEmpty(sCombo.ctrlE106_2.SelectedValue.ToString()))
                 {
-                    bool bl = Matches(sCombo.ctrlE106_2.Text, sCombo.ctrlE106_1.Text);
+                    bool bl = Matches(sCombo.ctrlE106_2.SelectedValue.ToString(), sCombo.ctrlE106_1.SelectedValue.ToString());
                     if (!bl)
                     {
                         ShowErrorMessage("E106");

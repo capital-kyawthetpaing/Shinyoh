@@ -149,7 +149,7 @@
             this.cbDivision1.MoveNext = true;
             this.cbDivision1.Name = "cbDivision1";
             this.cbDivision1.NextControl = null;
-            this.cbDivision1.NextControlName = null;
+            this.cbDivision1.NextControlName = "cbDivision2";
             this.cbDivision1.Size = new System.Drawing.Size(121, 20);
             this.cbDivision1.TabIndex = 1;
             // 

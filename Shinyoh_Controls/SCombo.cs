@@ -41,8 +41,8 @@ namespace Shinyoh_Controls
 
         public bool E102;
         public bool E106;//ses
-        public Control ctrlE106_1;
-        public Control ctrlE106_2;
+        public SCombo ctrlE106_1;
+        public SCombo ctrlE106_2;
         //Constructor
         public SCombo()
         {
@@ -131,9 +131,10 @@ namespace Shinyoh_Controls
             else if(e.KeyCode == Keys.Enter)
             {
                 ErrorCheck();
+                base.OnKeyDown(e);
             }
-            base.OnKeyDown(e);
         }
+            
         public bool ErrorCheck()
         {
             (bool, DataTable) r_value = errchk.Check(this);
@@ -214,7 +215,7 @@ namespace Shinyoh_Controls
         {
             E102 = value;
         }
-        public void E106Check(bool value, Control ctrl1, Control ctrl2)
+        public void E106Check(bool value, SCombo ctrl1, SCombo ctrl2)
         {
             E106 = value;
             ctrlE106_1 = ctrl1;
