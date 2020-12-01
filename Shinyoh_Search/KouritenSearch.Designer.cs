@@ -59,6 +59,7 @@
             this.colTokuisakiCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTokuisakiName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChangeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colKouritenRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gv_Kouriten)).BeginInit();
             this.SuspendLayout();
@@ -482,7 +483,8 @@
             this.colKouritenName,
             this.colTokuisakiCD,
             this.colTokuisakiName,
-            this.colChangeDate});
+            this.colChangeDate,
+            this.colKouritenRyakuName});
             this.gv_Kouriten.Location = new System.Drawing.Point(45, 146);
             this.gv_Kouriten.Name = "gv_Kouriten";
             this.gv_Kouriten.Size = new System.Drawing.Size(902, 302);
@@ -528,6 +530,13 @@
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.MinimumWidth = 150;
             this.colChangeDate.Name = "colChangeDate";
+            // 
+            // colKouritenRyakuName
+            // 
+            this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
+            this.colKouritenRyakuName.HeaderText = "Kouriten_Short_Name";
+            this.colKouritenRyakuName.Name = "colKouritenRyakuName";
+            this.colKouritenRyakuName.Visible = false;
             // 
             // KouritenSearch
             // 
@@ -580,5 +589,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChangeDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colKouritenRyakuName;
     }
 }
