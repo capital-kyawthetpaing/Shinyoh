@@ -77,6 +77,7 @@ namespace MasterTouroku_DenpyouNO
                     txtPrefix.E102Check(true);
                     txtPrefix.E132Check(false, null, null, null, null);
                     txtCounter.E102Check(true);
+                    txtCounter.Enabled = true;
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
@@ -88,6 +89,7 @@ namespace MasterTouroku_DenpyouNO
                     txtPrefix.E102Check(true);
                     txtPrefix.E132Check(false, null, null, null, null);
                     txtCounter.E102Check(true);
+                    //cf.DisablePanel(PanelDetail);
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
@@ -207,6 +209,11 @@ namespace MasterTouroku_DenpyouNO
                     {
                         EnableAndDisablePanel();
                     }
+                    else if(cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                        cf.DisablePanel(PanelDetail);
+                    }
                 }
                 DataTable dt = txtSEQNO.IsDatatableOccurs;
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
@@ -214,7 +221,9 @@ namespace MasterTouroku_DenpyouNO
                     if(dt.Rows[0]["MessageID"].ToString() != "E133")
                     {
                         DenpyouSelect(dt);
-                        EnableAndDisablePanel();
+                        //EnableAndDisablePanel();
+                        //cf.DisablePanel(PanelTitle);
+                        //cf.DisablePanel(PanelDetail);
                     }
                 }
             }
