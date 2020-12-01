@@ -453,7 +453,7 @@ namespace MasterTouroku_Siiresaki
             string Xml = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "C:\\Shinyoh\\CSV Folder\\";
+                openFileDialog.InitialDirectory = "C:\\CSV Folder\\CSV\\";
                 openFileDialog.Title = "Browse CSV Files";
                 openFileDialog.Filter = "csv files (*.csv)|*.csv";
                 openFileDialog.FilterIndex = 2;
@@ -469,9 +469,10 @@ namespace MasterTouroku_Siiresaki
                     {
                         var splits = csvRows[i].Split(',');
                         obj.SiiresakiCD = splits[0];
+                        bl_List.Add(E276_Check(obj.SiiresakiCD));
                         bl_List.Add(Null_Check(obj.SiiresakiCD));
                         bl_List.Add(Byte_Check(10, obj.SiiresakiCD));
-                        
+                     
                         //
                         obj.ChangeDate = splits[1];
                         bl_List.Add(Null_Check(obj.ChangeDate));
@@ -621,7 +622,17 @@ namespace MasterTouroku_Siiresaki
             }
             return Xml;
         }
-
+        private bool E276_Check(string obj_text)
+        {
+            bool bl = false;
+            if (!string.IsNullOrWhiteSpace(obj_text))
+            {
+               
+                err.ShowErrorMessage("E276");
+                bl = true;
+            }
+            return bl;
+        }
         private bool Null_Check(string obj_text)
         {
             bool bl = false;
