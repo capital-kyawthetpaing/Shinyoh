@@ -27,6 +27,8 @@
         private void InitializeComponent()
         {
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.lblKouritenName = new Shinyoh_Controls.SLabel();
+            this.lblTokuisakiName = new Shinyoh_Controls.SLabel();
             this.txtTempDate = new Shinyoh_Controls.STextBox();
             this.lblBrandName = new Shinyoh_Controls.SLabel();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
@@ -76,8 +78,6 @@
             this.lblOrderNo = new Shinyoh_Controls.SLabel();
             this.lblOrderDate = new Shinyoh_Controls.SLabel();
             this.lblName = new Shinyoh_Controls.SLabel();
-            this.lblTokuisakiName = new Shinyoh_Controls.SLabel();
-            this.lblKouritenName = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +151,30 @@
             this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
             this.PanelDetail.TabIndex = 3;
             // 
+            // lblKouritenName
+            // 
+            this.lblKouritenName.BackColor = System.Drawing.SystemColors.Control;
+            this.lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblKouritenName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblKouritenName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKouritenName.Location = new System.Drawing.Point(221, 223);
+            this.lblKouritenName.Name = "lblKouritenName";
+            this.lblKouritenName.Size = new System.Drawing.Size(200, 19);
+            this.lblKouritenName.TabIndex = 103;
+            this.lblKouritenName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblTokuisakiName
+            // 
+            this.lblTokuisakiName.BackColor = System.Drawing.SystemColors.Control;
+            this.lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTokuisakiName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTokuisakiName.Location = new System.Drawing.Point(221, 188);
+            this.lblTokuisakiName.Name = "lblTokuisakiName";
+            this.lblTokuisakiName.Size = new System.Drawing.Size(200, 19);
+            this.lblTokuisakiName.TabIndex = 102;
+            this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // txtTempDate
             // 
             this.txtTempDate.AllowMinus = false;
@@ -162,7 +186,7 @@
             this.txtTempDate.IsDatatableOccurs = null;
             this.txtTempDate.IsErrorOccurs = false;
             this.txtTempDate.IsRequire = false;
-            this.txtTempDate.Location = new System.Drawing.Point(1105, 51);
+            this.txtTempDate.Location = new System.Drawing.Point(41, 475);
             this.txtTempDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTempDate.MoveNext = true;
             this.txtTempDate.Name = "txtTempDate";
@@ -488,7 +512,7 @@
             this.chk_FW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_FW.IsDatatableOccurs = null;
             this.chk_FW.IsErrorOccurs = false;
-            this.chk_FW.Location = new System.Drawing.Point(789, 155);
+            this.chk_FW.Location = new System.Drawing.Point(791, 156);
             this.chk_FW.MoveNext = true;
             this.chk_FW.Name = "chk_FW";
             this.chk_FW.NextControl = null;
@@ -503,7 +527,7 @@
             this.chk_SS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_SS.IsDatatableOccurs = null;
             this.chk_SS.IsErrorOccurs = false;
-            this.chk_SS.Location = new System.Drawing.Point(738, 156);
+            this.chk_SS.Location = new System.Drawing.Point(721, 156);
             this.chk_SS.MoveNext = true;
             this.chk_SS.Name = "chk_SS";
             this.chk_SS.NextControl = null;
@@ -988,30 +1012,6 @@
             this.lblName.TabIndex = 39;
             this.lblName.Text = "名称";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTokuisakiName
-            // 
-            this.lblTokuisakiName.BackColor = System.Drawing.SystemColors.Control;
-            this.lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTokuisakiName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTokuisakiName.Location = new System.Drawing.Point(221, 188);
-            this.lblTokuisakiName.Name = "lblTokuisakiName";
-            this.lblTokuisakiName.Size = new System.Drawing.Size(200, 19);
-            this.lblTokuisakiName.TabIndex = 102;
-            this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblKouritenName
-            // 
-            this.lblKouritenName.BackColor = System.Drawing.SystemColors.Control;
-            this.lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblKouritenName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblKouritenName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKouritenName.Location = new System.Drawing.Point(221, 223);
-            this.lblKouritenName.Name = "lblKouritenName";
-            this.lblKouritenName.Size = new System.Drawing.Size(200, 19);
-            this.lblKouritenName.TabIndex = 103;
-            this.lblKouritenName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // JuchuuList
             // 
