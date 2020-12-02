@@ -243,10 +243,10 @@
             // 
             // colSoukoName
             // 
+            this.colSoukoName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colSoukoName.DataPropertyName = "SoukoName";
             this.colSoukoName.HeaderText = "倉庫名";
             this.colSoukoName.Name = "colSoukoName";
-            this.colSoukoName.Width = 467;
             // 
             // SoukoSearch
             // 
