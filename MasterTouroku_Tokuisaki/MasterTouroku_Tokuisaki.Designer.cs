@@ -437,7 +437,7 @@
             this.chk.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk.IsDatatableOccurs = null;
             this.chk.IsErrorOccurs = false;
-            this.chk.Location = new System.Drawing.Point(192, 20);
+            this.chk.Location = new System.Drawing.Point(187, 19);
             this.chk.MoveNext = true;
             this.chk.Name = "chk";
             this.chk.NextControl = null;
