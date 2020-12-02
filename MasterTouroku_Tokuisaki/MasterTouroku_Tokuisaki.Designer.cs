@@ -40,6 +40,7 @@
             this.RadOnchuu = new Shinyoh_Controls.SRadio();
             this.RadSaMa = new Shinyoh_Controls.SRadio();
             this.lblShukaKBN = new Shinyoh_Controls.SLabel();
+            this.txtStaffCharge = new Shinyoh_Search.SearchBox();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.lblStaff = new System.Windows.Forms.Label();
             this.chk = new Shinyoh_Controls.SCheckBox();
@@ -93,7 +94,6 @@
             this.sRadDelete = new Shinyoh_Controls.SRadio();
             this.sRadRegister = new Shinyoh_Controls.SRadio();
             this.lbImportClassification = new Shinyoh_Controls.SLabel();
-            this.txtStaffCharge = new Shinyoh_Search.SearchBox();
             this.txtTokuisakiCopy = new Shinyoh_Search.SearchBox();
             this.txt_Tokuisaki = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
@@ -105,13 +105,18 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.sRadDelete);
+            this.panel1.Controls.Add(this.sRadRegister);
+            this.panel1.Controls.Add(this.lbImportClassification);
             this.panel1.Size = new System.Drawing.Size(1485, 75);
+            this.panel1.Controls.SetChildIndex(this.lbImportClassification, 0);
+            this.panel1.Controls.SetChildIndex(this.sRadRegister, 0);
+            this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
+            this.panel1.Controls.SetChildIndex(this.cboMode, 0);
+            this.panel1.Controls.SetChildIndex(this.sRadDelete, 0);
             // 
             // PanelTitle
             // 
-            this.PanelTitle.Controls.Add(this.sRadDelete);
-            this.PanelTitle.Controls.Add(this.sRadRegister);
-            this.PanelTitle.Controls.Add(this.lbImportClassification);
             this.PanelTitle.Controls.Add(this.txtTokuisakiCopy);
             this.PanelTitle.Controls.Add(this.txt_Tokuisaki);
             this.PanelTitle.Controls.Add(this.txtTokuisaki_CopyDate);
@@ -120,7 +125,7 @@
             this.PanelTitle.Controls.Add(this.lblTokuisaki_CopyDate);
             this.PanelTitle.Controls.Add(this.txtChange_Date);
             this.PanelTitle.Controls.Add(this.lblTokuisaki_Copy);
-            this.PanelTitle.Size = new System.Drawing.Size(1000, 75);
+            this.PanelTitle.Size = new System.Drawing.Size(600, 75);
             // 
             // cboMode
             // 
@@ -380,6 +385,32 @@
             this.lblShukaKBN.TabIndex = 97;
             this.lblShukaKBN.Text = "出荷指示書不要区分\t";
             this.lblShukaKBN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtStaffCharge
+            // 
+            this.txtStaffCharge.AllowMinus = false;
+            this.txtStaffCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStaffCharge.ChangeDate = null;
+            this.txtStaffCharge.Combo = null;
+            this.txtStaffCharge.DecimalPlace = 0;
+            this.txtStaffCharge.DepandOnMode = false;
+            this.txtStaffCharge.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtStaffCharge.IntegerPart = 0;
+            this.txtStaffCharge.IsDatatableOccurs = null;
+            this.txtStaffCharge.IsErrorOccurs = false;
+            this.txtStaffCharge.IsRequire = false;
+            this.txtStaffCharge.lblName = null;
+            this.txtStaffCharge.Location = new System.Drawing.Point(181, 544);
+            this.txtStaffCharge.MaxLength = 10;
+            this.txtStaffCharge.MinimumSize = new System.Drawing.Size(60, 19);
+            this.txtStaffCharge.MoveNext = true;
+            this.txtStaffCharge.Name = "txtStaffCharge";
+            this.txtStaffCharge.NextControl = null;
+            this.txtStaffCharge.NextControlName = "txtStartDate";
+            this.txtStaffCharge.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtStaffCharge.Size = new System.Drawing.Size(75, 19);
+            this.txtStaffCharge.TabIndex = 29;
+            this.txtStaffCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblStaffCD_Name
             // 
@@ -1261,7 +1292,7 @@
             // sRadDelete
             // 
             this.sRadDelete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadDelete.Location = new System.Drawing.Point(814, 11);
+            this.sRadDelete.Location = new System.Drawing.Point(971, 12);
             this.sRadDelete.MoveNext = true;
             this.sRadDelete.Name = "sRadDelete";
             this.sRadDelete.NextControl = null;
@@ -1275,7 +1306,7 @@
             // 
             this.sRadRegister.Checked = true;
             this.sRadRegister.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadRegister.Location = new System.Drawing.Point(742, 11);
+            this.sRadRegister.Location = new System.Drawing.Point(893, 12);
             this.sRadRegister.MoveNext = true;
             this.sRadRegister.Name = "sRadRegister";
             this.sRadRegister.NextControl = null;
@@ -1293,38 +1324,12 @@
             this.lbImportClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbImportClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lbImportClassification.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbImportClassification.Location = new System.Drawing.Point(622, 10);
+            this.lbImportClassification.Location = new System.Drawing.Point(773, 11);
             this.lbImportClassification.Name = "lbImportClassification";
             this.lbImportClassification.Size = new System.Drawing.Size(100, 19);
             this.lbImportClassification.TabIndex = 66;
             this.lbImportClassification.Text = "取込区分";
             this.lbImportClassification.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtStaffCharge
-            // 
-            this.txtStaffCharge.AllowMinus = false;
-            this.txtStaffCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaffCharge.ChangeDate = null;
-            this.txtStaffCharge.Combo = null;
-            this.txtStaffCharge.DecimalPlace = 0;
-            this.txtStaffCharge.DepandOnMode = false;
-            this.txtStaffCharge.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaffCharge.IntegerPart = 0;
-            this.txtStaffCharge.IsDatatableOccurs = null;
-            this.txtStaffCharge.IsErrorOccurs = false;
-            this.txtStaffCharge.IsRequire = false;
-            this.txtStaffCharge.lblName = null;
-            this.txtStaffCharge.Location = new System.Drawing.Point(181, 544);
-            this.txtStaffCharge.MaxLength = 10;
-            this.txtStaffCharge.MinimumSize = new System.Drawing.Size(60, 19);
-            this.txtStaffCharge.MoveNext = true;
-            this.txtStaffCharge.Name = "txtStaffCharge";
-            this.txtStaffCharge.NextControl = null;
-            this.txtStaffCharge.NextControlName = "txtStartDate";
-            this.txtStaffCharge.SearchType = Entity.SearchType.ScType.Staff;
-            this.txtStaffCharge.Size = new System.Drawing.Size(75, 19);
-            this.txtStaffCharge.TabIndex = 29;
-            this.txtStaffCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtTokuisakiCopy
             // 

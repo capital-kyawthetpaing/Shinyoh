@@ -14,6 +14,9 @@ namespace JuchuuList {
         JuchuuListBL juchuuListBL;
         CommonFunction cf;
         String chk=string.Empty;
+        string YuuBinNO1 = string.Empty;
+        string YuuBinNO2 = string.Empty;
+        string Address = string.Empty;    
         public JuchuuList()
         {
             InitializeComponent();
@@ -104,11 +107,26 @@ namespace JuchuuList {
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                if (!txtYubin2.IsErrorOccurs)
                 {
-                    DataTable dt = txtYubin2.IsDatatableOccurs;
-                    txtAddress.Text = dt.Rows[0]["Juusho1"].ToString();
+                    if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                    {
+                        DataTable dt = txtYubin2.IsDatatableOccurs;
+                        txtAddress.Text = dt.Rows[0]["Juusho1"].ToString();
+                    }
+                    else
+                    {
+                        if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
+                        {
+                            txtAddress.Text = string.Empty;
+                        }
+                        else
+                        {
+                            txtAddress.Text = Address;
+                        }
+                    }
                 }
+
             }
         }
         private void txtTokuisaki_Leave(object sender, EventArgs e)

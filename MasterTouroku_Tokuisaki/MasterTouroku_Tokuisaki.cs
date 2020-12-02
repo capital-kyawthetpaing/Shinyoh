@@ -21,6 +21,10 @@ namespace MasterTouroku_Tokuisaki {
         CommonFunction cf;
         BaseBL bl;
         ErrorCheck err = new ErrorCheck();
+        string YuuBinNO1 = string.Empty;
+        string YuuBinNO2 = string.Empty;
+        string Address1 = string.Empty;
+        string Address2 = string.Empty;
 
         public MasterTouroku_Tokuisaki()
         {
@@ -375,11 +379,27 @@ namespace MasterTouroku_Tokuisaki {
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                if (!txtYubin2.IsErrorOccurs)
                 {
-                    DataTable dt = txtYubin2.IsDatatableOccurs;
-                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
-                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                    if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                    {
+                        DataTable dt = txtYubin2.IsDatatableOccurs;
+                        txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                        txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                    }
+                    else
+                    {
+                        if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
+                        {
+                            txtAddress1.Text = string.Empty;
+                            txtAddress2.Text = string.Empty;
+                        }
+                        else
+                        {
+                            txtAddress1.Text = Address1;
+                            txtAddress2.Text = Address2;
+                        }
+                    }
                 }
             }
         }
