@@ -501,7 +501,7 @@ namespace MasterTouroku_Tokuisaki {
 
                         //
                         obj.TokuisakiRyakuName = splits[4];
-                        bl_List.Add(Null_Check(obj.TokuisakiRyakuName.ToString(),i, "略名未入力エラー	"));
+                        bl_List.Add(Null_Check(obj.TokuisakiRyakuName.ToString(),i, "略名未入力エラー"));
                         bl_List.Add(Byte_Check(40, obj.TokuisakiRyakuName,i, "略名桁数エラー"));
 
                         //
@@ -519,7 +519,7 @@ namespace MasterTouroku_Tokuisaki {
                         obj.AliasKBN = Convert.ToInt32(splits[8]);
                         if (!(obj.AliasKBN == 1 || obj.AliasKBN == 2))
                         {
-                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー	");
+                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー");
                             bl_List.Add(true);
                         }
                         bl_List.Add(Null_Check(obj.AliasKBN.ToString(),i, "敬称未入力エラー"));              
@@ -597,7 +597,7 @@ namespace MasterTouroku_Tokuisaki {
                         obj.ShukkaSizishoHuyouKBN = Convert.ToInt32(splits[26]);
                         if (!(obj.ShukkaSizishoHuyouKBN == 0 || obj.ShukkaSizishoHuyouKBN == 1))
                         {
-                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー	");
+                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー");
                             bl_List.Add(true);
                         }
                         bl_List.Add(Null_Check(obj.ShukkaSizishoHuyouKBN.ToString(),i, "出荷指示書不要区分未入力エラー"));
