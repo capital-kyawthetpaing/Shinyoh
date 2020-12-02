@@ -33,19 +33,9 @@ namespace Shinyoh_Search
             gv_Kouriten.UseRowNo(true);
             gv_Kouriten.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DataGridviewBind();
-
-        }
-
-        private void txtCD2_TextChanged(object sender, EventArgs e)
-        {
             txtCD2.E106Check(true, txtCD1, txtCD2);
-        }
-
-        private void txtTokuisakiCD2_TextChanged(object sender, EventArgs e)
-        {
             txtTokuisakiCD2.E106Check(true, txtTokuisakiCD1, txtTokuisakiCD2);
         }
-
         private void btnKouriten_F11_Click(object sender, EventArgs e)
         {
             DataGridviewBind();
