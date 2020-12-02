@@ -67,7 +67,7 @@ namespace BL
         public DataTable Kouriten_Search(KouritenEntity obj)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[9];
+            var parameters = new SqlParameter[10];
             parameters[0] = new SqlParameter("@KouritenCD1", SqlDbType.VarChar) { Value = obj.KouritenCD };
             parameters[1] = new SqlParameter("@KouritenCD2", SqlDbType.VarChar) { Value = obj.KouritenRyakuName };
             parameters[2] = new SqlParameter("@KouritenName", SqlDbType.VarChar) { Value = obj.KouritenName };
@@ -79,6 +79,7 @@ namespace BL
             parameters[7] = new SqlParameter("@Tokuisaki_Kana", SqlDbType.VarChar) { Value = obj.Juusho2 };
 
             parameters[8] = new SqlParameter("@RadioCheck", SqlDbType.VarChar) { Value = obj.Remarks };
+            parameters[9] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate };
 
             DataTable dt = ckmdl.SelectDatatable("Kouriten_Search", GetConnectionString(), parameters);
             return dt;

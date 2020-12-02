@@ -16,6 +16,8 @@ namespace Shinyoh_Search {
         public string Tokuisaki = string.Empty;
         public string ChangeDate = string.Empty;
         public string TokuisakiRyakuName = string.Empty;
+        public string Date_Access_Tokuisaki = string.Empty;
+
         public TokuisakiSearch()
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace Shinyoh_Search {
         {
             TokuisakiEntity obj = new TokuisakiEntity();
             obj.TokuisakiCD = txtTokuisaki1.Text;
+            obj.ChangeDate = Date_Access_Tokuisaki;
             obj.TokuisakiRyakuName = txtTokuisaki2.Text;//using tempory for assign data
             obj.TokuisakiName = txtTokuisakiName.Text;
             obj.KanaName = txtKanaName.Text;

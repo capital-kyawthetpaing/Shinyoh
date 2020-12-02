@@ -18,6 +18,7 @@ namespace Shinyoh_Search
         public string KouritenCD = string.Empty;
         public string changeDate = string.Empty;
         public string KouritenRyakuName = string.Empty;
+        public string Date_Access_Kouriten = string.Empty;
         public KouritenSearch()
         {
             InitializeComponent();
@@ -44,6 +45,7 @@ namespace Shinyoh_Search
         {
             KouritenEntity obj = new KouritenEntity();
             obj.KouritenCD = txtCD1.Text;
+            obj.ChangeDate = Date_Access_Kouriten;
             obj.KouritenRyakuName = txtCD2.Text;//using tempory for assign data
             obj.KouritenName = txtName.Text;
             obj.KanaName = txtKanaName.Text;
