@@ -454,7 +454,7 @@ namespace Shinyoh_Controls
             }
             if (sTextBox.CYuubin_Juusho)
             {
-                if (sTextBox.ctrl1Yuubin_Juusho.Text != sTextBox.check1Yuubin_Juusho  && sTextBox.ctrl2Yuubin_Juusho.Text != sTextBox.check2Yuubin_Juusho)
+                if (sTextBox.ctrl1Yuubin_Juusho.Text != sTextBox.check1Yuubin_Juusho  || sTextBox.ctrl2Yuubin_Juusho.Text != sTextBox.check2Yuubin_Juusho)
                 {
                     YuubinNOBL obj = new YuubinNOBL();
                     YuubinNOEntity entity = new YuubinNOEntity();

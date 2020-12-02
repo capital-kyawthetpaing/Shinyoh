@@ -156,7 +156,7 @@ namespace HacchuuList
                         saveFileDialog1.RestoreDirectory = true;
                         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            ExportDataTableToExcel(dt, saveFileDialog1.FileName);
+                           ExportDataTableToExcel(dt, saveFileDialog1.FileName);
                         }
                     }
                 }
@@ -210,6 +210,7 @@ namespace HacchuuList
                 //Change date format
                 rg = (Excel.Range)oSheet.Cells[3,3];
                 rg.EntireColumn.NumberFormat = "YYYY/MM/DD";
+
                 //left alignment
                 Excel.Range last = oSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
                 Excel.Range range = oSheet.get_Range("A2", last);

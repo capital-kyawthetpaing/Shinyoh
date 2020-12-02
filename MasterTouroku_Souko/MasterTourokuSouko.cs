@@ -16,6 +16,10 @@ namespace MasterTouroku_Souko
         ButtonType type = new ButtonType();
         BaseEntity base_Entity;
         CommonFunction cf;
+        string YuuBinNO1 = string.Empty;
+        string YuuBinNO2 = string.Empty;
+        string Address1 = string.Empty;
+        string Address2 = string.Empty;
         public MasterTourokuSouko()
         {
             InitializeComponent();
@@ -78,7 +82,7 @@ namespace MasterTouroku_Souko
                     txtSouko.E101Check(true, "souko", txtSouko, null, null);
                     txtSouko.E270Check(false, "souko", txtSouko, null);
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
-                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
+                    //txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
                     Disable_UDI_Mode();
 
@@ -259,7 +263,11 @@ namespace MasterTouroku_Souko
                     txtPhone2_2.Text = dt.Rows[0]["Tel22"].ToString();
                     txtPhone2_3.Text = dt.Rows[0]["Tel23"].ToString();
                     txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
-
+                    YuuBinNO1 = dt.Rows[0]["YuubinNO1"].ToString();
+                    YuuBinNO2 = dt.Rows[0]["YuubinNO2"].ToString();
+                    Address1 = dt.Rows[0]["Juusho1"].ToString();
+                    Address2 = dt.Rows[0]["Juusho2"].ToString();
+                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, dt.Rows[0]["YuubinNO1"].ToString(), dt.Rows[0]["YuubinNO2"].ToString());
                 }
             }
         }
@@ -326,11 +334,27 @@ namespace MasterTouroku_Souko
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                if (!txtYubin2.IsErrorOccurs)
                 {
-                    DataTable dt = txtYubin2.IsDatatableOccurs;
-                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
-                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                    if(txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                    {
+                        DataTable dt = txtYubin2.IsDatatableOccurs;
+                        txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                        txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                    }
+                    else
+                    {
+                        if(txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
+                        {
+                            txtAddress1.Text = string.Empty;
+                            txtAddress2.Text = string.Empty;
+                        }
+                        else
+                        {
+                            txtAddress1.Text = Address1;
+                            txtAddress2.Text = Address2;
+                        }
+                    }
                 }
             }
         }

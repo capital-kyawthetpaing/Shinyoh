@@ -627,7 +627,6 @@ namespace MasterTouroku_Siiresaki
             bool bl = false;
             if (!string.IsNullOrWhiteSpace(obj_text))
             {
-               
                 err.ShowErrorMessage("E276");
                 bl = true;
             }
