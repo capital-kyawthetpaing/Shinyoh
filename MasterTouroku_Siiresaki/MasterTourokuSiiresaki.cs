@@ -626,23 +626,31 @@ namespace MasterTouroku_Siiresaki
         private bool E276_Check(string obj_text)
         {
             bool bl = false;
-            //Excel.Application xlApp;
-            //Excel.Workbook xlWorkBook;
-            //Excel.Worksheet xlWorkSheet;
-            //object misValue = System.Reflection.Missing.Value;
-            //int cnt = 0;
-            //xlApp = new Excel.Application();
-            //xlWorkBook = xlApp.Workbooks.Open(@"C:\CSV Folder\CSV\Shinyoh-(20201112).csv", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            //xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+            Excel.Application xlApp;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
+            int cnt = 0;
+            xlApp = new Excel.Application();
+            xlWorkBook = xlApp.Workbooks.Open(@"C:\CSV Folder\CSV\Shinyoh-(20201112).csv", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-            //int last = xlWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing).Row;
+            int last = xlWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing).Row;
+            //xlWorkSheet = xlWorkBook.Sheets["仕入先CD"];
+
             //Excel.Range range = xlWorkSheet.get_Range("A1:A" + last);
+            //foreach (Excel.Range e in range)
+            //{
+            //    cnt = cnt + 1;
+            //}
+            // MessageBox.Show(last.ToString());
 
             if (!string.IsNullOrWhiteSpace(obj_text))
             {
-                
-                err.ShowErrorMessage("E276");
-                bl = true;
+                BaseBL bbl = new BaseBL();
+                bbl.ShowMessage("E276",last.ToString());
+                //err.ShowErrorMessage("E276");
+                //bl = true;
             }
             return bl;
         }
