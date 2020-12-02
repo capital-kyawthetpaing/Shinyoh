@@ -67,6 +67,7 @@ namespace MasterTouroku_Kouriten
             txtStaffCD.ChangeDate = txtChangeDate;
             txtKouritenCD.ChangeDate = txtChangeDate;
             txtCopyCD.ChangeDate = txtCopyDate;
+            txtTokuisakiCD.ChangeDate = txtChangeDate;
         }
 
         private void ChangeMode(Mode mode)

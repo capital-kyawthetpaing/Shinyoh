@@ -76,7 +76,7 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();
-                        staffSearch.changeDate_Access = ChangeDate.Text.ToString();
+                        staffSearch.changeDate_Access = ChangeDate.Text;
                         staffSearch.ShowDialog();
                         CD = staffSearch.staffCD;
                         CDate = staffSearch.changeDate;
@@ -91,12 +91,14 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.Siiresaki:
                         SiiresakiSearch siiresakiSearch = new SiiresakiSearch();
+                        siiresakiSearch.Date_Access_Siiresaki = ChangeDate.Text;
                         siiresakiSearch.ShowDialog();
                         CD = siiresakiSearch.SiiresakiCD;
                         CDate = siiresakiSearch.changeDate;
                         break;
                     case Entity.SearchType.ScType.Tokuisaki:
                         TokuisakiSearch tokuisakiSearch = new TokuisakiSearch();
+                        tokuisakiSearch.Date_Access_Tokuisaki = ChangeDate.Text;
                         tokuisakiSearch.ShowDialog();
                         CD = tokuisakiSearch.Tokuisaki;
                         CDate = tokuisakiSearch.ChangeDate;
@@ -112,6 +114,7 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.Kouriten:
                         KouritenSearch kSearch = new KouritenSearch();
+                        kSearch.Date_Access_Kouriten = ChangeDate.Text;
                         kSearch.ShowDialog();
                         CD = kSearch.KouritenCD;
                         CDate = kSearch.changeDate;
