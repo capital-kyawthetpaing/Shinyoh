@@ -9,7 +9,6 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using Shinyoh_Controls;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace MasterTouroku_Siiresaki
 {
@@ -19,8 +18,11 @@ namespace MasterTouroku_Siiresaki
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
         ErrorCheck err = new ErrorCheck();
+        string YuuBinNO1 = string.Empty;
+        string YuuBinNO2 = string.Empty;
+        string Address1 = string.Empty;
+        string Address2 = string.Empty;
 
-        
         public MasterTourokuSiiresaki()
         {
             InitializeComponent();
@@ -330,11 +332,30 @@ namespace MasterTouroku_Siiresaki
 
             if (e.KeyCode == Keys.Enter)
             {
-                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count>0)
+                if (e.KeyCode == Keys.Enter)
                 {
-                    DataTable dt = txtYubin2.IsDatatableOccurs;
-                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
-                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                    if (!txtYubin2.IsErrorOccurs)
+                    {
+                        if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                        {
+                            DataTable dt = txtYubin2.IsDatatableOccurs;
+                            txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                            txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                        }
+                        else
+                        {
+                            if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
+                            {
+                                txtAddress1.Text = string.Empty;
+                                txtAddress2.Text = string.Empty;
+                            }
+                            else
+                            {
+                                txtAddress1.Text = Address1;
+                                txtAddress2.Text = Address2;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -626,31 +647,10 @@ namespace MasterTouroku_Siiresaki
         private bool E276_Check(string obj_text)
         {
             bool bl = false;
-            Excel.Application xlApp;
-            Excel.Workbook xlWorkBook;
-            Excel.Worksheet xlWorkSheet;
-            object misValue = System.Reflection.Missing.Value;
-            int cnt = 0;
-            xlApp = new Excel.Application();
-            xlWorkBook = xlApp.Workbooks.Open(@"C:\CSV Folder\CSV\Shinyoh-(20201112).csv", 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-
-            int last = xlWorkSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing).Row;
-            //xlWorkSheet = xlWorkBook.Sheets["仕入先CD"];
-
-            //Excel.Range range = xlWorkSheet.get_Range("A1:A" + last);
-            //foreach (Excel.Range e in range)
-            //{
-            //    cnt = cnt + 1;
-            //}
-            // MessageBox.Show(last.ToString());
-
             if (!string.IsNullOrWhiteSpace(obj_text))
             {
-                BaseBL bbl = new BaseBL();
-                bbl.ShowMessage("E276",last.ToString());
-                //err.ShowErrorMessage("E276");
-                //bl = true;
+                err.ShowErrorMessage("E276");
+                bl = true;
             }
             return bl;
         }

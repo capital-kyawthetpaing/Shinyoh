@@ -213,7 +213,9 @@ namespace Shinyoh_Controls
             }
             if (cf.IsByteLengthOver(MaxLength, Text))
             {
+                IsErrorOccurs = true;
                 MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Focus();
             }
             return IsErrorOccurs;
         }
