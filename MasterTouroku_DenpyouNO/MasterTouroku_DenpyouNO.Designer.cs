@@ -68,7 +68,7 @@
             this.lbl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lbl1.Location = new System.Drawing.Point(25, 7);
+            this.lbl1.Location = new System.Drawing.Point(25, 8);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(100, 19);
             this.lbl1.TabIndex = 0;
@@ -81,7 +81,7 @@
             this.lbl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lbl2.Location = new System.Drawing.Point(25, 28);
+            this.lbl2.Location = new System.Drawing.Point(25, 29);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(100, 19);
             this.lbl2.TabIndex = 1;
@@ -94,7 +94,7 @@
             this.lbl3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lbl3.Location = new System.Drawing.Point(25, 48);
+            this.lbl3.Location = new System.Drawing.Point(25, 50);
             this.lbl3.Name = "lbl3";
             this.lbl3.Size = new System.Drawing.Size(100, 19);
             this.lbl3.TabIndex = 2;
@@ -174,7 +174,7 @@
             this.txtPrefix.IsDatatableOccurs = null;
             this.txtPrefix.IsErrorOccurs = false;
             this.txtPrefix.IsRequire = false;
-            this.txtPrefix.Location = new System.Drawing.Point(124, 48);
+            this.txtPrefix.Location = new System.Drawing.Point(124, 50);
             this.txtPrefix.MaxLength = 4;
             this.txtPrefix.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPrefix.MoveNext = true;
@@ -201,7 +201,7 @@
             this.txtSEQNO.IsErrorOccurs = false;
             this.txtSEQNO.IsRequire = false;
             this.txtSEQNO.lblName = null;
-            this.txtSEQNO.Location = new System.Drawing.Point(124, 28);
+            this.txtSEQNO.Location = new System.Drawing.Point(124, 29);
             this.txtSEQNO.MaxLength = 3;
             this.txtSEQNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSEQNO.MoveNext = true;

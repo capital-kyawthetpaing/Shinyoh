@@ -51,8 +51,13 @@ namespace JuchuuList {
             SetButton(ButtonType.BType.Empty, F8, "", false);
             SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
-
+            Date_Setting();
             ErrorCheck();
+
+            txtStaffCD.ChangeDate = txtTempDate;
+        }
+        private void Date_Setting()
+        {
 
             BaseEntity baseEntity = _GetBaseData();
             txtOrderDate1.Text = baseEntity.LoginDate;
@@ -60,8 +65,6 @@ namespace JuchuuList {
             txtInputDate1.Text = baseEntity.LoginDate;
             txtInputDate2.Text = baseEntity.LoginDate;
             txtTempDate.Text = baseEntity.LoginDate;
-
-            txtStaffCD.ChangeDate = txtTempDate;
         }
         private void ErrorCheck()
         {
@@ -146,59 +149,75 @@ namespace JuchuuList {
                 }
             }
         }
+        private void Clear()
+        {
+            cf.Clear(PanelDetail);
+            txtOrderDate1.Focus();
+            Date_Setting();
+            lblStaffCD_Name.Text = "";
+            lblBrandName.Text = "";
+            lblTokuisakiName.Text = "";
+            lblKouritenName.Text = "";
+        }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "6")
             {
-                cf.Clear(PanelDetail);
-                txtOrderDate1.Focus();
+                Clear();
             }
             if (tagID == "10")
             {
-                DataTable dt = new DataTable { TableName = "JuchuuListTable" };
-                dt = Get_Form_Object();
-                if (dt.Rows.Count > 0)
+                if (ErrorCheck(PanelDetail))
                 {
+                    DataTable dt = new DataTable { TableName = "JuchuuListTable" };
+                    dt = Get_Form_Object();
+                    if (dt.Rows.Count > 0)
+                    {
 
-                dt.Columns["JuchuuNO"].ColumnName = "受注番号";
-                dt.Columns["JuchuuDate"].ColumnName = "受発注日";
-                dt.Columns["StaffName"].ColumnName = "担当者	";
-                dt.Columns["TokuisakiCD"].ColumnName = "得意先コード";
-                dt.Columns["TokuisakiRyakuName"].ColumnName = "得意先名";
-                dt.Columns["KouritenCD"].ColumnName = "小売店コード";
-                dt.Columns["KouritenRyakuName"].ColumnName = "小売店";
-                dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注番号";
-                dt.Columns["SenpouBusho"].ColumnName = "先方部署	";
-                dt.Columns["KibouNouki"].ColumnName = "希望納期";
-                dt.Columns["JuchuuDenpyouTekiyou"].ColumnName = "伝票摘要";
-                dt.Columns["Char1"].ColumnName = "ブランド";
-                dt.Columns["Exhibition"].ColumnName = "展示会";
-                dt.Columns["JANCD"].ColumnName = "JANコード";
-                dt.Columns["ShouhinCD"].ColumnName = "商品";
-                dt.Columns["ShouhinName"].ColumnName = "品名";
-                dt.Columns["ColorRyakuName"].ColumnName = "カラー";
-                dt.Columns["SizeNO"].ColumnName = "サイズ";
-                dt.Columns["JuchuuSuu"].ColumnName = "数量";
-                dt.Columns["UriageTanka"].ColumnName = "上代	";
-                dt.Columns["HacchuuTanka"].ColumnName = "下代";
-                dt.Columns["Free"].ColumnName = "Free";
-                dt.Columns["JuchuuMeisaiTekiyou"].ColumnName = "明細摘要";
-                dt.Columns["SiiresakiCD"].ColumnName = "発注先";
-                dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
-                dt.Columns["SoukoName"].ColumnName = "倉庫";
+                        dt.Columns["JuchuuNO"].ColumnName = "受注番号";
+                        dt.Columns["JuchuuDate"].ColumnName = "受発注日";
+                        dt.Columns["StaffName"].ColumnName = "担当者	";
+                        dt.Columns["TokuisakiCD"].ColumnName = "得意先コード";
+                        dt.Columns["TokuisakiRyakuName"].ColumnName = "得意先名";
+                        dt.Columns["KouritenCD"].ColumnName = "小売店コード";
+                        dt.Columns["KouritenRyakuName"].ColumnName = "小売店";
+                        dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注番号";
+                        dt.Columns["SenpouBusho"].ColumnName = "先方部署	";
+                        dt.Columns["KibouNouki"].ColumnName = "希望納期";
+                        dt.Columns["JuchuuDenpyouTekiyou"].ColumnName = "伝票摘要";
+                        dt.Columns["Char1"].ColumnName = "ブランド";
+                        dt.Columns["Exhibition"].ColumnName = "展示会";
+                        dt.Columns["JANCD"].ColumnName = "JANコード";
+                        dt.Columns["ShouhinCD"].ColumnName = "商品";
+                        dt.Columns["ShouhinName"].ColumnName = "品名";
+                        dt.Columns["ColorRyakuName"].ColumnName = "カラー";
+                        dt.Columns["SizeNO"].ColumnName = "サイズ";
+                        dt.Columns["JuchuuSuu"].ColumnName = "数量";
+                        dt.Columns["UriageTanka"].ColumnName = "上代	";
+                        dt.Columns["HacchuuTanka"].ColumnName = "下代";
+                        dt.Columns["Free"].ColumnName = "Free";
+                        dt.Columns["JuchuuMeisaiTekiyou"].ColumnName = "明細摘要";
+                        dt.Columns["SiiresakiCD"].ColumnName = "発注先";
+                        dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
+                        dt.Columns["SoukoName"].ColumnName = "倉庫";
 
 
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Project_Excel";
-                saveFileDialog1.DefaultExt = "xls";
-                saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "受注リスト.xls";
-                saveFileDialog1.RestoreDirectory = true;
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    ExportDataTableToExcel(dt, saveFileDialog1.FileName);
-                }
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.InitialDirectory = @"C:\";
+                        saveFileDialog1.DefaultExt = "xls";
+                        saveFileDialog1.Filter = "ExcelFile|*.xls";
+                        saveFileDialog1.FileName = "受注リスト.xls";
+                        saveFileDialog1.RestoreDirectory = true;
+                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        {
+                            ExportDataTableToExcel(dt, saveFileDialog1.FileName);
+                        }
+                        if (true)
+                        {
+                            Clear();
+                        }
 
+                    }
                 }
             }
             base.FunctionProcess(tagID);
