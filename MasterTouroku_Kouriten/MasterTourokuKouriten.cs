@@ -34,7 +34,7 @@ namespace MasterTouroku_Kouriten
 
         private void MasterTourokuKouriten_Load(object sender, EventArgs e)
         {
-            ProgramID = "MasterTourokuKouriten";
+            ProgramID = "MasterTouroku_Kouriten";
             StartProgram();
             cboMode.Bind(false, multi_Entity);
 
