@@ -119,6 +119,7 @@ namespace MasterTouroku_MultiPorpose
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
+                    F9.Visible = false;
                     break;
 
                 case Mode.Update:

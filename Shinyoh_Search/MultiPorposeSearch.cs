@@ -32,6 +32,8 @@ namespace Shinyoh_Search
             gvMultiporpose.UseRowNo(true);
             GridViewBind();
             txtID1.Focus();
+            txtID2.E106Check(true, txtID1, txtID2);
+            txtKey2.E106Check(true, txtKey1, txtKey2);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -41,9 +43,9 @@ namespace Shinyoh_Search
             }
             if (tagID == "3")
             {
-                //DataGridViewRow row = gvMultiporpose.CurrentRow;
-                //GetGridviewData(row);
-                GetGridviewData();
+                DataGridViewRow row = gvMultiporpose.CurrentRow;
+                GetGridviewData(row);
+                //GetGridviewData();
             }
             base.FunctionProcess(tagID);
         }
@@ -59,36 +61,30 @@ namespace Shinyoh_Search
             DataTable dt = bl.M_Multiporpose_Search(mentity);
             gvMultiporpose.DataSource = dt;
         }
-        private void GetGridviewData()
+        private void GetGridviewData(DataGridViewRow gvrow)
         {
-            //if (gvrow.DataBoundItem != null)
-            //{
-            //    DataGridViewRow row = gvrow;
-            if (gvMultiporpose.CurrentRow != null && gvMultiporpose.CurrentRow.Index >= 0)
+            if (gvrow.DataBoundItem != null)
             {
+                DataGridViewRow row = gvrow;
                 Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
                 Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
                 this.Close();
             }
+            //if (gvMultiporpose.CurrentRow != null && gvMultiporpose.CurrentRow.Index >= 0)
+            //{
+            //    Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
+            //    Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
+            //    this.Close();
+            //}
         }
         private void gvMultiporpose_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            //GetGridviewData(gvMultiporpose.Rows[e.RowIndex]);
-            GetGridviewData();
+            GetGridviewData(gvMultiporpose.Rows[e.RowIndex]);
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             //FunctionProcess(btnDisplay.Tag.ToString());
             GridViewBind();
-        }
-        private void txtID2_KeyDown(object sender, KeyEventArgs e)
-        {
-            txtID2.E106Check(true, txtID1, txtID2);
-        }
-
-        private void txtKey2_KeyDown(object sender, KeyEventArgs e)
-        {
-            txtKey2.E106Check(true, txtKey1, txtKey2);
         }
     }
 }

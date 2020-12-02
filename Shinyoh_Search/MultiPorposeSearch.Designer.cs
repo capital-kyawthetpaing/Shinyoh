@@ -143,7 +143,6 @@
             this.txtKey2.Size = new System.Drawing.Size(300, 19);
             this.txtKey2.TabIndex = 6;
             this.txtKey2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtKey2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKey2_KeyDown);
             // 
             // txtKey1
             // 
@@ -188,7 +187,6 @@
             this.txtID2.Size = new System.Drawing.Size(100, 19);
             this.txtID2.TabIndex = 4;
             this.txtID2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            this.txtID2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtID2_KeyDown);
             // 
             // txtID1
             // 

@@ -156,7 +156,7 @@
             this.lblSupplier_CopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplier_CopyDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplier_CopyDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSupplier_CopyDate.Location = new System.Drawing.Point(272, 34);
+            this.lblSupplier_CopyDate.Location = new System.Drawing.Point(290, 34);
             this.lblSupplier_CopyDate.Name = "lblSupplier_CopyDate";
             this.lblSupplier_CopyDate.Size = new System.Drawing.Size(100, 19);
             this.lblSupplier_CopyDate.TabIndex = 59;
@@ -169,7 +169,7 @@
             this.lblSupplier_CopyCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplier_CopyCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplier_CopyCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSupplier_CopyCD.Location = new System.Drawing.Point(272, 9);
+            this.lblSupplier_CopyCD.Location = new System.Drawing.Point(290, 9);
             this.lblSupplier_CopyCD.Name = "lblSupplier_CopyCD";
             this.lblSupplier_CopyCD.Size = new System.Drawing.Size(100, 19);
             this.lblSupplier_CopyCD.TabIndex = 58;
@@ -193,7 +193,7 @@
             // 
             this.rdo_Registragion.Checked = true;
             this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Registragion.Location = new System.Drawing.Point(885, 9);
+            this.rdo_Registragion.Location = new System.Drawing.Point(869, 9);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
             this.rdo_Registragion.NextControl = null;
@@ -207,7 +207,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Delete.Location = new System.Drawing.Point(982, 9);
+            this.rdo_Delete.Location = new System.Drawing.Point(949, 9);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -1224,7 +1224,7 @@
             this.txtCopyDate.IsDatatableOccurs = null;
             this.txtCopyDate.IsErrorOccurs = false;
             this.txtCopyDate.IsRequire = false;
-            this.txtCopyDate.Location = new System.Drawing.Point(371, 34);
+            this.txtCopyDate.Location = new System.Drawing.Point(389, 34);
             this.txtCopyDate.MaxLength = 10;
             this.txtCopyDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCopyDate.MoveNext = true;
@@ -1251,7 +1251,7 @@
             this.txtCopyCD.IsErrorOccurs = false;
             this.txtCopyCD.IsRequire = false;
             this.txtCopyCD.lblName = null;
-            this.txtCopyCD.Location = new System.Drawing.Point(371, 9);
+            this.txtCopyCD.Location = new System.Drawing.Point(389, 9);
             this.txtCopyCD.MaxLength = 13;
             this.txtCopyCD.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtCopyCD.MoveNext = true;
