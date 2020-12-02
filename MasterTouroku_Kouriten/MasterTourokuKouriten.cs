@@ -391,7 +391,10 @@ namespace MasterTouroku_Kouriten
                 txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
                 txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
                 txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
-
+                Address1 = dt.Rows[0]["Juusho1"].ToString();
+                Address2 = dt.Rows[0]["Juusho2"].ToString();
+                YuuBinNO1 = dt.Rows[0]["YuubinNO1"].ToString();
+                YuuBinNO2 = dt.Rows[0]["YuubinNO2"].ToString();
                 txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, dt.Rows[0]["YuubinNO1"].ToString(), dt.Rows[0]["YuubinNO2"].ToString());
             }
         }

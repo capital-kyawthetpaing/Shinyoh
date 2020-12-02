@@ -164,7 +164,7 @@
             this.txtHacchuuNO1.IsErrorOccurs = false;
             this.txtHacchuuNO1.IsRequire = false;
             this.txtHacchuuNO1.lblName = null;
-            this.txtHacchuuNO1.Location = new System.Drawing.Point(141, 84);
+            this.txtHacchuuNO1.Location = new System.Drawing.Point(141, 82);
             this.txtHacchuuNO1.MaxLength = 12;
             this.txtHacchuuNO1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO1.MoveNext = true;
@@ -470,7 +470,7 @@
             this.chk_FW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_FW.IsDatatableOccurs = null;
             this.chk_FW.IsErrorOccurs = false;
-            this.chk_FW.Location = new System.Drawing.Point(867, 183);
+            this.chk_FW.Location = new System.Drawing.Point(892, 183);
             this.chk_FW.MoveNext = true;
             this.chk_FW.Name = "chk_FW";
             this.chk_FW.NextControl = null;
@@ -485,7 +485,7 @@
             this.chk_SS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_SS.IsDatatableOccurs = null;
             this.chk_SS.IsErrorOccurs = false;
-            this.chk_SS.Location = new System.Drawing.Point(821, 183);
+            this.chk_SS.Location = new System.Drawing.Point(831, 183);
             this.chk_SS.MoveNext = true;
             this.chk_SS.Name = "chk_SS";
             this.chk_SS.NextControl = null;
@@ -658,7 +658,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(261, 88);
+            this.label3.Location = new System.Drawing.Point(261, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 20);
             this.label3.TabIndex = 52;
@@ -675,7 +675,7 @@
             this.txtHacchuuNO2.IsDatatableOccurs = null;
             this.txtHacchuuNO2.IsErrorOccurs = false;
             this.txtHacchuuNO2.IsRequire = false;
-            this.txtHacchuuNO2.Location = new System.Drawing.Point(298, 84);
+            this.txtHacchuuNO2.Location = new System.Drawing.Point(298, 82);
             this.txtHacchuuNO2.MaxLength = 12;
             this.txtHacchuuNO2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO2.MoveNext = true;
@@ -693,7 +693,7 @@
             this.lblHacchuuNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblHacchuuNO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblHacchuuNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblHacchuuNO.Location = new System.Drawing.Point(41, 84);
+            this.lblHacchuuNO.Location = new System.Drawing.Point(41, 82);
             this.lblHacchuuNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblHacchuuNO.Name = "lblHacchuuNO";
             this.lblHacchuuNO.Size = new System.Drawing.Size(100, 19);
@@ -735,7 +735,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(256, 52);
+            this.label2.Location = new System.Drawing.Point(261, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 20);
             this.label2.TabIndex = 46;
