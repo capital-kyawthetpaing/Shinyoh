@@ -12,6 +12,9 @@ namespace Shinyoh_Search
     {
         public string SiiresakiCD = string.Empty;
         public string changeDate = string.Empty;
+
+        public string Date_Access_Siiresaki;
+
         public SiiresakiSearch()
         {
             InitializeComponent();
@@ -53,6 +56,7 @@ namespace Shinyoh_Search
         {
             SiiresakiEntity obj = new SiiresakiEntity();
             obj.SiiresakiCD = txtSupplier1.Text;
+            obj.ChangeDate = Date_Access_Siiresaki;
             obj.SiiresakiRyakuName = txtSupplier2.Text;//using tempory for assign data
             obj.SiiresakiName = txtSupplierName.Text;
             obj.KanaName = txtKanaName.Text;

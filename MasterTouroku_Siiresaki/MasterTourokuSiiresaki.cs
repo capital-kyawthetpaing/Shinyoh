@@ -473,7 +473,6 @@ namespace MasterTouroku_Siiresaki
 
         private string ChooseFile()
         {
-
             var filePath = string.Empty;            
             SiiresakiEntity obj = new SiiresakiEntity();
             string Xml = string.Empty;

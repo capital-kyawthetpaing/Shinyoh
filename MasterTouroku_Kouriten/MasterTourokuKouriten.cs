@@ -64,8 +64,10 @@ namespace MasterTouroku_Kouriten
 
             base_Entity = _GetBaseData();
 
+            txtStaffCD.ChangeDate = txtChangeDate;
             txtKouritenCD.ChangeDate = txtChangeDate;
             txtCopyCD.ChangeDate = txtCopyDate;
+            txtTokuisakiCD.ChangeDate = txtChangeDate;
         }
 
         private void ChangeMode(Mode mode)
@@ -166,7 +168,7 @@ namespace MasterTouroku_Kouriten
 
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
-            txtEndDate.E104Check(true, txtStartDate, txtEndDate);
+            txtEndDate.E106Check(true, txtStartDate, txtEndDate);
         }
         public void Disable_UDI_Mode()
         {
@@ -537,7 +539,7 @@ namespace MasterTouroku_Kouriten
                     txtTantoushaName.Text = dt.Rows[0]["TantoushaName"].ToString();
                     txtMail.Text = dt.Rows[0]["MailAddress"].ToString();
                     txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
-                    lblStaffCD_Name.Text= dt.Rows[0]["StaffName"].ToString();
+                    //lblStaffCD_Name.Text= dt.Rows[0]["StaffName"].ToString();
                     txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
                     txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
                     txtRemark.Text = dt.Rows[0]["Remarks"].ToString();

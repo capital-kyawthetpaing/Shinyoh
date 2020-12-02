@@ -59,8 +59,7 @@ namespace MasterTouroku_Tokuisaki {
 
             txtStaffCharge.ChangeDate = txtChange_Date;
             txt_Tokuisaki.ChangeDate = txtChange_Date;
-            txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;
-           
+            txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;           
         }
 
         private void ChangeMode(Mode mode)

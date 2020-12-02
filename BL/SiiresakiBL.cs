@@ -66,12 +66,13 @@ namespace BL
         public DataTable Siiresaki_Search(SiiresakiEntity obj)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[5];
+            var parameters = new SqlParameter[6];
             parameters[0] = new SqlParameter("@SiiresakiCD1", SqlDbType.VarChar) { Value = obj.SiiresakiCD };
             parameters[1] = new SqlParameter("@SiiresakiCD2", SqlDbType.VarChar) { Value = obj.SiiresakiRyakuName };
             parameters[2] = new SqlParameter("@SiiresakiName", SqlDbType.VarChar) { Value = obj.SiiresakiName };
             parameters[3] = new SqlParameter("@KanaName", SqlDbType.VarChar) { Value = obj.KanaName };
             parameters[4] = new SqlParameter("@RadioCheck", SqlDbType.VarChar) { Value = obj.Remarks };
+            parameters[5] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate };
             DataTable dt = ckmdl.SelectDatatable("Siiresaki_Search", GetConnectionString(), parameters);
             return dt;
         }

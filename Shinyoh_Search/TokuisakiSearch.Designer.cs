@@ -74,7 +74,7 @@
             this.PanelTitle.Location = new System.Drawing.Point(0, 0);
             this.PanelTitle.Name = "PanelTitle";
             this.PanelTitle.Size = new System.Drawing.Size(935, 126);
-            this.PanelTitle.TabIndex = 3;
+            this.PanelTitle.TabIndex = 0;
             // 
             // rdo_All
             // 
