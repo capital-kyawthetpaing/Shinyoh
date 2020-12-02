@@ -22,7 +22,7 @@ namespace MasterTouroku_Siiresaki
         string YuuBinNO2 = string.Empty;
         string Address1 = string.Empty;
         string Address2 = string.Empty;
-
+        BaseBL bbl = new BaseBL();
         public MasterTourokuSiiresaki()
         {
             InitializeComponent();
@@ -505,7 +505,6 @@ namespace MasterTouroku_Siiresaki
                         bl_List.Add(Null_Check(obj.ShokutiFLG));
                         if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
-                            BaseBL bbl = new BaseBL();
                             bbl.ShowMessage("E117","0","1");
                            // err.ShowErrorMessage("E117");
                             bl_List.Add(true);
@@ -659,6 +658,7 @@ namespace MasterTouroku_Siiresaki
             bool bl = false;
             if(string.IsNullOrWhiteSpace(obj_text))
             {
+               
                 err.ShowErrorMessage("E102");
                 bl = true;
             }
