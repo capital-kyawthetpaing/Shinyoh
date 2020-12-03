@@ -147,6 +147,7 @@ namespace MasterTouroku_Kouriten
             txtKensakuHyouziJun.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            rdo_Registragion.Checked = true;
         }
         public void ErrorCheck()
         {
