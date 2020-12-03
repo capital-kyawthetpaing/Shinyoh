@@ -594,7 +594,7 @@ namespace MasterTouroku_Kouriten
 
                         //
                         obj.KouritenRyakuName = splits[4];
-                        bl_List.Add(Null_Check(obj.KouritenRyakuName, i, "小売店名未入力エラー"));
+                        bl_List.Add(Null_Check(obj.KouritenRyakuName, i, "略名未入力エラー"));
                         bl_List.Add(Byte_Check(40, obj.KouritenRyakuName, i, "略名桁数エラー"));
 
                         //
@@ -615,7 +615,7 @@ namespace MasterTouroku_Kouriten
                             base_bl.ShowMessage("E117", "1", "2");
                             bl_List.Add(true);
                         }
-                        bl_List.Add(Null_Check(obj.AliasKBN, i, ""));
+                        bl_List.Add(Null_Check(obj.AliasKBN, i, "敬称未入力エラー"));
 
                         //
                         obj.YuubinNO1 = splits[9];
