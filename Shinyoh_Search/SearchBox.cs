@@ -133,6 +133,7 @@ namespace Shinyoh_Search
                     this.ctrlE133_1 = ChangeDate;
                     this.ctrlE102_c = Combo;
                     SendKeys.Send("{ENTER}");
+
                 }
                 else if (ChangeDate != null)
                 {

@@ -734,7 +734,7 @@
             this.Controls.Add(this.Panel_Staff);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_Staff";
-            this.Text = "MasterTouroku_Staff";
+            this.Text = "スタッフマスタ";
             this.Load += new System.EventHandler(this.MasterTouroku_Staff_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.Panel_Staff, 0);
