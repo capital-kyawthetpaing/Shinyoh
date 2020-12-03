@@ -239,6 +239,7 @@
             this.colSouko.DataPropertyName = "SoukoCD";
             this.colSouko.HeaderText = "倉庫";
             this.colSouko.Name = "colSouko";
+            this.colSouko.ReadOnly = true;
             this.colSouko.Width = 110;
             // 
             // colSoukoName
@@ -247,6 +248,7 @@
             this.colSoukoName.DataPropertyName = "SoukoName";
             this.colSoukoName.HeaderText = "倉庫名";
             this.colSoukoName.Name = "colSoukoName";
+            this.colSoukoName.ReadOnly = true;
             // 
             // SoukoSearch
             // 
