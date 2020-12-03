@@ -212,29 +212,7 @@ namespace Shinyoh_Controls
                     sTextBox.Focus();
                     return (true, rDt);
                 }
-            }
-            if (sTextBox.E135)
-            {
-
-                string result = string.Empty;
-                switch (sTextBox.E135Type)
-                {
-                    case "M_Staff":
-                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
-                        {
-                            StaffBL bl = new StaffBL();
-                            rDt = bl.Staff_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty);
-                            result = rDt.Rows[0]["MessageID"].ToString();
-                        }
-                        break;
-                }
-                if (result.Equals("E135"))
-                {
-                    ShowErrorMessage("E135");
-                    sTextBox.Focus();
-                    return (true, rDt);
-                }
-            }
+            }           
             if (sTextBox.E133)
             {
                 DataTable dt = new DataTable();
@@ -296,12 +274,34 @@ namespace Shinyoh_Controls
                     case "JuchuuNyuuryoku":
                         JuchuuListBL jbl = new JuchuuListBL();
                         rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
-                        result = dt.Rows[0]["MessageID"].ToString();
+                        result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
                 if (result.Equals("E133"))
                 {
                     ShowErrorMessage("E133");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            if (sTextBox.E135)
+            {
+
+                string result = string.Empty;
+                switch (sTextBox.E135Type)
+                {
+                    case "M_Staff":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE135_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE135_2.Text))
+                        {
+                            StaffBL bl = new StaffBL();
+                            rDt = bl.Staff_Select_Check(sTextBox.ctrlE135_1.Text, sTextBox.ctrlE135_2.Text, "E135");
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                }
+                if (result.Equals("E135"))
+                {
+                    ShowErrorMessage("E135");
                     sTextBox.Focus();
                     return (true, rDt);
                 }

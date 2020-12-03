@@ -268,12 +268,14 @@
             this.colID.DataPropertyName = "ID";
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
             // 
             // colKey
             // 
             this.colKey.DataPropertyName = "Key";
             this.colKey.HeaderText = "KEY";
             this.colKey.Name = "colKey";
+            this.colKey.ReadOnly = true;
             this.colKey.Width = 290;
             // 
             // colName
@@ -281,6 +283,7 @@
             this.colName.DataPropertyName = "IDName";
             this.colName.HeaderText = "ID名";
             this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
             this.colName.Width = 285;
             // 
             // MultiPorposeSearch

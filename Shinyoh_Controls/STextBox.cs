@@ -241,10 +241,10 @@ namespace Shinyoh_Controls
                 if (this.TopLevelControl != null)
                 {
                     Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
-
+                    Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
                     if (DepandOnMode == false || (DepandOnMode == true && cbo.Text != "新規"))
                     {
-                        Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                        
                         if (ctrlArr.Length > 0)
                         {
                             Control btnF9 = ctrlArr[0];
@@ -252,7 +252,15 @@ namespace Shinyoh_Controls
                                 btnF9.Visible = true;
                         }
                     }
-                                  
+                    else
+                    {
+                        if (ctrlArr.Length > 0)
+                        {
+                            Control btnF9 = ctrlArr[0];
+                            if (btnF9 != null)
+                                btnF9.Visible = false;
+                        }
+                    }
                 }
             }
             base.OnGotFocus(e);

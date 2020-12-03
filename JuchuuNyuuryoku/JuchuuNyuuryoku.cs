@@ -19,7 +19,9 @@ namespace JuchuuNyuuryoku
         CommonFunction cf;
         multipurposeEntity multi_Entity;
         BaseBL base_bl;
-
+        KouritenDetail kobj = new KouritenDetail();
+        SiiresakiDetail sobj = new SiiresakiDetail();
+        TokuisakiDetail tobj = new TokuisakiDetail();
         public JuchuuNyuuryoku()
         {
             
@@ -66,6 +68,7 @@ namespace JuchuuNyuuryoku
                     break;
 
                 case Mode.Update:
+                    ErrorCheck();
                     txtJuchuuNO.E102Check(true);
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
@@ -75,6 +78,7 @@ namespace JuchuuNyuuryoku
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
+                    ErrorCheck();
                     txtJuchuuNO.E102Check(true);
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
@@ -85,10 +89,7 @@ namespace JuchuuNyuuryoku
 
                     break;
                 case Mode.Inquiry:
-                   
-
                     Disable_UDI_Mode();
-
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
@@ -112,19 +113,21 @@ namespace JuchuuNyuuryoku
         }
         public void ErrorCheck()
         {
+            
             txtJuchuuDate.E102Check(true);
             txtJuchuuDate.E103Check(true);
             txtJuchuuDate.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
             txtTokuisakiCD.E102Check(true);
-            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtJuchuuDate, null);
-            txtTokuisakiCD.E227Check(true, "M_Tokuisaki", txtTokuisakiCD, txtJuchuuDate);
+            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtJuchuuDate, null);            
             txtTokuisakiCD.E267Check(true, "M_Tokuisaki", txtTokuisakiCD, txtJuchuuDate);
+            txtTokuisakiCD.E227Check(true, "M_Tokuisaki", txtTokuisakiCD, txtJuchuuDate);
             txtKouritenCD.E102Check(true);
             txtKouritenCD.E101Check(true, "M_Kouriten", txtKouritenCD, txtJuchuuDate, null);
-            txtKouritenCD.E227Check(true, "M_Kouriten", txtTokuisakiCD, txtJuchuuDate);
             txtKouritenCD.E267Check(true, "M_Kouriten", txtTokuisakiCD, txtJuchuuDate);
+            txtKouritenCD.E227Check(true, "M_Kouriten", txtTokuisakiCD, txtJuchuuDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtJuchuuDate, null);
+            txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtJuchuuDate);
             
         }
         public void Disable_UDI_Mode()
@@ -133,72 +136,101 @@ namespace JuchuuNyuuryoku
         }
         private void btn_Tokuisaki_Click(object sender, EventArgs e)
         {
-            TokuisakiDetail detail = new TokuisakiDetail();
-            detail.ShowDialog();
+           tobj.ShowDialog();
         }
 
         private void btn_Kouriten_Click(object sender, EventArgs e)
         {
-            KouritenDetail detail = new KouritenDetail();
-            detail.ShowDialog();
+            kobj.ShowDialog();
         }
-
-        private void txtTokuisakiCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!txtTokuisakiCD.IsErrorOccurs)
-                {
-                    DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        Call_To_TokuisakiDetail(dt);
-                }
-            }
-        }
-        private void Call_To_TokuisakiDetail(DataTable dt)
-        {
-            if (dt.Rows[0]["MessageID"].ToString() == "E132")
-            {
-                TokuisakiDetail detail = new TokuisakiDetail();
-                detail.Datatable_Access(dt);
-                detail.ShowDialog();
-            }
-        }
-
-        private void txtKouritenCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!txtKouritenCD.IsErrorOccurs)
-                {
-                    DataTable dt = txtKouritenCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        Call_To_KouritenDetail(dt);
-                }
-            }
-        }
-        private void Call_To_KouritenDetail(DataTable dt)
-        {
-            if (dt.Rows[0]["MessageID"].ToString() == "E132")
-            {
-                KouritenDetail detail = new KouritenDetail();
-                detail.Datatable_Access(dt);
-                detail.ShowDialog();
-            }
-        }
-
         private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 if (!txtStaffCD.IsErrorOccurs)
                 {
-                    DataTable dt = txtStaffCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() == "E132")
-                    {
-                        lblStaff_Name.Text = dt.Rows[0]["StaffName"].ToString();
-                    }
+                    sobj.ShowDialog();
                 }
+            }
+        }
+
+        private void txtCopy_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
+            {
+                if (!txtCopy.IsErrorOccurs)
+                {
+                   // EnablePanel();
+                    DataTable dt = txtCopy.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        From_DB_To_Form(dt);
+                }
+            }
+        }
+        private void From_DB_To_Form(DataTable dt)
+        {
+            if (dt.Rows[0]["MessageID"].ToString() == "E132")
+            {
+                txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
+                lblTokuisaki_Name.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                txtKouritenCD.Text = dt.Rows[0]["KouritenCD"].ToString();
+                lblKouriten_Name.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
+                txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
+                lblStaff_Name.Text = dt.Rows[0]["StaffName"].ToString();
+                txtSenpouHacchuuNO.Text = dt.Rows[0]["SenpouHacchuuNO"].ToString();
+                txtSenpouBusho.Text = dt.Rows[0]["SenpouBusho"].ToString();
+                txtJuchuuDenpyouTekiyou.Text = dt.Rows[0]["JuchuuDenpyouTekiyou"].ToString();
+
+                
+                tobj.Access_Tokuisaki_obj.TokuisakiCD = dt.Rows[0]["TokuisakiCD"].ToString();
+                tobj.Access_Tokuisaki_obj.TokuisakiRyakuName= dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                tobj.Access_Tokuisaki_obj.TokuisakiName = dt.Rows[0]["TokuisakiName"].ToString();
+                tobj.Access_Tokuisaki_obj.YuubinNO1 = dt.Rows[0]["TokuisakiYuubinNO1"].ToString();
+                tobj.Access_Tokuisaki_obj.YuubinNO2 = dt.Rows[0]["TokuisakiYuubinNO2"].ToString();
+                tobj.Access_Tokuisaki_obj.Juusho1 = dt.Rows[0]["TokuisakiJuusho1"].ToString();
+                tobj.Access_Tokuisaki_obj.Juusho2 = dt.Rows[0]["TokuisakiJuusho2"].ToString();
+                tobj.Access_Tokuisaki_obj.Tel11 = dt.Rows[0]["TokuisakiTelNO1-1"].ToString();
+                tobj.Access_Tokuisaki_obj.Tel12 = dt.Rows[0]["TokuisakiTelNO1-2"].ToString();
+                tobj.Access_Tokuisaki_obj.Tel13 = dt.Rows[0]["TokuisakiTelNO1-3"].ToString();
+                tobj.Access_Tokuisaki_obj.Tel21 = dt.Rows[0]["TokuisakiTelNO2-1"].ToString();
+                tobj.Access_Tokuisaki_obj.Tel22 = dt.Rows[0]["TokuisakiTelNO2-2"].ToString();
+                tobj.Access_Tokuisaki_obj.Tel23 = dt.Rows[0]["TokuisakiTelNO2-3"].ToString();
+
+               
+                kobj.Access_Kouriten_obj.KouritenCD = dt.Rows[0]["KouritenCD"].ToString();
+                kobj.Access_Kouriten_obj.KouritenRyakuName = dt.Rows[0]["KouritenRyakuName"].ToString();
+                kobj.Access_Kouriten_obj.KouritenName = dt.Rows[0]["KouritenName"].ToString();
+                kobj.Access_Kouriten_obj.YuubinNO1 = dt.Rows[0]["KouritenYuubinNO1"].ToString();
+                kobj.Access_Kouriten_obj.YuubinNO2 = dt.Rows[0]["KouritenYuubinNO2"].ToString();
+                kobj.Access_Kouriten_obj.Juusho1 = dt.Rows[0]["KouritenJuusho1"].ToString();
+                kobj.Access_Kouriten_obj.Juusho2 = dt.Rows[0]["KouritenJuusho2"].ToString();
+                kobj.Access_Kouriten_obj.Tel11 = dt.Rows[0]["KouritenTelNO1-1"].ToString();
+                kobj.Access_Kouriten_obj.Tel12 = dt.Rows[0]["KouritenTelNO1-2"].ToString();
+                kobj.Access_Kouriten_obj.Tel13 = dt.Rows[0]["KouritenTelNO1-3"].ToString();
+                kobj.Access_Kouriten_obj.Tel21 = dt.Rows[0]["KouritenTelNO2-1"].ToString();
+                kobj.Access_Kouriten_obj.Tel22 = dt.Rows[0]["KouritenTelNO2-2"].ToString();
+                kobj.Access_Kouriten_obj.Tel23 = dt.Rows[0]["KouritenTelNO2-3"].ToString();
+
+               
+                sobj.Access_Siiresaki_obj.SiiresakiCD = dt.Rows[0]["SiiresakiCD"].ToString();
+                sobj.Access_Siiresaki_obj.SiiresakiRyakuName = dt.Rows[0]["SiiresakiRyakuName"].ToString();
+                sobj.Access_Siiresaki_obj.SiiresakiName = dt.Rows[0]["SiiresakiName"].ToString();
+                sobj.Access_Siiresaki_obj.YuubinNO1 = dt.Rows[0]["SiiresakiYuubinNO1"].ToString();
+                sobj.Access_Siiresaki_obj.YuubinNO2 = dt.Rows[0]["SiiresakiYuubinNO2"].ToString();
+                sobj.Access_Siiresaki_obj.Juusho1 = dt.Rows[0]["SiiresakiJuusho1"].ToString();
+                sobj.Access_Siiresaki_obj.Juusho2 = dt.Rows[0]["SiiresakiJuusho2"].ToString();
+                sobj.Access_Siiresaki_obj.Tel11 = dt.Rows[0]["SiiresakiTelNO11"].ToString();
+                sobj.Access_Siiresaki_obj.Tel12 = dt.Rows[0]["SiiresakiTelNO12"].ToString();
+                sobj.Access_Siiresaki_obj.Tel13 = dt.Rows[0]["SiiresakiTelNO13"].ToString();
+                sobj.Access_Siiresaki_obj.Tel21 = dt.Rows[0]["SiiresakiTelNO21"].ToString();
+                sobj.Access_Siiresaki_obj.Tel22 = dt.Rows[0]["SiiresakiTelNO22"].ToString();
+                sobj.Access_Siiresaki_obj.Tel23 = dt.Rows[0]["SiiresakiTelNO23"].ToString();
+
+                gv_1.DataSource = dt;
+               
+                gv_2.DataSource = dt;
+               
+
             }
         }
     }

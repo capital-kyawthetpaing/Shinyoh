@@ -64,8 +64,11 @@ namespace Shinyoh_Search
             DataTable dt = objMethod.Kouriten_Search(obj);
             if (dt.Columns.Contains("CurrentDay"))
             {
-                lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                dt.Columns.Remove("CurrentDay");
+                if (dt.Rows.Count > 0)
+                {
+                    lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                    dt.Columns.Remove("CurrentDay");
+                }
             }
             gv_Kouriten.DataSource = dt;
         }
