@@ -331,6 +331,7 @@
             this.colStaffCD.DataPropertyName = "StaffCD";
             this.colStaffCD.HeaderText = "スタッフ";
             this.colStaffCD.Name = "colStaffCD";
+            this.colStaffCD.ReadOnly = true;
             this.colStaffCD.Width = 125;
             // 
             // colStaffName
@@ -338,6 +339,7 @@
             this.colStaffName.DataPropertyName = "StaffName";
             this.colStaffName.HeaderText = "スタッフ名";
             this.colStaffName.Name = "colStaffName";
+            this.colStaffName.ReadOnly = true;
             this.colStaffName.Width = 400;
             // 
             // colChangeDate
@@ -350,6 +352,7 @@
             this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
+            this.colChangeDate.ReadOnly = true;
             // 
             // StaffSearch
             // 
