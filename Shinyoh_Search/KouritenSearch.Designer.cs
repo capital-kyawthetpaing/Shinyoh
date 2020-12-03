@@ -106,7 +106,7 @@
             this.txtTokuisaki_Kana.IsDatatableOccurs = null;
             this.txtTokuisaki_Kana.IsErrorOccurs = false;
             this.txtTokuisaki_Kana.IsRequire = false;
-            this.txtTokuisaki_Kana.Location = new System.Drawing.Point(595, 93);
+            this.txtTokuisaki_Kana.Location = new System.Drawing.Point(595, 97);
             this.txtTokuisaki_Kana.MaxLength = 80;
             this.txtTokuisaki_Kana.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisaki_Kana.MoveNext = true;
@@ -129,7 +129,7 @@
             this.txtTokuisakiName.IsDatatableOccurs = null;
             this.txtTokuisakiName.IsErrorOccurs = false;
             this.txtTokuisakiName.IsRequire = false;
-            this.txtTokuisakiName.Location = new System.Drawing.Point(595, 65);
+            this.txtTokuisakiName.Location = new System.Drawing.Point(595, 69);
             this.txtTokuisakiName.MaxLength = 80;
             this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiName.MoveNext = true;
@@ -145,7 +145,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(712, 41);
+            this.label2.Location = new System.Drawing.Point(712, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 20);
             this.label2.TabIndex = 23;
@@ -162,7 +162,7 @@
             this.txtTokuisakiCD2.IsDatatableOccurs = null;
             this.txtTokuisakiCD2.IsErrorOccurs = false;
             this.txtTokuisakiCD2.IsRequire = false;
-            this.txtTokuisakiCD2.Location = new System.Drawing.Point(749, 38);
+            this.txtTokuisakiCD2.Location = new System.Drawing.Point(749, 42);
             this.txtTokuisakiCD2.MaxLength = 10;
             this.txtTokuisakiCD2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiCD2.MoveNext = true;
@@ -185,7 +185,7 @@
             this.txtTokuisakiCD1.IsDatatableOccurs = null;
             this.txtTokuisakiCD1.IsErrorOccurs = false;
             this.txtTokuisakiCD1.IsRequire = false;
-            this.txtTokuisakiCD1.Location = new System.Drawing.Point(594, 37);
+            this.txtTokuisakiCD1.Location = new System.Drawing.Point(595, 41);
             this.txtTokuisakiCD1.MaxLength = 10;
             this.txtTokuisakiCD1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiCD1.MoveNext = true;
@@ -203,7 +203,7 @@
             this.sLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel1.Location = new System.Drawing.Point(515, 93);
+            this.sLabel1.Location = new System.Drawing.Point(515, 97);
             this.sLabel1.Name = "sLabel1";
             this.sLabel1.Size = new System.Drawing.Size(80, 19);
             this.sLabel1.TabIndex = 16;
@@ -216,7 +216,7 @@
             this.sLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel2.Location = new System.Drawing.Point(515, 65);
+            this.sLabel2.Location = new System.Drawing.Point(515, 69);
             this.sLabel2.Name = "sLabel2";
             this.sLabel2.Size = new System.Drawing.Size(80, 19);
             this.sLabel2.TabIndex = 17;
@@ -229,7 +229,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(515, 37);
+            this.sLabel3.Location = new System.Drawing.Point(515, 41);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(80, 19);
             this.sLabel3.TabIndex = 18;
@@ -239,7 +239,7 @@
             // rdo_All
             // 
             this.rdo_All.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_All.Location = new System.Drawing.Point(280, 9);
+            this.rdo_All.Location = new System.Drawing.Point(280, 13);
             this.rdo_All.MoveNext = true;
             this.rdo_All.Name = "rdo_All";
             this.rdo_All.NextControl = null;
@@ -253,7 +253,7 @@
             // 
             this.rdo_Date.Checked = true;
             this.rdo_Date.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Date.Location = new System.Drawing.Point(140, 9);
+            this.rdo_Date.Location = new System.Drawing.Point(140, 13);
             this.rdo_Date.MoveNext = true;
             this.rdo_Date.Name = "rdo_Date";
             this.rdo_Date.NextControl = null;
@@ -318,7 +318,7 @@
             this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
-            this.txtKanaName.Location = new System.Drawing.Point(125, 93);
+            this.txtKanaName.Location = new System.Drawing.Point(125, 97);
             this.txtKanaName.MaxLength = 80;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
@@ -341,7 +341,7 @@
             this.txtName.IsDatatableOccurs = null;
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = false;
-            this.txtName.Location = new System.Drawing.Point(125, 65);
+            this.txtName.Location = new System.Drawing.Point(125, 69);
             this.txtName.MaxLength = 80;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtName.MoveNext = true;
@@ -357,7 +357,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(245, 40);
+            this.label1.Location = new System.Drawing.Point(245, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 20);
             this.label1.TabIndex = 12;
@@ -374,7 +374,7 @@
             this.txtCD2.IsDatatableOccurs = null;
             this.txtCD2.IsErrorOccurs = false;
             this.txtCD2.IsRequire = false;
-            this.txtCD2.Location = new System.Drawing.Point(280, 37);
+            this.txtCD2.Location = new System.Drawing.Point(280, 41);
             this.txtCD2.MaxLength = 10;
             this.txtCD2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCD2.MoveNext = true;
@@ -397,7 +397,7 @@
             this.txtCD1.IsDatatableOccurs = null;
             this.txtCD1.IsErrorOccurs = false;
             this.txtCD1.IsRequire = false;
-            this.txtCD1.Location = new System.Drawing.Point(125, 37);
+            this.txtCD1.Location = new System.Drawing.Point(125, 41);
             this.txtCD1.MaxLength = 10;
             this.txtCD1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCD1.MoveNext = true;
@@ -415,7 +415,7 @@
             this.lblStaff_Kana.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff_Kana.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff_Kana.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff_Kana.Location = new System.Drawing.Point(45, 93);
+            this.lblStaff_Kana.Location = new System.Drawing.Point(45, 97);
             this.lblStaff_Kana.Name = "lblStaff_Kana";
             this.lblStaff_Kana.Size = new System.Drawing.Size(80, 19);
             this.lblStaff_Kana.TabIndex = 0;
@@ -428,7 +428,7 @@
             this.lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaffName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaffName.Location = new System.Drawing.Point(45, 65);
+            this.lblStaffName.Location = new System.Drawing.Point(45, 69);
             this.lblStaffName.Name = "lblStaffName";
             this.lblStaffName.Size = new System.Drawing.Size(80, 19);
             this.lblStaffName.TabIndex = 0;
@@ -441,7 +441,7 @@
             this.lblDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDisplay.Location = new System.Drawing.Point(45, 9);
+            this.lblDisplay.Location = new System.Drawing.Point(45, 13);
             this.lblDisplay.Name = "lblDisplay";
             this.lblDisplay.Size = new System.Drawing.Size(80, 19);
             this.lblDisplay.TabIndex = 0;
@@ -454,7 +454,7 @@
             this.lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff.Location = new System.Drawing.Point(45, 37);
+            this.lblStaff.Location = new System.Drawing.Point(45, 41);
             this.lblStaff.Name = "lblStaff";
             this.lblStaff.Size = new System.Drawing.Size(80, 19);
             this.lblStaff.TabIndex = 0;
