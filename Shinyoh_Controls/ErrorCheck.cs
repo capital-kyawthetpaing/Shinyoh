@@ -472,7 +472,7 @@ namespace Shinyoh_Controls
 
             if (sCombo.E102)
             {
-                if (sCombo.SelectedValue.ToString()=="-1")
+                if (sCombo.SelectedIndex.ToString() == "-1" || sCombo.SelectedIndex.ToString() == "0")
                 {
                     ShowErrorMessage("E102");
                     sCombo.Focus();
