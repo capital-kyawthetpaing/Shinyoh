@@ -61,10 +61,9 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.New:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
-                    txtSEQNO.E132Check(true, "denpyou", txtSEQNO, txtPrefix, null);
-                    txtSEQNO.E133Check(false, null, null, null, null);
                     txtPrefix.E102Check(true);
                     txtPrefix.E132Check(true, "denpyou", txtSEQNO, txtPrefix, null);
+                    txtPrefix.E133Check(false, "denpyou", txtPrefix, null, null);
                     txtCounter.E102Check(true);
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -73,10 +72,9 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.Update:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
-                    txtSEQNO.E132Check(false, null, null, null, null);
-                    txtSEQNO.E133Check(true, "denpyou", txtPrefix, null, null);
                     txtPrefix.E102Check(true);
                     txtPrefix.E132Check(false, null, null, null, null);
+                    txtPrefix.E133Check(true, "denpyou", txtPrefix, null, null);
                     txtCounter.E102Check(true);
                     txtCounter.Enabled = true;
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -85,10 +83,9 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.Delete:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
-                    txtSEQNO.E132Check(false, null, null, null, null);
-                    txtSEQNO.E133Check(true, "denpyou", txtPrefix, null, null);
                     txtPrefix.E102Check(true);
                     txtPrefix.E132Check(false, null, null, null, null);
+                    txtPrefix.E133Check(true, "denpyou", txtPrefix, null, null);
                     txtCounter.E102Check(true);
                     //cf.DisablePanel(PanelDetail);
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -97,10 +94,9 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.Inquiry:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
-                    txtSEQNO.E132Check(false, null, null, null, null);
-                    txtSEQNO.E133Check(true, "denpyou", txtPrefix, null, null);
                     txtPrefix.E102Check(true);
                     txtPrefix.E132Check(false, null, null, null, null);
+                    txtPrefix.E133Check(true, "denpyou", txtPrefix, null, null);
                     txtCounter.E102Check(true);
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
@@ -158,6 +154,9 @@ namespace MasterTouroku_DenpyouNO
         {
             cf.Clear(PanelTitle);
             cf.Clear(PanelDetail);
+            cbDivision.Focus();
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(PanelDetail);
             cbDivision.Select();
         }
         private void DBProcess()
