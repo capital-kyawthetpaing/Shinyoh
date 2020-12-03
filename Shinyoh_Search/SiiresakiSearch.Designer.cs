@@ -331,6 +331,7 @@
             this.colSiiresakiCD.DataPropertyName = "SiiresakiCD";
             this.colSiiresakiCD.HeaderText = "仕入先";
             this.colSiiresakiCD.Name = "colSiiresakiCD";
+            this.colSiiresakiCD.ReadOnly = true;
             this.colSiiresakiCD.Width = 125;
             // 
             // colSiiresakiName
@@ -338,6 +339,7 @@
             this.colSiiresakiName.DataPropertyName = "SiiresakiName";
             this.colSiiresakiName.HeaderText = "仕入先名";
             this.colSiiresakiName.Name = "colSiiresakiName";
+            this.colSiiresakiName.ReadOnly = true;
             this.colSiiresakiName.Width = 400;
             // 
             // colChangeDate
@@ -350,6 +352,7 @@
             this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
+            this.colChangeDate.ReadOnly = true;
             // 
             // SiiresakiSearch
             // 

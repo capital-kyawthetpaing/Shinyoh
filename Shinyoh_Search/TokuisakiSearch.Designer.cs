@@ -340,6 +340,7 @@
             this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
             this.colTokuisakiCD.HeaderText = "得意先";
             this.colTokuisakiCD.Name = "colTokuisakiCD";
+            this.colTokuisakiCD.ReadOnly = true;
             this.colTokuisakiCD.Width = 125;
             // 
             // colTokuisakiName
@@ -347,6 +348,7 @@
             this.colTokuisakiName.DataPropertyName = "TokuisakiName";
             this.colTokuisakiName.HeaderText = "得意先名\t\t\t\t\t\t";
             this.colTokuisakiName.Name = "colTokuisakiName";
+            this.colTokuisakiName.ReadOnly = true;
             this.colTokuisakiName.Width = 350;
             // 
             // colChangeDate
@@ -359,6 +361,7 @@
             this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
+            this.colChangeDate.ReadOnly = true;
             // 
             // colTokuisakiRyakuName
             // 
@@ -366,6 +369,7 @@
             this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
             this.colTokuisakiRyakuName.HeaderText = "TokuisakiRyakuName";
             this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
+            this.colTokuisakiRyakuName.ReadOnly = true;
             this.colTokuisakiRyakuName.Visible = false;
             // 
             // TokuisakiSearch
