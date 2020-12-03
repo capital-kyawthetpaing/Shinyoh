@@ -51,6 +51,17 @@
             this.colSoukoCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gv_1 = new Shinyoh_Controls.SGridView();
+            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFree = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGenZaikoSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSenpouHacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUriageTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnNameF11 = new Shinyoh_Controls.SButton();
             this.btnNameF10 = new Shinyoh_Controls.SButton();
             this.btnNameF8 = new Shinyoh_Controls.SButton();
@@ -95,17 +106,6 @@
             this.txtCopy = new Shinyoh_Controls.STextBox();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.txtJuchuuNO = new Shinyoh_Search.SearchBox();
-            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFree = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGenZaikoSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSenpouHacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUriageTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -244,7 +244,7 @@
             this.colSiiresakiTelNO23,
             this.colSoukoCD,
             this.colSoukoName});
-            this.gv_2.Location = new System.Drawing.Point(27, 463);
+            this.gv_2.Location = new System.Drawing.Point(27, 459);
             this.gv_2.Name = "gv_2";
             this.gv_2.Size = new System.Drawing.Size(1420, 100);
             this.gv_2.TabIndex = 102;
@@ -370,6 +370,74 @@
             this.gv_1.Name = "gv_1";
             this.gv_1.Size = new System.Drawing.Size(1420, 150);
             this.gv_1.TabIndex = 101;
+            // 
+            // colShouhinCD
+            // 
+            this.colShouhinCD.DataPropertyName = "ShouhinCD";
+            this.colShouhinCD.HeaderText = "商品コード";
+            this.colShouhinCD.Name = "colShouhinCD";
+            this.colShouhinCD.Width = 377;
+            // 
+            // colShouhinName
+            // 
+            this.colShouhinName.DataPropertyName = "ShouhinName";
+            this.colShouhinName.HeaderText = "商品名";
+            this.colShouhinName.Name = "colShouhinName";
+            // 
+            // colColorRyakuName
+            // 
+            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
+            this.colColorRyakuName.HeaderText = "カラー略名";
+            this.colColorRyakuName.Name = "colColorRyakuName";
+            // 
+            // colColorNO
+            // 
+            this.colColorNO.DataPropertyName = "ColorNO";
+            this.colColorNO.HeaderText = "カラーNO";
+            this.colColorNO.Name = "colColorNO";
+            // 
+            // colSizeNO
+            // 
+            this.colSizeNO.DataPropertyName = "SizeNO";
+            this.colSizeNO.HeaderText = "サイズNO";
+            this.colSizeNO.Name = "colSizeNO";
+            // 
+            // colFree
+            // 
+            this.colFree.DataPropertyName = "Free";
+            this.colFree.HeaderText = "Free";
+            this.colFree.Name = "colFree";
+            // 
+            // colGenZaikoSuu
+            // 
+            this.colGenZaikoSuu.DataPropertyName = "GenZaikoSuu";
+            this.colGenZaikoSuu.HeaderText = "現在庫数";
+            this.colGenZaikoSuu.Name = "colGenZaikoSuu";
+            // 
+            // colJuchuuSuu
+            // 
+            this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
+            this.colJuchuuSuu.HeaderText = "数量";
+            this.colJuchuuSuu.Name = "colJuchuuSuu";
+            // 
+            // colSenpouHacchuuNO
+            // 
+            this.colSenpouHacchuuNO.DataPropertyName = "SenpouHacchuuNO";
+            this.colSenpouHacchuuNO.HeaderText = "先方発注番号";
+            this.colSenpouHacchuuNO.Name = "colSenpouHacchuuNO";
+            // 
+            // colUriageTanka
+            // 
+            this.colUriageTanka.DataPropertyName = "UriageTanka";
+            this.colUriageTanka.HeaderText = "受注単価";
+            this.colUriageTanka.Name = "colUriageTanka";
+            // 
+            // colTanka
+            // 
+            this.colTanka.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colTanka.DataPropertyName = "Tanka";
+            this.colTanka.HeaderText = "発注単価";
+            this.colTanka.Name = "colTanka";
             // 
             // btnNameF11
             // 
@@ -952,7 +1020,6 @@
             this.txtTokuisakiCD.Size = new System.Drawing.Size(90, 19);
             this.txtTokuisakiCD.TabIndex = 4;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtTokuisakiCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisakiCD_KeyDown);
             // 
             // sLabel6
             // 
@@ -1003,7 +1070,6 @@
             this.txtKouritenCD.Size = new System.Drawing.Size(90, 19);
             this.txtKouritenCD.TabIndex = 6;
             this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtKouritenCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKouritenCD_KeyDown);
             // 
             // sLabel4
             // 
@@ -1090,6 +1156,7 @@
             this.txtCopy.Size = new System.Drawing.Size(100, 19);
             this.txtCopy.TabIndex = 2;
             this.txtCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopy_KeyDown);
             // 
             // sLabel3
             // 
@@ -1130,74 +1197,6 @@
             this.txtJuchuuNO.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO.TabIndex = 1;
             this.txtJuchuuNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // colShouhinCD
-            // 
-            this.colShouhinCD.DataPropertyName = "ShouhinCD";
-            this.colShouhinCD.HeaderText = "商品コード";
-            this.colShouhinCD.Name = "colShouhinCD";
-            this.colShouhinCD.Width = 377;
-            // 
-            // colShouhinName
-            // 
-            this.colShouhinName.DataPropertyName = "ShouhinName";
-            this.colShouhinName.HeaderText = "商品名";
-            this.colShouhinName.Name = "colShouhinName";
-            // 
-            // colColorRyakuName
-            // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            // 
-            // colColorNO
-            // 
-            this.colColorNO.DataPropertyName = "ColorNO";
-            this.colColorNO.HeaderText = "カラーNO";
-            this.colColorNO.Name = "colColorNO";
-            // 
-            // colSizeNO
-            // 
-            this.colSizeNO.DataPropertyName = "SizeNO";
-            this.colSizeNO.HeaderText = "サイズNO";
-            this.colSizeNO.Name = "colSizeNO";
-            // 
-            // colFree
-            // 
-            this.colFree.DataPropertyName = "Free";
-            this.colFree.HeaderText = "Free";
-            this.colFree.Name = "colFree";
-            // 
-            // colGenZaikoSuu
-            // 
-            this.colGenZaikoSuu.DataPropertyName = "GenZaikoSuu";
-            this.colGenZaikoSuu.HeaderText = "現在庫数";
-            this.colGenZaikoSuu.Name = "colGenZaikoSuu";
-            // 
-            // colJuchuuSuu
-            // 
-            this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
-            this.colJuchuuSuu.HeaderText = "数量";
-            this.colJuchuuSuu.Name = "colJuchuuSuu";
-            // 
-            // colSenpouHacchuuNO
-            // 
-            this.colSenpouHacchuuNO.DataPropertyName = "SenpouHacchuuNO";
-            this.colSenpouHacchuuNO.HeaderText = "先方発注番号";
-            this.colSenpouHacchuuNO.Name = "colSenpouHacchuuNO";
-            // 
-            // colUriageTanka
-            // 
-            this.colUriageTanka.DataPropertyName = "UriageTanka";
-            this.colUriageTanka.HeaderText = "受注単価";
-            this.colUriageTanka.Name = "colUriageTanka";
-            // 
-            // colTanka
-            // 
-            this.colTanka.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTanka.DataPropertyName = "Tanka";
-            this.colTanka.HeaderText = "発注単価";
-            this.colTanka.Name = "colTanka";
             // 
             // JuchuuNyuuryoku
             // 
