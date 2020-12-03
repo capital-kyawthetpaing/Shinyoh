@@ -198,9 +198,9 @@ namespace Shinyoh_Controls
                     case "denpyou":
                         DenpyouNOEntity denpyou_entity = new DenpyouNOEntity();
                         DenpyouNOBL denpyou_bl = new DenpyouNOBL();
-                        denpyou_entity.RenbenKBN = Convert.ToInt32(sTextBox.ctrlE102_c.SelectedValue.ToString());
-                        denpyou_entity.seqno = Convert.ToInt32(sTextBox.ctrlE132_1.Text);
-                        denpyou_entity.prefix = sTextBox.ctrlE132_2.Text;
+                        denpyou_entity.RenbenKBN = int.Parse(sTextBox.ctrl_combo.SelectedValue.ToString());
+                        denpyou_entity.seqno = Convert.ToInt32(sTextBox.ctrlE132_2.Text.ToString());
+                        denpyou_entity.prefix =sTextBox.ctrlE132_1.Text;
                         denpyou_entity.MessageID = "E132";
                         rDt = denpyou_bl.DenpyouNO_Check(denpyou_entity);
                         result = rDt.Rows[0]["MessageID"].ToString();
@@ -280,8 +280,8 @@ namespace Shinyoh_Controls
                     case "denpyou":
                         DenpyouNOEntity denpyou_entity = new DenpyouNOEntity();
                         DenpyouNOBL denpyou_bl = new DenpyouNOBL();
-                        denpyou_entity.RenbenKBN = Convert.ToInt32(sTextBox.ctrlE102_c.SelectedValue.ToString());
-                        denpyou_entity.seqno = Convert.ToInt32(sTextBox.Text);
+                        denpyou_entity.RenbenKBN = Convert.ToInt32(sTextBox.ctrl_combo.SelectedValue.ToString());
+                        denpyou_entity.seqno = Convert.ToInt32(sTextBox.ctrlE133_2.Text);
                         denpyou_entity.prefix = sTextBox.ctrlE133_1.Text;
                         denpyou_entity.MessageID = "E133";
                         rDt = denpyou_bl.DenpyouNO_Check(denpyou_entity);

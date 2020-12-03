@@ -36,6 +36,7 @@
             this.txtCounter = new Shinyoh_Controls.STextBox();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.txtPrefix = new Shinyoh_Controls.STextBox();
+            this.txt_Prefix = new Shinyoh_Search.SearchBox();
             this.txtSEQNO = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
@@ -49,6 +50,7 @@
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtPrefix);
+            this.PanelTitle.Controls.Add(this.txt_Prefix);
             this.PanelTitle.Controls.Add(this.txtSEQNO);
             this.PanelTitle.Controls.Add(this.cbDivision);
             this.PanelTitle.Controls.Add(this.lbl3);
@@ -168,24 +170,51 @@
             this.txtPrefix.AllowMinus = false;
             this.txtPrefix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrefix.DecimalPlace = 0;
-            this.txtPrefix.DepandOnMode = true;
+            this.txtPrefix.DepandOnMode = false;
             this.txtPrefix.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPrefix.IntegerPart = 0;
             this.txtPrefix.IsDatatableOccurs = null;
             this.txtPrefix.IsErrorOccurs = false;
             this.txtPrefix.IsRequire = false;
-            this.txtPrefix.Location = new System.Drawing.Point(124, 50);
+            this.txtPrefix.Location = new System.Drawing.Point(301, 29);
             this.txtPrefix.MaxLength = 4;
             this.txtPrefix.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPrefix.MoveNext = true;
             this.txtPrefix.Name = "txtPrefix";
             this.txtPrefix.NextControl = null;
             this.txtPrefix.NextControlName = "txtCounter";
-            this.txtPrefix.SearchType = Entity.SearchType.ScType.None;
+            this.txtPrefix.SearchType = Entity.SearchType.ScType.Denpyou;
             this.txtPrefix.Size = new System.Drawing.Size(100, 19);
-            this.txtPrefix.TabIndex = 3;
+            this.txtPrefix.TabIndex = 10;
             this.txtPrefix.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtPrefix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrefix_KeyDown);
+            // 
+            // txt_Prefix
+            // 
+            this.txt_Prefix.AllowMinus = false;
+            this.txt_Prefix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_Prefix.ChangeDate = null;
+            this.txt_Prefix.Combo = null;
+            this.txt_Prefix.DecimalPlace = 0;
+            this.txt_Prefix.DepandOnMode = true;
+            this.txt_Prefix.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txt_Prefix.IntegerPart = 0;
+            this.txt_Prefix.IsDatatableOccurs = null;
+            this.txt_Prefix.IsErrorOccurs = false;
+            this.txt_Prefix.IsRequire = false;
+            this.txt_Prefix.lblName = null;
+            this.txt_Prefix.Location = new System.Drawing.Point(124, 50);
+            this.txt_Prefix.MaxLength = 4;
+            this.txt_Prefix.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txt_Prefix.MoveNext = true;
+            this.txt_Prefix.Name = "txt_Prefix";
+            this.txt_Prefix.NextControl = null;
+            this.txt_Prefix.NextControlName = "txtCounter";
+            this.txt_Prefix.SearchType = Entity.SearchType.ScType.Denpyou;
+            this.txt_Prefix.Size = new System.Drawing.Size(100, 19);
+            this.txt_Prefix.TabIndex = 3;
+            this.txt_Prefix.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txt_Prefix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Prefix_KeyDown);
             // 
             // txtSEQNO
             // 
@@ -207,7 +236,7 @@
             this.txtSEQNO.MoveNext = true;
             this.txtSEQNO.Name = "txtSEQNO";
             this.txtSEQNO.NextControl = null;
-            this.txtSEQNO.NextControlName = "txtPrefix";
+            this.txtSEQNO.NextControlName = "txt_Prefix";
             this.txtSEQNO.SearchType = Entity.SearchType.ScType.Denpyou;
             this.txtSEQNO.Size = new System.Drawing.Size(100, 19);
             this.txtSEQNO.TabIndex = 2;
@@ -245,5 +274,6 @@
         protected System.Windows.Forms.Panel PanelDetail;
         private Shinyoh_Search.SearchBox txtSEQNO;
         private Shinyoh_Controls.STextBox txtPrefix;
+        private Shinyoh_Search.SearchBox txt_Prefix;
     }
 }

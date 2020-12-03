@@ -151,7 +151,7 @@ namespace Shinyoh_Controls
         public string check1Yuubin_Juusho;
         public string check2Yuubin_Juusho;
 
-        public SCombo ctrlE102_c;
+        public SCombo ctrl_combo;
 
         //Constructor
         public STextBox()

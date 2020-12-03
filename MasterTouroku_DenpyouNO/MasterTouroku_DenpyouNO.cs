@@ -43,10 +43,17 @@ namespace MasterTouroku_DenpyouNO
             ChangeMode(Mode.New);
             entity = _GetBaseData();
 
-            txtSEQNO.Combo = cbDivision;
-            txtSEQNO.ChangeDate = txtPrefix;
-            txtSEQNO.ctrlE102_c = cbDivision;
-            txtPrefix.ctrlE102_c = cbDivision;
+            txt_Prefix.Combo = cbDivision;
+            txt_Prefix.ChangeDate = txtSEQNO;
+            //txtSEQNO.Combo = cbDivision;
+            txt_Prefix.ctrl_combo = cbDivision;
+            txtSEQNO.ctrl_combo = cbDivision;
+
+
+            //txtSEQNO.Combo = cbDivision;
+            //txtSEQNO.ChangeDate = txt_Prefix;
+            //txtSEQNO.ctrl_combo = cbDivision;
+            //txt_Prefix.ctrl_combo = cbDivision;
         }
 
         private void ChangeMode(Mode mode)
@@ -61,9 +68,9 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.New:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
-                    txtPrefix.E102Check(true);
-                    txtPrefix.E132Check(true, "denpyou", txtSEQNO, txtPrefix, null);
-                    txtPrefix.E133Check(false, "denpyou", txtPrefix, null, null);
+                    txt_Prefix.E102Check(true);
+                    txt_Prefix.E132Check(true, "denpyou", txt_Prefix, txtSEQNO, cbDivision);
+                    txt_Prefix.E133Check(false, "denpyou", txt_Prefix, txtSEQNO, cbDivision);
                     txtCounter.E102Check(true);
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -72,31 +79,29 @@ namespace MasterTouroku_DenpyouNO
                 case Mode.Update:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
-                    txtPrefix.E102Check(true);
-                    txtPrefix.E132Check(false, null, null, null, null);
-                    txtPrefix.E133Check(true, "denpyou", txtPrefix, null, null);
+                    txt_Prefix.E102Check(true);
+                    txt_Prefix.E132Check(false, null, null, null, null);
+                    txt_Prefix.E133Check(true, "denpyou", txt_Prefix, txtSEQNO, cbDivision);
                     txtCounter.E102Check(true);
-                    txtCounter.Enabled = true;
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
-                    txtPrefix.E102Check(true);
-                    txtPrefix.E132Check(false, null, null, null, null);
-                    txtPrefix.E133Check(true, "denpyou", txtPrefix, null, null);
+                    txt_Prefix.E102Check(true);
+                    txt_Prefix.E132Check(false, null, null, null, null);
+                    txt_Prefix.E133Check(true, "denpyou", txt_Prefix, txtSEQNO, cbDivision);
                     txtCounter.E102Check(true);
-                    //cf.DisablePanel(PanelDetail);
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
                     cbDivision.E102Check(true);
                     txtSEQNO.E102Check(true);
-                    txtPrefix.E102Check(true);
-                    txtPrefix.E132Check(false, null, null, null, null);
-                    txtPrefix.E133Check(true, "denpyou", txtPrefix, null, null);
+                    txt_Prefix.E102Check(true);
+                    txt_Prefix.E132Check(false, null, null, null, null);
+                    txt_Prefix.E133Check(true, "denpyou", txt_Prefix, txtSEQNO, cbDivision);
                     txtCounter.E102Check(true);
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
@@ -181,10 +186,10 @@ namespace MasterTouroku_DenpyouNO
         private DenpyouNOEntity getDenpyou()
         {
             DenpyouNOEntity DNOentity = new DenpyouNOEntity();
-            DNOentity.RenbenKBN = Convert.ToInt32(cbDivision.SelectedIndex.ToString());
-            DNOentity.seqno = Convert.ToInt32(txtSEQNO.Text);
+            DNOentity.RenbenKBN = int.Parse(cbDivision.SelectedIndex.ToString());
+            DNOentity.seqno = int.Parse(txtSEQNO.Text);
             DNOentity.prefix = txtPrefix.Text;
-            DNOentity.counter = Convert.ToInt32(txtCounter.Text);
+            DNOentity.counter = txtCounter.Text;
             DNOentity.InsertOperator = entity.OperatorCD;
             DNOentity.UpdateOperator = entity.OperatorCD;
             DNOentity.PC = entity.PC;
@@ -201,39 +206,39 @@ namespace MasterTouroku_DenpyouNO
 
         private void txtSEQNO_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!txtSEQNO.IsErrorOccurs)
-                {
-                    if (cboMode.SelectedValue.ToString() == "2")//update
-                    {
-                        EnableAndDisablePanel();
-                    }
-                    else if(cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
-                    {
-                        cf.DisablePanel(PanelTitle);
-                        cf.DisablePanel(PanelDetail);
-                    }
-                }
-                DataTable dt = txtSEQNO.IsDatatableOccurs;
-                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
-                {
-                    if(dt.Rows[0]["MessageID"].ToString() != "E133")
-                    {
-                        DenpyouSelect(dt);
-                        //EnableAndDisablePanel();
-                        //cf.DisablePanel(PanelTitle);
-                        //cf.DisablePanel(PanelDetail);
-                    }
-                }
-            }
+            //if (e.KeyCode == Keys.Enter)
+            //{
+            //    if (!txtSEQNO.IsErrorOccurs)
+            //    {
+            //        if (cboMode.SelectedValue.ToString() == "2")//update
+            //        {
+            //            EnableAndDisablePanel();
+            //        }
+            //        else if(cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+            //        {
+            //            cf.DisablePanel(PanelTitle);
+            //            cf.EnablePanel(PanelDetail);
+            //        }
+            //    }
+            //    DataTable dt = txtSEQNO.IsDatatableOccurs;
+            //    if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+            //    {
+            //        if(dt.Rows[0]["MessageID"].ToString() != "0")
+            //        {
+            //            DenpyouSelect(dt);
+            //            //EnableAndDisablePanel();
+            //            //cf.DisablePanel(PanelTitle);
+            //            //cf.DisablePanel(PanelDetail);
+            //        }
+            //    }
+            //}
         }
 
         private void EnableAndDisablePanel()
         {
+            cf.DisablePanel(PanelTitle);
             cf.EnablePanel(PanelDetail);
             txtCounter.Focus();
-            cf.DisablePanel(PanelTitle);
         }
 
         private void DenpyouSelect(DataTable dt)
@@ -246,14 +251,44 @@ namespace MasterTouroku_DenpyouNO
 
         private void txtPrefix_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
+            //if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
+            //{
+            //    if (!txtPrefix.IsErrorOccurs)
+            //    {
+            //        cf.DisablePanel(PanelTitle);
+            //        cf.EnablePanel(PanelDetail);
+            //        txtCounter.Focus();
+            //        DataTable dt = txtPrefix.IsDatatableOccurs;
+            //        if(dt.Rows[0]["MessageID"].ToString() != "0")
+            //            DenpyouSelect(dt);
+            //    }
+            //}
+        }
+        private void txt_Prefix_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
             {
-                if (!txtPrefix.IsErrorOccurs)
+                if (!txt_Prefix.IsErrorOccurs)
                 {
-                    EnableAndDisablePanel();
-                    DataTable dt = txtPrefix.IsDatatableOccurs;
-                    if(dt.Rows[0]["MessageID"].ToString() != "0")
+                    if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
+                    {
+                        EnableAndDisablePanel();
+                    }
+                    else if(cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                        cf.DisablePanel(PanelDetail);
+                        txtCounter.Focus();
+                    }
+                }
+                DataTable dt = txt_Prefix.IsDatatableOccurs;
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                {
+                    if (dt.Rows[0]["MessageID"].ToString() == "0")
+                    {
                         DenpyouSelect(dt);
+                        
+                    }
                 }
             }
         }

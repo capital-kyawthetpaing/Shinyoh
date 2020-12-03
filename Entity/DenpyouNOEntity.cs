@@ -14,6 +14,6 @@ namespace Entity
         public int seqno { get; set; }
         public string prefix { get; set; }
         public string date { get; set; }
-        public int counter { get; set; }
+        public string counter { get; set; }
     }
 }
