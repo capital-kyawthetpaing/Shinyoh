@@ -128,14 +128,13 @@ namespace Shinyoh_Search
                 {
                     lblName.Text = name;
                 }
-                if (Combo != null)
-                {
-                    ChangeDate.Text = CDate;
-                    this.ctrlE133_1 = ChangeDate;
-                    this.ctrlE102_c = Combo;
-                    SendKeys.Send("{ENTER}");
-
-                }
+                //if (Combo != null)
+                //{
+                //    ChangeDate.Text = CDate;
+                //    this.ctrlE133_1 = ChangeDate;
+                //    this.ctrl_combo = Combo;
+                //    SendKeys.Send("{ENTER}");
+                //}
                 else if (ChangeDate != null)
                 {
                     if (ChangeDate.Name == this.NextControlName)

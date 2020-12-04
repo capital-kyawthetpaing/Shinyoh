@@ -147,11 +147,6 @@ namespace MasterTouroku_Kouriten
             txtKensakuHyouziJun.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-
-             YuuBinNO1 = string.Empty;
-             YuuBinNO2 = string.Empty;
-             Address1 = string.Empty;
-             Address2 = string.Empty;
         }
         public void ErrorCheck()
         {
