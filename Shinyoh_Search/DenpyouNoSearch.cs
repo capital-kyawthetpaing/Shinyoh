@@ -35,10 +35,12 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+
+            gvDenpyouNo.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.TopRight;
             gvDenpyouNo.UseRowNo(true);
             BindDataGrid();
             cbDivision2.E106Check(true, cbDivision1, cbDivision2);
-            lbl_Date.Text = DateTime.Now.ToString("yyyy/MM/dd");
+           // lbl_Date.Text = DateTime.Now.ToString("yyyy/MM/dd");
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -69,6 +71,17 @@ namespace Shinyoh_Search
             denpyou_entity.division2 = cbDivision2.SelectedValue.ToString();
             //denpyou_entity.date = txtDate.Text;
             gvDenpyouNo.DataSource = denpyoubl.DenpyouNO_Search(denpyou_entity);
+            DataTable dt = denpyoubl.DenpyouNO_Search(denpyou_entity);
+            if (dt.Columns.Contains("CurrentDay"))
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                    //dt.Columns.Remove("CurrentDay");
+                }
+            }
+            dt.Columns.Remove("CurrentDay");
+            gvDenpyouNo.DataSource = dt;
         }
 
         private void GetGridviewData(DataGridViewRow gvrow)
