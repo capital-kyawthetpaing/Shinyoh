@@ -18,8 +18,8 @@ namespace BL
             denpyou_entity.Sqlprms = new SqlParameter[10];
             denpyou_entity.Sqlprms[0] = new SqlParameter("@RenbenKBN", SqlDbType.Int) { Value = denpyou_entity.RenbenKBN };
             denpyou_entity.Sqlprms[1] = new SqlParameter("@seqno", SqlDbType.Int) { Value = denpyou_entity.seqno };
-            denpyou_entity.Sqlprms[2] = new SqlParameter("@prefix", SqlDbType.NVarChar) { Value = denpyou_entity.prefix };
-            denpyou_entity.Sqlprms[3] = new SqlParameter("@counter", SqlDbType.Int) { Value = denpyou_entity.counter };
+            denpyou_entity.Sqlprms[2] = new SqlParameter("@prefix", SqlDbType.VarChar) { Value = denpyou_entity.prefix };
+            denpyou_entity.Sqlprms[3] = new SqlParameter("@counter", SqlDbType.VarChar) { Value = denpyou_entity.counter };
             denpyou_entity.Sqlprms[4] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = denpyou_entity.InsertOperator };
             denpyou_entity.Sqlprms[5] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = denpyou_entity.UpdateOperator };
             denpyou_entity.Sqlprms[6] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = denpyou_entity.Mode };
