@@ -84,6 +84,12 @@
     <Compile Include="SearchBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ShippingNoSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShippingNoSearch.Designer.cs">
+      <DependentUpon>ShippingNoSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="SiiresakiSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ShippingNoSearch.resx">
+      <DependentUpon>ShippingNoSearch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SiiresakiSearch.resx">
       <DependentUpon>SiiresakiSearch.cs</DependentUpon>
     </EmbeddedResource>
