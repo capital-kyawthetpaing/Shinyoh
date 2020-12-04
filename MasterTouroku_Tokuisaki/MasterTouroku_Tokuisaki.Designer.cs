@@ -208,7 +208,7 @@
             this.txtChange_Date.IsDatatableOccurs = null;
             this.txtChange_Date.IsErrorOccurs = false;
             this.txtChange_Date.IsRequire = false;
-            this.txtChange_Date.Location = new System.Drawing.Point(117, 34);
+            this.txtChange_Date.Location = new System.Drawing.Point(119, 34);
             this.txtChange_Date.MaxLength = 10;
             this.txtChange_Date.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtChange_Date.MoveNext = true;
@@ -1213,7 +1213,7 @@
             this.txtTokuisakiName.IsDatatableOccurs = null;
             this.txtTokuisakiName.IsErrorOccurs = false;
             this.txtTokuisakiName.IsRequire = false;
-            this.txtTokuisakiName.Location = new System.Drawing.Point(179, 50);
+            this.txtTokuisakiName.Location = new System.Drawing.Point(181, 50);
             this.txtTokuisakiName.MaxLength = 80;
             this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiName.MoveNext = true;
@@ -1371,7 +1371,7 @@
             this.txt_Tokuisaki.IsErrorOccurs = false;
             this.txt_Tokuisaki.IsRequire = false;
             this.txt_Tokuisaki.lblName = null;
-            this.txt_Tokuisaki.Location = new System.Drawing.Point(118, 9);
+            this.txt_Tokuisaki.Location = new System.Drawing.Point(119, 9);
             this.txt_Tokuisaki.MaxLength = 10;
             this.txt_Tokuisaki.MinimumSize = new System.Drawing.Size(80, 19);
             this.txt_Tokuisaki.MoveNext = true;

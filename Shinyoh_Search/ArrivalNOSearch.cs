@@ -68,6 +68,14 @@ namespace Shinyoh_Search
             ane.ShouhinCDFrom = txtProductFrom.Text;
             ane.ShouhinCDTo = txtProductTo.Text;
             DataTable dt = ab.ArrivalNO_Search(ane);
+            if (dt.Columns.Contains("CurrentDay"))
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                    dt.Columns.Remove("CurrentDay");
+                }
+            }
             gvArrivalNo.DataSource = dt;
         }
         private void GetGridviewData(DataGridViewRow gvrow)
