@@ -14,9 +14,12 @@ using Shinyoh_Search;
 
 namespace Shinyoh_Search
 {
-    public partial class gvShippingNoSearch : SearchBase
+    public partial class ShippingNoSearch : SearchBase
     {
-        public gvShippingNoSearch()
+        public string ShippingNo= string.Empty;
+        public string changeDate = string.Empty;
+        public string changeDate_Access = string.Empty;
+        public ShippingNoSearch()
         {
             InitializeComponent();
         }
@@ -28,6 +31,14 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
             gvShippingNo.UseRowNo(true);
+            GridViewBind();
+            txtDateFrom.Focus();
+            txtDateFrom.E103Check(true);
+            txtDateTo.E103Check(true);
+            txtShippingNoFrom.E103Check(true);
+            txtShippingNoTo.E103Check(true);
+            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
+            sbStaff.E101Check(true, "staff", null, null, null);
         }
 
         public override void FunctionProcess(string tagID)
@@ -47,5 +58,6 @@ namespace Shinyoh_Search
         {
 
         }
+
     }
 }
