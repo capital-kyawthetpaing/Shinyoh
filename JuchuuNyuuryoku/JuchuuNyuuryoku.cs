@@ -55,12 +55,14 @@ namespace JuchuuNyuuryoku
         }
         private void ChangeMode(Mode mode)
         {
-           // Mode_Setting();
+            Mode_Setting();
             switch (mode)
             {
                 case Mode.New:
                     ErrorCheck();
+                    txtJuchuuNO.E102Check(false);
                     txtCopy.E102Check(true);
+
                     txtCopy.E133Check(true, "JuchuuNyuuryoku", txtCopy, null, null);
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -70,6 +72,8 @@ namespace JuchuuNyuuryoku
                 case Mode.Update:
                     ErrorCheck();
                     txtJuchuuNO.E102Check(true);
+                    txtCopy.E102Check(false);
+
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
 
@@ -80,6 +84,8 @@ namespace JuchuuNyuuryoku
                 case Mode.Delete:
                     ErrorCheck();
                     txtJuchuuNO.E102Check(true);
+                    txtCopy.E102Check(false);
+
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
 
@@ -89,6 +95,9 @@ namespace JuchuuNyuuryoku
 
                     break;
                 case Mode.Inquiry:
+                    txtJuchuuNO.E102Check(false);
+                    txtCopy.E102Check(false);
+
                     Disable_UDI_Mode();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
@@ -100,16 +109,26 @@ namespace JuchuuNyuuryoku
             cf.Clear(PanelTitle);
             cf.Clear(Panel_Detail);
 
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(Panel_Detail);
+
             lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblKouriten_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaff_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrand_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;            
             lblYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
-            cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
+
+            lblTokuisaki_Name.Text = string.Empty;
+            lblKouriten_Name.Text = string.Empty;
+            lblStaff_Name.Text = string.Empty;
+            lblBrand_Name.Text = string.Empty;            
 
             txtJuchuuNO.Focus();
+        }
+        public void Disable_UDI_Mode()
+        {
+            txtCopy.Enabled = false;
         }
         public void ErrorCheck()
         {
@@ -130,10 +149,62 @@ namespace JuchuuNyuuryoku
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtJuchuuDate);
             
         }
-        public void Disable_UDI_Mode()
+        public override void FunctionProcess(string tagID)
         {
-            txtCopy.Enabled = false;
+            if (tagID == "2")
+            {
+                ChangeMode(Mode.New);
+            }
+            if (tagID == "3")
+            {
+                ChangeMode(Mode.Update);
+            }
+            if (tagID == "4")
+            {
+                ChangeMode(Mode.Delete);
+            }
+            if (tagID == "5")
+            {
+                ChangeMode(Mode.Inquiry);
+            }
+            if (tagID == "6")
+            {
+                Mode_Setting();
+                if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
+                {
+                    Disable_UDI_Mode();
+                }
+            }
+            if (tagID == "10")
+            {
+                
+            }
+            if (tagID == "12")
+            {
+                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
+                {
+                  //  DBProcess();
+                    switch (cboMode.SelectedValue)
+                    {
+                        case "1":
+                            ChangeMode(Mode.New);
+                            break;
+                        case "2":
+                            ChangeMode(Mode.Update);
+                            break;
+                        case "3":
+                            ChangeMode(Mode.Delete);
+                            break;
+                        case "4":
+                            ChangeMode(Mode.Inquiry);
+                            break;
+                    }
+                }
+            }
+
+            base.FunctionProcess(tagID);
         }
+
         private void btn_Tokuisaki_Click(object sender, EventArgs e)
         {
            tobj.ShowDialog();
