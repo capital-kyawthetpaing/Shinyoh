@@ -34,7 +34,10 @@ namespace Shinyoh_Search
             txtDateTo.E103Check(true);
             txtExpectedDateFrom.E103Check(true);
             txtExpectedDateTo.E103Check(true);
+            txtDateTo.E106Check(true, txtDateFrom, txtDateTo);
             txtExpectedDateTo.E106Check(true, txtExpectedDateFrom, txtExpectedDateTo);
+            txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
+            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
             sbStaff.E101Check(true, "staff", null, null, null);
         }
         public override void FunctionProcess(string tagID)
@@ -81,26 +84,6 @@ namespace Shinyoh_Search
             FunctionProcess(btnSearch.Tag.ToString());
             GridViewBind();
         }
-        private void txtDateTo_KeyDown(object sender, KeyEventArgs e)
-        {
-            txtDateTo.E106Check(true, txtDateFrom, txtDateTo);
-        }
-
-        private void txtExpectedDateTo_KeyDown(object sender, KeyEventArgs e)
-        {
-            txtExpectedDateTo.E106Check(true, txtExpectedDateFrom, txtExpectedDateTo);
-        }
-
-        private void txtControlNoTo_KeyDown(object sender, KeyEventArgs e)
-        {
-            txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
-        }
-
-        private void txtProductTo_KeyDown(object sender, KeyEventArgs e)
-        {
-            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
-        }
-
         private void gvArrivalNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvArrivalNo.Rows[e.RowIndex]);
