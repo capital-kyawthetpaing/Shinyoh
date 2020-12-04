@@ -287,7 +287,6 @@ namespace MasterTouroku_DenpyouNO
                     if (dt.Rows[0]["MessageID"].ToString() == "0")
                     {
                         DenpyouSelect(dt);
-                        
                     }
                 }
             }
