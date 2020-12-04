@@ -188,7 +188,7 @@ namespace Shinyoh_Controls
             else if (SType == STextBoxType.Date)
             {
                 e.Handled = !cf.IsYYYYMMKey(e.KeyChar);
-            }
+            }     
             else
             {
                 e.Handled = false;
