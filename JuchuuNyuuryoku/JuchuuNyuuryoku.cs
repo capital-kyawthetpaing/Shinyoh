@@ -298,8 +298,6 @@ namespace JuchuuNyuuryoku
                 dt2.Columns.Remove("UriageTanka");
                 dt2.Columns.Remove("Tanka");
                 gv_2.DataSource = dt2;
-               
-
             }
         }
     }

@@ -36,7 +36,8 @@ namespace Shinyoh_Search
 
         public void DataSelect()
         {
-            if (!this.IsErrorOccurs && ChangeDate == null)
+            //if (!this.IsErrorOccurs && ChangeDate == null)
+            if (!this.IsErrorOccurs)
             {
                 switch (this.SearchType)
                 {

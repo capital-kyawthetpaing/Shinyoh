@@ -125,6 +125,11 @@ namespace MasterTouroku_Tokuisaki {
                 txtTokuisakiCopy.Enabled = false;
                 txtTokuisaki_CopyDate.Enabled = false;
             }
+
+            YuuBinNO1 = string.Empty;
+            YuuBinNO2 = string.Empty;
+            Address1 = string.Empty;
+            Address2 = string.Empty;
         }
         public void ErrorCheck()
         {
@@ -171,10 +176,10 @@ namespace MasterTouroku_Tokuisaki {
             }
             if (tagID == "10")
             {
-               // if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
-               // {
-                    string Xml = ChooseFile();
-                    BaseBL bbl = new BaseBL();
+                string Xml = ChooseFile();
+                BaseBL bbl = new BaseBL();
+                if (!string.IsNullOrEmpty(Xml))
+                {
                     if (bbl.ShowMessage("Q206") != DialogResult.Yes)
                     {
                         PreviousCtrl.Focus();
@@ -188,7 +193,7 @@ namespace MasterTouroku_Tokuisaki {
                         else chk_val = "delete";
                         bl.CSV_M_Tokuisaki_CUD(Xml, chk_val);
                     }
-               // }
+                }
             }
             if (tagID == "12")
             {
@@ -638,6 +643,10 @@ namespace MasterTouroku_Tokuisaki {
                     }
 
                     Xml = cf.DataTableToXml(create_dt);
+                }
+                else
+                {
+                    Xml = string.Empty;
                 }
             }
             return Xml;
