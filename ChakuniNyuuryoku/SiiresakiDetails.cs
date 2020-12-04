@@ -10,6 +10,7 @@ namespace ChakuniNyuuryoku
 {
     public partial class SiiresakiDetails :SearchBase
     {
+        public SiiresakiEntity Access_Siiresaki_obj = new SiiresakiEntity();
         public SiiresakiDetails()
         {
             InitializeComponent();
@@ -25,18 +26,24 @@ namespace ChakuniNyuuryoku
             txtSupplierName.E102Check(true);
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
+            Access_DB_Object(Access_Siiresaki_obj);
         }
-        private void YuubinNO2_KeyDown(object sender, KeyEventArgs e)
+        private void Access_DB_Object(SiiresakiEntity obj)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!txtYubin2.IsErrorOccurs && txtYubin2.IsDatatableOccurs.Rows.Count > 0)
-                {
-                    DataTable dt = txtYubin2.IsDatatableOccurs;
-                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
-                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
-                }
-            }
+            sbSupplier.Text = obj.SiiresakiCD;
+            txtSupplierCD.Text = obj.SiiresakiName;
+            txtSupplierName.Text = obj.SiiresakiRyakuName;
+            lbl_Name.Text = obj.SiiresakiRyakuName;
+            txtYubin1.Text = obj.YuubinNO1;
+            txtYubin2.Text = obj.YuubinNO2;
+            txtAddress1.Text = obj.Juusho1;
+            txtAddress2.Text = obj.Juusho2;
+            txtPhNo1.Text = obj.Tel11;
+            txtPhNo2.Text = obj.Tel12;
+            txtPhNo3.Text = obj.Tel13;
+            txtPhNo4.Text = obj.Tel21;
+            txtPhNo5.Text = obj.Tel22;
+            txtPhNo6.Text = obj.Tel23;
         }
     }
 }
