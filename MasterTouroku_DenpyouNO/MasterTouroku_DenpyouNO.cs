@@ -188,7 +188,7 @@ namespace MasterTouroku_DenpyouNO
             DenpyouNOEntity DNOentity = new DenpyouNOEntity();
             DNOentity.RenbenKBN = int.Parse(cbDivision.SelectedIndex.ToString());
             DNOentity.seqno = int.Parse(txtSEQNO.Text);
-            DNOentity.prefix = txtPrefix.Text;
+            DNOentity.prefix = txt_Prefix.Text;
             DNOentity.counter = txtCounter.Text;
             DNOentity.InsertOperator = entity.OperatorCD;
             DNOentity.UpdateOperator = entity.OperatorCD;

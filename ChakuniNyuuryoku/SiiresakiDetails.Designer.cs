@@ -126,6 +126,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel3.ForeColor = System.Drawing.Color.White;
             this.sLabel3.Location = new System.Drawing.Point(33, 89);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
@@ -139,7 +140,8 @@
             this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel4.Location = new System.Drawing.Point(33, 127);
+            this.sLabel4.ForeColor = System.Drawing.Color.White;
+            this.sLabel4.Location = new System.Drawing.Point(33, 124);
             this.sLabel4.Name = "sLabel4";
             this.sLabel4.Size = new System.Drawing.Size(100, 19);
             this.sLabel4.TabIndex = 4;
@@ -152,7 +154,7 @@
             this.sLabel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel5.Location = new System.Drawing.Point(33, 165);
+            this.sLabel5.Location = new System.Drawing.Point(33, 162);
             this.sLabel5.Name = "sLabel5";
             this.sLabel5.Size = new System.Drawing.Size(100, 19);
             this.sLabel5.TabIndex = 5;
@@ -165,7 +167,7 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(33, 203);
+            this.sLabel6.Location = new System.Drawing.Point(33, 200);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
             this.sLabel6.TabIndex = 6;
@@ -178,7 +180,7 @@
             this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel7.Location = new System.Drawing.Point(33, 241);
+            this.sLabel7.Location = new System.Drawing.Point(33, 238);
             this.sLabel7.Name = "sLabel7";
             this.sLabel7.Size = new System.Drawing.Size(100, 19);
             this.sLabel7.TabIndex = 7;
@@ -191,7 +193,7 @@
             this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel8.Location = new System.Drawing.Point(33, 279);
+            this.sLabel8.Location = new System.Drawing.Point(33, 276);
             this.sLabel8.Name = "sLabel8";
             this.sLabel8.Size = new System.Drawing.Size(100, 19);
             this.sLabel8.TabIndex = 8;
@@ -204,7 +206,7 @@
             this.sLabel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel9.Location = new System.Drawing.Point(33, 317);
+            this.sLabel9.Location = new System.Drawing.Point(33, 314);
             this.sLabel9.Name = "sLabel9";
             this.sLabel9.Size = new System.Drawing.Size(100, 19);
             this.sLabel9.TabIndex = 9;
@@ -244,7 +246,7 @@
             this.txtSupplierName.IsDatatableOccurs = null;
             this.txtSupplierName.IsErrorOccurs = false;
             this.txtSupplierName.IsRequire = false;
-            this.txtSupplierName.Location = new System.Drawing.Point(133, 127);
+            this.txtSupplierName.Location = new System.Drawing.Point(133, 124);
             this.txtSupplierName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSupplierName.MoveNext = true;
             this.txtSupplierName.Name = "txtSupplierName";
@@ -266,7 +268,7 @@
             this.txtAddress1.IsDatatableOccurs = null;
             this.txtAddress1.IsErrorOccurs = false;
             this.txtAddress1.IsRequire = false;
-            this.txtAddress1.Location = new System.Drawing.Point(133, 203);
+            this.txtAddress1.Location = new System.Drawing.Point(133, 200);
             this.txtAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress1.MoveNext = true;
             this.txtAddress1.Name = "txtAddress1";
@@ -288,7 +290,7 @@
             this.txtAddress2.IsDatatableOccurs = null;
             this.txtAddress2.IsErrorOccurs = false;
             this.txtAddress2.IsRequire = false;
-            this.txtAddress2.Location = new System.Drawing.Point(133, 241);
+            this.txtAddress2.Location = new System.Drawing.Point(133, 238);
             this.txtAddress2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress2.MoveNext = true;
             this.txtAddress2.Name = "txtAddress2";
@@ -302,7 +304,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(197, 168);
+            this.label1.Location = new System.Drawing.Point(197, 165);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(10, 13);
             this.label1.TabIndex = 22;
@@ -311,7 +313,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(214, 282);
+            this.label2.Location = new System.Drawing.Point(214, 279);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(10, 13);
             this.label2.TabIndex = 23;
@@ -320,7 +322,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(315, 282);
+            this.label3.Location = new System.Drawing.Point(315, 279);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(10, 13);
             this.label3.TabIndex = 24;
@@ -329,7 +331,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(211, 319);
+            this.label4.Location = new System.Drawing.Point(211, 316);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(10, 13);
             this.label4.TabIndex = 25;
@@ -338,7 +340,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(316, 320);
+            this.label5.Location = new System.Drawing.Point(316, 317);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(10, 13);
             this.label5.TabIndex = 26;
@@ -355,7 +357,7 @@
             this.txtYubin1.IsDatatableOccurs = null;
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
-            this.txtYubin1.Location = new System.Drawing.Point(133, 165);
+            this.txtYubin1.Location = new System.Drawing.Point(133, 162);
             this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin1.MoveNext = true;
@@ -378,7 +380,7 @@
             this.txtYubin2.IsDatatableOccurs = null;
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
-            this.txtYubin2.Location = new System.Drawing.Point(221, 164);
+            this.txtYubin2.Location = new System.Drawing.Point(221, 161);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYubin2.MoveNext = true;
@@ -401,7 +403,7 @@
             this.txtPhNo1.IsDatatableOccurs = null;
             this.txtPhNo1.IsErrorOccurs = false;
             this.txtPhNo1.IsRequire = false;
-            this.txtPhNo1.Location = new System.Drawing.Point(133, 279);
+            this.txtPhNo1.Location = new System.Drawing.Point(133, 276);
             this.txtPhNo1.MaxLength = 6;
             this.txtPhNo1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo1.MoveNext = true;
@@ -424,7 +426,7 @@
             this.txtPhNo2.IsDatatableOccurs = null;
             this.txtPhNo2.IsErrorOccurs = false;
             this.txtPhNo2.IsRequire = false;
-            this.txtPhNo2.Location = new System.Drawing.Point(235, 279);
+            this.txtPhNo2.Location = new System.Drawing.Point(235, 276);
             this.txtPhNo2.MaxLength = 5;
             this.txtPhNo2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo2.MoveNext = true;
@@ -447,7 +449,7 @@
             this.txtPhNo3.IsDatatableOccurs = null;
             this.txtPhNo3.IsErrorOccurs = false;
             this.txtPhNo3.IsRequire = false;
-            this.txtPhNo3.Location = new System.Drawing.Point(333, 279);
+            this.txtPhNo3.Location = new System.Drawing.Point(333, 276);
             this.txtPhNo3.MaxLength = 5;
             this.txtPhNo3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo3.MoveNext = true;
@@ -470,7 +472,7 @@
             this.txtPhNo4.IsDatatableOccurs = null;
             this.txtPhNo4.IsErrorOccurs = false;
             this.txtPhNo4.IsRequire = false;
-            this.txtPhNo4.Location = new System.Drawing.Point(133, 317);
+            this.txtPhNo4.Location = new System.Drawing.Point(133, 314);
             this.txtPhNo4.MaxLength = 6;
             this.txtPhNo4.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo4.MoveNext = true;
@@ -493,7 +495,7 @@
             this.txtPhNo5.IsDatatableOccurs = null;
             this.txtPhNo5.IsErrorOccurs = false;
             this.txtPhNo5.IsRequire = false;
-            this.txtPhNo5.Location = new System.Drawing.Point(235, 317);
+            this.txtPhNo5.Location = new System.Drawing.Point(235, 314);
             this.txtPhNo5.MaxLength = 5;
             this.txtPhNo5.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo5.MoveNext = true;
@@ -516,7 +518,7 @@
             this.txtPhNo6.IsDatatableOccurs = null;
             this.txtPhNo6.IsErrorOccurs = false;
             this.txtPhNo6.IsRequire = false;
-            this.txtPhNo6.Location = new System.Drawing.Point(333, 318);
+            this.txtPhNo6.Location = new System.Drawing.Point(333, 315);
             this.txtPhNo6.MaxLength = 5;
             this.txtPhNo6.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo6.MoveNext = true;

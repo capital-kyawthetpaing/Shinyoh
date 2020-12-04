@@ -72,9 +72,6 @@
             this.lblBrandName = new Shinyoh_Controls.SLabel();
             this.panelDetails = new System.Windows.Forms.Panel();
             this.gvJancd = new Shinyoh_Controls.SGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtScheduledNo = new Shinyoh_Search.SearchBox();
             this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +84,9 @@
             this.colArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
@@ -102,11 +102,12 @@
             // 
             this.PanelTitle.Controls.Add(this.sLabel3);
             this.PanelTitle.Controls.Add(this.txtArrivalNO);
-            this.PanelTitle.Location = new System.Drawing.Point(139, -1);
+            this.PanelTitle.Location = new System.Drawing.Point(128, -1);
             // 
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.Location = new System.Drawing.Point(25, 8);
             // 
             // sLabel3
             // 
@@ -155,7 +156,7 @@
             this.txtArrivalDate.IsDatatableOccurs = null;
             this.txtArrivalDate.IsErrorOccurs = false;
             this.txtArrivalDate.IsRequire = false;
-            this.txtArrivalDate.Location = new System.Drawing.Point(265, 5);
+            this.txtArrivalDate.Location = new System.Drawing.Point(256, 5);
             this.txtArrivalDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtArrivalDate.MoveNext = true;
             this.txtArrivalDate.Name = "txtArrivalDate";
@@ -180,7 +181,7 @@
             this.txtSiiresaki.IsErrorOccurs = false;
             this.txtSiiresaki.IsRequire = false;
             this.txtSiiresaki.lblName = null;
-            this.txtSiiresaki.Location = new System.Drawing.Point(264, 29);
+            this.txtSiiresaki.Location = new System.Drawing.Point(255, 29);
             this.txtSiiresaki.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSiiresaki.MoveNext = true;
             this.txtSiiresaki.Name = "txtSiiresaki";
@@ -205,7 +206,7 @@
             this.txtStaffCD.IsErrorOccurs = false;
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.lblName = null;
-            this.txtStaffCD.Location = new System.Drawing.Point(265, 52);
+            this.txtStaffCD.Location = new System.Drawing.Point(256, 52);
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaffCD.MoveNext = true;
             this.txtStaffCD.Name = "txtStaffCD";
@@ -231,7 +232,7 @@
             this.sbWareHouse.IsErrorOccurs = false;
             this.sbWareHouse.IsRequire = false;
             this.sbWareHouse.lblName = null;
-            this.sbWareHouse.Location = new System.Drawing.Point(810, 4);
+            this.sbWareHouse.Location = new System.Drawing.Point(801, 4);
             this.sbWareHouse.MinimumSize = new System.Drawing.Size(100, 19);
             this.sbWareHouse.MoveNext = true;
             this.sbWareHouse.Name = "sbWareHouse";
@@ -253,7 +254,7 @@
             this.txtDescription.IsDatatableOccurs = null;
             this.txtDescription.IsErrorOccurs = false;
             this.txtDescription.IsRequire = false;
-            this.txtDescription.Location = new System.Drawing.Point(810, 29);
+            this.txtDescription.Location = new System.Drawing.Point(801, 29);
             this.txtDescription.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDescription.MoveNext = true;
             this.txtDescription.Name = "txtDescription";
@@ -270,7 +271,8 @@
             this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel4.Location = new System.Drawing.Point(165, 5);
+            this.sLabel4.ForeColor = System.Drawing.Color.White;
+            this.sLabel4.Location = new System.Drawing.Point(156, 5);
             this.sLabel4.Name = "sLabel4";
             this.sLabel4.Size = new System.Drawing.Size(100, 19);
             this.sLabel4.TabIndex = 3;
@@ -283,7 +285,8 @@
             this.sLabel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel5.Location = new System.Drawing.Point(165, 29);
+            this.sLabel5.ForeColor = System.Drawing.Color.White;
+            this.sLabel5.Location = new System.Drawing.Point(156, 29);
             this.sLabel5.Name = "sLabel5";
             this.sLabel5.Size = new System.Drawing.Size(100, 19);
             this.sLabel5.TabIndex = 4;
@@ -296,7 +299,8 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(165, 52);
+            this.sLabel6.ForeColor = System.Drawing.Color.White;
+            this.sLabel6.Location = new System.Drawing.Point(156, 52);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
             this.sLabel6.TabIndex = 5;
@@ -306,7 +310,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(135, 95);
+            this.label1.Location = new System.Drawing.Point(133, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 6;
@@ -318,7 +322,7 @@
             this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel7.Location = new System.Drawing.Point(164, 118);
+            this.sLabel7.Location = new System.Drawing.Point(158, 118);
             this.sLabel7.Name = "sLabel7";
             this.sLabel7.Size = new System.Drawing.Size(100, 19);
             this.sLabel7.TabIndex = 7;
@@ -331,7 +335,7 @@
             this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel8.Location = new System.Drawing.Point(164, 144);
+            this.sLabel8.Location = new System.Drawing.Point(158, 144);
             this.sLabel8.Name = "sLabel8";
             this.sLabel8.Size = new System.Drawing.Size(100, 19);
             this.sLabel8.TabIndex = 8;
@@ -344,7 +348,7 @@
             this.sLabel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel9.Location = new System.Drawing.Point(164, 170);
+            this.sLabel9.Location = new System.Drawing.Point(158, 170);
             this.sLabel9.Name = "sLabel9";
             this.sLabel9.Size = new System.Drawing.Size(100, 19);
             this.sLabel9.TabIndex = 9;
@@ -357,7 +361,7 @@
             this.sLabel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel10.Location = new System.Drawing.Point(426, 118);
+            this.sLabel10.Location = new System.Drawing.Point(420, 118);
             this.sLabel10.Name = "sLabel10";
             this.sLabel10.Size = new System.Drawing.Size(100, 19);
             this.sLabel10.TabIndex = 10;
@@ -370,7 +374,7 @@
             this.sLabel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel11.Location = new System.Drawing.Point(426, 144);
+            this.sLabel11.Location = new System.Drawing.Point(420, 144);
             this.sLabel11.Name = "sLabel11";
             this.sLabel11.Size = new System.Drawing.Size(100, 19);
             this.sLabel11.TabIndex = 11;
@@ -388,7 +392,7 @@
             this.txtShouhinCD.IsDatatableOccurs = null;
             this.txtShouhinCD.IsErrorOccurs = false;
             this.txtShouhinCD.IsRequire = false;
-            this.txtShouhinCD.Location = new System.Drawing.Point(264, 144);
+            this.txtShouhinCD.Location = new System.Drawing.Point(258, 144);
             this.txtShouhinCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhinCD.MoveNext = true;
             this.txtShouhinCD.Name = "txtShouhinCD";
@@ -410,7 +414,7 @@
             this.txtShouhinName.IsDatatableOccurs = null;
             this.txtShouhinName.IsErrorOccurs = false;
             this.txtShouhinName.IsRequire = false;
-            this.txtShouhinName.Location = new System.Drawing.Point(264, 170);
+            this.txtShouhinName.Location = new System.Drawing.Point(258, 170);
             this.txtShouhinName.MaxLength = 40;
             this.txtShouhinName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhinName.MoveNext = true;
@@ -433,7 +437,7 @@
             this.txtControlNo.IsDatatableOccurs = null;
             this.txtControlNo.IsErrorOccurs = false;
             this.txtControlNo.IsRequire = false;
-            this.txtControlNo.Location = new System.Drawing.Point(526, 118);
+            this.txtControlNo.Location = new System.Drawing.Point(520, 118);
             this.txtControlNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtControlNo.MoveNext = true;
             this.txtControlNo.Name = "txtControlNo";
@@ -455,7 +459,7 @@
             this.txtJANCD.IsDatatableOccurs = null;
             this.txtJANCD.IsErrorOccurs = false;
             this.txtJANCD.IsRequire = false;
-            this.txtJANCD.Location = new System.Drawing.Point(526, 144);
+            this.txtJANCD.Location = new System.Drawing.Point(520, 144);
             this.txtJANCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJANCD.MoveNext = true;
             this.txtJANCD.Name = "txtJANCD";
@@ -480,7 +484,7 @@
             this.sbBrand.IsErrorOccurs = false;
             this.sbBrand.IsRequire = false;
             this.sbBrand.lblName = null;
-            this.sbBrand.Location = new System.Drawing.Point(814, 118);
+            this.sbBrand.Location = new System.Drawing.Point(809, 118);
             this.sbBrand.MinimumSize = new System.Drawing.Size(100, 19);
             this.sbBrand.MoveNext = true;
             this.sbBrand.Name = "sbBrand";
@@ -503,7 +507,7 @@
             this.txtColor.IsDatatableOccurs = null;
             this.txtColor.IsErrorOccurs = false;
             this.txtColor.IsRequire = false;
-            this.txtColor.Location = new System.Drawing.Point(814, 144);
+            this.txtColor.Location = new System.Drawing.Point(809, 144);
             this.txtColor.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtColor.MoveNext = true;
             this.txtColor.Name = "txtColor";
@@ -565,7 +569,8 @@
             this.sLabel12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel12.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel12.Location = new System.Drawing.Point(710, 4);
+            this.sLabel12.ForeColor = System.Drawing.Color.White;
+            this.sLabel12.Location = new System.Drawing.Point(701, 4);
             this.sLabel12.Name = "sLabel12";
             this.sLabel12.Size = new System.Drawing.Size(100, 19);
             this.sLabel12.TabIndex = 18;
@@ -578,7 +583,7 @@
             this.sLabel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel13.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel13.Location = new System.Drawing.Point(710, 29);
+            this.sLabel13.Location = new System.Drawing.Point(701, 29);
             this.sLabel13.Name = "sLabel13";
             this.sLabel13.Size = new System.Drawing.Size(100, 19);
             this.sLabel13.TabIndex = 19;
@@ -591,7 +596,7 @@
             this.sLabel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel14.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel14.Location = new System.Drawing.Point(714, 118);
+            this.sLabel14.Location = new System.Drawing.Point(709, 118);
             this.sLabel14.Name = "sLabel14";
             this.sLabel14.Size = new System.Drawing.Size(100, 19);
             this.sLabel14.TabIndex = 21;
@@ -604,7 +609,7 @@
             this.sLabel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel15.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel15.Location = new System.Drawing.Point(714, 144);
+            this.sLabel15.Location = new System.Drawing.Point(709, 144);
             this.sLabel15.Name = "sLabel15";
             this.sLabel15.Size = new System.Drawing.Size(100, 19);
             this.sLabel15.TabIndex = 22;
@@ -735,9 +740,9 @@
             this.sButton4.ButtonType = Entity.ButtonType.BType.Normal;
             this.sButton4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.sButton4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sButton4.Location = new System.Drawing.Point(621, 29);
+            this.sButton4.Location = new System.Drawing.Point(612, 29);
             this.sButton4.Name = "sButton4";
-            this.sButton4.Size = new System.Drawing.Size(55, 23);
+            this.sButton4.Size = new System.Drawing.Size(75, 23);
             this.sButton4.TabIndex = 36;
             this.sButton4.Text = "詳細";
             this.sButton4.UseVisualStyleBackColor = false;
@@ -749,7 +754,7 @@
             this.lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSiiresaki.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSiiresaki.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSiiresaki.Location = new System.Drawing.Point(364, 29);
+            this.lblSiiresaki.Location = new System.Drawing.Point(355, 29);
             this.lblSiiresaki.Name = "lblSiiresaki";
             this.lblSiiresaki.Size = new System.Drawing.Size(250, 19);
             this.lblSiiresaki.TabIndex = 38;
@@ -761,7 +766,7 @@
             this.lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff.Location = new System.Drawing.Point(365, 52);
+            this.lblStaff.Location = new System.Drawing.Point(356, 52);
             this.lblStaff.Name = "lblStaff";
             this.lblStaff.Size = new System.Drawing.Size(250, 19);
             this.lblStaff.TabIndex = 40;
@@ -773,7 +778,7 @@
             this.lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblWareHouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblWareHouse.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblWareHouse.Location = new System.Drawing.Point(910, 4);
+            this.lblWareHouse.Location = new System.Drawing.Point(901, 4);
             this.lblWareHouse.Name = "lblWareHouse";
             this.lblWareHouse.Size = new System.Drawing.Size(250, 19);
             this.lblWareHouse.TabIndex = 42;
@@ -785,7 +790,7 @@
             this.lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblBrandName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblBrandName.Location = new System.Drawing.Point(911, 118);
+            this.lblBrandName.Location = new System.Drawing.Point(906, 118);
             this.lblBrandName.Name = "lblBrandName";
             this.lblBrandName.Size = new System.Drawing.Size(250, 19);
             this.lblBrandName.TabIndex = 44;
@@ -853,26 +858,6 @@
             this.gvJancd.Size = new System.Drawing.Size(450, 150);
             this.gvJancd.TabIndex = 48;
             // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "JanCD";
-            this.Column1.HeaderText = "JANCD";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "a";
-            this.Column2.HeaderText = "着荷予定番号-行番号";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 150;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "b";
-            this.Column3.HeaderText = "発注番号-行番号";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 150;
-            // 
             // txtScheduledNo
             // 
             this.txtScheduledNo.AllowMinus = false;
@@ -887,7 +872,7 @@
             this.txtScheduledNo.IsErrorOccurs = false;
             this.txtScheduledNo.IsRequire = false;
             this.txtScheduledNo.lblName = null;
-            this.txtScheduledNo.Location = new System.Drawing.Point(264, 118);
+            this.txtScheduledNo.Location = new System.Drawing.Point(258, 118);
             this.txtScheduledNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtScheduledNo.MoveNext = true;
             this.txtScheduledNo.Name = "txtScheduledNo";
@@ -903,6 +888,7 @@
             this.colShouhinCD.DataPropertyName = "ShouhinCD";
             this.colShouhinCD.HeaderText = "商品";
             this.colShouhinCD.Name = "colShouhinCD";
+            this.colShouhinCD.ReadOnly = true;
             this.colShouhinCD.Width = 150;
             // 
             // colShouhinName
@@ -910,6 +896,7 @@
             this.colShouhinName.DataPropertyName = "ShouhinName";
             this.colShouhinName.HeaderText = "商品名";
             this.colShouhinName.Name = "colShouhinName";
+            this.colShouhinName.ReadOnly = true;
             this.colShouhinName.Width = 200;
             // 
             // colColorRyakuName
@@ -917,6 +904,7 @@
             this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
             this.colColorRyakuName.HeaderText = "カラー略名";
             this.colColorRyakuName.Name = "colColorRyakuName";
+            this.colColorRyakuName.ReadOnly = true;
             this.colColorRyakuName.Width = 150;
             // 
             // colColorNO
@@ -924,24 +912,28 @@
             this.colColorNO.DataPropertyName = "ColorNO";
             this.colColorNO.HeaderText = "カラー";
             this.colColorNO.Name = "colColorNO";
+            this.colColorNO.ReadOnly = true;
             // 
             // colSizeNO
             // 
             this.colSizeNO.DataPropertyName = "SizeNO";
             this.colSizeNO.HeaderText = "サイズ";
             this.colSizeNO.Name = "colSizeNO";
+            this.colSizeNO.ReadOnly = true;
             // 
             // colDate
             // 
             this.colDate.DataPropertyName = "ChakuniYoteiDate";
             this.colDate.HeaderText = "着荷予定日";
             this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
             // 
             // colArrivalNo
             // 
             this.colArrivalNo.DataPropertyName = "ChakuniYoteiSuu";
             this.colArrivalNo.HeaderText = "着荷予定数";
             this.colArrivalNo.Name = "colArrivalNo";
+            this.colArrivalNo.ReadOnly = true;
             // 
             // colChakuniZumiSuu
             // 
@@ -969,6 +961,29 @@
             this.colDetails.Name = "colDetails";
             this.colDetails.Width = 260;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "JanCD";
+            this.Column1.HeaderText = "JANCD";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "a";
+            this.Column2.HeaderText = "着荷予定番号-行番号";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "b";
+            this.Column3.HeaderText = "発注番号-行番号";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 150;
+            // 
             // ChakuniNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -977,7 +992,7 @@
             this.Controls.Add(this.panelDetails);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ChakuniNyuuryoku";
-            this.Text = "ChakuniNyuuryoku";
+            this.Text = "着荷入力";
             this.Load += new System.EventHandler(this.ChakuniNyuuryoku_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panelDetails, 0);
@@ -1039,9 +1054,6 @@
         private Shinyoh_Search.SearchBox txtStaffCD;
         private Shinyoh_Search.SearchBox txtScheduledNo;
         private Shinyoh_Controls.SGridView gvJancd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorRyakuName;
@@ -1053,6 +1065,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colArrivalTime;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }
 
