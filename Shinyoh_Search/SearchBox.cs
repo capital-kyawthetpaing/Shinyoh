@@ -56,7 +56,10 @@ namespace Shinyoh_Search
                 if (dt.Rows.Count > 0)
                 {
                     if(lblName!=null)
+                    {
+                        if(dt.Columns.Contains(colName))
                         lblName.Text = dt.Rows[0][colName].ToString();
+                    }
                 }                   
             }
         }
@@ -124,14 +127,16 @@ namespace Shinyoh_Search
                 }
 
                 this.Text = CD;
-                if (lblName != null)
-                {
-                    lblName.Text = name;
-                }
                 //for combo box
                 if (Combo != null)
                 {
                     ChangeDate.Text = CDate;
+                    SendKeys.Send("{ENTER}");
+                }
+                //for textbox 
+                if (lblName != null)
+                {
+                    lblName.Text = name;
                     SendKeys.Send("{ENTER}");
                 }
                 else if (ChangeDate != null)
