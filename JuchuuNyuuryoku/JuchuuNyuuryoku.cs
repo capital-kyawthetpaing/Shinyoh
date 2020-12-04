@@ -226,11 +226,78 @@ namespace JuchuuNyuuryoku
                 sobj.Access_Siiresaki_obj.Tel22 = dt.Rows[0]["SiiresakiTelNO22"].ToString();
                 sobj.Access_Siiresaki_obj.Tel23 = dt.Rows[0]["SiiresakiTelNO23"].ToString();
 
-                gv_1.DataSource = dt;
-               
-                gv_2.DataSource = dt;
-               
+                //
+                dt.Columns.Remove("JuchuuDate");
+                dt.Columns.Remove("StaffCD");
+                dt.Columns.Remove("StaffName");
+                dt.Columns.Remove("SenpouHacchuuNO");
+                dt.Columns.Remove("SenpouBusho");
+                dt.Columns.Remove("KibouNouki");
+                dt.Columns.Remove("JuchuuDenpyouTekiyou");
 
+                dt.Columns.Remove("TokuisakiCD");
+                dt.Columns.Remove("TokuisakiRyakuName");
+                dt.Columns.Remove("TokuisakiName");
+                dt.Columns.Remove("TokuisakiYuubinNO1");
+                dt.Columns.Remove("TokuisakiYuubinNO2");
+                dt.Columns.Remove("TokuisakiJuusho1");
+                dt.Columns.Remove("TokuisakiJuusho2");
+                dt.Columns.Remove("TokuisakiTelNO1-1");
+                dt.Columns.Remove("TokuisakiTelNO1-2");
+                dt.Columns.Remove("TokuisakiTelNO1-3");
+                dt.Columns.Remove("TokuisakiTelNO2-1");
+                dt.Columns.Remove("TokuisakiTelNO2-2");
+                dt.Columns.Remove("TokuisakiTelNO2-3");
+                
+                dt.Columns.Remove("KouritenCD");
+                dt.Columns.Remove("KouritenRyakuName");
+                dt.Columns.Remove("KouritenName");
+                dt.Columns.Remove("KouritenYuubinNO1");
+                dt.Columns.Remove("KouritenYuubinNO2");
+                dt.Columns.Remove("KouritenJuusho1");
+                dt.Columns.Remove("KouritenJuusho2");
+                dt.Columns.Remove("KouritenTelNO1-1");
+                dt.Columns.Remove("KouritenTelNO1-2");
+                dt.Columns.Remove("KouritenTelNO1-3");
+                dt.Columns.Remove("KouritenTelNO2-1");
+                dt.Columns.Remove("KouritenTelNO2-2");
+                dt.Columns.Remove("KouritenTelNO2-3");
+
+                dt.Columns.Remove("SiiresakiRyakuName");
+                dt.Columns.Remove("SiiresakiYuubinNO1");
+                dt.Columns.Remove("SiiresakiYuubinNO2");
+                dt.Columns.Remove("SiiresakiJuusho1");
+                dt.Columns.Remove("SiiresakiJuusho2");
+                dt.Columns.Remove("SiiresakiTelNO11");
+                dt.Columns.Remove("SiiresakiTelNO12");
+                dt.Columns.Remove("SiiresakiTelNO13");
+                dt.Columns.Remove("SiiresakiTelNO21");
+                dt.Columns.Remove("SiiresakiTelNO22");
+                dt.Columns.Remove("SiiresakiTelNO23");
+
+                dt.Columns.Remove("MessageID");
+                DataTable dt1 = dt.Copy();
+                dt1.Columns.Remove("JANCD");
+                dt1.Columns.Remove("SoukoCD");
+                dt1.Columns.Remove("SoukoName");
+                dt1.Columns.Remove("SiiresakiCD");
+                dt1.Columns.Remove("SiiresakiName");
+
+                gv_1.DataSource = dt1;
+
+                DataTable dt2 = dt.Copy();
+                dt2.Columns.Remove("ShouhinCD");
+                dt2.Columns.Remove("ShouhinName");
+                dt2.Columns.Remove("ColorRyakuName");
+                dt2.Columns.Remove("ColorNO");
+                dt2.Columns.Remove("SizeNO");
+                dt2.Columns.Remove("Free");
+                dt2.Columns.Remove("GenZaikoSuu");
+                dt2.Columns.Remove("JuchuuSuu");
+                dt2.Columns.Remove("DJMSenpouHacchuuNO");
+                dt2.Columns.Remove("UriageTanka");
+                dt2.Columns.Remove("Tanka");
+                gv_2.DataSource = dt2;
             }
         }
     }

@@ -147,7 +147,13 @@ namespace MasterTouroku_Kouriten
             txtKensakuHyouziJun.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
             rdo_Registragion.Checked = true;
+
+            YuuBinNO1 = string.Empty;
+            YuuBinNO2 = string.Empty;
+            Address1 = string.Empty;
+            Address2 = string.Empty;
         }
         public void ErrorCheck()
         {
@@ -206,20 +212,22 @@ namespace MasterTouroku_Kouriten
             if (tagID == "10")
             {
                 string Xml = ChooseFile();
-
-                BaseBL bbl = new BaseBL();
-                if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                if (!string.IsNullOrEmpty(Xml))
                 {
-                    PreviousCtrl.Focus();
-                }
-                else
-                {
-                    KouritenBL bl = new KouritenBL();
-                    string chk_val = string.Empty;
-                    if (rdo_Registragion.Checked)
-                        chk_val = "create_update";
-                    else chk_val = "delete";
-                    bl.CSV_M_Kouriten_CUD(Xml, chk_val);
+                    BaseBL bbl = new BaseBL();
+                    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                    {
+                        PreviousCtrl.Focus();
+                    }
+                    else
+                    {
+                        KouritenBL bl = new KouritenBL();
+                        string chk_val = string.Empty;
+                        if (rdo_Registragion.Checked)
+                            chk_val = "create_update";
+                        else chk_val = "delete";
+                        bl.CSV_M_Kouriten_CUD(Xml, chk_val);
+                    }
                 }
             }
             if (tagID == "12")
@@ -731,6 +739,10 @@ namespace MasterTouroku_Kouriten
                     }
 
                     Xml = cf.DataTableToXml(create_dt);
+                }
+                else
+                {
+                    Xml = string.Empty;
                 }
             }
             return Xml;

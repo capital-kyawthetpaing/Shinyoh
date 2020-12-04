@@ -128,6 +128,11 @@ namespace MasterTouroku_Souko
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
             txtSouko.Focus();
+
+            YuuBinNO1 = string.Empty;
+            YuuBinNO2 = string.Empty;
+            Address1 = string.Empty;
+            Address2 = string.Empty;
         }
 
         public override void FunctionProcess(string tagID)

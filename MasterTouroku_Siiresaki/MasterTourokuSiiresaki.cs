@@ -171,6 +171,11 @@ namespace MasterTouroku_Siiresaki
             txtSupplierCD.Focus();
            // txtSearch.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
+            YuuBinNO1 = string.Empty;
+            YuuBinNO2 = string.Empty;
+            Address1 = string.Empty;
+            Address2 = string.Empty;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -200,11 +205,10 @@ namespace MasterTouroku_Siiresaki
             }
             if (tagID == "10")
             {
-                //if(ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
-                //{
-                    string Xml= ChooseFile();
-
-                    BaseBL bbl=new BaseBL();
+                string Xml = ChooseFile();
+                if (!string.IsNullOrEmpty(Xml))
+                {
+                    BaseBL bbl = new BaseBL();
                     if (bbl.ShowMessage("Q206") != DialogResult.Yes)
                     {
                         PreviousCtrl.Focus();
@@ -216,10 +220,9 @@ namespace MasterTouroku_Siiresaki
                         if (rdo_Registragion.Checked)
                             chk_val = "create_update";
                         else chk_val = "delete";
-                        bl.CSV_M_Siiresaki_CUD(Xml,chk_val);
+                        bl.CSV_M_Siiresaki_CUD(Xml, chk_val);
                     }
-              //  }
-
+                }
             }
             if (tagID == "12")
             {
@@ -642,6 +645,10 @@ namespace MasterTouroku_Siiresaki
                         create_dt.Rows.Add(dr);
                     }
                     Xml = cf.DataTableToXml(create_dt);
+                }
+                else
+                {
+                    Xml = string.Empty;
                 }
             }
             return Xml;
