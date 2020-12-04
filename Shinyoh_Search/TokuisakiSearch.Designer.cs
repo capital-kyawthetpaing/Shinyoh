@@ -353,6 +353,7 @@
             // 
             // colChangeDate
             // 
+            this.colChangeDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colChangeDate.DataPropertyName = "ChangeDate";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.Format = "yyyy/MM/dd";
@@ -361,7 +362,6 @@
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.ReadOnly = true;
-            this.colChangeDate.Width = 110;
             // 
             // colTokuisakiRyakuName
             // 

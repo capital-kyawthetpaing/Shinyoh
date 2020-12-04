@@ -36,6 +36,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbl_Date = new Shinyoh_Controls.SLabel();
+            this.sLabel8 = new Shinyoh_Controls.SLabel();
             this.sbSiiresaki = new Shinyoh_Search.SearchBox();
             this.lblStaff = new Shinyoh_Controls.SLabel();
             this.lblSiiresaki = new Shinyoh_Controls.SLabel();
@@ -61,8 +63,6 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.sLabel2 = new Shinyoh_Controls.SLabel();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
-            this.sLabel8 = new Shinyoh_Controls.SLabel();
-            this.sLabel9 = new Shinyoh_Controls.SLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gvArrivalNo)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -132,7 +132,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.sLabel9);
+            this.panel1.Controls.Add(this.lbl_Date);
             this.panel1.Controls.Add(this.sLabel8);
             this.panel1.Controls.Add(this.sbSiiresaki);
             this.panel1.Controls.Add(this.lblStaff);
@@ -163,6 +163,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1184, 120);
             this.panel1.TabIndex = 2;
+            // 
+            // lbl_Date
+            // 
+            this.lbl_Date.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
+            this.lbl_Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_Date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl_Date.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Date.Location = new System.Drawing.Point(1049, 7);
+            this.lbl_Date.Name = "lbl_Date";
+            this.lbl_Date.Size = new System.Drawing.Size(100, 19);
+            this.lbl_Date.TabIndex = 27;
+            this.lbl_Date.Text = "YYYY/MM/DD";
+            this.lbl_Date.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sLabel8
+            // 
+            this.sLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel8.Location = new System.Drawing.Point(969, 7);
+            this.sLabel8.Name = "sLabel8";
+            this.sLabel8.Size = new System.Drawing.Size(80, 19);
+            this.sLabel8.TabIndex = 26;
+            this.sLabel8.Text = "基準日";
+            this.sLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sbSiiresaki
             // 
@@ -577,32 +603,6 @@
             this.sLabel1.Text = "着荷日";
             this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // sLabel8
-            // 
-            this.sLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel8.Location = new System.Drawing.Point(969, 7);
-            this.sLabel8.Name = "sLabel8";
-            this.sLabel8.Size = new System.Drawing.Size(80, 19);
-            this.sLabel8.TabIndex = 26;
-            this.sLabel8.Text = "基準日";
-            this.sLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // sLabel9
-            // 
-            this.sLabel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
-            this.sLabel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sLabel9.Location = new System.Drawing.Point(1049, 7);
-            this.sLabel9.Name = "sLabel9";
-            this.sLabel9.Size = new System.Drawing.Size(100, 19);
-            this.sLabel9.TabIndex = 27;
-            this.sLabel9.Text = "YYYY/MM/DD";
-            this.sLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ArrivalNOSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -657,6 +657,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private Shinyoh_Controls.SLabel sLabel8;
-        private Shinyoh_Controls.SLabel sLabel9;
+        private Shinyoh_Controls.SLabel lbl_Date;
     }
 }
