@@ -1213,7 +1213,7 @@
             this.txtTokuisakiName.IsDatatableOccurs = null;
             this.txtTokuisakiName.IsErrorOccurs = false;
             this.txtTokuisakiName.IsRequire = false;
-            this.txtTokuisakiName.Location = new System.Drawing.Point(179, 50);
+            this.txtTokuisakiName.Location = new System.Drawing.Point(181, 50);
             this.txtTokuisakiName.MaxLength = 80;
             this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiName.MoveNext = true;
