@@ -148,6 +148,7 @@
             this.txtCounter.Name = "txtCounter";
             this.txtCounter.NextControl = null;
             this.txtCounter.NextControlName = null;
+            this.txtCounter.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCounter.SearchType = Entity.SearchType.ScType.None;
             this.txtCounter.Size = new System.Drawing.Size(100, 19);
             this.txtCounter.TabIndex = 4;
@@ -205,7 +206,7 @@
             this.txtSEQNO.IsRequire = false;
             this.txtSEQNO.lblName = null;
             this.txtSEQNO.Location = new System.Drawing.Point(124, 29);
-            this.txtSEQNO.MaxLength = 3;
+            this.txtSEQNO.MaxLength = 1;
             this.txtSEQNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSEQNO.MoveNext = true;
             this.txtSEQNO.Name = "txtSEQNO";

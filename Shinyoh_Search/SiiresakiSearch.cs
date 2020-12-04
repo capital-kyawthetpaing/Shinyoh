@@ -72,9 +72,10 @@ namespace Shinyoh_Search
                 if (dt.Rows.Count > 0)
                 {
                     lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                    dt.Columns.Remove("CurrentDay");
+                    //dt.Columns.Remove("CurrentDay");
                 }
             }
+            dt.Columns.Remove("CurrentDay");
             gvSupplier.DataSource = dt;
         }
 
