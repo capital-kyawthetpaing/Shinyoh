@@ -12,8 +12,9 @@ namespace MasterTouroku_Shouhin
 {
     public partial class MasterTouroku_Shouhin : BaseForm
     {
-        BaseEntity entity;
+        BaseEntity base_entity;
         CommonFunction cf;
+        multipurposeEntity multi_Entity;
         public MasterTouroku_Shouhin()
         {
             InitializeComponent();
@@ -22,8 +23,9 @@ namespace MasterTouroku_Shouhin
 
         private void MasterTouroku_Shouhin_Load(object sender, EventArgs e)
         {
-            ProgramID = "MasterTourokuSouko";
+            ProgramID = "MasterTourokuShouhin";
             StartProgram();
+            cboMode.Bind(false, multi_Entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
             SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
@@ -36,36 +38,56 @@ namespace MasterTouroku_Shouhin
             SetButton(ButtonType.BType.Empty, F8, "", false);
             SetButton(ButtonType.BType.Empty, F10, "", false);
             SetButton(ButtonType.BType.Empty, F11, "", false);
+
             ChangeMode(Mode.New);
-            entity = _GetBaseData();
+            base_entity = _GetBaseData();
+            txtProduct.ChangeDate = txtRevisionDate;
+            txtCopyProduct.ChangeDate = txtCopyRevisionDate;
         }
 
         private void ChangeMode(Mode mode)
         {
             cf.Clear(PanelTitle);
-            //cf.Clear(PanelDetail);
+            cf.Clear(Panel_Detail);
             cf.EnablePanel(PanelTitle);
-            //cf.DisablePanel(PanelDetail);
-            //cbDivision.Focus();
+            cf.DisablePanel(Panel_Detail);
+            txtProduct.Focus();
             switch (mode)
             {
                 case Mode.New:
+                    txtCopyProduct.Enabled = true;
+                    txtCopyRevisionDate.Enabled = true;
+                    UI_ErrorCheck();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
+                    txtCopyProduct.Enabled = false;
+                    txtCopyRevisionDate.Enabled = false;
+                    UI_ErrorCheck();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
+                    txtCopyProduct.Enabled = false;
+                    txtCopyRevisionDate.Enabled = false;
+                    UI_ErrorCheck();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
+                    txtCopyProduct.Enabled = false;
+                    txtCopyRevisionDate.Enabled = false;
+                    UI_ErrorCheck();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
             }
+        }
+
+        private void UI_ErrorCheck()
+        {
+            txtProduct.E102Check(true);
         }
 
         public override void FunctionProcess(string tagID)
@@ -88,7 +110,7 @@ namespace MasterTouroku_Shouhin
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle))// && ErrorCheck(PanelDetail))
+                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
