@@ -29,20 +29,32 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-
+            Mode_Setting();
             gvShippingNo.UseRowNo(true);
             GridViewBind();
-            txtDateFrom.Focus();
-            txtDateFrom.E103Check(true);
-            txtDateTo.E103Check(true);
-            txtShippingNoFrom.E103Check(true);
-            txtShippingNoTo.E103Check(true);
-            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
-            sbStaff.E101Check(true, "staff", null, null, null);
+            txtShippingDateFrom.Focus();
+            //txtCustomerCD = lblStaffCD_Name;
+            //出荷予定日            
+            txtShippingDateFrom.E103Check(true);
+            txtShippingDateTo.E103Check(true);
+            txtShippingDateTo.E106Check(true, txtShippingDateFrom, txtShippingDateTo);
+            //得意先
+            txtCustomerCD.E101Check(true, "Shipping", null, null, null);
+            //担当スタッフ
+            sbStaff.E101Check(true, "M_Staff", null, null, null);
+            //伝票日付
+            txtSlipDateFrom.E103Check(true);
+            txtSlipDateTo.E103Check(true);
+            txtSlipDateTo.E106Check(true, txtSlipDateFrom, txtSlipDateTo);
+            //出荷指示番号
+            txtShippingNoTo.E106Check(true, txtShippingNoFrom, txtShippingNoTo);
+            //商品CD
+            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);            
         }
 
         public override void FunctionProcess(string tagID)
         {
+            Mode_Setting();
             if (tagID == "2")
             {
                 GridViewBind();
@@ -54,6 +66,11 @@ namespace Shinyoh_Search
             base.FunctionProcess(tagID);
         }
 
+        private void Mode_Setting()
+        {
+            lblCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+        }
         private void GridViewBind()
         {
 
