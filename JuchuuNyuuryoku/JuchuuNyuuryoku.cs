@@ -2,6 +2,7 @@
 using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
+using Shinyoh_Search;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -186,6 +187,11 @@ namespace JuchuuNyuuryoku
                     Disable_UDI_Mode();
                 }
             }
+            //if (tagID == "9")
+            //{
+            //    SiiresakiSearch search = new SiiresakiSearch();
+            //    search.ShowDialog();
+            //}
             if (tagID == "10")
             {
                 
@@ -565,6 +571,8 @@ namespace JuchuuNyuuryoku
             string JuchuuSuu = gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].Value.ToString();
             if (gv_2.Columns[e.ColumnIndex].Name == "colSiiresakiCD")
             {
+                SiiresakiSearch search = new SiiresakiSearch();
+                search.ShowDialog();
                 string siiresakiCD = gv_2.Rows[e.RowIndex].Cells["colSiiresakiCD"].EditedFormattedValue.ToString();                
                 if (string.IsNullOrEmpty(free))
                     isSelected = "OFF";
@@ -626,6 +634,31 @@ namespace JuchuuNyuuryoku
                     //        }
                     //    }
                     }
+                }
+            }
+        }
+
+        private void gv_2_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+            if (gv_2.Columns[e.ColumnIndex].Name == "colSiiresakiCD")
+            {
+
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = true;
+                }
+            }
+            else
+            {
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
                 }
             }
         }

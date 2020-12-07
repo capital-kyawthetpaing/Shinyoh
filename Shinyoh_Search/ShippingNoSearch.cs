@@ -45,6 +45,7 @@ namespace Shinyoh_Search
 
         public override void FunctionProcess(string tagID)
         {
+
             if (tagID == "2")
             {
                 GridViewBind();
