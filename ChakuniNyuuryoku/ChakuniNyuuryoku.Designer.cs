@@ -986,6 +986,7 @@
             this.txtArrivalNO.Size = new System.Drawing.Size(100, 19);
             this.txtArrivalNO.TabIndex = 1;
             this.txtArrivalNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtArrivalNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtArrivalNO_KeyDown_1);
             // 
             // ChakuniNyuuryoku
             // 

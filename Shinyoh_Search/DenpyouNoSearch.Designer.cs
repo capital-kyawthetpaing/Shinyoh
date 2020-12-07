@@ -122,7 +122,6 @@
             this.cbDivision2.NextControlName = "lbl_Date";
             this.cbDivision2.Size = new System.Drawing.Size(135, 20);
             this.cbDivision2.TabIndex = 2;
-            this.cbDivision2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbDivision2_KeyDown);
             // 
             // lblSign
             // 
@@ -187,12 +186,12 @@
             // 
             // RenbanKBN1
             // 
-            this.RenbanKBN1.DataPropertyName = "RenbanKBN";
+            this.RenbanKBN1.DataPropertyName = "Char1";
             this.RenbanKBN1.FillWeight = 74.00188F;
             this.RenbanKBN1.HeaderText = "連番区分";
             this.RenbanKBN1.Name = "RenbanKBN1";
             this.RenbanKBN1.ReadOnly = true;
-            this.RenbanKBN1.Width = 120;
+            this.RenbanKBN1.Width = 110;
             // 
             // SEQNO1
             // 

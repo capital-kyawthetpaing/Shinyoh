@@ -9,6 +9,7 @@ namespace Entity
     public class DenpyouNOEntity : BaseEntity
     {
         public string RenbenKBN { get; set; }
+        public string RenbenKBN_Value { get; set; }
         public string division1 { get; set; }
         public string division2 { get; set; }
         public string seqno { get; set; }

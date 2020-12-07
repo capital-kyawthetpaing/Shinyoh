@@ -62,12 +62,6 @@ namespace Shinyoh_Controls
                         rDt = kBL.Kouriten_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
-                    case "ShukkasiziNyuuryoku":
-                        ShukkasiziNyuuryokuBL skBL = new ShukkasiziNyuuryokuBL();
-                        rDt=skBL.Shipping_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
-                        result = rDt.Rows[0]["MessageID"].ToString();
-                        break;
-
                 }
                 if (result.Equals("E101"))
                 {

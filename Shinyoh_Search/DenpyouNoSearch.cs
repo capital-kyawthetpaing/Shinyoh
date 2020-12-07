@@ -17,9 +17,10 @@ namespace Shinyoh_Search
     {
         DenpyouNOBL denpyoubl;
         DenpyouNOEntity denpyou_entity;
-        public string renban = "0";
+        public string renban = string.Empty;
         public string seqno = string.Empty;
         public string prefix = string.Empty;
+        public string renbanValue = string.Empty;
 
         public DenpyouNoSearch()
         {
@@ -40,7 +41,6 @@ namespace Shinyoh_Search
             gvDenpyouNo.UseRowNo(true);
             BindDataGrid();
             cbDivision2.E106Check(true, cbDivision1, cbDivision2);
-           // lbl_Date.Text = DateTime.Now.ToString("yyyy/MM/dd");
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -69,7 +69,6 @@ namespace Shinyoh_Search
             denpyou_entity = new DenpyouNOEntity();
             denpyou_entity.division1 = cbDivision1.SelectedValue.ToString();
             denpyou_entity.division2 = cbDivision2.SelectedValue.ToString();
-            //denpyou_entity.date = txtDate.Text;
             gvDenpyouNo.DataSource = denpyoubl.DenpyouNO_Search(denpyou_entity);
             DataTable dt = denpyoubl.DenpyouNO_Search(denpyou_entity);
             if (dt.Columns.Contains("CurrentDay"))
@@ -77,10 +76,10 @@ namespace Shinyoh_Search
                 if (dt.Rows.Count > 0)
                 {
                     lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                    //dt.Columns.Remove("CurrentDay");
                 }
             }
             dt.Columns.Remove("CurrentDay");
+            gvDenpyouNo.Columns[0].Visible = false;
             gvDenpyouNo.DataSource = dt;
         }
 
@@ -99,11 +98,6 @@ namespace Shinyoh_Search
         private void gvDenpyouNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvDenpyouNo.Rows[e.RowIndex]);
-        }
-
-        private void cbDivision2_KeyDown(object sender, KeyEventArgs e)
-        {
-           // cbDivision2.E106Check(true, cbDivision1, cbDivision2);
         }
     }
 }
