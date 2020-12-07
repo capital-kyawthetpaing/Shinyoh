@@ -79,7 +79,7 @@ namespace Shinyoh_Search
                 }
             }
             dt.Columns.Remove("CurrentDay");
-            gvDenpyouNo.Columns[1].Visible = false;
+            gvDenpyouNo.Columns[0].Visible = false;
             gvDenpyouNo.DataSource = dt;
         }
 
@@ -88,14 +88,9 @@ namespace Shinyoh_Search
             if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
-                //renbanValue = row.Cells["RenbanKBN1"].Value.ToString();
-                renban = row.Cells[1].Value.ToString();
-                seqno = row.Cells[2].Value.ToString();
-                prefix = row.Cells[3].Value.ToString();
-               
-                //renban = row.Cells["RenbenKBN"].Value.ToString();
-                //seqno = row.Cells["SEQNO1"].Value.ToString();
-                //prefix = row.Cells["Prefix1"].Value.ToString();
+                renban = row.Cells[0].Value.ToString();
+                seqno = row.Cells[1].Value.ToString();
+                prefix = row.Cells[2].Value.ToString();
                 this.Close();
             }
         }

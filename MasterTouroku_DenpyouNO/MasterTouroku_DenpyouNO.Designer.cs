@@ -216,7 +216,6 @@
             this.txtSEQNO.Size = new System.Drawing.Size(100, 19);
             this.txtSEQNO.TabIndex = 2;
             this.txtSEQNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            this.txtSEQNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSEQNO_KeyDown);
             // 
             // MasterTouroku_DenpyouNO
             // 

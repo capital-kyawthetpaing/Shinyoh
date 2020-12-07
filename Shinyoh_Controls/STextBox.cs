@@ -372,6 +372,7 @@ namespace Shinyoh_Controls
             E115 = value;
             E115Type = type;
             ctrlE115_1 = ctrl1;
+            
         }
         public void E132Check(bool value,string type,Control ctrl1,Control ctrl2,Control ctrl3)
         {

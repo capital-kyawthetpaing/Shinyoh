@@ -45,15 +45,8 @@ namespace MasterTouroku_DenpyouNO
 
             txt_Prefix.Combo = cbDivision;
             txt_Prefix.ChangeDate = txtSEQNO;
-            //txtSEQNO.Combo = cbDivision;
             txt_Prefix.ctrl_combo = cbDivision;
             txtSEQNO.ctrl_combo = cbDivision;
-
-
-            //txtSEQNO.Combo = cbDivision;
-            //txtSEQNO.ChangeDate = txt_Prefix;
-            //txtSEQNO.ctrl_combo = cbDivision;
-            //txt_Prefix.ctrl_combo = cbDivision;
         }
 
         private void ChangeMode(Mode mode)
@@ -163,6 +156,8 @@ namespace MasterTouroku_DenpyouNO
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
             cbDivision.Select();
+            Control btnSearch = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+            btnSearch.Visible = false;
         }
         private void DBProcess()
         {
@@ -187,7 +182,6 @@ namespace MasterTouroku_DenpyouNO
         {
             DenpyouNOEntity DNOentity = new DenpyouNOEntity();
             DNOentity.RenbenKBN = cbDivision.SelectedIndex.ToString();
-            DNOentity.RenbenKBN_Value = cbDivision.Text; // for show in Gridview
             DNOentity.seqno = txtSEQNO.Text;
             DNOentity.prefix = txt_Prefix.Text;
             DNOentity.counter = txtCounter.Text;
@@ -205,36 +199,6 @@ namespace MasterTouroku_DenpyouNO
             denpyoubl.DenpyouNO_IUD(DNOEntity);
         }
 
-        private void txtSEQNO_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (e.KeyCode == Keys.Enter)
-            //{
-            //    if (!txtSEQNO.IsErrorOccurs)
-            //    {
-            //        if (cboMode.SelectedValue.ToString() == "2")//update
-            //        {
-            //            EnableAndDisablePanel();
-            //        }
-            //        else if(cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
-            //        {
-            //            cf.DisablePanel(PanelTitle);
-            //            cf.EnablePanel(PanelDetail);
-            //        }
-            //    }
-            //    DataTable dt = txtSEQNO.IsDatatableOccurs;
-            //    if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
-            //    {
-            //        if(dt.Rows[0]["MessageID"].ToString() != "0")
-            //        {
-            //            DenpyouSelect(dt);
-            //            //EnableAndDisablePanel();
-            //            //cf.DisablePanel(PanelTitle);
-            //            //cf.DisablePanel(PanelDetail);
-            //        }
-            //    }
-            //}
-        }
-
         private void EnableAndDisablePanel()
         {
             cf.DisablePanel(PanelTitle);
@@ -248,22 +212,6 @@ namespace MasterTouroku_DenpyouNO
             {
                 txtCounter.Text = dt.Rows[0]["Counter"].ToString();
             }
-        }
-
-        private void txtPrefix_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
-            //{
-            //    if (!txtPrefix.IsErrorOccurs)
-            //    {
-            //        cf.DisablePanel(PanelTitle);
-            //        cf.EnablePanel(PanelDetail);
-            //        txtCounter.Focus();
-            //        DataTable dt = txtPrefix.IsDatatableOccurs;
-            //        if(dt.Rows[0]["MessageID"].ToString() != "0")
-            //            DenpyouSelect(dt);
-            //    }
-            //}
         }
         private void txt_Prefix_KeyDown(object sender, KeyEventArgs e)
         {

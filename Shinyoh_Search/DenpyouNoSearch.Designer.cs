@@ -191,7 +191,7 @@
             this.RenbanKBN1.HeaderText = "連番区分";
             this.RenbanKBN1.Name = "RenbanKBN1";
             this.RenbanKBN1.ReadOnly = true;
-            this.RenbanKBN1.Width = 120;
+            this.RenbanKBN1.Width = 110;
             // 
             // SEQNO1
             // 
