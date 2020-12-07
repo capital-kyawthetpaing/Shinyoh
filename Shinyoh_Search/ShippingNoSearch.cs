@@ -29,7 +29,7 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-            Mode_Setting();
+
             gvShippingNo.UseRowNo(true);
             GridViewBind();
             txtDateFrom.Focus();
@@ -39,11 +39,13 @@ namespace Shinyoh_Search
             txtShippingNoTo.E103Check(true);
             txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
             sbStaff.E101Check(true, "staff", null, null, null);
+
+            lblCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
         }
 
         public override void FunctionProcess(string tagID)
         {
-            Mode_Setting();
+
             if (tagID == "2")
             {
                 GridViewBind();
@@ -55,11 +57,6 @@ namespace Shinyoh_Search
             base.FunctionProcess(tagID);
         }
 
-        private void Mode_Setting()
-        {
-            lblCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-        }
         private void GridViewBind()
         {
 
