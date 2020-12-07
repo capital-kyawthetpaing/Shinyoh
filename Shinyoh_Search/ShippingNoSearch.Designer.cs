@@ -1,7 +1,7 @@
 ﻿
 namespace Shinyoh_Search
 {
-    partial class gvShippingNoSearch
+    partial class ShippingNoSearch
     {
         /// <summary>
         /// Required designer variable.
@@ -596,14 +596,14 @@ namespace Shinyoh_Search
             this.colOrderNO.ReadOnly = true;
             this.colOrderNO.Width = 213;
             // 
-            // gvShippingNoSearch
+            // ShippingNoSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 506);
             this.Controls.Add(this.gvShippingNo);
             this.Controls.Add(this.panel1);
-            this.Name = "gvShippingNoSearch";
+            this.Name = "ShippingNoSearch";
             this.Text = "出荷指示番号検索";
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gvShippingNo, 0);

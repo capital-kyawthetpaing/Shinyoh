@@ -92,7 +92,8 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Denpyou:
                         DenpyouNoSearch denpyouSearch = new DenpyouNoSearch();
                         denpyouSearch.ShowDialog();
-                        Combo.SelectedIndex = Convert.ToInt32(denpyouSearch.renban);
+                        //Combo.SelectedIndex = Convert.ToInt32(denpyouSearch.renban);
+                        Combo.SelectedValue = denpyouSearch.renban;
                         CDate = denpyouSearch.seqno;
                         CD = denpyouSearch.prefix;
                         break;
@@ -126,6 +127,13 @@ namespace Shinyoh_Search
                         CD = kSearch.KouritenCD;
                         CDate = kSearch.changeDate;
                         name = kSearch.KouritenRyakuName;
+                        break;
+                    case Entity.SearchType.ScType.ShippingNO:
+                        ShippingNoSearch snSearch = new ShippingNoSearch();
+                        //snSearch.changeDate_Access = ChangeDate.Text;
+                        snSearch.ShowDialog();
+                        CD = snSearch.ShippingNo;
+                        CDate = snSearch.changeDate;
                         break;
                 }
 

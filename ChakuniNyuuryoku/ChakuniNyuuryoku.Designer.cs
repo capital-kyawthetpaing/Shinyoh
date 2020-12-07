@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.sLabel3 = new Shinyoh_Controls.SLabel();
-            this.txtArrivalNO = new Shinyoh_Controls.STextBox();
             this.txtArrivalDate = new Shinyoh_Controls.STextBox();
             this.txtSiiresaki = new Shinyoh_Search.SearchBox();
             this.txtStaffCD = new Shinyoh_Search.SearchBox();
@@ -87,6 +86,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtScheduledNo = new Shinyoh_Search.SearchBox();
+            this.txtArrivalNO = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
@@ -100,8 +100,8 @@
             // 
             // PanelTitle
             // 
-            this.PanelTitle.Controls.Add(this.sLabel3);
             this.PanelTitle.Controls.Add(this.txtArrivalNO);
+            this.PanelTitle.Controls.Add(this.sLabel3);
             this.PanelTitle.Location = new System.Drawing.Point(128, -1);
             // 
             // cboMode
@@ -121,29 +121,6 @@
             this.sLabel3.TabIndex = 0;
             this.sLabel3.Text = "着荷番号";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtArrivalNO
-            // 
-            this.txtArrivalNO.AllowMinus = false;
-            this.txtArrivalNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtArrivalNO.DecimalPlace = 0;
-            this.txtArrivalNO.DepandOnMode = true;
-            this.txtArrivalNO.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtArrivalNO.IntegerPart = 0;
-            this.txtArrivalNO.IsDatatableOccurs = null;
-            this.txtArrivalNO.IsErrorOccurs = false;
-            this.txtArrivalNO.IsRequire = false;
-            this.txtArrivalNO.Location = new System.Drawing.Point(127, 9);
-            this.txtArrivalNO.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtArrivalNO.MoveNext = true;
-            this.txtArrivalNO.Name = "txtArrivalNO";
-            this.txtArrivalNO.NextControl = this.txtArrivalDate;
-            this.txtArrivalNO.NextControlName = null;
-            this.txtArrivalNO.SearchType = Entity.SearchType.ScType.None;
-            this.txtArrivalNO.Size = new System.Drawing.Size(100, 19);
-            this.txtArrivalNO.TabIndex = 1;
-            this.txtArrivalNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtArrivalNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtArrivalNO_KeyDown);
             // 
             // txtArrivalDate
             // 
@@ -985,6 +962,31 @@
             this.txtScheduledNo.TabIndex = 47;
             this.txtScheduledNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
+            // txtArrivalNO
+            // 
+            this.txtArrivalNO.AllowMinus = false;
+            this.txtArrivalNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtArrivalNO.ChangeDate = null;
+            this.txtArrivalNO.Combo = null;
+            this.txtArrivalNO.DecimalPlace = 0;
+            this.txtArrivalNO.DepandOnMode = true;
+            this.txtArrivalNO.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtArrivalNO.IntegerPart = 0;
+            this.txtArrivalNO.IsDatatableOccurs = null;
+            this.txtArrivalNO.IsErrorOccurs = false;
+            this.txtArrivalNO.IsRequire = false;
+            this.txtArrivalNO.lblName = null;
+            this.txtArrivalNO.Location = new System.Drawing.Point(127, 9);
+            this.txtArrivalNO.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtArrivalNO.MoveNext = true;
+            this.txtArrivalNO.Name = "txtArrivalNO";
+            this.txtArrivalNO.NextControl = null;
+            this.txtArrivalNO.NextControlName = "txtArrivalDate";
+            this.txtArrivalNO.SearchType = Entity.SearchType.ScType.None;
+            this.txtArrivalNO.Size = new System.Drawing.Size(100, 19);
+            this.txtArrivalNO.TabIndex = 1;
+            this.txtArrivalNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
             // ChakuniNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1009,8 +1011,6 @@
         }
 
         #endregion
-
-        private Shinyoh_Controls.STextBox txtArrivalNO;
         private Shinyoh_Controls.SLabel sLabel3;
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.SLabel sLabel5;
@@ -1069,6 +1069,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private Shinyoh_Search.SearchBox txtArrivalNO;
     }
 }
 
