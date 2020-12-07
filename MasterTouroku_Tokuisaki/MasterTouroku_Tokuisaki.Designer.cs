@@ -923,7 +923,7 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
-            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
