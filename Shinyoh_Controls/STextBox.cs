@@ -22,7 +22,7 @@ namespace Shinyoh_Controls
             Price = 2,//check price format
             Number = 3,//check integer only
             Time = 4,//Time format
-            YearMonth = 5 //2019/01 format
+            YearMonth = 5 //2019/01 format   
         }
 
         private STextBoxType SType { get; set; }
@@ -199,7 +199,7 @@ namespace Shinyoh_Controls
             else if (SType == STextBoxType.Date)
             {
                 e.Handled = !cf.IsYYYYMMKey(e.KeyChar);
-            }
+            }     
             else
             {
                 e.Handled = false;

@@ -186,15 +186,16 @@ namespace MasterTouroku_DenpyouNO
         private DenpyouNOEntity getDenpyou()
         {
             DenpyouNOEntity DNOentity = new DenpyouNOEntity();
-            DNOentity.RenbenKBN = int.Parse(cbDivision.SelectedIndex.ToString());
-            DNOentity.seqno = int.Parse(txtSEQNO.Text);
-            DNOentity.prefix = txtPrefix.Text;
+            DNOentity.RenbenKBN = cbDivision.SelectedIndex.ToString();
+            DNOentity.RenbenKBN_Value = cbDivision.Text; // for show in Gridview
+            DNOentity.seqno = txtSEQNO.Text;
+            DNOentity.prefix = txt_Prefix.Text;
             DNOentity.counter = txtCounter.Text;
             DNOentity.InsertOperator = entity.OperatorCD;
             DNOentity.UpdateOperator = entity.OperatorCD;
             DNOentity.PC = entity.PC;
             DNOentity.ProgramID = entity.ProgramID;
-            DNOentity.KeyItem = txtSEQNO.Text;
+            DNOentity.KeyItem = cbDivision.Text+" "+txtSEQNO.Text+" "+txt_Prefix.Text;
             return DNOentity;
         }
 

@@ -16,10 +16,10 @@ namespace BL
         {
             CKMDL ckmdl = new CKMDL();
             denpyou_entity.Sqlprms = new SqlParameter[10];
-            denpyou_entity.Sqlprms[0] = new SqlParameter("@RenbenKBN", SqlDbType.Int) { Value = denpyou_entity.RenbenKBN };
-            denpyou_entity.Sqlprms[1] = new SqlParameter("@seqno", SqlDbType.Int) { Value = denpyou_entity.seqno };
-            denpyou_entity.Sqlprms[2] = new SqlParameter("@prefix", SqlDbType.NVarChar) { Value = denpyou_entity.prefix };
-            denpyou_entity.Sqlprms[3] = new SqlParameter("@counter", SqlDbType.Int) { Value = denpyou_entity.counter };
+            denpyou_entity.Sqlprms[0] = new SqlParameter("@RenbenKBN", SqlDbType.TinyInt) { Value = denpyou_entity.RenbenKBN };
+            denpyou_entity.Sqlprms[1] = new SqlParameter("@seqno", SqlDbType.TinyInt) { Value = denpyou_entity.seqno };
+            denpyou_entity.Sqlprms[2] = new SqlParameter("@prefix", SqlDbType.VarChar) { Value = denpyou_entity.prefix };
+            denpyou_entity.Sqlprms[3] = new SqlParameter("@counter", SqlDbType.BigInt) { Value = denpyou_entity.counter };
             denpyou_entity.Sqlprms[4] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = denpyou_entity.InsertOperator };
             denpyou_entity.Sqlprms[5] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = denpyou_entity.UpdateOperator };
             denpyou_entity.Sqlprms[6] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = denpyou_entity.Mode };
@@ -43,10 +43,9 @@ namespace BL
         public DataTable DenpyouNO_Search(DenpyouNOEntity denpyouno)
         {
             CKMDL ckmdl = new CKMDL();
-            denpyouno.Sqlprms = new SqlParameter[3];
+            denpyouno.Sqlprms = new SqlParameter[2];
             denpyouno.Sqlprms[0] = new SqlParameter("@division1", SqlDbType.Int) { Value = denpyouno.division1 };
             denpyouno.Sqlprms[1] = new SqlParameter("@division2", SqlDbType.Int) { Value = denpyouno.division2 };
-            denpyouno.Sqlprms[2] = new SqlParameter("@date", SqlDbType.NVarChar) { Value = denpyouno.date };
             return ckmdl.SelectDatatable("sp_select_DenpyouNO_Search", GetConnectionString(), denpyouno.Sqlprms);
         }
     }

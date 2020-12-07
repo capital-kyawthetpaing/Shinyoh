@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1169
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinyoh", "Shinyoh\Shinyoh.csproj", "{697E1304-F141-4CCE-B816-9CC225F441C4}"
 EndProject
@@ -36,6 +36,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HacchuuList", "HacchuuList\HacchuuList.csproj", "{836EF1A5-6FFE-49E6-B663-6643F4F7C583}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuchuuNyuuryoku", "JuchuuNyuuryoku\JuchuuNyuuryoku.csproj", "{26D4D5AC-F81F-4B6B-AD6B-859D015BE306}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShukkaSiziNyuuryoku", "ShukkaSiziNyuuryoku\ShukkaSiziNyuuryoku.csproj", "{0131B682-1664-4CD3-AA41-363F8300F503}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{26D4D5AC-F81F-4B6B-AD6B-859D015BE306}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26D4D5AC-F81F-4B6B-AD6B-859D015BE306}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26D4D5AC-F81F-4B6B-AD6B-859D015BE306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0131B682-1664-4CD3-AA41-363F8300F503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0131B682-1664-4CD3-AA41-363F8300F503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0131B682-1664-4CD3-AA41-363F8300F503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0131B682-1664-4CD3-AA41-363F8300F503}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -62,6 +62,12 @@ namespace Shinyoh_Controls
                         rDt = kBL.Kouriten_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Siiresaki":// added by ses
+                        SiiresakiBL sbl = new SiiresakiBL();
+                        rDt = sbl.Siiresaki_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+
                 }
                 if (result.Equals("E101"))
                 {
@@ -198,8 +204,8 @@ namespace Shinyoh_Controls
                     case "denpyou":
                         DenpyouNOEntity denpyou_entity = new DenpyouNOEntity();
                         DenpyouNOBL denpyou_bl = new DenpyouNOBL();
-                        denpyou_entity.RenbenKBN = int.Parse(sTextBox.ctrl_combo.SelectedValue.ToString());
-                        denpyou_entity.seqno = Convert.ToInt32(sTextBox.ctrlE132_2.Text.ToString());
+                        denpyou_entity.RenbenKBN = sTextBox.ctrl_combo.SelectedValue.ToString();
+                        denpyou_entity.seqno = sTextBox.ctrlE132_2.Text.ToString();
                         denpyou_entity.prefix =sTextBox.ctrlE132_1.Text;
                         denpyou_entity.MessageID = "E132";
                         rDt = denpyou_bl.DenpyouNO_Check(denpyou_entity);
@@ -258,8 +264,8 @@ namespace Shinyoh_Controls
                     case "denpyou":
                         DenpyouNOEntity denpyou_entity = new DenpyouNOEntity();
                         DenpyouNOBL denpyou_bl = new DenpyouNOBL();
-                        denpyou_entity.RenbenKBN = Convert.ToInt32(sTextBox.ctrl_combo.SelectedValue.ToString());
-                        denpyou_entity.seqno = Convert.ToInt32(sTextBox.ctrlE133_2.Text);
+                        denpyou_entity.RenbenKBN =sTextBox.ctrl_combo.SelectedValue.ToString();
+                        denpyou_entity.seqno = sTextBox.ctrlE133_2.Text;
                         denpyou_entity.prefix = sTextBox.ctrlE133_1.Text;
                         denpyou_entity.MessageID = "E133";
                         rDt = denpyou_bl.DenpyouNO_Check(denpyou_entity);
@@ -314,7 +320,7 @@ namespace Shinyoh_Controls
                 {
                     case "JuchuuNyuuryoku":
                         JuchuuListBL jbl = new JuchuuListBL();
-                        rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, "E160");
+                        rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE160_1.Text, string.Empty, "E160");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
@@ -352,7 +358,7 @@ namespace Shinyoh_Controls
                 }
                 if (result.Equals("E227"))
                 {
-                    bbl.ShowMessage("E227",string.IsNullOrEmpty(sTextBox.ctrlE227_1.Text)? rDt.Rows[0]["currentDate"].ToString():sTextBox.ctrlE227_1.Text);
+                    bbl.ShowMessage("E227", "取引終了日");
                     sTextBox.Focus();
                     return (true, rDt);
                 }
@@ -369,13 +375,13 @@ namespace Shinyoh_Controls
                         break;
                     case "M_Kouriten":
                         KouritenBL k_bl = new KouritenBL();
-                        rDt = k_bl.Kouriten_Select_Check(sTextBox.ctrlE267_1.Text, sTextBox.ctrlE267_1.Text, "E267");
+                        rDt = k_bl.Kouriten_Select_Check(sTextBox.ctrlE267_1.Text, sTextBox.ctrlE267_2.Text, "E267");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
                 if (result.Equals("E267"))
                 {
-                    bbl.ShowMessage("E267", string.IsNullOrEmpty(sTextBox.ctrlE267_1.Text) ? rDt.Rows[0]["currentDate"].ToString() : sTextBox.ctrlE267_1.Text);
+                    bbl.ShowMessage("E267", "取引開始日");
                     sTextBox.Focus();
                     return (true, rDt);
                 }

@@ -15,7 +15,9 @@ namespace Entity {
            Siiresaki,
            Tokuisaki,
            multiporpose,
-           Kouriten
+           Kouriten,
+           ShippingNO,
+            Shouhin
         }
     }
 }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.btnSearch = new Shinyoh_Controls.SButton();
@@ -63,6 +65,7 @@
             // 
             // lbl_Date
             // 
+            this.lbl_Date.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Date.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.lbl_Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -76,13 +79,14 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSearch.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnSearch.Location = new System.Drawing.Point(817, 60);
+            this.btnSearch.Location = new System.Drawing.Point(756, 60);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(106, 23);
+            this.btnSearch.Size = new System.Drawing.Size(160, 30);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Tag = "2";
             this.btnSearch.Text = "表示(F11)";
@@ -91,6 +95,7 @@
             // 
             // lbl2
             // 
+            this.lbl2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lbl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -109,19 +114,18 @@
             this.cbDivision2.FormattingEnabled = true;
             this.cbDivision2.IsDatatableOccurs = null;
             this.cbDivision2.IsErrorOccurs = false;
-            this.cbDivision2.Location = new System.Drawing.Point(314, 24);
+            this.cbDivision2.Location = new System.Drawing.Point(328, 24);
             this.cbDivision2.MinimumSize = new System.Drawing.Size(100, 0);
             this.cbDivision2.MoveNext = true;
             this.cbDivision2.Name = "cbDivision2";
             this.cbDivision2.NextControl = null;
             this.cbDivision2.NextControlName = "lbl_Date";
-            this.cbDivision2.Size = new System.Drawing.Size(121, 20);
+            this.cbDivision2.Size = new System.Drawing.Size(135, 20);
             this.cbDivision2.TabIndex = 2;
-            this.cbDivision2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbDivision2_KeyDown);
             // 
             // lblSign
             // 
-            this.lblSign.Location = new System.Drawing.Point(256, 24);
+            this.lblSign.Location = new System.Drawing.Point(270, 24);
             this.lblSign.Name = "lblSign";
             this.lblSign.Size = new System.Drawing.Size(35, 20);
             this.lblSign.TabIndex = 1;
@@ -141,7 +145,7 @@
             this.cbDivision1.Name = "cbDivision1";
             this.cbDivision1.NextControl = null;
             this.cbDivision1.NextControlName = "cbDivision2";
-            this.cbDivision1.Size = new System.Drawing.Size(121, 20);
+            this.cbDivision1.Size = new System.Drawing.Size(135, 20);
             this.cbDivision1.TabIndex = 1;
             // 
             // lbl1
@@ -182,7 +186,7 @@
             // 
             // RenbanKBN1
             // 
-            this.RenbanKBN1.DataPropertyName = "RenbanKBN";
+            this.RenbanKBN1.DataPropertyName = "Char1";
             this.RenbanKBN1.FillWeight = 74.00188F;
             this.RenbanKBN1.HeaderText = "連番区分";
             this.RenbanKBN1.Name = "RenbanKBN1";
@@ -193,6 +197,8 @@
             // 
             this.SEQNO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.SEQNO1.DataPropertyName = "SEQNO";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.SEQNO1.DefaultCellStyle = dataGridViewCellStyle1;
             this.SEQNO1.FillWeight = 144.3299F;
             this.SEQNO1.HeaderText = "SEQNO";
             this.SEQNO1.Name = "SEQNO1";
@@ -209,7 +215,10 @@
             // 
             // Counter1
             // 
+            this.Counter1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Counter1.DataPropertyName = "Counter";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.Counter1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Counter1.FillWeight = 61.66823F;
             this.Counter1.HeaderText = "カウンタ";
             this.Counter1.Name = "Counter1";
@@ -244,10 +253,10 @@
         private Shinyoh_Controls.SButton btnSearch;
         private Shinyoh_Controls.SLabel lbl2;
         private Shinyoh_Controls.SGridView gvDenpyouNo;
+        private Shinyoh_Controls.SLabel lbl_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn RenbanKBN1;
         private System.Windows.Forms.DataGridViewTextBoxColumn SEQNO1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prefix1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Counter1;
-        private Shinyoh_Controls.SLabel lbl_Date;
     }
 }
