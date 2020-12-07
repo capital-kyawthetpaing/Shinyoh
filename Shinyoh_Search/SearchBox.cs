@@ -86,7 +86,8 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Denpyou:
                         DenpyouNoSearch denpyouSearch = new DenpyouNoSearch();
                         denpyouSearch.ShowDialog();
-                        Combo.SelectedIndex = Convert.ToInt32(denpyouSearch.renban);
+                        //Combo.SelectedIndex = Convert.ToInt32(denpyouSearch.renban);
+                        Combo.SelectedValue = denpyouSearch.renban;
                         CDate = denpyouSearch.seqno;
                         CD = denpyouSearch.prefix;
                         break;
