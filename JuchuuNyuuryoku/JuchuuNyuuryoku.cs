@@ -558,17 +558,5 @@ namespace JuchuuNyuuryoku
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
         }
-
-        private void gv_1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            if (gv_1.Columns[e.ColumnIndex].Name == "colJuchuuSuu")
-            {
-                string JuchuuSuu = gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].EditedFormattedValue.ToString();
-                if (string.IsNullOrEmpty(JuchuuSuu))
-                {
-
-                }
-            }
-        }
     }
 }
