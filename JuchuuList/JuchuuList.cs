@@ -58,6 +58,8 @@ namespace JuchuuList {
             ErrorCheck();
 
             txtStaffCD.ChangeDate = txtTempDate;
+            txtTokuisaki.ChangeDate = txtTempDate;
+            txtStore.ChangeDate = txtTempDate;
         }
         private void Date_Setting()
         {
@@ -101,6 +103,7 @@ namespace JuchuuList {
 
             if (dt.Rows.Count > 0)
                 lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
+            else lblBrandName.Text = string.Empty;
         }
 
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
