@@ -24,7 +24,7 @@ namespace Shinyoh_Search
             InitializeComponent();
         }
 
-        public void ShippingNoSearch_Load(object sender,EventArgs e)
+        private void ShippingNoSearch_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
@@ -39,6 +39,8 @@ namespace Shinyoh_Search
             txtShippingNoTo.E103Check(true);
             txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
             sbStaff.E101Check(true, "staff", null, null, null);
+
+            lblCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
         }
 
         public override void FunctionProcess(string tagID)
@@ -59,5 +61,6 @@ namespace Shinyoh_Search
 
         }
 
+       
     }
 }
