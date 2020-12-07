@@ -558,5 +558,76 @@ namespace JuchuuNyuuryoku
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
         }
+        private void gv_2_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            string isSelected = string.Empty;
+            string free = gv_1.Rows[e.RowIndex].Cells["colFree"].Value.ToString();
+            string JuchuuSuu = gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].Value.ToString();
+            if (gv_2.Columns[e.ColumnIndex].Name == "colSiiresakiCD")
+            {
+                string siiresakiCD = gv_2.Rows[e.RowIndex].Cells["colSiiresakiCD"].EditedFormattedValue.ToString();                
+                if (string.IsNullOrEmpty(free))
+                    isSelected = "OFF";
+                else isSelected = "ON";
+                if (isSelected=="OFF" && JuchuuSuu != "0")
+                {
+                    base_bl.ShowMessage("E102");
+                    e.Cancel = true;
+                }
+                SiiresakiBL sbl = new SiiresakiBL();
+                DataTable dt = sbl.Siiresaki_Select_Check(siiresakiCD, txtJuchuuDate.Text, "E101");
+                if (dt.Rows.Count>0)
+                {
+                    if(dt.Rows[0]["MessageID"].ToString()== "E101")
+                    {
+                        base_bl.ShowMessage("E102");
+                    }
+                    else
+                    {
+                        sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt);
+                    }
+                    
+                }
+            }
+            if (gv_2.Columns[e.ColumnIndex].Name == "colSiiresakiCD")
+            {
+                string siiresakiCD = gv_2.Rows[e.RowIndex].Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
+                if (string.IsNullOrEmpty(free))
+                    isSelected = "OFF";
+                else isSelected = "ON";
+                if (isSelected == "OFF" && JuchuuSuu != "0")
+                {
+                    base_bl.ShowMessage("E102");
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void gv_2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var senderGrid = (DataGridView)sender;
+            if (e.RowIndex >= 0)
+            {
+                var row = this.gv_2.Rows[e.RowIndex];
+                if (senderGrid.Columns[e.ColumnIndex].ReadOnly == false)
+                {
+                    if (gv_2.Columns["colSiiresakiDetail"].Index == e.ColumnIndex)
+                    {
+                        SiiresakiDetail sl = new SiiresakiDetail();
+                        sl.ShowDialog();
+                    //    if (!string.IsNullOrWhiteSpace(sl.TanaCD))
+                    //    {
+                    //        row.Cells[dgvTanaban.Columns[e.ColumnIndex - 1].Index].Value = sl.TanaCD;
+
+                    //        if (!string.IsNullOrWhiteSpace(ScStorage.TxtCode.Text))
+                    //        {
+                    //            row.Cells[dgvTanaban.Columns["colRackNo1"].Index].Value = sl.TanaCD;
+
+                    //        }
+                    //    }
+                    }
+                }
+            }
+        }
     }
 }
