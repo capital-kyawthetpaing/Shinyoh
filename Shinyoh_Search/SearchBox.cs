@@ -50,6 +50,9 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Kouriten:
                         colName = "KouritenRyakuName";
                         break;
+                    case Entity.SearchType.ScType.multiporpose:
+                        colName = "Char1";
+                        break;
                 }
 
                 DataTable dt = this.IsDatatableOccurs;
