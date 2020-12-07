@@ -391,6 +391,7 @@
             this.txtYubin2.Size = new System.Drawing.Size(70, 19);
             this.txtYubin2.TabIndex = 28;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
             // 
             // txtPhNo1
             // 

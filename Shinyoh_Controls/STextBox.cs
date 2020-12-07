@@ -41,6 +41,17 @@ namespace Shinyoh_Controls
 
         [Browsable(true)]
         [Category("Shinyoh Properties")]
+        [Description("Select Default Keyboard")]
+        [DisplayName("Default Language")]
+        public DefKey DefaultKeyboard { get; set; } = 0;
+        public enum DefKey
+        {
+            English = 0,
+            Japanese = 1
+        }
+
+        [Browsable(true)]
+        [Category("Shinyoh Properties")]
         [Description("Max Length After Decimal Point")]
         [DisplayName("Decimal Place")]
         public int DecimalPlace { get; set; } = 0;
@@ -273,6 +284,18 @@ namespace Shinyoh_Controls
         protected override void OnEnter(EventArgs e)
         {
             this.BackColor = Color.Cyan;
+            if(DefaultKeyboard == DefKey.Japanese)
+            {
+                foreach (InputLanguage lang in InputLanguage.InstalledInputLanguages)
+                {
+                    if (lang.LayoutName.Equals("Japanese"))
+                    {
+                        InputLanguage.CurrentInputLanguage = lang;
+                        this.ImeMode = ImeMode.Hiragana;
+                        break;
+                    }
+                }
+            }
             base.OnEnter(e);
         }
         protected override void OnLeave(EventArgs e)

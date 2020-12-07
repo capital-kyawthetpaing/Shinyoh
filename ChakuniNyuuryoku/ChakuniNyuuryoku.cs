@@ -273,33 +273,13 @@ namespace ChakuniNyuuryoku
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
-            txtSiiresaki.E227Check(true, "M_Tokuisaki", txtSiiresaki, txtArrivalDate);
-            txtSiiresaki.E267Check(true, "M_Tokuisaki", txtSiiresaki, txtArrivalDate);
+            //txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             sbWareHouse.E102Check(true);
             sbWareHouse.E101Check(true, "souko", sbWareHouse, null, null);
             txtScheduledNo.E133Check(true, "M_Siiresaki", txtScheduledNo, txtArrivalDate, null);
-        }
-        private void txtArrivalNO_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!txtArrivalNO.IsErrorOccurs)
-                {
-                    if (cboMode.SelectedValue.ToString() == "2")
-                    {
-                        cf.EnablePanel(panelDetails);
-                        cf.DisablePanel(PanelTitle);
-                        txtArrivalDate.Focus();
-                    }
-                }
-                DataTable dt = txtArrivalNO.IsDatatableOccurs;
-                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
-                {
-                    ChakuniNyuuryokuSelect(dt);
-                }
-            }
         }
         private void ChakuniNyuuryokuSelect(DataTable dt)
         {
@@ -501,6 +481,25 @@ namespace ChakuniNyuuryoku
             sd.ShowDialog();
         }
 
-       
+        private void txtArrivalNO_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtArrivalNO.IsErrorOccurs)
+                {
+                    if (cboMode.SelectedValue.ToString() == "2")
+                    {
+                        cf.EnablePanel(panelDetails);
+                        cf.DisablePanel(PanelTitle);
+                        txtArrivalDate.Focus();
+                    }
+                }
+                DataTable dt = txtArrivalNO.IsDatatableOccurs;
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                {
+                    ChakuniNyuuryokuSelect(dt);
+                }
+            }
+        }
     }
 }
