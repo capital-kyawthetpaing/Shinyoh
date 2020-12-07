@@ -47,7 +47,8 @@ namespace Shinyoh_Controls
         public enum DefKey
         {
             English = 0,
-            Japanese = 1
+            Japanese = 1,
+            JapaneseHalf = 2
         }
 
         [Browsable(true)]
@@ -292,6 +293,18 @@ namespace Shinyoh_Controls
                     {
                         InputLanguage.CurrentInputLanguage = lang;
                         this.ImeMode = ImeMode.Hiragana;
+                        break;
+                    }
+                }
+            }
+            else if(DefaultKeyboard == DefKey.JapaneseHalf)
+            {
+                foreach (InputLanguage lang in InputLanguage.InstalledInputLanguages)
+                {
+                    if (lang.LayoutName.Equals("Japanese"))
+                    {
+                        InputLanguage.CurrentInputLanguage = lang;
+                        this.ImeMode = ImeMode.KatakanaHalf;
                         break;
                     }
                 }
