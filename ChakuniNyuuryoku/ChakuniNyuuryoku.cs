@@ -18,6 +18,7 @@ namespace ChakuniNyuuryoku
         BaseBL bbl;
         DataTable dtmain;
         DataTable dtTemp;
+        DataTable dtGridSource = new DataTable();
         SiiresakiDetails sd = new SiiresakiDetails();
         public ChakuniNyuuryoku()
         {
@@ -53,6 +54,9 @@ namespace ChakuniNyuuryoku
             ChangeMode(Mode.New);
             txtArrivalNO.Focus();
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
+            txtSiiresaki.ChangeDate = txtArrivalDate;
+            txtSiiresaki.lblName = lblSiiresaki;
+            txtStaffCD.ChangeDate = txtArrivalDate;
         }
         private void ChangeMode(Mode mode)
         {
@@ -415,16 +419,50 @@ namespace ChakuniNyuuryoku
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string Xml = string.Empty;
-            DataTable dtGridSource = new DataTable();
-            ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity();
             dtGridSource = (DataTable)gvChakuniNyuuryoku.DataSource;
-            Xml = cf.DataTableToXml(dtGridSource);
-            dtmain = cbl.ChakuniNyuuryoku_Display(chkEntity, Xml);
-            Clear();
+            savedata();
+            txtScheduledNo.Clear();
+            txtShouhinCD.Clear();
+            txtShouhinName.Clear();
+            txtControlNo.Clear();
+            txtJANCD.Clear();
+            sbBrand.Clear();
+            lblBrandName.Text = string.Empty;
+            txtColor.Clear();
+            txtExhibition.Clear();
+            txtSize.Clear();
             txtScheduledNo.Focus();
         }
+        private DataTable savedata()
+        {
 
+            //if(dtGridSource.Rows.Count>0)
+            //{
+            //    gvChakuniNyuuryoku.DataSource = dtGridSource;
+            //    gvJancd.DataSource = dtGridSource;
+            //}
+            return dtGridSource;
+        }
+        
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            DataTable dtsave = new DataTable();
+            dtsave = savedata();
+            gvChakuniNyuuryoku.DataSource = dtsave;
+            DataTable dtcopy = new DataTable();
+            dtcopy = dtmain.Copy();
+            dtcopy.Columns.Remove("ShouhinCD");
+            dtcopy.Columns.Remove("ShouhinName");
+            dtcopy.Columns.Remove("ColorRyakuName");
+            dtcopy.Columns.Remove("ColorNO");
+            dtcopy.Columns.Remove("SizeNO");
+            dtcopy.Columns.Remove("ChakuniYoteiDate");
+            dtcopy.Columns.Remove("ChakuniYoteiSuu");
+            dtcopy.Columns.Remove("ChakuniZumiSuu");
+            dtcopy.Columns.Remove("ChakuniSuu");
+            dtcopy.Columns.Remove("d");
+            gvJancd.DataSource = dtcopy;
+        }
         private void gvChakuniNyuuryoku_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
             if (gvChakuniNyuuryoku.Columns[e.ColumnIndex].Name == "colArrivalTime")
@@ -462,5 +500,7 @@ namespace ChakuniNyuuryoku
         {
             sd.ShowDialog();
         }
+
+       
     }
 }

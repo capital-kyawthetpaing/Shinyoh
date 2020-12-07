@@ -314,7 +314,7 @@ namespace Shinyoh_Controls
                 {
                     case "JuchuuNyuuryoku":
                         JuchuuListBL jbl = new JuchuuListBL();
-                        rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, "E160");
+                        rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE160_1.Text, string.Empty, "E160");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
@@ -352,7 +352,7 @@ namespace Shinyoh_Controls
                 }
                 if (result.Equals("E227"))
                 {
-                    bbl.ShowMessage("E227",string.IsNullOrEmpty(sTextBox.ctrlE227_1.Text)? rDt.Rows[0]["currentDate"].ToString():sTextBox.ctrlE227_1.Text);
+                    bbl.ShowMessage("E227", "取引終了日");
                     sTextBox.Focus();
                     return (true, rDt);
                 }
@@ -369,13 +369,13 @@ namespace Shinyoh_Controls
                         break;
                     case "M_Kouriten":
                         KouritenBL k_bl = new KouritenBL();
-                        rDt = k_bl.Kouriten_Select_Check(sTextBox.ctrlE267_1.Text, sTextBox.ctrlE267_1.Text, "E267");
+                        rDt = k_bl.Kouriten_Select_Check(sTextBox.ctrlE267_1.Text, sTextBox.ctrlE267_2.Text, "E267");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
                 if (result.Equals("E267"))
                 {
-                    bbl.ShowMessage("E267", string.IsNullOrEmpty(sTextBox.ctrlE267_1.Text) ? rDt.Rows[0]["currentDate"].ToString() : sTextBox.ctrlE267_1.Text);
+                    bbl.ShowMessage("E267", "取引開始日");
                     sTextBox.Focus();
                     return (true, rDt);
                 }
