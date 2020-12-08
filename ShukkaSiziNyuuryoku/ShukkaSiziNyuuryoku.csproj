@@ -33,23 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BL">
-      <HintPath>..\bin\Debug\BL.dll</HintPath>
-    </Reference>
     <Reference Include="CKM_CommonFunction">
       <HintPath>..\bin\Debug\CKM_CommonFunction.dll</HintPath>
-    </Reference>
-    <Reference Include="Entity">
-      <HintPath>..\bin\Debug\Entity.dll</HintPath>
-    </Reference>
-    <Reference Include="Shinyoh">
-      <HintPath>..\bin\Debug\Shinyoh.exe</HintPath>
-    </Reference>
-    <Reference Include="Shinyoh_Controls">
-      <HintPath>..\bin\Debug\Shinyoh_Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="Shinyoh_Search">
-      <HintPath>..\bin\Debug\Shinyoh_Search.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -96,6 +81,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{c2e966eb-8344-4491-befe-a809331521fe}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{0cc4487d-c081-4d4f-87d5-028552310763}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh\Shinyoh.csproj">
+      <Project>{697e1304-f141-4cce-b816-9cc225f441c4}</Project>
+      <Name>Shinyoh</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
+      <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
+      <Name>Shinyoh_Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
+      <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>
+      <Name>Shinyoh_Search</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

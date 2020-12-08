@@ -22,7 +22,6 @@ namespace ShukkaSiziNyuuryoku
             cf = new CommonFunction();
             multi_Entity = new multipurposeEntity();
             bbl = new BaseBL();
-            //test
         }
 
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
