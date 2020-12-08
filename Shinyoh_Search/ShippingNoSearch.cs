@@ -35,19 +35,13 @@ namespace Shinyoh_Search
             gvShippingNo.UseRowNo(true);
             GridViewBind();
             txtShippingDateFrom.Focus();
-            txtShippingDateFrom.E103Check(true);
-            txtShippingDateTo.E103Check(true);
-            txtShippingNoFrom.E103Check(true);
-            txtShippingNoTo.E103Check(true);
-            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
-            sbStaff.E101Check(true, "staff", null, null, null);
-            txtShippingDateFrom.Focus();
+
             //出荷予定日            
             txtShippingDateFrom.E103Check(true);
             txtShippingDateTo.E103Check(true);
             txtShippingDateTo.E106Check(true, txtShippingDateFrom, txtShippingDateTo);
             //得意先
-            sbCustomer.E101Check(true, "Shipping", null, null, null);
+            sbCustomer.E101Check(true, "M_Tokuisaki", null, null, null);
             //担当スタッフ
             sbStaff.E101Check(true, "M_Staff", null, null, null);
             //伝票日付

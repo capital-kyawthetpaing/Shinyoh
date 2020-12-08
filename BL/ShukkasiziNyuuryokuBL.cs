@@ -22,7 +22,7 @@ namespace BL
             string str = string.Empty;
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = ShippingNo };
+            parameters[0] = new SqlParameter("@ShippingNO", SqlDbType.VarChar) { Value = ShippingNo };
             parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = cDate };
             parameters[2] = new SqlParameter("@Error", SqlDbType.VarChar) { Value = error_Type };
             DataTable dt = ckmdl.SelectDatatable("ShippingNo_Select_Check", GetConnectionString(), parameters);
