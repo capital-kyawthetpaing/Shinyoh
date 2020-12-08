@@ -56,7 +56,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtShippingNO.Combo = null;
             this.txtShippingNO.DecimalPlace = 0;
             this.txtShippingNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtShippingNO.DepandOnMode = true;
+            this.txtShippingNO.DepandOnMode = false;
             this.txtShippingNO.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShippingNO.IntegerPart = 0;
             this.txtShippingNO.IsDatatableOccurs = null;
@@ -68,7 +68,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtShippingNO.MoveNext = true;
             this.txtShippingNO.Name = "txtShippingNO";
             this.txtShippingNO.NextControl = null;
-            this.txtShippingNO.NextControlName = "txtArrivalDate";
+            this.txtShippingNO.NextControlName = "";
             this.txtShippingNO.SearchType = Entity.SearchType.ScType.ShippingNO;
             this.txtShippingNO.Size = new System.Drawing.Size(100, 19);
             this.txtShippingNO.TabIndex = 3;
