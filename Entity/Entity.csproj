@@ -56,6 +56,7 @@
     <Compile Include="SearchType.cs" />
     <Compile Include="ShouhinEntity.cs" />
     <Compile Include="ShukkaSiziDataShuturyokuEntity.cs" />
+    <Compile Include="ShukkaSiziNyuuryokuEntity.cs" />
     <Compile Include="SoukoEntity.cs" />
     <Compile Include="StaffEntity.cs" />
     <Compile Include="SiiresakiEntity.cs" />

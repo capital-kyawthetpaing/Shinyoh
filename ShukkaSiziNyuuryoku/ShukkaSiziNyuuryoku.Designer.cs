@@ -29,8 +29,8 @@ namespace ShukkaSiziNyuuryoku
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtShippingNO = new Shinyoh_Search.SearchBox();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
+            this.txtShippingNO = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.SuspendLayout();
@@ -47,6 +47,19 @@ namespace ShukkaSiziNyuuryoku
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            // 
+            // sLabel3
+            // 
+            this.sLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel3.Location = new System.Drawing.Point(30, 12);
+            this.sLabel3.Name = "sLabel3";
+            this.sLabel3.Size = new System.Drawing.Size(100, 19);
+            this.sLabel3.TabIndex = 2;
+            this.sLabel3.Text = "出荷指示番号";
+            this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtShippingNO
             // 
@@ -69,23 +82,10 @@ namespace ShukkaSiziNyuuryoku
             this.txtShippingNO.Name = "txtShippingNO";
             this.txtShippingNO.NextControl = null;
             this.txtShippingNO.NextControlName = "";
-            this.txtShippingNO.SearchType = Entity.SearchType.ScType.ShippingNO;
+            this.txtShippingNO.SearchType = Entity.SearchType.ScType.Souko;
             this.txtShippingNO.Size = new System.Drawing.Size(100, 19);
             this.txtShippingNO.TabIndex = 3;
             this.txtShippingNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // sLabel3
-            // 
-            this.sLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(30, 12);
-            this.sLabel3.Name = "sLabel3";
-            this.sLabel3.Size = new System.Drawing.Size(100, 19);
-            this.sLabel3.TabIndex = 2;
-            this.sLabel3.Text = "出荷指示番号";
-            this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ShukkaSiziNyuuryoku
             // 
