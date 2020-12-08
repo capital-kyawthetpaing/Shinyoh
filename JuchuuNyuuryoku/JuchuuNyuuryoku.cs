@@ -187,11 +187,6 @@ namespace JuchuuNyuuryoku
                     Disable_UDI_Mode();
                 }
             }
-            //if (tagID == "9")
-            //{
-            //    SiiresakiSearch search = new SiiresakiSearch();
-            //    search.ShowDialog();
-            //}
             if (tagID == "10")
             {
                 
@@ -566,50 +561,55 @@ namespace JuchuuNyuuryoku
         }
         private void gv_2_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
+            Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+
             string isSelected = string.Empty;
             string free = gv_1.Rows[e.RowIndex].Cells["colFree"].Value.ToString();
             string JuchuuSuu = gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].Value.ToString();
             if (gv_2.Columns[e.ColumnIndex].Name == "colSiiresakiCD")
             {
-                SiiresakiSearch search = new SiiresakiSearch();
-                search.ShowDialog();
-                string siiresakiCD = gv_2.Rows[e.RowIndex].Cells["colSiiresakiCD"].EditedFormattedValue.ToString();                
-                if (string.IsNullOrEmpty(free))
-                    isSelected = "OFF";
-                else isSelected = "ON";
-                if (isSelected=="OFF" && JuchuuSuu != "0")
+                if (ctrlArr.Length > 0)
                 {
-                    base_bl.ShowMessage("E102");
-                    e.Cancel = true;
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = true;
                 }
-                SiiresakiBL sbl = new SiiresakiBL();
-                DataTable dt = sbl.Siiresaki_Select_Check(siiresakiCD, txtJuchuuDate.Text, "E101");
-                if (dt.Rows.Count>0)
-                {
-                    if(dt.Rows[0]["MessageID"].ToString()== "E101")
-                    {
-                        base_bl.ShowMessage("E102");
-                    }
-                    else
-                    {
-                        sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt);
-                    }
-                    
-                }
-            }
-            if (gv_2.Columns[e.ColumnIndex].Name == "colSiiresakiCD")
-            {
                 string siiresakiCD = gv_2.Rows[e.RowIndex].Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
                 if (string.IsNullOrEmpty(free))
                     isSelected = "OFF";
                 else isSelected = "ON";
                 if (isSelected == "OFF" && JuchuuSuu != "0")
                 {
-                    base_bl.ShowMessage("E102");
+                    // base_bl.ShowMessage("E102");
                     e.Cancel = true;
                 }
+                SiiresakiBL sbl = new SiiresakiBL();
+                DataTable dt = sbl.Siiresaki_Select_Check(siiresakiCD, txtJuchuuDate.Text, "E101");
+                if (dt.Rows.Count > 0)
+                {
+                    if (dt.Rows[0]["MessageID"].ToString() == "E101")
+                    {
+                        //  base_bl.ShowMessage("E102");
+                    }
+                    else
+                    {
+                        sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt);
+                    }
+                }
             }
+            else
+            {
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
+           
         }
+
 
         private void gv_2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -622,45 +622,28 @@ namespace JuchuuNyuuryoku
                     if (gv_2.Columns["colSiiresakiDetail"].Index == e.ColumnIndex)
                     {
                         SiiresakiDetail sl = new SiiresakiDetail();
+                        sl.Access_Siiresaki_obj.SiiresakiCD = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.SiiresakiRyakuName = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.SiiresakiName = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.YuubinNO1 = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.YuubinNO2 = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.Juusho1 = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.Juusho2 = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.Tel11 = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.Tel12 = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.Tel13 = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.Tel21 = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.Tel22 = gv_2.Columns["colSiiresakiDetail"].ToString();
+                        sl.Access_Siiresaki_obj.Tel23 = gv_2.Columns["colSiiresakiDetail"].ToString();
                         sl.ShowDialog();
-                    //    if (!string.IsNullOrWhiteSpace(sl.TanaCD))
-                    //    {
-                    //        row.Cells[dgvTanaban.Columns[e.ColumnIndex - 1].Index].Value = sl.TanaCD;
-
-                    //        if (!string.IsNullOrWhiteSpace(ScStorage.TxtCode.Text))
-                    //        {
-                    //            row.Cells[dgvTanaban.Columns["colRackNo1"].Index].Value = sl.TanaCD;
-
-                    //        }
-                    //    }
                     }
                 }
             }
         }
 
-        private void gv_2_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        private void btnNameF10_Click(object sender, EventArgs e)
         {
-            Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
-            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
-            if (gv_2.Columns[e.ColumnIndex].Name == "colSiiresakiCD")
-            {
 
-                if (ctrlArr.Length > 0)
-                {
-                    Control btnF9 = ctrlArr[0];
-                    if (btnF9 != null)
-                        btnF9.Visible = true;
-                }
-            }
-            else
-            {
-                if (ctrlArr.Length > 0)
-                {
-                    Control btnF9 = ctrlArr[0];
-                    if (btnF9 != null)
-                        btnF9.Visible = false;
-                }
-            }
         }
     }
 }

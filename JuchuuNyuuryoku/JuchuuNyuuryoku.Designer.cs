@@ -359,7 +359,6 @@
             this.gv_2.Size = new System.Drawing.Size(850, 100);
             this.gv_2.TabIndex = 102;
             this.gv_2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_2_CellContentClick);
-            this.gv_2.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_2_CellMouseEnter);
             this.gv_2.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gv_2_CellValidating);
             // 
             // col2JuchuuMeisaiTekiyou
@@ -570,6 +569,7 @@
             this.btnNameF10.TabIndex = 23;
             this.btnNameF10.Text = "F10 表示";
             this.btnNameF10.UseVisualStyleBackColor = false;
+            this.btnNameF10.Click += new System.EventHandler(this.btnNameF10_Click);
             // 
             // btnNameF8
             // 
