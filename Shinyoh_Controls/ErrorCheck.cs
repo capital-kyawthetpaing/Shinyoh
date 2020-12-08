@@ -62,12 +62,6 @@ namespace Shinyoh_Controls
                         rDt = kBL.Kouriten_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
-                    case "M_Siiresaki":// added by ses
-                        SiiresakiBL sbl = new SiiresakiBL();
-                        rDt = sbl.Siiresaki_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
-                        result = rDt.Rows[0]["MessageID"].ToString();
-                        break;
-
                 }
                 if (result.Equals("E101"))
                 {
@@ -499,9 +493,7 @@ namespace Shinyoh_Controls
                 }
             }
             return (false, rDt);
-        }
-
-        
+        }        
 
         public static bool Matches(string left_, string right_)
         {

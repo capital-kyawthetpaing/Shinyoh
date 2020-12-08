@@ -29,14 +29,12 @@ namespace Shinyoh_Search
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtDate = new Shinyoh_Controls.SLabel();
             this.lblDate = new Shinyoh_Controls.SLabel();
-            this.sbCustomer = new Shinyoh_Search.SearchBox();
             this.lblStaffName = new Shinyoh_Controls.SLabel();
             this.lblCustomerName = new Shinyoh_Controls.SLabel();
-            this.sbStaff = new Shinyoh_Search.SearchBox();
             this.btnSearch = new Shinyoh_Controls.SButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,8 +47,8 @@ namespace Shinyoh_Search
             this.txtSlipDateTo = new Shinyoh_Controls.STextBox();
             this.txtSlipDateFrom = new Shinyoh_Controls.STextBox();
             this.txtProductName = new Shinyoh_Controls.STextBox();
-            this.txtDateTo = new Shinyoh_Controls.STextBox();
-            this.txtDateFrom = new Shinyoh_Controls.STextBox();
+            this.txtShippingDateTo = new Shinyoh_Controls.STextBox();
+            this.txtShippingDateFrom = new Shinyoh_Controls.STextBox();
             this.sLabel7 = new Shinyoh_Controls.SLabel();
             this.lblShippingNo = new Shinyoh_Controls.SLabel();
             this.lblSlipDate = new Shinyoh_Controls.SLabel();
@@ -64,6 +62,8 @@ namespace Shinyoh_Search
             this.colCustomerCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colOrderNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sbCustomer = new Shinyoh_Search.SearchBox();
+            this.sbStaff = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvShippingNo)).BeginInit();
             this.SuspendLayout();
@@ -89,8 +89,8 @@ namespace Shinyoh_Search
             this.panel1.Controls.Add(this.txtSlipDateTo);
             this.panel1.Controls.Add(this.txtSlipDateFrom);
             this.panel1.Controls.Add(this.txtProductName);
-            this.panel1.Controls.Add(this.txtDateTo);
-            this.panel1.Controls.Add(this.txtDateFrom);
+            this.panel1.Controls.Add(this.txtShippingDateTo);
+            this.panel1.Controls.Add(this.txtShippingDateFrom);
             this.panel1.Controls.Add(this.sLabel7);
             this.panel1.Controls.Add(this.lblShippingNo);
             this.panel1.Controls.Add(this.lblSlipDate);
@@ -129,35 +129,9 @@ namespace Shinyoh_Search
             this.lblDate.Text = "基準日";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // sbCustomer
-            // 
-            this.sbCustomer.AllowMinus = false;
-            this.sbCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sbCustomer.ChangeDate = null;
-            this.sbCustomer.Combo = null;
-            this.sbCustomer.DecimalPlace = 0;
-            this.sbCustomer.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.sbCustomer.DepandOnMode = false;
-            this.sbCustomer.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.sbCustomer.IntegerPart = 0;
-            this.sbCustomer.IsDatatableOccurs = null;
-            this.sbCustomer.IsErrorOccurs = false;
-            this.sbCustomer.IsRequire = false;
-            this.sbCustomer.lblName = null;
-            this.sbCustomer.Location = new System.Drawing.Point(113, 33);
-            this.sbCustomer.MinimumSize = new System.Drawing.Size(100, 19);
-            this.sbCustomer.MoveNext = true;
-            this.sbCustomer.Name = "sbCustomer";
-            this.sbCustomer.NextControl = null;
-            this.sbCustomer.NextControlName = "sbStaff";
-            this.sbCustomer.SearchType = Entity.SearchType.ScType.Siiresaki;
-            this.sbCustomer.Size = new System.Drawing.Size(100, 19);
-            this.sbCustomer.TabIndex = 25;
-            this.sbCustomer.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            // 
             // lblStaffName
             // 
-            this.lblStaffName.BackColor = System.Drawing.Color.White;
+            this.lblStaffName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaffName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
@@ -165,7 +139,7 @@ namespace Shinyoh_Search
             this.lblStaffName.Name = "lblStaffName";
             this.lblStaffName.Size = new System.Drawing.Size(250, 19);
             this.lblStaffName.TabIndex = 24;
-            this.lblStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCustomerName
             // 
@@ -178,32 +152,6 @@ namespace Shinyoh_Search
             this.lblCustomerName.Size = new System.Drawing.Size(250, 19);
             this.lblCustomerName.TabIndex = 23;
             this.lblCustomerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // sbStaff
-            // 
-            this.sbStaff.AllowMinus = false;
-            this.sbStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sbStaff.ChangeDate = null;
-            this.sbStaff.Combo = null;
-            this.sbStaff.DecimalPlace = 0;
-            this.sbStaff.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.sbStaff.DepandOnMode = false;
-            this.sbStaff.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.sbStaff.IntegerPart = 0;
-            this.sbStaff.IsDatatableOccurs = null;
-            this.sbStaff.IsErrorOccurs = false;
-            this.sbStaff.IsRequire = false;
-            this.sbStaff.lblName = null;
-            this.sbStaff.Location = new System.Drawing.Point(113, 60);
-            this.sbStaff.MinimumSize = new System.Drawing.Size(100, 19);
-            this.sbStaff.MoveNext = true;
-            this.sbStaff.Name = "sbStaff";
-            this.sbStaff.NextControl = null;
-            this.sbStaff.NextControlName = "txtProductName";
-            this.sbStaff.SearchType = Entity.SearchType.ScType.Staff;
-            this.sbStaff.Size = new System.Drawing.Size(100, 19);
-            this.sbStaff.TabIndex = 22;
-            this.sbStaff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // btnSearch
             // 
@@ -248,7 +196,7 @@ namespace Shinyoh_Search
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(226, 9);
+            this.label1.Location = new System.Drawing.Point(226, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 13);
             this.label1.TabIndex = 16;
@@ -294,7 +242,7 @@ namespace Shinyoh_Search
             this.txtProductFrom.MoveNext = true;
             this.txtProductFrom.Name = "txtProductFrom";
             this.txtProductFrom.NextControl = this.txtProductTo;
-            this.txtProductFrom.NextControlName = null;
+            this.txtProductFrom.NextControlName = "txtProductTo";
             this.txtProductFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtProductFrom.Size = new System.Drawing.Size(140, 19);
             this.txtProductFrom.TabIndex = 14;
@@ -317,7 +265,7 @@ namespace Shinyoh_Search
             this.txtShippingNoTo.MoveNext = true;
             this.txtShippingNoTo.Name = "txtShippingNoTo";
             this.txtShippingNoTo.NextControl = this.txtProductFrom;
-            this.txtShippingNoTo.NextControlName = null;
+            this.txtShippingNoTo.NextControlName = "txtProductFrom";
             this.txtShippingNoTo.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingNoTo.Size = new System.Drawing.Size(100, 19);
             this.txtShippingNoTo.TabIndex = 13;
@@ -340,7 +288,7 @@ namespace Shinyoh_Search
             this.txtShippingNoFrom.MoveNext = true;
             this.txtShippingNoFrom.Name = "txtShippingNoFrom";
             this.txtShippingNoFrom.NextControl = null;
-            this.txtShippingNoFrom.NextControlName = null;
+            this.txtShippingNoFrom.NextControlName = "txtShippingNoTo";
             this.txtShippingNoFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingNoFrom.Size = new System.Drawing.Size(100, 19);
             this.txtShippingNoFrom.TabIndex = 12;
@@ -363,7 +311,7 @@ namespace Shinyoh_Search
             this.txtSlipDateTo.MoveNext = true;
             this.txtSlipDateTo.Name = "txtSlipDateTo";
             this.txtSlipDateTo.NextControl = null;
-            this.txtSlipDateTo.NextControlName = null;
+            this.txtSlipDateTo.NextControlName = "txtShippingNoFrom";
             this.txtSlipDateTo.SearchType = Entity.SearchType.ScType.None;
             this.txtSlipDateTo.Size = new System.Drawing.Size(100, 19);
             this.txtSlipDateTo.TabIndex = 11;
@@ -386,7 +334,7 @@ namespace Shinyoh_Search
             this.txtSlipDateFrom.MoveNext = true;
             this.txtSlipDateFrom.Name = "txtSlipDateFrom";
             this.txtSlipDateFrom.NextControl = null;
-            this.txtSlipDateFrom.NextControlName = null;
+            this.txtSlipDateFrom.NextControlName = "txtSlipDateTo";
             this.txtSlipDateFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtSlipDateFrom.Size = new System.Drawing.Size(100, 19);
             this.txtSlipDateFrom.TabIndex = 10;
@@ -409,57 +357,57 @@ namespace Shinyoh_Search
             this.txtProductName.MoveNext = true;
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.NextControl = null;
-            this.txtProductName.NextControlName = null;
+            this.txtProductName.NextControlName = "txtSlipDateFrom";
             this.txtProductName.SearchType = Entity.SearchType.ScType.None;
             this.txtProductName.Size = new System.Drawing.Size(500, 19);
             this.txtProductName.TabIndex = 9;
             this.txtProductName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // txtDateTo
+            // txtShippingDateTo
             // 
-            this.txtDateTo.AllowMinus = false;
-            this.txtDateTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDateTo.DecimalPlace = 0;
-            this.txtDateTo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtDateTo.DepandOnMode = true;
-            this.txtDateTo.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtDateTo.IntegerPart = 0;
-            this.txtDateTo.IsDatatableOccurs = null;
-            this.txtDateTo.IsErrorOccurs = false;
-            this.txtDateTo.IsRequire = false;
-            this.txtDateTo.Location = new System.Drawing.Point(252, 7);
-            this.txtDateTo.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtDateTo.MoveNext = true;
-            this.txtDateTo.Name = "txtDateTo";
-            this.txtDateTo.NextControl = null;
-            this.txtDateTo.NextControlName = null;
-            this.txtDateTo.SearchType = Entity.SearchType.ScType.None;
-            this.txtDateTo.Size = new System.Drawing.Size(100, 19);
-            this.txtDateTo.TabIndex = 8;
-            this.txtDateTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtShippingDateTo.AllowMinus = false;
+            this.txtShippingDateTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtShippingDateTo.DecimalPlace = 0;
+            this.txtShippingDateTo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShippingDateTo.DepandOnMode = true;
+            this.txtShippingDateTo.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtShippingDateTo.IntegerPart = 0;
+            this.txtShippingDateTo.IsDatatableOccurs = null;
+            this.txtShippingDateTo.IsErrorOccurs = false;
+            this.txtShippingDateTo.IsRequire = false;
+            this.txtShippingDateTo.Location = new System.Drawing.Point(252, 7);
+            this.txtShippingDateTo.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtShippingDateTo.MoveNext = true;
+            this.txtShippingDateTo.Name = "txtShippingDateTo";
+            this.txtShippingDateTo.NextControl = null;
+            this.txtShippingDateTo.NextControlName = "sbCustomer";
+            this.txtShippingDateTo.SearchType = Entity.SearchType.ScType.None;
+            this.txtShippingDateTo.Size = new System.Drawing.Size(100, 19);
+            this.txtShippingDateTo.TabIndex = 8;
+            this.txtShippingDateTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
-            // txtDateFrom
+            // txtShippingDateFrom
             // 
-            this.txtDateFrom.AllowMinus = false;
-            this.txtDateFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDateFrom.DecimalPlace = 0;
-            this.txtDateFrom.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtDateFrom.DepandOnMode = true;
-            this.txtDateFrom.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtDateFrom.IntegerPart = 0;
-            this.txtDateFrom.IsDatatableOccurs = null;
-            this.txtDateFrom.IsErrorOccurs = false;
-            this.txtDateFrom.IsRequire = false;
-            this.txtDateFrom.Location = new System.Drawing.Point(113, 7);
-            this.txtDateFrom.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtDateFrom.MoveNext = true;
-            this.txtDateFrom.Name = "txtDateFrom";
-            this.txtDateFrom.NextControl = null;
-            this.txtDateFrom.NextControlName = null;
-            this.txtDateFrom.SearchType = Entity.SearchType.ScType.None;
-            this.txtDateFrom.Size = new System.Drawing.Size(100, 19);
-            this.txtDateFrom.TabIndex = 7;
-            this.txtDateFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtShippingDateFrom.AllowMinus = false;
+            this.txtShippingDateFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtShippingDateFrom.DecimalPlace = 0;
+            this.txtShippingDateFrom.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShippingDateFrom.DepandOnMode = true;
+            this.txtShippingDateFrom.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtShippingDateFrom.IntegerPart = 0;
+            this.txtShippingDateFrom.IsDatatableOccurs = null;
+            this.txtShippingDateFrom.IsErrorOccurs = false;
+            this.txtShippingDateFrom.IsRequire = false;
+            this.txtShippingDateFrom.Location = new System.Drawing.Point(113, 7);
+            this.txtShippingDateFrom.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtShippingDateFrom.MoveNext = true;
+            this.txtShippingDateFrom.Name = "txtShippingDateFrom";
+            this.txtShippingDateFrom.NextControl = null;
+            this.txtShippingDateFrom.NextControlName = "txtShippingDateTo";
+            this.txtShippingDateFrom.SearchType = Entity.SearchType.ScType.None;
+            this.txtShippingDateFrom.Size = new System.Drawing.Size(100, 19);
+            this.txtShippingDateFrom.TabIndex = 7;
+            this.txtShippingDateFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // sLabel7
             // 
@@ -578,8 +526,8 @@ namespace Shinyoh_Search
             // colShippingDate
             // 
             this.colShippingDate.DataPropertyName = "ShippingDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colShippingDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colShippingDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.colShippingDate.HeaderText = "出荷予定日";
             this.colShippingDate.Name = "colShippingDate";
             this.colShippingDate.ReadOnly = true;
@@ -606,6 +554,58 @@ namespace Shinyoh_Search
             this.colOrderNO.Name = "colOrderNO";
             this.colOrderNO.ReadOnly = true;
             this.colOrderNO.Width = 213;
+            // 
+            // sbCustomer
+            // 
+            this.sbCustomer.AllowMinus = false;
+            this.sbCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sbCustomer.ChangeDate = null;
+            this.sbCustomer.Combo = null;
+            this.sbCustomer.DecimalPlace = 0;
+            this.sbCustomer.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.sbCustomer.DepandOnMode = false;
+            this.sbCustomer.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.sbCustomer.IntegerPart = 0;
+            this.sbCustomer.IsDatatableOccurs = null;
+            this.sbCustomer.IsErrorOccurs = false;
+            this.sbCustomer.IsRequire = false;
+            this.sbCustomer.lblName = null;
+            this.sbCustomer.Location = new System.Drawing.Point(113, 33);
+            this.sbCustomer.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sbCustomer.MoveNext = true;
+            this.sbCustomer.Name = "sbCustomer";
+            this.sbCustomer.NextControl = null;
+            this.sbCustomer.NextControlName = "sbStaff";
+            this.sbCustomer.SearchType = Entity.SearchType.ScType.Tokuisaki;
+            this.sbCustomer.Size = new System.Drawing.Size(100, 19);
+            this.sbCustomer.TabIndex = 25;
+            this.sbCustomer.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            // 
+            // sbStaff
+            // 
+            this.sbStaff.AllowMinus = false;
+            this.sbStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sbStaff.ChangeDate = null;
+            this.sbStaff.Combo = null;
+            this.sbStaff.DecimalPlace = 0;
+            this.sbStaff.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.sbStaff.DepandOnMode = false;
+            this.sbStaff.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.sbStaff.IntegerPart = 0;
+            this.sbStaff.IsDatatableOccurs = null;
+            this.sbStaff.IsErrorOccurs = false;
+            this.sbStaff.IsRequire = false;
+            this.sbStaff.lblName = null;
+            this.sbStaff.Location = new System.Drawing.Point(113, 60);
+            this.sbStaff.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sbStaff.MoveNext = true;
+            this.sbStaff.Name = "sbStaff";
+            this.sbStaff.NextControl = null;
+            this.sbStaff.NextControlName = "txtProductName";
+            this.sbStaff.SearchType = Entity.SearchType.ScType.Staff;
+            this.sbStaff.Size = new System.Drawing.Size(100, 19);
+            this.sbStaff.TabIndex = 22;
+            this.sbStaff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // ShippingNoSearch
             // 
@@ -647,8 +647,8 @@ namespace Shinyoh_Search
         private Shinyoh_Controls.STextBox txtSlipDateTo;
         private Shinyoh_Controls.STextBox txtSlipDateFrom;
         private Shinyoh_Controls.STextBox txtProductName;
-        private Shinyoh_Controls.STextBox txtDateTo;
-        private Shinyoh_Controls.STextBox txtDateFrom;
+        private Shinyoh_Controls.STextBox txtShippingDateTo;
+        private Shinyoh_Controls.STextBox txtShippingDateFrom;
         private Shinyoh_Controls.SLabel sLabel7;
         private Shinyoh_Controls.SLabel lblShippingNo;
         private Shinyoh_Controls.SLabel lblSlipDate;
