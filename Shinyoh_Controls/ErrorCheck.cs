@@ -62,6 +62,35 @@ namespace Shinyoh_Controls
                         rDt = kBL.Kouriten_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Shouhin":
+                        ShouhinBL shouhin = new ShouhinBL();
+                        string id = string.Empty;
+                        switch (sTextBox.ctrlE101_1.Name)
+                        {
+                            case "txtTani":
+                                id = "102";
+                                break;
+                            case "txtBrand":
+                                id = "103";
+                                break;
+                            case "txtColor":
+                                id = "104";
+                                break;
+                            case "txtSize":
+                                id = "105";
+                                break;
+                            case "txtIEvaluation":
+                                id = "106";
+                                break;
+                            case "txtIManagement":
+                                id = "107";
+                                break;
+                            case "txtTaxRate":
+                                id = "221";
+                                break;
+                        }
+                        rDt = shouhin.Shouhin_Check(id, sTextBox.ctrlE101_1.Text, "E101");
+                        break;
                 }
                 if (result.Equals("E101"))
                 {
@@ -205,6 +234,11 @@ namespace Shinyoh_Controls
                         rDt = denpyou_bl.DenpyouNO_Check(denpyou_entity);
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Shouhin":
+                        ShouhinBL shouhin = new ShouhinBL();
+                        rDt = shouhin.Shouhin_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text, string.Empty);
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E132"))
                 {
@@ -275,6 +309,14 @@ namespace Shinyoh_Controls
                         JuchuuListBL jbl = new JuchuuListBL();
                         rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
                         result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "M_Shouhin":
+                        if (!string.IsNullOrWhiteSpace(sTextBox.ctrlE133_1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlE133_2.Text))
+                        {
+                            ShouhinBL shouhin = new ShouhinBL();
+                            rDt = shouhin.Shouhin_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty);
+                            result = dt.Rows[0]["MessageID"].ToString();
+                        }
                         break;
                 }
                 if (result.Equals("E133"))
@@ -441,6 +483,14 @@ namespace Shinyoh_Controls
                         {
                             KouritenBL objK = new KouritenBL();
                             rDt = objK.Kouriten_Select_Check(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, "E270");
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                    case "M_Shouhin":
+                        if (!string.IsNullOrWhiteSpace(sTextBox.ctrlE270_1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlE270_2.Text))
+                        {
+                            ShouhinBL shouhin = new ShouhinBL();
+                            rDt = shouhin.Shouhin_Check(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, "E270");
                             result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;
