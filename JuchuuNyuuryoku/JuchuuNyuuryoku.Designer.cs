@@ -41,6 +41,18 @@
             this.chk_SS = new Shinyoh_Controls.SCheckBox();
             this.gv_2 = new Shinyoh_Controls.SGridView();
             this.gv_1 = new Shinyoh_Controls.SGridView();
+            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFree = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colGenZaikoSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSenpouHacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUriageTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col1JuchuuMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnNameF11 = new Shinyoh_Controls.SButton();
             this.btnNameF10 = new Shinyoh_Controls.SButton();
             this.btnNameF8 = new Shinyoh_Controls.SButton();
@@ -81,18 +93,6 @@
             this.txtCopy = new Shinyoh_Controls.STextBox();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.txtJuchuuNO = new Shinyoh_Search.SearchBox();
-            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFree = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colGenZaikoSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSenpouHacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUriageTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col1JuchuuMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col2JuchuuMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSiiresakiCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -182,6 +182,7 @@
             this.txtBrandCD.ChangeDate = null;
             this.txtBrandCD.Combo = null;
             this.txtBrandCD.DecimalPlace = 0;
+            this.txtBrandCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtBrandCD.DepandOnMode = false;
             this.txtBrandCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtBrandCD.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -210,6 +211,7 @@
             this.txtStaffCD.ChangeDate = null;
             this.txtStaffCD.Combo = null;
             this.txtStaffCD.DecimalPlace = 0;
+            this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtStaffCD.DepandOnMode = false;
             this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaffCD.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -237,6 +239,7 @@
             this.txtKouritenCD.ChangeDate = null;
             this.txtKouritenCD.Combo = null;
             this.txtKouritenCD.DecimalPlace = 0;
+            this.txtKouritenCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtKouritenCD.DepandOnMode = false;
             this.txtKouritenCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKouritenCD.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -265,6 +268,7 @@
             this.txtTokuisakiCD.ChangeDate = null;
             this.txtTokuisakiCD.Combo = null;
             this.txtTokuisakiCD.DecimalPlace = 0;
+            this.txtTokuisakiCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtTokuisakiCD.DepandOnMode = false;
             this.txtTokuisakiCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiCD.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -354,6 +358,8 @@
             this.gv_2.Name = "gv_2";
             this.gv_2.Size = new System.Drawing.Size(850, 100);
             this.gv_2.TabIndex = 102;
+            this.gv_2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_2_CellContentClick);
+            this.gv_2.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gv_2_CellValidating);
             // 
             // gv_1
             // 
@@ -384,7 +390,99 @@
             this.gv_1.Name = "gv_1";
             this.gv_1.Size = new System.Drawing.Size(1420, 150);
             this.gv_1.TabIndex = 101;
-            this.gv_1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gv_1_CellValidating);
+            // 
+            // colShouhinCD
+            // 
+            this.colShouhinCD.DataPropertyName = "ShouhinCD";
+            this.colShouhinCD.HeaderText = "商品コード";
+            this.colShouhinCD.MinimumWidth = 150;
+            this.colShouhinCD.Name = "colShouhinCD";
+            this.colShouhinCD.ReadOnly = true;
+            this.colShouhinCD.Width = 150;
+            // 
+            // colShouhinName
+            // 
+            this.colShouhinName.DataPropertyName = "ShouhinName";
+            this.colShouhinName.HeaderText = "商品名";
+            this.colShouhinName.MinimumWidth = 200;
+            this.colShouhinName.Name = "colShouhinName";
+            this.colShouhinName.ReadOnly = true;
+            this.colShouhinName.Width = 200;
+            // 
+            // colColorRyakuName
+            // 
+            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
+            this.colColorRyakuName.HeaderText = "カラー略名";
+            this.colColorRyakuName.Name = "colColorRyakuName";
+            this.colColorRyakuName.ReadOnly = true;
+            // 
+            // colColorNO
+            // 
+            this.colColorNO.DataPropertyName = "ColorNO";
+            this.colColorNO.HeaderText = "カラー";
+            this.colColorNO.Name = "colColorNO";
+            this.colColorNO.ReadOnly = true;
+            // 
+            // colSizeNO
+            // 
+            this.colSizeNO.DataPropertyName = "SizeNO";
+            this.colSizeNO.HeaderText = "サイズ";
+            this.colSizeNO.Name = "colSizeNO";
+            this.colSizeNO.ReadOnly = true;
+            // 
+            // colFree
+            // 
+            this.colFree.DataPropertyName = "Free";
+            this.colFree.HeaderText = "Free";
+            this.colFree.Name = "colFree";
+            this.colFree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colFree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colGenZaikoSuu
+            // 
+            this.colGenZaikoSuu.DataPropertyName = "GenZaikoSuu";
+            this.colGenZaikoSuu.HeaderText = "現在庫数";
+            this.colGenZaikoSuu.Name = "colGenZaikoSuu";
+            this.colGenZaikoSuu.ReadOnly = true;
+            // 
+            // colJuchuuSuu
+            // 
+            this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
+            this.colJuchuuSuu.HeaderText = "数量";
+            this.colJuchuuSuu.MaxInputLength = 6;
+            this.colJuchuuSuu.Name = "colJuchuuSuu";
+            // 
+            // colSenpouHacchuuNO
+            // 
+            this.colSenpouHacchuuNO.DataPropertyName = "DJMSenpouHacchuuNO";
+            this.colSenpouHacchuuNO.HeaderText = "先方発注番号";
+            this.colSenpouHacchuuNO.MaxInputLength = 20;
+            this.colSenpouHacchuuNO.MinimumWidth = 150;
+            this.colSenpouHacchuuNO.Name = "colSenpouHacchuuNO";
+            this.colSenpouHacchuuNO.Width = 150;
+            // 
+            // colUriageTanka
+            // 
+            this.colUriageTanka.DataPropertyName = "UriageTanka";
+            this.colUriageTanka.HeaderText = "受注単価";
+            this.colUriageTanka.Name = "colUriageTanka";
+            // 
+            // colTanka
+            // 
+            this.colTanka.DataPropertyName = "Tanka";
+            this.colTanka.HeaderText = "発注単価";
+            this.colTanka.MinimumWidth = 100;
+            this.colTanka.Name = "colTanka";
+            this.colTanka.ReadOnly = true;
+            // 
+            // col1JuchuuMeisaiTekiyou
+            // 
+            this.col1JuchuuMeisaiTekiyou.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col1JuchuuMeisaiTekiyou.DataPropertyName = "JuchuuMeisaiTekiyou";
+            this.col1JuchuuMeisaiTekiyou.HeaderText = "明細摘要";
+            this.col1JuchuuMeisaiTekiyou.MaxInputLength = 40;
+            this.col1JuchuuMeisaiTekiyou.MinimumWidth = 100;
+            this.col1JuchuuMeisaiTekiyou.Name = "col1JuchuuMeisaiTekiyou";
             // 
             // btnNameF11
             // 
@@ -430,6 +528,7 @@
             this.txtSizeNo.AllowMinus = false;
             this.txtSizeNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSizeNo.DecimalPlace = 0;
+            this.txtSizeNo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSizeNo.DepandOnMode = true;
             this.txtSizeNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSizeNo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -467,6 +566,7 @@
             this.txtColorNo.AllowMinus = false;
             this.txtColorNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtColorNo.DecimalPlace = 0;
+            this.txtColorNo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtColorNo.DepandOnMode = true;
             this.txtColorNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtColorNo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -504,6 +604,7 @@
             this.txtYearTerm.AllowMinus = false;
             this.txtYearTerm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYearTerm.DecimalPlace = 0;
+            this.txtYearTerm.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtYearTerm.DepandOnMode = true;
             this.txtYearTerm.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYearTerm.IntegerPart = 0;
@@ -540,6 +641,7 @@
             this.txtJuchuuDenpyouTekiyou.AllowMinus = false;
             this.txtJuchuuDenpyouTekiyou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtJuchuuDenpyouTekiyou.DecimalPlace = 0;
+            this.txtJuchuuDenpyouTekiyou.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtJuchuuDenpyouTekiyou.DepandOnMode = true;
             this.txtJuchuuDenpyouTekiyou.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtJuchuuDenpyouTekiyou.ImeMode = System.Windows.Forms.ImeMode.Katakana;
@@ -577,6 +679,7 @@
             this.txtKibouNouki.AllowMinus = false;
             this.txtKibouNouki.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKibouNouki.DecimalPlace = 0;
+            this.txtKibouNouki.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtKibouNouki.DepandOnMode = true;
             this.txtKibouNouki.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKibouNouki.IntegerPart = 0;
@@ -613,6 +716,7 @@
             this.txtSenpouBusho.AllowMinus = false;
             this.txtSenpouBusho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSenpouBusho.DecimalPlace = 0;
+            this.txtSenpouBusho.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSenpouBusho.DepandOnMode = true;
             this.txtSenpouBusho.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSenpouBusho.ImeMode = System.Windows.Forms.ImeMode.Katakana;
@@ -650,6 +754,7 @@
             this.txtSenpouHacchuuNO.AllowMinus = false;
             this.txtSenpouHacchuuNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSenpouHacchuuNO.DecimalPlace = 0;
+            this.txtSenpouHacchuuNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSenpouHacchuuNO.DepandOnMode = true;
             this.txtSenpouHacchuuNO.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSenpouHacchuuNO.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -687,6 +792,7 @@
             this.txtShouhinName.AllowMinus = false;
             this.txtShouhinName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtShouhinName.DecimalPlace = 0;
+            this.txtShouhinName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtShouhinName.DepandOnMode = true;
             this.txtShouhinName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShouhinName.IntegerPart = 0;
@@ -723,6 +829,7 @@
             this.txtJANCD.AllowMinus = false;
             this.txtJANCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtJANCD.DecimalPlace = 0;
+            this.txtJANCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtJANCD.DepandOnMode = true;
             this.txtJANCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtJANCD.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -840,6 +947,7 @@
             this.txtShouhinCD.AllowMinus = false;
             this.txtShouhinCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtShouhinCD.DecimalPlace = 0;
+            this.txtShouhinCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtShouhinCD.DepandOnMode = true;
             this.txtShouhinCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShouhinCD.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -939,6 +1047,7 @@
             this.txtJuchuuDate.AllowMinus = false;
             this.txtJuchuuDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtJuchuuDate.DecimalPlace = 0;
+            this.txtJuchuuDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtJuchuuDate.DepandOnMode = true;
             this.txtJuchuuDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtJuchuuDate.IntegerPart = 0;
@@ -988,9 +1097,10 @@
             this.txtCopy.AllowMinus = false;
             this.txtCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCopy.DecimalPlace = 0;
+            this.txtCopy.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtCopy.DepandOnMode = true;
             this.txtCopy.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCopy.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.txtCopy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtCopy.IntegerPart = 0;
             this.txtCopy.IsDatatableOccurs = null;
             this.txtCopy.IsErrorOccurs = false;
@@ -1028,9 +1138,10 @@
             this.txtJuchuuNO.ChangeDate = null;
             this.txtJuchuuNO.Combo = null;
             this.txtJuchuuNO.DecimalPlace = 0;
+            this.txtJuchuuNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtJuchuuNO.DepandOnMode = true;
             this.txtJuchuuNO.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtJuchuuNO.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.txtJuchuuNO.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtJuchuuNO.IntegerPart = 0;
             this.txtJuchuuNO.IsDatatableOccurs = null;
             this.txtJuchuuNO.IsErrorOccurs = false;
@@ -1048,99 +1159,6 @@
             this.txtJuchuuNO.TabIndex = 1;
             this.txtJuchuuNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJuchuuNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNO_KeyDown);
-            // 
-            // colShouhinCD
-            // 
-            this.colShouhinCD.DataPropertyName = "ShouhinCD";
-            this.colShouhinCD.HeaderText = "商品コード";
-            this.colShouhinCD.MinimumWidth = 150;
-            this.colShouhinCD.Name = "colShouhinCD";
-            this.colShouhinCD.ReadOnly = true;
-            this.colShouhinCD.Width = 150;
-            // 
-            // colShouhinName
-            // 
-            this.colShouhinName.DataPropertyName = "ShouhinName";
-            this.colShouhinName.HeaderText = "商品名";
-            this.colShouhinName.MinimumWidth = 200;
-            this.colShouhinName.Name = "colShouhinName";
-            this.colShouhinName.ReadOnly = true;
-            this.colShouhinName.Width = 200;
-            // 
-            // colColorRyakuName
-            // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            this.colColorRyakuName.ReadOnly = true;
-            // 
-            // colColorNO
-            // 
-            this.colColorNO.DataPropertyName = "ColorNO";
-            this.colColorNO.HeaderText = "カラー";
-            this.colColorNO.Name = "colColorNO";
-            this.colColorNO.ReadOnly = true;
-            // 
-            // colSizeNO
-            // 
-            this.colSizeNO.DataPropertyName = "SizeNO";
-            this.colSizeNO.HeaderText = "サイズ";
-            this.colSizeNO.Name = "colSizeNO";
-            this.colSizeNO.ReadOnly = true;
-            // 
-            // colFree
-            // 
-            this.colFree.DataPropertyName = "Free";
-            this.colFree.HeaderText = "Free";
-            this.colFree.Name = "colFree";
-            this.colFree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colFree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colGenZaikoSuu
-            // 
-            this.colGenZaikoSuu.DataPropertyName = "GenZaikoSuu";
-            this.colGenZaikoSuu.HeaderText = "現在庫数";
-            this.colGenZaikoSuu.Name = "colGenZaikoSuu";
-            this.colGenZaikoSuu.ReadOnly = true;
-            // 
-            // colJuchuuSuu
-            // 
-            this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
-            this.colJuchuuSuu.HeaderText = "数量";
-            this.colJuchuuSuu.MaxInputLength = 6;
-            this.colJuchuuSuu.Name = "colJuchuuSuu";
-            // 
-            // colSenpouHacchuuNO
-            // 
-            this.colSenpouHacchuuNO.DataPropertyName = "DJMSenpouHacchuuNO";
-            this.colSenpouHacchuuNO.HeaderText = "先方発注番号";
-            this.colSenpouHacchuuNO.MaxInputLength = 20;
-            this.colSenpouHacchuuNO.MinimumWidth = 150;
-            this.colSenpouHacchuuNO.Name = "colSenpouHacchuuNO";
-            this.colSenpouHacchuuNO.Width = 150;
-            // 
-            // colUriageTanka
-            // 
-            this.colUriageTanka.DataPropertyName = "UriageTanka";
-            this.colUriageTanka.HeaderText = "受注単価";
-            this.colUriageTanka.Name = "colUriageTanka";
-            // 
-            // colTanka
-            // 
-            this.colTanka.DataPropertyName = "Tanka";
-            this.colTanka.HeaderText = "発注単価";
-            this.colTanka.MinimumWidth = 100;
-            this.colTanka.Name = "colTanka";
-            this.colTanka.ReadOnly = true;
-            // 
-            // col1JuchuuMeisaiTekiyou
-            // 
-            this.col1JuchuuMeisaiTekiyou.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col1JuchuuMeisaiTekiyou.DataPropertyName = "JuchuuMeisaiTekiyou";
-            this.col1JuchuuMeisaiTekiyou.HeaderText = "明細摘要";
-            this.col1JuchuuMeisaiTekiyou.MaxInputLength = 40;
-            this.col1JuchuuMeisaiTekiyou.MinimumWidth = 100;
-            this.col1JuchuuMeisaiTekiyou.Name = "col1JuchuuMeisaiTekiyou";
             // 
             // col2JuchuuMeisaiTekiyou
             // 
@@ -1277,14 +1295,6 @@
         private Shinyoh_Search.SearchBox txtStaffCD;
         private Shinyoh_Search.SearchBox txtKouritenCD;
         private Shinyoh_Search.SearchBox txtTokuisakiCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col2JuchuuMeisaiTekiyou;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colJANCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSiiresakiCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSiiresakiName;
-        private System.Windows.Forms.DataGridViewButtonColumn colSiiresakiDetail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colexpectedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorRyakuName;
@@ -1297,6 +1307,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colUriageTanka;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTanka;
         private System.Windows.Forms.DataGridViewTextBoxColumn col1JuchuuMeisaiTekiyou;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col2JuchuuMeisaiTekiyou;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJANCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSiiresakiCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSiiresakiName;
+        private System.Windows.Forms.DataGridViewButtonColumn colSiiresakiDetail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colexpectedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoName;
     }
 }
 
