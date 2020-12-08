@@ -134,11 +134,12 @@ namespace ShukkaSiziDataShuturyoku {
                         saveFileDialog1.InitialDirectory = @"C:\";
                         saveFileDialog1.DefaultExt = "xls";
                         saveFileDialog1.Filter = "ExcelFile|*.xls";
-                        saveFileDialog1.FileName = "Shukka.xls";
+                        saveFileDialog1.FileName = ".xls";
                         saveFileDialog1.RestoreDirectory = true;
                         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
                             ExportDataTableToExcel(dt, saveFileDialog1.FileName);
+                            bbl.ShowMessage("I203");
                         }
                         if (true)
                         {
@@ -155,7 +156,8 @@ namespace ShukkaSiziDataShuturyoku {
             Excel.Application oXL;
             Excel.Workbook oWB;
             Excel.Worksheet oSheet;
-            Excel.Range rg;
+            Excel.Range rg1;
+            Excel.Range rg2;
 
             try
             {
@@ -171,7 +173,7 @@ namespace ShukkaSiziDataShuturyoku {
 
                 // Get the Active sheet 
                 oSheet = (Excel.Worksheet)oWB.ActiveSheet;
-                oSheet.Name = "Shukka";
+                oSheet.Name = "Sheet1";
 
                 int rowCount = 1;
                 foreach (DataRow dr in dt.Rows)
@@ -190,11 +192,14 @@ namespace ShukkaSiziDataShuturyoku {
                 }
 
                 // color the columns 
-                oSheet.Range["A1", "Y1"].Interior.Color = Excel.XlRgbColor.rgbOrange;
-                oSheet.Range["A1", "Y1"].Font.Color = Excel.XlRgbColor.rgbBlack;
+                oSheet.Range["A1", "P1"].Interior.Color = Excel.XlRgbColor.rgbOrange;
+                oSheet.Range["A1", "P1"].Font.Color = Excel.XlRgbColor.rgbBlack;
                 //Change date format
-                //rg = (Excel.Range)oSheet.Cells[3, 3];
-                //rg.EntireColumn.NumberFormat = "YYYY/MM/DD";
+                rg1 = (Excel.Range)oSheet.Cells[5, 5];
+                rg1.EntireColumn.NumberFormat = "MM/dd/YYYY";
+                rg2 = (Excel.Range)oSheet.Cells[6, 6];
+                rg2.EntireColumn.NumberFormat = "MM/dd/YYYY";
+
 
                 //left alignment
                 Excel.Range last = oSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
