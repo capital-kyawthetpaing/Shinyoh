@@ -31,11 +31,11 @@
             this.lblProduct = new Shinyoh_Controls.SLabel();
             this.txtProduct = new Shinyoh_Search.SearchBox();
             this.lblRevisionDate = new Shinyoh_Controls.SLabel();
-            this.txtRevisionDate = new Shinyoh_Controls.STextBox();
+            this.txtChangeDate = new Shinyoh_Controls.STextBox();
             this.lblCopyProduct = new Shinyoh_Controls.SLabel();
             this.txtCopyProduct = new Shinyoh_Search.SearchBox();
             this.lblCopyRevisionDate = new Shinyoh_Controls.SLabel();
-            this.txtCopyRevisionDate = new Shinyoh_Controls.STextBox();
+            this.txtCopyChangeDate = new Shinyoh_Controls.STextBox();
             this.lblClassification = new Shinyoh_Controls.SLabel();
             this.rdo_Registragion = new Shinyoh_Controls.SRadio();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
@@ -118,11 +118,11 @@
             // 
             // PanelTitle
             // 
-            this.PanelTitle.Controls.Add(this.txtCopyRevisionDate);
+            this.PanelTitle.Controls.Add(this.txtCopyChangeDate);
             this.PanelTitle.Controls.Add(this.lblCopyRevisionDate);
             this.PanelTitle.Controls.Add(this.txtCopyProduct);
             this.PanelTitle.Controls.Add(this.lblCopyProduct);
-            this.PanelTitle.Controls.Add(this.txtRevisionDate);
+            this.PanelTitle.Controls.Add(this.txtChangeDate);
             this.PanelTitle.Controls.Add(this.lblRevisionDate);
             this.PanelTitle.Controls.Add(this.txtProduct);
             this.PanelTitle.Controls.Add(this.lblProduct);
@@ -167,7 +167,7 @@
             this.txtProduct.MoveNext = true;
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.NextControl = null;
-            this.txtProduct.NextControlName = "txtRevisionDate";
+            this.txtProduct.NextControlName = "txtChangeDate";
             this.txtProduct.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtProduct.Size = new System.Drawing.Size(100, 19);
             this.txtProduct.TabIndex = 1;
@@ -186,29 +186,29 @@
             this.lblRevisionDate.Text = "改定日";
             this.lblRevisionDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtRevisionDate
+            // txtChangeDate
             // 
-            this.txtRevisionDate.AllowMinus = false;
-            this.txtRevisionDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRevisionDate.DecimalPlace = 0;
-            this.txtRevisionDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtRevisionDate.DepandOnMode = true;
-            this.txtRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtRevisionDate.IntegerPart = 0;
-            this.txtRevisionDate.IsDatatableOccurs = null;
-            this.txtRevisionDate.IsErrorOccurs = false;
-            this.txtRevisionDate.IsRequire = false;
-            this.txtRevisionDate.Location = new System.Drawing.Point(105, 36);
-            this.txtRevisionDate.MaxLength = 10;
-            this.txtRevisionDate.MinimumSize = new System.Drawing.Size(100, 18);
-            this.txtRevisionDate.MoveNext = true;
-            this.txtRevisionDate.Name = "txtRevisionDate";
-            this.txtRevisionDate.NextControl = null;
-            this.txtRevisionDate.NextControlName = "chkZhukou";
-            this.txtRevisionDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtRevisionDate.Size = new System.Drawing.Size(100, 19);
-            this.txtRevisionDate.TabIndex = 3;
-            this.txtRevisionDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtChangeDate.AllowMinus = false;
+            this.txtChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtChangeDate.DecimalPlace = 0;
+            this.txtChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtChangeDate.DepandOnMode = true;
+            this.txtChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtChangeDate.IntegerPart = 0;
+            this.txtChangeDate.IsDatatableOccurs = null;
+            this.txtChangeDate.IsErrorOccurs = false;
+            this.txtChangeDate.IsRequire = false;
+            this.txtChangeDate.Location = new System.Drawing.Point(105, 36);
+            this.txtChangeDate.MaxLength = 10;
+            this.txtChangeDate.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtChangeDate.MoveNext = true;
+            this.txtChangeDate.Name = "txtChangeDate";
+            this.txtChangeDate.NextControl = null;
+            this.txtChangeDate.NextControlName = "chkZhukou";
+            this.txtChangeDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
+            this.txtChangeDate.TabIndex = 3;
+            this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblCopyProduct
             // 
@@ -244,7 +244,7 @@
             this.txtCopyProduct.MoveNext = true;
             this.txtCopyProduct.Name = "txtCopyProduct";
             this.txtCopyProduct.NextControl = null;
-            this.txtCopyProduct.NextControlName = "txtCopyRevisionDate";
+            this.txtCopyProduct.NextControlName = "txtCopyChangeDate";
             this.txtCopyProduct.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtCopyProduct.Size = new System.Drawing.Size(100, 19);
             this.txtCopyProduct.TabIndex = 5;
@@ -263,28 +263,28 @@
             this.lblCopyRevisionDate.Text = "複写元改定日";
             this.lblCopyRevisionDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtCopyRevisionDate
+            // txtCopyChangeDate
             // 
-            this.txtCopyRevisionDate.AllowMinus = false;
-            this.txtCopyRevisionDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopyRevisionDate.DecimalPlace = 0;
-            this.txtCopyRevisionDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtCopyRevisionDate.DepandOnMode = true;
-            this.txtCopyRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCopyRevisionDate.IntegerPart = 0;
-            this.txtCopyRevisionDate.IsDatatableOccurs = null;
-            this.txtCopyRevisionDate.IsErrorOccurs = false;
-            this.txtCopyRevisionDate.IsRequire = false;
-            this.txtCopyRevisionDate.Location = new System.Drawing.Point(341, 36);
-            this.txtCopyRevisionDate.MinimumSize = new System.Drawing.Size(100, 18);
-            this.txtCopyRevisionDate.MoveNext = true;
-            this.txtCopyRevisionDate.Name = "txtCopyRevisionDate";
-            this.txtCopyRevisionDate.NextControl = null;
-            this.txtCopyRevisionDate.NextControlName = "chkZhukou";
-            this.txtCopyRevisionDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtCopyRevisionDate.Size = new System.Drawing.Size(100, 19);
-            this.txtCopyRevisionDate.TabIndex = 7;
-            this.txtCopyRevisionDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtCopyChangeDate.AllowMinus = false;
+            this.txtCopyChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCopyChangeDate.DecimalPlace = 0;
+            this.txtCopyChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtCopyChangeDate.DepandOnMode = true;
+            this.txtCopyChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtCopyChangeDate.IntegerPart = 0;
+            this.txtCopyChangeDate.IsDatatableOccurs = null;
+            this.txtCopyChangeDate.IsErrorOccurs = false;
+            this.txtCopyChangeDate.IsRequire = false;
+            this.txtCopyChangeDate.Location = new System.Drawing.Point(341, 36);
+            this.txtCopyChangeDate.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtCopyChangeDate.MoveNext = true;
+            this.txtCopyChangeDate.Name = "txtCopyChangeDate";
+            this.txtCopyChangeDate.NextControl = null;
+            this.txtCopyChangeDate.NextControlName = "chkZhukou";
+            this.txtCopyChangeDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtCopyChangeDate.Size = new System.Drawing.Size(100, 19);
+            this.txtCopyChangeDate.TabIndex = 7;
+            this.txtCopyChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblClassification
             // 
@@ -448,7 +448,7 @@
             this.txtRemarks.MoveNext = true;
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.NextControl = null;
-            this.txtRemarks.NextControlName = null;
+            this.txtRemarks.NextControlName = "txtKensakuHyouziJun";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
             this.txtRemarks.Size = new System.Drawing.Size(400, 19);
             this.txtRemarks.TabIndex = 55;
@@ -530,7 +530,7 @@
             this.txtHacchuuLot.MoveNext = true;
             this.txtHacchuuLot.Name = "txtHacchuuLot";
             this.txtHacchuuLot.NextControl = null;
-            this.txtHacchuuLot.NextControlName = null;
+            this.txtHacchuuLot.NextControlName = "txtImage";
             this.txtHacchuuLot.SearchType = Entity.SearchType.ScType.None;
             this.txtHacchuuLot.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuLot.TabIndex = 50;
@@ -567,7 +567,7 @@
             this.txtShippingPlace.MoveNext = true;
             this.txtShippingPlace.Name = "txtShippingPlace";
             this.txtShippingPlace.NextControl = null;
-            this.txtShippingPlace.NextControlName = "txtOrderLot";
+            this.txtShippingPlace.NextControlName = "txtHacchuuLot";
             this.txtShippingPlace.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingPlace.Size = new System.Drawing.Size(150, 19);
             this.txtShippingPlace.TabIndex = 48;
@@ -1455,12 +1455,12 @@
         #endregion
 
         private Shinyoh_Controls.SLabel lblProduct;
-        private Shinyoh_Controls.STextBox txtRevisionDate;
+        private Shinyoh_Controls.STextBox txtChangeDate;
         private Shinyoh_Controls.SLabel lblRevisionDate;
         private Shinyoh_Search.SearchBox txtProduct;
         private Shinyoh_Controls.SLabel lblCopyProduct;
         private Shinyoh_Search.SearchBox txtCopyProduct;
-        private Shinyoh_Controls.STextBox txtCopyRevisionDate;
+        private Shinyoh_Controls.STextBox txtCopyChangeDate;
         private Shinyoh_Controls.SLabel lblCopyRevisionDate;
         private Shinyoh_Controls.SLabel lblClassification;
         private Shinyoh_Controls.SRadio rdo_Registragion;
