@@ -90,6 +90,7 @@ namespace ShukkaSiziDataShuturyoku {
         private void Clear()
         {
             cf.Clear(Panel_Detail);
+            rdo_MiHakkou.Checked = true;
             txtShukkaNo1.Focus();
             lblBrand_Name.Text = "";
             lblTokuisakiName.Text = "";
