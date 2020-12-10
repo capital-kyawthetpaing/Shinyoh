@@ -130,6 +130,7 @@
             this.lblSupplier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplier.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSupplier.ForeColor = System.Drawing.Color.White;
             this.lblSupplier.Location = new System.Drawing.Point(6, 9);
             this.lblSupplier.Name = "lblSupplier";
             this.lblSupplier.Size = new System.Drawing.Size(100, 19);
@@ -143,6 +144,7 @@
             this.lblChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblChangeDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblChangeDate.ForeColor = System.Drawing.Color.White;
             this.lblChangeDate.Location = new System.Drawing.Point(6, 34);
             this.lblChangeDate.Name = "lblChangeDate";
             this.lblChangeDate.Size = new System.Drawing.Size(100, 19);
@@ -182,6 +184,7 @@
             this.lblClassification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblClassification.ForeColor = System.Drawing.Color.White;
             this.lblClassification.Location = new System.Drawing.Point(747, 9);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
@@ -285,6 +288,7 @@
             this.txtStaffCD.ChangeDate = null;
             this.txtStaffCD.Combo = null;
             this.txtStaffCD.DecimalPlace = 0;
+            this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtStaffCD.DepandOnMode = false;
             this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaffCD.IntegerPart = 0;
@@ -352,6 +356,7 @@
             this.txtSearch.AllowMinus = false;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.DecimalPlace = 0;
+            this.txtSearch.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSearch.DepandOnMode = true;
             this.txtSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSearch.IntegerPart = 0;
@@ -390,6 +395,7 @@
             this.txtRemark.AllowMinus = false;
             this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemark.DecimalPlace = 0;
+            this.txtRemark.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtRemark.DepandOnMode = true;
             this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtRemark.IntegerPart = 0;
@@ -413,6 +419,7 @@
             this.txtEndDate.AllowMinus = false;
             this.txtEndDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEndDate.DecimalPlace = 0;
+            this.txtEndDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtEndDate.DepandOnMode = true;
             this.txtEndDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtEndDate.IntegerPart = 0;
@@ -450,6 +457,7 @@
             this.txtStartDate.AllowMinus = false;
             this.txtStartDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStartDate.DecimalPlace = 0;
+            this.txtStartDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtStartDate.DepandOnMode = true;
             this.txtStartDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStartDate.IntegerPart = 0;
@@ -488,6 +496,7 @@
             this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel4.ForeColor = System.Drawing.Color.White;
             this.sLabel4.Location = new System.Drawing.Point(41, 532);
             this.sLabel4.MinimumSize = new System.Drawing.Size(100, 19);
             this.sLabel4.Name = "sLabel4";
@@ -501,6 +510,7 @@
             this.txtCurrency.AllowMinus = false;
             this.txtCurrency.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCurrency.DecimalPlace = 0;
+            this.txtCurrency.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtCurrency.DepandOnMode = true;
             this.txtCurrency.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCurrency.IntegerPart = 0;
@@ -525,6 +535,7 @@
             this.lblCurrency.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCurrency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCurrency.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblCurrency.ForeColor = System.Drawing.Color.White;
             this.lblCurrency.Location = new System.Drawing.Point(41, 498);
             this.lblCurrency.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblCurrency.Name = "lblCurrency";
@@ -538,6 +549,7 @@
             this.txtMail.AllowMinus = false;
             this.txtMail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMail.DecimalPlace = 0;
+            this.txtMail.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtMail.DepandOnMode = true;
             this.txtMail.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtMail.IntegerPart = 0;
@@ -575,6 +587,7 @@
             this.txtTantoushaName.AllowMinus = false;
             this.txtTantoushaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTantoushaName.DecimalPlace = 0;
+            this.txtTantoushaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtTantoushaName.DepandOnMode = true;
             this.txtTantoushaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTantoushaName.IntegerPart = 0;
@@ -612,6 +625,7 @@
             this.txtTantouYakushoku.AllowMinus = false;
             this.txtTantouYakushoku.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTantouYakushoku.DecimalPlace = 0;
+            this.txtTantouYakushoku.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtTantouYakushoku.DepandOnMode = true;
             this.txtTantouYakushoku.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTantouYakushoku.IntegerPart = 0;
@@ -649,6 +663,7 @@
             this.txtTantouBusho.AllowMinus = false;
             this.txtTantouBusho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTantouBusho.DecimalPlace = 0;
+            this.txtTantouBusho.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtTantouBusho.DepandOnMode = true;
             this.txtTantouBusho.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTantouBusho.IntegerPart = 0;
@@ -706,6 +721,7 @@
             this.txtPhone2_3.AllowMinus = false;
             this.txtPhone2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone2_3.DecimalPlace = 0;
+            this.txtPhone2_3.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone2_3.DepandOnMode = true;
             this.txtPhone2_3.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone2_3.IntegerPart = 0;
@@ -729,6 +745,7 @@
             this.txtPhone2_2.AllowMinus = false;
             this.txtPhone2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone2_2.DecimalPlace = 0;
+            this.txtPhone2_2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone2_2.DepandOnMode = true;
             this.txtPhone2_2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone2_2.IntegerPart = 0;
@@ -752,6 +769,7 @@
             this.txtPhone2_1.AllowMinus = false;
             this.txtPhone2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone2_1.DecimalPlace = 0;
+            this.txtPhone2_1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone2_1.DepandOnMode = true;
             this.txtPhone2_1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone2_1.IntegerPart = 0;
@@ -809,6 +827,7 @@
             this.txtPhone1_3.AllowMinus = false;
             this.txtPhone1_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone1_3.DecimalPlace = 0;
+            this.txtPhone1_3.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone1_3.DepandOnMode = true;
             this.txtPhone1_3.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone1_3.IntegerPart = 0;
@@ -832,6 +851,7 @@
             this.txtPhone1_2.AllowMinus = false;
             this.txtPhone1_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone1_2.DecimalPlace = 0;
+            this.txtPhone1_2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone1_2.DepandOnMode = true;
             this.txtPhone1_2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone1_2.IntegerPart = 0;
@@ -855,6 +875,7 @@
             this.txtPhone1_1.AllowMinus = false;
             this.txtPhone1_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone1_1.DecimalPlace = 0;
+            this.txtPhone1_1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone1_1.DepandOnMode = true;
             this.txtPhone1_1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone1_1.IntegerPart = 0;
@@ -892,6 +913,7 @@
             this.txtAddress2.AllowMinus = false;
             this.txtAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress2.DecimalPlace = 0;
+            this.txtAddress2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtAddress2.DepandOnMode = true;
             this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
@@ -929,6 +951,7 @@
             this.txtAddress1.AllowMinus = false;
             this.txtAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress1.DecimalPlace = 0;
+            this.txtAddress1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtAddress1.DepandOnMode = true;
             this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
@@ -966,6 +989,7 @@
             this.txtYubin2.AllowMinus = false;
             this.txtYubin2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin2.DecimalPlace = 0;
+            this.txtYubin2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtYubin2.DepandOnMode = true;
             this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
@@ -990,6 +1014,7 @@
             this.txtYubin1.AllowMinus = false;
             this.txtYubin1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin1.DecimalPlace = 0;
+            this.txtYubin1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtYubin1.DepandOnMode = true;
             this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
@@ -1037,6 +1062,7 @@
             this.txtPayCD.AllowMinus = false;
             this.txtPayCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPayCD.DecimalPlace = 0;
+            this.txtPayCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPayCD.DepandOnMode = true;
             this.txtPayCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPayCD.IntegerPart = 0;
@@ -1061,6 +1087,7 @@
             this.lblPayment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPayment.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblPayment.ForeColor = System.Drawing.Color.White;
             this.lblPayment.Location = new System.Drawing.Point(41, 160);
             this.lblPayment.Name = "lblPayment";
             this.lblPayment.Size = new System.Drawing.Size(100, 19);
@@ -1073,6 +1100,7 @@
             this.txtLong_Name.AllowMinus = false;
             this.txtLong_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLong_Name.DecimalPlace = 0;
+            this.txtLong_Name.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtLong_Name.DepandOnMode = true;
             this.txtLong_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtLong_Name.IntegerPart = 0;
@@ -1109,6 +1137,7 @@
             this.txtShort_Name.AllowMinus = false;
             this.txtShort_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtShort_Name.DecimalPlace = 0;
+            this.txtShort_Name.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtShort_Name.DepandOnMode = true;
             this.txtShort_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShort_Name.IntegerPart = 0;
@@ -1133,6 +1162,7 @@
             this.lblAbbreName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAbbreName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAbbreName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblAbbreName.ForeColor = System.Drawing.Color.White;
             this.lblAbbreName.Location = new System.Drawing.Point(41, 89);
             this.lblAbbreName.Name = "lblAbbreName";
             this.lblAbbreName.Size = new System.Drawing.Size(100, 19);
@@ -1145,6 +1175,7 @@
             this.txtSupplierName.AllowMinus = false;
             this.txtSupplierName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSupplierName.DecimalPlace = 0;
+            this.txtSupplierName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtSupplierName.DepandOnMode = true;
             this.txtSupplierName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSupplierName.IntegerPart = 0;
@@ -1169,6 +1200,7 @@
             this.lblSupplierName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplierName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplierName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSupplierName.ForeColor = System.Drawing.Color.White;
             this.lblSupplierName.Location = new System.Drawing.Point(41, 53);
             this.lblSupplierName.Name = "lblSupplierName";
             this.lblSupplierName.Size = new System.Drawing.Size(100, 19);
@@ -1182,6 +1214,7 @@
             this.lblMorokuchi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMorokuchi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblMorokuchi.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblMorokuchi.ForeColor = System.Drawing.Color.White;
             this.lblMorokuchi.Location = new System.Drawing.Point(41, 18);
             this.lblMorokuchi.Name = "lblMorokuchi";
             this.lblMorokuchi.Size = new System.Drawing.Size(100, 19);
@@ -1194,6 +1227,7 @@
             this.txtChangeDate.AllowMinus = false;
             this.txtChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtChangeDate.DecimalPlace = 0;
+            this.txtChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtChangeDate.DepandOnMode = true;
             this.txtChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtChangeDate.IntegerPart = 0;
@@ -1218,6 +1252,7 @@
             this.txtCopyDate.AllowMinus = false;
             this.txtCopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCopyDate.DecimalPlace = 0;
+            this.txtCopyDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtCopyDate.DepandOnMode = true;
             this.txtCopyDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCopyDate.IntegerPart = 0;
@@ -1244,6 +1279,7 @@
             this.txtCopyCD.ChangeDate = null;
             this.txtCopyCD.Combo = null;
             this.txtCopyCD.DecimalPlace = 0;
+            this.txtCopyCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtCopyCD.DepandOnMode = false;
             this.txtCopyCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCopyCD.IntegerPart = 0;
@@ -1270,6 +1306,7 @@
             this.txtSupplierCD.ChangeDate = null;
             this.txtSupplierCD.Combo = null;
             this.txtSupplierCD.DecimalPlace = 0;
+            this.txtSupplierCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSupplierCD.DepandOnMode = true;
             this.txtSupplierCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSupplierCD.IntegerPart = 0;

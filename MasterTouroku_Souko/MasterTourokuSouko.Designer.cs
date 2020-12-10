@@ -338,7 +338,7 @@
             this.txtRemark.AllowMinus = false;
             this.txtRemark.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemark.DecimalPlace = 0;
-            this.txtRemark.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtRemark.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtRemark.DepandOnMode = true;
             this.txtRemark.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtRemark.IntegerPart = 0;
@@ -376,7 +376,7 @@
             this.txtAddress2.AllowMinus = false;
             this.txtAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress2.DecimalPlace = 0;
-            this.txtAddress2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtAddress2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtAddress2.DepandOnMode = true;
             this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
@@ -414,7 +414,7 @@
             this.txtAddress1.AllowMinus = false;
             this.txtAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress1.DecimalPlace = 0;
-            this.txtAddress1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtAddress1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtAddress1.DepandOnMode = true;
             this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
@@ -515,7 +515,7 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
-            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
+            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.ImeMode = System.Windows.Forms.ImeMode.KatakanaHalf;

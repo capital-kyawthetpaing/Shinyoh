@@ -136,6 +136,7 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.Shouhin:
                         Shouhin_Search shsearch = new Shouhin_Search();
+                        shsearch.parent_changeDate = ChangeDate.Text;
                         shsearch.ShowDialog();
                         CD = shsearch.shouhinCD;
                         CDate = shsearch.changeDate;
@@ -181,9 +182,6 @@ namespace Shinyoh_Search
                         control.Focus();
                     }
                 }
-
-               
-                
             }            
         }
     }

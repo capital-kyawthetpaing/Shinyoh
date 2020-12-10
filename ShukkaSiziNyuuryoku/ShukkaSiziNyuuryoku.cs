@@ -14,14 +14,19 @@ namespace ShukkaSiziNyuuryoku
     {
         CommonFunction cf;
         multipurposeEntity multi_Entity;
+        StaffBL staffBL;
         ShukkasiziNyuuryokuBL sksz_bl;
         BaseBL bbl;
+        public string tdDate;
         public ShukkaSiziNyuuryoku()
         {
             InitializeComponent();
             cf = new CommonFunction();
             multi_Entity = new multipurposeEntity();
+            staffBL = new StaffBL();
+            sksz_bl = new ShukkasiziNyuuryokuBL();
             bbl = new BaseBL();
+            tdDate = string.Empty;
         }
 
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
@@ -36,13 +41,16 @@ namespace ShukkaSiziNyuuryoku
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
-            SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
+            SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
+            lblSiiresakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             ChangeMode(Mode.New);
-            txtShippingNO.Focus();
+            sbShippingNO.Focus();
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
         }
 
@@ -51,6 +59,14 @@ namespace ShukkaSiziNyuuryoku
             switch (mode)
             {
                 case Mode.New:
+                    ErrorCheck();
+                    
+                    cf.Clear(PanelTitle);
+                    cf.Clear(panelDetails);
+                    cf.EnablePanel(PanelTitle);
+                    cf.EnablePanel(panelDetails);
+                    sbShippingNO.Focus();                    
+                    New_Mode();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
@@ -117,7 +133,25 @@ namespace ShukkaSiziNyuuryoku
                     
             base.FunctionProcess(tagID);
         }
+        private void ErrorCheck()
+        {
+            sbShippingNO.E102Check(true);
+            sbShippingNO.E133Check(true, "M_Siiresaki", sbShippingNO, null, null);
+        }
+        private void New_Mode()
+        {
+            tdDate = DateTime.Now.ToString("yyyy/MM/dd");
+            txtShippingDate.Text = tdDate;
+            txtDenpyouDate.Text = tdDate;
 
+            StaffEntity staffEntity = new StaffEntity
+            {
+                StaffCD = OperatorCD
+            };
+            staffEntity = staffBL.GetStaffEntity(staffEntity);
+            sbStaffCD.Text = OperatorCD;
+            lblStaffName.Text = staffEntity.StaffName;
+        }
         private void Clear()
         {
             

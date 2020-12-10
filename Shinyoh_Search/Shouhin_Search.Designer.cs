@@ -490,6 +490,7 @@
             this.txtChangeDate.SearchType = Entity.SearchType.ScType.None;
             this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
             this.txtChangeDate.TabIndex = 14;
+            this.txtChangeDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblReferenceDate
@@ -699,6 +700,7 @@
             // 
             // rdoRecentRevisionDate
             // 
+            this.rdoRecentRevisionDate.Checked = true;
             this.rdoRecentRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.rdoRecentRevisionDate.Location = new System.Drawing.Point(121, 11);
             this.rdoRecentRevisionDate.MoveNext = true;
@@ -707,6 +709,7 @@
             this.rdoRecentRevisionDate.NextControlName = "txtProduct";
             this.rdoRecentRevisionDate.Size = new System.Drawing.Size(97, 19);
             this.rdoRecentRevisionDate.TabIndex = 1;
+            this.rdoRecentRevisionDate.TabStop = true;
             this.rdoRecentRevisionDate.Text = "改定日直近";
             this.rdoRecentRevisionDate.UseVisualStyleBackColor = true;
             // 
@@ -749,6 +752,7 @@
             this.dgDetail.ReadOnly = true;
             this.dgDetail.Size = new System.Drawing.Size(1175, 343);
             this.dgDetail.TabIndex = 3;
+            this.dgDetail.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDetail_CellMouseDoubleClick);
             // 
             // ShouhinCD
             // 
@@ -793,7 +797,7 @@
             // 
             // ColorCD
             // 
-            this.ColorCD.DataPropertyName = "ColorCD";
+            this.ColorCD.DataPropertyName = "ColorNO";
             this.ColorCD.FillWeight = 250F;
             this.ColorCD.HeaderText = "カラー";
             this.ColorCD.Name = "ColorCD";
@@ -802,7 +806,7 @@
             // 
             // SizeCD
             // 
-            this.SizeCD.DataPropertyName = "SizeCD";
+            this.SizeCD.DataPropertyName = "SizeNO";
             this.SizeCD.FillWeight = 250F;
             this.SizeCD.HeaderText = "サイズ";
             this.SizeCD.Name = "SizeCD";
@@ -811,7 +815,7 @@
             // 
             // Remarks
             // 
-            this.Remarks.DataPropertyName = "Remarks";
+            this.Remarks.DataPropertyName = "TaniCD";
             this.Remarks.FillWeight = 180F;
             this.Remarks.HeaderText = "単位";
             this.Remarks.Name = "Remarks";
