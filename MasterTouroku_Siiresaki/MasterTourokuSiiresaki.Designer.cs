@@ -130,6 +130,7 @@
             this.lblSupplier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplier.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplier.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSupplier.ForeColor = System.Drawing.Color.White;
             this.lblSupplier.Location = new System.Drawing.Point(6, 9);
             this.lblSupplier.Name = "lblSupplier";
             this.lblSupplier.Size = new System.Drawing.Size(100, 19);
@@ -143,6 +144,7 @@
             this.lblChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblChangeDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblChangeDate.ForeColor = System.Drawing.Color.White;
             this.lblChangeDate.Location = new System.Drawing.Point(6, 34);
             this.lblChangeDate.Name = "lblChangeDate";
             this.lblChangeDate.Size = new System.Drawing.Size(100, 19);
@@ -182,6 +184,7 @@
             this.lblClassification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblClassification.ForeColor = System.Drawing.Color.White;
             this.lblClassification.Location = new System.Drawing.Point(747, 9);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
@@ -493,6 +496,7 @@
             this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel4.ForeColor = System.Drawing.Color.White;
             this.sLabel4.Location = new System.Drawing.Point(41, 532);
             this.sLabel4.MinimumSize = new System.Drawing.Size(100, 19);
             this.sLabel4.Name = "sLabel4";
@@ -531,6 +535,7 @@
             this.lblCurrency.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCurrency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCurrency.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblCurrency.ForeColor = System.Drawing.Color.White;
             this.lblCurrency.Location = new System.Drawing.Point(41, 498);
             this.lblCurrency.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblCurrency.Name = "lblCurrency";
@@ -1082,6 +1087,7 @@
             this.lblPayment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPayment.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblPayment.ForeColor = System.Drawing.Color.White;
             this.lblPayment.Location = new System.Drawing.Point(41, 160);
             this.lblPayment.Name = "lblPayment";
             this.lblPayment.Size = new System.Drawing.Size(100, 19);
@@ -1156,6 +1162,7 @@
             this.lblAbbreName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAbbreName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAbbreName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblAbbreName.ForeColor = System.Drawing.Color.White;
             this.lblAbbreName.Location = new System.Drawing.Point(41, 89);
             this.lblAbbreName.Name = "lblAbbreName";
             this.lblAbbreName.Size = new System.Drawing.Size(100, 19);
@@ -1193,6 +1200,7 @@
             this.lblSupplierName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSupplierName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSupplierName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSupplierName.ForeColor = System.Drawing.Color.White;
             this.lblSupplierName.Location = new System.Drawing.Point(41, 53);
             this.lblSupplierName.Name = "lblSupplierName";
             this.lblSupplierName.Size = new System.Drawing.Size(100, 19);
@@ -1206,6 +1214,7 @@
             this.lblMorokuchi.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMorokuchi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblMorokuchi.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblMorokuchi.ForeColor = System.Drawing.Color.White;
             this.lblMorokuchi.Location = new System.Drawing.Point(41, 18);
             this.lblMorokuchi.Name = "lblMorokuchi";
             this.lblMorokuchi.Size = new System.Drawing.Size(100, 19);
