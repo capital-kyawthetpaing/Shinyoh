@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{174336EF-B864-4F6A-AD18-117F1F6525FA}</ProjectGuid>
+    <ProjectGuid>{6F661147-0D36-4072-B701-D313392BB400}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ShukkaSiziDataShuturyoku</RootNamespace>
-    <AssemblyName>ShukkaSiziDataShuturyoku</AssemblyName>
+    <RootNamespace>ShukkaNyuuryoku</RootNamespace>
+    <AssemblyName>ShukkaNyuuryoku</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,13 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKM_CommonFunction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Debug\CKM_CommonFunction.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,17 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ShukkaSiziDataShuturyoku.cs">
+    <Compile Include="ShukkaNyuuryoku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShukkaSiziDataShuturyoku.Designer.cs">
-      <DependentUpon>ShukkaSiziDataShuturyoku.cs</DependentUpon>
+    <Compile Include="ShukkaNyuuryoku.Designer.cs">
+      <DependentUpon>ShukkaNyuuryoku.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ShukkaSiziDataShuturyoku.resx">
-      <DependentUpon>ShukkaSiziDataShuturyoku.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -73,6 +63,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ShukkaNyuuryoku.resx">
+      <DependentUpon>ShukkaNyuuryoku.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

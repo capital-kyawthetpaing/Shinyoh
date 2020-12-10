@@ -131,10 +131,14 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.ShippingNO:
                         ShippingNoSearch snSearch = new ShippingNoSearch();
-                        //snSearch.changeDate_Access = ChangeDate.Text;
                         snSearch.ShowDialog();
                         CD = snSearch.ShippingNo;
-                        CDate = snSearch.changeDate;
+                        break;
+                    case Entity.SearchType.ScType.Shouhin:
+                        Shouhin_Search shsearch = new Shouhin_Search();
+                        shsearch.ShowDialog();
+                        CD = shsearch.shouhinCD;
+                        CDate = shsearch.changeDate;
                         break;
                 }
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entity;
+using BL;
 using Shinyoh;
 using Shinyoh_Controls;
 using Shinyoh_Search;
@@ -17,49 +18,27 @@ namespace Shinyoh_Search
     public partial class ShippingNoSearch : SearchBase
     {
         public string ShippingNo= string.Empty;
-        public string changeDate = string.Empty;
-        public string changeDate_Access = string.Empty;
+        public string TokuisakiName = string.Empty;
+        public string StaffName = string.Empty;
+        ShukkaSiziNyuuryokuEntity SKSZ_Entity;
+        ShukkasiziNyuuryokuBL SKSZ_BL;
         public ShippingNoSearch()
         {
             InitializeComponent();
         }
-
         private void ShippingNoSearch_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-            lblCustomerName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-
+            txtShippingDateFrom.Focus();
             gvShippingNo.UseRowNo(true);
             GridViewBind();
-            txtShippingDateFrom.Focus();
-            txtShippingDateFrom.E103Check(true);
-            txtShippingDateTo.E103Check(true);
-            txtShippingNoFrom.E103Check(true);
-            txtShippingNoTo.E103Check(true);
-            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
-            sbStaff.E101Check(true, "staff", null, null, null);
-            txtShippingDateFrom.Focus();
-            //出荷予定日            
-            txtShippingDateFrom.E103Check(true);
-            txtShippingDateTo.E103Check(true);
-            txtShippingDateTo.E106Check(true, txtShippingDateFrom, txtShippingDateTo);
-            //得意先
-            sbCustomer.E101Check(true, "Shipping", null, null, null);
-            //担当スタッフ
-            sbStaff.E101Check(true, "M_Staff", null, null, null);
-            //伝票日付
-            txtSlipDateFrom.E103Check(true);
-            txtSlipDateTo.E103Check(true);
-            txtSlipDateTo.E106Check(true, txtSlipDateFrom, txtSlipDateTo);
-            //出荷指示番号
-            txtShippingNoTo.E106Check(true, txtShippingNoFrom, txtShippingNoTo);
-            //商品CD
-            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
+            ErrorCheck();
         }
-
+           
         public override void FunctionProcess(string tagID)
         {
 
@@ -70,15 +49,115 @@ namespace Shinyoh_Search
             if (tagID == "3")
             {
                 DataGridViewRow row = gvShippingNo.CurrentRow;
+                GetGridviewData(row);
             }
             base.FunctionProcess(tagID);
+        }       
+        private void ErrorCheck()
+        {
+            //出荷予定日            
+            txtShippingDateFrom.E103Check(true);
+            txtShippingDateTo.E103Check(true);
+            txtShippingDateTo.E106Check(true, txtShippingDateFrom, txtShippingDateTo);
+            //得意先
+            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtShippingDateFrom, null);
+            //担当スタッフ
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtShippingDateFrom, null);
+            //伝票日付
+            txtSlipDateFrom.E103Check(true);
+            txtSlipDateTo.E103Check(true);
+            txtSlipDateTo.E106Check(true, txtSlipDateFrom, txtSlipDateTo);
+            //出荷指示番号
+            txtShippingNoTo.E106Check(true, txtShippingNoFrom, txtShippingNoTo);
+            //商品CD
+            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
         }
-
         private void GridViewBind()
         {
+            SKSZ_Entity = GetShukkasiziEntity();
+            SKSZ_BL = new ShukkasiziNyuuryokuBL();
+            DataTable dt = new DataTable();
+            dt = SKSZ_BL.ShippingNO_Search(SKSZ_Entity);
+            if(dt.Rows.Count>0)
+            {
+                gvShippingNo.DataSource = dt;
+            }
+            
+        }
+        private ShukkaSiziNyuuryokuEntity GetShukkasiziEntity()
+        {
+            SKSZ_Entity = new ShukkaSiziNyuuryokuEntity()
+            {
+                ShukkaYoteiDate_From = txtShippingDateFrom.Text,
+                ShukkaYoteiDate_To = txtShippingDateTo.Text,
+                TokuisakiCD = txtTokuisakiCD.Text,
+                StaffCD = txtStaffCD.Text,
+                ShouhinName = txtProductName.Text,
+                DenpyouDate_From = txtSlipDateFrom.Text,
+                DenpyouDate_To = txtSlipDateTo.Text,
+                ShukkaSiziNO_From = txtShippingNoFrom.Text,
+                ShukkaSiziNO_To = txtShippingNoTo.Text,
+                ShouhinCD_From = txtProductFrom.Text,
+                ShouhinCD_To = txtProductTo.Text
+            };
 
+            return SKSZ_Entity;
+        }
+        private void GetGridviewData(DataGridViewRow gvrow)
+        {
+            if (gvrow.DataBoundItem != null)
+            {
+                DataGridViewRow row = gvrow;
+                ShippingNo = row.Cells["colShippingNO"].Value.ToString();
+                this.Close();
+            }
+        }
+        private void gvShippingNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            GetGridviewData(gvShippingNo.Rows[e.RowIndex]);
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            GridViewBind();
+        }       
+        private void txtTokuisakiCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtTokuisakiCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        TokuisakiName = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                        lblTokuisakiRyakuName.Text = TokuisakiName;
+                    }
+                    else
+                    {
+                        lblTokuisakiRyakuName.Text = string.Empty;
+                    }
+                }
+            }
         }
 
-       
+        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtStaffCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtStaffCD.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        StaffName = dt.Rows[0]["StaffName"].ToString();
+                        lblStaffName.Text = StaffName;
+                    }
+                    else
+                    {
+                        lblStaffName.Text = string.Empty;
+                    }
+                }
+            }
+        }
     }
 }

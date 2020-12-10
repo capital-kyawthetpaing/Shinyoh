@@ -144,6 +144,9 @@
     <EmbeddedResource Include="ShippingNoSearch.resx">
       <DependentUpon>ShippingNoSearch.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Shouhin_Search.resx">
+      <DependentUpon>Shouhin_Search.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SiiresakiSearch.resx">
       <DependentUpon>SiiresakiSearch.cs</DependentUpon>
     </EmbeddedResource>

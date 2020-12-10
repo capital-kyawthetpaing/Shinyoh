@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{C2E966EB-8344-4491-BEFE-A809331521FE}</Project>
+      <Project>{c2e966eb-8344-4491-befe-a809331521fe}</Project>
       <Name>BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entity\Entity.csproj">
