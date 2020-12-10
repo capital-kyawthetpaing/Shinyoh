@@ -1,5 +1,6 @@
 ﻿using Entity;
 using Shinyoh;
+using Shinyoh_Search;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,6 +38,13 @@ namespace ShukkaNyuuryoku {
             SetButton(ButtonType.BType.Empty, F8, "確認(F8)", true);
             SetButton(ButtonType.BType.Empty, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "保存(F11)", true);
+        }
+
+        private void sButton1_Click(object sender, EventArgs e)
+        {
+            ShukkaNoSearch a = new ShukkaNoSearch();
+            a.Show();
+            
         }
     }
 }
