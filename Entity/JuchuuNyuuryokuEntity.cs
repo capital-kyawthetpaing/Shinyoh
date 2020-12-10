@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    public class JuchuuNyuuryokuEntity
+    public class JuchuuNyuuryokuEntity:BaseEntity
     {
         public string HacchuuNO { get; set; }
         public string StaffCD { get; set; }
@@ -75,7 +75,18 @@ namespace Entity
         public string SiharaisakiTantouBushoName { get; set; }
         public string SiharaisakiTantoushaYakushoku { get; set; }
         public string SiharaisakiTantoushaName { get; set; }
-        public string InsertOperator { get; set; }
-        public string UpdateOperator { get; set; }
+
+        //F10 click event of search 
+        public string BrandCD { get; set; }
+        public string ShouhinCD { get; set; }
+        public string JANCD { get; set; }
+        public string ShouhinName { get; set; }
+        public string YearTerm { get; set; }        
+        public string ColorNO { get; set; }
+        public string SizeNO { get; set; }
+        public string SeasonSS { get; set; }
+        public string SeasonFW { get; set; }
+        public string ChangeDate { get; set; }
     }
+   
 }
