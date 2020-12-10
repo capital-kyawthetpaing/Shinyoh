@@ -383,6 +383,7 @@
             this.gv_2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_2_CellContentClick);
             this.gv_2.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_2_CellEnter);
             this.gv_2.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gv_2_CellValidating);
+            this.gv_2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gv_2_EditingControlShowing);
             this.gv_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_2_KeyDown);
             // 
             // gv_1
@@ -414,6 +415,7 @@
             this.gv_1.Name = "gv_1";
             this.gv_1.Size = new System.Drawing.Size(1420, 150);
             this.gv_1.TabIndex = 101;
+            this.gv_1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gv_1_EditingControlShowing);
             // 
             // colShouhinCD
             // 
@@ -520,6 +522,7 @@
             this.btnNameF11.TabIndex = 24;
             this.btnNameF11.Text = "F11 保存";
             this.btnNameF11.UseVisualStyleBackColor = false;
+            this.btnNameF11.Click += new System.EventHandler(this.btnNameF11_Click);
             // 
             // btnNameF10
             // 
@@ -1034,6 +1037,7 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.sLabel6.Location = new System.Drawing.Point(164, 43);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
@@ -1047,6 +1051,7 @@
             this.sLabel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.sLabel5.Location = new System.Drawing.Point(165, 71);
             this.sLabel5.Name = "sLabel5";
             this.sLabel5.Size = new System.Drawing.Size(100, 19);
@@ -1060,6 +1065,7 @@
             this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.sLabel4.Location = new System.Drawing.Point(165, 100);
             this.sLabel4.Name = "sLabel4";
             this.sLabel4.Size = new System.Drawing.Size(100, 19);
@@ -1097,6 +1103,7 @@
             this.lblPayment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPayment.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblPayment.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblPayment.Location = new System.Drawing.Point(165, 14);
             this.lblPayment.Name = "lblPayment";
             this.lblPayment.Size = new System.Drawing.Size(100, 19);
@@ -1215,6 +1222,7 @@
             // 
             // colSiiresakiDetail
             // 
+            this.colSiiresakiDetail.DataPropertyName = "SiiresakiDetail";
             this.colSiiresakiDetail.HeaderText = "仕入先詳細";
             this.colSiiresakiDetail.Name = "colSiiresakiDetail";
             this.colSiiresakiDetail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -1224,6 +1232,7 @@
             // 
             // colexpectedDate
             // 
+            this.colexpectedDate.DataPropertyName = "ExpectedDate";
             dataGridViewCellStyle2.Format = "yyyy/MM/dd";
             dataGridViewCellStyle2.NullValue = null;
             this.colexpectedDate.DefaultCellStyle = dataGridViewCellStyle2;
