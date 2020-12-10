@@ -139,6 +139,7 @@
             this.lblProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblProduct.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblProduct.ForeColor = System.Drawing.Color.White;
             this.lblProduct.Location = new System.Drawing.Point(6, 8);
             this.lblProduct.Name = "lblProduct";
             this.lblProduct.Size = new System.Drawing.Size(100, 19);
@@ -179,6 +180,7 @@
             this.lblRevisionDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRevisionDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblRevisionDate.ForeColor = System.Drawing.Color.White;
             this.lblRevisionDate.Location = new System.Drawing.Point(6, 36);
             this.lblRevisionDate.Name = "lblRevisionDate";
             this.lblRevisionDate.Size = new System.Drawing.Size(100, 19);
@@ -292,6 +294,7 @@
             this.lblClassification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblClassification.ForeColor = System.Drawing.Color.White;
             this.lblClassification.Location = new System.Drawing.Point(739, 7);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
@@ -801,6 +804,7 @@
             this.lblMajorSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMajorSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblMajorSuppliers.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblMajorSuppliers.ForeColor = System.Drawing.Color.White;
             this.lblMajorSuppliers.Location = new System.Drawing.Point(41, 365);
             this.lblMajorSuppliers.Name = "lblMajorSuppliers";
             this.lblMajorSuppliers.Size = new System.Drawing.Size(100, 19);
@@ -838,6 +842,7 @@
             this.lblIManagement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblIManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblIManagement.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblIManagement.ForeColor = System.Drawing.Color.White;
             this.lblIManagement.Location = new System.Drawing.Point(41, 340);
             this.lblIManagement.Name = "lblIManagement";
             this.lblIManagement.Size = new System.Drawing.Size(100, 19);
@@ -875,6 +880,7 @@
             this.lblIEvaluation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblIEvaluation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblIEvaluation.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblIEvaluation.ForeColor = System.Drawing.Color.White;
             this.lblIEvaluation.Location = new System.Drawing.Point(41, 315);
             this.lblIEvaluation.Name = "lblIEvaluation";
             this.lblIEvaluation.Size = new System.Drawing.Size(100, 19);
@@ -912,6 +918,7 @@
             this.lblTaxRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTaxRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTaxRate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTaxRate.ForeColor = System.Drawing.Color.White;
             this.lblTaxRate.Location = new System.Drawing.Point(41, 290);
             this.lblTaxRate.Name = "lblTaxRate";
             this.lblTaxRate.Size = new System.Drawing.Size(100, 19);
@@ -949,6 +956,7 @@
             this.lblStandardPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStandardPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStandardPrice.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblStandardPrice.ForeColor = System.Drawing.Color.White;
             this.lblStandardPrice.Location = new System.Drawing.Point(41, 265);
             this.lblStandardPrice.Name = "lblStandardPrice";
             this.lblStandardPrice.Size = new System.Drawing.Size(100, 19);
@@ -986,6 +994,7 @@
             this.lblLowerPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblLowerPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblLowerPrice.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblLowerPrice.ForeColor = System.Drawing.Color.White;
             this.lblLowerPrice.Location = new System.Drawing.Point(305, 240);
             this.lblLowerPrice.Name = "lblLowerPrice";
             this.lblLowerPrice.Size = new System.Drawing.Size(100, 19);
@@ -1023,6 +1032,7 @@
             this.lblRetailPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRetailPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRetailPrice.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblRetailPrice.ForeColor = System.Drawing.Color.White;
             this.lblRetailPrice.Location = new System.Drawing.Point(41, 240);
             this.lblRetailPrice.Name = "lblRetailPrice";
             this.lblRetailPrice.Size = new System.Drawing.Size(100, 19);
@@ -1060,6 +1070,7 @@
             this.lblSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSize.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSize.ForeColor = System.Drawing.Color.White;
             this.lblSize.Location = new System.Drawing.Point(41, 215);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(100, 19);
@@ -1097,6 +1108,7 @@
             this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblColor.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblColor.ForeColor = System.Drawing.Color.White;
             this.lblColor.Location = new System.Drawing.Point(41, 190);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(100, 19);
@@ -1134,6 +1146,7 @@
             this.lblBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblBrand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBrand.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblBrand.ForeColor = System.Drawing.Color.White;
             this.lblBrand.Location = new System.Drawing.Point(41, 165);
             this.lblBrand.Name = "lblBrand";
             this.lblBrand.Size = new System.Drawing.Size(100, 19);
@@ -1171,6 +1184,7 @@
             this.lblUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblUnit.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblUnit.ForeColor = System.Drawing.Color.White;
             this.lblUnit.Location = new System.Drawing.Point(41, 140);
             this.lblUnit.Name = "lblUnit";
             this.lblUnit.Size = new System.Drawing.Size(100, 19);
@@ -1358,6 +1372,7 @@
             this.lblShouhinRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblShouhinRyakuName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShouhinRyakuName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblShouhinRyakuName.ForeColor = System.Drawing.Color.White;
             this.lblShouhinRyakuName.Location = new System.Drawing.Point(41, 65);
             this.lblShouhinRyakuName.Name = "lblShouhinRyakuName";
             this.lblShouhinRyakuName.Size = new System.Drawing.Size(100, 19);
@@ -1395,6 +1410,7 @@
             this.lblProductName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblProductName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblProductName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblProductName.ForeColor = System.Drawing.Color.White;
             this.lblProductName.Location = new System.Drawing.Point(41, 40);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(100, 19);
@@ -1422,6 +1438,7 @@
             this.lblZhukou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblZhukou.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblZhukou.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblZhukou.ForeColor = System.Drawing.Color.White;
             this.lblZhukou.Location = new System.Drawing.Point(41, 15);
             this.lblZhukou.Name = "lblZhukou";
             this.lblZhukou.Size = new System.Drawing.Size(100, 19);
