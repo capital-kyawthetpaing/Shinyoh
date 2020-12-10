@@ -105,6 +105,7 @@
             this.txtIDName.AllowMinus = false;
             this.txtIDName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIDName.DecimalPlace = 0;
+            this.txtIDName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtIDName.DepandOnMode = true;
             this.txtIDName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtIDName.IntegerPart = 0;
@@ -112,6 +113,7 @@
             this.txtIDName.IsErrorOccurs = false;
             this.txtIDName.IsRequire = false;
             this.txtIDName.Location = new System.Drawing.Point(117, 83);
+            this.txtIDName.MaxLength = 50;
             this.txtIDName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtIDName.MoveNext = true;
             this.txtIDName.Name = "txtIDName";
@@ -127,6 +129,7 @@
             this.txtKey2.AllowMinus = false;
             this.txtKey2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKey2.DecimalPlace = 0;
+            this.txtKey2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtKey2.DepandOnMode = true;
             this.txtKey2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKey2.IntegerPart = 0;
@@ -134,6 +137,7 @@
             this.txtKey2.IsErrorOccurs = false;
             this.txtKey2.IsRequire = false;
             this.txtKey2.Location = new System.Drawing.Point(437, 48);
+            this.txtKey2.MaxLength = 50;
             this.txtKey2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKey2.MoveNext = true;
             this.txtKey2.Name = "txtKey2";
@@ -149,6 +153,7 @@
             this.txtKey1.AllowMinus = false;
             this.txtKey1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKey1.DecimalPlace = 0;
+            this.txtKey1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtKey1.DepandOnMode = true;
             this.txtKey1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKey1.IntegerPart = 0;
@@ -156,6 +161,7 @@
             this.txtKey1.IsErrorOccurs = false;
             this.txtKey1.IsRequire = false;
             this.txtKey1.Location = new System.Drawing.Point(117, 47);
+            this.txtKey1.MaxLength = 50;
             this.txtKey1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKey1.MoveNext = true;
             this.txtKey1.Name = "txtKey1";
@@ -171,6 +177,7 @@
             this.txtID2.AllowMinus = false;
             this.txtID2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID2.DecimalPlace = 0;
+            this.txtID2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtID2.DepandOnMode = true;
             this.txtID2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtID2.IntegerPart = 0;
@@ -178,6 +185,7 @@
             this.txtID2.IsErrorOccurs = false;
             this.txtID2.IsRequire = false;
             this.txtID2.Location = new System.Drawing.Point(247, 14);
+            this.txtID2.MaxLength = 10;
             this.txtID2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtID2.MoveNext = true;
             this.txtID2.Name = "txtID2";
@@ -193,6 +201,7 @@
             this.txtID1.AllowMinus = false;
             this.txtID1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID1.DecimalPlace = 0;
+            this.txtID1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtID1.DepandOnMode = true;
             this.txtID1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtID1.IntegerPart = 0;
@@ -200,6 +209,7 @@
             this.txtID1.IsErrorOccurs = false;
             this.txtID1.IsRequire = false;
             this.txtID1.Location = new System.Drawing.Point(117, 13);
+            this.txtID1.MaxLength = 10;
             this.txtID1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtID1.MoveNext = true;
             this.txtID1.Name = "txtID1";

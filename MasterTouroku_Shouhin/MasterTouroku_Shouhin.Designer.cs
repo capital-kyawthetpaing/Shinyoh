@@ -31,11 +31,11 @@
             this.lblProduct = new Shinyoh_Controls.SLabel();
             this.txtProduct = new Shinyoh_Search.SearchBox();
             this.lblRevisionDate = new Shinyoh_Controls.SLabel();
-            this.txtRevisionDate = new Shinyoh_Controls.STextBox();
+            this.txtChangeDate = new Shinyoh_Controls.STextBox();
             this.lblCopyProduct = new Shinyoh_Controls.SLabel();
             this.txtCopyProduct = new Shinyoh_Search.SearchBox();
             this.lblCopyRevisionDate = new Shinyoh_Controls.SLabel();
-            this.txtCopyRevisionDate = new Shinyoh_Controls.STextBox();
+            this.txtCopyChangeDate = new Shinyoh_Controls.STextBox();
             this.lblClassification = new Shinyoh_Controls.SLabel();
             this.rdo_Registragion = new Shinyoh_Controls.SRadio();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
@@ -118,11 +118,11 @@
             // 
             // PanelTitle
             // 
-            this.PanelTitle.Controls.Add(this.txtCopyRevisionDate);
+            this.PanelTitle.Controls.Add(this.txtCopyChangeDate);
             this.PanelTitle.Controls.Add(this.lblCopyRevisionDate);
             this.PanelTitle.Controls.Add(this.txtCopyProduct);
             this.PanelTitle.Controls.Add(this.lblCopyProduct);
-            this.PanelTitle.Controls.Add(this.txtRevisionDate);
+            this.PanelTitle.Controls.Add(this.txtChangeDate);
             this.PanelTitle.Controls.Add(this.lblRevisionDate);
             this.PanelTitle.Controls.Add(this.txtProduct);
             this.PanelTitle.Controls.Add(this.lblProduct);
@@ -139,6 +139,7 @@
             this.lblProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblProduct.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblProduct.ForeColor = System.Drawing.Color.White;
             this.lblProduct.Location = new System.Drawing.Point(6, 8);
             this.lblProduct.Name = "lblProduct";
             this.lblProduct.Size = new System.Drawing.Size(100, 19);
@@ -167,7 +168,7 @@
             this.txtProduct.MoveNext = true;
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.NextControl = null;
-            this.txtProduct.NextControlName = "txtRevisionDate";
+            this.txtProduct.NextControlName = "txtChangeDate";
             this.txtProduct.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtProduct.Size = new System.Drawing.Size(100, 19);
             this.txtProduct.TabIndex = 1;
@@ -179,6 +180,7 @@
             this.lblRevisionDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRevisionDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblRevisionDate.ForeColor = System.Drawing.Color.White;
             this.lblRevisionDate.Location = new System.Drawing.Point(6, 36);
             this.lblRevisionDate.Name = "lblRevisionDate";
             this.lblRevisionDate.Size = new System.Drawing.Size(100, 19);
@@ -186,29 +188,29 @@
             this.lblRevisionDate.Text = "改定日";
             this.lblRevisionDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtRevisionDate
+            // txtChangeDate
             // 
-            this.txtRevisionDate.AllowMinus = false;
-            this.txtRevisionDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtRevisionDate.DecimalPlace = 0;
-            this.txtRevisionDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtRevisionDate.DepandOnMode = true;
-            this.txtRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtRevisionDate.IntegerPart = 0;
-            this.txtRevisionDate.IsDatatableOccurs = null;
-            this.txtRevisionDate.IsErrorOccurs = false;
-            this.txtRevisionDate.IsRequire = false;
-            this.txtRevisionDate.Location = new System.Drawing.Point(105, 36);
-            this.txtRevisionDate.MaxLength = 10;
-            this.txtRevisionDate.MinimumSize = new System.Drawing.Size(100, 18);
-            this.txtRevisionDate.MoveNext = true;
-            this.txtRevisionDate.Name = "txtRevisionDate";
-            this.txtRevisionDate.NextControl = null;
-            this.txtRevisionDate.NextControlName = "chkZhukou";
-            this.txtRevisionDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtRevisionDate.Size = new System.Drawing.Size(100, 19);
-            this.txtRevisionDate.TabIndex = 3;
-            this.txtRevisionDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtChangeDate.AllowMinus = false;
+            this.txtChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtChangeDate.DecimalPlace = 0;
+            this.txtChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtChangeDate.DepandOnMode = true;
+            this.txtChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtChangeDate.IntegerPart = 0;
+            this.txtChangeDate.IsDatatableOccurs = null;
+            this.txtChangeDate.IsErrorOccurs = false;
+            this.txtChangeDate.IsRequire = false;
+            this.txtChangeDate.Location = new System.Drawing.Point(105, 36);
+            this.txtChangeDate.MaxLength = 10;
+            this.txtChangeDate.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtChangeDate.MoveNext = true;
+            this.txtChangeDate.Name = "txtChangeDate";
+            this.txtChangeDate.NextControl = null;
+            this.txtChangeDate.NextControlName = "chkZhukou";
+            this.txtChangeDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
+            this.txtChangeDate.TabIndex = 3;
+            this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblCopyProduct
             // 
@@ -244,7 +246,7 @@
             this.txtCopyProduct.MoveNext = true;
             this.txtCopyProduct.Name = "txtCopyProduct";
             this.txtCopyProduct.NextControl = null;
-            this.txtCopyProduct.NextControlName = "txtCopyRevisionDate";
+            this.txtCopyProduct.NextControlName = "txtCopyChangeDate";
             this.txtCopyProduct.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtCopyProduct.Size = new System.Drawing.Size(100, 19);
             this.txtCopyProduct.TabIndex = 5;
@@ -263,28 +265,28 @@
             this.lblCopyRevisionDate.Text = "複写元改定日";
             this.lblCopyRevisionDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtCopyRevisionDate
+            // txtCopyChangeDate
             // 
-            this.txtCopyRevisionDate.AllowMinus = false;
-            this.txtCopyRevisionDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopyRevisionDate.DecimalPlace = 0;
-            this.txtCopyRevisionDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtCopyRevisionDate.DepandOnMode = true;
-            this.txtCopyRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCopyRevisionDate.IntegerPart = 0;
-            this.txtCopyRevisionDate.IsDatatableOccurs = null;
-            this.txtCopyRevisionDate.IsErrorOccurs = false;
-            this.txtCopyRevisionDate.IsRequire = false;
-            this.txtCopyRevisionDate.Location = new System.Drawing.Point(341, 36);
-            this.txtCopyRevisionDate.MinimumSize = new System.Drawing.Size(100, 18);
-            this.txtCopyRevisionDate.MoveNext = true;
-            this.txtCopyRevisionDate.Name = "txtCopyRevisionDate";
-            this.txtCopyRevisionDate.NextControl = null;
-            this.txtCopyRevisionDate.NextControlName = "chkZhukou";
-            this.txtCopyRevisionDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtCopyRevisionDate.Size = new System.Drawing.Size(100, 19);
-            this.txtCopyRevisionDate.TabIndex = 7;
-            this.txtCopyRevisionDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtCopyChangeDate.AllowMinus = false;
+            this.txtCopyChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCopyChangeDate.DecimalPlace = 0;
+            this.txtCopyChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtCopyChangeDate.DepandOnMode = true;
+            this.txtCopyChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtCopyChangeDate.IntegerPart = 0;
+            this.txtCopyChangeDate.IsDatatableOccurs = null;
+            this.txtCopyChangeDate.IsErrorOccurs = false;
+            this.txtCopyChangeDate.IsRequire = false;
+            this.txtCopyChangeDate.Location = new System.Drawing.Point(341, 36);
+            this.txtCopyChangeDate.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtCopyChangeDate.MoveNext = true;
+            this.txtCopyChangeDate.Name = "txtCopyChangeDate";
+            this.txtCopyChangeDate.NextControl = null;
+            this.txtCopyChangeDate.NextControlName = "chkZhukou";
+            this.txtCopyChangeDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtCopyChangeDate.Size = new System.Drawing.Size(100, 19);
+            this.txtCopyChangeDate.TabIndex = 7;
+            this.txtCopyChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblClassification
             // 
@@ -292,6 +294,7 @@
             this.lblClassification.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblClassification.ForeColor = System.Drawing.Color.White;
             this.lblClassification.Location = new System.Drawing.Point(739, 7);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
@@ -448,7 +451,7 @@
             this.txtRemarks.MoveNext = true;
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.NextControl = null;
-            this.txtRemarks.NextControlName = null;
+            this.txtRemarks.NextControlName = "txtKensakuHyouziJun";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
             this.txtRemarks.Size = new System.Drawing.Size(400, 19);
             this.txtRemarks.TabIndex = 55;
@@ -530,7 +533,7 @@
             this.txtHacchuuLot.MoveNext = true;
             this.txtHacchuuLot.Name = "txtHacchuuLot";
             this.txtHacchuuLot.NextControl = null;
-            this.txtHacchuuLot.NextControlName = null;
+            this.txtHacchuuLot.NextControlName = "txtImage";
             this.txtHacchuuLot.SearchType = Entity.SearchType.ScType.None;
             this.txtHacchuuLot.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuLot.TabIndex = 50;
@@ -567,7 +570,7 @@
             this.txtShippingPlace.MoveNext = true;
             this.txtShippingPlace.Name = "txtShippingPlace";
             this.txtShippingPlace.NextControl = null;
-            this.txtShippingPlace.NextControlName = "txtOrderLot";
+            this.txtShippingPlace.NextControlName = "txtHacchuuLot";
             this.txtShippingPlace.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingPlace.Size = new System.Drawing.Size(150, 19);
             this.txtShippingPlace.TabIndex = 48;
@@ -801,6 +804,7 @@
             this.lblMajorSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblMajorSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblMajorSuppliers.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblMajorSuppliers.ForeColor = System.Drawing.Color.White;
             this.lblMajorSuppliers.Location = new System.Drawing.Point(41, 365);
             this.lblMajorSuppliers.Name = "lblMajorSuppliers";
             this.lblMajorSuppliers.Size = new System.Drawing.Size(100, 19);
@@ -838,6 +842,7 @@
             this.lblIManagement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblIManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblIManagement.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblIManagement.ForeColor = System.Drawing.Color.White;
             this.lblIManagement.Location = new System.Drawing.Point(41, 340);
             this.lblIManagement.Name = "lblIManagement";
             this.lblIManagement.Size = new System.Drawing.Size(100, 19);
@@ -875,6 +880,7 @@
             this.lblIEvaluation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblIEvaluation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblIEvaluation.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblIEvaluation.ForeColor = System.Drawing.Color.White;
             this.lblIEvaluation.Location = new System.Drawing.Point(41, 315);
             this.lblIEvaluation.Name = "lblIEvaluation";
             this.lblIEvaluation.Size = new System.Drawing.Size(100, 19);
@@ -912,6 +918,7 @@
             this.lblTaxRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTaxRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTaxRate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTaxRate.ForeColor = System.Drawing.Color.White;
             this.lblTaxRate.Location = new System.Drawing.Point(41, 290);
             this.lblTaxRate.Name = "lblTaxRate";
             this.lblTaxRate.Size = new System.Drawing.Size(100, 19);
@@ -949,6 +956,7 @@
             this.lblStandardPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStandardPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStandardPrice.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblStandardPrice.ForeColor = System.Drawing.Color.White;
             this.lblStandardPrice.Location = new System.Drawing.Point(41, 265);
             this.lblStandardPrice.Name = "lblStandardPrice";
             this.lblStandardPrice.Size = new System.Drawing.Size(100, 19);
@@ -986,6 +994,7 @@
             this.lblLowerPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblLowerPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblLowerPrice.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblLowerPrice.ForeColor = System.Drawing.Color.White;
             this.lblLowerPrice.Location = new System.Drawing.Point(305, 240);
             this.lblLowerPrice.Name = "lblLowerPrice";
             this.lblLowerPrice.Size = new System.Drawing.Size(100, 19);
@@ -1023,6 +1032,7 @@
             this.lblRetailPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRetailPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRetailPrice.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblRetailPrice.ForeColor = System.Drawing.Color.White;
             this.lblRetailPrice.Location = new System.Drawing.Point(41, 240);
             this.lblRetailPrice.Name = "lblRetailPrice";
             this.lblRetailPrice.Size = new System.Drawing.Size(100, 19);
@@ -1060,6 +1070,7 @@
             this.lblSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSize.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSize.ForeColor = System.Drawing.Color.White;
             this.lblSize.Location = new System.Drawing.Point(41, 215);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(100, 19);
@@ -1097,6 +1108,7 @@
             this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblColor.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblColor.ForeColor = System.Drawing.Color.White;
             this.lblColor.Location = new System.Drawing.Point(41, 190);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(100, 19);
@@ -1134,6 +1146,7 @@
             this.lblBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblBrand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBrand.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblBrand.ForeColor = System.Drawing.Color.White;
             this.lblBrand.Location = new System.Drawing.Point(41, 165);
             this.lblBrand.Name = "lblBrand";
             this.lblBrand.Size = new System.Drawing.Size(100, 19);
@@ -1171,6 +1184,7 @@
             this.lblUnit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblUnit.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblUnit.ForeColor = System.Drawing.Color.White;
             this.lblUnit.Location = new System.Drawing.Point(41, 140);
             this.lblUnit.Name = "lblUnit";
             this.lblUnit.Size = new System.Drawing.Size(100, 19);
@@ -1358,6 +1372,7 @@
             this.lblShouhinRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblShouhinRyakuName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShouhinRyakuName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblShouhinRyakuName.ForeColor = System.Drawing.Color.White;
             this.lblShouhinRyakuName.Location = new System.Drawing.Point(41, 65);
             this.lblShouhinRyakuName.Name = "lblShouhinRyakuName";
             this.lblShouhinRyakuName.Size = new System.Drawing.Size(100, 19);
@@ -1395,6 +1410,7 @@
             this.lblProductName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblProductName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblProductName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblProductName.ForeColor = System.Drawing.Color.White;
             this.lblProductName.Location = new System.Drawing.Point(41, 40);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(100, 19);
@@ -1422,6 +1438,7 @@
             this.lblZhukou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblZhukou.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblZhukou.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblZhukou.ForeColor = System.Drawing.Color.White;
             this.lblZhukou.Location = new System.Drawing.Point(41, 15);
             this.lblZhukou.Name = "lblZhukou";
             this.lblZhukou.Size = new System.Drawing.Size(100, 19);
@@ -1455,12 +1472,12 @@
         #endregion
 
         private Shinyoh_Controls.SLabel lblProduct;
-        private Shinyoh_Controls.STextBox txtRevisionDate;
+        private Shinyoh_Controls.STextBox txtChangeDate;
         private Shinyoh_Controls.SLabel lblRevisionDate;
         private Shinyoh_Search.SearchBox txtProduct;
         private Shinyoh_Controls.SLabel lblCopyProduct;
         private Shinyoh_Search.SearchBox txtCopyProduct;
-        private Shinyoh_Controls.STextBox txtCopyRevisionDate;
+        private Shinyoh_Controls.STextBox txtCopyChangeDate;
         private Shinyoh_Controls.SLabel lblCopyRevisionDate;
         private Shinyoh_Controls.SLabel lblClassification;
         private Shinyoh_Controls.SRadio rdo_Registragion;

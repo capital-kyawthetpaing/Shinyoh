@@ -41,8 +41,8 @@ namespace MasterTouroku_Shouhin
 
             ChangeMode(Mode.New);
             base_entity = _GetBaseData();
-            txtProduct.ChangeDate = txtRevisionDate;
-            txtCopyProduct.ChangeDate = txtCopyRevisionDate;
+            txtProduct.ChangeDate = txtChangeDate;
+            txtCopyProduct.ChangeDate = txtCopyChangeDate;
         }
 
         private void ChangeMode(Mode mode)
@@ -56,52 +56,52 @@ namespace MasterTouroku_Shouhin
             {
                 case Mode.New:
                     txtCopyProduct.Enabled = true;
-                    txtCopyRevisionDate.Enabled = true;
+                    txtCopyChangeDate.Enabled = true;
                     UI_ErrorCheck();
 
-                    txtRevisionDate.E132Check(true, "M_Shouhin", txtProduct, txtRevisionDate, null);
-                    txtRevisionDate.E133Check(false, "M_Shouhin", txtProduct, txtRevisionDate, null);
-                    txtRevisionDate.E270Check(false, "M_Shouhin", txtProduct, txtRevisionDate);
+                    txtChangeDate.E132Check(true, "M_Shouhin", txtProduct, txtChangeDate, null);
+                    txtChangeDate.E133Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
+                    txtChangeDate.E270Check(false, "M_Shouhin", txtProduct, txtChangeDate);
 
-                    txtCopyRevisionDate.E102MultiCheck(true, txtCopyProduct, txtCopyRevisionDate);
-                    txtCopyRevisionDate.E103Check(true);
-                    txtCopyRevisionDate.E133Check(true, "M_Siiresaki", txtCopyProduct, txtCopyRevisionDate, null);
+                    txtCopyChangeDate.E102MultiCheck(true, txtCopyProduct, txtCopyChangeDate);
+                    txtCopyChangeDate.E103Check(true);
+                    txtCopyChangeDate.E133Check(true, "M_Siiresaki", txtCopyProduct, txtCopyChangeDate, null);
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
                     txtCopyProduct.Enabled = false;
-                    txtCopyRevisionDate.Enabled = false;
+                    txtCopyChangeDate.Enabled = false;
                     UI_ErrorCheck();
 
-                    txtRevisionDate.E132Check(false, "M_Shouhin", txtProduct, txtRevisionDate, null);
-                    txtRevisionDate.E133Check(true, "M_Shouhin", txtProduct, txtRevisionDate, null);
-                    txtRevisionDate.E270Check(false, "M_Shouhin", txtProduct, txtRevisionDate);
+                    txtChangeDate.E132Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
+                    txtChangeDate.E133Check(true, "M_Shouhin", txtProduct, txtChangeDate, null);
+                    txtChangeDate.E270Check(false, "M_Shouhin", txtProduct, txtChangeDate);
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
                     txtCopyProduct.Enabled = false;
-                    txtCopyRevisionDate.Enabled = false;
+                    txtCopyChangeDate.Enabled = false;
                     UI_ErrorCheck();
 
-                    txtRevisionDate.E132Check(false, "M_Shouhin", txtProduct, txtRevisionDate, null);
-                    txtRevisionDate.E133Check(true, "M_Shouhin", txtProduct, txtRevisionDate, null);
-                    txtRevisionDate.E270Check(true, "M_Shouhin", txtProduct, txtRevisionDate);
+                    txtChangeDate.E132Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
+                    txtChangeDate.E133Check(true, "M_Shouhin", txtProduct, txtChangeDate, null);
+                    txtChangeDate.E270Check(true, "M_Shouhin", txtProduct, txtChangeDate);
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
                     txtCopyProduct.Enabled = false;
-                    txtCopyRevisionDate.Enabled = false;
+                    txtCopyChangeDate.Enabled = false;
                     UI_ErrorCheck();
 
-                    txtRevisionDate.E132Check(false, "M_Shouhin", txtProduct, txtRevisionDate, null);
-                    txtRevisionDate.E133Check(true, "M_Shouhin", txtProduct, txtRevisionDate, null);
-                    txtRevisionDate.E270Check(false, "M_Shouhin", txtProduct, txtRevisionDate);
+                    txtChangeDate.E132Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
+                    txtChangeDate.E133Check(true, "M_Shouhin", txtProduct, txtChangeDate, null);
+                    txtChangeDate.E270Check(false, "M_Shouhin", txtProduct, txtChangeDate);
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
@@ -112,8 +112,8 @@ namespace MasterTouroku_Shouhin
         private void UI_ErrorCheck()
         {
             txtProduct.E102Check(true);
-            txtRevisionDate.E102Check(true);
-            txtRevisionDate.E103Check(true);
+            txtChangeDate.E102Check(true);
+            txtChangeDate.E103Check(true);
             txtProductName.E102Check(true);
             txtShouhinRyakuName.E102Check(true);
 
@@ -143,7 +143,7 @@ namespace MasterTouroku_Shouhin
             txtIManagement.E101Check(true, "M_Shouhin", txtIManagement, null, null);
 
             txtMajorSuppliers.E102Check(true);
-            txtMajorSuppliers.E101Check(true, "M_Siiresaki", txtMajorSuppliers, txtRevisionDate, null);
+            txtMajorSuppliers.E101Check(true, "M_Siiresaki", txtMajorSuppliers, txtChangeDate, null);
 
             txtHandlingEndDate.E103Check(true);
             txtSalesStopDate.E103Check(true);
@@ -215,9 +215,9 @@ namespace MasterTouroku_Shouhin
         {
             ShouhinEntity shouhin_entity = new ShouhinEntity();
             shouhin_entity.Product = txtProduct.Text;
-            shouhin_entity.RevisionDate = txtRevisionDate.Text;
+            shouhin_entity.RevisionDate = txtChangeDate.Text;
             shouhin_entity.CopyProduct = txtCopyProduct.Text;
-            shouhin_entity.CopyRevisionDate = txtCopyRevisionDate.Text;
+            shouhin_entity.CopyRevisionDate = txtCopyChangeDate.Text;
             shouhin_entity.ShoukouFLG = chkShukou.Checked ? 1 : 0;
             shouhin_entity.ProductName = txtProductName.Text;
             shouhin_entity.ShouhinRyakuName = txtShouhinRyakuName.Text;
@@ -254,7 +254,7 @@ namespace MasterTouroku_Shouhin
             //for log table
             shouhin_entity.PC = base_entity.PC;
             shouhin_entity.ProgramID = base_entity.ProgramID;
-            shouhin_entity.KeyItem = txtProduct.Text + " " + txtRevisionDate.Text;
+            shouhin_entity.KeyItem = txtProduct.Text + " " + txtChangeDate.Text;
             return shouhin_entity;
         }
 

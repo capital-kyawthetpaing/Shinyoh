@@ -137,7 +137,7 @@ namespace BL
                    ";Persist Security Info=True;User ID=" + IEntity.DatabaseLoginID +
                    ";Password=" + IEntity.DatabasePassword +
                    ";Connection Timeout=" + IEntity.TimeoutValues;
-
-        }
+}
+        
     }
 }

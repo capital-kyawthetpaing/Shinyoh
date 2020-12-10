@@ -134,6 +134,13 @@ namespace Shinyoh_Search
                         snSearch.ShowDialog();
                         CD = snSearch.ShippingNo;
                         break;
+                    case Entity.SearchType.ScType.Shouhin:
+                        Shouhin_Search shsearch = new Shouhin_Search();
+                        shsearch.parent_changeDate = ChangeDate.Text;
+                        shsearch.ShowDialog();
+                        CD = shsearch.shouhinCD;
+                        CDate = shsearch.changeDate;
+                        break;
                 }
 
                 this.Text = CD;
@@ -175,9 +182,6 @@ namespace Shinyoh_Search
                         control.Focus();
                     }
                 }
-
-               
-                
             }            
         }
     }

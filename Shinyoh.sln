@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShukkaSiziNyuuryoku", "Shuk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShukkaSiziDataShuturyoku", "ShukkaSiziDataShuturyoku\ShukkaSiziDataShuturyoku.csproj", "{174336EF-B864-4F6A-AD18-117F1F6525FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShukkaNyuuryoku", "ShukkaNyuuryoku\ShukkaNyuuryoku.csproj", "{6F661147-0D36-4072-B701-D313392BB400}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,10 @@ Global
 		{174336EF-B864-4F6A-AD18-117F1F6525FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{174336EF-B864-4F6A-AD18-117F1F6525FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{174336EF-B864-4F6A-AD18-117F1F6525FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F661147-0D36-4072-B701-D313392BB400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F661147-0D36-4072-B701-D313392BB400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F661147-0D36-4072-B701-D313392BB400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F661147-0D36-4072-B701-D313392BB400}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

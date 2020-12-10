@@ -12,9 +12,9 @@ namespace Shinyoh_Search
     {
         public string SiiresakiCD = string.Empty;
         public string changeDate = string.Empty;
+        public string SiiresakiName = string.Empty;
 
         public string Date_Access_Siiresaki;
-
         public SiiresakiSearch()
         {
             InitializeComponent();
@@ -89,6 +89,7 @@ namespace Shinyoh_Search
             {
                 DataGridViewRow row = gvrow;
                 SiiresakiCD = row.Cells["colSiiresakiCD"].Value.ToString();
+                SiiresakiName = row.Cells["colSiiresakiName"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
                 this.Close();
             }
