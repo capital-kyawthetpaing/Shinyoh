@@ -134,6 +134,12 @@ namespace Shinyoh_Search
                         snSearch.ShowDialog();
                         CD = snSearch.ShippingNo;
                         break;
+                    case Entity.SearchType.ScType.Shouhin:
+                        Shouhin_Search shsearch = new Shouhin_Search();
+                        shsearch.ShowDialog();
+                        CD = shsearch.shouhinCD;
+                        CDate = shsearch.changeDate;
+                        break;
                 }
 
                 this.Text = CD;
