@@ -181,9 +181,6 @@ namespace Shinyoh_Search
                         control.Focus();
                     }
                 }
-
-               
-                
             }            
         }
     }
