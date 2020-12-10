@@ -16,6 +16,7 @@ namespace Shinyoh_Search
     {
         public string shouhinCD = string.Empty;
         public string changeDate = string.Empty;
+        public string parent_changeDate;
         ShouhinBL shouhinbl = new ShouhinBL();
         public Shouhin_Search()
         {
@@ -28,9 +29,18 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             dgDetail.UseRowNo(true);
-            dgDetail.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgDetail.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgDetail.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgDetail.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             BindDataGrid();
+            if (string.IsNullOrWhiteSpace(parent_changeDate))
+                txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", DateTime.Now);
+            else
+                txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", parent_changeDate);
+
+            txtProduct1.E106Check(true, txtProduct, txtProduct1);
+            txtJANCD1.E106Check(true, txtJANCD, txtJANCD1);
+            txtExhibition1.E106Check(true, txtExhibition, txtExhibition1);
+            txtBrand1.E106Check(true, txtBrand, txtBrand1);
         }
 
         private void dgDetail_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -82,11 +92,7 @@ namespace Shinyoh_Search
             shouhin.BrandCD1 = txtBrand1.Text;
             shouhin.Size = txtSize.Text;
             DataTable dt = shouhinbl.Shouhin_SearchData(shouhin);
-
-            txtProduct1.E106Check(true, txtProduct, txtProduct1);
-            txtJANCD1.E106Check(true, txtJANCD, txtJANCD1);
-            txtExhibition1.E106Check(true, txtExhibition, txtExhibition1);
-            txtBrand1.E106Check(true, txtBrand, txtBrand1);
+            dgDetail.DataSource = dt;
         }
 
         private void GetGridviewData(DataGridViewRow gvrow)

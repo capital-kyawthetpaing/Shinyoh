@@ -68,6 +68,7 @@
             this.lbl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl1.ForeColor = System.Drawing.Color.White;
             this.lbl1.Location = new System.Drawing.Point(25, 8);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(100, 19);
@@ -81,6 +82,7 @@
             this.lbl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl2.ForeColor = System.Drawing.Color.White;
             this.lbl2.Location = new System.Drawing.Point(25, 29);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(100, 19);
@@ -94,6 +96,7 @@
             this.lbl3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl3.ForeColor = System.Drawing.Color.White;
             this.lbl3.Location = new System.Drawing.Point(25, 50);
             this.lbl3.Name = "lbl3";
             this.lbl3.Size = new System.Drawing.Size(100, 19);
@@ -123,6 +126,7 @@
             this.lbl4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl4.ForeColor = System.Drawing.Color.White;
             this.lbl4.Location = new System.Drawing.Point(27, 11);
             this.lbl4.Name = "lbl4";
             this.lbl4.Size = new System.Drawing.Size(100, 19);
@@ -135,6 +139,7 @@
             this.txtCounter.AllowMinus = false;
             this.txtCounter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCounter.DecimalPlace = 0;
+            this.txtCounter.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtCounter.DepandOnMode = true;
             this.txtCounter.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCounter.IntegerPart = 0;
@@ -171,6 +176,7 @@
             this.txt_Prefix.ChangeDate = null;
             this.txt_Prefix.Combo = null;
             this.txt_Prefix.DecimalPlace = 0;
+            this.txt_Prefix.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txt_Prefix.DepandOnMode = true;
             this.txt_Prefix.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txt_Prefix.IntegerPart = 0;
@@ -198,6 +204,7 @@
             this.txtSEQNO.ChangeDate = null;
             this.txtSEQNO.Combo = null;
             this.txtSEQNO.DecimalPlace = 0;
+            this.txtSEQNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSEQNO.DepandOnMode = true;
             this.txtSEQNO.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSEQNO.IntegerPart = 0;
@@ -206,7 +213,7 @@
             this.txtSEQNO.IsRequire = false;
             this.txtSEQNO.lblName = null;
             this.txtSEQNO.Location = new System.Drawing.Point(124, 29);
-            this.txtSEQNO.MaxLength = 1;
+            this.txtSEQNO.MaxLength = 3;
             this.txtSEQNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSEQNO.MoveNext = true;
             this.txtSEQNO.Name = "txtSEQNO";
