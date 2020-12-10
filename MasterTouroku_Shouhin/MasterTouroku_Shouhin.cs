@@ -36,7 +36,7 @@ namespace MasterTouroku_Shouhin
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Empty, F10, "", false);
+            SetButton(ButtonType.BType.Import, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             ChangeMode(Mode.New);
@@ -218,7 +218,7 @@ namespace MasterTouroku_Shouhin
             shouhin_entity.RevisionDate = txtChangeDate.Text;
             shouhin_entity.CopyProduct = txtCopyProduct.Text;
             shouhin_entity.CopyRevisionDate = txtCopyChangeDate.Text;
-            shouhin_entity.ShoukouFLG = chkShukou.Checked ? 1 : 0;
+            shouhin_entity.ShokutiFLG = chkShukou.Checked ? 1 : 0;
             shouhin_entity.ProductName = txtProductName.Text;
             shouhin_entity.ShouhinRyakuName = txtShouhinRyakuName.Text;
             shouhin_entity.KatakanaName = txtKatakanaName.Text;
@@ -241,13 +241,12 @@ namespace MasterTouroku_Shouhin
             shouhin_entity.HanbaiTeisiDate = txtSalesStopDate.Text;
             shouhin_entity.Model_No = txtModelNo.Text;
             shouhin_entity.Model_Name = txtModelName.Text;
-            shouhin_entity.FOB = Convert.ToInt32(txtFOB.Text);
+            shouhin_entity.FOB = txtFOB.Text;
             shouhin_entity.Shipping_Place = txtShippingPlace.Text;
             shouhin_entity.HacchuuLot = Convert.ToDecimal(txtHacchuuLot.Text);
             shouhin_entity.ImageFilePathName = txtImage.Text;
             shouhin_entity.Remarks = txtRemarks.Text;
             shouhin_entity.KensakuHyouziJun = Convert.ToInt32(txtKensakuHyouziJun.Text);
-            shouhin_entity.UsedFlag = 0;
             shouhin_entity.InsertOperator = base_entity.OperatorCD;
             shouhin_entity.UpdateOperator = base_entity.OperatorCD;
 
@@ -264,5 +263,93 @@ namespace MasterTouroku_Shouhin
             shouhinbl.Shouhin_IUD(shouhin_entity);
         }
 
+        private void txtChangeDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtChangeDate.IsErrorOccurs)
+                {
+                    if (cboMode.SelectedValue.ToString() == "2")
+                    {
+                        EnableAndDisablePanel();
+                    }
+                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                    }
+                }
+                DataTable dt = txtChangeDate.IsDatatableOccurs;
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                {
+                    DB_To_UI(dt);
+                }
+            }
+        }
+
+        private void txtCopyChangeDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
+            {
+                if (!txtCopyChangeDate.IsErrorOccurs)
+                {
+                    EnableAndDisablePanel();
+                    DataTable dt = txtCopyChangeDate.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        DB_To_UI(dt);
+                }
+            }
+        }
+
+        private void EnableAndDisablePanel()
+        {
+            cf.DisablePanel(PanelTitle);
+            cf.EnablePanel(Panel_Detail);
+            chkShukou.Focus();
+        }
+
+        private void DB_To_UI(DataTable dt)
+        {
+            if(dt.Rows[0]["MessageID"].ToString() == "132")
+            {
+                if (dt.Rows[0]["ShokutiFLG"].ToString() == "1")
+                    chkShukou.Checked = true;
+                else
+                    chkShukou.Checked = false;
+                txtProductName.Text = dt.Rows[0]["ShouhinName"].ToString();
+                txtShouhinRyakuName.Text = dt.Rows[0]["ShouhinRyakuName"].ToString();
+                txtKatakanaName.Text = dt.Rows[0]["KanaName"].ToString();
+                txtJANCD.Text = dt.Rows[0]["JANCD"].ToString();
+                txtExhibition.Text = dt.Rows[0]["YearTerm"].ToString();
+                if (dt.Rows[0]["SeasonSS"].ToString() == "1")
+                    chkSS.Checked = true;
+                else
+                    chkFW.Checked = false;
+                if (dt.Rows[0]["SeasonFW"].ToString() == "1")
+                    chkFW.Checked = true;
+                else
+                    chkFW.Checked = false;
+                txtTani.Text = dt.Rows[0]["TaniCD"].ToString();
+                txtBrand.Text = dt.Rows[0]["BrandCD"].ToString();
+                txtColor.Text = dt.Rows[0]["ColorNO"].ToString();
+                txtSize.Text = dt.Rows[0]["SizeNO"].ToString();
+                txtRetailPrice.Text = dt.Rows[0]["JoudaiTanka"].ToString();
+                txtLowerPrice.Text = dt.Rows[0]["GedaiTanka"].ToString();
+                txtStandardPrice.Text = dt.Rows[0]["HyoujunGenkaTanka"].ToString();
+                txtTaxRate.Text = dt.Rows[0]["ZeirituKBN"].ToString();
+                txtIEvaluation.Text = dt.Rows[0]["ZaikoHyoukaKBN"].ToString();
+                txtIManagement.Text = dt.Rows[0]["ZaikoKanriKBN"].ToString();
+                txtMajorSuppliers.Text = dt.Rows[0]["MainSiiresakiCD"].ToString();
+                txtHandlingEndDate.Text = dt.Rows[0]["ToriatukaiShuuryouDate"].ToString();
+                txtSalesStopDate.Text = dt.Rows[0]["HanbaiTeisiDate"].ToString();
+                txtModelNo.Text = dt.Rows[0]["Model_No"].ToString();
+                txtModelName.Text = dt.Rows[0]["ModelName"].ToString();
+                txtFOB.Text = dt.Rows[0]["FOB"].ToString();
+                txtShippingPlace.Text = dt.Rows[0]["Shipping_Place"].ToString();
+                txtHacchuuLot.Text = dt.Rows[0]["HacchuuLot"].ToString();
+                txtImage.Text = dt.Rows[0]["ShouhinImageFilePathName"].ToString();
+                txtRemarks.Text = dt.Rows[0]["Remarks"].ToString();
+                txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace Entity
         public string RevisionDate { get; set; }
         public string CopyProduct { get; set; }
         public string CopyRevisionDate { get; set; }
-        public int ShoukouFLG { get; set; }
+        public int ShokutiFLG { get; set; }
         public string ProductName { get; set;  }
         public string ShouhinRyakuName { get; set; }
         public string KatakanaName { get; set; }
@@ -39,7 +39,7 @@ namespace Entity
         public string HanbaiTeisiDate { get; set; }
         public string Model_No { get; set; }
         public string Model_Name { get; set; }
-        public int FOB { get; set; }
+        public string FOB { get; set; }
         public string Shipping_Place { get; set; }
         public decimal HacchuuLot { get; set; }
         public string ImageFilePathName { get; set; }
