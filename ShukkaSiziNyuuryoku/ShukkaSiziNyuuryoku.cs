@@ -114,8 +114,7 @@ namespace ShukkaSiziNyuuryoku
                 //    }
                 //}
             }
-
-        Clear();
+                    
             base.FunctionProcess(tagID);
         }
 
