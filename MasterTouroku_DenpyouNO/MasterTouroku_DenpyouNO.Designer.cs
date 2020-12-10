@@ -135,6 +135,7 @@
             this.txtCounter.AllowMinus = false;
             this.txtCounter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCounter.DecimalPlace = 0;
+            this.txtCounter.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtCounter.DepandOnMode = true;
             this.txtCounter.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCounter.IntegerPart = 0;
@@ -171,6 +172,7 @@
             this.txt_Prefix.ChangeDate = null;
             this.txt_Prefix.Combo = null;
             this.txt_Prefix.DecimalPlace = 0;
+            this.txt_Prefix.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txt_Prefix.DepandOnMode = true;
             this.txt_Prefix.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txt_Prefix.IntegerPart = 0;
@@ -198,6 +200,7 @@
             this.txtSEQNO.ChangeDate = null;
             this.txtSEQNO.Combo = null;
             this.txtSEQNO.DecimalPlace = 0;
+            this.txtSEQNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSEQNO.DepandOnMode = true;
             this.txtSEQNO.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSEQNO.IntegerPart = 0;
@@ -206,7 +209,7 @@
             this.txtSEQNO.IsRequire = false;
             this.txtSEQNO.lblName = null;
             this.txtSEQNO.Location = new System.Drawing.Point(124, 29);
-            this.txtSEQNO.MaxLength = 1;
+            this.txtSEQNO.MaxLength = 3;
             this.txtSEQNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSEQNO.MoveNext = true;
             this.txtSEQNO.Name = "txtSEQNO";
