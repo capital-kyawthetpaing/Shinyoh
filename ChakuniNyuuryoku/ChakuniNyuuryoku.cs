@@ -219,12 +219,13 @@ namespace ChakuniNyuuryoku
             chkEntity.BrandCD = sbBrand.Text;
             chkEntity.ColorNO = txtColor.Text;
             chkEntity.SizeNO = txtSize.Text;
-            chkEntity.YearTerm = txtExhibition.Text;
+            chkEntity.YearTerm = txtYearTerm.Text;
             chkEntity.KanriNO = txtControlNo.Text;
             chkEntity.SoukoCD = sbWareHouse.Text;
-            chkEntity.CheckValue = CheckValue();
-            //chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
-            //chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
+            chkEntity.YearTerm = txtYearTerm.Text;
+            //chkEntity.CheckValue = CheckValue();
+            chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
+            chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
             dtmain  = cbl.ChakuniNyuuryoku_Display(chkEntity,Xml);
             
             DataTable dtcha = new DataTable();
@@ -409,7 +410,7 @@ namespace ChakuniNyuuryoku
             sbBrand.Clear();
             lblBrandName.Text = string.Empty;
             txtColor.Clear();
-            txtExhibition.Clear();
+            txtYearTerm.Clear();
             txtSize.Clear();
             txtScheduledNo.Focus();
         }
