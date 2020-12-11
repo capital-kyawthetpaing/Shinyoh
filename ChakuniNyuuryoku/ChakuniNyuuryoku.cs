@@ -51,6 +51,9 @@ namespace ChakuniNyuuryoku
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
+            lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
             ChangeMode(Mode.New);
             txtArrivalNO.Focus();
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
@@ -68,6 +71,7 @@ namespace ChakuniNyuuryoku
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
                     cf.EnablePanel(panelDetails);
+                    txtArrivalDate.Text= DateTime.Now.ToString("yyyy/MM/dd");
                     txtArrivalNO.Focus();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
