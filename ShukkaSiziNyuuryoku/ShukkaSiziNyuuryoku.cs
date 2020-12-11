@@ -53,7 +53,6 @@ namespace ShukkaSiziNyuuryoku
             sbShippingNO.Focus();
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
         }
-
         private void ChangeMode(Mode mode)
         {
             switch (mode)
@@ -83,9 +82,7 @@ namespace ShukkaSiziNyuuryoku
                     btnInquiry.Visible = false;
                     break;
             }
-
         }
-
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
@@ -136,7 +133,9 @@ namespace ShukkaSiziNyuuryoku
         private void ErrorCheck()
         {
             sbShippingNO.E102Check(true);
-            sbShippingNO.E133Check(true, "M_Siiresaki", sbShippingNO, null, null);
+            sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
+            sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
+            sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO,null);
         }
         private void New_Mode()
         {

@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using BL;
+using Entity;
 using Shinyoh;
 using System;
 using System.Collections.Generic;
@@ -14,22 +15,21 @@ namespace Shinyoh_Search {
     public partial class ShukkaNoSearch : SearchBase {
         public string TokuisakiName = string.Empty;
         public string StaffName = string.Empty;
+        public string ShukkaNo = string.Empty;
         public ShukkaNoSearch()
         {
             InitializeComponent();
         }
-
         private void ShukkaNoSearch_Load(object sender, EventArgs e)
         {
-            txtShukkaDate1.Focus();
-            lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;        
-
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-
-            
+            lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txtShukkaDate1.Focus();
+            gvShukkaNo.UseRowNo(true);
+            DataGridviewBind();
             ErrorCheck();
         }
         private void ErrorCheck()
@@ -49,7 +49,20 @@ namespace Shinyoh_Search {
             //	商品CD		
             txtShouhin2.E106Check(true, txtShouhin1, txtShouhin2);
         }
+        public override void FunctionProcess(string tagID)
+        {
 
+            if (tagID == "2")
+            {
+                DataGridviewBind();
+            }
+            if (tagID == "3")
+            {
+                DataGridViewRow row = gvShukkaNo.CurrentRow;
+                GetGridviewData(row);
+            }
+            base.FunctionProcess(tagID);
+        }
         private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -88,6 +101,52 @@ namespace Shinyoh_Search {
                     }
                 }
             }
+        }
+        private void DataGridviewBind()
+        {
+            ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
+            obj.ShukkaDate1 = txtShukkaDate1.Text;
+            obj.ShukkaDate2 = txtShukkaDate2.Text;
+            obj.TokuisakiCD = txtTokuisaki.Text;
+            obj.StaffCD = txtStaffCD.Text;
+            obj.ShouhinName = txtShouhinName.Text;
+            obj.ShukkaNO1 = txtShukkaNo1.Text;
+            obj.ShukkaNO2 = txtShukkaNo2.Text;
+            obj.ShukkaSiziNO1 = txtShukkaSijiNo1.Text;
+            obj.ShukkaSiziNO2 = txtShukkaSijiNo2.Text;
+            obj.ShouhinCD1 = txtShouhin1.Text;
+            obj.ShouhinCD2 = txtShouhin2.Text;
+
+            ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
+            DataTable dt = sBL.ShukkaNo_Search(obj);
+            if (dt.Columns.Contains("CurrentDay"))
+            {
+                if (dt.Rows.Count > 0)
+                {
+                    lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                }
+            }
+            dt.Columns.Remove("CurrentDay");
+            gvShukkaNo.DataSource = dt;
+        }
+        private void GetGridviewData(DataGridViewRow gvrow)
+        {
+            if (gvrow.DataBoundItem != null)
+            {
+                DataGridViewRow row = gvrow;
+                ShukkaNo = row.Cells["colShukkaNo"].Value.ToString();
+                this.Close();
+            }
+        }
+
+        private void gvShukkaNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            GetGridviewData(gvShukkaNo.Rows[e.RowIndex]);
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            DataGridviewBind();
         }
     }
 }
