@@ -175,6 +175,11 @@ namespace Shinyoh_Controls
                         rDt = jbl.JuchuuNyuuryoku_Select_Check(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "ShukkaSiziNyuuryoku":
+                        ShukkasiziNyuuryokuBL skszbl = new ShukkasiziNyuuryokuBL();
+                        rDt = skszbl.ShukkasiziNyuuryoku_ErrorCheck(sTextBox.ctrlE115_1.Text,"E115");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E115"))
                 {
@@ -318,6 +323,11 @@ namespace Shinyoh_Controls
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
                         break;
+                    case "ShukkaSiziNyuuryoku":
+                        ShukkasiziNyuuryokuBL skszbl = new ShukkasiziNyuuryokuBL();
+                        rDt = skszbl.ShukkasiziNyuuryoku_ErrorCheck(sTextBox.ctrlE133_1.Text, "E133");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E133"))
                 {
@@ -357,6 +367,11 @@ namespace Shinyoh_Controls
                     case "JuchuuNyuuryoku":
                         JuchuuListBL jbl = new JuchuuListBL();
                         rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE160_1.Text, string.Empty, "E160");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "ShukkaSiziNyuuryoku":
+                        ShukkasiziNyuuryokuBL skszbl = new ShukkasiziNyuuryokuBL();
+                        rDt = skszbl.ShukkasiziNyuuryoku_ErrorCheck(sTextBox.ctrlE160_1.Text, "E160");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
