@@ -223,7 +223,6 @@ namespace ChakuniNyuuryoku
             chkEntity.BrandCD = sbBrand.Text;
             chkEntity.ColorNO = txtColor.Text;
             chkEntity.SizeNO = txtSize.Text;
-            chkEntity.YearTerm = txtYearTerm.Text;
             chkEntity.KanriNO = txtControlNo.Text;
             chkEntity.SoukoCD = sbWareHouse.Text;
             chkEntity.YearTerm = txtYearTerm.Text;
@@ -278,8 +277,8 @@ namespace ChakuniNyuuryoku
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
-            //txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
-            //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             sbWareHouse.E102Check(true);
@@ -481,11 +480,6 @@ namespace ChakuniNyuuryoku
             }
         }
 
-        private void sButton4_Click(object sender, EventArgs e)
-        {
-            sd.ShowDialog();
-        }
-
         private void txtArrivalNO_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -505,6 +499,11 @@ namespace ChakuniNyuuryoku
                     ChakuniNyuuryokuSelect(dt);
                 }
             }
+        }
+
+        private void btn_Siiresaki_Click(object sender, EventArgs e)
+        {
+            sd.ShowDialog();
         }
     }
 }

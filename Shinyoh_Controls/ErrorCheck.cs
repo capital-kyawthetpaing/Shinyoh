@@ -391,6 +391,11 @@ namespace Shinyoh_Controls
                         rDt = k_bl.Kouriten_Select_Check(sTextBox.ctrlE227_1.Text, sTextBox.ctrlE227_2.Text, "E227");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Siiresaki":
+                        SiiresakiBL obj = new SiiresakiBL();
+                        rDt =obj.Siiresaki_Select_Check(sTextBox.ctrlE227_1.Text, sTextBox.ctrlE227_2.Text, "E227");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E227"))
                 {
@@ -412,6 +417,11 @@ namespace Shinyoh_Controls
                     case "M_Kouriten":
                         KouritenBL k_bl = new KouritenBL();
                         rDt = k_bl.Kouriten_Select_Check(sTextBox.ctrlE267_1.Text, sTextBox.ctrlE267_2.Text, "E267");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "M_Siiresaki":
+                        SiiresakiBL obj = new SiiresakiBL();
+                        rDt = obj.Siiresaki_Select_Check(sTextBox.ctrlE267_1.Text, sTextBox.ctrlE267_2.Text, "E267");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
