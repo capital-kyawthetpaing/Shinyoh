@@ -17,18 +17,16 @@ namespace BL
         {
             ckmdl = new CKMDL();
         }
-        public DataTable Shipping_Select_Check(string ShippingNo, string cDate, string error_Type)
+        public DataTable ShukkasiziNyuuryoku_ErrorCheck(string ShippingNO, string error_Type)
         {
-            string str = string.Empty;
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@ShippingNO", SqlDbType.VarChar) { Value = ShippingNo };
-            parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = cDate };
-            parameters[2] = new SqlParameter("@Error", SqlDbType.VarChar) { Value = error_Type };
-            DataTable dt = ckmdl.SelectDatatable("ShippingNo_Select_Check", GetConnectionString(), parameters);
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = ShippingNO };
+            //parameters[1] = new SqlParameter("@ShippingDate", SqlDbType.Date) { Value = Shippingdate };
+            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
+            DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_ErrorCheck_Select", GetConnectionString(), parameters);
             return dt;
         }
-
         public DataTable ShippingNO_Search(ShukkaSiziNyuuryokuEntity sksze)
         {
             CKMDL ckmdl = new CKMDL();

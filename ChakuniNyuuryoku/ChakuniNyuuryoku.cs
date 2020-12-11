@@ -51,6 +51,9 @@ namespace ChakuniNyuuryoku
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
+            lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
             ChangeMode(Mode.New);
             txtArrivalNO.Focus();
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
@@ -68,6 +71,7 @@ namespace ChakuniNyuuryoku
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
                     cf.EnablePanel(panelDetails);
+                    txtArrivalDate.Text= DateTime.Now.ToString("yyyy/MM/dd");
                     txtArrivalNO.Focus();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -219,7 +223,6 @@ namespace ChakuniNyuuryoku
             chkEntity.BrandCD = sbBrand.Text;
             chkEntity.ColorNO = txtColor.Text;
             chkEntity.SizeNO = txtSize.Text;
-            chkEntity.YearTerm = txtYearTerm.Text;
             chkEntity.KanriNO = txtControlNo.Text;
             chkEntity.SoukoCD = sbWareHouse.Text;
             chkEntity.YearTerm = txtYearTerm.Text;
@@ -274,8 +277,8 @@ namespace ChakuniNyuuryoku
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
-            //txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
-            //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             sbWareHouse.E102Check(true);
@@ -477,11 +480,6 @@ namespace ChakuniNyuuryoku
             }
         }
 
-        private void sButton4_Click(object sender, EventArgs e)
-        {
-            sd.ShowDialog();
-        }
-
         private void txtArrivalNO_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -501,6 +499,11 @@ namespace ChakuniNyuuryoku
                     ChakuniNyuuryokuSelect(dt);
                 }
             }
+        }
+
+        private void btn_Siiresaki_Click(object sender, EventArgs e)
+        {
+            sd.ShowDialog();
         }
     }
 }
