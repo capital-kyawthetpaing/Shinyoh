@@ -211,6 +211,7 @@
             this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
             this.txtChangeDate.TabIndex = 3;
             this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtChangeDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChangeDate_KeyDown);
             // 
             // lblCopyProduct
             // 
@@ -287,6 +288,7 @@
             this.txtCopyChangeDate.Size = new System.Drawing.Size(100, 19);
             this.txtCopyChangeDate.TabIndex = 7;
             this.txtCopyChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtCopyChangeDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyChangeDate_KeyDown);
             // 
             // lblClassification
             // 

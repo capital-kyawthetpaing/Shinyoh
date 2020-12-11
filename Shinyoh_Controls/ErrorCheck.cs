@@ -315,7 +315,7 @@ namespace Shinyoh_Controls
                         {
                             ShouhinBL shouhin = new ShouhinBL();
                             rDt = shouhin.Shouhin_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty);
-                            result = dt.Rows[0]["MessageID"].ToString();
+                            result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;
                 }
