@@ -26,7 +26,7 @@ namespace BL
         public DataTable ChakuniNyuuryoku_Display(ChakuniNyuuryoku_Entity cne,string Xml)
         {
             CKMDL ckmdl = new CKMDL();
-            cne.Sqlprms = new SqlParameter[13];
+            cne.Sqlprms = new SqlParameter[12];
             cne.Sqlprms[0] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = cne.BrandCD };
             cne.Sqlprms[1] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = cne.ShouhinCD };
             cne.Sqlprms[2] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = cne.ShouhinName };
@@ -39,7 +39,7 @@ namespace BL
             cne.Sqlprms[9] = new SqlParameter("@YearTerm", SqlDbType.VarChar) { Value = cne.YearTerm };
             cne.Sqlprms[10] = new SqlParameter("@SeasonSS", SqlDbType.VarChar) { Value = cne.SeasonSS };
             cne.Sqlprms[11] = new SqlParameter("@SeasonFW", SqlDbType.VarChar) { Value = cne.SeasonFW };
-            cne.Sqlprms[12] = new SqlParameter("@chkValue", SqlDbType.VarChar) { Value = cne.CheckValue };
+            //cne.Sqlprms[12] = new SqlParameter("@chkValue", SqlDbType.VarChar) { Value = cne.CheckValue };
             //cne.Sqlprms[13] = new SqlParameter("@Xml", SqlDbType.Xml) { Value = Xml };
             DataTable dt = ckmdl.SelectDatatable("D_ChakuniYotei_Display", GetConnectionString(), cne.Sqlprms);
             return dt;
@@ -68,7 +68,7 @@ namespace BL
         public DataTable ArrivalNO_Search(ChakuniNyuuryoku_Entity ane)
         {
             CKMDL ckmdl = new CKMDL();
-            ane.Sqlprms = new SqlParameter[12];
+            ane.Sqlprms = new SqlParameter[11];
             
             ane.Sqlprms[0] = new SqlParameter("@ChakuniDateFrom", SqlDbType.VarChar) { Value = ane.ChakuniDateFrom };
             ane.Sqlprms[1] = new SqlParameter("@ChakuniDateTo", SqlDbType.VarChar) { Value = ane.ChakuniDateTo };
@@ -81,7 +81,7 @@ namespace BL
             ane.Sqlprms[8] = new SqlParameter("@KanriNOTo", SqlDbType.VarChar) { Value = ane.KanriNOTo };
             ane.Sqlprms[9] = new SqlParameter("@ShouhinCDFrom", SqlDbType.VarChar) { Value = ane.ShouhinCDFrom };
             ane.Sqlprms[10] = new SqlParameter("@ShouhinCDTo", SqlDbType.VarChar) { Value = ane.ShouhinCDTo };
-            ane.Sqlprms[11] = new SqlParameter("@chkValue", SqlDbType.VarChar) { Value = ane.CheckValue };
+            //ane.Sqlprms[11] = new SqlParameter("@chkValue", SqlDbType.VarChar) { Value = ane.CheckValue };
             
             DataTable dt = ckmdl.SelectDatatable("ArrivalNO_Search", GetConnectionString(), ane.Sqlprms);
             return dt;

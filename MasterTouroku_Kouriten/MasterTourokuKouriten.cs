@@ -276,6 +276,7 @@ namespace MasterTouroku_Kouriten
                 DoDelete(entity);
             }
         }
+
         private KouritenEntity GetInsert()
         {
             KouritenEntity obj = new KouritenEntity();

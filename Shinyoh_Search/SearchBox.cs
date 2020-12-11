@@ -141,6 +141,11 @@ namespace Shinyoh_Search
                         CD = shsearch.shouhinCD;
                         CDate = shsearch.changeDate;
                         break;
+                    case Entity.SearchType.ScType.ArrivalNo:
+                        ArrivalNOSearch search = new ArrivalNOSearch();
+                        search.ShowDialog();
+                        CD = search.ChakuniNO;
+                        break;
                 }
 
                 this.Text = CD;

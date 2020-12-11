@@ -51,6 +51,9 @@ namespace ChakuniNyuuryoku
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
+            lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
             ChangeMode(Mode.New);
             txtArrivalNO.Focus();
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
@@ -68,6 +71,7 @@ namespace ChakuniNyuuryoku
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
                     cf.EnablePanel(panelDetails);
+                    txtArrivalDate.Text= DateTime.Now.ToString("yyyy/MM/dd");
                     txtArrivalNO.Focus();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -219,12 +223,13 @@ namespace ChakuniNyuuryoku
             chkEntity.BrandCD = sbBrand.Text;
             chkEntity.ColorNO = txtColor.Text;
             chkEntity.SizeNO = txtSize.Text;
-            chkEntity.YearTerm = txtExhibition.Text;
+            chkEntity.YearTerm = txtYearTerm.Text;
             chkEntity.KanriNO = txtControlNo.Text;
             chkEntity.SoukoCD = sbWareHouse.Text;
-            chkEntity.CheckValue = CheckValue();
-            //chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
-            //chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
+            chkEntity.YearTerm = txtYearTerm.Text;
+            //chkEntity.CheckValue = CheckValue();
+            chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
+            chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
             dtmain  = cbl.ChakuniNyuuryoku_Display(chkEntity,Xml);
             
             DataTable dtcha = new DataTable();
@@ -409,7 +414,7 @@ namespace ChakuniNyuuryoku
             sbBrand.Clear();
             lblBrandName.Text = string.Empty;
             txtColor.Clear();
-            txtExhibition.Clear();
+            txtYearTerm.Clear();
             txtSize.Clear();
             txtScheduledNo.Focus();
         }

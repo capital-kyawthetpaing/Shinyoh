@@ -26,19 +26,12 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-
+            lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
             gvArrivalNo.UseRowNo(true);
             GridViewBind();
             txtDateFrom.Focus();
-            txtDateFrom.E103Check(true);
-            txtDateTo.E103Check(true);
-            txtExpectedDateFrom.E103Check(true);
-            txtExpectedDateTo.E103Check(true);
-            txtDateTo.E106Check(true, txtDateFrom, txtDateTo);
-            txtExpectedDateTo.E106Check(true, txtExpectedDateFrom, txtExpectedDateTo);
-            txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
-            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
-            sbStaff.E101Check(true, "staff", null, null, null);
+            ErrorCheck();
         }
         public override void FunctionProcess(string tagID)
         {
@@ -51,6 +44,21 @@ namespace Shinyoh_Search
                 DataGridViewRow row = gvArrivalNo.CurrentRow;
             }
             base.FunctionProcess(tagID);
+        }
+        public void ErrorCheck()
+        {
+            txtDateFrom.E103Check(true);
+            txtDateTo.E103Check(true);
+            txtDateTo.E106Check(true, txtDateFrom, txtDateTo);
+
+            txtExpectedDateFrom.E103Check(true);
+            txtExpectedDateTo.E103Check(true);
+            txtExpectedDateTo.E106Check(true, txtExpectedDateFrom, txtExpectedDateTo);
+
+            txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
+            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
+
+            sbStaff.E101Check(true, "staff", null, null, null);
         }
         private void GridViewBind()
         {
@@ -89,7 +97,7 @@ namespace Shinyoh_Search
         }
         private void sButton2_Click(object sender, EventArgs e)
         {
-            FunctionProcess(btnSearch.Tag.ToString());
+            //FunctionProcess(btnSearch.Tag.ToString());
             GridViewBind();
         }
         private void gvArrivalNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
