@@ -75,6 +75,7 @@ namespace ChakuniNyuuryoku
                     txtArrivalNO.Focus();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
+                    F9.Visible = false;
                     break;
                 case Mode.Update:
                     txtArrivalNO.E102Check(true);
