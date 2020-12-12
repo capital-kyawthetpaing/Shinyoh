@@ -17,6 +17,8 @@ namespace ShukkaSiziNyuuryoku
         StaffBL staffBL;
         ShukkasiziNyuuryokuBL sksz_bl;
         BaseBL bbl;
+        TokuisakiDetails td = new TokuisakiDetails();
+        KouritenDetails kd = new KouritenDetails();
         public string tdDate;
         public ShukkaSiziNyuuryoku()
         {
@@ -58,8 +60,7 @@ namespace ShukkaSiziNyuuryoku
             switch (mode)
             {
                 case Mode.New:
-                    ErrorCheck();
-                    
+                    ErrorCheck();                    
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
@@ -136,12 +137,34 @@ namespace ShukkaSiziNyuuryoku
             sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
             sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
             sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO,null);
+            //出荷予定日
+            txtShippingDate.E102Check(true);
+            txtShippingDate.E103Check(true);
+            //得意先
+            sbTokuisaki.E102Check(true);
+            sbTokuisaki.E101Check(true, "M_Tokuisaki", txtShippingDate, null, null);
+            sbTokuisaki.E267Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
+            sbTokuisaki.E227Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
+            //E269
+            //小売店
+            sbKouriten.E101Check(true, "M_Kouriten", sbKouriten, txtShippingDate, null);
+            sbKouriten.E267Check(true, "M_Kouriten", sbKouriten, txtShippingDate);
+            sbKouriten.E227Check(true, "M_Kouriten", sbKouriten, txtShippingDate);
+            //担当スタッフCD
+            sbStaffCD.E102Check(true);
+            sbStaffCD.E101Check(true, "M_Staff", sbStaffCD, txtShippingDate, null);
+            sbStaffCD.E135Check(true, "M_Staff", sbStaffCD, txtShippingDate);
+            //伝票日付
+            txtSlipDate.E102Check(true);
+            txtSlipDate.E103Check(true);
+            //受注番号(searchshi)
+            txtJuchuuNo.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNo, null, null);
         }
         private void New_Mode()
         {
             tdDate = DateTime.Now.ToString("yyyy/MM/dd");
             txtShippingDate.Text = tdDate;
-            txtDenpyouDate.Text = tdDate;
+            txtSlipDate.Text = tdDate;
 
             StaffEntity staffEntity = new StaffEntity
             {
@@ -154,6 +177,16 @@ namespace ShukkaSiziNyuuryoku
         private void Clear()
         {
             
+        }
+
+        private void btn_Tokuisaki_Click(object sender, EventArgs e)
+        {
+            td.ShowDialog();           
+        }
+
+        private void btnKouriren_Detail_Click(object sender, EventArgs e)
+        {
+            kd.ShowDialog();
         }
     }
 }
