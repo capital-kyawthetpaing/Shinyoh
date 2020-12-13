@@ -20,6 +20,8 @@ namespace ShukkaSiziNyuuryoku
         TokuisakiDetails td = new TokuisakiDetails();
         KouritenDetails kd = new KouritenDetails();
         public string tdDate;
+        DataTable dtmain;
+        DataTable dtTemp;
         public ShukkaSiziNyuuryoku()
         {
             InitializeComponent();
@@ -29,6 +31,8 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();
             bbl = new BaseBL();
             tdDate = string.Empty;
+            dtmain = new DataTable();
+            dtTemp = new DataTable();
         }
 
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
@@ -48,7 +52,7 @@ namespace ShukkaSiziNyuuryoku
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
-            lblSiiresakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             ChangeMode(Mode.New);
@@ -140,16 +144,18 @@ namespace ShukkaSiziNyuuryoku
             //出荷予定日
             txtShippingDate.E102Check(true);
             txtShippingDate.E103Check(true);
+            //txtShippingDate.E267Check(true, "M_Tokuisaki", null, txtShippingDate);
+            //txtShippingDate.E227Check(true, "M_Tokuisaki", null, txtShippingDate);
             //得意先
             sbTokuisaki.E102Check(true);
-            sbTokuisaki.E101Check(true, "M_Tokuisaki", txtShippingDate, null, null);
-            sbTokuisaki.E267Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
-            sbTokuisaki.E227Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
+            sbTokuisaki.E101Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate, null);
+            //sbTokuisaki.E267Check(true, "M_Tokuisaki", null, txtShippingDate);
+            //sbTokuisaki.E227Check(true, "M_Tokuisaki", null, txtShippingDate);
             //E269
             //小売店
             sbKouriten.E101Check(true, "M_Kouriten", sbKouriten, txtShippingDate, null);
-            sbKouriten.E267Check(true, "M_Kouriten", sbKouriten, txtShippingDate);
-            sbKouriten.E227Check(true, "M_Kouriten", sbKouriten, txtShippingDate);
+            //sbKouriten.E267Check(true, "M_Kouriten", null, txtShippingDate);
+            //sbKouriten.E227Check(true, "M_Kouriten", null, txtShippingDate);
             //担当スタッフCD
             sbStaffCD.E102Check(true);
             sbStaffCD.E101Check(true, "M_Staff", sbStaffCD, txtShippingDate, null);
@@ -177,16 +183,173 @@ namespace ShukkaSiziNyuuryoku
         private void Clear()
         {
             
-        }
+        }                      
+        private void ShukkasiziNyuuryoku_Header_Select(DataTable dt)
+        {
+            if (dt.Rows[0]["ShukkaKanryouKBN"].ToString() == "1") { }
+            //Header            
+            sbTokuisaki.Text = dt.Rows[0]["TokuisakiCD"].ToString();
+            lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+            sbKouriten.Text = dt.Rows[0]["KouritenCD"].ToString();
+            lblKouritenName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
+            sbStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
+            lblStaffName.Text = dt.Rows[0]["StaffName"].ToString();
 
+            txtSlipDate.Text = dt.Rows[0]["DenpyouDate"].ToString();
+            txtSlip_Description.Text = dt.Rows[0]["ShukkaSiziDenpyouTekiyou"].ToString();
+            if (dt.Rows[0]["ShukkaSizishoHuyouKBN"].ToString() == "0")
+                rdoNeed.Checked = true;
+            else
+                rdoNO.Checked = true;
+
+            //Access_Tokuisaki_obj
+            td.Access_Tokuisaki_obj.TokuisakiCD = dt.Rows[0]["TokuisakiCD"].ToString();
+            td.Access_Tokuisaki_obj.TokuisakiRyakuName = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+            td.Access_Tokuisaki_obj.TokuisakiName = dt.Rows[0]["TokuisakiName"].ToString();
+            td.Access_Tokuisaki_obj.YuubinNO1 = dt.Rows[0]["TokuisakiYuubinNO1"].ToString();
+            td.Access_Tokuisaki_obj.YuubinNO2 = dt.Rows[0]["TokuisakiYuubinNO2"].ToString();
+            td.Access_Tokuisaki_obj.Juusho1 = dt.Rows[0]["TokuisakiJuusho1"].ToString();
+            td.Access_Tokuisaki_obj.Juusho2 = dt.Rows[0]["TokuisakiJuusho2"].ToString();
+            td.Access_Tokuisaki_obj.Tel11 = dt.Rows[0]["TokuisakiTelNO1-1"].ToString();
+            td.Access_Tokuisaki_obj.Tel12 = dt.Rows[0]["TokuisakiTelNO1-2"].ToString();
+            td.Access_Tokuisaki_obj.Tel13 = dt.Rows[0]["TokuisakiTelNO1-3"].ToString();
+            td.Access_Tokuisaki_obj.Tel21 = dt.Rows[0]["TokuisakiTelNO2-1"].ToString();
+            td.Access_Tokuisaki_obj.Tel22 = dt.Rows[0]["TokuisakiTelNO2-2"].ToString();
+            td.Access_Tokuisaki_obj.Tel23 = dt.Rows[0]["TokuisakiTelNO2-3"].ToString();
+
+            //Access_Kouriten_obj
+            kd.Access_Kouriten_obj.KouritenCD = dt.Rows[0]["KouritenCD"].ToString();
+            kd.Access_Kouriten_obj.KouritenRyakuName = dt.Rows[0]["KouritenRyakuName"].ToString();
+            kd.Access_Kouriten_obj.KouritenName = dt.Rows[0]["KouritenRyakuName"].ToString();
+            kd.Access_Kouriten_obj.YuubinNO1 = dt.Rows[0]["KouritenYuubinNO1"].ToString();
+            kd.Access_Kouriten_obj.YuubinNO2 = dt.Rows[0]["KouritenYuubinNO2"].ToString();
+            kd.Access_Kouriten_obj.Juusho1 = dt.Rows[0]["KouritenJuusho1"].ToString();
+            kd.Access_Kouriten_obj.Juusho2 = dt.Rows[0]["KouritenJuusho2"].ToString();
+            kd.Access_Kouriten_obj.Tel11 = dt.Rows[0]["KouritenTelNO1-1"].ToString();
+            kd.Access_Kouriten_obj.Tel12 = dt.Rows[0]["KouritenTelNO1-2"].ToString();
+            kd.Access_Kouriten_obj.Tel13 = dt.Rows[0]["KouritenTelNO1-3"].ToString();
+            kd.Access_Kouriten_obj.Tel21 = dt.Rows[0]["KouritenTelNO2-1"].ToString();
+            kd.Access_Kouriten_obj.Tel22 = dt.Rows[0]["KouritenTelNO2-2"].ToString();
+            kd.Access_Kouriten_obj.Tel23 = dt.Rows[0]["KouritenTelNO2-3"].ToString();
+        }
+        private void gvChakuniNyuuryoku_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (gvChakuniNyuuryoku.Columns[e.ColumnIndex].Name == "colArrivalTime")
+            {
+                string value = gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString();
+                if (Convert.ToDecimal(value) < 0)
+                {
+                    bbl.ShowMessage("E109");
+                    e.Cancel = true;
+                }
+            }
+        }
+        private void sbStaffCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
+                ChakuniNyuuryoku_Entity ane = new ChakuniNyuuryoku_Entity();
+                DataTable dt = bl.DateCheck(ane);
+
+                if (dt.Rows.Count > 0)
+                {
+                    lblStaffName.Text = dt.Rows[0]["StaffName"].ToString();
+                }
+                else
+                {
+                    bbl.ShowMessage("E135");
+                    lblStaffName.Focus();
+                }
+            }
+        }
+        private void sbShippingNO_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbShippingNO.IsErrorOccurs)
+                {
+                    if (cboMode.SelectedValue.ToString() == "2")
+                    {
+                        cf.EnablePanel(panelDetails);
+                        cf.DisablePanel(PanelTitle);
+                        sbShippingNO.Focus();
+                    }
+                }
+                sksz_bl = new ShukkasiziNyuuryokuBL();
+                DataTable dt_Header = new DataTable();
+                dt_Header = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sbShippingNO.Text, txtShippingDate.Text, 3);
+                if (dt_Header.Rows.Count > 0)
+                    ShukkasiziNyuuryoku_Header_Select(dt_Header);
+
+                if (cboMode.SelectedValue.ToString() != "1")
+                {
+                    sksz_bl = new ShukkasiziNyuuryokuBL();
+                    DataTable dtDetails = new DataTable();
+                    dtDetails = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sbShippingNO.Text, txtShippingDate.Text, 2);
+                    if (dtDetails.Rows.Count > 0)
+                        gvDetail.DataSource = dtDetails;
+
+                    sksz_bl = new ShukkasiziNyuuryokuBL();
+                    DataTable dt_gv1 = new DataTable();
+                    dt_gv1 = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sbShippingNO.Text, txtShippingDate.Text, 1);
+                    if (dt_gv1.Rows.Count > 0)
+                        gvChakuniNyuuryoku.DataSource = dt_gv1;
+                }
+            }
+        }
+        private void sbTokuisaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbTokuisaki.IsErrorOccurs)
+                {
+                    DataTable dt = sbTokuisaki.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                    }
+                    else
+                    {
+                        lblTokuisakiName.Text = string.Empty;
+                    }
+                }
+            }
+        }
+        private void sbKouriten_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbKouriten.IsErrorOccurs)
+                {
+                    DataTable dt = sbKouriten.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        lblKouritenName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
+                    }
+                    //no count case
+                    else
+                    {
+                        lblKouritenName.Text = string.Empty;
+                    }
+                }
+            }
+        }
         private void btn_Tokuisaki_Click(object sender, EventArgs e)
         {
-            td.ShowDialog();           
+            td.ShowDialog();
         }
-
         private void btnKouriren_Detail_Click(object sender, EventArgs e)
         {
             kd.ShowDialog();
+        }
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

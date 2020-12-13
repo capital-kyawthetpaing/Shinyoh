@@ -24,12 +24,12 @@ namespace ShukkaSiziNyuuryoku
         {
             InitializeComponent();
         }
-
         private void KouritenDetails_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             SetButton(ButtonType.BType.Search, F11, "", false);
+            lbl_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             txtKouritenRyakuName.E102Check(true);
             txtKouritenName.E102Check(true);
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);

@@ -27,6 +27,16 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_ErrorCheck_Select", GetConnectionString(), parameters);
             return dt;
         }
+        public DataTable ShukkasiziNyuuryoku_Data_Select(string ShippingNO, string ShippingDate, int type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = ShippingNO };
+            parameters[1] = new SqlParameter("@ShippingDate", SqlDbType.Date) { Value = ShippingDate };
+            parameters[2] = new SqlParameter("@Type", SqlDbType.TinyInt) { Value = type };
+            DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_Data_Select", GetConnectionString(), parameters);
+            return dt;
+        }
         public DataTable ShippingNO_Search(ShukkaSiziNyuuryokuEntity sksze)
         {
             CKMDL ckmdl = new CKMDL();

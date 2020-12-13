@@ -31,7 +31,7 @@ namespace ShukkaSiziNyuuryoku
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtTokuisakiCD = new Shinyoh_Search.SearchBox();
-            this.lblTokuisakiRyakuName = new Shinyoh_Controls.SLabel();
+            this.lblName = new Shinyoh_Controls.SLabel();
             this.lblCustomer = new Shinyoh_Controls.SLabel();
             this.txtPhNo6 = new Shinyoh_Controls.STextBox();
             this.txtPhNo5 = new Shinyoh_Controls.STextBox();
@@ -64,7 +64,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.panel1.Controls.Add(this.txtTokuisakiCD);
-            this.panel1.Controls.Add(this.lblTokuisakiRyakuName);
+            this.panel1.Controls.Add(this.lblName);
             this.panel1.Controls.Add(this.lblCustomer);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -99,17 +99,17 @@ namespace ShukkaSiziNyuuryoku
             this.txtTokuisakiCD.TabIndex = 28;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
-            // lblTokuisakiRyakuName
+            // lblName
             // 
-            this.lblTokuisakiRyakuName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTokuisakiRyakuName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTokuisakiRyakuName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lblTokuisakiRyakuName.Location = new System.Drawing.Point(209, 20);
-            this.lblTokuisakiRyakuName.Name = "lblTokuisakiRyakuName";
-            this.lblTokuisakiRyakuName.Size = new System.Drawing.Size(250, 19);
-            this.lblTokuisakiRyakuName.TabIndex = 27;
-            this.lblTokuisakiRyakuName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.lblName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lblName.Location = new System.Drawing.Point(209, 20);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(250, 19);
+            this.lblName.TabIndex = 27;
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblCustomer
             // 
@@ -617,7 +617,7 @@ namespace ShukkaSiziNyuuryoku
 
         private System.Windows.Forms.Panel panel1;
         private Shinyoh_Search.SearchBox txtTokuisakiCD;
-        private Shinyoh_Controls.SLabel lblTokuisakiRyakuName;
+        private Shinyoh_Controls.SLabel lblName;
         private Shinyoh_Controls.SLabel lblCustomer;
         private Shinyoh_Controls.STextBox txtPhNo6;
         private Shinyoh_Controls.STextBox txtPhNo5;

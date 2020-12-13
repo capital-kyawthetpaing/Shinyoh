@@ -20,17 +20,16 @@ namespace ShukkaSiziNyuuryoku
         string YuuBinNO2 = string.Empty;
         string Address1 = string.Empty;
         string Address2 = string.Empty;
-
         public TokuisakiDetails()
         {
             InitializeComponent();
         }
-
         private void TokuisakiDetails_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             SetButton(ButtonType.BType.Search, F11, "", false);
+            lblName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             txtCustomerRyakuName.E102Check(true);
             txtCustomerName.E102Check(true);
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
@@ -41,7 +40,7 @@ namespace ShukkaSiziNyuuryoku
         private void SendData(TokuisakiEntity obj)
         {
             txtTokuisakiCD.Text = obj.TokuisakiCD;
-            lblTokuisakiRyakuName.Text = obj.TokuisakiRyakuName;
+            lblName.Text = obj.TokuisakiRyakuName;
             txtCustomerRyakuName.Text = obj.TokuisakiRyakuName;
             txtCustomerName.Text = obj.TokuisakiName;            
             txtYubin1.Text = obj.YuubinNO1;
