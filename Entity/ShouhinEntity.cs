@@ -43,7 +43,7 @@ namespace Entity
         public string Shipping_Place { get; set; }
         public decimal HacchuuLot { get; set; }
         public string ImageFilePathName { get; set; }
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
         public string Remarks { get; set; }
         public int KensakuHyouziJun { get; set; }
         public int UsedFlag { get; set; }
