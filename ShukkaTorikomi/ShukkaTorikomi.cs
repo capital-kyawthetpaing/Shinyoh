@@ -91,7 +91,50 @@ namespace ShukkaTorikomi
                 txtShukkaToNo2.Text = string.Empty;
             }
         }
-    
+
+
+        private void rdo_Toroku_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdo_Toroku.Checked == true)
+            {
+                rdo_Sakujo.Checked = false;
+                Disable_Method();
+            }
+        }
+        private void Enable_Method()
+        {
+            txtShukkaToNo1.Enabled = true;
+            txtShukkaToNo2.Enabled = true;
+            txtDate1.Enabled = false;
+            txtDate2.Enabled = false;
+            txtNo.Enabled = false;
+
+        }
+        private void Disable_Method()
+        {
+            txtShukkaToNo1.Text = string.Empty;
+            txtShukkaToNo2.Text = string.Empty;
+            txtDate1.Text = string.Empty;
+            txtDate2.Text = string.Empty;
+            txtNo.Text = string.Empty;
+
+            txtShukkaToNo1.Enabled = false;
+            txtShukkaToNo2.Enabled = false;
+            txtDate1.Enabled = true;
+            txtDate2.Enabled = true;
+            txtNo.Enabled = true;
+
+        }
+        private void rdo_Sakujo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdo_Sakujo.Checked == true)
+            {
+                rdo_Toroku.Checked = false;
+                Enable_Method();
+            }
+        }
+
+
 
 
 
