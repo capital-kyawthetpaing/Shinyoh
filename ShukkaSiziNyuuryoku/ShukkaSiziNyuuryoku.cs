@@ -20,7 +20,7 @@ namespace ShukkaSiziNyuuryoku
         TokuisakiDetails td = new TokuisakiDetails();
         KouritenDetails kd = new KouritenDetails();
         public string tdDate;
-        DataTable dtmain;
+        DataTable dtgv1,dtgv2;
         DataTable dtTemp;
         public ShukkaSiziNyuuryoku()
         {
@@ -31,7 +31,8 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();
             bbl = new BaseBL();
             tdDate = string.Empty;
-            dtmain = new DataTable();
+            dtgv1 = new DataTable();
+            dtgv2 = new DataTable();
             dtTemp = new DataTable();
         }
 
@@ -248,9 +249,7 @@ namespace ShukkaSiziNyuuryoku
         {
             if (e.KeyCode == Keys.Enter)
             {
-                chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
-                ChakuniNyuuryoku_Entity ane = new ChakuniNyuuryoku_Entity();
-                DataTable dt = bl.DateCheck(ane);
+                DataTable dt = sbStaffCD.IsDatatableOccurs;
 
                 if (dt.Rows.Count > 0)
                 {
@@ -345,6 +344,13 @@ namespace ShukkaSiziNyuuryoku
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
+            ShukkaSiziNyuuryokuEntity sksz_e = new ShukkaSiziNyuuryokuEntity();
+            sksz_e.TokuisakiCD = sbTokuisaki.Text;
+            sksz_e.JuchuuNO = txtJuchuuNo.Text;
+            sksz_e.SenpyouhachuuNo = txtSenpyouhachuuNo.Text;
+            sksz_bl = new ShukkasiziNyuuryokuBL();            
+            dtgv1= sksz_bl.ShukkasiziNyuuryoku_Display(sksz_e, 1);
+            gvChakuniNyuuryoku.DataSource = dtgv1;
 
         }
         private void btnSave_Click(object sender, EventArgs e)
