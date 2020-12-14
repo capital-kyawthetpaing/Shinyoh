@@ -40,11 +40,18 @@
             this.rdo_Registragion = new Shinyoh_Controls.SRadio();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.lbl_MajorSuppliers = new System.Windows.Forms.Label();
+            this.lbl_IManagement = new System.Windows.Forms.Label();
+            this.lbl_IEvaluation = new System.Windows.Forms.Label();
+            this.lbl_TaxtRate = new System.Windows.Forms.Label();
+            this.lbl_SizeNO = new System.Windows.Forms.Label();
+            this.lbl_ColorNO = new System.Windows.Forms.Label();
+            this.lbl_BrandCD = new System.Windows.Forms.Label();
+            this.lbl_TaniCD = new System.Windows.Forms.Label();
             this.txtKensakuHyouziJun = new Shinyoh_Controls.STextBox();
             this.lblSearchDisplayOrder = new Shinyoh_Controls.SLabel();
             this.txtRemarks = new Shinyoh_Controls.STextBox();
             this.lblRemarks = new Shinyoh_Controls.SLabel();
-            this.pImage = new System.Windows.Forms.PictureBox();
             this.txtImage = new Shinyoh_Controls.STextBox();
             this.lblImage = new Shinyoh_Controls.SLabel();
             this.txtHacchuuLot = new Shinyoh_Controls.STextBox();
@@ -98,6 +105,7 @@
             this.lblProductName = new Shinyoh_Controls.SLabel();
             this.chkShukou = new Shinyoh_Controls.SCheckBox();
             this.lblZhukou = new Shinyoh_Controls.SLabel();
+            this.pImage = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -334,11 +342,19 @@
             // 
             // Panel_Detail
             // 
+            this.Panel_Detail.Controls.Add(this.pImage);
+            this.Panel_Detail.Controls.Add(this.lbl_MajorSuppliers);
+            this.Panel_Detail.Controls.Add(this.lbl_IManagement);
+            this.Panel_Detail.Controls.Add(this.lbl_IEvaluation);
+            this.Panel_Detail.Controls.Add(this.lbl_TaxtRate);
+            this.Panel_Detail.Controls.Add(this.lbl_SizeNO);
+            this.Panel_Detail.Controls.Add(this.lbl_ColorNO);
+            this.Panel_Detail.Controls.Add(this.lbl_BrandCD);
+            this.Panel_Detail.Controls.Add(this.lbl_TaniCD);
             this.Panel_Detail.Controls.Add(this.txtKensakuHyouziJun);
             this.Panel_Detail.Controls.Add(this.lblSearchDisplayOrder);
             this.Panel_Detail.Controls.Add(this.txtRemarks);
             this.Panel_Detail.Controls.Add(this.lblRemarks);
-            this.Panel_Detail.Controls.Add(this.pImage);
             this.Panel_Detail.Controls.Add(this.txtImage);
             this.Panel_Detail.Controls.Add(this.lblImage);
             this.Panel_Detail.Controls.Add(this.txtHacchuuLot);
@@ -397,6 +413,70 @@
             this.Panel_Detail.Name = "Panel_Detail";
             this.Panel_Detail.Size = new System.Drawing.Size(1485, 673);
             this.Panel_Detail.TabIndex = 3;
+            // 
+            // lbl_MajorSuppliers
+            // 
+            this.lbl_MajorSuppliers.AutoSize = true;
+            this.lbl_MajorSuppliers.Location = new System.Drawing.Point(245, 365);
+            this.lbl_MajorSuppliers.Name = "lbl_MajorSuppliers";
+            this.lbl_MajorSuppliers.Size = new System.Drawing.Size(0, 12);
+            this.lbl_MajorSuppliers.TabIndex = 65;
+            // 
+            // lbl_IManagement
+            // 
+            this.lbl_IManagement.AutoSize = true;
+            this.lbl_IManagement.Location = new System.Drawing.Point(175, 340);
+            this.lbl_IManagement.Name = "lbl_IManagement";
+            this.lbl_IManagement.Size = new System.Drawing.Size(0, 12);
+            this.lbl_IManagement.TabIndex = 64;
+            // 
+            // lbl_IEvaluation
+            // 
+            this.lbl_IEvaluation.AutoSize = true;
+            this.lbl_IEvaluation.Location = new System.Drawing.Point(175, 315);
+            this.lbl_IEvaluation.Name = "lbl_IEvaluation";
+            this.lbl_IEvaluation.Size = new System.Drawing.Size(0, 12);
+            this.lbl_IEvaluation.TabIndex = 63;
+            // 
+            // lbl_TaxtRate
+            // 
+            this.lbl_TaxtRate.AutoSize = true;
+            this.lbl_TaxtRate.Location = new System.Drawing.Point(175, 290);
+            this.lbl_TaxtRate.Name = "lbl_TaxtRate";
+            this.lbl_TaxtRate.Size = new System.Drawing.Size(0, 12);
+            this.lbl_TaxtRate.TabIndex = 62;
+            // 
+            // lbl_SizeNO
+            // 
+            this.lbl_SizeNO.AutoSize = true;
+            this.lbl_SizeNO.Location = new System.Drawing.Point(295, 215);
+            this.lbl_SizeNO.Name = "lbl_SizeNO";
+            this.lbl_SizeNO.Size = new System.Drawing.Size(0, 12);
+            this.lbl_SizeNO.TabIndex = 61;
+            // 
+            // lbl_ColorNO
+            // 
+            this.lbl_ColorNO.AutoSize = true;
+            this.lbl_ColorNO.Location = new System.Drawing.Point(295, 190);
+            this.lbl_ColorNO.Name = "lbl_ColorNO";
+            this.lbl_ColorNO.Size = new System.Drawing.Size(0, 12);
+            this.lbl_ColorNO.TabIndex = 60;
+            // 
+            // lbl_BrandCD
+            // 
+            this.lbl_BrandCD.AutoSize = true;
+            this.lbl_BrandCD.Location = new System.Drawing.Point(245, 165);
+            this.lbl_BrandCD.Name = "lbl_BrandCD";
+            this.lbl_BrandCD.Size = new System.Drawing.Size(0, 12);
+            this.lbl_BrandCD.TabIndex = 59;
+            // 
+            // lbl_TaniCD
+            // 
+            this.lbl_TaniCD.AutoSize = true;
+            this.lbl_TaniCD.Location = new System.Drawing.Point(195, 140);
+            this.lbl_TaniCD.Name = "lbl_TaniCD";
+            this.lbl_TaniCD.Size = new System.Drawing.Size(0, 12);
+            this.lbl_TaniCD.TabIndex = 58;
             // 
             // txtKensakuHyouziJun
             // 
@@ -472,14 +552,6 @@
             this.lblRemarks.Text = "備考";
             this.lblRemarks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pImage
-            // 
-            this.pImage.Location = new System.Drawing.Point(139, 540);
-            this.pImage.Name = "pImage";
-            this.pImage.Size = new System.Drawing.Size(100, 50);
-            this.pImage.TabIndex = 53;
-            this.pImage.TabStop = false;
-            // 
             // txtImage
             // 
             this.txtImage.AllowMinus = false;
@@ -503,6 +575,7 @@
             this.txtImage.Size = new System.Drawing.Size(525, 19);
             this.txtImage.TabIndex = 52;
             this.txtImage.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtImage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImage_KeyDown);
             // 
             // lblImage
             // 
@@ -1203,7 +1276,7 @@
             this.chkFW.MoveNext = true;
             this.chkFW.Name = "chkFW";
             this.chkFW.NextControl = null;
-            this.chkFW.NextControlName = "txtUnit";
+            this.chkFW.NextControlName = "txtTani";
             this.chkFW.Size = new System.Drawing.Size(40, 19);
             this.chkFW.TabIndex = 14;
             this.chkFW.Text = "FW";
@@ -1400,7 +1473,7 @@
             this.txtProductName.MoveNext = true;
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.NextControl = null;
-            this.txtProductName.NextControlName = "txtAbbreviatedName";
+            this.txtProductName.NextControlName = "txtShouhinRyakuName";
             this.txtProductName.SearchType = Entity.SearchType.ScType.None;
             this.txtProductName.Size = new System.Drawing.Size(400, 19);
             this.txtProductName.TabIndex = 3;
@@ -1447,6 +1520,14 @@
             this.lblZhukou.TabIndex = 0;
             this.lblZhukou.Text = "諸口";
             this.lblZhukou.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pImage
+            // 
+            this.pImage.Location = new System.Drawing.Point(139, 540);
+            this.pImage.Name = "pImage";
+            this.pImage.Size = new System.Drawing.Size(100, 60);
+            this.pImage.TabIndex = 66;
+            this.pImage.TabStop = false;
             // 
             // MasterTouroku_Shouhin
             // 
@@ -1538,10 +1619,18 @@
         private Shinyoh_Controls.SLabel lblShippingPlace;
         private Shinyoh_Controls.STextBox txtImage;
         private Shinyoh_Controls.SLabel lblImage;
-        private System.Windows.Forms.PictureBox pImage;
         private Shinyoh_Controls.STextBox txtKensakuHyouziJun;
         private Shinyoh_Controls.SLabel lblSearchDisplayOrder;
         private Shinyoh_Controls.STextBox txtRemarks;
         private Shinyoh_Controls.SLabel lblRemarks;
+        private System.Windows.Forms.Label lbl_ColorNO;
+        private System.Windows.Forms.Label lbl_BrandCD;
+        private System.Windows.Forms.Label lbl_TaniCD;
+        private System.Windows.Forms.Label lbl_SizeNO;
+        private System.Windows.Forms.Label lbl_TaxtRate;
+        private System.Windows.Forms.Label lbl_MajorSuppliers;
+        private System.Windows.Forms.Label lbl_IManagement;
+        private System.Windows.Forms.Label lbl_IEvaluation;
+        private System.Windows.Forms.PictureBox pImage;
     }
 }

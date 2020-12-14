@@ -90,6 +90,7 @@ namespace Shinyoh_Controls
                                 break;
                         }
                         rDt = shouhin.Shouhin_Check(id, sTextBox.ctrlE101_1.Text, "E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
                 if (result.Equals("E101"))
