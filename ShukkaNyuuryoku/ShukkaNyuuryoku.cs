@@ -280,5 +280,68 @@ namespace ShukkaNyuuryoku {
 
             }
         }
+        private TokuisakiEntity From_DB_To_Tokuisaki(DataTable dt)
+        {
+            TokuisakiEntity obj = new TokuisakiEntity();
+            obj.TokuisakiCD = dt.Rows[0]["TokuisakiCD"].ToString();
+            obj.TokuisakiRyakuName = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+            obj.TokuisakiName = dt.Rows[0]["TokuisakiName"].ToString();
+            if (dt.Columns.Contains("TokuisakiYuubinNO1"))
+                obj.YuubinNO1 = dt.Rows[0]["TokuisakiYuubinNO1"].ToString();
+            else
+                obj.YuubinNO1 = dt.Rows[0]["YuubinNO1"].ToString();
+            if (dt.Columns.Contains("TokuisakiYuubinNO2"))
+                obj.YuubinNO2 = dt.Rows[0]["TokuisakiYuubinNO2"].ToString();
+            else
+                obj.YuubinNO2 = dt.Rows[0]["YuubinNO2"].ToString();
+            if (dt.Columns.Contains("TokuisakiJuusho1"))
+                obj.Juusho1 = dt.Rows[0]["TokuisakiJuusho1"].ToString();
+            else
+                obj.Juusho1 = dt.Rows[0]["Juusho1"].ToString();
+            if (dt.Columns.Contains("TokuisakiJuusho2"))
+                obj.Juusho2 = dt.Rows[0]["TokuisakiJuusho2"].ToString();
+            else
+                obj.Juusho1 = dt.Rows[0]["Juusho2"].ToString();
+            if (dt.Columns.Contains("TokuisakiTelNO1-1"))
+                obj.Tel11 = dt.Rows[0]["TokuisakiTelNO1-1"].ToString();
+            else
+                obj.Tel11 = dt.Rows[0]["Tel11"].ToString();
+            if (dt.Columns.Contains("TokuisakiTelNO1-2"))
+                obj.Tel12 = dt.Rows[0]["TokuisakiTelNO1-2"].ToString();
+            else
+                obj.Tel12 = dt.Rows[0]["Tel12"].ToString();
+            if (dt.Columns.Contains("TokuisakiTelNO1-3"))
+                obj.Tel13 = dt.Rows[0]["TokuisakiTelNO1-3"].ToString();
+            else
+                obj.Tel13 = dt.Rows[0]["Tel13"].ToString();
+            if (dt.Columns.Contains("TokuisakiTelNO2-1"))
+                obj.Tel21 = dt.Rows[0]["TokuisakiTelNO2-1"].ToString();
+            else
+                obj.Tel21 = dt.Rows[0]["Tel21"].ToString();
+            if (dt.Columns.Contains("TokuisakiTelNO2-2"))
+                obj.Tel22 = dt.Rows[0]["TokuisakiTelNO2-2"].ToString();
+            else
+                obj.Tel22 = dt.Rows[0]["Tel22"].ToString();
+            if (dt.Columns.Contains("TokuisakiTelNO2-3"))
+                obj.Tel23 = dt.Rows[0]["TokuisakiTelNO2-3"].ToString();
+            else
+                obj.Tel23 = dt.Rows[0]["Tel23"].ToString();
+            return obj;
+        }
+
+        private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtTokuisaki.IsErrorOccurs)
+                {
+                    DataTable dt = txtTokuisaki.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        tokuisakiDetail.Access_Tokuisaki_obj = From_DB_To_Tokuisaki(dt);
+                    }
+                }
+            }
+        }
     }
 }

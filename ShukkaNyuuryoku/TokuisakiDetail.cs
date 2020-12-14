@@ -33,21 +33,21 @@ namespace ShukkaNyuuryoku {
             //Get Data from ShukkaNyuuroku form
             Access_DB_Object(Access_Tokuisaki_obj);
         }
-        public void Datatable_Access(DataTable dt)
-        {
-            txtShort_Name.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
-            txtLong_Name.Text = dt.Rows[0]["TokuisakiName"].ToString();
-            txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
-            txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
-            txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
-            txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
-            txtPhone1_1.Text = dt.Rows[0]["Tel11"].ToString();
-            txtPhone1_2.Text = dt.Rows[0]["Tel12"].ToString();
-            txtPhone1_3.Text = dt.Rows[0]["Tel13"].ToString();
-            txtPhone2_1.Text = dt.Rows[0]["Tel21"].ToString();
-            txtPhone2_2.Text = dt.Rows[0]["Tel22"].ToString();
-            txtPhone2_3.Text = dt.Rows[0]["Tel23"].ToString();
-        }
+        //public void Datatable_Access(DataTable dt)
+        //{
+        //    txtShort_Name.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+        //    txtLong_Name.Text = dt.Rows[0]["TokuisakiName"].ToString();
+        //    txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
+        //    txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
+        //    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+        //    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+        //    txtPhone1_1.Text = dt.Rows[0]["Tel11"].ToString();
+        //    txtPhone1_2.Text = dt.Rows[0]["Tel12"].ToString();
+        //    txtPhone1_3.Text = dt.Rows[0]["Tel13"].ToString();
+        //    txtPhone2_1.Text = dt.Rows[0]["Tel21"].ToString();
+        //    txtPhone2_2.Text = dt.Rows[0]["Tel22"].ToString();
+        //    txtPhone2_3.Text = dt.Rows[0]["Tel23"].ToString();
+        //}
         private void Access_DB_Object(TokuisakiEntity obj)
         {
             txtTokuisakiCD.Text = obj.TokuisakiCD;
