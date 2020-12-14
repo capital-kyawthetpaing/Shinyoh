@@ -40,6 +40,9 @@
             this.rdo_Registragion = new Shinyoh_Controls.SRadio();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.txtHinbanCD = new Shinyoh_Controls.STextBox();
+            this.lblHinbanCD = new Shinyoh_Controls.SLabel();
+            this.pImage = new System.Windows.Forms.PictureBox();
             this.lbl_MajorSuppliers = new System.Windows.Forms.Label();
             this.lbl_IManagement = new System.Windows.Forms.Label();
             this.lbl_IEvaluation = new System.Windows.Forms.Label();
@@ -105,7 +108,6 @@
             this.lblProductName = new Shinyoh_Controls.SLabel();
             this.chkShukou = new Shinyoh_Controls.SCheckBox();
             this.lblZhukou = new Shinyoh_Controls.SLabel();
-            this.pImage = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -126,6 +128,7 @@
             // 
             // PanelTitle
             // 
+            this.PanelTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelTitle.Controls.Add(this.txtCopyChangeDate);
             this.PanelTitle.Controls.Add(this.lblCopyRevisionDate);
             this.PanelTitle.Controls.Add(this.txtCopyProduct);
@@ -134,7 +137,8 @@
             this.PanelTitle.Controls.Add(this.lblRevisionDate);
             this.PanelTitle.Controls.Add(this.txtProduct);
             this.PanelTitle.Controls.Add(this.lblProduct);
-            this.PanelTitle.Size = new System.Drawing.Size(556, 69);
+            this.PanelTitle.Location = new System.Drawing.Point(120, 0);
+            this.PanelTitle.Size = new System.Drawing.Size(815, 69);
             // 
             // cboMode
             // 
@@ -171,14 +175,14 @@
             this.txtProduct.IsRequire = false;
             this.txtProduct.lblName = null;
             this.txtProduct.Location = new System.Drawing.Point(105, 8);
-            this.txtProduct.MaxLength = 20;
-            this.txtProduct.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtProduct.MaxLength = 50;
+            this.txtProduct.MinimumSize = new System.Drawing.Size(300, 18);
             this.txtProduct.MoveNext = true;
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.NextControl = null;
             this.txtProduct.NextControlName = "txtChangeDate";
             this.txtProduct.SearchType = Entity.SearchType.ScType.Shouhin;
-            this.txtProduct.Size = new System.Drawing.Size(100, 19);
+            this.txtProduct.Size = new System.Drawing.Size(300, 19);
             this.txtProduct.TabIndex = 1;
             this.txtProduct.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -189,7 +193,7 @@
             this.lblRevisionDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblRevisionDate.ForeColor = System.Drawing.Color.White;
-            this.lblRevisionDate.Location = new System.Drawing.Point(6, 36);
+            this.lblRevisionDate.Location = new System.Drawing.Point(6, 35);
             this.lblRevisionDate.Name = "lblRevisionDate";
             this.lblRevisionDate.Size = new System.Drawing.Size(100, 19);
             this.lblRevisionDate.TabIndex = 2;
@@ -208,7 +212,7 @@
             this.txtChangeDate.IsDatatableOccurs = null;
             this.txtChangeDate.IsErrorOccurs = false;
             this.txtChangeDate.IsRequire = false;
-            this.txtChangeDate.Location = new System.Drawing.Point(105, 36);
+            this.txtChangeDate.Location = new System.Drawing.Point(105, 35);
             this.txtChangeDate.MaxLength = 10;
             this.txtChangeDate.MinimumSize = new System.Drawing.Size(100, 18);
             this.txtChangeDate.MoveNext = true;
@@ -227,7 +231,7 @@
             this.lblCopyProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCopyProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopyProduct.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCopyProduct.Location = new System.Drawing.Point(242, 8);
+            this.lblCopyProduct.Location = new System.Drawing.Point(410, 8);
             this.lblCopyProduct.Name = "lblCopyProduct";
             this.lblCopyProduct.Size = new System.Drawing.Size(100, 19);
             this.lblCopyProduct.TabIndex = 4;
@@ -249,15 +253,15 @@
             this.txtCopyProduct.IsErrorOccurs = false;
             this.txtCopyProduct.IsRequire = false;
             this.txtCopyProduct.lblName = null;
-            this.txtCopyProduct.Location = new System.Drawing.Point(341, 8);
-            this.txtCopyProduct.MaxLength = 13;
-            this.txtCopyProduct.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtCopyProduct.Location = new System.Drawing.Point(510, 8);
+            this.txtCopyProduct.MaxLength = 50;
+            this.txtCopyProduct.MinimumSize = new System.Drawing.Size(300, 18);
             this.txtCopyProduct.MoveNext = true;
             this.txtCopyProduct.Name = "txtCopyProduct";
             this.txtCopyProduct.NextControl = null;
             this.txtCopyProduct.NextControlName = "txtCopyChangeDate";
             this.txtCopyProduct.SearchType = Entity.SearchType.ScType.Shouhin;
-            this.txtCopyProduct.Size = new System.Drawing.Size(100, 19);
+            this.txtCopyProduct.Size = new System.Drawing.Size(300, 19);
             this.txtCopyProduct.TabIndex = 5;
             this.txtCopyProduct.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -267,7 +271,7 @@
             this.lblCopyRevisionDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCopyRevisionDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopyRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCopyRevisionDate.Location = new System.Drawing.Point(242, 36);
+            this.lblCopyRevisionDate.Location = new System.Drawing.Point(410, 35);
             this.lblCopyRevisionDate.Name = "lblCopyRevisionDate";
             this.lblCopyRevisionDate.Size = new System.Drawing.Size(100, 19);
             this.lblCopyRevisionDate.TabIndex = 6;
@@ -286,7 +290,8 @@
             this.txtCopyChangeDate.IsDatatableOccurs = null;
             this.txtCopyChangeDate.IsErrorOccurs = false;
             this.txtCopyChangeDate.IsRequire = false;
-            this.txtCopyChangeDate.Location = new System.Drawing.Point(341, 36);
+            this.txtCopyChangeDate.Location = new System.Drawing.Point(510, 35);
+            this.txtCopyChangeDate.MaxLength = 10;
             this.txtCopyChangeDate.MinimumSize = new System.Drawing.Size(100, 18);
             this.txtCopyChangeDate.MoveNext = true;
             this.txtCopyChangeDate.Name = "txtCopyChangeDate";
@@ -305,7 +310,7 @@
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblClassification.ForeColor = System.Drawing.Color.White;
-            this.lblClassification.Location = new System.Drawing.Point(739, 7);
+            this.lblClassification.Location = new System.Drawing.Point(941, 39);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
             this.lblClassification.TabIndex = 9;
@@ -316,7 +321,7 @@
             // 
             this.rdo_Registragion.Checked = true;
             this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Registragion.Location = new System.Drawing.Point(862, 8);
+            this.rdo_Registragion.Location = new System.Drawing.Point(1058, 39);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
             this.rdo_Registragion.NextControl = null;
@@ -330,7 +335,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Delete.Location = new System.Drawing.Point(949, 9);
+            this.rdo_Delete.Location = new System.Drawing.Point(1113, 39);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -342,6 +347,8 @@
             // 
             // Panel_Detail
             // 
+            this.Panel_Detail.Controls.Add(this.txtHinbanCD);
+            this.Panel_Detail.Controls.Add(this.lblHinbanCD);
             this.Panel_Detail.Controls.Add(this.pImage);
             this.Panel_Detail.Controls.Add(this.lbl_MajorSuppliers);
             this.Panel_Detail.Controls.Add(this.lbl_IManagement);
@@ -411,8 +418,54 @@
             this.Panel_Detail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Panel_Detail.Location = new System.Drawing.Point(0, 69);
             this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1485, 673);
+            this.Panel_Detail.Size = new System.Drawing.Size(1485, 698);
             this.Panel_Detail.TabIndex = 3;
+            // 
+            // txtHinbanCD
+            // 
+            this.txtHinbanCD.AllowMinus = false;
+            this.txtHinbanCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHinbanCD.DecimalPlace = 0;
+            this.txtHinbanCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtHinbanCD.DepandOnMode = true;
+            this.txtHinbanCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtHinbanCD.IntegerPart = 0;
+            this.txtHinbanCD.IsDatatableOccurs = null;
+            this.txtHinbanCD.IsErrorOccurs = false;
+            this.txtHinbanCD.IsRequire = false;
+            this.txtHinbanCD.Location = new System.Drawing.Point(139, 40);
+            this.txtHinbanCD.MaxLength = 20;
+            this.txtHinbanCD.MinimumSize = new System.Drawing.Size(150, 19);
+            this.txtHinbanCD.MoveNext = true;
+            this.txtHinbanCD.Name = "txtHinbanCD";
+            this.txtHinbanCD.NextControl = null;
+            this.txtHinbanCD.NextControlName = "txtProductName";
+            this.txtHinbanCD.SearchType = Entity.SearchType.ScType.None;
+            this.txtHinbanCD.Size = new System.Drawing.Size(150, 19);
+            this.txtHinbanCD.TabIndex = 68;
+            this.txtHinbanCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
+            // lblHinbanCD
+            // 
+            this.lblHinbanCD.BackColor = System.Drawing.Color.Red;
+            this.lblHinbanCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHinbanCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblHinbanCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblHinbanCD.ForeColor = System.Drawing.Color.White;
+            this.lblHinbanCD.Location = new System.Drawing.Point(41, 40);
+            this.lblHinbanCD.Name = "lblHinbanCD";
+            this.lblHinbanCD.Size = new System.Drawing.Size(100, 19);
+            this.lblHinbanCD.TabIndex = 67;
+            this.lblHinbanCD.Text = "品番";
+            this.lblHinbanCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pImage
+            // 
+            this.pImage.Location = new System.Drawing.Point(139, 567);
+            this.pImage.Name = "pImage";
+            this.pImage.Size = new System.Drawing.Size(100, 60);
+            this.pImage.TabIndex = 66;
+            this.pImage.TabStop = false;
             // 
             // lbl_MajorSuppliers
             // 
@@ -425,7 +478,7 @@
             // lbl_IManagement
             // 
             this.lbl_IManagement.AutoSize = true;
-            this.lbl_IManagement.Location = new System.Drawing.Point(175, 340);
+            this.lbl_IManagement.Location = new System.Drawing.Point(175, 368);
             this.lbl_IManagement.Name = "lbl_IManagement";
             this.lbl_IManagement.Size = new System.Drawing.Size(0, 12);
             this.lbl_IManagement.TabIndex = 64;
@@ -433,7 +486,7 @@
             // lbl_IEvaluation
             // 
             this.lbl_IEvaluation.AutoSize = true;
-            this.lbl_IEvaluation.Location = new System.Drawing.Point(175, 315);
+            this.lbl_IEvaluation.Location = new System.Drawing.Point(175, 343);
             this.lbl_IEvaluation.Name = "lbl_IEvaluation";
             this.lbl_IEvaluation.Size = new System.Drawing.Size(0, 12);
             this.lbl_IEvaluation.TabIndex = 63;
@@ -441,7 +494,7 @@
             // lbl_TaxtRate
             // 
             this.lbl_TaxtRate.AutoSize = true;
-            this.lbl_TaxtRate.Location = new System.Drawing.Point(175, 290);
+            this.lbl_TaxtRate.Location = new System.Drawing.Point(175, 318);
             this.lbl_TaxtRate.Name = "lbl_TaxtRate";
             this.lbl_TaxtRate.Size = new System.Drawing.Size(0, 12);
             this.lbl_TaxtRate.TabIndex = 62;
@@ -449,7 +502,7 @@
             // lbl_SizeNO
             // 
             this.lbl_SizeNO.AutoSize = true;
-            this.lbl_SizeNO.Location = new System.Drawing.Point(295, 215);
+            this.lbl_SizeNO.Location = new System.Drawing.Point(295, 243);
             this.lbl_SizeNO.Name = "lbl_SizeNO";
             this.lbl_SizeNO.Size = new System.Drawing.Size(0, 12);
             this.lbl_SizeNO.TabIndex = 61;
@@ -457,7 +510,7 @@
             // lbl_ColorNO
             // 
             this.lbl_ColorNO.AutoSize = true;
-            this.lbl_ColorNO.Location = new System.Drawing.Point(295, 190);
+            this.lbl_ColorNO.Location = new System.Drawing.Point(295, 218);
             this.lbl_ColorNO.Name = "lbl_ColorNO";
             this.lbl_ColorNO.Size = new System.Drawing.Size(0, 12);
             this.lbl_ColorNO.TabIndex = 60;
@@ -465,7 +518,7 @@
             // lbl_BrandCD
             // 
             this.lbl_BrandCD.AutoSize = true;
-            this.lbl_BrandCD.Location = new System.Drawing.Point(245, 165);
+            this.lbl_BrandCD.Location = new System.Drawing.Point(245, 193);
             this.lbl_BrandCD.Name = "lbl_BrandCD";
             this.lbl_BrandCD.Size = new System.Drawing.Size(0, 12);
             this.lbl_BrandCD.TabIndex = 59;
@@ -473,7 +526,7 @@
             // lbl_TaniCD
             // 
             this.lbl_TaniCD.AutoSize = true;
-            this.lbl_TaniCD.Location = new System.Drawing.Point(195, 140);
+            this.lbl_TaniCD.Location = new System.Drawing.Point(195, 168);
             this.lbl_TaniCD.Name = "lbl_TaniCD";
             this.lbl_TaniCD.Size = new System.Drawing.Size(0, 12);
             this.lbl_TaniCD.TabIndex = 58;
@@ -490,7 +543,7 @@
             this.txtKensakuHyouziJun.IsDatatableOccurs = null;
             this.txtKensakuHyouziJun.IsErrorOccurs = false;
             this.txtKensakuHyouziJun.IsRequire = false;
-            this.txtKensakuHyouziJun.Location = new System.Drawing.Point(139, 630);
+            this.txtKensakuHyouziJun.Location = new System.Drawing.Point(139, 655);
             this.txtKensakuHyouziJun.MaxLength = 3;
             this.txtKensakuHyouziJun.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKensakuHyouziJun.MoveNext = true;
@@ -508,7 +561,7 @@
             this.lblSearchDisplayOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSearchDisplayOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSearchDisplayOrder.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSearchDisplayOrder.Location = new System.Drawing.Point(41, 630);
+            this.lblSearchDisplayOrder.Location = new System.Drawing.Point(41, 655);
             this.lblSearchDisplayOrder.Name = "lblSearchDisplayOrder";
             this.lblSearchDisplayOrder.Size = new System.Drawing.Size(100, 19);
             this.lblSearchDisplayOrder.TabIndex = 56;
@@ -527,7 +580,7 @@
             this.txtRemarks.IsDatatableOccurs = null;
             this.txtRemarks.IsErrorOccurs = false;
             this.txtRemarks.IsRequire = false;
-            this.txtRemarks.Location = new System.Drawing.Point(139, 605);
+            this.txtRemarks.Location = new System.Drawing.Point(139, 630);
             this.txtRemarks.MaxLength = 80;
             this.txtRemarks.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRemarks.MoveNext = true;
@@ -545,7 +598,7 @@
             this.lblRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRemarks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRemarks.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblRemarks.Location = new System.Drawing.Point(41, 605);
+            this.lblRemarks.Location = new System.Drawing.Point(41, 630);
             this.lblRemarks.Name = "lblRemarks";
             this.lblRemarks.Size = new System.Drawing.Size(100, 19);
             this.lblRemarks.TabIndex = 54;
@@ -564,7 +617,7 @@
             this.txtImage.IsDatatableOccurs = null;
             this.txtImage.IsErrorOccurs = false;
             this.txtImage.IsRequire = false;
-            this.txtImage.Location = new System.Drawing.Point(139, 515);
+            this.txtImage.Location = new System.Drawing.Point(139, 540);
             this.txtImage.MaxLength = 100;
             this.txtImage.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtImage.MoveNext = true;
@@ -583,7 +636,7 @@
             this.lblImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblImage.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblImage.Location = new System.Drawing.Point(41, 515);
+            this.lblImage.Location = new System.Drawing.Point(41, 540);
             this.lblImage.Name = "lblImage";
             this.lblImage.Size = new System.Drawing.Size(100, 19);
             this.lblImage.TabIndex = 51;
@@ -602,7 +655,7 @@
             this.txtHacchuuLot.IsDatatableOccurs = null;
             this.txtHacchuuLot.IsErrorOccurs = false;
             this.txtHacchuuLot.IsRequire = false;
-            this.txtHacchuuLot.Location = new System.Drawing.Point(139, 490);
+            this.txtHacchuuLot.Location = new System.Drawing.Point(139, 515);
             this.txtHacchuuLot.MaxLength = 28;
             this.txtHacchuuLot.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuLot.MoveNext = true;
@@ -620,7 +673,7 @@
             this.lblOrderLot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblOrderLot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblOrderLot.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblOrderLot.Location = new System.Drawing.Point(41, 490);
+            this.lblOrderLot.Location = new System.Drawing.Point(41, 515);
             this.lblOrderLot.Name = "lblOrderLot";
             this.lblOrderLot.Size = new System.Drawing.Size(100, 19);
             this.lblOrderLot.TabIndex = 49;
@@ -639,7 +692,7 @@
             this.txtShippingPlace.IsDatatableOccurs = null;
             this.txtShippingPlace.IsErrorOccurs = false;
             this.txtShippingPlace.IsRequire = false;
-            this.txtShippingPlace.Location = new System.Drawing.Point(415, 465);
+            this.txtShippingPlace.Location = new System.Drawing.Point(415, 490);
             this.txtShippingPlace.MaxLength = 20;
             this.txtShippingPlace.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShippingPlace.MoveNext = true;
@@ -657,7 +710,7 @@
             this.lblShippingPlace.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblShippingPlace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShippingPlace.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblShippingPlace.Location = new System.Drawing.Point(305, 465);
+            this.lblShippingPlace.Location = new System.Drawing.Point(305, 490);
             this.lblShippingPlace.Name = "lblShippingPlace";
             this.lblShippingPlace.Size = new System.Drawing.Size(110, 19);
             this.lblShippingPlace.TabIndex = 47;
@@ -676,7 +729,7 @@
             this.txtFOB.IsDatatableOccurs = null;
             this.txtFOB.IsErrorOccurs = false;
             this.txtFOB.IsRequire = false;
-            this.txtFOB.Location = new System.Drawing.Point(139, 465);
+            this.txtFOB.Location = new System.Drawing.Point(139, 490);
             this.txtFOB.MaxLength = 20;
             this.txtFOB.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtFOB.MoveNext = true;
@@ -694,7 +747,7 @@
             this.lblFOB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblFOB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblFOB.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblFOB.Location = new System.Drawing.Point(41, 465);
+            this.lblFOB.Location = new System.Drawing.Point(41, 490);
             this.lblFOB.Name = "lblFOB";
             this.lblFOB.Size = new System.Drawing.Size(100, 19);
             this.lblFOB.TabIndex = 45;
@@ -713,7 +766,7 @@
             this.txtModelName.IsDatatableOccurs = null;
             this.txtModelName.IsErrorOccurs = false;
             this.txtModelName.IsRequire = false;
-            this.txtModelName.Location = new System.Drawing.Point(415, 440);
+            this.txtModelName.Location = new System.Drawing.Point(415, 465);
             this.txtModelName.MaxLength = 40;
             this.txtModelName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtModelName.MoveNext = true;
@@ -731,7 +784,7 @@
             this.lblModelName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblModelName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblModelName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblModelName.Location = new System.Drawing.Point(305, 440);
+            this.lblModelName.Location = new System.Drawing.Point(305, 465);
             this.lblModelName.Name = "lblModelName";
             this.lblModelName.Size = new System.Drawing.Size(110, 19);
             this.lblModelName.TabIndex = 43;
@@ -750,7 +803,7 @@
             this.txtModelNo.IsDatatableOccurs = null;
             this.txtModelNo.IsErrorOccurs = false;
             this.txtModelNo.IsRequire = false;
-            this.txtModelNo.Location = new System.Drawing.Point(139, 440);
+            this.txtModelNo.Location = new System.Drawing.Point(139, 465);
             this.txtModelNo.MaxLength = 16;
             this.txtModelNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtModelNo.MoveNext = true;
@@ -768,7 +821,7 @@
             this.lblModelNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblModelNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblModelNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblModelNo.Location = new System.Drawing.Point(41, 440);
+            this.lblModelNo.Location = new System.Drawing.Point(41, 465);
             this.lblModelNo.Name = "lblModelNo";
             this.lblModelNo.Size = new System.Drawing.Size(100, 19);
             this.lblModelNo.TabIndex = 41;
@@ -787,7 +840,7 @@
             this.txtSalesStopDate.IsDatatableOccurs = null;
             this.txtSalesStopDate.IsErrorOccurs = false;
             this.txtSalesStopDate.IsRequire = false;
-            this.txtSalesStopDate.Location = new System.Drawing.Point(139, 415);
+            this.txtSalesStopDate.Location = new System.Drawing.Point(139, 440);
             this.txtSalesStopDate.MaxLength = 10;
             this.txtSalesStopDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSalesStopDate.MoveNext = true;
@@ -805,7 +858,7 @@
             this.lblSalesStopDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSalesStopDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSalesStopDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSalesStopDate.Location = new System.Drawing.Point(41, 415);
+            this.lblSalesStopDate.Location = new System.Drawing.Point(41, 440);
             this.lblSalesStopDate.Name = "lblSalesStopDate";
             this.lblSalesStopDate.Size = new System.Drawing.Size(100, 19);
             this.lblSalesStopDate.TabIndex = 39;
@@ -824,7 +877,7 @@
             this.txtHandlingEndDate.IsDatatableOccurs = null;
             this.txtHandlingEndDate.IsErrorOccurs = false;
             this.txtHandlingEndDate.IsRequire = false;
-            this.txtHandlingEndDate.Location = new System.Drawing.Point(139, 390);
+            this.txtHandlingEndDate.Location = new System.Drawing.Point(139, 415);
             this.txtHandlingEndDate.MaxLength = 10;
             this.txtHandlingEndDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHandlingEndDate.MoveNext = true;
@@ -842,7 +895,7 @@
             this.lblHandlingEndDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblHandlingEndDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblHandlingEndDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblHandlingEndDate.Location = new System.Drawing.Point(41, 390);
+            this.lblHandlingEndDate.Location = new System.Drawing.Point(41, 415);
             this.lblHandlingEndDate.Name = "lblHandlingEndDate";
             this.lblHandlingEndDate.Size = new System.Drawing.Size(100, 19);
             this.lblHandlingEndDate.TabIndex = 37;
@@ -861,7 +914,7 @@
             this.txtMajorSuppliers.IsDatatableOccurs = null;
             this.txtMajorSuppliers.IsErrorOccurs = false;
             this.txtMajorSuppliers.IsRequire = false;
-            this.txtMajorSuppliers.Location = new System.Drawing.Point(139, 365);
+            this.txtMajorSuppliers.Location = new System.Drawing.Point(139, 390);
             this.txtMajorSuppliers.MaxLength = 10;
             this.txtMajorSuppliers.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtMajorSuppliers.MoveNext = true;
@@ -880,7 +933,7 @@
             this.lblMajorSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblMajorSuppliers.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblMajorSuppliers.ForeColor = System.Drawing.Color.White;
-            this.lblMajorSuppliers.Location = new System.Drawing.Point(41, 365);
+            this.lblMajorSuppliers.Location = new System.Drawing.Point(41, 390);
             this.lblMajorSuppliers.Name = "lblMajorSuppliers";
             this.lblMajorSuppliers.Size = new System.Drawing.Size(100, 19);
             this.lblMajorSuppliers.TabIndex = 35;
@@ -899,7 +952,7 @@
             this.txtIManagement.IsDatatableOccurs = null;
             this.txtIManagement.IsErrorOccurs = false;
             this.txtIManagement.IsRequire = false;
-            this.txtIManagement.Location = new System.Drawing.Point(139, 340);
+            this.txtIManagement.Location = new System.Drawing.Point(139, 365);
             this.txtIManagement.MaxLength = 3;
             this.txtIManagement.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtIManagement.MoveNext = true;
@@ -918,7 +971,7 @@
             this.lblIManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblIManagement.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblIManagement.ForeColor = System.Drawing.Color.White;
-            this.lblIManagement.Location = new System.Drawing.Point(41, 340);
+            this.lblIManagement.Location = new System.Drawing.Point(41, 365);
             this.lblIManagement.Name = "lblIManagement";
             this.lblIManagement.Size = new System.Drawing.Size(100, 19);
             this.lblIManagement.TabIndex = 33;
@@ -937,7 +990,7 @@
             this.txtIEvaluation.IsDatatableOccurs = null;
             this.txtIEvaluation.IsErrorOccurs = false;
             this.txtIEvaluation.IsRequire = false;
-            this.txtIEvaluation.Location = new System.Drawing.Point(139, 315);
+            this.txtIEvaluation.Location = new System.Drawing.Point(139, 340);
             this.txtIEvaluation.MaxLength = 3;
             this.txtIEvaluation.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtIEvaluation.MoveNext = true;
@@ -956,7 +1009,7 @@
             this.lblIEvaluation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblIEvaluation.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblIEvaluation.ForeColor = System.Drawing.Color.White;
-            this.lblIEvaluation.Location = new System.Drawing.Point(41, 315);
+            this.lblIEvaluation.Location = new System.Drawing.Point(41, 340);
             this.lblIEvaluation.Name = "lblIEvaluation";
             this.lblIEvaluation.Size = new System.Drawing.Size(100, 19);
             this.lblIEvaluation.TabIndex = 31;
@@ -975,7 +1028,7 @@
             this.txtTaxRate.IsDatatableOccurs = null;
             this.txtTaxRate.IsErrorOccurs = false;
             this.txtTaxRate.IsRequire = false;
-            this.txtTaxRate.Location = new System.Drawing.Point(139, 290);
+            this.txtTaxRate.Location = new System.Drawing.Point(139, 315);
             this.txtTaxRate.MaxLength = 3;
             this.txtTaxRate.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtTaxRate.MoveNext = true;
@@ -994,7 +1047,7 @@
             this.lblTaxRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTaxRate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblTaxRate.ForeColor = System.Drawing.Color.White;
-            this.lblTaxRate.Location = new System.Drawing.Point(41, 290);
+            this.lblTaxRate.Location = new System.Drawing.Point(41, 315);
             this.lblTaxRate.Name = "lblTaxRate";
             this.lblTaxRate.Size = new System.Drawing.Size(100, 19);
             this.lblTaxRate.TabIndex = 29;
@@ -1013,7 +1066,7 @@
             this.txtStandardPrice.IsDatatableOccurs = null;
             this.txtStandardPrice.IsErrorOccurs = false;
             this.txtStandardPrice.IsRequire = false;
-            this.txtStandardPrice.Location = new System.Drawing.Point(139, 265);
+            this.txtStandardPrice.Location = new System.Drawing.Point(139, 290);
             this.txtStandardPrice.MaxLength = 20;
             this.txtStandardPrice.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStandardPrice.MoveNext = true;
@@ -1032,7 +1085,7 @@
             this.lblStandardPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStandardPrice.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblStandardPrice.ForeColor = System.Drawing.Color.White;
-            this.lblStandardPrice.Location = new System.Drawing.Point(41, 265);
+            this.lblStandardPrice.Location = new System.Drawing.Point(41, 290);
             this.lblStandardPrice.Name = "lblStandardPrice";
             this.lblStandardPrice.Size = new System.Drawing.Size(100, 19);
             this.lblStandardPrice.TabIndex = 27;
@@ -1051,7 +1104,7 @@
             this.txtLowerPrice.IsDatatableOccurs = null;
             this.txtLowerPrice.IsErrorOccurs = false;
             this.txtLowerPrice.IsRequire = false;
-            this.txtLowerPrice.Location = new System.Drawing.Point(404, 240);
+            this.txtLowerPrice.Location = new System.Drawing.Point(404, 265);
             this.txtLowerPrice.MaxLength = 20;
             this.txtLowerPrice.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtLowerPrice.MoveNext = true;
@@ -1070,7 +1123,7 @@
             this.lblLowerPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblLowerPrice.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblLowerPrice.ForeColor = System.Drawing.Color.White;
-            this.lblLowerPrice.Location = new System.Drawing.Point(305, 240);
+            this.lblLowerPrice.Location = new System.Drawing.Point(305, 265);
             this.lblLowerPrice.Name = "lblLowerPrice";
             this.lblLowerPrice.Size = new System.Drawing.Size(100, 19);
             this.lblLowerPrice.TabIndex = 25;
@@ -1089,7 +1142,7 @@
             this.txtRetailPrice.IsDatatableOccurs = null;
             this.txtRetailPrice.IsErrorOccurs = false;
             this.txtRetailPrice.IsRequire = false;
-            this.txtRetailPrice.Location = new System.Drawing.Point(139, 240);
+            this.txtRetailPrice.Location = new System.Drawing.Point(139, 265);
             this.txtRetailPrice.MaxLength = 20;
             this.txtRetailPrice.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRetailPrice.MoveNext = true;
@@ -1108,7 +1161,7 @@
             this.lblRetailPrice.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRetailPrice.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblRetailPrice.ForeColor = System.Drawing.Color.White;
-            this.lblRetailPrice.Location = new System.Drawing.Point(41, 240);
+            this.lblRetailPrice.Location = new System.Drawing.Point(41, 265);
             this.lblRetailPrice.Name = "lblRetailPrice";
             this.lblRetailPrice.Size = new System.Drawing.Size(100, 19);
             this.lblRetailPrice.TabIndex = 23;
@@ -1127,7 +1180,7 @@
             this.txtSize.IsDatatableOccurs = null;
             this.txtSize.IsErrorOccurs = false;
             this.txtSize.IsRequire = false;
-            this.txtSize.Location = new System.Drawing.Point(139, 215);
+            this.txtSize.Location = new System.Drawing.Point(139, 240);
             this.txtSize.MaxLength = 13;
             this.txtSize.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSize.MoveNext = true;
@@ -1146,7 +1199,7 @@
             this.lblSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSize.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSize.ForeColor = System.Drawing.Color.White;
-            this.lblSize.Location = new System.Drawing.Point(41, 215);
+            this.lblSize.Location = new System.Drawing.Point(41, 240);
             this.lblSize.Name = "lblSize";
             this.lblSize.Size = new System.Drawing.Size(100, 19);
             this.lblSize.TabIndex = 21;
@@ -1165,7 +1218,7 @@
             this.txtColor.IsDatatableOccurs = null;
             this.txtColor.IsErrorOccurs = false;
             this.txtColor.IsRequire = false;
-            this.txtColor.Location = new System.Drawing.Point(139, 190);
+            this.txtColor.Location = new System.Drawing.Point(139, 215);
             this.txtColor.MaxLength = 13;
             this.txtColor.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtColor.MoveNext = true;
@@ -1184,7 +1237,7 @@
             this.lblColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblColor.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblColor.ForeColor = System.Drawing.Color.White;
-            this.lblColor.Location = new System.Drawing.Point(41, 190);
+            this.lblColor.Location = new System.Drawing.Point(41, 215);
             this.lblColor.Name = "lblColor";
             this.lblColor.Size = new System.Drawing.Size(100, 19);
             this.lblColor.TabIndex = 19;
@@ -1203,7 +1256,7 @@
             this.txtBrand.IsDatatableOccurs = null;
             this.txtBrand.IsErrorOccurs = false;
             this.txtBrand.IsRequire = false;
-            this.txtBrand.Location = new System.Drawing.Point(139, 165);
+            this.txtBrand.Location = new System.Drawing.Point(139, 190);
             this.txtBrand.MaxLength = 10;
             this.txtBrand.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtBrand.MoveNext = true;
@@ -1222,7 +1275,7 @@
             this.lblBrand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBrand.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblBrand.ForeColor = System.Drawing.Color.White;
-            this.lblBrand.Location = new System.Drawing.Point(41, 165);
+            this.lblBrand.Location = new System.Drawing.Point(41, 190);
             this.lblBrand.Name = "lblBrand";
             this.lblBrand.Size = new System.Drawing.Size(100, 19);
             this.lblBrand.TabIndex = 17;
@@ -1241,7 +1294,7 @@
             this.txtTani.IsDatatableOccurs = null;
             this.txtTani.IsErrorOccurs = false;
             this.txtTani.IsRequire = false;
-            this.txtTani.Location = new System.Drawing.Point(139, 140);
+            this.txtTani.Location = new System.Drawing.Point(139, 165);
             this.txtTani.MaxLength = 2;
             this.txtTani.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtTani.MoveNext = true;
@@ -1260,7 +1313,7 @@
             this.lblUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblUnit.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblUnit.ForeColor = System.Drawing.Color.White;
-            this.lblUnit.Location = new System.Drawing.Point(41, 140);
+            this.lblUnit.Location = new System.Drawing.Point(41, 165);
             this.lblUnit.Name = "lblUnit";
             this.lblUnit.Size = new System.Drawing.Size(100, 19);
             this.lblUnit.TabIndex = 15;
@@ -1272,7 +1325,7 @@
             this.chkFW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkFW.IsDatatableOccurs = null;
             this.chkFW.IsErrorOccurs = false;
-            this.chkFW.Location = new System.Drawing.Point(532, 117);
+            this.chkFW.Location = new System.Drawing.Point(532, 140);
             this.chkFW.MoveNext = true;
             this.chkFW.Name = "chkFW";
             this.chkFW.NextControl = null;
@@ -1287,7 +1340,7 @@
             this.chkSS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkSS.IsDatatableOccurs = null;
             this.chkSS.IsErrorOccurs = false;
-            this.chkSS.Location = new System.Drawing.Point(486, 117);
+            this.chkSS.Location = new System.Drawing.Point(486, 140);
             this.chkSS.MoveNext = true;
             this.chkSS.Name = "chkSS";
             this.chkSS.NextControl = null;
@@ -1300,7 +1353,7 @@
             // lblYear
             // 
             this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(457, 119);
+            this.lblYear.Location = new System.Drawing.Point(457, 144);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(17, 12);
             this.lblYear.TabIndex = 12;
@@ -1318,7 +1371,7 @@
             this.txtExhibition.IsDatatableOccurs = null;
             this.txtExhibition.IsErrorOccurs = false;
             this.txtExhibition.IsRequire = false;
-            this.txtExhibition.Location = new System.Drawing.Point(404, 115);
+            this.txtExhibition.Location = new System.Drawing.Point(404, 140);
             this.txtExhibition.MaxLength = 6;
             this.txtExhibition.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtExhibition.MoveNext = true;
@@ -1336,7 +1389,7 @@
             this.lblExhibition.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblExhibition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblExhibition.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblExhibition.Location = new System.Drawing.Point(305, 115);
+            this.lblExhibition.Location = new System.Drawing.Point(305, 140);
             this.lblExhibition.Name = "lblExhibition";
             this.lblExhibition.Size = new System.Drawing.Size(100, 19);
             this.lblExhibition.TabIndex = 10;
@@ -1355,7 +1408,7 @@
             this.txtJANCD.IsDatatableOccurs = null;
             this.txtJANCD.IsErrorOccurs = false;
             this.txtJANCD.IsRequire = false;
-            this.txtJANCD.Location = new System.Drawing.Point(139, 115);
+            this.txtJANCD.Location = new System.Drawing.Point(141, 140);
             this.txtJANCD.MaxLength = 13;
             this.txtJANCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJANCD.MoveNext = true;
@@ -1373,7 +1426,7 @@
             this.lblJANCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblJANCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblJANCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblJANCD.Location = new System.Drawing.Point(41, 115);
+            this.lblJANCD.Location = new System.Drawing.Point(41, 140);
             this.lblJANCD.Name = "lblJANCD";
             this.lblJANCD.Size = new System.Drawing.Size(100, 19);
             this.lblJANCD.TabIndex = 8;
@@ -1392,7 +1445,7 @@
             this.txtKatakanaName.IsDatatableOccurs = null;
             this.txtKatakanaName.IsErrorOccurs = false;
             this.txtKatakanaName.IsRequire = false;
-            this.txtKatakanaName.Location = new System.Drawing.Point(139, 90);
+            this.txtKatakanaName.Location = new System.Drawing.Point(139, 115);
             this.txtKatakanaName.MaxLength = 80;
             this.txtKatakanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKatakanaName.MoveNext = true;
@@ -1410,7 +1463,7 @@
             this.lblKatakanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblKatakanaName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblKatakanaName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblKatakanaName.Location = new System.Drawing.Point(41, 90);
+            this.lblKatakanaName.Location = new System.Drawing.Point(41, 115);
             this.lblKatakanaName.Name = "lblKatakanaName";
             this.lblKatakanaName.Size = new System.Drawing.Size(100, 19);
             this.lblKatakanaName.TabIndex = 6;
@@ -1429,7 +1482,7 @@
             this.txtShouhinRyakuName.IsDatatableOccurs = null;
             this.txtShouhinRyakuName.IsErrorOccurs = false;
             this.txtShouhinRyakuName.IsRequire = false;
-            this.txtShouhinRyakuName.Location = new System.Drawing.Point(139, 65);
+            this.txtShouhinRyakuName.Location = new System.Drawing.Point(139, 90);
             this.txtShouhinRyakuName.MaxLength = 80;
             this.txtShouhinRyakuName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhinRyakuName.MoveNext = true;
@@ -1448,7 +1501,7 @@
             this.lblShouhinRyakuName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShouhinRyakuName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblShouhinRyakuName.ForeColor = System.Drawing.Color.White;
-            this.lblShouhinRyakuName.Location = new System.Drawing.Point(41, 65);
+            this.lblShouhinRyakuName.Location = new System.Drawing.Point(41, 90);
             this.lblShouhinRyakuName.Name = "lblShouhinRyakuName";
             this.lblShouhinRyakuName.Size = new System.Drawing.Size(100, 19);
             this.lblShouhinRyakuName.TabIndex = 4;
@@ -1467,7 +1520,7 @@
             this.txtProductName.IsDatatableOccurs = null;
             this.txtProductName.IsErrorOccurs = false;
             this.txtProductName.IsRequire = false;
-            this.txtProductName.Location = new System.Drawing.Point(139, 40);
+            this.txtProductName.Location = new System.Drawing.Point(139, 65);
             this.txtProductName.MaxLength = 100;
             this.txtProductName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtProductName.MoveNext = true;
@@ -1486,7 +1539,7 @@
             this.lblProductName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblProductName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblProductName.ForeColor = System.Drawing.Color.White;
-            this.lblProductName.Location = new System.Drawing.Point(41, 40);
+            this.lblProductName.Location = new System.Drawing.Point(41, 65);
             this.lblProductName.Name = "lblProductName";
             this.lblProductName.Size = new System.Drawing.Size(100, 19);
             this.lblProductName.TabIndex = 2;
@@ -1502,7 +1555,7 @@
             this.chkShukou.MoveNext = true;
             this.chkShukou.Name = "chkShukou";
             this.chkShukou.NextControl = null;
-            this.chkShukou.NextControlName = "txtProductName";
+            this.chkShukou.NextControlName = "txtHinbanCD";
             this.chkShukou.Size = new System.Drawing.Size(19, 19);
             this.chkShukou.TabIndex = 1;
             this.chkShukou.UseVisualStyleBackColor = false;
@@ -1521,19 +1574,11 @@
             this.lblZhukou.Text = "諸口";
             this.lblZhukou.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pImage
-            // 
-            this.pImage.Location = new System.Drawing.Point(139, 540);
-            this.pImage.Name = "pImage";
-            this.pImage.Size = new System.Drawing.Size(100, 60);
-            this.pImage.TabIndex = 66;
-            this.pImage.TabStop = false;
-            // 
             // MasterTouroku_Shouhin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 786);
+            this.ClientSize = new System.Drawing.Size(1485, 811);
             this.Controls.Add(this.Panel_Detail);
             this.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.Location = new System.Drawing.Point(0, 0);
@@ -1632,5 +1677,7 @@
         private System.Windows.Forms.Label lbl_IManagement;
         private System.Windows.Forms.Label lbl_IEvaluation;
         private System.Windows.Forms.PictureBox pImage;
+        private Shinyoh_Controls.STextBox txtHinbanCD;
+        private Shinyoh_Controls.SLabel lblHinbanCD;
     }
 }

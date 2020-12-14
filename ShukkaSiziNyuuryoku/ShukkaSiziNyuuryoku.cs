@@ -20,8 +20,7 @@ namespace ShukkaSiziNyuuryoku
         TokuisakiDetails td = new TokuisakiDetails();
         KouritenDetails kd = new KouritenDetails();
         public string tdDate;
-        DataTable dtgv1,dtgv2;
-        DataTable dtTemp;
+        DataTable dtgv1,dtgv2,dtTemp1,dtTemp2;
         public ShukkaSiziNyuuryoku()
         {
             InitializeComponent();
@@ -31,9 +30,10 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();
             bbl = new BaseBL();
             tdDate = string.Empty;
+            dtTemp1 = new DataTable();
+            dtTemp2 = new DataTable();
             dtgv1 = new DataTable();
             dtgv2 = new DataTable();
-            dtTemp = new DataTable();
         }
 
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
@@ -150,13 +150,13 @@ namespace ShukkaSiziNyuuryoku
             //得意先
             sbTokuisaki.E102Check(true);
             sbTokuisaki.E101Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate, null);
-            //sbTokuisaki.E267Check(true, "M_Tokuisaki", null, txtShippingDate);
-            //sbTokuisaki.E227Check(true, "M_Tokuisaki", null, txtShippingDate);
+            sbTokuisaki.E267Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
+            sbTokuisaki.E227Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
             //E269
             //小売店
             sbKouriten.E101Check(true, "M_Kouriten", sbKouriten, txtShippingDate, null);
-            //sbKouriten.E267Check(true, "M_Kouriten", null, txtShippingDate);
-            //sbKouriten.E227Check(true, "M_Kouriten", null, txtShippingDate);
+            sbKouriten.E267Check(true, "M_Kouriten", sbKouriten, txtShippingDate);
+            sbKouriten.E227Check(true, "M_Kouriten", sbKouriten, txtShippingDate);
             //担当スタッフCD
             sbStaffCD.E102Check(true);
             sbStaffCD.E101Check(true, "M_Staff", sbStaffCD, txtShippingDate, null);
@@ -233,11 +233,11 @@ namespace ShukkaSiziNyuuryoku
             kd.Access_Kouriten_obj.Tel22 = dt.Rows[0]["KouritenTelNO2-2"].ToString();
             kd.Access_Kouriten_obj.Tel23 = dt.Rows[0]["KouritenTelNO2-3"].ToString();
         }
-        private void gvChakuniNyuuryoku_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void gvChakuniNyuuryoku_CellValidating_1(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            if (gvChakuniNyuuryoku.Columns[e.ColumnIndex].Name == "colArrivalTime")
+            if (gv_1.Columns[e.ColumnIndex].Name == "colArrivalTime")
             {
-                string value = gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString();
+                string value = gv_1.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString();
                 if (Convert.ToDecimal(value) < 0)
                 {
                     bbl.ShowMessage("E109");
@@ -287,13 +287,13 @@ namespace ShukkaSiziNyuuryoku
                     DataTable dtDetails = new DataTable();
                     dtDetails = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sbShippingNO.Text, txtShippingDate.Text, 2);
                     if (dtDetails.Rows.Count > 0)
-                        gvDetail.DataSource = dtDetails;
+                        gv_2.DataSource = dtDetails;
 
                     sksz_bl = new ShukkasiziNyuuryokuBL();
                     DataTable dt_gv1 = new DataTable();
                     dt_gv1 = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sbShippingNO.Text, txtShippingDate.Text, 1);
                     if (dt_gv1.Rows.Count > 0)
-                        gvChakuniNyuuryoku.DataSource = dt_gv1;
+                        gv_1.DataSource = dt_gv1;
                 }
             }
         }
@@ -350,14 +350,103 @@ namespace ShukkaSiziNyuuryoku
             sksz_e.SenpyouhachuuNo = txtSenpyouhachuuNo.Text;
             sksz_bl = new ShukkasiziNyuuryokuBL();            
             dtgv1= sksz_bl.ShukkasiziNyuuryoku_Display(sksz_e, 1);
-            gvChakuniNyuuryoku.DataSource = dtgv1;
+            gv_1.DataSource = dtgv1;
             dtgv2 = sksz_bl.ShukkasiziNyuuryoku_Display(sksz_e, 2);
-            gvDetail.DataSource = dtgv2;
-
+            gv_2.DataSource = dtgv2;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
 
         }
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if(dtTemp1.Rows.Count==0)
+            {              
+                dtTemp1 = dtgv1.Copy();
+                dtTemp1.Clear();
+            }
+            else if(dtTemp2.Rows.Count==0)
+            {
+                dtTemp2 = dtgv2.Copy();
+                dtTemp2.Clear();
+            }
+            gv_1.DataSource = dtTemp1;
+            gv_2.DataSource = dtTemp2;
+        }
+        private void gvChakuniNyuuryoku_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            DataGridViewTextBoxEditingControl tb = e.Control as DataGridViewTextBoxEditingControl;
+            // tb.KeyDown -= dataGridView_KeyDown;
+            tb.PreviewKeyDown -= dataGridView_PreviewKeyDown1;
+            // tb.KeyDown += dataGridView_KeyDown;
+            tb.PreviewKeyDown += dataGridView_PreviewKeyDown1;
+        }
+        private void gv_2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            DataGridViewTextBoxEditingControl tb = e.Control as DataGridViewTextBoxEditingControl;
+            // tb.KeyDown -= dataGridView_KeyDown;
+            tb.PreviewKeyDown -= dataGridView_PreviewKeyDown2;
+            // tb.KeyDown += dataGridView_KeyDown;
+            tb.PreviewKeyDown += dataGridView_PreviewKeyDown2;
+        }
+        private void dataGridView_PreviewKeyDown1(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                dtTemp1 = dtgv1.Copy();
+                dtTemp1.Clear();
+                DataRow dr1 = dtTemp1.NewRow();
+                int gv1_row = gv_1.CurrentCell.RowIndex;
+                int gv1_column = gv_1.CurrentCell.ColumnIndex;
+
+                if (sender.ToString() != dtgv1.Rows[gv1_row][gv1_column].ToString())
+                {
+                    for (int i = 0; i < gv_1.Columns.Count; i++)
+                    {
+                        if (i == gv1_column)
+                        {
+                            string dec_val = (sender as DataGridViewTextBoxEditingControl).Text;
+                            dr1[i] = dec_val.ToString();
+                        }
+                        else
+                        {
+                            dr1[i] = gv_1[i, gv1_row].Value;
+                        }
+                    }
+                    dtTemp1.Rows.Add(dr1);
+                }
+            }
+        }
+        private void dataGridView_PreviewKeyDown2(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                dtTemp2 = dtgv2.Copy();
+                dtTemp2.Clear();
+                DataRow dr2 = dtTemp2.NewRow();
+                int gv2_row = gv_2.CurrentCell.RowIndex;
+                int gv2_column = gv_2.CurrentCell.ColumnIndex;
+
+                if (sender.ToString() != dtgv1.Rows[gv2_row][gv2_column].ToString())
+                {                   
+                    for (int i = 0; i < gv_2.Columns.Count; i++)
+                    {
+                        if (i == gv2_column)
+                        {
+                            string dec_val = (sender as DataGridViewTextBoxEditingControl).Text;
+                            dr2[i] = dec_val;
+                        }
+                        else
+                        {
+                            dr2[i] = gv_2[i, gv2_row].Value;
+                        }
+
+                    }
+                    dtTemp2.Rows.Add(dr2);
+                }
+            }
+        }
+
+        
     }
 }

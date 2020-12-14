@@ -122,6 +122,7 @@ namespace MasterTouroku_Shouhin
             txtProduct.E102Check(true);
             txtChangeDate.E102Check(true);
             txtChangeDate.E103Check(true);
+            txtHinbanCD.E102Check(true);
             txtProductName.E102Check(true);
             txtShouhinRyakuName.E102Check(true);
 
@@ -266,6 +267,7 @@ namespace MasterTouroku_Shouhin
             shouhin_entity.CopyProduct = txtCopyProduct.Text.Trim();
             shouhin_entity.CopyRevisionDate = txtCopyChangeDate.Text.Trim();
             shouhin_entity.ShokutiFLG = chkShukou.Checked ? 1 : 0;
+            shouhin_entity.HinbanCD = txtHinbanCD.Text.Trim();
             shouhin_entity.ProductName = txtProductName.Text.Trim();
             shouhin_entity.ShouhinRyakuName = txtShouhinRyakuName.Text.Trim();
             shouhin_entity.KatakanaName = txtKatakanaName.Text.Trim();
@@ -362,6 +364,7 @@ namespace MasterTouroku_Shouhin
                     chkShukou.Checked = true;
                 else
                     chkShukou.Checked = false;
+                txtHinbanCD.Text = dt.Rows[0]["HinbanCD"].ToString();
                 txtProductName.Text = dt.Rows[0]["ShouhinName"].ToString();
                 txtShouhinRyakuName.Text = dt.Rows[0]["ShouhinRyakuName"].ToString();
                 txtKatakanaName.Text = dt.Rows[0]["KanaName"].ToString();
@@ -460,10 +463,10 @@ namespace MasterTouroku_Shouhin
                         dr["InsertOperator"] = base_entity.OperatorCD;
                         dr["UpdateOperator"] = base_entity.OperatorCD;
 
-                        string[] NullCheck_List = { "0", "1", "2", "3", "4", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"};
-                        string[] NullCheck_Msg = { "商品CD未入力エラー", "改定日未入力エラー", "諸口未入力エラー", "商品名未入力エラー", "略名未入力エラー", "単位CD未入力エラー", "ブランドCD未入力エラー", "カラーNO未入力エラー", "サイズNO未入力エラー", "上代単価未入力エラー", "下代単価未入力エラー", "標準原価単価未入力エラー", "税率区分未入力エラー", "在庫評価区分未入力エラー", "在庫管理区分未入力エラー", "主要仕入先未入力エラー" };
-                        string[] ByteCheck_List = { "0_20", "3_100", "4_80", "5_80", "7_13", "8_6", "9_6", "10_6", "11_2", "12_10", "13_13", "14_13", "21_10", "31_80"};
-                        string[] ByteCheck_Msg = { "商品CD桁数エラー", "商品名桁数エラー", "略名桁数エラー", "カナ名桁数エラー", "JANCD桁数エラー", "年度桁数エラー", "シーズンSS桁数エラー", "シーズンFW桁数エラー", "単位CD桁数エラー", "ブランドCD桁数エラー", "カラーNO桁数エラー", "サイズNO桁数エラー", "主要仕入先CD桁数エラー", "備考桁数エラー" };
+                        string[] NullCheck_List = { "0", "1", "2", "3", "4", "5", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"};
+                        string[] NullCheck_Msg = { "商品CD未入力エラー", "改定日未入力エラー", "諸口未入力エラー", "品番CD未入力エラー", "商品名未入力エラー", "略名未入力エラー", "単位CD未入力エラー", "ブランドCD未入力エラー", "カラーNO未入力エラー", "サイズNO未入力エラー", "上代単価未入力エラー", "下代単価未入力エラー", "標準原価単価未入力エラー", "税率区分未入力エラー", "在庫評価区分未入力エラー", "在庫管理区分未入力エラー", "主要仕入先未入力エラー" };
+                        string[] ByteCheck_List = { "0_50", "3_20", "4_100", "5_80", "6_80", "8_13", "9_6", "10_6", "11_6", "12_2", "13_10", "14_13", "15_13", "22_10", "32_80"};
+                        string[] ByteCheck_Msg = { "商品CD桁数エラー", "品番CD桁数エラー", "商品名桁数エラー", "略名桁数エラー", "カナ名桁数エラー", "JANCD桁数エラー", "年度桁数エラー", "シーズンSS桁数エラー", "シーズンFW桁数エラー", "単位CD桁数エラー", "ブランドCD桁数エラー", "カラーNO桁数エラー", "サイズNO桁数エラー", "主要仕入先CD桁数エラー", "備考桁数エラー" };
                         string[] ValueCheck_List = { "2", "18", "19", "20" };
                         string[] ValueCheck_Amt = { "1", "2", "2", "1" };
                         string[] DateCheck_List = { "1", "22", "23" };

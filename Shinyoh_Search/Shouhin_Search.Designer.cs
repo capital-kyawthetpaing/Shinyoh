@@ -57,15 +57,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtJANCD = new Shinyoh_Controls.STextBox();
             this.lblJANCD = new Shinyoh_Controls.SLabel();
-            this.txtProduct1 = new Shinyoh_Controls.STextBox();
+            this.txtHinbanCD1 = new Shinyoh_Controls.STextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtProduct = new Shinyoh_Controls.STextBox();
-            this.lblProduct = new Shinyoh_Controls.SLabel();
+            this.txtHinbanCD = new Shinyoh_Controls.STextBox();
+            this.lblHinbanCD = new Shinyoh_Controls.SLabel();
             this.rdoAll = new Shinyoh_Controls.SRadio();
             this.rdoRecentRevisionDate = new Shinyoh_Controls.SRadio();
             this.lblDisplayTarget = new Shinyoh_Controls.SLabel();
             this.dgDetail = new Shinyoh_Controls.SGridView();
             this.ShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HinbanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.YearTerm = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,10 +110,10 @@
             this.pHead.Controls.Add(this.label2);
             this.pHead.Controls.Add(this.txtJANCD);
             this.pHead.Controls.Add(this.lblJANCD);
-            this.pHead.Controls.Add(this.txtProduct1);
+            this.pHead.Controls.Add(this.txtHinbanCD1);
             this.pHead.Controls.Add(this.label1);
-            this.pHead.Controls.Add(this.txtProduct);
-            this.pHead.Controls.Add(this.lblProduct);
+            this.pHead.Controls.Add(this.txtHinbanCD);
+            this.pHead.Controls.Add(this.lblHinbanCD);
             this.pHead.Controls.Add(this.rdoAll);
             this.pHead.Controls.Add(this.rdoRecentRevisionDate);
             this.pHead.Controls.Add(this.lblDisplayTarget);
@@ -614,29 +615,29 @@
             this.lblJANCD.Text = "JANCD";
             this.lblJANCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtProduct1
+            // txtHinbanCD1
             // 
-            this.txtProduct1.AllowMinus = false;
-            this.txtProduct1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProduct1.DecimalPlace = 0;
-            this.txtProduct1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
-            this.txtProduct1.DepandOnMode = true;
-            this.txtProduct1.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtProduct1.IntegerPart = 0;
-            this.txtProduct1.IsDatatableOccurs = null;
-            this.txtProduct1.IsErrorOccurs = false;
-            this.txtProduct1.IsRequire = false;
-            this.txtProduct1.Location = new System.Drawing.Point(289, 35);
-            this.txtProduct1.MaxLength = 20;
-            this.txtProduct1.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtProduct1.MoveNext = true;
-            this.txtProduct1.Name = "txtProduct1";
-            this.txtProduct1.NextControl = null;
-            this.txtProduct1.NextControlName = "txtJANCD";
-            this.txtProduct1.SearchType = Entity.SearchType.ScType.None;
-            this.txtProduct1.Size = new System.Drawing.Size(150, 19);
-            this.txtProduct1.TabIndex = 6;
-            this.txtProduct1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtHinbanCD1.AllowMinus = false;
+            this.txtHinbanCD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHinbanCD1.DecimalPlace = 0;
+            this.txtHinbanCD1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtHinbanCD1.DepandOnMode = true;
+            this.txtHinbanCD1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtHinbanCD1.IntegerPart = 0;
+            this.txtHinbanCD1.IsDatatableOccurs = null;
+            this.txtHinbanCD1.IsErrorOccurs = false;
+            this.txtHinbanCD1.IsRequire = false;
+            this.txtHinbanCD1.Location = new System.Drawing.Point(289, 35);
+            this.txtHinbanCD1.MaxLength = 20;
+            this.txtHinbanCD1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtHinbanCD1.MoveNext = true;
+            this.txtHinbanCD1.Name = "txtHinbanCD1";
+            this.txtHinbanCD1.NextControl = null;
+            this.txtHinbanCD1.NextControlName = "txtJANCD";
+            this.txtHinbanCD1.SearchType = Entity.SearchType.ScType.None;
+            this.txtHinbanCD1.Size = new System.Drawing.Size(150, 19);
+            this.txtHinbanCD1.TabIndex = 6;
+            this.txtHinbanCD1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label1
             // 
@@ -648,42 +649,42 @@
             this.label1.Text = "~";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtProduct
+            // txtHinbanCD
             // 
-            this.txtProduct.AllowMinus = false;
-            this.txtProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProduct.DecimalPlace = 0;
-            this.txtProduct.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
-            this.txtProduct.DepandOnMode = true;
-            this.txtProduct.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtProduct.IntegerPart = 0;
-            this.txtProduct.IsDatatableOccurs = null;
-            this.txtProduct.IsErrorOccurs = false;
-            this.txtProduct.IsRequire = false;
-            this.txtProduct.Location = new System.Drawing.Point(115, 35);
-            this.txtProduct.MaxLength = 20;
-            this.txtProduct.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtProduct.MoveNext = true;
-            this.txtProduct.Name = "txtProduct";
-            this.txtProduct.NextControl = null;
-            this.txtProduct.NextControlName = "txtProduct1";
-            this.txtProduct.SearchType = Entity.SearchType.ScType.None;
-            this.txtProduct.Size = new System.Drawing.Size(150, 19);
-            this.txtProduct.TabIndex = 4;
-            this.txtProduct.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtHinbanCD.AllowMinus = false;
+            this.txtHinbanCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHinbanCD.DecimalPlace = 0;
+            this.txtHinbanCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtHinbanCD.DepandOnMode = true;
+            this.txtHinbanCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtHinbanCD.IntegerPart = 0;
+            this.txtHinbanCD.IsDatatableOccurs = null;
+            this.txtHinbanCD.IsErrorOccurs = false;
+            this.txtHinbanCD.IsRequire = false;
+            this.txtHinbanCD.Location = new System.Drawing.Point(115, 35);
+            this.txtHinbanCD.MaxLength = 20;
+            this.txtHinbanCD.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtHinbanCD.MoveNext = true;
+            this.txtHinbanCD.Name = "txtHinbanCD";
+            this.txtHinbanCD.NextControl = null;
+            this.txtHinbanCD.NextControlName = "txtHinbanCD1";
+            this.txtHinbanCD.SearchType = Entity.SearchType.ScType.None;
+            this.txtHinbanCD.Size = new System.Drawing.Size(150, 19);
+            this.txtHinbanCD.TabIndex = 4;
+            this.txtHinbanCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // lblProduct
+            // lblHinbanCD
             // 
-            this.lblProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lblProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblProduct.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblProduct.Location = new System.Drawing.Point(15, 35);
-            this.lblProduct.Name = "lblProduct";
-            this.lblProduct.Size = new System.Drawing.Size(100, 19);
-            this.lblProduct.TabIndex = 3;
-            this.lblProduct.Text = "商品";
-            this.lblProduct.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblHinbanCD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblHinbanCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHinbanCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblHinbanCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblHinbanCD.Location = new System.Drawing.Point(15, 35);
+            this.lblHinbanCD.Name = "lblHinbanCD";
+            this.lblHinbanCD.Size = new System.Drawing.Size(100, 19);
+            this.lblHinbanCD.TabIndex = 3;
+            this.lblHinbanCD.Text = "品番";
+            this.lblHinbanCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rdoAll
             // 
@@ -738,6 +739,7 @@
             this.dgDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ShouhinCD,
+            this.HinbanCD,
             this.ShouhinName,
             this.JANCD,
             this.YearTerm,
@@ -762,6 +764,16 @@
             this.ShouhinCD.Name = "ShouhinCD";
             this.ShouhinCD.ReadOnly = true;
             this.ShouhinCD.Width = 120;
+            this.ShouhinCD.Visible = false;
+            // 
+            // ShouhinCD
+            // 
+            this.HinbanCD.DataPropertyName = "HinbanCD";
+            this.HinbanCD.FillWeight = 120F;
+            this.HinbanCD.HeaderText = "品番";
+            this.HinbanCD.Name = "HinbanCD";
+            this.HinbanCD.ReadOnly = true;
+            this.HinbanCD.Width = 120;
             // 
             // ShouhinName
             // 
@@ -854,10 +866,10 @@
         private System.Windows.Forms.Panel pHead;
         private Shinyoh_Controls.SLabel lblDisplayTarget;
         private Shinyoh_Controls.SRadio rdoRecentRevisionDate;
-        private Shinyoh_Controls.SLabel lblProduct;
+        private Shinyoh_Controls.SLabel lblHinbanCD;
         private Shinyoh_Controls.SRadio rdoAll;
-        private Shinyoh_Controls.STextBox txtProduct;
-        private Shinyoh_Controls.STextBox txtProduct1;
+        private Shinyoh_Controls.STextBox txtHinbanCD;
+        private Shinyoh_Controls.STextBox txtHinbanCD1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private Shinyoh_Controls.STextBox txtJANCD;
@@ -889,6 +901,7 @@
         private System.Windows.Forms.Label label4;
         private Shinyoh_Controls.SGridView dgDetail;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShouhinCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HinbanCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShouhinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn JANCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn YearTerm;
