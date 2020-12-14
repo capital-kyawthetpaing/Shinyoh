@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6F661147-0D36-4072-B701-D313392BB400}</ProjectGuid>
+    <ProjectGuid>{2E411A63-E586-4E31-8318-7926C040089B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ShukkaNyuuryoku</RootNamespace>
-    <AssemblyName>ShukkaNyuuryoku</AssemblyName>
+    <RootNamespace>HikiateHenkouShoukai</RootNamespace>
+    <AssemblyName>HikiateHenkouShoukai</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKM_CommonFunction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\bin\Debug\CKM_CommonFunction.dll</HintPath>
+    <Reference Include="CKM_CommonFunction">
+      <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -50,29 +49,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KouritenDetail.cs">
+    <Compile Include="HikiateHenkouShoukai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="KouritenDetail.Designer.cs">
-      <DependentUpon>KouritenDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ShukkaNyuuryoku.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ShukkaNyuuryoku.Designer.cs">
-      <DependentUpon>ShukkaNyuuryoku.cs</DependentUpon>
+    <Compile Include="HikiateHenkouShoukai.Designer.cs">
+      <DependentUpon>HikiateHenkouShoukai.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TokuisakiDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TokuisakiDetail.Designer.cs">
-      <DependentUpon>TokuisakiDetail.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="KouritenDetail.resx">
-      <DependentUpon>KouritenDetail.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -82,12 +66,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ShukkaNyuuryoku.resx">
-      <DependentUpon>ShukkaNyuuryoku.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TokuisakiDetail.resx">
-      <DependentUpon>TokuisakiDetail.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

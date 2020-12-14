@@ -122,6 +122,7 @@ namespace MasterTouroku_Shouhin
             txtProduct.E102Check(true);
             txtChangeDate.E102Check(true);
             txtChangeDate.E103Check(true);
+            txtHinbanCD.E102Check(true);
             txtProductName.E102Check(true);
             txtShouhinRyakuName.E102Check(true);
 
@@ -266,6 +267,7 @@ namespace MasterTouroku_Shouhin
             shouhin_entity.CopyProduct = txtCopyProduct.Text.Trim();
             shouhin_entity.CopyRevisionDate = txtCopyChangeDate.Text.Trim();
             shouhin_entity.ShokutiFLG = chkShukou.Checked ? 1 : 0;
+            shouhin_entity.HinbanCD = txtHinbanCD.Text.Trim();
             shouhin_entity.ProductName = txtProductName.Text.Trim();
             shouhin_entity.ShouhinRyakuName = txtShouhinRyakuName.Text.Trim();
             shouhin_entity.KatakanaName = txtKatakanaName.Text.Trim();
@@ -362,6 +364,7 @@ namespace MasterTouroku_Shouhin
                     chkShukou.Checked = true;
                 else
                     chkShukou.Checked = false;
+                txtHinbanCD.Text = dt.Rows[0]["HinbanCD"].ToString();
                 txtProductName.Text = dt.Rows[0]["ShouhinName"].ToString();
                 txtShouhinRyakuName.Text = dt.Rows[0]["ShouhinRyakuName"].ToString();
                 txtKatakanaName.Text = dt.Rows[0]["KanaName"].ToString();
@@ -427,7 +430,6 @@ namespace MasterTouroku_Shouhin
 
         private string GetFileData()
         {
-            string xml = string.Empty;
             var filePath = string.Empty;
             ShouhinEntity obj = new ShouhinEntity();
             string Xml = string.Empty;
@@ -461,18 +463,18 @@ namespace MasterTouroku_Shouhin
                         dr["InsertOperator"] = base_entity.OperatorCD;
                         dr["UpdateOperator"] = base_entity.OperatorCD;
 
-                        string[] NullCheck_List = { "0", "1", "2", "3", "4", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"};
-                        string[] NullCheck_Msg = { "商品CD未入力エラー", "改定日未入力エラー", "諸口未入力エラー", "商品名未入力エラー", "略名未入力エラー", "単位CD未入力エラー", "ブランドCD未入力エラー", "カラーNO未入力エラー", "サイズNO未入力エラー", "上代単価未入力エラー", "下代単価未入力エラー", "標準原価単価未入力エラー", "税率区分未入力エラー", "在庫評価区分未入力エラー", "在庫管理区分未入力エラー", "主要仕入先未入力エラー" };
-                        string[] ByteCheck_List = { "0_20", "4_100", "5_80", "6_80", "8_13", "9_6", "10_6", "11_6", "12_2", "13_10", "14_13", "15_13", "22_10", "32_80"};
-                        string[] ByteCheck_Msg = { "商品CD桁数エラー", "商品名桁数エラー", "略名桁数エラー", "カナ名桁数エラー", "JANCD桁数エラー", "年度桁数エラー", "シーズンSS桁数エラー", "シーズンFW桁数エラー", "単位CD桁数エラー", "ブランドCD桁数エラー", "カラーNO桁数エラー", "サイズNO桁数エラー", "主要仕入先CD桁数エラー", "備考桁数エラー" };
-                        string[] ValueCheck_List = { "3", "19", "20", "21" };
+                        string[] NullCheck_List = { "0", "1", "2", "3", "4", "5", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"};
+                        string[] NullCheck_Msg = { "商品CD未入力エラー", "改定日未入力エラー", "諸口未入力エラー", "品番CD未入力エラー", "商品名未入力エラー", "略名未入力エラー", "単位CD未入力エラー", "ブランドCD未入力エラー", "カラーNO未入力エラー", "サイズNO未入力エラー", "上代単価未入力エラー", "下代単価未入力エラー", "標準原価単価未入力エラー", "税率区分未入力エラー", "在庫評価区分未入力エラー", "在庫管理区分未入力エラー", "主要仕入先未入力エラー" };
+                        string[] ByteCheck_List = { "0_50", "3_20", "4_100", "5_80", "6_80", "8_13", "9_6", "10_6", "11_6", "12_2", "13_10", "14_13", "15_13", "22_10", "32_80"};
+                        string[] ByteCheck_Msg = { "商品CD桁数エラー", "品番CD桁数エラー", "商品名桁数エラー", "略名桁数エラー", "カナ名桁数エラー", "JANCD桁数エラー", "年度桁数エラー", "シーズンSS桁数エラー", "シーズンFW桁数エラー", "単位CD桁数エラー", "ブランドCD桁数エラー", "カラーNO桁数エラー", "サイズNO桁数エラー", "主要仕入先CD桁数エラー", "備考桁数エラー" };
+                        string[] ValueCheck_List = { "2", "18", "19", "20" };
                         string[] ValueCheck_Amt = { "1", "2", "2", "1" };
-                        string[] DateCheck_List = { "2", "23", "24" };
-                        string[] NonNumeric_List = { "16", "17", "18", "27" };
+                        string[] DateCheck_List = { "1", "22", "23" };
+                        string[] NonNumeric_List = { "15", "16", "17", "26" };
                         string InputValue_Msg = "入力可能値外エラー";
-                        string[] MasterCheck_List = { "12", "13", "14", "15" };
+                        string[] MasterCheck_List = { "11", "12", "13", "14", "21" };
                         string[] MasterCheck_ID = { "102", "103", "104", "105" };
-                        string[] MasterCheck_Msg = { "単位CD未登録エラー", "ブランドCD未登録エラー", "サイズNO未登録エラー", "主要仕入先CD未登録エラー" };
+                        string[] MasterCheck_Msg = { "単位CD未登録エラー", "ブランドCD未登録エラー", "カラーNO未登録エラー", "サイズNO未登録エラー", "主要仕入先CD未登録エラー" };
 
                         for(int nc = 0; nc < NullCheck_List.Length; nc++)
                         {
@@ -534,10 +536,10 @@ namespace MasterTouroku_Shouhin
                                 error = "true";
                         }
 
-                        if (ImageFile_Check(data[31].ToString(), i, "指定したパスにファイルが存在しないエラー"))
+                        if (ImageFile_Check(data[30].ToString(), i, "指定したパスにファイルが存在しないエラー"))
                             error = "true";
                         else
-                            dr[31] = System.IO.File.ReadAllBytes(data[31].ToString());
+                            dr[30] = System.IO.File.ReadAllBytes(data[30].ToString());
 
                         dr["Error"] = error;
                         create_dt.Rows.Add(dr);
@@ -549,7 +551,7 @@ namespace MasterTouroku_Shouhin
                     Xml = string.Empty;
                 }
             }
-            return xml;
+            return Xml;
         }
 
 
@@ -576,7 +578,7 @@ namespace MasterTouroku_Shouhin
         public bool Date_Check(string csv_Date, int line_no, string error_msg)
         {
             bl = false;
-            if (!string.IsNullOrEmpty(csv_Date))
+            if (!string.IsNullOrWhiteSpace(csv_Date) || csv_Date != "NULL")
             {
                 if (!cf.CheckDateValue(csv_Date))
                 {
@@ -595,7 +597,7 @@ namespace MasterTouroku_Shouhin
                 bbl.ShowMessage("E276", line_no.ToString(), error_msg);
                 bl = true;
             }
-            else if ((Convert.ToInt32(obj_text) <= 0) || (Convert.ToInt32(obj_text) >= Amount))
+            else if ((Convert.ToInt32(obj_text) < 0) || (Convert.ToInt32(obj_text) > Amount))
             {
                 bbl.ShowMessage("E276", line_no.ToString(), error_msg);
                 bl = true;
