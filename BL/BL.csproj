@@ -59,6 +59,7 @@
     <Compile Include="ShukkaNyuuryokuBL.cs" />
     <Compile Include="ShukkaSiziDataShuturyokuBL.cs" />
     <Compile Include="ShukkasiziNyuuryokuBL.cs" />
+    <Compile Include="ShukkaTorikomi_BL.cs" />
     <Compile Include="SoukoBL.cs" />
     <Compile Include="StaffBL.cs" />
     <Compile Include="SiiresakiBL.cs" />
