@@ -484,5 +484,56 @@ namespace ChakuniNyuuryoku
         {
             sd.ShowDialog();
         }
+
+        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DataTable dt = txtStaffCD.IsDatatableOccurs;
+
+                if (dt.Rows.Count > 0)
+                {
+                    lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
+                }
+                else
+                {
+                    lblStaff.Text = string.Empty;
+                }
+            }
+        }
+
+        private void txtSiiresaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DataTable dt = txtSiiresaki.IsDatatableOccurs;
+
+                if (dt.Rows.Count > 0)
+                {
+                    lblSiiresaki.Text = dt.Rows[0]["SiiresakiName"].ToString();
+                }
+                else
+                {
+                    lblSiiresaki.Text = string.Empty;
+                }
+            }
+        }
+
+        private void sbWareHouse_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DataTable dt = sbWareHouse.IsDatatableOccurs;
+
+                if (dt.Rows.Count > 0)
+                {
+                    lblWareHouse.Text = dt.Rows[0]["SoukoName"].ToString();
+                }
+                else
+                {
+                    lblSiiresaki.Text = string.Empty;
+                }
+            }
+        }
     }
 }
