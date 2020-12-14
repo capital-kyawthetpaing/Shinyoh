@@ -1,4 +1,6 @@
-﻿using Entity;
+﻿using BL;
+using CKM_CommonFunction;
+using Entity;
 using Shinyoh;
 using Shinyoh_Search;
 using System;
@@ -14,10 +16,19 @@ using System.Windows.Forms;
 namespace ShukkaNyuuryoku {
     public partial class ShukkaNyuuryoku : BaseForm {
         multipurposeEntity multi_Entity;
+        CommonFunction cf;
+        StaffBL staffBL;
+        TokuisakiDetail tokuisakiDetail = new TokuisakiDetail();
+        KouritenDetail kouritenDetail = new KouritenDetail();
+        string YuuBinNO1 = string.Empty;
+        string YuuBinNO2 = string.Empty;
+        string Address = string.Empty;
         public ShukkaNyuuryoku()
         {
             InitializeComponent();
             multi_Entity = new multipurposeEntity();
+            cf = new CommonFunction();
+            staffBL = new StaffBL();
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -39,14 +50,30 @@ namespace ShukkaNyuuryoku {
             SetButton(ButtonType.BType.Empty, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "保存(F11)", true);
 
-            Date_Setting();
+            txtTokuisaki.lblName = lblTokuisakiName;
+            txtKouriten.lblName = lblKouritenName;
+            txtStaff.lblName = lblSatffName;
+
+
+            txtTokuisaki.ChangeDate = txtShukkaDate;
+            txtKouriten.ChangeDate = txtShukkaDate;
+            txtStaff.ChangeDate = txtShukkaDate;
+
             ChangeMode(Mode.New);
 
         }
-        private void Date_Setting()
+        private void New_Mode()
         {
             BaseEntity baseEntity = _GetBaseData();
             txtShukkaDate.Text = baseEntity.LoginDate;
+
+            StaffEntity staffEntity = new StaffEntity
+            {
+                StaffCD = OperatorCD
+            };
+            staffEntity = staffBL.GetStaffEntity(staffEntity);
+            txtStaff.Text = OperatorCD;
+            lblSatffName.Text = staffEntity.StaffName;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -116,6 +143,7 @@ namespace ShukkaNyuuryoku {
             {
                 case Mode.New:
                     ErrorCheck();
+                    New_Mode();
                     txtShukkaNo.E102Check(false);
                     txtShukkaNo.E133Check(false, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     txtShukkaNo.E160Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
@@ -130,7 +158,6 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
-                    //Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
@@ -140,7 +167,6 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
-                    //Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
 
@@ -150,23 +176,109 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
-                    //Disable_UDI_Mode();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
             }
+        }
+        private void Mode_Setting()
+        {
+            cf.Clear(PanelTitle);
+            cf.Clear(panelDetail);
+
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(panelDetail);
+
+            //lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            //lblKouriten_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            //lblStaff_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            //lblBrand_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            //lblYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
+
+            //lblTokuisaki_Name.Text = string.Empty;
+            //lblKouriten_Name.Text = string.Empty;
+            //lblStaff_Name.Text = string.Empty;
+            //lblBrand_Name.Text = string.Empty;
+            //Main_dt = new DataTable();
+            //gv1_to_dt1 = new DataTable();
+            //gv2_to_dt2 = new DataTable();
+            //internal_dt1 = new DataTable();
+            //internal_dt2 = new DataTable();
+            txtShukkaNo.Focus();
         }
         private void ErrorCheck()
         {
             txtShukkaDate.E102Check(true);
             txtShukkaDate.E103Check(true);
             txtShukkaDate.E115Check(true, "ShukkaNyuuryoku", txtShukkaDate);
+
+            txtTokuisaki.E102Check(true);
+            txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtShukkaDate, null);
+            txtTokuisaki.E267Check(true, "M_Tokuisaki", txtTokuisaki, txtShukkaDate);
+
+            txtKouriten.E102Check(true);
+            txtKouriten.E101Check(true, "M_Kouriten", txtKouriten, txtShukkaDate, null);
+
+            txtStaff.E102Check(true);
+            txtStaff.E101Check(true, "M_Staff", txtStaff, txtShukkaDate, null);
+            txtStaff.E135Check(true, "M_Staff", txtStaff, txtShukkaDate);
+
+            //txtShukkaSijiNo.E133Check(false, "ShukkaNyuuryoku", txtShukkaSijiNo, null, null);
+
+            txtShukkaYoteiDate1.E103Check(true);
+            txtShukkaYoteiDate2.E103Check(true);
+            txtShukkaYoteiDate2.E104Check(true, txtShukkaYoteiDate1, txtShukkaYoteiDate2);
+
+            txtDenpyouDate1.E103Check(true);
+            txtDenpyouDate2.E103Check(true);
+            txtDenpyouDate2.E104Check(true, txtDenpyouDate1, txtDenpyouDate2);
+
+            txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+            txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, null, null);
         }
         private void sButton1_Click(object sender, EventArgs e)
         {
             ShukkaNoSearch a = new ShukkaNoSearch();
             a.Show();
             
+        }
+
+        private void btnDetail1_Click(object sender, EventArgs e)
+        {
+            tokuisakiDetail.ShowDialog();
+        }
+
+        private void btnDetail2_Click(object sender, EventArgs e)
+        {
+            kouritenDetail.ShowDialog();
+        }
+
+        private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtYubin2.IsErrorOccurs)
+                {
+                    if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                    {
+                        DataTable dt = txtYubin2.IsDatatableOccurs;
+                        txtAddress.Text = dt.Rows[0]["Juusho1"].ToString();
+                    }
+                    else
+                    {
+                        if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
+                        {
+                            txtAddress.Text = string.Empty;
+                        }
+                        else
+                        {
+                            txtAddress.Text = Address;
+                        }
+                    }
+                }
+
+            }
         }
     }
 }
