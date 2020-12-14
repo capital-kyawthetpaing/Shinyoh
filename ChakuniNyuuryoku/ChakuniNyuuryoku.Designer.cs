@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.txtArrivalDate = new Shinyoh_Controls.STextBox();
             this.txtDescription = new Shinyoh_Controls.STextBox();
@@ -73,7 +73,7 @@
             this.colArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sButton4 = new Shinyoh_Controls.SButton();
+            this.btn_Siiresaki = new Shinyoh_Controls.SButton();
             this.lblStaff = new Shinyoh_Controls.SLabel();
             this.lblWareHouse = new Shinyoh_Controls.SLabel();
             this.lblBrandName = new Shinyoh_Controls.SLabel();
@@ -136,6 +136,7 @@
             this.txtArrivalDate.IsErrorOccurs = false;
             this.txtArrivalDate.IsRequire = false;
             this.txtArrivalDate.Location = new System.Drawing.Point(256, 5);
+            this.txtArrivalDate.MaxLength = 10;
             this.txtArrivalDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtArrivalDate.MoveNext = true;
             this.txtArrivalDate.Name = "txtArrivalDate";
@@ -159,6 +160,7 @@
             this.txtDescription.IsErrorOccurs = false;
             this.txtDescription.IsRequire = false;
             this.txtDescription.Location = new System.Drawing.Point(801, 29);
+            this.txtDescription.MaxLength = 40;
             this.txtDescription.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDescription.MoveNext = true;
             this.txtDescription.Name = "txtDescription";
@@ -298,6 +300,7 @@
             this.txtShouhinCD.IsErrorOccurs = false;
             this.txtShouhinCD.IsRequire = false;
             this.txtShouhinCD.Location = new System.Drawing.Point(258, 144);
+            this.txtShouhinCD.MaxLength = 20;
             this.txtShouhinCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhinCD.MoveNext = true;
             this.txtShouhinCD.Name = "txtShouhinCD";
@@ -345,6 +348,7 @@
             this.txtControlNo.IsErrorOccurs = false;
             this.txtControlNo.IsRequire = false;
             this.txtControlNo.Location = new System.Drawing.Point(520, 118);
+            this.txtControlNo.MaxLength = 10;
             this.txtControlNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtControlNo.MoveNext = true;
             this.txtControlNo.Name = "txtControlNo";
@@ -376,7 +380,7 @@
             this.txtJANCD.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD.Size = new System.Drawing.Size(120, 19);
             this.txtJANCD.TabIndex = 16;
-            this.txtJANCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJANCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // sbBrand
             // 
@@ -394,6 +398,7 @@
             this.sbBrand.IsRequire = false;
             this.sbBrand.lblName = null;
             this.sbBrand.Location = new System.Drawing.Point(809, 118);
+            this.sbBrand.MaxLength = 10;
             this.sbBrand.MinimumSize = new System.Drawing.Size(100, 19);
             this.sbBrand.MoveNext = true;
             this.sbBrand.Name = "sbBrand";
@@ -441,6 +446,7 @@
             this.txtYearTerm.IsErrorOccurs = false;
             this.txtYearTerm.IsRequire = false;
             this.txtYearTerm.Location = new System.Drawing.Point(1264, 118);
+            this.txtYearTerm.MaxLength = 4;
             this.txtYearTerm.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtYearTerm.MoveNext = true;
             this.txtYearTerm.Name = "txtYearTerm";
@@ -464,6 +470,7 @@
             this.txtSize.IsErrorOccurs = false;
             this.txtSize.IsRequire = false;
             this.txtSize.Location = new System.Drawing.Point(1265, 144);
+            this.txtSize.MaxLength = 13;
             this.txtSize.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSize.MoveNext = true;
             this.txtSize.Name = "txtSize";
@@ -688,8 +695,8 @@
             // colDate
             // 
             this.colDate.DataPropertyName = "ChakuniYoteiDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.colDate.HeaderText = "着荷予定日";
             this.colDate.Name = "colDate";
             this.colDate.ReadOnly = true;
@@ -727,19 +734,19 @@
             this.colDetails.Name = "colDetails";
             this.colDetails.Width = 260;
             // 
-            // sButton4
+            // btn_Siiresaki
             // 
-            this.sButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.sButton4.ButtonType = Entity.ButtonType.BType.Normal;
-            this.sButton4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.sButton4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sButton4.Location = new System.Drawing.Point(612, 29);
-            this.sButton4.Name = "sButton4";
-            this.sButton4.Size = new System.Drawing.Size(75, 23);
-            this.sButton4.TabIndex = 36;
-            this.sButton4.Text = "詳細";
-            this.sButton4.UseVisualStyleBackColor = false;
-            this.sButton4.Click += new System.EventHandler(this.sButton4_Click);
+            this.btn_Siiresaki.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btn_Siiresaki.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btn_Siiresaki.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Siiresaki.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_Siiresaki.Location = new System.Drawing.Point(612, 29);
+            this.btn_Siiresaki.Name = "btn_Siiresaki";
+            this.btn_Siiresaki.Size = new System.Drawing.Size(75, 23);
+            this.btn_Siiresaki.TabIndex = 36;
+            this.btn_Siiresaki.Text = "詳細";
+            this.btn_Siiresaki.UseVisualStyleBackColor = false;
+            this.btn_Siiresaki.Click += new System.EventHandler(this.btn_Siiresaki_Click);
             // 
             // lblStaff
             // 
@@ -801,7 +808,7 @@
             this.panelDetails.Controls.Add(this.txtYearTerm);
             this.panelDetails.Controls.Add(this.lblSiiresaki);
             this.panelDetails.Controls.Add(this.sLabel17);
-            this.panelDetails.Controls.Add(this.sButton4);
+            this.panelDetails.Controls.Add(this.btn_Siiresaki);
             this.panelDetails.Controls.Add(this.sLabel16);
             this.panelDetails.Controls.Add(this.lblStaff);
             this.panelDetails.Controls.Add(this.sLabel6);
@@ -878,6 +885,7 @@
             this.txtScheduledNo.IsRequire = false;
             this.txtScheduledNo.lblName = null;
             this.txtScheduledNo.Location = new System.Drawing.Point(258, 118);
+            this.txtScheduledNo.MaxLength = 12;
             this.txtScheduledNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtScheduledNo.MoveNext = true;
             this.txtScheduledNo.Name = "txtScheduledNo";
@@ -904,6 +912,7 @@
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.lblName = null;
             this.txtStaffCD.Location = new System.Drawing.Point(256, 52);
+            this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaffCD.MoveNext = true;
             this.txtStaffCD.Name = "txtStaffCD";
@@ -913,7 +922,6 @@
             this.txtStaffCD.Size = new System.Drawing.Size(100, 19);
             this.txtStaffCD.TabIndex = 46;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
             // 
             // txtSiiresaki
             // 
@@ -931,6 +939,7 @@
             this.txtSiiresaki.IsRequire = false;
             this.txtSiiresaki.lblName = null;
             this.txtSiiresaki.Location = new System.Drawing.Point(255, 29);
+            this.txtSiiresaki.MaxLength = 10;
             this.txtSiiresaki.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSiiresaki.MoveNext = true;
             this.txtSiiresaki.Name = "txtSiiresaki";
@@ -957,6 +966,7 @@
             this.sbWareHouse.IsRequire = false;
             this.sbWareHouse.lblName = null;
             this.sbWareHouse.Location = new System.Drawing.Point(801, 4);
+            this.sbWareHouse.MaxLength = 10;
             this.sbWareHouse.MinimumSize = new System.Drawing.Size(100, 19);
             this.sbWareHouse.MoveNext = true;
             this.sbWareHouse.Name = "sbWareHouse";
@@ -995,6 +1005,7 @@
             this.txtArrivalNO.IsRequire = false;
             this.txtArrivalNO.lblName = null;
             this.txtArrivalNO.Location = new System.Drawing.Point(126, 9);
+            this.txtArrivalNO.MaxLength = 12;
             this.txtArrivalNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtArrivalNO.MoveNext = true;
             this.txtArrivalNO.Name = "txtArrivalNO";
@@ -1004,6 +1015,7 @@
             this.txtArrivalNO.Size = new System.Drawing.Size(100, 19);
             this.txtArrivalNO.TabIndex = 1;
             this.txtArrivalNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtArrivalNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtArrivalNO_KeyDown_1);
             // 
             // ChakuniNyuuryoku
             // 
@@ -1061,7 +1073,7 @@
         private Shinyoh_Controls.SButton btnSave;
         private System.Windows.Forms.Label label2;
         private Shinyoh_Controls.SGridView gvChakuniNyuuryoku;
-        private Shinyoh_Controls.SButton sButton4;
+        private Shinyoh_Controls.SButton btn_Siiresaki;
         private Shinyoh_Controls.SLabel lblStaff;
         private Shinyoh_Search.SearchBox sbWareHouse;
         private Shinyoh_Controls.SLabel lblWareHouse;

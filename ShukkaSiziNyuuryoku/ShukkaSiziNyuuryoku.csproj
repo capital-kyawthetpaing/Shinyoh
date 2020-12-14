@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KouritenDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KouritenDetails.Designer.cs">
+      <DependentUpon>KouritenDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShukkaSiziNyuuryoku.cs">
@@ -57,6 +63,15 @@
     <Compile Include="ShukkaSiziNyuuryoku.Designer.cs">
       <DependentUpon>ShukkaSiziNyuuryoku.cs</DependentUpon>
     </Compile>
+    <Compile Include="TokuisakiDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TokuisakiDetails.Designer.cs">
+      <DependentUpon>TokuisakiDetails.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="KouritenDetails.resx">
+      <DependentUpon>KouritenDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -68,6 +83,9 @@
     </Compile>
     <EmbeddedResource Include="ShukkaSiziNyuuryoku.resx">
       <DependentUpon>ShukkaSiziNyuuryoku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TokuisakiDetails.resx">
+      <DependentUpon>TokuisakiDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

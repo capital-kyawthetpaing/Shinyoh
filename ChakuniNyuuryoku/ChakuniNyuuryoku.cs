@@ -75,6 +75,7 @@ namespace ChakuniNyuuryoku
                     txtArrivalNO.Focus();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
+                    F9.Visible = false;
                     break;
                 case Mode.Update:
                     txtArrivalNO.E102Check(true);
@@ -223,7 +224,6 @@ namespace ChakuniNyuuryoku
             chkEntity.BrandCD = sbBrand.Text;
             chkEntity.ColorNO = txtColor.Text;
             chkEntity.SizeNO = txtSize.Text;
-            chkEntity.YearTerm = txtYearTerm.Text;
             chkEntity.KanriNO = txtControlNo.Text;
             chkEntity.SoukoCD = sbWareHouse.Text;
             chkEntity.YearTerm = txtYearTerm.Text;
@@ -252,25 +252,6 @@ namespace ChakuniNyuuryoku
             dtcopy.Columns.Remove("d");
             gvJancd.DataSource = dtcopy;
         }
-        public string CheckValue()
-        {
-            string chk = string.Empty;
-
-            if (chkSS.Checked && !chkFW.Checked)
-            {
-                chk = "1";
-                return chk;
-            }
-            else if (chkFW.Checked && !chkSS.Checked)
-            {
-                chk = "2";
-                return chk;
-            }
-            else
-            {
-                return string.Empty;
-            }
-        }
         public void ErrorCheck()
        {
             txtArrivalNO.E102Check(true);
@@ -278,10 +259,11 @@ namespace ChakuniNyuuryoku
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
-            //txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
-            //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
+            txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
             sbWareHouse.E102Check(true);
             sbWareHouse.E101Check(true, "souko", sbWareHouse, null, null);
             txtScheduledNo.E133Check(true, "M_Siiresaki", txtScheduledNo, txtArrivalDate, null);
@@ -333,6 +315,7 @@ namespace ChakuniNyuuryoku
                     dt.Columns.Remove("SiiresakiTelNO2-1");
                     dt.Columns.Remove("SiiresakiTelNO2-2");
                     dt.Columns.Remove("SiiresakiTelNO2-3");
+                    dt.Columns.Remove("SiireKanryouKBN");
                     dtmain = dt.Copy();
                     if (dtmain.Columns.Contains("SiiresakiCD"))
                     {
@@ -384,7 +367,16 @@ namespace ChakuniNyuuryoku
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-           GetData();
+            if (string.IsNullOrWhiteSpace(txtScheduledNo.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
+                 string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColor.Text)&& (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSize.Text))
+            {
+                GetData();
+            }
+            else
+            {
+                bbl.ShowMessage("E111");
+                txtScheduledNo.Focus();
+            }
         }
 
         private void sbBrand_KeyDown(object sender, KeyEventArgs e)
@@ -461,31 +453,6 @@ namespace ChakuniNyuuryoku
             }
         }
 
-        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode==Keys.Enter)
-            {
-                chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
-                ChakuniNyuuryoku_Entity ane = new ChakuniNyuuryoku_Entity();
-                DataTable dt = bl.DateCheck(ane);
-
-                if (dt.Rows.Count > 0)
-                {
-                    lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
-                }
-                else
-                {
-                    bbl.ShowMessage("E135");
-                    txtStaffCD.Focus();
-                }
-            }
-        }
-
-        private void sButton4_Click(object sender, EventArgs e)
-        {
-            sd.ShowDialog();
-        }
-
         private void txtArrivalNO_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -502,9 +469,19 @@ namespace ChakuniNyuuryoku
                 DataTable dt = txtArrivalNO.IsDatatableOccurs;
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
-                    ChakuniNyuuryokuSelect(dt);
+                   string kbn = dt.Rows[0]["SiireKanryouKBN"].ToString();
+                   if (Convert.ToDecimal(kbn)== 1)
+                   {
+                      ChakuniNyuuryokuSelect(dt);
+                      gvChakuniNyuuryoku.Columns["colArrivalTime"].ReadOnly = true;
+                   }
                 }
             }
+        }
+
+        private void btn_Siiresaki_Click(object sender, EventArgs e)
+        {
+            sd.ShowDialog();
         }
     }
 }

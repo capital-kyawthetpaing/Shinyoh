@@ -86,14 +86,5 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("ArrivalNO_Search", GetConnectionString(), ane.Sqlprms);
             return dt;
         }
-
-        public DataTable DateCheck(ChakuniNyuuryoku_Entity ane)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[1];
-            parameters[0] = new SqlParameter("@ArrivalDate", SqlDbType.VarChar) { Value = ane.ChakuniDate };
-            DataTable dt = ckmdl.SelectDatatable("Date_Check", GetConnectionString(), parameters);
-            return dt;
-        }
     }
 }
