@@ -51,22 +51,46 @@ namespace ShukkaTorikomi
 
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
-
+            dataBind();
+           
         }
 
-        private void ShukkaTorikomi_Load(object sender, KeyEventArgs e)
+        //private void ShukkaTorikomi_Load(object sender, KeyEventArgs e)
+        //{
+        //    multipurposeBL bl = new multipurposeBL();
+
+        //    DataTable dt = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
+
+        //    if (dt.Rows.Count > 0)
+        //    {
+        //        txtShukkaToNo1.Text = dt.Rows[0]["Char1"].ToString();
+        //        txtShukkaToNo2.Text = dt.Rows[0]["Char2"].ToString();
+        //    }
+        //    else
+        //    {
+        //        txtShukkaToNo1.Text = string.Empty;
+        //        txtShukkaToNo2.Text = string.Empty;
+        //    }
+
+        //}
+
+        private void dataBind()
         {
             multipurposeBL bl = new multipurposeBL();
 
             DataTable dt = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
 
             if (dt.Rows.Count > 0)
-                label1.Text = dt.Rows[0]["Char1"].ToString(); label2.Text = dt.Rows[0]["Char2"].ToString();
-            else label1.Text = string.Empty; label2.Text = string.Empty;
-
+            {
+                txtShukkaToNo1.Text = dt.Rows[0]["Char1"].ToString();
+                txtShukkaToNo2.Text = dt.Rows[0]["Char2"].ToString();
+            }
+            else
+            {
+                txtShukkaToNo1.Text = string.Empty;
+                txtShukkaToNo2.Text = string.Empty;
+            }
         }
-
-
     
 
 

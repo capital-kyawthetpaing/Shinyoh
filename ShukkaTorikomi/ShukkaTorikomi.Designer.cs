@@ -130,7 +130,7 @@
             this.panel_Details.Controls.Add(this.sLabel5);
             this.panel_Details.Controls.Add(this.sLabel4);
             this.panel_Details.Controls.Add(this.sLabel3);
-            this.panel_Details.Location = new System.Drawing.Point(3, 76);
+            this.panel_Details.Location = new System.Drawing.Point(12, 76);
             this.panel_Details.Name = "panel_Details";
             this.panel_Details.Size = new System.Drawing.Size(1345, 570);
             this.panel_Details.TabIndex = 3;
