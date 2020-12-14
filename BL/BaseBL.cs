@@ -150,7 +150,7 @@ namespace BL
                 SqlCommand cmd = new SqlCommand(sp, con);
                 for (int i = 0; i < parameter.Length; i++)
                 {
-                    cmd.Parameters.Add(parameter[i].ParameterName, parameter[i].SqlDbType).Value = !string.IsNullOrEmpty(parameter[i].Value.ToString().Trim()) ? parameter[i].Value : DBNull.Value;
+                    cmd.Parameters.Add(parameter[i].ParameterName, parameter[i].SqlDbType).Value = !string.IsNullOrEmpty(parameter[i].Value.ToString()) ? parameter[i].Value : DBNull.Value;
                 }
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Connection.Open();
