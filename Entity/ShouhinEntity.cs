@@ -9,11 +9,12 @@ namespace Entity
     public class ShouhinEntity : BaseEntity
     {
         public string Product { get; set; }
-        public string Product1 { get; set; }
         public string RevisionDate { get; set; }
         public string CopyProduct { get; set; }
         public string CopyRevisionDate { get; set; }
         public int ShokutiFLG { get; set; }
+        public string HinbanCD { get; set; }
+        public string HinbanCD1 { get; set; }
         public string ProductName { get; set;  }
         public string ShouhinRyakuName { get; set; }
         public string KatakanaName { get; set; }
