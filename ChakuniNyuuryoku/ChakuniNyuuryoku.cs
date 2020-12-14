@@ -259,8 +259,8 @@ namespace ChakuniNyuuryoku
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
-            txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
-            txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            //txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
@@ -368,14 +368,14 @@ namespace ChakuniNyuuryoku
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtScheduledNo.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
-                 string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColor.Text)&& (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSize.Text))
-            {
-                GetData();
-            }
-            else
+                 string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColor.Text)&& string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSize.Text))
             {
                 bbl.ShowMessage("E111");
                 txtScheduledNo.Focus();
+            }
+            else
+            {
+                GetData();
             }
         }
 
@@ -409,6 +409,7 @@ namespace ChakuniNyuuryoku
             txtYearTerm.Clear();
             txtSize.Clear();
             txtScheduledNo.Focus();
+            gvChakuniNyuuryoku.Refresh();
         }
         private DataTable savedata()
         {
