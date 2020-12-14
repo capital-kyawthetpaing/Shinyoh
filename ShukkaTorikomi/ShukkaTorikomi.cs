@@ -14,13 +14,15 @@ namespace ShukkaTorikomi
     {
         CommonFunction cf;
         multipurposeEntity multi_Entity;
-        BaseBL bbl;         
+        ShukkaTorikomi_BL ShukkaTorikomi_BL;
+        BaseBL bbl;
 
         public ShukkaTorikomi()
         {
             InitializeComponent();
             cf = new CommonFunction();
             multi_Entity = new multipurposeEntity();
+            ShukkaTorikomi_BL = new ShukkaTorikomi_BL();
             bbl = new BaseBL();
         }
 
@@ -29,7 +31,7 @@ namespace ShukkaTorikomi
             ProgramID = "ShukkaTorikomi";
             StartProgram();
             cboMode.Visible = false;
-            
+
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", false);
             SetButton(ButtonType.BType.Update, F3, "変更(F3)", false);
@@ -43,8 +45,32 @@ namespace ShukkaTorikomi
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", false);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
-            txtShukkaToNo1.Focus();
+
+            txtShukkaToNo1.Enabled = true;
+            txtShukkaToNo2.Enabled = true;
+
+            txtDate1.Enabled = false;
+            txtDate2.Enabled = false;
+
         }
+
+        private void ShukkaTorikomi_Load(object sender, KeyEventArgs e)
+        {
+            multipurposeBL bl = new multipurposeBL();
+
+            DataTable dt = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
+
+            if (dt.Rows.Count > 0)
+                label1.Text = dt.Rows[0]["Char1"].ToString(); label2.Text = dt.Rows[0]["Char2"].ToString();
+            else label1.Text = string.Empty; label2.Text = string.Empty;
+
+        }
+
+
+    
+
+
+
 
         //private void ChangeMode(Mode mode)
         //{
