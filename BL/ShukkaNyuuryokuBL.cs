@@ -30,5 +30,15 @@ namespace BL {
             DataTable dt = ckmdl.SelectDatatable("ShukkaNo_Search", GetConnectionString(), obj.Sqlprms);
             return dt;
         }
+        public DataTable ShukkaNyuuryoku_Select_Check(string shukkaNo, string shukkaDate, string errtype)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@ShukkaNo", SqlDbType.VarChar) { Value = shukkaNo };
+            parameters[1] = new SqlParameter("@ShukkaDate", SqlDbType.VarChar) { Value = shukkaDate };
+            parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = errtype };
+            DataTable dt = ckmdl.SelectDatatable("ShukkaNyuuryoku_Select_Check", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }
