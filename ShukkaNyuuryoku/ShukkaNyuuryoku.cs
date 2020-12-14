@@ -216,9 +216,12 @@ namespace ShukkaNyuuryoku {
             txtTokuisaki.E102Check(true);
             txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtShukkaDate, null);
             txtTokuisaki.E267Check(true, "M_Tokuisaki", txtTokuisaki, txtShukkaDate);
+            txtTokuisaki.E227Check(true, "M_Tokuisaki", txtTokuisaki, txtShukkaDate);
 
             txtKouriten.E102Check(true);
             txtKouriten.E101Check(true, "M_Kouriten", txtKouriten, txtShukkaDate, null);
+            txtKouriten.E267Check(true, "M_Kouriten", txtKouriten, txtShukkaDate);
+            txtKouriten.E227Check(true, "M_Kouriten", txtKouriten, txtShukkaDate);
 
             txtStaff.E102Check(true);
             txtStaff.E101Check(true, "M_Staff", txtStaff, txtShukkaDate, null);
@@ -343,5 +346,69 @@ namespace ShukkaNyuuryoku {
                 }
             }
         }
+
+        private void txtKouriten_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtTokuisaki.IsErrorOccurs)
+                {
+                    DataTable dt = txtKouriten.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        kouritenDetail.Access_Kouriten_obj = From_DB_To_Kouriten(dt);
+                    }
+                }
+            }
+        }
+        private KouritenEntity From_DB_To_Kouriten(DataTable dt)
+        {
+            KouritenEntity obj = new KouritenEntity();
+            obj.KouritenCD = dt.Rows[0]["KouritenCD"].ToString();
+            obj.KouritenRyakuName = dt.Rows[0]["KouritenRyakuName"].ToString();
+            obj.KouritenName = dt.Rows[0]["KouritenName"].ToString();
+            if (dt.Columns.Contains("KouritenYuubinNO1"))
+                obj.YuubinNO1 = dt.Rows[0]["KouritenYuubinNO1"].ToString();
+            else
+                obj.YuubinNO1 = dt.Rows[0]["YuubinNO1"].ToString();
+            if (dt.Columns.Contains("KouritenYuubinNO2"))
+                obj.YuubinNO2 = dt.Rows[0]["KouritenYuubinNO2"].ToString();
+            else
+                obj.YuubinNO2 = dt.Rows[0]["YuubinNO2"].ToString();
+            if (dt.Columns.Contains("KouritenJuusho1"))
+                obj.Juusho1 = dt.Rows[0]["KouritenJuusho1"].ToString();
+            else
+                obj.Juusho1 = dt.Rows[0]["Juusho1"].ToString();
+            if (dt.Columns.Contains("KouritenJuusho2"))
+                obj.Juusho2 = dt.Rows[0]["KouritenJuusho2"].ToString();
+            else
+                obj.Juusho2 = dt.Rows[0]["Juusho2"].ToString();
+            if (dt.Columns.Contains("KouritenTelNO1-1"))
+                obj.Tel11 = dt.Rows[0]["KouritenTelNO1-1"].ToString();
+            else
+                obj.Tel11 = dt.Rows[0]["Tel11"].ToString();
+            if (dt.Columns.Contains("KouritenTelNO1-2"))
+                obj.Tel12 = dt.Rows[0]["KouritenTelNO1-2"].ToString();
+            else
+                obj.Tel12 = dt.Rows[0]["Tel12"].ToString();
+            if (dt.Columns.Contains("KouritenTelNO1-3"))
+                obj.Tel13 = dt.Rows[0]["KouritenTelNO1-3"].ToString();
+            else
+                obj.Tel13 = dt.Rows[0]["Tel13"].ToString();
+            if (dt.Columns.Contains("KouritenTelNO2-1"))
+                obj.Tel21 = dt.Rows[0]["KouritenTelNO2-1"].ToString();
+            else
+                obj.Tel21 = dt.Rows[0]["Tel21"].ToString();
+            if (dt.Columns.Contains("KouritenTelNO2-2"))
+                obj.Tel22 = dt.Rows[0]["KouritenTelNO2-2"].ToString();
+            else
+                obj.Tel22 = dt.Rows[0]["Tel22"].ToString();
+            if (dt.Columns.Contains("KouritenTelNO2-3"))
+                obj.Tel23 = dt.Rows[0]["KouritenTelNO2-3"].ToString();
+            else
+                obj.Tel23 = dt.Rows[0]["Tel23"].ToString();
+            return obj;
+        }
+
     }
 }
