@@ -351,6 +351,8 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();            
             dtgv1= sksz_bl.ShukkasiziNyuuryoku_Display(sksz_e, 1);
             gvChakuniNyuuryoku.DataSource = dtgv1;
+            dtgv2 = sksz_bl.ShukkasiziNyuuryoku_Display(sksz_e, 2);
+            gvDetail.DataSource = dtgv2;
 
         }
         private void btnSave_Click(object sender, EventArgs e)
