@@ -40,12 +40,13 @@ namespace BL
         public DataTable ShukkasiziNyuuryoku_Display(ShukkaSiziNyuuryokuEntity se, int type)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[4];
+            var parameters = new SqlParameter[5];
             parameters[0] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = se.TokuisakiCD };
             parameters[1] = new SqlParameter("@JuchuuNO", SqlDbType.VarChar) { Value = se.JuchuuNO };
             parameters[2] = new SqlParameter("@SenpouHacchuuNO", SqlDbType.VarChar) { Value = se.SenpyouhachuuNo };
             parameters[3] = new SqlParameter("@Type", SqlDbType.TinyInt) { Value = type };
-            DataTable dt = ckmdl.SelectDatatable("Shukkasizi_Display", GetConnectionString(), parameters);
+            parameters[4] = new SqlParameter("@ShippingDate", SqlDbType.Date) { Value = se.ShippingDate};
+            DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_Display", GetConnectionString(), parameters);
             return dt;
         }
         public DataTable ShippingNO_Search(ShukkaSiziNyuuryokuEntity sksze)
