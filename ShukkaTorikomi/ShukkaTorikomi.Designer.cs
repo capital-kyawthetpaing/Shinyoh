@@ -101,6 +101,7 @@
             this.rdo_Toroku.TabStop = true;
             this.rdo_Toroku.Text = "登録";
             this.rdo_Toroku.UseVisualStyleBackColor = true;
+            this.rdo_Toroku.CheckedChanged += new System.EventHandler(this.rdo_Toroku_CheckedChanged);
             // 
             // rdo_Sakujo
             // 
@@ -114,6 +115,7 @@
             this.rdo_Sakujo.TabIndex = 2;
             this.rdo_Sakujo.Text = "削除";
             this.rdo_Sakujo.UseVisualStyleBackColor = true;
+            this.rdo_Sakujo.CheckedChanged += new System.EventHandler(this.rdo_Sakujo_CheckedChanged);
             // 
             // panel_Details
             // 

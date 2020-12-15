@@ -29,8 +29,8 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             dgDetail.UseRowNo(true);
-            dgDetail.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgDetail.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dgDetail.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dgDetail.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             BindDataGrid();
             if (string.IsNullOrWhiteSpace(parent_changeDate))
                 txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", DateTime.Now);
@@ -93,6 +93,26 @@ namespace Shinyoh_Search
             shouhin.Size = txtSize.Text;
             DataTable dt = shouhinbl.Shouhin_SearchData(shouhin);
             dgDetail.DataSource = dt;
+
+            this.dgDetail.CellPainting += new DataGridViewCellPaintingEventHandler(dgDetail_CellPainting);
+            this.dgDetail.Paint += new PaintEventHandler(dgDetail_Paint);
+            this.dgDetail.Scroll += new ScrollEventHandler(dgDetail_Scroll);
+            this.dgDetail.ColumnWidthChanged += new DataGridViewColumnEventHandler(dgDetail_ColumnWidthChanged);
+
+            this.dgDetail.Columns[0].Visible = false;
+            this.dgDetail.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgDetail.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgDetail.Columns[13].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgDetail.Columns[13].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            this.dgDetail.Columns[5].HeaderText = "";
+            this.dgDetail.Columns[6].HeaderText = "";
+            this.dgDetail.Columns[7].HeaderText = "";
+            this.dgDetail.Columns[8].HeaderText = "";
+            this.dgDetail.Columns[9].HeaderText = "";
+            this.dgDetail.Columns[10].HeaderText = "";
+            this.dgDetail.Columns[11].HeaderText = "";
+            this.dgDetail.Columns[12].HeaderText = "";
         }
 
         private void GetGridviewData(DataGridViewRow gvrow)
@@ -101,8 +121,59 @@ namespace Shinyoh_Search
             {
                 DataGridViewRow row = gvrow;
                 shouhinCD = row.Cells["ShouhinCD"].Value.ToString();
-                changeDate = Convert.ToDateTime(row.Cells["ChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
+                changeDate = Convert.ToDateTime(row.Cells["改定日"].Value.ToString()).ToString("yyyy/MM/dd");
                 this.Close();
+            }
+        }
+
+        private void dgDetail_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            Rectangle rtHeader = this.dgDetail.DisplayRectangle;
+            rtHeader.Height = this.dgDetail.ColumnHeadersHeight / 2;
+            this.dgDetail.Invalidate(rtHeader);
+        }
+
+        private void dgDetail_Scroll(object sender, ScrollEventArgs e)
+        {
+            Rectangle rtHeader = this.dgDetail.DisplayRectangle;
+            rtHeader.Height = this.dgDetail.ColumnHeadersHeight / 2;
+            this.dgDetail.Invalidate(rtHeader);
+        }
+
+        private void dgDetail_Paint(object sender, PaintEventArgs e)
+        {
+            string[] months = { "ブランド", "カラー", "サイズ", "単位" };
+            for (int j = 0; j < 8;)
+            {
+                Rectangle r1 = this.dgDetail.GetCellDisplayRectangle(j + 5, -1, true);
+                int w2 = this.dgDetail.GetCellDisplayRectangle(j + 6, -1, true).Width;
+                r1.X += 1;
+                r1.Y += 1;
+                r1.Width = r1.Width + w2 - 2;
+                r1.Height = r1.Height - 2;
+                e.Graphics.FillRectangle(new SolidBrush(Color.White), r1);
+                StringFormat format = new StringFormat();
+                format.Alignment = StringAlignment.Center;
+                format.LineAlignment = StringAlignment.Center;
+                e.Graphics.DrawString(months[j / 2],
+                    this.dgDetail.ColumnHeadersDefaultCellStyle.Font,
+                    new SolidBrush(this.dgDetail.ColumnHeadersDefaultCellStyle.ForeColor),
+                    r1,
+                    format);
+                j += 2;
+            }
+        }
+
+        private void dgDetail_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1 && e.ColumnIndex > -1)
+            {
+                Rectangle r2 = e.CellBounds;
+                r2.Y += e.CellBounds.Height / 2;
+                r2.Height = e.CellBounds.Height / 2;
+                e.PaintBackground(r2, true);
+                e.PaintContent(r2);
+                e.Handled = true;
             }
         }
     }

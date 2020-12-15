@@ -51,28 +51,11 @@ namespace ShukkaTorikomi
 
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
+            txtNo.Enabled = false;
             dataBind();
            
         }
 
-        //private void ShukkaTorikomi_Load(object sender, KeyEventArgs e)
-        //{
-        //    multipurposeBL bl = new multipurposeBL();
-
-        //    DataTable dt = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
-
-        //    if (dt.Rows.Count > 0)
-        //    {
-        //        txtShukkaToNo1.Text = dt.Rows[0]["Char1"].ToString();
-        //        txtShukkaToNo2.Text = dt.Rows[0]["Char2"].ToString();
-        //    }
-        //    else
-        //    {
-        //        txtShukkaToNo1.Text = string.Empty;
-        //        txtShukkaToNo2.Text = string.Empty;
-        //    }
-
-        //}
 
         private void dataBind()
         {
@@ -92,7 +75,6 @@ namespace ShukkaTorikomi
             }
         }
 
-
         private void rdo_Toroku_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo_Toroku.Checked == true)
@@ -101,6 +83,16 @@ namespace ShukkaTorikomi
                 Disable_Method();
             }
         }
+
+
+        //private void rdo_Toroku_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (rdo_Toroku.Checked == true)
+        //    {
+        //        rdo_Sakujo.Checked = false;
+        //        Disable_Method();
+        //    }
+        //}
         private void Enable_Method()
         {
             txtShukkaToNo1.Enabled = true;
@@ -108,7 +100,6 @@ namespace ShukkaTorikomi
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
             txtNo.Enabled = false;
-
         }
         private void Disable_Method()
         {
@@ -123,8 +114,8 @@ namespace ShukkaTorikomi
             txtDate1.Enabled = true;
             txtDate2.Enabled = true;
             txtNo.Enabled = true;
-
         }
+
         private void rdo_Sakujo_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo_Sakujo.Checked == true)
@@ -133,42 +124,5 @@ namespace ShukkaTorikomi
                 Enable_Method();
             }
         }
-
-
-
-
-
-
-        //private void ChangeMode(Mode mode)
-        //{
-        //    switch (mode)
-        //    {
-        //        case Mode.New:
-        //            ErrorCheck();
-
-        //            cf.Clear(PanelTitle);
-        //            cf.Clear(panelDetails);
-        //            cf.EnablePanel(PanelTitle);
-        //            cf.EnablePanel(panelDetails);
-        //            sbShippingNO.Focus();
-        //            New_Mode();
-        //            Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-        //            btnNew.Visible = true;
-        //            break;
-        //        case Mode.Update:
-        //            Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-        //            btnUpdate.Visible = true;
-        //            break;
-        //        case Mode.Delete:
-        //            Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-        //            btnDelete.Visible = true;
-        //            break;
-        //        case Mode.Inquiry:
-        //            Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-        //            btnInquiry.Visible = false;
-        //            break;
-        //    }
-
-        //}
     }
 }

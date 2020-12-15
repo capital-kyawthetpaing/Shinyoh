@@ -65,16 +65,6 @@
             this.rdoRecentRevisionDate = new Shinyoh_Controls.SRadio();
             this.lblDisplayTarget = new Shinyoh_Controls.SLabel();
             this.dgDetail = new Shinyoh_Controls.SGridView();
-            this.ShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HinbanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.YearTerm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BrandCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColorCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SizeCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ChangeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetail)).BeginInit();
             this.SuspendLayout();
@@ -737,17 +727,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ShouhinCD,
-            this.HinbanCD,
-            this.ShouhinName,
-            this.JANCD,
-            this.YearTerm,
-            this.BrandCD,
-            this.ColorCD,
-            this.SizeCD,
-            this.Remarks,
-            this.ChangeDate});
             this.dgDetail.Location = new System.Drawing.Point(15, 120);
             this.dgDetail.MultiSelect = false;
             this.dgDetail.Name = "dgDetail";
@@ -755,92 +734,10 @@
             this.dgDetail.Size = new System.Drawing.Size(1175, 343);
             this.dgDetail.TabIndex = 3;
             this.dgDetail.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDetail_CellMouseDoubleClick);
-            // 
-            // ShouhinCD
-            // 
-            this.ShouhinCD.DataPropertyName = "ShouhinCD";
-            this.ShouhinCD.FillWeight = 120F;
-            this.ShouhinCD.HeaderText = "商品";
-            this.ShouhinCD.Name = "ShouhinCD";
-            this.ShouhinCD.ReadOnly = true;
-            this.ShouhinCD.Width = 120;
-            this.ShouhinCD.Visible = false;
-            // 
-            // ShouhinCD
-            // 
-            this.HinbanCD.DataPropertyName = "HinbanCD";
-            this.HinbanCD.FillWeight = 120F;
-            this.HinbanCD.HeaderText = "品番";
-            this.HinbanCD.Name = "HinbanCD";
-            this.HinbanCD.ReadOnly = true;
-            this.HinbanCD.Width = 120;
-            // 
-            // ShouhinName
-            // 
-            this.ShouhinName.DataPropertyName = "ShouhinName";
-            this.ShouhinName.FillWeight = 200F;
-            this.ShouhinName.HeaderText = "商品名";
-            this.ShouhinName.Name = "ShouhinName";
-            this.ShouhinName.ReadOnly = true;
-            this.ShouhinName.Width = 200;
-            // 
-            // JANCD
-            // 
-            this.JANCD.DataPropertyName = "JANCD";
-            this.JANCD.HeaderText = "JANCD";
-            this.JANCD.Name = "JANCD";
-            this.JANCD.ReadOnly = true;
-            // 
-            // YearTerm
-            // 
-            this.YearTerm.DataPropertyName = "YearTerm";
-            this.YearTerm.HeaderText = "展示会";
-            this.YearTerm.Name = "YearTerm";
-            this.YearTerm.ReadOnly = true;
-            // 
-            // BrandCD
-            // 
-            this.BrandCD.DataPropertyName = "BrandCD";
-            this.BrandCD.FillWeight = 250F;
-            this.BrandCD.HeaderText = "ブランド";
-            this.BrandCD.Name = "BrandCD";
-            this.BrandCD.ReadOnly = true;
-            this.BrandCD.Width = 250;
-            // 
-            // ColorCD
-            // 
-            this.ColorCD.DataPropertyName = "ColorNO";
-            this.ColorCD.FillWeight = 250F;
-            this.ColorCD.HeaderText = "カラー";
-            this.ColorCD.Name = "ColorCD";
-            this.ColorCD.ReadOnly = true;
-            this.ColorCD.Width = 250;
-            // 
-            // SizeCD
-            // 
-            this.SizeCD.DataPropertyName = "SizeNO";
-            this.SizeCD.FillWeight = 250F;
-            this.SizeCD.HeaderText = "サイズ";
-            this.SizeCD.Name = "SizeCD";
-            this.SizeCD.ReadOnly = true;
-            this.SizeCD.Width = 250;
-            // 
-            // Remarks
-            // 
-            this.Remarks.DataPropertyName = "TaniCD";
-            this.Remarks.FillWeight = 180F;
-            this.Remarks.HeaderText = "単位";
-            this.Remarks.Name = "Remarks";
-            this.Remarks.ReadOnly = true;
-            this.Remarks.Width = 180;
-            // 
-            // ChangeDate
-            // 
-            this.ChangeDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ChangeDate.DataPropertyName = "ChangeDate";
-            this.ChangeDate.HeaderText = "改定日";
-            this.ChangeDate.Name = "ChangeDate";
-            this.ChangeDate.ReadOnly = true;
+            this.dgDetail.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgDetail_CellPainting);
+            this.dgDetail.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgDetail_ColumnWidthChanged);
+            this.dgDetail.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgDetail_Scroll);
+            this.dgDetail.Paint += new System.Windows.Forms.PaintEventHandler(this.dgDetail_Paint);
             // 
             // Shouhin_Search
             // 
@@ -900,15 +797,5 @@
         private Shinyoh_Controls.SCheckBox chkSS;
         private System.Windows.Forms.Label label4;
         private Shinyoh_Controls.SGridView dgDetail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ShouhinCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HinbanCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ShouhinName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn JANCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn YearTerm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BrandCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColorCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SizeCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Remarks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ChangeDate;
     }
 }
