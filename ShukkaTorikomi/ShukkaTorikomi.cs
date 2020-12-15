@@ -125,7 +125,7 @@ namespace ShukkaTorikomi
             txtDate1.E103Check(true);
             txtDate2.E103Check(true);
             txtNo.E102Check(true);
-            //txtNo.E165Check(true);
+            txtNo.E165Check(true, "ShukkaTorikom", txtNo,null);
         }
     }
 }

@@ -403,15 +403,15 @@ namespace Shinyoh_Controls
                 string result = string.Empty;
                 switch (sTextBox.E165Type)
                 {
-                    case "D_Shukka":
-                        ShukkaTorikomi_BL t_bl = new ShukkaTorikomi_BL();
-                        rDt = t_bl.ShukkaTorikomi_Error_Check(sTextBox.ctrlE165_1.Text, sTextBox.ctrlE165_2.Text, "E165");
+                    case "ShukkaTorikom":
+                        ShukkaTorikomi_BL sbl = new ShukkaTorikomi_BL();
+                        rDt = sbl.ShukkaTorikomi_Error_Check(sTextBox.ctrlE165_1.Text,"E165");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
                 if (result.Equals("E165"))
                 {
-                    bbl.ShowMessage("E165", "取引終了日");
+                    bbl.ShowMessage("E165");
                     sTextBox.Focus();
                     return (true, rDt);
                 }

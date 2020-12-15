@@ -409,6 +409,13 @@ namespace Shinyoh_Controls
             ctrlE160_1 = ctrl1;
             ctrlE160_2 = ctrl2;
         }
+        public void E165Check(bool value, string type, Control ctrl1, Control ctrl2)
+        {
+            E165 = value;
+            E165Type = type;
+            ctrlE165_1 = ctrl1;
+            ctrlE165_2 = ctrl2;
+        }
         public void E166Check(bool value,Control ctrl1,Control ctrl2)
         {
             E166 = value;
