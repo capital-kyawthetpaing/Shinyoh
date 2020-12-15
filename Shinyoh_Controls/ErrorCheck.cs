@@ -398,6 +398,24 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
+            if (sTextBox.E165)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E165Type)
+                {
+                    case "D_Shukka":
+                        ShukkaTorikomi_BL t_bl = new ShukkaTorikomi_BL();
+                        rDt = t_bl.ShukkaTorikomi_Error_Check(sTextBox.ctrlE165_1.Text, sTextBox.ctrlE165_2.Text, "E165");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E165"))
+                {
+                    bbl.ShowMessage("E165", "取引終了日");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
             if (sTextBox.E166)
             {
                 if (!sTextBox.ctrlE166_1.Text.Equals(sTextBox.ctrlE166_2.Text))
