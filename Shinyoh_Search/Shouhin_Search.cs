@@ -121,7 +121,7 @@ namespace Shinyoh_Search
             {
                 DataGridViewRow row = gvrow;
                 shouhinCD = row.Cells["ShouhinCD"].Value.ToString();
-                changeDate = Convert.ToDateTime(row.Cells["ChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
+                changeDate = Convert.ToDateTime(row.Cells["改定日"].Value.ToString()).ToString("yyyy/MM/dd");
                 this.Close();
             }
         }
