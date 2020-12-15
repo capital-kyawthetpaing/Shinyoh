@@ -75,7 +75,6 @@ namespace ShukkaTorikomi
             }
         }
 
-
         private void rdo_Toroku_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo_Toroku.Checked == true)
@@ -84,6 +83,16 @@ namespace ShukkaTorikomi
                 Disable_Method();
             }
         }
+
+
+        //private void rdo_Toroku_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (rdo_Toroku.Checked == true)
+        //    {
+        //        rdo_Sakujo.Checked = false;
+        //        Disable_Method();
+        //    }
+        //}
         private void Enable_Method()
         {
             txtShukkaToNo1.Enabled = true;
@@ -91,7 +100,6 @@ namespace ShukkaTorikomi
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
             txtNo.Enabled = false;
-
         }
         private void Disable_Method()
         {
@@ -106,8 +114,8 @@ namespace ShukkaTorikomi
             txtDate1.Enabled = true;
             txtDate2.Enabled = true;
             txtNo.Enabled = true;
-
         }
+
         private void rdo_Sakujo_CheckedChanged(object sender, EventArgs e)
         {
             if (rdo_Sakujo.Checked == true)
@@ -116,6 +124,5 @@ namespace ShukkaTorikomi
                 Enable_Method();
             }
         }
-
     }
 }
