@@ -19,15 +19,18 @@ namespace JuchuuNyuuryoku
     {
         CommonFunction cf;
         multipurposeEntity multi_Entity;
+        BaseEntity base_Entity;
         BaseBL base_bl;
         KouritenDetail kobj = new KouritenDetail();
         SiiresakiDetail sobj = new SiiresakiDetail();
         TokuisakiDetail tobj = new TokuisakiDetail();
-        DataTable Main_dt = new DataTable();
+        
         DataTable gv1_to_dt1 = new DataTable();
         DataTable gv2_to_dt2 = new DataTable();
-        DataTable internal_dt1 = new DataTable();
-        DataTable internal_dt2 = new DataTable();
+        DataTable F8_dt1 = new DataTable();
+        DataTable F8_dt2 = new DataTable();
+
+       
         public JuchuuNyuuryoku()
         {
             
@@ -66,7 +69,9 @@ namespace JuchuuNyuuryoku
             txtStaffCD.ChangeDate = txtJuchuuDate;
 
             ChangeMode(Mode.New);
-           
+
+            base_Entity = _GetBaseData();
+
         }
 
         private void ChangeMode(Mode mode)
@@ -142,11 +147,11 @@ namespace JuchuuNyuuryoku
             lblKouriten_Name.Text = string.Empty;
             lblStaff_Name.Text = string.Empty;
             lblBrand_Name.Text = string.Empty;
-            Main_dt = new DataTable();
+
             gv1_to_dt1 = new DataTable();
             gv2_to_dt2 = new DataTable();
-            internal_dt1 = new DataTable();
-            internal_dt2 = new DataTable();
+            F8_dt1 = new DataTable();
+            F8_dt2 = new DataTable();
             txtJuchuuNO.Focus();
         }
 
@@ -264,9 +269,9 @@ namespace JuchuuNyuuryoku
                 if (!txtCopy.IsErrorOccurs)
                 {
                     EnablePanel();
-                    Main_dt = txtCopy.IsDatatableOccurs;
-                    if (Main_dt.Rows.Count > 0)
-                        From_DB_To_Form(Main_dt);
+                    DataTable dt = txtCopy.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        From_DB_To_Form(dt);
                 }
             }
         }
@@ -335,7 +340,7 @@ namespace JuchuuNyuuryoku
                
 
                 dt.Columns.Remove("MessageID");
-                DataTable dt1 = dt.Copy();
+                DataTable dt1 = dt.Copy();               
                 dt1.Columns.Remove("JANCD");
                 dt1.Columns.Remove("SoukoCD");
                 dt1.Columns.Remove("SoukoName");
@@ -354,11 +359,12 @@ namespace JuchuuNyuuryoku
                 dt1.Columns.Remove("SiiresakiTelNO23");
                 dt1.Columns.Remove("SiiresakiDetail");
                 dt1.Columns.Remove("ExpectedDate");
-                gv1_to_dt1 = dt1;
+                DataTable dt1_temp = dt1.Copy();
+                gv1_to_dt1 = dt1_temp;
                 gv_1.DataSource = dt1;
 
                 DataTable dt2 = dt.Copy();
-                dt2.Columns.Remove("ShouhinCD");
+               // dt2.Columns.Remove("ShouhinCD");
                 dt2.Columns.Remove("ShouhinName");
                 dt2.Columns.Remove("ColorRyakuName");
                 dt2.Columns.Remove("ColorNO");
@@ -369,13 +375,13 @@ namespace JuchuuNyuuryoku
                 dt2.Columns.Remove("DJMSenpouHacchuuNO");
                 dt2.Columns.Remove("UriageTanka");
                 dt2.Columns.Remove("Tanka");
-                gv2_to_dt2 = dt2;
+                DataTable dt2_temp = dt2.Copy();
+                gv2_to_dt2 = dt2_temp;
                 gv_2.DataSource = dt2;
+                gv_2.Columns["ShouhinCD"].Visible = false;
 
-                internal_dt1 = gv1_to_dt1.Copy();
-                internal_dt1.Clear();
-                internal_dt2 = gv2_to_dt2.Copy();
-                internal_dt2.Clear();
+                F8_dt1 = gv1_to_dt1.Clone();
+                F8_dt2 = gv2_to_dt2.Clone();
             }
         }
 
@@ -394,10 +400,10 @@ namespace JuchuuNyuuryoku
                         cf.DisablePanel(PanelTitle);
                     }
                 }
-                Main_dt = txtJuchuuNO.IsDatatableOccurs;
-                if (Main_dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                DataTable dt = txtJuchuuNO.IsDatatableOccurs;
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
-                    From_DB_To_Form(Main_dt);
+                    From_DB_To_Form(dt);
                 }
             }
         }
@@ -631,10 +637,6 @@ namespace JuchuuNyuuryoku
                         btnF9.Visible = false;
                 }
             }
-            if (gv_2.Columns[e.ColumnIndex].Name == "colFree")
-            {
-               
-            }
         }
 
         private void gv_2_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -642,10 +644,12 @@ namespace JuchuuNyuuryoku
             DataTable siiresaki_dt = new DataTable();
             bool bl = true;
             string isSelected = string.Empty;
-            string free = gv_1.Rows[e.RowIndex].Cells["colFree"].Value.ToString();
-            string JuchuuSuu = gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].Value.ToString();
+            
             if (gv_2.Columns[e.ColumnIndex].Name == "colSiiresakiCD")
             {
+                string free = gv_1.Rows[e.RowIndex].Cells["colFree"].Value.ToString();
+                string JuchuuSuu = gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].Value.ToString();
+
                 string siiresakiCD = gv_2.Rows[e.RowIndex].Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
                 if (string.IsNullOrEmpty(free))
                     isSelected = "OFF";
@@ -709,10 +713,13 @@ namespace JuchuuNyuuryoku
                 }
                    
             }
-            if(gv_2.Columns[e.ColumnIndex].Name == "colexpectedDate")
+            if (gv_2.Columns[e.ColumnIndex].Name == "colexpectedDate")
             {
-                DateTime JuchuuDate = string.IsNullOrEmpty(txtJuchuuDate.Text) ? DateTime.Now : Convert.ToDateTime(txtJuchuuDate.Text);
-                string expectedDate = gv_2.Rows[e.RowIndex].Cells["colexpectedDate"].EditedFormattedValue.ToString();
+                string free = gv_1.Rows[e.RowIndex].Cells["colFree"].Value.ToString();
+                string JuchuuSuu = gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].Value.ToString();
+
+                DateTime JuchuuDate = string.IsNullOrEmpty(txtJuchuuDate.Text) ? Convert.ToDateTime(base_Entity.LoginDate) : Convert.ToDateTime(txtJuchuuDate.Text);
+                string expectedDate = string.IsNullOrEmpty(gv_2.Rows[e.RowIndex].Cells["colexpectedDate"].EditedFormattedValue.ToString()) ? base_Entity.LoginDate : gv_2.Rows[e.RowIndex].Cells["colexpectedDate"].EditedFormattedValue.ToString();
                 if (string.IsNullOrEmpty(free))
                     isSelected = "OFF";
                 else isSelected = "ON";
@@ -725,13 +732,16 @@ namespace JuchuuNyuuryoku
                 {
                     base_bl.ShowMessage("E103");
                 }
-                if(Convert.ToDateTime(expectedDate) < JuchuuDate )
+                if (Convert.ToDateTime(expectedDate) < JuchuuDate)
                 {
                     base_bl.ShowMessage("E267", "受注日");
                 }
             }
             if (gv_2.Columns[e.ColumnIndex].Name == "colSoukoCD")
             {
+                string free = gv_1.Rows[e.RowIndex].Cells["colFree"].Value.ToString();
+                string JuchuuSuu = gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].Value.ToString();
+
                 string soukoCD = gv_2.Rows[e.RowIndex].Cells["colSoukoCD"].EditedFormattedValue.ToString();
                 if (string.IsNullOrEmpty(free))
                     isSelected = "OFF";
@@ -799,10 +809,12 @@ namespace JuchuuNyuuryoku
             obj.YearTerm = txtYearTerm.Text;
             obj.SeasonSS = chk_SS.Checked ? "1" : "0";
             obj.SeasonFW = chk_FW.Checked ? "1" : "0";
-            Main_dt = obj_bl.JuchuuNyuuryoku_Display(obj);
-            if(Main_dt.Rows.Count>0)
+            obj.ChangeDate = txtJuchuuDate.Text;
+            DataTable dt = obj_bl.JuchuuNyuuryoku_Display(obj);
+            if(dt.Rows.Count>0)
             {
-                DataTable dt1 = Main_dt.Copy();
+                DataTable dt1 = dt.Copy();
+                
                 dt1.Columns.Remove("JANCD");
                 dt1.Columns.Remove("SoukoCD");
                 dt1.Columns.Remove("SoukoName");
@@ -821,11 +833,13 @@ namespace JuchuuNyuuryoku
                 dt1.Columns.Remove("SiiresakiTelNO23");
                 dt1.Columns.Remove("SiiresakiDetail");
                 dt1.Columns.Remove("ExpectedDate");
-                gv1_to_dt1 = dt1;
+                DataTable dt1_temp = dt1.Copy();
+                gv1_to_dt1 = dt1_temp;
+               
                 gv_1.DataSource = dt1;
 
-                DataTable dt2 = Main_dt.Copy();
-                dt2.Columns.Remove("ShouhinCD");
+                DataTable dt2 = dt.Copy();                
+               // dt2.Columns.Remove("ShouhinCD");
                 dt2.Columns.Remove("ShouhinName");
                 dt2.Columns.Remove("ColorRyakuName");
                 dt2.Columns.Remove("ColorNO");
@@ -836,15 +850,13 @@ namespace JuchuuNyuuryoku
                 dt2.Columns.Remove("DJMSenpouHacchuuNO");
                 dt2.Columns.Remove("UriageTanka");
                 dt2.Columns.Remove("Tanka");
-                gv2_to_dt2 = dt2;
-                gv_2.DataSource = dt2;
 
-                internal_dt1 = gv1_to_dt1.Copy();
-                internal_dt1.Clear();
-                internal_dt2 = gv2_to_dt2.Copy();
-                internal_dt2.Clear();
+                DataTable dt2_temp = dt2.Copy();
+                gv2_to_dt2 = dt2_temp;
+               
+                gv_2.DataSource = dt2;
+                gv_2.Columns["ShouhinCD"].Visible = false;
             }
-           
         }
 
         private void gv_2_KeyDown(object sender, KeyEventArgs e)
@@ -863,103 +875,352 @@ namespace JuchuuNyuuryoku
 
         private void btnNameF11_Click(object sender, EventArgs e)
         {
-            gv_1.DataSource = internal_dt1;
-            gv_2.DataSource = internal_dt2;
-        }
-       
-        private void gv_1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            if (e.Control is DataGridViewTextBoxEditingControl)
-            {
-                DataGridViewTextBoxEditingControl tb = e.Control as DataGridViewTextBoxEditingControl;
-               // tb.KeyDown -= dataGridView_KeyDown;
-                tb.PreviewKeyDown -= dataGridView_PreviewKeyDown;
-               // tb.KeyDown += dataGridView_KeyDown;
-                tb.PreviewKeyDown += dataGridView_PreviewKeyDown;
-            }
-            //if (e.Control is DataGridViewCheckBoxColumn)
-            //{
-            //    DataGridViewCheckBoxColumn tb = e.Control as DataGridViewCheckBoxColumn;
-            //    // tb.KeyDown -= dataGridView_KeyDown;
-            //    tb.PreviewKeyDown -= dataGridView_PreviewKeyDown;
-            //    // tb.KeyDown += dataGridView_KeyDown;
-            //    tb.PreviewKeyDown += dataGridView_PreviewKeyDown;
-            //}
+            F11_Gridview_Bind();
         }
 
-        void dataGridView_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        private void F11_Gridview_Bind()
         {
+            txtBrandCD.Focus();
 
-            if (e.KeyData == Keys.Enter)
+            for (int t = 0; t < gv_1.RowCount; t++)
             {
-                DataRow dr1 = internal_dt1.NewRow();
-                DataRow dr2 = internal_dt2.NewRow();
-                int row = gv_1.CurrentCell.RowIndex;
-                int column = gv_1.CurrentCell.ColumnIndex;
-                if (sender.ToString() != gv1_to_dt1.Rows[row][column].ToString())
+                bool bl = false;
+                // grid 1 checking
+                DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
+                DataGridViewRow row = gv_1.Rows[t];// grid view data
+                string id = row.Cells[0].Value.ToString();
+
+                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD =" + id);// original data
+                //DataRow existDr1 = F8_dt1.Select("column0 =" + id).SingleOrDefault();
+                DataRow existDr1 = F8_dt1.Select("ShouhinCD =" + id).SingleOrDefault();
+
+                F8_drNew[0] = id;
+                for (int c = 1; c < gv_1.Columns.Count; c++)
                 {
-                    for(int i=0;i< gv_1.Columns.Count;i++)
+                    if (existDr1 != null)
                     {
-                        if(i==column )
+                        if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                         {
-                            string  dec_val= (sender as DataGridViewTextBoxEditingControl).Text;
-                            dr1[i] = dec_val;
+                            bl = true;
+                            F8_drNew[c] = row.Cells[c].Value.ToString();
                         }
                         else
                         {
-                            dr1[i] = gv_1[i, row].Value;
+                            F8_drNew[c] = existDr1[c];
                         }
                     }
-                    for(int i=0;i<gv_2.Columns.Count;i++)
+                    else
                     {
-                        dr2[i] = gv_2[i, row].Value;
+                        if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+
+                            bl = true;
+
+                        //F8_drNew[c] = row.Cells[c].Value.ToString();
+                        F8_drNew[c] = row.Cells[c].Value;
                     }
-                    internal_dt1.Rows.Add(dr1);
-                    internal_dt2.Rows.Add(dr2);
                 }
-            }
-        }
 
-        private void gv_2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
-        {
-            if (e.Control is DataGridViewTextBoxEditingControl)
-            {
-                DataGridViewTextBoxEditingControl tb = e.Control as DataGridViewTextBoxEditingControl;
-                // tb.KeyDown -= dataGridView_KeyDown;
-                tb.PreviewKeyDown -= dataGridView_PreviewKeyDown1;
-                // tb.KeyDown += dataGridView_KeyDown;
-                tb.PreviewKeyDown += dataGridView_PreviewKeyDown1;
-            }
-        }
+                // grid 2 checking
+                DataRow F8_drNew2 = F8_dt2.NewRow();// save updated data 
+                DataGridViewRow row2 = gv_2.Rows[t];// grid view data
 
-        void dataGridView_PreviewKeyDown1(object sender, PreviewKeyDownEventArgs e)
-        {
-            if (e.KeyData == Keys.Enter)
-            {
-                internal_dt1 = gv1_to_dt1.Copy();
-                internal_dt1.Clear();
-                internal_dt2 = gv2_to_dt2.Copy();
-                internal_dt2.Clear();
-                DataRow dr1 = internal_dt1.NewRow();
-                DataRow dr2 = internal_dt2.NewRow();
-                int row = gv_2.CurrentCell.RowIndex;
-                int column = gv_2.CurrentCell.ColumnIndex;
-                if (sender.ToString() != gv2_to_dt2.Rows[row][column].ToString())
+                DataRow[] select_dr2 = gv2_to_dt2.Select("ShouhinCD =" + id);// original data
+                //DataRow existDr2 = F8_dt2.Select("column0 =" + id).SingleOrDefault();
+                DataRow existDr2 = F8_dt2.Select("ShouhinCD =" + id).SingleOrDefault();
+
+                F8_drNew2[0] = id;
+                for (int c2 = 1; c2 < gv_2.Columns.Count; c2++)
                 {
-                    for (int i = 0; i < gv_1.Columns.Count; i++)
+                    
+                    if (existDr2 != null)
                     {
-                        dr1[i] = gv_1[i, row].Value;
+                        if (select_dr2[0][c2].ToString() != row2.Cells[c2].Value.ToString() && (c2 == 3 || c2 == 16))
+                        {
+                            bl = true;
+                            F8_drNew2[c2] = row2.Cells[c2].Value.ToString();
+                        }
+                        else
+                        {
+                            F8_drNew2[c2] = existDr2[c2];
+                        }
+                    }
+                    else
+                    {
+                        if (select_dr2[0][c2].ToString() != row2.Cells[c2].Value.ToString() && (c2 == 3 || c2 == 16))
+
+                            bl = true;
+
+                        F8_drNew2[c2] = row2.Cells[c2].Value.ToString();
 
                     }
-                    for (int i = 0; i < gv_2.Columns.Count; i++)
-                    {
-                        dr2[i] = gv_2[i, row].Value;
-                    }
-                    internal_dt1.Rows.Add(dr1);
-                    internal_dt2.Rows.Add(dr2);
+                }
+                // grid 1 and grid 2 insert (if exist, remove exist and insert)
+                if (bl == true)
+                {
+                    if (existDr1 != null)
+                        F8_dt1.Rows.Remove(existDr1);
+                    if (existDr2 != null)
+                        F8_dt2.Rows.Remove(existDr2);
+                    F8_dt1.Rows.Add(F8_drNew);
+                    F8_dt2.Rows.Add(F8_drNew2);
                 }
             }
+
+            
+            ////For gridview 1 
+            //foreach (DataGridViewRow row in gv_1.Rows)
+            //{
+            //    DataRow dr1 = internal_dt1.NewRow();
+            //    DataRow F8_dr1 = F8_dt1.NewRow();
+
+            //    DataRow dr2 = internal_dt2.NewRow();
+            //    DataRow F8_dr2 = F8_dt2.NewRow();
+
+            //    bool bl = false;
+            //    //compare original data gridview 1
+            //    DataRow[] select1_dr1 = gv1_to_dt1.Select("ShouhinCD =" + row.Cells[0].Value);
+            //    DataRow[] select1_dr2 = gv2_to_dt2.Select("ShouhinCD =" + row.Cells[0].Value);
+
+            //    for (int j = 0; j < gv_1.Columns.Count; j++)
+            //    {
+            //        if (select1_dr1[0][j].ToString() != row.Cells[j].Value.ToString())
+            //        {
+            //            bl = true;
+            //            break;
+            //        }
+            //        dr1["column" + j.ToString()] = row.Cells[j].Value;
+            //    }
+
+            //    //compare update data
+            //    if (bl == true)
+            //    {
+            //        //for gridivew 1
+            //        DataRow[] updated_dr1 = F8_dt1.Select("column0 =" + row.Cells[0].Value);
+            //        if (updated_dr1.Length == 0)
+            //        {
+            //            for (int i = 0; i < dr1.ItemArray.Length; i++)
+            //            {
+            //                F8_dr1[i] = dr1[i];
+            //            }
+            //            for (int i = 0; i < select1_dr2[0].ItemArray.Length; i++)
+            //            {
+            //                F8_dr2[i] = select1_dr2[0][i].ToString();
+            //            }
+            //            F8_dt1.Rows.Add(F8_dr1);
+            //            F8_dt2.Rows.Add(F8_dr2);
+            //        }
+            //        else
+            //        {
+            //            for (int i = 0; i < gv_1.Columns.Count; i++)
+            //            {
+            //                F8_dt1.Rows[row.Index][i] = gv_1.Columns[i].ToString();
+            //            }
+            //            for (int i = 0; i < gv_2.Columns.Count; i++)
+            //            {
+            //                F8_dt2.Rows[row.Index][i] = gv_2.Columns[i].ToString();
+            //            }
+            //        }
+            //    }
+            //}
+
+            ////For gridview 2
+            //foreach (DataGridViewRow row in gv_2.Rows)
+            //{
+            //    DataRow dr1 = internal_dt1.NewRow();
+            //    DataRow F8_dr1 = F8_dt1.NewRow();
+
+            //    DataRow dr2 = internal_dt2.NewRow();
+            //    DataRow F8_dr2 = F8_dt2.NewRow();
+
+            //    bool bl = false;
+            //    //compare original data gridview 2
+            //    DataRow[] select2_dr1 = gv1_to_dt1.Select("ShouhinCD =" + row.Cells[0].Value);
+            //    DataRow[] select2_dr2 = gv2_to_dt2.Select("ShouhinCD =" + row.Cells[0].Value);
+
+            //    for (int j = 0; j < gv_2.Columns.Count; j++)
+            //    {
+            //        //for siiresaki cd and sokou cd
+            //        if (j == 3 || j == 16)
+            //        {
+            //            if (select2_dr2[0][j].ToString() != row.Cells[j].Value.ToString())
+            //            {
+            //                bl = true;
+            //            }
+            //        }
+            //        dr2["column" + j.ToString()] = row.Cells[j].Value;
+            //    }
+
+            //    //compare update data
+            //    if (bl == true)
+            //    {
+            //        //for gridivew 1
+            //        DataRow[] updated_dr1 = F8_dt2.Select("column0 =" + row.Cells[0].Value);
+            //        if (updated_dr1.Length == 0)
+            //        {
+            //            for (int i = 0; i < select2_dr1[0].ItemArray.Length; i++)
+            //            {
+            //                F8_dr1[i] = select2_dr1[0][i].ToString();
+            //            }
+            //            for (int i = 0; i < dr2.ItemArray.Length; i++)
+            //            {
+            //                F8_dr2[i] = dr2[i].ToString();
+            //            }
+            //            F8_dt1.Rows.Add(F8_dr1);
+            //            F8_dt2.Rows.Add(F8_dr2);
+            //        }
+            //        else
+            //        {
+            //            for (int i = 0; i < gv_1.Columns.Count; i++)
+            //            {
+            //                F8_dt1.Rows[row.Index][i] = gv_1.Columns[i].ToString();
+            //            }
+            //            for (int i = 0; i < gv_2.Columns.Count; i++)
+            //            {
+            //                F8_dt2.Rows[row.Index][i] = gv_2.Columns[i].ToString();
+            //            }
+            //        }
+            //    }
+            //}
         }
+
+        private void btnNameF8_Click(object sender, EventArgs e)
+        {
+            F8_dt1.DefaultView.Sort = "ShouhinCD";
+            F8_dt1.DefaultView.Sort = "ShouhinCD";
+            
+            gv_1.DataSource = F8_dt1.DefaultView.ToTable();
+            gv_2.DataSource = F8_dt2.DefaultView.ToTable();
+        }
+
+        //private void gv_1_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        //{
+        //    //if (e.Control is DataGridViewTextBoxEditingControl)
+        //    //{
+        //    //    DataGridViewTextBoxEditingControl tb = e.Control as DataGridViewTextBoxEditingControl;
+        //    //    //tb.PreviewKeyDown -= gv_1_PreviewKeyDown;
+        //    //    //tb.PreviewKeyDown += gv_1_PreviewKeyDown;
+        //    //}
+        //}
+
+        //private void gv_1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        //{
+        //    //if (e.KeyData == Keys.Enter)
+        //    //{
+        //    //    DataRow dr1 = internal_dt1.NewRow();
+        //    //    DataRow dr2 = internal_dt2.NewRow();
+        //    //    int row = gv_1.CurrentCell.RowIndex;
+        //    //    int column = gv_1.CurrentCell.ColumnIndex;
+        //    //    if ((sender.ToString() != gv1_to_dt1.Rows[row][column].ToString()) && sender.ToString() !="")
+        //    //    {
+        //    //        gv_1[column, row].Value = (sender as DataGridViewTextBoxEditingControl).Text;
+        //    //        for (int i = 0; i < gv_1.Columns.Count; i++)
+        //    //        {
+        //    //            dr1[i] = gv_1[i, row].Value;
+        //    //        }
+        //    //        for (int i = 0; i < gv_2.Columns.Count; i++)
+        //    //        {
+        //    //            dr2[i] = gv_2[i, row].Value;
+        //    //        }
+
+        //    //        DataRow[] dr = internal_dt1.Select("ShouhinCD =" + gv1_to_dt1.Rows[row]["ShouhinCD"].ToString());
+        //    //        if (dr.Length == 0)
+        //    //        {
+        //    //            //internal_dt1.Rows.Add(dr1);
+        //    //            //internal_dt2.Rows.Add(dr2);
+        //    //        }
+        //    //        else
+        //    //        {
+        //    //           //for(int i=0;i<dr1.ItemArray.Length;i++)
+        //    //           // {
+        //    //           //     internal_dt1.Rows[row][i] = dr1[i];
+        //    //           // }
+        //    //        }
+        //    //    }
+        //    //}
+        //}
+
+        //private void gv_1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    //if (e.RowIndex >= 0 && e.ColumnIndex == 5)
+        //    //{
+        //    //    DataGridViewRow row1 = gv_1.Rows[e.RowIndex];
+        //    //    DataGridViewRow row2 = gv_2.Rows[e.RowIndex];
+        //    //    bool check_value = !Convert.ToBoolean(row1.Cells["colFree"].EditedFormattedValue);
+        //    //    row1.Cells["colFree"].Value = Convert.ToBoolean(row1.Cells["colFree"].EditedFormattedValue);
+        //    //    DataRow dr1 = internal_dt1.NewRow();
+        //    //    DataRow dr2 = internal_dt2.NewRow();
+        //    //    for (int i = 0; i < row1.Cells.Count; i++)
+        //    //    {
+        //    //        dr1[i] = row1.Cells[i].Value;
+        //    //    }
+        //    //    for (int i = 0; i < row2.Cells.Count; i++)
+        //    //    {
+        //    //        dr2[i] = row2.Cells[i].Value;
+        //    //    }
+        //    //    DataRow[] dr = internal_dt1.Select("ShouhinCD =" + gv1_to_dt1.Rows[e.RowIndex]["ShouhinCD"].ToString());
+        //    //    if (dr.Length == 0)
+        //    //    {
+        //    //        internal_dt1.Rows.Add(dr1);
+        //    //        internal_dt2.Rows.Add(dr2);
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        for (int i = 0; i < dr1.ItemArray.Length; i++)
+        //    //        {
+        //    //            internal_dt1.Rows[e.RowIndex][i] = dr1[i];
+        //    //        }
+        //    //    }
+        //    //}
+        //}
+
+        //private void gv_2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        //{
+        //    //if (e.Control is DataGridViewTextBoxEditingControl)
+        //    //{
+        //    //    DataGridViewTextBoxEditingControl tb = e.Control as DataGridViewTextBoxEditingControl;
+        //    //    //tb.PreviewKeyDown -= gv_2_PreviewKeyDown;
+        //    //    //tb.PreviewKeyDown += gv_2_PreviewKeyDown;
+        //    //}
+        //}
+
+        //private void gv_2_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        //{
+        //    //if (e.KeyData == Keys.Enter)
+        //    //{
+        //    //    DataRow dr1 = internal_dt1.NewRow();
+        //    //    DataRow dr2 = internal_dt2.NewRow();
+        //    //    int row = gv_2.CurrentCell.RowIndex;
+        //    //    int column = gv_2.CurrentCell.ColumnIndex;
+        //    //    if (gv_2.Columns[column].Name != "colexpectedDate")
+        //    //    {
+        //    //        gv_2[column, row].Value = (sender as DataGridViewTextBoxEditingControl).Text;
+        //    //        if ((sender.ToString() != gv2_to_dt2.Rows[row][column].ToString()) && sender.ToString() != "")
+        //    //        {
+        //    //            for (int i = 0; i < gv_1.Columns.Count; i++)
+        //    //            {
+        //    //                dr1[i] = gv_1[i, row].Value;
+        //    //            }
+        //    //            for (int i = 0; i < gv_2.Columns.Count; i++)
+        //    //            {
+        //    //                dr2[i] = gv_2[i, row].Value;
+        //    //            }
+        //    //            DataRow[] dr = internal_dt2.Select("ShouhinCD =" + gv2_to_dt2.Rows[row]["ShouhinCD"].ToString());
+        //    //            if (dr.Length == 0)
+        //    //            {
+        //    //                internal_dt1.Rows.Add(dr1);
+        //    //                internal_dt2.Rows.Add(dr2);
+        //    //            }
+        //    //            else
+        //    //            {
+        //    //                for (int i = 0; i < dr2.ItemArray.Length; i++)
+        //    //                {
+        //    //                    internal_dt2.Rows[row][i] = dr2[i];
+        //    //                }
+        //    //            }
+        //    //        }
+        //    //    }
+        //    //}
+        //}
 
         private void DBProcess()
         {
@@ -1059,15 +1320,19 @@ namespace JuchuuNyuuryoku
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
             objMethod.JuchuuNyuuryoku_CUD(obj);
         }
+
         private void DoUpdate(JuchuuNyuuryokuEntity obj)
         {
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
             objMethod.JuchuuNyuuryoku_CUD(obj);
         }
+
         private void DoDelete(JuchuuNyuuryokuEntity obj)
         {
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
             objMethod.JuchuuNyuuryoku_CUD(obj);
         }
+
+       
     }
 }
