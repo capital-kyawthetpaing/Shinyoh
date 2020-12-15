@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4495B158-0005-43F9-956E-BF7F53131D99}</ProjectGuid>
+    <ProjectGuid>{2E411A63-E586-4E31-8318-7926C040089B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ShukkaTorikomi</RootNamespace>
-    <AssemblyName>ShukkaTorikomi</AssemblyName>
+    <RootNamespace>HikiateHenkouShoukai</RootNamespace>
+    <AssemblyName>HikiateHenkouShoukai</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKM_CommonFunction">
-      <HintPath>..\bin\Debug\CKM_CommonFunction.dll</HintPath>
+      <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,16 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ShukkaTorikomi.cs">
+    <Compile Include="HikiateHenkouShoukai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShukkaTorikomi.Designer.cs">
-      <DependentUpon>ShukkaTorikomi.cs</DependentUpon>
+    <Compile Include="HikiateHenkouShoukai.Designer.cs">
+      <DependentUpon>HikiateHenkouShoukai.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ShukkaTorikomi.resx">
-      <DependentUpon>ShukkaTorikomi.cs</DependentUpon>
+    <EmbeddedResource Include="HikiateHenkouShoukai.resx">
+      <DependentUpon>HikiateHenkouShoukai.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

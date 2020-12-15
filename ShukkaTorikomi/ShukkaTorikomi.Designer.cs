@@ -101,6 +101,7 @@
             this.rdo_Toroku.TabStop = true;
             this.rdo_Toroku.Text = "登録";
             this.rdo_Toroku.UseVisualStyleBackColor = true;
+            this.rdo_Toroku.CheckedChanged += new System.EventHandler(this.rdo_Toroku_CheckedChanged);
             // 
             // rdo_Sakujo
             // 
@@ -114,6 +115,7 @@
             this.rdo_Sakujo.TabIndex = 2;
             this.rdo_Sakujo.Text = "削除";
             this.rdo_Sakujo.UseVisualStyleBackColor = true;
+            this.rdo_Sakujo.CheckedChanged += new System.EventHandler(this.rdo_Sakujo_CheckedChanged);
             // 
             // panel_Details
             // 
@@ -130,7 +132,7 @@
             this.panel_Details.Controls.Add(this.sLabel5);
             this.panel_Details.Controls.Add(this.sLabel4);
             this.panel_Details.Controls.Add(this.sLabel3);
-            this.panel_Details.Location = new System.Drawing.Point(3, 76);
+            this.panel_Details.Location = new System.Drawing.Point(12, 76);
             this.panel_Details.Name = "panel_Details";
             this.panel_Details.Size = new System.Drawing.Size(1345, 570);
             this.panel_Details.TabIndex = 3;
@@ -319,7 +321,7 @@
             this.txtShukkaToNo2.IsDatatableOccurs = null;
             this.txtShukkaToNo2.IsErrorOccurs = false;
             this.txtShukkaToNo2.IsRequire = false;
-            this.txtShukkaToNo2.Location = new System.Drawing.Point(236, 61);
+            this.txtShukkaToNo2.Location = new System.Drawing.Point(249, 61);
             this.txtShukkaToNo2.MaxLength = 255;
             this.txtShukkaToNo2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShukkaToNo2.MoveNext = true;
@@ -343,7 +345,7 @@
             this.txtShukkaToNo1.IsDatatableOccurs = null;
             this.txtShukkaToNo1.IsErrorOccurs = false;
             this.txtShukkaToNo1.IsRequire = false;
-            this.txtShukkaToNo1.Location = new System.Drawing.Point(236, 23);
+            this.txtShukkaToNo1.Location = new System.Drawing.Point(249, 23);
             this.txtShukkaToNo1.MaxLength = 255;
             this.txtShukkaToNo1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShukkaToNo1.MoveNext = true;
@@ -376,7 +378,7 @@
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel4.Location = new System.Drawing.Point(136, 61);
             this.sLabel4.Name = "sLabel4";
-            this.sLabel4.Size = new System.Drawing.Size(100, 19);
+            this.sLabel4.Size = new System.Drawing.Size(115, 19);
             this.sLabel4.TabIndex = 1;
             this.sLabel4.Text = "取込元ファイル名";
             this.sLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -389,7 +391,7 @@
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel3.Location = new System.Drawing.Point(136, 23);
             this.sLabel3.Name = "sLabel3";
-            this.sLabel3.Size = new System.Drawing.Size(100, 19);
+            this.sLabel3.Size = new System.Drawing.Size(115, 19);
             this.sLabel3.TabIndex = 0;
             this.sLabel3.Text = "取込元フォルダ";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
