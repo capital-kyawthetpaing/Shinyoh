@@ -49,6 +49,7 @@
     <Compile Include="BaseBL.cs" />
     <Compile Include="DenpyouNOBL.cs" />
     <Compile Include="HacchuuListBL.cs" />
+    <Compile Include="HikiateHenkouShoukaiBL.cs" />
     <Compile Include="JuchuuListBL.cs" />
     <Compile Include="JuchuuNyuuryokuBL.cs" />
     <Compile Include="KouritenBL.cs" />
@@ -56,8 +57,10 @@
     <Compile Include="multipurposeBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShouhinBL.cs" />
+    <Compile Include="ShukkaNyuuryokuBL.cs" />
     <Compile Include="ShukkaSiziDataShuturyokuBL.cs" />
     <Compile Include="ShukkasiziNyuuryokuBL.cs" />
+    <Compile Include="ShukkaTorikomi_BL.cs" />
     <Compile Include="SoukoBL.cs" />
     <Compile Include="StaffBL.cs" />
     <Compile Include="SiiresakiBL.cs" />

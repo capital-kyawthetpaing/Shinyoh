@@ -19,5 +19,8 @@ namespace Entity
         public string ShukkaSiziNO_To { get; set; }
         public string ShouhinCD_From { get; set; }
         public string ShouhinCD_To { get; set; }
+        public string ShippingDate { get; set; }
+        public string JuchuuNO { get; set; }
+        public string SenpyouhachuuNo { get; set; }
     }
 }

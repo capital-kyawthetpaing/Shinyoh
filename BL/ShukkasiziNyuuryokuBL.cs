@@ -17,18 +17,38 @@ namespace BL
         {
             ckmdl = new CKMDL();
         }
-        public DataTable Shipping_Select_Check(string ShippingNo, string cDate, string error_Type)
+        public DataTable ShukkasiziNyuuryoku_ErrorCheck(string ShippingNO, string error_Type)
         {
-            string str = string.Empty;
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@ShippingNO", SqlDbType.VarChar) { Value = ShippingNo };
-            parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = cDate };
-            parameters[2] = new SqlParameter("@Error", SqlDbType.VarChar) { Value = error_Type };
-            DataTable dt = ckmdl.SelectDatatable("ShippingNo_Select_Check", GetConnectionString(), parameters);
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = ShippingNO };
+            //parameters[1] = new SqlParameter("@ShippingDate", SqlDbType.Date) { Value = Shippingdate };
+            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
+            DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_ErrorCheck_Select", GetConnectionString(), parameters);
             return dt;
         }
-
+        public DataTable ShukkasiziNyuuryoku_Data_Select(string ShippingNO, string ShippingDate, int type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = ShippingNO };
+            parameters[1] = new SqlParameter("@ShippingDate", SqlDbType.Date) { Value = ShippingDate };
+            parameters[2] = new SqlParameter("@Type", SqlDbType.TinyInt) { Value = type };
+            DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_Data_Select", GetConnectionString(), parameters);
+            return dt;
+        }
+        public DataTable ShukkasiziNyuuryoku_Display(ShukkaSiziNyuuryokuEntity se, int type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = se.TokuisakiCD };
+            parameters[1] = new SqlParameter("@JuchuuNO", SqlDbType.VarChar) { Value = se.JuchuuNO };
+            parameters[2] = new SqlParameter("@SenpouHacchuuNO", SqlDbType.VarChar) { Value = se.SenpyouhachuuNo };
+            parameters[3] = new SqlParameter("@Type", SqlDbType.TinyInt) { Value = type };
+            parameters[4] = new SqlParameter("@ShippingDate", SqlDbType.Date) { Value = se.ShippingDate};
+            DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_Display", GetConnectionString(), parameters);
+            return dt;
+        }
         public DataTable ShippingNO_Search(ShukkaSiziNyuuryokuEntity sksze)
         {
             CKMDL ckmdl = new CKMDL();

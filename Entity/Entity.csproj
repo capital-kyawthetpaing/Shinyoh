@@ -45,6 +45,7 @@
     <Compile Include="ButtonType.cs" />
     <Compile Include="DenpyouNOEntity.cs" />
     <Compile Include="HacchuuEntity.cs" />
+    <Compile Include="HikiateHenkouShoukaiEntity.cs" />
     <Compile Include="JuchuuEntity.cs" />
     <Compile Include="JuchuuNyuuryokuEntity.cs" />
     <Compile Include="KouritenEntity.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchType.cs" />
     <Compile Include="ShouhinEntity.cs" />
+    <Compile Include="ShukkaNyuuryokuEntity.cs" />
     <Compile Include="ShukkaSiziDataShuturyokuEntity.cs" />
     <Compile Include="ShukkaSiziNyuuryokuEntity.cs" />
     <Compile Include="SoukoEntity.cs" />

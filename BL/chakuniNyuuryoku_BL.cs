@@ -68,7 +68,7 @@ namespace BL
         public DataTable ArrivalNO_Search(ChakuniNyuuryoku_Entity ane)
         {
             CKMDL ckmdl = new CKMDL();
-            ane.Sqlprms = new SqlParameter[12];
+            ane.Sqlprms = new SqlParameter[11];
             
             ane.Sqlprms[0] = new SqlParameter("@ChakuniDateFrom", SqlDbType.VarChar) { Value = ane.ChakuniDateFrom };
             ane.Sqlprms[1] = new SqlParameter("@ChakuniDateTo", SqlDbType.VarChar) { Value = ane.ChakuniDateTo };
@@ -81,18 +81,9 @@ namespace BL
             ane.Sqlprms[8] = new SqlParameter("@KanriNOTo", SqlDbType.VarChar) { Value = ane.KanriNOTo };
             ane.Sqlprms[9] = new SqlParameter("@ShouhinCDFrom", SqlDbType.VarChar) { Value = ane.ShouhinCDFrom };
             ane.Sqlprms[10] = new SqlParameter("@ShouhinCDTo", SqlDbType.VarChar) { Value = ane.ShouhinCDTo };
-            ane.Sqlprms[11] = new SqlParameter("@chkValue", SqlDbType.VarChar) { Value = ane.CheckValue };
+            //ane.Sqlprms[11] = new SqlParameter("@chkValue", SqlDbType.VarChar) { Value = ane.CheckValue };
             
             DataTable dt = ckmdl.SelectDatatable("ArrivalNO_Search", GetConnectionString(), ane.Sqlprms);
-            return dt;
-        }
-
-        public DataTable DateCheck(ChakuniNyuuryoku_Entity ane)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[1];
-            parameters[0] = new SqlParameter("@ArrivalDate", SqlDbType.VarChar) { Value = ane.ChakuniDate };
-            DataTable dt = ckmdl.SelectDatatable("Date_Check", GetConnectionString(), parameters);
             return dt;
         }
     }

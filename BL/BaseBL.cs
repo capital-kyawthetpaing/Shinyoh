@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Entity;
 using CKM_DataLayer;
 using System.Data.SqlClient;
+using System;
 
 namespace BL
 {
@@ -137,7 +138,32 @@ namespace BL
                    ";Persist Security Info=True;User ID=" + IEntity.DatabaseLoginID +
                    ";Password=" + IEntity.DatabasePassword +
                    ";Connection Timeout=" + IEntity.TimeoutValues;
-}
-        
+        }
+
+        //NEW code was added for Image VARBINARY with DB
+        #region
+        public bool InsertUpdateDeleteData(string sp, params SqlParameter[] parameter)
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(GetConnectionString());
+                SqlCommand cmd = new SqlCommand(sp, con);
+                for (int i = 0; i < parameter.Length; i++)
+                {
+                    cmd.Parameters.Add(parameter[i].ParameterName, parameter[i].SqlDbType).Value = !string.IsNullOrEmpty(parameter[i].Value.ToString()) ? parameter[i].Value : DBNull.Value;
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        #endregion
     }
 }

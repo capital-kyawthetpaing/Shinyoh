@@ -37,7 +37,7 @@ namespace Shinyoh_Search
             else
                 txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", parent_changeDate);
 
-            txtProduct1.E106Check(true, txtProduct, txtProduct1);
+            txtHinbanCD1.E106Check(true, txtHinbanCD, txtHinbanCD1);
             txtJANCD1.E106Check(true, txtJANCD, txtJANCD1);
             txtExhibition1.E106Check(true, txtExhibition, txtExhibition1);
             txtBrand1.E106Check(true, txtBrand, txtBrand1);
@@ -76,8 +76,8 @@ namespace Shinyoh_Search
             else
                 shouhin.DisplayTarget = 1;
             shouhin.RevisionDate = txtChangeDate.Text;
-            shouhin.Product = txtProduct.Text;
-            shouhin.Product1 = txtProduct1.Text;
+            shouhin.Product = txtHinbanCD.Text;
+            shouhin.HinbanCD1 = txtHinbanCD1.Text;
             shouhin.JANCD = txtJANCD.Text;
             shouhin.JANCD1 = txtJANCD1.Text;
             shouhin.Remarks = txtRemarks.Text;

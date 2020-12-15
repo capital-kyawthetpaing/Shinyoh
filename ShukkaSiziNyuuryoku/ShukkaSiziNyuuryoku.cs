@@ -17,7 +17,10 @@ namespace ShukkaSiziNyuuryoku
         StaffBL staffBL;
         ShukkasiziNyuuryokuBL sksz_bl;
         BaseBL bbl;
+        TokuisakiDetails td = new TokuisakiDetails();
+        KouritenDetails kd = new KouritenDetails();
         public string tdDate;
+        DataTable dtgv1,dtgv2,dtTemp1,dtTemp2;
         public ShukkaSiziNyuuryoku()
         {
             InitializeComponent();
@@ -27,6 +30,10 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();
             bbl = new BaseBL();
             tdDate = string.Empty;
+            dtTemp1 = new DataTable();
+            dtTemp2 = new DataTable();
+            dtgv1 = new DataTable();
+            dtgv2 = new DataTable();
         }
 
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
@@ -46,21 +53,19 @@ namespace ShukkaSiziNyuuryoku
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
-            lblSiiresakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             ChangeMode(Mode.New);
             sbShippingNO.Focus();
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
         }
-
         private void ChangeMode(Mode mode)
         {
             switch (mode)
             {
                 case Mode.New:
-                    ErrorCheck();
-                    
+                    ErrorCheck();                    
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
@@ -83,9 +88,7 @@ namespace ShukkaSiziNyuuryoku
                     btnInquiry.Visible = false;
                     break;
             }
-
         }
-
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
@@ -136,13 +139,39 @@ namespace ShukkaSiziNyuuryoku
         private void ErrorCheck()
         {
             sbShippingNO.E102Check(true);
-            sbShippingNO.E133Check(true, "M_Siiresaki", sbShippingNO, null, null);
+            sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
+            sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
+            sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO,null);
+            //出荷予定日
+            txtShippingDate.E102Check(true);
+            txtShippingDate.E103Check(true);
+            //txtShippingDate.E267Check(true, "M_Tokuisaki", null, txtShippingDate);
+            //txtShippingDate.E227Check(true, "M_Tokuisaki", null, txtShippingDate);
+            //得意先
+            sbTokuisaki.E102Check(true);
+            sbTokuisaki.E101Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate, null);
+            sbTokuisaki.E267Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
+            sbTokuisaki.E227Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
+            //E269
+            //小売店
+            sbKouriten.E101Check(true, "M_Kouriten", sbKouriten, txtShippingDate, null);
+            sbKouriten.E267Check(true, "M_Kouriten", sbKouriten, txtShippingDate);
+            sbKouriten.E227Check(true, "M_Kouriten", sbKouriten, txtShippingDate);
+            //担当スタッフCD
+            sbStaffCD.E102Check(true);
+            sbStaffCD.E101Check(true, "M_Staff", sbStaffCD, txtShippingDate, null);
+            sbStaffCD.E135Check(true, "M_Staff", sbStaffCD, txtShippingDate);
+            //伝票日付
+            txtSlipDate.E102Check(true);
+            txtSlipDate.E103Check(true);
+            //受注番号(searchshi)
+            txtJuchuuNo.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNo, null, null);
         }
         private void New_Mode()
         {
             tdDate = DateTime.Now.ToString("yyyy/MM/dd");
             txtShippingDate.Text = tdDate;
-            txtDenpyouDate.Text = tdDate;
+            txtSlipDate.Text = tdDate;
 
             StaffEntity staffEntity = new StaffEntity
             {
@@ -155,6 +184,269 @@ namespace ShukkaSiziNyuuryoku
         private void Clear()
         {
             
+        }                      
+        private void ShukkasiziNyuuryoku_Header_Select(DataTable dt)
+        {
+            if (dt.Rows[0]["ShukkaKanryouKBN"].ToString() == "1") { }
+            //Header            
+            sbTokuisaki.Text = dt.Rows[0]["TokuisakiCD"].ToString();
+            lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+            sbKouriten.Text = dt.Rows[0]["KouritenCD"].ToString();
+            lblKouritenName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
+            sbStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
+            lblStaffName.Text = dt.Rows[0]["StaffName"].ToString();
+
+            txtSlipDate.Text = dt.Rows[0]["DenpyouDate"].ToString();
+            txtSlip_Description.Text = dt.Rows[0]["ShukkaSiziDenpyouTekiyou"].ToString();
+            if (dt.Rows[0]["ShukkaSizishoHuyouKBN"].ToString() == "0")
+                rdoNeed.Checked = true;
+            else
+                rdoNO.Checked = true;
+
+            //Access_Tokuisaki_obj
+            td.Access_Tokuisaki_obj.TokuisakiCD = dt.Rows[0]["TokuisakiCD"].ToString();
+            td.Access_Tokuisaki_obj.TokuisakiRyakuName = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+            td.Access_Tokuisaki_obj.TokuisakiName = dt.Rows[0]["TokuisakiName"].ToString();
+            td.Access_Tokuisaki_obj.YuubinNO1 = dt.Rows[0]["TokuisakiYuubinNO1"].ToString();
+            td.Access_Tokuisaki_obj.YuubinNO2 = dt.Rows[0]["TokuisakiYuubinNO2"].ToString();
+            td.Access_Tokuisaki_obj.Juusho1 = dt.Rows[0]["TokuisakiJuusho1"].ToString();
+            td.Access_Tokuisaki_obj.Juusho2 = dt.Rows[0]["TokuisakiJuusho2"].ToString();
+            td.Access_Tokuisaki_obj.Tel11 = dt.Rows[0]["TokuisakiTelNO1-1"].ToString();
+            td.Access_Tokuisaki_obj.Tel12 = dt.Rows[0]["TokuisakiTelNO1-2"].ToString();
+            td.Access_Tokuisaki_obj.Tel13 = dt.Rows[0]["TokuisakiTelNO1-3"].ToString();
+            td.Access_Tokuisaki_obj.Tel21 = dt.Rows[0]["TokuisakiTelNO2-1"].ToString();
+            td.Access_Tokuisaki_obj.Tel22 = dt.Rows[0]["TokuisakiTelNO2-2"].ToString();
+            td.Access_Tokuisaki_obj.Tel23 = dt.Rows[0]["TokuisakiTelNO2-3"].ToString();
+
+            //Access_Kouriten_obj
+            kd.Access_Kouriten_obj.KouritenCD = dt.Rows[0]["KouritenCD"].ToString();
+            kd.Access_Kouriten_obj.KouritenRyakuName = dt.Rows[0]["KouritenRyakuName"].ToString();
+            kd.Access_Kouriten_obj.KouritenName = dt.Rows[0]["KouritenRyakuName"].ToString();
+            kd.Access_Kouriten_obj.YuubinNO1 = dt.Rows[0]["KouritenYuubinNO1"].ToString();
+            kd.Access_Kouriten_obj.YuubinNO2 = dt.Rows[0]["KouritenYuubinNO2"].ToString();
+            kd.Access_Kouriten_obj.Juusho1 = dt.Rows[0]["KouritenJuusho1"].ToString();
+            kd.Access_Kouriten_obj.Juusho2 = dt.Rows[0]["KouritenJuusho2"].ToString();
+            kd.Access_Kouriten_obj.Tel11 = dt.Rows[0]["KouritenTelNO1-1"].ToString();
+            kd.Access_Kouriten_obj.Tel12 = dt.Rows[0]["KouritenTelNO1-2"].ToString();
+            kd.Access_Kouriten_obj.Tel13 = dt.Rows[0]["KouritenTelNO1-3"].ToString();
+            kd.Access_Kouriten_obj.Tel21 = dt.Rows[0]["KouritenTelNO2-1"].ToString();
+            kd.Access_Kouriten_obj.Tel22 = dt.Rows[0]["KouritenTelNO2-2"].ToString();
+            kd.Access_Kouriten_obj.Tel23 = dt.Rows[0]["KouritenTelNO2-3"].ToString();
         }
+        private void gvChakuniNyuuryoku_CellValidating_1(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (gv_1.Columns[e.ColumnIndex].Name == "colArrivalTime")
+            {
+                string value = gv_1.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString();
+                if (Convert.ToDecimal(value) < 0)
+                {
+                    bbl.ShowMessage("E109");
+                    e.Cancel = true;
+                }
+            }
+        }
+        private void sbStaffCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                DataTable dt = sbStaffCD.IsDatatableOccurs;
+
+                if (dt.Rows.Count > 0)
+                {
+                    lblStaffName.Text = dt.Rows[0]["StaffName"].ToString();
+                }
+                else
+                {
+                    bbl.ShowMessage("E135");
+                    lblStaffName.Focus();
+                }
+            }
+        }
+        private void sbShippingNO_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbShippingNO.IsErrorOccurs)
+                {
+                    if (cboMode.SelectedValue.ToString() == "2")
+                    {
+                        cf.EnablePanel(panelDetails);
+                        cf.DisablePanel(PanelTitle);
+                        sbShippingNO.Focus();
+                    }
+                }
+                sksz_bl = new ShukkasiziNyuuryokuBL();
+                DataTable dt_Header = new DataTable();
+                dt_Header = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sbShippingNO.Text, txtShippingDate.Text, 3);
+                if (dt_Header.Rows.Count > 0)
+                    ShukkasiziNyuuryoku_Header_Select(dt_Header);
+
+                if (cboMode.SelectedValue.ToString() != "1")
+                {
+                    sksz_bl = new ShukkasiziNyuuryokuBL();
+                    DataTable dtDetails = new DataTable();
+                    dtDetails = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sbShippingNO.Text, txtShippingDate.Text, 2);
+                    if (dtDetails.Rows.Count > 0)
+                        gv_2.DataSource = dtDetails;
+
+                    sksz_bl = new ShukkasiziNyuuryokuBL();
+                    DataTable dt_gv1 = new DataTable();
+                    dt_gv1 = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sbShippingNO.Text, txtShippingDate.Text, 1);
+                    if (dt_gv1.Rows.Count > 0)
+                        gv_1.DataSource = dt_gv1;
+                }
+            }
+        }
+        private void sbTokuisaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbTokuisaki.IsErrorOccurs)
+                {
+                    DataTable dt = sbTokuisaki.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                    }
+                    else
+                    {
+                        lblTokuisakiName.Text = string.Empty;
+                    }
+                }
+            }
+        }
+        private void sbKouriten_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbKouriten.IsErrorOccurs)
+                {
+                    DataTable dt = sbKouriten.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        lblKouritenName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
+                    }
+                    //no count case
+                    else
+                    {
+                        lblKouritenName.Text = string.Empty;
+                    }
+                }
+            }
+        }
+        private void btn_Tokuisaki_Click(object sender, EventArgs e)
+        {
+            td.ShowDialog();
+        }
+        private void btnKouriren_Detail_Click(object sender, EventArgs e)
+        {
+            kd.ShowDialog();
+        }
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+            ShukkaSiziNyuuryokuEntity sksz_e = new ShukkaSiziNyuuryokuEntity();
+            sksz_e.TokuisakiCD = sbTokuisaki.Text;
+            sksz_e.JuchuuNO = txtJuchuuNo.Text;
+            sksz_e.SenpyouhachuuNo = txtSenpyouhachuuNo.Text;
+            sksz_bl = new ShukkasiziNyuuryokuBL();            
+            dtgv1= sksz_bl.ShukkasiziNyuuryoku_Display(sksz_e, 1);
+            gv_1.DataSource = dtgv1;
+            dtgv2 = sksz_bl.ShukkasiziNyuuryoku_Display(sksz_e, 2);
+            gv_2.DataSource = dtgv2;
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if(dtTemp1.Rows.Count==0)
+            {              
+                dtTemp1 = dtgv1.Copy();
+                dtTemp1.Clear();
+            }
+            else if(dtTemp2.Rows.Count==0)
+            {
+                dtTemp2 = dtgv2.Copy();
+                dtTemp2.Clear();
+            }
+            gv_1.DataSource = dtTemp1;
+            gv_2.DataSource = dtTemp2;
+        }
+        private void gvChakuniNyuuryoku_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            DataGridViewTextBoxEditingControl tb = e.Control as DataGridViewTextBoxEditingControl;
+            // tb.KeyDown -= dataGridView_KeyDown;
+            tb.PreviewKeyDown -= dataGridView_PreviewKeyDown1;
+            // tb.KeyDown += dataGridView_KeyDown;
+            tb.PreviewKeyDown += dataGridView_PreviewKeyDown1;
+        }
+        private void gv_2_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            DataGridViewTextBoxEditingControl tb = e.Control as DataGridViewTextBoxEditingControl;
+            // tb.KeyDown -= dataGridView_KeyDown;
+            tb.PreviewKeyDown -= dataGridView_PreviewKeyDown2;
+            // tb.KeyDown += dataGridView_KeyDown;
+            tb.PreviewKeyDown += dataGridView_PreviewKeyDown2;
+        }
+        private void dataGridView_PreviewKeyDown1(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                dtTemp1 = dtgv1.Copy();
+                dtTemp1.Clear();
+                DataRow dr1 = dtTemp1.NewRow();
+                int gv1_row = gv_1.CurrentCell.RowIndex;
+                int gv1_column = gv_1.CurrentCell.ColumnIndex;
+
+                if (sender.ToString() != dtgv1.Rows[gv1_row][gv1_column].ToString())
+                {
+                    for (int i = 0; i < gv_1.Columns.Count; i++)
+                    {
+                        if (i == gv1_column)
+                        {
+                            string dec_val = (sender as DataGridViewTextBoxEditingControl).Text;
+                            dr1[i] = dec_val.ToString();
+                        }
+                        else
+                        {
+                            dr1[i] = gv_1[i, gv1_row].Value;
+                        }
+                    }
+                    dtTemp1.Rows.Add(dr1);
+                }
+            }
+        }
+        private void dataGridView_PreviewKeyDown2(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                dtTemp2 = dtgv2.Copy();
+                dtTemp2.Clear();
+                DataRow dr2 = dtTemp2.NewRow();
+                int gv2_row = gv_2.CurrentCell.RowIndex;
+                int gv2_column = gv_2.CurrentCell.ColumnIndex;
+
+                if (sender.ToString() != dtgv1.Rows[gv2_row][gv2_column].ToString())
+                {                   
+                    for (int i = 0; i < gv_2.Columns.Count; i++)
+                    {
+                        if (i == gv2_column)
+                        {
+                            string dec_val = (sender as DataGridViewTextBoxEditingControl).Text;
+                            dr2[i] = dec_val;
+                        }
+                        else
+                        {
+                            dr2[i] = gv_2[i, gv2_row].Value;
+                        }
+
+                    }
+                    dtTemp2.Rows.Add(dr2);
+                }
+            }
+        }
+
+        
     }
 }

@@ -17,7 +17,8 @@ namespace Entity {
            multiporpose,
            Kouriten,
            ShippingNO,
-            Shouhin
+            Shouhin,
+            ArrivalNo
         }
     }
 }
