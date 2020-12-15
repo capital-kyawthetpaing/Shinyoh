@@ -711,6 +711,7 @@
             this.txtKouriten.Size = new System.Drawing.Size(100, 19);
             this.txtKouriten.TabIndex = 52;
             this.txtKouriten.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtKouriten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKouriten_KeyDown);
             // 
             // lblKouritenName
             // 
