@@ -121,6 +121,8 @@ namespace Shinyoh_Controls
         public bool E268;
         public string E268Type;
         public bool E160;
+        public string E165Type;
+        public bool E165;
         public bool E166;
         public string E160Type;
         public bool E270;
@@ -149,6 +151,8 @@ namespace Shinyoh_Controls
         public Control ctrlE135_2;
         public Control ctrlE160_1;
         public Control ctrlE160_2;
+        public Control ctrlE165_1;
+        public Control ctrlE165_2;
         public Control ctrlE166_1;
         public Control ctrlE166_2;
         public Control ctrlE227_1;
@@ -157,6 +161,7 @@ namespace Shinyoh_Controls
         public Control ctrlE267_2;
         public Control ctrlE270_1;
         public Control ctrlE270_2;
+        
 
         public Control ctrl1Yuubin_Juusho;
         public Control ctrl2Yuubin_Juusho;
@@ -403,6 +408,13 @@ namespace Shinyoh_Controls
             E160Type = type;
             ctrlE160_1 = ctrl1;
             ctrlE160_2 = ctrl2;
+        }
+        public void E165Check(bool value, string type, Control ctrl1, Control ctrl2)
+        {
+            E165 = value;
+            E165Type = type;
+            ctrlE165_1 = ctrl1;
+            ctrlE165_2 = ctrl2;
         }
         public void E166Check(bool value,Control ctrl1,Control ctrl2)
         {

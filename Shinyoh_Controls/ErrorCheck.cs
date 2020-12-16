@@ -31,6 +31,12 @@ namespace Shinyoh_Controls
                 (bool, DataTable) r_value = ComboErrorCheck(sCombo);
                 return r_value;
             }
+            if(ctrl is SCheckBox)
+            {
+                SCheckBox sCheckBox = ctrl as SCheckBox;
+                (bool, DataTable) r_value = CheckBoxErrorCheck(sCheckBox);
+                return r_value;
+            }
             return (false,dt);
         }
 
@@ -398,6 +404,24 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
+            if (sTextBox.E165)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E165Type)
+                {
+                    case "ShukkaTorikom":
+                        ShukkaTorikomi_BL sbl = new ShukkaTorikomi_BL();
+                        rDt = sbl.ShukkaTorikomi_Error_Check(sTextBox.ctrlE165_1.Text,"E165");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E165"))
+                {
+                    bbl.ShowMessage("E165");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
             if (sTextBox.E166)
             {
                 if (!sTextBox.ctrlE166_1.Text.Equals(sTextBox.ctrlE166_2.Text))
@@ -585,6 +609,21 @@ namespace Shinyoh_Controls
             }
             return (false, rDt);
         }        
+
+        private (bool, DataTable) CheckBoxErrorCheck(SCheckBox sCheckBox)
+        {
+            DataTable rDt = new DataTable();
+            if(sCheckBox.E188)
+            {
+                if(!sCheckBox.ctrlE188_1.Checked && !sCheckBox.ctrlE188_2.Checked)
+                {
+                    ShowErrorMessage("E188");
+                    sCheckBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            return (false, rDt);
+        }
 
         public static bool Matches(string left_, string right_)
         {
