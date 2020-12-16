@@ -277,6 +277,9 @@ namespace Shinyoh
                 case ButtonType.BType.Import:
                     CheckButton(programEntity.Importable = "", buttonText, button);
                     break;
+                case ButtonType.BType.Confirm:
+                    button.Text = buttonText;
+                    break;
             }
 
             button.Visible = visible;
