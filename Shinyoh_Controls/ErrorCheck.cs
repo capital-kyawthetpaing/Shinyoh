@@ -31,6 +31,12 @@ namespace Shinyoh_Controls
                 (bool, DataTable) r_value = ComboErrorCheck(sCombo);
                 return r_value;
             }
+            if(ctrl is SCheckBox)
+            {
+                SCheckBox sCheckBox = ctrl as SCheckBox;
+                (bool, DataTable) r_value = CheckBoxErrorCheck(sCheckBox);
+                return r_value;
+            }
             return (false,dt);
         }
 
@@ -603,6 +609,21 @@ namespace Shinyoh_Controls
             }
             return (false, rDt);
         }        
+
+        private (bool, DataTable) CheckBoxErrorCheck(SCheckBox sCheckBox)
+        {
+            DataTable rDt = new DataTable();
+            if(sCheckBox.E188)
+            {
+                if(!sCheckBox.ctrlE188_1.Checked && !sCheckBox.ctrlE188_2.Checked)
+                {
+                    ShowErrorMessage("E188");
+                    sCheckBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            return (false, rDt);
+        }
 
         public static bool Matches(string left_, string right_)
         {
