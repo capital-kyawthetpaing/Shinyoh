@@ -41,21 +41,21 @@ namespace ShukkaTorikomi
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
-            SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
+            SetButton(ButtonType.BType.Import, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", false);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
-            multipurposeEntity multipurpose_entity = new multipurposeEntity();
+            //multipurposeEntity multipurpose_entity = new multipurposeEntity();
 
             txtShukkaToNo1.Enabled = true;
             txtShukkaToNo2.Enabled = true;
 
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
-            txtNo.Enabled = false;
-            dataBind();
+            txtDenpyouNO.Enabled = false;
 
             ErrorCheck();
-           
+            dataBind();
+            gvTorikomi.UseRowNo(true);
         }
 
 
@@ -92,7 +92,7 @@ namespace ShukkaTorikomi
             txtShukkaToNo2.Enabled = true;
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
-            txtNo.Enabled = false;
+            txtDenpyouNO.Enabled = false;
         }
         private void Disable_Method()
         {
@@ -100,13 +100,13 @@ namespace ShukkaTorikomi
             txtShukkaToNo2.Text = string.Empty;
             txtDate1.Text = string.Empty;
             txtDate2.Text = string.Empty;
-            txtNo.Text = string.Empty;
+            txtDenpyouNO.Text = string.Empty;
 
             txtShukkaToNo1.Enabled = false;
             txtShukkaToNo2.Enabled = false;
             txtDate1.Enabled = true;
             txtDate2.Enabled = true;
-            txtNo.Enabled = true;
+            txtDenpyouNO.Enabled = true;
         }
 
         private void rdo_Sakujo_CheckedChanged(object sender, EventArgs e)
@@ -124,32 +124,32 @@ namespace ShukkaTorikomi
             txtShukkaToNo2.E102Check(true);
             txtDate1.E103Check(true);
             txtDate2.E103Check(true);
-            txtNo.E102Check(true);
-            txtNo.E165Check(true, "ShukkaTorikomi", txtNo,null);
+            txtDenpyouNO.E102Check(true);
+            txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO,null);
         }
 
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "6")
             {
-                Clear();
+                //Clear();
             }
-            if (tagID == "2")
+            if (tagID == "10")
             {
                 DataGridviewBind();
             }
             base.FunctionProcess(tagID);
         }
 
-        private void btnTorikomi_F10_Click(object sender, EventArgs e)
-        {
-            DataGridviewBind();
-        }
+        //private void btnTorikomi_F10_Click(object sender, EventArgs e)
+        //{
+        //    DataGridviewBind();
+        //}
         private void DataGridviewBind()
         {
             TorikomiEntity obj = new TorikomiEntity();
-            obj.TorikomiDenpyouNO = 
             ShukkaTorikomi_BL objMethod = new ShukkaTorikomi_BL();
+            obj.TorikomiDenpyouNO = txtDenpyouNO.Text;
             DataTable dt = objMethod.ShukkaTorikomi_Select_Check(obj);
            
             gvTorikomi.DataSource = dt;

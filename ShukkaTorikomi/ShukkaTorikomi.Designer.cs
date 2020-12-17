@@ -34,7 +34,7 @@
             this.panel_Details = new System.Windows.Forms.Panel();
             this.txtDate2 = new Shinyoh_Controls.STextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtNo = new Shinyoh_Controls.STextBox();
+            this.txtDenpyouNO = new Shinyoh_Controls.STextBox();
             this.sLabel6 = new Shinyoh_Controls.SLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.gvTorikomi = new Shinyoh_Controls.SGridView();
@@ -121,7 +121,7 @@
             // 
             this.panel_Details.Controls.Add(this.txtDate2);
             this.panel_Details.Controls.Add(this.label3);
-            this.panel_Details.Controls.Add(this.txtNo);
+            this.panel_Details.Controls.Add(this.txtDenpyouNO);
             this.panel_Details.Controls.Add(this.sLabel6);
             this.panel_Details.Controls.Add(this.label2);
             this.panel_Details.Controls.Add(this.gvTorikomi);
@@ -169,29 +169,29 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "＜削除対象＞";
             // 
-            // txtNo
+            // txtDenpyouNO
             // 
-            this.txtNo.AllowMinus = false;
-            this.txtNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNo.DecimalPlace = 0;
-            this.txtNo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtNo.DepandOnMode = true;
-            this.txtNo.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtNo.IntegerPart = 0;
-            this.txtNo.IsDatatableOccurs = null;
-            this.txtNo.IsErrorOccurs = false;
-            this.txtNo.IsRequire = false;
-            this.txtNo.Location = new System.Drawing.Point(699, 135);
-            this.txtNo.MaxLength = 12;
-            this.txtNo.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtNo.MoveNext = true;
-            this.txtNo.Name = "txtNo";
-            this.txtNo.NextControl = null;
-            this.txtNo.NextControlName = null;
-            this.txtNo.SearchType = Entity.SearchType.ScType.None;
-            this.txtNo.Size = new System.Drawing.Size(100, 19);
-            this.txtNo.TabIndex = 11;
-            this.txtNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtDenpyouNO.AllowMinus = false;
+            this.txtDenpyouNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDenpyouNO.DecimalPlace = 0;
+            this.txtDenpyouNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtDenpyouNO.DepandOnMode = true;
+            this.txtDenpyouNO.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtDenpyouNO.IntegerPart = 0;
+            this.txtDenpyouNO.IsDatatableOccurs = null;
+            this.txtDenpyouNO.IsErrorOccurs = false;
+            this.txtDenpyouNO.IsRequire = false;
+            this.txtDenpyouNO.Location = new System.Drawing.Point(699, 135);
+            this.txtDenpyouNO.MaxLength = 12;
+            this.txtDenpyouNO.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtDenpyouNO.MoveNext = true;
+            this.txtDenpyouNO.Name = "txtDenpyouNO";
+            this.txtDenpyouNO.NextControl = null;
+            this.txtDenpyouNO.NextControlName = null;
+            this.txtDenpyouNO.SearchType = Entity.SearchType.ScType.None;
+            this.txtDenpyouNO.Size = new System.Drawing.Size(100, 19);
+            this.txtDenpyouNO.TabIndex = 11;
+            this.txtDenpyouNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // sLabel6
             // 
@@ -442,7 +442,7 @@
         private Shinyoh_Controls.SLabel sLabel3;
         private Shinyoh_Controls.SGridView gvTorikomi;
         private System.Windows.Forms.Label label3;
-        private Shinyoh_Controls.STextBox txtNo;
+        private Shinyoh_Controls.STextBox txtDenpyouNO;
         private Shinyoh_Controls.SLabel sLabel6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTorikomiDenpyouNO;
