@@ -85,7 +85,7 @@ namespace ShukkaSiziNyuuryoku
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTokuisaki = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -757,7 +757,7 @@ namespace ShukkaSiziNyuuryoku
             this.colPrice,
             this.Column10,
             this.colDetails,
-            this.Column1,
+            this.colTokuisaki,
             this.Column2,
             this.Column3,
             this.Column4,
@@ -775,8 +775,7 @@ namespace ShukkaSiziNyuuryoku
             this.gv_1.Name = "gv_1";
             this.gv_1.Size = new System.Drawing.Size(1580, 150);
             this.gv_1.TabIndex = 35;
-            this.gv_1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gv_1_CellValidating);
-            this.gv_1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gvChakuniNyuuryoku_EditingControlShowing);
+            this.gv_1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gv_1_CellFormatting);
             // 
             // colShouhinCD
             // 
@@ -895,12 +894,13 @@ namespace ShukkaSiziNyuuryoku
             this.colDetails.Name = "colDetails";
             this.colDetails.Width = 200;
             // 
-            // Column1
+            // colTokuisaki
             // 
-            this.Column1.DataPropertyName = "TokuisakiCD";
-            this.Column1.HeaderText = "得意先";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
+            this.colTokuisaki.DataPropertyName = "TokuisakiCD";
+            this.colTokuisaki.HeaderText = "得意先";
+            this.colTokuisaki.Name = "colTokuisaki";
+            this.colTokuisaki.ReadOnly = true;
+            this.colTokuisaki.Visible = false;
             // 
             // Column2
             // 
@@ -1392,7 +1392,7 @@ namespace ShukkaSiziNyuuryoku
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisaki;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;

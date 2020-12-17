@@ -33,5 +33,15 @@ namespace BL
             return dt;
         }
 
+        public DataTable ShukkaTorikomi_Select_Check(TorikomiEntity obj)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@TorikomiDenpyouNO", SqlDbType.VarChar) { Value = obj.TorikomiDenpyouNO };
+            DataTable dt = ckmdl.SelectDatatable("ShukkaTorikomi_Select_Check", GetConnectionString(), parameters);
+            return dt;
+
+        }
+
     }
 }

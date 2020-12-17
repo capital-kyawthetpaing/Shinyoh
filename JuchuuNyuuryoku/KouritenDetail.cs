@@ -19,21 +19,6 @@ namespace JuchuuNyuuryoku
         {
             InitializeComponent();
         }
-        public void Datatable_Access(DataTable dt)
-        {
-            txtShort_Name.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
-            txtLong_Name.Text = dt.Rows[0]["KouritenName"].ToString();
-            txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
-            txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
-            txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
-            txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
-            txtPhone1_1.Text = dt.Rows[0]["Tel11"].ToString();
-            txtPhone1_2.Text = dt.Rows[0]["Tel12"].ToString();
-            txtPhone1_3.Text = dt.Rows[0]["Tel13"].ToString();
-            txtPhone2_1.Text = dt.Rows[0]["Tel21"].ToString();
-            txtPhone2_2.Text = dt.Rows[0]["Tel22"].ToString();
-            txtPhone2_3.Text = dt.Rows[0]["Tel23"].ToString();
-        }
         private void KouritenDetail_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
@@ -66,6 +51,26 @@ namespace JuchuuNyuuryoku
             txtPhone2_1.Text = obj.Tel21;
             txtPhone2_2.Text = obj.Tel22;
             txtPhone2_3.Text = obj.Tel23;
+        }
+        public override void FunctionProcess(string tagID)
+        {
+            if (tagID == "3")
+            {
+                Access_Kouriten_obj.KouritenCD = txtCD.Text;
+                Access_Kouriten_obj.KouritenName = txtLong_Name.Text;
+                Access_Kouriten_obj.KouritenRyakuName = txtShort_Name.Text;
+                Access_Kouriten_obj.YuubinNO1 = txtYubin1.Text;
+                Access_Kouriten_obj.YuubinNO2 = txtYubin2.Text;
+                Access_Kouriten_obj.Juusho1 = txtAddress1.Text;
+                Access_Kouriten_obj.Juusho2 = txtAddress2.Text;
+                Access_Kouriten_obj.Tel11 = txtPhone1_1.Text;
+                Access_Kouriten_obj.Tel12 = txtPhone1_2.Text;
+                Access_Kouriten_obj.Tel13 = txtPhone1_3.Text;
+                Access_Kouriten_obj.Tel21 = txtPhone2_1.Text;
+                Access_Kouriten_obj.Tel22 = txtPhone2_2.Text;
+                Access_Kouriten_obj.Tel23 = txtPhone2_3.Text;
+            }
+            base.FunctionProcess(tagID);
         }
     }
 }

@@ -54,6 +54,7 @@ namespace ChakuniNyuuryoku
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             ChangeMode(Mode.New);
             txtArrivalNO.Focus();
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
@@ -396,8 +397,17 @@ namespace ChakuniNyuuryoku
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            dtGridSource = (DataTable)gvChakuniNyuuryoku.DataSource;
-            savedata();
+            for (int i = 0; i < dtmain.Rows.Count; i++)
+            {
+                var a = dtmain.Rows[i]["ChakuniSuu"].ToString();
+                dtGridSource = (DataTable)gvChakuniNyuuryoku.DataSource;
+                var b = dtGridSource.Rows[i]["ChakuniSuu"].ToString();
+                if(a.ToString() !=b.ToString())
+                {
+                    savedata();
+                }
+            }
+            //savedata();
             txtScheduledNo.Clear();
             txtShouhinCD.Clear();
             txtShouhinName.Clear();
@@ -413,7 +423,6 @@ namespace ChakuniNyuuryoku
         }
         private DataTable savedata()
         {
-
             //if(dtGridSource.Rows.Count>0)
             //{
             //    gvChakuniNyuuryoku.DataSource = dtGridSource;
