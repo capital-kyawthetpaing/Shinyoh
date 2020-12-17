@@ -37,15 +37,7 @@
             this.txtNo = new Shinyoh_Controls.STextBox();
             this.sLabel6 = new Shinyoh_Controls.SLabel();
             this.label2 = new System.Windows.Forms.Label();
-            this.sGridView1 = new Shinyoh_Controls.SGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gvTorikomi = new Shinyoh_Controls.SGridView();
             this.txtDate1 = new Shinyoh_Controls.STextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtShukkaToNo2 = new Shinyoh_Controls.STextBox();
@@ -53,10 +45,18 @@
             this.sLabel5 = new Shinyoh_Controls.SLabel();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
+            this.colTorikomiDenpyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInsertDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShukkaNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShukkaDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTokuisakiCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTokuisakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colKouritenCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colKouritenRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.panel_Details.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvTorikomi)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -124,7 +124,7 @@
             this.panel_Details.Controls.Add(this.txtNo);
             this.panel_Details.Controls.Add(this.sLabel6);
             this.panel_Details.Controls.Add(this.label2);
-            this.panel_Details.Controls.Add(this.sGridView1);
+            this.panel_Details.Controls.Add(this.gvTorikomi);
             this.panel_Details.Controls.Add(this.txtDate1);
             this.panel_Details.Controls.Add(this.label1);
             this.panel_Details.Controls.Add(this.txtShukkaToNo2);
@@ -215,67 +215,23 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "～";
             // 
-            // sGridView1
+            // gvTorikomi
             // 
-            this.sGridView1.AllowUserToAddRows = false;
-            this.sGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.sGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
-            this.Column8});
-            this.sGridView1.Location = new System.Drawing.Point(136, 182);
-            this.sGridView1.Name = "sGridView1";
-            this.sGridView1.Size = new System.Drawing.Size(1120, 150);
-            this.sGridView1.TabIndex = 8;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "取込伝票番号";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 120;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "取込日時";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "出荷番号";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "出荷日";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "得意先";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "得意先名";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 220;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "小売店";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 80;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "小売店名";
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 300;
+            this.gvTorikomi.AllowUserToAddRows = false;
+            this.gvTorikomi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvTorikomi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colTorikomiDenpyouNO,
+            this.colInsertDateTime,
+            this.colShukkaNO,
+            this.colShukkaDate,
+            this.colTokuisakiCD,
+            this.colTokuisakiRyakuName,
+            this.colKouritenCD,
+            this.colKouritenRyakuName});
+            this.gvTorikomi.Location = new System.Drawing.Point(136, 182);
+            this.gvTorikomi.Name = "gvTorikomi";
+            this.gvTorikomi.Size = new System.Drawing.Size(1120, 150);
+            this.gvTorikomi.TabIndex = 8;
             // 
             // txtDate1
             // 
@@ -396,6 +352,58 @@
             this.sLabel3.Text = "取込元フォルダ";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // colTorikomiDenpyouNO
+            // 
+            this.colTorikomiDenpyouNO.DataPropertyName = "TorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.HeaderText = "取込伝票番号";
+            this.colTorikomiDenpyouNO.Name = "colTorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.Width = 120;
+            // 
+            // colInsertDateTime
+            // 
+            this.colInsertDateTime.DataPropertyName = "InsertDateTime";
+            this.colInsertDateTime.HeaderText = "取込日時";
+            this.colInsertDateTime.Name = "colInsertDateTime";
+            // 
+            // colShukkaNO
+            // 
+            this.colShukkaNO.DataPropertyName = "ShukkaNO";
+            this.colShukkaNO.HeaderText = "出荷番号";
+            this.colShukkaNO.Name = "colShukkaNO";
+            // 
+            // colShukkaDate
+            // 
+            this.colShukkaDate.DataPropertyName = "ShukkaDate";
+            this.colShukkaDate.HeaderText = "出荷日";
+            this.colShukkaDate.Name = "colShukkaDate";
+            // 
+            // colTokuisakiCD
+            // 
+            this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
+            this.colTokuisakiCD.HeaderText = "得意先";
+            this.colTokuisakiCD.Name = "colTokuisakiCD";
+            // 
+            // colTokuisakiRyakuName
+            // 
+            this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
+            this.colTokuisakiRyakuName.HeaderText = "得意先名";
+            this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
+            this.colTokuisakiRyakuName.Width = 220;
+            // 
+            // colKouritenCD
+            // 
+            this.colKouritenCD.DataPropertyName = "KouritenCD";
+            this.colKouritenCD.HeaderText = "小売店";
+            this.colKouritenCD.Name = "colKouritenCD";
+            this.colKouritenCD.Width = 80;
+            // 
+            // colKouritenRyakuName
+            // 
+            this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
+            this.colKouritenRyakuName.HeaderText = "小売店名";
+            this.colKouritenRyakuName.Name = "colKouritenRyakuName";
+            this.colKouritenRyakuName.Width = 300;
+            // 
             // ShukkaTorikomi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -412,7 +420,7 @@
             this.PanelTitle.ResumeLayout(false);
             this.panel_Details.ResumeLayout(false);
             this.panel_Details.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.sGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvTorikomi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -432,20 +440,19 @@
         private Shinyoh_Controls.SLabel sLabel5;
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.SLabel sLabel3;
-        private Shinyoh_Controls.SGridView sGridView1;
+        private Shinyoh_Controls.SGridView gvTorikomi;
         private System.Windows.Forms.Label label3;
         private Shinyoh_Controls.STextBox txtNo;
         private Shinyoh_Controls.SLabel sLabel6;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTorikomiDenpyouNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colInsertDateTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkaNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkaDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiRyakuName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colKouritenCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colKouritenRyakuName;
     }
 }
 

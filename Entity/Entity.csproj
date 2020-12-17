@@ -60,6 +60,7 @@
     <Compile Include="ShukkaNyuuryokuEntity.cs" />
     <Compile Include="ShukkaSiziDataShuturyokuEntity.cs" />
     <Compile Include="ShukkaSiziNyuuryokuEntity.cs" />
+    <Compile Include="TorikomiEntity.cs" />
     <Compile Include="SoukoEntity.cs" />
     <Compile Include="StaffEntity.cs" />
     <Compile Include="SiiresakiEntity.cs" />

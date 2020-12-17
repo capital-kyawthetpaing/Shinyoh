@@ -22,7 +22,7 @@ namespace ShukkaTorikomi
             InitializeComponent();
             cf = new CommonFunction();
             multi_Entity = new multipurposeEntity();
-            ShukkaTorikomi_BL = new ShukkaTorikomi_BL();
+            
             bbl = new BaseBL();
         }
 
@@ -125,7 +125,34 @@ namespace ShukkaTorikomi
             txtDate1.E103Check(true);
             txtDate2.E103Check(true);
             txtNo.E102Check(true);
-            txtNo.E165Check(true, "ShukkaTorikom", txtNo,null);
+            txtNo.E165Check(true, "ShukkaTorikomi", txtNo,null);
+        }
+
+        public override void FunctionProcess(string tagID)
+        {
+            if (tagID == "6")
+            {
+                Clear();
+            }
+            if (tagID == "2")
+            {
+                DataGridviewBind();
+            }
+            base.FunctionProcess(tagID);
+        }
+
+        private void btnTorikomi_F10_Click(object sender, EventArgs e)
+        {
+            DataGridviewBind();
+        }
+        private void DataGridviewBind()
+        {
+            TorikomiEntity obj = new TorikomiEntity();
+            obj.TorikomiDenpyouNO = 
+            ShukkaTorikomi_BL objMethod = new ShukkaTorikomi_BL();
+            DataTable dt = objMethod.ShukkaTorikomi_Select_Check(obj);
+           
+            gvTorikomi.DataSource = dt;
         }
     }
 }
