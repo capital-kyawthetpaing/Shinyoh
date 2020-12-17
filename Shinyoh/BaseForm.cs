@@ -188,7 +188,22 @@ namespace Shinyoh
                         else
                             FunctionProcess(btn.Tag.ToString());
                         break;
+                    case ButtonType.BType.Export:
+                        if (bbl.ShowMessage("Q205") != DialogResult.Yes)
+                            PreviousCtrl.Focus();
+                        else
+                            FunctionProcess(btn.Tag.ToString());
+                            break;
                     case ButtonType.BType.Import:
+                        FunctionProcess(btn.Tag.ToString());
+                        break;
+                    case ButtonType.BType.Confirm:
+                        FunctionProcess(btn.Tag.ToString());
+                        break;
+                    case ButtonType.BType.Display:
+                        FunctionProcess(btn.Tag.ToString());
+                        break;
+                    case ButtonType.BType.Memory:
                         FunctionProcess(btn.Tag.ToString());
                         break;
                     case ButtonType.BType.Save:
@@ -278,6 +293,12 @@ namespace Shinyoh
                     CheckButton(programEntity.Importable = "", buttonText, button);
                     break;
                 case ButtonType.BType.Confirm:
+                    button.Text = buttonText;
+                    break;
+                case ButtonType.BType.Export:
+                    button.Text = buttonText;
+                    break;
+                case ButtonType.BType.Memory:
                     button.Text = buttonText;
                     break;
             }
