@@ -98,6 +98,20 @@ namespace Shinyoh_Controls
                         rDt = shouhin.Shouhin_Check(id, sTextBox.ctrlE101_1.Text, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "HikiateHenkouShoukai":
+                        switch(sTextBox.ctrlE101_1.Name)
+                        {
+                            case "txtTokuisakiCD":
+                                TokuisakiBL tokuisakiBL = new TokuisakiBL();
+                                rDt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE101_1.Text, sTextBox.E102Type, "E101");
+                                break;
+                            case "txtKouritenCD":
+                                KouritenBL kouritenbl = new KouritenBL();
+                                rDt = kouritenbl.Kouriten_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.E102Type, "E101");
+                                break;
+                        }
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E101"))
                 {
@@ -344,6 +358,14 @@ namespace Shinyoh_Controls
                         ShukkaNyuuryokuBL sbl = new ShukkaNyuuryokuBL();
                         rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
                         result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "HikiateHenkouShoukai":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text.Trim()))
+                        {
+                            HikiateHenkouShoukaiBL hikiateHenkouShoukaiBL = new HikiateHenkouShoukaiBL();
+                            rDt = hikiateHenkouShoukaiBL.Error_Check(sTextBox.ctrlE133_1.Text, string.Empty, "E133");
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
                         break;
                 }
                 if (result.Equals("E133"))

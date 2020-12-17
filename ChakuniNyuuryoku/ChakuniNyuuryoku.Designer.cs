@@ -1004,7 +1004,7 @@
             // colArrivalTime
             // 
             this.colArrivalTime.DataPropertyName = "ChakuniSuu";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle2.NullValue = null;
             this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle2;
             this.colArrivalTime.HeaderText = "今回着荷数";
