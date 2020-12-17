@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2E411A63-E586-4E31-8318-7926C040089B}</ProjectGuid>
+    <ProjectGuid>{9D480441-8BEC-4452-B831-39F40E984C8C}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>HikiateHenkouShoukai</RootNamespace>
-    <AssemblyName>HikiateHenkouShoukai</AssemblyName>
+    <RootNamespace>ShinyohMenu</RootNamespace>
+    <AssemblyName>ShinyohMenu</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKM_CommonFunction">
-      <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HikiateHenkouShoukai.cs">
+    <Compile Include="ShinyohMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HikiateHenkouShoukai.Designer.cs">
-      <DependentUpon>HikiateHenkouShoukai.cs</DependentUpon>
+    <Compile Include="ShinyohMenu.Designer.cs">
+      <DependentUpon>ShinyohMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="HikiateHenkouShoukai.resx">
-      <DependentUpon>HikiateHenkouShoukai.cs</DependentUpon>
+    <EmbeddedResource Include="ShinyohMenu.resx">
+      <DependentUpon>ShinyohMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,28 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{c2e966eb-8344-4491-befe-a809331521fe}</Project>
-      <Name>BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Entity\Entity.csproj">
-      <Project>{0cc4487d-c081-4d4f-87d5-028552310763}</Project>
-      <Name>Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shinyoh\Shinyoh.csproj">
-      <Project>{697e1304-f141-4cce-b816-9cc225f441c4}</Project>
-      <Name>Shinyoh</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
-      <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
-      <Name>Shinyoh_Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
-      <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>
-      <Name>Shinyoh_Search</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

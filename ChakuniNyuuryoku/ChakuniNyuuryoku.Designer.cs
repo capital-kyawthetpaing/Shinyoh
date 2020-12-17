@@ -674,36 +674,36 @@
             this.lblStaff.BackColor = System.Drawing.SystemColors.Control;
             this.lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblStaff.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblStaff.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStaff.Location = new System.Drawing.Point(356, 52);
             this.lblStaff.Name = "lblStaff";
             this.lblStaff.Size = new System.Drawing.Size(250, 19);
             this.lblStaff.TabIndex = 40;
-            this.lblStaff.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblStaff.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblWareHouse
             // 
             this.lblWareHouse.BackColor = System.Drawing.SystemColors.Control;
             this.lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblWareHouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblWareHouse.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblWareHouse.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWareHouse.Location = new System.Drawing.Point(901, 4);
             this.lblWareHouse.Name = "lblWareHouse";
             this.lblWareHouse.Size = new System.Drawing.Size(250, 19);
             this.lblWareHouse.TabIndex = 42;
-            this.lblWareHouse.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblWareHouse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblBrandName
             // 
             this.lblBrandName.BackColor = System.Drawing.SystemColors.Control;
             this.lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblBrandName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblBrandName.Location = new System.Drawing.Point(906, 118);
+            this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrandName.Location = new System.Drawing.Point(909, 118);
             this.lblBrandName.Name = "lblBrandName";
             this.lblBrandName.Size = new System.Drawing.Size(250, 19);
             this.lblBrandName.TabIndex = 44;
-            this.lblBrandName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblBrandName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panelDetails
             // 
@@ -906,7 +906,7 @@
             this.lblSiiresaki.BackColor = System.Drawing.SystemColors.Control;
             this.lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSiiresaki.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblSiiresaki.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblSiiresaki.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSiiresaki.Location = new System.Drawing.Point(355, 29);
             this.lblSiiresaki.Name = "lblSiiresaki";
             this.lblSiiresaki.Size = new System.Drawing.Size(250, 19);
@@ -1004,7 +1004,7 @@
             // colArrivalTime
             // 
             this.colArrivalTime.DataPropertyName = "ChakuniSuu";
-            dataGridViewCellStyle2.Format = "N6";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle2.NullValue = null;
             this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle2;
             this.colArrivalTime.HeaderText = "今回着荷数";

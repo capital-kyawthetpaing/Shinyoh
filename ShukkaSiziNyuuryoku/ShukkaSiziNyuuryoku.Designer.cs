@@ -65,6 +65,10 @@ namespace ShukkaSiziNyuuryoku
             this.lblKouritenName = new Shinyoh_Controls.SLabel();
             this.btnKouriren_Detail = new Shinyoh_Controls.SButton();
             this.gv_2 = new Shinyoh_Controls.SGridView();
+            this.colDetails_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHachuuJuchuuNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSouko = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtJuchuuNo = new Shinyoh_Search.SearchBox();
             this.slable1 = new Shinyoh_Controls.SLabel();
             this.gv_1 = new Shinyoh_Controls.SGridView();
@@ -73,14 +77,28 @@ namespace ShukkaSiziNyuuryoku
             this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShukka_kanousou = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShukkakanousou = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShukkakanousuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShukkasizisou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTokuisaki = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSave = new Shinyoh_Controls.SButton();
             this.btnDisplay = new Shinyoh_Controls.SButton();
             this.btnConfirm = new Shinyoh_Controls.SButton();
@@ -100,10 +118,6 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel13 = new Shinyoh_Controls.SLabel();
             this.sbDenpyouCD = new Shinyoh_Controls.SLabel();
             this.sbShippingNO = new Shinyoh_Search.SearchBox();
-            this.colDetails_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHachuuJuchuuNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSouko = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.panelDetails.SuspendLayout();
@@ -655,6 +669,35 @@ namespace ShukkaSiziNyuuryoku
             this.gv_2.TabIndex = 48;
             this.gv_2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gv_2_EditingControlShowing);
             // 
+            // colDetails_Description
+            // 
+            this.colDetails_Description.DataPropertyName = "ShukkaSiziMeisaiTekiyou";
+            this.colDetails_Description.HeaderText = "明細摘要";
+            this.colDetails_Description.Name = "colDetails_Description";
+            this.colDetails_Description.Width = 180;
+            // 
+            // colHachuuJuchuuNo
+            // 
+            this.colHachuuJuchuuNo.DataPropertyName = "SKMSNO";
+            this.colHachuuJuchuuNo.HeaderText = "受注番号-行番号";
+            this.colHachuuJuchuuNo.Name = "colHachuuJuchuuNo";
+            this.colHachuuJuchuuNo.ReadOnly = true;
+            this.colHachuuJuchuuNo.Width = 150;
+            // 
+            // colSouko
+            // 
+            this.colSouko.DataPropertyName = "SoukoCD";
+            this.colSouko.HeaderText = "倉庫";
+            this.colSouko.Name = "colSouko";
+            // 
+            // colSoukoName
+            // 
+            this.colSoukoName.DataPropertyName = "SoukoName";
+            this.colSoukoName.HeaderText = "倉庫名";
+            this.colSoukoName.Name = "colSoukoName";
+            this.colSoukoName.ReadOnly = true;
+            this.colSoukoName.Width = 150;
+            // 
             // txtJuchuuNo
             // 
             this.txtJuchuuNo.AllowMinus = false;
@@ -706,20 +749,33 @@ namespace ShukkaSiziNyuuryoku
             this.colColorRyakuName,
             this.colColorNO,
             this.colSizeNO,
-            this.colShukka_kanousou,
-            this.colShukkakanousou,
+            this.colJuchuuSuu,
+            this.colShukkakanousuu,
             this.colShukkasizisou,
             this.colArrivalTime,
             this.colTanka,
             this.colPrice,
             this.Column10,
-            this.colDetails});
+            this.colDetails,
+            this.colTokuisaki,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5,
+            this.Column6,
+            this.Column7,
+            this.Column8,
+            this.Column9,
+            this.Column11,
+            this.Column12,
+            this.Column13,
+            this.Column14,
+            this.Column15});
             this.gv_1.Location = new System.Drawing.Point(2, 222);
             this.gv_1.Name = "gv_1";
             this.gv_1.Size = new System.Drawing.Size(1580, 150);
             this.gv_1.TabIndex = 35;
-            this.gv_1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvChakuniNyuuryoku_CellValidating_1);
-            this.gv_1.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gvChakuniNyuuryoku_EditingControlShowing);
+            this.gv_1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gv_1_CellFormatting);
             // 
             // colShouhinCD
             // 
@@ -758,29 +814,35 @@ namespace ShukkaSiziNyuuryoku
             this.colSizeNO.Name = "colSizeNO";
             this.colSizeNO.ReadOnly = true;
             // 
-            // colShukka_kanousou
+            // colJuchuuSuu
             // 
-            this.colShukka_kanousou.DataPropertyName = "JuchuuSuu";
+            this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colShukka_kanousou.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colShukka_kanousou.HeaderText = "受注数";
-            this.colShukka_kanousou.Name = "colShukka_kanousou";
-            this.colShukka_kanousou.ReadOnly = true;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colJuchuuSuu.HeaderText = "受注数";
+            this.colJuchuuSuu.Name = "colJuchuuSuu";
+            this.colJuchuuSuu.ReadOnly = true;
             // 
-            // colShukkakanousou
+            // colShukkakanousuu
             // 
-            this.colShukkakanousou.DataPropertyName = "ShukkaSiziSuu";
+            this.colShukkakanousuu.DataPropertyName = "ShukkanouSuu";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colShukkakanousou.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colShukkakanousou.HeaderText = "出荷可能数";
-            this.colShukkakanousou.Name = "colShukkakanousou";
-            this.colShukkakanousou.ReadOnly = true;
-            this.colShukkakanousou.Width = 120;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colShukkakanousuu.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colShukkakanousuu.HeaderText = "出荷可能数";
+            this.colShukkakanousuu.Name = "colShukkakanousuu";
+            this.colShukkakanousuu.ReadOnly = true;
+            this.colShukkakanousuu.Width = 120;
             // 
             // colShukkasizisou
             // 
             this.colShukkasizisou.DataPropertyName = "ShukkaSiziZumiSuu";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
             this.colShukkasizisou.DefaultCellStyle = dataGridViewCellStyle3;
             this.colShukkasizisou.HeaderText = "出荷指示済数";
             this.colShukkasizisou.Name = "colShukkasizisou";
@@ -791,6 +853,8 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.colArrivalTime.DataPropertyName = "KonkaiShukkaSiziSuu";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
             this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle4;
             this.colArrivalTime.HeaderText = "今回出荷指示数";
             this.colArrivalTime.Name = "colArrivalTime";
@@ -800,6 +864,8 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.colTanka.DataPropertyName = "UriageTanka";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
             this.colTanka.DefaultCellStyle = dataGridViewCellStyle5;
             this.colTanka.HeaderText = "単価";
             this.colTanka.Name = "colTanka";
@@ -808,6 +874,8 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.colPrice.DataPropertyName = "UriageKingaku";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
             this.colPrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.colPrice.HeaderText = "金額";
             this.colPrice.Name = "colPrice";
@@ -825,6 +893,105 @@ namespace ShukkaSiziNyuuryoku
             this.colDetails.HeaderText = "明細摘要";
             this.colDetails.Name = "colDetails";
             this.colDetails.Width = 200;
+            // 
+            // colTokuisaki
+            // 
+            this.colTokuisaki.DataPropertyName = "TokuisakiCD";
+            this.colTokuisaki.HeaderText = "得意先";
+            this.colTokuisaki.Name = "colTokuisaki";
+            this.colTokuisaki.ReadOnly = true;
+            this.colTokuisaki.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "KouritenCD";
+            this.Column2.HeaderText = "小売店";
+            this.Column2.Name = "Column2";
+            this.Column2.Visible = false;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "KouritenRyakuName";
+            this.Column3.HeaderText = "小売店略名";
+            this.Column3.Name = "Column3";
+            this.Column3.Visible = false;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "KouritenName";
+            this.Column4.HeaderText = "小売店名";
+            this.Column4.Name = "Column4";
+            this.Column4.Visible = false;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "KouritenYuubinNO1";
+            this.Column5.HeaderText = "小売店郵便番号1";
+            this.Column5.Name = "Column5";
+            this.Column5.Visible = false;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "KouritenYuubinNO2";
+            this.Column6.HeaderText = "小売店郵便番号2";
+            this.Column6.Name = "Column6";
+            this.Column6.Visible = false;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "KouritenJuusho1";
+            this.Column7.HeaderText = "小売店住所1";
+            this.Column7.Name = "Column7";
+            this.Column7.Visible = false;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "KouritenJuusho2";
+            this.Column8.HeaderText = "小売店住所2";
+            this.Column8.Name = "Column8";
+            this.Column8.Visible = false;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "KouritenTelNO1-1";
+            this.Column9.HeaderText = "小売店電話番号1-1";
+            this.Column9.Name = "Column9";
+            this.Column9.Visible = false;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "KouritenTelNO1-2";
+            this.Column11.HeaderText = "小売店電話番号1-2";
+            this.Column11.Name = "Column11";
+            this.Column11.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "KouritenTelNO1-3";
+            this.Column12.HeaderText = "小売店電話番号1-3";
+            this.Column12.Name = "Column12";
+            this.Column12.Visible = false;
+            // 
+            // Column13
+            // 
+            this.Column13.DataPropertyName = "KouritenTelNO2-1";
+            this.Column13.HeaderText = "小売店電話番号2-1";
+            this.Column13.Name = "Column13";
+            this.Column13.Visible = false;
+            // 
+            // Column14
+            // 
+            this.Column14.DataPropertyName = "KouritenTelNO2-2";
+            this.Column14.HeaderText = "小売店電話番号2-2";
+            this.Column14.Name = "Column14";
+            this.Column14.Visible = false;
+            // 
+            // Column15
+            // 
+            this.Column15.DataPropertyName = "KouritenTelNO2-3";
+            this.Column15.HeaderText = "小売店電話番号2-3";
+            this.Column15.Name = "Column15";
+            this.Column15.Visible = false;
             // 
             // btnSave
             // 
@@ -1132,35 +1299,6 @@ namespace ShukkaSiziNyuuryoku
             this.sbShippingNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.sbShippingNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbShippingNO_KeyDown);
             // 
-            // colDetails_Description
-            // 
-            this.colDetails_Description.DataPropertyName = "ShukkaSiziMeisaiTekiyou";
-            this.colDetails_Description.HeaderText = "明細摘要";
-            this.colDetails_Description.Name = "colDetails_Description";
-            this.colDetails_Description.Width = 180;
-            // 
-            // colHachuuJuchuuNo
-            // 
-            this.colHachuuJuchuuNo.DataPropertyName = "SKMSNO";
-            this.colHachuuJuchuuNo.HeaderText = "受注番号-行番号";
-            this.colHachuuJuchuuNo.Name = "colHachuuJuchuuNo";
-            this.colHachuuJuchuuNo.ReadOnly = true;
-            this.colHachuuJuchuuNo.Width = 150;
-            // 
-            // colSouko
-            // 
-            this.colSouko.DataPropertyName = "SoukoCD";
-            this.colSouko.HeaderText = "倉庫";
-            this.colSouko.Name = "colSouko";
-            // 
-            // colSoukoName
-            // 
-            this.colSoukoName.DataPropertyName = "SoukoName";
-            this.colSoukoName.HeaderText = "倉庫名";
-            this.colSoukoName.Name = "colSoukoName";
-            this.colSoukoName.ReadOnly = true;
-            this.colSoukoName.Width = 150;
-            // 
             // ShukkaSiziNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1237,22 +1375,36 @@ namespace ShukkaSiziNyuuryoku
         private Shinyoh_Search.SearchBox sbStaffCD;
         private System.Windows.Forms.Label label9;
         private Shinyoh_Search.SearchBox sbShippingNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDetails_Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHachuuJuchuuNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSouko;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorRyakuName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSizeNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShukka_kanousou;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkakanousou;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkakanousuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShukkasizisou;
         private System.Windows.Forms.DataGridViewTextBoxColumn colArrivalTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTanka;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetails_Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHachuuJuchuuNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSouko;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisaki;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
     }
 }

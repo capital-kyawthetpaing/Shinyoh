@@ -128,7 +128,6 @@
             // 
             // PanelTitle
             // 
-            this.PanelTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelTitle.Controls.Add(this.txtCopyChangeDate);
             this.PanelTitle.Controls.Add(this.lblCopyRevisionDate);
             this.PanelTitle.Controls.Add(this.txtCopyProduct);

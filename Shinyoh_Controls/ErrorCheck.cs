@@ -31,6 +31,12 @@ namespace Shinyoh_Controls
                 (bool, DataTable) r_value = ComboErrorCheck(sCombo);
                 return r_value;
             }
+            if(ctrl is SCheckBox)
+            {
+                SCheckBox sCheckBox = ctrl as SCheckBox;
+                (bool, DataTable) r_value = CheckBoxErrorCheck(sCheckBox);
+                return r_value;
+            }
             return (false,dt);
         }
 
@@ -90,6 +96,20 @@ namespace Shinyoh_Controls
                                 break;
                         }
                         rDt = shouhin.Shouhin_Check(id, sTextBox.ctrlE101_1.Text, "E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "HikiateHenkouShoukai":
+                        switch(sTextBox.ctrlE101_1.Name)
+                        {
+                            case "txtTokuisakiCD":
+                                TokuisakiBL tokuisakiBL = new TokuisakiBL();
+                                rDt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE101_1.Text, sTextBox.E102Type, "E101");
+                                break;
+                            case "txtKouritenCD":
+                                KouritenBL kouritenbl = new KouritenBL();
+                                rDt = kouritenbl.Kouriten_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.E102Type, "E101");
+                                break;
+                        }
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
@@ -339,6 +359,14 @@ namespace Shinyoh_Controls
                         rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "HikiateHenkouShoukai":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text.Trim()))
+                        {
+                            HikiateHenkouShoukaiBL hikiateHenkouShoukaiBL = new HikiateHenkouShoukaiBL();
+                            rDt = hikiateHenkouShoukaiBL.Error_Check(sTextBox.ctrlE133_1.Text, string.Empty, "E133");
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
                 }
                 if (result.Equals("E133"))
                 {
@@ -394,6 +422,24 @@ namespace Shinyoh_Controls
                 if (result.Equals("E160"))
                 {
                     ShowErrorMessage("E160");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            if (sTextBox.E165)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E165Type)
+                {
+                    case "ShukkaTorikom":
+                        ShukkaTorikomi_BL sbl = new ShukkaTorikomi_BL();
+                        rDt = sbl.ShukkaTorikomi_Error_Check(sTextBox.ctrlE165_1.Text,"E165");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E165"))
+                {
+                    bbl.ShowMessage("E165");
                     sTextBox.Focus();
                     return (true, rDt);
                 }
@@ -585,6 +631,21 @@ namespace Shinyoh_Controls
             }
             return (false, rDt);
         }        
+
+        private (bool, DataTable) CheckBoxErrorCheck(SCheckBox sCheckBox)
+        {
+            DataTable rDt = new DataTable();
+            if(sCheckBox.E188)
+            {
+                if(!sCheckBox.ctrlE188_1.Checked && !sCheckBox.ctrlE188_2.Checked)
+                {
+                    ShowErrorMessage("E188");
+                    sCheckBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            return (false, rDt);
+        }
 
         public static bool Matches(string left_, string right_)
         {

@@ -23,6 +23,15 @@ namespace BL
             return dt;
         }
 
+        public DataTable ShukkaTorikomi_Error_Check(string torikomiDenpyouNO, string error_type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@TorikomiDenpyouNO", SqlDbType.VarChar) { Value = torikomiDenpyouNO };
+            parameters[1] = new SqlParameter("@ErrorType", SqlDbType.VarChar) { Value = error_type };
+            DataTable dt = ckmdl.SelectDatatable("ShukkaTorikomi_Error_Check", GetConnectionString(), parameters);
+            return dt;
+        }
 
     }
 }

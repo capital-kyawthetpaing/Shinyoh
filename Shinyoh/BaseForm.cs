@@ -277,6 +277,9 @@ namespace Shinyoh
                 case ButtonType.BType.Import:
                     CheckButton(programEntity.Importable = "", buttonText, button);
                     break;
+                case ButtonType.BType.Confirm:
+                    button.Text = buttonText;
+                    break;
             }
 
             button.Visible = visible;
@@ -418,12 +421,12 @@ namespace Shinyoh
                     if (sc.ErrorCheck())
                         return false;
                 }
-                //if (ctrl is SCheckBox)
-                //{
-                //    SCheckBox sch = ctrl as SCheckBox;
-                //    if (sch.ErrorCheck())
-                //        return false;
-                //}
+                if (ctrl is SCheckBox)
+                {
+                    SCheckBox sch = ctrl as SCheckBox;
+                    if (sch.ErrorCheck())
+                        return false;
+                }
             }
             return true;
         }
