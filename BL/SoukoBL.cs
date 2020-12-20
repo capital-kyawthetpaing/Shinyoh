@@ -10,6 +10,11 @@ using System.Threading.Tasks;
 
 namespace BL {
   public class SoukoBL : BaseBL{
+        CKMDL ckmdl;
+        public SoukoBL()
+        {
+            ckmdl = new CKMDL();
+        }
         public string M_Souko_CUD(SoukoEntity soukoEntity)
         {
             CKMDL ckmdl = new CKMDL();
@@ -46,6 +51,17 @@ namespace BL {
             parameters[1] = new SqlParameter("@ErrorType", SqlDbType.VarChar) { Value = errorType };
             DataTable dt=ckmdl.SelectDatatable("Souko_Select", GetConnectionString(),parameters);
             return dt;
+        }
+        public SoukoEntity GetSoukoEntity(SoukoEntity soukoEntity)
+        {
+            soukoEntity.Sqlprms = new SqlParameter[0];
+            DataTable dtSouko = ckmdl.SelectDatatable("M_Souko_Select", GetConnectionString(), soukoEntity.Sqlprms);
+            if (dtSouko.Rows.Count > 0)
+            {
+                soukoEntity.SoukoCD = dtSouko.Rows[0]["SoukoCD"].ToString();
+                soukoEntity.SoukoName = dtSouko.Rows[0]["SoukoName"].ToString();
+            }
+            return soukoEntity;
         }
         public DataTable Souko_Search(SoukoEntity soukoEntity)
         {

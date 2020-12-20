@@ -23,12 +23,18 @@ namespace ShukkaNyuuryoku {
         string YuuBinNO1 = string.Empty;
         string YuuBinNO2 = string.Empty;
         string Address = string.Empty;
+        DataTable Main_dt, Temptb1, Temptb2, gvdt1, gvdt2;
         public ShukkaNyuuryoku()
         {
             InitializeComponent();
             multi_Entity = new multipurposeEntity();
             cf = new CommonFunction();
             staffBL = new StaffBL();
+            Main_dt = new DataTable();
+            Temptb1 = new DataTable();
+            Temptb2 = new DataTable();
+            gvdt1 = new DataTable();
+            gvdt2 = new DataTable();
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -52,7 +58,7 @@ namespace ShukkaNyuuryoku {
 
             txtTokuisaki.lblName = lblTokuisakiName;
             txtKouriten.lblName = lblKouritenName;
-            txtStaff.lblName = lblSatffName;
+            txtStaff.lblName = lblStatffName;
 
 
             txtTokuisaki.ChangeDate = txtShukkaDate;
@@ -73,7 +79,7 @@ namespace ShukkaNyuuryoku {
             };
             staffEntity = staffBL.GetStaffEntity(staffEntity);
             txtStaff.Text = OperatorCD;
-            lblSatffName.Text = staffEntity.StaffName;
+            lblStatffName.Text = staffEntity.StaffName;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -95,11 +101,7 @@ namespace ShukkaNyuuryoku {
             }
             if (tagID == "6")
             {
-                //Mode_Setting();
-                //if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
-                //{
-                //    Disable_UDI_Mode();
-                //}
+                Mode_Setting();
             }
             if (tagID == "9")
             {
@@ -138,7 +140,7 @@ namespace ShukkaNyuuryoku {
 
         private void ChangeMode(Mode mode)
         {
-            //Mode_Setting();
+            Mode_Setting();
             switch (mode)
             {
                 case Mode.New:
@@ -189,23 +191,15 @@ namespace ShukkaNyuuryoku {
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(panelDetail);
 
-            //lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            //lblKouriten_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            //lblStaff_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            //lblBrand_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            //lblYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStatffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
-
-            //lblTokuisaki_Name.Text = string.Empty;
-            //lblKouriten_Name.Text = string.Empty;
-            //lblStaff_Name.Text = string.Empty;
-            //lblBrand_Name.Text = string.Empty;
-            //Main_dt = new DataTable();
-            //gv1_to_dt1 = new DataTable();
-            //gv2_to_dt2 = new DataTable();
-            //internal_dt1 = new DataTable();
-            //internal_dt2 = new DataTable();
+            lblTokuisakiName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
+            lblStatffName.Text = string.Empty;
             txtShukkaNo.Focus();
+            New_Mode();
         }
         private void ErrorCheck()
         {
@@ -244,7 +238,7 @@ namespace ShukkaNyuuryoku {
         {
             ShukkaNoSearch a = new ShukkaNoSearch();
             a.Show();
-            
+
         }
 
         private void btnDetail1_Click(object sender, EventArgs e)
@@ -266,17 +260,17 @@ namespace ShukkaNyuuryoku {
                     if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
                     {
                         DataTable dt = txtYubin2.IsDatatableOccurs;
-                        txtAddress.Text = dt.Rows[0]["Juusho1"].ToString();
+                        txtJuusho.Text = dt.Rows[0]["Juusho1"].ToString();
                     }
                     else
                     {
                         if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
                         {
-                            txtAddress.Text = string.Empty;
+                            txtJuusho.Text = string.Empty;
                         }
                         else
                         {
-                            txtAddress.Text = Address;
+                            txtJuusho.Text = Address;
                         }
                     }
                 }
@@ -331,7 +325,12 @@ namespace ShukkaNyuuryoku {
                 obj.Tel23 = dt.Rows[0]["Tel23"].ToString();
             return obj;
         }
-
+        private void EnablePanel()
+        {
+            cf.EnablePanel(panelDetail);
+            txtShukkaNo.Focus();
+            cf.DisablePanel(PanelTitle);
+        }
         private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -361,6 +360,112 @@ namespace ShukkaNyuuryoku {
                 }
             }
         }
+
+        private void txtShukkaNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtShukkaNo.IsErrorOccurs)
+                {
+                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    {
+                        EnablePanel();
+                    }
+                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                    }
+                }
+                Main_dt = txtShukkaNo.IsDatatableOccurs;
+                if (Main_dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                {
+                    From_DB_To_Form(Main_dt);
+                }
+            }
+        }
+        private void From_DB_To_Form(DataTable dt)
+        {
+            if (dt.Rows[0]["MessageID"].ToString() == "E132")
+            {
+                txtShukkaDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["ShukkaDate"]);
+                txtTokuisaki.Text = dt.Rows[0]["TokuisakiCD"].ToString();
+                lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                txtKouriten.Text = dt.Rows[0]["KouritenCD"].ToString();
+                lblKouritenName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
+                txtStaff.Text = dt.Rows[0]["StaffCD"].ToString();
+                lblStatffName.Text = dt.Rows[0]["StaffName"].ToString();
+                txtDenpyou.Text = dt.Rows[0]["ShukkaDenpyouTekiyou"].ToString();
+
+                //show page load data in tokuisaki detail
+                tokuisakiDetail.Access_Tokuisaki_obj = From_DB_To_Tokuisaki(dt);
+
+
+                //show page load data in kouriten detail
+                kouritenDetail.Access_Kouriten_obj = From_DB_To_Kouriten(dt);
+
+                //
+                dt.Columns.Remove("ShukkaDate");
+                dt.Columns.Remove("StaffCD");
+                dt.Columns.Remove("StaffName");
+                dt.Columns.Remove("ShukkaDenpyouTekiyou");
+
+                dt.Columns.Remove("TokuisakiCD");
+                dt.Columns.Remove("TokuisakiRyakuName");
+                dt.Columns.Remove("TokuisakiName");
+                dt.Columns.Remove("TokuisakiYuubinNO1");
+                dt.Columns.Remove("TokuisakiYuubinNO2");
+                dt.Columns.Remove("TokuisakiJuusho1");
+                dt.Columns.Remove("TokuisakiJuusho2");
+                dt.Columns.Remove("TokuisakiTelNO1-1");
+                dt.Columns.Remove("TokuisakiTelNO1-2");
+                dt.Columns.Remove("TokuisakiTelNO1-3");
+                dt.Columns.Remove("TokuisakiTelNO2-1");
+                dt.Columns.Remove("TokuisakiTelNO2-2");
+                dt.Columns.Remove("TokuisakiTelNO2-3");
+
+                dt.Columns.Remove("KouritenCD");
+                dt.Columns.Remove("KouritenRyakuName");
+                dt.Columns.Remove("KouritenName");
+                dt.Columns.Remove("KouritenYuubinNO1");
+                dt.Columns.Remove("KouritenYuubinNO2");
+                dt.Columns.Remove("KouritenJuusho1");
+                dt.Columns.Remove("KouritenJuusho2");
+                dt.Columns.Remove("KouritenTelNO1-1");
+                dt.Columns.Remove("KouritenTelNO1-2");
+                dt.Columns.Remove("KouritenTelNO1-3");
+                dt.Columns.Remove("KouritenTelNO2-1");
+                dt.Columns.Remove("KouritenTelNO2-2");
+                dt.Columns.Remove("KouritenTelNO2-3");               
+                dt.Columns.Remove("DenpyouDate");
+                dt.Columns.Remove("JuchuuNOGyouNO");
+                dt.Columns.Remove("MessageID");
+
+                DataTable dt1 = dt.Copy();      
+                dt1.Columns.Remove("ShukkaSiziNOGyouNO");
+                gvdt1 = dt1;
+                gvShukka1.DataSource = dt1;
+
+                DataTable dt2 = dt.Copy();
+                dt2.Columns.Remove("JANCD");
+                dt2.Columns.Remove("ShouhinCD");
+                dt2.Columns.Remove("ShouhinName");
+                dt2.Columns.Remove("ColorRyakuName");
+                dt2.Columns.Remove("ColorNO");
+                dt2.Columns.Remove("SizeNO");
+                dt2.Columns.Remove("ShukkaSiziZumiSuu");
+                dt2.Columns.Remove("MiNyuukaSuu");
+                dt2.Columns.Remove("ShukkaSuu");
+                dt2.Columns.Remove("Kanryou");
+                gvdt2 = dt2;
+                gvShukka2.DataSource = dt2;
+
+                Temptb1 = gvdt1.Copy();
+                Temptb1.Clear();
+                Temptb2 = gvdt2.Copy();
+                Temptb2.Clear();
+            }
+        }
+
         private KouritenEntity From_DB_To_Kouriten(DataTable dt)
         {
             KouritenEntity obj = new KouritenEntity();
@@ -410,5 +515,49 @@ namespace ShukkaNyuuryoku {
             return obj;
         }
 
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+            ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
+            ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
+            BaseEntity baseEntity = _GetBaseData();
+            obj.TokuisakiCD = txtTokuisaki.Text;
+            obj.ShukkaSiziNO1 = txtShukkaSijiNo.Text;
+            obj.ShukkaDate1 = txtShukkaYoteiDate1.Text;
+            obj.ShukkaDate2 = txtShukkaYoteiDate2.Text;
+            obj.DenpyouDate1 = txtDenpyouDate1.Text;
+            obj.DenpyouDate2 = txtDenpyouDate2.Text;           
+            obj.Yuubin1 = txtYubin1.Text;
+            obj.Yuubin2 = txtYubin2.Text;
+            obj.TelNO1 = txtTelNo1.Text;
+            obj.TelNO2 = txtTelNo2.Text;
+            obj.TelNO3 = txtTelNo3.Text;
+            obj.Name = txtName.Text;
+            obj.Juusho = txtJuusho.Text;
+            obj.ChangeDate = baseEntity.LoginDate;
+
+            DataTable dt = sBL.ShukkaNyuuryoku_Display(obj);
+
+            if (dt.Rows.Count > 0)
+            {
+                dt.Columns.Remove("ShukkaSiziNOGyouNO");
+                dt.Columns.Remove("TokuisakiCD");
+                dt.Columns.Remove("KouritenCD");
+                dt.Columns.Remove("DenpyouDate");
+                dt.Columns.Remove("JuchuuNOGyouNO");
+                if(obj.Condition == "1")
+                {
+                    gvShukka1.DataSource = dt;
+                    DataTable dt_temp = dt.Copy();
+                    gvdt1 = dt_temp;
+                }
+                else
+                {
+                    gvShukka1.DataSource = dt;
+                    DataTable dt_temp = dt.Copy();
+                    gvdt1 = dt_temp;
+                }
+               
+            }
+        }
     }
 }
