@@ -68,6 +68,11 @@ namespace Shinyoh_Controls
                         rDt = kBL.Kouriten_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Siiresaki":
+                        SiiresakiBL BL = new SiiresakiBL();
+                        rDt = BL.Siiresaki_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                     case "M_Shouhin":
                         ShouhinBL shouhin = new ShouhinBL();
                         string id = string.Empty;
@@ -206,6 +211,12 @@ namespace Shinyoh_Controls
                         rDt = sbl.ShukkaNyuuryoku_Select_Check(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "ChakuniNyuuryoku":
+                        chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
+                        rDt = cbl.ChakuniNyuuryoku_Select(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+
                 }
                 if (result.Equals("E115"))
                 {
