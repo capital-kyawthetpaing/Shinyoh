@@ -22,5 +22,23 @@ namespace Entity
         public string ShippingDate { get; set; }
         public string JuchuuNO { get; set; }
         public string SenpyouhachuuNo { get; set; }
+        public string TokuisakiYuubinNO1 { get; set; }
+        public string TokuisakiYuubinNO2 { get; set; }
+        public string KouritenYuubinNO1 { get; set; }
+        public string KouritenYuubinNO2 { get; set; }
+        public string TokuisakiTelNO1_1 { get; set; }
+        public string TokuisakiTelNO1_2 { get; set; }
+        public string TokuisakiTelNO1_3 { get; set; }
+        public string KouritenTelNO1_1 { get; set; }
+        public string KouritenTelNO1_2 { get; set; }
+        public string KouritenTelNO1_3 { get; set; }
+        public string TokuisakiRyakuName { get; set; }
+        public string KouritenRyakuName { get; set; }
+        public string TokuisakiName { get; set; }
+        public string KouritenName { get; set; }
+        public string TokuisakiJuusho1 { get; set; }
+        public string TokuisakiJuusho2 { get; set; }
+        public string KouritenJuusho1 { get; set; }
+        public string KouritenJuusho2 { get; set; }
     }
 }

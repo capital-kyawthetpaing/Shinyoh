@@ -64,41 +64,9 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.lblKouritenName = new Shinyoh_Controls.SLabel();
             this.btnKouriren_Detail = new Shinyoh_Controls.SButton();
-            this.gv_2 = new Shinyoh_Controls.SGridView();
-            this.colDetails_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHachuuJuchuuNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSouko = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtJuchuuNo = new Shinyoh_Search.SearchBox();
             this.slable1 = new Shinyoh_Controls.SLabel();
-            this.gv_1 = new Shinyoh_Controls.SGridView();
-            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShukkakanousuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShukkasizisou = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTokuisaki = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvShukkasizi = new Shinyoh_Controls.SGridView();
             this.btnSave = new Shinyoh_Controls.SButton();
             this.btnDisplay = new Shinyoh_Controls.SButton();
             this.btnConfirm = new Shinyoh_Controls.SButton();
@@ -118,16 +86,45 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel13 = new Shinyoh_Controls.SLabel();
             this.sbDenpyouCD = new Shinyoh_Controls.SLabel();
             this.sbShippingNO = new Shinyoh_Search.SearchBox();
+            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShukkakanousuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShukkasizisou = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoukoCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTokuisaki = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.panelDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShukkasizi)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1584, 75);
+            this.panel1.Size = new System.Drawing.Size(1924, 75);
             // 
             // PanelTitle
             // 
@@ -180,10 +177,9 @@ namespace ShukkaSiziNyuuryoku
             this.panelDetails.Controls.Add(this.sLabel4);
             this.panelDetails.Controls.Add(this.lblKouritenName);
             this.panelDetails.Controls.Add(this.btnKouriren_Detail);
-            this.panelDetails.Controls.Add(this.gv_2);
             this.panelDetails.Controls.Add(this.txtJuchuuNo);
             this.panelDetails.Controls.Add(this.slable1);
-            this.panelDetails.Controls.Add(this.gv_1);
+            this.panelDetails.Controls.Add(this.dgvShukkasizi);
             this.panelDetails.Controls.Add(this.btnSave);
             this.panelDetails.Controls.Add(this.btnDisplay);
             this.panelDetails.Controls.Add(this.btnConfirm);
@@ -204,13 +200,13 @@ namespace ShukkaSiziNyuuryoku
             this.panelDetails.Controls.Add(this.sbDenpyouCD);
             this.panelDetails.Location = new System.Drawing.Point(1, 70);
             this.panelDetails.Name = "panelDetails";
-            this.panelDetails.Size = new System.Drawing.Size(1590, 580);
+            this.panelDetails.Size = new System.Drawing.Size(1930, 580);
             this.panelDetails.TabIndex = 46;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1089, 144);
+            this.label9.Location = new System.Drawing.Point(1089, 174);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 13);
             this.label9.TabIndex = 78;
@@ -276,7 +272,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(999, 141);
+            this.label7.Location = new System.Drawing.Point(999, 171);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(15, 20);
             this.label7.TabIndex = 74;
@@ -286,7 +282,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(907, 141);
+            this.label8.Location = new System.Drawing.Point(907, 171);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 20);
             this.label8.TabIndex = 73;
@@ -304,7 +300,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone3.IsDatatableOccurs = null;
             this.txtPhone3.IsErrorOccurs = false;
             this.txtPhone3.IsRequire = false;
-            this.txtPhone3.Location = new System.Drawing.Point(1018, 141);
+            this.txtPhone3.Location = new System.Drawing.Point(1018, 171);
             this.txtPhone3.MaxLength = 5;
             this.txtPhone3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone3.MoveNext = true;
@@ -328,7 +324,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone2.IsDatatableOccurs = null;
             this.txtPhone2.IsErrorOccurs = false;
             this.txtPhone2.IsRequire = false;
-            this.txtPhone2.Location = new System.Drawing.Point(926, 141);
+            this.txtPhone2.Location = new System.Drawing.Point(926, 171);
             this.txtPhone2.MaxLength = 5;
             this.txtPhone2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2.MoveNext = true;
@@ -352,7 +348,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone1.IsDatatableOccurs = null;
             this.txtPhone1.IsErrorOccurs = false;
             this.txtPhone1.IsRequire = false;
-            this.txtPhone1.Location = new System.Drawing.Point(832, 140);
+            this.txtPhone1.Location = new System.Drawing.Point(832, 170);
             this.txtPhone1.MaxLength = 6;
             this.txtPhone1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1.MoveNext = true;
@@ -370,7 +366,7 @@ namespace ShukkaSiziNyuuryoku
             this.lblPhone1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPhone1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPhone1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblPhone1.Location = new System.Drawing.Point(732, 140);
+            this.lblPhone1.Location = new System.Drawing.Point(732, 170);
             this.lblPhone1.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblPhone1.Name = "lblPhone1";
             this.lblPhone1.Size = new System.Drawing.Size(100, 19);
@@ -381,7 +377,7 @@ namespace ShukkaSiziNyuuryoku
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1417, 144);
+            this.label2.Location = new System.Drawing.Point(1417, 174);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 68;
@@ -430,7 +426,7 @@ namespace ShukkaSiziNyuuryoku
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1046, 172);
+            this.label6.Location = new System.Drawing.Point(1046, 202);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
             this.label6.TabIndex = 65;
@@ -439,7 +435,7 @@ namespace ShukkaSiziNyuuryoku
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(663, 143);
+            this.label5.Location = new System.Drawing.Point(663, 173);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 60;
@@ -457,7 +453,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtAddress.IsDatatableOccurs = null;
             this.txtAddress.IsErrorOccurs = false;
             this.txtAddress.IsRequire = false;
-            this.txtAddress.Location = new System.Drawing.Point(517, 168);
+            this.txtAddress.Location = new System.Drawing.Point(517, 198);
             this.txtAddress.MaxLength = 80;
             this.txtAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress.MoveNext = true;
@@ -475,7 +471,7 @@ namespace ShukkaSiziNyuuryoku
             this.lblAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAddress1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAddress1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblAddress1.Location = new System.Drawing.Point(420, 168);
+            this.lblAddress1.Location = new System.Drawing.Point(420, 198);
             this.lblAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblAddress1.Name = "lblAddress1";
             this.lblAddress1.Size = new System.Drawing.Size(100, 19);
@@ -495,7 +491,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin2.IsDatatableOccurs = null;
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
-            this.txtYubin2.Location = new System.Drawing.Point(592, 141);
+            this.txtYubin2.Location = new System.Drawing.Point(592, 171);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYubin2.MoveNext = true;
@@ -519,7 +515,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin1.IsDatatableOccurs = null;
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
-            this.txtYubin1.Location = new System.Drawing.Point(520, 141);
+            this.txtYubin1.Location = new System.Drawing.Point(520, 171);
             this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin1.MoveNext = true;
@@ -535,7 +531,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(575, 139);
+            this.label4.Location = new System.Drawing.Point(575, 169);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 62;
@@ -544,7 +540,7 @@ namespace ShukkaSiziNyuuryoku
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(385, 118);
+            this.label3.Location = new System.Drawing.Point(385, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 59;
@@ -654,50 +650,6 @@ namespace ShukkaSiziNyuuryoku
             this.btnKouriren_Detail.UseVisualStyleBackColor = false;
             this.btnKouriren_Detail.Click += new System.EventHandler(this.btnKouriren_Detail_Click);
             // 
-            // gv_2
-            // 
-            this.gv_2.AllowUserToAddRows = false;
-            this.gv_2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gv_2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colDetails_Description,
-            this.colHachuuJuchuuNo,
-            this.colSouko,
-            this.colSoukoName});
-            this.gv_2.Location = new System.Drawing.Point(2, 391);
-            this.gv_2.Name = "gv_2";
-            this.gv_2.Size = new System.Drawing.Size(625, 150);
-            this.gv_2.TabIndex = 48;
-            this.gv_2.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gv_2_EditingControlShowing);
-            // 
-            // colDetails_Description
-            // 
-            this.colDetails_Description.DataPropertyName = "ShukkaSiziMeisaiTekiyou";
-            this.colDetails_Description.HeaderText = "明細摘要";
-            this.colDetails_Description.Name = "colDetails_Description";
-            this.colDetails_Description.Width = 180;
-            // 
-            // colHachuuJuchuuNo
-            // 
-            this.colHachuuJuchuuNo.DataPropertyName = "SKMSNO";
-            this.colHachuuJuchuuNo.HeaderText = "受注番号-行番号";
-            this.colHachuuJuchuuNo.Name = "colHachuuJuchuuNo";
-            this.colHachuuJuchuuNo.ReadOnly = true;
-            this.colHachuuJuchuuNo.Width = 150;
-            // 
-            // colSouko
-            // 
-            this.colSouko.DataPropertyName = "SoukoCD";
-            this.colSouko.HeaderText = "倉庫";
-            this.colSouko.Name = "colSouko";
-            // 
-            // colSoukoName
-            // 
-            this.colSoukoName.DataPropertyName = "SoukoName";
-            this.colSoukoName.HeaderText = "倉庫名";
-            this.colSoukoName.Name = "colSoukoName";
-            this.colSoukoName.ReadOnly = true;
-            this.colSoukoName.Width = 150;
-            // 
             // txtJuchuuNo
             // 
             this.txtJuchuuNo.AllowMinus = false;
@@ -713,7 +665,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJuchuuNo.IsErrorOccurs = false;
             this.txtJuchuuNo.IsRequire = false;
             this.txtJuchuuNo.lblName = null;
-            this.txtJuchuuNo.Location = new System.Drawing.Point(258, 141);
+            this.txtJuchuuNo.Location = new System.Drawing.Point(258, 171);
             this.txtJuchuuNo.MaxLength = 12;
             this.txtJuchuuNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJuchuuNo.MoveNext = true;
@@ -739,11 +691,11 @@ namespace ShukkaSiziNyuuryoku
             this.slable1.Text = "出荷予定日";
             this.slable1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gv_1
+            // dgvShukkasizi
             // 
-            this.gv_1.AllowUserToAddRows = false;
-            this.gv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gv_1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvShukkasizi.AllowUserToAddRows = false;
+            this.dgvShukkasizi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvShukkasizi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
             this.colShouhinName,
             this.colColorRyakuName,
@@ -755,8 +707,11 @@ namespace ShukkaSiziNyuuryoku
             this.colArrivalTime,
             this.colTanka,
             this.colPrice,
-            this.Column10,
+            this.chk,
             this.colDetails,
+            this.colJuchuuNo,
+            this.SoukoCD,
+            this.SoukoName,
             this.colTokuisaki,
             this.Column2,
             this.Column3,
@@ -771,11 +726,317 @@ namespace ShukkaSiziNyuuryoku
             this.Column13,
             this.Column14,
             this.Column15});
-            this.gv_1.Location = new System.Drawing.Point(2, 222);
-            this.gv_1.Name = "gv_1";
-            this.gv_1.Size = new System.Drawing.Size(1580, 150);
-            this.gv_1.TabIndex = 35;
-            this.gv_1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gv_1_CellFormatting);
+            this.dgvShukkasizi.Location = new System.Drawing.Point(2, 254);
+            this.dgvShukkasizi.Name = "dgvShukkasizi";
+            this.dgvShukkasizi.Size = new System.Drawing.Size(1500, 150);
+            this.dgvShukkasizi.TabIndex = 35;
+            this.dgvShukkasizi.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnSave.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Location = new System.Drawing.Point(1356, 212);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 33;
+            this.btnSave.Text = "F11 保存";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnDisplay
+            // 
+            this.btnDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDisplay.Location = new System.Drawing.Point(1256, 212);
+            this.btnDisplay.Name = "btnDisplay";
+            this.btnDisplay.Size = new System.Drawing.Size(75, 23);
+            this.btnDisplay.TabIndex = 32;
+            this.btnDisplay.Text = "F10 表示";
+            this.btnDisplay.UseVisualStyleBackColor = false;
+            this.btnDisplay.Click += new System.EventHandler(this.btnDisplay_Click);
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnConfirm.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnConfirm.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnConfirm.Location = new System.Drawing.Point(1158, 212);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
+            this.btnConfirm.TabIndex = 31;
+            this.btnConfirm.Text = "F8 確認";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // txtShippingDate
+            // 
+            this.txtShippingDate.AllowMinus = false;
+            this.txtShippingDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtShippingDate.DecimalPlace = 0;
+            this.txtShippingDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShippingDate.DepandOnMode = true;
+            this.txtShippingDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtShippingDate.IntegerPart = 0;
+            this.txtShippingDate.IsDatatableOccurs = null;
+            this.txtShippingDate.IsErrorOccurs = false;
+            this.txtShippingDate.IsRequire = false;
+            this.txtShippingDate.Location = new System.Drawing.Point(256, 7);
+            this.txtShippingDate.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtShippingDate.MoveNext = true;
+            this.txtShippingDate.Name = "txtShippingDate";
+            this.txtShippingDate.NextControl = null;
+            this.txtShippingDate.NextControlName = "sbTokuisaki";
+            this.txtShippingDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtShippingDate.Size = new System.Drawing.Size(110, 19);
+            this.txtShippingDate.TabIndex = 2;
+            this.txtShippingDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            // 
+            // sbLabel2
+            // 
+            this.sbLabel2.BackColor = System.Drawing.Color.Red;
+            this.sbLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sbLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sbLabel2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sbLabel2.ForeColor = System.Drawing.Color.White;
+            this.sbLabel2.Location = new System.Drawing.Point(156, 31);
+            this.sbLabel2.Name = "sbLabel2";
+            this.sbLabel2.Size = new System.Drawing.Size(100, 19);
+            this.sbLabel2.TabIndex = 4;
+            this.sbLabel2.Text = "得意先";
+            this.sbLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtName
+            // 
+            this.txtName.AllowMinus = false;
+            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtName.DecimalPlace = 0;
+            this.txtName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
+            this.txtName.DepandOnMode = true;
+            this.txtName.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtName.IntegerPart = 0;
+            this.txtName.IsDatatableOccurs = null;
+            this.txtName.IsErrorOccurs = false;
+            this.txtName.IsRequire = true;
+            this.txtName.Location = new System.Drawing.Point(1254, 170);
+            this.txtName.MaxLength = 40;
+            this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtName.MoveNext = true;
+            this.txtName.Name = "txtName";
+            this.txtName.NextControl = null;
+            this.txtName.NextControlName = "btnNameF8";
+            this.txtName.SearchType = Entity.SearchType.ScType.None;
+            this.txtName.Size = new System.Drawing.Size(160, 19);
+            this.txtName.TabIndex = 27;
+            this.txtName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
+            // btn_Tokuisaki
+            // 
+            this.btn_Tokuisaki.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btn_Tokuisaki.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btn_Tokuisaki.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_Tokuisaki.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_Tokuisaki.Location = new System.Drawing.Point(537, 31);
+            this.btn_Tokuisaki.Name = "btn_Tokuisaki";
+            this.btn_Tokuisaki.Size = new System.Drawing.Size(60, 20);
+            this.btn_Tokuisaki.TabIndex = 36;
+            this.btn_Tokuisaki.Text = "詳細";
+            this.btn_Tokuisaki.UseVisualStyleBackColor = false;
+            this.btn_Tokuisaki.Click += new System.EventHandler(this.btn_Tokuisaki_Click);
+            // 
+            // sLabel16
+            // 
+            this.sLabel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel16.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel16.Location = new System.Drawing.Point(1154, 170);
+            this.sLabel16.Name = "sLabel16";
+            this.sLabel16.Size = new System.Drawing.Size(100, 19);
+            this.sLabel16.TabIndex = 25;
+            this.sLabel16.Text = "名称";
+            this.sLabel16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblStaffName
+            // 
+            this.lblStaffName.BackColor = System.Drawing.SystemColors.Control;
+            this.lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblStaffName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblStaffName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaffName.Location = new System.Drawing.Point(334, 85);
+            this.lblStaffName.Name = "lblStaffName";
+            this.lblStaffName.Size = new System.Drawing.Size(200, 19);
+            this.lblStaffName.TabIndex = 40;
+            this.lblStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // sLabel6
+            // 
+            this.sLabel6.BackColor = System.Drawing.Color.Red;
+            this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel6.ForeColor = System.Drawing.Color.White;
+            this.sLabel6.Location = new System.Drawing.Point(156, 85);
+            this.sLabel6.Name = "sLabel6";
+            this.sLabel6.Size = new System.Drawing.Size(100, 19);
+            this.sLabel6.TabIndex = 5;
+            this.sLabel6.Text = "担当スタッフ";
+            this.sLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(133, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "＜条件指定＞";
+            // 
+            // txtSenpyouhachuuNo
+            // 
+            this.txtSenpyouhachuuNo.AllowMinus = false;
+            this.txtSenpyouhachuuNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSenpyouhachuuNo.DecimalPlace = 0;
+            this.txtSenpyouhachuuNo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtSenpyouhachuuNo.DepandOnMode = true;
+            this.txtSenpyouhachuuNo.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSenpyouhachuuNo.IntegerPart = 0;
+            this.txtSenpyouhachuuNo.IsDatatableOccurs = null;
+            this.txtSenpyouhachuuNo.IsErrorOccurs = false;
+            this.txtSenpyouhachuuNo.IsRequire = false;
+            this.txtSenpyouhachuuNo.Location = new System.Drawing.Point(258, 198);
+            this.txtSenpyouhachuuNo.MaxLength = 20;
+            this.txtSenpyouhachuuNo.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSenpyouhachuuNo.MoveNext = true;
+            this.txtSenpyouhachuuNo.Name = "txtSenpyouhachuuNo";
+            this.txtSenpyouhachuuNo.NextControl = null;
+            this.txtSenpyouhachuuNo.NextControlName = "txtYubin1";
+            this.txtSenpyouhachuuNo.SearchType = Entity.SearchType.ScType.None;
+            this.txtSenpyouhachuuNo.Size = new System.Drawing.Size(130, 19);
+            this.txtSenpyouhachuuNo.TabIndex = 13;
+            this.txtSenpyouhachuuNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
+            // sLabel7
+            // 
+            this.sLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel7.Location = new System.Drawing.Point(158, 171);
+            this.sLabel7.Name = "sLabel7";
+            this.sLabel7.Size = new System.Drawing.Size(100, 19);
+            this.sLabel7.TabIndex = 7;
+            this.sLabel7.Text = "受注番号";
+            this.sLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sLabel8
+            // 
+            this.sLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel8.Location = new System.Drawing.Point(158, 198);
+            this.sLabel8.Name = "sLabel8";
+            this.sLabel8.Size = new System.Drawing.Size(100, 19);
+            this.sLabel8.TabIndex = 8;
+            this.sLabel8.Text = "先方発注番号";
+            this.sLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sLabel10
+            // 
+            this.sLabel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel10.Location = new System.Drawing.Point(420, 171);
+            this.sLabel10.Name = "sLabel10";
+            this.sLabel10.Size = new System.Drawing.Size(100, 19);
+            this.sLabel10.TabIndex = 10;
+            this.sLabel10.Text = "郵便番号";
+            this.sLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtSlip_Description
+            // 
+            this.txtSlip_Description.AllowMinus = false;
+            this.txtSlip_Description.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSlip_Description.DecimalPlace = 0;
+            this.txtSlip_Description.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtSlip_Description.DepandOnMode = true;
+            this.txtSlip_Description.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSlip_Description.IntegerPart = 0;
+            this.txtSlip_Description.IsDatatableOccurs = null;
+            this.txtSlip_Description.IsErrorOccurs = false;
+            this.txtSlip_Description.IsRequire = false;
+            this.txtSlip_Description.Location = new System.Drawing.Point(828, 32);
+            this.txtSlip_Description.MaxLength = 80;
+            this.txtSlip_Description.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSlip_Description.MoveNext = true;
+            this.txtSlip_Description.Name = "txtSlip_Description";
+            this.txtSlip_Description.NextControl = null;
+            this.txtSlip_Description.NextControlName = "txtScheduledNo";
+            this.txtSlip_Description.SearchType = Entity.SearchType.ScType.None;
+            this.txtSlip_Description.Size = new System.Drawing.Size(400, 19);
+            this.txtSlip_Description.TabIndex = 20;
+            this.txtSlip_Description.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            // 
+            // sLabel13
+            // 
+            this.sLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel13.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel13.Location = new System.Drawing.Point(728, 32);
+            this.sLabel13.Name = "sLabel13";
+            this.sLabel13.Size = new System.Drawing.Size(100, 19);
+            this.sLabel13.TabIndex = 19;
+            this.sLabel13.Text = "伝票摘要";
+            this.sLabel13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sbDenpyouCD
+            // 
+            this.sbDenpyouCD.BackColor = System.Drawing.Color.Red;
+            this.sbDenpyouCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sbDenpyouCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sbDenpyouCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sbDenpyouCD.ForeColor = System.Drawing.Color.White;
+            this.sbDenpyouCD.Location = new System.Drawing.Point(728, 7);
+            this.sbDenpyouCD.Name = "sbDenpyouCD";
+            this.sbDenpyouCD.Size = new System.Drawing.Size(100, 19);
+            this.sbDenpyouCD.TabIndex = 18;
+            this.sbDenpyouCD.Text = "伝票日付";
+            this.sbDenpyouCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // sbShippingNO
+            // 
+            this.sbShippingNO.AllowMinus = false;
+            this.sbShippingNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sbShippingNO.ChangeDate = null;
+            this.sbShippingNO.Combo = null;
+            this.sbShippingNO.DecimalPlace = 0;
+            this.sbShippingNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.sbShippingNO.DepandOnMode = true;
+            this.sbShippingNO.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.sbShippingNO.IntegerPart = 0;
+            this.sbShippingNO.IsDatatableOccurs = null;
+            this.sbShippingNO.IsErrorOccurs = false;
+            this.sbShippingNO.IsRequire = false;
+            this.sbShippingNO.lblName = null;
+            this.sbShippingNO.Location = new System.Drawing.Point(129, 12);
+            this.sbShippingNO.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sbShippingNO.MoveNext = true;
+            this.sbShippingNO.Name = "sbShippingNO";
+            this.sbShippingNO.NextControl = null;
+            this.sbShippingNO.NextControlName = "txtShippingDate";
+            this.sbShippingNO.SearchType = Entity.SearchType.ScType.ShippingNO;
+            this.sbShippingNO.Size = new System.Drawing.Size(100, 19);
+            this.sbShippingNO.TabIndex = 4;
+            this.sbShippingNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sbShippingNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbShippingNO_KeyDown);
             // 
             // colShouhinCD
             // 
@@ -783,6 +1044,7 @@ namespace ShukkaSiziNyuuryoku
             this.colShouhinCD.HeaderText = "商品";
             this.colShouhinCD.Name = "colShouhinCD";
             this.colShouhinCD.ReadOnly = true;
+            this.colShouhinCD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // colShouhinName
             // 
@@ -790,7 +1052,7 @@ namespace ShukkaSiziNyuuryoku
             this.colShouhinName.HeaderText = "商品名";
             this.colShouhinName.Name = "colShouhinName";
             this.colShouhinName.ReadOnly = true;
-            this.colShouhinName.Width = 155;
+            this.colShouhinName.Width = 150;
             // 
             // colColorRyakuName
             // 
@@ -798,7 +1060,7 @@ namespace ShukkaSiziNyuuryoku
             this.colColorRyakuName.HeaderText = "カラー略名";
             this.colColorRyakuName.Name = "colColorRyakuName";
             this.colColorRyakuName.ReadOnly = true;
-            this.colColorRyakuName.Width = 150;
+            this.colColorRyakuName.Width = 120;
             // 
             // colColorNO
             // 
@@ -818,8 +1080,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N0";
-            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.NullValue = "0";
             this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle1;
             this.colJuchuuSuu.HeaderText = "受注数";
             this.colJuchuuSuu.Name = "colJuchuuSuu";
@@ -829,13 +1090,12 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.colShukkakanousuu.DataPropertyName = "ShukkanouSuu";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.NullValue = "0";
             this.colShukkakanousuu.DefaultCellStyle = dataGridViewCellStyle2;
             this.colShukkakanousuu.HeaderText = "出荷可能数";
             this.colShukkakanousuu.Name = "colShukkakanousuu";
             this.colShukkakanousuu.ReadOnly = true;
-            this.colShukkakanousuu.Width = 120;
+            this.colShukkakanousuu.Width = 110;
             // 
             // colShukkasizisou
             // 
@@ -847,25 +1107,23 @@ namespace ShukkaSiziNyuuryoku
             this.colShukkasizisou.HeaderText = "出荷指示済数";
             this.colShukkasizisou.Name = "colShukkasizisou";
             this.colShukkasizisou.ReadOnly = true;
-            this.colShukkasizisou.Width = 120;
+            this.colShukkasizisou.Width = 110;
             // 
             // colArrivalTime
             // 
             this.colArrivalTime.DataPropertyName = "KonkaiShukkaSiziSuu";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewCellStyle4.NullValue = "0";
             this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle4;
             this.colArrivalTime.HeaderText = "今回出荷指示数";
             this.colArrivalTime.Name = "colArrivalTime";
-            this.colArrivalTime.Width = 120;
+            this.colArrivalTime.Width = 115;
             // 
             // colTanka
             // 
             this.colTanka.DataPropertyName = "UriageTanka";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewCellStyle5.NullValue = "0";
             this.colTanka.DefaultCellStyle = dataGridViewCellStyle5;
             this.colTanka.HeaderText = "単価";
             this.colTanka.Name = "colTanka";
@@ -874,25 +1132,46 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.colPrice.DataPropertyName = "UriageKingaku";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
+            dataGridViewCellStyle6.NullValue = "0";
             this.colPrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.colPrice.HeaderText = "金額";
             this.colPrice.Name = "colPrice";
             // 
-            // Column10
+            // chk
             // 
-            this.Column10.DataPropertyName = "Kanryo";
-            this.Column10.HeaderText = "完了";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 70;
+            this.chk.DataPropertyName = "Kanryo";
+            this.chk.HeaderText = "完了";
+            this.chk.Name = "chk";
+            this.chk.Width = 70;
             // 
             // colDetails
             // 
             this.colDetails.DataPropertyName = "ShukkaSiziMeisaiTekiyou";
             this.colDetails.HeaderText = "明細摘要";
             this.colDetails.Name = "colDetails";
-            this.colDetails.Width = 200;
+            this.colDetails.Width = 150;
+            // 
+            // colJuchuuNo
+            // 
+            this.colJuchuuNo.DataPropertyName = "SKMSNO";
+            this.colJuchuuNo.HeaderText = "受注番号-行番号";
+            this.colJuchuuNo.Name = "colJuchuuNo";
+            this.colJuchuuNo.ReadOnly = true;
+            this.colJuchuuNo.Width = 150;
+            // 
+            // SoukoCD
+            // 
+            this.SoukoCD.DataPropertyName = "SoukoCD";
+            this.SoukoCD.HeaderText = "倉庫";
+            this.SoukoCD.Name = "SoukoCD";
+            // 
+            // SoukoName
+            // 
+            this.SoukoName.DataPropertyName = "SoukoName";
+            this.SoukoName.HeaderText = "倉庫名";
+            this.SoukoName.Name = "SoukoName";
+            this.SoukoName.ReadOnly = true;
+            this.SoukoName.Width = 150;
             // 
             // colTokuisaki
             // 
@@ -993,317 +1272,11 @@ namespace ShukkaSiziNyuuryoku
             this.Column15.Name = "Column15";
             this.Column15.Visible = false;
             // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnSave.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSave.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnSave.Location = new System.Drawing.Point(1356, 169);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 33;
-            this.btnSave.Text = "F11 保存";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // btnDisplay
-            // 
-            this.btnDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDisplay.Location = new System.Drawing.Point(1256, 169);
-            this.btnDisplay.Name = "btnDisplay";
-            this.btnDisplay.Size = new System.Drawing.Size(75, 23);
-            this.btnDisplay.TabIndex = 32;
-            this.btnDisplay.Text = "F10 表示";
-            this.btnDisplay.UseVisualStyleBackColor = false;
-            this.btnDisplay.Click += new System.EventHandler(this.btnDisplay_Click);
-            // 
-            // btnConfirm
-            // 
-            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnConfirm.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnConfirm.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnConfirm.Location = new System.Drawing.Point(1158, 169);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
-            this.btnConfirm.TabIndex = 31;
-            this.btnConfirm.Text = "F8 確認";
-            this.btnConfirm.UseVisualStyleBackColor = false;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
-            // 
-            // txtShippingDate
-            // 
-            this.txtShippingDate.AllowMinus = false;
-            this.txtShippingDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtShippingDate.DecimalPlace = 0;
-            this.txtShippingDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtShippingDate.DepandOnMode = true;
-            this.txtShippingDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtShippingDate.IntegerPart = 0;
-            this.txtShippingDate.IsDatatableOccurs = null;
-            this.txtShippingDate.IsErrorOccurs = false;
-            this.txtShippingDate.IsRequire = false;
-            this.txtShippingDate.Location = new System.Drawing.Point(256, 7);
-            this.txtShippingDate.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtShippingDate.MoveNext = true;
-            this.txtShippingDate.Name = "txtShippingDate";
-            this.txtShippingDate.NextControl = null;
-            this.txtShippingDate.NextControlName = "sbTokuisaki";
-            this.txtShippingDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtShippingDate.Size = new System.Drawing.Size(110, 19);
-            this.txtShippingDate.TabIndex = 2;
-            this.txtShippingDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
-            // 
-            // sbLabel2
-            // 
-            this.sbLabel2.BackColor = System.Drawing.Color.Red;
-            this.sbLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sbLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sbLabel2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sbLabel2.ForeColor = System.Drawing.Color.White;
-            this.sbLabel2.Location = new System.Drawing.Point(156, 31);
-            this.sbLabel2.Name = "sbLabel2";
-            this.sbLabel2.Size = new System.Drawing.Size(100, 19);
-            this.sbLabel2.TabIndex = 4;
-            this.sbLabel2.Text = "得意先";
-            this.sbLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtName
-            // 
-            this.txtName.AllowMinus = false;
-            this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtName.DecimalPlace = 0;
-            this.txtName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
-            this.txtName.DepandOnMode = true;
-            this.txtName.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtName.IntegerPart = 0;
-            this.txtName.IsDatatableOccurs = null;
-            this.txtName.IsErrorOccurs = false;
-            this.txtName.IsRequire = true;
-            this.txtName.Location = new System.Drawing.Point(1254, 140);
-            this.txtName.MaxLength = 40;
-            this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtName.MoveNext = true;
-            this.txtName.Name = "txtName";
-            this.txtName.NextControl = null;
-            this.txtName.NextControlName = "btnNameF8";
-            this.txtName.SearchType = Entity.SearchType.ScType.None;
-            this.txtName.Size = new System.Drawing.Size(160, 19);
-            this.txtName.TabIndex = 27;
-            this.txtName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // btn_Tokuisaki
-            // 
-            this.btn_Tokuisaki.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btn_Tokuisaki.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btn_Tokuisaki.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Tokuisaki.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btn_Tokuisaki.Location = new System.Drawing.Point(537, 31);
-            this.btn_Tokuisaki.Name = "btn_Tokuisaki";
-            this.btn_Tokuisaki.Size = new System.Drawing.Size(60, 20);
-            this.btn_Tokuisaki.TabIndex = 36;
-            this.btn_Tokuisaki.Text = "詳細";
-            this.btn_Tokuisaki.UseVisualStyleBackColor = false;
-            this.btn_Tokuisaki.Click += new System.EventHandler(this.btn_Tokuisaki_Click);
-            // 
-            // sLabel16
-            // 
-            this.sLabel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel16.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel16.Location = new System.Drawing.Point(1154, 140);
-            this.sLabel16.Name = "sLabel16";
-            this.sLabel16.Size = new System.Drawing.Size(100, 19);
-            this.sLabel16.TabIndex = 25;
-            this.sLabel16.Text = "名称";
-            this.sLabel16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblStaffName
-            // 
-            this.lblStaffName.BackColor = System.Drawing.SystemColors.Control;
-            this.lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblStaffName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblStaffName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStaffName.Location = new System.Drawing.Point(334, 85);
-            this.lblStaffName.Name = "lblStaffName";
-            this.lblStaffName.Size = new System.Drawing.Size(200, 19);
-            this.lblStaffName.TabIndex = 40;
-            this.lblStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // sLabel6
-            // 
-            this.sLabel6.BackColor = System.Drawing.Color.Red;
-            this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.ForeColor = System.Drawing.Color.White;
-            this.sLabel6.Location = new System.Drawing.Point(156, 85);
-            this.sLabel6.Name = "sLabel6";
-            this.sLabel6.Size = new System.Drawing.Size(100, 19);
-            this.sLabel6.TabIndex = 5;
-            this.sLabel6.Text = "担当スタッフ";
-            this.sLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(133, 118);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "＜条件指定＞";
-            // 
-            // txtSenpyouhachuuNo
-            // 
-            this.txtSenpyouhachuuNo.AllowMinus = false;
-            this.txtSenpyouhachuuNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSenpyouhachuuNo.DecimalPlace = 0;
-            this.txtSenpyouhachuuNo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtSenpyouhachuuNo.DepandOnMode = true;
-            this.txtSenpyouhachuuNo.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtSenpyouhachuuNo.IntegerPart = 0;
-            this.txtSenpyouhachuuNo.IsDatatableOccurs = null;
-            this.txtSenpyouhachuuNo.IsErrorOccurs = false;
-            this.txtSenpyouhachuuNo.IsRequire = false;
-            this.txtSenpyouhachuuNo.Location = new System.Drawing.Point(258, 168);
-            this.txtSenpyouhachuuNo.MaxLength = 20;
-            this.txtSenpyouhachuuNo.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtSenpyouhachuuNo.MoveNext = true;
-            this.txtSenpyouhachuuNo.Name = "txtSenpyouhachuuNo";
-            this.txtSenpyouhachuuNo.NextControl = null;
-            this.txtSenpyouhachuuNo.NextControlName = "txtYubin1";
-            this.txtSenpyouhachuuNo.SearchType = Entity.SearchType.ScType.None;
-            this.txtSenpyouhachuuNo.Size = new System.Drawing.Size(130, 19);
-            this.txtSenpyouhachuuNo.TabIndex = 13;
-            this.txtSenpyouhachuuNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // sLabel7
-            // 
-            this.sLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel7.Location = new System.Drawing.Point(158, 141);
-            this.sLabel7.Name = "sLabel7";
-            this.sLabel7.Size = new System.Drawing.Size(100, 19);
-            this.sLabel7.TabIndex = 7;
-            this.sLabel7.Text = "受注番号";
-            this.sLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // sLabel8
-            // 
-            this.sLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel8.Location = new System.Drawing.Point(158, 168);
-            this.sLabel8.Name = "sLabel8";
-            this.sLabel8.Size = new System.Drawing.Size(100, 19);
-            this.sLabel8.TabIndex = 8;
-            this.sLabel8.Text = "先方発注番号";
-            this.sLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // sLabel10
-            // 
-            this.sLabel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel10.Location = new System.Drawing.Point(420, 141);
-            this.sLabel10.Name = "sLabel10";
-            this.sLabel10.Size = new System.Drawing.Size(100, 19);
-            this.sLabel10.TabIndex = 10;
-            this.sLabel10.Text = "郵便番号";
-            this.sLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtSlip_Description
-            // 
-            this.txtSlip_Description.AllowMinus = false;
-            this.txtSlip_Description.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSlip_Description.DecimalPlace = 0;
-            this.txtSlip_Description.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtSlip_Description.DepandOnMode = true;
-            this.txtSlip_Description.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtSlip_Description.IntegerPart = 0;
-            this.txtSlip_Description.IsDatatableOccurs = null;
-            this.txtSlip_Description.IsErrorOccurs = false;
-            this.txtSlip_Description.IsRequire = false;
-            this.txtSlip_Description.Location = new System.Drawing.Point(828, 32);
-            this.txtSlip_Description.MaxLength = 80;
-            this.txtSlip_Description.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtSlip_Description.MoveNext = true;
-            this.txtSlip_Description.Name = "txtSlip_Description";
-            this.txtSlip_Description.NextControl = null;
-            this.txtSlip_Description.NextControlName = "txtScheduledNo";
-            this.txtSlip_Description.SearchType = Entity.SearchType.ScType.None;
-            this.txtSlip_Description.Size = new System.Drawing.Size(400, 19);
-            this.txtSlip_Description.TabIndex = 20;
-            this.txtSlip_Description.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // sLabel13
-            // 
-            this.sLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.sLabel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sLabel13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel13.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel13.Location = new System.Drawing.Point(728, 32);
-            this.sLabel13.Name = "sLabel13";
-            this.sLabel13.Size = new System.Drawing.Size(100, 19);
-            this.sLabel13.TabIndex = 19;
-            this.sLabel13.Text = "伝票摘要";
-            this.sLabel13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // sbDenpyouCD
-            // 
-            this.sbDenpyouCD.BackColor = System.Drawing.Color.Red;
-            this.sbDenpyouCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sbDenpyouCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sbDenpyouCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sbDenpyouCD.ForeColor = System.Drawing.Color.White;
-            this.sbDenpyouCD.Location = new System.Drawing.Point(728, 7);
-            this.sbDenpyouCD.Name = "sbDenpyouCD";
-            this.sbDenpyouCD.Size = new System.Drawing.Size(100, 19);
-            this.sbDenpyouCD.TabIndex = 18;
-            this.sbDenpyouCD.Text = "伝票日付";
-            this.sbDenpyouCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // sbShippingNO
-            // 
-            this.sbShippingNO.AllowMinus = false;
-            this.sbShippingNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sbShippingNO.ChangeDate = null;
-            this.sbShippingNO.Combo = null;
-            this.sbShippingNO.DecimalPlace = 0;
-            this.sbShippingNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.sbShippingNO.DepandOnMode = true;
-            this.sbShippingNO.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.sbShippingNO.IntegerPart = 0;
-            this.sbShippingNO.IsDatatableOccurs = null;
-            this.sbShippingNO.IsErrorOccurs = false;
-            this.sbShippingNO.IsRequire = false;
-            this.sbShippingNO.lblName = null;
-            this.sbShippingNO.Location = new System.Drawing.Point(129, 12);
-            this.sbShippingNO.MinimumSize = new System.Drawing.Size(100, 19);
-            this.sbShippingNO.MoveNext = true;
-            this.sbShippingNO.Name = "sbShippingNO";
-            this.sbShippingNO.NextControl = null;
-            this.sbShippingNO.NextControlName = "txtShippingDate";
-            this.sbShippingNO.SearchType = Entity.SearchType.ScType.ShippingNO;
-            this.sbShippingNO.Size = new System.Drawing.Size(100, 19);
-            this.sbShippingNO.TabIndex = 4;
-            this.sbShippingNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.sbShippingNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbShippingNO_KeyDown);
-            // 
             // ShukkaSiziNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1584, 711);
+            this.ClientSize = new System.Drawing.Size(1924, 711);
             this.Controls.Add(this.panelDetails);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ShukkaSiziNyuuryoku";
@@ -1315,8 +1288,7 @@ namespace ShukkaSiziNyuuryoku
             this.PanelTitle.ResumeLayout(false);
             this.panelDetails.ResumeLayout(false);
             this.panelDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShukkasizi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1328,10 +1300,9 @@ namespace ShukkaSiziNyuuryoku
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.SLabel lblKouritenName;
         private Shinyoh_Controls.SButton btnKouriren_Detail;
-        private Shinyoh_Controls.SGridView gv_2;
         private Shinyoh_Search.SearchBox txtJuchuuNo;
         private Shinyoh_Controls.SLabel slable1;
-        private Shinyoh_Controls.SGridView gv_1;
+        private Shinyoh_Controls.SGridView dgvShukkasizi;
         private Shinyoh_Controls.SButton btnSave;
         private Shinyoh_Controls.SButton btnDisplay;
         private Shinyoh_Controls.SButton btnConfirm;
@@ -1375,10 +1346,6 @@ namespace ShukkaSiziNyuuryoku
         private Shinyoh_Search.SearchBox sbStaffCD;
         private System.Windows.Forms.Label label9;
         private Shinyoh_Search.SearchBox sbShippingNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetails_Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHachuuJuchuuNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSouko;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorRyakuName;
@@ -1390,8 +1357,11 @@ namespace ShukkaSiziNyuuryoku
         private System.Windows.Forms.DataGridViewTextBoxColumn colArrivalTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTanka;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoukoCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SoukoName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisaki;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
