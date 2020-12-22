@@ -27,13 +27,16 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_ErrorCheck_Select", GetConnectionString(), parameters);
             return dt;
         }
-        public DataTable ShukkasiziNyuuryoku_Data_Select(string ShippingNO, string ShippingDate, int type)
+        public DataTable ShukkasiziNyuuryoku_Data_Select(ShukkaSiziNyuuryokuEntity se, int type)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = ShippingNO };
-            parameters[1] = new SqlParameter("@ShippingDate", SqlDbType.Date) { Value = ShippingDate };
-            parameters[2] = new SqlParameter("@Type", SqlDbType.TinyInt) { Value = type };
+            var parameters = new SqlParameter[6];
+            parameters[0] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = se.ShippinNo };
+            parameters[1] = new SqlParameter("@ShippingDate", SqlDbType.Date) { Value = se.ShippingDate };
+            parameters[2] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = se.OperatorCD };
+            parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
+            parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
+            parameters[5] = new SqlParameter("@Type", SqlDbType.TinyInt) { Value = type };
             DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_Data_Select", GetConnectionString(), parameters);
             return dt;
         }
