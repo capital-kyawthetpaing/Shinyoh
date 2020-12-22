@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Detail = new System.Windows.Forms.Panel();
             this.gv_1 = new Shinyoh_Controls.SGridView();
             this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,9 +106,9 @@
             this.txtJuchuuDate = new Shinyoh_Controls.STextBox();
             this.lblPayment = new Shinyoh_Controls.SLabel();
             this.lblKana_Name = new Shinyoh_Controls.SLabel();
-            this.txtCopy = new Shinyoh_Controls.STextBox();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.txtJuchuuNO = new Shinyoh_Search.SearchBox();
+            this.txtCopy = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -121,8 +121,8 @@
             // 
             // PanelTitle
             // 
-            this.PanelTitle.Controls.Add(this.txtJuchuuNO);
             this.PanelTitle.Controls.Add(this.txtCopy);
+            this.PanelTitle.Controls.Add(this.txtJuchuuNO);
             this.PanelTitle.Controls.Add(this.sLabel3);
             this.PanelTitle.Controls.Add(this.lblKana_Name);
             // 
@@ -184,14 +184,14 @@
             // gv_1
             // 
             this.gv_1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.gv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gv_1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -226,14 +226,14 @@
             this.colSiiresakiTelNO23});
             this.gv_1.Location = new System.Drawing.Point(25, 271);
             this.gv_1.Name = "gv_1";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.gv_1.Size = new System.Drawing.Size(1420, 350);
             this.gv_1.TabIndex = 106;
             this.gv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellContentClick);
@@ -1225,32 +1225,6 @@
             this.lblKana_Name.Text = "受注番号";
             this.lblKana_Name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtCopy
-            // 
-            this.txtCopy.AllowMinus = false;
-            this.txtCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopy.DecimalPlace = 0;
-            this.txtCopy.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtCopy.DepandOnMode = true;
-            this.txtCopy.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCopy.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtCopy.IntegerPart = 0;
-            this.txtCopy.IsDatatableOccurs = null;
-            this.txtCopy.IsErrorOccurs = false;
-            this.txtCopy.IsRequire = false;
-            this.txtCopy.Location = new System.Drawing.Point(118, 34);
-            this.txtCopy.MaxLength = 12;
-            this.txtCopy.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtCopy.MoveNext = true;
-            this.txtCopy.Name = "txtCopy";
-            this.txtCopy.NextControl = null;
-            this.txtCopy.NextControlName = "txtHacchuccDate";
-            this.txtCopy.SearchType = Entity.SearchType.ScType.None;
-            this.txtCopy.Size = new System.Drawing.Size(100, 19);
-            this.txtCopy.TabIndex = 2;
-            this.txtCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopy_KeyDown);
-            // 
             // sLabel3
             // 
             this.sLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
@@ -1274,24 +1248,51 @@
             this.txtJuchuuNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtJuchuuNO.DepandOnMode = true;
             this.txtJuchuuNO.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtJuchuuNO.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtJuchuuNO.IntegerPart = 0;
             this.txtJuchuuNO.IsDatatableOccurs = null;
             this.txtJuchuuNO.IsErrorOccurs = false;
             this.txtJuchuuNO.IsRequire = false;
             this.txtJuchuuNO.lblName = null;
-            this.txtJuchuuNO.Location = new System.Drawing.Point(118, 9);
+            this.txtJuchuuNO.Location = new System.Drawing.Point(119, 9);
             this.txtJuchuuNO.MaxLength = 12;
             this.txtJuchuuNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO.MoveNext = true;
             this.txtJuchuuNO.Name = "txtJuchuuNO";
             this.txtJuchuuNO.NextControl = null;
             this.txtJuchuuNO.NextControlName = "txtCopy";
-            this.txtJuchuuNO.SearchType = Entity.SearchType.ScType.None;
+            this.txtJuchuuNO.SearchType = Entity.SearchType.ScType.JuchuuNo;
             this.txtJuchuuNO.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO.TabIndex = 1;
             this.txtJuchuuNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJuchuuNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNO_KeyDown);
+            // 
+            // txtCopy
+            // 
+            this.txtCopy.AllowMinus = false;
+            this.txtCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCopy.ChangeDate = null;
+            this.txtCopy.Combo = null;
+            this.txtCopy.DecimalPlace = 0;
+            this.txtCopy.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtCopy.DepandOnMode = false;
+            this.txtCopy.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtCopy.IntegerPart = 0;
+            this.txtCopy.IsDatatableOccurs = null;
+            this.txtCopy.IsErrorOccurs = false;
+            this.txtCopy.IsRequire = false;
+            this.txtCopy.lblName = null;
+            this.txtCopy.Location = new System.Drawing.Point(119, 34);
+            this.txtCopy.MaxLength = 12;
+            this.txtCopy.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtCopy.MoveNext = true;
+            this.txtCopy.Name = "txtCopy";
+            this.txtCopy.NextControl = null;
+            this.txtCopy.NextControlName = "txtTokuisakiCD";
+            this.txtCopy.SearchType = Entity.SearchType.ScType.JuchuuNo;
+            this.txtCopy.Size = new System.Drawing.Size(100, 19);
+            this.txtCopy.TabIndex = 2;
+            this.txtCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopy_KeyDown);
             // 
             // JuchuuNyuuryoku
             // 
@@ -1319,7 +1320,6 @@
 
         private System.Windows.Forms.Panel Panel_Detail;
         private Shinyoh_Controls.SLabel lblKana_Name;
-        private Shinyoh_Controls.STextBox txtCopy;
         private Shinyoh_Controls.SLabel sLabel3;
         private Shinyoh_Controls.SLabel lblPayment;
         private Shinyoh_Controls.STextBox txtJuchuuDate;
@@ -1360,7 +1360,6 @@
         private Shinyoh_Controls.SLabel lblYear;
         private Shinyoh_Controls.SCheckBox chk_FW;
         private Shinyoh_Controls.SCheckBox chk_SS;
-        private Shinyoh_Search.SearchBox txtJuchuuNO;
         private Shinyoh_Search.SearchBox txtBrandCD;
         private Shinyoh_Search.SearchBox txtStaffCD;
         private Shinyoh_Search.SearchBox txtKouritenCD;
@@ -1396,6 +1395,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colSiiresakiTelNO21;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSiiresakiTelNO22;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSiiresakiTelNO23;
+        private Shinyoh_Search.SearchBox txtJuchuuNO;
+        private Shinyoh_Search.SearchBox txtCopy;
     }
 }
 

@@ -146,6 +146,11 @@ namespace Shinyoh_Search
                         search.ShowDialog();
                         CD = search.ChakuniNO;
                         break;
+                    case Entity.SearchType.ScType.JuchuuNo:
+                        JuchuuNyuuryokuSearch obj_search = new JuchuuNyuuryokuSearch();
+                        obj_search.ShowDialog();
+                        CD = obj_search.JuchuuNo;
+                        break;
                 }
 
                 this.Text = CD;
