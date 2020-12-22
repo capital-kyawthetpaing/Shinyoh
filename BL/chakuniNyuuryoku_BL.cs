@@ -23,7 +23,7 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("ChakuniNyuuryoku_Select", GetConnectionString(), parameters);
             return dt;
         }
-        public DataTable ChakuniNyuuryoku_Display(ChakuniNyuuryoku_Entity cne,string Xml)
+        public DataTable ChakuniNyuuryoku_Display(ChakuniNyuuryoku_Entity cne)
         {
             CKMDL ckmdl = new CKMDL();
             cne.Sqlprms = new SqlParameter[12];

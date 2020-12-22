@@ -21,15 +21,15 @@ namespace JuchuuNyuuryoku
         multipurposeEntity multi_Entity;
         BaseEntity base_Entity;
         BaseBL base_bl;
-        KouritenDetail kobj = new KouritenDetail();
-        SiiresakiDetail sobj = new SiiresakiDetail();
-        TokuisakiDetail tobj = new TokuisakiDetail();
+        KouritenDetail kobj;
+        SiiresakiDetail sobj;
+        TokuisakiDetail tobj;
         
-        DataTable gv1_to_dt1 = new DataTable();
-        DataTable F8_dt1 = new DataTable();
-       
+        DataTable gv1_to_dt1;
+        DataTable F8_dt1;
+        JuchuuNyuuryokuBL obj_bl;
 
-        SiiresakiBL siiresaki_bl = new SiiresakiBL();
+        SiiresakiBL siiresaki_bl;
 
         public JuchuuNyuuryoku()
         {
@@ -37,6 +37,13 @@ namespace JuchuuNyuuryoku
             InitializeComponent();
             cf = new CommonFunction();
             base_bl = new BaseBL();
+            kobj = new KouritenDetail();
+            sobj = new SiiresakiDetail();
+            tobj = new TokuisakiDetail();
+            gv1_to_dt1 = new DataTable();
+            F8_dt1 = new DataTable();
+            obj_bl = new JuchuuNyuuryokuBL();
+            siiresaki_bl = new SiiresakiBL();
         }
 
         private void JuchuuNyuuryoku_Load(object sender, EventArgs e)
@@ -72,6 +79,8 @@ namespace JuchuuNyuuryoku
 
             base_Entity = _GetBaseData();
 
+            txtJuchuuNO.ChangeDate = txtJuchuuDate;
+            txtCopy.ChangeDate = txtJuchuuDate;
         }
 
         private void ChangeMode(Mode mode)
@@ -342,6 +351,7 @@ namespace JuchuuNyuuryoku
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
+                F8_dt1 = gv1_to_dt1.Clone();
             }
         }
 
@@ -791,7 +801,7 @@ namespace JuchuuNyuuryoku
 
         private void btnNameF10_Click(object sender, EventArgs e)
         {
-            JuchuuNyuuryokuBL obj_bl = new JuchuuNyuuryokuBL();
+            
             JuchuuNyuuryokuEntity obj = new JuchuuNyuuryokuEntity();
             obj.BrandCD = txtBrandCD.Text;
             obj.ShouhinCD = txtShouhinCD.Text;
@@ -830,8 +840,8 @@ namespace JuchuuNyuuryoku
                 DataGridViewRow row = gv_1.Rows[t];// grid view data
                 string id = row.Cells[0].Value.ToString();
 
-                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD =" + id);// original data
-                DataRow existDr1 = F8_dt1.Select("ShouhinCD =" + id).SingleOrDefault();
+                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + id+"'");// original data
+                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + id+"'").SingleOrDefault();
 
                 F8_drNew[0] = id;
                 for (int c = 1; c < gv_1.Columns.Count; c++)
@@ -910,17 +920,17 @@ namespace JuchuuNyuuryoku
         private void DBProcess()
         {
             string mode = string.Empty;
-            (string,string) obj = GetInsert();
+            (string,string,string) obj = GetInsert();
             if (cboMode.SelectedValue.Equals("1"))
             {
                 mode = "New";
-                DoInsert(mode,obj.Item1,obj.Item2);
+                DoInsert(mode,obj.Item1,obj.Item2,obj.Item3);
             }
-            //else if (cboMode.SelectedValue.Equals("2"))
-            //{
-            //    mode = "Update";
-            //    DoUpdate(entity);
-            //}
+            else if (cboMode.SelectedValue.Equals("2"))
+            {
+                mode = "Update";
+                DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+            }
             //else if (cboMode.SelectedValue.Equals("3"))
             //{
             //    mode = "Delete";
@@ -928,7 +938,7 @@ namespace JuchuuNyuuryoku
             //}
         }
 
-        private (string,string) GetInsert()
+        private (string,string,string) GetInsert()
         {
             TokuisakiEntity t_obj = tobj.Access_Tokuisaki_obj;
             KouritenEntity k_obj = kobj.Access_Kouriten_obj;
@@ -980,15 +990,47 @@ namespace JuchuuNyuuryoku
             dr["SeasonFW"] = chk_FW.Checked ? "1" : "0";
             dr["ColorNO"] = txtColorNo.Text;
             dr["SizeNO"] = txtSizeNo.Text;
-            dr["InsertOperator"] = base_Entity.InsertOperator;
-            dr["UpdateOperator"] = base_Entity.UpdateOperator;
+            dr["InsertOperator"] = base_Entity.OperatorCD;
+            dr["UpdateOperator"] = base_Entity.OperatorCD;
             dr["PC"] = base_Entity.PC;
             dr["ProgramID"] = base_Entity.ProgramID;
             dt.Rows.Add(dr);
-            string main_XML = cf.DataTableToXml(dt);
-            string detail_XML = cf.DataTableToXml(F8_dt1);
+            string header_XML = cf.DataTableToXml(dt);
+            F8_dt1.Columns.Add("HacchuuNO");
+            F8_dt1.Columns.Add("JuchuuNO");
 
-            return (main_XML,detail_XML); 
+            DataTable dt_Main = F8_dt1.AsEnumerable()
+                           .GroupBy(r => new { Col1 = r["SiiresakiCD"], Col2 = r["SiiresakiName"],Col3=r["SoukoCD"] })
+                           .Select(g => g.OrderBy(r => r["SiiresakiCD"]).First())
+                           .CopyToDataTable();
+            
+            for (int i=0;i<dt_Main.Rows.Count;i++)
+            {
+                DataTable hacchuu_dt = obj_bl.GetJuchuuNO("2", txtJuchuuDate.Text, "0");
+                DataTable Juchuu_dt = obj_bl.GetJuchuuNO("1", txtJuchuuDate.Text, "0");
+                dt_Main.Rows[i]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
+                dt_Main.Rows[i]["JuchuuNO"] = Juchuu_dt.Rows[0]["Column1"];
+                string siiresakiCD = dt_Main.Rows[i]["SiiresakiCD"].ToString();
+                string name = dt_Main.Rows[i]["SiiresakiName"].ToString();
+                string soukoCD = dt_Main.Rows[i]["SoukoCD"].ToString();
+                DataRow[] select_dr = F8_dt1.Select("SiiresakiCD = '" + siiresakiCD + "'and SiiresakiName='" + name + "' and SoukoCD='"+ soukoCD + "'");
+                if(select_dr.Length>0)
+                {
+                    for(int j=0;j< select_dr.Length;j++)
+                    {
+                        //if(select_dr[j]["Free"].ToString()!="1")
+                        //{
+                            select_dr[j]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
+                            select_dr[j]["JuchuuNO"] = Juchuu_dt.Rows[0]["Column1"];
+                        //}
+                        
+                    }
+                }
+            }
+            Column_Remove_Datatable(dt_Main);
+            string main_XML = cf.DataTableToXml(dt_Main);
+            string detail_XML = cf.DataTableToXml(F8_dt1);
+            return (header_XML,main_XML,detail_XML); 
         }
         public void Create_Datatable_Column(DataTable create_dt)
         {
@@ -1043,16 +1085,17 @@ namespace JuchuuNyuuryoku
             create_dt.Columns.Add("PC");
             create_dt.Columns.Add("ProgramID");
         }
-        private void DoInsert(string mode,string str_main,string str_detail)
+
+        private void DoInsert(string mode,string str_header,string str_main,string str_detail)
         {
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
-            objMethod.JuchuuNyuuryoku_CUD(mode,str_main,str_detail);
+            objMethod.JuchuuNyuuryoku_CUD(mode,str_header,str_main,str_detail);
         }
 
-        private void DoUpdate(JuchuuNyuuryokuEntity obj)
+        private void DoUpdate(string mode, string str_header, string str_main, string str_detail)
         {
-            //JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
-            //objMethod.JuchuuNyuuryoku_CUD(obj);
+            JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
+            objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail);
         }
 
         private void DoDelete(JuchuuNyuuryokuEntity obj)
@@ -1061,6 +1104,26 @@ namespace JuchuuNyuuryoku
             //objMethod.JuchuuNyuuryoku_CUD(obj);
         }
 
-       
+       private void Column_Remove_Datatable(DataTable dt)
+        {
+            dt.Columns.Remove("ShouhinCD");
+            dt.Columns.Remove("ShouhinName");
+            dt.Columns.Remove("ColorRyakuName");
+            dt.Columns.Remove("ColorNO");
+            dt.Columns.Remove("SizeNO");
+            dt.Columns.Remove("Free");
+            dt.Columns.Remove("GenZaikoSuu");
+            dt.Columns.Remove("JuchuuSuu");
+            dt.Columns.Remove("DJMSenpouHacchuuNO");
+            dt.Columns.Remove("UriageTanka");
+            dt.Columns.Remove("Tanka");
+            dt.Columns.Remove("JuchuuMeisaiTekiyou");
+            dt.Columns.Remove("JANCD");
+            dt.Columns.Remove("ExpectedDate");
+            dt.Columns.Remove("SoukoCD");
+            dt.Columns.Remove("SoukoName");
+        }
+
+        
     }
 }

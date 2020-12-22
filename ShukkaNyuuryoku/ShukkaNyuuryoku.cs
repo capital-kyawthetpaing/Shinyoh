@@ -18,23 +18,26 @@ namespace ShukkaNyuuryoku {
         multipurposeEntity multi_Entity;
         CommonFunction cf;
         StaffBL staffBL;
+        BaseBL bbl;
         TokuisakiDetail tokuisakiDetail = new TokuisakiDetail();
         KouritenDetail kouritenDetail = new KouritenDetail();
         string YuuBinNO1 = string.Empty;
         string YuuBinNO2 = string.Empty;
         string Address = string.Empty;
-        DataTable Main_dt, Temptb1, Temptb2, gvdt1, gvdt2;
+        DataTable Main_dt, Temptb1, Temptb2, gvdt1, gvdt2, F8_dt1;
         public ShukkaNyuuryoku()
         {
             InitializeComponent();
             multi_Entity = new multipurposeEntity();
             cf = new CommonFunction();
+            bbl = new BaseBL();
             staffBL = new StaffBL();
             Main_dt = new DataTable();
             Temptb1 = new DataTable();
             Temptb2 = new DataTable();
             gvdt1 = new DataTable();
             gvdt2 = new DataTable();
+            F8_dt1 = new DataTable();
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -152,6 +155,7 @@ namespace ShukkaNyuuryoku {
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
+                    //txtShukkaNo.Enabled = false;
                     break;
 
                 case Mode.Update:
@@ -361,6 +365,84 @@ namespace ShukkaNyuuryoku {
             }
         }
 
+        private void gvShukka1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+            if (gvShukka1.Columns[e.ColumnIndex].Name == "colKonkai")
+            {
+                string value = gvShukka1.Rows[e.RowIndex].Cells["colKonkai"].EditedFormattedValue.ToString();
+                string a = gvShukka1.Rows[e.RowIndex].Cells["colShukkazansuu"].EditedFormattedValue.ToString();
+                string b = gvShukka1.Rows[e.RowIndex].Cells["colMiryoku"].EditedFormattedValue.ToString();
+                //decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
+
+                if (Convert.ToDecimal(value) < 0)
+                {
+                    bbl.ShowMessage("E109");
+                    e.Cancel = true;
+                }
+                //else if (Convert.ToDecimal(value) > c)
+                //{
+                //    bbl.ShowMessage("E143");
+                //    e.Cancel = true;
+                //}
+            }
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            F8_dt1.DefaultView.Sort = "JANCD";
+
+            gvShukka1.DataSource = F8_dt1.DefaultView.ToTable();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            txtShukkaSijiNo.Focus();
+
+            for (int t = 0; t < gvShukka1.RowCount; t++)
+            {
+                bool bl = false;
+                // grid 1 checking
+                DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
+                DataGridViewRow row = gvShukka1.Rows[t];// grid view data
+                string id = row.Cells[0].Value.ToString();
+
+                DataRow[] select_dr1 = gvdt1.Select("JANCD ='" + id + "'");// original data
+                DataRow existDr1 = F8_dt1.Select("JANCD ='" + id + "'").SingleOrDefault();
+
+                F8_drNew[0] = id;
+                for (int c = 1; c < gvShukka1.Columns.Count; c++)
+                {
+                    if (existDr1 != null)
+                    {
+                        if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString() && (c == 8 || c == 9 || c == 10))
+                        {
+                            bl = true;
+                            F8_drNew[c] = row.Cells[c].Value;
+                        }
+                        else
+                        {
+                            F8_drNew[c] = existDr1[c];
+                        }
+                    }
+                    else
+                    {
+                        if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString() && (c == 8 || c == 9 || c == 10))
+                            bl = true;
+
+                        F8_drNew[c] = row.Cells[c].Value;
+                    }
+                }
+
+                // grid 1 insert(if exist, remove exist and insert)
+                if (bl == true)
+                {
+                    if (existDr1 != null)
+                        F8_dt1.Rows.Remove(existDr1);
+                    F8_dt1.Rows.Add(F8_drNew);
+                }
+            }
+        }
+
         private void txtShukkaNo_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -445,24 +527,26 @@ namespace ShukkaNyuuryoku {
                 gvdt1 = dt1;
                 gvShukka1.DataSource = dt1;
 
-                DataTable dt2 = dt.Copy();
-                dt2.Columns.Remove("JANCD");
-                dt2.Columns.Remove("ShouhinCD");
-                dt2.Columns.Remove("ShouhinName");
-                dt2.Columns.Remove("ColorRyakuName");
-                dt2.Columns.Remove("ColorNO");
-                dt2.Columns.Remove("SizeNO");
-                dt2.Columns.Remove("ShukkaSiziZumiSuu");
-                dt2.Columns.Remove("MiNyuukaSuu");
-                dt2.Columns.Remove("ShukkaSuu");
-                dt2.Columns.Remove("Kanryou");
-                gvdt2 = dt2;
-                gvShukka2.DataSource = dt2;
+                //DataTable dt2 = dt.Copy();
+                //dt2.Columns.Remove("JANCD");
+                //dt2.Columns.Remove("ShouhinCD");
+                //dt2.Columns.Remove("ShouhinName");
+                //dt2.Columns.Remove("ColorRyakuName");
+                //dt2.Columns.Remove("ColorNO");
+                //dt2.Columns.Remove("SizeNO");
+                //dt2.Columns.Remove("ShukkaSiziZumiSuu");
+                //dt2.Columns.Remove("MiNyuukaSuu");
+                //dt2.Columns.Remove("ShukkaSuu");
+                //dt2.Columns.Remove("Kanryou");
+                //gvdt2 = dt2;
+                //gvShukka2.DataSource = dt2;
 
                 Temptb1 = gvdt1.Copy();
-                Temptb1.Clear();
-                Temptb2 = gvdt2.Copy();
-                Temptb2.Clear();
+                gvdt1 = Temptb1;
+                F8_dt1 = gvdt1.Clone();
+                // Temptb1.Clear();
+                //Temptb2 = gvdt2.Copy();
+                //Temptb2.Clear();
             }
         }
 

@@ -34,6 +34,27 @@ namespace Entity
         public string SiiresakiCD { get; set; }
     }
 
+    public class Main_JuchuuNyuuryokuEntity
+    {
+        public string HacchuuNO { get; set; }
+        public string JuchuuNO { get; set; }
+        public string SiiresakiCD { get; set; }
+        public string SiiresakiRyakuName { get; set; }
+        public string SiiresakiName { get; set; }
+        public string SiiresakiYuubinNO1 { get; set; }
+        public string SiiresakiYuubinNO2 { get; set; }
+        public string SiiresakiJuusho1 { get; set; }
+        public string SiiresakiJuusho2 { get; set; }
+        public string SiiresakiTelNO11 { get; set; }
+        public string SiiresakiTelNO12 { get; set; }
+        public string SiiresakiTelNO13 { get; set; }
+        public string SiiresakiTelNO21 { get; set; }
+        public string SiiresakiTelNO22 { get; set; }
+        public string SiiresakiTelNO23 { get; set; }
+        public string SiiresakiTantouBushoName { get; set; }
+        public string SiiresakiTantoushaYakushoku { get; set; }
+        public string SiiresakiTantoushaName { get; set; }
+    }
     // for D_Hacchuu -A
 
     public class D_HacchuuEntity : BaseEntity
