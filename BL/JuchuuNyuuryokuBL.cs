@@ -29,14 +29,25 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("JuchuuNyuuryoku_Display", GetConnectionString(), parameters);
             return dt;
         }
-        public string JuchuuNyuuryoku_CUD(string mode,string xml_Main,string xml_detail)
+        public string JuchuuNyuuryoku_CUD(string mode,string xml_header,string xml_Main,string xml_detail)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = mode };
+            parameters[1] = new SqlParameter("@XML_Header", SqlDbType.Xml) { Value = xml_header };
+            parameters[2] = new SqlParameter("@XML_Main", SqlDbType.Xml) { Value = xml_Main };
+            parameters[3] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail};
+            return ckmdl.InsertUpdateDeleteData("JuchuuNyuuryoku_CUD", GetConnectionString(), parameters);
+        }
+        public DataTable GetJuchuuNO(string SerialNO,string JuchuuDate,string SEQNO)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = mode };
-            parameters[1] = new SqlParameter("@XML_Main", SqlDbType.Xml) { Value = xml_Main };
-            parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail};
-            return ckmdl.InsertUpdateDeleteData("JuchuuNyuuryoku_CUD", GetConnectionString(), parameters);
+            parameters[0] = new SqlParameter("@SerialNO", SqlDbType.VarChar) { Value = SerialNO };
+            parameters[1] = new SqlParameter("@refDate", SqlDbType.VarChar) { Value = JuchuuDate };
+            parameters[2] = new SqlParameter("@SEQNO", SqlDbType.VarChar) { Value = SEQNO };
+            DataTable dt= ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
+            return dt;
         }
     }
 }
