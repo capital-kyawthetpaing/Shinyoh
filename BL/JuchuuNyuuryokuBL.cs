@@ -29,6 +29,24 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("JuchuuNyuuryoku_Display", GetConnectionString(), parameters);
             return dt;
         }
+        public DataTable JuchuuNyuuryoku_Search(JuchuuNyuuryokuEntity obj)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[11];
+            parameters[0] = new SqlParameter("@Date1", SqlDbType.VarChar) { Value = obj.JuchuuDate };
+            parameters[1] = new SqlParameter("@Date2", SqlDbType.VarChar) { Value = obj.ChangeDate };
+            parameters[2] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = obj.TokuisakiCD };
+            parameters[3] = new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = obj.StaffCD };
+            parameters[4] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = obj.ShouhinName };
+            parameters[5] = new SqlParameter("@JuchuuNo11", SqlDbType.VarChar) { Value = obj.BrandCD };
+            parameters[6] = new SqlParameter("@JuchuuNo12", SqlDbType.VarChar) { Value = obj.JANCD };
+            parameters[7] = new SqlParameter("@JuchuuNo21", SqlDbType.VarChar) { Value = obj.SiiresakiCD };
+            parameters[8] = new SqlParameter("@JuchuuNo22", SqlDbType.VarChar) { Value = obj.KouritenCD };
+            parameters[9] = new SqlParameter("@ShouhinCD1", SqlDbType.VarChar) { Value = obj.ShouhinCD };
+            parameters[10] = new SqlParameter("@ShouhinCD2", SqlDbType.VarChar) { Value = obj.SizeNO };
+            DataTable dt = ckmdl.SelectDatatable("JuchuuNyuuryoku_Search", GetConnectionString(), parameters);
+            return dt;
+        }
         public string JuchuuNyuuryoku_CUD(string mode,string xml_header,string xml_Main,string xml_detail)
         {
             CKMDL ckmdl = new CKMDL();
