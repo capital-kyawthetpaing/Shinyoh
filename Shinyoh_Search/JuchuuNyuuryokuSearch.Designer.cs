@@ -56,9 +56,9 @@
             this.lblShouhinName = new Shinyoh_Controls.SLabel();
             this.lblTokuisaki = new Shinyoh_Controls.SLabel();
             this.lblDate = new Shinyoh_Controls.SLabel();
-            this.gvShukkaNo = new Shinyoh_Controls.SGridView();
+            this.gv_1 = new Shinyoh_Controls.SGridView();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvShukkaNo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -180,7 +180,7 @@
             this.txtTokuisaki.MoveNext = true;
             this.txtTokuisaki.Name = "txtTokuisaki";
             this.txtTokuisaki.NextControl = null;
-            this.txtTokuisaki.NextControlName = "txtStaffCD";
+            this.txtTokuisaki.NextControlName = "";
             this.txtTokuisaki.SearchType = Entity.SearchType.ScType.None;
             this.txtTokuisaki.Size = new System.Drawing.Size(100, 19);
             this.txtTokuisaki.TabIndex = 3;
@@ -356,7 +356,7 @@
             this.txtNo21.MoveNext = true;
             this.txtNo21.Name = "txtNo21";
             this.txtNo21.NextControl = null;
-            this.txtNo21.NextControlName = "txtShukkaSijiNo2";
+            this.txtNo21.NextControlName = "txtNo22";
             this.txtNo21.SearchType = Entity.SearchType.ScType.None;
             this.txtNo21.Size = new System.Drawing.Size(100, 19);
             this.txtNo21.TabIndex = 8;
@@ -380,7 +380,7 @@
             this.txtNo12.MoveNext = true;
             this.txtNo12.Name = "txtNo12";
             this.txtNo12.NextControl = null;
-            this.txtNo12.NextControlName = "txtShukkaSijiNo1";
+            this.txtNo12.NextControlName = "txtNo21";
             this.txtNo12.SearchType = Entity.SearchType.ScType.None;
             this.txtNo12.Size = new System.Drawing.Size(100, 19);
             this.txtNo12.TabIndex = 7;
@@ -404,7 +404,7 @@
             this.txtNo11.MoveNext = true;
             this.txtNo11.Name = "txtNo11";
             this.txtNo11.NextControl = null;
-            this.txtNo11.NextControlName = "txtShukkaNo2";
+            this.txtNo11.NextControlName = "txtNo12";
             this.txtNo11.SearchType = Entity.SearchType.ScType.None;
             this.txtNo11.Size = new System.Drawing.Size(100, 19);
             this.txtNo11.TabIndex = 6;
@@ -428,7 +428,7 @@
             this.txtShouhinName.MoveNext = true;
             this.txtShouhinName.Name = "txtShouhinName";
             this.txtShouhinName.NextControl = null;
-            this.txtShouhinName.NextControlName = "txtShukkaNo1";
+            this.txtShouhinName.NextControlName = "txtNo11";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
             this.txtShouhinName.Size = new System.Drawing.Size(560, 19);
             this.txtShouhinName.TabIndex = 5;
@@ -476,7 +476,7 @@
             this.txtDate1.MoveNext = true;
             this.txtDate1.Name = "txtDate1";
             this.txtDate1.NextControl = null;
-            this.txtDate1.NextControlName = "txtShukkaDate2";
+            this.txtDate1.NextControlName = "txtDate2";
             this.txtDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtDate1.Size = new System.Drawing.Size(100, 19);
             this.txtDate1.TabIndex = 1;
@@ -560,30 +560,31 @@
             this.lblDate.Text = "受注日\t\t\t";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gvShukkaNo
+            // gv_1
             // 
-            this.gvShukkaNo.AllowUserToAddRows = false;
-            this.gvShukkaNo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvShukkaNo.Location = new System.Drawing.Point(33, 132);
-            this.gvShukkaNo.Name = "gvShukkaNo";
-            this.gvShukkaNo.Size = new System.Drawing.Size(699, 320);
-            this.gvShukkaNo.TabIndex = 5;
+            this.gv_1.AllowUserToAddRows = false;
+            this.gv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gv_1.Location = new System.Drawing.Point(33, 132);
+            this.gv_1.Name = "gv_1";
+            this.gv_1.Size = new System.Drawing.Size(699, 320);
+            this.gv_1.TabIndex = 5;
             // 
             // JuchuuNyuuryokuSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 506);
-            this.Controls.Add(this.gvShukkaNo);
+            this.Controls.Add(this.gv_1);
             this.Controls.Add(this.panel1);
             this.Name = "JuchuuNyuuryokuSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "受注番号検索";
+            this.Load += new System.EventHandler(this.JuchuuNyuuryokuSearch_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.gvShukkaNo, 0);
+            this.Controls.SetChildIndex(this.gv_1, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvShukkaNo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -618,6 +619,6 @@
         private Shinyoh_Controls.SLabel lblShouhinName;
         private Shinyoh_Controls.SLabel lblTokuisaki;
         private Shinyoh_Controls.SLabel lblDate;
-        private Shinyoh_Controls.SGridView gvShukkaNo;
+        private Shinyoh_Controls.SGridView gv_1;
     }
 }
