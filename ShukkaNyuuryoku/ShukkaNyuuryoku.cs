@@ -24,7 +24,7 @@ namespace ShukkaNyuuryoku {
         string YuuBinNO1 = string.Empty;
         string YuuBinNO2 = string.Empty;
         string Address = string.Empty;
-        DataTable Main_dt, Temptb1, Temptb2, gvdt1, gvdt2;
+        DataTable Main_dt, Temptb1, Temptb2, gvdt1, gvdt2, F8_dt1;
         public ShukkaNyuuryoku()
         {
             InitializeComponent();
@@ -37,6 +37,7 @@ namespace ShukkaNyuuryoku {
             Temptb2 = new DataTable();
             gvdt1 = new DataTable();
             gvdt2 = new DataTable();
+            F8_dt1 = new DataTable();
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -154,6 +155,7 @@ namespace ShukkaNyuuryoku {
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
+                    //txtShukkaNo.Enabled = false;
                     break;
 
                 case Mode.Update:
@@ -370,17 +372,73 @@ namespace ShukkaNyuuryoku {
                 string value = gvShukka1.Rows[e.RowIndex].Cells["colKonkai"].EditedFormattedValue.ToString();
                 string a = gvShukka1.Rows[e.RowIndex].Cells["colShukkazansuu"].EditedFormattedValue.ToString();
                 string b = gvShukka1.Rows[e.RowIndex].Cells["colMiryoku"].EditedFormattedValue.ToString();
-                decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
+                //decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
 
                 if (Convert.ToDecimal(value) < 0)
                 {
                     bbl.ShowMessage("E109");
                     e.Cancel = true;
                 }
-                else if (Convert.ToDecimal(value) > c)
+                //else if (Convert.ToDecimal(value) > c)
+                //{
+                //    bbl.ShowMessage("E143");
+                //    e.Cancel = true;
+                //}
+            }
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            F8_dt1.DefaultView.Sort = "JANCD";
+
+            gvShukka1.DataSource = F8_dt1.DefaultView.ToTable();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            txtShukkaSijiNo.Focus();
+
+            for (int t = 0; t < gvShukka1.RowCount; t++)
+            {
+                bool bl = false;
+                // grid 1 checking
+                DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
+                DataGridViewRow row = gvShukka1.Rows[t];// grid view data
+                string id = row.Cells[0].Value.ToString();
+
+                DataRow[] select_dr1 = gvdt1.Select("JANCD ='" + id + "'");// original data
+                DataRow existDr1 = F8_dt1.Select("JANCD ='" + id + "'").SingleOrDefault();
+
+                F8_drNew[0] = id;
+                for (int c = 1; c < gvShukka1.Columns.Count; c++)
                 {
-                    bbl.ShowMessage("E143");
-                    e.Cancel = true;
+                    if (existDr1 != null)
+                    {
+                        if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString() && (c == 8 || c == 9 || c == 10))
+                        {
+                            bl = true;
+                            F8_drNew[c] = row.Cells[c].Value;
+                        }
+                        else
+                        {
+                            F8_drNew[c] = existDr1[c];
+                        }
+                    }
+                    else
+                    {
+                        if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString() && (c == 8 || c == 9 || c == 10))
+                            bl = true;
+
+                        F8_drNew[c] = row.Cells[c].Value;
+                    }
+                }
+
+                // grid 1 insert(if exist, remove exist and insert)
+                if (bl == true)
+                {
+                    if (existDr1 != null)
+                        F8_dt1.Rows.Remove(existDr1);
+                    F8_dt1.Rows.Add(F8_drNew);
                 }
             }
         }
@@ -484,7 +542,9 @@ namespace ShukkaNyuuryoku {
                 //gvShukka2.DataSource = dt2;
 
                 Temptb1 = gvdt1.Copy();
-                Temptb1.Clear();
+                gvdt1 = Temptb1;
+                F8_dt1 = gvdt1.Clone();
+                // Temptb1.Clear();
                 //Temptb2 = gvdt2.Copy();
                 //Temptb2.Clear();
             }
