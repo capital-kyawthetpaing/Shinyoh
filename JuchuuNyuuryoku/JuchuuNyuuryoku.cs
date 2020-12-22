@@ -79,6 +79,8 @@ namespace JuchuuNyuuryoku
 
             base_Entity = _GetBaseData();
 
+            txtJuchuuNO.ChangeDate = txtJuchuuDate;
+            txtCopy.ChangeDate = txtJuchuuDate;
         }
 
         private void ChangeMode(Mode mode)
@@ -1121,5 +1123,7 @@ namespace JuchuuNyuuryoku
             dt.Columns.Remove("SoukoCD");
             dt.Columns.Remove("SoukoName");
         }
+
+        
     }
 }

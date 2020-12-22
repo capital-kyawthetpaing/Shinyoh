@@ -89,6 +89,7 @@
             this.sbSupplier.ChangeDate = null;
             this.sbSupplier.Combo = null;
             this.sbSupplier.DecimalPlace = 0;
+            this.sbSupplier.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.sbSupplier.DepandOnMode = true;
             this.sbSupplier.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.sbSupplier.IntegerPart = 0;
@@ -218,6 +219,7 @@
             this.txtSupplierCD.AllowMinus = false;
             this.txtSupplierCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSupplierCD.DecimalPlace = 0;
+            this.txtSupplierCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSupplierCD.DepandOnMode = true;
             this.txtSupplierCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSupplierCD.IntegerPart = 0;
@@ -240,6 +242,7 @@
             this.txtSupplierName.AllowMinus = false;
             this.txtSupplierName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSupplierName.DecimalPlace = 0;
+            this.txtSupplierName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSupplierName.DepandOnMode = true;
             this.txtSupplierName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSupplierName.IntegerPart = 0;
@@ -262,6 +265,7 @@
             this.txtAddress1.AllowMinus = false;
             this.txtAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress1.DecimalPlace = 0;
+            this.txtAddress1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtAddress1.DepandOnMode = true;
             this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
@@ -284,6 +288,7 @@
             this.txtAddress2.AllowMinus = false;
             this.txtAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress2.DecimalPlace = 0;
+            this.txtAddress2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtAddress2.DepandOnMode = true;
             this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
@@ -351,6 +356,7 @@
             this.txtYubin1.AllowMinus = false;
             this.txtYubin1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin1.DecimalPlace = 0;
+            this.txtYubin1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtYubin1.DepandOnMode = true;
             this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
@@ -374,6 +380,7 @@
             this.txtYubin2.AllowMinus = false;
             this.txtYubin2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin2.DecimalPlace = 0;
+            this.txtYubin2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtYubin2.DepandOnMode = true;
             this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
@@ -398,6 +405,7 @@
             this.txtPhNo1.AllowMinus = false;
             this.txtPhNo1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo1.DecimalPlace = 0;
+            this.txtPhNo1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhNo1.DepandOnMode = true;
             this.txtPhNo1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo1.IntegerPart = 0;
@@ -421,6 +429,7 @@
             this.txtPhNo2.AllowMinus = false;
             this.txtPhNo2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo2.DecimalPlace = 0;
+            this.txtPhNo2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhNo2.DepandOnMode = true;
             this.txtPhNo2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo2.IntegerPart = 0;
@@ -444,6 +453,7 @@
             this.txtPhNo3.AllowMinus = false;
             this.txtPhNo3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo3.DecimalPlace = 0;
+            this.txtPhNo3.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhNo3.DepandOnMode = true;
             this.txtPhNo3.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo3.IntegerPart = 0;
@@ -467,6 +477,7 @@
             this.txtPhNo4.AllowMinus = false;
             this.txtPhNo4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo4.DecimalPlace = 0;
+            this.txtPhNo4.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhNo4.DepandOnMode = true;
             this.txtPhNo4.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo4.IntegerPart = 0;
@@ -490,6 +501,7 @@
             this.txtPhNo5.AllowMinus = false;
             this.txtPhNo5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo5.DecimalPlace = 0;
+            this.txtPhNo5.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhNo5.DepandOnMode = true;
             this.txtPhNo5.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo5.IntegerPart = 0;
@@ -513,6 +525,7 @@
             this.txtPhNo6.AllowMinus = false;
             this.txtPhNo6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhNo6.DecimalPlace = 0;
+            this.txtPhNo6.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhNo6.DepandOnMode = true;
             this.txtPhNo6.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhNo6.IntegerPart = 0;
