@@ -50,15 +50,15 @@ namespace BL {
             parameters[3] = new SqlParameter("@ShukkaYoteiDate2", SqlDbType.VarChar) { Value = obj.ShukkaDate2 };
             parameters[4] = new SqlParameter("@DenpyouDate1", SqlDbType.VarChar) { Value = obj.DenpyouDate1 };
             parameters[5] = new SqlParameter("@DenpyouDate2", SqlDbType.VarChar) { Value = obj.DenpyouDate2 };
-            parameters[6] = new SqlParameter("@ChangeDate	", SqlDbType.VarChar) { Value = obj.ChangeDate };
+            parameters[6] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate };
             parameters[7] = new SqlParameter("@YuubinNO1", SqlDbType.VarChar) { Value = obj.Yuubin1 };
-            parameters[8] = new SqlParameter("@YuubinNO1", SqlDbType.VarChar) { Value = obj.Yuubin2 };
+            parameters[8] = new SqlParameter("@YuubinNO2", SqlDbType.VarChar) { Value = obj.Yuubin2 };
             parameters[9] = new SqlParameter("@TelNO1", SqlDbType.VarChar) { Value = obj.TelNO1 };
             parameters[10] = new SqlParameter("@TelNO2", SqlDbType.VarChar) { Value = obj.TelNO2 };
-            parameters[11] = new SqlParameter("@TelNO3	", SqlDbType.VarChar) { Value = obj.TelNO3 };
+            parameters[11] = new SqlParameter("@TelNO3", SqlDbType.VarChar) { Value = obj.TelNO3 };
             parameters[12] = new SqlParameter("@Name", SqlDbType.VarChar) { Value = obj.Name };
             parameters[13] = new SqlParameter("@Juusho", SqlDbType.VarChar) { Value = obj.Juusho };
-            parameters[14] = new SqlParameter("@Condition	", SqlDbType.VarChar) { Value = obj.Condition };
+            parameters[14] = new SqlParameter("@Condition", SqlDbType.VarChar) { Value = obj.Condition };
             DataTable dt = ckmdl.SelectDatatable("ShukkaNyuuryoku_Display", GetConnectionString(), parameters);
             return dt;
         }

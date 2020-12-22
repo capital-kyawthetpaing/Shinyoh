@@ -58,7 +58,7 @@ namespace ShukkaNyuuryoku {
 
             txtTokuisaki.lblName = lblTokuisakiName;
             txtKouriten.lblName = lblKouritenName;
-            txtStaff.lblName = lblSatffName;
+            txtStaff.lblName = lblStatffName;
 
 
             txtTokuisaki.ChangeDate = txtShukkaDate;
@@ -79,7 +79,7 @@ namespace ShukkaNyuuryoku {
             };
             staffEntity = staffBL.GetStaffEntity(staffEntity);
             txtStaff.Text = OperatorCD;
-            lblSatffName.Text = staffEntity.StaffName;
+            lblStatffName.Text = staffEntity.StaffName;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -101,11 +101,7 @@ namespace ShukkaNyuuryoku {
             }
             if (tagID == "6")
             {
-                //Mode_Setting();
-                //if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
-                //{
-                //    Disable_UDI_Mode();
-                //}
+                Mode_Setting();
             }
             if (tagID == "9")
             {
@@ -144,7 +140,7 @@ namespace ShukkaNyuuryoku {
 
         private void ChangeMode(Mode mode)
         {
-            //Mode_Setting();
+            Mode_Setting();
             switch (mode)
             {
                 case Mode.New:
@@ -195,23 +191,15 @@ namespace ShukkaNyuuryoku {
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(panelDetail);
 
-            //lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            //lblKouriten_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            //lblStaff_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            //lblBrand_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            //lblYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStatffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
-
-            //lblTokuisaki_Name.Text = string.Empty;
-            //lblKouriten_Name.Text = string.Empty;
-            //lblStaff_Name.Text = string.Empty;
-            //lblBrand_Name.Text = string.Empty;
-            //Main_dt = new DataTable();
-            //gv1_to_dt1 = new DataTable();
-            //gv2_to_dt2 = new DataTable();
-            //internal_dt1 = new DataTable();
-            //internal_dt2 = new DataTable();
+            lblTokuisakiName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
+            lblStatffName.Text = string.Empty;
             txtShukkaNo.Focus();
+            New_Mode();
         }
         private void ErrorCheck()
         {
@@ -337,7 +325,12 @@ namespace ShukkaNyuuryoku {
                 obj.Tel23 = dt.Rows[0]["Tel23"].ToString();
             return obj;
         }
-
+        private void EnablePanel()
+        {
+            cf.EnablePanel(panelDetail);
+            txtShukkaNo.Focus();
+            cf.DisablePanel(PanelTitle);
+        }
         private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -376,7 +369,7 @@ namespace ShukkaNyuuryoku {
                 {
                     if (cboMode.SelectedValue.ToString() == "2")//update
                     {
-                        //EnablePanel();
+                        EnablePanel();
                     }
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
@@ -394,13 +387,13 @@ namespace ShukkaNyuuryoku {
         {
             if (dt.Rows[0]["MessageID"].ToString() == "E132")
             {
-                txtShukkaDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["JuchuuDate"]);
+                txtShukkaDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["ShukkaDate"]);
                 txtTokuisaki.Text = dt.Rows[0]["TokuisakiCD"].ToString();
                 lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
                 txtKouriten.Text = dt.Rows[0]["KouritenCD"].ToString();
                 lblKouritenName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
                 txtStaff.Text = dt.Rows[0]["StaffCD"].ToString();
-                lblSatffName.Text = dt.Rows[0]["StaffName"].ToString();
+                lblStatffName.Text = dt.Rows[0]["StaffName"].ToString();
                 txtDenpyou.Text = dt.Rows[0]["ShukkaDenpyouTekiyou"].ToString();
 
                 //show page load data in tokuisaki detail
@@ -442,24 +435,27 @@ namespace ShukkaNyuuryoku {
                 dt.Columns.Remove("KouritenTelNO1-3");
                 dt.Columns.Remove("KouritenTelNO2-1");
                 dt.Columns.Remove("KouritenTelNO2-2");
-                dt.Columns.Remove("KouritenTelNO2-3");
+                dt.Columns.Remove("KouritenTelNO2-3");               
+                dt.Columns.Remove("DenpyouDate");
+                dt.Columns.Remove("JuchuuNOGyouNO");
+                dt.Columns.Remove("MessageID");
 
-                DataTable dt1 = dt.Copy();            
+                DataTable dt1 = dt.Copy();      
+                dt1.Columns.Remove("ShukkaSiziNOGyouNO");
                 gvdt1 = dt1;
                 gvShukka1.DataSource = dt1;
 
                 DataTable dt2 = dt.Copy();
-                //dt2.Columns.Remove("ShouhinCD");
-                //dt2.Columns.Remove("ShouhinName");
-                //dt2.Columns.Remove("ColorRyakuName");
-                //dt2.Columns.Remove("ColorNO");
-                //dt2.Columns.Remove("SizeNO");
-                //dt2.Columns.Remove("Free");
-                //dt2.Columns.Remove("GenZaikoSuu");
-                //dt2.Columns.Remove("JuchuuSuu");
-                //dt2.Columns.Remove("DJMSenpouHacchuuNO");
-                //dt2.Columns.Remove("UriageTanka");
-                //dt2.Columns.Remove("Tanka");
+                dt2.Columns.Remove("JANCD");
+                dt2.Columns.Remove("ShouhinCD");
+                dt2.Columns.Remove("ShouhinName");
+                dt2.Columns.Remove("ColorRyakuName");
+                dt2.Columns.Remove("ColorNO");
+                dt2.Columns.Remove("SizeNO");
+                dt2.Columns.Remove("ShukkaSiziZumiSuu");
+                dt2.Columns.Remove("MiNyuukaSuu");
+                dt2.Columns.Remove("ShukkaSuu");
+                dt2.Columns.Remove("Kanryou");
                 gvdt2 = dt2;
                 gvShukka2.DataSource = dt2;
 
@@ -539,20 +535,29 @@ namespace ShukkaNyuuryoku {
             obj.Juusho = txtJuusho.Text;
             obj.ChangeDate = baseEntity.LoginDate;
 
-            Main_dt = sBL.ShukkaNyuuryoku_Display(obj);
-            if (obj.Condition.Equals(1))
+            DataTable dt = sBL.ShukkaNyuuryoku_Display(obj);
+
+            if (dt.Rows.Count > 0)
             {
-                gvShukka1.DataSource = Main_dt;
-                Temptb1 = Main_dt.Copy();
-                Temptb1.Clear();
+                dt.Columns.Remove("ShukkaSiziNOGyouNO");
+                dt.Columns.Remove("TokuisakiCD");
+                dt.Columns.Remove("KouritenCD");
+                dt.Columns.Remove("DenpyouDate");
+                dt.Columns.Remove("JuchuuNOGyouNO");
+                if(obj.Condition == "1")
+                {
+                    gvShukka1.DataSource = dt;
+                    DataTable dt_temp = dt.Copy();
+                    gvdt1 = dt_temp;
+                }
+                else
+                {
+                    gvShukka1.DataSource = dt;
+                    DataTable dt_temp = dt.Copy();
+                    gvdt1 = dt_temp;
+                }
+               
             }
-            else
-            {
-                gvShukka2.DataSource = Main_dt;
-                Temptb2 = Main_dt.Copy();
-                Temptb2.Clear();
-            }       
-          
         }
     }
 }
