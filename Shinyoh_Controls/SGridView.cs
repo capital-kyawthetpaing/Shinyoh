@@ -73,18 +73,35 @@ namespace Shinyoh_Controls
         {
             int icolumn = this.CurrentCell.ColumnIndex;
             int irow = this.CurrentCell.RowIndex;
+            bool found = false;
+            bool canrowIncrease = true;
 
             if (keyData == Keys.Enter)
             {
-                if (icolumn == this.Columns.Count - 1)
+                while (!found)
                 {
-                    this.Rows.Add();
-                    this.CurrentCell = this[0, irow + 1];
+                    if(irow == this.Rows.Count - 1)
+                    {
+                        canrowIncrease = false;
+                    }
+                    if(icolumn == this.Columns.Count - 1)
+                    {
+                        if (canrowIncrease)
+                            irow++;
+                        else
+                            irow = 0;
+                        icolumn = 0;
+                    }
+                    else
+                        icolumn++;
+                    
+
+                    if(this[icolumn, irow].Visible == true && this[icolumn, irow].ReadOnly == false)
+                    {
+                        found = true;
+                    }
                 }
-                else
-                {
-                    this.CurrentCell = this[icolumn + 1, irow];
-                }
+                this.CurrentCell = this[icolumn, irow];                
                 return true;
             }
             else
