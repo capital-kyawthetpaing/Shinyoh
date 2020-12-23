@@ -462,6 +462,7 @@
             this.txtShukkaDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtShukkaDate2.Size = new System.Drawing.Size(100, 19);
             this.txtShukkaDate2.TabIndex = 2;
+            this.txtShukkaDate2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtShukkaDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtShukkaDate1
@@ -486,6 +487,7 @@
             this.txtShukkaDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtShukkaDate1.Size = new System.Drawing.Size(100, 19);
             this.txtShukkaDate1.TabIndex = 1;
+            this.txtShukkaDate1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtShukkaDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblShouhin
