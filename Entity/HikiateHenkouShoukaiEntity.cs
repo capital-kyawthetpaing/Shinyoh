@@ -8,18 +8,21 @@ namespace Entity
 {
     public class HikiateHenkouShoukaiEntity : BaseEntity
     {
-        public string Representation { get; set; }
+        public int Representation { get; set; }
         public string BrandCD { get; set; }
         public string ChakuniYoteiNO { get; set; }
         public string KanriNO { get; set; }
         public string YearTerm { get; set; }
-        public string SeasonSS { get; set; }
-        public string SeasonFW { get; set; }
+        public int SeasonSS { get; set; }
+        public int SeasonFW { get; set; }
         public string TokuisakiCD { get; set; }
         public string SoukoCD { get; set; }
         public string KouritenCD { get; set; }
-        public string PostalCode { get; set; }
-        public string Phoneno { get; set; }
+        public string PostalCode1 { get; set; }
+        public string PostalCode2 { get; set; }
+        public string Phoneno1 { get; set; }
+        public string Phoneno2 { get; set; }
+        public string Phoneno3 { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string ShouhinCD { get; set; }
@@ -29,6 +32,6 @@ namespace Entity
         public string ShouhinName { get; set; }
         public int Type1 { get; set; }
         public int Type2 { get; set; }
-
+        public string ChangeDate { get; set; }
     }
 }
