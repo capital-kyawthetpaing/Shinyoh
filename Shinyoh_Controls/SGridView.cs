@@ -101,7 +101,7 @@ namespace Shinyoh_Controls
                         found = true;
                     }
                 }
-                this.CurrentCell = this[icolumn, irow];                
+                this.CurrentCell = this[icolumn, irow];              
                 return true;
             }
             else

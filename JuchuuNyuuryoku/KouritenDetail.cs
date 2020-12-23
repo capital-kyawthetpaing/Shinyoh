@@ -25,6 +25,7 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Search, F11, "", false);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
+            lbl_Name.BorderStyle= System.Windows.Forms.BorderStyle.None;
             txtCD.Focus();
 
             txtShort_Name.E102Check(true);
@@ -69,6 +70,8 @@ namespace JuchuuNyuuryoku
                 Access_Kouriten_obj.Tel21 = txtPhone2_1.Text;
                 Access_Kouriten_obj.Tel22 = txtPhone2_2.Text;
                 Access_Kouriten_obj.Tel23 = txtPhone2_3.Text;
+
+                this.Close();
             }
             base.FunctionProcess(tagID);
         }

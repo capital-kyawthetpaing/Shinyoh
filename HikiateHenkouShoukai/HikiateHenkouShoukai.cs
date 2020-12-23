@@ -22,6 +22,7 @@ namespace HikiateHenkouShoukai
         BaseEntity base_entity;
         BaseBL bbl = new BaseBL();
         CommonFunction cf;
+        multipurposeEntity multi_Entity;
         DataTable dt, dtMain, dtMemory, dtTemp;
         HikiateHenkouShoukaiBL hbl = new HikiateHenkouShoukaiBL();
         public HikiateHenkouShoukai()
@@ -34,6 +35,7 @@ namespace HikiateHenkouShoukai
         {
             ProgramID = "HikiateHenkouShoukai";
             StartProgram();
+            cboMode.Bind(false, multi_Entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "", false);
             SetButton(ButtonType.BType.Update, F3, "", false);
@@ -93,14 +95,15 @@ namespace HikiateHenkouShoukai
             }
             if (tagID == "12")
             {
-                //if (dtMemory == null)
-                //    bbl.ShowMessage("E274");
-                //else if (dtMemory.Rows.Count < 1)
-                //    bbl.ShowMessage("E274");
-                //else
-                //{
-
-                //}
+                if (dtMemory == null)
+                    bbl.ShowMessage("E274");
+                else if (dtMemory.Rows.Count < 1)
+                    bbl.ShowMessage("E274");
+                else
+                {
+                    DBData_IU();
+                    txtBrand.Focus();
+                }
             }
 
             base.FunctionProcess(tagID);
@@ -566,6 +569,11 @@ namespace HikiateHenkouShoukai
                     dtTemp.Rows.Add(row);
                 }
             }
+        }
+
+        private void DBData_IU()
+        {
+
         }
     }
 }

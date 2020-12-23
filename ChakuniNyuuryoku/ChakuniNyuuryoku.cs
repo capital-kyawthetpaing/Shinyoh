@@ -272,7 +272,8 @@ namespace ChakuniNyuuryoku
             if (cboMode.SelectedValue.Equals("1"))
             {
                 mode = "New";
-                DoInsert(mode, obj.Item1, obj.Item2);
+                ChakuniNyuuryoku_Entity cne = new ChakuniNyuuryoku_Entity();
+                DoInsert(obj.Item1, obj.Item2,cne);
             }
         }
         public void Create_Datatable_Column(DataTable create_dt)
@@ -348,8 +349,9 @@ namespace ChakuniNyuuryoku
             dr["SeasonFW"] = chkFW.Checked ? "1" : "0";
             dr["ColorNO"] = txtColor.Text;
             dr["SizeNO"] = txtSize.Text;
-            dr["InsertOperator"] = base_Entity.OperatorCD;
-            dr["UpdateOperator"] = base_Entity.OperatorCD;
+            dr["Operator"] = base_Entity.OperatorCD;
+            //dr["UpdateOperator"] = base_Entity.OperatorCD;
+            //dr["HistoryOperator"] = base_Entity.OperatorCD;
             dr["PC"] = base_Entity.PC;
             dr["ProgramID"] = base_Entity.ProgramID;
             dt.Rows.Add(dr);
@@ -358,10 +360,10 @@ namespace ChakuniNyuuryoku
 
             return (main_XML, detail_XML);
         }
-        private void DoInsert(string mode, string str_main, string str_detail)
+        private void DoInsert(string str_main, string str_detail,ChakuniNyuuryoku_Entity cne)
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
-            bl.ChakuniNyuuryoku_CUD(mode, str_main, str_detail);
+            bl.ChakuniNyuuryoku_Insert(str_main, str_detail,cne);
         }
         private ChakuniNyuuryoku_Entity GetEntity()
         {

@@ -71,6 +71,8 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.panel1.Controls.Add(this.txtCurrentDate);
             this.panel1.Controls.Add(this.lblStaffCD_Name);
@@ -492,6 +494,7 @@
             this.txtDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtDate2.Size = new System.Drawing.Size(100, 19);
             this.txtDate2.TabIndex = 2;
+            this.txtDate2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtDate1
@@ -516,6 +519,7 @@
             this.txtDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtDate1.Size = new System.Drawing.Size(100, 19);
             this.txtDate1.TabIndex = 1;
+            this.txtDate1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblShouhin

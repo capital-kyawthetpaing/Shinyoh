@@ -144,6 +144,7 @@
             this.txtArrivalDate.SearchType = Entity.SearchType.ScType.None;
             this.txtArrivalDate.Size = new System.Drawing.Size(100, 19);
             this.txtArrivalDate.TabIndex = 2;
+            this.txtArrivalDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtArrivalDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtDescription

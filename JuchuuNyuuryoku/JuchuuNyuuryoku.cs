@@ -292,6 +292,35 @@ namespace JuchuuNyuuryoku
             }
         }
 
+        private void txtJuchuuDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtJuchuuDate.IsErrorOccurs)
+                {
+                    TokuisakiBL tBL = new TokuisakiBL();
+                    DataTable tokui_DT = tBL.M_Tokuisaki_Select(txtTokuisakiCD.Text, txtJuchuuDate.Text, "E101");
+                    if (tokui_DT.Rows.Count > 0)
+                    {
+                        tobj.Access_Tokuisaki_obj = From_DB_To_Tokuisaki(tokui_DT);
+                    }
+                    KouritenBL kBL = new KouritenBL();
+                    DataTable kou_DT = kBL.Kouriten_Select_Check(txtKouritenCD.Text, txtJuchuuDate.Text, "E101");
+                    if (kou_DT.Rows.Count > 0)
+                    {
+                        kobj.Access_Kouriten_obj = From_DB_To_Kouriten(kou_DT);
+                    }
+                    StaffBL sBL = new StaffBL();
+                    DataTable sf_DT = sBL.Staff_Select_Check(txtStaffCD.Text, txtJuchuuDate.Text, "E101");
+                    if (sf_DT.Rows.Count > 0)
+                    {
+                        txtStaffCD.Text = sf_DT.Rows[0]["StaffCD"].ToString();
+                        lblStaff_Name.Text = sf_DT.Rows[0]["StaffName"].ToString();
+                    }
+                }
+            }
+        }
+
         private void From_DB_To_Form(DataTable dt)
         {
             if (dt.Rows[0]["MessageID"].ToString() == "E132")
@@ -359,7 +388,11 @@ namespace JuchuuNyuuryoku
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
-                F8_dt1 = gv1_to_dt1.Clone();
+
+                if (cboMode.SelectedValue.ToString() == "1")
+                    F8_dt1 = gv1_to_dt1.Clone();
+                else
+                    F8_dt1 = gv1_to_dt1.Copy();
             }
         }
 
@@ -682,7 +715,6 @@ namespace JuchuuNyuuryoku
                 {
                     bl = false;
                     base_bl.ShowMessage("E102");
-                    e.Cancel = true;
                 }
 
                 DataTable dt = siiresaki_bl.Siiresaki_Select_Check(siiresakiCD, txtJuchuuDate.Text, "E101");
@@ -744,13 +776,13 @@ namespace JuchuuNyuuryoku
 
                 DateTime JuchuuDate = string.IsNullOrEmpty(txtJuchuuDate.Text) ? Convert.ToDateTime(base_Entity.LoginDate) : Convert.ToDateTime(txtJuchuuDate.Text);
                 string expectedDate = string.IsNullOrEmpty(gv_1.Rows[e.RowIndex].Cells["colexpectedDate"].EditedFormattedValue.ToString()) ? base_Entity.LoginDate : gv_1.Rows[e.RowIndex].Cells["colexpectedDate"].EditedFormattedValue.ToString();
+                
                 if (string.IsNullOrEmpty(free))
                     isSelected = "OFF";
                 else isSelected = "ON";
                 if (isSelected == "OFF" && JuchuuSuu != "0")
                 {
                     base_bl.ShowMessage("E102");
-                    e.Cancel = true;
                 }
                 if (!cf.CheckDateValue(expectedDate))
                 {
@@ -773,7 +805,6 @@ namespace JuchuuNyuuryoku
                 if (isSelected == "OFF" && JuchuuSuu != "0")
                 {
                     base_bl.ShowMessage("E102");
-                    e.Cancel = true;
                 }
                 SoukoBL sbl = new SoukoBL();
                 DataTable dt = sbl.Souko_Select(soukoCD, "E101");
@@ -811,6 +842,7 @@ namespace JuchuuNyuuryoku
         {
             F10_Gridview_Bind();
         }   
+
         private void F10_Gridview_Bind()
         {
             JuchuuNyuuryokuEntity obj = new JuchuuNyuuryokuEntity();
@@ -879,7 +911,7 @@ namespace JuchuuNyuuryoku
                             F8_drNew[c] = row.Cells[c].Value;
                         }
                     }
-                    else
+                   else
                     {
                         F8_drNew[c] = row.Cells[c].Value;
                     } 
@@ -976,11 +1008,11 @@ namespace JuchuuNyuuryoku
                 mode = "Update";
                 DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
             }
-            //else if (cboMode.SelectedValue.Equals("3"))
-            //{
-            //    mode = "Delete";
-            //    DoDelete(entity);
-            //}
+            else if (cboMode.SelectedValue.Equals("3"))
+            {
+                mode = "Delete";
+                DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+            }
         }
 
         private (string,string,string) GetInsert()
@@ -1081,6 +1113,7 @@ namespace JuchuuNyuuryoku
             string detail_XML = cf.DataTableToXml(F8_dt1);
             return (header_XML,main_XML,detail_XML); 
         }
+
         public void Create_Datatable_Column(DataTable create_dt)
         {
             create_dt.Columns.Add("JuchuuNO");
@@ -1147,10 +1180,10 @@ namespace JuchuuNyuuryoku
             objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail);
         }
 
-        private void DoDelete(JuchuuNyuuryokuEntity obj)
+        private void DoDelete(string mode, string str_header, string str_main, string str_detail)
         {
-            //JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
-            //objMethod.JuchuuNyuuryoku_CUD(obj);
+            JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
+            objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail);
         }
 
        private void Column_Remove_Datatable(DataTable dt)
@@ -1175,6 +1208,13 @@ namespace JuchuuNyuuryoku
             dt.Columns.Remove("JuchuuGyouNO");
         }
 
-        
+        private void gv_1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((e.ColumnIndex == 6 || e.ColumnIndex==7) && e.RowIndex != this.gv_1.NewRowIndex)
+            {
+                double d = double.Parse(e.Value.ToString());
+                e.Value = d.ToString("N0");
+            }
+        }
     }
 }

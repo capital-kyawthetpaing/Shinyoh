@@ -70,19 +70,8 @@ namespace ShukkaNyuuryoku {
 
             ChangeMode(Mode.New);
 
-        }
-        private void New_Mode()
-        {
-            BaseEntity baseEntity = _GetBaseData();
-            txtShukkaDate.Text = baseEntity.LoginDate;
+            txtShukkaNo.ChangeDate = txtShukkaNo;
 
-            StaffEntity staffEntity = new StaffEntity
-            {
-                StaffCD = OperatorCD
-            };
-            staffEntity = staffBL.GetStaffEntity(staffEntity);
-            txtStaff.Text = OperatorCD;
-            lblStatffName.Text = staffEntity.StaffName;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -104,7 +93,7 @@ namespace ShukkaNyuuryoku {
             }
             if (tagID == "6")
             {
-                Mode_Setting();
+               Mode_Setting();
             }
             if (tagID == "9")
             {
@@ -148,7 +137,6 @@ namespace ShukkaNyuuryoku {
             {
                 case Mode.New:
                     ErrorCheck();
-                    New_Mode();
                     txtShukkaNo.E102Check(false);
                     txtShukkaNo.E133Check(false, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     txtShukkaNo.E160Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
@@ -186,6 +174,19 @@ namespace ShukkaNyuuryoku {
                     btnInquiry.Visible = false;
                     break;
             }
+        }
+        private void New_Mode()
+        {
+            BaseEntity baseEntity = _GetBaseData();
+            txtShukkaDate.Text = baseEntity.LoginDate;
+
+            StaffEntity staffEntity = new StaffEntity
+            {
+                StaffCD = OperatorCD
+            };
+            staffEntity = staffBL.GetStaffEntity(staffEntity);
+            txtStaff.Text = OperatorCD;
+            lblStatffName.Text = staffEntity.StaffName;
         }
         private void Mode_Setting()
         {
@@ -238,21 +239,30 @@ namespace ShukkaNyuuryoku {
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, null, null);
         }
-        private void sButton1_Click(object sender, EventArgs e)
-        {
-            ShukkaNoSearch a = new ShukkaNoSearch();
-            a.Show();
-
-        }
-
         private void btnDetail1_Click(object sender, EventArgs e)
         {
-            tokuisakiDetail.ShowDialog();
+                if (tokuisakiDetail.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(txtTokuisaki.Text))
+                {
+                    tokuisakiDetail.ShowDialog();
+                }
+                else
+                {
+                    bbl.ShowMessage("E269", "出荷指示時", "得意先");
+                    txtTokuisaki.Focus();
+                }                  
         }
 
         private void btnDetail2_Click(object sender, EventArgs e)
         {
-            kouritenDetail.ShowDialog();
+            if (kouritenDetail.Access_Kouriten_obj.KouritenCD.ToString().Equals(txtKouriten.Text))
+            {
+                tokuisakiDetail.ShowDialog();
+            }
+            else
+            {
+                bbl.ShowMessage("E269", "出荷指示時", "得意先");
+                txtKouriten.Focus();
+            }
         }
 
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
@@ -372,18 +382,18 @@ namespace ShukkaNyuuryoku {
                 string value = gvShukka1.Rows[e.RowIndex].Cells["colKonkai"].EditedFormattedValue.ToString();
                 string a = gvShukka1.Rows[e.RowIndex].Cells["colShukkazansuu"].EditedFormattedValue.ToString();
                 string b = gvShukka1.Rows[e.RowIndex].Cells["colMiryoku"].EditedFormattedValue.ToString();
-                //decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
+                decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
 
                 if (Convert.ToDecimal(value) < 0)
                 {
                     bbl.ShowMessage("E109");
                     e.Cancel = true;
                 }
-                //else if (Convert.ToDecimal(value) > c)
-                //{
-                //    bbl.ShowMessage("E143");
-                //    e.Cancel = true;
-                //}
+                else if (Convert.ToDecimal(value) > c)
+                {
+                    bbl.ShowMessage("E143",c.ToString(),value);
+                    e.Cancel = true;
+                }
             }
         }
 

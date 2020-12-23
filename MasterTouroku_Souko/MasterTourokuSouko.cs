@@ -289,6 +289,8 @@ namespace MasterTouroku_Souko
                     else if(cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
                         cf.DisablePanel(PanelTitle);
+                        Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                        BtnF9.Visible = false;
                     }
                 }
                 DataTable dt = txtSouko.IsDatatableOccurs;

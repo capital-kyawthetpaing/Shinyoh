@@ -52,8 +52,6 @@ namespace ChakuniNyuuryoku
 
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
                 if (e.KeyCode == Keys.Enter)
                 {
                     if (!txtYubin2.IsErrorOccurs)
@@ -79,7 +77,6 @@ namespace ChakuniNyuuryoku
                         }
                     }
                 }
-            }
         }
     }
 }
