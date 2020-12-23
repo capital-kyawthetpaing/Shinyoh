@@ -19,7 +19,8 @@ namespace Entity {
            ShippingNO,
             Shouhin,
             ArrivalNo,
-            JuchuuNo
+            JuchuuNo,
+            ShukkaNo
         }
     }
 }
