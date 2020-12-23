@@ -69,6 +69,8 @@ namespace JuchuuNyuuryoku
                 Access_Kouriten_obj.Tel21 = txtPhone2_1.Text;
                 Access_Kouriten_obj.Tel22 = txtPhone2_2.Text;
                 Access_Kouriten_obj.Tel23 = txtPhone2_3.Text;
+
+                this.Close();
             }
             base.FunctionProcess(tagID);
         }

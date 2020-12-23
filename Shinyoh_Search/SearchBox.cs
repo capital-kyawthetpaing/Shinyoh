@@ -151,6 +151,11 @@ namespace Shinyoh_Search
                         obj_search.ShowDialog();
                         CD = obj_search.JuchuuNo;
                         break;
+                    case Entity.SearchType.ScType.ShukkaNo:
+                        ShukkaNoSearch  shukkaNoSearch = new ShukkaNoSearch();
+                        shukkaNoSearch.ShowDialog();
+                        CD = shukkaNoSearch.ShukkaNo;
+                        break;
                 }
 
                 this.Text = CD;

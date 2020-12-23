@@ -359,7 +359,11 @@ namespace JuchuuNyuuryoku
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
-                F8_dt1 = gv1_to_dt1.Clone();
+
+                if (cboMode.SelectedValue.ToString() == "1")
+                    F8_dt1 = gv1_to_dt1.Clone();
+                else
+                    F8_dt1 = gv1_to_dt1.Copy();
             }
         }
 
@@ -879,7 +883,7 @@ namespace JuchuuNyuuryoku
                             F8_drNew[c] = row.Cells[c].Value;
                         }
                     }
-                    else
+                   else
                     {
                         F8_drNew[c] = row.Cells[c].Value;
                     } 
@@ -976,11 +980,11 @@ namespace JuchuuNyuuryoku
                 mode = "Update";
                 DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
             }
-            //else if (cboMode.SelectedValue.Equals("3"))
-            //{
-            //    mode = "Delete";
-            //    DoDelete(entity);
-            //}
+            else if (cboMode.SelectedValue.Equals("3"))
+            {
+                mode = "Delete";
+                DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+            }
         }
 
         private (string,string,string) GetInsert()
@@ -1147,10 +1151,10 @@ namespace JuchuuNyuuryoku
             objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail);
         }
 
-        private void DoDelete(JuchuuNyuuryokuEntity obj)
+        private void DoDelete(string mode, string str_header, string str_main, string str_detail)
         {
-            //JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
-            //objMethod.JuchuuNyuuryoku_CUD(obj);
+            JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
+            objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail);
         }
 
        private void Column_Remove_Datatable(DataTable dt)
