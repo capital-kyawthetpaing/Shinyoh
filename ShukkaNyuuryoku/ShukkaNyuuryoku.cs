@@ -70,19 +70,8 @@ namespace ShukkaNyuuryoku {
 
             ChangeMode(Mode.New);
 
-        }
-        private void New_Mode()
-        {
-            BaseEntity baseEntity = _GetBaseData();
-            txtShukkaDate.Text = baseEntity.LoginDate;
+            txtShukkaNo.ChangeDate = txtShukkaNo;
 
-            StaffEntity staffEntity = new StaffEntity
-            {
-                StaffCD = OperatorCD
-            };
-            staffEntity = staffBL.GetStaffEntity(staffEntity);
-            txtStaff.Text = OperatorCD;
-            lblStatffName.Text = staffEntity.StaffName;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -104,7 +93,7 @@ namespace ShukkaNyuuryoku {
             }
             if (tagID == "6")
             {
-                Mode_Setting();
+               Mode_Setting();
             }
             if (tagID == "9")
             {
@@ -148,7 +137,6 @@ namespace ShukkaNyuuryoku {
             {
                 case Mode.New:
                     ErrorCheck();
-                    New_Mode();
                     txtShukkaNo.E102Check(false);
                     txtShukkaNo.E133Check(false, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     txtShukkaNo.E160Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
@@ -186,6 +174,19 @@ namespace ShukkaNyuuryoku {
                     btnInquiry.Visible = false;
                     break;
             }
+        }
+        private void New_Mode()
+        {
+            BaseEntity baseEntity = _GetBaseData();
+            txtShukkaDate.Text = baseEntity.LoginDate;
+
+            StaffEntity staffEntity = new StaffEntity
+            {
+                StaffCD = OperatorCD
+            };
+            staffEntity = staffBL.GetStaffEntity(staffEntity);
+            txtStaff.Text = OperatorCD;
+            lblStatffName.Text = staffEntity.StaffName;
         }
         private void Mode_Setting()
         {
@@ -238,13 +239,6 @@ namespace ShukkaNyuuryoku {
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, null, null);
         }
-        private void sButton1_Click(object sender, EventArgs e)
-        {
-            ShukkaNoSearch a = new ShukkaNoSearch();
-            a.Show();
-
-        }
-
         private void btnDetail1_Click(object sender, EventArgs e)
         {
             tokuisakiDetail.ShowDialog();
