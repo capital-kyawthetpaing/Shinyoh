@@ -83,7 +83,7 @@
             this.txtYearTerm = new Shinyoh_Controls.STextBox();
             this.lblYearTerm = new Shinyoh_Controls.SLabel();
             this.lblBrandName = new System.Windows.Forms.Label();
-            this.txtBrandCD = new Shinyoh_Controls.STextBox();
+            this.txtBrand = new Shinyoh_Controls.STextBox();
             this.lblBrandCD = new Shinyoh_Controls.SLabel();
             this.rdoFreeInventory = new Shinyoh_Controls.SRadio();
             this.rdoDetails = new Shinyoh_Controls.SRadio();
@@ -160,7 +160,7 @@
             this.PanelDetail.Controls.Add(this.txtYearTerm);
             this.PanelDetail.Controls.Add(this.lblYearTerm);
             this.PanelDetail.Controls.Add(this.lblBrandName);
-            this.PanelDetail.Controls.Add(this.txtBrandCD);
+            this.PanelDetail.Controls.Add(this.txtBrand);
             this.PanelDetail.Controls.Add(this.lblBrandCD);
             this.PanelDetail.Controls.Add(this.rdoFreeInventory);
             this.PanelDetail.Controls.Add(this.rdoDetails);
@@ -185,16 +185,17 @@
             this.gvMainDetail.Location = new System.Drawing.Point(22, 245);
             this.gvMainDetail.MultiSelect = false;
             this.gvMainDetail.Name = "gvMainDetail";
-            this.gvMainDetail.ReadOnly = true;
-            this.gvMainDetail.Size = new System.Drawing.Size(1450, 380);
+            this.gvMainDetail.Size = new System.Drawing.Size(1000, 300);
             this.gvMainDetail.TabIndex = 101;
+            this.gvMainDetail.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvMainDetail_CellEndEdit);
+            this.gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
             // 
             // btn_F11
             // 
             this.btn_F11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btn_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btn_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_F11.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btn_F11.Location = new System.Drawing.Point(1345, 220);
             this.btn_F11.Name = "btn_F11";
             this.btn_F11.Size = new System.Drawing.Size(100, 23);
@@ -202,13 +203,14 @@
             this.btn_F11.Tag = "11";
             this.btn_F11.Text = "F11 保存";
             this.btn_F11.UseVisualStyleBackColor = false;
+            this.btn_F11.Click += new System.EventHandler(this.btn_F11_Click);
             // 
             // btn_F10
             // 
             this.btn_F10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btn_F10.ButtonType = Entity.ButtonType.BType.Normal;
             this.btn_F10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_F10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_F10.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btn_F10.Location = new System.Drawing.Point(1240, 220);
             this.btn_F10.Name = "btn_F10";
             this.btn_F10.Size = new System.Drawing.Size(100, 23);
@@ -216,13 +218,14 @@
             this.btn_F10.Tag = "10";
             this.btn_F10.Text = "F10 表示";
             this.btn_F10.UseVisualStyleBackColor = false;
+            this.btn_F10.Click += new System.EventHandler(this.btn_F10_Click);
             // 
             // btn_F8
             // 
             this.btn_F8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btn_F8.ButtonType = Entity.ButtonType.BType.Normal;
             this.btn_F8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_F8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btn_F8.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btn_F8.Location = new System.Drawing.Point(1135, 220);
             this.btn_F8.Name = "btn_F8";
             this.btn_F8.Size = new System.Drawing.Size(100, 23);
@@ -230,6 +233,7 @@
             this.btn_F8.Tag = "8";
             this.btn_F8.Text = "F8 確認";
             this.btn_F8.UseVisualStyleBackColor = false;
+            this.btn_F8.Click += new System.EventHandler(this.btn_F8_Click);
             // 
             // chkType2
             // 
@@ -240,7 +244,7 @@
             this.chkType2.MoveNext = true;
             this.chkType2.Name = "chkType2";
             this.chkType2.NextControl = null;
-            this.chkType2.NextControlName = null;
+            this.chkType2.NextControlName = "btn_F8";
             this.chkType2.Size = new System.Drawing.Size(150, 19);
             this.chkType2.TabIndex = 97;
             this.chkType2.Text = "着荷予定数＞着荷済数";
@@ -680,7 +684,8 @@
             this.txtPostalCode2.SearchType = Entity.SearchType.ScType.None;
             this.txtPostalCode2.Size = new System.Drawing.Size(60, 19);
             this.txtPostalCode2.TabIndex = 71;
-            this.txtPostalCode2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPostalCode2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtPostalCode2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPostalCode2_KeyDown);
             // 
             // label2
             // 
@@ -713,7 +718,7 @@
             this.txtPostalCode1.SearchType = Entity.SearchType.ScType.None;
             this.txtPostalCode1.Size = new System.Drawing.Size(40, 19);
             this.txtPostalCode1.TabIndex = 69;
-            this.txtPostalCode1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtPostalCode1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPostalCode
             // 
@@ -770,6 +775,7 @@
             this.txtKouritenCD.Size = new System.Drawing.Size(100, 19);
             this.txtKouritenCD.TabIndex = 65;
             this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtKouritenCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKouritenCD_KeyDown);
             // 
             // lblKouritenCD
             // 
@@ -816,6 +822,7 @@
             this.txtTokuisakiCD.Size = new System.Drawing.Size(100, 19);
             this.txtTokuisakiCD.TabIndex = 62;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTokuisakiCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisakiCD_KeyDown);
             // 
             // lblTokuisakiCD
             // 
@@ -936,6 +943,7 @@
             this.txtSoukoCD.Size = new System.Drawing.Size(100, 19);
             this.txtSoukoCD.TabIndex = 55;
             this.txtSoukoCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSoukoCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSoukoCD_KeyDown);
             // 
             // lblSoukoCD
             // 
@@ -965,6 +973,7 @@
             this.chkSeasonFW.TabIndex = 53;
             this.chkSeasonFW.Text = "FW";
             this.chkSeasonFW.UseVisualStyleBackColor = true;
+            this.chkSeasonFW.CheckedChanged += new System.EventHandler(this.chkSeasonFW_CheckedChanged);
             // 
             // chkSeasonSS
             // 
@@ -980,6 +989,7 @@
             this.chkSeasonSS.TabIndex = 52;
             this.chkSeasonSS.Text = "SS";
             this.chkSeasonSS.UseVisualStyleBackColor = true;
+            this.chkSeasonSS.CheckedChanged += new System.EventHandler(this.chkSeasonSS_CheckedChanged);
             // 
             // lblYearSign
             // 
@@ -1037,29 +1047,30 @@
             this.lblBrandName.TabIndex = 48;
             this.lblBrandName.Text = "Brand_Name";
             // 
-            // txtBrandCD
+            // txtBrand
             // 
-            this.txtBrandCD.AllowMinus = false;
-            this.txtBrandCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBrandCD.DecimalPlace = 0;
-            this.txtBrandCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
-            this.txtBrandCD.DepandOnMode = true;
-            this.txtBrandCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtBrandCD.IntegerPart = 0;
-            this.txtBrandCD.IsDatatableOccurs = null;
-            this.txtBrandCD.IsErrorOccurs = false;
-            this.txtBrandCD.IsRequire = false;
-            this.txtBrandCD.Location = new System.Drawing.Point(150, 40);
-            this.txtBrandCD.MaxLength = 10;
-            this.txtBrandCD.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtBrandCD.MoveNext = true;
-            this.txtBrandCD.Name = "txtBrandCD";
-            this.txtBrandCD.NextControl = null;
-            this.txtBrandCD.NextControlName = "txtChakuniYoteiNO";
-            this.txtBrandCD.SearchType = Entity.SearchType.ScType.None;
-            this.txtBrandCD.Size = new System.Drawing.Size(100, 19);
-            this.txtBrandCD.TabIndex = 47;
-            this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtBrand.AllowMinus = false;
+            this.txtBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBrand.DecimalPlace = 0;
+            this.txtBrand.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtBrand.DepandOnMode = true;
+            this.txtBrand.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtBrand.IntegerPart = 0;
+            this.txtBrand.IsDatatableOccurs = null;
+            this.txtBrand.IsErrorOccurs = false;
+            this.txtBrand.IsRequire = false;
+            this.txtBrand.Location = new System.Drawing.Point(150, 40);
+            this.txtBrand.MaxLength = 10;
+            this.txtBrand.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtBrand.MoveNext = true;
+            this.txtBrand.Name = "txtBrand";
+            this.txtBrand.NextControl = null;
+            this.txtBrand.NextControlName = "txtChakuniYoteiNO";
+            this.txtBrand.SearchType = Entity.SearchType.ScType.None;
+            this.txtBrand.Size = new System.Drawing.Size(100, 19);
+            this.txtBrand.TabIndex = 47;
+            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrand_KeyDown);
             // 
             // lblBrandCD
             // 
@@ -1082,7 +1093,7 @@
             this.rdoFreeInventory.MoveNext = true;
             this.rdoFreeInventory.Name = "rdoFreeInventory";
             this.rdoFreeInventory.NextControl = null;
-            this.rdoFreeInventory.NextControlName = "txtBrandCD";
+            this.rdoFreeInventory.NextControlName = "txtBrand";
             this.rdoFreeInventory.Size = new System.Drawing.Size(90, 19);
             this.rdoFreeInventory.TabIndex = 45;
             this.rdoFreeInventory.Text = "Free在庫";
@@ -1096,7 +1107,7 @@
             this.rdoDetails.MoveNext = true;
             this.rdoDetails.Name = "rdoDetails";
             this.rdoDetails.NextControl = null;
-            this.rdoDetails.NextControlName = "txtBrandCD";
+            this.rdoDetails.NextControlName = "txtBrand";
             this.rdoDetails.Size = new System.Drawing.Size(65, 19);
             this.rdoDetails.TabIndex = 44;
             this.rdoDetails.Text = "明細";
@@ -1111,7 +1122,7 @@
             this.rdoAggregation.MoveNext = true;
             this.rdoAggregation.Name = "rdoAggregation";
             this.rdoAggregation.NextControl = null;
-            this.rdoAggregation.NextControlName = "txtBrandCD";
+            this.rdoAggregation.NextControlName = "txtBrand";
             this.rdoAggregation.Size = new System.Drawing.Size(130, 19);
             this.rdoAggregation.TabIndex = 43;
             this.rdoAggregation.TabStop = true;
@@ -1195,7 +1206,7 @@
         private Shinyoh_Controls.STextBox txtYearTerm;
         private Shinyoh_Controls.SLabel lblYearTerm;
         private System.Windows.Forms.Label lblBrandName;
-        private Shinyoh_Controls.STextBox txtBrandCD;
+        private Shinyoh_Controls.STextBox txtBrand;
         private Shinyoh_Controls.SLabel lblBrandCD;
         private Shinyoh_Controls.SRadio rdoFreeInventory;
         private Shinyoh_Controls.SRadio rdoDetails;
