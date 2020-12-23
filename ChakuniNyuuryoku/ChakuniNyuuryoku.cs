@@ -61,7 +61,7 @@ namespace ChakuniNyuuryoku
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
-            SetButton(ButtonType.BType.Search, F11, "保存(F11)", true);
+            SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -162,14 +162,14 @@ namespace ChakuniNyuuryoku
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
-            //txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
-            //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
             txtSouko.E102Check(true);
             txtSouko.E101Check(true, "souko", txtSouko, null, null);
-            //txtScheduledNo.E133Check(true, "M_Siiresaki", txtScheduledNo, txtArrivalDate, null);
+            txtScheduledNo.E133Check(true, "M_Siiresaki", txtScheduledNo, txtArrivalDate, null);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -193,6 +193,41 @@ namespace ChakuniNyuuryoku
             {
                 Clear();
             }
+            if(tagID=="8")
+            {
+                if (dtTemp.Rows.Count > 0)
+                {
+                    var dtConfirm = dtTemp.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("ChakuniYoteiGyouNO")).ThenBy(r => r.Field<string>("HacchuuGyouNO")).CopyToDataTable();
+                    gvChakuniNyuuryoku.DataSource = dtConfirm;
+                }
+                else
+                {
+                    dtGS1 = CreateTable();
+                    gvChakuniNyuuryoku.DataSource = dtGS1;
+                }
+            }
+            if (tagID == "10")
+            {
+                dtGridview();
+                gvChakuniNyuuryoku.DataSource = dtmain;
+            }
+            if (tagID == "11")
+            {
+                dtTemp = dtGS1;
+                txtScheduledNo.Clear();
+                txtShouhinCD.Clear();
+                txtShouhinName.Clear();
+                txtControlNo.Clear();
+                txtJANCD.Clear();
+                sbBrand.Clear();
+                lblBrandName.Text = string.Empty;
+                txtColor.Clear();
+                txtYearTerm.Clear();
+                txtSize.Clear();
+                txtScheduledNo.Focus();
+                gvChakuniNyuuryoku.ClearSelection();
+                gvChakuniNyuuryoku.DataSource = dtClear;
+            }
             if (tagID == "12")
             {
                 if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails))
@@ -215,7 +250,7 @@ namespace ChakuniNyuuryoku
                     }
                 }
             }
-            Clear();
+            //Clear();
             base.FunctionProcess(tagID);
         }
         public void Clear()
@@ -556,6 +591,10 @@ namespace ChakuniNyuuryoku
                     {
                        sd.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt);
                         lblSiiresaki.Text = dt.Rows[0]["SiiresakiName"].ToString();
+                    }
+                    else
+                    {
+                        lblSiiresaki.Text = string.Empty;
                     }
                 }
             }
