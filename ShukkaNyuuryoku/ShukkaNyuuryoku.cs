@@ -241,12 +241,28 @@ namespace ShukkaNyuuryoku {
         }
         private void btnDetail1_Click(object sender, EventArgs e)
         {
-            tokuisakiDetail.ShowDialog();
+                if (tokuisakiDetail.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(txtTokuisaki.Text))
+                {
+                    tokuisakiDetail.ShowDialog();
+                }
+                else
+                {
+                    bbl.ShowMessage("E269", "出荷指示時", "得意先");
+                    txtTokuisaki.Focus();
+                }                  
         }
 
         private void btnDetail2_Click(object sender, EventArgs e)
         {
-            kouritenDetail.ShowDialog();
+            if (kouritenDetail.Access_Kouriten_obj.KouritenCD.ToString().Equals(txtKouriten.Text))
+            {
+                tokuisakiDetail.ShowDialog();
+            }
+            else
+            {
+                bbl.ShowMessage("E269", "出荷指示時", "得意先");
+                txtKouriten.Focus();
+            }
         }
 
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
@@ -366,18 +382,18 @@ namespace ShukkaNyuuryoku {
                 string value = gvShukka1.Rows[e.RowIndex].Cells["colKonkai"].EditedFormattedValue.ToString();
                 string a = gvShukka1.Rows[e.RowIndex].Cells["colShukkazansuu"].EditedFormattedValue.ToString();
                 string b = gvShukka1.Rows[e.RowIndex].Cells["colMiryoku"].EditedFormattedValue.ToString();
-                //decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
+                decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
 
                 if (Convert.ToDecimal(value) < 0)
                 {
                     bbl.ShowMessage("E109");
                     e.Cancel = true;
                 }
-                //else if (Convert.ToDecimal(value) > c)
-                //{
-                //    bbl.ShowMessage("E143");
-                //    e.Cancel = true;
-                //}
+                else if (Convert.ToDecimal(value) > c)
+                {
+                    bbl.ShowMessage("E143",c.ToString(),value);
+                    e.Cancel = true;
+                }
             }
         }
 
