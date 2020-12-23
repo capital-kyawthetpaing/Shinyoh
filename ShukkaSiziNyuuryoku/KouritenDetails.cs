@@ -57,28 +57,25 @@ namespace ShukkaSiziNyuuryoku
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode == Keys.Enter)
+                if (!txtYubin2.IsErrorOccurs)
                 {
-                    if (!txtYubin2.IsErrorOccurs)
+                    if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
                     {
-                        if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                        DataTable dt = txtYubin2.IsDatatableOccurs;
+                        txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                        txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                    }
+                    else
+                    {
+                        if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
                         {
-                            DataTable dt = txtYubin2.IsDatatableOccurs;
-                            txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
-                            txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                            txtAddress1.Text = string.Empty;
+                            txtAddress2.Text = string.Empty;
                         }
                         else
                         {
-                            if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
-                            {
-                                txtAddress1.Text = string.Empty;
-                                txtAddress2.Text = string.Empty;
-                            }
-                            else
-                            {
-                                txtAddress1.Text = Address1;
-                                txtAddress2.Text = Address2;
-                            }
+                            txtAddress1.Text = Address1;
+                            txtAddress2.Text = Address2;
                         }
                     }
                 }
