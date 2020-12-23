@@ -93,7 +93,6 @@
             this.colKonkai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colComplete = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colDetail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTokuisaki = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.panelDetail.SuspendLayout();
@@ -661,8 +660,7 @@
             this.colMiryoku,
             this.colKonkai,
             this.colComplete,
-            this.colDetail,
-            this.colTokuisaki});
+            this.colDetail});
             this.gvShukka1.Location = new System.Drawing.Point(25, 238);
             this.gvShukka1.Name = "gvShukka1";
             this.gvShukka1.Size = new System.Drawing.Size(1450, 150);
@@ -1129,12 +1127,6 @@
             this.colDetail.Name = "colDetail";
             this.colDetail.Width = 287;
             // 
-            // colTokuisaki
-            // 
-            this.colTokuisaki.DataPropertyName = "TokuisakiCD";
-            this.colTokuisaki.HeaderText = "Tokuisaki";
-            this.colTokuisaki.Name = "colTokuisaki";
-            // 
             // ShukkaNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1222,7 +1214,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colKonkai;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colComplete;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisaki;
     }
 }
 

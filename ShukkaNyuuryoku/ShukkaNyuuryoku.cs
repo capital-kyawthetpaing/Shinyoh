@@ -501,7 +501,7 @@ namespace ShukkaNyuuryoku {
                 dt.Columns.Remove("StaffName");
                 dt.Columns.Remove("ShukkaDenpyouTekiyou");
 
-               // dt.Columns.Remove("TokuisakiCD");
+                dt.Columns.Remove("TokuisakiCD");
                 dt.Columns.Remove("TokuisakiRyakuName");
                 dt.Columns.Remove("TokuisakiName");
                 dt.Columns.Remove("TokuisakiYuubinNO1");
