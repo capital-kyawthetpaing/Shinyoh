@@ -487,7 +487,7 @@
             // 
             // lbl_Name
             // 
-            this.lbl_Name.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl_Name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.lbl_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -584,6 +584,8 @@
             // 
             // PanelTitle
             // 
+            this.PanelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.PanelTitle.Controls.Add(this.lbl_Name);
             this.PanelTitle.Controls.Add(this.txtCD);

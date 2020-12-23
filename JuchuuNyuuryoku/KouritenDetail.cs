@@ -25,6 +25,7 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Search, F11, "", false);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
+            lbl_Name.BorderStyle= System.Windows.Forms.BorderStyle.None;
             txtCD.Focus();
 
             txtShort_Name.E102Check(true);

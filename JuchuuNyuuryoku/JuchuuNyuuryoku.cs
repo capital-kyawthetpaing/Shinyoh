@@ -715,7 +715,6 @@ namespace JuchuuNyuuryoku
                 {
                     bl = false;
                     base_bl.ShowMessage("E102");
-                    e.Cancel = true;
                 }
 
                 DataTable dt = siiresaki_bl.Siiresaki_Select_Check(siiresakiCD, txtJuchuuDate.Text, "E101");
@@ -777,13 +776,13 @@ namespace JuchuuNyuuryoku
 
                 DateTime JuchuuDate = string.IsNullOrEmpty(txtJuchuuDate.Text) ? Convert.ToDateTime(base_Entity.LoginDate) : Convert.ToDateTime(txtJuchuuDate.Text);
                 string expectedDate = string.IsNullOrEmpty(gv_1.Rows[e.RowIndex].Cells["colexpectedDate"].EditedFormattedValue.ToString()) ? base_Entity.LoginDate : gv_1.Rows[e.RowIndex].Cells["colexpectedDate"].EditedFormattedValue.ToString();
+                
                 if (string.IsNullOrEmpty(free))
                     isSelected = "OFF";
                 else isSelected = "ON";
                 if (isSelected == "OFF" && JuchuuSuu != "0")
                 {
                     base_bl.ShowMessage("E102");
-                    e.Cancel = true;
                 }
                 if (!cf.CheckDateValue(expectedDate))
                 {
@@ -1114,6 +1113,7 @@ namespace JuchuuNyuuryoku
             string detail_XML = cf.DataTableToXml(F8_dt1);
             return (header_XML,main_XML,detail_XML); 
         }
+
         public void Create_Datatable_Column(DataTable create_dt)
         {
             create_dt.Columns.Add("JuchuuNO");
@@ -1208,6 +1208,13 @@ namespace JuchuuNyuuryoku
             dt.Columns.Remove("JuchuuGyouNO");
         }
 
-       
+        private void gv_1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if ((e.ColumnIndex == 6 || e.ColumnIndex==7) && e.RowIndex != this.gv_1.NewRowIndex)
+            {
+                double d = double.Parse(e.Value.ToString());
+                e.Value = d.ToString("N0");
+            }
+        }
     }
 }

@@ -246,6 +246,7 @@
             this.gv_1.TabIndex = 106;
             this.gv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellContentClick);
             this.gv_1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEnter);
+            this.gv_1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gv_1_CellFormatting);
             this.gv_1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gv_1_CellValidating);
             this.gv_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_1_KeyDown);
             // 
