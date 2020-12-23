@@ -361,7 +361,7 @@ namespace ChakuniNyuuryoku
         private void DoInsert(string mode, string str_main, string str_detail)
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
-            bl.ChakuniNyuuryoku_CUD(mode, str_main, str_detail);
+            //bl.ChakuniNyuuryoku_CUD(mode, str_main, str_detail);
         }
         private ChakuniNyuuryoku_Entity GetEntity()
         {
