@@ -41,8 +41,8 @@ namespace ShukkaSiziNyuuryoku
             dtgv1 = new DataTable();
             dt_Header = new DataTable();
             dtResult = new DataTable();
-            dtGS1 = CreateTable();
-            dtClear = CreateTable();
+            dtGS1 = CreateTable_Details();
+            dtClear = CreateTable_Details();
             dgvShukkasizi.CellEndEdit += DgvShukkasizi_CellEndEdit;
             dgvShukkasizi.CellContentClick += DgvShukkasizi_CellContentClick;
         }
@@ -200,25 +200,6 @@ namespace ShukkaSiziNyuuryoku
             txtPhone3.Clear();
             txtName.Clear();
         }
-        //private void DBProcess()
-        //{
-        //    sksz_e = new ShukkaSiziNyuuryokuEntity();
-        //    if (cboMode.SelectedValue.Equals("1"))
-        //    {
-        //        sksz_e.Mode = "New";
-        //        //DoInsert(chkEntity);
-        //    }
-        //    else if (cboMode.SelectedValue.Equals("2"))
-        //    {
-        //        sksz_e.Mode = "Update";
-        //        //DoUpdate(chkEntity);
-        //    }
-        //    else if (cboMode.SelectedValue.Equals("3"))
-        //    {
-        //        sksz_e.Mode = "Delete";
-        //        //DoDeletet(chkEntity);
-        //    }
-        //}
         private void FunctionProcedure(int tagID)
         {
             switch(tagID)
@@ -231,7 +212,7 @@ namespace ShukkaSiziNyuuryoku
                     }
                     else
                     {
-                        dtGS1 = CreateTable();
+                        dtGS1 = CreateTable_Details();
                         dgvShukkasizi.DataSource = dtGS1;
                     }
                     break;
@@ -259,7 +240,7 @@ namespace ShukkaSiziNyuuryoku
                 if (!sbStaffCD.IsErrorOccurs)
                 {
                     DataTable dt = sbStaffCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString().Equals("E132"))
+                    if (dt.Rows.Count > 0)
                     {
                         lblStaffName.Text = dt.Rows[0]["StaffName"].ToString();
                     }
@@ -401,6 +382,8 @@ namespace ShukkaSiziNyuuryoku
         {
             if (e.KeyCode == Keys.Enter)
             {
+                lblTokuisakiName.Text = string.Empty;
+
                 if (!sbTokuisaki.IsErrorOccurs)
                 {
                     DataTable dt = sbTokuisaki.IsDatatableOccurs;
@@ -408,10 +391,6 @@ namespace ShukkaSiziNyuuryoku
                     {
                         lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
                         td.Access_Tokuisaki_obj = Tokuisaki_Data_Select(dt);
-                    }
-                    else
-                    {
-                        lblTokuisakiName.Text = string.Empty;
                     }
                 }
             }
@@ -421,6 +400,7 @@ namespace ShukkaSiziNyuuryoku
             if (e.KeyCode == Keys.Enter)
             {
                 lblKouritenName.Text = string.Empty;
+
                 if (!sbKouriten.IsErrorOccurs)
                     {
                     DataTable dt = sbKouriten.IsDatatableOccurs;
@@ -511,11 +491,10 @@ namespace ShukkaSiziNyuuryoku
         }
         private void DgvShukkasizi_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            //if(Grid_ErrorCheck(e.RowIndex,e.ColumnIndex))
-            //{
-            //    //Temp_Save(e.RowIndex);
-            //}
-            Temp_Save(e.RowIndex);
+            if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
+            {
+                Temp_Save(e.RowIndex);
+            }
         }
         private void Temp_Save(int row)
         {  
@@ -639,43 +618,6 @@ namespace ShukkaSiziNyuuryoku
                 }
             }
             
-        }
-        private DataTable CreateTable()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("ShouhinCD", typeof(string));
-            dt.Columns.Add("ShouhinName", typeof(string));
-            dt.Columns.Add("ColorRyakuName", typeof(string));
-            dt.Columns.Add("ColorNO", typeof(string));
-            dt.Columns.Add("SizeNO", typeof(string));
-            dt.Columns.Add("JuchuuSuu", typeof(string));
-            dt.Columns.Add("ShukkanouSuu", typeof(string));
-            dt.Columns.Add("ShukkaSiziZumiSuu", typeof(string));
-            dt.Columns.Add("KonkaiShukkaSiziSuu", typeof(string));
-            dt.Columns.Add("UriageTanka", typeof(string));
-            dt.Columns.Add("UriageKingaku", typeof(string));
-            dt.Columns.Add("Kanryo", typeof(int));
-            dt.Columns.Add("ShukkaSiziMeisaiTekiyou", typeof(string));
-            dt.Columns.Add("SKMSNO", typeof(string));
-            dt.Columns.Add("SoukoCD", typeof(string));
-            dt.Columns.Add("SoukoName", typeof(string));
-            dt.Columns.Add("TokuisakiCD", typeof(string));
-            dt.Columns.Add("KouritenCD", typeof(string));
-            dt.Columns.Add("KouritenRyakuName", typeof(string));
-            dt.Columns.Add("KouritenName", typeof(string));
-            dt.Columns.Add("KouritenYuubinNO1", typeof(string));
-            dt.Columns.Add("KouritenYuubinNO2", typeof(string));
-            dt.Columns.Add("KouritenJuusho1", typeof(string));
-            dt.Columns.Add("KouritenJuusho2", typeof(string));
-            dt.Columns.Add("KouritenTelNO1-1", typeof(string));
-            dt.Columns.Add("KouritenTelNO1-2", typeof(string));
-            dt.Columns.Add("KouritenTelNO1-3", typeof(string));
-            dt.Columns.Add("KouritenTelNO2-1", typeof(string));
-            dt.Columns.Add("KouritenTelNO2-2", typeof(string));
-            dt.Columns.Add("KouritenTelNO2-3", typeof(string));
-
-            dt.AcceptChanges();
-            return dt;
         }
         private DataTable dtGridview(int dt)
         {
@@ -851,7 +793,7 @@ namespace ShukkaSiziNyuuryoku
             TokuisakiEntity t_obj = td.Access_Tokuisaki_obj;
             KouritenEntity k_obj = kd.Access_Kouriten_obj;
 
-            dtResult = CreateTable_DB_Column();
+            dtResult = CreateTable_Header();
             DataRow dr = dtResult.NewRow();
 
             dr["ShukkaSiziNO"] = sbShippingNO.Text;
@@ -899,52 +841,13 @@ namespace ShukkaSiziNyuuryoku
 
             return (main_XML, string.Empty);
         }
-        public void Create_Datatable_Column(DataTable create_dt)
+        private void DoInsert(string mode, string str_main, string str_detail)
         {
-            create_dt.Columns.Add("ShukkaSiziNO");
-            create_dt.Columns.Add("StaffCD");
-            create_dt.Columns.Add("ShukkaYoteiDate");
-            create_dt.Columns.Add("DenpyouDate");
-            create_dt.Columns.Add("KaikeiYYMM");
-            create_dt.Columns.Add("ShukkaSiziDenpyouTekiyou");
-            create_dt.Columns.Add("ShukkaSizishoHuyouKBN");
-            create_dt.Columns.Add("ShukkaKanryouKBN");
-
-            create_dt.Columns.Add("TokuisakiCD");
-            create_dt.Columns.Add("TokuisakiName");
-            create_dt.Columns.Add("TokuisakiRyakuName");
-            create_dt.Columns.Add("TokuisakiYuubinNO1");
-            create_dt.Columns.Add("TokuisakiYuubinNO2");
-            create_dt.Columns.Add("TokuisakiJuusho1");
-            create_dt.Columns.Add("TokuisakiJuusho2");
-            create_dt.Columns.Add("TokuisakiTel11");
-            create_dt.Columns.Add("TokuisakiTel12");
-            create_dt.Columns.Add("TokuisakiTel13");
-            create_dt.Columns.Add("TokuisakiTel21");
-            create_dt.Columns.Add("TokuisakiTel22");
-            create_dt.Columns.Add("TokuisakiTel23");
-
-            create_dt.Columns.Add("KouritenCD");
-            create_dt.Columns.Add("KouritenName");
-            create_dt.Columns.Add("KouritenRyakuName");
-            create_dt.Columns.Add("KouritenYuubinNO1");
-            create_dt.Columns.Add("KouritenYuubinNO2");
-            create_dt.Columns.Add("KouritenJuusho1");
-            create_dt.Columns.Add("KouritenJuusho2");
-            create_dt.Columns.Add("KouritenTel11");
-            create_dt.Columns.Add("KouritenTel12");
-            create_dt.Columns.Add("KouritenTel13");
-            create_dt.Columns.Add("KouritenTel21");
-            create_dt.Columns.Add("KouritenTel22");
-            create_dt.Columns.Add("KouritenTel23");
-
-            create_dt.Columns.Add("InsertOperator");
-            create_dt.Columns.Add("UpdateOperator");
-            create_dt.Columns.Add("PC");
-            create_dt.Columns.Add("ProgramID");
-
+            sksz_bl = new ShukkasiziNyuuryokuBL();
+            sksz_bl.ShukkasiziNyuuryoku_CUD(mode, str_main, str_detail);
         }
-        private DataTable CreateTable_DB_Column()
+
+        private DataTable CreateTable_Header()
         {
             DataTable dt = new DataTable();
             dt.Columns.Add("ShukkaSiziNO", typeof(string));
@@ -991,10 +894,43 @@ namespace ShukkaSiziNyuuryoku
             dt.AcceptChanges();
             return dt;
         }
-        private void DoInsert(string mode, string str_main, string str_detail)
+
+        private DataTable CreateTable_Details()
         {
-            sksz_bl = new ShukkasiziNyuuryokuBL();
-            sksz_bl.ShukkasiziNyuuryoku_CUD(mode, str_main, str_detail);
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ShouhinCD", typeof(string));
+            dt.Columns.Add("ShouhinName", typeof(string));
+            dt.Columns.Add("ColorRyakuName", typeof(string));
+            dt.Columns.Add("ColorNO", typeof(string));
+            dt.Columns.Add("SizeNO", typeof(string));
+            dt.Columns.Add("JuchuuSuu", typeof(string));
+            dt.Columns.Add("ShukkanouSuu", typeof(string));
+            dt.Columns.Add("ShukkaSiziZumiSuu", typeof(string));
+            dt.Columns.Add("KonkaiShukkaSiziSuu", typeof(string));
+            dt.Columns.Add("UriageTanka", typeof(string));
+            dt.Columns.Add("UriageKingaku", typeof(string));
+            dt.Columns.Add("Kanryo", typeof(int));
+            dt.Columns.Add("ShukkaSiziMeisaiTekiyou", typeof(string));
+            dt.Columns.Add("SKMSNO", typeof(string));
+            dt.Columns.Add("SoukoCD", typeof(string));
+            dt.Columns.Add("SoukoName", typeof(string));
+            dt.Columns.Add("TokuisakiCD", typeof(string));
+            dt.Columns.Add("KouritenCD", typeof(string));
+            dt.Columns.Add("KouritenRyakuName", typeof(string));
+            dt.Columns.Add("KouritenName", typeof(string));
+            dt.Columns.Add("KouritenYuubinNO1", typeof(string));
+            dt.Columns.Add("KouritenYuubinNO2", typeof(string));
+            dt.Columns.Add("KouritenJuusho1", typeof(string));
+            dt.Columns.Add("KouritenJuusho2", typeof(string));
+            dt.Columns.Add("KouritenTelNO1-1", typeof(string));
+            dt.Columns.Add("KouritenTelNO1-2", typeof(string));
+            dt.Columns.Add("KouritenTelNO1-3", typeof(string));
+            dt.Columns.Add("KouritenTelNO2-1", typeof(string));
+            dt.Columns.Add("KouritenTelNO2-2", typeof(string));
+            dt.Columns.Add("KouritenTelNO2-3", typeof(string));
+
+            dt.AcceptChanges();
+            return dt;
         }
     }
 
