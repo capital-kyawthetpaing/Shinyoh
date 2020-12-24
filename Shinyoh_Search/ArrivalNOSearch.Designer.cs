@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvArrivalNo = new Shinyoh_Controls.SGridView();
             this.colChakuniNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,8 +95,8 @@
             // Column2
             // 
             this.Column2.DataPropertyName = "ChakuniDate";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column2.HeaderText = "着荷日";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -432,6 +432,7 @@
             this.txtExpectedDateTo.SearchType = Entity.SearchType.ScType.None;
             this.txtExpectedDateTo.Size = new System.Drawing.Size(100, 19);
             this.txtExpectedDateTo.TabIndex = 11;
+            this.txtExpectedDateTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtExpectedDateTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtExpectedDateFrom
@@ -455,6 +456,7 @@
             this.txtExpectedDateFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtExpectedDateFrom.Size = new System.Drawing.Size(100, 19);
             this.txtExpectedDateFrom.TabIndex = 10;
+            this.txtExpectedDateFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtExpectedDateFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtProductName
@@ -501,6 +503,7 @@
             this.txtDateTo.SearchType = Entity.SearchType.ScType.None;
             this.txtDateTo.Size = new System.Drawing.Size(100, 19);
             this.txtDateTo.TabIndex = 8;
+            this.txtDateTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDateTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtDateFrom
@@ -524,6 +527,7 @@
             this.txtDateFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtDateFrom.Size = new System.Drawing.Size(100, 19);
             this.txtDateFrom.TabIndex = 7;
+            this.txtDateFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDateFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // sLabel7
