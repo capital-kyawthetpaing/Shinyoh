@@ -255,11 +255,11 @@ namespace ShukkaNyuuryoku {
         {
             if (kouritenDetail.Access_Kouriten_obj.KouritenCD.ToString().Equals(txtKouriten.Text))
             {
-                tokuisakiDetail.ShowDialog();
+                kouritenDetail.ShowDialog();
             }
             else
             {
-                bbl.ShowMessage("E269", "出荷指示時", "得意先");
+                bbl.ShowMessage("E269", "出荷指示時", "小売店");
                 txtKouriten.Focus();
             }
         }
@@ -390,7 +390,7 @@ namespace ShukkaNyuuryoku {
                 }
                 else if (Convert.ToDecimal(value) > c)
                 {
-                    bbl.ShowMessage("E143",c.ToString(),value);
+                    bbl.ShowMessage("E143", "出荷残数 - 未入荷数", "大きい");
                     e.Cancel = true;
                 }
             }
