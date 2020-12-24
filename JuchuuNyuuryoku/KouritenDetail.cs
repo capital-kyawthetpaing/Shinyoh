@@ -15,6 +15,10 @@ namespace JuchuuNyuuryoku
     public partial class KouritenDetail : SearchBase
     {
         public KouritenEntity Access_Kouriten_obj=new KouritenEntity();
+        string YuuBinNO1 = string.Empty;
+        string YuuBinNO2 = string.Empty;
+        string Address1 = string.Empty;
+        string Address2 = string.Empty;
         public KouritenDetail()
         {
             InitializeComponent();
@@ -52,6 +56,10 @@ namespace JuchuuNyuuryoku
             txtPhone2_1.Text = obj.Tel21;
             txtPhone2_2.Text = obj.Tel22;
             txtPhone2_3.Text = obj.Tel23;
+            YuuBinNO1 = txtYubin1.Text;
+            YuuBinNO2 = txtYubin2.Text;
+            Address1 = txtAddress1.Text;
+            Address2 = txtAddress2.Text;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -74,6 +82,35 @@ namespace JuchuuNyuuryoku
                 this.Close();
             }
             base.FunctionProcess(tagID);
+        }
+
+        private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtYubin2.IsErrorOccurs)
+                {
+                    if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                    {
+                        DataTable dt = txtYubin2.IsDatatableOccurs;
+                        txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+                        txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+                    }
+                    else
+                    {
+                        if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
+                        {
+                            txtAddress1.Text = string.Empty;
+                            txtAddress2.Text = string.Empty;
+                        }
+                        else
+                        {
+                            txtAddress1.Text = Address1;
+                            txtAddress2.Text = Address2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
