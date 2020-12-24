@@ -163,7 +163,7 @@ namespace ChakuniNyuuryoku
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
             txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
-            txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
@@ -273,6 +273,9 @@ namespace ChakuniNyuuryoku
             {
                 mode = "New";
                 ChakuniNyuuryoku_Entity cne = new ChakuniNyuuryoku_Entity();
+                cne.OperatorCD = OperatorCD;
+                cne.ProgramID = ProgramID;
+                cne.PC = PCID;
                 DoInsert(obj.Item1, obj.Item2,cne);
             }
         }
@@ -308,8 +311,8 @@ namespace ChakuniNyuuryoku
             create_dt.Columns.Add("ColorNO");
             create_dt.Columns.Add("SizeNO");
 
-            create_dt.Columns.Add("InsertOperator");
-            create_dt.Columns.Add("UpdateOperator");
+            create_dt.Columns.Add("Operator");
+            //create_dt.Columns.Add("UpdateOperator");
             create_dt.Columns.Add("PC");
             create_dt.Columns.Add("ProgramID");
 

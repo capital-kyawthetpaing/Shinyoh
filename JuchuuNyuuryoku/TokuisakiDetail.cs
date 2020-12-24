@@ -25,6 +25,7 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "", false);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+            lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
             txtTokuisakiCD.Focus();
 

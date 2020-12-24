@@ -49,6 +49,7 @@
             this.colStaffCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChangeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCurrentDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvStaff)).BeginInit();
             this.SuspendLayout();
@@ -152,6 +153,7 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
+            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
@@ -175,6 +177,7 @@
             this.txtStaffName.AllowMinus = false;
             this.txtStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaffName.DecimalPlace = 0;
+            this.txtStaffName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtStaffName.DepandOnMode = true;
             this.txtStaffName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaffName.IntegerPart = 0;
@@ -208,6 +211,7 @@
             this.txtStaff2.AllowMinus = false;
             this.txtStaff2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff2.DecimalPlace = 0;
+            this.txtStaff2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtStaff2.DepandOnMode = true;
             this.txtStaff2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff2.IntegerPart = 0;
@@ -231,6 +235,7 @@
             this.txtStaff1.AllowMinus = false;
             this.txtStaff1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaff1.DecimalPlace = 0;
+            this.txtStaff1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtStaff1.DepandOnMode = true;
             this.txtStaff1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaff1.IntegerPart = 0;
@@ -319,7 +324,8 @@
             this.gvStaff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colStaffCD,
             this.colStaffName,
-            this.colChangeDate});
+            this.colChangeDate,
+            this.colCurrentDay});
             this.gvStaff.Location = new System.Drawing.Point(45, 146);
             this.gvStaff.Name = "gvStaff";
             this.gvStaff.Size = new System.Drawing.Size(768, 302);
@@ -353,6 +359,13 @@
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.ReadOnly = true;
+            // 
+            // colCurrentDay
+            // 
+            this.colCurrentDay.DataPropertyName = "CurrentDay";
+            this.colCurrentDay.HeaderText = "CurrentDay";
+            this.colCurrentDay.Name = "colCurrentDay";
+            this.colCurrentDay.Visible = false;
             // 
             // StaffSearch
             // 
@@ -395,5 +408,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStaffName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChangeDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCurrentDay;
     }
 }

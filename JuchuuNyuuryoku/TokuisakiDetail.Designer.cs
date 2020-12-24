@@ -532,6 +532,8 @@
             // 
             // PanelTitle
             // 
+            this.PanelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.PanelTitle.Controls.Add(this.lblTokuisaki_Name);
             this.PanelTitle.Controls.Add(this.txtTokuisakiCD);
@@ -543,7 +545,7 @@
             // 
             // lblTokuisaki_Name
             // 
-            this.lblTokuisaki_Name.BackColor = System.Drawing.SystemColors.Control;
+            this.lblTokuisaki_Name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTokuisaki_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTokuisaki_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
