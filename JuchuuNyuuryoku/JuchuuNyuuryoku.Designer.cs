@@ -29,43 +29,13 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Panel_Detail = new System.Windows.Forms.Panel();
             this.gv_1 = new Shinyoh_Controls.SGridView();
-            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colFree = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colGenZaikoSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSenpouHacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUriageTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJuchuuMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiDetail = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colexpectedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSoukoCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiYuubinNO1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiYuubinNO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiJuusho1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiJuusho2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiTelNO11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiTelNO12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiTelNO13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiTelNO21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiTelNO22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSiiresakiTelNO23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHacchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJuchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBrandCD = new Shinyoh_Search.SearchBox();
             this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.txtKouritenCD = new Shinyoh_Search.SearchBox();
@@ -113,6 +83,40 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.txtJuchuuNO = new Shinyoh_Search.SearchBox();
             this.txtCopy = new Shinyoh_Search.SearchBox();
+            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colFree = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colGenZaikoSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSenpouHacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUriageTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiDetail = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colexpectedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoukoCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiYuubinNO1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiYuubinNO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiJuusho1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiJuusho2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiTelNO11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiTelNO12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiTelNO13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiTelNO21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiTelNO22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSiiresakiTelNO23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHacchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -234,14 +238,14 @@
             this.colJuchuuGyouNO});
             this.gv_1.Location = new System.Drawing.Point(25, 271);
             this.gv_1.Name = "gv_1";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_1.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.gv_1.Size = new System.Drawing.Size(1420, 350);
             this.gv_1.TabIndex = 106;
             this.gv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellContentClick);
@@ -249,245 +253,6 @@
             this.gv_1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gv_1_CellFormatting);
             this.gv_1.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gv_1_CellValidating);
             this.gv_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_1_KeyDown);
-            // 
-            // colShouhinCD
-            // 
-            this.colShouhinCD.DataPropertyName = "ShouhinCD";
-            this.colShouhinCD.HeaderText = "商品";
-            this.colShouhinCD.Name = "colShouhinCD";
-            this.colShouhinCD.ReadOnly = true;
-            // 
-            // colShouhinName
-            // 
-            this.colShouhinName.DataPropertyName = "ShouhinName";
-            this.colShouhinName.HeaderText = "商品名";
-            this.colShouhinName.Name = "colShouhinName";
-            this.colShouhinName.ReadOnly = true;
-            // 
-            // colColorRyakuName
-            // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            this.colColorRyakuName.ReadOnly = true;
-            // 
-            // colColorNO
-            // 
-            this.colColorNO.DataPropertyName = "ColorNO";
-            this.colColorNO.HeaderText = "カラー";
-            this.colColorNO.Name = "colColorNO";
-            this.colColorNO.ReadOnly = true;
-            // 
-            // colSizeNO
-            // 
-            this.colSizeNO.DataPropertyName = "SizeNO";
-            this.colSizeNO.HeaderText = "サイズ";
-            this.colSizeNO.Name = "colSizeNO";
-            this.colSizeNO.ReadOnly = true;
-            // 
-            // colFree
-            // 
-            this.colFree.DataPropertyName = "Free";
-            this.colFree.HeaderText = "Free";
-            this.colFree.Name = "colFree";
-            this.colFree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colFree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colGenZaikoSuu
-            // 
-            this.colGenZaikoSuu.DataPropertyName = "GenZaikoSuu";
-            this.colGenZaikoSuu.HeaderText = "現在庫数";
-            this.colGenZaikoSuu.Name = "colGenZaikoSuu";
-            this.colGenZaikoSuu.ReadOnly = true;
-            // 
-            // colJuchuuSuu
-            // 
-            this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
-            this.colJuchuuSuu.HeaderText = "数量";
-            this.colJuchuuSuu.Name = "colJuchuuSuu";
-            // 
-            // colSenpouHacchuuNO
-            // 
-            this.colSenpouHacchuuNO.DataPropertyName = "DJMSenpouHacchuuNO";
-            this.colSenpouHacchuuNO.HeaderText = "先方発注番号";
-            this.colSenpouHacchuuNO.MinimumWidth = 150;
-            this.colSenpouHacchuuNO.Name = "colSenpouHacchuuNO";
-            this.colSenpouHacchuuNO.Width = 150;
-            // 
-            // colUriageTanka
-            // 
-            this.colUriageTanka.DataPropertyName = "UriageTanka";
-            this.colUriageTanka.HeaderText = "受注単価";
-            this.colUriageTanka.Name = "colUriageTanka";
-            this.colUriageTanka.ReadOnly = true;
-            // 
-            // colTanka
-            // 
-            this.colTanka.DataPropertyName = "Tanka";
-            this.colTanka.HeaderText = "発注単価";
-            this.colTanka.Name = "colTanka";
-            this.colTanka.ReadOnly = true;
-            // 
-            // colJuchuuMeisaiTekiyou
-            // 
-            this.colJuchuuMeisaiTekiyou.DataPropertyName = "JuchuuMeisaiTekiyou";
-            this.colJuchuuMeisaiTekiyou.HeaderText = "明細摘要";
-            this.colJuchuuMeisaiTekiyou.Name = "colJuchuuMeisaiTekiyou";
-            // 
-            // colJANCD
-            // 
-            this.colJANCD.DataPropertyName = "JANCD";
-            this.colJANCD.HeaderText = "JANCD";
-            this.colJANCD.Name = "colJANCD";
-            this.colJANCD.ReadOnly = true;
-            // 
-            // colSiiresakiCD
-            // 
-            this.colSiiresakiCD.DataPropertyName = "SiiresakiCD";
-            this.colSiiresakiCD.HeaderText = "仕入先";
-            this.colSiiresakiCD.Name = "colSiiresakiCD";
-            // 
-            // colSiiresakiName
-            // 
-            this.colSiiresakiName.DataPropertyName = "SiiresakiName";
-            this.colSiiresakiName.HeaderText = "仕入先名";
-            this.colSiiresakiName.Name = "colSiiresakiName";
-            this.colSiiresakiName.ReadOnly = true;
-            // 
-            // colSiiresakiDetail
-            // 
-            this.colSiiresakiDetail.DataPropertyName = "SiiresakiDetail";
-            this.colSiiresakiDetail.HeaderText = "仕入先詳細";
-            this.colSiiresakiDetail.Name = "colSiiresakiDetail";
-            this.colSiiresakiDetail.ReadOnly = true;
-            this.colSiiresakiDetail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colSiiresakiDetail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colSiiresakiDetail.Text = "詳細";
-            this.colSiiresakiDetail.UseColumnTextForButtonValue = true;
-            // 
-            // colexpectedDate
-            // 
-            this.colexpectedDate.DataPropertyName = "ExpectedDate";
-            this.colexpectedDate.HeaderText = "着荷予定日";
-            this.colexpectedDate.Name = "colexpectedDate";
-            // 
-            // colSoukoCD
-            // 
-            this.colSoukoCD.DataPropertyName = "SoukoCD";
-            this.colSoukoCD.HeaderText = "倉庫";
-            this.colSoukoCD.Name = "colSoukoCD";
-            // 
-            // colSoukoName
-            // 
-            this.colSoukoName.DataPropertyName = "SoukoName";
-            this.colSoukoName.HeaderText = "倉庫名";
-            this.colSoukoName.Name = "colSoukoName";
-            this.colSoukoName.ReadOnly = true;
-            // 
-            // colSiiresakiRyakuName
-            // 
-            this.colSiiresakiRyakuName.DataPropertyName = "SiiresakiRyakuName";
-            this.colSiiresakiRyakuName.HeaderText = "SiiresakiRyakuName";
-            this.colSiiresakiRyakuName.Name = "colSiiresakiRyakuName";
-            this.colSiiresakiRyakuName.Visible = false;
-            // 
-            // colSiiresakiYuubinNO1
-            // 
-            this.colSiiresakiYuubinNO1.DataPropertyName = "SiiresakiYuubinNO1";
-            this.colSiiresakiYuubinNO1.HeaderText = "SiiresakiYuubinNO1";
-            this.colSiiresakiYuubinNO1.Name = "colSiiresakiYuubinNO1";
-            this.colSiiresakiYuubinNO1.Visible = false;
-            // 
-            // colSiiresakiYuubinNO2
-            // 
-            this.colSiiresakiYuubinNO2.DataPropertyName = "SiiresakiYuubinNO2";
-            this.colSiiresakiYuubinNO2.HeaderText = "SiiresakiYuubinNO2";
-            this.colSiiresakiYuubinNO2.Name = "colSiiresakiYuubinNO2";
-            this.colSiiresakiYuubinNO2.Visible = false;
-            // 
-            // colSiiresakiJuusho1
-            // 
-            this.colSiiresakiJuusho1.DataPropertyName = "SiiresakiJuusho1";
-            this.colSiiresakiJuusho1.HeaderText = "SiiresakiJuusho1";
-            this.colSiiresakiJuusho1.Name = "colSiiresakiJuusho1";
-            this.colSiiresakiJuusho1.Visible = false;
-            // 
-            // colSiiresakiJuusho2
-            // 
-            this.colSiiresakiJuusho2.DataPropertyName = "SiiresakiJuusho2";
-            this.colSiiresakiJuusho2.HeaderText = "SiiresakiJuusho2";
-            this.colSiiresakiJuusho2.Name = "colSiiresakiJuusho2";
-            this.colSiiresakiJuusho2.Visible = false;
-            // 
-            // colSiiresakiTelNO11
-            // 
-            this.colSiiresakiTelNO11.DataPropertyName = "SiiresakiTelNO11";
-            this.colSiiresakiTelNO11.HeaderText = "SiiresakiTelNO11";
-            this.colSiiresakiTelNO11.Name = "colSiiresakiTelNO11";
-            this.colSiiresakiTelNO11.Visible = false;
-            // 
-            // colSiiresakiTelNO12
-            // 
-            this.colSiiresakiTelNO12.DataPropertyName = "SiiresakiTelNO12";
-            this.colSiiresakiTelNO12.HeaderText = "SiiresakiTelNO12";
-            this.colSiiresakiTelNO12.Name = "colSiiresakiTelNO12";
-            this.colSiiresakiTelNO12.Visible = false;
-            // 
-            // colSiiresakiTelNO13
-            // 
-            this.colSiiresakiTelNO13.DataPropertyName = "SiiresakiTelNO13";
-            this.colSiiresakiTelNO13.HeaderText = "SiiresakiTelNO13";
-            this.colSiiresakiTelNO13.Name = "colSiiresakiTelNO13";
-            this.colSiiresakiTelNO13.Visible = false;
-            // 
-            // colSiiresakiTelNO21
-            // 
-            this.colSiiresakiTelNO21.DataPropertyName = "SiiresakiTelNO21";
-            this.colSiiresakiTelNO21.HeaderText = "SiiresakiTelNO21";
-            this.colSiiresakiTelNO21.Name = "colSiiresakiTelNO21";
-            this.colSiiresakiTelNO21.Visible = false;
-            // 
-            // colSiiresakiTelNO22
-            // 
-            this.colSiiresakiTelNO22.DataPropertyName = "SiiresakiTelNO22";
-            this.colSiiresakiTelNO22.HeaderText = "SiiresakiTelNO22";
-            this.colSiiresakiTelNO22.Name = "colSiiresakiTelNO22";
-            this.colSiiresakiTelNO22.Visible = false;
-            // 
-            // colSiiresakiTelNO23
-            // 
-            this.colSiiresakiTelNO23.DataPropertyName = "SiiresakiTelNO23";
-            this.colSiiresakiTelNO23.HeaderText = "SiiresakiTelNO23";
-            this.colSiiresakiTelNO23.Name = "colSiiresakiTelNO23";
-            this.colSiiresakiTelNO23.Visible = false;
-            // 
-            // colHacchuuNO
-            // 
-            this.colHacchuuNO.DataPropertyName = "HacchuuNO";
-            this.colHacchuuNO.HeaderText = "HacchuuNO";
-            this.colHacchuuNO.Name = "colHacchuuNO";
-            this.colHacchuuNO.Visible = false;
-            // 
-            // colHacchuuGyouNO
-            // 
-            this.colHacchuuGyouNO.DataPropertyName = "HacchuuGyouNO";
-            this.colHacchuuGyouNO.HeaderText = "HacchuuGyouNO";
-            this.colHacchuuGyouNO.Name = "colHacchuuGyouNO";
-            this.colHacchuuGyouNO.Visible = false;
-            // 
-            // colJuchuuNO
-            // 
-            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
-            this.colJuchuuNO.HeaderText = "JuchuuNO";
-            this.colJuchuuNO.Name = "colJuchuuNO";
-            this.colJuchuuNO.Visible = false;
-            // 
-            // colJuchuuGyouNO
-            // 
-            this.colJuchuuGyouNO.DataPropertyName = "JuchuuGyouNO";
-            this.colJuchuuGyouNO.HeaderText = "JuchuuGyouNO";
-            this.colJuchuuGyouNO.Name = "colJuchuuGyouNO";
-            this.colJuchuuGyouNO.Visible = false;
             // 
             // txtBrandCD
             // 
@@ -1333,6 +1098,257 @@
             this.txtCopy.TabIndex = 2;
             this.txtCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopy_KeyDown);
+            // 
+            // colShouhinCD
+            // 
+            this.colShouhinCD.DataPropertyName = "ShouhinCD";
+            this.colShouhinCD.HeaderText = "商品";
+            this.colShouhinCD.Name = "colShouhinCD";
+            this.colShouhinCD.ReadOnly = true;
+            // 
+            // colShouhinName
+            // 
+            this.colShouhinName.DataPropertyName = "ShouhinName";
+            this.colShouhinName.HeaderText = "商品名";
+            this.colShouhinName.Name = "colShouhinName";
+            this.colShouhinName.ReadOnly = true;
+            // 
+            // colColorRyakuName
+            // 
+            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
+            this.colColorRyakuName.HeaderText = "カラー略名";
+            this.colColorRyakuName.Name = "colColorRyakuName";
+            this.colColorRyakuName.ReadOnly = true;
+            // 
+            // colColorNO
+            // 
+            this.colColorNO.DataPropertyName = "ColorNO";
+            this.colColorNO.HeaderText = "カラー";
+            this.colColorNO.Name = "colColorNO";
+            this.colColorNO.ReadOnly = true;
+            // 
+            // colSizeNO
+            // 
+            this.colSizeNO.DataPropertyName = "SizeNO";
+            this.colSizeNO.HeaderText = "サイズ";
+            this.colSizeNO.Name = "colSizeNO";
+            this.colSizeNO.ReadOnly = true;
+            // 
+            // colFree
+            // 
+            this.colFree.DataPropertyName = "Free";
+            this.colFree.HeaderText = "Free";
+            this.colFree.Name = "colFree";
+            this.colFree.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colFree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colGenZaikoSuu
+            // 
+            this.colGenZaikoSuu.DataPropertyName = "GenZaikoSuu";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colGenZaikoSuu.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colGenZaikoSuu.HeaderText = "現在庫数";
+            this.colGenZaikoSuu.Name = "colGenZaikoSuu";
+            this.colGenZaikoSuu.ReadOnly = true;
+            // 
+            // colJuchuuSuu
+            // 
+            this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colJuchuuSuu.HeaderText = "数量";
+            this.colJuchuuSuu.Name = "colJuchuuSuu";
+            // 
+            // colSenpouHacchuuNO
+            // 
+            this.colSenpouHacchuuNO.DataPropertyName = "DJMSenpouHacchuuNO";
+            this.colSenpouHacchuuNO.HeaderText = "先方発注番号";
+            this.colSenpouHacchuuNO.MinimumWidth = 150;
+            this.colSenpouHacchuuNO.Name = "colSenpouHacchuuNO";
+            this.colSenpouHacchuuNO.Width = 150;
+            // 
+            // colUriageTanka
+            // 
+            this.colUriageTanka.DataPropertyName = "UriageTanka";
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.colUriageTanka.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colUriageTanka.HeaderText = "受注単価";
+            this.colUriageTanka.Name = "colUriageTanka";
+            this.colUriageTanka.ReadOnly = true;
+            // 
+            // colTanka
+            // 
+            this.colTanka.DataPropertyName = "Tanka";
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.colTanka.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colTanka.HeaderText = "発注単価";
+            this.colTanka.Name = "colTanka";
+            this.colTanka.ReadOnly = true;
+            // 
+            // colJuchuuMeisaiTekiyou
+            // 
+            this.colJuchuuMeisaiTekiyou.DataPropertyName = "JuchuuMeisaiTekiyou";
+            this.colJuchuuMeisaiTekiyou.HeaderText = "明細摘要";
+            this.colJuchuuMeisaiTekiyou.Name = "colJuchuuMeisaiTekiyou";
+            // 
+            // colJANCD
+            // 
+            this.colJANCD.DataPropertyName = "JANCD";
+            this.colJANCD.HeaderText = "JANCD";
+            this.colJANCD.Name = "colJANCD";
+            this.colJANCD.ReadOnly = true;
+            // 
+            // colSiiresakiCD
+            // 
+            this.colSiiresakiCD.DataPropertyName = "SiiresakiCD";
+            this.colSiiresakiCD.HeaderText = "仕入先";
+            this.colSiiresakiCD.Name = "colSiiresakiCD";
+            // 
+            // colSiiresakiName
+            // 
+            this.colSiiresakiName.DataPropertyName = "SiiresakiName";
+            this.colSiiresakiName.HeaderText = "仕入先名";
+            this.colSiiresakiName.Name = "colSiiresakiName";
+            this.colSiiresakiName.ReadOnly = true;
+            // 
+            // colSiiresakiDetail
+            // 
+            this.colSiiresakiDetail.DataPropertyName = "SiiresakiDetail";
+            this.colSiiresakiDetail.HeaderText = "仕入先詳細";
+            this.colSiiresakiDetail.Name = "colSiiresakiDetail";
+            this.colSiiresakiDetail.ReadOnly = true;
+            this.colSiiresakiDetail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colSiiresakiDetail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colSiiresakiDetail.Text = "詳細";
+            this.colSiiresakiDetail.UseColumnTextForButtonValue = true;
+            // 
+            // colexpectedDate
+            // 
+            this.colexpectedDate.DataPropertyName = "ExpectedDate";
+            this.colexpectedDate.HeaderText = "着荷予定日";
+            this.colexpectedDate.Name = "colexpectedDate";
+            // 
+            // colSoukoCD
+            // 
+            this.colSoukoCD.DataPropertyName = "SoukoCD";
+            this.colSoukoCD.HeaderText = "倉庫";
+            this.colSoukoCD.Name = "colSoukoCD";
+            // 
+            // colSoukoName
+            // 
+            this.colSoukoName.DataPropertyName = "SoukoName";
+            this.colSoukoName.HeaderText = "倉庫名";
+            this.colSoukoName.Name = "colSoukoName";
+            this.colSoukoName.ReadOnly = true;
+            // 
+            // colSiiresakiRyakuName
+            // 
+            this.colSiiresakiRyakuName.DataPropertyName = "SiiresakiRyakuName";
+            this.colSiiresakiRyakuName.HeaderText = "SiiresakiRyakuName";
+            this.colSiiresakiRyakuName.Name = "colSiiresakiRyakuName";
+            this.colSiiresakiRyakuName.Visible = false;
+            // 
+            // colSiiresakiYuubinNO1
+            // 
+            this.colSiiresakiYuubinNO1.DataPropertyName = "SiiresakiYuubinNO1";
+            this.colSiiresakiYuubinNO1.HeaderText = "SiiresakiYuubinNO1";
+            this.colSiiresakiYuubinNO1.Name = "colSiiresakiYuubinNO1";
+            this.colSiiresakiYuubinNO1.Visible = false;
+            // 
+            // colSiiresakiYuubinNO2
+            // 
+            this.colSiiresakiYuubinNO2.DataPropertyName = "SiiresakiYuubinNO2";
+            this.colSiiresakiYuubinNO2.HeaderText = "SiiresakiYuubinNO2";
+            this.colSiiresakiYuubinNO2.Name = "colSiiresakiYuubinNO2";
+            this.colSiiresakiYuubinNO2.Visible = false;
+            // 
+            // colSiiresakiJuusho1
+            // 
+            this.colSiiresakiJuusho1.DataPropertyName = "SiiresakiJuusho1";
+            this.colSiiresakiJuusho1.HeaderText = "SiiresakiJuusho1";
+            this.colSiiresakiJuusho1.Name = "colSiiresakiJuusho1";
+            this.colSiiresakiJuusho1.Visible = false;
+            // 
+            // colSiiresakiJuusho2
+            // 
+            this.colSiiresakiJuusho2.DataPropertyName = "SiiresakiJuusho2";
+            this.colSiiresakiJuusho2.HeaderText = "SiiresakiJuusho2";
+            this.colSiiresakiJuusho2.Name = "colSiiresakiJuusho2";
+            this.colSiiresakiJuusho2.Visible = false;
+            // 
+            // colSiiresakiTelNO11
+            // 
+            this.colSiiresakiTelNO11.DataPropertyName = "SiiresakiTelNO11";
+            this.colSiiresakiTelNO11.HeaderText = "SiiresakiTelNO11";
+            this.colSiiresakiTelNO11.Name = "colSiiresakiTelNO11";
+            this.colSiiresakiTelNO11.Visible = false;
+            // 
+            // colSiiresakiTelNO12
+            // 
+            this.colSiiresakiTelNO12.DataPropertyName = "SiiresakiTelNO12";
+            this.colSiiresakiTelNO12.HeaderText = "SiiresakiTelNO12";
+            this.colSiiresakiTelNO12.Name = "colSiiresakiTelNO12";
+            this.colSiiresakiTelNO12.Visible = false;
+            // 
+            // colSiiresakiTelNO13
+            // 
+            this.colSiiresakiTelNO13.DataPropertyName = "SiiresakiTelNO13";
+            this.colSiiresakiTelNO13.HeaderText = "SiiresakiTelNO13";
+            this.colSiiresakiTelNO13.Name = "colSiiresakiTelNO13";
+            this.colSiiresakiTelNO13.Visible = false;
+            // 
+            // colSiiresakiTelNO21
+            // 
+            this.colSiiresakiTelNO21.DataPropertyName = "SiiresakiTelNO21";
+            this.colSiiresakiTelNO21.HeaderText = "SiiresakiTelNO21";
+            this.colSiiresakiTelNO21.Name = "colSiiresakiTelNO21";
+            this.colSiiresakiTelNO21.Visible = false;
+            // 
+            // colSiiresakiTelNO22
+            // 
+            this.colSiiresakiTelNO22.DataPropertyName = "SiiresakiTelNO22";
+            this.colSiiresakiTelNO22.HeaderText = "SiiresakiTelNO22";
+            this.colSiiresakiTelNO22.Name = "colSiiresakiTelNO22";
+            this.colSiiresakiTelNO22.Visible = false;
+            // 
+            // colSiiresakiTelNO23
+            // 
+            this.colSiiresakiTelNO23.DataPropertyName = "SiiresakiTelNO23";
+            this.colSiiresakiTelNO23.HeaderText = "SiiresakiTelNO23";
+            this.colSiiresakiTelNO23.Name = "colSiiresakiTelNO23";
+            this.colSiiresakiTelNO23.Visible = false;
+            // 
+            // colHacchuuNO
+            // 
+            this.colHacchuuNO.DataPropertyName = "HacchuuNO";
+            this.colHacchuuNO.HeaderText = "HacchuuNO";
+            this.colHacchuuNO.Name = "colHacchuuNO";
+            this.colHacchuuNO.Visible = false;
+            // 
+            // colHacchuuGyouNO
+            // 
+            this.colHacchuuGyouNO.DataPropertyName = "HacchuuGyouNO";
+            this.colHacchuuGyouNO.HeaderText = "HacchuuGyouNO";
+            this.colHacchuuGyouNO.Name = "colHacchuuGyouNO";
+            this.colHacchuuGyouNO.Visible = false;
+            // 
+            // colJuchuuNO
+            // 
+            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
+            this.colJuchuuNO.HeaderText = "JuchuuNO";
+            this.colJuchuuNO.Name = "colJuchuuNO";
+            this.colJuchuuNO.Visible = false;
+            // 
+            // colJuchuuGyouNO
+            // 
+            this.colJuchuuGyouNO.DataPropertyName = "JuchuuGyouNO";
+            this.colJuchuuGyouNO.HeaderText = "JuchuuGyouNO";
+            this.colJuchuuGyouNO.Name = "colJuchuuGyouNO";
+            this.colJuchuuGyouNO.Visible = false;
             // 
             // JuchuuNyuuryoku
             // 

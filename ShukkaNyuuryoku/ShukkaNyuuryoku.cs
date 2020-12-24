@@ -71,7 +71,6 @@ namespace ShukkaNyuuryoku {
             ChangeMode(Mode.New);
 
             txtShukkaNo.ChangeDate = txtShukkaNo;
-
         }
         public override void FunctionProcess(string tagID)
         {
@@ -628,6 +627,9 @@ namespace ShukkaNyuuryoku {
             obj.Name = txtName.Text;
             obj.Juusho = txtJuusho.Text;
             obj.ChangeDate = baseEntity.LoginDate;
+            obj.OperatorCD = OperatorCD;
+            obj.ProgramID = ProgramID;
+            obj.PC = PCID;
 
             DataTable dt = sBL.ShukkaNyuuryoku_Display(obj);
 

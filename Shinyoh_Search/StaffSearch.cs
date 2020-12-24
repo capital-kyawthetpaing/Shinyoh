@@ -79,7 +79,7 @@ namespace Shinyoh_Search
                     //dt.Columns.Remove("CurrentDay");
                 }
             }
-            dt.Columns.Remove("CurrentDay");
+           // dt.Columns.Remove("CurrentDay");
             gvStaff.DataSource = dt;
         }
         
