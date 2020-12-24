@@ -34,6 +34,7 @@ namespace ShukkaNyuuryoku {
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
+            lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             //Get Data from ShukkaNyuuroku form
             Access_DB_Object(Access_Tokuisaki_obj);
         }
@@ -55,7 +56,7 @@ namespace ShukkaNyuuryoku {
         private void Access_DB_Object(TokuisakiEntity obj)
         {
             txtTokuisakiCD.Text = obj.TokuisakiCD;
-            lblTokuisaki_Name.Text = obj.TokuisakiRyakuName;
+            lblTokuisakiName.Text = obj.TokuisakiRyakuName;
             txtShort_Name.Text = obj.TokuisakiRyakuName;
             txtLong_Name.Text = obj.TokuisakiName;
             txtYubin1.Text = obj.YuubinNO1;

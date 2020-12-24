@@ -34,6 +34,7 @@ namespace ShukkaNyuuryoku {
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
+            lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             //Get Data from JuchuuNyuuroku form
             Access_DB_Object(Access_Kouriten_obj);
         }
@@ -56,7 +57,7 @@ namespace ShukkaNyuuryoku {
         private void Access_DB_Object(KouritenEntity obj)
         {
             txtKouritenCD.Text = obj.KouritenCD;
-            lblKouriten_Name.Text = obj.KouritenRyakuName;
+            lblKouritenName.Text = obj.KouritenRyakuName;
             txtLong_Name.Text = obj.KouritenName;
             txtShort_Name.Text = obj.KouritenRyakuName;
             txtYubin1.Text = obj.YuubinNO1;

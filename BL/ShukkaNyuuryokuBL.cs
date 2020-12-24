@@ -33,17 +33,21 @@ namespace BL {
         public DataTable ShukkaNyuuryoku_Select_Check(string shukkaNo, string shukkaDate, string errtype)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
+            var parameters = new SqlParameter[6];
+            ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
             parameters[0] = new SqlParameter("@ShukkaNo", SqlDbType.VarChar) { Value = shukkaNo };
             parameters[1] = new SqlParameter("@ShukkaDate", SqlDbType.VarChar) { Value = shukkaDate };
-            parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = errtype };
+            parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value =  errtype};
+            parameters[3] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = obj.OperatorCD};
+            parameters[4] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = obj.ProgramID };
+            parameters[5] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC};
             DataTable dt = ckmdl.SelectDatatable("ShukkaNyuuryoku_Select_Check", GetConnectionString(), parameters);
             return dt;
         }
         public DataTable ShukkaNyuuryoku_Display(ShukkaNyuuryokuEntity obj)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[15];
+            var parameters = new SqlParameter[18];
             parameters[0] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = obj.TokuisakiCD };
             parameters[1] = new SqlParameter("@ShukkaSiziNO", SqlDbType.VarChar) { Value = obj.ShukkaSiziNO1 };
             parameters[2] = new SqlParameter("@ShukkaYoteiDate1", SqlDbType.VarChar) { Value = obj.ShukkaDate1 };
@@ -59,6 +63,9 @@ namespace BL {
             parameters[12] = new SqlParameter("@Name", SqlDbType.VarChar) { Value = obj.Name };
             parameters[13] = new SqlParameter("@Juusho", SqlDbType.VarChar) { Value = obj.Juusho };
             parameters[14] = new SqlParameter("@Condition", SqlDbType.VarChar) { Value = obj.Condition };
+            parameters[15] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = obj.OperatorCD };
+            parameters[16] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = obj.ProgramID };
+            parameters[17] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
             DataTable dt = ckmdl.SelectDatatable("ShukkaNyuuryoku_Display", GetConnectionString(), parameters);
             return dt;
         }

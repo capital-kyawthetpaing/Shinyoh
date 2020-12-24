@@ -27,7 +27,6 @@
         private void InitializeComponent()
         {
             this.PanelTitle = new System.Windows.Forms.Panel();
-            this.lblTokuisaki_Name = new Shinyoh_Controls.SLabel();
             this.txtTokuisakiCD = new Shinyoh_Controls.STextBox();
             this.lblCD = new Shinyoh_Controls.SLabel();
             this.Panel_Detail = new System.Windows.Forms.Panel();
@@ -55,6 +54,7 @@
             this.lblLong = new Shinyoh_Controls.SLabel();
             this.txtShort_Name = new Shinyoh_Controls.STextBox();
             this.lblShort = new Shinyoh_Controls.SLabel();
+            this.lblTokuisakiName = new Shinyoh_Controls.SLabel();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
             this.SuspendLayout();
@@ -62,26 +62,13 @@
             // PanelTitle
             // 
             this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.PanelTitle.Controls.Add(this.lblTokuisaki_Name);
+            this.PanelTitle.Controls.Add(this.lblTokuisakiName);
             this.PanelTitle.Controls.Add(this.txtTokuisakiCD);
             this.PanelTitle.Controls.Add(this.lblCD);
             this.PanelTitle.Location = new System.Drawing.Point(4, 2);
             this.PanelTitle.Name = "PanelTitle";
             this.PanelTitle.Size = new System.Drawing.Size(1049, 81);
             this.PanelTitle.TabIndex = 2;
-            // 
-            // lblTokuisaki_Name
-            // 
-            this.lblTokuisaki_Name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTokuisaki_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTokuisaki_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lblTokuisaki_Name.Location = new System.Drawing.Point(242, 49);
-            this.lblTokuisaki_Name.MinimumSize = new System.Drawing.Size(100, 19);
-            this.lblTokuisaki_Name.Name = "lblTokuisaki_Name";
-            this.lblTokuisaki_Name.Size = new System.Drawing.Size(200, 19);
-            this.lblTokuisaki_Name.TabIndex = 110;
-            this.lblTokuisaki_Name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtTokuisakiCD
             // 
@@ -90,6 +77,7 @@
             this.txtTokuisakiCD.DecimalPlace = 0;
             this.txtTokuisakiCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtTokuisakiCD.DepandOnMode = true;
+            this.txtTokuisakiCD.Enabled = false;
             this.txtTokuisakiCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiCD.IntegerPart = 0;
             this.txtTokuisakiCD.IsDatatableOccurs = null;
@@ -102,6 +90,7 @@
             this.txtTokuisakiCD.Name = "txtTokuisakiCD";
             this.txtTokuisakiCD.NextControl = null;
             this.txtTokuisakiCD.NextControlName = "txtShort_Name";
+            this.txtTokuisakiCD.ReadOnly = true;
             this.txtTokuisakiCD.SearchType = Entity.SearchType.ScType.None;
             this.txtTokuisakiCD.Size = new System.Drawing.Size(100, 19);
             this.txtTokuisakiCD.TabIndex = 1;
@@ -591,6 +580,18 @@
             this.lblShort.Text = "得意先略名";
             this.lblShort.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblTokuisakiName
+            // 
+            this.lblTokuisakiName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTokuisakiName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTokuisakiName.Location = new System.Drawing.Point(242, 49);
+            this.lblTokuisakiName.Name = "lblTokuisakiName";
+            this.lblTokuisakiName.Size = new System.Drawing.Size(250, 19);
+            this.lblTokuisakiName.TabIndex = 110;
+            this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // TokuisakiDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -613,7 +614,6 @@
         #endregion
 
         private System.Windows.Forms.Panel PanelTitle;
-        private Shinyoh_Controls.SLabel lblTokuisaki_Name;
         private Shinyoh_Controls.STextBox txtTokuisakiCD;
         private Shinyoh_Controls.SLabel lblCD;
         private System.Windows.Forms.Panel Panel_Detail;
@@ -641,5 +641,6 @@
         private Shinyoh_Controls.SLabel lblLong;
         private Shinyoh_Controls.STextBox txtShort_Name;
         private Shinyoh_Controls.SLabel lblShort;
+        private Shinyoh_Controls.SLabel lblTokuisakiName;
     }
 }

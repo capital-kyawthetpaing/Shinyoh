@@ -22,9 +22,17 @@ namespace BL
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = ShippingNO };
-            //parameters[1] = new SqlParameter("@ShippingDate", SqlDbType.Date) { Value = Shippingdate };
             parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
             DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_ErrorCheck_Select", GetConnectionString(), parameters);
+            return dt;
+        }
+        public DataTable JuchuuNo_Check(string JuchuuNO, string error_Type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@JuchuuNo", SqlDbType.VarChar) { Value = JuchuuNO };
+            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
+            DataTable dt = ckmdl.SelectDatatable("JuchuuNo_Check", GetConnectionString(), parameters);
             return dt;
         }
         public DataTable ShukkasiziNyuuryoku_Data_Select(ShukkaSiziNyuuryokuEntity se, int type)

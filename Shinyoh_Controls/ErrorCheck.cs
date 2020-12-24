@@ -365,6 +365,11 @@ namespace Shinyoh_Controls
                         rDt = skszbl.ShukkasiziNyuuryoku_ErrorCheck(sTextBox.ctrlE133_1.Text, "E133");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "JuchuuNo":
+                        ShukkasiziNyuuryokuBL skbl = new ShukkasiziNyuuryokuBL();
+                        rDt = skbl.JuchuuNo_Check(sTextBox.ctrlE133_1.Text, "E133");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                     case "ShukkaNyuuryoku":
                         ShukkaNyuuryokuBL sbl = new ShukkaNyuuryokuBL();
                         rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
