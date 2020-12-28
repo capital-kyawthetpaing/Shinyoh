@@ -46,9 +46,9 @@ namespace ShukkaSiziNyuuryoku
             dtClear = CreateTable_Details();
             dgvShukkasizi.CellEndEdit += DgvShukkasizi_CellEndEdit;
             dgvShukkasizi.CellContentClick += DgvShukkasizi_CellContentClick;
-
             dgvShukkasizi.SetGridDesign();
-            dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName");
+            dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkasizisou,colJuchuuNo,SoukoName");
+           
         }
         private void DgvShukkasizi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -677,6 +677,13 @@ namespace ShukkaSiziNyuuryoku
                 }
             }
         }
+        private void txtJuchuuNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                JuchuuNo_ErrorCheck();
+            }
+        }
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -726,13 +733,25 @@ namespace ShukkaSiziNyuuryoku
             //伝票日付
             txtSlipDate.E102Check(true);
             txtSlipDate.E103Check(true);
-            //受注番号(searchshi)
-            txtJuchuuNo.E133Check(true, "JuchuuNo", txtJuchuuNo, null, null);
-
+            //受注番号
+            JuchuuNo_ErrorCheck();
             //false case
-            sbShippingNO.E133Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
             sbShippingNO.E115Check(false, "ShukkaSiziNyuuryoku", sbShippingNO);
             sbShippingNO.E160Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null);
+        }
+        private void JuchuuNo_ErrorCheck()
+        {
+            sksz_bl = new ShukkasiziNyuuryokuBL();
+            DataTable dt = new DataTable();
+            if (!string.IsNullOrWhiteSpace(txtJuchuuNo.Text))
+            {
+                dt = sksz_bl.JuchuuNo_Check(txtJuchuuNo.Text, "E133");
+                if (dt.Rows[0]["MessageID"].ToString().Equals("E133"))
+                {
+                    bbl.ShowMessage("E133");
+                    txtJuchuuNo.Focus();
+                }
+            }
         }
         private bool ErrorCheck_Select(DataTable dt)
         {
@@ -799,6 +818,26 @@ namespace ShukkaSiziNyuuryoku
             txtPhone3.Clear();
             txtName.Clear();
         }
+
+        private void dgvShukkasizi_Paint(object sender, PaintEventArgs e)
+        {
+            var col = dgvShukkasizi.Columns;
+            for (int i = 5; i < col.Count; i++)
+            {
+                while (i <= 10)
+                {
+                    col[i].HeaderCell.Style.Alignment= DataGridViewContentAlignment.MiddleRight;
+                    //dgvShukkasizi.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    ++i;
+                }
+                if(i==11)
+                {
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    return;
+                }
+            }
+        }
+
         //Mode_Procedure
         private void FunctionProcedure(int tagID)
         {
@@ -896,7 +935,7 @@ namespace ShukkaSiziNyuuryoku
                 case 4:
                     sbShippingNO.Focus();
                     sbShippingNO.E102Check(true);
-                    sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
+                    //sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
                     sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
                     sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null);
                     break;

@@ -142,7 +142,7 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(30, 12);
+            this.sLabel3.Location = new System.Drawing.Point(30, 9);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 2;
@@ -307,7 +307,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone3.MoveNext = true;
             this.txtPhone3.Name = "txtPhone3";
             this.txtPhone3.NextControl = null;
-            this.txtPhone3.NextControlName = "txtAddress";
+            this.txtPhone3.NextControlName = "txtName";
             this.txtPhone3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone3.Size = new System.Drawing.Size(70, 19);
             this.txtPhone3.TabIndex = 71;
@@ -555,7 +555,7 @@ namespace ShukkaSiziNyuuryoku
             this.rdoNO.MoveNext = true;
             this.rdoNO.Name = "rdoNO";
             this.rdoNO.NextControl = null;
-            this.rdoNO.NextControlName = null;
+            this.rdoNO.NextControlName = "txtPhone1";
             this.rdoNO.Size = new System.Drawing.Size(72, 19);
             this.rdoNO.TabIndex = 58;
             this.rdoNO.Text = "不要";
@@ -569,7 +569,7 @@ namespace ShukkaSiziNyuuryoku
             this.rdoNeed.MoveNext = true;
             this.rdoNeed.Name = "rdoNeed";
             this.rdoNeed.NextControl = null;
-            this.rdoNeed.NextControlName = null;
+            this.rdoNeed.NextControlName = "rdoNO";
             this.rdoNeed.Size = new System.Drawing.Size(72, 19);
             this.rdoNeed.TabIndex = 57;
             this.rdoNeed.TabStop = true;
@@ -611,6 +611,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlipDate.SearchType = Entity.SearchType.ScType.None;
             this.txtSlipDate.Size = new System.Drawing.Size(100, 19);
             this.txtSlipDate.TabIndex = 54;
+            this.txtSlipDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSlipDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // sLabel4
@@ -678,6 +679,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJuchuuNo.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNo.TabIndex = 47;
             this.txtJuchuuNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJuchuuNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNo_KeyDown);
             // 
             // slable1
             // 
@@ -700,6 +702,7 @@ namespace ShukkaSiziNyuuryoku
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -738,8 +741,9 @@ namespace ShukkaSiziNyuuryoku
             this.Column15});
             this.dgvShukkasizi.Location = new System.Drawing.Point(2, 276);
             this.dgvShukkasizi.Name = "dgvShukkasizi";
-            this.dgvShukkasizi.Size = new System.Drawing.Size(1475, 250);
+            this.dgvShukkasizi.Size = new System.Drawing.Size(1468, 250);
             this.dgvShukkasizi.TabIndex = 35;
+            this.dgvShukkasizi.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvShukkasizi_Paint);
             // 
             // colShouhinCD
             // 
@@ -820,7 +824,7 @@ namespace ShukkaSiziNyuuryoku
             this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle5;
             this.colArrivalTime.HeaderText = "今回出荷指示数";
             this.colArrivalTime.Name = "colArrivalTime";
-            this.colArrivalTime.Width = 115;
+            this.colArrivalTime.Width = 125;
             // 
             // colTanka
             // 
@@ -1074,7 +1078,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtName.MoveNext = true;
             this.txtName.Name = "txtName";
             this.txtName.NextControl = null;
-            this.txtName.NextControlName = "btnNameF8";
+            this.txtName.NextControlName = "btnDisplay";
             this.txtName.SearchType = Entity.SearchType.ScType.None;
             this.txtName.Size = new System.Drawing.Size(160, 19);
             this.txtName.TabIndex = 27;
@@ -1223,7 +1227,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlip_Description.MoveNext = true;
             this.txtSlip_Description.Name = "txtSlip_Description";
             this.txtSlip_Description.NextControl = null;
-            this.txtSlip_Description.NextControlName = "txtScheduledNo";
+            this.txtSlip_Description.NextControlName = "txtPhone1";
             this.txtSlip_Description.SearchType = Entity.SearchType.ScType.None;
             this.txtSlip_Description.Size = new System.Drawing.Size(400, 19);
             this.txtSlip_Description.TabIndex = 20;
@@ -1271,7 +1275,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbShippingNO.IsErrorOccurs = false;
             this.sbShippingNO.IsRequire = false;
             this.sbShippingNO.lblName = null;
-            this.sbShippingNO.Location = new System.Drawing.Point(129, 12);
+            this.sbShippingNO.Location = new System.Drawing.Point(129, 9);
             this.sbShippingNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.sbShippingNO.MoveNext = true;
             this.sbShippingNO.Name = "sbShippingNO";
