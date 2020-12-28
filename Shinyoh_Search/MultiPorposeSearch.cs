@@ -21,6 +21,8 @@ namespace Shinyoh_Search
         public MultiPorposeSearch()
         {
             InitializeComponent();
+            gvMultiporpose.SetGridDesign();
+            gvMultiporpose.SetReadOnlyColumn("*");
         }
 
         private void MultiPorposeSearch_Load(object sender, EventArgs e)

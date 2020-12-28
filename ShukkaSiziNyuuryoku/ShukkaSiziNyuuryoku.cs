@@ -48,6 +48,7 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.CellContentClick += DgvShukkasizi_CellContentClick;
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkasizisou,colJuchuuNo,SoukoName");
+           
         }
         private void DgvShukkasizi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -816,7 +817,26 @@ namespace ShukkaSiziNyuuryoku
             txtPhone2.Clear();
             txtPhone3.Clear();
             txtName.Clear();
-        }        
+        }
+
+        private void dgvShukkasizi_Paint(object sender, PaintEventArgs e)
+        {
+            var col = dgvShukkasizi.Columns;
+            for (int i = 5; i < col.Count; i++)
+            {
+                while (i <= 10)
+                {
+                    col[i].HeaderCell.Style.Alignment= DataGridViewContentAlignment.MiddleRight;
+                    //dgvShukkasizi.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    ++i;
+                }
+                if(i==11)
+                {
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    return;
+                }
+            }
+        }
 
         //Mode_Procedure
         private void FunctionProcedure(int tagID)

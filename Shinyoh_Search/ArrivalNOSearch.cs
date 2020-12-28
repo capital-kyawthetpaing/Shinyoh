@@ -19,6 +19,8 @@ namespace Shinyoh_Search
         public ArrivalNOSearch()
         {
             InitializeComponent();
+            gvArrivalNo.SetGridDesign();
+            gvArrivalNo.SetReadOnlyColumn("*");
         }
 
         private void ArrivalNOSearch_Load(object sender, EventArgs e)

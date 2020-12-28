@@ -181,7 +181,19 @@ namespace Shinyoh_Search
                     }
                     else
                     {
-                        ChangeDate.Focus();
+                        //comment 2020-12-28
+                        //ChangeDate.Focus();
+                        //SendKeys.Send("{ENTER}");
+                        //add 2020-12-28
+                        //CD and change date is not located(top,down) in form design
+                        if (this.NextControlName != ChangeDate.Name)
+                        {
+                            this.Focus();
+                        }
+                        else
+                        {
+                            ChangeDate.Focus();
+                        }
                         SendKeys.Send("{ENTER}");
                     }
                 }

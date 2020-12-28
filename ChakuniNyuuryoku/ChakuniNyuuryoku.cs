@@ -41,6 +41,8 @@ namespace ChakuniNyuuryoku
             soukoBL = new SoukoBL();
             dtClear = CreateTable();
             chkEntity = new ChakuniNyuuryoku_Entity();
+            gvChakuniNyuuryoku.SetGridDesign();
+            gvChakuniNyuuryoku.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colDate,colArrivalNo,colChakuniZumiSuu,colJanCD,colChakuniYoteiGyouNO,colHacchuuGyouNO");
         }
 
         private void ChakuniNyuuryoku_Load(object sender, EventArgs e)
@@ -272,11 +274,17 @@ namespace ChakuniNyuuryoku
             if (cboMode.SelectedValue.Equals("1"))
             {
                 mode = "New";
-                //ChakuniNyuuryoku_Entity cne = new ChakuniNyuuryoku_Entity();
-                //cne.OperatorCD = OperatorCD;
-                //cne.ProgramID = ProgramID;
-                //cne.PC = PCID;
                 DoInsert(obj.Item1, obj.Item2);
+            }
+            else if (cboMode.SelectedValue.Equals("2"))
+            {
+                 mode = "Update";
+                 DoUpdate(obj.Item1, obj.Item2);
+            }
+            else if (cboMode.SelectedValue.Equals("3"))
+            {
+                mode = "Delete";
+                
             }
         }
         public void Create_Datatable_Column(DataTable create_dt)
@@ -362,6 +370,11 @@ namespace ChakuniNyuuryoku
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
             bl.ChakuniNyuuryoku_Insert(str_main, str_detail);
+        }
+        private void DoUpdate(string str_main, string str_detail)
+        {
+            chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
+            bl.ChakuniNyuuryoku_Update(str_main, str_detail);
         }
         private ChakuniNyuuryoku_Entity GetEntity()
         {
@@ -675,6 +688,7 @@ namespace ChakuniNyuuryoku
                 }
             }
         }
+       
         private void gvChakuniNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
                 dtGridview();
