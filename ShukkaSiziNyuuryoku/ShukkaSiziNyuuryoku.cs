@@ -46,6 +46,7 @@ namespace ShukkaSiziNyuuryoku
             dtClear = CreateTable_Details();
             dgvShukkasizi.CellEndEdit += DgvShukkasizi_CellEndEdit;
             dgvShukkasizi.CellContentClick += DgvShukkasizi_CellContentClick;
+            dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkasizisou,colJuchuuNo,SoukoName");
         }
         private void DgvShukkasizi_CellContentClick(object sender, DataGridViewCellEventArgs e)
