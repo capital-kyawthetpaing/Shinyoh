@@ -272,50 +272,47 @@ namespace ChakuniNyuuryoku
             if (cboMode.SelectedValue.Equals("1"))
             {
                 mode = "New";
-                ChakuniNyuuryoku_Entity cne = new ChakuniNyuuryoku_Entity();
-                cne.OperatorCD = OperatorCD;
-                cne.ProgramID = ProgramID;
-                cne.PC = PCID;
-                DoInsert(obj.Item1, obj.Item2,cne);
+                //ChakuniNyuuryoku_Entity cne = new ChakuniNyuuryoku_Entity();
+                //cne.OperatorCD = OperatorCD;
+                //cne.ProgramID = ProgramID;
+                //cne.PC = PCID;
+                DoInsert(obj.Item1, obj.Item2);
             }
         }
         public void Create_Datatable_Column(DataTable create_dt)
         {
-            create_dt.Columns.Add("ChakuniNO");
-            create_dt.Columns.Add("ChakuniDate");
-            create_dt.Columns.Add("SiiresakiCD");
-            create_dt.Columns.Add("SiiresakiName");
-            create_dt.Columns.Add("SiiresakiRyakuName");
-            create_dt.Columns.Add("SiiresakiYuubinNO1");
-            create_dt.Columns.Add("SiiresakiYuubinNO2");
-            create_dt.Columns.Add("SiiresakiJuusho1");
-            create_dt.Columns.Add("SiiresakiJuusho2");
-            create_dt.Columns.Add("SiiresakiTelNO11");
-            create_dt.Columns.Add("SiiresakiTelNO12");
-            create_dt.Columns.Add("SiiresakiTelNO13");
-            create_dt.Columns.Add("SiiresakiTelNO21");
-            create_dt.Columns.Add("SiiresakiTelNO22");
-            create_dt.Columns.Add("SiiresakiTelNO23");
-            create_dt.Columns.Add("StaffCD");
-            create_dt.Columns.Add("SoukoCD");
-            create_dt.Columns.Add("ChakuniDenpyouTekiyou");
-            create_dt.Columns.Add("ChakuniYoteiNO");
-            create_dt.Columns.Add("ShouhinCD");
-            create_dt.Columns.Add("ShouhinName");
-            create_dt.Columns.Add("JANCD");
-            create_dt.Columns.Add("KanriNO");
-            create_dt.Columns.Add("BrandCD");
-            create_dt.Columns.Add("YearTerm");
-            create_dt.Columns.Add("SeasonSS");
-            create_dt.Columns.Add("SeasonFW");
-            create_dt.Columns.Add("ColorNO");
-            create_dt.Columns.Add("SizeNO");
-
-            create_dt.Columns.Add("Operator");
-            //create_dt.Columns.Add("UpdateOperator");
-            create_dt.Columns.Add("PC");
-            create_dt.Columns.Add("ProgramID");
-
+            create_dt.Columns.Add("ChakuniNO", typeof(string));
+            create_dt.Columns.Add("ChakuniDate", typeof(string));
+            create_dt.Columns.Add("SiiresakiCD", typeof(string));
+            create_dt.Columns.Add("SiiresakiName", typeof(string));
+            create_dt.Columns.Add("SiiresakiRyakuName", typeof(string));
+            create_dt.Columns.Add("SiiresakiYuubinNO1", typeof(string));
+            create_dt.Columns.Add("SiiresakiYuubinNO2", typeof(string));
+            create_dt.Columns.Add("SiiresakiJuusho1", typeof(string));
+            create_dt.Columns.Add("SiiresakiJuusho2", typeof(string));
+            create_dt.Columns.Add("SiiresakiTelNO11", typeof(string));
+            create_dt.Columns.Add("SiiresakiTelNO12", typeof(string));
+            create_dt.Columns.Add("SiiresakiTelNO13", typeof(string));
+            create_dt.Columns.Add("SiiresakiTelNO21", typeof(string));
+            create_dt.Columns.Add("SiiresakiTelNO22", typeof(string));
+            create_dt.Columns.Add("SiiresakiTelNO23", typeof(string));
+            create_dt.Columns.Add("StaffCD", typeof(string));
+            create_dt.Columns.Add("SoukoCD", typeof(string));
+            create_dt.Columns.Add("ChakuniDenpyouTekiyou", typeof(string));
+            create_dt.Columns.Add("ChakuniYoteiNO", typeof(string));
+            create_dt.Columns.Add("ShouhinCD", typeof(string));
+            create_dt.Columns.Add("ShouhinName", typeof(string));
+            create_dt.Columns.Add("JANCD", typeof(string));
+            create_dt.Columns.Add("KanriNO", typeof(string));
+            create_dt.Columns.Add("BrandCD", typeof(string));
+            create_dt.Columns.Add("YearTerm", typeof(string));
+            create_dt.Columns.Add("SeasonSS", typeof(string));
+            create_dt.Columns.Add("SeasonFW", typeof(string));
+            create_dt.Columns.Add("ColorNO", typeof(string));
+            create_dt.Columns.Add("SizeNO", typeof(string));
+            create_dt.Columns.Add("Operator", typeof(string));
+            create_dt.Columns.Add("PC", typeof(string));
+            create_dt.Columns.Add("ProgramID", typeof(string));
         }
         private (string, string) GetInsert()
         {
@@ -353,8 +350,6 @@ namespace ChakuniNyuuryoku
             dr["ColorNO"] = txtColor.Text;
             dr["SizeNO"] = txtSize.Text;
             dr["Operator"] = base_Entity.OperatorCD;
-            //dr["UpdateOperator"] = base_Entity.OperatorCD;
-            //dr["HistoryOperator"] = base_Entity.OperatorCD;
             dr["PC"] = base_Entity.PC;
             dr["ProgramID"] = base_Entity.ProgramID;
             dt.Rows.Add(dr);
@@ -363,10 +358,10 @@ namespace ChakuniNyuuryoku
 
             return (main_XML, detail_XML);
         }
-        private void DoInsert(string str_main, string str_detail,ChakuniNyuuryoku_Entity cne)
+        private void DoInsert(string str_main, string str_detail)
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
-            bl.ChakuniNyuuryoku_Insert(str_main, str_detail,cne);
+            bl.ChakuniNyuuryoku_Insert(str_main, str_detail);
         }
         private ChakuniNyuuryoku_Entity GetEntity()
         {
@@ -523,7 +518,7 @@ namespace ChakuniNyuuryoku
             dt.Columns.Add("ChakuniZumiSuu", typeof(string));
             dt.Columns.Add("ChakuniSuu", typeof(string));
             //dt.Columns.Add("chk", typeof(int));
-            dt.Columns.Add("d", typeof(string));
+            dt.Columns.Add("ChakuniMeisaiTekiyou", typeof(string));
             dt.Columns.Add("JanCD", typeof(string));
             dt.Columns.Add("ChakuniYoteiGyouNO", typeof(string));
             dt.Columns.Add("HacchuuGyouNO", typeof(string));
@@ -570,9 +565,7 @@ namespace ChakuniNyuuryoku
                         if (KBN.ToString().Equals("1"))
                         {
                             ChakuniNyuuryokuSelect(dt);
-                            gvChakuniNyuuryoku.Columns["colArrivalTime"].ReadOnly = true;
                         }
-
                     }
                 }
                 else
@@ -687,7 +680,7 @@ namespace ChakuniNyuuryoku
                 dtGridview();
                 if (!gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0"))
                 {
-                    if (gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniSuu"].ToString() &&   gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colDetails"].Value.ToString() == dtmain.Rows[e.RowIndex]["d"].ToString())
+                    if (gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniSuu"].ToString() &&   gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colDetails"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniMeisaiTekiyou"].ToString())
                     { 
                         return;
                     }

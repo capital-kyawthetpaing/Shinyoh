@@ -45,19 +45,18 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("D_ChakuniYotei_Display", GetConnectionString(), cne.Sqlprms);
             return dt;
         }
-        public DataTable ChakuniNyuuryoku_Insert(string xml_Main, string xml_detail, ChakuniNyuuryoku_Entity cne)
+        public string ChakuniNyuuryoku_Insert(string xml_Main, string xml_detail)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[7];
+            var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@XML_Main", SqlDbType.VarChar) { Value = xml_Main };
             parameters[1] = new SqlParameter("@XML_Main", SqlDbType.VarChar) { Value = xml_detail };
-            parameters[2] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cne.OperatorCD };
-            parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cne.ProgramID };
-            parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cne.PC };
-            parameters[5] = new SqlParameter("@OperateMode", SqlDbType.VarChar) { Value = cne.OperatorMode };
-            parameters[6] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = cne.KeyItem };
-            DataTable dt = ckmdl.SelectDatatable("ChakuniNyuuryoku_Insert", GetConnectionString(), cne.Sqlprms);
-            return dt;
+            //parameters[2] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cne.OperatorCD };
+            //parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cne.ProgramID };
+            //parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cne.PC };
+            //parameters[5] = new SqlParameter("@OperateMode", SqlDbType.VarChar) { Value = cne.OperatorMode };
+            //parameters[6] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = cne.KeyItem };
+            return ckmdl.InsertUpdateDeleteData("ChakuniNyuuryoku_Insert", GetConnectionString(), parameters);
         }
             public DataTable ArrivalNO_Search(ChakuniNyuuryoku_Entity ane)
         {
