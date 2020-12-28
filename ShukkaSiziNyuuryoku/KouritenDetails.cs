@@ -35,6 +35,8 @@ namespace ShukkaSiziNyuuryoku
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
             SendData(Access_Kouriten_obj);
+            txtKouritenCD.Enabled = false;
+            txtKouritenCD.BackColor = SystemColors.Control;
         }
         private void SendData(KouritenEntity obj)
         {
