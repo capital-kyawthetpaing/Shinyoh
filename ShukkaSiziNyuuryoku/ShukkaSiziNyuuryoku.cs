@@ -46,6 +46,8 @@ namespace ShukkaSiziNyuuryoku
             dtClear = CreateTable_Details();
             dgvShukkasizi.CellEndEdit += DgvShukkasizi_CellEndEdit;
             dgvShukkasizi.CellContentClick += DgvShukkasizi_CellContentClick;
+
+            dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName");
         }
         private void DgvShukkasizi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -258,11 +260,13 @@ namespace ShukkaSiziNyuuryoku
                     {
                         bbl.ShowMessage("E101");
                         dgvShukkasizi["SoukoName", row].Value = string.Empty;
+                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["SoukoCD"];
                     }
                     else
                     {
                         dgvShukkasizi["SoukoCD", row].Value = dt.Rows[0]["SoukoCD"].ToString();
                         dgvShukkasizi["SoukoName", row].Value = dt.Rows[0]["SoukoName"].ToString();
+                        dgvShukkasizi.MoveNextCell();
                     }
                 }
             }
