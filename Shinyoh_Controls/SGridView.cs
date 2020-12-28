@@ -14,11 +14,18 @@ namespace Shinyoh_Controls
         bool UseRow = true;
         bool EditCol = false;
 
+        public void SetGridDesign()
+        {
+            this.EnableHeadersVisualStyles = false;
+            this.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(191, 191, 191);
+            this.ColumnHeadersDefaultCellStyle.Font = new Font("MS Gothic", 9, FontStyle.Bold);
+            this.BackgroundColor = Color.FromArgb(242, 242, 242);
+            this.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(221, 235, 247);
+        }
         public void UseRowNo(bool val)
         {
             UseRow = RowHeadersVisible = val;
         }
-
         public void SetReadOnlyColumn(string colArr)
         {
             foreach (DataGridViewColumn col in Columns)
@@ -40,11 +47,10 @@ namespace Shinyoh_Controls
                 }
             }
         }
-
         private void SetReadOnly(DataGridViewColumn col)
         {
             col.ReadOnly = true;
-            col.DefaultCellStyle.BackColor = Color.FromArgb(217, 217, 217);
+            col.DefaultCellStyle.BackColor = Color.FromArgb(217, 217, 217);           
         }
         protected override void OnCellBeginEdit(DataGridViewCellCancelEventArgs e)
         {
@@ -126,7 +132,6 @@ namespace Shinyoh_Controls
             else
                 return base.ProcessCmdKey(ref msg, keyData);
         }
-
         public void MoveNextCell()
         {
             int icolumn = this.CurrentCell.ColumnIndex;
