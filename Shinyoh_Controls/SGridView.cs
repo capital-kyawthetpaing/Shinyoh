@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -18,6 +19,33 @@ namespace Shinyoh_Controls
             UseRow = RowHeadersVisible = val;
         }
 
+        public void SetReadOnlyColumn(string colArr)
+        {
+            foreach (DataGridViewColumn col in Columns)
+            {
+                if (colArr.Equals("*"))
+                {
+                    SetReadOnly(col);
+                }
+                else
+                {
+                    string[] arr = colArr.Split(',');
+                    ArrayList arrlst = new ArrayList();
+                    arrlst.AddRange(arr);
+
+                    if (arrlst.Contains(col.Name))
+                    {
+                        SetReadOnly(col);
+                    }                      
+                }
+            }
+        }
+
+        private void SetReadOnly(DataGridViewColumn col)
+        {
+            col.ReadOnly = true;
+            col.DefaultCellStyle.BackColor = Color.FromArgb(217, 217, 217);
+        }
         protected override void OnCellBeginEdit(DataGridViewCellCancelEventArgs e)
         {
             EditCol = true;
