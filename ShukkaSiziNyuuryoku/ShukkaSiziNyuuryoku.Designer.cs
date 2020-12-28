@@ -141,7 +141,7 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(30, 12);
+            this.sLabel3.Location = new System.Drawing.Point(30, 9);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 2;
@@ -610,6 +610,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlipDate.SearchType = Entity.SearchType.ScType.None;
             this.txtSlipDate.Size = new System.Drawing.Size(100, 19);
             this.txtSlipDate.TabIndex = 54;
+            this.txtSlipDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSlipDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // sLabel4
@@ -677,6 +678,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJuchuuNo.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNo.TabIndex = 47;
             this.txtJuchuuNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJuchuuNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNo_KeyDown);
             // 
             // slable1
             // 
@@ -729,7 +731,7 @@ namespace ShukkaSiziNyuuryoku
             this.Column15});
             this.dgvShukkasizi.Location = new System.Drawing.Point(2, 276);
             this.dgvShukkasizi.Name = "dgvShukkasizi";
-            this.dgvShukkasizi.Size = new System.Drawing.Size(1475, 250);
+            this.dgvShukkasizi.Size = new System.Drawing.Size(1468, 250);
             this.dgvShukkasizi.TabIndex = 35;
             // 
             // colShouhinCD
@@ -1262,7 +1264,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbShippingNO.IsErrorOccurs = false;
             this.sbShippingNO.IsRequire = false;
             this.sbShippingNO.lblName = null;
-            this.sbShippingNO.Location = new System.Drawing.Point(129, 12);
+            this.sbShippingNO.Location = new System.Drawing.Point(129, 9);
             this.sbShippingNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.sbShippingNO.MoveNext = true;
             this.sbShippingNO.Name = "sbShippingNO";
