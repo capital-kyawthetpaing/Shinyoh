@@ -27,33 +27,17 @@ namespace ShukkaNyuuryoku {
             SetButton(ButtonType.BType.Search, F11, "", false);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
-            txtKouritenCD.Focus();
-
             txtShort_Name.E102Check(true);
             txtLong_Name.E102Check(true);
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
             lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txtKouritenCD.Enabled = false;
+            txtKouritenCD.BackColor = SystemColors.Control;
             //Get Data from JuchuuNyuuroku form
             Access_DB_Object(Access_Kouriten_obj);
         }
-        //public void Datatable_Access(DataTable dt)
-        //{
-        //    txtShort_Name.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
-        //    txtLong_Name.Text = dt.Rows[0]["KouritenName"].ToString();
-        //    txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
-        //    txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
-        //    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
-        //    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
-        //    txtPhone1_1.Text = dt.Rows[0]["Tel11"].ToString();
-        //    txtPhone1_2.Text = dt.Rows[0]["Tel12"].ToString();
-        //    txtPhone1_3.Text = dt.Rows[0]["Tel13"].ToString();
-        //    txtPhone2_1.Text = dt.Rows[0]["Tel21"].ToString();
-        //    txtPhone2_2.Text = dt.Rows[0]["Tel22"].ToString();
-        //    txtPhone2_3.Text = dt.Rows[0]["Tel23"].ToString();
-        //}
-
         private void Access_DB_Object(KouritenEntity obj)
         {
             txtKouritenCD.Text = obj.KouritenCD;

@@ -6,18 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Controls
 {
     public class SGridView : DataGridView
     {
+        CommonFunction cf = new CommonFunction();
         bool UseRow = true;
         bool EditCol = false;
 
-        public void UseRowNo(bool val)
-        {
-            UseRow = RowHeadersVisible = val;
-        }
+        string HiraganaCol = string.Empty;
+        string NumberCol = string.Empty;
+
         public void SetGridDesign()
         {
             this.EnableHeadersVisualStyles = false;
@@ -25,6 +26,10 @@ namespace Shinyoh_Controls
             this.ColumnHeadersDefaultCellStyle.Font = new Font("MS Gothic", 9, FontStyle.Bold);
             this.BackgroundColor = Color.FromArgb(242, 242, 242);
             this.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(221, 235, 247);
+        }
+        public void UseRowNo(bool val)
+        {
+            UseRow = RowHeadersVisible = val;
         }
         public void SetReadOnlyColumn(string colArr)
         {
@@ -47,11 +52,43 @@ namespace Shinyoh_Controls
                 }
             }
         }
-
         private void SetReadOnly(DataGridViewColumn col)
         {
             col.ReadOnly = true;
-            col.DefaultCellStyle.BackColor = Color.FromArgb(217, 217, 217);
+            col.DefaultCellStyle.BackColor = Color.FromArgb(217, 217, 217);           
+        }
+        public void SetHiraganaColumn(string colArr)
+        {
+            HiraganaCol = colArr;
+        }
+        public void SetNumberColumn(string colArr)
+        {
+            NumberCol = colArr;
+        }
+
+        protected override void OnCellEnter(DataGridViewCellEventArgs e)
+        {
+            if (HiraganaCol.Equals("*"))
+            {
+                this.ImeMode = ImeMode.Hiragana;
+            }
+            else
+            {
+                string[] arr = HiraganaCol.Split(',');
+                ArrayList arrlst = new ArrayList();
+                arrlst.AddRange(arr);
+
+                DataGridViewColumn col = this.Columns[this.CurrentCell.ColumnIndex];
+
+                if (arrlst.Contains(col.Name))
+                {
+                    this.ImeMode = ImeMode.Hiragana;
+                }
+                else
+                    this.ImeMode = ImeMode.Disable;
+            }
+
+            base.OnCellEnter(e);
         }
         protected override void OnCellBeginEdit(DataGridViewCellCancelEventArgs e)
         {
@@ -115,6 +152,32 @@ namespace Shinyoh_Controls
                 Console.WriteLine(ex.Message);
             }
         }
+        protected override void OnKeyPress(KeyPressEventArgs e)
+        {            
+            base.OnKeyPress(e);
+        }
+
+        protected override void OnEditingControlShowing(DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress -= Col_Keypress;
+            DataGridViewColumn col = this.Columns[this.CurrentCell.ColumnIndex];
+            if (NumberCol.Contains(col.Name))
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += new KeyPressEventHandler(Col_Keypress);
+                }
+            }
+
+            base.OnEditingControlShowing(e);
+        }
+
+        private void Col_Keypress(object sender,KeyPressEventArgs e)
+        {
+            e.Handled = !cf.IsNumberKey(e.KeyChar, true);
+        }
+
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
             if (keyData == Keys.Enter)
@@ -133,7 +196,6 @@ namespace Shinyoh_Controls
             else
                 return base.ProcessCmdKey(ref msg, keyData);
         }
-
         public void MoveNextCell()
         {
             int icolumn = this.CurrentCell.ColumnIndex;
