@@ -528,7 +528,7 @@
             this.Panel_Detail.Controls.Add(this.lblShort);
             this.Panel_Detail.Location = new System.Drawing.Point(0, 82);
             this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1050, 326);
+            this.Panel_Detail.Size = new System.Drawing.Size(1050, 329);
             this.Panel_Detail.TabIndex = 1;
             // 
             // PanelTitle

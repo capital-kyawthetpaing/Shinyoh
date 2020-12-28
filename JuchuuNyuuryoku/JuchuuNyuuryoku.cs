@@ -61,7 +61,7 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
-            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
@@ -76,6 +76,8 @@ namespace JuchuuNyuuryoku
             txtKouritenCD.ChangeDate = txtJuchuuDate;
             txtStaffCD.ChangeDate = txtJuchuuDate;
 
+            txtShouhinCD.ChangeDate = txtJuchuuDate;
+
             ChangeMode(Mode.New);
 
             base_Entity = _GetBaseData();
@@ -84,9 +86,22 @@ namespace JuchuuNyuuryoku
             txtCopy.ChangeDate = txtJuchuuDate;
 
 
-            //gv_1.SetReadOnlyColumn("colShouhinCD","colShouhinName","colColorRyakuName","colColorNO","colSizeNO","colGenZaikoSuu","colUriageTanka","colTanka","colJANCD","colSiiresakiName","colSoukoName");
-            gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
+            gv_1.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_1.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_1.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_1.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_1.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_1.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_1.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_1.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_1.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_1.Columns[10].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_1.Columns[16].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_1.Columns[16].SortMode = DataGridViewColumnSortMode.NotSortable;
 
+            gv_1.SetGridDesign();
+            gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
+            
         }
 
         private void ChangeMode(Mode mode)
@@ -136,9 +151,16 @@ namespace JuchuuNyuuryoku
                     txtJuchuuNO.E102Check(false);
                     txtCopy.E102Check(false);
 
+                    txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
+                    txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
+
                     Disable_UDI_Mode();
-                    Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-                    btnInquiry.Visible = false;
+                    Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    btn12.Visible = false;
+                    Control btn10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+                    btn10.Visible = false;
+                    Control btn11 = this.TopLevelControl.Controls.Find("BtnF11", true)[0];
+                    btn11.Visible = false;
                     break;
             }
         }
@@ -223,7 +245,7 @@ namespace JuchuuNyuuryoku
             }
             if (tagID == "8")
             {
-                F8_Gridview_Bind();
+               // F8_Gridview_Bind();
             }
             if (tagID == "9")
             {
@@ -310,30 +332,43 @@ namespace JuchuuNyuuryoku
                     {
                         TokuisakiBL tBL = new TokuisakiBL();
                         DataTable tokui_DT = tBL.M_Tokuisaki_Select(txtTokuisakiCD.Text, txtJuchuuDate.Text, "E101");
-                        if (tokui_DT.Rows.Count > 0)
+                        if (tokui_DT.Rows.Count > 0 && tokui_DT.Rows[0]["MessageID"].ToString()!="E101")
                         {
                             lblTokuisakiShort_Name.Text = tokui_DT.Rows[0]["TokuisakiRyakuName"].ToString();
                             tobj.Access_Tokuisaki_obj = From_DB_To_Tokuisaki(tokui_DT);
                         }
+                        else
+                        {
+                            base_bl.ShowMessage("E101");
+                        }
                     }
+                    
                     if(!string.IsNullOrEmpty(txtKouritenCD.Text))
                     {
                         KouritenBL kBL = new KouritenBL();
                         DataTable kou_DT = kBL.Kouriten_Select_Check(txtKouritenCD.Text, txtJuchuuDate.Text, "E101");
-                        if (kou_DT.Rows.Count > 0)
+                        if (kou_DT.Rows.Count > 0 && kou_DT.Rows[0]["MessageID"].ToString() != "E101")
                         {
                             lblKouriten_Name.Text = kou_DT.Rows[0]["KouritenRyakuName"].ToString();
                             kobj.Access_Kouriten_obj = From_DB_To_Kouriten(kou_DT);
+                        }
+                        else
+                        {
+                            base_bl.ShowMessage("E101");
                         }
                     }
                     if(!string.IsNullOrEmpty(txtStaffCD.Text))
                     {
                         StaffBL sBL = new StaffBL();
                         DataTable sf_DT = sBL.Staff_Select_Check(txtStaffCD.Text, txtJuchuuDate.Text, "E101");
-                        if (sf_DT.Rows.Count > 0)
+                        if (sf_DT.Rows.Count > 0 && sf_DT.Rows[0]["MessageID"].ToString() != "E101")
                         {
                             txtStaffCD.Text = sf_DT.Rows[0]["StaffCD"].ToString();
                             lblStaff_Name.Text = sf_DT.Rows[0]["StaffName"].ToString();
+                        }
+                        else
+                        {
+                            base_bl.ShowMessage("E101");
                         }
                     }
                 }
