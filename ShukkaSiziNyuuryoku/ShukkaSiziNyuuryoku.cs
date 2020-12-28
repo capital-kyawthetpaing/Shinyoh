@@ -264,6 +264,7 @@ namespace ShukkaSiziNyuuryoku
                     {
                         dgvShukkasizi["SoukoCD", row].Value = dt.Rows[0]["SoukoCD"].ToString();
                         dgvShukkasizi["SoukoName", row].Value = dt.Rows[0]["SoukoName"].ToString();
+                        dgvShukkasizi.MoveNextCell();
                     }
                 }
             }

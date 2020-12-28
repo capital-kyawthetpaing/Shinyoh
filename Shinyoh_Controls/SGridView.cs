@@ -80,43 +80,13 @@ namespace Shinyoh_Controls
                 Console.WriteLine(ex.Message);
             }
         }
-
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
-            int icolumn = this.CurrentCell.ColumnIndex;
-            int irow = this.CurrentCell.RowIndex;
-            bool found = false;
-            bool canrowIncrease = true;
-
             if (keyData == Keys.Enter)
             {
                 if(EditCol == false)
                 {
-                        while (!found)
-                        {
-                            if (irow == this.Rows.Count - 1)
-                            {
-                                canrowIncrease = false;
-                            }
-                            if (icolumn == this.Columns.Count - 1)
-                            {
-                                if (canrowIncrease)
-                                    irow++;
-                                else
-                                    irow = 0;
-                                icolumn = 0;
-                            }
-                            else
-                                icolumn++;
-
-
-                            if (this[icolumn, irow].Visible == true && this[icolumn, irow].ReadOnly == false)
-                            {
-                                found = true;
-                            }
-                        }
-                        this.CurrentCell = this[icolumn, irow];
-
+                    MoveNextCell();
                 }
                 else
                 {
@@ -127,6 +97,38 @@ namespace Shinyoh_Controls
             }
             else
                 return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        public void MoveNextCell()
+        {
+            int icolumn = this.CurrentCell.ColumnIndex;
+            int irow = this.CurrentCell.RowIndex;
+            bool found = false;
+            bool canrowIncrease = true;
+            while (!found)
+            {
+                if (irow == this.Rows.Count - 1)
+                {
+                    canrowIncrease = false;
+                }
+                if (icolumn == this.Columns.Count - 1)
+                {
+                    if (canrowIncrease)
+                        irow++;
+                    else
+                        irow = 0;
+                    icolumn = 0;
+                }
+                else
+                    icolumn++;
+
+
+                if (this[icolumn, irow].Visible == true && this[icolumn, irow].ReadOnly == false)
+                {
+                    found = true;
+                }
+            }
+            this.CurrentCell = this[icolumn, irow];
         }
     }
 }
