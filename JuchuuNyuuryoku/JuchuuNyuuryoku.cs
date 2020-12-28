@@ -101,6 +101,9 @@ namespace JuchuuNyuuryoku
 
             gv_1.SetGridDesign();
             gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
+
+            gv_1.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
+            gv_1.SetNumberColumn("colJuchuuSuu");
             
         }
 
