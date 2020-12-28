@@ -11,10 +11,22 @@ namespace Shinyoh_Controls
     public class SGridView : DataGridView
     {
         bool UseRow = true;
+        bool EditCol = false;
 
         public void UseRowNo(bool val)
         {
             UseRow = RowHeadersVisible = val;
+        }
+
+        protected override void OnCellBeginEdit(DataGridViewCellCancelEventArgs e)
+        {
+            EditCol = true;
+            base.OnCellBeginEdit(e);
+        }
+        protected override void OnCellEndEdit(DataGridViewCellEventArgs e)
+        {
+            EditCol = false;
+            base.OnCellEndEdit(e);
         }
         protected override void OnCellPainting(DataGridViewCellPaintingEventArgs e)
         {
@@ -78,30 +90,39 @@ namespace Shinyoh_Controls
 
             if (keyData == Keys.Enter)
             {
-                while (!found)
+                if(EditCol == false)
                 {
-                    if(irow == this.Rows.Count - 1)
-                    {
-                        canrowIncrease = false;
-                    }
-                    if(icolumn == this.Columns.Count - 1)
-                    {
-                        if (canrowIncrease)
-                            irow++;
-                        else
-                            irow = 0;
-                        icolumn = 0;
-                    }
-                    else
-                        icolumn++;
-                    
+                        while (!found)
+                        {
+                            if (irow == this.Rows.Count - 1)
+                            {
+                                canrowIncrease = false;
+                            }
+                            if (icolumn == this.Columns.Count - 1)
+                            {
+                                if (canrowIncrease)
+                                    irow++;
+                                else
+                                    irow = 0;
+                                icolumn = 0;
+                            }
+                            else
+                                icolumn++;
 
-                    if(this[icolumn, irow].Visible == true && this[icolumn, irow].ReadOnly == false)
-                    {
-                        found = true;
-                    }
+
+                            if (this[icolumn, irow].Visible == true && this[icolumn, irow].ReadOnly == false)
+                            {
+                                found = true;
+                            }
+                        }
+                        this.CurrentCell = this[icolumn, irow];
+
                 }
-                this.CurrentCell = this[icolumn, irow];              
+                else
+                {
+                    this.EndEdit();
+                }
+                
                 return true;
             }
             else

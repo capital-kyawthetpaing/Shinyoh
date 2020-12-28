@@ -258,6 +258,7 @@ namespace ShukkaSiziNyuuryoku
                     {
                         bbl.ShowMessage("E101");
                         dgvShukkasizi["SoukoName", row].Value = string.Empty;
+                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["SoukoCD"];
                     }
                     else
                     {
