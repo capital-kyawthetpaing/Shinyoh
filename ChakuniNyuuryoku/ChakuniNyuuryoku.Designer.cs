@@ -85,9 +85,9 @@
             this.colArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChakuniYoteiGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHacchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
@@ -648,9 +648,9 @@
             this.colArrivalTime,
             this.chk,
             this.colDetails,
-            this.Column4,
+            this.colJanCD,
             this.colChakuniYoteiGyouNO,
-            this.Column6});
+            this.colHacchuuGyouNO});
             this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(2, 216);
             this.gvChakuniNyuuryoku.Name = "gvChakuniNyuuryoku";
             this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1475, 150);
@@ -989,11 +989,11 @@
             this.colDetails.Name = "colDetails";
             this.colDetails.Width = 260;
             // 
-            // Column4
+            // colJanCD
             // 
-            this.Column4.DataPropertyName = "JanCD";
-            this.Column4.HeaderText = "JANCD";
-            this.Column4.Name = "Column4";
+            this.colJanCD.DataPropertyName = "JanCD";
+            this.colJanCD.HeaderText = "JANCD";
+            this.colJanCD.Name = "colJanCD";
             // 
             // colChakuniYoteiGyouNO
             // 
@@ -1002,12 +1002,12 @@
             this.colChakuniYoteiGyouNO.Name = "colChakuniYoteiGyouNO";
             this.colChakuniYoteiGyouNO.Width = 200;
             // 
-            // Column6
+            // colHacchuuGyouNO
             // 
-            this.Column6.DataPropertyName = "HacchuuGyouNO";
-            this.Column6.HeaderText = "発注番号-行番号";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 180;
+            this.colHacchuuGyouNO.DataPropertyName = "HacchuuGyouNO";
+            this.colHacchuuGyouNO.HeaderText = "発注番号-行番号";
+            this.colHacchuuGyouNO.Name = "colHacchuuGyouNO";
+            this.colHacchuuGyouNO.Width = 180;
             // 
             // ChakuniNyuuryoku
             // 
@@ -1087,9 +1087,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colArrivalTime;
         private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJanCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniYoteiGyouNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHacchuuGyouNO;
     }
 }
 
