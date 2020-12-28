@@ -82,6 +82,11 @@ namespace JuchuuNyuuryoku
 
             txtJuchuuNO.ChangeDate = txtJuchuuDate;
             txtCopy.ChangeDate = txtJuchuuDate;
+
+
+            //gv_1.SetReadOnlyColumn("colShouhinCD","colShouhinName","colColorRyakuName","colColorNO","colSizeNO","colGenZaikoSuu","colUriageTanka","colTanka","colJANCD","colSiiresakiName","colSoukoName");
+            gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
+
         }
 
         private void ChangeMode(Mode mode)
@@ -1142,8 +1147,14 @@ namespace JuchuuNyuuryoku
                             selectedRow = gv_1.Rows[selectedrowindex];
                         }
                         sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(siiresaki_dt, selectedRow);
+                        gv_1.MoveNextCell();
+                    }
+                    else
+                    {
+                        gv_1.CurrentCell = gv_1.Rows[e.RowIndex].Cells["colSiiresakiCD"];
                     }
                 }
+
                 if (gv_1.Columns[e.ColumnIndex].Name == "colexpectedDate")
                 {
                     bool exp_error = false;
@@ -1172,6 +1183,14 @@ namespace JuchuuNyuuryoku
                                 base_bl.ShowMessage("E267", "受注日");
                         }
                     }
+                    if(exp_error==false)
+                    {
+                        gv_1.MoveNextCell();
+                    }
+                    else
+                    {
+                        gv_1.CurrentCell = gv_1.Rows[e.RowIndex].Cells["colexpectedDate"];
+                    }
                 }
 
                 if (gv_1.Columns[e.ColumnIndex].Name == "colSoukoCD")
@@ -1192,9 +1211,24 @@ namespace JuchuuNyuuryoku
                     {
                         gv_1.Rows[e.RowIndex].Cells["colSoukoCD"].Value = souko_dt.Rows[0]["SoukoCD"];
                         gv_1.Rows[e.RowIndex].Cells["colSoukoName"].Value = souko_dt.Rows[0]["SoukoName"];
+                        gv_1.MoveNextCell();
+                    }
+                    else
+                    {
+                        gv_1.CurrentCell = gv_1.Rows[e.RowIndex].Cells["colSoukoCD"];
                     }
                 }
             }
+            if (gv_1.Columns[e.ColumnIndex].Name == "colFree")
+                gv_1.MoveNextCell();
+            if (gv_1.Columns[e.ColumnIndex].Name == "colJuchuuSuu")
+                gv_1.MoveNextCell();
+            if (gv_1.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
+                gv_1.MoveNextCell();
+            if (gv_1.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
+                gv_1.MoveNextCell();
         }
+
+       
     }
 }
