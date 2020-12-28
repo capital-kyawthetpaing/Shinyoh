@@ -18,7 +18,14 @@ namespace Shinyoh_Controls
         {
             UseRow = RowHeadersVisible = val;
         }
-
+        public void SetGridDesign()
+        {
+            this.EnableHeadersVisualStyles = false;
+            this.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(191, 191, 191);
+            this.ColumnHeadersDefaultCellStyle.Font = new Font("MS Gothic", 9, FontStyle.Bold);
+            this.BackgroundColor = Color.FromArgb(242, 242, 242);
+            this.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(221, 235, 247);
+        }
         public void SetReadOnlyColumn(string colArr)
         {
             foreach (DataGridViewColumn col in Columns)
