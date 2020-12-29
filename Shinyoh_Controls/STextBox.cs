@@ -7,6 +7,7 @@ using System.Drawing;
 using Entity;
 using static Entity.SearchType;
 using System.Data;
+using System.Runtime.InteropServices;
 
 namespace Shinyoh_Controls
 {
@@ -161,7 +162,8 @@ namespace Shinyoh_Controls
         public Control ctrlE267_2;
         public Control ctrlE270_1;
         public Control ctrlE270_2;
-        
+        public Control ctrlE270_3;
+
 
         public Control ctrl1Yuubin_Juusho;
         public Control ctrl2Yuubin_Juusho;
@@ -443,12 +445,13 @@ namespace Shinyoh_Controls
             ctrlE268_1 = ctrl1;
             ctrlE268_2 = ctrl2;
         }
-        public void E270Check(bool value, string type, Control ctrl1, Control ctrl2)
+        public void E270Check(bool value, string type, Control ctrl1, Control ctrl2, [Optional]Control ctrl3)
         {
             E270 = value;
             E270Type = type;
             ctrlE270_1 = ctrl1;
             ctrlE270_2 = ctrl2;
+            ctrlE270_3 = ctrl3;
         }
         
         public void Yuubin_Juusho(bool value,Control ctrl1, Control ctrl2,string check_Yuu1,string check_Yuu2)

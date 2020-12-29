@@ -349,7 +349,7 @@ namespace JuchuuNyuuryoku
                     if(!string.IsNullOrEmpty(txtKouritenCD.Text))
                     {
                         KouritenBL kBL = new KouritenBL();
-                        DataTable kou_DT = kBL.Kouriten_Select_Check(txtKouritenCD.Text, txtJuchuuDate.Text, "E101");
+                        DataTable kou_DT = kBL.Kouriten_Select_Check(txtKouritenCD.Text, txtJuchuuDate.Text, "E101",string.Empty);
                         if (kou_DT.Rows.Count > 0 && kou_DT.Rows[0]["MessageID"].ToString() != "E101")
                         {
                             lblKouriten_Name.Text = kou_DT.Rows[0]["KouritenRyakuName"].ToString();

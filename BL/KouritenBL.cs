@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,13 +55,15 @@ namespace BL
             obj.Sqlprms[33] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
             return ckmdl.InsertUpdateDeleteData("M_Kouriten_CUD", GetConnectionString(), obj.Sqlprms);
         }
-        public DataTable Kouriten_Select_Check(string cd, string changeDate, string errorType)
+        public DataTable Kouriten_Select_Check(string cd, string changeDate,string errorType, [Optional] string cd1)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
+            var parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@KouritenCD", SqlDbType.VarChar) { Value = cd };
             parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = changeDate };
             parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = errorType };
+            parameters[3] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = cd1 };
+           
             DataTable dt = ckmdl.SelectDatatable("Kouriten_Select_Check", GetConnectionString(), parameters);
             return dt;
         }
