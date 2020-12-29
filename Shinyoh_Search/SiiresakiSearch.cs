@@ -33,6 +33,8 @@ namespace Shinyoh_Search
             DataGridviewBind();
 
             txtSupplier2.E106Check(true, txtSupplier1, txtSupplier2);
+            gvSupplier.SetGridDesign();
+            gvSupplier.SetReadOnlyColumn("*");
         }    
 
         private void btnSupplier_F11_Click(object sender, System.EventArgs e)
