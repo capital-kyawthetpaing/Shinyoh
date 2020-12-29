@@ -256,7 +256,7 @@ namespace Shinyoh_Controls
                         break;
                     case "M_Kouriten":
                         KouritenBL objK = new KouritenBL();
-                        dt = objK.Kouriten_Select_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text, string.Empty);
+                        dt = objK.Kouriten_Select_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text, string.Empty,sTextBox.ctrlE132_3.Text);
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
@@ -326,7 +326,7 @@ namespace Shinyoh_Controls
                         if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
                         {
                             KouritenBL objK = new KouritenBL();
-                            dt = objK.Kouriten_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty);
+                            dt = objK.Kouriten_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty,sTextBox.ctrlE133_3.Text);
                             rDt = dt;
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
@@ -580,7 +580,7 @@ namespace Shinyoh_Controls
                         if (!string.IsNullOrEmpty(sTextBox.ctrlE270_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE270_2.Text))
                         {
                             KouritenBL objK = new KouritenBL();
-                            rDt = objK.Kouriten_Select_Check(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, "E270");
+                            rDt = objK.Kouriten_Select_Check(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, "E270",sTextBox.ctrlE270_3.Text);
                             result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;

@@ -149,6 +149,7 @@
             this.txtArrivalDate.TabIndex = 2;
             this.txtArrivalDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtArrivalDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtArrivalDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtArrivalDate_KeyDown);
             // 
             // txtDescription
             // 
@@ -663,12 +664,11 @@
             this.colJanCD,
             this.colChakuniYoteiGyouNO,
             this.colHacchuuGyouNO});
-            this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(2, 216);
+            this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(25, 216);
             this.gvChakuniNyuuryoku.Name = "gvChakuniNyuuryoku";
-            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1475, 150);
+            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1395, 150);
             this.gvChakuniNyuuryoku.TabIndex = 35;
             this.gvChakuniNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvChakuniNyuuryoku_CellEndEdit);
-            this.gvChakuniNyuuryoku.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvChakuniNyuuryoku_CellValidating);
             // 
             // btn_Siiresaki
             // 
@@ -924,7 +924,6 @@
             this.colShouhinCD.HeaderText = "商品";
             this.colShouhinCD.Name = "colShouhinCD";
             this.colShouhinCD.ReadOnly = true;
-            this.colShouhinCD.Width = 150;
             // 
             // colShouhinName
             // 
@@ -1003,7 +1002,7 @@
             this.colDetails.DataPropertyName = "ChakuniMeisaiTekiyou";
             this.colDetails.HeaderText = "明細摘要";
             this.colDetails.Name = "colDetails";
-            this.colDetails.Width = 260;
+            this.colDetails.Width = 235;
             // 
             // colJanCD
             // 

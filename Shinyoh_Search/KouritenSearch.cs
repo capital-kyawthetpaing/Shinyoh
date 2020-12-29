@@ -36,6 +36,9 @@ namespace Shinyoh_Search
             DataGridviewBind();
             txtCD2.E106Check(true, txtCD1, txtCD2);
             txtTokuisakiCD2.E106Check(true, txtTokuisakiCD1, txtTokuisakiCD2);
+
+            gv_Kouriten.SetGridDesign();
+            gv_Kouriten.SetReadOnlyColumn("*");
         }
         private void btnKouriten_F11_Click(object sender, EventArgs e)
         {
