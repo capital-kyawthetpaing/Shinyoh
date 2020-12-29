@@ -1214,7 +1214,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlip_Description.AllowMinus = false;
             this.txtSlip_Description.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSlip_Description.DecimalPlace = 0;
-            this.txtSlip_Description.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtSlip_Description.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtSlip_Description.DepandOnMode = true;
             this.txtSlip_Description.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSlip_Description.IntegerPart = 0;
