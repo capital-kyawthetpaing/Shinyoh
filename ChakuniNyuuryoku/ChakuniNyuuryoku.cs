@@ -77,6 +77,16 @@ namespace ChakuniNyuuryoku
             txtSiiresaki.lblName = lblSiiresaki;
             txtStaffCD.ChangeDate = txtArrivalDate;
             base_Entity = _GetBaseData();
+            gvChakuniNyuuryoku.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvChakuniNyuuryoku.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniNyuuryoku.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvChakuniNyuuryoku.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniNyuuryoku.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvChakuniNyuuryoku.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniNyuuryoku.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvChakuniNyuuryoku.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniNyuuryoku.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvChakuniNyuuryoku.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
         private void ChangeMode(Mode mode)
         {
@@ -676,7 +686,7 @@ namespace ChakuniNyuuryoku
                 }
             }
         }
-        private void gvChakuniNyuuryoku_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void gvChakuniNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (gvChakuniNyuuryoku.Columns[e.ColumnIndex].Name == "colArrivalTime")
             {
@@ -684,14 +694,14 @@ namespace ChakuniNyuuryoku
                 if (Convert.ToInt64(value) < 0)
                 {
                     bbl.ShowMessage("E109");
-                    e.Cancel = true;
+                    return;
+                }
+                else
+                {
+                    gvChakuniNyuuryoku.MoveNextCell();
                 }
             }
-        }
-       
-        private void gvChakuniNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-                dtGridview();
+            dtGridview();
                 if (!gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0"))
                 {
                     if (gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniSuu"].ToString() &&   gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colDetails"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniMeisaiTekiyou"].ToString())
@@ -715,7 +725,8 @@ namespace ChakuniNyuuryoku
                         for (int i = 0; i < dtGS1.Columns.Count; i++)
                         {
                             dr1[i] = gvChakuniNyuuryoku[i+1, e.RowIndex].Value;
-                        }
+                            dr1[i] = string.IsNullOrEmpty(gvChakuniNyuuryoku[i, e.RowIndex].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniNyuuryoku[i, e.RowIndex].EditedFormattedValue.ToString();
+                    }
                         dtGS1.Rows.Add(dr1);
                     }
                 }
