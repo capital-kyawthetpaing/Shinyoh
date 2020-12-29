@@ -45,7 +45,6 @@ namespace MasterTouroku_Kouriten
             cboMode.Bind(false, multi_Entity);
 
             txtStaffCD.lblName = lblStaffCD_Name;
-            txtTokuisakiCD.lblName = lblTokuisakiRyakuName;
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
@@ -61,33 +60,36 @@ namespace MasterTouroku_Kouriten
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             ChangeMode(Mode.New);
-            txtKouritenCD.Focus();
+            txtTokuisakiCD.Focus();
 
             base_Entity = _GetBaseData();
+            txtSystemDate.Text = base_Entity.LoginDate;
 
             txtStaffCD.ChangeDate = txtChangeDate;
             txtKouritenCD.ChangeDate = txtChangeDate;
             txtCopyCD.ChangeDate = txtCopyDate;
-            txtTokuisakiCD.ChangeDate = txtChangeDate;
+            txtTokuisakiCD.ChangeDate = txtSystemDate;
+            txtTokuisakiCD_Copy.ChangeDate = txtSystemDate;
         }
 
         private void ChangeMode(Mode mode)
         {
             Mode_Setting();
-
+            
             switch (mode)
             {
                 case Mode.New:
                     ErrorCheck();
 
-                    txtChangeDate.E132Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
-                    txtChangeDate.E133Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
+                    txtChangeDate.E132Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
+                    txtChangeDate.E133Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate,null);
+
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
 
                     txtCopyDate.E103Check(true);
                     txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
-                    txtCopyDate.E133Check(true, "M_Kouriten", txtCopyCD, txtCopyDate, null);
+                    txtCopyDate.E133Check(true, "M_Kouriten", txtCopyCD, txtCopyDate, txtTokuisakiCD_Copy);
 
 
                     txtChangeDate.NextControlName = txtCopyCD.Name;
@@ -102,7 +104,7 @@ namespace MasterTouroku_Kouriten
                     ErrorCheck();
 
                     txtChangeDate.E132Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
-                    txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
+                    txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
                     Disable_UDI_Mode();
@@ -111,9 +113,9 @@ namespace MasterTouroku_Kouriten
                     break;
                 case Mode.Delete:
                     txtChangeDate.E132Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
-                    txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
+                    txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
 
-                    txtChangeDate.E270Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate);
+                    txtChangeDate.E270Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate,txtTokuisakiCD);
 
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -122,7 +124,7 @@ namespace MasterTouroku_Kouriten
                     break;
                 case Mode.Inquiry:
                     txtChangeDate.E132Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
-                    txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
+                    txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
                     Disable_UDI_Mode();
@@ -138,15 +140,15 @@ namespace MasterTouroku_Kouriten
             cf.Clear(Panel_Detail);
             rdo_AliasKBN1.Checked = true;
             lblStaffCD_Name.Text = string.Empty;
-            lblTokuisakiRyakuName.Text = string.Empty;
+           
 
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(Panel_Detail);
 
-            txtKouritenCD.Focus();
+            txtTokuisakiCD.Focus();
             txtKensakuHyouziJun.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+           
 
             rdo_Registragion.Checked = true;
 
@@ -169,7 +171,7 @@ namespace MasterTouroku_Kouriten
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
 
             txtTokuisakiCD.E102Check(true);
-            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtChangeDate, null);
+            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
@@ -180,6 +182,7 @@ namespace MasterTouroku_Kouriten
         }
         public void Disable_UDI_Mode()
         {
+            txtTokuisakiCD_Copy.Enabled = false;
             txtCopyCD.Enabled = false;
             txtCopyDate.Enabled = false;
         }
@@ -380,7 +383,7 @@ namespace MasterTouroku_Kouriten
                 txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
                 txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
                 txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
-                lblTokuisakiRyakuName.Text= dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                
                 if (dt.Rows[0]["AliasKBN"].ToString() == "1")
                     rdo_AliasKBN1.Checked = true;
                 else rdo_AliasKBN2.Checked = true;
@@ -503,60 +506,60 @@ namespace MasterTouroku_Kouriten
                 rdo_AliasKBN1.Checked = false;           
         }
 
-        private void btn_Copy_Click(object sender, EventArgs e)
-        {
-            TokuisakiBL bl = new TokuisakiBL();
-            DataTable dt = bl.M_Tokuisaki_Select(txtTokuisakiCD.Text, txtChangeDate.Text, "E101");
-            if (dt.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() == "E132")
-                Copy_Tokuisaki_Data(dt);
-        }
+        //private void btn_Copy_Click(object sender, EventArgs e)
+        //{
+        //    TokuisakiBL bl = new TokuisakiBL();
+        //    DataTable dt = bl.M_Tokuisaki_Select(txtTokuisakiCD.Text, txtChangeDate.Text, "E101");
+        //    if (dt.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() == "E132")
+        //        Copy_Tokuisaki_Data(dt);
+        //}
 
-        private void Copy_Tokuisaki_Data(DataTable dt)
-        {
-            if (dt.Rows.Count > 0)
-            {
-                if (dt.Rows[0]["MessageID"].ToString() == "E132")
-                {
-                    if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
-                    {
-                        chk_Flag.Checked = true;
-                    }
-                    else
-                        chk_Flag.Checked = false;
-                    txtKouritenName.Text = dt.Rows[0]["TokuisakiName"].ToString();
-                    txtKouritenRyakuName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
-                    txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
-                    txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
+        //private void Copy_Tokuisaki_Data(DataTable dt)
+        //{
+        //    if (dt.Rows.Count > 0)
+        //    {
+        //        if (dt.Rows[0]["MessageID"].ToString() == "E132")
+        //        {
+        //            if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
+        //            {
+        //                chk_Flag.Checked = true;
+        //            }
+        //            else
+        //                chk_Flag.Checked = false;
+        //            txtKouritenName.Text = dt.Rows[0]["TokuisakiName"].ToString();
+        //            txtKouritenRyakuName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+        //            txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
+        //            txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
 
-                    if (dt.Rows[0]["AliasKBN"].ToString().Equals("1"))
-                    {
-                        rdo_AliasKBN1.Checked = true;
-                    }
-                    else if (dt.Rows[0]["AliasKBN"].ToString().Equals("2"))
-                        rdo_AliasKBN2.Checked = true;
+        //            if (dt.Rows[0]["AliasKBN"].ToString().Equals("1"))
+        //            {
+        //                rdo_AliasKBN1.Checked = true;
+        //            }
+        //            else if (dt.Rows[0]["AliasKBN"].ToString().Equals("2"))
+        //                rdo_AliasKBN2.Checked = true;
 
-                    txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
-                    txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
-                    txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
-                    txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
-                    txtPhone1_1.Text = dt.Rows[0]["Tel11"].ToString();
-                    txtPhone1_2.Text = dt.Rows[0]["Tel12"].ToString();
-                    txtPhone1_3.Text = dt.Rows[0]["Tel13"].ToString();
-                    txtPhone2_1.Text = dt.Rows[0]["Tel21"].ToString();
-                    txtPhone2_2.Text = dt.Rows[0]["Tel22"].ToString();
-                    txtPhone2_3.Text = dt.Rows[0]["Tel23"].ToString();
-                    txtTantouBusho.Text = dt.Rows[0]["TantouBusho"].ToString();
-                    txtTantouYakushoku.Text = dt.Rows[0]["TantouYakushoku"].ToString();
-                    txtTantoushaName.Text = dt.Rows[0]["TantoushaName"].ToString();
-                    txtMail.Text = dt.Rows[0]["MailAddress"].ToString();
-                    txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
-                    //lblStaffCD_Name.Text= dt.Rows[0]["StaffName"].ToString();
-                    txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
-                    txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
-                    txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
-                }
-            }
-        }
+        //            txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
+        //            txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
+        //            txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
+        //            txtAddress2.Text = dt.Rows[0]["Juusho2"].ToString();
+        //            txtPhone1_1.Text = dt.Rows[0]["Tel11"].ToString();
+        //            txtPhone1_2.Text = dt.Rows[0]["Tel12"].ToString();
+        //            txtPhone1_3.Text = dt.Rows[0]["Tel13"].ToString();
+        //            txtPhone2_1.Text = dt.Rows[0]["Tel21"].ToString();
+        //            txtPhone2_2.Text = dt.Rows[0]["Tel22"].ToString();
+        //            txtPhone2_3.Text = dt.Rows[0]["Tel23"].ToString();
+        //            txtTantouBusho.Text = dt.Rows[0]["TantouBusho"].ToString();
+        //            txtTantouYakushoku.Text = dt.Rows[0]["TantouYakushoku"].ToString();
+        //            txtTantoushaName.Text = dt.Rows[0]["TantoushaName"].ToString();
+        //            txtMail.Text = dt.Rows[0]["MailAddress"].ToString();
+        //            txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
+        //            //lblStaffCD_Name.Text= dt.Rows[0]["StaffName"].ToString();
+        //            txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
+        //            txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
+        //            txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
+        //        }
+        //    }
+        //}
 
         private string ChooseFile()
         {
