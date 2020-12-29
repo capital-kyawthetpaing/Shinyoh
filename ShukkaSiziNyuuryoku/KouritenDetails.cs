@@ -54,6 +54,10 @@ namespace ShukkaSiziNyuuryoku
             txtPhNo4.Text = obj.Tel21;
             txtPhNo5.Text = obj.Tel22;
             txtPhNo6.Text = obj.Tel23;
+            YuuBinNO1= obj.YuubinNO1;
+            YuuBinNO2 = obj.YuubinNO2;
+            Address1= obj.Juusho1;
+            Address2 = obj.Juusho2;
         }
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
         {

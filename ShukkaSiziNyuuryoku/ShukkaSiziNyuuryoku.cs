@@ -23,9 +23,6 @@ namespace ShukkaSiziNyuuryoku
         TokuisakiDetails td = new TokuisakiDetails();
         KouritenDetails kd = new KouritenDetails();
         public string tdDate;
-        string YuuBinNO1 = string.Empty;
-        string YuuBinNO2 = string.Empty;
-        string Address = string.Empty;
         DataTable dtgv1, dtTemp1, dtGS1, dtClear, dt_Header,dtResult;
         public ShukkaSiziNyuuryoku()
         {
@@ -170,7 +167,7 @@ namespace ShukkaSiziNyuuryoku
         {
             if(!string.IsNullOrWhiteSpace(sbTokuisaki.Text))
             {
-             if(td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbTokuisaki.Text))
+                 if(td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbTokuisaki.Text))
                 {
                     td.ShowDialog();
                 }
@@ -253,7 +250,6 @@ namespace ShukkaSiziNyuuryoku
 
             td.Access_Tokuisaki_obj = Tokuisaki_Data_Select(dt);
             kd.Access_Kouriten_obj = Kouriten_Data_Select(dt);
-
 
         }
         private void Temp_Save(int row)
@@ -746,7 +742,6 @@ namespace ShukkaSiziNyuuryoku
             {
                 if (!txtYubin2.IsErrorOccurs)
                 {
-
                     if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
                     {
                         DataTable dt = txtYubin2.IsDatatableOccurs;
@@ -754,20 +749,12 @@ namespace ShukkaSiziNyuuryoku
                     }
                     else
                     {
-                        if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
-                        {
-                            txtAddress.Text = string.Empty;
-                        }
-                        else
-                        {
-                            txtAddress.Text = Address;
-                        }
+                        txtAddress.Text = string.Empty;
                     }
                 }
             }
 
         }
-
         //Error_Check
         private void ErrorCheck()
         {
@@ -944,7 +931,7 @@ namespace ShukkaSiziNyuuryoku
                     SetButton(ButtonType.BType.Empty, F7, "", false);
 
                     txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
-                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, null, null);
+                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
                     lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
                     lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
