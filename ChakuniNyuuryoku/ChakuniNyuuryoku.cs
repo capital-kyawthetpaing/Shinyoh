@@ -37,12 +37,11 @@ namespace ChakuniNyuuryoku
             dtTemp = new DataTable();
             dtGS1 = CreateTable();
             base_Entity = new BaseEntity();
+            multi_Entity = new multipurposeEntity();
             staffBL = new StaffBL();
             soukoBL = new SoukoBL();
             dtClear = CreateTable();
             chkEntity = new ChakuniNyuuryoku_Entity();
-            gvChakuniNyuuryoku.SetGridDesign();
-            gvChakuniNyuuryoku.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colDate,colArrivalNo,colChakuniZumiSuu,colJanCD,colChakuniYoteiGyouNO,colHacchuuGyouNO");
         }
 
         private void ChakuniNyuuryoku_Load(object sender, EventArgs e)
@@ -66,21 +65,33 @@ namespace ChakuniNyuuryoku
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
-            lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             ChangeMode(Mode.New);
             txtArrivalNO.Focus();
-            multipurposeEntity multipurpose_entity = new multipurposeEntity();
+            txtArrivalNO.ChangeDate = txtArrivalDate;
             txtSiiresaki.ChangeDate = txtArrivalDate;
             txtSiiresaki.lblName = lblSiiresaki;
             txtStaffCD.ChangeDate = txtArrivalDate;
             base_Entity = _GetBaseData();
+            lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            gvChakuniNyuuryoku.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvChakuniNyuuryoku.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniNyuuryoku.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvChakuniNyuuryoku.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniNyuuryoku.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvChakuniNyuuryoku.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniNyuuryoku.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvChakuniNyuuryoku.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniNyuuryoku.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvChakuniNyuuryoku.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniNyuuryoku.SetGridDesign();
+            gvChakuniNyuuryoku.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colDate,colArrivalNo,colChakuniZumiSuu,colJanCD,colChakuniYoteiGyouNO,colHacchuuGyouNO");
+            gvChakuniNyuuryoku.SetHiraganaColumn("colDetails");
         }
         private void ChangeMode(Mode mode)
         {
-            Mode_Setting();
             switch (mode)
             {
                 case Mode.New:
@@ -98,36 +109,21 @@ namespace ChakuniNyuuryoku
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku",txtArrivalNO,null,null);
                     txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
-                    cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
-                    cf.EnablePanel(PanelTitle);
-                    cf.EnablePanel(panelDetails);
-                    txtArrivalNO.Enabled = true;
-                    txtArrivalNO.Focus();
+                    Mode_Setting();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
                     txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
-                    cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
-                    cf.EnablePanel(PanelTitle);
-                    cf.DisablePanel(panelDetails);
-                    txtArrivalNO.Enabled = true;
-                    txtArrivalNO.Focus();
+                    Mode_Setting();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
                     txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
-                    cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
-                    cf.EnablePanel(PanelTitle);
-                    cf.DisablePanel(panelDetails);
-                    txtArrivalNO.Enabled = true;
-                    txtArrivalNO.Focus();
+                    Mode_Setting();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
@@ -139,10 +135,19 @@ namespace ChakuniNyuuryoku
             cf.Clear(panelDetails);
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(panelDetails);
+            lblSiiresaki.Text = string.Empty;
+            lblStaff.Text = string.Empty;
+            lblBrandName.Text = string.Empty;
+            lblWareHouse.Text = string.Empty;
             txtArrivalNO.Focus();
         }
         private void New_Mode()
         {
+            cf.Clear(PanelTitle);
+            cf.Clear(panelDetails);
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(panelDetails);
+            txtArrivalNO.Focus();
             tdDate = DateTime.Now.ToString("yyyy/MM/dd");
             txtArrivalDate.Text = tdDate;
             StaffEntity staffEntity = new StaffEntity
@@ -156,6 +161,7 @@ namespace ChakuniNyuuryoku
             soukoEntity = soukoBL.GetSoukoEntity(soukoEntity);
             txtSouko.Text = soukoEntity.SoukoCD;
             lblWareHouse.Text = soukoEntity.SoukoName;
+            lblSiiresaki.Text = string.Empty;
         }
         public void ErrorCheck()
         {
@@ -595,19 +601,36 @@ namespace ChakuniNyuuryoku
         {
             if (e.KeyCode == Keys.Enter)
             {
+                lblSiiresaki.Text = string.Empty;
                 if (!txtSiiresaki.IsErrorOccurs)
                 {
                     DataTable dt = txtSiiresaki.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
+                    if (!string.IsNullOrWhiteSpace(txtSiiresaki.Text))
                     {
-                       sd.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt);
-                        lblSiiresaki.Text = dt.Rows[0]["SiiresakiName"].ToString();
-                    }
-                    else
-                    {
-                        lblSiiresaki.Text = string.Empty;
+                        if (ErrorCheck_Select(dt))
+                        {
+                            lblSiiresaki.Text = dt.Rows[0]["SiiresakiName"].ToString();
+                            sd.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt);
+                        }
+                        else
+                        {
+                            txtSiiresaki.Focus();
+                        }
                     }
                 }
+                //if (!txtSiiresaki.IsErrorOccurs)
+                //{
+                //    DataTable dt = txtSiiresaki.IsDatatableOccurs;
+                //    if (dt.Rows.Count > 0)
+                //    {
+                //       sd.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt);
+                //        lblSiiresaki.Text = dt.Rows[0]["SiiresakiName"].ToString();
+                //    }
+                //    else
+                //    {
+                //        lblSiiresaki.Text = string.Empty;
+                //    }
+                //}
             }
         }
         private SiiresakiEntity From_DB_To_Siiresaki(DataTable dt)
@@ -676,7 +699,7 @@ namespace ChakuniNyuuryoku
                 }
             }
         }
-        private void gvChakuniNyuuryoku_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void gvChakuniNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (gvChakuniNyuuryoku.Columns[e.ColumnIndex].Name == "colArrivalTime")
             {
@@ -684,14 +707,14 @@ namespace ChakuniNyuuryoku
                 if (Convert.ToInt64(value) < 0)
                 {
                     bbl.ShowMessage("E109");
-                    e.Cancel = true;
+                    return;
+                }
+                else
+                {
+                    gvChakuniNyuuryoku.MoveNextCell();
                 }
             }
-        }
-       
-        private void gvChakuniNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-                dtGridview();
+            dtGridview();
                 if (!gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0"))
                 {
                     if (gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniSuu"].ToString() &&   gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colDetails"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniMeisaiTekiyou"].ToString())
@@ -714,11 +737,48 @@ namespace ChakuniNyuuryoku
                         DataRow dr1 = dtGS1.NewRow();
                         for (int i = 0; i < dtGS1.Columns.Count; i++)
                         {
-                            dr1[i] = gvChakuniNyuuryoku[i+1, e.RowIndex].Value;
+                           if (i == 9)
+                            dr1[i] = gvChakuniNyuuryoku[i+1, e.RowIndex].EditedFormattedValue;
+                           else
+                            dr1[i] = string.IsNullOrEmpty(gvChakuniNyuuryoku[i, e.RowIndex].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniNyuuryoku[i, e.RowIndex].EditedFormattedValue.ToString();
                         }
                         dtGS1.Rows.Add(dr1);
                     }
                 }
+        }
+
+        private void txtArrivalDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!string.IsNullOrWhiteSpace(txtSiiresaki.Text))
+                {
+                    DataTable dt = txtSiiresaki.IsDatatableOccurs;
+                    if (!ErrorCheck_Select(dt))
+                    {
+                        txtSiiresaki.Focus();
+                    }
+                }
+            }
+        }
+        private bool ErrorCheck_Select(DataTable dt)
+        {
+            if (dt.Rows.Count > 0)
+            {
+                string TorihikiKaisiDate = dt.Rows[0]["TorihikiKaisiDate"].ToString();
+                string TorihikiShuuryouDate = dt.Rows[0]["TorihikiShuuryouDate"].ToString();
+                if (!string.IsNullOrEmpty(TorihikiKaisiDate) && Convert.ToDateTime(TorihikiKaisiDate) > Convert.ToDateTime(txtArrivalDate.Text))
+                {
+                    bbl.ShowMessage("E267");
+                    return false;
+                }
+                else if (!string.IsNullOrEmpty(TorihikiShuuryouDate) && Convert.ToDateTime(TorihikiShuuryouDate) < Convert.ToDateTime(txtArrivalDate.Text))
+                {
+                    bbl.ShowMessage("E227");
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

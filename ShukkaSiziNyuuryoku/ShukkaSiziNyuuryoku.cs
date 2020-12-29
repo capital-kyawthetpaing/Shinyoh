@@ -205,6 +205,24 @@ namespace ShukkaSiziNyuuryoku
         {
             FunctionProcedure(8);
         }
+        private void dgvShukkasizi_Paint(object sender, PaintEventArgs e)
+        {
+            var col = dgvShukkasizi.Columns;
+            for (int i = 5; i < col.Count; i++)
+            {
+                while (i <= 10)
+                {
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    //dgvShukkasizi.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    ++i;
+                }
+                if (i == 11)
+                {
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    return;
+                }
+            }
+        }
         private void DgvShukkasizi_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
@@ -295,7 +313,10 @@ namespace ShukkaSiziNyuuryoku
                 DataRow dr1 = dtGS1.NewRow();
                 for (int i = 0; i < dtGS1.Columns.Count; i++)
                 {
-                    dr1[i] = dgvShukkasizi[i, row].EditedFormattedValue;
+                    if (i == 11)
+                        dr1[i] = dgvShukkasizi[i, row].EditedFormattedValue;
+                    else
+                        dr1[i] = string.IsNullOrEmpty(dgvShukkasizi[i, row].EditedFormattedValue.ToString().Trim()) ? null : dgvShukkasizi[i, row].EditedFormattedValue.ToString();
                 }
                 dtGS1.Rows.Add(dr1);
             }
@@ -817,25 +838,6 @@ namespace ShukkaSiziNyuuryoku
             txtPhone2.Clear();
             txtPhone3.Clear();
             txtName.Clear();
-        }
-
-        private void dgvShukkasizi_Paint(object sender, PaintEventArgs e)
-        {
-            var col = dgvShukkasizi.Columns;
-            for (int i = 5; i < col.Count; i++)
-            {
-                while (i <= 10)
-                {
-                    col[i].HeaderCell.Style.Alignment= DataGridViewContentAlignment.MiddleRight;
-                    //dgvShukkasizi.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    ++i;
-                }
-                if(i==11)
-                {
-                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    return;
-                }
-            }
         }
 
         //Mode_Procedure

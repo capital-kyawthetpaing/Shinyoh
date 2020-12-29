@@ -39,8 +39,8 @@ namespace ShukkaNyuuryoku {
             gvdt1 = new DataTable();
             gvdt2 = new DataTable();
             F8_dt1 = new DataTable();
-           
-
+            gvShukka1.SetGridDesign();
+            gvShukka1.SetReadOnlyColumn("colJANCD,colShouhin,colShouhinName,colColorShortName,colColorNO,colSize,colShukkazansuu,colMiryoku");
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -135,11 +135,11 @@ namespace ShukkaNyuuryoku {
         private void DBProcess()
         {
             string mode = string.Empty;
-            //(string, string, string) obj = GetInsert();
+            (string, string) obj = GetInsert();
             if (cboMode.SelectedValue.Equals("1"))
             {
                 mode = "New";
-              //  DoInsert(mode, obj.Item1, obj.Item2, obj.Item3);
+                DoInsert(mode, obj.Item1, obj.Item2);
             }
             //else if (cboMode.SelectedValue.Equals("2"))
             //{
@@ -200,9 +200,9 @@ namespace ShukkaNyuuryoku {
             dr["ProgramID"] = base_Entity.ProgramID;
             dt.Rows.Add(dr);
             string Header_XML = cf.DataTableToXml(dt);
-            string Detail_XML = cf.DataTableToXml(Temptb1);
+            string Detail_XML = cf.DataTableToXml(F8_dt1);
 
-              return (Header_XML, Detail_XML);
+            return (Header_XML, Detail_XML);
         }
         private void ChangeMode(Mode mode)
         {
@@ -573,7 +573,7 @@ namespace ShukkaNyuuryoku {
             {
                 if (!txtShukkaNo.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")
                     {
                         EnablePanel();
                     }
@@ -770,5 +770,11 @@ namespace ShukkaNyuuryoku {
                
             }
         }
+        private void DoInsert(string mode, string str_main, string str_detail)
+        {
+            ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
+            sBL.ShukkaNyuuryoku_CUD(mode, str_main, str_detail);
+        }
+
     }
 }
