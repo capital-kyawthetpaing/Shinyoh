@@ -69,6 +69,7 @@ namespace Shinyoh_Search {
             {
                 DataGridViewRow row = gvrow;
                 soukoCD= row.Cells["colSouko"].Value.ToString();
+                soukoName = row.Cells["colSoukoName"].Value.ToString();
                 this.Close();
             }
         }
