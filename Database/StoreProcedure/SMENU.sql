@@ -14,11 +14,7 @@ AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
-
-    
-
-												select * from (
+	SET NOCOUNT ON;										select * from (
 select  StaffName,mp.ProgramEXE,
 fmd.BusinessID,fmd.BusinessSEQ,m.Char1,mp.ProgramName as ProgramID,mp.ProgramID as ProgramID_ID,
 fmd.ProgramSEQ,a.Insertable,a.Updatable,a.Deletable,a.Inquirable,a.Printable,a.Outputable,a.Runable
