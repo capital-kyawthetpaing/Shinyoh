@@ -290,7 +290,7 @@ namespace ChakuniNyuuryoku
             else if (cboMode.SelectedValue.Equals("3"))
             {
                 mode = "Delete";
-                
+                DoDelete(obj.Item1, obj.Item2);
             }
         }
         public void Create_Datatable_Column(DataTable create_dt)
@@ -381,6 +381,11 @@ namespace ChakuniNyuuryoku
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
             bl.ChakuniNyuuryoku_Update(str_main, str_detail);
+        }
+        private void DoDelete(string str_main, string str_detail)
+        {
+            chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
+            bl.ChakuniNyuuryoku_Delete(str_main, str_detail);
         }
         private ChakuniNyuuryoku_Entity GetEntity()
         {
