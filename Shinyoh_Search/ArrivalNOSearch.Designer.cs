@@ -29,13 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvArrivalNo = new Shinyoh_Controls.SGridView();
-            this.colChakuniNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblStaff = new Shinyoh_Controls.SLabel();
             this.lblSiiresaki = new Shinyoh_Controls.SLabel();
@@ -64,6 +59,12 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.sLabel2 = new Shinyoh_Controls.SLabel();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
+            this.colChakuniNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvArrivalNo)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -84,53 +85,6 @@
             this.gvArrivalNo.Size = new System.Drawing.Size(716, 302);
             this.gvArrivalNo.TabIndex = 1;
             this.gvArrivalNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvArrivalNo_CellMouseDoubleClick);
-            // 
-            // colChakuniNO
-            // 
-            this.colChakuniNO.DataPropertyName = "ChakuniNO";
-            this.colChakuniNO.HeaderText = "着荷番号";
-            this.colChakuniNO.Name = "colChakuniNO";
-            this.colChakuniNO.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "ChakuniDate";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Column2.HeaderText = "着荷日";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 80;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "ChakuniYoteiDate";
-            this.Column3.HeaderText = "着荷予定日";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "SiiresakiCD";
-            this.Column4.HeaderText = "仕入先";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 80;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "SiiresakiRyakuName";
-            this.Column5.HeaderText = "仕入先名";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            this.Column5.Width = 213;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "KanriNO";
-            this.Column6.HeaderText = "管理番号";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
             // 
             // panel1
             // 
@@ -432,6 +386,7 @@
             this.txtExpectedDateTo.SearchType = Entity.SearchType.ScType.None;
             this.txtExpectedDateTo.Size = new System.Drawing.Size(100, 19);
             this.txtExpectedDateTo.TabIndex = 11;
+            this.txtExpectedDateTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtExpectedDateTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtExpectedDateFrom
@@ -455,6 +410,7 @@
             this.txtExpectedDateFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtExpectedDateFrom.Size = new System.Drawing.Size(100, 19);
             this.txtExpectedDateFrom.TabIndex = 10;
+            this.txtExpectedDateFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtExpectedDateFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtProductName
@@ -501,6 +457,7 @@
             this.txtDateTo.SearchType = Entity.SearchType.ScType.None;
             this.txtDateTo.Size = new System.Drawing.Size(100, 19);
             this.txtDateTo.TabIndex = 8;
+            this.txtDateTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDateTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtDateFrom
@@ -524,6 +481,7 @@
             this.txtDateFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtDateFrom.Size = new System.Drawing.Size(100, 19);
             this.txtDateFrom.TabIndex = 7;
+            this.txtDateFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDateFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // sLabel7
@@ -616,6 +574,55 @@
             this.sLabel1.TabIndex = 0;
             this.sLabel1.Text = "着荷日";
             this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // colChakuniNO
+            // 
+            this.colChakuniNO.DataPropertyName = "ChakuniNO";
+            this.colChakuniNO.HeaderText = "着荷番号";
+            this.colChakuniNO.Name = "colChakuniNO";
+            this.colChakuniNO.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ChakuniDate";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Column2.HeaderText = "着荷日";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 80;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "ChakuniYoteiDate";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column3.HeaderText = "着荷予定日";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "SiiresakiCD";
+            this.Column4.HeaderText = "仕入先";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Width = 80;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "SiiresakiRyakuName";
+            this.Column5.HeaderText = "仕入先名";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            this.Column5.Width = 213;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "KanriNO";
+            this.Column6.HeaderText = "管理番号";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
             // 
             // ArrivalNOSearch
             // 

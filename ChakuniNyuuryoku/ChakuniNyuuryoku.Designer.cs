@@ -30,6 +30,9 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.txtArrivalDate = new Shinyoh_Controls.STextBox();
             this.txtDescription = new Shinyoh_Controls.STextBox();
@@ -68,14 +71,10 @@
             this.lblWareHouse = new Shinyoh_Controls.SLabel();
             this.lblBrandName = new Shinyoh_Controls.SLabel();
             this.panelDetails = new System.Windows.Forms.Panel();
-            this.gvJancd = new Shinyoh_Controls.SGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtScheduledNo = new Shinyoh_Search.SearchBox();
             this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.txtSiiresaki = new Shinyoh_Search.SearchBox();
-            this.sbWareHouse = new Shinyoh_Search.SearchBox();
+            this.txtSouko = new Shinyoh_Search.SearchBox();
             this.lblSiiresaki = new Shinyoh_Controls.SLabel();
             this.txtArrivalNO = new Shinyoh_Search.SearchBox();
             this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,13 +86,19 @@
             this.colArrivalNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChakuniZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colChakuniYoteiGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHacchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
             this.panelDetails.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvJancd)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -146,7 +151,9 @@
             this.txtArrivalDate.SearchType = Entity.SearchType.ScType.None;
             this.txtArrivalDate.Size = new System.Drawing.Size(100, 19);
             this.txtArrivalDate.TabIndex = 2;
+            this.txtArrivalDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtArrivalDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtArrivalDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtArrivalDate_KeyDown);
             // 
             // txtDescription
             // 
@@ -636,6 +643,15 @@
             // gvChakuniNyuuryoku
             // 
             this.gvChakuniNyuuryoku.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvChakuniNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvChakuniNyuuryoku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvChakuniNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -647,13 +663,20 @@
             this.colArrivalNo,
             this.colChakuniZumiSuu,
             this.colArrivalTime,
-            this.Column10,
-            this.colDetails});
-            this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(2, 216);
+            this.chk,
+            this.colDetails,
+            this.colJanCD,
+            this.colChakuniYoteiGyouNO,
+            this.colHacchuuGyouNO,
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4});
+            this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(25, 216);
             this.gvChakuniNyuuryoku.Name = "gvChakuniNyuuryoku";
-            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1475, 150);
+            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1395, 150);
             this.gvChakuniNyuuryoku.TabIndex = 35;
-            this.gvChakuniNyuuryoku.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvChakuniNyuuryoku_CellValidating);
+            this.gvChakuniNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvChakuniNyuuryoku_CellEndEdit);
             // 
             // btn_Siiresaki
             // 
@@ -707,7 +730,6 @@
             // 
             // panelDetails
             // 
-            this.panelDetails.Controls.Add(this.gvJancd);
             this.panelDetails.Controls.Add(this.txtScheduledNo);
             this.panelDetails.Controls.Add(this.txtStaffCD);
             this.panelDetails.Controls.Add(this.txtSiiresaki);
@@ -724,7 +746,7 @@
             this.panelDetails.Controls.Add(this.chkFW);
             this.panelDetails.Controls.Add(this.sLabel5);
             this.panelDetails.Controls.Add(this.chkSS);
-            this.panelDetails.Controls.Add(this.sbWareHouse);
+            this.panelDetails.Controls.Add(this.txtSouko);
             this.panelDetails.Controls.Add(this.txtSize);
             this.panelDetails.Controls.Add(this.txtYearTerm);
             this.panelDetails.Controls.Add(this.lblSiiresaki);
@@ -753,42 +775,6 @@
             this.panelDetails.Name = "panelDetails";
             this.panelDetails.Size = new System.Drawing.Size(1480, 570);
             this.panelDetails.TabIndex = 45;
-            // 
-            // gvJancd
-            // 
-            this.gvJancd.AllowUserToAddRows = false;
-            this.gvJancd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvJancd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.gvJancd.Location = new System.Drawing.Point(3, 391);
-            this.gvJancd.Name = "gvJancd";
-            this.gvJancd.Size = new System.Drawing.Size(450, 150);
-            this.gvJancd.TabIndex = 48;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "JanCD";
-            this.Column1.HeaderText = "JANCD";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "a";
-            this.Column2.HeaderText = "着荷予定番号-行番号";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 150;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "b";
-            this.Column3.HeaderText = "発注番号-行番号";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 150;
             // 
             // txtScheduledNo
             // 
@@ -838,12 +824,11 @@
             this.txtStaffCD.MoveNext = true;
             this.txtStaffCD.Name = "txtStaffCD";
             this.txtStaffCD.NextControl = null;
-            this.txtStaffCD.NextControlName = "sbWarehouse";
+            this.txtStaffCD.NextControlName = "txtSouko";
             this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
             this.txtStaffCD.Size = new System.Drawing.Size(100, 19);
             this.txtStaffCD.TabIndex = 46;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
             // 
             // txtSiiresaki
             // 
@@ -873,33 +858,33 @@
             this.txtSiiresaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSiiresaki.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSiiresaki_KeyDown);
             // 
-            // sbWareHouse
+            // txtSouko
             // 
-            this.sbWareHouse.AllowMinus = false;
-            this.sbWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sbWareHouse.ChangeDate = null;
-            this.sbWareHouse.Combo = null;
-            this.sbWareHouse.DecimalPlace = 0;
-            this.sbWareHouse.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.sbWareHouse.DepandOnMode = false;
-            this.sbWareHouse.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.sbWareHouse.IntegerPart = 0;
-            this.sbWareHouse.IsDatatableOccurs = null;
-            this.sbWareHouse.IsErrorOccurs = false;
-            this.sbWareHouse.IsRequire = false;
-            this.sbWareHouse.lblName = null;
-            this.sbWareHouse.Location = new System.Drawing.Point(801, 4);
-            this.sbWareHouse.MaxLength = 10;
-            this.sbWareHouse.MinimumSize = new System.Drawing.Size(100, 19);
-            this.sbWareHouse.MoveNext = true;
-            this.sbWareHouse.Name = "sbWareHouse";
-            this.sbWareHouse.NextControl = null;
-            this.sbWareHouse.NextControlName = "txtDescription";
-            this.sbWareHouse.SearchType = Entity.SearchType.ScType.Souko;
-            this.sbWareHouse.Size = new System.Drawing.Size(100, 19);
-            this.sbWareHouse.TabIndex = 41;
-            this.sbWareHouse.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.sbWareHouse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbWareHouse_KeyDown);
+            this.txtSouko.AllowMinus = false;
+            this.txtSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSouko.ChangeDate = null;
+            this.txtSouko.Combo = null;
+            this.txtSouko.DecimalPlace = 0;
+            this.txtSouko.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtSouko.DepandOnMode = false;
+            this.txtSouko.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSouko.IntegerPart = 0;
+            this.txtSouko.IsDatatableOccurs = null;
+            this.txtSouko.IsErrorOccurs = false;
+            this.txtSouko.IsRequire = false;
+            this.txtSouko.lblName = null;
+            this.txtSouko.Location = new System.Drawing.Point(801, 4);
+            this.txtSouko.MaxLength = 10;
+            this.txtSouko.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSouko.MoveNext = true;
+            this.txtSouko.Name = "txtSouko";
+            this.txtSouko.NextControl = null;
+            this.txtSouko.NextControlName = "txtDescription";
+            this.txtSouko.SearchType = Entity.SearchType.ScType.Souko;
+            this.txtSouko.Size = new System.Drawing.Size(100, 19);
+            this.txtSouko.TabIndex = 41;
+            this.txtSouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSouko_KeyDown);
             // 
             // lblSiiresaki
             // 
@@ -921,7 +906,7 @@
             this.txtArrivalNO.Combo = null;
             this.txtArrivalNO.DecimalPlace = 0;
             this.txtArrivalNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtArrivalNO.DepandOnMode = false;
+            this.txtArrivalNO.DepandOnMode = true;
             this.txtArrivalNO.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtArrivalNO.IntegerPart = 0;
             this.txtArrivalNO.IsDatatableOccurs = null;
@@ -947,7 +932,6 @@
             this.colShouhinCD.HeaderText = "商品";
             this.colShouhinCD.Name = "colShouhinCD";
             this.colShouhinCD.ReadOnly = true;
-            this.colShouhinCD.Width = 150;
             // 
             // colShouhinName
             // 
@@ -982,8 +966,8 @@
             // colDate
             // 
             this.colDate.DataPropertyName = "ChakuniYoteiDate";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colDate.HeaderText = "着荷予定日";
             this.colDate.Name = "colDate";
             this.colDate.ReadOnly = true;
@@ -991,6 +975,8 @@
             // colArrivalNo
             // 
             this.colArrivalNo.DataPropertyName = "ChakuniYoteiSuu";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colArrivalNo.DefaultCellStyle = dataGridViewCellStyle3;
             this.colArrivalNo.HeaderText = "着荷予定数";
             this.colArrivalNo.Name = "colArrivalNo";
             this.colArrivalNo.ReadOnly = true;
@@ -998,31 +984,85 @@
             // colChakuniZumiSuu
             // 
             this.colChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
             this.colChakuniZumiSuu.HeaderText = "着荷済数";
             this.colChakuniZumiSuu.Name = "colChakuniZumiSuu";
             // 
             // colArrivalTime
             // 
             this.colArrivalTime.DataPropertyName = "ChakuniSuu";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.NullValue = null;
-            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.NullValue = null;
+            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle5;
             this.colArrivalTime.HeaderText = "今回着荷数";
             this.colArrivalTime.Name = "colArrivalTime";
             // 
-            // Column10
+            // chk
             // 
-            this.Column10.DataPropertyName = "null";
-            this.Column10.HeaderText = "完了";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 70;
+            this.chk.DataPropertyName = "SiireKanryoKBN";
+            this.chk.HeaderText = "完了";
+            this.chk.Name = "chk";
+            this.chk.Width = 70;
             // 
             // colDetails
             // 
-            this.colDetails.DataPropertyName = "d";
+            this.colDetails.DataPropertyName = "ChakuniMeisaiTekiyou";
             this.colDetails.HeaderText = "明細摘要";
             this.colDetails.Name = "colDetails";
-            this.colDetails.Width = 260;
+            this.colDetails.Width = 235;
+            // 
+            // colJanCD
+            // 
+            this.colJanCD.DataPropertyName = "JanCD";
+            this.colJanCD.HeaderText = "JANCD";
+            this.colJanCD.Name = "colJanCD";
+            // 
+            // colChakuniYoteiGyouNO
+            // 
+            this.colChakuniYoteiGyouNO.DataPropertyName = "Chakuni";
+            this.colChakuniYoteiGyouNO.HeaderText = "着荷予定番号-行番号";
+            this.colChakuniYoteiGyouNO.Name = "colChakuniYoteiGyouNO";
+            this.colChakuniYoteiGyouNO.Width = 200;
+            // 
+            // colHacchuuGyouNO
+            // 
+            this.colHacchuuGyouNO.DataPropertyName = "Hacchuu";
+            this.colHacchuuGyouNO.HeaderText = "発注番号-行番号";
+            this.colHacchuuGyouNO.Name = "colHacchuuGyouNO";
+            this.colHacchuuGyouNO.Width = 180;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "ChakuniYoteiNO";
+            this.Column1.HeaderText = "ChakuniYoteiNO";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            this.Column1.Width = 10;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ChakuniYoteiGyouNO";
+            this.Column2.HeaderText = "ChakuniYoteiGyouNO";
+            this.Column2.Name = "Column2";
+            this.Column2.Visible = false;
+            this.Column2.Width = 10;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "HacchuuNO";
+            this.Column3.HeaderText = "HacchuuNO";
+            this.Column3.Name = "Column3";
+            this.Column3.Visible = false;
+            this.Column3.Width = 10;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "HacchuuGyouNO";
+            this.Column4.HeaderText = "HacchuuGyouNO";
+            this.Column4.Name = "Column4";
+            this.Column4.Visible = false;
+            this.Column4.Width = 10;
             // 
             // ChakuniNyuuryoku
             // 
@@ -1041,7 +1081,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).EndInit();
             this.panelDetails.ResumeLayout(false);
             this.panelDetails.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvJancd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1082,7 +1121,7 @@
         private Shinyoh_Controls.SGridView gvChakuniNyuuryoku;
         private Shinyoh_Controls.SButton btn_Siiresaki;
         private Shinyoh_Controls.SLabel lblStaff;
-        private Shinyoh_Search.SearchBox sbWareHouse;
+        private Shinyoh_Search.SearchBox txtSouko;
         private Shinyoh_Controls.SLabel lblWareHouse;
         private Shinyoh_Search.SearchBox sbBrand;
         private Shinyoh_Controls.SLabel lblBrandName;
@@ -1090,10 +1129,6 @@
         private Shinyoh_Search.SearchBox txtSiiresaki;
         private Shinyoh_Search.SearchBox txtStaffCD;
         private Shinyoh_Search.SearchBox txtScheduledNo;
-        private Shinyoh_Controls.SGridView gvJancd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private Shinyoh_Controls.SLabel lblSiiresaki;
         private Shinyoh_Search.SearchBox txtArrivalNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
@@ -1105,8 +1140,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colArrivalNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniZumiSuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colArrivalTime;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJanCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniYoteiGyouNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHacchuuGyouNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }
 

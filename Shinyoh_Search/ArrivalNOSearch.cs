@@ -19,6 +19,8 @@ namespace Shinyoh_Search
         public ArrivalNOSearch()
         {
             InitializeComponent();
+            gvArrivalNo.SetGridDesign();
+            gvArrivalNo.SetReadOnlyColumn("*");
         }
 
         private void ArrivalNOSearch_Load(object sender, EventArgs e)
@@ -28,6 +30,10 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            gvArrivalNo.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvArrivalNo.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvArrivalNo.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvArrivalNo.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvArrivalNo.UseRowNo(true);
             GridViewBind();
             txtDateFrom.Focus();
@@ -42,6 +48,7 @@ namespace Shinyoh_Search
             if (tagID == "3")
             {
                 DataGridViewRow row = gvArrivalNo.CurrentRow;
+                GetGridviewData(row);
             }
             base.FunctionProcess(tagID);
         }

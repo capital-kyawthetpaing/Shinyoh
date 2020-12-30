@@ -18,7 +18,9 @@ namespace Entity {
            Kouriten,
            ShippingNO,
             Shouhin,
-            ArrivalNo
+            ArrivalNo,
+            JuchuuNo,
+            ShukkaNo
         }
     }
 }

@@ -68,6 +68,11 @@ namespace Shinyoh_Controls
                         rDt = kBL.Kouriten_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_Siiresaki":
+                        SiiresakiBL BL = new SiiresakiBL();
+                        rDt = BL.Siiresaki_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                     case "M_Shouhin":
                         ShouhinBL shouhin = new ShouhinBL();
                         string id = string.Empty;
@@ -96,6 +101,20 @@ namespace Shinyoh_Controls
                                 break;
                         }
                         rDt = shouhin.Shouhin_Check(id, sTextBox.ctrlE101_1.Text, "E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "HikiateHenkouShoukai":
+                        switch(sTextBox.ctrlE101_1.Name)
+                        {
+                            case "txtTokuisakiCD":
+                                TokuisakiBL tokuisakiBL = new TokuisakiBL();
+                                rDt = tokuisakiBL.M_Tokuisaki_Select(sTextBox.ctrlE101_1.Text, sTextBox.E102Type, "E101");
+                                break;
+                            case "txtKouritenCD":
+                                KouritenBL kouritenbl = new KouritenBL();
+                                rDt = kouritenbl.Kouriten_Select_Check(sTextBox.ctrlE101_1.Text, sTextBox.E102Type, "E101");
+                                break;
+                        }
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
@@ -192,6 +211,12 @@ namespace Shinyoh_Controls
                         rDt = sbl.ShukkaNyuuryoku_Select_Check(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "ChakuniNyuuryoku":
+                        chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
+                        rDt = cbl.ChakuniNyuuryoku_Select(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+
                 }
                 if (result.Equals("E115"))
                 {
@@ -231,7 +256,7 @@ namespace Shinyoh_Controls
                         break;
                     case "M_Kouriten":
                         KouritenBL objK = new KouritenBL();
-                        dt = objK.Kouriten_Select_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text, string.Empty);
+                        dt = objK.Kouriten_Select_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text, string.Empty,sTextBox.ctrlE132_3.Text);
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
@@ -301,7 +326,7 @@ namespace Shinyoh_Controls
                         if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE133_2.Text))
                         {
                             KouritenBL objK = new KouritenBL();
-                            dt = objK.Kouriten_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty);
+                            dt = objK.Kouriten_Select_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty,sTextBox.ctrlE133_3.Text);
                             rDt = dt;
                             result = dt.Rows[0]["MessageID"].ToString();
                         }
@@ -344,6 +369,14 @@ namespace Shinyoh_Controls
                         ShukkaNyuuryokuBL sbl = new ShukkaNyuuryokuBL();
                         rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
                         result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "HikiateHenkouShoukai":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text.Trim()))
+                        {
+                            HikiateHenkouShoukaiBL hikiateHenkouShoukaiBL = new HikiateHenkouShoukaiBL();
+                            rDt = hikiateHenkouShoukaiBL.Error_Check(sTextBox.ctrlE133_1.Text, string.Empty, "E133");
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
                         break;
                 }
                 if (result.Equals("E133"))
@@ -547,7 +580,7 @@ namespace Shinyoh_Controls
                         if (!string.IsNullOrEmpty(sTextBox.ctrlE270_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE270_2.Text))
                         {
                             KouritenBL objK = new KouritenBL();
-                            rDt = objK.Kouriten_Select_Check(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, "E270");
+                            rDt = objK.Kouriten_Select_Check(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, "E270",sTextBox.ctrlE270_3.Text);
                             result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;

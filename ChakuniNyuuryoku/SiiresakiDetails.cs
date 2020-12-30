@@ -31,6 +31,8 @@ namespace ChakuniNyuuryoku
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
             Access_DB_Object(Access_Siiresaki_obj);
+            sbSupplier.Enabled = false;
+            sbSupplier.BackColor = SystemColors.Control;
         }
         private void Access_DB_Object(SiiresakiEntity obj)
         {
@@ -52,8 +54,6 @@ namespace ChakuniNyuuryoku
 
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
                 if (e.KeyCode == Keys.Enter)
                 {
                     if (!txtYubin2.IsErrorOccurs)
@@ -79,7 +79,6 @@ namespace ChakuniNyuuryoku
                         }
                     }
                 }
-            }
         }
     }
 }

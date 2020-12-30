@@ -54,9 +54,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Panel_Detail = new System.Windows.Forms.Panel();
             this.PanelTitle = new System.Windows.Forms.Panel();
+            this.lblTokuisaki_Name = new Shinyoh_Controls.SLabel();
             this.txtTokuisakiCD = new Shinyoh_Controls.STextBox();
             this.lblCD = new Shinyoh_Controls.SLabel();
-            this.lblTokuisaki_Name = new Shinyoh_Controls.SLabel();
             this.Panel_Detail.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +81,7 @@
             this.txtShort_Name.AllowMinus = false;
             this.txtShort_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtShort_Name.DecimalPlace = 0;
+            this.txtShort_Name.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtShort_Name.DepandOnMode = true;
             this.txtShort_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShort_Name.IntegerPart = 0;
@@ -97,7 +98,7 @@
             this.txtShort_Name.SearchType = Entity.SearchType.ScType.None;
             this.txtShort_Name.Size = new System.Drawing.Size(295, 19);
             this.txtShort_Name.TabIndex = 2;
-            this.txtShort_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtShort_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblLong
             // 
@@ -119,6 +120,7 @@
             this.txtLong_Name.AllowMinus = false;
             this.txtLong_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtLong_Name.DecimalPlace = 0;
+            this.txtLong_Name.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtLong_Name.DepandOnMode = true;
             this.txtLong_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtLong_Name.IntegerPart = 0;
@@ -135,7 +137,7 @@
             this.txtLong_Name.SearchType = Entity.SearchType.ScType.None;
             this.txtLong_Name.Size = new System.Drawing.Size(400, 19);
             this.txtLong_Name.TabIndex = 3;
-            this.txtLong_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtLong_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label1
             // 
@@ -166,6 +168,7 @@
             this.txtYubin1.AllowMinus = false;
             this.txtYubin1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin1.DecimalPlace = 0;
+            this.txtYubin1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtYubin1.DepandOnMode = true;
             this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
@@ -189,6 +192,7 @@
             this.txtYubin2.AllowMinus = false;
             this.txtYubin2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtYubin2.DecimalPlace = 0;
+            this.txtYubin2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtYubin2.DepandOnMode = true;
             this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
@@ -206,6 +210,7 @@
             this.txtYubin2.Size = new System.Drawing.Size(70, 19);
             this.txtYubin2.TabIndex = 5;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
             // 
             // lblAddress1
             // 
@@ -226,6 +231,7 @@
             this.txtAddress1.AllowMinus = false;
             this.txtAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress1.DecimalPlace = 0;
+            this.txtAddress1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtAddress1.DepandOnMode = true;
             this.txtAddress1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress1.IntegerPart = 0;
@@ -263,6 +269,7 @@
             this.txtAddress2.AllowMinus = false;
             this.txtAddress2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAddress2.DecimalPlace = 0;
+            this.txtAddress2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtAddress2.DepandOnMode = true;
             this.txtAddress2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress2.IntegerPart = 0;
@@ -300,6 +307,7 @@
             this.txtPhone1_1.AllowMinus = false;
             this.txtPhone1_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone1_1.DecimalPlace = 0;
+            this.txtPhone1_1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone1_1.DepandOnMode = true;
             this.txtPhone1_1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone1_1.IntegerPart = 0;
@@ -323,6 +331,7 @@
             this.txtPhone1_2.AllowMinus = false;
             this.txtPhone1_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone1_2.DecimalPlace = 0;
+            this.txtPhone1_2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone1_2.DepandOnMode = true;
             this.txtPhone1_2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone1_2.IntegerPart = 0;
@@ -346,6 +355,7 @@
             this.txtPhone1_3.AllowMinus = false;
             this.txtPhone1_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone1_3.DecimalPlace = 0;
+            this.txtPhone1_3.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone1_3.DepandOnMode = true;
             this.txtPhone1_3.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone1_3.IntegerPart = 0;
@@ -403,6 +413,7 @@
             this.txtPhone2_1.AllowMinus = false;
             this.txtPhone2_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone2_1.DecimalPlace = 0;
+            this.txtPhone2_1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone2_1.DepandOnMode = true;
             this.txtPhone2_1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone2_1.IntegerPart = 0;
@@ -426,6 +437,7 @@
             this.txtPhone2_2.AllowMinus = false;
             this.txtPhone2_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone2_2.DecimalPlace = 0;
+            this.txtPhone2_2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone2_2.DepandOnMode = true;
             this.txtPhone2_2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone2_2.IntegerPart = 0;
@@ -449,6 +461,7 @@
             this.txtPhone2_3.AllowMinus = false;
             this.txtPhone2_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPhone2_3.DecimalPlace = 0;
+            this.txtPhone2_3.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone2_3.DepandOnMode = true;
             this.txtPhone2_3.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone2_3.IntegerPart = 0;
@@ -515,11 +528,13 @@
             this.Panel_Detail.Controls.Add(this.lblShort);
             this.Panel_Detail.Location = new System.Drawing.Point(0, 82);
             this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1050, 326);
+            this.Panel_Detail.Size = new System.Drawing.Size(1050, 329);
             this.Panel_Detail.TabIndex = 1;
             // 
             // PanelTitle
             // 
+            this.PanelTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.PanelTitle.Controls.Add(this.lblTokuisaki_Name);
             this.PanelTitle.Controls.Add(this.txtTokuisakiCD);
@@ -529,11 +544,26 @@
             this.PanelTitle.Size = new System.Drawing.Size(1049, 81);
             this.PanelTitle.TabIndex = 0;
             // 
+            // lblTokuisaki_Name
+            // 
+            this.lblTokuisaki_Name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblTokuisaki_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblTokuisaki_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.lblTokuisaki_Name.Location = new System.Drawing.Point(242, 49);
+            this.lblTokuisaki_Name.MinimumSize = new System.Drawing.Size(100, 19);
+            this.lblTokuisaki_Name.Name = "lblTokuisaki_Name";
+            this.lblTokuisaki_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblTokuisaki_Name.TabIndex = 110;
+            this.lblTokuisaki_Name.Text = "lable";
+            this.lblTokuisaki_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // txtTokuisakiCD
             // 
             this.txtTokuisakiCD.AllowMinus = false;
             this.txtTokuisakiCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTokuisakiCD.DecimalPlace = 0;
+            this.txtTokuisakiCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtTokuisakiCD.DepandOnMode = true;
             this.txtTokuisakiCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiCD.IntegerPart = 0;
@@ -550,7 +580,7 @@
             this.txtTokuisakiCD.SearchType = Entity.SearchType.ScType.None;
             this.txtTokuisakiCD.Size = new System.Drawing.Size(100, 19);
             this.txtTokuisakiCD.TabIndex = 1;
-            this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblCD
             // 
@@ -565,19 +595,6 @@
             this.lblCD.TabIndex = 109;
             this.lblCD.Text = "得意先";
             this.lblCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTokuisaki_Name
-            // 
-            this.lblTokuisaki_Name.BackColor = System.Drawing.SystemColors.Control;
-            this.lblTokuisaki_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTokuisaki_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lblTokuisaki_Name.Location = new System.Drawing.Point(242, 49);
-            this.lblTokuisaki_Name.MinimumSize = new System.Drawing.Size(100, 19);
-            this.lblTokuisaki_Name.Name = "lblTokuisaki_Name";
-            this.lblTokuisaki_Name.Size = new System.Drawing.Size(100, 19);
-            this.lblTokuisaki_Name.TabIndex = 110;
-            this.lblTokuisaki_Name.Text = "lable";
-            this.lblTokuisaki_Name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // TokuisakiDetail
             // 

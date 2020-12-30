@@ -52,6 +52,8 @@ namespace Entity
         public string ShouhinCDTo { get; set; }
         public int DataKBN { get; set; }
         public string Number { get; set; }
+        public string OperatorMode { get; set; }
+        public string KeyItem { get; set; }
     }
     
 }

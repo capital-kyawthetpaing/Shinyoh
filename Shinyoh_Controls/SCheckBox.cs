@@ -50,7 +50,9 @@ namespace Shinyoh_Controls
         }
         protected override void OnLeave(EventArgs e)
         {
-            this.BackColor = SystemColors.Menu;
+            if (this.Parent.Name == "PanelTitle")
+                this.BackColor = Color.FromArgb(0, 176, 240);
+            else this.BackColor = SystemColors.Menu;
             base.OnLeave(e);
         }
         protected override void OnEnabledChanged(EventArgs e)
@@ -58,8 +60,11 @@ namespace Shinyoh_Controls
             if (!Enabled)
                 this.BackColor = Color.FromArgb(255, 230, 153);
             else
-                this.BackColor = SystemColors.Window;
-
+            {
+                if (this.Parent.Name == "PanelTitle")
+                    this.BackColor = Color.FromArgb(0, 176, 240);
+                else this.BackColor = SystemColors.Control;
+            }
             base.OnEnabledChanged(e);
         }
 

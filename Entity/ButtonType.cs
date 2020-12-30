@@ -25,7 +25,9 @@ namespace Entity
             Empty,//
             Confirm, //確認
             Display,
-            Import //取込
+            Import, //取込
+            Export,
+            Memory
         }
     }
 }

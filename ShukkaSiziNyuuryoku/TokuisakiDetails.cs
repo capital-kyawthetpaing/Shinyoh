@@ -35,7 +35,8 @@ namespace ShukkaSiziNyuuryoku
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
             SendData(Access_Tokuisaki_obj);
-
+            txtTokuisakiCD.Enabled = false;
+            txtTokuisakiCD.BackColor = SystemColors.Control;
         }
         private void SendData(TokuisakiEntity obj)
         {
@@ -53,14 +54,19 @@ namespace ShukkaSiziNyuuryoku
             txtPhNo4.Text = obj.Tel21;
             txtPhNo5.Text = obj.Tel22;
             txtPhNo6.Text = obj.Tel23;
+            YuuBinNO1 = obj.YuubinNO1;
+            YuuBinNO2= obj.YuubinNO2;
+            Address1= obj.Juusho1;
+            Address2= obj.Juusho2;
         }
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
         {
+            
             if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode == Keys.Enter)
+                if (!txtYubin2.IsErrorOccurs)
                 {
-                    if (!txtYubin2.IsErrorOccurs)
+                    if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
                     {
                         if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
                         {
@@ -70,17 +76,14 @@ namespace ShukkaSiziNyuuryoku
                         }
                         else
                         {
-                            if (txtYubin1.Text != YuuBinNO1 || txtYubin2.Text != YuuBinNO2)
-                            {
-                                txtAddress1.Text = string.Empty;
-                                txtAddress2.Text = string.Empty;
-                            }
-                            else
-                            {
-                                txtAddress1.Text = Address1;
-                                txtAddress2.Text = Address2;
-                            }
+                            txtAddress1.Text = string.Empty;
+                            txtAddress2.Text = string.Empty;
                         }
+                    }                   
+                    else
+                    {
+                        txtAddress1.Text = Address1;
+                        txtAddress2.Text = Address2;
                     }
                 }
             }

@@ -27,7 +27,6 @@
         private void InitializeComponent()
         {
             this.PanelTitle = new System.Windows.Forms.Panel();
-            this.lblKouriten_Name = new Shinyoh_Controls.SLabel();
             this.txtKouritenCD = new Shinyoh_Controls.STextBox();
             this.lblCD = new Shinyoh_Controls.SLabel();
             this.Panel_Detail = new System.Windows.Forms.Panel();
@@ -55,6 +54,7 @@
             this.lblLong = new Shinyoh_Controls.SLabel();
             this.txtShort_Name = new Shinyoh_Controls.STextBox();
             this.lblShort = new Shinyoh_Controls.SLabel();
+            this.lblKouritenName = new Shinyoh_Controls.SLabel();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
             this.SuspendLayout();
@@ -62,26 +62,13 @@
             // PanelTitle
             // 
             this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.PanelTitle.Controls.Add(this.lblKouriten_Name);
+            this.PanelTitle.Controls.Add(this.lblKouritenName);
             this.PanelTitle.Controls.Add(this.txtKouritenCD);
             this.PanelTitle.Controls.Add(this.lblCD);
             this.PanelTitle.Location = new System.Drawing.Point(4, 2);
             this.PanelTitle.Name = "PanelTitle";
             this.PanelTitle.Size = new System.Drawing.Size(1049, 81);
             this.PanelTitle.TabIndex = 2;
-            // 
-            // lblKouriten_Name
-            // 
-            this.lblKouriten_Name.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.lblKouriten_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblKouriten_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblKouriten_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lblKouriten_Name.Location = new System.Drawing.Point(242, 49);
-            this.lblKouriten_Name.MinimumSize = new System.Drawing.Size(100, 19);
-            this.lblKouriten_Name.Name = "lblKouriten_Name";
-            this.lblKouriten_Name.Size = new System.Drawing.Size(200, 19);
-            this.lblKouriten_Name.TabIndex = 110;
-            this.lblKouriten_Name.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtKouritenCD
             // 
@@ -90,6 +77,7 @@
             this.txtKouritenCD.DecimalPlace = 0;
             this.txtKouritenCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtKouritenCD.DepandOnMode = true;
+            this.txtKouritenCD.Enabled = false;
             this.txtKouritenCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKouritenCD.IntegerPart = 0;
             this.txtKouritenCD.IsDatatableOccurs = null;
@@ -102,6 +90,7 @@
             this.txtKouritenCD.Name = "txtKouritenCD";
             this.txtKouritenCD.NextControl = null;
             this.txtKouritenCD.NextControlName = "txtShort_Name";
+            this.txtKouritenCD.ReadOnly = true;
             this.txtKouritenCD.SearchType = Entity.SearchType.ScType.None;
             this.txtKouritenCD.Size = new System.Drawing.Size(100, 19);
             this.txtKouritenCD.TabIndex = 1;
@@ -591,6 +580,18 @@
             this.lblShort.Text = "小売店略名";
             this.lblShort.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblKouritenName
+            // 
+            this.lblKouritenName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblKouritenName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblKouritenName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblKouritenName.Location = new System.Drawing.Point(242, 49);
+            this.lblKouritenName.Name = "lblKouritenName";
+            this.lblKouritenName.Size = new System.Drawing.Size(250, 19);
+            this.lblKouritenName.TabIndex = 111;
+            this.lblKouritenName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // KouritenDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -613,7 +614,6 @@
         #endregion
 
         private System.Windows.Forms.Panel PanelTitle;
-        private Shinyoh_Controls.SLabel lblKouriten_Name;
         private Shinyoh_Controls.STextBox txtKouritenCD;
         private Shinyoh_Controls.SLabel lblCD;
         private System.Windows.Forms.Panel Panel_Detail;
@@ -641,5 +641,6 @@
         private Shinyoh_Controls.SLabel lblLong;
         private Shinyoh_Controls.STextBox txtShort_Name;
         private Shinyoh_Controls.SLabel lblShort;
+        private Shinyoh_Controls.SLabel lblKouritenName;
     }
 }
