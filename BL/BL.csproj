@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +35,9 @@
     <Reference Include="CKM_DataLayer">
       <HintPath>..\Shinyoh\RequireDLL\CKM_DataLayer.dll</HintPath>
     </Reference>
+    <Reference Include="MenuDL">
+      <HintPath>..\Shinyoh\RequireDLL\MenuDL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
@@ -54,7 +58,7 @@
     <Compile Include="JuchuuListBL.cs" />
     <Compile Include="JuchuuNyuuryokuBL.cs" />
     <Compile Include="KouritenBL.cs" />
-    <Compile Include="LoginBL.cs" />
+    <Compile Include="Login_BL.cs" />
     <Compile Include="multipurposeBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShouhinBL.cs" />
