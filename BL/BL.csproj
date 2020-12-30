@@ -50,6 +50,7 @@
     <Compile Include="DenpyouNOBL.cs" />
     <Compile Include="HacchuuListBL.cs" />
     <Compile Include="HikiateHenkouShoukaiBL.cs" />
+    <Compile Include="IdouNyuuryokuBL.cs" />
     <Compile Include="JuchuuListBL.cs" />
     <Compile Include="JuchuuNyuuryokuBL.cs" />
     <Compile Include="KouritenBL.cs" />

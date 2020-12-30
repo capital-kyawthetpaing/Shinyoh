@@ -16,6 +16,7 @@ namespace Shinyoh_Search {
     public partial class SoukoSearch : SearchBase {
 
         public string soukoCD = string.Empty;
+        public string soukoName = string.Empty;
 
         public SoukoSearch()
         {

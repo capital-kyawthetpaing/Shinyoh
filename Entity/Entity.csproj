@@ -46,6 +46,7 @@
     <Compile Include="DenpyouNOEntity.cs" />
     <Compile Include="HacchuuEntity.cs" />
     <Compile Include="HikiateHenkouShoukaiEntity.cs" />
+    <Compile Include="IdouNyuuryokuEntity.cs" />
     <Compile Include="JuchuuEntity.cs" />
     <Compile Include="JuchuuNyuuryokuEntity.cs" />
     <Compile Include="KouritenEntity.cs" />
