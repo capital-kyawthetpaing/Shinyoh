@@ -339,25 +339,25 @@ namespace ChakuniNyuuryoku
             dr["SiiresakiCD"] = txtSiiresaki.Text;
             dr["SiiresakiName"] = s_obj.SiiresakiName;
             dr["SiiresakiRyakuName"] = s_obj.SiiresakiRyakuName;
-            dr["SiiresakiYuubinNO1"] = s_obj.YuubinNO1;
-            dr["SiiresakiYuubinNO2"] = s_obj.YuubinNO2;
-            dr["SiiresakiJuusho1"] = s_obj.Juusho1;
-            dr["SiiresakiJuusho2"] = s_obj.Juusho2;
-            dr["SiiresakiTelNO11"] = s_obj.Tel11;
-            dr["SiiresakiTelNO12"] = s_obj.Tel12;
-            dr["SiiresakiTelNO13"] = s_obj.Tel13;
-            dr["SiiresakiTelNO21"] = s_obj.Tel21;
-            dr["SiiresakiTelNO22"] = s_obj.Tel22;
-            dr["SiiresakiTelNO23"] = s_obj.Tel23;
+            dr["SiiresakiYuubinNO1"] = string.IsNullOrEmpty(s_obj.YuubinNO1) ? null : s_obj.YuubinNO1;
+            dr["SiiresakiYuubinNO2"] = string.IsNullOrEmpty(s_obj.YuubinNO2) ? null : s_obj.YuubinNO2;
+            dr["SiiresakiJuusho1"] = string.IsNullOrEmpty(s_obj.Juusho1) ? null : s_obj.Juusho1;
+            dr["SiiresakiJuusho2"] = string.IsNullOrEmpty(s_obj.Juusho2) ? null : s_obj.Juusho2;
+            dr["SiiresakiTelNO11"] = string.IsNullOrEmpty(s_obj.Tel11) ? null : s_obj.Tel11;
+            dr["SiiresakiTelNO12"] = string.IsNullOrEmpty(s_obj.Tel12) ? null : s_obj.Tel12;
+            dr["SiiresakiTelNO13"] = string.IsNullOrEmpty(s_obj.Tel13) ? null : s_obj.Tel13;
+            dr["SiiresakiTelNO21"] = string.IsNullOrEmpty(s_obj.Tel21) ? null : s_obj.Tel21;
+            dr["SiiresakiTelNO22"] = string.IsNullOrEmpty(s_obj.Tel22) ? null : s_obj.Tel22;
+            dr["SiiresakiTelNO23"] = string.IsNullOrEmpty(s_obj.Tel23) ? null : s_obj.Tel23;
             dr["StaffCD"] = txtStaffCD.Text;
             dr["SoukoCD"] = txtSouko.Text;
             dr["ChakuniDenpyouTekiyou"] = txtDescription.Text;
             dr["ChakuniYoteiNO"] = txtScheduledNo.Text;
-            dr["ShouhinCD"] = txtShouhinCD.Text;
-            dr["ShouhinName"] = txtShouhinName.Text;
-            dr["KanriNO"] = txtControlNo.Text;
-            dr["JANCD"] = txtJANCD.Text;
-            dr["BrandCD"] = sbBrand.Text;
+            dr["ShouhinCD"] = string.IsNullOrEmpty(txtShouhinCD.Text) ? null : txtShouhinCD.Text;
+            dr["ShouhinName"] = string.IsNullOrEmpty(txtShouhinName.Text) ? null : txtShouhinName.Text;
+            dr["KanriNO"] = string.IsNullOrEmpty(txtControlNo.Text) ? null : txtControlNo.Text;
+            dr["JANCD"] = string.IsNullOrEmpty(txtJANCD.Text) ? null : txtJANCD.Text;
+            dr["BrandCD"] = string.IsNullOrEmpty(sbBrand.Text) ? null : sbBrand.Text;
             dr["YearTerm"] = txtYearTerm.Text;
             dr["SeasonSS"] = chkSS.Checked ? "1" : "0";
             dr["SeasonFW"] = chkFW.Checked ? "1" : "0";
@@ -477,7 +477,7 @@ namespace ChakuniNyuuryoku
         {
             if (dtTemp.Rows.Count > 0)
             {
-                var dtConfirm = dtTemp.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("ChakuniYoteiGyouNO")).ThenBy(r => r.Field<string>("HacchuuGyouNO")).CopyToDataTable();
+                var dtConfirm = dtTemp.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("Chakuni")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
                 gvChakuniNyuuryoku.DataSource = dtConfirm;
             }
             else
@@ -539,8 +539,12 @@ namespace ChakuniNyuuryoku
             //dt.Columns.Add("chk", typeof(int));
             dt.Columns.Add("ChakuniMeisaiTekiyou", typeof(string));
             dt.Columns.Add("JanCD", typeof(string));
+            dt.Columns.Add("ChakuniYoteiNO", typeof(string));
             dt.Columns.Add("ChakuniYoteiGyouNO", typeof(string));
+            dt.Columns.Add("Chakuni", typeof(string));
+            dt.Columns.Add("HacchuuNO", typeof(string));
             dt.Columns.Add("HacchuuGyouNO", typeof(string));
+            dt.Columns.Add("Hacchuu", typeof(string));
             dt.AcceptChanges();
             return dt;
         }
@@ -737,10 +741,9 @@ namespace ChakuniNyuuryoku
                         DataRow dr1 = dtGS1.NewRow();
                         for (int i = 0; i < dtGS1.Columns.Count; i++)
                         {
-                           if (i == 9)
                             dr1[i] = gvChakuniNyuuryoku[i+1, e.RowIndex].EditedFormattedValue;
-                           else
-                            dr1[i] = string.IsNullOrEmpty(gvChakuniNyuuryoku[i, e.RowIndex].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniNyuuryoku[i, e.RowIndex].EditedFormattedValue.ToString();
+                           //else
+                           // dr1[i] = string.IsNullOrEmpty(gvChakuniNyuuryoku[i, e.RowIndex].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniNyuuryoku[i, e.RowIndex].EditedFormattedValue.ToString();
                         }
                         dtGS1.Rows.Add(dr1);
                     }
