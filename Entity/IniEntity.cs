@@ -7,5 +7,7 @@
         public string DatabaseLoginID { get; set; }
         public string DatabasePassword { get; set; }
         public string TimeoutValues { get; set; }
+
+        public string Version { get; set; }
     }
 }
