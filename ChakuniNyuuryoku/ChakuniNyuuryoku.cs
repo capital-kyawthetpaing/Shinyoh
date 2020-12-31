@@ -280,17 +280,17 @@ namespace ChakuniNyuuryoku
             if (cboMode.SelectedValue.Equals("1"))
             {
                 mode = "New";
-                DoInsert(obj.Item1, obj.Item2);
+                DoInsert(mode, obj.Item1, obj.Item2);
             }
             else if (cboMode.SelectedValue.Equals("2"))
             {
-                 mode = "Update";
-                 DoUpdate(obj.Item1, obj.Item2);
+                mode = "Update";
+                DoUpdate(mode, obj.Item1, obj.Item2);
             }
             else if (cboMode.SelectedValue.Equals("3"))
             {
                 mode = "Delete";
-                DoDelete(obj.Item1, obj.Item2);
+                DoDelete(mode, obj.Item1, obj.Item2);
             }
         }
         public void Create_Datatable_Column(DataTable create_dt)
@@ -361,8 +361,8 @@ namespace ChakuniNyuuryoku
             dr["YearTerm"] = txtYearTerm.Text;
             dr["SeasonSS"] = chkSS.Checked ? "1" : "0";
             dr["SeasonFW"] = chkFW.Checked ? "1" : "0";
-            dr["ColorNO"] = txtColor.Text;
-            dr["SizeNO"] = txtSize.Text;
+            dr["ColorNO"] = string.IsNullOrEmpty(txtColor.Text) ? null : txtColor.Text;
+            dr["SizeNO"] = string.IsNullOrEmpty(txtSize.Text) ? null : txtSize.Text;
             dr["Operator"] = base_Entity.OperatorCD;
             dr["PC"] = base_Entity.PC;
             dr["ProgramID"] = base_Entity.ProgramID;
@@ -372,20 +372,20 @@ namespace ChakuniNyuuryoku
 
             return (main_XML, detail_XML);
         }
-        private void DoInsert(string str_main, string str_detail)
+        private void DoInsert(string mode,string str_main, string str_detail)
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
-            bl.ChakuniNyuuryoku_Insert(str_main, str_detail);
+            bl.ChakuniNyuuryoku_CUD(mode,str_main, str_detail);
         }
-        private void DoUpdate(string str_main, string str_detail)
+        private void DoUpdate(string mode,string str_main, string str_detail)
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
-            bl.ChakuniNyuuryoku_Update(str_main, str_detail);
+            bl.ChakuniNyuuryoku_CUD(mode, str_main, str_detail);
         }
-        private void DoDelete(string str_main, string str_detail)
+        private void DoDelete(string mode,string str_main, string str_detail)
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
-            bl.ChakuniNyuuryoku_Delete(str_main, str_detail);
+            bl.ChakuniNyuuryoku_CUD(mode, str_main, str_detail);
         }
         private ChakuniNyuuryoku_Entity GetEntity()
         {
@@ -590,9 +590,10 @@ namespace ChakuniNyuuryoku
                     if(dt.Rows[0]["MessageID"].ToString()=="E132")
                     {
                         string KBN = dt.Rows[0]["SiireKanryouKBN"].ToString();
+                        ChakuniNyuuryokuSelect(dt);
                         if (KBN.ToString().Equals("1"))
                         {
-                            ChakuniNyuuryokuSelect(dt);
+                            gvChakuniNyuuryoku.Columns["colArrivalTime"].ReadOnly = true;
                         }
                     }
                 }
@@ -743,13 +744,11 @@ namespace ChakuniNyuuryoku
                                 }
                             }
                         }
-                        DataRow dr1 = dtGS1.NewRow();
-                        for (int i = 0; i < dtGS1.Columns.Count; i++)
-                        {
-                            dr1[i] = gvChakuniNyuuryoku[i+1, e.RowIndex].EditedFormattedValue;
-                           //else
-                           // dr1[i] = string.IsNullOrEmpty(gvChakuniNyuuryoku[i, e.RowIndex].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniNyuuryoku[i, e.RowIndex].EditedFormattedValue.ToString();
-                        }
+                    DataRow dr1 = dtGS1.NewRow();
+                    for (int i = 0; i < dtGS1.Columns.Count; i++)
+                    {
+                        dr1[i] = gvChakuniNyuuryoku[i + 1, e.RowIndex].EditedFormattedValue;
+                    }
                         dtGS1.Rows.Add(dr1);
                     }
                 }

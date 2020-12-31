@@ -45,30 +45,14 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("D_ChakuniYotei_Display", GetConnectionString(), cne.Sqlprms);
             return dt;
         }
-        public string ChakuniNyuuryoku_Insert(string xml_Main, string xml_detail)
+        public string ChakuniNyuuryoku_CUD(string mode, string xml_Main, string xml_detail)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[2];
-            parameters[0] = new SqlParameter("@XML_Main", SqlDbType.VarChar) { Value = xml_Main };
-            parameters[1] = new SqlParameter("@XML_Detail", SqlDbType.VarChar) { Value = xml_detail };
-            return ckmdl.InsertUpdateDeleteData("ChakuniNyuuryoku_Insert", GetConnectionString(), parameters);
-        }
-        public string ChakuniNyuuryoku_Update(string xml_Main, string xml_detail)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[2];
-            parameters[0] = new SqlParameter("@XML_Main", SqlDbType.VarChar) { Value = xml_Main };
-            parameters[1] = new SqlParameter("@XML_Detail", SqlDbType.VarChar) { Value = xml_detail };
-            return ckmdl.InsertUpdateDeleteData("ChakuniNyuuryoku_Update", GetConnectionString(), parameters);
-        }
-
-        public string ChakuniNyuuryoku_Delete(string xml_Main, string xml_detail)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[2];
-            parameters[0] = new SqlParameter("@XML_Main", SqlDbType.VarChar) { Value = xml_Main };
-            parameters[1] = new SqlParameter("@XML_Detail", SqlDbType.VarChar) { Value = xml_detail };
-            return ckmdl.InsertUpdateDeleteData("ChakuniNyuuryoku_Delete", GetConnectionString(), parameters);
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = mode };
+            parameters[1] = new SqlParameter("@XML_Main", SqlDbType.Xml) { Value = xml_Main };
+            parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
+            return ckmdl.InsertUpdateDeleteData("ChakuniNyuuryoku_CUD", GetConnectionString(), parameters);
         }
         public DataTable ArrivalNO_Search(ChakuniNyuuryoku_Entity ane)
         {
