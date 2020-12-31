@@ -16,7 +16,9 @@ namespace ShinyohMenu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ShinyohMenu());
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            Application.Run(new ShinyohLogin());
+#pragma warning restore CA2000 // Dispose objects before losing scope
         }
     }
 }

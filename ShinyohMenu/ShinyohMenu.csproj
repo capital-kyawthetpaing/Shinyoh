@@ -12,16 +12,39 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <PublishUrl>D:\GIT\Publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <UpdateUrl>http://163.43.194.87/Shinyoh-Globe/</UpdateUrl>
+    <ApplicationRevision>9</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,7 +55,46 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>hnet.com-image.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>F01BCB6A103212FDB963034C8BB930FFBB7C3A9C</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ShinyohMenu_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
+    <Reference Include="BL">
+      <HintPath>..\bin\Debug\BL.dll</HintPath>
+    </Reference>
+    <Reference Include="CKM_CommonFunction">
+      <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
+    </Reference>
+    <Reference Include="ClientFtp">
+      <HintPath>..\Shinyoh\RequireDLL\ClientFtp.dll</HintPath>
+    </Reference>
+    <Reference Include="Entity">
+      <HintPath>..\bin\Debug\Entity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +108,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ShinyohLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShinyohLogin.Designer.cs">
+      <DependentUpon>ShinyohLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="ShinyohMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +122,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ShinyohLogin.resx">
+      <DependentUpon>ShinyohLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ShinyohMenu.resx">
       <DependentUpon>ShinyohMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -65,7 +136,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,9 +148,70 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ShinyohMenu_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
+      <Project>{B15A285F-DDEC-443D-8BD0-762B893BB937}</Project>
+      <Name>Shinyoh_Controls</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\syGreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\syback_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\syblack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\SHINYOH_Logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SHINYOH_Logo_backk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sygreen_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\searchBig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Upper.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lower.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\topright.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bottomright.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bottomleft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hnet.com-image.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

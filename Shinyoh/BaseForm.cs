@@ -403,6 +403,7 @@ namespace Shinyoh
             obj.ProgramID = ProgramID;
             obj.PC = PCID;
             obj.LoginDate = LoginDate;
+            obj.SPName = sLabel1.Text;
             return obj;
         }
 

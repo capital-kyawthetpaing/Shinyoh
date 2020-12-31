@@ -94,8 +94,8 @@ namespace Shinyoh_Controls
         [DisplayName("NextControlName")]
         public string NextControlName { get; set; }
         public bool MoveNext { get; set; } = true;
-        public Control NextControl { get; set; } 
-
+        public Control NextControl { get; set; }
+        public bool IsUseInitializedLayout { get; set; } = true; // PTK
         public bool IsErrorOccurs { get; set; }
         public DataTable IsDatatableOccurs { get; set; }
 
@@ -337,6 +337,7 @@ namespace Shinyoh_Controls
         {
             base.InitLayout();
             base.AutoSize = false;
+            if (IsUseInitializedLayout)
             base.Height = 19;
         }
         public void E101Check(bool value, string type, Control ctrl1, Control ctrl2, Control ctrl3)

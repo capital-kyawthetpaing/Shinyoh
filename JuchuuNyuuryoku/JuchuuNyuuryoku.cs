@@ -78,9 +78,8 @@ namespace JuchuuNyuuryoku
 
             txtShouhinCD.ChangeDate = txtJuchuuDate;
 
-            ChangeMode(Mode.New);
-
             base_Entity = _GetBaseData();
+            ChangeMode(Mode.New);
 
             txtJuchuuNO.ChangeDate = txtJuchuuDate;
             txtCopy.ChangeDate = txtJuchuuDate;
@@ -117,6 +116,7 @@ namespace JuchuuNyuuryoku
                     txtJuchuuNO.E102Check(false);
                     txtJuchuuNO.E133Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
+                    //txtJuchuuNO.E115Check(false, "JuchuuNyuuryoku", txtJuchuuDate);
 
                     txtCopy.E102Check(true);
                     txtCopy.E133Check(true, "JuchuuNyuuryoku", txtCopy, null, null);
@@ -132,6 +132,7 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
+                    //txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
 
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -144,6 +145,7 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
+                    //txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
 
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -156,6 +158,7 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
+                    //txtJuchuuNO.E115Check(false, "JuchuuNyuuryoku", txtJuchuuDate);
 
                     Disable_UDI_Mode();
                     Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -191,6 +194,11 @@ namespace JuchuuNyuuryoku
             gv1_to_dt1 = new DataTable();
             F8_dt1 = new DataTable();
             txtJuchuuNO.Focus();
+            txtJuchuuDate.Text = base_Entity.LoginDate;
+            txtStaffCD.Text = base_Entity.OperatorCD;
+            lblStaff_Name.Text = base_Entity.SPName;
+
+            F10_Gridview_Bind();
         }
 
         public void Disable_UDI_Mode()

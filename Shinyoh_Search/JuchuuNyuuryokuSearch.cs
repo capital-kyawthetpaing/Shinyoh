@@ -44,6 +44,7 @@ namespace Shinyoh_Search
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtCurrentDate, null);
             txtNo12.E106Check(true, txtNo11, txtNo12);
             txtNo22.E106Check(true, txtNo21, txtNo22);
+            txtShouhin2.E106Check(true, txtShouhin1, txtShouhin2);
         }
 
         private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
@@ -121,6 +122,11 @@ namespace Shinyoh_Search
         private void gv_1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gv_1.Rows[e.RowIndex]);
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            DataGridviewBind();
         }
     }
 }
