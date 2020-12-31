@@ -334,7 +334,9 @@ namespace ChakuniNyuuryoku
             DataTable dt = new DataTable();
             Create_Datatable_Column(dt);
             DataRow dr = dt.NewRow();
-            dr["ChakuniNO"] = txtArrivalNO.Text;
+            cbl = new chakuniNyuuryoku_BL();
+            DataTable dt1 = cbl.GetChakuniNo("5", txtArrivalDate.Text, "0");
+            dr["ChakuniNO"] = dt1.Rows[0]["Column1"];
             dr["ChakuniDate"] = txtArrivalDate.Text;
             dr["SiiresakiCD"] = txtSiiresaki.Text;
             dr["SiiresakiName"] = s_obj.SiiresakiName;
