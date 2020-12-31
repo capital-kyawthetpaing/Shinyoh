@@ -647,6 +647,7 @@ namespace ShukkaSiziNyuuryoku
                         {
                             bbl.ShowMessage("E227");
                             sbTokuisaki.Focus();
+                            return;
                         }
                         else if(dt2.Rows[0]["MessageID"].ToString() == "E267")
                         {
@@ -993,8 +994,9 @@ namespace ShukkaSiziNyuuryoku
 
             dtResult = CreateTable_Header();
             DataRow dr = dtResult.NewRow();
-
-            dr["ShukkaSiziNO"] = sbShippingNO.Text;
+            sksz_bl = new ShukkasiziNyuuryokuBL();
+            DataTable dt = sksz_bl.GetShippingNo("12", txtShippingDate.Text, "0");
+            dr["ShukkaSiziNO"] = dt.Rows[0]["Column1"];
             dr["StaffCD"] = sbStaffCD.Text;
             dr["ShukkaYoteiDate"] = txtShippingDate.Text;
             dr["DenpyouDate"] = txtSlipDate.Text;
