@@ -37,5 +37,6 @@ namespace Entity {
         public int ShukkaSizishoHuyouKBN { get; set; }
         public string Remarks { get; set; } // --備考
         public int UsedFlg { get; set; } //  --使用済FLG[1:既にデータ発生済]
+        public int Output_Type { get; set; }
     }
 }

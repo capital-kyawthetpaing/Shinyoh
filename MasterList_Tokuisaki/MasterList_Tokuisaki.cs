@@ -124,6 +124,10 @@ namespace MasterList_Tokuisaki
         private TokuisakiEntity Get_UIData()
         {
             TokuisakiEntity entity = new TokuisakiEntity();
+            if (rdo_RRevisionDate.Checked)
+                entity.Output_Type = 0;
+            else
+                entity.Output_Type = 1;
             entity.TokuisakiCD = txtTokuisakiCD.Text;
             entity.TokuisakiCD1 = txtTokuisakiCD1.Text;
             entity.TokuisakiName = txtTokuisakiName.Text;

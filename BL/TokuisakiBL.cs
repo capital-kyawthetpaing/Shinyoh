@@ -86,7 +86,7 @@ namespace BL {
         public DataTable Get_ExportData(TokuisakiEntity entity)
         {
             CKMDL ckmdl = new CKMDL();
-            entity.Sqlprms = new SqlParameter[13];
+            entity.Sqlprms = new SqlParameter[14];
             entity.Sqlprms[0] = new SqlParameter("@TokuisakiCD1", SqlDbType.VarChar) { Value = entity.TokuisakiCD };
             entity.Sqlprms[1] = new SqlParameter("@TokuisakiCD2", SqlDbType.VarChar) { Value = entity.TokuisakiCD1 };
             entity.Sqlprms[2] = new SqlParameter("@TokuisakiName", SqlDbType.VarChar) { Value = entity.TokuisakiName };
@@ -100,7 +100,8 @@ namespace BL {
             entity.Sqlprms[10] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = "MasterList_Tokuisaki" };
             entity.Sqlprms[11] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = entity.PC };
             entity.Sqlprms[12] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = entity.InsertOperator };
-            return ckmdl.SelectDatatable("Get_ExportData", GetConnectionString(), entity.Sqlprms);
+            entity.Sqlprms[13] = new SqlParameter("@Output_Type", SqlDbType.VarChar) { Value = entity.Output_Type };
+            return ckmdl.SelectDatatable("Get_Tokuisaki_ExportData", GetConnectionString(), entity.Sqlprms);
         }
     }
 }
