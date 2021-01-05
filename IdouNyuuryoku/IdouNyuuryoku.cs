@@ -158,8 +158,6 @@ namespace IdouNyuuryoku
             {
                 txtNyukosouko.Text = dt_Souko.Rows[0]["SoukoCD"].ToString();
                 lbl_Nyuko.Text = dt_Souko.Rows[0]["SoukoName"].ToString();
-                txtShukkosouko.Text = dt_Souko.Rows[0]["SoukoCD"].ToString();
-                lbl_Shukko.Text = dt_Souko.Rows[0]["SoukoName"].ToString();
             }
         }
         public void Disable_UDI_Mode()
