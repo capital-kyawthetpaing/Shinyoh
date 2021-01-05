@@ -119,7 +119,7 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.multiporpose:
                         MultiPorposeSearch msearch = new MultiPorposeSearch();
                         msearch.ShowDialog();
-                        if(this.Name== "txtID")
+                        if(this.Name== "txtID" || this.Name=="txtCopyID")
                             CD = msearch.Id;
                         else
                             CD = msearch.Key;

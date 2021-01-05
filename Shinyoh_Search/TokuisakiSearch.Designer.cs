@@ -26,9 +26,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.rdo_All = new Shinyoh_Controls.SRadio();
             this.rdo_Date = new Shinyoh_Controls.SRadio();
@@ -139,7 +139,7 @@
             this.btnTokuisaki_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnTokuisaki_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTokuisaki_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnTokuisaki_F11.Location = new System.Drawing.Point(773, 95);
+            this.btnTokuisaki_F11.Location = new System.Drawing.Point(760, 97);
             this.btnTokuisaki_F11.Name = "btnTokuisaki_F11";
             this.btnTokuisaki_F11.Size = new System.Drawing.Size(150, 25);
             this.btnTokuisaki_F11.TabIndex = 7;
@@ -152,7 +152,7 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
-            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
@@ -166,7 +166,7 @@
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
             this.txtKanaName.NextControl = null;
-            this.txtKanaName.NextControlName = "btnStaff_F11";
+            this.txtKanaName.NextControlName = "btnTokuisaki_F11";
             this.txtKanaName.SearchType = Entity.SearchType.ScType.None;
             this.txtKanaName.Size = new System.Drawing.Size(420, 19);
             this.txtKanaName.TabIndex = 6;
@@ -177,7 +177,7 @@
             this.txtTokuisakiName.AllowMinus = false;
             this.txtTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTokuisakiName.DecimalPlace = 0;
-            this.txtTokuisakiName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtTokuisakiName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtTokuisakiName.DepandOnMode = true;
             this.txtTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiName.IntegerPart = 0;
@@ -312,17 +312,14 @@
             // gvTokuisaki
             // 
             this.gvTokuisaki.AllowUserToAddRows = false;
-            this.gvTokuisaki.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvTokuisaki.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvTokuisaki.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gvTokuisaki.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvTokuisaki.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTokuisakiCD,
@@ -331,14 +328,14 @@
             this.colTokuisakiRyakuName});
             this.gvTokuisaki.Location = new System.Drawing.Point(26, 147);
             this.gvTokuisaki.Name = "gvTokuisaki";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvTokuisaki.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvTokuisaki.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.gvTokuisaki.Size = new System.Drawing.Size(660, 302);
             this.gvTokuisaki.TabIndex = 5;
             this.gvTokuisaki.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvTokuisaki_CellMouseDoubleClick);
@@ -363,10 +360,10 @@
             // 
             this.colChangeDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.colChangeDate.DataPropertyName = "ChangeDate";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Format = "yyyy/MM/dd";
-            dataGridViewCellStyle5.NullValue = null;
-            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Format = "yyyy/MM/dd";
+            dataGridViewCellStyle8.NullValue = null;
+            this.colChangeDate.DefaultCellStyle = dataGridViewCellStyle8;
             this.colChangeDate.HeaderText = "改定日";
             this.colChangeDate.Name = "colChangeDate";
             this.colChangeDate.ReadOnly = true;
