@@ -279,7 +279,7 @@ namespace ShukkaTorikomi
                         }
 
                         ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
-                        DataTable r_dk = rBL.ShukkaTorikomi_Check(obj.ShouhinCD, obj.ChangeDate, "E101");
+                        DataTable r_dk = rBL.ShukkaTorikomi_Check(obj.ShouhinCD, obj.ChangeDate, "E101", "ShouhinCD");
                         if (r_dk.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101");
@@ -288,7 +288,7 @@ namespace ShukkaTorikomi
                         }
 
                         ShukkaTorikomi_BL jBL = new ShukkaTorikomi_BL();
-                        DataTable j_dk = jBL.ShukkaTorikomi_Check(obj.JANCD, obj.ChangeDate, "E101");
+                        DataTable j_dk = jBL.ShukkaTorikomi_Check(obj.JANCD, obj.ChangeDate, "E101", "JANCD");
                         if (j_dk.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101");
