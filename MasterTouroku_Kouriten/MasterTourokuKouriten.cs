@@ -92,9 +92,10 @@ namespace MasterTouroku_Kouriten
                     txtCopyDate.E133Check(true, "M_Kouriten", txtCopyCD, txtCopyDate, txtTokuisakiCD_Copy);
 
 
-                    txtChangeDate.NextControlName = txtCopyCD.Name;
+                    txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
                     txtCopyCD.Enabled = true;
                     txtCopyDate.Enabled = true;
+                    txtTokuisakiCD_Copy.Enabled = true;
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -368,7 +369,7 @@ namespace MasterTouroku_Kouriten
         private void EnablePanel()
         {
             cf.EnablePanel(Panel_Detail);
-            txtTokuisakiCD.Focus();
+            chk_Flag.Focus();
             cf.DisablePanel(PanelTitle);
         }
         private void From_DB_To_Form(DataTable dt)

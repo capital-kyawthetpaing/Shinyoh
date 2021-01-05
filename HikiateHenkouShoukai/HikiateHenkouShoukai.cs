@@ -130,6 +130,7 @@ namespace HikiateHenkouShoukai
             txtBrand.E101Check(true, "M_Shouhin", txtBrand, null, null);
 
             txtPostalCode2.E102MultiCheck(true, txtPostalCode1, txtPostalCode2);
+            txtPostalCode2.Yuubin_Juusho(true, txtPostalCode1, txtPostalCode2, string.Empty, string.Empty);
 
             txtYearTerm.E102Check(true);
             chkSeasonFW.E188Check(true, chkSeasonFW, chkSeasonSS);
@@ -229,6 +230,7 @@ namespace HikiateHenkouShoukai
             gvMainDetail.DataSource = null;
             gvMainDetail.Rows.Clear();
             gvMainDetail.DataSource = createMemoryTable(type);
+            gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
         }
 
         private void txtBrand_KeyDown(object sender, KeyEventArgs e)
@@ -305,9 +307,15 @@ namespace HikiateHenkouShoukai
 
         private void txtPostalCode2_KeyDown(object sender, KeyEventArgs e)
         {
-            dt = hbl.Error_Check(txtPostalCode1.Text.Trim(), txtPostalCode2.Text.Trim(), "PC");
-            if (dt.Rows.Count > 0)
-                txtAddress.Text = dt.Rows[0]["Juusho1"].ToString();
+            if(e.KeyCode == Keys.Enter)
+            {
+                if(!txtPostalCode2.IsErrorOccurs)
+                {
+                    dt = txtPostalCode2.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        txtAddress.Text = dt.Rows[0]["Juusho1"].ToString();
+                }
+            }
         }
 
         private void Excel_Export()
@@ -349,7 +357,10 @@ namespace HikiateHenkouShoukai
             {
                 DataView dv = dtMemory.DefaultView;
                 dv.Sort = "商品 ASC, 引当調整数 ASC, 表示順 ASC, [受注番号-行番号] ASC";
+                gvMainDetail.DataSource = null;
+                gvMainDetail.Rows.Clear();
                 gvMainDetail.DataSource = dv.ToTable();
+                gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
             }
         }
 
@@ -399,8 +410,11 @@ namespace HikiateHenkouShoukai
                     else
                         gvMainDetail.Columns[i].ReadOnly = true;
                 }
+                gvMainDetail.Columns[gvMainDetail.Columns.Count - 2].Visible = false;
+                gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
             }
-            dtTemp.Clear();
+            if(dtTemp != null)
+                dtTemp.Clear();
         }
 
         private void TemporarySave_Data()
@@ -431,7 +445,7 @@ namespace HikiateHenkouShoukai
                             int index = 0;
                             for (int i = 0; i < dtMemory.Rows.Count; i++)
                             {
-                                if (temp_row["商品CD"].ToString() == dtMemory.Rows[i]["商品CD"].ToString() && temp_row["小売店名"].ToString() == dtMemory.Rows[i]["小売店名"].ToString() && temp_row["JANCD"].ToString() == dtMemory.Rows[i]["JANCD"].ToString())
+                                if (temp_row["商品"].ToString() == dtMemory.Rows[i]["商品"].ToString() && temp_row["小売店名"].ToString() == dtMemory.Rows[i]["小売店名"].ToString() && temp_row["JANCD"].ToString() == dtMemory.Rows[i]["JANCD"].ToString())
                                 {
                                     isexists = true;
                                     index = i;
@@ -499,6 +513,8 @@ namespace HikiateHenkouShoukai
                     break;
             }
             dt.Columns.Add("JANCD");
+            dt.Columns.Add("表示順");
+            dt.Columns.Add("倉庫");
             return dt;
         }
 
@@ -512,20 +528,24 @@ namespace HikiateHenkouShoukai
                 else if (Convert.ToInt32(val) < 0)
                     gvMainDetail.Rows[e.RowIndex].Cells[11].Style.BackColor = Color.Red;
 
+                Decimal Reserve_Val = Convert.ToDecimal(val);
+                Decimal MiHikiateSuu = Convert.ToDecimal(gvMainDetail.Rows[e.RowIndex].Cells[6].EditedFormattedValue.ToString());
+                Decimal HikiateZumiSuu = Convert.ToDecimal(gvMainDetail.Rows[e.RowIndex].Cells[7].EditedFormattedValue.ToString());
+
                 if (!string.IsNullOrEmpty(gvMainDetail.Rows[e.RowIndex].Cells[12].EditedFormattedValue.ToString()))
                 {
-                    if (Convert.ToInt32(gvMainDetail.Rows[e.RowIndex].Cells[7].EditedFormattedValue.ToString()) < Convert.ToInt32(gvMainDetail.Rows[e.RowIndex].Cells[11].EditedFormattedValue.ToString()))
+                    if (Decimal.ToInt32(HikiateZumiSuu) < Decimal.ToInt32(Reserve_Val))
                         bbl.ShowMessage("E271");
 
-                    if (Convert.ToInt32(gvMainDetail.Rows[e.RowIndex].Cells[6].EditedFormattedValue.ToString()) > Convert.ToInt32(gvMainDetail.Rows[e.RowIndex].Cells[11].EditedFormattedValue.ToString()))
+                    if (Decimal.ToInt32(MiHikiateSuu) > Decimal.ToInt32(Reserve_Val))
                         bbl.ShowMessage("E272");
                 }
                 else if (string.IsNullOrEmpty(gvMainDetail.Rows[e.RowIndex].Cells[12].EditedFormattedValue.ToString()))
                 {
-                    if (Convert.ToInt32(gvMainDetail.Rows[e.RowIndex].Cells[11].EditedFormattedValue.ToString()) > 0)
+                    if (Decimal.ToInt32(Reserve_Val) > 0)
                         bbl.ShowMessage("E275");
 
-                    if (Convert.ToInt32(gvMainDetail.Rows[e.RowIndex].Cells[6].EditedFormattedValue.ToString()) < Convert.ToInt32(gvMainDetail.Rows[e.RowIndex].Cells[11].EditedFormattedValue.ToString()))
+                    if (Decimal.ToInt32(MiHikiateSuu) < Decimal.ToInt32(Reserve_Val))
                         bbl.ShowMessage("E272");
                 }
             }
@@ -573,7 +593,37 @@ namespace HikiateHenkouShoukai
 
         private void DBData_IU()
         {
+            //string Xml = string.Empty;
+            //Xml = cf.DataTableToXml(dtMemory);
 
+            for(int i=0; i<dtMemory.Rows.Count; i++)
+            {
+                HikiateHenkouShoukaiEntity entity = new HikiateHenkouShoukaiEntity();
+                entity.ShouhinCD = dtMemory.Rows[i]["商品"].ToString();
+                entity.ShouhinName = dtMemory.Rows[i]["商品名"].ToString();
+                entity.ColorNO = dtMemory.Rows[i]["カラー"].ToString();
+                entity.SizeNO = dtMemory.Rows[i]["サイズ"].ToString();
+                entity.JuchuuSuu = dtMemory.Rows[i]["受注数"].ToString();
+                entity.ChakuniYoteiSuu = dtMemory.Rows[i]["着荷予定数"].ToString();
+                entity.MiHikiateSuu = dtMemory.Rows[i]["未引当数"].ToString();
+                entity.HikiateZumiSuu = dtMemory.Rows[i]["引当済数"].ToString();
+                entity.ChakuniSuu = dtMemory.Rows[i]["着荷済数"].ToString();
+                entity.ShukkaSiziSuu = dtMemory.Rows[i]["出荷指示数"].ToString();
+                entity.ShukkaSuu = dtMemory.Rows[i]["出荷済数"].ToString();
+                entity.HikiateSuu = dtMemory.Rows[i]["引当調整数"].ToString();
+                entity.JuchuuNO_JuchuuGyouNO = dtMemory.Rows[i]["受注番号-行番号"].ToString();
+                entity.TokuisakiRyakuName = dtMemory.Rows[i]["得意先名"].ToString();
+                entity.KouritenRyakuName = dtMemory.Rows[i]["小売店名"].ToString();
+                entity.NyuukoDate = dtMemory.Rows[i]["入庫日"].ToString();
+                entity.JuchuuDate = dtMemory.Rows[i]["受注日"].ToString();
+                entity.KibouNouki = dtMemory.Rows[i]["希望納期"].ToString();
+                entity.JANCD = dtMemory.Rows[i]["JANCD"].ToString();
+                entity.SoukoCD = dtMemory.Rows[i]["倉庫"].ToString();
+                hbl.DBData_IU(entity);
+            }
+
+            dtMemory.Clear();
+            Modified_Panel();   //Clear Data
         }
     }
 }
