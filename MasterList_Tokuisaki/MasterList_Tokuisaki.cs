@@ -23,7 +23,6 @@ namespace MasterList_Tokuisaki
         CommonFunction cf;
         multipurposeEntity multi_Entity;
         BaseBL bbl = new BaseBL();
-        bool bl = false;
         DataTable dt = new DataTable();
         public MasterList_Tokuisaki()
         {
@@ -49,9 +48,11 @@ namespace MasterList_Tokuisaki
             SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
-            //ChangeMode(Mode.New);
-            txtTokuisakiCD.Focus();
             base_entity = _GetBaseData();
+            txtChangeDate.Text = base_entity.LoginDate;
+            txtTokuisakiCD.Focus();
+            txtTokuisakiCD.ChangeDate = txtChangeDate;
+            txtTokuisakiCD1.ChangeDate = txtChangeDate;
             UI_ErrorCheck();
         }
 
