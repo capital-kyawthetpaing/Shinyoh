@@ -112,7 +112,7 @@
             this.lbl_Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Date.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lbl_Date.Location = new System.Drawing.Point(804, 10);
+            this.lbl_Date.Location = new System.Drawing.Point(815, 10);
             this.lbl_Date.Name = "lbl_Date";
             this.lbl_Date.Size = new System.Drawing.Size(100, 19);
             this.lbl_Date.TabIndex = 15;
@@ -126,7 +126,7 @@
             this.lblDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDate.Location = new System.Drawing.Point(725, 10);
+            this.lblDate.Location = new System.Drawing.Point(736, 10);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(80, 19);
             this.lblDate.TabIndex = 14;
@@ -140,9 +140,9 @@
             this.btnStaff_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnStaff_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnStaff_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnStaff_F11.Location = new System.Drawing.Point(763, 82);
+            this.btnStaff_F11.Location = new System.Drawing.Point(766, 86);
             this.btnStaff_F11.Name = "btnStaff_F11";
-            this.btnStaff_F11.Size = new System.Drawing.Size(160, 32);
+            this.btnStaff_F11.Size = new System.Drawing.Size(150, 28);
             this.btnStaff_F11.TabIndex = 7;
             this.btnStaff_F11.Text = "表示(F11)";
             this.btnStaff_F11.UseVisualStyleBackColor = false;
@@ -153,15 +153,16 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
-            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
+            this.txtKanaName.IsUseInitializedLayout = true;
             this.txtKanaName.Location = new System.Drawing.Point(124, 95);
-            this.txtKanaName.MaxLength = 40;
+            this.txtKanaName.MaxLength = 50;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
@@ -177,15 +178,16 @@
             this.txtStaffName.AllowMinus = false;
             this.txtStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStaffName.DecimalPlace = 0;
-            this.txtStaffName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtStaffName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtStaffName.DepandOnMode = true;
             this.txtStaffName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaffName.IntegerPart = 0;
             this.txtStaffName.IsDatatableOccurs = null;
             this.txtStaffName.IsErrorOccurs = false;
             this.txtStaffName.IsRequire = false;
+            this.txtStaffName.IsUseInitializedLayout = true;
             this.txtStaffName.Location = new System.Drawing.Point(123, 68);
-            this.txtStaffName.MaxLength = 40;
+            this.txtStaffName.MaxLength = 50;
             this.txtStaffName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaffName.MoveNext = true;
             this.txtStaffName.Name = "txtStaffName";
@@ -218,6 +220,7 @@
             this.txtStaff2.IsDatatableOccurs = null;
             this.txtStaff2.IsErrorOccurs = false;
             this.txtStaff2.IsRequire = false;
+            this.txtStaff2.IsUseInitializedLayout = true;
             this.txtStaff2.Location = new System.Drawing.Point(280, 40);
             this.txtStaff2.MaxLength = 10;
             this.txtStaff2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -242,6 +245,7 @@
             this.txtStaff1.IsDatatableOccurs = null;
             this.txtStaff1.IsErrorOccurs = false;
             this.txtStaff1.IsRequire = false;
+            this.txtStaff1.IsUseInitializedLayout = true;
             this.txtStaff1.Location = new System.Drawing.Point(123, 39);
             this.txtStaff1.MaxLength = 10;
             this.txtStaff1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -328,7 +332,7 @@
             this.colCurrentDay});
             this.gvStaff.Location = new System.Drawing.Point(45, 146);
             this.gvStaff.Name = "gvStaff";
-            this.gvStaff.Size = new System.Drawing.Size(768, 302);
+            this.gvStaff.Size = new System.Drawing.Size(753, 302);
             this.gvStaff.TabIndex = 3;
             this.gvStaff.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvStaff_CellMouseDoubleClick);
             // 

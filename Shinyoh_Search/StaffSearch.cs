@@ -38,6 +38,9 @@ namespace Shinyoh_Search
 
             rdo_Date.Focus();
             txtStaff2.E106Check(true, txtStaff1, txtStaff2);
+
+            gvStaff.SetGridDesign();
+            gvStaff.SetReadOnlyColumn("*");
         }
         public override void FunctionProcess(string tagID)
         {
