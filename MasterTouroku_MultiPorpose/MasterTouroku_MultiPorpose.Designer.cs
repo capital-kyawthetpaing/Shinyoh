@@ -749,6 +749,7 @@
             this.txtKEYCopy.Size = new System.Drawing.Size(250, 19);
             this.txtKEYCopy.TabIndex = 16;
             this.txtKEYCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtKEYCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKEYCopy_KeyDown);
             // 
             // txtKEY
             // 
@@ -758,7 +759,7 @@
             this.txtKEY.Combo = null;
             this.txtKEY.DecimalPlace = 0;
             this.txtKEY.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
-            this.txtKEY.DepandOnMode = false;
+            this.txtKEY.DepandOnMode = true;
             this.txtKEY.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKEY.IntegerPart = 0;
             this.txtKEY.IsDatatableOccurs = null;
@@ -816,7 +817,7 @@
             this.txtID.Combo = null;
             this.txtID.DecimalPlace = 0;
             this.txtID.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtID.DepandOnMode = false;
+            this.txtID.DepandOnMode = true;
             this.txtID.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtID.IntegerPart = 0;
             this.txtID.IsDatatableOccurs = null;

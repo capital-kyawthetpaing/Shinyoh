@@ -44,8 +44,10 @@ namespace MasterTouroku_MultiPorpose
             SetButton(ButtonType.BType.Empty, F10, "", false);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             ChangeMode(Mode.New);
-            txtID.Focus();
             base_Entity = _GetBaseData();
+            txtID.Focus();
+            txtKEY.ChangeDate = txtIDName;
+            txtKEYCopy.ChangeDate = txtIDName;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -97,11 +99,7 @@ namespace MasterTouroku_MultiPorpose
         }
         private void ChangeMode(Mode mode)
         {
-            cf.Clear(PanelTitle);
-            cf.Clear(panelDetails);
-            cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(panelDetails);
-            txtID.Focus();
+            Mode_Setting();
             switch (mode)
             {
                 case Mode.New:
@@ -110,11 +108,13 @@ namespace MasterTouroku_MultiPorpose
                     txtDate2.E103Check(true);
                     txtDate3.E103Check(true);
                     txtKEY.E132Check(false, "M_Multiporpose", txtID, txtKEY, null);
+                    cf.Clear(PanelTitle);
+                    cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
-                    cf.EnablePanel(panelDetails);
-
+                    cf.DisablePanel(panelDetails);
                     txtID.Enabled = true;
                     txtCopyID.Enabled = true;
+                    txtKEYCopy.NextControlName = txtIDName.Name;
                     txtID.Focus();
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -129,14 +129,7 @@ namespace MasterTouroku_MultiPorpose
                     txtDate1.E103Check(true);
                     txtDate2.E103Check(true);
                     txtDate3.E103Check(true);
-                    txtCopyID.Enabled = false;
-                    txtKEYCopy.Enabled = false;
-                    txtID.Enabled = true;
-                    txtID.Focus();
-
-                    cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
-                    cf.DisablePanel(panelDetails);
+                    Mode_Setting();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
@@ -144,15 +137,7 @@ namespace MasterTouroku_MultiPorpose
                     txtID.E102Check(true);
                     txtKEY.E102Check(true);
                     txtKEY.E132Check(false, "M_Multiporpose", txtID, txtKEY, null);
-
-                    cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
-                    cf.DisablePanel(panelDetails);
-
-                    txtCopyID.Enabled = false;
-                    txtID.Enabled = true;
-                    txtID.Focus();
-
+                    Mode_Setting();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
 
@@ -161,19 +146,22 @@ namespace MasterTouroku_MultiPorpose
                     txtID.E102Check(true);
                     txtKEY.E102Check(true);
                     txtIDName.E102Check(true);
-                    cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
-                    cf.DisablePanel(panelDetails);
-
-                    txtCopyID.Enabled = false;
-                    txtKEYCopy.Enabled = false;
-                    txtID.Enabled = true;
-                    txtID.Focus();
-
+                    Mode_Setting();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
             }
+        }
+        private void Mode_Setting()
+        {
+            cf.Clear(PanelTitle);
+            cf.Clear(panelDetails);
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(panelDetails);
+            txtCopyID.Enabled = false;
+            txtKEYCopy.Enabled = false;
+            txtID.Enabled = true;
+            txtID.Focus();
         }
         private void DisplayData(DataTable dt)
         {
@@ -300,6 +288,24 @@ namespace MasterTouroku_MultiPorpose
                 {
                     DisplayData(dt);
                 }
+            }
+        }
+
+        private void txtKEYCopy_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
+            {
+                DataTable dt = new DataTable();
+                multipurposeEntity mentity = new multipurposeEntity();
+                mentity.ID = txtCopyID.Text;
+                mentity.Key = txtKEYCopy.Text;
+                dt = mbl.M_Multiporpose_SelectData(string.Empty, 2, txtCopyID.Text, txtKEYCopy.Text);
+                if (dt.Rows.Count > 0)
+                {
+                    DisplayData(dt);
+                }
+                cf.EnablePanel(panelDetails);
+                txtIDName.Focus();
             }
         }
     }
