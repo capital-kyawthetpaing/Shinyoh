@@ -177,7 +177,7 @@ namespace ChakuniNyuuryoku
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
             txtSouko.E102Check(true);
             txtSouko.E101Check(true, "souko", txtSouko, null, null);
-            txtScheduledNo.E133Check(true, "M_Siiresaki", txtScheduledNo, txtArrivalDate, null);
+            txtScheduled.E133Check(true, "M_Siiresaki", txtScheduled, txtArrivalDate, null);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -222,7 +222,7 @@ namespace ChakuniNyuuryoku
             if (tagID == "11")
             {
                 dtTemp = dtGS1;
-                txtScheduledNo.Clear();
+                txtScheduled.Clear();
                 txtShouhinCD.Clear();
                 txtShouhinName.Clear();
                 txtControlNo.Clear();
@@ -232,7 +232,7 @@ namespace ChakuniNyuuryoku
                 txtColor.Clear();
                 txtYearTerm.Clear();
                 txtSize.Clear();
-                txtScheduledNo.Focus();
+                txtScheduled.Focus();
                 gvChakuniNyuuryoku.ClearSelection();
                 gvChakuniNyuuryoku.DataSource = dtClear;
             }
@@ -258,7 +258,6 @@ namespace ChakuniNyuuryoku
                     }
                 }
             }
-            //Clear();
             base.FunctionProcess(tagID);
         }
         public void Clear()
@@ -277,6 +276,10 @@ namespace ChakuniNyuuryoku
         {
             string mode = string.Empty;
             (string, string) obj = GetInsert();
+            if (dtTemp == null)
+                bbl.ShowMessage("E274");
+            else if (dtTemp.Rows.Count < 1)
+                bbl.ShowMessage("E274");
             if (cboMode.SelectedValue.Equals("1"))
             {
                 mode = "New";
@@ -328,7 +331,7 @@ namespace ChakuniNyuuryoku
             create_dt.Columns.Add("PC", typeof(string));
             create_dt.Columns.Add("ProgramID", typeof(string));
         }
-        private (string, string) GetInsert()
+        private (string,string) GetInsert()
         {
             SiiresakiEntity s_obj = sd.Access_Siiresaki_obj;
             DataTable dt = new DataTable();
@@ -354,7 +357,7 @@ namespace ChakuniNyuuryoku
             dr["StaffCD"] = txtStaffCD.Text;
             dr["SoukoCD"] = txtSouko.Text;
             dr["ChakuniDenpyouTekiyou"] = txtDescription.Text;
-            dr["ChakuniYoteiNO"] = txtScheduledNo.Text;
+            dr["ChakuniYoteiNO"] = txtScheduled.Text;
             dr["ShouhinCD"] = string.IsNullOrEmpty(txtShouhinCD.Text) ? null : txtShouhinCD.Text;
             dr["ShouhinName"] = string.IsNullOrEmpty(txtShouhinName.Text) ? null : txtShouhinName.Text;
             dr["KanriNO"] = string.IsNullOrEmpty(txtControlNo.Text) ? null : txtControlNo.Text;
@@ -370,7 +373,7 @@ namespace ChakuniNyuuryoku
             dr["ProgramID"] = base_Entity.ProgramID;
             dt.Rows.Add(dr);
             string main_XML = cf.DataTableToXml(dt);
-            string detail_XML = cf.DataTableToXml(dtTemp);//ses
+            string detail_XML = cf.DataTableToXml(dtTemp);
 
             return (main_XML, detail_XML);
         }
@@ -395,7 +398,7 @@ namespace ChakuniNyuuryoku
             {
              ChakuniNO = txtArrivalNO.Text,
             ChakuniDate = txtArrivalDate.Text,
-            ChakuniYoteiNO = txtScheduledNo.Text,
+            ChakuniYoteiNO = txtScheduled.Text,
             ShouhinCD = txtShouhinCD.Text,
             ShouhinName = txtShouhinName.Text,
             JANCD = txtJANCD.Text,
@@ -495,11 +498,11 @@ namespace ChakuniNyuuryoku
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtScheduledNo.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
+            if (string.IsNullOrWhiteSpace(txtScheduled.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
                  string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColor.Text)&& string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSize.Text))
             {
                 bbl.ShowMessage("E111");
-                txtScheduledNo.Focus();
+                txtScheduled.Focus();
             }
             else
             {
@@ -517,7 +520,7 @@ namespace ChakuniNyuuryoku
         private void btnSave_Click(object sender, EventArgs e)
         {
             dtTemp = dtGS1;
-            txtScheduledNo.Clear();
+            txtScheduled.Clear();
             txtShouhinCD.Clear();
             txtShouhinName.Clear();
             txtControlNo.Clear();
@@ -527,7 +530,7 @@ namespace ChakuniNyuuryoku
             txtColor.Clear();
             txtYearTerm.Clear();
             txtSize.Clear();
-            txtScheduledNo.Focus();
+            txtScheduled.Focus();
             gvChakuniNyuuryoku.ClearSelection();
             gvChakuniNyuuryoku.DataSource = dtClear;
         }
