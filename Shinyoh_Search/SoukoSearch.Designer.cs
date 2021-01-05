@@ -90,7 +90,7 @@
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
             this.txtKanaName.NextControl = null;
-            this.txtKanaName.NextControlName = "btnF11";
+            this.txtKanaName.NextControlName = "BtnF11_Soko";
             this.txtKanaName.SearchType = Entity.SearchType.ScType.None;
             this.txtKanaName.Size = new System.Drawing.Size(400, 19);
             this.txtKanaName.TabIndex = 3;
@@ -233,9 +233,9 @@
             this.gvSouko.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSouko,
             this.colSoukoName});
-            this.gvSouko.Location = new System.Drawing.Point(22, 117);
+            this.gvSouko.Location = new System.Drawing.Point(22, 111);
             this.gvSouko.Name = "gvSouko";
-            this.gvSouko.Size = new System.Drawing.Size(588, 338);
+            this.gvSouko.Size = new System.Drawing.Size(588, 347);
             this.gvSouko.TabIndex = 2;
             this.gvSouko.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSouko_CellMouseDoubleClick);
             // 
