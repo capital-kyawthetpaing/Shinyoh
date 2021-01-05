@@ -239,6 +239,7 @@
             this.txtStaff_LDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_LDate.Size = new System.Drawing.Size(130, 19);
             this.txtStaff_LDate.TabIndex = 13;
+            this.txtStaff_LDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStaff_LDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtStaff_JDate
@@ -655,6 +656,7 @@
             this.txtStaff_CDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_CDate.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_CDate.TabIndex = 2;
+            this.txtStaff_CDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStaff_CDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtStaff_CDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaff_CDate_KeyDown);
             // 
@@ -694,6 +696,7 @@
             this.txtStaff_CopyDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_CopyDate.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_CopyDate.TabIndex = 4;
+            this.txtStaff_CopyDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStaff_CopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtStaff_CopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaff_CopyDate_KeyDown);
             // 
