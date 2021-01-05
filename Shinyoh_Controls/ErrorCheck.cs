@@ -117,6 +117,11 @@ namespace Shinyoh_Controls
                         }
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "ShukkaTorikomi":
+                        ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
+                        rDt = rBL.ShukkaTorikomi_Check(sTextBox.ctrlE101_1.Text, sTextBox.ctrlE101_2.Text, "E101");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                     case "M_MultiPorpose":
                         multipurposeEntity m_obj = new multipurposeEntity();
                         m_obj.id = 109;

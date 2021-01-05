@@ -89,14 +89,57 @@
             this.rdoDetails = new Shinyoh_Controls.SRadio();
             this.rdoAggregation = new Shinyoh_Controls.SRadio();
             this.lblRepresentation = new Shinyoh_Controls.SLabel();
+            this.gvAggregationDetails = new Shinyoh_Controls.SGridView();
+            this.gvFreeInventoryDetails = new Shinyoh_Controls.SGridView();
+            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colChakuniYoteiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMiHikiateSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHikiateZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colChakuniSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShukkaSiziSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShukkaSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Free_HinbanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Free_ShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Free_ColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Free_SizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Free_HikiateZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Free_GenZaikoSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Free_KanriNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Free_JANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_SizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_JuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ChakuniYoteiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_MiHikiateSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_HikiateZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ChakuniSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ShukkaSiziSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ShukkaSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_HikiateSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_JuchuuNO_JuchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_TokuisakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_KanriNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_NyuukoDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_JuchuuDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_KibouNouki = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_JANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvMainDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAggregationDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvFreeInventoryDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1484, 75);
+            this.panel1.Size = new System.Drawing.Size(1784, 75);
             // 
             // cboMode
             // 
@@ -106,6 +149,8 @@
             // 
             // PanelDetail
             // 
+            this.PanelDetail.Controls.Add(this.gvFreeInventoryDetails);
+            this.PanelDetail.Controls.Add(this.gvAggregationDetails);
             this.PanelDetail.Controls.Add(this.gvMainDetail);
             this.PanelDetail.Controls.Add(this.btn_F11);
             this.PanelDetail.Controls.Add(this.btn_F10);
@@ -169,7 +214,7 @@
             this.PanelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1484, 642);
+            this.PanelDetail.Size = new System.Drawing.Size(1784, 642);
             this.PanelDetail.TabIndex = 3;
             // 
             // gvMainDetail
@@ -182,10 +227,30 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gvMainDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvMainDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_Detail_ShouhinCD,
+            this.col_Detail_ShouhinName,
+            this.col_Detail_ColorNO,
+            this.col_Detail_SizeNO,
+            this.col_Detail_JuchuuSuu,
+            this.col_Detail_ChakuniYoteiSuu,
+            this.col_Detail_MiHikiateSuu,
+            this.col_Detail_HikiateZumiSuu,
+            this.col_Detail_ChakuniSuu,
+            this.col_Detail_ShukkaSiziSuu,
+            this.col_Detail_ShukkaSuu,
+            this.col_Detail_HikiateSuu,
+            this.col_Detail_JuchuuNO_JuchuuGyouNO,
+            this.col_Detail_TokuisakiRyakuName,
+            this.col_Detail_KanriNO,
+            this.col_Detail_NyuukoDate,
+            this.col_Detail_JuchuuDate,
+            this.col_Detail_KibouNouki,
+            this.col_Detail_JANCD});
             this.gvMainDetail.Location = new System.Drawing.Point(22, 245);
             this.gvMainDetail.MultiSelect = false;
             this.gvMainDetail.Name = "gvMainDetail";
-            this.gvMainDetail.Size = new System.Drawing.Size(1000, 300);
+            this.gvMainDetail.Size = new System.Drawing.Size(1750, 100);
             this.gvMainDetail.TabIndex = 101;
             this.gvMainDetail.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvMainDetail_CellEndEdit);
             this.gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
@@ -277,6 +342,7 @@
             this.txtShouhinName.IsDatatableOccurs = null;
             this.txtShouhinName.IsErrorOccurs = false;
             this.txtShouhinName.IsRequire = false;
+            this.txtShouhinName.IsUseInitializedLayout = true;
             this.txtShouhinName.Location = new System.Drawing.Point(150, 220);
             this.txtShouhinName.MaxLength = 100;
             this.txtShouhinName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -314,6 +380,7 @@
             this.txtSizeNO.IsDatatableOccurs = null;
             this.txtSizeNO.IsErrorOccurs = false;
             this.txtSizeNO.IsRequire = false;
+            this.txtSizeNO.IsUseInitializedLayout = true;
             this.txtSizeNO.Location = new System.Drawing.Point(1245, 195);
             this.txtSizeNO.MaxLength = 13;
             this.txtSizeNO.MinimumSize = new System.Drawing.Size(100, 19);
@@ -351,6 +418,7 @@
             this.txtColorNO.IsDatatableOccurs = null;
             this.txtColorNO.IsErrorOccurs = false;
             this.txtColorNO.IsRequire = false;
+            this.txtColorNO.IsUseInitializedLayout = true;
             this.txtColorNO.Location = new System.Drawing.Point(900, 195);
             this.txtColorNO.MaxLength = 13;
             this.txtColorNO.MinimumSize = new System.Drawing.Size(100, 19);
@@ -388,6 +456,7 @@
             this.txtJANCD.IsDatatableOccurs = null;
             this.txtJANCD.IsErrorOccurs = false;
             this.txtJANCD.IsRequire = false;
+            this.txtJANCD.IsUseInitializedLayout = true;
             this.txtJANCD.Location = new System.Drawing.Point(530, 195);
             this.txtJANCD.MaxLength = 13;
             this.txtJANCD.MinimumSize = new System.Drawing.Size(150, 19);
@@ -425,6 +494,7 @@
             this.txtShouhinCD.IsDatatableOccurs = null;
             this.txtShouhinCD.IsErrorOccurs = false;
             this.txtShouhinCD.IsRequire = false;
+            this.txtShouhinCD.IsUseInitializedLayout = true;
             this.txtShouhinCD.Location = new System.Drawing.Point(150, 195);
             this.txtShouhinCD.MaxLength = 50;
             this.txtShouhinCD.MinimumSize = new System.Drawing.Size(250, 19);
@@ -471,6 +541,7 @@
             this.txtAddress.IsDatatableOccurs = null;
             this.txtAddress.IsErrorOccurs = false;
             this.txtAddress.IsRequire = false;
+            this.txtAddress.IsUseInitializedLayout = true;
             this.txtAddress.Location = new System.Drawing.Point(150, 170);
             this.txtAddress.MaxLength = 100;
             this.txtAddress.MinimumSize = new System.Drawing.Size(100, 19);
@@ -517,6 +588,7 @@
             this.txtName.IsDatatableOccurs = null;
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = false;
+            this.txtName.IsUseInitializedLayout = true;
             this.txtName.Location = new System.Drawing.Point(900, 145);
             this.txtName.MaxLength = 20;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -563,6 +635,7 @@
             this.txtPhoneNo3.IsDatatableOccurs = null;
             this.txtPhoneNo3.IsErrorOccurs = false;
             this.txtPhoneNo3.IsRequire = false;
+            this.txtPhoneNo3.IsUseInitializedLayout = true;
             this.txtPhoneNo3.Location = new System.Drawing.Point(638, 145);
             this.txtPhoneNo3.MinimumSize = new System.Drawing.Size(60, 19);
             this.txtPhoneNo3.MoveNext = true;
@@ -595,6 +668,7 @@
             this.txtPhoneNo2.IsDatatableOccurs = null;
             this.txtPhoneNo2.IsErrorOccurs = false;
             this.txtPhoneNo2.IsRequire = false;
+            this.txtPhoneNo2.IsUseInitializedLayout = true;
             this.txtPhoneNo2.Location = new System.Drawing.Point(564, 145);
             this.txtPhoneNo2.MaxLength = 6;
             this.txtPhoneNo2.MinimumSize = new System.Drawing.Size(60, 19);
@@ -628,6 +702,7 @@
             this.txtPhoneNo1.IsDatatableOccurs = null;
             this.txtPhoneNo1.IsErrorOccurs = false;
             this.txtPhoneNo1.IsRequire = false;
+            this.txtPhoneNo1.IsUseInitializedLayout = true;
             this.txtPhoneNo1.Location = new System.Drawing.Point(490, 145);
             this.txtPhoneNo1.MaxLength = 6;
             this.txtPhoneNo1.MinimumSize = new System.Drawing.Size(60, 19);
@@ -674,6 +749,7 @@
             this.txtPostalCode2.IsDatatableOccurs = null;
             this.txtPostalCode2.IsErrorOccurs = false;
             this.txtPostalCode2.IsRequire = false;
+            this.txtPostalCode2.IsUseInitializedLayout = true;
             this.txtPostalCode2.Location = new System.Drawing.Point(204, 145);
             this.txtPostalCode2.MaxLength = 4;
             this.txtPostalCode2.MinimumSize = new System.Drawing.Size(60, 19);
@@ -708,6 +784,7 @@
             this.txtPostalCode1.IsDatatableOccurs = null;
             this.txtPostalCode1.IsErrorOccurs = false;
             this.txtPostalCode1.IsRequire = false;
+            this.txtPostalCode1.IsUseInitializedLayout = true;
             this.txtPostalCode1.Location = new System.Drawing.Point(150, 145);
             this.txtPostalCode1.MaxLength = 3;
             this.txtPostalCode1.MinimumSize = new System.Drawing.Size(40, 19);
@@ -764,6 +841,7 @@
             this.txtKouritenCD.IsDatatableOccurs = null;
             this.txtKouritenCD.IsErrorOccurs = false;
             this.txtKouritenCD.IsRequire = false;
+            this.txtKouritenCD.IsUseInitializedLayout = true;
             this.txtKouritenCD.Location = new System.Drawing.Point(900, 90);
             this.txtKouritenCD.MaxLength = 10;
             this.txtKouritenCD.MinimumSize = new System.Drawing.Size(100, 19);
@@ -811,6 +889,7 @@
             this.txtTokuisakiCD.IsDatatableOccurs = null;
             this.txtTokuisakiCD.IsErrorOccurs = false;
             this.txtTokuisakiCD.IsRequire = false;
+            this.txtTokuisakiCD.IsUseInitializedLayout = true;
             this.txtTokuisakiCD.Location = new System.Drawing.Point(900, 65);
             this.txtTokuisakiCD.MaxLength = 10;
             this.txtTokuisakiCD.MinimumSize = new System.Drawing.Size(100, 19);
@@ -849,6 +928,7 @@
             this.txtKanriNO.IsDatatableOccurs = null;
             this.txtKanriNO.IsErrorOccurs = false;
             this.txtKanriNO.IsRequire = false;
+            this.txtKanriNO.IsUseInitializedLayout = true;
             this.txtKanriNO.Location = new System.Drawing.Point(1245, 40);
             this.txtKanriNO.MaxLength = 10;
             this.txtKanriNO.MinimumSize = new System.Drawing.Size(100, 19);
@@ -886,6 +966,7 @@
             this.txtChakuniYoteiNO.IsDatatableOccurs = null;
             this.txtChakuniYoteiNO.IsErrorOccurs = false;
             this.txtChakuniYoteiNO.IsRequire = false;
+            this.txtChakuniYoteiNO.IsUseInitializedLayout = true;
             this.txtChakuniYoteiNO.Location = new System.Drawing.Point(900, 40);
             this.txtChakuniYoteiNO.MaxLength = 12;
             this.txtChakuniYoteiNO.MinimumSize = new System.Drawing.Size(100, 19);
@@ -932,6 +1013,7 @@
             this.txtSoukoCD.IsDatatableOccurs = null;
             this.txtSoukoCD.IsErrorOccurs = false;
             this.txtSoukoCD.IsRequire = false;
+            this.txtSoukoCD.IsUseInitializedLayout = true;
             this.txtSoukoCD.Location = new System.Drawing.Point(150, 90);
             this.txtSoukoCD.MaxLength = 10;
             this.txtSoukoCD.MinimumSize = new System.Drawing.Size(100, 19);
@@ -1012,6 +1094,7 @@
             this.txtYearTerm.IsDatatableOccurs = null;
             this.txtYearTerm.IsErrorOccurs = false;
             this.txtYearTerm.IsRequire = false;
+            this.txtYearTerm.IsUseInitializedLayout = true;
             this.txtYearTerm.Location = new System.Drawing.Point(150, 65);
             this.txtYearTerm.MaxLength = 6;
             this.txtYearTerm.MinimumSize = new System.Drawing.Size(50, 19);
@@ -1059,6 +1142,7 @@
             this.txtBrand.IsDatatableOccurs = null;
             this.txtBrand.IsErrorOccurs = false;
             this.txtBrand.IsRequire = false;
+            this.txtBrand.IsUseInitializedLayout = true;
             this.txtBrand.Location = new System.Drawing.Point(150, 40);
             this.txtBrand.MaxLength = 10;
             this.txtBrand.MinimumSize = new System.Drawing.Size(100, 19);
@@ -1144,11 +1228,315 @@
             this.lblRepresentation.Text = "表示形式";
             this.lblRepresentation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // gvAggregationDetails
+            // 
+            this.gvAggregationDetails.AllowUserToAddRows = false;
+            this.gvAggregationDetails.AllowUserToDeleteRows = false;
+            this.gvAggregationDetails.AllowUserToResizeColumns = false;
+            this.gvAggregationDetails.AllowUserToResizeRows = false;
+            this.gvAggregationDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvAggregationDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colShouhinCD,
+            this.colShouhinName,
+            this.colColorNO,
+            this.colSizeNO,
+            this.colJuchuuSuu,
+            this.colChakuniYoteiSuu,
+            this.colMiHikiateSuu,
+            this.colHikiateZumiSuu,
+            this.colChakuniSuu,
+            this.colShukkaSiziSuu,
+            this.colShukkaSuu,
+            this.colJANCD});
+            this.gvAggregationDetails.Location = new System.Drawing.Point(22, 351);
+            this.gvAggregationDetails.MultiSelect = false;
+            this.gvAggregationDetails.Name = "gvAggregationDetails";
+            this.gvAggregationDetails.Size = new System.Drawing.Size(1550, 100);
+            this.gvAggregationDetails.TabIndex = 102;
+            // 
+            // gvFreeInventoryDetails
+            // 
+            this.gvFreeInventoryDetails.AllowUserToAddRows = false;
+            this.gvFreeInventoryDetails.AllowUserToDeleteRows = false;
+            this.gvFreeInventoryDetails.AllowUserToResizeColumns = false;
+            this.gvFreeInventoryDetails.AllowUserToResizeRows = false;
+            this.gvFreeInventoryDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvFreeInventoryDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_Free_HinbanCD,
+            this.col_Free_ShouhinName,
+            this.col_Free_ColorNO,
+            this.col_Free_SizeNO,
+            this.col_Free_HikiateZumiSuu,
+            this.col_Free_GenZaikoSuu,
+            this.col_Free_KanriNO,
+            this.col_Free_JANCD});
+            this.gvFreeInventoryDetails.Location = new System.Drawing.Point(22, 457);
+            this.gvFreeInventoryDetails.MultiSelect = false;
+            this.gvFreeInventoryDetails.Name = "gvFreeInventoryDetails";
+            this.gvFreeInventoryDetails.Size = new System.Drawing.Size(1150, 100);
+            this.gvFreeInventoryDetails.TabIndex = 103;
+            // 
+            // colShouhinCD
+            // 
+            this.colShouhinCD.DataPropertyName = "商品";
+            this.colShouhinCD.FillWeight = 200F;
+            this.colShouhinCD.HeaderText = "商品";
+            this.colShouhinCD.Name = "colShouhinCD";
+            this.colShouhinCD.Width = 200;
+            // 
+            // colShouhinName
+            // 
+            this.colShouhinName.DataPropertyName = "商品名";
+            this.colShouhinName.FillWeight = 300F;
+            this.colShouhinName.HeaderText = "商品名";
+            this.colShouhinName.Name = "colShouhinName";
+            this.colShouhinName.Width = 300;
+            // 
+            // colColorNO
+            // 
+            this.colColorNO.DataPropertyName = "カラー";
+            this.colColorNO.HeaderText = "カラー";
+            this.colColorNO.Name = "colColorNO";
+            // 
+            // colSizeNO
+            // 
+            this.colSizeNO.DataPropertyName = "サイズ";
+            this.colSizeNO.HeaderText = "サイズ";
+            this.colSizeNO.Name = "colSizeNO";
+            // 
+            // colJuchuuSuu
+            // 
+            this.colJuchuuSuu.DataPropertyName = "受注数";
+            this.colJuchuuSuu.HeaderText = "受注数";
+            this.colJuchuuSuu.Name = "colJuchuuSuu";
+            // 
+            // colChakuniYoteiSuu
+            // 
+            this.colChakuniYoteiSuu.DataPropertyName = "着荷予定数";
+            this.colChakuniYoteiSuu.HeaderText = "着荷予定数";
+            this.colChakuniYoteiSuu.Name = "colChakuniYoteiSuu";
+            // 
+            // colMiHikiateSuu
+            // 
+            this.colMiHikiateSuu.DataPropertyName = "未引当数";
+            this.colMiHikiateSuu.HeaderText = "未引当数";
+            this.colMiHikiateSuu.Name = "colMiHikiateSuu";
+            // 
+            // colHikiateZumiSuu
+            // 
+            this.colHikiateZumiSuu.DataPropertyName = "引当済数";
+            this.colHikiateZumiSuu.HeaderText = "引当済数";
+            this.colHikiateZumiSuu.Name = "colHikiateZumiSuu";
+            // 
+            // colChakuniSuu
+            // 
+            this.colChakuniSuu.DataPropertyName = "着荷済数";
+            this.colChakuniSuu.HeaderText = "着荷済数";
+            this.colChakuniSuu.Name = "colChakuniSuu";
+            // 
+            // colShukkaSiziSuu
+            // 
+            this.colShukkaSiziSuu.DataPropertyName = "出荷指示数";
+            this.colShukkaSiziSuu.HeaderText = "出荷指示数";
+            this.colShukkaSiziSuu.Name = "colShukkaSiziSuu";
+            // 
+            // colShukkaSuu
+            // 
+            this.colShukkaSuu.DataPropertyName = "出荷済数";
+            this.colShukkaSuu.HeaderText = "出荷済数";
+            this.colShukkaSuu.Name = "colShukkaSuu";
+            // 
+            // colJANCD
+            // 
+            this.colJANCD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colJANCD.DataPropertyName = "JANCD";
+            this.colJANCD.HeaderText = "JANCD";
+            this.colJANCD.Name = "colJANCD";
+            // 
+            // col_Free_HinbanCD
+            // 
+            this.col_Free_HinbanCD.DataPropertyName = "商品";
+            this.col_Free_HinbanCD.FillWeight = 200F;
+            this.col_Free_HinbanCD.HeaderText = "商品";
+            this.col_Free_HinbanCD.Name = "col_Free_HinbanCD";
+            this.col_Free_HinbanCD.Width = 200;
+            // 
+            // col_Free_ShouhinName
+            // 
+            this.col_Free_ShouhinName.DataPropertyName = "商品名";
+            this.col_Free_ShouhinName.FillWeight = 300F;
+            this.col_Free_ShouhinName.HeaderText = "商品名";
+            this.col_Free_ShouhinName.Name = "col_Free_ShouhinName";
+            this.col_Free_ShouhinName.Width = 300;
+            // 
+            // col_Free_ColorNO
+            // 
+            this.col_Free_ColorNO.DataPropertyName = "カラー";
+            this.col_Free_ColorNO.HeaderText = "カラー";
+            this.col_Free_ColorNO.Name = "col_Free_ColorNO";
+            // 
+            // col_Free_SizeNO
+            // 
+            this.col_Free_SizeNO.DataPropertyName = "サイズ";
+            this.col_Free_SizeNO.HeaderText = "サイズ";
+            this.col_Free_SizeNO.Name = "col_Free_SizeNO";
+            // 
+            // col_Free_HikiateZumiSuu
+            // 
+            this.col_Free_HikiateZumiSuu.DataPropertyName = "引当済数";
+            this.col_Free_HikiateZumiSuu.HeaderText = "引当済数";
+            this.col_Free_HikiateZumiSuu.Name = "col_Free_HikiateZumiSuu";
+            // 
+            // col_Free_GenZaikoSuu
+            // 
+            this.col_Free_GenZaikoSuu.DataPropertyName = "現在庫数";
+            this.col_Free_GenZaikoSuu.HeaderText = "現在庫数";
+            this.col_Free_GenZaikoSuu.Name = "col_Free_GenZaikoSuu";
+            // 
+            // col_Free_KanriNO
+            // 
+            this.col_Free_KanriNO.DataPropertyName = "管理番号";
+            this.col_Free_KanriNO.HeaderText = "管理番号";
+            this.col_Free_KanriNO.Name = "col_Free_KanriNO";
+            // 
+            // col_Free_JANCD
+            // 
+            this.col_Free_JANCD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_Free_JANCD.DataPropertyName = "JANCD";
+            this.col_Free_JANCD.HeaderText = "JANCD";
+            this.col_Free_JANCD.Name = "col_Free_JANCD";
+            // 
+            // col_Detail_ShouhinCD
+            // 
+            this.col_Detail_ShouhinCD.DataPropertyName = "商品";
+            this.col_Detail_ShouhinCD.FillWeight = 200F;
+            this.col_Detail_ShouhinCD.HeaderText = "商品";
+            this.col_Detail_ShouhinCD.Name = "col_Detail_ShouhinCD";
+            this.col_Detail_ShouhinCD.Width = 200;
+            // 
+            // col_Detail_ShouhinName
+            // 
+            this.col_Detail_ShouhinName.DataPropertyName = "商品名";
+            this.col_Detail_ShouhinName.FillWeight = 300F;
+            this.col_Detail_ShouhinName.HeaderText = "商品名";
+            this.col_Detail_ShouhinName.Name = "col_Detail_ShouhinName";
+            this.col_Detail_ShouhinName.Width = 300;
+            // 
+            // col_Detail_ColorNO
+            // 
+            this.col_Detail_ColorNO.DataPropertyName = "カラー";
+            this.col_Detail_ColorNO.HeaderText = "カラー";
+            this.col_Detail_ColorNO.Name = "col_Detail_ColorNO";
+            // 
+            // col_Detail_SizeNO
+            // 
+            this.col_Detail_SizeNO.DataPropertyName = "サイズ";
+            this.col_Detail_SizeNO.HeaderText = "サイズ";
+            this.col_Detail_SizeNO.Name = "col_Detail_SizeNO";
+            // 
+            // col_Detail_JuchuuSuu
+            // 
+            this.col_Detail_JuchuuSuu.DataPropertyName = "受注数";
+            this.col_Detail_JuchuuSuu.HeaderText = "受注数";
+            this.col_Detail_JuchuuSuu.Name = "col_Detail_JuchuuSuu";
+            // 
+            // col_Detail_ChakuniYoteiSuu
+            // 
+            this.col_Detail_ChakuniYoteiSuu.DataPropertyName = "着荷予定数";
+            this.col_Detail_ChakuniYoteiSuu.HeaderText = "着荷予定数";
+            this.col_Detail_ChakuniYoteiSuu.Name = "col_Detail_ChakuniYoteiSuu";
+            // 
+            // col_Detail_MiHikiateSuu
+            // 
+            this.col_Detail_MiHikiateSuu.DataPropertyName = "未引当数";
+            this.col_Detail_MiHikiateSuu.HeaderText = "未引当数";
+            this.col_Detail_MiHikiateSuu.Name = "col_Detail_MiHikiateSuu";
+            // 
+            // col_Detail_HikiateZumiSuu
+            // 
+            this.col_Detail_HikiateZumiSuu.DataPropertyName = "引当済数";
+            this.col_Detail_HikiateZumiSuu.HeaderText = "引当済数";
+            this.col_Detail_HikiateZumiSuu.Name = "col_Detail_HikiateZumiSuu";
+            // 
+            // col_Detail_ChakuniSuu
+            // 
+            this.col_Detail_ChakuniSuu.DataPropertyName = "着荷済数";
+            this.col_Detail_ChakuniSuu.HeaderText = "着荷済数";
+            this.col_Detail_ChakuniSuu.Name = "col_Detail_ChakuniSuu";
+            // 
+            // col_Detail_ShukkaSiziSuu
+            // 
+            this.col_Detail_ShukkaSiziSuu.DataPropertyName = "出荷指示数";
+            this.col_Detail_ShukkaSiziSuu.HeaderText = "出荷指示数";
+            this.col_Detail_ShukkaSiziSuu.Name = "col_Detail_ShukkaSiziSuu";
+            // 
+            // col_Detail_ShukkaSuu
+            // 
+            this.col_Detail_ShukkaSuu.DataPropertyName = "出荷済数";
+            this.col_Detail_ShukkaSuu.HeaderText = "出荷済数";
+            this.col_Detail_ShukkaSuu.Name = "col_Detail_ShukkaSuu";
+            // 
+            // col_Detail_HikiateSuu
+            // 
+            this.col_Detail_HikiateSuu.DataPropertyName = "引当調整数";
+            this.col_Detail_HikiateSuu.HeaderText = "引当調整数";
+            this.col_Detail_HikiateSuu.Name = "col_Detail_HikiateSuu";
+            // 
+            // col_Detail_JuchuuNO_JuchuuGyouNO
+            // 
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.DataPropertyName = "受注番号-行番号";
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.FillWeight = 150F;
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.HeaderText = "受注番号-行番号";
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.Name = "col_Detail_JuchuuNO_JuchuuGyouNO";
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.Width = 150;
+            // 
+            // col_Detail_TokuisakiRyakuName
+            // 
+            this.col_Detail_TokuisakiRyakuName.DataPropertyName = "得意先名";
+            this.col_Detail_TokuisakiRyakuName.FillWeight = 400F;
+            this.col_Detail_TokuisakiRyakuName.HeaderText = "得意先名";
+            this.col_Detail_TokuisakiRyakuName.Name = "col_Detail_TokuisakiRyakuName";
+            this.col_Detail_TokuisakiRyakuName.Width = 400;
+            // 
+            // col_Detail_KanriNO
+            // 
+            this.col_Detail_KanriNO.DataPropertyName = "小売店名";
+            this.col_Detail_KanriNO.FillWeight = 400F;
+            this.col_Detail_KanriNO.HeaderText = "小売店名";
+            this.col_Detail_KanriNO.Name = "col_Detail_KanriNO";
+            this.col_Detail_KanriNO.Width = 400;
+            // 
+            // col_Detail_NyuukoDate
+            // 
+            this.col_Detail_NyuukoDate.DataPropertyName = "入庫日";
+            this.col_Detail_NyuukoDate.HeaderText = "入庫日";
+            this.col_Detail_NyuukoDate.Name = "col_Detail_NyuukoDate";
+            // 
+            // col_Detail_JuchuuDate
+            // 
+            this.col_Detail_JuchuuDate.DataPropertyName = "受注日";
+            this.col_Detail_JuchuuDate.HeaderText = "受注日";
+            this.col_Detail_JuchuuDate.Name = "col_Detail_JuchuuDate";
+            // 
+            // col_Detail_KibouNouki
+            // 
+            this.col_Detail_KibouNouki.DataPropertyName = "希望納期";
+            this.col_Detail_KibouNouki.HeaderText = "希望納期";
+            this.col_Detail_KibouNouki.Name = "col_Detail_KibouNouki";
+            // 
+            // col_Detail_JANCD
+            // 
+            this.col_Detail_JANCD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.col_Detail_JANCD.DataPropertyName = "JANCD";
+            this.col_Detail_JANCD.HeaderText = "JANCD";
+            this.col_Detail_JANCD.Name = "col_Detail_JANCD";
+            // 
             // HikiateHenkouShoukai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1484, 761);
+            this.ClientSize = new System.Drawing.Size(1784, 761);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "HikiateHenkouShoukai";
@@ -1160,6 +1548,8 @@
             this.PanelDetail.ResumeLayout(false);
             this.PanelDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvMainDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAggregationDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvFreeInventoryDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1228,5 +1618,46 @@
         private Shinyoh_Controls.STextBox txtShouhinCD;
         private Shinyoh_Controls.SLabel lblShouhinCD;
         private Shinyoh_Controls.SGridView gvMainDetail;
+        private Shinyoh_Controls.SGridView gvFreeInventoryDetails;
+        private Shinyoh_Controls.SGridView gvAggregationDetails;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colColorNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSizeNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniYoteiSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMiHikiateSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHikiateZumiSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkaSiziSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkaSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJANCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_HinbanCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_ShouhinName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_ColorNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_SizeNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_HikiateZumiSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_GenZaikoSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_KanriNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_JANCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_ShouhinCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_ShouhinName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_ColorNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_SizeNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_JuchuuSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_ChakuniYoteiSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_MiHikiateSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_HikiateZumiSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_ChakuniSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_ShukkaSiziSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_ShukkaSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_HikiateSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_JuchuuNO_JuchuuGyouNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_TokuisakiRyakuName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_KanriNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_NyuukoDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_JuchuuDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_KibouNouki;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_JANCD;
     }
 }
