@@ -134,7 +134,8 @@ namespace Shinyoh
             SButton btn = (SButton)sender;
             if(btn.ButtonType == ButtonType.BType.Search)
             {
-                PreviousCtrl.Focus();
+                if (PreviousCtrl != null)
+                    PreviousCtrl.Focus();
                 SendKeys.Send("{F9}");
             }
             else
@@ -183,14 +184,18 @@ namespace Shinyoh
                     case ButtonType.BType.Cancel:
                         if (bbl.ShowMessage("Q004") != DialogResult.Yes)
                         {
-                            PreviousCtrl.Focus();
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
                         }
                         else
                             FunctionProcess(btn.Tag.ToString());
                         break;
                     case ButtonType.BType.Export:
                         if (bbl.ShowMessage("Q205") != DialogResult.Yes)
-                            PreviousCtrl.Focus();
+                        {
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
+                        }
                         else
                             FunctionProcess(btn.Tag.ToString());
                             break;
@@ -210,14 +215,20 @@ namespace Shinyoh
                         if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
                         {
                             if (bbl.ShowMessage("Q101") != DialogResult.Yes)
-                                PreviousCtrl.Focus();
+                            {
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
+                            }
                             else
                                 FunctionProcess(btn.Tag.ToString());
                         }
                         else if (cboMode.SelectedValue.ToString() == "3")
                         {
                             if (bbl.ShowMessage("Q102") != DialogResult.Yes)
-                                PreviousCtrl.Focus();
+                            {
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
+                            }
                             else
                                 FunctionProcess(btn.Tag.ToString());
                         }
