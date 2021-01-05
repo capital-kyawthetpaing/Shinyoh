@@ -69,9 +69,7 @@ namespace MasterTouroku_MultiPorpose
             }
             if(tagID=="6")
             {
-                cf.Clear(PanelTitle);
-                cf.Clear(panelDetails);
-                txtID.Focus();
+                Mode_Setting();
             }
             if (tagID == "12")
             {
