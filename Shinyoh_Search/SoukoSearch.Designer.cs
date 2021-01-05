@@ -58,14 +58,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(935, 100);
+            this.panel1.Size = new System.Drawing.Size(884, 100);
             this.panel1.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(217, 13);
+            this.label1.Location = new System.Drawing.Point(225, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 20);
             this.label1.TabIndex = 8;
@@ -76,21 +76,23 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
+            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
-            this.txtKanaName.Location = new System.Drawing.Point(97, 68);
+            this.txtKanaName.IsUseInitializedLayout = true;
+            this.txtKanaName.Location = new System.Drawing.Point(102, 68);
             this.txtKanaName.MaxLength = 50;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
             this.txtKanaName.NextControl = null;
-            this.txtKanaName.NextControlName = "btnF11";
+            this.txtKanaName.NextControlName = "BtnF11_Soko";
             this.txtKanaName.SearchType = Entity.SearchType.ScType.None;
-            this.txtKanaName.Size = new System.Drawing.Size(353, 19);
+            this.txtKanaName.Size = new System.Drawing.Size(400, 19);
             this.txtKanaName.TabIndex = 3;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -99,13 +101,15 @@
             this.txtSoukoName.AllowMinus = false;
             this.txtSoukoName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSoukoName.DecimalPlace = 0;
+            this.txtSoukoName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtSoukoName.DepandOnMode = true;
             this.txtSoukoName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSoukoName.IntegerPart = 0;
             this.txtSoukoName.IsDatatableOccurs = null;
             this.txtSoukoName.IsErrorOccurs = false;
             this.txtSoukoName.IsRequire = false;
-            this.txtSoukoName.Location = new System.Drawing.Point(97, 39);
+            this.txtSoukoName.IsUseInitializedLayout = true;
+            this.txtSoukoName.Location = new System.Drawing.Point(102, 39);
             this.txtSoukoName.MaxLength = 50;
             this.txtSoukoName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSoukoName.MoveNext = true;
@@ -113,7 +117,7 @@
             this.txtSoukoName.NextControl = null;
             this.txtSoukoName.NextControlName = "txtKanaName";
             this.txtSoukoName.SearchType = Entity.SearchType.ScType.None;
-            this.txtSoukoName.Size = new System.Drawing.Size(353, 19);
+            this.txtSoukoName.Size = new System.Drawing.Size(400, 19);
             this.txtSoukoName.TabIndex = 2;
             this.txtSoukoName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -122,13 +126,15 @@
             this.txtSouko2.AllowMinus = false;
             this.txtSouko2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSouko2.DecimalPlace = 0;
+            this.txtSouko2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSouko2.DepandOnMode = true;
             this.txtSouko2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSouko2.IntegerPart = 0;
             this.txtSouko2.IsDatatableOccurs = null;
             this.txtSouko2.IsErrorOccurs = false;
             this.txtSouko2.IsRequire = false;
-            this.txtSouko2.Location = new System.Drawing.Point(254, 10);
+            this.txtSouko2.IsUseInitializedLayout = true;
+            this.txtSouko2.Location = new System.Drawing.Point(266, 10);
             this.txtSouko2.MaxLength = 10;
             this.txtSouko2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSouko2.MoveNext = true;
@@ -145,13 +151,15 @@
             this.txtSouko1.AllowMinus = false;
             this.txtSouko1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSouko1.DecimalPlace = 0;
+            this.txtSouko1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSouko1.DepandOnMode = true;
             this.txtSouko1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSouko1.IntegerPart = 0;
             this.txtSouko1.IsDatatableOccurs = null;
             this.txtSouko1.IsErrorOccurs = false;
             this.txtSouko1.IsRequire = false;
-            this.txtSouko1.Location = new System.Drawing.Point(97, 9);
+            this.txtSouko1.IsUseInitializedLayout = true;
+            this.txtSouko1.Location = new System.Drawing.Point(102, 9);
             this.txtSouko1.MaxLength = 10;
             this.txtSouko1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSouko1.MoveNext = true;
@@ -183,9 +191,9 @@
             this.BtnF11_Soko.ButtonType = Entity.ButtonType.BType.Search;
             this.BtnF11_Soko.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF11_Soko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.BtnF11_Soko.Location = new System.Drawing.Point(763, 61);
+            this.BtnF11_Soko.Location = new System.Drawing.Point(712, 71);
             this.BtnF11_Soko.Name = "BtnF11_Soko";
-            this.BtnF11_Soko.Size = new System.Drawing.Size(140, 32);
+            this.BtnF11_Soko.Size = new System.Drawing.Size(150, 25);
             this.BtnF11_Soko.TabIndex = 4;
             this.BtnF11_Soko.Tag = "2";
             this.BtnF11_Soko.Text = "表示(F11)";
@@ -221,16 +229,13 @@
             // gvSouko
             // 
             this.gvSouko.AllowUserToAddRows = false;
-            this.gvSouko.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvSouko.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvSouko.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSouko,
             this.colSoukoName});
-            this.gvSouko.Location = new System.Drawing.Point(22, 117);
+            this.gvSouko.Location = new System.Drawing.Point(22, 111);
             this.gvSouko.Name = "gvSouko";
-            this.gvSouko.Size = new System.Drawing.Size(620, 302);
+            this.gvSouko.Size = new System.Drawing.Size(588, 347);
             this.gvSouko.TabIndex = 2;
             this.gvSouko.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSouko_CellMouseDoubleClick);
             // 
@@ -254,7 +259,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 506);
+            this.ClientSize = new System.Drawing.Size(884, 506);
             this.Controls.Add(this.gvSouko);
             this.Controls.Add(this.panel1);
             this.Name = "SoukoSearch";
