@@ -159,10 +159,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.KeyPreview = true;
             this.Name = "SearchBase";
             this.Text = "SearchBase";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchBase_KeyDown);
-            this.KeyPreview = true;
             this.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
