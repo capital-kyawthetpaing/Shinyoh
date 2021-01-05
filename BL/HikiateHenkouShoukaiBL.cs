@@ -12,7 +12,6 @@ namespace BL
 {
     public class HikiateHenkouShoukaiBL : BaseBL
     {
-
         public DataTable Error_Check(string val1, string val2, string ErrorType)
         {
             CKMDL ckmdl = new CKMDL();
@@ -55,6 +54,33 @@ namespace BL
             h_entity.Sqlprms[25] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = h_entity.PC };
             h_entity.Sqlprms[26] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = h_entity.ProgramID };
             return ckmdl.SelectDatatable("sp_HikiateHenkouShoukaiBL_GetData", GetConnectionString(), h_entity.Sqlprms);
+        }
+
+        public void DBData_IU(HikiateHenkouShoukaiEntity entity)
+        {
+            CKMDL ckmdl = new CKMDL();
+            entity.Sqlprms = new SqlParameter[20];
+            entity.Sqlprms[0] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = entity.ShouhinCD };
+            entity.Sqlprms[1] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = entity.ShouhinName };
+            entity.Sqlprms[2] = new SqlParameter("@ColorNO", SqlDbType.VarChar) { Value = entity.ColorNO };
+            entity.Sqlprms[3] = new SqlParameter("@SizeNO", SqlDbType.VarChar) { Value = entity.SizeNO };
+            entity.Sqlprms[4] = new SqlParameter("@JuchuuSuu", SqlDbType.VarChar) { Value = entity.JuchuuSuu };
+            entity.Sqlprms[5] = new SqlParameter("@ChakuniYoteiSuu", SqlDbType.VarChar) { Value = entity.ChakuniYoteiSuu };
+            entity.Sqlprms[6] = new SqlParameter("@MiHikiateSuu", SqlDbType.VarChar) { Value = entity.MiHikiateSuu };
+            entity.Sqlprms[7] = new SqlParameter("@HikiateZumiSuu", SqlDbType.VarChar) { Value = entity.HikiateZumiSuu };
+            entity.Sqlprms[8] = new SqlParameter("@ChakuniSuu", SqlDbType.VarChar) { Value = entity.ChakuniSuu };
+            entity.Sqlprms[9] = new SqlParameter("@ShukkaSiziSuu", SqlDbType.VarChar) { Value = entity.ShukkaSiziSuu };
+            entity.Sqlprms[10] = new SqlParameter("@ShukkaSuu", SqlDbType.VarChar) { Value = entity.ShukkaSuu };
+            entity.Sqlprms[11] = new SqlParameter("@HikiateSuu", SqlDbType.VarChar) { Value = entity.HikiateSuu };
+            entity.Sqlprms[12] = new SqlParameter("@JuchuuNO_JuchuuGyouNO", SqlDbType.VarChar) { Value = entity.JuchuuNO_JuchuuGyouNO };
+            entity.Sqlprms[13] = new SqlParameter("@TokuisakiRyakuName", SqlDbType.VarChar) { Value = entity.TokuisakiRyakuName };
+            entity.Sqlprms[14] = new SqlParameter("@KouritenRyakuName", SqlDbType.VarChar) { Value = entity.KouritenRyakuName };
+            entity.Sqlprms[15] = new SqlParameter("@NyuukoDate", SqlDbType.VarChar) { Value = entity.NyuukoDate };
+            entity.Sqlprms[16] = new SqlParameter("@JuchuuDate", SqlDbType.VarChar) { Value = entity.JuchuuDate };
+            entity.Sqlprms[17] = new SqlParameter("@KibouNouki", SqlDbType.VarChar) { Value = entity.KibouNouki };
+            entity.Sqlprms[18] = new SqlParameter("@JANCD", SqlDbType.VarChar) { Value = entity.JANCD };
+            entity.Sqlprms[19] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = entity.SoukoCD };
+            //ckmdl.InsertUpdateDeleteData("sp_HikiateHenkoShoukai_DataIU", GetConnectionString(), entity.Sqlprms);
         }
     }
 }

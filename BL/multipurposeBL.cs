@@ -33,8 +33,10 @@ namespace BL
         public DataTable GetPosition(multipurposeEntity multipurpose_entity)
         {
             ckmdl = new CKMDL();
-            multipurpose_entity.Sqlprms = new SqlParameter[1];
+            multipurpose_entity.Sqlprms = new SqlParameter[3];
             multipurpose_entity.Sqlprms[0] = new SqlParameter("@id", DbType.Int32) { Value = multipurpose_entity.id };
+            multipurpose_entity.Sqlprms[1] = new SqlParameter("@Key", SqlDbType.VarChar) { Value = multipurpose_entity.Key };
+            multipurpose_entity.Sqlprms[2] = new SqlParameter("@ErrorType", SqlDbType.VarChar) { Value = multipurpose_entity.ErrorType };
             DataTable dt = ckmdl.SelectDatatable("M_MultiPorpose_Select", GetConnectionString(), multipurpose_entity.Sqlprms);
             return dt;
         }

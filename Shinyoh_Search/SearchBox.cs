@@ -54,6 +54,9 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.multiporpose:
                         colName = "Char1";
                         break;
+                    case Entity.SearchType.ScType.Souko:
+                        colName = "SoukoName";
+                        break;
                 }
 
                 DataTable dt = this.IsDatatableOccurs;
@@ -80,7 +83,7 @@ namespace Shinyoh_Search
                         SoukoSearch soukoSearch = new SoukoSearch();
                         soukoSearch.ShowDialog();
                         CD = soukoSearch.soukoCD;
-                        //this.CD = soukoSearch.soukoCD;
+                        CDate = soukoSearch.soukoName;
                         break;
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();

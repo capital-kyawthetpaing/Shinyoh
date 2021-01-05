@@ -117,6 +117,15 @@ namespace Shinyoh_Controls
                         }
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "M_MultiPorpose":
+                        multipurposeEntity m_obj = new multipurposeEntity();
+                        m_obj.id = 109;
+                        m_obj.ErrorType = "E101";
+                        m_obj.Key = sTextBox.ctrlE101_1.Text;
+                        multipurposeBL m_BL = new multipurposeBL();
+                        rDt = m_BL.GetPosition(m_obj);
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E101"))
                 {
@@ -214,6 +223,11 @@ namespace Shinyoh_Controls
                     case "ChakuniNyuuryoku":
                         chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
                         rDt = cbl.ChakuniNyuuryoku_Select(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "IdouNyuuryoku":
+                        IdouNyuuryokuBL ibl = new IdouNyuuryokuBL();
+                        rDt = ibl.IdouNyuuryoku_Select_Check(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
 
@@ -348,9 +362,12 @@ namespace Shinyoh_Controls
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
                     case "JuchuuNyuuryoku":
-                        JuchuuListBL jbl = new JuchuuListBL();
-                        rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
-                        result = rDt.Rows[0]["MessageID"].ToString();
+                        if(!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text))
+                        {
+                            JuchuuListBL jbl = new JuchuuListBL();
+                            rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
                         break;
                     case "M_Shouhin":
                         if (!string.IsNullOrWhiteSpace(sTextBox.ctrlE133_1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlE133_2.Text))
@@ -375,6 +392,17 @@ namespace Shinyoh_Controls
                         {
                             HikiateHenkouShoukaiBL hikiateHenkouShoukaiBL = new HikiateHenkouShoukaiBL();
                             rDt = hikiateHenkouShoukaiBL.Error_Check(sTextBox.ctrlE133_1.Text, string.Empty, "E133");
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
+                        break; 
+                    case "IdouNyuuryoku":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text))
+                        {
+                            string errType = string.Empty;
+                            if (sTextBox.ctrlE133_1.Name.Contains("Copy"))
+                                errType = "Copy";
+                            IdouNyuuryokuBL ibl = new IdouNyuuryokuBL();
+                            rDt = ibl.IdouNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, errType);
                             result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;
