@@ -26,10 +26,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblShukkaNo = new Shinyoh_Controls.SLabel();
             this.panelDetail = new System.Windows.Forms.Panel();
             this.txtStaff = new Shinyoh_Search.SearchBox();
@@ -195,6 +195,7 @@
             this.txtStaff.IsDatatableOccurs = null;
             this.txtStaff.IsErrorOccurs = false;
             this.txtStaff.IsRequire = false;
+            this.txtStaff.IsUseInitializedLayout = true;
             this.txtStaff.lblName = null;
             this.txtStaff.Location = new System.Drawing.Point(905, 10);
             this.txtStaff.MaxLength = 10;
@@ -213,7 +214,7 @@
             this.lblStatffName.BackColor = System.Drawing.SystemColors.Control;
             this.lblStatffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStatffName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblStatffName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblStatffName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatffName.Location = new System.Drawing.Point(1005, 10);
             this.lblStatffName.Name = "lblStatffName";
             this.lblStatffName.Size = new System.Drawing.Size(250, 19);
@@ -241,6 +242,7 @@
             this.txtTelNo3.IsDatatableOccurs = null;
             this.txtTelNo3.IsErrorOccurs = false;
             this.txtTelNo3.IsRequire = false;
+            this.txtTelNo3.IsUseInitializedLayout = true;
             this.txtTelNo3.Location = new System.Drawing.Point(1031, 139);
             this.txtTelNo3.MaxLength = 5;
             this.txtTelNo3.MinimumSize = new System.Drawing.Size(50, 19);
@@ -284,6 +286,7 @@
             this.txtTelNo2.IsDatatableOccurs = null;
             this.txtTelNo2.IsErrorOccurs = false;
             this.txtTelNo2.IsRequire = false;
+            this.txtTelNo2.IsUseInitializedLayout = true;
             this.txtTelNo2.Location = new System.Drawing.Point(968, 139);
             this.txtTelNo2.MaxLength = 5;
             this.txtTelNo2.MinimumSize = new System.Drawing.Size(50, 19);
@@ -308,6 +311,7 @@
             this.txtTelNo1.IsDatatableOccurs = null;
             this.txtTelNo1.IsErrorOccurs = false;
             this.txtTelNo1.IsRequire = false;
+            this.txtTelNo1.IsUseInitializedLayout = true;
             this.txtTelNo1.Location = new System.Drawing.Point(906, 139);
             this.txtTelNo1.MaxLength = 6;
             this.txtTelNo1.MinimumSize = new System.Drawing.Size(50, 19);
@@ -365,6 +369,7 @@
             this.txtDenpyouDate2.IsDatatableOccurs = null;
             this.txtDenpyouDate2.IsErrorOccurs = false;
             this.txtDenpyouDate2.IsRequire = false;
+            this.txtDenpyouDate2.IsUseInitializedLayout = true;
             this.txtDenpyouDate2.Location = new System.Drawing.Point(411, 198);
             this.txtDenpyouDate2.MaxLength = 10;
             this.txtDenpyouDate2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -390,6 +395,7 @@
             this.txtDenpyouDate1.IsDatatableOccurs = null;
             this.txtDenpyouDate1.IsErrorOccurs = false;
             this.txtDenpyouDate1.IsRequire = false;
+            this.txtDenpyouDate1.IsUseInitializedLayout = true;
             this.txtDenpyouDate1.Location = new System.Drawing.Point(256, 197);
             this.txtDenpyouDate1.MaxLength = 10;
             this.txtDenpyouDate1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -439,6 +445,7 @@
             this.txtShukkaYoteiDate2.IsDatatableOccurs = null;
             this.txtShukkaYoteiDate2.IsErrorOccurs = false;
             this.txtShukkaYoteiDate2.IsRequire = false;
+            this.txtShukkaYoteiDate2.IsUseInitializedLayout = true;
             this.txtShukkaYoteiDate2.Location = new System.Drawing.Point(411, 168);
             this.txtShukkaYoteiDate2.MaxLength = 10;
             this.txtShukkaYoteiDate2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -464,6 +471,7 @@
             this.txtShukkaYoteiDate1.IsDatatableOccurs = null;
             this.txtShukkaYoteiDate1.IsErrorOccurs = false;
             this.txtShukkaYoteiDate1.IsRequire = false;
+            this.txtShukkaYoteiDate1.IsUseInitializedLayout = true;
             this.txtShukkaYoteiDate1.Location = new System.Drawing.Point(256, 167);
             this.txtShukkaYoteiDate1.MaxLength = 10;
             this.txtShukkaYoteiDate1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -535,6 +543,7 @@
             this.txtJuusho.IsDatatableOccurs = null;
             this.txtJuusho.IsErrorOccurs = false;
             this.txtJuusho.IsRequire = false;
+            this.txtJuusho.IsUseInitializedLayout = true;
             this.txtJuusho.Location = new System.Drawing.Point(655, 167);
             this.txtJuusho.MaxLength = 80;
             this.txtJuusho.MinimumSize = new System.Drawing.Size(100, 19);
@@ -573,6 +582,7 @@
             this.txtYubin2.IsDatatableOccurs = null;
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
+            this.txtYubin2.IsUseInitializedLayout = true;
             this.txtYubin2.Location = new System.Drawing.Point(696, 139);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 19);
@@ -598,6 +608,7 @@
             this.txtYubin1.IsDatatableOccurs = null;
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
+            this.txtYubin1.IsUseInitializedLayout = true;
             this.txtYubin1.Location = new System.Drawing.Point(655, 139);
             this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(30, 19);
@@ -657,6 +668,7 @@
             this.txtKouriten.IsDatatableOccurs = null;
             this.txtKouriten.IsErrorOccurs = false;
             this.txtKouriten.IsRequire = false;
+            this.txtKouriten.IsUseInitializedLayout = true;
             this.txtKouriten.lblName = null;
             this.txtKouriten.Location = new System.Drawing.Point(256, 62);
             this.txtKouriten.MaxLength = 10;
@@ -676,7 +688,7 @@
             this.lblKouritenName.BackColor = System.Drawing.SystemColors.Control;
             this.lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblKouritenName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblKouritenName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblKouritenName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKouritenName.Location = new System.Drawing.Point(356, 62);
             this.lblKouritenName.Name = "lblKouritenName";
             this.lblKouritenName.Size = new System.Drawing.Size(250, 19);
@@ -697,6 +709,7 @@
             this.txtShukkaSijiNo.IsDatatableOccurs = null;
             this.txtShukkaSijiNo.IsErrorOccurs = false;
             this.txtShukkaSijiNo.IsRequire = false;
+            this.txtShukkaSijiNo.IsUseInitializedLayout = true;
             this.txtShukkaSijiNo.lblName = null;
             this.txtShukkaSijiNo.Location = new System.Drawing.Point(256, 139);
             this.txtShukkaSijiNo.MaxLength = 12;
@@ -724,6 +737,7 @@
             this.txtTokuisaki.IsDatatableOccurs = null;
             this.txtTokuisaki.IsErrorOccurs = false;
             this.txtTokuisaki.IsRequire = false;
+            this.txtTokuisaki.IsUseInitializedLayout = true;
             this.txtTokuisaki.lblName = null;
             this.txtTokuisaki.Location = new System.Drawing.Point(256, 34);
             this.txtTokuisaki.MaxLength = 10;
@@ -819,8 +833,8 @@
             // colSize
             // 
             this.colSize.DataPropertyName = "SizeNO";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colSize.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colSize.DefaultCellStyle = dataGridViewCellStyle1;
             this.colSize.HeaderText = "サイズ\t\t\t\t\t\t";
             this.colSize.Name = "colSize";
             this.colSize.ReadOnly = true;
@@ -828,8 +842,8 @@
             // colShukkazansuu
             // 
             this.colShukkazansuu.DataPropertyName = "ShukkaSiziZumiSuu";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle2;
             this.colShukkazansuu.HeaderText = "出荷残数\t\t\t\t";
             this.colShukkazansuu.Name = "colShukkazansuu";
             this.colShukkazansuu.ReadOnly = true;
@@ -838,8 +852,8 @@
             // colMiryoku
             // 
             this.colMiryoku.DataPropertyName = "MiNyuukaSuu";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle3;
             this.colMiryoku.HeaderText = "未入荷数\t\t\t\t";
             this.colMiryoku.Name = "colMiryoku";
             this.colMiryoku.ReadOnly = true;
@@ -848,8 +862,8 @@
             // colKonkai
             // 
             this.colKonkai.DataPropertyName = "ShukkaSuu";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colKonkai.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colKonkai.DefaultCellStyle = dataGridViewCellStyle4;
             this.colKonkai.HeaderText = "今回出荷数\t\t\t\t\t";
             this.colKonkai.Name = "colKonkai";
             // 
@@ -923,6 +937,7 @@
             this.txtShukkaDate.IsDatatableOccurs = null;
             this.txtShukkaDate.IsErrorOccurs = false;
             this.txtShukkaDate.IsRequire = false;
+            this.txtShukkaDate.IsUseInitializedLayout = true;
             this.txtShukkaDate.Location = new System.Drawing.Point(256, 10);
             this.txtShukkaDate.MaxLength = 10;
             this.txtShukkaDate.MinimumSize = new System.Drawing.Size(100, 19);
@@ -962,6 +977,7 @@
             this.txtName.IsDatatableOccurs = null;
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = true;
+            this.txtName.IsUseInitializedLayout = true;
             this.txtName.Location = new System.Drawing.Point(1251, 139);
             this.txtName.MaxLength = 40;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -979,7 +995,7 @@
             this.lblTokuisakiName.BackColor = System.Drawing.SystemColors.Control;
             this.lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTokuisakiName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTokuisakiName.Location = new System.Drawing.Point(356, 34);
             this.lblTokuisakiName.Name = "lblTokuisakiName";
             this.lblTokuisakiName.Size = new System.Drawing.Size(250, 19);
@@ -1060,6 +1076,7 @@
             this.txtDenpyou.IsDatatableOccurs = null;
             this.txtDenpyou.IsErrorOccurs = false;
             this.txtDenpyou.IsRequire = false;
+            this.txtDenpyou.IsUseInitializedLayout = true;
             this.txtDenpyou.Location = new System.Drawing.Point(905, 35);
             this.txtDenpyou.MaxLength = 80;
             this.txtDenpyou.MinimumSize = new System.Drawing.Size(100, 19);
@@ -1113,6 +1130,7 @@
             this.txtShukkaNo.IsDatatableOccurs = null;
             this.txtShukkaNo.IsErrorOccurs = false;
             this.txtShukkaNo.IsRequire = false;
+            this.txtShukkaNo.IsUseInitializedLayout = true;
             this.txtShukkaNo.lblName = null;
             this.txtShukkaNo.Location = new System.Drawing.Point(118, 8);
             this.txtShukkaNo.MaxLength = 12;
