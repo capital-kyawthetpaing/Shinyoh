@@ -8,6 +8,7 @@ namespace Entity {
    public class TokuisakiEntity : BaseEntity{
         //Total count 29
         public string TokuisakiCD { get; set; } // --得意先
+        public string TokuisakiCD1 { get; set; }
         public string ChangeDate { get; set; } //--改定日
         public int ShokutiFLG { get; set; } //--諸口区分[1:諸口]
         public string TokuisakiName { get; set; } //--得意先名
@@ -36,5 +37,6 @@ namespace Entity {
         public int ShukkaSizishoHuyouKBN { get; set; }
         public string Remarks { get; set; } // --備考
         public int UsedFlg { get; set; } //  --使用済FLG[1:既にデータ発生済]
+        public int Output_Type { get; set; }
     }
 }
