@@ -64,7 +64,7 @@ namespace BL
             return ckmdl.InsertUpdateDeleteData("CSV_M_ShukkaTorikomi_CUD", GetConnectionString(), parameters);
         }
 
-        public DataTable ShukkaTorikomi_Check(string shouhinCD, string changeDate, string v)
+        public DataTable ShukkaTorikomi_Check(string text1, string text2, string v)
         {
             throw new NotImplementedException();
         }
