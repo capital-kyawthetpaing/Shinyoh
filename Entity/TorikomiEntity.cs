@@ -17,6 +17,18 @@ namespace Entity
         public string TokuisakiRyakuName { get; set; }
         public string KouritenCD { get; set; }
         public string KouritenRyakuName { get; set; }
+        public string DenpyouNO { get; set; }
+        public string DenpyouDate { get; set; }
+        public string ChangeDate { get; set; }
+        public string ShouhinCD { get; set; }
+        public string ColorRyakuName { get; set; }
+        public string SizeNO { get; set; }
+        public string JANCD { get; set; }
+        public string ShukkaSuu { get; set; }
+        public string ShukkaSiziGyouNO { get; set; }
+        public string UnitPrice { get; set; }
+        public string SellingPrice { get; set; }
+
 
 
     }
