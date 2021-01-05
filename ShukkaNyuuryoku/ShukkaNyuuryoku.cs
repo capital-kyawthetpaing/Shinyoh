@@ -478,7 +478,7 @@ namespace ShukkaNyuuryoku {
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!txtTokuisaki.IsErrorOccurs)
+                if (!txtKouriten.IsErrorOccurs)
                 {
                     DataTable dt = txtKouriten.IsDatatableOccurs;
                     if (dt.Rows.Count > 0)
