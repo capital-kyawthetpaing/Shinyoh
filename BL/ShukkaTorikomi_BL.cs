@@ -43,5 +43,27 @@ namespace BL
 
         }
 
+        public DataTable ShukkaTorikomi_Check(string CD, string changeDate, string error_type, string CD_Type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@CD", SqlDbType.VarChar) { Value = CD };
+            parameters[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = changeDate };
+            parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_type };
+            parameters[3] = new SqlParameter("@CD_Type", SqlDbType.VarChar) { Value = CD_Type };
+            DataTable dt = ckmdl.SelectDatatable("ShukkaTorikomi_Check", GetConnectionString(), parameters);
+            return dt;
+        }
+
+        public string CSV_M_ShukkaTorikomi_CUD(string obj, string condition)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@xml", SqlDbType.Xml) { Value = obj };
+            parameters[1] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = condition };
+            return ckmdl.InsertUpdateDeleteData("CSV_M_ShukkaTorikomi_CUD", GetConnectionString(), parameters);
+        }
+
+       
     }
 }

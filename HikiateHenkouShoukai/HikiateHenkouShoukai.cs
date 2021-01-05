@@ -56,6 +56,16 @@ namespace HikiateHenkouShoukai
             txtKouritenCD.E102Type = base_entity.LoginDate;         //ChangeDate value For E101 Error check of txtKouritenCD
             if(rdoAggregation.Checked)
                 Radio_Changed(0);
+
+            gvAggregationDetails.SetGridDesign();
+            gvAggregationDetails.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorNO,colSizeNO,colJuchuuSuu,colChakuniYoteiSuu,colMiHikiateSuu,colHikiateZumiSuu,colChakuniSuu,colShukkaSiziSuu,colShukkaSuu,colJANCD");
+
+            gvMainDetail.SetGridDesign();
+            gvMainDetail.SetReadOnlyColumn("col_Detail_ShouhinCD,col_Detail_ShouhinName,col_Detail_ColorNO,col_Detail_SizeNO,col_Detail_JuchuuSuu,col_Detail_ChakuniYoteiSuu,col_Detail_MiHikiateSuu,col_Detail_HikiateZumiSuu,col_Detail_ChakuniSuu,col_Detail_ShukkaSiziSuu,col_Detail_ShukkaSuu,col_Detail_JuchuuNO_JuchuuGyouNO,col_Detail_TokuisakiRyakuName,col_Detail_KanriNO,col_Detail_NyuukoDate,col_Detail_JuchuuDate,col_Detail_KibouNouki,col_Detail_JANCD");
+            gvMainDetail.SetNumberColumn("col_Detail_HikiateSuu");
+
+            gvFreeInventoryDetails.SetGridDesign();
+            gvFreeInventoryDetails.SetReadOnlyColumn("col_Free_HinbanCD,col_Free_ShouhinName,col_Free_ColorNO,col_Free_SizeNO,col_Free_HikiateZumiSuu,col_Free_GenZaikoSuu,col_Free_KanriNO,col_Free_JANCD");
         }
 
         private void Modified_Panel()
@@ -181,8 +191,13 @@ namespace HikiateHenkouShoukai
                     F12.Enabled = false;
                     btn_F8.Enabled = false;
                     btn_F11.Enabled = false;
-                    gvMainDetail.ReadOnly = true;
-                    gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
+                    gvAggregationDetails.Visible = true;
+                    gvMainDetail.Visible = false;
+                    gvFreeInventoryDetails.Visible = false;
+                    gvAggregationDetails.Location = new Point(22, 245);
+                    gvAggregationDetails.Size = new Size(1550, 500);
+                    //gvMainDetail.ReadOnly = true;
+                    //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
                 case 1:
                     txtTokuisakiCD.Enabled = false;
@@ -202,8 +217,13 @@ namespace HikiateHenkouShoukai
                     F12.Enabled = true;
                     btn_F8.Enabled = true;
                     btn_F11.Enabled = true;
-                    gvMainDetail.ReadOnly = false;
-                    gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
+                    gvAggregationDetails.Visible = false;
+                    gvMainDetail.Visible = true;
+                    gvFreeInventoryDetails.Visible = false;
+                    gvMainDetail.Location = new Point(22, 245);
+                    gvMainDetail.Size = new Size(1750, 500);
+                    //gvMainDetail.ReadOnly = false;
+                    //gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
                 case 2:
                     txtTokuisakiCD.Enabled = false;
@@ -223,14 +243,20 @@ namespace HikiateHenkouShoukai
                     F12.Enabled = false;
                     btn_F8.Enabled = false;
                     btn_F11.Enabled = false;
-                    gvMainDetail.ReadOnly = true;
-                    gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
+                    gvAggregationDetails.Visible = false;
+                    gvMainDetail.Visible = false;
+                    gvFreeInventoryDetails.Visible = true;
+                    gvFreeInventoryDetails.DataSource = createMemoryTable(type);
+                    gvFreeInventoryDetails.Location = new Point(22, 245);
+                    gvFreeInventoryDetails.Size = new Size(1150, 500);
+                    //gvMainDetail.ReadOnly = true;
+                    //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
             }
-            gvMainDetail.DataSource = null;
-            gvMainDetail.Rows.Clear();
-            gvMainDetail.DataSource = createMemoryTable(type);
-            gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
+            //gvMainDetail.DataSource = null;
+            //gvMainDetail.Rows.Clear();
+            //gvMainDetail.DataSource = createMemoryTable(type);
+            //gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
         }
 
         private void txtBrand_KeyDown(object sender, KeyEventArgs e)
@@ -320,7 +346,7 @@ namespace HikiateHenkouShoukai
 
         private void Excel_Export()
         {
-            if(gvMainDetail.Rows.Count > 0 && rdoFreeInventory.Checked)
+            if(gvFreeInventoryDetails.Rows.Count > 0 && rdoFreeInventory.Checked)
             {
                 Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
                 Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
@@ -329,15 +355,15 @@ namespace HikiateHenkouShoukai
                 worksheet = workbook.Sheets["Sheet1"];
                 worksheet = workbook.ActiveSheet;
                 worksheet.Name = "在庫表";
-                for (int i = 1; i < gvMainDetail.Columns.Count + 1; i++)
+                for (int i = 1; i < gvFreeInventoryDetails.Columns.Count + 1; i++)
                 {
-                    worksheet.Cells[1, i] = gvMainDetail.Columns[i - 1].HeaderText;
+                    worksheet.Cells[1, i] = gvFreeInventoryDetails.Columns[i - 1].HeaderText;
                 }
-                for (int i = 0; i < gvMainDetail.Rows.Count - 1; i++)
+                for (int i = 0; i < gvFreeInventoryDetails.Rows.Count - 1; i++)
                 {
-                    for (int j = 0; j < gvMainDetail.Columns.Count; j++)
+                    for (int j = 0; j < gvFreeInventoryDetails.Columns.Count; j++)
                     {
-                        worksheet.Cells[i + 2, j + 1] = gvMainDetail.Rows[i].Cells[j].Value.ToString();
+                        worksheet.Cells[i + 2, j + 1] = gvFreeInventoryDetails.Rows[i].Cells[j].Value.ToString();
                     }
                 }
                 if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
@@ -360,6 +386,7 @@ namespace HikiateHenkouShoukai
                 gvMainDetail.DataSource = null;
                 gvMainDetail.Rows.Clear();
                 gvMainDetail.DataSource = dv.ToTable();
+                gvMainDetail.Columns[gvMainDetail.Columns.Count - 2].Visible = false;
                 gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
             }
         }
@@ -400,7 +427,14 @@ namespace HikiateHenkouShoukai
             entity.PC = base_entity.PC;
             entity.ProgramID = base_entity.ProgramID;
             dtMain = hbl.Select_DisplayData(entity);
-            gvMainDetail.DataSource = dtMain;
+
+            if (rdoAggregation.Checked)
+                gvAggregationDetails.DataSource = dtMain;
+            else if (rdoDetails.Checked)
+                gvMainDetail.DataSource = dtMain;
+            else
+                gvFreeInventoryDetails.DataSource = dtMain;
+
             if (rdoDetails.Checked)
             {
                 for(int i=0; i<gvMainDetail.Columns.Count; i++)
@@ -410,8 +444,6 @@ namespace HikiateHenkouShoukai
                     else
                         gvMainDetail.Columns[i].ReadOnly = true;
                 }
-                gvMainDetail.Columns[gvMainDetail.Columns.Count - 2].Visible = false;
-                gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
             }
             if(dtTemp != null)
                 dtTemp.Clear();
@@ -513,8 +545,11 @@ namespace HikiateHenkouShoukai
                     break;
             }
             dt.Columns.Add("JANCD");
-            dt.Columns.Add("表示順");
-            dt.Columns.Add("倉庫");
+            if(type == 1)
+            {
+                dt.Columns.Add("表示順");
+                dt.Columns.Add("倉庫");
+            }
             return dt;
         }
 
