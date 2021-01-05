@@ -764,7 +764,7 @@
             this.txt_Staff.Name = "txt_Staff";
             this.txt_Staff.NextControl = null;
             this.txt_Staff.NextControlName = "txtStaff_CDate";
-            this.txt_Staff.SearchType = Entity.SearchType.ScType.None;
+            this.txt_Staff.SearchType = Entity.SearchType.ScType.Staff;
             this.txt_Staff.Size = new System.Drawing.Size(100, 19);
             this.txt_Staff.TabIndex = 1;
             this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
