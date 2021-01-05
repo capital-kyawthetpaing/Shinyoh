@@ -60,11 +60,11 @@
             this.tableLayoutPanel1.Controls.Add(this.BtnF11, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.sButton1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 413);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 420);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(768, 37);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(768, 30);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // BtnF1
@@ -78,7 +78,7 @@
             this.BtnF1.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF1.MinimumSize = new System.Drawing.Size(100, 10);
             this.BtnF1.Name = "BtnF1";
-            this.BtnF1.Size = new System.Drawing.Size(152, 35);
+            this.BtnF1.Size = new System.Drawing.Size(152, 28);
             this.BtnF1.TabIndex = 1;
             this.BtnF1.Tag = "1";
             this.BtnF1.Text = "(F1)";
@@ -96,7 +96,7 @@
             this.BtnF12.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF12.MinimumSize = new System.Drawing.Size(100, 10);
             this.BtnF12.Name = "BtnF12";
-            this.BtnF12.Size = new System.Drawing.Size(154, 35);
+            this.BtnF12.Size = new System.Drawing.Size(154, 28);
             this.BtnF12.TabIndex = 3;
             this.BtnF12.Tag = "3";
             this.BtnF12.Text = "(F12)";
@@ -114,7 +114,7 @@
             this.sButton3.Margin = new System.Windows.Forms.Padding(0);
             this.sButton3.MinimumSize = new System.Drawing.Size(100, 10);
             this.sButton3.Name = "sButton3";
-            this.sButton3.Size = new System.Drawing.Size(152, 35);
+            this.sButton3.Size = new System.Drawing.Size(152, 28);
             this.sButton3.TabIndex = 7;
             this.sButton3.UseVisualStyleBackColor = false;
             this.sButton3.Visible = false;
@@ -130,7 +130,7 @@
             this.BtnF11.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF11.MinimumSize = new System.Drawing.Size(100, 10);
             this.BtnF11.Name = "BtnF11";
-            this.BtnF11.Size = new System.Drawing.Size(152, 35);
+            this.BtnF11.Size = new System.Drawing.Size(152, 28);
             this.BtnF11.TabIndex = 2;
             this.BtnF11.Tag = "2";
             this.BtnF11.Text = "(F11)";
@@ -148,7 +148,7 @@
             this.sButton1.Margin = new System.Windows.Forms.Padding(0);
             this.sButton1.MinimumSize = new System.Drawing.Size(100, 10);
             this.sButton1.Name = "sButton1";
-            this.sButton1.Size = new System.Drawing.Size(152, 35);
+            this.sButton1.Size = new System.Drawing.Size(152, 28);
             this.sButton1.TabIndex = 6;
             this.sButton1.UseVisualStyleBackColor = false;
             this.sButton1.Visible = false;
@@ -159,10 +159,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(768, 450);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.KeyPreview = true;
             this.Name = "SearchBase";
             this.Text = "SearchBase";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SearchBase_KeyDown);
-            this.KeyPreview = true;
             this.MouseEnter += new System.EventHandler(this.FuctionButton_MouseEnter);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
