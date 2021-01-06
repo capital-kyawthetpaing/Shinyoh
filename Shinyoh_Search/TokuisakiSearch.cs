@@ -37,6 +37,7 @@ namespace Shinyoh_Search {
             txtTokuisaki2.E106Check(true, txtTokuisaki1, txtTokuisaki2);
             gvTokuisaki.SetGridDesign();
             gvTokuisaki.SetReadOnlyColumn("*");
+            gvTokuisaki.Select();
         }
         public override void FunctionProcess(string tagID)
         {
