@@ -35,9 +35,10 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             gvMultiporpose.UseRowNo(true);
             GridViewBind();
-            txtID1.Focus();
             txtID2.E106Check(true, txtID1, txtID2);
             txtKey2.E106Check(true, txtKey1, txtKey2);
+            gvMultiporpose.Select();
+            txtID1.Focus();
         }
         public override void FunctionProcess(string tagID)
         {
