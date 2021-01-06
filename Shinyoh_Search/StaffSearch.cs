@@ -41,7 +41,7 @@ namespace Shinyoh_Search
             txtStaff2.E106Check(true, txtStaff1, txtStaff2);
 
             gvStaff.SetGridDesign();
-            gvStaff.SetReadOnlyColumn("*");
+            gvStaff.SetReadOnlyColumn("**");//readonly for search form 
             gvStaff.Select();
         }
         public override void FunctionProcess(string tagID)
@@ -105,6 +105,11 @@ namespace Shinyoh_Search
         private void gvStaff_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvStaff.Rows[e.RowIndex]);
+        }
+
+        private void gvStaff_KeyDown(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }
