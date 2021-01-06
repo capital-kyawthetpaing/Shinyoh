@@ -29,7 +29,7 @@ namespace Shinyoh_Search
             rdo_Date.Focus();
 
             gvSupplier.UseRowNo(true);
-            gvSupplier.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;            
+            gvSupplier.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DataGridviewBind();
 
             txtSupplier2.E106Check(true, txtSupplier1, txtSupplier2);
