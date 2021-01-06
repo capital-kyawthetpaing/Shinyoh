@@ -48,7 +48,6 @@ namespace MasterTouroku_MultiPorpose
             txtID.Focus();
             txtKEY.ChangeDate = txtIDName;
             txtKEYCopy.ChangeDate = txtIDName;
-
         }
         public override void FunctionProcess(string tagID)
         {
@@ -169,6 +168,32 @@ namespace MasterTouroku_MultiPorpose
             txtCopyID.Enabled = false;
             txtKEYCopy.Enabled = false;
         }
+        private multipurposeEntity GetData()
+        {
+            multipurposeEntity mentity = new multipurposeEntity();
+            mentity.ID = txtID.Text;
+            mentity.Key = txtKEY.Text;
+            mentity.IdName = txtIDName.Text;
+            mentity.Char1 = txtChar1.Text;
+            mentity.Char2 = txtChar2.Text;
+            mentity.Char3 = txtChar3.Text;
+            mentity.Char4 = txtChar4.Text;
+            mentity.Char5 = txtChar5.Text;
+            mentity.Num1 = txtNum1.Text;
+            mentity.Num2 = txtNum2.Text;
+            mentity.Num3 = txtNum3.Text;
+            mentity.Num4 = txtNum4.Text;
+            mentity.Num5 = txtNum5.Text;
+            mentity.Date1 = txtDate1.Text;
+            mentity.Date2 = txtDate2.Text;
+            mentity.Date3 = txtDate3.Text;
+            mentity.InsertOperator = base_Entity.OperatorCD;
+            mentity.UpdateOperator = base_Entity.OperatorCD;
+            mentity.PC = base_Entity.PC;
+            mentity.ProgramID = base_Entity.ProgramID;
+            mentity.KeyItem = txtID.Text + " " + txtKEY.Text;
+            return mentity;
+        }
         private void DisplayData(DataTable dt)
         {
             if (dt.Rows.Count > 0)
@@ -191,7 +216,7 @@ namespace MasterTouroku_MultiPorpose
         }
         private void DBProcess()
         {
-           multipurposeEntity entity = GetData();
+             multipurposeEntity entity = GetData();
              if (cboMode.SelectedValue.Equals("1"))
              {
                  entity.Mode = "New";
@@ -220,32 +245,7 @@ namespace MasterTouroku_MultiPorpose
         {
            mbl.M_Multiporpose_Insert_Update(mentity);
         }
-        private multipurposeEntity GetData()
-        {
-            multipurposeEntity mentity = new multipurposeEntity();
-            mentity.ID = txtID.Text;
-            mentity.Key = txtKEY.Text;
-            mentity.IdName = txtIDName.Text;
-            mentity.Char1 = txtChar1.Text;
-            mentity.Char2 = txtChar2.Text;
-            mentity.Char3 = txtChar3.Text;
-            mentity.Char4 = txtChar4.Text;
-            mentity.Char5 = txtChar5.Text;
-            mentity.Num1 = txtNum1.Text;
-            mentity.Num2 = txtNum2.Text;
-            mentity.Num3 = txtNum3.Text;
-            mentity.Num4 = txtNum4.Text;
-            mentity.Num5 = txtNum5.Text;
-            mentity.Date1 = txtDate1.Text;
-            mentity.Date2 = txtDate2.Text;
-            mentity.Date3 = txtDate3.Text;
-            mentity.InsertOperator = base_Entity.OperatorCD;
-            mentity.UpdateOperator = base_Entity.OperatorCD;
-            mentity.PC = base_Entity.PC;
-            mentity.ProgramID = base_Entity.ProgramID;
-            mentity.KeyItem = txtID.Text + " " + txtKEY.Text;
-            return mentity;
-        }
+        
         private void txtKEY_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
