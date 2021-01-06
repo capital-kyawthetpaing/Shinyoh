@@ -752,6 +752,7 @@
             this.dgDetail.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dgDetail_ColumnWidthChanged);
             this.dgDetail.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgDetail_Scroll);
             this.dgDetail.Paint += new System.Windows.Forms.PaintEventHandler(this.dgDetail_Paint);
+            this.dgDetail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgDetail_KeyDown);
             // 
             // Shouhin_Search
             // 

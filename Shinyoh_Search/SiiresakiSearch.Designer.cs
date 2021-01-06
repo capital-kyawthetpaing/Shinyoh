@@ -333,6 +333,7 @@
             this.gvSupplier.Size = new System.Drawing.Size(658, 302);
             this.gvSupplier.TabIndex = 4;
             this.gvSupplier.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSupplier_CellMouseDoubleClick);
+            this.gvSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvSupplier_KeyDown);
             // 
             // colSiiresakiCD
             // 

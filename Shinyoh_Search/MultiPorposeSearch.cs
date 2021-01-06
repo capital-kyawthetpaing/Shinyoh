@@ -38,6 +38,7 @@ namespace Shinyoh_Search
             txtID2.E106Check(true, txtID1, txtID2);
             txtKey2.E106Check(true, txtKey1, txtKey2);
             gvMultiporpose.Select();
+            gvMultiporpose.SetReadOnlyColumn("**");//readonly for search form 
             txtID1.Focus();
         }
         public override void FunctionProcess(string tagID)
@@ -90,6 +91,14 @@ namespace Shinyoh_Search
         {
             Access_Type = string.Empty;
             GridViewBind();
+        }
+
+        private void gvMultiporpose_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetGridviewData(gvMultiporpose.Rows[gvMultiporpose.CurrentCell.RowIndex]);
+            }
         }
     }
 }

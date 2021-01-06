@@ -31,6 +31,7 @@ namespace Shinyoh_Search
             ErrorCheck();
             gv_1.UseRowNo(true);
             gv_1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_1.SetReadOnlyColumn("**");//readonly for search form 
             DataGridviewBind();
         }
         private void ErrorCheck()
@@ -127,6 +128,14 @@ namespace Shinyoh_Search
         private void btnShow_Click(object sender, EventArgs e)
         {
             DataGridviewBind();
+        }
+
+        private void gv_1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetGridviewData(gv_1.Rows[gv_1.CurrentCell.RowIndex]);
+            }
         }
     }
 }

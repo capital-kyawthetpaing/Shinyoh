@@ -36,7 +36,7 @@ namespace Shinyoh_Search {
 
             txtTokuisaki2.E106Check(true, txtTokuisaki1, txtTokuisaki2);
             gvTokuisaki.SetGridDesign();
-            gvTokuisaki.SetReadOnlyColumn("*");
+            gvTokuisaki.SetReadOnlyColumn("**");//readonly for search form 
             gvTokuisaki.Select();
         }
         public override void FunctionProcess(string tagID)
@@ -98,6 +98,14 @@ namespace Shinyoh_Search {
         {
             DataGridviewBind();
             gvTokuisaki.Select();
+        }
+
+        private void gvTokuisaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetGridviewData(gvTokuisaki.Rows[gvTokuisaki.CurrentCell.RowIndex]);
+            }
         }
     }
 }

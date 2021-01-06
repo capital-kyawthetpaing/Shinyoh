@@ -109,7 +109,10 @@ namespace Shinyoh_Search
 
         private void gvStaff_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetGridviewData(gvStaff.Rows[gvStaff.CurrentCell.RowIndex]);
+            }
         }
     }
 }
