@@ -38,10 +38,10 @@ namespace Shinyoh_Search {
         }
         private void selectRow()
         {
-            gvSouko.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
-            gvSouko.CurrentRow.Selected = true;
+            //gvSouko.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            //gvSouko.CurrentRow.Selected = true;
             gvSouko.Enabled = true;
-            gvSouko.Focus();
+            gvSouko.Select();
         }
         public override void FunctionProcess(string tagID)
         {
