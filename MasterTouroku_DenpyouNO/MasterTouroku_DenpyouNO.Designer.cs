@@ -153,7 +153,7 @@
             this.txtCounter.MoveNext = true;
             this.txtCounter.Name = "txtCounter";
             this.txtCounter.NextControl = null;
-            this.txtCounter.NextControlName = "BtnF1";
+            this.txtCounter.NextControlName = "";
             this.txtCounter.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCounter.SearchType = Entity.SearchType.ScType.None;
             this.txtCounter.Size = new System.Drawing.Size(100, 19);
