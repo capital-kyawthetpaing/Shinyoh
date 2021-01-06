@@ -657,7 +657,7 @@
             // 
             this.txtSouko.AllowMinus = false;
             this.txtSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSouko.ChangeDate = this.txtSoukoName;
+            this.txtSouko.ChangeDate = null;
             this.txtSouko.Combo = null;
             this.txtSouko.DecimalPlace = 0;
             this.txtSouko.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
@@ -742,7 +742,7 @@
             // 
             this.txtCopySouko.AllowMinus = false;
             this.txtCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopySouko.ChangeDate = this.txtSoukoName;
+            this.txtCopySouko.ChangeDate = null;
             this.txtCopySouko.Combo = null;
             this.txtCopySouko.DecimalPlace = 0;
             this.txtCopySouko.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;

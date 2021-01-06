@@ -31,6 +31,11 @@ namespace Shinyoh_Search
             if (e.KeyCode == Keys.Enter)
             {              
                 base.OnKeyDown(e);
+                if (string.IsNullOrWhiteSpace(this.Text))
+                {
+                    if(lblName != null)
+                        lblName.Text = string.Empty;
+                }
                 DataSelect();
             }
         }        
@@ -83,7 +88,7 @@ namespace Shinyoh_Search
                         SoukoSearch soukoSearch = new SoukoSearch();
                         soukoSearch.ShowDialog();
                         CD = soukoSearch.soukoCD;
-                        CDate = soukoSearch.soukoName;
+                        //CDate = soukoSearch.soukoName;
                         break;
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();
@@ -178,56 +183,82 @@ namespace Shinyoh_Search
                 }
 
                 this.Text = CD;
-                //for combo box
-                if (Combo != null)
+
+                if(!string.IsNullOrWhiteSpace(CD))
                 {
-                    ChangeDate.Text = CDate;
-                    SendKeys.Send("{ENTER}");
-                }
-                //for textbox 
-                if (lblName != null)
-                {
-                    lblName.Text = name;
-                    SendKeys.Send("{ENTER}");
-                }
-                else if (ChangeDate != null)
-                {
-                    if (ChangeDate.Name == this.NextControlName)
-                        ChangeDate.Text = CDate;
-                    if (string.IsNullOrEmpty(this.Text))
+                    if (lblName != null)
                     {
-                        this.Focus();
+                        lblName.Text = name;
                     }
-                    else
+
+                    if (this.Parent.Name.Equals("PanelTitle"))
                     {
-                        //comment 2020-12-28
-                        //ChangeDate.Focus();
-                        //SendKeys.Send("{ENTER}");
-                        //add 2020-12-28
-                        //CD and change date is not located(top,down) in form design
-                        if (this.NextControlName != ChangeDate.Name)
+                        if (ChangeDate != null)
                         {
-                            this.Focus();
-                        }
-                        else
-                        {
+                            ChangeDate.Text = CDate;
                             ChangeDate.Focus();
                         }
                         SendKeys.Send("{ENTER}");
                     }
-                }
-                else
-                {
-                    if(this.Text=="")
-                    {
-                        this.Focus();
-                    }
                     else
                     {
-                        Control control = this.TopLevelControl.Controls.Find(this.NextControlName, true)[0];
-                        control.Focus();
+                        SendKeys.Send("{ENTER}");
                     }
                 }
+                
+
+                
+
+                ////for combo box
+                //if (Combo != null)
+                //{
+                //    ChangeDate.Text = CDate;
+                //    //SendKeys.Send("{ENTER}");
+                //}
+                ////for textbox 
+                //if (lblName != null)
+                //{
+                //    lblName.Text = name;
+                //    //SendKeys.Send("{ENTER}");
+                //}
+                //else if (ChangeDate != null)
+                //{
+                //    if (ChangeDate.Name == this.NextControlName)
+                //        ChangeDate.Text = CDate;
+                //    if (string.IsNullOrEmpty(this.Text))
+                //    {
+                //        this.Focus();
+                //    }
+                //    else
+                //    {
+                //        //comment 2020-12-28
+                //        //ChangeDate.Focus();
+                //        //SendKeys.Send("{ENTER}");
+                //        //add 2020-12-28
+                //        //CD and change date is not located(top,down) in form design
+                //        if (this.NextControlName != ChangeDate.Name)
+                //        {
+                //            this.Focus();
+                //        }
+                //        else
+                //        {
+                //            ChangeDate.Focus();
+                //        }
+                //        SendKeys.Send("{ENTER}");
+                //    }
+                //}
+                //else
+                //{
+                //    if(this.Text=="")
+                //    {
+                //        this.Focus();
+                //    }
+                //    else
+                //    {
+                //        Control control = this.TopLevelControl.Controls.Find(this.NextControlName, true)[0];
+                //        control.Focus();
+                //    }
+                //}
             }            
         }
     }
