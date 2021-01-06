@@ -65,7 +65,7 @@ namespace Shinyoh_Controls
                     dtCombo.Columns.Add("ID");
                     dtCombo.Columns.Add("Mode");
                     dtCombo.Rows.Add("1", "新規");
-                    dtCombo.Rows.Add("2", "変更");
+                    dtCombo.Rows.Add("2", "修正");
                     dtCombo.Rows.Add("3", "削除");
                     dtCombo.Rows.Add("4", "照会");
 

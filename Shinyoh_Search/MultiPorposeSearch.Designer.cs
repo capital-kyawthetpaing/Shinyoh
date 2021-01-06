@@ -73,9 +73,9 @@
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDisplay.Location = new System.Drawing.Point(765, 82);
+            this.btnDisplay.Location = new System.Drawing.Point(767, 82);
             this.btnDisplay.Name = "btnDisplay";
-            this.btnDisplay.Size = new System.Drawing.Size(140, 32);
+            this.btnDisplay.Size = new System.Drawing.Size(130, 30);
             this.btnDisplay.TabIndex = 10;
             this.btnDisplay.Text = "表示(F11)";
             this.btnDisplay.UseVisualStyleBackColor = false;
@@ -84,21 +84,21 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(420, 50);
+            this.label2.Location = new System.Drawing.Point(421, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 13);
+            this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 9;
-            this.label2.Text = "~";
+            this.label2.Text = "～";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(225, 16);
+            this.label1.Location = new System.Drawing.Point(223, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.Size = new System.Drawing.Size(19, 13);
             this.label1.TabIndex = 8;
-            this.label1.Text = "~";
+            this.label1.Text = "～";
             // 
             // txtIDName
             // 
@@ -112,6 +112,7 @@
             this.txtIDName.IsDatatableOccurs = null;
             this.txtIDName.IsErrorOccurs = false;
             this.txtIDName.IsRequire = false;
+            this.txtIDName.IsUseInitializedLayout = true;
             this.txtIDName.Location = new System.Drawing.Point(117, 83);
             this.txtIDName.MaxLength = 50;
             this.txtIDName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -136,7 +137,8 @@
             this.txtKey2.IsDatatableOccurs = null;
             this.txtKey2.IsErrorOccurs = false;
             this.txtKey2.IsRequire = false;
-            this.txtKey2.Location = new System.Drawing.Point(437, 48);
+            this.txtKey2.IsUseInitializedLayout = true;
+            this.txtKey2.Location = new System.Drawing.Point(444, 47);
             this.txtKey2.MaxLength = 50;
             this.txtKey2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKey2.MoveNext = true;
@@ -160,6 +162,7 @@
             this.txtKey1.IsDatatableOccurs = null;
             this.txtKey1.IsErrorOccurs = false;
             this.txtKey1.IsRequire = false;
+            this.txtKey1.IsUseInitializedLayout = true;
             this.txtKey1.Location = new System.Drawing.Point(117, 47);
             this.txtKey1.MaxLength = 50;
             this.txtKey1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -184,7 +187,8 @@
             this.txtID2.IsDatatableOccurs = null;
             this.txtID2.IsErrorOccurs = false;
             this.txtID2.IsRequire = false;
-            this.txtID2.Location = new System.Drawing.Point(247, 14);
+            this.txtID2.IsUseInitializedLayout = true;
+            this.txtID2.Location = new System.Drawing.Point(247, 13);
             this.txtID2.MaxLength = 10;
             this.txtID2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtID2.MoveNext = true;
@@ -208,6 +212,7 @@
             this.txtID1.IsDatatableOccurs = null;
             this.txtID1.IsErrorOccurs = false;
             this.txtID1.IsRequire = false;
+            this.txtID1.IsUseInitializedLayout = true;
             this.txtID1.Location = new System.Drawing.Point(117, 13);
             this.txtID1.MaxLength = 10;
             this.txtID1.MinimumSize = new System.Drawing.Size(100, 19);

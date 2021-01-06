@@ -32,6 +32,8 @@ namespace Shinyoh_Search {
             gvSouko.UseRowNo(true);
             GridViewBind();
             txtSouko2.E106Check(true, txtSouko1, txtSouko2);
+            gvSouko.SetGridDesign();
+            gvSouko.SetReadOnlyColumn("*");
         }
         public override void FunctionProcess(string tagID)
         {

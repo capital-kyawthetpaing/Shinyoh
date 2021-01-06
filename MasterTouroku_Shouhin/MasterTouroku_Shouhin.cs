@@ -54,10 +54,6 @@ namespace MasterTouroku_Shouhin
 
         private void ChangeMode(Mode mode)
         {
-            cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
-            cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
             txtProduct.Focus();
             switch (mode)
             {
@@ -119,6 +115,11 @@ namespace MasterTouroku_Shouhin
 
         private void UI_ErrorCheck()
         {
+            cf.Clear(PanelTitle);
+            cf.Clear(Panel_Detail);
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(Panel_Detail);
+
             txtProduct.E102Check(true);
             txtChangeDate.E102Check(true);
             txtChangeDate.E103Check(true);
@@ -189,6 +190,8 @@ namespace MasterTouroku_Shouhin
             }
             if (tagID == "6")
             {
+                txtProduct.Focus();
+
                 UI_ErrorCheck();
                 if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
                 {
@@ -406,8 +409,11 @@ namespace MasterTouroku_Shouhin
                 txtHacchuuLot.Text = dt.Rows[0]["HacchuuLot"].ToString();
                 txtImage.Text = dt.Rows[0]["ShouhinImageFilePathName"].ToString();
 
-                byte[] imgBytes = (byte[])dt.Rows[0]["ShouhinImage"];
-                pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
+                if(!string.IsNullOrEmpty(dt.Rows[0]["ShouhinImage"].ToString()))
+                {
+                    byte[] imgBytes = (byte[])dt.Rows[0]["ShouhinImage"];
+                    pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
+                }
 
                 txtRemarks.Text = dt.Rows[0]["Remarks"].ToString();
                 txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
@@ -554,7 +560,6 @@ namespace MasterTouroku_Shouhin
             return Xml;
         }
 
-
         private bool Null_Check(string obj_text, int line_no, string error_msg)
         {
             bl = false;
@@ -680,6 +685,118 @@ namespace MasterTouroku_Shouhin
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
             create_dt.Columns.Add("Error");
+        }
+
+        private void txtTani_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                lbl_TaniCD.Text = string.Empty;
+                if(!txtTani.IsErrorOccurs)
+                {
+                    DataTable dt = txtTani.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        lbl_TaniCD.Text = dt.Rows[0]["char1"].ToString();
+                }
+            }
+        }
+
+        private void txtBrand_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                lbl_BrandCD.Text = string.Empty;
+                if (!txtBrand.IsErrorOccurs)
+                {
+                    DataTable dt = txtBrand.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        lbl_BrandCD.Text = dt.Rows[0]["char1"].ToString();
+                }
+            }
+        }
+
+        private void txtColor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                lbl_ColorNO.Text = string.Empty;
+                if (!txtColor.IsErrorOccurs)
+                {
+                    DataTable dt = txtColor.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        lbl_ColorNO.Text = dt.Rows[0]["char1"].ToString();
+                }
+            }
+        }
+
+        private void txtSize_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                lbl_SizeNO.Text = string.Empty;
+                if (!txtSize.IsErrorOccurs)
+                {
+                    DataTable dt = txtSize.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        lbl_SizeNO.Text = dt.Rows[0]["char1"].ToString();
+                }
+            }
+        }
+
+        private void txtTaxRate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                lbl_TaxtRate.Text = string.Empty;
+                if (!txtTaxRate.IsErrorOccurs)
+                {
+                    DataTable dt = txtTaxRate.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        lbl_TaxtRate.Text = dt.Rows[0]["char1"].ToString();
+                }
+            }
+        }
+
+        private void txtIEvaluation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                lbl_IEvaluation.Text = string.Empty;
+                if (!txtIEvaluation.IsErrorOccurs)
+                {
+                    DataTable dt = txtIEvaluation.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        lbl_IEvaluation.Text = dt.Rows[0]["char1"].ToString();
+                }
+            }
+        }
+
+        private void txtIManagement_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                lbl_IManagement.Text = string.Empty;
+                if (!txtIManagement.IsErrorOccurs)
+                {
+                    DataTable dt = txtIManagement.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        lbl_IManagement.Text = dt.Rows[0]["char1"].ToString();
+                }
+            }
+        }
+
+        private void txtMajorSuppliers_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                lbl_MajorSuppliers.Text = string.Empty;
+                if (!txtMajorSuppliers.IsErrorOccurs)
+                {
+                    DataTable dt = txtMajorSuppliers.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                        lbl_MajorSuppliers.Text = dt.Rows[0]["SiiresakiRyakuName"].ToString();
+                }
+            }
         }
     }
 }

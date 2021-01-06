@@ -7,6 +7,8 @@ using System.Windows.Forms;
 using Shinyoh_Controls;
 using Shinyoh_Search;
 using System.Data;
+using System.IO;
+using System.Collections.Generic;
 
 namespace ShukkaTorikomi
 {
@@ -139,12 +141,31 @@ namespace ShukkaTorikomi
                 DataGridviewBind();
             }
             base.FunctionProcess(tagID);
+
+            if (tagID == "12")
+            {
+                string Xml = ChooseFile();
+                BaseBL bbl = new BaseBL();
+                if (!string.IsNullOrEmpty(Xml))
+                {
+                    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                    {
+                        PreviousCtrl.Focus();
+                    }
+                    else
+                    {
+                        ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
+                        string chk_val = string.Empty;
+                        if (rdo_Toroku.Checked)
+                            chk_val = "create_update";
+                        else chk_val = "delete";
+                        bl.CSV_M_ShukkaTorikomi_CUD(Xml, chk_val);
+                    }
+                }
+            }
         }
 
-        //private void btnTorikomi_F10_Click(object sender, EventArgs e)
-        //{
-        //    DataGridviewBind();
-        //}
+
         private void DataGridviewBind()
         {
             TorikomiEntity obj = new TorikomiEntity();
@@ -153,6 +174,190 @@ namespace ShukkaTorikomi
             DataTable dt = objMethod.ShukkaTorikomi_Select_Check(obj);
            
             gvTorikomi.DataSource = dt;
+        }
+
+        private string ChooseFile()
+        {
+            var filepath = string.Empty;
+            TorikomiEntity obj = new TorikomiEntity();
+            string Xml = string.Empty;
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = "C:\\CSV Folder\\";
+                openFileDialog.Title = "Browse CSV Files";
+                openFileDialog.Filter = "csv files (*.csv)|*.csv";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+                DataTable create_dt = new DataTable();
+                Creat_Datatable_Column(create_dt);
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    filepath = openFileDialog.FileName;
+                    string[] csvRows = File.ReadAllLines(filepath);
+                    var bl_List = new List<bool>();
+                    for (int i = 1; i < csvRows.Length; i++)
+                    {
+                        var splits = csvRows[i].Split(',');
+                        obj.TokuisakiCD = splits[0];
+                        bl_List.Add(Null_Check(obj.TokuisakiCD, i, "得意先CD未入力エラー"));
+                        bl_List.Add(Byte_Check(10, obj.TokuisakiCD, i, "得意先CD桁数エラー"));
+
+                       
+                        
+
+                        obj.KouritenCD = splits[1];
+                        bl_List.Add(Null_Check(obj.KouritenCD, i, "小売店CD未入力エラー"));
+                        bl_List.Add(Byte_Check(10, obj.KouritenCD, i, "小売店CD桁数エラー"));
+
+
+                        obj.TokuisakiRyakuName = splits[2];
+                        bl_List.Add(Null_Check(obj.TokuisakiRyakuName, i, "得意先略名未入力エラー"));
+                        bl_List.Add(Byte_Check(40, obj.TokuisakiRyakuName, i, "得意先略名桁数エラー"));
+
+                        obj.KouritenRyakuName = splits[3];
+                        bl_List.Add(Null_Check(obj.KouritenRyakuName, i, "略名未入力エラー"));
+                        bl_List.Add(Byte_Check(40, obj.KouritenRyakuName, i, "略名桁数エラー"));
+
+                        obj.DenpyouDate = splits[4];
+                        bl_List.Add(Null_Check(obj.DenpyouDate, i, "伝票日付未入力エラー"));
+                        bl_List.Add(Date_Check(obj.DenpyouDate, i, "入力可能値外エラー"));
+
+
+                        obj.ChangeDate = splits[5];
+                        bl_List.Add(Null_Check(obj.ChangeDate, i, "改定日未入力エラー"));
+                        bl_List.Add(Date_Check(obj.ChangeDate, i, "入力可能値外エラー"));
+
+
+                        obj.ShouhinCD = splits[6];
+                        bl_List.Add(Null_Check(obj.ShouhinCD, i, "商品コード未入力エラー"));
+                        bl_List.Add(Byte_Check(10,obj.ShouhinCD, i, "商品コード桁数エラー"));
+
+                        obj.ColorRyakuName = splits[7];
+                        bl_List.Add(Null_Check(obj.ColorRyakuName, i, "カラー未入力エラー"));
+                      
+
+                        obj.SizeNO = splits[8];
+                        bl_List.Add(Null_Check(obj.SizeNO, i, "ｻｲｽﾞ未入力エラー"));
+                        
+
+                        obj.JANCD = splits[9];
+                        bl_List.Add(Null_Check(obj.JANCD, i, "JANｺｰﾄﾞ未入力エラー"));
+                        bl_List.Add(Byte_Check(10,obj.JANCD, i, "JANｺｰﾄﾞ桁数エラー"));
+
+                        obj.ShukkaSuu = splits[10];
+                        bl_List.Add(Null_Check(obj.ShukkaSuu, i, "数量未入力エラー"));
+                        bl_List.Add(Date_Check(obj.ShukkaSuu, i, "入力可能値外エラー"));
+
+
+                        obj.ShukkaSiziGyouNO = splits[11];
+                        bl_List.Add(Null_Check(obj.ShukkaSiziGyouNO, i, "出荷指示行番号未入力エラー"));
+                        bl_List.Add(Byte_Check(10,obj.ShukkaSiziGyouNO, i, "出荷指示行番号桁数エラー"));
+
+                        obj.UnitPrice = splits[12];
+                        bl_List.Add(Date_Check(obj.UnitPrice, i, "入力可能値外エラー"));
+
+                        obj.SellingPrice = splits[13];
+                        bl_List.Add(Date_Check(obj.SellingPrice, i, "入力可能値外エラー"));
+
+                        TokuisakiBL tBL = new TokuisakiBL();
+                        DataTable t_dt = tBL.M_Tokuisaki_Select(obj.TokuisakiCD, obj.ChangeDate, "E101");
+                        if (t_dt.Rows[0]["MessageID"].ToString() == "E101")
+                        {
+                            bbl.ShowMessage("E101");
+                            //err.ShowErrorMessage("E101");
+                            bl_List.Add(true);
+                        }
+
+                       
+                        KouritenBL kBL = new KouritenBL();
+                        DataTable k_dk = kBL.Kouriten_Select_Check(obj.KouritenCD, obj.ChangeDate, "E101");
+                        if (k_dk.Rows[0]["MessageID"].ToString() == "E101")
+                        {
+                            bbl.ShowMessage("E101");
+                            //err.ShowErrorMessage("E101");
+                            bl_List.Add(true);
+                        }
+
+                        ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
+                        DataTable r_dk = rBL.ShukkaTorikomi_Check(obj.ShouhinCD, obj.ChangeDate, "E101", "ShouhinCD");
+                        if (r_dk.Rows[0]["MessageID"].ToString() == "E101")
+                        {
+                            bbl.ShowMessage("E101");
+                            //err.ShowErrorMessage("E101");
+                            bl_List.Add(true);
+                        }
+
+                        ShukkaTorikomi_BL jBL = new ShukkaTorikomi_BL();
+                        DataTable j_dk = jBL.ShukkaTorikomi_Check(obj.JANCD, obj.ChangeDate, "E101", "JANCD");
+                        if (j_dk.Rows[0]["MessageID"].ToString() == "E101")
+                        {
+                            bbl.ShowMessage("E101");
+                            //err.ShowErrorMessage("E101");
+                            bl_List.Add(true);
+                        }
+                    }
+                }
+
+            }
+            return Xml;
+        }
+
+        private bool Null_Check(string obj_text, int line_no, string error_msg)
+        {
+            bool bl = false;
+            if (string.IsNullOrWhiteSpace(obj_text))
+            {
+                bbl.ShowMessage("E102", line_no.ToString(), error_msg);
+                bl = true;
+            }
+            return bl;
+        }
+        private bool Byte_Check(int obj_len, string obj_text, int line_no, string error_msg)
+        {
+            bool bl = false;
+            if (cf.IsByteLengthOver(obj_len, obj_text))
+            {
+                bbl.ShowMessage("E142");
+                bl = true;
+            }
+            return bl;
+        }
+
+        public bool Date_Check(string csv_Date, int line_no, string error_msg)
+        {
+            bool bl = false;
+            if (!string.IsNullOrEmpty(csv_Date))
+            {
+                if (!cf.CheckDateValue(csv_Date))
+                {
+                    bbl.ShowMessage("E103");
+                    bl = true;
+                }
+            }
+            return bl;
+        }
+
+        public void Creat_Datatable_Column(DataTable create_dt)
+        {
+            create_dt.Columns.Add("TokuisakiCD");
+            create_dt.Columns.Add("KouritenCD");
+            create_dt.Columns.Add("TokuisakiRyakuName");    
+            create_dt.Columns.Add("KouritenRyakuName");
+            create_dt.Columns.Add("DenpyouNO");
+            create_dt.Columns.Add("DenpyouDate");
+            create_dt.Columns.Add("ChangeDate");
+            create_dt.Columns.Add("ShouhinCD");
+            create_dt.Columns.Add("ColorRyakuName");
+            create_dt.Columns.Add("SizeNO");
+            create_dt.Columns.Add("JANCD");
+            create_dt.Columns.Add("ShukkaSuu");
+            create_dt.Columns.Add("UnitPrice");
+            create_dt.Columns.Add("SellingPrice");
+            create_dt.Columns.Add("ShukkaSiziGyouNO");
+            create_dt.Columns.Add("InsertOperator");
+            create_dt.Columns.Add("UpdateOperator");
+            create_dt.Columns.Add("Error");
+            
         }
     }
 }

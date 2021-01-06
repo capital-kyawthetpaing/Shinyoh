@@ -33,5 +33,21 @@ namespace Entity
         public int Type1 { get; set; }
         public int Type2 { get; set; }
         public string ChangeDate { get; set; }
+
+        //DataGrid
+        public string JuchuuSuu { get; set; }
+        public string ChakuniYoteiSuu { get; set; }
+        public string MiHikiateSuu { get; set; }
+        public string HikiateZumiSuu { get; set; }
+        public string ChakuniSuu { get; set; }
+        public string ShukkaSiziSuu { get; set; }
+        public string ShukkaSuu { get; set; }
+        public string HikiateSuu { get; set; }
+        public string JuchuuNO_JuchuuGyouNO { get; set; }
+        public string TokuisakiRyakuName { get; set; }
+        public string KouritenRyakuName { get; set; }
+        public string NyuukoDate { get; set; }
+        public string JuchuuDate { get; set; }
+        public string KibouNouki { get; set; }
     }
 }

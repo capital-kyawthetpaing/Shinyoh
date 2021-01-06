@@ -117,11 +117,12 @@ namespace Shinyoh_Controls
                         indexRect.Inflate(-2, -2);
                         //行番号を描画する
                         TextRenderer.DrawText(e.Graphics,
-                            "No",
+                            "No.",
                             e.CellStyle.Font,
                             indexRect,
                             e.CellStyle.ForeColor,
                             TextFormatFlags.Right | TextFormatFlags.VerticalCenter);
+                            
                         //描画が完了したことを知らせる
                         e.Handled = true;
                     }

@@ -139,7 +139,7 @@ namespace ShinyohMenu
                 if (result == DialogResult.Yes)
                 {
                     this.Cursor = Cursors.WaitCursor;
-                    ftpClient = new ClientFtp.ClientFtp("‪C:\\DBConfig\\DBConfig.ini");
+                    ftpClient = new ClientFtp.ClientFtp("C:\\DBConfig\\DBConfig.ini");
                     ftpClient.UpdateSyncData();
                     
                     MessageBox.Show("Now AppData Files are updated!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
