@@ -17,6 +17,7 @@ namespace Shinyoh_Controls
         bool EditCol = false;
 
         bool AllReadonly = false;
+        bool ForSearchForm = false;
 
         string HiraganaCol = string.Empty;
         string NumberCol = string.Empty;
@@ -41,6 +42,11 @@ namespace Shinyoh_Controls
                 {
                     SetReadOnly(col);
                     AllReadonly = true;
+                }
+                else if (colArr.Equals("**"))
+                {
+                    SetReadOnly(col);
+                    ForSearchForm = true;
                 }
                 else
                 {
@@ -188,7 +194,9 @@ namespace Shinyoh_Controls
             {
                 if(EditCol == false)
                 {
-                    if(!AllReadonly)
+                    if(ForSearchForm)
+                        return base.ProcessCmdKey(ref msg, keyData);
+                    else if (!AllReadonly)
                         MoveNextCell();
                 }
                 else

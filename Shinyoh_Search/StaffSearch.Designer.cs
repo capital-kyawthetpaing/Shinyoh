@@ -335,6 +335,7 @@
             this.gvStaff.Size = new System.Drawing.Size(739, 302);
             this.gvStaff.TabIndex = 3;
             this.gvStaff.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvStaff_CellMouseDoubleClick);
+            this.gvStaff.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvStaff_KeyDown);
             // 
             // colStaffCD
             // 
