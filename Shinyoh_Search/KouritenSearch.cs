@@ -39,6 +39,7 @@ namespace Shinyoh_Search
 
             gv_Kouriten.SetGridDesign();
             gv_Kouriten.SetReadOnlyColumn("*");
+            gv_Kouriten.Select();
         }
         private void btnKouriten_F11_Click(object sender, EventArgs e)
         {
