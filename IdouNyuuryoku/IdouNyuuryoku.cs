@@ -177,7 +177,7 @@ namespace IdouNyuuryoku
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtIdouDate, null);
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtIdouDate);
-
+            
             if(txtShukkosouko.Enabled)
             {
                 txtShukkosouko.E102Check(true);
@@ -188,6 +188,7 @@ namespace IdouNyuuryoku
                 txtNyukosouko.E102Check(true);
                 txtNyukosouko.E101Check(true, "souko", txtNyukosouko, null, null);
             }
+
         }
 
         private void txtIdoukubun_KeyDown(object sender, KeyEventArgs e)
@@ -229,6 +230,14 @@ namespace IdouNyuuryoku
                 txtNyukosouko.Enabled = true;
                 txtStaffCD.NextControlName = txtShukkosouko.Name;
             }
+        }
+
+        private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            multipurposeBL bl = new multipurposeBL();
+            DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
+            if (dt.Rows.Count > 0)
+                lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
         }
     }
 }
