@@ -44,6 +44,7 @@ namespace Shinyoh_Search {
             if (tagID == "2")
             {
                 DataGridviewBind();
+                gvTokuisaki.Select();
             }
             if (tagID == "3")
             {
@@ -96,6 +97,7 @@ namespace Shinyoh_Search {
         private void btnTokuisaki_F11_Click(object sender, EventArgs e)
         {
             DataGridviewBind();
+            gvTokuisaki.Select();
         }
     }
 }

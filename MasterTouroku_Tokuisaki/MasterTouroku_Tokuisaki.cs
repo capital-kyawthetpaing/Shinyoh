@@ -381,11 +381,6 @@ namespace MasterTouroku_Tokuisaki {
                     if (dt.Rows.Count > 0)
                         From_DB_To_TokuForm(dt);
                 }
-                //else
-                //{
-                //    cf.Clear(PanelDetail);
-                //    cf.Clear(PanelTitle);
-                //}
             }
         }
 
