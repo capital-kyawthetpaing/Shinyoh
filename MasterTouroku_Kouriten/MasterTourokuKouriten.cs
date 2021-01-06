@@ -152,7 +152,7 @@ namespace MasterTouroku_Kouriten
             cf.DisablePanel(PanelDetail);
 
             txtTokuisakiCD.Focus();
-            txtKensakuHyouziJun.Text = "0";
+           // txtKensakuHyouziJun.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
            
 

@@ -485,7 +485,6 @@
             this.txtKensakuHyouziJun.SearchType = Entity.SearchType.ScType.None;
             this.txtKensakuHyouziJun.Size = new System.Drawing.Size(50, 19);
             this.txtKensakuHyouziJun.TabIndex = 30;
-            this.txtKensakuHyouziJun.Text = "0";
             this.txtKensakuHyouziJun.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtKensakuHyouziJun.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtKensakuHyouziJun.TextChanged += new System.EventHandler(this.txtKensakuHyouziJun_TextChanged);
