@@ -79,7 +79,7 @@
             // rdo_All
             // 
             this.rdo_All.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_All.Location = new System.Drawing.Point(280, 9);
+            this.rdo_All.Location = new System.Drawing.Point(261, 9);
             this.rdo_All.MoveNext = true;
             this.rdo_All.Name = "rdo_All";
             this.rdo_All.NextControl = null;
@@ -93,7 +93,7 @@
             // 
             this.rdo_Date.Checked = true;
             this.rdo_Date.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Date.Location = new System.Drawing.Point(140, 9);
+            this.rdo_Date.Location = new System.Drawing.Point(121, 9);
             this.rdo_Date.MoveNext = true;
             this.rdo_Date.Name = "rdo_Date";
             this.rdo_Date.NextControl = null;
@@ -160,7 +160,7 @@
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
             this.txtKanaName.IsUseInitializedLayout = true;
-            this.txtKanaName.Location = new System.Drawing.Point(124, 95);
+            this.txtKanaName.Location = new System.Drawing.Point(105, 95);
             this.txtKanaName.MaxLength = 80;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKanaName.MoveNext = true;
@@ -185,7 +185,7 @@
             this.txtSupplierName.IsErrorOccurs = false;
             this.txtSupplierName.IsRequire = false;
             this.txtSupplierName.IsUseInitializedLayout = true;
-            this.txtSupplierName.Location = new System.Drawing.Point(123, 68);
+            this.txtSupplierName.Location = new System.Drawing.Point(104, 68);
             this.txtSupplierName.MaxLength = 80;
             this.txtSupplierName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSupplierName.MoveNext = true;
@@ -201,7 +201,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(243, 43);
+            this.label1.Location = new System.Drawing.Point(224, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 20);
             this.label1.TabIndex = 12;
@@ -220,7 +220,7 @@
             this.txtSupplier2.IsErrorOccurs = false;
             this.txtSupplier2.IsRequire = false;
             this.txtSupplier2.IsUseInitializedLayout = true;
-            this.txtSupplier2.Location = new System.Drawing.Point(280, 40);
+            this.txtSupplier2.Location = new System.Drawing.Point(261, 40);
             this.txtSupplier2.MaxLength = 10;
             this.txtSupplier2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSupplier2.MoveNext = true;
@@ -245,7 +245,7 @@
             this.txtSupplier1.IsErrorOccurs = false;
             this.txtSupplier1.IsRequire = false;
             this.txtSupplier1.IsUseInitializedLayout = true;
-            this.txtSupplier1.Location = new System.Drawing.Point(123, 39);
+            this.txtSupplier1.Location = new System.Drawing.Point(104, 39);
             this.txtSupplier1.MaxLength = 10;
             this.txtSupplier1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSupplier1.MoveNext = true;
@@ -263,7 +263,7 @@
             this.lblStaff_Kana.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff_Kana.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff_Kana.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff_Kana.Location = new System.Drawing.Point(45, 95);
+            this.lblStaff_Kana.Location = new System.Drawing.Point(26, 95);
             this.lblStaff_Kana.Name = "lblStaff_Kana";
             this.lblStaff_Kana.Size = new System.Drawing.Size(80, 19);
             this.lblStaff_Kana.TabIndex = 0;
@@ -276,7 +276,7 @@
             this.lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaffName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaffName.Location = new System.Drawing.Point(45, 68);
+            this.lblStaffName.Location = new System.Drawing.Point(26, 68);
             this.lblStaffName.Name = "lblStaffName";
             this.lblStaffName.Size = new System.Drawing.Size(80, 19);
             this.lblStaffName.TabIndex = 0;
@@ -289,7 +289,7 @@
             this.lblDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDisplay.Location = new System.Drawing.Point(45, 9);
+            this.lblDisplay.Location = new System.Drawing.Point(26, 9);
             this.lblDisplay.Name = "lblDisplay";
             this.lblDisplay.Size = new System.Drawing.Size(80, 19);
             this.lblDisplay.TabIndex = 0;
@@ -302,7 +302,7 @@
             this.lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff.Location = new System.Drawing.Point(45, 39);
+            this.lblStaff.Location = new System.Drawing.Point(26, 39);
             this.lblStaff.Name = "lblStaff";
             this.lblStaff.Size = new System.Drawing.Size(80, 19);
             this.lblStaff.TabIndex = 0;
@@ -328,7 +328,7 @@
             this.colSiiresakiCD,
             this.colSiiresakiName,
             this.colChangeDate});
-            this.gvSupplier.Location = new System.Drawing.Point(45, 146);
+            this.gvSupplier.Location = new System.Drawing.Point(25, 146);
             this.gvSupplier.Name = "gvSupplier";
             this.gvSupplier.Size = new System.Drawing.Size(658, 302);
             this.gvSupplier.TabIndex = 4;
