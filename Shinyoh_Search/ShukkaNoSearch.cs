@@ -31,6 +31,7 @@ namespace Shinyoh_Search {
             txtShukkaDate1.Focus();
             gvShukkaNo.UseRowNo(true);
             DataGridviewBind();
+            gvShukkaNo.SetReadOnlyColumn("**");//readonly for search form 
             ErrorCheck();
         }
         private void ErrorCheck()
@@ -148,6 +149,14 @@ namespace Shinyoh_Search {
         private void btnShow_Click(object sender, EventArgs e)
         {
             DataGridviewBind();
+        }
+
+        private void gvShukkaNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetGridviewData(gvShukkaNo.Rows[gvShukkaNo.CurrentCell.RowIndex]);
+            }
         }
     }
 }

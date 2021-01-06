@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.btnSearch = new Shinyoh_Controls.SButton();
@@ -183,6 +183,7 @@
             this.gvDenpyouNo.Size = new System.Drawing.Size(394, 357);
             this.gvDenpyouNo.TabIndex = 3;
             this.gvDenpyouNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvDenpyouNo_CellMouseDoubleClick);
+            this.gvDenpyouNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvDenpyouNo_KeyDown);
             // 
             // RenbanKBN1
             // 
@@ -197,8 +198,8 @@
             // 
             this.SEQNO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.SEQNO1.DataPropertyName = "SEQNO";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.SEQNO1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.SEQNO1.DefaultCellStyle = dataGridViewCellStyle11;
             this.SEQNO1.FillWeight = 144.3299F;
             this.SEQNO1.HeaderText = "SEQNO";
             this.SEQNO1.Name = "SEQNO1";
@@ -217,8 +218,8 @@
             // 
             this.Counter1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Counter1.DataPropertyName = "Counter";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.Counter1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.Counter1.DefaultCellStyle = dataGridViewCellStyle12;
             this.Counter1.FillWeight = 61.66823F;
             this.Counter1.HeaderText = "カウンタ";
             this.Counter1.Name = "Counter1";

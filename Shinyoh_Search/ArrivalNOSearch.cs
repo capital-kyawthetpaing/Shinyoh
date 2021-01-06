@@ -36,6 +36,7 @@ namespace Shinyoh_Search
             gvArrivalNo.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvArrivalNo.UseRowNo(true);
             GridViewBind();
+            gvArrivalNo.SetReadOnlyColumn("**");//readonly for search form 
             txtDateFrom.Focus();
             ErrorCheck();
         }
@@ -111,6 +112,14 @@ namespace Shinyoh_Search
         private void gvArrivalNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvArrivalNo.Rows[e.RowIndex]);
+        }
+
+        private void gvArrivalNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                GetGridviewData(gvArrivalNo.Rows[gvArrivalNo.CurrentCell.RowIndex]);
+            }
         }
     }
 }

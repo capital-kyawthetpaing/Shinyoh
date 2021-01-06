@@ -330,9 +330,10 @@
             this.colChangeDate});
             this.gvSupplier.Location = new System.Drawing.Point(45, 146);
             this.gvSupplier.Name = "gvSupplier";
-            this.gvSupplier.Size = new System.Drawing.Size(665, 302);
+            this.gvSupplier.Size = new System.Drawing.Size(658, 302);
             this.gvSupplier.TabIndex = 4;
             this.gvSupplier.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSupplier_CellMouseDoubleClick);
+            this.gvSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvSupplier_KeyDown);
             // 
             // colSiiresakiCD
             // 
@@ -348,7 +349,7 @@
             this.colSiiresakiName.HeaderText = "仕入先名";
             this.colSiiresakiName.Name = "colSiiresakiName";
             this.colSiiresakiName.ReadOnly = true;
-            this.colSiiresakiName.Width = 400;
+            this.colSiiresakiName.Width = 380;
             // 
             // colChangeDate
             // 

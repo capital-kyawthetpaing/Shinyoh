@@ -238,6 +238,7 @@
             this.gvSouko.Size = new System.Drawing.Size(588, 347);
             this.gvSouko.TabIndex = 2;
             this.gvSouko.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSouko_CellMouseDoubleClick);
+            this.gvSouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvSouko_KeyDown);
             // 
             // colSouko
             // 

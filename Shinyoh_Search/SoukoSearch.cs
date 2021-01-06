@@ -33,7 +33,7 @@ namespace Shinyoh_Search {
             GridViewBind();
             txtSouko2.E106Check(true, txtSouko1, txtSouko2);
             gvSouko.SetGridDesign();
-            gvSouko.SetReadOnlyColumn("*");
+            gvSouko.SetReadOnlyColumn("**");//readonly for search form 
             selectRow();
         }
         private void selectRow()
@@ -54,7 +54,6 @@ namespace Shinyoh_Search {
             {
                 DataGridViewRow row = gvSouko.CurrentRow;
                 GetGridviewData(row);
-                selectRow();
             }
             base.FunctionProcess(tagID);
         }
@@ -89,6 +88,14 @@ namespace Shinyoh_Search {
         private void gvSouko_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvSouko.Rows[e.RowIndex]);
+        }
+
+        private void gvSouko_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetGridviewData(gvSouko.Rows[gvSouko.CurrentCell.RowIndex]);
+            }
         }
     }
 }

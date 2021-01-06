@@ -8,6 +8,7 @@ using BL;
 using Entity;
 using System.Data;
 using Shinyoh_Controls;
+using System.Linq;
 
 namespace Shinyoh
 {
@@ -443,8 +444,19 @@ namespace Shinyoh
 
         protected bool ErrorCheck(Panel panel)
         {
+            Dictionary<int, Control> dic = new Dictionary<int, Control>();
+
             foreach (Control ctrl in panel.Controls)
             {
+                if(!(ctrl is Label))
+                    dic.Add(ctrl.TabIndex, ctrl);
+            }
+
+
+            foreach (KeyValuePair<int,Control> ctrldic in dic.OrderBy(key => key.Key))
+            {
+                Control ctrl = ctrldic.Value as Control;
+
                 if ((ctrl is STextBox))
                 {
                     STextBox st = ctrl as STextBox;
