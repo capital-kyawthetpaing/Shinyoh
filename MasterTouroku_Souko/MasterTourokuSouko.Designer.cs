@@ -82,6 +82,7 @@
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
+            this.cboMode.Location = new System.Drawing.Point(64, 8);
             // 
             // PanelDetail
             // 
