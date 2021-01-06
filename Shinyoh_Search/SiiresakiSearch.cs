@@ -35,6 +35,7 @@ namespace Shinyoh_Search
             txtSupplier2.E106Check(true, txtSupplier1, txtSupplier2);
             gvSupplier.SetGridDesign();
             gvSupplier.SetReadOnlyColumn("*");
+            gvSupplier.Select();
         }    
 
         private void btnSupplier_F11_Click(object sender, System.EventArgs e)
