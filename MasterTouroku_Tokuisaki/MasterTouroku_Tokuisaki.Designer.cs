@@ -759,7 +759,7 @@
             this.txtMailAddress.NextControl = null;
             this.txtMailAddress.NextControlName = "txtStaffCharge";
             this.txtMailAddress.SearchType = Entity.SearchType.ScType.None;
-            this.txtMailAddress.Size = new System.Drawing.Size(600, 19);
+            this.txtMailAddress.Size = new System.Drawing.Size(700, 19);
             this.txtMailAddress.TabIndex = 28;
             this.txtMailAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1346,7 +1346,7 @@
             // sRadDelete
             // 
             this.sRadDelete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadDelete.Location = new System.Drawing.Point(971, 12);
+            this.sRadDelete.Location = new System.Drawing.Point(984, 12);
             this.sRadDelete.MoveNext = true;
             this.sRadDelete.Name = "sRadDelete";
             this.sRadDelete.NextControl = null;
@@ -1360,7 +1360,7 @@
             // 
             this.sRadRegister.Checked = true;
             this.sRadRegister.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadRegister.Location = new System.Drawing.Point(893, 12);
+            this.sRadRegister.Location = new System.Drawing.Point(906, 12);
             this.sRadRegister.MoveNext = true;
             this.sRadRegister.Name = "sRadRegister";
             this.sRadRegister.NextControl = null;
@@ -1378,7 +1378,7 @@
             this.lbImportClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbImportClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lbImportClassification.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbImportClassification.Location = new System.Drawing.Point(773, 11);
+            this.lbImportClassification.Location = new System.Drawing.Point(786, 11);
             this.lbImportClassification.Name = "lbImportClassification";
             this.lbImportClassification.Size = new System.Drawing.Size(100, 19);
             this.lbImportClassification.TabIndex = 66;
