@@ -794,7 +794,7 @@ namespace MasterTouroku_Shouhin
                 {
                     DataTable dt = txtMajorSuppliers.IsDatatableOccurs;
                     if (dt.Rows.Count > 0)
-                        lbl_MajorSuppliers.Text = dt.Rows[0]["char1"].ToString();
+                        lbl_MajorSuppliers.Text = dt.Rows[0]["SiiresakiRyakuName"].ToString();
                 }
             }
         }
