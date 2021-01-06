@@ -66,9 +66,9 @@ namespace MasterTouroku_Kouriten
             txtSystemDate.Text = base_Entity.LoginDate;
 
             txtStaffCD.ChangeDate = txtChangeDate;
-           // txtKouritenCD.ChangeDate = txtChangeDate;
+            txtKouritenCD.ChangeDate = txtChangeDate;
             txtCopyCD.ChangeDate = txtCopyDate;
-           // txtTokuisakiCD.ChangeDate = txtSystemDate;
+            txtTokuisakiCD.ChangeDate = txtSystemDate;
             txtTokuisakiCD_Copy.ChangeDate = txtSystemDate;
         }
 
