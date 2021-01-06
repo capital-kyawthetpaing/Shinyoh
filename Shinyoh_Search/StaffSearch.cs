@@ -34,13 +34,15 @@ namespace Shinyoh_Search
             gvStaff.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             gvStaff.UseRowNo(true);
-            DataGridviewBind();            
+            DataGridviewBind();
 
+            
             rdo_Date.Focus();
             txtStaff2.E106Check(true, txtStaff1, txtStaff2);
 
             gvStaff.SetGridDesign();
             gvStaff.SetReadOnlyColumn("*");
+            gvStaff.Select();
         }
         public override void FunctionProcess(string tagID)
         {

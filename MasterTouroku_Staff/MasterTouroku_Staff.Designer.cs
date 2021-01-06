@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Panel_Staff = new System.Windows.Forms.Panel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
             this.lblStaff_Search = new Shinyoh_Controls.SLabel();
             this.txtStaff_Search = new Shinyoh_Controls.STextBox();
             this.lblStaff_Remark = new Shinyoh_Controls.SLabel();
@@ -65,7 +65,7 @@
             this.txt_Staff = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
-            this.Panel_Staff.SuspendLayout();
+            this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -89,41 +89,41 @@
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.NextControlName = "txt_Staff";
             // 
-            // Panel_Staff
+            // PanelDetail
             // 
-            this.Panel_Staff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Panel_Staff.Controls.Add(this.lblStaff_Search);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Search);
-            this.Panel_Staff.Controls.Add(this.lblStaff_Remark);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Remark);
-            this.Panel_Staff.Controls.Add(this.sLabel3);
-            this.Panel_Staff.Controls.Add(this.txtStaff_LDate);
-            this.Panel_Staff.Controls.Add(this.txtStaff_JDate);
-            this.Panel_Staff.Controls.Add(this.lblStaff_SDate);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Confirm);
-            this.Panel_Staff.Controls.Add(this.lblStaff_Confirm);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Passward);
-            this.Panel_Staff.Controls.Add(this.lblStaff_Passport);
-            this.Panel_Staff.Controls.Add(this.lblStaff_Position);
-            this.Panel_Staff.Controls.Add(this.cboStaff_Position);
-            this.Panel_Staff.Controls.Add(this.cboStaff_authority);
-            this.Panel_Staff.Controls.Add(this.lblStaff_authority);
-            this.Panel_Staff.Controls.Add(this.cboStaff_Menu);
-            this.Panel_Staff.Controls.Add(this.lblStaff_Menu);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Yubin2);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Yubin1);
-            this.Panel_Staff.Controls.Add(this.lblStaff_YubinNo);
-            this.Panel_Staff.Controls.Add(this.label1);
-            this.Panel_Staff.Controls.Add(this.txtStaff_KanaName);
-            this.Panel_Staff.Controls.Add(this.lblStaff_KanaName);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Name);
-            this.Panel_Staff.Controls.Add(this.lblStaffName);
-            this.Panel_Staff.Location = new System.Drawing.Point(0, 75);
-            this.Panel_Staff.Name = "Panel_Staff";
-            this.Panel_Staff.Size = new System.Drawing.Size(1485, 519);
-            this.Panel_Staff.TabIndex = 1;
+            this.PanelDetail.Controls.Add(this.lblStaff_Search);
+            this.PanelDetail.Controls.Add(this.txtStaff_Search);
+            this.PanelDetail.Controls.Add(this.lblStaff_Remark);
+            this.PanelDetail.Controls.Add(this.txtStaff_Remark);
+            this.PanelDetail.Controls.Add(this.sLabel3);
+            this.PanelDetail.Controls.Add(this.txtStaff_LDate);
+            this.PanelDetail.Controls.Add(this.txtStaff_JDate);
+            this.PanelDetail.Controls.Add(this.lblStaff_SDate);
+            this.PanelDetail.Controls.Add(this.txtStaff_Confirm);
+            this.PanelDetail.Controls.Add(this.lblStaff_Confirm);
+            this.PanelDetail.Controls.Add(this.txtStaff_Passward);
+            this.PanelDetail.Controls.Add(this.lblStaff_Passport);
+            this.PanelDetail.Controls.Add(this.lblStaff_Position);
+            this.PanelDetail.Controls.Add(this.cboStaff_Position);
+            this.PanelDetail.Controls.Add(this.cboStaff_authority);
+            this.PanelDetail.Controls.Add(this.lblStaff_authority);
+            this.PanelDetail.Controls.Add(this.cboStaff_Menu);
+            this.PanelDetail.Controls.Add(this.lblStaff_Menu);
+            this.PanelDetail.Controls.Add(this.txtStaff_Yubin2);
+            this.PanelDetail.Controls.Add(this.txtStaff_Yubin1);
+            this.PanelDetail.Controls.Add(this.lblStaff_YubinNo);
+            this.PanelDetail.Controls.Add(this.label1);
+            this.PanelDetail.Controls.Add(this.txtStaff_KanaName);
+            this.PanelDetail.Controls.Add(this.lblStaff_KanaName);
+            this.PanelDetail.Controls.Add(this.txtStaff_Name);
+            this.PanelDetail.Controls.Add(this.lblStaffName);
+            this.PanelDetail.Location = new System.Drawing.Point(0, 75);
+            this.PanelDetail.Name = "PanelDetail";
+            this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
+            this.PanelDetail.TabIndex = 1;
             // 
             // lblStaff_Search
             // 
@@ -775,17 +775,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1485, 644);
-            this.Controls.Add(this.Panel_Staff);
+            this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_Staff";
             this.Text = "スタッフマスタ";
             this.Load += new System.EventHandler(this.MasterTouroku_Staff_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.Panel_Staff, 0);
+            this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
-            this.Panel_Staff.ResumeLayout(false);
-            this.Panel_Staff.PerformLayout();
+            this.PanelDetail.ResumeLayout(false);
+            this.PanelDetail.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -793,7 +793,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel Panel_Staff;
+        private System.Windows.Forms.Panel PanelDetail;
         private Shinyoh_Controls.SLabel lblStaffName;
         private Shinyoh_Controls.STextBox txtStaff_Name;
         private Shinyoh_Controls.SLabel lblStaff_KanaName;

@@ -141,9 +141,9 @@ namespace MasterTouroku_Staff
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(Panel_Staff);
+            cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Staff);
+            cf.DisablePanel(PanelDetail);
             txt_Staff.Focus();
            // txtStaff_Search.Text = "0";
         }
@@ -203,8 +203,8 @@ namespace MasterTouroku_Staff
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Staff))
-                {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Staff))
+                //{
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -221,7 +221,7 @@ namespace MasterTouroku_Staff
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
-                }
+               // }
             }
             base.FunctionProcess(tagID);
         }
@@ -309,8 +309,8 @@ namespace MasterTouroku_Staff
                     }
                     else
                     {
-                        cf.Clear(Panel_Staff);
-                        cf.Clear(PanelTitle);
+                        cf.Clear(PanelDetail);
+                        //cf.Clear(PanelTitle);
                     }
                 }
             }
@@ -318,7 +318,7 @@ namespace MasterTouroku_Staff
         
         private void EnablePanel()
         {
-            cf.EnablePanel(Panel_Staff);
+            cf.EnablePanel(PanelDetail);
             txtStaff_Name.Focus();
             cf.DisablePanel(PanelTitle);
         }

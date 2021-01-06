@@ -198,8 +198,8 @@ namespace MasterTouroku_Tokuisaki {
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
-                {
+               // if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+               // {
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -215,7 +215,7 @@ namespace MasterTouroku_Tokuisaki {
                         case "4":
                             ChangeMode(Mode.Inquiry);
                             break;
-                    }
+                   // }
                 }
             }
 
@@ -380,11 +380,6 @@ namespace MasterTouroku_Tokuisaki {
                     DataTable dt = txtTokuisaki_CopyDate.IsDatatableOccurs;
                     if (dt.Rows.Count > 0)
                         From_DB_To_TokuForm(dt);
-                }
-                else
-                {
-                    cf.Clear(PanelDetail);
-                    cf.Clear(PanelTitle);
                 }
             }
         }
