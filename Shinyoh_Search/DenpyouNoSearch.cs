@@ -56,6 +56,7 @@ namespace Shinyoh_Search
             if (tagID == "2")
             {
                 BindDataGrid();
+                gvDenpyouNo.Select();
             }
             if (tagID == "3")
             {
