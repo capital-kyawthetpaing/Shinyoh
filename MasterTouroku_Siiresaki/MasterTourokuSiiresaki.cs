@@ -511,7 +511,6 @@ namespace MasterTouroku_Siiresaki
                         if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
                             bbl.ShowMessage("E276",i.ToString(), "入力可能値外エラー");
-                           // err.ShowErrorMessage("E117");
                             bl_List.Add(true);
                         }
                         //
