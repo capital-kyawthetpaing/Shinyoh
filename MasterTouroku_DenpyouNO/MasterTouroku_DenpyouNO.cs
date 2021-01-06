@@ -43,10 +43,13 @@ namespace MasterTouroku_DenpyouNO
             ChangeMode(Mode.New);
             entity = _GetBaseData();
 
-            txt_Prefix.Combo = cbDivision;
-            txt_Prefix.ChangeDate = txtSEQNO;
-            txt_Prefix.ctrl_combo = cbDivision;
+            txtSEQNO.Combo = cbDivision;
+            txtSEQNO.TxtBox = txt_Prefix;
             txtSEQNO.ctrl_combo = cbDivision;
+
+            txt_Prefix.Combo = cbDivision;
+            txt_Prefix.TxtBox = txtSEQNO;
+            txt_Prefix.ctrl_combo = cbDivision;
         }
 
         private void ChangeMode(Mode mode)

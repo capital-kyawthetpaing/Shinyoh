@@ -33,7 +33,7 @@ BEGIN
 		BEGIN
 			SELECT mm.*, ms.* FROM
 			(SELECT fs.ShouhinCD, fs.ChangeDate, fs.ShokutiFLG, fs.HinbanCD, fs.ShouhinName, fs.ShouhinRyakuName, fs.KanaName, fs.KensakuHyouziJun, fs.JANCD, fs.YearTerm, fs.SeasonSS, fs.SeasonFW, fs.TaniCD, M_MultiPorpose_Tani.Char1 AS TaniName,
-			fs.BrandCD, M_MultiPorpose_Brand.Char1 AS BrandName, fs.ColorNO, M_MultiPorpose_Color.Char1 AS ColorName, fs.SizeNO, M_MultiPorpose_Size.Char1 AS SizeName, fs.JoudaiTanka, fs.GedaiTanka, fs.HyoujunGenkaTanka,
+			fs.BrandCD, M_MultiPorpose_Brand.Char1 AS BrandName, fs.ColorNO, M_MultiPorpose_Color.Char1 AS ColorName, fs.SizeNO, M_MultiPorpose_Size.Char1 AS SizeName,  CONVERT(DECIMAL(24,0), fs.JoudaiTanka) AS 'JoudaiTanka', CONVERT(DECIMAL(24,0), fs.GedaiTanka) AS 'GedaiTanka', CONVERT(DECIMAL(24,0), fs.HyoujunGenkaTanka) AS 'HyoujunGenkaTanka',
 			fs.ZeirituKBN, M_MultiPorpose_Shouhizeiritu.Char1 AS ZeirituKBN_Name, fs.ZaikoHyoukaKBN, M_MultiPorpose_ZaikoHyouka.Char1 AS ZaikoHyoukaKBN_Name, fs.ZaikoKanriKBN, M_MultiPorpose_ZaikoKanri.Char1 AS ZaikoKanriKBN_Name, 
 			fs.MainSiiresakiCD, ms.SiiresakiRyakuName, fs.ToriatukaiShuuryouDate, fs.HanbaiTeisiDate, fs.Model_No, fs.Model_Name, fs.FOB, fs.Shipping_Place, fs.HacchuuLot, fs.ShouhinImageFilePathName, fs.ShouhinImage, fs.Remarks
 			FROM F_Shouhin(@changeDate) fs
@@ -69,7 +69,8 @@ BEGIN
 		--exists
 		SELECT mm.*, ms.* FROM
 		(SELECT fs.ShouhinCD, fs.ChangeDate, fs.ShokutiFLG, fs.HinbanCD, fs.ShouhinName, fs.ShouhinRyakuName, fs.KanaName, fs.KensakuHyouziJun, fs.JANCD, fs.YearTerm, fs.SeasonSS, fs.SeasonFW, fs.TaniCD, M_MultiPorpose_Tani.Char1 AS TaniName,
-		fs.BrandCD, M_MultiPorpose_Brand.Char1 AS BrandName, fs.ColorNO, M_MultiPorpose_Color.Char1 AS ColorName, fs.SizeNO, M_MultiPorpose_Size.Char1 AS SizeName, fs.JoudaiTanka, fs.GedaiTanka, fs.HyoujunGenkaTanka,
+		fs.BrandCD, M_MultiPorpose_Brand.Char1 AS BrandName, fs.ColorNO, M_MultiPorpose_Color.Char1 AS ColorName, fs.SizeNO, M_MultiPorpose_Size.Char1 AS SizeName,  CONVERT(DECIMAL(24,0), fs.JoudaiTanka) AS 'JoudaiTanka', CONVERT(DECIMAL(24,0), fs.GedaiTanka) AS 'GedaiTanka', CONVERT(DECIMAL(24,0), fs.HyoujunGenkaTanka) AS 'HyoujunGenkaTanka',
+		fs.BrandCD, M_MultiPorpose_Brand.Char1 AS BrandName, fs.ColorNO, M_MultiPorpose_Color.Char1 AS ColorName, fs.SizeNO, M_MultiPorpose_Size.Char1 AS SizeName,  CONVERT(DECIMAL(24,0), fs.JoudaiTanka) AS 'JoudaiTanka', CONVERT(DECIMAL(24,0), fs.GedaiTanka) AS 'GedaiTanka', CONVERT(DECIMAL(24,0), fs.HyoujunGenkaTanka) AS 'HyoujunGenkaTanka',
 		fs.ZeirituKBN, M_MultiPorpose_Shouhizeiritu.Char1 AS ZeirituKBN_Name, fs.ZaikoHyoukaKBN, M_MultiPorpose_ZaikoHyouka.Char1 AS ZaikoHyoukaKBN_Name, fs.ZaikoKanriKBN, M_MultiPorpose_ZaikoKanri.Char1 AS ZaikoKanriKBN_Name, 
 		fs.MainSiiresakiCD, ms.SiiresakiRyakuName, fs.ToriatukaiShuuryouDate, fs.HanbaiTeisiDate, fs.Model_No, fs.Model_Name, fs.FOB, fs.Shipping_Place, fs.HacchuuLot, fs.ShouhinImageFilePathName, fs.ShouhinImage, fs.Remarks
 		FROM F_Shouhin(@changeDate) fs
