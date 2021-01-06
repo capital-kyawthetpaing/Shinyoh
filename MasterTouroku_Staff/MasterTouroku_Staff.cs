@@ -300,10 +300,18 @@ namespace MasterTouroku_Staff
             {
                 if (!txtStaff_CopyDate.IsErrorOccurs)
                 {
-                    EnablePanel();
-                    DataTable dt = txtStaff_CopyDate.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        From_DB_To_Form(dt);
+                    if(ErrorCheck(PanelTitle))
+                    {
+                        EnablePanel();
+                        DataTable dt = txtStaff_CopyDate.IsDatatableOccurs;
+                        if (dt.Rows.Count > 0)
+                            From_DB_To_Form(dt);
+                    }
+                    else
+                    {
+                        cf.Clear(Panel_Staff);
+                        cf.Clear(PanelTitle);
+                    }
                 }
             }
         }
