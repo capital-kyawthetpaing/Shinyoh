@@ -133,13 +133,14 @@
             this.txtSize.AllowMinus = false;
             this.txtSize.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSize.DecimalPlace = 0;
-            this.txtSize.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtSize.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSize.DepandOnMode = true;
             this.txtSize.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSize.IntegerPart = 0;
             this.txtSize.IsDatatableOccurs = null;
             this.txtSize.IsErrorOccurs = false;
             this.txtSize.IsRequire = false;
+            this.txtSize.IsUseInitializedLayout = true;
             this.txtSize.Location = new System.Drawing.Point(890, 85);
             this.txtSize.MaxLength = 13;
             this.txtSize.MinimumSize = new System.Drawing.Size(110, 19);
@@ -170,13 +171,14 @@
             this.txtBrand1.AllowMinus = false;
             this.txtBrand1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBrand1.DecimalPlace = 0;
-            this.txtBrand1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtBrand1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtBrand1.DepandOnMode = true;
             this.txtBrand1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtBrand1.IntegerPart = 0;
             this.txtBrand1.IsDatatableOccurs = null;
             this.txtBrand1.IsErrorOccurs = false;
             this.txtBrand1.IsRequire = false;
+            this.txtBrand1.IsUseInitializedLayout = true;
             this.txtBrand1.Location = new System.Drawing.Point(650, 85);
             this.txtBrand1.MaxLength = 10;
             this.txtBrand1.MinimumSize = new System.Drawing.Size(80, 19);
@@ -204,13 +206,14 @@
             this.txtBrand.AllowMinus = false;
             this.txtBrand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBrand.DecimalPlace = 0;
-            this.txtBrand.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtBrand.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtBrand.DepandOnMode = true;
             this.txtBrand.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtBrand.IntegerPart = 0;
             this.txtBrand.IsDatatableOccurs = null;
             this.txtBrand.IsErrorOccurs = false;
             this.txtBrand.IsRequire = false;
+            this.txtBrand.IsUseInitializedLayout = true;
             this.txtBrand.Location = new System.Drawing.Point(545, 85);
             this.txtBrand.MaxLength = 10;
             this.txtBrand.MinimumSize = new System.Drawing.Size(80, 19);
@@ -241,13 +244,14 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
-            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
+            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
+            this.txtKanaName.IsUseInitializedLayout = true;
             this.txtKanaName.Location = new System.Drawing.Point(115, 85);
             this.txtKanaName.MaxLength = 80;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -278,13 +282,14 @@
             this.txtColor.AllowMinus = false;
             this.txtColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtColor.DecimalPlace = 0;
-            this.txtColor.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtColor.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtColor.DepandOnMode = true;
             this.txtColor.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtColor.IntegerPart = 0;
             this.txtColor.IsDatatableOccurs = null;
             this.txtColor.IsErrorOccurs = false;
             this.txtColor.IsRequire = false;
+            this.txtColor.IsUseInitializedLayout = true;
             this.txtColor.Location = new System.Drawing.Point(890, 60);
             this.txtColor.MaxLength = 13;
             this.txtColor.MinimumSize = new System.Drawing.Size(110, 19);
@@ -362,6 +367,7 @@
             this.txtExhibition1.IsDatatableOccurs = null;
             this.txtExhibition1.IsErrorOccurs = false;
             this.txtExhibition1.IsRequire = false;
+            this.txtExhibition1.IsUseInitializedLayout = true;
             this.txtExhibition1.Location = new System.Drawing.Point(619, 60);
             this.txtExhibition1.MaxLength = 6;
             this.txtExhibition1.MinimumSize = new System.Drawing.Size(50, 19);
@@ -372,7 +378,7 @@
             this.txtExhibition1.SearchType = Entity.SearchType.ScType.None;
             this.txtExhibition1.Size = new System.Drawing.Size(50, 19);
             this.txtExhibition1.TabIndex = 20;
-            this.txtExhibition1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtExhibition1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label3
             // 
@@ -396,6 +402,7 @@
             this.txtExhibition.IsDatatableOccurs = null;
             this.txtExhibition.IsErrorOccurs = false;
             this.txtExhibition.IsRequire = false;
+            this.txtExhibition.IsUseInitializedLayout = true;
             this.txtExhibition.Location = new System.Drawing.Point(545, 60);
             this.txtExhibition.MaxLength = 6;
             this.txtExhibition.MinimumSize = new System.Drawing.Size(50, 19);
@@ -433,6 +440,7 @@
             this.txtProductName.IsDatatableOccurs = null;
             this.txtProductName.IsErrorOccurs = false;
             this.txtProductName.IsRequire = false;
+            this.txtProductName.IsUseInitializedLayout = true;
             this.txtProductName.Location = new System.Drawing.Point(115, 60);
             this.txtProductName.MaxLength = 100;
             this.txtProductName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -470,6 +478,7 @@
             this.txtChangeDate.IsDatatableOccurs = null;
             this.txtChangeDate.IsErrorOccurs = false;
             this.txtChangeDate.IsRequire = false;
+            this.txtChangeDate.IsUseInitializedLayout = true;
             this.txtChangeDate.Location = new System.Drawing.Point(1090, 10);
             this.txtChangeDate.MaxLength = 10;
             this.txtChangeDate.MinimumSize = new System.Drawing.Size(100, 19);
@@ -509,6 +518,7 @@
             this.txtRemarks.IsDatatableOccurs = null;
             this.txtRemarks.IsErrorOccurs = false;
             this.txtRemarks.IsRequire = false;
+            this.txtRemarks.IsUseInitializedLayout = true;
             this.txtRemarks.Location = new System.Drawing.Point(890, 35);
             this.txtRemarks.MaxLength = 80;
             this.txtRemarks.MinimumSize = new System.Drawing.Size(100, 19);
@@ -539,13 +549,14 @@
             this.txtJANCD1.AllowMinus = false;
             this.txtJANCD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtJANCD1.DecimalPlace = 0;
-            this.txtJANCD1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtJANCD1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtJANCD1.DepandOnMode = true;
             this.txtJANCD1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtJANCD1.IntegerPart = 0;
             this.txtJANCD1.IsDatatableOccurs = null;
             this.txtJANCD1.IsErrorOccurs = false;
             this.txtJANCD1.IsRequire = false;
+            this.txtJANCD1.IsUseInitializedLayout = true;
             this.txtJANCD1.Location = new System.Drawing.Point(677, 35);
             this.txtJANCD1.MaxLength = 13;
             this.txtJANCD1.MinimumSize = new System.Drawing.Size(110, 19);
@@ -556,7 +567,7 @@
             this.txtJANCD1.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD1.Size = new System.Drawing.Size(110, 19);
             this.txtJANCD1.TabIndex = 10;
-            this.txtJANCD1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJANCD1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label2
             // 
@@ -573,13 +584,14 @@
             this.txtJANCD.AllowMinus = false;
             this.txtJANCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtJANCD.DecimalPlace = 0;
-            this.txtJANCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtJANCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtJANCD.DepandOnMode = true;
             this.txtJANCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtJANCD.IntegerPart = 0;
             this.txtJANCD.IsDatatableOccurs = null;
             this.txtJANCD.IsErrorOccurs = false;
             this.txtJANCD.IsRequire = false;
+            this.txtJANCD.IsUseInitializedLayout = true;
             this.txtJANCD.Location = new System.Drawing.Point(545, 35);
             this.txtJANCD.MaxLength = 13;
             this.txtJANCD.MinimumSize = new System.Drawing.Size(110, 19);
@@ -590,7 +602,7 @@
             this.txtJANCD.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD.Size = new System.Drawing.Size(110, 19);
             this.txtJANCD.TabIndex = 8;
-            this.txtJANCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJANCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblJANCD
             // 
@@ -610,13 +622,14 @@
             this.txtHinbanCD1.AllowMinus = false;
             this.txtHinbanCD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHinbanCD1.DecimalPlace = 0;
-            this.txtHinbanCD1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtHinbanCD1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtHinbanCD1.DepandOnMode = true;
             this.txtHinbanCD1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtHinbanCD1.IntegerPart = 0;
             this.txtHinbanCD1.IsDatatableOccurs = null;
             this.txtHinbanCD1.IsErrorOccurs = false;
             this.txtHinbanCD1.IsRequire = false;
+            this.txtHinbanCD1.IsUseInitializedLayout = true;
             this.txtHinbanCD1.Location = new System.Drawing.Point(289, 35);
             this.txtHinbanCD1.MaxLength = 20;
             this.txtHinbanCD1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -644,13 +657,14 @@
             this.txtHinbanCD.AllowMinus = false;
             this.txtHinbanCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtHinbanCD.DecimalPlace = 0;
-            this.txtHinbanCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtHinbanCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtHinbanCD.DepandOnMode = true;
             this.txtHinbanCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtHinbanCD.IntegerPart = 0;
             this.txtHinbanCD.IsDatatableOccurs = null;
             this.txtHinbanCD.IsErrorOccurs = false;
             this.txtHinbanCD.IsRequire = false;
+            this.txtHinbanCD.IsUseInitializedLayout = true;
             this.txtHinbanCD.Location = new System.Drawing.Point(115, 35);
             this.txtHinbanCD.MaxLength = 20;
             this.txtHinbanCD.MinimumSize = new System.Drawing.Size(100, 19);
