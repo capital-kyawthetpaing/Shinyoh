@@ -67,7 +67,7 @@ namespace MasterTouroku_DenpyouNO
                     txtCounter.E102Check(true);
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
-                    F9.Visible = false;
+                    //F9.Visible = false;
                     break;
                 case Mode.Update:
                     cbDivision.E102Check(true);
@@ -156,8 +156,8 @@ namespace MasterTouroku_DenpyouNO
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
             cbDivision.Select();
-            Control btnSearch = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
-            btnSearch.Visible = false;
+            //Control btnSearch = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+            //btnSearch.Visible = false;
         }
         private void DBProcess()
         {
@@ -219,7 +219,7 @@ namespace MasterTouroku_DenpyouNO
             {
                 if (!txt_Prefix.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
+                    if (cboMode.SelectedValue.ToString() == "2")
                     {
                         EnableAndDisablePanel();
                     }

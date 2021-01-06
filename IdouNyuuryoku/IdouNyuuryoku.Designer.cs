@@ -34,6 +34,16 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.Panel_Detail = new System.Windows.Forms.Panel();
             this.sGridView1 = new Shinyoh_Controls.SGridView();
+            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colKanriNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIdouSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGenkaTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGenkaKingaku = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIdouMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_Nyuko = new Shinyoh_Controls.SLabel();
             this.lbl_Shukko = new Shinyoh_Controls.SLabel();
             this.txtNyukosouko = new Shinyoh_Search.SearchBox();
@@ -72,16 +82,6 @@
             this.sLabel9 = new Shinyoh_Controls.SLabel();
             this.txtIdouDate = new Shinyoh_Controls.STextBox();
             this.sLabel5 = new Shinyoh_Controls.SLabel();
-            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colKanriNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdouSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGenkaTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGenkaKingaku = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdouMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.Panel_Detail.SuspendLayout();
@@ -117,6 +117,7 @@
             this.txtCopy.IsDatatableOccurs = null;
             this.txtCopy.IsErrorOccurs = false;
             this.txtCopy.IsRequire = false;
+            this.txtCopy.IsUseInitializedLayout = true;
             this.txtCopy.lblName = null;
             this.txtCopy.Location = new System.Drawing.Point(120, 34);
             this.txtCopy.MaxLength = 12;
@@ -144,6 +145,7 @@
             this.txtIdouNO.IsDatatableOccurs = null;
             this.txtIdouNO.IsErrorOccurs = false;
             this.txtIdouNO.IsRequire = false;
+            this.txtIdouNO.IsUseInitializedLayout = true;
             this.txtIdouNO.lblName = null;
             this.txtIdouNO.Location = new System.Drawing.Point(120, 9);
             this.txtIdouNO.MaxLength = 12;
@@ -249,6 +251,66 @@
             this.sGridView1.Size = new System.Drawing.Size(1400, 350);
             this.sGridView1.TabIndex = 155;
             // 
+            // colShouhinCD
+            // 
+            this.colShouhinCD.DataPropertyName = "ShouhinCD";
+            this.colShouhinCD.HeaderText = "商品";
+            this.colShouhinCD.Name = "colShouhinCD";
+            // 
+            // colShouhinName
+            // 
+            this.colShouhinName.DataPropertyName = "ShouhinName";
+            this.colShouhinName.HeaderText = "商品名";
+            this.colShouhinName.Name = "colShouhinName";
+            // 
+            // colColorRyakuName
+            // 
+            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
+            this.colColorRyakuName.HeaderText = "カラー略名";
+            this.colColorRyakuName.Name = "colColorRyakuName";
+            // 
+            // colColorNO
+            // 
+            this.colColorNO.DataPropertyName = "ColorNO";
+            this.colColorNO.HeaderText = "カラー";
+            this.colColorNO.Name = "colColorNO";
+            // 
+            // colSizeNO
+            // 
+            this.colSizeNO.DataPropertyName = "SizeNO";
+            this.colSizeNO.HeaderText = "サイズ";
+            this.colSizeNO.Name = "colSizeNO";
+            // 
+            // colKanriNO
+            // 
+            this.colKanriNO.DataPropertyName = "KanriNO";
+            this.colKanriNO.HeaderText = "管理番号";
+            this.colKanriNO.Name = "colKanriNO";
+            // 
+            // colIdouSuu
+            // 
+            this.colIdouSuu.DataPropertyName = "IdouSuu";
+            this.colIdouSuu.HeaderText = "移動数";
+            this.colIdouSuu.Name = "colIdouSuu";
+            // 
+            // colGenkaTanka
+            // 
+            this.colGenkaTanka.DataPropertyName = "GenkaTanka";
+            this.colGenkaTanka.HeaderText = "原価単価";
+            this.colGenkaTanka.Name = "colGenkaTanka";
+            // 
+            // colGenkaKingaku
+            // 
+            this.colGenkaKingaku.DataPropertyName = "GenkaKingaku";
+            this.colGenkaKingaku.HeaderText = "原価金額";
+            this.colGenkaKingaku.Name = "colGenkaKingaku";
+            // 
+            // colIdouMeisaiTekiyou
+            // 
+            this.colIdouMeisaiTekiyou.DataPropertyName = "IdouMeisaiTekiyou";
+            this.colIdouMeisaiTekiyou.HeaderText = "明細摘要";
+            this.colIdouMeisaiTekiyou.Name = "colIdouMeisaiTekiyou";
+            // 
             // lbl_Nyuko
             // 
             this.lbl_Nyuko.BackColor = System.Drawing.SystemColors.Control;
@@ -290,6 +352,7 @@
             this.txtNyukosouko.IsDatatableOccurs = null;
             this.txtNyukosouko.IsErrorOccurs = false;
             this.txtNyukosouko.IsRequire = false;
+            this.txtNyukosouko.IsUseInitializedLayout = true;
             this.txtNyukosouko.lblName = null;
             this.txtNyukosouko.Location = new System.Drawing.Point(899, 50);
             this.txtNyukosouko.MaxLength = 10;
@@ -318,6 +381,7 @@
             this.txtShukkosouko.IsDatatableOccurs = null;
             this.txtShukkosouko.IsErrorOccurs = false;
             this.txtShukkosouko.IsRequire = false;
+            this.txtShukkosouko.IsUseInitializedLayout = true;
             this.txtShukkosouko.lblName = null;
             this.txtShukkosouko.Location = new System.Drawing.Point(898, 19);
             this.txtShukkosouko.MaxLength = 10;
@@ -373,6 +437,7 @@
             this.txtShouhinCD.IsDatatableOccurs = null;
             this.txtShouhinCD.IsErrorOccurs = false;
             this.txtShouhinCD.IsRequire = false;
+            this.txtShouhinCD.IsUseInitializedLayout = true;
             this.txtShouhinCD.lblName = null;
             this.txtShouhinCD.Location = new System.Drawing.Point(258, 165);
             this.txtShouhinCD.MaxLength = 20;
@@ -401,6 +466,7 @@
             this.txtBrandCD.IsDatatableOccurs = null;
             this.txtBrandCD.IsErrorOccurs = false;
             this.txtBrandCD.IsRequire = false;
+            this.txtBrandCD.IsUseInitializedLayout = true;
             this.txtBrandCD.lblName = null;
             this.txtBrandCD.Location = new System.Drawing.Point(258, 134);
             this.txtBrandCD.MaxLength = 10;
@@ -413,6 +479,7 @@
             this.txtBrandCD.Size = new System.Drawing.Size(90, 19);
             this.txtBrandCD.TabIndex = 9;
             this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtBrandCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrandCD_KeyDown);
             // 
             // txtStaffCD
             // 
@@ -429,6 +496,7 @@
             this.txtStaffCD.IsDatatableOccurs = null;
             this.txtStaffCD.IsErrorOccurs = false;
             this.txtStaffCD.IsRequire = false;
+            this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
             this.txtStaffCD.Location = new System.Drawing.Point(258, 79);
             this.txtStaffCD.MaxLength = 10;
@@ -457,6 +525,7 @@
             this.txtIdoukubun.IsDatatableOccurs = null;
             this.txtIdoukubun.IsErrorOccurs = false;
             this.txtIdoukubun.IsRequire = false;
+            this.txtIdoukubun.IsUseInitializedLayout = true;
             this.txtIdoukubun.lblName = null;
             this.txtIdoukubun.Location = new System.Drawing.Point(257, 48);
             this.txtIdoukubun.MaxLength = 3;
@@ -566,6 +635,7 @@
             this.txtSizeNo.IsDatatableOccurs = null;
             this.txtSizeNo.IsErrorOccurs = false;
             this.txtSizeNo.IsRequire = false;
+            this.txtSizeNo.IsUseInitializedLayout = true;
             this.txtSizeNo.Location = new System.Drawing.Point(1200, 164);
             this.txtSizeNo.MaxLength = 13;
             this.txtSizeNo.MinimumSize = new System.Drawing.Size(130, 19);
@@ -604,6 +674,7 @@
             this.txtColorNo.IsDatatableOccurs = null;
             this.txtColorNo.IsErrorOccurs = false;
             this.txtColorNo.IsRequire = false;
+            this.txtColorNo.IsUseInitializedLayout = true;
             this.txtColorNo.Location = new System.Drawing.Point(898, 166);
             this.txtColorNo.MaxLength = 13;
             this.txtColorNo.MinimumSize = new System.Drawing.Size(130, 19);
@@ -641,6 +712,7 @@
             this.txtYearTerm.IsDatatableOccurs = null;
             this.txtYearTerm.IsErrorOccurs = false;
             this.txtYearTerm.IsRequire = false;
+            this.txtYearTerm.IsUseInitializedLayout = true;
             this.txtYearTerm.Location = new System.Drawing.Point(898, 134);
             this.txtYearTerm.MaxLength = 4;
             this.txtYearTerm.MinimumSize = new System.Drawing.Size(50, 19);
@@ -679,6 +751,7 @@
             this.txtDenpyouTekiyou.IsDatatableOccurs = null;
             this.txtDenpyouTekiyou.IsErrorOccurs = false;
             this.txtDenpyouTekiyou.IsRequire = false;
+            this.txtDenpyouTekiyou.IsUseInitializedLayout = true;
             this.txtDenpyouTekiyou.Location = new System.Drawing.Point(898, 78);
             this.txtDenpyouTekiyou.MaxLength = 40;
             this.txtDenpyouTekiyou.MinimumSize = new System.Drawing.Size(500, 19);
@@ -716,6 +789,7 @@
             this.txtShouhinName.IsDatatableOccurs = null;
             this.txtShouhinName.IsErrorOccurs = false;
             this.txtShouhinName.IsRequire = false;
+            this.txtShouhinName.IsUseInitializedLayout = true;
             this.txtShouhinName.Location = new System.Drawing.Point(258, 196);
             this.txtShouhinName.MaxLength = 40;
             this.txtShouhinName.MinimumSize = new System.Drawing.Size(500, 19);
@@ -754,6 +828,7 @@
             this.txtJANCD.IsDatatableOccurs = null;
             this.txtJANCD.IsErrorOccurs = false;
             this.txtJANCD.IsRequire = false;
+            this.txtJANCD.IsUseInitializedLayout = true;
             this.txtJANCD.Location = new System.Drawing.Point(608, 164);
             this.txtJANCD.MaxLength = 13;
             this.txtJANCD.MinimumSize = new System.Drawing.Size(110, 19);
@@ -894,6 +969,7 @@
             this.txtIdouDate.IsDatatableOccurs = null;
             this.txtIdouDate.IsErrorOccurs = false;
             this.txtIdouDate.IsRequire = false;
+            this.txtIdouDate.IsUseInitializedLayout = true;
             this.txtIdouDate.Location = new System.Drawing.Point(258, 19);
             this.txtIdouDate.MaxLength = 10;
             this.txtIdouDate.MinimumSize = new System.Drawing.Size(100, 19);
@@ -920,66 +996,6 @@
             this.sLabel5.TabIndex = 115;
             this.sLabel5.Text = "移動日";
             this.sLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // colShouhinCD
-            // 
-            this.colShouhinCD.DataPropertyName = "ShouhinCD";
-            this.colShouhinCD.HeaderText = "商品";
-            this.colShouhinCD.Name = "colShouhinCD";
-            // 
-            // colShouhinName
-            // 
-            this.colShouhinName.DataPropertyName = "ShouhinName";
-            this.colShouhinName.HeaderText = "商品名";
-            this.colShouhinName.Name = "colShouhinName";
-            // 
-            // colColorRyakuName
-            // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            // 
-            // colColorNO
-            // 
-            this.colColorNO.DataPropertyName = "ColorNO";
-            this.colColorNO.HeaderText = "カラー";
-            this.colColorNO.Name = "colColorNO";
-            // 
-            // colSizeNO
-            // 
-            this.colSizeNO.DataPropertyName = "SizeNO";
-            this.colSizeNO.HeaderText = "サイズ";
-            this.colSizeNO.Name = "colSizeNO";
-            // 
-            // colKanriNO
-            // 
-            this.colKanriNO.DataPropertyName = "KanriNO";
-            this.colKanriNO.HeaderText = "管理番号";
-            this.colKanriNO.Name = "colKanriNO";
-            // 
-            // colIdouSuu
-            // 
-            this.colIdouSuu.DataPropertyName = "IdouSuu";
-            this.colIdouSuu.HeaderText = "移動数";
-            this.colIdouSuu.Name = "colIdouSuu";
-            // 
-            // colGenkaTanka
-            // 
-            this.colGenkaTanka.DataPropertyName = "GenkaTanka";
-            this.colGenkaTanka.HeaderText = "原価単価";
-            this.colGenkaTanka.Name = "colGenkaTanka";
-            // 
-            // colGenkaKingaku
-            // 
-            this.colGenkaKingaku.DataPropertyName = "GenkaKingaku";
-            this.colGenkaKingaku.HeaderText = "原価金額";
-            this.colGenkaKingaku.Name = "colGenkaKingaku";
-            // 
-            // colIdouMeisaiTekiyou
-            // 
-            this.colIdouMeisaiTekiyou.DataPropertyName = "IdouMeisaiTekiyou";
-            this.colIdouMeisaiTekiyou.HeaderText = "明細摘要";
-            this.colIdouMeisaiTekiyou.Name = "colIdouMeisaiTekiyou";
             // 
             // IdouNyuuryoku
             // 

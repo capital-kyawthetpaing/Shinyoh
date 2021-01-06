@@ -348,6 +348,7 @@ namespace MasterTouroku_Tokuisaki {
                     txtPersonCharge.Text = dt.Rows[0]["TantoushaName"].ToString();
                     txtMailAddress.Text = dt.Rows[0]["MailAddress"].ToString();
                     txtStaffCharge.Text = dt.Rows[0]["StaffCD"].ToString();
+                    lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
                     txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
                     txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
 
@@ -373,12 +374,17 @@ namespace MasterTouroku_Tokuisaki {
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtTokuisaki_CopyDate.IsErrorOccurs)
+                if (ErrorCheck(PanelTitle))
                 {
                     EnablePanel();
                     DataTable dt = txtTokuisaki_CopyDate.IsDatatableOccurs;
                     if (dt.Rows.Count > 0)
                         From_DB_To_TokuForm(dt);
+                }
+                else
+                {
+                    cf.Clear(PanelDetail);
+                    cf.Clear(PanelTitle);
                 }
             }
         }

@@ -34,17 +34,27 @@ namespace Shinyoh_Search {
             txtSouko2.E106Check(true, txtSouko1, txtSouko2);
             gvSouko.SetGridDesign();
             gvSouko.SetReadOnlyColumn("*");
+            selectRow();
+        }
+        private void selectRow()
+        {
+            //gvSouko.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            //gvSouko.CurrentRow.Selected = true;
+            gvSouko.Enabled = true;
+            gvSouko.Select();
         }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
             {
                 GridViewBind();
+                selectRow();
             }
             if (tagID == "3")
             {
                 DataGridViewRow row = gvSouko.CurrentRow;
                 GetGridviewData(row);
+                selectRow();
             }
             base.FunctionProcess(tagID);
         }
@@ -64,6 +74,7 @@ namespace Shinyoh_Search {
         {
             FunctionProcess(BtnF11_Soko.Tag.ToString());
             GridViewBind();
+            selectRow();
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {

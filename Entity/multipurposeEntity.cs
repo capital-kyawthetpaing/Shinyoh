@@ -30,5 +30,6 @@ namespace Entity
         public string Date2 { get; set; }
         public string Date3 { get; set; }
         public string ErrorType { get; set; }
+        public string Type { get; set; }
     }
 }
