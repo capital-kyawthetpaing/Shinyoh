@@ -44,6 +44,7 @@ namespace Shinyoh_Search
         private void btnKouriten_F11_Click(object sender, EventArgs e)
         {
             DataGridviewBind();
+            gv_Kouriten.Select();
         }
         private void DataGridviewBind()
         {
@@ -82,6 +83,7 @@ namespace Shinyoh_Search
             if (tagID == "2")
             {
                 DataGridviewBind();
+                gv_Kouriten.Select();
             }
             if (tagID == "3")
             {

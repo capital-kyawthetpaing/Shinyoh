@@ -332,7 +332,7 @@
             this.colCurrentDay});
             this.gvStaff.Location = new System.Drawing.Point(45, 146);
             this.gvStaff.Name = "gvStaff";
-            this.gvStaff.Size = new System.Drawing.Size(753, 302);
+            this.gvStaff.Size = new System.Drawing.Size(722, 302);
             this.gvStaff.TabIndex = 3;
             this.gvStaff.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvStaff_CellMouseDoubleClick);
             // 

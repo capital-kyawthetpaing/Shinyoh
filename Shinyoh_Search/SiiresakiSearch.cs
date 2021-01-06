@@ -41,12 +41,14 @@ namespace Shinyoh_Search
         private void btnSupplier_F11_Click(object sender, System.EventArgs e)
         {
             DataGridviewBind();
+            gvSupplier.Select();
         }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
             {
                 DataGridviewBind();
+                gvSupplier.Select();
             }
             if (tagID == "3")
             {

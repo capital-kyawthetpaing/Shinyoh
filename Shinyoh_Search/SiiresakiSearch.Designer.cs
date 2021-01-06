@@ -330,7 +330,7 @@
             this.colChangeDate});
             this.gvSupplier.Location = new System.Drawing.Point(45, 146);
             this.gvSupplier.Name = "gvSupplier";
-            this.gvSupplier.Size = new System.Drawing.Size(665, 302);
+            this.gvSupplier.Size = new System.Drawing.Size(655, 302);
             this.gvSupplier.TabIndex = 4;
             this.gvSupplier.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSupplier_CellMouseDoubleClick);
             // 
