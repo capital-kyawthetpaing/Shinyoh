@@ -25,16 +25,18 @@ namespace Shinyoh_Search
         public ShippingNoSearch()
         {
             InitializeComponent();
-        }
-        private void ShippingNoSearch_Load(object sender, EventArgs e)
-        {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            gvShippingNo.SetGridDesign();
+            gvShippingNo.SetReadOnlyColumn("colShippingNO,colShippingDate,colCustomerCD,colCustomerName,colJuchuuNO");
             txtShippingDateFrom.Focus();
             gvShippingNo.UseRowNo(true);
+        }
+        private void ShippingNoSearch_Load(object sender, EventArgs e)
+        {
             GridViewBind();
             ErrorCheck();
         }
