@@ -66,9 +66,9 @@ namespace MasterTouroku_Kouriten
             txtSystemDate.Text = base_Entity.LoginDate;
 
             txtStaffCD.ChangeDate = txtChangeDate;
-            txtKouritenCD.ChangeDate = txtChangeDate;
+           // txtKouritenCD.ChangeDate = txtChangeDate;
             txtCopyCD.ChangeDate = txtCopyDate;
-            txtTokuisakiCD.ChangeDate = txtSystemDate;
+           // txtTokuisakiCD.ChangeDate = txtSystemDate;
             txtTokuisakiCD_Copy.ChangeDate = txtSystemDate;
         }
 
@@ -388,7 +388,7 @@ namespace MasterTouroku_Kouriten
                 txtKouritenRyakuName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
                 txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
                 txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
-                txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
+               // txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
                 
                 if (dt.Rows[0]["AliasKBN"].ToString() == "1")
                     rdo_AliasKBN1.Checked = true;
