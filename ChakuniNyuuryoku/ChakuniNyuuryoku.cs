@@ -238,7 +238,7 @@ namespace ChakuniNyuuryoku
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails))
+                if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails) && Temp_Null())
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -260,6 +260,15 @@ namespace ChakuniNyuuryoku
             }
             base.FunctionProcess(tagID);
         }
+        private bool Temp_Null()
+        {
+            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp.Rows.Count == 0)
+            {
+                bbl.ShowMessage("E274");
+                return false;
+            }
+            return true;
+        }
         public void Clear()
         {
             cf.Clear(PanelTitle);
@@ -276,10 +285,6 @@ namespace ChakuniNyuuryoku
         {
             string mode = string.Empty;
             (string, string) obj = GetInsert();
-            if (dtTemp == null)
-                bbl.ShowMessage("E274");
-            else if (dtTemp.Rows.Count < 1)
-                bbl.ShowMessage("E274");
             if (cboMode.SelectedValue.Equals("1"))
             {
                 mode = "New";
@@ -546,7 +551,7 @@ namespace ChakuniNyuuryoku
             dt.Columns.Add("ChakuniYoteiSuu", typeof(string));
             dt.Columns.Add("ChakuniZumiSuu", typeof(string));
             dt.Columns.Add("ChakuniSuu", typeof(string));
-            //dt.Columns.Add("chk", typeof(int));
+            dt.Columns.Add("SiireKanryouKBN", typeof(string));
             dt.Columns.Add("ChakuniMeisaiTekiyou", typeof(string));
             dt.Columns.Add("JanCD", typeof(string));
             dt.Columns.Add("ChakuniYoteiNO", typeof(string));

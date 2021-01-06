@@ -50,6 +50,7 @@ namespace MasterTouroku_Shouhin
             base_entity = _GetBaseData();
             txtProduct.ChangeDate = txtChangeDate;
             txtCopyProduct.ChangeDate = txtCopyChangeDate;
+            txtMajorSuppliers.ChangeDate = txtChangeDate;
 
             txtTani.lblName = lbl_TaniCD;
             txtBrand.lblName = lbl_BrandCD;
@@ -358,12 +359,18 @@ namespace MasterTouroku_Shouhin
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtCopyChangeDate.IsErrorOccurs)
+                if(!txtProduct.ErrorCheck())
                 {
-                    EnableAndDisablePanel();
-                    DataTable dt = txtCopyChangeDate.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        DB_To_UI(dt);
+                    if (!txtChangeDate.ErrorCheck())
+                    {
+                        if (!txtCopyChangeDate.IsErrorOccurs)
+                        {
+                            EnableAndDisablePanel();
+                            DataTable dt = txtCopyChangeDate.IsDatatableOccurs;
+                            if (dt.Rows.Count > 0)
+                                DB_To_UI(dt);
+                        }
+                    }
                 }
             }
         }
@@ -701,118 +708,6 @@ namespace MasterTouroku_Shouhin
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
             create_dt.Columns.Add("Error");
-        }
-
-        private void txtTani_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                lbl_TaniCD.Text = string.Empty;
-                if(!txtTani.IsErrorOccurs)
-                {
-                    DataTable dt = txtTani.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lbl_TaniCD.Text = dt.Rows[0]["char1"].ToString();
-                }
-            }
-        }
-
-        private void txtBrand_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                lbl_BrandCD.Text = string.Empty;
-                if (!txtBrand.IsErrorOccurs)
-                {
-                    DataTable dt = txtBrand.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lbl_BrandCD.Text = dt.Rows[0]["char1"].ToString();
-                }
-            }
-        }
-
-        private void txtColor_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                lbl_ColorNO.Text = string.Empty;
-                if (!txtColor.IsErrorOccurs)
-                {
-                    DataTable dt = txtColor.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lbl_ColorNO.Text = dt.Rows[0]["char1"].ToString();
-                }
-            }
-        }
-
-        private void txtSize_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                lbl_SizeNO.Text = string.Empty;
-                if (!txtSize.IsErrorOccurs)
-                {
-                    DataTable dt = txtSize.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lbl_SizeNO.Text = dt.Rows[0]["char1"].ToString();
-                }
-            }
-        }
-
-        private void txtTaxRate_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                lbl_TaxtRate.Text = string.Empty;
-                if (!txtTaxRate.IsErrorOccurs)
-                {
-                    DataTable dt = txtTaxRate.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lbl_TaxtRate.Text = dt.Rows[0]["char1"].ToString();
-                }
-            }
-        }
-
-        private void txtIEvaluation_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                lbl_IEvaluation.Text = string.Empty;
-                if (!txtIEvaluation.IsErrorOccurs)
-                {
-                    DataTable dt = txtIEvaluation.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lbl_IEvaluation.Text = dt.Rows[0]["char1"].ToString();
-                }
-            }
-        }
-
-        private void txtIManagement_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                lbl_IManagement.Text = string.Empty;
-                if (!txtIManagement.IsErrorOccurs)
-                {
-                    DataTable dt = txtIManagement.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lbl_IManagement.Text = dt.Rows[0]["char1"].ToString();
-                }
-            }
-        }
-
-        private void txtMajorSuppliers_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                lbl_MajorSuppliers.Text = string.Empty;
-                if (!txtMajorSuppliers.IsErrorOccurs)
-                {
-                    DataTable dt = txtMajorSuppliers.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lbl_MajorSuppliers.Text = dt.Rows[0]["SiiresakiRyakuName"].ToString();
-                }
-            }
         }
     }
 }
