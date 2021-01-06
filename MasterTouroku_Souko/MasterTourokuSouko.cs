@@ -328,13 +328,22 @@ namespace MasterTouroku_Souko
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtCopySouko.IsErrorOccurs)
+                //txtSouko.E102Check(true);
+                //if (ErrorCheck(PanelTitle))
+                //{
+                //    txtSouko.Focus();
+                //}
+                if ((ErrorCheck(PanelTitle)))
                 {
-                    EnableAndDisablePanel();
-                    DataTable dt = txtCopySouko.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        soukoSelect(dt);
+                    if (!txtCopySouko.IsErrorOccurs)
+                    {
+                        EnableAndDisablePanel();
+                        DataTable dt = txtCopySouko.IsDatatableOccurs;
+                        if (dt.Rows.Count > 0)
+                            soukoSelect(dt);
+                    }
                 }
+                
             }
         }
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
