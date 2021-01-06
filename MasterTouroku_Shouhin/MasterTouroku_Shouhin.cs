@@ -50,6 +50,7 @@ namespace MasterTouroku_Shouhin
             base_entity = _GetBaseData();
             txtProduct.ChangeDate = txtChangeDate;
             txtCopyProduct.ChangeDate = txtCopyChangeDate;
+            txtMajorSuppliers.ChangeDate = txtChangeDate;
 
             txtTani.lblName = lbl_TaniCD;
             txtBrand.lblName = lbl_BrandCD;
@@ -358,12 +359,18 @@ namespace MasterTouroku_Shouhin
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtCopyChangeDate.IsErrorOccurs)
+                if(!txtProduct.ErrorCheck())
                 {
-                    EnableAndDisablePanel();
-                    DataTable dt = txtCopyChangeDate.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        DB_To_UI(dt);
+                    if (!txtChangeDate.ErrorCheck())
+                    {
+                        if (!txtCopyChangeDate.IsErrorOccurs)
+                        {
+                            EnableAndDisablePanel();
+                            DataTable dt = txtCopyChangeDate.IsDatatableOccurs;
+                            if (dt.Rows.Count > 0)
+                                DB_To_UI(dt);
+                        }
+                    }
                 }
             }
         }

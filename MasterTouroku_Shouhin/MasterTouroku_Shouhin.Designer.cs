@@ -493,7 +493,6 @@
             this.txtMajorSuppliers.Size = new System.Drawing.Size(100, 19);
             this.txtMajorSuppliers.TabIndex = 76;
             this.txtMajorSuppliers.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtMajorSuppliers.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMajorSuppliers_KeyDown);
             // 
             // txtIManagement
             // 
@@ -522,7 +521,6 @@
             this.txtIManagement.Size = new System.Drawing.Size(30, 19);
             this.txtIManagement.TabIndex = 75;
             this.txtIManagement.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            this.txtIManagement.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIManagement_KeyDown);
             // 
             // txtIEvaluation
             // 
@@ -551,7 +549,6 @@
             this.txtIEvaluation.Size = new System.Drawing.Size(30, 19);
             this.txtIEvaluation.TabIndex = 74;
             this.txtIEvaluation.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            this.txtIEvaluation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIEvaluation_KeyDown);
             // 
             // txtTaxRate
             // 
@@ -580,7 +577,6 @@
             this.txtTaxRate.Size = new System.Drawing.Size(30, 19);
             this.txtTaxRate.TabIndex = 73;
             this.txtTaxRate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            this.txtTaxRate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTaxRate_KeyDown);
             // 
             // txtSize
             // 
@@ -609,7 +605,6 @@
             this.txtSize.Size = new System.Drawing.Size(150, 19);
             this.txtSize.TabIndex = 72;
             this.txtSize.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtSize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSize_KeyDown);
             // 
             // txtColor
             // 
@@ -638,7 +633,6 @@
             this.txtColor.Size = new System.Drawing.Size(150, 19);
             this.txtColor.TabIndex = 71;
             this.txtColor.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtColor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtColor_KeyDown);
             // 
             // txtBrand
             // 
@@ -667,7 +661,6 @@
             this.txtBrand.Size = new System.Drawing.Size(100, 19);
             this.txtBrand.TabIndex = 70;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrand_KeyDown);
             // 
             // txtTani
             // 
@@ -696,7 +689,6 @@
             this.txtTani.Size = new System.Drawing.Size(50, 19);
             this.txtTani.TabIndex = 69;
             this.txtTani.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtTani.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTani_KeyDown);
             // 
             // txtHinbanCD
             // 
@@ -1630,7 +1622,7 @@
             this.txtCopyProduct.ChangeDate = null;
             this.txtCopyProduct.Combo = null;
             this.txtCopyProduct.DecimalPlace = 0;
-            this.txtCopyProduct.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
+            this.txtCopyProduct.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtCopyProduct.DepandOnMode = false;
             this.txtCopyProduct.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCopyProduct.IntegerPart = 0;
@@ -1658,7 +1650,7 @@
             this.txtProduct.ChangeDate = null;
             this.txtProduct.Combo = null;
             this.txtProduct.DecimalPlace = 0;
-            this.txtProduct.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
+            this.txtProduct.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtProduct.DepandOnMode = true;
             this.txtProduct.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtProduct.IntegerPart = 0;

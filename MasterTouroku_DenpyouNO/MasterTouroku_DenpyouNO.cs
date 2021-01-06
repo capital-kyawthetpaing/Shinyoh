@@ -156,8 +156,8 @@ namespace MasterTouroku_DenpyouNO
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
             cbDivision.Select();
-            Control btnSearch = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
-            btnSearch.Visible = false;
+            //Control btnSearch = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+            //btnSearch.Visible = false;
         }
         private void DBProcess()
         {

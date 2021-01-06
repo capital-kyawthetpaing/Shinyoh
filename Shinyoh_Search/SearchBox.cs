@@ -118,12 +118,20 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.multiporpose:
                         MultiPorposeSearch msearch = new MultiPorposeSearch();
-                        if(this.Name.Contains("Brand"))
+                        if (this.Name.Contains("Tani"))
+                            msearch.Access_Type = "102";
+                        else if (this.Name.Contains("Brand"))
                             msearch.Access_Type = "103";
                         else if (this.Name.Contains("Color"))
                             msearch.Access_Type = "104";
                         else if (this.Name.Contains("Size"))
                             msearch.Access_Type = "105";
+                        else if (this.Name.Contains("TaxRate"))
+                            msearch.Access_Type = "221";
+                        else if (this.Name.Contains("Evaluation"))
+                            msearch.Access_Type = "106";
+                        else if (this.Name.Contains("Management"))
+                            msearch.Access_Type = "107";
                         msearch.ShowDialog();
                         if(this.Name== "txtID" || this.Name=="txtCopyID")
                             CD = msearch.Id;
