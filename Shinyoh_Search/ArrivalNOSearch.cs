@@ -56,15 +56,16 @@ namespace Shinyoh_Search
         {
             txtDateFrom.E103Check(true);
             txtDateTo.E103Check(true);
-            txtDateTo.E106Check(true, txtDateFrom, txtDateTo);
+            txtDateTo.E104Check(true, txtDateFrom, txtDateTo);
 
             txtExpectedDateFrom.E103Check(true);
             txtExpectedDateTo.E103Check(true);
-            txtExpectedDateTo.E106Check(true, txtExpectedDateFrom, txtExpectedDateTo);
+            txtExpectedDateTo.E104Check(true, txtExpectedDateFrom, txtExpectedDateTo);
 
             txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
             txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
 
+            sbSiiresaki.E101Check(true, "M_Siiresaki", null, null, null);
             sbStaff.E101Check(true, "staff", null, null, null);
         }
         private void GridViewBind()
