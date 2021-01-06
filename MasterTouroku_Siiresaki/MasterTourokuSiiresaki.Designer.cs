@@ -123,6 +123,7 @@
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.NextControlName = "txtSupplierCD";
             // 
             // lblSupplier
             // 

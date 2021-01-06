@@ -60,6 +60,7 @@
             this.colTokuisakiName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChangeDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKouritenRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCurrentDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gv_Kouriten)).BeginInit();
             this.SuspendLayout();
@@ -100,12 +101,14 @@
             this.txtTokuisaki_Kana.AllowMinus = false;
             this.txtTokuisaki_Kana.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTokuisaki_Kana.DecimalPlace = 0;
+            this.txtTokuisaki_Kana.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtTokuisaki_Kana.DepandOnMode = true;
             this.txtTokuisaki_Kana.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisaki_Kana.IntegerPart = 0;
             this.txtTokuisaki_Kana.IsDatatableOccurs = null;
             this.txtTokuisaki_Kana.IsErrorOccurs = false;
             this.txtTokuisaki_Kana.IsRequire = false;
+            this.txtTokuisaki_Kana.IsUseInitializedLayout = true;
             this.txtTokuisaki_Kana.Location = new System.Drawing.Point(576, 97);
             this.txtTokuisaki_Kana.MaxLength = 80;
             this.txtTokuisaki_Kana.MinimumSize = new System.Drawing.Size(100, 19);
@@ -123,12 +126,14 @@
             this.txtTokuisakiName.AllowMinus = false;
             this.txtTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTokuisakiName.DecimalPlace = 0;
+            this.txtTokuisakiName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtTokuisakiName.DepandOnMode = true;
             this.txtTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiName.IntegerPart = 0;
             this.txtTokuisakiName.IsDatatableOccurs = null;
             this.txtTokuisakiName.IsErrorOccurs = false;
             this.txtTokuisakiName.IsRequire = false;
+            this.txtTokuisakiName.IsUseInitializedLayout = true;
             this.txtTokuisakiName.Location = new System.Drawing.Point(576, 69);
             this.txtTokuisakiName.MaxLength = 80;
             this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -156,12 +161,14 @@
             this.txtTokuisakiCD2.AllowMinus = false;
             this.txtTokuisakiCD2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTokuisakiCD2.DecimalPlace = 0;
+            this.txtTokuisakiCD2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtTokuisakiCD2.DepandOnMode = true;
             this.txtTokuisakiCD2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiCD2.IntegerPart = 0;
             this.txtTokuisakiCD2.IsDatatableOccurs = null;
             this.txtTokuisakiCD2.IsErrorOccurs = false;
             this.txtTokuisakiCD2.IsRequire = false;
+            this.txtTokuisakiCD2.IsUseInitializedLayout = true;
             this.txtTokuisakiCD2.Location = new System.Drawing.Point(730, 42);
             this.txtTokuisakiCD2.MaxLength = 10;
             this.txtTokuisakiCD2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -179,12 +186,14 @@
             this.txtTokuisakiCD1.AllowMinus = false;
             this.txtTokuisakiCD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTokuisakiCD1.DecimalPlace = 0;
+            this.txtTokuisakiCD1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtTokuisakiCD1.DepandOnMode = true;
             this.txtTokuisakiCD1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiCD1.IntegerPart = 0;
             this.txtTokuisakiCD1.IsDatatableOccurs = null;
             this.txtTokuisakiCD1.IsErrorOccurs = false;
             this.txtTokuisakiCD1.IsRequire = false;
+            this.txtTokuisakiCD1.IsUseInitializedLayout = true;
             this.txtTokuisakiCD1.Location = new System.Drawing.Point(576, 41);
             this.txtTokuisakiCD1.MaxLength = 10;
             this.txtTokuisakiCD1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -271,7 +280,7 @@
             this.lbl_Date.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Date.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Date.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lbl_Date.Location = new System.Drawing.Point(1052, 10);
+            this.lbl_Date.Location = new System.Drawing.Point(1067, 10);
             this.lbl_Date.Name = "lbl_Date";
             this.lbl_Date.Size = new System.Drawing.Size(100, 19);
             this.lbl_Date.TabIndex = 15;
@@ -285,7 +294,7 @@
             this.lblDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDate.Location = new System.Drawing.Point(972, 10);
+            this.lblDate.Location = new System.Drawing.Point(987, 10);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(80, 19);
             this.lblDate.TabIndex = 14;
@@ -299,9 +308,9 @@
             this.btnKouriten_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnKouriten_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnKouriten_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnKouriten_F11.Location = new System.Drawing.Point(1012, 86);
+            this.btnKouriten_F11.Location = new System.Drawing.Point(1016, 90);
             this.btnKouriten_F11.Name = "btnKouriten_F11";
-            this.btnKouriten_F11.Size = new System.Drawing.Size(140, 32);
+            this.btnKouriten_F11.Size = new System.Drawing.Size(150, 25);
             this.btnKouriten_F11.TabIndex = 11;
             this.btnKouriten_F11.Text = "表示(F11)";
             this.btnKouriten_F11.UseVisualStyleBackColor = false;
@@ -312,12 +321,14 @@
             this.txtKanaName.AllowMinus = false;
             this.txtKanaName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKanaName.DecimalPlace = 0;
+            this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
             this.txtKanaName.IsRequire = false;
+            this.txtKanaName.IsUseInitializedLayout = true;
             this.txtKanaName.Location = new System.Drawing.Point(104, 97);
             this.txtKanaName.MaxLength = 80;
             this.txtKanaName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -335,12 +346,14 @@
             this.txtName.AllowMinus = false;
             this.txtName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtName.DecimalPlace = 0;
+            this.txtName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtName.DepandOnMode = true;
             this.txtName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtName.IntegerPart = 0;
             this.txtName.IsDatatableOccurs = null;
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = false;
+            this.txtName.IsUseInitializedLayout = true;
             this.txtName.Location = new System.Drawing.Point(104, 69);
             this.txtName.MaxLength = 80;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -368,12 +381,14 @@
             this.txtCD2.AllowMinus = false;
             this.txtCD2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCD2.DecimalPlace = 0;
+            this.txtCD2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtCD2.DepandOnMode = true;
             this.txtCD2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCD2.IntegerPart = 0;
             this.txtCD2.IsDatatableOccurs = null;
             this.txtCD2.IsErrorOccurs = false;
             this.txtCD2.IsRequire = false;
+            this.txtCD2.IsUseInitializedLayout = true;
             this.txtCD2.Location = new System.Drawing.Point(259, 41);
             this.txtCD2.MaxLength = 10;
             this.txtCD2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -391,12 +406,14 @@
             this.txtCD1.AllowMinus = false;
             this.txtCD1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCD1.DecimalPlace = 0;
+            this.txtCD1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtCD1.DepandOnMode = true;
             this.txtCD1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtCD1.IntegerPart = 0;
             this.txtCD1.IsDatatableOccurs = null;
             this.txtCD1.IsErrorOccurs = false;
             this.txtCD1.IsRequire = false;
+            this.txtCD1.IsUseInitializedLayout = true;
             this.txtCD1.Location = new System.Drawing.Point(104, 41);
             this.txtCD1.MaxLength = 10;
             this.txtCD1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -482,10 +499,11 @@
             this.colTokuisakiCD,
             this.colTokuisakiName,
             this.colChangeDate,
-            this.colKouritenRyakuName});
+            this.colKouritenRyakuName,
+            this.colCurrentDay});
             this.gv_Kouriten.Location = new System.Drawing.Point(24, 146);
             this.gv_Kouriten.Name = "gv_Kouriten";
-            this.gv_Kouriten.Size = new System.Drawing.Size(1014, 302);
+            this.gv_Kouriten.Size = new System.Drawing.Size(1027, 302);
             this.gv_Kouriten.TabIndex = 3;
             this.gv_Kouriten.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gv_Kouriten_CellMouseDoubleClick);
             // 
@@ -542,6 +560,13 @@
             this.colKouritenRyakuName.Name = "colKouritenRyakuName";
             this.colKouritenRyakuName.Visible = false;
             // 
+            // colCurrentDay
+            // 
+            this.colCurrentDay.DataPropertyName = "CurrentDay";
+            this.colCurrentDay.HeaderText = "CurrentDay";
+            this.colCurrentDay.Name = "colCurrentDay";
+            this.colCurrentDay.Visible = false;
+            // 
             // KouritenSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -594,5 +619,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChangeDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKouritenRyakuName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCurrentDay;
     }
 }

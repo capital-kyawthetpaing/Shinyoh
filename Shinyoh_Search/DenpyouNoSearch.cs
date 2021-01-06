@@ -39,6 +39,8 @@ namespace Shinyoh_Search
 
             gvDenpyouNo.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.TopRight;
             gvDenpyouNo.UseRowNo(true);
+            gvDenpyouNo.SetGridDesign();
+            gvDenpyouNo.SetReadOnlyColumn("*");
             BindDataGrid();
             cbDivision2.E106Check(true, cbDivision1, cbDivision2);
         }
