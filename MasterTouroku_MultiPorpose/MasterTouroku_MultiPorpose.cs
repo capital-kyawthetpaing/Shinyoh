@@ -252,25 +252,40 @@ namespace MasterTouroku_MultiPorpose
             {
                 if (!txtKEY.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    DataTable dt = new DataTable();
+                    GetData();
+                    dt = mbl.M_Multiporpose_SelectData(string.Empty, 2, txtID.Text, txtKEY.Text);
+
+                    if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() == "2")
                     {
+                        DisplayData(dt);
                         cf.EnablePanel(PanelDetail);
                         txtIDName.Focus();
                         cf.DisablePanel(PanelTitle);
                     }
-                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    else if (dt.Rows.Count > 0 && (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4"))
                     {
+                        DisplayData(dt);
+                        cf.DisablePanel(PanelDetail);
                         cf.DisablePanel(PanelTitle);
-                        Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
-                        BtnF9.Visible = false;
                     }
-                }
-                DataTable dt = new DataTable();
-                GetData();
-                dt = mbl.M_Multiporpose_SelectData(string.Empty,2,txtID.Text, txtKEY.Text);
-                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
-                {
-                   DisplayData(dt);
+                    else if (dt.Rows.Count == 0 && (cboMode.SelectedValue.ToString() != "1"))
+                    {
+                        bbl.ShowMessage("E133");
+                        txtKEY.Focus();
+                    }
+                    //if (cboMode.SelectedValue.ToString() == "2")//update
+                    //{
+                    //    cf.EnablePanel(PanelDetail);
+                    //    txtIDName.Focus();
+                    //    cf.DisablePanel(PanelTitle);
+                    //}
+                    //else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    //{
+                    //    cf.DisablePanel(PanelTitle);
+                    //    Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                    //    BtnF9.Visible = false;
+                    //}
                 }
             }
         }
@@ -287,10 +302,15 @@ namespace MasterTouroku_MultiPorpose
                 if (dt.Rows.Count > 0)
                 {
                     DisplayData(dt);
+                    cf.EnablePanel(PanelDetail);
+                    txtIDName.Focus();
+                    cf.DisablePanel(PanelTitle);
                 }
-                cf.EnablePanel(PanelDetail);
-                txtIDName.Focus();
-                cf.DisablePanel(PanelTitle);
+               else
+               {
+                    bbl.ShowMessage("E133");
+                    txtKEYCopy.Focus();
+                }
             }
         }
     }

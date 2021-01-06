@@ -206,7 +206,7 @@
             this.txtID1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID1.DecimalPlace = 0;
             this.txtID1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtID1.DepandOnMode = true;
+            this.txtID1.DepandOnMode = false;
             this.txtID1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtID1.IntegerPart = 0;
             this.txtID1.IsDatatableOccurs = null;
