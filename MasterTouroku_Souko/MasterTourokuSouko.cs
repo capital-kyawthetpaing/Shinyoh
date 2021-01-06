@@ -48,8 +48,8 @@ namespace MasterTouroku_Souko
             txtSouko.Focus();
             base_Entity = _GetBaseData();
 
-            txtSouko.ChangeDate = txtSoukoName;
-            txtCopySouko.ChangeDate = txtSoukoName;
+            //txtSouko.ChangeDate = txtSoukoName;
+            //txtCopySouko.ChangeDate = txtSoukoName;
         }
         private void ChangeMode(Mode mode)
         {
@@ -337,8 +337,8 @@ namespace MasterTouroku_Souko
                 }
                 else
                 {
-                    cf.Clear(PanelDetail);
-                    cf.Clear(PanelTitle);
+                    //cf.Clear(PanelDetail);
+                    //cf.Clear(PanelTitle);
                 }
 
             }
