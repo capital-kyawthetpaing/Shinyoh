@@ -54,7 +54,6 @@ namespace Shinyoh_Search {
             {
                 DataGridViewRow row = gvSouko.CurrentRow;
                 GetGridviewData(row);
-                selectRow();
             }
             base.FunctionProcess(tagID);
         }
