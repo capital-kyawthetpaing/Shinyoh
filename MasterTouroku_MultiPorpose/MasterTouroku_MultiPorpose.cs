@@ -48,6 +48,7 @@ namespace MasterTouroku_MultiPorpose
             txtID.Focus();
             txtKEY.ChangeDate = txtIDName;
             txtKEYCopy.ChangeDate = txtIDName;
+
         }
         public override void FunctionProcess(string tagID)
         {

@@ -43,28 +43,18 @@ namespace ShukkaSiziNyuuryoku
             dtClear = CreateTable_Details();
             dgvShukkasizi.CellEndEdit += DgvShukkasizi_CellEndEdit;
             dgvShukkasizi.CellContentClick += DgvShukkasizi_CellContentClick;
+            sbShippingNO.ChangeDate = txtShippingDate;
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkasizisou,colJuchuuNo,SoukoName");
            
-        }
-        private void DgvShukkasizi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 11)
-            {
-                if (Convert.ToBoolean(dgvShukkasizi.Rows[e.RowIndex].Cells["chk"].EditedFormattedValue))
-                {
-                    Temp_Save(e.RowIndex);
-                    dgvShukkasizi.MoveNextCell();
-                }
-            }
         }
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
         {
             ProgramID = "ShukkaSiziNyuuryoku";
             StartProgram();
             cboMode.Bind(false, multi_Entity);
-            ModeType(3);
+            ModeType(4);
             ChangeMode(Mode.New);
             be = _GetBaseData();
         }
@@ -88,9 +78,15 @@ namespace ShukkaSiziNyuuryoku
             }
             if (tagID == "6")
             {
-                ModeType(1);
-                lblTokuisakiName.Text = string.Empty;
-                lblKouritenName.Text = string.Empty;
+                if(cboMode.SelectedValue.ToString().Equals("1"))
+                {
+                    ModeType(1);
+                }
+                else
+                {
+                    ModeType(2);
+                }
+                ModeType(3);
                 dtResult.Clear();
                 dtTemp1.Clear();
             }
@@ -108,7 +104,7 @@ namespace ShukkaSiziNyuuryoku
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails))
+                if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails)&& Temp_Null())
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -132,32 +128,29 @@ namespace ShukkaSiziNyuuryoku
         }
         private void ChangeMode(Mode mode)
         {
+            ModeType(3);
             switch (mode)
             {               
                 case Mode.New:
                     ModeType(1);
-                    ModeType(6);
-                    ErrorCheck();
+                    Form_ErrorCheck();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     F9.Visible = false;
                     break;
                 case Mode.Update:
-                    ModeType(1);
-                    ErrorCheck();
-                    ModeType(4);
+                    ModeType(2);
+                    Form_ErrorCheck();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
-                    ModeType(1);
-                    ModeType(4);
+                    ModeType(2);
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
-                    ModeType(1);
-                    ModeType(4);
+                    ModeType(2);
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
@@ -204,6 +197,17 @@ namespace ShukkaSiziNyuuryoku
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             FunctionProcedure(8);
+        }
+        private void DgvShukkasizi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 11)
+            {
+                if (Convert.ToBoolean(dgvShukkasizi.Rows[e.RowIndex].Cells["chk"].EditedFormattedValue))
+                {
+                    Temp_Save(e.RowIndex);
+                    dgvShukkasizi.MoveNextCell();
+                }
+            }
         }
         private void dgvShukkasizi_Paint(object sender, PaintEventArgs e)
         {
@@ -260,13 +264,6 @@ namespace ShukkaSiziNyuuryoku
                 dgvShukkasizi.Rows[row].Cells["colPrice"].Value = Convert.ToInt32(dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString()) * Convert.ToInt32(dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString());
                 dgvShukkasizi.MoveNextCell();
             }
-           
-            //ShukkaSiziMeisaiTekiyou
-            if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colDetails"])
-            {
-                dgvShukkasizi.MoveNextCell();
-            }
-            
             //souko bind case
             if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["SoukoCD"])
             {
@@ -299,6 +296,12 @@ namespace ShukkaSiziNyuuryoku
                     dgvShukkasizi["SoukoName", row].Value = dtgv1.Rows[0]["SoukoName"].ToString();
                     dgvShukkasizi.MoveNextCell();
                 }
+            }
+
+            //ShukkaSiziMeisaiTekiyou
+            if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colDetails"])
+            {
+                dgvShukkasizi.MoveNextCell();
             }
 
             //data temp save
@@ -613,9 +616,11 @@ namespace ShukkaSiziNyuuryoku
             {
                 if (!sbShippingNO.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
+                    if (cboMode.SelectedValue.ToString() == "2")
                     {
-                        ModeType(5);
+                        cf.DisablePanel(PanelTitle);
+                        cf.EnablePanel(panelDetails);
+                        txtShippingDate.Focus();
                     }
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
@@ -757,31 +762,52 @@ namespace ShukkaSiziNyuuryoku
 
         }
         //Error_Check
-        private void ErrorCheck()
+        private void Form_ErrorCheck()
         {
-            sbShippingNO.E102Check(true);
-            //出荷予定日
-            txtShippingDate.E102Check(true);
-            txtShippingDate.E103Check(true);
-            //得意先
-            sbTokuisaki.E102Check(true);
-            sbTokuisaki.E101Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate, null);
-            sbTokuisaki.E267Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
-            sbTokuisaki.E227Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
-            //小売店
-            sbKouriten.E101Check(true, "M_Kouriten", sbKouriten, txtShippingDate, null);
-            //担当スタッフCD
-            sbStaffCD.E102Check(true);
-            sbStaffCD.E101Check(true, "M_Staff", sbStaffCD, txtShippingDate, null);
-            sbStaffCD.E135Check(true, "M_Staff", sbStaffCD, txtShippingDate);
-            //伝票日付
-            txtSlipDate.E102Check(true);
-            txtSlipDate.E103Check(true);
-            //受注番号
-            JuchuuNo_ErrorCheck();
-            //false case
-            sbShippingNO.E115Check(false, "ShukkaSiziNyuuryoku", sbShippingNO);
-            sbShippingNO.E160Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null);
+            if (cboMode.SelectedValue.ToString().Equals("1"))
+            {
+                //出荷予定日
+                txtShippingDate.E102Check(true);
+                txtShippingDate.E103Check(true);
+                //得意先
+                sbTokuisaki.E102Check(true);
+                sbTokuisaki.E101Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate, null);
+                sbTokuisaki.E267Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
+                sbTokuisaki.E227Check(true, "M_Tokuisaki", sbTokuisaki, txtShippingDate);
+                //小売店
+                sbKouriten.E101Check(true, "M_Kouriten", sbKouriten, txtShippingDate, null);
+                //担当スタッフCD
+                sbStaffCD.E102Check(true);
+                sbStaffCD.E101Check(true, "M_Staff", sbStaffCD, txtShippingDate, null);
+                sbStaffCD.E135Check(true, "M_Staff", sbStaffCD, txtShippingDate);
+                //伝票日付
+                txtSlipDate.E102Check(true);
+                txtSlipDate.E103Check(true);
+                //受注番号
+                JuchuuNo_ErrorCheck();
+                //false case
+                sbShippingNO.E115Check(false, "ShukkaSiziNyuuryoku", sbShippingNO);
+                sbShippingNO.E160Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null);
+            }
+            else
+            {
+                sbShippingNO.E102Check(true);
+                //sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
+                sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
+                sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null);
+            }
+            txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
+            txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
+
+        }
+        private bool Temp_Null()
+        {
+            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp1.Rows.Count == 0)
+            {
+                bbl.ShowMessage("E274");
+                return false;
+            }
+            return true;
         }
         private void JuchuuNo_ErrorCheck()
         {
@@ -902,22 +928,37 @@ namespace ShukkaSiziNyuuryoku
                 case 1://New_Mode
                     cf.Clear(PanelTitle);
                     cf.Clear(panelDetails);
+                    cf.DisablePanel(PanelTitle);
+                    cf.EnablePanel(panelDetails);
+                    txtShippingDate.Focus();
+                    rdoNeed.Checked = true;
+                    tdDate = System.DateTime.Now.ToString("yyyy/MM/dd");
+                    txtShippingDate.Text = tdDate;
+                    txtSlipDate.Text = tdDate;
+                    StaffEntity staffEntity = new StaffEntity
+                    {
+                        StaffCD = OperatorCD
+                    };
+                    staffEntity = staffBL.GetStaffEntity(staffEntity);
+                    sbStaffCD.Text = OperatorCD;
+                    lblStaffName.Text = staffEntity.StaffName;
+                    break;
+
+                case 2://F3
+                    cf.Clear(PanelTitle);
+                    cf.Clear(panelDetails);
                     cf.EnablePanel(PanelTitle);
                     cf.DisablePanel(panelDetails);
                     sbShippingNO.Focus();
-                    rdoNeed.Checked = true;
+                    break;
+
+                case 3:
                     lblTokuisakiName.Text = string.Empty;
                     lblKouritenName.Text = string.Empty;
                     lblStaffName.Text = string.Empty;
                     break;
-                case 2://Details_Mode
-                    cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
-                    cf.DisablePanel(PanelTitle);
-                    cf.EnablePanel(panelDetails);
-                    txtShippingDate.Focus();
-                    break;
-                case 3:  //start_Mode
+
+                case 4:  //start_Mode
                     SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
                     SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
                     SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
@@ -931,9 +972,6 @@ namespace ShukkaSiziNyuuryoku
                     SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
                     SetButton(ButtonType.BType.Empty, F7, "", false);
 
-                    txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
-                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
-
                     lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
                     lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
                     lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -944,35 +982,7 @@ namespace ShukkaSiziNyuuryoku
                     sbTokuisaki.ChangeDate = txtShippingDate;
                     sbKouriten.ChangeDate = txtShippingDate;
                     sbStaffCD.ChangeDate = txtShippingDate;
-
-                    lblTokuisakiName.Text = string.Empty;
-                    lblKouritenName.Text = string.Empty;
-                    lblStaffName.Text = string.Empty;
-                    break;
-                case 4:
-                    sbShippingNO.Focus();
-                    sbShippingNO.E102Check(true);
-                    //sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
-                    sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
-                    sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null);
-                    break;
-                case 5:
-                    cf.DisablePanel(PanelTitle);
-                    cf.EnablePanel(panelDetails);
-                    txtShippingDate.Focus();
-                    break;
-                case 6:
-                    tdDate = System.DateTime.Now.ToString("yyyy/MM/dd");
-                    txtShippingDate.Text = tdDate;
-                    txtSlipDate.Text = tdDate;
-                    StaffEntity staffEntity = new StaffEntity
-                    {
-                        StaffCD = OperatorCD
-                    };
-                    staffEntity = staffBL.GetStaffEntity(staffEntity);
-                    sbStaffCD.Text = OperatorCD;
-                    lblStaffName.Text = staffEntity.StaffName;
-                    break;
+                    break;                
             }
         }
 
@@ -986,17 +996,39 @@ namespace ShukkaSiziNyuuryoku
                 mode = "New";
                 DoInsert(mode, obj.Item1, obj.Item2);
             }
+            else if (cboMode.SelectedValue.Equals("2"))
+            {
+                mode = "Update";
+                DoUpdate(mode, obj.Item1, obj.Item2);
+            }
         }
+
+        private void DoUpdate(string mode, string str_main, string str_detail)
+        {
+            sksz_bl = new ShukkasiziNyuuryokuBL();
+            sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_main, str_detail);
+        }
+
         private (string, string) GetInsert()
         {
             TokuisakiEntity t_obj = td.Access_Tokuisaki_obj;
             KouritenEntity k_obj = kd.Access_Kouriten_obj;
 
             dtResult = CreateTable_Header();
+
+           
             DataRow dr = dtResult.NewRow();
             sksz_bl = new ShukkasiziNyuuryokuBL();
-            DataTable dt = sksz_bl.GetShippingNo("12", txtShippingDate.Text, "0");
-            dr["ShukkaSiziNO"] = dt.Rows[0]["Column1"];
+            if (cboMode.SelectedValue.ToString() == "1")
+            {
+                DataTable dt = sksz_bl.GetShippingNo("12", txtShippingDate.Text, "0");
+                dr["ShukkaSiziNO"] = dt.Rows[0]["Column1"];
+            }
+            else
+            {
+                dr["ShukkaSiziNO"] = sbShippingNO.Text;
+            }
+            
             dr["StaffCD"] = sbStaffCD.Text;
             dr["ShukkaYoteiDate"] = txtShippingDate.Text;
             dr["DenpyouDate"] = txtSlipDate.Text;
@@ -1029,12 +1061,18 @@ namespace ShukkaSiziNyuuryoku
             dr["KouritenTel22"] = k_obj.Tel22;
             dr["KouritenTel23"] = k_obj.Tel23;
 
-            dr["ShukkaSiziDenpyouTekiyou"] = txtSlip_Description.Text;
+            dr["ShukkaSiziDenpyouTekiyou"] = string.IsNullOrEmpty(txtSlip_Description.Text)?null:txtSlip_Description.Text;
             dr["ShukkaSizishoHuyouKBN"] =rdoNO.Checked?"1":"0";
             dr["OperatorCD"] = be.OperatorCD;
             dr["PC"] = be.PC;
             dr["ProgramID"] = be.ProgramID;
-            dtResult.Rows.Add(dr);
+
+            DataRow dr1 = dtResult.NewRow();
+            for (int i = 0; i < dtResult.Columns.Count; i++)
+            {
+                dr1[i] = string.IsNullOrEmpty(dr[i].ToString().Trim()) ? null : dr[i].ToString();
+            }
+            dtResult.Rows.Add(dr1);
             string Header_XML = cf.DataTableToXml(dtResult);
             string Detail_XML = cf.DataTableToXml(dtTemp1);
 
@@ -1043,7 +1081,7 @@ namespace ShukkaSiziNyuuryoku
         private void DoInsert(string mode, string str_main, string str_detail)
         {
             sksz_bl = new ShukkasiziNyuuryokuBL();
-            sksz_bl.ShukkasiziNyuuryoku_CUD(mode, str_main, str_detail);
+            sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_main, str_detail);
         }
        
     }

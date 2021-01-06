@@ -118,11 +118,19 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.multiporpose:
                         MultiPorposeSearch msearch = new MultiPorposeSearch();
+                        if(this.Name.Contains("Brand"))
+                            msearch.Access_Type = "103";
+                        else if (this.Name.Contains("Color"))
+                            msearch.Access_Type = "104";
+                        else if (this.Name.Contains("Size"))
+                            msearch.Access_Type = "105";
                         msearch.ShowDialog();
                         if(this.Name== "txtID" || this.Name=="txtCopyID")
                             CD = msearch.Id;
                         else
                             CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Char1;
                         break;
                     case Entity.SearchType.ScType.Kouriten:
                         KouritenSearch kSearch = new KouritenSearch();

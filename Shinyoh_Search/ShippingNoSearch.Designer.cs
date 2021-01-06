@@ -29,7 +29,8 @@ namespace Shinyoh_Search
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtDate = new Shinyoh_Controls.SLabel();
             this.lblDate = new Shinyoh_Controls.SLabel();
@@ -57,13 +58,13 @@ namespace Shinyoh_Search
             this.lblCustomer = new Shinyoh_Controls.SLabel();
             this.lblShippingDate = new Shinyoh_Controls.SLabel();
             this.gvShippingNo = new Shinyoh_Controls.SGridView();
+            this.txtTokuisakiCD = new Shinyoh_Search.SearchBox();
+            this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.colShippingNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShippingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colOrderNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtTokuisakiCD = new Shinyoh_Search.SearchBox();
-            this.txtStaffCD = new Shinyoh_Search.SearchBox();
+            this.colJuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvShippingNo)).BeginInit();
             this.SuspendLayout();
@@ -215,6 +216,7 @@ namespace Shinyoh_Search
             this.txtProductTo.IsDatatableOccurs = null;
             this.txtProductTo.IsErrorOccurs = false;
             this.txtProductTo.IsRequire = false;
+            this.txtProductTo.IsUseInitializedLayout = true;
             this.txtProductTo.Location = new System.Drawing.Point(806, 60);
             this.txtProductTo.MaxLength = 20;
             this.txtProductTo.MinimumSize = new System.Drawing.Size(100, 19);
@@ -239,6 +241,7 @@ namespace Shinyoh_Search
             this.txtProductFrom.IsDatatableOccurs = null;
             this.txtProductFrom.IsErrorOccurs = false;
             this.txtProductFrom.IsRequire = false;
+            this.txtProductFrom.IsUseInitializedLayout = true;
             this.txtProductFrom.Location = new System.Drawing.Point(613, 60);
             this.txtProductFrom.MaxLength = 20;
             this.txtProductFrom.MinimumSize = new System.Drawing.Size(100, 19);
@@ -263,6 +266,7 @@ namespace Shinyoh_Search
             this.txtShippingNoTo.IsDatatableOccurs = null;
             this.txtShippingNoTo.IsErrorOccurs = false;
             this.txtShippingNoTo.IsRequire = false;
+            this.txtShippingNoTo.IsUseInitializedLayout = true;
             this.txtShippingNoTo.Location = new System.Drawing.Point(745, 34);
             this.txtShippingNoTo.MaxLength = 12;
             this.txtShippingNoTo.MinimumSize = new System.Drawing.Size(100, 19);
@@ -287,6 +291,7 @@ namespace Shinyoh_Search
             this.txtShippingNoFrom.IsDatatableOccurs = null;
             this.txtShippingNoFrom.IsErrorOccurs = false;
             this.txtShippingNoFrom.IsRequire = false;
+            this.txtShippingNoFrom.IsUseInitializedLayout = true;
             this.txtShippingNoFrom.Location = new System.Drawing.Point(613, 33);
             this.txtShippingNoFrom.MaxLength = 12;
             this.txtShippingNoFrom.MinimumSize = new System.Drawing.Size(100, 19);
@@ -311,6 +316,7 @@ namespace Shinyoh_Search
             this.txtSlipDateTo.IsDatatableOccurs = null;
             this.txtSlipDateTo.IsErrorOccurs = false;
             this.txtSlipDateTo.IsRequire = false;
+            this.txtSlipDateTo.IsUseInitializedLayout = true;
             this.txtSlipDateTo.Location = new System.Drawing.Point(744, 7);
             this.txtSlipDateTo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSlipDateTo.MoveNext = true;
@@ -334,6 +340,7 @@ namespace Shinyoh_Search
             this.txtSlipDateFrom.IsDatatableOccurs = null;
             this.txtSlipDateFrom.IsErrorOccurs = false;
             this.txtSlipDateFrom.IsRequire = false;
+            this.txtSlipDateFrom.IsUseInitializedLayout = true;
             this.txtSlipDateFrom.Location = new System.Drawing.Point(613, 7);
             this.txtSlipDateFrom.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSlipDateFrom.MoveNext = true;
@@ -357,6 +364,7 @@ namespace Shinyoh_Search
             this.txtProductName.IsDatatableOccurs = null;
             this.txtProductName.IsErrorOccurs = false;
             this.txtProductName.IsRequire = false;
+            this.txtProductName.IsUseInitializedLayout = true;
             this.txtProductName.Location = new System.Drawing.Point(113, 87);
             this.txtProductName.MaxLength = 80;
             this.txtProductName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -381,6 +389,7 @@ namespace Shinyoh_Search
             this.txtShippingDateTo.IsDatatableOccurs = null;
             this.txtShippingDateTo.IsErrorOccurs = false;
             this.txtShippingDateTo.IsRequire = false;
+            this.txtShippingDateTo.IsUseInitializedLayout = true;
             this.txtShippingDateTo.Location = new System.Drawing.Point(252, 7);
             this.txtShippingDateTo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShippingDateTo.MoveNext = true;
@@ -404,6 +413,7 @@ namespace Shinyoh_Search
             this.txtShippingDateFrom.IsDatatableOccurs = null;
             this.txtShippingDateFrom.IsErrorOccurs = false;
             this.txtShippingDateFrom.IsRequire = false;
+            this.txtShippingDateFrom.IsUseInitializedLayout = true;
             this.txtShippingDateFrom.Location = new System.Drawing.Point(113, 7);
             this.txtShippingDateFrom.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShippingDateFrom.MoveNext = true;
@@ -509,58 +519,26 @@ namespace Shinyoh_Search
             // gvShippingNo
             // 
             this.gvShippingNo.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvShippingNo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvShippingNo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvShippingNo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShippingNO,
             this.colShippingDate,
             this.colCustomerCD,
             this.colCustomerName,
-            this.colOrderNO});
+            this.colJuchuuNO});
             this.gvShippingNo.Location = new System.Drawing.Point(35, 140);
             this.gvShippingNo.Name = "gvShippingNo";
             this.gvShippingNo.Size = new System.Drawing.Size(716, 302);
             this.gvShippingNo.TabIndex = 1;
             this.gvShippingNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvShippingNo_CellMouseDoubleClick);
-            // 
-            // colShippingNO
-            // 
-            this.colShippingNO.DataPropertyName = "ShukkaSiziNO";
-            this.colShippingNO.HeaderText = "出荷指示番号";
-            this.colShippingNO.Name = "colShippingNO";
-            this.colShippingNO.ReadOnly = true;
-            this.colShippingNO.Width = 120;
-            // 
-            // colShippingDate
-            // 
-            this.colShippingDate.DataPropertyName = "ShukkaYoteiDate";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colShippingDate.DefaultCellStyle = dataGridViewCellStyle7;
-            this.colShippingDate.HeaderText = "出荷予定日";
-            this.colShippingDate.Name = "colShippingDate";
-            this.colShippingDate.ReadOnly = true;
-            // 
-            // colCustomerCD
-            // 
-            this.colCustomerCD.DataPropertyName = "TokuisakiCD";
-            this.colCustomerCD.HeaderText = "得意先";
-            this.colCustomerCD.Name = "colCustomerCD";
-            this.colCustomerCD.ReadOnly = true;
-            // 
-            // colCustomerName
-            // 
-            this.colCustomerName.DataPropertyName = "TokuisakiName";
-            this.colCustomerName.HeaderText = "得意先名";
-            this.colCustomerName.Name = "colCustomerName";
-            this.colCustomerName.ReadOnly = true;
-            this.colCustomerName.Width = 150;
-            // 
-            // colOrderNO
-            // 
-            this.colOrderNO.DataPropertyName = "JuchuuNO";
-            this.colOrderNO.HeaderText = "受注番号";
-            this.colOrderNO.Name = "colOrderNO";
-            this.colOrderNO.ReadOnly = true;
-            this.colOrderNO.Width = 213;
             // 
             // txtTokuisakiCD
             // 
@@ -576,6 +554,7 @@ namespace Shinyoh_Search
             this.txtTokuisakiCD.IsDatatableOccurs = null;
             this.txtTokuisakiCD.IsErrorOccurs = false;
             this.txtTokuisakiCD.IsRequire = false;
+            this.txtTokuisakiCD.IsUseInitializedLayout = true;
             this.txtTokuisakiCD.lblName = null;
             this.txtTokuisakiCD.Location = new System.Drawing.Point(113, 33);
             this.txtTokuisakiCD.MaxLength = 10;
@@ -604,6 +583,7 @@ namespace Shinyoh_Search
             this.txtStaffCD.IsDatatableOccurs = null;
             this.txtStaffCD.IsErrorOccurs = false;
             this.txtStaffCD.IsRequire = false;
+            this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
             this.txtStaffCD.Location = new System.Drawing.Point(113, 60);
             this.txtStaffCD.MaxLength = 10;
@@ -617,6 +597,46 @@ namespace Shinyoh_Search
             this.txtStaffCD.TabIndex = 22;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
+            // 
+            // colShippingNO
+            // 
+            this.colShippingNO.DataPropertyName = "ShukkaSiziNO";
+            this.colShippingNO.HeaderText = "出荷指示番号";
+            this.colShippingNO.Name = "colShippingNO";
+            this.colShippingNO.ReadOnly = true;
+            this.colShippingNO.Width = 120;
+            // 
+            // colShippingDate
+            // 
+            this.colShippingDate.DataPropertyName = "ShukkaYoteiDate";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colShippingDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colShippingDate.HeaderText = "出荷予定日";
+            this.colShippingDate.Name = "colShippingDate";
+            this.colShippingDate.ReadOnly = true;
+            // 
+            // colCustomerCD
+            // 
+            this.colCustomerCD.DataPropertyName = "TokuisakiCD";
+            this.colCustomerCD.HeaderText = "得意先";
+            this.colCustomerCD.Name = "colCustomerCD";
+            this.colCustomerCD.ReadOnly = true;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.DataPropertyName = "TokuisakiName";
+            this.colCustomerName.HeaderText = "得意先名";
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.ReadOnly = true;
+            this.colCustomerName.Width = 150;
+            // 
+            // colJuchuuNO
+            // 
+            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
+            this.colJuchuuNO.HeaderText = "受注番号";
+            this.colJuchuuNO.Name = "colJuchuuNO";
+            this.colJuchuuNO.ReadOnly = true;
+            this.colJuchuuNO.Width = 213;
             // 
             // ShippingNoSearch
             // 
@@ -672,6 +692,6 @@ namespace Shinyoh_Search
         private System.Windows.Forms.DataGridViewTextBoxColumn colShippingDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colOrderNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuNO;
     }
 }

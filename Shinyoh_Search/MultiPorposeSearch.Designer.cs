@@ -295,7 +295,7 @@
             // 
             // colName
             // 
-            this.colName.DataPropertyName = "IDName";
+            this.colName.DataPropertyName = "Char1";
             this.colName.HeaderText = "ID名";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;

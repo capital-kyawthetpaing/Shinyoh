@@ -102,14 +102,14 @@ namespace BL
             return dt;
         }
 
-        public string ShukkasiziNyuuryoku_CUD(string mode, string xml_Main, string xml_detail)
+        public string ShukkasiziNyuuryoku_IUD(string mode, string xml_Main, string xml_detail)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = mode };
+            parameters[0] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = mode.ToString() };
             parameters[1] = new SqlParameter("@XML_Header", SqlDbType.Xml) { Value = xml_Main };
             parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
-            return ckmdl.InsertUpdateDeleteData("ShukkasiziNyuuryoku_Insert", GetConnectionString(), parameters);
+            return ckmdl.InsertUpdateDeleteData("ShukkasiziNyuuryoku_IUD", GetConnectionString(), parameters);
         }
         public DataTable GetShippingNo(string SerialNO, string ShippingDate, string SEQNO)
         {
