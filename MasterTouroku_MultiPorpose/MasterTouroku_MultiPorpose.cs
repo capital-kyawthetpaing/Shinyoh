@@ -70,11 +70,13 @@ namespace MasterTouroku_MultiPorpose
             if(tagID=="6")
             {
                 Mode_Setting();
+                if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
+                {
+                    Disable_UDI_Mode();
+                }
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails))
-                {
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -91,7 +93,6 @@ namespace MasterTouroku_MultiPorpose
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
-                }
             }
             base.FunctionProcess(tagID);
         }
@@ -101,15 +102,17 @@ namespace MasterTouroku_MultiPorpose
             switch (mode)
             {
                 case Mode.New:
+                    txtID.E102Check(true);
+                    txtKEY.E102Check(true);
                     txtIDName.E102Check(true);
                     txtDate1.E103Check(true);
                     txtDate2.E103Check(true);
                     txtDate3.E103Check(true);
                     txtKEY.E132Check(false, "M_Multiporpose", txtID, txtKEY, null);
                     cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
+                    cf.Clear(PanelDetail);
                     cf.EnablePanel(PanelTitle);
-                    cf.DisablePanel(panelDetails);
+                    cf.DisablePanel(PanelDetail);
                     txtID.Enabled = true;
                     txtCopyID.Enabled = true;
                     txtKEYCopy.NextControlName = txtIDName.Name;
@@ -117,7 +120,6 @@ namespace MasterTouroku_MultiPorpose
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
-                    F9.Visible = false;
                     break;
 
                 case Mode.Update:
@@ -128,6 +130,7 @@ namespace MasterTouroku_MultiPorpose
                     txtDate2.E103Check(true);
                     txtDate3.E103Check(true);
                     Mode_Setting();
+                    Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
@@ -136,6 +139,7 @@ namespace MasterTouroku_MultiPorpose
                     txtKEY.E102Check(true);
                     txtKEY.E132Check(false, "M_Multiporpose", txtID, txtKEY, null);
                     Mode_Setting();
+                    Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
 
@@ -145,6 +149,7 @@ namespace MasterTouroku_MultiPorpose
                     txtKEY.E102Check(true);
                     txtIDName.E102Check(true);
                     Mode_Setting();
+                    Disable_UDI_Mode();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
@@ -153,13 +158,15 @@ namespace MasterTouroku_MultiPorpose
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(panelDetails);
+            cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(panelDetails);
+            cf.DisablePanel(PanelDetail);
+            txtID.Focus();
+        }
+        public void Disable_UDI_Mode()
+        {
             txtCopyID.Enabled = false;
             txtKEYCopy.Enabled = false;
-            txtID.Enabled = true;
-            txtID.Focus();
         }
         private void DisplayData(DataTable dt)
         {
@@ -202,39 +209,15 @@ namespace MasterTouroku_MultiPorpose
         }
         private void DoInsert(multipurposeEntity mentity)
         {
-            if(bbl.ShowMessage("Q101")==DialogResult.Yes)
-            {
-                mbl.M_Multiporpose_Insert_Update(mentity);
-                mbl.ShowMessage("I101");
-            }
-            else
-            {
-                PreviousCtrl.Focus();
-            }
+            mbl.M_Multiporpose_Insert_Update(mentity);
         }
         private void DoUpdate(multipurposeEntity mentity)
         {
-            if (bbl.ShowMessage("Q101") == DialogResult.Yes)
-            {
-                mbl.M_Multiporpose_Insert_Update(mentity);
-                mbl.ShowMessage("I101");
-            }
-            else
-            {
-                PreviousCtrl.Focus();
-            }
+           mbl.M_Multiporpose_Insert_Update(mentity);
         }
         private void DoDelete(multipurposeEntity mentity)
         {
-            if (bbl.ShowMessage("Q102") == DialogResult.Yes)
-            {
-                mbl.M_Multiporpose_Insert_Update(mentity);
-                mbl.ShowMessage("I102");
-            }
-            else
-            {
-                PreviousCtrl.Focus();
-            }
+           mbl.M_Multiporpose_Insert_Update(mentity);
         }
         private multipurposeEntity GetData()
         {
@@ -270,13 +253,15 @@ namespace MasterTouroku_MultiPorpose
                 {
                     if (cboMode.SelectedValue.ToString() == "2")//update
                     {
-                        cf.EnablePanel(panelDetails);
+                        cf.EnablePanel(PanelDetail);
                         txtIDName.Focus();
                         cf.DisablePanel(PanelTitle);
                     }
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
                         cf.DisablePanel(PanelTitle);
+                        Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                        BtnF9.Visible = false;
                     }
                 }
                 DataTable dt = new DataTable();
@@ -284,7 +269,7 @@ namespace MasterTouroku_MultiPorpose
                 dt = mbl.M_Multiporpose_SelectData(string.Empty,2,txtID.Text, txtKEY.Text);
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
-                    DisplayData(dt);
+                   DisplayData(dt);
                 }
             }
         }
@@ -302,8 +287,9 @@ namespace MasterTouroku_MultiPorpose
                 {
                     DisplayData(dt);
                 }
-                cf.EnablePanel(panelDetails);
+                cf.EnablePanel(PanelDetail);
                 txtIDName.Focus();
+                cf.DisablePanel(PanelTitle);
             }
         }
     }

@@ -69,15 +69,16 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("M_Multiporpose_Insert_Update", GetConnectionString(), multipurpose_entity.Sqlprms);
             return dt;
         }
-        public DataTable M_Multiporpose_Search(multipurposeEntity multipurpose_entity)
+        public DataTable M_Multiporpose_Search(multipurposeEntity multipurpose_entity,string Type)
         {
             ckmdl = new CKMDL();
-            multipurpose_entity.Sqlprms = new SqlParameter[5];
+            multipurpose_entity.Sqlprms = new SqlParameter[6];
             multipurpose_entity.Sqlprms[0] = new SqlParameter("@ID1", DbType.Int32) { Value = multipurpose_entity.ID1 };
             multipurpose_entity.Sqlprms[1] = new SqlParameter("@ID2", DbType.Int32) { Value = multipurpose_entity.ID2 };
             multipurpose_entity.Sqlprms[2] = new SqlParameter("@Key1", DbType.Int32) { Value = multipurpose_entity.Key1 };
             multipurpose_entity.Sqlprms[3] = new SqlParameter("@Key2", DbType.Int32) { Value = multipurpose_entity.Key2 };
             multipurpose_entity.Sqlprms[4] = new SqlParameter("@IDName", DbType.Int32) { Value = multipurpose_entity.IdName };
+            multipurpose_entity.Sqlprms[5] = new SqlParameter("@Type", DbType.Int32) { Value=Type };
             DataTable dt = ckmdl.SelectDatatable("M_Multiporpose_Search", GetConnectionString(), multipurpose_entity.Sqlprms);
             return dt;
         }

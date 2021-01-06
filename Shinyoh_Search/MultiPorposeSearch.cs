@@ -35,6 +35,7 @@ namespace Shinyoh_Search
             txtID1.Focus();
             txtID2.E106Check(true, txtID1, txtID2);
             txtKey2.E106Check(true, txtKey1, txtKey2);
+            gvMultiporpose.Select();
         }
         public override void FunctionProcess(string tagID)
         {
@@ -51,6 +52,7 @@ namespace Shinyoh_Search
         }
         private void GridViewBind()
         {
+            string Type = string.Empty;
             multipurposeBL bl = new multipurposeBL();
             multipurposeEntity mentity = new multipurposeEntity();
             mentity.ID1 = txtID1.Text;
@@ -58,7 +60,7 @@ namespace Shinyoh_Search
             mentity.Key1 = txtKey1.Text;
             mentity.Key2 = txtKey2.Text;
             mentity.IdName = txtIDName.Text;
-            DataTable dt = bl.M_Multiporpose_Search(mentity);
+            DataTable dt = bl.M_Multiporpose_Search(mentity,Type);
             gvMultiporpose.DataSource = dt;
         }
         private void GetGridviewData(DataGridViewRow gvrow)
