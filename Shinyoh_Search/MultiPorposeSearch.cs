@@ -30,9 +30,6 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-            gvMultiporpose.SetGridDesign();
-            gvMultiporpose.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            gvMultiporpose.SetReadOnlyColumn("colID,colKey,colName");
             gvMultiporpose.UseRowNo(true);
             GridViewBind();
             txtID1.Focus();
@@ -49,7 +46,6 @@ namespace Shinyoh_Search
             {
                 DataGridViewRow row = gvMultiporpose.CurrentRow;
                 GetGridviewData(row);
-                //GetGridviewData();
             }
             base.FunctionProcess(tagID);
         }
@@ -87,7 +83,6 @@ namespace Shinyoh_Search
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            //FunctionProcess(btnDisplay.Tag.ToString());
             GridViewBind();
         }
     }
