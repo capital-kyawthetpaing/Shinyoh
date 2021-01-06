@@ -24,7 +24,7 @@ namespace Shinyoh_Search
 
         public DenpyouNoSearch()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         private void DenpyouNoSearch_Load(object sender, EventArgs e)
@@ -48,7 +48,6 @@ namespace Shinyoh_Search
         private void btnSearch_Click(object sender, EventArgs e)
         {
             FunctionProcess(btnSearch.Tag.ToString());
-            BindDataGrid();
         }
 
         public override void FunctionProcess(string tagID)
