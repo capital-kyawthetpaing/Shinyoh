@@ -268,6 +268,8 @@ namespace MasterTouroku_MultiPorpose
                         DisplayData(dt);
                         cf.DisablePanel(PanelDetail);
                         cf.DisablePanel(PanelTitle);
+                        Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                        BtnF9.Visible = false;
                     }
                     else if (dt.Rows.Count == 0 && (cboMode.SelectedValue.ToString() != "1"))
                     {
