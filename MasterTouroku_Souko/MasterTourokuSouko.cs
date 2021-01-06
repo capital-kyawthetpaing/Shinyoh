@@ -163,8 +163,8 @@ namespace MasterTouroku_Souko
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
-                {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                //{
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -181,7 +181,7 @@ namespace MasterTouroku_Souko
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
-                }
+                //}
             }
             base.FunctionProcess(tagID);
         }
