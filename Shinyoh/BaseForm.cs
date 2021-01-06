@@ -214,13 +214,16 @@ namespace Shinyoh
                     case ButtonType.BType.Save:
                         if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
                         {
-                            if (bbl.ShowMessage("Q101") != DialogResult.Yes)
+                            if (ErrorCheck(PanelTitle) && ErrorCheck(this.Controls.Find("PanelDetail",true)[0] as Panel))
                             {
-                                if (PreviousCtrl != null)
-                                    PreviousCtrl.Focus();
-                            }
-                            else
-                                FunctionProcess(btn.Tag.ToString());
+                                if (bbl.ShowMessage("Q101") != DialogResult.Yes)
+                                {
+                                    if (PreviousCtrl != null)
+                                        PreviousCtrl.Focus();
+                                }
+                                else
+                                    FunctionProcess(btn.Tag.ToString());
+                            }                           
                         }
                         else if (cboMode.SelectedValue.ToString() == "3")
                         {

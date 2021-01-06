@@ -31,6 +31,11 @@ namespace Shinyoh_Search
             if (e.KeyCode == Keys.Enter)
             {              
                 base.OnKeyDown(e);
+                if (string.IsNullOrWhiteSpace(this.Text))
+                {
+                    if(lblName != null)
+                        lblName.Text = string.Empty;
+                }
                 DataSelect();
             }
         }        
@@ -83,7 +88,7 @@ namespace Shinyoh_Search
                         SoukoSearch soukoSearch = new SoukoSearch();
                         soukoSearch.ShowDialog();
                         CD = soukoSearch.soukoCD;
-                        CDate = soukoSearch.soukoName;
+                        //CDate = soukoSearch.soukoName;
                         break;
                     case Entity.SearchType.ScType.Staff:
                         StaffSearch staffSearch = new StaffSearch();
@@ -118,11 +123,27 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.multiporpose:
                         MultiPorposeSearch msearch = new MultiPorposeSearch();
+                        if (this.Name.Contains("Tani"))
+                            msearch.Access_Type = "102";
+                        else if (this.Name.Contains("Brand"))
+                            msearch.Access_Type = "103";
+                        else if (this.Name.Contains("Color"))
+                            msearch.Access_Type = "104";
+                        else if (this.Name.Contains("Size"))
+                            msearch.Access_Type = "105";
+                        else if (this.Name.Contains("TaxRate"))
+                            msearch.Access_Type = "221";
+                        else if (this.Name.Contains("Evaluation"))
+                            msearch.Access_Type = "106";
+                        else if (this.Name.Contains("Management"))
+                            msearch.Access_Type = "107";
                         msearch.ShowDialog();
                         if(this.Name== "txtID" || this.Name=="txtCopyID")
                             CD = msearch.Id;
                         else
                             CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Char1;
                         break;
                     case Entity.SearchType.ScType.Kouriten:
                         KouritenSearch kSearch = new KouritenSearch();
@@ -162,56 +183,82 @@ namespace Shinyoh_Search
                 }
 
                 this.Text = CD;
-                //for combo box
-                if (Combo != null)
+
+                if(!string.IsNullOrWhiteSpace(CD))
                 {
-                    ChangeDate.Text = CDate;
-                    SendKeys.Send("{ENTER}");
-                }
-                //for textbox 
-                if (lblName != null)
-                {
-                    lblName.Text = name;
-                    SendKeys.Send("{ENTER}");
-                }
-                else if (ChangeDate != null)
-                {
-                    if (ChangeDate.Name == this.NextControlName)
-                        ChangeDate.Text = CDate;
-                    if (string.IsNullOrEmpty(this.Text))
+                    if (lblName != null)
                     {
-                        this.Focus();
+                        lblName.Text = name;
                     }
-                    else
+
+                    if (this.Parent.Name.Equals("PanelTitle"))
                     {
-                        //comment 2020-12-28
-                        //ChangeDate.Focus();
-                        //SendKeys.Send("{ENTER}");
-                        //add 2020-12-28
-                        //CD and change date is not located(top,down) in form design
-                        if (this.NextControlName != ChangeDate.Name)
+                        if (ChangeDate != null)
                         {
-                            this.Focus();
-                        }
-                        else
-                        {
+                            ChangeDate.Text = CDate;
                             ChangeDate.Focus();
                         }
                         SendKeys.Send("{ENTER}");
                     }
-                }
-                else
-                {
-                    if(this.Text=="")
-                    {
-                        this.Focus();
-                    }
                     else
                     {
-                        Control control = this.TopLevelControl.Controls.Find(this.NextControlName, true)[0];
-                        control.Focus();
+                        SendKeys.Send("{ENTER}");
                     }
                 }
+                
+
+                
+
+                ////for combo box
+                //if (Combo != null)
+                //{
+                //    ChangeDate.Text = CDate;
+                //    //SendKeys.Send("{ENTER}");
+                //}
+                ////for textbox 
+                //if (lblName != null)
+                //{
+                //    lblName.Text = name;
+                //    //SendKeys.Send("{ENTER}");
+                //}
+                //else if (ChangeDate != null)
+                //{
+                //    if (ChangeDate.Name == this.NextControlName)
+                //        ChangeDate.Text = CDate;
+                //    if (string.IsNullOrEmpty(this.Text))
+                //    {
+                //        this.Focus();
+                //    }
+                //    else
+                //    {
+                //        //comment 2020-12-28
+                //        //ChangeDate.Focus();
+                //        //SendKeys.Send("{ENTER}");
+                //        //add 2020-12-28
+                //        //CD and change date is not located(top,down) in form design
+                //        if (this.NextControlName != ChangeDate.Name)
+                //        {
+                //            this.Focus();
+                //        }
+                //        else
+                //        {
+                //            ChangeDate.Focus();
+                //        }
+                //        SendKeys.Send("{ENTER}");
+                //    }
+                //}
+                //else
+                //{
+                //    if(this.Text=="")
+                //    {
+                //        this.Focus();
+                //    }
+                //    else
+                //    {
+                //        Control control = this.TopLevelControl.Controls.Find(this.NextControlName, true)[0];
+                //        control.Focus();
+                //    }
+                //}
             }            
         }
     }

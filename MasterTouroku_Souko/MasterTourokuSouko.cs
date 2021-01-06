@@ -48,8 +48,8 @@ namespace MasterTouroku_Souko
             txtSouko.Focus();
             base_Entity = _GetBaseData();
 
-            txtSouko.ChangeDate = txtSoukoName;
-            txtCopySouko.ChangeDate = txtSoukoName;
+            //txtSouko.ChangeDate = txtSoukoName;
+            //txtCopySouko.ChangeDate = txtSoukoName;
         }
         private void ChangeMode(Mode mode)
         {
@@ -163,8 +163,8 @@ namespace MasterTouroku_Souko
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
-                {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                //{
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -181,7 +181,7 @@ namespace MasterTouroku_Souko
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
-                }
+                //}
             }
             base.FunctionProcess(tagID);
         }
@@ -328,13 +328,19 @@ namespace MasterTouroku_Souko
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtCopySouko.IsErrorOccurs)
+                if (ErrorCheck(PanelTitle))
                 {
                     EnableAndDisablePanel();
                     DataTable dt = txtCopySouko.IsDatatableOccurs;
                     if (dt.Rows.Count > 0)
                         soukoSelect(dt);
                 }
+                else
+                {
+                    //cf.Clear(PanelDetail);
+                    //cf.Clear(PanelTitle);
+                }
+
             }
         }
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)

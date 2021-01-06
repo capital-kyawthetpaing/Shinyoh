@@ -29,13 +29,13 @@ namespace ShukkaSiziNyuuryoku
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.panelDetails = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -227,6 +227,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbKouriten.IsDatatableOccurs = null;
             this.sbKouriten.IsErrorOccurs = false;
             this.sbKouriten.IsRequire = false;
+            this.sbKouriten.IsUseInitializedLayout = true;
             this.sbKouriten.lblName = null;
             this.sbKouriten.Location = new System.Drawing.Point(268, 63);
             this.sbKouriten.MaxLength = 10;
@@ -255,6 +256,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbStaffCD.IsDatatableOccurs = null;
             this.sbStaffCD.IsErrorOccurs = false;
             this.sbStaffCD.IsRequire = false;
+            this.sbStaffCD.IsUseInitializedLayout = true;
             this.sbStaffCD.lblName = null;
             this.sbStaffCD.Location = new System.Drawing.Point(267, 89);
             this.sbStaffCD.MaxLength = 10;
@@ -301,6 +303,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone3.IsDatatableOccurs = null;
             this.txtPhone3.IsErrorOccurs = false;
             this.txtPhone3.IsRequire = false;
+            this.txtPhone3.IsUseInitializedLayout = true;
             this.txtPhone3.Location = new System.Drawing.Point(1018, 176);
             this.txtPhone3.MaxLength = 5;
             this.txtPhone3.MinimumSize = new System.Drawing.Size(70, 19);
@@ -325,6 +328,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone2.IsDatatableOccurs = null;
             this.txtPhone2.IsErrorOccurs = false;
             this.txtPhone2.IsRequire = false;
+            this.txtPhone2.IsUseInitializedLayout = true;
             this.txtPhone2.Location = new System.Drawing.Point(926, 176);
             this.txtPhone2.MaxLength = 5;
             this.txtPhone2.MinimumSize = new System.Drawing.Size(70, 19);
@@ -349,6 +353,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone1.IsDatatableOccurs = null;
             this.txtPhone1.IsErrorOccurs = false;
             this.txtPhone1.IsRequire = false;
+            this.txtPhone1.IsUseInitializedLayout = true;
             this.txtPhone1.Location = new System.Drawing.Point(832, 175);
             this.txtPhone1.MaxLength = 6;
             this.txtPhone1.MinimumSize = new System.Drawing.Size(70, 19);
@@ -398,6 +403,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbTokuisaki.IsDatatableOccurs = null;
             this.sbTokuisaki.IsErrorOccurs = false;
             this.sbTokuisaki.IsRequire = false;
+            this.sbTokuisaki.IsUseInitializedLayout = true;
             this.sbTokuisaki.lblName = null;
             this.sbTokuisaki.Location = new System.Drawing.Point(267, 35);
             this.sbTokuisaki.MaxLength = 10;
@@ -454,6 +460,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtAddress.IsDatatableOccurs = null;
             this.txtAddress.IsErrorOccurs = false;
             this.txtAddress.IsRequire = false;
+            this.txtAddress.IsUseInitializedLayout = true;
             this.txtAddress.Location = new System.Drawing.Point(517, 203);
             this.txtAddress.MaxLength = 80;
             this.txtAddress.MinimumSize = new System.Drawing.Size(100, 19);
@@ -492,6 +499,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin2.IsDatatableOccurs = null;
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
+            this.txtYubin2.IsUseInitializedLayout = true;
             this.txtYubin2.Location = new System.Drawing.Point(592, 176);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(70, 19);
@@ -517,6 +525,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin1.IsDatatableOccurs = null;
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
+            this.txtYubin1.IsUseInitializedLayout = true;
             this.txtYubin1.Location = new System.Drawing.Point(520, 176);
             this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(50, 19);
@@ -602,6 +611,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlipDate.IsDatatableOccurs = null;
             this.txtSlipDate.IsErrorOccurs = false;
             this.txtSlipDate.IsRequire = false;
+            this.txtSlipDate.IsUseInitializedLayout = true;
             this.txtSlipDate.Location = new System.Drawing.Point(828, 11);
             this.txtSlipDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSlipDate.MoveNext = true;
@@ -667,6 +677,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJuchuuNo.IsDatatableOccurs = null;
             this.txtJuchuuNo.IsErrorOccurs = false;
             this.txtJuchuuNo.IsRequire = false;
+            this.txtJuchuuNo.IsUseInitializedLayout = true;
             this.txtJuchuuNo.lblName = null;
             this.txtJuchuuNo.Location = new System.Drawing.Point(258, 176);
             this.txtJuchuuNo.MaxLength = 12;
@@ -698,15 +709,15 @@ namespace ShukkaSiziNyuuryoku
             // dgvShukkasizi
             // 
             this.dgvShukkasizi.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShukkasizi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShukkasizi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.dgvShukkasizi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShukkasizi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -786,9 +797,9 @@ namespace ShukkaSiziNyuuryoku
             // colJuchuuSuu
             // 
             this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.NullValue = "0";
-            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.NullValue = "0";
+            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle16;
             this.colJuchuuSuu.HeaderText = "受注数";
             this.colJuchuuSuu.Name = "colJuchuuSuu";
             this.colJuchuuSuu.ReadOnly = true;
@@ -796,9 +807,9 @@ namespace ShukkaSiziNyuuryoku
             // colShukkakanousuu
             // 
             this.colShukkakanousuu.DataPropertyName = "ShukkanouSuu";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.NullValue = "0";
-            this.colShukkakanousuu.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.NullValue = "0";
+            this.colShukkakanousuu.DefaultCellStyle = dataGridViewCellStyle17;
             this.colShukkakanousuu.HeaderText = "出荷可能数";
             this.colShukkakanousuu.Name = "colShukkakanousuu";
             this.colShukkakanousuu.ReadOnly = true;
@@ -807,10 +818,10 @@ namespace ShukkaSiziNyuuryoku
             // colShukkasizisou
             // 
             this.colShukkasizisou.DataPropertyName = "ShukkaSiziZumiSuu";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.colShukkasizisou.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N0";
+            dataGridViewCellStyle18.NullValue = null;
+            this.colShukkasizisou.DefaultCellStyle = dataGridViewCellStyle18;
             this.colShukkasizisou.HeaderText = "出荷指示済数";
             this.colShukkasizisou.Name = "colShukkasizisou";
             this.colShukkasizisou.ReadOnly = true;
@@ -819,9 +830,9 @@ namespace ShukkaSiziNyuuryoku
             // colArrivalTime
             // 
             this.colArrivalTime.DataPropertyName = "KonkaiShukkaSiziSuu";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.NullValue = "0";
-            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.NullValue = "0";
+            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle19;
             this.colArrivalTime.HeaderText = "今回出荷指示数";
             this.colArrivalTime.Name = "colArrivalTime";
             this.colArrivalTime.Width = 125;
@@ -829,18 +840,18 @@ namespace ShukkaSiziNyuuryoku
             // colTanka
             // 
             this.colTanka.DataPropertyName = "UriageTanka";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.NullValue = "0";
-            this.colTanka.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.NullValue = "0";
+            this.colTanka.DefaultCellStyle = dataGridViewCellStyle20;
             this.colTanka.HeaderText = "単価";
             this.colTanka.Name = "colTanka";
             // 
             // colPrice
             // 
             this.colPrice.DataPropertyName = "UriageKingaku";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.NullValue = "0";
-            this.colPrice.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle21.NullValue = "0";
+            this.colPrice.DefaultCellStyle = dataGridViewCellStyle21;
             this.colPrice.HeaderText = "金額";
             this.colPrice.Name = "colPrice";
             // 
@@ -1033,6 +1044,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtShippingDate.IsDatatableOccurs = null;
             this.txtShippingDate.IsErrorOccurs = false;
             this.txtShippingDate.IsRequire = false;
+            this.txtShippingDate.IsUseInitializedLayout = true;
             this.txtShippingDate.Location = new System.Drawing.Point(268, 11);
             this.txtShippingDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShippingDate.MoveNext = true;
@@ -1072,6 +1084,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtName.IsDatatableOccurs = null;
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = true;
+            this.txtName.IsUseInitializedLayout = true;
             this.txtName.Location = new System.Drawing.Point(1254, 175);
             this.txtName.MaxLength = 40;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -1158,6 +1171,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSenpyouhachuuNo.IsDatatableOccurs = null;
             this.txtSenpyouhachuuNo.IsErrorOccurs = false;
             this.txtSenpyouhachuuNo.IsRequire = false;
+            this.txtSenpyouhachuuNo.IsUseInitializedLayout = true;
             this.txtSenpyouhachuuNo.Location = new System.Drawing.Point(258, 203);
             this.txtSenpyouhachuuNo.MaxLength = 20;
             this.txtSenpyouhachuuNo.MinimumSize = new System.Drawing.Size(100, 19);
@@ -1221,6 +1235,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlip_Description.IsDatatableOccurs = null;
             this.txtSlip_Description.IsErrorOccurs = false;
             this.txtSlip_Description.IsRequire = false;
+            this.txtSlip_Description.IsUseInitializedLayout = true;
             this.txtSlip_Description.Location = new System.Drawing.Point(828, 36);
             this.txtSlip_Description.MaxLength = 80;
             this.txtSlip_Description.MinimumSize = new System.Drawing.Size(100, 19);
@@ -1274,8 +1289,10 @@ namespace ShukkaSiziNyuuryoku
             this.sbShippingNO.IsDatatableOccurs = null;
             this.sbShippingNO.IsErrorOccurs = false;
             this.sbShippingNO.IsRequire = false;
+            this.sbShippingNO.IsUseInitializedLayout = true;
             this.sbShippingNO.lblName = null;
             this.sbShippingNO.Location = new System.Drawing.Point(129, 9);
+            this.sbShippingNO.MaxLength = 12;
             this.sbShippingNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.sbShippingNO.MoveNext = true;
             this.sbShippingNO.Name = "sbShippingNO";

@@ -138,13 +138,13 @@ namespace MasterTouroku_Kouriten
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
+            cf.Clear(PanelDetail);
             rdo_AliasKBN1.Checked = true;
             lblStaffCD_Name.Text = string.Empty;
            
 
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
+            cf.DisablePanel(PanelDetail);
 
             txtTokuisakiCD.Focus();
             txtKensakuHyouziJun.Text = "0";
@@ -236,8 +236,8 @@ namespace MasterTouroku_Kouriten
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
-                {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                //{
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -254,7 +254,7 @@ namespace MasterTouroku_Kouriten
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
-                }
+                //}
             }
 
             base.FunctionProcess(tagID);
@@ -368,7 +368,7 @@ namespace MasterTouroku_Kouriten
         }
         private void EnablePanel()
         {
-            cf.EnablePanel(Panel_Detail);
+            cf.EnablePanel(PanelDetail);
             chk_Flag.Focus();
             cf.DisablePanel(PanelTitle);
         }
@@ -419,31 +419,38 @@ namespace MasterTouroku_Kouriten
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtCopyDate.IsErrorOccurs)
+                if (ErrorCheck(PanelTitle))
                 {
-                    EnablePanel();
-                    DataTable dt = txtCopyDate.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        From_DB_To_Form(dt);
+                    if (!txtCopyDate.IsErrorOccurs)
+                    {
+                        EnablePanel();
+                        DataTable dt = txtCopyDate.IsDatatableOccurs;
+                        if (dt.Rows.Count > 0)
+                            From_DB_To_Form(dt);
+                    }
+                }
+                else
+                {
+                    cf.Clear(PanelDetail);
                 }
             }
         }
 
         private void txtKensakuHyouziJun_TextChanged(object sender, EventArgs e)
         {
-            string value = txtKensakuHyouziJun.Text.Replace(",", "");
-            ulong ul;
-            if (ulong.TryParse(value, out ul))
-            {
-                txtKensakuHyouziJun.TextChanged -= txtKensakuHyouziJun_TextChanged;
-                txtKensakuHyouziJun.Text = string.Format("{0:#,#0}", ul);
-                txtKensakuHyouziJun.SelectionStart = txtKensakuHyouziJun.Text.Length;
-                txtKensakuHyouziJun.TextChanged += txtKensakuHyouziJun_TextChanged;
-            }
-            else
-            {
-                txtKensakuHyouziJun.Text = "0";
-            }
+            //string value = txtKensakuHyouziJun.Text.Replace(",", "");
+            //ulong ul;
+            //if (ulong.TryParse(value, out ul))
+            //{
+            //    txtKensakuHyouziJun.TextChanged -= txtKensakuHyouziJun_TextChanged;
+            //    txtKensakuHyouziJun.Text = string.Format("{0:#,#0}", ul);
+            //    txtKensakuHyouziJun.SelectionStart = txtKensakuHyouziJun.Text.Length;
+            //    txtKensakuHyouziJun.TextChanged += txtKensakuHyouziJun_TextChanged;
+            //}
+            //else
+            //{
+            //    txtKensakuHyouziJun.Text = "0";
+            //}
         }
 
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
@@ -716,10 +723,19 @@ namespace MasterTouroku_Kouriten
                         // Error E101 for Tokuisaki
                         DataTable dt1 = new DataTable();
                         TokuisakiBL tBL = new TokuisakiBL();
-                        dt = tBL.M_Tokuisaki_Select(obj.TokuisakiCD, obj.ChangeDate, "E101");
-                        if (dt.Rows[0]["MessageID"].ToString() == "E101")
+                        dt1 = tBL.M_Tokuisaki_Select(obj.TokuisakiCD, obj.ChangeDate, "E101");
+                        if (dt1.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E276", i.ToString(), "得意先CD未登録エラー");
+                            bl_List.Add(true);
+                        }
+                        //2020/12/14 Y.Nishikawa ADD
+                        DataTable dt2 = new DataTable();
+                        KouritenBL kBL = new KouritenBL();
+                        dt2 = kBL.Kouriten_Select_Check(obj.KouritenCD, obj.ChangeDate, string.Empty,obj.TokuisakiCD);
+                        if (dt2.Rows[0]["MessageID"].ToString() == "E132")
+                        {
+                            bbl.ShowMessage("E276", i.ToString(), "小売店CD登録済エラー");
                             bl_List.Add(true);
                         }
 

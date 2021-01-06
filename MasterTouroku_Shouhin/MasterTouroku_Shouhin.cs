@@ -50,22 +50,27 @@ namespace MasterTouroku_Shouhin
             base_entity = _GetBaseData();
             txtProduct.ChangeDate = txtChangeDate;
             txtCopyProduct.ChangeDate = txtCopyChangeDate;
+            txtMajorSuppliers.ChangeDate = txtChangeDate;
+
+            txtTani.lblName = lbl_TaniCD;
+            txtBrand.lblName = lbl_BrandCD;
+            txtColor.lblName = lbl_ColorNO;
+            txtSize.lblName = lbl_SizeNO;
+            txtTaxRate.lblName = lbl_TaxtRate;
+            txtIEvaluation.lblName = lbl_IEvaluation;
+            txtIManagement.lblName = lbl_IManagement;
         }
 
         private void ChangeMode(Mode mode)
         {
-            cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
-            cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
             txtProduct.Focus();
             switch (mode)
             {
                 case Mode.New:
                     txtChangeDate.NextControlName = txtCopyProduct.Name;
+                    UI_ErrorCheck();
                     txtCopyProduct.Enabled = true;
                     txtCopyChangeDate.Enabled = true;
-                    UI_ErrorCheck();
 
                     txtChangeDate.E132Check(true, "M_Shouhin", txtProduct, txtChangeDate, null);
                     txtChangeDate.E133Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
@@ -79,9 +84,9 @@ namespace MasterTouroku_Shouhin
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
+                    UI_ErrorCheck();
                     txtCopyProduct.Enabled = false;
                     txtCopyChangeDate.Enabled = false;
-                    UI_ErrorCheck();
 
                     txtChangeDate.E132Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Shouhin", txtProduct, txtChangeDate, null);
@@ -91,9 +96,9 @@ namespace MasterTouroku_Shouhin
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
+                    UI_ErrorCheck();
                     txtCopyProduct.Enabled = false;
                     txtCopyChangeDate.Enabled = false;
-                    UI_ErrorCheck();
 
                     txtChangeDate.E132Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Shouhin", txtProduct, txtChangeDate, null);
@@ -103,9 +108,9 @@ namespace MasterTouroku_Shouhin
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
+                    UI_ErrorCheck();
                     txtCopyProduct.Enabled = false;
                     txtCopyChangeDate.Enabled = false;
-                    UI_ErrorCheck();
 
                     txtChangeDate.E132Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Shouhin", txtProduct, txtChangeDate, null);
@@ -119,6 +124,11 @@ namespace MasterTouroku_Shouhin
 
         private void UI_ErrorCheck()
         {
+            cf.Clear(PanelTitle);
+            cf.Clear(Panel_Detail);
+            cf.EnablePanel(PanelTitle);
+            cf.DisablePanel(Panel_Detail);
+
             txtProduct.E102Check(true);
             txtChangeDate.E102Check(true);
             txtChangeDate.E103Check(true);
@@ -159,13 +169,21 @@ namespace MasterTouroku_Shouhin
             txtHacchuuLot.E102Check(true);
 
             lbl_TaniCD.Text = string.Empty;
+            lbl_TaniCD.BorderStyle = BorderStyle.None;
             lbl_BrandCD.Text = string.Empty;
+            lbl_BrandCD.BorderStyle = BorderStyle.None;
             lbl_ColorNO.Text = string.Empty;
+            lbl_ColorNO.BorderStyle = BorderStyle.None;
             lbl_SizeNO.Text = string.Empty;
+            lbl_SizeNO.BorderStyle = BorderStyle.None;
             lbl_TaxtRate.Text = string.Empty;
+            lbl_TaxtRate.BorderStyle = BorderStyle.None;
             lbl_IEvaluation.Text = string.Empty;
+            lbl_IEvaluation.BorderStyle = BorderStyle.None;
             lbl_IManagement.Text = string.Empty;
+            lbl_IManagement.BorderStyle = BorderStyle.None;
             lbl_MajorSuppliers.Text = string.Empty;
+            lbl_MajorSuppliers.BorderStyle = BorderStyle.None;
             pImage.ImageLocation = "";
         }
 
@@ -189,6 +207,8 @@ namespace MasterTouroku_Shouhin
             }
             if (tagID == "6")
             {
+                txtProduct.Focus();
+
                 UI_ErrorCheck();
                 if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
                 {
@@ -339,12 +359,18 @@ namespace MasterTouroku_Shouhin
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtCopyChangeDate.IsErrorOccurs)
+                if(!txtProduct.ErrorCheck())
                 {
-                    EnableAndDisablePanel();
-                    DataTable dt = txtCopyChangeDate.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        DB_To_UI(dt);
+                    if (!txtChangeDate.ErrorCheck())
+                    {
+                        if (!txtCopyChangeDate.IsErrorOccurs)
+                        {
+                            EnableAndDisablePanel();
+                            DataTable dt = txtCopyChangeDate.IsDatatableOccurs;
+                            if (dt.Rows.Count > 0)
+                                DB_To_UI(dt);
+                        }
+                    }
                 }
             }
         }
@@ -406,8 +432,11 @@ namespace MasterTouroku_Shouhin
                 txtHacchuuLot.Text = dt.Rows[0]["HacchuuLot"].ToString();
                 txtImage.Text = dt.Rows[0]["ShouhinImageFilePathName"].ToString();
 
-                byte[] imgBytes = (byte[])dt.Rows[0]["ShouhinImage"];
-                pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
+                if(!string.IsNullOrEmpty(dt.Rows[0]["ShouhinImage"].ToString()))
+                {
+                    byte[] imgBytes = (byte[])dt.Rows[0]["ShouhinImage"];
+                    pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
+                }
 
                 txtRemarks.Text = dt.Rows[0]["Remarks"].ToString();
                 txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
@@ -553,7 +582,6 @@ namespace MasterTouroku_Shouhin
             }
             return Xml;
         }
-
 
         private bool Null_Check(string obj_text, int line_no, string error_msg)
         {

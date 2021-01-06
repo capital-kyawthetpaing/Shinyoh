@@ -129,7 +129,7 @@
             // 
             // cboMode
             // 
-            this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.NextControlName = "txt_Tokuisaki";
             // 
             // txtTokuisaki_CopyDate
@@ -759,7 +759,7 @@
             this.txtMailAddress.NextControl = null;
             this.txtMailAddress.NextControlName = "txtStaffCharge";
             this.txtMailAddress.SearchType = Entity.SearchType.ScType.None;
-            this.txtMailAddress.Size = new System.Drawing.Size(600, 19);
+            this.txtMailAddress.Size = new System.Drawing.Size(700, 19);
             this.txtMailAddress.TabIndex = 28;
             this.txtMailAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1202,13 +1202,13 @@
             this.txtYubin2.IsUseInitializedLayout = true;
             this.txtYubin2.Location = new System.Drawing.Point(266, 225);
             this.txtYubin2.MaxLength = 4;
-            this.txtYubin2.MinimumSize = new System.Drawing.Size(60, 19);
+            this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin2.MoveNext = true;
             this.txtYubin2.Name = "txtYubin2";
             this.txtYubin2.NextControl = null;
             this.txtYubin2.NextControlName = "txtAddress1";
             this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
-            this.txtYubin2.Size = new System.Drawing.Size(60, 19);
+            this.txtYubin2.Size = new System.Drawing.Size(50, 19);
             this.txtYubin2.TabIndex = 16;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
@@ -1228,13 +1228,13 @@
             this.txtYubin1.IsUseInitializedLayout = true;
             this.txtYubin1.Location = new System.Drawing.Point(181, 225);
             this.txtYubin1.MaxLength = 3;
-            this.txtYubin1.MinimumSize = new System.Drawing.Size(40, 19);
+            this.txtYubin1.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtYubin1.MoveNext = true;
             this.txtYubin1.Name = "txtYubin1";
             this.txtYubin1.NextControl = null;
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
-            this.txtYubin1.Size = new System.Drawing.Size(40, 19);
+            this.txtYubin1.Size = new System.Drawing.Size(30, 19);
             this.txtYubin1.TabIndex = 15;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -1296,7 +1296,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(238, 223);
+            this.label1.Location = new System.Drawing.Point(232, 223);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 19;
@@ -1331,13 +1331,13 @@
             this.txtSearch.IsUseInitializedLayout = true;
             this.txtSearch.Location = new System.Drawing.Point(181, 714);
             this.txtSearch.MaxLength = 5;
-            this.txtSearch.MinimumSize = new System.Drawing.Size(60, 19);
+            this.txtSearch.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.NextControl = null;
             this.txtSearch.NextControlName = "BtnF1";
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
-            this.txtSearch.Size = new System.Drawing.Size(60, 19);
+            this.txtSearch.Size = new System.Drawing.Size(50, 19);
             this.txtSearch.TabIndex = 36;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -1346,7 +1346,7 @@
             // sRadDelete
             // 
             this.sRadDelete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadDelete.Location = new System.Drawing.Point(971, 12);
+            this.sRadDelete.Location = new System.Drawing.Point(984, 12);
             this.sRadDelete.MoveNext = true;
             this.sRadDelete.Name = "sRadDelete";
             this.sRadDelete.NextControl = null;
@@ -1360,7 +1360,7 @@
             // 
             this.sRadRegister.Checked = true;
             this.sRadRegister.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sRadRegister.Location = new System.Drawing.Point(893, 12);
+            this.sRadRegister.Location = new System.Drawing.Point(906, 12);
             this.sRadRegister.MoveNext = true;
             this.sRadRegister.Name = "sRadRegister";
             this.sRadRegister.NextControl = null;
@@ -1378,7 +1378,7 @@
             this.lbImportClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbImportClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lbImportClassification.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lbImportClassification.Location = new System.Drawing.Point(773, 11);
+            this.lbImportClassification.Location = new System.Drawing.Point(786, 11);
             this.lbImportClassification.Name = "lbImportClassification";
             this.lbImportClassification.Size = new System.Drawing.Size(100, 19);
             this.lbImportClassification.TabIndex = 66;

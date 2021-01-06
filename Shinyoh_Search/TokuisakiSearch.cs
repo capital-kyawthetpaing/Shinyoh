@@ -37,12 +37,14 @@ namespace Shinyoh_Search {
             txtTokuisaki2.E106Check(true, txtTokuisaki1, txtTokuisaki2);
             gvTokuisaki.SetGridDesign();
             gvTokuisaki.SetReadOnlyColumn("*");
+            gvTokuisaki.Select();
         }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
             {
                 DataGridviewBind();
+                gvTokuisaki.Select();
             }
             if (tagID == "3")
             {
@@ -95,6 +97,7 @@ namespace Shinyoh_Search {
         private void btnTokuisaki_F11_Click(object sender, EventArgs e)
         {
             DataGridviewBind();
+            gvTokuisaki.Select();
         }
     }
 }

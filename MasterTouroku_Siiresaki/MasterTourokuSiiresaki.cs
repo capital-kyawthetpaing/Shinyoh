@@ -163,11 +163,11 @@ namespace MasterTouroku_Siiresaki
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
+            cf.Clear(PanelDetail);
             lblStaffCD_Name.Text = string.Empty;
 
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
+            cf.DisablePanel(PanelDetail);
             txtSupplierCD.Focus();
            // txtSearch.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -226,8 +226,8 @@ namespace MasterTouroku_Siiresaki
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
-                {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                //{
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -244,7 +244,7 @@ namespace MasterTouroku_Siiresaki
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
-                }
+                //}
             }
 
             base.FunctionProcess(tagID);
@@ -387,7 +387,7 @@ namespace MasterTouroku_Siiresaki
         }
         private void EnablePanel()
         {
-            cf.EnablePanel(Panel_Detail);
+            cf.EnablePanel(PanelDetail);
             chk_Flag.Focus();
             cf.DisablePanel(PanelTitle);
         }
@@ -437,12 +437,19 @@ namespace MasterTouroku_Siiresaki
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtCopyDate.IsErrorOccurs)
+                if (ErrorCheck(PanelTitle))
                 {
-                    EnablePanel();
-                    DataTable dt = txtCopyDate.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        From_DB_To_Form(dt);
+                    if (!txtCopyDate.IsErrorOccurs)
+                    {
+                        EnablePanel();
+                        DataTable dt = txtCopyDate.IsDatatableOccurs;
+                        if (dt.Rows.Count > 0)
+                            From_DB_To_Form(dt);
+                    }
+                }
+                else
+                {
+                    cf.Clear(PanelDetail);
                 }
             }
         }
@@ -511,7 +518,6 @@ namespace MasterTouroku_Siiresaki
                         if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
                             bbl.ShowMessage("E276",i.ToString(), "入力可能値外エラー");
-                           // err.ShowErrorMessage("E117");
                             bl_List.Add(true);
                         }
                         //

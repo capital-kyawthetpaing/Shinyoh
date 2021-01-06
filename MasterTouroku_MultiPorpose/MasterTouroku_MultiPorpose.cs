@@ -70,11 +70,13 @@ namespace MasterTouroku_MultiPorpose
             if(tagID=="6")
             {
                 Mode_Setting();
+                if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
+                {
+                    Disable_UDI_Mode();
+                }
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails))
-                {
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -91,7 +93,6 @@ namespace MasterTouroku_MultiPorpose
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
-                }
             }
             base.FunctionProcess(tagID);
         }
@@ -101,15 +102,17 @@ namespace MasterTouroku_MultiPorpose
             switch (mode)
             {
                 case Mode.New:
+                    txtID.E102Check(true);
+                    txtKEY.E102Check(true);
                     txtIDName.E102Check(true);
                     txtDate1.E103Check(true);
                     txtDate2.E103Check(true);
                     txtDate3.E103Check(true);
                     txtKEY.E132Check(false, "M_Multiporpose", txtID, txtKEY, null);
                     cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
+                    cf.Clear(PanelDetail);
                     cf.EnablePanel(PanelTitle);
-                    cf.DisablePanel(panelDetails);
+                    cf.DisablePanel(PanelDetail);
                     txtID.Enabled = true;
                     txtCopyID.Enabled = true;
                     txtKEYCopy.NextControlName = txtIDName.Name;
@@ -117,7 +120,6 @@ namespace MasterTouroku_MultiPorpose
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
-                    F9.Visible = false;
                     break;
 
                 case Mode.Update:
@@ -128,6 +130,7 @@ namespace MasterTouroku_MultiPorpose
                     txtDate2.E103Check(true);
                     txtDate3.E103Check(true);
                     Mode_Setting();
+                    Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
@@ -136,6 +139,7 @@ namespace MasterTouroku_MultiPorpose
                     txtKEY.E102Check(true);
                     txtKEY.E132Check(false, "M_Multiporpose", txtID, txtKEY, null);
                     Mode_Setting();
+                    Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
 
@@ -145,6 +149,7 @@ namespace MasterTouroku_MultiPorpose
                     txtKEY.E102Check(true);
                     txtIDName.E102Check(true);
                     Mode_Setting();
+                    Disable_UDI_Mode();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
@@ -153,88 +158,15 @@ namespace MasterTouroku_MultiPorpose
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(panelDetails);
+            cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(panelDetails);
-            txtCopyID.Enabled = false;
-            txtKEYCopy.Enabled = false;
-            txtID.Enabled = true;
+            cf.DisablePanel(PanelDetail);
             txtID.Focus();
         }
-        private void DisplayData(DataTable dt)
+        public void Disable_UDI_Mode()
         {
-            if (dt.Rows.Count > 0)
-            {
-                txtIDName.Text = dt.Rows[0]["IDName"].ToString();
-                txtChar1.Text = dt.Rows[0]["Char1"].ToString();
-                txtChar2.Text = dt.Rows[0]["Char2"].ToString();
-                txtChar3.Text = dt.Rows[0]["Char3"].ToString();
-                txtChar4.Text = dt.Rows[0]["Char4"].ToString();
-                txtChar5.Text = dt.Rows[0]["Char5"].ToString();
-                txtNum1.Text= dt.Rows[0]["Num1"].ToString();
-                txtNum2.Text = dt.Rows[0]["Num2"].ToString();
-                txtNum3.Text = dt.Rows[0]["Num3"].ToString();
-                txtNum4.Text = dt.Rows[0]["Num4"].ToString();
-                txtNum5.Text = dt.Rows[0]["Num5"].ToString();
-                txtDate1.Text = dt.Rows[0]["Date1"].ToString();
-                txtDate2.Text = dt.Rows[0]["Date2"].ToString();
-                txtDate3.Text = dt.Rows[0]["Date3"].ToString();
-            }
-        }
-        private void DBProcess()
-        {
-           multipurposeEntity entity = GetData();
-             if (cboMode.SelectedValue.Equals("1"))
-             {
-                 entity.Mode = "New";
-                 DoInsert(entity);
-             }
-             else if (cboMode.SelectedValue.Equals("2"))
-             {
-                 entity.Mode = "Update";
-                 DoUpdate(entity);
-             }
-             else if (cboMode.SelectedValue.Equals("3"))
-             {
-                 entity.Mode = "Delete";
-                 DoDelete(entity);
-             }
-        }
-        private void DoInsert(multipurposeEntity mentity)
-        {
-            if(bbl.ShowMessage("Q101")==DialogResult.Yes)
-            {
-                mbl.M_Multiporpose_Insert_Update(mentity);
-                mbl.ShowMessage("I101");
-            }
-            else
-            {
-                PreviousCtrl.Focus();
-            }
-        }
-        private void DoUpdate(multipurposeEntity mentity)
-        {
-            if (bbl.ShowMessage("Q101") == DialogResult.Yes)
-            {
-                mbl.M_Multiporpose_Insert_Update(mentity);
-                mbl.ShowMessage("I101");
-            }
-            else
-            {
-                PreviousCtrl.Focus();
-            }
-        }
-        private void DoDelete(multipurposeEntity mentity)
-        {
-            if (bbl.ShowMessage("Q102") == DialogResult.Yes)
-            {
-                mbl.M_Multiporpose_Insert_Update(mentity);
-                mbl.ShowMessage("I102");
-            }
-            else
-            {
-                PreviousCtrl.Focus();
-            }
+            txtCopyID.Enabled = false;
+            txtKEYCopy.Enabled = false;
         }
         private multipurposeEntity GetData()
         {
@@ -262,29 +194,98 @@ namespace MasterTouroku_MultiPorpose
             mentity.KeyItem = txtID.Text + " " + txtKEY.Text;
             return mentity;
         }
+        private void DisplayData(DataTable dt)
+        {
+            if (dt.Rows.Count > 0)
+            {
+                txtIDName.Text = dt.Rows[0]["IDName"].ToString();
+                txtChar1.Text = dt.Rows[0]["Char1"].ToString();
+                txtChar2.Text = dt.Rows[0]["Char2"].ToString();
+                txtChar3.Text = dt.Rows[0]["Char3"].ToString();
+                txtChar4.Text = dt.Rows[0]["Char4"].ToString();
+                txtChar5.Text = dt.Rows[0]["Char5"].ToString();
+                txtNum1.Text= dt.Rows[0]["Num1"].ToString();
+                txtNum2.Text = dt.Rows[0]["Num2"].ToString();
+                txtNum3.Text = dt.Rows[0]["Num3"].ToString();
+                txtNum4.Text = dt.Rows[0]["Num4"].ToString();
+                txtNum5.Text = dt.Rows[0]["Num5"].ToString();
+                txtDate1.Text = dt.Rows[0]["Date1"].ToString();
+                txtDate2.Text = dt.Rows[0]["Date2"].ToString();
+                txtDate3.Text = dt.Rows[0]["Date3"].ToString();
+            }
+        }
+        private void DBProcess()
+        {
+             multipurposeEntity entity = GetData();
+             if (cboMode.SelectedValue.Equals("1"))
+             {
+                 entity.Mode = "New";
+                 DoInsert(entity);
+             }
+             else if (cboMode.SelectedValue.Equals("2"))
+             {
+                 entity.Mode = "Update";
+                 DoUpdate(entity);
+             }
+             else if (cboMode.SelectedValue.Equals("3"))
+             {
+                 entity.Mode = "Delete";
+                 DoDelete(entity);
+             }
+        }
+        private void DoInsert(multipurposeEntity mentity)
+        {
+            mbl.M_Multiporpose_Insert_Update(mentity);
+        }
+        private void DoUpdate(multipurposeEntity mentity)
+        {
+           mbl.M_Multiporpose_Insert_Update(mentity);
+        }
+        private void DoDelete(multipurposeEntity mentity)
+        {
+           mbl.M_Multiporpose_Insert_Update(mentity);
+        }
+        
         private void txtKEY_KeyDown_1(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 if (!txtKEY.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    DataTable dt = new DataTable();
+                    GetData();
+                    dt = mbl.M_Multiporpose_SelectData(string.Empty, 2, txtID.Text, txtKEY.Text);
+
+                    if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() == "2")
                     {
-                        cf.EnablePanel(panelDetails);
+                        DisplayData(dt);
+                        cf.EnablePanel(PanelDetail);
                         txtIDName.Focus();
                         cf.DisablePanel(PanelTitle);
                     }
-                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    else if (dt.Rows.Count > 0 && (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4"))
                     {
+                        DisplayData(dt);
+                        cf.DisablePanel(PanelDetail);
                         cf.DisablePanel(PanelTitle);
                     }
-                }
-                DataTable dt = new DataTable();
-                GetData();
-                dt = mbl.M_Multiporpose_SelectData(string.Empty,2,txtID.Text, txtKEY.Text);
-                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
-                {
-                    DisplayData(dt);
+                    else if (dt.Rows.Count == 0 && (cboMode.SelectedValue.ToString() != "1"))
+                    {
+                        bbl.ShowMessage("E133");
+                        txtKEY.Focus();
+                    }
+                    //if (cboMode.SelectedValue.ToString() == "2")//update
+                    //{
+                    //    cf.EnablePanel(PanelDetail);
+                    //    txtIDName.Focus();
+                    //    cf.DisablePanel(PanelTitle);
+                    //}
+                    //else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    //{
+                    //    cf.DisablePanel(PanelTitle);
+                    //    Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                    //    BtnF9.Visible = false;
+                    //}
                 }
             }
         }
@@ -301,9 +302,15 @@ namespace MasterTouroku_MultiPorpose
                 if (dt.Rows.Count > 0)
                 {
                     DisplayData(dt);
+                    cf.EnablePanel(PanelDetail);
+                    txtIDName.Focus();
+                    cf.DisablePanel(PanelTitle);
                 }
-                cf.EnablePanel(panelDetails);
-                txtIDName.Focus();
+               else
+               {
+                    bbl.ShowMessage("E133");
+                    txtKEYCopy.Focus();
+                }
             }
         }
     }

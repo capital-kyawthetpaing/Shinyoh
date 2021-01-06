@@ -82,6 +82,7 @@
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
+            this.cboMode.Location = new System.Drawing.Point(64, 8);
             // 
             // PanelDetail
             // 
@@ -469,15 +470,15 @@
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(242, 83);
+            this.txtYubin2.Location = new System.Drawing.Point(239, 83);
             this.txtYubin2.MaxLength = 4;
-            this.txtYubin2.MinimumSize = new System.Drawing.Size(60, 19);
+            this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin2.MoveNext = true;
             this.txtYubin2.Name = "txtYubin2";
             this.txtYubin2.NextControl = null;
             this.txtYubin2.NextControlName = "txtAddress1";
             this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
-            this.txtYubin2.Size = new System.Drawing.Size(60, 19);
+            this.txtYubin2.Size = new System.Drawing.Size(50, 19);
             this.txtYubin2.TabIndex = 6;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
@@ -497,13 +498,13 @@
             this.txtYubin1.IsUseInitializedLayout = true;
             this.txtYubin1.Location = new System.Drawing.Point(158, 83);
             this.txtYubin1.MaxLength = 3;
-            this.txtYubin1.MinimumSize = new System.Drawing.Size(40, 19);
+            this.txtYubin1.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtYubin1.MoveNext = true;
             this.txtYubin1.Name = "txtYubin1";
             this.txtYubin1.NextControl = null;
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
-            this.txtYubin1.Size = new System.Drawing.Size(40, 19);
+            this.txtYubin1.Size = new System.Drawing.Size(30, 19);
             this.txtYubin1.TabIndex = 5;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -605,7 +606,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(213, 81);
+            this.label1.Location = new System.Drawing.Point(207, 81);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 19;
@@ -640,13 +641,13 @@
             this.txtSearch.IsUseInitializedLayout = true;
             this.txtSearch.Location = new System.Drawing.Point(158, 299);
             this.txtSearch.MaxLength = 5;
-            this.txtSearch.MinimumSize = new System.Drawing.Size(60, 19);
+            this.txtSearch.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.NextControl = null;
             this.txtSearch.NextControlName = "BtnF1";
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
-            this.txtSearch.Size = new System.Drawing.Size(60, 19);
+            this.txtSearch.Size = new System.Drawing.Size(50, 19);
             this.txtSearch.TabIndex = 16;
             this.txtSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtSearch.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -656,7 +657,7 @@
             // 
             this.txtSouko.AllowMinus = false;
             this.txtSouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSouko.ChangeDate = this.txtSoukoName;
+            this.txtSouko.ChangeDate = null;
             this.txtSouko.Combo = null;
             this.txtSouko.DecimalPlace = 0;
             this.txtSouko.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
@@ -741,7 +742,7 @@
             // 
             this.txtCopySouko.AllowMinus = false;
             this.txtCopySouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopySouko.ChangeDate = this.txtSoukoName;
+            this.txtCopySouko.ChangeDate = null;
             this.txtCopySouko.Combo = null;
             this.txtCopySouko.DecimalPlace = 0;
             this.txtCopySouko.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;

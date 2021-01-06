@@ -37,7 +37,7 @@
             this.lblCopyCD = new Shinyoh_Controls.SLabel();
             this.lblChangeDate = new Shinyoh_Controls.SLabel();
             this.lblKouriten = new Shinyoh_Controls.SLabel();
-            this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
             this.rdo_AliasKBN2 = new Shinyoh_Controls.SRadio();
             this.rdo_AliasKBN1 = new Shinyoh_Controls.SRadio();
             this.lblTitle = new Shinyoh_Controls.SLabel();
@@ -97,7 +97,7 @@
             this.txtKouritenCD = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
-            this.Panel_Detail.SuspendLayout();
+            this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -133,8 +133,9 @@
             // 
             // cboMode
             // 
-            this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.Location = new System.Drawing.Point(31, 8);
+            this.cboMode.NextControlName = "txtTokuisakiCD";
             // 
             // txtCopyDate
             // 
@@ -286,65 +287,65 @@
             this.lblKouriten.Text = "小売店";
             this.lblKouriten.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Panel_Detail
+            // PanelDetail
             // 
-            this.Panel_Detail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Panel_Detail.Controls.Add(this.rdo_AliasKBN2);
-            this.Panel_Detail.Controls.Add(this.rdo_AliasKBN1);
-            this.Panel_Detail.Controls.Add(this.lblTitle);
-            this.Panel_Detail.Controls.Add(this.txtStaffCD);
-            this.Panel_Detail.Controls.Add(this.lblStaffCD_Name);
-            this.Panel_Detail.Controls.Add(this.chk_Flag);
-            this.Panel_Detail.Controls.Add(this.lblSearch);
-            this.Panel_Detail.Controls.Add(this.txtKensakuHyouziJun);
-            this.Panel_Detail.Controls.Add(this.lblRemark);
-            this.Panel_Detail.Controls.Add(this.txtRemark);
-            this.Panel_Detail.Controls.Add(this.txtEndDate);
-            this.Panel_Detail.Controls.Add(this.lblEndDate);
-            this.Panel_Detail.Controls.Add(this.txtStartDate);
-            this.Panel_Detail.Controls.Add(this.lblStartDate);
-            this.Panel_Detail.Controls.Add(this.sLabel4);
-            this.Panel_Detail.Controls.Add(this.txtMail);
-            this.Panel_Detail.Controls.Add(this.lblMail);
-            this.Panel_Detail.Controls.Add(this.txtTantoushaName);
-            this.Panel_Detail.Controls.Add(this.lblChargeName);
-            this.Panel_Detail.Controls.Add(this.txtTantouYakushoku);
-            this.Panel_Detail.Controls.Add(this.lblJob);
-            this.Panel_Detail.Controls.Add(this.txtTantouBusho);
-            this.Panel_Detail.Controls.Add(this.lblCharge);
-            this.Panel_Detail.Controls.Add(this.label4);
-            this.Panel_Detail.Controls.Add(this.label5);
-            this.Panel_Detail.Controls.Add(this.txtPhone2_3);
-            this.Panel_Detail.Controls.Add(this.txtPhone2_2);
-            this.Panel_Detail.Controls.Add(this.txtPhone2_1);
-            this.Panel_Detail.Controls.Add(this.lblPhone2);
-            this.Panel_Detail.Controls.Add(this.label3);
-            this.Panel_Detail.Controls.Add(this.label2);
-            this.Panel_Detail.Controls.Add(this.txtPhone1_3);
-            this.Panel_Detail.Controls.Add(this.txtPhone1_2);
-            this.Panel_Detail.Controls.Add(this.txtPhone1_1);
-            this.Panel_Detail.Controls.Add(this.lblPhone1);
-            this.Panel_Detail.Controls.Add(this.txtAddress2);
-            this.Panel_Detail.Controls.Add(this.lblAddress2);
-            this.Panel_Detail.Controls.Add(this.txtAddress1);
-            this.Panel_Detail.Controls.Add(this.lblAddress1);
-            this.Panel_Detail.Controls.Add(this.txtYubin2);
-            this.Panel_Detail.Controls.Add(this.txtYubin1);
-            this.Panel_Detail.Controls.Add(this.lblYubinNo);
-            this.Panel_Detail.Controls.Add(this.label1);
-            this.Panel_Detail.Controls.Add(this.txtKanaName);
-            this.Panel_Detail.Controls.Add(this.lblKana_Name);
-            this.Panel_Detail.Controls.Add(this.txtKouritenRyakuName);
-            this.Panel_Detail.Controls.Add(this.lblAbbreName);
-            this.Panel_Detail.Controls.Add(this.txtKouritenName);
-            this.Panel_Detail.Controls.Add(this.lblKouritenName);
-            this.Panel_Detail.Controls.Add(this.lblMorokuchi);
-            this.Panel_Detail.Location = new System.Drawing.Point(0, 75);
-            this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1485, 700);
-            this.Panel_Detail.TabIndex = 1;
+            this.PanelDetail.Controls.Add(this.rdo_AliasKBN2);
+            this.PanelDetail.Controls.Add(this.rdo_AliasKBN1);
+            this.PanelDetail.Controls.Add(this.lblTitle);
+            this.PanelDetail.Controls.Add(this.txtStaffCD);
+            this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
+            this.PanelDetail.Controls.Add(this.chk_Flag);
+            this.PanelDetail.Controls.Add(this.lblSearch);
+            this.PanelDetail.Controls.Add(this.txtKensakuHyouziJun);
+            this.PanelDetail.Controls.Add(this.lblRemark);
+            this.PanelDetail.Controls.Add(this.txtRemark);
+            this.PanelDetail.Controls.Add(this.txtEndDate);
+            this.PanelDetail.Controls.Add(this.lblEndDate);
+            this.PanelDetail.Controls.Add(this.txtStartDate);
+            this.PanelDetail.Controls.Add(this.lblStartDate);
+            this.PanelDetail.Controls.Add(this.sLabel4);
+            this.PanelDetail.Controls.Add(this.txtMail);
+            this.PanelDetail.Controls.Add(this.lblMail);
+            this.PanelDetail.Controls.Add(this.txtTantoushaName);
+            this.PanelDetail.Controls.Add(this.lblChargeName);
+            this.PanelDetail.Controls.Add(this.txtTantouYakushoku);
+            this.PanelDetail.Controls.Add(this.lblJob);
+            this.PanelDetail.Controls.Add(this.txtTantouBusho);
+            this.PanelDetail.Controls.Add(this.lblCharge);
+            this.PanelDetail.Controls.Add(this.label4);
+            this.PanelDetail.Controls.Add(this.label5);
+            this.PanelDetail.Controls.Add(this.txtPhone2_3);
+            this.PanelDetail.Controls.Add(this.txtPhone2_2);
+            this.PanelDetail.Controls.Add(this.txtPhone2_1);
+            this.PanelDetail.Controls.Add(this.lblPhone2);
+            this.PanelDetail.Controls.Add(this.label3);
+            this.PanelDetail.Controls.Add(this.label2);
+            this.PanelDetail.Controls.Add(this.txtPhone1_3);
+            this.PanelDetail.Controls.Add(this.txtPhone1_2);
+            this.PanelDetail.Controls.Add(this.txtPhone1_1);
+            this.PanelDetail.Controls.Add(this.lblPhone1);
+            this.PanelDetail.Controls.Add(this.txtAddress2);
+            this.PanelDetail.Controls.Add(this.lblAddress2);
+            this.PanelDetail.Controls.Add(this.txtAddress1);
+            this.PanelDetail.Controls.Add(this.lblAddress1);
+            this.PanelDetail.Controls.Add(this.txtYubin2);
+            this.PanelDetail.Controls.Add(this.txtYubin1);
+            this.PanelDetail.Controls.Add(this.lblYubinNo);
+            this.PanelDetail.Controls.Add(this.label1);
+            this.PanelDetail.Controls.Add(this.txtKanaName);
+            this.PanelDetail.Controls.Add(this.lblKana_Name);
+            this.PanelDetail.Controls.Add(this.txtKouritenRyakuName);
+            this.PanelDetail.Controls.Add(this.lblAbbreName);
+            this.PanelDetail.Controls.Add(this.txtKouritenName);
+            this.PanelDetail.Controls.Add(this.lblKouritenName);
+            this.PanelDetail.Controls.Add(this.lblMorokuchi);
+            this.PanelDetail.Location = new System.Drawing.Point(0, 75);
+            this.PanelDetail.Name = "PanelDetail";
+            this.PanelDetail.Size = new System.Drawing.Size(1485, 700);
+            this.PanelDetail.TabIndex = 1;
             // 
             // rdo_AliasKBN2
             // 
@@ -550,6 +551,7 @@
             this.txtEndDate.SearchType = Entity.SearchType.ScType.None;
             this.txtEndDate.Size = new System.Drawing.Size(100, 19);
             this.txtEndDate.TabIndex = 28;
+            this.txtEndDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtEndDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblEndDate
@@ -589,6 +591,7 @@
             this.txtStartDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStartDate.Size = new System.Drawing.Size(100, 19);
             this.txtStartDate.TabIndex = 27;
+            this.txtStartDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStartDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblStartDate
@@ -1284,7 +1287,7 @@
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sLabel3.Location = new System.Drawing.Point(18, 3);
+            this.sLabel3.Location = new System.Drawing.Point(19, 3);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 73;
@@ -1375,7 +1378,7 @@
             this.txtTokuisakiCD.IsRequire = false;
             this.txtTokuisakiCD.IsUseInitializedLayout = true;
             this.txtTokuisakiCD.lblName = null;
-            this.txtTokuisakiCD.Location = new System.Drawing.Point(117, 3);
+            this.txtTokuisakiCD.Location = new System.Drawing.Point(118, 3);
             this.txtTokuisakiCD.MaxLength = 10;
             this.txtTokuisakiCD.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtTokuisakiCD.MoveNext = true;
@@ -1448,17 +1451,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1485, 844);
-            this.Controls.Add(this.Panel_Detail);
+            this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTourokuKouriten";
             this.Text = "   小売店マスタ";
             this.Load += new System.EventHandler(this.MasterTourokuKouriten_Load);
-            this.Controls.SetChildIndex(this.Panel_Detail, 0);
+            this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
-            this.Panel_Detail.ResumeLayout(false);
-            this.Panel_Detail.PerformLayout();
+            this.PanelDetail.ResumeLayout(false);
+            this.PanelDetail.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1477,7 +1480,7 @@
         private Shinyoh_Controls.SLabel lblKouriten;
         private Shinyoh_Search.SearchBox txtCopyCD;
         private Shinyoh_Search.SearchBox txtKouritenCD;
-        private System.Windows.Forms.Panel Panel_Detail;
+        private System.Windows.Forms.Panel PanelDetail;
         private Shinyoh_Search.SearchBox txtStaffCD;
         private Shinyoh_Controls.SLabel lblStaffCD_Name;
         private Shinyoh_Controls.SCheckBox chk_Flag;

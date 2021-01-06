@@ -24,7 +24,7 @@ namespace Shinyoh_Search
 
         public DenpyouNoSearch()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
 
         private void DenpyouNoSearch_Load(object sender, EventArgs e)
@@ -39,6 +39,8 @@ namespace Shinyoh_Search
 
             gvDenpyouNo.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.TopRight;
             gvDenpyouNo.UseRowNo(true);
+            gvDenpyouNo.SetGridDesign();
+            gvDenpyouNo.SetReadOnlyColumn("*");
             BindDataGrid();
             cbDivision2.E106Check(true, cbDivision1, cbDivision2);
         }
@@ -46,7 +48,6 @@ namespace Shinyoh_Search
         private void btnSearch_Click(object sender, EventArgs e)
         {
             FunctionProcess(btnSearch.Tag.ToString());
-            BindDataGrid();
         }
 
         public override void FunctionProcess(string tagID)

@@ -112,12 +112,12 @@
             this.cbDivision.IsDatatableOccurs = null;
             this.cbDivision.IsErrorOccurs = false;
             this.cbDivision.Location = new System.Drawing.Point(124, 7);
-            this.cbDivision.MinimumSize = new System.Drawing.Size(100, 0);
+            this.cbDivision.MinimumSize = new System.Drawing.Size(150, 0);
             this.cbDivision.MoveNext = true;
             this.cbDivision.Name = "cbDivision";
             this.cbDivision.NextControl = null;
             this.cbDivision.NextControlName = "txtSEQNO";
-            this.cbDivision.Size = new System.Drawing.Size(121, 20);
+            this.cbDivision.Size = new System.Drawing.Size(150, 20);
             this.cbDivision.TabIndex = 1;
             // 
             // lbl4
@@ -146,13 +146,14 @@
             this.txtCounter.IsDatatableOccurs = null;
             this.txtCounter.IsErrorOccurs = false;
             this.txtCounter.IsRequire = false;
+            this.txtCounter.IsUseInitializedLayout = true;
             this.txtCounter.Location = new System.Drawing.Point(126, 11);
             this.txtCounter.MaxLength = 12;
             this.txtCounter.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCounter.MoveNext = true;
             this.txtCounter.Name = "txtCounter";
             this.txtCounter.NextControl = null;
-            this.txtCounter.NextControlName = null;
+            this.txtCounter.NextControlName = "";
             this.txtCounter.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCounter.SearchType = Entity.SearchType.ScType.None;
             this.txtCounter.Size = new System.Drawing.Size(100, 19);
@@ -183,16 +184,17 @@
             this.txt_Prefix.IsDatatableOccurs = null;
             this.txt_Prefix.IsErrorOccurs = false;
             this.txt_Prefix.IsRequire = false;
+            this.txt_Prefix.IsUseInitializedLayout = true;
             this.txt_Prefix.lblName = null;
             this.txt_Prefix.Location = new System.Drawing.Point(124, 50);
             this.txt_Prefix.MaxLength = 4;
-            this.txt_Prefix.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txt_Prefix.MinimumSize = new System.Drawing.Size(50, 19);
             this.txt_Prefix.MoveNext = true;
             this.txt_Prefix.Name = "txt_Prefix";
             this.txt_Prefix.NextControl = null;
             this.txt_Prefix.NextControlName = "txtCounter";
             this.txt_Prefix.SearchType = Entity.SearchType.ScType.Denpyou;
-            this.txt_Prefix.Size = new System.Drawing.Size(100, 19);
+            this.txt_Prefix.Size = new System.Drawing.Size(50, 19);
             this.txt_Prefix.TabIndex = 3;
             this.txt_Prefix.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txt_Prefix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Prefix_KeyDown);
@@ -211,16 +213,17 @@
             this.txtSEQNO.IsDatatableOccurs = null;
             this.txtSEQNO.IsErrorOccurs = false;
             this.txtSEQNO.IsRequire = false;
+            this.txtSEQNO.IsUseInitializedLayout = true;
             this.txtSEQNO.lblName = null;
             this.txtSEQNO.Location = new System.Drawing.Point(124, 29);
             this.txtSEQNO.MaxLength = 3;
-            this.txtSEQNO.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtSEQNO.MinimumSize = new System.Drawing.Size(40, 19);
             this.txtSEQNO.MoveNext = true;
             this.txtSEQNO.Name = "txtSEQNO";
             this.txtSEQNO.NextControl = null;
             this.txtSEQNO.NextControlName = "txt_Prefix";
             this.txtSEQNO.SearchType = Entity.SearchType.ScType.None;
-            this.txtSEQNO.Size = new System.Drawing.Size(100, 19);
+            this.txtSEQNO.Size = new System.Drawing.Size(40, 19);
             this.txtSEQNO.TabIndex = 2;
             this.txtSEQNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 

@@ -17,7 +17,10 @@ namespace Shinyoh_Search
     public partial class MultiPorposeSearch : SearchBase
     {
         public string Id = string.Empty;
-        public string Key = string.Empty; 
+        public string Key = string.Empty;
+        public string Char1 = string.Empty;
+
+        public string Access_Type;
         public MultiPorposeSearch()
         {
             InitializeComponent();
@@ -32,9 +35,10 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             gvMultiporpose.UseRowNo(true);
             GridViewBind();
-            txtID1.Focus();
             txtID2.E106Check(true, txtID1, txtID2);
             txtKey2.E106Check(true, txtKey1, txtKey2);
+            gvMultiporpose.Select();
+            txtID1.Focus();
         }
         public override void FunctionProcess(string tagID)
         {
@@ -58,6 +62,7 @@ namespace Shinyoh_Search
             mentity.Key1 = txtKey1.Text;
             mentity.Key2 = txtKey2.Text;
             mentity.IdName = txtIDName.Text;
+            mentity.Type = Access_Type;
             DataTable dt = bl.M_Multiporpose_Search(mentity);
             gvMultiporpose.DataSource = dt;
         }
@@ -83,6 +88,7 @@ namespace Shinyoh_Search
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
+            Access_Type = string.Empty;
             GridViewBind();
         }
     }

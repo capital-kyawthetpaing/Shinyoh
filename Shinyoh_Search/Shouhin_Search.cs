@@ -41,6 +41,9 @@ namespace Shinyoh_Search
             txtJANCD1.E106Check(true, txtJANCD, txtJANCD1);
             txtExhibition1.E106Check(true, txtExhibition, txtExhibition1);
             txtBrand1.E106Check(true, txtBrand, txtBrand1);
+
+            dgDetail.SetGridDesign();
+            dgDetail.SetReadOnlyColumn("*");
         }
 
         private void dgDetail_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -151,10 +154,10 @@ namespace Shinyoh_Search
                 r1.Y += 1;
                 r1.Width = r1.Width + w2 - 2;
                 r1.Height = r1.Height - 2;
-                e.Graphics.FillRectangle(new SolidBrush(Color.White), r1);
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(191, 191, 191)), r1);
                 StringFormat format = new StringFormat();
-                format.Alignment = StringAlignment.Center;
-                format.LineAlignment = StringAlignment.Center;
+                format.Alignment = StringAlignment.Near;
+                format.LineAlignment = StringAlignment.Near;
                 e.Graphics.DrawString(months[j / 2],
                     this.dgDetail.ColumnHeadersDefaultCellStyle.Font,
                     new SolidBrush(this.dgDetail.ColumnHeadersDefaultCellStyle.ForeColor),

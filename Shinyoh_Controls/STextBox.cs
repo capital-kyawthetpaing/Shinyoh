@@ -219,8 +219,8 @@ namespace Shinyoh_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-               ErrorCheck();
-               base.OnKeyDown(e);
+                ErrorCheck();
+                base.OnKeyDown(e);
             }
         }
 
@@ -234,6 +234,7 @@ namespace Shinyoh_Controls
                 if (NextControl != null)
                     NextControl.Focus();
             }
+
             if (cf.IsByteLengthOver(MaxLength, Text))
             {
                 IsErrorOccurs = true;
