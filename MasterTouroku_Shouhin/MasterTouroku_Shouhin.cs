@@ -374,12 +374,6 @@ namespace MasterTouroku_Shouhin
                         if (dt.Rows.Count > 0)
                             DB_To_UI(dt);
                     }
-
-                    if (cboMode.SelectedValue.ToString() == "1")
-                    {
-                        Control btnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
-                        btnF9.Visible = false;
-                    }
                 }
             }
         }
@@ -647,10 +641,14 @@ namespace MasterTouroku_Shouhin
         {
             bl = false;
             int n;
+            decimal d;
             if(!int.TryParse(obj_text, out n))
             {
-                bbl.ShowMessage("E276", line_no.ToString(), error_msg);
-                bl = true;
+                if(!decimal.TryParse(obj_text, out d))
+                {
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                    bl = true;
+                }
             }
             return bl;
         }
