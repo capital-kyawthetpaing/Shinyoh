@@ -77,7 +77,7 @@ namespace Shinyoh_Search {
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 soukoCD= row.Cells["colSouko"].Value.ToString();
