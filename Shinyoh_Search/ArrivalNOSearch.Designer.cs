@@ -261,6 +261,7 @@
             this.sbSiiresaki.Size = new System.Drawing.Size(100, 19);
             this.sbSiiresaki.TabIndex = 25;
             this.sbSiiresaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.sbSiiresaki.TxtBox = null;
             // 
             // sbStaff
             // 
@@ -289,6 +290,7 @@
             this.sbStaff.Size = new System.Drawing.Size(100, 19);
             this.sbStaff.TabIndex = 22;
             this.sbStaff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.sbStaff.TxtBox = null;
             // 
             // btnSearch
             // 
@@ -656,6 +658,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.gvArrivalNo);
             this.Name = "ArrivalNOSearch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  着荷番号検索";
             this.Load += new System.EventHandler(this.ArrivalNOSearch_Load);
             this.Controls.SetChildIndex(this.gvArrivalNo, 0);

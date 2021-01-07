@@ -114,7 +114,7 @@
             // 
             // cboMode
             // 
-            this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.Location = new System.Drawing.Point(25, 8);
             // 
             // sLabel3

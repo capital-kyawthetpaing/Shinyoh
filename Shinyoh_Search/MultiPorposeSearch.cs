@@ -78,7 +78,10 @@ namespace Shinyoh_Search
         }
         private void gvMultiporpose_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            GetGridviewData(gvMultiporpose.Rows[e.RowIndex]);
+            if(e.RowIndex>=0)
+            {
+                GetGridviewData(gvMultiporpose.Rows[e.RowIndex]);
+            }
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
