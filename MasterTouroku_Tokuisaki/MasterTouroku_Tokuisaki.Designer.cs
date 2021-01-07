@@ -419,6 +419,7 @@
             this.txtStaffCharge.Size = new System.Drawing.Size(80, 19);
             this.txtStaffCharge.TabIndex = 29;
             this.txtStaffCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCharge.TxtBox = null;
             // 
             // lblStaffCD_Name
             // 
@@ -1335,7 +1336,7 @@
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.NextControl = null;
-            this.txtSearch.NextControlName = "BtnF1";
+            this.txtSearch.NextControlName = "BtnF12";
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(50, 19);
             this.txtSearch.TabIndex = 36;
@@ -1412,6 +1413,7 @@
             this.txtTokuisakiCopy.Size = new System.Drawing.Size(80, 19);
             this.txtTokuisakiCopy.TabIndex = 3;
             this.txtTokuisakiCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTokuisakiCopy.TxtBox = null;
             // 
             // txt_Tokuisaki
             // 
@@ -1440,6 +1442,7 @@
             this.txt_Tokuisaki.Size = new System.Drawing.Size(80, 19);
             this.txt_Tokuisaki.TabIndex = 1;
             this.txt_Tokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txt_Tokuisaki.TxtBox = null;
             // 
             // MasterTouroku_Tokuisaki
             // 

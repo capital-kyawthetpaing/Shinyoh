@@ -43,10 +43,13 @@ namespace MasterTouroku_DenpyouNO
             ChangeMode(Mode.New);
             entity = _GetBaseData();
 
-            txt_Prefix.Combo = cbDivision;
-            txt_Prefix.ChangeDate = txtSEQNO;
-            txt_Prefix.ctrl_combo = cbDivision;
+            txtSEQNO.Combo = cbDivision;
+            txtSEQNO.TxtBox = txt_Prefix;
             txtSEQNO.ctrl_combo = cbDivision;
+
+            txt_Prefix.Combo = cbDivision;
+            txt_Prefix.TxtBox = txtSEQNO;
+            txt_Prefix.ctrl_combo = cbDivision;
         }
 
         private void ChangeMode(Mode mode)
@@ -219,7 +222,7 @@ namespace MasterTouroku_DenpyouNO
             {
                 if (!txt_Prefix.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "2")
+                    if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
                     {
                         EnableAndDisablePanel();
                     }
@@ -227,7 +230,11 @@ namespace MasterTouroku_DenpyouNO
                     {
                         cf.DisablePanel(PanelTitle);
                         cf.DisablePanel(PanelDetail);
-                        txtCounter.Focus();
+                        if(cboMode.SelectedValue.ToString() == "3")
+                        {
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
+                        }
                     }
                 }
                 DataTable dt = txt_Prefix.IsDatatableOccurs;

@@ -125,9 +125,9 @@ namespace MasterTouroku_Shouhin
         private void UI_ErrorCheck()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
+            cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
+            cf.DisablePanel(PanelDetail);
 
             txtProduct.E102Check(true);
             txtChangeDate.E102Check(true);
@@ -238,7 +238,7 @@ namespace MasterTouroku_Shouhin
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
+                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -345,6 +345,11 @@ namespace MasterTouroku_Shouhin
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
                         cf.DisablePanel(PanelTitle);
+                        if (cboMode.SelectedValue.ToString() == "3")
+                        {
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
+                        }
                     }
                 }
                 DataTable dt = txtChangeDate.IsDatatableOccurs;
@@ -378,7 +383,7 @@ namespace MasterTouroku_Shouhin
         private void EnableAndDisablePanel()
         {
             cf.DisablePanel(PanelTitle);
-            cf.EnablePanel(Panel_Detail);
+            cf.EnablePanel(PanelDetail);
             chkShukou.Focus();
         }
 

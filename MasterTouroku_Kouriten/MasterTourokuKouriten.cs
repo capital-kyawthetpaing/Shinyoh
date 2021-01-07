@@ -85,12 +85,13 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate,null);
 
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
-
+                    
 
                     txtCopyDate.E103Check(true);
                     txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
                     txtCopyDate.E133Check(true, "M_Kouriten", txtCopyCD, txtCopyDate, txtTokuisakiCD_Copy);
 
+                   // txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
                     txtCopyCD.Enabled = true;
@@ -108,6 +109,8 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
+                    //txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
@@ -118,6 +121,7 @@ namespace MasterTouroku_Kouriten
 
                     txtChangeDate.E270Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate,txtTokuisakiCD);
 
+                   // txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -128,6 +132,7 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
+                   // txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
                     Disable_UDI_Mode();
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -147,7 +152,7 @@ namespace MasterTouroku_Kouriten
             cf.DisablePanel(PanelDetail);
 
             txtTokuisakiCD.Focus();
-            txtKensakuHyouziJun.Text = "0";
+           // txtKensakuHyouziJun.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
            
 
@@ -175,7 +180,7 @@ namespace MasterTouroku_Kouriten
             txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
             txtStaffCD.E102Check(true);
-            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
+            
 
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
@@ -357,6 +362,11 @@ namespace MasterTouroku_Kouriten
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
                         cf.DisablePanel(PanelTitle);
+                        if (cboMode.SelectedValue.ToString() == "3")
+                        {
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
+                        }
                     }
                 }
                 DataTable dt = txtChangeDate.IsDatatableOccurs;
@@ -383,7 +393,7 @@ namespace MasterTouroku_Kouriten
                 txtKouritenRyakuName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
                 txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
                 txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
-                txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
+               // txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
                 
                 if (dt.Rows[0]["AliasKBN"].ToString() == "1")
                     rdo_AliasKBN1.Checked = true;

@@ -176,6 +176,7 @@
             this.txtTokuisaki.IsDatatableOccurs = null;
             this.txtTokuisaki.IsErrorOccurs = false;
             this.txtTokuisaki.IsRequire = false;
+            this.txtTokuisaki.IsUseInitializedLayout = true;
             this.txtTokuisaki.lblName = null;
             this.txtTokuisaki.Location = new System.Drawing.Point(123, 33);
             this.txtTokuisaki.MaxLength = 10;
@@ -204,6 +205,7 @@
             this.txtStaffCD.IsDatatableOccurs = null;
             this.txtStaffCD.IsErrorOccurs = false;
             this.txtStaffCD.IsRequire = false;
+            this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
             this.txtStaffCD.Location = new System.Drawing.Point(123, 59);
             this.txtStaffCD.MaxLength = 10;
@@ -284,6 +286,7 @@
             this.txtShouhin2.IsDatatableOccurs = null;
             this.txtShouhin2.IsErrorOccurs = false;
             this.txtShouhin2.IsRequire = false;
+            this.txtShouhin2.IsUseInitializedLayout = true;
             this.txtShouhin2.Location = new System.Drawing.Point(816, 60);
             this.txtShouhin2.MaxLength = 20;
             this.txtShouhin2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -308,6 +311,7 @@
             this.txtShouhin1.IsDatatableOccurs = null;
             this.txtShouhin1.IsErrorOccurs = false;
             this.txtShouhin1.IsRequire = false;
+            this.txtShouhin1.IsUseInitializedLayout = true;
             this.txtShouhin1.Location = new System.Drawing.Point(623, 60);
             this.txtShouhin1.MaxLength = 20;
             this.txtShouhin1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -332,6 +336,7 @@
             this.txtShukkaSijiNo2.IsDatatableOccurs = null;
             this.txtShukkaSijiNo2.IsErrorOccurs = false;
             this.txtShukkaSijiNo2.IsRequire = false;
+            this.txtShukkaSijiNo2.IsUseInitializedLayout = true;
             this.txtShukkaSijiNo2.Location = new System.Drawing.Point(755, 34);
             this.txtShukkaSijiNo2.MaxLength = 12;
             this.txtShukkaSijiNo2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -356,6 +361,7 @@
             this.txtShukkaSijiNo1.IsDatatableOccurs = null;
             this.txtShukkaSijiNo1.IsErrorOccurs = false;
             this.txtShukkaSijiNo1.IsRequire = false;
+            this.txtShukkaSijiNo1.IsUseInitializedLayout = true;
             this.txtShukkaSijiNo1.Location = new System.Drawing.Point(623, 33);
             this.txtShukkaSijiNo1.MaxLength = 12;
             this.txtShukkaSijiNo1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -380,6 +386,7 @@
             this.txtShukkaNo2.IsDatatableOccurs = null;
             this.txtShukkaNo2.IsErrorOccurs = false;
             this.txtShukkaNo2.IsRequire = false;
+            this.txtShukkaNo2.IsUseInitializedLayout = true;
             this.txtShukkaNo2.Location = new System.Drawing.Point(754, 7);
             this.txtShukkaNo2.MaxLength = 12;
             this.txtShukkaNo2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -404,6 +411,7 @@
             this.txtShukkaNo1.IsDatatableOccurs = null;
             this.txtShukkaNo1.IsErrorOccurs = false;
             this.txtShukkaNo1.IsRequire = false;
+            this.txtShukkaNo1.IsUseInitializedLayout = true;
             this.txtShukkaNo1.Location = new System.Drawing.Point(623, 7);
             this.txtShukkaNo1.MaxLength = 12;
             this.txtShukkaNo1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -428,6 +436,7 @@
             this.txtShouhinName.IsDatatableOccurs = null;
             this.txtShouhinName.IsErrorOccurs = false;
             this.txtShouhinName.IsRequire = false;
+            this.txtShouhinName.IsUseInitializedLayout = true;
             this.txtShouhinName.Location = new System.Drawing.Point(123, 87);
             this.txtShouhinName.MaxLength = 80;
             this.txtShouhinName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -452,6 +461,7 @@
             this.txtShukkaDate2.IsDatatableOccurs = null;
             this.txtShukkaDate2.IsErrorOccurs = false;
             this.txtShukkaDate2.IsRequire = false;
+            this.txtShukkaDate2.IsUseInitializedLayout = true;
             this.txtShukkaDate2.Location = new System.Drawing.Point(262, 7);
             this.txtShukkaDate2.MaxLength = 10;
             this.txtShukkaDate2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -477,6 +487,7 @@
             this.txtShukkaDate1.IsDatatableOccurs = null;
             this.txtShukkaDate1.IsErrorOccurs = false;
             this.txtShukkaDate1.IsRequire = false;
+            this.txtShukkaDate1.IsUseInitializedLayout = true;
             this.txtShukkaDate1.Location = new System.Drawing.Point(123, 7);
             this.txtShukkaDate1.MaxLength = 10;
             this.txtShukkaDate1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -583,6 +594,7 @@
             this.gvShukkaNo.Size = new System.Drawing.Size(650, 320);
             this.gvShukkaNo.TabIndex = 4;
             this.gvShukkaNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvShukkaNo_CellMouseDoubleClick);
+            this.gvShukkaNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvShukkaNo_KeyDown);
             // 
             // colShukkaNo
             // 

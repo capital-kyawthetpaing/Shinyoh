@@ -45,16 +45,17 @@ namespace Shinyoh
             switch (btn.ButtonType)
             {
                 case ButtonType.BType.Close:
-                    if (bbl.ShowMessage("Q003") == DialogResult.Yes)
-                    {
-                        this.Close();
-                    }
-                    else
-                    {
-                        if (PreviousCtrl != null)
-                            PreviousCtrl.Focus();
-                        return;
-                    }
+                    //if (bbl.ShowMessage("Q003") == DialogResult.Yes)
+                    //{
+                    //    this.Close();
+                    //}
+                    //else
+                    //{
+                    //    if (PreviousCtrl != null)
+                    //        PreviousCtrl.Focus();
+                    //    return;
+                    //}
+                    this.Close();
                     break;
                 case ButtonType.BType.Search:
                 case ButtonType.BType.Save:

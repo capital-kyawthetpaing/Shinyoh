@@ -34,6 +34,7 @@ namespace Shinyoh_Search
             gvShippingNo.SetReadOnlyColumn("colShippingNO,colShippingDate,colCustomerCD,colCustomerName,colJuchuuNO");
             txtShippingDateFrom.Focus();
             gvShippingNo.UseRowNo(true);
+            gvShippingNo.SetReadOnlyColumn("**");//readonly for search form 
         }
         private void ShippingNoSearch_Load(object sender, EventArgs e)
         {
@@ -159,6 +160,14 @@ namespace Shinyoh_Search
                         lblStaffName.Text = string.Empty;
                     }
                 }
+            }
+        }
+
+        private void gvShippingNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetGridviewData(gvShippingNo.Rows[gvShippingNo.CurrentCell.RowIndex]);
             }
         }
     }

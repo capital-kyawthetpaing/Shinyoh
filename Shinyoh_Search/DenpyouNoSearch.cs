@@ -40,9 +40,10 @@ namespace Shinyoh_Search
             gvDenpyouNo.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.TopRight;
             gvDenpyouNo.UseRowNo(true);
             gvDenpyouNo.SetGridDesign();
-            gvDenpyouNo.SetReadOnlyColumn("*");
+            gvDenpyouNo.SetReadOnlyColumn("**");//readonly for search form 
             BindDataGrid();
             cbDivision2.E106Check(true, cbDivision1, cbDivision2);
+            gvDenpyouNo.Select();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -55,6 +56,7 @@ namespace Shinyoh_Search
             if (tagID == "2")
             {
                 BindDataGrid();
+                gvDenpyouNo.Select();
             }
             if (tagID == "3")
             {
@@ -92,13 +94,22 @@ namespace Shinyoh_Search
                 renban = row.Cells[0].Value.ToString();
                 seqno = row.Cells[1].Value.ToString();
                 prefix = row.Cells[2].Value.ToString();
-                this.Close();
             }
+            this.Close();
         }
 
         private void gvDenpyouNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvDenpyouNo.Rows[e.RowIndex]);
+        }
+
+        private void gvDenpyouNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (gvDenpyouNo.CurrentCell != null)
+                    GetGridviewData(gvDenpyouNo.Rows[gvDenpyouNo.CurrentCell.RowIndex]);
+            }
         }
     }
 }

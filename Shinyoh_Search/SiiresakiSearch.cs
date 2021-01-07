@@ -29,24 +29,26 @@ namespace Shinyoh_Search
             rdo_Date.Focus();
 
             gvSupplier.UseRowNo(true);
-            gvSupplier.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;            
+            gvSupplier.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             DataGridviewBind();
 
             txtSupplier2.E106Check(true, txtSupplier1, txtSupplier2);
             gvSupplier.SetGridDesign();
-            gvSupplier.SetReadOnlyColumn("*");
+            gvSupplier.SetReadOnlyColumn("**");//readonly for search form 
             gvSupplier.Select();
         }    
 
         private void btnSupplier_F11_Click(object sender, System.EventArgs e)
         {
             DataGridviewBind();
+            gvSupplier.Select();
         }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
             {
                 DataGridviewBind();
+                gvSupplier.Select();
             }
             if (tagID == "3")
             {
@@ -88,13 +90,22 @@ namespace Shinyoh_Search
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 SiiresakiCD = row.Cells["colSiiresakiCD"].Value.ToString();
                 SiiresakiName = row.Cells["colSiiresakiName"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
-                this.Close();
+            }
+            this.Close();
+        }
+
+        private void gvSupplier_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (gvSupplier.CurrentCell != null)
+                    GetGridviewData(gvSupplier.Rows[gvSupplier.CurrentCell.RowIndex]);
             }
         }
     }

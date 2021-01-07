@@ -43,7 +43,8 @@ namespace Shinyoh_Search
             txtBrand1.E106Check(true, txtBrand, txtBrand1);
 
             dgDetail.SetGridDesign();
-            dgDetail.SetReadOnlyColumn("*");
+            dgDetail.SetReadOnlyColumn("**");//readonly for search form 
+            dgDetail.Select();
         }
 
         private void dgDetail_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -56,6 +57,7 @@ namespace Shinyoh_Search
             if (tagID == "2")
             {
                 BindDataGrid();
+                dgDetail.Select();
             }
             if (tagID == "3")
             {
@@ -125,8 +127,8 @@ namespace Shinyoh_Search
                 DataGridViewRow row = gvrow;
                 shouhinCD = row.Cells["ShouhinCD"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["改定日"].Value.ToString()).ToString("yyyy/MM/dd");
-                this.Close();
             }
+            this.Close();
         }
 
         private void dgDetail_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
@@ -177,6 +179,15 @@ namespace Shinyoh_Search
                 e.PaintBackground(r2, true);
                 e.PaintContent(r2);
                 e.Handled = true;
+            }
+        }
+
+        private void dgDetail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if(dgDetail.CurrentCell != null)
+                    GetGridviewData(dgDetail.Rows[dgDetail.CurrentCell.RowIndex]);
             }
         }
     }

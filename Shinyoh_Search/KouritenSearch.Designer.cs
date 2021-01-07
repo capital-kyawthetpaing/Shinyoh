@@ -503,9 +503,10 @@
             this.colCurrentDay});
             this.gv_Kouriten.Location = new System.Drawing.Point(24, 146);
             this.gv_Kouriten.Name = "gv_Kouriten";
-            this.gv_Kouriten.Size = new System.Drawing.Size(1027, 302);
+            this.gv_Kouriten.Size = new System.Drawing.Size(1020, 302);
             this.gv_Kouriten.TabIndex = 3;
             this.gv_Kouriten.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gv_Kouriten_CellMouseDoubleClick);
+            this.gv_Kouriten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_Kouriten_KeyDown);
             // 
             // colKouritenCD
             // 

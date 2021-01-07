@@ -48,8 +48,8 @@
             // 
             // PanelTitle
             // 
-            this.PanelTitle.Controls.Add(this.txt_Prefix);
             this.PanelTitle.Controls.Add(this.txtSEQNO);
+            this.PanelTitle.Controls.Add(this.txt_Prefix);
             this.PanelTitle.Controls.Add(this.cbDivision);
             this.PanelTitle.Controls.Add(this.lbl3);
             this.PanelTitle.Controls.Add(this.lbl2);
@@ -83,7 +83,7 @@
             this.lbl2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lbl2.ForeColor = System.Drawing.Color.White;
-            this.lbl2.Location = new System.Drawing.Point(25, 29);
+            this.lbl2.Location = new System.Drawing.Point(25, 30);
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(100, 19);
             this.lbl2.TabIndex = 1;
@@ -97,7 +97,7 @@
             this.lbl3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lbl3.ForeColor = System.Drawing.Color.White;
-            this.lbl3.Location = new System.Drawing.Point(25, 50);
+            this.lbl3.Location = new System.Drawing.Point(25, 53);
             this.lbl3.Name = "lbl3";
             this.lbl3.Size = new System.Drawing.Size(100, 19);
             this.lbl3.TabIndex = 2;
@@ -111,7 +111,7 @@
             this.cbDivision.FormattingEnabled = true;
             this.cbDivision.IsDatatableOccurs = null;
             this.cbDivision.IsErrorOccurs = false;
-            this.cbDivision.Location = new System.Drawing.Point(124, 7);
+            this.cbDivision.Location = new System.Drawing.Point(125, 7);
             this.cbDivision.MinimumSize = new System.Drawing.Size(150, 0);
             this.cbDivision.MoveNext = true;
             this.cbDivision.Name = "cbDivision";
@@ -153,7 +153,7 @@
             this.txtCounter.MoveNext = true;
             this.txtCounter.Name = "txtCounter";
             this.txtCounter.NextControl = null;
-            this.txtCounter.NextControlName = "";
+            this.txtCounter.NextControlName = "BtnF12";
             this.txtCounter.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCounter.SearchType = Entity.SearchType.ScType.None;
             this.txtCounter.Size = new System.Drawing.Size(100, 19);
@@ -186,7 +186,7 @@
             this.txt_Prefix.IsRequire = false;
             this.txt_Prefix.IsUseInitializedLayout = true;
             this.txt_Prefix.lblName = null;
-            this.txt_Prefix.Location = new System.Drawing.Point(124, 50);
+            this.txt_Prefix.Location = new System.Drawing.Point(125, 53);
             this.txt_Prefix.MaxLength = 4;
             this.txt_Prefix.MinimumSize = new System.Drawing.Size(50, 19);
             this.txt_Prefix.MoveNext = true;
@@ -197,6 +197,7 @@
             this.txt_Prefix.Size = new System.Drawing.Size(50, 19);
             this.txt_Prefix.TabIndex = 3;
             this.txt_Prefix.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txt_Prefix.TxtBox = null;
             this.txt_Prefix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Prefix_KeyDown);
             // 
             // txtSEQNO
@@ -215,17 +216,18 @@
             this.txtSEQNO.IsRequire = false;
             this.txtSEQNO.IsUseInitializedLayout = true;
             this.txtSEQNO.lblName = null;
-            this.txtSEQNO.Location = new System.Drawing.Point(124, 29);
+            this.txtSEQNO.Location = new System.Drawing.Point(125, 30);
             this.txtSEQNO.MaxLength = 3;
             this.txtSEQNO.MinimumSize = new System.Drawing.Size(40, 19);
             this.txtSEQNO.MoveNext = true;
             this.txtSEQNO.Name = "txtSEQNO";
             this.txtSEQNO.NextControl = null;
             this.txtSEQNO.NextControlName = "txt_Prefix";
-            this.txtSEQNO.SearchType = Entity.SearchType.ScType.None;
+            this.txtSEQNO.SearchType = Entity.SearchType.ScType.Denpyou;
             this.txtSEQNO.Size = new System.Drawing.Size(40, 19);
             this.txtSEQNO.TabIndex = 2;
             this.txtSEQNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtSEQNO.TxtBox = null;
             // 
             // MasterTouroku_DenpyouNO
             // 
@@ -256,7 +258,7 @@
         private Shinyoh_Controls.SLabel lbl4;
         private Shinyoh_Controls.STextBox txtCounter;
         protected System.Windows.Forms.Panel PanelDetail;
-        private Shinyoh_Search.SearchBox txtSEQNO;
         private Shinyoh_Search.SearchBox txt_Prefix;
+        private Shinyoh_Search.SearchBox txtSEQNO;
     }
 }

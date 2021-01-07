@@ -41,7 +41,7 @@ namespace Shinyoh_Search
             txtStaff2.E106Check(true, txtStaff1, txtStaff2);
 
             gvStaff.SetGridDesign();
-            gvStaff.SetReadOnlyColumn("*");
+            gvStaff.SetReadOnlyColumn("**");//readonly for search form 
             gvStaff.Select();
         }
         public override void FunctionProcess(string tagID)
@@ -49,6 +49,7 @@ namespace Shinyoh_Search
             if (tagID == "2")
             {
                 DataGridviewBind();
+                gvStaff.Select();
             }
             if (tagID == "3")
             {
@@ -60,6 +61,7 @@ namespace Shinyoh_Search
         private void btnStaff_F11_Click(object sender, EventArgs e)
         {
             DataGridviewBind();
+            gvStaff.Select();
         }
         private void DataGridviewBind()
         {
@@ -90,19 +92,29 @@ namespace Shinyoh_Search
         
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 staffCD = row.Cells["colStaffCD"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
                 staffName = row.Cells["colStaffName"].Value.ToString();
-                this.Close();
             }
+            this.Close();
         }
 
         private void gvStaff_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvStaff.Rows[e.RowIndex]);
+        }
+
+        private void gvStaff_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //if(gvStaff.Rows.Count >0 )
+                if (gvStaff.CurrentCell != null)
+                    GetGridviewData(gvStaff.Rows[gvStaff.CurrentCell.RowIndex]);
+            }
         }
     }
 }
