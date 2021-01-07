@@ -119,7 +119,7 @@
             this.txtIDName.MoveNext = true;
             this.txtIDName.Name = "txtIDName";
             this.txtIDName.NextControl = null;
-            this.txtIDName.NextControlName = null;
+            this.txtIDName.NextControlName = "btnDisplay";
             this.txtIDName.SearchType = Entity.SearchType.ScType.None;
             this.txtIDName.Size = new System.Drawing.Size(300, 19);
             this.txtIDName.TabIndex = 5;
