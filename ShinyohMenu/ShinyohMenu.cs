@@ -159,6 +159,7 @@ namespace ShinyohMenu
         {
             var exe_name = "";
             string filePath = "";
+            string cmdLine="";
             try
             {
                 if (dtSearch == null)
@@ -181,9 +182,9 @@ namespace ShinyohMenu
                 }
                 else
                 {
-                    filePath = @"C:\\DBConfig\\DBConfig.ini";
+                    filePath = @"C:\DBConfig";
                 }
-                string cmdLine = " " + "001" + " " + OPCD + " " +   Hostname;
+                 cmdLine = " " + "001" + " " + OPCD + " " +   Hostname;
                 Process[] localByName = Process.GetProcessesByName(exe_name);
                 if (localByName.Count() > 0)
                 {
@@ -198,7 +199,7 @@ namespace ShinyohMenu
             }
             catch (Exception ex)
             {
-                MessageBox.Show("The program cannot locate to the specified file!!!");
+                MessageBox.Show("The program cannot locate to the specified file!!!" +  Environment.NewLine + ex.StackTrace + "Path" + filePath + @"\" + exe_name + ".exe" +","+ cmdLine);
             }
         }
         private void panelLeft_Click(object sender, EventArgs e)
