@@ -219,8 +219,8 @@ namespace Shinyoh_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ErrorCheck();
-                base.OnKeyDown(e);
+                if(!ErrorCheck())
+                    base.OnKeyDown(e);
             }
         }
 
@@ -354,6 +354,17 @@ namespace Shinyoh_Controls
                             this.Text = Text + "." + p[1].ToString();
                         }
                     }
+                }
+            }
+
+            if (this.TopLevelControl != null)
+            {
+                Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
                 }
             }
 
