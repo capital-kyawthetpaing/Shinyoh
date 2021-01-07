@@ -24,8 +24,6 @@ namespace Shinyoh_Search
         public MultiPorposeSearch()
         {
             InitializeComponent();
-            gvMultiporpose.SetGridDesign();
-            gvMultiporpose.SetReadOnlyColumn("*");
         }
 
         private void MultiPorposeSearch_Load(object sender, EventArgs e)
@@ -38,6 +36,7 @@ namespace Shinyoh_Search
             txtID2.E106Check(true, txtID1, txtID2);
             txtKey2.E106Check(true, txtKey1, txtKey2);
             gvMultiporpose.Select();
+            gvMultiporpose.SetGridDesign();
             gvMultiporpose.SetReadOnlyColumn("**");//readonly for search form 
             txtID1.Focus();
         }
@@ -69,19 +68,13 @@ namespace Shinyoh_Search
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
                 Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
-                this.Close();
             }
-            //if (gvMultiporpose.CurrentRow != null && gvMultiporpose.CurrentRow.Index >= 0)
-            //{
-            //    Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
-            //    Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
-            //    this.Close();
-            //}
+            this.Close();
         }
         private void gvMultiporpose_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -97,6 +90,7 @@ namespace Shinyoh_Search
         {
             if (e.KeyCode == Keys.Enter)
             {
+                if(gvMultiporpose.CurrentCell!=null)
                 GetGridviewData(gvMultiporpose.Rows[gvMultiporpose.CurrentCell.RowIndex]);
             }
         }

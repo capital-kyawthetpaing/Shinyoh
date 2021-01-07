@@ -219,8 +219,8 @@ namespace Shinyoh_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ErrorCheck();
-                base.OnKeyDown(e);
+                if(!ErrorCheck())
+                    base.OnKeyDown(e);
             }
         }
 
@@ -321,6 +321,53 @@ namespace Shinyoh_Controls
         }
         protected override void OnLeave(EventArgs e)
         {
+            if (SType == STextBoxType.Price)
+            {
+                string value = Text.Replace(",", "");
+                int num;
+                int a = Convert.ToInt32(this.DecimalPlace);
+
+                if (Int32.TryParse(value, out num))
+                {
+                    if (!Text.Equals("0"))
+                        Text = string.Format("{0:#,#}", num);
+                }
+                else if (string.IsNullOrWhiteSpace(value))
+                    Text = "0";
+                else
+                {
+                    Text = string.Format("{0:#,#}", value);
+
+                    string[] p = Text.Split('.');
+                    if (a != p[1].Length)
+                    {
+                        bbl.ShowMessage("E118");
+                        this.Focus();
+                    }
+                    else
+                    {
+                        Text = p[0].ToString();
+                        if (Int32.TryParse(Text, out num))
+                        {
+                            if (!Text.Equals("0"))
+                                Text = string.Format("{0:#,#}", num);
+                            this.Text = Text + "." + p[1].ToString();
+                        }
+                    }
+                }
+            }
+
+            if (this.TopLevelControl != null)
+            {
+                Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
+
             this.BackColor = Color.White;
             base.OnLeave(e);
         }

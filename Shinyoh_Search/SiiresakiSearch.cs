@@ -79,8 +79,9 @@ namespace Shinyoh_Search
                     lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                     //dt.Columns.Remove("CurrentDay");
                 }
+                dt.Columns.Remove("CurrentDay");
             }
-            dt.Columns.Remove("CurrentDay");
+            //dt.Columns.Remove("CurrentDay");
             gvSupplier.DataSource = dt;
         }
 
@@ -104,7 +105,8 @@ namespace Shinyoh_Search
         {
             if (e.KeyCode == Keys.Enter)
             {
-                GetGridviewData(gvSupplier.Rows[gvSupplier.CurrentCell.RowIndex]);
+                if (gvSupplier.CurrentCell != null)
+                    GetGridviewData(gvSupplier.Rows[gvSupplier.CurrentCell.RowIndex]);
             }
         }
     }

@@ -96,11 +96,6 @@ namespace ChakuniNyuuryoku
             {
                 case Mode.New:
                     ErrorCheck();
-                    cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
-                    cf.EnablePanel(PanelTitle);
-                    cf.EnablePanel(panelDetails);
-                    txtArrivalNO.Focus();
                     New_Mode();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -132,9 +127,9 @@ namespace ChakuniNyuuryoku
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(panelDetails);
+            cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(panelDetails);
+            cf.DisablePanel(PanelDetail);
             lblSiiresaki.Text = string.Empty;
             lblStaff.Text = string.Empty;
             lblBrandName.Text = string.Empty;
@@ -144,10 +139,10 @@ namespace ChakuniNyuuryoku
         private void New_Mode()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(panelDetails);
-            cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(panelDetails);
-            txtArrivalNO.Focus();
+            cf.Clear(PanelDetail);
+            cf.DisablePanel(PanelTitle);
+            cf.EnablePanel(PanelDetail);
+            txtArrivalDate.Focus();
             tdDate = DateTime.Now.ToString("yyyy/MM/dd");
             txtArrivalDate.Text = tdDate;
             StaffEntity staffEntity = new StaffEntity
@@ -165,7 +160,7 @@ namespace ChakuniNyuuryoku
         }
         public void ErrorCheck()
         {
-            txtArrivalNO.E102Check(true);
+            //txtArrivalNO.E102Check(true);
             txtArrivalDate.E102Check(true);
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
@@ -238,7 +233,7 @@ namespace ChakuniNyuuryoku
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails) && Temp_Null())
+                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -272,7 +267,7 @@ namespace ChakuniNyuuryoku
         public void Clear()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(panelDetails);
+            cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
             lblSiiresaki.Text = string.Empty;
             lblStaff.Text = string.Empty;
@@ -585,7 +580,7 @@ namespace ChakuniNyuuryoku
                 {
                     if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString()=="1")
                     {
-                        cf.EnablePanel(panelDetails);
+                        cf.EnablePanel(PanelDetail);
                         cf.DisablePanel(PanelTitle);
                         txtArrivalDate.Focus();
                     }
@@ -721,47 +716,80 @@ namespace ChakuniNyuuryoku
         }
         private void gvChakuniNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (gvChakuniNyuuryoku.Columns[e.ColumnIndex].Name == "colArrivalTime")
+            if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
             {
-                var value = gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString();
-                if (Convert.ToInt64(value) < 0)
+                Temp_Save(e.RowIndex);
+            }
+            //dtGridview();
+            //    if (!gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0"))
+            //    {
+            //        if (gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniSuu"].ToString() &&   gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colDetails"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniMeisaiTekiyou"].ToString())
+            //        { 
+            //            return;
+            //        }
+            //        else
+            //        {
+            //            if (dtGS1.Rows.Count > 0)
+            //            {
+            //                for (int i = dtGS1.Rows.Count - 1; i >= 0; i--)
+            //                {
+            //                    string data = dtGS1.Rows[i]["ChakuniSuu"].ToString();
+            //                    if (gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].Value.ToString() == data)
+            //                    {
+            //                        dtGS1.Rows[i].Delete();
+            //                    }
+            //                }
+            //            }
+            //        DataRow dr1 = dtGS1.NewRow();
+            //        for (int i = 0; i < dtGS1.Columns.Count; i++)
+            //        {
+            //            dr1[i] = gvChakuniNyuuryoku[i + 1, e.RowIndex].EditedFormattedValue;
+            //        }
+            //            dtGS1.Rows.Add(dr1);
+            //        }
+            //    }
+        }
+        private void Temp_Save(int row)
+        {
+            if ((!gvChakuniNyuuryoku.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0")))
+            {
+                dtGridview();
+                if (dtGS1.Rows.Count > 0)
+                {
+                    for (int i = dtGS1.Rows.Count - 1; i >= 0; i--)
+                    {
+                        string data = dtGS1.Rows[i]["ChakuniSuu"].ToString();
+                        if (gvChakuniNyuuryoku.Rows[row].Cells["colArrivalTime"].Value.ToString() == data)
+                        {
+                            dtGS1.Rows[i].Delete();
+                        }
+                    }
+                }
+
+                DataRow dr1 = dtGS1.NewRow();
+                for (int i = 0; i < dtGS1.Columns.Count; i++)
+                {
+                    dr1[i] = gvChakuniNyuuryoku[i, row].EditedFormattedValue;
+                }
+                dtGS1.Rows.Add(dr1);
+            }
+        }
+        private bool Grid_ErrorCheck(int row, int col)
+        {
+            if (gvChakuniNyuuryoku.Columns[col].Name == "colArrivalTime")
+            {
+                string value = gvChakuniNyuuryoku.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString().Replace(",", "");
+                if (Convert.ToInt32(value) < 0)
                 {
                     bbl.ShowMessage("E109");
-                    return;
+                    return false;
                 }
                 else
                 {
                     gvChakuniNyuuryoku.MoveNextCell();
                 }
             }
-            dtGridview();
-                if (!gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0"))
-                {
-                    if (gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniSuu"].ToString() &&   gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colDetails"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniMeisaiTekiyou"].ToString())
-                    { 
-                        return;
-                    }
-                    else
-                    {
-                        if (dtGS1.Rows.Count > 0)
-                        {
-                            for (int i = dtGS1.Rows.Count - 1; i >= 0; i--)
-                            {
-                                string data = dtGS1.Rows[i]["ChakuniSuu"].ToString();
-                                if (gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].Value.ToString() == data)
-                                {
-                                    dtGS1.Rows[i].Delete();
-                                }
-                            }
-                        }
-                    DataRow dr1 = dtGS1.NewRow();
-                    for (int i = 0; i < dtGS1.Columns.Count; i++)
-                    {
-                        dr1[i] = gvChakuniNyuuryoku[i + 1, e.RowIndex].EditedFormattedValue;
-                    }
-                        dtGS1.Rows.Add(dr1);
-                    }
-                }
+            return true;
         }
 
         private void txtArrivalDate_KeyDown(object sender, KeyEventArgs e)

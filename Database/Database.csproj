@@ -142,6 +142,7 @@
     <Content Include="StoreProcedure\M_Staff_Select.sql" />
     <Content Include="StoreProcedure\M_Tokuisaki_CUD.sql" />
     <Content Include="StoreProcedure\M_Tokuisaki_Select.sql" />
+    <Content Include="StoreProcedure\Shinyoh_Test.sql" />
     <Content Include="StoreProcedure\ShippingNo_Search.sql" />
     <Content Include="StoreProcedure\ShukkaNo_Search.sql" />
     <Content Include="StoreProcedure\ShukkaNyuuryoku_CUD.sql" />

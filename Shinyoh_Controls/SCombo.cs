@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using BL;
 using CKM_CommonFunction;
@@ -220,6 +221,29 @@ namespace Shinyoh_Controls
             E106 = value;
             ctrlE106_1 = ctrl1;
             ctrlE106_2 = ctrl2;
+        }
+
+        [DllImport("gdi32.dll")]
+        internal static extern IntPtr CreateSolidBrush(int color);
+
+        [DllImport("gdi32.dll")]
+        internal static extern int SetBkColor(IntPtr hdc, int color);
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            IntPtr brush;
+            switch (m.Msg)
+            {
+
+                case (int)312:
+                    SetBkColor(m.WParam, ColorTranslator.ToWin32(this.BackColor));
+                    brush = CreateSolidBrush(ColorTranslator.ToWin32(this.BackColor));
+                    m.Result = brush;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
