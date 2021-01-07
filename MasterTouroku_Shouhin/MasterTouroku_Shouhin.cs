@@ -641,10 +641,14 @@ namespace MasterTouroku_Shouhin
         {
             bl = false;
             int n;
+            decimal d;
             if(!int.TryParse(obj_text, out n))
             {
-                bbl.ShowMessage("E276", line_no.ToString(), error_msg);
-                bl = true;
+                if(!decimal.TryParse(obj_text, out d))
+                {
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                    bl = true;
+                }
             }
             return bl;
         }
