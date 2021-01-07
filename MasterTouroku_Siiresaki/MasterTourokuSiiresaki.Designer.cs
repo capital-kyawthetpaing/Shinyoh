@@ -309,6 +309,7 @@
             this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
             this.txtStaffCD.TabIndex = 26;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCD.TxtBox = null;
             // 
             // lblStaffCD_Name
             // 
@@ -372,7 +373,7 @@
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.NextControl = null;
-            this.txtSearch.NextControlName = "BtnF1";
+            this.txtSearch.NextControlName = "BtnF12";
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(50, 19);
             this.txtSearch.TabIndex = 30;
@@ -1330,6 +1331,7 @@
             this.txtCopyCD.Size = new System.Drawing.Size(90, 19);
             this.txtCopyCD.TabIndex = 3;
             this.txtCopyCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtCopyCD.TxtBox = null;
             // 
             // txtSupplierCD
             // 
@@ -1358,6 +1360,7 @@
             this.txtSupplierCD.Size = new System.Drawing.Size(90, 19);
             this.txtSupplierCD.TabIndex = 1;
             this.txtSupplierCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSupplierCD.TxtBox = null;
             // 
             // MasterTourokuSiiresaki
             // 
