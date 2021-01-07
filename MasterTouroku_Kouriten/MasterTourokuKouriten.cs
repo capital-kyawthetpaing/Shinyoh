@@ -91,7 +91,7 @@ namespace MasterTouroku_Kouriten
                     txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
                     txtCopyDate.E133Check(true, "M_Kouriten", txtCopyCD, txtCopyDate, txtTokuisakiCD_Copy);
 
-                    txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                   // txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
                     txtCopyCD.Enabled = true;
@@ -109,7 +109,7 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
-                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                    //txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -121,7 +121,7 @@ namespace MasterTouroku_Kouriten
 
                     txtChangeDate.E270Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate,txtTokuisakiCD);
 
-                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                   // txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -132,7 +132,7 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
-                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                   // txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
                     Disable_UDI_Mode();
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -177,7 +177,7 @@ namespace MasterTouroku_Kouriten
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
 
             txtTokuisakiCD.E102Check(true);
-            //txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
             txtStaffCD.E102Check(true);
             
