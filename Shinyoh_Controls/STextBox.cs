@@ -219,8 +219,8 @@ namespace Shinyoh_Controls
         {
             if (e.KeyCode == Keys.Enter)
             {
-                ErrorCheck();
-                base.OnKeyDown(e);
+                if(!ErrorCheck())
+                    base.OnKeyDown(e);
             }
         }
 
