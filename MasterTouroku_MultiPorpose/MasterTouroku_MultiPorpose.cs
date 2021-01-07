@@ -270,6 +270,11 @@ namespace MasterTouroku_MultiPorpose
                         cf.DisablePanel(PanelTitle);
                         Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
                         BtnF9.Visible = false;
+                        if (cboMode.SelectedValue.ToString() == "3")
+                        {
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
+                        }
                     }
                     else if (dt.Rows.Count == 0 && (cboMode.SelectedValue.ToString() != "1"))
                     {
@@ -298,25 +303,43 @@ namespace MasterTouroku_MultiPorpose
             {
                 DataTable dt = new DataTable();
                 multipurposeEntity mentity = new multipurposeEntity();
-                mentity.ID = txtCopyID.Text;
-                mentity.Key = txtKEYCopy.Text;
-                dt = mbl.M_Multiporpose_SelectData(string.Empty, 2, txtCopyID.Text, txtKEYCopy.Text);
-                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() == "1")
+                
+                if ( cboMode.SelectedValue.ToString() == "1")
                 {
-                    DisplayData(dt);
-                    cf.EnablePanel(PanelDetail);
-                    txtIDName.Focus();
-                    cf.DisablePanel(PanelTitle);
+                    if (!string.IsNullOrEmpty(txtCopyID.Text) && !string.IsNullOrEmpty(txtKEYCopy.Text))
+                    {
+                        mentity.ID = txtCopyID.Text;
+                        mentity.Key = txtKEYCopy.Text;
+                        dt = mbl.M_Multiporpose_SelectData(string.Empty, 2, txtCopyID.Text, txtKEYCopy.Text);
+                        if(dt.Rows.Count>0)
+                        {
+                            DisplayData(dt);
+                            cf.EnablePanel(PanelDetail);
+                            txtIDName.Focus();
+                            cf.DisablePanel(PanelTitle);
+                        }
+                        else
+                        {
+                            bbl.ShowMessage("E133");
+                            txtCopyID.Focus();
+                        }
+                    }
+                    else if (string.IsNullOrEmpty(txtCopyID.Text) && string.IsNullOrEmpty(txtKEYCopy.Text))
+                    {
+                        cf.EnablePanel(PanelDetail);
+                        cf.DisablePanel(PanelTitle);
+                        txtIDName.Focus();
+                    }
+                    else if (string.IsNullOrEmpty(txtCopyID.Text) || string.IsNullOrEmpty(txtKEYCopy.Text))
+                    {
+                        bbl.ShowMessage("E133");
+                        txtCopyID.Focus();
+                    }
                 }
-                else if(cboMode.SelectedValue.ToString()=="2" || cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
-                {
-                    Disable_UDI_Mode();
-                }
-                else
-                {
-                    bbl.ShowMessage("E133");
-                    txtKEYCopy.Focus();
-                }
+                //else if(cboMode.SelectedValue.ToString()=="2" || cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                //{
+                //    Disable_UDI_Mode();
+                //}
             }
         }
     }
