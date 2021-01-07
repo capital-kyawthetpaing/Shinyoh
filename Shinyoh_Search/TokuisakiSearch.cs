@@ -90,9 +90,9 @@ namespace Shinyoh_Search {
                 DataGridViewRow row = gvrow;
                 Tokuisaki = row.Cells["colTokuisakiCD"].Value.ToString();
                 ChangeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
-                TokuisakiRyakuName = row.Cells["colTokuisakiRyakuName"].Value.ToString();
-                this.Close();
+                TokuisakiRyakuName = row.Cells["colTokuisakiRyakuName"].Value.ToString();              
             }
+            this.Close();
         }  
         private void btnTokuisaki_F11_Click(object sender, EventArgs e)
         {
