@@ -69,19 +69,13 @@ namespace Shinyoh_Search
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
                 Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
                 this.Close();
             }
-            //if (gvMultiporpose.CurrentRow != null && gvMultiporpose.CurrentRow.Index >= 0)
-            //{
-            //    Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
-            //    Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
-            //    this.Close();
-            //}
         }
         private void gvMultiporpose_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -97,6 +91,7 @@ namespace Shinyoh_Search
         {
             if (e.KeyCode == Keys.Enter)
             {
+                if(gvMultiporpose.CurrentCell!=null)
                 GetGridviewData(gvMultiporpose.Rows[gvMultiporpose.CurrentCell.RowIndex]);
             }
         }
