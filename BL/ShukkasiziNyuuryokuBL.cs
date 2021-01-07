@@ -114,9 +114,9 @@ namespace BL
         public string Shukkasizi_Price( string shukkasizisuu, string JuchuuNO)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
+            var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@KonkaiShukkaSiziSuu", SqlDbType.VarChar) { Value = shukkasizisuu};
-            parameters[1] = new SqlParameter("@JuchuuNO_JuchuuGyouNO", SqlDbType.Xml) { Value = JuchuuNO };
+            parameters[1] = new SqlParameter("@JuchuuNO_JuchuuGyouNO", SqlDbType.VarChar) { Value = JuchuuNO };
             return ckmdl.InsertUpdateDeleteData("Shukkasizi_Price", GetConnectionString(), parameters);
         }
         public DataTable GetShippingNo(string SerialNO, string ShippingDate, string SEQNO)

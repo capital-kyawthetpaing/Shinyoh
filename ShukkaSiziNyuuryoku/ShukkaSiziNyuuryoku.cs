@@ -104,7 +104,7 @@ namespace ShukkaSiziNyuuryoku
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails)&& Temp_Null())
+                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail)&& Temp_Null())
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -629,7 +629,7 @@ namespace ShukkaSiziNyuuryoku
                     if (cboMode.SelectedValue.ToString() == "2")
                     {
                         cf.DisablePanel(PanelTitle);
-                        cf.EnablePanel(panelDetails);
+                        cf.EnablePanel(PanelDetail);
                         txtShippingDate.Focus();
                     }
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
@@ -943,9 +943,9 @@ namespace ShukkaSiziNyuuryoku
             {
                 case 1://New_Mode
                     cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
+                    cf.Clear(PanelDetail);
                     cf.DisablePanel(PanelTitle);
-                    cf.EnablePanel(panelDetails);
+                    cf.EnablePanel(PanelDetail);
                     txtShippingDate.Focus();
                     rdoNeed.Checked = true;
                     tdDate = System.DateTime.Now.ToString("yyyy/MM/dd");
@@ -962,9 +962,9 @@ namespace ShukkaSiziNyuuryoku
 
                 case 2://F3
                     cf.Clear(PanelTitle);
-                    cf.Clear(panelDetails);
+                    cf.Clear(PanelDetail);
                     cf.EnablePanel(PanelTitle);
-                    cf.DisablePanel(panelDetails);
+                    cf.DisablePanel(PanelDetail);
                     sbShippingNO.Focus();
                     break;
 
