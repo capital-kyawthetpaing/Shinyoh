@@ -345,6 +345,11 @@ namespace MasterTouroku_Shouhin
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
                         cf.DisablePanel(PanelTitle);
+                        if (cboMode.SelectedValue.ToString() == "3")
+                        {
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
+                        }
                     }
                 }
                 DataTable dt = txtChangeDate.IsDatatableOccurs;
@@ -453,7 +458,7 @@ namespace MasterTouroku_Shouhin
             }
             else
             {
-                pImage.ImageLocation = txtImage.Text;
+                pImage.Image = (Image)Properties.Resources.ResourceManager.GetObject(txtImage.Text);
             }
         }
 

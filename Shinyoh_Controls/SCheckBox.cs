@@ -42,6 +42,7 @@ namespace Shinyoh_Controls
                     NextControl.Focus();
                 base.OnKeyDown(e);
             }
+            base.OnKeyDown(e);
         }
         protected override void OnEnter(EventArgs e)
         {
