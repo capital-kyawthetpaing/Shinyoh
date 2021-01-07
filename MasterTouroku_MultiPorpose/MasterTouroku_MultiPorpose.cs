@@ -304,15 +304,10 @@ namespace MasterTouroku_MultiPorpose
                 if (dt.Rows.Count > 0)
                 {
                     DisplayData(dt);
-                    cf.EnablePanel(PanelDetail);
-                    txtIDName.Focus();
-                    cf.DisablePanel(PanelTitle);
                 }
-               else
-               {
-                    bbl.ShowMessage("E133");
-                    txtKEYCopy.Focus();
-                }
+                cf.EnablePanel(PanelDetail);
+                txtIDName.Focus();
+                cf.DisablePanel(PanelTitle);
             }
         }
     }
