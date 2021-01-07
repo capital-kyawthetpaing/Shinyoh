@@ -146,11 +146,13 @@ namespace ShukkaSiziNyuuryoku
                     break;
                 case Mode.Delete:
                     ModeType(2);
+                    Form_ErrorCheck();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
                     ModeType(2);
+                    Form_ErrorCheck();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
@@ -231,13 +233,20 @@ namespace ShukkaSiziNyuuryoku
         {
             if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
             {
+                if(cboMode.SelectedValue.ToString().Equals("2"))
+                {
+                    dtResult.Clear();
+                    dtTemp1.Clear();
+                }
                 Temp_Save(e.RowIndex);
             }
         }
+
         //DataTable
         private void ShukkasiziNyuuryoku_Header_Select(DataTable dt)
         {
-            //Header            
+            //Header 
+            txtShippingDate.Text= dt.Rows[0]["ShukkaYoteiDate"].ToString();
             sbTokuisaki.Text = dt.Rows[0]["TokuisakiCD"].ToString();
             lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
             sbKouriten.Text = dt.Rows[0]["KouritenCD"].ToString();
@@ -609,6 +618,7 @@ namespace ShukkaSiziNyuuryoku
             dt.AcceptChanges();
             return dt;
         }
+
         //KeyDown_Event
         private void sbShippingNO_KeyDown(object sender, KeyEventArgs e)
         {
@@ -627,12 +637,17 @@ namespace ShukkaSiziNyuuryoku
                         cf.DisablePanel(PanelTitle);
                     }
                 }
-                DataTable dt = new DataTable();
-                dt = sbShippingNO.IsDatatableOccurs;
-                if (dt.Rows.Count > 0 && (cboMode.SelectedValue.ToString() != "1"))
+                //DataTable dt = new DataTable();
+                //dt = sbShippingNO.IsDatatableOccurs;
+                if(!sbShippingNO.IsErrorOccurs && (cboMode.SelectedValue.ToString() != "1"))
                 {
                     Update_Data();
+                    //if (dt.rows.count > 0 && (cbomode.selectedvalue.tostring() != "1"))
+                    //{
+                    //    update_data();
+                    //}
                 }
+                
             }
         }
         private void txtShippingDate_KeyDown(object sender, KeyEventArgs e)
@@ -761,6 +776,7 @@ namespace ShukkaSiziNyuuryoku
             }
 
         }
+
         //Error_Check
         private void Form_ErrorCheck()
         {
@@ -791,7 +807,7 @@ namespace ShukkaSiziNyuuryoku
             }
             else
             {
-                sbShippingNO.E102Check(true);
+               sbShippingNO.E102Check(true);
                 //sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
                 sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
                 sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null);
@@ -802,7 +818,7 @@ namespace ShukkaSiziNyuuryoku
         }
         private bool Temp_Null()
         {
-            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp1.Rows.Count == 0)
+            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp1.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && dtTemp1.Rows.Count == 0)
             {
                 bbl.ShowMessage("E274");
                 return false;
@@ -989,33 +1005,15 @@ namespace ShukkaSiziNyuuryoku
         //F12
         private void DBProcess()
         {
-            string mode = string.Empty;
-            (string, string) obj = GetInsert();
-            if (cboMode.SelectedValue.Equals("1"))
-            {
-                mode = "New";
-                DoInsert(mode, obj.Item1, obj.Item2);
-            }
-            else if (cboMode.SelectedValue.Equals("2"))
-            {
-                mode = "Update";
-                DoUpdate(mode, obj.Item1, obj.Item2);
-            }
+            (string,string, string) obj = GetInsert();            
+            ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
         }
-
-        private void DoUpdate(string mode, string str_main, string str_detail)
-        {
-            sksz_bl = new ShukkasiziNyuuryokuBL();
-            sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_main, str_detail);
-        }
-
-        private (string, string) GetInsert()
+        private (string, string, string) GetInsert()
         {
             TokuisakiEntity t_obj = td.Access_Tokuisaki_obj;
             KouritenEntity k_obj = kd.Access_Kouriten_obj;
 
             dtResult = CreateTable_Header();
-
            
             DataRow dr = dtResult.NewRow();
             sksz_bl = new ShukkasiziNyuuryokuBL();
@@ -1076,14 +1074,40 @@ namespace ShukkaSiziNyuuryoku
             string Header_XML = cf.DataTableToXml(dtResult);
             string Detail_XML = cf.DataTableToXml(dtTemp1);
 
-            return (Header_XML, Detail_XML);
+            string Mode = string.Empty;
+            if (cboMode.SelectedValue.Equals("1"))
+            {
+                Mode = "New";
+            }
+            else if (cboMode.SelectedValue.Equals("2"))
+            {
+                Mode = "Update";
+            }
+            else if (cboMode.SelectedValue.Equals("3"))
+            {
+                Mode = "Delete";
+            }
+
+            return (Mode,Header_XML, Detail_XML);
         }
-        private void DoInsert(string mode, string str_main, string str_detail)
+        private void DoInsert(string mode, string str_header, string str_detail)
         {
             sksz_bl = new ShukkasiziNyuuryokuBL();
-            sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_main, str_detail);
+            sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_header, str_detail);
         }
-       
+        private void DoUpdate(string mode, string str_header, string str_detail)
+        {
+            sksz_bl = new ShukkasiziNyuuryokuBL();
+            sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_header, str_detail);
+        }
+        private void DoDelete(string mode, string str_header, string str_detail)
+        {
+            throw new NotImplementedException();
+        }
+        private void ShukkasiziNyuuryoku_IUD(string mode, string str_header, string str_detail)
+        {
+            sksz_bl = new ShukkasiziNyuuryokuBL();
+            sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_header, str_detail);
+        }
     }
-
 }
