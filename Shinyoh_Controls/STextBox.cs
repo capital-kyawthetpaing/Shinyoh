@@ -357,6 +357,17 @@ namespace Shinyoh_Controls
                 }
             }
 
+            if (this.TopLevelControl != null)
+            {
+                Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
+
             this.BackColor = Color.White;
             base.OnLeave(e);
         }
