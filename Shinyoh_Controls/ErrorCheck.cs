@@ -175,8 +175,10 @@ namespace Shinyoh_Controls
             
             if (sTextBox.E104)
             {
-                if(!string.IsNullOrEmpty(sTextBox.ctrlE104_2.Text))
+                if (cf.CheckDateValue(sTextBox.ctrlE104_2.Text) && cf.CheckDateValue(sTextBox.ctrlE104_1.Text))
                 {
+                    //if(!string.IsNullOrEmpty(sTextBox.ctrlE104_2.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE104_1.Text))
+                    //{
                     DateTime LDate = Convert.ToDateTime(sTextBox.ctrlE104_2.Text);
                     DateTime JDate = Convert.ToDateTime(sTextBox.ctrlE104_1.Text);
                     if (JDate.Date > LDate.Date)

@@ -33,13 +33,22 @@ namespace Shinyoh_Search {
             GridViewBind();
             txtSouko2.E106Check(true, txtSouko1, txtSouko2);
             gvSouko.SetGridDesign();
-            gvSouko.SetReadOnlyColumn("*");
+            gvSouko.SetReadOnlyColumn("**");//readonly for search form 
+            selectRow();
+        }
+        private void selectRow()
+        {
+            //gvSouko.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            //gvSouko.CurrentRow.Selected = true;
+            gvSouko.Enabled = true;
+            gvSouko.Select();
         }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
             {
                 GridViewBind();
+                selectRow();
             }
             if (tagID == "3")
             {
@@ -64,20 +73,30 @@ namespace Shinyoh_Search {
         {
             FunctionProcess(BtnF11_Soko.Tag.ToString());
             GridViewBind();
+            selectRow();
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 soukoCD= row.Cells["colSouko"].Value.ToString();
-                soukoName = row.Cells["colSoukoName"].Value.ToString();
-                this.Close();
+                soukoName = row.Cells["colSoukoName"].Value.ToString();                
             }
+            this.Close();
         }
         private void gvSouko_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvSouko.Rows[e.RowIndex]);
+        }
+
+        private void gvSouko_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (gvSouko.CurrentCell != null)
+                    GetGridviewData(gvSouko.Rows[gvSouko.CurrentCell.RowIndex]);
+            }
         }
     }
 }

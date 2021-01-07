@@ -36,13 +36,15 @@ namespace Shinyoh_Search {
 
             txtTokuisaki2.E106Check(true, txtTokuisaki1, txtTokuisaki2);
             gvTokuisaki.SetGridDesign();
-            gvTokuisaki.SetReadOnlyColumn("*");
+            gvTokuisaki.SetReadOnlyColumn("**");//readonly for search form 
+            gvTokuisaki.Select();
         }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
             {
                 DataGridviewBind();
+                gvTokuisaki.Select();
             }
             if (tagID == "3")
             {
@@ -83,18 +85,28 @@ namespace Shinyoh_Search {
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 Tokuisaki = row.Cells["colTokuisakiCD"].Value.ToString();
                 ChangeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
-                TokuisakiRyakuName = row.Cells["colTokuisakiRyakuName"].Value.ToString();
-                this.Close();
+                TokuisakiRyakuName = row.Cells["colTokuisakiRyakuName"].Value.ToString();              
             }
+            this.Close();
         }  
         private void btnTokuisaki_F11_Click(object sender, EventArgs e)
         {
             DataGridviewBind();
+            gvTokuisaki.Select();
+        }
+
+        private void gvTokuisaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (gvTokuisaki.CurrentCell != null)
+                    GetGridviewData(gvTokuisaki.Rows[gvTokuisaki.CurrentCell.RowIndex]);
+            }
         }
     }
 }

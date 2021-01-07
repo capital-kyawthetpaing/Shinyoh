@@ -85,12 +85,13 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate,null);
 
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
-
+                    
 
                     txtCopyDate.E103Check(true);
                     txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
                     txtCopyDate.E133Check(true, "M_Kouriten", txtCopyCD, txtCopyDate, txtTokuisakiCD_Copy);
 
+                   // txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
                     txtCopyCD.Enabled = true;
@@ -108,6 +109,8 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
+                    //txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
@@ -118,6 +121,7 @@ namespace MasterTouroku_Kouriten
 
                     txtChangeDate.E270Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate,txtTokuisakiCD);
 
+                   // txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -128,6 +132,7 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
+                   // txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
                     Disable_UDI_Mode();
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -138,16 +143,16 @@ namespace MasterTouroku_Kouriten
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
+            cf.Clear(PanelDetail);
             rdo_AliasKBN1.Checked = true;
             lblStaffCD_Name.Text = string.Empty;
            
 
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
+            cf.DisablePanel(PanelDetail);
 
             txtTokuisakiCD.Focus();
-            txtKensakuHyouziJun.Text = "0";
+           // txtKensakuHyouziJun.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
            
 
@@ -175,7 +180,7 @@ namespace MasterTouroku_Kouriten
             txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
             txtStaffCD.E102Check(true);
-            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
+            
 
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
@@ -236,8 +241,8 @@ namespace MasterTouroku_Kouriten
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
-                {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                //{
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -254,7 +259,7 @@ namespace MasterTouroku_Kouriten
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
-                }
+                //}
             }
 
             base.FunctionProcess(tagID);
@@ -368,7 +373,7 @@ namespace MasterTouroku_Kouriten
         }
         private void EnablePanel()
         {
-            cf.EnablePanel(Panel_Detail);
+            cf.EnablePanel(PanelDetail);
             chk_Flag.Focus();
             cf.DisablePanel(PanelTitle);
         }
@@ -383,7 +388,7 @@ namespace MasterTouroku_Kouriten
                 txtKouritenRyakuName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
                 txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
                 txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
-                txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
+               // txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
                 
                 if (dt.Rows[0]["AliasKBN"].ToString() == "1")
                     rdo_AliasKBN1.Checked = true;
@@ -419,12 +424,19 @@ namespace MasterTouroku_Kouriten
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtCopyDate.IsErrorOccurs)
+                if (ErrorCheck(PanelTitle))
                 {
-                    EnablePanel();
-                    DataTable dt = txtCopyDate.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        From_DB_To_Form(dt);
+                    if (!txtCopyDate.IsErrorOccurs)
+                    {
+                        EnablePanel();
+                        DataTable dt = txtCopyDate.IsDatatableOccurs;
+                        if (dt.Rows.Count > 0)
+                            From_DB_To_Form(dt);
+                    }
+                }
+                else
+                {
+                    cf.Clear(PanelDetail);
                 }
             }
         }

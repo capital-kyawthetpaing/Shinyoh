@@ -198,8 +198,8 @@ namespace MasterTouroku_Tokuisaki {
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
-                {
+               // if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+               // {
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -215,7 +215,7 @@ namespace MasterTouroku_Tokuisaki {
                         case "4":
                             ChangeMode(Mode.Inquiry);
                             break;
-                    }
+                   // }
                 }
             }
 
@@ -348,6 +348,7 @@ namespace MasterTouroku_Tokuisaki {
                     txtPersonCharge.Text = dt.Rows[0]["TantoushaName"].ToString();
                     txtMailAddress.Text = dt.Rows[0]["MailAddress"].ToString();
                     txtStaffCharge.Text = dt.Rows[0]["StaffCD"].ToString();
+                    lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
                     txtStartDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiKaisiDate"]);
                     txtEndDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["TorihikiShuuryouDate"]);
 
@@ -373,7 +374,7 @@ namespace MasterTouroku_Tokuisaki {
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if (!txtTokuisaki_CopyDate.IsErrorOccurs)
+                if (ErrorCheck(PanelTitle))
                 {
                     EnablePanel();
                     DataTable dt = txtTokuisaki_CopyDate.IsDatatableOccurs;
@@ -424,6 +425,11 @@ namespace MasterTouroku_Tokuisaki {
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
                         cf.DisablePanel(PanelTitle);
+                        if (cboMode.SelectedValue.ToString() == "3")
+                        {
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
+                        }
                     }
                 }
                 DataTable dt = txtChange_Date.IsDatatableOccurs;

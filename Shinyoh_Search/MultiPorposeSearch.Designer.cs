@@ -76,7 +76,7 @@
             this.btnDisplay.Location = new System.Drawing.Point(767, 82);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.Size = new System.Drawing.Size(130, 30);
-            this.btnDisplay.TabIndex = 10;
+            this.btnDisplay.TabIndex = 6;
             this.btnDisplay.Text = "表示(F11)";
             this.btnDisplay.UseVisualStyleBackColor = false;
             this.btnDisplay.Click += new System.EventHandler(this.btnDisplay_Click);
@@ -122,7 +122,7 @@
             this.txtIDName.NextControlName = null;
             this.txtIDName.SearchType = Entity.SearchType.ScType.None;
             this.txtIDName.Size = new System.Drawing.Size(300, 19);
-            this.txtIDName.TabIndex = 7;
+            this.txtIDName.TabIndex = 5;
             this.txtIDName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtKey2
@@ -147,7 +147,7 @@
             this.txtKey2.NextControlName = "txtIDName";
             this.txtKey2.SearchType = Entity.SearchType.ScType.None;
             this.txtKey2.Size = new System.Drawing.Size(300, 19);
-            this.txtKey2.TabIndex = 6;
+            this.txtKey2.TabIndex = 4;
             this.txtKey2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtKey1
@@ -172,7 +172,7 @@
             this.txtKey1.NextControlName = "txtKey2";
             this.txtKey1.SearchType = Entity.SearchType.ScType.None;
             this.txtKey1.Size = new System.Drawing.Size(300, 19);
-            this.txtKey1.TabIndex = 5;
+            this.txtKey1.TabIndex = 3;
             this.txtKey1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtID2
@@ -197,7 +197,7 @@
             this.txtID2.NextControlName = "txtKey1";
             this.txtID2.SearchType = Entity.SearchType.ScType.None;
             this.txtID2.Size = new System.Drawing.Size(100, 19);
-            this.txtID2.TabIndex = 4;
+            this.txtID2.TabIndex = 2;
             this.txtID2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtID1
@@ -206,7 +206,7 @@
             this.txtID1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtID1.DecimalPlace = 0;
             this.txtID1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtID1.DepandOnMode = true;
+            this.txtID1.DepandOnMode = false;
             this.txtID1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtID1.IntegerPart = 0;
             this.txtID1.IsDatatableOccurs = null;
@@ -222,7 +222,7 @@
             this.txtID1.NextControlName = "txtID2";
             this.txtID1.SearchType = Entity.SearchType.ScType.None;
             this.txtID1.Size = new System.Drawing.Size(100, 19);
-            this.txtID1.TabIndex = 3;
+            this.txtID1.TabIndex = 1;
             this.txtID1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // sLabel3
@@ -277,6 +277,7 @@
             this.gvMultiporpose.Size = new System.Drawing.Size(720, 302);
             this.gvMultiporpose.TabIndex = 3;
             this.gvMultiporpose.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvMultiporpose_CellMouseDoubleClick);
+            this.gvMultiporpose.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvMultiporpose_KeyDown);
             // 
             // colID
             // 
@@ -295,7 +296,7 @@
             // 
             // colName
             // 
-            this.colName.DataPropertyName = "IDName";
+            this.colName.DataPropertyName = "Char1";
             this.colName.HeaderText = "ID名";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
@@ -309,6 +310,7 @@
             this.Controls.Add(this.gvMultiporpose);
             this.Controls.Add(this.panel1);
             this.Name = "MultiPorposeSearch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "汎用検索";
             this.Load += new System.EventHandler(this.MultiPorposeSearch_Load);
             this.Controls.SetChildIndex(this.panel1, 0);

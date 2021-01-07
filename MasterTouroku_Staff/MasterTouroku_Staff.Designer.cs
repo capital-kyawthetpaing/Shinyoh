@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Panel_Staff = new System.Windows.Forms.Panel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
             this.lblStaff_Search = new Shinyoh_Controls.SLabel();
             this.txtStaff_Search = new Shinyoh_Controls.STextBox();
             this.lblStaff_Remark = new Shinyoh_Controls.SLabel();
@@ -65,7 +65,7 @@
             this.txt_Staff = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
-            this.Panel_Staff.SuspendLayout();
+            this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -82,47 +82,48 @@
             this.PanelTitle.Controls.Add(this.lblStaff_CopyDate);
             this.PanelTitle.Controls.Add(this.txtStaff_CDate);
             this.PanelTitle.Controls.Add(this.lblStaff_Copy);
+            this.PanelTitle.Location = new System.Drawing.Point(131, 0);
             // 
             // cboMode
             // 
-            this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.NextControlName = "txt_Staff";
             // 
-            // Panel_Staff
+            // PanelDetail
             // 
-            this.Panel_Staff.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Panel_Staff.Controls.Add(this.lblStaff_Search);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Search);
-            this.Panel_Staff.Controls.Add(this.lblStaff_Remark);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Remark);
-            this.Panel_Staff.Controls.Add(this.sLabel3);
-            this.Panel_Staff.Controls.Add(this.txtStaff_LDate);
-            this.Panel_Staff.Controls.Add(this.txtStaff_JDate);
-            this.Panel_Staff.Controls.Add(this.lblStaff_SDate);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Confirm);
-            this.Panel_Staff.Controls.Add(this.lblStaff_Confirm);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Passward);
-            this.Panel_Staff.Controls.Add(this.lblStaff_Passport);
-            this.Panel_Staff.Controls.Add(this.lblStaff_Position);
-            this.Panel_Staff.Controls.Add(this.cboStaff_Position);
-            this.Panel_Staff.Controls.Add(this.cboStaff_authority);
-            this.Panel_Staff.Controls.Add(this.lblStaff_authority);
-            this.Panel_Staff.Controls.Add(this.cboStaff_Menu);
-            this.Panel_Staff.Controls.Add(this.lblStaff_Menu);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Yubin2);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Yubin1);
-            this.Panel_Staff.Controls.Add(this.lblStaff_YubinNo);
-            this.Panel_Staff.Controls.Add(this.label1);
-            this.Panel_Staff.Controls.Add(this.txtStaff_KanaName);
-            this.Panel_Staff.Controls.Add(this.lblStaff_KanaName);
-            this.Panel_Staff.Controls.Add(this.txtStaff_Name);
-            this.Panel_Staff.Controls.Add(this.lblStaffName);
-            this.Panel_Staff.Location = new System.Drawing.Point(0, 75);
-            this.Panel_Staff.Name = "Panel_Staff";
-            this.Panel_Staff.Size = new System.Drawing.Size(1485, 519);
-            this.Panel_Staff.TabIndex = 1;
+            this.PanelDetail.Controls.Add(this.lblStaff_Search);
+            this.PanelDetail.Controls.Add(this.txtStaff_Search);
+            this.PanelDetail.Controls.Add(this.lblStaff_Remark);
+            this.PanelDetail.Controls.Add(this.txtStaff_Remark);
+            this.PanelDetail.Controls.Add(this.sLabel3);
+            this.PanelDetail.Controls.Add(this.txtStaff_LDate);
+            this.PanelDetail.Controls.Add(this.txtStaff_JDate);
+            this.PanelDetail.Controls.Add(this.lblStaff_SDate);
+            this.PanelDetail.Controls.Add(this.txtStaff_Confirm);
+            this.PanelDetail.Controls.Add(this.lblStaff_Confirm);
+            this.PanelDetail.Controls.Add(this.txtStaff_Passward);
+            this.PanelDetail.Controls.Add(this.lblStaff_Passport);
+            this.PanelDetail.Controls.Add(this.lblStaff_Position);
+            this.PanelDetail.Controls.Add(this.cboStaff_Position);
+            this.PanelDetail.Controls.Add(this.cboStaff_authority);
+            this.PanelDetail.Controls.Add(this.lblStaff_authority);
+            this.PanelDetail.Controls.Add(this.cboStaff_Menu);
+            this.PanelDetail.Controls.Add(this.lblStaff_Menu);
+            this.PanelDetail.Controls.Add(this.txtStaff_Yubin2);
+            this.PanelDetail.Controls.Add(this.txtStaff_Yubin1);
+            this.PanelDetail.Controls.Add(this.lblStaff_YubinNo);
+            this.PanelDetail.Controls.Add(this.label1);
+            this.PanelDetail.Controls.Add(this.txtStaff_KanaName);
+            this.PanelDetail.Controls.Add(this.lblStaff_KanaName);
+            this.PanelDetail.Controls.Add(this.txtStaff_Name);
+            this.PanelDetail.Controls.Add(this.lblStaffName);
+            this.PanelDetail.Location = new System.Drawing.Point(0, 75);
+            this.PanelDetail.Name = "PanelDetail";
+            this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
+            this.PanelDetail.TabIndex = 1;
             // 
             // lblStaff_Search
             // 
@@ -152,13 +153,13 @@
             this.txtStaff_Search.IsUseInitializedLayout = true;
             this.txtStaff_Search.Location = new System.Drawing.Point(141, 384);
             this.txtStaff_Search.MaxLength = 5;
-            this.txtStaff_Search.MinimumSize = new System.Drawing.Size(75, 19);
+            this.txtStaff_Search.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtStaff_Search.MoveNext = true;
             this.txtStaff_Search.Name = "txtStaff_Search";
             this.txtStaff_Search.NextControl = null;
-            this.txtStaff_Search.NextControlName = "BtnF1";
+            this.txtStaff_Search.NextControlName = "BtnF12";
             this.txtStaff_Search.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_Search.Size = new System.Drawing.Size(75, 19);
+            this.txtStaff_Search.Size = new System.Drawing.Size(50, 19);
             this.txtStaff_Search.TabIndex = 15;
             this.txtStaff_Search.Text = "0";
             this.txtStaff_Search.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -237,7 +238,7 @@
             this.txtStaff_LDate.NextControl = null;
             this.txtStaff_LDate.NextControlName = "txtStaff_Remark";
             this.txtStaff_LDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_LDate.Size = new System.Drawing.Size(130, 19);
+            this.txtStaff_LDate.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_LDate.TabIndex = 13;
             this.txtStaff_LDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStaff_LDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
@@ -263,7 +264,7 @@
             this.txtStaff_JDate.NextControl = null;
             this.txtStaff_JDate.NextControlName = "txtStaff_LDate";
             this.txtStaff_JDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_JDate.Size = new System.Drawing.Size(130, 19);
+            this.txtStaff_JDate.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_JDate.TabIndex = 12;
             this.txtStaff_JDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStaff_JDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
@@ -295,15 +296,15 @@
             this.txtStaff_Confirm.IsErrorOccurs = false;
             this.txtStaff_Confirm.IsRequire = false;
             this.txtStaff_Confirm.IsUseInitializedLayout = true;
-            this.txtStaff_Confirm.Location = new System.Drawing.Point(359, 238);
+            this.txtStaff_Confirm.Location = new System.Drawing.Point(392, 238);
             this.txtStaff_Confirm.MaxLength = 10;
-            this.txtStaff_Confirm.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtStaff_Confirm.MinimumSize = new System.Drawing.Size(130, 19);
             this.txtStaff_Confirm.MoveNext = true;
             this.txtStaff_Confirm.Name = "txtStaff_Confirm";
             this.txtStaff_Confirm.NextControl = null;
             this.txtStaff_Confirm.NextControlName = "txtStaff_JDate";
             this.txtStaff_Confirm.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_Confirm.Size = new System.Drawing.Size(100, 19);
+            this.txtStaff_Confirm.Size = new System.Drawing.Size(130, 19);
             this.txtStaff_Confirm.TabIndex = 11;
             this.txtStaff_Confirm.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaff_Confirm.UseSystemPasswordChar = true;
@@ -315,7 +316,7 @@
             this.lblStaff_Confirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff_Confirm.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblStaff_Confirm.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblStaff_Confirm.Location = new System.Drawing.Point(259, 238);
+            this.lblStaff_Confirm.Location = new System.Drawing.Point(292, 238);
             this.lblStaff_Confirm.Name = "lblStaff_Confirm";
             this.lblStaff_Confirm.Size = new System.Drawing.Size(100, 19);
             this.lblStaff_Confirm.TabIndex = 40;
@@ -337,13 +338,13 @@
             this.txtStaff_Passward.IsUseInitializedLayout = true;
             this.txtStaff_Passward.Location = new System.Drawing.Point(141, 238);
             this.txtStaff_Passward.MaxLength = 10;
-            this.txtStaff_Passward.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtStaff_Passward.MinimumSize = new System.Drawing.Size(130, 19);
             this.txtStaff_Passward.MoveNext = true;
             this.txtStaff_Passward.Name = "txtStaff_Passward";
             this.txtStaff_Passward.NextControl = null;
             this.txtStaff_Passward.NextControlName = "txtStaff_Confirm";
             this.txtStaff_Passward.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_Passward.Size = new System.Drawing.Size(100, 19);
+            this.txtStaff_Passward.Size = new System.Drawing.Size(130, 19);
             this.txtStaff_Passward.TabIndex = 10;
             this.txtStaff_Passward.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaff_Passward.UseSystemPasswordChar = true;
@@ -406,7 +407,7 @@
             this.cboStaff_authority.Name = "cboStaff_authority";
             this.cboStaff_authority.NextControl = null;
             this.cboStaff_authority.NextControlName = "cboStaff_Position";
-            this.cboStaff_authority.Size = new System.Drawing.Size(357, 20);
+            this.cboStaff_authority.Size = new System.Drawing.Size(320, 20);
             this.cboStaff_authority.TabIndex = 8;
             // 
             // lblStaff_authority
@@ -437,7 +438,7 @@
             this.cboStaff_Menu.Name = "cboStaff_Menu";
             this.cboStaff_Menu.NextControl = null;
             this.cboStaff_Menu.NextControlName = "cboStaff_authority";
-            this.cboStaff_Menu.Size = new System.Drawing.Size(357, 20);
+            this.cboStaff_Menu.Size = new System.Drawing.Size(320, 20);
             this.cboStaff_Menu.TabIndex = 7;
             // 
             // lblStaff_Menu
@@ -467,15 +468,15 @@
             this.txtStaff_Yubin2.IsErrorOccurs = false;
             this.txtStaff_Yubin2.IsRequire = false;
             this.txtStaff_Yubin2.IsUseInitializedLayout = true;
-            this.txtStaff_Yubin2.Location = new System.Drawing.Point(214, 92);
+            this.txtStaff_Yubin2.Location = new System.Drawing.Point(205, 92);
             this.txtStaff_Yubin2.MaxLength = 4;
-            this.txtStaff_Yubin2.MinimumSize = new System.Drawing.Size(70, 19);
+            this.txtStaff_Yubin2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtStaff_Yubin2.MoveNext = true;
             this.txtStaff_Yubin2.Name = "txtStaff_Yubin2";
             this.txtStaff_Yubin2.NextControl = null;
             this.txtStaff_Yubin2.NextControlName = "cboStaff_Menu";
             this.txtStaff_Yubin2.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_Yubin2.Size = new System.Drawing.Size(70, 19);
+            this.txtStaff_Yubin2.Size = new System.Drawing.Size(50, 19);
             this.txtStaff_Yubin2.TabIndex = 6;
             this.txtStaff_Yubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -494,13 +495,13 @@
             this.txtStaff_Yubin1.IsUseInitializedLayout = true;
             this.txtStaff_Yubin1.Location = new System.Drawing.Point(141, 92);
             this.txtStaff_Yubin1.MaxLength = 3;
-            this.txtStaff_Yubin1.MinimumSize = new System.Drawing.Size(50, 19);
+            this.txtStaff_Yubin1.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtStaff_Yubin1.MoveNext = true;
             this.txtStaff_Yubin1.Name = "txtStaff_Yubin1";
             this.txtStaff_Yubin1.NextControl = null;
             this.txtStaff_Yubin1.NextControlName = "txtStaff_Yubin2";
             this.txtStaff_Yubin1.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_Yubin1.Size = new System.Drawing.Size(50, 19);
+            this.txtStaff_Yubin1.Size = new System.Drawing.Size(30, 19);
             this.txtStaff_Yubin1.TabIndex = 5;
             this.txtStaff_Yubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -522,7 +523,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(195, 90);
+            this.label1.Location = new System.Drawing.Point(180, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 29;
@@ -549,7 +550,7 @@
             this.txtStaff_KanaName.NextControl = null;
             this.txtStaff_KanaName.NextControlName = "txtStaff_Yubin1";
             this.txtStaff_KanaName.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_KanaName.Size = new System.Drawing.Size(357, 19);
+            this.txtStaff_KanaName.Size = new System.Drawing.Size(320, 19);
             this.txtStaff_KanaName.TabIndex = 4;
             this.txtStaff_KanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -587,7 +588,7 @@
             this.txtStaff_Name.NextControl = null;
             this.txtStaff_Name.NextControlName = "txtStaff_KanaName";
             this.txtStaff_Name.SearchType = Entity.SearchType.ScType.None;
-            this.txtStaff_Name.Size = new System.Drawing.Size(357, 19);
+            this.txtStaff_Name.Size = new System.Drawing.Size(320, 19);
             this.txtStaff_Name.TabIndex = 3;
             this.txtStaff_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -612,7 +613,7 @@
             this.lblStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblStaff.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblStaff.Location = new System.Drawing.Point(19, 9);
+            this.lblStaff.Location = new System.Drawing.Point(8, 9);
             this.lblStaff.Name = "lblStaff";
             this.lblStaff.Size = new System.Drawing.Size(100, 19);
             this.lblStaff.TabIndex = 51;
@@ -626,7 +627,7 @@
             this.sLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sLabel5.Location = new System.Drawing.Point(19, 34);
+            this.sLabel5.Location = new System.Drawing.Point(8, 34);
             this.sLabel5.Name = "sLabel5";
             this.sLabel5.Size = new System.Drawing.Size(100, 19);
             this.sLabel5.TabIndex = 52;
@@ -646,7 +647,7 @@
             this.txtStaff_CDate.IsErrorOccurs = false;
             this.txtStaff_CDate.IsRequire = false;
             this.txtStaff_CDate.IsUseInitializedLayout = true;
-            this.txtStaff_CDate.Location = new System.Drawing.Point(117, 34);
+            this.txtStaff_CDate.Location = new System.Drawing.Point(106, 34);
             this.txtStaff_CDate.MaxLength = 10;
             this.txtStaff_CDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_CDate.MoveNext = true;
@@ -666,7 +667,7 @@
             this.lblStaff_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff_Copy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff_Copy.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff_Copy.Location = new System.Drawing.Point(246, 9);
+            this.lblStaff_Copy.Location = new System.Drawing.Point(248, 9);
             this.lblStaff_Copy.Name = "lblStaff_Copy";
             this.lblStaff_Copy.Size = new System.Drawing.Size(100, 19);
             this.lblStaff_Copy.TabIndex = 51;
@@ -686,7 +687,7 @@
             this.txtStaff_CopyDate.IsErrorOccurs = false;
             this.txtStaff_CopyDate.IsRequire = false;
             this.txtStaff_CopyDate.IsUseInitializedLayout = true;
-            this.txtStaff_CopyDate.Location = new System.Drawing.Point(346, 34);
+            this.txtStaff_CopyDate.Location = new System.Drawing.Point(348, 34);
             this.txtStaff_CopyDate.MaxLength = 10;
             this.txtStaff_CopyDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_CopyDate.MoveNext = true;
@@ -706,7 +707,7 @@
             this.lblStaff_CopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff_CopyDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff_CopyDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblStaff_CopyDate.Location = new System.Drawing.Point(246, 34);
+            this.lblStaff_CopyDate.Location = new System.Drawing.Point(248, 34);
             this.lblStaff_CopyDate.Name = "lblStaff_CopyDate";
             this.lblStaff_CopyDate.Size = new System.Drawing.Size(100, 19);
             this.lblStaff_CopyDate.TabIndex = 55;
@@ -729,7 +730,7 @@
             this.txtStaff_Copy.IsRequire = false;
             this.txtStaff_Copy.IsUseInitializedLayout = true;
             this.txtStaff_Copy.lblName = null;
-            this.txtStaff_Copy.Location = new System.Drawing.Point(346, 9);
+            this.txtStaff_Copy.Location = new System.Drawing.Point(348, 9);
             this.txtStaff_Copy.MaxLength = 10;
             this.txtStaff_Copy.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff_Copy.MoveNext = true;
@@ -740,6 +741,7 @@
             this.txtStaff_Copy.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_Copy.TabIndex = 3;
             this.txtStaff_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaff_Copy.TxtBox = null;
             // 
             // txt_Staff
             // 
@@ -757,7 +759,7 @@
             this.txt_Staff.IsRequire = false;
             this.txt_Staff.IsUseInitializedLayout = true;
             this.txt_Staff.lblName = null;
-            this.txt_Staff.Location = new System.Drawing.Point(118, 9);
+            this.txt_Staff.Location = new System.Drawing.Point(107, 9);
             this.txt_Staff.MaxLength = 10;
             this.txt_Staff.MinimumSize = new System.Drawing.Size(100, 19);
             this.txt_Staff.MoveNext = true;
@@ -768,23 +770,24 @@
             this.txt_Staff.Size = new System.Drawing.Size(100, 19);
             this.txt_Staff.TabIndex = 1;
             this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txt_Staff.TxtBox = null;
             // 
             // MasterTouroku_Staff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1485, 644);
-            this.Controls.Add(this.Panel_Staff);
+            this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_Staff";
             this.Text = "スタッフマスタ";
             this.Load += new System.EventHandler(this.MasterTouroku_Staff_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.Panel_Staff, 0);
+            this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
-            this.Panel_Staff.ResumeLayout(false);
-            this.Panel_Staff.PerformLayout();
+            this.PanelDetail.ResumeLayout(false);
+            this.PanelDetail.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -792,7 +795,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel Panel_Staff;
+        private System.Windows.Forms.Panel PanelDetail;
         private Shinyoh_Controls.SLabel lblStaffName;
         private Shinyoh_Controls.STextBox txtStaff_Name;
         private Shinyoh_Controls.SLabel lblStaff_KanaName;

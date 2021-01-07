@@ -38,11 +38,13 @@ namespace Shinyoh_Search
             txtTokuisakiCD2.E106Check(true, txtTokuisakiCD1, txtTokuisakiCD2);
 
             gv_Kouriten.SetGridDesign();
-            gv_Kouriten.SetReadOnlyColumn("*");
+            gv_Kouriten.SetReadOnlyColumn("**");//readonly for search form 
+            gv_Kouriten.Select();
         }
         private void btnKouriten_F11_Click(object sender, EventArgs e)
         {
             DataGridviewBind();
+            gv_Kouriten.Select();
         }
         private void DataGridviewBind()
         {
@@ -81,6 +83,7 @@ namespace Shinyoh_Search
             if (tagID == "2")
             {
                 DataGridviewBind();
+                gv_Kouriten.Select();
             }
             if (tagID == "3")
             {
@@ -92,19 +95,27 @@ namespace Shinyoh_Search
 
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 KouritenCD = row.Cells["colKouritenCD"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
                 KouritenRyakuName = row.Cells["colKouritenRyakuName"].Value.ToString();
-                this.Close();
             }
+            this.Close();
         }
 
         private void gv_Kouriten_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gv_Kouriten.Rows[e.RowIndex]);
+        }
+
+        private void gv_Kouriten_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetGridviewData(gv_Kouriten.Rows[gv_Kouriten.CurrentCell.RowIndex]);
+            }
         }
     }
 }

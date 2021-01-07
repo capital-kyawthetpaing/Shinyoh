@@ -16,6 +16,9 @@ namespace Shinyoh_Controls
         bool UseRow = true;
         bool EditCol = false;
 
+        bool AllReadonly = false;
+        bool ForSearchForm = false;
+
         string HiraganaCol = string.Empty;
         string NumberCol = string.Empty;
 
@@ -24,8 +27,8 @@ namespace Shinyoh_Controls
             this.EnableHeadersVisualStyles = false;
             this.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(191, 191, 191);
             this.ColumnHeadersDefaultCellStyle.Font = new Font("MS Gothic", 9, FontStyle.Bold);
-            this.BackgroundColor = Color.FromArgb(242, 242, 242);
-            this.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(221, 235, 247);
+            //this.BackgroundColor = Color.FromArgb(242, 242, 242);
+            //this.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(221, 235, 247);
         }
         public void UseRowNo(bool val)
         {
@@ -38,6 +41,12 @@ namespace Shinyoh_Controls
                 if (colArr.Equals("*"))
                 {
                     SetReadOnly(col);
+                    AllReadonly = true;
+                }
+                else if (colArr.Equals("**"))
+                {
+                    SetReadOnly(col);
+                    ForSearchForm = true;
                 }
                 else
                 {
@@ -185,7 +194,10 @@ namespace Shinyoh_Controls
             {
                 if(EditCol == false)
                 {
-                    MoveNextCell();
+                    if(ForSearchForm)
+                        return base.ProcessCmdKey(ref msg, keyData);
+                    else if (!AllReadonly)
+                        MoveNextCell();
                 }
                 else
                 {

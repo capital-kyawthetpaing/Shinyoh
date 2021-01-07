@@ -17,7 +17,10 @@ namespace Shinyoh_Search
     public partial class MultiPorposeSearch : SearchBase
     {
         public string Id = string.Empty;
-        public string Key = string.Empty; 
+        public string Key = string.Empty;
+        public string Char1 = string.Empty;
+
+        public string Access_Type;
         public MultiPorposeSearch()
         {
             InitializeComponent();
@@ -32,9 +35,11 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             gvMultiporpose.UseRowNo(true);
             GridViewBind();
-            txtID1.Focus();
             txtID2.E106Check(true, txtID1, txtID2);
             txtKey2.E106Check(true, txtKey1, txtKey2);
+            gvMultiporpose.Select();
+            gvMultiporpose.SetReadOnlyColumn("**");//readonly for search form 
+            txtID1.Focus();
         }
         public override void FunctionProcess(string tagID)
         {
@@ -58,24 +63,19 @@ namespace Shinyoh_Search
             mentity.Key1 = txtKey1.Text;
             mentity.Key2 = txtKey2.Text;
             mentity.IdName = txtIDName.Text;
+            mentity.Type = Access_Type;
             DataTable dt = bl.M_Multiporpose_Search(mentity);
             gvMultiporpose.DataSource = dt;
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
                 Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
                 this.Close();
             }
-            //if (gvMultiporpose.CurrentRow != null && gvMultiporpose.CurrentRow.Index >= 0)
-            //{
-            //    Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
-            //    Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
-            //    this.Close();
-            //}
         }
         private void gvMultiporpose_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -83,7 +83,17 @@ namespace Shinyoh_Search
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
+            Access_Type = string.Empty;
             GridViewBind();
+        }
+
+        private void gvMultiporpose_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if(gvMultiporpose.CurrentCell!=null)
+                GetGridviewData(gvMultiporpose.Rows[gvMultiporpose.CurrentCell.RowIndex]);
+            }
         }
     }
 }

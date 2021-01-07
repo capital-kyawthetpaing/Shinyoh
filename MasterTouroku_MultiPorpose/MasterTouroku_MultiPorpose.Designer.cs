@@ -58,7 +58,7 @@
             this.txtDate1 = new Shinyoh_Controls.STextBox();
             this.txtDate2 = new Shinyoh_Controls.STextBox();
             this.txtDate3 = new Shinyoh_Controls.STextBox();
-            this.panelDetails = new System.Windows.Forms.Panel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
             this.sLabel6 = new Shinyoh_Controls.SLabel();
             this.txtIDCopy = new Shinyoh_Controls.SLabel();
             this.txtKEYCopy = new Shinyoh_Search.SearchBox();
@@ -67,7 +67,7 @@
             this.txtID = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
-            this.panelDetails.SuspendLayout();
+            this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -89,7 +89,7 @@
             // 
             // cboMode
             // 
-            this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.Location = new System.Drawing.Point(30, 8);
             // 
             // sLabel3
@@ -349,7 +349,7 @@
             this.txtChar1.NextControl = null;
             this.txtChar1.NextControlName = "txtChar2";
             this.txtChar1.SearchType = Entity.SearchType.ScType.None;
-            this.txtChar1.Size = new System.Drawing.Size(500, 19);
+            this.txtChar1.Size = new System.Drawing.Size(581, 19);
             this.txtChar1.TabIndex = 18;
             this.txtChar1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -374,7 +374,7 @@
             this.txtChar2.NextControl = null;
             this.txtChar2.NextControlName = "txtChar3";
             this.txtChar2.SearchType = Entity.SearchType.ScType.None;
-            this.txtChar2.Size = new System.Drawing.Size(500, 19);
+            this.txtChar2.Size = new System.Drawing.Size(581, 19);
             this.txtChar2.TabIndex = 19;
             this.txtChar2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -399,7 +399,7 @@
             this.txtChar3.NextControl = null;
             this.txtChar3.NextControlName = "txtChar4";
             this.txtChar3.SearchType = Entity.SearchType.ScType.None;
-            this.txtChar3.Size = new System.Drawing.Size(500, 19);
+            this.txtChar3.Size = new System.Drawing.Size(581, 19);
             this.txtChar3.TabIndex = 20;
             this.txtChar3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -424,7 +424,7 @@
             this.txtChar4.NextControl = null;
             this.txtChar4.NextControlName = "txtChar5";
             this.txtChar4.SearchType = Entity.SearchType.ScType.None;
-            this.txtChar4.Size = new System.Drawing.Size(500, 19);
+            this.txtChar4.Size = new System.Drawing.Size(581, 19);
             this.txtChar4.TabIndex = 21;
             this.txtChar4.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -449,7 +449,7 @@
             this.txtChar5.NextControl = null;
             this.txtChar5.NextControlName = "txtNum1";
             this.txtChar5.SearchType = Entity.SearchType.ScType.None;
-            this.txtChar5.Size = new System.Drawing.Size(500, 19);
+            this.txtChar5.Size = new System.Drawing.Size(581, 19);
             this.txtChar5.TabIndex = 22;
             this.txtChar5.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -661,40 +661,40 @@
             this.txtDate3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
-            // panelDetails
+            // PanelDetail
             // 
-            this.panelDetails.Controls.Add(this.txtDate3);
-            this.panelDetails.Controls.Add(this.sLabel7);
-            this.panelDetails.Controls.Add(this.txtIDName);
-            this.panelDetails.Controls.Add(this.txtChar1);
-            this.panelDetails.Controls.Add(this.sLabel8);
-            this.panelDetails.Controls.Add(this.txtChar2);
-            this.panelDetails.Controls.Add(this.txtChar3);
-            this.panelDetails.Controls.Add(this.sLabel9);
-            this.panelDetails.Controls.Add(this.txtChar4);
-            this.panelDetails.Controls.Add(this.txtChar5);
-            this.panelDetails.Controls.Add(this.sLabel10);
-            this.panelDetails.Controls.Add(this.txtNum1);
-            this.panelDetails.Controls.Add(this.txtNum2);
-            this.panelDetails.Controls.Add(this.sLabel11);
-            this.panelDetails.Controls.Add(this.txtNum3);
-            this.panelDetails.Controls.Add(this.txtNum4);
-            this.panelDetails.Controls.Add(this.sLabel12);
-            this.panelDetails.Controls.Add(this.txtNum5);
-            this.panelDetails.Controls.Add(this.txtDate1);
-            this.panelDetails.Controls.Add(this.sLabel13);
-            this.panelDetails.Controls.Add(this.txtDate2);
-            this.panelDetails.Controls.Add(this.sLabel20);
-            this.panelDetails.Controls.Add(this.sLabel14);
-            this.panelDetails.Controls.Add(this.sLabel19);
-            this.panelDetails.Controls.Add(this.sLabel18);
-            this.panelDetails.Controls.Add(this.sLabel15);
-            this.panelDetails.Controls.Add(this.sLabel17);
-            this.panelDetails.Controls.Add(this.sLabel16);
-            this.panelDetails.Location = new System.Drawing.Point(0, 80);
-            this.panelDetails.Name = "panelDetails";
-            this.panelDetails.Size = new System.Drawing.Size(1480, 700);
-            this.panelDetails.TabIndex = 31;
+            this.PanelDetail.Controls.Add(this.txtDate3);
+            this.PanelDetail.Controls.Add(this.sLabel7);
+            this.PanelDetail.Controls.Add(this.txtIDName);
+            this.PanelDetail.Controls.Add(this.txtChar1);
+            this.PanelDetail.Controls.Add(this.sLabel8);
+            this.PanelDetail.Controls.Add(this.txtChar2);
+            this.PanelDetail.Controls.Add(this.txtChar3);
+            this.PanelDetail.Controls.Add(this.sLabel9);
+            this.PanelDetail.Controls.Add(this.txtChar4);
+            this.PanelDetail.Controls.Add(this.txtChar5);
+            this.PanelDetail.Controls.Add(this.sLabel10);
+            this.PanelDetail.Controls.Add(this.txtNum1);
+            this.PanelDetail.Controls.Add(this.txtNum2);
+            this.PanelDetail.Controls.Add(this.sLabel11);
+            this.PanelDetail.Controls.Add(this.txtNum3);
+            this.PanelDetail.Controls.Add(this.txtNum4);
+            this.PanelDetail.Controls.Add(this.sLabel12);
+            this.PanelDetail.Controls.Add(this.txtNum5);
+            this.PanelDetail.Controls.Add(this.txtDate1);
+            this.PanelDetail.Controls.Add(this.sLabel13);
+            this.PanelDetail.Controls.Add(this.txtDate2);
+            this.PanelDetail.Controls.Add(this.sLabel20);
+            this.PanelDetail.Controls.Add(this.sLabel14);
+            this.PanelDetail.Controls.Add(this.sLabel19);
+            this.PanelDetail.Controls.Add(this.sLabel18);
+            this.PanelDetail.Controls.Add(this.sLabel15);
+            this.PanelDetail.Controls.Add(this.sLabel17);
+            this.PanelDetail.Controls.Add(this.sLabel16);
+            this.PanelDetail.Location = new System.Drawing.Point(0, 80);
+            this.PanelDetail.Name = "PanelDetail";
+            this.PanelDetail.Size = new System.Drawing.Size(1480, 700);
+            this.PanelDetail.TabIndex = 31;
             // 
             // sLabel6
             // 
@@ -729,7 +729,7 @@
             this.txtKEYCopy.ChangeDate = null;
             this.txtKEYCopy.Combo = null;
             this.txtKEYCopy.DecimalPlace = 0;
-            this.txtKEYCopy.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtKEYCopy.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtKEYCopy.DepandOnMode = false;
             this.txtKEYCopy.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKEYCopy.IntegerPart = 0;
@@ -758,7 +758,7 @@
             this.txtKEY.ChangeDate = null;
             this.txtKEY.Combo = null;
             this.txtKEY.DecimalPlace = 0;
-            this.txtKEY.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtKEY.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtKEY.DepandOnMode = true;
             this.txtKEY.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKEY.IntegerPart = 0;
@@ -843,16 +843,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1485, 844);
-            this.Controls.Add(this.panelDetails);
+            this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_MultiPorpose";
             this.Text = "   汎用マスタ";
             this.Load += new System.EventHandler(this.MasterTouroku_MultiPorpose_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.panelDetails, 0);
+            this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
-            this.panelDetails.ResumeLayout(false);
+            this.PanelDetail.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -889,7 +889,7 @@
         private Shinyoh_Controls.STextBox txtDate1;
         private Shinyoh_Controls.STextBox txtDate2;
         private Shinyoh_Controls.STextBox txtDate3;
-        private System.Windows.Forms.Panel panelDetails;
+        private System.Windows.Forms.Panel PanelDetail;
         private Shinyoh_Controls.SLabel sLabel6;
         private Shinyoh_Controls.SLabel txtIDCopy;
         private Shinyoh_Search.SearchBox txtID;

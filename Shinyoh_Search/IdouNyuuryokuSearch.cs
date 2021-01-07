@@ -34,7 +34,7 @@ namespace Shinyoh_Search
 
             gv_1.UseRowNo(true);
             gv_1.SetGridDesign();
-            gv_1.SetReadOnlyColumn("*");
+            gv_1.SetReadOnlyColumn("**");//readonly for search form 
             DataGridviewBind();
 
         }
@@ -138,6 +138,14 @@ namespace Shinyoh_Search
                 DataTable dt = txtShukkosouko.IsDatatableOccurs;
                 if (dt.Rows.Count > 0)
                     lblStaff.Text = dt.Rows[0]["SoukoName"].ToString();
+            }
+        }
+
+        private void IdouNyuuryokuSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                GetGridviewData(gv_1.Rows[gv_1.CurrentCell.RowIndex]);
             }
         }
     }
