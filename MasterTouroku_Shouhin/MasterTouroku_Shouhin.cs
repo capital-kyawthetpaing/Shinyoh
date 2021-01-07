@@ -184,7 +184,8 @@ namespace MasterTouroku_Shouhin
             lbl_IManagement.BorderStyle = BorderStyle.None;
             lbl_MajorSuppliers.Text = string.Empty;
             lbl_MajorSuppliers.BorderStyle = BorderStyle.None;
-            pImage.ImageLocation = "";
+            pImage.ImageLocation = null;
+            pImage.Image = null;
         }
 
         public override void FunctionProcess(string tagID)
@@ -441,6 +442,7 @@ namespace MasterTouroku_Shouhin
                 {
                     byte[] imgBytes = (byte[])dt.Rows[0]["ShouhinImage"];
                     pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
+                    pImage.SizeMode = PictureBoxSizeMode.Zoom;
                 }
 
                 txtRemarks.Text = dt.Rows[0]["Remarks"].ToString();
@@ -458,7 +460,8 @@ namespace MasterTouroku_Shouhin
             }
             else
             {
-                pImage.Image = (Image)Properties.Resources.ResourceManager.GetObject(txtImage.Text);
+                pImage.ImageLocation = txtImage.Text;
+                pImage.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
 
