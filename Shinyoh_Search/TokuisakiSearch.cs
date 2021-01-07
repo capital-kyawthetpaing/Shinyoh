@@ -104,7 +104,8 @@ namespace Shinyoh_Search {
         {
             if (e.KeyCode == Keys.Enter)
             {
-                GetGridviewData(gvTokuisaki.Rows[gvTokuisaki.CurrentCell.RowIndex]);
+                if (gvTokuisaki.CurrentCell != null)
+                    GetGridviewData(gvTokuisaki.Rows[gvTokuisaki.CurrentCell.RowIndex]);
             }
         }
     }
