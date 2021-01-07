@@ -153,6 +153,7 @@
             this.txtPassword.IsRequire = false;
             this.txtPassword.IsUseInitializedLayout = false;
             this.txtPassword.Location = new System.Drawing.Point(405, 190);
+            this.txtPassword.MaxLength = 10;
             this.txtPassword.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPassword.MoveNext = true;
             this.txtPassword.Name = "txtPassword";
@@ -178,6 +179,7 @@
             this.txtOperatorCD.IsRequire = false;
             this.txtOperatorCD.IsUseInitializedLayout = false;
             this.txtOperatorCD.Location = new System.Drawing.Point(405, 125);
+            this.txtOperatorCD.MaxLength = 10;
             this.txtOperatorCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtOperatorCD.MoveNext = true;
             this.txtOperatorCD.Name = "txtOperatorCD";

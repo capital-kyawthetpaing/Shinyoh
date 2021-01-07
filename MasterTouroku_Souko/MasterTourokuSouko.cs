@@ -291,6 +291,11 @@ namespace MasterTouroku_Souko
                         cf.DisablePanel(PanelTitle);
                         Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
                         BtnF9.Visible = false;
+                        if (cboMode.SelectedValue.ToString() == "3")
+                        {
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
+                        }
                     }
                 }
                 DataTable dt = txtSouko.IsDatatableOccurs;
