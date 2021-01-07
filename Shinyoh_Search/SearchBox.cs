@@ -15,6 +15,7 @@ namespace Shinyoh_Search
         public STextBox ChangeDate { get; set; }
         public SLabel lblName { get; set; }
         public SCombo Combo { get; set; }
+        public STextBox TxtBox { get; set; }
         private string CD = string.Empty;
         private string CDate = string.Empty;
         private string name = string.Empty;
@@ -103,8 +104,17 @@ namespace Shinyoh_Search
                         denpyouSearch.ShowDialog();
                         //Combo.SelectedIndex = Convert.ToInt32(denpyouSearch.renban);
                         Combo.SelectedValue = denpyouSearch.renban;
-                        CDate = denpyouSearch.seqno;
-                        CD = denpyouSearch.prefix;
+                        if (this.Name == "txtSEQNO")
+                        {
+                            TxtBox.Text = denpyouSearch.prefix;
+                            TxtBox.Focus();
+                            CD = denpyouSearch.seqno;
+                        }
+                        else
+                        {
+                            TxtBox.Text = denpyouSearch.seqno;
+                            CD = denpyouSearch.prefix;
+                        }
                         break;
                     case Entity.SearchType.ScType.Siiresaki:
                         SiiresakiSearch siiresakiSearch = new SiiresakiSearch();

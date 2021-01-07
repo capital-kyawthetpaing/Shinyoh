@@ -57,6 +57,7 @@ namespace Shinyoh_Search
             if (tagID == "2")
             {
                 BindDataGrid();
+                dgDetail.Select();
             }
             if (tagID == "3")
             {
