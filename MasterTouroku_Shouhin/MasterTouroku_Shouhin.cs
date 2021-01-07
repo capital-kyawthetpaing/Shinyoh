@@ -458,7 +458,7 @@ namespace MasterTouroku_Shouhin
             }
             else
             {
-                pImage.ImageLocation = txtImage.Text;
+                pImage.Image = (Image)Properties.Resources.ResourceManager.GetObject(txtImage.Text);
             }
         }
 
