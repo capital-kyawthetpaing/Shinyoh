@@ -94,8 +94,8 @@ namespace Shinyoh_Search
                 renban = row.Cells[0].Value.ToString();
                 seqno = row.Cells[1].Value.ToString();
                 prefix = row.Cells[2].Value.ToString();
-                this.Close();
             }
+            this.Close();
         }
 
         private void gvDenpyouNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -107,7 +107,8 @@ namespace Shinyoh_Search
         {
             if (e.KeyCode == Keys.Enter)
             {
-                GetGridviewData(gvDenpyouNo.Rows[gvDenpyouNo.CurrentCell.RowIndex]);
+                if (gvDenpyouNo.CurrentCell != null)
+                    GetGridviewData(gvDenpyouNo.Rows[gvDenpyouNo.CurrentCell.RowIndex]);
             }
         }
     }

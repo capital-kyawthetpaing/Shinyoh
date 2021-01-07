@@ -153,7 +153,7 @@
             this.txtCounter.MoveNext = true;
             this.txtCounter.Name = "txtCounter";
             this.txtCounter.NextControl = null;
-            this.txtCounter.NextControlName = "";
+            this.txtCounter.NextControlName = "BtnF12";
             this.txtCounter.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCounter.SearchType = Entity.SearchType.ScType.None;
             this.txtCounter.Size = new System.Drawing.Size(100, 19);
@@ -197,6 +197,7 @@
             this.txt_Prefix.Size = new System.Drawing.Size(50, 19);
             this.txt_Prefix.TabIndex = 3;
             this.txt_Prefix.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txt_Prefix.TxtBox = null;
             this.txt_Prefix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Prefix_KeyDown);
             // 
             // txtSEQNO
@@ -226,6 +227,7 @@
             this.txtSEQNO.Size = new System.Drawing.Size(40, 19);
             this.txtSEQNO.TabIndex = 2;
             this.txtSEQNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtSEQNO.TxtBox = null;
             // 
             // MasterTouroku_DenpyouNO
             // 
