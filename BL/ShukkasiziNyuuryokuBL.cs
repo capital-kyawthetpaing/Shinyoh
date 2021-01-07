@@ -111,6 +111,14 @@ namespace BL
             parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
             return ckmdl.InsertUpdateDeleteData("ShukkasiziNyuuryoku_IUD", GetConnectionString(), parameters);
         }
+        public string Shukkasizi_Price( string shukkasizisuu, string JuchuuNO)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@KonkaiShukkaSiziSuu", SqlDbType.VarChar) { Value = shukkasizisuu};
+            parameters[1] = new SqlParameter("@JuchuuNO_JuchuuGyouNO", SqlDbType.Xml) { Value = JuchuuNO };
+            return ckmdl.InsertUpdateDeleteData("Shukkasizi_Price", GetConnectionString(), parameters);
+        }
         public DataTable GetShippingNo(string SerialNO, string ShippingDate, string SEQNO)
         {
             CKMDL ckmdl = new CKMDL();

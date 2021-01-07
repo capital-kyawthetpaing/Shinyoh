@@ -1005,7 +1005,17 @@ namespace ShukkaSiziNyuuryoku
         //F12
         private void DBProcess()
         {
-            (string,string, string) obj = GetInsert();            
+            (string,string, string) obj = GetInsert();           
+            if(cboMode.SelectedValue.ToString().Equals("1"))
+            {
+                if(dtTemp1.Rows.Count>0)
+                {
+                    foreach (DataRow row in dtTemp1.Rows)
+                    {
+                        sksz_bl.Shukkasizi_Price(row["KonkaiShukkaSiziSuu"].ToString(), row["SKMSNO"].ToString());
+                    }
+                }
+            }
             ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
         }
         private (string, string, string) GetInsert()
@@ -1109,5 +1119,6 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();
             sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_header, str_detail);
         }
+        
     }
 }
