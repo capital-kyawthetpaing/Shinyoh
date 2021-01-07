@@ -455,8 +455,49 @@ SELECT
 			,@currentDate
 FROM [dbo].[D_ShukkaSiziShousai]
 
+--※シート「消込順」参照
+
+--Table G --修正前または削除
+UPDATE  A
+SET	ShukkaSiziZumiSuu= case when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu>0 then  A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu
+									when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu<=0 then 0 end
+	,UpdateOperator=@OperatorCD
+	,UpdateDateTime=@currentDate
+FROM D_JuchuuMeisai A
+inner join #Temp_Details B
+on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
+and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
+
+--D_JuchuuMeisai
+UPDATE  A 
+SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1 
+									when C.Kanryo=1 then 1 else 0 end
+,UpdateOperator=@OperatorCD
+,UpdateDateTime=@currentDate
+FROM D_JuchuuMeisai A,#Temp_Details C
+where A.JuchuuNO = LEFT((C.SKMSNO), CHARINDEX('-', (C.SKMSNO)) - 1) 
+and A.ShouhinCD=C.ShouhinCD
+
+--D_Juchuu
+UPDATE	A
+SET		[ShukkaSiziKanryouKBN] = B.ShukkaSiziKanryouKBN
+FROM D_Juchuu as A
+INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN 
+			from D_JuchuuMeisai C, #Temp_Details D
+			where C.JuchuuNO=LEFT(D.SKMSNO, CHARINDEX('-', D.SKMSNO) - 1)
+			group by JuchuuNO
+) as B
+ON A.JuchuuNO=B.JuchuuNO
+
+--L_Log	
+exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,'Delete',@KeyItem
+
+--テーブル転送仕様Ｘ
+EXEC [dbo].[D_Exclusive_Delete]
+		12,
+		@ShukkaSiziNO;
+
 Drop Table #Temp_Header
 Drop Table #Temp_Details
 
 END
-

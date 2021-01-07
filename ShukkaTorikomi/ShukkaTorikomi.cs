@@ -202,8 +202,6 @@ namespace ShukkaTorikomi
                         bl_List.Add(Null_Check(obj.TokuisakiCD, i, "得意先CD未入力エラー"));
                         bl_List.Add(Byte_Check(10, obj.TokuisakiCD, i, "得意先CD桁数エラー"));
 
-                       
-                        
 
                         obj.KouritenCD = splits[1];
                         bl_List.Add(Null_Check(obj.KouritenCD, i, "小売店CD未入力エラー"));
@@ -249,9 +247,9 @@ namespace ShukkaTorikomi
                         bl_List.Add(Date_Check(obj.ShukkaSuu, i, "入力可能値外エラー"));
 
 
-                        obj.ShukkaSiziGyouNO = splits[11];
-                        bl_List.Add(Null_Check(obj.ShukkaSiziGyouNO, i, "出荷指示行番号未入力エラー"));
-                        bl_List.Add(Byte_Check(10,obj.ShukkaSiziGyouNO, i, "出荷指示行番号桁数エラー"));
+                        obj.ShukkaSiziNO = splits[11];
+                        bl_List.Add(Null_Check(obj.ShukkaSiziNO, i, "出荷指示行番号未入力エラー"));
+                        bl_List.Add(Byte_Check(10,obj.ShukkaSiziNO, i, "出荷指示行番号桁数エラー"));
 
                         obj.UnitPrice = splits[12];
                         bl_List.Add(Date_Check(obj.UnitPrice, i, "入力可能値外エラー"));
@@ -293,6 +291,14 @@ namespace ShukkaTorikomi
                         {
                             bbl.ShowMessage("E101");
                             //err.ShowErrorMessage("E101");
+                            bl_List.Add(true);
+                        }
+
+                        ShukkaTorikomi_BL sBL = new ShukkaTorikomi_BL();
+                        DataTable s_dk = sBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, "E133");
+                        if (s_dk.Rows[0]["MessageID"].ToString() == "E133")
+                        {
+                            bbl.ShowMessage("E133");
                             bl_List.Add(true);
                         }
                     }
@@ -353,7 +359,7 @@ namespace ShukkaTorikomi
             create_dt.Columns.Add("ShukkaSuu");
             create_dt.Columns.Add("UnitPrice");
             create_dt.Columns.Add("SellingPrice");
-            create_dt.Columns.Add("ShukkaSiziGyouNO");
+            create_dt.Columns.Add("ShukkaSiziNO");
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
             create_dt.Columns.Add("Error");

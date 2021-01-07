@@ -365,17 +365,14 @@ namespace MasterTouroku_Shouhin
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if(!txtProduct.ErrorCheck())
+                if(ErrorCheck(PanelTitle))
                 {
-                    if (!txtChangeDate.ErrorCheck())
+                    if (!txtCopyChangeDate.IsErrorOccurs)
                     {
-                        if (!txtCopyChangeDate.IsErrorOccurs)
-                        {
-                            EnableAndDisablePanel();
-                            DataTable dt = txtCopyChangeDate.IsDatatableOccurs;
-                            if (dt.Rows.Count > 0)
-                                DB_To_UI(dt);
-                        }
+                        EnableAndDisablePanel();
+                        DataTable dt = txtCopyChangeDate.IsDatatableOccurs;
+                        if (dt.Rows.Count > 0)
+                            DB_To_UI(dt);
                     }
                 }
             }
@@ -502,14 +499,14 @@ namespace MasterTouroku_Shouhin
 
                         string[] NullCheck_List = { "0", "1", "2", "3", "4", "5", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"};
                         string[] NullCheck_Msg = { "商品CD未入力エラー", "改定日未入力エラー", "諸口未入力エラー", "品番CD未入力エラー", "商品名未入力エラー", "略名未入力エラー", "単位CD未入力エラー", "ブランドCD未入力エラー", "カラーNO未入力エラー", "サイズNO未入力エラー", "上代単価未入力エラー", "下代単価未入力エラー", "標準原価単価未入力エラー", "税率区分未入力エラー", "在庫評価区分未入力エラー", "在庫管理区分未入力エラー", "主要仕入先未入力エラー" };
-                        string[] ByteCheck_List = { "0_50", "3_20", "4_100", "5_80", "6_80", "8_13", "9_6", "10_6", "11_6", "12_2", "13_10", "14_13", "15_13", "22_10", "32_80"};
+                        string[] ByteCheck_List = { "0_50", "3_20", "4_100", "5_80", "6_80", "8_13", "9_6", "10_6", "11_6", "12_2", "13_10", "14_13", "15_13", "22_10", "31_80"};
                         string[] ByteCheck_Msg = { "商品CD桁数エラー", "品番CD桁数エラー", "商品名桁数エラー", "略名桁数エラー", "カナ名桁数エラー", "JANCD桁数エラー", "年度桁数エラー", "シーズンSS桁数エラー", "シーズンFW桁数エラー", "単位CD桁数エラー", "ブランドCD桁数エラー", "カラーNO桁数エラー", "サイズNO桁数エラー", "主要仕入先CD桁数エラー", "備考桁数エラー" };
-                        string[] ValueCheck_List = { "2", "18", "19", "20" };
+                        string[] ValueCheck_List = { "2", "19", "20", "21" };
                         string[] ValueCheck_Amt = { "1", "2", "2", "1" };
-                        string[] DateCheck_List = { "1", "22", "23" };
-                        string[] NonNumeric_List = { "15", "16", "17", "26" };
+                        string[] DateCheck_List = { "1", "23", "24" };
+                        string[] NonNumeric_List = { "16", "17", "18", "27" };
                         string InputValue_Msg = "入力可能値外エラー";
-                        string[] MasterCheck_List = { "11", "12", "13", "14", "21" };
+                        string[] MasterCheck_List = { "12", "13", "14", "15", "22" };
                         string[] MasterCheck_ID = { "102", "103", "104", "105" };
                         string[] MasterCheck_Msg = { "単位CD未登録エラー", "ブランドCD未登録エラー", "カラーNO未登録エラー", "サイズNO未登録エラー", "主要仕入先CD未登録エラー" };
 
@@ -644,10 +641,14 @@ namespace MasterTouroku_Shouhin
         {
             bl = false;
             int n;
+            decimal d;
             if(!int.TryParse(obj_text, out n))
             {
-                bbl.ShowMessage("E276", line_no.ToString(), error_msg);
-                bl = true;
+                if(!decimal.TryParse(obj_text, out d))
+                {
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                    bl = true;
+                }
             }
             return bl;
         }
@@ -683,6 +684,7 @@ namespace MasterTouroku_Shouhin
             create_dt.Columns.Add("ShouhinCD");
             create_dt.Columns.Add("ChangeDate");
             create_dt.Columns.Add("ShokutiFLG");
+            create_dt.Columns.Add("HinbanCD");
             create_dt.Columns.Add("ShouhinName");
             create_dt.Columns.Add("ShouhinRyakuName");
             create_dt.Columns.Add("KanaName");
@@ -710,7 +712,6 @@ namespace MasterTouroku_Shouhin
             create_dt.Columns.Add("Shipping_Place");
             create_dt.Columns.Add("HacchuuLot");
             create_dt.Columns.Add("ShouhinImageFilePathName");
-            create_dt.Columns.Add("ShouhinImage");
             create_dt.Columns.Add("Remarks");
             create_dt.Columns.Add("UsedFlg");
             create_dt.Columns.Add("InsertOperator");

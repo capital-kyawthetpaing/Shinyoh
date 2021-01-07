@@ -306,22 +306,25 @@ namespace MasterTouroku_MultiPorpose
                 
                 if ( cboMode.SelectedValue.ToString() == "1")
                 {
-                    if (!string.IsNullOrEmpty(txtCopyID.Text) && !string.IsNullOrEmpty(txtKEYCopy.Text))
+                    if (ErrorCheck(PanelTitle))
                     {
-                        mentity.ID = txtCopyID.Text;
-                        mentity.Key = txtKEYCopy.Text;
-                        dt = mbl.M_Multiporpose_SelectData(string.Empty, 2, txtCopyID.Text, txtKEYCopy.Text);
-                        if(dt.Rows.Count>0)
+                        if (!string.IsNullOrEmpty(txtCopyID.Text) && !string.IsNullOrEmpty(txtKEYCopy.Text))
                         {
-                            DisplayData(dt);
-                            cf.EnablePanel(PanelDetail);
-                            txtIDName.Focus();
-                            cf.DisablePanel(PanelTitle);
-                        }
-                        else
-                        {
-                            bbl.ShowMessage("E133");
-                            txtCopyID.Focus();
+                            mentity.ID = txtCopyID.Text;
+                            mentity.Key = txtKEYCopy.Text;
+                            dt = mbl.M_Multiporpose_SelectData(string.Empty, 2, txtCopyID.Text, txtKEYCopy.Text);
+                            if (dt.Rows.Count > 0)
+                            {
+                                DisplayData(dt);
+                                cf.EnablePanel(PanelDetail);
+                                txtIDName.Focus();
+                                cf.DisablePanel(PanelTitle);
+                            }
+                            else
+                            {
+                                bbl.ShowMessage("E133");
+                                txtCopyID.Focus();
+                            }
                         }
                     }
                     else if (string.IsNullOrEmpty(txtCopyID.Text) && string.IsNullOrEmpty(txtKEYCopy.Text))

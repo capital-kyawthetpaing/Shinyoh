@@ -25,7 +25,7 @@ namespace Entity
         public string SizeNO { get; set; }
         public string JANCD { get; set; }
         public string ShukkaSuu { get; set; }
-        public string ShukkaSiziGyouNO { get; set; }
+        public string ShukkaSiziNO { get; set; }
         public string UnitPrice { get; set; }
         public string SellingPrice { get; set; }
 

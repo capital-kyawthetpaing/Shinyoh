@@ -325,9 +325,9 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 		,[UpdateOperator]
 		,[UpdateDateTime]
 	)
-	SELECT 
+	SELECT
 	
-		@ShukkaSiziNO --編集 ==> {テーブル転送仕様Ａ★と同じ値}
+		@ShukkaSiziNO --邱ｨ髮・==> {繝・・繝悶Ν霆｢騾∽ｻ墓ｧ假ｼ｡笘・→蜷後§蛟､}
 		,ROW_NUMBER() OVER(ORDER BY (SELECT 1))
 		,ROW_NUMBER() OVER(ORDER BY (SELECT 1))
 		,case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
@@ -374,11 +374,58 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	ON FS.ShouhinCD=TD.ShouhinCD
 
 
---TableC	
-declare @count int=1;
-while @count <= (select count(*) from #Temp_Details) 
-begin
-   INSERT INTO [dbo].[D_ShukkaSiziShousai]
+--TableC
+--declare @count int=1;
+--while @count <= (select count(*) from #Temp_Details) 
+--begin
+--   INSERT INTO [dbo].[D_ShukkaSiziShousai]
+--		(	[ShukkaSiziNO]
+--			,[ShukkaSiziGyouNO]
+--			,[ShukkaSiziShousaiNO]
+--			,[SoukoCD]
+--			,[ShouhinCD]
+--			,[ShouhinName]
+--			,[ShukkaSiziSuu]
+--			,[KanriNO]
+--			,[NyuukoDate]
+--			,[ShukkaZumiSuu]
+--			,[JuchuuNO]
+--			,[JuchuuGyouNO]
+--			,[JuchuuShousaiNO]
+--			,[InsertOperator]
+--			,[InsertDateTime]
+--			,[UpdateOperator]
+--			,[UpdateDateTime]
+--		)
+
+--		SELECT 
+--			@ShukkaSiziNO
+--			,ROW_NUMBER() OVER(ORDER BY (SELECT 1))
+--			,ROW_NUMBER() OVER(ORDER BY (SELECT 1))
+--			,(select top 1 SoukoCD from #Temp_Details) 
+--			,(select top 1 ShouhinCD from #Temp_Details)
+--			,(select top 1 ShouhinName from #Temp_Details)
+--			,dj.ShukkaSiziZumiSuu
+--			,dj.KanriNO	-- 邱ｨ髮・
+--			,dj.NyuukoDate-- 邱ｨ髮・
+--			,0
+--			,dj.JuchuuNO-- 邱ｨ髮・
+--			,dj.JuchuuGyouNO-- 邱ｨ髮・
+--			,dj.JuchuuShousaiNO-- 邱ｨ髮・
+--			,@OperatorCD,@currentDate,@OperatorCD,@currentDate
+--		from  D_JuchuuShousai dj
+--		where dj.JuchuuNO = LEFT((select top 1 SKMSNO from #Temp_Details), CHARINDEX('-', (select top 1 SKMSNO from #Temp_Details)) - 1) 
+--		and HikiateZumiSuu <> 0
+--		order by dj.KanriNO asc,dj.NyuukoDate asc
+--    set @count = @count + 1;
+--	if(@count=(select count(*) from #Temp_Details))
+--	begin
+--		break;
+--	end
+--end
+
+--TableD
+INSERT INTO [dbo].[D_ShukkaSiziShousai]
 		(	[ShukkaSiziNO]
 			,[ShukkaSiziGyouNO]
 			,[ShukkaSiziShousaiNO]
@@ -402,29 +449,23 @@ begin
 			@ShukkaSiziNO
 			,ROW_NUMBER() OVER(ORDER BY (SELECT 1))
 			,ROW_NUMBER() OVER(ORDER BY (SELECT 1))
-			,(select top 1 SoukoCD from #Temp_Details) 
-			,(select top 1 ShouhinCD from #Temp_Details)
-			,(select top 1 ShouhinName from #Temp_Details)
+			,D.SoukoCD
+			,D.ShouhinCD
+			,D.ShouhinName
 			,dj.ShukkaSiziZumiSuu
-			,dj.KanriNO	-- 編集
-			,dj.NyuukoDate-- 編集
+			,dj.KanriNO	-- 邱ｨ髮・
+			,dj.NyuukoDate-- 邱ｨ髮・
 			,0
-			,dj.JuchuuNO-- 編集
-			,dj.JuchuuGyouNO-- 編集
-			,dj.JuchuuShousaiNO-- 編集
+			,dj.JuchuuNO-- 邱ｨ髮・
+			,dj.JuchuuGyouNO-- 邱ｨ髮・
+			,dj.JuchuuShousaiNO-- 邱ｨ髮・
 			,@OperatorCD,@currentDate,@OperatorCD,@currentDate
-		from  D_JuchuuShousai dj
-		where dj.JuchuuNO = LEFT((select top 1 SKMSNO from #Temp_Details), CHARINDEX('-', (select top 1 SKMSNO from #Temp_Details)) - 1) 
+		from  D_JuchuuShousai dj,#Temp_Details D
+		where dj.JuchuuNO = LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1) 
 		and HikiateZumiSuu <> 0
 		order by dj.KanriNO asc,dj.NyuukoDate asc
-    set @count = @count + 1;
-	if(@count=(select count(*) from #Temp_Details))
-	begin
-		break;
-	end
-end
 
---TableD
+--Table D
 INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	(	[HistoryGuid]
 		,[ShukkaSiziNO]
@@ -585,7 +626,7 @@ SELECT
 		,j.[ShukkaSiziNO]
 		,j.[ShukkaSiziGyouNO]
 		,j.[GyouHyouziJun]
-		,10--新規
+		,10--譁ｰ隕・
 		,j.[KouritenCD]
 		,j.[KouritenRyakuName]
 		,j.[BrandCD]
@@ -659,7 +700,7 @@ SELECT
 [ShukkaSiziNO]
 			,[ShukkaSiziGyouNO]
 			,[ShukkaSiziShousaiNO]
-			,10 --新規
+			,10 --譁ｰ隕・
 			,[SoukoCD]
 			,[ShouhinCD]
 			,[ShouhinName]
@@ -678,37 +719,19 @@ SELECT
 			,@currentDate
 FROM [dbo].[D_ShukkaSiziShousai]
 
---Update 
+--※シート「消込順」参照
 
---[dbo].[D_JuchuuShousai]
-declare @a decimal(21,6), @b decimal(21, 6)
-declare @JuchuuNO_JuchuuGyouNO as varchar(12)= (select SKMSNO from #Temp_Details )
-SET @a = (select KonkaiShukkaSiziSuu from #Temp_Details )
-	WHILE @a >0
-		BEGIN
-		IF EXISTS (SELECT TOP 1 * FROM D_JuchuuShousai dj
-			INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
-			AND JuchuuNO = LEFT(@JuchuuNO_JuchuuGyouNO, CHARINDEX('-', @JuchuuNO_JuchuuGyouNO) - 1) AND JuchuuGyouNO = RIGHT(@JuchuuNO_JuchuuGyouNO, LEN(@JuchuuNO_JuchuuGyouNO) - CHARINDEX('-', @JuchuuNO_JuchuuGyouNO)) ORDER BY KanriNO	ASC, NyuukoDate ASC) dj1
-			ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
-			AND dj.JuchuuNO = LEFT(@JuchuuNO_JuchuuGyouNO, CHARINDEX('-', @JuchuuNO_JuchuuGyouNO) - 1) AND dj.JuchuuGyouNO = RIGHT(@JuchuuNO_JuchuuGyouNO, LEN(@JuchuuNO_JuchuuGyouNO) - CHARINDEX('-', @JuchuuNO_JuchuuGyouNO)))
-		BEGIN
+--Table G --追加または修正後
+UPDATE  A
+SET	ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
+	,UpdateOperator=@OperatorCD
+	,UpdateDateTime=@currentDate
+FROM D_JuchuuMeisai A
+inner join #Temp_Details B
+on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
+and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
 
-			UPDATE dj
-			SET dj.HikiateZumiSuu = CASE WHEN dj.HikiateZumiSuu > @a THEN dj.HikiateZumiSuu - @a ELSE 0 END, 
-				dj.ShukkaSiziZumiSuu = CASE WHEN dj.HikiateZumiSuu > @a THEN @a ELSE dj.HikiateZumiSuu END,
-				@b = CASE WHEN dj.HikiateZumiSuu > @a THEN 0 ELSE @a - dj.HikiateZumiSuu END
-			FROM D_JuchuuShousai dj
-			INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
-			AND JuchuuNO = LEFT(@JuchuuNO_JuchuuGyouNO, CHARINDEX('-', @JuchuuNO_JuchuuGyouNO) - 1) AND JuchuuGyouNO = RIGHT(@JuchuuNO_JuchuuGyouNO, LEN(@JuchuuNO_JuchuuGyouNO) - CHARINDEX('-', @JuchuuNO_JuchuuGyouNO)) ORDER BY KanriNO ASC, NyuukoDate ASC) dj1
-			ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
-			AND dj.JuchuuNO = LEFT(@JuchuuNO_JuchuuGyouNO, CHARINDEX('-', @JuchuuNO_JuchuuGyouNO) - 1) AND dj.JuchuuGyouNO = RIGHT(@JuchuuNO_JuchuuGyouNO, LEN(@JuchuuNO_JuchuuGyouNO) - CHARINDEX('-', @JuchuuNO_JuchuuGyouNO))
-		END
-			ELSE
-				BREAK
-			SET @a = @b
-		END
-
-
+--D_JuchuuMeisai
 UPDATE  A
 SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1 
 									when C.Kanryo=1 then 1 else 0 end
@@ -716,7 +739,7 @@ FROM D_JuchuuMeisai A,#Temp_Details C
 where A.JuchuuNO = LEFT((C.SKMSNO), CHARINDEX('-', (C.SKMSNO)) - 1) 
 and A.ShouhinCD=C.ShouhinCD
 
-
+--D_Juchuu
 UPDATE	A
 SET		[ShukkaSiziKanryouKBN] = B.ShukkaSiziKanryouKBN
 FROM D_Juchuu as A
@@ -728,29 +751,22 @@ INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN
 ON A.JuchuuNO=B.JuchuuNO
 
 --スタッフマスタ
-update M_Staff 
+UPDATE M_Staff 
 set UsedFlg = 1 
-where ChangeDate = (select ChangeDate from F_Staff(@ShippingDate) where StaffCD = @StaffCD)
-and StaffCD=@StaffCD
+where StaffCD=@StaffCD
+and  ChangeDate = (select ChangeDate from F_Staff(@ShippingDate) where StaffCD = @StaffCD)
 
 --L_Log
 exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,'New' ,@KeyItem
 
 
---テーブル転送仕様Ｙ 削除
+--テーブル転送仕様Ｙ
 EXEC [dbo].[D_Exclusive_Delete]
 		1,
 		@ShukkaSiziNO;
-		--@Program,
-		--@PC;
 
-If(OBJECT_ID('tempdb..#Temp_Header') Is Not Null)
-Begin
-    Drop Table #Temp_Header
-End
-If(OBJECT_ID('tempdb..#Temp_Details') Is Not Null)
-Begin
-    Drop Table #Temp_Details
-End
+Drop Table #Temp_Header
+Drop Table #Temp_Details
+
 END
 

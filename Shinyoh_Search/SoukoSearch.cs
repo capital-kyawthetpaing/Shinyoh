@@ -87,7 +87,10 @@ namespace Shinyoh_Search {
         }
         private void gvSouko_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            GetGridviewData(gvSouko.Rows[e.RowIndex]);
+            if(e.RowIndex >= 0)
+            {
+                GetGridviewData(gvSouko.Rows[e.RowIndex]);
+            }
         }
 
         private void gvSouko_KeyDown(object sender, KeyEventArgs e)
