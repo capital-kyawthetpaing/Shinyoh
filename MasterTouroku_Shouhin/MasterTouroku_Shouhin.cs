@@ -374,12 +374,6 @@ namespace MasterTouroku_Shouhin
                         if (dt.Rows.Count > 0)
                             DB_To_UI(dt);
                     }
-
-                    if (cboMode.SelectedValue.ToString() == "1")
-                    {
-                        Control btnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
-                        btnF9.Visible = false;
-                    }
                 }
             }
         }
