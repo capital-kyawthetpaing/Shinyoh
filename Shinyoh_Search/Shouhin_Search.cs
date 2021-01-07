@@ -127,8 +127,8 @@ namespace Shinyoh_Search
                 DataGridViewRow row = gvrow;
                 shouhinCD = row.Cells["ShouhinCD"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["改定日"].Value.ToString()).ToString("yyyy/MM/dd");
-                this.Close();
             }
+            this.Close();
         }
 
         private void dgDetail_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
@@ -186,7 +186,8 @@ namespace Shinyoh_Search
         {
             if (e.KeyCode == Keys.Enter)
             {
-                GetGridviewData(dgDetail.Rows[dgDetail.CurrentCell.RowIndex]);
+                if(dgDetail.CurrentCell != null)
+                    GetGridviewData(dgDetail.Rows[dgDetail.CurrentCell.RowIndex]);
             }
         }
     }
