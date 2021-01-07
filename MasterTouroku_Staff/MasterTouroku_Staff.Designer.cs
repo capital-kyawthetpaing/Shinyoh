@@ -157,7 +157,7 @@
             this.txtStaff_Search.MoveNext = true;
             this.txtStaff_Search.Name = "txtStaff_Search";
             this.txtStaff_Search.NextControl = null;
-            this.txtStaff_Search.NextControlName = "BtnF1";
+            this.txtStaff_Search.NextControlName = "BtnF12";
             this.txtStaff_Search.SearchType = Entity.SearchType.ScType.None;
             this.txtStaff_Search.Size = new System.Drawing.Size(50, 19);
             this.txtStaff_Search.TabIndex = 15;
@@ -741,6 +741,7 @@
             this.txtStaff_Copy.Size = new System.Drawing.Size(100, 19);
             this.txtStaff_Copy.TabIndex = 3;
             this.txtStaff_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaff_Copy.TxtBox = null;
             // 
             // txt_Staff
             // 
@@ -769,6 +770,7 @@
             this.txt_Staff.Size = new System.Drawing.Size(100, 19);
             this.txt_Staff.TabIndex = 1;
             this.txt_Staff.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txt_Staff.TxtBox = null;
             // 
             // MasterTouroku_Staff
             // 

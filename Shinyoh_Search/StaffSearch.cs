@@ -92,14 +92,14 @@ namespace Shinyoh_Search
         
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 staffCD = row.Cells["colStaffCD"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
                 staffName = row.Cells["colStaffName"].Value.ToString();
-                this.Close();
             }
+            this.Close();
         }
 
         private void gvStaff_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

@@ -418,6 +418,7 @@
             this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
             this.txtStaffCD.TabIndex = 26;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCD.TxtBox = null;
             // 
             // lblStaffCD_Name
             // 
@@ -481,7 +482,7 @@
             this.txtKensakuHyouziJun.MoveNext = true;
             this.txtKensakuHyouziJun.Name = "txtKensakuHyouziJun";
             this.txtKensakuHyouziJun.NextControl = null;
-            this.txtKensakuHyouziJun.NextControlName = "BtnF1";
+            this.txtKensakuHyouziJun.NextControlName = "BtnF12";
             this.txtKensakuHyouziJun.SearchType = Entity.SearchType.ScType.None;
             this.txtKensakuHyouziJun.Size = new System.Drawing.Size(50, 19);
             this.txtKensakuHyouziJun.TabIndex = 30;
@@ -1360,6 +1361,7 @@
             this.txtTokuisakiCD_Copy.Size = new System.Drawing.Size(90, 19);
             this.txtTokuisakiCD_Copy.TabIndex = 4;
             this.txtTokuisakiCD_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTokuisakiCD_Copy.TxtBox = null;
             // 
             // txtTokuisakiCD
             // 
@@ -1388,6 +1390,7 @@
             this.txtTokuisakiCD.Size = new System.Drawing.Size(90, 19);
             this.txtTokuisakiCD.TabIndex = 1;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTokuisakiCD.TxtBox = null;
             // 
             // txtCopyCD
             // 
@@ -1416,6 +1419,7 @@
             this.txtCopyCD.Size = new System.Drawing.Size(90, 19);
             this.txtCopyCD.TabIndex = 5;
             this.txtCopyCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtCopyCD.TxtBox = null;
             // 
             // txtKouritenCD
             // 
@@ -1444,6 +1448,7 @@
             this.txtKouritenCD.Size = new System.Drawing.Size(90, 19);
             this.txtKouritenCD.TabIndex = 2;
             this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtKouritenCD.TxtBox = null;
             // 
             // MasterTourokuKouriten
             // 

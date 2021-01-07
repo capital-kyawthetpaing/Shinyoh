@@ -301,15 +301,19 @@ namespace MasterTouroku_MultiPorpose
                 mentity.ID = txtCopyID.Text;
                 mentity.Key = txtKEYCopy.Text;
                 dt = mbl.M_Multiporpose_SelectData(string.Empty, 2, txtCopyID.Text, txtKEYCopy.Text);
-                if (dt.Rows.Count > 0)
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() == "1")
                 {
                     DisplayData(dt);
                     cf.EnablePanel(PanelDetail);
                     txtIDName.Focus();
                     cf.DisablePanel(PanelTitle);
                 }
-               else
-               {
+                else if(cboMode.SelectedValue.ToString()=="2" || cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                {
+                    Disable_UDI_Mode();
+                }
+                else
+                {
                     bbl.ShowMessage("E133");
                     txtKEYCopy.Focus();
                 }

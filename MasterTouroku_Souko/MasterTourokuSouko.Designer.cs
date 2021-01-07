@@ -645,7 +645,7 @@
             this.txtSearch.MoveNext = true;
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.NextControl = null;
-            this.txtSearch.NextControlName = "BtnF1";
+            this.txtSearch.NextControlName = "BtnF12";
             this.txtSearch.SearchType = Entity.SearchType.ScType.None;
             this.txtSearch.Size = new System.Drawing.Size(50, 19);
             this.txtSearch.TabIndex = 16;
@@ -680,6 +680,7 @@
             this.txtSouko.Size = new System.Drawing.Size(100, 19);
             this.txtSouko.TabIndex = 1;
             this.txtSouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSouko.TxtBox = null;
             this.txtSouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSouko_KeyDown);
             // 
             // lblCopySouko
@@ -765,6 +766,7 @@
             this.txtCopySouko.Size = new System.Drawing.Size(100, 19);
             this.txtCopySouko.TabIndex = 27;
             this.txtCopySouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtCopySouko.TxtBox = null;
             this.txtCopySouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopySouko_KeyDown);
             // 
             // MasterTourokuSouko

@@ -628,7 +628,7 @@
             this.txtSizeNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSizeNo.DecimalPlace = 0;
             this.txtSizeNo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtSizeNo.DepandOnMode = true;
+            this.txtSizeNo.DepandOnMode = false;
             this.txtSizeNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSizeNo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.txtSizeNo.IntegerPart = 0;
@@ -643,7 +643,7 @@
             this.txtSizeNo.Name = "txtSizeNo";
             this.txtSizeNo.NextControl = null;
             this.txtSizeNo.NextControlName = "btnNameF8";
-            this.txtSizeNo.SearchType = Entity.SearchType.ScType.None;
+            this.txtSizeNo.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtSizeNo.Size = new System.Drawing.Size(130, 19);
             this.txtSizeNo.TabIndex = 17;
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -667,7 +667,7 @@
             this.txtColorNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtColorNo.DecimalPlace = 0;
             this.txtColorNo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtColorNo.DepandOnMode = true;
+            this.txtColorNo.DepandOnMode = false;
             this.txtColorNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtColorNo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.txtColorNo.IntegerPart = 0;
@@ -682,7 +682,7 @@
             this.txtColorNo.Name = "txtColorNo";
             this.txtColorNo.NextControl = null;
             this.txtColorNo.NextControlName = "txtSizeNo";
-            this.txtColorNo.SearchType = Entity.SearchType.ScType.None;
+            this.txtColorNo.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtColorNo.Size = new System.Drawing.Size(130, 19);
             this.txtColorNo.TabIndex = 16;
             this.txtColorNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
