@@ -207,7 +207,7 @@ namespace ShukkaSiziNyuuryoku
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1089, 179);
+            this.label9.Location = new System.Drawing.Point(1082, 154);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 13);
             this.label9.TabIndex = 78;
@@ -277,7 +277,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(999, 176);
+            this.label7.Location = new System.Drawing.Point(992, 151);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(15, 20);
             this.label7.TabIndex = 74;
@@ -287,7 +287,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(907, 176);
+            this.label8.Location = new System.Drawing.Point(900, 151);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 20);
             this.label8.TabIndex = 73;
@@ -306,7 +306,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone3.IsErrorOccurs = false;
             this.txtPhone3.IsRequire = false;
             this.txtPhone3.IsUseInitializedLayout = true;
-            this.txtPhone3.Location = new System.Drawing.Point(1018, 176);
+            this.txtPhone3.Location = new System.Drawing.Point(1011, 151);
             this.txtPhone3.MaxLength = 5;
             this.txtPhone3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone3.MoveNext = true;
@@ -331,7 +331,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone2.IsErrorOccurs = false;
             this.txtPhone2.IsRequire = false;
             this.txtPhone2.IsUseInitializedLayout = true;
-            this.txtPhone2.Location = new System.Drawing.Point(926, 176);
+            this.txtPhone2.Location = new System.Drawing.Point(919, 151);
             this.txtPhone2.MaxLength = 5;
             this.txtPhone2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2.MoveNext = true;
@@ -356,7 +356,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone1.IsErrorOccurs = false;
             this.txtPhone1.IsRequire = false;
             this.txtPhone1.IsUseInitializedLayout = true;
-            this.txtPhone1.Location = new System.Drawing.Point(832, 175);
+            this.txtPhone1.Location = new System.Drawing.Point(825, 150);
             this.txtPhone1.MaxLength = 6;
             this.txtPhone1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1.MoveNext = true;
@@ -374,7 +374,7 @@ namespace ShukkaSiziNyuuryoku
             this.lblPhone1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPhone1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPhone1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblPhone1.Location = new System.Drawing.Point(732, 175);
+            this.lblPhone1.Location = new System.Drawing.Point(725, 150);
             this.lblPhone1.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblPhone1.Name = "lblPhone1";
             this.lblPhone1.Size = new System.Drawing.Size(100, 19);
@@ -385,7 +385,7 @@ namespace ShukkaSiziNyuuryoku
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1417, 179);
+            this.label2.Location = new System.Drawing.Point(1428, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 68;
@@ -436,7 +436,7 @@ namespace ShukkaSiziNyuuryoku
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1046, 207);
+            this.label6.Location = new System.Drawing.Point(1039, 182);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
             this.label6.TabIndex = 65;
@@ -445,7 +445,7 @@ namespace ShukkaSiziNyuuryoku
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(663, 178);
+            this.label5.Location = new System.Drawing.Point(656, 153);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 60;
@@ -464,7 +464,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtAddress.IsErrorOccurs = false;
             this.txtAddress.IsRequire = false;
             this.txtAddress.IsUseInitializedLayout = true;
-            this.txtAddress.Location = new System.Drawing.Point(517, 203);
+            this.txtAddress.Location = new System.Drawing.Point(510, 178);
             this.txtAddress.MaxLength = 80;
             this.txtAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress.MoveNext = true;
@@ -482,7 +482,7 @@ namespace ShukkaSiziNyuuryoku
             this.lblAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAddress1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAddress1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblAddress1.Location = new System.Drawing.Point(420, 203);
+            this.lblAddress1.Location = new System.Drawing.Point(413, 178);
             this.lblAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblAddress1.Name = "lblAddress1";
             this.lblAddress1.Size = new System.Drawing.Size(100, 19);
@@ -503,7 +503,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(592, 176);
+            this.txtYubin2.Location = new System.Drawing.Point(585, 151);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYubin2.MoveNext = true;
@@ -529,7 +529,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
             this.txtYubin1.IsUseInitializedLayout = true;
-            this.txtYubin1.Location = new System.Drawing.Point(520, 176);
+            this.txtYubin1.Location = new System.Drawing.Point(513, 151);
             this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin1.MoveNext = true;
@@ -545,7 +545,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(575, 174);
+            this.label4.Location = new System.Drawing.Point(568, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 62;
@@ -554,7 +554,7 @@ namespace ShukkaSiziNyuuryoku
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(385, 153);
+            this.label3.Location = new System.Drawing.Point(367, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 59;
@@ -682,7 +682,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJuchuuNo.IsRequire = false;
             this.txtJuchuuNo.IsUseInitializedLayout = true;
             this.txtJuchuuNo.lblName = null;
-            this.txtJuchuuNo.Location = new System.Drawing.Point(258, 176);
+            this.txtJuchuuNo.Location = new System.Drawing.Point(269, 152);
             this.txtJuchuuNo.MaxLength = 12;
             this.txtJuchuuNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJuchuuNo.MoveNext = true;
@@ -754,9 +754,9 @@ namespace ShukkaSiziNyuuryoku
             this.Column13,
             this.Column14,
             this.Column15});
-            this.dgvShukkasizi.Location = new System.Drawing.Point(2, 276);
+            this.dgvShukkasizi.Location = new System.Drawing.Point(48, 222);
             this.dgvShukkasizi.Name = "dgvShukkasizi";
-            this.dgvShukkasizi.Size = new System.Drawing.Size(1468, 250);
+            this.dgvShukkasizi.Size = new System.Drawing.Size(1450, 350);
             this.dgvShukkasizi.TabIndex = 35;
             this.dgvShukkasizi.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvShukkasizi_Paint);
             // 
@@ -1000,7 +1000,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnSave.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnSave.Location = new System.Drawing.Point(1356, 217);
+            this.btnSave.Location = new System.Drawing.Point(1367, 193);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 33;
@@ -1014,7 +1014,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDisplay.Location = new System.Drawing.Point(1256, 217);
+            this.btnDisplay.Location = new System.Drawing.Point(1267, 193);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.Size = new System.Drawing.Size(75, 23);
             this.btnDisplay.TabIndex = 32;
@@ -1028,7 +1028,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnConfirm.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnConfirm.Location = new System.Drawing.Point(1158, 217);
+            this.btnConfirm.Location = new System.Drawing.Point(1169, 193);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(75, 23);
             this.btnConfirm.TabIndex = 31;
@@ -1089,7 +1089,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = true;
             this.txtName.IsUseInitializedLayout = true;
-            this.txtName.Location = new System.Drawing.Point(1254, 175);
+            this.txtName.Location = new System.Drawing.Point(1257, 151);
             this.txtName.MaxLength = 40;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtName.MoveNext = true;
@@ -1121,7 +1121,7 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel16.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel16.Location = new System.Drawing.Point(1154, 175);
+            this.sLabel16.Location = new System.Drawing.Point(1157, 151);
             this.sLabel16.Name = "sLabel16";
             this.sLabel16.Size = new System.Drawing.Size(100, 19);
             this.sLabel16.TabIndex = 25;
@@ -1157,7 +1157,7 @@ namespace ShukkaSiziNyuuryoku
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(133, 153);
+            this.label1.Location = new System.Drawing.Point(133, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 6;
@@ -1176,7 +1176,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSenpyouhachuuNo.IsErrorOccurs = false;
             this.txtSenpyouhachuuNo.IsRequire = false;
             this.txtSenpyouhachuuNo.IsUseInitializedLayout = true;
-            this.txtSenpyouhachuuNo.Location = new System.Drawing.Point(258, 203);
+            this.txtSenpyouhachuuNo.Location = new System.Drawing.Point(269, 179);
             this.txtSenpyouhachuuNo.MaxLength = 20;
             this.txtSenpyouhachuuNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSenpyouhachuuNo.MoveNext = true;
@@ -1194,7 +1194,7 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel7.Location = new System.Drawing.Point(158, 176);
+            this.sLabel7.Location = new System.Drawing.Point(169, 152);
             this.sLabel7.Name = "sLabel7";
             this.sLabel7.Size = new System.Drawing.Size(100, 19);
             this.sLabel7.TabIndex = 7;
@@ -1207,7 +1207,7 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel8.Location = new System.Drawing.Point(158, 203);
+            this.sLabel8.Location = new System.Drawing.Point(169, 179);
             this.sLabel8.Name = "sLabel8";
             this.sLabel8.Size = new System.Drawing.Size(100, 19);
             this.sLabel8.TabIndex = 8;
@@ -1220,7 +1220,7 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel10.Location = new System.Drawing.Point(420, 176);
+            this.sLabel10.Location = new System.Drawing.Point(413, 151);
             this.sLabel10.Name = "sLabel10";
             this.sLabel10.Size = new System.Drawing.Size(100, 19);
             this.sLabel10.TabIndex = 10;

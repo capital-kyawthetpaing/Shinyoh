@@ -273,6 +273,7 @@ namespace ShukkaSiziNyuuryoku
                 dgvShukkasizi.Rows[row].Cells["colPrice"].Value = Convert.ToInt32(dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString()) * Convert.ToInt32(dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString());
                 dgvShukkasizi.MoveNextCell();
             }
+           
             //souko bind case
             if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["SoukoCD"])
             {
@@ -332,16 +333,19 @@ namespace ShukkaSiziNyuuryoku
                         }
                     }
                 }
-
-                DataRow dr1 = dtGS1.NewRow();
-                for (int i = 0; i < dtGS1.Columns.Count; i++)
+                if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colDetails"])
                 {
-                    if (i == 11)
-                        dr1[i] = dgvShukkasizi[i, row].EditedFormattedValue;
-                    else
-                        dr1[i] = string.IsNullOrEmpty(dgvShukkasizi[i, row].EditedFormattedValue.ToString().Trim()) ? null : dgvShukkasizi[i, row].EditedFormattedValue.ToString();
+                    DataRow dr1 = dtGS1.NewRow();
+                    for (int i = 0; i < dtGS1.Columns.Count; i++)
+                    {
+                        if (i == 11)
+                            dr1[i] = dgvShukkasizi[i, row].EditedFormattedValue;
+                        else
+                            dr1[i] = string.IsNullOrEmpty(dgvShukkasizi[i, row].EditedFormattedValue.ToString().Trim()) ? null : dgvShukkasizi[i, row].EditedFormattedValue.ToString();
+                    }
+                    dtGS1.Rows.Add(dr1);
                 }
-                dtGS1.Rows.Add(dr1);
+                    
             }
         }
         private void Update_Data()//画面転送表01
@@ -818,7 +822,8 @@ namespace ShukkaSiziNyuuryoku
         }
         private bool Temp_Null()
         {
-            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp1.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && dtTemp1.Rows.Count == 0)
+            //if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp1.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && dtTemp1.Rows.Count == 0)
+            if(dtTemp1.Rows.Count==0)
             {
                 bbl.ShowMessage("E274");
                 return false;
@@ -882,10 +887,49 @@ namespace ShukkaSiziNyuuryoku
                     bbl.ShowMessage("E143");
                     return false;
                 }
+            }
+            if (dgvShukkasizi.Columns[col].Name == "SoukoCD")
+            {
                 if (dgvShukkasizi.Rows[row].Cells["SoukoCD"].Value.ToString().Equals("") && (!dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0")))
                 {
                     bbl.ShowMessage("E102");
                     dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["SoukoCD"];
+                    return false;
+                }
+            }
+                
+            return true;
+        }
+        private bool GV_Check()
+        {
+            foreach (DataGridViewRow gv in dgvShukkasizi.Rows)
+            {
+                string value = gv.Cells["colArrivalTime"].EditedFormattedValue.ToString().Replace(",", "");
+                if (Convert.ToInt32(value) < 0)
+                {
+                    bbl.ShowMessage("E109");
+                    return false;
+                }
+                string value1 = gv.Cells["colShukkakanousuu"].EditedFormattedValue.ToString();
+                if (Convert.ToInt32(value) > Convert.ToInt32(value1))
+                {
+                    bbl.ShowMessage("E143");
+                    dgvShukkasizi.CurrentCell = gv.Cells["colArrivalTime"];
+                    return false;
+                }
+
+                string value2 = gv.Cells["colJuchuuSuu"].EditedFormattedValue.ToString();
+                string value3 = gv.Cells["colShukkasizisou"].EditedFormattedValue.ToString();
+                if (Convert.ToInt32(value) > (Convert.ToInt32(value2) - Convert.ToInt32(value3)))
+                {
+                    bbl.ShowMessage("E143");
+                    return false;
+                }
+
+                if (gv.Cells["SoukoCD"].Value.ToString().Equals("") && (!gv.Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0")))
+                {
+                    bbl.ShowMessage("E102");
+                    dgvShukkasizi.CurrentCell = gv.Cells["SoukoCD"];
                     return false;
                 }
             }
@@ -929,11 +973,15 @@ namespace ShukkaSiziNyuuryoku
                     dgvShukkasizi.Columns["chk"].ReadOnly = false;
                     break;
                 case 11:
-                    dtTemp1 = dtGS1;//temp add
-                    F11_Clear();
-                    txtJuchuuNo.Focus();
-                    dgvShukkasizi.ClearSelection();
-                    dgvShukkasizi.DataSource = dtClear;
+                    if(GV_Check())
+                    {
+                        dtTemp1 = dtGS1;//temp add
+                        F11_Clear();
+                        txtJuchuuNo.Focus();
+                        dgvShukkasizi.ClearSelection();
+                        dgvShukkasizi.DataSource = dtClear;
+                    }
+                    
                     break;
             }
         }
@@ -1005,18 +1053,14 @@ namespace ShukkaSiziNyuuryoku
         //F12
         private void DBProcess()
         {
-            (string,string, string) obj = GetInsert();           
-            if(cboMode.SelectedValue.ToString().Equals("1"))
+            (string,string, string) obj = GetInsert();
+            sksz_bl = new ShukkasiziNyuuryokuBL();
+
+            foreach (DataRow row in dtTemp1.Rows)
             {
-                if(dtTemp1.Rows.Count>0)
-                {
-                    foreach (DataRow row in dtTemp1.Rows)
-                    {
-                        sksz_bl.Shukkasizi_Price(row["KonkaiShukkaSiziSuu"].ToString(), row["SKMSNO"].ToString());
-                    }
-                }
+                sksz_bl.Shukkasizi_Price(row["KonkaiShukkaSiziSuu"].ToString(), row["SKMSNO"].ToString());
             }
-            ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
+            sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
         }
         private (string, string, string) GetInsert()
         {
@@ -1099,25 +1143,6 @@ namespace ShukkaSiziNyuuryoku
             }
 
             return (Mode,Header_XML, Detail_XML);
-        }
-        private void DoInsert(string mode, string str_header, string str_detail)
-        {
-            sksz_bl = new ShukkasiziNyuuryokuBL();
-            sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_header, str_detail);
-        }
-        private void DoUpdate(string mode, string str_header, string str_detail)
-        {
-            sksz_bl = new ShukkasiziNyuuryokuBL();
-            sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_header, str_detail);
-        }
-        private void DoDelete(string mode, string str_header, string str_detail)
-        {
-            throw new NotImplementedException();
-        }
-        private void ShukkasiziNyuuryoku_IUD(string mode, string str_header, string str_detail)
-        {
-            sksz_bl = new ShukkasiziNyuuryokuBL();
-            sksz_bl.ShukkasiziNyuuryoku_IUD(mode, str_header, str_detail);
         }
         
     }
