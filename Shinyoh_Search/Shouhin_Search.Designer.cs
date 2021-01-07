@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pHead = new System.Windows.Forms.Panel();
+            this.PanelTitle = new System.Windows.Forms.Panel();
             this.btn_F11 = new Shinyoh_Controls.SButton();
             this.txtSize = new Shinyoh_Controls.STextBox();
             this.lblSize = new Shinyoh_Controls.SLabel();
@@ -65,53 +65,53 @@
             this.rdoRecentRevisionDate = new Shinyoh_Controls.SRadio();
             this.lblDisplayTarget = new Shinyoh_Controls.SLabel();
             this.dgDetail = new Shinyoh_Controls.SGridView();
-            this.pHead.SuspendLayout();
+            this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetail)).BeginInit();
             this.SuspendLayout();
             // 
-            // pHead
+            // PanelTitle
             // 
-            this.pHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.pHead.Controls.Add(this.btn_F11);
-            this.pHead.Controls.Add(this.txtSize);
-            this.pHead.Controls.Add(this.lblSize);
-            this.pHead.Controls.Add(this.txtBrand1);
-            this.pHead.Controls.Add(this.label5);
-            this.pHead.Controls.Add(this.txtBrand);
-            this.pHead.Controls.Add(this.lblBrand);
-            this.pHead.Controls.Add(this.txtKanaName);
-            this.pHead.Controls.Add(this.lblKanaName);
-            this.pHead.Controls.Add(this.txtColor);
-            this.pHead.Controls.Add(this.lblColor);
-            this.pHead.Controls.Add(this.chkFW);
-            this.pHead.Controls.Add(this.chkSS);
-            this.pHead.Controls.Add(this.label4);
-            this.pHead.Controls.Add(this.txtExhibition1);
-            this.pHead.Controls.Add(this.label3);
-            this.pHead.Controls.Add(this.txtExhibition);
-            this.pHead.Controls.Add(this.lblExhibition);
-            this.pHead.Controls.Add(this.txtProductName);
-            this.pHead.Controls.Add(this.lblProductName);
-            this.pHead.Controls.Add(this.txtChangeDate);
-            this.pHead.Controls.Add(this.lblReferenceDate);
-            this.pHead.Controls.Add(this.txtRemarks);
-            this.pHead.Controls.Add(this.lblRemarks);
-            this.pHead.Controls.Add(this.txtJANCD1);
-            this.pHead.Controls.Add(this.label2);
-            this.pHead.Controls.Add(this.txtJANCD);
-            this.pHead.Controls.Add(this.lblJANCD);
-            this.pHead.Controls.Add(this.txtHinbanCD1);
-            this.pHead.Controls.Add(this.label1);
-            this.pHead.Controls.Add(this.txtHinbanCD);
-            this.pHead.Controls.Add(this.lblHinbanCD);
-            this.pHead.Controls.Add(this.rdoAll);
-            this.pHead.Controls.Add(this.rdoRecentRevisionDate);
-            this.pHead.Controls.Add(this.lblDisplayTarget);
-            this.pHead.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pHead.Location = new System.Drawing.Point(0, 0);
-            this.pHead.Name = "pHead";
-            this.pHead.Size = new System.Drawing.Size(1199, 113);
-            this.pHead.TabIndex = 2;
+            this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.PanelTitle.Controls.Add(this.btn_F11);
+            this.PanelTitle.Controls.Add(this.txtSize);
+            this.PanelTitle.Controls.Add(this.lblSize);
+            this.PanelTitle.Controls.Add(this.txtBrand1);
+            this.PanelTitle.Controls.Add(this.label5);
+            this.PanelTitle.Controls.Add(this.txtBrand);
+            this.PanelTitle.Controls.Add(this.lblBrand);
+            this.PanelTitle.Controls.Add(this.txtKanaName);
+            this.PanelTitle.Controls.Add(this.lblKanaName);
+            this.PanelTitle.Controls.Add(this.txtColor);
+            this.PanelTitle.Controls.Add(this.lblColor);
+            this.PanelTitle.Controls.Add(this.chkFW);
+            this.PanelTitle.Controls.Add(this.chkSS);
+            this.PanelTitle.Controls.Add(this.label4);
+            this.PanelTitle.Controls.Add(this.txtExhibition1);
+            this.PanelTitle.Controls.Add(this.label3);
+            this.PanelTitle.Controls.Add(this.txtExhibition);
+            this.PanelTitle.Controls.Add(this.lblExhibition);
+            this.PanelTitle.Controls.Add(this.txtProductName);
+            this.PanelTitle.Controls.Add(this.lblProductName);
+            this.PanelTitle.Controls.Add(this.txtChangeDate);
+            this.PanelTitle.Controls.Add(this.lblReferenceDate);
+            this.PanelTitle.Controls.Add(this.txtRemarks);
+            this.PanelTitle.Controls.Add(this.lblRemarks);
+            this.PanelTitle.Controls.Add(this.txtJANCD1);
+            this.PanelTitle.Controls.Add(this.label2);
+            this.PanelTitle.Controls.Add(this.txtJANCD);
+            this.PanelTitle.Controls.Add(this.lblJANCD);
+            this.PanelTitle.Controls.Add(this.txtHinbanCD1);
+            this.PanelTitle.Controls.Add(this.label1);
+            this.PanelTitle.Controls.Add(this.txtHinbanCD);
+            this.PanelTitle.Controls.Add(this.lblHinbanCD);
+            this.PanelTitle.Controls.Add(this.rdoAll);
+            this.PanelTitle.Controls.Add(this.rdoRecentRevisionDate);
+            this.PanelTitle.Controls.Add(this.lblDisplayTarget);
+            this.PanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelTitle.Location = new System.Drawing.Point(0, 0);
+            this.PanelTitle.Name = "PanelTitle";
+            this.PanelTitle.Size = new System.Drawing.Size(1199, 113);
+            this.PanelTitle.TabIndex = 2;
             // 
             // btn_F11
             // 
@@ -760,14 +760,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1199, 506);
             this.Controls.Add(this.dgDetail);
-            this.Controls.Add(this.pHead);
+            this.Controls.Add(this.PanelTitle);
             this.Name = "Shouhin_Search";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "商品検索";
             this.Load += new System.EventHandler(this.Shouhin_Search_Load);
-            this.Controls.SetChildIndex(this.pHead, 0);
+            this.Controls.SetChildIndex(this.PanelTitle, 0);
             this.Controls.SetChildIndex(this.dgDetail, 0);
-            this.pHead.ResumeLayout(false);
-            this.pHead.PerformLayout();
+            this.PanelTitle.ResumeLayout(false);
+            this.PanelTitle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgDetail)).EndInit();
             this.ResumeLayout(false);
 
@@ -775,7 +776,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pHead;
+        private System.Windows.Forms.Panel PanelTitle;
         private Shinyoh_Controls.SLabel lblDisplayTarget;
         private Shinyoh_Controls.SRadio rdoRecentRevisionDate;
         private Shinyoh_Controls.SLabel lblHinbanCD;

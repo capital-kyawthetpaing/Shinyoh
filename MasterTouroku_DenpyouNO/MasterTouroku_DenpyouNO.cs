@@ -222,7 +222,7 @@ namespace MasterTouroku_DenpyouNO
             {
                 if (!txt_Prefix.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "2")
+                    if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
                     {
                         EnableAndDisablePanel();
                     }
@@ -230,7 +230,11 @@ namespace MasterTouroku_DenpyouNO
                     {
                         cf.DisablePanel(PanelTitle);
                         cf.DisablePanel(PanelDetail);
-                        txtCounter.Focus();
+                        if(cboMode.SelectedValue.ToString() == "3")
+                        {
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
+                        }
                     }
                 }
                 DataTable dt = txt_Prefix.IsDatatableOccurs;
