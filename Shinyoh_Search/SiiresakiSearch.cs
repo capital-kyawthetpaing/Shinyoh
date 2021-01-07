@@ -90,14 +90,14 @@ namespace Shinyoh_Search
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 SiiresakiCD = row.Cells["colSiiresakiCD"].Value.ToString();
                 SiiresakiName = row.Cells["colSiiresakiName"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
-                this.Close();
             }
+            this.Close();
         }
 
         private void gvSupplier_KeyDown(object sender, KeyEventArgs e)

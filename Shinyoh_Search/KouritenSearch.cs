@@ -95,14 +95,14 @@ namespace Shinyoh_Search
 
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 KouritenCD = row.Cells["colKouritenCD"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["colChangeDate"].Value.ToString()).ToString("yyyy/MM/dd");
                 KouritenRyakuName = row.Cells["colKouritenRyakuName"].Value.ToString();
-                this.Close();
             }
+            this.Close();
         }
 
         private void gv_Kouriten_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
