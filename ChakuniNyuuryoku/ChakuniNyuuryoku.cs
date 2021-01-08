@@ -167,7 +167,7 @@ namespace ChakuniNyuuryoku
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
-            txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            //txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
@@ -560,20 +560,36 @@ namespace ChakuniNyuuryoku
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            dtTemp = dtGS1;
-            txtScheduled.Clear();
-            txtShouhinCD.Clear();
-            txtShouhinName.Clear();
-            txtControlNo.Clear();
-            txtJANCD.Clear();
-            sbBrand.Clear();
-            lblBrandName.Text = string.Empty;
-            txtColor.Clear();
-            txtYearTerm.Clear();
-            txtSize.Clear();
-            txtScheduled.Focus();
-            gvChakuniNyuuryoku.ClearSelection();
-            gvChakuniNyuuryoku.DataSource = dtClear;
+            if (GV_Check())
+            {
+                dtTemp = dtGS1;
+                txtScheduled.Clear();
+                txtShouhinCD.Clear();
+                txtShouhinName.Clear();
+                txtControlNo.Clear();
+                txtJANCD.Clear();
+                sbBrand.Clear();
+                lblBrandName.Text = string.Empty;
+                txtColor.Clear();
+                txtYearTerm.Clear();
+                txtSize.Clear();
+                txtScheduled.Focus();
+                gvChakuniNyuuryoku.ClearSelection();
+                gvChakuniNyuuryoku.DataSource = dtClear;
+            }
+        }
+        private bool GV_Check()
+        {
+            foreach (DataGridViewRow gv in gvChakuniNyuuryoku.Rows)
+            {
+                string value = gv.Cells["colArrivalTime"].EditedFormattedValue.ToString().Replace(",", "");
+                if (Convert.ToInt32(value) < 0)
+                {
+                    bbl.ShowMessage("E109");
+                    return false;
+                }
+            }
+            return true;
         }
         private DataTable CreateTable()
         {
