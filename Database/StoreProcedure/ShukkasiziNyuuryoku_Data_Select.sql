@@ -14,6 +14,7 @@ GO
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Data_Select]
 	-- Add the parameters for the stored procedure here
+	@ShippingDate as varchar(10),
 	@ShippingNo as varchar(12),
 	@Type as tinyint,
 	@Operator  varchar(10),
@@ -94,7 +95,7 @@ begin
 	left outer join D_JuchuuMeisai JCMS			--Table4
 	on JCMS.JuchuuNO=SKMS.JuchuuNO
 	and JCMS.JuchuuGyouNO=SKMS.JuchuuGyouNO
-	left outer join F_Staff(getdate()) FS		--Table5
+	left outer join F_Staff(@ShippingDate) FS		--Table5
 	on FS.StaffCD=SK.StaffCD
 	left outer join M_Souko MS					--Table6
 	on MS.SoukoCD=SKMS.SoukoCD
@@ -144,7 +145,7 @@ begin
 	left outer join D_JuchuuMeisai JCMS			--Table4
 	on JCMS.JuchuuNO=SKMS.JuchuuNO
 	and JCMS.JuchuuGyouNO=SKMS.JuchuuGyouNO
-	left outer join F_Staff(getdate()) FS		--Table5
+	left outer join F_Staff(@ShippingDate) FS		--Table5
 	on FS.StaffCD=SK.StaffCD
 	left outer join M_Souko MS					--Table6
 	on MS.SoukoCD=SKMS.SoukoCD
