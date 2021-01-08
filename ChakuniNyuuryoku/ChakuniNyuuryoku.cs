@@ -259,7 +259,7 @@ namespace ChakuniNyuuryoku
         }
         private bool Temp_Null()
         {
-            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp.Rows.Count == 0)
+            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && dtTemp.Rows.Count == 0)
             {
                 bbl.ShowMessage("E274");
                 return false;
@@ -670,15 +670,8 @@ namespace ChakuniNyuuryoku
                     DataTable dtSiiresaski = txtSiiresaki.IsDatatableOccurs;
                     if (!string.IsNullOrWhiteSpace(txtSiiresaki.Text))
                     {
-                        if (ErrorCheck_Select(dtSiiresaski))
-                        {
-                            lblSiiresaki.Text = dtSiiresaski.Rows[0]["SiiresakiName"].ToString();
-                            sd.Access_Siiresaki_obj = From_DB_To_Siiresaki(dtSiiresaski);
-                        }
-                        else
-                        {
-                            txtSiiresaki.Focus();
-                        }
+                         lblSiiresaki.Text = dtSiiresaski.Rows[0]["SiiresakiName"].ToString();
+                         sd.Access_Siiresaki_obj = From_DB_To_Siiresaki(dtSiiresaski);
                     }
                 }
             }
@@ -755,34 +748,6 @@ namespace ChakuniNyuuryoku
             {
                 Temp_Save(e.RowIndex);
             }
-            //dtGridview();
-            //    if (!gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0"))
-            //    {
-            //        if (gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniSuu"].ToString() &&   gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colDetails"].Value.ToString() == dtmain.Rows[e.RowIndex]["ChakuniMeisaiTekiyou"].ToString())
-            //        { 
-            //            return;
-            //        }
-            //        else
-            //        {
-            //            if (dtGS1.Rows.Count > 0)
-            //            {
-            //                for (int i = dtGS1.Rows.Count - 1; i >= 0; i--)
-            //                {
-            //                    string data = dtGS1.Rows[i]["ChakuniSuu"].ToString();
-            //                    if (gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["colArrivalTime"].Value.ToString() == data)
-            //                    {
-            //                        dtGS1.Rows[i].Delete();
-            //                    }
-            //                }
-            //            }
-            //        DataRow dr1 = dtGS1.NewRow();
-            //        for (int i = 0; i < dtGS1.Columns.Count; i++)
-            //        {
-            //            dr1[i] = gvChakuniNyuuryoku[i + 1, e.RowIndex].EditedFormattedValue;
-            //        }
-            //            dtGS1.Rows.Add(dr1);
-            //        }
-            //    }
         }
         private void Temp_Save(int row)
         {
@@ -804,7 +769,10 @@ namespace ChakuniNyuuryoku
                 DataRow dr1 = dtGS1.NewRow();
                 for (int i = 0; i < dtGS1.Columns.Count; i++)
                 {
-                    dr1[i] = gvChakuniNyuuryoku[i, row].EditedFormattedValue;
+                    if (i == 9)
+                        dr1[i] = gvChakuniNyuuryoku[i, row].EditedFormattedValue;
+                    else
+                        dr1[i] = string.IsNullOrEmpty(gvChakuniNyuuryoku[i, row].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniNyuuryoku[i, row].EditedFormattedValue.ToString();
                 }
                 dtGS1.Rows.Add(dr1);
             }
@@ -833,32 +801,34 @@ namespace ChakuniNyuuryoku
             {
                 if (!string.IsNullOrWhiteSpace(txtSiiresaki.Text))
                 {
-                    DataTable dt = txtSiiresaki.IsDatatableOccurs;
-                    if (!ErrorCheck_Select(dt))
+                    SiiresakiBL sbl = new SiiresakiBL();
+                    DataTable dt1 = sbl.Siiresaki_Select_Check(txtSiiresaki.Text,txtArrivalDate.Text,"E227");
+                    DataTable dt2 = sbl.Siiresaki_Select_Check(txtSiiresaki.Text, txtArrivalDate.Text, "E267");
+                    if (dt1.Rows[0]["MessageID"].ToString() == "E227")
                     {
+                        bbl.ShowMessage("E227");
+                        txtSiiresaki.Focus();
+                        return;
+                    }
+                    else if (dt2.Rows[0]["MessageID"].ToString() == "E267")
+                    {
+                        bbl.ShowMessage("E267");
                         txtSiiresaki.Focus();
                     }
                 }
             }
         }
-        private bool ErrorCheck_Select(DataTable dt)
+
+        private void gvChakuniNyuuryoku_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dt.Rows.Count > 0)
+            if (e.RowIndex >= 0 && e.ColumnIndex == 9)
             {
-                string TorihikiKaisiDate = dt.Rows[0]["TorihikiKaisiDate"].ToString();
-                string TorihikiShuuryouDate = dt.Rows[0]["TorihikiShuuryouDate"].ToString();
-                if (!string.IsNullOrEmpty(TorihikiKaisiDate) && Convert.ToDateTime(TorihikiKaisiDate) > Convert.ToDateTime(txtArrivalDate.Text))
+                if (Convert.ToBoolean(gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["chk"].EditedFormattedValue))
                 {
-                    bbl.ShowMessage("E267");
-                    return false;
-                }
-                else if (!string.IsNullOrEmpty(TorihikiShuuryouDate) && Convert.ToDateTime(TorihikiShuuryouDate) < Convert.ToDateTime(txtArrivalDate.Text))
-                {
-                    bbl.ShowMessage("E227");
-                    return false;
+                    Temp_Save(e.RowIndex);
+                    gvChakuniNyuuryoku.MoveNextCell();
                 }
             }
-            return true;
         }
     }
 }
