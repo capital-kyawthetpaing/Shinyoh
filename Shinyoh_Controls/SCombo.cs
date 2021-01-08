@@ -149,20 +149,20 @@ namespace Shinyoh_Controls
             return IsErrorOccurs;
         }
 
-        //protected override void OnGotFocus(EventArgs e)
-        //{
-        //    if (this.TopLevelControl != null)
-        //    {
-        //        Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
-        //        if (ctrlArr.Length > 0)
-        //        {
-        //            Control btnF9 = ctrlArr[0];
-        //            if (btnF9 != null)
-        //                btnF9.Visible = true;
-        //        }
-        //    }
-        //    base.OnGotFocus(e);
-        //}
+        protected override void OnGotFocus(EventArgs e)
+        {
+            if (this.TopLevelControl != null)
+            {
+                Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = true;
+                }
+            }
+            base.OnGotFocus(e);
+        }
 
         //protected override void OnLostFocus(EventArgs e)
         //{

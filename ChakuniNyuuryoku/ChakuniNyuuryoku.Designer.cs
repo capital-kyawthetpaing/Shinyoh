@@ -171,14 +171,14 @@
             this.txtDescription.IsRequire = false;
             this.txtDescription.IsUseInitializedLayout = true;
             this.txtDescription.Location = new System.Drawing.Point(801, 29);
-            this.txtDescription.MaxLength = 40;
+            this.txtDescription.MaxLength = 80;
             this.txtDescription.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDescription.MoveNext = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.NextControl = null;
             this.txtDescription.NextControlName = "txtScheduled";
             this.txtDescription.SearchType = Entity.SearchType.ScType.None;
-            this.txtDescription.Size = new System.Drawing.Size(400, 19);
+            this.txtDescription.Size = new System.Drawing.Size(500, 19);
             this.txtDescription.TabIndex = 20;
             this.txtDescription.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -227,9 +227,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(133, 95);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "＜条件指定＞";
             // 
@@ -344,7 +345,7 @@
             this.txtShouhinName.NextControl = null;
             this.txtShouhinName.NextControlName = "txtControlNo";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
-            this.txtShouhinName.Size = new System.Drawing.Size(400, 19);
+            this.txtShouhinName.Size = new System.Drawing.Size(500, 19);
             this.txtShouhinName.TabIndex = 14;
             this.txtShouhinName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -662,8 +663,9 @@
             this.Column4});
             this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(25, 216);
             this.gvChakuniNyuuryoku.Name = "gvChakuniNyuuryoku";
-            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1402, 150);
+            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1402, 310);
             this.gvChakuniNyuuryoku.TabIndex = 35;
+            this.gvChakuniNyuuryoku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvChakuniNyuuryoku_CellContentClick);
             this.gvChakuniNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvChakuniNyuuryoku_CellEndEdit);
             // 
             // colShouhinCD

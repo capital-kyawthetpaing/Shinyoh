@@ -22,12 +22,14 @@ namespace HacchuuList
         CommonFunction cf;
         BaseEntity baseEntity;
         HacchuuListBL obj_Bl;
+        ExportCSVExcel obj_Export;
 
         public HacchuuList()
         {
             cf = new CommonFunction();
             baseEntity = new BaseEntity();
             obj_Bl = new HacchuuListBL();
+            obj_Export = new ExportCSVExcel();
             InitializeComponent();
         }
 
@@ -56,7 +58,7 @@ namespace HacchuuList
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
+            SetButton(ButtonType.BType.Export, F10, "出力(F10)", true); 
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             ErrorCheck();
@@ -65,10 +67,12 @@ namespace HacchuuList
             Date_Setting();
 
             txtStaffCD.lblName = lblStaff_Name;
+            txtBrandCD.lblName = lblBrand_Name;
             Disable_Method();
 
             txtStaffCD.ChangeDate = txtTempDate;
         }
+
         private void Date_Setting()
         {
             txtHacchuuDate1.Text = baseEntity.LoginDate;
@@ -102,7 +106,7 @@ namespace HacchuuList
         }
         private void Clear()
         {
-            cf.Clear(Panel_Detail);
+            cf.Clear(PanelDetail);
             rdo_Hac.Checked = true;
             txtHacchuuDate1.Focus();
             Date_Setting();
@@ -117,149 +121,100 @@ namespace HacchuuList
             }
             if (tagID == "10")
             {
-                if (ErrorCheck(Panel_Detail))
+                //if (ErrorCheck(PanelDetail))
+                //{
+                DataTable dt = new DataTable { TableName = "MyTableName" };
+                dt = Get_Form_Object();
+                if (dt.Rows.Count > 0)
                 {
-                    DataTable dt = new DataTable { TableName = "MyTableName" };
-                    dt = Get_Form_Object();
-                    if (dt.Rows.Count > 0)
+                    dt.Columns["HacchuuNO"].ColumnName = "発注番号";
+                    dt.Columns["JuchuuNO"].ColumnName = "受注番号";
+                    dt.Columns["HacchuuDate"].ColumnName = "受発注日";
+                    dt.Columns["StaffName"].ColumnName = "担当者	";
+                    dt.Columns["TokuisakiCD"].ColumnName = "得意先コード";
+                    dt.Columns["TokuisakiRyakuName"].ColumnName = "得意先名";
+                    dt.Columns["KouritenCD"].ColumnName = "小売店コード";
+                    dt.Columns["KouritenRyakuName"].ColumnName = "小売店";
+                    dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注番号";
+                    dt.Columns["SenpouBusho"].ColumnName = "先方部署	";
+                    dt.Columns["KibouNouki"].ColumnName = "希望納期";
+                    dt.Columns["HacchuuDenpyouTekiyou"].ColumnName = "伝票摘要";
+                    dt.Columns["Char1"].ColumnName = "ブランド名";
+                    dt.Columns["Exhibition"].ColumnName = "展示会";
+                    dt.Columns["JANCD"].ColumnName = "JANコード";
+                    dt.Columns["ShouhinCD"].ColumnName = "商品番";
+                    dt.Columns["ShouhinName"].ColumnName = "商品名";
+                    dt.Columns["ColorRyakuName"].ColumnName = "カラー";
+                    dt.Columns["SizeNO"].ColumnName = "サイズ";
+                    dt.Columns["HacchuuSuu"].ColumnName = "数量";
+                    dt.Columns["UriageTanka"].ColumnName = "上代	";
+                    dt.Columns["HacchuuTanka"].ColumnName = "下代";
+                    dt.Columns["HacchuuMeisaiTekiyou"].ColumnName = "明細摘要";
+                    dt.Columns["SiiresakiCD"].ColumnName = "発注先";
+                    dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
+                    dt.Columns.Remove("発注先名");                              //not include in Excel
+                    dt.Columns["SoukoName"].ColumnName = "倉庫";
+
+
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+
+                    saveFileDialog1.InitialDirectory = @"C:\CSV\";
+                    ////for csv
+                    //saveFileDialog1.Filter = "csv files (*.csv)|*.csv";
+                    //saveFileDialog1.FileName = ProgramID + " (" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.Hour + DateTime.Now.Day + DateTime.Now.Month + ") " + OperatorCD;
+                    //saveFileDialog1.RestoreDirectory = true;
+                    //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    string sb = obj_Export.DataTableToCSV(dt, ',');
+                    //    if (!string.IsNullOrEmpty(sb))
+                    //    {
+                    //        File.WriteAllText(saveFileDialog1.FileName, sb.ToString(), Encoding.UTF8);
+                    //        Clear();
+                    //    }
+                    //}
+
+
+                    //for excel
+                    saveFileDialog1.Filter = "ExcelFile|*.xls";
+                    saveFileDialog1.FileName = "発注リスト.xls";
+                    saveFileDialog1.RestoreDirectory = true;
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
-
-                        dt.Columns["HacchuuNO"].ColumnName = "発注番号";
-                        dt.Columns["JuchuuNO"].ColumnName = "受注番号";
-                        dt.Columns["HacchuuDate"].ColumnName = "受発注日";
-                        dt.Columns["StaffName"].ColumnName = "担当者	";
-                        dt.Columns["TokuisakiCD"].ColumnName = "得意先コード";
-                        dt.Columns["TokuisakiRyakuName"].ColumnName = "得意先名";
-                        dt.Columns["KouritenCD"].ColumnName = "小売店コード";
-                        dt.Columns["KouritenRyakuName"].ColumnName = "小売店";
-                        dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注番号";
-                        dt.Columns["SenpouBusho"].ColumnName = "先方部署	";
-                        dt.Columns["KibouNouki"].ColumnName = "希望納期";
-                        dt.Columns["HacchuuDenpyouTekiyou"].ColumnName = "伝票摘要";
-                        dt.Columns["Char1"].ColumnName = "ブランド名";
-                        dt.Columns["Exhibition"].ColumnName = "展示会";
-                        dt.Columns["JANCD"].ColumnName = "JANコード";
-                        dt.Columns["ShouhinCD"].ColumnName = "商品番";
-                        dt.Columns["ShouhinName"].ColumnName = "商品名";
-                        dt.Columns["ColorRyakuName"].ColumnName = "カラー";
-                        dt.Columns["SizeNO"].ColumnName = "サイズ";
-                        dt.Columns["HacchuuSuu"].ColumnName = "数量";
-                        dt.Columns["UriageTanka"].ColumnName = "上代	";
-                        dt.Columns["HacchuuTanka"].ColumnName = "下代";
-                        dt.Columns["HacchuuMeisaiTekiyou"].ColumnName = "明細摘要";
-                        dt.Columns["SiiresakiCD"].ColumnName = "発注先";
-                        dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
-                        dt.Columns.Remove("発注先名");                              //not include in Excel
-                        dt.Columns["SoukoName"].ColumnName = "倉庫";
-
-                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                        saveFileDialog1.InitialDirectory = @"C:\";
-                        saveFileDialog1.DefaultExt = "xls";
-                        saveFileDialog1.Filter = "ExcelFile|*.xls";
-                        saveFileDialog1.FileName = "発注リスト.xls";
-                        saveFileDialog1.RestoreDirectory = true;
-                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                        {
-                           ExportDataTableToExcel(dt, saveFileDialog1.FileName);
-                        }
-                        if (true)
+                        ExcelDesignSetting obj = new ExcelDesignSetting();
+                        obj.FilePath = saveFileDialog1.FileName;
+                        obj.SheetName = "発注リスト";
+                        obj.Start_Interior_No = "A1";
+                        obj.End_Interior_No = "Y1";
+                        obj.Interior_Color = Color.Orange;
+                        obj.Start_Font_No = "A1";
+                        obj.End_Font_No = "Y1";
+                        obj.Font_Color = Color.Black;
+                        obj.Start_Date_No = 3;
+                        obj.End_Date_No = 3;
+                        obj.Date_Format = "YYYY/MM/DD";
+                        obj.Start_Title_Center_No = "A1";
+                        obj.End_Title_Center_No = "Y1";
+                        obj.Start_Number_No = "T1";
+                        obj.End_Number_No = "V1";
+                        obj.Number_Format = "#,###,###";
+                        bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
+                        if (bl)
                         {
                             Clear();
                         }
                     }
                 }
-            }         
+                //}
+            }
             base.FunctionProcess(tagID);
-        }
-
-        public static bool ExportDataTableToExcel(DataTable dt, string filepath)
-        {
-
-            Excel.Application oXL;
-            Excel.Workbook oWB;
-            Excel.Worksheet oSheet;
-            Excel.Range rg;
-            
-            try
-            {
-                // Start Excel and get Application object. 
-                oXL = new Excel.Application();
-
-                // Set some properties 
-                oXL.Visible = false;
-                oXL.DisplayAlerts = false;
-
-                // Get a new workbook. 
-                oWB = oXL.Workbooks.Add(Missing.Value);
-
-                // Get the Active sheet 
-                oSheet = (Excel.Worksheet)oWB.ActiveSheet;
-                oSheet.Name = "発注リスト";
-
-                int rowCount = 1;
-                foreach (DataRow dr in dt.Rows)
-                {
-                    rowCount += 1;
-                    for (int i = 1; i < dt.Columns.Count + 1; i++)
-                    {
-                        // Add the header the first time through 
-                        if (rowCount == 2)
-                        {
-                            oSheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
-                        }
-                        oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
-                    }
-                    oSheet.Columns.AutoFit();
-                }
-
-                // color the columns 
-                oSheet.Range["A1", "Y1"].Interior.Color = Excel.XlRgbColor.rgbOrange;
-                oSheet.Range["A1", "Y1"].Font.Color = Excel.XlRgbColor.rgbBlack;
-                //Change date format
-                rg = (Excel.Range)oSheet.Cells[3,3];
-                rg.EntireColumn.NumberFormat = "YYYY/MM/DD";
-
-                //left alignment
-                Excel.Range last = oSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
-                Excel.Range range = oSheet.get_Range("A2", last);
-                range.EntireColumn.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
-
-                //no border 
-                oXL.Windows.Application.ActiveWindow.DisplayGridlines = false;
-
-                // Save the sheet and close 
-                oSheet = null;
-                oWB.SaveAs(filepath, Excel.XlFileFormat.xlWorkbookNormal,
-                    Missing.Value, Missing.Value, Missing.Value, Missing.Value,
-                    Excel.XlSaveAsAccessMode.xlExclusive,
-                    Missing.Value, Missing.Value, Missing.Value,
-                    Missing.Value, Missing.Value);
-                oWB.Close(Missing.Value, Missing.Value, Missing.Value);
-                oWB = null;
-                oXL.Quit();
-            }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                // Clean up 
-                // NOTE: When in release mode, this does the trick 
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-            }
-            return true;
-        }
+        }        
 
         private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
         {
-            multipurposeBL bl = new multipurposeBL();
-            DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
-            if (dt.Rows.Count > 0)
-                lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
+            //multipurposeBL bl = new multipurposeBL();
+            //DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
+            //if (dt.Rows.Count > 0)
+            //    lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
         }
 
         private void rdo_Hac_CheckedChanged(object sender, EventArgs e)
@@ -278,6 +233,7 @@ namespace HacchuuList
             txtJuchuuNO2.Enabled = true;
             txtUpdate_JuchuuDate1.Enabled = true;
             txtUpdate_JuchuuDate2.Enabled = true;
+            chk_FW.NextControlName = txtJuchuuDate1.Name;
         }
         private void Disable_Method()
         {
@@ -294,6 +250,8 @@ namespace HacchuuList
             txtJuchuuNO2.Enabled = false;
             txtUpdate_JuchuuDate1.Enabled = false;
             txtUpdate_JuchuuDate2.Enabled = false;
+
+            chk_FW.NextControlName = "BtnF10";
         }
         private void rdo_Juc_CheckedChanged(object sender, EventArgs e)
         {
@@ -320,6 +278,7 @@ namespace HacchuuList
             obj.JuchuuDate1 = txtJuchuuDate1.Text;
             obj.JuchuuDate2 = txtJuchuuDate2.Text;
             obj.JuchuuNO1 = txtJuchuuNO1.Text;
+            obj.JuchuuNO2 = txtJuchuuNO2.Text;
             obj.Juchuu_UpdateDate1 = txtUpdate_JuchuuDate1.Text;
             obj.Juchuu_UpdateDate2 = txtUpdate_JuchuuDate2.Text;
             if (rdo_Hac.Checked)
