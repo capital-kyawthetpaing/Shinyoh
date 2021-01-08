@@ -64,11 +64,12 @@ namespace BL
             return ckmdl.InsertUpdateDeleteData("CSV_M_ShukkaTorikomi_CUD", GetConnectionString(), parameters);
         }
 
-        public DataTable ShukkaTorikomi_Slip_Check(string ShukkaSiziNO, string err)
+        public DataTable ShukkaTorikomi_Slip_Check(string ShukkaSiziNO, string ShouhinCD, string err)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@ShukkaSiziNO", SqlDbType.VarChar) { Value = ShukkaSiziNO };
+            parameters[1] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
             parameters[1] = new SqlParameter("@ErrorType", SqlDbType.VarChar) { Value = err };
             DataTable dt = ckmdl.SelectDatatable("ShukkaTorikomi_Slip_Check", GetConnectionString(), parameters);
             return dt;

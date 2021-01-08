@@ -295,10 +295,26 @@ namespace ShukkaTorikomi
                         }
 
                         ShukkaTorikomi_BL sBL = new ShukkaTorikomi_BL();
-                        DataTable s_dk = sBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, "E133");
+                        DataTable s_dk = sBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E133");
                         if (s_dk.Rows[0]["MessageID"].ToString() == "E133")
                         {
                             bbl.ShowMessage("E133");
+                            bl_List.Add(true);
+                        }
+
+                        ShukkaTorikomi_BL cBL = new ShukkaTorikomi_BL();
+                        DataTable c_dk = cBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E159");
+                        if (c_dk.Rows[0]["MessageID"].ToString() == "E159")
+                        {
+                            bbl.ShowMessage("E159");
+                            bl_List.Add(true);
+                        }
+
+                        ShukkaTorikomi_BL mBL = new ShukkaTorikomi_BL();
+                        DataTable m_dk = mBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E150");
+                        if (m_dk.Rows[0]["MessageID"].ToString() == "E150")
+                        {
+                            bbl.ShowMessage("E150");
                             bl_List.Add(true);
                         }
                     }
