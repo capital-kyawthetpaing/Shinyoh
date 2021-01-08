@@ -127,9 +127,9 @@ namespace ChakuniNyuuryoku
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(panelDetails);
+            cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(panelDetails);
+            cf.DisablePanel(PanelDetail);
             lblSiiresaki.Text = string.Empty;
             lblStaff.Text = string.Empty;
             lblBrandName.Text = string.Empty;
@@ -139,9 +139,9 @@ namespace ChakuniNyuuryoku
         private void New_Mode()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(panelDetails);
+            cf.Clear(PanelDetail);
             cf.DisablePanel(PanelTitle);
-            cf.EnablePanel(panelDetails);
+            cf.EnablePanel(PanelDetail);
             txtArrivalDate.Focus();
             tdDate = DateTime.Now.ToString("yyyy/MM/dd");
             txtArrivalDate.Text = tdDate;
@@ -160,7 +160,7 @@ namespace ChakuniNyuuryoku
         }
         public void ErrorCheck()
         {
-            txtArrivalNO.E102Check(true);
+            //txtArrivalNO.E102Check(true);
             txtArrivalDate.E102Check(true);
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
@@ -233,7 +233,7 @@ namespace ChakuniNyuuryoku
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetails) && Temp_Null())
+                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -267,7 +267,7 @@ namespace ChakuniNyuuryoku
         public void Clear()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(panelDetails);
+            cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
             lblSiiresaki.Text = string.Empty;
             lblStaff.Text = string.Empty;
@@ -580,7 +580,7 @@ namespace ChakuniNyuuryoku
                 {
                     if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString()=="1")
                     {
-                        cf.EnablePanel(panelDetails);
+                        cf.EnablePanel(PanelDetail);
                         cf.DisablePanel(PanelTitle);
                         txtArrivalDate.Focus();
                     }

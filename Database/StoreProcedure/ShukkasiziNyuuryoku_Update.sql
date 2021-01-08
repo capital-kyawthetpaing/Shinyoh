@@ -184,7 +184,6 @@ declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header
 , @Program varchar(100) = (select ProgramID from #Temp_Header)
 ,@PC       varchar(30) = (select PC from #Temp_Header)
 ,@KeyItem  varchar(100)= (select ShukkaSiziNO from #Temp_Header)
-, @kanryo as tinyint=(select Kanryo from #Temp_Details)		
 , @currentDate as datetime = getdate()
 , @Unique_21 as uniqueidentifier = NewID()
 ,@Unique_20 as uniqueidentifier = NewID()
@@ -404,6 +403,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	,@OperatorCD
 	,@currentDate
     FROM [dbo].[D_ShukkaSizi] AS i
+
 INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	(
 		[HistoryGuid]
@@ -510,7 +510,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	,@currentDate
     FROM [dbo].[D_ShukkaSizi] AS i
 
---TableE
+--TableE--削除または修正前
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
 (
 		[HistoryGuid]
@@ -576,14 +576,14 @@ SELECT
 		,j.[ColorNO]
 		,j.[SizeNO]
 		,j.[Kakeritu]
-		,j.[ShukkaSiziSuu]
+		,j.[ShukkaSiziSuu]*(-1)
 		,j.[TaniCD]
-		,j.[UriageTanka]
-		,j.[UriageTankaShouhizei]
-		,j.[UriageHontaiTanka]
-		,j.[UriageKingaku]
-		,j.[UriageHontaiKingaku]
-		,j.[UriageShouhizeiGaku]
+		,j.[UriageTanka]*(-1)
+		,j.[UriageTankaShouhizei]*(-1)
+		,j.[UriageHontaiTanka]*(-1)
+		,j.[UriageKingaku]*(-1)
+		,j.[UriageHontaiKingaku]*(-1)
+		,j.[UriageShouhizeiGaku]*(-1)
 		,j.[ShukkaSiziMeisaiTekiyou]
 		,j.[SoukoCD]
 		,j.[ShukkaKanryouKBN]
@@ -608,6 +608,8 @@ SELECT
 		,@OperatorCD
 		,@currentDate
 FROM [dbo].[D_ShukkaSiziMeisai] AS j
+
+--新規または修正後
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
 (
 		[HistoryGuid]
@@ -802,24 +804,40 @@ SELECT
 			,@currentDate
 FROM [dbo].[D_ShukkaSiziShousai]
 
---TableG
-UPDATE [dbo].[D_ShukkaSiziMeisai]
-SET ShukkaZumiSuu=case when floor(ShukkaZumiSuu)-floor(td.KonkaiShukkaSiziSuu)>0 then floor(ShukkaZumiSuu)-floor(td.KonkaiShukkaSiziSuu) else 0 end
-FROM #Temp_Details td
+--※シート「消込順」参照
 
-
-UPDATE [dbo].[D_ShukkaSiziMeisai]
-SET ShukkaZumiSuu=floor(ShukkaZumiSuu)+floor(td.KonkaiShukkaSiziSuu)
-FROM #Temp_Details td
-
+--Table G --修正前または削除
 UPDATE  A
+SET	ShukkaSiziZumiSuu= case when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu>0 then  A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu
+									when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu<=0 then 0 end
+	,UpdateOperator=@OperatorCD
+	,UpdateDateTime=@currentDate
+FROM D_JuchuuMeisai A
+inner join #Temp_Details B
+on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
+and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
+
+--Table G --追加または修正後
+UPDATE  A
+SET	ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
+	,UpdateOperator=@OperatorCD
+	,UpdateDateTime=@currentDate
+FROM D_JuchuuMeisai A
+inner join #Temp_Details B
+on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
+and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
+
+--D_JuchuuMeisai
+UPDATE  A 
 SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1 
 									when C.Kanryo=1 then 1 else 0 end
+,UpdateOperator=@OperatorCD
+,UpdateDateTime=@currentDate
 FROM D_JuchuuMeisai A,#Temp_Details C
 where A.JuchuuNO = LEFT((C.SKMSNO), CHARINDEX('-', (C.SKMSNO)) - 1) 
 and A.ShouhinCD=C.ShouhinCD
 
-
+--D_Juchuu
 UPDATE	A
 SET		[ShukkaSiziKanryouKBN] = B.ShukkaSiziKanryouKBN
 FROM D_Juchuu as A
@@ -840,15 +858,12 @@ and ChangeDate = (select ChangeDate from F_Staff(@ShippingDate) where StaffCD = 
 exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,'Update',@KeyItem
 
 
---テーブル転送仕様Ｙ 削除
+--テーブル転送仕様Ｘ
 EXEC [dbo].[D_Exclusive_Delete]
 		12,
 		@ShukkaSiziNO;
-		--@Program,
-		--@PC;
 
 Drop Table #Temp_Header
 Drop Table #Temp_Details
 
 END
-

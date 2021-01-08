@@ -240,5 +240,11 @@ namespace Shinyoh_Controls
             }
             this.CurrentCell = this[icolumn, irow];
         }
+
+        protected override void OnCellMouseDoubleClick(DataGridViewCellMouseEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+                base.OnCellMouseDoubleClick(e);
+        }
     }
 }

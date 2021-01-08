@@ -38,12 +38,13 @@ namespace BL
         public DataTable ShukkasiziNyuuryoku_Data_Select(ShukkaSiziNyuuryokuEntity se, int type)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[5];
-            parameters[0] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = se.ShippinNo };
-            parameters[1] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = se.OperatorCD };
-            parameters[2] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
-            parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
-            parameters[4] = new SqlParameter("@Type", SqlDbType.TinyInt) { Value = type };
+            var parameters = new SqlParameter[6];
+            parameters[0] = new SqlParameter("@ShippingDate", SqlDbType.VarChar) { Value = se.ShippingDate };
+            parameters[1] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = se.ShippinNo };
+            parameters[2] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = se.OperatorCD };
+            parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
+            parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
+            parameters[5] = new SqlParameter("@Type", SqlDbType.TinyInt) { Value = type };
             DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_Data_Select", GetConnectionString(), parameters);
             return dt;
         }
@@ -102,14 +103,22 @@ namespace BL
             return dt;
         }
 
-        public string ShukkasiziNyuuryoku_IUD(string mode, string xml_Main, string xml_detail)
+        public string ShukkasiziNyuuryoku_IUD(string mode, string xml_header, string xml_detail)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = mode.ToString() };
-            parameters[1] = new SqlParameter("@XML_Header", SqlDbType.Xml) { Value = xml_Main };
+            parameters[1] = new SqlParameter("@XML_Header", SqlDbType.Xml) { Value = xml_header };
             parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
             return ckmdl.InsertUpdateDeleteData("ShukkasiziNyuuryoku_IUD", GetConnectionString(), parameters);
+        }
+        public string Shukkasizi_Price( string shukkasizisuu, string JuchuuNO)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@KonkaiShukkaSiziSuu", SqlDbType.VarChar) { Value = shukkasizisuu};
+            parameters[1] = new SqlParameter("@JuchuuNO_JuchuuGyouNO", SqlDbType.VarChar) { Value = JuchuuNO };
+            return ckmdl.InsertUpdateDeleteData("Shukkasizi_Price", GetConnectionString(), parameters);
         }
         public DataTable GetShippingNo(string SerialNO, string ShippingDate, string SEQNO)
         {

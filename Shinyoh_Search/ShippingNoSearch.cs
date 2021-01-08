@@ -31,7 +31,6 @@ namespace Shinyoh_Search
             lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             gvShippingNo.SetGridDesign();
-            gvShippingNo.SetReadOnlyColumn("colShippingNO,colShippingDate,colCustomerCD,colCustomerName,colJuchuuNO");
             txtShippingDateFrom.Focus();
             gvShippingNo.UseRowNo(true);
             gvShippingNo.SetReadOnlyColumn("**");//readonly for search form 
@@ -76,7 +75,7 @@ namespace Shinyoh_Search
             txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
         }
         private void GridViewBind()
-        {
+        {     
             SKSZ_Entity = GetShukkasiziEntity();
             SKSZ_BL = new ShukkasiziNyuuryokuBL();
             DataTable dt = new DataTable();
@@ -111,9 +110,9 @@ namespace Shinyoh_Search
             if (gvrow.DataBoundItem != null)
             {
                 DataGridViewRow row = gvrow;
-                ShippingNo = row.Cells["colShippingNO"].Value.ToString();
-                this.Close();
-            }
+                ShippingNo = row.Cells["colShippingNO"].Value.ToString();                
+            }            
+            this.Close();
         }
         private void gvShippingNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -167,7 +166,10 @@ namespace Shinyoh_Search
         {
             if (e.KeyCode == Keys.Enter)
             {
-                GetGridviewData(gvShippingNo.Rows[gvShippingNo.CurrentCell.RowIndex]);
+                if(gvShippingNo.CurrentCell!=null)
+                {
+                    GetGridviewData(gvShippingNo.Rows[gvShippingNo.CurrentCell.RowIndex]);
+                }                
             }
         }
     }

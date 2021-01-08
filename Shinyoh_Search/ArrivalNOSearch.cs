@@ -19,8 +19,6 @@ namespace Shinyoh_Search
         public ArrivalNOSearch()
         {
             InitializeComponent();
-            gvArrivalNo.SetGridDesign();
-            gvArrivalNo.SetReadOnlyColumn("*");
         }
 
         private void ArrivalNOSearch_Load(object sender, EventArgs e)
@@ -36,7 +34,9 @@ namespace Shinyoh_Search
             gvArrivalNo.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvArrivalNo.UseRowNo(true);
             GridViewBind();
+            gvArrivalNo.SetGridDesign();
             gvArrivalNo.SetReadOnlyColumn("**");//readonly for search form 
+            gvArrivalNo.Select();
             txtDateFrom.Focus();
             ErrorCheck();
         }
@@ -101,23 +101,26 @@ namespace Shinyoh_Search
             {
                 DataGridViewRow row = gvrow;
                 ChakuniNO = row.Cells["colChakuniNO"].Value.ToString();
-                this.Close();
             }
+            this.Close();
         }
         private void sButton2_Click(object sender, EventArgs e)
         {
-            //FunctionProcess(btnSearch.Tag.ToString());
             GridViewBind();
         }
         private void gvArrivalNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            GetGridviewData(gvArrivalNo.Rows[e.RowIndex]);
+            if(e.RowIndex>=0)
+            {
+                GetGridviewData(gvArrivalNo.Rows[e.RowIndex]);
+            }
         }
 
         private void gvArrivalNo_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode == Keys.Enter)
             {
+                if(gvArrivalNo.CurrentCell!=null)
                 GetGridviewData(gvArrivalNo.Rows[gvArrivalNo.CurrentCell.RowIndex]);
             }
         }

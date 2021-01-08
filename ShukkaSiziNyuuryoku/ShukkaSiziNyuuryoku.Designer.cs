@@ -29,15 +29,15 @@ namespace ShukkaSiziNyuuryoku
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
-            this.panelDetails = new System.Windows.Forms.Panel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.sbKouriten = new Shinyoh_Search.SearchBox();
             this.sbStaffCD = new Shinyoh_Search.SearchBox();
@@ -119,7 +119,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbShippingNO = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
-            this.panelDetails.SuspendLayout();
+            this.PanelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShukkasizi)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,65 +149,65 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel3.Text = "出荷指示番号";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelDetails
+            // PanelDetail
             // 
-            this.panelDetails.Controls.Add(this.label9);
-            this.panelDetails.Controls.Add(this.sbKouriten);
-            this.panelDetails.Controls.Add(this.sbStaffCD);
-            this.panelDetails.Controls.Add(this.label7);
-            this.panelDetails.Controls.Add(this.label8);
-            this.panelDetails.Controls.Add(this.txtPhone3);
-            this.panelDetails.Controls.Add(this.txtPhone2);
-            this.panelDetails.Controls.Add(this.txtPhone1);
-            this.panelDetails.Controls.Add(this.lblPhone1);
-            this.panelDetails.Controls.Add(this.label2);
-            this.panelDetails.Controls.Add(this.sbTokuisaki);
-            this.panelDetails.Controls.Add(this.lblTokuisakiName);
-            this.panelDetails.Controls.Add(this.label6);
-            this.panelDetails.Controls.Add(this.label5);
-            this.panelDetails.Controls.Add(this.txtAddress);
-            this.panelDetails.Controls.Add(this.lblAddress1);
-            this.panelDetails.Controls.Add(this.txtYubin2);
-            this.panelDetails.Controls.Add(this.txtYubin1);
-            this.panelDetails.Controls.Add(this.label4);
-            this.panelDetails.Controls.Add(this.label3);
-            this.panelDetails.Controls.Add(this.rdoNO);
-            this.panelDetails.Controls.Add(this.rdoNeed);
-            this.panelDetails.Controls.Add(this.sLabel18);
-            this.panelDetails.Controls.Add(this.txtSlipDate);
-            this.panelDetails.Controls.Add(this.sLabel4);
-            this.panelDetails.Controls.Add(this.lblKouritenName);
-            this.panelDetails.Controls.Add(this.btnKouriren_Detail);
-            this.panelDetails.Controls.Add(this.txtJuchuuNo);
-            this.panelDetails.Controls.Add(this.slable1);
-            this.panelDetails.Controls.Add(this.dgvShukkasizi);
-            this.panelDetails.Controls.Add(this.btnSave);
-            this.panelDetails.Controls.Add(this.btnDisplay);
-            this.panelDetails.Controls.Add(this.btnConfirm);
-            this.panelDetails.Controls.Add(this.txtShippingDate);
-            this.panelDetails.Controls.Add(this.sbLabel2);
-            this.panelDetails.Controls.Add(this.txtName);
-            this.panelDetails.Controls.Add(this.btn_Tokuisaki);
-            this.panelDetails.Controls.Add(this.sLabel16);
-            this.panelDetails.Controls.Add(this.lblStaffName);
-            this.panelDetails.Controls.Add(this.sLabel6);
-            this.panelDetails.Controls.Add(this.label1);
-            this.panelDetails.Controls.Add(this.txtSenpyouhachuuNo);
-            this.panelDetails.Controls.Add(this.sLabel7);
-            this.panelDetails.Controls.Add(this.sLabel8);
-            this.panelDetails.Controls.Add(this.sLabel10);
-            this.panelDetails.Controls.Add(this.txtSlip_Description);
-            this.panelDetails.Controls.Add(this.sLabel13);
-            this.panelDetails.Controls.Add(this.sbDenpyouCD);
-            this.panelDetails.Location = new System.Drawing.Point(1, 77);
-            this.panelDetails.Name = "panelDetails";
-            this.panelDetails.Size = new System.Drawing.Size(1490, 580);
-            this.panelDetails.TabIndex = 46;
+            this.PanelDetail.Controls.Add(this.label9);
+            this.PanelDetail.Controls.Add(this.sbKouriten);
+            this.PanelDetail.Controls.Add(this.sbStaffCD);
+            this.PanelDetail.Controls.Add(this.label7);
+            this.PanelDetail.Controls.Add(this.label8);
+            this.PanelDetail.Controls.Add(this.txtPhone3);
+            this.PanelDetail.Controls.Add(this.txtPhone2);
+            this.PanelDetail.Controls.Add(this.txtPhone1);
+            this.PanelDetail.Controls.Add(this.lblPhone1);
+            this.PanelDetail.Controls.Add(this.label2);
+            this.PanelDetail.Controls.Add(this.sbTokuisaki);
+            this.PanelDetail.Controls.Add(this.lblTokuisakiName);
+            this.PanelDetail.Controls.Add(this.label6);
+            this.PanelDetail.Controls.Add(this.label5);
+            this.PanelDetail.Controls.Add(this.txtAddress);
+            this.PanelDetail.Controls.Add(this.lblAddress1);
+            this.PanelDetail.Controls.Add(this.txtYubin2);
+            this.PanelDetail.Controls.Add(this.txtYubin1);
+            this.PanelDetail.Controls.Add(this.label4);
+            this.PanelDetail.Controls.Add(this.label3);
+            this.PanelDetail.Controls.Add(this.rdoNO);
+            this.PanelDetail.Controls.Add(this.rdoNeed);
+            this.PanelDetail.Controls.Add(this.sLabel18);
+            this.PanelDetail.Controls.Add(this.txtSlipDate);
+            this.PanelDetail.Controls.Add(this.sLabel4);
+            this.PanelDetail.Controls.Add(this.lblKouritenName);
+            this.PanelDetail.Controls.Add(this.btnKouriren_Detail);
+            this.PanelDetail.Controls.Add(this.txtJuchuuNo);
+            this.PanelDetail.Controls.Add(this.slable1);
+            this.PanelDetail.Controls.Add(this.dgvShukkasizi);
+            this.PanelDetail.Controls.Add(this.btnSave);
+            this.PanelDetail.Controls.Add(this.btnDisplay);
+            this.PanelDetail.Controls.Add(this.btnConfirm);
+            this.PanelDetail.Controls.Add(this.txtShippingDate);
+            this.PanelDetail.Controls.Add(this.sbLabel2);
+            this.PanelDetail.Controls.Add(this.txtName);
+            this.PanelDetail.Controls.Add(this.btn_Tokuisaki);
+            this.PanelDetail.Controls.Add(this.sLabel16);
+            this.PanelDetail.Controls.Add(this.lblStaffName);
+            this.PanelDetail.Controls.Add(this.sLabel6);
+            this.PanelDetail.Controls.Add(this.label1);
+            this.PanelDetail.Controls.Add(this.txtSenpyouhachuuNo);
+            this.PanelDetail.Controls.Add(this.sLabel7);
+            this.PanelDetail.Controls.Add(this.sLabel8);
+            this.PanelDetail.Controls.Add(this.sLabel10);
+            this.PanelDetail.Controls.Add(this.txtSlip_Description);
+            this.PanelDetail.Controls.Add(this.sLabel13);
+            this.PanelDetail.Controls.Add(this.sbDenpyouCD);
+            this.PanelDetail.Location = new System.Drawing.Point(1, 77);
+            this.PanelDetail.Name = "PanelDetail";
+            this.PanelDetail.Size = new System.Drawing.Size(1490, 580);
+            this.PanelDetail.TabIndex = 46;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1089, 179);
+            this.label9.Location = new System.Drawing.Point(1082, 154);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(61, 13);
             this.label9.TabIndex = 78;
@@ -240,6 +240,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbKouriten.Size = new System.Drawing.Size(80, 19);
             this.sbKouriten.TabIndex = 77;
             this.sbKouriten.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sbKouriten.TxtBox = null;
             this.sbKouriten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbKouriten_KeyDown);
             // 
             // sbStaffCD
@@ -264,18 +265,19 @@ namespace ShukkaSiziNyuuryoku
             this.sbStaffCD.MoveNext = true;
             this.sbStaffCD.Name = "sbStaffCD";
             this.sbStaffCD.NextControl = null;
-            this.sbStaffCD.NextControlName = "txtJuchuuNo";
+            this.sbStaffCD.NextControlName = "txtSlipDate";
             this.sbStaffCD.SearchType = Entity.SearchType.ScType.Staff;
             this.sbStaffCD.Size = new System.Drawing.Size(80, 19);
             this.sbStaffCD.TabIndex = 76;
             this.sbStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sbStaffCD.TxtBox = null;
             this.sbStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbStaffCD_KeyDown);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(999, 176);
+            this.label7.Location = new System.Drawing.Point(992, 151);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(15, 20);
             this.label7.TabIndex = 74;
@@ -285,7 +287,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(907, 176);
+            this.label8.Location = new System.Drawing.Point(900, 151);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 20);
             this.label8.TabIndex = 73;
@@ -304,7 +306,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone3.IsErrorOccurs = false;
             this.txtPhone3.IsRequire = false;
             this.txtPhone3.IsUseInitializedLayout = true;
-            this.txtPhone3.Location = new System.Drawing.Point(1018, 176);
+            this.txtPhone3.Location = new System.Drawing.Point(1011, 151);
             this.txtPhone3.MaxLength = 5;
             this.txtPhone3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone3.MoveNext = true;
@@ -329,7 +331,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone2.IsErrorOccurs = false;
             this.txtPhone2.IsRequire = false;
             this.txtPhone2.IsUseInitializedLayout = true;
-            this.txtPhone2.Location = new System.Drawing.Point(926, 176);
+            this.txtPhone2.Location = new System.Drawing.Point(919, 151);
             this.txtPhone2.MaxLength = 5;
             this.txtPhone2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2.MoveNext = true;
@@ -354,7 +356,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone1.IsErrorOccurs = false;
             this.txtPhone1.IsRequire = false;
             this.txtPhone1.IsUseInitializedLayout = true;
-            this.txtPhone1.Location = new System.Drawing.Point(832, 175);
+            this.txtPhone1.Location = new System.Drawing.Point(825, 150);
             this.txtPhone1.MaxLength = 6;
             this.txtPhone1.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1.MoveNext = true;
@@ -372,7 +374,7 @@ namespace ShukkaSiziNyuuryoku
             this.lblPhone1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPhone1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPhone1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblPhone1.Location = new System.Drawing.Point(732, 175);
+            this.lblPhone1.Location = new System.Drawing.Point(725, 150);
             this.lblPhone1.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblPhone1.Name = "lblPhone1";
             this.lblPhone1.Size = new System.Drawing.Size(100, 19);
@@ -383,7 +385,7 @@ namespace ShukkaSiziNyuuryoku
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1417, 179);
+            this.label2.Location = new System.Drawing.Point(1428, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 68;
@@ -416,6 +418,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbTokuisaki.Size = new System.Drawing.Size(80, 19);
             this.sbTokuisaki.TabIndex = 67;
             this.sbTokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sbTokuisaki.TxtBox = null;
             this.sbTokuisaki.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbTokuisaki_KeyDown);
             // 
             // lblTokuisakiName
@@ -433,7 +436,7 @@ namespace ShukkaSiziNyuuryoku
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1046, 207);
+            this.label6.Location = new System.Drawing.Point(1039, 182);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
             this.label6.TabIndex = 65;
@@ -442,7 +445,7 @@ namespace ShukkaSiziNyuuryoku
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(663, 178);
+            this.label5.Location = new System.Drawing.Point(656, 153);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 60;
@@ -461,13 +464,13 @@ namespace ShukkaSiziNyuuryoku
             this.txtAddress.IsErrorOccurs = false;
             this.txtAddress.IsRequire = false;
             this.txtAddress.IsUseInitializedLayout = true;
-            this.txtAddress.Location = new System.Drawing.Point(517, 203);
+            this.txtAddress.Location = new System.Drawing.Point(510, 178);
             this.txtAddress.MaxLength = 80;
             this.txtAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress.MoveNext = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.NextControl = null;
-            this.txtAddress.NextControlName = "txtSlipDate";
+            this.txtAddress.NextControlName = "txtPhone1";
             this.txtAddress.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress.Size = new System.Drawing.Size(527, 19);
             this.txtAddress.TabIndex = 63;
@@ -479,7 +482,7 @@ namespace ShukkaSiziNyuuryoku
             this.lblAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAddress1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAddress1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblAddress1.Location = new System.Drawing.Point(420, 203);
+            this.lblAddress1.Location = new System.Drawing.Point(413, 178);
             this.lblAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblAddress1.Name = "lblAddress1";
             this.lblAddress1.Size = new System.Drawing.Size(100, 19);
@@ -500,7 +503,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(592, 176);
+            this.txtYubin2.Location = new System.Drawing.Point(585, 151);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYubin2.MoveNext = true;
@@ -526,7 +529,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
             this.txtYubin1.IsUseInitializedLayout = true;
-            this.txtYubin1.Location = new System.Drawing.Point(520, 176);
+            this.txtYubin1.Location = new System.Drawing.Point(513, 151);
             this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin1.MoveNext = true;
@@ -542,7 +545,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(575, 174);
+            this.label4.Location = new System.Drawing.Point(568, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 62;
@@ -551,7 +554,7 @@ namespace ShukkaSiziNyuuryoku
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(385, 153);
+            this.label3.Location = new System.Drawing.Point(367, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 59;
@@ -679,7 +682,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJuchuuNo.IsRequire = false;
             this.txtJuchuuNo.IsUseInitializedLayout = true;
             this.txtJuchuuNo.lblName = null;
-            this.txtJuchuuNo.Location = new System.Drawing.Point(258, 176);
+            this.txtJuchuuNo.Location = new System.Drawing.Point(269, 152);
             this.txtJuchuuNo.MaxLength = 12;
             this.txtJuchuuNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJuchuuNo.MoveNext = true;
@@ -690,6 +693,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJuchuuNo.Size = new System.Drawing.Size(100, 19);
             this.txtJuchuuNo.TabIndex = 47;
             this.txtJuchuuNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJuchuuNo.TxtBox = null;
             this.txtJuchuuNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNo_KeyDown);
             // 
             // slable1
@@ -709,15 +713,15 @@ namespace ShukkaSiziNyuuryoku
             // dgvShukkasizi
             // 
             this.dgvShukkasizi.AllowUserToAddRows = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShukkasizi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShukkasizi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvShukkasizi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShukkasizi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -750,9 +754,9 @@ namespace ShukkaSiziNyuuryoku
             this.Column13,
             this.Column14,
             this.Column15});
-            this.dgvShukkasizi.Location = new System.Drawing.Point(2, 276);
+            this.dgvShukkasizi.Location = new System.Drawing.Point(48, 222);
             this.dgvShukkasizi.Name = "dgvShukkasizi";
-            this.dgvShukkasizi.Size = new System.Drawing.Size(1468, 250);
+            this.dgvShukkasizi.Size = new System.Drawing.Size(1450, 350);
             this.dgvShukkasizi.TabIndex = 35;
             this.dgvShukkasizi.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvShukkasizi_Paint);
             // 
@@ -797,9 +801,9 @@ namespace ShukkaSiziNyuuryoku
             // colJuchuuSuu
             // 
             this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.NullValue = "0";
-            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.NullValue = "0";
+            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle9;
             this.colJuchuuSuu.HeaderText = "受注数";
             this.colJuchuuSuu.Name = "colJuchuuSuu";
             this.colJuchuuSuu.ReadOnly = true;
@@ -807,9 +811,9 @@ namespace ShukkaSiziNyuuryoku
             // colShukkakanousuu
             // 
             this.colShukkakanousuu.DataPropertyName = "ShukkanouSuu";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.NullValue = "0";
-            this.colShukkakanousuu.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.NullValue = "0";
+            this.colShukkakanousuu.DefaultCellStyle = dataGridViewCellStyle10;
             this.colShukkakanousuu.HeaderText = "出荷可能数";
             this.colShukkakanousuu.Name = "colShukkakanousuu";
             this.colShukkakanousuu.ReadOnly = true;
@@ -818,10 +822,10 @@ namespace ShukkaSiziNyuuryoku
             // colShukkasizisou
             // 
             this.colShukkasizisou.DataPropertyName = "ShukkaSiziZumiSuu";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N0";
-            dataGridViewCellStyle18.NullValue = null;
-            this.colShukkasizisou.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N0";
+            dataGridViewCellStyle11.NullValue = null;
+            this.colShukkasizisou.DefaultCellStyle = dataGridViewCellStyle11;
             this.colShukkasizisou.HeaderText = "出荷指示済数";
             this.colShukkasizisou.Name = "colShukkasizisou";
             this.colShukkasizisou.ReadOnly = true;
@@ -830,9 +834,9 @@ namespace ShukkaSiziNyuuryoku
             // colArrivalTime
             // 
             this.colArrivalTime.DataPropertyName = "KonkaiShukkaSiziSuu";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.NullValue = "0";
-            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.NullValue = "0";
+            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle12;
             this.colArrivalTime.HeaderText = "今回出荷指示数";
             this.colArrivalTime.Name = "colArrivalTime";
             this.colArrivalTime.Width = 125;
@@ -840,18 +844,18 @@ namespace ShukkaSiziNyuuryoku
             // colTanka
             // 
             this.colTanka.DataPropertyName = "UriageTanka";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle20.NullValue = "0";
-            this.colTanka.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.NullValue = "0";
+            this.colTanka.DefaultCellStyle = dataGridViewCellStyle13;
             this.colTanka.HeaderText = "単価";
             this.colTanka.Name = "colTanka";
             // 
             // colPrice
             // 
             this.colPrice.DataPropertyName = "UriageKingaku";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle21.NullValue = "0";
-            this.colPrice.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.NullValue = "0";
+            this.colPrice.DefaultCellStyle = dataGridViewCellStyle14;
             this.colPrice.HeaderText = "金額";
             this.colPrice.Name = "colPrice";
             // 
@@ -996,7 +1000,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnSave.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnSave.Location = new System.Drawing.Point(1356, 217);
+            this.btnSave.Location = new System.Drawing.Point(1367, 193);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 33;
@@ -1010,7 +1014,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDisplay.Location = new System.Drawing.Point(1256, 217);
+            this.btnDisplay.Location = new System.Drawing.Point(1267, 193);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.Size = new System.Drawing.Size(75, 23);
             this.btnDisplay.TabIndex = 32;
@@ -1024,7 +1028,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnConfirm.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnConfirm.Location = new System.Drawing.Point(1158, 217);
+            this.btnConfirm.Location = new System.Drawing.Point(1169, 193);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.Size = new System.Drawing.Size(75, 23);
             this.btnConfirm.TabIndex = 31;
@@ -1085,7 +1089,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = true;
             this.txtName.IsUseInitializedLayout = true;
-            this.txtName.Location = new System.Drawing.Point(1254, 175);
+            this.txtName.Location = new System.Drawing.Point(1257, 151);
             this.txtName.MaxLength = 40;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtName.MoveNext = true;
@@ -1117,7 +1121,7 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel16.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel16.Location = new System.Drawing.Point(1154, 175);
+            this.sLabel16.Location = new System.Drawing.Point(1157, 151);
             this.sLabel16.Name = "sLabel16";
             this.sLabel16.Size = new System.Drawing.Size(100, 19);
             this.sLabel16.TabIndex = 25;
@@ -1153,7 +1157,7 @@ namespace ShukkaSiziNyuuryoku
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(133, 153);
+            this.label1.Location = new System.Drawing.Point(133, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 6;
@@ -1172,7 +1176,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSenpyouhachuuNo.IsErrorOccurs = false;
             this.txtSenpyouhachuuNo.IsRequire = false;
             this.txtSenpyouhachuuNo.IsUseInitializedLayout = true;
-            this.txtSenpyouhachuuNo.Location = new System.Drawing.Point(258, 203);
+            this.txtSenpyouhachuuNo.Location = new System.Drawing.Point(269, 179);
             this.txtSenpyouhachuuNo.MaxLength = 20;
             this.txtSenpyouhachuuNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSenpyouhachuuNo.MoveNext = true;
@@ -1190,7 +1194,7 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel7.Location = new System.Drawing.Point(158, 176);
+            this.sLabel7.Location = new System.Drawing.Point(169, 152);
             this.sLabel7.Name = "sLabel7";
             this.sLabel7.Size = new System.Drawing.Size(100, 19);
             this.sLabel7.TabIndex = 7;
@@ -1203,7 +1207,7 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel8.Location = new System.Drawing.Point(158, 203);
+            this.sLabel8.Location = new System.Drawing.Point(169, 179);
             this.sLabel8.Name = "sLabel8";
             this.sLabel8.Size = new System.Drawing.Size(100, 19);
             this.sLabel8.TabIndex = 8;
@@ -1216,7 +1220,7 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel10.Location = new System.Drawing.Point(420, 176);
+            this.sLabel10.Location = new System.Drawing.Point(413, 151);
             this.sLabel10.Name = "sLabel10";
             this.sLabel10.Size = new System.Drawing.Size(100, 19);
             this.sLabel10.TabIndex = 10;
@@ -1242,7 +1246,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlip_Description.MoveNext = true;
             this.txtSlip_Description.Name = "txtSlip_Description";
             this.txtSlip_Description.NextControl = null;
-            this.txtSlip_Description.NextControlName = "txtPhone1";
+            this.txtSlip_Description.NextControlName = "txtJuchuuNo";
             this.txtSlip_Description.SearchType = Entity.SearchType.ScType.None;
             this.txtSlip_Description.Size = new System.Drawing.Size(400, 19);
             this.txtSlip_Description.TabIndex = 20;
@@ -1302,6 +1306,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbShippingNO.Size = new System.Drawing.Size(100, 19);
             this.sbShippingNO.TabIndex = 4;
             this.sbShippingNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sbShippingNO.TxtBox = null;
             this.sbShippingNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbShippingNO_KeyDown);
             // 
             // ShukkaSiziNyuuryoku
@@ -1309,17 +1314,17 @@ namespace ShukkaSiziNyuuryoku
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1485, 711);
-            this.Controls.Add(this.panelDetails);
+            this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ShukkaSiziNyuuryoku";
             this.Text = "出荷指示入力";
             this.Load += new System.EventHandler(this.ShukkaSiziNyuuryoku_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.panelDetails, 0);
+            this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
-            this.panelDetails.ResumeLayout(false);
-            this.panelDetails.PerformLayout();
+            this.PanelDetail.ResumeLayout(false);
+            this.PanelDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvShukkasizi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1328,7 +1333,7 @@ namespace ShukkaSiziNyuuryoku
 
         #endregion
         private Shinyoh_Controls.SLabel sLabel3;
-        private System.Windows.Forms.Panel panelDetails;
+        private System.Windows.Forms.Panel PanelDetail;
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.SLabel lblKouritenName;
         private Shinyoh_Controls.SButton btnKouriren_Detail;

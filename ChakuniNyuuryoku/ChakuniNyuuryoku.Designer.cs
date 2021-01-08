@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.txtArrivalDate = new Shinyoh_Controls.STextBox();
             this.txtDescription = new Shinyoh_Controls.STextBox();
@@ -87,7 +87,7 @@
             this.lblStaff = new Shinyoh_Controls.SLabel();
             this.lblWareHouse = new Shinyoh_Controls.SLabel();
             this.lblBrandName = new Shinyoh_Controls.SLabel();
-            this.panelDetails = new System.Windows.Forms.Panel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
             this.txtYearTerm = new Shinyoh_Controls.STextBox();
             this.txtScheduled = new Shinyoh_Controls.STextBox();
             this.txtStaffCD = new Shinyoh_Search.SearchBox();
@@ -99,7 +99,7 @@
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
-            this.panelDetails.SuspendLayout();
+            this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -114,7 +114,7 @@
             // 
             // cboMode
             // 
-            this.cboMode.BackColor = System.Drawing.Color.Cyan;
+            this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.Location = new System.Drawing.Point(25, 8);
             // 
             // sLabel3
@@ -631,15 +631,15 @@
             // gvChakuniNyuuryoku
             // 
             this.gvChakuniNyuuryoku.AllowUserToAddRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvChakuniNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvChakuniNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvChakuniNyuuryoku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvChakuniNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -706,8 +706,8 @@
             // colDate
             // 
             this.colDate.DataPropertyName = "ChakuniYoteiDate";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colDate.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colDate.HeaderText = "着荷予定日";
             this.colDate.Name = "colDate";
             this.colDate.ReadOnly = true;
@@ -715,8 +715,8 @@
             // colArrivalNo
             // 
             this.colArrivalNo.DataPropertyName = "ChakuniYoteiSuu";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colArrivalNo.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colArrivalNo.DefaultCellStyle = dataGridViewCellStyle3;
             this.colArrivalNo.HeaderText = "着荷予定数";
             this.colArrivalNo.Name = "colArrivalNo";
             this.colArrivalNo.ReadOnly = true;
@@ -724,17 +724,17 @@
             // colChakuniZumiSuu
             // 
             this.colChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
             this.colChakuniZumiSuu.HeaderText = "着荷済数";
             this.colChakuniZumiSuu.Name = "colChakuniZumiSuu";
             // 
             // colArrivalTime
             // 
             this.colArrivalTime.DataPropertyName = "ChakuniSuu";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.NullValue = null;
-            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.NullValue = null;
+            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle5;
             this.colArrivalTime.HeaderText = "今回着荷数";
             this.colArrivalTime.Name = "colArrivalTime";
             // 
@@ -854,53 +854,53 @@
             this.lblBrandName.TabIndex = 44;
             this.lblBrandName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panelDetails
+            // PanelDetail
             // 
-            this.panelDetails.Controls.Add(this.txtYearTerm);
-            this.panelDetails.Controls.Add(this.txtScheduled);
-            this.panelDetails.Controls.Add(this.txtStaffCD);
-            this.panelDetails.Controls.Add(this.txtSiiresaki);
-            this.panelDetails.Controls.Add(this.sLabel4);
-            this.panelDetails.Controls.Add(this.gvChakuniNyuuryoku);
-            this.panelDetails.Controls.Add(this.lblBrandName);
-            this.panelDetails.Controls.Add(this.btnSave);
-            this.panelDetails.Controls.Add(this.label2);
-            this.panelDetails.Controls.Add(this.btnDisplay);
-            this.panelDetails.Controls.Add(this.btnConfirm);
-            this.panelDetails.Controls.Add(this.txtArrivalDate);
-            this.panelDetails.Controls.Add(this.sbBrand);
-            this.panelDetails.Controls.Add(this.lblWareHouse);
-            this.panelDetails.Controls.Add(this.chkFW);
-            this.panelDetails.Controls.Add(this.sLabel5);
-            this.panelDetails.Controls.Add(this.chkSS);
-            this.panelDetails.Controls.Add(this.txtSouko);
-            this.panelDetails.Controls.Add(this.txtSize);
-            this.panelDetails.Controls.Add(this.lblSiiresaki);
-            this.panelDetails.Controls.Add(this.sLabel17);
-            this.panelDetails.Controls.Add(this.btn_Siiresaki);
-            this.panelDetails.Controls.Add(this.sLabel16);
-            this.panelDetails.Controls.Add(this.lblStaff);
-            this.panelDetails.Controls.Add(this.sLabel6);
-            this.panelDetails.Controls.Add(this.label1);
-            this.panelDetails.Controls.Add(this.txtShouhinCD);
-            this.panelDetails.Controls.Add(this.sLabel7);
-            this.panelDetails.Controls.Add(this.txtColor);
-            this.panelDetails.Controls.Add(this.sLabel8);
-            this.panelDetails.Controls.Add(this.sLabel15);
-            this.panelDetails.Controls.Add(this.sLabel14);
-            this.panelDetails.Controls.Add(this.sLabel9);
-            this.panelDetails.Controls.Add(this.txtShouhinName);
-            this.panelDetails.Controls.Add(this.txtJANCD);
-            this.panelDetails.Controls.Add(this.sLabel10);
-            this.panelDetails.Controls.Add(this.sLabel11);
-            this.panelDetails.Controls.Add(this.txtDescription);
-            this.panelDetails.Controls.Add(this.sLabel13);
-            this.panelDetails.Controls.Add(this.txtControlNo);
-            this.panelDetails.Controls.Add(this.sLabel12);
-            this.panelDetails.Location = new System.Drawing.Point(1, 76);
-            this.panelDetails.Name = "panelDetails";
-            this.panelDetails.Size = new System.Drawing.Size(1480, 570);
-            this.panelDetails.TabIndex = 45;
+            this.PanelDetail.Controls.Add(this.txtYearTerm);
+            this.PanelDetail.Controls.Add(this.txtScheduled);
+            this.PanelDetail.Controls.Add(this.txtStaffCD);
+            this.PanelDetail.Controls.Add(this.txtSiiresaki);
+            this.PanelDetail.Controls.Add(this.sLabel4);
+            this.PanelDetail.Controls.Add(this.gvChakuniNyuuryoku);
+            this.PanelDetail.Controls.Add(this.lblBrandName);
+            this.PanelDetail.Controls.Add(this.btnSave);
+            this.PanelDetail.Controls.Add(this.label2);
+            this.PanelDetail.Controls.Add(this.btnDisplay);
+            this.PanelDetail.Controls.Add(this.btnConfirm);
+            this.PanelDetail.Controls.Add(this.txtArrivalDate);
+            this.PanelDetail.Controls.Add(this.sbBrand);
+            this.PanelDetail.Controls.Add(this.lblWareHouse);
+            this.PanelDetail.Controls.Add(this.chkFW);
+            this.PanelDetail.Controls.Add(this.sLabel5);
+            this.PanelDetail.Controls.Add(this.chkSS);
+            this.PanelDetail.Controls.Add(this.txtSouko);
+            this.PanelDetail.Controls.Add(this.txtSize);
+            this.PanelDetail.Controls.Add(this.lblSiiresaki);
+            this.PanelDetail.Controls.Add(this.sLabel17);
+            this.PanelDetail.Controls.Add(this.btn_Siiresaki);
+            this.PanelDetail.Controls.Add(this.sLabel16);
+            this.PanelDetail.Controls.Add(this.lblStaff);
+            this.PanelDetail.Controls.Add(this.sLabel6);
+            this.PanelDetail.Controls.Add(this.label1);
+            this.PanelDetail.Controls.Add(this.txtShouhinCD);
+            this.PanelDetail.Controls.Add(this.sLabel7);
+            this.PanelDetail.Controls.Add(this.txtColor);
+            this.PanelDetail.Controls.Add(this.sLabel8);
+            this.PanelDetail.Controls.Add(this.sLabel15);
+            this.PanelDetail.Controls.Add(this.sLabel14);
+            this.PanelDetail.Controls.Add(this.sLabel9);
+            this.PanelDetail.Controls.Add(this.txtShouhinName);
+            this.PanelDetail.Controls.Add(this.txtJANCD);
+            this.PanelDetail.Controls.Add(this.sLabel10);
+            this.PanelDetail.Controls.Add(this.sLabel11);
+            this.PanelDetail.Controls.Add(this.txtDescription);
+            this.PanelDetail.Controls.Add(this.sLabel13);
+            this.PanelDetail.Controls.Add(this.txtControlNo);
+            this.PanelDetail.Controls.Add(this.sLabel12);
+            this.PanelDetail.Location = new System.Drawing.Point(1, 76);
+            this.PanelDetail.Name = "PanelDetail";
+            this.PanelDetail.Size = new System.Drawing.Size(1480, 570);
+            this.PanelDetail.TabIndex = 45;
             // 
             // txtYearTerm
             // 
@@ -1117,18 +1117,18 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1485, 711);
-            this.Controls.Add(this.panelDetails);
+            this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ChakuniNyuuryoku";
             this.Text = "  着荷入力";
             this.Load += new System.EventHandler(this.ChakuniNyuuryoku_Load);
-            this.Controls.SetChildIndex(this.panelDetails, 0);
+            this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).EndInit();
-            this.panelDetails.ResumeLayout(false);
-            this.panelDetails.PerformLayout();
+            this.PanelDetail.ResumeLayout(false);
+            this.PanelDetail.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1172,7 +1172,7 @@
         private Shinyoh_Controls.SLabel lblWareHouse;
         private Shinyoh_Search.SearchBox sbBrand;
         private Shinyoh_Controls.SLabel lblBrandName;
-        private System.Windows.Forms.Panel panelDetails;
+        private System.Windows.Forms.Panel PanelDetail;
         private Shinyoh_Search.SearchBox txtSiiresaki;
         private Shinyoh_Search.SearchBox txtStaffCD;
         private Shinyoh_Search.SearchBox txtScheduledNo;
