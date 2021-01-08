@@ -44,8 +44,13 @@ begin
           dc.StaffCD,ms.StaffName,dc.SoukoCD,msouko.SoukoName,dc.ChakuniDenpyouTekiyou,M_Message.MessageID,dcy.ChakuniYoteiNO,
           dcm.ShouhinCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
           dc1.ChakuniYoteiDate,FLOOR(dcy.ChakuniYoteiSuu)as ChakuniYoteiSuu,FLOOR(dcy.ChakuniZumiSuu) as ChakuniZumiSuu,dcm.ChakuniSuu,
-          dcm.ChakuniMeisaiTekiyou,dcm.JANCD,(dcm.ChakuniYoteiNO + ' ' + cast(dcm.ChakuniYoteiGyouNO as varchar))as ChakuniYoteiNO,(dcm.HacchuuNO+' '+cast(dcm.HacchuuGyouNO as varchar)) as HacchuuGyouNO,
+          dcm.ChakuniMeisaiTekiyou,dcm.JANCD,
+		  dcm.ChakuniYoteiNO,dcm.ChakuniYoteiGyouNO,
+		  (dcm.ChakuniYoteiNO + ' ' + cast(dcm.ChakuniYoteiGyouNO as varchar))as Chakuni,dcm.HacchuuNO,dcm.HacchuuGyouNO,
+		  (dcm.HacchuuNO+' '+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu,
 		  dcm.SiireKanryouKBN
+		  --(dcm.ChakuniYoteiNO + ' ' + cast(dcm.ChakuniYoteiGyouNO as varchar))as ChakuniYoteiNO,(dcm.HacchuuNO+' '+cast(dcm.HacchuuGyouNO as varchar)) as HacchuuGyouNO,
+		  --dcm.SiireKanryouKBN
 
 		        from M_Message,D_Chakuni dc
 				INNER JOIN D_ChakuniMeisai dcm ON dcm.ChakuniNO=dc.ChakuniNO
@@ -101,7 +106,12 @@ begin
           dc.StaffCD,ms.StaffName,dc.SoukoCD,msouko.SoukoName,dc.ChakuniDenpyouTekiyou,M_Message.MessageID,dcy.ChakuniYoteiNO,
           dcm.ShouhinCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
           dc1.ChakuniYoteiDate,FLOOR(dcy.ChakuniYoteiSuu)as ChakuniYoteiSuu,FLOOR(dcy.ChakuniZumiSuu) as ChakuniZumiSuu,dcm.ChakuniSuu,
-          dcm.ChakuniMeisaiTekiyou,dcm.JANCD,(dcm.ChakuniYoteiNO + ' ' + dcm.ChakuniYoteiGyouNO)as a,(dcm.HacchuuNO+' '+dcm.HacchuuGyouNO) as b,
+          dcm.ChakuniMeisaiTekiyou,dcm.JANCD,
+		  --(dcm.ChakuniYoteiNO + ' ' + dcm.ChakuniYoteiGyouNO)as a,(dcm.HacchuuNO+' '+dcm.HacchuuGyouNO) as b,
+		  --dcm.SiireKanryouKBN
+		  dcm.ChakuniYoteiNO,dcm.ChakuniYoteiGyouNO,
+		  (dcm.ChakuniYoteiNO + ' ' + cast(dcm.ChakuniYoteiGyouNO as varchar))as Chakuni,dcm.HacchuuNO,dcm.HacchuuGyouNO,
+		  (dcm.HacchuuNO+' '+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu,
 		  dcm.SiireKanryouKBN
 		        from M_Message,D_Chakuni dc
 				INNER JOIN D_ChakuniMeisai dcm ON dcm.ChakuniNO=dc.ChakuniNO

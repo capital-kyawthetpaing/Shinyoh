@@ -116,11 +116,7 @@ namespace Shinyoh_Search
         }
         private void gvShippingNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                GetGridviewData(gvShippingNo.Rows[e.RowIndex]);
-            }
-
+            GetGridviewData(gvShippingNo.Rows[e.RowIndex]);
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
