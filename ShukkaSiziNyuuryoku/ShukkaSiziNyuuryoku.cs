@@ -678,7 +678,6 @@ namespace ShukkaSiziNyuuryoku
                     if (!string.IsNullOrWhiteSpace(sbTokuisaki.Text))
                     {
                         TokuisakiBL tbl = new TokuisakiBL();
-                        DataTable dt = sbTokuisaki.IsDatatableOccurs;
 
                         DataTable dt1 = tbl.M_Tokuisaki_Select(sbTokuisaki.Text, txtShippingDate.Text, "E227");
                         DataTable dt2 = tbl.M_Tokuisaki_Select(sbTokuisaki.Text, txtShippingDate.Text, "E267");
@@ -827,7 +826,7 @@ namespace ShukkaSiziNyuuryoku
             else
             {
                sbShippingNO.E102Check(true);
-                //sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
+                sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
                 sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
                 sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null);
             }

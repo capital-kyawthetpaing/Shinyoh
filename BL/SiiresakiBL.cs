@@ -85,5 +85,26 @@ namespace BL
             parameters[1] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = condition };
             return ckmdl.InsertUpdateDeleteData("CSV_M_Siiresaki_CUD", GetConnectionString(), parameters);
         }
+
+        public DataTable Get_ExportData(SiiresakiEntity entity)//add ssa
+        {
+            CKMDL ckmdl = new CKMDL();
+            entity.Sqlprms = new SqlParameter[14];
+            entity.Sqlprms[0] = new SqlParameter("@SiiresakiCD1", SqlDbType.VarChar) { Value = entity.SiiresakiCD_From };
+            entity.Sqlprms[1] = new SqlParameter("@SiiresakiCD2", SqlDbType.VarChar) { Value = entity.SiiresakiCD_To };
+            entity.Sqlprms[2] = new SqlParameter("@SiiresakiName", SqlDbType.VarChar) { Value = entity.SiiresakiRyakuName };
+            entity.Sqlprms[3] = new SqlParameter("@YuubinNO1", SqlDbType.VarChar) { Value = entity.YuubinNO1 };
+            entity.Sqlprms[4] = new SqlParameter("@YuubinNO2", SqlDbType.VarChar) { Value = entity.YuubinNO2 };
+            entity.Sqlprms[5] = new SqlParameter("@Juusho", SqlDbType.VarChar) { Value = entity.Juusho1 };
+            entity.Sqlprms[6] = new SqlParameter("@Tel1", SqlDbType.VarChar) { Value = entity.Tel11 };
+            entity.Sqlprms[7] = new SqlParameter("@Tel2", SqlDbType.VarChar) { Value = entity.Tel12 };
+            entity.Sqlprms[8] = new SqlParameter("@Tel3", SqlDbType.VarChar) { Value = entity.Tel13 };
+            entity.Sqlprms[9] = new SqlParameter("@Remarks", SqlDbType.VarChar) { Value = entity.Remarks };
+            entity.Sqlprms[10] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = entity.ProgramID };
+            entity.Sqlprms[11] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = entity.PC };
+            entity.Sqlprms[12] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = entity.InsertOperator };
+            entity.Sqlprms[13] = new SqlParameter("@Output_Type", SqlDbType.VarChar) { Value = entity.Output_Type };
+            return ckmdl.SelectDatatable("Get_Siiresaki_ExportData", GetConnectionString(), entity.Sqlprms);
+        }
     }
 }
