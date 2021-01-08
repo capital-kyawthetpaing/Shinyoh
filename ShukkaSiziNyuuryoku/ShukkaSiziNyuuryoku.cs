@@ -23,6 +23,7 @@ namespace ShukkaSiziNyuuryoku
         TokuisakiDetails td = new TokuisakiDetails();
         KouritenDetails kd = new KouritenDetails();
         public string tdDate;
+        public string Detail_XML;
         DataTable dtgv1, dtTemp1, dtGS1, dtClear, dt_Header,dtResult;
         public ShukkaSiziNyuuryoku()
         {
@@ -923,7 +924,7 @@ namespace ShukkaSiziNyuuryoku
                     bbl.ShowMessage("E109");
                     return false;
                 }
-                string value1 = gv.Cells["colShukkakanousuu"].EditedFormattedValue.ToString();
+                string value1 = gv.Cells["colShukkakanousuu"].Value.ToString();
                 if (Convert.ToInt32(value) > Convert.ToInt32(value1))
                 {
                     bbl.ShowMessage("E143");
@@ -931,11 +932,12 @@ namespace ShukkaSiziNyuuryoku
                     return false;
                 }
 
-                string value2 = gv.Cells["colJuchuuSuu"].EditedFormattedValue.ToString();
-                string value3 = gv.Cells["colShukkasizisou"].EditedFormattedValue.ToString();
+                string value2 = gv.Cells["colJuchuuSuu"].Value.ToString();
+                string value3 = gv.Cells["colShukkasizisou"].Value.ToString();
                 if (Convert.ToInt32(value) > (Convert.ToInt32(value2) - Convert.ToInt32(value3)))
                 {
                     bbl.ShowMessage("E143");
+                    dgvShukkasizi.CurrentCell = gv.Cells["colArrivalTime"];
                     return false;
                 }
 
@@ -1067,13 +1069,26 @@ namespace ShukkaSiziNyuuryoku
         private void DBProcess()
         {
             (string,string, string) obj = GetInsert();
-            sksz_bl = new ShukkasiziNyuuryokuBL();
-
-            sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-            foreach (DataRow row in dtTemp1.Rows)
+            sksz_bl = new ShukkasiziNyuuryokuBL();            
+            if(cboMode.SelectedValue.ToString().Equals("3"))
             {
-                sksz_bl.Shukkasizi_Price(row["KonkaiShukkaSiziSuu"].ToString(), row["SKMSNO"].ToString());
+                DataTable dt = new DataTable();
+                dt = dtGridview(1);
+                foreach (DataRow row in dt.Rows)
+                {
+                    sksz_bl.Shukkasizi_Price(row["KonkaiShukkaSiziSuu"].ToString(), row["SKMSNO"].ToString());
+                }
+                sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
             }
+            else
+            {
+                sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
+                foreach (DataRow row in dtTemp1.Rows)
+                {
+                    sksz_bl.Shukkasizi_Price(row["KonkaiShukkaSiziSuu"].ToString(), row["SKMSNO"].ToString());
+                }
+            }
+            
         }
         private (string, string, string) GetInsert()
         {
@@ -1139,7 +1154,16 @@ namespace ShukkaSiziNyuuryoku
             }
             dtResult.Rows.Add(dr1);
             string Header_XML = cf.DataTableToXml(dtResult);
-            string Detail_XML = cf.DataTableToXml(dtTemp1);
+            if (cboMode.SelectedValue.ToString().Equals("3"))
+            {
+                DataTable dt = new DataTable();
+                dt=dtGridview(1);
+                Detail_XML = cf.DataTableToXml(dt);
+            }
+            else
+            {
+                Detail_XML = cf.DataTableToXml(dtTemp1);
+            }             
 
             string Mode = string.Empty;
             if (cboMode.SelectedValue.Equals("1"))
