@@ -20,10 +20,8 @@ namespace Shinyoh_Search
         private string CDate = string.Empty;
         private string name = string.Empty;
         private string colName = string.Empty;
-
        
         protected override void OnKeyDown(KeyEventArgs e)
-        
         {         
             if(e.KeyCode == Keys.F9)
             {
@@ -64,7 +62,6 @@ namespace Shinyoh_Search
                         colName = "SoukoName";
                         break;
                 }
-
                 DataTable dt = this.IsDatatableOccurs;
                 if (dt.Rows.Count > 0)
                 {
@@ -152,8 +149,10 @@ namespace Shinyoh_Search
                             CD = msearch.Id;
                         else
                             CD = msearch.Key;
-                        if (CDate != null)
-                            CDate = msearch.Char1;
+                        //if (CDate != null)
+                        //    CDate = msearch.Char1;
+                        if (lblName != null)
+                            name = msearch.Char1;
                         break;
                     case Entity.SearchType.ScType.Kouriten:
                         KouritenSearch kSearch = new KouritenSearch();
