@@ -209,13 +209,13 @@ namespace HacchuuList
             base.FunctionProcess(tagID);
         }        
 
-        private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            //multipurposeBL bl = new multipurposeBL();
-            //DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
-            //if (dt.Rows.Count > 0)
-            //    lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
-        }
+        //private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    multipurposeBL bl = new multipurposeBL();
+        //    DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
+        //    if (dt.Rows.Count > 0)
+        //        lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
+        //}
 
         private void rdo_Hac_CheckedChanged(object sender, EventArgs e)
         {
