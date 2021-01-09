@@ -37,5 +37,8 @@ namespace Entity
         public string TorihikiShuuryouDate { get; set; }//--取引終了日
         public string Remarks { get; set; } // --備考
         public int UsedFlg { get; set; } //  --使用済FLG[1:既にデータ発生済]
+        public int Output_Type { get; set; }
+        public string SiiresakiCD_From { get; set; }
+        public string SiiresakiCD_To { get; set; }
     }
 }

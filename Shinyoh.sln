@@ -55,6 +55,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdouNyuuryoku", "IdouNyuury
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterList_Tokuisaki", "MasterList_Tokuisaki\MasterList_Tokuisaki.csproj", "{40008584-06C9-466F-B9FC-CFB5D9185EED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterList_Siiresaki", "MasterList_Siiresaki\MasterList_Siiresaki.csproj", "{F314A4E1-5323-4B41-A3F4-8397E1C02E3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,10 @@ Global
 		{40008584-06C9-466F-B9FC-CFB5D9185EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40008584-06C9-466F-B9FC-CFB5D9185EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40008584-06C9-466F-B9FC-CFB5D9185EED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F314A4E1-5323-4B41-A3F4-8397E1C02E3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F314A4E1-5323-4B41-A3F4-8397E1C02E3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F314A4E1-5323-4B41-A3F4-8397E1C02E3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F314A4E1-5323-4B41-A3F4-8397E1C02E3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
