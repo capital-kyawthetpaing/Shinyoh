@@ -57,14 +57,15 @@ namespace MasterList_Siiresaki
         private void UI_ErrorCheck()
         {
             txtSiiresakiCD_To.E106Check(true, txtSiiresakiCD_From, txtSiiresakiCD_To);
-            txtYuubinNO2.E102MultiCheck(true, txtYuubinNO1, txtYuubinNO2);
-            txtYuubinNO2.Yuubin_Juusho(true, txtYuubinNO1, txtYuubinNO2, string.Empty, string.Empty);
+            txtYubin2.E102MultiCheck(true, txtYuubinNO1, txtYubin2);
+            txtYubin2.Yuubin_Juusho(true, txtYuubinNO1, txtYubin2, string.Empty, string.Empty);
         }
 
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "6")
             {
+                rdo_ChokkinDate.Checked = true;
                 cf.Clear(PanelDetail);
                 txtSiiresakiCD_From.Focus();
             }
@@ -73,8 +74,6 @@ namespace MasterList_Siiresaki
                 if (ErrorCheck(PanelDetail))
                 {
                     Excel_Export();
-                    cf.Clear(PanelDetail);
-                    txtSiiresakiCD_From.Focus();
                 }
                     
             }
@@ -90,34 +89,48 @@ namespace MasterList_Siiresaki
                 Excel.Workbook xlWorkBook;
                 Excel.Worksheet xlWorkSheet;
                 object misValue = System.Reflection.Missing.Value;
-
+                string filename = "C:\\Output Excel Files\\得意先マスタリスト.xls";
                 xlApp = new Microsoft.Office.Interop.Excel.Application();
                 xlWorkBook = xlApp.Workbooks.Add(misValue);
 
-                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
+                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets[1];
                 xlWorkSheet.Name = "得意先マスタリスト";
 
                 for (int i = 1; i < dt.Columns.Count + 1; i++)
                 {
                     xlWorkSheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
                 }
-                for (int i = 0; i < dt.Rows.Count; i++)
+                for (int j = 0; j < dt.Rows.Count; j++)
                 {
-                    for (int j = 0; j < dt.Columns.Count; j++)
+                    for (int i = 0; i < dt.Columns.Count; i++)
                     {
-                        xlWorkSheet.Cells[i + 2, j + 1] = dt.Rows[i][j].ToString();
+                        Excel.Range rng = xlWorkSheet.Cells[j + 2, i + 1] as Excel.Range;
+                        rng.Value2 = dt.Rows[j][i].ToString();
+                        if (i == 1 || i == 27 || i == 28)
+                        {
+                            rng.NumberFormat = "YYYY/MM/DD";
+                        }
                     }
                 }
                 if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
                     System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
-                xlWorkBook.SaveAs("C:\\Output Excel Files\\得意先マスタリスト.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);                xlApp.Quit();
+                xlWorkBook.SaveAs(filename, misValue, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);               
+                xlApp.Quit();
+
+                //New_Mode
+                cf.Clear(PanelDetail);
+                rdo_ChokkinDate.Checked = true;
+                txtSiiresakiCD_From.Focus();
+            }
+            else
+            {
+                txtSiiresakiCD_From.Focus();
             }
         }
-
         private SiiresakiEntity Get_UIData()
         {
             SiiresakiEntity ske = new SiiresakiEntity();
-            if (rdo_RRevisionDate.Checked)
+            if (rdo_ChokkinDate.Checked)
                 ske.Output_Type = 0;
             else
                 ske.Output_Type = 1;
@@ -125,14 +138,32 @@ namespace MasterList_Siiresaki
             ske.SiiresakiCD_To = txtSiiresakiCD_To.Text;
             ske.SiiresakiRyakuName = txtSiiresakiName.Text;
             ske.YuubinNO1 = txtYuubinNO1.Text;
-            ske.YuubinNO2 = txtYuubinNO2.Text;
-            ske.Juusho1 = txtJuusho.Text;
+            ske.YuubinNO2 = txtYubin2.Text;
+            ske.Juusho1 = txtAddress.Text;
             ske.Tel11 = txtPhNO1.Text;
             ske.Tel12 = txtPhNO2.Text;
             ske.Tel13 = txtPhNO3.Text;
             ske.Remarks = txtRemarks.Text;
+            ske.PC = PCID;
             ske.ProgramID = ProgramID;
+            ske.InsertOperator = OperatorCD;
             return ske;
+        }
+
+        private void txtYuubinNO2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!txtYubin2.IsErrorOccurs)
+            {
+                if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
+                {
+                    DataTable dt = txtYubin2.IsDatatableOccurs;
+                    txtAddress.Text = dt.Rows[0]["Juusho1"].ToString();
+                }
+                else
+                {
+                    txtAddress.Text = string.Empty;
+                }
+            }
         }
     }
 }
