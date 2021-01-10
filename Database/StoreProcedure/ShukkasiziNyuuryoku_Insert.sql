@@ -461,7 +461,10 @@ INSERT INTO [dbo].[D_ShukkaSiziShousai]
 			,dj.JuchuuShousaiNO-- 邱ｨ髮・
 			,@OperatorCD,@currentDate,@OperatorCD,@currentDate
 		from  D_JuchuuShousai dj,#Temp_Details D
-		where dj.JuchuuNO = LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1) 
+		where dj.JuchuuNO = LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1)
+		and dj.JuchuuGyouNO=RIGHT(D.SKMSNO, LEN(D.SKMSNO) - CHARINDEX('-', D.SKMSNO))
+		and dj.ShouhinCD=D.ShouhinCD
+		AND dj.SoukoCD=D.SoukoCD--(for ask)
 		and HikiateZumiSuu <> 0
 		order by dj.KanriNO asc,dj.NyuukoDate asc
 
@@ -626,7 +629,7 @@ SELECT
 		,j.[ShukkaSiziNO]
 		,j.[ShukkaSiziGyouNO]
 		,j.[GyouHyouziJun]
-		,10--譁ｰ隕・
+		,10--新規
 		,j.[KouritenCD]
 		,j.[KouritenRyakuName]
 		,j.[BrandCD]
@@ -700,7 +703,7 @@ SELECT
 [ShukkaSiziNO]
 			,[ShukkaSiziGyouNO]
 			,[ShukkaSiziShousaiNO]
-			,10 --譁ｰ隕・
+			,10 --新規
 			,[SoukoCD]
 			,[ShouhinCD]
 			,[ShouhinName]
@@ -718,6 +721,7 @@ SELECT
 			,@OperatorCD
 			,@currentDate
 FROM [dbo].[D_ShukkaSiziShousai]
+where ShukkaSiziNO=@ShukkaSiziNO
 
 --※シート「消込順」参照
 
@@ -757,13 +761,20 @@ where StaffCD=@StaffCD
 and  ChangeDate = (select ChangeDate from F_Staff(@ShippingDate) where StaffCD = @StaffCD)
 
 --L_Log
-exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,'New' ,@KeyItem
+exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,'新規' ,@KeyItem
 
 
 --テーブル転送仕様Ｙ
 EXEC [dbo].[D_Exclusive_Delete]
 		1,
 		@ShukkaSiziNO;
+
+--EXEC [dbo].[D_Exclusive_Insert]
+--1,
+--@ShukkaSiziNO,
+--@OperatorCD,
+--@Program,
+--@PC
 
 Drop Table #Temp_Header
 Drop Table #Temp_Details

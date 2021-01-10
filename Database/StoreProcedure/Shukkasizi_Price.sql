@@ -15,7 +15,9 @@ GO
 CREATE PROCEDURE [dbo].[Shukkasizi_Price]
 	-- Add the parameters for the stored procedure here
 	@KonkaiShukkaSiziSuu varchar(50),
-	@JuchuuNO_JuchuuGyouNO as varchar(12)
+	@JuchuuNO_JuchuuGyouNO as varchar(12),
+	@ShouhinCD as varchar(50),
+	@SoukoCD as varchar(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from

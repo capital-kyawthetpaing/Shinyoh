@@ -834,7 +834,7 @@ namespace ShukkaSiziNyuuryoku
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
         }
-        private bool Temp_Null()        
+        private bool Temp_Null()
         {
             if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp1.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && dtTemp1.Rows.Count == 0)          
             {
@@ -1075,7 +1075,7 @@ namespace ShukkaSiziNyuuryoku
                 dt = dtGridview(1);
                 foreach (DataRow row in dt.Rows)
                 {
-                    sksz_bl.Shukkasizi_Price(row["KonkaiShukkaSiziSuu"].ToString(), row["SKMSNO"].ToString());
+                    sksz_bl.Shukkasizi_Price(row["KonkaiShukkaSiziSuu"].ToString(), row["SKMSNO"].ToString(), row["ShouhinCD"].ToString(), row["SoukoCD"].ToString());
                 }
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
             }
@@ -1084,7 +1084,7 @@ namespace ShukkaSiziNyuuryoku
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
                 foreach (DataRow row in dtTemp1.Rows)
                 {
-                    sksz_bl.Shukkasizi_Price(row["KonkaiShukkaSiziSuu"].ToString(), row["SKMSNO"].ToString());
+                    sksz_bl.Shukkasizi_Price(row["KonkaiShukkaSiziSuu"].ToString(), row["SKMSNO"].ToString(),row["ShouhinCD"].ToString(), row["SoukoCD"].ToString());
                 }
             }
             
