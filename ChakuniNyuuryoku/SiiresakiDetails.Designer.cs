@@ -96,6 +96,7 @@
             this.sbSupplier.IsDatatableOccurs = null;
             this.sbSupplier.IsErrorOccurs = false;
             this.sbSupplier.IsRequire = false;
+            this.sbSupplier.IsUseInitializedLayout = true;
             this.sbSupplier.lblName = null;
             this.sbSupplier.Location = new System.Drawing.Point(133, 28);
             this.sbSupplier.MinimumSize = new System.Drawing.Size(100, 19);
@@ -107,6 +108,7 @@
             this.sbSupplier.Size = new System.Drawing.Size(100, 19);
             this.sbSupplier.TabIndex = 1;
             this.sbSupplier.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sbSupplier.TxtBox = null;
             // 
             // sLabel1
             // 
@@ -226,6 +228,7 @@
             this.txtSupplierCD.IsDatatableOccurs = null;
             this.txtSupplierCD.IsErrorOccurs = false;
             this.txtSupplierCD.IsRequire = false;
+            this.txtSupplierCD.IsUseInitializedLayout = true;
             this.txtSupplierCD.Location = new System.Drawing.Point(133, 89);
             this.txtSupplierCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSupplierCD.MoveNext = true;
@@ -249,6 +252,7 @@
             this.txtSupplierName.IsDatatableOccurs = null;
             this.txtSupplierName.IsErrorOccurs = false;
             this.txtSupplierName.IsRequire = false;
+            this.txtSupplierName.IsUseInitializedLayout = true;
             this.txtSupplierName.Location = new System.Drawing.Point(133, 124);
             this.txtSupplierName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSupplierName.MoveNext = true;
@@ -272,6 +276,7 @@
             this.txtAddress1.IsDatatableOccurs = null;
             this.txtAddress1.IsErrorOccurs = false;
             this.txtAddress1.IsRequire = false;
+            this.txtAddress1.IsUseInitializedLayout = true;
             this.txtAddress1.Location = new System.Drawing.Point(133, 200);
             this.txtAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress1.MoveNext = true;
@@ -295,6 +300,7 @@
             this.txtAddress2.IsDatatableOccurs = null;
             this.txtAddress2.IsErrorOccurs = false;
             this.txtAddress2.IsRequire = false;
+            this.txtAddress2.IsUseInitializedLayout = true;
             this.txtAddress2.Location = new System.Drawing.Point(133, 238);
             this.txtAddress2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress2.MoveNext = true;
@@ -363,6 +369,7 @@
             this.txtYubin1.IsDatatableOccurs = null;
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
+            this.txtYubin1.IsUseInitializedLayout = true;
             this.txtYubin1.Location = new System.Drawing.Point(133, 162);
             this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(50, 19);
@@ -387,6 +394,7 @@
             this.txtYubin2.IsDatatableOccurs = null;
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
+            this.txtYubin2.IsUseInitializedLayout = true;
             this.txtYubin2.Location = new System.Drawing.Point(221, 161);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(70, 19);
@@ -412,6 +420,7 @@
             this.txtPhNo1.IsDatatableOccurs = null;
             this.txtPhNo1.IsErrorOccurs = false;
             this.txtPhNo1.IsRequire = false;
+            this.txtPhNo1.IsUseInitializedLayout = true;
             this.txtPhNo1.Location = new System.Drawing.Point(133, 276);
             this.txtPhNo1.MaxLength = 6;
             this.txtPhNo1.MinimumSize = new System.Drawing.Size(70, 19);
@@ -436,6 +445,7 @@
             this.txtPhNo2.IsDatatableOccurs = null;
             this.txtPhNo2.IsErrorOccurs = false;
             this.txtPhNo2.IsRequire = false;
+            this.txtPhNo2.IsUseInitializedLayout = true;
             this.txtPhNo2.Location = new System.Drawing.Point(235, 276);
             this.txtPhNo2.MaxLength = 5;
             this.txtPhNo2.MinimumSize = new System.Drawing.Size(70, 19);
@@ -460,6 +470,7 @@
             this.txtPhNo3.IsDatatableOccurs = null;
             this.txtPhNo3.IsErrorOccurs = false;
             this.txtPhNo3.IsRequire = false;
+            this.txtPhNo3.IsUseInitializedLayout = true;
             this.txtPhNo3.Location = new System.Drawing.Point(333, 276);
             this.txtPhNo3.MaxLength = 5;
             this.txtPhNo3.MinimumSize = new System.Drawing.Size(70, 19);
@@ -484,6 +495,7 @@
             this.txtPhNo4.IsDatatableOccurs = null;
             this.txtPhNo4.IsErrorOccurs = false;
             this.txtPhNo4.IsRequire = false;
+            this.txtPhNo4.IsUseInitializedLayout = true;
             this.txtPhNo4.Location = new System.Drawing.Point(133, 314);
             this.txtPhNo4.MaxLength = 6;
             this.txtPhNo4.MinimumSize = new System.Drawing.Size(70, 19);
@@ -508,6 +520,7 @@
             this.txtPhNo5.IsDatatableOccurs = null;
             this.txtPhNo5.IsErrorOccurs = false;
             this.txtPhNo5.IsRequire = false;
+            this.txtPhNo5.IsUseInitializedLayout = true;
             this.txtPhNo5.Location = new System.Drawing.Point(235, 314);
             this.txtPhNo5.MaxLength = 5;
             this.txtPhNo5.MinimumSize = new System.Drawing.Size(70, 19);
@@ -532,6 +545,7 @@
             this.txtPhNo6.IsDatatableOccurs = null;
             this.txtPhNo6.IsErrorOccurs = false;
             this.txtPhNo6.IsRequire = false;
+            this.txtPhNo6.IsUseInitializedLayout = true;
             this.txtPhNo6.Location = new System.Drawing.Point(333, 315);
             this.txtPhNo6.MaxLength = 5;
             this.txtPhNo6.MinimumSize = new System.Drawing.Size(70, 19);
@@ -575,6 +589,7 @@
             this.Controls.Add(this.sLabel3);
             this.Controls.Add(this.panel1);
             this.Name = "SiiresakiDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SiiresakiDetails";
             this.Load += new System.EventHandler(this.SiiresakiDetails_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
