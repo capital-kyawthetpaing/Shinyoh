@@ -1,4 +1,4 @@
-﻿namespace JuchuuNyuuryoku
+﻿namespace Shinyoh_Details
 {
     partial class TokuisakiDetail
     {
@@ -486,7 +486,7 @@
             this.txtPhone2_3.MoveNext = true;
             this.txtPhone2_3.Name = "txtPhone2_3";
             this.txtPhone2_3.NextControl = null;
-            this.txtPhone2_3.NextControlName = "BtnF1";
+            this.txtPhone2_3.NextControlName = "BtnF12";
             this.txtPhone2_3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone2_3.Size = new System.Drawing.Size(60, 19);
             this.txtPhone2_3.TabIndex = 13;
@@ -630,7 +630,7 @@
         }
 
         #endregion
-        
+
         private Shinyoh_Controls.SLabel lblShort;
         private Shinyoh_Controls.STextBox txtShort_Name;
         private Shinyoh_Controls.SLabel lblLong;

@@ -15,6 +15,7 @@ namespace ShukkaTorikomi
     public partial class ShukkaTorikomi : BaseForm
     {
         CommonFunction cf;
+        BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
         ShukkaTorikomi_BL ShukkaTorikomi_BL;
         BaseBL bbl;
@@ -33,6 +34,8 @@ namespace ShukkaTorikomi
             ProgramID = "ShukkaTorikomi";
             StartProgram();
             cboMode.Visible = false;
+            cboMode.Enabled = false;
+            cboMode.Bind(false, multi_Entity);
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", false);
@@ -45,7 +48,7 @@ namespace ShukkaTorikomi
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Import, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", false);
-            SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
+            SetButton(ButtonType.BType.Import, F12, "登録(F12)", true);
             //multipurposeEntity multipurpose_entity = new multipurposeEntity();
 
             txtShukkaToNo1.Enabled = true;
@@ -127,7 +130,7 @@ namespace ShukkaTorikomi
             txtDate1.E103Check(true);
             txtDate2.E103Check(true);
             txtDenpyouNO.E102Check(true);
-            txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO,null);
+            txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
         }
 
         public override void FunctionProcess(string tagID)
@@ -220,42 +223,45 @@ namespace ShukkaTorikomi
                         bl_List.Add(Null_Check(obj.DenpyouDate, i, "伝票日付未入力エラー"));
                         bl_List.Add(Date_Check(obj.DenpyouDate, i, "入力可能値外エラー"));
 
+                        obj.DenpyouNO = splits[5];
+                        bl_List.Add(Null_Check(obj.DenpyouNO, i, "伝票番号未入力エラー"));
 
-                        obj.ChangeDate = splits[5];
+                        obj.ChangeDate = splits[6];
                         bl_List.Add(Null_Check(obj.ChangeDate, i, "改定日未入力エラー"));
                         bl_List.Add(Date_Check(obj.ChangeDate, i, "入力可能値外エラー"));
 
 
-                        obj.ShouhinCD = splits[6];
+                        obj.ShouhinCD = splits[7];
                         bl_List.Add(Null_Check(obj.ShouhinCD, i, "商品コード未入力エラー"));
                         bl_List.Add(Byte_Check(10,obj.ShouhinCD, i, "商品コード桁数エラー"));
 
-                        obj.ColorRyakuName = splits[7];
+                        obj.ColorRyakuName = splits[8];
                         bl_List.Add(Null_Check(obj.ColorRyakuName, i, "カラー未入力エラー"));
                       
 
-                        obj.SizeNO = splits[8];
+                        obj.SizeNO = splits[9];
                         bl_List.Add(Null_Check(obj.SizeNO, i, "ｻｲｽﾞ未入力エラー"));
                         
 
-                        obj.JANCD = splits[9];
+                        obj.JANCD = splits[10];
                         bl_List.Add(Null_Check(obj.JANCD, i, "JANｺｰﾄﾞ未入力エラー"));
                         bl_List.Add(Byte_Check(10,obj.JANCD, i, "JANｺｰﾄﾞ桁数エラー"));
 
-                        obj.ShukkaSuu = splits[10];
+                        obj.ShukkaSuu = splits[11];
                         bl_List.Add(Null_Check(obj.ShukkaSuu, i, "数量未入力エラー"));
                         bl_List.Add(Date_Check(obj.ShukkaSuu, i, "入力可能値外エラー"));
-
-
-                        obj.ShukkaSiziNO = splits[11];
-                        bl_List.Add(Null_Check(obj.ShukkaSiziNO, i, "出荷指示行番号未入力エラー"));
-                        bl_List.Add(Byte_Check(10,obj.ShukkaSiziNO, i, "出荷指示行番号桁数エラー"));
 
                         obj.UnitPrice = splits[12];
                         bl_List.Add(Date_Check(obj.UnitPrice, i, "入力可能値外エラー"));
 
                         obj.SellingPrice = splits[13];
                         bl_List.Add(Date_Check(obj.SellingPrice, i, "入力可能値外エラー"));
+
+                        obj.ShukkaSiziNO = splits[14];
+                        bl_List.Add(Null_Check(obj.ShukkaSiziNO, i, "出荷指示行番号未入力エラー"));
+                        bl_List.Add(Byte_Check(10, obj.ShukkaSiziNO, i, "出荷指示行番号桁数エラー"));
+
+
 
                         TokuisakiBL tBL = new TokuisakiBL();
                         DataTable t_dt = tBL.M_Tokuisaki_Select(obj.TokuisakiCD, obj.ChangeDate, "E101");
@@ -317,9 +323,34 @@ namespace ShukkaTorikomi
                             bbl.ShowMessage("E150");
                             bl_List.Add(true);
                         }
-                    }
-                }
 
+                        string error = string.Empty;
+                        if (bl_List.Contains(true))
+                            error = "true";
+                        else error = "false";
+
+                        DataRow dr = create_dt.NewRow();
+                        for (int j = 0; j < splits.Length; j++)
+                        {
+                            if (string.IsNullOrEmpty(splits[j]))
+                                dr[j] = DBNull.Value;
+                            else
+                                dr[j] = splits[j].ToString();
+                        }
+                        dr[28] = "0";
+                        dr[29] = base_Entity.OperatorCD;
+                        dr[30] = base_Entity.OperatorCD;
+                        dr[31] = error;
+                        create_dt.Rows.Add(dr);
+                    }
+
+                    Xml = cf.DataTableToXml(create_dt);
+                }
+                else
+                {
+                    Xml = string.Empty;
+                }
+         
             }
             return Xml;
         }

@@ -20,7 +20,8 @@ namespace Entity {
             Shouhin,
             ArrivalNo,
             JuchuuNo,
-            ShukkaNo
+            ShukkaNo,
+            IdouNyuuryoku
         }
     }
 }
