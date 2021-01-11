@@ -437,7 +437,7 @@ namespace ChakuniNyuuryoku
         {
             ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity()
             {
-             ChakuniNO = txtArrivalNO.Text,
+            ChakuniNO = txtArrivalNO.Text,
             ChakuniDate = txtArrivalDate.Text,
             ChakuniYoteiNO = txtScheduled.Text,
             ShouhinCD = txtShouhinCD.Text,
