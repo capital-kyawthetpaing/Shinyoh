@@ -60,7 +60,6 @@ namespace MasterList_Siiresaki
             txtYubin2.E102MultiCheck(true, txtYuubinNO1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYuubinNO1, txtYubin2, string.Empty, string.Empty);
         }
-
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "6")
@@ -114,7 +113,8 @@ namespace MasterList_Siiresaki
                 }
                 if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
                     System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
-                xlWorkBook.SaveAs(filename, misValue, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);               
+                xlWorkBook.SaveAs(filename, misValue, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.Close(true, misValue, misValue);
                 xlApp.Quit();
 
                 //New_Mode
@@ -149,7 +149,6 @@ namespace MasterList_Siiresaki
             ske.InsertOperator = OperatorCD;
             return ske;
         }
-
         private void txtYuubinNO2_KeyDown(object sender, KeyEventArgs e)
         {
             if (!txtYubin2.IsErrorOccurs)
