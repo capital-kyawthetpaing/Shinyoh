@@ -33,6 +33,7 @@ namespace Shinyoh_Search
             gv_1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gv_1.SetReadOnlyColumn("**");//readonly for search form 
             DataGridviewBind();
+            gv_1.Select();
         }
         private void ErrorCheck()
         {
@@ -116,8 +117,8 @@ namespace Shinyoh_Search
             {
                 DataGridViewRow row = gvrow;
                 JuchuuNo = row.Cells["colJuchuuNO"].Value.ToString();
-                this.Close();
             }
+            this.Close();
         }
 
         private void gv_1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -134,7 +135,8 @@ namespace Shinyoh_Search
         {
             if (e.KeyCode == Keys.Enter)
             {
-                GetGridviewData(gv_1.Rows[gv_1.CurrentCell.RowIndex]);
+                if (gv_1.CurrentCell != null)
+                    GetGridviewData(gv_1.Rows[gv_1.CurrentCell.RowIndex]);
             }
         }
     }

@@ -2,6 +2,7 @@
 using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
+using Shinyoh_Details;
 using Shinyoh_Search;
 using System;
 using System.Collections.Generic;
@@ -61,7 +62,7 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
-            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
+            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
@@ -103,7 +104,7 @@ namespace JuchuuNyuuryoku
 
             gv_1.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
             gv_1.SetNumberColumn("colJuchuuSuu");
-            
+            gv_1.ClearSelection();
         }
 
         private void ChangeMode(Mode mode)
@@ -174,10 +175,10 @@ namespace JuchuuNyuuryoku
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
+            cf.Clear(PanelDetail);
 
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(Panel_Detail);
+            cf.DisablePanel(PanelDetail);
 
             lblTokuisakiShort_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblKouriten_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -256,7 +257,7 @@ namespace JuchuuNyuuryoku
             }
             if (tagID == "8")
             {
-               // F8_Gridview_Bind();
+                F8_Gridview_Bind();
             }
             if (tagID == "9")
             {
@@ -273,8 +274,8 @@ namespace JuchuuNyuuryoku
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(Panel_Detail))
-                {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                //{
 
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -292,7 +293,7 @@ namespace JuchuuNyuuryoku
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
-                }
+               // }
             }
 
             base.FunctionProcess(tagID);
@@ -325,10 +326,17 @@ namespace JuchuuNyuuryoku
             {
                 if (!txtCopy.IsErrorOccurs)
                 {
-                    EnablePanel();
+                    if (ErrorCheck(PanelTitle))
+                    {
+                        EnablePanel();
                     DataTable dt = txtCopy.IsDatatableOccurs;
                     if (dt.Rows.Count > 0)
                         From_DB_To_Form(dt);
+                    }
+                    else
+                    {
+                        cf.Clear(PanelDetail);
+                    }
                 }
             }
         }
@@ -450,6 +458,7 @@ namespace JuchuuNyuuryoku
                 dt.Columns.Remove("MessageID");
                
                 gv_1.DataSource = dt;
+                gv_1.ClearSelection();
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
@@ -467,12 +476,21 @@ namespace JuchuuNyuuryoku
             {
                 if (!txtJuchuuNO.IsErrorOccurs)
                 {
+                    StaffEntity obj_staff = new StaffEntity();
+                    obj_staff.OperatorCD = OperatorCD;
+                    obj_staff.PC = PCID;
+                    obj_staff.StaffName = txtJuchuuNO.Text;
                     if (cboMode.SelectedValue.ToString() == "2")//update
                     {
+                        obj_bl.JuchuuNyuuryoku_Exclusive_Insert(obj_staff);
                         EnablePanel();
                     }
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
+                        if (cboMode.SelectedValue.ToString() == "3")
+                        {
+                            obj_bl.JuchuuNyuuryoku_Exclusive_Insert(obj_staff);
+                        }
                         cf.DisablePanel(PanelTitle);
                     }
                 }
@@ -486,7 +504,7 @@ namespace JuchuuNyuuryoku
 
         private void EnablePanel()
         {
-            cf.EnablePanel(Panel_Detail);
+            cf.EnablePanel(PanelDetail);
             txtJuchuuDate.Focus();
             cf.DisablePanel(PanelTitle);
         }
@@ -861,7 +879,7 @@ namespace JuchuuNyuuryoku
             if (dt.Rows.Count > 0)
             {
                 gv_1.DataSource = dt;
-
+                gv_1.ClearSelection();
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
 
@@ -938,6 +956,7 @@ namespace JuchuuNyuuryoku
         {
             F8_dt1.DefaultView.Sort = "ShouhinCD";
             gv_1.DataSource = F8_dt1.DefaultView.ToTable();
+            gv_1.ClearSelection();
         }
 
         private void DBProcess()

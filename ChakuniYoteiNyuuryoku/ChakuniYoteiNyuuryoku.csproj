@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{26D4D5AC-F81F-4B6B-AD6B-859D015BE306}</ProjectGuid>
+    <ProjectGuid>{CF45042B-1B4E-40AF-8EEC-8F50FD5DB51F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>JuchuuNyuuryoku</RootNamespace>
-    <AssemblyName>JuchuuNyuuryoku</AssemblyName>
+    <RootNamespace>ChakuniYoteiNyuuryoku</RootNamespace>
+    <AssemblyName>ChakuniYoteiNyuuryoku</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKM_CommonFunction">
-      <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
+      <HintPath>..\bin\Debug\CKM_CommonFunction.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,16 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JuchuuNyuuryoku.cs">
+    <Compile Include="ChakuniYoteiNyuuryoku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="JuchuuNyuuryoku.Designer.cs">
-      <DependentUpon>JuchuuNyuuryoku.cs</DependentUpon>
+    <Compile Include="ChakuniYoteiNyuuryoku.Designer.cs">
+      <DependentUpon>ChakuniYoteiNyuuryoku.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="JuchuuNyuuryoku.resx">
-      <DependentUpon>JuchuuNyuuryoku.cs</DependentUpon>
+    <EmbeddedResource Include="ChakuniYoteiNyuuryoku.resx">
+      <DependentUpon>ChakuniYoteiNyuuryoku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -99,12 +99,8 @@
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shinyoh_Details\Shinyoh_Details.csproj">
-      <Project>{c77a6d15-5b0f-4ec2-9c63-f99da9c55a24}</Project>
-      <Name>Shinyoh_Details</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
-      <Project>{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}</Project>
+      <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>
       <Name>Shinyoh_Search</Name>
     </ProjectReference>
   </ItemGroup>

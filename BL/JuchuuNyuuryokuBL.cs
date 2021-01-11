@@ -67,5 +67,16 @@ namespace BL
             DataTable dt= ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
             return dt;
         }
+        public string JuchuuNyuuryoku_Exclusive_Insert(StaffEntity obj)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@DataKBN", SqlDbType.VarChar) { Value = "1" };
+            parameters[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = obj.StaffName };
+            parameters[2] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = obj.OperatorCD };
+            parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = "JuchuuNyuuryoku" };
+            parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
+            return ckmdl.InsertUpdateDeleteData("D_Exclusive_Insert", GetConnectionString(), parameters);
+        }
     }
 }

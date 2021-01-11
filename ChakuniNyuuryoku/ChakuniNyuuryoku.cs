@@ -167,8 +167,8 @@ namespace ChakuniNyuuryoku
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
-            //txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
-            //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
@@ -215,6 +215,7 @@ namespace ChakuniNyuuryoku
             {
                 dtGridview();
                 gvChakuniNyuuryoku.DataSource = dtmain;
+                gvChakuniNyuuryoku.Select();
             }
             if (tagID == "11")
             {
@@ -437,7 +438,7 @@ namespace ChakuniNyuuryoku
         {
             ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity()
             {
-             ChakuniNO = txtArrivalNO.Text,
+            ChakuniNO = txtArrivalNO.Text,
             ChakuniDate = txtArrivalDate.Text,
             ChakuniYoteiNO = txtScheduled.Text,
             ShouhinCD = txtShouhinCD.Text,
@@ -549,6 +550,7 @@ namespace ChakuniNyuuryoku
             {
                 dtGridview();
                 gvChakuniNyuuryoku.DataSource = dtmain;
+                gvChakuniNyuuryoku.Select();
             }
         }
         private DataTable dtGridview()
@@ -628,6 +630,7 @@ namespace ChakuniNyuuryoku
         {
             dtGridview();
             gvChakuniNyuuryoku.DataSource = dtmain;
+            gvChakuniNyuuryoku.Select();
         }
         private void txtArrivalNO_KeyDown_1(object sender, KeyEventArgs e)
         {

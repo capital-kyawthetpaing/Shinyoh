@@ -20,7 +20,7 @@ namespace IdouNyuuryoku
         multipurposeEntity multi_Entity;
         BaseEntity base_Entity;
         IdouNyuuryokuBL Idou_BL;
-
+        DataTable gv1_to_dt1;
         public IdouNyuuryoku()
         {
             InitializeComponent();
@@ -28,6 +28,7 @@ namespace IdouNyuuryoku
             multi_Entity = new multipurposeEntity();
             base_Entity = new BaseEntity();
             Idou_BL = new IdouNyuuryokuBL();
+            gv1_to_dt1 = new DataTable();
         }
 
         private void IdouNyuuryoku_Load(object sender, EventArgs e)
@@ -96,7 +97,6 @@ namespace IdouNyuuryoku
 
                     txtIdouNO.E133Check(true, "IdouNyuuryoku", txtIdouNO, null, null);
 
-
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -105,8 +105,8 @@ namespace IdouNyuuryoku
                 case Mode.Inquiry:
                     txtIdouNO.E102Check(false);
                     txtCopy.E102Check(false);
-
                     txtIdouNO.E133Check(true, "IdouNyuuryoku", txtIdouNO, null, null);
+
                     Disable_UDI_Mode();
                     Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btn12.Visible = false;
@@ -120,10 +120,10 @@ namespace IdouNyuuryoku
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(Panel_Detail);
+            cf.Clear(PanelDetail);
 
             cf.EnablePanel(PanelTitle);
-           // cf.DisablePanel(Panel_Detail);
+            cf.DisablePanel(PanelDetail);
 
             lbl_IdouKubun.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaff_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -151,7 +151,6 @@ namespace IdouNyuuryoku
             {
                 txtIdoukubun.Text = dt_Multi.Rows[0]["Key"].ToString();
                 lbl_IdouKubun.Text = dt_Multi.Rows[0]["Char1"].ToString();
-                Souko_Disable_Enable(txtIdoukubun.Text);
             }
             DataTable dt_Souko = Idou_BL.IdouNyuuryoku_Select_Check(string.Empty, string.Empty, "Load_Souko");
             if(dt_Souko.Rows.Count>0)
@@ -160,11 +159,11 @@ namespace IdouNyuuryoku
                 lbl_Nyuko.Text = dt_Souko.Rows[0]["SoukoName"].ToString();
             }
         }
-        public void Disable_UDI_Mode()
+        private void Disable_UDI_Mode()
         {
             txtCopy.Enabled = false;
         }
-        public void ErrorCheck()
+        private void ErrorCheck()
         {
 
             txtIdouDate.E102Check(true);
@@ -189,6 +188,76 @@ namespace IdouNyuuryoku
                 txtNyukosouko.E101Check(true, "souko", txtNyukosouko, null, null);
             }
 
+        }
+
+        public override void FunctionProcess(string tagID)
+        {
+            if (tagID == "2")
+            {
+                ChangeMode(Mode.New);
+            }
+            if (tagID == "3")
+            {
+                ChangeMode(Mode.Update);
+            }
+            if (tagID == "4")
+            {
+                ChangeMode(Mode.Delete);
+            }
+            if (tagID == "5")
+            {
+                ChangeMode(Mode.Inquiry);
+            }
+            if (tagID == "6")
+            {
+                Mode_Setting();
+                if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
+                {
+                    Disable_UDI_Mode();
+                }
+            }
+            if (tagID == "8")
+            {
+              //  F8_Gridview_Bind();
+            }
+            if (tagID == "9")
+            {
+                //SiiresakiSearch detail = new SiiresakiSearch();
+                //detail.ShowDialog();
+            }
+            if (tagID == "10")
+            {
+               // F10_Gridview_Bind();
+            }
+            if (tagID == "11")
+            {
+              //  F11_Gridview_Bind();
+            }
+            if (tagID == "12")
+            {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                //{
+
+              //  DBProcess();
+                switch (cboMode.SelectedValue)
+                {
+                    case "1":
+                        ChangeMode(Mode.New);
+                        break;
+                    case "2":
+                        ChangeMode(Mode.Update);
+                        break;
+                    case "3":
+                        ChangeMode(Mode.Delete);
+                        break;
+                    case "4":
+                        ChangeMode(Mode.Inquiry);
+                        break;
+                }
+                // }
+            }
+
+            base.FunctionProcess(tagID);
         }
 
         private void txtIdoukubun_KeyDown(object sender, KeyEventArgs e)
@@ -238,6 +307,76 @@ namespace IdouNyuuryoku
             DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
+        }
+
+        private void txtIdouNO_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtIdouNO.IsErrorOccurs)
+                {
+                    
+                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    {
+                        EnablePanel();
+                    }
+                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                    }
+                }
+                DataTable dt = txtIdouNO.IsDatatableOccurs;
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                {
+                    From_DB_To_Form(dt);
+                }
+            }
+        }
+
+        private void EnablePanel()
+        {
+            cf.EnablePanel(PanelDetail);
+            txtIdouDate.Focus();
+            cf.DisablePanel(PanelTitle);
+        }
+        private void From_DB_To_Form(DataTable dt)
+        {
+            if (dt.Rows[0]["MessageID"].ToString() == "E132")
+            {
+                txtIdouDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["IdouDate"]);
+                txtIdoukubun.Text = dt.Rows[0]["IdouKBN"].ToString();
+                lbl_IdouKubun.Text = dt.Rows[0]["Char1"].ToString();
+                txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
+                lblStaff_Name.Text = dt.Rows[0]["StaffName"].ToString();
+                txtShukkosouko.Text = dt.Rows[0]["ShukkoSoukoCD"].ToString();
+                lbl_Shukko.Text = dt.Rows[0]["ShukkoSoukoName"].ToString();
+                txtNyukosouko.Text = dt.Rows[0]["NyuukoSoukoCD"].ToString();
+                lbl_Nyuko.Text = dt.Rows[0]["NyuukoSoukoName"].ToString();
+                txtDenpyouTekiyou.Text = dt.Rows[0]["IdouDenpyouTekiyou"].ToString();
+
+                dt.Columns.Remove("IdouDate");
+                dt.Columns.Remove("IdouKBN");
+                dt.Columns.Remove("Char1");
+                dt.Columns.Remove("StaffCD");
+                dt.Columns.Remove("StaffName");
+                dt.Columns.Remove("ShukkoSoukoCD");
+                dt.Columns.Remove("ShukkoSoukoName");
+                dt.Columns.Remove("NyuukoSoukoCD");
+                dt.Columns.Remove("NyuukoSoukoName");
+                dt.Columns.Remove("IdouDenpyouTekiyou");
+                dt.Columns.Remove("MessageID");
+
+                gv_1.DataSource = dt;
+                gv_1.ClearSelection();
+
+                //DataTable dt_temp = dt.Copy();
+                //gv1_to_dt1 = dt_temp;
+
+                //if (cboMode.SelectedValue.ToString() == "1")
+                //    F8_dt1 = gv1_to_dt1.Clone();
+                //else
+                //    F8_dt1 = gv1_to_dt1.Copy();
+            }
         }
     }
 }
