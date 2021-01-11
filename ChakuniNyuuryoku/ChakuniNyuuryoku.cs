@@ -215,6 +215,7 @@ namespace ChakuniNyuuryoku
             {
                 dtGridview();
                 gvChakuniNyuuryoku.DataSource = dtmain;
+                gvChakuniNyuuryoku.Select();
             }
             if (tagID == "11")
             {

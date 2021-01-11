@@ -1,0 +1,57 @@
+﻿using CKM_DataLayer;
+using Entity;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BL
+{
+   public class ChakuniYoteiNyuuryoku_BL :BaseBL
+    {
+        public DataTable ChakuniYoteiNyuuryoku_Search(ChakuniYoteiNyuuryokuEntity cyn)
+        {
+            CKMDL ckmdl = new CKMDL();
+            cyn.Sqlprms = new SqlParameter[11];
+
+            cyn.Sqlprms[0] = new SqlParameter("@DateFrom", SqlDbType.VarChar) { Value = cyn.ChakuniYoteiDateFrom };
+            cyn.Sqlprms[1] = new SqlParameter("@DateTo", SqlDbType.VarChar) { Value = cyn.ChakuniYoteiDateTo };
+            cyn.Sqlprms[2] = new SqlParameter("@SiiresakiCD", SqlDbType.VarChar) { Value = cyn.SiiresakiCD };
+            cyn.Sqlprms[3] = new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = cyn.StaffCD };
+            cyn.Sqlprms[4] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = cyn.ShouhinName };
+            cyn.Sqlprms[5] = new SqlParameter("@HacchuuDateFrom", SqlDbType.VarChar) { Value =cyn.HacchuuDateFrom };
+            cyn.Sqlprms[6] = new SqlParameter("@HacchuuDateTo", SqlDbType.VarChar) { Value = cyn.HacchuuDateTo };
+            cyn.Sqlprms[7] = new SqlParameter("@KanriNOFrom", SqlDbType.VarChar) { Value = cyn.KanriNOFrom };
+            cyn.Sqlprms[8] = new SqlParameter("@KanriNOTo", SqlDbType.VarChar) { Value = cyn.KanriNOTo };
+            cyn.Sqlprms[9] = new SqlParameter("@ShouhinCDFrom", SqlDbType.VarChar) { Value = cyn.ShouhinCDFrom };
+            cyn.Sqlprms[10] = new SqlParameter("@ShouhinCDTo", SqlDbType.VarChar) { Value = cyn.ShouhinCDTo };
+            DataTable dt = ckmdl.SelectDatatable("ArrivalNO_Search", GetConnectionString(), cyn.Sqlprms);
+            return dt;
+        }
+        public DataTable ChakuniYoteiNyuuryoku_Display(ChakuniYoteiNyuuryokuEntity cyn)
+        {
+            CKMDL ckmdl = new CKMDL();
+            cyn.Sqlprms = new SqlParameter[15];
+            cyn.Sqlprms[0] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = cyn.BrandCD };
+            cyn.Sqlprms[1] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = cyn.ShouhinCD };
+            cyn.Sqlprms[2] = new SqlParameter("@JANCD", SqlDbType.VarChar) { Value = cyn.JANCD };
+            cyn.Sqlprms[3] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = cyn.ShouhinName };
+            cyn.Sqlprms[4] = new SqlParameter("@ColorNo", SqlDbType.VarChar) { Value = cyn.ColorNO };
+            cyn.Sqlprms[5] = new SqlParameter("@SizeNo", SqlDbType.VarChar) { Value = cyn.SizeNO };
+            cyn.Sqlprms[6] = new SqlParameter("@ChakuniYoteiDateFrom", SqlDbType.VarChar) { Value = cyn.ChakuniYoteiDateFrom };
+            cyn.Sqlprms[7] = new SqlParameter("@ChakuniYoteiDateTo", SqlDbType.VarChar) { Value = cyn.ChakuniYoteiDateTo };
+            cyn.Sqlprms[8] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = cyn.SoukoCD };
+            cyn.Sqlprms[9] = new SqlParameter("@YearTerm", SqlDbType.VarChar) { Value = cyn.YearTerm };
+            cyn.Sqlprms[10] = new SqlParameter("@SeasonSS", SqlDbType.VarChar) { Value = cyn.SeasonSS };
+            cyn.Sqlprms[11] = new SqlParameter("@SeasonFW", SqlDbType.VarChar) { Value = cyn.SeasonFW };
+            cyn.Sqlprms[12] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cyn.OperatorCD };
+            cyn.Sqlprms[13] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cyn.ProgramID };
+            cyn.Sqlprms[14] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cyn.PC };
+            DataTable dt = ckmdl.SelectDatatable("D_ChakuniYotei_Display", GetConnectionString(), cyn.Sqlprms);
+            return dt;
+        }
+    }
+}
