@@ -144,6 +144,8 @@ namespace Shinyoh_Search
                             msearch.Access_Type = "106";
                         else if (this.Name.Contains("Management"))
                             msearch.Access_Type = "107";
+                        else if (this.Name.Contains("kubun"))
+                            msearch.Access_Type = "109";
                         msearch.ShowDialog();
                         if(this.Name== "txtID" || this.Name=="txtCopyID")
                             CD = msearch.Id;
@@ -188,6 +190,10 @@ namespace Shinyoh_Search
                         ShukkaNoSearch  shukkaNoSearch = new ShukkaNoSearch();
                         shukkaNoSearch.ShowDialog();
                         CD = shukkaNoSearch.ShukkaNo;
+                        break;
+                    case Entity.SearchType.ScType.IdouNyuuryoku:
+                        IdouNyuuryokuSearch idou_search = new IdouNyuuryokuSearch();
+                        idou_search.ShowDialog();
                         break;
                 }
 
