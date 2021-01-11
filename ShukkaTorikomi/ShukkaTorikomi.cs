@@ -34,6 +34,8 @@ namespace ShukkaTorikomi
             ProgramID = "ShukkaTorikomi";
             StartProgram();
             cboMode.Visible = false;
+            cboMode.Enabled = false;
+            cboMode.Bind(false, multi_Entity);
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", false);
@@ -128,7 +130,7 @@ namespace ShukkaTorikomi
             txtDate1.E103Check(true);
             txtDate2.E103Check(true);
             txtDenpyouNO.E102Check(true);
-            txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO,null);
+            txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
         }
 
         public override void FunctionProcess(string tagID)

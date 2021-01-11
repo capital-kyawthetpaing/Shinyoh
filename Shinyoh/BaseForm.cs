@@ -227,16 +227,7 @@ namespace Shinyoh
                         }
                         break;
                     case ButtonType.BType.Import:
-                        if (btn.Name == "BtnF12")
-                        {
-                            if (bbl.ShowMessage("Q206") != DialogResult.Yes)
-                            {
-                                if (PreviousCtrl != null)
-                                    PreviousCtrl.Focus();
-                            }
-                        }
-                        else
-                            FunctionProcess(btn.Tag.ToString());
+                        FunctionProcess(btn.Tag.ToString());
                         break;
                     case ButtonType.BType.Confirm:
                         FunctionProcess(btn.Tag.ToString());
