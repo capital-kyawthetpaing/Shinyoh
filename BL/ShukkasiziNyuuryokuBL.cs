@@ -112,14 +112,21 @@ namespace BL
             parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
             return ckmdl.InsertUpdateDeleteData("ShukkasiziNyuuryoku_IUD", GetConnectionString(), parameters);
         }
+        public string SKSZ_D_Exclusive_Insert_Value(string xml)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@Display_XML", SqlDbType.Xml) { Value =xml};
+            return ckmdl.InsertUpdateDeleteData("SKSZ_D_Exclusive_Insert_Value", GetConnectionString(), parameters);
+        }
         public string Shukkasizi_Price( string shukkasizisuu, string JuchuuNO,string ShouhinCD ,string SoukoCD)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[5];
+            var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@KonkaiShukkaSiziSuu", SqlDbType.VarChar) { Value = shukkasizisuu};
             parameters[1] = new SqlParameter("@JuchuuNO_JuchuuGyouNO", SqlDbType.VarChar) { Value = JuchuuNO };
-            parameters[3] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
-            parameters[4] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = SoukoCD };
+            parameters[2] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
+            //parameters[4] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = SoukoCD };
 
             return ckmdl.InsertUpdateDeleteData("Shukkasizi_Price", GetConnectionString(), parameters);
         }
