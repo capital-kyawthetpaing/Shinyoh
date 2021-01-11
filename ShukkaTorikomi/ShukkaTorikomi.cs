@@ -46,7 +46,7 @@ namespace ShukkaTorikomi
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Import, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", false);
-            SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
+            SetButton(ButtonType.BType.Import, F12, "登録(F12)", true);
             //multipurposeEntity multipurpose_entity = new multipurposeEntity();
 
             txtShukkaToNo1.Enabled = true;
