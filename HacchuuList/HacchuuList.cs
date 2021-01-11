@@ -183,19 +183,23 @@ namespace HacchuuList
                         ExcelDesignSetting obj = new ExcelDesignSetting();
                         obj.FilePath = saveFileDialog1.FileName;
                         obj.SheetName = "発注リスト";
-                        obj.Start_Interior_No = "A1";
-                        obj.End_Interior_No = "Y1";
+                        obj.Start_Interior_Column = "A1";
+                        obj.End_Interior_Column = "Y1";
                         obj.Interior_Color = Color.Orange;
-                        obj.Start_Font_No = "A1";
-                        obj.End_Font_No = "Y1";
+                        obj.Start_Font_Column = "A1";
+                        obj.End_Font_Column = "Y1";
                         obj.Font_Color = Color.Black;
-                        obj.Start_Date_No = 3;
-                        obj.End_Date_No = 3;
+                        //For column C
+                        obj.Date_Column = new List<int>();
+                        obj.Date_Column.Add(3);
                         obj.Date_Format = "YYYY/MM/DD";
-                        obj.Start_Title_Center_No = "A1";
-                        obj.End_Title_Center_No = "Y1";
-                        obj.Start_Number_No = "T1";
-                        obj.End_Number_No = "V1";
+                        obj.Start_Title_Center_Column = "A1";
+                        obj.End_Title_Center_Column = "Y1";
+                        //for column T,U,V
+                        obj.Number_Column = new List<int>();
+                        obj.Number_Column.Add(20);
+                        obj.Number_Column.Add(21);
+                        obj.Number_Column.Add(22);
                         obj.Number_Format = "#,###,###";
                         bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
                         if (bl)
