@@ -10,27 +10,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JuchuuNyuuryoku
+namespace Shinyoh_Details
 {
-    public partial class KouritenDetail : SearchBase
+    public partial class SiiresakiDetail : SearchBase
     {
-        public KouritenEntity Access_Kouriten_obj=new KouritenEntity();
+        public SiiresakiEntity Access_Siiresaki_obj = new SiiresakiEntity();
         string YuuBinNO1 = string.Empty;
         string YuuBinNO2 = string.Empty;
         string Address1 = string.Empty;
         string Address2 = string.Empty;
-        public KouritenDetail()
+        public SiiresakiDetail()
         {
             InitializeComponent();
         }
-        private void KouritenDetail_Load(object sender, EventArgs e)
+
+        private void SiiresakiDetail_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "", false);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-
             lbl_Name.BorderStyle= System.Windows.Forms.BorderStyle.None;
-            txtCD.Focus();
+
+            txtCD.Enabled = false; ;
+
+            txtShort_Name.Focus();
 
             txtShort_Name.E102Check(true);
             txtLong_Name.E102Check(true);
@@ -38,14 +41,14 @@ namespace JuchuuNyuuryoku
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
             //Get Data from JuchuuNyuuroku form
-            Access_DB_Object(Access_Kouriten_obj);
+            Access_DB_Object(Access_Siiresaki_obj);
         }
-        private void Access_DB_Object(KouritenEntity obj)
+        private void Access_DB_Object(SiiresakiEntity obj)
         {
-            txtCD.Text = obj.KouritenCD;
-            txtLong_Name.Text = obj.KouritenName;
-            txtShort_Name.Text = obj.KouritenRyakuName;
-            lbl_Name.Text = obj.KouritenRyakuName;
+            txtCD.Text = obj.SiiresakiCD;
+            txtLong_Name.Text = obj.SiiresakiName;
+            txtShort_Name.Text = obj.SiiresakiRyakuName;
+            lbl_Name.Text = obj.SiiresakiRyakuName;
             txtYubin1.Text = obj.YuubinNO1;
             txtYubin2.Text = obj.YuubinNO2;
             txtAddress1.Text = obj.Juusho1;
@@ -65,19 +68,19 @@ namespace JuchuuNyuuryoku
         {
             if (tagID == "3")
             {
-                Access_Kouriten_obj.KouritenCD = txtCD.Text;
-                Access_Kouriten_obj.KouritenName = txtLong_Name.Text;
-                Access_Kouriten_obj.KouritenRyakuName = txtShort_Name.Text;
-                Access_Kouriten_obj.YuubinNO1 = txtYubin1.Text;
-                Access_Kouriten_obj.YuubinNO2 = txtYubin2.Text;
-                Access_Kouriten_obj.Juusho1 = txtAddress1.Text;
-                Access_Kouriten_obj.Juusho2 = txtAddress2.Text;
-                Access_Kouriten_obj.Tel11 = txtPhone1_1.Text;
-                Access_Kouriten_obj.Tel12 = txtPhone1_2.Text;
-                Access_Kouriten_obj.Tel13 = txtPhone1_3.Text;
-                Access_Kouriten_obj.Tel21 = txtPhone2_1.Text;
-                Access_Kouriten_obj.Tel22 = txtPhone2_2.Text;
-                Access_Kouriten_obj.Tel23 = txtPhone2_3.Text;
+                Access_Siiresaki_obj.SiiresakiCD = txtCD.Text;
+                Access_Siiresaki_obj.SiiresakiName = txtLong_Name.Text;
+                Access_Siiresaki_obj.SiiresakiRyakuName = txtShort_Name.Text;
+                Access_Siiresaki_obj.YuubinNO1 = txtYubin1.Text;
+                Access_Siiresaki_obj.YuubinNO2 = txtYubin2.Text;
+                Access_Siiresaki_obj.Juusho1 = txtAddress1.Text;
+                Access_Siiresaki_obj.Juusho2 = txtAddress2.Text;
+                Access_Siiresaki_obj.Tel11 = txtPhone1_1.Text;
+                Access_Siiresaki_obj.Tel12 = txtPhone1_2.Text;
+                Access_Siiresaki_obj.Tel13 = txtPhone1_3.Text;
+                Access_Siiresaki_obj.Tel21 = txtPhone2_1.Text;
+                Access_Siiresaki_obj.Tel22 = txtPhone2_2.Text;
+                Access_Siiresaki_obj.Tel23 = txtPhone2_3.Text;
 
                 this.Close();
             }

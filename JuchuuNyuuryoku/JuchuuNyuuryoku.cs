@@ -2,6 +2,7 @@
 using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
+using Shinyoh_Details;
 using Shinyoh_Search;
 using System;
 using System.Collections.Generic;
