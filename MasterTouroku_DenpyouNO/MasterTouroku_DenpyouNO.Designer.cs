@@ -237,7 +237,7 @@
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_DenpyouNO";
-            this.Text = "スタッフマスタ";
+            this.Text = "伝票番号管理マスタ";
             this.Load += new System.EventHandler(this.MasterTouroku_DenpyouNO_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.PanelDetail, 0);

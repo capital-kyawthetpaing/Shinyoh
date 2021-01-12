@@ -232,7 +232,11 @@ namespace Shinyoh_Controls
                         rDt = ibl.IdouNyuuryoku_Select_Check(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
-
+                    case "ChakuniYoteiNyuuryoku":
+                        ChakuniYoteiNyuuryoku_BL cybl = new ChakuniYoteiNyuuryoku_BL();
+                        rDt = cybl.ChakuniYoteiNyuuryoku_Select(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E115"))
                 {
@@ -279,6 +283,12 @@ namespace Shinyoh_Controls
                     case "ChakuniNyuuryoku":
                         chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
                         dt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE132_1.Text, null, string.Empty);
+                        rDt = dt;
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "ChakuniYoteiNyuuryoku":
+                        ChakuniYoteiNyuuryoku_BL cybl = new ChakuniYoteiNyuuryoku_BL();
+                        dt = cybl.ChakuniYoteiNyuuryoku_Select(sTextBox.ctrlE132_1.Text, null, string.Empty);
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
@@ -360,6 +370,12 @@ namespace Shinyoh_Controls
                     case "ChakuniNyuuryoku":
                         chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
                         dt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE133_1.Text,string.Empty, "E133");
+                        rDt = dt;
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "ChakuniYoteiNyuuryoku":
+                        ChakuniYoteiNyuuryoku_BL cybl = new ChakuniYoteiNyuuryoku_BL();
+                        dt = cybl.ChakuniYoteiNyuuryoku_Select(sTextBox.ctrlE133_1.Text, string.Empty, "E133");
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
@@ -559,6 +575,11 @@ namespace Shinyoh_Controls
                     case "ChakuniNyuuryoku":
                         chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
                         rDt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE268_1.Text, string.Empty, "E268");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "ChakuniYoteiNyuuryoku":
+                        ChakuniYoteiNyuuryoku_BL cybl = new ChakuniYoteiNyuuryoku_BL();
+                        rDt = cybl.ChakuniYoteiNyuuryoku_Select(sTextBox.ctrlE268_1.Text, string.Empty, "E268");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }

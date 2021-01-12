@@ -21,7 +21,8 @@ namespace Entity {
             ArrivalNo,
             JuchuuNo,
             ShukkaNo,
-            IdouNyuuryoku
+            IdouNyuuryoku,
+            ChakuniYoteiNyuuryoku
         }
     }
 }

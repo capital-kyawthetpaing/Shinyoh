@@ -28,7 +28,7 @@ namespace BL
             cyn.Sqlprms[8] = new SqlParameter("@KanriNOTo", SqlDbType.VarChar) { Value = cyn.KanriNOTo };
             cyn.Sqlprms[9] = new SqlParameter("@ShouhinCDFrom", SqlDbType.VarChar) { Value = cyn.ShouhinCDFrom };
             cyn.Sqlprms[10] = new SqlParameter("@ShouhinCDTo", SqlDbType.VarChar) { Value = cyn.ShouhinCDTo };
-            DataTable dt = ckmdl.SelectDatatable("ArrivalNO_Search", GetConnectionString(), cyn.Sqlprms);
+            DataTable dt = ckmdl.SelectDatatable("ChakuniYoteiNyuuryoku_Search", GetConnectionString(), cyn.Sqlprms);
             return dt;
         }
         public DataTable ChakuniYoteiNyuuryoku_Display(ChakuniYoteiNyuuryokuEntity cyn)
@@ -51,6 +51,16 @@ namespace BL
             cyn.Sqlprms[13] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cyn.ProgramID };
             cyn.Sqlprms[14] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cyn.PC };
             DataTable dt = ckmdl.SelectDatatable("D_ChakuniYotei_Display", GetConnectionString(), cyn.Sqlprms);
+            return dt;
+        }
+        public DataTable ChakuniYoteiNyuuryoku_Select(string ChakuniYoteiNO, string ChakuniYoteiDate, string error_Type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@ChakuniYoteiNo", SqlDbType.VarChar) { Value = ChakuniYoteiNO };
+            parameters[1] = new SqlParameter("@ChakuniYoteiDate", SqlDbType.VarChar) { Value = ChakuniYoteiDate };
+            parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
+            DataTable dt = ckmdl.SelectDatatable("ChakuniYoteiNyuuryoku_Select_Check", GetConnectionString(), parameters);
             return dt;
         }
     }

@@ -39,17 +39,19 @@ namespace ZaikoIkkatuSaiHikiate
             SetButton(ButtonType.BType.Search, F9, "", false);
             SetButton(ButtonType.BType.Import, F10, "", false);
             SetButton(ButtonType.BType.Empty, F11, "", false);
-            SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
+            SetButton(ButtonType.BType.Process, F12, "登録(F12)", true);
 
             Remove_LabelBorder();
+            base_entity = _GetBaseData();
         }
 
         public override void FunctionProcess(string tagID)
         {
             Remove_LabelBorder();
             if (tagID == "12")
-            {
-
+            { 
+                HikiateHenkouShoukaiBL bl = new HikiateHenkouShoukaiBL();
+                bl.IData_DB(GetRequired_UIData());
             }
         }
 
@@ -57,6 +59,20 @@ namespace ZaikoIkkatuSaiHikiate
         {
             lbl1.BorderStyle = BorderStyle.None;
             lbl2.BorderStyle = BorderStyle.None;
+        }
+
+        private HikiateHenkouShoukaiEntity GetRequired_UIData()
+        {
+            HikiateHenkouShoukaiEntity entity = new HikiateHenkouShoukaiEntity();
+            entity.SerialKBN = 99;
+            entity.SlipNO = string.Empty;
+            entity.ProcessKBN = 10;
+            entity.InsertOperator = base_entity.OperatorCD;
+            entity.PC = base_entity.PC;
+            entity.ProgramID = base_entity.ProgramID;
+            entity.Mode = string.Empty;
+            entity.KeyItem = string.Empty;
+            return entity;
         }
     }
 }
