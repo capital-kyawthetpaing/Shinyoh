@@ -100,11 +100,11 @@ namespace JuchuuNyuuryoku
             gv_1.Columns[16].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             gv_1.SetGridDesign();
-            //gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
+            gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
 
-            //gv_1.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
-            //gv_1.SetNumberColumn("colJuchuuSuu");
-            //gv_1.ClearSelection();
+            gv_1.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
+            gv_1.SetNumberColumn("colJuchuuSuu");
+            gv_1.ClearSelection();
         }
 
         private void ChangeMode(Mode mode)
@@ -277,6 +277,8 @@ namespace JuchuuNyuuryoku
                 //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
                 //{
 
+                if (F8_dt1.Rows.Count > 0)
+                {
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -293,6 +295,8 @@ namespace JuchuuNyuuryoku
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
+                }
+               
                // }
             }
 
@@ -731,6 +735,7 @@ namespace JuchuuNyuuryoku
                         btnF9.Visible = false;
                 }
             }
+
         }
 
         private void gv_1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -962,7 +967,8 @@ namespace JuchuuNyuuryoku
         private void DBProcess()
         {
             string mode = string.Empty;
-            (string,string,string) obj = GetInsert();
+            (string, string, string) obj = GetInsert();
+           
             if (cboMode.SelectedValue.Equals("1"))
             {
                 mode = "New";
@@ -1248,7 +1254,7 @@ namespace JuchuuNyuuryoku
                                 base_bl.ShowMessage("E267", "受注日");
                         }
                     }
-                    if(exp_error==false)
+                    if (exp_error == false)
                     {
                         gv_1.MoveNextCell();
                     }
@@ -1293,7 +1299,5 @@ namespace JuchuuNyuuryoku
             if (gv_1.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
                 gv_1.MoveNextCell();
         }
-
-       
     }
 }
