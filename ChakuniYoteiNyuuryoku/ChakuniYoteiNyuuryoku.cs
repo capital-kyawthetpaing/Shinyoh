@@ -24,6 +24,7 @@ namespace ChakuniYoteiNyuuryoku
         public ChakuniYoteiNyuuryoku()
         {
             InitializeComponent();
+            cf = new CommonFunction();
             base_Entity = new BaseEntity();
             staffBL = new StaffBL();
             soukoBL = new SoukoBL();
@@ -52,7 +53,17 @@ namespace ChakuniYoteiNyuuryoku
             ChangeMode(Mode.New);
             txtArrivalNO.Focus();
             base_Entity = _GetBaseData();
+            txtSiiresaki.ChangeDate = txtDate;
+            txtStaffCD.ChangeDate = txtDate;
             txtArrivalNO.ChangeDate = txtDate;
+            lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txtSiiresaki.lblName = lblSiiresaki;
+            txtStaffCD.lblName = lblStaff;
+            txtSouko.lblName = lblWareHouse;
+            txtBrandCD.lblName = lblBrandName;
             gvChakuniYoteiNyuuryoku.SetGridDesign();
             gvChakuniYoteiNyuuryoku.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colDate,colArrivalNo,colChakuniZumiSuu,colJanCD,colChakuniYoteiGyouNO,colHacchuuGyouNO");
             gvChakuniYoteiNyuuryoku.SetHiraganaColumn("colDetails");
@@ -92,6 +103,80 @@ namespace ChakuniYoteiNyuuryoku
                     btnInquiry.Visible = false;
                     break;
             }
+        }
+        public override void FunctionProcess(string tagID)
+        {
+            if (tagID == "2")
+            {
+                ChangeMode(Mode.New);
+            }
+            if (tagID == "3")
+            {
+                ChangeMode(Mode.Update);
+            }
+            if (tagID == "4")
+            {
+                ChangeMode(Mode.Delete);
+            }
+            if (tagID == "5")
+            {
+                ChangeMode(Mode.Inquiry);
+            }
+            if (tagID == "6")
+            {
+                Clear();
+            }
+            if (tagID == "8")
+            {
+                
+            }
+            if (tagID == "10")
+            {
+                
+            }
+            if (tagID == "11")
+            {
+                
+            }
+            if (tagID == "12")
+            {
+                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
+                {
+                    DBProcess();
+                    switch (cboMode.SelectedValue)
+                    {
+                        case "1":
+                            ChangeMode(Mode.New);
+                            break;
+                        case "2":
+                            ChangeMode(Mode.Update);
+                            break;
+                        case "3":
+                            ChangeMode(Mode.Delete);
+                            break;
+                        case "4":
+                            ChangeMode(Mode.Inquiry);
+                            break;
+                    }
+                }
+            }
+            base.FunctionProcess(tagID);
+        }
+        private void DBProcess()
+        {
+            
+        }
+        public void Clear()
+        {
+            cf.Clear(PanelTitle);
+            cf.Clear(PanelDetail);
+            cf.EnablePanel(PanelTitle);
+            lblSiiresaki.Text = string.Empty;
+            lblStaff.Text = string.Empty;
+            lblBrandName.Text = string.Empty;
+            lblWareHouse.Text = string.Empty;
+            txtArrivalNO.Focus();
+            New_Mode();
         }
         private void Mode_Setting()
         {
@@ -218,6 +303,41 @@ namespace ChakuniYoteiNyuuryoku
                 dtGridview();
                 gvChakuniYoteiNyuuryoku.DataSource = dtmain;
                 gvChakuniYoteiNyuuryoku.Select();
+            }
+        }
+
+        private void txtArrivalNO_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtArrivalNO.IsErrorOccurs)
+                {
+                    if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")
+                    {
+                        cf.EnablePanel(PanelDetail);
+                        cf.DisablePanel(PanelTitle);
+                        txtDate.Focus();
+                    }
+                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                        Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                        BtnF9.Visible = false;
+                        if (cboMode.SelectedValue.ToString() == "3")
+                        {
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
+                        }
+                    }
+                }
+                DataTable dt = txtArrivalNO.IsDatatableOccurs;
+                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                {
+                    if (dt.Rows[0]["MessageID"].ToString() == "E132")
+                    {
+
+                    }
+                }
             }
         }
     }
