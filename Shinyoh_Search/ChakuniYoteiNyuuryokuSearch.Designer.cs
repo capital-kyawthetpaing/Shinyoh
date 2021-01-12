@@ -362,7 +362,7 @@
             this.txtOrderDateFrom.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtOrderDateFrom.MoveNext = true;
             this.txtOrderDateFrom.Name = "txtOrderDateFrom";
-            this.txtOrderDateFrom.NextControl = this.BtnF1;
+            //this.txtOrderDateFrom.NextControl = this.BtnF1;
             this.txtOrderDateFrom.NextControlName = "txtOrderDateTo";
             this.txtOrderDateFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtOrderDateFrom.Size = new System.Drawing.Size(100, 19);
