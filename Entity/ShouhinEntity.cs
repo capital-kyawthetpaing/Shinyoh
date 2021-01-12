@@ -49,5 +49,13 @@ namespace Entity
         public int KensakuHyouziJun { get; set; }
         public int UsedFlag { get; set; }
         public int DisplayTarget { get; set; }
+        //ssa
+        public string ShouhinCD1 { get; set; }
+        public string ShouhinCD2 { get; set; }
+        public string ColorNo1 { get; set; }
+        public string ColorNo2 { get; set; }
+        public string SizeNo1 { get; set; }
+        public string SizeNo2 { get; set; }
+        public int Output_Type { get; set; }
     }
 }
