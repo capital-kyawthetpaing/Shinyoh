@@ -194,6 +194,7 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.IdouNyuuryoku:
                         IdouNyuuryokuSearch idou_search = new IdouNyuuryokuSearch();
                         idou_search.ShowDialog();
+                        CD = idou_search.IdouNo;
                         break;
                 }
 

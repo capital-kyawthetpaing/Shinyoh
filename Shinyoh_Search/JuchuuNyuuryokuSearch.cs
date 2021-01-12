@@ -123,7 +123,10 @@ namespace Shinyoh_Search
 
         private void gv_1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            GetGridviewData(gv_1.Rows[e.RowIndex]);
+            if (e.RowIndex >= 0)
+            {
+                GetGridviewData(gv_1.Rows[e.RowIndex]);
+            }
         }
 
         private void btnShow_Click(object sender, EventArgs e)
