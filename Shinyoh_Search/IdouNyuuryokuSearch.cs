@@ -33,12 +33,12 @@ namespace Shinyoh_Search
 
             ErrorCheck();
 
-            gv_1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gv_1.UseRowNo(true);
-            gv_1.SetGridDesign();
-            gv_1.SetReadOnlyColumn("**");//readonly for search form 
+            gv_Idou.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_Idou.UseRowNo(true);
+            gv_Idou.SetGridDesign();
+            gv_Idou.SetReadOnlyColumn("**");//readonly for search form 
             DataGridviewBind();
-            gv_1.Select();
+            gv_Idou.Select();
         }
         private void ErrorCheck()
         {
@@ -78,7 +78,7 @@ namespace Shinyoh_Search
                     txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDate"]);
                 }
             }
-            gv_1.DataSource = dt;
+            gv_Idou.DataSource = dt;
         }
 
         private void btnShow_Click(object sender, EventArgs e)
@@ -93,18 +93,10 @@ namespace Shinyoh_Search
             }
             if (tagID == "3")
             {
-                DataGridViewRow row = gv_1.CurrentRow;
+                DataGridViewRow row = gv_Idou.CurrentRow;
                 GetGridviewData(row);
             }
             base.FunctionProcess(tagID);
-        }
-
-        private void gv_1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                GetGridviewData(gv_1.Rows[e.RowIndex]);
-            }
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
@@ -146,12 +138,20 @@ namespace Shinyoh_Search
             }
         }
 
-        private void IdouNyuuryokuSearch_KeyDown(object sender, KeyEventArgs e)
+        private void gv_Idou_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                GetGridviewData(gv_Idou.Rows[e.RowIndex]);
+            }
+        }
+
+        private void gv_Idou_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (gv_1.CurrentCell != null)
-                    GetGridviewData(gv_1.Rows[gv_1.CurrentCell.RowIndex]);
+                if (gv_Idou.CurrentCell != null)
+                    GetGridviewData(gv_Idou.Rows[gv_Idou.CurrentCell.RowIndex]);
             }
         }
     }

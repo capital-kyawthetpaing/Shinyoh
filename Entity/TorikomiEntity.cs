@@ -28,6 +28,7 @@ namespace Entity
         public string ShukkaSiziNO { get; set; }
         public string UnitPrice { get; set; }
         public string SellingPrice { get; set; }
+        public string ShukkaDenpyouTekiyou { get; set; }
 
 
 
