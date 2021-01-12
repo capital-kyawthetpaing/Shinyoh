@@ -731,7 +731,7 @@ namespace Shinyoh_Controls
                     return false;
                 }
             }
-            return false;
+            return true;
         }
     }
 }

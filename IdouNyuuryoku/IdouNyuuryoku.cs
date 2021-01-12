@@ -19,6 +19,7 @@ namespace IdouNyuuryoku
         CommonFunction cf;
         multipurposeEntity multi_Entity;
         BaseEntity base_Entity;
+        BaseBL base_bl;
         IdouNyuuryokuBL Idou_BL;
         DataTable gv1_to_dt1;
         public IdouNyuuryoku()
@@ -27,6 +28,7 @@ namespace IdouNyuuryoku
             cf = new CommonFunction();
             multi_Entity = new multipurposeEntity();
             base_Entity = new BaseEntity();
+            base_bl = new BaseBL();
             Idou_BL = new IdouNyuuryokuBL();
             gv1_to_dt1 = new DataTable();
         }
@@ -58,13 +60,15 @@ namespace IdouNyuuryoku
             txtShukkosouko.lblName = lbl_Shukko;
             txtNyukosouko.lblName = lbl_Nyuko;
 
+            txtIdouNO.ChangeDate = txtIdouDate;
+            txtCopy.ChangeDate = txtIdouDate;
             txtStaffCD.ChangeDate = txtIdouDate;
 
             gv_1.SetGridDesign();
-            gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
+            gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colKanriNO");
 
-            gv_1.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
-            gv_1.SetNumberColumn("colJuchuuSuu");
+            gv_1.SetHiraganaColumn("colIdouMeisaiTekiyou");
+            gv_1.SetNumberColumn("colIdouSuu,colGenkaTanka,colGenkaKingaku");
             gv_1.ClearSelection();
         }
         private void ChangeMode(Mode mode)
@@ -322,13 +326,19 @@ namespace IdouNyuuryoku
             {
                 if (!txtIdouNO.IsErrorOccurs)
                 {
-                    
+                    StaffEntity obj_staff = new StaffEntity();
+                    obj_staff.OperatorCD = OperatorCD;
+                    obj_staff.PC = PCID;
+                    obj_staff.StaffName = txtIdouNO.Text;
                     if (cboMode.SelectedValue.ToString() == "2")//update
                     {
+                        Idou_BL.IdouNyuuryoku_Exclusive_Insert(obj_staff);
                         EnablePanel();
                     }
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
+                        if (cboMode.SelectedValue.ToString() == "3")
+                            Idou_BL.IdouNyuuryoku_Exclusive_Insert(obj_staff);
                         cf.DisablePanel(PanelTitle);
                     }
                 }
@@ -383,6 +393,51 @@ namespace IdouNyuuryoku
                 //    F8_dt1 = gv1_to_dt1.Clone();
                 //else
                 //    F8_dt1 = gv1_to_dt1.Copy();
+            }
+        }
+
+        private void txtCopy_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
+            {
+                if (!txtCopy.IsErrorOccurs)
+                {
+                    if (ErrorCheck(PanelTitle))
+                    {
+                        EnablePanel();
+                        DataTable dt = txtCopy.IsDatatableOccurs;
+                        if (dt.Rows.Count > 0)
+                            From_DB_To_Form(dt);
+                    }
+                    else
+                    {
+                        cf.Clear(PanelDetail);
+                    }
+                }
+            }
+        }
+
+        private void txtIdouDate_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtIdouDate.IsErrorOccurs)
+                {
+                    if (!string.IsNullOrEmpty(txtStaffCD.Text))
+                    {
+                        StaffBL sBL = new StaffBL();
+                        DataTable sf_DT = sBL.Staff_Select_Check(txtStaffCD.Text, txtIdouDate.Text, "E101");
+                        if (sf_DT.Rows.Count > 0 && sf_DT.Rows[0]["MessageID"].ToString() != "E101")
+                        {
+                            txtStaffCD.Text = sf_DT.Rows[0]["StaffCD"].ToString();
+                            lblStaff_Name.Text = sf_DT.Rows[0]["StaffName"].ToString();
+                        }
+                        else
+                        {
+                            base_bl.ShowMessage("E101");
+                        }
+                    }
+                }
             }
         }
     }
