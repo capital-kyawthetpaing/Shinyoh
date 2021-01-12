@@ -51,6 +51,9 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_right = new System.Windows.Forms.Panel();
+            this.panelLeft = new System.Windows.Forms.Panel();
+            this.btnLogin = new Shinyoh_Controls.SButton();
+            this.btnClose = new Shinyoh_Controls.SButton();
             this.mc_20 = new Shinyoh_Controls.SButton();
             this.mc_10 = new Shinyoh_Controls.SButton();
             this.mc_19 = new Shinyoh_Controls.SButton();
@@ -72,7 +75,6 @@
             this.mc_11 = new Shinyoh_Controls.SButton();
             this.mc_1 = new Shinyoh_Controls.SButton();
             this.Search_Box = new Shinyoh_Controls.STextBox();
-            this.panelLeft = new System.Windows.Forms.Panel();
             this.gym_10 = new Shinyoh_Controls.SButton();
             this.gym_9 = new Shinyoh_Controls.SButton();
             this.gym_8 = new Shinyoh_Controls.SButton();
@@ -93,8 +95,6 @@
             this.gym_13 = new Shinyoh_Controls.SButton();
             this.gym_12 = new Shinyoh_Controls.SButton();
             this.gym_11 = new Shinyoh_Controls.SButton();
-            this.btnLogin = new Shinyoh_Controls.SButton();
-            this.btnClose = new Shinyoh_Controls.SButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
@@ -123,7 +123,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Yu Gothic", 16.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(288, 36);
+            this.label4.Location = new System.Drawing.Point(288, 33);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(306, 29);
             this.label4.TabIndex = 3;
@@ -370,6 +370,73 @@
             this.panel_right.Size = new System.Drawing.Size(664, 666);
             this.panel_right.TabIndex = 91;
             // 
+            // panelLeft
+            // 
+            this.panelLeft.AutoScroll = true;
+            this.panelLeft.BackColor = System.Drawing.Color.White;
+            this.panelLeft.Controls.Add(this.gym_10);
+            this.panelLeft.Controls.Add(this.gym_9);
+            this.panelLeft.Controls.Add(this.gym_8);
+            this.panelLeft.Controls.Add(this.gym_7);
+            this.panelLeft.Controls.Add(this.gym_6);
+            this.panelLeft.Controls.Add(this.gym_5);
+            this.panelLeft.Controls.Add(this.gym_4);
+            this.panelLeft.Controls.Add(this.gym_3);
+            this.panelLeft.Controls.Add(this.gym_2);
+            this.panelLeft.Controls.Add(this.gym_1);
+            this.panelLeft.Controls.Add(this.gym_20);
+            this.panelLeft.Controls.Add(this.gym_19);
+            this.panelLeft.Controls.Add(this.gym_18);
+            this.panelLeft.Controls.Add(this.gym_17);
+            this.panelLeft.Controls.Add(this.gym_16);
+            this.panelLeft.Controls.Add(this.gym_15);
+            this.panelLeft.Controls.Add(this.gym_14);
+            this.panelLeft.Controls.Add(this.gym_13);
+            this.panelLeft.Controls.Add(this.gym_12);
+            this.panelLeft.Controls.Add(this.gym_11);
+            this.panelLeft.Location = new System.Drawing.Point(61, 42);
+            this.panelLeft.Name = "panelLeft";
+            this.panelLeft.Size = new System.Drawing.Size(324, 665);
+            this.panelLeft.TabIndex = 69;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnLogin.BackgroundImage = global::ShinyohMenu.Properties.Resources.syblack;
+            this.btnLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLogin.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLogin.Font = new System.Drawing.Font("MS Gothic", 16F, System.Drawing.FontStyle.Bold);
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.Location = new System.Drawing.Point(699, 884);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(340, 61);
+            this.btnLogin.TabIndex = 69;
+            this.btnLogin.Text = "ログアウト";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.MouseEnter += new System.EventHandler(this.btnLogin_MouseEnter);
+            this.btnLogin.MouseLeave += new System.EventHandler(this.btnLogin_MouseLeave);
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.BackgroundImage = global::ShinyohMenu.Properties.Resources.sygreen_1;
+            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnClose.ButtonType = Entity.ButtonType.BType.Normal;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnClose.Font = new System.Drawing.Font("MS Gothic", 16F, System.Drawing.FontStyle.Bold);
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(16, 884);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(335, 61);
+            this.btnClose.TabIndex = 68;
+            this.btnClose.Text = "終了(F1)";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
+            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
+            // 
             // mc_20
             // 
             this.mc_20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -596,12 +663,12 @@
             this.mc_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.mc_2.ButtonType = Entity.ButtonType.BType.Normal;
             this.mc_2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.mc_2.Font = new System.Drawing.Font("MS Gothic", 14F, System.Drawing.FontStyle.Bold);
+            this.mc_2.Font = new System.Drawing.Font("MS Gothic", 17F, System.Drawing.FontStyle.Bold);
             this.mc_2.Location = new System.Drawing.Point(11, 69);
             this.mc_2.Name = "mc_2";
             this.mc_2.Size = new System.Drawing.Size(281, 61);
             this.mc_2.TabIndex = 92;
-            this.mc_2.Text = "11";
+            this.mc_2.Text = "スタッフマスタメンテンテ";
             this.mc_2.UseVisualStyleBackColor = false;
             // 
             // mc_11
@@ -659,35 +726,6 @@
             this.Search_Box.Enter += new System.EventHandler(this.sTextBox1_Enter);
             this.Search_Box.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Search_Box_KeyDown);
             this.Search_Box.Leave += new System.EventHandler(this.sTextBox1_Leave);
-            // 
-            // panelLeft
-            // 
-            this.panelLeft.AutoScroll = true;
-            this.panelLeft.BackColor = System.Drawing.Color.White;
-            this.panelLeft.Controls.Add(this.gym_10);
-            this.panelLeft.Controls.Add(this.gym_9);
-            this.panelLeft.Controls.Add(this.gym_8);
-            this.panelLeft.Controls.Add(this.gym_7);
-            this.panelLeft.Controls.Add(this.gym_6);
-            this.panelLeft.Controls.Add(this.gym_5);
-            this.panelLeft.Controls.Add(this.gym_4);
-            this.panelLeft.Controls.Add(this.gym_3);
-            this.panelLeft.Controls.Add(this.gym_2);
-            this.panelLeft.Controls.Add(this.gym_1);
-            this.panelLeft.Controls.Add(this.gym_20);
-            this.panelLeft.Controls.Add(this.gym_19);
-            this.panelLeft.Controls.Add(this.gym_18);
-            this.panelLeft.Controls.Add(this.gym_17);
-            this.panelLeft.Controls.Add(this.gym_16);
-            this.panelLeft.Controls.Add(this.gym_15);
-            this.panelLeft.Controls.Add(this.gym_14);
-            this.panelLeft.Controls.Add(this.gym_13);
-            this.panelLeft.Controls.Add(this.gym_12);
-            this.panelLeft.Controls.Add(this.gym_11);
-            this.panelLeft.Location = new System.Drawing.Point(61, 42);
-            this.panelLeft.Name = "panelLeft";
-            this.panelLeft.Size = new System.Drawing.Size(324, 665);
-            this.panelLeft.TabIndex = 69;
             // 
             // gym_10
             // 
@@ -948,44 +986,6 @@
             this.gym_11.TabIndex = 0;
             this.gym_11.Text = "11";
             this.gym_11.UseVisualStyleBackColor = false;
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnLogin.BackgroundImage = global::ShinyohMenu.Properties.Resources.syblack;
-            this.btnLogin.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLogin.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLogin.Font = new System.Drawing.Font("MS Gothic", 16F, System.Drawing.FontStyle.Bold);
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(699, 884);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(340, 61);
-            this.btnLogin.TabIndex = 69;
-            this.btnLogin.Text = "ログアウト";
-            this.btnLogin.UseVisualStyleBackColor = false;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            this.btnLogin.MouseEnter += new System.EventHandler(this.btnLogin_MouseEnter);
-            this.btnLogin.MouseLeave += new System.EventHandler(this.btnLogin_MouseLeave);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.Color.Transparent;
-            this.btnClose.BackgroundImage = global::ShinyohMenu.Properties.Resources.sygreen_1;
-            this.btnClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnClose.ButtonType = Entity.ButtonType.BType.Normal;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnClose.Font = new System.Drawing.Font("MS Gothic", 16F, System.Drawing.FontStyle.Bold);
-            this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(16, 884);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(335, 61);
-            this.btnClose.TabIndex = 68;
-            this.btnClose.Text = "終了(F1)";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            this.btnClose.MouseEnter += new System.EventHandler(this.btnClose_MouseEnter);
-            this.btnClose.MouseLeave += new System.EventHandler(this.btnClose_MouseLeave);
             // 
             // ShinyohMenu
             // 

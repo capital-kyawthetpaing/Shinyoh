@@ -3,6 +3,7 @@ using Shinyoh;
 using Entity;
 using BL;
 using CKM_CommonFunction;
+using Shinyoh_Details;
 using System.Windows.Forms;
 using Shinyoh_Controls;
 using Shinyoh_Search;
@@ -19,7 +20,7 @@ namespace ChakuniNyuuryoku
         DataTable dtmain;
         DataTable dtTemp;
         DataTable dtGridSource = new DataTable();
-        SiiresakiDetails sd = new SiiresakiDetails();
+        SiiresakiDetail sd;
         DataTable dtGS1;
         BaseEntity base_Entity;
         StaffBL staffBL;
@@ -42,6 +43,7 @@ namespace ChakuniNyuuryoku
             staffBL = new StaffBL();
             soukoBL = new SoukoBL();
             dtClear = CreateTable();
+            sd = new SiiresakiDetail();
             chkEntity = new ChakuniNyuuryoku_Entity();
         }
 

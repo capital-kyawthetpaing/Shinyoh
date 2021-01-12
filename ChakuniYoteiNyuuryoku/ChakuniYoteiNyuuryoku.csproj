@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -98,6 +98,10 @@
     <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Details\Shinyoh_Details.csproj">
+      <Project>{c77a6d15-5b0f-4ec2-9c63-f99da9c55a24}</Project>
+      <Name>Shinyoh_Details</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
       <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>

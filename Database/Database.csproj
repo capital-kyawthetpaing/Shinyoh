@@ -87,6 +87,9 @@
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Insert.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Select.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Update.sql" />
+    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Display.sql" />
+    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Search.sql" />
+    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Select_Check.sql" />
     <Content Include="StoreProcedure\CSV_M_Kouriten_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_Shouhin_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_ShukkaTorikomi_CUD.sql" />
