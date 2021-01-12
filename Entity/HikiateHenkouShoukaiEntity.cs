@@ -49,5 +49,12 @@ namespace Entity
         public string NyuukoDate { get; set; }
         public string JuchuuDate { get; set; }
         public string KibouNouki { get; set; }
+
+
+
+        //For ZaikoIkkatuSaiHikiate Prj
+        public int SerialKBN { get; set; }
+        public string SlipNO { get; set; }
+        public int ProcessKBN { get; set; }
     }
 }

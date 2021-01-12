@@ -82,5 +82,22 @@ namespace BL
             entity.Sqlprms[19] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = entity.SoukoCD };
             //ckmdl.InsertUpdateDeleteData("sp_HikiateHenkoShoukai_DataIU", GetConnectionString(), entity.Sqlprms);
         }
+
+
+        //For ZaikoIkkatuSaiHikiate Prj
+        public void IData_DB(HikiateHenkouShoukaiEntity entity)
+        {
+            CKMDL ckmdl = new CKMDL();
+            entity.Sqlprms = new SqlParameter[8];
+            entity.Sqlprms[0] = new SqlParameter("@SerialKBN", SqlDbType.Int) { Value = entity.SerialKBN };
+            entity.Sqlprms[1] = new SqlParameter("@SlipNo", SqlDbType.VarChar) { Value = entity.SlipNO };
+            entity.Sqlprms[2] = new SqlParameter("@ProcessKBN", SqlDbType.Int) { Value = entity.ProcessKBN };
+            entity.Sqlprms[3] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = entity.InsertOperator };
+            entity.Sqlprms[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = entity.PC };
+            entity.Sqlprms[5] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = entity.ProgramID };
+            entity.Sqlprms[6] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = entity.Mode };
+            entity.Sqlprms[7] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = entity.KeyItem };
+            ckmdl.InsertUpdateDeleteData("sp_ZaikoIkkatuSaiHikiate_Process", GetConnectionString(), entity.Sqlprms);
+        }
     }
 }

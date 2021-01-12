@@ -27,7 +27,8 @@ namespace Entity
             Display,
             Import, //取込
             Export,
-            Memory
+            Memory,
+            Process
         }
     }
 }
