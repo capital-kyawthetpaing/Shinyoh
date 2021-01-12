@@ -64,7 +64,7 @@ namespace MasterList_Siiresaki
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1469, 75);
+            this.panel1.Size = new System.Drawing.Size(1485, 75);
             // 
             // PanelTitle
             // 
@@ -593,7 +593,7 @@ namespace MasterList_Siiresaki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1469, 653);
+            this.ClientSize = new System.Drawing.Size(1485, 811);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterList_Siiresaki";
