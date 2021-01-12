@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="chakuniNyuuryoku_BL.cs" />
     <Compile Include="BaseBL.cs" />
+    <Compile Include="ChakuniYoteiNyuuryoku_BL.cs" />
     <Compile Include="DenpyouNOBL.cs" />
     <Compile Include="ExportCSVExcel.cs" />
     <Compile Include="HacchuuListBL.cs" />

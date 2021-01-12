@@ -55,6 +55,12 @@
     <Compile Include="ArrivalNOSearch.Designer.cs">
       <DependentUpon>ArrivalNOSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChakuniYoteiNyuuryokuSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChakuniYoteiNyuuryokuSearch.Designer.cs">
+      <DependentUpon>ChakuniYoteiNyuuryokuSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="DenpyouNoSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </Compile>
     <EmbeddedResource Include="ArrivalNOSearch.resx">
       <DependentUpon>ArrivalNOSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChakuniYoteiNyuuryokuSearch.resx">
+      <DependentUpon>ChakuniYoteiNyuuryokuSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DenpyouNoSearch.resx">
       <DependentUpon>DenpyouNoSearch.cs</DependentUpon>

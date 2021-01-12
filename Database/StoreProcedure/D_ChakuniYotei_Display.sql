@@ -136,8 +136,9 @@ And (@ChakuniYoteiNO is null or(B.ChakuniYoteiNO=@ChakuniYoteiNO))
 And (@KanriNO is null or(B.KanriNO=@KanriNO))
 And A.SoukoCD=@SoukoCD
 And D.YearTerm=@YearTerm
-And (@SeasonSS is null or(D.SeasonSS=@SeasonSS))
-AND (@SeasonFW is null or(D.SeasonFW=@SeasonFW))
+--And (@SeasonSS is null or(D.SeasonSS=@SeasonSS))
+And (@SeasonSS is null or(@SeasonSS=1 and   D.SeasonSS=@SeasonSS) )
+And (@SeasonFW is null or(@SeasonFW=1 and   D.SeasonFW=@SeasonFW) )
 Order by 
 B.ChakuniYoteiNO,B.GyouHyouziJun ASC
 

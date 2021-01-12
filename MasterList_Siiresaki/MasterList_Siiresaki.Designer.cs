@@ -375,7 +375,7 @@ namespace MasterList_Siiresaki
             this.txtSiiresakiName.IsRequire = false;
             this.txtSiiresakiName.IsUseInitializedLayout = true;
             this.txtSiiresakiName.Location = new System.Drawing.Point(121, 30);
-            this.txtSiiresakiName.MaxLength = 40;
+            this.txtSiiresakiName.MaxLength = 80;
             this.txtSiiresakiName.MinimumSize = new System.Drawing.Size(400, 19);
             this.txtSiiresakiName.MoveNext = true;
             this.txtSiiresakiName.Name = "txtSiiresakiName";

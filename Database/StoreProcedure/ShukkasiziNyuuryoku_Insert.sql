@@ -327,7 +327,7 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	)
 	SELECT
 	
-		@ShukkaSiziNO --邱ｨ髮・==> {繝・・繝悶Ν霆｢騾∽ｻ墓ｧ假ｼ｡笘・→蜷後§蛟､}
+		@ShukkaSiziNO
 		,ROW_NUMBER() OVER(ORDER BY (SELECT 1))
 		,ROW_NUMBER() OVER(ORDER BY (SELECT 1))
 		,case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
@@ -464,7 +464,7 @@ INSERT INTO [dbo].[D_ShukkaSiziShousai]
 		where dj.JuchuuNO = LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1)
 		and dj.JuchuuGyouNO=RIGHT(D.SKMSNO, LEN(D.SKMSNO) - CHARINDEX('-', D.SKMSNO))
 		and dj.ShouhinCD=D.ShouhinCD
-		AND dj.SoukoCD=D.SoukoCD--(for ask)
+		--AND dj.SoukoCD=D.SoukoCD--(for ask)
 		and HikiateZumiSuu <> 0
 		order by dj.KanriNO asc,dj.NyuukoDate asc
 
@@ -724,6 +724,37 @@ FROM [dbo].[D_ShukkaSiziShousai]
 where ShukkaSiziNO=@ShukkaSiziNO
 
 --※シート「消込順」参照
+DECLARE @Price_table TABLE (idx int Primary Key IDENTITY(1,1),
+						KonkaiShukkaSiziSuu varchar(50),
+						SKMSNO  varchar(12),ShouhinCD  varchar(50))
+			INSERT @Price_table  SELECT KonkaiShukkaSiziSuu,SKMSNO,ShouhinCD FROM #Temp_Details
+			
+			declare @Count as int = 1
+			
+			WHILE @Count <= (SELECT COUNT(*) FROM #Temp_Details)
+			BEGIN
+			declare @KonkaiShukkaSiziSuu varchar(50)=(select KonkaiShukkaSiziSuu from @Price_table  WHERE idx =@Count)
+			  declare @Value2 as varchar(12)=(select SKMSNO from @Price_table WHERE idx =@Count),
+					@Value3 as varchar(50)=(select ShouhinCD  from @Price_table WHERE idx =@Count)
+			 
+			 DECLARE CUR_POINTER CURSOR FAST_FORWARD FOR
+				SELECT KonkaiShukkaSiziSuu
+				FROM   #Temp_Details    
+ 
+			OPEN CUR_POINTER
+			FETCH NEXT FROM CUR_POINTER INTO @KonkaiShukkaSiziSuu
+ 
+			WHILE @@FETCH_STATUS = 0
+			BEGIN		
+
+			   exec  [dbo].[Shukkasizi_Price]  @KonkaiShukkaSiziSuu,@Value2,@Value3
+
+			   FETCH NEXT FROM CUR_POINTER INTO @KonkaiShukkaSiziSuu
+			END
+			CLOSE CUR_POINTER
+			DEALLOCATE CUR_POINTER
+		SET @Count = @Count + 1
+			END;
 
 --Table G --追加または修正後
 UPDATE  A
@@ -765,16 +796,18 @@ exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,'新規' ,@KeyItem
 
 
 --テーブル転送仕様Ｙ
-EXEC [dbo].[D_Exclusive_Delete]
-		1,
-		@ShukkaSiziNO;
-
---EXEC [dbo].[D_Exclusive_Insert]
---1,
---@ShukkaSiziNO,
---@OperatorCD,
---@Program,
---@PC
+DECLARE @JuchuuNo_table TABLE (idx int Primary Key IDENTITY(1,1), JuchuuNo varchar(20))
+			INSERT @JuchuuNo_table SELECT distinct LEFT((SKMSNO), CHARINDEX('-', (SKMSNO)) - 1) FROM #Temp_Details
+			
+			--declare @Count as int = 1(above case)
+			WHILE @Count <= (SELECT COUNT(*) FROM @JuchuuNo_table)
+			BEGIN
+			 DELETE A 
+			 From D_Exclusive A
+			 where A.DataKBN=1
+			 and A.Number=(select JuchuuNo from @JuchuuNo_table WHERE idx =@Count)
+		SET @Count = @Count + 1
+			END;
 
 Drop Table #Temp_Header
 Drop Table #Temp_Details
