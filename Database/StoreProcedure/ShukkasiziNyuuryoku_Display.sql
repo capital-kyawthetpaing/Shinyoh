@@ -184,14 +184,6 @@ SELECT DJMS.ShouhinCD --商品コード
 
 	ORDER BY DJMS.ShouhinCD ASC,DJMS.JuchuuNO ASC,DJMS.GyouHyouziJun ASC
 
---テーブル転送仕様Ｙ
-EXEC D_Exclusive_Insert
-		1,
-		@JuchuuNO,
-		@Operator,
-		@Program,
-		@PC;
-
 If(OBJECT_ID('tempdb..#WK_ShukkaKanouSou2') Is Not Null)
 Begin
     Drop Table #WK_ShukkaKanouSou2

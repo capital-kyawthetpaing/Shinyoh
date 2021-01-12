@@ -29,13 +29,13 @@ namespace ShukkaSiziNyuuryoku
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
@@ -465,7 +465,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtAddress.IsRequire = false;
             this.txtAddress.IsUseInitializedLayout = true;
             this.txtAddress.Location = new System.Drawing.Point(510, 178);
-            this.txtAddress.MaxLength = 40;
+            this.txtAddress.MaxLength = 80;
             this.txtAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress.MoveNext = true;
             this.txtAddress.Name = "txtAddress";
@@ -713,15 +713,15 @@ namespace ShukkaSiziNyuuryoku
             // dgvShukkasizi
             // 
             this.dgvShukkasizi.AllowUserToAddRows = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShukkasizi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShukkasizi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvShukkasizi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShukkasizi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -801,9 +801,9 @@ namespace ShukkaSiziNyuuryoku
             // colJuchuuSuu
             // 
             this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.NullValue = "0";
-            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.NullValue = "0";
+            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle2;
             this.colJuchuuSuu.HeaderText = "受注数";
             this.colJuchuuSuu.Name = "colJuchuuSuu";
             this.colJuchuuSuu.ReadOnly = true;
@@ -811,9 +811,9 @@ namespace ShukkaSiziNyuuryoku
             // colShukkakanousuu
             // 
             this.colShukkakanousuu.DataPropertyName = "ShukkanouSuu";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.NullValue = "0";
-            this.colShukkakanousuu.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.NullValue = "0";
+            this.colShukkakanousuu.DefaultCellStyle = dataGridViewCellStyle3;
             this.colShukkakanousuu.HeaderText = "出荷可能数";
             this.colShukkakanousuu.Name = "colShukkakanousuu";
             this.colShukkakanousuu.ReadOnly = true;
@@ -822,10 +822,10 @@ namespace ShukkaSiziNyuuryoku
             // colShukkasizisou
             // 
             this.colShukkasizisou.DataPropertyName = "ShukkaSiziZumiSuu";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N0";
-            dataGridViewCellStyle18.NullValue = null;
-            this.colShukkasizisou.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            dataGridViewCellStyle4.NullValue = null;
+            this.colShukkasizisou.DefaultCellStyle = dataGridViewCellStyle4;
             this.colShukkasizisou.HeaderText = "出荷指示済数";
             this.colShukkasizisou.Name = "colShukkasizisou";
             this.colShukkasizisou.ReadOnly = true;
@@ -834,9 +834,9 @@ namespace ShukkaSiziNyuuryoku
             // colArrivalTime
             // 
             this.colArrivalTime.DataPropertyName = "KonkaiShukkaSiziSuu";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.NullValue = "0";
-            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.NullValue = "0";
+            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle5;
             this.colArrivalTime.HeaderText = "今回出荷指示数";
             this.colArrivalTime.Name = "colArrivalTime";
             this.colArrivalTime.Width = 125;
@@ -844,18 +844,18 @@ namespace ShukkaSiziNyuuryoku
             // colTanka
             // 
             this.colTanka.DataPropertyName = "UriageTanka";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle20.NullValue = "0";
-            this.colTanka.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.NullValue = "0";
+            this.colTanka.DefaultCellStyle = dataGridViewCellStyle6;
             this.colTanka.HeaderText = "単価";
             this.colTanka.Name = "colTanka";
             // 
             // colPrice
             // 
             this.colPrice.DataPropertyName = "UriageKingaku";
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle21.NullValue = "0";
-            this.colPrice.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.NullValue = "0";
+            this.colPrice.DefaultCellStyle = dataGridViewCellStyle7;
             this.colPrice.HeaderText = "金額";
             this.colPrice.Name = "colPrice";
             // 
@@ -1090,7 +1090,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtName.IsRequire = true;
             this.txtName.IsUseInitializedLayout = true;
             this.txtName.Location = new System.Drawing.Point(1257, 151);
-            this.txtName.MaxLength = 20;
+            this.txtName.MaxLength = 40;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtName.MoveNext = true;
             this.txtName.Name = "txtName";
@@ -1241,7 +1241,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlip_Description.IsRequire = false;
             this.txtSlip_Description.IsUseInitializedLayout = true;
             this.txtSlip_Description.Location = new System.Drawing.Point(828, 36);
-            this.txtSlip_Description.MaxLength = 40;
+            this.txtSlip_Description.MaxLength = 80;
             this.txtSlip_Description.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSlip_Description.MoveNext = true;
             this.txtSlip_Description.Name = "txtSlip_Description";

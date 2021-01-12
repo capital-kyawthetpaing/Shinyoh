@@ -255,9 +255,9 @@
             this.btnShow.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnShow.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnShow.Location = new System.Drawing.Point(1019, 83);
+            this.btnShow.Location = new System.Drawing.Point(998, 83);
             this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(130, 28);
+            this.btnShow.Size = new System.Drawing.Size(150, 25);
             this.btnShow.TabIndex = 12;
             this.btnShow.Text = "表示(F11)";
             this.btnShow.UseVisualStyleBackColor = false;

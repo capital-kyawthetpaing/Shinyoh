@@ -166,6 +166,7 @@
     <Content Include="StoreProcedure\ShukkaTorikomi_Slip_Check.sql" />
     <Content Include="StoreProcedure\Siiresaki_Search.sql" />
     <Content Include="StoreProcedure\Siiresaki_Select_Check.sql" />
+    <Content Include="StoreProcedure\SKSZ_D_Exclusive_Insert_Value.sql" />
     <Content Include="StoreProcedure\SMENU.sql" />
     <Content Include="StoreProcedure\SMENU_Origianl.sql" />
     <Content Include="StoreProcedure\Souko_Search.sql" />
@@ -181,6 +182,7 @@
     <Content Include="StoreProcedure\sp_Shouhin_Check.sql" />
     <Content Include="StoreProcedure\sp_Shouhin_IUD.sql" />
     <Content Include="StoreProcedure\sp_Shouhin_SearchData.sql" />
+    <Content Include="StoreProcedure\sp_ZaikoIkkatuSaiHikiate_Process.sql" />
     <Content Include="StoreProcedure\Staff_AccessCheck.sql" />
     <Content Include="StoreProcedure\Staff_Search.sql" />
     <Content Include="StoreProcedure\Staff_Select_Check.sql" />
