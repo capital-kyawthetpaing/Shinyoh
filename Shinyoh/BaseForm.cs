@@ -263,7 +263,7 @@ namespace Shinyoh
                                 FunctionProcess(btn.Tag.ToString());
                         }
                         break;
-                    case ButtonType.BType.Process:
+                    case ButtonType.BType.Process: 
                         if (bbl.ShowMessage("Q002") != DialogResult.Yes)
                         {
                             if (PreviousCtrl != null)

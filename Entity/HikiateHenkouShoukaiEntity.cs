@@ -51,7 +51,6 @@ namespace Entity
         public string KibouNouki { get; set; }
 
 
-
         //For ZaikoIkkatuSaiHikiate Prj
         public int SerialKBN { get; set; }
         public string SlipNO { get; set; }
