@@ -87,13 +87,13 @@ namespace MasterList_Siiresaki
                 saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
                 saveFileDialog1.DefaultExt = "xls";
                 saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "得意先マスタリスト.xls";
+                saveFileDialog1.FileName = "仕入先マスタリスト.xls";
                 saveFileDialog1.RestoreDirectory = true;
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     ExcelDesignSetting obj = new ExcelDesignSetting();
                     obj.FilePath = saveFileDialog1.FileName;
-                    obj.SheetName = "得意先マスタリスト";
+                    obj.SheetName = "仕入先マスタリスト";
                     obj.Start_Interior_Column = "A1";
                     obj.End_Interior_Column = "AH1";
                     obj.Interior_Color = Color.Orange;
