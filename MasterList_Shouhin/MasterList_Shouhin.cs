@@ -60,10 +60,9 @@ namespace MasterList_Shouhin
             txtShouhinCD_To.E106Check(true, txtShouhinCD_From, txtShouhinCD_To);
             txtJANCD_To.E106Check(true, txtJANCD_From, txtJANCD_To);
             txtBrand_To.E106Check(true, txtBrand_From, txtBrand_To);
-            txtColor2.E106Check(true, txtColor1, txtColor2);
-            txtSize2.E106Check(true, txtSize1, txtSize2);
+            txtColorNO2.E106Check(true, txtColorNO1, txtColorNO2);
+            txtSizeNO2.E106Check(true, txtSizeNO1, txtSizeNO2);
         }
-
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "6")
@@ -81,7 +80,6 @@ namespace MasterList_Shouhin
 
             }
         }
-
         private void Excel_Export()
         {
             ShouhinBL sh_bl = new ShouhinBL();
@@ -89,20 +87,48 @@ namespace MasterList_Shouhin
             if(dtShouhin.Rows.Count>0)
             {
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\";
+                saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
                 saveFileDialog1.DefaultExt = "xls";
                 saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "受注リスト.xls";
+                saveFileDialog1.FileName = "商品マスタリスト.xls";
                 saveFileDialog1.RestoreDirectory = true;
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
+                    ExcelDesignSetting obj = new ExcelDesignSetting();
+                    obj.FilePath = saveFileDialog1.FileName;
+                    obj.SheetName = "商品マスタリスト";
+                    obj.Start_Interior_Column = "A1";
+                    obj.End_Interior_Column = "AR1";
+                    obj.Interior_Color = Color.Orange;
+                    obj.Start_Font_Column = "A1";
+                    obj.End_Font_Column = "AR1";
+                    obj.Font_Color = Color.Black;
+                    //For column C
+                    obj.Date_Column = new List<int>();
+                    obj.Date_Column.Add(2);
+                    obj.Date_Column.Add(32);
+                    obj.Date_Column.Add(33);
+                    obj.Date_Format = "YYYY/MM/DD";
+                    obj.Start_Title_Center_Column = "A1";
+                    obj.End_Title_Center_Column = "AR1";
+                    //for column T,U,V
+                    obj.Number_Column = new List<int>();
+                    obj.Number_Column.Add(22);
+                    obj.Number_Column.Add(23);
+                    obj.Number_Column.Add(24);
+                    obj.Number_Column.Add(37);
+                    obj.Number_Format = "#,###,###";
                     ExportCSVExcel excel = new ExportCSVExcel();
-                    //excel.ExportDataTableToExcel(dtShouhin, saveFileDialog1);
-                    //ExportDataTableToExcel(dt, saveFileDialog1.FileName);
-                }
+                     excel.ExportDataTableToExcel(dtShouhin, obj);
+
+                    //New_Mode
+                    cf.Clear(PanelDetail);
+                    rdo_ChokkinDate.Checked = true;
+                    txtShouhinCD_From.Focus();
+                }                
             }
         }
-        private ShouhinEntity Get_UIData()
+    private ShouhinEntity Get_UIData()
         {
             ShouhinEntity sh_e = new ShouhinEntity();
             if (rdo_ChokkinDate.Checked)
@@ -116,10 +142,10 @@ namespace MasterList_Shouhin
             sh_e.ShouhinRyakuName = txtShouhinName.Text;
             sh_e.BrandCD = txtBrand_From.Text;
             sh_e.BrandCD1 = txtBrand_To.Text;
-            sh_e.ColorNo1 = txtColor1.Text;
-            sh_e.ColorNo2 = txtColor2.Text;
-            sh_e.SizeNo1 = txtSize1.Text;
-            sh_e.SizeNo2 = txtSize2.Text;
+            sh_e.ColorNo1 = txtColorNO1.Text;
+            sh_e.ColorNo2 = txtColorNO2.Text;
+            sh_e.SizeNo1 = txtSizeNO1.Text;
+            sh_e.SizeNo2 = txtSizeNO2.Text;
             sh_e.Remarks = txtRemarks.Text;
             sh_e.PC = PCID;
             sh_e.ProgramID = ProgramID;
