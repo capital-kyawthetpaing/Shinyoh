@@ -15,6 +15,7 @@ namespace Shinyoh_Search
 {
     public partial class IdouNyuuryokuSearch : SearchBase
     {
+        public string IdouNo = string.Empty;
         public IdouNyuuryokuSearch()
         {
             InitializeComponent();
@@ -32,11 +33,12 @@ namespace Shinyoh_Search
 
             ErrorCheck();
 
+            gv_1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gv_1.UseRowNo(true);
             gv_1.SetGridDesign();
             gv_1.SetReadOnlyColumn("**");//readonly for search form 
             DataGridviewBind();
-
+            gv_1.Select();
         }
         private void ErrorCheck()
         {
@@ -99,16 +101,19 @@ namespace Shinyoh_Search
 
         private void gv_1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            GetGridviewData(gv_1.Rows[e.RowIndex]);
+            if (e.RowIndex >= 0)
+            {
+                GetGridviewData(gv_1.Rows[e.RowIndex]);
+            }
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
             if (gvrow.DataBoundItem != null)
             {
                 DataGridViewRow row = gvrow;
-                //JuchuuNo = row.Cells["colJuchuuNO"].Value.ToString();
-                this.Close();
+                IdouNo = row.Cells["colIdouNO"].Value.ToString();
             }
+            this.Close();
         }
 
         private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
@@ -145,7 +150,8 @@ namespace Shinyoh_Search
         {
             if (e.KeyCode == Keys.Enter)
             {
-                GetGridviewData(gv_1.Rows[gv_1.CurrentCell.RowIndex]);
+                if (gv_1.CurrentCell != null)
+                    GetGridviewData(gv_1.Rows[gv_1.CurrentCell.RowIndex]);
             }
         }
     }

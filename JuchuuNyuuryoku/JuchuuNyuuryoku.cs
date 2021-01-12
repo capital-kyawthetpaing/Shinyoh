@@ -100,11 +100,11 @@ namespace JuchuuNyuuryoku
             gv_1.Columns[16].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             gv_1.SetGridDesign();
-            gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
+            //gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
 
-            gv_1.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
-            gv_1.SetNumberColumn("colJuchuuSuu");
-            gv_1.ClearSelection();
+            //gv_1.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
+            //gv_1.SetNumberColumn("colJuchuuSuu");
+            //gv_1.ClearSelection();
         }
 
         private void ChangeMode(Mode mode)

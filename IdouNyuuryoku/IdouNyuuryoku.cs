@@ -59,6 +59,13 @@ namespace IdouNyuuryoku
             txtNyukosouko.lblName = lbl_Nyuko;
 
             txtStaffCD.ChangeDate = txtIdouDate;
+
+            gv_1.SetGridDesign();
+            gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
+
+            gv_1.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
+            gv_1.SetNumberColumn("colJuchuuSuu");
+            gv_1.ClearSelection();
         }
         private void ChangeMode(Mode mode)
         {
