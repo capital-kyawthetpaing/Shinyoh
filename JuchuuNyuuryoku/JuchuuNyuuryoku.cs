@@ -103,7 +103,7 @@ namespace JuchuuNyuuryoku
             gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
 
             gv_1.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
-            gv_1.SetNumberColumn("colJuchuuSuu");
+            gv_1.SetNumberColumn("colJuchuuSuu,colexpectedDate");
             gv_1.ClearSelection();
         }
 
@@ -884,7 +884,6 @@ namespace JuchuuNyuuryoku
             if (dt.Rows.Count > 0)
             {
                 gv_1.DataSource = dt;
-                gv_1.ClearSelection();
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
 
@@ -1189,6 +1188,14 @@ namespace JuchuuNyuuryoku
             if (string.IsNullOrEmpty(free))
                 isSelected = "OFF";
             else isSelected = "ON";
+            if (gv_1.Columns[e.ColumnIndex].Name == "colFree" || gv_1.Columns[e.ColumnIndex].Name == "colJuchuuMeisaiTekiyou")
+                gv_1.MoveNextCell();
+            if (gv_1.Columns[e.ColumnIndex].Name == "colJuchuuSuu")
+            {
+                int JuchuuSuu_Number = string.IsNullOrEmpty(gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].EditedFormattedValue.ToString());
+                gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].Value = JuchuuSuu_Number.ToString();
+                gv_1.MoveNextCell();
+            }
 
             if (isSelected == "OFF" && JuchuuSuu != "0")
             {
@@ -1290,14 +1297,6 @@ namespace JuchuuNyuuryoku
                     }
                 }
             }
-            if (gv_1.Columns[e.ColumnIndex].Name == "colFree")
-                gv_1.MoveNextCell();
-            if (gv_1.Columns[e.ColumnIndex].Name == "colJuchuuSuu")
-                gv_1.MoveNextCell();
-            if (gv_1.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
-                gv_1.MoveNextCell();
-            if (gv_1.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
-                gv_1.MoveNextCell();
         }
     }
 }
