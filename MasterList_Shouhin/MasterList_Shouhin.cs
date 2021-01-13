@@ -13,25 +13,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
 
-namespace MasterList_Siiresaki
+namespace MasterList_Shouhin
 {
-    public partial class MasterList_Siiresaki : BaseForm
+    public partial class MasterList_Shouhin : BaseForm
     {
         BaseEntity base_entity;
         CommonFunction cf;
         multipurposeEntity multi_Entity;
         BaseBL bbl = new BaseBL();
-        DataTable dt = new DataTable();
-        public MasterList_Siiresaki()
+        DataTable dtShouhin = new DataTable();
+        public MasterList_Shouhin()
         {
             InitializeComponent();
             cf = new CommonFunction();
         }
-        private void MasterList_Siiresaki_Load(object sender, EventArgs e)
+
+        private void MasterList_Shouhin_Load(object sender, EventArgs e)
         {
-            ProgramID = "MasterList_Siiresaki";
+            ProgramID = "MasterList_Shouhin";
             StartProgram();
             cboMode.Bind(false, multi_Entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
@@ -49,16 +49,19 @@ namespace MasterList_Siiresaki
 
             base_entity = _GetBaseData();
             txtChangeDate.Text = base_entity.LoginDate;
-            txtSiiresakiCD_From.Focus();
-            txtSiiresakiCD_From.ChangeDate = txtChangeDate;
-            txtSiiresakiCD_To.ChangeDate = txtChangeDate;
+            txtShouhinCD_From.Focus();
+            txtShouhinCD_From.ChangeDate = txtChangeDate;
+            txtShouhinCD_To.ChangeDate = txtChangeDate;
             UI_ErrorCheck();
         }
+
         private void UI_ErrorCheck()
         {
-            txtSiiresakiCD_To.E106Check(true, txtSiiresakiCD_From, txtSiiresakiCD_To);
-            txtYubin2.E102MultiCheck(true, txtYuubinNO1, txtYubin2);
-            txtYubin2.Yuubin_Juusho(true, txtYuubinNO1, txtYubin2, string.Empty, string.Empty);
+            txtShouhinCD_To.E106Check(true, txtShouhinCD_From, txtShouhinCD_To);
+            txtJANCD_To.E106Check(true, txtJANCD_From, txtJANCD_To);
+            txtBrand_To.E106Check(true, txtBrand_From, txtBrand_To);
+            txtColorNO2.E106Check(true, txtColorNO1, txtColorNO2);
+            txtSizeNO2.E106Check(true, txtSizeNO1, txtSizeNO2);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -66,7 +69,7 @@ namespace MasterList_Siiresaki
             {
                 rdo_ChokkinDate.Checked = true;
                 cf.Clear(PanelDetail);
-                txtSiiresakiCD_From.Focus();
+                txtShouhinCD_From.Focus();
             }
             if (tagID == "10")
             {
@@ -74,87 +77,80 @@ namespace MasterList_Siiresaki
                 {
                     Excel_Export();
                 }
-                    
+
             }
         }
         private void Excel_Export()
         {
-            SiiresakiBL sbl = new SiiresakiBL();
-            dt = sbl.Get_ExportData(Get_UIData());
-            if (dt.Rows.Count > 0)
+            ShouhinBL sh_bl = new ShouhinBL();
+            dtShouhin = sh_bl.Get_ExportData(Get_UIData());
+            if(dtShouhin.Rows.Count>0)
             {
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
                 saveFileDialog1.DefaultExt = "xls";
                 saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "仕入先マスタリスト.xls";
+                saveFileDialog1.FileName = "商品マスタリスト.xls";
                 saveFileDialog1.RestoreDirectory = true;
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     ExcelDesignSetting obj = new ExcelDesignSetting();
                     obj.FilePath = saveFileDialog1.FileName;
-                    obj.SheetName = "仕入先マスタリスト";
+                    obj.SheetName = "商品マスタリスト";
                     obj.Start_Interior_Column = "A1";
-                    obj.End_Interior_Column = "AH1";
+                    obj.End_Interior_Column = "AR1";
                     obj.Interior_Color = Color.Orange;
                     obj.Start_Font_Column = "A1";
-                    obj.End_Font_Column = "AH1";
+                    obj.End_Font_Column = "AR1";
                     obj.Font_Color = Color.Black;
                     //For column C
                     obj.Date_Column = new List<int>();
                     obj.Date_Column.Add(2);
-                    obj.Date_Column.Add(28);
-                    obj.Date_Column.Add(29);
+                    obj.Date_Column.Add(32);
+                    obj.Date_Column.Add(33);
                     obj.Date_Format = "YYYY/MM/DD";
                     obj.Start_Title_Center_Column = "A1";
-                    obj.End_Title_Center_Column = "AH1";
+                    obj.End_Title_Center_Column = "AR1";
                     //for column T,U,V
+                    obj.Number_Column = new List<int>();
+                    obj.Number_Column.Add(22);
+                    obj.Number_Column.Add(23);
+                    obj.Number_Column.Add(24);
+                    obj.Number_Column.Add(37);
+                    obj.Number_Format = "#,###,###";
                     ExportCSVExcel excel = new ExportCSVExcel();
-                    excel.ExportDataTableToExcel(dt, obj);
+                     excel.ExportDataTableToExcel(dtShouhin, obj);
 
                     //New_Mode
                     cf.Clear(PanelDetail);
                     rdo_ChokkinDate.Checked = true;
-                    txtSiiresakiCD_From.Focus();
-                }
+                    txtShouhinCD_From.Focus();
+                }                
             }
         }
-        private SiiresakiEntity Get_UIData()
+    private ShouhinEntity Get_UIData()
         {
-            SiiresakiEntity ske = new SiiresakiEntity();
+            ShouhinEntity sh_e = new ShouhinEntity();
             if (rdo_ChokkinDate.Checked)
-                ske.Output_Type = 0;
+                sh_e.Output_Type = 0;
             else
-                ske.Output_Type = 1;
-            ske.SiiresakiCD_From = txtSiiresakiCD_From.Text;
-            ske.SiiresakiCD_To = txtSiiresakiCD_To.Text;
-            ske.SiiresakiRyakuName = txtSiiresakiName.Text;
-            ske.YuubinNO1 = txtYuubinNO1.Text;
-            ske.YuubinNO2 = txtYubin2.Text;
-            ske.Juusho1 = txtAddress.Text;
-            ske.Tel11 = txtPhNO1.Text;
-            ske.Tel12 = txtPhNO2.Text;
-            ske.Tel13 = txtPhNO3.Text;
-            ske.Remarks = txtRemarks.Text;
-            ske.PC = PCID;
-            ske.ProgramID = ProgramID;
-            ske.InsertOperator = OperatorCD;
-            return ske;
-        }
-        private void txtYuubinNO2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!txtYubin2.IsErrorOccurs)
-            {
-                if (txtYubin2.IsDatatableOccurs.Rows.Count > 0)
-                {
-                    DataTable dt = txtYubin2.IsDatatableOccurs;
-                    txtAddress.Text = dt.Rows[0]["Juusho1"].ToString();
-                }
-                else
-                {
-                    txtAddress.Text = string.Empty;
-                }
-            }
+                sh_e.Output_Type = 1;
+            sh_e.ShouhinCD1 = txtShouhinCD_From.Text;
+            sh_e.ShouhinCD2 = txtShouhinCD_To.Text;
+            sh_e.JANCD = txtJANCD_From.Text;
+            sh_e.JANCD1 = txtJANCD_To.Text;
+            sh_e.ShouhinRyakuName = txtShouhinName.Text;
+            sh_e.BrandCD = txtBrand_From.Text;
+            sh_e.BrandCD1 = txtBrand_To.Text;
+            sh_e.ColorNo1 = txtColorNO1.Text;
+            sh_e.ColorNo2 = txtColorNO2.Text;
+            sh_e.SizeNo1 = txtSizeNO1.Text;
+            sh_e.SizeNo2 = txtSizeNO2.Text;
+            sh_e.Remarks = txtRemarks.Text;
+            sh_e.PC = PCID;
+            sh_e.ProgramID = ProgramID;
+            sh_e.InsertOperator = OperatorCD;
+            return sh_e;
         }
     }
 }

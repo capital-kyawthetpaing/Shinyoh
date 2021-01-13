@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CF45042B-1B4E-40AF-8EEC-8F50FD5DB51F}</ProjectGuid>
+    <ProjectGuid>{73EFDA1B-A163-49DA-A6CA-947883F47E4F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ChakuniYoteiNyuuryoku</RootNamespace>
-    <AssemblyName>ChakuniYoteiNyuuryoku</AssemblyName>
+    <RootNamespace>MasterList_Shouhin</RootNamespace>
+    <AssemblyName>MasterList_Shouhin</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -36,6 +36,9 @@
     <Reference Include="CKM_CommonFunction">
       <HintPath>..\bin\Debug\CKM_CommonFunction.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,16 +52,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChakuniYoteiNyuuryoku.cs">
+    <Compile Include="MasterList_Shouhin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChakuniYoteiNyuuryoku.Designer.cs">
-      <DependentUpon>ChakuniYoteiNyuuryoku.cs</DependentUpon>
+    <Compile Include="MasterList_Shouhin.Designer.cs">
+      <DependentUpon>MasterList_Shouhin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ChakuniYoteiNyuuryoku.resx">
-      <DependentUpon>ChakuniYoteiNyuuryoku.cs</DependentUpon>
+    <EmbeddedResource Include="MasterList_Shouhin.resx">
+      <DependentUpon>MasterList_Shouhin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -98,10 +101,6 @@
     <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shinyoh_Details\Shinyoh_Details.csproj">
-      <Project>{c77a6d15-5b0f-4ec2-9c63-f99da9c55a24}</Project>
-      <Name>Shinyoh_Details</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
       <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>

@@ -204,12 +204,10 @@ namespace ShukkaTorikomi
                         obj.TokuisakiCD = splits[0];
                         bl_List.Add(Null_Check(obj.TokuisakiCD, i, "得意先CD未入力エラー"));
                         bl_List.Add(Byte_Check(10, obj.TokuisakiCD, i, "得意先CD桁数エラー"));
-
-
+                        
                         obj.KouritenCD = splits[1];
                         bl_List.Add(Null_Check(obj.KouritenCD, i, "小売店CD未入力エラー"));
                         bl_List.Add(Byte_Check(10, obj.KouritenCD, i, "小売店CD桁数エラー"));
-
 
                         obj.TokuisakiRyakuName = splits[2];
                         bl_List.Add(Null_Check(obj.TokuisakiRyakuName, i, "得意先略名未入力エラー"));
@@ -219,48 +217,47 @@ namespace ShukkaTorikomi
                         bl_List.Add(Null_Check(obj.KouritenRyakuName, i, "略名未入力エラー"));
                         bl_List.Add(Byte_Check(40, obj.KouritenRyakuName, i, "略名桁数エラー"));
 
-                        obj.DenpyouDate = splits[4];
+                        obj.DenpyouNO = splits[4];
+                        bl_List.Add(Null_Check(obj.DenpyouNO, i, "伝票番号未入力エラー"));
+
+                        obj.DenpyouDate = splits[5];
                         bl_List.Add(Null_Check(obj.DenpyouDate, i, "伝票日付未入力エラー"));
                         bl_List.Add(Date_Check(obj.DenpyouDate, i, "入力可能値外エラー"));
-
-                        obj.DenpyouNO = splits[5];
-                        bl_List.Add(Null_Check(obj.DenpyouNO, i, "伝票番号未入力エラー"));
 
                         obj.ChangeDate = splits[6];
                         bl_List.Add(Null_Check(obj.ChangeDate, i, "改定日未入力エラー"));
                         bl_List.Add(Date_Check(obj.ChangeDate, i, "入力可能値外エラー"));
 
-
                         obj.ShouhinCD = splits[7];
                         bl_List.Add(Null_Check(obj.ShouhinCD, i, "商品コード未入力エラー"));
-                        bl_List.Add(Byte_Check(10,obj.ShouhinCD, i, "商品コード桁数エラー"));
+                        bl_List.Add(Byte_Check(10, obj.ShouhinCD, i, "商品コード桁数エラー"));
 
                         obj.ColorRyakuName = splits[8];
                         bl_List.Add(Null_Check(obj.ColorRyakuName, i, "カラー未入力エラー"));
-                      
 
                         obj.SizeNO = splits[9];
                         bl_List.Add(Null_Check(obj.SizeNO, i, "ｻｲｽﾞ未入力エラー"));
-                        
 
                         obj.JANCD = splits[10];
                         bl_List.Add(Null_Check(obj.JANCD, i, "JANｺｰﾄﾞ未入力エラー"));
-                        bl_List.Add(Byte_Check(10,obj.JANCD, i, "JANｺｰﾄﾞ桁数エラー"));
+                        bl_List.Add(Byte_Check(10, obj.JANCD, i, "JANｺｰﾄﾞ桁数エラー"));
 
                         obj.ShukkaSuu = splits[11];
                         bl_List.Add(Null_Check(obj.ShukkaSuu, i, "数量未入力エラー"));
                         bl_List.Add(Date_Check(obj.ShukkaSuu, i, "入力可能値外エラー"));
 
                         obj.UnitPrice = splits[12];
-                        bl_List.Add(Date_Check(obj.UnitPrice, i, "入力可能値外エラー"));
+                        bl_List.Add(Null_Check(obj.UnitPrice, i, "入力可能値外エラー"));
 
                         obj.SellingPrice = splits[13];
-                        bl_List.Add(Date_Check(obj.SellingPrice, i, "入力可能値外エラー"));
+                        bl_List.Add(Null_Check(obj.SellingPrice, i, "入力可能値外エラー"));
 
-                        obj.ShukkaSiziNO = splits[14];
+                        obj.ShukkaDenpyouTekiyou = splits[14];
+                        bl_List.Add(Null_Check(obj.ShukkaDenpyouTekiyou, i, "納品書注釈未入力エラー"));
+
+                        obj.ShukkaSiziNO = splits[15];
                         bl_List.Add(Null_Check(obj.ShukkaSiziNO, i, "出荷指示行番号未入力エラー"));
                         bl_List.Add(Byte_Check(10, obj.ShukkaSiziNO, i, "出荷指示行番号桁数エラー"));
-
 
 
                         TokuisakiBL tBL = new TokuisakiBL();
@@ -406,6 +403,7 @@ namespace ShukkaTorikomi
             create_dt.Columns.Add("ShukkaSuu");
             create_dt.Columns.Add("UnitPrice");
             create_dt.Columns.Add("SellingPrice");
+            create_dt.Columns.Add("ShukkaDenpyouTekiyou");
             create_dt.Columns.Add("ShukkaSiziNO");
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");

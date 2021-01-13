@@ -22,6 +22,7 @@ namespace ShinyohMenu
         DataTable dtMenu;
         string OPCD = string.Empty;
         string Hostname = string.Empty;
+        float fnsze = 17;
         public ShinyohMenu(string OCD,string version)
         {
             InitializeComponent();
@@ -50,9 +51,28 @@ namespace ShinyohMenu
             gym_1.Focus();
             ParentID = "";
             Search_Box.LostFocus += Search_Box_LostFocus;
+            ClickFirstCategory();
+        }
+        private void ClickFirstCategory()
+        {
+            //  gym_1
+            for (int f = 0; f < 20; f++)
+            {
+                var con = this.Controls.Find("gym_" + (f + 1).ToString(), true)[0] as SButton;
+                if (con.Text != "" && !string.IsNullOrEmpty(con.Text))
+                {
+                    con.Select();
+                    con.Focus();
+
+                    con.PerformClick();
+                   // SendKeys.Send("{ENTER}");
+
+
+                    return;
+                }
+            }
         }
 
-       
 
         protected void ButtonState()
         {
@@ -79,7 +99,7 @@ namespace ShinyohMenu
                             (ctrl as SButton).BackgroundImage = Properties.Resources.sygreen_1;
                             (ctrl as SButton).ForeColor = Color.White; 
                             (ctrl as SButton).FlatAppearance.BorderColor = Color.White;
-                         (ctrl as SButton).Font = new Font("MS Gothic", 20, FontStyle.Bold);
+                         (ctrl as SButton).Font = new Font("MS Gothic", fnsze, FontStyle.Bold);
                         //}
                         //else
                         //{
@@ -365,7 +385,7 @@ namespace ShinyohMenu
 
                 if (ctrl is SButton ctrb)
                 {
-                    ctrb.Font = new System.Drawing.Font("MS Gothic", 14F, System.Drawing.FontStyle.Bold); ;
+                    ctrb.Font = new System.Drawing.Font("MS Gothic", fnsze, System.Drawing.FontStyle.Bold); ;
                 }
                 else if (ctrl is Label ctl)
                 {
@@ -477,13 +497,20 @@ namespace ShinyohMenu
         public void ShinyohMenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             BaseBL bbl = new BaseBL();
-            if (bbl.ShowMessage("Q003") == DialogResult.Yes)
+            if (CheckOpenForm())
             {
-                ForceToCLose();
-                e.Cancel = false;
+                if (bbl.ShowMessage("Q003") == DialogResult.Yes)
+                {
+                    ForceToCLose();
+                    e.Cancel = false;
+                }
+                else
+                    e.Cancel = true;
             }
-            else
-                e.Cancel = true;
+        }
+        private bool CheckOpenForm()
+        {
+            return (Application.OpenForms["ShinyohMenu"].Visible == true);
         }
         public void ForceToCLose()
         {

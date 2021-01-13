@@ -172,7 +172,7 @@
             this.txtOperatorCD.DecimalPlace = 0;
             this.txtOperatorCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtOperatorCD.DepandOnMode = true;
-            this.txtOperatorCD.Font = new System.Drawing.Font("MS Gothic", 22F);
+            this.txtOperatorCD.Font = new System.Drawing.Font("MS Gothic", 26F);
             this.txtOperatorCD.IntegerPart = 0;
             this.txtOperatorCD.IsDatatableOccurs = null;
             this.txtOperatorCD.IsErrorOccurs = false;
@@ -186,7 +186,7 @@
             this.txtOperatorCD.NextControl = null;
             this.txtOperatorCD.NextControlName = null;
             this.txtOperatorCD.SearchType = Entity.SearchType.ScType.None;
-            this.txtOperatorCD.Size = new System.Drawing.Size(405, 38);
+            this.txtOperatorCD.Size = new System.Drawing.Size(405, 39);
             this.txtOperatorCD.TabIndex = 29;
             this.txtOperatorCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
