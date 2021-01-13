@@ -21,7 +21,10 @@ namespace IdouNyuuryoku
         BaseEntity base_Entity;
         BaseBL base_bl;
         IdouNyuuryokuBL Idou_BL;
+
         DataTable gv1_to_dt1;
+        DataTable F8_dt1;
+
         bool bl_rowEnter = true;
         public IdouNyuuryoku()
         {
@@ -32,6 +35,7 @@ namespace IdouNyuuryoku
             base_bl = new BaseBL();
             Idou_BL = new IdouNyuuryokuBL();
             gv1_to_dt1 = new DataTable();
+            F8_dt1 = new DataTable();
         }
 
         private void IdouNyuuryoku_Load(object sender, EventArgs e)
@@ -201,7 +205,6 @@ namespace IdouNyuuryoku
             }
 
         }
-
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
@@ -387,13 +390,13 @@ namespace IdouNyuuryoku
                 gv_1.DataSource = dt;
                 gv_1.ClearSelection();
 
-                //DataTable dt_temp = dt.Copy();
-                //gv1_to_dt1 = dt_temp;
+                DataTable dt_temp = dt.Copy();
+                gv1_to_dt1 = dt_temp;
 
-                //if (cboMode.SelectedValue.ToString() == "1")
-                //    F8_dt1 = gv1_to_dt1.Clone();
-                //else
-                //    F8_dt1 = gv1_to_dt1.Copy();
+                if (cboMode.SelectedValue.ToString() == "1")
+                    F8_dt1 = gv1_to_dt1.Clone();
+                else
+                    F8_dt1 = gv1_to_dt1.Copy();
             }
         }
 
@@ -529,6 +532,32 @@ namespace IdouNyuuryoku
 
             }
             bl_rowEnter = false;
+        }
+
+        private void btnNameF10_Click(object sender, EventArgs e)
+        {
+            F10_Gridview_Bind();
+        }
+        private void F10_Gridview_Bind()
+        {
+            //JuchuuNyuuryokuEntity obj = new JuchuuNyuuryokuEntity();
+            //obj.BrandCD = txtBrandCD.Text;
+            //obj.ShouhinCD = txtShouhinCD.Text;
+            //obj.JANCD = txtJANCD.Text;
+            //obj.ShouhinName = txtShouhinName.Text;
+            //obj.YearTerm = txtYearTerm.Text;
+            //obj.SeasonSS = chk_SS.Checked ? "1" : "0";
+            //obj.SeasonFW = chk_FW.Checked ? "1" : "0";
+            //obj.ChangeDate = txtIdouDate.Text;
+            //DataTable dt = obj_bl.JuchuuNyuuryoku_Display(obj);
+            //if (dt.Rows.Count > 0)
+            //{
+            //    gv_1.DataSource = dt;
+            //    DataTable dt_temp = dt.Copy();
+            //    gv1_to_dt1 = dt_temp;
+
+            //    F8_dt1 = gv1_to_dt1.Clone();
+            //}
         }
     }
 }
