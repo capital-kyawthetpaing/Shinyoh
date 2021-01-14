@@ -151,6 +151,7 @@
     <Content Include="StoreProcedure\ShippingNo_Search.sql" />
     <Content Include="StoreProcedure\ShukkaNo_Search.sql" />
     <Content Include="StoreProcedure\ShukkaNyuuryoku_CUD.sql" />
+    <Content Include="StoreProcedure\ShukkaNyuuryoku_Delete.sql" />
     <Content Include="StoreProcedure\ShukkaNyuuryoku_Display.sql" />
     <Content Include="StoreProcedure\ShukkaNyuuryoku_Insert.sql" />
     <Content Include="StoreProcedure\ShukkaNyuuryoku_Select_Check.sql" />
@@ -168,6 +169,7 @@
     <Content Include="StoreProcedure\ShukkaTorikomi_Error_Check.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Select_Check.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Slip_Check.sql" />
+    <Content Include="StoreProcedure\Shukka_Price.sql" />
     <Content Include="StoreProcedure\Siiresaki_Search.sql" />
     <Content Include="StoreProcedure\Siiresaki_Select_Check.sql" />
     <Content Include="StoreProcedure\SKSZ_D_Exclusive_Insert_Value.sql" />

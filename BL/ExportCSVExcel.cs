@@ -99,7 +99,10 @@ namespace BL
                     Excel.XlSaveAsAccessMode.xlExclusive,
                     Missing.Value, Missing.Value, Missing.Value,
                     Missing.Value, Missing.Value);
-                oWB.Close(Missing.Value, Missing.Value, Missing.Value);
+                //Doesn't appear in any other open windows.
+            //True: Close workbook and save changes.
+            //False: Close workbook without saving changes.
+                oWB.Close(false, Missing.Value, Missing.Value);//change
                 oWB = null;
                 oXL.Quit();
             }

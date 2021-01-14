@@ -299,7 +299,7 @@
             this.PanelDetail.Controls.Add(this.label1);
             this.PanelDetail.Controls.Add(this.lblSearch);
             this.PanelDetail.Controls.Add(this.txtSearch);
-            this.PanelDetail.Location = new System.Drawing.Point(0, 63);
+            this.PanelDetail.Location = new System.Drawing.Point(0, 74);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1370, 624);
             this.PanelDetail.TabIndex = 1;

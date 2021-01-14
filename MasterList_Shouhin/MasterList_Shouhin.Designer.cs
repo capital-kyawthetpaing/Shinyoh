@@ -66,7 +66,7 @@ namespace MasterList_Shouhin
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1485, 75);
+            this.panel1.Size = new System.Drawing.Size(1713, 75);
             // 
             // PanelTitle
             // 
@@ -189,7 +189,7 @@ namespace MasterList_Shouhin
             this.PanelDetail.Controls.Add(this.label2);
             this.PanelDetail.Location = new System.Drawing.Point(-1, 76);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1485, 692);
+            this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
             this.PanelDetail.TabIndex = 9;
             // 
             // txtSizeNO2
@@ -682,7 +682,7 @@ namespace MasterList_Shouhin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 811);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Controls.Add(this.PanelTitle);
             this.Location = new System.Drawing.Point(0, 0);
