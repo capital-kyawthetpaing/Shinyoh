@@ -35,7 +35,6 @@ CREATE PROCEDURE [dbo].[M_Staff_CUD]
     @KeyItem			    varchar(100),
 	@YuubinNO1				varchar(3),
 	@YuubinNO2				varchar(4)
-
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -46,7 +45,7 @@ BEGIN
 
 	exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
 
-    if @Mode='New'
+   if @Mode='New'
 	begin
 	    INSERT INTO M_Staff
            ([StaffCD]
@@ -116,6 +115,9 @@ BEGIN
 	       delete from M_Staff where StaffCD = @StaffCD and ChangeDate = @ChangeDate
 	 end
 END
+
+GO
+
 
 
 
