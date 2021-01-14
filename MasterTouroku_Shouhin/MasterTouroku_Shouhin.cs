@@ -428,8 +428,8 @@ namespace MasterTouroku_Shouhin
                 lbl_IManagement.Text = dt.Rows[0]["ZaikoKanriKBN_Name"].ToString();
                 txtMajorSuppliers.Text = dt.Rows[0]["MainSiiresakiCD"].ToString();
                 lbl_MajorSuppliers.Text = dt.Rows[0]["SiiresakiRyakuName"].ToString();
-                txtHandlingEndDate.Text = dt.Rows[0]["ToriatukaiShuuryouDate"].ToString();
-                txtSalesStopDate.Text = dt.Rows[0]["HanbaiTeisiDate"].ToString();
+                txtHandlingEndDate.Text = !string.IsNullOrEmpty(dt.Rows[0]["ToriatukaiShuuryouDate"].ToString()) ? Convert.ToDateTime(dt.Rows[0]["ToriatukaiShuuryouDate"].ToString()).ToString("yyyy/MM/dd") : string.Empty;
+                txtSalesStopDate.Text = !string.IsNullOrEmpty(dt.Rows[0]["HanbaiTeisiDate"].ToString()) ? Convert.ToDateTime(dt.Rows[0]["HanbaiTeisiDate"].ToString()).ToString("yyyy/MM/dd") : string.Empty;
                 txtModelNo.Text = dt.Rows[0]["Model_No"].ToString();
                 txtModelName.Text = dt.Rows[0]["Model_Name"].ToString();
                 txtFOB.Text = dt.Rows[0]["FOB"].ToString();
@@ -437,11 +437,15 @@ namespace MasterTouroku_Shouhin
                 txtHacchuuLot.Text = dt.Rows[0]["HacchuuLot"].ToString();
                 txtImage.Text = dt.Rows[0]["ShouhinImageFilePathName"].ToString();
 
+                pImage.Image = null;
                 if(!string.IsNullOrEmpty(dt.Rows[0]["ShouhinImage"].ToString()))
                 {
                     byte[] imgBytes = (byte[])dt.Rows[0]["ShouhinImage"];
-                    pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
-                    pImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                    if (imgBytes.Length > 0)
+                    {
+                        pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
+                        pImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
                 }
 
                 txtRemarks.Text = dt.Rows[0]["Remarks"].ToString();

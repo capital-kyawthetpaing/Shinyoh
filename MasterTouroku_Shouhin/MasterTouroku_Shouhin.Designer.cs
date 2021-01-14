@@ -807,7 +807,7 @@
             this.txtRemarks.NextControl = null;
             this.txtRemarks.NextControlName = "txtKensakuHyouziJun";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
-            this.txtRemarks.Size = new System.Drawing.Size(400, 19);
+            this.txtRemarks.Size = new System.Drawing.Size(500, 19);
             this.txtRemarks.TabIndex = 36;
             this.txtRemarks.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -845,7 +845,7 @@
             this.txtImage.NextControl = null;
             this.txtImage.NextControlName = "txtRemarks";
             this.txtImage.SearchType = Entity.SearchType.ScType.None;
-            this.txtImage.Size = new System.Drawing.Size(525, 19);
+            this.txtImage.Size = new System.Drawing.Size(625, 19);
             this.txtImage.TabIndex = 35;
             this.txtImage.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtImage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImage_KeyDown);
@@ -1503,7 +1503,7 @@
             this.txtKatakanaName.NextControl = null;
             this.txtKatakanaName.NextControlName = "txtJANCD";
             this.txtKatakanaName.SearchType = Entity.SearchType.ScType.None;
-            this.txtKatakanaName.Size = new System.Drawing.Size(400, 19);
+            this.txtKatakanaName.Size = new System.Drawing.Size(500, 19);
             this.txtKatakanaName.TabIndex = 12;
             this.txtKatakanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1541,7 +1541,7 @@
             this.txtShouhinRyakuName.NextControl = null;
             this.txtShouhinRyakuName.NextControlName = "txtKatakanaName";
             this.txtShouhinRyakuName.SearchType = Entity.SearchType.ScType.None;
-            this.txtShouhinRyakuName.Size = new System.Drawing.Size(400, 19);
+            this.txtShouhinRyakuName.Size = new System.Drawing.Size(500, 19);
             this.txtShouhinRyakuName.TabIndex = 11;
             this.txtShouhinRyakuName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1573,14 +1573,14 @@
             this.txtProductName.IsRequire = false;
             this.txtProductName.IsUseInitializedLayout = true;
             this.txtProductName.Location = new System.Drawing.Point(140, 65);
-            this.txtProductName.MaxLength = 50;
+            this.txtProductName.MaxLength = 100;
             this.txtProductName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtProductName.MoveNext = true;
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.NextControl = null;
             this.txtProductName.NextControlName = "txtShouhinRyakuName";
             this.txtProductName.SearchType = Entity.SearchType.ScType.None;
-            this.txtProductName.Size = new System.Drawing.Size(400, 19);
+            this.txtProductName.Size = new System.Drawing.Size(500, 19);
             this.txtProductName.TabIndex = 10;
             this.txtProductName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
