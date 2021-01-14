@@ -108,7 +108,6 @@
             this.panel1.Controls.Add(this.sRadDelete);
             this.panel1.Controls.Add(this.sRadRegister);
             this.panel1.Controls.Add(this.lbImportClassification);
-            this.panel1.Size = new System.Drawing.Size(1713, 75);
             this.panel1.Controls.SetChildIndex(this.lbImportClassification, 0);
             this.panel1.Controls.SetChildIndex(this.sRadRegister, 0);
             this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
@@ -299,7 +298,7 @@
             this.PanelDetail.Controls.Add(this.label1);
             this.PanelDetail.Controls.Add(this.lblSearch);
             this.PanelDetail.Controls.Add(this.txtSearch);
-            this.PanelDetail.Location = new System.Drawing.Point(0, 78);
+            this.PanelDetail.Location = new System.Drawing.Point(0, 80);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1713, 836);
             this.PanelDetail.TabIndex = 1;
