@@ -78,5 +78,24 @@ namespace BL {
             parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
             return ckmdl.InsertUpdateDeleteData("ShukkaNyuuryoku_CUD", GetConnectionString(), parameters);
         }
+        public string Shukka_Price(string shukkasizisuu, string ShukkaSiziNO, string ShouhinCD)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@KonkaiShukkaSiziSuu", SqlDbType.VarChar) { Value = shukkasizisuu };
+            parameters[1] = new SqlParameter("@ShukkaSiziNO_ShukkaSiziGyouNO", SqlDbType.VarChar) { Value = ShukkaSiziNO };
+            parameters[3] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
+            return ckmdl.InsertUpdateDeleteData("Shukka_Price", GetConnectionString(), parameters);
+        }
+        public DataTable GetShukkaNo(string SerialNO, string ShippingDate, string SEQNO)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@SerialNO", SqlDbType.VarChar) { Value = SerialNO };
+            parameters[1] = new SqlParameter("@refDate", SqlDbType.VarChar) { Value = ShippingDate };
+            parameters[2] = new SqlParameter("@SEQNO", SqlDbType.VarChar) { Value = SEQNO };
+            DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }
