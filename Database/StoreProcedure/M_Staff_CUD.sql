@@ -32,7 +32,9 @@ CREATE PROCEDURE [dbo].[M_Staff_CUD]
 	@Mode				    varchar(10),
 	@Program			    varchar(100),
     @PC					    varchar(30),
-    @KeyItem			    varchar(100)
+    @KeyItem			    varchar(100),
+	@YuubinNO1				varchar(3),
+	@YuubinNO2				varchar(4)
 
 AS
 BEGIN
