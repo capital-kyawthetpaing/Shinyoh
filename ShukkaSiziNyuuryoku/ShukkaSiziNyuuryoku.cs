@@ -2,6 +2,7 @@
 using Shinyoh;
 using Entity;
 using BL;
+using Shinyoh_Details;
 using CKM_CommonFunction;
 using System.Windows.Forms;
 using Shinyoh_Controls;
@@ -20,8 +21,10 @@ namespace ShukkaSiziNyuuryoku
         ShukkasiziNyuuryokuBL sksz_bl;
         BaseEntity be;
         BaseBL bbl;
-        TokuisakiDetails td = new TokuisakiDetails();
-        KouritenDetails kd = new KouritenDetails();
+        TokuisakiDetail td;
+        KouritenDetail kd;
+        // TokuisakiDetails td = new TokuisakiDetails();
+        //KouritenDetails kd = new KouritenDetails();
         public string tdDate;
         public string Detail_XML;
         DataTable dtgv1, dtTemp1, dtGS1, dtClear, dt_Header,dtResult;
@@ -48,7 +51,8 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkasizisou,colJuchuuNo,SoukoName");
-           
+            td = new TokuisakiDetail();
+            kd = new KouritenDetail();
         }
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
         {
@@ -161,33 +165,41 @@ namespace ShukkaSiziNyuuryoku
         }
         private void btn_Tokuisaki_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrWhiteSpace(sbTokuisaki.Text))
+            if (!sbTokuisaki.IsErrorOccurs)
             {
-                 if(td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbTokuisaki.Text))
-                {
-                    td.ShowDialog();
-                }
-                else
+                if (!td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbTokuisaki.Text))
                 {
                     bbl.ShowMessage("E269");
                     sbTokuisaki.Focus();
                 }
-            }            
+                else
+                {
+                    td.ShowDialog();
+                }
+            }
+            else
+            {
+                sbTokuisaki.Focus();
+            }
         }
         private void btnKouriren_Detail_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrWhiteSpace(sbKouriten.Text))
+            if(!string.IsNullOrWhiteSpace(sbKouriten.Text) && kd.Access_Kouriten_obj.KouritenCD!=null)
             {
-                if (kd.Access_Kouriten_obj.KouritenCD.ToString().Equals(sbKouriten.Text))
+                if (!kd.Access_Kouriten_obj.KouritenCD.ToString().Equals(sbKouriten.Text))
                 {
-                    kd.ShowDialog();
+                    bbl.ShowMessage("E269");
+                    sbKouriten.Focus(); 
                 }
                 else
                 {
-                    bbl.ShowMessage("E269");
-                    sbKouriten.Focus();
+                    kd.ShowDialog();
                 }
-            }           
+            } 
+            else if(!string.IsNullOrWhiteSpace(sbKouriten.Text))
+            {
+                sbKouriten.Focus();
+            }
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
@@ -734,20 +746,17 @@ namespace ShukkaSiziNyuuryoku
             if (e.KeyCode == Keys.Enter)
             {
                 lblKouritenName.Text = string.Empty;
-                if (!sbKouriten.IsErrorOccurs)
+                DataTable dt = sbKouriten.IsDatatableOccurs;
+                if (!string.IsNullOrWhiteSpace(sbKouriten.Text))
                 {
-                    DataTable dt = sbKouriten.IsDatatableOccurs;
-                    if(!string.IsNullOrWhiteSpace(sbKouriten.Text))
+                    if (ErrorCheck_Select(dt))
                     {
-                        if(ErrorCheck_Select(dt))
-                        {
-                            lblKouritenName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
-                            kd.Access_Kouriten_obj = Kouriten_Data_Select(dt);
-                        }
-                        else
-                        {
-                            sbKouriten.Focus();
-                        }
+                        lblKouritenName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
+                        kd.Access_Kouriten_obj = Kouriten_Data_Select(dt);
+                    }
+                    else
+                    {
+                        sbKouriten.Focus();
                     }
                 }
             }
@@ -820,6 +829,8 @@ namespace ShukkaSiziNyuuryoku
                 //受注番号
                 JuchuuNo_ErrorCheck();
                 //false case
+                sbShippingNO.E102Check(false);
+                sbShippingNO.E133Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
                 sbShippingNO.E115Check(false, "ShukkaSiziNyuuryoku", sbShippingNO);
                 sbShippingNO.E160Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null);
             }

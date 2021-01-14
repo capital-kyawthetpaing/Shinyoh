@@ -71,8 +71,8 @@ namespace BL
                 {
                     oSheet.Range[obj.Start_Font_Column, obj.End_Font_Column].Font.Color = obj.Font_Color;
                 }
-                //Change date format
-                if (obj.Date_Column.Count > 0)
+                //Change date format               
+                if (obj.Date_Column != null && obj.Date_Column.Count > 0)//change
                 {
                     for (int k = 0; k < obj.Date_Column.Count; k++)
                     {
@@ -81,7 +81,7 @@ namespace BL
                     }
                 }
                 //change number format
-                if (obj.Number_Column.Count > 0)
+                if (obj.Number_Column != null && obj.Number_Column.Count > 0)//change
                 {
                     for (int k = 0; k < obj.Number_Column.Count; k++)
                     {
@@ -99,7 +99,10 @@ namespace BL
                     Excel.XlSaveAsAccessMode.xlExclusive,
                     Missing.Value, Missing.Value, Missing.Value,
                     Missing.Value, Missing.Value);
-                oWB.Close(Missing.Value, Missing.Value, Missing.Value);
+                //Doesn't appear in any other open windows.
+            //True: Close workbook and save changes.
+            //False: Close workbook without saving changes.
+                oWB.Close(false, Missing.Value, Missing.Value);//change
                 oWB = null;
                 oXL.Quit();
             }

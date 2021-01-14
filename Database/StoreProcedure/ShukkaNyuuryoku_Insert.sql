@@ -1,4 +1,4 @@
- BEGIN TRY 
+﻿ BEGIN TRY 
  Drop Procedure dbo.[ShukkaNyuuryoku_Insert]
 END try
 BEGIN CATCH END CATCH 
@@ -22,13 +22,7 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 	DECLARE  @hQuantityAdjust AS INT 
-	declare @currentDate as datetime = getdate()
-
-	declare @ShukkauNO as varchar(12)  = ROW_NUMBER() OVER(ORDER BY (SELECT 100))
-	declare @Unique as uniqueidentifier = NewID()
-
-	begin
-
+	
 		CREATE TABLE #Temp_Main
 				(   
 					ShukkaNO				varchar(12) COLLATE DATABASE_DEFAULT,
@@ -61,18 +55,6 @@ BEGIN
 					KouritenTel22			varchar(5) COLLATE DATABASE_DEFAULT,	
 					KouritenTel23			varchar(5) COLLATE DATABASE_DEFAULT,	
 					ShukkaDenpyouTekiyou    varchar(80) COLLATE DATABASE_DEFAULT,
-					--ShukkaSiziNO            varchar(12) COLLATE DATABASE_DEFAULT,
-					--ShukkaYoteiDate1		date,
-					--ShukkaYoteiDate2        date,	
-					--DenpyouDate1			date,	
-					--DenpyouDate2			date,	
-					--YuubinNo1				varchar(3) COLLATE DATABASE_DEFAULT,	
-					--YuubinNo2				varchar(4) COLLATE DATABASE_DEFAULT,	
-					--TelNo1					varchar(6) COLLATE DATABASE_DEFAULT,	
-					--TelNo2					varchar(5) COLLATE DATABASE_DEFAULT,	
-					--TelNo3					varchar(5) COLLATE DATABASE_DEFAULT,	
-					--Juusho					varchar(80) COLLATE DATABASE_DEFAULT,	
-					--Meishou					varchar(40) COLLATE DATABASE_DEFAULT,
 					InsertOperator			varchar(10) COLLATE DATABASE_DEFAULT,
 					UpdateOperator			varchar(10) COLLATE DATABASE_DEFAULT,
 					PC						varchar(20) COLLATE DATABASE_DEFAULT,
@@ -112,18 +94,6 @@ BEGIN
 			  ,KouritenTel22              
 			  ,KouritenTel23   
 			  ,ShukkaDenpyouTekiyou
-			  --,ShukkaSiziNO  
-			  --,ShukkaYoteiDate1            
-			  --,ShukkaYoteiDate2    
-			  --,DenpyouDate1 
-			  --,DenpyouDate2              
-			  --,YuubinNo1              
-			  --,YuubinNo2   
-			  --,TelNo1
-			  --,TelNo2            
-			  --,TelNo3    
-			  --,Juusho 
-			  --,Meishou              
 			  ,InsertOperator              
 			  ,UpdateOperator   
 			  ,PC
@@ -163,18 +133,6 @@ BEGIN
 					KouritenTel22			varchar(5) 'KouritenTel22',	
 					KouritenTel23			varchar(5) 'KouritenTel23',	
 					ShukkaDenpyouTekiyou	varchar(80) 'ShukkaDenpyouTekiyou',
-					--ShukkaSiziNO			varchar(12) 'ShukkaSiziNO',
-					--ShukkaYoteiDate1		date 'ShukkaYoteiDate1',
-					--ShukkaYoteiDate2        date 'ShukkaYoteiDate2',
-					--DenpyouDate1			date 'DenpyouDate1',
-					--DenpyouDate2			date 'DenpyouDate2',
-					--YuubinNo1				varchar(3) 'YuubinNo1',	
-					--YuubinNo2				varchar(4) 'YuubinNo2',	
-					--TelNo1					varchar(6) 'TelNo1',	
-					--TelNo2					varchar(5) 'TelNo2',	
-					--TelNo3					varchar(5) 'TelNo3',	
-					--Juusho				    varchar(80) 'Juusho',
-					--Meishou					varchar(40) 'Meishou',
 					InsertOperator			varchar(10) 'InsertOperator',
 					UpdateOperator			varchar(10) 'UpdateOperator',
 					PC						varchar(20) 'PC',
@@ -199,6 +157,7 @@ BEGIN
 					Detail					varchar(80) COLLATE DATABASE_DEFAULT,
 					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
 					ShukkaSiziNOGyouNO		varchar(12) COLLATE DATABASE_DEFAULT,
+					JuchuuNOGyouNO			varchar(12) COLLATE DATABASE_DEFAULT,
 					DenpyouDate				date
 				)
 	    EXEC sp_xml_preparedocument @hQuantityAdjust OUTPUT,@XML_Detail
@@ -215,9 +174,10 @@ BEGIN
 			  ,MiNyuukaSuu    
 			  ,KonkaiShukkaSuu 
 			  ,Kanryo
-			  ,Detail           
-			  ,ShukkaSiziNO   
-			  ,ShukkaSiziGyouNO
+			  ,Detail  
+			  ,SoukoCD
+			  ,ShukkaSiziNOGyouNO   			 
+			  ,JuchuuNOGyouNO
 			  ,DenpyouDate
 			 )
 			 
@@ -238,25 +198,34 @@ BEGIN
 					Detail					varchar(80) 'Detail',
 					SoukoCD					varchar(12)'SoukoCD',
 					ShukkaSiziNOGyouNO		varchar(12)'ShukkaSiziNOGyouNO',
+					JuchuuNOGyouNO			varchar(12)'JuchuuNOGyouNO',
 					DenpyouDate				date 'DenpyouDate'
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
+					
+		declare		@Unique as uniqueidentifier = NewID(),
+					@ShukkaDate as varchar(10) = (select ShukkaDate from #Temp_Main),
+					@ShukkaNO varchar(12)=(select ShukkaNO from #Temp_Main ),
+					@StaffCD varchar(10) = (select StaffCD from #Temp_Main),
+					@TokuisakiCD varchar(10) = (select TokuisakiCD from #Temp_Main),
+					@KouritenCD varchar(10) = (select KouritenCD from #Temp_Main),
+					@ShouhinCD varchar(10) = (select ShouhinCD from #Temp_Detail),
+					@InsertOperator varchar(10) = (select InsertOperator from #Temp_Main),
+					@ProgramID varchar(100) = (select ProgramID from #Temp_Main),
+					@PC varchar(30) = (select PC from #Temp_Main),
+					@KeyItem varchar(100)= (select ShukkaNO from #Temp_Main),
+					@currentDate as datetime = getdate()
 
-	    SELECT * FROM #Temp_Detail
-
-		
-		 begin
-		 declare @filter_date as date = (select ShukkaDate from #Temp_Main)
 
 			 --D_Shukka A
 			INSERT INTO D_Shukka
 			   (ShukkaNO,StaffCD ,ShukkaDate, KaikeiYYMM ,TokuisakiCD,TokuisakiRyakuName ,KouritenCD ,KouritenRyakuName,ShukkaDenpyouTekiyou,UriageKanryouKBN ,TokuisakiName           
 				,TokuisakiYuubinNO1,TokuisakiYuubinNO2,TokuisakiJuusho1,TokuisakiJuusho2,[TokuisakiTelNO1-1],[TokuisakiTelNO1-2],[TokuisakiTelNO1-3],[TokuisakiTelNO2-1],[TokuisakiTelNO2-2],[TokuisakiTelNO2-3]                
-				,TokuisakiTantouBushoName,KouritenTantoushaYakushoku,TokuisakiTantoushaName,KouritenName,KouritenYuubinNO1,KouritenYuubinNO2,KouritenJuusho1,KouritenJuusho2,[KouritenTelNO1-1] 
+				,TokuisakiTantouBushoName,TokuisakiTantoushaYakushoku,TokuisakiTantoushaName,KouritenName,KouritenYuubinNO1,KouritenYuubinNO2,KouritenJuusho1,KouritenJuusho2,[KouritenTelNO1-1] 
 				,[KouritenTelNO1-2],[KouritenTelNO1-3],[KouritenTelNO2-1],[KouritenTelNO2-2],[KouritenTelNO2-3],KouritenTantouBushoName,KouritenTantoushaYakushoku,KouritenTantoushaName
 				,TorikomiDenpyouNO ,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime) 
 
-			select @ShukkauNO,m.StaffCD,m.ShukkaDate,CONVERT(INT, FORMAT(Cast(m.ShukkaDate as Date), 'yyyyMM')),m.TokuisakiCD,
+			select @ShukkaNO,m.StaffCD,m.ShukkaDate,CONVERT(INT, FORMAT(Cast(m.ShukkaDate as Date), 'yyyyMM')),m.TokuisakiCD,
 					CASE WHEN FT.ShokutiFLG=0 THEN FT.TokuisakiRyakuName ELSE m.TokuisakiRyakuName End,m.KouritenCD,
 					CASE WHEN FK.ShokutiFLG=0 THEN FK.KouritenRyakuName ELSE m.KouritenRyakuName End,m.ShukkaDenpyouTekiyou,0,
 
@@ -291,8 +260,8 @@ BEGIN
 					CASE WHEN FK.ShokutiFLG = 0 THEN FK.TantoushaName ElSE NULL END,
 					NULL,m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate
 				 from #Temp_Main m 
-				 left outer join F_Tokuisaki(@filter_date) FT on FT.TokuisakiCD  = m.TokuisakiCD
-				 left outer join F_Kouriten(@filter_date) FK on FK.KouritenCD  = m.KouritenCD
+				 left outer join F_Tokuisaki(@ShukkaDate) FT on FT.TokuisakiCD  = m.TokuisakiCD
+				 left outer join F_Kouriten(@ShukkaDate) FK on FK.KouritenCD  = m.KouritenCD
 
 			--D_ShukkaMeisai B
 			INSERT INTO D_ShukkaMeisai
@@ -300,24 +269,32 @@ BEGIN
 				ShukkaSuu,TaniCD,ShukkaMeisaiTekiyou,SoukoCD,UriageKanryouKBN,UriageZumiSuu,ShukkaSiziNO,ShukkaSiziGyouNO,JuchuuNO,JuchuuGyouNO,
 				InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime) 
 
-			select @ShukkauNO,ROW_NUMBER() OVER(ORDER BY (SELECT 1)),ROW_NUMBER() OVER(ORDER BY (SELECT 1)),d.DenpyouDate,FS.BrandCD,d.ShouhinCD,d.ShouhinName,d.JANCD,d.ColorRyakuName,d.ColorNO,d.SizeNO,
-					d.KonkaiShukkaSuu,FS.TaniCD,d.Detail,d.SoukoCD,0,0,(select val from dbo.split(d.ShukkaSiziNOGyouNO,'-')) as [ShukkaSiziNO],
-					(select val from dbo.split(d.ShukkaSiziNOGyouNO,'-')) as [ShukkaSiziGyouNO],
+			select @ShukkaNO,ROW_NUMBER() OVER(ORDER BY (SELECT 1)),ROW_NUMBER() OVER(ORDER BY (SELECT 1)),d.DenpyouDate,FS.BrandCD,d.ShouhinCD,d.ShouhinName,d.JANCD,d.ColorRyakuName,d.ColorNO,d.SizeNO,
+					'250',FS.TaniCD,d.Detail,d.SoukoCD,0,0,LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1),
+					RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO)),
 					DSM.JuchuuNO,DSM.JuchuuGyouNO,m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate
 				 from  #Temp_Main m , #Temp_Detail d
-				 left outer join D_ShukkaSiziMeisai DSM on DSM.ShukkaSiziNO = [ShukkaSiziNO] and DSM.ShukkaSiziGyouNO = [ShukkaSiziGyouNO]
-				 left outer join F_Shouhin(@filter_date) FS on FS.ShouhinCD  = d.ShouhinCD
+				 left outer join D_ShukkaSiziMeisai DSM on DSM.ShukkaSiziNO =LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
+								and DSM.ShukkaSiziGyouNO = RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
+				 left outer join F_Shouhin(@ShukkaDate) FS on FS.ShouhinCD  = d.ShouhinCD
 
-			--D_ShukkaShousai C
-			INSERT INTO D_ShukkaShousai
-				(ShukkaSiziNO,ShukkaSiziGyouNO,ShukkaSiziShousaiNO,SoukoCD,ShouhinCD,ShouhinName,ShukkaSuu,KanriNO,NyuukoDate,UriageZumiSuu
-				,ShukkaSiziNO,ShukkaSiziGyouNO,ShukkaSiziShousaiNO,JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO
-				,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
+			----D_ShukkaShousai C
+			--INSERT INTO D_ShukkaShousai
+			--	(ShukkaNO,ShukkaGyouNO,ShukkaShousaiNO,SoukoCD,ShouhinCD,ShouhinName,ShukkaSuu,KanriNO,NyuukoDate,UriageZumiSuu
+			--	,ShukkaSiziNO,ShukkaSiziGyouNO,ShukkaSiziShousaiNO,JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO
+			--	,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
 
-			select @ShukkauNO,ROW_NUMBER() OVER(ORDER BY (SELECT 1)),ROW_NUMBER() OVER(ORDER BY (SELECT 1)),0,d.ShouhinCD,d.ShouhinName,'','','',0,
-					'','','','','','',
-					m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate
-				 from #Temp_Detail d,#Temp_Main m
+			--select @ShukkaNO,ROW_NUMBER() OVER(ORDER BY (SELECT 1)),ROW_NUMBER() OVER(ORDER BY (SELECT 1)),d.SoukoCD,d.ShouhinCD,d.ShouhinName,
+			--		(DS.ShukkaSiziSuu + '-'+ cast(DS.ShukkaZumiSuu as varchar)) as ShukkaSuu,DS.KanriNO,DS.NyuukoDate,0,
+			--		DS.ShukkaSiziNO,DS.ShukkaSiziGyouNO,DS.ShukkaSiziShousaiNO,DS.JuchuuNO,DS.JuchuuGyouNO,DS.JuchuuShousaiNO,
+			--		m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate
+			--	 from D_ShukkaSiziShousai DS,#Temp_Detail d,#Temp_Main m
+			--	 where DS.ShukkaSiziNO = LEFT((d.ShukkaSiziNOGyouNO), CHARINDEX('-', (d.ShukkaSiziNOGyouNO)) - 1)
+			--		and DS.ShukkaSiziGyouNO=RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
+			--		and d.ShouhinCD=DS.ShouhinCD
+			--		and  ShukkaSiziSuu > ShukkaZumiSuu and NyuukoDate != ''
+			--		order by DS.KanriNO asc,DS.NyuukoDate asc
+			
 
 
 			--D_ShukkaHistory D
@@ -354,56 +331,161 @@ BEGIN
 			select  @Unique,DS.ShukkaNO,ShukkaGyouNO,ShukkaShousaiNO,10,SoukoCD,ShouhinCD,ShouhinName,ShukkaSuu,KanriNO,NyuukoDate,UriageZumiSuu,DS.ShukkaSiziNO,ShukkaSiziGyouNO,ShukkaSiziShousaiNO,
 				   JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,DS.InsertOperator,InsertDateTime,DS.UpdateOperator,UpdateDateTime,m.InsertOperator,@currentDate
 				from D_ShukkaShousai DS, #Temp_Main m
+	
 
-
-
-			--D_ShukkaSiziMeisai G
-			update D_ShukkaSiziMeisai set	
-				ShukkaZumiSuu = ShukkaZumiSuu + d.KonkaiShukkaSuu,
-				UpdateOperator = m.InsertOperator,
-				UpdateDateTime = @currentDate			
-			from #Temp_Main m,D_ShukkaSiziMeisai DS
-			inner join #Temp_Detail d on d.ShukkaSiziNO=DS.ShukkaSiziNO and d.ShukkaSiziGyouNO=DS.ShukkaSiziGyouNO
-
-			----D_ShukkaSiziMeisai A
-			--update D_ShukkaSiziMeisai set	
-			--	ShukkaKanryouKBN = case WHEN ShukkaSiziSuu <= ShukkaZumiSuu Then 1 WHEN d.Kanryo = 'ON' Then 1 ELSE 0 End
-			--from D_ShukkaSiziMeisai DS
-			--inner join #Temp_Detail d on d.ShukkaSiziGyouNO=DS.ShukkaSiziGyouNO
-			--where DS.ShukkaSiziNO=d.ShukkaSiziNO 
-
-
-
-			----	--D_ShukkaSizi A
-			----update D_ShukkaSizi set	
-			----	ShukkaKanryouKBN = B.ShukkaKanryouKBN
-			----from D_ShukkaSizi A
-			----inner join (select ShukkaSiziNO,min(ShukkaKanryouKBN) as ShukkaKanryouKBN from D_ShukkaSiziMeisai ) B --where ShukkaSiziNO=m.ShukkaSiziNO) 
-			----on A.ShukkaSiziNO=B.ShukkaSiziNO 
-
-
-
-			----D_Exclusive Y
-			--INSERT INTO D_Exclusive
-			--	(DataKBN,Number,OperateDataTime,Operator,Program,PC)
-
-			--select  12,d.ShukkaSiziNO,@currentDate,m.InsertOperator,m.ProgramID,m.PC
-			--from #Temp_Main m,#Temp_Detail d
-
-			----L_Log Z
-			--declare	@InsertOperator  varchar(10) = (select m.InsertOperator from #Temp_Main m)
-			--declare @Program         varchar(100) = (select m.ProgramID from #Temp_Main m)
-			--declare @PC              varchar(30) = (select m.PC from #Temp_Main m)
-			--declare @OperateMode     varchar(50) = 'New' 
-			--declare @KeyItem         varchar(100)= (select m.ShukkaNO from #Temp_Main m)
+			--	--窶ｻ繧ｷ繝ｼ繝医梧ｶ郁ｾｼ鬆・榊盾辣ｧ
+			--DECLARE @Price_table TABLE (idx int Primary Key IDENTITY(1,1),
+			--						KonkaiShukkaSuu varchar(50),
+			--						ShukkaSiziNOGyouNO  varchar(12),ShouhinCD  varchar(50))
+			--			INSERT @Price_table  SELECT KonkaiShukkaSuu,ShukkaSiziNOGyouNO,ShouhinCD FROM #Temp_Detail
 			
-			--exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@OperateMode,@KeyItem
+			--declare @Count as int = 1
+			
+			--			WHILE @Count <= (SELECT COUNT(*) FROM #Temp_Detail)
+			--			BEGIN
+			--			declare @KonkaiShukkaSuu varchar(50)=(select KonkaiShukkaSuu from @Price_table  WHERE idx =@Count)
+			--				declare @Value2 as varchar(12)=(select ShukkaSiziNOGyouNO from @Price_table WHERE idx =@Count),
+			--					@Value3 as varchar(50)=(select ShouhinCD  from @Price_table WHERE idx =@Count)
+			 
+			--				DECLARE CUR_POINTER CURSOR FAST_FORWARD FOR
+			--				SELECT KonkaiShukkaSuu
+			--				FROM   #Temp_Detail    
+ 
+			--			OPEN CUR_POINTER
+			--			FETCH NEXT FROM CUR_POINTER INTO @KonkaiShukkaSuu
+ 
+			--			WHILE @@FETCH_STATUS = 0
+			--			BEGIN		
 
-		 end
+			--				exec  [dbo].[Shukkasizi_Price]  @KonkaiShukkaSuu,@Value2,@Value3
+
+			--				FETCH NEXT FROM CUR_POINTER INTO @KonkaiShukkaSuu
+			--			END
+			--			CLOSE CUR_POINTER
+			--			DEALLOCATE CUR_POINTER
+			--		SET @Count = @Count + 1
+			--			END;
+
+			----D_ShukkaSiziMeisai G
+			--update D_ShukkaSiziMeisai set	
+			--	ShukkaZumiSuu = ShukkaZumiSuu + d.KonkaiShukkaSuu,
+			--	UpdateOperator = m.InsertOperator,
+			--	UpdateDateTime = @currentDate			
+			--from #Temp_Main m,D_ShukkaSiziMeisai DS
+			--inner join #Temp_Detail d on LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1)=DS.ShukkaSiziNO 
+			--							and RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))=DS.ShukkaSiziGyouNO
+			
+
+
+			------D_ShukkaSiziMeisai A
+			--update A set	
+			--	ShukkaKanryouKBN = case WHEN ShukkaSiziSuu <= ShukkaZumiSuu Then 1 WHEN d.Kanryo = 1 Then 1 ELSE 0 End
+			--from D_ShukkaSiziMeisai A,#Temp_Detail d
+			--where A.ShukkaSiziNO=LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
+
+
+
+			----D_ShukkaSizi A
+			--update A set	
+			--	ShukkaKanryouKBN = B.ShukkaKanryouKBN
+			--from D_ShukkaSizi A
+			--inner join (select ShukkaSiziNO,min(ShukkaKanryouKBN) ShukkaKanryouKBN from D_ShukkaSiziMeisai, #Temp_Detail d 
+			--where ShukkaSiziNO=LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1)	group by ShukkaSiziNO)B
+			--on A.ShukkaSiziNO=B.ShukkaSiziNO 
+
+			------D_JuchuuShousai 
+			----	WHILE @a >0
+			----		BEGIN
+			----		IF EXISTS (SELECT TOP 1 * FROM D_JuchuuShousai DJ
+			----			INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE ShukkaSiziZumiSuu > ShukkaZumiSuu and NyuukoDate != ''
+			----			AND ShukkaSi = LEFT(@ShukkaSiziNO_ShukkaSiziGyouNO, CHARINDEX('-', @ShukkaSiziNO_ShukkaSiziGyouNO) - 1) AND ShukkaSiziGyouNO = RIGHT(@ShukkaSiziNO_ShukkaSiziGyouNO, LEN(@ShukkaSiziNO_ShukkaSiziGyouNO) - CHARINDEX('-', @ShukkaSiziNO_ShukkaSiziGyouNO)) ORDER BY KanriNO	ASC, NyuukoDate ASC) DS1
+			----			ON DS.ShukkaSiziNO = DS1.ShukkaSiziNO AND DS.ShukkaSiziGyouNO = DS1.ShukkaSiziGyouNO AND DS.ShukkaSiziShousaiNO = DS1.ShukkaSiziShousaiNO AND DS.ShukkaSiziSuu > DS.ShukkaZumiSuu and DS.NyuukoDate != ''
+			----			AND DS.ShukkaSiziNO = LEFT(@ShukkaSiziNO_ShukkaSiziGyouNO, CHARINDEX('-', @ShukkaSiziNO_ShukkaSiziGyouNO) - 1) AND DS.ShukkaSiziGyouNO = RIGHT(@ShukkaSiziNO_ShukkaSiziGyouNO, LEN(@ShukkaSiziNO_ShukkaSiziGyouNO) - CHARINDEX('-', @ShukkaSiziNO_ShukkaSiziGyouNO)))
+			----		BEGIN		
+			----			UPDATE DS
+			----			SET DS.ShukkaZumiSuu = CASE WHEN DS.ShukkaSiziSuu > @a THEN DS.ShukkaZumiSuu + 200 ELSE 0 END, 
+			----				--DS.ShukkaZumiSuu = CASE WHEN DS.ShukkaZumiSuu > @a THEN DS.ShukkaZumiSuu + @b ELSE 0 END,
+			----				@b = CASE WHEN DS.ShukkaSiziSuu > @a THEN @a - 200 ELSE 0 END
+			----			FROM D_ShukkaSiziShousai DS
+			----			INNER JOIN (SELECT TOP 1 * FROM D_ShukkaSiziShousai WHERE ShukkaSiziSuu > ShukkaZumiSuu and NyuukoDate != ''
+			----			AND ShukkaSiziNO = LEFT(@ShukkaSiziNO_ShukkaSiziGyouNO, CHARINDEX('-', @ShukkaSiziNO_ShukkaSiziGyouNO) - 1) AND ShukkaSiziGyouNO = RIGHT(@ShukkaSiziNO_ShukkaSiziGyouNO, LEN(@ShukkaSiziNO_ShukkaSiziGyouNO) - CHARINDEX('-', @ShukkaSiziNO_ShukkaSiziGyouNO)) ORDER BY KanriNO	ASC, NyuukoDate ASC) DS1
+			----			ON DS.ShukkaSiziNO = DS1.ShukkaSiziNO AND DS.ShukkaSiziGyouNO = DS1.ShukkaSiziGyouNO AND DS.ShukkaSiziShousaiNO = DS1.ShukkaSiziShousaiNO AND DS.ShukkaSiziSuu > DS.ShukkaZumiSuu and DS.NyuukoDate != ''
+			----			AND DS.ShukkaSiziNO = LEFT(@ShukkaSiziNO_ShukkaSiziGyouNO, CHARINDEX('-', @ShukkaSiziNO_ShukkaSiziGyouNO) - 1) AND DS.ShukkaSiziGyouNO = RIGHT(@ShukkaSiziNO_ShukkaSiziGyouNO, LEN(@ShukkaSiziNO_ShukkaSiziGyouNO) - CHARINDEX('-', @ShukkaSiziNO_ShukkaSiziGyouNO))
+			----		END
+			----			ELSE
+			----				BREAK
+			----		END
+
+		--	--D_JuchuuMeisai H
+		--	update DJ set	
+		--		ShukkaZumiSuu = ShukkaZumiSuu + d.KonkaiShukkaSuu,
+		--		UpdateOperator = m.InsertOperator,
+		--		UpdateDateTime = @currentDate			
+		--	from #Temp_Main m,D_JuchuuMeisai DJ
+		--	inner join #Temp_Detail d on LEFT(d.JuchuuNOGyouNO, CHARINDEX('-', d.JuchuuNOGyouNO) - 1)=DJ.JuchuuNO 
+		--	and RIGHT(d.JuchuuNOGyouNO, LEN(d.JuchuuNOGyouNO) - CHARINDEX('-', d.JuchuuNOGyouNO))=DJ.JuchuuGyouNO
+
+
+		--	--D_JuchuuMeisai A
+		--	update A set	
+		--		ShukkaKanryouKBN = case WHEN A.ShukkaSiziZumiSuu <= ShukkaZumiSuu Then 1 WHEN d.Kanryo = 1 Then 1 ELSE 0 End
+		--	from #Temp_Detail d,D_JuchuuMeisai A
+		--	where A.JuchuuNO=LEFT(d.JuchuuNOGyouNO, CHARINDEX('-', d.JuchuuNOGyouNO) - 1)
+
+
+		--	--D_Juchuu A
+		--	update A set	
+		--		ShukkaKanryouKBN = B.ShukkaKanryouKBN
+		--	from #Temp_Detail d,D_Juchuu A
+		--	inner join (select JuchuuNO,min(ShukkaKanryouKBN) ShukkaKanryouKBN from D_JuchuuMeisai DM,#Temp_Detail d 
+		--	where DM.JuchuuNO=LEFT(d.JuchuuNOGyouNO, CHARINDEX('-', d.JuchuuNOGyouNO) - 1)	group by JuchuuNO) B
+		--	on A.JuchuuNO=B.JuchuuNO
+			
+
+		--	UPDATE M_Tokuisaki 
+		--	set UsedFlg = 1 
+		--	where TokuisakiCD=@TokuisakiCD
+		--	and  ChangeDate = (select ChangeDate from F_Tokuisaki(@ShukkaDate) where TokuisakiCD = @TokuisakiCD)
+
+		--	UPDATE M_Shouhin 
+		--	set UsedFlg = 1 
+		--	where ShouhinCD=@ShouhinCD
+		--	and  ChangeDate = (select ChangeDate from F_Shouhin(@ShukkaDate) where ShouhinCD = @ShouhinCD)
+
+		--	UPDATE M_Kouriten 
+		--	set UsedFlg = 1 
+		--	where KouritenCD=@KouritenCD
+		--	and  ChangeDate = (select ChangeDate from F_Kouriten(@ShukkaDate) where KouritenCD = @KouritenCD)
+
+		--	UPDATE M_Staff 
+		--	set UsedFlg = 1 
+		--	where StaffCD=@StaffCD
+		--	and  ChangeDate = (select ChangeDate from F_Staff(@ShukkaDate) where StaffCD = @StaffCD)
+
+
+		--	--L_Log Z	
+		--	exec dbo.L_Log_Insert @InsertOperator,@ProgramID,@PC,'New',@KeyItem
+
 		
+		--			--D_Exclusive Y
+		--DECLARE @ShukkaSiziNO_table TABLE (idx int Primary Key IDENTITY(1,1), ShukkaSiziNO varchar(20))
+		--			INSERT @ShukkaSiziNO_table SELECT distinct LEFT((ShukkaSiziNOGyouNO), CHARINDEX('-', (ShukkaSiziNOGyouNO)) - 1) FROM #Temp_Detail
+			
+		--			declare @Count as int = 1
+		--			WHILE @Count <= (SELECT COUNT(*) FROM @ShukkaSiziNO_table)
+		--			BEGIN
+		--			 DELETE A 
+		--			 From D_Exclusive A
+		--			 where A.DataKBN=12
+		--			 and A.Number=(select ShukkaSiziNO from @ShukkaSiziNO_table WHERE idx =@Count)
+		--		SET @Count = @Count + 1
+		--			END;
+
+
+					
+
 		DROP TABLE #Temp_Main
 		DROP TABLE #Temp_Detail
-	end
 END
 
 

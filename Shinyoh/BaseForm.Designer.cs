@@ -65,7 +65,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1524, 75);
+            this.panel1.Size = new System.Drawing.Size(1713, 75);
             this.panel1.TabIndex = 0;
             // 
             // cboMode
@@ -100,7 +100,7 @@
             this.sLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel2.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.sLabel2.Location = new System.Drawing.Point(1282, 39);
+            this.sLabel2.Location = new System.Drawing.Point(1471, 39);
             this.sLabel2.Name = "sLabel2";
             this.sLabel2.Size = new System.Drawing.Size(100, 19);
             this.sLabel2.TabIndex = 3;
@@ -114,7 +114,7 @@
             this.sLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel1.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.sLabel1.Location = new System.Drawing.Point(1282, 9);
+            this.sLabel1.Location = new System.Drawing.Point(1471, 9);
             this.sLabel1.Name = "sLabel1";
             this.sLabel1.Size = new System.Drawing.Size(200, 19);
             this.sLabel1.TabIndex = 3;
@@ -128,7 +128,7 @@
             this.lblDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDate.Location = new System.Drawing.Point(1183, 39);
+            this.lblDate.Location = new System.Drawing.Point(1372, 39);
             this.lblDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(100, 19);
@@ -143,7 +143,7 @@
             this.lblOperator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblOperator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblOperator.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblOperator.Location = new System.Drawing.Point(1183, 9);
+            this.lblOperator.Location = new System.Drawing.Point(1372, 9);
             this.lblOperator.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblOperator.Name = "lblOperator";
             this.lblOperator.Size = new System.Drawing.Size(100, 19);
@@ -182,11 +182,11 @@
             this.tableLayoutPanel1.Controls.Add(this.BtnF10, 9, 0);
             this.tableLayoutPanel1.Controls.Add(this.BtnF11, 10, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 547);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 917);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1524, 44);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1713, 44);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // BtnF4
@@ -196,10 +196,12 @@
             this.BtnF4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF4.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF4.Location = new System.Drawing.Point(379, 1);
+            this.BtnF4.Location = new System.Drawing.Point(427, 1);
             this.BtnF4.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF4.Name = "BtnF4";
-            this.BtnF4.Size = new System.Drawing.Size(125, 42);
+            this.BtnF4.NextControl = null;
+            this.BtnF4.NextControlName = null;
+            this.BtnF4.Size = new System.Drawing.Size(141, 42);
             this.BtnF4.TabIndex = 16;
             this.BtnF4.Tag = "4";
             this.BtnF4.Text = "(F4)";
@@ -214,10 +216,12 @@
             this.BtnF5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF5.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF5.Location = new System.Drawing.Point(505, 1);
+            this.BtnF5.Location = new System.Drawing.Point(569, 1);
             this.BtnF5.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF5.Name = "BtnF5";
-            this.BtnF5.Size = new System.Drawing.Size(125, 42);
+            this.BtnF5.NextControl = null;
+            this.BtnF5.NextControlName = null;
+            this.BtnF5.Size = new System.Drawing.Size(141, 42);
             this.BtnF5.TabIndex = 17;
             this.BtnF5.Tag = "5";
             this.BtnF5.Text = "(F5)";
@@ -232,10 +236,12 @@
             this.BtnF6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF6.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF6.Location = new System.Drawing.Point(631, 1);
+            this.BtnF6.Location = new System.Drawing.Point(711, 1);
             this.BtnF6.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF6.Name = "BtnF6";
-            this.BtnF6.Size = new System.Drawing.Size(125, 42);
+            this.BtnF6.NextControl = null;
+            this.BtnF6.NextControlName = null;
+            this.BtnF6.Size = new System.Drawing.Size(141, 42);
             this.BtnF6.TabIndex = 18;
             this.BtnF6.Tag = "6";
             this.BtnF6.Text = "(F6)";
@@ -250,10 +256,12 @@
             this.BtnF3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF3.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF3.Location = new System.Drawing.Point(253, 1);
+            this.BtnF3.Location = new System.Drawing.Point(285, 1);
             this.BtnF3.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF3.Name = "BtnF3";
-            this.BtnF3.Size = new System.Drawing.Size(125, 42);
+            this.BtnF3.NextControl = null;
+            this.BtnF3.NextControlName = null;
+            this.BtnF3.Size = new System.Drawing.Size(141, 42);
             this.BtnF3.TabIndex = 15;
             this.BtnF3.Tag = "3";
             this.BtnF3.Text = "(F3)";
@@ -268,10 +276,12 @@
             this.BtnF2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF2.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF2.Location = new System.Drawing.Point(127, 1);
+            this.BtnF2.Location = new System.Drawing.Point(143, 1);
             this.BtnF2.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF2.Name = "BtnF2";
-            this.BtnF2.Size = new System.Drawing.Size(125, 42);
+            this.BtnF2.NextControl = null;
+            this.BtnF2.NextControlName = null;
+            this.BtnF2.Size = new System.Drawing.Size(141, 42);
             this.BtnF2.TabIndex = 14;
             this.BtnF2.Tag = "2";
             this.BtnF2.Text = "(F2)";
@@ -286,10 +296,12 @@
             this.BtnF7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF7.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF7.Location = new System.Drawing.Point(757, 1);
+            this.BtnF7.Location = new System.Drawing.Point(853, 1);
             this.BtnF7.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF7.Name = "BtnF7";
-            this.BtnF7.Size = new System.Drawing.Size(125, 42);
+            this.BtnF7.NextControl = null;
+            this.BtnF7.NextControlName = null;
+            this.BtnF7.Size = new System.Drawing.Size(141, 42);
             this.BtnF7.TabIndex = 19;
             this.BtnF7.Tag = "7";
             this.BtnF7.Text = "(F7)";
@@ -307,7 +319,9 @@
             this.BtnF1.Location = new System.Drawing.Point(1, 1);
             this.BtnF1.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF1.Name = "BtnF1";
-            this.BtnF1.Size = new System.Drawing.Size(125, 42);
+            this.BtnF1.NextControl = null;
+            this.BtnF1.NextControlName = null;
+            this.BtnF1.Size = new System.Drawing.Size(141, 42);
             this.BtnF1.TabIndex = 13;
             this.BtnF1.Tag = "1";
             this.BtnF1.Text = "(F1)";
@@ -322,10 +336,12 @@
             this.BtnF8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF8.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF8.Location = new System.Drawing.Point(883, 1);
+            this.BtnF8.Location = new System.Drawing.Point(995, 1);
             this.BtnF8.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF8.Name = "BtnF8";
-            this.BtnF8.Size = new System.Drawing.Size(125, 42);
+            this.BtnF8.NextControl = null;
+            this.BtnF8.NextControlName = null;
+            this.BtnF8.Size = new System.Drawing.Size(141, 42);
             this.BtnF8.TabIndex = 20;
             this.BtnF8.Tag = "8";
             this.BtnF8.Text = "(F8)";
@@ -340,10 +356,12 @@
             this.BtnF12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF12.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF12.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF12.Location = new System.Drawing.Point(1387, 1);
+            this.BtnF12.Location = new System.Drawing.Point(1563, 1);
             this.BtnF12.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF12.Name = "BtnF12";
-            this.BtnF12.Size = new System.Drawing.Size(136, 42);
+            this.BtnF12.NextControl = null;
+            this.BtnF12.NextControlName = null;
+            this.BtnF12.Size = new System.Drawing.Size(149, 42);
             this.BtnF12.TabIndex = 24;
             this.BtnF12.Tag = "12";
             this.BtnF12.Text = "(F12)";
@@ -358,10 +376,12 @@
             this.BtnF9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF9.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF9.Location = new System.Drawing.Point(1009, 1);
+            this.BtnF9.Location = new System.Drawing.Point(1137, 1);
             this.BtnF9.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF9.Name = "BtnF9";
-            this.BtnF9.Size = new System.Drawing.Size(125, 42);
+            this.BtnF9.NextControl = null;
+            this.BtnF9.NextControlName = null;
+            this.BtnF9.Size = new System.Drawing.Size(141, 42);
             this.BtnF9.TabIndex = 21;
             this.BtnF9.Tag = "9";
             this.BtnF9.Text = "(F9)";
@@ -376,10 +396,12 @@
             this.BtnF10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF10.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF10.Location = new System.Drawing.Point(1135, 1);
+            this.BtnF10.Location = new System.Drawing.Point(1279, 1);
             this.BtnF10.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF10.Name = "BtnF10";
-            this.BtnF10.Size = new System.Drawing.Size(125, 42);
+            this.BtnF10.NextControl = null;
+            this.BtnF10.NextControlName = null;
+            this.BtnF10.Size = new System.Drawing.Size(141, 42);
             this.BtnF10.TabIndex = 22;
             this.BtnF10.Tag = "10";
             this.BtnF10.Text = "(F10)";
@@ -394,10 +416,12 @@
             this.BtnF11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BtnF11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.BtnF11.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.BtnF11.Location = new System.Drawing.Point(1261, 1);
+            this.BtnF11.Location = new System.Drawing.Point(1421, 1);
             this.BtnF11.Margin = new System.Windows.Forms.Padding(0);
             this.BtnF11.Name = "BtnF11";
-            this.BtnF11.Size = new System.Drawing.Size(125, 42);
+            this.BtnF11.NextControl = null;
+            this.BtnF11.NextControlName = null;
+            this.BtnF11.Size = new System.Drawing.Size(141, 42);
             this.BtnF11.TabIndex = 23;
             this.BtnF11.Tag = "11";
             this.BtnF11.Text = "(F11)";
@@ -409,7 +433,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1524, 591);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panel1);
             this.KeyPreview = true;
