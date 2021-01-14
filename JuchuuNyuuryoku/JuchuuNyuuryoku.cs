@@ -919,41 +919,44 @@ namespace JuchuuNyuuryoku
                 DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  DJMSenpouHacchuuNO='"+senpouHacchuuNO+ "' and SiiresakiCD='"+siiresakiCD+ "' and SoukoCD='"+soukoCD+"'").SingleOrDefault();
 
                 F8_drNew[0] = shouhinCD;
-                for (int c = 1; c < gv_1.Columns.Count; c++)
+                if(row.Cells["colJuchuuSuu"].Value.ToString() != "0")
                 {
-                    if (gv_1.Columns[c].Name == "colFree" || gv_1.Columns[c].Name == "colJuchuuSuu" || gv_1.Columns[c].Name == "colSenpouHacchuuNO" || gv_1.Columns[c].Name == "colSiiresakiCD" || gv_1.Columns[c].Name == "colSoukoCD")
+                    for (int c = 1; c < gv_1.Columns.Count; c++)
                     {
-                        if (existDr1 != null)
+                        if (gv_1.Columns[c].Name == "colFree" || gv_1.Columns[c].Name == "colJuchuuSuu" || gv_1.Columns[c].Name == "colSenpouHacchuuNO" || gv_1.Columns[c].Name == "colSiiresakiCD" || gv_1.Columns[c].Name == "colSoukoCD")
                         {
-                            if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                            if (existDr1 != null)
                             {
-                                bl = true;
-                                F8_drNew[c] = row.Cells[c].Value;
+                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                {
+                                    bl = true;
+                                    F8_drNew[c] = row.Cells[c].Value;
+                                }
+                                else
+                                {
+                                    F8_drNew[c] = existDr1[c];
+                                }
                             }
                             else
                             {
-                                F8_drNew[c] = existDr1[c];
+                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                    bl = true;
+
+                                F8_drNew[c] = row.Cells[c].Value;
                             }
                         }
                         else
                         {
-                            if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-                                bl = true;
-
                             F8_drNew[c] = row.Cells[c].Value;
                         }
                     }
-                    else
+                    // grid 1 insert(if exist, remove exist and insert)
+                    if (bl == true)
                     {
-                        F8_drNew[c] = row.Cells[c].Value;
+                        if (existDr1 != null)
+                            F8_dt1.Rows.Remove(existDr1);
+                        F8_dt1.Rows.Add(F8_drNew);
                     }
-                }
-                // grid 1 insert(if exist, remove exist and insert)
-                if (bl == true)
-                {
-                    if (existDr1 != null)
-                        F8_dt1.Rows.Remove(existDr1);
-                    F8_dt1.Rows.Add(F8_drNew);
                 }
             }
 
