@@ -285,6 +285,8 @@
             this.gv_1.Name = "gv_1";
             this.gv_1.Size = new System.Drawing.Size(1400, 350);
             this.gv_1.TabIndex = 155;
+            this.gv_1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
+            this.gv_1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_RowEnter);
             // 
             // colShouhinCD
             // 
@@ -336,6 +338,7 @@
             this.colIdouSuu.HeaderText = "移動数";
             this.colIdouSuu.MaxInputLength = 5;
             this.colIdouSuu.Name = "colIdouSuu";
+            this.colIdouSuu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colIdouSuu.Width = 80;
             // 
             // colGenkaTanka
@@ -347,6 +350,7 @@
             this.colGenkaTanka.HeaderText = "原価単価";
             this.colGenkaTanka.MaxInputLength = 8;
             this.colGenkaTanka.Name = "colGenkaTanka";
+            this.colGenkaTanka.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // colGenkaKingaku
             // 
@@ -357,6 +361,7 @@
             this.colGenkaKingaku.HeaderText = "原価金額";
             this.colGenkaKingaku.MaxInputLength = 9;
             this.colGenkaKingaku.Name = "colGenkaKingaku";
+            this.colGenkaKingaku.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // colIdouMeisaiTekiyou
             // 
@@ -364,6 +369,7 @@
             this.colIdouMeisaiTekiyou.HeaderText = "明細摘要";
             this.colIdouMeisaiTekiyou.MaxInputLength = 80;
             this.colIdouMeisaiTekiyou.Name = "colIdouMeisaiTekiyou";
+            this.colIdouMeisaiTekiyou.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.colIdouMeisaiTekiyou.Width = 350;
             // 
             // lbl_Nyuko
@@ -652,6 +658,8 @@
             this.btnNameF11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.btnNameF11.Location = new System.Drawing.Point(1373, 196);
             this.btnNameF11.Name = "btnNameF11";
+            this.btnNameF11.NextControl = null;
+            this.btnNameF11.NextControlName = null;
             this.btnNameF11.Size = new System.Drawing.Size(75, 23);
             this.btnNameF11.TabIndex = 20;
             this.btnNameF11.Text = "F11 保存";
@@ -665,10 +673,13 @@
             this.btnNameF10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.btnNameF10.Location = new System.Drawing.Point(1283, 196);
             this.btnNameF10.Name = "btnNameF10";
+            this.btnNameF10.NextControl = null;
+            this.btnNameF10.NextControlName = null;
             this.btnNameF10.Size = new System.Drawing.Size(75, 23);
             this.btnNameF10.TabIndex = 19;
             this.btnNameF10.Text = "F10 表示";
             this.btnNameF10.UseVisualStyleBackColor = false;
+            this.btnNameF10.Click += new System.EventHandler(this.btnNameF10_Click);
             // 
             // btnNameF8
             // 
@@ -678,6 +689,8 @@
             this.btnNameF8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.btnNameF8.Location = new System.Drawing.Point(1190, 196);
             this.btnNameF8.Name = "btnNameF8";
+            this.btnNameF8.NextControl = null;
+            this.btnNameF8.NextControlName = null;
             this.btnNameF8.Size = new System.Drawing.Size(75, 23);
             this.btnNameF8.TabIndex = 18;
             this.btnNameF8.Text = "F8 確認";
