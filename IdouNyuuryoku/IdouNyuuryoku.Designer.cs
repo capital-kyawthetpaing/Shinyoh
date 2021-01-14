@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtIdouNO = new Shinyoh_Search.SearchBox();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
@@ -38,16 +38,6 @@
             this.txtSizeNo = new Shinyoh_Search.SearchBox();
             this.txtColorNo = new Shinyoh_Search.SearchBox();
             this.gv_1 = new Shinyoh_Controls.SGridView();
-            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colKanriNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdouSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGenkaTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGenkaKingaku = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIdouMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lbl_Nyuko = new Shinyoh_Controls.SLabel();
             this.lbl_Shukko = new Shinyoh_Controls.SLabel();
             this.txtNyukosouko = new Shinyoh_Search.SearchBox();
@@ -85,6 +75,16 @@
             this.txtIdouDate = new Shinyoh_Controls.STextBox();
             this.sLabel5 = new Shinyoh_Controls.SLabel();
             this.txtCopy = new Shinyoh_Search.SearchBox();
+            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colKanriNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIdouSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGenkaTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGenkaKingaku = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIdouMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -279,94 +279,10 @@
             this.colIdouMeisaiTekiyou});
             this.gv_1.Location = new System.Drawing.Point(49, 233);
             this.gv_1.Name = "gv_1";
-            this.gv_1.Size = new System.Drawing.Size(1400, 350);
+            this.gv_1.Size = new System.Drawing.Size(1630, 350);
             this.gv_1.TabIndex = 155;
             this.gv_1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
             this.gv_1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_RowEnter);
-            // 
-            // colShouhinCD
-            // 
-            this.colShouhinCD.DataPropertyName = "ShouhinCD";
-            this.colShouhinCD.HeaderText = "商品";
-            this.colShouhinCD.Name = "colShouhinCD";
-            this.colShouhinCD.Width = 125;
-            // 
-            // colShouhinName
-            // 
-            this.colShouhinName.DataPropertyName = "ShouhinName";
-            this.colShouhinName.HeaderText = "商品名";
-            this.colShouhinName.Name = "colShouhinName";
-            this.colShouhinName.Width = 175;
-            // 
-            // colColorRyakuName
-            // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            this.colColorRyakuName.Width = 125;
-            // 
-            // colColorNO
-            // 
-            this.colColorNO.DataPropertyName = "ColorNO";
-            this.colColorNO.HeaderText = "カラー";
-            this.colColorNO.Name = "colColorNO";
-            // 
-            // colSizeNO
-            // 
-            this.colSizeNO.DataPropertyName = "SizeNO";
-            this.colSizeNO.HeaderText = "サイズ";
-            this.colSizeNO.Name = "colSizeNO";
-            // 
-            // colKanriNO
-            // 
-            this.colKanriNO.DataPropertyName = "KanriNO";
-            this.colKanriNO.HeaderText = "管理番号";
-            this.colKanriNO.MaxInputLength = 10;
-            this.colKanriNO.Name = "colKanriNO";
-            this.colKanriNO.Width = 90;
-            // 
-            // colIdouSuu
-            // 
-            this.colIdouSuu.DataPropertyName = "IdouSuu";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N0";
-            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colIdouSuu.HeaderText = "移動数";
-            this.colIdouSuu.MaxInputLength = 5;
-            this.colIdouSuu.Name = "colIdouSuu";
-            this.colIdouSuu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colIdouSuu.Width = 80;
-            // 
-            // colGenkaTanka
-            // 
-            this.colGenkaTanka.DataPropertyName = "GenkaTanka";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            this.colGenkaTanka.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colGenkaTanka.HeaderText = "原価単価";
-            this.colGenkaTanka.MaxInputLength = 8;
-            this.colGenkaTanka.Name = "colGenkaTanka";
-            this.colGenkaTanka.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colGenkaKingaku
-            // 
-            this.colGenkaKingaku.DataPropertyName = "GenkaKingaku";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            this.colGenkaKingaku.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colGenkaKingaku.HeaderText = "原価金額";
-            this.colGenkaKingaku.MaxInputLength = 9;
-            this.colGenkaKingaku.Name = "colGenkaKingaku";
-            this.colGenkaKingaku.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colIdouMeisaiTekiyou
-            // 
-            this.colIdouMeisaiTekiyou.DataPropertyName = "IdouMeisaiTekiyou";
-            this.colIdouMeisaiTekiyou.HeaderText = "明細摘要";
-            this.colIdouMeisaiTekiyou.MaxInputLength = 80;
-            this.colIdouMeisaiTekiyou.Name = "colIdouMeisaiTekiyou";
-            this.colIdouMeisaiTekiyou.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colIdouMeisaiTekiyou.Width = 350;
             // 
             // lbl_Nyuko
             // 
@@ -660,6 +576,7 @@
             this.btnNameF11.TabIndex = 20;
             this.btnNameF11.Text = "F11 保存";
             this.btnNameF11.UseVisualStyleBackColor = false;
+            this.btnNameF11.Click += new System.EventHandler(this.btnNameF11_Click);
             // 
             // btnNameF10
             // 
@@ -1045,6 +962,90 @@
             this.txtCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtCopy.TxtBox = null;
             this.txtCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopy_KeyDown);
+            // 
+            // colShouhinCD
+            // 
+            this.colShouhinCD.DataPropertyName = "ShouhinCD";
+            this.colShouhinCD.HeaderText = "商品";
+            this.colShouhinCD.Name = "colShouhinCD";
+            this.colShouhinCD.Width = 125;
+            // 
+            // colShouhinName
+            // 
+            this.colShouhinName.DataPropertyName = "ShouhinName";
+            this.colShouhinName.HeaderText = "商品名";
+            this.colShouhinName.Name = "colShouhinName";
+            this.colShouhinName.Width = 175;
+            // 
+            // colColorRyakuName
+            // 
+            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
+            this.colColorRyakuName.HeaderText = "カラー略名";
+            this.colColorRyakuName.Name = "colColorRyakuName";
+            this.colColorRyakuName.Width = 125;
+            // 
+            // colColorNO
+            // 
+            this.colColorNO.DataPropertyName = "ColorNO";
+            this.colColorNO.HeaderText = "カラー";
+            this.colColorNO.Name = "colColorNO";
+            // 
+            // colSizeNO
+            // 
+            this.colSizeNO.DataPropertyName = "SizeNO";
+            this.colSizeNO.HeaderText = "サイズ";
+            this.colSizeNO.Name = "colSizeNO";
+            // 
+            // colKanriNO
+            // 
+            this.colKanriNO.DataPropertyName = "KanriNO";
+            this.colKanriNO.HeaderText = "管理番号";
+            this.colKanriNO.MaxInputLength = 10;
+            this.colKanriNO.Name = "colKanriNO";
+            this.colKanriNO.Width = 90;
+            // 
+            // colIdouSuu
+            // 
+            this.colIdouSuu.DataPropertyName = "IdouSuu";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colIdouSuu.HeaderText = "移動数";
+            this.colIdouSuu.MaxInputLength = 5;
+            this.colIdouSuu.Name = "colIdouSuu";
+            this.colIdouSuu.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colIdouSuu.Width = 80;
+            // 
+            // colGenkaTanka
+            // 
+            this.colGenkaTanka.DataPropertyName = "GenkaTanka";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            this.colGenkaTanka.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colGenkaTanka.HeaderText = "原価単価";
+            this.colGenkaTanka.MaxInputLength = 8;
+            this.colGenkaTanka.Name = "colGenkaTanka";
+            this.colGenkaTanka.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colGenkaKingaku
+            // 
+            this.colGenkaKingaku.DataPropertyName = "GenkaKingaku";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            this.colGenkaKingaku.DefaultCellStyle = dataGridViewCellStyle6;
+            this.colGenkaKingaku.HeaderText = "原価金額";
+            this.colGenkaKingaku.MaxInputLength = 9;
+            this.colGenkaKingaku.Name = "colGenkaKingaku";
+            this.colGenkaKingaku.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colIdouMeisaiTekiyou
+            // 
+            this.colIdouMeisaiTekiyou.DataPropertyName = "IdouMeisaiTekiyou";
+            this.colIdouMeisaiTekiyou.HeaderText = "明細摘要";
+            this.colIdouMeisaiTekiyou.MaxInputLength = 80;
+            this.colIdouMeisaiTekiyou.Name = "colIdouMeisaiTekiyou";
+            this.colIdouMeisaiTekiyou.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colIdouMeisaiTekiyou.Width = 350;
             // 
             // IdouNyuuryoku
             // 

@@ -879,6 +879,8 @@ namespace JuchuuNyuuryoku
             obj.YearTerm = txtYearTerm.Text;
             obj.SeasonSS = chk_SS.Checked ? "1" : "0";
             obj.SeasonFW = chk_FW.Checked ? "1" : "0";
+            obj.SizeNO = txtSizeNo.Text;
+            obj.ColorNO = txtColorNo.Text;
             obj.ChangeDate = txtJuchuuDate.Text;
             DataTable dt = obj_bl.JuchuuNyuuryoku_Display(obj);
             if (dt.Rows.Count > 0)
