@@ -324,16 +324,28 @@ namespace Shinyoh_Controls
             if (SType == STextBoxType.Price)
             {
                 string value = Text.Replace(",", "");
-                int num;
+                //int num;
+                long num;
                 int a = Convert.ToInt32(this.DecimalPlace);
 
-                if (Int32.TryParse(value, out num))
+                if (Int64.TryParse(value, out num))
                 {
                     if (!Text.Equals("0"))
                         Text = string.Format("{0:#,#}", num);
                 }
                 else if (string.IsNullOrWhiteSpace(value))
-                    Text = "0";
+                {
+                    if (a != 0)
+                    {
+                        Text = "0.0";
+                        while (Text.Split('.')[1].Length < a)
+                        {
+                            Text = Text + "0";
+                        }
+                    }
+                    else
+                        Text = "0";
+                }
                 else
                 {
                     Text = string.Format("{0:#,#}", value);
@@ -347,7 +359,7 @@ namespace Shinyoh_Controls
                     else
                     {
                         Text = p[0].ToString();
-                        if (Int32.TryParse(Text, out num))
+                        if (Int64.TryParse(Text, out num))
                         {
                             if (!Text.Equals("0"))
                                 Text = string.Format("{0:#,#}", num);

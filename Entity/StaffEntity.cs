@@ -19,6 +19,8 @@ namespace Entity
         public string StaffName { get; set; } //--スタッフ名
         public string KanaName { get; set; }  //-- カナ名
         public string KensakuHyouziJun { get; set; }// --検索表示順
+        public string YuubinNO1 { get; set; }
+        public string YuubinNO2 { get; set; }
         public string MenuCD { get; set; } //  --メニューCD
         public string AuthorizationsCD { get; set; } //  --権限CD
         public string PositionCD { get; set; } // --役職CD

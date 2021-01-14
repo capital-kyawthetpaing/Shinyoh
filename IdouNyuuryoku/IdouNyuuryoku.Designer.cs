@@ -91,10 +91,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gv_1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1485, 75);
-            // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtCopy);
@@ -205,7 +201,7 @@
             this.PanelDetail.Controls.Add(this.sLabel5);
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1485, 750);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 838);
             this.PanelDetail.TabIndex = 3;
             // 
             // txtSizeNo
@@ -283,7 +279,7 @@
             this.colIdouMeisaiTekiyou});
             this.gv_1.Location = new System.Drawing.Point(49, 233);
             this.gv_1.Name = "gv_1";
-            this.gv_1.Size = new System.Drawing.Size(1400, 350);
+            this.gv_1.Size = new System.Drawing.Size(1630, 350);
             this.gv_1.TabIndex = 155;
             this.gv_1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
             this.gv_1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_RowEnter);
@@ -664,6 +660,7 @@
             this.btnNameF11.TabIndex = 20;
             this.btnNameF11.Text = "F11 保存";
             this.btnNameF11.UseVisualStyleBackColor = false;
+            this.btnNameF11.Click += new System.EventHandler(this.btnNameF11_Click);
             // 
             // btnNameF10
             // 
@@ -695,6 +692,7 @@
             this.btnNameF8.TabIndex = 18;
             this.btnNameF8.Text = "F8 確認";
             this.btnNameF8.UseVisualStyleBackColor = false;
+            this.btnNameF8.Click += new System.EventHandler(this.btnNameF8_Click);
             // 
             // sLabel20
             // 
@@ -1054,7 +1052,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 841);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "IdouNyuuryoku";
