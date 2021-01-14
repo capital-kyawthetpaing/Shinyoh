@@ -89,6 +89,8 @@ namespace MasterList_Siiresaki
                 saveFileDialog1.Filter = "ExcelFile|*.xls";
                 saveFileDialog1.FileName = "仕入先マスタリスト.xls";
                 saveFileDialog1.RestoreDirectory = true;
+                if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
+                    System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     ExcelDesignSetting obj = new ExcelDesignSetting();
