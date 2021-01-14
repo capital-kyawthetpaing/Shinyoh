@@ -49,6 +49,7 @@ namespace ShukkaTorikomi
             SetButton(ButtonType.BType.Import, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", false);
             SetButton(ButtonType.BType.Import, F12, "登録(F12)", true);
+            base_Entity = _GetBaseData();
             //multipurposeEntity multipurpose_entity = new multipurposeEntity();
 
             txtShukkaToNo1.Enabled = true;
@@ -280,16 +281,22 @@ namespace ShukkaTorikomi
 
                         ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
                         DataTable r_dk = rBL.ShukkaTorikomi_Check(obj.ShouhinCD, obj.ChangeDate, "E101", "ShouhinCD");
-                        if (r_dk.Rows[0]["MessageID"].ToString() == "E101")
+                        if (r_dk.Rows.Count > 0 && r_dk.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101");
-                            //err.ShowErrorMessage("E101");
                             bl_List.Add(true);
                         }
 
+                        //else if (r_dk.Rows[0]["MessageID"].ToString() == "E101")
+                        //{
+                        //    bbl.ShowMessage("E101");
+                        //    //err.ShowErrorMessage("E101");
+                        //    bl_List.Add(true);
+                        //}
+
                         ShukkaTorikomi_BL jBL = new ShukkaTorikomi_BL();
                         DataTable j_dk = jBL.ShukkaTorikomi_Check(obj.JANCD, obj.ChangeDate, "E101", "JANCD");
-                        if (j_dk.Rows[0]["MessageID"].ToString() == "E101")
+                        if (j_dk.Rows.Count > 0 && j_dk.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101");
                             //err.ShowErrorMessage("E101");
@@ -298,7 +305,7 @@ namespace ShukkaTorikomi
 
                         ShukkaTorikomi_BL sBL = new ShukkaTorikomi_BL();
                         DataTable s_dk = sBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E133");
-                        if (s_dk.Rows[0]["MessageID"].ToString() == "E133")
+                        if (s_dk.Rows.Count > 0 && s_dk.Rows[0]["MessageID"].ToString() == "E133")
                         {
                             bbl.ShowMessage("E133");
                             bl_List.Add(true);
@@ -306,7 +313,7 @@ namespace ShukkaTorikomi
 
                         ShukkaTorikomi_BL cBL = new ShukkaTorikomi_BL();
                         DataTable c_dk = cBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E159");
-                        if (c_dk.Rows[0]["MessageID"].ToString() == "E159")
+                        if (c_dk.Rows.Count > 0 && c_dk.Rows[0]["MessageID"].ToString() == "E159")
                         {
                             bbl.ShowMessage("E159");
                             bl_List.Add(true);
@@ -314,7 +321,7 @@ namespace ShukkaTorikomi
 
                         ShukkaTorikomi_BL mBL = new ShukkaTorikomi_BL();
                         DataTable m_dk = mBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E150");
-                        if (m_dk.Rows[0]["MessageID"].ToString() == "E150")
+                        if (m_dk.Rows.Count > 0 && m_dk.Rows[0]["MessageID"].ToString() == "E150")
                         {
                             bbl.ShowMessage("E150");
                             bl_List.Add(true);
@@ -333,10 +340,10 @@ namespace ShukkaTorikomi
                             else
                                 dr[j] = splits[j].ToString();
                         }
-                        dr[28] = "0";
-                        dr[29] = base_Entity.OperatorCD;
-                        dr[30] = base_Entity.OperatorCD;
-                        dr[31] = error;
+                        //dr[28] = "0";
+                        dr[16] = base_Entity.OperatorCD;
+                        dr[17] = base_Entity.OperatorCD;
+                        dr[18] = error;
                         create_dt.Rows.Add(dr);
                     }
 
