@@ -49,12 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KouritenDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KouritenDetails.Designer.cs">
-      <DependentUpon>KouritenDetails.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShukkaSiziNyuuryoku.cs">
@@ -63,15 +57,6 @@
     <Compile Include="ShukkaSiziNyuuryoku.Designer.cs">
       <DependentUpon>ShukkaSiziNyuuryoku.cs</DependentUpon>
     </Compile>
-    <Compile Include="TokuisakiDetails.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TokuisakiDetails.Designer.cs">
-      <DependentUpon>TokuisakiDetails.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="KouritenDetails.resx">
-      <DependentUpon>KouritenDetails.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -83,9 +68,6 @@
     </Compile>
     <EmbeddedResource Include="ShukkaSiziNyuuryoku.resx">
       <DependentUpon>ShukkaSiziNyuuryoku.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TokuisakiDetails.resx">
-      <DependentUpon>TokuisakiDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -116,6 +98,10 @@
     <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Details\Shinyoh_Details.csproj">
+      <Project>{c77a6d15-5b0f-4ec2-9c63-f99da9c55a24}</Project>
+      <Name>Shinyoh_Details</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
       <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>

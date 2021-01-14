@@ -108,7 +108,6 @@
             this.panel1.Controls.Add(this.sRadDelete);
             this.panel1.Controls.Add(this.sRadRegister);
             this.panel1.Controls.Add(this.lbImportClassification);
-            this.panel1.Size = new System.Drawing.Size(1713, 75);
             this.panel1.Controls.SetChildIndex(this.lbImportClassification, 0);
             this.panel1.Controls.SetChildIndex(this.sRadRegister, 0);
             this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
@@ -299,7 +298,7 @@
             this.PanelDetail.Controls.Add(this.label1);
             this.PanelDetail.Controls.Add(this.lblSearch);
             this.PanelDetail.Controls.Add(this.txtSearch);
-            this.PanelDetail.Location = new System.Drawing.Point(0, 78);
+            this.PanelDetail.Location = new System.Drawing.Point(0, 80);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1713, 836);
             this.PanelDetail.TabIndex = 1;
@@ -334,7 +333,7 @@
             this.RadNeed.MoveNext = true;
             this.RadNeed.Name = "RadNeed";
             this.RadNeed.NextControl = null;
-            this.RadNeed.NextControlName = "RadNoNeed";
+            this.RadNeed.NextControlName = "txtRemark";
             this.RadNeed.Size = new System.Drawing.Size(49, 19);
             this.RadNeed.TabIndex = 33;
             this.RadNeed.TabStop = true;
@@ -371,7 +370,7 @@
             this.RadSaMa.MoveNext = true;
             this.RadSaMa.Name = "RadSaMa";
             this.RadSaMa.NextControl = null;
-            this.RadSaMa.NextControlName = "RadOnchuu";
+            this.RadSaMa.NextControlName = "txtYubin1";
             this.RadSaMa.Size = new System.Drawing.Size(36, 19);
             this.RadSaMa.TabIndex = 13;
             this.RadSaMa.TabStop = true;

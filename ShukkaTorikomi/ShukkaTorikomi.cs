@@ -230,7 +230,7 @@ namespace ShukkaTorikomi
 
                         obj.ShouhinCD = splits[7];
                         bl_List.Add(Null_Check(obj.ShouhinCD, i, "商品コード未入力エラー"));
-                        bl_List.Add(Byte_Check(10, obj.ShouhinCD, i, "商品コード桁数エラー"));
+                        bl_List.Add(Byte_Check(20, obj.ShouhinCD, i, "商品コード桁数エラー"));
 
                         obj.ColorRyakuName = splits[8];
                         bl_List.Add(Null_Check(obj.ColorRyakuName, i, "カラー未入力エラー"));
@@ -240,24 +240,23 @@ namespace ShukkaTorikomi
 
                         obj.JANCD = splits[10];
                         bl_List.Add(Null_Check(obj.JANCD, i, "JANｺｰﾄﾞ未入力エラー"));
-                        bl_List.Add(Byte_Check(10, obj.JANCD, i, "JANｺｰﾄﾞ桁数エラー"));
+                        bl_List.Add(Byte_Check(13, obj.JANCD, i, "JANｺｰﾄﾞ桁数エラー"));
 
                         obj.ShukkaSuu = splits[11];
-                        bl_List.Add(Null_Check(obj.ShukkaSuu, i, "数量未入力エラー"));
-                        bl_List.Add(Date_Check(obj.ShukkaSuu, i, "入力可能値外エラー"));
+                        //bl_List.Add(Null_Check(obj.ShukkaSuu, i, "数量未入力エラー"));
+                        bl_List.Add(Number_Check(obj.ShukkaSuu, i, "入力可能値外エラー"));
 
                         obj.UnitPrice = splits[12];
-                        bl_List.Add(Null_Check(obj.UnitPrice, i, "入力可能値外エラー"));
+                        bl_List.Add(Number_Check(obj.UnitPrice, i, "入力可能値外エラー"));
 
                         obj.SellingPrice = splits[13];
-                        bl_List.Add(Null_Check(obj.SellingPrice, i, "入力可能値外エラー"));
+                        bl_List.Add(Number_Check(obj.SellingPrice, i, "入力可能値外エラー"));
 
                         obj.ShukkaDenpyouTekiyou = splits[14];
-                        bl_List.Add(Null_Check(obj.ShukkaDenpyouTekiyou, i, "納品書注釈未入力エラー"));
 
                         obj.ShukkaSiziNO = splits[15];
                         bl_List.Add(Null_Check(obj.ShukkaSiziNO, i, "出荷指示行番号未入力エラー"));
-                        bl_List.Add(Byte_Check(10, obj.ShukkaSiziNO, i, "出荷指示行番号桁数エラー"));
+                        bl_List.Add(Byte_Check(12, obj.ShukkaSiziNO, i, "出荷指示行番号桁数エラー"));
 
 
                         TokuisakiBL tBL = new TokuisakiBL();
@@ -379,6 +378,22 @@ namespace ShukkaTorikomi
             if (!string.IsNullOrEmpty(csv_Date))
             {
                 if (!cf.CheckDateValue(csv_Date))
+                {
+                    bbl.ShowMessage("E103");
+                    bl = true;
+                }
+            }
+            return bl;
+        }
+
+        public bool Number_Check(string csv_number, int i, string v)
+        {
+            bool bl = false; int result;
+            if (!string.IsNullOrEmpty(csv_number))
+            {
+                bool parsedSuccessfully = int.TryParse(csv_number, out result);
+
+                if (parsedSuccessfully == false)
                 {
                     bbl.ShowMessage("E103");
                     bl = true;

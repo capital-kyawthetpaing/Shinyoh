@@ -131,6 +131,8 @@ namespace MasterTouroku_Tokuisaki {
             YuuBinNO2 = string.Empty;
             Address1 = string.Empty;
             Address2 = string.Empty;
+            RadSaMa.Checked = true;
+            RadNeed.Checked = true;
         }
         public void ErrorCheck()
         {

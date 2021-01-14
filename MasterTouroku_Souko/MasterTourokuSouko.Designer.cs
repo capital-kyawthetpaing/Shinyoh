@@ -68,10 +68,6 @@
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1485, 75);
-            // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtCopySouko);
@@ -117,9 +113,9 @@
             this.PanelDetail.Controls.Add(this.label1);
             this.PanelDetail.Controls.Add(this.lblSearch);
             this.PanelDetail.Controls.Add(this.txtSearch);
-            this.PanelDetail.Location = new System.Drawing.Point(0, 75);
+            this.PanelDetail.Location = new System.Drawing.Point(0, 76);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 836);
             this.PanelDetail.TabIndex = 1;
             // 
             // label4
@@ -773,7 +769,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 644);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Margin = new System.Windows.Forms.Padding(1);
