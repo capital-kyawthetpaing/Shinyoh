@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace JuchuuNyuuryoku
+namespace Shinyoh_Details
 {
     public partial class TokuisakiDetail : SearchBase
     {
@@ -31,7 +31,9 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
-            txtTokuisakiCD.Focus();
+            txtTokuisakiCD.Enabled=false;
+
+            txtShort_Name.Focus();
 
             txtShort_Name.E102Check(true);
             txtLong_Name.E102Check(true);

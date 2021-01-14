@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtCurrentDate = new Shinyoh_Controls.STextBox();
             this.lblStaff = new Shinyoh_Controls.SLabel();
@@ -36,8 +37,6 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.sLabel8 = new Shinyoh_Controls.SLabel();
-            this.txtShukkosouko = new Shinyoh_Search.SearchBox();
-            this.txtNyukosouko = new Shinyoh_Search.SearchBox();
             this.btnShow = new Shinyoh_Controls.SButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -56,16 +55,18 @@
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.sLabel2 = new Shinyoh_Controls.SLabel();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
-            this.gv_1 = new Shinyoh_Controls.SGridView();
+            this.gv_Idou = new Shinyoh_Controls.SGridView();
             this.colIdouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdouDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShukkoSoukoCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShukkoSoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNyuukoSoukoCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNyuukoSoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCurrentDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtShukkosouko = new Shinyoh_Search.SearchBox();
+            this.txtNyukosouko = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_Idou)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -207,73 +208,15 @@
             this.sLabel8.Text = "基準日";
             this.sLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtShukkosouko
-            // 
-            this.txtShukkosouko.AllowMinus = false;
-            this.txtShukkosouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtShukkosouko.ChangeDate = null;
-            this.txtShukkosouko.Combo = null;
-            this.txtShukkosouko.DecimalPlace = 0;
-            this.txtShukkosouko.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtShukkosouko.DepandOnMode = true;
-            this.txtShukkosouko.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtShukkosouko.IntegerPart = 0;
-            this.txtShukkosouko.IsDatatableOccurs = null;
-            this.txtShukkosouko.IsErrorOccurs = false;
-            this.txtShukkosouko.IsRequire = false;
-            this.txtShukkosouko.IsUseInitializedLayout = true;
-            this.txtShukkosouko.lblName = null;
-            this.txtShukkosouko.Location = new System.Drawing.Point(123, 33);
-            this.txtShukkosouko.MaxLength = 10;
-            this.txtShukkosouko.MinimumSize = new System.Drawing.Size(90, 19);
-            this.txtShukkosouko.MoveNext = true;
-            this.txtShukkosouko.Name = "txtShukkosouko";
-            this.txtShukkosouko.NextControl = null;
-            this.txtShukkosouko.NextControlName = "txtNyukosouko";
-            this.txtShukkosouko.SearchType = Entity.SearchType.ScType.None;
-            this.txtShukkosouko.Size = new System.Drawing.Size(90, 19);
-            this.txtShukkosouko.TabIndex = 3;
-            this.txtShukkosouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtShukkosouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtShukkosouko_KeyDown);
-            // 
-            // txtNyukosouko
-            // 
-            this.txtNyukosouko.AllowMinus = false;
-            this.txtNyukosouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNyukosouko.ChangeDate = null;
-            this.txtNyukosouko.Combo = null;
-            this.txtNyukosouko.DecimalPlace = 0;
-            this.txtNyukosouko.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtNyukosouko.DepandOnMode = false;
-            this.txtNyukosouko.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtNyukosouko.IntegerPart = 0;
-            this.txtNyukosouko.IsDatatableOccurs = null;
-            this.txtNyukosouko.IsErrorOccurs = false;
-            this.txtNyukosouko.IsRequire = false;
-            this.txtNyukosouko.IsUseInitializedLayout = true;
-            this.txtNyukosouko.lblName = null;
-            this.txtNyukosouko.Location = new System.Drawing.Point(123, 59);
-            this.txtNyukosouko.MaxLength = 10;
-            this.txtNyukosouko.MinimumSize = new System.Drawing.Size(90, 19);
-            this.txtNyukosouko.MoveNext = true;
-            this.txtNyukosouko.Name = "txtNyukosouko";
-            this.txtNyukosouko.NextControl = null;
-            this.txtNyukosouko.NextControlName = "txtShouhinName";
-            this.txtNyukosouko.SearchType = Entity.SearchType.ScType.None;
-            this.txtNyukosouko.Size = new System.Drawing.Size(90, 19);
-            this.txtNyukosouko.TabIndex = 4;
-            this.txtNyukosouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtNyukosouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNyukosouko_KeyDown);
-            // 
             // btnShow
             // 
             this.btnShow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnShow.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnShow.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnShow.Location = new System.Drawing.Point(926, 85);
+            this.btnShow.Location = new System.Drawing.Point(906, 91);
             this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(130, 28);
+            this.btnShow.Size = new System.Drawing.Size(150, 25);
             this.btnShow.TabIndex = 11;
             this.btnShow.Text = "表示(F11)";
             this.btnShow.UseVisualStyleBackColor = false;
@@ -323,7 +266,7 @@
             this.txtShouhin2.IsRequire = false;
             this.txtShouhin2.IsUseInitializedLayout = true;
             this.txtShouhin2.Location = new System.Drawing.Point(816, 60);
-            this.txtShouhin2.MaxLength = 25;
+            this.txtShouhin2.MaxLength = 20;
             this.txtShouhin2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhin2.MoveNext = true;
             this.txtShouhin2.Name = "txtShouhin2";
@@ -348,7 +291,7 @@
             this.txtShouhin1.IsRequire = false;
             this.txtShouhin1.IsUseInitializedLayout = true;
             this.txtShouhin1.Location = new System.Drawing.Point(623, 60);
-            this.txtShouhin1.MaxLength = 25;
+            this.txtShouhin1.MaxLength = 20;
             this.txtShouhin1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhin1.MoveNext = true;
             this.txtShouhin1.Name = "txtShouhin1";
@@ -373,7 +316,7 @@
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.Location = new System.Drawing.Point(623, 33);
-            this.txtStaffCD.MaxLength = 12;
+            this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtStaffCD.MoveNext = true;
             this.txtStaffCD.Name = "txtStaffCD";
@@ -440,7 +383,7 @@
             this.txtShouhinName.AllowMinus = false;
             this.txtShouhinName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtShouhinName.DecimalPlace = 0;
-            this.txtShouhinName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShouhinName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtShouhinName.DepandOnMode = true;
             this.txtShouhinName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShouhinName.IntegerPart = 0;
@@ -449,14 +392,14 @@
             this.txtShouhinName.IsRequire = false;
             this.txtShouhinName.IsUseInitializedLayout = true;
             this.txtShouhinName.Location = new System.Drawing.Point(123, 87);
-            this.txtShouhinName.MaxLength = 100;
+            this.txtShouhinName.MaxLength = 80;
             this.txtShouhinName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhinName.MoveNext = true;
             this.txtShouhinName.Name = "txtShouhinName";
             this.txtShouhinName.NextControl = null;
             this.txtShouhinName.NextControlName = "txtNo11";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
-            this.txtShouhinName.Size = new System.Drawing.Size(560, 19);
+            this.txtShouhinName.Size = new System.Drawing.Size(590, 19);
             this.txtShouhinName.TabIndex = 5;
             this.txtShouhinName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -590,62 +533,68 @@
             this.sLabel1.Text = "移動日\t\t";
             this.sLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // gv_1
+            // gv_Idou
             // 
-            this.gv_1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gv_1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gv_Idou.AllowUserToAddRows = false;
+            this.gv_Idou.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gv_Idou.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colIdouNO,
             this.colIdouDate,
-            this.Column3,
             this.colShukkoSoukoCD,
+            this.colShukkoSoukoName,
             this.colNyuukoSoukoCD,
-            this.colSoukoName,
+            this.colNyuukoSoukoName,
             this.colCurrentDate});
-            this.gv_1.Location = new System.Drawing.Point(33, 135);
-            this.gv_1.Name = "gv_1";
-            this.gv_1.Size = new System.Drawing.Size(936, 307);
-            this.gv_1.TabIndex = 6;
-            this.gv_1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gv_1_CellMouseDoubleClick);
+            this.gv_Idou.Location = new System.Drawing.Point(33, 139);
+            this.gv_Idou.Name = "gv_Idou";
+            this.gv_Idou.Size = new System.Drawing.Size(923, 294);
+            this.gv_Idou.TabIndex = 6;
+            this.gv_Idou.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gv_Idou_CellMouseDoubleClick);
+            this.gv_Idou.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_Idou_KeyDown);
             // 
             // colIdouNO
             // 
             this.colIdouNO.DataPropertyName = "IdouNO";
             this.colIdouNO.HeaderText = "移動番号";
             this.colIdouNO.Name = "colIdouNO";
+            this.colIdouNO.Width = 120;
             // 
             // colIdouDate
             // 
             this.colIdouDate.DataPropertyName = "IdouDate";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colIdouDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colIdouDate.HeaderText = "移動日";
             this.colIdouDate.Name = "colIdouDate";
             this.colIdouDate.Width = 90;
             // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "出庫倉庫";
-            this.Column3.Name = "Column3";
-            // 
             // colShukkoSoukoCD
             // 
             this.colShukkoSoukoCD.DataPropertyName = "ShukkoSoukoCD";
-            this.colShukkoSoukoCD.HeaderText = "出庫倉庫名";
+            this.colShukkoSoukoCD.HeaderText = "出庫倉庫";
             this.colShukkoSoukoCD.Name = "colShukkoSoukoCD";
-            this.colShukkoSoukoCD.Width = 250;
+            this.colShukkoSoukoCD.Width = 90;
+            // 
+            // colShukkoSoukoName
+            // 
+            this.colShukkoSoukoName.DataPropertyName = "ShukkoSoukoName";
+            this.colShukkoSoukoName.HeaderText = "出庫倉庫名";
+            this.colShukkoSoukoName.Name = "colShukkoSoukoName";
+            this.colShukkoSoukoName.Width = 250;
             // 
             // colNyuukoSoukoCD
             // 
             this.colNyuukoSoukoCD.DataPropertyName = "NyuukoSoukoCD";
             this.colNyuukoSoukoCD.HeaderText = "入庫倉庫";
             this.colNyuukoSoukoCD.Name = "colNyuukoSoukoCD";
+            this.colNyuukoSoukoCD.Width = 90;
             // 
-            // colSoukoName
+            // colNyuukoSoukoName
             // 
-            this.colSoukoName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colSoukoName.DataPropertyName = "SoukoName";
-            this.colSoukoName.HeaderText = "入庫倉庫名";
-            this.colSoukoName.Name = "colSoukoName";
+            this.colNyuukoSoukoName.DataPropertyName = "NyuukoSoukoName";
+            this.colNyuukoSoukoName.HeaderText = "入庫倉庫名";
+            this.colNyuukoSoukoName.Name = "colNyuukoSoukoName";
+            this.colNyuukoSoukoName.Width = 250;
             // 
             // colCurrentDate
             // 
@@ -654,22 +603,82 @@
             this.colCurrentDate.Name = "colCurrentDate";
             this.colCurrentDate.Visible = false;
             // 
+            // txtShukkosouko
+            // 
+            this.txtShukkosouko.AllowMinus = false;
+            this.txtShukkosouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtShukkosouko.ChangeDate = null;
+            this.txtShukkosouko.Combo = null;
+            this.txtShukkosouko.DecimalPlace = 0;
+            this.txtShukkosouko.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShukkosouko.DepandOnMode = true;
+            this.txtShukkosouko.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtShukkosouko.IntegerPart = 0;
+            this.txtShukkosouko.IsDatatableOccurs = null;
+            this.txtShukkosouko.IsErrorOccurs = false;
+            this.txtShukkosouko.IsRequire = false;
+            this.txtShukkosouko.IsUseInitializedLayout = true;
+            this.txtShukkosouko.lblName = null;
+            this.txtShukkosouko.Location = new System.Drawing.Point(123, 33);
+            this.txtShukkosouko.MaxLength = 10;
+            this.txtShukkosouko.MinimumSize = new System.Drawing.Size(90, 19);
+            this.txtShukkosouko.MoveNext = true;
+            this.txtShukkosouko.Name = "txtShukkosouko";
+            this.txtShukkosouko.NextControl = null;
+            this.txtShukkosouko.NextControlName = "txtNyukosouko";
+            this.txtShukkosouko.SearchType = Entity.SearchType.ScType.None;
+            this.txtShukkosouko.Size = new System.Drawing.Size(90, 19);
+            this.txtShukkosouko.TabIndex = 3;
+            this.txtShukkosouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtShukkosouko.TxtBox = null;
+            this.txtShukkosouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtShukkosouko_KeyDown);
+            // 
+            // txtNyukosouko
+            // 
+            this.txtNyukosouko.AllowMinus = false;
+            this.txtNyukosouko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtNyukosouko.ChangeDate = null;
+            this.txtNyukosouko.Combo = null;
+            this.txtNyukosouko.DecimalPlace = 0;
+            this.txtNyukosouko.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtNyukosouko.DepandOnMode = false;
+            this.txtNyukosouko.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtNyukosouko.IntegerPart = 0;
+            this.txtNyukosouko.IsDatatableOccurs = null;
+            this.txtNyukosouko.IsErrorOccurs = false;
+            this.txtNyukosouko.IsRequire = false;
+            this.txtNyukosouko.IsUseInitializedLayout = true;
+            this.txtNyukosouko.lblName = null;
+            this.txtNyukosouko.Location = new System.Drawing.Point(123, 59);
+            this.txtNyukosouko.MaxLength = 10;
+            this.txtNyukosouko.MinimumSize = new System.Drawing.Size(90, 19);
+            this.txtNyukosouko.MoveNext = true;
+            this.txtNyukosouko.Name = "txtNyukosouko";
+            this.txtNyukosouko.NextControl = null;
+            this.txtNyukosouko.NextControlName = "txtShouhinName";
+            this.txtNyukosouko.SearchType = Entity.SearchType.ScType.None;
+            this.txtNyukosouko.Size = new System.Drawing.Size(90, 19);
+            this.txtNyukosouko.TabIndex = 4;
+            this.txtNyukosouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtNyukosouko.TxtBox = null;
+            this.txtNyukosouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNyukosouko_KeyDown);
+            // 
             // IdouNyuuryokuSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1085, 506);
-            this.Controls.Add(this.gv_1);
+            this.Controls.Add(this.gv_Idou);
             this.Controls.Add(this.panel1);
             this.Name = "IdouNyuuryokuSearch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "移動番号検索";
             this.Load += new System.EventHandler(this.IdouNyuuryokuSearch_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IdouNyuuryokuSearch_KeyDown);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.gv_1, 0);
+            this.Controls.SetChildIndex(this.gv_Idou, 0);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_Idou)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -702,15 +711,15 @@
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.SLabel sLabel2;
         private Shinyoh_Controls.SLabel sLabel1;
-        private Shinyoh_Controls.SGridView gv_1;
         private Shinyoh_Controls.SLabel lblStaff;
         private Shinyoh_Controls.STextBox txtCurrentDate;
+        private Shinyoh_Controls.SGridView gv_Idou;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdouNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdouDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShukkoSoukoCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkoSoukoName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNyuukoSoukoCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNyuukoSoukoName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCurrentDate;
     }
 }

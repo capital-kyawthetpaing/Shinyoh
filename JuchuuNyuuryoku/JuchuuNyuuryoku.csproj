@@ -55,31 +55,10 @@
     <Compile Include="JuchuuNyuuryoku.Designer.cs">
       <DependentUpon>JuchuuNyuuryoku.cs</DependentUpon>
     </Compile>
-    <Compile Include="KouritenDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KouritenDetail.Designer.cs">
-      <DependentUpon>KouritenDetail.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SiiresakiDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SiiresakiDetail.Designer.cs">
-      <DependentUpon>SiiresakiDetail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TokuisakiDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TokuisakiDetail.Designer.cs">
-      <DependentUpon>TokuisakiDetail.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="JuchuuNyuuryoku.resx">
       <DependentUpon>JuchuuNyuuryoku.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="KouritenDetail.resx">
-      <DependentUpon>KouritenDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -90,12 +69,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SiiresakiDetail.resx">
-      <DependentUpon>SiiresakiDetail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TokuisakiDetail.resx">
-      <DependentUpon>TokuisakiDetail.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -125,6 +98,10 @@
     <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Details\Shinyoh_Details.csproj">
+      <Project>{c77a6d15-5b0f-4ec2-9c63-f99da9c55a24}</Project>
+      <Name>Shinyoh_Details</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
       <Project>{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}</Project>

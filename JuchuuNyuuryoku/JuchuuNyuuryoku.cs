@@ -2,6 +2,7 @@
 using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
+using Shinyoh_Details;
 using Shinyoh_Search;
 using System;
 using System.Collections.Generic;
@@ -102,7 +103,7 @@ namespace JuchuuNyuuryoku
             gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
 
             gv_1.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
-            gv_1.SetNumberColumn("colJuchuuSuu");
+            gv_1.SetNumberColumn("colJuchuuSuu,colexpectedDate");
             gv_1.ClearSelection();
         }
 
@@ -276,6 +277,8 @@ namespace JuchuuNyuuryoku
                 //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
                 //{
 
+                if (F8_dt1.Rows.Count > 0)
+                {
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -292,6 +295,8 @@ namespace JuchuuNyuuryoku
                             ChangeMode(Mode.Inquiry);
                             break;
                     }
+                }
+               
                // }
             }
 
@@ -730,6 +735,7 @@ namespace JuchuuNyuuryoku
                         btnF9.Visible = false;
                 }
             }
+
         }
 
         private void gv_1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -878,7 +884,6 @@ namespace JuchuuNyuuryoku
             if (dt.Rows.Count > 0)
             {
                 gv_1.DataSource = dt;
-                gv_1.ClearSelection();
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
 
@@ -895,21 +900,26 @@ namespace JuchuuNyuuryoku
         {
             txtBrandCD.Focus();
 
+
             for (int t = 0; t < gv_1.RowCount; t++)
             {
                 bool bl = false;
                 // grid 1 checking
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gv_1.Rows[t];// grid view data
-                string id = row.Cells["colShouhinCD"].Value.ToString();
+                string shouhinCD = row.Cells["colShouhinCD"].Value.ToString();
+                string chk_value = row.Cells["colFree"].Value.ToString();
+                string senpouHacchuuNO = row.Cells["colSenpouHacchuuNO"].Value.ToString();
+                string siiresakiCD = row.Cells["colSiiresakiCD"].Value.ToString();
+                string soukoCD = row.Cells["colSoukoCD"].Value.ToString();
 
-                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + id+"'");// original data
-                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + id+"'").SingleOrDefault();
+                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "'");// original data
+                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  DJMSenpouHacchuuNO='"+senpouHacchuuNO+ "' and SiiresakiCD='"+siiresakiCD+ "' and SoukoCD='"+soukoCD+"'").SingleOrDefault();
 
-                F8_drNew[0] = id;
+                F8_drNew[0] = shouhinCD;
                 for (int c = 1; c < gv_1.Columns.Count; c++)
                 {
-                   if(gv_1.Columns[c].Name == "colFree" || gv_1.Columns[c].Name == "colJuchuuSuu" || gv_1.Columns[c].Name == "colSenpouHacchuuNO" || gv_1.Columns[c].Name == "colSiiresakiCD" || gv_1.Columns[c].Name == "colSoukoCD")
+                    if (gv_1.Columns[c].Name == "colFree" || gv_1.Columns[c].Name == "colJuchuuSuu" || gv_1.Columns[c].Name == "colSenpouHacchuuNO" || gv_1.Columns[c].Name == "colSiiresakiCD" || gv_1.Columns[c].Name == "colSoukoCD")
                     {
                         if (existDr1 != null)
                         {
@@ -931,10 +941,10 @@ namespace JuchuuNyuuryoku
                             F8_drNew[c] = row.Cells[c].Value;
                         }
                     }
-                   else
+                    else
                     {
                         F8_drNew[c] = row.Cells[c].Value;
-                    } 
+                    }
                 }
                 // grid 1 insert(if exist, remove exist and insert)
                 if (bl == true)
@@ -944,7 +954,60 @@ namespace JuchuuNyuuryoku
                     F8_dt1.Rows.Add(F8_drNew);
                 }
             }
-    }
+
+
+            //comment nwe mar win logic difference
+
+            //for (int t = 0; t < gv_1.RowCount; t++)
+            //{
+            //    bool bl = false;
+            //    // grid 1 checking
+            //    DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
+            //    DataGridViewRow row = gv_1.Rows[t];// grid view data
+            //    string id = row.Cells["colShouhinCD"].Value.ToString();
+
+            //    DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + id+"'");// original data
+            //    DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + id+"'").SingleOrDefault();
+
+            //    F8_drNew[0] = id;
+            //    for (int c = 1; c < gv_1.Columns.Count; c++)
+            //    {
+            //       if(gv_1.Columns[c].Name == "colFree" || gv_1.Columns[c].Name == "colJuchuuSuu" || gv_1.Columns[c].Name == "colSenpouHacchuuNO" || gv_1.Columns[c].Name == "colSiiresakiCD" || gv_1.Columns[c].Name == "colSoukoCD")
+            //        {
+            //            if (existDr1 != null)
+            //            {
+            //                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+            //                {
+            //                    bl = true;
+            //                    F8_drNew[c] = row.Cells[c].Value;
+            //                }
+            //                else
+            //                {
+            //                    F8_drNew[c] = existDr1[c];
+            //                }
+            //            }
+            //            else
+            //            {
+            //                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+            //                    bl = true;
+
+            //                F8_drNew[c] = row.Cells[c].Value;
+            //            }
+            //        }
+            //       else
+            //        {
+            //            F8_drNew[c] = row.Cells[c].Value;
+            //        } 
+            //    }
+            //    // grid 1 insert(if exist, remove exist and insert)
+            //    if (bl == true)
+            //    {
+            //        if (existDr1 != null)
+            //            F8_dt1.Rows.Remove(existDr1);
+            //        F8_dt1.Rows.Add(F8_drNew);
+            //    }
+            //}
+        }
 
         private void btnNameF8_Click(object sender, EventArgs e)
         {
@@ -961,7 +1024,8 @@ namespace JuchuuNyuuryoku
         private void DBProcess()
         {
             string mode = string.Empty;
-            (string,string,string) obj = GetInsert();
+            (string, string, string) obj = GetInsert();
+           
             if (cboMode.SelectedValue.Equals("1"))
             {
                 mode = "New";
@@ -1182,6 +1246,15 @@ namespace JuchuuNyuuryoku
             if (string.IsNullOrEmpty(free))
                 isSelected = "OFF";
             else isSelected = "ON";
+            if (gv_1.Columns[e.ColumnIndex].Name == "colFree" || gv_1.Columns[e.ColumnIndex].Name == "colJuchuuMeisaiTekiyou")
+                gv_1.MoveNextCell();
+            if (gv_1.Columns[e.ColumnIndex].Name == "colJuchuuSuu")
+            {
+                string split_val = gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].EditedFormattedValue.ToString().Replace(",","");
+                int JuchuuSuu_Number = string.IsNullOrEmpty(gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
+                gv_1.Rows[e.RowIndex].Cells["colJuchuuSuu"].Value = JuchuuSuu_Number.ToString();
+                gv_1.MoveNextCell();
+            }
 
             if (isSelected == "OFF" && JuchuuSuu != "0")
             {
@@ -1247,7 +1320,7 @@ namespace JuchuuNyuuryoku
                                 base_bl.ShowMessage("E267", "受注日");
                         }
                     }
-                    if(exp_error==false)
+                    if (exp_error == false)
                     {
                         gv_1.MoveNextCell();
                     }
@@ -1283,16 +1356,6 @@ namespace JuchuuNyuuryoku
                     }
                 }
             }
-            if (gv_1.Columns[e.ColumnIndex].Name == "colFree")
-                gv_1.MoveNextCell();
-            if (gv_1.Columns[e.ColumnIndex].Name == "colJuchuuSuu")
-                gv_1.MoveNextCell();
-            if (gv_1.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
-                gv_1.MoveNextCell();
-            if (gv_1.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
-                gv_1.MoveNextCell();
         }
-
-       
     }
 }

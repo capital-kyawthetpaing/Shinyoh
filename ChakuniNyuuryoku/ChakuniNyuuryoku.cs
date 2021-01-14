@@ -3,6 +3,7 @@ using Shinyoh;
 using Entity;
 using BL;
 using CKM_CommonFunction;
+using Shinyoh_Details;
 using System.Windows.Forms;
 using Shinyoh_Controls;
 using Shinyoh_Search;
@@ -19,7 +20,7 @@ namespace ChakuniNyuuryoku
         DataTable dtmain;
         DataTable dtTemp;
         DataTable dtGridSource = new DataTable();
-        SiiresakiDetails sd = new SiiresakiDetails();
+        SiiresakiDetail sd;
         DataTable dtGS1;
         BaseEntity base_Entity;
         StaffBL staffBL;
@@ -42,6 +43,7 @@ namespace ChakuniNyuuryoku
             staffBL = new StaffBL();
             soukoBL = new SoukoBL();
             dtClear = CreateTable();
+            sd = new SiiresakiDetail();
             chkEntity = new ChakuniNyuuryoku_Entity();
         }
 
@@ -167,8 +169,8 @@ namespace ChakuniNyuuryoku
             txtArrivalDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate, null);
-            //txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
-            //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
+            txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtArrivalDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtArrivalDate, null);
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
@@ -215,6 +217,7 @@ namespace ChakuniNyuuryoku
             {
                 dtGridview();
                 gvChakuniNyuuryoku.DataSource = dtmain;
+                gvChakuniNyuuryoku.Select();
             }
             if (tagID == "11")
             {
@@ -437,7 +440,7 @@ namespace ChakuniNyuuryoku
         {
             ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity()
             {
-             ChakuniNO = txtArrivalNO.Text,
+            ChakuniNO = txtArrivalNO.Text,
             ChakuniDate = txtArrivalDate.Text,
             ChakuniYoteiNO = txtScheduled.Text,
             ShouhinCD = txtShouhinCD.Text,
@@ -549,6 +552,7 @@ namespace ChakuniNyuuryoku
             {
                 dtGridview();
                 gvChakuniNyuuryoku.DataSource = dtmain;
+                gvChakuniNyuuryoku.Select();
             }
         }
         private DataTable dtGridview()
@@ -628,6 +632,7 @@ namespace ChakuniNyuuryoku
         {
             dtGridview();
             gvChakuniNyuuryoku.DataSource = dtmain;
+            gvChakuniNyuuryoku.Select();
         }
         private void txtArrivalNO_KeyDown_1(object sender, KeyEventArgs e)
         {

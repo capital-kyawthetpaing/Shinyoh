@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,16 +30,27 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("IdouNyuuryo_Search", GetConnectionString(), parameters);
             return dt;
         }
-        public DataTable IdouNyuuryoku_Select_Check(string IdouNo, string juchuuDate, string err)
+        public DataTable IdouNyuuryoku_Select_Check(string IdouNo, string juchuuDate, string err, [Optional]string KanriNo)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
+            var parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@IdouNo", SqlDbType.VarChar) { Value = IdouNo };
             parameters[1] = new SqlParameter("@Date", SqlDbType.VarChar) { Value = juchuuDate };
             parameters[2] = new SqlParameter("@ErrorType", SqlDbType.VarChar) { Value = err };
+            parameters[3] = new SqlParameter("@KanriNo", SqlDbType.VarChar) { Value = KanriNo };
             DataTable dt = ckmdl.SelectDatatable("IdouNyuuryoku_Select_Check", GetConnectionString(), parameters);
             return dt;
         }
-        
+        public string IdouNyuuryoku_Exclusive_Insert(StaffEntity obj)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@DataKBN", SqlDbType.VarChar) { Value = "15" };
+            parameters[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = obj.StaffName };
+            parameters[2] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = obj.OperatorCD };
+            parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = "IdouNyuuryoku" };
+            parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
+            return ckmdl.InsertUpdateDeleteData("D_Exclusive_Insert", GetConnectionString(), parameters);
+        }
     }
 }

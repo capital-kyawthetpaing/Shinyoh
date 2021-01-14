@@ -53,34 +53,42 @@ namespace BL
                     oSheet.Columns.AutoFit();
                 }
 
-                // color the columns 
-                oSheet.Range[obj.Start_Interior_No, obj.End_Interior_No].Interior.Color = obj.Interior_Color;
-                oSheet.Range[obj.Start_Font_No, obj.End_Font_No].Font.Color = obj.Font_Color;
-
-                //Change date format
-                rg = (Excel.Range)oSheet.Cells[obj.Start_Date_No, obj.End_Date_No];
-                rg.EntireColumn.NumberFormat = obj.Date_Format;
-
-                //change number format
-                Excel.Range numberRange;
-                numberRange = oSheet.get_Range("T1", "V1");
-                numberRange.NumberFormat = "#,###,###";                
-
                 //header alignment
-                var range = oSheet.Range[obj.Start_Title_Center_No, obj.End_Title_Center_No];
-                range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
-                range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
-                range.WrapText = true;
-
-
-                // left alignment
-                //Excel.Range last = oSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
-                //Excel.Range range = oSheet.get_Range("A2", last);
-               // range.EntireColumn.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
-                //right alignment
-                //rg = (Excel.Range)oSheet.Cells[20, 22];
-                //rg.EntireColumn.HorizontalAlignment = Excel.XlHAlign.xlHAlignRight;
-
+                if(!string.IsNullOrEmpty(obj.Start_Title_Center_Column) && !string.IsNullOrEmpty(obj.End_Title_Center_Column))
+                {
+                    var range = oSheet.Range[obj.Start_Title_Center_Column, obj.End_Title_Center_Column];
+                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
+                    range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    range.WrapText = true;
+                }
+                // color the columns 
+                if (!string.IsNullOrEmpty(obj.Start_Interior_Column) && !string.IsNullOrEmpty(obj.End_Interior_Column))
+                {
+                    oSheet.Range[obj.Start_Interior_Column, obj.End_Interior_Column].Interior.Color = obj.Interior_Color;
+                }
+                //font color 
+                if (!string.IsNullOrEmpty(obj.Start_Font_Column) && !string.IsNullOrEmpty(obj.End_Font_Column))
+                {
+                    oSheet.Range[obj.Start_Font_Column, obj.End_Font_Column].Font.Color = obj.Font_Color;
+                }
+                //Change date format               
+                if (obj.Date_Column != null && obj.Date_Column.Count > 0)//change
+                {
+                    for (int k = 0; k < obj.Date_Column.Count; k++)
+                    {
+                        rg = (Excel.Range)oSheet.Cells[obj.Date_Column[k], obj.Date_Column[k]];
+                        rg.EntireColumn.NumberFormat = obj.Date_Format;
+                    }
+                }
+                //change number format
+                if (obj.Number_Column != null && obj.Number_Column.Count > 0)//change
+                {
+                    for (int k = 0; k < obj.Number_Column.Count; k++)
+                    {
+                        rg = (Excel.Range)oSheet.Cells[obj.Number_Column[k], obj.Number_Column[k]];
+                        rg.EntireColumn.NumberFormat = obj.Number_Format;
+                    }
+                }
                 //no border 
                 oXL.Windows.Application.ActiveWindow.DisplayGridlines = false;
 
@@ -91,7 +99,10 @@ namespace BL
                     Excel.XlSaveAsAccessMode.xlExclusive,
                     Missing.Value, Missing.Value, Missing.Value,
                     Missing.Value, Missing.Value);
-                oWB.Close(Missing.Value, Missing.Value, Missing.Value);
+                //Doesn't appear in any other open windows.
+            //True: Close workbook and save changes.
+            //False: Close workbook without saving changes.
+                oWB.Close(false, Missing.Value, Missing.Value);//change
                 oWB = null;
                 oXL.Quit();
             }
@@ -139,19 +150,17 @@ namespace BL
     {
         public  string FilePath { get; set; }
         public  string SheetName { get; set; }
-        public  string Start_Interior_No { get; set; }
-        public  string End_Interior_No { get; set; }
+        public  string Start_Interior_Column { get; set; }
+        public  string End_Interior_Column { get; set; }
         public Color Interior_Color { get; set; }
-        public  string Start_Font_No { get; set; }
-        public  string End_Font_No { get; set; }
+        public  string Start_Font_Column { get; set; }
+        public  string End_Font_Column { get; set; }
         public Color Font_Color { get; set; }
-        public  int Start_Date_No { get; set; }
-        public  int End_Date_No { get; set; }
-        public  string Date_Format { get; set; }
-        public  string Start_Title_Center_No { get; set; }
-        public string End_Title_Center_No { get; set; }
-        public string Start_Number_No { get; set; }
-        public string End_Number_No { get; set; }
+        public  List<int> Date_Column { get; set; }
+        public string Date_Format { get; set; }
+        public  string Start_Title_Center_Column { get; set; }
+        public string End_Title_Center_Column { get; set; }
+        public List<int> Number_Column { get; set; }
         public string Number_Format { get; set; }
     }   
     

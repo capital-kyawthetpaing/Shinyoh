@@ -81,50 +81,46 @@ namespace MasterList_Siiresaki
         {
             SiiresakiBL sbl = new SiiresakiBL();
             dt = sbl.Get_ExportData(Get_UIData());
-
             if (dt.Rows.Count > 0)
             {
-                Excel.Application xlApp;
-                Excel.Workbook xlWorkBook;
-                Excel.Worksheet xlWorkSheet;
-                object misValue = System.Reflection.Missing.Value;
-                string filename = "C:\\Output Excel Files\\得意先マスタリスト.xls";
-                xlApp = new Microsoft.Office.Interop.Excel.Application();
-                xlWorkBook = xlApp.Workbooks.Add(misValue);
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
+                saveFileDialog1.DefaultExt = "xls";
+                saveFileDialog1.Filter = "ExcelFile|*.xls";
+                saveFileDialog1.FileName = "仕入先マスタリスト.xls";
+                saveFileDialog1.RestoreDirectory = true;
 
-                xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets[1];
-                xlWorkSheet.Name = "得意先マスタリスト";
-
-                for (int i = 1; i < dt.Columns.Count + 1; i++)
-                {
-                    xlWorkSheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
-                }
-                for (int j = 0; j < dt.Rows.Count; j++)
-                {
-                    for (int i = 0; i < dt.Columns.Count; i++)
-                    {
-                        Excel.Range rng = xlWorkSheet.Cells[j + 2, i + 1] as Excel.Range;
-                        rng.Value2 = dt.Rows[j][i].ToString();
-                        if (i == 1 || i == 27 || i == 28)
-                        {
-                            rng.NumberFormat = "YYYY/MM/DD";
-                        }
-                    }
-                }
                 if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
                     System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
-                xlWorkBook.SaveAs(filename, misValue, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                xlWorkBook.Close(true, misValue, misValue);
-                xlApp.Quit();
 
-                //New_Mode
-                cf.Clear(PanelDetail);
-                rdo_ChokkinDate.Checked = true;
-                txtSiiresakiCD_From.Focus();
-            }
-            else
-            {
-                txtSiiresakiCD_From.Focus();
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    ExcelDesignSetting obj = new ExcelDesignSetting();
+                    obj.FilePath = saveFileDialog1.FileName;
+                    obj.SheetName = "仕入先マスタリスト";
+                    obj.Start_Interior_Column = "A1";
+                    obj.End_Interior_Column = "AH1";
+                    obj.Interior_Color = Color.Orange;
+                    obj.Start_Font_Column = "A1";
+                    obj.End_Font_Column = "AH1";
+                    obj.Font_Color = Color.Black;
+                    //For column C
+                    obj.Date_Column = new List<int>();
+                    obj.Date_Column.Add(2);
+                    obj.Date_Column.Add(28);
+                    obj.Date_Column.Add(29);
+                    obj.Date_Format = "YYYY/MM/DD";
+                    obj.Start_Title_Center_Column = "A1";
+                    obj.End_Title_Center_Column = "AH1";
+                    //for column T,U,V
+                    ExportCSVExcel excel = new ExportCSVExcel();
+                    excel.ExportDataTableToExcel(dt, obj);
+
+                    //New_Mode
+                    cf.Clear(PanelDetail);
+                    rdo_ChokkinDate.Checked = true;
+                    txtSiiresakiCD_From.Focus();
+                }
             }
         }
         private SiiresakiEntity Get_UIData()

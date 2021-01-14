@@ -1,6 +1,6 @@
-﻿namespace JuchuuNyuuryoku
+﻿namespace Shinyoh_Details
 {
-    partial class KouritenDetail
+    partial class SiiresakiDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtPhone2_3 = new Shinyoh_Controls.STextBox();
-            this.txtPhone2_2 = new Shinyoh_Controls.STextBox();
-            this.Panel_Detail = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtPhone2_3 = new Shinyoh_Controls.STextBox();
+            this.txtPhone2_2 = new Shinyoh_Controls.STextBox();
             this.txtPhone2_1 = new Shinyoh_Controls.STextBox();
             this.lblPhone2 = new Shinyoh_Controls.SLabel();
             this.label3 = new System.Windows.Forms.Label();
@@ -44,7 +43,6 @@
             this.txtAddress2 = new Shinyoh_Controls.STextBox();
             this.lblAddress2 = new Shinyoh_Controls.SLabel();
             this.txtAddress1 = new Shinyoh_Controls.STextBox();
-            this.lblAddress1 = new Shinyoh_Controls.SLabel();
             this.txtYubin2 = new Shinyoh_Controls.STextBox();
             this.txtYubin1 = new Shinyoh_Controls.STextBox();
             this.lblYubinNo = new Shinyoh_Controls.SLabel();
@@ -56,10 +54,32 @@
             this.lbl_Name = new Shinyoh_Controls.SLabel();
             this.txtCD = new Shinyoh_Controls.STextBox();
             this.lblCD = new Shinyoh_Controls.SLabel();
+            this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.lblAddress1 = new Shinyoh_Controls.SLabel();
             this.PanelTitle = new System.Windows.Forms.Panel();
             this.Panel_Detail.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(296, 214);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(15, 20);
+            this.label4.TabIndex = 107;
+            this.label4.Text = "-";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(207, 214);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(15, 20);
+            this.label5.TabIndex = 106;
+            this.label5.Text = "-";
             // 
             // txtPhone2_3
             // 
@@ -74,13 +94,13 @@
             this.txtPhone2_3.IsErrorOccurs = false;
             this.txtPhone2_3.IsRequire = false;
             this.txtPhone2_3.IsUseInitializedLayout = true;
-            this.txtPhone2_3.Location = new System.Drawing.Point(322, 214);
+            this.txtPhone2_3.Location = new System.Drawing.Point(326, 214);
             this.txtPhone2_3.MaxLength = 5;
             this.txtPhone2_3.MinimumSize = new System.Drawing.Size(60, 19);
             this.txtPhone2_3.MoveNext = true;
             this.txtPhone2_3.Name = "txtPhone2_3";
             this.txtPhone2_3.NextControl = null;
-            this.txtPhone2_3.NextControlName = "BtnF1";
+            this.txtPhone2_3.NextControlName = "BtnF12";
             this.txtPhone2_3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone2_3.Size = new System.Drawing.Size(60, 19);
             this.txtPhone2_3.TabIndex = 13;
@@ -99,7 +119,7 @@
             this.txtPhone2_2.IsErrorOccurs = false;
             this.txtPhone2_2.IsRequire = false;
             this.txtPhone2_2.IsUseInitializedLayout = true;
-            this.txtPhone2_2.Location = new System.Drawing.Point(227, 214);
+            this.txtPhone2_2.Location = new System.Drawing.Point(229, 214);
             this.txtPhone2_2.MaxLength = 5;
             this.txtPhone2_2.MinimumSize = new System.Drawing.Size(60, 19);
             this.txtPhone2_2.MoveNext = true;
@@ -110,57 +130,6 @@
             this.txtPhone2_2.Size = new System.Drawing.Size(60, 19);
             this.txtPhone2_2.TabIndex = 12;
             this.txtPhone2_2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            // 
-            // Panel_Detail
-            // 
-            this.Panel_Detail.Controls.Add(this.label4);
-            this.Panel_Detail.Controls.Add(this.label5);
-            this.Panel_Detail.Controls.Add(this.txtPhone2_3);
-            this.Panel_Detail.Controls.Add(this.txtPhone2_2);
-            this.Panel_Detail.Controls.Add(this.txtPhone2_1);
-            this.Panel_Detail.Controls.Add(this.lblPhone2);
-            this.Panel_Detail.Controls.Add(this.label3);
-            this.Panel_Detail.Controls.Add(this.label2);
-            this.Panel_Detail.Controls.Add(this.txtPhone1_3);
-            this.Panel_Detail.Controls.Add(this.txtPhone1_2);
-            this.Panel_Detail.Controls.Add(this.txtPhone1_1);
-            this.Panel_Detail.Controls.Add(this.lblPhone1);
-            this.Panel_Detail.Controls.Add(this.txtAddress2);
-            this.Panel_Detail.Controls.Add(this.lblAddress2);
-            this.Panel_Detail.Controls.Add(this.txtAddress1);
-            this.Panel_Detail.Controls.Add(this.lblAddress1);
-            this.Panel_Detail.Controls.Add(this.txtYubin2);
-            this.Panel_Detail.Controls.Add(this.txtYubin1);
-            this.Panel_Detail.Controls.Add(this.lblYubinNo);
-            this.Panel_Detail.Controls.Add(this.label1);
-            this.Panel_Detail.Controls.Add(this.txtLong_Name);
-            this.Panel_Detail.Controls.Add(this.lblLong);
-            this.Panel_Detail.Controls.Add(this.txtShort_Name);
-            this.Panel_Detail.Controls.Add(this.lblShort);
-            this.Panel_Detail.Location = new System.Drawing.Point(3, 82);
-            this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1050, 326);
-            this.Panel_Detail.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(294, 213);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(15, 20);
-            this.label4.TabIndex = 107;
-            this.label4.Text = "-";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(207, 213);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(15, 20);
-            this.label5.TabIndex = 106;
-            this.label5.Text = "-";
             // 
             // txtPhone2_1
             // 
@@ -205,7 +174,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(293, 180);
+            this.label3.Location = new System.Drawing.Point(295, 181);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 20);
             this.label3.TabIndex = 104;
@@ -215,7 +184,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(207, 180);
+            this.label2.Location = new System.Drawing.Point(208, 181);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(15, 20);
             this.label2.TabIndex = 103;
@@ -234,7 +203,7 @@
             this.txtPhone1_3.IsErrorOccurs = false;
             this.txtPhone1_3.IsRequire = false;
             this.txtPhone1_3.IsUseInitializedLayout = true;
-            this.txtPhone1_3.Location = new System.Drawing.Point(322, 180);
+            this.txtPhone1_3.Location = new System.Drawing.Point(326, 181);
             this.txtPhone1_3.MaxLength = 5;
             this.txtPhone1_3.MinimumSize = new System.Drawing.Size(60, 19);
             this.txtPhone1_3.MoveNext = true;
@@ -259,7 +228,7 @@
             this.txtPhone1_2.IsErrorOccurs = false;
             this.txtPhone1_2.IsRequire = false;
             this.txtPhone1_2.IsUseInitializedLayout = true;
-            this.txtPhone1_2.Location = new System.Drawing.Point(227, 181);
+            this.txtPhone1_2.Location = new System.Drawing.Point(229, 181);
             this.txtPhone1_2.MaxLength = 5;
             this.txtPhone1_2.MinimumSize = new System.Drawing.Size(60, 19);
             this.txtPhone1_2.MoveNext = true;
@@ -374,20 +343,6 @@
             this.txtAddress1.TabIndex = 6;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
-            // lblAddress1
-            // 
-            this.lblAddress1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
-            this.lblAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblAddress1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblAddress1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblAddress1.Location = new System.Drawing.Point(43, 112);
-            this.lblAddress1.MinimumSize = new System.Drawing.Size(100, 19);
-            this.lblAddress1.Name = "lblAddress1";
-            this.lblAddress1.Size = new System.Drawing.Size(100, 19);
-            this.lblAddress1.TabIndex = 100;
-            this.lblAddress1.Text = "住所１";
-            this.lblAddress1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // txtYubin2
             // 
             this.txtYubin2.AllowMinus = false;
@@ -401,7 +356,7 @@
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(226, 78);
+            this.txtYubin2.Location = new System.Drawing.Point(211, 78);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin2.MoveNext = true;
@@ -457,7 +412,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(201, 76);
+            this.label1.Location = new System.Drawing.Point(186, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 98;
@@ -500,7 +455,7 @@
             this.lblLong.Name = "lblLong";
             this.lblLong.Size = new System.Drawing.Size(100, 19);
             this.lblLong.TabIndex = 87;
-            this.lblLong.Text = "小売店名";
+            this.lblLong.Text = "仕入先名";
             this.lblLong.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtShort_Name
@@ -518,7 +473,7 @@
             this.txtShort_Name.IsUseInitializedLayout = true;
             this.txtShort_Name.Location = new System.Drawing.Point(142, 15);
             this.txtShort_Name.MaxLength = 40;
-            this.txtShort_Name.MinimumSize = new System.Drawing.Size(240, 19);
+            this.txtShort_Name.MinimumSize = new System.Drawing.Size(200, 19);
             this.txtShort_Name.MoveNext = true;
             this.txtShort_Name.Name = "txtShort_Name";
             this.txtShort_Name.NextControl = null;
@@ -540,7 +495,7 @@
             this.lblShort.Name = "lblShort";
             this.lblShort.Size = new System.Drawing.Size(100, 19);
             this.lblShort.TabIndex = 85;
-            this.lblShort.Text = "小売店略名";
+            this.lblShort.Text = "仕入先略名";
             this.lblShort.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbl_Name
@@ -593,8 +548,53 @@
             this.lblCD.Name = "lblCD";
             this.lblCD.Size = new System.Drawing.Size(100, 19);
             this.lblCD.TabIndex = 109;
-            this.lblCD.Text = "小売店";
+            this.lblCD.Text = "仕入先";
             this.lblCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Panel_Detail
+            // 
+            this.Panel_Detail.Controls.Add(this.label4);
+            this.Panel_Detail.Controls.Add(this.label5);
+            this.Panel_Detail.Controls.Add(this.txtPhone2_3);
+            this.Panel_Detail.Controls.Add(this.txtPhone2_2);
+            this.Panel_Detail.Controls.Add(this.txtPhone2_1);
+            this.Panel_Detail.Controls.Add(this.lblPhone2);
+            this.Panel_Detail.Controls.Add(this.label3);
+            this.Panel_Detail.Controls.Add(this.label2);
+            this.Panel_Detail.Controls.Add(this.txtPhone1_3);
+            this.Panel_Detail.Controls.Add(this.txtPhone1_2);
+            this.Panel_Detail.Controls.Add(this.txtPhone1_1);
+            this.Panel_Detail.Controls.Add(this.lblPhone1);
+            this.Panel_Detail.Controls.Add(this.txtAddress2);
+            this.Panel_Detail.Controls.Add(this.lblAddress2);
+            this.Panel_Detail.Controls.Add(this.txtAddress1);
+            this.Panel_Detail.Controls.Add(this.lblAddress1);
+            this.Panel_Detail.Controls.Add(this.txtYubin2);
+            this.Panel_Detail.Controls.Add(this.txtYubin1);
+            this.Panel_Detail.Controls.Add(this.lblYubinNo);
+            this.Panel_Detail.Controls.Add(this.label1);
+            this.Panel_Detail.Controls.Add(this.txtLong_Name);
+            this.Panel_Detail.Controls.Add(this.lblLong);
+            this.Panel_Detail.Controls.Add(this.txtShort_Name);
+            this.Panel_Detail.Controls.Add(this.lblShort);
+            this.Panel_Detail.Location = new System.Drawing.Point(3, 83);
+            this.Panel_Detail.Name = "Panel_Detail";
+            this.Panel_Detail.Size = new System.Drawing.Size(1050, 326);
+            this.Panel_Detail.TabIndex = 1;
+            // 
+            // lblAddress1
+            // 
+            this.lblAddress1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblAddress1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblAddress1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblAddress1.Location = new System.Drawing.Point(43, 112);
+            this.lblAddress1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.lblAddress1.Name = "lblAddress1";
+            this.lblAddress1.Size = new System.Drawing.Size(100, 19);
+            this.lblAddress1.TabIndex = 100;
+            this.lblAddress1.Text = "住所１";
+            this.lblAddress1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PanelTitle
             // 
@@ -604,22 +604,22 @@
             this.PanelTitle.Controls.Add(this.lbl_Name);
             this.PanelTitle.Controls.Add(this.txtCD);
             this.PanelTitle.Controls.Add(this.lblCD);
-            this.PanelTitle.Location = new System.Drawing.Point(4, 1);
+            this.PanelTitle.Location = new System.Drawing.Point(0, 1);
             this.PanelTitle.Name = "PanelTitle";
-            this.PanelTitle.Size = new System.Drawing.Size(1049, 81);
+            this.PanelTitle.Size = new System.Drawing.Size(1055, 81);
             this.PanelTitle.TabIndex = 0;
             // 
-            // KouritenDetail
+            // SiiresakiDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1056, 450);
             this.Controls.Add(this.Panel_Detail);
             this.Controls.Add(this.PanelTitle);
-            this.Name = "KouritenDetail";
+            this.Name = "SiiresakiDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "KouritenDetail";
-            this.Load += new System.EventHandler(this.KouritenDetail_Load);
+            this.Text = "SiiresakiDetail";
+            this.Load += new System.EventHandler(this.SiiresakiDetail_Load);
             this.Controls.SetChildIndex(this.PanelTitle, 0);
             this.Controls.SetChildIndex(this.Panel_Detail, 0);
             this.Panel_Detail.ResumeLayout(false);
@@ -631,11 +631,10 @@
 
         #endregion
 
-        private Shinyoh_Controls.STextBox txtPhone2_3;
-        private Shinyoh_Controls.STextBox txtPhone2_2;
-        private System.Windows.Forms.Panel Panel_Detail;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private Shinyoh_Controls.STextBox txtPhone2_3;
+        private Shinyoh_Controls.STextBox txtPhone2_2;
         private Shinyoh_Controls.STextBox txtPhone2_1;
         private Shinyoh_Controls.SLabel lblPhone2;
         private System.Windows.Forms.Label label3;
@@ -647,7 +646,6 @@
         private Shinyoh_Controls.STextBox txtAddress2;
         private Shinyoh_Controls.SLabel lblAddress2;
         private Shinyoh_Controls.STextBox txtAddress1;
-        private Shinyoh_Controls.SLabel lblAddress1;
         private Shinyoh_Controls.STextBox txtYubin2;
         private Shinyoh_Controls.STextBox txtYubin1;
         private Shinyoh_Controls.SLabel lblYubinNo;
@@ -659,6 +657,8 @@
         private Shinyoh_Controls.SLabel lbl_Name;
         private Shinyoh_Controls.STextBox txtCD;
         private Shinyoh_Controls.SLabel lblCD;
+        private System.Windows.Forms.Panel Panel_Detail;
+        private Shinyoh_Controls.SLabel lblAddress1;
         private System.Windows.Forms.Panel PanelTitle;
     }
 }

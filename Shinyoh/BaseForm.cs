@@ -263,6 +263,15 @@ namespace Shinyoh
                                 FunctionProcess(btn.Tag.ToString());
                         }
                         break;
+                    case ButtonType.BType.Process: 
+                        if (bbl.ShowMessage("Q002") != DialogResult.Yes)
+                        {
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
+                        }
+                        else
+                            FunctionProcess(btn.Tag.ToString());
+                        break;
                 }
             }
         }
@@ -340,6 +349,9 @@ namespace Shinyoh
                     button.Text = buttonText;
                     break;
                 case ButtonType.BType.Memory:
+                    button.Text = buttonText;
+                    break;
+                case ButtonType.BType.Process:
                     button.Text = buttonText;
                     break;
             }
