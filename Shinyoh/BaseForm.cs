@@ -295,6 +295,11 @@ namespace Shinyoh
                 }
                 FunctionProcess(btn.Tag.ToString());
             }
+            else
+            {
+                if (PreviousCtrl != null)
+                    PreviousCtrl.Focus();
+            }
         }
 
         public virtual void FunctionProcess(string tagID)
