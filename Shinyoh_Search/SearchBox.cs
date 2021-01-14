@@ -61,6 +61,9 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Souko:
                         colName = "SoukoName";
                         break;
+                    case Entity.SearchType.ScType.Siiresaki:
+                        colName = "SiiresakiName";
+                        break;
                 }
                 DataTable dt = this.IsDatatableOccurs;
                 if (dt.Rows.Count > 0)

@@ -11,6 +11,7 @@ using System.Text;
 using System.Drawing;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
 
 namespace MasterTouroku_Shouhin
 {
@@ -59,6 +60,7 @@ namespace MasterTouroku_Shouhin
             txtTaxRate.lblName = lbl_TaxtRate;
             txtIEvaluation.lblName = lbl_IEvaluation;
             txtIManagement.lblName = lbl_IManagement;
+            txtMajorSuppliers.lblName = lbl_MajorSuppliers;
         }
 
         private void ChangeMode(Mode mode)
@@ -416,7 +418,7 @@ namespace MasterTouroku_Shouhin
                 txtSize.Text = dt.Rows[0]["SizeNO"].ToString();
                 lbl_SizeNO.Text = dt.Rows[0]["SizeName"].ToString();
                 txtRetailPrice.Text = dt.Rows[0]["JoudaiTanka"].ToString();
-                txtLowerPrice.Text = dt.Rows[0]["GedaiTanka"].ToString();
+                txtLowerPrice.Text = string.Format("{0:#,#}", dt.Rows[0]["GedaiTanka"].ToString());
                 txtStandardPrice.Text = dt.Rows[0]["HyoujunGenkaTanka"].ToString();
                 txtTaxRate.Text = dt.Rows[0]["ZeirituKBN"].ToString();
                 lbl_TaxtRate.Text = dt.Rows[0]["ZeirituKBN_Name"].ToString();
@@ -439,7 +441,7 @@ namespace MasterTouroku_Shouhin
                 {
                     byte[] imgBytes = (byte[])dt.Rows[0]["ShouhinImage"];
                     pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
-                    pImage.SizeMode = PictureBoxSizeMode.Zoom;
+                    pImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
 
                 txtRemarks.Text = dt.Rows[0]["Remarks"].ToString();
@@ -449,7 +451,7 @@ namespace MasterTouroku_Shouhin
 
         private void txtImage_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!System.IO.File.Exists(txtImage.Text))
+            if (!System.IO.File.Exists(txtImage.Text) && !string.IsNullOrEmpty(txtImage.Text.Trim()))
             {
                 txtImage.Focus();
                 pImage.ImageLocation = "";
@@ -457,8 +459,12 @@ namespace MasterTouroku_Shouhin
             }
             else
             {
-                pImage.ImageLocation = txtImage.Text;
-                pImage.SizeMode = PictureBoxSizeMode.Zoom;
+                pImage.Image = null;
+                if (System.IO.File.Exists(txtImage.Text))
+                    pImage.ImageLocation = txtImage.Text;
+                else
+                    pImage.ImageLocation = null;
+                pImage.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
 
