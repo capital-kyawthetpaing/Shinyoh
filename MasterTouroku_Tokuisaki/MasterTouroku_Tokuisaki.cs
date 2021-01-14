@@ -119,6 +119,8 @@ namespace MasterTouroku_Tokuisaki {
             cf.DisablePanel(PanelDetail);
             txt_Tokuisaki.Focus();
             sRadRegister.Checked = true;
+            RadSaMa.Checked = true;
+            RadNeed.Checked = true;
             //txtSearch.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))

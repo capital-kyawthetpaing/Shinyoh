@@ -333,7 +333,7 @@
             this.RadNeed.MoveNext = true;
             this.RadNeed.Name = "RadNeed";
             this.RadNeed.NextControl = null;
-            this.RadNeed.NextControlName = "RadNoNeed";
+            this.RadNeed.NextControlName = "txtRemark";
             this.RadNeed.Size = new System.Drawing.Size(49, 19);
             this.RadNeed.TabIndex = 33;
             this.RadNeed.TabStop = true;
@@ -370,7 +370,7 @@
             this.RadSaMa.MoveNext = true;
             this.RadSaMa.Name = "RadSaMa";
             this.RadSaMa.NextControl = null;
-            this.RadSaMa.NextControlName = "RadOnchuu";
+            this.RadSaMa.NextControlName = "txtYubin1";
             this.RadSaMa.Size = new System.Drawing.Size(36, 19);
             this.RadSaMa.TabIndex = 13;
             this.RadSaMa.TabStop = true;
