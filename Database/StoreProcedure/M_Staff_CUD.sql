@@ -44,7 +44,7 @@ BEGIN
 
 	exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
 
-   if @Mode='New'
+    if @Mode='New'
 	begin
 	    INSERT INTO M_Staff
            ([StaffCD]
@@ -52,6 +52,8 @@ BEGIN
            ,[StaffName]
            ,[KanaName]
            ,[KensakuHyouziJun]
+		   ,[YuubinNO1]
+		   ,[YuubinNO2]
            ,[MenuCD]
            ,[AuthorizationsCD]
 		   ,[PositionCD]
@@ -70,6 +72,8 @@ BEGIN
            ,@StaffName
            ,@KanaName
            ,@KensakuHyouziJun
+		   ,@YuubinNO1
+		   ,@YuubinNO2
            ,@MenuCD
            ,@AuthorizationsCD 
 		   ,@PositionCD 
@@ -91,6 +95,8 @@ BEGIN
 						StaffName = @StaffName,
 						KanaName = @KanaName,
 						KensakuHyouziJun = @KensakuHyouziJun,
+						YuubinNO1 = @YuubinNO1,
+						YuubinNO2 = @YuubinNO2,
 						MenuCD = @MenuCD,
 						AuthorizationsCD = @AuthorizationsCD, 
 						PositionCD = @PositionCD,
