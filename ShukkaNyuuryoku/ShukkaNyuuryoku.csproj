@@ -51,12 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KouritenDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="KouritenDetail.Designer.cs">
-      <DependentUpon>KouritenDetail.cs</DependentUpon>
-    </Compile>
     <Compile Include="ShukkaNyuuryoku.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,15 +59,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TokuisakiDetail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TokuisakiDetail.Designer.cs">
-      <DependentUpon>TokuisakiDetail.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="KouritenDetail.resx">
-      <DependentUpon>KouritenDetail.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -85,9 +70,6 @@
     </Compile>
     <EmbeddedResource Include="ShukkaNyuuryoku.resx">
       <DependentUpon>ShukkaNyuuryoku.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TokuisakiDetail.resx">
-      <DependentUpon>TokuisakiDetail.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -118,6 +100,10 @@
     <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Details\Shinyoh_Details.csproj">
+      <Project>{c77a6d15-5b0f-4ec2-9c63-f99da9c55a24}</Project>
+      <Name>Shinyoh_Details</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
       <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>

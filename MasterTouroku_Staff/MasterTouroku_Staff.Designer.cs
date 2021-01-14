@@ -68,10 +68,6 @@
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1485, 75);
-            // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtStaff_Copy);
@@ -122,7 +118,7 @@
             this.PanelDetail.Controls.Add(this.lblStaffName);
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 838);
             this.PanelDetail.TabIndex = 1;
             // 
             // lblStaff_Search
@@ -776,7 +772,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 644);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_Staff";
