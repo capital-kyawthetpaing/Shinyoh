@@ -168,19 +168,19 @@ namespace Shinyoh
                         break;
                     case ButtonType.BType.New:
                         cboMode.SelectedValue = "1";
-                        SetMode(btn);
+                        SetMode(btn, type);
                         break;
                     case ButtonType.BType.Update:
                         cboMode.SelectedValue = "2";
-                        SetMode(btn);
+                        SetMode(btn, type);
                         break;
                     case ButtonType.BType.Delete:
                         cboMode.SelectedValue = "3";
-                        SetMode(btn);
+                        SetMode(btn, type);
                         break;
                     case ButtonType.BType.Inquiry:
                         cboMode.SelectedValue = "4";
-                        SetMode(btn);
+                        SetMode(btn, type);
                         break;
                     case ButtonType.BType.Cancel:
                         if (bbl.ShowMessage("Q004") != DialogResult.Yes)
@@ -277,21 +277,24 @@ namespace Shinyoh
         }
 
         public static int index = 0;
-        private void SetMode(SButton btn)
+        private void SetMode(SButton btn, int type)
         {
             if (index >= 0 && cboMode.SelectedIndex != index)
             {
-                if (bbl.ShowMessage("Q005") != DialogResult.Yes)
+                if (type != 2)
                 {
-                    if (PreviousCtrl != null)
-                        PreviousCtrl.Focus();
+                    if (bbl.ShowMessage("Q005") != DialogResult.Yes)
+                    {
+                        if (PreviousCtrl != null)
+                            PreviousCtrl.Focus();
 
-                    cboMode.SelectedIndex = index;
-                    return;
-                }
-                else
-                {
-                    index = cboMode.SelectedIndex;
+                        cboMode.SelectedIndex = index;
+                        return;
+                    }
+                    else
+                    {
+                        index = cboMode.SelectedIndex;
+                    }
                 }
                 FunctionProcess(btn.Tag.ToString());
             }
