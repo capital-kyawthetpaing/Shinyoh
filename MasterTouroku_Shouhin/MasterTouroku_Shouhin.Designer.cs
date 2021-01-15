@@ -119,7 +119,7 @@
             this.panel1.Controls.Add(this.rdo_Delete);
             this.panel1.Controls.Add(this.rdo_Registragion);
             this.panel1.Controls.Add(this.lblClassification);
-            this.panel1.Size = new System.Drawing.Size(1485, 69);
+            this.panel1.Size = new System.Drawing.Size(1713, 69);
             this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
             this.panel1.Controls.SetChildIndex(this.cboMode, 0);
             this.panel1.Controls.SetChildIndex(this.lblClassification, 0);
@@ -368,7 +368,7 @@
             this.PanelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDetail.Location = new System.Drawing.Point(0, 69);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1485, 698);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 848);
             this.PanelDetail.TabIndex = 3;
             // 
             // lbl_MajorSuppliers
@@ -740,11 +740,12 @@
             // pImage
             // 
             this.pImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pImage.Location = new System.Drawing.Point(139, 562);
+            this.pImage.Location = new System.Drawing.Point(660, 15);
             this.pImage.Name = "pImage";
-            this.pImage.Size = new System.Drawing.Size(100, 65);
+            this.pImage.Size = new System.Drawing.Size(350, 300);
             this.pImage.TabIndex = 66;
             this.pImage.TabStop = false;
+            this.pImage.WaitOnLoad = true;
             // 
             // txtKensakuHyouziJun
             // 
@@ -759,7 +760,7 @@
             this.txtKensakuHyouziJun.IsErrorOccurs = false;
             this.txtKensakuHyouziJun.IsRequire = false;
             this.txtKensakuHyouziJun.IsUseInitializedLayout = true;
-            this.txtKensakuHyouziJun.Location = new System.Drawing.Point(140, 655);
+            this.txtKensakuHyouziJun.Location = new System.Drawing.Point(140, 590);
             this.txtKensakuHyouziJun.MaxLength = 3;
             this.txtKensakuHyouziJun.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtKensakuHyouziJun.MoveNext = true;
@@ -778,7 +779,7 @@
             this.lblSearchDisplayOrder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSearchDisplayOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSearchDisplayOrder.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSearchDisplayOrder.Location = new System.Drawing.Point(41, 655);
+            this.lblSearchDisplayOrder.Location = new System.Drawing.Point(41, 590);
             this.lblSearchDisplayOrder.Name = "lblSearchDisplayOrder";
             this.lblSearchDisplayOrder.Size = new System.Drawing.Size(100, 19);
             this.lblSearchDisplayOrder.TabIndex = 56;
@@ -798,7 +799,7 @@
             this.txtRemarks.IsErrorOccurs = false;
             this.txtRemarks.IsRequire = false;
             this.txtRemarks.IsUseInitializedLayout = true;
-            this.txtRemarks.Location = new System.Drawing.Point(140, 630);
+            this.txtRemarks.Location = new System.Drawing.Point(140, 565);
             this.txtRemarks.MaxLength = 80;
             this.txtRemarks.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRemarks.MoveNext = true;
@@ -806,7 +807,7 @@
             this.txtRemarks.NextControl = null;
             this.txtRemarks.NextControlName = "txtKensakuHyouziJun";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
-            this.txtRemarks.Size = new System.Drawing.Size(400, 19);
+            this.txtRemarks.Size = new System.Drawing.Size(500, 19);
             this.txtRemarks.TabIndex = 36;
             this.txtRemarks.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -816,7 +817,7 @@
             this.lblRemarks.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblRemarks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblRemarks.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblRemarks.Location = new System.Drawing.Point(41, 630);
+            this.lblRemarks.Location = new System.Drawing.Point(41, 565);
             this.lblRemarks.Name = "lblRemarks";
             this.lblRemarks.Size = new System.Drawing.Size(100, 19);
             this.lblRemarks.TabIndex = 54;
@@ -844,7 +845,7 @@
             this.txtImage.NextControl = null;
             this.txtImage.NextControlName = "txtRemarks";
             this.txtImage.SearchType = Entity.SearchType.ScType.None;
-            this.txtImage.Size = new System.Drawing.Size(525, 19);
+            this.txtImage.Size = new System.Drawing.Size(625, 19);
             this.txtImage.TabIndex = 35;
             this.txtImage.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtImage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImage_KeyDown);
@@ -866,7 +867,7 @@
             // 
             this.txtHacchuuLot.AllowMinus = false;
             this.txtHacchuuLot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHacchuuLot.DecimalPlace = 6;
+            this.txtHacchuuLot.DecimalPlace = 0;
             this.txtHacchuuLot.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtHacchuuLot.DepandOnMode = true;
             this.txtHacchuuLot.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -890,10 +891,11 @@
             // 
             // lblOrderLot
             // 
-            this.lblOrderLot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.lblOrderLot.BackColor = System.Drawing.Color.Red;
             this.lblOrderLot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblOrderLot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblOrderLot.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblOrderLot.ForeColor = System.Drawing.Color.White;
             this.lblOrderLot.Location = new System.Drawing.Point(41, 515);
             this.lblOrderLot.Name = "lblOrderLot";
             this.lblOrderLot.Size = new System.Drawing.Size(100, 19);
@@ -1202,7 +1204,7 @@
             this.txtStandardPrice.IsRequire = false;
             this.txtStandardPrice.IsUseInitializedLayout = true;
             this.txtStandardPrice.Location = new System.Drawing.Point(140, 290);
-            this.txtStandardPrice.MaxLength = 20;
+            this.txtStandardPrice.MaxLength = 11;
             this.txtStandardPrice.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStandardPrice.MoveNext = true;
             this.txtStandardPrice.Name = "txtStandardPrice";
@@ -1242,7 +1244,7 @@
             this.txtLowerPrice.IsRequire = false;
             this.txtLowerPrice.IsUseInitializedLayout = true;
             this.txtLowerPrice.Location = new System.Drawing.Point(404, 265);
-            this.txtLowerPrice.MaxLength = 20;
+            this.txtLowerPrice.MaxLength = 11;
             this.txtLowerPrice.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtLowerPrice.MoveNext = true;
             this.txtLowerPrice.Name = "txtLowerPrice";
@@ -1282,7 +1284,7 @@
             this.txtRetailPrice.IsRequire = false;
             this.txtRetailPrice.IsUseInitializedLayout = true;
             this.txtRetailPrice.Location = new System.Drawing.Point(140, 265);
-            this.txtRetailPrice.MaxLength = 20;
+            this.txtRetailPrice.MaxLength = 11;
             this.txtRetailPrice.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRetailPrice.MoveNext = true;
             this.txtRetailPrice.Name = "txtRetailPrice";
@@ -1417,7 +1419,7 @@
             this.txtExhibition.IsRequire = false;
             this.txtExhibition.IsUseInitializedLayout = true;
             this.txtExhibition.Location = new System.Drawing.Point(404, 140);
-            this.txtExhibition.MaxLength = 6;
+            this.txtExhibition.MaxLength = 4;
             this.txtExhibition.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtExhibition.MoveNext = true;
             this.txtExhibition.Name = "txtExhibition";
@@ -1501,7 +1503,7 @@
             this.txtKatakanaName.NextControl = null;
             this.txtKatakanaName.NextControlName = "txtJANCD";
             this.txtKatakanaName.SearchType = Entity.SearchType.ScType.None;
-            this.txtKatakanaName.Size = new System.Drawing.Size(400, 19);
+            this.txtKatakanaName.Size = new System.Drawing.Size(500, 19);
             this.txtKatakanaName.TabIndex = 12;
             this.txtKatakanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1539,7 +1541,7 @@
             this.txtShouhinRyakuName.NextControl = null;
             this.txtShouhinRyakuName.NextControlName = "txtKatakanaName";
             this.txtShouhinRyakuName.SearchType = Entity.SearchType.ScType.None;
-            this.txtShouhinRyakuName.Size = new System.Drawing.Size(400, 19);
+            this.txtShouhinRyakuName.Size = new System.Drawing.Size(500, 19);
             this.txtShouhinRyakuName.TabIndex = 11;
             this.txtShouhinRyakuName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1578,7 +1580,7 @@
             this.txtProductName.NextControl = null;
             this.txtProductName.NextControlName = "txtShouhinRyakuName";
             this.txtProductName.SearchType = Entity.SearchType.ScType.None;
-            this.txtProductName.Size = new System.Drawing.Size(400, 19);
+            this.txtProductName.Size = new System.Drawing.Size(500, 19);
             this.txtProductName.TabIndex = 10;
             this.txtProductName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1686,7 +1688,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 811);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.Location = new System.Drawing.Point(0, 0);

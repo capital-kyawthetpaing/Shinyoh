@@ -257,7 +257,9 @@ namespace MasterTouroku_Staff
             obj.KanaName = txtStaff_KanaName.Text.ToString();
             int int_val = 0;
             int.TryParse(txtStaff_Search.Text, NumberStyles.Any,CultureInfo.CurrentCulture, out int_val);
-            obj.KensakuHyouziJun = int_val.ToString();         
+            obj.KensakuHyouziJun = int_val.ToString();
+            obj.YuubinNO1 = txtStaff_Yubin1.Text;
+            obj.YuubinNO2 = txtStaff_Yubin2.Text;
             obj.MenuCD = cboStaff_Menu.SelectedValue.ToString();
             obj.AuthorizationsCD = cboStaff_authority.SelectedValue.ToString();
             obj.PositionCD = string.IsNullOrEmpty(cboStaff_Position.Text.ToString()) ? "" : cboStaff_Position.SelectedValue.ToString();
@@ -358,6 +360,8 @@ namespace MasterTouroku_Staff
                 txtStaff_Name.Text = dt.Rows[0]["StaffName"].ToString();
                 txtStaff_KanaName.Text = dt.Rows[0]["KanaName"].ToString();
                 txtStaff_Search.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
+                txtStaff_Yubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
+                txtStaff_Yubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
                 cboStaff_Menu.SelectedValue = dt.Rows[0]["MenuCD"].ToString();
                 cboStaff_authority.SelectedValue = dt.Rows[0]["AuthorizationsCD"].ToString();
                 cboStaff_Position.SelectedValue = dt.Rows[0]["PositionCD"].ToString();

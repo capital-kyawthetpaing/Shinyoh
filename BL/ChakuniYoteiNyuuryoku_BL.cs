@@ -50,7 +50,7 @@ namespace BL
             cyn.Sqlprms[12] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cyn.OperatorCD };
             cyn.Sqlprms[13] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cyn.ProgramID };
             cyn.Sqlprms[14] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cyn.PC };
-            DataTable dt = ckmdl.SelectDatatable("D_ChakuniYotei_Display", GetConnectionString(), cyn.Sqlprms);
+            DataTable dt = ckmdl.SelectDatatable("ChakuniYoteiNyuuryoku_Display", GetConnectionString(), cyn.Sqlprms);
             return dt;
         }
         public DataTable ChakuniYoteiNyuuryoku_Select(string ChakuniYoteiNO, string ChakuniYoteiDate, string error_Type)
@@ -62,6 +62,25 @@ namespace BL
             parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
             DataTable dt = ckmdl.SelectDatatable("ChakuniYoteiNyuuryoku_Select_Check", GetConnectionString(), parameters);
             return dt;
+        }
+        public DataTable GetChakuniYoteiNo(string SerialNO, string ChakuniYoteiDate, string SEQNO)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@SerialNO", SqlDbType.VarChar) { Value = SerialNO };
+            parameters[1] = new SqlParameter("@refDate", SqlDbType.VarChar) { Value = ChakuniYoteiDate };
+            parameters[2] = new SqlParameter("@SEQNO", SqlDbType.VarChar) { Value = SEQNO };
+            DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
+            return dt;
+        }
+        public string ChakuniYoteiNyuuryoku_IUD(string mode, string xml_Main, string xml_detail)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = mode };
+            parameters[1] = new SqlParameter("@XML_Main", SqlDbType.Xml) { Value = xml_Main };
+            parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
+            return ckmdl.InsertUpdateDeleteData("ChakuniYoteiNyuuryoku_IUD", GetConnectionString(), parameters);
         }
     }
 }

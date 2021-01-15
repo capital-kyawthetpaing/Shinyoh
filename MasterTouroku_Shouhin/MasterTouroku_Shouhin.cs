@@ -11,6 +11,7 @@ using System.Text;
 using System.Drawing;
 using System.IO;
 using System.Collections.Generic;
+using System.Net;
 
 namespace MasterTouroku_Shouhin
 {
@@ -59,11 +60,12 @@ namespace MasterTouroku_Shouhin
             txtTaxRate.lblName = lbl_TaxtRate;
             txtIEvaluation.lblName = lbl_IEvaluation;
             txtIManagement.lblName = lbl_IManagement;
+            txtMajorSuppliers.lblName = lbl_MajorSuppliers;
+            txtProduct.Focus();
         }
 
         private void ChangeMode(Mode mode)
         {
-            txtProduct.Focus();
             switch (mode)
             {
                 case Mode.New:
@@ -128,6 +130,7 @@ namespace MasterTouroku_Shouhin
             cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
+            txtProduct.Focus();
 
             txtProduct.E102Check(true);
             txtChangeDate.E102Check(true);
@@ -208,8 +211,6 @@ namespace MasterTouroku_Shouhin
             }
             if (tagID == "6")
             {
-                txtProduct.Focus();
-
                 UI_ErrorCheck();
                 if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
                 {
@@ -416,7 +417,7 @@ namespace MasterTouroku_Shouhin
                 txtSize.Text = dt.Rows[0]["SizeNO"].ToString();
                 lbl_SizeNO.Text = dt.Rows[0]["SizeName"].ToString();
                 txtRetailPrice.Text = dt.Rows[0]["JoudaiTanka"].ToString();
-                txtLowerPrice.Text = dt.Rows[0]["GedaiTanka"].ToString();
+                txtLowerPrice.Text = string.Format("{0:#,#}", dt.Rows[0]["GedaiTanka"].ToString());
                 txtStandardPrice.Text = dt.Rows[0]["HyoujunGenkaTanka"].ToString();
                 txtTaxRate.Text = dt.Rows[0]["ZeirituKBN"].ToString();
                 lbl_TaxtRate.Text = dt.Rows[0]["ZeirituKBN_Name"].ToString();
@@ -426,8 +427,8 @@ namespace MasterTouroku_Shouhin
                 lbl_IManagement.Text = dt.Rows[0]["ZaikoKanriKBN_Name"].ToString();
                 txtMajorSuppliers.Text = dt.Rows[0]["MainSiiresakiCD"].ToString();
                 lbl_MajorSuppliers.Text = dt.Rows[0]["SiiresakiRyakuName"].ToString();
-                txtHandlingEndDate.Text = dt.Rows[0]["ToriatukaiShuuryouDate"].ToString();
-                txtSalesStopDate.Text = dt.Rows[0]["HanbaiTeisiDate"].ToString();
+                txtHandlingEndDate.Text = !string.IsNullOrEmpty(dt.Rows[0]["ToriatukaiShuuryouDate"].ToString()) ? Convert.ToDateTime(dt.Rows[0]["ToriatukaiShuuryouDate"].ToString()).ToString("yyyy/MM/dd") : string.Empty;
+                txtSalesStopDate.Text = !string.IsNullOrEmpty(dt.Rows[0]["HanbaiTeisiDate"].ToString()) ? Convert.ToDateTime(dt.Rows[0]["HanbaiTeisiDate"].ToString()).ToString("yyyy/MM/dd") : string.Empty;
                 txtModelNo.Text = dt.Rows[0]["Model_No"].ToString();
                 txtModelName.Text = dt.Rows[0]["Model_Name"].ToString();
                 txtFOB.Text = dt.Rows[0]["FOB"].ToString();
@@ -435,11 +436,15 @@ namespace MasterTouroku_Shouhin
                 txtHacchuuLot.Text = dt.Rows[0]["HacchuuLot"].ToString();
                 txtImage.Text = dt.Rows[0]["ShouhinImageFilePathName"].ToString();
 
+                pImage.Image = null;
                 if(!string.IsNullOrEmpty(dt.Rows[0]["ShouhinImage"].ToString()))
                 {
                     byte[] imgBytes = (byte[])dt.Rows[0]["ShouhinImage"];
-                    pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
-                    pImage.SizeMode = PictureBoxSizeMode.Zoom;
+                    if (imgBytes.Length > 0)
+                    {
+                        pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
+                        pImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                    }
                 }
 
                 txtRemarks.Text = dt.Rows[0]["Remarks"].ToString();
@@ -449,7 +454,7 @@ namespace MasterTouroku_Shouhin
 
         private void txtImage_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!System.IO.File.Exists(txtImage.Text))
+            if (!System.IO.File.Exists(txtImage.Text) && !string.IsNullOrEmpty(txtImage.Text.Trim()))
             {
                 txtImage.Focus();
                 pImage.ImageLocation = "";
@@ -457,8 +462,12 @@ namespace MasterTouroku_Shouhin
             }
             else
             {
-                pImage.ImageLocation = txtImage.Text;
-                pImage.SizeMode = PictureBoxSizeMode.Zoom;
+                pImage.Image = null;
+                if (System.IO.File.Exists(txtImage.Text))
+                    pImage.ImageLocation = txtImage.Text;
+                else
+                    pImage.ImageLocation = null;
+                pImage.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
 

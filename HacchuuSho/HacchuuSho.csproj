@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0131B682-1664-4CD3-AA41-363F8300F503}</ProjectGuid>
+    <ProjectGuid>{54CF2E39-2C46-4C88-994C-8FDC137C5A6D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ShukkaSiziNyuuryoku</RootNamespace>
-    <AssemblyName>ShukkaSiziNyuuryoku</AssemblyName>
+    <RootNamespace>HacchuuSho</RootNamespace>
+    <AssemblyName>HacchuuSho</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,14 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShukkaSiziNyuuryoku.cs">
+    <Compile Include="HacchuuSho.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShukkaSiziNyuuryoku.Designer.cs">
-      <DependentUpon>ShukkaSiziNyuuryoku.cs</DependentUpon>
+    <Compile Include="HacchuuSho.Designer.cs">
+      <DependentUpon>HacchuuSho.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="HacchuuSho.resx">
+      <DependentUpon>HacchuuSho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -66,9 +69,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ShukkaSiziNyuuryoku.resx">
-      <DependentUpon>ShukkaSiziNyuuryoku.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,12 +99,8 @@
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shinyoh_Details\Shinyoh_Details.csproj">
-      <Project>{c77a6d15-5b0f-4ec2-9c63-f99da9c55a24}</Project>
-      <Name>Shinyoh_Details</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
-      <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>
+      <Project>{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}</Project>
       <Name>Shinyoh_Search</Name>
     </ProjectReference>
   </ItemGroup>
