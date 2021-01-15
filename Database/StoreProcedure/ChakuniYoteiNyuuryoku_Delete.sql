@@ -256,11 +256,17 @@ ON A.HacchuuNO=B.HacchuuNO
             declare	@InsertOperator  varchar(10) = (select m.Operator from #Temp_Main m)
 			declare @Program         varchar(100) = (select m.ProgramID from #Temp_Main m)
 			declare @PC              varchar(30) = (select m.PC from #Temp_Main m)
-		    declare @OperateMode     varchar(50) = 'New' 
+		    declare @OperateMode     varchar(50) = 'Delete' 
 		    declare @KeyItem         varchar(100)= (select m.ChakuniYoteiNO from #Temp_Main m)
 			
 			exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@OperateMode,@KeyItem
 
+--Delete D_Exclusive table
+            Delete from D_Exclusive where DataKBN = 16 and Number = (select ChakuniYoteiNO from #Temp_Main) 
+
+
+Drop table #Temp_Main
+Drop table #Temp_Detail
 
 END
 GO

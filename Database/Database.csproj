@@ -93,6 +93,7 @@
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_IUD.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Search.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Select_Check.sql" />
+    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Update.sql" />
     <Content Include="StoreProcedure\CSV_M_Kouriten_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_Shouhin_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_ShukkaTorikomi_CUD.sql" />
