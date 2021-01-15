@@ -49,6 +49,7 @@ namespace ShukkaTorikomi
             SetButton(ButtonType.BType.Import, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", false);
             SetButton(ButtonType.BType.Import, F12, "登録(F12)", true);
+            base_Entity = _GetBaseData();
             //multipurposeEntity multipurpose_entity = new multipurposeEntity();
 
             txtShukkaToNo1.Enabled = true;
@@ -230,7 +231,7 @@ namespace ShukkaTorikomi
 
                         obj.ShouhinCD = splits[7];
                         bl_List.Add(Null_Check(obj.ShouhinCD, i, "商品コード未入力エラー"));
-                        bl_List.Add(Byte_Check(10, obj.ShouhinCD, i, "商品コード桁数エラー"));
+                        bl_List.Add(Byte_Check(20, obj.ShouhinCD, i, "商品コード桁数エラー"));
 
                         obj.ColorRyakuName = splits[8];
                         bl_List.Add(Null_Check(obj.ColorRyakuName, i, "カラー未入力エラー"));
@@ -240,24 +241,23 @@ namespace ShukkaTorikomi
 
                         obj.JANCD = splits[10];
                         bl_List.Add(Null_Check(obj.JANCD, i, "JANｺｰﾄﾞ未入力エラー"));
-                        bl_List.Add(Byte_Check(10, obj.JANCD, i, "JANｺｰﾄﾞ桁数エラー"));
+                        bl_List.Add(Byte_Check(13, obj.JANCD, i, "JANｺｰﾄﾞ桁数エラー"));
 
                         obj.ShukkaSuu = splits[11];
-                        bl_List.Add(Null_Check(obj.ShukkaSuu, i, "数量未入力エラー"));
-                        bl_List.Add(Date_Check(obj.ShukkaSuu, i, "入力可能値外エラー"));
+                        //bl_List.Add(Null_Check(obj.ShukkaSuu, i, "数量未入力エラー"));
+                        bl_List.Add(Number_Check(obj.ShukkaSuu, i, "入力可能値外エラー"));
 
                         obj.UnitPrice = splits[12];
-                        bl_List.Add(Null_Check(obj.UnitPrice, i, "入力可能値外エラー"));
+                        bl_List.Add(Number_Check(obj.UnitPrice, i, "入力可能値外エラー"));
 
                         obj.SellingPrice = splits[13];
-                        bl_List.Add(Null_Check(obj.SellingPrice, i, "入力可能値外エラー"));
+                        bl_List.Add(Number_Check(obj.SellingPrice, i, "入力可能値外エラー"));
 
                         obj.ShukkaDenpyouTekiyou = splits[14];
-                        bl_List.Add(Null_Check(obj.ShukkaDenpyouTekiyou, i, "納品書注釈未入力エラー"));
 
                         obj.ShukkaSiziNO = splits[15];
                         bl_List.Add(Null_Check(obj.ShukkaSiziNO, i, "出荷指示行番号未入力エラー"));
-                        bl_List.Add(Byte_Check(10, obj.ShukkaSiziNO, i, "出荷指示行番号桁数エラー"));
+                        bl_List.Add(Byte_Check(12, obj.ShukkaSiziNO, i, "出荷指示行番号桁数エラー"));
 
 
                         TokuisakiBL tBL = new TokuisakiBL();
@@ -281,16 +281,22 @@ namespace ShukkaTorikomi
 
                         ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
                         DataTable r_dk = rBL.ShukkaTorikomi_Check(obj.ShouhinCD, obj.ChangeDate, "E101", "ShouhinCD");
-                        if (r_dk.Rows[0]["MessageID"].ToString() == "E101")
+                        if (r_dk.Rows.Count > 0 && r_dk.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101");
-                            //err.ShowErrorMessage("E101");
                             bl_List.Add(true);
                         }
 
+                        //else if (r_dk.Rows[0]["MessageID"].ToString() == "E101")
+                        //{
+                        //    bbl.ShowMessage("E101");
+                        //    //err.ShowErrorMessage("E101");
+                        //    bl_List.Add(true);
+                        //}
+
                         ShukkaTorikomi_BL jBL = new ShukkaTorikomi_BL();
                         DataTable j_dk = jBL.ShukkaTorikomi_Check(obj.JANCD, obj.ChangeDate, "E101", "JANCD");
-                        if (j_dk.Rows[0]["MessageID"].ToString() == "E101")
+                        if (j_dk.Rows.Count > 0 && j_dk.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101");
                             //err.ShowErrorMessage("E101");
@@ -299,7 +305,7 @@ namespace ShukkaTorikomi
 
                         ShukkaTorikomi_BL sBL = new ShukkaTorikomi_BL();
                         DataTable s_dk = sBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E133");
-                        if (s_dk.Rows[0]["MessageID"].ToString() == "E133")
+                        if (s_dk.Rows.Count > 0 && s_dk.Rows[0]["MessageID"].ToString() == "E133")
                         {
                             bbl.ShowMessage("E133");
                             bl_List.Add(true);
@@ -307,7 +313,7 @@ namespace ShukkaTorikomi
 
                         ShukkaTorikomi_BL cBL = new ShukkaTorikomi_BL();
                         DataTable c_dk = cBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E159");
-                        if (c_dk.Rows[0]["MessageID"].ToString() == "E159")
+                        if (c_dk.Rows.Count > 0 && c_dk.Rows[0]["MessageID"].ToString() == "E159")
                         {
                             bbl.ShowMessage("E159");
                             bl_List.Add(true);
@@ -315,7 +321,7 @@ namespace ShukkaTorikomi
 
                         ShukkaTorikomi_BL mBL = new ShukkaTorikomi_BL();
                         DataTable m_dk = mBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E150");
-                        if (m_dk.Rows[0]["MessageID"].ToString() == "E150")
+                        if (m_dk.Rows.Count > 0 && m_dk.Rows[0]["MessageID"].ToString() == "E150")
                         {
                             bbl.ShowMessage("E150");
                             bl_List.Add(true);
@@ -334,10 +340,10 @@ namespace ShukkaTorikomi
                             else
                                 dr[j] = splits[j].ToString();
                         }
-                        dr[28] = "0";
-                        dr[29] = base_Entity.OperatorCD;
-                        dr[30] = base_Entity.OperatorCD;
-                        dr[31] = error;
+                        //dr[28] = "0";
+                        dr[16] = base_Entity.OperatorCD;
+                        dr[17] = base_Entity.OperatorCD;
+                        dr[18] = error;
                         create_dt.Rows.Add(dr);
                     }
 
@@ -379,6 +385,22 @@ namespace ShukkaTorikomi
             if (!string.IsNullOrEmpty(csv_Date))
             {
                 if (!cf.CheckDateValue(csv_Date))
+                {
+                    bbl.ShowMessage("E103");
+                    bl = true;
+                }
+            }
+            return bl;
+        }
+
+        public bool Number_Check(string csv_number, int i, string v)
+        {
+            bool bl = false; int result;
+            if (!string.IsNullOrEmpty(csv_number))
+            {
+                bool parsedSuccessfully = int.TryParse(csv_number, out result);
+
+                if (parsedSuccessfully == false)
                 {
                     bbl.ShowMessage("E103");
                     bl = true;

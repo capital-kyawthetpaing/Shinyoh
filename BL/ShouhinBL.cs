@@ -153,5 +153,28 @@ namespace BL
             parameters[1] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = condition };
             return ckmdl.InsertUpdateDeleteData("CSV_M_Shouhin_CUD", GetConnectionString(), parameters);
         }
+
+        public DataTable Get_ExportData(ShouhinEntity sh_e)//add ssa
+        {
+            CKMDL ckmdl = new CKMDL();
+            sh_e.Sqlprms = new SqlParameter[16];
+            sh_e.Sqlprms[0] = new SqlParameter("@ShouhinCD1", SqlDbType.VarChar) { Value = sh_e.ShouhinCD1 };
+            sh_e.Sqlprms[1] = new SqlParameter("@ShouhinCD2", SqlDbType.VarChar) { Value = sh_e.ShouhinCD2 };
+            sh_e.Sqlprms[2] = new SqlParameter("@JANCD1", SqlDbType.VarChar) { Value = sh_e.JANCD };
+            sh_e.Sqlprms[3] = new SqlParameter("@JANCD2", SqlDbType.VarChar) { Value = sh_e.JANCD1 };
+            sh_e.Sqlprms[4] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = sh_e.ShouhinRyakuName };
+            sh_e.Sqlprms[5] = new SqlParameter("@BrandCD1", SqlDbType.VarChar) { Value = sh_e.BrandCD };
+            sh_e.Sqlprms[6] = new SqlParameter("@BrandCD2", SqlDbType.VarChar) { Value = sh_e.BrandCD1 };
+            sh_e.Sqlprms[7] = new SqlParameter("@ColorNO1", SqlDbType.VarChar) { Value = sh_e.ColorNo1 };
+            sh_e.Sqlprms[8] = new SqlParameter("@ColorNO2", SqlDbType.VarChar) { Value = sh_e.ColorNo2 };
+            sh_e.Sqlprms[9] = new SqlParameter("@SizeNO1", SqlDbType.VarChar) { Value = sh_e.SizeNo1 };
+            sh_e.Sqlprms[10] = new SqlParameter("@SizeNO2", SqlDbType.VarChar) { Value = sh_e.SizeNo2 };
+            sh_e.Sqlprms[11] = new SqlParameter("@Remarks", SqlDbType.VarChar) { Value = sh_e.Remarks };
+            sh_e.Sqlprms[12] = new SqlParameter("@Output_Type", SqlDbType.VarChar) { Value = sh_e.Output_Type };
+            sh_e.Sqlprms[13] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = sh_e.ProgramID };
+            sh_e.Sqlprms[14] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = sh_e.PC };
+            sh_e.Sqlprms[15] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = sh_e.InsertOperator };
+            return ckmdl.SelectDatatable("Get_Shouhin_ExportData", GetConnectionString(), sh_e.Sqlprms);
+        }
     }
 }

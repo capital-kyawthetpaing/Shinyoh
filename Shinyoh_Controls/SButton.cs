@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 using Entity;
 
@@ -8,6 +10,11 @@ namespace Shinyoh_Controls
     {
         public ButtonType.BType ButtonType { get; set; }
         public Control NextControl { get; set; }
+        [Browsable(true)]
+        [Category("Shinyoh Properties")]
+        [Description("NextControlName")]
+        [DisplayName("NextControlName")]
+        public string NextControlName { get; set; }
         public SButton()
         {
             this.BackColor = ColorTranslator.FromHtml("#BFBFBF");
@@ -15,15 +22,23 @@ namespace Shinyoh_Controls
             this.TextAlign = ContentAlignment.MiddleCenter;
             this.FlatStyle = FlatStyle.Popup;
         }
-        protected override void OnKeyDown(KeyEventArgs e)
+        protected override void OnClick(EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (NextControlName != null)
             {
-                if (NextControl != null)
-                    NextControl.Focus();
-                base.OnKeyDown(e);
+                Control[] ctrlArr = this.TopLevelControl.Controls.Find(NextControlName,true);
+                Control ctrl = null;
+                if(ctrlArr.Length > 0)
+                {
+                    ctrl = ctrlArr[0];
+                }
+                else
+                {
+                    ctrl = this.Controls[NextControlName];
+                }
+                ctrl.Focus();
             }
-            base.OnKeyDown(e);
+            base.OnClick(e);
         }
     }
 }

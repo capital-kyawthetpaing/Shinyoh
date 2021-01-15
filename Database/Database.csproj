@@ -87,6 +87,10 @@
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Insert.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Select.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Update.sql" />
+    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Delete.sql" />
+    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Display.sql" />
+    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Search.sql" />
+    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Select_Check.sql" />
     <Content Include="StoreProcedure\CSV_M_Kouriten_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_Shouhin_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_ShukkaTorikomi_CUD.sql" />
@@ -106,6 +110,7 @@
     <Content Include="StoreProcedure\F_Siiresaki.sql" />
     <Content Include="StoreProcedure\F_Staff.sql" />
     <Content Include="StoreProcedure\F_Tokuisaki.sql" />
+    <Content Include="StoreProcedure\Get_Shouhin_ExportData.sql" />
     <Content Include="StoreProcedure\Get_Siiresaki_ExportData.sql" />
     <Content Include="StoreProcedure\Get_Tokuisaki_ExportData.sql" />
     <Content Include="StoreProcedure\Hacchuu_Search.sql" />
@@ -147,6 +152,7 @@
     <Content Include="StoreProcedure\ShippingNo_Search.sql" />
     <Content Include="StoreProcedure\ShukkaNo_Search.sql" />
     <Content Include="StoreProcedure\ShukkaNyuuryoku_CUD.sql" />
+    <Content Include="StoreProcedure\ShukkaNyuuryoku_Delete.sql" />
     <Content Include="StoreProcedure\ShukkaNyuuryoku_Display.sql" />
     <Content Include="StoreProcedure\ShukkaNyuuryoku_Insert.sql" />
     <Content Include="StoreProcedure\ShukkaNyuuryoku_Select_Check.sql" />
@@ -164,6 +170,7 @@
     <Content Include="StoreProcedure\ShukkaTorikomi_Error_Check.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Select_Check.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Slip_Check.sql" />
+    <Content Include="StoreProcedure\Shukka_Price.sql" />
     <Content Include="StoreProcedure\Siiresaki_Search.sql" />
     <Content Include="StoreProcedure\Siiresaki_Select_Check.sql" />
     <Content Include="StoreProcedure\SKSZ_D_Exclusive_Insert_Value.sql" />
