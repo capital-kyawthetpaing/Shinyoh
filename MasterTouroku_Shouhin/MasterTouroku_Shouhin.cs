@@ -61,11 +61,11 @@ namespace MasterTouroku_Shouhin
             txtIEvaluation.lblName = lbl_IEvaluation;
             txtIManagement.lblName = lbl_IManagement;
             txtMajorSuppliers.lblName = lbl_MajorSuppliers;
+            txtProduct.Focus();
         }
 
         private void ChangeMode(Mode mode)
         {
-            txtProduct.Focus();
             switch (mode)
             {
                 case Mode.New:
@@ -130,6 +130,7 @@ namespace MasterTouroku_Shouhin
             cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
+            txtProduct.Focus();
 
             txtProduct.E102Check(true);
             txtChangeDate.E102Check(true);
@@ -210,8 +211,6 @@ namespace MasterTouroku_Shouhin
             }
             if (tagID == "6")
             {
-                txtProduct.Focus();
-
                 UI_ErrorCheck();
                 if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
                 {

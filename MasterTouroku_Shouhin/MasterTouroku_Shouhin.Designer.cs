@@ -867,7 +867,7 @@
             // 
             this.txtHacchuuLot.AllowMinus = false;
             this.txtHacchuuLot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHacchuuLot.DecimalPlace = 6;
+            this.txtHacchuuLot.DecimalPlace = 0;
             this.txtHacchuuLot.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtHacchuuLot.DepandOnMode = true;
             this.txtHacchuuLot.Font = new System.Drawing.Font("MS Gothic", 9F);
