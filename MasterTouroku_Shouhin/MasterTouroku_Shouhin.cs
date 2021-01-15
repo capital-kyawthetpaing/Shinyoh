@@ -620,7 +620,7 @@ namespace MasterTouroku_Shouhin
         public bool Date_Check(string csv_Date, int line_no, string error_msg)
         {
             bl = false;
-            if (!string.IsNullOrWhiteSpace(csv_Date) || csv_Date != "NULL")
+            if (!string.IsNullOrWhiteSpace(csv_Date) && csv_Date != "NULL")
             {
                 if (!cf.CheckDateValue(csv_Date))
                 {
