@@ -89,7 +89,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
-                    txtChakuniYoteiNO.E102Check(true);
+                    //txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -97,7 +97,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
-                    txtChakuniYoteiNO.E102Check(true);
+                    //txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -105,7 +105,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
-                    txtChakuniYoteiNO.E102Check(true);
+                    //txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -518,10 +518,13 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            dtTemp = dtGS;
-            SaveClear();
-            gvChakuniYoteiNyuuryoku.ClearSelection();
-            gvChakuniYoteiNyuuryoku.DataSource = dtClear;
+            if (GV_Check())
+            {
+                dtTemp = dtGS;
+                SaveClear();
+                gvChakuniYoteiNyuuryoku.ClearSelection();
+                gvChakuniYoteiNyuuryoku.DataSource = dtClear;
+            }
         }
         public void SaveClear()
         {
@@ -694,7 +697,6 @@ namespace ChakuniYoteiNyuuryoku
                 }
             }
         }
-       
         private void Temp_Save(int row)
         {
             if ((!gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString().Equals("0")))
@@ -720,9 +722,42 @@ namespace ChakuniYoteiNyuuryoku
                 dtGS.Rows.Add(dr1);
             }
         }
+        private bool Grid_ErrorCheck(int row, int col)
+        {
+            if (gvChakuniYoteiNyuuryoku.Columns[col].Name == "colYoteiSuu")
+            {
+                string value = gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                if (Convert.ToInt64(value) < 0)
+                {
+                    bbl.ShowMessage("E109");
+                    return false;
+                }
+                else
+                {
+                    gvChakuniYoteiNyuuryoku.MoveNextCell();
+                }
+            }
+            return true;
+        }
+        private bool GV_Check()
+        {
+            foreach (DataGridViewRow gv in gvChakuniYoteiNyuuryoku.Rows)
+            {
+                string value = gv.Cells["colYoteiSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                if (Convert.ToInt64(value) < 0)
+                {
+                    bbl.ShowMessage("E109");
+                    return false;
+                }
+            }
+            return true;
+        }
         private void gvChakuniYoteiNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            Temp_Save(e.RowIndex);
+            if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
+            {
+                Temp_Save(e.RowIndex);
+            }
         }
     }
 }
