@@ -32,8 +32,9 @@ CREATE PROCEDURE [dbo].[M_Staff_CUD]
 	@Mode				    varchar(10),
 	@Program			    varchar(100),
     @PC					    varchar(30),
-    @KeyItem			    varchar(100)
-
+    @KeyItem			    varchar(100),
+	@YuubinNO1				varchar(3),
+	@YuubinNO2				varchar(4)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -52,6 +53,8 @@ BEGIN
            ,[StaffName]
            ,[KanaName]
            ,[KensakuHyouziJun]
+		   ,[YuubinNO1]
+		   ,[YuubinNO2]
            ,[MenuCD]
            ,[AuthorizationsCD]
 		   ,[PositionCD]
@@ -70,6 +73,8 @@ BEGIN
            ,@StaffName
            ,@KanaName
            ,@KensakuHyouziJun
+		   ,@YuubinNO1
+		   ,@YuubinNO2
            ,@MenuCD
            ,@AuthorizationsCD 
 		   ,@PositionCD 
@@ -91,6 +96,8 @@ BEGIN
 						StaffName = @StaffName,
 						KanaName = @KanaName,
 						KensakuHyouziJun = @KensakuHyouziJun,
+						YuubinNO1 = @YuubinNO1,
+						YuubinNO2 = @YuubinNO2,
 						MenuCD = @MenuCD,
 						AuthorizationsCD = @AuthorizationsCD, 
 						PositionCD = @PositionCD,
@@ -108,6 +115,9 @@ BEGIN
 	       delete from M_Staff where StaffCD = @StaffCD and ChangeDate = @ChangeDate
 	 end
 END
+
+GO
+
 
 
 
