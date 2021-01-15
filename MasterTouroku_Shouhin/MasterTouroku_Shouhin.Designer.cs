@@ -877,7 +877,7 @@
             this.txtHacchuuLot.IsRequire = false;
             this.txtHacchuuLot.IsUseInitializedLayout = true;
             this.txtHacchuuLot.Location = new System.Drawing.Point(140, 515);
-            this.txtHacchuuLot.MaxLength = 28;
+            this.txtHacchuuLot.MaxLength = 5;
             this.txtHacchuuLot.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuLot.MoveNext = true;
             this.txtHacchuuLot.Name = "txtHacchuuLot";
@@ -955,7 +955,7 @@
             this.txtFOB.IsRequire = false;
             this.txtFOB.IsUseInitializedLayout = true;
             this.txtFOB.Location = new System.Drawing.Point(140, 490);
-            this.txtFOB.MaxLength = 20;
+            this.txtFOB.MaxLength = 8;
             this.txtFOB.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtFOB.MoveNext = true;
             this.txtFOB.Name = "txtFOB";

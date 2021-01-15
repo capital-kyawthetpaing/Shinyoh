@@ -33,16 +33,25 @@ namespace BL {
         public DataTable ShukkaNyuuryoku_Select_Check(string shukkaNo, string shukkaDate, string errtype)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[6];
+            var parameters = new SqlParameter[3];
             ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
             parameters[0] = new SqlParameter("@ShukkaNo", SqlDbType.VarChar) { Value = shukkaNo };
             parameters[1] = new SqlParameter("@ShukkaDate", SqlDbType.VarChar) { Value = shukkaDate };
             parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value =  errtype};
-            parameters[3] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = obj.OperatorCD};
-            parameters[4] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = obj.ProgramID };
-            parameters[5] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC};
+           
             DataTable dt = ckmdl.SelectDatatable("ShukkaNyuuryoku_Select_Check", GetConnectionString(), parameters);
             return dt;
+        }
+        public string ShukkaNyuuryoku_Exclusive_Insert(ShukkaNyuuryokuEntity obj)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@DataKBN", SqlDbType.VarChar) { Value = "6" };
+            parameters[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = obj.ShukkaNO1 };
+            parameters[2] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = obj.OperatorCD };
+            parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = "ShukkaNyuuryoku" };
+            parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
+            return ckmdl.InsertUpdateDeleteData("D_Exclusive_Insert", GetConnectionString(), parameters);
         }
         public DataTable ShukkaNyuuryoku_Display(ShukkaNyuuryokuEntity obj)
         {

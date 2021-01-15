@@ -74,7 +74,7 @@ namespace ShukkaNyuuryoku {
 
             base_Entity = _GetBaseData();
 
-            txtShukkaNo.ChangeDate = txtShukkaNo;
+            txtShukkaNo.ChangeDate = txtShukkaDate;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -380,29 +380,43 @@ namespace ShukkaNyuuryoku {
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, null, null);
         }
         private void btnDetail1_Click(object sender, EventArgs e)
-        {
-                if (tokuisakiDetail.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(txtTokuisaki.Text))
-                {
-                    tokuisakiDetail.ShowDialog();
-                }
-                else
+        {               
+            if (!string.IsNullOrWhiteSpace(txtTokuisaki.Text) && tokuisakiDetail.Access_Tokuisaki_obj.TokuisakiCD != null)
+            {
+                if (!tokuisakiDetail.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(txtTokuisaki.Text))
                 {
                     bbl.ShowMessage("E269", "出荷指示時", "得意先");
                     txtTokuisaki.Focus();
-                }                  
+                }
+                else
+                {
+                    tokuisakiDetail.ShowDialog();
+                }
+            }
+            else if (!string.IsNullOrWhiteSpace(txtTokuisaki.Text))
+            {
+                txtTokuisaki.Focus();
+            }
         }
 
         private void btnDetail2_Click(object sender, EventArgs e)
         {
-            if (kouritenDetail.Access_Kouriten_obj.KouritenCD.ToString().Equals(txtKouriten.Text))
+            if (!string.IsNullOrWhiteSpace(txtKouriten.Text) && kouritenDetail.Access_Kouriten_obj.KouritenCD != null)
             {
-                kouritenDetail.ShowDialog();
+                if (!kouritenDetail.Access_Kouriten_obj.KouritenCD.ToString().Equals(txtKouriten.Text))
+                {
+                    bbl.ShowMessage("E269", "出荷指示時", "小売店");
+                    txtKouriten.Focus();
+                }
+                else
+                {
+                    kouritenDetail.ShowDialog();
+                }
             }
-            else
+            else if (!string.IsNullOrWhiteSpace(txtKouriten.Text))
             {
-                bbl.ShowMessage("E269", "出荷指示時", "小売店");
                 txtKouriten.Focus();
-            }
+            }       
         }
 
         private void txtYubin2_KeyDown(object sender, KeyEventArgs e)
@@ -618,12 +632,25 @@ namespace ShukkaNyuuryoku {
             {
                 if (!txtShukkaNo.IsErrorOccurs)
                 {
+                    ShukkaNyuuryokuEntity obj_shukka = new ShukkaNyuuryokuEntity();
+                    ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
+                    obj_shukka.OperatorCD = OperatorCD;
+                    obj_shukka.PC = PCID;
+                    obj_shukka.ShukkaNO1 = txtShukkaNo.Text;
                     if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")
                     {
+                        if (cboMode.SelectedValue.ToString() == "2") //update
+                        {
+                            sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
+                        }
                         EnablePanel();
                     }
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
+                        if (cboMode.SelectedValue.ToString() == "3")//delete
+                        {
+                            sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
+                        }
                         cf.DisablePanel(PanelTitle);
                     }
                 }
@@ -686,7 +713,7 @@ namespace ShukkaNyuuryoku {
                 dt.Columns.Remove("KouritenTelNO1-3");
                 dt.Columns.Remove("KouritenTelNO2-1");
                 dt.Columns.Remove("KouritenTelNO2-2");
-                dt.Columns.Remove("KouritenTelNO2-3");               
+                dt.Columns.Remove("KouritenTelNO2-3");
                 dt.Columns.Remove("DenpyouDate");
                 dt.Columns.Remove("JuchuuNOGyouNO");
                 dt.Columns.Remove("MessageID");
@@ -696,9 +723,9 @@ namespace ShukkaNyuuryoku {
                 gvdt1 = dt1;
                 gvShukka1.DataSource = dt1;      
 
-                Temptb1 = gvdt1.Copy();
-                gvdt1 = Temptb1;
-                F8_dt1 = gvdt1.Clone();
+                //Temptb1 = gvdt1.Copy();
+                //gvdt1 = Temptb1;
+                //F8_dt1 = gvdt1.Clone();
                 // Temptb1.Clear();
                 //Temptb2 = gvdt2.Copy();
                 //Temptb2.Clear();
