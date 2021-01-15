@@ -417,7 +417,7 @@ namespace MasterTouroku_Shouhin
                 txtSize.Text = dt.Rows[0]["SizeNO"].ToString();
                 lbl_SizeNO.Text = dt.Rows[0]["SizeName"].ToString();
                 txtRetailPrice.Text = dt.Rows[0]["JoudaiTanka"].ToString();
-                txtLowerPrice.Text = string.Format("{0:#,#}", dt.Rows[0]["GedaiTanka"].ToString());
+                txtLowerPrice.Text = dt.Rows[0]["GedaiTanka"].ToString();
                 txtStandardPrice.Text = dt.Rows[0]["HyoujunGenkaTanka"].ToString();
                 txtTaxRate.Text = dt.Rows[0]["ZeirituKBN"].ToString();
                 lbl_TaxtRate.Text = dt.Rows[0]["ZeirituKBN_Name"].ToString();
@@ -620,7 +620,7 @@ namespace MasterTouroku_Shouhin
         public bool Date_Check(string csv_Date, int line_no, string error_msg)
         {
             bl = false;
-            if (!string.IsNullOrWhiteSpace(csv_Date) || csv_Date != "NULL")
+            if (!string.IsNullOrWhiteSpace(csv_Date) && csv_Date != "NULL")
             {
                 if (!cf.CheckDateValue(csv_Date))
                 {
