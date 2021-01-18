@@ -299,17 +299,23 @@ namespace MasterTouroku_Tokuisaki {
         private void DoInsert(TokuisakiEntity tokuisakiEntity)
         {
             TokuisakiBL bl = new TokuisakiBL();
-            bl.M_Tokuisaki_CUD(tokuisakiEntity);
+            string return_Bl = bl.M_Tokuisaki_CUD(tokuisakiEntity);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
         private void DoUpdate(TokuisakiEntity tokuisakiEntity)
         {
             TokuisakiBL bl = new TokuisakiBL();
-            bl.M_Tokuisaki_CUD(tokuisakiEntity);
+            string return_Bl = bl.M_Tokuisaki_CUD(tokuisakiEntity);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
         private void DoDelete(TokuisakiEntity tokuisakiEntity)
         {
             TokuisakiBL bl = new TokuisakiBL();
-            bl.M_Tokuisaki_CUD(tokuisakiEntity);
+            string return_Bl = bl.M_Tokuisaki_CUD(tokuisakiEntity);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
         private void From_DB_To_TokuForm(DataTable dt)
         {

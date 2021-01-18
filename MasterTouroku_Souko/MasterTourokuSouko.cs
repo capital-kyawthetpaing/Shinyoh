@@ -20,6 +20,7 @@ namespace MasterTouroku_Souko
         string YuuBinNO2 = string.Empty;
         string Address1 = string.Empty;
         string Address2 = string.Empty;
+        BaseBL bbl = new BaseBL();
         public MasterTourokuSouko()
         {
             InitializeComponent();
@@ -237,16 +238,22 @@ namespace MasterTouroku_Souko
         }
         private void DoInsert(SoukoEntity soukoInsert) {
             SoukoBL souko = new SoukoBL();
-            souko.M_Souko_CUD(soukoInsert);
+            string return_Bl=souko.M_Souko_CUD(soukoInsert);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
 
         private void DoUpdate(SoukoEntity soukoUpdate) {
             SoukoBL souko = new SoukoBL();
-            souko.M_Souko_CUD(soukoUpdate);
+            string return_Bl = souko.M_Souko_CUD(soukoUpdate);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
         private void DoDelete(SoukoEntity soukoDelete) {
             SoukoBL souko = new SoukoBL();
-            souko.M_Souko_CUD(soukoDelete);
+            string return_Bl = souko.M_Souko_CUD(soukoDelete);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
         private void soukoSelect(DataTable dt)
         {
