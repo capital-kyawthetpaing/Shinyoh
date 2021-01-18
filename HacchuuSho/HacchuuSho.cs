@@ -135,7 +135,7 @@ namespace HacchuuSho
                     obj.Start_Font_Column = "A1";
                     obj.End_Font_Column = "AH1";
                     obj.Font_Color = Color.Black;
-                    //For column C
+                   
                     obj.Date_Column = new List<int>();
                     obj.Date_Column.Add(2);
                     obj.Date_Column.Add(28);
@@ -143,7 +143,7 @@ namespace HacchuuSho
                     obj.Date_Format = "YYYY/MM/DD";
                     obj.Start_Title_Center_Column = "A1";
                     obj.End_Title_Center_Column = "AH1";
-                    //for column T,U,V
+                    
                     ExportCSVExcel excel = new ExportCSVExcel();
                     excel.ExportDataTableToExcel(dt, obj);
 
