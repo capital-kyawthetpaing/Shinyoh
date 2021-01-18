@@ -306,7 +306,7 @@ namespace ChakuniYoteiNyuuryoku
             dr["ShouhinCD"] = string.IsNullOrEmpty(txtShouhinCD.Text) ? null : txtShouhinCD.Text;
             dr["ShouhinName"] = string.IsNullOrEmpty(txtShouhinName.Text) ? null : txtShouhinName.Text;
             dr["JANCD"] = string.IsNullOrEmpty(txtJANCD.Text) ? null : txtJANCD.Text;
-            dr["YearTerm"] = txtYearTerm.Text;
+            dr["YearTerm"] = string.IsNullOrEmpty(txtYearTerm.Text) ? null : txtYearTerm.Text;
             dr["SeasonSS"] = chkSS.Checked ? "1" : "0";
             dr["SeasonFW"] = chkFW.Checked ? "1" : "0";
             dr["ColorNO"] = string.IsNullOrEmpty(txtColor.Text) ? null : txtColor.Text;
@@ -449,8 +449,6 @@ namespace ChakuniYoteiNyuuryoku
         {
             chkEntity = GetData();
             dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-            //dtmain.Columns.Remove("HacchuuNO");
-            //dtmain.Columns.Remove("HacchuuGyouNO");
             return dtmain;
         }
         private DataTable CreateTable()
@@ -782,6 +780,21 @@ namespace ChakuniYoteiNyuuryoku
             {
                 Temp_Save(e.RowIndex);
             }
+        }
+
+        private void txtNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChakuniYoteiNyuuryokuEntity chkEntity = new ChakuniYoteiNyuuryokuEntity()
+            {
+                KanriNO = txtNumber.Text
+            };
+             DataTable dt = cbl.ChakuniYoteiDataCheck(chkEntity);
+            if(dt.Rows.Count>0)
+            {
+                bbl.ShowMessage("Q325");
+                txtNumber.Focus();
+            }
+
         }
     }
 }

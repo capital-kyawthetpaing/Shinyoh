@@ -82,5 +82,13 @@ namespace BL
             parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
             return ckmdl.InsertUpdateDeleteData("ChakuniYoteiNyuuryoku_IUD", GetConnectionString(), parameters);
         }
+        public DataTable ChakuniYoteiDataCheck(ChakuniYoteiNyuuryokuEntity cyn)
+        {
+            CKMDL ckmdl = new CKMDL();
+            cyn.Sqlprms = new SqlParameter[1];
+            cyn.Sqlprms[0] = new SqlParameter("@KanriNO", SqlDbType.VarChar) { Value = cyn.KanriNO };
+            DataTable dt = ckmdl.SelectDatatable("ChakuniYotei_DataCheck", GetConnectionString(), cyn.Sqlprms);
+            return dt;
+        }
     }
 }
