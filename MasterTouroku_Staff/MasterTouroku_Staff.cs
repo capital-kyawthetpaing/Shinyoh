@@ -17,6 +17,7 @@ namespace MasterTouroku_Staff
         BaseEntity base_Entity;
         CommonFunction cf;
         StaffBL bl = new StaffBL();
+        BaseBL bbl = new BaseBL();
 
         public MasterTouroku_Staff()
         {
@@ -282,19 +283,25 @@ namespace MasterTouroku_Staff
         private void DoInsert(MasterTourokuStaff obj)
         {
             StaffBL objMethod = new StaffBL();
-            objMethod.M_Staff_CUD(obj);
+            string return_Bl =  objMethod.M_Staff_CUD(obj);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
         
         private void DoUpdate(MasterTourokuStaff obj)
         {
             StaffBL objMethod = new StaffBL();
-            objMethod.M_Staff_CUD(obj);
+            string return_Bl= objMethod.M_Staff_CUD(obj);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
 
         private void DoDelete(MasterTourokuStaff obj)
         {
             StaffBL objMethod = new StaffBL();
-            objMethod.M_Staff_CUD(obj);
+            string return_Bl = objMethod.M_Staff_CUD(obj);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I102");
         }
         private void txtStaff_CopyDate_KeyDown(object sender, KeyEventArgs e)
         {
