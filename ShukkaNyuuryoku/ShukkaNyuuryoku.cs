@@ -830,11 +830,11 @@ namespace ShukkaNyuuryoku {
 
             if (dt.Rows.Count > 0)
             {
-                dt.Columns.Remove("SoukoCD");
+                //dt.Columns.Remove("SoukoCD");
                 dt.Columns.Remove("TokuisakiCD");
                 dt.Columns.Remove("KouritenCD");
-                dt.Columns.Remove("DenpyouDate");
-                dt.Columns.Remove("JuchuuNOGyouNO");
+               // dt.Columns.Remove("DenpyouDate");
+               // dt.Columns.Remove("JuchuuNOGyouNO");
                 if(obj.Condition == "1")
                 {
                     gvShukka1.DataSource = dt;
