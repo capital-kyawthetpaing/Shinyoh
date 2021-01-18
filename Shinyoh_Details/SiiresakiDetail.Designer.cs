@@ -618,7 +618,7 @@
             this.Controls.Add(this.PanelTitle);
             this.Name = "SiiresakiDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SiiresakiDetail";
+            this.Text = "仕入先詳細";
             this.Load += new System.EventHandler(this.SiiresakiDetail_Load);
             this.Controls.SetChildIndex(this.PanelTitle, 0);
             this.Controls.SetChildIndex(this.Panel_Detail, 0);
