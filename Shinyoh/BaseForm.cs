@@ -181,13 +181,13 @@ namespace Shinyoh
                     case ButtonType.BType.Cancel:
                         if (bbl.ShowMessage("Q004") != DialogResult.Yes)
                         {
-                            cboMode.Enabled = false;
+                            //cboMode.Enabled = false;
                             if (PreviousCtrl != null)
                                 PreviousCtrl.Focus();
                         }
                         else
                         {
-                            cboMode.Enabled = true;
+                            //cboMode.Enabled = true;
                             FunctionProcess(btn.Tag.ToString());
                         }
                         break;
@@ -245,13 +245,13 @@ namespace Shinyoh
                             {
                                 if (bbl.ShowMessage("Q101") != DialogResult.Yes)
                                 {
-                                    cboMode.Enabled = false;
+                                    //cboMode.Enabled = false;
                                     if (PreviousCtrl != null)
                                         PreviousCtrl.Focus();
                                 }
                                 else
                                 {
-                                    cboMode.Enabled = true;
+                                    //cboMode.Enabled = true;
                                     FunctionProcess(btn.Tag.ToString());
                                 }
                             }                           
@@ -260,13 +260,13 @@ namespace Shinyoh
                         {
                             if (bbl.ShowMessage("Q102") != DialogResult.Yes)
                             {
-                                cboMode.Enabled = false;
+                                //cboMode.Enabled = false;
                                 if (PreviousCtrl != null)
                                     PreviousCtrl.Focus();
                             }
                             else
                             {
-                                cboMode.Enabled = true;
+                                //cboMode.Enabled = true;
                                 FunctionProcess(btn.Tag.ToString());
                             }
                         }
