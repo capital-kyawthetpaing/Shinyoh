@@ -30,9 +30,17 @@ namespace ShinyohMenu
             lblVersion.Text = version;
             OPCD = OCD;
             var dt = dtMenu= loginbl.D_MenuMessageSelect(OCD);
-            lblLoginDate.Text = DateTime.Now.ToString("yyyy/MM/dd");
-            lblOperatorName.Text = dt.Rows[0]["StaffName"].ToString();
-            Hostname= System.Net.Dns.GetHostName();
+            if (dt.Rows.Count == 0)
+            {
+                return;
+               // login
+            }
+            else
+            {
+                lblLoginDate.Text = DateTime.Now.ToString("yyyy/MM/dd");
+                lblOperatorName.Text = dt.Rows[0]["StaffName"].ToString();
+                Hostname = System.Net.Dns.GetHostName();
+            }
         }
         private const int SW_SHOWMAXIMIZED = 3;
         [DllImport("user32.dll")]
