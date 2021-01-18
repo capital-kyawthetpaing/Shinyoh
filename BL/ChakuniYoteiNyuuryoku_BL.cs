@@ -36,7 +36,7 @@ namespace BL
             CKMDL ckmdl = new CKMDL();
             cyn.Sqlprms = new SqlParameter[15];
             cyn.Sqlprms[0] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = cyn.BrandCD };
-            cyn.Sqlprms[1] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = cyn.ShouhinCD };
+            cyn.Sqlprms[1] = new SqlParameter("@HinbanCD", SqlDbType.VarChar) { Value = cyn.HinbanCD };
             cyn.Sqlprms[2] = new SqlParameter("@JANCD", SqlDbType.VarChar) { Value = cyn.JANCD };
             cyn.Sqlprms[3] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = cyn.ShouhinName };
             cyn.Sqlprms[4] = new SqlParameter("@ColorNo", SqlDbType.VarChar) { Value = cyn.ColorNO };
