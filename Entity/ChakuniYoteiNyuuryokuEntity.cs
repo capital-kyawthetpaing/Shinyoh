@@ -33,5 +33,6 @@ namespace Entity
         public string YearTerm { get; set; }
         public string SeasonSS { get; set; }
         public string SeasonFW { get; set; }
+        public string HacchuuNO { get; set; }
     }
 }
