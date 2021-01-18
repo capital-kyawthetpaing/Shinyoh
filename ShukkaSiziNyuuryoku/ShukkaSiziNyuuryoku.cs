@@ -25,9 +25,9 @@ namespace ShukkaSiziNyuuryoku
         KouritenDetail kd;
         // TokuisakiDetails td = new TokuisakiDetails();
         //KouritenDetails kd = new KouritenDetails();
-        public string tdDate;
-        public string Detail_XML;
-        DataTable dtgv1, dtTemp1, dtGS1, dtClear, dt_Header,dtResult;
+        public string tdDate, Detail_XML,OldJuchuuNO;
+       // public string Detail_XML;
+        DataTable dtgv1, dtTemp1, dtGS1, dtClear, dt_Header,dtResult, dtHaita;
         public ShukkaSiziNyuuryoku()
         {
             InitializeComponent();
@@ -39,10 +39,12 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();
             bbl = new BaseBL();
             tdDate = string.Empty;
+            OldJuchuuNO = string.Empty;
             dtTemp1 = new DataTable();
             dtgv1 = new DataTable();
             dt_Header = new DataTable();
             dtResult = new DataTable();
+            dtHaita = new DataTable();
             dtGS1 = CreateTable_Details();
             dtClear = CreateTable_Details();
             dgvShukkasizi.CellEndEdit += DgvShukkasizi_CellEndEdit;
@@ -101,6 +103,7 @@ namespace ShukkaSiziNyuuryoku
             }
             if (tagID == "10")
             {
+                
                 FunctionProcedure(10);
             }
             if(tagID=="11")
@@ -993,39 +996,61 @@ namespace ShukkaSiziNyuuryoku
                     break;
                 case 10:
                     dtGridview(2);
-                    dgvShukkasizi.DataSource = dtgv1;
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add("JuchuuNO");
-                    dt.Columns.Add("OperatorCD");
-                    dt.Columns.Add("Program");
-                    dt.Columns.Add("PC");
-                    
-                    for(int i=0;i<dtgv1.Rows.Count;i++)
+                    dtHaita = dtgv1.Copy();
+
+                    //Table_Y/排他テーブルに追加
+                    if(dtgv1.Rows.Count>0)
                     {
-                        DataRow dr = dt.NewRow();
-                        dr["JuchuuNO"] = dtgv1.Rows[i]["SKMSNO"].ToString();
-                        dr["OperatorCD"] = OperatorCD;
-                        dr["Program"] = ProgramID;
-                        dr["PC"] = PCID;
-                        dt.Rows.Add(dr);
+
+                        var dtRow = dtgv1.AsEnumerable().OrderBy(r => r.Field<string>("SKMSNO")).ThenBy(r => r.Field<string>("JuchuuNO")).CopyToDataTable();
+                        foreach (DataRow dr in dtRow.Rows)
+                        {
+                            string JuchuuNO = dr["JuchuuNO"].ToString();
+                            sksz_e = new ShukkaSiziNyuuryokuEntity();
+                            sksz_e.JuchuuNO = JuchuuNO;
+                            sksz_e.ProgramID = ProgramID;
+                            sksz_e.PC = PCID;
+                            sksz_e.OperatorCD = OperatorCD;
+
+                            DataTable dt = new DataTable();
+                            sksz_bl = new ShukkasiziNyuuryokuBL();
+                            dt = sksz_bl.D_Exclusive_Lock_Check(sksz_e);
+
+                            if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                            {
+                                bbl.ShowMessage("S004");
+                                Gvrow_Delete(dr);
+                            }
+                            //if (JuchuuNO != OldJuchuuNO)
+                            //{
+                            //    OldJuchuuNO = JuchuuNO;                                
+                            //}
+                        }
                     }
-                    string Display_XML = cf.DataTableToXml(dt);
-                    sksz_bl = new ShukkasiziNyuuryokuBL();
-                    sksz_bl.SKSZ_D_Exclusive_Insert_Value(Display_XML);//Table_Y/排他テーブルに追加
+                    dgvShukkasizi.DataSource = dtHaita;
                     dgvShukkasizi.Columns["colArrivalTime"].ReadOnly = false;
-                    dgvShukkasizi.Columns["chk"].ReadOnly = false;
+                    dgvShukkasizi.Columns["chk"].ReadOnly = false;                    
                     break;
                 case 11:
                     if(GV_Check())
                     {
                         dtTemp1 = dtGS1;//temp add
+
                         F11_Clear();
                         txtJuchuuNo.Focus();
                         dgvShukkasizi.ClearSelection();
                         dgvShukkasizi.DataSource = dtClear;
-                    }
-                    
+                    }                    
                     break;
+            }
+        }
+        private void Gvrow_Delete(DataRow dr)
+        {
+            DataRow[] existDr1 = dtHaita.Select("JuchuuNO ='" + dr["JuchuuNO"] + "'");
+
+            foreach (DataRow row in existDr1)
+            {
+                dtHaita.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
             }
         }
         private void ModeType(int type)
