@@ -475,6 +475,10 @@ namespace Shinyoh
 
         private void cboMode_SelectedValueChanged(object sender, EventArgs e)
         {
+            bool ismode = false;
+            if (this.ActiveControl != null && this.ActiveControl.Name.Equals("cboMode"))
+                ismode = true;
+
             if (cboMode.SelectedValue.ToString().Equals("1"))
             {
                 FunctionProcess("2");
@@ -491,6 +495,8 @@ namespace Shinyoh
             {
                 FunctionProcess("5");
             }
+            if (ismode)
+                cboMode.Focus();
         }
 
         protected bool ErrorCheck(Panel panel)
