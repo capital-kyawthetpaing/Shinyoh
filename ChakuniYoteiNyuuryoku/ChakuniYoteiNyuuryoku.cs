@@ -428,7 +428,7 @@ namespace ChakuniYoteiNyuuryoku
                 ChakuniYoteiNO = txtChakuniYoteiNO.Text,
                 ChakuniYoteiDate = txtDate.Text,
                 BrandCD = txtBrandCD.Text,
-                ShouhinCD = txtShouhinCD.Text,
+                HinbanCD = txtShouhinCD.Text,
                 ShouhinName = txtShouhinName.Text,
                 JANCD = txtJANCD.Text,
                 YearTerm = txtYearTerm.Text,
