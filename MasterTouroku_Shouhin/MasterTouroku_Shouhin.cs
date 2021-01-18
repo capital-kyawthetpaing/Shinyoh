@@ -171,6 +171,8 @@ namespace MasterTouroku_Shouhin
             txtSalesStopDate.E103Check(true);
             txtHacchuuLot.E102Check(true);
 
+            txtImage.E128Check(true, txtImage, pImage);
+
             lbl_TaniCD.Text = string.Empty;
             lbl_TaniCD.BorderStyle = BorderStyle.None;
             lbl_BrandCD.Text = string.Empty;
@@ -454,21 +456,9 @@ namespace MasterTouroku_Shouhin
 
         private void txtImage_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!System.IO.File.Exists(txtImage.Text) && !string.IsNullOrEmpty(txtImage.Text.Trim()))
-            {
-                txtImage.Focus();
-                pImage.ImageLocation = "";
-                bbl.ShowMessage("E128");
-            }
-            else
-            {
-                pImage.Image = null;
-                if (System.IO.File.Exists(txtImage.Text))
-                    pImage.ImageLocation = txtImage.Text;
-                else
-                    pImage.ImageLocation = null;
-                pImage.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
+            pImage.Image = null;
+            pImage.ImageLocation = txtImage.Text;
+            pImage.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private string GetFileData()
