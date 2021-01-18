@@ -171,6 +171,12 @@ namespace ShinyohMenu
                 {
                     if (mse.Rows[0]["MessageID"].ToString() == "Allow")
                     {
+                        if (loginbl.D_MenuMessageSelect(OperatorCD).Rows.Count == 0)
+                        {
+                            loginbl.ShowMessage("S013");
+                            txtOperatorCD.Select();
+                            return;
+                        }
                         ShinyohMenu menuForm = new ShinyohMenu(OperatorCD, BaseBL.IEntity.Version);
                         this.Hide();
                         menuForm.ShowDialog();

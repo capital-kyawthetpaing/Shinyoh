@@ -414,7 +414,7 @@
             this.txtRemark.NextControl = null;
             this.txtRemark.NextControlName = "txtSearch";
             this.txtRemark.SearchType = Entity.SearchType.ScType.None;
-            this.txtRemark.Size = new System.Drawing.Size(450, 19);
+            this.txtRemark.Size = new System.Drawing.Size(500, 19);
             this.txtRemark.TabIndex = 29;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -574,7 +574,7 @@
             this.txtMail.NextControl = null;
             this.txtMail.NextControlName = "txtCurrency";
             this.txtMail.SearchType = Entity.SearchType.ScType.None;
-            this.txtMail.Size = new System.Drawing.Size(550, 19);
+            this.txtMail.Size = new System.Drawing.Size(630, 19);
             this.txtMail.TabIndex = 24;
             this.txtMail.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -948,7 +948,7 @@
             this.txtAddress2.NextControl = null;
             this.txtAddress2.NextControlName = "txtPhone1_1";
             this.txtAddress2.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress2.Size = new System.Drawing.Size(450, 19);
+            this.txtAddress2.Size = new System.Drawing.Size(500, 19);
             this.txtAddress2.TabIndex = 14;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -987,7 +987,7 @@
             this.txtAddress1.NextControl = null;
             this.txtAddress1.NextControlName = "txtAddress2";
             this.txtAddress1.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress1.Size = new System.Drawing.Size(450, 19);
+            this.txtAddress1.Size = new System.Drawing.Size(500, 19);
             this.txtAddress1.TabIndex = 13;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1140,7 +1140,7 @@
             this.txtLong_Name.NextControl = null;
             this.txtLong_Name.NextControlName = "txtPayCD";
             this.txtLong_Name.SearchType = Entity.SearchType.ScType.None;
-            this.txtLong_Name.Size = new System.Drawing.Size(450, 19);
+            this.txtLong_Name.Size = new System.Drawing.Size(500, 19);
             this.txtLong_Name.TabIndex = 9;
             this.txtLong_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1217,7 +1217,7 @@
             this.txtSupplierName.NextControl = null;
             this.txtSupplierName.NextControlName = "txtShort_Name";
             this.txtSupplierName.SearchType = Entity.SearchType.ScType.None;
-            this.txtSupplierName.Size = new System.Drawing.Size(450, 19);
+            this.txtSupplierName.Size = new System.Drawing.Size(500, 19);
             this.txtSupplierName.TabIndex = 7;
             this.txtSupplierName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
