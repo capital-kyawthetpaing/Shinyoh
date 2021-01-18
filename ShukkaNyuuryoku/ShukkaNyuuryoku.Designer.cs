@@ -26,12 +26,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblShukkaNo = new Shinyoh_Controls.SLabel();
-            this.panelDetail = new System.Windows.Forms.Panel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
             this.txtStaff = new Shinyoh_Search.SearchBox();
             this.lblStatffName = new Shinyoh_Controls.SLabel();
             this.label11 = new System.Windows.Forms.Label();
@@ -97,7 +97,7 @@
             this.txtShukkaNo = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
-            this.panelDetail.SuspendLayout();
+            this.PanelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvShukka1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,61 +123,61 @@
             this.lblShukkaNo.Text = "出荷番号\t\t\t\t\t\t";
             this.lblShukkaNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelDetail
+            // PanelDetail
             // 
-            this.panelDetail.Controls.Add(this.txtStaff);
-            this.panelDetail.Controls.Add(this.lblStatffName);
-            this.panelDetail.Controls.Add(this.label11);
-            this.panelDetail.Controls.Add(this.txtTelNo3);
-            this.panelDetail.Controls.Add(this.label10);
-            this.panelDetail.Controls.Add(this.label8);
-            this.panelDetail.Controls.Add(this.txtTelNo2);
-            this.panelDetail.Controls.Add(this.txtTelNo1);
-            this.panelDetail.Controls.Add(this.label9);
-            this.panelDetail.Controls.Add(this.sLabel3);
-            this.panelDetail.Controls.Add(this.label2);
-            this.panelDetail.Controls.Add(this.txtDenpyouDate2);
-            this.panelDetail.Controls.Add(this.txtDenpyouDate1);
-            this.panelDetail.Controls.Add(this.lblDenpyouDate);
-            this.panelDetail.Controls.Add(this.label7);
-            this.panelDetail.Controls.Add(this.txtShukkaYoteiDate2);
-            this.panelDetail.Controls.Add(this.txtShukkaYoteiDate1);
-            this.panelDetail.Controls.Add(this.lblShukkaYoteiDate);
-            this.panelDetail.Controls.Add(this.btnDetail2);
-            this.panelDetail.Controls.Add(this.label6);
-            this.panelDetail.Controls.Add(this.label5);
-            this.panelDetail.Controls.Add(this.txtJuusho);
-            this.panelDetail.Controls.Add(this.lblAddress1);
-            this.panelDetail.Controls.Add(this.txtYubin2);
-            this.panelDetail.Controls.Add(this.txtYubin1);
-            this.panelDetail.Controls.Add(this.label4);
-            this.panelDetail.Controls.Add(this.label3);
-            this.panelDetail.Controls.Add(this.lblKouriten);
-            this.panelDetail.Controls.Add(this.txtKouriten);
-            this.panelDetail.Controls.Add(this.lblKouritenName);
-            this.panelDetail.Controls.Add(this.txtShukkaSijiNo);
-            this.panelDetail.Controls.Add(this.txtTokuisaki);
-            this.panelDetail.Controls.Add(this.lblShukkaDate);
-            this.panelDetail.Controls.Add(this.gvShukka1);
-            this.panelDetail.Controls.Add(this.btnSave);
-            this.panelDetail.Controls.Add(this.btnDisplay);
-            this.panelDetail.Controls.Add(this.btnConfirm);
-            this.panelDetail.Controls.Add(this.txtShukkaDate);
-            this.panelDetail.Controls.Add(this.lblToukuisaki);
-            this.panelDetail.Controls.Add(this.txtName);
-            this.panelDetail.Controls.Add(this.lblTokuisakiName);
-            this.panelDetail.Controls.Add(this.btnDetail1);
-            this.panelDetail.Controls.Add(this.lblName);
-            this.panelDetail.Controls.Add(this.label1);
-            this.panelDetail.Controls.Add(this.lblShukkaSijiNo);
-            this.panelDetail.Controls.Add(this.lblYubin);
-            this.panelDetail.Controls.Add(this.txtDenpyou);
-            this.panelDetail.Controls.Add(this.lblDenpyou);
-            this.panelDetail.Controls.Add(this.lblStaffCD);
-            this.panelDetail.Location = new System.Drawing.Point(9, 78);
-            this.panelDetail.Name = "panelDetail";
-            this.panelDetail.Size = new System.Drawing.Size(1600, 800);
-            this.panelDetail.TabIndex = 1;
+            this.PanelDetail.Controls.Add(this.txtStaff);
+            this.PanelDetail.Controls.Add(this.lblStatffName);
+            this.PanelDetail.Controls.Add(this.label11);
+            this.PanelDetail.Controls.Add(this.txtTelNo3);
+            this.PanelDetail.Controls.Add(this.label10);
+            this.PanelDetail.Controls.Add(this.label8);
+            this.PanelDetail.Controls.Add(this.txtTelNo2);
+            this.PanelDetail.Controls.Add(this.txtTelNo1);
+            this.PanelDetail.Controls.Add(this.label9);
+            this.PanelDetail.Controls.Add(this.sLabel3);
+            this.PanelDetail.Controls.Add(this.label2);
+            this.PanelDetail.Controls.Add(this.txtDenpyouDate2);
+            this.PanelDetail.Controls.Add(this.txtDenpyouDate1);
+            this.PanelDetail.Controls.Add(this.lblDenpyouDate);
+            this.PanelDetail.Controls.Add(this.label7);
+            this.PanelDetail.Controls.Add(this.txtShukkaYoteiDate2);
+            this.PanelDetail.Controls.Add(this.txtShukkaYoteiDate1);
+            this.PanelDetail.Controls.Add(this.lblShukkaYoteiDate);
+            this.PanelDetail.Controls.Add(this.btnDetail2);
+            this.PanelDetail.Controls.Add(this.label6);
+            this.PanelDetail.Controls.Add(this.label5);
+            this.PanelDetail.Controls.Add(this.txtJuusho);
+            this.PanelDetail.Controls.Add(this.lblAddress1);
+            this.PanelDetail.Controls.Add(this.txtYubin2);
+            this.PanelDetail.Controls.Add(this.txtYubin1);
+            this.PanelDetail.Controls.Add(this.label4);
+            this.PanelDetail.Controls.Add(this.label3);
+            this.PanelDetail.Controls.Add(this.lblKouriten);
+            this.PanelDetail.Controls.Add(this.txtKouriten);
+            this.PanelDetail.Controls.Add(this.lblKouritenName);
+            this.PanelDetail.Controls.Add(this.txtShukkaSijiNo);
+            this.PanelDetail.Controls.Add(this.txtTokuisaki);
+            this.PanelDetail.Controls.Add(this.lblShukkaDate);
+            this.PanelDetail.Controls.Add(this.gvShukka1);
+            this.PanelDetail.Controls.Add(this.btnSave);
+            this.PanelDetail.Controls.Add(this.btnDisplay);
+            this.PanelDetail.Controls.Add(this.btnConfirm);
+            this.PanelDetail.Controls.Add(this.txtShukkaDate);
+            this.PanelDetail.Controls.Add(this.lblToukuisaki);
+            this.PanelDetail.Controls.Add(this.txtName);
+            this.PanelDetail.Controls.Add(this.lblTokuisakiName);
+            this.PanelDetail.Controls.Add(this.btnDetail1);
+            this.PanelDetail.Controls.Add(this.lblName);
+            this.PanelDetail.Controls.Add(this.label1);
+            this.PanelDetail.Controls.Add(this.lblShukkaSijiNo);
+            this.PanelDetail.Controls.Add(this.lblYubin);
+            this.PanelDetail.Controls.Add(this.txtDenpyou);
+            this.PanelDetail.Controls.Add(this.lblDenpyou);
+            this.PanelDetail.Controls.Add(this.lblStaffCD);
+            this.PanelDetail.Location = new System.Drawing.Point(9, 78);
+            this.PanelDetail.Name = "PanelDetail";
+            this.PanelDetail.Size = new System.Drawing.Size(1600, 800);
+            this.PanelDetail.TabIndex = 1;
             // 
             // txtStaff
             // 
@@ -795,6 +795,7 @@
             this.gvShukka1.Name = "gvShukka1";
             this.gvShukka1.Size = new System.Drawing.Size(1565, 200);
             this.gvShukka1.TabIndex = 35;
+            this.gvShukka1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvShukka1_CellEndEdit);
             // 
             // colJANCD
             // 
@@ -838,8 +839,8 @@
             // colSize
             // 
             this.colSize.DataPropertyName = "SizeNO";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colSize.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colSize.DefaultCellStyle = dataGridViewCellStyle1;
             this.colSize.HeaderText = "サイズ\t\t\t\t\t\t";
             this.colSize.Name = "colSize";
             this.colSize.ReadOnly = true;
@@ -847,8 +848,9 @@
             // colShukkazansuu
             // 
             this.colShukkazansuu.DataPropertyName = "ShukkaSiziZumiSuu";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.NullValue = "0";
+            this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle2;
             this.colShukkazansuu.HeaderText = "出荷残数\t\t\t\t";
             this.colShukkazansuu.Name = "colShukkazansuu";
             this.colShukkazansuu.ReadOnly = true;
@@ -857,8 +859,9 @@
             // colMiryoku
             // 
             this.colMiryoku.DataPropertyName = "MiNyuukaSuu";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.NullValue = "0";
+            this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle3;
             this.colMiryoku.HeaderText = "未入荷数\t\t\t\t";
             this.colMiryoku.Name = "colMiryoku";
             this.colMiryoku.ReadOnly = true;
@@ -867,8 +870,8 @@
             // colKonkai
             // 
             this.colKonkai.DataPropertyName = "ShukkaSuu";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colKonkai.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colKonkai.DefaultCellStyle = dataGridViewCellStyle4;
             this.colKonkai.HeaderText = "今回出荷数\t\t\t\t\t";
             this.colKonkai.Name = "colKonkai";
             // 
@@ -886,19 +889,21 @@
             this.colDetail.DataPropertyName = "ShukkaMeisaiTekiyou";
             this.colDetail.HeaderText = "明細摘要";
             this.colDetail.Name = "colDetail";
-            this.colDetail.Width = 287;
+            this.colDetail.Width = 260;
             // 
             // SoukoCD
             // 
             this.SoukoCD.DataPropertyName = "SoukoCD";
             this.SoukoCD.HeaderText = "SoukoCD";
             this.SoukoCD.Name = "SoukoCD";
+            this.SoukoCD.Visible = false;
             // 
             // ShukkaSiziNOGyouNO
             // 
             this.ShukkaSiziNOGyouNO.DataPropertyName = "ShukkaSiziNOGyouNO";
-            this.ShukkaSiziNOGyouNO.HeaderText = "ShukkaSiziNOGyouNO";
+            this.ShukkaSiziNOGyouNO.HeaderText = "出荷指示番号-行番号";
             this.ShukkaSiziNOGyouNO.Name = "ShukkaSiziNOGyouNO";
+            this.ShukkaSiziNOGyouNO.Width = 142;
             // 
             // btnSave
             // 
@@ -1176,17 +1181,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1713, 961);
-            this.Controls.Add(this.panelDetail);
+            this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ShukkaNyuuryoku";
             this.Text = "出荷入力\t\t\t\t\t";
             this.Load += new System.EventHandler(this.ShukkaNyuuryoku_Load);
-            this.Controls.SetChildIndex(this.panelDetail, 0);
+            this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
-            this.panelDetail.ResumeLayout(false);
-            this.panelDetail.PerformLayout();
+            this.PanelDetail.ResumeLayout(false);
+            this.PanelDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvShukka1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1197,7 +1202,7 @@
 
         private Shinyoh_Search.SearchBox txtShukkaNo;
         private Shinyoh_Controls.SLabel lblShukkaNo;
-        private System.Windows.Forms.Panel panelDetail;
+        private System.Windows.Forms.Panel PanelDetail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private Shinyoh_Controls.STextBox txtJuusho;

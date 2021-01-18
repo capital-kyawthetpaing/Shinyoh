@@ -618,7 +618,7 @@
             this.Controls.Add(this.PanelTitle);
             this.Name = "KouritenDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "KouritenDetail";
+            this.Text = "小売店詳細";
             this.Load += new System.EventHandler(this.KouritenDetail_Load);
             this.Controls.SetChildIndex(this.PanelTitle, 0);
             this.Controls.SetChildIndex(this.Panel_Detail, 0);
