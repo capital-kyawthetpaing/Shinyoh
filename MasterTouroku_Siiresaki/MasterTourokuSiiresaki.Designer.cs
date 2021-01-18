@@ -185,7 +185,7 @@
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblClassification.ForeColor = System.Drawing.Color.White;
-            this.lblClassification.Location = new System.Drawing.Point(706, 10);
+            this.lblClassification.Location = new System.Drawing.Point(779, 10);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
             this.lblClassification.TabIndex = 60;
@@ -196,7 +196,7 @@
             // 
             this.rdo_Registragion.Checked = true;
             this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Registragion.Location = new System.Drawing.Point(828, 10);
+            this.rdo_Registragion.Location = new System.Drawing.Point(901, 10);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
             this.rdo_Registragion.NextControl = null;
@@ -210,7 +210,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Delete.Location = new System.Drawing.Point(908, 10);
+            this.rdo_Delete.Location = new System.Drawing.Point(981, 10);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
