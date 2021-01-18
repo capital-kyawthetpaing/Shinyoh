@@ -301,7 +301,13 @@ namespace Shinyoh
                     return;
                 }
             }
-            
+            else
+            {
+                if (PreviousCtrl != null)
+                    PreviousCtrl.Focus();
+
+                return;
+            }
         }
 
         public virtual void FunctionProcess(string tagID)
