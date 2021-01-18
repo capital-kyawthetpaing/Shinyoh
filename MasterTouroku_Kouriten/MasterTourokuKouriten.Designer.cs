@@ -193,7 +193,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Delete.Location = new System.Drawing.Point(852, 4);
+            this.rdo_Delete.Location = new System.Drawing.Point(922, 4);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -207,7 +207,7 @@
             // 
             this.rdo_Registragion.Checked = true;
             this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Registragion.Location = new System.Drawing.Point(787, 4);
+            this.rdo_Registragion.Location = new System.Drawing.Point(857, 4);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
             this.rdo_Registragion.NextControl = null;
@@ -225,7 +225,7 @@
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblClassification.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblClassification.Location = new System.Drawing.Point(675, 4);
+            this.lblClassification.Location = new System.Drawing.Point(745, 4);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
             this.lblClassification.TabIndex = 69;
@@ -358,7 +358,6 @@
             this.rdo_AliasKBN2.TabIndex = 0;
             this.rdo_AliasKBN2.Text = "御中\t\t";
             this.rdo_AliasKBN2.UseVisualStyleBackColor = true;
-            this.rdo_AliasKBN2.CheckedChanged += new System.EventHandler(this.rdo_AliasKBN2_CheckedChanged);
             // 
             // rdo_AliasKBN1
             // 
@@ -374,7 +373,6 @@
             this.rdo_AliasKBN1.TabStop = true;
             this.rdo_AliasKBN1.Text = "様\t\t";
             this.rdo_AliasKBN1.UseVisualStyleBackColor = true;
-            this.rdo_AliasKBN1.CheckedChanged += new System.EventHandler(this.rdo_AliasKBN1_CheckedChanged);
             // 
             // lblTitle
             // 
@@ -523,7 +521,7 @@
             this.txtRemark.NextControl = null;
             this.txtRemark.NextControlName = "txtKensakuHyouziJun";
             this.txtRemark.SearchType = Entity.SearchType.ScType.None;
-            this.txtRemark.Size = new System.Drawing.Size(450, 19);
+            this.txtRemark.Size = new System.Drawing.Size(500, 19);
             this.txtRemark.TabIndex = 29;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -643,7 +641,7 @@
             this.txtMail.NextControl = null;
             this.txtMail.NextControlName = "txtStaffCD";
             this.txtMail.SearchType = Entity.SearchType.ScType.None;
-            this.txtMail.Size = new System.Drawing.Size(550, 19);
+            this.txtMail.Size = new System.Drawing.Size(630, 19);
             this.txtMail.TabIndex = 25;
             this.txtMail.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1017,7 +1015,7 @@
             this.txtAddress2.NextControl = null;
             this.txtAddress2.NextControlName = "txtPhone1_1";
             this.txtAddress2.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress2.Size = new System.Drawing.Size(450, 19);
+            this.txtAddress2.Size = new System.Drawing.Size(500, 19);
             this.txtAddress2.TabIndex = 15;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1056,7 +1054,7 @@
             this.txtAddress1.NextControl = null;
             this.txtAddress1.NextControlName = "txtAddress2";
             this.txtAddress1.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress1.Size = new System.Drawing.Size(450, 19);
+            this.txtAddress1.Size = new System.Drawing.Size(500, 19);
             this.txtAddress1.TabIndex = 14;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1170,7 +1168,7 @@
             this.txtKanaName.NextControl = null;
             this.txtKanaName.NextControlName = "rdo_AliasKBN1";
             this.txtKanaName.SearchType = Entity.SearchType.ScType.None;
-            this.txtKanaName.Size = new System.Drawing.Size(450, 19);
+            this.txtKanaName.Size = new System.Drawing.Size(500, 19);
             this.txtKanaName.TabIndex = 10;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1247,7 +1245,7 @@
             this.txtKouritenName.NextControl = null;
             this.txtKouritenName.NextControlName = "txtKouritenRyakuName";
             this.txtKouritenName.SearchType = Entity.SearchType.ScType.None;
-            this.txtKouritenName.Size = new System.Drawing.Size(450, 19);
+            this.txtKouritenName.Size = new System.Drawing.Size(500, 19);
             this.txtKouritenName.TabIndex = 8;
             this.txtKouritenName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1319,7 +1317,7 @@
             this.txtSystemDate.IsErrorOccurs = false;
             this.txtSystemDate.IsRequire = false;
             this.txtSystemDate.IsUseInitializedLayout = true;
-            this.txtSystemDate.Location = new System.Drawing.Point(919, 5);
+            this.txtSystemDate.Location = new System.Drawing.Point(989, 5);
             this.txtSystemDate.MaxLength = 10;
             this.txtSystemDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSystemDate.MoveNext = true;

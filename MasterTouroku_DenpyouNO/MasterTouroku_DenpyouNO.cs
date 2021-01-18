@@ -14,6 +14,7 @@ namespace MasterTouroku_DenpyouNO
     {
         BaseEntity entity;
         CommonFunction cf;
+        BaseBL bbl = new BaseBL();
         public MasterTouroku_DenpyouNO()
         {
             InitializeComponent();
@@ -136,12 +137,15 @@ namespace MasterTouroku_DenpyouNO
                     {
                         case "1":
                             ChangeMode(Mode.New);
+                            bbl.ShowMessage("I101");
                             break;
                         case "2":
                             ChangeMode(Mode.Update);
+                            bbl.ShowMessage("I101");
                             break;
                         case "3":
                             ChangeMode(Mode.Delete);
+                            bbl.ShowMessage("I102");
                             break;
                         case "4":
                             ChangeMode(Mode.Inquiry);

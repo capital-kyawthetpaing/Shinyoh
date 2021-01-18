@@ -236,14 +236,17 @@ namespace MasterTouroku_MultiPorpose
         private void DoInsert(multipurposeEntity mentity)
         {
             mbl.M_Multiporpose_Insert_Update(mentity);
+            bbl.ShowMessage("I101");
         }
         private void DoUpdate(multipurposeEntity mentity)
         {
            mbl.M_Multiporpose_Insert_Update(mentity);
+           bbl.ShowMessage("I101");
         }
         private void DoDelete(multipurposeEntity mentity)
         {
            mbl.M_Multiporpose_Insert_Update(mentity);
+           bbl.ShowMessage("I102");
         }
         
         private void txtKEY_KeyDown_1(object sender, KeyEventArgs e)
@@ -325,6 +328,12 @@ namespace MasterTouroku_MultiPorpose
                                 bbl.ShowMessage("E133");
                                 txtCopyID.Focus();
                             }
+                        }
+                        else
+                        {
+                            cf.EnablePanel(PanelDetail);
+                            txtIDName.Focus();
+                            cf.DisablePanel(PanelTitle);
                         }
                     }
                     else if (string.IsNullOrEmpty(txtCopyID.Text) && string.IsNullOrEmpty(txtKEYCopy.Text))

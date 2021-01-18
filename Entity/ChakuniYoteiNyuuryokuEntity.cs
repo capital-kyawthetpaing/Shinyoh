@@ -15,6 +15,7 @@ namespace Entity
         public string SiiresakiCD { get; set; }
         public string StaffCD { get; set; }
         public string ShouhinCD { get; set; }
+        public string HinbanCD { get; set; }
         public string ShouhinCDFrom { get; set; }
         public string ShouhinCDTo { get; set; }
         public string ShouhinName { get; set; }
@@ -32,5 +33,6 @@ namespace Entity
         public string YearTerm { get; set; }
         public string SeasonSS { get; set; }
         public string SeasonFW { get; set; }
+        public string HacchuuNO { get; set; }
     }
 }

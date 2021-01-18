@@ -39,8 +39,10 @@ namespace ShukkaNyuuryoku {
             Temptb1 = new DataTable();
             gvdt1 = new DataTable();
             F8_dt1 = new DataTable();
+            dtGS1 = CreateTable();
+            dtClear = CreateTable();
             gvShukka1.SetGridDesign();
-            gvShukka1.SetReadOnlyColumn("colJANCD,colShouhin,colShouhinName,colColorShortName,colColorNO,colSize,colShukkazansuu,colMiryoku");
+            gvShukka1.SetReadOnlyColumn("colJANCD,colShouhin,colShouhinName,colColorShortName,colColorNO,colSize,colShukkazansuu,colMiryoku,ShukkaSiziNOGyouNO");
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -97,6 +99,12 @@ namespace ShukkaNyuuryoku {
             if (tagID == "6")
             {
                Mode_Setting();
+                if (cboMode.SelectedValue.Equals("1"))
+                {
+                    cf.EnablePanel(PanelDetail);
+                    cf.DisablePanel(PanelTitle);
+                    txtShukkaDate.Focus();
+                }
             }
             if (tagID == "9")
             {
@@ -109,7 +117,7 @@ namespace ShukkaNyuuryoku {
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(panelDetail))
+                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -243,7 +251,9 @@ namespace ShukkaNyuuryoku {
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
-                    //txtShukkaNo.Enabled = false;
+                    txtShukkaNo.Enabled = false;
+                    cf.EnablePanel(PanelDetail);
+                    txtShukkaDate.Focus();
                     break;
 
                 case Mode.Update:
@@ -254,6 +264,7 @@ namespace ShukkaNyuuryoku {
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
+                    txtShukkaNo.Focus();
                     break;
                 case Mode.Delete:
                     ErrorCheck();
@@ -263,7 +274,7 @@ namespace ShukkaNyuuryoku {
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
-
+                    txtShukkaNo.Focus();
                     break;
                 case Mode.Inquiry:
                     txtShukkaNo.E102Check(true);
@@ -272,6 +283,7 @@ namespace ShukkaNyuuryoku {
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
+                    txtShukkaNo.Focus();
                     break;
             }
         }
@@ -331,10 +343,10 @@ namespace ShukkaNyuuryoku {
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
-            cf.Clear(panelDetail);
+            cf.Clear(PanelDetail);
 
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(panelDetail);
+            cf.DisablePanel(PanelDetail);
 
             lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -343,8 +355,11 @@ namespace ShukkaNyuuryoku {
             lblTokuisakiName.Text = string.Empty;
             lblKouritenName.Text = string.Empty;
             lblStatffName.Text = string.Empty;
-            txtShukkaNo.Focus();
             New_Mode();
+            if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
+            {
+                txtShukkaNo.Focus();
+            }
         }
         private void ErrorCheck()
         {
@@ -495,7 +510,7 @@ namespace ShukkaNyuuryoku {
         }
         private void EnablePanel()
         {
-            cf.EnablePanel(panelDetail);
+            cf.EnablePanel(PanelDetail);
             txtShukkaNo.Focus();
             cf.DisablePanel(PanelTitle);
         }
@@ -538,14 +553,14 @@ namespace ShukkaNyuuryoku {
                     bbl.ShowMessage("E109");
                     return false;
                 }
-                string a = gv.Cells["colShukkazansuu"].Value.ToString();
-                string b = gv.Cells["colMiryoku"].Value.ToString();
-                decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
-                if (Convert.ToDecimal(value) > c)
-                {
-                    bbl.ShowMessage("E143", "出荷残数 - 未入荷数", "大きい");
-                    return false;
-                }
+                //string a = gv.Cells["colShukkazansuu"].FormattedValue.ToString();
+                //string b = gv.Cells["colMiryoku"].FormattedValue.ToString();
+                //decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
+                //if (Convert.ToDecimal(value) > c)
+                //{
+                //    bbl.ShowMessage("E143", "出荷残数 - 未入荷数", "大きい");
+                //    return false;
+                //}
             }
             return true;
         }
@@ -604,6 +619,12 @@ namespace ShukkaNyuuryoku {
             dt.AcceptChanges();
             return dt;
         }
+
+        private void gvShukka1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (GV_Check())
@@ -641,7 +662,7 @@ namespace ShukkaNyuuryoku {
                     {
                         if (cboMode.SelectedValue.ToString() == "2") //update
                         {
-                            sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
+                            //sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
                         }
                         EnablePanel();
                     }
@@ -649,7 +670,7 @@ namespace ShukkaNyuuryoku {
                     {
                         if (cboMode.SelectedValue.ToString() == "3")//delete
                         {
-                            sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
+                            //sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
                         }
                         cf.DisablePanel(PanelTitle);
                     }
@@ -787,7 +808,7 @@ namespace ShukkaNyuuryoku {
             ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
             ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
             BaseEntity baseEntity = _GetBaseData();
-            obj.TokuisakiCD = txtTokuisaki.Text;
+          //  obj.TokuisakiCD = txtTokuisaki.Text;
             obj.ShukkaSiziNO1 = txtShukkaSijiNo.Text;
             obj.ShukkaDate1 = txtShukkaYoteiDate1.Text;
             obj.ShukkaDate2 = txtShukkaYoteiDate2.Text;
@@ -809,11 +830,11 @@ namespace ShukkaNyuuryoku {
 
             if (dt.Rows.Count > 0)
             {
-                //dt.Columns.Remove("ShukkaSiziNOGyouNO");
+                //dt.Columns.Remove("SoukoCD");
                 dt.Columns.Remove("TokuisakiCD");
                 dt.Columns.Remove("KouritenCD");
-                dt.Columns.Remove("DenpyouDate");
-                dt.Columns.Remove("JuchuuNOGyouNO");
+               // dt.Columns.Remove("DenpyouDate");
+               // dt.Columns.Remove("JuchuuNOGyouNO");
                 if(obj.Condition == "1")
                 {
                     gvShukka1.DataSource = dt;

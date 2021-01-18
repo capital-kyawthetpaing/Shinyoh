@@ -21,7 +21,7 @@ namespace HacchuuList
         BaseEntity baseEntity;
         HacchuuListBL obj_Bl;
         ExportCSVExcel obj_Export;
-
+        BaseBL bbl = new BaseBL();
         public HacchuuList()
         {
             cf = new CommonFunction();
@@ -202,6 +202,7 @@ namespace HacchuuList
                         bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
                         if (bl)
                         {
+                            bbl.ShowMessage("I203");
                             Clear();
                         }
                     }

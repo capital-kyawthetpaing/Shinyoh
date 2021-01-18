@@ -235,7 +235,13 @@ namespace MasterTouroku_Kouriten
                         if (rdo_Registragion.Checked)
                             chk_val = "create_update";
                         else chk_val = "delete";
-                        bl.CSV_M_Kouriten_CUD(Xml, chk_val);
+                       string return_BL =  bl.CSV_M_Kouriten_CUD(Xml, chk_val);
+                        if(return_BL == "true")
+                        {
+                            bbl.ShowMessage("I002");
+                            rdo_Registragion.Checked = true;
+                            rdo_Delete.Checked = false;
+                        }
                     }
                 }
             }
@@ -336,17 +342,23 @@ namespace MasterTouroku_Kouriten
         private void DoInsert(KouritenEntity obj)
         {
             KouritenBL objMethod = new KouritenBL();
-            objMethod.M_Kouriten_CUD(obj);
+            string return_BL = objMethod.M_Kouriten_CUD(obj);
+            if (return_BL == "true")
+                bbl.ShowMessage("I101");
         }
         private void DoUpdate(KouritenEntity obj)
         {
             KouritenBL objMethod = new KouritenBL();
-            objMethod.M_Kouriten_CUD(obj);
+            string return_BL = objMethod.M_Kouriten_CUD(obj);
+            if (return_BL == "true")
+                bbl.ShowMessage("I101");
         }
         private void DoDelete(KouritenEntity obj)
         {
             KouritenBL objMethod = new KouritenBL();
-            objMethod.M_Kouriten_CUD(obj);
+            string return_BL = objMethod.M_Kouriten_CUD(obj);
+            if (return_BL == "true")
+                bbl.ShowMessage("I102");
         }
 
         private void txtChangeDate_KeyDown(object sender, KeyEventArgs e)
@@ -355,17 +367,20 @@ namespace MasterTouroku_Kouriten
             {
                 if (!txtChangeDate.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "2")
+                    if (ErrorCheck(PanelTitle))
                     {
-                        EnablePanel();
-                    }
-                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
-                    {
-                        cf.DisablePanel(PanelTitle);
-                        if (cboMode.SelectedValue.ToString() == "3")
+                        if (cboMode.SelectedValue.ToString() == "2")
                         {
-                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-                            btnF12.Focus();
+                            EnablePanel();
+                        }
+                        else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                        {
+                            cf.DisablePanel(PanelTitle);
+                            if (cboMode.SelectedValue.ToString() == "3")
+                            {
+                                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                                btnF12.Focus();
+                            }
                         }
                     }
                 }
@@ -512,17 +527,17 @@ namespace MasterTouroku_Kouriten
         //    }
         //}
 
-        private void rdo_AliasKBN1_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdo_AliasKBN1.Checked == true)
-                rdo_AliasKBN2.Checked = false;
-        }
+        //private void rdo_AliasKBN1_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (rdo_AliasKBN1.Checked == true)
+        //        rdo_AliasKBN2.Checked = false;
+        //}
 
-        private void rdo_AliasKBN2_CheckedChanged(object sender, EventArgs e)
-        {
-            if (rdo_AliasKBN2.Checked == true)
-                rdo_AliasKBN1.Checked = false;           
-        }
+        //private void rdo_AliasKBN2_CheckedChanged(object sender, EventArgs e)
+        //{
+        //    if (rdo_AliasKBN2.Checked == true)
+        //        rdo_AliasKBN1.Checked = false;
+        //}
 
         //private void btn_Copy_Click(object sender, EventArgs e)
         //{
