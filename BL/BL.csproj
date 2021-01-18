@@ -59,6 +59,7 @@
     <Compile Include="DenpyouNOBL.cs" />
     <Compile Include="ExportCSVExcel.cs" />
     <Compile Include="HacchuuListBL.cs" />
+    <Compile Include="HacchuuShoBL.cs" />
     <Compile Include="HikiateHenkouShoukaiBL.cs" />
     <Compile Include="IdouNyuuryokuBL.cs" />
     <Compile Include="JuchuuListBL.cs" />

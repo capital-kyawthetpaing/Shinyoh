@@ -803,7 +803,7 @@ namespace ChakuniNyuuryoku
             if (gvChakuniNyuuryoku.Columns[col].Name == "colArrivalTime")
             {
                 string value = gvChakuniNyuuryoku.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString().Replace(",", "");
-                if (Convert.ToInt32(value) < 0)
+                if (Convert.ToInt64(value) < 0)
                 {
                     bbl.ShowMessage("E109");
                     return false;

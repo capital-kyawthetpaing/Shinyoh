@@ -651,6 +651,17 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
+            if(sTextBox.E128)
+            {
+                if (!System.IO.File.Exists(sTextBox.ctrlE128_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE128_1.Text.Trim()))
+                {
+                    sTextBox.Focus();
+                    sTextBox.ctrlE128_2.ImageLocation = "";
+                    sTextBox.ctrlE128_2.Image = null;
+                    bbl.ShowMessage("E128");
+                    return (true, rDt);
+                }
+            }
             if (sTextBox.CYuubin_Juusho)
             {
                 if (sTextBox.ctrl1Yuubin_Juusho.Text != sTextBox.check1Yuubin_Juusho  || sTextBox.ctrl2Yuubin_Juusho.Text != sTextBox.check2Yuubin_Juusho)

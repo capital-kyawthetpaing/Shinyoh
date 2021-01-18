@@ -33,6 +33,7 @@ namespace Shinyoh_Search {
             DataGridviewBind();
             gvShukkaNo.SetReadOnlyColumn("**");//readonly for search form 
             ErrorCheck();
+            gvShukkaNo.Select();
         }
         private void ErrorCheck()
         {
@@ -155,7 +156,10 @@ namespace Shinyoh_Search {
         {
             if (e.KeyCode == Keys.Enter)
             {
-                GetGridviewData(gvShukkaNo.Rows[gvShukkaNo.CurrentCell.RowIndex]);
+                if (gvShukkaNo.CurrentCell != null)
+                {
+                    GetGridviewData(gvShukkaNo.Rows[gvShukkaNo.CurrentCell.RowIndex]);
+                }
             }
         }
     }

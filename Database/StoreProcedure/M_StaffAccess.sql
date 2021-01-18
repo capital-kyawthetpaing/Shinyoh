@@ -48,14 +48,20 @@ BEGIN
 		drop table #temp
 		return;
 	end
-	if  exists(select 1 from #temp where UsedFlg = 0) 
-	begin
-		select 'E119' as MessageID
+	--if  exists(select 1 from #temp where UsedFlg = 0) 
+	--begin
+	--	select 'E119' as MessageID
+	--	drop table #temp
+	--	return;
+	--end
+
+	if not exists(	select *  from F_Authorizations(getdate()) ma 
+								inner join F_Staff(getdate()) ms on ma.AuthorizationsCD = ms.AuthorizationsCD where StaffCD = @StaffCD)
+	Begin
+	select 'S003' as MessageID
 		drop table #temp
 		return;
-	end
-
-	
+	End
 	--select *  from #temp
 		if  exists(select 1 from #temp where LeaveDate < GETDATE() and LeaveDate is not null  ) 
 	begin

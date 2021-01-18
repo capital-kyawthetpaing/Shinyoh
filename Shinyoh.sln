@@ -65,6 +65,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChakuniYoteiNyuuryoku", "Ch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MasterList_Shouhin", "MasterList_Shouhin\MasterList_Shouhin.csproj", "{73EFDA1B-A163-49DA-A6CA-947883F47E4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HacchuuSho", "HacchuuSho\HacchuuSho.csproj", "{54CF2E39-2C46-4C88-994C-8FDC137C5A6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -195,6 +197,10 @@ Global
 		{73EFDA1B-A163-49DA-A6CA-947883F47E4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73EFDA1B-A163-49DA-A6CA-947883F47E4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73EFDA1B-A163-49DA-A6CA-947883F47E4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54CF2E39-2C46-4C88-994C-8FDC137C5A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54CF2E39-2C46-4C88-994C-8FDC137C5A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54CF2E39-2C46-4C88-994C-8FDC137C5A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54CF2E39-2C46-4C88-994C-8FDC137C5A6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
