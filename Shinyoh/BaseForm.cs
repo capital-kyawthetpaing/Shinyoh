@@ -185,11 +185,15 @@ namespace Shinyoh
                     case ButtonType.BType.Cancel:
                         if (bbl.ShowMessage("Q004") != DialogResult.Yes)
                         {
+                            cboMode.Enabled = false;
                             if (PreviousCtrl != null)
                                 PreviousCtrl.Focus();
                         }
                         else
+                        {
+                            cboMode.Enabled = true;
                             FunctionProcess(btn.Tag.ToString());
+                        }
                         break;
                     case ButtonType.BType.Export:
                         switch(btn.Name)
@@ -245,22 +249,30 @@ namespace Shinyoh
                             {
                                 if (bbl.ShowMessage("Q101") != DialogResult.Yes)
                                 {
+                                    cboMode.Enabled = false;
                                     if (PreviousCtrl != null)
                                         PreviousCtrl.Focus();
                                 }
                                 else
+                                {
+                                    cboMode.Enabled = true;
                                     FunctionProcess(btn.Tag.ToString());
+                                }
                             }                           
                         }
                         else if (cboMode.SelectedValue.ToString() == "3")
                         {
                             if (bbl.ShowMessage("Q102") != DialogResult.Yes)
                             {
+                                cboMode.Enabled = false;
                                 if (PreviousCtrl != null)
                                     PreviousCtrl.Focus();
                             }
                             else
+                            {
+                                cboMode.Enabled = true;
                                 FunctionProcess(btn.Tag.ToString());
+                            }
                         }
                         break;
                     case ButtonType.BType.Process: 
@@ -296,6 +308,11 @@ namespace Shinyoh
                         index = cboMode.SelectedIndex;
                     }
                 }
+                else
+                {
+                    index = cboMode.SelectedIndex;
+                }
+                cboMode.Enabled = true;
                 FunctionProcess(btn.Tag.ToString());
             }
             else
