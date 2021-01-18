@@ -138,11 +138,31 @@ namespace ChakuniYoteiNyuuryoku
             }
             if (tagID == "8")
             {
-                
+                if (dtTemp.Rows.Count > 0)
+                {
+                    var dtConfirm = dtTemp.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("HacchuuDate")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
+                    gvChakuniYoteiNyuuryoku.DataSource = dtConfirm;
+                }
+                else
+                {
+                    dtGS = CreateTable();
+                    gvChakuniYoteiNyuuryoku.DataSource = dtGS;
+                }
             }
             if (tagID == "10")
             {
-                
+                if (string.IsNullOrWhiteSpace(txtBrandCD.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) &&
+                string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtColor.Text) && string.IsNullOrWhiteSpace(txtDateFrom.Text) && string.IsNullOrWhiteSpace(txtDateTo.Text) && string.IsNullOrWhiteSpace(txtSize.Text))
+                {
+                    bbl.ShowMessage("E111");
+                    txtBrandCD.Focus();
+                }
+                else
+                {
+                    dtGridview();
+                    gvChakuniYoteiNyuuryoku.DataSource = dtmain;
+                    gvChakuniYoteiNyuuryoku.Select();
+                }
             }
             if (tagID == "11")
             {
@@ -199,16 +219,19 @@ namespace ChakuniYoteiNyuuryoku
         {
             ChakuniYoteiNyuuryoku_BL bl = new ChakuniYoteiNyuuryoku_BL();
             bl.ChakuniYoteiNyuuryoku_IUD(mode, str_main, str_detail);
+            bbl.ShowMessage("I101");
         }
         private void DoUpdate(string mode, string str_main, string str_detail)
         {
             ChakuniYoteiNyuuryoku_BL bl = new ChakuniYoteiNyuuryoku_BL();
             bl.ChakuniYoteiNyuuryoku_IUD(mode, str_main, str_detail);
+            bbl.ShowMessage("I101");
         }
         private void DoDelete(string mode, string str_main, string str_detail)
         {
             ChakuniYoteiNyuuryoku_BL bl = new ChakuniYoteiNyuuryoku_BL();
             bl.ChakuniYoteiNyuuryoku_IUD(mode, str_main, str_detail);
+            bbl.ShowMessage("I102");
         }
         public void Create_Datatable_Column(DataTable create_dt)
         {
@@ -283,7 +306,7 @@ namespace ChakuniYoteiNyuuryoku
             dr["ShouhinCD"] = string.IsNullOrEmpty(txtShouhinCD.Text) ? null : txtShouhinCD.Text;
             dr["ShouhinName"] = string.IsNullOrEmpty(txtShouhinName.Text) ? null : txtShouhinName.Text;
             dr["JANCD"] = string.IsNullOrEmpty(txtJANCD.Text) ? null : txtJANCD.Text;
-            dr["YearTerm"] = txtYearTerm.Text;
+            dr["YearTerm"] = string.IsNullOrEmpty(txtYearTerm.Text) ? null : txtYearTerm.Text;
             dr["SeasonSS"] = chkSS.Checked ? "1" : "0";
             dr["SeasonFW"] = chkFW.Checked ? "1" : "0";
             dr["ColorNO"] = string.IsNullOrEmpty(txtColor.Text) ? null : txtColor.Text;
@@ -426,14 +449,12 @@ namespace ChakuniYoteiNyuuryoku
         {
             chkEntity = GetData();
             dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-            //dtmain.Columns.Remove("HacchuuNO");
-            //dtmain.Columns.Remove("HacchuuGyouNO");
             return dtmain;
         }
         private DataTable CreateTable()
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("ShouhinCD", typeof(string));
+            dt.Columns.Add("HinbanCD", typeof(string));
             dt.Columns.Add("ShouhinName", typeof(string));
             dt.Columns.Add("ColorRyakuName", typeof(string));
             dt.Columns.Add("ColorNO", typeof(string));
@@ -447,6 +468,7 @@ namespace ChakuniYoteiNyuuryoku
             dt.Columns.Add("HacchuuNO", typeof(string));
             dt.Columns.Add("HacchuuGyouNO", typeof(string));
             dt.Columns.Add("Hacchuu", typeof(string));
+            dt.Columns.Add("ShouhinCD", typeof(string));
             dt.AcceptChanges();
             return dt;
         }
@@ -758,6 +780,21 @@ namespace ChakuniYoteiNyuuryoku
             {
                 Temp_Save(e.RowIndex);
             }
+        }
+
+        private void txtNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChakuniYoteiNyuuryokuEntity chkEntity = new ChakuniYoteiNyuuryokuEntity()
+            {
+                KanriNO = txtNumber.Text
+            };
+             DataTable dt = cbl.ChakuniYoteiDataCheck(chkEntity);
+            if(dt.Rows.Count>0)
+            {
+                bbl.ShowMessage("Q325");
+                txtNumber.Focus();
+            }
+
         }
     }
 }

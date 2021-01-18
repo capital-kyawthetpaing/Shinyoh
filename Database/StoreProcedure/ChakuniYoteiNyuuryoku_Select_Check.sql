@@ -42,9 +42,10 @@ if @Errortype='E133'
 			--exists
          Select M_Message.MessageID,convert(varchar(10), dc.ChakuniYoteiDate, 111)as ChakuniYoteiDate,dc.SiiresakiCD,dc.SiiresakiRyakuName,dc.SiiresakiName,dc.SiiresakiYuubinNO1,dc.SiiresakiYuubinNO2,dc.SiiresakiJuusho1,dc.SiiresakiJuusho2,
 		 dc.[SiiresakiTelNO1-1],dc.[SiiresakiTelNO1-2],dc.[SiiresakiTelNO1-3],dc.[SiiresakiTelNO2-1],dc.[SiiresakiTelNO2-2],dc.[SiiresakiTelNO2-3],dc.StaffCD,fs.StaffName,
-		 dc.SoukoCD,ms.SoukoName,dc.KanriNO,dc.ChakuniYoteiDenpyouTekiyou,dcm.ShouhinCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
+		 dc.SoukoCD,ms.SoukoName,dc.KanriNO,dc.ChakuniYoteiDenpyouTekiyou,
+		 fshouhin.HinbanCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
 		 dh.HacchuuDate,dhm.HacchuuSuu,
-		 dhm.ChakuniYoteiZumiSuu,dcm.ChakuniYoteiSuu,dcm.ChakuniYoteiMeisaiTekiyou,dcm.JANCD,dcm.HacchuuNO,dcm.HacchuuGyouNO,(dcm.HacchuuNO+'-'+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu
+		 dhm.ChakuniYoteiZumiSuu,dcm.ChakuniYoteiSuu,dcm.ChakuniYoteiMeisaiTekiyou,dcm.JANCD,dcm.HacchuuNO,dcm.HacchuuGyouNO,(dcm.HacchuuNO+'-'+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu,fshouhin.ShouhinCD
 		 From M_Message,D_ChakuniYotei dc
 		 Inner Join D_ChakuniYoteiMeisai dcm on dcm.ChakuniYoteiNO=dc.ChakuniYoteiNO
 		 Left outer join D_HacchuuMeisai dhm on dhm.HacchuuNO=dcm.HacchuuNO
@@ -52,6 +53,7 @@ if @Errortype='E133'
          Left Outer join D_Hacchuu dh on dh.HacchuuNO=dhm.HacchuuNO
 		 Left Outer Join F_Staff(@ChakuniYoteiDate) fs on fs.StaffCD=dc.StaffCD
 		 Left Outer Join M_Souko ms on ms.SoukoCD=dc.SoukoCD
+		 Left Outer Join F_Shouhin(@ChakuniYoteiDate)  fshouhin on fshouhin.ShouhinCD=dcm.ShouhinCD
 		 where MessageID='E132'
 		 And dc.ChakuniYoteiNO=@ChakuniYoteiNo
 		 Order by dcm.GyouHyouziJun Asc
@@ -76,9 +78,10 @@ if @Errortype='E268'
 	   begin
 	    Select M_Message.MessageID,convert(varchar(10), dc.ChakuniYoteiDate, 111)as ChakuniYoteiDate,dc.SiiresakiCD,dc.SiiresakiRyakuName,dc.SiiresakiName,dc.SiiresakiYuubinNO1,dc.SiiresakiYuubinNO2,dc.SiiresakiJuusho1,dc.SiiresakiJuusho2,
 		 dc.[SiiresakiTelNO1-1],dc.[SiiresakiTelNO1-2],dc.[SiiresakiTelNO1-3],dc.[SiiresakiTelNO2-1],dc.[SiiresakiTelNO2-2],dc.[SiiresakiTelNO2-3],dc.StaffCD,fs.StaffName,
-		 dc.SoukoCD,ms.SoukoName,dc.KanriNO,dc.ChakuniYoteiDenpyouTekiyou,dcm.ShouhinCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
+		 dc.SoukoCD,ms.SoukoName,dc.KanriNO,dc.ChakuniYoteiDenpyouTekiyou,
+		 fshouhin.HinbanCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
 		 dh.HacchuuDate,dhm.HacchuuSuu,
-		 dhm.ChakuniYoteiZumiSuu,dcm.ChakuniYoteiSuu,dcm.ChakuniYoteiMeisaiTekiyou,dcm.JANCD,dcm.HacchuuNO,dcm.HacchuuGyouNO,(dcm.HacchuuNO+'-'+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu
+		 dhm.ChakuniYoteiZumiSuu,dcm.ChakuniYoteiSuu,dcm.ChakuniYoteiMeisaiTekiyou,dcm.JANCD,dcm.HacchuuNO,dcm.HacchuuGyouNO,(dcm.HacchuuNO+'-'+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu,fshouhin.ShouhinCD
 		 From M_Message,D_ChakuniYotei dc
 		 Inner Join D_ChakuniYoteiMeisai dcm on dcm.ChakuniYoteiNO=dc.ChakuniYoteiNO
 		 Left outer join D_HacchuuMeisai dhm on dhm.HacchuuNO=dcm.HacchuuNO
@@ -86,6 +89,7 @@ if @Errortype='E268'
          Left Outer join D_Hacchuu dh on dh.HacchuuNO=dhm.HacchuuNO
 		 Left Outer Join F_Staff(@ChakuniYoteiDate) fs on fs.StaffCD=dc.StaffCD
 		 Left Outer Join M_Souko ms on ms.SoukoCD=dc.SoukoCD
+		 Left Outer Join F_Shouhin(@ChakuniYoteiDate)  fshouhin on fshouhin.ShouhinCD=dcm.ShouhinCD
 		 where MessageID='E132'
 		 And dc.ChakuniYoteiNO=@ChakuniYoteiNo
 		 Order by dcm.GyouHyouziJun Asc
