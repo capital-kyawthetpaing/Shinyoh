@@ -16,10 +16,8 @@ CREATE PROCEDURE [dbo].[ShukkaNyuuryoku_Select_Check]
 	-- Add the parameters for the stored procedure here
 	@ShukkaNo as varchar(12),
 	@ShukkaDate as varchar(10),
-	@Errortype as varchar(10),
-	@Operator  varchar(10),
-    @Program  varchar(100),
-    @PC  varchar(30)
+	@Errortype as varchar(10)
+	
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -111,13 +109,7 @@ BEGIN
 			select * from M_Message
 			where MessageID = 'E133'
 		end
-
-		EXEC D_Exclusive_Insert
-		6,
-		@ShukkaNo,
-		@Operator,
-		@Program,
-		@PC;
+		
 
 		If(OBJECT_ID('tempdb..#WK_MiNyuukaSuu1') Is Not Null)
 		begin

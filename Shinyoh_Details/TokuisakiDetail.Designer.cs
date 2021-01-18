@@ -618,7 +618,7 @@
             this.Controls.Add(this.Panel_Detail);
             this.Name = "TokuisakiDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TokuisakiDetail";
+            this.Text = "得意先詳細";
             this.Load += new System.EventHandler(this.TokuisakiDetail_Load);
             this.Controls.SetChildIndex(this.Panel_Detail, 0);
             this.Controls.SetChildIndex(this.PanelTitle, 0);

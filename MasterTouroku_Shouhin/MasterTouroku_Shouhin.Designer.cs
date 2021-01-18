@@ -376,7 +376,7 @@
             this.lbl_MajorSuppliers.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_MajorSuppliers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_MajorSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_MajorSuppliers.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl_MajorSuppliers.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_MajorSuppliers.Location = new System.Drawing.Point(240, 390);
             this.lbl_MajorSuppliers.Name = "lbl_MajorSuppliers";
             this.lbl_MajorSuppliers.Size = new System.Drawing.Size(200, 19);
@@ -388,7 +388,7 @@
             this.lbl_IManagement.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_IManagement.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_IManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_IManagement.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl_IManagement.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_IManagement.Location = new System.Drawing.Point(170, 365);
             this.lbl_IManagement.Name = "lbl_IManagement";
             this.lbl_IManagement.Size = new System.Drawing.Size(200, 19);
@@ -400,7 +400,7 @@
             this.lbl_IEvaluation.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_IEvaluation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_IEvaluation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_IEvaluation.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl_IEvaluation.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_IEvaluation.Location = new System.Drawing.Point(170, 340);
             this.lbl_IEvaluation.Name = "lbl_IEvaluation";
             this.lbl_IEvaluation.Size = new System.Drawing.Size(200, 19);
@@ -412,7 +412,7 @@
             this.lbl_TaxtRate.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_TaxtRate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_TaxtRate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_TaxtRate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl_TaxtRate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_TaxtRate.Location = new System.Drawing.Point(170, 315);
             this.lbl_TaxtRate.Name = "lbl_TaxtRate";
             this.lbl_TaxtRate.Size = new System.Drawing.Size(200, 19);
@@ -424,7 +424,7 @@
             this.lbl_SizeNO.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_SizeNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_SizeNO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_SizeNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl_SizeNO.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_SizeNO.Location = new System.Drawing.Point(290, 240);
             this.lbl_SizeNO.Name = "lbl_SizeNO";
             this.lbl_SizeNO.Size = new System.Drawing.Size(300, 19);
@@ -436,7 +436,7 @@
             this.lbl_ColorNO.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_ColorNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_ColorNO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_ColorNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl_ColorNO.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_ColorNO.Location = new System.Drawing.Point(290, 215);
             this.lbl_ColorNO.Name = "lbl_ColorNO";
             this.lbl_ColorNO.Size = new System.Drawing.Size(300, 19);
@@ -448,7 +448,7 @@
             this.lbl_BrandCD.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_BrandCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_BrandCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_BrandCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl_BrandCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_BrandCD.Location = new System.Drawing.Point(240, 190);
             this.lbl_BrandCD.Name = "lbl_BrandCD";
             this.lbl_BrandCD.Size = new System.Drawing.Size(200, 19);
@@ -460,7 +460,7 @@
             this.lbl_TaniCD.BackColor = System.Drawing.SystemColors.Control;
             this.lbl_TaniCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_TaniCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl_TaniCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lbl_TaniCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_TaniCD.Location = new System.Drawing.Point(190, 165);
             this.lbl_TaniCD.Name = "lbl_TaniCD";
             this.lbl_TaniCD.Size = new System.Drawing.Size(200, 19);
@@ -867,7 +867,7 @@
             // 
             this.txtHacchuuLot.AllowMinus = false;
             this.txtHacchuuLot.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtHacchuuLot.DecimalPlace = 6;
+            this.txtHacchuuLot.DecimalPlace = 0;
             this.txtHacchuuLot.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtHacchuuLot.DepandOnMode = true;
             this.txtHacchuuLot.Font = new System.Drawing.Font("MS Gothic", 9F);
@@ -877,7 +877,7 @@
             this.txtHacchuuLot.IsRequire = false;
             this.txtHacchuuLot.IsUseInitializedLayout = true;
             this.txtHacchuuLot.Location = new System.Drawing.Point(140, 515);
-            this.txtHacchuuLot.MaxLength = 28;
+            this.txtHacchuuLot.MaxLength = 5;
             this.txtHacchuuLot.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuLot.MoveNext = true;
             this.txtHacchuuLot.Name = "txtHacchuuLot";
@@ -955,7 +955,7 @@
             this.txtFOB.IsRequire = false;
             this.txtFOB.IsUseInitializedLayout = true;
             this.txtFOB.Location = new System.Drawing.Point(140, 490);
-            this.txtFOB.MaxLength = 20;
+            this.txtFOB.MaxLength = 8;
             this.txtFOB.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtFOB.MoveNext = true;
             this.txtFOB.Name = "txtFOB";

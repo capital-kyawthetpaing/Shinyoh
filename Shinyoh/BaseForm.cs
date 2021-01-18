@@ -140,7 +140,7 @@ namespace Shinyoh
                 SendKeys.Send("{F9}");
             }
             else
-                FireClickEvent(btn, 1);
+                FireClickEvent(btn);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Shinyoh
         /// </summary>
         /// <param name="btn"></param>
         /// <param name="type">1--> button click, 2 --> combo Mode change</param>
-        protected void FireClickEvent(SButton btn, int type)
+        protected void FireClickEvent(SButton btn)
         {
             if (btn.Visible)
             {
@@ -167,29 +167,29 @@ namespace Shinyoh
                         }
                         break;
                     case ButtonType.BType.New:
-                        cboMode.SelectedValue = "1";
-                        SetMode(btn);
+                        SetMode(btn,"1");
                         break;
                     case ButtonType.BType.Update:
-                        cboMode.SelectedValue = "2";
-                        SetMode(btn);
+                        SetMode(btn,"2");
                         break;
                     case ButtonType.BType.Delete:
-                        cboMode.SelectedValue = "3";
-                        SetMode(btn);
+                        SetMode(btn,"3");
                         break;
                     case ButtonType.BType.Inquiry:
-                        cboMode.SelectedValue = "4";
-                        SetMode(btn);
+                        SetMode(btn,"4");
                         break;
                     case ButtonType.BType.Cancel:
                         if (bbl.ShowMessage("Q004") != DialogResult.Yes)
                         {
+                            //cboMode.Enabled = false;
                             if (PreviousCtrl != null)
                                 PreviousCtrl.Focus();
                         }
                         else
+                        {
+                            //cboMode.Enabled = true;
                             FunctionProcess(btn.Tag.ToString());
+                        }
                         break;
                     case ButtonType.BType.Export:
                         switch(btn.Name)
@@ -245,22 +245,30 @@ namespace Shinyoh
                             {
                                 if (bbl.ShowMessage("Q101") != DialogResult.Yes)
                                 {
+                                    //cboMode.Enabled = false;
                                     if (PreviousCtrl != null)
                                         PreviousCtrl.Focus();
                                 }
                                 else
+                                {
+                                    //cboMode.Enabled = true;
                                     FunctionProcess(btn.Tag.ToString());
+                                }
                             }                           
                         }
                         else if (cboMode.SelectedValue.ToString() == "3")
                         {
                             if (bbl.ShowMessage("Q102") != DialogResult.Yes)
                             {
+                                //cboMode.Enabled = false;
                                 if (PreviousCtrl != null)
                                     PreviousCtrl.Focus();
                             }
                             else
+                            {
+                                //cboMode.Enabled = true;
                                 FunctionProcess(btn.Tag.ToString());
+                            }
                         }
                         break;
                     case ButtonType.BType.Process: 
@@ -277,28 +285,28 @@ namespace Shinyoh
         }
 
         public static int index = 0;
-        private void SetMode(SButton btn)
+        private void SetMode(SButton btn,string selectedvalue)
         {
-            if (index >= 0 && cboMode.SelectedIndex != index)
+            if(selectedvalue != cboMode.SelectedValue.ToString())
             {
-                if (bbl.ShowMessage("Q005") != DialogResult.Yes)
+                if (bbl.ShowMessage("Q005") == DialogResult.Yes)
+                {
+                    cboMode.SelectedValue = selectedvalue;
+                }
+                else
                 {
                     if (PreviousCtrl != null)
                         PreviousCtrl.Focus();
 
-                    cboMode.SelectedIndex = index;
                     return;
                 }
-                else
-                {
-                    index = cboMode.SelectedIndex;
-                }
-                FunctionProcess(btn.Tag.ToString());
             }
             else
             {
                 if (PreviousCtrl != null)
                     PreviousCtrl.Focus();
+
+                return;
             }
         }
 
@@ -395,7 +403,7 @@ namespace Shinyoh
                 case Keys.F11:
                 case Keys.F12:
                     SButton btn = this.Controls.Find("Btn" + e.KeyCode.ToString(),true)[0] as SButton;
-                    FireClickEvent(btn,1);
+                    FireClickEvent(btn);
                     break;
                 case Keys.Enter:
 
@@ -467,22 +475,28 @@ namespace Shinyoh
 
         private void cboMode_SelectedValueChanged(object sender, EventArgs e)
         {
+            bool ismode = false;
+            if (this.ActiveControl != null && this.ActiveControl.Name.Equals("cboMode"))
+                ismode = true;
+
             if (cboMode.SelectedValue.ToString().Equals("1"))
             {
-                FireClickEvent(F2, 2);
+                FunctionProcess("2");
             }
             else if (cboMode.SelectedValue.ToString().Equals("2"))
             {
-                FireClickEvent(F3, 2);
+                FunctionProcess("3");
             }
             else if (cboMode.SelectedValue.ToString().Equals("3"))
             {
-                FireClickEvent(F4, 2);
+                FunctionProcess("4");
             }
             else if (cboMode.SelectedValue.ToString().Equals("4"))
             {
-                FireClickEvent(F5, 2);
+                FunctionProcess("5");
             }
+            if (ismode)
+                cboMode.Focus();
         }
 
         protected bool ErrorCheck(Panel panel)

@@ -61,11 +61,11 @@ namespace MasterTouroku_Shouhin
             txtIEvaluation.lblName = lbl_IEvaluation;
             txtIManagement.lblName = lbl_IManagement;
             txtMajorSuppliers.lblName = lbl_MajorSuppliers;
+            txtProduct.Focus();
         }
 
         private void ChangeMode(Mode mode)
         {
-            txtProduct.Focus();
             switch (mode)
             {
                 case Mode.New:
@@ -130,6 +130,7 @@ namespace MasterTouroku_Shouhin
             cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
+            txtProduct.Focus();
 
             txtProduct.E102Check(true);
             txtChangeDate.E102Check(true);
@@ -169,6 +170,8 @@ namespace MasterTouroku_Shouhin
             txtHandlingEndDate.E103Check(true);
             txtSalesStopDate.E103Check(true);
             txtHacchuuLot.E102Check(true);
+
+            txtImage.E128Check(true, txtImage, pImage);
 
             lbl_TaniCD.Text = string.Empty;
             lbl_TaniCD.BorderStyle = BorderStyle.None;
@@ -210,8 +213,6 @@ namespace MasterTouroku_Shouhin
             }
             if (tagID == "6")
             {
-                txtProduct.Focus();
-
                 UI_ErrorCheck();
                 if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
                 {
@@ -418,7 +419,7 @@ namespace MasterTouroku_Shouhin
                 txtSize.Text = dt.Rows[0]["SizeNO"].ToString();
                 lbl_SizeNO.Text = dt.Rows[0]["SizeName"].ToString();
                 txtRetailPrice.Text = dt.Rows[0]["JoudaiTanka"].ToString();
-                txtLowerPrice.Text = string.Format("{0:#,#}", dt.Rows[0]["GedaiTanka"].ToString());
+                txtLowerPrice.Text = dt.Rows[0]["GedaiTanka"].ToString();
                 txtStandardPrice.Text = dt.Rows[0]["HyoujunGenkaTanka"].ToString();
                 txtTaxRate.Text = dt.Rows[0]["ZeirituKBN"].ToString();
                 lbl_TaxtRate.Text = dt.Rows[0]["ZeirituKBN_Name"].ToString();
@@ -455,21 +456,9 @@ namespace MasterTouroku_Shouhin
 
         private void txtImage_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!System.IO.File.Exists(txtImage.Text) && !string.IsNullOrEmpty(txtImage.Text.Trim()))
-            {
-                txtImage.Focus();
-                pImage.ImageLocation = "";
-                bbl.ShowMessage("E128");
-            }
-            else
-            {
-                pImage.Image = null;
-                if (System.IO.File.Exists(txtImage.Text))
-                    pImage.ImageLocation = txtImage.Text;
-                else
-                    pImage.ImageLocation = null;
-                pImage.SizeMode = PictureBoxSizeMode.StretchImage;
-            }
+            pImage.Image = null;
+            pImage.ImageLocation = txtImage.Text;
+            pImage.SizeMode = PictureBoxSizeMode.StretchImage;
         }
 
         private string GetFileData()
@@ -621,7 +610,7 @@ namespace MasterTouroku_Shouhin
         public bool Date_Check(string csv_Date, int line_no, string error_msg)
         {
             bl = false;
-            if (!string.IsNullOrWhiteSpace(csv_Date) || csv_Date != "NULL")
+            if (!string.IsNullOrWhiteSpace(csv_Date) && csv_Date != "NULL")
             {
                 if (!cf.CheckDateValue(csv_Date))
                 {

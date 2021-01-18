@@ -17,6 +17,7 @@ namespace MasterTouroku_Staff
         BaseEntity base_Entity;
         CommonFunction cf;
         StaffBL bl = new StaffBL();
+        BaseBL bbl = new BaseBL();
 
         public MasterTouroku_Staff()
         {
@@ -282,19 +283,25 @@ namespace MasterTouroku_Staff
         private void DoInsert(MasterTourokuStaff obj)
         {
             StaffBL objMethod = new StaffBL();
-            objMethod.M_Staff_CUD(obj);
+            string return_Bl =  objMethod.M_Staff_CUD(obj);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
         
         private void DoUpdate(MasterTourokuStaff obj)
         {
             StaffBL objMethod = new StaffBL();
-            objMethod.M_Staff_CUD(obj);
+            string return_Bl= objMethod.M_Staff_CUD(obj);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
 
         private void DoDelete(MasterTourokuStaff obj)
         {
             StaffBL objMethod = new StaffBL();
-            objMethod.M_Staff_CUD(obj);
+            string return_Bl = objMethod.M_Staff_CUD(obj);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I102");
         }
         private void txtStaff_CopyDate_KeyDown(object sender, KeyEventArgs e)
         {
@@ -331,17 +338,20 @@ namespace MasterTouroku_Staff
             {
                 if (!txtStaff_CDate.IsErrorOccurs)
                 {
-                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    if (ErrorCheck(PanelTitle))
                     {
-                        EnablePanel();
-                    }
-                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
-                    {
-                        cf.DisablePanel(PanelTitle);
-                        if (cboMode.SelectedValue.ToString() == "3")
+                        if (cboMode.SelectedValue.ToString() == "2")//update
                         {
-                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-                            btnF12.Focus();
+                            EnablePanel();
+                        }
+                        else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                        {
+                            cf.DisablePanel(PanelTitle);
+                            if (cboMode.SelectedValue.ToString() == "3")
+                            {
+                                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                                btnF12.Focus();
+                            }
                         }
                     }
                 }

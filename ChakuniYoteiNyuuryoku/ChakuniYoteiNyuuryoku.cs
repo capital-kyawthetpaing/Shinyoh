@@ -89,7 +89,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
-                    txtChakuniYoteiNO.E102Check(true);
+                    //txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -97,7 +97,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
-                    txtChakuniYoteiNO.E102Check(true);
+                    //txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -105,7 +105,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
-                    txtChakuniYoteiNO.E102Check(true);
+                    //txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -192,7 +192,7 @@ namespace ChakuniYoteiNyuuryoku
             else if (cboMode.SelectedValue.Equals("3"))
             {
                 mode = "Delete";
-               // DoDelete(mode, obj.Item1, obj.Item2);
+                DoDelete(mode, obj.Item1, obj.Item2);
             }
         }
         private void DoInsert(string mode, string str_main, string str_detail)
@@ -201,6 +201,11 @@ namespace ChakuniYoteiNyuuryoku
             bl.ChakuniYoteiNyuuryoku_IUD(mode, str_main, str_detail);
         }
         private void DoUpdate(string mode, string str_main, string str_detail)
+        {
+            ChakuniYoteiNyuuryoku_BL bl = new ChakuniYoteiNyuuryoku_BL();
+            bl.ChakuniYoteiNyuuryoku_IUD(mode, str_main, str_detail);
+        }
+        private void DoDelete(string mode, string str_main, string str_detail)
         {
             ChakuniYoteiNyuuryoku_BL bl = new ChakuniYoteiNyuuryoku_BL();
             bl.ChakuniYoteiNyuuryoku_IUD(mode, str_main, str_detail);
@@ -273,7 +278,7 @@ namespace ChakuniYoteiNyuuryoku
             dr["StaffCD"] = txtStaffCD.Text;
             dr["SoukoCD"] = txtSouko.Text;
             dr["KanriNO"] = txtNumber.Text;
-            dr["ChakuniYoteiDenpyouTekiyou"] = txtDescription.Text;
+            dr["ChakuniYoteiDenpyouTekiyou"] = string.IsNullOrEmpty(txtDescription.Text) ? null : txtDescription.Text;
             dr["BrandCD"] = string.IsNullOrEmpty(txtBrandCD.Text) ? null : txtBrandCD.Text;
             dr["ShouhinCD"] = string.IsNullOrEmpty(txtShouhinCD.Text) ? null : txtShouhinCD.Text;
             dr["ShouhinName"] = string.IsNullOrEmpty(txtShouhinName.Text) ? null : txtShouhinName.Text;
@@ -294,7 +299,7 @@ namespace ChakuniYoteiNyuuryoku
             if (cboMode.SelectedValue.ToString() == "3")
             {
                 DataTable dt1 = txtChakuniYoteiNO.IsDatatableOccurs;
-                dt1.Columns.Remove("ChakuniDate");
+                dt1.Columns.Remove("ChakuniYoteiDate");
                 dt1.Columns.Remove("SiiresakiCD");
                 dt1.Columns.Remove("SiiresakiName");
                 dt1.Columns.Remove("SiiresakiRyakuName");
@@ -308,15 +313,13 @@ namespace ChakuniYoteiNyuuryoku
                 dt1.Columns.Remove("SiiresakiTelNO2-1");
                 dt1.Columns.Remove("SiiresakiTelNO2-2");
                 dt1.Columns.Remove("SiiresakiTelNO2-3");
-                dt1.Columns.Remove("SiireKanryouKBN");
+                dt1.Columns.Remove("KanriNO");
                 dt1.Columns.Remove("StaffCD");
                 dt1.Columns.Remove("StaffName");
                 dt1.Columns.Remove("SoukoCD");
                 dt1.Columns.Remove("SoukoName");
-                dt1.Columns.Remove("ChakuniDenpyouTekiyou");
+                dt1.Columns.Remove("ChakuniYoteiDenpyouTekiyou");
                 dt1.Columns.Remove("MessageID");
-                dt1.Columns.Remove("ChakuniYoteiNO");
-                dt1.Columns.Remove("Chakuni");
                 dt1.Columns.Remove("Hacchuu");
                 detail_XML = cf.DataTableToXml(dt1);
             }
@@ -383,8 +386,8 @@ namespace ChakuniYoteiNyuuryoku
             txtDate.E103Check(true);
             txtSiiresaki.E102Check(true);
             txtSiiresaki.E101Check(true, "M_Siiresaki", txtSiiresaki, txtDate, null);
-            txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtDate);
-            txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtDate);
+            //txtSiiresaki.E227Check(true, "M_Siiresaki", txtSiiresaki, txtDate);
+            //txtSiiresaki.E267Check(true, "M_Siiresaki", txtSiiresaki, txtDate);
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtDate, null);
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtDate);
@@ -423,8 +426,8 @@ namespace ChakuniYoteiNyuuryoku
         {
             chkEntity = GetData();
             dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-            dtmain.Columns.Remove("HacchuuNO");
-            dtmain.Columns.Remove("HacchuuGyouNO");
+            //dtmain.Columns.Remove("HacchuuNO");
+            //dtmain.Columns.Remove("HacchuuGyouNO");
             return dtmain;
         }
         private DataTable CreateTable()
@@ -441,6 +444,8 @@ namespace ChakuniYoteiNyuuryoku
             dt.Columns.Add("ChakuniYoteiSuu", typeof(string));
             dt.Columns.Add("ChakuniYoteiMeisaiTekiyou", typeof(string));
             dt.Columns.Add("JANCD", typeof(string));
+            dt.Columns.Add("HacchuuNO", typeof(string));
+            dt.Columns.Add("HacchuuGyouNO", typeof(string));
             dt.Columns.Add("Hacchuu", typeof(string));
             dt.AcceptChanges();
             return dt;
@@ -513,10 +518,13 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            dtTemp = dtGS;
-            SaveClear();
-            gvChakuniYoteiNyuuryoku.ClearSelection();
-            gvChakuniYoteiNyuuryoku.DataSource = dtClear;
+            if (GV_Check())
+            {
+                dtTemp = dtGS;
+                SaveClear();
+                gvChakuniYoteiNyuuryoku.ClearSelection();
+                gvChakuniYoteiNyuuryoku.DataSource = dtClear;
+            }
         }
         public void SaveClear()
         {
@@ -689,7 +697,6 @@ namespace ChakuniYoteiNyuuryoku
                 }
             }
         }
-       
         private void Temp_Save(int row)
         {
             if ((!gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString().Equals("0")))
@@ -715,9 +722,42 @@ namespace ChakuniYoteiNyuuryoku
                 dtGS.Rows.Add(dr1);
             }
         }
+        private bool Grid_ErrorCheck(int row, int col)
+        {
+            if (gvChakuniYoteiNyuuryoku.Columns[col].Name == "colYoteiSuu")
+            {
+                string value = gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                if (Convert.ToInt64(value) < 0)
+                {
+                    bbl.ShowMessage("E109");
+                    return false;
+                }
+                else
+                {
+                    gvChakuniYoteiNyuuryoku.MoveNextCell();
+                }
+            }
+            return true;
+        }
+        private bool GV_Check()
+        {
+            foreach (DataGridViewRow gv in gvChakuniYoteiNyuuryoku.Rows)
+            {
+                string value = gv.Cells["colYoteiSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                if (Convert.ToInt64(value) < 0)
+                {
+                    bbl.ShowMessage("E109");
+                    return false;
+                }
+            }
+            return true;
+        }
         private void gvChakuniYoteiNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            Temp_Save(e.RowIndex);
+            if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
+            {
+                Temp_Save(e.RowIndex);
+            }
         }
     }
 }
