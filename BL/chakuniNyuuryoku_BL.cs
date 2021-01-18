@@ -26,7 +26,7 @@ namespace BL
         public DataTable ChakuniNyuuryoku_Display(ChakuniNyuuryoku_Entity cne)
         {
             CKMDL ckmdl = new CKMDL();
-            cne.Sqlprms = new SqlParameter[15];
+            cne.Sqlprms = new SqlParameter[16];
             cne.Sqlprms[0] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = cne.BrandCD };
             cne.Sqlprms[1] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = cne.ShouhinCD };
             cne.Sqlprms[2] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = cne.ShouhinName };
@@ -42,6 +42,7 @@ namespace BL
             cne.Sqlprms[12] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cne.OperatorCD };
             cne.Sqlprms[13] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cne.ProgramID };
             cne.Sqlprms[14] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cne.PC };
+            cne.Sqlprms[15] = new SqlParameter("@ChakuniDate", SqlDbType.VarChar) { Value = cne.ChakuniDate };
             DataTable dt = ckmdl.SelectDatatable("D_ChakuniYotei_Display", GetConnectionString(), cne.Sqlprms);
             return dt;
         }
