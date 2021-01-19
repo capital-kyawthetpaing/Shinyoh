@@ -128,12 +128,11 @@ namespace MasterList_Shouhin
                         ExportCSVExcel excel = new ExportCSVExcel();
                         excel.ExportDataTableToExcel(dtShouhin, obj);
                         bbl.ShowMessage("I203");
+                        //New_Mode
+                        cf.Clear(PanelDetail);
+                        rdo_ChokkinDate.Checked = true;
+                        txtShouhinCD_From.Focus();
                     }
-
-                    //New_Mode
-                    cf.Clear(PanelDetail);
-                    rdo_ChokkinDate.Checked = true;
-                    txtShouhinCD_From.Focus();
                 }                
             }
         }
