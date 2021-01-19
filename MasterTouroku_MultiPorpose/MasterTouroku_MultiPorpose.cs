@@ -329,6 +329,11 @@ namespace MasterTouroku_MultiPorpose
                                 txtCopyID.Focus();
                             }
                         }
+                        else if(!string.IsNullOrEmpty(txtCopyID.Text) || !string.IsNullOrEmpty(txtKEYCopy.Text))
+                        {
+                            bbl.ShowMessage("E102");
+                            txtKEYCopy.Focus();
+                        }
                         else
                         {
                             cf.EnablePanel(PanelDetail);
