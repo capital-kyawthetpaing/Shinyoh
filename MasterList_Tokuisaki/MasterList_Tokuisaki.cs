@@ -67,6 +67,7 @@ namespace MasterList_Tokuisaki
         {
             if (e.KeyCode == Keys.Enter)
             {
+                dt = new DataTable();
                 txtJuusho.Text = string.Empty;
                 if (!txtYuubinNO2.IsErrorOccurs)
                 {
@@ -94,32 +95,59 @@ namespace MasterList_Tokuisaki
         private void Excel_Export()
         {
             TokuisakiBL bl = new TokuisakiBL();
+            dt = new DataTable();
             dt = bl.Get_ExportData(Get_UIData());
             if (dt.Rows.Count > 0)
             {
-                Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-                Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-                Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-                app.Visible = false;
-                worksheet = workbook.Sheets["Sheet1"];
-                worksheet = workbook.ActiveSheet;
-                worksheet.Name = "得意先マスタリスト";
-                for (int i = 1; i < dt.Columns.Count + 1; i++)
+                if (bbl.ShowMessage("Q205") == DialogResult.Yes)
                 {
-                    worksheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
-                }
-                for (int i = 0; i < dt.Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j < dt.Columns.Count; j++)
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
+                    saveFileDialog1.DefaultExt = "xls";
+                    saveFileDialog1.Filter = "ExcelFile|*.xls";
+                    saveFileDialog1.FileName = "得意先マスタリスト.xls";
+                    saveFileDialog1.RestoreDirectory = true;
+
+                    if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
+                        System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
+
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
-                        worksheet.Cells[i + 2, j + 1] = dt.Rows[i][j].ToString();
+                        ExcelDesignSetting obj = new ExcelDesignSetting();
+                        obj.FilePath = saveFileDialog1.FileName;
+                        obj.SheetName = "得意先マスタリスト";
+                        obj.Start_Interior_Column = "A1";
+                        obj.End_Interior_Column = "AJ1";
+                        obj.Interior_Color = Color.Orange;
+                        obj.Start_Font_Column = "A1";
+                        obj.End_Font_Column = "AJ1";
+                        obj.Font_Color = Color.Black;
+                        //For column C
+                        obj.Date_Column = new List<int>();
+                        obj.Date_Column.Add(2);
+                        obj.Date_Format = "YYYY/MM/DD";
+                        obj.Start_Title_Center_Column = "A1";
+                        obj.End_Title_Center_Column = "AJ1";
+                        //for column T,U,V
+                        ExportCSVExcel excel = new ExportCSVExcel();
+                        excel.ExportDataTableToExcel(dt, obj);
+
+                        //New_Mode
+                        cf.Clear(PanelDetail);
+                        rdo_RRevisionDate.Checked = true;
+                        txtTokuisakiCD.Focus();
+
+                        bbl.ShowMessage("I203");
                     }
                 }
-                if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
-                    System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
-                workbook.SaveAs("C:\\Output Excel Files\\得意先マスタリスト.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                app.Quit();
+                else
+                {
+                    if (this.ActiveControl != null)
+                        this.ActiveControl.Focus();
+                }
             }
+            else
+                bbl.ShowMessage("S013");
         }
 
         private TokuisakiEntity Get_UIData()
