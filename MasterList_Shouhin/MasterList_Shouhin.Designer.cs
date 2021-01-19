@@ -34,16 +34,16 @@ namespace MasterList_Shouhin
             this.rdo_ChokkinDate = new Shinyoh_Controls.SRadio();
             this.lblClassification = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.txtBrand_To = new Shinyoh_Search.SearchBox();
+            this.txtBrand_From = new Shinyoh_Search.SearchBox();
             this.txtSizeNO2 = new Shinyoh_Search.SearchBox();
             this.txtSizeNO1 = new Shinyoh_Search.SearchBox();
             this.lblSize = new Shinyoh_Controls.SLabel();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtBrand_To = new Shinyoh_Controls.STextBox();
             this.txtColorNO2 = new Shinyoh_Search.SearchBox();
             this.txtColorNO1 = new Shinyoh_Search.SearchBox();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtBrand_From = new Shinyoh_Controls.STextBox();
             this.lblBrand = new Shinyoh_Controls.SLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.txtJANCD_To = new Shinyoh_Search.SearchBox();
@@ -63,10 +63,6 @@ namespace MasterList_Shouhin
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1713, 75);
             // 
             // PanelTitle
             // 
@@ -123,7 +119,7 @@ namespace MasterList_Shouhin
             this.rdo_All.MoveNext = true;
             this.rdo_All.Name = "rdo_All";
             this.rdo_All.NextControl = null;
-            this.rdo_All.NextControlName = "txtSiiresakiCD_From";
+            this.rdo_All.NextControlName = "txtShouhinCD_From";
             this.rdo_All.Size = new System.Drawing.Size(60, 19);
             this.rdo_All.TabIndex = 9;
             this.rdo_All.Text = "全て";
@@ -138,7 +134,7 @@ namespace MasterList_Shouhin
             this.rdo_ChokkinDate.MoveNext = true;
             this.rdo_ChokkinDate.Name = "rdo_ChokkinDate";
             this.rdo_ChokkinDate.NextControl = null;
-            this.rdo_ChokkinDate.NextControlName = "txtSiiresakiCD_From";
+            this.rdo_ChokkinDate.NextControlName = "txtShouhinCD_From";
             this.rdo_ChokkinDate.Size = new System.Drawing.Size(100, 19);
             this.rdo_ChokkinDate.TabIndex = 8;
             this.rdo_ChokkinDate.TabStop = true;
@@ -161,16 +157,16 @@ namespace MasterList_Shouhin
             // 
             // PanelDetail
             // 
+            this.PanelDetail.Controls.Add(this.txtBrand_To);
+            this.PanelDetail.Controls.Add(this.txtBrand_From);
             this.PanelDetail.Controls.Add(this.txtSizeNO2);
             this.PanelDetail.Controls.Add(this.txtSizeNO1);
             this.PanelDetail.Controls.Add(this.lblSize);
             this.PanelDetail.Controls.Add(this.label5);
-            this.PanelDetail.Controls.Add(this.txtBrand_To);
             this.PanelDetail.Controls.Add(this.txtColorNO2);
             this.PanelDetail.Controls.Add(this.txtColorNO1);
             this.PanelDetail.Controls.Add(this.sLabel3);
             this.PanelDetail.Controls.Add(this.label4);
-            this.PanelDetail.Controls.Add(this.txtBrand_From);
             this.PanelDetail.Controls.Add(this.lblBrand);
             this.PanelDetail.Controls.Add(this.label3);
             this.PanelDetail.Controls.Add(this.txtJANCD_To);
@@ -191,6 +187,64 @@ namespace MasterList_Shouhin
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
             this.PanelDetail.TabIndex = 9;
+            // 
+            // txtBrand_To
+            // 
+            this.txtBrand_To.AllowMinus = false;
+            this.txtBrand_To.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBrand_To.ChangeDate = null;
+            this.txtBrand_To.Combo = null;
+            this.txtBrand_To.DecimalPlace = 0;
+            this.txtBrand_To.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtBrand_To.DepandOnMode = true;
+            this.txtBrand_To.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtBrand_To.IntegerPart = 0;
+            this.txtBrand_To.IsDatatableOccurs = null;
+            this.txtBrand_To.IsErrorOccurs = false;
+            this.txtBrand_To.IsRequire = false;
+            this.txtBrand_To.IsUseInitializedLayout = true;
+            this.txtBrand_To.lblName = null;
+            this.txtBrand_To.Location = new System.Drawing.Point(227, 88);
+            this.txtBrand_To.MaxLength = 10;
+            this.txtBrand_To.MinimumSize = new System.Drawing.Size(80, 19);
+            this.txtBrand_To.MoveNext = true;
+            this.txtBrand_To.Name = "txtBrand_To";
+            this.txtBrand_To.NextControl = null;
+            this.txtBrand_To.NextControlName = "txtColorNO1";
+            this.txtBrand_To.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtBrand_To.Size = new System.Drawing.Size(80, 19);
+            this.txtBrand_To.TabIndex = 15;
+            this.txtBrand_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtBrand_To.TxtBox = null;
+            // 
+            // txtBrand_From
+            // 
+            this.txtBrand_From.AllowMinus = false;
+            this.txtBrand_From.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBrand_From.ChangeDate = null;
+            this.txtBrand_From.Combo = null;
+            this.txtBrand_From.DecimalPlace = 0;
+            this.txtBrand_From.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtBrand_From.DepandOnMode = true;
+            this.txtBrand_From.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtBrand_From.IntegerPart = 0;
+            this.txtBrand_From.IsDatatableOccurs = null;
+            this.txtBrand_From.IsErrorOccurs = false;
+            this.txtBrand_From.IsRequire = false;
+            this.txtBrand_From.IsUseInitializedLayout = true;
+            this.txtBrand_From.lblName = null;
+            this.txtBrand_From.Location = new System.Drawing.Point(121, 87);
+            this.txtBrand_From.MaxLength = 10;
+            this.txtBrand_From.MinimumSize = new System.Drawing.Size(80, 19);
+            this.txtBrand_From.MoveNext = true;
+            this.txtBrand_From.Name = "txtBrand_From";
+            this.txtBrand_From.NextControl = null;
+            this.txtBrand_From.NextControlName = "txtBrand_To";
+            this.txtBrand_From.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtBrand_From.Size = new System.Drawing.Size(80, 19);
+            this.txtBrand_From.TabIndex = 14;
+            this.txtBrand_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtBrand_From.TxtBox = null;
             // 
             // txtSizeNO2
             // 
@@ -215,9 +269,9 @@ namespace MasterList_Shouhin
             this.txtSizeNO2.Name = "txtSizeNO2";
             this.txtSizeNO2.NextControl = null;
             this.txtSizeNO2.NextControlName = "txtRemarks";
-            this.txtSizeNO2.SearchType = Entity.SearchType.ScType.Siiresaki;
+            this.txtSizeNO2.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtSizeNO2.Size = new System.Drawing.Size(100, 19);
-            this.txtSizeNO2.TabIndex = 90;
+            this.txtSizeNO2.TabIndex = 19;
             this.txtSizeNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNO2.TxtBox = null;
             // 
@@ -244,9 +298,9 @@ namespace MasterList_Shouhin
             this.txtSizeNO1.Name = "txtSizeNO1";
             this.txtSizeNO1.NextControl = null;
             this.txtSizeNO1.NextControlName = "txtSizeNO2";
-            this.txtSizeNO1.SearchType = Entity.SearchType.ScType.Siiresaki;
+            this.txtSizeNO1.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtSizeNO1.Size = new System.Drawing.Size(100, 19);
-            this.txtSizeNO1.TabIndex = 88;
+            this.txtSizeNO1.TabIndex = 18;
             this.txtSizeNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNO1.TxtBox = null;
             // 
@@ -272,31 +326,6 @@ namespace MasterList_Shouhin
             this.label5.TabIndex = 91;
             this.label5.Text = "~";
             // 
-            // txtBrand_To
-            // 
-            this.txtBrand_To.AllowMinus = false;
-            this.txtBrand_To.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBrand_To.DecimalPlace = 0;
-            this.txtBrand_To.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtBrand_To.DepandOnMode = true;
-            this.txtBrand_To.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtBrand_To.IntegerPart = 0;
-            this.txtBrand_To.IsDatatableOccurs = null;
-            this.txtBrand_To.IsErrorOccurs = false;
-            this.txtBrand_To.IsRequire = false;
-            this.txtBrand_To.IsUseInitializedLayout = true;
-            this.txtBrand_To.Location = new System.Drawing.Point(224, 87);
-            this.txtBrand_To.MaxLength = 10;
-            this.txtBrand_To.MinimumSize = new System.Drawing.Size(70, 19);
-            this.txtBrand_To.MoveNext = true;
-            this.txtBrand_To.Name = "txtBrand_To";
-            this.txtBrand_To.NextControl = null;
-            this.txtBrand_To.NextControlName = "txtColorNO1";
-            this.txtBrand_To.SearchType = Entity.SearchType.ScType.None;
-            this.txtBrand_To.Size = new System.Drawing.Size(80, 19);
-            this.txtBrand_To.TabIndex = 87;
-            this.txtBrand_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
-            // 
             // txtColorNO2
             // 
             this.txtColorNO2.AllowMinus = false;
@@ -320,9 +349,9 @@ namespace MasterList_Shouhin
             this.txtColorNO2.Name = "txtColorNO2";
             this.txtColorNO2.NextControl = null;
             this.txtColorNO2.NextControlName = "txtSizeNO1";
-            this.txtColorNO2.SearchType = Entity.SearchType.ScType.None;
+            this.txtColorNO2.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtColorNO2.Size = new System.Drawing.Size(100, 19);
-            this.txtColorNO2.TabIndex = 85;
+            this.txtColorNO2.TabIndex = 17;
             this.txtColorNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColorNO2.TxtBox = null;
             // 
@@ -349,9 +378,9 @@ namespace MasterList_Shouhin
             this.txtColorNO1.Name = "txtColorNO1";
             this.txtColorNO1.NextControl = null;
             this.txtColorNO1.NextControlName = "txtColorNO2";
-            this.txtColorNO1.SearchType = Entity.SearchType.ScType.None;
+            this.txtColorNO1.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtColorNO1.Size = new System.Drawing.Size(100, 19);
-            this.txtColorNO1.TabIndex = 83;
+            this.txtColorNO1.TabIndex = 16;
             this.txtColorNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColorNO1.TxtBox = null;
             // 
@@ -376,31 +405,6 @@ namespace MasterList_Shouhin
             this.label4.Size = new System.Drawing.Size(14, 13);
             this.label4.TabIndex = 86;
             this.label4.Text = "~";
-            // 
-            // txtBrand_From
-            // 
-            this.txtBrand_From.AllowMinus = false;
-            this.txtBrand_From.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBrand_From.DecimalPlace = 0;
-            this.txtBrand_From.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtBrand_From.DepandOnMode = true;
-            this.txtBrand_From.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtBrand_From.IntegerPart = 0;
-            this.txtBrand_From.IsDatatableOccurs = null;
-            this.txtBrand_From.IsErrorOccurs = false;
-            this.txtBrand_From.IsRequire = false;
-            this.txtBrand_From.IsUseInitializedLayout = true;
-            this.txtBrand_From.Location = new System.Drawing.Point(121, 87);
-            this.txtBrand_From.MaxLength = 10;
-            this.txtBrand_From.MinimumSize = new System.Drawing.Size(70, 19);
-            this.txtBrand_From.MoveNext = true;
-            this.txtBrand_From.Name = "txtBrand_From";
-            this.txtBrand_From.NextControl = null;
-            this.txtBrand_From.NextControlName = "txtBrand_To";
-            this.txtBrand_From.SearchType = Entity.SearchType.ScType.None;
-            this.txtBrand_From.Size = new System.Drawing.Size(80, 19);
-            this.txtBrand_From.TabIndex = 82;
-            this.txtBrand_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblBrand
             // 
@@ -449,7 +453,7 @@ namespace MasterList_Shouhin
             this.txtJANCD_To.NextControlName = "txtShouhinName";
             this.txtJANCD_To.SearchType = Entity.SearchType.ScType.Siiresaki;
             this.txtJANCD_To.Size = new System.Drawing.Size(100, 19);
-            this.txtJANCD_To.TabIndex = 74;
+            this.txtJANCD_To.TabIndex = 12;
             this.txtJANCD_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJANCD_To.TxtBox = null;
             // 
@@ -478,7 +482,7 @@ namespace MasterList_Shouhin
             this.txtJANCD_From.NextControlName = "txtJANCD_To";
             this.txtJANCD_From.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD_From.Size = new System.Drawing.Size(100, 19);
-            this.txtJANCD_From.TabIndex = 72;
+            this.txtJANCD_From.TabIndex = 11;
             this.txtJANCD_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJANCD_From.TxtBox = null;
             // 
@@ -529,7 +533,7 @@ namespace MasterList_Shouhin
             this.txtShouhinCD_To.NextControlName = "txtJANCD_From";
             this.txtShouhinCD_To.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtShouhinCD_To.Size = new System.Drawing.Size(160, 19);
-            this.txtShouhinCD_To.TabIndex = 51;
+            this.txtShouhinCD_To.TabIndex = 10;
             this.txtShouhinCD_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShouhinCD_To.TxtBox = null;
             // 
@@ -558,7 +562,7 @@ namespace MasterList_Shouhin
             this.txtShouhinCD_From.NextControlName = "txtShouhinCD_To";
             this.txtShouhinCD_From.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtShouhinCD_From.Size = new System.Drawing.Size(160, 19);
-            this.txtShouhinCD_From.TabIndex = 49;
+            this.txtShouhinCD_From.TabIndex = 9;
             this.txtShouhinCD_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShouhinCD_From.TxtBox = null;
             // 
@@ -598,7 +602,7 @@ namespace MasterList_Shouhin
             this.txtRemarks.IsRequire = false;
             this.txtRemarks.IsUseInitializedLayout = true;
             this.txtRemarks.Location = new System.Drawing.Point(121, 162);
-            this.txtRemarks.MaxLength = 40;
+            this.txtRemarks.MaxLength = 80;
             this.txtRemarks.MinimumSize = new System.Drawing.Size(400, 19);
             this.txtRemarks.MoveNext = true;
             this.txtRemarks.Name = "txtRemarks";
@@ -606,7 +610,7 @@ namespace MasterList_Shouhin
             this.txtRemarks.NextControlName = "BtnF1";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
             this.txtRemarks.Size = new System.Drawing.Size(500, 19);
-            this.txtRemarks.TabIndex = 63;
+            this.txtRemarks.TabIndex = 20;
             this.txtRemarks.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label1
@@ -666,7 +670,7 @@ namespace MasterList_Shouhin
             this.txtShouhinName.NextControlName = "txtBrand_From";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
             this.txtShouhinName.Size = new System.Drawing.Size(500, 19);
-            this.txtShouhinName.TabIndex = 53;
+            this.txtShouhinName.TabIndex = 13;
             this.txtShouhinName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label2
@@ -727,12 +731,12 @@ namespace MasterList_Shouhin
         private Shinyoh_Search.SearchBox txtColorNO1;
         private Shinyoh_Controls.SLabel sLabel3;
         private System.Windows.Forms.Label label4;
-        private Shinyoh_Controls.STextBox txtBrand_From;
-        private Shinyoh_Controls.STextBox txtBrand_To;
         private Shinyoh_Search.SearchBox txtSizeNO2;
         private Shinyoh_Search.SearchBox txtSizeNO1;
         private Shinyoh_Controls.SLabel lblSize;
         private System.Windows.Forms.Label label5;
+        private Shinyoh_Search.SearchBox txtBrand_From;
+        private Shinyoh_Search.SearchBox txtBrand_To;
     }
 }
 

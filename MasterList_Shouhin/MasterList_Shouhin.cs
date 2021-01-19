@@ -107,7 +107,7 @@ namespace MasterList_Shouhin
                     obj.Start_Font_Column = "A1";
                     obj.End_Font_Column = "AR1";
                     obj.Font_Color = Color.Black;
-                    //For column C
+                    
                     obj.Date_Column = new List<int>();
                     obj.Date_Column.Add(2);
                     obj.Date_Column.Add(32);
@@ -115,15 +115,20 @@ namespace MasterList_Shouhin
                     obj.Date_Format = "YYYY/MM/DD";
                     obj.Start_Title_Center_Column = "A1";
                     obj.End_Title_Center_Column = "AR1";
-                    //for column T,U,V
+                    
                     obj.Number_Column = new List<int>();
                     obj.Number_Column.Add(22);
                     obj.Number_Column.Add(23);
                     obj.Number_Column.Add(24);
                     obj.Number_Column.Add(37);
                     obj.Number_Format = "#,###,###";
-                    ExportCSVExcel excel = new ExportCSVExcel();
-                     excel.ExportDataTableToExcel(dtShouhin, obj);
+
+                    if (bbl.ShowMessage("Q205") == DialogResult.Yes)
+                    {
+                        ExportCSVExcel excel = new ExportCSVExcel();
+                        excel.ExportDataTableToExcel(dtShouhin, obj);
+                        bbl.ShowMessage("I203");
+                    }
 
                     //New_Mode
                     cf.Clear(PanelDetail);
