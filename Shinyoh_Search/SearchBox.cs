@@ -227,10 +227,10 @@ namespace Shinyoh_Search
                         break;
                 }
 
-                this.Text = CD;
-
                 if(!string.IsNullOrWhiteSpace(CD))
                 {
+                    this.Text = CD;
+
                     if (lblName != null)
                     {
                         lblName.Text = name;
