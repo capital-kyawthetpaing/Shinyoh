@@ -89,7 +89,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
-                    //txtChakuniYoteiNO.E102Check(true);
+                    txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -97,7 +97,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
-                    //txtChakuniYoteiNO.E102Check(true);
+                    txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -105,7 +105,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
-                    //txtChakuniYoteiNO.E102Check(true);
+                    txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -396,6 +396,7 @@ namespace ChakuniYoteiNyuuryoku
             soukoEntity = soukoBL.GetSoukoEntity(soukoEntity);
             txtSouko.Text = soukoEntity.SoukoCD;
             lblWareHouse.Text = soukoEntity.SoukoName;
+            lblSiiresaki.Text = string.Empty;
         }
         private bool Temp_Null()
         {
