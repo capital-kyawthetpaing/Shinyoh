@@ -70,10 +70,6 @@
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1485, 75);
-            // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtKEYCopy);
@@ -749,6 +745,7 @@
             this.txtKEYCopy.Size = new System.Drawing.Size(250, 19);
             this.txtKEYCopy.TabIndex = 16;
             this.txtKEYCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtKEYCopy.TxtBox = null;
             this.txtKEYCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKEYCopy_KeyDown);
             // 
             // txtKEY
@@ -778,6 +775,7 @@
             this.txtKEY.Size = new System.Drawing.Size(250, 19);
             this.txtKEY.TabIndex = 15;
             this.txtKEY.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtKEY.TxtBox = null;
             this.txtKEY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKEY_KeyDown_1);
             // 
             // txtCopyID
@@ -808,6 +806,7 @@
             this.txtCopyID.TabIndex = 14;
             this.txtCopyID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCopyID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtCopyID.TxtBox = null;
             // 
             // txtID
             // 
@@ -837,12 +836,13 @@
             this.txtID.TabIndex = 13;
             this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtID.TxtBox = null;
             // 
             // MasterTouroku_MultiPorpose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 844);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_MultiPorpose";
