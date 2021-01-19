@@ -29,24 +29,25 @@ namespace Shinyoh_Search
             }
             if (e.KeyCode == Keys.Enter)
             {
-                //if (this.TopLevelControl != null && string.IsNullOrEmpty(CD) && string.IsNullOrEmpty(this.Text))
-                //{
-                //    Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
-                //    if (ctrlArr.Length > 0)
-                //    {
-                //        Control btnF9 = ctrlArr[0];
-                //        if (btnF9.Visible == true && this.E102 == true)
-                //            Search();
-                //        else
-                //            base.OnKeyDown(e);
-                //    }
-                //    else
-                //        base.OnKeyDown(e);
-                //}
-                //else
-                //    base.OnKeyDown(e);
+                //to show search screen when user press enter in searchbox
+                if (this.TopLevelControl != null && string.IsNullOrEmpty(CD) && string.IsNullOrEmpty(this.Text))
+                {
+                    Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                    if (ctrlArr.Length > 0)
+                    {
+                        Control btnF9 = ctrlArr[0];
+                        if (btnF9.Visible == true && this.E102 == true)
+                            Search();
+                        else
+                            base.OnKeyDown(e);
+                    }
+                    else
+                        base.OnKeyDown(e);
+                }
+                else
+                    base.OnKeyDown(e);
 
-                base.OnKeyDown(e);
+                //base.OnKeyDown(e);
                 if (string.IsNullOrWhiteSpace(this.Text))
                 {
                     if(lblName != null)
