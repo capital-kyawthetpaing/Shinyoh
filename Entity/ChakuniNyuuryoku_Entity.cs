@@ -11,6 +11,7 @@ namespace Entity
         public string ChakuniNO { get; set; }
         public string ChakuniYoteiNO { get; set; }
         public string BrandCD { get; set; }
+        public string HinbanCD { get; set; }
         public string ChakuniDate { get; set; }
         public string ChakuniDateFrom { get; set; }
         public string ChakuniDateTo { get; set; }

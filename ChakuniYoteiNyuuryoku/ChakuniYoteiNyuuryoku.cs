@@ -371,6 +371,9 @@ namespace ChakuniYoteiNyuuryoku
             cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
+            lblSiiresaki.Text = string.Empty;
+            lblStaff.Text = string.Empty;
+            lblWareHouse.Text = string.Empty;
             txtChakuniYoteiNO.Focus();
         }
         private void New_Mode()
