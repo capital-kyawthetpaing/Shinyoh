@@ -106,6 +106,7 @@
     <Content Include="StoreProcedure\D_Exclusive_Insert.sql" />
     <Content Include="StoreProcedure\D_Exclusive_Lock_Check.sql" />
     <Content Include="StoreProcedure\Fnc_GetDenpyouNO.sql" />
+    <Content Include="StoreProcedure\Fnc_GetNumber.sql" />
     <Content Include="StoreProcedure\Fnc_Hikiate.sql" />
     <Content Include="StoreProcedure\F_Authorizations.sql" />
     <Content Include="StoreProcedure\F_AuthorizationsDetails.sql" />
@@ -170,7 +171,6 @@
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_Insert.sql" />
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_IUD.sql" />
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_Update.sql" />
-    <Content Include="StoreProcedure\Shukkasizi_Price.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Check.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Error_Check.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Select_Check.sql" />

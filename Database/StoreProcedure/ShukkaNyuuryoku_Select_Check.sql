@@ -60,22 +60,23 @@ BEGIN
 		 else
 			begin
 			---- not exists
-			select DS.ShukkaDate, DS.TokuisakiCD,DS.TokuisakiRyakuName,DS.TokuisakiName,DS.TokuisakiYuubinNO1,DS.TokuisakiYuubinNO2,
+				select DS.ShukkaDate, DS.TokuisakiCD,DS.TokuisakiRyakuName,DS.TokuisakiName,DS.TokuisakiYuubinNO1,DS.TokuisakiYuubinNO2,
 					DS.TokuisakiJuusho1,DS.TokuisakiJuusho2,DS.[TokuisakiTelNO1-1],DS.[TokuisakiTelNO1-2],DS.[TokuisakiTelNO1-3],
 					DS.[TokuisakiTelNO2-1],DS.[TokuisakiTelNO2-2], DS.[TokuisakiTelNO2-3], DS.KouritenCD, DS.KouritenRyakuName,
 					DS.KouritenName,DS.KouritenYuubinNO1, DS.KouritenYuubinNO2,DS.KouritenJuusho1,DS.KouritenJuusho2,
 					DS.[KouritenTelNO1-1],DS.[KouritenTelNO1-2],DS.[KouritenTelNO1-3],DS.[KouritenTelNO2-1],DS.[KouritenTelNO2-2],
-					DS.[KouritenTelNO2-3],DS.StaffCD,FS.StaffName,DS.ShukkaDenpyouTekiyou,DSM.JANCD,DSM.ShouhinCD,DSM.ShouhinName,DSM.ColorRyakuName,
+					DS.[KouritenTelNO2-3],DS.StaffCD,FS.StaffName,DS.ShukkaDenpyouTekiyou,DSM.JANCD,F.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,
 					DSM.ColorNO,DSM.SizeNO,(DSM1.ShukkaSiziSuu - DSM1.ShukkaZumiSuu) as ShukkaSiziZumiSuu,WK.MiNyuukaSuu,
 					DSM.ShukkaSuu,NULL as Kanryou,DSM.ShukkaMeisaiTekiyou,
 					(DSM.ShukkaSiziNO +'-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,
-					DSM.DenpyouDate,(DSM1.JuchuuNO +'-'+ cast(DSM1.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,M_Message.MessageID						
+					DSM.DenpyouDate,(DSM1.JuchuuNO +'-'+ cast(DSM1.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,F.ShouhinCD,M_Message.MessageID						
 			from D_Shukka DS 
 			inner join D_ShukkaMeisai DSM on DSM.ShukkaNO=DS.ShukkaNO
 			left outer join D_ShukkaSiziMeisai DSM1 on DSM1.ShukkaSiziNO=DSM.ShukkaSiziNO and DSM1.ShukkaSiziGyouNO = DSM.ShukkaSiziGyouNO
 			left outer join #WK_MiNyuukaSuu1 WK on WK.ShukkaSiziNO = DSM.ShukkaSiziNO and WK.ShukkaSiziGyouNO = DSM.ShukkaSiziGyouNO
 			left outer join F_Staff(@ShukkaDate) FS on FS.StaffCD=DS.StaffCD	
-			left outer join M_Souko MS on MS.SoukoCD=DSM1.SoukoCD,M_Message
+			left outer join M_Souko MS on MS.SoukoCD=DSM1.SoukoCD
+			left outer join F_Shouhin(@ShukkaDate) F on F.ShouhinCD = DSM.ShouhinCD,M_Message
 			where DS.ShukkaNO =@ShukkaNo and M_Message.MessageID='E132'
 			order by DSM.GyouHyouziJun ASC		
 			end
@@ -89,17 +90,18 @@ BEGIN
 					DS.[TokuisakiTelNO2-1],DS.[TokuisakiTelNO2-2], DS.[TokuisakiTelNO2-3], DS.KouritenCD, DS.KouritenRyakuName,
 					DS.KouritenName,DS.KouritenYuubinNO1, DS.KouritenYuubinNO2,DS.KouritenJuusho1,DS.KouritenJuusho2,
 					DS.[KouritenTelNO1-1],DS.[KouritenTelNO1-2],DS.[KouritenTelNO1-3],DS.[KouritenTelNO2-1],DS.[KouritenTelNO2-2],
-					DS.[KouritenTelNO2-3],DS.StaffCD,FS.StaffName,DS.ShukkaDenpyouTekiyou,DSM.JANCD,DSM.ShouhinCD,DSM.ShouhinName,DSM.ColorRyakuName,
+					DS.[KouritenTelNO2-3],DS.StaffCD,FS.StaffName,DS.ShukkaDenpyouTekiyou,DSM.JANCD,F.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,
 					DSM.ColorNO,DSM.SizeNO,(DSM1.ShukkaSiziSuu - DSM1.ShukkaZumiSuu) as ShukkaSiziZumiSuu,WK.MiNyuukaSuu,
 					DSM.ShukkaSuu,NULL as Kanryou,DSM.ShukkaMeisaiTekiyou,
 					(DSM.ShukkaSiziNO +'-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,
-					DSM.DenpyouDate,(DSM1.JuchuuNO +'-'+ cast(DSM1.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,M_Message.MessageID						
+					DSM.DenpyouDate,(DSM1.JuchuuNO +'-'+ cast(DSM1.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,F.ShouhinCD,M_Message.MessageID						
 			from D_Shukka DS 
 			inner join D_ShukkaMeisai DSM on DSM.ShukkaNO=DS.ShukkaNO
 			left outer join D_ShukkaSiziMeisai DSM1 on DSM1.ShukkaSiziNO=DSM.ShukkaSiziNO and DSM1.ShukkaSiziGyouNO = DSM.ShukkaSiziGyouNO
 			left outer join #WK_MiNyuukaSuu1 WK on WK.ShukkaSiziNO = DSM.ShukkaSiziNO and WK.ShukkaSiziGyouNO = DSM.ShukkaSiziGyouNO
 			left outer join F_Staff(@ShukkaDate) FS on FS.StaffCD=DS.StaffCD	
-			left outer join M_Souko MS on MS.SoukoCD=DSM1.SoukoCD,M_Message
+			left outer join M_Souko MS on MS.SoukoCD=DSM1.SoukoCD
+			left outer join F_Shouhin(@ShukkaDate) F on F.ShouhinCD = DSM.ShouhinCD,M_Message
 			where DS.ShukkaNO =@ShukkaNo and M_Message.MessageID='E132'
 			order by DSM.GyouHyouziJun ASC		
 		end

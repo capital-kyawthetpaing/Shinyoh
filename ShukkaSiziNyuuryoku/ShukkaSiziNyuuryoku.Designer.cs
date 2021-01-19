@@ -117,6 +117,7 @@ namespace ShukkaSiziNyuuryoku
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
@@ -753,12 +754,14 @@ namespace ShukkaSiziNyuuryoku
             this.Column13,
             this.Column14,
             this.Column15,
+            this.ShouhinCD,
             this.JuchuuNO});
             this.dgvShukkasizi.Location = new System.Drawing.Point(48, 222);
             this.dgvShukkasizi.Name = "dgvShukkasizi";
             this.dgvShukkasizi.Size = new System.Drawing.Size(1450, 350);
             this.dgvShukkasizi.TabIndex = 35;
             this.dgvShukkasizi.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvShukkasizi_Paint);
+            this.dgvShukkasizi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvShukkasizi_KeyDown);
             // 
             // btnSave
             // 
@@ -1090,6 +1093,7 @@ namespace ShukkaSiziNyuuryoku
             this.colShouhinCD.Name = "colShouhinCD";
             this.colShouhinCD.ReadOnly = true;
             this.colShouhinCD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.colShouhinCD.Width = 200;
             // 
             // colShouhinName
             // 
@@ -1253,6 +1257,7 @@ namespace ShukkaSiziNyuuryoku
             this.Column5.HeaderText = "小売店郵便番号1";
             this.Column5.Name = "Column5";
             this.Column5.Visible = false;
+            this.Column5.Width = 150;
             // 
             // Column6
             // 
@@ -1260,6 +1265,7 @@ namespace ShukkaSiziNyuuryoku
             this.Column6.HeaderText = "小売店郵便番号2";
             this.Column6.Name = "Column6";
             this.Column6.Visible = false;
+            this.Column6.Width = 150;
             // 
             // Column7
             // 
@@ -1281,6 +1287,7 @@ namespace ShukkaSiziNyuuryoku
             this.Column9.HeaderText = "小売店電話番号1-1";
             this.Column9.Name = "Column9";
             this.Column9.Visible = false;
+            this.Column9.Width = 150;
             // 
             // Column11
             // 
@@ -1288,6 +1295,7 @@ namespace ShukkaSiziNyuuryoku
             this.Column11.HeaderText = "小売店電話番号1-2";
             this.Column11.Name = "Column11";
             this.Column11.Visible = false;
+            this.Column11.Width = 150;
             // 
             // Column12
             // 
@@ -1295,6 +1303,7 @@ namespace ShukkaSiziNyuuryoku
             this.Column12.HeaderText = "小売店電話番号1-3";
             this.Column12.Name = "Column12";
             this.Column12.Visible = false;
+            this.Column12.Width = 150;
             // 
             // Column13
             // 
@@ -1302,6 +1311,7 @@ namespace ShukkaSiziNyuuryoku
             this.Column13.HeaderText = "小売店電話番号2-1";
             this.Column13.Name = "Column13";
             this.Column13.Visible = false;
+            this.Column13.Width = 150;
             // 
             // Column14
             // 
@@ -1309,6 +1319,7 @@ namespace ShukkaSiziNyuuryoku
             this.Column14.HeaderText = "小売店電話番号2-2";
             this.Column14.Name = "Column14";
             this.Column14.Visible = false;
+            this.Column14.Width = 150;
             // 
             // Column15
             // 
@@ -1316,6 +1327,15 @@ namespace ShukkaSiziNyuuryoku
             this.Column15.HeaderText = "小売店電話番号2-3";
             this.Column15.Name = "Column15";
             this.Column15.Visible = false;
+            this.Column15.Width = 150;
+            // 
+            // ShouhinCD
+            // 
+            this.ShouhinCD.DataPropertyName = "Hidden_ShouhinCD";
+            this.ShouhinCD.HeaderText = "商品コード_更新用";
+            this.ShouhinCD.Name = "ShouhinCD";
+            this.ShouhinCD.Visible = false;
+            this.ShouhinCD.Width = 150;
             // 
             // JuchuuNO
             // 
@@ -1429,6 +1449,7 @@ namespace ShukkaSiziNyuuryoku
         private System.Windows.Forms.DataGridViewTextBoxColumn Column13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column14;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShouhinCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn JuchuuNO;
     }
 }
