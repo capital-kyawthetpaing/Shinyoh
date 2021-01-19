@@ -21,11 +21,9 @@ namespace IdouNyuuryoku
         BaseEntity base_Entity;
         BaseBL base_bl;
         IdouNyuuryokuBL Idou_BL;
-
         DataTable gv1_to_dt1;
         DataTable F8_dt1;
-
-        bool bl_rowEnter = true;
+       
         public IdouNyuuryoku()
         {
             InitializeComponent();
@@ -70,7 +68,7 @@ namespace IdouNyuuryoku
             txtStaffCD.ChangeDate = txtIdouDate;
 
             gv_1.SetGridDesign();
-            gv_1.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO");
+            gv_1.SetReadOnlyColumn("colHinbanCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO");
 
             gv_1.SetHiraganaColumn("colIdouMeisaiTekiyou");
             gv_1.SetNumberColumn("colIdouSuu,colGenkaTanka,colGenkaKingaku");
@@ -161,7 +159,7 @@ namespace IdouNyuuryoku
             txtIdouDate.Text = base_Entity.LoginDate;
             txtStaffCD.Text = base_Entity.OperatorCD;
             lblStaff_Name.Text = base_Entity.SPName;
-
+            
             Load_Setting();
             
         }
@@ -204,7 +202,8 @@ namespace IdouNyuuryoku
 
             txtNyukosouko.E102Check(true);
             txtNyukosouko.E101Check(true, "souko", txtNyukosouko, null, null);
-        }
+        }       
+        
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "2")
@@ -261,6 +260,7 @@ namespace IdouNyuuryoku
                         ChangeMode(Mode.Inquiry);
                         break;
                 }
+
             }
             base.FunctionProcess(tagID);
         }
@@ -452,7 +452,7 @@ namespace IdouNyuuryoku
             string KanriNO = gv_1.Rows[e.RowIndex].Cells["colKanriNO"].Value.ToString();
             string soukoCD = txtShukkosouko.Text;
             string ShouhinCD = gv_1.Rows[e.RowIndex].Cells["colShouhinCD"].Value.ToString();
-            
+
             if (gv_1.Columns[e.ColumnIndex].Name == "colKanriNO")
             {
                 if (string.IsNullOrEmpty(KanriNO))
@@ -469,17 +469,17 @@ namespace IdouNyuuryoku
             {
                 bool bl_check = false;
                 string split_val = gv_1.Rows[e.RowIndex].Cells["colIdouSuu"].EditedFormattedValue.ToString().Replace(",", "");
-                int IdouSuu = string.IsNullOrEmpty(gv_1.Rows[e.RowIndex].Cells["colIdouSuu"].EditedFormattedValue.ToString())? 0 : Convert.ToInt32(split_val);
+                int IdouSuu = string.IsNullOrEmpty(gv_1.Rows[e.RowIndex].Cells["colIdouSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
                 if (IdouSuu == 0)
                 {
                     gv_1.Rows[e.RowIndex].Cells["colIdouSuu"].Value = "0";
                 }
-                else if(IdouSuu < 0)
+                else if (IdouSuu < 0)
                 {
                     base_bl.ShowMessage("E109");
                     bl_check = true;
                 }
-                if(!bl_check)
+                if (!bl_check)
                 {
                     DataTable dt = Idou_BL.IdouNyuuryoku_Select_Check(ShouhinCD, soukoCD, "Sum_Com", KanriNO);
                     if (dt.Rows.Count > 0)
@@ -492,14 +492,14 @@ namespace IdouNyuuryoku
                     }
                     gv_1.Rows[e.RowIndex].Cells["colGenkaKingaku"].Value = Convert.ToInt32(gv_1.Rows[e.RowIndex].Cells["colGenkaTanka"].Value) * Convert.ToInt32(gv_1.Rows[e.RowIndex].Cells["colIdouSuu"].Value);
                 }
-                if(!bl_check)
+                if (!bl_check)
                 {
                     gv_1.MoveNextCell();
                 }
                 else
                 {
                     gv_1.CurrentCell = gv_1.Rows[e.RowIndex].Cells["colIdouSuu"];
-                }  
+                }
             }
             if (gv_1.Columns[e.ColumnIndex].Name == "colGenkaTanka")
             {
@@ -520,24 +520,24 @@ namespace IdouNyuuryoku
                 gv_1.MoveNextCell();
         }
 
-        private void gv_1_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (!bl_rowEnter)
-            //{
-            //    string soukoCD = string.Empty;
-            //    if (txtIdoukubun.Text == "1")
-            //        soukoCD = txtNyukosouko.Text;
-            //    else soukoCD = txtShukkosouko.Text;
-            //    string ShouhinCD = gv_1.Rows[e.RowIndex].Cells["colShouhinCD"].Value.ToString();
-            //    DataTable dt = Idou_BL.IdouNyuuryoku_Select_Check(ShouhinCD, soukoCD, "Kanri");
-            //    if (dt.Rows.Count > 0)
-            //    {
-            //        gv_1.Rows[e.RowIndex].Cells["colKanriNO"].Value = dt.Rows[0]["KanriNO"].ToString();
-            //    }
+        //private void gv_1_RowEnter(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    //if (!bl_rowEnter)
+        //    //{
+        //    //    string soukoCD = string.Empty;
+        //    //    if (txtIdoukubun.Text == "1")
+        //    //        soukoCD = txtNyukosouko.Text;
+        //    //    else soukoCD = txtShukkosouko.Text;
+        //    //    string ShouhinCD = gv_1.Rows[e.RowIndex].Cells["colShouhinCD"].Value.ToString();
+        //    //    DataTable dt = Idou_BL.IdouNyuuryoku_Select_Check(ShouhinCD, soukoCD, "Kanri");
+        //    //    if (dt.Rows.Count > 0)
+        //    //    {
+        //    //        gv_1.Rows[e.RowIndex].Cells["colKanriNO"].Value = dt.Rows[0]["KanriNO"].ToString();
+        //    //    }
 
-            //}
-            //bl_rowEnter = false;
-        }
+        //    //}
+        //    //bl_rowEnter = false;
+        //}
 
         private void btnNameF10_Click(object sender, EventArgs e)
         {
@@ -659,13 +659,13 @@ namespace IdouNyuuryoku
             }
             else if (cboMode.SelectedValue.Equals("2"))
             {
-                //mode = "Update";
-                //DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+                mode = "Update";
+                DoUpdate(mode, obj.Item1, obj.Item2);
             }
             else if (cboMode.SelectedValue.Equals("3"))
             {
-                //mode = "Delete";
-                //DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+                mode = "Delete";
+                DoDelete(mode, obj.Item1, obj.Item2);
             }
         }
         private (string, string) GetInsert()
@@ -685,18 +685,19 @@ namespace IdouNyuuryoku
             dr["PC"] = base_Entity.PC;
             dr["ProgramID"] = base_Entity.ProgramID;
 
-            dt.Rows.Add(dr);
-            string header_XML = cf.DataTableToXml(dt);
-
             if (cboMode.SelectedValue.ToString() == "1")
             {
+                DataTable Idou_dt = Idou_BL.GetIdouNO("15", txtIdouDate.Text, "0");
+                dr["IdouNO"] = Idou_dt.Rows[0]["Column1"];
                 for (int i = 0; i < F8_dt1.Rows.Count; i++)
                 {
-                    DataTable Idou_dt = Idou_BL.GetIdouNO("15", txtIdouDate.Text, "0");
                     F8_dt1.Rows[i]["IdouNO"] = Idou_dt.Rows[0]["Column1"];
                     F8_dt1.Rows[i]["IdouGyouNO"] = i + 1;
                 }
             }
+            dt.Rows.Add(dr);
+            string header_XML = cf.DataTableToXml(dt);
+
             string detail_XML = cf.DataTableToXml(F8_dt1);
             return (header_XML, detail_XML);
         }
@@ -718,7 +719,23 @@ namespace IdouNyuuryoku
         private void DoInsert(string mode, string str_header, string str_detail)
         {
             IdouNyuuryokuBL objMethod = new IdouNyuuryokuBL();
-            objMethod.IdouNyuuryoku_CUD(mode, str_header, str_detail);
+            string return_BL= objMethod.IdouNyuuryoku_CUD(mode, str_header, str_detail);
+            if (return_BL == "true")
+                base_bl.ShowMessage("I101");
+        }
+        private void DoUpdate(string mode, string str_header, string str_detail)
+        {
+            IdouNyuuryokuBL objMethod = new IdouNyuuryokuBL();
+            string return_BL = objMethod.IdouNyuuryoku_CUD(mode, str_header, str_detail);
+            if (return_BL == "true")
+                base_bl.ShowMessage("I101");
+        }
+        private void DoDelete(string mode, string str_header, string str_detail)
+        {
+            IdouNyuuryokuBL objMethod = new IdouNyuuryokuBL();
+            string return_BL = objMethod.IdouNyuuryoku_CUD(mode, str_header, str_detail);
+            if (return_BL == "true")
+                base_bl.ShowMessage("I102");
         }
     }
 }
