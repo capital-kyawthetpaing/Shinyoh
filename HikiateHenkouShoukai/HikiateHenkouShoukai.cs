@@ -66,12 +66,19 @@ namespace HikiateHenkouShoukai
 
             gvFreeInventoryDetails.SetGridDesign();
             gvFreeInventoryDetails.SetReadOnlyColumn("*");
+
+            txtBrand.lblName = lblBrandName;
+            txtTokuisakiCD.lblName = lblTokuisakiName;
+            txtTokuisakiCD.ChangeDate = txtChangeDate;
+            txtSoukoCD.lblName = lblSoukoName;
+            txtKouritenCD.lblName = lblKouritenName;
+            txtKouritenCD.ChangeDate = txtChangeDate;
         }
 
         private void Modified_Panel()
         {
             cf.Clear(PanelDetail);
-            //UI_ErrorCheck();
+            UI_ErrorCheck();
 
             lblBrandName.Text = string.Empty;
             lblTokuisakiName.Text = string.Empty;
@@ -149,6 +156,15 @@ namespace HikiateHenkouShoukai
             txtChakuniYoteiNO.E133Check(true, "HikiateHenkouShoukai", txtChakuniYoteiNO, null, null);
             txtTokuisakiCD.E101Check(true, "HikiateHenkouShoukai" , txtTokuisakiCD, null, null);
             txtKouritenCD.E101Check(true, "HikiateHenkouShoukai", txtKouritenCD, null, null);
+
+            lblBrandName.Text = string.Empty;
+            lblBrandName.BorderStyle = BorderStyle.None;
+            lblTokuisakiName.Text = string.Empty;
+            lblTokuisakiName.BorderStyle = BorderStyle.None;
+            lblSoukoName.Text = string.Empty;
+            lblSoukoName.BorderStyle = BorderStyle.None;
+            lblKouritenName.Text = string.Empty;
+            lblKouritenName.BorderStyle = BorderStyle.None;
         }
 
         private void rdoAggregation_CheckedChanged(object sender, EventArgs e)
@@ -195,7 +211,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = false;
                     gvAggregationDetails.Location = new Point(22, 245);
-                    gvAggregationDetails.Size = new Size(1550, 500);
+                    gvAggregationDetails.Size = new Size(1550, 300);
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -221,7 +237,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = true;
                     gvFreeInventoryDetails.Visible = false;
                     gvMainDetail.Location = new Point(22, 245);
-                    gvMainDetail.Size = new Size(1750, 500);
+                    gvMainDetail.Size = new Size(1750, 300);
                     //gvMainDetail.ReadOnly = false;
                     //gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -248,7 +264,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = true;
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
                     gvFreeInventoryDetails.Location = new Point(22, 245);
-                    gvFreeInventoryDetails.Size = new Size(1150, 500);
+                    gvFreeInventoryDetails.Size = new Size(1150, 300);
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -257,20 +273,6 @@ namespace HikiateHenkouShoukai
             //gvMainDetail.Rows.Clear();
             //gvMainDetail.DataSource = createMemoryTable(type);
             //gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
-        }
-
-        private void txtBrand_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                lblBrandName.Text = "";
-                if(!txtBrand.IsErrorOccurs)
-                {
-                    dt = txtBrand.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lblBrandName.Text = dt.Rows[0]["char1"].ToString();
-                }
-            }
         }
 
         private void chkSeasonSS_CheckedChanged(object sender, EventArgs e)
@@ -287,48 +289,6 @@ namespace HikiateHenkouShoukai
                 chkSeasonSS.Enabled = false;
             else
                 chkSeasonSS.Enabled = true;
-        }
-
-        private void txtSoukoCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                lblSoukoName.Text = "";
-                if (!txtSoukoCD.IsErrorOccurs)
-                {
-                    dt = txtSoukoCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lblSoukoName.Text = dt.Rows[0]["SoukoName"].ToString();
-                }
-            }
-        }
-
-        private void txtTokuisakiCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                lblTokuisakiName.Text = "";
-                if (!txtTokuisakiCD.IsErrorOccurs)
-                {
-                    dt = txtTokuisakiCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lblTokuisakiName.Text = dt.Rows[0]["TokuisakiName"].ToString();
-                }
-            }
-        }
-
-        private void txtKouritenCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter)
-            {
-                lblKouritenName.Text = "";
-                if(!txtKouritenCD.IsErrorOccurs)
-                {
-                    dt = txtKouritenCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                        lblKouritenName.Text = dt.Rows[0]["KouritenName"].ToString();
-                }
-            }
         }
 
         private void txtPostalCode2_KeyDown(object sender, KeyEventArgs e)

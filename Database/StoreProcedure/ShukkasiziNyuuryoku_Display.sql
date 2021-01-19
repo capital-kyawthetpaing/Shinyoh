@@ -53,7 +53,7 @@ CREATE TABLE  #WK_ShukkaKanouSou2
 				[ShukkanouSuu]	decimal(21,6)
 			)
 
-Insert Into #WK_ShukkaKanouSou2
+INSERT INTO  #WK_ShukkaKanouSou2
 	SELECT DJSS.JuchuuNO,DJSS.JuchuuGyouNO,SUM(DJSS.HikiateZumiSuu)
 	FROM D_Juchuu DJ
 	INNER JOIN [dbo].[D_JuchuuMeisai] DJMS
@@ -61,7 +61,7 @@ Insert Into #WK_ShukkaKanouSou2
 	INNER JOIN [dbo].[D_JuchuuShousai] DJSS
 	ON DJSS.[JuchuuNO]=DJMS.[JuchuuNO]
 	AND DJSS.[JuchuuGyouNO]=DJMS.[JuchuuGyouNO]
-	INNER JOIN F_Tokuisaki(getdate()) FT
+	INNER JOIN F_Tokuisaki(@ShippingDate) FT
 	ON FT.TokuisakiCD=DJ.TokuisakiCD
 	WHERE DJ.TokuisakiCD=@TokuisakiCD
 	AND (@JuchuuNO is null or (DJ.JuchuuNO=@JuchuuNO))
@@ -101,16 +101,18 @@ Insert Into #WK_ShukkaKanouSou2
 	)
 	GROUP BY DJSS.JuchuuNO,DJSS.JuchuuGyouNO
 
-SELECT DJMS.ShouhinCD --商品コード
+SELECT
+--DJMS.ShouhinCD			--商品コード
+	FS.HinbanCD	as ShouhinCD--商品コード
 	,DJMS.ShouhinName		--商品名
 	,DJMS.ColorRyakuName	--カラー略名
 	,DJMS.ColorNO			--カラーNO
 	,DJMS.SizeNO			--サイズNO
-	,FLOOR(DJMS.JuchuuSuu) AS JuchuuSuu					--受注数
+	,FLOOR(DJMS.JuchuuSuu) AS JuchuuSuu	--受注数
 	,ISNULL(FLOOR(SKKNS2.ShukkanouSuu),'0') AS ShukkanouSuu			--出荷可能数
 	,ISNULL(FLOOR(DJMS.ShukkaSiziZumiSuu),'0') AS ShukkaSiziZumiSuu	--出荷指示済数
 	,ISNULL((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FLOOR(SKKNS2.ShukkanouSuu)
-	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FLOOR(DJMS.ShukkaZumiSuu) END),'0') AS KonkaiShukkaSiziSuu--今回出荷指示数
+	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FLOOR(DJMS.ShukkaZumiSuu) END),'0') AS KonkaiShukkaSiziSuu--莉雁屓蜃ｺ闕ｷ謖・､ｺ謨ｰ
 	,ISNULL(FLOOR(DJMS.UriageTanka),0) UriageTanka	--単価
 	,ISNULL((FLOOR(DJMS.UriageTanka)*(case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FLOOR(SKKNS2.ShukkanouSuu) 
 	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FLOOR(DJMS.ShukkaZumiSuu) END)),'0') AS UriageKingaku	--金額
@@ -118,6 +120,7 @@ SELECT DJMS.ShouhinCD --商品コード
 	,'' as ShukkaSiziMeisaiTekiyou --明細摘要
 	--details2
 	,(DJMS.JuchuuNO +' - ' +cast(DJMS.JuchuuGyouNO as varchar)) AS SKMSNO
+	,DJMS.JuchuuNO
 	,DJMS.SoukoCD
 	,MS.SoukoName
 	--HiddenFields
@@ -135,16 +138,13 @@ SELECT DJMS.ShouhinCD --商品コード
 	,DJ.[KouritenTelNO2-1]	--小売店電話番号2-1
 	,DJ.[KouritenTelNO2-2]	--小売店電話番号2-2
 	,DJ.[KouritenTelNO2-3]	--小売店電話番号2-3
+	,FS.ShouhinCD as Hidden_ShouhinCD--商品コード_更新用
 	FROM D_Juchuu DJ
-	INNER JOIN D_JuchuuMeisai DJMS
-	ON DJMS.JuchuuNO=DJ.JuchuuNO
-	LEFT OUTER JOIN #WK_ShukkaKanouSou2 SKKNS2
-	ON SKKNS2.JuchuuNO=DJMS.JuchuuNO
-	AND SKKNS2.JuchuuGyouNO=DJMS.JuchuuGyouNO
-	LEFT OUTER JOIN F_Tokuisaki(getdate()) FT
-	ON FT.TokuisakiCD=DJ.TokuisakiCD
-	LEFT OUTER JOIN M_Souko MS
-	ON MS.SoukoCD=DJMS.SoukoCD
+	INNER JOIN D_JuchuuMeisai DJMS ON DJMS.JuchuuNO=DJ.JuchuuNO
+	LEFT OUTER JOIN #WK_ShukkaKanouSou2 SKKNS2 ON SKKNS2.JuchuuNO=DJMS.JuchuuNO	AND SKKNS2.JuchuuGyouNO=DJMS.JuchuuGyouNO
+	LEFT OUTER JOIN F_Tokuisaki(@ShippingDate) FT ON FT.TokuisakiCD=DJ.TokuisakiCD
+	LEFT OUTER JOIN M_Souko MS	ON MS.SoukoCD=DJMS.SoukoCD
+	LEFT OUTER JOIN F_Shouhin(@ShippingDate) FS ON FS.ShouhinCD=DJMS.ShouhinCD
 	WHERE DJ.TokuisakiCD=@TokuisakiCD
 	AND (@JuchuuNO is null or (DJ.JuchuuNO=@JuchuuNO))
 	AND (@SenpouHacchuuNO is null or (DJMS.SenpouHacchuuNO=@SenpouHacchuuNO))
@@ -182,11 +182,11 @@ SELECT DJMS.ShouhinCD --商品コード
 	(@KouritenJuusho2 is null or (DJ.KouritenJuusho2=@KouritenJuusho2)))
 	)
 
-	ORDER BY DJMS.ShouhinCD ASC,DJMS.JuchuuNO ASC,DJMS.GyouHyouziJun ASC
+ORDER BY DJMS.ShouhinCD ASC,DJMS.JuchuuNO ASC,DJMS.GyouHyouziJun ASC
 
 If(OBJECT_ID('tempdb..#WK_ShukkaKanouSou2') Is Not Null)
 Begin
     Drop Table #WK_ShukkaKanouSou2
 End
-END
 
+END

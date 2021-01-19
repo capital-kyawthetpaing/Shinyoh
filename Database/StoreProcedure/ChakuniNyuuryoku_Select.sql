@@ -39,29 +39,28 @@ begin
 		if exists(select * from D_Chakuni where ChakuniNO=@ChakuniNo)
 		begin
 			--exists
-          Select  convert(varchar(10), dc.ChakuniDate, 111)as ChakuniDate,dc.SiiresakiCD,dc.SiiresakiRyakuName,dc.SiiresakiName,dc.SiiresakiYuubinNO1,dc.SiiresakiYuubinNO2,dc.SiiresakiJuusho1,dc.SiiresakiJuusho2,
+         Select  convert(varchar(10), dc.ChakuniDate, 111)as ChakuniDate,dc.SiiresakiCD,dc.SiiresakiRyakuName,dc.SiiresakiName,dc.SiiresakiYuubinNO1,dc.SiiresakiYuubinNO2,dc.SiiresakiJuusho1,dc.SiiresakiJuusho2,
 		  dc.[SiiresakiTelNO1-1],dc.[SiiresakiTelNO1-2],dc.[SiiresakiTelNO1-3],dc.[SiiresakiTelNO2-1],dc.[SiiresakiTelNO2-2],dc.[SiiresakiTelNO2-3],
           dc.StaffCD,ms.StaffName,dc.SoukoCD,msouko.SoukoName,dc.ChakuniDenpyouTekiyou,M_Message.MessageID,dcy.ChakuniYoteiNO,
-          dcm.ShouhinCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
+          FS.HinbanCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
           dc1.ChakuniYoteiDate,FLOOR(dcy.ChakuniYoteiSuu)as ChakuniYoteiSuu,FLOOR(dcy.ChakuniZumiSuu) as ChakuniZumiSuu,dcm.ChakuniSuu,
-          dcm.ChakuniMeisaiTekiyou,dcm.JANCD,
-		  dcm.ChakuniYoteiNO,dcm.ChakuniYoteiGyouNO,
+          dcm.ChakuniMeisaiTekiyou,dcm.JANCD,dcm.ChakuniYoteiNO,dcm.ChakuniYoteiGyouNO,
 		  (dcm.ChakuniYoteiNO + ' ' + cast(dcm.ChakuniYoteiGyouNO as varchar))as Chakuni,dcm.HacchuuNO,dcm.HacchuuGyouNO,
 		  (dcm.HacchuuNO+' '+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu,
-		  dcm.SiireKanryouKBN
-		  --(dcm.ChakuniYoteiNO + ' ' + cast(dcm.ChakuniYoteiGyouNO as varchar))as ChakuniYoteiNO,(dcm.HacchuuNO+' '+cast(dcm.HacchuuGyouNO as varchar)) as HacchuuGyouNO,
-		  --dcm.SiireKanryouKBN
+		  dcm.SiireKanryouKBN,FS.ShouhinCD
 
 		        from M_Message,D_Chakuni dc
 				INNER JOIN D_ChakuniMeisai dcm ON dcm.ChakuniNO=dc.ChakuniNO
                 LEFT OUTER JOIN D_ChakuniYoteiMeisai dcy ON dcy.ChakuniYoteiNO=dcm.ChakuniYoteiNO
                                                          AND  dcy.ChakuniYoteiGyouNO=dcm.ChakuniYoteiGyouNO
                 LEFT OUTER JOIN D_ChakuniYotei dc1 ON dc1.ChakuniYoteiNO=dcy.ChakuniYoteiNO
-                LEFT OUTER JOIN F_Staff(getdate()) ms ON ms.StaffCD=dc.StaffCD
+                LEFT OUTER JOIN F_Staff(@ChakuniDate) ms ON ms.StaffCD=dc.StaffCD
                 LEFT OUTER JOIN M_Souko msouko ON msouko.SoukoCD=dc.SoukoCD
+				LEFT OUTER JOIN F_Shouhin(@ChakuniDate) FS on FS.ShouhinCD=dcm.ShouhinCD
                 where MessageID='E132'
 				AND dc.ChakuniNO=@ChakuniNO
 				order by dcm.GyouHyouziJun ASC
+			
 			
 		end
 	    else
@@ -82,47 +81,28 @@ begin
 	   end
 	else
 	   begin
-	   --select
-				--dc.*,M_Message.*,dcy.BrandCD,
-				--ms.StaffName,msouko.SoukoName,dcm.ShouhinCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,dc1.ChakuniYoteiDate,dcy.ChakuniYoteiSuu,dcy.ChakuniZumiSuu,dcm.ChakuniSuu,dcm.ChakuniMeisaiTekiyou,
-    --            dcm.JANCD,dcm.ChakuniYoteiNO + ' ' + dcm.ChakuniYoteiGyouNO,dcm.HacchuuNO+' '+dcm.HacchuuGyouNO 
-		  --      from M_Message,D_Chakuni dc
-				--INNER JOIN D_ChakuniMeisai dcm ON dcm.ChakuniNO=dc.ChakuniNO
-    --            LEFT OUTER JOIN D_ChakuniYoteiMeisai dcy ON dcy.ChakuniYoteiNO=dcm.ChakuniYoteiNO
-    --                                                     AND  dcy.ChakuniYoteiGyouNO=dcm.ChakuniYoteiGyouNO
-    --            LEFT OUTER JOIN D_ChakuniYotei dc1 ON dc1.ChakuniYoteiNO=dcy.ChakuniYoteiNO
-    --            LEFT OUTER JOIN M_Staff ms ON ms.StaffCD=dc.StaffCD
-    --                                       AND ms.ChangeDate<=dc.ChakuniDate
-    --            LEFT OUTER JOIN M_Souko msouko ON msouko.SoukoCD=dc.SoukoCD
-    --            where MessageID='E132'
-				--AND dc.ChakuniNO=@ChakuniNO
-				--order by dcm.GyouHyouziJun ASC
-				--select
-				--dc.ChakuniDate,dc.SiiresakiCD,dc.SiiresakiRyakuName,dc.SiiresakiName,dc.StaffCD,dc.SoukoCD,dc.ChakuniDenpyouTekiyou,M_Message.MessageID,dcy.BrandCD,dcy.ChakuniYoteiNO,
-				--ms.StaffName,msouko.SoukoName,dcm.ShouhinCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,dcy.ChakuniYoteiSuu,dcy.ChakuniZumiSuu,dcm.ChakuniSuu,dcm.ChakuniMeisaiTekiyou,
-    --            dcm.JANCD,(dcm.ChakuniYoteiNO + ' ' + dcm.ChakuniYoteiGyouNO)as a,(dcm.HacchuuNO+' '+dcm.HacchuuGyouNO) as b 
-	      Select  convert(varchar(10), dc.ChakuniDate, 111)as ChakuniDate,dc.SiiresakiCD,dc.SiiresakiRyakuName,dc.SiiresakiName,dc.SiiresakiYuubinNO1,dc.SiiresakiYuubinNO2,dc.SiiresakiJuusho1,dc.SiiresakiJuusho2,
+	  Select  convert(varchar(10), dc.ChakuniDate, 111)as ChakuniDate,dc.SiiresakiCD,dc.SiiresakiRyakuName,dc.SiiresakiName,dc.SiiresakiYuubinNO1,dc.SiiresakiYuubinNO2,dc.SiiresakiJuusho1,dc.SiiresakiJuusho2,
 		  dc.[SiiresakiTelNO1-1],dc.[SiiresakiTelNO1-2],dc.[SiiresakiTelNO1-3],dc.[SiiresakiTelNO2-1],dc.[SiiresakiTelNO2-2],dc.[SiiresakiTelNO2-3],
           dc.StaffCD,ms.StaffName,dc.SoukoCD,msouko.SoukoName,dc.ChakuniDenpyouTekiyou,M_Message.MessageID,dcy.ChakuniYoteiNO,
-          dcm.ShouhinCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
+          FS.HinbanCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
           dc1.ChakuniYoteiDate,FLOOR(dcy.ChakuniYoteiSuu)as ChakuniYoteiSuu,FLOOR(dcy.ChakuniZumiSuu) as ChakuniZumiSuu,dcm.ChakuniSuu,
-          dcm.ChakuniMeisaiTekiyou,dcm.JANCD,
-		  --(dcm.ChakuniYoteiNO + ' ' + dcm.ChakuniYoteiGyouNO)as a,(dcm.HacchuuNO+' '+dcm.HacchuuGyouNO) as b,
-		  --dcm.SiireKanryouKBN
-		  dcm.ChakuniYoteiNO,dcm.ChakuniYoteiGyouNO,
+          dcm.ChakuniMeisaiTekiyou,dcm.JANCD,dcm.ChakuniYoteiNO,dcm.ChakuniYoteiGyouNO,
 		  (dcm.ChakuniYoteiNO + ' ' + cast(dcm.ChakuniYoteiGyouNO as varchar))as Chakuni,dcm.HacchuuNO,dcm.HacchuuGyouNO,
 		  (dcm.HacchuuNO+' '+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu,
-		  dcm.SiireKanryouKBN
+		  dcm.SiireKanryouKBN,FS.ShouhinCD
+
 		        from M_Message,D_Chakuni dc
 				INNER JOIN D_ChakuniMeisai dcm ON dcm.ChakuniNO=dc.ChakuniNO
                 LEFT OUTER JOIN D_ChakuniYoteiMeisai dcy ON dcy.ChakuniYoteiNO=dcm.ChakuniYoteiNO
                                                          AND  dcy.ChakuniYoteiGyouNO=dcm.ChakuniYoteiGyouNO
                 LEFT OUTER JOIN D_ChakuniYotei dc1 ON dc1.ChakuniYoteiNO=dcy.ChakuniYoteiNO
-                LEFT OUTER JOIN F_Staff(getdate()) ms ON ms.StaffCD=dc.StaffCD
+                LEFT OUTER JOIN F_Staff(@ChakuniDate) ms ON ms.StaffCD=dc.StaffCD
                 LEFT OUTER JOIN M_Souko msouko ON msouko.SoukoCD=dc.SoukoCD
+				LEFT OUTER JOIN F_Shouhin(@ChakuniDate) FS on FS.ShouhinCD=dcm.ShouhinCD
                 where MessageID='E132'
 				AND dc.ChakuniNO=@ChakuniNO
 				order by dcm.GyouHyouziJun ASC
+			
 	   end
 	end
 		

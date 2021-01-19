@@ -379,7 +379,7 @@
             this.lbl_MajorSuppliers.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_MajorSuppliers.Location = new System.Drawing.Point(240, 390);
             this.lbl_MajorSuppliers.Name = "lbl_MajorSuppliers";
-            this.lbl_MajorSuppliers.Size = new System.Drawing.Size(200, 19);
+            this.lbl_MajorSuppliers.Size = new System.Drawing.Size(300, 19);
             this.lbl_MajorSuppliers.TabIndex = 84;
             this.lbl_MajorSuppliers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -451,7 +451,7 @@
             this.lbl_BrandCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_BrandCD.Location = new System.Drawing.Point(240, 190);
             this.lbl_BrandCD.Name = "lbl_BrandCD";
-            this.lbl_BrandCD.Size = new System.Drawing.Size(200, 19);
+            this.lbl_BrandCD.Size = new System.Drawing.Size(300, 19);
             this.lbl_BrandCD.TabIndex = 78;
             this.lbl_BrandCD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 

@@ -94,6 +94,7 @@
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Search.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Select_Check.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Update.sql" />
+    <Content Include="StoreProcedure\ChakuniYotei_DataCheck.sql" />
     <Content Include="StoreProcedure\CSV_M_Kouriten_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_Shouhin_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_ShukkaTorikomi_CUD.sql" />
@@ -103,7 +104,9 @@
     <Content Include="StoreProcedure\D_ChakuniYotei_Display.sql" />
     <Content Include="StoreProcedure\D_Exclusive_Delete.sql" />
     <Content Include="StoreProcedure\D_Exclusive_Insert.sql" />
+    <Content Include="StoreProcedure\D_Exclusive_Lock_Check.sql" />
     <Content Include="StoreProcedure\Fnc_GetDenpyouNO.sql" />
+    <Content Include="StoreProcedure\Fnc_GetNumber.sql" />
     <Content Include="StoreProcedure\Fnc_Hikiate.sql" />
     <Content Include="StoreProcedure\F_Authorizations.sql" />
     <Content Include="StoreProcedure\F_AuthorizationsDetails.sql" />
@@ -168,7 +171,6 @@
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_Insert.sql" />
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_IUD.sql" />
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_Update.sql" />
-    <Content Include="StoreProcedure\Shukkasizi_Price.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Check.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Error_Check.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Select_Check.sql" />
@@ -176,7 +178,6 @@
     <Content Include="StoreProcedure\Shukka_Price.sql" />
     <Content Include="StoreProcedure\Siiresaki_Search.sql" />
     <Content Include="StoreProcedure\Siiresaki_Select_Check.sql" />
-    <Content Include="StoreProcedure\SKSZ_D_Exclusive_Insert_Value.sql" />
     <Content Include="StoreProcedure\SMENU.sql" />
     <Content Include="StoreProcedure\SMENU_Origianl.sql" />
     <Content Include="StoreProcedure\Souko_Search.sql" />

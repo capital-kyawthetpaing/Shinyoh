@@ -28,8 +28,26 @@ namespace Shinyoh_Search
                 Search();               
             }
             if (e.KeyCode == Keys.Enter)
-            {              
-                base.OnKeyDown(e);
+            {
+                //to show search screen when user press enter in searchbox
+                if (this.TopLevelControl != null && string.IsNullOrEmpty(CD) && string.IsNullOrEmpty(this.Text))
+                {
+                    Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                    if (ctrlArr.Length > 0)
+                    {
+                        Control btnF9 = ctrlArr[0];
+                        if (btnF9.Visible == true && this.E102 == true)
+                            Search();
+                        else
+                            base.OnKeyDown(e);
+                    }
+                    else
+                        base.OnKeyDown(e);
+                }
+                else
+                    base.OnKeyDown(e);
+
+                //base.OnKeyDown(e);
                 if (string.IsNullOrWhiteSpace(this.Text))
                 {
                     if(lblName != null)
@@ -66,12 +84,15 @@ namespace Shinyoh_Search
                         break;
                 }
                 DataTable dt = this.IsDatatableOccurs;
-                if (dt.Rows.Count > 0)
+                if(dt != null)
                 {
-                    if(lblName!=null)
+                    if (dt.Rows.Count > 0)
                     {
-                        if(dt.Columns.Contains(colName))
-                        lblName.Text = dt.Rows[0][colName].ToString();
+                        if (lblName != null)
+                        {
+                            if (dt.Columns.Contains(colName))
+                                lblName.Text = dt.Rows[0][colName].ToString();
+                        }
                     }
                 }                   
             }
@@ -229,8 +250,8 @@ namespace Shinyoh_Search
                         SendKeys.Send("{ENTER}");
                     }
                 }
-                
 
+                //CD = string.Empty;            // For enter case to show search screen
                 
 
                 ////for combo box

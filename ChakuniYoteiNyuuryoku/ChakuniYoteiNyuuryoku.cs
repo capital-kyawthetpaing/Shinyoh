@@ -89,7 +89,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
-                    //txtChakuniYoteiNO.E102Check(true);
+                    txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -97,7 +97,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnUpdate.Visible = true;
                     break;
                 case Mode.Delete:
-                    //txtChakuniYoteiNO.E102Check(true);
+                    txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -105,7 +105,7 @@ namespace ChakuniYoteiNyuuryoku
                     btnDelete.Visible = true;
                     break;
                 case Mode.Inquiry:
-                    //txtChakuniYoteiNO.E102Check(true);
+                    txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
@@ -306,7 +306,7 @@ namespace ChakuniYoteiNyuuryoku
             dr["ShouhinCD"] = string.IsNullOrEmpty(txtShouhinCD.Text) ? null : txtShouhinCD.Text;
             dr["ShouhinName"] = string.IsNullOrEmpty(txtShouhinName.Text) ? null : txtShouhinName.Text;
             dr["JANCD"] = string.IsNullOrEmpty(txtJANCD.Text) ? null : txtJANCD.Text;
-            dr["YearTerm"] = txtYearTerm.Text;
+            dr["YearTerm"] = string.IsNullOrEmpty(txtYearTerm.Text) ? null : txtYearTerm.Text;
             dr["SeasonSS"] = chkSS.Checked ? "1" : "0";
             dr["SeasonFW"] = chkFW.Checked ? "1" : "0";
             dr["ColorNO"] = string.IsNullOrEmpty(txtColor.Text) ? null : txtColor.Text;
@@ -371,6 +371,9 @@ namespace ChakuniYoteiNyuuryoku
             cf.Clear(PanelDetail);
             cf.EnablePanel(PanelTitle);
             cf.DisablePanel(PanelDetail);
+            lblSiiresaki.Text = string.Empty;
+            lblStaff.Text = string.Empty;
+            lblWareHouse.Text = string.Empty;
             txtChakuniYoteiNO.Focus();
         }
         private void New_Mode()
@@ -393,6 +396,7 @@ namespace ChakuniYoteiNyuuryoku
             soukoEntity = soukoBL.GetSoukoEntity(soukoEntity);
             txtSouko.Text = soukoEntity.SoukoCD;
             lblWareHouse.Text = soukoEntity.SoukoName;
+            lblSiiresaki.Text = string.Empty;
         }
         private bool Temp_Null()
         {
@@ -428,7 +432,7 @@ namespace ChakuniYoteiNyuuryoku
                 ChakuniYoteiNO = txtChakuniYoteiNO.Text,
                 ChakuniYoteiDate = txtDate.Text,
                 BrandCD = txtBrandCD.Text,
-                ShouhinCD = txtShouhinCD.Text,
+                HinbanCD = txtShouhinCD.Text,
                 ShouhinName = txtShouhinName.Text,
                 JANCD = txtJANCD.Text,
                 YearTerm = txtYearTerm.Text,
@@ -449,8 +453,6 @@ namespace ChakuniYoteiNyuuryoku
         {
             chkEntity = GetData();
             dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-            //dtmain.Columns.Remove("HacchuuNO");
-            //dtmain.Columns.Remove("HacchuuGyouNO");
             return dtmain;
         }
         private DataTable CreateTable()
@@ -782,6 +784,21 @@ namespace ChakuniYoteiNyuuryoku
             {
                 Temp_Save(e.RowIndex);
             }
+        }
+
+        private void txtNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChakuniYoteiNyuuryokuEntity chkEntity = new ChakuniYoteiNyuuryokuEntity()
+            {
+                KanriNO = txtNumber.Text
+            };
+             DataTable dt = cbl.ChakuniYoteiDataCheck(chkEntity);
+            if(dt.Rows.Count>0)
+            {
+                bbl.ShowMessage("Q325");
+                txtNumber.Focus();
+            }
+
         }
     }
 }
