@@ -237,6 +237,7 @@ namespace MasterTouroku_Shouhin
                             chk_val = "create_update";
                         else chk_val = "delete";
                         bl.CSV_M_Shouhin_CUD(Xml, chk_val);
+                        bbl.ShowMessage("I002");
                     }
                 }
             }
@@ -249,12 +250,15 @@ namespace MasterTouroku_Shouhin
                     {
                         case "1":
                             ChangeMode(Mode.New);
+                            bbl.ShowMessage("I102");
                             break;
                         case "2":
                             ChangeMode(Mode.Update);
+                            bbl.ShowMessage("I102");
                             break;
                         case "3":
                             ChangeMode(Mode.Delete);
+                            bbl.ShowMessage("I102");
                             break;
                         case "4":
                             ChangeMode(Mode.Inquiry);
@@ -463,6 +467,7 @@ namespace MasterTouroku_Shouhin
 
         private string GetFileData()
         {
+            string error = "false";
             var filePath = string.Empty;
             ShouhinEntity obj = new ShouhinEntity();
             string Xml = string.Empty;
@@ -482,7 +487,7 @@ namespace MasterTouroku_Shouhin
                     var bl_list = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
                     {
-                        string error = "false";
+                        error = "false";
                         var data = csvRows[i].Split(',');
                         DataRow dr = create_dt.NewRow();
                         for (int j = 0; j < data.Length; j++)
@@ -502,18 +507,24 @@ namespace MasterTouroku_Shouhin
                         string[] ByteCheck_Msg = { "商品CD桁数エラー", "品番CD桁数エラー", "商品名桁数エラー", "略名桁数エラー", "カナ名桁数エラー", "JANCD桁数エラー", "年度桁数エラー", "シーズンSS桁数エラー", "シーズンFW桁数エラー", "単位CD桁数エラー", "ブランドCD桁数エラー", "カラーNO桁数エラー", "サイズNO桁数エラー", "主要仕入先CD桁数エラー", "備考桁数エラー" };
                         string[] ValueCheck_List = { "2", "19", "20", "21" };
                         string[] ValueCheck_Amt = { "1", "2", "2", "1" };
+                        string[] ValueCheck_Msg = { "項目:諸口区分", "項目:税率区分", "項目:在庫評価区分", "項目:在庫管理区分" };
                         string[] DateCheck_List = { "1", "23", "24" };
+                        string[] DateCheck_Msg = { "項目:改定日", "項目:取扱終了日", "項目:販売停止日" };
                         string[] NonNumeric_List = { "16", "17", "18", "27" };
+                        string[] NonNumeric_Msg = { "項目:上代単価", "項目:下代単価", "項目:標準原価単価", "項目:FOB" };
                         string InputValue_Msg = "入力可能値外エラー";
                         string[] MasterCheck_List = { "12", "13", "14", "15", "22" };
                         string[] MasterCheck_ID = { "102", "103", "104", "105" };
                         string[] MasterCheck_Msg = { "単位CD未登録エラー", "ブランドCD未登録エラー", "カラーNO未登録エラー", "サイズNO未登録エラー", "主要仕入先CD未登録エラー" };
 
-                        for(int nc = 0; nc < NullCheck_List.Length; nc++)
+                        for (int nc = 0; nc < NullCheck_List.Length; nc++)
                         {
                             int ncl_index = Convert.ToInt32(NullCheck_List[nc].ToString());
                             if (Null_Check(data[ncl_index].ToString(), i, NullCheck_Msg[nc].ToString()))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         for (int bc = 0; bc < ByteCheck_List.Length; bc++)
@@ -522,29 +533,44 @@ namespace MasterTouroku_Shouhin
                             int bcl_index = Convert.ToInt32(bcl[0]);
                             int bcl_len = Convert.ToInt32(bcl[1]);
                             if (Byte_Check(bcl_len, data[bcl_index].ToString(), i, ByteCheck_Msg[bc].ToString()))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         for (int vc = 0; vc < ValueCheck_List.Length; vc++)
                         {
                             int vcl_index = Convert.ToInt32(ValueCheck_List[vc].ToString());
                             int vc_Amount = Convert.ToInt32(ValueCheck_Amt[vc].ToString());
-                            if (Value_Check(data[vcl_index].ToString(), i, vc_Amount, InputValue_Msg))
+                            string vc_msg = ValueCheck_Msg[vc].ToString();
+                            if (Value_Check(data[vcl_index].ToString(), i, vc_Amount, InputValue_Msg, vc_msg))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         for(int dc = 0; dc < DateCheck_List.Length; dc++)
                         {
                             int dcl_index = Convert.ToInt32(DateCheck_List[dc].ToString());
-                            if (Date_Check(data[dcl_index].ToString(), i, InputValue_Msg))
+                            string dc_msg = DateCheck_Msg[dc].ToString();
+                            if (Date_Check(data[dcl_index].ToString(), i, InputValue_Msg, dc_msg))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         for(int nn = 0; nn < NonNumeric_List.Length; nn++)
                         {
                             int nnl_index = Convert.ToInt32(NonNumeric_List[nn].ToString());
-                            if (NonNumeric_Check(data[nnl_index].ToString(), i, InputValue_Msg))
+                            string nn_msg = NonNumeric_Msg[nn].ToString();
+                            if (NonNumeric_Check(data[nnl_index].ToString(), i, InputValue_Msg, nn_msg))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         for(int mc = 0; mc < MasterCheck_List.Length; mc++)
@@ -566,18 +592,27 @@ namespace MasterTouroku_Shouhin
                             }
 
                             if (Master_Check(CD_ID, Key_Date, type, i, MasterCheck_Msg[mc].ToString()))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
-                        if (ImageFile_Check(data[30].ToString(), i, "指定したパスにファイルが存在しないエラー"))
+                        if (ImageFile_Check(data[30].ToString(), i, "指定したパスに画像ファイルが存在しないエラー"))
                             error = "true";
                         else
                             dr[30] = System.IO.File.ReadAllBytes(data[30].ToString());
 
                         dr["Error"] = error;
                         create_dt.Rows.Add(dr);
+                    
+                    StopProcess: if (error == "true")
+                            break;
                     }
-                    Xml = cf.DataTableToXml(create_dt);
+                    if (error == "false")
+                        Xml = cf.DataTableToXml(create_dt);
+                    else
+                        Xml = string.Empty;
                 }
                 else
                 {
@@ -607,36 +642,36 @@ namespace MasterTouroku_Shouhin
             }
             return bl;
         }
-        public bool Date_Check(string csv_Date, int line_no, string error_msg)
+        public bool Date_Check(string csv_Date, int line_no, string error_msg, string dc_msg)
         {
             bl = false;
             if (!string.IsNullOrWhiteSpace(csv_Date) && csv_Date != "NULL")
             {
                 if (!cf.CheckDateValue(csv_Date))
                 {
-                    bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg, dc_msg);
                     bl = true;
                 }
             }
             return bl;
         }
-        public bool Value_Check(string obj_text, int line_no, int Amount, string error_msg)
+        public bool Value_Check(string obj_text, int line_no, int Amount, string error_msg, string vc_msg)
         {
             bl = false;
             int n;
             if(!int.TryParse(obj_text, out n))
             {
-                bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                bbl.ShowMessage("E276", line_no.ToString(), error_msg, vc_msg);
                 bl = true;
             }
             else if ((Convert.ToInt32(obj_text) < 0) || (Convert.ToInt32(obj_text) > Amount))
             {
-                bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                bbl.ShowMessage("E276", line_no.ToString(), error_msg, vc_msg);
                 bl = true;
             }
             return bl;
         }
-        public bool NonNumeric_Check(string obj_text, int line_no, string error_msg)
+        public bool NonNumeric_Check(string obj_text, int line_no, string error_msg, string nn_msg)
         {
             bl = false;
             int n;
@@ -645,7 +680,7 @@ namespace MasterTouroku_Shouhin
             {
                 if(!decimal.TryParse(obj_text, out d))
                 {
-                    bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg, nn_msg);
                     bl = true;
                 }
             }

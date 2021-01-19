@@ -8,8 +8,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
+-- Author:		Swe Swe
+-- Create date: <19-01-2021>
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Data_Select]
@@ -105,20 +105,22 @@ end
 
 if @Type=2--Data Area Detail
 begin
-	SELECT SKMS.ShouhinCD		--商品コード
+	SELECT 
+	--SKMS.ShouhinCD	
+	FS.HinbanCD	as ShouhinCD--商品コード
 	,SKMS.ShouhinName	--商品名
 	,SKMS.ColorRyakuName --カラー略名
 	,SKMS.ColorNO		 --カラーNO
 	,SKMS.SizeNO		 --サイズNO
 	,FLOOR(JCMS.JuchuuSuu) as JuchuuSuu		--受注数
 	,ISNULL(FLOOR(SKKNS.ShukkanouSuu)+FLOOR(SKMS.ShukkaSiziSuu),'0') AS ShukkanouSuu--出荷可能数
-	,ISNULL(FLOOR(JCMS.ShukkaSiziZumiSuu),'0') AS ShukkaSiziZumiSuu --出荷指示済数
-	,ISNULL(FLOOR(SKMS.ShukkaSiziSuu),'0') as KonkaiShukkaSiziSuu		 --今回出荷指示数
-	,ISNULL(FLOOR(SKMS.UriageTanka),'0') AS UriageTanka	 --単価
+	,ISNULL(FLOOR(JCMS.ShukkaSiziZumiSuu),'0') AS ShukkaSiziZumiSuu  --出荷指示済数
+	,ISNULL(FLOOR(SKMS.ShukkaSiziSuu),'0') as KonkaiShukkaSiziSuu	 --今回出荷指示数
+	,ISNULL(FLOOR(SKMS.UriageTanka),'0') AS UriageTanka		 --単価
 	,ISNULL(FLOOR(SKMS.UriageKingaku),'0') AS UriageKingaku	--金額
 	,0 as Kanryo --完了
-	,SKMS.ShukkaSiziMeisaiTekiyou --明細摘要
-	,(SKMS.JuchuuNO+' - '+cast(SKMS.JuchuuGyouNO as varchar)) AS SKMSNO --受注番号-行番号
+	,SKMS.ShukkaSiziMeisaiTekiyou  --明細摘要
+	,(SKMS.JuchuuNO+' - '+cast(SKMS.JuchuuGyouNO as varchar)) AS SKMSNO  --受注番号-行番号
 	,SKMS.SoukoCD		--倉庫コード
 	,MS.SoukoName		--倉庫名
 	--hidden fields
@@ -126,16 +128,17 @@ begin
 	,SKMS.KouritenCD	--小売店
 	,SKMS.KouritenRyakuName--小売店略名
 	,SKMS.KouritenName	--小売店名
-	,SKMS.KouritenYuubinNO1	--小売店郵便番号1
-	,SKMS.KouritenYuubinNO2	--小売店郵便番号2
-	,SKMS.KouritenJuusho1	--小売店住所1
-	,SKMS.KouritenJuusho2	--小売店住所2
+	,SKMS.KouritenYuubinNO1		--小売店郵便番号1
+	,SKMS.KouritenYuubinNO2		--小売店郵便番号2
+	,SKMS.KouritenJuusho1		--小売店住所1
+	,SKMS.KouritenJuusho2		--小売店住所2
 	,SKMS.[KouritenTelNO1-1]	--小売店電話番号1-1
 	,SKMS.[KouritenTelNO1-2]	--小売店電話番号1-2
 	,SKMS.[KouritenTelNO1-3]	--小売店電話番号1-3
 	,SKMS.[KouritenTelNO2-1]	--小売店電話番号2-1
 	,SKMS.[KouritenTelNO2-2]	--小売店電話番号2-2
 	,SKMS.[KouritenTelNO2-3]	--小売店電話番号2-3
+	,FS.ShouhinCD as Hidden_ShouhinCD--商品コード_更新用
 	FROM D_ShukkaSizi SK						--Table1
 	inner join D_ShukkaSiziMeisai SKMS			--Table2
 	on SKMS.ShukkaSiziNO=SK.ShukkaSiziNO
@@ -149,6 +152,7 @@ begin
 	on FS.StaffCD=SK.StaffCD
 	left outer join M_Souko MS					--Table6
 	on MS.SoukoCD=SKMS.SoukoCD
+	left outer join F_Shouhin(@ShippingDate) FS ON FS.ShouhinCD=SKMS.ShouhinCD --Table7
 	where SK.ShukkaSiziNO=@ShippingNo
 	order by SKMS.GyouHyouziJun ASC
 

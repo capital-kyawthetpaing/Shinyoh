@@ -112,12 +112,25 @@ namespace BL
             parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
             return ckmdl.InsertUpdateDeleteData("ShukkasiziNyuuryoku_IUD", GetConnectionString(), parameters);
         }
-        public string SKSZ_D_Exclusive_Insert_Value(string xml)
+        public DataTable  SKSZ_D_Exclusive_Insert_Value(string xml)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[1];
             parameters[0] = new SqlParameter("@Display_XML", SqlDbType.Xml) { Value =xml};
-            return ckmdl.InsertUpdateDeleteData("SKSZ_D_Exclusive_Insert_Value", GetConnectionString(), parameters);
+            DataTable dt = ckmdl.SelectDatatable("SKSZ_D_Exclusive_Insert_Value", GetConnectionString(), parameters);
+            return dt;
+        }
+
+        public DataTable D_Exclusive_Lock_Check(ShukkaSiziNyuuryokuEntity se)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@JuchuuNO", SqlDbType.VarChar) { Value = se.JuchuuNO };
+            parameters[1] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = se.OperatorCD };
+            parameters[2] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
+            parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
+            DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Lock_Check", GetConnectionString(), parameters);
+            return dt;
         }
         public string Shukkasizi_Price( string shukkasizisuu, string JuchuuNO,string ShouhinCD ,string SoukoCD)
         {

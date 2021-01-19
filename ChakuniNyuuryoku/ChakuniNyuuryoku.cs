@@ -443,7 +443,7 @@ namespace ChakuniNyuuryoku
             ChakuniNO = txtArrivalNO.Text,
             ChakuniDate = txtArrivalDate.Text,
             ChakuniYoteiNO = txtScheduled.Text,
-            ShouhinCD = txtShouhinCD.Text,
+            HinbanCD = txtShouhinCD.Text,
             ShouhinName = txtShouhinName.Text,
             JANCD = txtJANCD.Text,
             BrandCD = sbBrand.Text,
@@ -559,7 +559,6 @@ namespace ChakuniNyuuryoku
         {
             chkEntity = GetEntity();
             dtmain = cbl.ChakuniNyuuryoku_Display(chkEntity);
-
             return dtmain;
         }
         private void btnSave_Click(object sender, EventArgs e)

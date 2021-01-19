@@ -1,5 +1,5 @@
 ﻿ BEGIN TRY 
- Drop Function dbo.[Get_Shouhin_ExportData]
+ Drop Procedure dbo.[Get_Shouhin_ExportData]
 END try
 BEGIN CATCH END CATCH 
 SET ANSI_NULLS ON
@@ -8,10 +8,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- ================================================
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
+
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>

@@ -34,7 +34,7 @@ namespace BL
         public DataTable ChakuniYoteiNyuuryoku_Display(ChakuniYoteiNyuuryokuEntity cyn)
         {
             CKMDL ckmdl = new CKMDL();
-            cyn.Sqlprms = new SqlParameter[15];
+            cyn.Sqlprms = new SqlParameter[16];
             cyn.Sqlprms[0] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = cyn.BrandCD };
             cyn.Sqlprms[1] = new SqlParameter("@HinbanCD", SqlDbType.VarChar) { Value = cyn.HinbanCD };
             cyn.Sqlprms[2] = new SqlParameter("@JANCD", SqlDbType.VarChar) { Value = cyn.JANCD };
@@ -50,6 +50,7 @@ namespace BL
             cyn.Sqlprms[12] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cyn.OperatorCD };
             cyn.Sqlprms[13] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cyn.ProgramID };
             cyn.Sqlprms[14] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cyn.PC };
+            cyn.Sqlprms[15] = new SqlParameter("@ChakuniYoteiDate", SqlDbType.VarChar) { Value = cyn.ChakuniYoteiDate };
             DataTable dt = ckmdl.SelectDatatable("ChakuniYoteiNyuuryoku_Display", GetConnectionString(), cyn.Sqlprms);
             return dt;
         }
