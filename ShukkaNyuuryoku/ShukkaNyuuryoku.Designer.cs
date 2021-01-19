@@ -176,9 +176,9 @@
             this.PanelDetail.Controls.Add(this.txtDenpyou);
             this.PanelDetail.Controls.Add(this.lblDenpyou);
             this.PanelDetail.Controls.Add(this.lblStaffCD);
-            this.PanelDetail.Location = new System.Drawing.Point(9, 78);
+            this.PanelDetail.Location = new System.Drawing.Point(2, 78);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1600, 800);
+            this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
             this.PanelDetail.TabIndex = 1;
             // 
             // txtStaff
@@ -797,7 +797,7 @@
             this.JuchuuNOGyouNO});
             this.gvShukka1.Location = new System.Drawing.Point(25, 248);
             this.gvShukka1.Name = "gvShukka1";
-            this.gvShukka1.Size = new System.Drawing.Size(1565, 200);
+            this.gvShukka1.Size = new System.Drawing.Size(1565, 300);
             this.gvShukka1.TabIndex = 35;
             this.gvShukka1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvShukka1_CellEndEdit);
             // 
@@ -1082,7 +1082,7 @@
             // 
             // colShouhin
             // 
-            this.colShouhin.DataPropertyName = "ShouhinCD";
+            this.colShouhin.DataPropertyName = "HinbanCD";
             this.colShouhin.HeaderText = "商品";
             this.colShouhin.Name = "colShouhin";
             this.colShouhin.ReadOnly = true;

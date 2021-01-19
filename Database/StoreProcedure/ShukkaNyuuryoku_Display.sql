@@ -66,17 +66,18 @@ BEGIN
 
 	if (@Condition = 1)
 	begin
-		select DSM.JANCD,DSM.ShouhinCD,DSM.ShouhinName,DSM.ColorRyakuName,DSM.ColorNO,DSM.SizeNO,(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu) as ShukkaSiziZumiSuu,
-			   WK.MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + WK.MiNyuukaSuu)),'0') as ShukkaSuu,null as Kanryou,null as ShukkaMeisaiTekiyou,--譏守ｴｰ鞫倩ｦ・
+			select DSM.JANCD,FS.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,DSM.ColorNO,DSM.SizeNO,(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu) as ShukkaSiziZumiSuu,
+			   WK.MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + WK.MiNyuukaSuu)),'0') as ShukkaSuu,0 as Kanryou,null as ShukkaMeisaiTekiyou,--譏守ｴｰ鞫倩ｦ・
 			   (DSM.ShukkaSiziNO + '-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,
 			   --hidden field
-			   DS.TokuisakiCD,DSM.KouritenCD,DS.DenpyouDate,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM.SoukoCD
+			   DS.TokuisakiCD,DSM.KouritenCD,DS.DenpyouDate,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM.SoukoCD,FS.ShouhinCD
 
 		from D_ShukkaSizi DS
 		inner join D_ShukkaSiziMeisai DSM on DSM.ShukkaSiziNO = DS.ShukkaSiziNO
 		left outer join #WK_MiNyuukaSuu2	WK on WK.ShukkaSiziNO = DSM.ShukkaSiziNO and WK.ShukkaSiziGyouNO=DSM.ShukkaSiziGyouNO	
 		left outer join F_Tokuisaki(@ChangeDate) FT on FT.TokuisakiCD = DS.TokuisakiCD
 		left outer join F_Kouriten(@ChangeDate) FK on FK.KouritenCD = DSM.KouritenCD
+		left outer join F_Shouhin(@ChangeDate) FS on FS.ShouhinCD = DSM.ShouhinCD
 		where (@TokuisakiCD is null or(DS.TokuisakiCD=@TokuisakiCD))  
 		and (@ShukkaSiziNO is null or(DS.ShukkaSiziNO=@ShukkaSiziNO))  
 		and	DSM.ShukkaKanryouKBN =0
@@ -95,17 +96,18 @@ BEGIN
 	end
 	else 
 	begin
-		select DSM.JANCD,DSM.ShouhinCD,DSM.ShouhinName,DSM.ColorRyakuName,DSM.ColorNO,DSM.SizeNO,(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu) as ShukkaSiziZumiSuu,
-			   WK.MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + WK.MiNyuukaSuu)),'0') as ShukkaSuu,null as Kanryou,null as ShukkaMeisaiTekiyou,--譏守ｴｰ鞫倩ｦ・
+		select DSM.JANCD,FS.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,DSM.ColorNO,DSM.SizeNO,(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu) as ShukkaSiziZumiSuu,
+			   WK.MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + WK.MiNyuukaSuu)),'0') as ShukkaSuu,0 as Kanryou,null as ShukkaMeisaiTekiyou,--譏守ｴｰ鞫倩ｦ・
 			   (DSM.ShukkaSiziNO + '-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,
 			   --hidden field
-			   DS.TokuisakiCD,DSM.KouritenCD,DS.DenpyouDate,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM.SoukoCD
+			   DS.TokuisakiCD,DSM.KouritenCD,DS.DenpyouDate,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM.SoukoCD,FS.ShouhinCD
 
 		from D_ShukkaSizi DS
 		inner join D_ShukkaSiziMeisai DSM on DSM.ShukkaSiziNO = DS.ShukkaSiziNO
 		left outer join #WK_MiNyuukaSuu2	WK on WK.ShukkaSiziNO = DSM.ShukkaSiziNO and WK.ShukkaSiziGyouNO=DSM.ShukkaSiziGyouNO	
 		left outer join F_Tokuisaki(@ChangeDate) FT on FT.TokuisakiCD = DS.TokuisakiCD
 		left outer join F_Kouriten(@ChangeDate) FK on FK.KouritenCD = DSM.KouritenCD
+		left outer join F_Shouhin(@ChangeDate) FS on FS.ShouhinCD = DSM.ShouhinCD
 		where (@TokuisakiCD is null or(DS.TokuisakiCD=@TokuisakiCD))  
 		and (@ShukkaSiziNO is null or(DS.ShukkaSiziNO=@ShukkaSiziNO))  
 		and	DSM.ShukkaKanryouKBN =0
