@@ -10,8 +10,8 @@ GO
 -- ================================================
 
 -- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
+-- Author:		Swe Swe
+-- Create date: <19-01-2021>
 -- Description:	<Description,,>
 -- =============================================
 CREATE  PROCEDURE [dbo].[Get_Shouhin_ExportData]
