@@ -467,6 +467,7 @@ namespace MasterTouroku_Shouhin
 
         private string GetFileData()
         {
+            string error = "false";
             var filePath = string.Empty;
             ShouhinEntity obj = new ShouhinEntity();
             string Xml = string.Empty;
@@ -486,7 +487,7 @@ namespace MasterTouroku_Shouhin
                     var bl_list = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
                     {
-                        string error = "false";
+                        error = "false";
                         var data = csvRows[i].Split(',');
                         DataRow dr = create_dt.NewRow();
                         for (int j = 0; j < data.Length; j++)
@@ -516,11 +517,14 @@ namespace MasterTouroku_Shouhin
                         string[] MasterCheck_ID = { "102", "103", "104", "105" };
                         string[] MasterCheck_Msg = { "単位CD未登録エラー", "ブランドCD未登録エラー", "カラーNO未登録エラー", "サイズNO未登録エラー", "主要仕入先CD未登録エラー" };
 
-                        for(int nc = 0; nc < NullCheck_List.Length; nc++)
+                        for (int nc = 0; nc < NullCheck_List.Length; nc++)
                         {
                             int ncl_index = Convert.ToInt32(NullCheck_List[nc].ToString());
                             if (Null_Check(data[ncl_index].ToString(), i, NullCheck_Msg[nc].ToString()))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         for (int bc = 0; bc < ByteCheck_List.Length; bc++)
@@ -529,7 +533,10 @@ namespace MasterTouroku_Shouhin
                             int bcl_index = Convert.ToInt32(bcl[0]);
                             int bcl_len = Convert.ToInt32(bcl[1]);
                             if (Byte_Check(bcl_len, data[bcl_index].ToString(), i, ByteCheck_Msg[bc].ToString()))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         for (int vc = 0; vc < ValueCheck_List.Length; vc++)
@@ -538,7 +545,10 @@ namespace MasterTouroku_Shouhin
                             int vc_Amount = Convert.ToInt32(ValueCheck_Amt[vc].ToString());
                             string vc_msg = ValueCheck_Msg[vc].ToString();
                             if (Value_Check(data[vcl_index].ToString(), i, vc_Amount, InputValue_Msg, vc_msg))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         for(int dc = 0; dc < DateCheck_List.Length; dc++)
@@ -546,7 +556,10 @@ namespace MasterTouroku_Shouhin
                             int dcl_index = Convert.ToInt32(DateCheck_List[dc].ToString());
                             string dc_msg = DateCheck_Msg[dc].ToString();
                             if (Date_Check(data[dcl_index].ToString(), i, InputValue_Msg, dc_msg))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         for(int nn = 0; nn < NonNumeric_List.Length; nn++)
@@ -554,7 +567,10 @@ namespace MasterTouroku_Shouhin
                             int nnl_index = Convert.ToInt32(NonNumeric_List[nn].ToString());
                             string nn_msg = NonNumeric_Msg[nn].ToString();
                             if (NonNumeric_Check(data[nnl_index].ToString(), i, InputValue_Msg, nn_msg))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         for(int mc = 0; mc < MasterCheck_List.Length; mc++)
@@ -576,7 +592,10 @@ namespace MasterTouroku_Shouhin
                             }
 
                             if (Master_Check(CD_ID, Key_Date, type, i, MasterCheck_Msg[mc].ToString()))
+                            {
                                 error = "true";
+                                goto StopProcess;
+                            }
                         }
 
                         if (ImageFile_Check(data[30].ToString(), i, "指定したパスに画像ファイルが存在しないエラー"))
@@ -586,8 +605,14 @@ namespace MasterTouroku_Shouhin
 
                         dr["Error"] = error;
                         create_dt.Rows.Add(dr);
+                    
+                    StopProcess: if (error == "true")
+                            break;
                     }
-                    Xml = cf.DataTableToXml(create_dt);
+                    if (error == "false")
+                        Xml = cf.DataTableToXml(create_dt);
+                    else
+                        Xml = string.Empty;
                 }
                 else
                 {
