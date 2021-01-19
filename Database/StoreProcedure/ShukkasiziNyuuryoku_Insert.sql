@@ -28,7 +28,6 @@ declare  @idoc AS INT
 
 CREATE TABLE  [dbo].[#Temp_Header]
 				(   
-				  --[ShukkaSiziNO] varchar(12) COLLATE DATABASE_DEFAULT,
 				  [StaffCD] varchar(10) COLLATE DATABASE_DEFAULT,
 				  [ShukkaYoteiDate] varchar(10) COLLATE DATABASE_DEFAULT,
 				  [DenpyouDate] varchar(10) COLLATE DATABASE_DEFAULT,
@@ -69,7 +68,6 @@ CREATE TABLE  [dbo].[#Temp_Header]
 INSERT INTO [#Temp_Header]
 		SELECT *  FROM openxml(@idoc,'/NewDataSet/test',2)
 		with(
-				--[ShukkaSiziNO] varchar(12) ,
 				[StaffCD] varchar(10) ,
 				[ShukkaYoteiDate] varchar(10) ,
 				[DenpyouDate] varchar(10) ,
@@ -197,6 +195,7 @@ IF ISNULL(@ShukkaSiziNO,'') = ''
             BEGIN
                 print  '1' ;
             END
+
 --TabelA
 INSERT INTO [dbo].[D_ShukkaSizi]
 						(ShukkaSiziNO
@@ -482,7 +481,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	SELECT 
 	@Unique
 	,i.ShukkaSiziNO
-	,10--新規
+	,10
 	,i.StaffCD
 	,i.ShukkaYoteiDate
 	,i.DenpyouDate
@@ -587,7 +586,7 @@ SELECT
 		,j.[ShukkaSiziNO]
 		,j.[ShukkaSiziGyouNO]
 		,j.[GyouHyouziJun]
-		,10--新規
+		,10
 		,j.[KouritenCD]
 		,j.[KouritenRyakuName]
 		,j.[BrandCD]
@@ -661,7 +660,7 @@ SELECT
 [ShukkaSiziNO]
 			,[ShukkaSiziGyouNO]
 			,[ShukkaSiziShousaiNO]
-			,10 --新規
+			,10 
 			,[SoukoCD]
 			,[ShouhinCD]
 			,[ShouhinName]
@@ -681,7 +680,6 @@ SELECT
 FROM [dbo].[D_ShukkaSiziShousai]
 where ShukkaSiziNO=@ShukkaSiziNO
 
---※シート「消込順」参照
 DECLARE @Price_table TABLE (idx int Primary Key IDENTITY(1,1),
 						KonkaiShukkaSiziSuu varchar(50),
 						SKMSNO  varchar(12),ShouhinCD  varchar(50))
@@ -715,7 +713,7 @@ declare @Count as int = 1
 			END;
 
 
---Table G  --追加または修正後
+--Table G
 UPDATE  A
 SET	ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
 	,UpdateOperator=@OperatorCD
@@ -744,20 +742,19 @@ INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN
 ) as B
 ON A.JuchuuNO=B.JuchuuNO
 
---スタッフマスタ
 UPDATE M_Staff 
 set UsedFlg = 1 
 where StaffCD=@StaffCD
 and  ChangeDate = (select ChangeDate from F_Staff(@ShippingDate) where StaffCD = @StaffCD)
 
 --L_Log
-exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,'新規' ,@ShukkaSiziNO
+declare @OperatorMode varchar(50)='新規'
+exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperatorMode,@ShukkaSiziNO
 
---テーブル転送仕様Ｙ--削除
+--Table_Y
 DECLARE @JuchuuNo_table TABLE (idx int Primary Key IDENTITY(1,1), JuchuuNo varchar(20))
 			INSERT @JuchuuNo_table SELECT distinct LEFT((SKMSNO), CHARINDEX('-', (SKMSNO)) - 1) FROM #Temp_Details
 			
-			--declare @Count as int = 1(above case)
 			WHILE @Count <= (SELECT COUNT(*) FROM @JuchuuNo_table)
 			BEGIN
 			 DELETE A 
@@ -766,9 +763,7 @@ DECLARE @JuchuuNo_table TABLE (idx int Primary Key IDENTITY(1,1), JuchuuNo varch
 			 and A.Number=(select JuchuuNo from @JuchuuNo_table WHERE idx =@Count)
 		SET @Count = @Count + 1
 			END;
-
 Drop Table #Temp_Header
 Drop Table #Temp_Details
 
 END
-
