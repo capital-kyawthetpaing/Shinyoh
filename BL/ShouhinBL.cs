@@ -170,7 +170,7 @@ namespace BL
             sh_e.Sqlprms[9] = new SqlParameter("@SizeNO1", SqlDbType.VarChar) { Value = sh_e.SizeNo1 };
             sh_e.Sqlprms[10] = new SqlParameter("@SizeNO2", SqlDbType.VarChar) { Value = sh_e.SizeNo2 };
             sh_e.Sqlprms[11] = new SqlParameter("@Remarks", SqlDbType.VarChar) { Value = sh_e.Remarks };
-            sh_e.Sqlprms[12] = new SqlParameter("@Output_Type", SqlDbType.VarChar) { Value = sh_e.Output_Type };
+            sh_e.Sqlprms[12] = new SqlParameter("@Output_Type", SqlDbType.TinyInt) { Value = sh_e.Output_Type };
             sh_e.Sqlprms[13] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = sh_e.ProgramID };
             sh_e.Sqlprms[14] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = sh_e.PC };
             sh_e.Sqlprms[15] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = sh_e.InsertOperator };

@@ -295,9 +295,12 @@ namespace ShukkaSiziNyuuryoku
                 int col = dgvShukkasizi.CurrentCell.ColumnIndex;
                 SoukoSearch ss = new SoukoSearch();
                 ss.ShowDialog();
-
-                dgvShukkasizi[col, rows].Value = ss.soukoCD.ToString();
-                dgvShukkasizi[col + 1, rows].Value = ss.soukoName.ToString();
+                //pyin yan 
+                if(!string.IsNullOrEmpty(ss.soukoCD))
+                {
+                    dgvShukkasizi[col, rows].Value = ss.soukoCD.ToString();
+                    dgvShukkasizi[col + 1, rows].Value = ss.soukoName.ToString();
+                }                
                 dgvShukkasizi.MoveNextCell();               
             }
 
@@ -784,8 +787,11 @@ namespace ShukkaSiziNyuuryoku
                 SoukoSearch ss = new SoukoSearch();
                 ss.ShowDialog();
 
-                dgvShukkasizi[col, row].Value = ss.soukoCD.ToString();
-                dgvShukkasizi[col + 1, row].Value = ss.soukoName.ToString();
+                if(!string.IsNullOrEmpty(ss.soukoCD))
+                {
+                    dgvShukkasizi[col, row].Value = ss.soukoCD.ToString();
+                    dgvShukkasizi[col + 1, row].Value = ss.soukoName.ToString();
+                }
             }
         }
 
@@ -871,30 +877,28 @@ namespace ShukkaSiziNyuuryoku
                 }
             }
             return true;
-        }
-
-        
+        }        
 
         private bool Grid_ErrorCheck(int row, int col)
         {
             if (dgvShukkasizi.Columns[col].Name == "colArrivalTime")
             {
                 string value = dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString().Replace(",", "");
-                if (Convert.ToInt32(value) < 0)
+                if (Convert.ToInt64(value) < 0)
                 {
                     bbl.ShowMessage("E109");
                     return false;
                 }
-                string value1 = dgvShukkasizi.Rows[row].Cells["colShukkakanousuu"].EditedFormattedValue.ToString();
-                if (Convert.ToInt32(value) > Convert.ToInt32(value1))
+                string value1 = dgvShukkasizi.Rows[row].Cells["colShukkakanousuu"].EditedFormattedValue.ToString().Replace(",", "");
+                if (Convert.ToInt64(value) > Convert.ToInt64(value1))
                 {
                     bbl.ShowMessage("E143");
                     dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["colArrivalTime"];
                     return false;
                 }
-                string value2 = dgvShukkasizi.Rows[row].Cells["colJuchuuSuu"].EditedFormattedValue.ToString();
+                string value2 = dgvShukkasizi.Rows[row].Cells["colJuchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
                 string value3 = dgvShukkasizi.Rows[row].Cells["colShukkasizisou"].EditedFormattedValue.ToString().Replace(",","");
-                if (Convert.ToInt32(value) > (Convert.ToInt32(value2) - Convert.ToInt32(value3)))
+                if (Convert.ToInt64(value) > (Convert.ToInt64(value2) - Convert.ToInt64(value3)))
                 {
                     bbl.ShowMessage("E143");
                     return false;
