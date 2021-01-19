@@ -262,7 +262,17 @@ ON A.HacchuuNO=B.HacchuuNO
 			exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@OperateMode,@KeyItem
 
 --Delete D_Exclusive table
-            Delete from D_Exclusive where DataKBN = 16 and Number = (select ChakuniYoteiNO from #Temp_Main) 
+            DECLARE @HacchuuNO_table TABLE (idx int Primary Key IDENTITY(1,1), HacchuuNO varchar(20))
+			INSERT @HacchuuNO_table SELECT distinct HacchuuNO FROM #Temp_Detail
+			declare @Count as int = 1
+			WHILE @Count <= (SELECT COUNT(*) FROM @HacchuuNO_table)
+			BEGIN
+			  DELETE A 
+			  From D_Exclusive A
+			  where A.DataKBN=16
+			  and A.Number=(select HacchuuNO from @HacchuuNO_table WHERE idx =@Count)
+		     SET @Count = @Count + 1
+			END;
 
 
 Drop table #Temp_Main
