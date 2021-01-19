@@ -250,11 +250,11 @@ namespace MasterTouroku_Shouhin
                     {
                         case "1":
                             ChangeMode(Mode.New);
-                            bbl.ShowMessage("I102");
+                            bbl.ShowMessage("I101");
                             break;
                         case "2":
                             ChangeMode(Mode.Update);
-                            bbl.ShowMessage("I102");
+                            bbl.ShowMessage("I101");
                             break;
                         case "3":
                             ChangeMode(Mode.Delete);
