@@ -1,5 +1,5 @@
 ﻿ BEGIN TRY 
- Drop Function dbo.[Get_Shouhin_ExportData]
+ Drop Procedure dbo.[Get_Shouhin_ExportData]
 END try
 BEGIN CATCH END CATCH 
 SET ANSI_NULLS ON

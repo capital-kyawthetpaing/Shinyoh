@@ -1,5 +1,5 @@
 ﻿ BEGIN TRY 
- Drop Procedure dbo.[D_Exclusive_Insert]
+ Drop Procedure dbo.[D_Exclusive_Lock_Check]
 END try
 BEGIN CATCH END CATCH 
 SET ANSI_NULLS ON
