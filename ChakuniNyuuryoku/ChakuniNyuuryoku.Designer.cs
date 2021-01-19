@@ -1133,6 +1133,7 @@
             this.Column5.DataPropertyName = "ShouhinCD";
             this.Column5.HeaderText = "ShouhinCD";
             this.Column5.Name = "Column5";
+            this.Column5.Visible = false;
             // 
             // ChakuniNyuuryoku
             // 
