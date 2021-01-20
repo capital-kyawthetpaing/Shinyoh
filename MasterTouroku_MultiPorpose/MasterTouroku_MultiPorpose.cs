@@ -329,7 +329,12 @@ namespace MasterTouroku_MultiPorpose
                                 txtCopyID.Focus();
                             }
                         }
-                        else if(!string.IsNullOrEmpty(txtCopyID.Text) || !string.IsNullOrEmpty(txtKEYCopy.Text))
+                        else if(string.IsNullOrEmpty(txtCopyID.Text) || !string.IsNullOrEmpty(txtKEYCopy.Text))
+                        {
+                            bbl.ShowMessage("E102");
+                            txtCopyID.Focus();
+                        }
+                        else if (!string.IsNullOrEmpty(txtCopyID.Text) || string.IsNullOrEmpty(txtKEYCopy.Text))
                         {
                             bbl.ShowMessage("E102");
                             txtKEYCopy.Focus();
@@ -353,10 +358,6 @@ namespace MasterTouroku_MultiPorpose
                         txtCopyID.Focus();
                     }
                 }
-                //else if(cboMode.SelectedValue.ToString()=="2" || cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
-                //{
-                //    Disable_UDI_Mode();
-                //}
             }
         }
     }
