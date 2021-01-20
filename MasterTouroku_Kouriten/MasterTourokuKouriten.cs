@@ -145,6 +145,7 @@ namespace MasterTouroku_Kouriten
             cf.Clear(PanelTitle);
             cf.Clear(PanelDetail);
             rdo_AliasKBN1.Checked = true;
+           
             lblStaffCD_Name.Text = string.Empty;
            
 
@@ -408,11 +409,18 @@ namespace MasterTouroku_Kouriten
                 txtKouritenRyakuName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
                 txtKanaName.Text = dt.Rows[0]["KanaName"].ToString();
                 txtKensakuHyouziJun.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
-               // txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
-                
+                // txtTokuisakiCD.Text = dt.Rows[0]["TokuisakiCD"].ToString();
+
                 if (dt.Rows[0]["AliasKBN"].ToString() == "1")
+                {
                     rdo_AliasKBN1.Checked = true;
-                else rdo_AliasKBN2.Checked = true;
+                    txtKanaName.NextControlName = rdo_AliasKBN1.Name;
+                }
+                else
+                {
+                    rdo_AliasKBN2.Checked = true;
+                    txtKanaName.NextControlName = rdo_AliasKBN2.Name;
+                }
                 txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
                 txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
                 txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
@@ -527,17 +535,24 @@ namespace MasterTouroku_Kouriten
         //    }
         //}
 
-        //private void rdo_AliasKBN1_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (rdo_AliasKBN1.Checked == true)
-        //        rdo_AliasKBN2.Checked = false;
-        //}
+        private void rdo_AliasKBN1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdo_AliasKBN1.Checked == true)
+            {
+                rdo_AliasKBN2.Checked = false;
+                txtKanaName.NextControlName = rdo_AliasKBN1.Name;
+            }
+               
+        }
 
-        //private void rdo_AliasKBN2_CheckedChanged(object sender, EventArgs e)
-        //{
-        //    if (rdo_AliasKBN2.Checked == true)
-        //        rdo_AliasKBN1.Checked = false;
-        //}
+        private void rdo_AliasKBN2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdo_AliasKBN2.Checked == true)
+            {
+                rdo_AliasKBN1.Checked = false;
+                txtKanaName.NextControlName = rdo_AliasKBN2.Name;
+            }
+        }
 
         //private void btn_Copy_Click(object sender, EventArgs e)
         //{
