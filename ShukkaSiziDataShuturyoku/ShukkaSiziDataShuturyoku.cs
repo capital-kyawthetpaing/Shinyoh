@@ -82,13 +82,13 @@ namespace ShukkaSiziDataShuturyoku {
 
         private void txtBrand_KeyDown(object sender, KeyEventArgs e)
         {
-            multipurposeBL bl = new multipurposeBL();
-            string brandName = txtBrand.Text.ToString();
-            DataTable dt = bl.M_Multiporpose_SelectData(brandName, 1, string.Empty, string.Empty);
+            //multipurposeBL bl = new multipurposeBL();
+            //string brandName = txtBrand.Text.ToString();
+            //DataTable dt = bl.M_Multiporpose_SelectData(brandName, 1, string.Empty, string.Empty);
 
-            if (dt.Rows.Count > 0)
-                lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
-            else lblBrand_Name.Text = string.Empty;
+            //if (dt.Rows.Count > 0)
+            //    lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
+            //else lblBrand_Name.Text = string.Empty;
         }
         private void Clear()
         {
@@ -109,7 +109,8 @@ namespace ShukkaSiziDataShuturyoku {
             {
                 if (bbl.ShowMessage("Q205") != DialogResult.Yes)
                 {
-                    PreviousCtrl.Focus();
+                    if (PreviousCtrl != null)
+                        PreviousCtrl.Focus();
                 }
                 else
                 {
@@ -172,7 +173,8 @@ namespace ShukkaSiziDataShuturyoku {
                     else if (dt.Rows.Count == 0)
                     {
                         bbl.ShowMessage("S013");
-                        PreviousCtrl.Focus();
+                        if (PreviousCtrl != null)
+                            PreviousCtrl.Focus();
                     }
 
                 }               
