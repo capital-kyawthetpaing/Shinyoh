@@ -191,6 +191,7 @@ namespace MasterTouroku_Shouhin
             lbl_MajorSuppliers.BorderStyle = BorderStyle.None;
             pImage.ImageLocation = null;
             pImage.Image = null;
+            txtRetailPrice.Text = string.Empty;
         }
 
         public override void FunctionProcess(string tagID)
@@ -245,23 +246,20 @@ namespace MasterTouroku_Shouhin
             {
                 if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
                 {
-                    bool result = DBProcess();
+                    DBProcess();
                     switch (cboMode.SelectedValue)
                     {
                         case "1":
                             ChangeMode(Mode.New);
-                            if (result)
-                                bbl.ShowMessage("I101");
+                            bbl.ShowMessage("I101");
                             break;
                         case "2":
                             ChangeMode(Mode.Update);
-                            if (result)
-                                bbl.ShowMessage("I101");
+                            bbl.ShowMessage("I101");
                             break;
                         case "3":
                             ChangeMode(Mode.Delete);
-                            if (result)
-                                bbl.ShowMessage("I102");
+                            bbl.ShowMessage("I102");
                             break;
                         case "4":
                             ChangeMode(Mode.Inquiry);
@@ -272,7 +270,7 @@ namespace MasterTouroku_Shouhin
             base.FunctionProcess(tagID);
         }
 
-        private bool DBProcess()
+        private void DBProcess()
         {
             ShouhinEntity shouhin_entity = getShouhin();
             switch (cboMode.SelectedValue)
@@ -287,7 +285,7 @@ namespace MasterTouroku_Shouhin
                     shouhin_entity.Mode = "Delete";
                     break;
             }
-            return Shouhin_IUD(shouhin_entity);
+            Shouhin_IUD(shouhin_entity);
         }
 
         private ShouhinEntity getShouhin()
