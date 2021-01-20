@@ -171,10 +171,12 @@ namespace Shinyoh_Search
                         else if (this.Name.Contains("kubun"))
                             msearch.Access_Type = "109";
                         msearch.ShowDialog();
-                        if(this.Name== "txtID" || this.Name=="txtCopyID")
-                            CD = msearch.Id;
-                        else
-                            CD = msearch.Key;
+                        CD = msearch.Id;
+                        CDate = msearch.Key;
+                        //if(this.Name== "txtID" || this.Name=="txtCopyID")
+                        //    CD = msearch.Id;
+                        //else
+                        //    CD = msearch.Key;
                         //if (CDate != null)
                         //    CDate = msearch.Char1;
                         if (lblName != null)
