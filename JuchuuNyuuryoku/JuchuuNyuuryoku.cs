@@ -178,7 +178,7 @@ namespace JuchuuNyuuryoku
             cf.Clear(PanelDetail);
 
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(PanelDetail);
+           // cf.DisablePanel(PanelDetail);
 
             lblTokuisakiShort_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblKouriten_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;

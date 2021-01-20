@@ -303,7 +303,7 @@
             dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gv_1.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
-            this.gv_1.Size = new System.Drawing.Size(1630, 350);
+            this.gv_1.Size = new System.Drawing.Size(1630, 500);
             this.gv_1.TabIndex = 106;
             this.gv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellContentClick);
             this.gv_1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
@@ -738,7 +738,7 @@
             this.btnNameF11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnNameF11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnNameF11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNameF11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNameF11.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnNameF11.Location = new System.Drawing.Point(1595, 217);
             this.btnNameF11.Name = "btnNameF11";
             this.btnNameF11.NextControl = null;
@@ -754,7 +754,7 @@
             this.btnNameF10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnNameF10.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnNameF10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNameF10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNameF10.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnNameF10.Location = new System.Drawing.Point(1505, 217);
             this.btnNameF10.Name = "btnNameF10";
             this.btnNameF10.NextControl = this.gv_1;
@@ -770,7 +770,7 @@
             this.btnNameF8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnNameF8.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnNameF8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNameF8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnNameF8.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnNameF8.Location = new System.Drawing.Point(1411, 217);
             this.btnNameF8.Name = "btnNameF8";
             this.btnNameF8.NextControl = null;
@@ -981,7 +981,7 @@
             this.txtSenpouBusho.AllowMinus = false;
             this.txtSenpouBusho.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSenpouBusho.DecimalPlace = 0;
-            this.txtSenpouBusho.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtSenpouBusho.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtSenpouBusho.DepandOnMode = true;
             this.txtSenpouBusho.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSenpouBusho.ImeMode = System.Windows.Forms.ImeMode.NoControl;
