@@ -596,7 +596,7 @@ namespace ChakuniNyuuryoku
         private DataTable CreateTable()
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("ShouhinCD", typeof(string));
+            dt.Columns.Add("HinbanCD", typeof(string));
             dt.Columns.Add("ShouhinName", typeof(string));
             dt.Columns.Add("ColorRyakuName", typeof(string));
             dt.Columns.Add("ColorNO", typeof(string));
@@ -614,6 +614,7 @@ namespace ChakuniNyuuryoku
             dt.Columns.Add("HacchuuNO", typeof(string));
             dt.Columns.Add("HacchuuGyouNO", typeof(string));
             dt.Columns.Add("Hacchuu", typeof(string));
+            dt.Columns.Add("ShouhinCD", typeof(string));
             dt.AcceptChanges();
             return dt;
         }
