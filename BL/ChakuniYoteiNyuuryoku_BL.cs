@@ -64,16 +64,6 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("ChakuniYoteiNyuuryoku_Select_Check", GetConnectionString(), parameters);
             return dt;
         }
-        public DataTable GetChakuniYoteiNo(string SerialNO, string ChakuniYoteiDate, string SEQNO)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@SerialNO", SqlDbType.VarChar) { Value = SerialNO };
-            parameters[1] = new SqlParameter("@refDate", SqlDbType.VarChar) { Value = ChakuniYoteiDate };
-            parameters[2] = new SqlParameter("@SEQNO", SqlDbType.VarChar) { Value = SEQNO };
-            DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
-            return dt;
-        }
         public string ChakuniYoteiNyuuryoku_IUD(string mode, string xml_Main, string xml_detail)
         {
             CKMDL ckmdl = new CKMDL();

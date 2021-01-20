@@ -33,6 +33,7 @@ namespace MasterList_Tokuisaki
         private void MasterList_Tokuisaki_Load(object sender, EventArgs e)
         {
             ProgramID = "MasterList_Tokuisaki";
+
             StartProgram();
             cboMode.Bind(false, multi_Entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);

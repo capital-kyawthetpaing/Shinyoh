@@ -32,6 +32,7 @@ namespace MasterList_Siiresaki
         private void MasterList_Siiresaki_Load(object sender, EventArgs e)
         {
             ProgramID = "MasterList_Siiresaki";
+
             StartProgram();
             cboMode.Bind(false, multi_Entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
