@@ -70,10 +70,6 @@
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1485, 75);
-            // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtKEYCopy);
@@ -324,7 +320,7 @@
             this.txtIDName.NextControl = null;
             this.txtIDName.NextControlName = "txtChar1";
             this.txtIDName.SearchType = Entity.SearchType.ScType.None;
-            this.txtIDName.Size = new System.Drawing.Size(250, 19);
+            this.txtIDName.Size = new System.Drawing.Size(308, 19);
             this.txtIDName.TabIndex = 17;
             this.txtIDName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -349,7 +345,7 @@
             this.txtChar1.NextControl = null;
             this.txtChar1.NextControlName = "txtChar2";
             this.txtChar1.SearchType = Entity.SearchType.ScType.None;
-            this.txtChar1.Size = new System.Drawing.Size(581, 19);
+            this.txtChar1.Size = new System.Drawing.Size(610, 19);
             this.txtChar1.TabIndex = 18;
             this.txtChar1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -374,7 +370,7 @@
             this.txtChar2.NextControl = null;
             this.txtChar2.NextControlName = "txtChar3";
             this.txtChar2.SearchType = Entity.SearchType.ScType.None;
-            this.txtChar2.Size = new System.Drawing.Size(581, 19);
+            this.txtChar2.Size = new System.Drawing.Size(610, 19);
             this.txtChar2.TabIndex = 19;
             this.txtChar2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -399,7 +395,7 @@
             this.txtChar3.NextControl = null;
             this.txtChar3.NextControlName = "txtChar4";
             this.txtChar3.SearchType = Entity.SearchType.ScType.None;
-            this.txtChar3.Size = new System.Drawing.Size(581, 19);
+            this.txtChar3.Size = new System.Drawing.Size(610, 19);
             this.txtChar3.TabIndex = 20;
             this.txtChar3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -424,7 +420,7 @@
             this.txtChar4.NextControl = null;
             this.txtChar4.NextControlName = "txtChar5";
             this.txtChar4.SearchType = Entity.SearchType.ScType.None;
-            this.txtChar4.Size = new System.Drawing.Size(581, 19);
+            this.txtChar4.Size = new System.Drawing.Size(610, 19);
             this.txtChar4.TabIndex = 21;
             this.txtChar4.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -449,7 +445,7 @@
             this.txtChar5.NextControl = null;
             this.txtChar5.NextControlName = "txtNum1";
             this.txtChar5.SearchType = Entity.SearchType.ScType.None;
-            this.txtChar5.Size = new System.Drawing.Size(581, 19);
+            this.txtChar5.Size = new System.Drawing.Size(610, 19);
             this.txtChar5.TabIndex = 22;
             this.txtChar5.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -702,7 +698,7 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(402, 47);
+            this.sLabel6.Location = new System.Drawing.Point(512, 47);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
             this.sLabel6.TabIndex = 10;
@@ -715,7 +711,7 @@
             this.txtIDCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIDCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtIDCopy.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.txtIDCopy.Location = new System.Drawing.Point(402, 15);
+            this.txtIDCopy.Location = new System.Drawing.Point(512, 15);
             this.txtIDCopy.Name = "txtIDCopy";
             this.txtIDCopy.Size = new System.Drawing.Size(100, 19);
             this.txtIDCopy.TabIndex = 9;
@@ -738,7 +734,7 @@
             this.txtKEYCopy.IsRequire = false;
             this.txtKEYCopy.IsUseInitializedLayout = true;
             this.txtKEYCopy.lblName = null;
-            this.txtKEYCopy.Location = new System.Drawing.Point(502, 47);
+            this.txtKEYCopy.Location = new System.Drawing.Point(612, 47);
             this.txtKEYCopy.MaxLength = 50;
             this.txtKEYCopy.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKEYCopy.MoveNext = true;
@@ -746,9 +742,10 @@
             this.txtKEYCopy.NextControl = null;
             this.txtKEYCopy.NextControlName = "txtIDName";
             this.txtKEYCopy.SearchType = Entity.SearchType.ScType.multiporpose;
-            this.txtKEYCopy.Size = new System.Drawing.Size(250, 19);
+            this.txtKEYCopy.Size = new System.Drawing.Size(305, 19);
             this.txtKEYCopy.TabIndex = 16;
             this.txtKEYCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtKEYCopy.TxtBox = null;
             this.txtKEYCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKEYCopy_KeyDown);
             // 
             // txtKEY
@@ -775,9 +772,10 @@
             this.txtKEY.NextControl = null;
             this.txtKEY.NextControlName = "txtCopyID";
             this.txtKEY.SearchType = Entity.SearchType.ScType.multiporpose;
-            this.txtKEY.Size = new System.Drawing.Size(250, 19);
+            this.txtKEY.Size = new System.Drawing.Size(305, 19);
             this.txtKEY.TabIndex = 15;
             this.txtKEY.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtKEY.TxtBox = null;
             this.txtKEY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKEY_KeyDown_1);
             // 
             // txtCopyID
@@ -796,7 +794,7 @@
             this.txtCopyID.IsRequire = false;
             this.txtCopyID.IsUseInitializedLayout = true;
             this.txtCopyID.lblName = null;
-            this.txtCopyID.Location = new System.Drawing.Point(502, 15);
+            this.txtCopyID.Location = new System.Drawing.Point(612, 15);
             this.txtCopyID.MaxLength = 10;
             this.txtCopyID.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCopyID.MoveNext = true;
@@ -808,6 +806,7 @@
             this.txtCopyID.TabIndex = 14;
             this.txtCopyID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCopyID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtCopyID.TxtBox = null;
             // 
             // txtID
             // 
@@ -837,12 +836,13 @@
             this.txtID.TabIndex = 13;
             this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtID.TxtBox = null;
             // 
             // MasterTouroku_MultiPorpose
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 844);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterTouroku_MultiPorpose";

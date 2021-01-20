@@ -314,7 +314,7 @@ declare	@InsertOperator  varchar(10) = (select m.Operator from #Temp_Main m)
 			exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@OperateMode,@KeyItem
 
 --D_Exclusive W
-			Delete from D_Exclusive where DataKBN = 5 and Number = (select ChakuniNO from #Temp_Main)
+			Delete from D_Exclusive where DataKBN = 5 and Number = (select ChakuniYoteiNO from #Temp_Main)
 
 			drop table #Temp_Main
 			drop table #Temp_Detail

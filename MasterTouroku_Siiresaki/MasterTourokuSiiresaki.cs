@@ -508,6 +508,8 @@ namespace MasterTouroku_Siiresaki
             var filePath = string.Empty;            
             SiiresakiEntity obj = new SiiresakiEntity();
             string Xml = string.Empty;
+            string error = string.Empty;
+            var bl_List = new List<bool>();
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "C:\\CSV Folder\\";
@@ -517,130 +519,136 @@ namespace MasterTouroku_Siiresaki
                 openFileDialog.RestoreDirectory = true;
                 DataTable create_dt = new DataTable();
                 Create_Datatable_Column(create_dt);
+                
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
                     string[] csvRows = File.ReadAllLines(filePath);
-                    var bl_List = new List<bool>();
+                   
                     for (int i = 1; i < csvRows.Length; i++)
                     {
                         var splits = csvRows[i].Split(',');
                         obj.SiiresakiCD = splits[0];
-                        bl_List.Add(Null_Check(obj.SiiresakiCD,i, "仕入先CD未入力エラー"));
-                        bl_List.Add(Byte_Check(10, obj.SiiresakiCD,i, "仕入先CD桁数エラー"));
-                     
+                        //bl_List.Add(Null_Check(obj.SiiresakiCD,i, "仕入先CD未入力エラー"));
+                        //bl_List.Add(Byte_Check(10, obj.SiiresakiCD,i, "仕入先CD桁数エラー"));
+                        if (Null_Check(obj.SiiresakiCD, i, "仕入先CD未入力エラー")) break;
+                        if (Byte_Check(10, obj.SiiresakiCD, i, "仕入先CD桁数エラー")) break;
+
                         //
                         obj.ChangeDate = splits[1];
-                        bl_List.Add(Null_Check(obj.ChangeDate,i, "改定日未入力エラー"));
-                        bl_List.Add(Date_Check(obj.ChangeDate,i, "入力可能値外エラー"));
+                        if (Null_Check(obj.ChangeDate, i, "改定日未入力エラー")) break;
+                        if (Date_Check(obj.ChangeDate, i, "入力可能値外エラー")) break;
                         
                         //
                         obj.ShokutiFLG = string.IsNullOrEmpty(splits[2])? "" : splits[2];
-                        bl_List.Add(Null_Check(obj.ShokutiFLG,i, "諸口未入力エラー"));
+                        if(Null_Check(obj.ShokutiFLG,i, "諸口未入力エラー"))break;
                         if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
                             bbl.ShowMessage("E276",i.ToString(), "入力可能値外エラー");
-                            bl_List.Add(true);
+                            // bl_List.Add(true);
+                            break;
                         }
                         //
                         obj.SiiresakiName = splits[3];
-                        bl_List.Add(Null_Check(obj.SiiresakiName,i, "仕入先名未入力エラー"));
-                        bl_List.Add(Byte_Check(80, obj.SiiresakiName,i, "仕入先名桁数エラー"));
+                        if (Null_Check(obj.SiiresakiName, i, "仕入先名未入力エラー")) break;
+                        if(Byte_Check(80, obj.SiiresakiName,i, "仕入先名桁数エラー"))break;
                         
                         //
                         obj.SiiresakiRyakuName = splits[4];
-                        bl_List.Add(Null_Check(obj.SiiresakiRyakuName,i, "略名未入力エラー"));
-                        bl_List.Add(Byte_Check(40, obj.SiiresakiRyakuName,i, "略名桁数エラー	"));
+                        if(Null_Check(obj.SiiresakiRyakuName,i, "略名未入力エラー"))break;
+                        if(Byte_Check(40, obj.SiiresakiRyakuName,i, "略名桁数エラー	"))break;
                         
                         //
                         obj.KanaName = splits[5];
-                        bl_List.Add(Byte_Check(80, obj.KanaName,i, "カナ名桁数エラー"));
+                        if(Byte_Check(80, obj.KanaName,i, "カナ名桁数エラー"))break;
                         
                         //no error check
                         obj.KensakuHyouziJun = splits[6];
 
                         //
                         obj.SiharaisakiCD = splits[7];
-                        bl_List.Add(Null_Check(obj.SiharaisakiCD,i, "支払先CD未入力エラー"));
-                        bl_List.Add(Byte_Check(10, obj.SiharaisakiCD,i, "支払先CD桁数エラー"));
+                        if(Null_Check(obj.SiharaisakiCD,i, "支払先CD未入力エラー"))break;
+                        if(Byte_Check(10, obj.SiharaisakiCD,i, "支払先CD桁数エラー"))break;
                         
                         //
                         obj.YuubinNO1 = splits[8];
-                        bl_List.Add(Byte_Check(3, obj.YuubinNO1,i, "郵便番号１桁数エラー"));
+                        if(Byte_Check(3, obj.YuubinNO1,i, "郵便番号１桁数エラー"))break;
                        
                         //
                         obj.YuubinNO2 = splits[9];
-                        bl_List.Add(Byte_Check(4, obj.YuubinNO2,i, "郵便番号２桁数エラー"));
+                        if(Byte_Check(4, obj.YuubinNO2,i, "郵便番号２桁数エラー"))break;
                        
                         //
                         obj.Juusho1 = splits[10];
-                        bl_List.Add(Byte_Check(80, obj.Juusho1,i, "住所１桁数エラー"));
+                        if(Byte_Check(80, obj.Juusho1,i, "住所１桁数エラー"))break;
                         
                         //
                         obj.Juusho2 = splits[11];
-                        bl_List.Add(Byte_Check(80, obj.Juusho2,i, "住所２桁数エラー"));
+                        if(Byte_Check(80, obj.Juusho2,i, "住所２桁数エラー"))break;
                         
                         //
                         obj.Tel11 = splits[12];
-                        bl_List.Add(Byte_Check(6, obj.Tel11,i, "電話番号①-1桁数エラー"));
+                        if(Byte_Check(6, obj.Tel11,i, "電話番号①-1桁数エラー"))break;
                         
                         //
                         obj.Tel12 = splits[13];
-                        bl_List.Add(Byte_Check(5, obj.Tel12,i, "電話番号①-2桁数エラー"));
+                        if(Byte_Check(5, obj.Tel12,i, "電話番号①-2桁数エラー"))break;
                        
                         //
                         obj.Tel13 = splits[14];
-                        bl_List.Add(Byte_Check(5, obj.Tel13,i, "電話番号①-3桁数エラー"));
+                        if(Byte_Check(5, obj.Tel13,i, "電話番号①-3桁数エラー"))break;
                         
                         //
                         obj.Tel21 = splits[15];
-                        bl_List.Add(Byte_Check(6, obj.Tel21,i, "電話番号②-1桁数エラー"));
+                        if(Byte_Check(6, obj.Tel21,i, "電話番号②-1桁数エラー"))break;
                         
                         //
                         obj.Tel22 = splits[16];
-                        bl_List.Add(Byte_Check(5, obj.Tel22,i, "電話番号②-2桁数エラー"));
+                        if(Byte_Check(5, obj.Tel22,i, "電話番号②-2桁数エラー"))break;
                         
                         //
                         obj.Tel23 = splits[17];
-                        bl_List.Add(Byte_Check(5, obj.Tel23,i, "電話番号②-3桁数エラー"));
+                        if(Byte_Check(5, obj.Tel23,i, "電話番号②-3桁数エラー"))break;
                         
                         //
                         obj.TantouBusho = splits[18];
-                        bl_List.Add(Byte_Check(40, obj.TantouBusho,i, "担当部署桁数エラー"));
+                        if(Byte_Check(40, obj.TantouBusho,i, "担当部署桁数エラー"))break;
                         
                         //
                         obj.TantouYakushoku = splits[19];
-                        bl_List.Add(Byte_Check(40, obj.TantouYakushoku,i, "担当役職桁数エラー"));
+                        if(Byte_Check(40, obj.TantouYakushoku,i, "担当役職桁数エラー"))break;
                         
                         //
                         obj.TantoushaName = splits[20];
-                        bl_List.Add(Byte_Check(40, obj.TantoushaName,i, "担当者名桁数エラー"));
+                        if(Byte_Check(40, obj.TantoushaName,i, "担当者名桁数エラー"))break;
                         
                         //
                         obj.MailAddress = splits[21];
-                        bl_List.Add(Byte_Check(100, obj.MailAddress,i, "メールアドレス桁数エラー"));
+                        if(Byte_Check(100, obj.MailAddress,i, "メールアドレス桁数エラー"))break;
                         
                         //
                         obj.TuukaCD = splits[22];
-                        bl_List.Add(Null_Check(obj.TuukaCD,i, "通貨CD未入力エラー"));
-                        bl_List.Add(Byte_Check(3, obj.TuukaCD,i, "通貨CD桁数エラー"));
+                        if(Null_Check(obj.TuukaCD,i, "通貨CD未入力エラー"))break;
+                        if(Byte_Check(3, obj.TuukaCD,i, "通貨CD桁数エラー"))break;
                         
                         //
                         obj.StaffCD = splits[23];
-                        bl_List.Add(Null_Check(obj.StaffCD,i, "担当スタッフCD未入力エラー"));
-                        bl_List.Add(Byte_Check(10, obj.StaffCD,i,"担当スタッフCD桁数エラー"));
+                        if(Null_Check(obj.StaffCD,i, "担当スタッフCD未入力エラー"))break;
+                        if(Byte_Check(10, obj.StaffCD,i,"担当スタッフCD桁数エラー"))break;
                         
                         //
                         obj.TorihikiKaisiDate = splits[24];
-                        bl_List.Add(Date_Check(obj.TorihikiKaisiDate,i, "入力可能値外エラー"));
+                        if(!string.IsNullOrEmpty(obj.TorihikiKaisiDate))
+                        if(Date_Check(obj.TorihikiKaisiDate,i, "入力可能値外エラー"))break;
                         
                         //
                         obj.TorihikiShuuryouDate = splits[25];
-                        bl_List.Add(Date_Check(obj.TorihikiShuuryouDate,i, "入力可能値外エラー"));
+                        if(!string.IsNullOrEmpty(obj.TorihikiShuuryouDate))
+                        if(Date_Check(obj.TorihikiShuuryouDate,i, "入力可能値外エラー"))break;
                        
                         //
                         obj.Remarks = splits[26];
-                        bl_List.Add(Byte_Check(80, obj.Remarks,i, "備考桁数エラー"));
+                        if(Byte_Check(80, obj.Remarks,i, "備考桁数エラー"))break;
 
                         //
                         DataTable dt = new DataTable();
@@ -649,11 +657,10 @@ namespace MasterTouroku_Siiresaki
                         if (dt.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E276", i.ToString(), "担当スタッフCD未登録エラー");
-                            //err.ShowErrorMessage("E101");
-                            bl_List.Add(true);
+                            //bl_List.Add(true);
+                            break;
                         }
-
-                        string error = string.Empty;
+                        
                         if (bl_List.Contains(true))
                             error = "true";
                         else error = "false";
@@ -672,6 +679,8 @@ namespace MasterTouroku_Siiresaki
                         dr[30] = error;
                         create_dt.Rows.Add(dr);
                     }
+
+                    if(create_dt.Rows.Count==csvRows.Length-1)
                     Xml = cf.DataTableToXml(create_dt);
                 }
                 else

@@ -61,10 +61,6 @@
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1485, 75);
-            // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtChangeDate);
@@ -179,20 +175,20 @@
             this.txtTokuisakiName.IsUseInitializedLayout = true;
             this.txtTokuisakiName.Location = new System.Drawing.Point(120, 35);
             this.txtTokuisakiName.MaxLength = 80;
-            this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(400, 19);
+            this.txtTokuisakiName.MinimumSize = new System.Drawing.Size(500, 19);
             this.txtTokuisakiName.MoveNext = true;
             this.txtTokuisakiName.Name = "txtTokuisakiName";
             this.txtTokuisakiName.NextControl = null;
             this.txtTokuisakiName.NextControlName = "txtYuubinNO1";
             this.txtTokuisakiName.SearchType = Entity.SearchType.ScType.None;
-            this.txtTokuisakiName.Size = new System.Drawing.Size(400, 19);
-            this.txtTokuisakiName.TabIndex = 5;
+            this.txtTokuisakiName.Size = new System.Drawing.Size(500, 19);
+            this.txtTokuisakiName.TabIndex = 6;
             this.txtTokuisakiName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(523, 38);
+            this.label2.Location = new System.Drawing.Point(623, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 9;
@@ -233,7 +229,7 @@
             this.txtYuubinNO1.NextControlName = "txtYuubinNO2";
             this.txtYuubinNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtYuubinNO1.Size = new System.Drawing.Size(50, 19);
-            this.txtYuubinNO1.TabIndex = 6;
+            this.txtYuubinNO1.TabIndex = 7;
             this.txtYuubinNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label3
@@ -268,7 +264,7 @@
             this.txtYuubinNO2.NextControlName = "txtJuusho";
             this.txtYuubinNO2.SearchType = Entity.SearchType.ScType.None;
             this.txtYuubinNO2.Size = new System.Drawing.Size(70, 19);
-            this.txtYuubinNO2.TabIndex = 7;
+            this.txtYuubinNO2.TabIndex = 8;
             this.txtYuubinNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtYuubinNO2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYuubinNO2_KeyDown);
             // 
@@ -306,14 +302,14 @@
             this.txtJuusho.NextControl = null;
             this.txtJuusho.NextControlName = "txtPhNO1";
             this.txtJuusho.SearchType = Entity.SearchType.ScType.None;
-            this.txtJuusho.Size = new System.Drawing.Size(400, 19);
-            this.txtJuusho.TabIndex = 8;
-            this.txtJuusho.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtJuusho.Size = new System.Drawing.Size(500, 19);
+            this.txtJuusho.TabIndex = 9;
+            this.txtJuusho.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(523, 88);
+            this.label4.Location = new System.Drawing.Point(623, 88);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 16;
@@ -354,7 +350,7 @@
             this.txtPhNO1.NextControlName = "txtPhNO2";
             this.txtPhNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNO1.Size = new System.Drawing.Size(70, 19);
-            this.txtPhNO1.TabIndex = 9;
+            this.txtPhNO1.TabIndex = 10;
             this.txtPhNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label5
@@ -389,7 +385,7 @@
             this.txtPhNO2.NextControlName = "txtPhNO3";
             this.txtPhNO2.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNO2.Size = new System.Drawing.Size(70, 19);
-            this.txtPhNO2.TabIndex = 10;
+            this.txtPhNO2.TabIndex = 11;
             this.txtPhNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label6
@@ -424,7 +420,7 @@
             this.txtPhNO3.NextControlName = "txtRemarks";
             this.txtPhNO3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNO3.Size = new System.Drawing.Size(70, 19);
-            this.txtPhNO3.TabIndex = 11;
+            this.txtPhNO3.TabIndex = 12;
             this.txtPhNO3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblRemarks
@@ -461,14 +457,14 @@
             this.txtRemarks.NextControl = null;
             this.txtRemarks.NextControlName = "BtnF1";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
-            this.txtRemarks.Size = new System.Drawing.Size(400, 19);
-            this.txtRemarks.TabIndex = 12;
+            this.txtRemarks.Size = new System.Drawing.Size(500, 19);
+            this.txtRemarks.TabIndex = 13;
             this.txtRemarks.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(523, 138);
+            this.label7.Location = new System.Drawing.Point(623, 138);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 13);
             this.label7.TabIndex = 25;
@@ -502,8 +498,8 @@
             this.PanelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1485, 692);
-            this.PanelDetail.TabIndex = 26;
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 842);
+            this.PanelDetail.TabIndex = 3;
             // 
             // txtTokuisakiCD1
             // 
@@ -522,6 +518,7 @@
             this.txtTokuisakiCD1.IsUseInitializedLayout = true;
             this.txtTokuisakiCD1.lblName = null;
             this.txtTokuisakiCD1.Location = new System.Drawing.Point(240, 10);
+            this.txtTokuisakiCD1.MaxLength = 10;
             this.txtTokuisakiCD1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTokuisakiCD1.MoveNext = true;
             this.txtTokuisakiCD1.Name = "txtTokuisakiCD1";
@@ -529,7 +526,7 @@
             this.txtTokuisakiCD1.NextControlName = "txtTokuisakiName";
             this.txtTokuisakiCD1.SearchType = Entity.SearchType.ScType.Tokuisaki;
             this.txtTokuisakiCD1.Size = new System.Drawing.Size(100, 19);
-            this.txtTokuisakiCD1.TabIndex = 4;
+            this.txtTokuisakiCD1.TabIndex = 5;
             this.txtTokuisakiCD1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD1.TxtBox = null;
             // 
@@ -558,7 +555,7 @@
             this.txtTokuisakiCD.NextControlName = "txtTokuisakiCD1";
             this.txtTokuisakiCD.SearchType = Entity.SearchType.ScType.Tokuisaki;
             this.txtTokuisakiCD.Size = new System.Drawing.Size(100, 19);
-            this.txtTokuisakiCD.TabIndex = 3;
+            this.txtTokuisakiCD.TabIndex = 4;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD.TxtBox = null;
             // 
@@ -593,7 +590,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 811);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "MasterList_Tokuisaki";

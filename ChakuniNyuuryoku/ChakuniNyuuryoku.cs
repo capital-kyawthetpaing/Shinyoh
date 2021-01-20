@@ -440,7 +440,6 @@ namespace ChakuniNyuuryoku
         {
             ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity()
             {
-            ChakuniNO = txtArrivalNO.Text,
             ChakuniDate = txtArrivalDate.Text,
             ChakuniYoteiNO = txtScheduled.Text,
             HinbanCD = txtShouhinCD.Text,
@@ -508,7 +507,7 @@ namespace ChakuniNyuuryoku
                     dt.Columns.Remove("SiiresakiTelNO2-1");
                     dt.Columns.Remove("SiiresakiTelNO2-2");
                     dt.Columns.Remove("SiiresakiTelNO2-3");
-                    dt.Columns.Remove("SiireKanryouKBN");
+                    //dt.Columns.Remove("SiireKanryouKBN");
                     dt.Columns.Remove("SiiresakiCD");
                     dt.Columns.Remove("ChakuniDate");
                     dt.Columns.Remove("SiiresakiName");
@@ -662,8 +661,8 @@ namespace ChakuniNyuuryoku
                 {
                     if(dt.Rows[0]["MessageID"].ToString()=="E132")
                     {
-                        string KBN = dt.Rows[0]["SiireKanryouKBN"].ToString();
                         ChakuniNyuuryokuSelect(dt);
+                        string KBN = dt.Rows[0]["SiireKanryouKBN"].ToString();
                         if (KBN.ToString().Equals("1"))
                         {
                             gvChakuniNyuuryoku.Columns["colArrivalTime"].ReadOnly = true;

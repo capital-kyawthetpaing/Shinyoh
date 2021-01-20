@@ -46,8 +46,8 @@ namespace MasterTouroku_MultiPorpose
             ChangeMode(Mode.New);
             base_Entity = _GetBaseData();
             txtID.Focus();
-            txtKEY.ChangeDate = txtIDName;
-            txtKEYCopy.ChangeDate = txtIDName;
+            txtID.ChangeDate = txtKEY;
+            txtCopyID.ChangeDate = txtKEYCopy;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -124,7 +124,7 @@ namespace MasterTouroku_MultiPorpose
 
                 case Mode.Update:
                     txtID.E102Check(true);
-                    txtKEY.E102Check(true);
+                    //txtKEY.E102Check(true);
                     txtIDName.E102Check(true);
                     txtDate1.E103Check(true);
                     txtDate2.E103Check(true);
@@ -136,7 +136,7 @@ namespace MasterTouroku_MultiPorpose
                     break;
                 case Mode.Delete:
                     txtID.E102Check(true);
-                    txtKEY.E102Check(true);
+                    //txtKEY.E102Check(true);
                     txtKEY.E132Check(false, "M_Multiporpose", txtID, txtKEY, null);
                     Mode_Setting();
                     Disable_UDI_Mode();
@@ -146,7 +146,7 @@ namespace MasterTouroku_MultiPorpose
                     break;
                 case Mode.Inquiry:
                     txtID.E102Check(true);
-                    txtKEY.E102Check(true);
+                    //txtKEY.E102Check(true);
                     txtIDName.E102Check(true);
                     Mode_Setting();
                     Disable_UDI_Mode();
@@ -328,6 +328,11 @@ namespace MasterTouroku_MultiPorpose
                                 bbl.ShowMessage("E133");
                                 txtCopyID.Focus();
                             }
+                        }
+                        else if(!string.IsNullOrEmpty(txtCopyID.Text) || !string.IsNullOrEmpty(txtKEYCopy.Text))
+                        {
+                            bbl.ShowMessage("E102");
+                            txtKEYCopy.Focus();
                         }
                         else
                         {

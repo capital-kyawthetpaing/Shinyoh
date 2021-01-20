@@ -10,8 +10,8 @@ GO
 -- ================================================
 
 -- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
+-- Author:		Swe Swe
+-- Create date: <19-01-2021>
 -- Description:	<Description,,>
 -- =============================================
 CREATE  PROCEDURE [dbo].[Get_Shouhin_ExportData]
@@ -92,18 +92,17 @@ BEGIN
 		,MS.UpdateOperator AS '変更登録者'
 		,MS.UpdateDateTime AS '変更登録日時'
 		FROM M_Shouhin MS
-		LEFT OUTER JOIN M_MultiPorpose MP
-		ON MP.ID=102 AND [Key]=Ms.TaniCD
+		LEFT OUTER JOIN M_MultiPorpose MP ON MP.ID=102 AND [Key]=Ms.TaniCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 102) M_MultiPorpose_Tani ON M_MultiPorpose_Tani.[Key] =MS.TaniCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 103) M_MultiPorpose_Brand ON M_MultiPorpose_Brand.[Key] = MS.BrandCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 104) M_MultiPorpose_Color ON M_MultiPorpose_Color.[Key] = MS.ColorNO
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 105) M_MultiPorpose_Size ON M_MultiPorpose_Size.[Key] = MS.SizeNO 
-		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 221) M_MultiPorpose_Shouhizeiritu ON M_MultiPorpose_Size.[Key] = MS.ZeirituKBN
-		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 106) M_MultiPorpose_ZaikoHyoukaKBN ON M_MultiPorpose_Size.[Key] = MS.ZaikoHyoukaKBN
-		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 107) M_MultiPorpose_ZaikoKanriKBN ON M_MultiPorpose_Size.[Key] = MS.ZaikoKanriKBN
+		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 221) M_MultiPorpose_Shouhizeiritu ON M_MultiPorpose_Shouhizeiritu.[Key] = MS.ZeirituKBN
+		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 106) M_MultiPorpose_ZaikoHyoukaKBN ON M_MultiPorpose_ZaikoHyoukaKBN.[Key] = MS.ZaikoHyoukaKBN
+		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 107) M_MultiPorpose_ZaikoKanriKBN ON M_MultiPorpose_ZaikoKanriKBN.[Key] = MS.ZaikoKanriKBN
 		LEFT OUTER JOIN F_Siiresaki(getdate()) fs on fs.SiiresakiCD=MS.MainSiiresakiCD
-		WHERE  (@ShouhinCD1 IS NULL OR MS.ShouhinCD>= @ShouhinCD1)
-		AND (@ShouhinCD2 IS NULL OR MS.ShouhinCD <= @ShouhinCD2)
+		WHERE  (@ShouhinCD1 IS NULL OR MS.HinbanCD>= @ShouhinCD1)
+		AND (@ShouhinCD2 IS NULL OR MS.HinbanCD <= @ShouhinCD2)
 		AND (@JANCD1 IS NULL OR MS.JanCD >= @JANCD1)
 		AND (@JANCD2 IS NULL OR MS.JanCD <= @JANCD2)
 		AND (@ShouhinName IS NULL OR ((MS.ShouhinRyakuName LIKE '%' + @ShouhinName + '%') OR (MS.ShouhinRyakuName LIKE '%' + @ShouhinName + '%')))
@@ -172,12 +171,12 @@ BEGIN
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 103) M_MultiPorpose_Brand ON M_MultiPorpose_Brand.[Key] = MS.BrandCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 104) M_MultiPorpose_Color ON M_MultiPorpose_Color.[Key] = MS.ColorNO
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 105) M_MultiPorpose_Size ON M_MultiPorpose_Size.[Key] = MS.SizeNO 
-		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 221) M_MultiPorpose_Shouhizeiritu ON M_MultiPorpose_Size.[Key] = MS.ZeirituKBN
-		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 106) M_MultiPorpose_ZaikoHyoukaKBN ON M_MultiPorpose_Size.[Key] = MS.ZaikoHyoukaKBN
-		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 107) M_MultiPorpose_ZaikoKanriKBN ON M_MultiPorpose_Size.[Key] = MS.ZaikoKanriKBN
+		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 221) M_MultiPorpose_Shouhizeiritu ON M_MultiPorpose_Shouhizeiritu.[Key] = MS.ZeirituKBN
+		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 106) M_MultiPorpose_ZaikoHyoukaKBN ON M_MultiPorpose_ZaikoHyoukaKBN.[Key] = MS.ZaikoHyoukaKBN
+		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 107) M_MultiPorpose_ZaikoKanriKBN ON M_MultiPorpose_ZaikoKanriKBN.[Key] = MS.ZaikoKanriKBN
 		LEFT OUTER JOIN F_Siiresaki(getdate()) fs on fs.SiiresakiCD=MS.MainSiiresakiCD
-		WHERE  (@ShouhinCD1 IS NULL OR MS.ShouhinCD>= @ShouhinCD1)
-		AND (@ShouhinCD2 IS NULL OR MS.ShouhinCD <= @ShouhinCD2)
+		WHERE  (@ShouhinCD1 IS NULL OR MS.HinbanCD>= @ShouhinCD1)
+		AND (@ShouhinCD2 IS NULL OR MS.HinbanCD <= @ShouhinCD2)
 		AND (@JANCD1 IS NULL OR MS.JanCD >= @JANCD1)
 		AND (@JANCD2 IS NULL OR MS.JanCD <= @JANCD2)
 		AND (@ShouhinName IS NULL OR ((MS.ShouhinRyakuName LIKE '%' + @ShouhinName + '%') OR (MS.ShouhinRyakuName LIKE '%' + @ShouhinName + '%')))
