@@ -19,6 +19,7 @@ namespace ShukkaSiziDataShuturyoku {
         BaseEntity baseEntity;
         CommonFunction cf;
         BaseBL bbl;
+        ExportCSVExcel obj_Export;
         ShukkaSiziDataShuturyokuBL shukkaBL;
         public ShukkaSiziDataShuturyoku()
         {
@@ -27,6 +28,7 @@ namespace ShukkaSiziDataShuturyoku {
             cf = new CommonFunction();
             bbl = new BaseBL();
             shukkaBL = new ShukkaSiziDataShuturyokuBL();
+            obj_Export = new ExportCSVExcel();
         }
 
         private void ShukkaSiziDataShuturyoku_Load(object sender, EventArgs e)
@@ -56,6 +58,7 @@ namespace ShukkaSiziDataShuturyoku {
 
             txtToukuisaki.lblName = lblTokuisakiName;
             txtKouriten.lblName = lblKouritenName;
+            txtBrand.lblName = lblBrand_Name;
 
             txtTempDate.Text = baseEntity.LoginDate;
             txtToukuisaki.ChangeDate = txtTempDate;
@@ -108,7 +111,7 @@ namespace ShukkaSiziDataShuturyoku {
                 {
                     PreviousCtrl.Focus();
                 }
-                else 
+                else
                 {
                     DataTable dt = new DataTable { TableName = "MyTableName" };
                     dt = Get_Form_Object();
@@ -120,7 +123,7 @@ namespace ShukkaSiziDataShuturyoku {
                         dt.Columns["KouritenName"].ColumnName = "店舗名";
                         dt.Columns["DenpyouDate"].ColumnName = "伝票日付";
                         dt.Columns["ShukkaYoteiDate"].ColumnName = "出荷日";
-                        dt.Columns["ShouhinCD"].ColumnName = "品番";
+                        dt.Columns["HinbanCD"].ColumnName = "品番";
                         dt.Columns["ColorRyakuName"].ColumnName = "ｶﾗｰ";
                         dt.Columns["SizeNO"].ColumnName = "ｻｲｽﾞ";
                         dt.Columns["JANCD"].ColumnName = "JANｺｰﾄﾞ";
@@ -131,111 +134,51 @@ namespace ShukkaSiziDataShuturyoku {
                         dt.Columns["SenpouHacchuuNO"].ColumnName = "出荷指示番号";
                         dt.Columns["ShukkaSiziMeisaiTekiyou"].ColumnName = "備考";
 
+
                         SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                        saveFileDialog1.InitialDirectory = @"C:\";
-                        saveFileDialog1.DefaultExt = "xls";
+
+                        saveFileDialog1.InitialDirectory = @"C:\CSV\";
+
+                        //for excel
                         saveFileDialog1.Filter = "ExcelFile|*.xls";
                         saveFileDialog1.FileName = ".xls";
                         saveFileDialog1.RestoreDirectory = true;
                         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {
-                            ExportDataTableToExcel(dt, saveFileDialog1.FileName);
-                            bbl.ShowMessage("I203");
-                        }
-                        if (true)
-                        {
-                            Clear();
+                            ExcelDesignSetting obj = new ExcelDesignSetting();
+                            obj.FilePath = saveFileDialog1.FileName;
+                            obj.SheetName = "Sheet1";
+                            obj.Start_Interior_Column = "A1";
+                            obj.End_Interior_Column = "P1";
+                            obj.Interior_Color = Color.Orange;
+                            obj.Start_Font_Column = "A1";
+                            obj.End_Font_Column = "P1";
+                            obj.Font_Color = Color.Black;
+                            //For column E,F
+                            obj.Date_Column = new List<int>();
+                            obj.Date_Column.Add(5);
+                            obj.Date_Column.Add(6);
+                            obj.Date_Format = "DD/MM/YYYY";
+                            obj.Start_Title_Center_Column = "A1";
+                            obj.End_Title_Center_Column = "P1";                            
+                            bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
+                            if (bl)
+                            {
+                                bbl.ShowMessage("I203");
+                                Clear();
+                            }
                         }
                     }
-                }
-            }
-            base.FunctionProcess(tagID);
-        }
-        public static bool ExportDataTableToExcel(DataTable dt, string filepath)
-        {
-
-            Excel.Application oXL;
-            Excel.Workbook oWB;
-            Excel.Worksheet oSheet;
-            Excel.Range rg1;
-            Excel.Range rg2;
-
-            try
-            {
-                // Start Excel and get Application object. 
-                oXL = new Excel.Application();
-
-                // Set some properties 
-                oXL.Visible = false;
-                oXL.DisplayAlerts = false;
-
-                // Get a new workbook. 
-                oWB = oXL.Workbooks.Add(Missing.Value);
-
-                // Get the Active sheet 
-                oSheet = (Excel.Worksheet)oWB.ActiveSheet;
-                oSheet.Name = "Sheet1";
-
-                int rowCount = 1;
-                foreach (DataRow dr in dt.Rows)
-                {
-                    rowCount += 1;
-                    for (int i = 1; i < dt.Columns.Count + 1; i++)
+                    else if (dt.Rows.Count == 0)
                     {
-                        // Add the header the first time through 
-                        if (rowCount == 2)
-                        {
-                            oSheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
-                        }
-                        oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
+                        bbl.ShowMessage("S013");
+                        PreviousCtrl.Focus();
                     }
-                    oSheet.Columns.AutoFit();
-                }
 
-                // color the columns 
-                oSheet.Range["A1", "P1"].Interior.Color = Excel.XlRgbColor.rgbOrange;
-                oSheet.Range["A1", "P1"].Font.Color = Excel.XlRgbColor.rgbBlack;
-                //Change date format
-                rg1 = (Excel.Range)oSheet.Cells[5, 5];
-                rg1.EntireColumn.NumberFormat = "MM/dd/YYYY";
-                rg2 = (Excel.Range)oSheet.Cells[6, 6];
-                rg2.EntireColumn.NumberFormat = "MM/dd/YYYY";
-
-
-                //left alignment
-                Excel.Range last = oSheet.Cells.SpecialCells(Excel.XlCellType.xlCellTypeLastCell, Type.Missing);
-                Excel.Range range = oSheet.get_Range("A2", last);
-                range.EntireColumn.HorizontalAlignment = Excel.XlHAlign.xlHAlignLeft;
-
-                //no border 
-                oXL.Windows.Application.ActiveWindow.DisplayGridlines = false;
-
-                // Save the sheet and close 
-                oSheet = null;
-                oWB.SaveAs(filepath, Excel.XlFileFormat.xlWorkbookNormal,
-                    Missing.Value, Missing.Value, Missing.Value, Missing.Value,
-                    Excel.XlSaveAsAccessMode.xlExclusive,
-                    Missing.Value, Missing.Value, Missing.Value,
-                    Missing.Value, Missing.Value);
-                oWB.Close(Missing.Value, Missing.Value, Missing.Value);
-                oWB = null;
-                oXL.Quit();
+                }               
+                base.FunctionProcess(tagID);
             }
-            catch
-            {
-                throw;
-            }
-            finally
-            {
-                // Clean up 
-                // NOTE: When in release mode, this does the trick 
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                GC.Collect();
-            }
-            return true;
-        }
+        } 
 
         private DataTable Get_Form_Object()
         {
