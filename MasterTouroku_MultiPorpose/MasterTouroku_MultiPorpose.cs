@@ -326,15 +326,15 @@ namespace MasterTouroku_MultiPorpose
                             else
                             {
                                 bbl.ShowMessage("E133");
-                                txtCopyID.Focus();
+                                txtKEYCopy.Focus();
                             }
                         }
-                        else if(string.IsNullOrEmpty(txtCopyID.Text) || !string.IsNullOrEmpty(txtKEYCopy.Text))
+                        else if(string.IsNullOrEmpty(txtCopyID.Text) && !string.IsNullOrEmpty(txtKEYCopy.Text))
                         {
                             bbl.ShowMessage("E102");
                             txtCopyID.Focus();
                         }
-                        else if (!string.IsNullOrEmpty(txtCopyID.Text) || string.IsNullOrEmpty(txtKEYCopy.Text))
+                        else if (!string.IsNullOrEmpty(txtCopyID.Text) && string.IsNullOrEmpty(txtKEYCopy.Text))
                         {
                             bbl.ShowMessage("E102");
                             txtKEYCopy.Focus();
