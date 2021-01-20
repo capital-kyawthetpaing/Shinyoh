@@ -32,6 +32,7 @@ namespace MasterTouroku_Siiresaki
         private void MasterTourokuSiiresaki_Load(object sender, EventArgs e)
         {
             ProgramID = "MasterTouroku_Siiresaki";
+
             StartProgram();
             cboMode.Bind(false, multi_Entity);
 
