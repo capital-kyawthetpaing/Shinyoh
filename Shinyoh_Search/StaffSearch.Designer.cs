@@ -139,9 +139,11 @@
             this.btnStaff_F11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnStaff_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnStaff_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnStaff_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnStaff_F11.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnStaff_F11.Location = new System.Drawing.Point(766, 97);
             this.btnStaff_F11.Name = "btnStaff_F11";
+            this.btnStaff_F11.NextControl = null;
+            this.btnStaff_F11.NextControlName = null;
             this.btnStaff_F11.Size = new System.Drawing.Size(150, 25);
             this.btnStaff_F11.TabIndex = 7;
             this.btnStaff_F11.Text = "表示(F11)";

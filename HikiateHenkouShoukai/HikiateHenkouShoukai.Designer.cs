@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.txtChangeDate = new Shinyoh_Controls.STextBox();
             this.lblKouritenName = new Shinyoh_Controls.SLabel();
             this.txtKouritenCD = new Shinyoh_Search.SearchBox();
             this.lblTokuisakiName = new Shinyoh_Controls.SLabel();
@@ -130,7 +131,6 @@
             this.rdoDetails = new Shinyoh_Controls.SRadio();
             this.rdoAggregation = new Shinyoh_Controls.SRadio();
             this.lblRepresentation = new Shinyoh_Controls.SLabel();
-            this.txtChangeDate = new Shinyoh_Controls.STextBox();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvFreeInventoryDetails)).BeginInit();
@@ -218,6 +218,34 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1784, 642);
             this.PanelDetail.TabIndex = 3;
+            // 
+            // txtChangeDate
+            // 
+            this.txtChangeDate.AllowMinus = false;
+            this.txtChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtChangeDate.DecimalPlace = 0;
+            this.txtChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtChangeDate.DepandOnMode = true;
+            this.txtChangeDate.Enabled = false;
+            this.txtChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtChangeDate.IntegerPart = 0;
+            this.txtChangeDate.IsDatatableOccurs = null;
+            this.txtChangeDate.IsErrorOccurs = false;
+            this.txtChangeDate.IsRequire = false;
+            this.txtChangeDate.IsUseInitializedLayout = true;
+            this.txtChangeDate.Location = new System.Drawing.Point(595, 15);
+            this.txtChangeDate.MaxLength = 10;
+            this.txtChangeDate.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtChangeDate.MoveNext = true;
+            this.txtChangeDate.Name = "txtChangeDate";
+            this.txtChangeDate.NextControl = null;
+            this.txtChangeDate.NextControlName = null;
+            this.txtChangeDate.ReadOnly = true;
+            this.txtChangeDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
+            this.txtChangeDate.TabIndex = 113;
+            this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtChangeDate.Visible = false;
             // 
             // lblKouritenName
             // 
@@ -1568,34 +1596,6 @@
             this.lblRepresentation.TabIndex = 42;
             this.lblRepresentation.Text = "表示形式";
             this.lblRepresentation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtChangeDate
-            // 
-            this.txtChangeDate.AllowMinus = false;
-            this.txtChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtChangeDate.DecimalPlace = 0;
-            this.txtChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtChangeDate.DepandOnMode = true;
-            this.txtChangeDate.Enabled = false;
-            this.txtChangeDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtChangeDate.IntegerPart = 0;
-            this.txtChangeDate.IsDatatableOccurs = null;
-            this.txtChangeDate.IsErrorOccurs = false;
-            this.txtChangeDate.IsRequire = false;
-            this.txtChangeDate.IsUseInitializedLayout = true;
-            this.txtChangeDate.Location = new System.Drawing.Point(595, 15);
-            this.txtChangeDate.MaxLength = 10;
-            this.txtChangeDate.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtChangeDate.MoveNext = true;
-            this.txtChangeDate.Name = "txtChangeDate";
-            this.txtChangeDate.NextControl = null;
-            this.txtChangeDate.NextControlName = null;
-            this.txtChangeDate.ReadOnly = true;
-            this.txtChangeDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
-            this.txtChangeDate.TabIndex = 113;
-            this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtChangeDate.Visible = false;
             // 
             // HikiateHenkouShoukai
             // 
