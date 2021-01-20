@@ -121,7 +121,7 @@ namespace MasterList_Shouhin
             this.rdo_All.NextControl = null;
             this.rdo_All.NextControlName = "txtShouhinCD_From";
             this.rdo_All.Size = new System.Drawing.Size(60, 19);
-            this.rdo_All.TabIndex = 9;
+            this.rdo_All.TabIndex = 2;
             this.rdo_All.Text = "全て";
             this.rdo_All.UseVisualStyleBackColor = true;
             // 
@@ -136,7 +136,7 @@ namespace MasterList_Shouhin
             this.rdo_ChokkinDate.NextControl = null;
             this.rdo_ChokkinDate.NextControlName = "txtShouhinCD_From";
             this.rdo_ChokkinDate.Size = new System.Drawing.Size(100, 19);
-            this.rdo_ChokkinDate.TabIndex = 8;
+            this.rdo_ChokkinDate.TabIndex = 1;
             this.rdo_ChokkinDate.TabStop = true;
             this.rdo_ChokkinDate.Text = "改定日直近";
             this.rdo_ChokkinDate.UseVisualStyleBackColor = false;
@@ -185,7 +185,7 @@ namespace MasterList_Shouhin
             this.PanelDetail.Controls.Add(this.label2);
             this.PanelDetail.Location = new System.Drawing.Point(-1, 76);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
+            this.PanelDetail.Size = new System.Drawing.Size(1710, 820);
             this.PanelDetail.TabIndex = 9;
             // 
             // txtBrand_To
@@ -213,7 +213,7 @@ namespace MasterList_Shouhin
             this.txtBrand_To.NextControlName = "txtColorNO1";
             this.txtBrand_To.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtBrand_To.Size = new System.Drawing.Size(80, 19);
-            this.txtBrand_To.TabIndex = 15;
+            this.txtBrand_To.TabIndex = 8;
             this.txtBrand_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand_To.TxtBox = null;
             // 
@@ -242,7 +242,7 @@ namespace MasterList_Shouhin
             this.txtBrand_From.NextControlName = "txtBrand_To";
             this.txtBrand_From.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtBrand_From.Size = new System.Drawing.Size(80, 19);
-            this.txtBrand_From.TabIndex = 14;
+            this.txtBrand_From.TabIndex = 7;
             this.txtBrand_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand_From.TxtBox = null;
             // 
@@ -271,7 +271,7 @@ namespace MasterList_Shouhin
             this.txtSizeNO2.NextControlName = "txtRemarks";
             this.txtSizeNO2.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtSizeNO2.Size = new System.Drawing.Size(100, 19);
-            this.txtSizeNO2.TabIndex = 19;
+            this.txtSizeNO2.TabIndex = 12;
             this.txtSizeNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNO2.TxtBox = null;
             // 
@@ -300,7 +300,7 @@ namespace MasterList_Shouhin
             this.txtSizeNO1.NextControlName = "txtSizeNO2";
             this.txtSizeNO1.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtSizeNO1.Size = new System.Drawing.Size(100, 19);
-            this.txtSizeNO1.TabIndex = 18;
+            this.txtSizeNO1.TabIndex = 11;
             this.txtSizeNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNO1.TxtBox = null;
             // 
@@ -351,7 +351,7 @@ namespace MasterList_Shouhin
             this.txtColorNO2.NextControlName = "txtSizeNO1";
             this.txtColorNO2.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtColorNO2.Size = new System.Drawing.Size(100, 19);
-            this.txtColorNO2.TabIndex = 17;
+            this.txtColorNO2.TabIndex = 10;
             this.txtColorNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColorNO2.TxtBox = null;
             // 
@@ -380,7 +380,7 @@ namespace MasterList_Shouhin
             this.txtColorNO1.NextControlName = "txtColorNO2";
             this.txtColorNO1.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtColorNO1.Size = new System.Drawing.Size(100, 19);
-            this.txtColorNO1.TabIndex = 16;
+            this.txtColorNO1.TabIndex = 9;
             this.txtColorNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColorNO1.TxtBox = null;
             // 
@@ -453,7 +453,7 @@ namespace MasterList_Shouhin
             this.txtJANCD_To.NextControlName = "txtShouhinName";
             this.txtJANCD_To.SearchType = Entity.SearchType.ScType.Siiresaki;
             this.txtJANCD_To.Size = new System.Drawing.Size(100, 19);
-            this.txtJANCD_To.TabIndex = 12;
+            this.txtJANCD_To.TabIndex = 5;
             this.txtJANCD_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJANCD_To.TxtBox = null;
             // 
@@ -482,7 +482,7 @@ namespace MasterList_Shouhin
             this.txtJANCD_From.NextControlName = "txtJANCD_To";
             this.txtJANCD_From.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD_From.Size = new System.Drawing.Size(100, 19);
-            this.txtJANCD_From.TabIndex = 11;
+            this.txtJANCD_From.TabIndex = 4;
             this.txtJANCD_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJANCD_From.TxtBox = null;
             // 
@@ -533,7 +533,7 @@ namespace MasterList_Shouhin
             this.txtShouhinCD_To.NextControlName = "txtJANCD_From";
             this.txtShouhinCD_To.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtShouhinCD_To.Size = new System.Drawing.Size(160, 19);
-            this.txtShouhinCD_To.TabIndex = 10;
+            this.txtShouhinCD_To.TabIndex = 3;
             this.txtShouhinCD_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShouhinCD_To.TxtBox = null;
             // 
@@ -562,7 +562,7 @@ namespace MasterList_Shouhin
             this.txtShouhinCD_From.NextControlName = "txtShouhinCD_To";
             this.txtShouhinCD_From.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtShouhinCD_From.Size = new System.Drawing.Size(160, 19);
-            this.txtShouhinCD_From.TabIndex = 9;
+            this.txtShouhinCD_From.TabIndex = 2;
             this.txtShouhinCD_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShouhinCD_From.TxtBox = null;
             // 
@@ -610,7 +610,7 @@ namespace MasterList_Shouhin
             this.txtRemarks.NextControlName = "BtnF1";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
             this.txtRemarks.Size = new System.Drawing.Size(500, 19);
-            this.txtRemarks.TabIndex = 20;
+            this.txtRemarks.TabIndex = 13;
             this.txtRemarks.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label1
@@ -670,7 +670,7 @@ namespace MasterList_Shouhin
             this.txtShouhinName.NextControlName = "txtBrand_From";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
             this.txtShouhinName.Size = new System.Drawing.Size(500, 19);
-            this.txtShouhinName.TabIndex = 13;
+            this.txtShouhinName.TabIndex = 6;
             this.txtShouhinName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label2

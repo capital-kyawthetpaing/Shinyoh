@@ -121,6 +121,8 @@
             this.btn_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.btn_F11.Location = new System.Drawing.Point(1090, 85);
             this.btn_F11.Name = "btn_F11";
+            this.btn_F11.NextControl = null;
+            this.btn_F11.NextControlName = null;
             this.btn_F11.Size = new System.Drawing.Size(100, 23);
             this.btn_F11.TabIndex = 34;
             this.btn_F11.Tag = "2";
@@ -737,9 +739,6 @@
             this.dgDetail.AllowUserToDeleteRows = false;
             this.dgDetail.AllowUserToResizeColumns = false;
             this.dgDetail.AllowUserToResizeRows = false;
-            this.dgDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgDetail.Location = new System.Drawing.Point(15, 120);
             this.dgDetail.MultiSelect = false;
