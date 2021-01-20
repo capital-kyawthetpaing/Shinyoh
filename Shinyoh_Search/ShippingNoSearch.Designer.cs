@@ -99,7 +99,8 @@ namespace Shinyoh_Search
             this.panel1.Controls.Add(this.sLabel3);
             this.panel1.Controls.Add(this.lblCustomer);
             this.panel1.Controls.Add(this.lblShippingDate);
-            this.panel1.Location = new System.Drawing.Point(-1, 0);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1184, 120);
             this.panel1.TabIndex = 3;
@@ -157,6 +158,7 @@ namespace Shinyoh_Search
             this.txtTokuisakiCD.Size = new System.Drawing.Size(100, 19);
             this.txtTokuisakiCD.TabIndex = 25;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtTokuisakiCD.TxtBox = null;
             this.txtTokuisakiCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisakiCD_KeyDown);
             // 
             // lblStaffName
@@ -210,6 +212,7 @@ namespace Shinyoh_Search
             this.txtStaffCD.Size = new System.Drawing.Size(100, 19);
             this.txtStaffCD.TabIndex = 22;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtStaffCD.TxtBox = null;
             this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
             // 
             // btnSearch
@@ -220,6 +223,8 @@ namespace Shinyoh_Search
             this.btnSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.btnSearch.Location = new System.Drawing.Point(1019, 83);
             this.btnSearch.Name = "btnSearch";
+            this.btnSearch.NextControl = null;
+            this.btnSearch.NextControlName = null;
             this.btnSearch.Size = new System.Drawing.Size(130, 28);
             this.btnSearch.TabIndex = 20;
             this.btnSearch.Text = "表示(F11)";

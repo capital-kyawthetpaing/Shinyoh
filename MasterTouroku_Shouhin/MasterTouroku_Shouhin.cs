@@ -245,20 +245,23 @@ namespace MasterTouroku_Shouhin
             {
                 if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))
                 {
-                    DBProcess();
+                    bool result = DBProcess();
                     switch (cboMode.SelectedValue)
                     {
                         case "1":
                             ChangeMode(Mode.New);
-                            bbl.ShowMessage("I101");
+                            if (result)
+                                bbl.ShowMessage("I101");
                             break;
                         case "2":
                             ChangeMode(Mode.Update);
-                            bbl.ShowMessage("I101");
+                            if (result)
+                                bbl.ShowMessage("I101");
                             break;
                         case "3":
                             ChangeMode(Mode.Delete);
-                            bbl.ShowMessage("I102");
+                            if (result)
+                                bbl.ShowMessage("I102");
                             break;
                         case "4":
                             ChangeMode(Mode.Inquiry);
@@ -269,7 +272,7 @@ namespace MasterTouroku_Shouhin
             base.FunctionProcess(tagID);
         }
 
-        private void DBProcess()
+        private bool DBProcess()
         {
             ShouhinEntity shouhin_entity = getShouhin();
             switch (cboMode.SelectedValue)
@@ -284,7 +287,7 @@ namespace MasterTouroku_Shouhin
                     shouhin_entity.Mode = "Delete";
                     break;
             }
-            Shouhin_IUD(shouhin_entity);
+            return Shouhin_IUD(shouhin_entity);
         }
 
         private ShouhinEntity getShouhin()
@@ -335,9 +338,9 @@ namespace MasterTouroku_Shouhin
             return shouhin_entity;
         }
 
-        private void Shouhin_IUD(ShouhinEntity shouhin_entity)
+        private bool Shouhin_IUD(ShouhinEntity shouhin_entity)
         {
-            shouhinbl.Shouhin_IUD(shouhin_entity);
+            return shouhinbl.Shouhin_IUD(shouhin_entity);
         }
 
         private void txtChangeDate_KeyDown(object sender, KeyEventArgs e)
