@@ -8,7 +8,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		<Author,,Name>
+-- Author:		Swe Swe
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
