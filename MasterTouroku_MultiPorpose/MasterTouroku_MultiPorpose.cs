@@ -29,6 +29,7 @@ namespace MasterTouroku_MultiPorpose
         private void MasterTouroku_MultiPorpose_Load(object sender, EventArgs e)
         {
             ProgramID = "MasterTouroku_MultiPorpose";
+
             StartProgram();
             cboMode.Bind(false, mentity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);

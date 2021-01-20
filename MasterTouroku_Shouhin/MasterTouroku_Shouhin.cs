@@ -31,7 +31,7 @@ namespace MasterTouroku_Shouhin
 
         private void MasterTouroku_Shouhin_Load(object sender, EventArgs e)
         {
-            ProgramID = "MasterTourokuShouhin";
+            ProgramID = "MasterTouroku_Shouhin";
             StartProgram();
             cboMode.Bind(false, multi_Entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);

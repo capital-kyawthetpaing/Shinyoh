@@ -74,7 +74,7 @@
             this.btnDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnDisplay.Location = new System.Drawing.Point(832, 83);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.NextControl = null;

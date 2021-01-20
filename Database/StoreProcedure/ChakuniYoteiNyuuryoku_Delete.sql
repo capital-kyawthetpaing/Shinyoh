@@ -142,7 +142,7 @@ BEGIN
 
 		CREATE TABLE #Temp_Detail
 				(   
-					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
+					HinbanCD				varchar(20) COLLATE DATABASE_DEFAULT,
 					ShouhinName				varchar(100) COLLATE DATABASE_DEFAULT,
 					ColorRyakuName				varchar(25) COLLATE DATABASE_DEFAULT,
 					ColorNO				varchar(13) COLLATE DATABASE_DEFAULT,
@@ -154,13 +154,14 @@ BEGIN
 					ChakuniYoteiMeisaiTekiyou  varchar(80) COLLATE DATABASE_DEFAULT,
 					JANCD	 varchar(13) COLLATE DATABASE_DEFAULT,
 					HacchuuNO varchar(12)  COLLATE DATABASE_DEFAULT,
-					HacchuuGyouNO varchar(12) COLLATE DATABASE_DEFAULT
+					HacchuuGyouNO varchar(12) COLLATE DATABASE_DEFAULT,
+					ShouhinCD	varchar(50) COLLATE DATABASE_DEFAULT
 				)
 	    EXEC sp_xml_preparedocument @hQuantityAdjust OUTPUT,@XML_Detail
 
 		 INSERT INTO #Temp_Detail
          (
-		   ShouhinCD,
+		   HinbanCD,
 		   ShouhinName,
 		   ColorRyakuName,
 		   ColorNO,
@@ -172,13 +173,14 @@ BEGIN
 		   ChakuniYoteiMeisaiTekiyou,
 		   JANCD,
 		   HacchuuNO,
-		   HacchuuGyouNO
+		   HacchuuGyouNO,
+		   ShouhinCD
 		 )
 		 SELECT *
 					FROM OPENXML(@hQuantityAdjust, 'NewDataSet/test')
 					WITH
 					(
-					ShouhinCD				varchar(50) 'ShouhinCD',
+					HinbanCD				varchar(50) 'HinbanCD',
 					ShouhinName				varchar(100) 'ShouhinName',
 					ColorRyakuName				varchar(25) 'ColorRyakuName',
 					ColorNO				varchar(13) 'ColorNO',
@@ -190,7 +192,8 @@ BEGIN
 					ChakuniYoteiMeisaiTekiyou varchar(80) 'ChakuniYoteiMeisaiTekiyou',
 					JanCD               varchar(13) 'JanCD',
 					HacchuuNO varchar(12) 'HacchuuNO',
-					HacchuuGyouNO               varchar(12) 'HacchuuGyouNO'
+					HacchuuGyouNO               varchar(12) 'HacchuuGyouNO',
+					ShouhinCD				varchar(50) 'ShouhinCD'
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 

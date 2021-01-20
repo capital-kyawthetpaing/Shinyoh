@@ -8,7 +8,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		<Author,,Name>
+-- Author:		Shwe Eain San
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
 -- =============================================
@@ -143,7 +143,7 @@ declare @Unique as uniqueidentifier = NewID()
 
 		CREATE TABLE #Temp_Detail
 				(   
-					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
+					HinbanCD				varchar(20) COLLATE DATABASE_DEFAULT,
 					ShouhinName				varchar(100) COLLATE DATABASE_DEFAULT,
 					ColorRyakuName				varchar(25) COLLATE DATABASE_DEFAULT,
 					ColorNO				varchar(13) COLLATE DATABASE_DEFAULT,
@@ -158,13 +158,14 @@ declare @Unique as uniqueidentifier = NewID()
 					ChakuniYoteiNO varchar(12)  COLLATE DATABASE_DEFAULT,
 					ChakuniYoteiGyouNO varchar(12)COLLATE DATABASE_DEFAULT,
 					HacchuuNO varchar(12)  COLLATE DATABASE_DEFAULT,
-					HacchuuGyouNO varchar(12) COLLATE DATABASE_DEFAULT
+					HacchuuGyouNO varchar(12) COLLATE DATABASE_DEFAULT,
+					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
 				)
 	    EXEC sp_xml_preparedocument @hQuantityAdjust OUTPUT,@XML_Detail
 
 		 INSERT INTO #Temp_Detail
          (
-		   ShouhinCD,
+		   HinbanCD,
 		   ShouhinName,
 		   ColorRyakuName,
 		   ColorNO,
@@ -179,14 +180,15 @@ declare @Unique as uniqueidentifier = NewID()
 		   ChakuniYoteiNO,
 		   ChakuniYoteiGyouNO,
 		   HacchuuNO,
-		   HacchuuGyouNO
+		   HacchuuGyouNO,
+		   ShouhinCD
 		 )
 
 		 SELECT *
 					FROM OPENXML(@hQuantityAdjust, 'NewDataSet/test')
 					WITH
 					(
-					ShouhinCD				varchar(50) 'ShouhinCD',
+					HinbanCD				varchar(20) 'HinbanCD',
 					ShouhinName				varchar(100) 'ShouhinName',
 					ColorRyakuName				varchar(25) 'ColorRyakuName',
 					ColorNO				varchar(13) 'ColorNO',
@@ -201,11 +203,14 @@ declare @Unique as uniqueidentifier = NewID()
 					ChakuniYoteiNO     varchar(12) 'ChakuniYoteiNO',
 					ChakuniYoteiGyouNO              varchar(12) 'ChakuniYoteiGyouNO',
 					HacchuuNO varchar(12) 'HacchuuNO',
-					HacchuuGyouNO               varchar(12) 'HacchuuGyouNO'
+					HacchuuGyouNO               varchar(12) 'HacchuuGyouNO',
+					ShouhinCD varchar(50) 'ShouhinCD'
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
 	    SELECT * FROM #Temp_Detail
+
+		Declare @OperatorCD as varchar(10) =(select Operator from #Temp_Main)
 
 		--Delete D_Chakuni
 		Delete A
@@ -223,12 +228,14 @@ SiireKanryouKBN,SiireZumiSuu,ChakuniYoteiNO,ChakuniYoteiGyouNO,HacchuuNO,Hacchuu
 
 
 Select @Unique,dc.ChakuniNO,dc.ChakuniGyouNO,dc.GyouHyouziJun,30,dc.KanriNO,dc.BrandCD,dc.ShouhinCD,dc.ShouhinName,dc.JANCD,dc.ColorRyakuName,dc.ColorNO,dc.SizeNO,dc.ChakuniSuu,dc.TaniCD,dc.ChakuniMeisaiTekiyou,dc.SiireKanryouKBN,
-dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuGyouNO,dc.JuchuuNO,dc.JuchuuGyouNO,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,m.Operator,@currentDate
+dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuGyouNO,dc.JuchuuNO,dc.JuchuuGyouNO,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,@OperatorCD,@currentDate
 from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 
 --Update D_ChakuniYoteiMeisai(for 修正前または削除)
 Update D_ChakuniYoteiMeisai
-SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END
+SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END,
+    UpdateOperator=@OperatorCD,
+	UpdateDateTime=@currentDate
 From D_ChakuniYoteiMeisai 
 Inner  Join D_ChakuniMeisai on D_ChakuniMeisai.ChakuniYoteiNO=D_ChakuniYoteiMeisai.ChakuniYoteiNO
                           and D_ChakuniMeisai.ChakuniYoteiGyouNO=D_ChakuniYoteiMeisai.ChakuniYoteiGyouNO,#Temp_Detail d,#Temp_Main m
@@ -237,7 +244,7 @@ Where D_ChakuniMeisai.ChakuniNO=m.ChakuniNO
 --Update D_ChakuniYoteiMeisai(for 追加または修正後)
 Update a
 SET a.ChakuniZumiSuu=a.ChakuniZumiSuu+d.ChakuniZumiSuu,
-    UpdateOperator=m.Operator,
+    UpdateOperator=@OperatorCD,
 	UpdateDateTime=@currentDate
 From D_ChakuniYoteiMeisai a
 Inner  Join D_ChakuniMeisai on D_ChakuniMeisai.ChakuniYoteiNO=a.ChakuniYoteiNO---ses
@@ -249,7 +256,7 @@ Where D_ChakuniMeisai.ChakuniNO=m.ChakuniNO
 Update D_ChakuniYoteiMeisai
 Set ChakuniKanryouKBN=Case When D_ChakuniYoteiMeisai.ChakuniYoteiSuu<=TD.ChakuniZumiSuu
 Then 1
-When  TD.SiireKanryouKBN=1
+When  TD.SiireKanryouKBN='True'
 Then 1
 Else 0
 End
@@ -270,6 +277,7 @@ Group by D_ChakuniYoteiMeisai.ChakuniYoteiNO
 ON D_ChakuniYotei.ChakuniYoteiNO=C.ChakuniYoteiNO
 
 
+
 --Update D_HacchuuMeisai(for 修正前または削除)
 Update D_HacchuuMeisai
 SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END
@@ -282,7 +290,7 @@ Where D_ChakuniYoteiMeisai.ChakuniYoteiNO=m.ChakuniYoteiNO
 Update D_HacchuuMeisai
 Set ChakuniKanryouKBN=Case When D_HacchuuMeisai.ChakuniYoteiZumiSuu<=TD.ChakuniZumiSuu
 Then 1
-When  TD.SiireKanryouKBN=1
+When  TD.SiireKanryouKBN='True'
 Then 1
 Else 0
 End
