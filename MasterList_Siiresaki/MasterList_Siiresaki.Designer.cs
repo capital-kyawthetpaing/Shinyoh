@@ -62,10 +62,6 @@ namespace MasterList_Siiresaki
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1713, 75);
-            // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtChangeDate);
@@ -95,13 +91,13 @@ namespace MasterList_Siiresaki
             this.rdo_All.NextControl = null;
             this.rdo_All.NextControlName = "txtSiiresakiCD_From";
             this.rdo_All.Size = new System.Drawing.Size(60, 19);
-            this.rdo_All.TabIndex = 5;
+            this.rdo_All.TabIndex = 9;
             this.rdo_All.Text = "全て";
             this.rdo_All.UseVisualStyleBackColor = true;
             // 
             // rdo_ChokkinDate
             // 
-            this.rdo_ChokkinDate.BackColor = System.Drawing.Color.Cyan;
+            this.rdo_ChokkinDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.rdo_ChokkinDate.Checked = true;
             this.rdo_ChokkinDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.rdo_ChokkinDate.Location = new System.Drawing.Point(123, 10);
@@ -110,7 +106,7 @@ namespace MasterList_Siiresaki
             this.rdo_ChokkinDate.NextControl = null;
             this.rdo_ChokkinDate.NextControlName = "txtSiiresakiCD_From";
             this.rdo_ChokkinDate.Size = new System.Drawing.Size(100, 19);
-            this.rdo_ChokkinDate.TabIndex = 4;
+            this.rdo_ChokkinDate.TabIndex = 8;
             this.rdo_ChokkinDate.TabStop = true;
             this.rdo_ChokkinDate.Text = "改定日直近";
             this.rdo_ChokkinDate.UseVisualStyleBackColor = false;
@@ -183,7 +179,7 @@ namespace MasterList_Siiresaki
             this.PanelDetail.Controls.Add(this.lblJuusho);
             this.PanelDetail.Location = new System.Drawing.Point(-3, 80);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
+            this.PanelDetail.Size = new System.Drawing.Size(1710, 820);
             this.PanelDetail.TabIndex = 3;
             // 
             // txtSiiresakiCD_To
@@ -211,7 +207,7 @@ namespace MasterList_Siiresaki
             this.txtSiiresakiCD_To.NextControlName = "txtSiiresakiName";
             this.txtSiiresakiCD_To.SearchType = Entity.SearchType.ScType.Siiresaki;
             this.txtSiiresakiCD_To.Size = new System.Drawing.Size(100, 19);
-            this.txtSiiresakiCD_To.TabIndex = 51;
+            this.txtSiiresakiCD_To.TabIndex = 10;
             this.txtSiiresakiCD_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSiiresakiCD_To.TxtBox = null;
             // 
@@ -240,7 +236,7 @@ namespace MasterList_Siiresaki
             this.txtSiiresakiCD_From.NextControlName = "txtSiiresakiCD_To";
             this.txtSiiresakiCD_From.SearchType = Entity.SearchType.ScType.Siiresaki;
             this.txtSiiresakiCD_From.Size = new System.Drawing.Size(100, 19);
-            this.txtSiiresakiCD_From.TabIndex = 49;
+            this.txtSiiresakiCD_From.TabIndex = 9;
             this.txtSiiresakiCD_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSiiresakiCD_From.TxtBox = null;
             // 
@@ -260,7 +256,7 @@ namespace MasterList_Siiresaki
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(524, 133);
+            this.label7.Location = new System.Drawing.Point(624, 133);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 13);
             this.label7.TabIndex = 71;
@@ -280,15 +276,15 @@ namespace MasterList_Siiresaki
             this.txtRemarks.IsRequire = false;
             this.txtRemarks.IsUseInitializedLayout = true;
             this.txtRemarks.Location = new System.Drawing.Point(121, 130);
-            this.txtRemarks.MaxLength = 40;
+            this.txtRemarks.MaxLength = 80;
             this.txtRemarks.MinimumSize = new System.Drawing.Size(400, 19);
             this.txtRemarks.MoveNext = true;
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.NextControl = null;
             this.txtRemarks.NextControlName = "BtnF1";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
-            this.txtRemarks.Size = new System.Drawing.Size(400, 19);
-            this.txtRemarks.TabIndex = 63;
+            this.txtRemarks.Size = new System.Drawing.Size(500, 19);
+            this.txtRemarks.TabIndex = 18;
             this.txtRemarks.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label1
@@ -335,7 +331,7 @@ namespace MasterList_Siiresaki
             this.txtPhNO3.NextControlName = "txtRemarks";
             this.txtPhNO3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNO3.Size = new System.Drawing.Size(70, 19);
-            this.txtPhNO3.TabIndex = 62;
+            this.txtPhNO3.TabIndex = 17;
             this.txtPhNO3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblTokuisakiName
@@ -382,8 +378,8 @@ namespace MasterList_Siiresaki
             this.txtSiiresakiName.NextControl = null;
             this.txtSiiresakiName.NextControlName = "txtYuubinNO1";
             this.txtSiiresakiName.SearchType = Entity.SearchType.ScType.None;
-            this.txtSiiresakiName.Size = new System.Drawing.Size(400, 19);
-            this.txtSiiresakiName.TabIndex = 53;
+            this.txtSiiresakiName.Size = new System.Drawing.Size(500, 19);
+            this.txtSiiresakiName.TabIndex = 11;
             this.txtSiiresakiName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtPhNO2
@@ -408,13 +404,13 @@ namespace MasterList_Siiresaki
             this.txtPhNO2.NextControlName = "txtPhNO3";
             this.txtPhNO2.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNO2.Size = new System.Drawing.Size(70, 19);
-            this.txtPhNO2.TabIndex = 61;
+            this.txtPhNO2.TabIndex = 16;
             this.txtPhNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(524, 33);
+            this.label2.Location = new System.Drawing.Point(624, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 59;
@@ -465,7 +461,7 @@ namespace MasterList_Siiresaki
             this.txtPhNO1.NextControlName = "txtPhNO2";
             this.txtPhNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNO1.Size = new System.Drawing.Size(70, 19);
-            this.txtPhNO1.TabIndex = 58;
+            this.txtPhNO1.TabIndex = 15;
             this.txtPhNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtYuubinNO1
@@ -490,7 +486,7 @@ namespace MasterList_Siiresaki
             this.txtYuubinNO1.NextControlName = "txtYubin2";
             this.txtYuubinNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtYuubinNO1.Size = new System.Drawing.Size(50, 19);
-            this.txtYuubinNO1.TabIndex = 54;
+            this.txtYuubinNO1.TabIndex = 12;
             this.txtYuubinNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhoneNO
@@ -519,7 +515,7 @@ namespace MasterList_Siiresaki
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(524, 83);
+            this.label4.Location = new System.Drawing.Point(624, 83);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
             this.label4.TabIndex = 66;
@@ -547,7 +543,7 @@ namespace MasterList_Siiresaki
             this.txtYubin2.NextControlName = "txtAddress";
             this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin2.Size = new System.Drawing.Size(70, 19);
-            this.txtYubin2.TabIndex = 55;
+            this.txtYubin2.TabIndex = 13;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYuubinNO2_KeyDown);
             // 
@@ -565,15 +561,15 @@ namespace MasterList_Siiresaki
             this.txtAddress.IsRequire = false;
             this.txtAddress.IsUseInitializedLayout = true;
             this.txtAddress.Location = new System.Drawing.Point(121, 80);
-            this.txtAddress.MaxLength = 40;
+            this.txtAddress.MaxLength = 80;
             this.txtAddress.MinimumSize = new System.Drawing.Size(400, 19);
             this.txtAddress.MoveNext = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.NextControl = null;
             this.txtAddress.NextControlName = "txtPhNO1";
             this.txtAddress.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress.Size = new System.Drawing.Size(400, 19);
-            this.txtAddress.TabIndex = 57;
+            this.txtAddress.Size = new System.Drawing.Size(500, 19);
+            this.txtAddress.TabIndex = 14;
             this.txtAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblJuusho

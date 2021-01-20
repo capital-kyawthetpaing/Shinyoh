@@ -38,8 +38,8 @@
             this.lblChangeDate = new Shinyoh_Controls.SLabel();
             this.lblKouriten = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
-            this.rdo_AliasKBN2 = new Shinyoh_Controls.SRadio();
             this.rdo_AliasKBN1 = new Shinyoh_Controls.SRadio();
+            this.rdo_AliasKBN2 = new Shinyoh_Controls.SRadio();
             this.lblTitle = new Shinyoh_Controls.SLabel();
             this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
@@ -291,8 +291,8 @@
             this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelDetail.Controls.Add(this.rdo_AliasKBN2);
             this.PanelDetail.Controls.Add(this.rdo_AliasKBN1);
+            this.PanelDetail.Controls.Add(this.rdo_AliasKBN2);
             this.PanelDetail.Controls.Add(this.lblTitle);
             this.PanelDetail.Controls.Add(this.txtStaffCD);
             this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
@@ -346,33 +346,33 @@
             this.PanelDetail.Size = new System.Drawing.Size(1713, 838);
             this.PanelDetail.TabIndex = 1;
             // 
-            // rdo_AliasKBN2
-            // 
-            this.rdo_AliasKBN2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_AliasKBN2.Location = new System.Drawing.Point(219, 159);
-            this.rdo_AliasKBN2.MoveNext = true;
-            this.rdo_AliasKBN2.Name = "rdo_AliasKBN2";
-            this.rdo_AliasKBN2.NextControl = null;
-            this.rdo_AliasKBN2.NextControlName = "txtYubin1";
-            this.rdo_AliasKBN2.Size = new System.Drawing.Size(49, 19);
-            this.rdo_AliasKBN2.TabIndex = 0;
-            this.rdo_AliasKBN2.Text = "御中\t\t";
-            this.rdo_AliasKBN2.UseVisualStyleBackColor = true;
-            // 
             // rdo_AliasKBN1
             // 
-            this.rdo_AliasKBN1.Checked = true;
             this.rdo_AliasKBN1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_AliasKBN1.Location = new System.Drawing.Point(147, 159);
+            this.rdo_AliasKBN1.Location = new System.Drawing.Point(150, 158);
             this.rdo_AliasKBN1.MoveNext = true;
             this.rdo_AliasKBN1.Name = "rdo_AliasKBN1";
             this.rdo_AliasKBN1.NextControl = null;
             this.rdo_AliasKBN1.NextControlName = "txtYubin1";
             this.rdo_AliasKBN1.Size = new System.Drawing.Size(36, 19);
             this.rdo_AliasKBN1.TabIndex = 11;
-            this.rdo_AliasKBN1.TabStop = true;
             this.rdo_AliasKBN1.Text = "様\t\t";
             this.rdo_AliasKBN1.UseVisualStyleBackColor = true;
+            this.rdo_AliasKBN1.CheckedChanged += new System.EventHandler(this.rdo_AliasKBN1_CheckedChanged);
+            // 
+            // rdo_AliasKBN2
+            // 
+            this.rdo_AliasKBN2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdo_AliasKBN2.Location = new System.Drawing.Point(222, 158);
+            this.rdo_AliasKBN2.MoveNext = true;
+            this.rdo_AliasKBN2.Name = "rdo_AliasKBN2";
+            this.rdo_AliasKBN2.NextControl = null;
+            this.rdo_AliasKBN2.NextControlName = "txtYubin1";
+            this.rdo_AliasKBN2.Size = new System.Drawing.Size(49, 19);
+            this.rdo_AliasKBN2.TabIndex = 12;
+            this.rdo_AliasKBN2.Text = "御中\t\t";
+            this.rdo_AliasKBN2.UseVisualStyleBackColor = true;
+            this.rdo_AliasKBN2.CheckedChanged += new System.EventHandler(this.rdo_AliasKBN2_CheckedChanged);
             // 
             // lblTitle
             // 
@@ -413,7 +413,7 @@
             this.txtStaffCD.NextControlName = "txtStartDate";
             this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
             this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
-            this.txtStaffCD.TabIndex = 26;
+            this.txtStaffCD.TabIndex = 27;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaffCD.TxtBox = null;
             // 
@@ -482,7 +482,7 @@
             this.txtKensakuHyouziJun.NextControlName = "BtnF12";
             this.txtKensakuHyouziJun.SearchType = Entity.SearchType.ScType.None;
             this.txtKensakuHyouziJun.Size = new System.Drawing.Size(50, 19);
-            this.txtKensakuHyouziJun.TabIndex = 30;
+            this.txtKensakuHyouziJun.TabIndex = 31;
             this.txtKensakuHyouziJun.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtKensakuHyouziJun.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtKensakuHyouziJun.TextChanged += new System.EventHandler(this.txtKensakuHyouziJun_TextChanged);
@@ -522,7 +522,7 @@
             this.txtRemark.NextControlName = "txtKensakuHyouziJun";
             this.txtRemark.SearchType = Entity.SearchType.ScType.None;
             this.txtRemark.Size = new System.Drawing.Size(500, 19);
-            this.txtRemark.TabIndex = 29;
+            this.txtRemark.TabIndex = 30;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtEndDate
@@ -547,7 +547,7 @@
             this.txtEndDate.NextControlName = "txtRemark";
             this.txtEndDate.SearchType = Entity.SearchType.ScType.None;
             this.txtEndDate.Size = new System.Drawing.Size(100, 19);
-            this.txtEndDate.TabIndex = 28;
+            this.txtEndDate.TabIndex = 29;
             this.txtEndDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtEndDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -587,7 +587,7 @@
             this.txtStartDate.NextControlName = "txtEndDate";
             this.txtStartDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStartDate.Size = new System.Drawing.Size(100, 19);
-            this.txtStartDate.TabIndex = 27;
+            this.txtStartDate.TabIndex = 28;
             this.txtStartDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStartDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -642,7 +642,7 @@
             this.txtMail.NextControlName = "txtStaffCD";
             this.txtMail.SearchType = Entity.SearchType.ScType.None;
             this.txtMail.Size = new System.Drawing.Size(630, 19);
-            this.txtMail.TabIndex = 25;
+            this.txtMail.TabIndex = 26;
             this.txtMail.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblMail
@@ -681,7 +681,7 @@
             this.txtTantoushaName.NextControlName = "txtMail";
             this.txtTantoushaName.SearchType = Entity.SearchType.ScType.None;
             this.txtTantoushaName.Size = new System.Drawing.Size(250, 19);
-            this.txtTantoushaName.TabIndex = 24;
+            this.txtTantoushaName.TabIndex = 25;
             this.txtTantoushaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblChargeName
@@ -720,7 +720,7 @@
             this.txtTantouYakushoku.NextControlName = "txtTantoushaName";
             this.txtTantouYakushoku.SearchType = Entity.SearchType.ScType.None;
             this.txtTantouYakushoku.Size = new System.Drawing.Size(250, 19);
-            this.txtTantouYakushoku.TabIndex = 23;
+            this.txtTantouYakushoku.TabIndex = 24;
             this.txtTantouYakushoku.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblJob
@@ -759,7 +759,7 @@
             this.txtTantouBusho.NextControlName = "txtTantouYakushoku";
             this.txtTantouBusho.SearchType = Entity.SearchType.ScType.None;
             this.txtTantouBusho.Size = new System.Drawing.Size(250, 19);
-            this.txtTantouBusho.TabIndex = 22;
+            this.txtTantouBusho.TabIndex = 23;
             this.txtTantouBusho.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblCharge
@@ -818,7 +818,7 @@
             this.txtPhone2_3.NextControlName = "txtTantouBusho";
             this.txtPhone2_3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone2_3.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone2_3.TabIndex = 21;
+            this.txtPhone2_3.TabIndex = 22;
             this.txtPhone2_3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhone2_2
@@ -843,7 +843,7 @@
             this.txtPhone2_2.NextControlName = "txtPhone2_3";
             this.txtPhone2_2.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone2_2.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone2_2.TabIndex = 20;
+            this.txtPhone2_2.TabIndex = 21;
             this.txtPhone2_2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhone2_1
@@ -868,7 +868,7 @@
             this.txtPhone2_1.NextControlName = "txtPhone2_2";
             this.txtPhone2_1.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone2_1.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone2_1.TabIndex = 19;
+            this.txtPhone2_1.TabIndex = 20;
             this.txtPhone2_1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhone2
@@ -927,7 +927,7 @@
             this.txtPhone1_3.NextControlName = "txtPhone2_1";
             this.txtPhone1_3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone1_3.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone1_3.TabIndex = 18;
+            this.txtPhone1_3.TabIndex = 19;
             this.txtPhone1_3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhone1_2
@@ -952,7 +952,7 @@
             this.txtPhone1_2.NextControlName = "txtPhone1_3";
             this.txtPhone1_2.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone1_2.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone1_2.TabIndex = 17;
+            this.txtPhone1_2.TabIndex = 18;
             this.txtPhone1_2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhone1_1
@@ -977,7 +977,7 @@
             this.txtPhone1_1.NextControlName = "txtPhone1_2";
             this.txtPhone1_1.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone1_1.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone1_1.TabIndex = 16;
+            this.txtPhone1_1.TabIndex = 17;
             this.txtPhone1_1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhone1
@@ -1016,7 +1016,7 @@
             this.txtAddress2.NextControlName = "txtPhone1_1";
             this.txtAddress2.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress2.Size = new System.Drawing.Size(500, 19);
-            this.txtAddress2.TabIndex = 15;
+            this.txtAddress2.TabIndex = 16;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress2
@@ -1055,7 +1055,7 @@
             this.txtAddress1.NextControlName = "txtAddress2";
             this.txtAddress1.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress1.Size = new System.Drawing.Size(500, 19);
-            this.txtAddress1.TabIndex = 14;
+            this.txtAddress1.TabIndex = 15;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress1
@@ -1094,7 +1094,7 @@
             this.txtYubin2.NextControlName = "txtAddress1";
             this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin2.Size = new System.Drawing.Size(50, 19);
-            this.txtYubin2.TabIndex = 13;
+            this.txtYubin2.TabIndex = 14;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
             // 
@@ -1120,7 +1120,7 @@
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin1.Size = new System.Drawing.Size(30, 19);
-            this.txtYubin1.TabIndex = 12;
+            this.txtYubin1.TabIndex = 13;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblYubinNo

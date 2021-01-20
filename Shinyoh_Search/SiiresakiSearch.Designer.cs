@@ -141,6 +141,8 @@
             this.btnSupplier_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.btnSupplier_F11.Location = new System.Drawing.Point(763, 89);
             this.btnSupplier_F11.Name = "btnSupplier_F11";
+            this.btnSupplier_F11.NextControl = null;
+            this.btnSupplier_F11.NextControlName = null;
             this.btnSupplier_F11.Size = new System.Drawing.Size(150, 25);
             this.btnSupplier_F11.TabIndex = 7;
             this.btnSupplier_F11.Text = "表示(F11)";

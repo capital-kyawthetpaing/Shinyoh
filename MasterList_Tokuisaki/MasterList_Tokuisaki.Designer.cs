@@ -69,6 +69,7 @@
             this.PanelTitle.Controls.Add(this.cboMode);
             this.PanelTitle.Controls.Add(this.lblClassification);
             this.PanelTitle.Location = new System.Drawing.Point(20, 0);
+            this.PanelTitle.TabIndex = 1;
             this.PanelTitle.Controls.SetChildIndex(this.lblClassification, 0);
             this.PanelTitle.Controls.SetChildIndex(this.cboMode, 0);
             this.PanelTitle.Controls.SetChildIndex(this.rdo_RRevisionDate, 0);
@@ -80,6 +81,7 @@
             this.cboMode.BackColor = System.Drawing.Color.White;
             this.cboMode.Enabled = false;
             this.cboMode.Location = new System.Drawing.Point(464, 9);
+            this.cboMode.TabIndex = 0;
             this.cboMode.Visible = false;
             // 
             // lblClassification
@@ -98,7 +100,7 @@
             // 
             // rdo_RRevisionDate
             // 
-            this.rdo_RRevisionDate.BackColor = System.Drawing.Color.Cyan;
+            this.rdo_RRevisionDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.rdo_RRevisionDate.Checked = true;
             this.rdo_RRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.rdo_RRevisionDate.Location = new System.Drawing.Point(125, 10);
@@ -134,7 +136,7 @@
             this.lblTokuisakiCD.Location = new System.Drawing.Point(20, 10);
             this.lblTokuisakiCD.Name = "lblTokuisakiCD";
             this.lblTokuisakiCD.Size = new System.Drawing.Size(100, 19);
-            this.lblTokuisakiCD.TabIndex = 3;
+            this.lblTokuisakiCD.TabIndex = 12;
             this.lblTokuisakiCD.Text = "得意先";
             this.lblTokuisakiCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -144,7 +146,7 @@
             this.label1.Location = new System.Drawing.Point(223, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(14, 13);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 13;
             this.label1.Text = "~";
             // 
             // lblTokuisakiName
@@ -156,7 +158,7 @@
             this.lblTokuisakiName.Location = new System.Drawing.Point(20, 35);
             this.lblTokuisakiName.Name = "lblTokuisakiName";
             this.lblTokuisakiName.Size = new System.Drawing.Size(100, 19);
-            this.lblTokuisakiName.TabIndex = 7;
+            this.lblTokuisakiName.TabIndex = 14;
             this.lblTokuisakiName.Text = "得意先名";
             this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -182,7 +184,7 @@
             this.txtTokuisakiName.NextControlName = "txtYuubinNO1";
             this.txtTokuisakiName.SearchType = Entity.SearchType.ScType.None;
             this.txtTokuisakiName.Size = new System.Drawing.Size(500, 19);
-            this.txtTokuisakiName.TabIndex = 6;
+            this.txtTokuisakiName.TabIndex = 4;
             this.txtTokuisakiName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label2
@@ -203,7 +205,7 @@
             this.lblYuubinNO.Location = new System.Drawing.Point(20, 60);
             this.lblYuubinNO.Name = "lblYuubinNO";
             this.lblYuubinNO.Size = new System.Drawing.Size(100, 19);
-            this.lblYuubinNO.TabIndex = 10;
+            this.lblYuubinNO.TabIndex = 15;
             this.lblYuubinNO.Text = "郵便番号";
             this.lblYuubinNO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -229,7 +231,7 @@
             this.txtYuubinNO1.NextControlName = "txtYuubinNO2";
             this.txtYuubinNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtYuubinNO1.Size = new System.Drawing.Size(50, 19);
-            this.txtYuubinNO1.TabIndex = 7;
+            this.txtYuubinNO1.TabIndex = 5;
             this.txtYuubinNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label3
@@ -264,7 +266,7 @@
             this.txtYuubinNO2.NextControlName = "txtJuusho";
             this.txtYuubinNO2.SearchType = Entity.SearchType.ScType.None;
             this.txtYuubinNO2.Size = new System.Drawing.Size(70, 19);
-            this.txtYuubinNO2.TabIndex = 8;
+            this.txtYuubinNO2.TabIndex = 6;
             this.txtYuubinNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtYuubinNO2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYuubinNO2_KeyDown);
             // 
@@ -277,7 +279,7 @@
             this.lblJuusho.Location = new System.Drawing.Point(20, 85);
             this.lblJuusho.Name = "lblJuusho";
             this.lblJuusho.Size = new System.Drawing.Size(100, 19);
-            this.lblJuusho.TabIndex = 14;
+            this.lblJuusho.TabIndex = 16;
             this.lblJuusho.Text = "住所";
             this.lblJuusho.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -303,7 +305,7 @@
             this.txtJuusho.NextControlName = "txtPhNO1";
             this.txtJuusho.SearchType = Entity.SearchType.ScType.None;
             this.txtJuusho.Size = new System.Drawing.Size(500, 19);
-            this.txtJuusho.TabIndex = 9;
+            this.txtJuusho.TabIndex = 7;
             this.txtJuusho.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label4
@@ -350,7 +352,7 @@
             this.txtPhNO1.NextControlName = "txtPhNO2";
             this.txtPhNO1.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNO1.Size = new System.Drawing.Size(70, 19);
-            this.txtPhNO1.TabIndex = 10;
+            this.txtPhNO1.TabIndex = 8;
             this.txtPhNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label5
@@ -385,7 +387,7 @@
             this.txtPhNO2.NextControlName = "txtPhNO3";
             this.txtPhNO2.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNO2.Size = new System.Drawing.Size(70, 19);
-            this.txtPhNO2.TabIndex = 11;
+            this.txtPhNO2.TabIndex = 9;
             this.txtPhNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label6
@@ -420,7 +422,7 @@
             this.txtPhNO3.NextControlName = "txtRemarks";
             this.txtPhNO3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNO3.Size = new System.Drawing.Size(70, 19);
-            this.txtPhNO3.TabIndex = 12;
+            this.txtPhNO3.TabIndex = 10;
             this.txtPhNO3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblRemarks
@@ -432,7 +434,7 @@
             this.lblRemarks.Location = new System.Drawing.Point(20, 135);
             this.lblRemarks.Name = "lblRemarks";
             this.lblRemarks.Size = new System.Drawing.Size(100, 19);
-            this.lblRemarks.TabIndex = 23;
+            this.lblRemarks.TabIndex = 18;
             this.lblRemarks.Text = "備考";
             this.lblRemarks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -458,7 +460,7 @@
             this.txtRemarks.NextControlName = "BtnF1";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
             this.txtRemarks.Size = new System.Drawing.Size(500, 19);
-            this.txtRemarks.TabIndex = 13;
+            this.txtRemarks.TabIndex = 11;
             this.txtRemarks.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label7
@@ -499,7 +501,7 @@
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1713, 842);
-            this.PanelDetail.TabIndex = 3;
+            this.PanelDetail.TabIndex = 2;
             // 
             // txtTokuisakiCD1
             // 
@@ -526,7 +528,7 @@
             this.txtTokuisakiCD1.NextControlName = "txtTokuisakiName";
             this.txtTokuisakiCD1.SearchType = Entity.SearchType.ScType.Tokuisaki;
             this.txtTokuisakiCD1.Size = new System.Drawing.Size(100, 19);
-            this.txtTokuisakiCD1.TabIndex = 5;
+            this.txtTokuisakiCD1.TabIndex = 3;
             this.txtTokuisakiCD1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD1.TxtBox = null;
             // 
@@ -555,7 +557,7 @@
             this.txtTokuisakiCD.NextControlName = "txtTokuisakiCD1";
             this.txtTokuisakiCD.SearchType = Entity.SearchType.ScType.Tokuisaki;
             this.txtTokuisakiCD.Size = new System.Drawing.Size(100, 19);
-            this.txtTokuisakiCD.TabIndex = 4;
+            this.txtTokuisakiCD.TabIndex = 2;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD.TxtBox = null;
             // 
@@ -582,7 +584,7 @@
             this.txtChangeDate.ReadOnly = true;
             this.txtChangeDate.SearchType = Entity.SearchType.ScType.None;
             this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
-            this.txtChangeDate.TabIndex = 4;
+            this.txtChangeDate.TabIndex = 0;
             this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtChangeDate.Visible = false;
             // 

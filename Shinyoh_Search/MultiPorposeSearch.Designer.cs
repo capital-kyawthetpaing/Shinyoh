@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.PanelTitle = new System.Windows.Forms.Panel();
             this.btnDisplay = new Shinyoh_Controls.SButton();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,37 +44,41 @@
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1.SuspendLayout();
+            this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvMultiporpose)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // PanelTitle
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.btnDisplay);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtIDName);
-            this.panel1.Controls.Add(this.txtKey2);
-            this.panel1.Controls.Add(this.txtKey1);
-            this.panel1.Controls.Add(this.txtID2);
-            this.panel1.Controls.Add(this.txtID1);
-            this.panel1.Controls.Add(this.sLabel3);
-            this.panel1.Controls.Add(this.sLabel2);
-            this.panel1.Controls.Add(this.sLabel1);
-            this.panel1.Location = new System.Drawing.Point(1, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(935, 120);
-            this.panel1.TabIndex = 2;
+            this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.PanelTitle.Controls.Add(this.btnDisplay);
+            this.PanelTitle.Controls.Add(this.label2);
+            this.PanelTitle.Controls.Add(this.label1);
+            this.PanelTitle.Controls.Add(this.txtIDName);
+            this.PanelTitle.Controls.Add(this.txtKey2);
+            this.PanelTitle.Controls.Add(this.txtKey1);
+            this.PanelTitle.Controls.Add(this.txtID2);
+            this.PanelTitle.Controls.Add(this.txtID1);
+            this.PanelTitle.Controls.Add(this.sLabel3);
+            this.PanelTitle.Controls.Add(this.sLabel2);
+            this.PanelTitle.Controls.Add(this.sLabel1);
+            this.PanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PanelTitle.Location = new System.Drawing.Point(0, 0);
+            this.PanelTitle.Name = "PanelTitle";
+            this.PanelTitle.Size = new System.Drawing.Size(984, 126);
+            this.PanelTitle.TabIndex = 2;
             // 
             // btnDisplay
             // 
+            this.btnDisplay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDisplay.Location = new System.Drawing.Point(767, 82);
+            this.btnDisplay.Location = new System.Drawing.Point(832, 83);
             this.btnDisplay.Name = "btnDisplay";
+            this.btnDisplay.NextControl = null;
+            this.btnDisplay.NextControlName = null;
             this.btnDisplay.Size = new System.Drawing.Size(130, 30);
             this.btnDisplay.TabIndex = 6;
             this.btnDisplay.Text = "表示(F11)";
@@ -274,7 +278,7 @@
             this.colName});
             this.gvMultiporpose.Location = new System.Drawing.Point(17, 133);
             this.gvMultiporpose.Name = "gvMultiporpose";
-            this.gvMultiporpose.Size = new System.Drawing.Size(720, 302);
+            this.gvMultiporpose.Size = new System.Drawing.Size(658, 520);
             this.gvMultiporpose.TabIndex = 3;
             this.gvMultiporpose.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvMultiporpose_CellMouseDoubleClick);
             this.gvMultiporpose.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvMultiporpose_KeyDown);
@@ -306,17 +310,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 506);
+            this.ClientSize = new System.Drawing.Size(984, 711);
             this.Controls.Add(this.gvMultiporpose);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.PanelTitle);
             this.Name = "MultiPorposeSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "汎用検索";
             this.Load += new System.EventHandler(this.MultiPorposeSearch_Load);
-            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.PanelTitle, 0);
             this.Controls.SetChildIndex(this.gvMultiporpose, 0);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.PanelTitle.ResumeLayout(false);
+            this.PanelTitle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvMultiporpose)).EndInit();
             this.ResumeLayout(false);
 
@@ -324,7 +328,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel PanelTitle;
         private Shinyoh_Controls.SLabel sLabel1;
         private Shinyoh_Controls.STextBox txtIDName;
         private Shinyoh_Controls.STextBox txtKey2;
