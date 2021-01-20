@@ -38,6 +38,7 @@ namespace MasterTouroku_Kouriten
             err = new ErrorCheck();
         }
 
+
         private void MasterTourokuKouriten_Load(object sender, EventArgs e)
         {
             ProgramID = "MasterTouroku_Kouriten";
