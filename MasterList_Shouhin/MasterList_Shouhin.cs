@@ -104,10 +104,10 @@ namespace MasterList_Shouhin
                         obj.FilePath = saveFileDialog1.FileName;
                         obj.SheetName = "商品マスタリスト";
                         obj.Start_Interior_Column = "A1";
-                        obj.End_Interior_Column = "AR1";
+                        obj.End_Interior_Column = "AS1";
                         obj.Interior_Color = Color.Orange;
                         obj.Start_Font_Column = "A1";
-                        obj.End_Font_Column = "AR1";
+                        obj.End_Font_Column = "AS1";
                         obj.Font_Color = Color.Black;
 
                         obj.Date_Column = new List<int>();
@@ -116,7 +116,7 @@ namespace MasterList_Shouhin
                         obj.Date_Column.Add(33);
                         obj.Date_Format = "YYYY/MM/DD";
                         obj.Start_Title_Center_Column = "A1";
-                        obj.End_Title_Center_Column = "AR1";
+                        obj.End_Title_Center_Column = "AS1";
 
                         obj.Number_Column = new List<int>();
                         obj.Number_Column.Add(22);
@@ -133,10 +133,7 @@ namespace MasterList_Shouhin
                         rdo_ChokkinDate.Checked = true;
                         txtShouhinCD_From.Focus();
                     }
-                }
-
-
-                               
+                }           
             }
         }
     private ShouhinEntity Get_UIData()
