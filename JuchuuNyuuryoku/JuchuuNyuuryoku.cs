@@ -199,7 +199,7 @@ namespace JuchuuNyuuryoku
             txtStaffCD.Text = base_Entity.OperatorCD;
             lblStaff_Name.Text = base_Entity.SPName;
 
-            F10_Gridview_Bind();
+           // F10_Gridview_Bind();
         }
 
         public void Disable_UDI_Mode()
