@@ -86,18 +86,18 @@ namespace MasterList_Shouhin
             dtShouhin = sh_bl.Get_ExportData(Get_UIData());
             if(dtShouhin.Rows.Count>0)
             {
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
-                saveFileDialog1.DefaultExt = "xls";
-                saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "商品マスタリスト.xls";
-                saveFileDialog1.RestoreDirectory = true;
-
-                if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
-                    System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
-
                 if (bbl.ShowMessage("Q205") == DialogResult.Yes)
                 {
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
+                    saveFileDialog1.DefaultExt = "xls";
+                    saveFileDialog1.Filter = "ExcelFile|*.xls";
+                    saveFileDialog1.FileName = "商品マスタリスト.xls";
+                    saveFileDialog1.RestoreDirectory = true;
+
+                    if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
+                        System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
+
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
                         ExcelDesignSetting obj = new ExcelDesignSetting();
@@ -128,10 +128,15 @@ namespace MasterList_Shouhin
                         ExportCSVExcel excel = new ExportCSVExcel();
                         excel.ExportDataTableToExcel(dtShouhin, obj);
                         bbl.ShowMessage("I203");
+
                         //New_Mode
                         cf.Clear(PanelDetail);
                         rdo_ChokkinDate.Checked = true;
                         txtShouhinCD_From.Focus();
+                    }
+                    else
+                    {
+                        bbl.ShowMessage("S013");
                     }
                 }           
             }

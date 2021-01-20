@@ -185,7 +185,7 @@ namespace MasterList_Shouhin
             this.PanelDetail.Controls.Add(this.label2);
             this.PanelDetail.Location = new System.Drawing.Point(-1, 76);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
+            this.PanelDetail.Size = new System.Drawing.Size(1710, 820);
             this.PanelDetail.TabIndex = 9;
             // 
             // txtBrand_To
