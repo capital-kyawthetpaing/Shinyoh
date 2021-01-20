@@ -664,14 +664,18 @@ namespace Shinyoh_Controls
             }
             if (sTextBox.CYuubin_Juusho)
             {
-                if (sTextBox.ctrl1Yuubin_Juusho.Text != sTextBox.check1Yuubin_Juusho  || sTextBox.ctrl2Yuubin_Juusho.Text != sTextBox.check2Yuubin_Juusho)
+                if(!string.IsNullOrEmpty(sTextBox.ctrl1Yuubin_Juusho.Text) && !string.IsNullOrEmpty(sTextBox.ctrl2Yuubin_Juusho.Text))
                 {
-                    YuubinNOBL obj = new YuubinNOBL();
-                    YuubinNOEntity entity = new YuubinNOEntity();
-                    entity.YuubinNO1 = sTextBox.ctrl1Yuubin_Juusho.Text;
-                    entity.YuubinNO2 = sTextBox.ctrl2Yuubin_Juusho.Text;
-                    rDt = obj.Yuubin_Search(entity);
+                    if ((sTextBox.ctrl1Yuubin_Juusho.Text != sTextBox.check1Yuubin_Juusho || sTextBox.ctrl2Yuubin_Juusho.Text != sTextBox.check2Yuubin_Juusho))
+                    {
+                        YuubinNOBL obj = new YuubinNOBL();
+                        YuubinNOEntity entity = new YuubinNOEntity();
+                        entity.YuubinNO1 = sTextBox.ctrl1Yuubin_Juusho.Text;
+                        entity.YuubinNO2 = sTextBox.ctrl2Yuubin_Juusho.Text;
+                        rDt = obj.Yuubin_Search(entity);
+                    }
                 }
+                
             }
             return (false, rDt);
         }

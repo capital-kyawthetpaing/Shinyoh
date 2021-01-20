@@ -82,10 +82,6 @@
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1485, 75);
-            // 
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.Color.Cyan;
@@ -148,7 +144,7 @@
             this.PanelDetail.Controls.Add(this.lblName);
             this.PanelDetail.Location = new System.Drawing.Point(0, 76);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1485, 519);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 840);
             this.PanelDetail.TabIndex = 3;
             // 
             // lblKouritenName
@@ -187,6 +183,7 @@
             this.txtTempDate.IsDatatableOccurs = null;
             this.txtTempDate.IsErrorOccurs = false;
             this.txtTempDate.IsRequire = false;
+            this.txtTempDate.IsUseInitializedLayout = true;
             this.txtTempDate.Location = new System.Drawing.Point(41, 475);
             this.txtTempDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtTempDate.MoveNext = true;
@@ -264,6 +261,7 @@
             this.txtPhNo3.IsDatatableOccurs = null;
             this.txtPhNo3.IsErrorOccurs = false;
             this.txtPhNo3.IsRequire = false;
+            this.txtPhNo3.IsUseInitializedLayout = true;
             this.txtPhNo3.Location = new System.Drawing.Point(363, 422);
             this.txtPhNo3.MaxLength = 5;
             this.txtPhNo3.MinimumSize = new System.Drawing.Size(70, 19);
@@ -288,6 +286,7 @@
             this.txtPhNo2.IsDatatableOccurs = null;
             this.txtPhNo2.IsErrorOccurs = false;
             this.txtPhNo2.IsRequire = false;
+            this.txtPhNo2.IsUseInitializedLayout = true;
             this.txtPhNo2.Location = new System.Drawing.Point(247, 422);
             this.txtPhNo2.MaxLength = 5;
             this.txtPhNo2.MinimumSize = new System.Drawing.Size(70, 19);
@@ -312,6 +311,7 @@
             this.txtPhNo1.IsDatatableOccurs = null;
             this.txtPhNo1.IsErrorOccurs = false;
             this.txtPhNo1.IsRequire = false;
+            this.txtPhNo1.IsUseInitializedLayout = true;
             this.txtPhNo1.Location = new System.Drawing.Point(141, 421);
             this.txtPhNo1.MaxLength = 6;
             this.txtPhNo1.MinimumSize = new System.Drawing.Size(70, 19);
@@ -368,6 +368,7 @@
             this.txtYubin2.IsDatatableOccurs = null;
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
+            this.txtYubin2.IsUseInitializedLayout = true;
             this.txtYubin2.Location = new System.Drawing.Point(217, 353);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(70, 19);
@@ -393,6 +394,7 @@
             this.txtYubin1.IsDatatableOccurs = null;
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
+            this.txtYubin1.IsUseInitializedLayout = true;
             this.txtYubin1.Location = new System.Drawing.Point(141, 353);
             this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(50, 19);
@@ -430,6 +432,7 @@
             this.txtAddress.IsDatatableOccurs = null;
             this.txtAddress.IsErrorOccurs = false;
             this.txtAddress.IsRequire = false;
+            this.txtAddress.IsUseInitializedLayout = true;
             this.txtAddress.lblName = null;
             this.txtAddress.Location = new System.Drawing.Point(141, 387);
             this.txtAddress.MaxLength = 80;
@@ -442,6 +445,7 @@
             this.txtAddress.Size = new System.Drawing.Size(450, 19);
             this.txtAddress.TabIndex = 18;
             this.txtAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtAddress.TxtBox = null;
             // 
             // lblAddress
             // 
@@ -493,6 +497,7 @@
             this.txtName.IsDatatableOccurs = null;
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = false;
+            this.txtName.IsUseInitializedLayout = true;
             this.txtName.Location = new System.Drawing.Point(141, 321);
             this.txtName.MaxLength = 40;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
@@ -566,6 +571,7 @@
             this.txtYear.IsDatatableOccurs = null;
             this.txtYear.IsErrorOccurs = false;
             this.txtYear.IsRequire = false;
+            this.txtYear.IsUseInitializedLayout = true;
             this.txtYear.Location = new System.Drawing.Point(615, 154);
             this.txtYear.MaxLength = 4;
             this.txtYear.MinimumSize = new System.Drawing.Size(70, 19);
@@ -607,6 +613,7 @@
             this.txtStore.IsDatatableOccurs = null;
             this.txtStore.IsErrorOccurs = false;
             this.txtStore.IsRequire = false;
+            this.txtStore.IsUseInitializedLayout = true;
             this.txtStore.lblName = null;
             this.txtStore.Location = new System.Drawing.Point(141, 223);
             this.txtStore.MaxLength = 10;
@@ -619,6 +626,7 @@
             this.txtStore.Size = new System.Drawing.Size(80, 19);
             this.txtStore.TabIndex = 13;
             this.txtStore.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStore.TxtBox = null;
             // 
             // txtTokuisaki
             // 
@@ -634,6 +642,7 @@
             this.txtTokuisaki.IsDatatableOccurs = null;
             this.txtTokuisaki.IsErrorOccurs = false;
             this.txtTokuisaki.IsRequire = false;
+            this.txtTokuisaki.IsUseInitializedLayout = true;
             this.txtTokuisaki.lblName = null;
             this.txtTokuisaki.Location = new System.Drawing.Point(141, 188);
             this.txtTokuisaki.MaxLength = 10;
@@ -646,6 +655,7 @@
             this.txtTokuisaki.Size = new System.Drawing.Size(80, 19);
             this.txtTokuisaki.TabIndex = 12;
             this.txtTokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTokuisaki.TxtBox = null;
             this.txtTokuisaki.Leave += new System.EventHandler(this.txtTokuisaki_Leave);
             // 
             // txtBrand
@@ -663,6 +673,7 @@
             this.txtBrand.IsDatatableOccurs = null;
             this.txtBrand.IsErrorOccurs = false;
             this.txtBrand.IsRequire = false;
+            this.txtBrand.IsUseInitializedLayout = true;
             this.txtBrand.lblName = null;
             this.txtBrand.Location = new System.Drawing.Point(141, 154);
             this.txtBrand.MaxLength = 10;
@@ -675,6 +686,7 @@
             this.txtBrand.Size = new System.Drawing.Size(80, 19);
             this.txtBrand.TabIndex = 8;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtBrand.TxtBox = null;
             this.txtBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrand_KeyDown);
             // 
             // txtStaffCD
@@ -692,6 +704,7 @@
             this.txtStaffCD.IsDatatableOccurs = null;
             this.txtStaffCD.IsErrorOccurs = false;
             this.txtStaffCD.IsRequire = false;
+            this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
             this.txtStaffCD.Location = new System.Drawing.Point(141, 120);
             this.txtStaffCD.MaxLength = 10;
@@ -704,6 +717,7 @@
             this.txtStaffCD.Size = new System.Drawing.Size(80, 19);
             this.txtStaffCD.TabIndex = 7;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCD.TxtBox = null;
             // 
             // label1
             // 
@@ -727,6 +741,7 @@
             this.txtInputDate2.IsDatatableOccurs = null;
             this.txtInputDate2.IsErrorOccurs = false;
             this.txtInputDate2.IsRequire = false;
+            this.txtInputDate2.IsUseInitializedLayout = true;
             this.txtInputDate2.Location = new System.Drawing.Point(298, 87);
             this.txtInputDate2.MaxLength = 10;
             this.txtInputDate2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -751,6 +766,7 @@
             this.txtInputDate1.IsDatatableOccurs = null;
             this.txtInputDate1.IsErrorOccurs = false;
             this.txtInputDate1.IsRequire = false;
+            this.txtInputDate1.IsUseInitializedLayout = true;
             this.txtInputDate1.Location = new System.Drawing.Point(141, 86);
             this.txtInputDate1.MaxLength = 10;
             this.txtInputDate1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -786,6 +802,7 @@
             this.txtOrderNo2.IsDatatableOccurs = null;
             this.txtOrderNo2.IsErrorOccurs = false;
             this.txtOrderNo2.IsRequire = false;
+            this.txtOrderNo2.IsUseInitializedLayout = true;
             this.txtOrderNo2.Location = new System.Drawing.Point(298, 52);
             this.txtOrderNo2.MaxLength = 12;
             this.txtOrderNo2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -811,6 +828,7 @@
             this.txtOrderNo1.IsDatatableOccurs = null;
             this.txtOrderNo1.IsErrorOccurs = false;
             this.txtOrderNo1.IsRequire = false;
+            this.txtOrderNo1.IsUseInitializedLayout = true;
             this.txtOrderNo1.Location = new System.Drawing.Point(141, 51);
             this.txtOrderNo1.MaxLength = 12;
             this.txtOrderNo1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -845,6 +863,7 @@
             this.txtOrderDate2.IsDatatableOccurs = null;
             this.txtOrderDate2.IsErrorOccurs = false;
             this.txtOrderDate2.IsRequire = false;
+            this.txtOrderDate2.IsUseInitializedLayout = true;
             this.txtOrderDate2.Location = new System.Drawing.Point(298, 19);
             this.txtOrderDate2.MaxLength = 10;
             this.txtOrderDate2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -869,6 +888,7 @@
             this.txtOrderDate1.IsDatatableOccurs = null;
             this.txtOrderDate1.IsErrorOccurs = false;
             this.txtOrderDate1.IsRequire = false;
+            this.txtOrderDate1.IsUseInitializedLayout = true;
             this.txtOrderDate1.Location = new System.Drawing.Point(141, 18);
             this.txtOrderDate1.MaxLength = 10;
             this.txtOrderDate1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -894,6 +914,7 @@
             this.txtDestOrderNo.IsDatatableOccurs = null;
             this.txtDestOrderNo.IsErrorOccurs = false;
             this.txtDestOrderNo.IsRequire = false;
+            this.txtDestOrderNo.IsUseInitializedLayout = true;
             this.txtDestOrderNo.Location = new System.Drawing.Point(141, 258);
             this.txtDestOrderNo.MaxLength = 20;
             this.txtDestOrderNo.MinimumSize = new System.Drawing.Size(100, 19);
@@ -1037,7 +1058,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1485, 644);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "JuchuuList";

@@ -444,7 +444,7 @@ namespace MasterTouroku_Kouriten
                 Address2 = dt.Rows[0]["Juusho2"].ToString();
                 YuuBinNO1 = dt.Rows[0]["YuubinNO1"].ToString();
                 YuuBinNO2 = dt.Rows[0]["YuubinNO2"].ToString();
-                txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, dt.Rows[0]["YuubinNO1"].ToString(), dt.Rows[0]["YuubinNO2"].ToString());
+               // txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, dt.Rows[0]["YuubinNO1"].ToString(), dt.Rows[0]["YuubinNO2"].ToString());
             }
         }
 

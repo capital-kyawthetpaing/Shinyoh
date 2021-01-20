@@ -191,6 +191,7 @@ namespace MasterTouroku_Shouhin
             lbl_MajorSuppliers.BorderStyle = BorderStyle.None;
             pImage.ImageLocation = null;
             pImage.Image = null;
+            txtRetailPrice.Text = string.Empty;
         }
 
         public override void FunctionProcess(string tagID)
@@ -335,9 +336,9 @@ namespace MasterTouroku_Shouhin
             return shouhin_entity;
         }
 
-        private void Shouhin_IUD(ShouhinEntity shouhin_entity)
+        private bool Shouhin_IUD(ShouhinEntity shouhin_entity)
         {
-            shouhinbl.Shouhin_IUD(shouhin_entity);
+            return shouhinbl.Shouhin_IUD(shouhin_entity);
         }
 
         private void txtChangeDate_KeyDown(object sender, KeyEventArgs e)

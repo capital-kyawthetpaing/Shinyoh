@@ -65,19 +65,6 @@
             this.btnSave = new Shinyoh_Controls.SButton();
             this.label2 = new System.Windows.Forms.Label();
             this.gvChakuniNyuuryoku = new Shinyoh_Controls.SGridView();
-            this.btn_Siiresaki = new Shinyoh_Controls.SButton();
-            this.lblStaff = new Shinyoh_Controls.SLabel();
-            this.lblWareHouse = new Shinyoh_Controls.SLabel();
-            this.lblBrandName = new Shinyoh_Controls.SLabel();
-            this.PanelDetail = new System.Windows.Forms.Panel();
-            this.txtYearTerm = new Shinyoh_Controls.STextBox();
-            this.txtScheduled = new Shinyoh_Controls.STextBox();
-            this.txtStaffCD = new Shinyoh_Search.SearchBox();
-            this.txtSiiresaki = new Shinyoh_Search.SearchBox();
-            this.txtSouko = new Shinyoh_Search.SearchBox();
-            this.lblSiiresaki = new Shinyoh_Controls.SLabel();
-            this.txtArrivalNO = new Shinyoh_Search.SearchBox();
-            this.txtScheduledNo = new Shinyoh_Search.SearchBox();
             this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,6 +84,19 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_Siiresaki = new Shinyoh_Controls.SButton();
+            this.lblStaff = new Shinyoh_Controls.SLabel();
+            this.lblWareHouse = new Shinyoh_Controls.SLabel();
+            this.lblBrandName = new Shinyoh_Controls.SLabel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
+            this.txtYearTerm = new Shinyoh_Controls.STextBox();
+            this.txtScheduled = new Shinyoh_Controls.STextBox();
+            this.txtStaffCD = new Shinyoh_Search.SearchBox();
+            this.txtSiiresaki = new Shinyoh_Search.SearchBox();
+            this.txtSouko = new Shinyoh_Search.SearchBox();
+            this.lblSiiresaki = new Shinyoh_Controls.SLabel();
+            this.txtArrivalNO = new Shinyoh_Search.SearchBox();
+            this.txtScheduledNo = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
@@ -116,7 +116,7 @@
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
-            this.cboMode.Location = new System.Drawing.Point(25, 8);
+            this.cboMode.Location = new System.Drawing.Point(19, 8);
             // 
             // sLabel3
             // 
@@ -669,12 +669,160 @@
             this.Column3,
             this.Column4,
             this.Column5});
-            this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(25, 213);
+            this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(19, 213);
             this.gvChakuniNyuuryoku.Name = "gvChakuniNyuuryoku";
-            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1438, 340);
+            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1443, 355);
             this.gvChakuniNyuuryoku.TabIndex = 35;
             this.gvChakuniNyuuryoku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvChakuniNyuuryoku_CellContentClick);
             this.gvChakuniNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvChakuniNyuuryoku_CellEndEdit);
+            // 
+            // colShouhinCD
+            // 
+            this.colShouhinCD.DataPropertyName = "HinbanCD";
+            this.colShouhinCD.HeaderText = "商品";
+            this.colShouhinCD.Name = "colShouhinCD";
+            this.colShouhinCD.ReadOnly = true;
+            this.colShouhinCD.Width = 140;
+            // 
+            // colShouhinName
+            // 
+            this.colShouhinName.DataPropertyName = "ShouhinName";
+            this.colShouhinName.HeaderText = "商品名";
+            this.colShouhinName.Name = "colShouhinName";
+            this.colShouhinName.ReadOnly = true;
+            this.colShouhinName.Width = 200;
+            // 
+            // colColorRyakuName
+            // 
+            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
+            this.colColorRyakuName.HeaderText = "カラー略名";
+            this.colColorRyakuName.Name = "colColorRyakuName";
+            this.colColorRyakuName.ReadOnly = true;
+            this.colColorRyakuName.Width = 150;
+            // 
+            // colColorNO
+            // 
+            this.colColorNO.DataPropertyName = "ColorNO";
+            this.colColorNO.HeaderText = "カラー";
+            this.colColorNO.Name = "colColorNO";
+            this.colColorNO.ReadOnly = true;
+            // 
+            // colSizeNO
+            // 
+            this.colSizeNO.DataPropertyName = "SizeNO";
+            this.colSizeNO.HeaderText = "サイズ";
+            this.colSizeNO.Name = "colSizeNO";
+            this.colSizeNO.ReadOnly = true;
+            // 
+            // colDate
+            // 
+            this.colDate.DataPropertyName = "ChakuniYoteiDate";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colDate.HeaderText = "着荷予定日";
+            this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
+            // 
+            // colArrivalNo
+            // 
+            this.colArrivalNo.DataPropertyName = "ChakuniYoteiSuu";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colArrivalNo.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colArrivalNo.HeaderText = "着荷予定数";
+            this.colArrivalNo.Name = "colArrivalNo";
+            this.colArrivalNo.ReadOnly = true;
+            // 
+            // colChakuniZumiSuu
+            // 
+            this.colChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colChakuniZumiSuu.HeaderText = "着荷済数";
+            this.colChakuniZumiSuu.Name = "colChakuniZumiSuu";
+            // 
+            // colArrivalTime
+            // 
+            this.colArrivalTime.DataPropertyName = "ChakuniSuu";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.NullValue = null;
+            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colArrivalTime.HeaderText = "今回着荷数";
+            this.colArrivalTime.Name = "colArrivalTime";
+            // 
+            // chk
+            // 
+            this.chk.DataPropertyName = "SiireKanryouKBN";
+            this.chk.FalseValue = "0";
+            this.chk.HeaderText = "完了";
+            this.chk.Name = "chk";
+            this.chk.TrueValue = "1";
+            this.chk.Width = 70;
+            // 
+            // colDetails
+            // 
+            this.colDetails.DataPropertyName = "ChakuniMeisaiTekiyou";
+            this.colDetails.HeaderText = "明細摘要";
+            this.colDetails.Name = "colDetails";
+            this.colDetails.Width = 235;
+            // 
+            // colJanCD
+            // 
+            this.colJanCD.DataPropertyName = "JanCD";
+            this.colJanCD.HeaderText = "JANCD";
+            this.colJanCD.Name = "colJanCD";
+            // 
+            // colChakuniYoteiGyouNO
+            // 
+            this.colChakuniYoteiGyouNO.DataPropertyName = "Chakuni";
+            this.colChakuniYoteiGyouNO.HeaderText = "着荷予定番号-行番号";
+            this.colChakuniYoteiGyouNO.Name = "colChakuniYoteiGyouNO";
+            this.colChakuniYoteiGyouNO.Width = 200;
+            // 
+            // colHacchuuGyouNO
+            // 
+            this.colHacchuuGyouNO.DataPropertyName = "Hacchuu";
+            this.colHacchuuGyouNO.HeaderText = "発注番号-行番号";
+            this.colHacchuuGyouNO.Name = "colHacchuuGyouNO";
+            this.colHacchuuGyouNO.Width = 180;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "ChakuniYoteiNO";
+            this.Column1.HeaderText = "ChakuniYoteiNO";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            this.Column1.Width = 10;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ChakuniYoteiGyouNO";
+            this.Column2.HeaderText = "ChakuniYoteiGyouNO";
+            this.Column2.Name = "Column2";
+            this.Column2.Visible = false;
+            this.Column2.Width = 10;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "HacchuuNO";
+            this.Column3.HeaderText = "HacchuuNO";
+            this.Column3.Name = "Column3";
+            this.Column3.Visible = false;
+            this.Column3.Width = 10;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "HacchuuGyouNO";
+            this.Column4.HeaderText = "HacchuuGyouNO";
+            this.Column4.Name = "Column4";
+            this.Column4.Visible = false;
+            this.Column4.Width = 10;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "ShouhinCD";
+            this.Column5.HeaderText = "ShouhinCD";
+            this.Column5.Name = "Column5";
+            this.Column5.Visible = false;
             // 
             // btn_Siiresaki
             // 
@@ -773,7 +921,7 @@
             this.PanelDetail.Controls.Add(this.sLabel12);
             this.PanelDetail.Location = new System.Drawing.Point(1, 76);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1480, 570);
+            this.PanelDetail.Size = new System.Drawing.Size(1480, 580);
             this.PanelDetail.TabIndex = 45;
             // 
             // txtYearTerm
@@ -987,154 +1135,6 @@
             this.txtScheduledNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtScheduledNo.TxtBox = null;
             // 
-            // colShouhinCD
-            // 
-            this.colShouhinCD.DataPropertyName = "HinbanCD";
-            this.colShouhinCD.HeaderText = "商品";
-            this.colShouhinCD.Name = "colShouhinCD";
-            this.colShouhinCD.ReadOnly = true;
-            this.colShouhinCD.Width = 140;
-            // 
-            // colShouhinName
-            // 
-            this.colShouhinName.DataPropertyName = "ShouhinName";
-            this.colShouhinName.HeaderText = "商品名";
-            this.colShouhinName.Name = "colShouhinName";
-            this.colShouhinName.ReadOnly = true;
-            this.colShouhinName.Width = 200;
-            // 
-            // colColorRyakuName
-            // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            this.colColorRyakuName.ReadOnly = true;
-            this.colColorRyakuName.Width = 150;
-            // 
-            // colColorNO
-            // 
-            this.colColorNO.DataPropertyName = "ColorNO";
-            this.colColorNO.HeaderText = "カラー";
-            this.colColorNO.Name = "colColorNO";
-            this.colColorNO.ReadOnly = true;
-            // 
-            // colSizeNO
-            // 
-            this.colSizeNO.DataPropertyName = "SizeNO";
-            this.colSizeNO.HeaderText = "サイズ";
-            this.colSizeNO.Name = "colSizeNO";
-            this.colSizeNO.ReadOnly = true;
-            // 
-            // colDate
-            // 
-            this.colDate.DataPropertyName = "ChakuniYoteiDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colDate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colDate.HeaderText = "着荷予定日";
-            this.colDate.Name = "colDate";
-            this.colDate.ReadOnly = true;
-            // 
-            // colArrivalNo
-            // 
-            this.colArrivalNo.DataPropertyName = "ChakuniYoteiSuu";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colArrivalNo.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colArrivalNo.HeaderText = "着荷予定数";
-            this.colArrivalNo.Name = "colArrivalNo";
-            this.colArrivalNo.ReadOnly = true;
-            // 
-            // colChakuniZumiSuu
-            // 
-            this.colChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colChakuniZumiSuu.HeaderText = "着荷済数";
-            this.colChakuniZumiSuu.Name = "colChakuniZumiSuu";
-            // 
-            // colArrivalTime
-            // 
-            this.colArrivalTime.DataPropertyName = "ChakuniSuu";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.NullValue = null;
-            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle5;
-            this.colArrivalTime.HeaderText = "今回着荷数";
-            this.colArrivalTime.Name = "colArrivalTime";
-            // 
-            // chk
-            // 
-            this.chk.DataPropertyName = "SiireKanryouKBN";
-            this.chk.FalseValue = "0";
-            this.chk.HeaderText = "完了";
-            this.chk.Name = "chk";
-            this.chk.TrueValue = "1";
-            this.chk.Width = 70;
-            // 
-            // colDetails
-            // 
-            this.colDetails.DataPropertyName = "ChakuniMeisaiTekiyou";
-            this.colDetails.HeaderText = "明細摘要";
-            this.colDetails.Name = "colDetails";
-            this.colDetails.Width = 235;
-            // 
-            // colJanCD
-            // 
-            this.colJanCD.DataPropertyName = "JanCD";
-            this.colJanCD.HeaderText = "JANCD";
-            this.colJanCD.Name = "colJanCD";
-            // 
-            // colChakuniYoteiGyouNO
-            // 
-            this.colChakuniYoteiGyouNO.DataPropertyName = "Chakuni";
-            this.colChakuniYoteiGyouNO.HeaderText = "着荷予定番号-行番号";
-            this.colChakuniYoteiGyouNO.Name = "colChakuniYoteiGyouNO";
-            this.colChakuniYoteiGyouNO.Width = 200;
-            // 
-            // colHacchuuGyouNO
-            // 
-            this.colHacchuuGyouNO.DataPropertyName = "Hacchuu";
-            this.colHacchuuGyouNO.HeaderText = "発注番号-行番号";
-            this.colHacchuuGyouNO.Name = "colHacchuuGyouNO";
-            this.colHacchuuGyouNO.Width = 180;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "ChakuniYoteiNO";
-            this.Column1.HeaderText = "ChakuniYoteiNO";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            this.Column1.Width = 10;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "ChakuniYoteiGyouNO";
-            this.Column2.HeaderText = "ChakuniYoteiGyouNO";
-            this.Column2.Name = "Column2";
-            this.Column2.Visible = false;
-            this.Column2.Width = 10;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "HacchuuNO";
-            this.Column3.HeaderText = "HacchuuNO";
-            this.Column3.Name = "Column3";
-            this.Column3.Visible = false;
-            this.Column3.Width = 10;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "HacchuuGyouNO";
-            this.Column4.HeaderText = "HacchuuGyouNO";
-            this.Column4.Name = "Column4";
-            this.Column4.Visible = false;
-            this.Column4.Width = 10;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "ShouhinCD";
-            this.Column5.HeaderText = "ShouhinCD";
-            this.Column5.Name = "Column5";
-            this.Column5.Visible = false;
-            // 
             // ChakuniNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1143,7 +1143,7 @@
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ChakuniNyuuryoku";
-            this.Text = "  着荷入力";
+            this.Text = "着荷入力";
             this.Load += new System.EventHandler(this.ChakuniNyuuryoku_Load);
             this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.Controls.SetChildIndex(this.panel1, 0);

@@ -59,7 +59,7 @@ namespace MasterTouroku_Tokuisaki {
 
             txtStaffCharge.ChangeDate = txtChange_Date;
             txt_Tokuisaki.ChangeDate = txtChange_Date;
-            txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;           
+            txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;
         }
 
         private void ChangeMode(Mode mode)
@@ -119,6 +119,9 @@ namespace MasterTouroku_Tokuisaki {
             cf.DisablePanel(PanelDetail);
             txt_Tokuisaki.Focus();
             sRadRegister.Checked = true;
+            RadSaMa.Checked = true;
+            RadNeed.Checked = true;
+
             //txtSearch.Text = "0";
             lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
@@ -131,8 +134,6 @@ namespace MasterTouroku_Tokuisaki {
             YuuBinNO2 = string.Empty;
             Address1 = string.Empty;
             Address2 = string.Empty;
-            RadSaMa.Checked = true;
-            RadNeed.Checked = true;
         }
         public void ErrorCheck()
         {
@@ -343,10 +344,14 @@ namespace MasterTouroku_Tokuisaki {
                     if (dt.Rows[0]["AliasKBN"].ToString().Equals("1"))
                     {
                         RadSaMa.Checked = true;
+                        txtBillAddress.NextControlName = RadSaMa.Name;
                     }
-                    else if(dt.Rows[0]["AliasKBN"].ToString().Equals("2"))
+                    else if (dt.Rows[0]["AliasKBN"].ToString().Equals("2"))
+                    {
                         RadOnchuu.Checked = true;
-
+                        txtBillAddress.NextControlName = RadOnchuu.Name;
+                    }
+                      
                     txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
                     txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();
                     txtAddress1.Text = dt.Rows[0]["Juusho1"].ToString();
@@ -369,9 +374,13 @@ namespace MasterTouroku_Tokuisaki {
                     if (dt.Rows[0]["ShukkaSizishoHuyouKBN"].ToString().Equals("0"))
                     {
                         RadNeed.Checked = true;
+                        txtEndDate.NextControlName = RadNeed.Name;
                     }
                     else if (dt.Rows[0]["ShukkaSizishoHuyouKBN"].ToString().Equals("1"))
+                    {
                         RadNoNeed.Checked = true;
+                        txtEndDate.NextControlName = RadNoNeed.Name;
+                    }
 
                     txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
                     txtSearch.Text = dt.Rows[0]["KensakuHyouziJun"].ToString();
@@ -379,7 +388,7 @@ namespace MasterTouroku_Tokuisaki {
                     Address2 = dt.Rows[0]["Juusho2"].ToString();
                     YuuBinNO1 = dt.Rows[0]["YuubinNO1"].ToString();
                     YuuBinNO2 = dt.Rows[0]["YuubinNO2"].ToString();
-                    //txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, dt.Rows[0]["YuubinNO1"].ToString(), dt.Rows[0]["YuubinNO2"].ToString());
+                    txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, dt.Rows[0]["YuubinNO1"].ToString(), dt.Rows[0]["YuubinNO2"].ToString());
                 }
             }
         }
@@ -747,6 +756,42 @@ namespace MasterTouroku_Tokuisaki {
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
             create_dt.Columns.Add("Error");
+        }
+
+        private void RadSaMa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadSaMa.Checked == true)
+            {
+                RadOnchuu.Checked = false;
+                txtBillAddress.NextControlName = RadSaMa.Name;
+            }
+        }
+
+        private void RadOnchuu_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadOnchuu.Checked == true)
+            {
+                RadSaMa.Checked = false;
+                txtBillAddress.NextControlName = RadOnchuu.Name;
+            }
+        }
+
+        private void RadNeed_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadNeed.Checked == true)
+            {
+                RadNoNeed.Checked = false;
+                txtEndDate.NextControlName = RadNeed.Name;
+            }
+        }
+
+        private void RadNoNeed_CheckedChanged(object sender, EventArgs e)
+        {
+            if (RadNoNeed.Checked == true)
+            {
+                RadNeed.Checked = false;
+                txtEndDate.NextControlName = RadNoNeed.Name;
+            }
         }
     }
 }

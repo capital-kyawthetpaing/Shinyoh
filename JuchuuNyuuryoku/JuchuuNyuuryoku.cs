@@ -178,7 +178,7 @@ namespace JuchuuNyuuryoku
             cf.Clear(PanelDetail);
 
             cf.EnablePanel(PanelTitle);
-            cf.DisablePanel(PanelDetail);
+           // cf.DisablePanel(PanelDetail);
 
             lblTokuisakiShort_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblKouriten_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -199,7 +199,7 @@ namespace JuchuuNyuuryoku
             txtStaffCD.Text = base_Entity.OperatorCD;
             lblStaff_Name.Text = base_Entity.SPName;
 
-            F10_Gridview_Bind();
+           // F10_Gridview_Bind();
         }
 
         public void Disable_UDI_Mode()
