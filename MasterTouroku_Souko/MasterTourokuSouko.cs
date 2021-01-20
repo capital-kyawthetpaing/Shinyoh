@@ -30,7 +30,7 @@ namespace MasterTouroku_Souko
         private void MasterTourokuSouko_Load(object sender, EventArgs e)
         {
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
-            ProgramID = "MasterTourokuSouko";
+            ProgramID = "MasterTouroku_Souko";
             StartProgram();
             cboMode.Bind(false, multipurpose_entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);

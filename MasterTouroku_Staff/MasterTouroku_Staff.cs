@@ -29,7 +29,7 @@ namespace MasterTouroku_Staff
         {
             multipurposeEntity multipurpose_entity = new multipurposeEntity();
             multipurpose_entity.id = 214;
-            ProgramID = "MasterTourokuStaff";
+            ProgramID = "MasterTouroku_Staff";
             StartProgram();
             cboMode.Bind(false, multipurpose_entity);
             cboStaff_Menu.Bind(true, multipurpose_entity);

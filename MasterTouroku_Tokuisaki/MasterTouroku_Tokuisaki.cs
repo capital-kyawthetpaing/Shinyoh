@@ -36,7 +36,7 @@ namespace MasterTouroku_Tokuisaki {
         private void MasterTouroku_Tokuisaki_Load(object sender, EventArgs e)
         {
             multipurposeEntity multipurposeEntity = new multipurposeEntity();
-            ProgramID = "MasterTourokuTokuisaki";
+            ProgramID = "MasterTouroku_Tokuisaki";
             StartProgram();
             cboMode.Bind(false,multipurposeEntity);
             txtStaffCharge.lblName = lblStaffCD_Name;
