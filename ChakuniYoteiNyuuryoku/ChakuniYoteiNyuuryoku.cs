@@ -275,12 +275,7 @@ namespace ChakuniYoteiNyuuryoku
             DataTable dt = new DataTable();
             Create_Datatable_Column(dt);
             DataRow dr = dt.NewRow();
-            if (cboMode.SelectedValue.ToString() == "1")
-            {
-                DataTable dt1 = cbl.GetChakuniYoteiNo("16", txtDate.Text, "0");
-                dr["ChakuniYoteiNO"] = dt1.Rows[0]["Column1"];
-            }
-            else
+            if (cboMode.SelectedValue.ToString() != "1")
             {
                 dr["ChakuniYoteiNO"] = txtChakuniYoteiNO.Text;
             }
