@@ -100,7 +100,7 @@
             // 
             // rdo_RRevisionDate
             // 
-            this.rdo_RRevisionDate.BackColor = System.Drawing.Color.Cyan;
+            this.rdo_RRevisionDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.rdo_RRevisionDate.Checked = true;
             this.rdo_RRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.rdo_RRevisionDate.Location = new System.Drawing.Point(125, 10);
