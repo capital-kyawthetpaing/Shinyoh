@@ -142,7 +142,7 @@ DECLARE  @hQuantityAdjust AS INT
 
 		CREATE TABLE #Temp_Detail
 				(   
-					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
+					HinbanCD				varchar(20) COLLATE DATABASE_DEFAULT,
 					ShouhinName				varchar(100) COLLATE DATABASE_DEFAULT,
 					ColorRyakuName				varchar(25) COLLATE DATABASE_DEFAULT,
 					ColorNO				varchar(13) COLLATE DATABASE_DEFAULT,
@@ -157,13 +157,14 @@ DECLARE  @hQuantityAdjust AS INT
 					ChakuniYoteiNO varchar(12)  COLLATE DATABASE_DEFAULT,
 					ChakuniYoteiGyouNO varchar(12)COLLATE DATABASE_DEFAULT,
 					HacchuuNO varchar(12)  COLLATE DATABASE_DEFAULT,
-					HacchuuGyouNO varchar(12) COLLATE DATABASE_DEFAULT
+					HacchuuGyouNO varchar(12) COLLATE DATABASE_DEFAULT,
+					ShouhinCD varchar(50) COLLATE DATABASE_DEFAULT
 				)
 	    EXEC sp_xml_preparedocument @hQuantityAdjust OUTPUT,@XML_Detail
 
 		 INSERT INTO #Temp_Detail
          (
-		   ShouhinCD,
+		   HinbanCD,
 		   ShouhinName,
 		   ColorRyakuName,
 		   ColorNO,
@@ -178,14 +179,15 @@ DECLARE  @hQuantityAdjust AS INT
 		   ChakuniYoteiNO,
 		   ChakuniYoteiGyouNO,
 		   HacchuuNO,
-		   HacchuuGyouNO
+		   HacchuuGyouNO,
+		   ShouhinCD
 		 )
 
 		 SELECT *
 					FROM OPENXML(@hQuantityAdjust, 'NewDataSet/test')
 					WITH
 					(
-					ShouhinCD				varchar(50) 'ShouhinCD',
+					HinbanCD				varchar(20) 'HinbanCD',
 					ShouhinName				varchar(100) 'ShouhinName',
 					ColorRyakuName				varchar(25) 'ColorRyakuName',
 					ColorNO				varchar(13) 'ColorNO',
@@ -200,7 +202,8 @@ DECLARE  @hQuantityAdjust AS INT
 					ChakuniYoteiNO     varchar(12) 'ChakuniYoteiNO',
 					ChakuniYoteiGyouNO              varchar(12) 'ChakuniYoteiGyouNO',
 					HacchuuNO varchar(12) 'HacchuuNO',
-					HacchuuGyouNO               varchar(12) 'HacchuuGyouNO'
+					HacchuuGyouNO               varchar(12) 'HacchuuGyouNO',
+					ShouhinCD   varchar(50) 'ShouhinCD'
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
@@ -211,11 +214,14 @@ declare @StaffCD varchar(10) = (select StaffCD from #Temp_Main)
 declare @ShouhinCD varchar(50)=(select ShouhinCD from #Temp_Main)
 declare @SoukoCD varchar(10)=(select SoukoCD from #Temp_Main)
 declare @Siiresaki varchar(13)=(select SiiresakiCD from #Temp_Main)
+declare @Operator varchar(10)=(select Operator from #Temp_Main)
+
 	--Sheet A update
 	Update D_Chakuni
 	SET StaffCD=m.StaffCD,
 	KanriNO=m.KanriNO,
 	ChakuniDate=convert(varchar(10), m.ChakuniDate, 111),
+	KaikeiYYMM=CONVERT(INT, FORMAT(Cast(m.ChakuniDate as Date), 'yyyyMM')),
 	SoukoCD=m.SoukoCD,
 	SiiresakiCD=m.SiiresakiCD,
 	SiiresakiRyakuName=CASE WHEN FS.ShokutiFLG=0 THEN FS.SiiresakiRyakuName ELSE m.SiiresakiRyakuName End,
@@ -238,9 +244,9 @@ declare @Siiresaki varchar(13)=(select SiiresakiCD from #Temp_Main)
 	SiiresakiTantouBushoName=CASE WHEN FS.ShokutiFLG = 0 THEN FS.TantoushaName ElSE Null END,
 	SiiresakiTantoushaYakushoku=CASE WHEN FS.ShokutiFLG = 0 THEN FS.TantouBusho ElSE Null END,
 	SiiresakiTantoushaName=	CASE WHEN FS.ShokutiFLG = 0 THEN FS.TantouYakushoku ElSE Null END,
-	InsertOperator=m.Operator,
+	InsertOperator=@Operator,
 	InsertDateTime=@currentDate,
-	UpdateOperator=m.Operator,
+	UpdateOperator=@Operator,
 	UpdateDateTime=@currentDate
 	 from #Temp_Main m 
 	 LEFT OUTER JOIN F_Siiresaki(getdate()) FS on FS.SiiresakiCD=m.SiiresakiCD
@@ -270,7 +276,7 @@ declare @Siiresaki varchar(13)=(select SiiresakiCD from #Temp_Main)
 	 HacchuuGyouNO=DCY.HacchuuGyouNO,
 	 JuchuuNO=DCY.JuchuuNO,
 	 JuchuuGyouNO=DCY.JuchuuGyouNO,
-	 UpdateOperator=m.Operator,
+	 UpdateOperator=@Operator,
 	 UpdateDateTime=@currentdate
     from  D_ChakuniMeisai as d,#Temp_Main m ,#Temp_Detail TD
 	 inner Join D_ChakuniYoteiMeisai DCY on DCY.ChakuniYoteiNO=TD.ChakuniYoteiNO
@@ -288,7 +294,7 @@ SiireKanryouKBN,SiiresakiName,SiiresakiYuubinNO1,SiiresakiYuubinNO2,SiiresakiJuu
 select 
 @Unique_20,dc.ChakuniNO,20,dc.StaffCD,dc.KanriNO,dc.ChakuniDate,dc.KaikeiYYMM,dc.SoukoCD,dc.SiiresakiCD,dc.SiiresakiRyakuName,dc.TuukaCD,dc.RateKBN,dc.SiireRate,dc.ChakuniDenpyouTekiyou,dc.SiireKanryouKBN,dc.SiiresakiName,
 dc.SiiresakiYuubinNO1,dc.SiiresakiYuubinNO2,dc.SiiresakiJuusho1,dc.SiiresakiJuusho2,dc.[SiiresakiTelNO1-1],dc.[SiiresakiTelNO1-2],dc.[SiiresakiTelNO1-3],dc.[SiiresakiTelNO2-1],dc.[SiiresakiTelNO2-2],dc.[SiiresakiTelNO2-3],
-dc.SiiresakiTantouBushoName,dc.SiiresakiTantoushaYakushoku,dc.SiiresakiTantoushaName,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,m.Operator,@currentDate
+dc.SiiresakiTantouBushoName,dc.SiiresakiTantoushaYakushoku,dc.SiiresakiTantoushaName,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,@Operator,@currentDate
 from D_Chakuni dc inner join #Temp_Main m on dc.ChakuniNO=m.ChakuniNO
 
 --Insert Table D(Before Modification)
@@ -296,9 +302,8 @@ Insert into D_ChakuniMeisaiHistory(HistoryGuid,ChakuniNO,ChakuniGyouNO,GyouHyouz
 SiireKanryouKBN,SiireZumiSuu,ChakuniYoteiNO,ChakuniYoteiGyouNO,HacchuuNO,HacchuuGyouNO,JuchuuNO,JuchuuGyouNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime,HistoryOperator,HistoryDateTime)
 
 Select @Unique_20,dc.ChakuniNO,dc.ChakuniGyouNO,dc.GyouHyouziJun,20,dc.KanriNO,dc.BrandCD,dc.ShouhinCD,dc.ShouhinName,dc.JANCD,dc.ColorRyakuName,dc.ColorNO,dc.SizeNO,dc.ChakuniSuu,dc.TaniCD,dc.ChakuniMeisaiTekiyou,dc.SiireKanryouKBN,
-dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuGyouNO,dc.JuchuuNO,dc.JuchuuGyouNO,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,m.Operator,@currentDate
+dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuGyouNO,dc.JuchuuNO,dc.JuchuuGyouNO,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,@Operator,@currentDate
 from D_ChakuniMeisai dc Inner join #Temp_Main m on dc.ChakuniNO=m.ChakuniNO
-
 
 --Insert table C(New or revised)
 Insert into D_ChakuniHistory(HistoryGuid,ChakuniNO,ShoriKBN,StaffCD,KanriNO,ChakuniDate,KaikeiYYMM,SoukoCD,SiiresakiCD,SiiresakiRyakuName,TuukaCD,RateKBN,SiireRate,ChakuniDenpyouTekiyou,
@@ -308,7 +313,7 @@ SiireKanryouKBN,SiiresakiName,SiiresakiYuubinNO1,SiiresakiYuubinNO2,SiiresakiJuu
 select 
 @Unique,dc.ChakuniNO,21,dc.StaffCD,dc.KanriNO,dc.ChakuniDate,dc.KaikeiYYMM,dc.SoukoCD,dc.SiiresakiCD,dc.SiiresakiRyakuName,dc.TuukaCD,dc.RateKBN,dc.SiireRate,dc.ChakuniDenpyouTekiyou,dc.SiireKanryouKBN,dc.SiiresakiName,
 dc.SiiresakiYuubinNO1,dc.SiiresakiYuubinNO2,dc.SiiresakiJuusho1,dc.SiiresakiJuusho2,dc.[SiiresakiTelNO1-1],dc.[SiiresakiTelNO1-2],dc.[SiiresakiTelNO1-3],dc.[SiiresakiTelNO2-1],dc.[SiiresakiTelNO2-2],dc.[SiiresakiTelNO2-3],
-dc.SiiresakiTantouBushoName,dc.SiiresakiTantoushaYakushoku,dc.SiiresakiTantoushaName,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,m.Operator,@currentDate
+dc.SiiresakiTantouBushoName,dc.SiiresakiTantoushaYakushoku,dc.SiiresakiTantoushaName,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,@Operator,@currentDate
 from D_Chakuni dc inner join #Temp_Main m on dc.ChakuniNO=m.ChakuniNO
 
 --Insert Table D(New or revised)
@@ -316,7 +321,7 @@ Insert into D_ChakuniMeisaiHistory(HistoryGuid,ChakuniNO,ChakuniGyouNO,GyouHyouz
 SiireKanryouKBN,SiireZumiSuu,ChakuniYoteiNO,ChakuniYoteiGyouNO,HacchuuNO,HacchuuGyouNO,JuchuuNO,JuchuuGyouNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime,HistoryOperator,HistoryDateTime)
 
 Select @Unique,dc.ChakuniNO,dc.ChakuniGyouNO,dc.GyouHyouziJun,21,dc.KanriNO,dc.BrandCD,dc.ShouhinCD,dc.ShouhinName,dc.JANCD,dc.ColorRyakuName,dc.ColorNO,dc.SizeNO,dc.ChakuniSuu,dc.TaniCD,dc.ChakuniMeisaiTekiyou,dc.SiireKanryouKBN,
-dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuGyouNO,dc.JuchuuNO,dc.JuchuuGyouNO,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,m.Operator,@currentDate
+dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuGyouNO,dc.JuchuuNO,dc.JuchuuGyouNO,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,@Operator,@currentDate
 from D_ChakuniMeisai dc Inner join #Temp_Main m on dc.ChakuniNO=m.ChakuniNO
 --from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 
@@ -331,19 +336,18 @@ Where D_ChakuniMeisai.ChakuniNO=m.ChakuniNO
 --Update D_ChakuniYoteiMeisai(for 追加または修正後)
 Update a
 SET a.ChakuniZumiSuu=a.ChakuniZumiSuu+d.ChakuniZumiSuu,
-    UpdateOperator=m.Operator,
+    UpdateOperator=@Operator,
 	UpdateDateTime=@currentDate
 From D_ChakuniYoteiMeisai a
 Inner  Join D_ChakuniMeisai on D_ChakuniMeisai.ChakuniYoteiNO=a.ChakuniYoteiNO---ses
                           and D_ChakuniMeisai.ChakuniYoteiGyouNO=a.ChakuniYoteiGyouNO,#Temp_Detail d,#Temp_Main m
 Where D_ChakuniMeisai.ChakuniNO=m.ChakuniNO
 
-
 --Update D_ChakuniYoteiMeisai
 Update D_ChakuniYoteiMeisai
 Set ChakuniKanryouKBN=Case When D_ChakuniYoteiMeisai.ChakuniYoteiSuu<=TD.ChakuniZumiSuu
 Then 1
-When  TD.SiireKanryouKBN=1
+When  TD.SiireKanryouKBN='True'
 Then 1
 Else 0
 End
@@ -371,10 +375,11 @@ Inner Join D_ChakuniYoteiMeisai on D_ChakuniYoteiMeisai.HacchuuNO=D_HacchuuMeisa
                           and D_ChakuniYoteiMeisai.HacchuuGyouNO=D_HacchuuMeisai.HacchuuGyouNO,#Temp_Detail d,#Temp_Main m
 Where D_ChakuniYoteiMeisai.ChakuniYoteiNO=m.ChakuniYoteiNO
 
+
 --Update D_HacchuuMeisai(for 追加または修正後)
 Update a
 SET a.ChakuniZumiSuu=a.ChakuniZumiSuu+d.ChakuniZumiSuu,
-    UpdateOperator=m.Operator,
+    UpdateOperator=@Operator,
 	UpdateDateTime=@currentDate
 From D_HacchuuMeisai a
 Inner Join D_ChakuniYoteiMeisai on D_ChakuniYoteiMeisai.HacchuuNO=a.HacchuuNO
@@ -385,7 +390,7 @@ Where D_ChakuniYoteiMeisai.ChakuniYoteiNO=m.ChakuniYoteiNO
 Update D_HacchuuMeisai
 Set ChakuniKanryouKBN=Case When D_HacchuuMeisai.ChakuniYoteiZumiSuu<=TD.ChakuniZumiSuu
 Then 1
-When  TD.SiireKanryouKBN=1
+When  TD.SiireKanryouKBN='True'
 Then 1
 Else 0
 End

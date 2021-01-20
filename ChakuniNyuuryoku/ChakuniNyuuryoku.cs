@@ -343,15 +343,14 @@ namespace ChakuniNyuuryoku
             Create_Datatable_Column(dt);
             DataRow dr = dt.NewRow();
             cbl = new chakuniNyuuryoku_BL();
-            if (cboMode.SelectedValue.ToString() == "1")
-            {
-                DataTable dt1 = cbl.GetChakuniNo("5", txtArrivalDate.Text, "0");
-                dr["ChakuniNO"] = dt1.Rows[0]["Column1"];
-            }
-            else
+            if (cboMode.SelectedValue.ToString() != "1")
             {
                 dr["ChakuniNO"] = txtArrivalNO.Text;
             }
+            //else
+            //{
+            //    dr["ChakuniNO"] = txtArrivalNO.Text;
+            //}
             dr["ChakuniDate"] = txtArrivalDate.Text;
             dr["SiiresakiCD"] = txtSiiresaki.Text;
             dr["SiiresakiName"] = s_obj.SiiresakiName;
@@ -425,16 +424,19 @@ namespace ChakuniNyuuryoku
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
             bl.ChakuniNyuuryoku_CUD(mode,str_main, str_detail);
+            bbl.ShowMessage("I101");
         }
         private void DoUpdate(string mode,string str_main, string str_detail)
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
             bl.ChakuniNyuuryoku_CUD(mode, str_main, str_detail);
+            bbl.ShowMessage("I101");
         }
         private void DoDelete(string mode,string str_main, string str_detail)
         {
             chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
             bl.ChakuniNyuuryoku_CUD(mode, str_main, str_detail);
+            bbl.ShowMessage("I102");
         }
         private ChakuniNyuuryoku_Entity GetEntity()
         {
@@ -596,7 +598,7 @@ namespace ChakuniNyuuryoku
         private DataTable CreateTable()
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("ShouhinCD", typeof(string));
+            dt.Columns.Add("HinbanCD", typeof(string));
             dt.Columns.Add("ShouhinName", typeof(string));
             dt.Columns.Add("ColorRyakuName", typeof(string));
             dt.Columns.Add("ColorNO", typeof(string));
@@ -614,6 +616,7 @@ namespace ChakuniNyuuryoku
             dt.Columns.Add("HacchuuNO", typeof(string));
             dt.Columns.Add("HacchuuGyouNO", typeof(string));
             dt.Columns.Add("Hacchuu", typeof(string));
+            dt.Columns.Add("ShouhinCD", typeof(string));
             dt.AcceptChanges();
             return dt;
         }

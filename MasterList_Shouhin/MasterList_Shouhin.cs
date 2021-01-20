@@ -134,11 +134,11 @@ namespace MasterList_Shouhin
                         rdo_ChokkinDate.Checked = true;
                         txtShouhinCD_From.Focus();
                     }
-                    else
-                    {
-                        bbl.ShowMessage("S013");
-                    }
-                }           
+                }
+            }
+            else
+            {
+                bbl.ShowMessage("S013");
             }
         }
     private ShouhinEntity Get_UIData()

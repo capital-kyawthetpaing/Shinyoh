@@ -122,7 +122,7 @@
             this.txtKouriten.MoveNext = true;
             this.txtKouriten.Name = "txtKouriten";
             this.txtKouriten.NextControl = null;
-            this.txtKouriten.NextControlName = "btnF1";
+            this.txtKouriten.NextControlName = "btnF10";
             this.txtKouriten.SearchType = Entity.SearchType.ScType.Kouriten;
             this.txtKouriten.Size = new System.Drawing.Size(90, 19);
             this.txtKouriten.TabIndex = 13;

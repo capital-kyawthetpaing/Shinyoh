@@ -171,14 +171,14 @@ namespace Shinyoh_Search
                         else if (this.Name.Contains("kubun"))
                             msearch.Access_Type = "109";
                         msearch.ShowDialog();
-                        CD = msearch.Id;
-                        CDate = msearch.Key;
-                        //if(this.Name== "txtID" || this.Name=="txtCopyID")
-                        //    CD = msearch.Id;
-                        //else
-                        //    CD = msearch.Key;
-                        //if (CDate != null)
-                        //    CDate = msearch.Char1;
+                        //CD = msearch.Id;
+                        //CDate = msearch.Key;
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Key;
                         if (lblName != null)
                             name = msearch.Char1;
                         break;
@@ -253,7 +253,7 @@ namespace Shinyoh_Search
                     }
                 }
 
-                //CD = string.Empty;            // For enter case to show search screen
+                CD = string.Empty;            // For enter case to show search screen
                 
 
                 ////for combo box

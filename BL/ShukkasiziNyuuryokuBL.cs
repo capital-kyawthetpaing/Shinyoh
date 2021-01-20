@@ -17,24 +17,6 @@ namespace BL
         {
             ckmdl = new CKMDL();
         }
-        public DataTable ShukkasiziNyuuryoku_ErrorCheck(string ShippingNO, string error_Type)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[2];
-            parameters[0] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = ShippingNO };
-            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
-            DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_ErrorCheck_Select", GetConnectionString(), parameters);
-            return dt;
-        }
-        public DataTable JuchuuNo_Check(string JuchuuNO, string error_Type)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[2];
-            parameters[0] = new SqlParameter("@JuchuuNo", SqlDbType.VarChar) { Value = JuchuuNO };
-            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
-            DataTable dt = ckmdl.SelectDatatable("JuchuuNo_Check", GetConnectionString(), parameters);
-            return dt;
-        }
         public DataTable ShukkasiziNyuuryoku_Data_Select(ShukkaSiziNyuuryokuEntity se, int type)
         {
             CKMDL ckmdl = new CKMDL();
@@ -82,6 +64,24 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_Display", GetConnectionString(), parameters);
             return dt;
         }
+        public DataTable ShukkasiziNyuuryoku_ErrorCheck(string ShippingNO, string error_Type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@ShippingNo", SqlDbType.VarChar) { Value = ShippingNO };
+            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
+            DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_ErrorCheck_Select", GetConnectionString(), parameters);
+            return dt;
+        }
+        public DataTable JuchuuNo_Check(string JuchuuNO, string error_Type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@JuchuuNo", SqlDbType.VarChar) { Value = JuchuuNO };
+            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
+            DataTable dt = ckmdl.SelectDatatable("JuchuuNo_Check", GetConnectionString(), parameters);
+            return dt;
+        }
         public DataTable ShippingNO_Search(ShukkaSiziNyuuryokuEntity sksze)
         {
             CKMDL ckmdl = new CKMDL();
@@ -102,7 +102,6 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("ShippingNO_Search", GetConnectionString(), sksze.Sqlprms);
             return dt;
         }
-
         public string ShukkasiziNyuuryoku_IUD(string mode, string xml_header, string xml_detail)
         {
             CKMDL ckmdl = new CKMDL();
@@ -112,15 +111,6 @@ namespace BL
             parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
             return ckmdl.InsertUpdateDeleteData("ShukkasiziNyuuryoku_IUD", GetConnectionString(), parameters);
         }
-        public DataTable  SKSZ_D_Exclusive_Insert_Value(string xml)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[1];
-            parameters[0] = new SqlParameter("@Display_XML", SqlDbType.Xml) { Value =xml};
-            DataTable dt = ckmdl.SelectDatatable("SKSZ_D_Exclusive_Insert_Value", GetConnectionString(), parameters);
-            return dt;
-        }
-
         public DataTable D_Exclusive_Lock_Check(ShukkaSiziNyuuryokuEntity se)
         {
             CKMDL ckmdl = new CKMDL();
@@ -130,27 +120,6 @@ namespace BL
             parameters[2] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
             parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
             DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Lock_Check", GetConnectionString(), parameters);
-            return dt;
-        }
-        public string Shukkasizi_Price( string shukkasizisuu, string JuchuuNO,string ShouhinCD ,string SoukoCD)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@KonkaiShukkaSiziSuu", SqlDbType.VarChar) { Value = shukkasizisuu};
-            parameters[1] = new SqlParameter("@JuchuuNO_JuchuuGyouNO", SqlDbType.VarChar) { Value = JuchuuNO };
-            parameters[2] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
-            //parameters[4] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = SoukoCD };
-
-            return ckmdl.InsertUpdateDeleteData("Shukkasizi_Price", GetConnectionString(), parameters);
-        }
-        public DataTable GetShippingNo(string SerialNO, string ShippingDate, string SEQNO)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@SerialNO", SqlDbType.VarChar) { Value = SerialNO };
-            parameters[1] = new SqlParameter("@refDate", SqlDbType.VarChar) { Value = ShippingDate };
-            parameters[2] = new SqlParameter("@SEQNO", SqlDbType.VarChar) { Value = SEQNO };
-            DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
             return dt;
         }
     }
