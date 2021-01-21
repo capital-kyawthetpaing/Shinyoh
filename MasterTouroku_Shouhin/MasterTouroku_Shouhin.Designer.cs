@@ -137,7 +137,7 @@
             this.PanelTitle.Controls.Add(this.txtProduct);
             this.PanelTitle.Controls.Add(this.lblProduct);
             this.PanelTitle.Location = new System.Drawing.Point(120, 0);
-            this.PanelTitle.Size = new System.Drawing.Size(815, 69);
+            this.PanelTitle.Size = new System.Drawing.Size(855, 69);
             this.PanelTitle.TabIndex = 2;
             // 
             // cboMode
@@ -207,7 +207,7 @@
             this.lblCopyProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCopyProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopyProduct.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCopyProduct.Location = new System.Drawing.Point(410, 8);
+            this.lblCopyProduct.Location = new System.Drawing.Point(430, 8);
             this.lblCopyProduct.Name = "lblCopyProduct";
             this.lblCopyProduct.Size = new System.Drawing.Size(100, 19);
             this.lblCopyProduct.TabIndex = 37;
@@ -220,7 +220,7 @@
             this.lblCopyRevisionDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCopyRevisionDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopyRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCopyRevisionDate.Location = new System.Drawing.Point(410, 35);
+            this.lblCopyRevisionDate.Location = new System.Drawing.Point(430, 35);
             this.lblCopyRevisionDate.Name = "lblCopyRevisionDate";
             this.lblCopyRevisionDate.Size = new System.Drawing.Size(100, 19);
             this.lblCopyRevisionDate.TabIndex = 38;
@@ -240,7 +240,7 @@
             this.txtCopyChangeDate.IsErrorOccurs = false;
             this.txtCopyChangeDate.IsRequire = false;
             this.txtCopyChangeDate.IsUseInitializedLayout = true;
-            this.txtCopyChangeDate.Location = new System.Drawing.Point(510, 35);
+            this.txtCopyChangeDate.Location = new System.Drawing.Point(530, 35);
             this.txtCopyChangeDate.MaxLength = 10;
             this.txtCopyChangeDate.MinimumSize = new System.Drawing.Size(100, 18);
             this.txtCopyChangeDate.MoveNext = true;
@@ -261,7 +261,7 @@
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblClassification.ForeColor = System.Drawing.Color.White;
-            this.lblClassification.Location = new System.Drawing.Point(941, 39);
+            this.lblClassification.Location = new System.Drawing.Point(981, 39);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
             this.lblClassification.TabIndex = 9;
@@ -272,7 +272,7 @@
             // 
             this.rdo_Registragion.Checked = true;
             this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Registragion.Location = new System.Drawing.Point(1058, 39);
+            this.rdo_Registragion.Location = new System.Drawing.Point(1098, 39);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
             this.rdo_Registragion.NextControl = null;
@@ -286,7 +286,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Delete.Location = new System.Drawing.Point(1113, 39);
+            this.rdo_Delete.Location = new System.Drawing.Point(1153, 39);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -1643,7 +1643,7 @@
             this.txtCopyProduct.IsRequire = false;
             this.txtCopyProduct.IsUseInitializedLayout = true;
             this.txtCopyProduct.lblName = null;
-            this.txtCopyProduct.Location = new System.Drawing.Point(510, 8);
+            this.txtCopyProduct.Location = new System.Drawing.Point(530, 8);
             this.txtCopyProduct.MaxLength = 50;
             this.txtCopyProduct.MinimumSize = new System.Drawing.Size(300, 18);
             this.txtCopyProduct.MoveNext = true;
@@ -1651,7 +1651,7 @@
             this.txtCopyProduct.NextControl = null;
             this.txtCopyProduct.NextControlName = "txtCopyChangeDate";
             this.txtCopyProduct.SearchType = Entity.SearchType.ScType.Shouhin;
-            this.txtCopyProduct.Size = new System.Drawing.Size(300, 19);
+            this.txtCopyProduct.Size = new System.Drawing.Size(320, 19);
             this.txtCopyProduct.TabIndex = 4;
             this.txtCopyProduct.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtCopyProduct.TxtBox = null;
@@ -1680,7 +1680,7 @@
             this.txtProduct.NextControl = null;
             this.txtProduct.NextControlName = "txtChangeDate";
             this.txtProduct.SearchType = Entity.SearchType.ScType.Shouhin;
-            this.txtProduct.Size = new System.Drawing.Size(300, 19);
+            this.txtProduct.Size = new System.Drawing.Size(320, 19);
             this.txtProduct.TabIndex = 2;
             this.txtProduct.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtProduct.TxtBox = null;
