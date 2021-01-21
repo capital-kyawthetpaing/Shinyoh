@@ -476,7 +476,7 @@
             this.txtShouhinName.NextControl = null;
             this.txtShouhinName.NextControlName = "txtNo11";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
-            this.txtShouhinName.Size = new System.Drawing.Size(600, 19);
+            this.txtShouhinName.Size = new System.Drawing.Size(500, 19);
             this.txtShouhinName.TabIndex = 5;
             this.txtShouhinName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 

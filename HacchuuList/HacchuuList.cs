@@ -56,7 +56,7 @@ namespace HacchuuList
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Export, F10, "出力(F10)", true); 
+            SetButton(ButtonType.BType.ExcelExport, F10, "出力(F10)", true); 
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             ErrorCheck();
@@ -153,10 +153,11 @@ namespace HacchuuList
                     dt.Columns.Remove("発注先名");                              //not include in Excel
                     dt.Columns["SoukoName"].ColumnName = "倉庫";
 
+                    if (!System.IO.Directory.Exists("C:\\Excel"))
+                        System.IO.Directory.CreateDirectory("C:\\Excel");
 
                     SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-                    saveFileDialog1.InitialDirectory = @"C:\CSV\";
+                    saveFileDialog1.InitialDirectory = @"C:\Excel\";
                     ////for csv
                     //saveFileDialog1.Filter = "csv files (*.csv)|*.csv";
                     //saveFileDialog1.FileName = ProgramID + " (" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.Hour + DateTime.Now.Day + DateTime.Now.Month + ") " + OperatorCD;

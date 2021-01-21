@@ -62,7 +62,7 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
-            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
@@ -178,7 +178,7 @@ namespace JuchuuNyuuryoku
             cf.Clear(PanelDetail);
 
             cf.EnablePanel(PanelTitle);
-           // cf.DisablePanel(PanelDetail);
+            cf.DisablePanel(PanelDetail);
 
             lblTokuisakiShort_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblKouriten_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -255,10 +255,10 @@ namespace JuchuuNyuuryoku
                     Disable_UDI_Mode();
                 }
             }
-            if (tagID == "8")
-            {
-                F8_Gridview_Bind();
-            }
+            //if (tagID == "8")
+            //{
+            //    F8_Gridview_Bind();
+            //}
             if (tagID == "9")
             {
                 SiiresakiSearch detail = new SiiresakiSearch();

@@ -74,7 +74,7 @@
             this.txtPhone2_3.IsErrorOccurs = false;
             this.txtPhone2_3.IsRequire = false;
             this.txtPhone2_3.IsUseInitializedLayout = true;
-            this.txtPhone2_3.Location = new System.Drawing.Point(322, 214);
+            this.txtPhone2_3.Location = new System.Drawing.Point(314, 215);
             this.txtPhone2_3.MaxLength = 5;
             this.txtPhone2_3.MinimumSize = new System.Drawing.Size(60, 19);
             this.txtPhone2_3.MoveNext = true;
@@ -137,9 +137,9 @@
             this.Panel_Detail.Controls.Add(this.lblLong);
             this.Panel_Detail.Controls.Add(this.txtShort_Name);
             this.Panel_Detail.Controls.Add(this.lblShort);
-            this.Panel_Detail.Location = new System.Drawing.Point(1, 82);
+            this.Panel_Detail.Location = new System.Drawing.Point(3, 82);
             this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1052, 336);
+            this.Panel_Detail.Size = new System.Drawing.Size(1050, 335);
             this.Panel_Detail.TabIndex = 1;
             // 
             // label4
@@ -234,7 +234,7 @@
             this.txtPhone1_3.IsErrorOccurs = false;
             this.txtPhone1_3.IsRequire = false;
             this.txtPhone1_3.IsUseInitializedLayout = true;
-            this.txtPhone1_3.Location = new System.Drawing.Point(322, 180);
+            this.txtPhone1_3.Location = new System.Drawing.Point(314, 181);
             this.txtPhone1_3.MaxLength = 5;
             this.txtPhone1_3.MinimumSize = new System.Drawing.Size(60, 19);
             this.txtPhone1_3.MoveNext = true;
@@ -331,7 +331,7 @@
             this.txtAddress2.NextControl = null;
             this.txtAddress2.NextControlName = "txtPhone1_1";
             this.txtAddress2.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress2.Size = new System.Drawing.Size(400, 19);
+            this.txtAddress2.Size = new System.Drawing.Size(500, 19);
             this.txtAddress2.TabIndex = 7;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -370,7 +370,7 @@
             this.txtAddress1.NextControl = null;
             this.txtAddress1.NextControlName = "txtAddress2";
             this.txtAddress1.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress1.Size = new System.Drawing.Size(400, 19);
+            this.txtAddress1.Size = new System.Drawing.Size(500, 19);
             this.txtAddress1.TabIndex = 6;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -401,7 +401,7 @@
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(226, 78);
+            this.txtYubin2.Location = new System.Drawing.Point(199, 78);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin2.MoveNext = true;
@@ -457,7 +457,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(201, 76);
+            this.label1.Location = new System.Drawing.Point(176, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 98;
@@ -484,7 +484,7 @@
             this.txtLong_Name.NextControl = null;
             this.txtLong_Name.NextControlName = "txtYubin1";
             this.txtLong_Name.SearchType = Entity.SearchType.ScType.None;
-            this.txtLong_Name.Size = new System.Drawing.Size(400, 19);
+            this.txtLong_Name.Size = new System.Drawing.Size(500, 19);
             this.txtLong_Name.TabIndex = 3;
             this.txtLong_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -516,7 +516,7 @@
             this.txtShort_Name.IsErrorOccurs = false;
             this.txtShort_Name.IsRequire = false;
             this.txtShort_Name.IsUseInitializedLayout = true;
-            this.txtShort_Name.Location = new System.Drawing.Point(142, 15);
+            this.txtShort_Name.Location = new System.Drawing.Point(143, 15);
             this.txtShort_Name.MaxLength = 40;
             this.txtShort_Name.MinimumSize = new System.Drawing.Size(240, 19);
             this.txtShort_Name.MoveNext = true;
@@ -524,7 +524,7 @@
             this.txtShort_Name.NextControl = null;
             this.txtShort_Name.NextControlName = "txtLong_Name";
             this.txtShort_Name.SearchType = Entity.SearchType.ScType.None;
-            this.txtShort_Name.Size = new System.Drawing.Size(240, 19);
+            this.txtShort_Name.Size = new System.Drawing.Size(250, 19);
             this.txtShort_Name.TabIndex = 2;
             this.txtShort_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -535,7 +535,7 @@
             this.lblShort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShort.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblShort.ForeColor = System.Drawing.Color.White;
-            this.lblShort.Location = new System.Drawing.Point(42, 15);
+            this.lblShort.Location = new System.Drawing.Point(43, 15);
             this.lblShort.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblShort.Name = "lblShort";
             this.lblShort.Size = new System.Drawing.Size(100, 19);
@@ -549,7 +549,7 @@
             this.lbl_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lbl_Name.Location = new System.Drawing.Point(232, 49);
+            this.lbl_Name.Location = new System.Drawing.Point(232, 51);
             this.lbl_Name.MinimumSize = new System.Drawing.Size(100, 19);
             this.lbl_Name.Name = "lbl_Name";
             this.lbl_Name.Size = new System.Drawing.Size(200, 19);
@@ -570,7 +570,7 @@
             this.txtCD.IsErrorOccurs = false;
             this.txtCD.IsRequire = false;
             this.txtCD.IsUseInitializedLayout = true;
-            this.txtCD.Location = new System.Drawing.Point(142, 49);
+            this.txtCD.Location = new System.Drawing.Point(142, 51);
             this.txtCD.MaxLength = 10;
             this.txtCD.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtCD.MoveNext = true;
@@ -588,7 +588,7 @@
             this.lblCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCD.Location = new System.Drawing.Point(42, 49);
+            this.lblCD.Location = new System.Drawing.Point(42, 51);
             this.lblCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblCD.Name = "lblCD";
             this.lblCD.Size = new System.Drawing.Size(100, 19);
@@ -604,9 +604,9 @@
             this.PanelTitle.Controls.Add(this.lbl_Name);
             this.PanelTitle.Controls.Add(this.txtCD);
             this.PanelTitle.Controls.Add(this.lblCD);
-            this.PanelTitle.Location = new System.Drawing.Point(-8, 1);
+            this.PanelTitle.Location = new System.Drawing.Point(4, 1);
             this.PanelTitle.Name = "PanelTitle";
-            this.PanelTitle.Size = new System.Drawing.Size(1064, 81);
+            this.PanelTitle.Size = new System.Drawing.Size(1049, 81);
             this.PanelTitle.TabIndex = 0;
             // 
             // KouritenDetail
