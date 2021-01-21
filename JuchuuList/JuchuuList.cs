@@ -231,9 +231,11 @@ namespace JuchuuList {
                         dt.Columns.Remove("発注先名");
                         dt.Columns["SoukoName"].ColumnName = "倉庫";
 
-                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        if (!System.IO.Directory.Exists("C:\\Excel"))
+                            System.IO.Directory.CreateDirectory("C:\\Excel");
 
-                        saveFileDialog1.InitialDirectory = @"C:\CSV\";
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.InitialDirectory = @"C:\Excel\";
 
 
                         //for excel

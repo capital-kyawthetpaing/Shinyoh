@@ -128,10 +128,11 @@ namespace ShukkaSiziDataShuturyoku {
                         dt.Columns["SenpouHacchuuNO"].ColumnName = "出荷指示番号";
                         dt.Columns["ShukkaSiziMeisaiTekiyou"].ColumnName = "備考";
 
+                        if (!System.IO.Directory.Exists("C:\\Excel"))
+                            System.IO.Directory.CreateDirectory("C:\\Excel");
 
                         SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-                        saveFileDialog1.InitialDirectory = @"C:\CSV\";
+                        saveFileDialog1.InitialDirectory = @"C:\Excel\";
 
                         //for excel
                         saveFileDialog1.Filter = "ExcelFile|*.xls";
