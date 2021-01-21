@@ -33,6 +33,7 @@ namespace MasterList_Tokuisaki
         private void MasterList_Tokuisaki_Load(object sender, EventArgs e)
         {
             ProgramID = "MasterList_Tokuisaki";
+
             StartProgram();
             cboMode.Bind(false, multi_Entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
@@ -45,7 +46,7 @@ namespace MasterList_Tokuisaki
             SetButton(ButtonType.BType.Save, F12, "", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
+            SetButton(ButtonType.BType.ExcelExport, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             base_entity = _GetBaseData();
@@ -99,51 +100,43 @@ namespace MasterList_Tokuisaki
             dt = bl.Get_ExportData(Get_UIData());
             if (dt.Rows.Count > 0)
             {
-                if (bbl.ShowMessage("Q205") == DialogResult.Yes)
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
+                saveFileDialog1.DefaultExt = "xls";
+                saveFileDialog1.Filter = "ExcelFile|*.xls";
+                saveFileDialog1.FileName = "得意先マスタリスト.xls";
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
+                    System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
-                    saveFileDialog1.DefaultExt = "xls";
-                    saveFileDialog1.Filter = "ExcelFile|*.xls";
-                    saveFileDialog1.FileName = "得意先マスタリスト.xls";
-                    saveFileDialog1.RestoreDirectory = true;
+                    ExcelDesignSetting obj = new ExcelDesignSetting();
+                    obj.FilePath = saveFileDialog1.FileName;
+                    obj.SheetName = "得意先マスタリスト";
+                    obj.Start_Interior_Column = "A1";
+                    obj.End_Interior_Column = "AJ1";
+                    obj.Interior_Color = Color.Orange;
+                    obj.Start_Font_Column = "A1";
+                    obj.End_Font_Column = "AJ1";
+                    obj.Font_Color = Color.Black;
+                    //For column C
+                    obj.Date_Column = new List<int>();
+                    obj.Date_Column.Add(2);
+                    obj.Date_Format = "YYYY/MM/DD";
+                    obj.Start_Title_Center_Column = "A1";
+                    obj.End_Title_Center_Column = "AJ1";
+                    //for column T,U,V
+                    ExportCSVExcel excel = new ExportCSVExcel();
+                    excel.ExportDataTableToExcel(dt, obj);
 
-                    if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
-                        System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
+                    //New_Mode
+                    cf.Clear(PanelDetail);
+                    rdo_RRevisionDate.Checked = true;
+                    txtTokuisakiCD.Focus();
 
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        ExcelDesignSetting obj = new ExcelDesignSetting();
-                        obj.FilePath = saveFileDialog1.FileName;
-                        obj.SheetName = "得意先マスタリスト";
-                        obj.Start_Interior_Column = "A1";
-                        obj.End_Interior_Column = "AJ1";
-                        obj.Interior_Color = Color.Orange;
-                        obj.Start_Font_Column = "A1";
-                        obj.End_Font_Column = "AJ1";
-                        obj.Font_Color = Color.Black;
-                        //For column C
-                        obj.Date_Column = new List<int>();
-                        obj.Date_Column.Add(2);
-                        obj.Date_Format = "YYYY/MM/DD";
-                        obj.Start_Title_Center_Column = "A1";
-                        obj.End_Title_Center_Column = "AJ1";
-                        //for column T,U,V
-                        ExportCSVExcel excel = new ExportCSVExcel();
-                        excel.ExportDataTableToExcel(dt, obj);
-
-                        //New_Mode
-                        cf.Clear(PanelDetail);
-                        rdo_RRevisionDate.Checked = true;
-                        txtTokuisakiCD.Focus();
-
-                        bbl.ShowMessage("I203");
-                    }
-                }
-                else
-                {
-                    if (this.ActiveControl != null)
-                        this.ActiveControl.Focus();
+                    bbl.ShowMessage("I203");
                 }
             }
             else

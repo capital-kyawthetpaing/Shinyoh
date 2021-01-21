@@ -138,7 +138,7 @@
             this.btnSupplier_F11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSupplier_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSupplier_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSupplier_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSupplier_F11.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnSupplier_F11.Location = new System.Drawing.Point(763, 89);
             this.btnSupplier_F11.Name = "btnSupplier_F11";
             this.btnSupplier_F11.NextControl = null;

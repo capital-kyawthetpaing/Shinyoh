@@ -280,6 +280,24 @@ namespace Shinyoh
                         else
                             FunctionProcess(btn.Tag.ToString());
                         break;
+                    case ButtonType.BType.ExcelExport:
+                        if(bbl.ShowMessage("Q205") != DialogResult.Yes)
+                        {
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
+                        }
+                        else
+                            FunctionProcess(btn.Tag.ToString());
+                        break;
+                    case ButtonType.BType.CSVExport:
+                        if (bbl.ShowMessage("Q203") != DialogResult.Yes)
+                        {
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
+                        }
+                        else
+                            FunctionProcess(btn.Tag.ToString());
+                        break;
                 }
             }
         }
@@ -365,6 +383,12 @@ namespace Shinyoh
                     button.Text = buttonText;
                     break;
                 case ButtonType.BType.Process:
+                    button.Text = buttonText;
+                    break;
+                case ButtonType.BType.ExcelExport:
+                    button.Text = buttonText;
+                    break;
+                case ButtonType.BType.CSVExport:
                     button.Text = buttonText;
                     break;
             }

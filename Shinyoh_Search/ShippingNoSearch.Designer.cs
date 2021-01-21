@@ -220,7 +220,7 @@ namespace Shinyoh_Search
             this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSearch.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSearch.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnSearch.Location = new System.Drawing.Point(1019, 83);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.NextControl = null;

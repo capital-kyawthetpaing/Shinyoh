@@ -138,9 +138,11 @@
             this.btnTokuisaki_F11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnTokuisaki_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnTokuisaki_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTokuisaki_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnTokuisaki_F11.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnTokuisaki_F11.Location = new System.Drawing.Point(760, 97);
             this.btnTokuisaki_F11.Name = "btnTokuisaki_F11";
+            this.btnTokuisaki_F11.NextControl = null;
+            this.btnTokuisaki_F11.NextControlName = null;
             this.btnTokuisaki_F11.Size = new System.Drawing.Size(150, 25);
             this.btnTokuisaki_F11.TabIndex = 7;
             this.btnTokuisaki_F11.Text = "表示(F11)";

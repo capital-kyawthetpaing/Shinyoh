@@ -307,9 +307,11 @@
             this.btnKouriten_F11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnKouriten_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnKouriten_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnKouriten_F11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnKouriten_F11.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnKouriten_F11.Location = new System.Drawing.Point(1016, 90);
             this.btnKouriten_F11.Name = "btnKouriten_F11";
+            this.btnKouriten_F11.NextControl = null;
+            this.btnKouriten_F11.NextControlName = null;
             this.btnKouriten_F11.Size = new System.Drawing.Size(150, 25);
             this.btnKouriten_F11.TabIndex = 11;
             this.btnKouriten_F11.Text = "表示(F11)";
