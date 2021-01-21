@@ -80,7 +80,7 @@ namespace Shinyoh_Search
                         colName = "SoukoName";
                         break;
                     case Entity.SearchType.ScType.Siiresaki:
-                        colName = "SiiresakiName";
+                        colName = "SiiresakiRyakuName";
                         break;
                 }
                 DataTable dt = this.IsDatatableOccurs;

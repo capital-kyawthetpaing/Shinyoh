@@ -367,8 +367,32 @@ namespace Shinyoh_Controls
                     string[] p = Text.Split('.');
                     if (a != p[1].Length)
                     {
-                        bbl.ShowMessage("E118");
-                        this.Focus();
+                        if (Int64.TryParse(p[0].ToString(), out num))
+                        {
+                            if (p[1].Length < a)
+                            {
+                                if(!p[0].ToString().Equals("0"))
+                                    Text = string.Format("{0:#,#}", num) + "." + p[1].ToString();
+                                else
+                                    Text = num + "." + p[1].ToString();
+                                while (Text.Split('.')[1].Length < a)
+                                {
+                                    Text = Text + "0";
+                                }
+                            }
+                            else
+                            {
+                                if (!p[0].ToString().Equals("0"))
+                                    Text = string.Format("{0:#,#}", num) + "." + p[1].Substring(0, a);
+                                else
+                                    Text = num + "." + p[1].Substring(0, a);
+                            }
+                        }
+                        else
+                        {
+                            bbl.ShowMessage("E118");
+                            this.Focus();
+                        }
                     }
                     else
                     {
