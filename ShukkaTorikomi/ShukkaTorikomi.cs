@@ -351,7 +351,7 @@ namespace ShukkaTorikomi
                         dr[18] = error;
                         create_dt.Rows.Add(dr);
                     }
-
+                    if (create_dt.Rows.Count == csvRows.Length - 1)
                     Xml = cf.DataTableToXml(create_dt);
                 }
                 else
