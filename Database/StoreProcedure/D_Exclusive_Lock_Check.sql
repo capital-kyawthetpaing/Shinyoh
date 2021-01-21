@@ -8,8 +8,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		Shwe Eain San
--- Create date: 2020-11-20
+-- Author:		Swe Swe
+-- Create date: < 2020-11-20>
 -- Description:	<Description,,>
 -- =============================================
 CREATE  PROCEDURE [dbo].[D_Exclusive_Lock_Check]
@@ -26,30 +26,44 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-
 	--Delete
 if @Type=1
 begin
-	DECLARE @JuchuuNo_table TABLE (idx int Primary Key IDENTITY(1,1), JuchuuNo varchar(20))
-			INSERT @JuchuuNo_table SELECT JuchuuNO FROM D_Juchuu
-			
-			
-			declare @Count as int = 1
-			WHILE @Count <= (SELECT COUNT(*) FROM @JuchuuNo_table)
+declare @Count as int = 1
+
+	DECLARE @TableA TABLE (idx int Primary Key IDENTITY(1,1), JuchuuNo varchar(20))
+			INSERT @TableA SELECT JuchuuNO FROM D_Juchuu
+
+			WHILE @Count <= (SELECT COUNT(*) FROM @TableA)
 			BEGIN
-			declare @JuchuuNumber as varchar(20)=(select JuchuuNo from @JuchuuNo_table WHERE idx =@Count)
-			if exists( select * from D_Exclusive where DataKBN=1 and Number=@JuchuuNumber and Operator=@OperatorCD and Program=@Program)
+			declare @Juchuu1 varchar(20)=(select JuchuuNo from @TableA WHERE idx =@Count)
+			if exists( select * from D_Exclusive where DataKBN=1 and Number=@Juchuu1 and Operator=@OperatorCD and Program=@Program)
 			begin
 				DELETE  
 				From D_Exclusive 
 				where DataKBN=1
-				and Number=(select JuchuuNo from @JuchuuNo_table WHERE idx =@Count)
-			end			
-					 
+				and Number=(select JuchuuNo from @TableA WHERE idx =@Count)
+			end					 
+		SET @Count = @Count + 1
+			END;
+
+			
+	DECLARE @TableB TABLE (idx int Primary Key IDENTITY(1,1), JuchuuNo varchar(20))
+			INSERT @TableB SELECT JuchuuNO FROM D_ShukkaSiziMeisai where JuchuuNO is not null
+			
+		WHILE @Count <= (SELECT COUNT(*) FROM @TableB)
+			BEGIN
+			declare @Juchuu2 varchar(20)=(select JuchuuNo from @TableB WHERE idx =@Count)
+			IF EXISTS( select * from D_Exclusive where DataKBN=1 and Number=@Juchuu2 and Operator=@OperatorCD and Program=@Program)
+			begin
+				DELETE  
+				From D_Exclusive 
+				where DataKBN=1
+				and Number=(select JuchuuNo from @TableB WHERE idx =@Count)
+			end					 
 		SET @Count = @Count + 1
 			END;
 end
-
 	--INSERT
 if @Type=2
 begin
@@ -72,6 +86,5 @@ begin
 			select '1' as MessageID
 			end
 end
-
 END
 
