@@ -65,14 +65,7 @@ namespace JuchuuList {
 
             txtStaffCD.ChangeDate = txtTempDate;
             txtTokuisaki.ChangeDate = txtTempDate;
-            txtStore.ChangeDate = txtTempDate;
-
-            //if (txtName.Enabled == false)
-            //{
-            //    Control btn = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
-            //    txtDestOrderNo.NextControlName = btn.Name;
-            //}else
-            //    txtDestOrderNo.NextControlName = txtName.Name;
+            txtStore.ChangeDate = txtTempDate;        
         }
         private void Date_Setting()
         {
@@ -168,6 +161,7 @@ namespace JuchuuList {
                         txtPhNo2.Enabled = true;
                         txtPhNo3.Enabled = true;
                         chk = "1";
+                        txtDestOrderNo.NextControlName = txtName.Name;
                     }
                     else
                     {
@@ -179,6 +173,8 @@ namespace JuchuuList {
                         txtPhNo2.Enabled = false;
                         txtPhNo3.Enabled = false;
                         chk = "0";
+                        Control btn = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+                        txtDestOrderNo.NextControlName = btn.Name;
                     }
                 }
             }

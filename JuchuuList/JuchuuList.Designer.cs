@@ -268,7 +268,7 @@
             this.txtPhNo3.MoveNext = true;
             this.txtPhNo3.Name = "txtPhNo3";
             this.txtPhNo3.NextControl = null;
-            this.txtPhNo3.NextControlName = "btnF1";
+            this.txtPhNo3.NextControlName = "btnF10";
             this.txtPhNo3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNo3.Size = new System.Drawing.Size(70, 19);
             this.txtPhNo3.TabIndex = 21;
@@ -685,7 +685,7 @@
             this.txtBrand.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtBrand.Size = new System.Drawing.Size(80, 19);
             this.txtBrand.TabIndex = 8;
-            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand.TxtBox = null;
             this.txtBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrand_KeyDown);
             // 

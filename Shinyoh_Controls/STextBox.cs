@@ -334,7 +334,18 @@ namespace Shinyoh_Controls
                 if (Int64.TryParse(value, out num))
                 {
                     if (!Text.Equals("0"))
-                        Text = string.Format("{0:#,#}", num);
+                    {
+                        if (a != 0)
+                        {
+                            Text = string.Format("{0:#,#.0}", num); ;
+                            while (Text.Split('.')[1].Length < a)
+                            {
+                                Text = Text + "0";
+                            }
+                        }
+                        else
+                            Text = string.Format("{0:#,#}", num);
+                    }
                 }
                 else if (string.IsNullOrWhiteSpace(value))
                 {
