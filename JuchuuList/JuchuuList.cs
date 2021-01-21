@@ -58,21 +58,14 @@ namespace JuchuuList {
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
+            SetButton(ButtonType.BType.ExcelExport, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             Date_Setting();
             ErrorCheck();
 
             txtStaffCD.ChangeDate = txtTempDate;
             txtTokuisaki.ChangeDate = txtTempDate;
-            txtStore.ChangeDate = txtTempDate;
-
-            //if (txtName.Enabled == false)
-            //{
-            //    Control btn = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
-            //    txtDestOrderNo.NextControlName = btn.Name;
-            //}else
-            //    txtDestOrderNo.NextControlName = txtName.Name;
+            txtStore.ChangeDate = txtTempDate;        
         }
         private void Date_Setting()
         {
@@ -168,6 +161,7 @@ namespace JuchuuList {
                         txtPhNo2.Enabled = true;
                         txtPhNo3.Enabled = true;
                         chk = "1";
+                        txtDestOrderNo.NextControlName = txtName.Name;
                     }
                     else
                     {
@@ -179,6 +173,8 @@ namespace JuchuuList {
                         txtPhNo2.Enabled = false;
                         txtPhNo3.Enabled = false;
                         chk = "0";
+                        Control btn = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+                        txtDestOrderNo.NextControlName = btn.Name;
                     }
                 }
             }
@@ -201,12 +197,7 @@ namespace JuchuuList {
             }
             if (tagID == "10")
             {
-                if (bbl.ShowMessage("Q205") != DialogResult.Yes)
-                {
-                    if (PreviousCtrl != null)
-                        PreviousCtrl.Focus();
-                }
-                else {
+               
                     DataTable dt = new DataTable { TableName = "JuchuuListTable" };
                     dt = Get_Form_Object();
                     if (dt.Rows.Count > 0)
@@ -240,9 +231,11 @@ namespace JuchuuList {
                         dt.Columns.Remove("発注先名");
                         dt.Columns["SoukoName"].ColumnName = "倉庫";
 
-                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        if (!System.IO.Directory.Exists("C:\\Excel"))
+                            System.IO.Directory.CreateDirectory("C:\\Excel");
 
-                        saveFileDialog1.InitialDirectory = @"C:\CSV\";
+                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                        saveFileDialog1.InitialDirectory = @"C:\Excel\";
 
 
                         //for excel
@@ -285,9 +278,7 @@ namespace JuchuuList {
                         if (PreviousCtrl != null)
                             PreviousCtrl.Focus();
                     }
-                }
-                
-            }
+            }            
             base.FunctionProcess(tagID);
         }
       

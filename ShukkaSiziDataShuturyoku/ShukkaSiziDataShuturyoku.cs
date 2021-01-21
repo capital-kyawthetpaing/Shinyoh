@@ -53,7 +53,7 @@ namespace ShukkaSiziDataShuturyoku {
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
+            SetButton(ButtonType.BType.ExcelExport, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             txtToukuisaki.lblName = lblTokuisakiName;
@@ -106,14 +106,7 @@ namespace ShukkaSiziDataShuturyoku {
                 Clear();
             }
             if (tagID == "10")
-            {
-                if (bbl.ShowMessage("Q205") != DialogResult.Yes)
-                {
-                    if (PreviousCtrl != null)
-                        PreviousCtrl.Focus();
-                }
-                else
-                {
+            {             
                     DataTable dt = new DataTable { TableName = "MyTableName" };
                     dt = Get_Form_Object();
                     if (dt.Rows.Count > 0)
@@ -135,10 +128,11 @@ namespace ShukkaSiziDataShuturyoku {
                         dt.Columns["SenpouHacchuuNO"].ColumnName = "出荷指示番号";
                         dt.Columns["ShukkaSiziMeisaiTekiyou"].ColumnName = "備考";
 
+                        if (!System.IO.Directory.Exists("C:\\Excel"))
+                            System.IO.Directory.CreateDirectory("C:\\Excel");
 
                         SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-                        saveFileDialog1.InitialDirectory = @"C:\CSV\";
+                        saveFileDialog1.InitialDirectory = @"C:\Excel\";
 
                         //for excel
                         saveFileDialog1.Filter = "ExcelFile|*.xls";
@@ -175,9 +169,7 @@ namespace ShukkaSiziDataShuturyoku {
                         bbl.ShowMessage("S013");
                         if (PreviousCtrl != null)
                             PreviousCtrl.Focus();
-                    }
-
-                }               
+                    }                           
                 base.FunctionProcess(tagID);
             }
         } 

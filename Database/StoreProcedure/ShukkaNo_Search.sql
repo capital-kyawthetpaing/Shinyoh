@@ -15,8 +15,8 @@ GO
 CREATE PROCEDURE [dbo].[ShukkaNo_Search]
 	-- Add the parameters for the stored procedure here
 
-@ShukkaDate1		AS DATE,
-@ShukkaDate2		AS DATE,
+@ShukkaDate1		AS VARCHAR(10),
+@ShukkaDate2		AS VARCHAR(10),
 @TokuisakiCD		AS VARCHAR(10),
 @StaffCD			AS VARCHAR(10),
 @ShouhinName		AS VARCHAR(100),
@@ -36,8 +36,8 @@ BEGIN
     -- Insert statements for procedure here
 	SELECT
 		GETDATE() as CurrentDay,
-		A.ShukkaNO AS ShukkaNO,
-		CONVERT(varchar, MAX(A.ShukkaDate), 111) AS ShukkaDate,
+		A.ShukkaNO,
+		MAX(A.ShukkaDate) as ShukkaDate,
 		MAX(A.TokuisakiCD) AS TokuisakiCD,
 		MAX(A.TokuisakiName) AS TokuisakiName,
 		MAX(B.ShukkaSiziNO) AS ShukkaSiziNO

@@ -268,7 +268,7 @@
             this.txtPhNo3.MoveNext = true;
             this.txtPhNo3.Name = "txtPhNo3";
             this.txtPhNo3.NextControl = null;
-            this.txtPhNo3.NextControlName = "btnF1";
+            this.txtPhNo3.NextControlName = "btnF10";
             this.txtPhNo3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNo3.Size = new System.Drawing.Size(70, 19);
             this.txtPhNo3.TabIndex = 21;
@@ -341,7 +341,7 @@
             // lblBubunn2
             // 
             this.lblBubunn2.AutoSize = true;
-            this.lblBubunn2.Location = new System.Drawing.Point(595, 389);
+            this.lblBubunn2.Location = new System.Drawing.Point(635, 390);
             this.lblBubunn2.Name = "lblBubunn2";
             this.lblBubunn2.Size = new System.Drawing.Size(61, 13);
             this.lblBubunn2.TabIndex = 71;
@@ -442,7 +442,7 @@
             this.txtAddress.NextControl = null;
             this.txtAddress.NextControlName = "txtPhNo1";
             this.txtAddress.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress.Size = new System.Drawing.Size(450, 19);
+            this.txtAddress.Size = new System.Drawing.Size(490, 19);
             this.txtAddress.TabIndex = 18;
             this.txtAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtAddress.TxtBox = null;
@@ -525,7 +525,7 @@
             this.chk_FW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_FW.IsDatatableOccurs = null;
             this.chk_FW.IsErrorOccurs = false;
-            this.chk_FW.Location = new System.Drawing.Point(791, 156);
+            this.chk_FW.Location = new System.Drawing.Point(819, 156);
             this.chk_FW.MoveNext = true;
             this.chk_FW.Name = "chk_FW";
             this.chk_FW.NextControl = null;
@@ -540,7 +540,7 @@
             this.chk_SS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_SS.IsDatatableOccurs = null;
             this.chk_SS.IsErrorOccurs = false;
-            this.chk_SS.Location = new System.Drawing.Point(721, 156);
+            this.chk_SS.Location = new System.Drawing.Point(749, 156);
             this.chk_SS.MoveNext = true;
             this.chk_SS.Name = "chk_SS";
             this.chk_SS.NextControl = null;
@@ -553,7 +553,7 @@
             // lblYear
             // 
             this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(687, 157);
+            this.lblYear.Location = new System.Drawing.Point(715, 157);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(19, 13);
             this.lblYear.TabIndex = 55;
@@ -572,7 +572,7 @@
             this.txtYear.IsErrorOccurs = false;
             this.txtYear.IsRequire = false;
             this.txtYear.IsUseInitializedLayout = true;
-            this.txtYear.Location = new System.Drawing.Point(615, 154);
+            this.txtYear.Location = new System.Drawing.Point(643, 154);
             this.txtYear.MaxLength = 4;
             this.txtYear.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYear.MoveNext = true;
@@ -590,7 +590,7 @@
             this.lblTenjikai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTenjikai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTenjikai.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblTenjikai.Location = new System.Drawing.Point(515, 154);
+            this.lblTenjikai.Location = new System.Drawing.Point(543, 154);
             this.lblTenjikai.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblTenjikai.Name = "lblTenjikai";
             this.lblTenjikai.Size = new System.Drawing.Size(100, 19);
@@ -685,7 +685,7 @@
             this.txtBrand.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtBrand.Size = new System.Drawing.Size(80, 19);
             this.txtBrand.TabIndex = 8;
-            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand.TxtBox = null;
             this.txtBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrand_KeyDown);
             // 

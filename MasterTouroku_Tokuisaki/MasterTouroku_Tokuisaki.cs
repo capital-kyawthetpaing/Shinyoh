@@ -51,7 +51,7 @@ namespace MasterTouroku_Tokuisaki {
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Import, F10, "CSV取込(F10)", true);
+            SetButton(ButtonType.BType.CSVExport, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             txt_Tokuisaki.Focus();
             ChangeMode(Mode.New);

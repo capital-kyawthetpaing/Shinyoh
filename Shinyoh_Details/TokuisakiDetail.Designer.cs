@@ -68,7 +68,7 @@
             this.lblShort.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShort.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblShort.ForeColor = System.Drawing.Color.White;
-            this.lblShort.Location = new System.Drawing.Point(42, 15);
+            this.lblShort.Location = new System.Drawing.Point(43, 15);
             this.lblShort.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblShort.Name = "lblShort";
             this.lblShort.Size = new System.Drawing.Size(100, 19);
@@ -89,7 +89,7 @@
             this.txtShort_Name.IsErrorOccurs = false;
             this.txtShort_Name.IsRequire = false;
             this.txtShort_Name.IsUseInitializedLayout = true;
-            this.txtShort_Name.Location = new System.Drawing.Point(142, 15);
+            this.txtShort_Name.Location = new System.Drawing.Point(143, 15);
             this.txtShort_Name.MaxLength = 40;
             this.txtShort_Name.MinimumSize = new System.Drawing.Size(200, 19);
             this.txtShort_Name.MoveNext = true;
@@ -97,7 +97,7 @@
             this.txtShort_Name.NextControl = null;
             this.txtShort_Name.NextControlName = "txtLong_Name";
             this.txtShort_Name.SearchType = Entity.SearchType.ScType.None;
-            this.txtShort_Name.Size = new System.Drawing.Size(240, 19);
+            this.txtShort_Name.Size = new System.Drawing.Size(250, 19);
             this.txtShort_Name.TabIndex = 2;
             this.txtShort_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -137,7 +137,7 @@
             this.txtLong_Name.NextControl = null;
             this.txtLong_Name.NextControlName = "txtYubin1";
             this.txtLong_Name.SearchType = Entity.SearchType.ScType.None;
-            this.txtLong_Name.Size = new System.Drawing.Size(400, 19);
+            this.txtLong_Name.Size = new System.Drawing.Size(500, 19);
             this.txtLong_Name.TabIndex = 3;
             this.txtLong_Name.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -251,7 +251,7 @@
             this.txtAddress1.NextControl = null;
             this.txtAddress1.NextControlName = "txtAddress2";
             this.txtAddress1.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress1.Size = new System.Drawing.Size(400, 19);
+            this.txtAddress1.Size = new System.Drawing.Size(500, 19);
             this.txtAddress1.TabIndex = 6;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -290,7 +290,7 @@
             this.txtAddress2.NextControl = null;
             this.txtAddress2.NextControlName = "txtPhone1_1";
             this.txtAddress2.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress2.Size = new System.Drawing.Size(400, 19);
+            this.txtAddress2.Size = new System.Drawing.Size(500, 19);
             this.txtAddress2.TabIndex = 7;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -371,7 +371,7 @@
             this.txtPhone1_3.IsErrorOccurs = false;
             this.txtPhone1_3.IsRequire = false;
             this.txtPhone1_3.IsUseInitializedLayout = true;
-            this.txtPhone1_3.Location = new System.Drawing.Point(322, 181);
+            this.txtPhone1_3.Location = new System.Drawing.Point(319, 181);
             this.txtPhone1_3.MaxLength = 5;
             this.txtPhone1_3.MinimumSize = new System.Drawing.Size(60, 19);
             this.txtPhone1_3.MoveNext = true;
@@ -387,7 +387,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(204, 180);
+            this.label2.Location = new System.Drawing.Point(207, 178);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(15, 20);
             this.label2.TabIndex = 103;
@@ -397,7 +397,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(298, 181);
+            this.label3.Location = new System.Drawing.Point(295, 178);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 20);
             this.label3.TabIndex = 104;
@@ -480,7 +480,7 @@
             this.txtPhone2_3.IsErrorOccurs = false;
             this.txtPhone2_3.IsRequire = false;
             this.txtPhone2_3.IsUseInitializedLayout = true;
-            this.txtPhone2_3.Location = new System.Drawing.Point(322, 215);
+            this.txtPhone2_3.Location = new System.Drawing.Point(319, 215);
             this.txtPhone2_3.MaxLength = 5;
             this.txtPhone2_3.MinimumSize = new System.Drawing.Size(60, 19);
             this.txtPhone2_3.MoveNext = true;
@@ -496,7 +496,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(204, 213);
+            this.label5.Location = new System.Drawing.Point(207, 213);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 20);
             this.label5.TabIndex = 106;
@@ -506,7 +506,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(299, 214);
+            this.label4.Location = new System.Drawing.Point(296, 213);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 107;
@@ -540,7 +540,7 @@
             this.Panel_Detail.Controls.Add(this.lblShort);
             this.Panel_Detail.Location = new System.Drawing.Point(0, 82);
             this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1050, 329);
+            this.Panel_Detail.Size = new System.Drawing.Size(1050, 335);
             this.Panel_Detail.TabIndex = 1;
             // 
             // PanelTitle
@@ -562,7 +562,7 @@
             this.lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTokuisaki_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTokuisaki_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lblTokuisaki_Name.Location = new System.Drawing.Point(232, 49);
+            this.lblTokuisaki_Name.Location = new System.Drawing.Point(232, 54);
             this.lblTokuisaki_Name.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblTokuisaki_Name.Name = "lblTokuisaki_Name";
             this.lblTokuisaki_Name.Size = new System.Drawing.Size(200, 19);
@@ -583,7 +583,7 @@
             this.txtTokuisakiCD.IsErrorOccurs = false;
             this.txtTokuisakiCD.IsRequire = false;
             this.txtTokuisakiCD.IsUseInitializedLayout = true;
-            this.txtTokuisakiCD.Location = new System.Drawing.Point(142, 49);
+            this.txtTokuisakiCD.Location = new System.Drawing.Point(142, 54);
             this.txtTokuisakiCD.MaxLength = 10;
             this.txtTokuisakiCD.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtTokuisakiCD.MoveNext = true;
@@ -601,7 +601,7 @@
             this.lblCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCD.Location = new System.Drawing.Point(42, 49);
+            this.lblCD.Location = new System.Drawing.Point(42, 54);
             this.lblCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblCD.Name = "lblCD";
             this.lblCD.Size = new System.Drawing.Size(100, 19);
