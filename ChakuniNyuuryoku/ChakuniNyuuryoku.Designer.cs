@@ -78,25 +78,25 @@
             this.lblSiiresaki = new Shinyoh_Controls.SLabel();
             this.txtArrivalNO = new Shinyoh_Search.SearchBox();
             this.txtScheduledNo = new Shinyoh_Search.SearchBox();
-            this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colArrivalNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colChakuniZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.chk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colChakuniYoteiGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHacchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HinbanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChakuniYoteiDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChakuniYoteiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChakuniZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChakuniSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SiireKanryouKBN = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ChakuniMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Chakuni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Hacchuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChakuniYoteiNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ChakuniYoteiGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HacchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
@@ -626,25 +626,25 @@
             this.gvChakuniNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvChakuniNyuuryoku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvChakuniNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colShouhinCD,
-            this.colShouhinName,
-            this.colColorRyakuName,
-            this.colColorNO,
-            this.colSizeNO,
-            this.colDate,
-            this.colArrivalNo,
-            this.colChakuniZumiSuu,
-            this.colArrivalTime,
-            this.chk,
-            this.colDetails,
-            this.colJanCD,
-            this.colChakuniYoteiGyouNO,
-            this.colHacchuuGyouNO,
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
+            this.HinbanCD,
+            this.ShouhinName,
+            this.ColorRyakuName,
+            this.ColorNO,
+            this.SizeNO,
+            this.ChakuniYoteiDate,
+            this.ChakuniYoteiSuu,
+            this.ChakuniZumiSuu,
+            this.ChakuniSuu,
+            this.SiireKanryouKBN,
+            this.ChakuniMeisaiTekiyou,
+            this.JanCD,
+            this.Chakuni,
+            this.Hacchuu,
+            this.ChakuniYoteiNO,
+            this.ChakuniYoteiGyouNO,
+            this.HacchuuNO,
+            this.HacchuuGyouNO,
+            this.ShouhinCD});
             this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(19, 213);
             this.gvChakuniNyuuryoku.Name = "gvChakuniNyuuryoku";
             this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1450, 580);
@@ -993,153 +993,153 @@
             this.txtScheduledNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtScheduledNo.TxtBox = null;
             // 
-            // colShouhinCD
+            // HinbanCD
             // 
-            this.colShouhinCD.DataPropertyName = "HinbanCD";
-            this.colShouhinCD.HeaderText = "商品";
-            this.colShouhinCD.Name = "colShouhinCD";
-            this.colShouhinCD.ReadOnly = true;
-            this.colShouhinCD.Width = 120;
+            this.HinbanCD.DataPropertyName = "HinbanCD";
+            this.HinbanCD.HeaderText = "商品";
+            this.HinbanCD.Name = "HinbanCD";
+            this.HinbanCD.ReadOnly = true;
+            this.HinbanCD.Width = 120;
             // 
-            // colShouhinName
+            // ShouhinName
             // 
-            this.colShouhinName.DataPropertyName = "ShouhinName";
-            this.colShouhinName.HeaderText = "商品名";
-            this.colShouhinName.Name = "colShouhinName";
-            this.colShouhinName.ReadOnly = true;
-            this.colShouhinName.Width = 230;
+            this.ShouhinName.DataPropertyName = "ShouhinName";
+            this.ShouhinName.HeaderText = "商品名";
+            this.ShouhinName.Name = "ShouhinName";
+            this.ShouhinName.ReadOnly = true;
+            this.ShouhinName.Width = 230;
             // 
-            // colColorRyakuName
+            // ColorRyakuName
             // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            this.colColorRyakuName.ReadOnly = true;
-            this.colColorRyakuName.Width = 150;
+            this.ColorRyakuName.DataPropertyName = "ColorRyakuName";
+            this.ColorRyakuName.HeaderText = "カラー略名";
+            this.ColorRyakuName.Name = "ColorRyakuName";
+            this.ColorRyakuName.ReadOnly = true;
+            this.ColorRyakuName.Width = 150;
             // 
-            // colColorNO
+            // ColorNO
             // 
-            this.colColorNO.DataPropertyName = "ColorNO";
-            this.colColorNO.HeaderText = "カラー";
-            this.colColorNO.Name = "colColorNO";
-            this.colColorNO.ReadOnly = true;
+            this.ColorNO.DataPropertyName = "ColorNO";
+            this.ColorNO.HeaderText = "カラー";
+            this.ColorNO.Name = "ColorNO";
+            this.ColorNO.ReadOnly = true;
             // 
-            // colSizeNO
+            // SizeNO
             // 
-            this.colSizeNO.DataPropertyName = "SizeNO";
-            this.colSizeNO.HeaderText = "サイズ";
-            this.colSizeNO.Name = "colSizeNO";
-            this.colSizeNO.ReadOnly = true;
+            this.SizeNO.DataPropertyName = "SizeNO";
+            this.SizeNO.HeaderText = "サイズ";
+            this.SizeNO.Name = "SizeNO";
+            this.SizeNO.ReadOnly = true;
             // 
-            // colDate
+            // ChakuniYoteiDate
             // 
-            this.colDate.DataPropertyName = "ChakuniYoteiDate";
+            this.ChakuniYoteiDate.DataPropertyName = "ChakuniYoteiDate";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colDate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colDate.HeaderText = "着荷予定日";
-            this.colDate.Name = "colDate";
-            this.colDate.ReadOnly = true;
+            this.ChakuniYoteiDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ChakuniYoteiDate.HeaderText = "着荷予定日";
+            this.ChakuniYoteiDate.Name = "ChakuniYoteiDate";
+            this.ChakuniYoteiDate.ReadOnly = true;
             // 
-            // colArrivalNo
+            // ChakuniYoteiSuu
             // 
-            this.colArrivalNo.DataPropertyName = "ChakuniYoteiSuu";
+            this.ChakuniYoteiSuu.DataPropertyName = "ChakuniYoteiSuu";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colArrivalNo.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colArrivalNo.HeaderText = "着荷予定数";
-            this.colArrivalNo.Name = "colArrivalNo";
-            this.colArrivalNo.ReadOnly = true;
+            this.ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ChakuniYoteiSuu.HeaderText = "着荷予定数";
+            this.ChakuniYoteiSuu.Name = "ChakuniYoteiSuu";
+            this.ChakuniYoteiSuu.ReadOnly = true;
             // 
-            // colChakuniZumiSuu
+            // ChakuniZumiSuu
             // 
-            this.colChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
+            this.ChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colChakuniZumiSuu.HeaderText = "着荷済数";
-            this.colChakuniZumiSuu.Name = "colChakuniZumiSuu";
+            this.ChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ChakuniZumiSuu.HeaderText = "着荷済数";
+            this.ChakuniZumiSuu.Name = "ChakuniZumiSuu";
             // 
-            // colArrivalTime
+            // ChakuniSuu
             // 
-            this.colArrivalTime.DataPropertyName = "ChakuniSuu";
+            this.ChakuniSuu.DataPropertyName = "ChakuniSuu";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle5.NullValue = null;
-            this.colArrivalTime.DefaultCellStyle = dataGridViewCellStyle5;
-            this.colArrivalTime.HeaderText = "今回着荷数";
-            this.colArrivalTime.Name = "colArrivalTime";
+            this.ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ChakuniSuu.HeaderText = "今回着荷数";
+            this.ChakuniSuu.Name = "ChakuniSuu";
             // 
-            // chk
+            // SiireKanryouKBN
             // 
-            this.chk.DataPropertyName = "SiireKanryouKBN";
-            this.chk.FalseValue = "0";
-            this.chk.HeaderText = "完了";
-            this.chk.Name = "chk";
-            this.chk.TrueValue = "1";
-            this.chk.Width = 70;
+            this.SiireKanryouKBN.DataPropertyName = "SiireKanryouKBN";
+            this.SiireKanryouKBN.FalseValue = "0";
+            this.SiireKanryouKBN.HeaderText = "完了";
+            this.SiireKanryouKBN.Name = "SiireKanryouKBN";
+            this.SiireKanryouKBN.TrueValue = "1";
+            this.SiireKanryouKBN.Width = 70;
             // 
-            // colDetails
+            // ChakuniMeisaiTekiyou
             // 
-            this.colDetails.DataPropertyName = "ChakuniMeisaiTekiyou";
-            this.colDetails.HeaderText = "明細摘要";
-            this.colDetails.Name = "colDetails";
-            this.colDetails.Width = 235;
+            this.ChakuniMeisaiTekiyou.DataPropertyName = "ChakuniMeisaiTekiyou";
+            this.ChakuniMeisaiTekiyou.HeaderText = "明細摘要";
+            this.ChakuniMeisaiTekiyou.Name = "ChakuniMeisaiTekiyou";
+            this.ChakuniMeisaiTekiyou.Width = 235;
             // 
-            // colJanCD
+            // JanCD
             // 
-            this.colJanCD.DataPropertyName = "JanCD";
-            this.colJanCD.HeaderText = "JANCD";
-            this.colJanCD.Name = "colJanCD";
+            this.JanCD.DataPropertyName = "JanCD";
+            this.JanCD.HeaderText = "JANCD";
+            this.JanCD.Name = "JanCD";
             // 
-            // colChakuniYoteiGyouNO
+            // Chakuni
             // 
-            this.colChakuniYoteiGyouNO.DataPropertyName = "Chakuni";
-            this.colChakuniYoteiGyouNO.HeaderText = "着荷予定番号-行番号";
-            this.colChakuniYoteiGyouNO.Name = "colChakuniYoteiGyouNO";
-            this.colChakuniYoteiGyouNO.Width = 200;
+            this.Chakuni.DataPropertyName = "Chakuni";
+            this.Chakuni.HeaderText = "着荷予定番号-行番号";
+            this.Chakuni.Name = "Chakuni";
+            this.Chakuni.Width = 200;
             // 
-            // colHacchuuGyouNO
+            // Hacchuu
             // 
-            this.colHacchuuGyouNO.DataPropertyName = "Hacchuu";
-            this.colHacchuuGyouNO.HeaderText = "発注番号-行番号";
-            this.colHacchuuGyouNO.Name = "colHacchuuGyouNO";
-            this.colHacchuuGyouNO.Width = 180;
+            this.Hacchuu.DataPropertyName = "Hacchuu";
+            this.Hacchuu.HeaderText = "発注番号-行番号";
+            this.Hacchuu.Name = "Hacchuu";
+            this.Hacchuu.Width = 180;
             // 
-            // Column1
+            // ChakuniYoteiNO
             // 
-            this.Column1.DataPropertyName = "ChakuniYoteiNO";
-            this.Column1.HeaderText = "ChakuniYoteiNO";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            this.Column1.Width = 10;
+            this.ChakuniYoteiNO.DataPropertyName = "ChakuniYoteiNO";
+            this.ChakuniYoteiNO.HeaderText = "ChakuniYoteiNO";
+            this.ChakuniYoteiNO.Name = "ChakuniYoteiNO";
+            this.ChakuniYoteiNO.Visible = false;
+            this.ChakuniYoteiNO.Width = 10;
             // 
-            // Column2
+            // ChakuniYoteiGyouNO
             // 
-            this.Column2.DataPropertyName = "ChakuniYoteiGyouNO";
-            this.Column2.HeaderText = "ChakuniYoteiGyouNO";
-            this.Column2.Name = "Column2";
-            this.Column2.Visible = false;
-            this.Column2.Width = 10;
+            this.ChakuniYoteiGyouNO.DataPropertyName = "ChakuniYoteiGyouNO";
+            this.ChakuniYoteiGyouNO.HeaderText = "ChakuniYoteiGyouNO";
+            this.ChakuniYoteiGyouNO.Name = "ChakuniYoteiGyouNO";
+            this.ChakuniYoteiGyouNO.Visible = false;
+            this.ChakuniYoteiGyouNO.Width = 10;
             // 
-            // Column3
+            // HacchuuNO
             // 
-            this.Column3.DataPropertyName = "HacchuuNO";
-            this.Column3.HeaderText = "HacchuuNO";
-            this.Column3.Name = "Column3";
-            this.Column3.Visible = false;
-            this.Column3.Width = 10;
+            this.HacchuuNO.DataPropertyName = "HacchuuNO";
+            this.HacchuuNO.HeaderText = "HacchuuNO";
+            this.HacchuuNO.Name = "HacchuuNO";
+            this.HacchuuNO.Visible = false;
+            this.HacchuuNO.Width = 10;
             // 
-            // Column4
+            // HacchuuGyouNO
             // 
-            this.Column4.DataPropertyName = "HacchuuGyouNO";
-            this.Column4.HeaderText = "HacchuuGyouNO";
-            this.Column4.Name = "Column4";
-            this.Column4.Visible = false;
-            this.Column4.Width = 10;
+            this.HacchuuGyouNO.DataPropertyName = "HacchuuGyouNO";
+            this.HacchuuGyouNO.HeaderText = "HacchuuGyouNO";
+            this.HacchuuGyouNO.Name = "HacchuuGyouNO";
+            this.HacchuuGyouNO.Visible = false;
+            this.HacchuuGyouNO.Width = 10;
             // 
-            // Column5
+            // ShouhinCD
             // 
-            this.Column5.DataPropertyName = "ShouhinCD";
-            this.Column5.HeaderText = "ShouhinCD";
-            this.Column5.Name = "Column5";
-            this.Column5.Visible = false;
+            this.ShouhinCD.DataPropertyName = "ShouhinCD";
+            this.ShouhinCD.HeaderText = "ShouhinCD";
+            this.ShouhinCD.Name = "ShouhinCD";
+            this.ShouhinCD.Visible = false;
             // 
             // ChakuniNyuuryoku
             // 
@@ -1209,25 +1209,25 @@
         private Shinyoh_Controls.STextBox txtYearTerm;
         private Shinyoh_Controls.SCheckBox chkSS;
         private Shinyoh_Controls.SCheckBox chkFW;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colColorRyakuName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colColorNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSizeNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colArrivalNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniZumiSuu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colArrivalTime;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn chk;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colJanCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniYoteiGyouNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHacchuuGyouNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HinbanCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShouhinName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColorRyakuName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColorNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SizeNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniYoteiDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniYoteiSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniZumiSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniSuu;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn SiireKanryouKBN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniMeisaiTekiyou;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JanCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Chakuni;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Hacchuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniYoteiNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniYoteiGyouNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HacchuuNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HacchuuGyouNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShouhinCD;
     }
 }
 
