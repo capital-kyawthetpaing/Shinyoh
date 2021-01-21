@@ -87,14 +87,14 @@ namespace MasterList_Shouhin
             if(dtShouhin.Rows.Count>0)
             {
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
+                saveFileDialog1.InitialDirectory = @"C:\Excel";
                 saveFileDialog1.DefaultExt = "xls";
                 saveFileDialog1.Filter = "ExcelFile|*.xls";
                 saveFileDialog1.FileName = "商品マスタリスト.xls";
                 saveFileDialog1.RestoreDirectory = true;
 
-                if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
-                    System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
+                if (!System.IO.Directory.Exists("C:\\Excel"))
+                    System.IO.Directory.CreateDirectory("C:\\Excel");
 
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {

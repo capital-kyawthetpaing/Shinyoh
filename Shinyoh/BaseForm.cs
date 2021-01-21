@@ -194,15 +194,6 @@ namespace Shinyoh
                     case ButtonType.BType.Export:
                         switch(btn.Name)
                         {
-                            case "BtnF7":
-                                if (bbl.ShowMessage("Q205") != DialogResult.Yes)
-                                {
-                                    if (PreviousCtrl != null)
-                                        PreviousCtrl.Focus();
-                                }
-                                else
-                                    FunctionProcess(btn.Tag.ToString());
-                                break;
                             case "BtnF10":
                                 if (ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
                                 {
@@ -281,22 +272,28 @@ namespace Shinyoh
                             FunctionProcess(btn.Tag.ToString());
                         break;
                     case ButtonType.BType.ExcelExport:
-                        if(bbl.ShowMessage("Q205") != DialogResult.Yes)
+                        if (ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
                         {
-                            if (PreviousCtrl != null)
-                                PreviousCtrl.Focus();
+                            if (bbl.ShowMessage("Q205") != DialogResult.Yes)
+                            {
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
+                            }
+                            else
+                                FunctionProcess(btn.Tag.ToString());
                         }
-                        else
-                            FunctionProcess(btn.Tag.ToString());
                         break;
                     case ButtonType.BType.CSVExport:
-                        if (bbl.ShowMessage("Q203") != DialogResult.Yes)
+                        if (ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
                         {
-                            if (PreviousCtrl != null)
-                                PreviousCtrl.Focus();
+                            if (bbl.ShowMessage("Q203") != DialogResult.Yes)
+                            {
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
+                            }
+                            else
+                                FunctionProcess(btn.Tag.ToString());
                         }
-                        else
-                            FunctionProcess(btn.Tag.ToString());
                         break;
                 }
             }
