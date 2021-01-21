@@ -90,7 +90,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvChakuniNyuuryoku.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvChakuniNyuuryoku.SetGridDesign();
-            gvChakuniNyuuryoku.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colDate,colArrivalNo,colChakuniZumiSuu,colJanCD,colChakuniYoteiGyouNO,colHacchuuGyouNO");
+            gvChakuniNyuuryoku.SetReadOnlyColumn("ShouhinCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
             gvChakuniNyuuryoku.SetHiraganaColumn("colDetails");
         }
         private void ChangeMode(Mode mode)
@@ -855,7 +855,7 @@ namespace ChakuniNyuuryoku
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 9)
             {
-                if (Convert.ToBoolean(gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["chk"].EditedFormattedValue))
+                if (Convert.ToBoolean(gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["SiireKanryouKBN"].EditedFormattedValue))
                 {
                     Temp_Save(e.RowIndex);
                     gvChakuniNyuuryoku.MoveNextCell();
