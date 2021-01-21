@@ -579,7 +579,7 @@
             this.Panel_Detail.Controls.Add(this.lblShort);
             this.Panel_Detail.Location = new System.Drawing.Point(3, 83);
             this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1050, 326);
+            this.Panel_Detail.Size = new System.Drawing.Size(1050, 335);
             this.Panel_Detail.TabIndex = 1;
             // 
             // lblAddress1

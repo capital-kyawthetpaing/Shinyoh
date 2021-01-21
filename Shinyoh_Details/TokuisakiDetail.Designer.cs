@@ -540,7 +540,7 @@
             this.Panel_Detail.Controls.Add(this.lblShort);
             this.Panel_Detail.Location = new System.Drawing.Point(0, 82);
             this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1050, 329);
+            this.Panel_Detail.Size = new System.Drawing.Size(1056, 336);
             this.Panel_Detail.TabIndex = 1;
             // 
             // PanelTitle
@@ -551,9 +551,9 @@
             this.PanelTitle.Controls.Add(this.lblTokuisaki_Name);
             this.PanelTitle.Controls.Add(this.txtTokuisakiCD);
             this.PanelTitle.Controls.Add(this.lblCD);
-            this.PanelTitle.Location = new System.Drawing.Point(1, 1);
+            this.PanelTitle.Location = new System.Drawing.Point(0, 1);
             this.PanelTitle.Name = "PanelTitle";
-            this.PanelTitle.Size = new System.Drawing.Size(1049, 81);
+            this.PanelTitle.Size = new System.Drawing.Size(1056, 81);
             this.PanelTitle.TabIndex = 0;
             // 
             // lblTokuisaki_Name

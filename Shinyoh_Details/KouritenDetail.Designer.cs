@@ -137,9 +137,9 @@
             this.Panel_Detail.Controls.Add(this.lblLong);
             this.Panel_Detail.Controls.Add(this.txtShort_Name);
             this.Panel_Detail.Controls.Add(this.lblShort);
-            this.Panel_Detail.Location = new System.Drawing.Point(3, 82);
+            this.Panel_Detail.Location = new System.Drawing.Point(1, 82);
             this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1050, 326);
+            this.Panel_Detail.Size = new System.Drawing.Size(1052, 336);
             this.Panel_Detail.TabIndex = 1;
             // 
             // label4
@@ -604,9 +604,9 @@
             this.PanelTitle.Controls.Add(this.lbl_Name);
             this.PanelTitle.Controls.Add(this.txtCD);
             this.PanelTitle.Controls.Add(this.lblCD);
-            this.PanelTitle.Location = new System.Drawing.Point(4, 1);
+            this.PanelTitle.Location = new System.Drawing.Point(-8, 1);
             this.PanelTitle.Name = "PanelTitle";
-            this.PanelTitle.Size = new System.Drawing.Size(1049, 81);
+            this.PanelTitle.Size = new System.Drawing.Size(1064, 81);
             this.PanelTitle.TabIndex = 0;
             // 
             // KouritenDetail
