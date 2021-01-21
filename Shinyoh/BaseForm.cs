@@ -191,32 +191,6 @@ namespace Shinyoh
                             FunctionProcess(btn.Tag.ToString());
                         }
                         break;
-                    case ButtonType.BType.Export:
-                        switch(btn.Name)
-                        {
-                            case "BtnF10":
-                                if (ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
-                                {
-                                    if (bbl.ShowMessage("Q203") != DialogResult.Yes)
-                                    {
-                                        if (PreviousCtrl != null)
-                                            PreviousCtrl.Focus();
-                                    }
-                                    else
-                                        FunctionProcess(btn.Tag.ToString());
-                                }
-                                break;
-                            case "BtnF11":
-                                if (bbl.ShowMessage("Q204") != DialogResult.Yes)
-                                {
-                                    if (PreviousCtrl != null)
-                                        PreviousCtrl.Focus();
-                                }
-                                else
-                                    FunctionProcess(btn.Tag.ToString());
-                                break;
-                        }
-                        break;
                     case ButtonType.BType.Import:
                         FunctionProcess(btn.Tag.ToString());
                         break;
