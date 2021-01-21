@@ -161,7 +161,9 @@ namespace ShukkaNyuuryoku {
         {
             (string, string, string) obj = GetInsert();
             ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
-            sBL.ShukkaNyuuryoku_CUD(obj.Item1, obj.Item2, obj.Item3);
+            string return_Bl = sBL.ShukkaNyuuryoku_CUD(obj.Item1, obj.Item2, obj.Item3);
+            if (return_Bl == "true")
+                bbl.ShowMessage("I101");
         }
 
         private (string, string, string) GetInsert()

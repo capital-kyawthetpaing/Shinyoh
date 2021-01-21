@@ -42,9 +42,9 @@ namespace Shinyoh_Search {
             txtShukkaDate2.E103Check(true);
             txtShukkaDate2.E104Check(true, txtShukkaDate1, txtShukkaDate2);
             //得意先
-            txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtShukkaDate1, null);
+            txt_Tokuisaki.E101Check(true, "M_Tokuisaki", txt_Tokuisaki, txtCurrentDate, null);
             //担当スタッフCD
-            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtShukkaDate1, null);
+            txt_StaffCD.E101Check(true, "M_Staff",txt_StaffCD, txtCurrentDate, null);
             //出荷番号			
             txtShukkaNo2.E106Check(true, txtShukkaNo1, txtShukkaNo2);
             //	出荷指示番号				
@@ -66,52 +66,13 @@ namespace Shinyoh_Search {
             }
             base.FunctionProcess(tagID);
         }
-        private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!txtTokuisaki.IsErrorOccurs)
-                {
-                    DataTable dt = txtTokuisaki.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                    {
-                        TokuisakiName = dt.Rows[0]["TokuisakiRyakuName"].ToString();
-                        lblTokuisaki_Name.Text = TokuisakiName;
-                    }
-                    else
-                    {
-                        lblTokuisaki_Name.Text = string.Empty;
-                    }
-                }
-            }
-        }
-
-        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!txtStaffCD.IsErrorOccurs)
-                {
-                    DataTable dt = txtStaffCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                    {
-                        StaffName = dt.Rows[0]["StaffName"].ToString();
-                        lblStaffName.Text = StaffName;
-                    }
-                    else
-                    {
-                        lblStaffName.Text = string.Empty;
-                    }
-                }
-            }
-        }
         private void DataGridviewBind()
         {
             ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
             obj.ShukkaDate1 = txtShukkaDate1.Text;
             obj.ShukkaDate2 = txtShukkaDate2.Text;
-            obj.TokuisakiCD = txtTokuisaki.Text;
-            obj.StaffCD = txtStaffCD.Text;
+            obj.TokuisakiCD = txt_Tokuisaki.Text;
+            obj.StaffCD = txt_StaffCD.Text;
             obj.ShouhinName = txtShouhinName.Text;
             obj.ShukkaNO1 = txtShukkaNo1.Text;
             obj.ShukkaNO2 = txtShukkaNo2.Text;
@@ -127,6 +88,7 @@ namespace Shinyoh_Search {
                 if (dt.Rows.Count > 0)
                 {
                     lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                    txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                 }
             }
             dt.Columns.Remove("CurrentDay");
@@ -134,12 +96,12 @@ namespace Shinyoh_Search {
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
-            if (gvrow.DataBoundItem != null)
+            if (gvrow != null)
             {
                 DataGridViewRow row = gvrow;
                 ShukkaNo = row.Cells["colShukkaNo"].Value.ToString();
-                this.Close();
             }
+            this.Close();
         }
 
         private void gvShukkaNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -159,6 +121,46 @@ namespace Shinyoh_Search {
                 if (gvShukkaNo.CurrentCell != null)
                 {
                     GetGridviewData(gvShukkaNo.Rows[gvShukkaNo.CurrentCell.RowIndex]);
+                }
+            }
+        }
+
+        private void txt_Tokuisaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txt_Tokuisaki.IsErrorOccurs)
+                {
+                    DataTable dt = txt_Tokuisaki.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        TokuisakiName = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                        lblTokuisaki_Name.Text = TokuisakiName;
+                    }
+                    else
+                    {
+                        lblTokuisaki_Name.Text = string.Empty;
+                    }
+                }
+            }
+        }
+
+        private void txt_StaffCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txt_StaffCD.IsErrorOccurs)
+                {
+                    DataTable dt = txt_StaffCD.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        StaffName = dt.Rows[0]["StaffName"].ToString();
+                        lblStaffName.Text = StaffName;
+                    }
+                    else
+                    {
+                        lblStaffName.Text = string.Empty;
+                    }
                 }
             }
         }
