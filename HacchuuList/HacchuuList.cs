@@ -56,7 +56,7 @@ namespace HacchuuList
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Export, F10, "出力(F10)", true); 
+            SetButton(ButtonType.BType.ExcelExport, F10, "出力(F10)", true); 
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             ErrorCheck();
