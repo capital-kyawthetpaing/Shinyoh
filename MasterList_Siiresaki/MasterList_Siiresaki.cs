@@ -45,7 +45,7 @@ namespace MasterList_Siiresaki
             SetButton(ButtonType.BType.Save, F12, "", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
+            SetButton(ButtonType.BType.ExcelExport, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             base_entity = _GetBaseData();
@@ -84,48 +84,44 @@ namespace MasterList_Siiresaki
             dt = sbl.Get_ExportData(Get_UIData());
             if (dt.Rows.Count > 0)
             {
-                if (bbl.ShowMessage("Q205") == DialogResult.Yes)
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
+                saveFileDialog1.DefaultExt = "xls";
+                saveFileDialog1.Filter = "ExcelFile|*.xls";
+                saveFileDialog1.FileName = "仕入先マスタリスト.xls";
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
+                    System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
-                    saveFileDialog1.DefaultExt = "xls";
-                    saveFileDialog1.Filter = "ExcelFile|*.xls";
-                    saveFileDialog1.FileName = "仕入先マスタリスト.xls";
-                    saveFileDialog1.RestoreDirectory = true;
+                    ExcelDesignSetting obj = new ExcelDesignSetting();
+                    obj.FilePath = saveFileDialog1.FileName;
+                    obj.SheetName = "仕入先マスタリスト";
+                    obj.Start_Interior_Column = "A1";
+                    obj.End_Interior_Column = "AH1";
+                    obj.Interior_Color = Color.Orange;
+                    obj.Start_Font_Column = "A1";
+                    obj.End_Font_Column = "AH1";
+                    obj.Font_Color = Color.Black;
 
-                    if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
-                        System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
+                    obj.Date_Column = new List<int>();
+                    obj.Date_Column.Add(2);
+                    obj.Date_Column.Add(28);
+                    obj.Date_Column.Add(29);
+                    obj.Date_Format = "YYYY/MM/DD";
+                    obj.Start_Title_Center_Column = "A1";
+                    obj.End_Title_Center_Column = "AH1";
 
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        ExcelDesignSetting obj = new ExcelDesignSetting();
-                        obj.FilePath = saveFileDialog1.FileName;
-                        obj.SheetName = "仕入先マスタリスト";
-                        obj.Start_Interior_Column = "A1";
-                        obj.End_Interior_Column = "AH1";
-                        obj.Interior_Color = Color.Orange;
-                        obj.Start_Font_Column = "A1";
-                        obj.End_Font_Column = "AH1";
-                        obj.Font_Color = Color.Black;
-                        
-                        obj.Date_Column = new List<int>();
-                        obj.Date_Column.Add(2);
-                        obj.Date_Column.Add(28);
-                        obj.Date_Column.Add(29);
-                        obj.Date_Format = "YYYY/MM/DD";
-                        obj.Start_Title_Center_Column = "A1";
-                        obj.End_Title_Center_Column = "AH1";
-                        
-                        ExportCSVExcel excel = new ExportCSVExcel();
-                        excel.ExportDataTableToExcel(dt, obj);
-                        bbl.ShowMessage("I203");
+                    ExportCSVExcel excel = new ExportCSVExcel();
+                    excel.ExportDataTableToExcel(dt, obj);
+                    bbl.ShowMessage("I203");
 
-                        //New_Mode
-                        cf.Clear(PanelDetail);
-                        rdo_ChokkinDate.Checked = true;
-                        txtSiiresakiCD_From.Focus();
-                    }
-
+                    //New_Mode
+                    cf.Clear(PanelDetail);
+                    rdo_ChokkinDate.Checked = true;
+                    txtSiiresakiCD_From.Focus();
                 }
             }
             else

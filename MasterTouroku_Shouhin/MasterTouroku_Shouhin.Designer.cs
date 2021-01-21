@@ -485,6 +485,7 @@
             this.txtMajorSuppliers.IsUseInitializedLayout = true;
             this.txtMajorSuppliers.lblName = null;
             this.txtMajorSuppliers.Location = new System.Drawing.Point(140, 390);
+            this.txtMajorSuppliers.MaxLength = 10;
             this.txtMajorSuppliers.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtMajorSuppliers.MoveNext = true;
             this.txtMajorSuppliers.Name = "txtMajorSuppliers";
