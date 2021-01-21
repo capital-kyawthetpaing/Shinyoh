@@ -207,6 +207,10 @@ namespace HacchuuList
                         }
                     }
                 }
+                else
+                {
+                    bbl.ShowMessage("S013");
+                }
                 //}
             }
             base.FunctionProcess(tagID);

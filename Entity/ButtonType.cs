@@ -28,7 +28,9 @@ namespace Entity
             Import, //取込
             Export,
             Memory,
-            Process
+            Process,
+            ExcelExport,
+            CSVExport
         }
     }
 }
