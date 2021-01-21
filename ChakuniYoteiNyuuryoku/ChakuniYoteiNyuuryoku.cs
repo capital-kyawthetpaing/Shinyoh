@@ -765,11 +765,11 @@ namespace ChakuniYoteiNyuuryoku
             foreach (DataGridViewRow gv in gvChakuniYoteiNyuuryoku.Rows)
             {
                 string value = gv.Cells["colYoteiSuu"].EditedFormattedValue.ToString().Replace(",", "");
-                if (Convert.ToInt64(value) < 0)
-                {
-                    bbl.ShowMessage("E109");
-                    return false;
-                }
+                //if (Convert.ToInt64(value) < 0)
+                //{
+                //    bbl.ShowMessage("E109");
+                //    return false;
+                //}
             }
             return true;
         }

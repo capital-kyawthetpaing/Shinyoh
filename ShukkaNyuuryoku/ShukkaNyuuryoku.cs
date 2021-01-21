@@ -268,6 +268,7 @@ namespace ShukkaNyuuryoku {
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
+                    cboMode.Enabled = false;
                     txtShukkaNo.Enabled = false;
                     cf.EnablePanel(PanelDetail);
                     txtShukkaDate.Focus();

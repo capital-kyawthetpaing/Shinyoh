@@ -58,7 +58,7 @@ namespace JuchuuList {
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
+            SetButton(ButtonType.BType.ExcelExport, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             Date_Setting();
             ErrorCheck();
@@ -197,12 +197,7 @@ namespace JuchuuList {
             }
             if (tagID == "10")
             {
-                if (bbl.ShowMessage("Q205") != DialogResult.Yes)
-                {
-                    if (PreviousCtrl != null)
-                        PreviousCtrl.Focus();
-                }
-                else {
+               
                     DataTable dt = new DataTable { TableName = "JuchuuListTable" };
                     dt = Get_Form_Object();
                     if (dt.Rows.Count > 0)
@@ -281,9 +276,7 @@ namespace JuchuuList {
                         if (PreviousCtrl != null)
                             PreviousCtrl.Focus();
                     }
-                }
-                
-            }
+            }            
             base.FunctionProcess(tagID);
         }
       
