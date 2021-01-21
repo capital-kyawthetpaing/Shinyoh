@@ -28,6 +28,7 @@ declare  @idoc AS INT
 
 CREATE TABLE  [dbo].[#Temp_Header]
 				(   
+				  --[ShukkaSiziNO] varchar(12) COLLATE DATABASE_DEFAULT,
 				  [StaffCD] varchar(10) COLLATE DATABASE_DEFAULT,
 				  [ShukkaYoteiDate] varchar(10) COLLATE DATABASE_DEFAULT,
 				  [DenpyouDate] varchar(10) COLLATE DATABASE_DEFAULT,
@@ -68,6 +69,7 @@ CREATE TABLE  [dbo].[#Temp_Header]
 INSERT INTO [#Temp_Header]
 		SELECT *  FROM openxml(@idoc,'/NewDataSet/test',2)
 		with(
+				--[ShukkaSiziNO] varchar(12) ,
 				[StaffCD] varchar(10) ,
 				[ShukkaYoteiDate] varchar(10) ,
 				[DenpyouDate] varchar(10) ,
@@ -176,7 +178,7 @@ INSERT INTO [#Temp_Details]
 				exec sp_xml_removedocument @idoc
 
 declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header)
-, @ShukkaSiziNO varchar(12)
+, @ShukkaSiziNO varchar(100)
 , @StaffCD varchar(20) = (select StaffCD from #Temp_Header)
 , @OperatorCD as varchar(10) =(select OperatorCD from #Temp_Header)
 , @Program varchar(100) = (select ProgramID from #Temp_Header)
@@ -193,9 +195,8 @@ EXEC [dbo].[Fnc_GetNumber]
 
 IF ISNULL(@ShukkaSiziNO,'') = ''
             BEGIN
-                print  '1' ;
+                return  '1' ;
             END
-
 --TabelA
 INSERT INTO [dbo].[D_ShukkaSizi]
 						(ShukkaSiziNO
@@ -481,7 +482,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	SELECT 
 	@Unique
 	,i.ShukkaSiziNO
-	,10
+	,10--新規
 	,i.StaffCD
 	,i.ShukkaYoteiDate
 	,i.DenpyouDate
@@ -530,6 +531,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	,@OperatorCD
 	,@currentDate
     FROM [dbo].[D_ShukkaSizi] AS i
+where i.ShukkaSiziNO=@ShukkaSiziNO
 
 --TableE
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
@@ -586,7 +588,7 @@ SELECT
 		,j.[ShukkaSiziNO]
 		,j.[ShukkaSiziGyouNO]
 		,j.[GyouHyouziJun]
-		,10
+		,10--新規
 		,j.[KouritenCD]
 		,j.[KouritenRyakuName]
 		,j.[BrandCD]
@@ -629,6 +631,7 @@ SELECT
 		,@OperatorCD
 		,@currentDate
 FROM [dbo].[D_ShukkaSiziMeisai] AS j
+where j.ShukkaSiziNO=@ShukkaSiziNO
 
 --TableF
 INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
@@ -660,7 +663,7 @@ SELECT
 [ShukkaSiziNO]
 			,[ShukkaSiziGyouNO]
 			,[ShukkaSiziShousaiNO]
-			,10 
+			,10 --新規
 			,[SoukoCD]
 			,[ShouhinCD]
 			,[ShouhinName]
@@ -680,6 +683,7 @@ SELECT
 FROM [dbo].[D_ShukkaSiziShousai]
 where ShukkaSiziNO=@ShukkaSiziNO
 
+--※シート「消込順」参照
 DECLARE @Price_table TABLE (idx int Primary Key IDENTITY(1,1),
 						KonkaiShukkaSiziSuu varchar(50),
 						SKMSNO  varchar(12),ShouhinCD  varchar(50))
@@ -713,7 +717,7 @@ declare @Count as int = 1
 			END;
 
 
---Table G
+--Table G  --追加または修正後
 UPDATE  A
 SET	ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
 	,UpdateOperator=@OperatorCD
@@ -733,7 +737,7 @@ and A.ShouhinCD=C.ShouhinCD
 
 --D_Juchuu
 UPDATE	A
-SET		[ShukkaSiziKanryouKBN] = B.ShukkaSiziKanryouKBN
+SET		A.[ShukkaSiziKanryouKBN] = B.ShukkaSiziKanryouKBN
 FROM D_Juchuu as A
 INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN 
 			from D_JuchuuMeisai C, #Temp_Details D
@@ -742,6 +746,7 @@ INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN
 ) as B
 ON A.JuchuuNO=B.JuchuuNO
 
+--スタッフマスタ
 UPDATE M_Staff 
 set UsedFlg = 1 
 where StaffCD=@StaffCD
@@ -751,10 +756,11 @@ and  ChangeDate = (select ChangeDate from F_Staff(@ShippingDate) where StaffCD =
 declare @OperatorMode varchar(50)='新規'
 exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperatorMode,@ShukkaSiziNO
 
---Table_Y
+--テーブル転送仕様Ｙ--削除
 DECLARE @JuchuuNo_table TABLE (idx int Primary Key IDENTITY(1,1), JuchuuNo varchar(20))
 			INSERT @JuchuuNo_table SELECT distinct LEFT((SKMSNO), CHARINDEX('-', (SKMSNO)) - 1) FROM #Temp_Details
 			
+			--declare @Count as int = 1
 			WHILE @Count <= (SELECT COUNT(*) FROM @JuchuuNo_table)
 			BEGIN
 			 DELETE A 
@@ -767,3 +773,4 @@ Drop Table #Temp_Header
 Drop Table #Temp_Details
 
 END
+

@@ -187,7 +187,8 @@ namespace HikiateHenkouShoukai
 
         private void Radio_Changed(int type)
         {
-            switch(type)
+            cf.Clear(PanelDetail);
+            switch (type)
             {
                 case 0:
                     txtTokuisakiCD.Enabled = true;
@@ -211,7 +212,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = false;
                     gvAggregationDetails.Location = new Point(22, 245);
-                    gvAggregationDetails.Size = new Size(1550, 300);
+                    gvAggregationDetails.Size = new Size(1550, 630);
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -237,7 +238,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = true;
                     gvFreeInventoryDetails.Visible = false;
                     gvMainDetail.Location = new Point(22, 245);
-                    gvMainDetail.Size = new Size(1750, 300);
+                    gvMainDetail.Size = new Size(1750, 630);
                     //gvMainDetail.ReadOnly = false;
                     //gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -264,7 +265,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = true;
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
                     gvFreeInventoryDetails.Location = new Point(22, 245);
-                    gvFreeInventoryDetails.Size = new Size(1150, 300);
+                    gvFreeInventoryDetails.Size = new Size(1150, 630);
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
