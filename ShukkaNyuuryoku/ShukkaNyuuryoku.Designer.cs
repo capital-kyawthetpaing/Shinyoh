@@ -26,10 +26,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblShukkaNo = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.txtStaff = new Shinyoh_Search.SearchBox();
@@ -798,7 +798,7 @@
             this.JuchuuNOGyouNO});
             this.gvShukka1.Location = new System.Drawing.Point(47, 219);
             this.gvShukka1.Name = "gvShukka1";
-            this.gvShukka1.Size = new System.Drawing.Size(1510, 600);
+            this.gvShukka1.Size = new System.Drawing.Size(1508, 600);
             this.gvShukka1.TabIndex = 24;
             this.gvShukka1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvShukka1_CellEndEdit);
             // 
@@ -844,8 +844,8 @@
             // colSize
             // 
             this.colSize.DataPropertyName = "SizeNO";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colSize.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colSize.DefaultCellStyle = dataGridViewCellStyle1;
             this.colSize.HeaderText = "サイズ\t\t\t\t\t\t";
             this.colSize.Name = "colSize";
             this.colSize.ReadOnly = true;
@@ -853,9 +853,9 @@
             // colShukkazansuu
             // 
             this.colShukkazansuu.DataPropertyName = "ShukkaSiziZumiSuu";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.NullValue = "0";
-            this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.NullValue = "0";
+            this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle2;
             this.colShukkazansuu.HeaderText = "出荷残数\t\t\t\t";
             this.colShukkazansuu.Name = "colShukkazansuu";
             this.colShukkazansuu.ReadOnly = true;
@@ -864,9 +864,9 @@
             // colMiryoku
             // 
             this.colMiryoku.DataPropertyName = "MiNyuukaSuu";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.NullValue = "0";
-            this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.NullValue = "0";
+            this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle3;
             this.colMiryoku.HeaderText = "未入荷数\t\t\t\t";
             this.colMiryoku.Name = "colMiryoku";
             this.colMiryoku.ReadOnly = true;
@@ -875,8 +875,8 @@
             // colKonkai
             // 
             this.colKonkai.DataPropertyName = "ShukkaSuu";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colKonkai.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colKonkai.DefaultCellStyle = dataGridViewCellStyle4;
             this.colKonkai.HeaderText = "今回出荷数\t\t\t\t\t";
             this.colKonkai.Name = "colKonkai";
             // 
