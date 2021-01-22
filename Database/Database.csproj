@@ -120,7 +120,14 @@
     <Content Include="StoreProcedure\Get_Siiresaki_ExportData.sql" />
     <Content Include="StoreProcedure\Get_Tokuisaki_ExportData.sql" />
     <Content Include="StoreProcedure\Hacchuu_Search.sql" />
+    <Content Include="StoreProcedure\IdouNyuuryoku_Change_Detail_Flag.sql" />
+    <Content Include="StoreProcedure\IdouNyuuryoku_Change_Main_Flag.sql" />
+    <Content Include="StoreProcedure\IdouNyuuryoku_CUD.sql" />
+    <Content Include="StoreProcedure\IdouNyuuryoku_Delete.sql" />
+    <Content Include="StoreProcedure\IdouNyuuryoku_Display.sql" />
+    <Content Include="StoreProcedure\IdouNyuuryoku_Insert.sql" />
     <Content Include="StoreProcedure\IdouNyuuryoku_Select_Check.sql" />
+    <Content Include="StoreProcedure\IdouNyuuryoku_Update.sql" />
     <Content Include="StoreProcedure\IdouNyuuryo_Search.sql" />
     <Content Include="StoreProcedure\JuchuuList_Excel.sql" />
     <Content Include="StoreProcedure\JuchuuNo_Check.sql" />
