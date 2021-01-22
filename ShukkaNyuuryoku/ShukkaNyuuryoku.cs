@@ -77,6 +77,7 @@ namespace ShukkaNyuuryoku {
             base_Entity = _GetBaseData();
 
             txtShukkaNo.ChangeDate = txtShukkaDate;
+            txtShukkaSijiNo.ChangeDate = txtShukkaYoteiDate1;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -486,7 +487,7 @@ namespace ShukkaNyuuryoku {
             txtStaff.E101Check(true, "M_Staff", txtStaff, txtShukkaDate, null);
             txtStaff.E135Check(true, "M_Staff", txtStaff, txtShukkaDate);
 
-            //txtShukkaSijiNo.E133Check(false, "ShukkaNyuuryoku", txtShukkaSijiNo, null, null);
+            txtShukkaSijiNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaSijiNo, null, null);
 
             txtShukkaYoteiDate1.E103Check(true);
             txtShukkaYoteiDate2.E103Check(true);
