@@ -44,8 +44,8 @@ if @Errortype='E133'
 		 dc.[SiiresakiTelNO1-1],dc.[SiiresakiTelNO1-2],dc.[SiiresakiTelNO1-3],dc.[SiiresakiTelNO2-1],dc.[SiiresakiTelNO2-2],dc.[SiiresakiTelNO2-3],dc.StaffCD,fs.StaffName,
 		 dc.SoukoCD,ms.SoukoName,dc.KanriNO,dc.ChakuniYoteiDenpyouTekiyou,
 		 fshouhin.HinbanCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
-		 dh.HacchuuDate,dhm.HacchuuSuu,
-		 dhm.ChakuniYoteiZumiSuu,dcm.ChakuniYoteiSuu,dcm.ChakuniYoteiMeisaiTekiyou,dcm.JANCD,dcm.HacchuuNO,dcm.HacchuuGyouNO,(dcm.HacchuuNO+'-'+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu,fshouhin.ShouhinCD
+		 dh.HacchuuDate,FLOOR(dhm.HacchuuSuu) as HacchuuSuu,
+		 FLOOR(dhm.ChakuniYoteiZumiSuu) as ChakuniYoteiZumiSuu,FLOOR(dcm.ChakuniYoteiSuu) as ChakuniYoteiSuu,dcm.ChakuniYoteiMeisaiTekiyou,dcm.JANCD,dcm.HacchuuNO,dcm.HacchuuGyouNO,(dcm.HacchuuNO+'-'+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu,fshouhin.ShouhinCD
 		 From M_Message,D_ChakuniYotei dc
 		 Inner Join D_ChakuniYoteiMeisai dcm on dcm.ChakuniYoteiNO=dc.ChakuniYoteiNO
 		 Left outer join D_HacchuuMeisai dhm on dhm.HacchuuNO=dcm.HacchuuNO
@@ -80,8 +80,8 @@ if @Errortype='E268'
 		 dc.[SiiresakiTelNO1-1],dc.[SiiresakiTelNO1-2],dc.[SiiresakiTelNO1-3],dc.[SiiresakiTelNO2-1],dc.[SiiresakiTelNO2-2],dc.[SiiresakiTelNO2-3],dc.StaffCD,fs.StaffName,
 		 dc.SoukoCD,ms.SoukoName,dc.KanriNO,dc.ChakuniYoteiDenpyouTekiyou,
 		 fshouhin.HinbanCD,dcm.ShouhinName,dcm.ColorRyakuName,dcm.ColorNO,dcm.SizeNO,
-		 dh.HacchuuDate,dhm.HacchuuSuu,
-		 dhm.ChakuniYoteiZumiSuu,dcm.ChakuniYoteiSuu,dcm.ChakuniYoteiMeisaiTekiyou,dcm.JANCD,dcm.HacchuuNO,dcm.HacchuuGyouNO,(dcm.HacchuuNO+'-'+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu,fshouhin.ShouhinCD
+		 dh.HacchuuDate,FLOOR(dhm.HacchuuSuu) as HacchuuSuu,
+		 FLOOR(dhm.ChakuniYoteiZumiSuu) as ChakuniYoteiZumiSuu,FLOOR(dcm.ChakuniYoteiSuu) as ChakuniYoteiSuu,dcm.ChakuniYoteiMeisaiTekiyou,dcm.JANCD,dcm.HacchuuNO,dcm.HacchuuGyouNO,(dcm.HacchuuNO+'-'+cast(dcm.HacchuuGyouNO as varchar)) as Hacchuu,fshouhin.ShouhinCD
 		 From M_Message,D_ChakuniYotei dc
 		 Inner Join D_ChakuniYoteiMeisai dcm on dcm.ChakuniYoteiNO=dc.ChakuniYoteiNO
 		 Left outer join D_HacchuuMeisai dhm on dhm.HacchuuNO=dcm.HacchuuNO
