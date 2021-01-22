@@ -635,16 +635,16 @@ namespace ChakuniNyuuryoku
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
                     Update_Data();
-                    if (dt.Rows[0]["MessageID"].ToString()=="E132")
-                    {
-                        //ChakuniNyuuryokuSelect(dt);
-                        //string KBN = dt.Rows[0]["SiireKanryouKBN"].ToString();
-                        //if (KBN.ToString().Equals("1"))
-                        //{
-                        //    gvChakuniNyuuryoku.Columns["colArrivalTime"].ReadOnly = true;
-                        //}
+                    //if (dt.Rows[0]["MessageID"].ToString()=="E132")
+                    //{
+                    //    //ChakuniNyuuryokuSelect(dt);
+                    //    //string KBN = dt.Rows[0]["SiireKanryouKBN"].ToString();
+                    //    //if (KBN.ToString().Equals("1"))
+                    //    //{
+                    //    //    gvChakuniNyuuryoku.Columns["colArrivalTime"].ReadOnly = true;
+                    //    //}
                        
-                    }
+                    //}
                 }
                 else
                 {
