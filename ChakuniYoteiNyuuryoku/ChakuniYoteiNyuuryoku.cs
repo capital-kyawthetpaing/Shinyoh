@@ -27,6 +27,7 @@ namespace ChakuniYoteiNyuuryoku
         ChakuniYoteiNyuuryokuEntity chkEntity;
         ChakuniYoteiNyuuryoku_BL cbl;
         public string tdDate;
+        DataTable dt_Header, dt_Details;
         public ChakuniYoteiNyuuryoku()
         {
             InitializeComponent();
@@ -36,12 +37,14 @@ namespace ChakuniYoteiNyuuryoku
             soukoBL = new SoukoBL();
             bbl = new BaseBL();
             dtmain = new DataTable();
+            dt_Header = new DataTable();
+            dt_Details = new DataTable();
             chkEntity = new ChakuniYoteiNyuuryokuEntity();
             cbl = new ChakuniYoteiNyuuryoku_BL();
             sd = new SiiresakiDetail();
-            dtGS = CreateTable();
+            dtGS = CreateTable_Detail();
             dtTemp = new DataTable();
-            dtClear= CreateTable();
+            dtClear= CreateTable_Detail();
         }
         private void ChakuniYoteiNyuuryoku_Load(object sender, EventArgs e)
         {
@@ -153,7 +156,7 @@ namespace ChakuniYoteiNyuuryoku
                 }
                 else
                 {
-                    dtGS = CreateTable();
+                    dtGS = CreateTable_Detail();
                     gvChakuniYoteiNyuuryoku.DataSource = dtGS;
                 }
             }
@@ -356,18 +359,6 @@ namespace ChakuniYoteiNyuuryoku
 
             return (main_XML, detail_XML);
         }
-        public void Clear()
-        {
-            cf.Clear(PanelTitle);
-            cf.Clear(PanelDetail);
-            cf.EnablePanel(PanelTitle);
-            lblSiiresaki.Text = string.Empty;
-            lblStaff.Text = string.Empty;
-            lblBrandName.Text = string.Empty;
-            lblWareHouse.Text = string.Empty;
-            txtChakuniYoteiNO.Focus();
-            New_Mode();
-        }
         private void Mode_Setting()
         {
             cf.Clear(PanelTitle);
@@ -458,7 +449,7 @@ namespace ChakuniYoteiNyuuryoku
             dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
             return dtmain;
         }
-        private DataTable CreateTable()
+        private DataTable CreateTable_Detail()
         {
             DataTable dt = new DataTable();
             dt.Columns.Add("HinbanCD", typeof(string));
@@ -520,7 +511,7 @@ namespace ChakuniYoteiNyuuryoku
             }
             else
             {
-                dtGS = CreateTable();
+                dtGS = CreateTable_Detail();
                 gvChakuniYoteiNyuuryoku.DataSource = dtGS;
             }
         }
@@ -569,61 +560,61 @@ namespace ChakuniYoteiNyuuryoku
             txtSize.Clear();
             txtBrandCD.Focus();
         }
-        private void ChakuniYoteiNyuuryokuSelect(DataTable dt)
-        {
-            if (dt.Rows.Count > 0)
-            {
-                if (dt.Rows[0]["MessageID"].ToString() == "E132")
-                {
-                    txtDate.Text = dt.Rows[0]["ChakuniYoteiDate"].ToString();
-                    txtSiiresaki.Text = dt.Rows[0]["SiiresakiCD"].ToString();
-                    lblSiiresaki.Text = dt.Rows[0]["SiiresakiRyakuName"].ToString();
-                    txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
-                    lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
-                    txtSouko.Text = dt.Rows[0]["SoukoCD"].ToString();
-                    lblWareHouse.Text = dt.Rows[0]["SoukoName"].ToString();
-                    txtNumber.Text = dt.Rows[0]["KanriNO"].ToString();
-                    txtDescription.Text = dt.Rows[0]["ChakuniYoteiDenpyouTekiyou"].ToString();
-                    sd.Access_Siiresaki_obj.SiiresakiCD = dt.Rows[0]["SiiresakiCD"].ToString();
-                    sd.Access_Siiresaki_obj.SiiresakiRyakuName = dt.Rows[0]["SiiresakiRyakuName"].ToString();
-                    sd.Access_Siiresaki_obj.SiiresakiName = dt.Rows[0]["SiiresakiName"].ToString();
-                    sd.Access_Siiresaki_obj.YuubinNO1 = dt.Rows[0]["SiiresakiYuubinNO1"].ToString();
-                    sd.Access_Siiresaki_obj.YuubinNO2 = dt.Rows[0]["SiiresakiYuubinNO2"].ToString();
-                    sd.Access_Siiresaki_obj.Juusho1 = dt.Rows[0]["SiiresakiJuusho1"].ToString();
-                    sd.Access_Siiresaki_obj.Juusho2 = dt.Rows[0]["SiiresakiJuusho2"].ToString();
-                    sd.Access_Siiresaki_obj.Tel11 = dt.Rows[0]["SiiresakiTelNO1-1"].ToString();
-                    sd.Access_Siiresaki_obj.Tel12 = dt.Rows[0]["SiiresakiTelNO1-2"].ToString();
-                    sd.Access_Siiresaki_obj.Tel13 = dt.Rows[0]["SiiresakiTelNO1-3"].ToString();
-                    sd.Access_Siiresaki_obj.Tel21 = dt.Rows[0]["SiiresakiTelNO2-1"].ToString();
-                    sd.Access_Siiresaki_obj.Tel22 = dt.Rows[0]["SiiresakiTelNO2-2"].ToString();
-                    sd.Access_Siiresaki_obj.Tel23 = dt.Rows[0]["SiiresakiTelNO2-3"].ToString();
-                    dt.Columns.Remove("SiiresakiRyakuName");
-                    dt.Columns.Remove("SiiresakiYuubinNO1");
-                    dt.Columns.Remove("SiiresakiYuubinNO2");
-                    dt.Columns.Remove("SiiresakiJuusho1");
-                    dt.Columns.Remove("SiiresakiJuusho2");
-                    dt.Columns.Remove("SiiresakiTelNO1-1");
-                    dt.Columns.Remove("SiiresakiTelNO1-2");
-                    dt.Columns.Remove("SiiresakiTelNO1-3");
-                    dt.Columns.Remove("SiiresakiTelNO2-1");
-                    dt.Columns.Remove("SiiresakiTelNO2-2");
-                    dt.Columns.Remove("SiiresakiTelNO2-3");
-                    dt.Columns.Remove("SiiresakiCD");
-                    dt.Columns.Remove("ChakuniYoteiDate");
-                    dt.Columns.Remove("SiiresakiName");
-                    dt.Columns.Remove("StaffCD");
-                    dt.Columns.Remove("StaffName");
-                    dt.Columns.Remove("SoukoCD");
-                    dt.Columns.Remove("SoukoName");
-                    dt.Columns.Remove("ChakuniYoteiDenpyouTekiyou");
-                    dt.Columns.Remove("MessageID");
-                    dt.Columns.Remove("KanriNO");
-                    dt.Columns.Remove("HacchuuNo");
-                    dt.Columns.Remove("HacchuuGyouNO");
-                    gvChakuniYoteiNyuuryoku.DataSource = dt;
-                }
-            }
-        }
+        //private void ChakuniYoteiNyuuryokuSelect(DataTable dt)
+        //{
+        //    if (dt.Rows.Count > 0)
+        //    {
+        //        if (dt.Rows[0]["MessageID"].ToString() == "E132")
+        //        {
+        //            txtDate.Text = dt.Rows[0]["ChakuniYoteiDate"].ToString();
+        //            txtSiiresaki.Text = dt.Rows[0]["SiiresakiCD"].ToString();
+        //            lblSiiresaki.Text = dt.Rows[0]["SiiresakiRyakuName"].ToString();
+        //            txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
+        //            lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
+        //            txtSouko.Text = dt.Rows[0]["SoukoCD"].ToString();
+        //            lblWareHouse.Text = dt.Rows[0]["SoukoName"].ToString();
+        //            txtNumber.Text = dt.Rows[0]["KanriNO"].ToString();
+        //            txtDescription.Text = dt.Rows[0]["ChakuniYoteiDenpyouTekiyou"].ToString();
+        //            sd.Access_Siiresaki_obj.SiiresakiCD = dt.Rows[0]["SiiresakiCD"].ToString();
+        //            sd.Access_Siiresaki_obj.SiiresakiRyakuName = dt.Rows[0]["SiiresakiRyakuName"].ToString();
+        //            sd.Access_Siiresaki_obj.SiiresakiName = dt.Rows[0]["SiiresakiName"].ToString();
+        //            sd.Access_Siiresaki_obj.YuubinNO1 = dt.Rows[0]["SiiresakiYuubinNO1"].ToString();
+        //            sd.Access_Siiresaki_obj.YuubinNO2 = dt.Rows[0]["SiiresakiYuubinNO2"].ToString();
+        //            sd.Access_Siiresaki_obj.Juusho1 = dt.Rows[0]["SiiresakiJuusho1"].ToString();
+        //            sd.Access_Siiresaki_obj.Juusho2 = dt.Rows[0]["SiiresakiJuusho2"].ToString();
+        //            sd.Access_Siiresaki_obj.Tel11 = dt.Rows[0]["SiiresakiTelNO1-1"].ToString();
+        //            sd.Access_Siiresaki_obj.Tel12 = dt.Rows[0]["SiiresakiTelNO1-2"].ToString();
+        //            sd.Access_Siiresaki_obj.Tel13 = dt.Rows[0]["SiiresakiTelNO1-3"].ToString();
+        //            sd.Access_Siiresaki_obj.Tel21 = dt.Rows[0]["SiiresakiTelNO2-1"].ToString();
+        //            sd.Access_Siiresaki_obj.Tel22 = dt.Rows[0]["SiiresakiTelNO2-2"].ToString();
+        //            sd.Access_Siiresaki_obj.Tel23 = dt.Rows[0]["SiiresakiTelNO2-3"].ToString();
+        //            dt.Columns.Remove("SiiresakiRyakuName");
+        //            dt.Columns.Remove("SiiresakiYuubinNO1");
+        //            dt.Columns.Remove("SiiresakiYuubinNO2");
+        //            dt.Columns.Remove("SiiresakiJuusho1");
+        //            dt.Columns.Remove("SiiresakiJuusho2");
+        //            dt.Columns.Remove("SiiresakiTelNO1-1");
+        //            dt.Columns.Remove("SiiresakiTelNO1-2");
+        //            dt.Columns.Remove("SiiresakiTelNO1-3");
+        //            dt.Columns.Remove("SiiresakiTelNO2-1");
+        //            dt.Columns.Remove("SiiresakiTelNO2-2");
+        //            dt.Columns.Remove("SiiresakiTelNO2-3");
+        //            dt.Columns.Remove("SiiresakiCD");
+        //            dt.Columns.Remove("ChakuniYoteiDate");
+        //            dt.Columns.Remove("SiiresakiName");
+        //            dt.Columns.Remove("StaffCD");
+        //            dt.Columns.Remove("StaffName");
+        //            dt.Columns.Remove("SoukoCD");
+        //            dt.Columns.Remove("SoukoName");
+        //            dt.Columns.Remove("ChakuniYoteiDenpyouTekiyou");
+        //            dt.Columns.Remove("MessageID");
+        //            dt.Columns.Remove("KanriNO");
+        //            dt.Columns.Remove("HacchuuNo");
+        //            dt.Columns.Remove("HacchuuGyouNO");
+        //            gvChakuniYoteiNyuuryoku.DataSource = dt;
+        //        }
+        //    }
+        //}
         private void txtArrivalNO_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -651,11 +642,68 @@ namespace ChakuniYoteiNyuuryoku
                 DataTable dt = txtChakuniYoteiNO.IsDatatableOccurs;
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
-                    if (dt.Rows[0]["MessageID"].ToString() == "E132")
-                    {
-                        ChakuniYoteiNyuuryokuSelect(dt);
-                    }
+                    Update_Data();
                 }
+            }
+        }
+        private void Update_Data()
+        {
+            chkEntity = new ChakuniYoteiNyuuryokuEntity();
+            chkEntity.ChakuniYoteiDate = string.IsNullOrEmpty(txtDate.Text) ? System.DateTime.Now.ToString("yyyy-MM-dd") : txtDate.Text;
+            chkEntity.ChakuniYoteiNO = txtChakuniYoteiNO.Text;
+
+            cbl = new ChakuniYoteiNyuuryoku_BL();
+            dt_Header = cbl.ChakuniYoteiNyuuryoku_Update_Select(chkEntity, 1);
+            if (dt_Header.Rows.Count > 0)
+                ChakuniYoteiNyuuryokuSelect(dt_Header);
+
+
+            dt_Details = cbl.ChakuniYoteiNyuuryoku_Update_Select(chkEntity, 2);
+            if (dt_Details.Rows.Count > 0)
+            {
+                gvChakuniYoteiNyuuryoku.DataSource = dt_Details;
+            }
+            else
+                gvChakuniYoteiNyuuryoku.DataSource = dtClear;
+
+            foreach (DataRow dr in dt_Header.Rows)
+            {
+                if (dr["SiireKanryouKBN"].ToString().Equals("1"))
+                {
+                    gvChakuniYoteiNyuuryoku.Columns["colYoteiSuu"].ReadOnly = true;
+                }
+                else
+                {
+                    gvChakuniYoteiNyuuryoku.Columns["colYoteiSuu"].ReadOnly = false;
+                }
+            }
+        }
+        private void ChakuniYoteiNyuuryokuSelect(DataTable dt)
+        {
+            if (dt.Rows.Count > 0)
+            {
+                txtDate.Text = dt.Rows[0]["ChakuniYoteiDate"].ToString();
+                txtSiiresaki.Text = dt.Rows[0]["SiiresakiCD"].ToString();
+                lblSiiresaki.Text = dt.Rows[0]["SiiresakiRyakuName"].ToString();
+                txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
+                lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
+                txtSouko.Text = dt.Rows[0]["SoukoCD"].ToString();
+                lblWareHouse.Text = dt.Rows[0]["SoukoName"].ToString();
+                txtNumber.Text = dt.Rows[0]["KanriNO"].ToString();
+                txtDescription.Text = dt.Rows[0]["ChakuniYoteiDenpyouTekiyou"].ToString();
+                sd.Access_Siiresaki_obj.SiiresakiCD = dt.Rows[0]["SiiresakiCD"].ToString();
+                sd.Access_Siiresaki_obj.SiiresakiRyakuName = dt.Rows[0]["SiiresakiRyakuName"].ToString();
+                sd.Access_Siiresaki_obj.SiiresakiName = dt.Rows[0]["SiiresakiName"].ToString();
+                sd.Access_Siiresaki_obj.YuubinNO1 = dt.Rows[0]["SiiresakiYuubinNO1"].ToString();
+                sd.Access_Siiresaki_obj.YuubinNO2 = dt.Rows[0]["SiiresakiYuubinNO2"].ToString();
+                sd.Access_Siiresaki_obj.Juusho1 = dt.Rows[0]["SiiresakiJuusho1"].ToString();
+                sd.Access_Siiresaki_obj.Juusho2 = dt.Rows[0]["SiiresakiJuusho2"].ToString();
+                sd.Access_Siiresaki_obj.Tel11 = dt.Rows[0]["SiiresakiTelNO1-1"].ToString();
+                sd.Access_Siiresaki_obj.Tel12 = dt.Rows[0]["SiiresakiTelNO1-2"].ToString();
+                sd.Access_Siiresaki_obj.Tel13 = dt.Rows[0]["SiiresakiTelNO1-3"].ToString();
+                sd.Access_Siiresaki_obj.Tel21 = dt.Rows[0]["SiiresakiTelNO2-1"].ToString();
+                sd.Access_Siiresaki_obj.Tel22 = dt.Rows[0]["SiiresakiTelNO2-2"].ToString();
+                sd.Access_Siiresaki_obj.Tel23 = dt.Rows[0]["SiiresakiTelNO2-3"].ToString();
             }
         }
         private void btn_Siiresaki_Click(object sender, EventArgs e)
@@ -744,7 +792,7 @@ namespace ChakuniYoteiNyuuryoku
                 }
 
                 DataRow dr1 = dtGS.NewRow();
-                for (int i = 2; i < dtGS.Columns.Count; i++)
+                for (int i = 0; i < dtGS.Columns.Count; i++)
                 {
                     //dr1[i] = gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue;
                     dr1[i] = string.IsNullOrEmpty(gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue.ToString();
