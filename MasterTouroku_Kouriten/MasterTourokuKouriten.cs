@@ -183,7 +183,7 @@ namespace MasterTouroku_Kouriten
             txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
             txtStaffCD.E102Check(true);
-            
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
 
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
@@ -639,14 +639,14 @@ namespace MasterTouroku_Kouriten
                         //
                         obj.ChangeDate = splits[1];
                         if(Null_Check(obj.ChangeDate, i, "改定日未入力エラー"))break;
-                        if(Date_Check(obj.ChangeDate, i, "入力可能値外エラー"))break;
+                        if(Date_Check(obj.ChangeDate, i, "入力可能値外エラー", "改定日"))break;
 
                         //
                         obj.ShokutiFLG = splits[2];
                         if(Null_Check(obj.ShokutiFLG, i, "諸口未入力エラー"))break;
                         if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
-                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー");
+                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー", "項目:諸口区分(0～1)");
                             //bl_List.Add(true);
                             break;
                         }
@@ -674,13 +674,14 @@ namespace MasterTouroku_Kouriten
 
                         //
                         obj.AliasKBN = splits[8];
+                        if (Null_Check(obj.AliasKBN, i, "敬称未入力エラー")) break;
                         if (!(obj.AliasKBN == "1" || obj.AliasKBN == "2"))
                         {
-                            base_bl.ShowMessage("E117", "1", "2");
+                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー", "項目:敬称(1～2)");
+                            //base_bl.ShowMessage("E117", "1", "2");
                             // bl_List.Add(true);
                             break;
                         }
-                        if(Null_Check(obj.AliasKBN, i, "敬称未入力エラー"))break;
 
                         //
                         obj.YuubinNO1 = splits[9];
@@ -746,12 +747,12 @@ namespace MasterTouroku_Kouriten
                         //
                         obj.TorihikiKaisiDate = splits[24];
                         if(!string.IsNullOrEmpty(obj.TorihikiKaisiDate))
-                        if(Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー"))break;
+                        if(Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日"))break;
 
                         //
                         obj.TorihikiShuuryouDate = splits[25];
                         if(!string.IsNullOrEmpty(obj.TorihikiShuuryouDate))
-                        if(Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー"))break;
+                        if(Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日"))break;
 
                         //
                         obj.Remarks = splits[26];
@@ -838,14 +839,14 @@ namespace MasterTouroku_Kouriten
             }
             return bl;
         }
-        public bool Date_Check(string csv_Date, int line_no, string error_msg)
+        public bool Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
         {
             bool bl = false;
             if (!string.IsNullOrEmpty(csv_Date))
             {
                 if (!cf.CheckDateValue(csv_Date))
                 {
-                    bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg1,error_msg2);
                     bl = true;
                 }
             }
