@@ -200,7 +200,15 @@ namespace ChakuniNyuuryoku
             }
             if (tagID == "6")
             {
-                Clear();
+                if(cboMode.SelectedValue.Equals("1"))
+                {
+                    New_Mode();
+                }
+                else
+                {
+                    Mode_Setting();
+                }
+                dtTemp.Clear();
             }
             if(tagID=="8")
             {
