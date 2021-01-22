@@ -538,14 +538,14 @@ namespace MasterTouroku_Siiresaki
                         //
                         obj.ChangeDate = splits[1];
                         if (Null_Check(obj.ChangeDate, i, "改定日未入力エラー")) break;
-                        if (Date_Check(obj.ChangeDate, i, "入力可能値外エラー")) break;
+                        if (Date_Check(obj.ChangeDate, i, "入力可能値外エラー", "改定日")) break;
                         
                         //
                         obj.ShokutiFLG = string.IsNullOrEmpty(splits[2])? "" : splits[2];
                         if(Null_Check(obj.ShokutiFLG,i, "諸口未入力エラー"))break;
                         if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
-                            bbl.ShowMessage("E276",i.ToString(), "入力可能値外エラー");
+                            bbl.ShowMessage("E276",i.ToString(), "入力可能値外エラー", "項目:諸口区分(0～1)");
                             // bl_List.Add(true);
                             break;
                         }
@@ -640,12 +640,12 @@ namespace MasterTouroku_Siiresaki
                         //
                         obj.TorihikiKaisiDate = splits[24];
                         if(!string.IsNullOrEmpty(obj.TorihikiKaisiDate))
-                        if(Date_Check(obj.TorihikiKaisiDate,i, "入力可能値外エラー"))break;
+                        if(Date_Check(obj.TorihikiKaisiDate,i, "入力可能値外エラー", "取引開始日"))break;
                         
                         //
                         obj.TorihikiShuuryouDate = splits[25];
                         if(!string.IsNullOrEmpty(obj.TorihikiShuuryouDate))
-                        if(Date_Check(obj.TorihikiShuuryouDate,i, "入力可能値外エラー"))break;
+                        if(Date_Check(obj.TorihikiShuuryouDate,i, "入力可能値外エラー", "取引終了日"))break;
                        
                         //
                         obj.Remarks = splits[26];
@@ -714,14 +714,14 @@ namespace MasterTouroku_Siiresaki
             }
             return bl;
         }
-        public bool Date_Check(string csv_Date,int line_no,string error_msg)
+        public bool Date_Check(string csv_Date,int line_no,string error_msg1, string error_msg2)
         {
             bool bl = false;
             if(!string.IsNullOrEmpty(csv_Date))
             {
                 if (!cf.CheckDateValue(csv_Date))
                 {
-                    bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg1,error_msg2);
                     // err.ShowErrorMessage("E103");
                     bl = true;
                 }
