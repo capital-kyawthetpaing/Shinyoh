@@ -130,7 +130,7 @@ namespace BL
             parameters[0] = new SqlParameter("@DataKBN", SqlDbType.TinyInt) { Value = se.DataKBN };
             parameters[1] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = se.OperatorCD };
             parameters[2] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
-           return  ckmdl.InsertUpdateDeleteData("D_Exclusive_Delete_Value", GetConnectionString(), parameters);
+           return  ckmdl.InsertUpdateDeleteData("D_Exclusive_Remove_NO", GetConnectionString(), parameters);
         }
     }
 }

@@ -41,5 +41,6 @@ namespace Entity
         public string TokuisakiJuusho2 { get; set; }
         public string KouritenJuusho1 { get; set; }
         public string KouritenJuusho2 { get; set; }
+        public int DataKBN { get; set; }
     }
 }
