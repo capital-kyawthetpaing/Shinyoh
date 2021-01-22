@@ -327,30 +327,30 @@ namespace ChakuniYoteiNyuuryoku
             string main_XML = cf.DataTableToXml(dt);
             if (cboMode.SelectedValue.ToString() == "3")
             {
-                DataTable dt1 = txtChakuniYoteiNO.IsDatatableOccurs;
-                dt1.Columns.Remove("ChakuniYoteiDate");
-                dt1.Columns.Remove("SiiresakiCD");
-                dt1.Columns.Remove("SiiresakiName");
-                dt1.Columns.Remove("SiiresakiRyakuName");
-                dt1.Columns.Remove("SiiresakiYuubinNO1");
-                dt1.Columns.Remove("SiiresakiYuubinNO2");
-                dt1.Columns.Remove("SiiresakiJuusho1");
-                dt1.Columns.Remove("SiiresakiJuusho2");
-                dt1.Columns.Remove("SiiresakiTelNO1-1");
-                dt1.Columns.Remove("SiiresakiTelNO1-2");
-                dt1.Columns.Remove("SiiresakiTelNO1-3");
-                dt1.Columns.Remove("SiiresakiTelNO2-1");
-                dt1.Columns.Remove("SiiresakiTelNO2-2");
-                dt1.Columns.Remove("SiiresakiTelNO2-3");
-                dt1.Columns.Remove("KanriNO");
-                dt1.Columns.Remove("StaffCD");
-                dt1.Columns.Remove("StaffName");
-                dt1.Columns.Remove("SoukoCD");
-                dt1.Columns.Remove("SoukoName");
-                dt1.Columns.Remove("ChakuniYoteiDenpyouTekiyou");
-                dt1.Columns.Remove("MessageID");
-                dt1.Columns.Remove("Hacchuu");
-                detail_XML = cf.DataTableToXml(dt1);
+                //DataTable dt1 = txtChakuniYoteiNO.IsDatatableOccurs;
+                //dt1.Columns.Remove("ChakuniYoteiDate");
+                //dt1.Columns.Remove("SiiresakiCD");
+                //dt1.Columns.Remove("SiiresakiName");
+                //dt1.Columns.Remove("SiiresakiRyakuName");
+                //dt1.Columns.Remove("SiiresakiYuubinNO1");
+                //dt1.Columns.Remove("SiiresakiYuubinNO2");
+                //dt1.Columns.Remove("SiiresakiJuusho1");
+                //dt1.Columns.Remove("SiiresakiJuusho2");
+                //dt1.Columns.Remove("SiiresakiTelNO1-1");
+                //dt1.Columns.Remove("SiiresakiTelNO1-2");
+                //dt1.Columns.Remove("SiiresakiTelNO1-3");
+                //dt1.Columns.Remove("SiiresakiTelNO2-1");
+                //dt1.Columns.Remove("SiiresakiTelNO2-2");
+                //dt1.Columns.Remove("SiiresakiTelNO2-3");
+                //dt1.Columns.Remove("KanriNO");
+                //dt1.Columns.Remove("StaffCD");
+                //dt1.Columns.Remove("StaffName");
+                //dt1.Columns.Remove("SoukoCD");
+                //dt1.Columns.Remove("SoukoName");
+                //dt1.Columns.Remove("ChakuniYoteiDenpyouTekiyou");
+                //dt1.Columns.Remove("MessageID");
+                //dt1.Columns.Remove("Hacchuu");
+                detail_XML = cf.DataTableToXml(dt_Details);
             }
             else
             {
