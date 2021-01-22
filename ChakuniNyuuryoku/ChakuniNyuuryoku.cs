@@ -847,6 +847,14 @@ namespace ChakuniNyuuryoku
             }
         }
 
+        private void txtSiiresaki_TextChanged(object sender, EventArgs e)
+        {
+            if(String.IsNullOrEmpty(txtSiiresaki.Text))
+            {
+                txtSiiresaki.Text = string.Empty;
+            }
+        }
+
         private void gvChakuniNyuuryoku_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 9)
