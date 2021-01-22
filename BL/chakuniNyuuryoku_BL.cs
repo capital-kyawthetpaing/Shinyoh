@@ -19,7 +19,7 @@ namespace BL
             var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@ChakuniNo", SqlDbType.VarChar) { Value = ChakuniNO };
             //parameters[1] = new SqlParameter("@ChakuniDate", SqlDbType.VarChar) { Value = chakunidate };
-            parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
+            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
             DataTable dt = ckmdl.SelectDatatable("ChakuniNyuuryoku_ErrorCheck_Select", GetConnectionString(), parameters);
             return dt;
         }

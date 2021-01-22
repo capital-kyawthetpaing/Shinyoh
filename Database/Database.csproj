@@ -84,9 +84,10 @@
     <Content Include="StoreProcedure\ArrivalNO_Search.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_CUD.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Delete.sql" />
+    <Content Include="StoreProcedure\ChakuniNyuuryoku_ErrorCheck_Select.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Insert.sql" />
-    <Content Include="StoreProcedure\ChakuniNyuuryoku_Select.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Update.sql" />
+    <Content Include="StoreProcedure\ChakuniNyuuryoku_Update_Select.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Delete.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Display.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Insert.sql" />
