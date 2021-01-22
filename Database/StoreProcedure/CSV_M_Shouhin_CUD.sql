@@ -26,9 +26,10 @@ BEGIN
 
 	CREATE TABLE #Temp
 	(
-		ShouhinCD					VARCHAR(20) COLLATE DATABASE_DEFAULT,
+		ShouhinCD					VARCHAR(50) COLLATE DATABASE_DEFAULT,
 		ChangeDate					VARCHAR(10) COLLATE DATABASE_DEFAULT,
 		ShokutiFLG					TINYINT,
+		HinbanCD					VARCHAR(20) COLLATE DATABASE_DEFAULT,
 		ShouhinName					VARCHAR(100) COLLATE DATABASE_DEFAULT,
 		ShouhinRyakuName			VARCHAR(80) COLLATE DATABASE_DEFAULT,
 		KanaName					VARCHAR(80) COLLATE DATABASE_DEFAULT,
@@ -66,16 +67,17 @@ BEGIN
 	EXEC sp_xml_preparedocument @Rows OUTPUT, @xml
 
 	INSERT INTO #Temp
-	(ShouhinCD, ChangeDate, ShokutiFLG, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD, ColorNO, SizeNO, JoudaiTanka,
+	(ShouhinCD, ChangeDate, ShokutiFLG, HinbanCD, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD, ColorNO, SizeNO, JoudaiTanka,
 	 GedaiTanka, HyoujunGenkaTanka, ZeirituKBN, ZaikoHyoukaKBN, ZaikoKanriKBN, MainSiiresakiCD, ToriatukaiShuuryouDate, HanbaiTeisiDate, Model_No, Model_Name, FOB, Shipping_Place,
 	 HacchuuLot, ShouhinImageFilePathName, ShouhinImage, Remarks, UsedFlg, InsertOperator, UpdateOperator, Error)
 	SELECT * FROM OPENXML(@Rows, 'NewDataSet/test') WITH
 	(
-		ShouhinCD					VARCHAR(20) 'ShouhinCD',
+		ShouhinCD					VARCHAR(50) 'ShouhinCD',
 		ChangeDate					VARCHAR(10) 'ChangeDate',
 		ShokutiFLG					TINYINT 'ShokutiFLG',
+		HinbanCD					VARCHAR(20) 'HinbanCD',
 		ShouhinName					VARCHAR(100) 'ShouhinName',
-		ShouhinRyakuName			VARCHAR(80) 'ShouhinRyankuName',
+		ShouhinRyakuName			VARCHAR(80) 'ShouhinRyakuName',
 		KanaName					VARCHAR(80) 'KanaName',
 		KensakuHyouziJun			INT 'KensakuHyouziJun',
 		JANCD						VARCHAR(13) 'JANCD',
@@ -113,10 +115,10 @@ BEGIN
 	IF @condition = 'create_update'
 	BEGIN
 		INSERT INTO M_Shouhin
-		(ShouhinCD, ChangeDate, ShokutiFLG, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD, ColorNO, SizeNO, JoudaiTanka,
+		(ShouhinCD, ChangeDate, ShokutiFLG, HinbanCD, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD, ColorNO, SizeNO, JoudaiTanka,
 		GedaiTanka, HyoujunGenkaTanka, ZeirituKBN, ZaikoHyoukaKBN, ZaikoKanriKBN, MainSiiresakiCD, ToriatukaiShuuryouDate, HanbaiTeisiDate, Model_No, Model_Name, FOB, Shipping_Place,
 		HacchuuLot, ShouhinImageFilePathName, ShouhinImage, Remarks, UsedFlg, InsertOperator, InsertDateTime, UpdateOperator, UpdateDateTime)
-		SELECT  ShouhinCD, ChangeDate, ShokutiFLG, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD, ColorNO, SizeNO, JoudaiTanka,
+		SELECT  ShouhinCD, ChangeDate, ShokutiFLG, HinbanCD, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD, ColorNO, SizeNO, JoudaiTanka,
 		GedaiTanka, HyoujunGenkaTanka, ZeirituKBN, ZaikoHyoukaKBN, ZaikoKanriKBN, MainSiiresakiCD, ToriatukaiShuuryouDate, HanbaiTeisiDate, Model_No, Model_Name, FOB, Shipping_Place,
 		HacchuuLot, ShouhinImageFilePathName, ShouhinImage, Remarks, UsedFlg, InsertOperator, GETDATE(), UpdateOperator, GETDATE()
 		FROM #Temp
@@ -125,6 +127,7 @@ BEGIN
 		UPDATE ms
 		SET
 			ms.ShokutiFLG = t.ShokutiFLG,
+			ms.HinbanCD = t.HinbanCD,
 			ms.ShouhinName  = t.ShouhinName,
 			ms.ShouhinRyakuName = t.ShouhinRyakuName,
 			ms.KanaName = t.KanaName,
@@ -168,4 +171,3 @@ BEGIN
 
 	DROP TABLE #Temp
 END
-

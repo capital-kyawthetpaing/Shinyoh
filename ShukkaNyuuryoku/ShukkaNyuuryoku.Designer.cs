@@ -26,10 +26,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblShukkaNo = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.txtStaff = new Shinyoh_Search.SearchBox();
@@ -723,7 +723,7 @@
             this.txtShukkaSijiNo.Name = "txtShukkaSijiNo";
             this.txtShukkaSijiNo.NextControl = null;
             this.txtShukkaSijiNo.NextControlName = "txtShukkaYoteiDate1";
-            this.txtShukkaSijiNo.SearchType = Entity.SearchType.ScType.Siiresaki;
+            this.txtShukkaSijiNo.SearchType = Entity.SearchType.ScType.ShukkaNo;
             this.txtShukkaSijiNo.Size = new System.Drawing.Size(100, 19);
             this.txtShukkaSijiNo.TabIndex = 9;
             this.txtShukkaSijiNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -798,7 +798,7 @@
             this.JuchuuNOGyouNO});
             this.gvShukka1.Location = new System.Drawing.Point(47, 219);
             this.gvShukka1.Name = "gvShukka1";
-            this.gvShukka1.Size = new System.Drawing.Size(1510, 600);
+            this.gvShukka1.Size = new System.Drawing.Size(1508, 600);
             this.gvShukka1.TabIndex = 24;
             this.gvShukka1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvShukka1_CellEndEdit);
             // 
@@ -844,8 +844,8 @@
             // colSize
             // 
             this.colSize.DataPropertyName = "SizeNO";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colSize.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colSize.DefaultCellStyle = dataGridViewCellStyle9;
             this.colSize.HeaderText = "サイズ\t\t\t\t\t\t";
             this.colSize.Name = "colSize";
             this.colSize.ReadOnly = true;
@@ -853,9 +853,9 @@
             // colShukkazansuu
             // 
             this.colShukkazansuu.DataPropertyName = "ShukkaSiziZumiSuu";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.NullValue = "0";
-            this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.NullValue = "0";
+            this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle10;
             this.colShukkazansuu.HeaderText = "出荷残数\t\t\t\t";
             this.colShukkazansuu.Name = "colShukkazansuu";
             this.colShukkazansuu.ReadOnly = true;
@@ -864,9 +864,9 @@
             // colMiryoku
             // 
             this.colMiryoku.DataPropertyName = "MiNyuukaSuu";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.NullValue = "0";
-            this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.NullValue = "0";
+            this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle11;
             this.colMiryoku.HeaderText = "未入荷数\t\t\t\t";
             this.colMiryoku.Name = "colMiryoku";
             this.colMiryoku.ReadOnly = true;
@@ -875,8 +875,8 @@
             // colKonkai
             // 
             this.colKonkai.DataPropertyName = "ShukkaSuu";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colKonkai.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colKonkai.DefaultCellStyle = dataGridViewCellStyle12;
             this.colKonkai.HeaderText = "今回出荷数\t\t\t\t\t";
             this.colKonkai.Name = "colKonkai";
             // 

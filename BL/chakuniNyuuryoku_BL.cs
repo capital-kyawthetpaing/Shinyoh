@@ -16,11 +16,21 @@ namespace BL
         public DataTable ChakuniNyuuryoku_Select(string ChakuniNO,string chakunidate, string error_Type)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
+            var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@ChakuniNo", SqlDbType.VarChar) { Value = ChakuniNO };
-            parameters[1] = new SqlParameter("@ChakuniDate", SqlDbType.VarChar) { Value = chakunidate };
-            parameters[2] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
-            DataTable dt = ckmdl.SelectDatatable("ChakuniNyuuryoku_Select", GetConnectionString(), parameters);
+            //parameters[1] = new SqlParameter("@ChakuniDate", SqlDbType.VarChar) { Value = chakunidate };
+            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
+            DataTable dt = ckmdl.SelectDatatable("ChakuniNyuuryoku_ErrorCheck_Select", GetConnectionString(), parameters);
+            return dt;
+        }
+        public DataTable ChakuniNyuuryoku_Update_Select(ChakuniNyuuryoku_Entity ce,int type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@ChakuniNo", SqlDbType.VarChar) { Value = ce.ChakuniNO };
+            parameters[1] = new SqlParameter("@ChakuniDate", SqlDbType.VarChar) { Value = ce.ChakuniDate };
+            parameters[2] = new SqlParameter("@ModeType", SqlDbType.TinyInt) { Value =type };
+            DataTable dt = ckmdl.SelectDatatable("ChakuniNyuuryoku_Update_Select", GetConnectionString(), parameters);
             return dt;
         }
         public DataTable ChakuniNyuuryoku_Display(ChakuniNyuuryoku_Entity cne)

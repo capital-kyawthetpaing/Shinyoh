@@ -134,7 +134,15 @@ namespace ChakuniYoteiNyuuryoku
             }
             if (tagID == "6")
             {
-                Clear();
+                if (cboMode.SelectedValue.Equals("1"))
+                {
+                    New_Mode();
+                }
+                else
+                {
+                    Mode_Setting();
+                }
+                dtTemp.Clear();
             }
             if (tagID == "8")
             {
@@ -736,9 +744,10 @@ namespace ChakuniYoteiNyuuryoku
                 }
 
                 DataRow dr1 = dtGS.NewRow();
-                for (int i = 0; i < dtGS.Columns.Count; i++)
+                for (int i = 2; i < dtGS.Columns.Count; i++)
                 {
-                    dr1[i] = gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue;
+                    //dr1[i] = gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue;
+                    dr1[i] = string.IsNullOrEmpty(gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue.ToString();
                 }
                 dtGS.Rows.Add(dr1);
             }

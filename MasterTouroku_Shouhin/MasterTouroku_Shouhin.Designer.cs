@@ -380,7 +380,7 @@
             this.lbl_MajorSuppliers.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_MajorSuppliers.Location = new System.Drawing.Point(240, 390);
             this.lbl_MajorSuppliers.Name = "lbl_MajorSuppliers";
-            this.lbl_MajorSuppliers.Size = new System.Drawing.Size(300, 19);
+            this.lbl_MajorSuppliers.Size = new System.Drawing.Size(500, 19);
             this.lbl_MajorSuppliers.TabIndex = 84;
             this.lbl_MajorSuppliers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -392,7 +392,7 @@
             this.lbl_IManagement.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_IManagement.Location = new System.Drawing.Point(170, 365);
             this.lbl_IManagement.Name = "lbl_IManagement";
-            this.lbl_IManagement.Size = new System.Drawing.Size(200, 19);
+            this.lbl_IManagement.Size = new System.Drawing.Size(250, 19);
             this.lbl_IManagement.TabIndex = 83;
             this.lbl_IManagement.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -404,7 +404,7 @@
             this.lbl_IEvaluation.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_IEvaluation.Location = new System.Drawing.Point(170, 340);
             this.lbl_IEvaluation.Name = "lbl_IEvaluation";
-            this.lbl_IEvaluation.Size = new System.Drawing.Size(200, 19);
+            this.lbl_IEvaluation.Size = new System.Drawing.Size(250, 19);
             this.lbl_IEvaluation.TabIndex = 82;
             this.lbl_IEvaluation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -416,7 +416,7 @@
             this.lbl_TaxtRate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_TaxtRate.Location = new System.Drawing.Point(170, 315);
             this.lbl_TaxtRate.Name = "lbl_TaxtRate";
-            this.lbl_TaxtRate.Size = new System.Drawing.Size(200, 19);
+            this.lbl_TaxtRate.Size = new System.Drawing.Size(250, 19);
             this.lbl_TaxtRate.TabIndex = 81;
             this.lbl_TaxtRate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -428,7 +428,7 @@
             this.lbl_SizeNO.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_SizeNO.Location = new System.Drawing.Point(290, 240);
             this.lbl_SizeNO.Name = "lbl_SizeNO";
-            this.lbl_SizeNO.Size = new System.Drawing.Size(300, 19);
+            this.lbl_SizeNO.Size = new System.Drawing.Size(500, 19);
             this.lbl_SizeNO.TabIndex = 80;
             this.lbl_SizeNO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -440,7 +440,7 @@
             this.lbl_ColorNO.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_ColorNO.Location = new System.Drawing.Point(290, 215);
             this.lbl_ColorNO.Name = "lbl_ColorNO";
-            this.lbl_ColorNO.Size = new System.Drawing.Size(300, 19);
+            this.lbl_ColorNO.Size = new System.Drawing.Size(500, 19);
             this.lbl_ColorNO.TabIndex = 79;
             this.lbl_ColorNO.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -452,7 +452,7 @@
             this.lbl_BrandCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_BrandCD.Location = new System.Drawing.Point(240, 190);
             this.lbl_BrandCD.Name = "lbl_BrandCD";
-            this.lbl_BrandCD.Size = new System.Drawing.Size(300, 19);
+            this.lbl_BrandCD.Size = new System.Drawing.Size(500, 19);
             this.lbl_BrandCD.TabIndex = 78;
             this.lbl_BrandCD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -464,7 +464,7 @@
             this.lbl_TaniCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lbl_TaniCD.Location = new System.Drawing.Point(190, 165);
             this.lbl_TaniCD.Name = "lbl_TaniCD";
-            this.lbl_TaniCD.Size = new System.Drawing.Size(200, 19);
+            this.lbl_TaniCD.Size = new System.Drawing.Size(250, 19);
             this.lbl_TaniCD.TabIndex = 77;
             this.lbl_TaniCD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -742,7 +742,7 @@
             // pImage
             // 
             this.pImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pImage.Location = new System.Drawing.Point(660, 15);
+            this.pImage.Location = new System.Drawing.Point(796, 15);
             this.pImage.Name = "pImage";
             this.pImage.Size = new System.Drawing.Size(350, 300);
             this.pImage.TabIndex = 66;

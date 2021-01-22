@@ -402,7 +402,7 @@ namespace Shinyoh_Controls
                         break;
                     case "ShukkaNyuuryoku":
                         ShukkaNyuuryokuBL sbl = new ShukkaNyuuryokuBL();
-                        rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
+                        rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, "E133");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                     case "HikiateHenkouShoukai":

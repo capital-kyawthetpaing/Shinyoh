@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,11 +32,11 @@ namespace Shinyoh_Search
             dgDetail.UseRowNo(true);
             //dgDetail.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //dgDetail.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            BindDataGrid();
             if (string.IsNullOrWhiteSpace(parent_changeDate))
                 txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", DateTime.Now);
             else
                 txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", parent_changeDate);
+            BindDataGrid();
 
             txtHinbanCD1.E106Check(true, txtHinbanCD, txtHinbanCD1);
             txtJANCD1.E106Check(true, txtJANCD, txtJANCD1);
