@@ -15,18 +15,23 @@ namespace Shinyoh_Controls
         SiiresakiBL siiresaki_bl= new SiiresakiBL();
         CommonFunction cf = new CommonFunction();
 
-        public (bool,string) JuchuuNyuuryoku(DataTable dt,string changeDate)
+        public (bool,string) JuchuuNyuuryoku(int memory_row,DataTable dt,string changeDate)
         {
             bool error_occur = false;
             string row_col = string.Empty;
-
-            for(int i=0;i<dt.Rows.Count;i++)
+            if (memory_row == 0)
+            {
+                base_bl.ShowMessage("E274");
+                error_occur = true;
+                return (error_occur, row_col);
+            }
+            for (int i=0;i<dt.Rows.Count;i++)
             {
                 string isSelected = string.Empty;
                 string free = dt.Rows[i]["Free"].ToString().ToString();
                 string JuchuuSuu = dt.Rows[i]["JuchuuSuu"].ToString();
                 string siiresakiCD = dt.Rows[i]["SiiresakiCD"].ToString();//requierd Field
-                string expectedDate = dt.Rows[i]["expectedDate"].ToString();//requierd Field
+                string expectedDate = dt.Rows[i]["ExpectedDate"].ToString();//requierd Field
                 string soukoCD = dt.Rows[i]["SoukoCD"].ToString();//requierd Field
                 if (string.IsNullOrEmpty(free))
                     isSelected = "OFF";
@@ -63,7 +68,7 @@ namespace Shinyoh_Controls
                             }
                         }
 
-                        if (dc.ColumnName == "expectedDate")
+                        if (dc.ColumnName == "ExpectedDate")
                         {
                             if (string.IsNullOrEmpty(expectedDate))
                             {

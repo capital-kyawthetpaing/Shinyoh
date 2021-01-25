@@ -211,6 +211,8 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
             // F10_Gridview_Bind();
+
+            gv_JuchuuNyuuryoku.Memory_Row_Count = 0;
         }
 
         public void Disable_UDI_Mode()
@@ -308,7 +310,6 @@ namespace JuchuuNyuuryoku
                             break;
                     }
                 }
-               
                // }
             }
 
@@ -504,10 +505,15 @@ namespace JuchuuNyuuryoku
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
 
-                if (cboMode.SelectedValue.ToString() == "1")
-                    F8_dt1 = gv1_to_dt1.Clone();
-                else
+                F8_dt1 = gv1_to_dt1.Clone();
+
+                if (cboMode.SelectedValue.ToString() == "3")
                     F8_dt1 = gv1_to_dt1.Copy();
+
+                //if (cboMode.SelectedValue.ToString() == "1")
+                //    F8_dt1 = gv1_to_dt1.Clone();
+                //else
+                //    F8_dt1 = gv1_to_dt1.Copy();
             }
         }
 
@@ -895,12 +901,12 @@ namespace JuchuuNyuuryoku
             obj.SizeNO = txtSizeNo.Text;
             obj.ColorNO = txtColorNo.Text;
 
-            if (string.IsNullOrEmpty(obj.BrandCD) && string.IsNullOrEmpty(obj.ShouhinCD) && string.IsNullOrEmpty(obj.JANCD) && string.IsNullOrEmpty(obj.ShouhinName) && string.IsNullOrEmpty(obj.YearTerm) && obj.SeasonSS == "0" && obj.SeasonFW == "0" && string.IsNullOrEmpty(obj.SizeNO) && string.IsNullOrEmpty(obj.ColorNO))
-            {
-                base_bl.ShowMessage("E111");
-                txtBrandCD.Focus();
-                return;
-            }
+            //if (string.IsNullOrEmpty(obj.BrandCD) && string.IsNullOrEmpty(obj.ShouhinCD) && string.IsNullOrEmpty(obj.JANCD) && string.IsNullOrEmpty(obj.ShouhinName) && string.IsNullOrEmpty(obj.YearTerm) && obj.SeasonSS == "0" && obj.SeasonFW == "0" && string.IsNullOrEmpty(obj.SizeNO) && string.IsNullOrEmpty(obj.ColorNO))
+            //{
+            //    base_bl.ShowMessage("E111");
+            //    txtBrandCD.Focus();
+            //    return;
+            //}
 
             obj.ChangeDate = txtJuchuuDate.Text;
             DataTable dt = obj_bl.JuchuuNyuuryoku_Display(obj);
@@ -981,7 +987,7 @@ namespace JuchuuNyuuryoku
                     }
                 }
             }
-
+            gv_JuchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
 
             //comment nwe mar win logic difference
 
