@@ -90,11 +90,12 @@
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Update_Select.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Delete.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Display.sql" />
+    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_ErrorCheck_Select.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Insert.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_IUD.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Search.sql" />
-    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Select_Check.sql" />
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Update.sql" />
+    <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Update_Select.sql" />
     <Content Include="StoreProcedure\ChakuniYotei_DataCheck.sql" />
     <Content Include="StoreProcedure\CSV_M_Kouriten_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_Shouhin_CUD.sql" />
@@ -106,6 +107,7 @@
     <Content Include="StoreProcedure\D_Exclusive_Delete.sql" />
     <Content Include="StoreProcedure\D_Exclusive_Insert.sql" />
     <Content Include="StoreProcedure\D_Exclusive_Lock_Check.sql" />
+    <Content Include="StoreProcedure\D_Exclusive_Remove_NO.sql" />
     <Content Include="StoreProcedure\Fnc_GetDenpyouNO.sql" />
     <Content Include="StoreProcedure\Fnc_GetNumber.sql" />
     <Content Include="StoreProcedure\Fnc_Hikiate.sql" />

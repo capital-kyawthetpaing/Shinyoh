@@ -683,39 +683,7 @@ SELECT
 FROM [dbo].[D_ShukkaSiziShousai]
 where ShukkaSiziNO=@ShukkaSiziNO
 
---※シート「消込順」参照
-DECLARE @Price_table TABLE (idx int Primary Key IDENTITY(1,1),
-						KonkaiShukkaSiziSuu varchar(50),
-						SKMSNO  varchar(12),ShouhinCD  varchar(50))
-			INSERT @Price_table  SELECT KonkaiShukkaSiziSuu,SKMSNO,ShouhinCD FROM #Temp_Details
-			
-declare @Count as int = 1
-			
-			WHILE @Count <= (SELECT COUNT(*) FROM #Temp_Details)
-			BEGIN
-			declare @KonkaiShukkaSiziSuu varchar(50)=(select KonkaiShukkaSiziSuu from @Price_table  WHERE idx =@Count)
-			  declare @Value2 as varchar(12)=(select SKMSNO from @Price_table WHERE idx =@Count),
-					@Value3 as varchar(50)=(select ShouhinCD  from @Price_table WHERE idx =@Count)
-			 
-			 DECLARE CUR_POINTER CURSOR FAST_FORWARD FOR
-				SELECT KonkaiShukkaSiziSuu
-				FROM   #Temp_Details    
- 
-			OPEN CUR_POINTER
-			FETCH NEXT FROM CUR_POINTER INTO @KonkaiShukkaSiziSuu
- 
-			WHILE @@FETCH_STATUS = 0
-			BEGIN		
-
-			   exec  [dbo].[Shukkasizi_Price]  @KonkaiShukkaSiziSuu,@Value2,@Value3
-
-			   FETCH NEXT FROM CUR_POINTER INTO @KonkaiShukkaSiziSuu
-			END
-			CLOSE CUR_POINTER
-			DEALLOCATE CUR_POINTER
-		SET @Count = @Count + 1
-			END;
-
+-- Konkai_Price --
 
 --Table G  --追加または修正後
 UPDATE  A
@@ -757,18 +725,8 @@ declare @OperatorMode varchar(50)='新規'
 exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperatorMode,@ShukkaSiziNO
 
 --テーブル転送仕様Ｙ--削除
-DECLARE @JuchuuNo_table TABLE (idx int Primary Key IDENTITY(1,1), JuchuuNo varchar(20))
-			INSERT @JuchuuNo_table SELECT distinct LEFT((SKMSNO), CHARINDEX('-', (SKMSNO)) - 1) FROM #Temp_Details
-			
-			--declare @Count as int = 1
-			WHILE @Count <= (SELECT COUNT(*) FROM @JuchuuNo_table)
-			BEGIN
-			 DELETE A 
-			 From D_Exclusive A
-			 where A.DataKBN=1
-			 and A.Number=(select JuchuuNo from @JuchuuNo_table WHERE idx =@Count)
-		SET @Count = @Count + 1
-			END;
+exec [dbo].[D_Exclusive_Remove_NO] 1,@OperatorCD,@Program,@PC
+
 Drop Table #Temp_Header
 Drop Table #Temp_Details
 
