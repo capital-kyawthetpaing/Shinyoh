@@ -38,6 +38,7 @@
             this.lblChangeDate = new Shinyoh_Controls.SLabel();
             this.lblKouriten = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.rdo_AliasKBN1 = new Shinyoh_Controls.SRadio();
             this.rdo_AliasKBN2 = new Shinyoh_Controls.SRadio();
             this.lblTitle = new Shinyoh_Controls.SLabel();
@@ -98,6 +99,7 @@
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -291,8 +293,7 @@
             this.PanelDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PanelDetail.Controls.Add(this.rdo_AliasKBN1);
-            this.PanelDetail.Controls.Add(this.rdo_AliasKBN2);
+            this.PanelDetail.Controls.Add(this.panel2);
             this.PanelDetail.Controls.Add(this.lblTitle);
             this.PanelDetail.Controls.Add(this.txtStaffCD);
             this.PanelDetail.Controls.Add(this.lblStaffCD_Name);
@@ -346,10 +347,19 @@
             this.PanelDetail.Size = new System.Drawing.Size(1713, 838);
             this.PanelDetail.TabIndex = 1;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.rdo_AliasKBN1);
+            this.panel2.Controls.Add(this.rdo_AliasKBN2);
+            this.panel2.Location = new System.Drawing.Point(129, 153);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 30);
+            this.panel2.TabIndex = 76;
+            // 
             // rdo_AliasKBN1
             // 
             this.rdo_AliasKBN1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_AliasKBN1.Location = new System.Drawing.Point(150, 158);
+            this.rdo_AliasKBN1.Location = new System.Drawing.Point(21, 6);
             this.rdo_AliasKBN1.MoveNext = true;
             this.rdo_AliasKBN1.Name = "rdo_AliasKBN1";
             this.rdo_AliasKBN1.NextControl = null;
@@ -363,7 +373,7 @@
             // rdo_AliasKBN2
             // 
             this.rdo_AliasKBN2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdo_AliasKBN2.Location = new System.Drawing.Point(222, 158);
+            this.rdo_AliasKBN2.Location = new System.Drawing.Point(97, 6);
             this.rdo_AliasKBN2.MoveNext = true;
             this.rdo_AliasKBN2.Name = "rdo_AliasKBN2";
             this.rdo_AliasKBN2.NextControl = null;
@@ -1463,6 +1473,7 @@
             this.PanelTitle.ResumeLayout(false);
             this.PanelDetail.ResumeLayout(false);
             this.PanelDetail.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1537,6 +1548,7 @@
         private Shinyoh_Search.SearchBox txtTokuisakiCD;
         private Shinyoh_Controls.SLabel sLabel3;
         private Shinyoh_Controls.STextBox txtSystemDate;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 
