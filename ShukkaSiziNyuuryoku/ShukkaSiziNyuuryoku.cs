@@ -166,7 +166,7 @@ namespace ShukkaSiziNyuuryoku
         {
             if (!string.IsNullOrWhiteSpace(sbTokuisaki.Text) && td.Access_Tokuisaki_obj.TokuisakiCD != null)
             {
-                if (!td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbKouriten.Text))
+                if (!td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbTokuisaki.Text))
                 {
 
                     bbl.ShowMessage("E269");
