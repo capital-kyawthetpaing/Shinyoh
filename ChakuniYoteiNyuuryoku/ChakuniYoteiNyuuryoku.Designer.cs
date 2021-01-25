@@ -278,6 +278,8 @@
             this.Column1,
             this.Column2,
             this.Column3});
+            this.gvChakuniYoteiNyuuryoku.IsErrorOccurs = false;
+            this.gvChakuniYoteiNyuuryoku.ISRowColumn = null;
             this.gvChakuniYoteiNyuuryoku.Location = new System.Drawing.Point(37, 204);
             this.gvChakuniYoteiNyuuryoku.Name = "gvChakuniYoteiNyuuryoku";
             this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1500, 590);
@@ -663,7 +665,7 @@
             this.txtDescription.NextControl = null;
             this.txtDescription.NextControlName = "txtBrandCD";
             this.txtDescription.SearchType = Entity.SearchType.ScType.None;
-            this.txtDescription.Size = new System.Drawing.Size(500, 19);
+            this.txtDescription.Size = new System.Drawing.Size(490, 19);
             this.txtDescription.TabIndex = 69;
             this.txtDescription.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -845,7 +847,7 @@
             this.txtShouhinName.NextControl = null;
             this.txtShouhinName.NextControlName = "txtJANCD";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
-            this.txtShouhinName.Size = new System.Drawing.Size(500, 19);
+            this.txtShouhinName.Size = new System.Drawing.Size(490, 19);
             this.txtShouhinName.TabIndex = 62;
             this.txtShouhinName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EDDE1214-C523-4623-8746-B950D654C959}</ProjectGuid>
+    <ProjectGuid>{CA2A3443-29B1-4B23-9904-5DF7CEF3DBC9}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ZaikoIkkatuSaiHikiate</RootNamespace>
-    <AssemblyName>ZaikoIkkatuSaiHikiate</AssemblyName>
+    <RootNamespace>HacchuuNyuuryoku</RootNamespace>
+    <AssemblyName>HacchuuNyuuryoku</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKM_CommonFunction">
-      <HintPath>..\bin\Debug\CKM_CommonFunction.dll</HintPath>
+      <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,14 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ZaikoIkkatuSaiHikiate.cs">
+    <Compile Include="HacchuuNyuuryoku.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ZaikoIkkatuSaiHikiate.Designer.cs">
-      <DependentUpon>ZaikoIkkatuSaiHikiate.cs</DependentUpon>
+    <Compile Include="HacchuuNyuuryoku.Designer.cs">
+      <DependentUpon>HacchuuNyuuryoku.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="HacchuuNyuuryoku.resx">
+      <DependentUpon>HacchuuNyuuryoku.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -66,9 +69,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ZaikoIkkatuSaiHikiate.resx">
-      <DependentUpon>ZaikoIkkatuSaiHikiate.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -91,10 +91,6 @@
       <Project>{0cc4487d-c081-4d4f-87d5-028552310763}</Project>
       <Name>Entity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ShinyohMenu\ShinyohMenu.csproj">
-      <Project>{9d480441-8bec-4452-b831-39f40e984c8c}</Project>
-      <Name>ShinyohMenu</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Shinyoh\Shinyoh.csproj">
       <Project>{697e1304-f141-4cce-b816-9cc225f441c4}</Project>
       <Name>Shinyoh</Name>
@@ -102,6 +98,10 @@
     <ProjectReference Include="..\Shinyoh_Controls\Shinyoh_Controls.csproj">
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Details\Shinyoh_Details.csproj">
+      <Project>{c77a6d15-5b0f-4ec2-9c63-f99da9c55a24}</Project>
+      <Name>Shinyoh_Details</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
       <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>

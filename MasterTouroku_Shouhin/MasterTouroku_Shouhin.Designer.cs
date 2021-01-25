@@ -138,13 +138,14 @@
             this.PanelTitle.Controls.Add(this.lblProduct);
             this.PanelTitle.Location = new System.Drawing.Point(120, 0);
             this.PanelTitle.Size = new System.Drawing.Size(855, 69);
-            this.PanelTitle.TabIndex = 2;
+            this.PanelTitle.TabIndex = 1;
             // 
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.Location = new System.Drawing.Point(41, 7);
             this.cboMode.NextControlName = "txtProduct";
+            this.cboMode.TabIndex = 0;
             // 
             // lblProduct
             // 
@@ -196,7 +197,7 @@
             this.txtChangeDate.NextControlName = "chkZhukou";
             this.txtChangeDate.SearchType = Entity.SearchType.ScType.None;
             this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
-            this.txtChangeDate.TabIndex = 3;
+            this.txtChangeDate.TabIndex = 2;
             this.txtChangeDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtChangeDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtChangeDate_KeyDown);
@@ -249,7 +250,7 @@
             this.txtCopyChangeDate.NextControlName = "chkZhukou";
             this.txtCopyChangeDate.SearchType = Entity.SearchType.ScType.None;
             this.txtCopyChangeDate.Size = new System.Drawing.Size(100, 19);
-            this.txtCopyChangeDate.TabIndex = 5;
+            this.txtCopyChangeDate.TabIndex = 4;
             this.txtCopyChangeDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtCopyChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtCopyChangeDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyChangeDate_KeyDown);
@@ -278,7 +279,7 @@
             this.rdo_Registragion.NextControl = null;
             this.rdo_Registragion.NextControlName = "chkZhukou";
             this.rdo_Registragion.Size = new System.Drawing.Size(49, 19);
-            this.rdo_Registragion.TabIndex = 3;
+            this.rdo_Registragion.TabIndex = 2;
             this.rdo_Registragion.TabStop = true;
             this.rdo_Registragion.Text = "登録";
             this.rdo_Registragion.UseVisualStyleBackColor = true;
@@ -292,7 +293,7 @@
             this.rdo_Delete.NextControl = null;
             this.rdo_Delete.NextControlName = "chkZhukou";
             this.rdo_Delete.Size = new System.Drawing.Size(49, 19);
-            this.rdo_Delete.TabIndex = 4;
+            this.rdo_Delete.TabIndex = 3;
             this.rdo_Delete.Text = "削除";
             this.rdo_Delete.UseVisualStyleBackColor = true;
             // 
@@ -370,7 +371,7 @@
             this.PanelDetail.Location = new System.Drawing.Point(0, 69);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1713, 848);
-            this.PanelDetail.TabIndex = 5;
+            this.PanelDetail.TabIndex = 2;
             // 
             // lbl_MajorSuppliers
             // 
@@ -493,7 +494,7 @@
             this.txtMajorSuppliers.NextControlName = "txtHandlingEndDate";
             this.txtMajorSuppliers.SearchType = Entity.SearchType.ScType.Siiresaki;
             this.txtMajorSuppliers.Size = new System.Drawing.Size(100, 19);
-            this.txtMajorSuppliers.TabIndex = 25;
+            this.txtMajorSuppliers.TabIndex = 20;
             this.txtMajorSuppliers.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtMajorSuppliers.TxtBox = null;
             // 
@@ -522,7 +523,7 @@
             this.txtIManagement.NextControlName = "txtMajorSuppliers";
             this.txtIManagement.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtIManagement.Size = new System.Drawing.Size(30, 19);
-            this.txtIManagement.TabIndex = 24;
+            this.txtIManagement.TabIndex = 19;
             this.txtIManagement.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtIManagement.TxtBox = null;
             // 
@@ -551,7 +552,7 @@
             this.txtIEvaluation.NextControlName = "txtIManagement";
             this.txtIEvaluation.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtIEvaluation.Size = new System.Drawing.Size(30, 19);
-            this.txtIEvaluation.TabIndex = 23;
+            this.txtIEvaluation.TabIndex = 18;
             this.txtIEvaluation.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtIEvaluation.TxtBox = null;
             // 
@@ -580,7 +581,7 @@
             this.txtTaxRate.NextControlName = "txtIEvaluation";
             this.txtTaxRate.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtTaxRate.Size = new System.Drawing.Size(30, 19);
-            this.txtTaxRate.TabIndex = 22;
+            this.txtTaxRate.TabIndex = 17;
             this.txtTaxRate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtTaxRate.TxtBox = null;
             // 
@@ -609,7 +610,7 @@
             this.txtSize.NextControlName = "txtRetailPrice";
             this.txtSize.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtSize.Size = new System.Drawing.Size(150, 19);
-            this.txtSize.TabIndex = 18;
+            this.txtSize.TabIndex = 13;
             this.txtSize.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSize.TxtBox = null;
             // 
@@ -638,7 +639,7 @@
             this.txtColor.NextControlName = "txtSize";
             this.txtColor.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtColor.Size = new System.Drawing.Size(150, 19);
-            this.txtColor.TabIndex = 17;
+            this.txtColor.TabIndex = 12;
             this.txtColor.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColor.TxtBox = null;
             // 
@@ -667,7 +668,7 @@
             this.txtBrand.NextControlName = "txtColor";
             this.txtBrand.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtBrand.Size = new System.Drawing.Size(100, 19);
-            this.txtBrand.TabIndex = 16;
+            this.txtBrand.TabIndex = 11;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand.TxtBox = null;
             // 
@@ -696,7 +697,7 @@
             this.txtTani.NextControlName = "txtBrand";
             this.txtTani.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtTani.Size = new System.Drawing.Size(50, 19);
-            this.txtTani.TabIndex = 15;
+            this.txtTani.TabIndex = 10;
             this.txtTani.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTani.TxtBox = null;
             // 
@@ -722,7 +723,7 @@
             this.txtHinbanCD.NextControlName = "txtProductName";
             this.txtHinbanCD.SearchType = Entity.SearchType.ScType.None;
             this.txtHinbanCD.Size = new System.Drawing.Size(150, 19);
-            this.txtHinbanCD.TabIndex = 7;
+            this.txtHinbanCD.TabIndex = 2;
             this.txtHinbanCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblHinbanCD
@@ -771,7 +772,7 @@
             this.txtKensakuHyouziJun.NextControlName = "BtnF12";
             this.txtKensakuHyouziJun.SearchType = Entity.SearchType.ScType.None;
             this.txtKensakuHyouziJun.Size = new System.Drawing.Size(50, 19);
-            this.txtKensakuHyouziJun.TabIndex = 35;
+            this.txtKensakuHyouziJun.TabIndex = 30;
             this.txtKensakuHyouziJun.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtKensakuHyouziJun.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -810,7 +811,7 @@
             this.txtRemarks.NextControlName = "txtKensakuHyouziJun";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
             this.txtRemarks.Size = new System.Drawing.Size(500, 19);
-            this.txtRemarks.TabIndex = 34;
+            this.txtRemarks.TabIndex = 29;
             this.txtRemarks.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblRemarks
@@ -848,7 +849,7 @@
             this.txtImage.NextControlName = "txtRemarks";
             this.txtImage.SearchType = Entity.SearchType.ScType.None;
             this.txtImage.Size = new System.Drawing.Size(625, 19);
-            this.txtImage.TabIndex = 33;
+            this.txtImage.TabIndex = 28;
             this.txtImage.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtImage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImage_KeyDown);
             // 
@@ -887,7 +888,7 @@
             this.txtHacchuuLot.NextControlName = "txtImage";
             this.txtHacchuuLot.SearchType = Entity.SearchType.ScType.None;
             this.txtHacchuuLot.Size = new System.Drawing.Size(100, 19);
-            this.txtHacchuuLot.TabIndex = 32;
+            this.txtHacchuuLot.TabIndex = 27;
             this.txtHacchuuLot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtHacchuuLot.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Price;
             // 
@@ -927,7 +928,7 @@
             this.txtShippingPlace.NextControlName = "txtHacchuuLot";
             this.txtShippingPlace.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingPlace.Size = new System.Drawing.Size(150, 19);
-            this.txtShippingPlace.TabIndex = 31;
+            this.txtShippingPlace.TabIndex = 26;
             this.txtShippingPlace.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblShippingPlace
@@ -965,7 +966,7 @@
             this.txtFOB.NextControlName = "txtShippingPlace";
             this.txtFOB.SearchType = Entity.SearchType.ScType.None;
             this.txtFOB.Size = new System.Drawing.Size(100, 19);
-            this.txtFOB.TabIndex = 30;
+            this.txtFOB.TabIndex = 25;
             this.txtFOB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtFOB.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Price;
             // 
@@ -1004,7 +1005,7 @@
             this.txtModelName.NextControlName = "txtFOB";
             this.txtModelName.SearchType = Entity.SearchType.ScType.None;
             this.txtModelName.Size = new System.Drawing.Size(250, 19);
-            this.txtModelName.TabIndex = 29;
+            this.txtModelName.TabIndex = 24;
             this.txtModelName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblModelName
@@ -1042,7 +1043,7 @@
             this.txtModelNo.NextControlName = "txtModelName";
             this.txtModelNo.SearchType = Entity.SearchType.ScType.None;
             this.txtModelNo.Size = new System.Drawing.Size(150, 19);
-            this.txtModelNo.TabIndex = 28;
+            this.txtModelNo.TabIndex = 23;
             this.txtModelNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblModelNo
@@ -1080,7 +1081,7 @@
             this.txtSalesStopDate.NextControlName = "txtModelNo";
             this.txtSalesStopDate.SearchType = Entity.SearchType.ScType.None;
             this.txtSalesStopDate.Size = new System.Drawing.Size(100, 19);
-            this.txtSalesStopDate.TabIndex = 27;
+            this.txtSalesStopDate.TabIndex = 22;
             this.txtSalesStopDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSalesStopDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -1119,7 +1120,7 @@
             this.txtHandlingEndDate.NextControlName = "txtSalesStopDate";
             this.txtHandlingEndDate.SearchType = Entity.SearchType.ScType.None;
             this.txtHandlingEndDate.Size = new System.Drawing.Size(100, 19);
-            this.txtHandlingEndDate.TabIndex = 26;
+            this.txtHandlingEndDate.TabIndex = 21;
             this.txtHandlingEndDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtHandlingEndDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -1214,7 +1215,7 @@
             this.txtStandardPrice.NextControlName = "txtTaxRate";
             this.txtStandardPrice.SearchType = Entity.SearchType.ScType.None;
             this.txtStandardPrice.Size = new System.Drawing.Size(150, 19);
-            this.txtStandardPrice.TabIndex = 21;
+            this.txtStandardPrice.TabIndex = 16;
             this.txtStandardPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtStandardPrice.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Price;
             // 
@@ -1254,7 +1255,7 @@
             this.txtLowerPrice.NextControlName = "txtStandardPrice";
             this.txtLowerPrice.SearchType = Entity.SearchType.ScType.None;
             this.txtLowerPrice.Size = new System.Drawing.Size(150, 19);
-            this.txtLowerPrice.TabIndex = 20;
+            this.txtLowerPrice.TabIndex = 15;
             this.txtLowerPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtLowerPrice.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Price;
             // 
@@ -1294,7 +1295,7 @@
             this.txtRetailPrice.NextControlName = "txtLowerPrice";
             this.txtRetailPrice.SearchType = Entity.SearchType.ScType.None;
             this.txtRetailPrice.Size = new System.Drawing.Size(150, 19);
-            this.txtRetailPrice.TabIndex = 19;
+            this.txtRetailPrice.TabIndex = 14;
             this.txtRetailPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtRetailPrice.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Price;
             // 
@@ -1379,7 +1380,7 @@
             this.chkFW.NextControl = null;
             this.chkFW.NextControlName = "txtTani";
             this.chkFW.Size = new System.Drawing.Size(40, 19);
-            this.chkFW.TabIndex = 14;
+            this.chkFW.TabIndex = 9;
             this.chkFW.Text = "FW";
             this.chkFW.UseVisualStyleBackColor = true;
             // 
@@ -1394,7 +1395,7 @@
             this.chkSS.NextControl = null;
             this.chkSS.NextControlName = "chkFW";
             this.chkSS.Size = new System.Drawing.Size(40, 19);
-            this.chkSS.TabIndex = 13;
+            this.chkSS.TabIndex = 8;
             this.chkSS.Text = "SS";
             this.chkSS.UseVisualStyleBackColor = true;
             // 
@@ -1429,7 +1430,7 @@
             this.txtExhibition.NextControlName = "chkSS";
             this.txtExhibition.SearchType = Entity.SearchType.ScType.None;
             this.txtExhibition.Size = new System.Drawing.Size(50, 19);
-            this.txtExhibition.TabIndex = 12;
+            this.txtExhibition.TabIndex = 7;
             this.txtExhibition.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtExhibition.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -1468,7 +1469,7 @@
             this.txtJANCD.NextControlName = "txtExhibition";
             this.txtJANCD.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD.Size = new System.Drawing.Size(150, 19);
-            this.txtJANCD.TabIndex = 11;
+            this.txtJANCD.TabIndex = 6;
             this.txtJANCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblJANCD
@@ -1506,7 +1507,7 @@
             this.txtKatakanaName.NextControlName = "txtJANCD";
             this.txtKatakanaName.SearchType = Entity.SearchType.ScType.None;
             this.txtKatakanaName.Size = new System.Drawing.Size(500, 19);
-            this.txtKatakanaName.TabIndex = 10;
+            this.txtKatakanaName.TabIndex = 5;
             this.txtKatakanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblKatakanaName
@@ -1544,7 +1545,7 @@
             this.txtShouhinRyakuName.NextControlName = "txtKatakanaName";
             this.txtShouhinRyakuName.SearchType = Entity.SearchType.ScType.None;
             this.txtShouhinRyakuName.Size = new System.Drawing.Size(500, 19);
-            this.txtShouhinRyakuName.TabIndex = 9;
+            this.txtShouhinRyakuName.TabIndex = 4;
             this.txtShouhinRyakuName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblShouhinRyakuName
@@ -1583,7 +1584,7 @@
             this.txtProductName.NextControlName = "txtShouhinRyakuName";
             this.txtProductName.SearchType = Entity.SearchType.ScType.None;
             this.txtProductName.Size = new System.Drawing.Size(500, 19);
-            this.txtProductName.TabIndex = 8;
+            this.txtProductName.TabIndex = 3;
             this.txtProductName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblProductName
@@ -1611,7 +1612,7 @@
             this.chkShukou.NextControl = null;
             this.chkShukou.NextControlName = "txtHinbanCD";
             this.chkShukou.Size = new System.Drawing.Size(19, 19);
-            this.chkShukou.TabIndex = 6;
+            this.chkShukou.TabIndex = 1;
             this.chkShukou.UseVisualStyleBackColor = false;
             // 
             // lblZhukou
@@ -1653,7 +1654,7 @@
             this.txtCopyProduct.NextControlName = "txtCopyChangeDate";
             this.txtCopyProduct.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtCopyProduct.Size = new System.Drawing.Size(320, 19);
-            this.txtCopyProduct.TabIndex = 4;
+            this.txtCopyProduct.TabIndex = 3;
             this.txtCopyProduct.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtCopyProduct.TxtBox = null;
             // 
@@ -1682,7 +1683,7 @@
             this.txtProduct.NextControlName = "txtChangeDate";
             this.txtProduct.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtProduct.Size = new System.Drawing.Size(320, 19);
-            this.txtProduct.TabIndex = 2;
+            this.txtProduct.TabIndex = 1;
             this.txtProduct.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtProduct.TxtBox = null;
             // 

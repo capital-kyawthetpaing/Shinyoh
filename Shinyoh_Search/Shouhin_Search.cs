@@ -46,6 +46,19 @@ namespace Shinyoh_Search
             dgDetail.SetGridDesign();
             dgDetail.SetReadOnlyColumn("**");//readonly for search form 
             dgDetail.Select();
+            dgDetail.Columns[1].Width = 150;
+            dgDetail.Columns[2].Width = 320;
+            dgDetail.Columns[3].Width = 100;
+            dgDetail.Columns[4].Width = 100;
+            dgDetail.Columns[5].Width = 80;
+            dgDetail.Columns[6].Width = 270;
+            dgDetail.Columns[7].Width = 100;
+            dgDetail.Columns[8].Width = 270;
+            dgDetail.Columns[9].Width = 100;
+            dgDetail.Columns[10].Width = 270;
+            dgDetail.Columns[11].Width = 50;
+            dgDetail.Columns[12].Width = 150;
+            dgDetail.Columns[13].Width = 100;
         }
 
         private void dgDetail_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

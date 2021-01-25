@@ -227,6 +227,11 @@ namespace Shinyoh_Search
                         idou_search.ShowDialog();
                         CD = idou_search.IdouNo;
                         break;
+                    case Entity.SearchType.ScType.HacchuuNyuuryoku:
+                        HacchuuNyuuryokuSearch hacc_search = new HacchuuNyuuryokuSearch();
+                        hacc_search.ShowDialog();
+                        CD = hacc_search.HacchuuNo;
+                        break;
                 }
 
                 if(!string.IsNullOrWhiteSpace(CD))

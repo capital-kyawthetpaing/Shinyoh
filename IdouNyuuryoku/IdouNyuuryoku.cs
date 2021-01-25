@@ -84,7 +84,7 @@ namespace IdouNyuuryoku
                     txtIdouNO.E133Check(false, "IdouNyuuryoku", txtIdouNO, null, null);
                     
 
-                    txtCopy.E102Check(true);
+                    //txtCopy.E102Check(true);
                     txtCopy.E133Check(true, "IdouNyuuryoku", txtCopy, null, null);
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -116,7 +116,7 @@ namespace IdouNyuuryoku
 
                     break;
                 case Mode.Inquiry:
-                    txtIdouNO.E102Check(false);
+                    txtIdouNO.E102Check(true);
                     txtCopy.E102Check(false);
                     txtIdouNO.E133Check(true, "IdouNyuuryoku", txtIdouNO, null, null);
 
@@ -556,6 +556,14 @@ namespace IdouNyuuryoku
             obj.SeasonFW = chk_FW.Checked ? "1" : "0";
             obj.ColorNO = txtColorNo.Text;
             obj.SizeNO = txtSizeNo.Text;
+
+            if (string.IsNullOrEmpty(obj.BrandCD) && string.IsNullOrEmpty(obj.ShouhinCD) && string.IsNullOrEmpty(obj.JANCD) && string.IsNullOrEmpty(obj.ShouhinName) && string.IsNullOrEmpty(obj.YearTerm) && obj.SeasonSS == "0" && obj.SeasonFW == "0" && string.IsNullOrEmpty(obj.SizeNO) && string.IsNullOrEmpty(obj.ColorNO))
+            {
+                base_bl.ShowMessage("E111");
+                txtBrandCD.Focus();
+                return;
+            }
+
             obj.ChangeDate = txtIdouDate.Text;
             if (txtIdoukubun.Text == "1")
                 obj.SoukoCD = txtNyukosouko.Text;
