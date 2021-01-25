@@ -21,13 +21,15 @@ namespace ShukkaNyuuryoku {
         StaffBL staffBL;
         BaseBL bbl;
         BaseEntity base_Entity;
+        ShukkaNyuuryokuEntity obj;
+        ShukkaNyuuryokuBL bl;
         TokuisakiDetail tokuisakiDetail = new TokuisakiDetail();
         KouritenDetail kouritenDetail = new KouritenDetail();
         string YuuBinNO1 = string.Empty;
         string YuuBinNO2 = string.Empty;
         string Address = string.Empty;
         public string Detail_XML;
-        DataTable Main_dt, Temptb1,  gvdt1,  F8_dt1,  dtGS1, dtClear;
+        DataTable Main_dt, Temptb1,  gvdt1,  F8_dt1,  dtGS1, dtClear, dtHaita;
         public ShukkaNyuuryoku()
         {
             InitializeComponent();
@@ -39,6 +41,7 @@ namespace ShukkaNyuuryoku {
             Temptb1 = new DataTable();
             gvdt1 = new DataTable();
             F8_dt1 = new DataTable();
+            dtHaita = new DataTable();
             dtGS1 = CreateTable();
             dtClear = CreateTable();
             gvShukka1.SetGridDesign();
@@ -163,9 +166,20 @@ namespace ShukkaNyuuryoku {
             (string, string, string) obj = GetInsert();
             ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
             string return_Bl = sBL.ShukkaNyuuryoku_CUD(obj.Item1, obj.Item2, obj.Item3);
+            //Konkai_Price(gvdt1);
             if (return_Bl == "true")
                 bbl.ShowMessage("I101");
         }
+        //private void Konkai_Price(DataTable dtTemp1)
+        //{
+        //    foreach (DataRow dr in dtTemp1.Rows)
+        //    {                
+        //        string shukkasuu = dr["ShukkaSuu"].ToString();
+        //        string ShukkaSiziNOGyouNO = dr["ShukkaSiziNOGyouNO"].ToString();
+        //        string ShouhinCD = dr["ShouhinCD"].ToString();
+        //        bl.Shukka_Price(shukkasuu, ShukkaSiziNOGyouNO, ShouhinCD);
+        //    }
+        //}
 
         private (string, string, string) GetInsert()
         {
@@ -177,13 +191,8 @@ namespace ShukkaNyuuryoku {
 
             DataRow dr = dtResult.NewRow();
             ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
-            if (cboMode.SelectedValue.ToString() == "1")
-            {
-                DataTable dt = sBL.GetShukkaNo("6", txtShukkaDate.Text, "0");
-                dr["ShukkaNO"] = dt.Rows[0]["Column1"];
-            }
-            else
-            {
+            if (cboMode.SelectedValue.ToString() != "1")
+            {              
                 dr["ShukkaNO"] = txtShukkaNo.Text;
             }
 
@@ -402,7 +411,7 @@ namespace ShukkaNyuuryoku {
                     ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
                     ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
                     BaseEntity baseEntity = _GetBaseData();
-                    //  obj.TokuisakiCD = txtTokuisaki.Text;
+                    obj.TokuisakiCD = txtTokuisaki.Text;
                     obj.ShukkaSiziNO1 = txtShukkaSijiNo.Text;
                     obj.ShukkaDate1 = txtShukkaYoteiDate1.Text;
                     obj.ShukkaDate2 = txtShukkaYoteiDate2.Text;
@@ -421,7 +430,6 @@ namespace ShukkaNyuuryoku {
                     obj.PC = PCID;
 
                     DataTable dt = sBL.ShukkaNyuuryoku_Display(obj);
-
                     if (dt.Rows.Count > 0)
                     {
                         dt.Columns.Remove("SoukoCD");
@@ -442,6 +450,30 @@ namespace ShukkaNyuuryoku {
                             DataTable dt_temp = dt.Copy();
                             gvdt1 = dt_temp;
                         }
+                        dtHaita = gvdt1.Copy();
+                        ShukkaSiZiNO_Delete();
+                        foreach (DataRow dr in gvdt1.Rows)
+                        {
+                            string ShukkaSiziNO = dr["ShukkaSiziNO"].ToString();
+                            obj = new ShukkaNyuuryokuEntity();
+                            obj.DataKBN = 12;
+                            obj.ShukkaSiziNO1 = ShukkaSiziNO;
+                            obj.ProgramID = ProgramID;
+                            obj.PC = PCID;
+                            obj.OperatorCD = OperatorCD;
+
+                            DataTable dataTable = new DataTable();
+                            bl = new ShukkaNyuuryokuBL();
+                            dt = bl.D_Exclusive_Lock_Check(obj);
+                            if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                            {
+                                bbl.ShowMessage("S004",ProgramID,OperatorCD);
+                                //Gvrow_Delete(dr);
+                            }
+                        }
+                       
+                        dtHaita.Columns.Remove("ShukkaSiziNO");
+                        gvShukka1.DataSource = dtHaita;
 
                     }
                     break;
@@ -466,6 +498,16 @@ namespace ShukkaNyuuryoku {
                     }
                     break;
             }
+        }
+        private void ShukkaSiZiNO_Delete()
+        {
+            obj = new ShukkaNyuuryokuEntity();
+            obj.DataKBN = 12;
+            obj.OperatorCD = OperatorCD;
+            obj.ProgramID = ProgramID;
+            obj.PC = PCID;
+            bl = new ShukkaNyuuryokuBL();
+            bl.D_Exclusive_ShukkaSiZiNo_Delete(obj);
         }
         private void ErrorCheck()
         {
@@ -737,12 +779,13 @@ namespace ShukkaNyuuryoku {
                     ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
                     obj_shukka.OperatorCD = OperatorCD;
                     obj_shukka.PC = PCID;
+                    obj_shukka.ProgramID = ProgramID;
                     obj_shukka.ShukkaNO1 = txtShukkaNo.Text;
                     if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")
                     {
                         if (cboMode.SelectedValue.ToString() == "2") //update
                         {
-                            //sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
+                            sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
                         }
                         EnablePanel();
                     }
@@ -750,7 +793,7 @@ namespace ShukkaNyuuryoku {
                     {
                         if (cboMode.SelectedValue.ToString() == "3")//delete
                         {
-                            //sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
+                            sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
                         }
                         cf.DisablePanel(PanelTitle);
                     }

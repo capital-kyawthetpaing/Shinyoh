@@ -72,6 +72,8 @@ namespace MasterTouroku_Kouriten
             txtCopyCD.ChangeDate = txtCopyDate;
             txtTokuisakiCD.ChangeDate = txtSystemDate;
             txtTokuisakiCD_Copy.ChangeDate = txtSystemDate;
+
+            panel2.GotFocus += RadioPanel_GotFocus;
         }
 
         private void ChangeMode(Mode mode)
@@ -542,7 +544,7 @@ namespace MasterTouroku_Kouriten
             if (rdo_AliasKBN1.Checked == true)
             {
                 rdo_AliasKBN2.Checked = false;
-                txtKanaName.NextControlName = rdo_AliasKBN1.Name;
+                //txtKanaName.NextControlName = rdo_AliasKBN1.Name;
             }
                
         }
@@ -552,7 +554,7 @@ namespace MasterTouroku_Kouriten
             if (rdo_AliasKBN2.Checked == true)
             {
                 rdo_AliasKBN1.Checked = false;
-                txtKanaName.NextControlName = rdo_AliasKBN2.Name;
+                //txtKanaName.NextControlName = rdo_AliasKBN2.Name;
             }
         }
 

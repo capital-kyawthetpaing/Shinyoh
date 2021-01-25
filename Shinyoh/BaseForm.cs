@@ -207,7 +207,7 @@ namespace Shinyoh
                     case ButtonType.BType.Save:
                         if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
                         {
-                            if (ErrorCheck(PanelTitle) && ErrorCheck(this.Controls.Find("PanelDetail",true)[0] as Panel))
+                            if (ErrorCheck(PanelTitle) && ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
                             {
                                 if (bbl.ShowMessage("Q101") != DialogResult.Yes)
                                 {
@@ -398,7 +398,9 @@ namespace Shinyoh
                 case Keys.F10:
                 case Keys.F11:
                 case Keys.F12:
+                    PreviousCtrl = this.ActiveControl;
                     SButton btn = this.Controls.Find("Btn" + e.KeyCode.ToString(),true)[0] as SButton;
+                    btn.Focus();
                     FireClickEvent(btn);
                     break;
                 case Keys.Enter:
@@ -448,6 +450,20 @@ namespace Shinyoh
         {
             PreviousCtrl = this.ActiveControl;
         }
+
+        protected void RadioPanel_GotFocus(object sender, EventArgs e)
+        {
+            Panel panel = sender as Panel;
+            foreach (Control ctrl in panel.Controls)
+            {
+                if (ctrl is RadioButton)
+                {
+                    RadioButton rdoBtn = ctrl as RadioButton;
+                    if (rdoBtn.Checked)
+                        rdoBtn.Focus();
+                }
+            }
+        } 
 
         public StaffEntity GetBaseData()
         {
@@ -543,8 +559,6 @@ namespace Shinyoh
                 }
             }
             return true;
-        }
-
-       
+        }       
     }
 }
