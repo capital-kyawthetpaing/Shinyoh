@@ -79,6 +79,12 @@
     <Compile Include="IdouNyuuryokuSearch.Designer.cs">
       <DependentUpon>IdouNyuuryokuSearch.cs</DependentUpon>
     </Compile>
+    <Compile Include="HacchuuNyuuryokuSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HacchuuNyuuryokuSearch.Designer.cs">
+      <DependentUpon>HacchuuNyuuryokuSearch.cs</DependentUpon>
+    </Compile>
     <Compile Include="JuchuuNyuuryokuSearch.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IdouNyuuryokuSearch.resx">
       <DependentUpon>IdouNyuuryokuSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HacchuuNyuuryokuSearch.resx">
+      <DependentUpon>HacchuuNyuuryokuSearch.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JuchuuNyuuryokuSearch.resx">
       <DependentUpon>JuchuuNyuuryokuSearch.cs</DependentUpon>

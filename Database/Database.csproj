@@ -107,6 +107,7 @@
     <Content Include="StoreProcedure\D_Exclusive_Delete.sql" />
     <Content Include="StoreProcedure\D_Exclusive_Insert.sql" />
     <Content Include="StoreProcedure\D_Exclusive_Lock_Check.sql" />
+    <Content Include="StoreProcedure\D_Exclusive_Remove_NO.sql" />
     <Content Include="StoreProcedure\Fnc_GetDenpyouNO.sql" />
     <Content Include="StoreProcedure\Fnc_GetNumber.sql" />
     <Content Include="StoreProcedure\Fnc_Hikiate.sql" />

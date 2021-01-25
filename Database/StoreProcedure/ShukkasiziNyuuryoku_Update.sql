@@ -137,7 +137,8 @@ CREATE TABLE  [dbo].[#Temp_Details]
 					KouritenTel13	 varchar(5) COLLATE DATABASE_DEFAULT,	
 					KouritenTel21   varchar(6) COLLATE DATABASE_DEFAULT,	
 					KouritenTel22   varchar(5) COLLATE DATABASE_DEFAULT,	
-					KouritenTel23   varchar(5) COLLATE DATABASE_DEFAULT
+					KouritenTel23   varchar(5) COLLATE DATABASE_DEFAULT,
+					Hidden_ShouhinCD varchar(25) COLLATE DATABASE_DEFAULT
 				)
 				EXEC sp_xml_preparedocument @idoc OUTPUT, @XML_Detail
 
@@ -173,7 +174,8 @@ INSERT INTO [#Temp_Details]
 					KouritenTel13	 varchar(5),	
 					KouritenTel21   varchar(6),	
 					KouritenTel22   varchar(5),	
-					KouritenTel23   varchar(5)
+					KouritenTel23   varchar(5),
+					Hidden_ShouhinCD varchar(25)
 				)
 				exec sp_xml_removedocument @idoc
 
@@ -239,7 +241,7 @@ FROM [#Temp_Header] TM
 where D_Shukkasizi.ShukkaSiziNO=TM.ShukkaSiziNO
 
 --TableB
-UPDATE [dbo].[D_ShukkaSiziMeisai]
+UPDATE [dbo].[D_ShukkaSiziMeisai] 
 SET [GyouHyouziJun]=@row, @row = @row + 1
 	,[KouritenCD]=case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
 	,[KouritenRyakuName]=case when TD.KouritenRyakuName is null then DJ.KouritenRyakuName else TD.KouritenRyakuName end
@@ -263,8 +265,8 @@ SET [GyouHyouziJun]=@row, @row = @row + 1
 	,[SoukoCD]=TD.SoukoCD
 	,[ShukkaKanryouKBN]=0
 	,[ShukkaZumiSuu]=0
-	,[JuchuuNO]=(select val from dbo.split(TD.SKMSNO,'-') where id=1)
-	,[JuchuuGyouNO]=(select val from dbo.split(TD.SKMSNO,'-') where id=2)
+	,[JuchuuNO]=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
+	,[JuchuuGyouNO]=RIGHT(TD.SKMSNO, LEN(TD.SKMSNO) - CHARINDEX('-', TD.SKMSNO))
 	,[KouritenName]=case when TD.KouritenName is null then DJ.KouritenName else TD.KouritenName end
 	,[KouritenYuubinNO1]=case when TD.KouritenYuubinNO1  is null then DJ.KouritenYuubinNO1 else TD.KouritenYuubinNO1 end
 	,[KouritenYuubinNO2]=case when TD.KouritenYuubinNO2 is null then DJ.KouritenYuubinNO2 else TD.KouritenYuubinNO2 end
@@ -283,10 +285,12 @@ SET [GyouHyouziJun]=@row, @row = @row + 1
 	,[UpdateDateTime]=@currentDate
 FROM #Temp_Details TD
 	LEFT OUTER JOIN D_Juchuu DJ
-	ON DJ.JuchuuNO=TD.SKMSNO
+	ON DJ.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
 	LEFT OUTER JOIN [dbo].[F_Shouhin](@ShippingDate) FS
-	ON FS.ShouhinCD=TD.ShouhinCD
+	ON FS.ShouhinCD=TD.Hidden_ShouhinCD
 where D_ShukkaSiziMeisai.ShukkaSiziNO=@ShukkaSiziNO
+and D_ShukkaSiziMeisai.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
+and D_ShukkaSiziMeisai.JuchuuGyouNO=RIGHT(TD.SKMSNO, LEN(TD.SKMSNO) - CHARINDEX('-', TD.SKMSNO))
 
 --TableC
 UPDATE [dbo].[D_ShukkaSiziShousai]
@@ -302,7 +306,6 @@ SET [SoukoCD] = D.SoukoCD
 	,JuchuuShousaiNO=dj.JuchuuShousaiNO
 	,[UpdateOperator]=@OperatorCD
 	,[UpdateDateTime]=@currentDate
-
 from  D_JuchuuShousai dj,#Temp_Details D
 		where dj.JuchuuNO = LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1)
 		and dj.JuchuuGyouNO=RIGHT(D.SKMSNO, LEN(D.SKMSNO) - CHARINDEX('-', D.SKMSNO))
@@ -823,37 +826,7 @@ SELECT
 	FROM [dbo].[D_ShukkaSiziShousai]
 WHERE ShukkaSiziNO=@ShukkaSiziNO
 
---D_JuchuuShousai
-DECLARE @Price_table TABLE (idx int Primary Key IDENTITY(1,1),
-						KonkaiShukkaSiziSuu varchar(50),
-						SKMSNO  varchar(12),ShouhinCD  varchar(50))
-			INSERT @Price_table  SELECT KonkaiShukkaSiziSuu,SKMSNO,ShouhinCD FROM #Temp_Details
-			
-declare @Count as int = 1			
-			WHILE @Count <= (SELECT COUNT(*) FROM #Temp_Details)
-			BEGIN
-			declare @KonkaiShukkaSiziSuu varchar(50)=(select KonkaiShukkaSiziSuu from @Price_table  WHERE idx =@Count)
-			  declare @Value2 as varchar(12)=(select SKMSNO from @Price_table WHERE idx =@Count),
-					@Value3 as varchar(50)=(select ShouhinCD  from @Price_table WHERE idx =@Count)
-			 
-			 DECLARE CUR_POINTER CURSOR FAST_FORWARD FOR
-				SELECT KonkaiShukkaSiziSuu
-				FROM   #Temp_Details    
- 
-			OPEN CUR_POINTER
-			FETCH NEXT FROM CUR_POINTER INTO @KonkaiShukkaSiziSuu
- 
-			WHILE @@FETCH_STATUS = 0
-			BEGIN
-
-			   exec  [dbo].[Shukkasizi_Price]  @KonkaiShukkaSiziSuu,@Value2,@Value3
-
-			   FETCH NEXT FROM CUR_POINTER INTO @KonkaiShukkaSiziSuu
-			END
-			CLOSE CUR_POINTER
-			DEALLOCATE CUR_POINTER
-		SET @Count = @Count + 1
-			END;
+--Konkai_Price--
 
 --Table G--02
 UPDATE  A
