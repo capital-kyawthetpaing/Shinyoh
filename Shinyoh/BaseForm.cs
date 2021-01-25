@@ -461,7 +461,7 @@ namespace Shinyoh
                         rdoBtn.Focus();
                 }
             }
-        }
+        } 
 
         public StaffEntity GetBaseData()
         {
