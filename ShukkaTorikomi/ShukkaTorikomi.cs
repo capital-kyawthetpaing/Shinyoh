@@ -363,6 +363,12 @@ namespace ShukkaTorikomi
             return Xml;
         }
 
+
+       //private DataTable dt_Main(DataTable create_dt)
+       // {
+
+       // }
+
         private bool Null_Check(string obj_text, int line_no, string error_msg)
         {
             bool bl = false;
