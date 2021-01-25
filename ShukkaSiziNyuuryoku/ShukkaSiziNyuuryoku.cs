@@ -1013,6 +1013,7 @@ namespace ShukkaSiziNyuuryoku
                         {
                             string JuchuuNO = dr["JuchuuNO"].ToString();
                             sksz_e = new ShukkaSiziNyuuryokuEntity();
+                            sksz_e.DataKBN = 1;
                             sksz_e.JuchuuNO = JuchuuNO;
                             sksz_e.ProgramID = ProgramID;
                             sksz_e.PC = PCID;
