@@ -65,7 +65,29 @@ namespace BL
             parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
             return ckmdl.InsertUpdateDeleteData("ChakuniNyuuryoku_CUD", GetConnectionString(), parameters);
         }
-       
+        public string D_Exclusive_ChakuniYoteiNyuuryokuNO_Delete(ChakuniNyuuryoku_Entity se)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@DataKBN", SqlDbType.TinyInt) { Value = se.DataKBN };
+            parameters[1] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = se.OperatorCD };
+            parameters[2] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
+            parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
+            return ckmdl.InsertUpdateDeleteData("D_Exclusive_Remove_NO", GetConnectionString(), parameters);
+        }
+        public DataTable D_Exclusive_Lock_Check(ChakuniNyuuryoku_Entity ce)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = ce.Number };
+            parameters[1] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = ce.OperatorCD };
+            parameters[2] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = ce.ProgramID };
+            parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = ce.PC };
+            parameters[4] = new SqlParameter("@DataKBN", SqlDbType.Int) { Value = ce.DataKBN };
+            DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Lock_Check", GetConnectionString(), parameters);
+            return dt;
+        }
+
         public DataTable ArrivalNO_Search(ChakuniNyuuryoku_Entity ane)
         {
             CKMDL ckmdl = new CKMDL();

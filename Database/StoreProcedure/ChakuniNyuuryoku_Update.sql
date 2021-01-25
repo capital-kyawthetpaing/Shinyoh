@@ -440,10 +440,9 @@ Update M_Staff
 set UsedFlg=1
 where ChangeDate = (select ChangeDate from F_Staff(@filter_date) where StaffCD = @StaffCD)
 --D_Exclusive X
-			Delete from D_Exclusive where DataKBN = 16 and Number = (select ChakuniYoteiNO from #Temp_Main)
+			Delete from D_Exclusive where DataKBN = 16 and Number = (select ChakuniYoteiNO from #Temp_Detail)
 --D_Exclusive Y
-			Delete from D_Exclusive where DataKBN = 2 and Number = (select ChakuniYoteiNO from #Temp_Main)
-
+			Delete from D_Exclusive where DataKBN = 2 and Number = (select HacchuuNO from #Temp_Detail)
 			Drop table #Temp_Main
 			Drop table #Temp_Detail
 

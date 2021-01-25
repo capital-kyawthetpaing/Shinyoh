@@ -24,6 +24,8 @@ namespace Shinyoh_Controls
         string HiraganaCol = string.Empty;
         string NumberCol = string.Empty;
 
+        public int Memory_Row_Count = 0;
+
         public void SetGridDesign()
         {
             this.EnableHeadersVisualStyles = false;
@@ -257,23 +259,26 @@ namespace Shinyoh_Controls
             SGridView svg = this;
             //Creating DataTable.
             DataTable dt = svg.DataSource as DataTable;
-            (IsErrorOccurs, ISRowColumn) = DataTable_ErrorCheck(dt,svg.Name,ChangeDate);
+            (IsErrorOccurs, ISRowColumn) = DataTable_ErrorCheck(svg.Memory_Row_Count,dt,svg.Name,ChangeDate);
             if (IsErrorOccurs)
             {
-                svg.CurrentCell = svg.Rows[Convert.ToInt32(ISRowColumn.Split('_')[0])].Cells[Convert.ToInt32(ISRowColumn.Split('_')[1])];
-                svg.BeginEdit(true);
+                if (!string.IsNullOrEmpty(ISRowColumn))
+                {
+                    svg.CurrentCell = svg.Rows[Convert.ToInt32(ISRowColumn.Split('_')[0])].Cells[Convert.ToInt32(ISRowColumn.Split('_')[1])];
+                    svg.BeginEdit(true);
+                }
             }
             return IsErrorOccurs;
         }
 
-       public (bool,string) DataTable_ErrorCheck(DataTable dt,string grid_name, [Optional] string ChangeDate)
+       public (bool,string) DataTable_ErrorCheck(int memory_row,DataTable dt,string grid_name, [Optional] string ChangeDate)
         {
             bool error_Occur = false;
             string row_col = string.Empty;
             GridView_ErrorCheck gv_error = new GridView_ErrorCheck();
             if (grid_name.Contains("JuchuuNyuuryoku"))
             {
-              (error_Occur, row_col) = gv_error.JuchuuNyuuryoku(dt, ChangeDate);
+              (error_Occur, row_col) = gv_error.JuchuuNyuuryoku(memory_row,dt, ChangeDate);
             }
             return (error_Occur,row_col);
         }
