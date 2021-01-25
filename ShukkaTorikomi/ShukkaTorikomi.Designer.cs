@@ -59,10 +59,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.gvTorikomi)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1370, 75);
-            // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.rdo_Sakujo);
@@ -132,9 +128,10 @@
             this.PanelDetail.Controls.Add(this.sLabel5);
             this.PanelDetail.Controls.Add(this.sLabel4);
             this.PanelDetail.Controls.Add(this.sLabel3);
-            this.PanelDetail.Location = new System.Drawing.Point(12, 76);
+            this.PanelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1729, 1000);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 842);
             this.PanelDetail.TabIndex = 3;
             // 
             // txtDate2
@@ -230,6 +227,8 @@
             this.colTokuisakiRyakuName,
             this.colKouritenCD,
             this.colKouritenRyakuName});
+            this.gvTorikomi.IsErrorOccurs = false;
+            this.gvTorikomi.ISRowColumn = null;
             this.gvTorikomi.Location = new System.Drawing.Point(136, 182);
             this.gvTorikomi.Name = "gvTorikomi";
             this.gvTorikomi.Size = new System.Drawing.Size(1120, 150);
@@ -413,7 +412,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ShukkaTorikomi";
