@@ -901,12 +901,12 @@ namespace JuchuuNyuuryoku
             obj.SizeNO = txtSizeNo.Text;
             obj.ColorNO = txtColorNo.Text;
 
-            //if (string.IsNullOrEmpty(obj.BrandCD) && string.IsNullOrEmpty(obj.ShouhinCD) && string.IsNullOrEmpty(obj.JANCD) && string.IsNullOrEmpty(obj.ShouhinName) && string.IsNullOrEmpty(obj.YearTerm) && obj.SeasonSS == "0" && obj.SeasonFW == "0" && string.IsNullOrEmpty(obj.SizeNO) && string.IsNullOrEmpty(obj.ColorNO))
-            //{
-            //    base_bl.ShowMessage("E111");
-            //    txtBrandCD.Focus();
-            //    return;
-            //}
+            if (string.IsNullOrEmpty(obj.BrandCD) && string.IsNullOrEmpty(obj.ShouhinCD) && string.IsNullOrEmpty(obj.JANCD) && string.IsNullOrEmpty(obj.ShouhinName) && string.IsNullOrEmpty(obj.YearTerm) && obj.SeasonSS == "0" && obj.SeasonFW == "0" && string.IsNullOrEmpty(obj.SizeNO) && string.IsNullOrEmpty(obj.ColorNO))
+            {
+                base_bl.ShowMessage("E111");
+                txtBrandCD.Focus();
+                return;
+            }
 
             obj.ChangeDate = txtJuchuuDate.Text;
             DataTable dt = obj_bl.JuchuuNyuuryoku_Display(obj);
