@@ -29,15 +29,11 @@
         private void InitializeComponent()
         {
             this.PanelDetail = new System.Windows.Forms.Panel();
-            this.lbl1 = new Shinyoh_Controls.SLabel();
             this.lbl2 = new Shinyoh_Controls.SLabel();
+            this.lbl1 = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1484, 75);
             // 
             // cboMode
             // 
@@ -52,40 +48,42 @@
             this.PanelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1484, 642);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 842);
             this.PanelDetail.TabIndex = 3;
+            // 
+            // lbl2
+            // 
+            this.lbl2.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lbl2.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl2.ForeColor = System.Drawing.Color.Red;
+            this.lbl2.Location = new System.Drawing.Point(49, 76);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(1100, 40);
+            this.lbl2.TabIndex = 1;
+            this.lbl2.Text = "※他のユーザ含め、以下のプログラムが起動されていないことをご確認の上、実行してください。";
+            this.lbl2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl1
             // 
             this.lbl1.BackColor = System.Drawing.SystemColors.Control;
+            this.lbl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl1.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl1.ForeColor = System.Drawing.Color.Red;
             this.lbl1.Location = new System.Drawing.Point(50, 25);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(1000, 50);
+            this.lbl1.Size = new System.Drawing.Size(800, 40);
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "※この処理は取り消すことができません。";
             this.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lbl2
-            // 
-            this.lbl2.BackColor = System.Drawing.SystemColors.Control;
-            this.lbl2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lbl2.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl2.ForeColor = System.Drawing.Color.Red;
-            this.lbl2.Location = new System.Drawing.Point(50, 90);
-            this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(1100, 50);
-            this.lbl2.TabIndex = 1;
-            this.lbl2.Text = "※他のユーザ含め、以下のプログラムが起動されていないことをご確認の上、実行してください。";
-            this.lbl2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ZaikoIkkatuSaiHikiate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1484, 761);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ZaikoIkkatuSaiHikiate";
