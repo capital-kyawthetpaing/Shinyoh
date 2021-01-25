@@ -65,7 +65,7 @@ namespace MasterTouroku_Tokuisaki {
             panel3.GotFocus += RadioPanel_GotFocus;
         }
 
-        
+         
 
         private void ChangeMode(Mode mode)
         {
