@@ -60,7 +60,12 @@ namespace MasterTouroku_Tokuisaki {
             txtStaffCharge.ChangeDate = txtChange_Date;
             txt_Tokuisaki.ChangeDate = txtChange_Date;
             txtTokuisakiCopy.ChangeDate = txtTokuisaki_CopyDate;
+
+            panel2.GotFocus += RadioPanel_GotFocus;
+            panel3.GotFocus += RadioPanel_GotFocus;
         }
+
+        
 
         private void ChangeMode(Mode mode)
         {
@@ -345,12 +350,12 @@ namespace MasterTouroku_Tokuisaki {
                     if (dt.Rows[0]["AliasKBN"].ToString().Equals("1"))
                     {
                         RadSaMa.Checked = true;
-                        txtBillAddress.NextControlName = RadSaMa.Name;
+                        //txtBillAddress.NextControlName = RadSaMa.Name;
                     }
                     else if (dt.Rows[0]["AliasKBN"].ToString().Equals("2"))
                     {
                         RadOnchuu.Checked = true;
-                        txtBillAddress.NextControlName = RadOnchuu.Name;
+                        //txtBillAddress.NextControlName = RadOnchuu.Name;
                     }
                       
                     txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
@@ -375,12 +380,12 @@ namespace MasterTouroku_Tokuisaki {
                     if (dt.Rows[0]["ShukkaSizishoHuyouKBN"].ToString().Equals("0"))
                     {
                         RadNeed.Checked = true;
-                        txtEndDate.NextControlName = RadNeed.Name;
+                        //txtEndDate.NextControlName = RadNeed.Name;
                     }
                     else if (dt.Rows[0]["ShukkaSizishoHuyouKBN"].ToString().Equals("1"))
                     {
                         RadNoNeed.Checked = true;
-                        txtEndDate.NextControlName = RadNoNeed.Name;
+                        //txtEndDate.NextControlName = RadNoNeed.Name;
                     }
 
                     txtRemark.Text = dt.Rows[0]["Remarks"].ToString();
@@ -394,6 +399,7 @@ namespace MasterTouroku_Tokuisaki {
             }
         }
 
+        
         private void txtTokuisaki_CopyDate_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
@@ -764,7 +770,7 @@ namespace MasterTouroku_Tokuisaki {
             if (RadSaMa.Checked == true)
             {
                 RadOnchuu.Checked = false;
-                txtBillAddress.NextControlName = RadSaMa.Name;
+                //txtBillAddress.NextControlName = RadSaMa.Name;
             }
         }
 
@@ -773,7 +779,7 @@ namespace MasterTouroku_Tokuisaki {
             if (RadOnchuu.Checked == true)
             {
                 RadSaMa.Checked = false;
-                txtBillAddress.NextControlName = RadOnchuu.Name;
+                //txtBillAddress.NextControlName = RadOnchuu.Name;
             }
         }
 
@@ -782,7 +788,7 @@ namespace MasterTouroku_Tokuisaki {
             if (RadNeed.Checked == true)
             {
                 RadNoNeed.Checked = false;
-                txtEndDate.NextControlName = RadNeed.Name;
+                //txtEndDate.NextControlName = RadNeed.Name;
             }
         }
 
@@ -791,7 +797,7 @@ namespace MasterTouroku_Tokuisaki {
             if (RadNoNeed.Checked == true)
             {
                 RadNeed.Checked = false;
-                txtEndDate.NextControlName = RadNoNeed.Name;
+                //txtEndDate.NextControlName = RadNoNeed.Name;
             }
         }
     }
