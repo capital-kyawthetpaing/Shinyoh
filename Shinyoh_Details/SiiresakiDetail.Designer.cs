@@ -604,9 +604,9 @@
             this.PanelTitle.Controls.Add(this.lbl_Name);
             this.PanelTitle.Controls.Add(this.txtCD);
             this.PanelTitle.Controls.Add(this.lblCD);
-            this.PanelTitle.Location = new System.Drawing.Point(0, 1);
+            this.PanelTitle.Location = new System.Drawing.Point(0, -2);
             this.PanelTitle.Name = "PanelTitle";
-            this.PanelTitle.Size = new System.Drawing.Size(1055, 81);
+            this.PanelTitle.Size = new System.Drawing.Size(1056, 84);
             this.PanelTitle.TabIndex = 0;
             // 
             // SiiresakiDetail
