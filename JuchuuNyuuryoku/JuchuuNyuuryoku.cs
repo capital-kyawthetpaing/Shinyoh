@@ -59,7 +59,7 @@ namespace JuchuuNyuuryoku
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
-            SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
+            SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
@@ -125,10 +125,7 @@ namespace JuchuuNyuuryoku
                     //txtCopy.E102Check(true);
                     txtCopy.E133Check(true, "JuchuuNyuuryoku", txtCopy, null, null);
 
-                    cboMode.NextControlName = txtCopy.Name;
-                    txtJuchuuNO.Enabled = false;
-                    txtCopy.Focus();
-
+                   
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
@@ -140,9 +137,7 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                    // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
-
-                    cboMode.NextControlName = txtJuchuuNO.Name;
+                    // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);                   
 
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -156,8 +151,7 @@ namespace JuchuuNyuuryoku
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
                     // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
-
-                    cboMode.NextControlName = txtJuchuuNO.Name;
+                   
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -169,7 +163,6 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                    cboMode.NextControlName = txtJuchuuNO.Name;
 
                     Disable_UDI_Mode();
                     Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -220,6 +213,18 @@ namespace JuchuuNyuuryoku
             // F10_Gridview_Bind();
 
             gv_JuchuuNyuuryoku.Memory_Row_Count = 0;
+
+            if(cboMode.SelectedValue.ToString()=="1")
+            {
+                cboMode.NextControlName = txtCopy.Name;
+                txtJuchuuNO.Enabled = false;
+                txtCopy.Focus();
+            }
+            else
+            {
+                cboMode.NextControlName = txtJuchuuNO.Name;
+                txtJuchuuNO.Focus();
+            }
         }
 
         public void Disable_UDI_Mode()
@@ -1065,21 +1070,23 @@ namespace JuchuuNyuuryoku
         {
             string mode = string.Empty;
             (string, string, string) obj = GetInsert();
-           
-            if (cboMode.SelectedValue.Equals("1"))
+            if ((!string.IsNullOrEmpty(obj.Item1)) && (!string.IsNullOrEmpty(obj.Item2)) && (!string.IsNullOrEmpty(obj.Item3)))
             {
-                mode = "New";
-                DoInsert(mode,obj.Item1,obj.Item2,obj.Item3);
-            }
-            else if (cboMode.SelectedValue.Equals("2"))
-            {
-                mode = "Update";
-                DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
-            }
-            else if (cboMode.SelectedValue.Equals("3"))
-            {
-                mode = "Delete";
-                DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+                if (cboMode.SelectedValue.Equals("1"))
+                {
+                    mode = "New";
+                    DoInsert(mode, obj.Item1, obj.Item2, obj.Item3);
+                }
+                else if (cboMode.SelectedValue.Equals("2"))
+                {
+                    mode = "Update";
+                    DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+                }
+                else if (cboMode.SelectedValue.Equals("3"))
+                {
+                    mode = "Delete";
+                    DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+                }
             }
         }
 
@@ -1149,10 +1156,11 @@ namespace JuchuuNyuuryoku
 
             DataTable dt_Main = new DataTable();
             if (F8_dt1.Rows.Count > 0)
-                 dt_Main = F8_dt1.AsEnumerable()
-                           .GroupBy(r => new { Col1 = r["SiiresakiCD"], Col2 = r["SiiresakiName"],Col3=r["SoukoCD"] })
-                           .Select(g => g.OrderBy(r => r["SiiresakiCD"]).First())
-                           .CopyToDataTable();
+                dt_Main = F8_dt1.AsEnumerable()
+                          .GroupBy(r => new { Col1 = r["SiiresakiCD"], Col2 = r["SiiresakiName"], Col3 = r["SoukoCD"] })
+                          .Select(g => g.OrderBy(r => r["SiiresakiCD"]).First())
+                          .CopyToDataTable();
+            else return (string.Empty, string.Empty, string.Empty);
 
            if(cboMode.SelectedValue.ToString()=="1")
             {
