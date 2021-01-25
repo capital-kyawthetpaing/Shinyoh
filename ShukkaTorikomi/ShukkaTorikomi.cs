@@ -9,6 +9,7 @@ using Shinyoh_Search;
 using System.Data;
 using System.IO;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ShukkaTorikomi
 {
@@ -353,6 +354,11 @@ namespace ShukkaTorikomi
                     }
                     if (create_dt.Rows.Count == csvRows.Length - 1)
                     Xml = cf.DataTableToXml(create_dt);
+                   
+                    DataTable dt_Main = create_dt.AsEnumerable()
+                        .GroupBy(r => new {Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["TokuisakiRyakuName"], Col4 = r["KouritenRyakuName"], Col5 = r["DenpyouNO"], Col6 = r["ChangeDate"], Col7 = r["ShukkaDenpyouTekiyou"] })
+                        .Select (g => g.OrderBy(r => r["TokuisakiCD"]).First())
+                        .CopyToDataTable();
                 }
                 else
                 {
@@ -362,6 +368,9 @@ namespace ShukkaTorikomi
             }
             return Xml;
         }
+
+      
+       
 
         private bool Null_Check(string obj_text, int line_no, string error_msg)
         {
