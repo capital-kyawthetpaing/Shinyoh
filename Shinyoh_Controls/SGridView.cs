@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -162,6 +164,7 @@ namespace Shinyoh_Controls
                 Console.WriteLine(ex.Message);
             }
         }
+
         protected override void OnKeyPress(KeyPressEventArgs e)
         {            
             base.OnKeyPress(e);
@@ -246,5 +249,34 @@ namespace Shinyoh_Controls
             if(e.RowIndex >= 0)
                 base.OnCellMouseDoubleClick(e);
         }
+        public bool IsErrorOccurs { get; set; }
+        public string ISRowColumn { get; set; }
+
+        public bool ErrorCheck([Optional] string ChangeDate)
+        {
+            SGridView svg = this;
+            //Creating DataTable.
+            DataTable dt = svg.DataSource as DataTable;
+            (IsErrorOccurs, ISRowColumn) = DataTable_ErrorCheck(dt,svg.Name,ChangeDate);
+            if (IsErrorOccurs)
+            {
+                svg.CurrentCell = svg.Rows[Convert.ToInt32(ISRowColumn.Split('_')[0])].Cells[Convert.ToInt32(ISRowColumn.Split('_')[1])];
+                svg.BeginEdit(true);
+            }
+            return IsErrorOccurs;
+        }
+
+       public (bool,string) DataTable_ErrorCheck(DataTable dt,string grid_name, [Optional] string ChangeDate)
+        {
+            bool error_Occur = false;
+            string row_col = string.Empty;
+            GridView_ErrorCheck gv_error = new GridView_ErrorCheck();
+            if (grid_name.Contains("JuchuuNyuuryoku"))
+            {
+              (error_Occur, row_col) = gv_error.JuchuuNyuuryoku(dt, ChangeDate);
+            }
+            return (error_Occur,row_col);
+        }
+
     }
 }

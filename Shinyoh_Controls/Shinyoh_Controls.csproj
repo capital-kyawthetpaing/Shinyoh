@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Common.cs" />
     <Compile Include="ErrorCheck.cs" />
+    <Compile Include="GridView_ErrorCheck.cs" />
     <Compile Include="SButton.cs">
       <SubType>Component</SubType>
     </Compile>

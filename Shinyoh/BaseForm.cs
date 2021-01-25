@@ -9,6 +9,7 @@ using Entity;
 using System.Data;
 using Shinyoh_Controls;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Shinyoh
 {
@@ -525,6 +526,19 @@ namespace Shinyoh
                 {
                     SCheckBox sch = ctrl as SCheckBox;
                     if (sch.ErrorCheck())
+                        return false;
+                }
+                if(ctrl is SGridView)
+                {
+                    SGridView sgv = ctrl as SGridView;
+                    KeyValuePair<int, Control> pair_dic = new KeyValuePair<int, Control>();
+                    STextBox txt_Date = new STextBox();
+                    if (sgv.Name.Contains("JuchuuNyuuryoku"))
+                    {
+                         pair_dic = dic.Where(key => key.Key == 3).SingleOrDefault();
+                         txt_Date = pair_dic.Value as STextBox;
+                    }
+                    if (sgv.ErrorCheck(txt_Date.Text))
                         return false;
                 }
             }

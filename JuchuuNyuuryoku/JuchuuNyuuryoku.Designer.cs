@@ -42,7 +42,7 @@
             this.txtColorNo = new Shinyoh_Search.SearchBox();
             this.txtBrandCD = new Shinyoh_Search.SearchBox();
             this.txtShouhinCD = new Shinyoh_Search.SearchBox();
-            this.gv_1 = new Shinyoh_Controls.SGridView();
+            this.gv_JuchuuNyuuryoku = new Shinyoh_Controls.SGridView();
             this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.txtKouritenCD = new Shinyoh_Search.SearchBox();
             this.txtTokuisakiCD = new Shinyoh_Search.SearchBox();
@@ -124,7 +124,7 @@
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_JuchuuNyuuryoku)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelTitle
@@ -145,7 +145,7 @@
             this.PanelDetail.Controls.Add(this.txtColorNo);
             this.PanelDetail.Controls.Add(this.txtBrandCD);
             this.PanelDetail.Controls.Add(this.txtShouhinCD);
-            this.PanelDetail.Controls.Add(this.gv_1);
+            this.PanelDetail.Controls.Add(this.gv_JuchuuNyuuryoku);
             this.PanelDetail.Controls.Add(this.txtStaffCD);
             this.PanelDetail.Controls.Add(this.txtKouritenCD);
             this.PanelDetail.Controls.Add(this.txtTokuisakiCD);
@@ -306,9 +306,9 @@
             this.txtShouhinCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShouhinCD.TxtBox = null;
             // 
-            // gv_1
+            // gv_JuchuuNyuuryoku
             // 
-            this.gv_1.AllowUserToAddRows = false;
+            this.gv_JuchuuNyuuryoku.AllowUserToAddRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -316,9 +316,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.gv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gv_1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gv_JuchuuNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.gv_JuchuuNyuuryoku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gv_JuchuuNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
             this.ColHinbanCD,
             this.colShouhinName,
@@ -354,8 +354,10 @@
             this.colHacchuuGyouNO,
             this.colJuchuuNO,
             this.colJuchuuGyouNO});
-            this.gv_1.Location = new System.Drawing.Point(49, 246);
-            this.gv_1.Name = "gv_1";
+            this.gv_JuchuuNyuuryoku.IsErrorOccurs = false;
+            this.gv_JuchuuNyuuryoku.ISRowColumn = null;
+            this.gv_JuchuuNyuuryoku.Location = new System.Drawing.Point(49, 246);
+            this.gv_JuchuuNyuuryoku.Name = "gv_JuchuuNyuuryoku";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
@@ -363,13 +365,13 @@
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.gv_1.Size = new System.Drawing.Size(1630, 575);
-            this.gv_1.TabIndex = 106;
-            this.gv_1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellContentClick);
-            this.gv_1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
-            this.gv_1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEnter);
-            this.gv_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_1_KeyDown);
+            this.gv_JuchuuNyuuryoku.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1630, 575);
+            this.gv_JuchuuNyuuryoku.TabIndex = 106;
+            this.gv_JuchuuNyuuryoku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellContentClick);
+            this.gv_JuchuuNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
+            this.gv_JuchuuNyuuryoku.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEnter);
+            this.gv_JuchuuNyuuryoku.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_1_KeyDown);
             // 
             // txtStaffCD
             // 
@@ -530,7 +532,7 @@
             this.btnNameF10.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnNameF10.Location = new System.Drawing.Point(1505, 217);
             this.btnNameF10.Name = "btnNameF10";
-            this.btnNameF10.NextControl = this.gv_1;
+            this.btnNameF10.NextControl = this.gv_JuchuuNyuuryoku;
             this.btnNameF10.NextControlName = null;
             this.btnNameF10.Size = new System.Drawing.Size(75, 23);
             this.btnNameF10.TabIndex = 23;
@@ -1453,7 +1455,7 @@
             this.PanelTitle.ResumeLayout(false);
             this.PanelDetail.ResumeLayout(false);
             this.PanelDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gv_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gv_JuchuuNyuuryoku)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1503,7 +1505,7 @@
         private Shinyoh_Search.SearchBox txtStaffCD;
         private Shinyoh_Search.SearchBox txtKouritenCD;
         private Shinyoh_Search.SearchBox txtTokuisakiCD;
-        private Shinyoh_Controls.SGridView gv_1;
+        private Shinyoh_Controls.SGridView gv_JuchuuNyuuryoku;
         private Shinyoh_Search.SearchBox txtJuchuuNO;
         private Shinyoh_Search.SearchBox txtCopy;
         private Shinyoh_Search.SearchBox txtShouhinCD;

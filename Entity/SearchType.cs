@@ -22,7 +22,8 @@ namespace Entity {
             JuchuuNo,
             ShukkaNo,
             IdouNyuuryoku,
-            ChakuniYoteiNyuuryoku
+            ChakuniYoteiNyuuryoku,
+            HacchuuNyuuryoku
         }
     }
 }
