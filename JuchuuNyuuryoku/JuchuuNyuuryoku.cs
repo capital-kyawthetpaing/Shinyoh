@@ -125,6 +125,10 @@ namespace JuchuuNyuuryoku
                     //txtCopy.E102Check(true);
                     txtCopy.E133Check(true, "JuchuuNyuuryoku", txtCopy, null, null);
 
+                    cboMode.NextControlName = txtCopy.Name;
+                    txtJuchuuNO.Enabled = false;
+                    txtCopy.Focus();
+
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
@@ -136,7 +140,9 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                   // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
+                    // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
+
+                    cboMode.NextControlName = txtJuchuuNO.Name;
 
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -149,8 +155,9 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                   // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
+                    // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
 
+                    cboMode.NextControlName = txtJuchuuNO.Name;
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -162,7 +169,7 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                    
+                    cboMode.NextControlName = txtJuchuuNO.Name;
 
                     Disable_UDI_Mode();
                     Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -1139,12 +1146,14 @@ namespace JuchuuNyuuryoku
             DataRow[] F8_dr = F8_dt1.Select("Free =" + 1); 
             foreach (DataRow row in F8_dr)
                 F8_dt1.Rows.Remove(row);
-         
 
-            DataTable dt_Main = F8_dt1.AsEnumerable()
+            DataTable dt_Main = new DataTable();
+            if (F8_dt1.Rows.Count > 0)
+                 dt_Main = F8_dt1.AsEnumerable()
                            .GroupBy(r => new { Col1 = r["SiiresakiCD"], Col2 = r["SiiresakiName"],Col3=r["SoukoCD"] })
                            .Select(g => g.OrderBy(r => r["SiiresakiCD"]).First())
                            .CopyToDataTable();
+
            if(cboMode.SelectedValue.ToString()=="1")
             {
                 for (int i = 0; i < dt_Main.Rows.Count; i++)
