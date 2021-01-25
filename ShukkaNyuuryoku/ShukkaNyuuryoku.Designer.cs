@@ -98,6 +98,7 @@
             this.DenpyouDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.JuchuuNOGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShukkaSiziNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -797,7 +798,8 @@
             this.ShukkaSiziNOGyouNO,
             this.DenpyouDate,
             this.JuchuuNOGyouNO,
-            this.ShukkaSiziNO});
+            this.ShukkaSiziNO,
+            this.ShouhinCD});
             this.gvShukka1.IsErrorOccurs = false;
             this.gvShukka1.ISRowColumn = null;
             this.gvShukka1.Location = new System.Drawing.Point(47, 219);
@@ -1206,6 +1208,12 @@
             this.ShukkaSiziNO.HeaderText = "ShukkaSiziNO";
             this.ShukkaSiziNO.Name = "ShukkaSiziNO";
             // 
+            // ShouhinCD
+            // 
+            this.ShouhinCD.DataPropertyName = "ShouhinCD";
+            this.ShouhinCD.HeaderText = "ShouhinCD";
+            this.ShouhinCD.Name = "ShouhinCD";
+            // 
             // ShukkaNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1298,6 +1306,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DenpyouDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn JuchuuNOGyouNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShukkaSiziNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ShouhinCD;
     }
 }
 

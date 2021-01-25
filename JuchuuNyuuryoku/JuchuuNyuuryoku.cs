@@ -59,7 +59,7 @@ namespace JuchuuNyuuryoku
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
-            SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
+            SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
@@ -125,6 +125,7 @@ namespace JuchuuNyuuryoku
                     //txtCopy.E102Check(true);
                     txtCopy.E133Check(true, "JuchuuNyuuryoku", txtCopy, null, null);
 
+                   
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
@@ -136,7 +137,7 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                   // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
+                    // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);                   
 
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -149,8 +150,8 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                   // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
-
+                    // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
+                   
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -162,7 +163,6 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                    
 
                     Disable_UDI_Mode();
                     Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -211,6 +211,20 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
             // F10_Gridview_Bind();
+
+            gv_JuchuuNyuuryoku.Memory_Row_Count = 0;
+
+            if(cboMode.SelectedValue.ToString()=="1")
+            {
+                cboMode.NextControlName = txtCopy.Name;
+                txtJuchuuNO.Enabled = false;
+                txtCopy.Focus();
+            }
+            else
+            {
+                cboMode.NextControlName = txtJuchuuNO.Name;
+                txtJuchuuNO.Focus();
+            }
         }
 
         public void Disable_UDI_Mode()
@@ -308,7 +322,6 @@ namespace JuchuuNyuuryoku
                             break;
                     }
                 }
-               
                // }
             }
 
@@ -504,10 +517,15 @@ namespace JuchuuNyuuryoku
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
 
-                if (cboMode.SelectedValue.ToString() == "1")
-                    F8_dt1 = gv1_to_dt1.Clone();
-                else
+                F8_dt1 = gv1_to_dt1.Clone();
+
+                if (cboMode.SelectedValue.ToString() == "3")
                     F8_dt1 = gv1_to_dt1.Copy();
+
+                //if (cboMode.SelectedValue.ToString() == "1")
+                //    F8_dt1 = gv1_to_dt1.Clone();
+                //else
+                //    F8_dt1 = gv1_to_dt1.Copy();
             }
         }
 
@@ -981,7 +999,7 @@ namespace JuchuuNyuuryoku
                     }
                 }
             }
-
+            gv_JuchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
 
             //comment nwe mar win logic difference
 
@@ -1052,21 +1070,23 @@ namespace JuchuuNyuuryoku
         {
             string mode = string.Empty;
             (string, string, string) obj = GetInsert();
-           
-            if (cboMode.SelectedValue.Equals("1"))
+            if ((!string.IsNullOrEmpty(obj.Item1)) && (!string.IsNullOrEmpty(obj.Item2)) && (!string.IsNullOrEmpty(obj.Item3)))
             {
-                mode = "New";
-                DoInsert(mode,obj.Item1,obj.Item2,obj.Item3);
-            }
-            else if (cboMode.SelectedValue.Equals("2"))
-            {
-                mode = "Update";
-                DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
-            }
-            else if (cboMode.SelectedValue.Equals("3"))
-            {
-                mode = "Delete";
-                DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+                if (cboMode.SelectedValue.Equals("1"))
+                {
+                    mode = "New";
+                    DoInsert(mode, obj.Item1, obj.Item2, obj.Item3);
+                }
+                else if (cboMode.SelectedValue.Equals("2"))
+                {
+                    mode = "Update";
+                    DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+                }
+                else if (cboMode.SelectedValue.Equals("3"))
+                {
+                    mode = "Delete";
+                    DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+                }
             }
         }
 
@@ -1133,12 +1153,15 @@ namespace JuchuuNyuuryoku
             DataRow[] F8_dr = F8_dt1.Select("Free =" + 1); 
             foreach (DataRow row in F8_dr)
                 F8_dt1.Rows.Remove(row);
-         
 
-            DataTable dt_Main = F8_dt1.AsEnumerable()
-                           .GroupBy(r => new { Col1 = r["SiiresakiCD"], Col2 = r["SiiresakiName"],Col3=r["SoukoCD"] })
-                           .Select(g => g.OrderBy(r => r["SiiresakiCD"]).First())
-                           .CopyToDataTable();
+            DataTable dt_Main = new DataTable();
+            if (F8_dt1.Rows.Count > 0)
+                dt_Main = F8_dt1.AsEnumerable()
+                          .GroupBy(r => new { Col1 = r["SiiresakiCD"], Col2 = r["SiiresakiName"], Col3 = r["SoukoCD"] })
+                          .Select(g => g.OrderBy(r => r["SiiresakiCD"]).First())
+                          .CopyToDataTable();
+            else return (string.Empty, string.Empty, string.Empty);
+
            if(cboMode.SelectedValue.ToString()=="1")
             {
                 for (int i = 0; i < dt_Main.Rows.Count; i++)
