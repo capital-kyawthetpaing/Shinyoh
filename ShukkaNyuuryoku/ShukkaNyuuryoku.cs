@@ -21,13 +21,15 @@ namespace ShukkaNyuuryoku {
         StaffBL staffBL;
         BaseBL bbl;
         BaseEntity base_Entity;
+        ShukkaNyuuryokuEntity obj;
+        ShukkaNyuuryokuBL bl;
         TokuisakiDetail tokuisakiDetail = new TokuisakiDetail();
         KouritenDetail kouritenDetail = new KouritenDetail();
         string YuuBinNO1 = string.Empty;
         string YuuBinNO2 = string.Empty;
         string Address = string.Empty;
         public string Detail_XML;
-        DataTable Main_dt, Temptb1,  gvdt1,  F8_dt1,  dtGS1, dtClear;
+        DataTable Main_dt, Temptb1,  gvdt1,  F8_dt1,  dtGS1, dtClear, dtHaita;
         public ShukkaNyuuryoku()
         {
             InitializeComponent();
@@ -39,6 +41,7 @@ namespace ShukkaNyuuryoku {
             Temptb1 = new DataTable();
             gvdt1 = new DataTable();
             F8_dt1 = new DataTable();
+            dtHaita = new DataTable();
             dtGS1 = CreateTable();
             dtClear = CreateTable();
             gvShukka1.SetGridDesign();
@@ -402,7 +405,7 @@ namespace ShukkaNyuuryoku {
                     ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
                     ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
                     BaseEntity baseEntity = _GetBaseData();
-                    //  obj.TokuisakiCD = txtTokuisaki.Text;
+                    obj.TokuisakiCD = txtTokuisaki.Text;
                     obj.ShukkaSiziNO1 = txtShukkaSijiNo.Text;
                     obj.ShukkaDate1 = txtShukkaYoteiDate1.Text;
                     obj.ShukkaDate2 = txtShukkaYoteiDate2.Text;
@@ -416,12 +419,11 @@ namespace ShukkaNyuuryoku {
                     obj.Name = txtName.Text;
                     obj.Juusho = txtJuusho.Text;
                     obj.ChangeDate = baseEntity.LoginDate;
-                    obj.OperatorCD = OperatorCD;
-                    obj.ProgramID = ProgramID;
-                    obj.PC = PCID;
+                    //obj.OperatorCD = OperatorCD;
+                    //obj.ProgramID = ProgramID;
+                    //obj.PC = PCID;
 
                     DataTable dt = sBL.ShukkaNyuuryoku_Display(obj);
-
                     if (dt.Rows.Count > 0)
                     {
                         dt.Columns.Remove("SoukoCD");
@@ -442,6 +444,30 @@ namespace ShukkaNyuuryoku {
                             DataTable dt_temp = dt.Copy();
                             gvdt1 = dt_temp;
                         }
+                        dtHaita = gvdt1.Copy();
+                        ShukkaSiZiNO_Delete();
+                        foreach (DataRow dr in gvdt1.Rows)
+                        {
+                            string ShukkaSiziNO = dr["ShukkaSiziNO"].ToString();
+                            obj = new ShukkaNyuuryokuEntity();
+                            obj.DataKBN = 12;
+                            obj.ShukkaSiziNO1 = ShukkaSiziNO;
+                            obj.ProgramID = ProgramID;
+                            obj.PC = PCID;
+                            obj.OperatorCD = OperatorCD;
+
+                            DataTable dataTable = new DataTable();
+                            bl = new ShukkaNyuuryokuBL();
+                            dt = bl.D_Exclusive_Lock_Check(obj);
+                            if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                            {
+                                bbl.ShowMessage("S004",ProgramID,OperatorCD);
+                                //Gvrow_Delete(dr);
+                            }
+                        }
+                       
+                        dtHaita.Columns.Remove("ShukkaSiziNO");
+                        gvShukka1.DataSource = dtHaita;
 
                     }
                     break;
@@ -466,6 +492,16 @@ namespace ShukkaNyuuryoku {
                     }
                     break;
             }
+        }
+        private void ShukkaSiZiNO_Delete()
+        {
+            obj = new ShukkaNyuuryokuEntity();
+            obj.DataKBN = 12;
+            obj.OperatorCD = OperatorCD;
+            obj.ProgramID = ProgramID;
+            obj.PC = PCID;
+            bl = new ShukkaNyuuryokuBL();
+            bl.D_Exclusive_ShukkaSiZiNo_Delete(obj);
         }
         private void ErrorCheck()
         {

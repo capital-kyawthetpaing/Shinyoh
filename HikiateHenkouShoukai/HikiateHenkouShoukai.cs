@@ -50,7 +50,6 @@ namespace HikiateHenkouShoukai
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
 
             Modified_Panel();
-            rdoAggregation.Focus();
             base_entity = _GetBaseData();
             txtTokuisakiCD.E102Type = base_entity.LoginDate;        //ChangeDate value For E101 Error check of txtTokuisakiCD
             txtKouritenCD.E102Type = base_entity.LoginDate;         //ChangeDate value For E101 Error check of txtKouritenCD
@@ -78,6 +77,7 @@ namespace HikiateHenkouShoukai
         private void Modified_Panel()
         {
             cf.Clear(PanelDetail);
+            rdoAggregation.Focus();
             UI_ErrorCheck();
 
             lblBrandName.Text = string.Empty;
@@ -283,17 +283,13 @@ namespace HikiateHenkouShoukai
         private void chkSeasonSS_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSeasonSS.Checked)
-                chkSeasonFW.Enabled = false;
-            else
-                chkSeasonFW.Enabled = true;
+                chkSeasonFW.Checked = false;
         }
 
         private void chkSeasonFW_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSeasonFW.Checked)
-                chkSeasonSS.Enabled = false;
-            else
-                chkSeasonSS.Enabled = true;
+                chkSeasonSS.Checked = false;
         }
 
         private void txtPostalCode2_KeyDown(object sender, KeyEventArgs e)

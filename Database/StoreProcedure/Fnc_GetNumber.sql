@@ -14,7 +14,7 @@ GO
 -- =============================================
 CREATE  PROCEDURE [dbo].[Fnc_GetNumber] 
 	-- Add the parameters for the stored procedure here
-		@SerialNO as int,
+	@SerialNO as int,
 	@refDate as date,
 	@SEQNO as int,
 	@Output as varchar(100) OUTPUT
@@ -45,4 +45,5 @@ BEGIN
 	declare @outNO as varchar(100) =ISNULL(@Prefix1,'')+ISNULL(@Prefix2,'')+'000000000000'+@tempCounter   
 	set  @Output= LEFT(@outNO,8)+RIGHT(@outNO,4);
 
+	select @Output
 END

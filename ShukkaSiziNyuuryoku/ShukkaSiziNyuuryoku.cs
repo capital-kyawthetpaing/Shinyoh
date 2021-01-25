@@ -166,7 +166,7 @@ namespace ShukkaSiziNyuuryoku
         {
             if (!string.IsNullOrWhiteSpace(sbTokuisaki.Text) && td.Access_Tokuisaki_obj.TokuisakiCD != null)
             {
-                if (!td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbKouriten.Text))
+                if (!td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbTokuisaki.Text))
                 {
 
                     bbl.ShowMessage("E269");
@@ -1013,6 +1013,7 @@ namespace ShukkaSiziNyuuryoku
                         {
                             string JuchuuNO = dr["JuchuuNO"].ToString();
                             sksz_e = new ShukkaSiziNyuuryokuEntity();
+                            sksz_e.DataKBN = 1;
                             sksz_e.JuchuuNO = JuchuuNO;
                             sksz_e.ProgramID = ProgramID;
                             sksz_e.PC = PCID;

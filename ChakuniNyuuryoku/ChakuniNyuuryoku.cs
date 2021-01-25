@@ -92,7 +92,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvChakuniNyuuryoku.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvChakuniNyuuryoku.SetGridDesign();
-            gvChakuniNyuuryoku.SetReadOnlyColumn("ShouhinCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
+            gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
             gvChakuniNyuuryoku.SetHiraganaColumn("ChakuniMeisaiTekiyou");
         }
         private void ChangeMode(Mode mode)
@@ -393,32 +393,6 @@ namespace ChakuniNyuuryoku
             if(cboMode.SelectedValue.ToString()=="3")
             {
                 detail_XML = cf.DataTableToXml(dt_Details);
-                //DataTable dt1 = txtArrivalNO.IsDatatableOccurs;
-                //dt1.Columns.Remove("ChakuniDate");
-                //dt1.Columns.Remove("SiiresakiCD");
-                //dt1.Columns.Remove("SiiresakiName");
-                //dt1.Columns.Remove("SiiresakiRyakuName");
-                //dt1.Columns.Remove("SiiresakiYuubinNO1");
-                //dt1.Columns.Remove("SiiresakiYuubinNO2");
-                //dt1.Columns.Remove("SiiresakiJuusho1");
-                //dt1.Columns.Remove("SiiresakiJuusho2");
-                //dt1.Columns.Remove("SiiresakiTelNO1-1");
-                //dt1.Columns.Remove("SiiresakiTelNO1-2");
-                //dt1.Columns.Remove("SiiresakiTelNO1-3");
-                //dt1.Columns.Remove("SiiresakiTelNO2-1");
-                //dt1.Columns.Remove("SiiresakiTelNO2-2");
-                //dt1.Columns.Remove("SiiresakiTelNO2-3");
-                //dt1.Columns.Remove("SiireKanryouKBN");
-                //dt1.Columns.Remove("StaffCD");
-                //dt1.Columns.Remove("StaffName");
-                //dt1.Columns.Remove("SoukoCD");
-                //dt1.Columns.Remove("SoukoName");
-                //dt1.Columns.Remove("ChakuniDenpyouTekiyou");
-                //dt1.Columns.Remove("MessageID");
-                //dt1.Columns.Remove("ChakuniYoteiNO");
-                //dt1.Columns.Remove("Chakuni");
-                //dt1.Columns.Remove("Hacchuu");
-                //detail_XML = cf.DataTableToXml(dt1);
             }
             else
             {
@@ -512,7 +486,7 @@ namespace ChakuniNyuuryoku
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtScheduled.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
-                 string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColor.Text)&& string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSize.Text))
+                 string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColor.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSize.Text))
             {
                 bbl.ShowMessage("E111");
                 txtScheduled.Focus();
@@ -520,9 +494,89 @@ namespace ChakuniNyuuryoku
             else
             {
                 dtGridview();
-                gvChakuniNyuuryoku.DataSource = dtmain;
-                gvChakuniNyuuryoku.Select();
+                //gvChakuniNyuuryoku.DataSource = dtmain;
+                ChakuniYoteiNO_Delete();
+                HacchuuNO_Delete();
+                foreach (DataRow dr in dtmain.Rows)
+                {
+                    string ChakuniYoteiNO = dr["ChakuniYoteiNO"].ToString();
+                    chkEntity = new ChakuniNyuuryoku_Entity();
+                    chkEntity.DataKBN = 16;
+                    chkEntity.Number = ChakuniYoteiNO;
+                    chkEntity.ProgramID = ProgramID;
+                    chkEntity.PC = PCID;
+                    chkEntity.OperatorCD = OperatorCD;
+                    DataTable dt = new DataTable();
+                    cbl = new chakuniNyuuryoku_BL();
+                    dt = cbl.D_Exclusive_Lock_Check(chkEntity);
+                    if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                    {
+                        bbl.ShowMessage("S004");
+                        Gvrow_Delete(dr);
+                    }
+                    string HacchuuNO = dr["HacchuuNO"].ToString();
+                    chkEntity = new ChakuniNyuuryoku_Entity();
+                    chkEntity.DataKBN = 2;
+                    chkEntity.Number = HacchuuNO;
+                    chkEntity.ProgramID = ProgramID;
+                    chkEntity.PC = PCID;
+                    chkEntity.OperatorCD = OperatorCD;
+                    DataTable dt1 = new DataTable();
+                    cbl = new chakuniNyuuryoku_BL();
+                    dt1 = cbl.D_Exclusive_Lock_Check(chkEntity);
+                    if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                    {
+                        bbl.ShowMessage("S004");
+                        if(dr!=null)
+                        Gvrow_Delete(dr);
+                    }
+                    gvChakuniNyuuryoku.DataSource = dtmain;
+                    gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
+                    gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
+                    gvChakuniNyuuryoku.Select();
+                }
+               
             }
+        }
+        private void Gvrow_Delete(DataRow dr)
+        {
+            DataRow[] existDr1;
+            if (dr["ChakuniYoteiNO"]!=null)
+            {
+                existDr1 = dtmain.Select("ChakuniYotei ='" + dr["ChakuniYoteiNO"] + "'");
+                foreach (DataRow row in existDr1)
+                {
+                    dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+                }
+            }
+            else if (dr["HacchuuNO"] != null)
+            {
+                existDr1 = dtmain.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
+                foreach (DataRow row in existDr1)
+                {
+                    dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+                }
+            }
+        }
+        private void ChakuniYoteiNO_Delete()
+        {
+            chkEntity = new ChakuniNyuuryoku_Entity();
+            chkEntity.DataKBN = 16;
+            chkEntity.OperatorCD = OperatorCD;
+            chkEntity.ProgramID = ProgramID;
+            chkEntity.PC = PCID;
+            cbl = new chakuniNyuuryoku_BL();
+            cbl.D_Exclusive_ChakuniYoteiNyuuryokuNO_Delete(chkEntity);
+        }
+        private void HacchuuNO_Delete()
+        {
+            chkEntity = new ChakuniNyuuryoku_Entity();
+            chkEntity.DataKBN = 2;
+            chkEntity.OperatorCD = OperatorCD;
+            chkEntity.ProgramID = ProgramID;
+            chkEntity.PC = PCID;
+            cbl = new chakuniNyuuryoku_BL();
+            cbl.D_Exclusive_ChakuniYoteiNyuuryokuNO_Delete(chkEntity);
         }
         private DataTable dtGridview()
         {
