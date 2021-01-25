@@ -604,9 +604,9 @@
             this.PanelTitle.Controls.Add(this.lbl_Name);
             this.PanelTitle.Controls.Add(this.txtCD);
             this.PanelTitle.Controls.Add(this.lblCD);
-            this.PanelTitle.Location = new System.Drawing.Point(4, 1);
+            this.PanelTitle.Location = new System.Drawing.Point(0, 1);
             this.PanelTitle.Name = "PanelTitle";
-            this.PanelTitle.Size = new System.Drawing.Size(1049, 81);
+            this.PanelTitle.Size = new System.Drawing.Size(1056, 81);
             this.PanelTitle.TabIndex = 0;
             // 
             // KouritenDetail

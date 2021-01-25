@@ -166,9 +166,20 @@ namespace ShukkaNyuuryoku {
             (string, string, string) obj = GetInsert();
             ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
             string return_Bl = sBL.ShukkaNyuuryoku_CUD(obj.Item1, obj.Item2, obj.Item3);
+            //Konkai_Price(gvdt1);
             if (return_Bl == "true")
                 bbl.ShowMessage("I101");
         }
+        //private void Konkai_Price(DataTable dtTemp1)
+        //{
+        //    foreach (DataRow dr in dtTemp1.Rows)
+        //    {                
+        //        string shukkasuu = dr["ShukkaSuu"].ToString();
+        //        string ShukkaSiziNOGyouNO = dr["ShukkaSiziNOGyouNO"].ToString();
+        //        string ShouhinCD = dr["ShouhinCD"].ToString();
+        //        bl.Shukka_Price(shukkasuu, ShukkaSiziNOGyouNO, ShouhinCD);
+        //    }
+        //}
 
         private (string, string, string) GetInsert()
         {
@@ -180,13 +191,8 @@ namespace ShukkaNyuuryoku {
 
             DataRow dr = dtResult.NewRow();
             ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
-            if (cboMode.SelectedValue.ToString() == "1")
-            {
-                DataTable dt = sBL.GetShukkaNo("6", txtShukkaDate.Text, "0");
-                dr["ShukkaNO"] = dt.Rows[0]["Column1"];
-            }
-            else
-            {
+            if (cboMode.SelectedValue.ToString() != "1")
+            {              
                 dr["ShukkaNO"] = txtShukkaNo.Text;
             }
 
@@ -419,9 +425,9 @@ namespace ShukkaNyuuryoku {
                     obj.Name = txtName.Text;
                     obj.Juusho = txtJuusho.Text;
                     obj.ChangeDate = baseEntity.LoginDate;
-                    //obj.OperatorCD = OperatorCD;
-                    //obj.ProgramID = ProgramID;
-                    //obj.PC = PCID;
+                    obj.OperatorCD = OperatorCD;
+                    obj.ProgramID = ProgramID;
+                    obj.PC = PCID;
 
                     DataTable dt = sBL.ShukkaNyuuryoku_Display(obj);
                     if (dt.Rows.Count > 0)
@@ -773,12 +779,13 @@ namespace ShukkaNyuuryoku {
                     ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
                     obj_shukka.OperatorCD = OperatorCD;
                     obj_shukka.PC = PCID;
+                    obj_shukka.ProgramID = ProgramID;
                     obj_shukka.ShukkaNO1 = txtShukkaNo.Text;
                     if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")
                     {
                         if (cboMode.SelectedValue.ToString() == "2") //update
                         {
-                            //sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
+                            sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
                         }
                         EnablePanel();
                     }
@@ -786,7 +793,7 @@ namespace ShukkaNyuuryoku {
                     {
                         if (cboMode.SelectedValue.ToString() == "3")//delete
                         {
-                            //sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
+                            sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
                         }
                         cf.DisablePanel(PanelTitle);
                     }
