@@ -186,7 +186,8 @@ namespace MasterTouroku_Tokuisaki {
                 {
                     if (bbl.ShowMessage("Q206") != DialogResult.Yes)
                     {
-                        PreviousCtrl.Focus();
+                        if (PreviousCtrl != null)
+                            PreviousCtrl.Focus();
                     }
                     else
                     {
