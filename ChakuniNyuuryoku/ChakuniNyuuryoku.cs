@@ -92,7 +92,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvChakuniNyuuryoku.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvChakuniNyuuryoku.SetGridDesign();
-            gvChakuniNyuuryoku.SetReadOnlyColumn("ShouhinCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
+            gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
             gvChakuniNyuuryoku.SetHiraganaColumn("ChakuniMeisaiTekiyou");
         }
         private void ChangeMode(Mode mode)
