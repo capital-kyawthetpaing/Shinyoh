@@ -28,5 +28,6 @@ namespace Entity {
         public string Name { get; set; }
         public string Juusho { get; set; }
         public string Condition { get; set; }
+        public int DataKBN { get; set; }
     }
 }
