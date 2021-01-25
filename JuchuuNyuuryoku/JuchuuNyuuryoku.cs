@@ -107,7 +107,7 @@ namespace JuchuuNyuuryoku
 
             gv_JuchuuNyuuryoku.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
             gv_JuchuuNyuuryoku.SetNumberColumn("colJuchuuSuu,colexpectedDate");
-            gv_JuchuuNyuuryoku.ClearSelection();
+           // gv_JuchuuNyuuryoku.ClearSelection();
         }
 
         private void ChangeMode(Mode mode)
@@ -512,7 +512,7 @@ namespace JuchuuNyuuryoku
                 dt.Columns.Remove("MessageID");
                
                 gv_JuchuuNyuuryoku.DataSource = dt;
-                gv_JuchuuNyuuryoku.ClearSelection();
+              //  gv_JuchuuNyuuryoku.ClearSelection();
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
@@ -1063,7 +1063,7 @@ namespace JuchuuNyuuryoku
         {
             F8_dt1.DefaultView.Sort = "ShouhinCD";
             gv_JuchuuNyuuryoku.DataSource = F8_dt1.DefaultView.ToTable();
-            gv_JuchuuNyuuryoku.ClearSelection();
+           // gv_JuchuuNyuuryoku.ClearSelection();
         }
 
         private void DBProcess()
