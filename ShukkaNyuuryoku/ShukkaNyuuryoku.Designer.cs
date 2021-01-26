@@ -1213,6 +1213,7 @@
             this.ShouhinCD.DataPropertyName = "ShouhinCD";
             this.ShouhinCD.HeaderText = "ShouhinCD";
             this.ShouhinCD.Name = "ShouhinCD";
+            this.ShouhinCD.Visible = false;
             // 
             // ShukkaNyuuryoku
             // 
