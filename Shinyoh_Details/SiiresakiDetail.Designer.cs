@@ -507,7 +507,7 @@
             this.lbl_Name.Location = new System.Drawing.Point(236, 52);
             this.lbl_Name.MinimumSize = new System.Drawing.Size(100, 19);
             this.lbl_Name.Name = "lbl_Name";
-            this.lbl_Name.Size = new System.Drawing.Size(200, 19);
+            this.lbl_Name.Size = new System.Drawing.Size(300, 19);
             this.lbl_Name.TabIndex = 110;
             this.lbl_Name.Text = "lable";
             this.lbl_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
