@@ -42,5 +42,6 @@ namespace Entity
         public string KouritenJuusho1 { get; set; }
         public string KouritenJuusho2 { get; set; }
         public int DataKBN { get; set; }
+        public string Number { get; set; }
     }
 }

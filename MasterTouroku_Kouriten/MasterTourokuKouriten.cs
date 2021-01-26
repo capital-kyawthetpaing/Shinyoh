@@ -3,6 +3,7 @@ using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
 using Shinyoh_Controls;
+using Shinyoh_Search;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,13 +30,14 @@ namespace MasterTouroku_Kouriten
         string Address1 = string.Empty;
         string Address2 = string.Empty;
         BaseBL bbl = new BaseBL();
-
+        KouritenSearch KS;
         public MasterTourokuKouriten()
         {
             InitializeComponent();
             cf = new CommonFunction();
             base_bl = new BaseBL();
             err = new ErrorCheck();
+            KS = new KouritenSearch();
         }
 
 
@@ -72,6 +74,8 @@ namespace MasterTouroku_Kouriten
             txtCopyCD.ChangeDate = txtCopyDate;
             txtTokuisakiCD.ChangeDate = txtSystemDate;
             txtTokuisakiCD_Copy.ChangeDate = txtSystemDate;
+
+            panel2.GotFocus += RadioPanel_GotFocus;
         }
 
         private void ChangeMode(Mode mode)
@@ -111,7 +115,7 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
-                    //txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -123,7 +127,7 @@ namespace MasterTouroku_Kouriten
 
                     txtChangeDate.E270Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate,txtTokuisakiCD);
 
-                   // txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -134,7 +138,7 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
-                   // txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
                     Disable_UDI_Mode();
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -180,7 +184,7 @@ namespace MasterTouroku_Kouriten
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
 
             txtTokuisakiCD.E102Check(true);
-            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+            //txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
@@ -542,7 +546,7 @@ namespace MasterTouroku_Kouriten
             if (rdo_AliasKBN1.Checked == true)
             {
                 rdo_AliasKBN2.Checked = false;
-                txtKanaName.NextControlName = rdo_AliasKBN1.Name;
+                //txtKanaName.NextControlName = rdo_AliasKBN1.Name;
             }
                
         }
@@ -552,7 +556,7 @@ namespace MasterTouroku_Kouriten
             if (rdo_AliasKBN2.Checked == true)
             {
                 rdo_AliasKBN1.Checked = false;
-                txtKanaName.NextControlName = rdo_AliasKBN2.Name;
+                //txtKanaName.NextControlName = rdo_AliasKBN2.Name;
             }
         }
 
@@ -885,6 +889,28 @@ namespace MasterTouroku_Kouriten
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
             create_dt.Columns.Add("Error");
+        }
+
+        private KouritenEntity From_DB_To_Kouriten(DataTable dt)
+        {
+            KouritenEntity obj = new KouritenEntity();
+            obj.TokuisakiCD = dt.Rows[0]["TokuisakiCD"].ToString();
+            return obj;
+        }
+
+        private void txtKouritenCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtTokuisakiCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
+                    if (!string.IsNullOrWhiteSpace(txtKouritenCD.Text))
+                    {
+                        KS.Access_Kouriten_obj = From_DB_To_Kouriten(dt);
+                    }
+                }
+            }
         }
     }
 }

@@ -565,7 +565,7 @@
             this.lblTokuisaki_Name.Location = new System.Drawing.Point(232, 54);
             this.lblTokuisaki_Name.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblTokuisaki_Name.Name = "lblTokuisaki_Name";
-            this.lblTokuisaki_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblTokuisaki_Name.Size = new System.Drawing.Size(300, 19);
             this.lblTokuisaki_Name.TabIndex = 110;
             this.lblTokuisaki_Name.Text = "lable";
             this.lblTokuisaki_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

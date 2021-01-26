@@ -107,7 +107,7 @@ namespace JuchuuNyuuryoku
 
             gv_JuchuuNyuuryoku.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
             gv_JuchuuNyuuryoku.SetNumberColumn("colJuchuuSuu,colexpectedDate");
-            gv_JuchuuNyuuryoku.ClearSelection();
+           // gv_JuchuuNyuuryoku.ClearSelection();
         }
 
         private void ChangeMode(Mode mode)
@@ -512,7 +512,7 @@ namespace JuchuuNyuuryoku
                 dt.Columns.Remove("MessageID");
                
                 gv_JuchuuNyuuryoku.DataSource = dt;
-                gv_JuchuuNyuuryoku.ClearSelection();
+              //  gv_JuchuuNyuuryoku.ClearSelection();
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
@@ -592,7 +592,7 @@ namespace JuchuuNyuuryoku
             if (dt.Columns.Contains("TokuisakiJuusho2"))
                 obj.Juusho2 = dt.Rows[0]["TokuisakiJuusho2"].ToString();
             else
-                obj.Juusho1 = dt.Rows[0]["Juusho2"].ToString();
+                obj.Juusho2 = dt.Rows[0]["Juusho2"].ToString();
             if (dt.Columns.Contains("TokuisakiTelNO1-1"))
                 obj.Tel11 = dt.Rows[0]["TokuisakiTelNO1-1"].ToString();
             else
@@ -1063,7 +1063,7 @@ namespace JuchuuNyuuryoku
         {
             F8_dt1.DefaultView.Sort = "ShouhinCD";
             gv_JuchuuNyuuryoku.DataSource = F8_dt1.DefaultView.ToTable();
-            gv_JuchuuNyuuryoku.ClearSelection();
+           // gv_JuchuuNyuuryoku.ClearSelection();
         }
 
         private void DBProcess()
@@ -1375,7 +1375,10 @@ namespace JuchuuNyuuryoku
             if (string.IsNullOrEmpty(free))
                 isSelected = "OFF";
             else isSelected = "ON";
-            if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colFree" || gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colJuchuuMeisaiTekiyou" || gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
+            // if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colFree" || gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colJuchuuMeisaiTekiyou" || gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
+            // gv_JuchuuNyuuryoku.MoveNextCell();
+
+            if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colFree")
                 gv_JuchuuNyuuryoku.MoveNextCell();
 
             if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colJuchuuSuu")
@@ -1383,7 +1386,7 @@ namespace JuchuuNyuuryoku
                 string split_val = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colJuchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
                 int JuchuuSuu_Number = string.IsNullOrEmpty(gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colJuchuuSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
                 gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colJuchuuSuu"].Value = JuchuuSuu_Number.ToString();
-                gv_JuchuuNyuuryoku.MoveNextCell();
+               // gv_JuchuuNyuuryoku.MoveNextCell();
             }
 
             if (isSelected == "OFF" && JuchuuSuu != "0")
@@ -1414,7 +1417,7 @@ namespace JuchuuNyuuryoku
                             selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
                         }
                         sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(siiresaki_dt, selectedRow);
-                        gv_JuchuuNyuuryoku.MoveNextCell();
+                      //  gv_JuchuuNyuuryoku.MoveNextCell();
                     }
                     else
                     {
@@ -1452,7 +1455,7 @@ namespace JuchuuNyuuryoku
                     }
                     if (exp_error == false)
                     {
-                        gv_JuchuuNyuuryoku.MoveNextCell();
+                      //  gv_JuchuuNyuuryoku.MoveNextCell();
                     }
                     else
                     {
@@ -1478,7 +1481,7 @@ namespace JuchuuNyuuryoku
                     {
                         gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSoukoCD"].Value = souko_dt.Rows[0]["SoukoCD"];
                         gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSoukoName"].Value = souko_dt.Rows[0]["SoukoName"];
-                        gv_JuchuuNyuuryoku.MoveNextCell();
+                      //  gv_JuchuuNyuuryoku.MoveNextCell();
                     }
                     else
                     {
