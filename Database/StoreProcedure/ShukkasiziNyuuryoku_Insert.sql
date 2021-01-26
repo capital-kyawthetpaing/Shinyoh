@@ -141,6 +141,41 @@ CREATE TABLE  [dbo].[#Temp_Details]
 				)
 				EXEC sp_xml_preparedocument @idoc OUTPUT, @XML_Detail
 
+CREATE TABLE  [dbo].[#Temp_Details]
+				(	[ShouhinCD]			varchar(25) COLLATE DATABASE_DEFAULT,
+					[ShouhinName]		varchar(100) COLLATE DATABASE_DEFAULT,
+					[ColorRyakuName]	varchar(25) COLLATE DATABASE_DEFAULT,
+					[ColorNO]			varchar(13) COLLATE DATABASE_DEFAULT,
+					[SizeNO]			varchar(13)  COLLATE DATABASE_DEFAULT,
+					[JuchuuSuu]			varchar(30)  COLLATE DATABASE_DEFAULT,
+					[ShukkanouSuu]		varchar(30)  COLLATE DATABASE_DEFAULT,
+					[ShukkaSiziZumiSuu] varchar(30)  COLLATE DATABASE_DEFAULT,
+					[KonkaiShukkaSiziSuu]		varchar(30)  COLLATE DATABASE_DEFAULT,
+					[UriageTanka]		varchar(30)  COLLATE DATABASE_DEFAULT,
+					[UriageKingaku]		varchar(15)  COLLATE DATABASE_DEFAULT,
+					[Kanryo]			varchar(2)  COLLATE DATABASE_DEFAULT,
+					[SKMSNO]			varchar(25)  COLLATE DATABASE_DEFAULT,
+					[ShukkaSiziMeisaiTekiyou]varchar(80)  COLLATE DATABASE_DEFAULT,
+					[SoukoCD]			varchar(10)  COLLATE DATABASE_DEFAULT,
+					[SoukoName]			varchar(50)  COLLATE DATABASE_DEFAULT,
+					[TokuisakiCD]		varchar(10)  COLLATE DATABASE_DEFAULT,
+					[KouritenCD]		varchar(10)  COLLATE DATABASE_DEFAULT,
+					KouritenRyakuName    varchar(40) COLLATE DATABASE_DEFAULT,
+					KouritenName	  varchar(120) COLLATE DATABASE_DEFAULT,
+					KouritenYuubinNO1    varchar(3) COLLATE DATABASE_DEFAULT,
+					KouritenYuubinNO2    varchar(4) COLLATE DATABASE_DEFAULT,
+					KouritenJuusho1  varchar(50) COLLATE DATABASE_DEFAULT,
+					KouritenJuusho2	 varchar(50) COLLATE DATABASE_DEFAULT,
+					KouritenTel11    varchar(6) COLLATE DATABASE_DEFAULT,	
+					KouritenTel12	 varchar(5) COLLATE DATABASE_DEFAULT,	
+					KouritenTel13	 varchar(5) COLLATE DATABASE_DEFAULT,	
+					KouritenTel21   varchar(6) COLLATE DATABASE_DEFAULT,	
+					KouritenTel22   varchar(5) COLLATE DATABASE_DEFAULT,	
+					KouritenTel23   varchar(5) COLLATE DATABASE_DEFAULT,
+					Hidden_ShouhinCD varchar(25) COLLATE DATABASE_DEFAULT
+				)
+				EXEC sp_xml_preparedocument @idoc OUTPUT, @XML_Detail
+
 INSERT INTO [#Temp_Details]
 			SELECT *  FROM openxml(@idoc,'/NewDataSet/test',2)
 			with(	
@@ -173,18 +208,10 @@ INSERT INTO [#Temp_Details]
 					KouritenTel13	 varchar(5),	
 					KouritenTel21   varchar(6),	
 					KouritenTel22   varchar(5),	
-					KouritenTel23   varchar(5)
+					KouritenTel23   varchar(5),
+					Hidden_ShouhinCD varchar(25)
 				)
 				exec sp_xml_removedocument @idoc
-
-declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header)
-, @ShukkaSiziNO varchar(100)
-, @StaffCD varchar(20) = (select StaffCD from #Temp_Header)
-, @OperatorCD as varchar(10) =(select OperatorCD from #Temp_Header)
-, @Program varchar(100) = (select ProgramID from #Temp_Header)
-,@PC       varchar(30) = (select PC from #Temp_Header)
-, @currentDate as datetime = getdate()
-, @Unique as uniqueidentifier = NewID()
 
 
 EXEC [dbo].[Fnc_GetNumber]
@@ -343,7 +370,8 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 		,case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
 		,case when TD.KouritenRyakuName is null then DJ.KouritenRyakuName else TD.KouritenRyakuName end
 		,FS.BrandCD
-		,TD.ShouhinCD
+		--,TD.ShouhinCD
+		,TD.Hidden_ShouhinCD--Add
 		,TD.ShouhinName
 		,FS.JANCD
 		,TD.ColorRyakuName

@@ -75,7 +75,7 @@ BEGIN
 
 	   else	if @Errortype = 'E270'
 		begin
-		if exists(select * from M_Kouriten where KouritenCD=@KouritenCD and changeDate=@ChangeDate and TokuisakiCD=@TokuisakiCD and  UsedFlg=1)
+		if exists(select * from M_Kouriten where TokuisakiCD=@TokuisakiCD and KouritenCD=@KouritenCD and changeDate=@ChangeDate  and  UsedFlg=1)
 			begin
 				--exists
 				select * from M_Message
@@ -91,7 +91,7 @@ BEGIN
 			end
 		end
 
-     else if exists(select * from M_Kouriten where KouritenCD=@KouritenCD and changeDate=@ChangeDate and TokuisakiCD=@TokuisakiCD)
+      else if exists(select * from M_Kouriten where  TokuisakiCD=@TokuisakiCD and KouritenCD=@KouritenCD and changeDate=@ChangeDate)
 		begin
 			--exists
 			select m.*,s.*,ms.StaffName,mt.TokuisakiRyakuName from M_Message m,M_Kouriten s
