@@ -111,6 +111,13 @@
     <Content Include="StoreProcedure\Fnc_GetDenpyouNO.sql" />
     <Content Include="StoreProcedure\Fnc_GetNumber.sql" />
     <Content Include="StoreProcedure\Fnc_Hikiate.sql" />
+    <Content Include="StoreProcedure\Fnc_Hikiate_11021.sql" />
+    <Content Include="StoreProcedure\Fnc_Hikiate_12030.sql" />
+    <Content Include="StoreProcedure\Fnc_Hikiate_121021.sql" />
+    <Content Include="StoreProcedure\Fnc_Hikiate_122030.sql" />
+    <Content Include="StoreProcedure\Fnc_Hikiate_161021.sql" />
+    <Content Include="StoreProcedure\Fnc_Hikiate_162030.sql" />
+    <Content Include="StoreProcedure\Fnc_Hikiate_5.sql" />
     <Content Include="StoreProcedure\F_Authorizations.sql" />
     <Content Include="StoreProcedure\F_AuthorizationsDetails.sql" />
     <Content Include="StoreProcedure\F_Kouriten.sql" />
