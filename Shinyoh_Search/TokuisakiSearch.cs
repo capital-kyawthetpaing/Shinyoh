@@ -81,7 +81,7 @@ namespace Shinyoh_Search {
 
         private void gvTokuisaki_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if (e.RowIndex >= 0)
             {
                 GetGridviewData(gvTokuisaki.Rows[e.RowIndex]);
             }

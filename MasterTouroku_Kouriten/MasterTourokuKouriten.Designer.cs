@@ -1378,7 +1378,7 @@
             this.txtTokuisakiCD.Combo = null;
             this.txtTokuisakiCD.DecimalPlace = 0;
             this.txtTokuisakiCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtTokuisakiCD.DepandOnMode = false;
+            this.txtTokuisakiCD.DepandOnMode = true;
             this.txtTokuisakiCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiCD.IntegerPart = 0;
             this.txtTokuisakiCD.IsDatatableOccurs = null;
