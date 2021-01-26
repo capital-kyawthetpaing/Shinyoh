@@ -399,8 +399,12 @@ namespace Shinyoh
                 case Keys.F11:
                 case Keys.F12:
                     PreviousCtrl = this.ActiveControl;
-                    SButton btn = this.Controls.Find("Btn" + e.KeyCode.ToString(),true)[0] as SButton;
-                    btn.Focus();
+                    SButton btn = this.Controls.Find("Btn" + e.KeyCode.ToString(), true)[0] as SButton;
+                    if (e.KeyCode != Keys.F9)
+                    {
+                        PreviousCtrl = this.ActiveControl;
+                        btn.Focus();
+                    }
                     FireClickEvent(btn);
                     break;
                 case Keys.Enter:
