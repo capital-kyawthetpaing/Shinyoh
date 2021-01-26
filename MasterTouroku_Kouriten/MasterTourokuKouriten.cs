@@ -3,6 +3,7 @@ using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
 using Shinyoh_Controls;
+using Shinyoh_Search;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,13 +30,14 @@ namespace MasterTouroku_Kouriten
         string Address1 = string.Empty;
         string Address2 = string.Empty;
         BaseBL bbl = new BaseBL();
-
+        KouritenSearch KS;
         public MasterTourokuKouriten()
         {
             InitializeComponent();
             cf = new CommonFunction();
             base_bl = new BaseBL();
             err = new ErrorCheck();
+            KS = new KouritenSearch();
         }
 
 
@@ -887,6 +889,28 @@ namespace MasterTouroku_Kouriten
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
             create_dt.Columns.Add("Error");
+        }
+
+        private KouritenEntity From_DB_To_Kouriten(DataTable dt)
+        {
+            KouritenEntity obj = new KouritenEntity();
+            obj.TokuisakiCD = dt.Rows[0]["TokuisakiCD"].ToString();
+            return obj;
+        }
+
+        private void txtKouritenCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtTokuisakiCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
+                    if (!string.IsNullOrWhiteSpace(txtKouritenCD.Text))
+                    {
+                        KS.Access_Kouriten_obj = From_DB_To_Kouriten(dt);
+                    }
+                }
+            }
         }
     }
 }
