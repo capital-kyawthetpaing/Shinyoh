@@ -1,6 +1,6 @@
 ﻿namespace ShukkaTorikomi
 {
-    partial class ShukkaTorikomi
+    partial class SqlDbType
     {
         /// <summary>
         /// Required designer variable.
