@@ -87,6 +87,7 @@
             // 
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.Location = new System.Drawing.Point(30, 8);
+            this.cboMode.NextControlName = "txtID";
             // 
             // sLabel3
             // 

@@ -9,6 +9,7 @@ using Entity;
 using System.Data;
 using Shinyoh_Controls;
 using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace Shinyoh
 {
@@ -191,41 +192,6 @@ namespace Shinyoh
                             FunctionProcess(btn.Tag.ToString());
                         }
                         break;
-                    case ButtonType.BType.Export:
-                        switch(btn.Name)
-                        {
-                            case "BtnF7":
-                                if (bbl.ShowMessage("Q205") != DialogResult.Yes)
-                                {
-                                    if (PreviousCtrl != null)
-                                        PreviousCtrl.Focus();
-                                }
-                                else
-                                    FunctionProcess(btn.Tag.ToString());
-                                break;
-                            case "BtnF10":
-                                if (ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
-                                {
-                                    if (bbl.ShowMessage("Q203") != DialogResult.Yes)
-                                    {
-                                        if (PreviousCtrl != null)
-                                            PreviousCtrl.Focus();
-                                    }
-                                    else
-                                        FunctionProcess(btn.Tag.ToString());
-                                }
-                                break;
-                            case "BtnF11":
-                                if (bbl.ShowMessage("Q204") != DialogResult.Yes)
-                                {
-                                    if (PreviousCtrl != null)
-                                        PreviousCtrl.Focus();
-                                }
-                                else
-                                    FunctionProcess(btn.Tag.ToString());
-                                break;
-                        }
-                        break;
                     case ButtonType.BType.Import:
                         FunctionProcess(btn.Tag.ToString());
                         break;
@@ -241,7 +207,7 @@ namespace Shinyoh
                     case ButtonType.BType.Save:
                         if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
                         {
-                            if (ErrorCheck(PanelTitle) && ErrorCheck(this.Controls.Find("PanelDetail",true)[0] as Panel))
+                            if (ErrorCheck(PanelTitle) && ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
                             {
                                 if (bbl.ShowMessage("Q101") != DialogResult.Yes)
                                 {
@@ -279,6 +245,30 @@ namespace Shinyoh
                         }
                         else
                             FunctionProcess(btn.Tag.ToString());
+                        break;
+                    case ButtonType.BType.ExcelExport:
+                        if (ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
+                        {
+                            if (bbl.ShowMessage("Q205") != DialogResult.Yes)
+                            {
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
+                            }
+                            else
+                                FunctionProcess(btn.Tag.ToString());
+                        }
+                        break;
+                    case ButtonType.BType.CSVExport:
+                        if (ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
+                        {
+                            if (bbl.ShowMessage("Q203") != DialogResult.Yes)
+                            {
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
+                            }
+                            else
+                                FunctionProcess(btn.Tag.ToString());
+                        }
                         break;
                 }
             }
@@ -367,6 +357,12 @@ namespace Shinyoh
                 case ButtonType.BType.Process:
                     button.Text = buttonText;
                     break;
+                case ButtonType.BType.ExcelExport:
+                    button.Text = buttonText;
+                    break;
+                case ButtonType.BType.CSVExport:
+                    button.Text = buttonText;
+                    break;
             }
 
             button.Visible = visible;
@@ -402,7 +398,13 @@ namespace Shinyoh
                 case Keys.F10:
                 case Keys.F11:
                 case Keys.F12:
-                    SButton btn = this.Controls.Find("Btn" + e.KeyCode.ToString(),true)[0] as SButton;
+                    PreviousCtrl = this.ActiveControl;
+                    SButton btn = this.Controls.Find("Btn" + e.KeyCode.ToString(), true)[0] as SButton;
+                    if (e.KeyCode != Keys.F9)
+                    {
+                        PreviousCtrl = this.ActiveControl;
+                        btn.Focus();
+                    }
                     FireClickEvent(btn);
                     break;
                 case Keys.Enter:
@@ -452,6 +454,20 @@ namespace Shinyoh
         {
             PreviousCtrl = this.ActiveControl;
         }
+
+        protected void RadioPanel_GotFocus(object sender, EventArgs e)
+        {
+            Panel panel = sender as Panel;
+            foreach (Control ctrl in panel.Controls)
+            {
+                if (ctrl is RadioButton)
+                {
+                    RadioButton rdoBtn = ctrl as RadioButton;
+                    if (rdoBtn.Checked)
+                        rdoBtn.Focus();
+                }
+            }
+        } 
 
         public StaffEntity GetBaseData()
         {
@@ -532,10 +548,21 @@ namespace Shinyoh
                     if (sch.ErrorCheck())
                         return false;
                 }
+                if(ctrl is SGridView)
+                {
+                    SGridView sgv = ctrl as SGridView;
+                    KeyValuePair<int, Control> pair_dic = new KeyValuePair<int, Control>();
+                    STextBox txt_Date = new STextBox();
+                    if (sgv.Name.Contains("JuchuuNyuuryoku"))
+                    {
+                         pair_dic = dic.Where(key => key.Key == 3).SingleOrDefault();
+                         txt_Date = pair_dic.Value as STextBox;
+                    }
+                    if (sgv.ErrorCheck(txt_Date.Text))
+                        return false;
+                }
             }
             return true;
-        }
-
-       
+        }       
     }
 }

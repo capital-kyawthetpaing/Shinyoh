@@ -28,6 +28,7 @@ declare  @idoc AS INT
 
 CREATE TABLE  [dbo].[#Temp_Header]
 				(   
+				  --[ShukkaSiziNO] varchar(12) COLLATE DATABASE_DEFAULT,
 				  [StaffCD] varchar(10) COLLATE DATABASE_DEFAULT,
 				  [ShukkaYoteiDate] varchar(10) COLLATE DATABASE_DEFAULT,
 				  [DenpyouDate] varchar(10) COLLATE DATABASE_DEFAULT,
@@ -68,6 +69,7 @@ CREATE TABLE  [dbo].[#Temp_Header]
 INSERT INTO [#Temp_Header]
 		SELECT *  FROM openxml(@idoc,'/NewDataSet/test',2)
 		with(
+				--[ShukkaSiziNO] varchar(12) ,
 				[StaffCD] varchar(10) ,
 				[ShukkaYoteiDate] varchar(10) ,
 				[DenpyouDate] varchar(10) ,
@@ -139,6 +141,41 @@ CREATE TABLE  [dbo].[#Temp_Details]
 				)
 				EXEC sp_xml_preparedocument @idoc OUTPUT, @XML_Detail
 
+CREATE TABLE  [dbo].[#Temp_Details]
+				(	[ShouhinCD]			varchar(25) COLLATE DATABASE_DEFAULT,
+					[ShouhinName]		varchar(100) COLLATE DATABASE_DEFAULT,
+					[ColorRyakuName]	varchar(25) COLLATE DATABASE_DEFAULT,
+					[ColorNO]			varchar(13) COLLATE DATABASE_DEFAULT,
+					[SizeNO]			varchar(13)  COLLATE DATABASE_DEFAULT,
+					[JuchuuSuu]			varchar(30)  COLLATE DATABASE_DEFAULT,
+					[ShukkanouSuu]		varchar(30)  COLLATE DATABASE_DEFAULT,
+					[ShukkaSiziZumiSuu] varchar(30)  COLLATE DATABASE_DEFAULT,
+					[KonkaiShukkaSiziSuu]		varchar(30)  COLLATE DATABASE_DEFAULT,
+					[UriageTanka]		varchar(30)  COLLATE DATABASE_DEFAULT,
+					[UriageKingaku]		varchar(15)  COLLATE DATABASE_DEFAULT,
+					[Kanryo]			varchar(2)  COLLATE DATABASE_DEFAULT,
+					[SKMSNO]			varchar(25)  COLLATE DATABASE_DEFAULT,
+					[ShukkaSiziMeisaiTekiyou]varchar(80)  COLLATE DATABASE_DEFAULT,
+					[SoukoCD]			varchar(10)  COLLATE DATABASE_DEFAULT,
+					[SoukoName]			varchar(50)  COLLATE DATABASE_DEFAULT,
+					[TokuisakiCD]		varchar(10)  COLLATE DATABASE_DEFAULT,
+					[KouritenCD]		varchar(10)  COLLATE DATABASE_DEFAULT,
+					KouritenRyakuName    varchar(40) COLLATE DATABASE_DEFAULT,
+					KouritenName	  varchar(120) COLLATE DATABASE_DEFAULT,
+					KouritenYuubinNO1    varchar(3) COLLATE DATABASE_DEFAULT,
+					KouritenYuubinNO2    varchar(4) COLLATE DATABASE_DEFAULT,
+					KouritenJuusho1  varchar(50) COLLATE DATABASE_DEFAULT,
+					KouritenJuusho2	 varchar(50) COLLATE DATABASE_DEFAULT,
+					KouritenTel11    varchar(6) COLLATE DATABASE_DEFAULT,	
+					KouritenTel12	 varchar(5) COLLATE DATABASE_DEFAULT,	
+					KouritenTel13	 varchar(5) COLLATE DATABASE_DEFAULT,	
+					KouritenTel21   varchar(6) COLLATE DATABASE_DEFAULT,	
+					KouritenTel22   varchar(5) COLLATE DATABASE_DEFAULT,	
+					KouritenTel23   varchar(5) COLLATE DATABASE_DEFAULT,
+					Hidden_ShouhinCD varchar(25) COLLATE DATABASE_DEFAULT
+				)
+				EXEC sp_xml_preparedocument @idoc OUTPUT, @XML_Detail
+
 INSERT INTO [#Temp_Details]
 			SELECT *  FROM openxml(@idoc,'/NewDataSet/test',2)
 			with(	
@@ -171,18 +208,10 @@ INSERT INTO [#Temp_Details]
 					KouritenTel13	 varchar(5),	
 					KouritenTel21   varchar(6),	
 					KouritenTel22   varchar(5),	
-					KouritenTel23   varchar(5)
+					KouritenTel23   varchar(5),
+					Hidden_ShouhinCD varchar(25)
 				)
 				exec sp_xml_removedocument @idoc
-
-declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header)
-, @ShukkaSiziNO varchar(12)
-, @StaffCD varchar(20) = (select StaffCD from #Temp_Header)
-, @OperatorCD as varchar(10) =(select OperatorCD from #Temp_Header)
-, @Program varchar(100) = (select ProgramID from #Temp_Header)
-,@PC       varchar(30) = (select PC from #Temp_Header)
-, @currentDate as datetime = getdate()
-, @Unique as uniqueidentifier = NewID()
 
 
 EXEC [dbo].[Fnc_GetNumber]
@@ -193,9 +222,8 @@ EXEC [dbo].[Fnc_GetNumber]
 
 IF ISNULL(@ShukkaSiziNO,'') = ''
             BEGIN
-                print  '1' ;
+                return  '1' ;
             END
-
 --TabelA
 INSERT INTO [dbo].[D_ShukkaSizi]
 						(ShukkaSiziNO
@@ -342,7 +370,8 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 		,case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
 		,case when TD.KouritenRyakuName is null then DJ.KouritenRyakuName else TD.KouritenRyakuName end
 		,FS.BrandCD
-		,TD.ShouhinCD
+		--,TD.ShouhinCD
+		,TD.Hidden_ShouhinCD--Add
 		,TD.ShouhinName
 		,FS.JANCD
 		,TD.ColorRyakuName
@@ -481,7 +510,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	SELECT 
 	@Unique
 	,i.ShukkaSiziNO
-	,10
+	,10--新規
 	,i.StaffCD
 	,i.ShukkaYoteiDate
 	,i.DenpyouDate
@@ -530,6 +559,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	,@OperatorCD
 	,@currentDate
     FROM [dbo].[D_ShukkaSizi] AS i
+where i.ShukkaSiziNO=@ShukkaSiziNO
 
 --TableE
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
@@ -586,7 +616,7 @@ SELECT
 		,j.[ShukkaSiziNO]
 		,j.[ShukkaSiziGyouNO]
 		,j.[GyouHyouziJun]
-		,10
+		,10--新規
 		,j.[KouritenCD]
 		,j.[KouritenRyakuName]
 		,j.[BrandCD]
@@ -629,6 +659,7 @@ SELECT
 		,@OperatorCD
 		,@currentDate
 FROM [dbo].[D_ShukkaSiziMeisai] AS j
+where j.ShukkaSiziNO=@ShukkaSiziNO
 
 --TableF
 INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
@@ -660,7 +691,7 @@ SELECT
 [ShukkaSiziNO]
 			,[ShukkaSiziGyouNO]
 			,[ShukkaSiziShousaiNO]
-			,10 
+			,10 --新規
 			,[SoukoCD]
 			,[ShouhinCD]
 			,[ShouhinName]
@@ -680,40 +711,9 @@ SELECT
 FROM [dbo].[D_ShukkaSiziShousai]
 where ShukkaSiziNO=@ShukkaSiziNO
 
-DECLARE @Price_table TABLE (idx int Primary Key IDENTITY(1,1),
-						KonkaiShukkaSiziSuu varchar(50),
-						SKMSNO  varchar(12),ShouhinCD  varchar(50))
-			INSERT @Price_table  SELECT KonkaiShukkaSiziSuu,SKMSNO,ShouhinCD FROM #Temp_Details
-			
-declare @Count as int = 1
-			
-			WHILE @Count <= (SELECT COUNT(*) FROM #Temp_Details)
-			BEGIN
-			declare @KonkaiShukkaSiziSuu varchar(50)=(select KonkaiShukkaSiziSuu from @Price_table  WHERE idx =@Count)
-			  declare @Value2 as varchar(12)=(select SKMSNO from @Price_table WHERE idx =@Count),
-					@Value3 as varchar(50)=(select ShouhinCD  from @Price_table WHERE idx =@Count)
-			 
-			 DECLARE CUR_POINTER CURSOR FAST_FORWARD FOR
-				SELECT KonkaiShukkaSiziSuu
-				FROM   #Temp_Details    
- 
-			OPEN CUR_POINTER
-			FETCH NEXT FROM CUR_POINTER INTO @KonkaiShukkaSiziSuu
- 
-			WHILE @@FETCH_STATUS = 0
-			BEGIN		
+-- Konkai_Price --
 
-			   exec  [dbo].[Shukkasizi_Price]  @KonkaiShukkaSiziSuu,@Value2,@Value3
-
-			   FETCH NEXT FROM CUR_POINTER INTO @KonkaiShukkaSiziSuu
-			END
-			CLOSE CUR_POINTER
-			DEALLOCATE CUR_POINTER
-		SET @Count = @Count + 1
-			END;
-
-
---Table G
+--Table G  --追加または修正後
 UPDATE  A
 SET	ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
 	,UpdateOperator=@OperatorCD
@@ -733,7 +733,7 @@ and A.ShouhinCD=C.ShouhinCD
 
 --D_Juchuu
 UPDATE	A
-SET		[ShukkaSiziKanryouKBN] = B.ShukkaSiziKanryouKBN
+SET		A.[ShukkaSiziKanryouKBN] = B.ShukkaSiziKanryouKBN
 FROM D_Juchuu as A
 INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN 
 			from D_JuchuuMeisai C, #Temp_Details D
@@ -742,6 +742,7 @@ INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN
 ) as B
 ON A.JuchuuNO=B.JuchuuNO
 
+--スタッフマスタ
 UPDATE M_Staff 
 set UsedFlg = 1 
 where StaffCD=@StaffCD
@@ -751,19 +752,11 @@ and  ChangeDate = (select ChangeDate from F_Staff(@ShippingDate) where StaffCD =
 declare @OperatorMode varchar(50)='新規'
 exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperatorMode,@ShukkaSiziNO
 
---Table_Y
-DECLARE @JuchuuNo_table TABLE (idx int Primary Key IDENTITY(1,1), JuchuuNo varchar(20))
-			INSERT @JuchuuNo_table SELECT distinct LEFT((SKMSNO), CHARINDEX('-', (SKMSNO)) - 1) FROM #Temp_Details
-			
-			WHILE @Count <= (SELECT COUNT(*) FROM @JuchuuNo_table)
-			BEGIN
-			 DELETE A 
-			 From D_Exclusive A
-			 where A.DataKBN=1
-			 and A.Number=(select JuchuuNo from @JuchuuNo_table WHERE idx =@Count)
-		SET @Count = @Count + 1
-			END;
+--テーブル転送仕様Ｙ--削除
+exec [dbo].[D_Exclusive_Remove_NO] 1,@OperatorCD,@Program,@PC
+
 Drop Table #Temp_Header
 Drop Table #Temp_Details
 
 END
+

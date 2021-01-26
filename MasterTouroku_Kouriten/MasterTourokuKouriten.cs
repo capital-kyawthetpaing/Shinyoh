@@ -72,6 +72,8 @@ namespace MasterTouroku_Kouriten
             txtCopyCD.ChangeDate = txtCopyDate;
             txtTokuisakiCD.ChangeDate = txtSystemDate;
             txtTokuisakiCD_Copy.ChangeDate = txtSystemDate;
+
+            panel2.GotFocus += RadioPanel_GotFocus;
         }
 
         private void ChangeMode(Mode mode)
@@ -111,7 +113,7 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
-                    //txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -123,7 +125,7 @@ namespace MasterTouroku_Kouriten
 
                     txtChangeDate.E270Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate,txtTokuisakiCD);
 
-                   // txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -134,7 +136,7 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
 
-                   // txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
                     Disable_UDI_Mode();
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -180,10 +182,10 @@ namespace MasterTouroku_Kouriten
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
 
             txtTokuisakiCD.E102Check(true);
-            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+            //txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
             txtStaffCD.E102Check(true);
-            
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtChangeDate, null);
 
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
@@ -542,7 +544,7 @@ namespace MasterTouroku_Kouriten
             if (rdo_AliasKBN1.Checked == true)
             {
                 rdo_AliasKBN2.Checked = false;
-                txtKanaName.NextControlName = rdo_AliasKBN1.Name;
+                //txtKanaName.NextControlName = rdo_AliasKBN1.Name;
             }
                
         }
@@ -552,7 +554,7 @@ namespace MasterTouroku_Kouriten
             if (rdo_AliasKBN2.Checked == true)
             {
                 rdo_AliasKBN1.Checked = false;
-                txtKanaName.NextControlName = rdo_AliasKBN2.Name;
+                //txtKanaName.NextControlName = rdo_AliasKBN2.Name;
             }
         }
 
@@ -639,14 +641,14 @@ namespace MasterTouroku_Kouriten
                         //
                         obj.ChangeDate = splits[1];
                         if(Null_Check(obj.ChangeDate, i, "改定日未入力エラー"))break;
-                        if(Date_Check(obj.ChangeDate, i, "入力可能値外エラー"))break;
+                        if(Date_Check(obj.ChangeDate, i, "入力可能値外エラー", "改定日"))break;
 
                         //
                         obj.ShokutiFLG = splits[2];
                         if(Null_Check(obj.ShokutiFLG, i, "諸口未入力エラー"))break;
                         if (!(obj.ShokutiFLG == "0" || obj.ShokutiFLG == "1"))
                         {
-                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー");
+                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー", "項目:諸口区分(0～1)");
                             //bl_List.Add(true);
                             break;
                         }
@@ -674,13 +676,14 @@ namespace MasterTouroku_Kouriten
 
                         //
                         obj.AliasKBN = splits[8];
+                        if (Null_Check(obj.AliasKBN, i, "敬称未入力エラー")) break;
                         if (!(obj.AliasKBN == "1" || obj.AliasKBN == "2"))
                         {
-                            base_bl.ShowMessage("E117", "1", "2");
+                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー", "項目:敬称(1～2)");
+                            //base_bl.ShowMessage("E117", "1", "2");
                             // bl_List.Add(true);
                             break;
                         }
-                        if(Null_Check(obj.AliasKBN, i, "敬称未入力エラー"))break;
 
                         //
                         obj.YuubinNO1 = splits[9];
@@ -746,12 +749,12 @@ namespace MasterTouroku_Kouriten
                         //
                         obj.TorihikiKaisiDate = splits[24];
                         if(!string.IsNullOrEmpty(obj.TorihikiKaisiDate))
-                        if(Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー"))break;
+                        if(Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日"))break;
 
                         //
                         obj.TorihikiShuuryouDate = splits[25];
                         if(!string.IsNullOrEmpty(obj.TorihikiShuuryouDate))
-                        if(Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー"))break;
+                        if(Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日"))break;
 
                         //
                         obj.Remarks = splits[26];
@@ -838,14 +841,14 @@ namespace MasterTouroku_Kouriten
             }
             return bl;
         }
-        public bool Date_Check(string csv_Date, int line_no, string error_msg)
+        public bool Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
         {
             bool bl = false;
             if (!string.IsNullOrEmpty(csv_Date))
             {
                 if (!cf.CheckDateValue(csv_Date))
                 {
-                    bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg1,error_msg2);
                     bl = true;
                 }
             }

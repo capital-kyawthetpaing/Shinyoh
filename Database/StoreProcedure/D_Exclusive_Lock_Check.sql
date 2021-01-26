@@ -8,13 +8,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		Shwe Eain San
--- Create date: 2020-11-20
+-- Author:		Swe Swe
+-- Create date: < 2020-11-20>
 -- Description:	<Description,,>
 -- =============================================
 CREATE  PROCEDURE [dbo].[D_Exclusive_Lock_Check]
 	-- Add the parameters for the stored procedure here
-	@JuchuuNO varchar(20),
+	@DataKBN int,
+	@Number varchar(20),
 	@OperatorCD varchar(10),
 	@Program varchar(100),
 	@PC       varchar(30)
@@ -25,19 +26,19 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	if not exists( select * from D_Exclusive where DataKBN=1 and Number=@JuchuuNO)
+if not exists( select * from D_Exclusive where DataKBN=@DataKBN and Number=@Number)
 			begin
 				EXEC D_Exclusive_Insert
-				1,
-				@JuchuuNO,
+				@DataKBN,
+				@Number,
 				@OperatorCD,
 				@Program,
 				@PC;
 				select '1' as MessageID
 			end
-			else if not exists( select * from D_Exclusive where DataKBN=1 and Number=@JuchuuNO and Operator=@OperatorCD and Program=@Program)			
+	else if not exists( select * from D_Exclusive where DataKBN=@DataKBN and Number=@Number and Operator=@OperatorCD and Program=@Program)			
 			begin
-				select @JuchuuNO,* from M_Message where MessageID = 'S004'
+				select * from M_Message where MessageID = 'S004'
 			end
 			else
 			begin

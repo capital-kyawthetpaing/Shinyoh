@@ -237,6 +237,11 @@ namespace Shinyoh_Controls
                         rDt = cybl.ChakuniYoteiNyuuryoku_Select(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "HacchuuNyuuryoku":
+                        HacchuuNyuuryokuBL h_bl = new HacchuuNyuuryokuBL();
+                        rDt = h_bl.HacchuuNyuuryoku_Select_Check(string.Empty, sTextBox.ctrlE115_1.Text, "E115");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E115"))
                 {
@@ -402,7 +407,7 @@ namespace Shinyoh_Controls
                         break;
                     case "ShukkaNyuuryoku":
                         ShukkaNyuuryokuBL sbl = new ShukkaNyuuryokuBL();
-                        rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, string.Empty);
+                        rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, "E133");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                     case "HikiateHenkouShoukai":
@@ -421,6 +426,17 @@ namespace Shinyoh_Controls
                                 errType = "Copy";
                             IdouNyuuryokuBL ibl = new IdouNyuuryokuBL();
                             rDt = ibl.IdouNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, errType);
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                    case "HacchuuNyuuryoku":
+                        if (!string.IsNullOrEmpty(sTextBox.ctrlE133_1.Text))
+                        {
+                            string errType = string.Empty;
+                            if (sTextBox.ctrlE133_1.Name.Contains("Copy"))
+                                errType = "Copy";
+                            HacchuuNyuuryokuBL h_bl = new HacchuuNyuuryokuBL();
+                            rDt = h_bl.HacchuuNyuuryoku_Select_Check(sTextBox.ctrlE133_1.Text, string.Empty, errType);
                             result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;
@@ -534,6 +550,42 @@ namespace Shinyoh_Controls
                 if (result.Equals("E227"))
                 {
                     bbl.ShowMessage("E227", "取引終了日");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            if (sTextBox.E265)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E265Type)
+                {
+                    case "HacchuuNyuuryoku":
+                        HacchuuNyuuryokuBL H_bl = new HacchuuNyuuryokuBL();
+                        rDt = H_bl.HacchuuNyuuryoku_Select_Check(sTextBox.ctrlE266_1.Text, string.Empty, "E265");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E265"))
+                {
+                    bbl.ShowMessage("E265");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            if (sTextBox.E266)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E266Type)
+                {
+                    case "HacchuuNyuuryoku":
+                        HacchuuNyuuryokuBL H_bl = new HacchuuNyuuryokuBL();
+                        rDt = H_bl.HacchuuNyuuryoku_Select_Check(sTextBox.ctrlE266_1.Text, string.Empty, "E266");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+                if (result.Equals("E266"))
+                {
+                    bbl.ShowMessage("E266");
                     sTextBox.Focus();
                     return (true, rDt);
                 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,11 +32,11 @@ namespace Shinyoh_Search
             dgDetail.UseRowNo(true);
             //dgDetail.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //dgDetail.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            BindDataGrid();
             if (string.IsNullOrWhiteSpace(parent_changeDate))
                 txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", DateTime.Now);
             else
                 txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", parent_changeDate);
+            BindDataGrid();
 
             txtHinbanCD1.E106Check(true, txtHinbanCD, txtHinbanCD1);
             txtJANCD1.E106Check(true, txtJANCD, txtJANCD1);
@@ -45,6 +46,19 @@ namespace Shinyoh_Search
             dgDetail.SetGridDesign();
             dgDetail.SetReadOnlyColumn("**");//readonly for search form 
             dgDetail.Select();
+            dgDetail.Columns[1].Width = 150;
+            dgDetail.Columns[2].Width = 320;
+            dgDetail.Columns[3].Width = 100;
+            dgDetail.Columns[4].Width = 100;
+            dgDetail.Columns[5].Width = 80;
+            dgDetail.Columns[6].Width = 270;
+            dgDetail.Columns[7].Width = 100;
+            dgDetail.Columns[8].Width = 270;
+            dgDetail.Columns[9].Width = 100;
+            dgDetail.Columns[10].Width = 270;
+            dgDetail.Columns[11].Width = 50;
+            dgDetail.Columns[12].Width = 150;
+            dgDetail.Columns[13].Width = 100;
         }
 
         private void dgDetail_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

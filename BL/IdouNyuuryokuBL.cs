@@ -55,7 +55,7 @@ namespace BL
         public DataTable IdouNyuuryoku_Display(IdouNyuuryokuEntity obj)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[12];
+            var parameters = new SqlParameter[11];
             parameters[0] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = obj.BrandCD };
             parameters[1] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = obj.ShouhinCD };
             parameters[2] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = obj.ShouhinName };
@@ -65,9 +65,8 @@ namespace BL
             parameters[6] = new SqlParameter("@SeasonFW", SqlDbType.VarChar) { Value = obj.SeasonFW };
             parameters[7] = new SqlParameter("@ColorNo", SqlDbType.VarChar) { Value = obj.ColorNO };
             parameters[8] = new SqlParameter("@SizeNo", SqlDbType.VarChar) { Value = obj.SizeNO };
-            parameters[9] = new SqlParameter("@SiiresakiCD", SqlDbType.VarChar) { Value = obj.SiiresakiCD };
-            parameters[10] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate };
-            parameters[11] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = obj.SoukoCD };            
+            parameters[9] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate };
+            parameters[10] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = obj.SoukoCD };            
             DataTable dt = ckmdl.SelectDatatable("IdouNyuuryoku_Display", GetConnectionString(), parameters);
             return dt;
         }

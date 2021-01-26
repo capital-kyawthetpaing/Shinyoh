@@ -80,7 +80,7 @@ namespace Shinyoh_Search
                         colName = "SoukoName";
                         break;
                     case Entity.SearchType.ScType.Siiresaki:
-                        colName = "SiiresakiName";
+                        colName = "SiiresakiRyakuName";
                         break;
                 }
                 DataTable dt = this.IsDatatableOccurs;
@@ -226,6 +226,11 @@ namespace Shinyoh_Search
                         IdouNyuuryokuSearch idou_search = new IdouNyuuryokuSearch();
                         idou_search.ShowDialog();
                         CD = idou_search.IdouNo;
+                        break;
+                    case Entity.SearchType.ScType.HacchuuNyuuryoku:
+                        HacchuuNyuuryokuSearch hacc_search = new HacchuuNyuuryokuSearch();
+                        hacc_search.ShowDialog();
+                        CD = hacc_search.HacchuuNo;
                         break;
                 }
 

@@ -45,7 +45,7 @@ namespace HacchuuSho
             SetButton(ButtonType.BType.Save, F12, "", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.Import, F10, "出力(F10)", true);
+            SetButton(ButtonType.BType.ExcelExport, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             UI_ErrorCheck();
@@ -87,10 +87,10 @@ namespace HacchuuSho
             }
             if (tagID == "10")
             {
-                if (ErrorCheck(PanelDetail))
-                {
-                    Excel_Export();
-                }
+                Excel_Export();
+                //if (ErrorCheck(PanelDetail))
+                //{
+                //}
 
             }
         }
@@ -115,14 +115,14 @@ namespace HacchuuSho
             if (dt.Rows.Count > 0)
             {
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Output Excel Files";
+                saveFileDialog1.InitialDirectory = @"C:\Excel";
                 saveFileDialog1.DefaultExt = "xls";
                 saveFileDialog1.Filter = "ExcelFile|*.xls";
                 saveFileDialog1.FileName = FileName+ ".xls";
                 saveFileDialog1.RestoreDirectory = true;
 
-                if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
-                    System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
+                if (!System.IO.Directory.Exists("C:\\Excel"))
+                    System.IO.Directory.CreateDirectory("C:\\Excel");
 
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
@@ -146,12 +146,17 @@ namespace HacchuuSho
                     
                     ExportCSVExcel excel = new ExportCSVExcel();
                     excel.ExportDataTableToExcel(dt, obj);
+                    bbl.ShowMessage("I203");
 
                     //New_Mode
                     cf.Clear(PanelDetail);
                     Rdo1.Checked = true;
                     txtJuchuuNO1.Focus();
                 }
+            }
+            else
+            {
+                bbl.ShowMessage("S013");
             }
         }
     }

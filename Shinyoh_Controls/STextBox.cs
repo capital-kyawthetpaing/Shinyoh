@@ -117,6 +117,10 @@ namespace Shinyoh_Controls
         public string E135Type;
         public bool E227;
         public string E227Type;
+        public bool E265;
+        public string E265Type;
+        public bool E266;
+        public string E266Type;
         public bool E267;
         public string E267Type;
         public bool E268;
@@ -159,6 +163,8 @@ namespace Shinyoh_Controls
         public Control ctrlE166_2;
         public Control ctrlE227_1;
         public Control ctrlE227_2;
+        public Control ctrlE265_1;
+        public Control ctrlE266_1;
         public Control ctrlE267_1;
         public Control ctrlE267_2;
         public Control ctrlE270_1;
@@ -250,46 +256,7 @@ namespace Shinyoh_Controls
 
         protected override void OnGotFocus(EventArgs e)
         {
-            if (SearchType == ScType.None)
-            {
-                if (this.TopLevelControl != null)
-                {
-                    Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
-                    if (ctrlArr.Length > 0)
-                    {
-                        Control btnF9 = ctrlArr[0];
-                        if (btnF9 != null)
-                            btnF9.Visible = false;
-                    }
-                }
-            }
-            else
-            {
-                if (this.TopLevelControl != null)
-                {
-                    Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
-                    Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
-                    if (DepandOnMode == false || (DepandOnMode == true && cbo.Text != "新規"))
-                    {
-                        
-                        if (ctrlArr.Length > 0)
-                        {
-                            Control btnF9 = ctrlArr[0];
-                            if (btnF9 != null)
-                                btnF9.Visible = true;
-                        }
-                    }
-                    else
-                    {
-                        if (ctrlArr.Length > 0)
-                        {
-                            Control btnF9 = ctrlArr[0];
-                            if (btnF9 != null)
-                                btnF9.Visible = false;
-                        }
-                    }
-                }
-            }
+
             base.OnGotFocus(e);
         }
 
@@ -320,6 +287,48 @@ namespace Shinyoh_Controls
                     }
                 }
             }
+
+
+            if (SearchType == ScType.None)
+            {
+                if (this.TopLevelControl != null)
+                {
+                    Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                    if (ctrlArr.Length > 0)
+                    {
+                        Control btnF9 = ctrlArr[0];
+                        if (btnF9 != null)
+                            btnF9.Visible = false;
+                    }
+                }
+            }
+            else
+            {
+                if (this.TopLevelControl != null)
+                {
+                    Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+                    Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                    if (DepandOnMode == false || (DepandOnMode == true && cbo.Text != "新規"))
+                    {
+
+                        if (ctrlArr.Length > 0)
+                        {
+                            Control btnF9 = ctrlArr[0];
+                            if (btnF9 != null)
+                                btnF9.Visible = true;
+                        }
+                    }
+                    else
+                    {
+                        if (ctrlArr.Length > 0)
+                        {
+                            Control btnF9 = ctrlArr[0];
+                            if (btnF9 != null)
+                                btnF9.Visible = false;
+                        }
+                    }
+                }
+            }
             base.OnEnter(e);
         }
         protected override void OnLeave(EventArgs e)
@@ -334,7 +343,18 @@ namespace Shinyoh_Controls
                 if (Int64.TryParse(value, out num))
                 {
                     if (!Text.Equals("0"))
-                        Text = string.Format("{0:#,#}", num);
+                    {
+                        if (a != 0)
+                        {
+                            Text = string.Format("{0:#,#.0}", num); ;
+                            while (Text.Split('.')[1].Length < a)
+                            {
+                                Text = Text + "0";
+                            }
+                        }
+                        else
+                            Text = string.Format("{0:#,#}", num);
+                    }
                 }
                 else if (string.IsNullOrWhiteSpace(value))
                 {
@@ -356,8 +376,32 @@ namespace Shinyoh_Controls
                     string[] p = Text.Split('.');
                     if (a != p[1].Length)
                     {
-                        bbl.ShowMessage("E118");
-                        this.Focus();
+                        if (Int64.TryParse(p[0].ToString(), out num))
+                        {
+                            if (p[1].Length < a)
+                            {
+                                if(!p[0].ToString().Equals("0"))
+                                    Text = string.Format("{0:#,#}", num) + "." + p[1].ToString();
+                                else
+                                    Text = num + "." + p[1].ToString();
+                                while (Text.Split('.')[1].Length < a)
+                                {
+                                    Text = Text + "0";
+                                }
+                            }
+                            else
+                            {
+                                if (!p[0].ToString().Equals("0"))
+                                    Text = string.Format("{0:#,#}", num) + "." + p[1].Substring(0, a);
+                                else
+                                    Text = num + "." + p[1].Substring(0, a);
+                            }
+                        }
+                        else
+                        {
+                            bbl.ShowMessage("E118");
+                            this.Focus();
+                        }
                     }
                     else
                     {
@@ -501,6 +545,18 @@ namespace Shinyoh_Controls
             E227Type = type;
             ctrlE227_1 = ctrl1;
             ctrlE227_2 = ctrl2;
+        }
+        public void E265Check(bool value, string type, Control ctrl1)
+        {
+            E265 = value;
+            E265Type = type;
+            ctrlE265_1 = ctrl1;
+        }
+        public void E266Check(bool value, string type, Control ctrl1)
+        {
+            E266 = value;
+            E266Type = type;
+            ctrlE266_1 = ctrl1;
         }
         public void E267Check(bool value, string type, Control ctrl1,Control ctrl2)
         {

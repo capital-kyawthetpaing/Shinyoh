@@ -30,7 +30,6 @@ namespace Entity
         public string SeasonSS { get; set; }
         public string SeasonFW { get; set; }
         public string ChangeDate { get; set; }
-        public string SiiresakiCD { get; set; }
         public string kubun { get; set; }
         public string SoukoCD { get; set; }
     }

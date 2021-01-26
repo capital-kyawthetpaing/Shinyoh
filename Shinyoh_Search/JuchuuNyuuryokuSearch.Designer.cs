@@ -254,9 +254,11 @@
             this.btnShow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnShow.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnShow.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.btnShow.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.btnShow.Location = new System.Drawing.Point(998, 83);
             this.btnShow.Name = "btnShow";
+            this.btnShow.NextControl = null;
+            this.btnShow.NextControlName = null;
             this.btnShow.Size = new System.Drawing.Size(150, 25);
             this.btnShow.TabIndex = 12;
             this.btnShow.Text = "表示(F11)";
@@ -474,7 +476,7 @@
             this.txtShouhinName.NextControl = null;
             this.txtShouhinName.NextControlName = "txtNo11";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
-            this.txtShouhinName.Size = new System.Drawing.Size(600, 19);
+            this.txtShouhinName.Size = new System.Drawing.Size(500, 19);
             this.txtShouhinName.TabIndex = 5;
             this.txtShouhinName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 

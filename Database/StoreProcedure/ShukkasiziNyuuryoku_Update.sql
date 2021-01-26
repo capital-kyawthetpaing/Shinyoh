@@ -137,7 +137,8 @@ CREATE TABLE  [dbo].[#Temp_Details]
 					KouritenTel13	 varchar(5) COLLATE DATABASE_DEFAULT,	
 					KouritenTel21   varchar(6) COLLATE DATABASE_DEFAULT,	
 					KouritenTel22   varchar(5) COLLATE DATABASE_DEFAULT,	
-					KouritenTel23   varchar(5) COLLATE DATABASE_DEFAULT
+					KouritenTel23   varchar(5) COLLATE DATABASE_DEFAULT,
+					Hidden_ShouhinCD varchar(25) COLLATE DATABASE_DEFAULT
 				)
 				EXEC sp_xml_preparedocument @idoc OUTPUT, @XML_Detail
 
@@ -173,17 +174,17 @@ INSERT INTO [#Temp_Details]
 					KouritenTel13	 varchar(5),	
 					KouritenTel21   varchar(6),	
 					KouritenTel22   varchar(5),	
-					KouritenTel23   varchar(5)
+					KouritenTel23   varchar(5),
+					Hidden_ShouhinCD varchar(25)
 				)
 				exec sp_xml_removedocument @idoc
 
 declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header)
-, @ShukkaSiziNO varchar(12)=(select ShukkaSiziNO from #Temp_Header )
+, @ShukkaSiziNO varchar(100)=(select ShukkaSiziNO from #Temp_Header )
 , @StaffCD varchar(20) = (select StaffCD from #Temp_Header)
 , @OperatorCD as varchar(10) =(select OperatorCD from #Temp_Header)
 , @Program varchar(100) = (select ProgramID from #Temp_Header)
 ,@PC       varchar(30) = (select PC from #Temp_Header)
-,@KeyItem  varchar(100)= (select ShukkaSiziNO from #Temp_Header)
 , @currentDate as datetime = getdate()
 , @Unique_21 as uniqueidentifier = NewID()
 ,@Unique_20 as uniqueidentifier = NewID()
@@ -237,9 +238,10 @@ SET [StaffCD]=TM.StaffCD
 FROM [#Temp_Header] TM
 	left outer join F_Tokuisaki(@ShippingDate) FT on FT.TokuisakiCD=TM.TokuisakiCD
 	left outer join F_Kouriten(@ShippingDate) FK on FK.KouritenCD=TM.KouritenCD
+where D_Shukkasizi.ShukkaSiziNO=TM.ShukkaSiziNO
 
 --TableB
-UPDATE [dbo].[D_ShukkaSiziMeisai]
+UPDATE [dbo].[D_ShukkaSiziMeisai] 
 SET [GyouHyouziJun]=@row, @row = @row + 1
 	,[KouritenCD]=case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
 	,[KouritenRyakuName]=case when TD.KouritenRyakuName is null then DJ.KouritenRyakuName else TD.KouritenRyakuName end
@@ -263,8 +265,8 @@ SET [GyouHyouziJun]=@row, @row = @row + 1
 	,[SoukoCD]=TD.SoukoCD
 	,[ShukkaKanryouKBN]=0
 	,[ShukkaZumiSuu]=0
-	,[JuchuuNO]=(select val from dbo.split(TD.SKMSNO,'-') where id=1)
-	,[JuchuuGyouNO]=(select val from dbo.split(TD.SKMSNO,'-') where id=2)
+	,[JuchuuNO]=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
+	,[JuchuuGyouNO]=RIGHT(TD.SKMSNO, LEN(TD.SKMSNO) - CHARINDEX('-', TD.SKMSNO))
 	,[KouritenName]=case when TD.KouritenName is null then DJ.KouritenName else TD.KouritenName end
 	,[KouritenYuubinNO1]=case when TD.KouritenYuubinNO1  is null then DJ.KouritenYuubinNO1 else TD.KouritenYuubinNO1 end
 	,[KouritenYuubinNO2]=case when TD.KouritenYuubinNO2 is null then DJ.KouritenYuubinNO2 else TD.KouritenYuubinNO2 end
@@ -281,21 +283,35 @@ SET [GyouHyouziJun]=@row, @row = @row + 1
 	,[KouritenTantoushaName]=NULL
 	,[UpdateOperator]=@OperatorCD
 	,[UpdateDateTime]=@currentDate
-
 FROM #Temp_Details TD
 	LEFT OUTER JOIN D_Juchuu DJ
-	ON DJ.JuchuuNO=TD.SKMSNO
+	ON DJ.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
 	LEFT OUTER JOIN [dbo].[F_Shouhin](@ShippingDate) FS
-	ON FS.ShouhinCD=TD.ShouhinCD
+	ON FS.ShouhinCD=TD.Hidden_ShouhinCD
+where D_ShukkaSiziMeisai.ShukkaSiziNO=@ShukkaSiziNO
+and D_ShukkaSiziMeisai.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
+and D_ShukkaSiziMeisai.JuchuuGyouNO=RIGHT(TD.SKMSNO, LEN(TD.SKMSNO) - CHARINDEX('-', TD.SKMSNO))
 
 --TableC
 UPDATE [dbo].[D_ShukkaSiziShousai]
-SET [SoukoCD] = TD.SoukoCD
-	,[ShouhinCD] =TD.ShouhinCD
-	,[ShouhinName] =TD.ShouhinName
+SET [SoukoCD] = D.SoukoCD
+	,[ShouhinCD] =D.ShouhinCD
+	,[ShouhinName] =D.ShouhinName
+	,ShukkaSiziSuu=dj.ShukkaSiziZumiSuu
+	,KanriNO=dj.KanriNO
+	,NyuukoDate=dj.NyuukoDate
+	,ShukkaZumiSuu=0
+	,JuchuuNO=dj.JuchuuNO
+	,JuchuuGyouNO=dj.JuchuuGyouNO
+	,JuchuuShousaiNO=dj.JuchuuShousaiNO
 	,[UpdateOperator]=@OperatorCD
 	,[UpdateDateTime]=@currentDate
-FROM #Temp_Details TD
+from  D_JuchuuShousai dj,#Temp_Details D
+		where dj.JuchuuNO = LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1)
+		and dj.JuchuuGyouNO=RIGHT(D.SKMSNO, LEN(D.SKMSNO) - CHARINDEX('-', D.SKMSNO))
+		and dj.ShouhinCD=D.ShouhinCD
+		and HikiateZumiSuu <> 0
+--order by dj.KanriNO asc,dj.NyuukoDate asc
 
 --TableD
 INSERT INTO [dbo].[D_ShukkaSiziHistory]
@@ -354,7 +370,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	SELECT 
 	@Unique_20
 	,i.ShukkaSiziNO
-	,20--修正前
+	,20-- Before correction
 	,i.StaffCD
 	,i.ShukkaYoteiDate
 	,i.DenpyouDate
@@ -403,6 +419,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	,@OperatorCD
 	,@currentDate
     FROM [dbo].[D_ShukkaSizi] AS i
+	where i.ShukkaSiziNO=@ShukkaSiziNO
 
 INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	(
@@ -460,7 +477,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	SELECT 
 	@Unique_21
 	,i.ShukkaSiziNO
-	,21--修正後
+	,21--After modification
 	,i.StaffCD
 	,i.ShukkaYoteiDate
 	,i.DenpyouDate
@@ -509,8 +526,10 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	,@OperatorCD
 	,@currentDate
     FROM [dbo].[D_ShukkaSizi] AS i
+WHERE i.ShukkaSiziNO=@ShukkaSiziNO
 
---TableE--削除または修正前
+
+--TableE
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
 (
 		[HistoryGuid]
@@ -565,7 +584,7 @@ SELECT
 		,j.[ShukkaSiziNO]
 		,j.[ShukkaSiziGyouNO]
 		,j.[GyouHyouziJun]
-		,20--修正前
+		,20--Before correction
 		,j.[KouritenCD]
 		,j.[KouritenRyakuName]
 		,j.[BrandCD]
@@ -608,8 +627,8 @@ SELECT
 		,@OperatorCD
 		,@currentDate
 FROM [dbo].[D_ShukkaSiziMeisai] AS j
+WHERE j.ShukkaSiziNO=@ShukkaSiziNO
 
---新規または修正後
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
 (
 		[HistoryGuid]
@@ -664,7 +683,7 @@ SELECT
 		,j.[ShukkaSiziNO]
 		,j.[ShukkaSiziGyouNO]
 		,j.[GyouHyouziJun]
-		,21--修正後
+		,21--After modification
 		,j.[KouritenCD]
 		,j.[KouritenRyakuName]
 		,j.[BrandCD]
@@ -707,11 +726,11 @@ SELECT
 		,@OperatorCD
 		,@currentDate
 FROM [dbo].[D_ShukkaSiziMeisai] AS j
+where j.ShukkaSiziNO=@ShukkaSiziNO
 
 --TableF
 INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
-(
-	[HistoryGuid]
+(	[HistoryGuid]
 	,[ShukkaSiziNO]
 	,[ShukkaSiziGyouNO]
 	,[ShukkaSiziShousaiNO]
@@ -738,7 +757,7 @@ INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
 			[ShukkaSiziNO]
 			,[ShukkaSiziGyouNO]
 			,[ShukkaSiziShousaiNO]
-			,20 --修正前
+			,20 --Before correction
 			,[SoukoCD]
 			,[ShouhinCD]
 			,[ShouhinName]
@@ -756,9 +775,10 @@ INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
 			,@OperatorCD
 			,@currentDate
 FROM [dbo].[D_ShukkaSiziShousai]
+WHERE ShukkaSiziNO=@ShukkaSiziNO
+
 INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
-(
-	[HistoryGuid]
+(	[HistoryGuid]
 	,[ShukkaSiziNO]
 	,[ShukkaSiziGyouNO]
 	,[ShukkaSiziShousaiNO]
@@ -780,33 +800,35 @@ INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
 	,[HistoryOperator]
 	,[HistoryDateTime]
 )
+
 SELECT 
-@Unique_21,
-[ShukkaSiziNO]
-			,[ShukkaSiziGyouNO]
-			,[ShukkaSiziShousaiNO]
-			,21 --修正後
-			,[SoukoCD]
-			,[ShouhinCD]
-			,[ShouhinName]
-			,[ShukkaSiziSuu]
-			,[KanriNO]
-			,[NyuukoDate]
-			,[ShukkaZumiSuu]
-			,[JuchuuNO]
-			,[JuchuuGyouNO]
-			,[JuchuuShousaiNO]
-			,[InsertOperator]
-			,[InsertDateTime]
-			,[UpdateOperator]
-			,[UpdateDateTime]
-			,@OperatorCD
-			,@currentDate
-FROM [dbo].[D_ShukkaSiziShousai]
+	@Unique_21,
+	[ShukkaSiziNO]
+	,[ShukkaSiziGyouNO]
+	,[ShukkaSiziShousaiNO]
+	,21 --After modification
+	,[SoukoCD]
+	,[ShouhinCD]
+	,[ShouhinName]
+	,[ShukkaSiziSuu]
+	,[KanriNO]
+	,[NyuukoDate]
+	,[ShukkaZumiSuu]
+	,[JuchuuNO]
+	,[JuchuuGyouNO]
+	,[JuchuuShousaiNO]
+	,[InsertOperator]
+	,[InsertDateTime]
+	,[UpdateOperator]
+	,[UpdateDateTime]
+	,@OperatorCD
+	,@currentDate
+	FROM [dbo].[D_ShukkaSiziShousai]
+WHERE ShukkaSiziNO=@ShukkaSiziNO
 
---※シート「消込順」参照
+--Konkai_Price--
 
---Table G --修正前または削除
+--Table G--02
 UPDATE  A
 SET	ShukkaSiziZumiSuu= case when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu>0 then  A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu
 									when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu<=0 then 0 end
@@ -817,7 +839,7 @@ inner join #Temp_Details B
 on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
 and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
 
---Table G --追加または修正後
+--Table G --01
 UPDATE  A
 SET	ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
 	,UpdateOperator=@OperatorCD
@@ -848,17 +870,18 @@ INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN
 ) as B
 ON A.JuchuuNO=B.JuchuuNO
 
---スタッフマスタ
+--UsedFLG 
 update M_Staff 
 set UsedFlg = 1 
 where StaffCD = @StaffCD
 and ChangeDate = (select ChangeDate from F_Staff(@ShippingDate) where StaffCD = @StaffCD)
 
 --L_Log	
-exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,'Update',@KeyItem
+declare @OperateMode varchar(50)='修正'
+exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperateMode,@ShukkaSiziNO
 
 
---テーブル転送仕様Ｘ
+--TableX_12ShukkaSiziNO_Delete
 EXEC [dbo].[D_Exclusive_Delete]
 		12,
 		@ShukkaSiziNO;

@@ -190,9 +190,11 @@
             this.BtnF11_Soko.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.BtnF11_Soko.ButtonType = Entity.ButtonType.BType.Search;
             this.BtnF11_Soko.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnF11_Soko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.BtnF11_Soko.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.BtnF11_Soko.Location = new System.Drawing.Point(712, 71);
             this.BtnF11_Soko.Name = "BtnF11_Soko";
+            this.BtnF11_Soko.NextControl = null;
+            this.BtnF11_Soko.NextControlName = null;
             this.BtnF11_Soko.Size = new System.Drawing.Size(150, 25);
             this.BtnF11_Soko.TabIndex = 4;
             this.BtnF11_Soko.Tag = "2";

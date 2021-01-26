@@ -177,7 +177,7 @@ INSERT INTO [#Temp_Details]
 				exec sp_xml_removedocument @idoc
 
 declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header)
-, @ShukkaSiziNO varchar(12)=(select ShukkaSiziNO from #Temp_Header )
+, @ShukkaSiziNO varchar(100)=(select ShukkaSiziNO from #Temp_Header )
 , @OperatorCD as varchar(10) =(select OperatorCD from #Temp_Header)
 , @Program varchar(100) = (select ProgramID from #Temp_Header)
 ,@PC    varchar(30) = (select PC from #Temp_Header)
@@ -185,20 +185,7 @@ declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header
 , @currentDate as datetime = getdate()
 , @Unique as uniqueidentifier = NewID()
 
---TableA
-DELETE A
-FROM D_ShukkaSizi A
-WHERE A.ShukkaSiziNO=@ShukkaSiziNO
 
---TableB
-DELETE A
-FROM D_ShukkaSiziMeisai A
-WHERE A.ShukkaSiziNO=@ShukkaSiziNO
-
---TableC
-DELETE A
-FROM D_ShukkaSiziShousai A
-WHERE A.ShukkaSiziNO=@ShukkaSiziNO
 
 --TableD
 INSERT INTO [dbo].[D_ShukkaSiziHistory]
@@ -257,7 +244,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	SELECT 
 	@Unique
 	,i.ShukkaSiziNO
-	,30--削除
+	,30--蜑企勁
 	,i.StaffCD
 	,i.ShukkaYoteiDate
 	,i.DenpyouDate
@@ -306,6 +293,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	,@OperatorCD
 	,@currentDate
     FROM [dbo].[D_ShukkaSizi] AS i
+where i.ShukkaSiziNO=@ShukkaSiziNO
 
 --TableE
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
@@ -362,7 +350,7 @@ SELECT
 		,j.[ShukkaSiziNO]
 		,j.[ShukkaSiziGyouNO]
 		,j.[GyouHyouziJun]
-		,30--削除
+		,30
 		,j.[KouritenCD]
 		,j.[KouritenRyakuName]
 		,j.[BrandCD]
@@ -373,14 +361,14 @@ SELECT
 		,j.[ColorNO]
 		,j.[SizeNO]
 		,j.[Kakeritu]
-		,j.[ShukkaSiziSuu]
+		,j.[ShukkaSiziSuu]*(-1)
 		,j.[TaniCD]
-		,j.[UriageTanka]
-		,j.[UriageTankaShouhizei]
-		,j.[UriageHontaiTanka]
-		,j.[UriageKingaku]
-		,j.[UriageHontaiKingaku]
-		,j.[UriageShouhizeiGaku]
+		,j.[UriageTanka]*(-1)
+		,j.[UriageTankaShouhizei]*(-1)
+		,j.[UriageHontaiTanka]*(-1)
+		,j.[UriageKingaku]*(-1)
+		,j.[UriageHontaiKingaku]*(-1)
+		,j.[UriageShouhizeiGaku]*(-1)
 		,j.[ShukkaSiziMeisaiTekiyou]
 		,j.[SoukoCD]
 		,j.[ShukkaKanryouKBN]
@@ -405,6 +393,7 @@ SELECT
 		,@OperatorCD
 		,@currentDate
 FROM [dbo].[D_ShukkaSiziMeisai] AS j
+where j.ShukkaSiziNO=@ShukkaSiziNO
 
 --TableF
 INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
@@ -436,7 +425,7 @@ SELECT
 [ShukkaSiziNO]
 			,[ShukkaSiziGyouNO]
 			,[ShukkaSiziShousaiNO]
-			,30 --削除
+			,30
 			,[SoukoCD]
 			,[ShouhinCD]
 			,[ShouhinName]
@@ -454,10 +443,27 @@ SELECT
 			,@OperatorCD
 			,@currentDate
 FROM [dbo].[D_ShukkaSiziShousai]
+where ShukkaSiziNO=@ShukkaSiziNO
 
---※シート「消込順」参照
+--TableA
+DELETE A
+FROM D_ShukkaSizi A
+WHERE A.ShukkaSiziNO=@ShukkaSiziNO
 
---Table G --修正前または削除
+--TableB
+DELETE A
+FROM D_ShukkaSiziMeisai A
+WHERE A.ShukkaSiziNO=@ShukkaSiziNO
+
+--TableC
+DELETE A
+FROM D_ShukkaSiziShousai A
+WHERE A.ShukkaSiziNO=@ShukkaSiziNO
+
+-- Konkai_Price --
+
+
+--Table G --02
 UPDATE  A
 SET	ShukkaSiziZumiSuu= case when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu>0 then  A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu
 									when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu<=0 then 0 end
@@ -490,9 +496,10 @@ INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN
 ON A.JuchuuNO=B.JuchuuNO
 
 --L_Log	
-exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,'Delete',@KeyItem
+declare @OperateMode varchar(50)='削除'
+exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperateMode,@KeyItem
 
---テーブル転送仕様Ｘ
+--TableX_12ShukkaSiziNO_Delete
 EXEC [dbo].[D_Exclusive_Delete]
 		12,
 		@ShukkaSiziNO;
@@ -501,3 +508,4 @@ Drop Table #Temp_Header
 Drop Table #Temp_Details
 
 END
+

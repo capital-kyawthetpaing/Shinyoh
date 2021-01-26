@@ -602,7 +602,7 @@ namespace MasterTouroku_Shouhin
                         if (ImageFile_Check(data[30].ToString(), i, "指定したパスに画像ファイルが存在しないエラー"))
                             error = "true";
                         else
-                            dr[30] = System.IO.File.ReadAllBytes(data[30].ToString());
+                            dr[31] = !string.IsNullOrEmpty(data[30].ToString().Trim()) ? System.IO.File.ReadAllBytes(data[30].ToString()) : null;
 
                         dr["Error"] = error;
                         create_dt.Rows.Add(dr);
@@ -646,7 +646,7 @@ namespace MasterTouroku_Shouhin
         public bool Date_Check(string csv_Date, int line_no, string error_msg, string dc_msg)
         {
             bl = false;
-            if (!string.IsNullOrWhiteSpace(csv_Date) && csv_Date != "NULL")
+            if (!string.IsNullOrWhiteSpace(csv_Date))
             {
                 if (!cf.CheckDateValue(csv_Date))
                 {
@@ -706,7 +706,7 @@ namespace MasterTouroku_Shouhin
         public bool ImageFile_Check(string obj_text, int line_no, string error_msg)
         {
             bl = false;
-            if(!System.IO.File.Exists(obj_text))
+            if(!System.IO.File.Exists(obj_text) && !string.IsNullOrEmpty(obj_text.Trim()))
             {
                 bbl.ShowMessage("E276", line_no.ToString(), error_msg);
                 bl = true;
@@ -747,6 +747,7 @@ namespace MasterTouroku_Shouhin
             create_dt.Columns.Add("Shipping_Place");
             create_dt.Columns.Add("HacchuuLot");
             create_dt.Columns.Add("ShouhinImageFilePathName");
+            create_dt.Columns.Add("ShouhinImage");
             create_dt.Columns.Add("Remarks");
             create_dt.Columns.Add("UsedFlg");
             create_dt.Columns.Add("InsertOperator");

@@ -107,7 +107,7 @@ if @Type=2--Data Area Detail
 begin
 	SELECT 
 	--SKMS.ShouhinCD	
-	FS.HinbanCD	as ShouhinCD--商品コード
+	FShouhin.HinbanCD	as ShouhinCD--商品コード
 	,SKMS.ShouhinName	--商品名
 	,SKMS.ColorRyakuName --カラー略名
 	,SKMS.ColorNO		 --カラーNO
@@ -138,7 +138,7 @@ begin
 	,SKMS.[KouritenTelNO2-1]	--小売店電話番号2-1
 	,SKMS.[KouritenTelNO2-2]	--小売店電話番号2-2
 	,SKMS.[KouritenTelNO2-3]	--小売店電話番号2-3
-	,FS.ShouhinCD as Hidden_ShouhinCD--商品コード_更新用
+	,FShouhin.ShouhinCD as Hidden_ShouhinCD--商品コード_更新用
 	FROM D_ShukkaSizi SK						--Table1
 	inner join D_ShukkaSiziMeisai SKMS			--Table2
 	on SKMS.ShukkaSiziNO=SK.ShukkaSiziNO
@@ -152,11 +152,11 @@ begin
 	on FS.StaffCD=SK.StaffCD
 	left outer join M_Souko MS					--Table6
 	on MS.SoukoCD=SKMS.SoukoCD
-	left outer join F_Shouhin(@ShippingDate) FS ON FS.ShouhinCD=SKMS.ShouhinCD --Table7
+	left outer join F_Shouhin(@ShippingDate) FShouhin ON FShouhin.ShouhinCD=SKMS.ShouhinCD --Table7
 	where SK.ShukkaSiziNO=@ShippingNo
 	order by SKMS.GyouHyouziJun ASC
 
-	--テーブル転送仕様X
+--TableX_12ShukkaSiziNO_Insert
 EXEC D_Exclusive_Insert
 		1,
 		@ShippingNo,

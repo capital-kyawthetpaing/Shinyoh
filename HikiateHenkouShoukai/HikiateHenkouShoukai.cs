@@ -42,7 +42,7 @@ namespace HikiateHenkouShoukai
             SetButton(ButtonType.BType.Delete, F4, "", false);
             SetButton(ButtonType.BType.Inquiry, F5, "", false);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Export, F7, "出力(F7)", true);
+            SetButton(ButtonType.BType.ExcelExport, F7, "出力(F7)", true);
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
@@ -50,7 +50,6 @@ namespace HikiateHenkouShoukai
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
 
             Modified_Panel();
-            rdoAggregation.Focus();
             base_entity = _GetBaseData();
             txtTokuisakiCD.E102Type = base_entity.LoginDate;        //ChangeDate value For E101 Error check of txtTokuisakiCD
             txtKouritenCD.E102Type = base_entity.LoginDate;         //ChangeDate value For E101 Error check of txtKouritenCD
@@ -78,6 +77,7 @@ namespace HikiateHenkouShoukai
         private void Modified_Panel()
         {
             cf.Clear(PanelDetail);
+            rdoAggregation.Focus();
             UI_ErrorCheck();
 
             lblBrandName.Text = string.Empty;
@@ -187,7 +187,12 @@ namespace HikiateHenkouShoukai
 
         private void Radio_Changed(int type)
         {
-            switch(type)
+            cf.Clear(PanelDetail);
+            lblBrandName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
+            lblSoukoName.Text = string.Empty;
+            lblTokuisakiName.Text = string.Empty;
+            switch (type)
             {
                 case 0:
                     txtTokuisakiCD.Enabled = true;
@@ -211,7 +216,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = false;
                     gvAggregationDetails.Location = new Point(22, 245);
-                    gvAggregationDetails.Size = new Size(1550, 300);
+                    gvAggregationDetails.Size = new Size(1550, 630);
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -237,7 +242,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = true;
                     gvFreeInventoryDetails.Visible = false;
                     gvMainDetail.Location = new Point(22, 245);
-                    gvMainDetail.Size = new Size(1750, 300);
+                    gvMainDetail.Size = new Size(1750, 630);
                     //gvMainDetail.ReadOnly = false;
                     //gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -264,7 +269,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = true;
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
                     gvFreeInventoryDetails.Location = new Point(22, 245);
-                    gvFreeInventoryDetails.Size = new Size(1150, 300);
+                    gvFreeInventoryDetails.Size = new Size(1150, 630);
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -278,17 +283,13 @@ namespace HikiateHenkouShoukai
         private void chkSeasonSS_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSeasonSS.Checked)
-                chkSeasonFW.Enabled = false;
-            else
-                chkSeasonFW.Enabled = true;
+                chkSeasonFW.Checked = false;
         }
 
         private void chkSeasonFW_CheckedChanged(object sender, EventArgs e)
         {
             if (chkSeasonFW.Checked)
-                chkSeasonSS.Enabled = false;
-            else
-                chkSeasonSS.Enabled = true;
+                chkSeasonSS.Checked = false;
         }
 
         private void txtPostalCode2_KeyDown(object sender, KeyEventArgs e)
@@ -308,28 +309,42 @@ namespace HikiateHenkouShoukai
         {
             if(gvFreeInventoryDetails.Rows.Count > 0 && rdoFreeInventory.Checked)
             {
-                Microsoft.Office.Interop.Excel._Application app = new Microsoft.Office.Interop.Excel.Application();
-                Microsoft.Office.Interop.Excel._Workbook workbook = app.Workbooks.Add(Type.Missing);
-                Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-                app.Visible = false; 
-                worksheet = workbook.Sheets["Sheet1"];
-                worksheet = workbook.ActiveSheet;
-                worksheet.Name = "在庫表";
-                for (int i = 1; i < gvFreeInventoryDetails.Columns.Count + 1; i++)
+                DataTable dtExcel = new DataTable();
+                dt = (DataTable)gvFreeInventoryDetails.DataSource;
+                dtExcel = dt.Copy();
+                dtExcel.Columns.Remove(dtExcel.Columns[4]);
+                dtExcel.AcceptChanges();
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.InitialDirectory = @"C:\Excel";
+                saveFileDialog1.DefaultExt = "xls";
+                saveFileDialog1.Filter = "ExcelFile|*.xls";
+                saveFileDialog1.FileName = "在庫表.xls";
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (!System.IO.Directory.Exists("C:\\Excel"))
+                    System.IO.Directory.CreateDirectory("C:\\Excel");
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    worksheet.Cells[1, i] = gvFreeInventoryDetails.Columns[i - 1].HeaderText;
+                    ExcelDesignSetting obj = new ExcelDesignSetting();
+                    obj.FilePath = saveFileDialog1.FileName;
+                    obj.SheetName = "在庫表";
+                    obj.Start_Interior_Column = "A1";
+                    obj.End_Interior_Column = "G1";
+                    obj.Interior_Color = Color.Orange;
+                    obj.Start_Font_Column = "A1";
+                    obj.End_Font_Column = "G1";
+                    obj.Font_Color = Color.Black;
+                    obj.Start_Title_Center_Column = "A1";
+                    obj.End_Title_Center_Column = "G1";
+                    ExportCSVExcel excel = new ExportCSVExcel();
+                    excel.ExportDataTableToExcel(dtExcel, obj);
+
+                    //cf.Clear(PanelDetail);
+                    //rdoFreeInventory.Focus();
+
+                    bbl.ShowMessage("I203");
                 }
-                for (int i = 0; i < gvFreeInventoryDetails.Rows.Count - 1; i++)
-                {
-                    for (int j = 0; j < gvFreeInventoryDetails.Columns.Count; j++)
-                    {
-                        worksheet.Cells[i + 2, j + 1] = gvFreeInventoryDetails.Rows[i].Cells[j].Value.ToString();
-                    }
-                }
-                if (!System.IO.Directory.Exists("C:\\Output Excel Files"))
-                    System.IO.Directory.CreateDirectory("C:\\Output Excel Files");
-                workbook.SaveAs("C:\\Output Excel Files\\在庫表.xls", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-                app.Quit();
             }
             else
             {

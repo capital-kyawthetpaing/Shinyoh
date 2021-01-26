@@ -268,7 +268,7 @@
             this.txtPhNo3.MoveNext = true;
             this.txtPhNo3.Name = "txtPhNo3";
             this.txtPhNo3.NextControl = null;
-            this.txtPhNo3.NextControlName = "btnF1";
+            this.txtPhNo3.NextControlName = "btnF10";
             this.txtPhNo3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhNo3.Size = new System.Drawing.Size(70, 19);
             this.txtPhNo3.TabIndex = 21;
@@ -341,7 +341,7 @@
             // lblBubunn2
             // 
             this.lblBubunn2.AutoSize = true;
-            this.lblBubunn2.Location = new System.Drawing.Point(595, 389);
+            this.lblBubunn2.Location = new System.Drawing.Point(635, 390);
             this.lblBubunn2.Name = "lblBubunn2";
             this.lblBubunn2.Size = new System.Drawing.Size(61, 13);
             this.lblBubunn2.TabIndex = 71;
@@ -427,7 +427,7 @@
             this.txtAddress.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtAddress.DepandOnMode = false;
             this.txtAddress.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtAddress.ImeMode = System.Windows.Forms.ImeMode.Katakana;
+            this.txtAddress.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtAddress.IntegerPart = 0;
             this.txtAddress.IsDatatableOccurs = null;
             this.txtAddress.IsErrorOccurs = false;
@@ -442,7 +442,7 @@
             this.txtAddress.NextControl = null;
             this.txtAddress.NextControlName = "txtPhNo1";
             this.txtAddress.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress.Size = new System.Drawing.Size(450, 19);
+            this.txtAddress.Size = new System.Drawing.Size(490, 19);
             this.txtAddress.TabIndex = 18;
             this.txtAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtAddress.TxtBox = null;
@@ -492,7 +492,7 @@
             this.txtName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtName.DepandOnMode = true;
             this.txtName.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtName.ImeMode = System.Windows.Forms.ImeMode.Katakana;
+            this.txtName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtName.IntegerPart = 0;
             this.txtName.IsDatatableOccurs = null;
             this.txtName.IsErrorOccurs = false;
@@ -525,7 +525,7 @@
             this.chk_FW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_FW.IsDatatableOccurs = null;
             this.chk_FW.IsErrorOccurs = false;
-            this.chk_FW.Location = new System.Drawing.Point(791, 156);
+            this.chk_FW.Location = new System.Drawing.Point(819, 156);
             this.chk_FW.MoveNext = true;
             this.chk_FW.Name = "chk_FW";
             this.chk_FW.NextControl = null;
@@ -540,11 +540,11 @@
             this.chk_SS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_SS.IsDatatableOccurs = null;
             this.chk_SS.IsErrorOccurs = false;
-            this.chk_SS.Location = new System.Drawing.Point(721, 156);
+            this.chk_SS.Location = new System.Drawing.Point(749, 156);
             this.chk_SS.MoveNext = true;
             this.chk_SS.Name = "chk_SS";
             this.chk_SS.NextControl = null;
-            this.chk_SS.NextControlName = "chk_FW";
+            this.chk_SS.NextControlName = "txtTokuisaki";
             this.chk_SS.Size = new System.Drawing.Size(40, 19);
             this.chk_SS.TabIndex = 10;
             this.chk_SS.Text = "SS";
@@ -553,7 +553,7 @@
             // lblYear
             // 
             this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(687, 157);
+            this.lblYear.Location = new System.Drawing.Point(715, 157);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(19, 13);
             this.lblYear.TabIndex = 55;
@@ -572,7 +572,7 @@
             this.txtYear.IsErrorOccurs = false;
             this.txtYear.IsRequire = false;
             this.txtYear.IsUseInitializedLayout = true;
-            this.txtYear.Location = new System.Drawing.Point(615, 154);
+            this.txtYear.Location = new System.Drawing.Point(643, 154);
             this.txtYear.MaxLength = 4;
             this.txtYear.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYear.MoveNext = true;
@@ -590,7 +590,7 @@
             this.lblTenjikai.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTenjikai.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTenjikai.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblTenjikai.Location = new System.Drawing.Point(515, 154);
+            this.lblTenjikai.Location = new System.Drawing.Point(543, 154);
             this.lblTenjikai.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblTenjikai.Name = "lblTenjikai";
             this.lblTenjikai.Size = new System.Drawing.Size(100, 19);
@@ -608,7 +608,7 @@
             this.txtStore.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtStore.DepandOnMode = false;
             this.txtStore.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStore.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.txtStore.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtStore.IntegerPart = 0;
             this.txtStore.IsDatatableOccurs = null;
             this.txtStore.IsErrorOccurs = false;
@@ -668,7 +668,7 @@
             this.txtBrand.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtBrand.DepandOnMode = true;
             this.txtBrand.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtBrand.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.txtBrand.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtBrand.IntegerPart = 0;
             this.txtBrand.IsDatatableOccurs = null;
             this.txtBrand.IsErrorOccurs = false;
@@ -685,7 +685,7 @@
             this.txtBrand.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtBrand.Size = new System.Drawing.Size(80, 19);
             this.txtBrand.TabIndex = 8;
-            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand.TxtBox = null;
             this.txtBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrand_KeyDown);
             // 
@@ -699,7 +699,7 @@
             this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtStaffCD.DepandOnMode = false;
             this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaffCD.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.txtStaffCD.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtStaffCD.IntegerPart = 0;
             this.txtStaffCD.IsDatatableOccurs = null;
             this.txtStaffCD.IsErrorOccurs = false;
@@ -797,7 +797,7 @@
             this.txtOrderNo2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtOrderNo2.DepandOnMode = true;
             this.txtOrderNo2.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtOrderNo2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.txtOrderNo2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtOrderNo2.IntegerPart = 0;
             this.txtOrderNo2.IsDatatableOccurs = null;
             this.txtOrderNo2.IsErrorOccurs = false;
@@ -823,7 +823,7 @@
             this.txtOrderNo1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtOrderNo1.DepandOnMode = true;
             this.txtOrderNo1.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtOrderNo1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.txtOrderNo1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtOrderNo1.IntegerPart = 0;
             this.txtOrderNo1.IsDatatableOccurs = null;
             this.txtOrderNo1.IsErrorOccurs = false;
@@ -909,7 +909,7 @@
             this.txtDestOrderNo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtDestOrderNo.DepandOnMode = true;
             this.txtDestOrderNo.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtDestOrderNo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.txtDestOrderNo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtDestOrderNo.IntegerPart = 0;
             this.txtDestOrderNo.IsDatatableOccurs = null;
             this.txtDestOrderNo.IsErrorOccurs = false;
