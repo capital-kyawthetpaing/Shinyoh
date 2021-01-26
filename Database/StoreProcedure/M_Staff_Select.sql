@@ -15,7 +15,7 @@ GO
 -- =============================================
 CREATE PROCEDURE [dbo].[M_Staff_Select]
 	-- Add the parameters for the stored procedure here
-	@StaffCD as varchar(4)
+	@StaffCD as varchar(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
