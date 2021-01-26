@@ -67,21 +67,24 @@ namespace Shinyoh_Details
         {
             if (tagID == "3")
             {
-                Access_Kouriten_obj.KouritenCD = txtCD.Text;
-                Access_Kouriten_obj.KouritenName = txtLong_Name.Text;
-                Access_Kouriten_obj.KouritenRyakuName = txtShort_Name.Text;
-                Access_Kouriten_obj.YuubinNO1 = txtYubin1.Text;
-                Access_Kouriten_obj.YuubinNO2 = txtYubin2.Text;
-                Access_Kouriten_obj.Juusho1 = txtAddress1.Text;
-                Access_Kouriten_obj.Juusho2 = txtAddress2.Text;
-                Access_Kouriten_obj.Tel11 = txtPhone1_1.Text;
-                Access_Kouriten_obj.Tel12 = txtPhone1_2.Text;
-                Access_Kouriten_obj.Tel13 = txtPhone1_3.Text;
-                Access_Kouriten_obj.Tel21 = txtPhone2_1.Text;
-                Access_Kouriten_obj.Tel22 = txtPhone2_2.Text;
-                Access_Kouriten_obj.Tel23 = txtPhone2_3.Text;
+                if(ErrorCheck(Panel_Detail))
+                {
+                    Access_Kouriten_obj.KouritenCD = txtCD.Text;
+                    Access_Kouriten_obj.KouritenName = txtLong_Name.Text;
+                    Access_Kouriten_obj.KouritenRyakuName = txtShort_Name.Text;
+                    Access_Kouriten_obj.YuubinNO1 = txtYubin1.Text;
+                    Access_Kouriten_obj.YuubinNO2 = txtYubin2.Text;
+                    Access_Kouriten_obj.Juusho1 = txtAddress1.Text;
+                    Access_Kouriten_obj.Juusho2 = txtAddress2.Text;
+                    Access_Kouriten_obj.Tel11 = txtPhone1_1.Text;
+                    Access_Kouriten_obj.Tel12 = txtPhone1_2.Text;
+                    Access_Kouriten_obj.Tel13 = txtPhone1_3.Text;
+                    Access_Kouriten_obj.Tel21 = txtPhone2_1.Text;
+                    Access_Kouriten_obj.Tel22 = txtPhone2_2.Text;
+                    Access_Kouriten_obj.Tel23 = txtPhone2_3.Text;
 
-                this.Close();
+                    this.Close();
+                }
             }
             base.FunctionProcess(tagID);
         }

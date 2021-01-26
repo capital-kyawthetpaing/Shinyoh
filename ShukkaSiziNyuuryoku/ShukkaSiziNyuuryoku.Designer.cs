@@ -38,6 +38,9 @@ namespace ShukkaSiziNyuuryoku
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.panelRadio = new System.Windows.Forms.Panel();
+            this.rdoNeed = new Shinyoh_Controls.SRadio();
+            this.rdoNO = new Shinyoh_Controls.SRadio();
             this.sLabel5 = new Shinyoh_Controls.SLabel();
             this.label9 = new System.Windows.Forms.Label();
             this.sbKouriten = new Shinyoh_Search.SearchBox();
@@ -58,8 +61,6 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin1 = new Shinyoh_Controls.STextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.rdoNO = new Shinyoh_Controls.SRadio();
-            this.rdoNeed = new Shinyoh_Controls.SRadio();
             this.sLabel18 = new Shinyoh_Controls.SLabel();
             this.txtSlipDate = new Shinyoh_Controls.STextBox();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
@@ -119,12 +120,11 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel13 = new Shinyoh_Controls.SLabel();
             this.sbDenpyouCD = new Shinyoh_Controls.SLabel();
             this.sbShippingNO = new Shinyoh_Search.SearchBox();
-            this.panelRadio = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShukkasizi)).BeginInit();
             this.panelRadio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShukkasizi)).BeginInit();
             this.SuspendLayout();
             // 
             // PanelTitle
@@ -202,6 +202,43 @@ namespace ShukkaSiziNyuuryoku
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
             this.PanelDetail.TabIndex = 7;
+            // 
+            // panelRadio
+            // 
+            this.panelRadio.Controls.Add(this.rdoNeed);
+            this.panelRadio.Controls.Add(this.rdoNO);
+            this.panelRadio.Location = new System.Drawing.Point(829, 86);
+            this.panelRadio.Name = "panelRadio";
+            this.panelRadio.Size = new System.Drawing.Size(200, 30);
+            this.panelRadio.TabIndex = 10;
+            // 
+            // rdoNeed
+            // 
+            this.rdoNeed.Checked = true;
+            this.rdoNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.rdoNeed.Location = new System.Drawing.Point(4, 4);
+            this.rdoNeed.MoveNext = true;
+            this.rdoNeed.Name = "rdoNeed";
+            this.rdoNeed.NextControl = null;
+            this.rdoNeed.NextControlName = "txtJuchuuNo";
+            this.rdoNeed.Size = new System.Drawing.Size(72, 19);
+            this.rdoNeed.TabIndex = 10;
+            this.rdoNeed.TabStop = true;
+            this.rdoNeed.Text = "必要";
+            this.rdoNeed.UseVisualStyleBackColor = true;
+            // 
+            // rdoNO
+            // 
+            this.rdoNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.rdoNO.Location = new System.Drawing.Point(77, 4);
+            this.rdoNO.MoveNext = true;
+            this.rdoNO.Name = "rdoNO";
+            this.rdoNO.NextControl = null;
+            this.rdoNO.NextControlName = "txtPhone1";
+            this.rdoNO.Size = new System.Drawing.Size(72, 19);
+            this.rdoNO.TabIndex = 58;
+            this.rdoNO.Text = "不要";
+            this.rdoNO.UseVisualStyleBackColor = true;
             // 
             // sLabel5
             // 
@@ -430,8 +467,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbTokuisaki.TabIndex = 3;
             this.sbTokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.sbTokuisaki.TxtBox = null;
-            this.sbTokuisaki.TextChanged += new System.EventHandler(this.sbTokuisaki_TextChanged);
-            this.sbTokuisaki.Leave += new System.EventHandler(this.sbTokuisaki_Leave);
+            this.sbTokuisaki.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbTokuisaki_KeyDown);
             // 
             // lblTokuisakiName
             // 
@@ -558,34 +594,6 @@ namespace ShukkaSiziNyuuryoku
             this.label3.Size = new System.Drawing.Size(91, 13);
             this.label3.TabIndex = 59;
             this.label3.Text = "＜諸口検索用＞";
-            // 
-            // rdoNO
-            // 
-            this.rdoNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdoNO.Location = new System.Drawing.Point(77, 4);
-            this.rdoNO.MoveNext = true;
-            this.rdoNO.Name = "rdoNO";
-            this.rdoNO.NextControl = null;
-            this.rdoNO.NextControlName = "txtPhone1";
-            this.rdoNO.Size = new System.Drawing.Size(72, 19);
-            this.rdoNO.TabIndex = 58;
-            this.rdoNO.Text = "不要";
-            this.rdoNO.UseVisualStyleBackColor = true;
-            // 
-            // rdoNeed
-            // 
-            this.rdoNeed.Checked = true;
-            this.rdoNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdoNeed.Location = new System.Drawing.Point(4, 4);
-            this.rdoNeed.MoveNext = true;
-            this.rdoNeed.Name = "rdoNeed";
-            this.rdoNeed.NextControl = null;
-            this.rdoNeed.NextControlName = "txtJuchuuNo";
-            this.rdoNeed.Size = new System.Drawing.Size(72, 19);
-            this.rdoNeed.TabIndex = 10;
-            this.rdoNeed.TabStop = true;
-            this.rdoNeed.Text = "必要";
-            this.rdoNeed.UseVisualStyleBackColor = true;
             // 
             // sLabel18
             // 
@@ -764,10 +772,8 @@ namespace ShukkaSiziNyuuryoku
             this.dgvShukkasizi.Name = "dgvShukkasizi";
             this.dgvShukkasizi.Size = new System.Drawing.Size(1450, 580);
             this.dgvShukkasizi.TabIndex = 23;
-            this.dgvShukkasizi.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShukkasizi_CellEnter);
             this.dgvShukkasizi.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvShukkasizi_RowEnter);
             this.dgvShukkasizi.Paint += new System.Windows.Forms.PaintEventHandler(this.dgvShukkasizi_Paint);
-            this.dgvShukkasizi.Enter += new System.EventHandler(this.dgvShukkasizi_Enter);
             // 
             // colShouhinCD
             // 
@@ -1352,15 +1358,6 @@ namespace ShukkaSiziNyuuryoku
             this.sbShippingNO.TxtBox = null;
             this.sbShippingNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbShippingNO_KeyDown);
             // 
-            // panelRadio
-            // 
-            this.panelRadio.Controls.Add(this.rdoNeed);
-            this.panelRadio.Controls.Add(this.rdoNO);
-            this.panelRadio.Location = new System.Drawing.Point(829, 86);
-            this.panelRadio.Name = "panelRadio";
-            this.panelRadio.Size = new System.Drawing.Size(200, 30);
-            this.panelRadio.TabIndex = 10;
-            // 
             // ShukkaSiziNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1377,8 +1374,8 @@ namespace ShukkaSiziNyuuryoku
             this.PanelTitle.ResumeLayout(false);
             this.PanelDetail.ResumeLayout(false);
             this.PanelDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvShukkasizi)).EndInit();
             this.panelRadio.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvShukkasizi)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

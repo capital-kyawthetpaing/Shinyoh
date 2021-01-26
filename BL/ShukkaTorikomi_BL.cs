@@ -63,14 +63,25 @@ namespace BL
             parameters[1] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = condition };
             return ckmdl.InsertUpdateDeleteData("CSV_M_ShukkaTorikomi_CUD", GetConnectionString(), parameters);
         }
+ 
+        public DataTable GetShukkaNO(string SerialNO, string ShukkaDate, string SEQNO)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@SerialNO", SqlDbType.VarChar) { Value = SerialNO };
+            parameters[1] = new SqlParameter("@refDate", SqlDbType.VarChar) { Value = ShukkaDate };
+            parameters[2] = new SqlParameter("@SEQNO", SqlDbType.VarChar) { Value = SEQNO };
+            DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
+            return dt;
+        }
 
         public DataTable ShukkaTorikomi_Slip_Check(string ShukkaSiziNO, string ShouhinCD, string err)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[2];
+            var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@ShukkaSiziNO", SqlDbType.VarChar) { Value = ShukkaSiziNO };
             parameters[1] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
-            parameters[1] = new SqlParameter("@ErrorType", SqlDbType.VarChar) { Value = err };
+            parameters[2] = new SqlParameter("@ErrorType", SqlDbType.VarChar) { Value = err };
             DataTable dt = ckmdl.SelectDatatable("ShukkaTorikomi_Slip_Check", GetConnectionString(), parameters);
             return dt;
         }
