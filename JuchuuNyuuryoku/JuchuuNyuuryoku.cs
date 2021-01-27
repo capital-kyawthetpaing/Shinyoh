@@ -1392,8 +1392,8 @@ namespace JuchuuNyuuryoku
             // if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colFree" || gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colJuchuuMeisaiTekiyou" || gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
             // gv_JuchuuNyuuryoku.MoveNextCell();
 
-            if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colFree")
-                gv_JuchuuNyuuryoku.MoveNextCell();
+           // if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colFree")
+               // gv_JuchuuNyuuryoku.MoveNextCell();
 
             if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colJuchuuSuu")
             {
