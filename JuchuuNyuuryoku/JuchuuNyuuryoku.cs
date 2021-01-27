@@ -1732,6 +1732,8 @@ namespace JuchuuNyuuryoku
                 detail.Date_Access_Siiresaki = txtJuchuuDate.Text;
                 detail.ShowDialog();
 
+                gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
+                this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
                 gv_JuchuuNyuuryoku[column, row].Value = detail.SiiresakiCD.ToString();
                 gv_JuchuuNyuuryoku[column + 1, row].Value = detail.SiiresakiName.ToString();
 
@@ -1752,6 +1754,7 @@ namespace JuchuuNyuuryoku
         {
             if (e.Control is DataGridViewTextBoxEditingControl)
             {
+                (e.Control as DataGridViewTextBoxEditingControl).KeyDown -= new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
                 (e.Control as DataGridViewTextBoxEditingControl).KeyDown += new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
             }
         }
