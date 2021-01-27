@@ -96,6 +96,7 @@ namespace MasterTouroku_Kouriten
                     txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
+                    txtTokuisakiCD_Copy.NextControlName = txtCopyDate.Name;
                     txtTokuisakiCD_Copy.Enabled = true;
                     //txtCopyCD.Enabled = true;
                     //txtCopyDate.Enabled = true;
