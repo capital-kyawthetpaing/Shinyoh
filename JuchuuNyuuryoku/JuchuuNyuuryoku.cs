@@ -880,36 +880,6 @@ namespace JuchuuNyuuryoku
                 return (true, null);
             else return (false, dt);
         }
-
-        private void gv_1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F9)
-            {
-                int row = gv_JuchuuNyuuryoku.CurrentCell.RowIndex;
-                int column = gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex;
-                if (gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSiiresakiCD")
-                {
-                    SiiresakiSearch detail = new SiiresakiSearch();
-                    detail.Date_Access_Siiresaki = txtJuchuuDate.Text;
-                    detail.ShowDialog();
-
-                    gv_JuchuuNyuuryoku[column, row].Value = detail.SiiresakiCD.ToString();
-                    gv_JuchuuNyuuryoku[column + 1, row].Value = detail.SiiresakiName.ToString();
-
-
-                    DataTable dt = siiresaki_bl.Siiresaki_Select_Check(detail.SiiresakiCD.ToString(), txtJuchuuDate.Text, "E101");
-                    if (dt.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString()!= "E101")
-                    {
-                        DataGridViewRow selectedRow = null;
-                        int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
-                        selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
-
-                        sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
-                    }
-                }
-            }
-        }
-
         private void btnNameF10_Click(object sender, EventArgs e)
         {
             F10_Gridview_Bind();
@@ -1340,9 +1310,11 @@ namespace JuchuuNyuuryoku
 
             Gridview_F9ShowHide(e.ColumnIndex,"Show");
 
+            
+            
             //if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
             //     gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
-                //gv_JuchuuNyuuryoku.BeginEdit(true);
+            //gv_JuchuuNyuuryoku.BeginEdit(true);
 
             // CellEnter_ErrorCheck(e);
         }
@@ -1709,8 +1681,64 @@ namespace JuchuuNyuuryoku
         {
            if(gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colSiiresakiCD")
             {
-                Gridview_F9ShowHide(e.ColumnIndex, string.Empty);
+                //  Gridview_F9ShowHide(e.ColumnIndex, string.Empty);
+
+                //string siiresakiCD = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                //SearchBox sBox = new SearchBox();
+                //sBox.Text = siiresakiCD;
+                //sBox.SearchType = SearchType.ScType.Siiresaki;
+                //sBox.DepandOnMode = false;
             }            
         }
+
+
+        private void gv_JuchuuNyuuryoku_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F9)
+            {
+                if (gv_JuchuuNyuuryoku.CurrentCell != null)
+                {
+                    if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14)
+                    {
+                        gridKeyDown();
+                    }
+                }
+            }
+
+        }
+        private void gridKeyDown()
+        {
+            int row = gv_JuchuuNyuuryoku.CurrentCell.RowIndex;
+            int column = gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex;
+            if (gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSiiresakiCD")
+            {
+                SiiresakiSearch detail = new SiiresakiSearch();
+                detail.Date_Access_Siiresaki = txtJuchuuDate.Text;
+                detail.ShowDialog();
+
+                gv_JuchuuNyuuryoku[column, row].Value = detail.SiiresakiCD.ToString();
+                gv_JuchuuNyuuryoku[column + 1, row].Value = detail.SiiresakiName.ToString();
+
+
+                DataTable dt = siiresaki_bl.Siiresaki_Select_Check(detail.SiiresakiCD.ToString(), txtJuchuuDate.Text, "E101");
+                if (dt.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() != "E101")
+                {
+                    DataGridViewRow selectedRow = null;
+                    int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
+                    selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
+
+                    sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
+                }
+            }
+        }
+
+        private void gv_JuchuuNyuuryoku_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is DataGridViewTextBoxEditingControl)
+            {
+                (e.Control as DataGridViewTextBoxEditingControl).KeyDown += new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
+            }
+        }
+
     }
 }
