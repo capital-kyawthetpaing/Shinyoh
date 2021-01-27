@@ -580,7 +580,6 @@ namespace ShukkaSiziNyuuryoku
                 {
                     SoukoSearch ss = new SoukoSearch();
                     ss.ShowDialog();
-
                     if (!string.IsNullOrEmpty(ss.soukoCD))
                     {
                         dgvShukkasizi["SoukoCD", row].Value = ss.soukoCD.ToString();
@@ -627,7 +626,6 @@ namespace ShukkaSiziNyuuryoku
                         {
                             if (cboMode.SelectedValue.ToString().Equals("2"))
                             {
-
                                 cf.DisablePanel(PanelTitle);
                                 cf.EnablePanel(PanelDetail);
                                 txtShippingDate.Focus();
@@ -872,6 +870,7 @@ namespace ShukkaSiziNyuuryoku
                 if (dgvShukkasizi.Rows[row].Cells["SoukoCD"].Value.ToString().Equals("") && (!dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0")))
                 {
                     bbl.ShowMessage("E102");
+                    dgvShukkasizi.Rows[row].Cells["SoukoName"].Value = string.Empty;
                     dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["SoukoCD"];
                     return false;
                 }
@@ -912,7 +911,6 @@ namespace ShukkaSiziNyuuryoku
         }        
         private bool GV_Check()
         {
-            dtGridview(2);
             foreach (DataGridViewRow gv in dgvShukkasizi.Rows)
             {
                 if(!gv.Cells["colArrivalTime"].Value.ToString().Equals("0"))
@@ -920,7 +918,6 @@ namespace ShukkaSiziNyuuryoku
                     int row = gv.Index;
                     if (!ColArrivalTime(row, 8))
                     {
-                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[gv.Index].Cells["colArrivalTime"];
                         return false;
                     }
                 }
