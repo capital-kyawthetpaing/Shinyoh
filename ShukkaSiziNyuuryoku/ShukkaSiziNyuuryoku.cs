@@ -807,7 +807,6 @@ namespace ShukkaSiziNyuuryoku
                 sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
                 sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
                 sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null);
-                Temp_Null();
             }
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
