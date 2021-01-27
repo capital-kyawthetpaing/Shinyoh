@@ -185,6 +185,10 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Kouriten:
                         KouritenSearch kSearch = new KouritenSearch();
                         kSearch.Date_Access_Kouriten = ChangeDate.Text;
+                        if(this.TxtBox!=null)
+                        {
+                            kSearch.tokuisakiCD = TxtBox.Text;
+                        }
                         kSearch.ShowDialog();
                         CD = kSearch.KouritenCD;
                         CDate = kSearch.changeDate;
