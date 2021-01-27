@@ -372,7 +372,7 @@
             this.gv_JuchuuNyuuryoku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellContentClick);
             this.gv_JuchuuNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
             this.gv_JuchuuNyuuryoku.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEnter);
-            this.gv_JuchuuNyuuryoku.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_1_KeyDown);
+            this.gv_JuchuuNyuuryoku.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gv_JuchuuNyuuryoku_EditingControlShowing);
             // 
             // colShouhinCD
             // 
@@ -497,7 +497,7 @@
             this.colJuchuuMeisaiTekiyou.MaxInputLength = 80;
             this.colJuchuuMeisaiTekiyou.MinimumWidth = 200;
             this.colJuchuuMeisaiTekiyou.Name = "colJuchuuMeisaiTekiyou";
-            this.colJuchuuMeisaiTekiyou.Width = 350;
+            this.colJuchuuMeisaiTekiyou.Width = 420;
             // 
             // colJANCD
             // 

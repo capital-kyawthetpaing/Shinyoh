@@ -551,15 +551,11 @@ namespace Shinyoh
                 if(ctrl is SGridView)
                 {
                     SGridView sgv = ctrl as SGridView;
-                    KeyValuePair<int, Control> pair_dic = new KeyValuePair<int, Control>();
-                    STextBox txt_Date = new STextBox();
-                    if (sgv.Name.Contains("JuchuuNyuuryoku"))
+                    if(sgv.Memory_Row_Count==0)
                     {
-                         pair_dic = dic.Where(key => key.Key == 3).SingleOrDefault();
-                         txt_Date = pair_dic.Value as STextBox;
-                    }
-                    if (sgv.ErrorCheck(txt_Date.Text))
+                        bbl.ShowMessage("E274");
                         return false;
+                    }
                 }
             }
             return true;
