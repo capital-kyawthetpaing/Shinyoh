@@ -16,7 +16,7 @@ namespace ShukkaTorikomi
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ShukkaTorikomi());
+            Application.Run(new SqlDbType());
         }
     }
 }

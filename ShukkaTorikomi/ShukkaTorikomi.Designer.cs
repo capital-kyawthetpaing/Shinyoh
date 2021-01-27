@@ -1,6 +1,6 @@
 ﻿namespace ShukkaTorikomi
 {
-    partial class ShukkaTorikomi
+    partial class SqlDbType
     {
         /// <summary>
         /// Required designer variable.
@@ -76,7 +76,7 @@
             this.取込区分.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.取込区分.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.取込区分.ForeColor = System.Drawing.Color.White;
-            this.取込区分.Location = new System.Drawing.Point(15, 9);
+            this.取込区分.Location = new System.Drawing.Point(15, 12);
             this.取込区分.Name = "取込区分";
             this.取込区分.Size = new System.Drawing.Size(100, 19);
             this.取込区分.TabIndex = 0;
@@ -91,7 +91,7 @@
             this.rdo_Toroku.MoveNext = true;
             this.rdo_Toroku.Name = "rdo_Toroku";
             this.rdo_Toroku.NextControl = null;
-            this.rdo_Toroku.NextControlName = null;
+            this.rdo_Toroku.NextControlName = "txtShukkaToNo1";
             this.rdo_Toroku.Size = new System.Drawing.Size(72, 19);
             this.rdo_Toroku.TabIndex = 1;
             this.rdo_Toroku.TabStop = true;
@@ -156,6 +156,7 @@
             this.txtDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtDate2.Size = new System.Drawing.Size(100, 19);
             this.txtDate2.TabIndex = 13;
+            this.txtDate2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // label3
@@ -231,7 +232,7 @@
             this.gvTorikomi.ISRowColumn = null;
             this.gvTorikomi.Location = new System.Drawing.Point(136, 182);
             this.gvTorikomi.Name = "gvTorikomi";
-            this.gvTorikomi.Size = new System.Drawing.Size(1120, 150);
+            this.gvTorikomi.Size = new System.Drawing.Size(1120, 600);
             this.gvTorikomi.TabIndex = 8;
             // 
             // colTorikomiDenpyouNO
@@ -308,6 +309,7 @@
             this.txtDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtDate1.Size = new System.Drawing.Size(100, 19);
             this.txtDate1.TabIndex = 6;
+            this.txtDate1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // label1
@@ -408,14 +410,14 @@
             this.sLabel3.Text = "取込元フォルダ";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ShukkaTorikomi
+            // SqlDbType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "ShukkaTorikomi";
+            this.Name = "SqlDbType";
             this.Text = "出荷取込処理";
             this.Load += new System.EventHandler(this.ShukkaTorikomi_Load);
             this.Controls.SetChildIndex(this.panel1, 0);

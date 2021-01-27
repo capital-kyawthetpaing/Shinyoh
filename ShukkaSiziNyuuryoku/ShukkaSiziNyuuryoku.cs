@@ -108,7 +108,7 @@ namespace ShukkaSiziNyuuryoku
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail)&& Temp_Null())
+                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -125,8 +125,8 @@ namespace ShukkaSiziNyuuryoku
                         case "4":
                             ChangeMode(Mode.Inquiry);
                             break;
-                    }
-                    dtResult.Clear();
+                }
+                dtResult.Clear();
                     dtTemp1.Clear();
                 }
             }
@@ -164,83 +164,7 @@ namespace ShukkaSiziNyuuryoku
                     break;
             }
         }
-        private void btn_Tokuisaki_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(sbTokuisaki.Text) && td.Access_Tokuisaki_obj.TokuisakiCD != null)
-            {
-                if (!td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbTokuisaki.Text))
-                {
-
-                    bbl.ShowMessage("E269");
-                    sbTokuisaki.Focus();
-                }
-                else
-                {
-                    td.ShowDialog();
-                }
-            }
-            else
-            {
-                sbTokuisaki.Focus();
-            }
-        }
-        private void btnKouriren_Detail_Click(object sender, EventArgs e)
-        {
-            kd.ShowDialog();
-        }
-        private void btnDisplay_Click(object sender, EventArgs e)
-        {
-            FunctionProcedure(10);
-        }
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            FunctionProcedure(11);
-        }
-        private void btnConfirm_Click(object sender, EventArgs e)
-        {
-            FunctionProcedure(8);
-        }
-        private void DgvShukkasizi_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 11)
-            {
-                if (Convert.ToBoolean(dgvShukkasizi.Rows[e.RowIndex].Cells["chk"].EditedFormattedValue))
-                {
-                    Temp_Save(e.RowIndex);
-                    dgvShukkasizi.MoveNextCell();
-                }
-            }
-        }
-        private void dgvShukkasizi_Paint(object sender, PaintEventArgs e)
-        {
-            var col = dgvShukkasizi.Columns;
-            for (int i = 5; i < col.Count; i++)
-            {
-                while (i <= 10)
-                {
-                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    //dgvShukkasizi.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    ++i;
-                }
-                if (i == 11)
-                {
-                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    return;
-                }
-            }
-        }
-        private void DgvShukkasizi_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
-            {
-                if(cboMode.SelectedValue.ToString().Equals("2"))
-                {
-                    dtResult.Clear();
-                    dtTemp1.Clear();
-                }
-                Temp_Save(e.RowIndex);
-            }
-        }
+       
         //DataTable
         private void ShukkasiziNyuuryoku_Header_Select(DataTable dt)
         {
@@ -589,36 +513,155 @@ namespace ShukkaSiziNyuuryoku
             return dt;
         }
 
+        //Button_Click
+        private void btn_Tokuisaki_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(sbTokuisaki.Text) && td.Access_Tokuisaki_obj.TokuisakiCD != null)
+            {
+                if (!td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbTokuisaki.Text))
+                {
+
+                    bbl.ShowMessage("E269");
+                    sbTokuisaki.Focus();
+                }
+                else
+                {
+                    td.ShowDialog();
+                }
+            }
+            else
+            {
+                sbTokuisaki.Focus();
+            }
+        }
+        private void btnKouriren_Detail_Click(object sender, EventArgs e)
+        {
+            kd.ShowDialog();
+        }
+        private void btnDisplay_Click(object sender, EventArgs e)
+        {
+            FunctionProcedure(10);
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            FunctionProcedure(11);
+        }
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            FunctionProcedure(8);
+        }
+
+        //GV_Event
+        private void dgvShukkasizi_Paint(object sender, PaintEventArgs e)
+        {
+            var col = dgvShukkasizi.Columns;
+            for (int i = 5; i < col.Count; i++)
+            {
+                while (i <= 10)
+                {
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    //dgvShukkasizi.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    ++i;
+                }
+                if (i == 11)
+                {
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    return;
+                }
+            }
+        }
+        private void dgvShukkasizi_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != 0 && dgvShukkasizi.CurrentCell != null)
+            {
+                int row = dgvShukkasizi.CurrentCell.RowIndex;
+                int col = dgvShukkasizi.CurrentCell.ColumnIndex;
+                if (row >= 0 && col == 15)
+                {
+                    SoukoSearch ss = new SoukoSearch();
+                    ss.ShowDialog();
+
+                    if (!string.IsNullOrEmpty(ss.soukoCD))
+                    {
+                        dgvShukkasizi["SoukoCD", row].Value = ss.soukoCD.ToString();
+                        dgvShukkasizi["SoukoName", row].Value = ss.soukoName.ToString();
+                        Temp_Save(row);
+                    }
+                }
+            }
+        }
+        private void DgvShukkasizi_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
+            {
+                if (cboMode.SelectedValue.ToString().Equals("2"))
+                {
+                    dtResult.Clear();
+                    dtTemp1.Clear();
+                }
+                Temp_Save(e.RowIndex);
+            }
+        }
+        private void DgvShukkasizi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 11)
+            {
+                if (Convert.ToBoolean(dgvShukkasizi.Rows[e.RowIndex].Cells["chk"].EditedFormattedValue))
+                {
+                    Temp_Save(e.RowIndex);
+                    dgvShukkasizi.MoveNextCell();
+                }
+            }
+        }
+
         //KeyDown_Event
         private void sbShippingNO_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!sbShippingNO.IsErrorOccurs)
+                if (!sbShippingNO.IsErrorOccurs && (cboMode.SelectedValue.ToString() != "1"))
                 {
-                    if (cboMode.SelectedValue.ToString() == "2")
+                    if (cboMode.SelectedValue.ToString().Equals("2") || cboMode.SelectedValue.ToString().Equals("3"))
                     {
-                        cf.DisablePanel(PanelTitle);
-                        cf.EnablePanel(PanelDetail);
-                        txtShippingDate.Focus();
+                        if (ShippingNO_Check())
+                        {
+                            if (cboMode.SelectedValue.ToString().Equals("2"))
+                            {
+
+                                cf.DisablePanel(PanelTitle);
+                                cf.EnablePanel(PanelDetail);
+                                txtShippingDate.Focus();
+                                Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                                BtnF9.Visible = false;
+                            }
+                            else if (cboMode.SelectedValue.ToString().Equals("3"))
+                            {
+                                cf.DisablePanel(PanelTitle);
+                                Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                                BtnF9.Visible = false;
+                                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                                btnF12.Focus();
+                            }
+
+                            Update_Data();
+                        }
+                        else
+                        {
+                            bbl.ShowMessage("S004", ProgramID, OperatorCD);
+                            sbShippingNO.Focus();
+                        }
                     }
-                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    else if (cboMode.SelectedValue.ToString().Equals("4"))
                     {
                         cf.DisablePanel(PanelTitle);
                         Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
                         BtnF9.Visible = false;
-                        if (cboMode.SelectedValue.ToString() == "3")
-                        {
-                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-                            btnF12.Focus();
-                        }
+                        Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                        btnF12.Focus();
+
+                        Update_Data();
                     }
                 }
-                if(!sbShippingNO.IsErrorOccurs && (cboMode.SelectedValue.ToString() != "1"))
-                {
-                    Update_Data();
-                }
-                
             }
         }
         private void txtShippingDate_KeyDown(object sender, KeyEventArgs e)
@@ -662,6 +705,23 @@ namespace ShukkaSiziNyuuryoku
                         }                        
                     }
                 }                
+            }
+        }
+        private void sbTokuisaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                lblTokuisakiName.Text = string.Empty;
+
+                if (!sbTokuisaki.IsErrorOccurs)
+                {
+                    DataTable dt = sbTokuisaki.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                        td.Access_Tokuisaki_obj = Tokuisaki_Data_Select(dt);
+                    }
+                }
             }
         }
         private void sbKouriten_KeyDown(object sender, KeyEventArgs e)
@@ -710,6 +770,7 @@ namespace ShukkaSiziNyuuryoku
             }
 
         }
+
         //Error_Check
         private void Form_ErrorCheck()
         {
@@ -746,6 +807,7 @@ namespace ShukkaSiziNyuuryoku
                 sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
                 sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
                 sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null);
+                Temp_Null();
             }
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
@@ -753,7 +815,7 @@ namespace ShukkaSiziNyuuryoku
         }
         private bool Temp_Null()
         {
-            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp1.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && dtTemp1.Rows.Count == 0)          
+            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp1.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && dtTemp1.Rows.Count == 0)
             {
                 bbl.ShowMessage("E274");
                 return false;
@@ -866,27 +928,6 @@ namespace ShukkaSiziNyuuryoku
             }
             return true;
         }
-        private void sbTokuisaki_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(sbTokuisaki.Text))
-            {
-                lblTokuisakiName.Text = string.Empty;
-            }
-        }
-        private void sbTokuisaki_Leave(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(sbTokuisaki.Text))
-            {
-                lblTokuisakiName.Text = string.Empty;
-                TokuisakiBL tbl = new TokuisakiBL();
-                DataTable dt = new DataTable();
-                dt = tbl.M_Tokuisaki_Select(sbTokuisaki.Text, null, "E101");
-                if (dt.Rows[0]["MessageID"].ToString().Equals("E132"))
-                {
-                    td.Access_Tokuisaki_obj = Tokuisaki_Data_Select(dt);
-                }
-            }
-        }
         private void F11_Clear()
         {
             //txtJuchuuNo.Clear();
@@ -901,40 +942,6 @@ namespace ShukkaSiziNyuuryoku
             txtName.Clear();
         }
 
-        private void dgvShukkasizi_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void dgvShukkasizi_Enter(object sender, EventArgs e)
-        {
-         
-          
-        }
-
-        private void dgvShukkasizi_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if(e.ColumnIndex!=0 && dgvShukkasizi.CurrentCell!=null)
-            {
-                int row= dgvShukkasizi.CurrentCell.RowIndex;
-                int col = dgvShukkasizi.CurrentCell.ColumnIndex;
-                if (row >= 0 && col == 15)
-                {
-                    SoukoSearch ss = new SoukoSearch();
-                    ss.ShowDialog();
-
-                    if (!string.IsNullOrEmpty(ss.soukoCD))
-                    {
-                        dgvShukkasizi["SoukoCD", row].Value = ss.soukoCD.ToString();
-                        dgvShukkasizi["SoukoName", row].Value = ss.soukoName.ToString();
-                        Temp_Save(row);
-                    }
-                }
-            }
-        }
-
-       
-
         //Mode_Procedure
         private void FunctionProcedure(int tagID)
         {
@@ -944,7 +951,7 @@ namespace ShukkaSiziNyuuryoku
                     if (dtTemp1.Rows.Count > 0)
                     {
                         var dtConfirm = dtTemp1.AsEnumerable().OrderBy(r => r.Field<string>("SKMSNO")).ThenBy(r => r.Field<string>("ShouhinCD")).CopyToDataTable();
-                        dgvShukkasizi.DataSource = dtConfirm;
+                        dgvShukkasizi.DataSource = dtConfirm;  
                     }
                     else
                     {
@@ -974,7 +981,7 @@ namespace ShukkaSiziNyuuryoku
                             string JuchuuNO = dr["JuchuuNO"].ToString();
                             sksz_e = new ShukkaSiziNyuuryokuEntity();
                             sksz_e.DataKBN = 1;
-                            sksz_e.JuchuuNO = JuchuuNO;
+                            sksz_e.Number = JuchuuNO;
                             sksz_e.ProgramID = ProgramID;
                             sksz_e.PC = PCID;
                             sksz_e.OperatorCD = OperatorCD;
@@ -1006,6 +1013,23 @@ namespace ShukkaSiziNyuuryoku
                     }                    
                     break;
             }
+        }
+        private bool ShippingNO_Check()
+        {
+            sksz_e = new ShukkaSiziNyuuryokuEntity();
+            sksz_e.DataKBN = 12;
+            sksz_e.Number = sbShippingNO.Text;
+            sksz_e.ProgramID = ProgramID;
+            sksz_e.PC = PCID;
+            sksz_e.OperatorCD = OperatorCD;
+            DataTable dtshippingno = new DataTable();
+            sksz_bl = new ShukkasiziNyuuryokuBL();
+            dtshippingno = sksz_bl.D_Exclusive_Lock_Check(sksz_e);
+            if(dtshippingno.Rows[0]["MessageID"].ToString().Equals("1"))
+            {
+                return true;
+            }
+            return false;
         }
         private void JuchuuNO_Delete()
         {

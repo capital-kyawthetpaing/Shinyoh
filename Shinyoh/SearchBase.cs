@@ -131,6 +131,43 @@ namespace Shinyoh
         {
             PreviousCtrl = this.ActiveControl;
         }
-       
+
+
+        protected bool ErrorCheck(Panel panel)
+        {
+            Dictionary<int, Control> dic = new Dictionary<int, Control>();
+
+            foreach (Control ctrl in panel.Controls)
+            {
+                if (!(ctrl is Label))
+                    dic.Add(ctrl.TabIndex, ctrl);
+            }
+
+
+            foreach (KeyValuePair<int, Control> ctrldic in dic.OrderBy(key => key.Key))
+            {
+                Control ctrl = ctrldic.Value as Control;
+
+                if ((ctrl is STextBox))
+                {
+                    STextBox st = ctrl as STextBox;
+                    if (st.ErrorCheck())
+                        return false;
+                }
+                if (ctrl is SCombo)
+                {
+                    SCombo sc = ctrl as SCombo;
+                    if (sc.ErrorCheck())
+                        return false;
+                }
+                if (ctrl is SCheckBox)
+                {
+                    SCheckBox sch = ctrl as SCheckBox;
+                    if (sch.ErrorCheck())
+                        return false;
+                }
+            }
+            return true;
+        }
     }
 }

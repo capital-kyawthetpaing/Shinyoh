@@ -432,7 +432,7 @@
             this.txtLong_Name.IsRequire = false;
             this.txtLong_Name.IsUseInitializedLayout = true;
             this.txtLong_Name.Location = new System.Drawing.Point(143, 45);
-            this.txtLong_Name.MaxLength = 40;
+            this.txtLong_Name.MaxLength = 80;
             this.txtLong_Name.MinimumSize = new System.Drawing.Size(400, 19);
             this.txtLong_Name.MoveNext = true;
             this.txtLong_Name.Name = "txtLong_Name";

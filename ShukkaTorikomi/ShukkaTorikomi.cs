@@ -13,21 +13,23 @@ using System.Linq;
 
 namespace ShukkaTorikomi
 {
-    public partial class ShukkaTorikomi : BaseForm
+    public partial class SqlDbType : BaseForm
     {
         CommonFunction cf;
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
         ShukkaTorikomi_BL ShukkaTorikomi_BL;
         BaseBL bbl;
+        
 
-        public ShukkaTorikomi()
+        public SqlDbType()
         {
             InitializeComponent();
             cf = new CommonFunction();
             multi_Entity = new multipurposeEntity();
             
             bbl = new BaseBL();
+            ShukkaTorikomi_BL = new ShukkaTorikomi_BL();
         }
 
         private void ShukkaTorikomi_Load(object sender, EventArgs e)
@@ -64,7 +66,6 @@ namespace ShukkaTorikomi
             dataBind();
             gvTorikomi.UseRowNo(true);
         }
-
 
         private void dataBind()
         {
@@ -165,6 +166,7 @@ namespace ShukkaTorikomi
                             chk_val = "create_update";
                         else chk_val = "delete";
                         bl.CSV_M_ShukkaTorikomi_CUD(Xml, chk_val);
+                        bbl.ShowMessage("I101");
                     }
                 }
             }
@@ -352,13 +354,45 @@ namespace ShukkaTorikomi
                         dr[18] = error;
                         create_dt.Rows.Add(dr);
                     }
-                    if (create_dt.Rows.Count == csvRows.Length - 1)
-                    Xml = cf.DataTableToXml(create_dt);
-                   
-                    DataTable dt_Main = create_dt.AsEnumerable()
-                        .GroupBy(r => new {Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["TokuisakiRyakuName"], Col4 = r["KouritenRyakuName"], Col5 = r["DenpyouNO"], Col6 = r["ChangeDate"], Col7 = r["ShukkaDenpyouTekiyou"] })
-                        .Select (g => g.OrderBy(r => r["TokuisakiCD"]).First())
-                        .CopyToDataTable();
+                    //if (create_dt.Rows.Count == csvRows.Length - 1)
+                    //Xml = cf.DataTableToXml(create_dt);
+                    if (create_dt.Rows.Count>0)
+                    {
+                        DataTable dt_Main = create_dt.AsEnumerable()
+                              .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["TokuisakiRyakuName"], Col4 = r["KouritenRyakuName"], Col5 = r["DenpyouNO"], Col6 = r["ChangeDate"], Col7 = r["ShukkaDenpyouTekiyou"] })
+                              .Select(g => g.OrderBy(r => r["TokuisakiCD"]).First())
+                              .CopyToDataTable();
+
+                        create_dt.Columns.Add("ShukkaNO", typeof(string));
+                        create_dt.Columns.Add("ShukkaGyouNO", typeof(string));
+
+                        dt_Main.Columns.Add("ShukkaNO", typeof(string));
+
+                        for (int i = 0; i < dt_Main.Rows.Count; i++)
+                        {
+                            DataTable shukkano_dt = ShukkaTorikomi_BL.GetShukkaNO("1", dt_Main.Rows[i]["ChangeDate"].ToString(), "0");
+                            dt_Main.Rows[i]["ShukkaNO"] = shukkano_dt.Rows[0]["Column1"];
+                            string tokuisakiCD = dt_Main.Rows[i]["TokuisakiCD"].ToString();
+                            string kouritenCD = dt_Main.Rows[i]["KouritenCD"].ToString();
+                            string tokuisakiryakuName = dt_Main.Rows[i]["TokuisakiRyakuName"].ToString();
+                            string kouritenryakuName = dt_Main.Rows[i]["KouritenRyakuName"].ToString();
+                            string denpyouNO = dt_Main.Rows[i]["DenpyouNO"].ToString();
+                            string changeDate = dt_Main.Rows[i]["ChangeDate"].ToString();
+                            //string shukkadenpyouTekiyou =string.IsNullOrEmpty(dt_Main.Rows[i]["ShukkaDenpyouTekiyou"].ToString())?string.Empty: dt_Main.Rows[i]["ShukkaDenpyouTekiyou"].ToString();
+                            //DataRow[] select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "' and ChangeDate='" + changeDate + "' and ShukkaDenpyouTekiyou='"+shukkadenpyouTekiyou+"'");
+                            DataRow[] select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "' and ChangeDate='" + changeDate + "'");
+                            if (select_dr.Length > 0)
+                            {
+                                for (int j = 0; j < select_dr.Length; j++)
+                                {
+                                    select_dr[j]["ShukkaNO"] = shukkano_dt.Rows[0]["Column1"];
+                                    select_dr[j]["ShukkaGyouNO"] = j + 1;
+                                }
+                            }
+                        }
+
+                        Xml = cf.DataTableToXml(dt_Main);
+                    }
                 }
                 else
                 {
@@ -368,10 +402,6 @@ namespace ShukkaTorikomi
             }
             return Xml;
         }
-
-      
-       
-
         private bool Null_Check(string obj_text, int line_no, string error_msg)
         {
             bool bl = false;
