@@ -91,19 +91,18 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate,null);
 
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
-                    
+
 
                     txtCopyDate.E103Check(true);
                     txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
                     txtCopyDate.E133Check(true, "M_Kouriten", txtCopyCD, txtCopyDate, txtTokuisakiCD_Copy);
 
-                   // txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                    txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
-                    txtCopyCD.Enabled = true;
-                    txtCopyDate.Enabled = true;
                     txtTokuisakiCD_Copy.Enabled = true;
-
+                    //txtCopyCD.Enabled = true;
+                    //txtCopyDate.Enabled = true;
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     break;
@@ -894,7 +893,7 @@ namespace MasterTouroku_Kouriten
         private KouritenEntity From_DB_To_Kouriten(DataTable dt)
         {
             KouritenEntity obj = new KouritenEntity();
-            obj.TokuisakiCD = dt.Rows[0]["TokuisakiCD"].ToString();
+            obj.KouritenCD = txtKouritenCD.Text;
             return obj;
         }
 
@@ -902,15 +901,20 @@ namespace MasterTouroku_Kouriten
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if (!txtTokuisakiCD.IsErrorOccurs)
+                if (!txtKouritenCD.IsErrorOccurs)
                 {
-                    DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
+                    DataTable dt = txtKouritenCD.IsDatatableOccurs;
                     if (!string.IsNullOrWhiteSpace(txtKouritenCD.Text))
                     {
                         KS.Access_Kouriten_obj = From_DB_To_Kouriten(dt);
                     }
                 }
             }
+        }
+
+        private void txtTokuisakiCD_Enter(object sender, EventArgs e)
+        {
+            
         }
     }
 }

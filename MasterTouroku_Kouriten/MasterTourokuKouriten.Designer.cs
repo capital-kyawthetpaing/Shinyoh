@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtCopyDate = new Shinyoh_Controls.STextBox();
             this.txtChangeDate = new Shinyoh_Controls.STextBox();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.rdo_Registragion = new Shinyoh_Controls.SRadio();
@@ -42,6 +41,7 @@
             this.rdo_AliasKBN1 = new Shinyoh_Controls.SRadio();
             this.rdo_AliasKBN2 = new Shinyoh_Controls.SRadio();
             this.lblTitle = new Shinyoh_Controls.SLabel();
+            this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.chk_Flag = new Shinyoh_Controls.SCheckBox();
             this.lblSearch = new Shinyoh_Controls.SLabel();
@@ -91,11 +91,11 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.sLabel5 = new Shinyoh_Controls.SLabel();
             this.txtSystemDate = new Shinyoh_Controls.STextBox();
-            this.txtStaffCD = new Shinyoh_Search.SearchBox();
-            this.txtTokuisakiCD_Copy = new Shinyoh_Search.SearchBox();
             this.txtTokuisakiCD = new Shinyoh_Search.SearchBox();
-            this.txtCopyCD = new Shinyoh_Search.SearchBox();
             this.txtKouritenCD = new Shinyoh_Search.SearchBox();
+            this.txtTokuisakiCD_Copy = new Shinyoh_Search.SearchBox();
+            this.txtCopyCD = new Shinyoh_Search.SearchBox();
+            this.txtCopyDate = new Shinyoh_Controls.STextBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -117,11 +117,11 @@
             // 
             // PanelTitle
             // 
-            this.PanelTitle.Controls.Add(this.sLabel5);
+            this.PanelTitle.Controls.Add(this.txtCopyCD);
             this.PanelTitle.Controls.Add(this.txtTokuisakiCD_Copy);
+            this.PanelTitle.Controls.Add(this.sLabel5);
             this.PanelTitle.Controls.Add(this.txtTokuisakiCD);
             this.PanelTitle.Controls.Add(this.sLabel3);
-            this.PanelTitle.Controls.Add(this.txtCopyCD);
             this.PanelTitle.Controls.Add(this.txtKouritenCD);
             this.PanelTitle.Controls.Add(this.txtCopyDate);
             this.PanelTitle.Controls.Add(this.txtChangeDate);
@@ -137,33 +137,6 @@
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.Location = new System.Drawing.Point(31, 8);
             this.cboMode.NextControlName = "txtTokuisakiCD";
-            // 
-            // txtCopyDate
-            // 
-            this.txtCopyDate.AllowMinus = false;
-            this.txtCopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopyDate.DecimalPlace = 0;
-            this.txtCopyDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtCopyDate.DepandOnMode = true;
-            this.txtCopyDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCopyDate.IntegerPart = 0;
-            this.txtCopyDate.IsDatatableOccurs = null;
-            this.txtCopyDate.IsErrorOccurs = false;
-            this.txtCopyDate.IsRequire = false;
-            this.txtCopyDate.IsUseInitializedLayout = true;
-            this.txtCopyDate.Location = new System.Drawing.Point(370, 51);
-            this.txtCopyDate.MaxLength = 10;
-            this.txtCopyDate.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtCopyDate.MoveNext = true;
-            this.txtCopyDate.Name = "txtCopyDate";
-            this.txtCopyDate.NextControl = null;
-            this.txtCopyDate.NextControlName = "chk_Flag";
-            this.txtCopyDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtCopyDate.Size = new System.Drawing.Size(100, 19);
-            this.txtCopyDate.TabIndex = 6;
-            this.txtCopyDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
-            this.txtCopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyDate_KeyDown);
             // 
             // txtChangeDate
             // 
@@ -345,7 +318,7 @@
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1713, 838);
-            this.PanelDetail.TabIndex = 1;
+            this.PanelDetail.TabIndex = 0;
             // 
             // panel2
             // 
@@ -379,7 +352,7 @@
             this.rdo_AliasKBN2.NextControl = null;
             this.rdo_AliasKBN2.NextControlName = "txtYubin1";
             this.rdo_AliasKBN2.Size = new System.Drawing.Size(49, 19);
-            this.rdo_AliasKBN2.TabIndex = 12;
+            this.rdo_AliasKBN2.TabIndex = 11;
             this.rdo_AliasKBN2.Text = "御中\t\t";
             this.rdo_AliasKBN2.UseVisualStyleBackColor = true;
             this.rdo_AliasKBN2.CheckedChanged += new System.EventHandler(this.rdo_AliasKBN2_CheckedChanged);
@@ -397,6 +370,35 @@
             this.lblTitle.TabIndex = 75;
             this.lblTitle.Text = "敬称";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtStaffCD
+            // 
+            this.txtStaffCD.AllowMinus = false;
+            this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStaffCD.ChangeDate = null;
+            this.txtStaffCD.Combo = null;
+            this.txtStaffCD.DecimalPlace = 0;
+            this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtStaffCD.DepandOnMode = false;
+            this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtStaffCD.IntegerPart = 0;
+            this.txtStaffCD.IsDatatableOccurs = null;
+            this.txtStaffCD.IsErrorOccurs = false;
+            this.txtStaffCD.IsRequire = false;
+            this.txtStaffCD.IsUseInitializedLayout = true;
+            this.txtStaffCD.lblName = null;
+            this.txtStaffCD.Location = new System.Drawing.Point(126, 492);
+            this.txtStaffCD.MaxLength = 10;
+            this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
+            this.txtStaffCD.MoveNext = true;
+            this.txtStaffCD.Name = "txtStaffCD";
+            this.txtStaffCD.NextControl = null;
+            this.txtStaffCD.NextControlName = "txtStartDate";
+            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
+            this.txtStaffCD.TabIndex = 26;
+            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCD.TxtBox = null;
             // 
             // lblStaffCD_Name
             // 
@@ -463,7 +465,7 @@
             this.txtKensakuHyouziJun.NextControlName = "BtnF12";
             this.txtKensakuHyouziJun.SearchType = Entity.SearchType.ScType.None;
             this.txtKensakuHyouziJun.Size = new System.Drawing.Size(50, 19);
-            this.txtKensakuHyouziJun.TabIndex = 31;
+            this.txtKensakuHyouziJun.TabIndex = 30;
             this.txtKensakuHyouziJun.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtKensakuHyouziJun.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtKensakuHyouziJun.TextChanged += new System.EventHandler(this.txtKensakuHyouziJun_TextChanged);
@@ -503,7 +505,7 @@
             this.txtRemark.NextControlName = "txtKensakuHyouziJun";
             this.txtRemark.SearchType = Entity.SearchType.ScType.None;
             this.txtRemark.Size = new System.Drawing.Size(500, 19);
-            this.txtRemark.TabIndex = 30;
+            this.txtRemark.TabIndex = 29;
             this.txtRemark.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtEndDate
@@ -528,7 +530,7 @@
             this.txtEndDate.NextControlName = "txtRemark";
             this.txtEndDate.SearchType = Entity.SearchType.ScType.None;
             this.txtEndDate.Size = new System.Drawing.Size(100, 19);
-            this.txtEndDate.TabIndex = 29;
+            this.txtEndDate.TabIndex = 28;
             this.txtEndDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtEndDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -568,7 +570,7 @@
             this.txtStartDate.NextControlName = "txtEndDate";
             this.txtStartDate.SearchType = Entity.SearchType.ScType.None;
             this.txtStartDate.Size = new System.Drawing.Size(100, 19);
-            this.txtStartDate.TabIndex = 28;
+            this.txtStartDate.TabIndex = 27;
             this.txtStartDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStartDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -623,7 +625,7 @@
             this.txtMail.NextControlName = "txtStaffCD";
             this.txtMail.SearchType = Entity.SearchType.ScType.None;
             this.txtMail.Size = new System.Drawing.Size(630, 19);
-            this.txtMail.TabIndex = 26;
+            this.txtMail.TabIndex = 25;
             this.txtMail.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblMail
@@ -662,7 +664,7 @@
             this.txtTantoushaName.NextControlName = "txtMail";
             this.txtTantoushaName.SearchType = Entity.SearchType.ScType.None;
             this.txtTantoushaName.Size = new System.Drawing.Size(250, 19);
-            this.txtTantoushaName.TabIndex = 25;
+            this.txtTantoushaName.TabIndex = 24;
             this.txtTantoushaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblChargeName
@@ -701,7 +703,7 @@
             this.txtTantouYakushoku.NextControlName = "txtTantoushaName";
             this.txtTantouYakushoku.SearchType = Entity.SearchType.ScType.None;
             this.txtTantouYakushoku.Size = new System.Drawing.Size(250, 19);
-            this.txtTantouYakushoku.TabIndex = 24;
+            this.txtTantouYakushoku.TabIndex = 23;
             this.txtTantouYakushoku.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblJob
@@ -740,7 +742,7 @@
             this.txtTantouBusho.NextControlName = "txtTantouYakushoku";
             this.txtTantouBusho.SearchType = Entity.SearchType.ScType.None;
             this.txtTantouBusho.Size = new System.Drawing.Size(250, 19);
-            this.txtTantouBusho.TabIndex = 23;
+            this.txtTantouBusho.TabIndex = 22;
             this.txtTantouBusho.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblCharge
@@ -799,7 +801,7 @@
             this.txtPhone2_3.NextControlName = "txtTantouBusho";
             this.txtPhone2_3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone2_3.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone2_3.TabIndex = 22;
+            this.txtPhone2_3.TabIndex = 21;
             this.txtPhone2_3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhone2_2
@@ -824,7 +826,7 @@
             this.txtPhone2_2.NextControlName = "txtPhone2_3";
             this.txtPhone2_2.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone2_2.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone2_2.TabIndex = 21;
+            this.txtPhone2_2.TabIndex = 20;
             this.txtPhone2_2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhone2_1
@@ -849,7 +851,7 @@
             this.txtPhone2_1.NextControlName = "txtPhone2_2";
             this.txtPhone2_1.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone2_1.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone2_1.TabIndex = 20;
+            this.txtPhone2_1.TabIndex = 19;
             this.txtPhone2_1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhone2
@@ -908,7 +910,7 @@
             this.txtPhone1_3.NextControlName = "txtPhone2_1";
             this.txtPhone1_3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone1_3.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone1_3.TabIndex = 19;
+            this.txtPhone1_3.TabIndex = 18;
             this.txtPhone1_3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhone1_2
@@ -933,7 +935,7 @@
             this.txtPhone1_2.NextControlName = "txtPhone1_3";
             this.txtPhone1_2.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone1_2.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone1_2.TabIndex = 18;
+            this.txtPhone1_2.TabIndex = 17;
             this.txtPhone1_2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhone1_1
@@ -958,7 +960,7 @@
             this.txtPhone1_1.NextControlName = "txtPhone1_2";
             this.txtPhone1_1.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone1_1.Size = new System.Drawing.Size(60, 19);
-            this.txtPhone1_1.TabIndex = 17;
+            this.txtPhone1_1.TabIndex = 16;
             this.txtPhone1_1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhone1
@@ -997,7 +999,7 @@
             this.txtAddress2.NextControlName = "txtPhone1_1";
             this.txtAddress2.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress2.Size = new System.Drawing.Size(500, 19);
-            this.txtAddress2.TabIndex = 16;
+            this.txtAddress2.TabIndex = 15;
             this.txtAddress2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress2
@@ -1036,7 +1038,7 @@
             this.txtAddress1.NextControlName = "txtAddress2";
             this.txtAddress1.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress1.Size = new System.Drawing.Size(500, 19);
-            this.txtAddress1.TabIndex = 15;
+            this.txtAddress1.TabIndex = 14;
             this.txtAddress1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress1
@@ -1075,7 +1077,7 @@
             this.txtYubin2.NextControlName = "txtAddress1";
             this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin2.Size = new System.Drawing.Size(50, 19);
-            this.txtYubin2.TabIndex = 14;
+            this.txtYubin2.TabIndex = 13;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
             // 
@@ -1101,7 +1103,7 @@
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin1.Size = new System.Drawing.Size(30, 19);
-            this.txtYubin1.TabIndex = 13;
+            this.txtYubin1.TabIndex = 12;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblYubinNo
@@ -1125,7 +1127,7 @@
             this.label1.Location = new System.Drawing.Point(169, 190);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
-            this.label1.TabIndex = 33;
+            this.label1.TabIndex = 4;
             this.label1.Text = "-";
             // 
             // txtKanaName
@@ -1312,64 +1314,6 @@
             this.txtSystemDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtSystemDate.Visible = false;
             // 
-            // txtStaffCD
-            // 
-            this.txtStaffCD.AllowMinus = false;
-            this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaffCD.ChangeDate = null;
-            this.txtStaffCD.Combo = null;
-            this.txtStaffCD.DecimalPlace = 0;
-            this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtStaffCD.DepandOnMode = false;
-            this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaffCD.IntegerPart = 0;
-            this.txtStaffCD.IsDatatableOccurs = null;
-            this.txtStaffCD.IsErrorOccurs = false;
-            this.txtStaffCD.IsRequire = false;
-            this.txtStaffCD.IsUseInitializedLayout = true;
-            this.txtStaffCD.lblName = null;
-            this.txtStaffCD.Location = new System.Drawing.Point(126, 492);
-            this.txtStaffCD.MaxLength = 10;
-            this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
-            this.txtStaffCD.MoveNext = true;
-            this.txtStaffCD.Name = "txtStaffCD";
-            this.txtStaffCD.NextControl = null;
-            this.txtStaffCD.NextControlName = "txtStartDate";
-            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
-            this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
-            this.txtStaffCD.TabIndex = 27;
-            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaffCD.TxtBox = null;
-            // 
-            // txtTokuisakiCD_Copy
-            // 
-            this.txtTokuisakiCD_Copy.AllowMinus = false;
-            this.txtTokuisakiCD_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTokuisakiCD_Copy.ChangeDate = null;
-            this.txtTokuisakiCD_Copy.Combo = null;
-            this.txtTokuisakiCD_Copy.DecimalPlace = 0;
-            this.txtTokuisakiCD_Copy.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtTokuisakiCD_Copy.DepandOnMode = false;
-            this.txtTokuisakiCD_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtTokuisakiCD_Copy.IntegerPart = 0;
-            this.txtTokuisakiCD_Copy.IsDatatableOccurs = null;
-            this.txtTokuisakiCD_Copy.IsErrorOccurs = false;
-            this.txtTokuisakiCD_Copy.IsRequire = false;
-            this.txtTokuisakiCD_Copy.IsUseInitializedLayout = true;
-            this.txtTokuisakiCD_Copy.lblName = null;
-            this.txtTokuisakiCD_Copy.Location = new System.Drawing.Point(370, 3);
-            this.txtTokuisakiCD_Copy.MaxLength = 10;
-            this.txtTokuisakiCD_Copy.MinimumSize = new System.Drawing.Size(90, 19);
-            this.txtTokuisakiCD_Copy.MoveNext = true;
-            this.txtTokuisakiCD_Copy.Name = "txtTokuisakiCD_Copy";
-            this.txtTokuisakiCD_Copy.NextControl = null;
-            this.txtTokuisakiCD_Copy.NextControlName = "txtCopyCD";
-            this.txtTokuisakiCD_Copy.SearchType = Entity.SearchType.ScType.Tokuisaki;
-            this.txtTokuisakiCD_Copy.Size = new System.Drawing.Size(90, 19);
-            this.txtTokuisakiCD_Copy.TabIndex = 4;
-            this.txtTokuisakiCD_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtTokuisakiCD_Copy.TxtBox = null;
-            // 
             // txtTokuisakiCD
             // 
             this.txtTokuisakiCD.AllowMinus = false;
@@ -1398,35 +1342,7 @@
             this.txtTokuisakiCD.TabIndex = 1;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD.TxtBox = null;
-            // 
-            // txtCopyCD
-            // 
-            this.txtCopyCD.AllowMinus = false;
-            this.txtCopyCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopyCD.ChangeDate = null;
-            this.txtCopyCD.Combo = null;
-            this.txtCopyCD.DecimalPlace = 0;
-            this.txtCopyCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtCopyCD.DepandOnMode = false;
-            this.txtCopyCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCopyCD.IntegerPart = 0;
-            this.txtCopyCD.IsDatatableOccurs = null;
-            this.txtCopyCD.IsErrorOccurs = false;
-            this.txtCopyCD.IsRequire = false;
-            this.txtCopyCD.IsUseInitializedLayout = true;
-            this.txtCopyCD.lblName = null;
-            this.txtCopyCD.Location = new System.Drawing.Point(370, 27);
-            this.txtCopyCD.MaxLength = 10;
-            this.txtCopyCD.MinimumSize = new System.Drawing.Size(90, 19);
-            this.txtCopyCD.MoveNext = true;
-            this.txtCopyCD.Name = "txtCopyCD";
-            this.txtCopyCD.NextControl = null;
-            this.txtCopyCD.NextControlName = "txtCopyDate";
-            this.txtCopyCD.SearchType = Entity.SearchType.ScType.Kouriten;
-            this.txtCopyCD.Size = new System.Drawing.Size(90, 19);
-            this.txtCopyCD.TabIndex = 5;
-            this.txtCopyCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtCopyCD.TxtBox = null;
+            this.txtTokuisakiCD.Enter += new System.EventHandler(this.txtTokuisakiCD_Enter);
             // 
             // txtKouritenCD
             // 
@@ -1458,6 +1374,91 @@
             this.txtKouritenCD.TxtBox = null;
             this.txtKouritenCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKouritenCD_KeyDown);
             // 
+            // txtTokuisakiCD_Copy
+            // 
+            this.txtTokuisakiCD_Copy.AllowMinus = false;
+            this.txtTokuisakiCD_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTokuisakiCD_Copy.ChangeDate = null;
+            this.txtTokuisakiCD_Copy.Combo = null;
+            this.txtTokuisakiCD_Copy.DecimalPlace = 0;
+            this.txtTokuisakiCD_Copy.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtTokuisakiCD_Copy.DepandOnMode = true;
+            this.txtTokuisakiCD_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtTokuisakiCD_Copy.IntegerPart = 0;
+            this.txtTokuisakiCD_Copy.IsDatatableOccurs = null;
+            this.txtTokuisakiCD_Copy.IsErrorOccurs = false;
+            this.txtTokuisakiCD_Copy.IsRequire = false;
+            this.txtTokuisakiCD_Copy.IsUseInitializedLayout = true;
+            this.txtTokuisakiCD_Copy.lblName = null;
+            this.txtTokuisakiCD_Copy.Location = new System.Drawing.Point(370, 3);
+            this.txtTokuisakiCD_Copy.MaxLength = 10;
+            this.txtTokuisakiCD_Copy.MinimumSize = new System.Drawing.Size(90, 19);
+            this.txtTokuisakiCD_Copy.MoveNext = true;
+            this.txtTokuisakiCD_Copy.Name = "txtTokuisakiCD_Copy";
+            this.txtTokuisakiCD_Copy.NextControl = null;
+            this.txtTokuisakiCD_Copy.NextControlName = "txtCopyCD";
+            this.txtTokuisakiCD_Copy.SearchType = Entity.SearchType.ScType.Tokuisaki;
+            this.txtTokuisakiCD_Copy.Size = new System.Drawing.Size(90, 19);
+            this.txtTokuisakiCD_Copy.TabIndex = 4;
+            this.txtTokuisakiCD_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTokuisakiCD_Copy.TxtBox = null;
+            // 
+            // txtCopyCD
+            // 
+            this.txtCopyCD.AllowMinus = false;
+            this.txtCopyCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCopyCD.ChangeDate = null;
+            this.txtCopyCD.Combo = null;
+            this.txtCopyCD.DecimalPlace = 0;
+            this.txtCopyCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtCopyCD.DepandOnMode = true;
+            this.txtCopyCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtCopyCD.IntegerPart = 0;
+            this.txtCopyCD.IsDatatableOccurs = null;
+            this.txtCopyCD.IsErrorOccurs = false;
+            this.txtCopyCD.IsRequire = false;
+            this.txtCopyCD.IsUseInitializedLayout = true;
+            this.txtCopyCD.lblName = null;
+            this.txtCopyCD.Location = new System.Drawing.Point(370, 27);
+            this.txtCopyCD.MaxLength = 10;
+            this.txtCopyCD.MinimumSize = new System.Drawing.Size(90, 19);
+            this.txtCopyCD.MoveNext = true;
+            this.txtCopyCD.Name = "txtCopyCD";
+            this.txtCopyCD.NextControl = null;
+            this.txtCopyCD.NextControlName = "txtCopyDate";
+            this.txtCopyCD.SearchType = Entity.SearchType.ScType.Kouriten;
+            this.txtCopyCD.Size = new System.Drawing.Size(90, 19);
+            this.txtCopyCD.TabIndex = 5;
+            this.txtCopyCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtCopyCD.TxtBox = null;
+            // 
+            // txtCopyDate
+            // 
+            this.txtCopyDate.AllowMinus = false;
+            this.txtCopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCopyDate.DecimalPlace = 0;
+            this.txtCopyDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtCopyDate.DepandOnMode = true;
+            this.txtCopyDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtCopyDate.IntegerPart = 0;
+            this.txtCopyDate.IsDatatableOccurs = null;
+            this.txtCopyDate.IsErrorOccurs = false;
+            this.txtCopyDate.IsRequire = false;
+            this.txtCopyDate.IsUseInitializedLayout = true;
+            this.txtCopyDate.Location = new System.Drawing.Point(370, 51);
+            this.txtCopyDate.MaxLength = 10;
+            this.txtCopyDate.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtCopyDate.MoveNext = true;
+            this.txtCopyDate.Name = "txtCopyDate";
+            this.txtCopyDate.NextControl = null;
+            this.txtCopyDate.NextControlName = "chk_Flag";
+            this.txtCopyDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtCopyDate.Size = new System.Drawing.Size(100, 19);
+            this.txtCopyDate.TabIndex = 6;
+            this.txtCopyDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtCopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyDate_KeyDown);
+            // 
             // MasterTourokuKouriten
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1481,8 +1482,6 @@
         }
 
         #endregion
-
-        private Shinyoh_Controls.STextBox txtCopyDate;
         private Shinyoh_Controls.STextBox txtChangeDate;
         private Shinyoh_Controls.SRadio rdo_Delete;
         private Shinyoh_Controls.SRadio rdo_Registragion;
@@ -1491,7 +1490,6 @@
         private Shinyoh_Controls.SLabel lblCopyCD;
         private Shinyoh_Controls.SLabel lblChangeDate;
         private Shinyoh_Controls.SLabel lblKouriten;
-        private Shinyoh_Search.SearchBox txtCopyCD;
         private Shinyoh_Search.SearchBox txtKouritenCD;
         private System.Windows.Forms.Panel PanelDetail;
         private Shinyoh_Search.SearchBox txtStaffCD;
@@ -1545,11 +1543,13 @@
         private Shinyoh_Controls.SRadio rdo_AliasKBN1;
         private Shinyoh_Controls.SLabel lblTitle;
         private Shinyoh_Controls.SLabel sLabel5;
-        private Shinyoh_Search.SearchBox txtTokuisakiCD_Copy;
         private Shinyoh_Search.SearchBox txtTokuisakiCD;
         private Shinyoh_Controls.SLabel sLabel3;
         private Shinyoh_Controls.STextBox txtSystemDate;
         private System.Windows.Forms.Panel panel2;
+        private Shinyoh_Search.SearchBox txtTokuisakiCD_Copy;
+        private Shinyoh_Search.SearchBox txtCopyCD;
+        private Shinyoh_Controls.STextBox txtCopyDate;
     }
 }
 

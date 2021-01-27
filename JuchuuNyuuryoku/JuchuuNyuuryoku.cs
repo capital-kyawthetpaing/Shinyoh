@@ -225,6 +225,9 @@ namespace JuchuuNyuuryoku
                 cboMode.NextControlName = txtJuchuuNO.Name;
                 txtJuchuuNO.Focus();
             }
+            sobj = new SiiresakiDetail();
+            kobj = new KouritenDetail();
+            tobj = new TokuisakiDetail();
         }
 
         public void Disable_UDI_Mode()
@@ -892,6 +895,17 @@ namespace JuchuuNyuuryoku
 
                 gv_JuchuuNyuuryoku[column, row].Value = detail.SiiresakiCD.ToString();
                 gv_JuchuuNyuuryoku[column + 1, row].Value = detail.SiiresakiName.ToString();
+
+                SiiresakiBL BL = new SiiresakiBL();
+                DataTable dt = BL.Siiresaki_Select_Check(detail.SiiresakiCD.ToString(), txtJuchuuDate.Text, "E101");
+                if(dt.Rows.Count>0)
+                {
+                    DataGridViewRow selectedRow = null;
+                    int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
+                    selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
+
+                    sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
+                }
             }
         }
 
@@ -1378,8 +1392,8 @@ namespace JuchuuNyuuryoku
             // if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colFree" || gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colJuchuuMeisaiTekiyou" || gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colSenpouHacchuuNO")
             // gv_JuchuuNyuuryoku.MoveNextCell();
 
-            if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colFree")
-                gv_JuchuuNyuuryoku.MoveNextCell();
+           //  if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colFree")
+               // gv_JuchuuNyuuryoku.MoveNextCell();
 
             if (gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colJuchuuSuu")
             {
