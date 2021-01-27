@@ -529,7 +529,7 @@ namespace ShukkaNyuuryoku {
             txtStaff.E101Check(true, "M_Staff", txtStaff, txtShukkaDate, null);
             txtStaff.E135Check(true, "M_Staff", txtStaff, txtShukkaDate);
 
-            txtShukkaSijiNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaSijiNo, null, null);
+            //txtShukkaSijiNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaSijiNo, null, null);
 
             txtShukkaYoteiDate1.E103Check(true);
             txtShukkaYoteiDate2.E103Check(true);
@@ -696,7 +696,7 @@ namespace ShukkaNyuuryoku {
             foreach (DataGridViewRow gv in gvShukka1.Rows)
             {
                 string value = gv.Cells["colKonkai"].EditedFormattedValue.ToString().Replace(",", "");
-                if (Convert.ToInt32(value) < 0)
+                if (Convert.ToDecimal(value) < 0)
                 {
                     bbl.ShowMessage("E109");
                     return false;
