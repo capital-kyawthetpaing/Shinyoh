@@ -41,7 +41,6 @@
             this.rdo_AliasKBN1 = new Shinyoh_Controls.SRadio();
             this.rdo_AliasKBN2 = new Shinyoh_Controls.SRadio();
             this.lblTitle = new Shinyoh_Controls.SLabel();
-            this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.chk_Flag = new Shinyoh_Controls.SCheckBox();
             this.lblSearch = new Shinyoh_Controls.SLabel();
@@ -91,11 +90,12 @@
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.sLabel5 = new Shinyoh_Controls.SLabel();
             this.txtSystemDate = new Shinyoh_Controls.STextBox();
+            this.txtCopyDate = new Shinyoh_Controls.STextBox();
+            this.txtStaffCD = new Shinyoh_Search.SearchBox();
+            this.txtCopyCD = new Shinyoh_Search.SearchBox();
+            this.txtTokuisakiCD_Copy = new Shinyoh_Search.SearchBox();
             this.txtTokuisakiCD = new Shinyoh_Search.SearchBox();
             this.txtKouritenCD = new Shinyoh_Search.SearchBox();
-            this.txtTokuisakiCD_Copy = new Shinyoh_Search.SearchBox();
-            this.txtCopyCD = new Shinyoh_Search.SearchBox();
-            this.txtCopyDate = new Shinyoh_Controls.STextBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -370,35 +370,6 @@
             this.lblTitle.TabIndex = 75;
             this.lblTitle.Text = "敬称";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtStaffCD
-            // 
-            this.txtStaffCD.AllowMinus = false;
-            this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaffCD.ChangeDate = null;
-            this.txtStaffCD.Combo = null;
-            this.txtStaffCD.DecimalPlace = 0;
-            this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtStaffCD.DepandOnMode = false;
-            this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaffCD.IntegerPart = 0;
-            this.txtStaffCD.IsDatatableOccurs = null;
-            this.txtStaffCD.IsErrorOccurs = false;
-            this.txtStaffCD.IsRequire = false;
-            this.txtStaffCD.IsUseInitializedLayout = true;
-            this.txtStaffCD.lblName = null;
-            this.txtStaffCD.Location = new System.Drawing.Point(126, 492);
-            this.txtStaffCD.MaxLength = 10;
-            this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
-            this.txtStaffCD.MoveNext = true;
-            this.txtStaffCD.Name = "txtStaffCD";
-            this.txtStaffCD.NextControl = null;
-            this.txtStaffCD.NextControlName = "txtStartDate";
-            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
-            this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
-            this.txtStaffCD.TabIndex = 26;
-            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaffCD.TxtBox = null;
             // 
             // lblStaffCD_Name
             // 
@@ -1314,94 +1285,61 @@
             this.txtSystemDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtSystemDate.Visible = false;
             // 
-            // txtTokuisakiCD
+            // txtCopyDate
             // 
-            this.txtTokuisakiCD.AllowMinus = false;
-            this.txtTokuisakiCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTokuisakiCD.ChangeDate = null;
-            this.txtTokuisakiCD.Combo = null;
-            this.txtTokuisakiCD.DecimalPlace = 0;
-            this.txtTokuisakiCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtTokuisakiCD.DepandOnMode = true;
-            this.txtTokuisakiCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtTokuisakiCD.IntegerPart = 0;
-            this.txtTokuisakiCD.IsDatatableOccurs = null;
-            this.txtTokuisakiCD.IsErrorOccurs = false;
-            this.txtTokuisakiCD.IsRequire = false;
-            this.txtTokuisakiCD.IsUseInitializedLayout = true;
-            this.txtTokuisakiCD.lblName = null;
-            this.txtTokuisakiCD.Location = new System.Drawing.Point(118, 3);
-            this.txtTokuisakiCD.MaxLength = 10;
-            this.txtTokuisakiCD.MinimumSize = new System.Drawing.Size(90, 19);
-            this.txtTokuisakiCD.MoveNext = true;
-            this.txtTokuisakiCD.Name = "txtTokuisakiCD";
-            this.txtTokuisakiCD.NextControl = null;
-            this.txtTokuisakiCD.NextControlName = "txtKouritenCD";
-            this.txtTokuisakiCD.SearchType = Entity.SearchType.ScType.Tokuisaki;
-            this.txtTokuisakiCD.Size = new System.Drawing.Size(90, 19);
-            this.txtTokuisakiCD.TabIndex = 1;
-            this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtTokuisakiCD.TxtBox = null;
-            this.txtTokuisakiCD.Enter += new System.EventHandler(this.txtTokuisakiCD_Enter);
+            this.txtCopyDate.AllowMinus = false;
+            this.txtCopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCopyDate.DecimalPlace = 0;
+            this.txtCopyDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtCopyDate.DepandOnMode = true;
+            this.txtCopyDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtCopyDate.IntegerPart = 0;
+            this.txtCopyDate.IsDatatableOccurs = null;
+            this.txtCopyDate.IsErrorOccurs = false;
+            this.txtCopyDate.IsRequire = false;
+            this.txtCopyDate.IsUseInitializedLayout = true;
+            this.txtCopyDate.Location = new System.Drawing.Point(370, 51);
+            this.txtCopyDate.MaxLength = 10;
+            this.txtCopyDate.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtCopyDate.MoveNext = true;
+            this.txtCopyDate.Name = "txtCopyDate";
+            this.txtCopyDate.NextControl = null;
+            this.txtCopyDate.NextControlName = "chk_Flag";
+            this.txtCopyDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtCopyDate.Size = new System.Drawing.Size(100, 19);
+            this.txtCopyDate.TabIndex = 6;
+            this.txtCopyDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtCopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyDate_KeyDown);
             // 
-            // txtKouritenCD
+            // txtStaffCD
             // 
-            this.txtKouritenCD.AllowMinus = false;
-            this.txtKouritenCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtKouritenCD.ChangeDate = null;
-            this.txtKouritenCD.Combo = null;
-            this.txtKouritenCD.DecimalPlace = 0;
-            this.txtKouritenCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtKouritenCD.DepandOnMode = true;
-            this.txtKouritenCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtKouritenCD.IntegerPart = 0;
-            this.txtKouritenCD.IsDatatableOccurs = null;
-            this.txtKouritenCD.IsErrorOccurs = false;
-            this.txtKouritenCD.IsRequire = false;
-            this.txtKouritenCD.IsUseInitializedLayout = true;
-            this.txtKouritenCD.lblName = null;
-            this.txtKouritenCD.Location = new System.Drawing.Point(118, 27);
-            this.txtKouritenCD.MaxLength = 10;
-            this.txtKouritenCD.MinimumSize = new System.Drawing.Size(90, 19);
-            this.txtKouritenCD.MoveNext = true;
-            this.txtKouritenCD.Name = "txtKouritenCD";
-            this.txtKouritenCD.NextControl = null;
-            this.txtKouritenCD.NextControlName = "txtChangeDate";
-            this.txtKouritenCD.SearchType = Entity.SearchType.ScType.Kouriten;
-            this.txtKouritenCD.Size = new System.Drawing.Size(90, 19);
-            this.txtKouritenCD.TabIndex = 2;
-            this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtKouritenCD.TxtBox = null;
-            this.txtKouritenCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKouritenCD_KeyDown);
-            // 
-            // txtTokuisakiCD_Copy
-            // 
-            this.txtTokuisakiCD_Copy.AllowMinus = false;
-            this.txtTokuisakiCD_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTokuisakiCD_Copy.ChangeDate = null;
-            this.txtTokuisakiCD_Copy.Combo = null;
-            this.txtTokuisakiCD_Copy.DecimalPlace = 0;
-            this.txtTokuisakiCD_Copy.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtTokuisakiCD_Copy.DepandOnMode = true;
-            this.txtTokuisakiCD_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtTokuisakiCD_Copy.IntegerPart = 0;
-            this.txtTokuisakiCD_Copy.IsDatatableOccurs = null;
-            this.txtTokuisakiCD_Copy.IsErrorOccurs = false;
-            this.txtTokuisakiCD_Copy.IsRequire = false;
-            this.txtTokuisakiCD_Copy.IsUseInitializedLayout = true;
-            this.txtTokuisakiCD_Copy.lblName = null;
-            this.txtTokuisakiCD_Copy.Location = new System.Drawing.Point(370, 3);
-            this.txtTokuisakiCD_Copy.MaxLength = 10;
-            this.txtTokuisakiCD_Copy.MinimumSize = new System.Drawing.Size(90, 19);
-            this.txtTokuisakiCD_Copy.MoveNext = true;
-            this.txtTokuisakiCD_Copy.Name = "txtTokuisakiCD_Copy";
-            this.txtTokuisakiCD_Copy.NextControl = null;
-            this.txtTokuisakiCD_Copy.NextControlName = "txtCopyCD";
-            this.txtTokuisakiCD_Copy.SearchType = Entity.SearchType.ScType.Tokuisaki;
-            this.txtTokuisakiCD_Copy.Size = new System.Drawing.Size(90, 19);
-            this.txtTokuisakiCD_Copy.TabIndex = 4;
-            this.txtTokuisakiCD_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtTokuisakiCD_Copy.TxtBox = null;
+            this.txtStaffCD.AllowMinus = false;
+            this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStaffCD.ChangeDate = null;
+            this.txtStaffCD.Combo = null;
+            this.txtStaffCD.DecimalPlace = 0;
+            this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtStaffCD.DepandOnMode = false;
+            this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtStaffCD.IntegerPart = 0;
+            this.txtStaffCD.IsDatatableOccurs = null;
+            this.txtStaffCD.IsErrorOccurs = false;
+            this.txtStaffCD.IsRequire = false;
+            this.txtStaffCD.IsUseInitializedLayout = true;
+            this.txtStaffCD.lblName = null;
+            this.txtStaffCD.Location = new System.Drawing.Point(126, 492);
+            this.txtStaffCD.MaxLength = 10;
+            this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
+            this.txtStaffCD.MoveNext = true;
+            this.txtStaffCD.Name = "txtStaffCD";
+            this.txtStaffCD.NextControl = null;
+            this.txtStaffCD.NextControlName = "txtStartDate";
+            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
+            this.txtStaffCD.TabIndex = 26;
+            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCD.TxtBox = null;
             // 
             // txtCopyCD
             // 
@@ -1432,32 +1370,92 @@
             this.txtCopyCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtCopyCD.TxtBox = null;
             // 
-            // txtCopyDate
+            // txtTokuisakiCD_Copy
             // 
-            this.txtCopyDate.AllowMinus = false;
-            this.txtCopyDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCopyDate.DecimalPlace = 0;
-            this.txtCopyDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtCopyDate.DepandOnMode = true;
-            this.txtCopyDate.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtCopyDate.IntegerPart = 0;
-            this.txtCopyDate.IsDatatableOccurs = null;
-            this.txtCopyDate.IsErrorOccurs = false;
-            this.txtCopyDate.IsRequire = false;
-            this.txtCopyDate.IsUseInitializedLayout = true;
-            this.txtCopyDate.Location = new System.Drawing.Point(370, 51);
-            this.txtCopyDate.MaxLength = 10;
-            this.txtCopyDate.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtCopyDate.MoveNext = true;
-            this.txtCopyDate.Name = "txtCopyDate";
-            this.txtCopyDate.NextControl = null;
-            this.txtCopyDate.NextControlName = "chk_Flag";
-            this.txtCopyDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtCopyDate.Size = new System.Drawing.Size(100, 19);
-            this.txtCopyDate.TabIndex = 6;
-            this.txtCopyDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtCopyDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
-            this.txtCopyDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopyDate_KeyDown);
+            this.txtTokuisakiCD_Copy.AllowMinus = false;
+            this.txtTokuisakiCD_Copy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTokuisakiCD_Copy.ChangeDate = null;
+            this.txtTokuisakiCD_Copy.Combo = null;
+            this.txtTokuisakiCD_Copy.DecimalPlace = 0;
+            this.txtTokuisakiCD_Copy.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtTokuisakiCD_Copy.DepandOnMode = true;
+            this.txtTokuisakiCD_Copy.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtTokuisakiCD_Copy.IntegerPart = 0;
+            this.txtTokuisakiCD_Copy.IsDatatableOccurs = null;
+            this.txtTokuisakiCD_Copy.IsErrorOccurs = false;
+            this.txtTokuisakiCD_Copy.IsRequire = false;
+            this.txtTokuisakiCD_Copy.IsUseInitializedLayout = true;
+            this.txtTokuisakiCD_Copy.lblName = null;
+            this.txtTokuisakiCD_Copy.Location = new System.Drawing.Point(370, 3);
+            this.txtTokuisakiCD_Copy.MaxLength = 10;
+            this.txtTokuisakiCD_Copy.MinimumSize = new System.Drawing.Size(90, 19);
+            this.txtTokuisakiCD_Copy.MoveNext = true;
+            this.txtTokuisakiCD_Copy.Name = "txtTokuisakiCD_Copy";
+            this.txtTokuisakiCD_Copy.NextControl = null;
+            this.txtTokuisakiCD_Copy.NextControlName = "txtCopyCD";
+            this.txtTokuisakiCD_Copy.SearchType = Entity.SearchType.ScType.Tokuisaki;
+            this.txtTokuisakiCD_Copy.Size = new System.Drawing.Size(90, 19);
+            this.txtTokuisakiCD_Copy.TabIndex = 4;
+            this.txtTokuisakiCD_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTokuisakiCD_Copy.TxtBox = null;
+            // 
+            // txtTokuisakiCD
+            // 
+            this.txtTokuisakiCD.AllowMinus = false;
+            this.txtTokuisakiCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTokuisakiCD.ChangeDate = null;
+            this.txtTokuisakiCD.Combo = null;
+            this.txtTokuisakiCD.DecimalPlace = 0;
+            this.txtTokuisakiCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtTokuisakiCD.DepandOnMode = true;
+            this.txtTokuisakiCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtTokuisakiCD.IntegerPart = 0;
+            this.txtTokuisakiCD.IsDatatableOccurs = null;
+            this.txtTokuisakiCD.IsErrorOccurs = false;
+            this.txtTokuisakiCD.IsRequire = false;
+            this.txtTokuisakiCD.IsUseInitializedLayout = true;
+            this.txtTokuisakiCD.lblName = null;
+            this.txtTokuisakiCD.Location = new System.Drawing.Point(118, 3);
+            this.txtTokuisakiCD.MaxLength = 10;
+            this.txtTokuisakiCD.MinimumSize = new System.Drawing.Size(90, 19);
+            this.txtTokuisakiCD.MoveNext = true;
+            this.txtTokuisakiCD.Name = "txtTokuisakiCD";
+            this.txtTokuisakiCD.NextControl = null;
+            this.txtTokuisakiCD.NextControlName = "txtKouritenCD";
+            this.txtTokuisakiCD.SearchType = Entity.SearchType.ScType.Tokuisaki;
+            this.txtTokuisakiCD.Size = new System.Drawing.Size(90, 19);
+            this.txtTokuisakiCD.TabIndex = 1;
+            this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtTokuisakiCD.TxtBox = null;
+            // 
+            // txtKouritenCD
+            // 
+            this.txtKouritenCD.AllowMinus = false;
+            this.txtKouritenCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtKouritenCD.ChangeDate = null;
+            this.txtKouritenCD.Combo = null;
+            this.txtKouritenCD.DecimalPlace = 0;
+            this.txtKouritenCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtKouritenCD.DepandOnMode = true;
+            this.txtKouritenCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtKouritenCD.IntegerPart = 0;
+            this.txtKouritenCD.IsDatatableOccurs = null;
+            this.txtKouritenCD.IsErrorOccurs = false;
+            this.txtKouritenCD.IsRequire = false;
+            this.txtKouritenCD.IsUseInitializedLayout = true;
+            this.txtKouritenCD.lblName = null;
+            this.txtKouritenCD.Location = new System.Drawing.Point(118, 27);
+            this.txtKouritenCD.MaxLength = 10;
+            this.txtKouritenCD.MinimumSize = new System.Drawing.Size(90, 19);
+            this.txtKouritenCD.MoveNext = true;
+            this.txtKouritenCD.Name = "txtKouritenCD";
+            this.txtKouritenCD.NextControl = null;
+            this.txtKouritenCD.NextControlName = "txtChangeDate";
+            this.txtKouritenCD.SearchType = Entity.SearchType.ScType.Kouriten;
+            this.txtKouritenCD.Size = new System.Drawing.Size(90, 19);
+            this.txtKouritenCD.TabIndex = 2;
+            this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtKouritenCD.TxtBox = null;
             // 
             // MasterTourokuKouriten
             // 

@@ -20,6 +20,7 @@ namespace Shinyoh_Search
         public string changeDate = string.Empty;
         public string KouritenRyakuName = string.Empty;
         public string Date_Access_Kouriten = string.Empty;
+        public string tokuisakiCD = string.Empty;
         public KouritenSearch()
         {
             InitializeComponent();
@@ -42,6 +43,8 @@ namespace Shinyoh_Search
             gv_Kouriten.SetReadOnlyColumn("**");//readonly for search form 
             gv_Kouriten.Select();
             Access_DB_Object(Access_Kouriten_obj);
+            txtTokuisakiCD1.Text = tokuisakiCD;
+            txtTokuisakiCD2.Text = tokuisakiCD;
         }
         private void btnKouriten_F11_Click(object sender, EventArgs e)
         {
@@ -80,10 +83,10 @@ namespace Shinyoh_Search
             dt.Columns.Remove("CurrentDay");
             gv_Kouriten.DataSource = dt;
         }
-        private void Access_DB_Object(KouritenEntity obj)
+        private void Access_DB_Object(KouritenEntity Access_Kouriten_obj)
         {
-            txtTokuisakiCD1.Text = obj.TokuisakiCD;
-            txtTokuisakiCD2.Text = obj.TokuisakiCD;
+            txtTokuisakiCD1.Text = Access_Kouriten_obj.TokuisakiCD;
+            txtTokuisakiCD2.Text = Access_Kouriten_obj.TokuisakiCD;
         }
         public override void FunctionProcess(string tagID)
         {

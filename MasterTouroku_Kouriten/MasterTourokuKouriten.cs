@@ -30,17 +30,13 @@ namespace MasterTouroku_Kouriten
         string Address1 = string.Empty;
         string Address2 = string.Empty;
         BaseBL bbl = new BaseBL();
-        KouritenSearch KS;
         public MasterTourokuKouriten()
         {
             InitializeComponent();
             cf = new CommonFunction();
             base_bl = new BaseBL();
             err = new ErrorCheck();
-            KS = new KouritenSearch();
         }
-
-
         private void MasterTourokuKouriten_Load(object sender, EventArgs e)
         {
             ProgramID = "MasterTouroku_Kouriten";
@@ -71,10 +67,10 @@ namespace MasterTouroku_Kouriten
 
             txtStaffCD.ChangeDate = txtChangeDate;
             txtKouritenCD.ChangeDate = txtChangeDate;
+            txtKouritenCD.TxtBox = txtTokuisakiCD;//ses
             txtCopyCD.ChangeDate = txtCopyDate;
             txtTokuisakiCD.ChangeDate = txtSystemDate;
             txtTokuisakiCD_Copy.ChangeDate = txtSystemDate;
-
             panel2.GotFocus += RadioPanel_GotFocus;
         }
 
@@ -888,33 +884,6 @@ namespace MasterTouroku_Kouriten
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
             create_dt.Columns.Add("Error");
-        }
-
-        private KouritenEntity From_DB_To_Kouriten(DataTable dt)
-        {
-            KouritenEntity obj = new KouritenEntity();
-            obj.KouritenCD = txtKouritenCD.Text;
-            return obj;
-        }
-
-        private void txtKouritenCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!txtKouritenCD.IsErrorOccurs)
-                {
-                    DataTable dt = txtKouritenCD.IsDatatableOccurs;
-                    if (!string.IsNullOrWhiteSpace(txtKouritenCD.Text))
-                    {
-                        KS.Access_Kouriten_obj = From_DB_To_Kouriten(dt);
-                    }
-                }
-            }
-        }
-
-        private void txtTokuisakiCD_Enter(object sender, EventArgs e)
-        {
-            
         }
     }
 }
