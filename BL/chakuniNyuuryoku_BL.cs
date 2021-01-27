@@ -26,10 +26,13 @@ namespace BL
         public DataTable ChakuniNyuuryoku_Update_Select(ChakuniNyuuryoku_Entity ce,int type)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
+            var parameters = new SqlParameter[6];
             parameters[0] = new SqlParameter("@ChakuniNo", SqlDbType.VarChar) { Value = ce.ChakuniNO };
             parameters[1] = new SqlParameter("@ChakuniDate", SqlDbType.VarChar) { Value = ce.ChakuniDate };
             parameters[2] = new SqlParameter("@ModeType", SqlDbType.TinyInt) { Value =type };
+            parameters[3] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = ce.OperatorCD };
+            parameters[4] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = ce.ProgramID };
+            parameters[5] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = ce.PC };
             DataTable dt = ckmdl.SelectDatatable("ChakuniNyuuryoku_Update_Select", GetConnectionString(), parameters);
             return dt;
         }

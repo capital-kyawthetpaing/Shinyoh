@@ -215,6 +215,7 @@ declare @ShouhinCD varchar(50)=(select ShouhinCD from #Temp_Main)
 declare @SoukoCD varchar(10)=(select SoukoCD from #Temp_Main)
 declare @Siiresaki varchar(13)=(select SiiresakiCD from #Temp_Main)
 declare @Operator varchar(10)=(select Operator from #Temp_Main)
+declare @ChakuniNO varchar(12)=(select ChakuniNO from #Temp_Main)
 
 	--Sheet A update
 	Update D_Chakuni
@@ -439,6 +440,11 @@ where SoukoCD = @SoukoCD
 Update M_Staff
 set UsedFlg=1
 where ChangeDate = (select ChangeDate from F_Staff(@filter_date) where StaffCD = @StaffCD)
+
+--TableW_5ChakuniNO_Delete
+EXEC [dbo].[D_Exclusive_Delete]
+		5,
+	    @ChakuniNO;
 --D_Exclusive X
 			Delete from D_Exclusive where DataKBN = 16 and Number = (select ChakuniYoteiNO from #Temp_Detail)
 --D_Exclusive Y
