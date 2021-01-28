@@ -14,7 +14,10 @@ GO
 CREATE PROCEDURE  [dbo].[ChakuniYoteiNyuuryoku_Update_Select]
 @ChakuniYoteiNo as varchar(12),
 @ChakuniYoteiDate as varchar(10),
-@ModeType as tinyint
+@ModeType as tinyint,
+@Operator  varchar(10),
+@Program  varchar(100),
+@PC  varchar(30)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -86,5 +89,12 @@ From D_ChakuniYotei dc
 Where  dc.ChakuniYoteiNO=@ChakuniYoteiNo
 Order by dcm.GyouHyouziJun Asc
 end
+--Table W
+EXEC D_Exclusive_Insert
+		5,
+		@ChakuniNo,
+		@Operator,
+		@Program,
+		@PC;
 END
 GO
