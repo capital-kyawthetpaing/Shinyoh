@@ -844,7 +844,7 @@ namespace JuchuuNyuuryoku
                         if (Siiresaki_dt.Rows[0]["MessageID"].ToString() == "E227")
                         {
                             return_error = true;
-                            base_bl.ShowMessage("E227");
+                            base_bl.ShowMessage("E227", "取引終了日");
                         }
                     }
                 }
@@ -855,7 +855,7 @@ namespace JuchuuNyuuryoku
                         if (Siiresaki_dt.Rows[0]["MessageID"].ToString() == "E267")
                         {
                             return_error = true;
-                            base_bl.ShowMessage("E267");
+                            base_bl.ShowMessage("E267", "取引開始日");
                         }
                     }
                 }
@@ -1633,7 +1633,7 @@ namespace JuchuuNyuuryoku
                             expectedDate = string.IsNullOrEmpty(txt.Text) ? base_Entity.LoginDate : txt.Text;
                             if (Convert.ToDateTime(expectedDate) < JuchuuDate)
                             {
-                                base_bl.ShowMessage("E267");
+                                base_bl.ShowMessage("E267", "受注日");
                                 bl_error = true;
                             }
                         }
@@ -1697,7 +1697,7 @@ namespace JuchuuNyuuryoku
         {
            if(gv_JuchuuNyuuryoku.Columns[e.ColumnIndex].Name == "colSiiresakiCD")
             {
-                  Gridview_F9ShowHide(e.ColumnIndex, string.Empty);
+                //  Gridview_F9ShowHide(e.ColumnIndex, string.Empty);
 
                 //string siiresakiCD = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                 //SearchBox sBox = new SearchBox();
@@ -1708,20 +1708,20 @@ namespace JuchuuNyuuryoku
         }
 
 
-        //private void gv_JuchuuNyuuryoku_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.F9)
-        //    {
-        //        if (gv_JuchuuNyuuryoku.CurrentCell != null)
-        //        {
-        //            if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14)
-        //            {
-        //                gridKeyDown();
-        //            }
-        //        }
-        //    }
-        //}
+        private void gv_JuchuuNyuuryoku_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F9)
+            {
+                if (gv_JuchuuNyuuryoku.CurrentCell != null)
+                {
+                    if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14)
+                    {
+                        gridKeyDown();
+                    }
+                }
+            }
 
+        }
         private void gridKeyDown()
         {
             int row = gv_JuchuuNyuuryoku.CurrentCell.RowIndex;
@@ -1732,6 +1732,8 @@ namespace JuchuuNyuuryoku
                 detail.Date_Access_Siiresaki = txtJuchuuDate.Text;
                 detail.ShowDialog();
 
+                gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
+                this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
                 gv_JuchuuNyuuryoku[column, row].Value = detail.SiiresakiCD.ToString();
                 gv_JuchuuNyuuryoku[column + 1, row].Value = detail.SiiresakiName.ToString();
 
@@ -1750,24 +1752,12 @@ namespace JuchuuNyuuryoku
 
         private void gv_JuchuuNyuuryoku_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-        //    if (e.Control is DataGridViewTextBoxEditingControl)
-        //    {
-        //        (e.Control as DataGridViewTextBoxEditingControl).KeyDown += new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
-        //    }
-        }
-
-        private void gv_JuchuuNyuuryoku_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F9)
+            if (e.Control is DataGridViewTextBoxEditingControl)
             {
-                if (gv_JuchuuNyuuryoku.CurrentCell != null)
-                {
-                    if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14)
-                    {
-                        gridKeyDown();
-                    }
-                }
+                (e.Control as DataGridViewTextBoxEditingControl).KeyDown -= new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
+                (e.Control as DataGridViewTextBoxEditingControl).KeyDown += new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
             }
         }
+
     }
 }
