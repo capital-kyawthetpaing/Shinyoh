@@ -951,13 +951,21 @@ namespace JuchuuNyuuryoku
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gv_JuchuuNyuuryoku.Rows[t];// grid view data
                 string shouhinCD = row.Cells["colShouhinCD"].Value.ToString();
-                string chk_value = row.Cells["colFree"].Value.ToString();
-                string senpouHacchuuNO = row.Cells["colSenpouHacchuuNO"].Value.ToString();
-                string siiresakiCD = row.Cells["colSiiresakiCD"].Value.ToString();
-                string soukoCD = row.Cells["colSoukoCD"].Value.ToString();
+                string chk_value = row.Cells["colFree"].EditedFormattedValue.ToString();
+                string senpouHacchuuNO = row.Cells["colSenpouHacchuuNO"].EditedFormattedValue.ToString();
+                string siiresakiCD = row.Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
+                string soukoCD = row.Cells["colSoukoCD"].EditedFormattedValue.ToString();
 
                 DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "'");// original data
                 DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  DJMSenpouHacchuuNO='"+senpouHacchuuNO+ "' and SiiresakiCD='"+siiresakiCD+ "' and SoukoCD='"+soukoCD+"'").SingleOrDefault();
+                if(existDr1!=null)
+                {
+                    if(select_dr1[0][8].ToString() == "0")
+                    {
+                        F8_dt1.Rows.Remove(existDr1);
+                        existDr1 = null;
+                    }  
+                }
 
                 F8_drNew[0] = shouhinCD;
                 if(row.Cells["colJuchuuSuu"].Value.ToString() != "0")
@@ -1001,58 +1009,6 @@ namespace JuchuuNyuuryoku
                 }
             }
             gv_JuchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
-
-            //comment nwe mar win logic difference
-
-            //for (int t = 0; t < gv_1.RowCount; t++)
-            //{
-            //    bool bl = false;
-            //    // grid 1 checking
-            //    DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
-            //    DataGridViewRow row = gv_1.Rows[t];// grid view data
-            //    string id = row.Cells["colShouhinCD"].Value.ToString();
-
-            //    DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + id+"'");// original data
-            //    DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + id+"'").SingleOrDefault();
-
-            //    F8_drNew[0] = id;
-            //    for (int c = 1; c < gv_1.Columns.Count; c++)
-            //    {
-            //       if(gv_1.Columns[c].Name == "colFree" || gv_1.Columns[c].Name == "colJuchuuSuu" || gv_1.Columns[c].Name == "colSenpouHacchuuNO" || gv_1.Columns[c].Name == "colSiiresakiCD" || gv_1.Columns[c].Name == "colSoukoCD")
-            //        {
-            //            if (existDr1 != null)
-            //            {
-            //                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-            //                {
-            //                    bl = true;
-            //                    F8_drNew[c] = row.Cells[c].Value;
-            //                }
-            //                else
-            //                {
-            //                    F8_drNew[c] = existDr1[c];
-            //                }
-            //            }
-            //            else
-            //            {
-            //                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-            //                    bl = true;
-
-            //                F8_drNew[c] = row.Cells[c].Value;
-            //            }
-            //        }
-            //       else
-            //        {
-            //            F8_drNew[c] = row.Cells[c].Value;
-            //        } 
-            //    }
-            //    // grid 1 insert(if exist, remove exist and insert)
-            //    if (bl == true)
-            //    {
-            //        if (existDr1 != null)
-            //            F8_dt1.Rows.Remove(existDr1);
-            //        F8_dt1.Rows.Add(F8_drNew);
-            //    }
-            //}
         }
 
         private void btnNameF8_Click(object sender, EventArgs e)
