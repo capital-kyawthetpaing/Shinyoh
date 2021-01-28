@@ -1582,7 +1582,7 @@ namespace JuchuuNyuuryoku
                     }
                 }
 
-                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
+                if (bl_error == false && (!string.IsNullOrEmpty(expectedDate)))
                 {
                     TextBox txt = new TextBox();
                     txt.Text = expectedDate;
@@ -1619,7 +1619,7 @@ namespace JuchuuNyuuryoku
                         bl_error = true;
                     }
                 }
-                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
+                if (bl_error == false && (!string.IsNullOrEmpty(colSoukoCD)))
                 {
                     (bl_error, souko_dt) = Gridview_Error_Check("E101", soukoCD, "Souko");
                 }
