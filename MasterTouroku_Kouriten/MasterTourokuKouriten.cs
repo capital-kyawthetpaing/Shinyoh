@@ -67,7 +67,7 @@ namespace MasterTouroku_Kouriten
 
             txtStaffCD.ChangeDate = txtChangeDate;
             txtKouritenCD.ChangeDate = txtChangeDate;
-            txtCopyCD.TxtBox = txtTokuisakiCD_Copy;
+            txtCopyCD.TxtBox = txtTokuisakiCD_Copy;//ses
             txtKouritenCD.TxtBox = txtTokuisakiCD;//ses
             txtCopyCD.ChangeDate = txtCopyDate;
             txtTokuisakiCD.ChangeDate = txtSystemDate;
@@ -88,7 +88,10 @@ namespace MasterTouroku_Kouriten
                     txtChangeDate.E133Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate,null);
 
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
-
+                    txtTokuisakiCD_Copy.Enabled = true;
+                    //txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
+                    txtTokuisakiCD_Copy.NextControlName = txtCopyCD.Name;
+                    txtCopyCD.NextControlName = txtCopyDate.Name;
 
                     txtCopyDate.E103Check(true);
                     txtCopyCD.E102MultiCheck(true, txtTokuisakiCD_Copy, txtCopyCD);
@@ -97,9 +100,8 @@ namespace MasterTouroku_Kouriten
 
                     txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
-                    txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
-                    txtTokuisakiCD_Copy.NextControlName = txtCopyCD.Name;
-                    txtTokuisakiCD_Copy.Enabled = true;
+                    //txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
+                    //txtTokuisakiCD_Copy.Enabled = true;
                     //txtCopyCD.Enabled = true;
                     //txtCopyDate.Enabled = true;
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
