@@ -81,6 +81,8 @@ namespace ShukkaNyuuryoku {
 
             txtShukkaNo.ChangeDate = txtShukkaDate;
             txtShukkaSijiNo.ChangeDate = txtShukkaYoteiDate1;
+
+            txtKouriten.TxtBox = txtTokuisaki;
         }
         public override void FunctionProcess(string tagID)
         {
