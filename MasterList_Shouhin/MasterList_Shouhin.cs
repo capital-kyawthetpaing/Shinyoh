@@ -13,6 +13,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
+using ClosedXML.Excel;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace MasterList_Shouhin
 {
@@ -28,7 +32,6 @@ namespace MasterList_Shouhin
             InitializeComponent();
             cf = new CommonFunction();
         }
-
         private void MasterList_Shouhin_Load(object sender, EventArgs e)
         {
             ProgramID = "MasterList_Shouhin";
@@ -54,7 +57,6 @@ namespace MasterList_Shouhin
             txtShouhinCD_To.ChangeDate = txtChangeDate;
             UI_ErrorCheck();
         }
-
         private void UI_ErrorCheck()
         {
             txtShouhinCD_To.E106Check(true, txtShouhinCD_From, txtShouhinCD_To);
@@ -84,53 +86,19 @@ namespace MasterList_Shouhin
         {
             ShouhinBL sh_bl = new ShouhinBL();
             dtShouhin = sh_bl.Get_ExportData(Get_UIData());
+
             if(dtShouhin.Rows.Count>0)
             {
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Excel";
-                saveFileDialog1.DefaultExt = "xls";
-                saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "商品マスタリスト.xls";
-                saveFileDialog1.RestoreDirectory = true;
+                string ProgramID = "MasterList_Shouhin";
+                string fname= "商品マスタリスト";
+                string[] datacol = { "2", "33", "34" };
+                string[] numcol= { "22", "23", "24" ,"37"};
 
-                if (!System.IO.Directory.Exists("C:\\Excel"))
-                    System.IO.Directory.CreateDirectory("C:\\Excel");
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                ExportCSVExcel list = new ExportCSVExcel();
+                bool value=list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);
+                if(value)
                 {
-                    ExcelDesignSetting obj = new ExcelDesignSetting();
-                    obj.FilePath = saveFileDialog1.FileName;
-                    obj.SheetName = "商品マスタリスト";
-                    obj.Start_Interior_Column = "A1";
-                    obj.End_Interior_Column = "AS1";
-                    obj.Interior_Color = Color.Orange;
-                    obj.Start_Font_Column = "A1";
-                    obj.End_Font_Column = "AS1";
-                    obj.Font_Color = Color.Black;
-
-                    obj.Date_Column = new List<int>();
-                    obj.Date_Column.Add(2);
-                    obj.Date_Column.Add(32);
-                    obj.Date_Column.Add(33);
-                    obj.Date_Format = "YYYY/MM/DD";
-                    obj.Start_Title_Center_Column = "A1";
-                    obj.End_Title_Center_Column = "AS1";
-
-                    obj.Number_Column = new List<int>();
-                    obj.Number_Column.Add(22);
-                    obj.Number_Column.Add(23);
-                    obj.Number_Column.Add(24);
-                    obj.Number_Column.Add(37);
-                    obj.Number_Format = "#,###,###";
-
-                    ExportCSVExcel excel = new ExportCSVExcel();
-                    excel.ExportDataTableToExcel(dtShouhin, obj);
                     bbl.ShowMessage("I203");
-
-                    //New_Mode
-                    cf.Clear(PanelDetail);
-                    rdo_ChokkinDate.Checked = true;
-                    txtShouhinCD_From.Focus();
                 }
             }
             else
@@ -138,7 +106,7 @@ namespace MasterList_Shouhin
                 bbl.ShowMessage("S013");
             }
         }
-    private ShouhinEntity Get_UIData()
+        private ShouhinEntity Get_UIData()
         {
             ShouhinEntity sh_e = new ShouhinEntity();
             if (rdo_ChokkinDate.Checked)

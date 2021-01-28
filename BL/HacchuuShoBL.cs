@@ -27,11 +27,22 @@ namespace BL
             return Char1;
         }
 
-        public DataTable Get_ExportData()
+        public DataTable Get_ExportData(HacchuuShoEntity hse)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[1];
-            parameters[0] = new SqlParameter("@Type", SqlDbType.Int) { Value = 1 };
+            var parameters = new SqlParameter[12];
+            parameters[0] = new SqlParameter("@JuchuuNO1", SqlDbType.VarChar) { Value = hse.JuchuuNO1 };
+            parameters[1] = new SqlParameter("@JuchuuNO2", SqlDbType.VarChar) { Value = hse.JuchuuNO2 };
+            parameters[3] = new SqlParameter("@HacchuuNO1", SqlDbType.VarChar) { Value = hse.HacchuuNO1 };
+            parameters[4] = new SqlParameter("@HacchuuNO2", SqlDbType.VarChar) { Value = hse.HacchuuNO2 };
+            parameters[5] = new SqlParameter("@InputDate1", SqlDbType.VarChar) { Value = hse.InputDate1 };
+            parameters[6] = new SqlParameter("@InputDate2", SqlDbType.VarChar) { Value = hse.InputDate2 };
+            parameters[7] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = hse.BrandCD };
+            parameters[8] = new SqlParameter("@YearTerm", SqlDbType.VarChar) { Value = hse.YearTerm };
+            parameters[9] = new SqlParameter("@SS", SqlDbType.VarChar) { Value = hse.SS };
+            parameters[10] = new SqlParameter("@FW", SqlDbType.VarChar) { Value = hse.FW };
+            parameters[11] = new SqlParameter("@Get_HacchuuSho_ExportData", SqlDbType.TinyInt) { Value = hse.Rdo_Type };
+
             return ckmdl.SelectDatatable("WK_HacchuuMeisai", GetConnectionString(), parameters);
         }
     }
