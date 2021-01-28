@@ -394,12 +394,12 @@ namespace JuchuuNyuuryoku
                         }
                         if (dt1.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() == "E267")
                         {
-                            base_bl.ShowMessage("E267");
+                            base_bl.ShowMessage("E267", "取引開始日");
                             return;
                         }
                         if (dt2.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() == "E227")
                         {
-                            base_bl.ShowMessage("E227");
+                            base_bl.ShowMessage("E227", "取引終了日");
                             return;
                         }
                         lblTokuisakiShort_Name.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
@@ -419,12 +419,12 @@ namespace JuchuuNyuuryoku
                         }
                         if (dt1.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() == "E267")
                         {
-                            base_bl.ShowMessage("E267");
+                            base_bl.ShowMessage("E267", "取引開始日");
                             return;
                         }
                         if (dt2.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() == "E227")
                         {
-                            base_bl.ShowMessage("E227");
+                            base_bl.ShowMessage("E227", "取引終了日");
                             return;
                         }
 
@@ -848,7 +848,7 @@ namespace JuchuuNyuuryoku
                         if (Siiresaki_dt.Rows[0]["MessageID"].ToString() == "E227")
                         {
                             return_error = true;
-                            base_bl.ShowMessage("E227");
+                            base_bl.ShowMessage("E227", "取引終了日");
                         }
                     }
                 }
@@ -859,7 +859,7 @@ namespace JuchuuNyuuryoku
                         if (Siiresaki_dt.Rows[0]["MessageID"].ToString() == "E267")
                         {
                             return_error = true;
-                            base_bl.ShowMessage("E267");
+                            base_bl.ShowMessage("E267", "取引開始日");
                         }
                     }
                 }
@@ -1547,7 +1547,7 @@ namespace JuchuuNyuuryoku
                         bl_error = true;
                     }
                 }
-                if (bl_error == false)
+                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
                 {
                     (bl_error, siiresaki_dt) = Gridview_Error_Check("E101", siiresakiCD, "Siiresaki");
                     if (bl_error == false)
@@ -1555,7 +1555,7 @@ namespace JuchuuNyuuryoku
                     if (bl_error == false)
                         (bl_error, siiresaki_dt) = Gridview_Error_Check("E267", siiresakiCD, "Siiresaki");
                 }
-                if (bl_error == false)
+                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
                 {
                     DataGridViewRow selectedRow = null;
                     if (gv_JuchuuNyuuryoku.SelectedCells.Count > 0)
@@ -1582,7 +1582,7 @@ namespace JuchuuNyuuryoku
                     }
                 }
 
-                if (bl_error == false)
+                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
                 {
                     TextBox txt = new TextBox();
                     txt.Text = expectedDate;
@@ -1597,7 +1597,7 @@ namespace JuchuuNyuuryoku
                         expectedDate = string.IsNullOrEmpty(txt.Text) ? base_Entity.LoginDate : txt.Text;
                         if (Convert.ToDateTime(expectedDate) < JuchuuDate)
                         {
-                            base_bl.ShowMessage("E267");
+                            base_bl.ShowMessage("E267", "受注日");
                             bl_error = true;
                         }
                     }
@@ -1619,11 +1619,11 @@ namespace JuchuuNyuuryoku
                         bl_error = true;
                     }
                 }
-                if (bl_error == false)
+                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
                 {
                     (bl_error, souko_dt) = Gridview_Error_Check("E101", soukoCD, "Souko");
                 }
-                if (bl_error == false)
+                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
                 {
                     gv_JuchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].Value = souko_dt.Rows[0]["SoukoCD"];
                     gv_JuchuuNyuuryoku.Rows[row].Cells["colSoukoName"].Value = souko_dt.Rows[0]["SoukoName"];
