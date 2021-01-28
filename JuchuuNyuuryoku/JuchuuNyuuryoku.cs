@@ -1623,7 +1623,7 @@ namespace JuchuuNyuuryoku
                 {
                     (bl_error, souko_dt) = Gridview_Error_Check("E101", soukoCD, "Souko");
                 }
-                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
+                if (bl_error == false && (!string.IsNullOrEmpty(soukoCD)))
                 {
                     gv_JuchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].Value = souko_dt.Rows[0]["SoukoCD"];
                     gv_JuchuuNyuuryoku.Rows[row].Cells["colSoukoName"].Value = souko_dt.Rows[0]["SoukoName"];
