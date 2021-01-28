@@ -11,6 +11,8 @@ namespace Entity
         public string Product { get; set; }
         public string RevisionDate { get; set; }
         public string CopyProduct { get; set; }
+        public string CopySizeNO { get; set; }
+        public string CopyColorNO { get; set; }
         public string CopyRevisionDate { get; set; }
         public int ShokutiFLG { get; set; }
         public string HinbanCD { get; set; }

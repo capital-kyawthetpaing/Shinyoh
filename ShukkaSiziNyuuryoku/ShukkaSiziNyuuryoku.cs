@@ -51,6 +51,7 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkasizisou,colJuchuuNo,SoukoName");
             td = new TokuisakiDetail();
             kd = new KouritenDetail();
+            sbKouriten.TxtBox = sbTokuisaki;//ses
         }
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
         {
