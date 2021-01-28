@@ -631,6 +631,9 @@ namespace ShukkaSiziNyuuryoku
                                 txtShippingDate.Focus();
                                 Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
                                 BtnF9.Visible = false;
+                                SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+                                SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
+                                SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
                             }
                             else if (cboMode.SelectedValue.ToString().Equals("3"))
                             {
@@ -1067,6 +1070,9 @@ namespace ShukkaSiziNyuuryoku
                     staffEntity = staffBL.GetStaffEntity(staffEntity);
                     sbStaffCD.Text = OperatorCD;
                     lblStaffName.Text = staffEntity.StaffName;
+                    SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+                    SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
+                    SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
                     break;
 
                 case 2://F3
@@ -1082,19 +1088,22 @@ namespace ShukkaSiziNyuuryoku
                     lblTokuisakiName.Text = string.Empty;
                     lblKouritenName.Text = string.Empty;
                     lblStaffName.Text = string.Empty;
+                    SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
+                    SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
+                    SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
                     break;
 
                 case 4:  //start_Mode
                     SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
                     SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
-                    SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
+                    SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
                     SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
                     SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
                     SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-                    SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+                    SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
                     SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
-                    SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
-                    SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
+                    SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
+                    SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
                     SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
                     SetButton(ButtonType.BType.Empty, F7, "", false);
 
