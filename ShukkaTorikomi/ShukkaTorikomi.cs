@@ -150,13 +150,14 @@ namespace ShukkaTorikomi
 
             if (tagID == "12")
             {
-                string Xml = ChooseFile();
+                (string,string) Xml = ChooseFile();
                 BaseBL bbl = new BaseBL();
-                if (!string.IsNullOrEmpty(Xml))
+                if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
                 {
                     if (bbl.ShowMessage("Q206") != DialogResult.Yes)
                     {
-                        PreviousCtrl.Focus();
+                        if (PreviousCtrl != null)
+                            PreviousCtrl.Focus();
                     }
                     else
                     {
@@ -165,8 +166,11 @@ namespace ShukkaTorikomi
                         if (rdo_Toroku.Checked)
                             chk_val = "create_update";
                         else chk_val = "delete";
-                        bl.CSV_M_ShukkaTorikomi_CUD(Xml, chk_val);
-                        bbl.ShowMessage("I101");
+                        string return_BL=bl.ShukkaTorikomi_CUD(Xml.Item1,Xml.Item2,chk_val);
+                        if (return_BL == "true")
+                        {
+                            bbl.ShowMessage("I002");                           
+                        }
                     }
                 }
             }
@@ -183,11 +187,12 @@ namespace ShukkaTorikomi
             gvTorikomi.DataSource = dt;
         }
 
-        private string ChooseFile()
+        private (string,string) ChooseFile()
         {
             var filepath = string.Empty;
             TorikomiEntity obj = new TorikomiEntity();
-            string Xml = string.Empty;
+            string Xml_Main = string.Empty;
+            string Xml_Detail = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                 openFileDialog.InitialDirectory = "C:\\CSV Folder\\";
@@ -354,8 +359,8 @@ namespace ShukkaTorikomi
                         dr[18] = error;
                         create_dt.Rows.Add(dr);
                     }
-                    //if (create_dt.Rows.Count == csvRows.Length - 1)
-                    //Xml = cf.DataTableToXml(create_dt);
+                   
+
                     if (create_dt.Rows.Count>0)
                     {
                         DataTable dt_Main = create_dt.AsEnumerable()
@@ -391,16 +396,24 @@ namespace ShukkaTorikomi
                             }
                         }
 
-                        Xml = cf.DataTableToXml(dt_Main);
+                        Xml_Main = cf.DataTableToXml(dt_Main);
                     }
+
+
+                    if (create_dt.Rows.Count == csvRows.Length - 1)
+                    {
+                        Xml_Detail = cf.DataTableToXml(create_dt);
+                    }
+                       
                 }
                 else
                 {
-                    Xml = string.Empty;
+                    Xml_Detail = string.Empty;
+                    Xml_Main = string.Empty;
                 }
          
             }
-            return Xml;
+            return (Xml_Main,Xml_Detail);
         }
         private bool Null_Check(string obj_text, int line_no, string error_msg)
         {

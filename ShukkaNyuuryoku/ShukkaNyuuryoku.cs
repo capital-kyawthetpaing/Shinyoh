@@ -81,6 +81,8 @@ namespace ShukkaNyuuryoku {
 
             txtShukkaNo.ChangeDate = txtShukkaDate;
             txtShukkaSijiNo.ChangeDate = txtShukkaYoteiDate1;
+
+            txtKouriten.TxtBox = txtTokuisaki;
         }
         public override void FunctionProcess(string tagID)
         {
@@ -284,6 +286,9 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.Enabled = false;
                     cf.EnablePanel(PanelDetail);
                     txtShukkaDate.Focus();
+                    SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+                    SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
+                    SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
                     break;
 
                 case Mode.Update:
@@ -293,8 +298,8 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-                    btnUpdate.Visible = true;
-                    txtShukkaNo.Focus();
+                    btnUpdate.Visible = true;                  
+                    txtShukkaNo.Focus();                 
                     break;
                 case Mode.Delete:
                     ErrorCheck();
@@ -303,7 +308,7 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-                    btnDelete.Visible = true;
+                    btnDelete.Visible = true;                  
                     txtShukkaNo.Focus();
                     break;
                 case Mode.Inquiry:
@@ -389,7 +394,10 @@ namespace ShukkaNyuuryoku {
             if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
             {
                 txtShukkaNo.Focus();
-            }
+                SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
+                SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
+                SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
+            }           
         }
         private void FunctionProcedure(int tagID)
         {
@@ -661,6 +669,9 @@ namespace ShukkaNyuuryoku {
             cf.EnablePanel(PanelDetail);
             txtShukkaNo.Focus();
             cf.DisablePanel(PanelTitle);
+            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+            SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
+            SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);         
         }
         private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
         {
@@ -796,6 +807,8 @@ namespace ShukkaNyuuryoku {
                             sBL.ShukkaNyuuryoku_Exclusive_Insert(obj_shukka);
                         }
                         cf.DisablePanel(PanelTitle);
+                        Control btnSearch = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                        btnSearch.Visible = false;
                     }
                 }
                 Main_dt = txtShukkaNo.IsDatatableOccurs;
