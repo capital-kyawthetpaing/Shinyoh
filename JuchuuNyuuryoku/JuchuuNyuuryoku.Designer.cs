@@ -373,6 +373,7 @@
             this.gv_JuchuuNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
             this.gv_JuchuuNyuuryoku.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEnter);
             this.gv_JuchuuNyuuryoku.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gv_JuchuuNyuuryoku_EditingControlShowing);
+            this.gv_JuchuuNyuuryoku.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_JuchuuNyuuryoku_KeyDown);
             // 
             // colShouhinCD
             // 
