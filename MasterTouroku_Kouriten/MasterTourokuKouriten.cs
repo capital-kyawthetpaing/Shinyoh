@@ -90,13 +90,14 @@ namespace MasterTouroku_Kouriten
 
 
                     txtCopyDate.E103Check(true);
+                    txtCopyCD.E102MultiCheck(true, txtTokuisakiCD_Copy, txtCopyCD);
                     txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
                     txtCopyDate.E133Check(true, "M_Kouriten", txtCopyCD, txtCopyDate, txtTokuisakiCD_Copy);
 
                     txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
-                    txtTokuisakiCD_Copy.NextControlName = txtCopyDate.Name;
+                    txtTokuisakiCD_Copy.NextControlName = txtCopyCD.Name;
                     txtTokuisakiCD_Copy.Enabled = true;
                     //txtCopyCD.Enabled = true;
                     //txtCopyDate.Enabled = true;
