@@ -296,7 +296,8 @@ namespace JuchuuNyuuryoku
             }
             if (tagID == "11")
             {
-                F11_Gridview_Bind();
+                Function_F11();
+                // F11_Gridview_Bind();
             }
             if (tagID == "12")
             {
@@ -518,7 +519,8 @@ namespace JuchuuNyuuryoku
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
 
-                F8_dt1 = gv1_to_dt1.Clone();
+                if (F8_dt1.Rows.Count == 0)
+                    F8_dt1 = gv1_to_dt1.Clone();
 
                 if (cboMode.SelectedValue.ToString() == "3")
                     F8_dt1 = gv1_to_dt1.Copy();
@@ -921,6 +923,16 @@ namespace JuchuuNyuuryoku
 
         private void btnNameF11_Click(object sender, EventArgs e)
         {
+            //if (F11_Gridivew_ErrorCheck())
+            //    return;
+            //else
+            //    F11_Gridview_Bind();
+
+            Function_F11();
+        }
+
+        private void Function_F11()
+        {
             if (F11_Gridivew_ErrorCheck())
                 return;
             else
@@ -1055,7 +1067,11 @@ namespace JuchuuNyuuryoku
                 F8_dt1.DefaultView.Sort = "ShouhinCD";
                 gv_JuchuuNyuuryoku.DataSource = F8_dt1.DefaultView.ToTable();
             }
-           // gv_JuchuuNyuuryoku.ClearSelection();
+            else
+            {
+                DataTable dtSource = (DataTable)gv_JuchuuNyuuryoku.DataSource;
+                dtSource.Rows.Clear();
+            }
         }
 
         private void DBProcess()
@@ -1716,6 +1732,8 @@ namespace JuchuuNyuuryoku
                 detail.Date_Access_Siiresaki = txtJuchuuDate.Text;
                 detail.ShowDialog();
 
+                gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
+                this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
                 gv_JuchuuNyuuryoku[column, row].Value = detail.SiiresakiCD.ToString();
                 gv_JuchuuNyuuryoku[column + 1, row].Value = detail.SiiresakiName.ToString();
 
@@ -1736,6 +1754,7 @@ namespace JuchuuNyuuryoku
         {
             if (e.Control is DataGridViewTextBoxEditingControl)
             {
+                (e.Control as DataGridViewTextBoxEditingControl).KeyDown -= new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
                 (e.Control as DataGridViewTextBoxEditingControl).KeyDown += new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
             }
         }
