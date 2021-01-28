@@ -35,6 +35,9 @@
     <Reference Include="CKM_DataLayer">
       <HintPath>..\Shinyoh\RequireDLL\CKM_DataLayer.dll</HintPath>
     </Reference>
+    <Reference Include="ExcelLibrary">
+      <HintPath>..\..\ExcelLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="MenuDL">
       <HintPath>..\Shinyoh\RequireDLL\MenuDL.dll</HintPath>
     </Reference>
