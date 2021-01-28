@@ -1619,7 +1619,7 @@ namespace JuchuuNyuuryoku
                         bl_error = true;
                     }
                 }
-                if (bl_error == false && (!string.IsNullOrEmpty(colSoukoCD)))
+                if (bl_error == false && (!string.IsNullOrEmpty(soukoCD)))
                 {
                     (bl_error, souko_dt) = Gridview_Error_Check("E101", soukoCD, "Souko");
                 }
