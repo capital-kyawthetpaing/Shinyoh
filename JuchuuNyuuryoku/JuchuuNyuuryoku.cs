@@ -1687,7 +1687,6 @@ namespace JuchuuNyuuryoku
                 {
                     if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14)
                     {
-                        gv_JuchuuNyuuryoku.EndEdit();
                         gridKeyDown();
                     }
                 }
@@ -1696,6 +1695,10 @@ namespace JuchuuNyuuryoku
         }
         private void gridKeyDown()
         {
+            gv_JuchuuNyuuryoku.CellEndEdit -= new DataGridViewCellEventHandler(gv_1_CellEndEdit);
+            gv_JuchuuNyuuryoku.EndEdit();
+            gv_JuchuuNyuuryoku.CellEndEdit += new DataGridViewCellEventHandler(gv_1_CellEndEdit);
+
             int row = gv_JuchuuNyuuryoku.CurrentCell.RowIndex;
             int column = gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex;
             if (gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSiiresakiCD")
@@ -1704,13 +1707,18 @@ namespace JuchuuNyuuryoku
                 detail.Date_Access_Siiresaki = txtJuchuuDate.Text;
                 detail.ShowDialog();
 
-                gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
-                this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
-
                 if (!string.IsNullOrEmpty(detail.SiiresakiCD))
                 {
+                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column + 3, row];
+                    this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
+
                     gv_JuchuuNyuuryoku[column, row].Value = detail.SiiresakiCD.ToString();
                     gv_JuchuuNyuuryoku[column + 1, row].Value = detail.SiiresakiName.ToString();
+                }
+                else
+                {
+                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
+                    this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
                 }
 
 
@@ -1732,8 +1740,26 @@ namespace JuchuuNyuuryoku
             {
                 (e.Control as DataGridViewTextBoxEditingControl).KeyDown -= new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
                 (e.Control as DataGridViewTextBoxEditingControl).KeyDown += new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
+
+                Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                Control btnF9 = ctrlArr[0];
+                if (btnF9 != null)
+                {
+                    btnF9.Click -= BtnF9_Click;
+                    btnF9.Click += BtnF9_Click;
+                }
             }
         }
 
+        private void BtnF9_Click(object sender, EventArgs e)
+        {
+            if (gv_JuchuuNyuuryoku.CurrentCell != null)
+            {
+                if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14)
+                {
+                    gridKeyDown();
+                }
+            }
+        }
     }
 }

@@ -110,7 +110,7 @@ namespace HacchuuSho
         {
             hsbl = new HacchuuShoBL();
             DataTable dt = new DataTable();
-            dt = hsbl.Get_ExportData();
+            dt = hsbl.Get_ExportData(Get_UIData());
             string FileName = "PURCHASEORDER" + txtKanriNO.Text;
             if (dt.Rows.Count > 0)
             {
@@ -158,6 +158,25 @@ namespace HacchuuSho
             {
                 bbl.ShowMessage("S013");
             }
+        }
+
+        private HacchuuShoEntity Get_UIData()
+        {
+            HacchuuShoEntity hse = new HacchuuShoEntity()
+            {
+                JuchuuNO1=txtJuchuuNO1.Text,
+                JuchuuNO2=txtJuchuuNO2.Text,
+                HacchuuNO1=txtHacchuuNO1.Text,
+                HacchuuNO2=txtHacchuuNO2.Text,
+                InputDate1=txtInputDate1.Text,
+                InputDate2=txtInputDate2.Text,
+                BrandCD=txtBrandCD.Text,
+                YearTerm=txtYearTerm.Text,
+                SS=chkSS.Checked?"1":"0",
+                FW=chkFW.Checked?"1":"0",
+                Rdo_Type=Rdo1.Checked?1:0
+            };
+                return hse;
         }
     }
 }
