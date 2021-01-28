@@ -959,7 +959,10 @@ namespace JuchuuNyuuryoku
                 string siiresakiCD = row.Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
                 string soukoCD = row.Cells["colSoukoCD"].EditedFormattedValue.ToString();
 
-                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "'");// original data
+                string color = row.Cells["colColorNO"].Value.ToString();
+                string size = row.Cells["colSizeNO"].Value.ToString();
+
+                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='"+ color + "' and SizeNO='"+ size + "'");// original data
                 DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  DJMSenpouHacchuuNO='" + senpouHacchuuNO + "' and SiiresakiCD='" + siiresakiCD + "' and SoukoCD='" + soukoCD + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
@@ -1558,8 +1561,8 @@ namespace JuchuuNyuuryoku
                     DataGridViewRow selectedRow = null;
                     if (gv_JuchuuNyuuryoku.SelectedCells.Count > 0)
                     {
-                        int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
-                        selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
+                        //int selectedrowindex = row;
+                        selectedRow = gv_JuchuuNyuuryoku.Rows[row];
                     }
                     sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(siiresaki_dt, selectedRow);
                 }
