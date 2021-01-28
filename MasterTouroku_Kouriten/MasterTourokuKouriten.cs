@@ -67,6 +67,7 @@ namespace MasterTouroku_Kouriten
 
             txtStaffCD.ChangeDate = txtChangeDate;
             txtKouritenCD.ChangeDate = txtChangeDate;
+            txtCopyCD.TxtBox = txtTokuisakiCD_Copy;
             txtKouritenCD.TxtBox = txtTokuisakiCD;//ses
             txtCopyCD.ChangeDate = txtCopyDate;
             txtTokuisakiCD.ChangeDate = txtSystemDate;
