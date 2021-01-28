@@ -152,23 +152,27 @@ namespace ShukkaTorikomi
             {
                 (string,string) Xml = ChooseFile();
                 BaseBL bbl = new BaseBL();
-                //if (!string.IsNullOrEmpty(Xml))
-                //{
-                //    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
-                //    {
-                //        PreviousCtrl.Focus();
-                //    }
-                //    else
-                //    {
-                //        ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
-                //        string chk_val = string.Empty;
-                //        if (rdo_Toroku.Checked)
-                //            chk_val = "create_update";
-                //        else chk_val = "delete";
-                //        bl.CSV_M_ShukkaTorikomi_CUD(Xml, chk_val);
-                //        bbl.ShowMessage("I101");
-                //    }
-                //}
+                if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
+                {
+                    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                    {
+                        if (PreviousCtrl != null)
+                            PreviousCtrl.Focus();
+                    }
+                    else
+                    {
+                        ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
+                        string chk_val = string.Empty;
+                        if (rdo_Toroku.Checked)
+                            chk_val = "create_update";
+                        else chk_val = "delete";
+                        string return_BL=bl.ShukkaTorikomi_CUD(Xml.Item1,Xml.Item2,chk_val);
+                        if (return_BL == "true")
+                        {
+                            bbl.ShowMessage("I002");                           
+                        }
+                    }
+                }
             }
         }
 
