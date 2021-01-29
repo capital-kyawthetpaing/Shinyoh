@@ -101,6 +101,7 @@
   <ItemGroup>
     <Content Include="RequireDLL\CKM_CommonFunction.dll" />
     <Content Include="RequireDLL\CKM_DataLayer.dll" />
+    <Content Include="RequireDLL\ExcelLibrary.dll" />
     <Content Include="RequireDLL\MenuDL.dll" />
   </ItemGroup>
   <ItemGroup>
