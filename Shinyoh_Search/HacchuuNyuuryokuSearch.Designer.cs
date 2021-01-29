@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtStaffCD = new Shinyoh_Controls.STextBox();
             this.txtSiiresaki = new Shinyoh_Controls.STextBox();
@@ -255,7 +255,7 @@
             this.btnShow.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnShow.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnShow.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.btnShow.Location = new System.Drawing.Point(998, 83);
+            this.btnShow.Location = new System.Drawing.Point(998, 90);
             this.btnShow.Name = "btnShow";
             this.btnShow.NextControl = null;
             this.btnShow.NextControlName = null;
@@ -269,7 +269,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(783, 65);
+            this.label4.Location = new System.Drawing.Point(750, 65);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 16);
             this.label4.TabIndex = 19;
@@ -279,7 +279,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(732, 38);
+            this.label3.Location = new System.Drawing.Point(710, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 16);
             this.label3.TabIndex = 18;
@@ -289,7 +289,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(732, 12);
+            this.label2.Location = new System.Drawing.Point(710, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 16);
             this.label2.TabIndex = 17;
@@ -299,7 +299,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(236, 12);
+            this.label1.Location = new System.Drawing.Point(218, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 16);
             this.label1.TabIndex = 16;
@@ -318,7 +318,7 @@
             this.txtShouhin2.IsErrorOccurs = false;
             this.txtShouhin2.IsRequire = false;
             this.txtShouhin2.IsUseInitializedLayout = true;
-            this.txtShouhin2.Location = new System.Drawing.Point(816, 60);
+            this.txtShouhin2.Location = new System.Drawing.Point(786, 60);
             this.txtShouhin2.MaxLength = 20;
             this.txtShouhin2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhin2.MoveNext = true;
@@ -343,7 +343,7 @@
             this.txtShouhin1.IsErrorOccurs = false;
             this.txtShouhin1.IsRequire = false;
             this.txtShouhin1.IsUseInitializedLayout = true;
-            this.txtShouhin1.Location = new System.Drawing.Point(623, 60);
+            this.txtShouhin1.Location = new System.Drawing.Point(593, 60);
             this.txtShouhin1.MaxLength = 20;
             this.txtShouhin1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhin1.MoveNext = true;
@@ -368,7 +368,7 @@
             this.txtNo22.IsErrorOccurs = false;
             this.txtNo22.IsRequire = false;
             this.txtNo22.IsUseInitializedLayout = true;
-            this.txtNo22.Location = new System.Drawing.Point(755, 34);
+            this.txtNo22.Location = new System.Drawing.Point(744, 34);
             this.txtNo22.MaxLength = 12;
             this.txtNo22.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNo22.MoveNext = true;
@@ -393,7 +393,7 @@
             this.txtNo21.IsErrorOccurs = false;
             this.txtNo21.IsRequire = false;
             this.txtNo21.IsUseInitializedLayout = true;
-            this.txtNo21.Location = new System.Drawing.Point(623, 33);
+            this.txtNo21.Location = new System.Drawing.Point(593, 33);
             this.txtNo21.MaxLength = 12;
             this.txtNo21.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNo21.MoveNext = true;
@@ -418,7 +418,7 @@
             this.txtNo12.IsErrorOccurs = false;
             this.txtNo12.IsRequire = false;
             this.txtNo12.IsUseInitializedLayout = true;
-            this.txtNo12.Location = new System.Drawing.Point(754, 7);
+            this.txtNo12.Location = new System.Drawing.Point(744, 7);
             this.txtNo12.MaxLength = 12;
             this.txtNo12.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNo12.MoveNext = true;
@@ -443,7 +443,7 @@
             this.txtNo11.IsErrorOccurs = false;
             this.txtNo11.IsRequire = false;
             this.txtNo11.IsUseInitializedLayout = true;
-            this.txtNo11.Location = new System.Drawing.Point(623, 7);
+            this.txtNo11.Location = new System.Drawing.Point(593, 7);
             this.txtNo11.MaxLength = 12;
             this.txtNo11.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNo11.MoveNext = true;
@@ -493,13 +493,13 @@
             this.txtDate2.IsErrorOccurs = false;
             this.txtDate2.IsRequire = false;
             this.txtDate2.IsUseInitializedLayout = true;
-            this.txtDate2.Location = new System.Drawing.Point(262, 7);
+            this.txtDate2.Location = new System.Drawing.Point(256, 7);
             this.txtDate2.MaxLength = 10;
             this.txtDate2.MinimumSize = new System.Drawing.Size(75, 19);
             this.txtDate2.MoveNext = true;
             this.txtDate2.Name = "txtDate2";
             this.txtDate2.NextControl = null;
-            this.txtDate2.NextControlName = "txtTokuisaki";
+            this.txtDate2.NextControlName = "txtSiiresaki";
             this.txtDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtDate2.Size = new System.Drawing.Size(75, 19);
             this.txtDate2.TabIndex = 2;
@@ -538,7 +538,7 @@
             this.lblShouhin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblShouhin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShouhin.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblShouhin.Location = new System.Drawing.Point(533, 60);
+            this.lblShouhin.Location = new System.Drawing.Point(503, 60);
             this.lblShouhin.Name = "lblShouhin";
             this.lblShouhin.Size = new System.Drawing.Size(90, 19);
             this.lblShouhin.TabIndex = 6;
@@ -551,7 +551,7 @@
             this.lblShukkaSijiNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblShukkaSijiNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShukkaSijiNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblShukkaSijiNo.Location = new System.Drawing.Point(533, 33);
+            this.lblShukkaSijiNo.Location = new System.Drawing.Point(503, 33);
             this.lblShukkaSijiNo.Name = "lblShukkaSijiNo";
             this.lblShukkaSijiNo.Size = new System.Drawing.Size(90, 19);
             this.lblShukkaSijiNo.TabIndex = 5;
@@ -564,7 +564,7 @@
             this.lblShukkaNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblShukkaNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShukkaNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblShukkaNo.Location = new System.Drawing.Point(533, 7);
+            this.lblShukkaNo.Location = new System.Drawing.Point(503, 7);
             this.lblShukkaNo.Name = "lblShukkaNo";
             this.lblShukkaNo.Size = new System.Drawing.Size(90, 19);
             this.lblShukkaNo.TabIndex = 4;
@@ -613,14 +613,14 @@
             // gv_1
             // 
             this.gv_1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gv_1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colHacchuuNO,
@@ -634,7 +634,7 @@
             this.gv_1.Location = new System.Drawing.Point(33, 132);
             this.gv_1.Name = "gv_1";
             this.gv_1.Size = new System.Drawing.Size(699, 320);
-            this.gv_1.TabIndex = 5;
+            this.gv_1.TabIndex = 13;
             this.gv_1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gv_1_CellMouseDoubleClick);
             this.gv_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_1_KeyDown);
             // 
@@ -648,8 +648,8 @@
             // colHacchuuDate
             // 
             this.colHacchuuDate.DataPropertyName = "HacchuuDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colHacchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colHacchuuDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.colHacchuuDate.HeaderText = "発注日";
             this.colHacchuuDate.Name = "colHacchuuDate";
             this.colHacchuuDate.ReadOnly = true;
