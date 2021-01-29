@@ -96,51 +96,20 @@ namespace MasterList_Tokuisaki
         private void Excel_Export()
         {
             TokuisakiBL bl = new TokuisakiBL();
-            dt = new DataTable();
             dt = bl.Get_ExportData(Get_UIData());
             if (dt.Rows.Count > 0)
             {
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Excel";
-                saveFileDialog1.DefaultExt = "xls";
-                saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "得意先マスタリスト.xls";
-                saveFileDialog1.RestoreDirectory = true;
+                string ProgramID = "MasterList_Tokuisaki";
+                string fname = "得意先マスタリスト";
+                string[] datacol = { "2", "28", "29" };
 
-                if (!System.IO.Directory.Exists("C:\\Excel"))
-                    System.IO.Directory.CreateDirectory("C:\\Excel");
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    ExcelDesignSetting obj = new ExcelDesignSetting();
-                    obj.FilePath = saveFileDialog1.FileName;
-                    obj.SheetName = "得意先マスタリスト";
-                    obj.Start_Interior_Column = "A1";
-                    obj.End_Interior_Column = "AJ1";
-                    obj.Interior_Color = Color.Orange;
-                    obj.Start_Font_Column = "A1";
-                    obj.End_Font_Column = "AJ1";
-                    obj.Font_Color = Color.Black;
-                    //For column C
-                    obj.Date_Column = new List<int>();
-                    obj.Date_Column.Add(2);
-                    obj.Date_Format = "YYYY/MM/DD";
-                    obj.Start_Title_Center_Column = "A1";
-                    obj.End_Title_Center_Column = "AJ1";
-                    //for column T,U,V
-                    ExportCSVExcel excel = new ExportCSVExcel();
-                    excel.ExportDataTableToExcel(dt, obj);
-
-                    //New_Mode
-                    cf.Clear(PanelDetail);
-                    rdo_RRevisionDate.Checked = true;
-                    txtTokuisakiCD.Focus();
-
-                    bbl.ShowMessage("I203");
-                }
+                ExportCSVExcel list = new ExportCSVExcel();
+                list.ExcelOutputFile(dt, ProgramID, fname, fname, 36, datacol, null);
             }
             else
+            {
                 bbl.ShowMessage("S013");
+            }
         }
 
         private TokuisakiEntity Get_UIData()
