@@ -90,11 +90,7 @@ namespace MasterList_Siiresaki
                 string[] datacol = { "2", "28", "29" };
 
                 ExportCSVExcel list = new ExportCSVExcel();
-                bool value = list.ExcelOutputFile(dtSiiresaki, ProgramID, fname, fname, 34, datacol, null);
-                if (value)
-                {
-                    bbl.ShowMessage("I203");
-                }
+                list.ExcelOutputFile(dtSiiresaki, ProgramID, fname, fname, 34, datacol, null);
             }
             else
             {

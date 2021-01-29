@@ -104,11 +104,7 @@ namespace MasterList_Tokuisaki
                 string[] datacol = { "2", "28", "29" };
 
                 ExportCSVExcel list = new ExportCSVExcel();
-                bool value = list.ExcelOutputFile(dt, ProgramID, fname, fname, 34, datacol, null);
-                if (value)
-                {
-                    bbl.ShowMessage("I203");
-                }
+                list.ExcelOutputFile(dt, ProgramID, fname, fname, 36, datacol, null);
             }
             else
             {

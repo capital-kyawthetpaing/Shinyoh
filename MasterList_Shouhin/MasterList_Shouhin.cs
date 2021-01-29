@@ -95,11 +95,7 @@ namespace MasterList_Shouhin
                 string[] numcol= { "22", "23", "24" ,"37"};
 
                 ExportCSVExcel list = new ExportCSVExcel();
-                bool value=list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);
-                if(value)
-                {
-                    bbl.ShowMessage("I203");
-                }
+                list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);               
             }
             else
             {
