@@ -11,40 +11,11 @@ using System.Diagnostics;
 using ClosedXML.Excel;
 using System.IO;
 using System.Windows.Forms;
-using ExcelLibrary.SpreadSheet;
 
 namespace BL
 {
     public  class ExportCSVExcel
     {
-        public bool DataTableToExcel(DataTable dt, ExcelDesignSetting obj)
-        {
-            Workbook wb = new Workbook();
-            Worksheet ws = new Worksheet(obj.SheetName);
-            int rowCount = 1;
-            foreach (DataColumn col in dt.Columns)
-            {
-                for (int i = 0; i < dt.Columns.Count; i++)
-                {
-                    ws.Cells[0, i] = new Cell(dt.Columns[i].ColumnName);
-                }
-            }
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                for (int i = 0; i < dt.Columns.Count; i++)
-                {
-                    ws.Cells[rowCount, i] = new Cell(dr[i].ToString());
-                }
-                rowCount += 1;
-            }
-
-            wb.Worksheets.Add(ws);
-            wb.Save(obj.FilePath);
-
-            return true;
-        }
-        
         public  bool ExportDataTableToExcel(DataTable dt,ExcelDesignSetting  obj)
         {
             Excel.Application oXL;
