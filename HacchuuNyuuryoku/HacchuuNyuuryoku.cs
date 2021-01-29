@@ -348,7 +348,7 @@ namespace HacchuuNyuuryoku
                
                 gv_HacchuuNyuuryoku.DataSource = dt;
                 // gv_HacchuuNyuuryoku.ClearSelection();
-                gv_HacchuuNyuuryoku.Columns["colChakuniYoteiDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
+                //gv_HacchuuNyuuryoku.Columns["colChakuniYoteiDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
