@@ -364,18 +364,19 @@ namespace ShukkaTorikomi
                     if (create_dt.Rows.Count>0)
                     {
                         DataTable dt_Main = create_dt.AsEnumerable()
-                              .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["TokuisakiRyakuName"], Col4 = r["KouritenRyakuName"], Col5 = r["DenpyouNO"], Col6 = r["ChangeDate"], Col7 = r["ShukkaDenpyouTekiyou"] })
-                              .Select(g => g.OrderBy(r => r["TokuisakiCD"]).First())
+                              //.GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["TokuisakiRyakuName"], Col4 = r["KouritenRyakuName"], Col5 = r["DenpyouNO"], Col6 = r["ChangeDate"], Col7 = r["ShukkaDenpyouTekiyou"]})
+                              //.Select(g => g.OrderBy(r => r["TokuisakiCD"]).First())
                               .CopyToDataTable();
+
 
                         create_dt.Columns.Add("ShukkaNO", typeof(string));
                         create_dt.Columns.Add("ShukkaGyouNO", typeof(string));
-
                         dt_Main.Columns.Add("ShukkaNO", typeof(string));
 
                         for (int i = 0; i < dt_Main.Rows.Count; i++)
                         {
-                            DataTable shukkano_dt = ShukkaTorikomi_BL.GetShukkaNO("1", dt_Main.Rows[i]["ChangeDate"].ToString(), "0");
+                            DateTime date =DateTime.Parse(dt_Main.Rows[i]["ChangeDate"].ToString());
+                            DataTable shukkano_dt = ShukkaTorikomi_BL.GetShukkaNO("6", date, "0");
                             dt_Main.Rows[i]["ShukkaNO"] = shukkano_dt.Rows[0]["Column1"];
                             string tokuisakiCD = dt_Main.Rows[i]["TokuisakiCD"].ToString();
                             string kouritenCD = dt_Main.Rows[i]["KouritenCD"].ToString();
@@ -398,8 +399,6 @@ namespace ShukkaTorikomi
 
                         Xml_Main = cf.DataTableToXml(dt_Main);
                     }
-
-
                     if (create_dt.Rows.Count == csvRows.Length - 1)
                     {
                         Xml_Detail = cf.DataTableToXml(create_dt);
