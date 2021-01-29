@@ -691,7 +691,7 @@
             this.lblBrand_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblBrand_Name.Location = new System.Drawing.Point(335, 100);
             this.lblBrand_Name.Name = "lblBrand_Name";
-            this.lblBrand_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblBrand_Name.Size = new System.Drawing.Size(300, 19);
             this.lblBrand_Name.TabIndex = 121;
             this.lblBrand_Name.Text = "sLabel9";
             this.lblBrand_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -809,7 +809,7 @@
             this.lblStaff_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblStaff_Name.Location = new System.Drawing.Point(1165, 14);
             this.lblStaff_Name.Name = "lblStaff_Name";
-            this.lblStaff_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblStaff_Name.Size = new System.Drawing.Size(300, 19);
             this.lblStaff_Name.TabIndex = 80;
             this.lblStaff_Name.Text = "sLabel12";
             this.lblStaff_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -867,7 +867,7 @@
             this.lblSiiresakiShort_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblSiiresakiShort_Name.Location = new System.Drawing.Point(335, 43);
             this.lblSiiresakiShort_Name.Name = "lblSiiresakiShort_Name";
-            this.lblSiiresakiShort_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblSiiresakiShort_Name.Size = new System.Drawing.Size(300, 19);
             this.lblSiiresakiShort_Name.TabIndex = 77;
             this.lblSiiresakiShort_Name.Text = "sLabel10";
             this.lblSiiresakiShort_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

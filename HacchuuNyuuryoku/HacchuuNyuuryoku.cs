@@ -75,7 +75,7 @@ namespace HacchuuNyuuryoku
             gv_HacchuuNyuuryoku.SetGridDesign();
             gv_HacchuuNyuuryoku.SetReadOnlyColumn("ColHinbanCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colHacchuuTanka,colJANCD,colSoukoName");
             gv_HacchuuNyuuryoku.SetHiraganaColumn("colHacchuuMeisaiTekiyou");
-            gv_HacchuuNyuuryoku.SetNumberColumn("colHacchuuSuu,colChakuniYoteiDate");
+            gv_HacchuuNyuuryoku.SetNumberColumn("colHacchuuSuu");
             gv_HacchuuNyuuryoku.ClearSelection();
         }
 
