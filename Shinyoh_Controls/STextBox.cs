@@ -110,8 +110,10 @@ namespace Shinyoh_Controls
         public bool E115;
         public string E115Type;
         public bool E132;
+        public bool E132Multi;
         public string E132Type;  
         public bool E133;
+        public bool E133Multi;
         public string E133Type;
         public bool E135;
         public string E135Type;
@@ -131,6 +133,7 @@ namespace Shinyoh_Controls
         public bool E166;
         public string E160Type;
         public bool E270;
+        public bool E270Multi;
         public string E270Type;
         public bool CYuubin_Juusho;
         public bool E128;
@@ -150,9 +153,11 @@ namespace Shinyoh_Controls
         public Control ctrlE132_1;
         public Control ctrlE132_2;
         public Control ctrlE132_3;
+        public Control ctrlE132_4;
         public Control ctrlE133_1;
         public Control ctrlE133_2;
         public Control ctrlE133_3;
+        public Control ctrlE133_4;
         public Control ctrlE135_1;
         public Control ctrlE135_2;
         public Control ctrlE160_1;
@@ -170,6 +175,7 @@ namespace Shinyoh_Controls
         public Control ctrlE270_1;
         public Control ctrlE270_2;
         public Control ctrlE270_3;
+        public Control ctrlE270_4;
         public Control ctrlE128_1;
         public PictureBox ctrlE128_2;
 
@@ -504,6 +510,15 @@ namespace Shinyoh_Controls
             ctrlE132_2 = ctrl2;
             ctrlE132_3 = ctrl3;
         }
+        public void E132MultiCheck(bool value, string type, Control ctrl1, Control ctrl2, Control ctrl3, Control ctrl4)
+        {
+            E132Multi = value;
+            E132Type = type;
+            ctrlE132_1 = ctrl1;
+            ctrlE132_2 = ctrl2;
+            ctrlE132_3 = ctrl3;
+            ctrlE132_4 = ctrl4;
+        }
         public void E133Check(bool value, string type, Control ctrl1, Control ctrl2, Control ctrl3)
         {
             E133 = value;
@@ -511,6 +526,15 @@ namespace Shinyoh_Controls
             ctrlE133_1 = ctrl1;
             ctrlE133_2 = ctrl2;
             ctrlE133_3 = ctrl3;
+        }
+        public void E133MultiCheck(bool value, string type, Control ctrl1, Control ctrl2, Control ctrl3, Control ctrl4)
+        {
+            E133Multi = value;
+            E133Type = type;
+            ctrlE133_1 = ctrl1;
+            ctrlE133_2 = ctrl2;
+            ctrlE133_3 = ctrl3;
+            ctrlE133_4 = ctrl4;
         }
         public void E135Check(bool value, string type, Control ctrl1, Control ctrl2)
         {
@@ -580,7 +604,16 @@ namespace Shinyoh_Controls
             ctrlE270_2 = ctrl2;
             ctrlE270_3 = ctrl3;
         }
-        
+        public void E270MultiCheck(bool value, string type, Control ctrl1, Control ctrl2, [Optional]Control ctrl3, Control ctrl4)
+        {
+            E270Multi = value;
+            E270Type = type;
+            ctrlE270_1 = ctrl1;
+            ctrlE270_2 = ctrl2;
+            ctrlE270_3 = ctrl3;
+            ctrlE270_4 = ctrl4;
+        }
+
         public void Yuubin_Juusho(bool value,Control ctrl1, Control ctrl2,string check_Yuu1,string check_Yuu2)
         {
             CYuubin_Juusho = value;

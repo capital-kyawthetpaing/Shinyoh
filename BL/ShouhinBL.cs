@@ -111,13 +111,15 @@ namespace BL
         //    return ckmdl.InsertUpdateDeleteData("sp_Shouhin_IUD", GetConnectionString(), shouhin_entity.Sqlprms);
         //}
 
-        public DataTable Shouhin_Check(string shouhinCD, string changeDate, string error_type)
+        public DataTable Shouhin_Check(string shouhinCD, string colorno, string sizeno, string changeDate, string error_type)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
+            var parameters = new SqlParameter[5];
             parameters[0] = new SqlParameter("@shouhinCD", SqlDbType.VarChar) { Value = shouhinCD };
             parameters[1] = new SqlParameter("@changeDate", SqlDbType.VarChar) { Value = changeDate };
             parameters[2] = new SqlParameter("@error_type", SqlDbType.VarChar) { Value = error_type };
+            parameters[3] = new SqlParameter("@colorNO", SqlDbType.VarChar) { Value = colorno };
+            parameters[4] = new SqlParameter("@sizeNO", SqlDbType.VarChar) { Value = sizeno };
             return ckmdl.SelectDatatable("sp_Shouhin_Check", GetConnectionString(), parameters);
         }
 

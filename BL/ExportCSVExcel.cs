@@ -16,6 +16,7 @@ namespace BL
 {
     public  class ExportCSVExcel
     {
+        BaseBL bbl = new BaseBL();
         public  bool ExportDataTableToExcel(DataTable dt,ExcelDesignSetting  obj)
         {
             Excel.Application oXL;
@@ -124,7 +125,7 @@ namespace BL
             return true;
         }
 
-        public bool ExcelOutputFile(DataTable dtDatao, string ProgramID, string fname, string SheetName, int bgcol, string[] datacol, string[] numcol)
+        public bool ExcelOutputFile(DataTable dtvalue, string ProgramID, string fname, string SheetName, int bgcol, string[] datecol, string[] numcol)
         {
             try
             {
@@ -153,26 +154,36 @@ namespace BL
 
                         using (XLWorkbook wb = new XLWorkbook())
                         {
-                            var ws = wb.Worksheets.Add(dtDatao, SheetName);
+                            var ws = wb.Worksheets.Add(dtvalue, SheetName);
                             ws.Range(ws.Cell(1, 1), ws.Cell(1, bgcol)).Style.Fill.BackgroundColor = XLColor.Orange;
                             //ws.FirstRow().Style.Fill.BackgroundColor = XLColor.Orange;
                             ws.FirstRow().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                             ws.ColumnWidth = 20;
-                            for (int i = 0; i < datacol.Count(); i++)
+
+                            if (datecol != null)
                             {
-                                string val = datacol[i].ToString();
-                                ws.Column(val).Style.NumberFormat.Format = "YYYY/MM/DD";
+                                for (int i = 0; i < datecol.Count(); i++)
+                                {
+                                    string val = datecol[i].ToString();
+                                    ws.Column(val).Style.NumberFormat.Format = "YYYY/MM/DD";
+                                }
                             }
-                            for (int k = 0; k < numcol.Count(); k++)
+
+                            if (numcol != null)
                             {
-                                string val1 = numcol[k].ToString();
-                                ws.Column(val1).Style.NumberFormat.Format = "#,###,###";
+                                for (int k = 0; k < numcol.Count(); k++)
+                                {
+                                    string val1 = numcol[k].ToString();
+                                    ws.Column(val1).Style.NumberFormat.Format = "#,###,###";
+                                }
                             }
+
                             ws.ShowGridLines = false;
                             ws.Tables.FirstOrDefault().ShowAutoFilter = false;
                             ws.Tables.FirstOrDefault().Theme = XLTableTheme.None;
 
                             wb.SaveAs(savedialog.FileName);
+                            bbl.ShowMessage("I203");
                         }
                         Process.Start(Path.GetDirectoryName(savedialog.FileName));
                         workbook.Close(false, Missing.Value, Missing.Value);

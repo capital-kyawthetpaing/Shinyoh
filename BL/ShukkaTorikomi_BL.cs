@@ -74,7 +74,7 @@ namespace BL
             return ckmdl.InsertUpdateDeleteData("ShukkaTorikomi_Insert", GetConnectionString(), parameters);
         }
 
-        public DataTable GetShukkaNO(string SerialNO, string ShukkaDate, string SEQNO)
+        public DataTable GetShukkaNO(string SerialNO, DateTime ShukkaDate, string SEQNO)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[3];

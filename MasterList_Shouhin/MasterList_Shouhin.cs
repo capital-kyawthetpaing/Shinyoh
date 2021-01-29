@@ -13,7 +13,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
 using ClosedXML.Excel;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
@@ -86,7 +85,6 @@ namespace MasterList_Shouhin
         {
             ShouhinBL sh_bl = new ShouhinBL();
             dtShouhin = sh_bl.Get_ExportData(Get_UIData());
-
             if(dtShouhin.Rows.Count>0)
             {
                 string ProgramID = "MasterList_Shouhin";
@@ -95,11 +93,7 @@ namespace MasterList_Shouhin
                 string[] numcol= { "22", "23", "24" ,"37"};
 
                 ExportCSVExcel list = new ExportCSVExcel();
-                bool value=list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);
-                if(value)
-                {
-                    bbl.ShowMessage("I203");
-                }
+                list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);               
             }
             else
             {

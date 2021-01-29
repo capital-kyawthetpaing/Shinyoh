@@ -23,7 +23,7 @@ namespace MasterList_Siiresaki
         CommonFunction cf;
         multipurposeEntity multi_Entity;
         BaseBL bbl = new BaseBL();
-        DataTable dt = new DataTable();
+        DataTable dtSiiresaki = new DataTable();
         public MasterList_Siiresaki()
         {
             InitializeComponent();
@@ -81,48 +81,16 @@ namespace MasterList_Siiresaki
         private void Excel_Export()
         {
             SiiresakiBL sbl = new SiiresakiBL();
-            dt = sbl.Get_ExportData(Get_UIData());
-            if (dt.Rows.Count > 0)
+            dtSiiresaki = sbl.Get_ExportData(Get_UIData());
+
+            if (dtSiiresaki.Rows.Count > 0)
             {
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Excel";
-                saveFileDialog1.DefaultExt = "xls";
-                saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "仕入先マスタリスト.xls";
-                saveFileDialog1.RestoreDirectory = true;
+                string ProgramID = "MasterList_Siiresaki";
+                string fname = "仕入先マスタリスト";
+                string[] datacol = { "2", "28", "29" };
 
-                if (!System.IO.Directory.Exists("C:\\Excel"))
-                    System.IO.Directory.CreateDirectory("C:\\Excel");
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    ExcelDesignSetting obj = new ExcelDesignSetting();
-                    obj.FilePath = saveFileDialog1.FileName;
-                    obj.SheetName = "仕入先マスタリスト";
-                    obj.Start_Interior_Column = "A1";
-                    obj.End_Interior_Column = "AH1";
-                    obj.Interior_Color = Color.Orange;
-                    obj.Start_Font_Column = "A1";
-                    obj.End_Font_Column = "AH1";
-                    obj.Font_Color = Color.Black;
-
-                    obj.Date_Column = new List<int>();
-                    obj.Date_Column.Add(2);
-                    obj.Date_Column.Add(28);
-                    obj.Date_Column.Add(29);
-                    obj.Date_Format = "YYYY/MM/DD";
-                    obj.Start_Title_Center_Column = "A1";
-                    obj.End_Title_Center_Column = "AH1";
-
-                    ExportCSVExcel excel = new ExportCSVExcel();
-                    excel.ExportDataTableToExcel(dt, obj);
-                    bbl.ShowMessage("I203");
-
-                    //New_Mode
-                    cf.Clear(PanelDetail);
-                    rdo_ChokkinDate.Checked = true;
-                    txtSiiresakiCD_From.Focus();
-                }
+                ExportCSVExcel list = new ExportCSVExcel();
+                list.ExcelOutputFile(dtSiiresaki, ProgramID, fname, fname, 34, datacol, null);
             }
             else
             {
