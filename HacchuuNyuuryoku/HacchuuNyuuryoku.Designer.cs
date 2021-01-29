@@ -793,7 +793,6 @@
             this.txtSizeNo.IsRequire = false;
             this.txtSizeNo.IsUseInitializedLayout = true;
             this.txtSizeNo.lblName = null;
-            this.txtSizeNo.lblName1 = null;
             this.txtSizeNo.Location = new System.Drawing.Point(1336, 130);
             this.txtSizeNo.MaxLength = 13;
             this.txtSizeNo.MinimumSize = new System.Drawing.Size(100, 19);
@@ -806,7 +805,6 @@
             this.txtSizeNo.TabIndex = 16;
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNo.TxtBox = null;
-            this.txtSizeNo.TxtBox1 = null;
             // 
             // txtColorNo
             // 
@@ -824,7 +822,6 @@
             this.txtColorNo.IsRequire = false;
             this.txtColorNo.IsUseInitializedLayout = true;
             this.txtColorNo.lblName = null;
-            this.txtColorNo.lblName1 = null;
             this.txtColorNo.Location = new System.Drawing.Point(1051, 131);
             this.txtColorNo.MaxLength = 13;
             this.txtColorNo.MinimumSize = new System.Drawing.Size(100, 19);
@@ -837,7 +834,6 @@
             this.txtColorNo.TabIndex = 15;
             this.txtColorNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColorNo.TxtBox = null;
-            this.txtColorNo.TxtBox1 = null;
             // 
             // txtBrandCD
             // 
@@ -855,7 +851,6 @@
             this.txtBrandCD.IsRequire = false;
             this.txtBrandCD.IsUseInitializedLayout = true;
             this.txtBrandCD.lblName = null;
-            this.txtBrandCD.lblName1 = null;
             this.txtBrandCD.Location = new System.Drawing.Point(265, 100);
             this.txtBrandCD.MaxLength = 10;
             this.txtBrandCD.MinimumSize = new System.Drawing.Size(70, 19);
@@ -868,7 +863,6 @@
             this.txtBrandCD.TabIndex = 8;
             this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrandCD.TxtBox = null;
-            this.txtBrandCD.TxtBox1 = null;
             // 
             // txtShouhinCD
             // 
@@ -886,7 +880,6 @@
             this.txtShouhinCD.IsRequire = false;
             this.txtShouhinCD.IsUseInitializedLayout = true;
             this.txtShouhinCD.lblName = null;
-            this.txtShouhinCD.lblName1 = null;
             this.txtShouhinCD.Location = new System.Drawing.Point(265, 131);
             this.txtShouhinCD.MaxLength = 20;
             this.txtShouhinCD.MinimumSize = new System.Drawing.Size(150, 19);
@@ -899,7 +892,6 @@
             this.txtShouhinCD.TabIndex = 9;
             this.txtShouhinCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShouhinCD.TxtBox = null;
-            this.txtShouhinCD.TxtBox1 = null;
             // 
             // txtStaffCD
             // 
@@ -918,7 +910,6 @@
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
-            this.txtStaffCD.lblName1 = null;
             this.txtStaffCD.Location = new System.Drawing.Point(1051, 14);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
@@ -931,7 +922,6 @@
             this.txtStaffCD.TabIndex = 6;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaffCD.TxtBox = null;
-            this.txtStaffCD.TxtBox1 = null;
             // 
             // txtSiiresakiCD
             // 
@@ -950,7 +940,6 @@
             this.txtSiiresakiCD.IsRequire = false;
             this.txtSiiresakiCD.IsUseInitializedLayout = true;
             this.txtSiiresakiCD.lblName = null;
-            this.txtSiiresakiCD.lblName1 = null;
             this.txtSiiresakiCD.Location = new System.Drawing.Point(265, 43);
             this.txtSiiresakiCD.MaxLength = 10;
             this.txtSiiresakiCD.MinimumSize = new System.Drawing.Size(70, 19);
@@ -963,7 +952,6 @@
             this.txtSiiresakiCD.TabIndex = 4;
             this.txtSiiresakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSiiresakiCD.TxtBox = null;
-            this.txtSiiresakiCD.TxtBox1 = null;
             this.txtSiiresakiCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSiiresakiCD_KeyDown);
             // 
             // txtCopy
@@ -982,7 +970,6 @@
             this.txtCopy.IsRequire = false;
             this.txtCopy.IsUseInitializedLayout = true;
             this.txtCopy.lblName = null;
-            this.txtCopy.lblName1 = null;
             this.txtCopy.Location = new System.Drawing.Point(124, 34);
             this.txtCopy.MaxLength = 12;
             this.txtCopy.MinimumSize = new System.Drawing.Size(100, 19);
@@ -995,7 +982,6 @@
             this.txtCopy.TabIndex = 2;
             this.txtCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtCopy.TxtBox = null;
-            this.txtCopy.TxtBox1 = null;
             this.txtCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopy_KeyDown);
             // 
             // txtHacchuuNO
@@ -1014,7 +1000,6 @@
             this.txtHacchuuNO.IsRequire = false;
             this.txtHacchuuNO.IsUseInitializedLayout = true;
             this.txtHacchuuNO.lblName = null;
-            this.txtHacchuuNO.lblName1 = null;
             this.txtHacchuuNO.Location = new System.Drawing.Point(124, 9);
             this.txtHacchuuNO.MaxLength = 12;
             this.txtHacchuuNO.MinimumSize = new System.Drawing.Size(100, 19);
@@ -1027,7 +1012,6 @@
             this.txtHacchuuNO.TabIndex = 1;
             this.txtHacchuuNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtHacchuuNO.TxtBox = null;
-            this.txtHacchuuNO.TxtBox1 = null;
             this.txtHacchuuNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtHacchuuNO_KeyDown);
             // 
             // HacchuuNyuuryoku
