@@ -946,10 +946,9 @@ namespace JuchuuNyuuryoku
         private void F11_Gridview_Bind()
         {
             txtBrandCD.Focus();
-
-
             for (int t = 0; t < gv_JuchuuNyuuryoku.RowCount; t++)
             {
+
                 bool bl = false;
                 // grid 1 checking
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
@@ -960,19 +959,21 @@ namespace JuchuuNyuuryoku
                 string siiresakiCD = row.Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
                 string soukoCD = row.Cells["colSoukoCD"].EditedFormattedValue.ToString();
 
-                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "'");// original data
-                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  DJMSenpouHacchuuNO='"+senpouHacchuuNO+ "' and SiiresakiCD='"+siiresakiCD+ "' and SoukoCD='"+soukoCD+"'").SingleOrDefault();
-                if(existDr1!=null)
+                string color = row.Cells["colColorNO"].Value.ToString();
+                string size = row.Cells["colSizeNO"].Value.ToString();
+
+                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='"+ color + "' and SizeNO='"+ size + "'");// original data
+                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  DJMSenpouHacchuuNO='" + senpouHacchuuNO + "' and SiiresakiCD='" + siiresakiCD + "' and SoukoCD='" + soukoCD + "'").SingleOrDefault();
+                if (existDr1 != null)
                 {
-                    if(select_dr1[0][8].ToString() == "0")
+                    if (select_dr1[0][8].ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
-                    }  
+                    }
                 }
-
                 F8_drNew[0] = shouhinCD;
-                if(row.Cells["colJuchuuSuu"].Value.ToString() != "0")
+                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" && row.Cells[8].Value.ToString() != select_dr1[0][8].ToString())
                 {
                     for (int c = 1; c < gv_JuchuuNyuuryoku.Columns.Count; c++)
                     {
@@ -1560,8 +1561,8 @@ namespace JuchuuNyuuryoku
                     DataGridViewRow selectedRow = null;
                     if (gv_JuchuuNyuuryoku.SelectedCells.Count > 0)
                     {
-                        int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
-                        selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
+                        //int selectedrowindex = row;
+                        selectedRow = gv_JuchuuNyuuryoku.Rows[row];
                     }
                     sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(siiresaki_dt, selectedRow);
                 }
@@ -1639,22 +1640,27 @@ namespace JuchuuNyuuryoku
         private bool  F11_Gridivew_ErrorCheck()
         {
             bool bl_error = false;
+          
             foreach (DataGridViewRow gv in gv_JuchuuNyuuryoku.Rows)
             {
-                for (int i = 0; i < gv.Cells.Count; i++)
+                if(gv.Cells["colJuchuuSuu"].Value.ToString() != "0")
                 {
-                    string colName = gv_JuchuuNyuuryoku.Columns[i].Name;
-                    if (colName== "colSiiresakiCD" || colName== "colexpectedDate" || colName== "colSoukoCD" || colName== "colJuchuuMeisaiTekiyou")
+                    for (int i = 0; i < gv.Cells.Count; i++)
                     {
-                        if(ErrorCheck_CellEndEdit(gv.Index, i))
+                        string colName = gv_JuchuuNyuuryoku.Columns[i].Name;
+                        if (colName == "colSiiresakiCD" || colName == "colexpectedDate" || colName == "colSoukoCD" || colName == "colJuchuuMeisaiTekiyou")
                         {
-                             gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[gv.Index].Cells[i];
-                           // gv_JuchuuNyuuryoku.BeginEdit(true);
-                            bl_error = true;
-                            break;
-                        } 
+                            if (ErrorCheck_CellEndEdit(gv.Index, i))
+                            {
+                                gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[gv.Index].Cells[i];
+                                // gv_JuchuuNyuuryoku.BeginEdit(true);
+                                bl_error = true;
+                                break;
+                            }
+                        }
                     }
                 }
+               
                 if (bl_error)
                     return true;
             }
