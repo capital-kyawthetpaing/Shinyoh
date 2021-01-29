@@ -528,7 +528,8 @@ namespace MasterTouroku_Tokuisaki {
                         //
                         obj.ChangeDate = splits[1];
                         if (Null_Check(obj.ChangeDate, i, "改定日未入力エラー")) break;
-                        if (Date_Check(obj.ChangeDate, i, "入力可能値外エラー", "改定日")) break;
+                        if (Date_Check(obj.ChangeDate, i, "入力可能値外エラー", "改定日") == "true") break;
+                        else splits[1] = Date_Check(obj.ChangeDate, i, "入力可能値外エラー", "改定日");
 
                         //
                         obj.ShokutiFLG = Convert.ToInt32(splits[2]);
@@ -635,12 +636,18 @@ namespace MasterTouroku_Tokuisaki {
                         //
                         obj.TorihikiKaisiDate = splits[24];
                         if (!string.IsNullOrEmpty(obj.TorihikiKaisiDate))
-                            if (Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日")) break;
+                        {
+                            if (Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日") == "true") break;
+                            else splits[24] = Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日");
+                        }
 
                         //
                         obj.TorihikiShuuryouDate = splits[25];
                         if (!string.IsNullOrEmpty(obj.TorihikiShuuryouDate))
-                            if (Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日")) break;
+                        {
+                            if (Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日") == "true") break;
+                            else splits[25] = Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日");
+                        }
 
                         //
                         obj.ShukkaSizishoHuyouKBN = Convert.ToInt32(splits[26]);
@@ -716,18 +723,20 @@ namespace MasterTouroku_Tokuisaki {
             }
             return bl;
         }
-        public bool Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
+        public string Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
         {
-            bool bl = false;
+            //bool bl = false;
+            TextBox txt = new TextBox();
+            txt.Text = csv_Date;
             if (!string.IsNullOrEmpty(csv_Date))
             {
-                if (!cf.CheckDateValue(csv_Date))
+                if (!cf.DateCheck(txt))
                 {
                     bbl.ShowMessage("E276", line_no.ToString(), error_msg1,error_msg2);
-                    bl = true;
+                    txt.Text = "true";
                 }
             }
-            return bl;
+            return txt.Text;
         }
         public void Create_Datatable_Column(DataTable create_dt)
         {
