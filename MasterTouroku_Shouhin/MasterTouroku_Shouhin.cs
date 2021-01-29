@@ -49,16 +49,20 @@ namespace MasterTouroku_Shouhin
 
             ChangeMode(Mode.New);
             base_entity = _GetBaseData();
+
             txtProduct.TxtBox = txtColor;
             txtProduct.TxtBox1 = txtSize;
             txtProduct.lblName = lblColorNO;
             txtProduct.lblName1 = lblSizeNO;
             txtProduct.ChangeDate = txtChangeDate;
-            txtCopyProduct.TxtBox = txtCopyColor;
-            txtCopyProduct.TxtBox1 = txtCopySize;
-            txtCopyProduct.lblName = lblCopyColorNO;
-            txtCopyProduct.lblName1 = lblCopySizeNO;
-            txtCopyProduct.ChangeDate = txtCopyChangeDate;
+
+            txtCopyProduct.TxtBox = txtCopyProduct;//ses
+            //txtCopyProduct.TxtBox =txtCopyColor;
+            //txtCopyProduct.TxtBox1 = txtCopySize;
+            //txtCopyProduct.lblName = lblCopyColorNO;
+            //txtCopyProduct.lblName1 = lblCopySizeNO;
+            txtCopyProduct.ChangeDate = txtCopyColor;//ses
+
             txtMajorSuppliers.ChangeDate = txtChangeDate;
             txtColor.lblName = lblColorNO;
             txtSize.lblName = lblSizeNO;
@@ -81,7 +85,8 @@ namespace MasterTouroku_Shouhin
                     UI_ErrorCheck();
                     txtCopyProduct.Enabled = true;
                     txtCopyChangeDate.Enabled = true;
-
+                    txtColor.E101Check(false, "M_Shouhin", txtColor, null, null);
+                    txtSize.E101Check(false, "M_Shouhin", txtSize, null, null);
                     txtChangeDate.E132MultiCheck(true, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
                     txtChangeDate.E133MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
                     txtChangeDate.E270MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
@@ -92,6 +97,7 @@ namespace MasterTouroku_Shouhin
                     txtCopyColor.E101Check(true, "M_Shouhin", txtCopyColor, null, null);
                     txtCopySize.E101Check(true, "M_Shouhin", txtCopySize, null, null);
                     txtCopyChangeDate.E103Check(true);
+                    txtCopyChangeDate.E133MultiCheck(true, "M_Shouhin", txtCopyProduct, txtCopyColor, txtCopySize, txtCopyChangeDate);
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
