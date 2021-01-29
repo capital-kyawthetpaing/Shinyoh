@@ -35,10 +35,6 @@
     <Reference Include="CKM_DataLayer">
       <HintPath>..\Shinyoh\RequireDLL\CKM_DataLayer.dll</HintPath>
     </Reference>
-    <Reference Include="ExcelLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Shinyoh\RequireDLL\ExcelLibrary.dll</HintPath>
-    </Reference>
     <Reference Include="MenuDL">
       <HintPath>..\Shinyoh\RequireDLL\MenuDL.dll</HintPath>
     </Reference>
