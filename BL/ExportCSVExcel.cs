@@ -7,8 +7,11 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Diagnostics;
+using ClosedXML.Excel;
+using System.IO;
+using System.Windows.Forms;
 using ExcelLibrary.SpreadSheet;
-
 
 namespace BL
 {
@@ -85,8 +88,8 @@ namespace BL
                 if(!string.IsNullOrEmpty(obj.Start_Title_Center_Column) && !string.IsNullOrEmpty(obj.End_Title_Center_Column))
                 {
                     var range = oSheet.Range[obj.Start_Title_Center_Column, obj.End_Title_Center_Column];
-                    range.VerticalAlignment = Excel.XlVAlign.xlVAlignCenter;
-                    range.HorizontalAlignment = Excel.XlHAlign.xlHAlignCenter;
+                    range.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;//ssa
+                    range.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;//ssa
                     range.WrapText = true;
                 }
                 // color the columns 
@@ -122,9 +125,9 @@ namespace BL
 
                 // Save the sheet and close 
                 oSheet = null;
-                oWB.SaveAs(obj.FilePath, Excel.XlFileFormat.xlWorkbookNormal,
+                oWB.SaveAs(obj.FilePath, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal,//ssa
                     Missing.Value, Missing.Value, Missing.Value, Missing.Value,
-                    Excel.XlSaveAsAccessMode.xlExclusive,
+                    Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive,//ssa
                     Missing.Value, Missing.Value, Missing.Value,
                     Missing.Value, Missing.Value);
                 //Doesn't appear in any other open windows.
@@ -150,7 +153,80 @@ namespace BL
             return true;
         }
 
-        public  string DataTableToCSV(DataTable datatable, char seperator)
+        public bool ExcelOutputFile(DataTable dtDatao, string ProgramID, string fname, string SheetName, int bgcol, string[] datacol, string[] numcol)
+        {
+            try
+            {
+                string folderPath = "C:\\ShinYoh\\" + ProgramID + "\\";
+                if (!Directory.Exists(folderPath))
+                {
+                    Directory.CreateDirectory(folderPath);
+                }
+                SaveFileDialog savedialog = new SaveFileDialog();
+                savedialog.Filter = "Excel Files|*.xlsx;";
+                savedialog.Title = "Save";
+                savedialog.FileName = fname + ".xlsx";
+                savedialog.InitialDirectory = folderPath;
+
+                savedialog.RestoreDirectory = true;
+
+                if (savedialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (Path.GetExtension(savedialog.FileName).Contains(".xlsx"))
+                    {
+                        Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
+                        Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+                        Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+                        worksheet = workbook.ActiveSheet;
+                        worksheet.Name = SheetName;
+
+                        using (XLWorkbook wb = new XLWorkbook())
+                        {
+                            var ws = wb.Worksheets.Add(dtDatao, SheetName);
+                            ws.Range(ws.Cell(1, 1), ws.Cell(1, bgcol)).Style.Fill.BackgroundColor = XLColor.Orange;
+                            //ws.FirstRow().Style.Fill.BackgroundColor = XLColor.Orange;
+                            ws.FirstRow().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
+                            ws.ColumnWidth = 20;
+                            for (int i = 0; i < datacol.Count(); i++)
+                            {
+                                string val = datacol[i].ToString();
+                                ws.Column(val).Style.NumberFormat.Format = "YYYY/MM/DD";
+                            }
+                            for (int k = 0; k < numcol.Count(); k++)
+                            {
+                                string val1 = numcol[k].ToString();
+                                ws.Column(val1).Style.NumberFormat.Format = "#,###,###";
+                            }
+                            ws.ShowGridLines = false;
+                            ws.Tables.FirstOrDefault().ShowAutoFilter = false;
+                            ws.Tables.FirstOrDefault().Theme = XLTableTheme.None;
+
+                            wb.SaveAs(savedialog.FileName);
+                        }
+                        Process.Start(Path.GetDirectoryName(savedialog.FileName));
+                        workbook.Close(false, Missing.Value, Missing.Value);
+                        excel.Quit();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return false;
+            }
+            finally
+            {
+                // Clean up 
+                // NOTE: When in release mode, this does the trick 
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
+            }
+            return true;
+        }
+
+        public string DataTableToCSV(DataTable datatable, char seperator)
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < datatable.Columns.Count; i++)

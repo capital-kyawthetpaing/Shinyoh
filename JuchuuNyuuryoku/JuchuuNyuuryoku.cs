@@ -946,10 +946,9 @@ namespace JuchuuNyuuryoku
         private void F11_Gridview_Bind()
         {
             txtBrandCD.Focus();
-
-
             for (int t = 0; t < gv_JuchuuNyuuryoku.RowCount; t++)
             {
+
                 bool bl = false;
                 // grid 1 checking
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
@@ -960,19 +959,21 @@ namespace JuchuuNyuuryoku
                 string siiresakiCD = row.Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
                 string soukoCD = row.Cells["colSoukoCD"].EditedFormattedValue.ToString();
 
-                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "'");// original data
-                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  DJMSenpouHacchuuNO='"+senpouHacchuuNO+ "' and SiiresakiCD='"+siiresakiCD+ "' and SoukoCD='"+soukoCD+"'").SingleOrDefault();
-                if(existDr1!=null)
+                string color = row.Cells["colColorNO"].Value.ToString();
+                string size = row.Cells["colSizeNO"].Value.ToString();
+
+                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='"+ color + "' and SizeNO='"+ size + "'");// original data
+                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  DJMSenpouHacchuuNO='" + senpouHacchuuNO + "' and SiiresakiCD='" + siiresakiCD + "' and SoukoCD='" + soukoCD + "'").SingleOrDefault();
+                if (existDr1 != null)
                 {
-                    if(select_dr1[0][8].ToString() == "0")
+                    if (select_dr1[0][8].ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
-                    }  
+                    }
                 }
-
                 F8_drNew[0] = shouhinCD;
-                if(row.Cells["colJuchuuSuu"].Value.ToString() != "0")
+                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" && row.Cells[8].Value.ToString() != select_dr1[0][8].ToString())
                 {
                     for (int c = 1; c < gv_JuchuuNyuuryoku.Columns.Count; c++)
                     {
@@ -1560,8 +1561,8 @@ namespace JuchuuNyuuryoku
                     DataGridViewRow selectedRow = null;
                     if (gv_JuchuuNyuuryoku.SelectedCells.Count > 0)
                     {
-                        int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
-                        selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
+                        //int selectedrowindex = row;
+                        selectedRow = gv_JuchuuNyuuryoku.Rows[row];
                     }
                     sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(siiresaki_dt, selectedRow);
                 }
@@ -1619,11 +1620,11 @@ namespace JuchuuNyuuryoku
                         bl_error = true;
                     }
                 }
-                if (bl_error == false && (!string.IsNullOrEmpty(colSoukoCD)))
+                if (bl_error == false && (!string.IsNullOrEmpty(soukoCD)))
                 {
                     (bl_error, souko_dt) = Gridview_Error_Check("E101", soukoCD, "Souko");
                 }
-                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
+                if (bl_error == false && (!string.IsNullOrEmpty(soukoCD)))
                 {
                     gv_JuchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].Value = souko_dt.Rows[0]["SoukoCD"];
                     gv_JuchuuNyuuryoku.Rows[row].Cells["colSoukoName"].Value = souko_dt.Rows[0]["SoukoName"];
@@ -1639,22 +1640,27 @@ namespace JuchuuNyuuryoku
         private bool  F11_Gridivew_ErrorCheck()
         {
             bool bl_error = false;
+          
             foreach (DataGridViewRow gv in gv_JuchuuNyuuryoku.Rows)
             {
-                for (int i = 0; i < gv.Cells.Count; i++)
+                if(gv.Cells["colJuchuuSuu"].Value.ToString() != "0")
                 {
-                    string colName = gv_JuchuuNyuuryoku.Columns[i].Name;
-                    if (colName== "colSiiresakiCD" || colName== "colexpectedDate" || colName== "colSoukoCD" || colName== "colJuchuuMeisaiTekiyou")
+                    for (int i = 0; i < gv.Cells.Count; i++)
                     {
-                        if(ErrorCheck_CellEndEdit(gv.Index, i))
+                        string colName = gv_JuchuuNyuuryoku.Columns[i].Name;
+                        if (colName == "colSiiresakiCD" || colName == "colexpectedDate" || colName == "colSoukoCD" || colName == "colJuchuuMeisaiTekiyou")
                         {
-                             gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[gv.Index].Cells[i];
-                           // gv_JuchuuNyuuryoku.BeginEdit(true);
-                            bl_error = true;
-                            break;
-                        } 
+                            if (ErrorCheck_CellEndEdit(gv.Index, i))
+                            {
+                                gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[gv.Index].Cells[i];
+                                // gv_JuchuuNyuuryoku.BeginEdit(true);
+                                bl_error = true;
+                                break;
+                            }
+                        }
                     }
                 }
+               
                 if (bl_error)
                     return true;
             }
@@ -1684,7 +1690,6 @@ namespace JuchuuNyuuryoku
                 {
                     if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14)
                     {
-                        gv_JuchuuNyuuryoku.EndEdit();
                         gridKeyDown();
                     }
                 }
@@ -1693,6 +1698,10 @@ namespace JuchuuNyuuryoku
         }
         private void gridKeyDown()
         {
+            gv_JuchuuNyuuryoku.CellEndEdit -= new DataGridViewCellEventHandler(gv_1_CellEndEdit);
+            gv_JuchuuNyuuryoku.EndEdit();
+            gv_JuchuuNyuuryoku.CellEndEdit += new DataGridViewCellEventHandler(gv_1_CellEndEdit);
+
             int row = gv_JuchuuNyuuryoku.CurrentCell.RowIndex;
             int column = gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex;
             if (gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSiiresakiCD")
@@ -1701,13 +1710,18 @@ namespace JuchuuNyuuryoku
                 detail.Date_Access_Siiresaki = txtJuchuuDate.Text;
                 detail.ShowDialog();
 
-                gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
-                this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
-
                 if (!string.IsNullOrEmpty(detail.SiiresakiCD))
                 {
+                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column + 3, row];
+                    this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
+
                     gv_JuchuuNyuuryoku[column, row].Value = detail.SiiresakiCD.ToString();
                     gv_JuchuuNyuuryoku[column + 1, row].Value = detail.SiiresakiName.ToString();
+                }
+                else
+                {
+                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
+                    this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
                 }
 
 
@@ -1729,8 +1743,26 @@ namespace JuchuuNyuuryoku
             {
                 (e.Control as DataGridViewTextBoxEditingControl).KeyDown -= new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
                 (e.Control as DataGridViewTextBoxEditingControl).KeyDown += new KeyEventHandler(gv_JuchuuNyuuryoku_KeyDown);
+
+                Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                Control btnF9 = ctrlArr[0];
+                if (btnF9 != null)
+                {
+                    btnF9.Click -= BtnF9_Click;
+                    btnF9.Click += BtnF9_Click;
+                }
             }
         }
 
+        private void BtnF9_Click(object sender, EventArgs e)
+        {
+            if (gv_JuchuuNyuuryoku.CurrentCell != null)
+            {
+                if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14)
+                {
+                    gridKeyDown();
+                }
+            }
+        }
     }
 }
