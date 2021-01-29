@@ -11,40 +11,12 @@ using System.Diagnostics;
 using ClosedXML.Excel;
 using System.IO;
 using System.Windows.Forms;
-using ExcelLibrary.SpreadSheet;
 
 namespace BL
 {
     public  class ExportCSVExcel
     {
-        public bool DataTableToExcel(DataTable dt, ExcelDesignSetting obj)
-        {
-            Workbook wb = new Workbook();
-            Worksheet ws = new Worksheet(obj.SheetName);
-            int rowCount = 1;
-            foreach (DataColumn col in dt.Columns)
-            {
-                for (int i = 0; i < dt.Columns.Count; i++)
-                {
-                    ws.Cells[0, i] = new Cell(dt.Columns[i].ColumnName);
-                }
-            }
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                for (int i = 0; i < dt.Columns.Count; i++)
-                {
-                    ws.Cells[rowCount, i] = new Cell(dr[i].ToString());
-                }
-                rowCount += 1;
-            }
-
-            wb.Worksheets.Add(ws);
-            wb.Save(obj.FilePath);
-
-            return true;
-        }
-        
+        BaseBL bbl = new BaseBL();
         public  bool ExportDataTableToExcel(DataTable dt,ExcelDesignSetting  obj)
         {
             Excel.Application oXL;
@@ -153,7 +125,7 @@ namespace BL
             return true;
         }
 
-        public bool ExcelOutputFile(DataTable dtDatao, string ProgramID, string fname, string SheetName, int bgcol, string[] datacol, string[] numcol)
+        public bool ExcelOutputFile(DataTable dtvalue, string ProgramID, string fname, string SheetName, int bgcol, string[] datecol, string[] numcol)
         {
             try
             {
@@ -182,26 +154,36 @@ namespace BL
 
                         using (XLWorkbook wb = new XLWorkbook())
                         {
-                            var ws = wb.Worksheets.Add(dtDatao, SheetName);
+                            var ws = wb.Worksheets.Add(dtvalue, SheetName);
                             ws.Range(ws.Cell(1, 1), ws.Cell(1, bgcol)).Style.Fill.BackgroundColor = XLColor.Orange;
                             //ws.FirstRow().Style.Fill.BackgroundColor = XLColor.Orange;
                             ws.FirstRow().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
                             ws.ColumnWidth = 20;
-                            for (int i = 0; i < datacol.Count(); i++)
+
+                            if (datecol != null)
                             {
-                                string val = datacol[i].ToString();
-                                ws.Column(val).Style.NumberFormat.Format = "YYYY/MM/DD";
+                                for (int i = 0; i < datecol.Count(); i++)
+                                {
+                                    string val = datecol[i].ToString();
+                                    ws.Column(val).Style.NumberFormat.Format = "YYYY/MM/DD";
+                                }
                             }
-                            for (int k = 0; k < numcol.Count(); k++)
+
+                            if (numcol != null)
                             {
-                                string val1 = numcol[k].ToString();
-                                ws.Column(val1).Style.NumberFormat.Format = "#,###,###";
+                                for (int k = 0; k < numcol.Count(); k++)
+                                {
+                                    string val1 = numcol[k].ToString();
+                                    ws.Column(val1).Style.NumberFormat.Format = "#,###,###";
+                                }
                             }
+
                             ws.ShowGridLines = false;
                             ws.Tables.FirstOrDefault().ShowAutoFilter = false;
                             ws.Tables.FirstOrDefault().Theme = XLTableTheme.None;
 
                             wb.SaveAs(savedialog.FileName);
+                            bbl.ShowMessage("I203");
                         }
                         Process.Start(Path.GetDirectoryName(savedialog.FileName));
                         workbook.Close(false, Missing.Value, Missing.Value);

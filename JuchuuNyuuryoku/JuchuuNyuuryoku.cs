@@ -104,7 +104,7 @@ namespace JuchuuNyuuryoku
             gv_JuchuuNyuuryoku.SetReadOnlyColumn("ColHinbanCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName");
 
             gv_JuchuuNyuuryoku.SetHiraganaColumn("colJuchuuMeisaiTekiyou");
-            gv_JuchuuNyuuryoku.SetNumberColumn("colJuchuuSuu,colexpectedDate");
+            gv_JuchuuNyuuryoku.SetNumberColumn("colJuchuuSuu");
             // gv_JuchuuNyuuryoku.ClearSelection();
 
             txtKouritenCD.TxtBox = txtTokuisakiCD;//ses
