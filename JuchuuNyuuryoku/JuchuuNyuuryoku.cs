@@ -1512,7 +1512,7 @@ namespace JuchuuNyuuryoku
             string isSelected = string.Empty;
             string free = gv_JuchuuNyuuryoku.Rows[row].Cells["colFree"].Value.ToString();
             string JuchuuSuu = gv_JuchuuNyuuryoku.Rows[row].Cells["colJuchuuSuu"].Value.ToString();
-            string siiresakiCD = gv_JuchuuNyuuryoku.Rows[row].Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
+            string siiresakiCD = gv_JuchuuNyuuryoku.Rows[row].Cells["colSiiresakiCD"].EditedFormattedValue.ToString().Trim();
             if (string.IsNullOrEmpty(free))
                 isSelected = "OFF";
             else isSelected = "ON";
@@ -1573,7 +1573,7 @@ namespace JuchuuNyuuryoku
             {
                 DateTime JuchuuDate = string.IsNullOrEmpty(txtJuchuuDate.Text) ? Convert.ToDateTime(base_Entity.LoginDate) : Convert.ToDateTime(txtJuchuuDate.Text);
 
-                string expectedDate = gv_JuchuuNyuuryoku.Rows[row].Cells["colexpectedDate"].EditedFormattedValue.ToString();
+                string expectedDate = gv_JuchuuNyuuryoku.Rows[row].Cells["colexpectedDate"].EditedFormattedValue.ToString().Trim();
                 if (isSelected == "OFF" && JuchuuSuu != "0")
                 {
                     if (string.IsNullOrEmpty(expectedDate))
@@ -1611,7 +1611,7 @@ namespace JuchuuNyuuryoku
             if (col_Name == "colSoukoCD")
             {
                 DataTable souko_dt = new DataTable();
-                string soukoCD = gv_JuchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].EditedFormattedValue.ToString();
+                string soukoCD = gv_JuchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].EditedFormattedValue.ToString().Trim();
                 if (isSelected == "OFF" && JuchuuSuu != "0")
                 {
                     if (string.IsNullOrEmpty(soukoCD))
