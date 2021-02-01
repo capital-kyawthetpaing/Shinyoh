@@ -153,7 +153,7 @@
             this.PanelTitle.Controls.Add(this.txtProduct);
             this.PanelTitle.Controls.Add(this.lblProduct);
             this.PanelTitle.Location = new System.Drawing.Point(120, 0);
-            this.PanelTitle.Size = new System.Drawing.Size(900, 120);
+            this.PanelTitle.Size = new System.Drawing.Size(950, 120);
             this.PanelTitle.TabIndex = 1;
             // 
             // cboMode
@@ -224,7 +224,7 @@
             this.lblCopyProduct.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCopyProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopyProduct.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCopyProduct.Location = new System.Drawing.Point(457, 8);
+            this.lblCopyProduct.Location = new System.Drawing.Point(519, 8);
             this.lblCopyProduct.Name = "lblCopyProduct";
             this.lblCopyProduct.Size = new System.Drawing.Size(100, 19);
             this.lblCopyProduct.TabIndex = 37;
@@ -237,7 +237,7 @@
             this.lblCopyRevisionDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCopyRevisionDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopyRevisionDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCopyRevisionDate.Location = new System.Drawing.Point(457, 94);
+            this.lblCopyRevisionDate.Location = new System.Drawing.Point(519, 94);
             this.lblCopyRevisionDate.Name = "lblCopyRevisionDate";
             this.lblCopyRevisionDate.Size = new System.Drawing.Size(100, 19);
             this.lblCopyRevisionDate.TabIndex = 38;
@@ -257,7 +257,7 @@
             this.txtCopyChangeDate.IsErrorOccurs = false;
             this.txtCopyChangeDate.IsRequire = false;
             this.txtCopyChangeDate.IsUseInitializedLayout = true;
-            this.txtCopyChangeDate.Location = new System.Drawing.Point(557, 94);
+            this.txtCopyChangeDate.Location = new System.Drawing.Point(619, 94);
             this.txtCopyChangeDate.MaxLength = 10;
             this.txtCopyChangeDate.MinimumSize = new System.Drawing.Size(100, 18);
             this.txtCopyChangeDate.MoveNext = true;
@@ -278,7 +278,7 @@
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblClassification.ForeColor = System.Drawing.Color.White;
-            this.lblClassification.Location = new System.Drawing.Point(1038, 8);
+            this.lblClassification.Location = new System.Drawing.Point(1100, 8);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
             this.lblClassification.TabIndex = 9;
@@ -289,7 +289,7 @@
             // 
             this.rdo_Registragion.Checked = true;
             this.rdo_Registragion.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Registragion.Location = new System.Drawing.Point(1155, 8);
+            this.rdo_Registragion.Location = new System.Drawing.Point(1217, 8);
             this.rdo_Registragion.MoveNext = true;
             this.rdo_Registragion.Name = "rdo_Registragion";
             this.rdo_Registragion.NextControl = null;
@@ -303,7 +303,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Delete.Location = new System.Drawing.Point(1210, 8);
+            this.rdo_Delete.Location = new System.Drawing.Point(1272, 8);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -435,7 +435,7 @@
             this.lbl_BrandCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_BrandCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_BrandCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lbl_BrandCD.Location = new System.Drawing.Point(240, 165);
+            this.lbl_BrandCD.Location = new System.Drawing.Point(241, 165);
             this.lbl_BrandCD.Name = "lbl_BrandCD";
             this.lbl_BrandCD.Size = new System.Drawing.Size(500, 19);
             this.lbl_BrandCD.TabIndex = 78;
@@ -447,7 +447,7 @@
             this.lbl_TaniCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_TaniCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_TaniCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lbl_TaniCD.Location = new System.Drawing.Point(190, 140);
+            this.lbl_TaniCD.Location = new System.Drawing.Point(191, 140);
             this.lbl_TaniCD.Name = "lbl_TaniCD";
             this.lbl_TaniCD.Size = new System.Drawing.Size(250, 19);
             this.lbl_TaniCD.TabIndex = 77;
@@ -594,7 +594,7 @@
             this.txtBrand.IsUseInitializedLayout = true;
             this.txtBrand.lblName = null;
             this.txtBrand.lblName1 = null;
-            this.txtBrand.Location = new System.Drawing.Point(140, 165);
+            this.txtBrand.Location = new System.Drawing.Point(141, 165);
             this.txtBrand.MaxLength = 10;
             this.txtBrand.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtBrand.MoveNext = true;
@@ -625,7 +625,7 @@
             this.txtTani.IsUseInitializedLayout = true;
             this.txtTani.lblName = null;
             this.txtTani.lblName1 = null;
-            this.txtTani.Location = new System.Drawing.Point(140, 140);
+            this.txtTani.Location = new System.Drawing.Point(141, 140);
             this.txtTani.MaxLength = 2;
             this.txtTani.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtTani.MoveNext = true;
@@ -642,7 +642,7 @@
             // pImage
             // 
             this.pImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pImage.Location = new System.Drawing.Point(796, 15);
+            this.pImage.Location = new System.Drawing.Point(869, 15);
             this.pImage.Name = "pImage";
             this.pImage.Size = new System.Drawing.Size(350, 300);
             this.pImage.TabIndex = 66;
@@ -662,7 +662,7 @@
             this.txtKensakuHyouziJun.IsErrorOccurs = false;
             this.txtKensakuHyouziJun.IsRequire = false;
             this.txtKensakuHyouziJun.IsUseInitializedLayout = true;
-            this.txtKensakuHyouziJun.Location = new System.Drawing.Point(140, 517);
+            this.txtKensakuHyouziJun.Location = new System.Drawing.Point(141, 517);
             this.txtKensakuHyouziJun.MaxLength = 3;
             this.txtKensakuHyouziJun.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtKensakuHyouziJun.MoveNext = true;
@@ -701,7 +701,7 @@
             this.txtRemarks.IsErrorOccurs = false;
             this.txtRemarks.IsRequire = false;
             this.txtRemarks.IsUseInitializedLayout = true;
-            this.txtRemarks.Location = new System.Drawing.Point(140, 492);
+            this.txtRemarks.Location = new System.Drawing.Point(141, 492);
             this.txtRemarks.MaxLength = 80;
             this.txtRemarks.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRemarks.MoveNext = true;
@@ -739,7 +739,7 @@
             this.txtImage.IsErrorOccurs = false;
             this.txtImage.IsRequire = false;
             this.txtImage.IsUseInitializedLayout = true;
-            this.txtImage.Location = new System.Drawing.Point(140, 467);
+            this.txtImage.Location = new System.Drawing.Point(141, 467);
             this.txtImage.MaxLength = 100;
             this.txtImage.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtImage.MoveNext = true;
@@ -778,7 +778,7 @@
             this.txtHacchuuLot.IsErrorOccurs = false;
             this.txtHacchuuLot.IsRequire = false;
             this.txtHacchuuLot.IsUseInitializedLayout = true;
-            this.txtHacchuuLot.Location = new System.Drawing.Point(140, 442);
+            this.txtHacchuuLot.Location = new System.Drawing.Point(141, 442);
             this.txtHacchuuLot.MaxLength = 5;
             this.txtHacchuuLot.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuLot.MoveNext = true;
@@ -856,7 +856,7 @@
             this.txtFOB.IsErrorOccurs = false;
             this.txtFOB.IsRequire = false;
             this.txtFOB.IsUseInitializedLayout = true;
-            this.txtFOB.Location = new System.Drawing.Point(140, 417);
+            this.txtFOB.Location = new System.Drawing.Point(141, 417);
             this.txtFOB.MaxLength = 8;
             this.txtFOB.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtFOB.MoveNext = true;
@@ -933,7 +933,7 @@
             this.txtModelNo.IsErrorOccurs = false;
             this.txtModelNo.IsRequire = false;
             this.txtModelNo.IsUseInitializedLayout = true;
-            this.txtModelNo.Location = new System.Drawing.Point(140, 392);
+            this.txtModelNo.Location = new System.Drawing.Point(141, 392);
             this.txtModelNo.MaxLength = 16;
             this.txtModelNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtModelNo.MoveNext = true;
@@ -971,7 +971,7 @@
             this.txtSalesStopDate.IsErrorOccurs = false;
             this.txtSalesStopDate.IsRequire = false;
             this.txtSalesStopDate.IsUseInitializedLayout = true;
-            this.txtSalesStopDate.Location = new System.Drawing.Point(140, 367);
+            this.txtSalesStopDate.Location = new System.Drawing.Point(141, 367);
             this.txtSalesStopDate.MaxLength = 10;
             this.txtSalesStopDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSalesStopDate.MoveNext = true;
@@ -1010,7 +1010,7 @@
             this.txtHandlingEndDate.IsErrorOccurs = false;
             this.txtHandlingEndDate.IsRequire = false;
             this.txtHandlingEndDate.IsUseInitializedLayout = true;
-            this.txtHandlingEndDate.Location = new System.Drawing.Point(140, 342);
+            this.txtHandlingEndDate.Location = new System.Drawing.Point(141, 342);
             this.txtHandlingEndDate.MaxLength = 10;
             this.txtHandlingEndDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHandlingEndDate.MoveNext = true;
@@ -1105,7 +1105,7 @@
             this.txtStandardPrice.IsErrorOccurs = false;
             this.txtStandardPrice.IsRequire = false;
             this.txtStandardPrice.IsUseInitializedLayout = true;
-            this.txtStandardPrice.Location = new System.Drawing.Point(140, 215);
+            this.txtStandardPrice.Location = new System.Drawing.Point(141, 215);
             this.txtStandardPrice.MaxLength = 11;
             this.txtStandardPrice.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStandardPrice.MoveNext = true;
@@ -1185,7 +1185,7 @@
             this.txtRetailPrice.IsErrorOccurs = false;
             this.txtRetailPrice.IsRequire = false;
             this.txtRetailPrice.IsUseInitializedLayout = true;
-            this.txtRetailPrice.Location = new System.Drawing.Point(140, 190);
+            this.txtRetailPrice.Location = new System.Drawing.Point(141, 190);
             this.txtRetailPrice.MaxLength = 11;
             this.txtRetailPrice.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtRetailPrice.MoveNext = true;
@@ -1331,7 +1331,7 @@
             this.txtJANCD.IsErrorOccurs = false;
             this.txtJANCD.IsRequire = false;
             this.txtJANCD.IsUseInitializedLayout = true;
-            this.txtJANCD.Location = new System.Drawing.Point(140, 115);
+            this.txtJANCD.Location = new System.Drawing.Point(141, 115);
             this.txtJANCD.MaxLength = 13;
             this.txtJANCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJANCD.MoveNext = true;
@@ -1369,7 +1369,7 @@
             this.txtKatakanaName.IsErrorOccurs = false;
             this.txtKatakanaName.IsRequire = false;
             this.txtKatakanaName.IsUseInitializedLayout = true;
-            this.txtKatakanaName.Location = new System.Drawing.Point(140, 90);
+            this.txtKatakanaName.Location = new System.Drawing.Point(141, 90);
             this.txtKatakanaName.MaxLength = 80;
             this.txtKatakanaName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKatakanaName.MoveNext = true;
@@ -1454,7 +1454,7 @@
             this.txtProductName.NextControl = null;
             this.txtProductName.NextControlName = "txtShouhinRyakuName";
             this.txtProductName.SearchType = Entity.SearchType.ScType.None;
-            this.txtProductName.Size = new System.Drawing.Size(500, 19);
+            this.txtProductName.Size = new System.Drawing.Size(610, 19);
             this.txtProductName.TabIndex = 3;
             this.txtProductName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1517,7 +1517,7 @@
             this.txtCopyProduct.IsUseInitializedLayout = true;
             this.txtCopyProduct.lblName = null;
             this.txtCopyProduct.lblName1 = null;
-            this.txtCopyProduct.Location = new System.Drawing.Point(557, 8);
+            this.txtCopyProduct.Location = new System.Drawing.Point(619, 8);
             this.txtCopyProduct.MaxLength = 20;
             this.txtCopyProduct.MinimumSize = new System.Drawing.Size(135, 18);
             this.txtCopyProduct.MoveNext = true;
@@ -1682,7 +1682,7 @@
             this.sLabel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel5.Location = new System.Drawing.Point(457, 38);
+            this.sLabel5.Location = new System.Drawing.Point(519, 38);
             this.sLabel5.Name = "sLabel5";
             this.sLabel5.Size = new System.Drawing.Size(100, 19);
             this.sLabel5.TabIndex = 45;
@@ -1695,7 +1695,7 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(457, 64);
+            this.sLabel6.Location = new System.Drawing.Point(519, 64);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
             this.sLabel6.TabIndex = 46;
@@ -1719,7 +1719,7 @@
             this.txtCopyColor.IsUseInitializedLayout = true;
             this.txtCopyColor.lblName = null;
             this.txtCopyColor.lblName1 = null;
-            this.txtCopyColor.Location = new System.Drawing.Point(557, 38);
+            this.txtCopyColor.Location = new System.Drawing.Point(619, 38);
             this.txtCopyColor.MaxLength = 13;
             this.txtCopyColor.MinimumSize = new System.Drawing.Size(95, 19);
             this.txtCopyColor.MoveNext = true;
@@ -1750,7 +1750,7 @@
             this.txtCopySize.IsUseInitializedLayout = true;
             this.txtCopySize.lblName = null;
             this.txtCopySize.lblName1 = null;
-            this.txtCopySize.Location = new System.Drawing.Point(557, 64);
+            this.txtCopySize.Location = new System.Drawing.Point(619, 64);
             this.txtCopySize.MaxLength = 13;
             this.txtCopySize.MinimumSize = new System.Drawing.Size(95, 19);
             this.txtCopySize.MoveNext = true;
@@ -1770,7 +1770,7 @@
             this.lblCopyColorNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCopyColorNO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopyColorNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCopyColorNO.Location = new System.Drawing.Point(652, 38);
+            this.lblCopyColorNO.Location = new System.Drawing.Point(714, 38);
             this.lblCopyColorNO.Name = "lblCopyColorNO";
             this.lblCopyColorNO.Size = new System.Drawing.Size(230, 19);
             this.lblCopyColorNO.TabIndex = 49;
@@ -1782,7 +1782,7 @@
             this.lblCopySizeNO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCopySizeNO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCopySizeNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCopySizeNO.Location = new System.Drawing.Point(652, 64);
+            this.lblCopySizeNO.Location = new System.Drawing.Point(714, 64);
             this.lblCopySizeNO.Name = "lblCopySizeNO";
             this.lblCopySizeNO.Size = new System.Drawing.Size(230, 19);
             this.lblCopySizeNO.TabIndex = 50;
