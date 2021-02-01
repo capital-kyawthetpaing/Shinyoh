@@ -87,7 +87,13 @@ namespace Shinyoh_Controls
                             case "txtColor":
                                 id = "104";
                                 break;
+                            case "txtCopyColor":
+                                id = "104";
+                                break;
                             case "txtSize":
+                                id = "105";
+                                break;
+                            case "txtCopySize":
                                 id = "105";
                                 break;
                             case "txtIEvaluation":
@@ -100,7 +106,7 @@ namespace Shinyoh_Controls
                                 id = "221";
                                 break;
                         }
-                        rDt = shouhin.Shouhin_Check(id, sTextBox.ctrlE101_1.Text, "E101");
+                        rDt = shouhin.Shouhin_Check(id, sTextBox.ctrlE101_1.Text, string.Empty, string.Empty, "E101");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                     case "HikiateHenkouShoukai":
@@ -307,11 +313,6 @@ namespace Shinyoh_Controls
                         rDt = denpyou_bl.DenpyouNO_Check(denpyou_entity);
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
-                    case "M_Shouhin":
-                        ShouhinBL shouhin = new ShouhinBL();
-                        rDt = shouhin.Shouhin_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text, string.Empty);
-                        result = rDt.Rows[0]["MessageID"].ToString();
-                        break;
                 }
                 if (result.Equals("E132"))
                 {
@@ -319,7 +320,19 @@ namespace Shinyoh_Controls
                     sTextBox.Focus();
                     return (true, rDt);
                 }
-            }           
+            }
+            if(sTextBox.E132Multi)
+            {
+                string result = string.Empty;
+                switch(sTextBox.E132Type)
+                {
+                    case "M_Shouhin":
+                        ShouhinBL shouhin = new ShouhinBL();
+                        rDt = shouhin.Shouhin_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text, sTextBox.ctrlE132_3.Text, sTextBox.ctrlE132_4.Text, string.Empty);
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+            }
             if (sTextBox.E133)
             {
                 DataTable dt = new DataTable();
@@ -392,14 +405,6 @@ namespace Shinyoh_Controls
                             result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;
-                    case "M_Shouhin":
-                        if (!string.IsNullOrWhiteSpace(sTextBox.ctrlE133_1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlE133_2.Text))
-                        {
-                            ShouhinBL shouhin = new ShouhinBL();
-                            rDt = shouhin.Shouhin_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, string.Empty);
-                            result = rDt.Rows[0]["MessageID"].ToString();
-                        }
-                        break;
                     case "ShukkaSiziNyuuryoku":
                         ShukkasiziNyuuryokuBL skszbl = new ShukkasiziNyuuryokuBL();
                         rDt = skszbl.ShukkasiziNyuuryoku_ErrorCheck(sTextBox.ctrlE133_1.Text, "E133");
@@ -447,6 +452,28 @@ namespace Shinyoh_Controls
                     sTextBox.Focus();
                     return (true, rDt);
                 }
+            }
+            if(sTextBox.E133Multi)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E133Type)
+                {
+                    case "M_Shouhin":
+                        if (!string.IsNullOrWhiteSpace(sTextBox.ctrlE133_1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlE133_2.Text))
+                        {
+                            ShouhinBL shouhin = new ShouhinBL();
+                            rDt = shouhin.Shouhin_Check(sTextBox.ctrlE133_1.Text, sTextBox.ctrlE133_2.Text, sTextBox.ctrlE133_3.Text, sTextBox.ctrlE133_4.Text, string.Empty);
+                            result = rDt.Rows[0]["MessageID"].ToString();
+                        }
+                        break;
+                }
+                if (result.Equals("E133"))
+                {
+                    ShowErrorMessage("E133");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+
             }
             if (sTextBox.E135)
             {
@@ -687,11 +714,24 @@ namespace Shinyoh_Controls
                             result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;
+                }
+                if (result.Equals("E270"))
+                {
+                    ShowErrorMessage("E270");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
+            if(sTextBox.E270Multi)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E270Type)
+                {
                     case "M_Shouhin":
                         if (!string.IsNullOrWhiteSpace(sTextBox.ctrlE270_1.Text) && !string.IsNullOrWhiteSpace(sTextBox.ctrlE270_2.Text))
                         {
                             ShouhinBL shouhin = new ShouhinBL();
-                            rDt = shouhin.Shouhin_Check(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, "E270");
+                            rDt = shouhin.Shouhin_Check(sTextBox.ctrlE270_1.Text, sTextBox.ctrlE270_2.Text, sTextBox.ctrlE270_3.Text, sTextBox.ctrlE270_4.Text, "E270");
                             result = rDt.Rows[0]["MessageID"].ToString();
                         }
                         break;

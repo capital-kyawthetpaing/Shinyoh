@@ -47,7 +47,7 @@ namespace HacchuuNyuuryoku
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
-            SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
+            SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
@@ -177,7 +177,21 @@ namespace HacchuuNyuuryoku
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
-           
+
+            gv_HacchuuNyuuryoku.Memory_Row_Count = 0;
+
+            if (cboMode.SelectedValue.ToString() == "1")
+            {
+                cboMode.NextControlName = txtCopy.Name;
+                txtHacchuuNO.Enabled = false;
+                txtCopy.Focus();
+            }
+            else
+            {
+                cboMode.NextControlName = txtHacchuuNO.Name;
+                txtHacchuuNO.Focus();
+            }
+            sobj = new SiiresakiDetail();
         }
 
         public void Disable_UDI_Mode()
@@ -240,7 +254,7 @@ namespace HacchuuNyuuryoku
             }
             if (tagID == "8")
             {
-                //F8_Gridview_Bind();
+                F8_Gridview_Bind();
             }
             if (tagID == "10")
             {
@@ -248,13 +262,13 @@ namespace HacchuuNyuuryoku
             }
             if (tagID == "11")
             {
-               // F11_Gridview_Bind();
+                Function_F11();
             }
             if (tagID == "12")
             {
                 if (F8_dt1.Rows.Count > 0)
                 {
-                   // DBProcess();
+                    DBProcess();
 
                     switch (cboMode.SelectedValue)
                     {
@@ -331,15 +345,18 @@ namespace HacchuuNyuuryoku
                 dt.Columns.Remove("HacchuuDenpyouTekiyou");
                 dt.Columns.Remove("MessageID");
 
+               
                 gv_HacchuuNyuuryoku.DataSource = dt;
-                gv_HacchuuNyuuryoku.ClearSelection();
+                // gv_HacchuuNyuuryoku.ClearSelection();
+                //gv_HacchuuNyuuryoku.Columns["colChakuniYoteiDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
 
-                if (cboMode.SelectedValue.ToString() == "1")
+                if (F8_dt1.Rows.Count == 0)
                     F8_dt1 = gv1_to_dt1.Clone();
-                else
+
+                if (cboMode.SelectedValue.ToString() == "3")
                     F8_dt1 = gv1_to_dt1.Copy();
             }
         }
@@ -499,9 +516,9 @@ namespace HacchuuNyuuryoku
         {
             F10_Gridview_Bind();
         }
+
         private void F10_Gridview_Bind()
         {
-            
             HacchuuNyuuryokuEntity obj = new HacchuuNyuuryokuEntity();
             obj.BrandCD = txtBrandCD.Text;
             obj.ShouhinCD = txtShouhinCD.Text;
@@ -528,78 +545,249 @@ namespace HacchuuNyuuryoku
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
 
-                F8_dt1 = gv1_to_dt1.Clone();
+                if (F8_dt1.Rows.Count == 0)
+                    F8_dt1 = gv1_to_dt1.Clone();
             }
 
         }
 
         private void btnNameF11_Click(object sender, EventArgs e)
         {
-            F11_Gridview_Bind();
+            Function_F11();
         }
+
+        private void Function_F11()
+        {
+            if (F11_Gridivew_ErrorCheck())
+                return;
+            else
+                F11_Gridview_Bind();
+        }
+
+        private bool F11_Gridivew_ErrorCheck()
+        {
+            bool bl_error = false;
+
+            foreach (DataGridViewRow gv in gv_HacchuuNyuuryoku.Rows)
+            {
+                if (gv.Cells["colHacchuuSuu"].Value.ToString() != "0")
+                {
+                    for (int i = 0; i < gv.Cells.Count; i++)
+                    {
+                        string colName = gv_HacchuuNyuuryoku.Columns[i].Name;
+                        if (colName == "colChakuniYoteiDate" || colName == "colSoukoCD" || colName == "colHacchuuMeisaiTekiyou")
+                        {
+                            if (ErrorCheck_CellEndEdit(gv.Index, i))
+                            {
+                                gv_HacchuuNyuuryoku.CurrentCell = gv_HacchuuNyuuryoku.Rows[gv.Index].Cells[i];
+                                bl_error = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (bl_error)
+                    return true;
+            }
+            return bl_error;
+        }
+
+        private bool ErrorCheck_CellEndEdit(int row, int col)
+        {
+            string HacchuuSuu = gv_HacchuuNyuuryoku.Rows[row].Cells["colHacchuuSuu"].Value.ToString();            
+            bool bl_error = false;
+            string col_Name = gv_HacchuuNyuuryoku.Columns[col].Name;
+
+            if (col_Name == "colJuchuuSuu")
+            {
+                string split_val = gv_HacchuuNyuuryoku.Rows[row].Cells["colHacchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                int HacchuuSuu_Number = string.IsNullOrEmpty(gv_HacchuuNyuuryoku.Rows[row].Cells["colHacchuuSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
+                gv_HacchuuNyuuryoku.Rows[row].Cells["colHacchuuSuu"].Value = HacchuuSuu_Number.ToString();
+            }
+            if (col_Name == "colHacchuuMeisaiTekiyou")
+            {
+                int MaxLength = ((DataGridViewTextBoxColumn)gv_HacchuuNyuuryoku.Columns[col_Name]).MaxInputLength;
+
+                string byte_text = gv_HacchuuNyuuryoku.Rows[row].Cells[col_Name].EditedFormattedValue.ToString();
+                if (cf.IsByteLengthOver(MaxLength, byte_text))
+                {
+                    MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bl_error = true;
+                }
+            }
+            if (col_Name == "colChakuniYoteiDate")
+            {
+                DateTime JuchuuDate = string.IsNullOrEmpty(txtHacchuuDate.Text) ? Convert.ToDateTime(base_Entity.LoginDate) : Convert.ToDateTime(txtHacchuuDate.Text);
+
+                string expectedDate = gv_HacchuuNyuuryoku.Rows[row].Cells["colChakuniYoteiDate"].EditedFormattedValue.ToString().Trim();
+                if (HacchuuSuu != "0")
+                {
+                    if (string.IsNullOrEmpty(expectedDate))
+                    {
+                        base_bl.ShowMessage("E102");
+                        bl_error = true;
+                    }
+                }
+                if (bl_error == false && (!string.IsNullOrEmpty(expectedDate)))
+                {
+                    TextBox txt = new TextBox();
+                    txt.Text = expectedDate;
+                    if (!cf.DateCheck(txt))
+                    {
+                        base_bl.ShowMessage("E103");
+                        bl_error = true;
+                    }
+                    if (bl_error == false)
+                    {
+                        gv_HacchuuNyuuryoku.Rows[row].Cells["colChakuniYoteiDate"].Value = txt.Text;
+                        expectedDate = string.IsNullOrEmpty(txt.Text) ? base_Entity.LoginDate : txt.Text;
+                        if (Convert.ToDateTime(expectedDate) < JuchuuDate)
+                        {
+                            base_bl.ShowMessage("E267", "受注日");
+                            bl_error = true;
+                        }
+                    }
+                }
+            }
+            if (col_Name == "colSoukoCD")
+            {
+                DataTable souko_dt = new DataTable();
+                string soukoCD = gv_HacchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].EditedFormattedValue.ToString().Trim();
+                if (HacchuuSuu != "0")
+                {
+                    if (string.IsNullOrEmpty(soukoCD))
+                    {
+                        base_bl.ShowMessage("E102");
+                        bl_error = true;
+                    }
+                }
+                if (bl_error == false && (!string.IsNullOrEmpty(soukoCD)))
+                {
+                    (bl_error, souko_dt) = Gridview_Error_Check("E101", soukoCD, "Souko");
+                }
+                if (bl_error == false && (!string.IsNullOrEmpty(soukoCD)))
+                {
+                    gv_HacchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].Value = souko_dt.Rows[0]["SoukoCD"];
+                    gv_HacchuuNyuuryoku.Rows[row].Cells["colSoukoName"].Value = souko_dt.Rows[0]["SoukoName"];
+                }
+            }
+            return bl_error;
+        }
+
+        private (bool, DataTable) Gridview_Error_Check(string errorType, string CD, string type)
+        {
+            bool return_error = false;
+            DataTable dt = new DataTable();
+            if (type == "Souko")
+            {
+                SoukoBL sbl = new SoukoBL();
+                DataTable Souko_dt = sbl.Souko_Select(CD, "E101");
+                if (Souko_dt.Rows.Count > 0)
+                {
+                    if (Souko_dt.Rows[0]["MessageID"].ToString() == "E101")
+                    {
+                        return_error = true;
+                        base_bl.ShowMessage("E101");
+                    }
+                }
+                if (return_error == false)
+                    dt = Souko_dt;
+            }
+            if (return_error)
+                return (true, null);
+            else return (false, dt);
+        }       
+
+        private void gv_HacchuuNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
+                gv_HacchuuNyuuryoku.CurrentCell = gv_HacchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
+        }
+
         private void F11_Gridview_Bind()
         {
-            //txtBrandCD.Focus();
+            txtBrandCD.Focus();
 
 
-            //for (int t = 0; t < gv_HacchuuNyuuryoku.RowCount; t++)
-            //{
-            //    bool bl = false;
-            //    // grid 1 checking
-            //    DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
-            //    DataGridViewRow row = gv_HacchuuNyuuryoku.Rows[t];// grid view data
-            //    string shouhinCD = row.Cells["colShouhinCD"].Value.ToString();
-            //    string chk_value = row.Cells["colFree"].Value.ToString();
-            //    string senpouHacchuuNO = row.Cells["colSenpouHacchuuNO"].Value.ToString();
-            //    string siiresakiCD = row.Cells["colSiiresakiCD"].Value.ToString();
-            //    string soukoCD = row.Cells["colSoukoCD"].Value.ToString();
+            for (int t = 0; t < gv_HacchuuNyuuryoku.RowCount; t++)
+            {
 
-            //    DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "'");// original data
-            //    DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  DJMSenpouHacchuuNO='" + senpouHacchuuNO + "' and SiiresakiCD='" + siiresakiCD + "' and SoukoCD='" + soukoCD + "'").SingleOrDefault();
+                bool bl = false;
+                // grid 1 checking
+                DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
+                DataGridViewRow row = gv_HacchuuNyuuryoku.Rows[t];// grid view data
+                
+                string ChakuniYoteiDate = row.Cells["colChakuniYoteiDate"].EditedFormattedValue.ToString();
+                string soukoCD = row.Cells["colSoukoCD"].EditedFormattedValue.ToString();
 
-            //    F8_drNew[0] = shouhinCD;
-            //    if (row.Cells["colJuchuuSuu"].Value.ToString() != "0")
-            //    {
-            //        for (int c = 1; c < gv_JuchuuNyuuryoku.Columns.Count; c++)
-            //        {
-            //            if (gv_JuchuuNyuuryoku.Columns[c].Name == "colFree" || gv_JuchuuNyuuryoku.Columns[c].Name == "colJuchuuSuu" || gv_JuchuuNyuuryoku.Columns[c].Name == "colSenpouHacchuuNO" || gv_JuchuuNyuuryoku.Columns[c].Name == "colSiiresakiCD" || gv_JuchuuNyuuryoku.Columns[c].Name == "colSoukoCD")
-            //            {
-            //                if (existDr1 != null)
-            //                {
-            //                    if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-            //                    {
-            //                        bl = true;
-            //                        F8_drNew[c] = row.Cells[c].Value;
-            //                    }
-            //                    else
-            //                    {
-            //                        F8_drNew[c] = existDr1[c];
-            //                    }
-            //                }
-            //                else
-            //                {
-            //                    if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-            //                        bl = true;
+                string shouhinCD = row.Cells["ColShouhinCD"].Value.ToString();
+                string color =row.Cells["colColorNO"].Value.ToString();
+                string size =row.Cells["colSizeNO"].Value.ToString();
 
-            //                    F8_drNew[c] = row.Cells[c].Value;
-            //                }
-            //            }
-            //            else
-            //            {
-            //                F8_drNew[c] = row.Cells[c].Value;
-            //            }
-            //        }
-            //        // grid 1 insert(if exist, remove exist and insert)
-            //        if (bl == true)
-            //        {
-            //            if (existDr1 != null)
-            //                F8_dt1.Rows.Remove(existDr1);
-            //            F8_dt1.Rows.Add(F8_drNew);
-            //        }
-            //    }
-            //}
+                DataRow[] select_dr1 = null;
+                string NULL_Check = string.Empty;
+                if (string.IsNullOrEmpty(color))
+                    NULL_Check = "and [ColorNO] IS NULL ";
+                if (string.IsNullOrEmpty(size))
+                    NULL_Check += " and [SizeNO] IS NULL ";
+                if (!string.IsNullOrEmpty(NULL_Check))
+                    select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "'" + NULL_Check + "");// original data
+                else
+                    select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='" + color + "' and SizeNO='" + size + "'");// original data
 
+                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  ChakuniYoteiDate='" + ChakuniYoteiDate + "' and SoukoCD='" + soukoCD + "'").SingleOrDefault();
+                if (existDr1 != null)
+                {
+                    if (select_dr1[0][8].ToString() == "0")
+                    {
+                        F8_dt1.Rows.Remove(existDr1);
+                        existDr1 = null;
+                    }
+                }
+                F8_drNew[0] = shouhinCD;
+                if (row.Cells["colHacchuuSuu"].Value.ToString() != "0" && row.Cells[7].Value.ToString() != select_dr1[0][7].ToString())
+                {
+                    for (int c = 1; c < gv_HacchuuNyuuryoku.Columns.Count; c++)
+                    {
+                        if (gv_HacchuuNyuuryoku.Columns[c].Name == "colHacchuuSuu" || gv_HacchuuNyuuryoku.Columns[c].Name == "colChakuniYoteiDate"  || gv_HacchuuNyuuryoku.Columns[c].Name == "colSoukoCD")
+                        {
+                            if (existDr1 != null)
+                            {
+                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                {
+                                    bl = true;
+                                    F8_drNew[c] = row.Cells[c].Value;
+                                }
+                                else
+                                {
+                                    F8_drNew[c] = existDr1[c];
+                                }
+                            }
+                            else
+                            {
+                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                    bl = true;
 
+                                F8_drNew[c] = row.Cells[c].Value;
+                            }
+                        }
+                        else
+                        {
+                            F8_drNew[c] = row.Cells[c].Value;
+                        }
+                    }
+                    // grid 1 insert(if exist, remove exist and insert)
+                    if (bl == true)
+                    {
+                        if (existDr1 != null)
+                            F8_dt1.Rows.Remove(existDr1);
+                        F8_dt1.Rows.Add(F8_drNew);
+                    }
+                }
+            }
+            gv_HacchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
+
+            #region
             //comment nwe mar win logic difference
 
             //for (int t = 0; t < gv_1.RowCount; t++)
@@ -651,6 +839,148 @@ namespace HacchuuNyuuryoku
             //        F8_dt1.Rows.Add(F8_drNew);
             //    }
             //}
+            #endregion
+        }
+
+        private void btnNameF8_Click(object sender, EventArgs e)
+        {
+            F8_Gridview_Bind();
+        }
+
+        private void F8_Gridview_Bind()
+        {
+            if (F8_dt1.Rows.Count > 0)
+            {
+                F8_dt1.DefaultView.Sort = "ShouhinCD";
+                gv_HacchuuNyuuryoku.DataSource = F8_dt1.DefaultView.ToTable();
+            }
+            else
+            {
+                DataTable dtSource = (DataTable)gv_HacchuuNyuuryoku.DataSource;
+                dtSource.Rows.Clear();
+            }
+        }
+
+        private void DBProcess()
+        {
+            string mode = string.Empty;
+            (string, string) obj = GetInsert();
+            if ((!string.IsNullOrEmpty(obj.Item1)) && (!string.IsNullOrEmpty(obj.Item2)))
+            {
+                if (cboMode.SelectedValue.Equals("1"))
+                {
+                    mode = "New";
+                    DoInsert(mode, obj.Item1, obj.Item2);
+                }
+                else if (cboMode.SelectedValue.Equals("2"))
+                {
+                    mode = "Update";
+                    DoUpdate(mode, obj.Item1, obj.Item2);
+                }
+                else if (cboMode.SelectedValue.Equals("3"))
+                {
+                    mode = "Delete";
+                    DoUpdate(mode, obj.Item1, obj.Item2);
+                }
+            }
+        }
+
+        private (string, string) GetInsert()
+        {
+            SiiresakiEntity si_obj = sobj.Access_Siiresaki_obj;
+
+            DataTable dt = new DataTable();
+            Create_Datatable_Column(dt);
+            DataRow dr = dt.NewRow();
+            dr["HacchuuNO"] = txtHacchuuNO.Text;
+            dr["HacchuuDate"] = txtHacchuuDate.Text;
+            dr["StaffCD"] = txtStaffCD.Text;
+            dr["HacchuuDenpyouTekiyou"] = txtHacchuuDenpyouTekiyou.Text;
+
+            dr["SiiresakiCD"] = si_obj.SiiresakiCD;
+            dr["SiiresakiName"] = si_obj.SiiresakiName;
+            dr["SiiresakiRyakuName"] = si_obj.SiiresakiRyakuName;
+            dr["SiiresakiYuubinNO1"] = si_obj.YuubinNO1;
+            dr["SiiresakiYuubinNO2"] = si_obj.YuubinNO2;
+            dr["SiiresakiJuusho1"] = si_obj.Juusho1;
+            dr["SiiresakiJuusho2"] = si_obj.Juusho2;
+            dr["SiiresakiTel11"] = si_obj.Tel11;
+            dr["SiiresakiTel12"] = si_obj.Tel12;
+            dr["SiiresakiTel13"] = si_obj.Tel13;
+            dr["SiiresakiTel21"] = si_obj.Tel21;
+            dr["SiiresakiTel22"] = si_obj.Tel22;
+            dr["SiiresakiTel23"] = si_obj.Tel23;
+            
+            dr["InsertOperator"] = base_Entity.OperatorCD;
+            dr["UpdateOperator"] = base_Entity.OperatorCD;
+            dr["PC"] = base_Entity.PC;
+            dr["ProgramID"] = base_Entity.ProgramID;
+            dt.Rows.Add(dr);
+
+            JuchuuNyuuryokuBL obj_bl = new JuchuuNyuuryokuBL();            
+            if (cboMode.SelectedValue.ToString() == "1")
+            {
+                DataTable hacchuu_dt = obj_bl.GetJuchuuNO("2", txtHacchuuNO.Text, "0");
+                dt.Rows[0]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
+                for (int i = 0; i < F8_dt1.Rows.Count; i++)
+                {
+                    F8_dt1.Rows[i]["HacchuuNO"] = dt.Rows[0]["HacchuuNO"];
+                    F8_dt1.Rows[i]["HacchuuGyouNO"] = i + 1;
+                }
+            }
+            string header_XML = cf.DataTableToXml(dt);
+            string detail_XML = cf.DataTableToXml(F8_dt1);
+            return (header_XML, detail_XML);
+        }
+
+        public void Create_Datatable_Column(DataTable create_dt)
+        {
+            create_dt.Columns.Add("HacchuuNO");
+            create_dt.Columns.Add("HacchuuDate");
+            create_dt.Columns.Add("StaffCD");
+            create_dt.Columns.Add("HacchuuDenpyouTekiyou");
+
+            create_dt.Columns.Add("SiiresakiCD");
+            create_dt.Columns.Add("SiiresakiName");
+            create_dt.Columns.Add("SiiresakiRyakuName");
+            create_dt.Columns.Add("SiiresakiYuubinNO1");
+            create_dt.Columns.Add("SiiresakiYuubinNO2");
+            create_dt.Columns.Add("SiiresakiJuusho1");
+            create_dt.Columns.Add("SiiresakiJuusho2");
+            create_dt.Columns.Add("SiiresakiTel11");
+            create_dt.Columns.Add("SiiresakiTel12");
+            create_dt.Columns.Add("SiiresakiTel13");
+            create_dt.Columns.Add("SiiresakiTel21");
+            create_dt.Columns.Add("SiiresakiTel22");
+            create_dt.Columns.Add("SiiresakiTel23");
+            create_dt.Columns.Add("InsertOperator");
+            create_dt.Columns.Add("UpdateOperator");
+            create_dt.Columns.Add("PC");
+            create_dt.Columns.Add("ProgramID");
+        }
+
+        private void DoInsert(string mode, string str_header, string str_detail)
+        {
+            HacchuuListBL objMethod = new HacchuuListBL();
+            string return_BL = objMethod.HacchuuNyuuryoku_CUD(mode, str_header, str_detail);
+            if (return_BL == "true")
+                base_bl.ShowMessage("I101");
+        }
+
+        private void DoUpdate(string mode, string str_header, string str_detail)
+        {
+            HacchuuListBL objMethod = new HacchuuListBL();
+            string return_BL = objMethod.HacchuuNyuuryoku_CUD(mode, str_header, str_detail);
+            if (return_BL == "true")
+                base_bl.ShowMessage("I101");
+        }
+
+        private void DoDelete(string mode, string str_header, string str_detail)
+        {
+            HacchuuListBL objMethod = new HacchuuListBL();
+            string return_BL = objMethod.HacchuuNyuuryoku_CUD(mode, str_header, str_detail);
+            if (return_BL == "true")
+                base_bl.ShowMessage("I102");
         }
     }
 }

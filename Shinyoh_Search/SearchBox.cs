@@ -14,10 +14,14 @@ namespace Shinyoh_Search
     {
         public STextBox ChangeDate { get; set; }
         public SLabel lblName { get; set; }
+        public SLabel lblName1 { get; set; }
         public SCombo Combo { get; set; }
         public STextBox TxtBox { get; set; }
+        public STextBox TxtBox1 { get; set; }
         private string CD = string.Empty;
         private string CDate = string.Empty;
+        private string colorNO = string.Empty;
+        private string sizeNO = string.Empty;
         private string name = string.Empty;
         private string colName = string.Empty;
        
@@ -203,8 +207,21 @@ namespace Shinyoh_Search
                         Shouhin_Search shsearch = new Shouhin_Search();
                         shsearch.parent_changeDate = ChangeDate.Text;
                         shsearch.ShowDialog();
-                        CD = shsearch.shouhinCD;
-                        CDate = shsearch.changeDate;
+                        if(this.Name == "txtCopyProduct")
+                        {
+                            CD = shsearch.shouhinCD;
+                            TxtBox.Text = shsearch.colorNO;
+                            TxtBox.Focus();
+                        }
+                        else
+                        {
+                            CD = shsearch.shouhinCD;
+                            colorNO = shsearch.colorNO;
+                            name = shsearch.colorName;
+                            sizeNO = shsearch.sizeNO;
+                            colName = shsearch.sizeName;
+                            CDate = shsearch.changeDate;
+                        }
                         break;
                     case Entity.SearchType.ScType.ArrivalNo:
                         ArrivalNOSearch search = new ArrivalNOSearch();
@@ -249,6 +266,13 @@ namespace Shinyoh_Search
 
                     if (this.Parent.Name.Equals("PanelTitle"))
                     {
+                        if (TxtBox != null && TxtBox1 != null)
+                        {
+                            TxtBox.Text = colorNO;
+                            lblName.Text = name;
+                            TxtBox1.Text = sizeNO;
+                            lblName1.Text = colName;
+                        }
                         if (ChangeDate != null)
                         {
                             ChangeDate.Text = CDate;

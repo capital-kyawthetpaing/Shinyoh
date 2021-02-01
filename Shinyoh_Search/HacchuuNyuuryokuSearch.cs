@@ -97,7 +97,7 @@ namespace Shinyoh_Search
                     txtCurrentDate.Text= String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                 }
             }
-            gv_1.DataSource = dt;
+             gv_1.DataSource = dt;
         }
 
         public override void FunctionProcess(string tagID)

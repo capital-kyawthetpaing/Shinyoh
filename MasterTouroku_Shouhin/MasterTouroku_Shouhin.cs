@@ -49,13 +49,25 @@ namespace MasterTouroku_Shouhin
 
             ChangeMode(Mode.New);
             base_entity = _GetBaseData();
-            txtProduct.ChangeDate = txtSizeNO;
-            //txtCopyProduct.ChangeDate = txtCopyChangeDate;
+
+            txtProduct.TxtBox = txtColor;
+            txtProduct.TxtBox1 = txtSize;
+            txtProduct.lblName = lblColorNO;
+            txtProduct.lblName1 = lblSizeNO;
+            txtProduct.ChangeDate = txtChangeDate;
+
+            txtCopyProduct.TxtBox = txtCopyProduct;//ses
+            //txtCopyProduct.TxtBox =txtCopyColor;
+            //txtCopyProduct.TxtBox1 = txtCopySize;
+            //txtCopyProduct.lblName = lblCopyColorNO;
+            //txtCopyProduct.lblName1 = lblCopySizeNO;
+            txtCopyProduct.ChangeDate = txtCopyColor;//ses
+
             txtMajorSuppliers.ChangeDate = txtChangeDate;
-            txtColorNO.lblName = lblColorNO;
-            txtSizeNO.lblName = lblSizeNO;
-            txtCopyColorNO.lblName = lblCopyColorNO;
-            txtCopySizeNO.lblName = lblCopySizeNO;
+            txtColor.lblName = lblColorNO;
+            txtSize.lblName = lblSizeNO;
+            txtCopyColor.lblName = lblCopyColorNO;
+            txtCopySize.lblName = lblCopySizeNO;
             txtTani.lblName = lbl_TaniCD;
             txtBrand.lblName = lbl_BrandCD;
             txtTaxRate.lblName = lbl_TaxtRate;
@@ -64,7 +76,6 @@ namespace MasterTouroku_Shouhin
             txtMajorSuppliers.lblName = lbl_MajorSuppliers;
             txtProduct.Focus();
         }
-
         private void ChangeMode(Mode mode)
         {
             switch (mode)
@@ -74,19 +85,19 @@ namespace MasterTouroku_Shouhin
                     UI_ErrorCheck();
                     txtCopyProduct.Enabled = true;
                     txtCopyChangeDate.Enabled = true;
-
-                    txtChangeDate.E132Check(true, "M_Shouhin", txtProduct, txtChangeDate,null);
-                    txtChangeDate.E133Check(false, "M_Shouhin", txtProduct, txtChangeDate,null);
-                    txtChangeDate.E270Check(false, "M_Shouhin", txtProduct, txtChangeDate);
-
-                    txtCopyColorNO.E102MultiCheck(true, txtCopyProduct, txtCopyColorNO);
-                    txtCopySizeNO.E102MultiCheck(true, txtCopyColorNO, txtCopySizeNO);
+                    txtColor.E101Check(false, "M_Shouhin", txtColor, null, null);
+                    txtSize.E101Check(false, "M_Shouhin", txtSize, null, null);
+                    txtChangeDate.E132MultiCheck(true, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
+                    txtChangeDate.E133MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
+                    txtChangeDate.E270MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
+                    
+                    txtCopyColor.E102MultiCheck(true, txtCopyProduct, txtCopyColor);
+                    txtCopySize.E102MultiCheck(true, txtCopyColor, txtCopySize);
                     txtCopyChangeDate.E102MultiCheck(true, txtCopyProduct, txtCopyChangeDate);
-                    txtCopyColorNO.E101Check(true, "M_Shouhin", txtCopyColorNO, null, null);
-                    txtCopySizeNO.E101Check(true, "M_Shouhin", txtCopySizeNO, null, null);
-
+                    txtCopyColor.E101Check(true, "M_Shouhin", txtCopyColor, null, null);
+                    txtCopySize.E101Check(true, "M_Shouhin", txtCopySize, null, null);
                     txtCopyChangeDate.E103Check(true);
-                    txtCopyChangeDate.E133Check(false, "M_Shouhin", txtProduct, txtChangeDate,null);
+                    txtCopyChangeDate.E133MultiCheck(true, "M_Shouhin", txtCopyProduct, txtCopyColor, txtCopySize, txtCopyChangeDate);
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -94,16 +105,16 @@ namespace MasterTouroku_Shouhin
                 case Mode.Update:
                     UI_ErrorCheck();
                     txtCopyProduct.Enabled = false;
-                    txtCopyColorNO.Enabled = false;
-                    txtCopySizeNO.Enabled = false;
+                    txtCopyColor.Enabled = false;
+                    txtCopySize.Enabled = false;
                     txtCopyChangeDate.Enabled = false;
 
-                    txtColorNO.E101Check(true, "M_Shouhin", txtColorNO, null, null);
-                    txtSizeNO.E101Check(true, "M_Shouhin", txtSizeNO, null, null);
+                    txtColor.E101Check(true, "M_Shouhin", txtColor, null, null);
+                    txtSize.E101Check(true, "M_Shouhin", txtSize, null, null);
 
-                    txtChangeDate.E132Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
-                    txtChangeDate.E133Check(true, "M_Shouhin", txtProduct, txtChangeDate,null);
-                    txtChangeDate.E270Check(false, "M_Shouhin", txtProduct, txtChangeDate);
+                    txtChangeDate.E132MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
+                    txtChangeDate.E133MultiCheck(true, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
+                    txtChangeDate.E270MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
@@ -111,16 +122,16 @@ namespace MasterTouroku_Shouhin
                 case Mode.Delete:
                     UI_ErrorCheck();
                     txtCopyProduct.Enabled = false;
-                    txtCopyColorNO.Enabled = false;
-                    txtCopySizeNO.Enabled = false;
+                    txtCopyColor.Enabled = false;
+                    txtCopySize.Enabled = false;
                     txtCopyChangeDate.Enabled = false;
 
-                    txtColorNO.E101Check(true, "M_Shouhin", txtColorNO, null, null);
-                    txtSizeNO.E101Check(true, "M_Shouhin", txtSizeNO, null, null);
+                    txtColor.E101Check(true, "M_Shouhin", txtColor, null, null);
+                    txtSize.E101Check(true, "M_Shouhin", txtSize, null, null);
 
-                    //txtChangeDate.E132Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
-                    //txtChangeDate.E133Check(true, "M_Shouhin", txtProduct, txtChangeDate, null);
-                    txtChangeDate.E270Check(true, "M_Shouhin", txtProduct, txtChangeDate);
+                    txtChangeDate.E132MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
+                    txtChangeDate.E133MultiCheck(true, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
+                    txtChangeDate.E270MultiCheck(true, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -128,15 +139,15 @@ namespace MasterTouroku_Shouhin
                 case Mode.Inquiry:
                     UI_ErrorCheck();
                     txtCopyProduct.Enabled = false;
-                    txtCopyColorNO.Enabled = false;
-                    txtCopySizeNO.Enabled = false;
+                    txtCopyColor.Enabled = false;
+                    txtCopySize.Enabled = false;
                     txtCopyChangeDate.Enabled = false;
 
-                    txtColorNO.E101Check(true, "M_Shouhin", txtColorNO, null, null);
-                    txtSizeNO.E101Check(true, "M_Shouhin", txtSizeNO, null, null);
-                    //txtChangeDate.E132Check(false, "M_Shouhin", txtProduct, txtChangeDate, null);
-                    //txtChangeDate.E133Check(true, "M_Shouhin", txtProduct, txtChangeDate, null);
-                    txtChangeDate.E270Check(false, "M_Shouhin", txtProduct, txtChangeDate);
+                    txtColor.E101Check(true, "M_Shouhin", txtColor, null, null);
+                    txtSize.E101Check(true, "M_Shouhin", txtSize, null, null);
+                    txtChangeDate.E132MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
+                    txtChangeDate.E133MultiCheck(true, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
+                    txtChangeDate.E270MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
@@ -153,56 +164,47 @@ namespace MasterTouroku_Shouhin
             txtProduct.Focus();
 
             txtProduct.E102Check(true);
-            txtColorNO.E102Check(true);
-            txtSizeNO.E102Check(true);
+            txtColor.E102Check(true);
+            lblColorNO.Text = string.Empty;
+            lblColorNO.BorderStyle = BorderStyle.None;
+            txtSize.E102Check(true);
+            lblSizeNO.Text = string.Empty;
+            lblSizeNO.BorderStyle = BorderStyle.None;
+
+            lblCopyColorNO.Text = string.Empty;
+            lblCopyColorNO.BorderStyle = BorderStyle.None;
+
+            lblCopySizeNO.Text = string.Empty;
+            lblCopySizeNO.BorderStyle = BorderStyle.None;
 
             txtChangeDate.E102Check(true);
             txtChangeDate.E103Check(true);
             txtProductName.E102Check(true);
             txtShouhinRyakuName.E102Check(true);
-
             txtTani.E102Check(true);
             txtTani.E101Check(true, "M_Shouhin", txtTani, null, null);
-
             txtBrand.E102Check(true);
             txtBrand.E101Check(true, "M_Shouhin", txtBrand, null, null);
-
-            //txtColor.E102Check(true);
-            //txtColor.E101Check(true, "M_Shouhin", txtColor, null, null);
-
-            //txtSize.E102Check(true);
-            //txtSize.E101Check(true, "M_Shouhin", txtSize, null, null);
-
             txtRetailPrice.E102Check(true);
             txtLowerPrice.E102Check(true);
             txtStandardPrice.E102Check(true);
-
             txtTaxRate.E102Check(true);
             txtTaxRate.E101Check(true, "M_Shouhin", txtTaxRate, null, null);
-
             txtIEvaluation.E102Check(true);
             txtIEvaluation.E101Check(true, "M_Shouhin", txtIEvaluation, null, null);
-
             txtIManagement.E102Check(true);
             txtIManagement.E101Check(true, "M_Shouhin", txtIManagement, null, null);
-
             txtMajorSuppliers.E102Check(true);
             txtMajorSuppliers.E101Check(true, "M_Siiresaki", txtMajorSuppliers, txtChangeDate, null);
 
             txtHandlingEndDate.E103Check(true);
             txtSalesStopDate.E103Check(true);
             txtHacchuuLot.E102Check(true);
-
             txtImage.E128Check(true, txtImage, pImage);
-
             lbl_TaniCD.Text = string.Empty;
             lbl_TaniCD.BorderStyle = BorderStyle.None;
             lbl_BrandCD.Text = string.Empty;
             lbl_BrandCD.BorderStyle = BorderStyle.None;
-            //lbl_ColorNO.Text = string.Empty;
-            //lbl_ColorNO.BorderStyle = BorderStyle.None;
-            //lbl_SizeNO.Text = string.Empty;
-            //lbl_SizeNO.BorderStyle = BorderStyle.None;
             lbl_TaxtRate.Text = string.Empty;
             lbl_TaxtRate.BorderStyle = BorderStyle.None;
             lbl_IEvaluation.Text = string.Empty;
@@ -313,21 +315,21 @@ namespace MasterTouroku_Shouhin
         private ShouhinEntity getShouhin()
         {
             ShouhinEntity shouhin_entity = new ShouhinEntity();
-            shouhin_entity.Product = txtProduct.Text.Trim();
-            shouhin_entity.Color = txtColorNO.Text.Trim();//ses
-            shouhin_entity.Size = txtSizeNO.Text.Trim();//ses
+            shouhin_entity.Product = txtProduct.Text.Trim()+ txtColor.Text.Trim()+ txtSize.Text.Trim();
+            shouhin_entity.Color = txtColor.Text.Trim();
+            shouhin_entity.Size = txtSize.Text.Trim();
             shouhin_entity.RevisionDate = txtChangeDate.Text.Trim();
             shouhin_entity.CopyProduct = txtCopyProduct.Text.Trim();
-            shouhin_entity.CopyColorNO = txtCopyColorNO.Text.Trim();
-            shouhin_entity.CopySizeNO = txtCopySizeNO.Text.Trim();
+            shouhin_entity.CopyColorNO = txtCopyColor.Text.Trim();
+            shouhin_entity.CopySizeNO = txtCopySize.Text.Trim();
             shouhin_entity.CopyRevisionDate = txtCopyChangeDate.Text.Trim();
             shouhin_entity.ShokutiFLG = chkShukou.Checked ? 1 : 0;
-            //shouhin_entity.HinbanCD = txtHinbanCD.Text.Trim();
+            shouhin_entity.HinbanCD = txtProduct.Text.Trim();
             shouhin_entity.ProductName = txtProductName.Text.Trim();
             shouhin_entity.ShouhinRyakuName = txtShouhinRyakuName.Text.Trim();
             shouhin_entity.KatakanaName = txtKatakanaName.Text.Trim();
             shouhin_entity.JANCD = txtJANCD.Text.Trim();
-            shouhin_entity.Exhibition = txtExhibition.Text.Trim();
+            shouhin_entity.Exhibition =txtExhibition.Text.Trim();
             shouhin_entity.SS = chkSS.Checked ? "1" : "0";
             shouhin_entity.FW = chkFW.Checked ? "1" : "0";
             shouhin_entity.TaniCD = txtTani.Text.Trim();
@@ -373,6 +375,16 @@ namespace MasterTouroku_Shouhin
                 {
                     if (cboMode.SelectedValue.ToString() == "2")
                     {
+                        //string ShouhinCD = string.Empty;
+                        //ShouhinCD = txtProduct.Text;
+                        //shouhinbl = new ShouhinBL();
+                        //DataTable dt = shouhinbl.Shouhin_Check(ShouhinCD, txtCopyChangeDate.Text, "E133");
+
+                        //if (dt.Rows[0]["MessageID"].ToString().Equals("E133"))
+                        //{
+                        //    bbl.ShowMessage("E133");
+                        //    txtChangeDate.Focus(); 
+                        //}
                         EnableAndDisablePanel();
                     }
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
@@ -380,15 +392,31 @@ namespace MasterTouroku_Shouhin
                         cf.DisablePanel(PanelTitle);
                         if (cboMode.SelectedValue.ToString() == "3")
                         {
+                            //string ShouhinCD = string.Empty;
+                            //ShouhinCD = txtProduct.Text + txtColor.Text + txtSize.Text;
+                            //shouhinbl = new ShouhinBL();
+                            //DataTable dt = shouhinbl.Shouhin_Check(ShouhinCD, txtCopyChangeDate.Text, "E133");
+
+                            //if (dt.Rows[0]["MessageID"].ToString().Equals("E133"))
+                            //{
+                            //    bbl.ShowMessage("E133");
+                            //    txtChangeDate.Focus();
+                            //}
+                            //DataTable dt270 = shouhinbl.Shouhin_Check(ShouhinCD, txtCopyChangeDate.Text, "E270");
+                            //if (dt270.Rows[0]["MessageID"].ToString().Equals("E270"))
+                            //{
+                            //    bbl.ShowMessage("E270");
+                            //    txtChangeDate.Focus();
+                            //}
                             Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                             btnF12.Focus();
                         }
                     }
                 }
-                DataTable dt = txtChangeDate.IsDatatableOccurs;
-                if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
+                DataTable dt1 = txtChangeDate.IsDatatableOccurs;
+                if (dt1.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
-                    DB_To_UI(dt);
+                    DB_To_UI(dt1);
                 }
             }
         }
@@ -397,14 +425,26 @@ namespace MasterTouroku_Shouhin
         {
             if (e.KeyCode == Keys.Enter && cboMode.SelectedValue.ToString() == "1")
             {
-                if(ErrorCheck(PanelTitle))
+                //if(!string.IsNullOrEmpty(txtCopyProduct.Text) && !string.IsNullOrEmpty(txtCopyColor.Text) && !string.IsNullOrEmpty(txtCopySize.Text))
+                //{
+                //    string ShouhinCD = string.Empty;
+                //    ShouhinCD = txtCopyProduct.Text + txtCopyColor.Text + txtCopySize.Text;
+                //    shouhinbl = new ShouhinBL();
+                //    DataTable dt = shouhinbl.Shouhin_Check(ShouhinCD, txtCopyChangeDate.Text, "E133");
+
+                //    if (dt.Rows[0]["MessageID"].ToString().Equals("E133"))
+                //    {
+                //        bbl.ShowMessage("E133");
+                //        txtCopyChangeDate.Focus();
+                //    }
+                if (ErrorCheck(PanelTitle))
                 {
                     if (!txtCopyChangeDate.IsErrorOccurs)
                     {
                         EnableAndDisablePanel();
-                        DataTable dt = txtCopyChangeDate.IsDatatableOccurs;
-                        if (dt.Rows.Count > 0)
-                            DB_To_UI(dt);
+                        DataTable dt1 = txtCopyChangeDate.IsDatatableOccurs;
+                        if (dt1.Rows.Count > 0)
+                            DB_To_UI(dt1);
                     }
                 }
             }
@@ -421,11 +461,14 @@ namespace MasterTouroku_Shouhin
         {
             if(dt.Rows[0]["MessageID"].ToString() == "E132")
             {
+                txtProduct.Text= dt.Rows[0]["HinbanCD"].ToString();
                 if (dt.Rows[0]["ShokutiFLG"].ToString() == "1")
                     chkShukou.Checked = true;
                 else
                     chkShukou.Checked = false;
                 txtProductName.Text = dt.Rows[0]["ShouhinName"].ToString();
+                txtColor.Text = dt.Rows[0]["ColorNO"].ToString();
+                txtSize.Text = dt.Rows[0]["SizeNO"].ToString();
                 txtShouhinRyakuName.Text = dt.Rows[0]["ShouhinRyakuName"].ToString();
                 txtKatakanaName.Text = dt.Rows[0]["KanaName"].ToString();
                 txtJANCD.Text = dt.Rows[0]["JANCD"].ToString();
@@ -530,8 +573,8 @@ namespace MasterTouroku_Shouhin
                         string[] ByteCheck_List = { "0_50", "3_20", "4_100", "5_80", "6_80", "8_13", "9_6", "10_6", "11_6", "12_2", "13_10", "14_13", "15_13", "22_10", "31_80"};
                         string[] ByteCheck_Msg = { "商品CD桁数エラー", "品番CD桁数エラー", "商品名桁数エラー", "略名桁数エラー", "カナ名桁数エラー", "JANCD桁数エラー", "年度桁数エラー", "シーズンSS桁数エラー", "シーズンFW桁数エラー", "単位CD桁数エラー", "ブランドCD桁数エラー", "カラーNO桁数エラー", "サイズNO桁数エラー", "主要仕入先CD桁数エラー", "備考桁数エラー" };
                         string[] ValueCheck_List = { "2", "19", "20", "21" };
-                        string[] ValueCheck_Amt = { "1", "2", "2", "1" };
-                        string[] ValueCheck_Msg = { "項目:諸口区分", "項目:税率区分", "項目:在庫評価区分", "項目:在庫管理区分" };
+                        string[] ValueCheck_Amt = { "1", "2", "3", "1" };
+                        string[] ValueCheck_Msg = { "項目:諸口区分(0～1)", "項目:税率区分(0～2)", "項目:在庫評価区分(0～3)", "項目:在庫管理区分(0～1)" };
                         string[] DateCheck_List = { "1", "23", "24" };
                         string[] DateCheck_Msg = { "項目:改定日", "項目:取扱終了日", "項目:販売停止日" };
                         string[] NonNumeric_List = { "16", "17", "18", "27" };
@@ -579,10 +622,14 @@ namespace MasterTouroku_Shouhin
                         {
                             int dcl_index = Convert.ToInt32(DateCheck_List[dc].ToString());
                             string dc_msg = DateCheck_Msg[dc].ToString();
-                            if (Date_Check(data[dcl_index].ToString(), i, InputValue_Msg, dc_msg))
+                            if (Date_Check(data[dcl_index].ToString(), i, InputValue_Msg, dc_msg) == "true")
                             {
                                 error = "true";
                                 goto StopProcess;
+                            }
+                            else
+                            {
+                                dr[dcl_index] = Date_Check(data[dcl_index].ToString(), i, InputValue_Msg, dc_msg);
                             }
                         }
 
@@ -666,18 +713,19 @@ namespace MasterTouroku_Shouhin
             }
             return bl;
         }
-        public bool Date_Check(string csv_Date, int line_no, string error_msg, string dc_msg)
+        public string Date_Check(string csv_Date, int line_no, string error_msg, string dc_msg)
         {
-            bl = false;
-            if (!string.IsNullOrWhiteSpace(csv_Date))
+            TextBox txt = new TextBox();
+            txt.Text = csv_Date;
+            if (!string.IsNullOrEmpty(csv_Date))
             {
-                if (!cf.CheckDateValue(csv_Date))
+                if (!cf.DateCheck(txt))
                 {
                     bbl.ShowMessage("E276", line_no.ToString(), error_msg, dc_msg);
-                    bl = true;
+                    txt.Text = "true";
                 }
             }
-            return bl;
+            return txt.Text;
         }
         public bool Value_Check(string obj_text, int line_no, int Amount, string error_msg, string vc_msg)
         {
@@ -716,7 +764,7 @@ namespace MasterTouroku_Shouhin
             bl = false;
             DataTable dt;
             if (type == 0)
-                dt = shouhinbl.Shouhin_Check(CD_ID, Key_Date, "E101");
+                dt = shouhinbl.Shouhin_Check(CD_ID, string.Empty, string.Empty, Key_Date, "E101");
             else
                 dt = siiresakibl.Siiresaki_Select_Check(CD_ID, Key_Date, "E101");
             if (dt.Rows.Count < 1)

@@ -49,10 +49,10 @@ namespace IdouNyuuryoku
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
-            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
-            SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
-            SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
+            SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
+            SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
 
             base_Entity = _GetBaseData();
@@ -161,7 +161,11 @@ namespace IdouNyuuryoku
             lblStaff_Name.Text = base_Entity.SPName;
             
             Load_Setting();
-            
+
+            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
+            SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
+            SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
+
         }
         private void Load_Setting()
         {
@@ -350,6 +354,9 @@ namespace IdouNyuuryoku
         private void EnablePanel()
         {
             cf.EnablePanel(PanelDetail);
+            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+            SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
+            SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
             txtIdouDate.Focus();
             cf.DisablePanel(PanelTitle);
         }

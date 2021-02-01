@@ -16,6 +16,10 @@ namespace Shinyoh_Search
     public partial class Shouhin_Search : SearchBase
     {
         public string shouhinCD = string.Empty;
+        public string colorNO = string.Empty;
+        public string colorName = string.Empty;
+        public string sizeNO = string.Empty;
+        public string sizeName = string.Empty;
         public string changeDate = string.Empty;
         public string parent_changeDate;
         ShouhinBL shouhinbl = new ShouhinBL();
@@ -140,6 +144,10 @@ namespace Shinyoh_Search
             {
                 DataGridViewRow row = gvrow;
                 shouhinCD = row.Cells["ShouhinCD"].Value.ToString();
+                colorNO = row.Cells["ColorNO"].Value.ToString();
+                colorName = row.Cells["ColorName"].Value.ToString();
+                sizeNO = row.Cells["SizeNO"].Value.ToString();
+                sizeName = row.Cells["SizeName"].Value.ToString();
                 changeDate = Convert.ToDateTime(row.Cells["改定日"].Value.ToString()).ToString("yyyy/MM/dd");
             }
             this.Close();
