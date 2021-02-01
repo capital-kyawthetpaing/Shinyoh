@@ -128,7 +128,7 @@ namespace MasterList_Siiresaki
             // txtChangeDate
             // 
             this.txtChangeDate.AllowMinus = false;
-            this.txtChangeDate.BackColor = System.Drawing.Color.Cyan;
+            this.txtChangeDate.BackColor = System.Drawing.SystemColors.Control;
             this.txtChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtChangeDate.DecimalPlace = 0;
             this.txtChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
@@ -149,7 +149,7 @@ namespace MasterList_Siiresaki
             this.txtChangeDate.ReadOnly = true;
             this.txtChangeDate.SearchType = Entity.SearchType.ScType.None;
             this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
-            this.txtChangeDate.TabIndex = 6;
+            this.txtChangeDate.TabIndex = 0;
             this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtChangeDate.Visible = false;
             // 
@@ -181,7 +181,7 @@ namespace MasterList_Siiresaki
             this.PanelDetail.Location = new System.Drawing.Point(-3, 80);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1710, 820);
-            this.PanelDetail.TabIndex = 3;
+            this.PanelDetail.TabIndex = 0;
             // 
             // txtSiiresakiCD_To
             // 

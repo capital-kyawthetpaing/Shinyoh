@@ -345,8 +345,10 @@ namespace HacchuuNyuuryoku
                 dt.Columns.Remove("HacchuuDenpyouTekiyou");
                 dt.Columns.Remove("MessageID");
 
+               
                 gv_HacchuuNyuuryoku.DataSource = dt;
                 // gv_HacchuuNyuuryoku.ClearSelection();
+                //gv_HacchuuNyuuryoku.Columns["colChakuniYoteiDate"].DefaultCellStyle.Format = "yyyy/MM/dd";
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
@@ -617,7 +619,7 @@ namespace HacchuuNyuuryoku
             {
                 DateTime JuchuuDate = string.IsNullOrEmpty(txtHacchuuDate.Text) ? Convert.ToDateTime(base_Entity.LoginDate) : Convert.ToDateTime(txtHacchuuDate.Text);
 
-                string expectedDate = gv_HacchuuNyuuryoku.Rows[row].Cells["colChakuniYoteiDate"].EditedFormattedValue.ToString();
+                string expectedDate = gv_HacchuuNyuuryoku.Rows[row].Cells["colChakuniYoteiDate"].EditedFormattedValue.ToString().Trim();
                 if (HacchuuSuu != "0")
                 {
                     if (string.IsNullOrEmpty(expectedDate))
@@ -650,7 +652,7 @@ namespace HacchuuNyuuryoku
             if (col_Name == "colSoukoCD")
             {
                 DataTable souko_dt = new DataTable();
-                string soukoCD = gv_HacchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].EditedFormattedValue.ToString();
+                string soukoCD = gv_HacchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].EditedFormattedValue.ToString().Trim();
                 if (HacchuuSuu != "0")
                 {
                     if (string.IsNullOrEmpty(soukoCD))
@@ -893,7 +895,7 @@ namespace HacchuuNyuuryoku
             dr["HacchuuNO"] = txtHacchuuNO.Text;
             dr["HacchuuDate"] = txtHacchuuDate.Text;
             dr["StaffCD"] = txtStaffCD.Text;
-            dr["HacchuuDenpyouTekiyou"] = txtHacchuuDenpyouTekiyou;
+            dr["HacchuuDenpyouTekiyou"] = txtHacchuuDenpyouTekiyou.Text;
 
             dr["SiiresakiCD"] = si_obj.SiiresakiCD;
             dr["SiiresakiName"] = si_obj.SiiresakiName;
@@ -915,10 +917,10 @@ namespace HacchuuNyuuryoku
             dr["ProgramID"] = base_Entity.ProgramID;
             dt.Rows.Add(dr);
 
-            JuchuuNyuuryokuBL obj_bl = new JuchuuNyuuryokuBL();
-            DataTable hacchuu_dt = obj_bl.GetJuchuuNO("2", txtHacchuuNO.Text, "0");
+            JuchuuNyuuryokuBL obj_bl = new JuchuuNyuuryokuBL();            
             if (cboMode.SelectedValue.ToString() == "1")
             {
+                DataTable hacchuu_dt = obj_bl.GetJuchuuNO("2", txtHacchuuNO.Text, "0");
                 dt.Rows[0]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
                 for (int i = 0; i < F8_dt1.Rows.Count; i++)
                 {
