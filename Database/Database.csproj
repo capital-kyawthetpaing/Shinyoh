@@ -131,6 +131,7 @@
     <Content Include="StoreProcedure\Get_Siiresaki_ExportData.sql" />
     <Content Include="StoreProcedure\Get_Tokuisaki_ExportData.sql" />
     <Content Include="StoreProcedure\Hacchuu_Search.sql" />
+    <Content Include="StoreProcedure\HaitaSakujo_Display.sql" />
     <Content Include="StoreProcedure\IdouNyuuryoku_Change_Detail_Flag.sql" />
     <Content Include="StoreProcedure\IdouNyuuryoku_Change_Main_Flag.sql" />
     <Content Include="StoreProcedure\IdouNyuuryoku_CUD.sql" />
