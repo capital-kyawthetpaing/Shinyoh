@@ -1,17 +1,20 @@
 ﻿using BL;
 using CKM_CommonFunction;
+using ClosedXML.Excel;
 using Entity;
 using Shinyoh;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HacchuuSho
 {
@@ -109,55 +112,119 @@ namespace HacchuuSho
         private void Excel_Export()
         {
             hsbl = new HacchuuShoBL();
-            DataTable dt = new DataTable();
-            dt = hsbl.Get_ExportData(Get_UIData());
+            //DataTable dt = new DataTable();
+            //dt = hsbl.Get_ExportData(Get_UIData());
             string FileName = "PURCHASEORDER" + txtKanriNO.Text;
-            if (dt.Rows.Count > 0)
-            {
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Excel";
-                saveFileDialog1.DefaultExt = "xls";
-                saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = FileName+ ".xls";
-                saveFileDialog1.RestoreDirectory = true;
 
-                if (!System.IO.Directory.Exists("C:\\Excel"))
-                    System.IO.Directory.CreateDirectory("C:\\Excel");
+            Excel.Application xlApp;
+            Excel.Workbook xlWorkBook;
+            Excel.Worksheet xlWorkSheet;
+            object misValue = System.Reflection.Missing.Value;
 
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    ExcelDesignSetting obj = new ExcelDesignSetting();
-                    obj.FilePath = saveFileDialog1.FileName;
-                    obj.SheetName = FileName;
-                    obj.Start_Interior_Column = "A1";
-                    obj.End_Interior_Column = "AH1";
-                    obj.Interior_Color = Color.Orange;
-                    obj.Start_Font_Column = "A1";
-                    obj.End_Font_Column = "AH1";
-                    obj.Font_Color = Color.Black;
-                   
-                    obj.Date_Column = new List<int>();
-                    obj.Date_Column.Add(2);
-                    obj.Date_Column.Add(28);
-                    obj.Date_Column.Add(29);
-                    obj.Date_Format = "YYYY/MM/DD";
-                    obj.Start_Title_Center_Column = "A1";
-                    obj.End_Title_Center_Column = "AH1";
-                    
-                    ExportCSVExcel excel = new ExportCSVExcel();
-                    excel.ExportDataTableToExcel(dt, obj);
-                    bbl.ShowMessage("I203");
+            xlApp = new Excel.Application();
+            xlWorkBook = xlApp.Workbooks.Add(misValue);
+            xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
-                    //New_Mode
-                    cf.Clear(PanelDetail);
-                    Rdo1.Checked = true;
-                    txtJuchuuNO1.Focus();
-                }
-            }
-            else
-            {
-                bbl.ShowMessage("S013");
-            }
+            xlWorkSheet.Cells[3, 6] = "RM605 6/F NANKAI SAKAIEKI BLDG.,";            
+            xlWorkSheet.Cells[4, 6] = "NO.3-22 EBISUJIMACHO, SAKAI-KU,";
+            xlWorkSheet.Cells[5, 6] = "SAKAI-SHI, OSAKA, 590-0985, JAPAN";
+            xlWorkSheet.Cells[6, 19] = "TEL :";
+            xlWorkSheet.Cells[6, 20] = "81-72-229-2251";
+            xlWorkSheet.Cells[7, 19] = "FAX : :";
+            xlWorkSheet.Cells[7, 20] = "81-72-229-7830";
+            xlWorkSheet.Cells[10, 6] = "PURCHASE ORDER ";
+            xlWorkSheet.Cells[12, 2] = "TO:   "+txtBeneficiary1.Text;
+            xlWorkSheet.Cells[12, 20] = "PO NO. FK-248:";
+            xlWorkSheet.Cells[13, 20] = "DATE. 8, April, 2020";
+            xlWorkSheet.Cells[14, 2] = "We thank for your cooperation related to our business.";
+            xlWorkSheet.Cells[15, 2] = "Here, we send our Purchase Order sheet for below items on the terms and conditions as under.";
+
+            //Excel.Style style = xlWorkBook.Styles.Add("NewStyle");
+            //style.Font.Name = "Arial";
+            xlApp.get_Range("A1", "U15").Cells.Font.Name = "Times New Roman";
+            xlApp.get_Range("A1:U1", "A3:U3").Merge(Type.Missing);
+            xlApp.get_Range("A4", "U4").Merge(Type.Missing);
+            xlApp.get_Range("A5", "U5").Merge(Type.Missing);
+            xlApp.get_Range("T6", "U6").Merge(Type.Missing);
+            xlApp.get_Range("T7", "U7").Merge(Type.Missing);
+            xlApp.get_Range("A10", "U10").Merge(Type.Missing);
+            xlApp.get_Range("B11:L11", "B13:L13").Merge(Type.Missing);
+            xlApp.get_Range("T12", "U12").Merge(Type.Missing);
+            xlApp.get_Range("T13", "U13").Merge(Type.Missing);
+            xlApp.get_Range("B14", "L14").Merge(Type.Missing);
+            xlApp.get_Range("B15", "L15").Merge(Type.Missing);
+            var Cell = (Excel.Range)xlWorkSheet.Cells[2, 1];
+            Cell.RowHeight = 35;
+            var Cell1 = (Excel.Range)xlWorkSheet.Cells[10, 1];
+            Cell1.Font.Bold = true;
+            Cell1.Font.Size = 20;
+            Cell1.RowHeight = 50;
+            xlWorkSheet.get_Range("A1:U1", "A5:U5").Cells.HorizontalAlignment =Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+            xlWorkSheet.get_Range("A10", "U10").Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            xlWorkSheet.get_Range("A10", "U10").Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+            xlWorkSheet.get_Range("A11", "H11").Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+            //xlWorkSheet.get_Range("A11", "H11").Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            //xlWorkSheet.get_Range("A5", "U5").Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            //xlApp.get_Range("A1:U3").HorizontalAlignment = XLAlignmentHorizontalValues.Center;
+            string path = @"D:\PROJ\ShinyohProject\Shinyoh\HacchuuSho\Image\SHINYOH_Logo.jpg";
+            xlWorkSheet.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue,380, 5, 250, 30);
+            //xlApp.get_Range("B4:U4", Type.Missing).Merge(Type.Missing);
+            //xlApp.get_Range("B5:U5", Type.Missing).Merge(Type.Missing);
+
+            //xlApp.get_Range("A3:U3").HorizontalAlignment= XLAlignmentHorizontalValues.Center;
+
+            //Microsoft.Office.Interop.Excel.Range oRange = (Microsoft.Office.Interop.Excel.Range)xlWorkSheet.Cells[8, 8];
+            //float Left = (float)((double)oRange.Left);
+            //float Top = (float)((double)oRange.Top);
+            //const float ImageSize = 350;
+            //xlWorkSheet.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, 100, 70, 500,40);
+
+            xlWorkBook.SaveAs("MyExcelFile.xls", Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+            xlWorkBook.Close(true, misValue, misValue);
+            xlApp.Quit();
+            MessageBox.Show("File created !");
+
+
+            //if (dt.Rows.Count > 0)
+            //{
+            //    string folderPath = "C:\\ShinYoh\\" + ProgramID + "\\";
+            //    if (!Directory.Exists(folderPath))
+            //    {
+            //        Directory.CreateDirectory(folderPath);
+            //    }
+            //    SaveFileDialog savedialog = new SaveFileDialog();
+            //    savedialog.Filter = "Excel Files|*.xlsx;";
+            //    savedialog.Title = "Save";
+            //    savedialog.FileName = fname + ".xlsx";
+            //    savedialog.InitialDirectory = folderPath;
+
+            //    savedialog.RestoreDirectory = true;
+
+            //    if (savedialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        if (Path.GetExtension(savedialog.FileName).Contains(".xlsx"))
+            //        {
+            //            Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
+            //            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            //            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+            //            worksheet = workbook.ActiveSheet;
+            //            worksheet.Name = "Sheet1";
+
+            //            using (var wb = new XLWorkbook())
+            //            {
+            //                var ws = wb.AddWorksheet("Sheet1");
+
+            //                var imagePath = @"c:\path\to\your\image.jpg";
+            //                var image = ws.AddPicture(imagePath)
+            //                    .MoveTo(ws.Cell("B3").Address)
+            //                    .Scale(.5); // optional: resize picture
+
+            //                wb.SaveAs("file.xlsx");
+            //            }
+            //        }
+            //    }
+
+            //}
         }
 
         private HacchuuShoEntity Get_UIData()
