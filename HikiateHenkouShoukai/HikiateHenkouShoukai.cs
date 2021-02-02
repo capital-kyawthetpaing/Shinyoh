@@ -78,7 +78,7 @@ namespace HikiateHenkouShoukai
         {
             cf.Clear(PanelDetail);
             rdoAggregation.Focus();
-            UI_ErrorCheck();
+            //UI_ErrorCheck();
 
             lblBrandName.Text = string.Empty;
             lblTokuisakiName.Text = string.Empty;
@@ -217,6 +217,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = false;
                     gvAggregationDetails.Location = new Point(22, 245);
                     gvAggregationDetails.Size = new Size(1550, 630);
+                    txtKanriNO.NextControlName = "txtTokuisakiCD";
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -243,6 +244,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = false;
                     gvMainDetail.Location = new Point(22, 245);
                     gvMainDetail.Size = new Size(1750, 630);
+                    txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = false;
                     //gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -270,6 +272,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
                     gvFreeInventoryDetails.Location = new Point(22, 245);
                     gvFreeInventoryDetails.Size = new Size(1150, 630);
+                    txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
@@ -536,7 +539,7 @@ namespace HikiateHenkouShoukai
                 if (string.IsNullOrEmpty(val))
                     gvMainDetail.Rows[e.RowIndex].Cells[11].Value = 0;
                 else if (Convert.ToInt32(val) < 0)
-                    gvMainDetail.Rows[e.RowIndex].Cells[11].Style.BackColor = Color.Red;
+                    gvMainDetail.Rows[e.RowIndex].Cells[11].Style.ForeColor = Color.Red;
 
                 Decimal Reserve_Val = Convert.ToDecimal(val);
                 Decimal MiHikiateSuu = Convert.ToDecimal(gvMainDetail.Rows[e.RowIndex].Cells[6].EditedFormattedValue.ToString());
@@ -563,40 +566,43 @@ namespace HikiateHenkouShoukai
 
         private void gvMainDetail_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.RowIndex >= 0)
+            if(gvMainDetail.IsLastKeyEnter)
             {
-                bool isexists = false;
-                int index = 0;
-                if (dtTemp == null)
+                if (e.RowIndex >= 0)
                 {
-                    dtTemp = createMemoryTable(1);
-                    dtTemp.Columns.Add("RowNO");
-                }
-
-                for(int i = 0; i< dtTemp.Rows.Count; i++)
-                {
-                    if(Convert.ToInt32(dtTemp.Rows[i]["RowNO"].ToString()) == e.RowIndex)
+                    bool isexists = false;
+                    int index = 0;
+                    if (dtTemp == null)
                     {
-                        isexists = true;
-                        index = i;
-                        break;
+                        dtTemp = createMemoryTable(1);
+                        dtTemp.Columns.Add("RowNO");
                     }
-                }
 
-                if(isexists)    //For multi changes
-                {
-                    dtTemp.Rows[index]["引当調整数"] = gvMainDetail.Rows[e.RowIndex].Cells["引当調整数"].EditedFormattedValue;
-                }
-                //For new changes
-                else
-                {
-                    DataRow row = dtTemp.NewRow();
-                    for(int i = 0; i< gvMainDetail.Columns.Count; i++)
+                    for (int i = 0; i < dtTemp.Rows.Count; i++)
                     {
-                        row[i] = gvMainDetail.Rows[e.RowIndex].Cells[i].EditedFormattedValue;
+                        if (Convert.ToInt32(dtTemp.Rows[i]["RowNO"].ToString()) == e.RowIndex)
+                        {
+                            isexists = true;
+                            index = i;
+                            break;
+                        }
                     }
-                    row["RowNO"] = e.RowIndex;
-                    dtTemp.Rows.Add(row);
+
+                    if (isexists)    //For multi changes
+                    {
+                        dtTemp.Rows[index]["引当調整数"] = gvMainDetail.Rows[e.RowIndex].Cells["引当調整数"].EditedFormattedValue;
+                    }
+                    //For new changes
+                    else
+                    {
+                        DataRow row = dtTemp.NewRow();
+                        for (int i = 0; i < gvMainDetail.Columns.Count; i++)
+                        {
+                            row[i] = gvMainDetail.Rows[e.RowIndex].Cells[i].EditedFormattedValue;
+                        }
+                        row["RowNO"] = e.RowIndex;
+                        dtTemp.Rows.Add(row);
+                    }
                 }
             }
         }

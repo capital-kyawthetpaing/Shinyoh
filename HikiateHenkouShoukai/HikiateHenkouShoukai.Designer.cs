@@ -231,6 +231,7 @@
             this.txtSizeNO.IsRequire = false;
             this.txtSizeNO.IsUseInitializedLayout = true;
             this.txtSizeNO.lblName = null;
+            this.txtSizeNO.lblName1 = null;
             this.txtSizeNO.Location = new System.Drawing.Point(1245, 195);
             this.txtSizeNO.MaxLength = 13;
             this.txtSizeNO.MinimumSize = new System.Drawing.Size(100, 19);
@@ -240,9 +241,10 @@
             this.txtSizeNO.NextControlName = "chkType1";
             this.txtSizeNO.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtSizeNO.Size = new System.Drawing.Size(100, 19);
-            this.txtSizeNO.TabIndex = 22;
+            this.txtSizeNO.TabIndex = 24;
             this.txtSizeNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNO.TxtBox = null;
+            this.txtSizeNO.TxtBox1 = null;
             // 
             // txtColorNO
             // 
@@ -260,6 +262,7 @@
             this.txtColorNO.IsRequire = false;
             this.txtColorNO.IsUseInitializedLayout = true;
             this.txtColorNO.lblName = null;
+            this.txtColorNO.lblName1 = null;
             this.txtColorNO.Location = new System.Drawing.Point(900, 195);
             this.txtColorNO.MaxLength = 13;
             this.txtColorNO.MinimumSize = new System.Drawing.Size(100, 19);
@@ -269,9 +272,10 @@
             this.txtColorNO.NextControlName = "txtSizeNO";
             this.txtColorNO.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtColorNO.Size = new System.Drawing.Size(100, 19);
-            this.txtColorNO.TabIndex = 21;
+            this.txtColorNO.TabIndex = 23;
             this.txtColorNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColorNO.TxtBox = null;
+            this.txtColorNO.TxtBox1 = null;
             // 
             // txtChangeDate
             // 
@@ -329,6 +333,7 @@
             this.txtKouritenCD.IsRequire = false;
             this.txtKouritenCD.IsUseInitializedLayout = true;
             this.txtKouritenCD.lblName = null;
+            this.txtKouritenCD.lblName1 = null;
             this.txtKouritenCD.Location = new System.Drawing.Point(900, 90);
             this.txtKouritenCD.MaxLength = 10;
             this.txtKouritenCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -338,9 +343,10 @@
             this.txtKouritenCD.NextControlName = "txtPostalCode1";
             this.txtKouritenCD.SearchType = Entity.SearchType.ScType.Kouriten;
             this.txtKouritenCD.Size = new System.Drawing.Size(90, 19);
-            this.txtKouritenCD.TabIndex = 10;
+            this.txtKouritenCD.TabIndex = 12;
             this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtKouritenCD.TxtBox = null;
+            this.txtKouritenCD.TxtBox1 = null;
             // 
             // lblTokuisakiName
             // 
@@ -370,6 +376,7 @@
             this.txtTokuisakiCD.IsRequire = false;
             this.txtTokuisakiCD.IsUseInitializedLayout = true;
             this.txtTokuisakiCD.lblName = null;
+            this.txtTokuisakiCD.lblName1 = null;
             this.txtTokuisakiCD.Location = new System.Drawing.Point(900, 65);
             this.txtTokuisakiCD.MaxLength = 10;
             this.txtTokuisakiCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -379,9 +386,10 @@
             this.txtTokuisakiCD.NextControlName = "txtKouritenCD";
             this.txtTokuisakiCD.SearchType = Entity.SearchType.ScType.Tokuisaki;
             this.txtTokuisakiCD.Size = new System.Drawing.Size(90, 19);
-            this.txtTokuisakiCD.TabIndex = 9;
+            this.txtTokuisakiCD.TabIndex = 11;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD.TxtBox = null;
+            this.txtTokuisakiCD.TxtBox1 = null;
             // 
             // txtChakuniYoteiNO
             // 
@@ -399,6 +407,7 @@
             this.txtChakuniYoteiNO.IsRequire = false;
             this.txtChakuniYoteiNO.IsUseInitializedLayout = true;
             this.txtChakuniYoteiNO.lblName = null;
+            this.txtChakuniYoteiNO.lblName1 = null;
             this.txtChakuniYoteiNO.Location = new System.Drawing.Point(900, 40);
             this.txtChakuniYoteiNO.MaxLength = 12;
             this.txtChakuniYoteiNO.MinimumSize = new System.Drawing.Size(100, 19);
@@ -408,9 +417,10 @@
             this.txtChakuniYoteiNO.NextControlName = "txtKanriNO";
             this.txtChakuniYoteiNO.SearchType = Entity.SearchType.ScType.ChakuniYoteiNyuuryoku;
             this.txtChakuniYoteiNO.Size = new System.Drawing.Size(100, 19);
-            this.txtChakuniYoteiNO.TabIndex = 7;
+            this.txtChakuniYoteiNO.TabIndex = 9;
             this.txtChakuniYoteiNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtChakuniYoteiNO.TxtBox = null;
+            this.txtChakuniYoteiNO.TxtBox1 = null;
             // 
             // lblSoukoName
             // 
@@ -440,6 +450,7 @@
             this.txtSoukoCD.IsRequire = false;
             this.txtSoukoCD.IsUseInitializedLayout = true;
             this.txtSoukoCD.lblName = null;
+            this.txtSoukoCD.lblName1 = null;
             this.txtSoukoCD.Location = new System.Drawing.Point(150, 90);
             this.txtSoukoCD.MaxLength = 10;
             this.txtSoukoCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -449,9 +460,10 @@
             this.txtSoukoCD.NextControlName = "txtChakuniYoteiNO";
             this.txtSoukoCD.SearchType = Entity.SearchType.ScType.Souko;
             this.txtSoukoCD.Size = new System.Drawing.Size(90, 19);
-            this.txtSoukoCD.TabIndex = 6;
+            this.txtSoukoCD.TabIndex = 8;
             this.txtSoukoCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSoukoCD.TxtBox = null;
+            this.txtSoukoCD.TxtBox1 = null;
             // 
             // lblBrandName
             // 
@@ -481,6 +493,7 @@
             this.txtBrand.IsRequire = false;
             this.txtBrand.IsUseInitializedLayout = true;
             this.txtBrand.lblName = null;
+            this.txtBrand.lblName1 = null;
             this.txtBrand.Location = new System.Drawing.Point(150, 40);
             this.txtBrand.MaxLength = 10;
             this.txtBrand.MinimumSize = new System.Drawing.Size(90, 19);
@@ -490,9 +503,10 @@
             this.txtBrand.NextControlName = "txtYearTerm";
             this.txtBrand.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtBrand.Size = new System.Drawing.Size(90, 19);
-            this.txtBrand.TabIndex = 2;
+            this.txtBrand.TabIndex = 4;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand.TxtBox = null;
+            this.txtBrand.TxtBox1 = null;
             // 
             // gvFreeInventoryDetails
             // 
@@ -510,11 +524,13 @@
             this.col_Free_GenZaikoSuu,
             this.col_Free_KanriNO,
             this.col_Free_JANCD});
+            this.gvFreeInventoryDetails.IsErrorOccurs = false;
+            this.gvFreeInventoryDetails.ISRowColumn = null;
             this.gvFreeInventoryDetails.Location = new System.Drawing.Point(22, 680);
             this.gvFreeInventoryDetails.MultiSelect = false;
             this.gvFreeInventoryDetails.Name = "gvFreeInventoryDetails";
             this.gvFreeInventoryDetails.Size = new System.Drawing.Size(1150, 100);
-            this.gvFreeInventoryDetails.TabIndex = 103;
+            this.gvFreeInventoryDetails.TabIndex = 32;
             // 
             // col_Free_HinbanCD
             // 
@@ -589,11 +605,13 @@
             this.colShukkaSiziSuu,
             this.colShukkaSuu,
             this.colJANCD});
+            this.gvAggregationDetails.IsErrorOccurs = false;
+            this.gvAggregationDetails.ISRowColumn = null;
             this.gvAggregationDetails.Location = new System.Drawing.Point(22, 561);
             this.gvAggregationDetails.MultiSelect = false;
             this.gvAggregationDetails.Name = "gvAggregationDetails";
             this.gvAggregationDetails.Size = new System.Drawing.Size(1550, 100);
-            this.gvAggregationDetails.TabIndex = 102;
+            this.gvAggregationDetails.TabIndex = 31;
             // 
             // colShouhinCD
             // 
@@ -702,11 +720,13 @@
             this.col_Detail_JuchuuDate,
             this.col_Detail_KibouNouki,
             this.col_Detail_JANCD});
+            this.gvMainDetail.IsErrorOccurs = false;
+            this.gvMainDetail.ISRowColumn = null;
             this.gvMainDetail.Location = new System.Drawing.Point(22, 245);
             this.gvMainDetail.MultiSelect = false;
             this.gvMainDetail.Name = "gvMainDetail";
             this.gvMainDetail.Size = new System.Drawing.Size(1679, 300);
-            this.gvMainDetail.TabIndex = 101;
+            this.gvMainDetail.TabIndex = 30;
             this.gvMainDetail.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvMainDetail_CellEndEdit);
             this.gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
             // 
@@ -847,7 +867,7 @@
             this.btn_F11.NextControl = null;
             this.btn_F11.NextControlName = null;
             this.btn_F11.Size = new System.Drawing.Size(100, 23);
-            this.btn_F11.TabIndex = 27;
+            this.btn_F11.TabIndex = 29;
             this.btn_F11.Tag = "11";
             this.btn_F11.Text = "F11 保存";
             this.btn_F11.UseVisualStyleBackColor = false;
@@ -864,7 +884,7 @@
             this.btn_F10.NextControl = null;
             this.btn_F10.NextControlName = null;
             this.btn_F10.Size = new System.Drawing.Size(100, 23);
-            this.btn_F10.TabIndex = 26;
+            this.btn_F10.TabIndex = 28;
             this.btn_F10.Tag = "10";
             this.btn_F10.Text = "F10 表示";
             this.btn_F10.UseVisualStyleBackColor = false;
@@ -881,7 +901,7 @@
             this.btn_F8.NextControl = null;
             this.btn_F8.NextControlName = null;
             this.btn_F8.Size = new System.Drawing.Size(100, 23);
-            this.btn_F8.TabIndex = 25;
+            this.btn_F8.TabIndex = 27;
             this.btn_F8.Tag = "8";
             this.btn_F8.Text = "F8 確認";
             this.btn_F8.UseVisualStyleBackColor = false;
@@ -898,7 +918,7 @@
             this.chkType2.NextControl = null;
             this.chkType2.NextControlName = "btn_F8";
             this.chkType2.Size = new System.Drawing.Size(150, 19);
-            this.chkType2.TabIndex = 24;
+            this.chkType2.TabIndex = 26;
             this.chkType2.Text = "着荷予定数＞着荷済数";
             this.chkType2.UseVisualStyleBackColor = true;
             // 
@@ -913,7 +933,7 @@
             this.chkType1.NextControl = null;
             this.chkType1.NextControlName = "chkType2";
             this.chkType1.Size = new System.Drawing.Size(100, 19);
-            this.chkType1.TabIndex = 23;
+            this.chkType1.TabIndex = 25;
             this.chkType1.Text = "未引当分のみ";
             this.chkType1.UseVisualStyleBackColor = true;
             // 
@@ -939,7 +959,7 @@
             this.txtShouhinName.NextControlName = "txtColorNO";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
             this.txtShouhinName.Size = new System.Drawing.Size(550, 19);
-            this.txtShouhinName.TabIndex = 20;
+            this.txtShouhinName.TabIndex = 22;
             this.txtShouhinName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblShouhinName
@@ -1003,7 +1023,7 @@
             this.txtJANCD.NextControlName = "txtShouhinName";
             this.txtJANCD.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD.Size = new System.Drawing.Size(150, 19);
-            this.txtJANCD.TabIndex = 19;
+            this.txtJANCD.TabIndex = 21;
             this.txtJANCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblJANCD
@@ -1041,7 +1061,7 @@
             this.txtShouhinCD.NextControlName = "txtJANCD";
             this.txtShouhinCD.SearchType = Entity.SearchType.ScType.None;
             this.txtShouhinCD.Size = new System.Drawing.Size(200, 19);
-            this.txtShouhinCD.TabIndex = 18;
+            this.txtShouhinCD.TabIndex = 20;
             this.txtShouhinCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblShouhinCD
@@ -1088,7 +1108,7 @@
             this.txtAddress.NextControlName = "txtShouhinCD";
             this.txtAddress.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress.Size = new System.Drawing.Size(550, 19);
-            this.txtAddress.TabIndex = 17;
+            this.txtAddress.TabIndex = 19;
             this.txtAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblAddress
@@ -1135,7 +1155,7 @@
             this.txtName.NextControlName = "txtAddress";
             this.txtName.SearchType = Entity.SearchType.ScType.None;
             this.txtName.Size = new System.Drawing.Size(250, 19);
-            this.txtName.TabIndex = 16;
+            this.txtName.TabIndex = 18;
             this.txtName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblName
@@ -1182,7 +1202,7 @@
             this.txtPhoneNo3.NextControlName = "txtName";
             this.txtPhoneNo3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhoneNo3.Size = new System.Drawing.Size(60, 19);
-            this.txtPhoneNo3.TabIndex = 15;
+            this.txtPhoneNo3.TabIndex = 17;
             this.txtPhoneNo3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label5
@@ -1216,7 +1236,7 @@
             this.txtPhoneNo2.NextControlName = "txtPhoneNo3";
             this.txtPhoneNo2.SearchType = Entity.SearchType.ScType.None;
             this.txtPhoneNo2.Size = new System.Drawing.Size(60, 19);
-            this.txtPhoneNo2.TabIndex = 14;
+            this.txtPhoneNo2.TabIndex = 16;
             this.txtPhoneNo2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label4
@@ -1250,7 +1270,7 @@
             this.txtPhoneNo1.NextControlName = "txtPhoneNo2";
             this.txtPhoneNo1.SearchType = Entity.SearchType.ScType.None;
             this.txtPhoneNo1.Size = new System.Drawing.Size(60, 19);
-            this.txtPhoneNo1.TabIndex = 13;
+            this.txtPhoneNo1.TabIndex = 15;
             this.txtPhoneNo1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhoneNo
@@ -1297,7 +1317,7 @@
             this.txtPostalCode2.NextControlName = "txtPhoneNo1";
             this.txtPostalCode2.SearchType = Entity.SearchType.ScType.None;
             this.txtPostalCode2.Size = new System.Drawing.Size(60, 19);
-            this.txtPostalCode2.TabIndex = 12;
+            this.txtPostalCode2.TabIndex = 14;
             this.txtPostalCode2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtPostalCode2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPostalCode2_KeyDown);
             // 
@@ -1332,7 +1352,7 @@
             this.txtPostalCode1.NextControlName = "txtPostalCode2";
             this.txtPostalCode1.SearchType = Entity.SearchType.ScType.None;
             this.txtPostalCode1.Size = new System.Drawing.Size(40, 19);
-            this.txtPostalCode1.TabIndex = 11;
+            this.txtPostalCode1.TabIndex = 13;
             this.txtPostalCode1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPostalCode
@@ -1406,7 +1426,7 @@
             this.txtKanriNO.NextControlName = "txtTokuisakiCD";
             this.txtKanriNO.SearchType = Entity.SearchType.ScType.None;
             this.txtKanriNO.Size = new System.Drawing.Size(90, 19);
-            this.txtKanriNO.TabIndex = 8;
+            this.txtKanriNO.TabIndex = 10;
             this.txtKanriNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblKanriNO
@@ -1460,7 +1480,7 @@
             this.chkSeasonFW.NextControl = null;
             this.chkSeasonFW.NextControlName = "txtSoukoCD";
             this.chkSeasonFW.Size = new System.Drawing.Size(50, 19);
-            this.chkSeasonFW.TabIndex = 5;
+            this.chkSeasonFW.TabIndex = 7;
             this.chkSeasonFW.Text = "FW";
             this.chkSeasonFW.UseVisualStyleBackColor = true;
             this.chkSeasonFW.CheckedChanged += new System.EventHandler(this.chkSeasonFW_CheckedChanged);
@@ -1476,7 +1496,7 @@
             this.chkSeasonSS.NextControl = null;
             this.chkSeasonSS.NextControlName = "chkSeasonFW";
             this.chkSeasonSS.Size = new System.Drawing.Size(50, 19);
-            this.chkSeasonSS.TabIndex = 4;
+            this.chkSeasonSS.TabIndex = 6;
             this.chkSeasonSS.Text = "SS";
             this.chkSeasonSS.UseVisualStyleBackColor = true;
             this.chkSeasonSS.CheckedChanged += new System.EventHandler(this.chkSeasonSS_CheckedChanged);
@@ -1512,7 +1532,8 @@
             this.txtYearTerm.NextControlName = "chkSeasonSS";
             this.txtYearTerm.SearchType = Entity.SearchType.ScType.None;
             this.txtYearTerm.Size = new System.Drawing.Size(50, 19);
-            this.txtYearTerm.TabIndex = 3;
+            this.txtYearTerm.TabIndex = 5;
+            this.txtYearTerm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtYearTerm.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblYearTerm
@@ -1552,7 +1573,7 @@
             this.rdoFreeInventory.NextControl = null;
             this.rdoFreeInventory.NextControlName = "txtBrand";
             this.rdoFreeInventory.Size = new System.Drawing.Size(90, 19);
-            this.rdoFreeInventory.TabIndex = 1;
+            this.rdoFreeInventory.TabIndex = 3;
             this.rdoFreeInventory.Text = "Free在庫";
             this.rdoFreeInventory.UseVisualStyleBackColor = true;
             this.rdoFreeInventory.CheckedChanged += new System.EventHandler(this.rdoFreeInventory_CheckedChanged);
@@ -1566,7 +1587,7 @@
             this.rdoDetails.NextControl = null;
             this.rdoDetails.NextControlName = "txtBrand";
             this.rdoDetails.Size = new System.Drawing.Size(65, 19);
-            this.rdoDetails.TabIndex = 1;
+            this.rdoDetails.TabIndex = 2;
             this.rdoDetails.Text = "明細";
             this.rdoDetails.UseVisualStyleBackColor = true;
             this.rdoDetails.CheckedChanged += new System.EventHandler(this.rdoDetails_CheckedChanged);
