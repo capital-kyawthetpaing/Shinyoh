@@ -118,11 +118,13 @@
             this.PanelTitle.Controls.Add(this.lblChangeDate);
             this.PanelTitle.Controls.Add(this.lblSupplier);
             this.PanelTitle.Size = new System.Drawing.Size(500, 75);
+            this.PanelTitle.TabIndex = 1;
             // 
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.NextControlName = "txtSupplierCD";
+            this.cboMode.TabIndex = 0;
             // 
             // lblSupplier
             // 
@@ -279,7 +281,7 @@
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1713, 838);
-            this.PanelDetail.TabIndex = 1;
+            this.PanelDetail.TabIndex = 2;
             // 
             // txtStaffCD
             // 
@@ -297,6 +299,7 @@
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
+            this.txtStaffCD.lblName1 = null;
             this.txtStaffCD.Location = new System.Drawing.Point(141, 532);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
@@ -309,6 +312,7 @@
             this.txtStaffCD.TabIndex = 26;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaffCD.TxtBox = null;
+            this.txtStaffCD.TxtBox1 = null;
             // 
             // lblStaffCD_Name
             // 
@@ -1319,6 +1323,7 @@
             this.txtCopyCD.IsRequire = false;
             this.txtCopyCD.IsUseInitializedLayout = true;
             this.txtCopyCD.lblName = null;
+            this.txtCopyCD.lblName1 = null;
             this.txtCopyCD.Location = new System.Drawing.Point(354, 9);
             this.txtCopyCD.MaxLength = 10;
             this.txtCopyCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -1331,6 +1336,7 @@
             this.txtCopyCD.TabIndex = 3;
             this.txtCopyCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtCopyCD.TxtBox = null;
+            this.txtCopyCD.TxtBox1 = null;
             // 
             // txtSupplierCD
             // 
@@ -1348,6 +1354,7 @@
             this.txtSupplierCD.IsRequire = false;
             this.txtSupplierCD.IsUseInitializedLayout = true;
             this.txtSupplierCD.lblName = null;
+            this.txtSupplierCD.lblName1 = null;
             this.txtSupplierCD.Location = new System.Drawing.Point(105, 9);
             this.txtSupplierCD.MaxLength = 10;
             this.txtSupplierCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -1360,6 +1367,7 @@
             this.txtSupplierCD.TabIndex = 1;
             this.txtSupplierCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSupplierCD.TxtBox = null;
+            this.txtSupplierCD.TxtBox1 = null;
             // 
             // MasterTourokuSiiresaki
             // 
