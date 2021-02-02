@@ -1598,7 +1598,7 @@
             this.txtColor.Combo = null;
             this.txtColor.DecimalPlace = 0;
             this.txtColor.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtColor.DepandOnMode = true;
+            this.txtColor.DepandOnMode = false;
             this.txtColor.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtColor.IntegerPart = 0;
             this.txtColor.IsDatatableOccurs = null;
@@ -1629,7 +1629,7 @@
             this.txtSize.Combo = null;
             this.txtSize.DecimalPlace = 0;
             this.txtSize.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtSize.DepandOnMode = true;
+            this.txtSize.DepandOnMode = false;
             this.txtSize.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSize.IntegerPart = 0;
             this.txtSize.IsDatatableOccurs = null;
