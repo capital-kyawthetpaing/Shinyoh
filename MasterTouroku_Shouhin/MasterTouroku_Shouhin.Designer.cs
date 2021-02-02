@@ -747,7 +747,7 @@
             this.txtImage.NextControl = null;
             this.txtImage.NextControlName = "txtRemarks";
             this.txtImage.SearchType = Entity.SearchType.ScType.None;
-            this.txtImage.Size = new System.Drawing.Size(625, 19);
+            this.txtImage.Size = new System.Drawing.Size(610, 19);
             this.txtImage.TabIndex = 28;
             this.txtImage.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtImage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImage_KeyDown);
@@ -1598,7 +1598,7 @@
             this.txtColor.Combo = null;
             this.txtColor.DecimalPlace = 0;
             this.txtColor.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtColor.DepandOnMode = true;
+            this.txtColor.DepandOnMode = false;
             this.txtColor.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtColor.IntegerPart = 0;
             this.txtColor.IsDatatableOccurs = null;
@@ -1629,7 +1629,7 @@
             this.txtSize.Combo = null;
             this.txtSize.DecimalPlace = 0;
             this.txtSize.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtSize.DepandOnMode = true;
+            this.txtSize.DepandOnMode = false;
             this.txtSize.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSize.IntegerPart = 0;
             this.txtSize.IsDatatableOccurs = null;

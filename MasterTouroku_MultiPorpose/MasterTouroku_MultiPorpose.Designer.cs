@@ -82,6 +82,7 @@
             this.PanelTitle.Controls.Add(this.sLabel3);
             this.PanelTitle.Location = new System.Drawing.Point(118, 0);
             this.PanelTitle.Size = new System.Drawing.Size(1000, 75);
+            this.PanelTitle.TabIndex = 20;
             // 
             // cboMode
             // 
@@ -464,7 +465,7 @@
             this.txtNum1.IsRequire = false;
             this.txtNum1.IsUseInitializedLayout = true;
             this.txtNum1.Location = new System.Drawing.Point(138, 231);
-            this.txtNum1.MaxLength = 10;
+            this.txtNum1.MaxLength = 9;
             this.txtNum1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum1.MoveNext = true;
             this.txtNum1.Name = "txtNum1";
@@ -490,7 +491,7 @@
             this.txtNum2.IsRequire = false;
             this.txtNum2.IsUseInitializedLayout = true;
             this.txtNum2.Location = new System.Drawing.Point(138, 269);
-            this.txtNum2.MaxLength = 10;
+            this.txtNum2.MaxLength = 9;
             this.txtNum2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum2.MoveNext = true;
             this.txtNum2.Name = "txtNum2";
@@ -516,7 +517,7 @@
             this.txtNum3.IsRequire = false;
             this.txtNum3.IsUseInitializedLayout = true;
             this.txtNum3.Location = new System.Drawing.Point(138, 307);
-            this.txtNum3.MaxLength = 10;
+            this.txtNum3.MaxLength = 9;
             this.txtNum3.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum3.MoveNext = true;
             this.txtNum3.Name = "txtNum3";
@@ -542,7 +543,7 @@
             this.txtNum4.IsRequire = false;
             this.txtNum4.IsUseInitializedLayout = true;
             this.txtNum4.Location = new System.Drawing.Point(138, 345);
-            this.txtNum4.MaxLength = 10;
+            this.txtNum4.MaxLength = 9;
             this.txtNum4.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum4.MoveNext = true;
             this.txtNum4.Name = "txtNum4";
@@ -568,7 +569,7 @@
             this.txtNum5.IsRequire = false;
             this.txtNum5.IsUseInitializedLayout = true;
             this.txtNum5.Location = new System.Drawing.Point(138, 383);
-            this.txtNum5.MaxLength = 10;
+            this.txtNum5.MaxLength = 9;
             this.txtNum5.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum5.MoveNext = true;
             this.txtNum5.Name = "txtNum5";
@@ -691,7 +692,7 @@
             this.PanelDetail.Location = new System.Drawing.Point(0, 80);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1480, 700);
-            this.PanelDetail.TabIndex = 31;
+            this.PanelDetail.TabIndex = 100;
             // 
             // sLabel6
             // 
@@ -735,6 +736,7 @@
             this.txtKEYCopy.IsRequire = false;
             this.txtKEYCopy.IsUseInitializedLayout = true;
             this.txtKEYCopy.lblName = null;
+            this.txtKEYCopy.lblName1 = null;
             this.txtKEYCopy.Location = new System.Drawing.Point(612, 47);
             this.txtKEYCopy.MaxLength = 50;
             this.txtKEYCopy.MinimumSize = new System.Drawing.Size(100, 19);
@@ -747,6 +749,7 @@
             this.txtKEYCopy.TabIndex = 16;
             this.txtKEYCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtKEYCopy.TxtBox = null;
+            this.txtKEYCopy.TxtBox1 = null;
             this.txtKEYCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKEYCopy_KeyDown);
             // 
             // txtKEY
@@ -765,6 +768,7 @@
             this.txtKEY.IsRequire = false;
             this.txtKEY.IsUseInitializedLayout = true;
             this.txtKEY.lblName = null;
+            this.txtKEY.lblName1 = null;
             this.txtKEY.Location = new System.Drawing.Point(118, 47);
             this.txtKEY.MaxLength = 50;
             this.txtKEY.MinimumSize = new System.Drawing.Size(100, 19);
@@ -777,6 +781,7 @@
             this.txtKEY.TabIndex = 15;
             this.txtKEY.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtKEY.TxtBox = null;
+            this.txtKEY.TxtBox1 = null;
             this.txtKEY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKEY_KeyDown_1);
             // 
             // txtCopyID
@@ -795,6 +800,7 @@
             this.txtCopyID.IsRequire = false;
             this.txtCopyID.IsUseInitializedLayout = true;
             this.txtCopyID.lblName = null;
+            this.txtCopyID.lblName1 = null;
             this.txtCopyID.Location = new System.Drawing.Point(612, 15);
             this.txtCopyID.MaxLength = 10;
             this.txtCopyID.MinimumSize = new System.Drawing.Size(100, 19);
@@ -808,6 +814,7 @@
             this.txtCopyID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCopyID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtCopyID.TxtBox = null;
+            this.txtCopyID.TxtBox1 = null;
             // 
             // txtID
             // 
@@ -825,8 +832,9 @@
             this.txtID.IsRequire = false;
             this.txtID.IsUseInitializedLayout = true;
             this.txtID.lblName = null;
+            this.txtID.lblName1 = null;
             this.txtID.Location = new System.Drawing.Point(118, 15);
-            this.txtID.MaxLength = 10;
+            this.txtID.MaxLength = 9;
             this.txtID.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtID.MoveNext = true;
             this.txtID.Name = "txtID";
@@ -838,6 +846,7 @@
             this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtID.TxtBox = null;
+            this.txtID.TxtBox1 = null;
             // 
             // MasterTouroku_MultiPorpose
             // 

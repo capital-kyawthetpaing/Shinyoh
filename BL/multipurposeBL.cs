@@ -45,7 +45,7 @@ namespace BL
             ckmdl = new CKMDL();
             multipurpose_entity.Sqlprms = new SqlParameter[22];
             multipurpose_entity.Sqlprms[0] = new SqlParameter("@id", SqlDbType.Int) { Value = multipurpose_entity.ID };
-            multipurpose_entity.Sqlprms[1] = new SqlParameter("@Key", SqlDbType.Int) { Value = multipurpose_entity.Key };
+            multipurpose_entity.Sqlprms[1] = new SqlParameter("@Key", SqlDbType.VarChar) { Value = multipurpose_entity.Key };
             multipurpose_entity.Sqlprms[2] = new SqlParameter("@IdName", SqlDbType.VarChar) { Value = multipurpose_entity.IdName };
             multipurpose_entity.Sqlprms[3] = new SqlParameter("@Char1", SqlDbType.VarChar) { Value = multipurpose_entity.Char1 };
             multipurpose_entity.Sqlprms[4] = new SqlParameter("@Char2", SqlDbType.VarChar) { Value = multipurpose_entity.Char2 };
@@ -73,12 +73,12 @@ namespace BL
         {
             ckmdl = new CKMDL();
             multipurpose_entity.Sqlprms = new SqlParameter[6];
-            multipurpose_entity.Sqlprms[0] = new SqlParameter("@ID1", DbType.Int32) { Value = multipurpose_entity.ID1 };
-            multipurpose_entity.Sqlprms[1] = new SqlParameter("@ID2", DbType.Int32) { Value = multipurpose_entity.ID2 };
-            multipurpose_entity.Sqlprms[2] = new SqlParameter("@Key1", DbType.Int32) { Value = multipurpose_entity.Key1 };
-            multipurpose_entity.Sqlprms[3] = new SqlParameter("@Key2", DbType.Int32) { Value = multipurpose_entity.Key2 };
-            multipurpose_entity.Sqlprms[4] = new SqlParameter("@IDName", DbType.Int32) { Value = multipurpose_entity.IdName };
-            multipurpose_entity.Sqlprms[5] = new SqlParameter("@Type", DbType.Int32) { Value = multipurpose_entity.Type };
+            multipurpose_entity.Sqlprms[0] = new SqlParameter("@ID1", SqlDbType.Int) { Value = multipurpose_entity.ID1 };
+            multipurpose_entity.Sqlprms[1] = new SqlParameter("@ID2", SqlDbType.Int) { Value = multipurpose_entity.ID2 };
+            multipurpose_entity.Sqlprms[2] = new SqlParameter("@Key1", SqlDbType.Int) { Value = multipurpose_entity.Key1 };
+            multipurpose_entity.Sqlprms[3] = new SqlParameter("@Key2", SqlDbType.Int) { Value = multipurpose_entity.Key2 };
+            multipurpose_entity.Sqlprms[4] = new SqlParameter("@IDName", SqlDbType.Int) { Value = multipurpose_entity.IdName };
+            multipurpose_entity.Sqlprms[5] = new SqlParameter("@Type", SqlDbType.Int) { Value = multipurpose_entity.Type };
             DataTable dt = ckmdl.SelectDatatable("M_Multiporpose_Search", GetConnectionString(), multipurpose_entity.Sqlprms);
             return dt;
         }
@@ -88,7 +88,7 @@ namespace BL
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = brandCD };
-            parameters[1] = new SqlParameter("@Type", DbType.Int32) { Value = type };
+            parameters[1] = new SqlParameter("@Type", SqlDbType.Int) { Value = type };
             parameters[2] = new SqlParameter("@ID", SqlDbType.VarChar) { Value = id };
             parameters[3] = new SqlParameter("@Key", SqlDbType.VarChar) { Value = key };
             DataTable dt = ckmdl.SelectDatatable("M_Multiporpose_SelectData", GetConnectionString(), parameters);

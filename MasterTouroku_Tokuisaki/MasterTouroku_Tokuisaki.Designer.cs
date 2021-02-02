@@ -125,11 +125,13 @@
             this.PanelTitle.Controls.Add(this.txtChange_Date);
             this.PanelTitle.Controls.Add(this.lblTokuisaki_Copy);
             this.PanelTitle.Size = new System.Drawing.Size(600, 75);
+            this.PanelTitle.TabIndex = 1;
             // 
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.NextControlName = "txt_Tokuisaki";
+            this.cboMode.TabIndex = 0;
             // 
             // txtTokuisaki_CopyDate
             // 
@@ -407,6 +409,7 @@
             this.txtStaffCharge.IsRequire = false;
             this.txtStaffCharge.IsUseInitializedLayout = true;
             this.txtStaffCharge.lblName = null;
+            this.txtStaffCharge.lblName1 = null;
             this.txtStaffCharge.Location = new System.Drawing.Point(181, 544);
             this.txtStaffCharge.MaxLength = 10;
             this.txtStaffCharge.MinimumSize = new System.Drawing.Size(60, 19);
@@ -419,6 +422,7 @@
             this.txtStaffCharge.TabIndex = 29;
             this.txtStaffCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaffCharge.TxtBox = null;
+            this.txtStaffCharge.TxtBox1 = null;
             // 
             // lblStaffCD_Name
             // 
@@ -1399,6 +1403,7 @@
             this.txtTokuisakiCopy.IsRequire = false;
             this.txtTokuisakiCopy.IsUseInitializedLayout = true;
             this.txtTokuisakiCopy.lblName = null;
+            this.txtTokuisakiCopy.lblName1 = null;
             this.txtTokuisakiCopy.Location = new System.Drawing.Point(450, 10);
             this.txtTokuisakiCopy.MaxLength = 10;
             this.txtTokuisakiCopy.MinimumSize = new System.Drawing.Size(80, 19);
@@ -1411,6 +1416,7 @@
             this.txtTokuisakiCopy.TabIndex = 3;
             this.txtTokuisakiCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCopy.TxtBox = null;
+            this.txtTokuisakiCopy.TxtBox1 = null;
             // 
             // txt_Tokuisaki
             // 
@@ -1428,6 +1434,7 @@
             this.txt_Tokuisaki.IsRequire = false;
             this.txt_Tokuisaki.IsUseInitializedLayout = true;
             this.txt_Tokuisaki.lblName = null;
+            this.txt_Tokuisaki.lblName1 = null;
             this.txt_Tokuisaki.Location = new System.Drawing.Point(119, 9);
             this.txt_Tokuisaki.MaxLength = 10;
             this.txt_Tokuisaki.MinimumSize = new System.Drawing.Size(80, 19);
@@ -1440,6 +1447,7 @@
             this.txt_Tokuisaki.TabIndex = 1;
             this.txt_Tokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txt_Tokuisaki.TxtBox = null;
+            this.txt_Tokuisaki.TxtBox1 = null;
             // 
             // MasterTouroku_Tokuisaki
             // 
