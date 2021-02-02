@@ -1370,10 +1370,14 @@ namespace JuchuuNyuuryoku
 
         private void gv_1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            //  CellEndEdit_ErrorCheck(e);
-            if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
-               // gv_JuchuuNyuuryoku.BeginEdit(true);
+            if(gv_JuchuuNyuuryoku.IsLastKeyEnter)
+            {
+                //  CellEndEdit_ErrorCheck(e);
+                if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
+                // gv_JuchuuNyuuryoku.BeginEdit(true);
                 gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+            }
 
 
         }

@@ -34,8 +34,8 @@ namespace HaitaSakujo {
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", false);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", false);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Empty, F7, "全選択(F7)", true);
-            SetButton(ButtonType.BType.Empty, F8, "全解除(F8)", true);
+            SetButton(ButtonType.BType.Display, F7, "全選択(F7)", true);
+            SetButton(ButtonType.BType.Display, F8, "全解除(F8)", true);
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Import, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
@@ -54,22 +54,64 @@ namespace HaitaSakujo {
         }
         public override void FunctionProcess(string tagID)
         {
+            if (tagID == "7")
+            {
+                OnCheck();
+            }
+            if (tagID == "8")
+            {
+                OFFCheck();
+            }
             if (tagID == "10")
             {
-                HaitaSakujoBL bl = new HaitaSakujoBL();
-                HaitaSakujoEntity obj = new HaitaSakujoEntity();
-                obj.ChangeDate = txt_date.Text;
-                obj.DataKBN = txt_dataPartition.Text;
-                obj.InputPerson = txt_InputPerson.Text;
-                obj.Program = txt_Program.Text;
-                obj.OperateDataTime1 = txt_Time1.Text;
-                obj.OperateDataTime2 = txt_Time2.Text;
-                obj.OperateDataTimeHM1 = txt_HM1.Text;
-                obj.OperateDataTimeHM2 = txt_HM2.Text;
-                DataTable dt= bl.HaitaSakujo_Display(obj);
-                gvHaitaSakujo.DataSource = dt;
+                btnDisaplay();
             }
 
+        }
+        private void btnDisaplay()
+        {
+            HaitaSakujoBL bl = new HaitaSakujoBL();
+            HaitaSakujoEntity obj = new HaitaSakujoEntity();
+            obj.ChangeDate = txt_date.Text;
+            obj.DataKBN = txt_dataPartition.Text;
+            obj.InputPerson = txt_InputPerson.Text;
+            obj.Program = txt_Program.Text;
+            obj.OperateDataTime1 = txt_Time1.Text;
+            obj.OperateDataTime2 = txt_Time2.Text;
+            obj.OperateDataTimeHM1 = txt_HM1.Text;
+            obj.OperateDataTimeHM2 = txt_HM2.Text;
+            DataTable dt = bl.HaitaSakujo_Display(obj);
+            gvHaitaSakujo.DataSource = dt;
+        }
+        private void OnCheck()
+        {
+           if(gvHaitaSakujo.Rows.Count > 0)
+            {
+                foreach(DataGridViewRow row in gvHaitaSakujo.Rows)
+                {
+                    (row.Cells["col_Target"] as DataGridViewCheckBoxCell).Value = true;
+                }
+            }
+        }
+        private void OFFCheck()
+        {
+            if (gvHaitaSakujo.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in gvHaitaSakujo.Rows)
+                {
+                    (row.Cells["col_Target"] as DataGridViewCheckBoxCell).Value = false;
+                }
+            }
+        }
+        private void RegisterBtn()
+        {
+           //foreach(DataGridViewRow row in gvHaitaSakujo.Rows)
+           // {
+           //     if (row.Cells["col_Target"] == true)
+           //     {
+
+           //     }
+           // }
         }
     }
 }

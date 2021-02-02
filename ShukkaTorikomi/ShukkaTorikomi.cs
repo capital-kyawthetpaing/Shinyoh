@@ -20,14 +20,17 @@ namespace ShukkaTorikomi
         multipurposeEntity multi_Entity;
         ShukkaTorikomi_BL ShukkaTorikomi_BL;
         BaseBL bbl;
-        
+        DataTable dt_Main;
+        DataTable create_dt;
 
         public SqlDbType()
         {
             InitializeComponent();
             cf = new CommonFunction();
             multi_Entity = new multipurposeEntity();
-            
+            dt_Main = new DataTable();
+            create_dt = new DataTable();
+
             bbl = new BaseBL();
             ShukkaTorikomi_BL = new ShukkaTorikomi_BL();
         }
@@ -359,13 +362,13 @@ namespace ShukkaTorikomi
                         dr[18] = error;
                         create_dt.Rows.Add(dr);
                     }
-                   
 
+                    DataTable dt_Main = new DataTable();
                     if (create_dt.Rows.Count>0)
                     {
-                        DataTable dt_Main = create_dt.AsEnumerable()
-                              //.GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["TokuisakiRyakuName"], Col4 = r["KouritenRyakuName"], Col5 = r["DenpyouNO"], Col6 = r["ChangeDate"], Col7 = r["ShukkaDenpyouTekiyou"]})
-                              //.Select(g => g.OrderBy(r => r["TokuisakiCD"]).First())
+                        dt_Main = create_dt.AsEnumerable()
+                              .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["TokuisakiRyakuName"], Col4 = r["KouritenRyakuName"], Col5 = r["DenpyouNO"], Col6 = r["ChangeDate"], Col7 = r["ShukkaDenpyouTekiyou"]})
+                              .Select(g => g.OrderBy(r => r["TokuisakiCD"]).First())
                               .CopyToDataTable();
 
 
@@ -399,6 +402,7 @@ namespace ShukkaTorikomi
 
                         Xml_Main = cf.DataTableToXml(dt_Main);
                     }
+
                     if (create_dt.Rows.Count == csvRows.Length - 1)
                     {
                         Xml_Detail = cf.DataTableToXml(create_dt);
@@ -410,10 +414,16 @@ namespace ShukkaTorikomi
                     Xml_Detail = string.Empty;
                     Xml_Main = string.Empty;
                 }
-         
             }
-            return (Xml_Main,Xml_Detail);
+
+            Column_Remove_Datatable(dt_Main);
+            string main_XML = cf.DataTableToXml(dt_Main);
+            string detail_XML = cf.DataTableToXml(create_dt);
+            return (Xml_Main, Xml_Detail);
+
         }
+
+
         private bool Null_Check(string obj_text, int line_no, string error_msg)
         {
             bool bl = false;
@@ -485,8 +495,24 @@ namespace ShukkaTorikomi
             create_dt.Columns.Add("ShukkaSiziNO");
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
-            create_dt.Columns.Add("Error");
-            
+            create_dt.Columns.Add("Error");            
         }
+
+        public void Column_Remove_Datatable(DataTable remove_dt)
+        {
+            remove_dt = new DataTable();
+            Creat_Datatable_Column(remove_dt);
+            remove_dt.Columns.Remove("DenpyouDate");
+            remove_dt.Columns.Remove("ShouhinCD");
+            remove_dt.Columns.Remove("ColorRyakuName");
+            remove_dt.Columns.Remove("SizeNO");
+            remove_dt.Columns.Remove("JANCD");
+            remove_dt.Columns.Remove("ShukkaSuu");
+            remove_dt.Columns.Remove("UnitPrice");
+            remove_dt.Columns.Remove("SellingPrice");
+            remove_dt.Columns.Remove("ShukkaSiziNO");
+        }
+
+
     }
 }
