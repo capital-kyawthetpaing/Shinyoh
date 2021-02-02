@@ -28,7 +28,9 @@ namespace ShukkaTorikomi
             InitializeComponent();
             cf = new CommonFunction();
             multi_Entity = new multipurposeEntity();
-            
+            dt_Main = new DataTable();
+            create_dt = new DataTable();
+
             bbl = new BaseBL();
             ShukkaTorikomi_BL = new ShukkaTorikomi_BL();
         }
@@ -493,12 +495,13 @@ namespace ShukkaTorikomi
             create_dt.Columns.Add("ShukkaSiziNO");
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
-            create_dt.Columns.Add("Error");
-            
+            create_dt.Columns.Add("Error");            
         }
 
         public void Column_Remove_Datatable(DataTable remove_dt)
         {
+            remove_dt = new DataTable();
+            Creat_Datatable_Column(remove_dt);
             remove_dt.Columns.Remove("DenpyouDate");
             remove_dt.Columns.Remove("ShouhinCD");
             remove_dt.Columns.Remove("ColorRyakuName");
