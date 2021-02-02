@@ -89,7 +89,8 @@ namespace MasterTouroku_Kouriten
 
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
                     txtTokuisakiCD_Copy.Enabled = true;
-                    //txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
+                    txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
+                    txtTokuisakiCD_Copy.TabStop = true;
                     txtTokuisakiCD_Copy.NextControlName = txtCopyCD.Name;
                     txtCopyCD.NextControlName = txtCopyDate.Name;
 
@@ -98,7 +99,7 @@ namespace MasterTouroku_Kouriten
                     txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
                     txtCopyDate.E133Check(true, "M_Kouriten", txtCopyCD, txtCopyDate, txtTokuisakiCD_Copy);
 
-                    txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     //txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
                     //txtTokuisakiCD_Copy.Enabled = true;

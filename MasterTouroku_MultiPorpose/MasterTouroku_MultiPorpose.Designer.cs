@@ -735,6 +735,7 @@
             this.txtKEYCopy.IsRequire = false;
             this.txtKEYCopy.IsUseInitializedLayout = true;
             this.txtKEYCopy.lblName = null;
+            this.txtKEYCopy.lblName1 = null;
             this.txtKEYCopy.Location = new System.Drawing.Point(612, 47);
             this.txtKEYCopy.MaxLength = 50;
             this.txtKEYCopy.MinimumSize = new System.Drawing.Size(100, 19);
@@ -747,6 +748,7 @@
             this.txtKEYCopy.TabIndex = 16;
             this.txtKEYCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtKEYCopy.TxtBox = null;
+            this.txtKEYCopy.TxtBox1 = null;
             this.txtKEYCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKEYCopy_KeyDown);
             // 
             // txtKEY
@@ -765,6 +767,7 @@
             this.txtKEY.IsRequire = false;
             this.txtKEY.IsUseInitializedLayout = true;
             this.txtKEY.lblName = null;
+            this.txtKEY.lblName1 = null;
             this.txtKEY.Location = new System.Drawing.Point(118, 47);
             this.txtKEY.MaxLength = 50;
             this.txtKEY.MinimumSize = new System.Drawing.Size(100, 19);
@@ -777,6 +780,7 @@
             this.txtKEY.TabIndex = 15;
             this.txtKEY.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtKEY.TxtBox = null;
+            this.txtKEY.TxtBox1 = null;
             this.txtKEY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKEY_KeyDown_1);
             // 
             // txtCopyID
@@ -795,6 +799,7 @@
             this.txtCopyID.IsRequire = false;
             this.txtCopyID.IsUseInitializedLayout = true;
             this.txtCopyID.lblName = null;
+            this.txtCopyID.lblName1 = null;
             this.txtCopyID.Location = new System.Drawing.Point(612, 15);
             this.txtCopyID.MaxLength = 10;
             this.txtCopyID.MinimumSize = new System.Drawing.Size(100, 19);
@@ -808,6 +813,7 @@
             this.txtCopyID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCopyID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtCopyID.TxtBox = null;
+            this.txtCopyID.TxtBox1 = null;
             // 
             // txtID
             // 
@@ -825,6 +831,7 @@
             this.txtID.IsRequire = false;
             this.txtID.IsUseInitializedLayout = true;
             this.txtID.lblName = null;
+            this.txtID.lblName1 = null;
             this.txtID.Location = new System.Drawing.Point(118, 15);
             this.txtID.MaxLength = 10;
             this.txtID.MinimumSize = new System.Drawing.Size(100, 19);
@@ -838,6 +845,7 @@
             this.txtID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtID.TxtBox = null;
+            this.txtID.TxtBox1 = null;
             // 
             // MasterTouroku_MultiPorpose
             // 

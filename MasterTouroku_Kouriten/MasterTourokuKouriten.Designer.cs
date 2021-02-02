@@ -387,6 +387,7 @@
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
+            this.txtStaffCD.lblName1 = null;
             this.txtStaffCD.Location = new System.Drawing.Point(126, 492);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
@@ -399,6 +400,7 @@
             this.txtStaffCD.TabIndex = 26;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaffCD.TxtBox = null;
+            this.txtStaffCD.TxtBox1 = null;
             // 
             // lblStaffCD_Name
             // 
@@ -1357,6 +1359,7 @@
             this.txtCopyCD.IsRequire = false;
             this.txtCopyCD.IsUseInitializedLayout = true;
             this.txtCopyCD.lblName = null;
+            this.txtCopyCD.lblName1 = null;
             this.txtCopyCD.Location = new System.Drawing.Point(370, 27);
             this.txtCopyCD.MaxLength = 10;
             this.txtCopyCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -1369,6 +1372,7 @@
             this.txtCopyCD.TabIndex = 5;
             this.txtCopyCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtCopyCD.TxtBox = null;
+            this.txtCopyCD.TxtBox1 = null;
             // 
             // txtTokuisakiCD_Copy
             // 
@@ -1386,6 +1390,7 @@
             this.txtTokuisakiCD_Copy.IsRequire = false;
             this.txtTokuisakiCD_Copy.IsUseInitializedLayout = true;
             this.txtTokuisakiCD_Copy.lblName = null;
+            this.txtTokuisakiCD_Copy.lblName1 = null;
             this.txtTokuisakiCD_Copy.Location = new System.Drawing.Point(370, 3);
             this.txtTokuisakiCD_Copy.MaxLength = 10;
             this.txtTokuisakiCD_Copy.MinimumSize = new System.Drawing.Size(90, 19);
@@ -1398,6 +1403,7 @@
             this.txtTokuisakiCD_Copy.TabIndex = 4;
             this.txtTokuisakiCD_Copy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD_Copy.TxtBox = null;
+            this.txtTokuisakiCD_Copy.TxtBox1 = null;
             // 
             // txtTokuisakiCD
             // 
@@ -1407,7 +1413,7 @@
             this.txtTokuisakiCD.Combo = null;
             this.txtTokuisakiCD.DecimalPlace = 0;
             this.txtTokuisakiCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtTokuisakiCD.DepandOnMode = true;
+            this.txtTokuisakiCD.DepandOnMode = false;
             this.txtTokuisakiCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiCD.IntegerPart = 0;
             this.txtTokuisakiCD.IsDatatableOccurs = null;
@@ -1415,6 +1421,7 @@
             this.txtTokuisakiCD.IsRequire = false;
             this.txtTokuisakiCD.IsUseInitializedLayout = true;
             this.txtTokuisakiCD.lblName = null;
+            this.txtTokuisakiCD.lblName1 = null;
             this.txtTokuisakiCD.Location = new System.Drawing.Point(118, 3);
             this.txtTokuisakiCD.MaxLength = 10;
             this.txtTokuisakiCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -1427,6 +1434,7 @@
             this.txtTokuisakiCD.TabIndex = 1;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD.TxtBox = null;
+            this.txtTokuisakiCD.TxtBox1 = null;
             // 
             // txtKouritenCD
             // 
@@ -1444,6 +1452,7 @@
             this.txtKouritenCD.IsRequire = false;
             this.txtKouritenCD.IsUseInitializedLayout = true;
             this.txtKouritenCD.lblName = null;
+            this.txtKouritenCD.lblName1 = null;
             this.txtKouritenCD.Location = new System.Drawing.Point(118, 27);
             this.txtKouritenCD.MaxLength = 10;
             this.txtKouritenCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -1456,6 +1465,7 @@
             this.txtKouritenCD.TabIndex = 2;
             this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtKouritenCD.TxtBox = null;
+            this.txtKouritenCD.TxtBox1 = null;
             // 
             // MasterTourokuKouriten
             // 

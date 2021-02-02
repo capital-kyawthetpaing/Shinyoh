@@ -747,7 +747,7 @@
             this.txtImage.NextControl = null;
             this.txtImage.NextControlName = "txtRemarks";
             this.txtImage.SearchType = Entity.SearchType.ScType.None;
-            this.txtImage.Size = new System.Drawing.Size(625, 19);
+            this.txtImage.Size = new System.Drawing.Size(610, 19);
             this.txtImage.TabIndex = 28;
             this.txtImage.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtImage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtImage_KeyDown);
