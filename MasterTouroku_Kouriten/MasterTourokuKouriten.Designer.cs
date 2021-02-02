@@ -131,7 +131,7 @@
             this.PanelTitle.Controls.Add(this.lblKouriten);
             this.PanelTitle.Location = new System.Drawing.Point(106, 0);
             this.PanelTitle.Size = new System.Drawing.Size(500, 75);
-            this.PanelTitle.TabIndex = 12;
+            this.PanelTitle.TabIndex = 31;
             // 
             // cboMode
             // 
