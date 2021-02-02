@@ -44,7 +44,7 @@ namespace BL
         {
             ckmdl = new CKMDL();
             multipurpose_entity.Sqlprms = new SqlParameter[22];
-            multipurpose_entity.Sqlprms[0] = new SqlParameter("@id", SqlDbType.VarChar) { Value = multipurpose_entity.ID };
+            multipurpose_entity.Sqlprms[0] = new SqlParameter("@id", SqlDbType.Int) { Value = multipurpose_entity.ID };
             multipurpose_entity.Sqlprms[1] = new SqlParameter("@Key", SqlDbType.VarChar) { Value = multipurpose_entity.Key };
             multipurpose_entity.Sqlprms[2] = new SqlParameter("@IdName", SqlDbType.VarChar) { Value = multipurpose_entity.IdName };
             multipurpose_entity.Sqlprms[3] = new SqlParameter("@Char1", SqlDbType.VarChar) { Value = multipurpose_entity.Char1 };
@@ -54,9 +54,9 @@ namespace BL
             multipurpose_entity.Sqlprms[7] = new SqlParameter("@Char5", SqlDbType.VarChar) { Value = multipurpose_entity.Char5 };
             multipurpose_entity.Sqlprms[8] = new SqlParameter("@Num1", SqlDbType.Int) { Value = multipurpose_entity.Num1 };
             multipurpose_entity.Sqlprms[9] = new SqlParameter("@Num2", SqlDbType.Int) { Value = multipurpose_entity.Num2 };
-            multipurpose_entity.Sqlprms[10] = new SqlParameter("@Num3", SqlDbType.VarChar) { Value = multipurpose_entity.Num3 };
-            multipurpose_entity.Sqlprms[11] = new SqlParameter("@Num4", SqlDbType.VarChar) { Value = multipurpose_entity.Num4 };
-            multipurpose_entity.Sqlprms[12] = new SqlParameter("@Num5", SqlDbType.VarChar) { Value = multipurpose_entity.Num5 };
+            multipurpose_entity.Sqlprms[10] = new SqlParameter("@Num3", SqlDbType.Int) { Value = multipurpose_entity.Num3 };
+            multipurpose_entity.Sqlprms[11] = new SqlParameter("@Num4", SqlDbType.Int) { Value = multipurpose_entity.Num4 };
+            multipurpose_entity.Sqlprms[12] = new SqlParameter("@Num5", SqlDbType.Int) { Value = multipurpose_entity.Num5 };
             multipurpose_entity.Sqlprms[13] = new SqlParameter("@Date1", SqlDbType.VarChar) { Value = multipurpose_entity.Date1 };
             multipurpose_entity.Sqlprms[14] = new SqlParameter("@Date2", SqlDbType.VarChar) { Value = multipurpose_entity.Date2 };
             multipurpose_entity.Sqlprms[15] = new SqlParameter("@Date3", SqlDbType.VarChar) { Value = multipurpose_entity.Date3 };
