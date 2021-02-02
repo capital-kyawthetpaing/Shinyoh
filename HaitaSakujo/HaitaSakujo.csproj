@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{54CF2E39-2C46-4C88-994C-8FDC137C5A6D}</ProjectGuid>
+    <ProjectGuid>{9BFE5CFD-05AB-4D28-8EFD-E5985881AD1D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>HacchuuSho</RootNamespace>
-    <AssemblyName>HacchuuSho</AssemblyName>
+    <RootNamespace>HaitaSakujo</RootNamespace>
+    <AssemblyName>HaitaSakujo</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,19 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKM_CommonFunction">
-      <HintPath>..\bin\Debug\CKM_CommonFunction.dll</HintPath>
-    </Reference>
-    <Reference Include="closedXML, Version=0.95.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Shinyoh\RequireDLL\closedXML.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="office, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HacchuuSho.cs">
+    <Compile Include="HaitaSakujo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HacchuuSho.Designer.cs">
-      <DependentUpon>HacchuuSho.cs</DependentUpon>
+    <Compile Include="HaitaSakujo.Designer.cs">
+      <DependentUpon>HaitaSakujo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="HacchuuSho.resx">
-      <DependentUpon>HacchuuSho.cs</DependentUpon>
+    <EmbeddedResource Include="HaitaSakujo.resx">
+      <DependentUpon>HaitaSakujo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,13 +96,14 @@
       <Project>{b15a285f-ddec-443d-8bd0-762b893bb937}</Project>
       <Name>Shinyoh_Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Shinyoh_Details\Shinyoh_Details.csproj">
+      <Project>{c77a6d15-5b0f-4ec2-9c63-f99da9c55a24}</Project>
+      <Name>Shinyoh_Details</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Shinyoh_Search\Shinyoh_Search.csproj">
-      <Project>{755AB75E-AE1C-4BFD-BC08-C63659BEEB6D}</Project>
+      <Project>{755ab75e-ae1c-4bfd-bc08-c63659beeb6d}</Project>
       <Name>Shinyoh_Search</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Image\SHINYOH_Logo.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

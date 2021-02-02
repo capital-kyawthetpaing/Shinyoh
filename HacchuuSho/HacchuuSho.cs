@@ -1,17 +1,20 @@
 ﻿using BL;
 using CKM_CommonFunction;
+using ClosedXML.Excel;
 using Entity;
 using Shinyoh;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HacchuuSho
 {
@@ -108,56 +111,6 @@ namespace HacchuuSho
 
         private void Excel_Export()
         {
-            hsbl = new HacchuuShoBL();
-            DataTable dt = new DataTable();
-            dt = hsbl.Get_ExportData(Get_UIData());
-            string FileName = "PURCHASEORDER" + txtKanriNO.Text;
-            if (dt.Rows.Count > 0)
-            {
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Excel";
-                saveFileDialog1.DefaultExt = "xls";
-                saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = FileName+ ".xls";
-                saveFileDialog1.RestoreDirectory = true;
-
-                if (!System.IO.Directory.Exists("C:\\Excel"))
-                    System.IO.Directory.CreateDirectory("C:\\Excel");
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    ExcelDesignSetting obj = new ExcelDesignSetting();
-                    obj.FilePath = saveFileDialog1.FileName;
-                    obj.SheetName = FileName;
-                    obj.Start_Interior_Column = "A1";
-                    obj.End_Interior_Column = "AH1";
-                    obj.Interior_Color = Color.Orange;
-                    obj.Start_Font_Column = "A1";
-                    obj.End_Font_Column = "AH1";
-                    obj.Font_Color = Color.Black;
-                   
-                    obj.Date_Column = new List<int>();
-                    obj.Date_Column.Add(2);
-                    obj.Date_Column.Add(28);
-                    obj.Date_Column.Add(29);
-                    obj.Date_Format = "YYYY/MM/DD";
-                    obj.Start_Title_Center_Column = "A1";
-                    obj.End_Title_Center_Column = "AH1";
-                    
-                    ExportCSVExcel excel = new ExportCSVExcel();
-                    excel.ExportDataTableToExcel(dt, obj);
-                    bbl.ShowMessage("I203");
-
-                    //New_Mode
-                    cf.Clear(PanelDetail);
-                    Rdo1.Checked = true;
-                    txtJuchuuNO1.Focus();
-                }
-            }
-            else
-            {
-                bbl.ShowMessage("S013");
-            }
         }
 
         private HacchuuShoEntity Get_UIData()
