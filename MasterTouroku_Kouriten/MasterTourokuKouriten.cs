@@ -378,20 +378,17 @@ namespace MasterTouroku_Kouriten
             {
                 if (!txtChangeDate.IsErrorOccurs)
                 {
-                    if (ErrorCheck(PanelTitle))
+                    if (cboMode.SelectedValue.ToString() == "2")
                     {
-                        if (cboMode.SelectedValue.ToString() == "2")
+                        EnablePanel();
+                    }
+                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                        if (cboMode.SelectedValue.ToString() == "3")
                         {
-                            EnablePanel();
-                        }
-                        else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
-                        {
-                            cf.DisablePanel(PanelTitle);
-                            if (cboMode.SelectedValue.ToString() == "3")
-                            {
-                                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-                                btnF12.Focus();
-                            }
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
                         }
                     }
                 }
