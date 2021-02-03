@@ -333,6 +333,12 @@ namespace Shinyoh_Controls
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
+                if (result.Equals("E132"))
+                {
+                    ShowErrorMessage("E132");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
             }
             if (sTextBox.E133)
             {

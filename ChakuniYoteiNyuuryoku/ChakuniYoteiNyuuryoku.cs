@@ -838,14 +838,6 @@ namespace ChakuniYoteiNyuuryoku
             }
         }
 
-        private void txtSiiresaki_TextChanged(object sender, EventArgs e)
-        {
-            if(string.IsNullOrEmpty(txtSiiresaki.Text))
-            {
-                lblSiiresaki.Text = string.Empty;
-            }
-        }
-
         private void txtNumber_KeyDown(object sender, KeyEventArgs e)
         {
             ChakuniYoteiNyuuryokuEntity chkEntity = new ChakuniYoteiNyuuryokuEntity()

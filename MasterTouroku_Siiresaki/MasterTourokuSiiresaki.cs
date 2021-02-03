@@ -384,8 +384,8 @@ namespace MasterTouroku_Siiresaki
             {
                 if (!txtChangeDate.IsErrorOccurs)
                 {
-                    if (ErrorCheck(PanelTitle))
-                    {
+                    //if (ErrorCheck(PanelTitle))
+                    //{
                         if (cboMode.SelectedValue.ToString() == "2")
                         {
                             EnablePanel();
@@ -399,7 +399,7 @@ namespace MasterTouroku_Siiresaki
                                 btnF12.Focus();
                             }
                         }
-                    }
+                    //}
                 }
                 DataTable dt = txtChangeDate.IsDatatableOccurs;
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
