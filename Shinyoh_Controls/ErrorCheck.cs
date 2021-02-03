@@ -136,6 +136,7 @@ namespace Shinyoh_Controls
                 if (result.Equals("E101"))
                 {
                     ShowErrorMessage("E101");
+                    sTextBox.Text = string.Empty;
                     sTextBox.Focus();
                     return (true,rDt);
                 }
