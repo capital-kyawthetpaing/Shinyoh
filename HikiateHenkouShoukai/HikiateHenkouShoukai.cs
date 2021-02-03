@@ -78,7 +78,7 @@ namespace HikiateHenkouShoukai
         {
             cf.Clear(PanelDetail);
             rdoAggregation.Focus();
-            //UI_ErrorCheck();
+            UI_ErrorCheck();
 
             lblBrandName.Text = string.Empty;
             lblTokuisakiName.Text = string.Empty;
@@ -216,7 +216,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = false;
                     gvAggregationDetails.Location = new Point(22, 245);
-                    gvAggregationDetails.Size = new Size(1550, 630);
+                    gvAggregationDetails.Size = new Size(1700, 630);
                     txtKanriNO.NextControlName = "txtTokuisakiCD";
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
@@ -243,7 +243,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = true;
                     gvFreeInventoryDetails.Visible = false;
                     gvMainDetail.Location = new Point(22, 245);
-                    gvMainDetail.Size = new Size(1750, 630);
+                    gvMainDetail.Size = new Size(1700, 630);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = false;
                     //gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
@@ -271,7 +271,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = true;
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
                     gvFreeInventoryDetails.Location = new Point(22, 245);
-                    gvFreeInventoryDetails.Size = new Size(1150, 630);
+                    gvFreeInventoryDetails.Size = new Size(1300, 630);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
@@ -361,11 +361,15 @@ namespace HikiateHenkouShoukai
             {
                 DataView dv = dtMemory.DefaultView;
                 dv.Sort = "商品 ASC, 引当調整数 ASC, 表示順 ASC, [受注番号-行番号] ASC";
+                DataTable dtBind = dv.ToTable();
+                dtBind.Columns.RemoveAt(21);
+                dtBind.Columns.RemoveAt(22);
+                dtBind.AcceptChanges();
                 gvMainDetail.DataSource = null;
                 gvMainDetail.Rows.Clear();
-                gvMainDetail.DataSource = dv.ToTable();
-                gvMainDetail.Columns[gvMainDetail.Columns.Count - 2].Visible = false;
+                gvMainDetail.DataSource = dtBind;
                 gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
+                gvMainDetail.Columns[gvMainDetail.Columns.Count - 2].Visible = false;
             }
         }
 
@@ -409,20 +413,15 @@ namespace HikiateHenkouShoukai
             if (rdoAggregation.Checked)
                 gvAggregationDetails.DataSource = dtMain;
             else if (rdoDetails.Checked)
+            {
+                dtMain.Columns.RemoveAt(20);
+                dtMain.Columns.RemoveAt(19);
                 gvMainDetail.DataSource = dtMain;
+                //gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
+            }
             else
                 gvFreeInventoryDetails.DataSource = dtMain;
 
-            if (rdoDetails.Checked)
-            {
-                for(int i=0; i<gvMainDetail.Columns.Count; i++)
-                {
-                    if (i == 11)
-                        gvMainDetail.Columns[i].ReadOnly = false;
-                    else
-                        gvMainDetail.Columns[i].ReadOnly = true;
-                }
-            }
             if(dtTemp != null)
                 dtTemp.Clear();
         }
