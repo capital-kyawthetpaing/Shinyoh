@@ -89,16 +89,20 @@ namespace MasterTouroku_Kouriten
 
                     txtChangeDate.E270Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate);
                     txtTokuisakiCD_Copy.Enabled = true;
-                    //txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
+                    txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
+                    txtTokuisakiCD_Copy.TabIndex = 4;
+                    txtCopyCD.Enabled = true;
                     txtTokuisakiCD_Copy.NextControlName = txtCopyCD.Name;
+                    txtCopyCD.TabIndex = 5;
+                    txtCopyDate.Enabled = true;
                     txtCopyCD.NextControlName = txtCopyDate.Name;
-
+                    txtCopyDate.TabIndex = 6;
                     txtCopyDate.E103Check(true);
                     txtCopyCD.E102MultiCheck(true, txtTokuisakiCD_Copy, txtCopyCD);
                     txtCopyDate.E102MultiCheck(true, txtCopyCD, txtCopyDate);
                     txtCopyDate.E133Check(true, "M_Kouriten", txtCopyCD, txtCopyDate, txtTokuisakiCD_Copy);
 
-                    txtTokuisakiCD.E101Check(false, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
+                    txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtSystemDate, null);
 
                     //txtChangeDate.NextControlName = txtTokuisakiCD_Copy.Name;
                     //txtTokuisakiCD_Copy.Enabled = true;
@@ -374,20 +378,17 @@ namespace MasterTouroku_Kouriten
             {
                 if (!txtChangeDate.IsErrorOccurs)
                 {
-                    if (ErrorCheck(PanelTitle))
+                    if (cboMode.SelectedValue.ToString() == "2")
                     {
-                        if (cboMode.SelectedValue.ToString() == "2")
+                        EnablePanel();
+                    }
+                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                        if (cboMode.SelectedValue.ToString() == "3")
                         {
-                            EnablePanel();
-                        }
-                        else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
-                        {
-                            cf.DisablePanel(PanelTitle);
-                            if (cboMode.SelectedValue.ToString() == "3")
-                            {
-                                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
-                                btnF12.Focus();
-                            }
+                            Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                            btnF12.Focus();
                         }
                     }
                 }

@@ -26,6 +26,8 @@ namespace Shinyoh_Controls
 
         public int Memory_Row_Count = 0;
 
+        public bool IsLastKeyEnter = false;
+
         public void SetGridDesign()
         {
             this.EnableHeadersVisualStyles = false;
@@ -195,6 +197,7 @@ namespace Shinyoh_Controls
 
         protected override bool ProcessCmdKey(ref System.Windows.Forms.Message msg, System.Windows.Forms.Keys keyData)
         {
+            IsLastKeyEnter = false;
             if (keyData == Keys.Enter)
             {
                 if(EditCol == false)
@@ -206,6 +209,7 @@ namespace Shinyoh_Controls
                 }
                 else
                 {
+                    IsLastKeyEnter = true;
                     this.EndEdit();
                 }
                 

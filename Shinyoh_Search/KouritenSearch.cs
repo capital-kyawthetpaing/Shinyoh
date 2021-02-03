@@ -35,7 +35,7 @@ namespace Shinyoh_Search
             rdo_Date.Focus();
             gv_Kouriten.UseRowNo(true);
             gv_Kouriten.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DataGridviewBind();
+            //DataGridviewBind();
             txtCD2.E106Check(true, txtCD1, txtCD2);
             txtTokuisakiCD2.E106Check(true, txtTokuisakiCD1, txtTokuisakiCD2);
 
@@ -45,6 +45,7 @@ namespace Shinyoh_Search
             Access_DB_Object(Access_Kouriten_obj);
             txtTokuisakiCD1.Text = tokuisakiCD;
             txtTokuisakiCD2.Text = tokuisakiCD;
+            DataGridviewBind();
         }
         private void btnKouriten_F11_Click(object sender, EventArgs e)
         {

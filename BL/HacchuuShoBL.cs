@@ -41,9 +41,10 @@ namespace BL
             parameters[8] = new SqlParameter("@YearTerm", SqlDbType.VarChar) { Value = hse.YearTerm };
             parameters[9] = new SqlParameter("@SS", SqlDbType.VarChar) { Value = hse.SS };
             parameters[10] = new SqlParameter("@FW", SqlDbType.VarChar) { Value = hse.FW };
-            parameters[11] = new SqlParameter("@Get_HacchuuSho_ExportData", SqlDbType.TinyInt) { Value = hse.Rdo_Type };
+            parameters[11] = new SqlParameter("@Rdo_Type", SqlDbType.TinyInt) { Value = hse.Rdo_Type };
 
-            return ckmdl.SelectDatatable("WK_HacchuuMeisai", GetConnectionString(), parameters);
+            DataTable dt= ckmdl.SelectDatatable("Get_HacchuuSho_ExportData", GetConnectionString(), parameters);
+            return dt;
         }
     }
 }

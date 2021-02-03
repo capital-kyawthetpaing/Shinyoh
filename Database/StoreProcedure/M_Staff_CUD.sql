@@ -26,15 +26,15 @@ CREATE PROCEDURE [dbo].[M_Staff_CUD]
 	@LeaveDate              date,
 	@Passward               varchar(10),
 	@Remarks                varchar(80),
-	@UsedFlg			    tinyint = 0,
+	--@UsedFlg			    tinyint = 0,
 	@InsertOperator         varchar(10),	
 	@UpdateOperator         varchar(10),	
 	@Mode				    varchar(10),
 	@Program			    varchar(100),
     @PC					    varchar(30),
-    @KeyItem			    varchar(100),
-	@YuubinNO1				varchar(3),
-	@YuubinNO2				varchar(4)
+    @KeyItem			    varchar(100)
+	--@YuubinNO1				varchar(3),
+	--@YuubinNO2				varchar(4)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -53,8 +53,8 @@ BEGIN
            ,[StaffName]
            ,[KanaName]
            ,[KensakuHyouziJun]
-		   ,[YuubinNO1]
-		   ,[YuubinNO2]
+		   --,[YuubinNO1]
+		   --,[YuubinNO2]
            ,[MenuCD]
            ,[AuthorizationsCD]
 		   ,[PositionCD]
@@ -73,8 +73,8 @@ BEGIN
            ,@StaffName
            ,@KanaName
            ,@KensakuHyouziJun
-		   ,@YuubinNO1
-		   ,@YuubinNO2
+		   --,@YuubinNO1
+		   --,@YuubinNO2
            ,@MenuCD
            ,@AuthorizationsCD 
 		   ,@PositionCD 
@@ -82,7 +82,7 @@ BEGIN
 		   ,@LeaveDate 
 		   ,@Passward 
 		   ,@Remarks
-		   ,@UsedFlg
+		   ,0
 		   ,@InsertOperator
 		   ,@currentDate 
 		   ,@UpdateOperator
@@ -96,8 +96,6 @@ BEGIN
 						StaffName = @StaffName,
 						KanaName = @KanaName,
 						KensakuHyouziJun = @KensakuHyouziJun,
-						YuubinNO1 = @YuubinNO1,
-						YuubinNO2 = @YuubinNO2,
 						MenuCD = @MenuCD,
 						AuthorizationsCD = @AuthorizationsCD, 
 						PositionCD = @PositionCD,

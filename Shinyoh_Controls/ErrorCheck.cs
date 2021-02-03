@@ -136,6 +136,7 @@ namespace Shinyoh_Controls
                 if (result.Equals("E101"))
                 {
                     ShowErrorMessage("E101");
+                    sTextBox.Text = string.Empty;
                     sTextBox.Focus();
                     return (true,rDt);
                 }
@@ -331,6 +332,12 @@ namespace Shinyoh_Controls
                         rDt = shouhin.Shouhin_Check(sTextBox.ctrlE132_1.Text, sTextBox.ctrlE132_2.Text, sTextBox.ctrlE132_3.Text, sTextBox.ctrlE132_4.Text, string.Empty);
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                }
+                if (result.Equals("E132"))
+                {
+                    ShowErrorMessage("E132");
+                    sTextBox.Focus();
+                    return (true, rDt);
                 }
             }
             if (sTextBox.E133)

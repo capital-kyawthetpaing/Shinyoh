@@ -85,8 +85,8 @@ namespace MasterTouroku_Shouhin
                     UI_ErrorCheck();
                     txtCopyProduct.Enabled = true;
                     txtCopyChangeDate.Enabled = true;
-                    txtColor.E101Check(false, "M_Shouhin", txtColor, null, null);
-                    txtSize.E101Check(false, "M_Shouhin", txtSize, null, null);
+                    txtColor.E101Check(true, "M_Shouhin", txtColor, null, null);
+                    txtSize.E101Check(true, "M_Shouhin", txtSize, null, null);
                     txtChangeDate.E132MultiCheck(true, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
                     txtChangeDate.E133MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);
                     txtChangeDate.E270MultiCheck(false, "M_Shouhin", txtProduct, txtColor, txtSize, txtChangeDate);

@@ -71,7 +71,7 @@ namespace BL
         public string M_Staff_CUD(MasterTourokuStaff obj)
         {
             CKMDL ckmdl = new CKMDL();
-            obj.Sqlprms = new SqlParameter[21];
+            obj.Sqlprms = new SqlParameter[18];
             obj.Sqlprms[0] = new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = obj.StaffCD };
             obj.Sqlprms[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate };
             obj.Sqlprms[2] = new SqlParameter("@StaffName", SqlDbType.VarChar) { Value = obj.StaffName };
@@ -84,15 +84,15 @@ namespace BL
             obj.Sqlprms[9] = new SqlParameter("@LeaveDate", SqlDbType.VarChar) { Value = obj.LeaveDate };
             obj.Sqlprms[10] = new SqlParameter("@Passward", SqlDbType.VarChar) { Value = obj.Passward };
             obj.Sqlprms[11] = new SqlParameter("@Remarks", SqlDbType.VarChar) { Value = obj.Remarks };
-            obj.Sqlprms[12] = new SqlParameter("@UsedFlg", SqlDbType.VarChar) { Value = obj.UsedFlg };
-            obj.Sqlprms[13] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = obj.InsertOperator };
-            obj.Sqlprms[14] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = obj.UpdateOperator };
-            obj.Sqlprms[15] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = obj.Mode };
-            obj.Sqlprms[16] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = obj.ProgramID };
-            obj.Sqlprms[17] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
-            obj.Sqlprms[18] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
-            obj.Sqlprms[19] = new SqlParameter("@YuubinNO1", SqlDbType.VarChar) { Value = obj.YuubinNO1 };
-            obj.Sqlprms[20] = new SqlParameter("@YuubinNO2", SqlDbType.VarChar) { Value = obj.YuubinNO2};
+            //obj.Sqlprms[12] = new SqlParameter("@UsedFlg", SqlDbType.VarChar) { Value = obj.UsedFlg };
+            obj.Sqlprms[12] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = obj.InsertOperator };
+            obj.Sqlprms[13] = new SqlParameter("@UpdateOperator", SqlDbType.VarChar) { Value = obj.UpdateOperator };
+            obj.Sqlprms[14] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = obj.Mode };
+            obj.Sqlprms[15] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = obj.ProgramID };
+            obj.Sqlprms[16] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
+            obj.Sqlprms[17] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = obj.KeyItem };
+            //obj.Sqlprms[19] = new SqlParameter("@YuubinNO1", SqlDbType.VarChar) { Value = obj.YuubinNO1 };
+            //obj.Sqlprms[20] = new SqlParameter("@YuubinNO2", SqlDbType.VarChar) { Value = obj.YuubinNO2};
 
             return ckmdl.InsertUpdateDeleteData("M_Staff_CUD", GetConnectionString(), obj.Sqlprms);
         }
