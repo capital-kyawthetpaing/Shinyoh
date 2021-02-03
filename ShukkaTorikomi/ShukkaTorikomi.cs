@@ -505,7 +505,6 @@ namespace ShukkaTorikomi
 
         public void Column_Remove_Datatable(DataTable remove_dt)
         {
-            
             remove_dt.Columns.Remove("DenpyouDate");
             remove_dt.Columns.Remove("ShouhinCD");
             remove_dt.Columns.Remove("ColorRyakuName");
@@ -515,6 +514,7 @@ namespace ShukkaTorikomi
             remove_dt.Columns.Remove("UnitPrice");
             remove_dt.Columns.Remove("SellingPrice");
             remove_dt.Columns.Remove("ShukkaSiziNO");
+            remove_dt.Columns.Remove("ShukkaGyouNO");
         }
 
 
