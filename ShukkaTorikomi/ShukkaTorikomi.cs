@@ -404,7 +404,7 @@ namespace ShukkaTorikomi
                                 }
                             }
                         }
-
+                      
                         Column_Remove_Datatable(dt_Main);
 
                         Xml_Main = cf.DataTableToXml(dt_Main);
@@ -514,7 +514,9 @@ namespace ShukkaTorikomi
             remove_dt.Columns.Remove("UnitPrice");
             remove_dt.Columns.Remove("SellingPrice");
             remove_dt.Columns.Remove("ShukkaSiziNO");
-            remove_dt.Columns.Remove("ShukkaGyouNO");
+            //remove_dt.Columns.Remove("ShukkaGyouNO");
+
+
         }
 
 
