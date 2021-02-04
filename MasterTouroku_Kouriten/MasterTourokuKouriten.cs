@@ -313,11 +313,15 @@ namespace MasterTouroku_Kouriten
             obj.KouritenName = txtKouritenName.Text;
             obj.KouritenRyakuName = txtKouritenRyakuName.Text;
             obj.KanaName = txtKanaName.Text;
-            if (rdo_AliasKBN1.Checked)
+            if (rdo_AliasKBN1.Checked==true)
             {
                 obj.AliasKBN = "1";
             }
-            else obj.AliasKBN = "2";
+            else if(rdo_AliasKBN2.Checked==true)
+            {
+                obj.AliasKBN = "2";
+            }
+            //else obj.AliasKBN = "2";
             obj.YuubinNO1 = txtYubin1.Text;
             obj.YuubinNO2 = txtYubin2.Text;
             obj.Juusho1 = txtAddress1.Text;
@@ -421,12 +425,12 @@ namespace MasterTouroku_Kouriten
                 if (dt.Rows[0]["AliasKBN"].ToString() == "1")
                 {
                     rdo_AliasKBN1.Checked = true;
-                    txtKanaName.NextControlName = rdo_AliasKBN1.Name;
+                    //txtKanaName.NextControlName = rdo_AliasKBN1.Name;
                 }
                 else
                 {
                     rdo_AliasKBN2.Checked = true;
-                    txtKanaName.NextControlName = rdo_AliasKBN2.Name;
+                    //txtKanaName.NextControlName = rdo_AliasKBN2.Name;
                 }
                 txtYubin1.Text = dt.Rows[0]["YuubinNO1"].ToString();
                 txtYubin2.Text = dt.Rows[0]["YuubinNO2"].ToString();

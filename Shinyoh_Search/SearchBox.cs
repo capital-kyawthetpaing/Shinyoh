@@ -209,18 +209,20 @@ namespace Shinyoh_Search
                         shsearch.ShowDialog();
                         if(this.Name == "txtCopyProduct")
                         {
-                            CD = shsearch.shouhinCD;
+                            //CD = shsearch.shouhinCD;
+                            CD = shsearch.hinbanCD;
                             TxtBox.Text = shsearch.colorNO;
                             TxtBox.Focus();
                         }
                         else
                         {
-                            CD = shsearch.shouhinCD;
-                            colorNO = shsearch.colorNO;
-                            name = shsearch.colorName;
-                            sizeNO = shsearch.sizeNO;
-                            colName = shsearch.sizeName;
-                            CDate = shsearch.changeDate;
+                                //CD = shsearch.shouhinCD;ses
+                                CD = shsearch.hinbanCD;
+                                colorNO = shsearch.colorNO;
+                                name = shsearch.colorName;
+                                sizeNO = shsearch.sizeNO;
+                                colName = shsearch.sizeName;
+                                CDate = shsearch.changeDate;
                         }
                         break;
                     case Entity.SearchType.ScType.ArrivalNo:
