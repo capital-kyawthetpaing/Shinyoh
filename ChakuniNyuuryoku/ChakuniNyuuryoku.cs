@@ -76,6 +76,8 @@ namespace ChakuniNyuuryoku
             txtSiiresaki.ChangeDate = txtArrivalDate;
             txtSiiresaki.lblName = lblSiiresaki;
             txtStaffCD.ChangeDate = txtArrivalDate;
+            txtShouhinCD.ChangeDate = txtArrivalDate;
+
             base_Entity = _GetBaseData();
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -239,9 +241,9 @@ namespace ChakuniNyuuryoku
                 txtJANCD.Clear();
                 sbBrand.Clear();
                 lblBrandName.Text = string.Empty;
-                txtColor.Clear();
+                txtColorNo.Clear();
                 txtYearTerm.Clear();
-                txtSize.Clear();
+                txtSizeNo.Clear();
                 txtScheduled.Focus();
                 gvChakuniNyuuryoku.ClearSelection();
                 gvChakuniNyuuryoku.DataSource = dtClear;
@@ -383,8 +385,8 @@ namespace ChakuniNyuuryoku
             dr["YearTerm"] = txtYearTerm.Text;
             dr["SeasonSS"] = chkSS.Checked ? "1" : "0";
             dr["SeasonFW"] = chkFW.Checked ? "1" : "0";
-            dr["ColorNO"] = string.IsNullOrEmpty(txtColor.Text) ? null : txtColor.Text;
-            dr["SizeNO"] = string.IsNullOrEmpty(txtSize.Text) ? null : txtSize.Text;
+            dr["ColorNO"] = string.IsNullOrEmpty(txtColorNo.Text) ? null : txtColorNo.Text;
+            dr["SizeNO"] = string.IsNullOrEmpty(txtSizeNo.Text) ? null : txtSizeNo.Text;
             dr["Operator"] = base_Entity.OperatorCD;
             dr["PC"] = base_Entity.PC;
             dr["ProgramID"] = base_Entity.ProgramID;
@@ -429,8 +431,8 @@ namespace ChakuniNyuuryoku
                 ShouhinName = txtShouhinName.Text,
                 JANCD = txtJANCD.Text,
                 BrandCD = sbBrand.Text,
-                ColorNO = txtColor.Text,
-                SizeNO = txtSize.Text,
+                ColorNO = txtColorNo.Text,
+                SizeNO = txtSizeNo.Text,
                 KanriNO = txtControlNo.Text,
                 SoukoCD = txtSouko.Text,
                 YearTerm = txtYearTerm.Text,
@@ -486,7 +488,7 @@ namespace ChakuniNyuuryoku
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtScheduled.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
-                 string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColor.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSize.Text))
+                 string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
             {
                 bbl.ShowMessage("E111");
                 txtScheduled.Focus();
@@ -594,9 +596,9 @@ namespace ChakuniNyuuryoku
                 txtJANCD.Clear();
                 sbBrand.Clear();
                 lblBrandName.Text = string.Empty;
-                txtColor.Clear();
+                txtColorNo.Clear();
                 txtYearTerm.Clear();
-                txtSize.Clear();
+                txtSizeNo.Clear();
                 txtScheduled.Focus();
                 gvChakuniNyuuryoku.ClearSelection();
                 gvChakuniNyuuryoku.DataSource = dtClear;
@@ -653,7 +655,7 @@ namespace ChakuniNyuuryoku
         private void txtSize_KeyDown(object sender, KeyEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtScheduled.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
-                 string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColor.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSize.Text))
+                 string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
             {
                 bbl.ShowMessage("E111");
                 txtScheduled.Focus();
