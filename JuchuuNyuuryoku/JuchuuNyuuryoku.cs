@@ -945,7 +945,6 @@ namespace JuchuuNyuuryoku
 
         private void F11_Gridview_Bind()
         {
-            txtBrandCD.Focus();
             for (int t = 0; t < gv_JuchuuNyuuryoku.RowCount; t++)
             {
 
@@ -1018,6 +1017,20 @@ namespace JuchuuNyuuryoku
                 }
             }
             gv_JuchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
+            Focus_Clear();
+        }
+        private void Focus_Clear()
+        {
+            txtBrandCD.Focus();
+            txtBrandCD.Text = string.Empty;
+            txtShouhinCD.Text = string.Empty;
+            txtJANCD.Text = string.Empty;
+            txtShouhinName.Text = string.Empty;
+            txtYearTerm.Text = string.Empty;
+            chk_SS.Checked = false;
+            chk_FW.Checked = false;
+            txtColorNo.Text = string.Empty; ;
+            txtSizeNo.Text = string.Empty;
         }
 
         private void btnNameF8_Click(object sender, EventArgs e)

@@ -709,9 +709,6 @@ namespace HacchuuNyuuryoku
 
         private void F11_Gridview_Bind()
         {
-            txtBrandCD.Focus();
-
-
             for (int t = 0; t < gv_HacchuuNyuuryoku.RowCount; t++)
             {
 
@@ -790,6 +787,7 @@ namespace HacchuuNyuuryoku
             }
             gv_HacchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
 
+            Focus_Clear();
             #region
             //comment nwe mar win logic difference
 
@@ -843,6 +841,20 @@ namespace HacchuuNyuuryoku
             //    }
             //}
             #endregion
+        }
+
+        private void Focus_Clear()
+        {
+            txtBrandCD.Focus();
+            txtBrandCD.Text = string.Empty;
+            txtShouhinCD.Text = string.Empty;
+            txtJANCD.Text = string.Empty;
+            txtShouhinName.Text = string.Empty;
+            txtYearTerm.Text = string.Empty;
+            chk_SS.Checked = false;
+            chk_FW.Checked = false;
+            txtColorNo.Text = string.Empty; ;
+            txtSizeNo.Text = string.Empty;
         }
 
         private void btnNameF8_Click(object sender, EventArgs e)
