@@ -962,9 +962,7 @@ namespace JuchuuNyuuryoku
                 string color = row.Cells["colColorNO"].Value.ToString();
                 string size = row.Cells["colSizeNO"].Value.ToString();
 
-                
                 string chk = string.Empty;
-                DataRow[] test_row = F8_dt1.Select("Free=1");
                 DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='" + color + "' and SizeNO='" + size + "'");// original data
                 DataRow existDr1 = null;
                 if (chk_value != "False")
@@ -1204,7 +1202,7 @@ namespace JuchuuNyuuryoku
                 for (int i = 0; i < dt_Main.Rows.Count; i++)
                 {
                     DataTable hacchuu_dt = new DataTable();
-                    if (dt_Main.Rows[i]["Free"].ToString() != "1")
+                    if (dt_Main.Rows[i]["Free"].ToString() != "1" && dt_Main.Rows[i]["HacchuuNO"].ToString() == string.Empty)
                     {
                         hacchuu_dt = obj_bl.GetJuchuuNO("2", txtJuchuuDate.Text, "0");
                         dt_Main.Rows[i]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
@@ -1226,7 +1224,7 @@ namespace JuchuuNyuuryoku
                     {
                         for (int j = 0; j < select_dr.Length; j++)
                         {
-                            if (hacchuu_dt.Rows.Count > 0 && select_dr[j]["Free"].ToString() != "1")
+                            if (hacchuu_dt.Rows.Count > 0 && select_dr[j]["Free"].ToString() != "1" && select_dr[j]["HacchuuNO"].ToString() == string.Empty)
                             {
                                 select_dr[j]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
                                 select_dr[j]["HacchuuGyouNO"] = j + 1;
@@ -1696,7 +1694,7 @@ namespace JuchuuNyuuryoku
             {
                 DataTable souko_dt = new DataTable();
                 string soukoCD = gv_JuchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].EditedFormattedValue.ToString().Trim();
-                if (JuchuuSuu != "0")
+                if (JuchuuSuu != "0" || string.IsNullOrEmpty(soukoCD))
                 {
                     if (string.IsNullOrEmpty(soukoCD))
                     {

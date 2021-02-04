@@ -653,7 +653,7 @@ namespace HacchuuNyuuryoku
             {
                 DataTable souko_dt = new DataTable();
                 string soukoCD = gv_HacchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].EditedFormattedValue.ToString().Trim();
-                if (HacchuuSuu != "0")
+                if (HacchuuSuu != "0" || string.IsNullOrEmpty(soukoCD))
                 {
                     if (string.IsNullOrEmpty(soukoCD))
                     {
