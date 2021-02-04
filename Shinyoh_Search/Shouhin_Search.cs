@@ -100,7 +100,7 @@ namespace Shinyoh_Search
             else
                 shouhin.DisplayTarget = 1;
             shouhin.RevisionDate = txtChangeDate.Text;
-            shouhin.Product = txtHinbanCD.Text;
+            shouhin.HinbanCD = txtHinbanCD.Text;
             shouhin.HinbanCD1 = txtHinbanCD1.Text;
             shouhin.JANCD = txtJANCD.Text;
             shouhin.JANCD1 = txtJANCD1.Text;
