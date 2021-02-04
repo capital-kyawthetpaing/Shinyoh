@@ -962,8 +962,14 @@ namespace JuchuuNyuuryoku
                 string color = row.Cells["colColorNO"].Value.ToString();
                 string size = row.Cells["colSizeNO"].Value.ToString();
 
-                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='"+ color + "' and SizeNO='"+ size + "'");// original data
-                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  DJMSenpouHacchuuNO='" + senpouHacchuuNO + "' and SiiresakiCD='" + siiresakiCD + "' and SoukoCD='" + soukoCD + "'").SingleOrDefault();
+                
+                string chk = string.Empty;
+                DataRow[] test_row = F8_dt1.Select("Free=1");
+                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='" + color + "' and SizeNO='" + size + "'");// original data
+                DataRow existDr1 = null;
+                if (chk_value != "False")
+                    chk = "1";
+                    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "'and ISNULL([Free],'')='"+ chk + "' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     if (select_dr1[0][8].ToString() == "0")
@@ -1119,38 +1125,112 @@ namespace JuchuuNyuuryoku
             string header_XML = cf.DataTableToXml(dt);
 
             F8_dt1.Columns.Remove("SiiresakiDetail");
-            DataRow[] F8_dr = F8_dt1.Select("Free =" + 1); 
+            DataRow[] F8_dr = F8_dt1.Select("Free =" + 1);
+            DataTable dt_Free = F8_dt1.Clone();
             foreach (DataRow row in F8_dr)
+            {
+                DataRow dr_Row = dt_Free.NewRow();
+                dr_Row.ItemArray = row.ItemArray.Clone() as object[];
+                dt_Free.Rows.Add(dr_Row);
                 F8_dt1.Rows.Remove(row);
-
+            }
             DataTable dt_Main = new DataTable();
             if (F8_dt1.Rows.Count > 0)
+            {
                 dt_Main = F8_dt1.AsEnumerable()
                           .GroupBy(r => new { Col1 = r["SiiresakiCD"], Col2 = r["SiiresakiName"], Col3 = r["SoukoCD"] })
                           .Select(g => g.OrderBy(r => r["SiiresakiCD"]).First())
                           .CopyToDataTable();
+                if(dt_Free.Rows.Count>0)
+                {
+                    foreach (DataRow row in dt_Free.Rows)
+                    {
+                        DataRow main_Row = dt_Main.NewRow();
+                        main_Row.ItemArray = row.ItemArray.Clone() as object[];
+                        dt_Main.Rows.Add(main_Row);
+
+                        DataRow detail_Row = F8_dt1.NewRow();
+                        detail_Row.ItemArray = row.ItemArray.Clone() as object[];
+                        F8_dt1.Rows.Add(detail_Row);
+                    }
+                }
+            }
             else return (string.Empty, string.Empty, string.Empty);
 
            if(cboMode.SelectedValue.ToString()=="1")
             {
                 for (int i = 0; i < dt_Main.Rows.Count; i++)
                 {
-                    DataTable hacchuu_dt = obj_bl.GetJuchuuNO("2", txtJuchuuDate.Text, "0");
+                    DataTable hacchuu_dt =new DataTable();
                     DataTable Juchuu_dt = obj_bl.GetJuchuuNO("1", txtJuchuuDate.Text, "0");
-                    dt_Main.Rows[i]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
+                    if (dt_Main.Rows[i]["Free"].ToString() != "1")
+                    {
+                        hacchuu_dt = obj_bl.GetJuchuuNO("2", txtJuchuuDate.Text, "0");
+                        dt_Main.Rows[i]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
+                    }
+                    //else hacchuu_dt.Rows[0]["Column1"] = string.Empty;
+
                     dt_Main.Rows[i]["JuchuuNO"] = Juchuu_dt.Rows[0]["Column1"];
                     string siiresakiCD = dt_Main.Rows[i]["SiiresakiCD"].ToString();
                     string name = dt_Main.Rows[i]["SiiresakiName"].ToString();
                     string soukoCD = dt_Main.Rows[i]["SoukoCD"].ToString();
-                    DataRow[] select_dr = F8_dt1.Select("SiiresakiCD = '" + siiresakiCD + "'and SiiresakiName='" + name + "' and SoukoCD='" + soukoCD + "'");
+                    DataRow[] select_dr = null;
+                    string NULL_Check = string.Empty;
+                    if (string.IsNullOrEmpty(siiresakiCD))
+                        NULL_Check = " and [SiiresakiCD] IS NULL ";
+                    if (string.IsNullOrEmpty(name))
+                        NULL_Check += " and [SiiresakiName] IS NULL ";
+                    if (!string.IsNullOrEmpty(NULL_Check))
+                        select_dr = F8_dt1.Select("SoukoCD ='" + soukoCD + "'" + NULL_Check + "");
+                    else
+                       select_dr = F8_dt1.Select("SiiresakiCD = '" + siiresakiCD + "'and SiiresakiName='" + name + "' and SoukoCD='" + soukoCD + "'");
                     if (select_dr.Length > 0)
                     {
                         for (int j = 0; j < select_dr.Length; j++)
                         {
-                            select_dr[j]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
-                            select_dr[j]["HacchuuGyouNO"] = j + 1;
+                            if (hacchuu_dt.Rows.Count > 0 && select_dr[j]["Free"].ToString() != "1")
+                            {
+                                select_dr[j]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
+                                select_dr[j]["HacchuuGyouNO"] = j + 1;
+                            } 
                             select_dr[j]["JuchuuNO"] = Juchuu_dt.Rows[0]["Column1"];
                             select_dr[j]["JuchuuGyouNO"] = j + 1;
+                        }
+                    }
+                }
+            }
+           if(cboMode.SelectedValue.ToString()=="2")
+            {
+                for (int i = 0; i < dt_Main.Rows.Count; i++)
+                {
+                    DataTable hacchuu_dt = new DataTable();
+                    if (dt_Main.Rows[i]["Free"].ToString() != "1")
+                    {
+                        hacchuu_dt = obj_bl.GetJuchuuNO("2", txtJuchuuDate.Text, "0");
+                        dt_Main.Rows[i]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
+                    }
+                    string siiresakiCD = dt_Main.Rows[i]["SiiresakiCD"].ToString();
+                    string name = dt_Main.Rows[i]["SiiresakiName"].ToString();
+                    string soukoCD = dt_Main.Rows[i]["SoukoCD"].ToString();
+                    DataRow[] select_dr = null;
+                    string NULL_Check = string.Empty;
+                    if (string.IsNullOrEmpty(siiresakiCD))
+                        NULL_Check = " and [SiiresakiCD] IS NULL ";
+                    if (string.IsNullOrEmpty(name))
+                        NULL_Check += " and [SiiresakiName] IS NULL ";
+                    if (!string.IsNullOrEmpty(NULL_Check))
+                        select_dr = F8_dt1.Select("SoukoCD ='" + soukoCD + "'" + NULL_Check + "");
+                    else
+                        select_dr = F8_dt1.Select("SiiresakiCD = '" + siiresakiCD + "'and SiiresakiName='" + name + "' and SoukoCD='" + soukoCD + "'");
+                    if (select_dr.Length > 0)
+                    {
+                        for (int j = 0; j < select_dr.Length; j++)
+                        {
+                            if (hacchuu_dt.Rows.Count > 0 && select_dr[j]["Free"].ToString() != "1")
+                            {
+                                select_dr[j]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
+                                select_dr[j]["HacchuuGyouNO"] = j + 1;
+                            }
                         }
                     }
                 }
