@@ -1454,7 +1454,6 @@ namespace JuchuuNyuuryoku
                 if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
                 // gv_JuchuuNyuuryoku.BeginEdit(true);
                 gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
-
             }
 
 

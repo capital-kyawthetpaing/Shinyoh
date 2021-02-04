@@ -700,8 +700,11 @@ namespace HacchuuNyuuryoku
 
         private void gv_HacchuuNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
-                gv_HacchuuNyuuryoku.CurrentCell = gv_HacchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            if (gv_HacchuuNyuuryoku.IsLastKeyEnter)
+            {
+                if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
+                    gv_HacchuuNyuuryoku.CurrentCell = gv_HacchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
         }
 
         private void F11_Gridview_Bind()
