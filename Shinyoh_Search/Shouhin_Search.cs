@@ -16,6 +16,7 @@ namespace Shinyoh_Search
     public partial class Shouhin_Search : SearchBase
     {
         public string shouhinCD = string.Empty;
+        public string hinbanCD = string.Empty;
         public string colorNO = string.Empty;
         public string colorName = string.Empty;
         public string sizeNO = string.Empty;
@@ -99,7 +100,7 @@ namespace Shinyoh_Search
             else
                 shouhin.DisplayTarget = 1;
             shouhin.RevisionDate = txtChangeDate.Text;
-            shouhin.Product = txtHinbanCD.Text;
+            shouhin.HinbanCD = txtHinbanCD.Text;
             shouhin.HinbanCD1 = txtHinbanCD1.Text;
             shouhin.JANCD = txtJANCD.Text;
             shouhin.JANCD1 = txtJANCD1.Text;
@@ -144,6 +145,7 @@ namespace Shinyoh_Search
             {
                 DataGridViewRow row = gvrow;
                 shouhinCD = row.Cells["ShouhinCD"].Value.ToString();
+                hinbanCD = row.Cells["品番"].Value.ToString();
                 colorNO = row.Cells["ColorNO"].Value.ToString();
                 colorName = row.Cells["ColorName"].Value.ToString();
                 sizeNO = row.Cells["SizeNO"].Value.ToString();

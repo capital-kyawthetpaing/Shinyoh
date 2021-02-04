@@ -129,7 +129,7 @@ namespace BL
             shouhin.Sqlprms = new SqlParameter[17];
             shouhin.Sqlprms[0] = new SqlParameter("@DisplayTarget", SqlDbType.Int) { Value = shouhin.DisplayTarget };
             shouhin.Sqlprms[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = shouhin.RevisionDate };
-            shouhin.Sqlprms[2] = new SqlParameter("@HinbanCD", SqlDbType.VarChar) { Value = shouhin.Product };
+            shouhin.Sqlprms[2] = new SqlParameter("@HinbanCD", SqlDbType.VarChar) { Value = shouhin.HinbanCD };
             shouhin.Sqlprms[3] = new SqlParameter("@HinbanCD1", SqlDbType.VarChar) { Value = shouhin.HinbanCD1 };
             shouhin.Sqlprms[4] = new SqlParameter("@JANCD", SqlDbType.VarChar) { Value = shouhin.JANCD };
             shouhin.Sqlprms[5] = new SqlParameter("@JANCD1", SqlDbType.VarChar) { Value = shouhin.JANCD1 };

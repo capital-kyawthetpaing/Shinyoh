@@ -49,7 +49,6 @@ namespace MasterTouroku_Shouhin
 
             ChangeMode(Mode.New);
             base_entity = _GetBaseData();
-
             txtProduct.TxtBox = txtColor;
             txtProduct.TxtBox1 = txtSize;
             txtProduct.lblName = lblColorNO;

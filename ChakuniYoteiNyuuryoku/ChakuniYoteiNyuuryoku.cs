@@ -69,6 +69,7 @@ namespace ChakuniYoteiNyuuryoku
             txtSiiresaki.ChangeDate = txtDate;
             txtStaffCD.ChangeDate = txtDate;
             txtChakuniYoteiNO.ChangeDate = txtDate;
+            txtShouhinCD.ChangeDate = txtDate;
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -163,7 +164,7 @@ namespace ChakuniYoteiNyuuryoku
             if (tagID == "10")
             {
                 if (string.IsNullOrWhiteSpace(txtBrandCD.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) &&
-                string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtColor.Text) && string.IsNullOrWhiteSpace(txtDateFrom.Text) && string.IsNullOrWhiteSpace(txtDateTo.Text) && string.IsNullOrWhiteSpace(txtSize.Text))
+                string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtDateFrom.Text) && string.IsNullOrWhiteSpace(txtDateTo.Text) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
                 {
                     bbl.ShowMessage("E111");
                     txtBrandCD.Focus();
@@ -315,10 +316,10 @@ namespace ChakuniYoteiNyuuryoku
             dr["YearTerm"] = string.IsNullOrEmpty(txtYearTerm.Text) ? null : txtYearTerm.Text;
             dr["SeasonSS"] = chkSS.Checked ? "1" : "0";
             dr["SeasonFW"] = chkFW.Checked ? "1" : "0";
-            dr["ColorNO"] = string.IsNullOrEmpty(txtColor.Text) ? null : txtColor.Text;
+            dr["ColorNO"] = string.IsNullOrEmpty(txtColorNo.Text) ? null : txtColorNo.Text;
             dr["ChakuniYoteiDateFrom"] = string.IsNullOrEmpty(txtDateFrom.Text) ? null : txtDateFrom.Text;
             dr["ChakuniYoteiDateTo"] = string.IsNullOrEmpty(txtDateTo.Text) ? null : txtDateTo.Text;
-            dr["SizeNO"] = string.IsNullOrEmpty(txtSize.Text) ? null : txtSize.Text;
+            dr["SizeNO"] = string.IsNullOrEmpty(txtSizeNo.Text) ? null : txtSizeNo.Text;
 
             dr["Operator"] = base_Entity.OperatorCD;
             dr["PC"] = base_Entity.PC;
@@ -432,8 +433,8 @@ namespace ChakuniYoteiNyuuryoku
                 YearTerm = txtYearTerm.Text,
                 SeasonSS = chkSS.Checked ? "1" : "0",
                 SeasonFW = chkFW.Checked ? "1" : "0",
-                ColorNO = txtColor.Text,
-                SizeNO = txtSize.Text,
+                ColorNO = txtColorNo.Text,
+                SizeNO = txtSizeNo.Text,
                 SoukoCD = txtSouko.Text,
                 ChakuniYoteiDateFrom = txtDateFrom.Text,
                 ChakuniYoteiDateTo = txtDateTo.Text,
@@ -518,7 +519,7 @@ namespace ChakuniYoteiNyuuryoku
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtBrandCD.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && 
-                string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtColor.Text) && string.IsNullOrWhiteSpace(txtDateFrom.Text) && string.IsNullOrWhiteSpace(txtDateTo.Text)  && string.IsNullOrWhiteSpace(txtSize.Text))
+                string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtDateFrom.Text) && string.IsNullOrWhiteSpace(txtDateTo.Text)  && string.IsNullOrWhiteSpace(txtSizeNo.Text))
             {
                 bbl.ShowMessage("E111");
                 txtBrandCD.Focus();
@@ -554,10 +555,10 @@ namespace ChakuniYoteiNyuuryoku
             txtShouhinName.Clear();
             txtJANCD.Clear();
             txtYearTerm.Clear();
-            txtColor.Clear();
+            txtColorNo.Clear();
             txtDateFrom.Clear();
             txtDateTo.Clear();
-            txtSize.Clear();
+            txtSizeNo.Clear();
             txtBrandCD.Focus();
         }
         //private void ChakuniYoteiNyuuryokuSelect(DataTable dt)
