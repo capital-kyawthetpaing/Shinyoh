@@ -1706,7 +1706,7 @@ namespace JuchuuNyuuryoku
             {
                 DataTable souko_dt = new DataTable();
                 string soukoCD = gv_JuchuuNyuuryoku.Rows[row].Cells["colSoukoCD"].EditedFormattedValue.ToString().Trim();
-                if (JuchuuSuu != "0" || string.IsNullOrEmpty(soukoCD))
+                if (JuchuuSuu != "0")
                 {
                     if (string.IsNullOrEmpty(soukoCD))
                     {
