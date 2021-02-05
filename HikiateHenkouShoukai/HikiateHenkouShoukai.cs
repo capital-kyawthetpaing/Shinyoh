@@ -103,8 +103,14 @@ namespace HikiateHenkouShoukai
             }
             if (tagID == "10")
             {
-                if(ErrorCheck(PanelDetail))
+                gvMainDetail.ActionType = "F10";     //Assigned value before F10 button click
+                gvAggregationDetails.ActionType = "F10";
+                gvFreeInventoryDetails.ActionType = "F10";
+                if (ErrorCheck(PanelDetail))
                     Display_Data();
+                gvMainDetail.ActionType = string.Empty;     //Clear assigned value before F12 button click
+                gvAggregationDetails.ActionType = string.Empty;
+                gvFreeInventoryDetails.ActionType = string.Empty;
             }
             if (tagID == "11")
             {
