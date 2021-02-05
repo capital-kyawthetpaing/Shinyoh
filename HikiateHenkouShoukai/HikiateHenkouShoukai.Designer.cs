@@ -129,8 +129,8 @@
             this.col_Detail_KanriNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Detail_NyuukoDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Detail_JuchuuDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_KibouNouki = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Detail_JANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_KibouNouki = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvFreeInventoryDetails)).BeginInit();
@@ -741,8 +741,8 @@
             this.col_Detail_KanriNO,
             this.col_Detail_NyuukoDate,
             this.col_Detail_JuchuuDate,
-            this.col_Detail_KibouNouki,
-            this.col_Detail_JANCD});
+            this.col_Detail_JANCD,
+            this.col_Detail_KibouNouki});
             this.gvMainDetail.IsErrorOccurs = false;
             this.gvMainDetail.ISRowColumn = null;
             this.gvMainDetail.Location = new System.Drawing.Point(22, 245);
@@ -1632,18 +1632,18 @@
             this.col_Detail_JuchuuDate.HeaderText = "受注日";
             this.col_Detail_JuchuuDate.Name = "col_Detail_JuchuuDate";
             // 
-            // col_Detail_KibouNouki
-            // 
-            this.col_Detail_KibouNouki.DataPropertyName = "希望納期";
-            this.col_Detail_KibouNouki.HeaderText = "希望納期";
-            this.col_Detail_KibouNouki.Name = "col_Detail_KibouNouki";
-            // 
             // col_Detail_JANCD
             // 
             this.col_Detail_JANCD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.col_Detail_JANCD.DataPropertyName = "JANCD";
             this.col_Detail_JANCD.HeaderText = "JANCD";
             this.col_Detail_JANCD.Name = "col_Detail_JANCD";
+            // 
+            // col_Detail_KibouNouki
+            // 
+            this.col_Detail_KibouNouki.DataPropertyName = "希望納期";
+            this.col_Detail_KibouNouki.HeaderText = "希望納期";
+            this.col_Detail_KibouNouki.Name = "col_Detail_KibouNouki";
             // 
             // HikiateHenkouShoukai
             // 
@@ -1771,7 +1771,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_KanriNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_NyuukoDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_JuchuuDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_KibouNouki;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_JANCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_KibouNouki;
     }
 }

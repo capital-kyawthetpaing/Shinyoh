@@ -25,6 +25,7 @@ namespace Shinyoh_Controls
         string NumberCol = string.Empty;
 
         public int Memory_Row_Count = 0;
+        public string ActionType = string.Empty;    //"F10" for btnF10 click (if your form includes to check error at the time of F10 click, you need to set "F10" value to this "ActionType" variable and then clear assigned value before F12 button click.
 
         public bool IsLastKeyEnter = false;
 
