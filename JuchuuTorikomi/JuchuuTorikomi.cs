@@ -54,6 +54,10 @@ namespace JuchuuTorikomi
             base_Entity = _GetBaseData();
             BindData();
             Enable_Panel();
+            gvJuchuuTorikomi.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvJuchuuTorikomi.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvJuchuuTorikomi.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvJuchuuTorikomi.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
         }
         private void BindData()
         {
@@ -103,9 +107,11 @@ namespace JuchuuTorikomi
         }
         private void GridviewBind()
         {
+            gvJuchuuTorikomi.ActionType = "F10";
             JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
             dtMain = JBL.JuchuuTorikomi_Display(JEntity);
             gvJuchuuTorikomi.DataSource = dtMain;
+            gvJuchuuTorikomi.ActionType = string.Empty;
         }
         private void Enable_Panel()
         {

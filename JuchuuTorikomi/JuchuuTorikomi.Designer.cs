@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt1 = new Shinyoh_Controls.SLabel();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.rdo_Registration = new Shinyoh_Controls.SRadio();
@@ -76,7 +78,7 @@
             this.txt1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txt1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.txt1.ForeColor = System.Drawing.Color.White;
-            this.txt1.Location = new System.Drawing.Point(17, 8);
+            this.txt1.Location = new System.Drawing.Point(24, 8);
             this.txt1.Name = "txt1";
             this.txt1.Size = new System.Drawing.Size(100, 19);
             this.txt1.TabIndex = 1;
@@ -86,7 +88,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Delete.Location = new System.Drawing.Point(194, 8);
+            this.rdo_Delete.Location = new System.Drawing.Point(201, 8);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -101,7 +103,7 @@
             // 
             this.rdo_Registration.Checked = true;
             this.rdo_Registration.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Registration.Location = new System.Drawing.Point(122, 8);
+            this.rdo_Registration.Location = new System.Drawing.Point(129, 8);
             this.rdo_Registration.MoveNext = true;
             this.rdo_Registration.Name = "rdo_Registration";
             this.rdo_Registration.NextControl = null;
@@ -147,7 +149,7 @@
             this.txtDate2.IsErrorOccurs = false;
             this.txtDate2.IsRequire = false;
             this.txtDate2.IsUseInitializedLayout = true;
-            this.txtDate2.Location = new System.Drawing.Point(413, 137);
+            this.txtDate2.Location = new System.Drawing.Point(424, 137);
             this.txtDate2.MaxLength = 10;
             this.txtDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate2.MoveNext = true;
@@ -164,7 +166,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS PGothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(726, 119);
+            this.label3.Location = new System.Drawing.Point(737, 119);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 12);
             this.label3.TabIndex = 12;
@@ -183,7 +185,7 @@
             this.txtDenpyouNO.IsErrorOccurs = false;
             this.txtDenpyouNO.IsRequire = false;
             this.txtDenpyouNO.IsUseInitializedLayout = true;
-            this.txtDenpyouNO.Location = new System.Drawing.Point(818, 137);
+            this.txtDenpyouNO.Location = new System.Drawing.Point(829, 137);
             this.txtDenpyouNO.MaxLength = 12;
             this.txtDenpyouNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDenpyouNO.MoveNext = true;
@@ -201,7 +203,7 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(718, 137);
+            this.sLabel6.Location = new System.Drawing.Point(729, 137);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
             this.sLabel6.TabIndex = 10;
@@ -211,7 +213,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(373, 140);
+            this.label2.Location = new System.Drawing.Point(384, 140);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 9;
@@ -232,9 +234,9 @@
             this.colKouritenRyakuName});
             this.gvJuchuuTorikomi.IsErrorOccurs = false;
             this.gvJuchuuTorikomi.ISRowColumn = null;
-            this.gvJuchuuTorikomi.Location = new System.Drawing.Point(149, 170);
+            this.gvJuchuuTorikomi.Location = new System.Drawing.Point(160, 170);
             this.gvJuchuuTorikomi.Name = "gvJuchuuTorikomi";
-            this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1225, 620);
+            this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1200, 620);
             this.gvJuchuuTorikomi.TabIndex = 8;
             // 
             // txtDate1
@@ -250,7 +252,7 @@
             this.txtDate1.IsErrorOccurs = false;
             this.txtDate1.IsRequire = false;
             this.txtDate1.IsUseInitializedLayout = true;
-            this.txtDate1.Location = new System.Drawing.Point(249, 137);
+            this.txtDate1.Location = new System.Drawing.Point(260, 137);
             this.txtDate1.MaxLength = 10;
             this.txtDate1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate1.MoveNext = true;
@@ -267,7 +269,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS PGothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(158, 119);
+            this.label1.Location = new System.Drawing.Point(169, 119);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 12);
             this.label1.TabIndex = 5;
@@ -286,7 +288,7 @@
             this.txtImportFileName.IsErrorOccurs = false;
             this.txtImportFileName.IsRequire = false;
             this.txtImportFileName.IsUseInitializedLayout = true;
-            this.txtImportFileName.Location = new System.Drawing.Point(262, 51);
+            this.txtImportFileName.Location = new System.Drawing.Point(273, 51);
             this.txtImportFileName.MaxLength = 255;
             this.txtImportFileName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtImportFileName.MoveNext = true;
@@ -311,7 +313,7 @@
             this.txtImportFolder.IsErrorOccurs = false;
             this.txtImportFolder.IsRequire = false;
             this.txtImportFolder.IsUseInitializedLayout = true;
-            this.txtImportFolder.Location = new System.Drawing.Point(262, 23);
+            this.txtImportFolder.Location = new System.Drawing.Point(273, 23);
             this.txtImportFolder.MaxLength = 255;
             this.txtImportFolder.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtImportFolder.MoveNext = true;
@@ -329,7 +331,7 @@
             this.sLabel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel5.Location = new System.Drawing.Point(149, 137);
+            this.sLabel5.Location = new System.Drawing.Point(160, 137);
             this.sLabel5.Name = "sLabel5";
             this.sLabel5.Size = new System.Drawing.Size(100, 19);
             this.sLabel5.TabIndex = 2;
@@ -342,7 +344,7 @@
             this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel4.Location = new System.Drawing.Point(149, 51);
+            this.sLabel4.Location = new System.Drawing.Point(160, 51);
             this.sLabel4.Name = "sLabel4";
             this.sLabel4.Size = new System.Drawing.Size(115, 19);
             this.sLabel4.TabIndex = 1;
@@ -355,7 +357,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(149, 23);
+            this.sLabel3.Location = new System.Drawing.Point(160, 23);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(115, 19);
             this.sLabel3.TabIndex = 0;
@@ -372,9 +374,11 @@
             // colInsertDateTime
             // 
             this.colInsertDateTime.DataPropertyName = "InsertDateTime";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle3;
             this.colInsertDateTime.HeaderText = "取込日時";
             this.colInsertDateTime.Name = "colInsertDateTime";
-            this.colInsertDateTime.Width = 120;
+            this.colInsertDateTime.Width = 130;
             // 
             // colJuchuuNO
             // 
@@ -385,14 +389,18 @@
             // colJuchuuDate
             // 
             this.colJuchuuDate.DataPropertyName = "JuchuuDate";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.colJuchuuDate.HeaderText = "受注日";
             this.colJuchuuDate.Name = "colJuchuuDate";
+            this.colJuchuuDate.Width = 80;
             // 
             // colTokuisakiCD
             // 
             this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
             this.colTokuisakiCD.HeaderText = "得意先";
             this.colTokuisakiCD.Name = "colTokuisakiCD";
+            this.colTokuisakiCD.Width = 80;
             // 
             // colTokuisakiRyakuName
             // 
