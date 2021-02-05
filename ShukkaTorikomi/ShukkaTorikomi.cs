@@ -67,7 +67,7 @@ namespace ShukkaTorikomi
 
             ErrorCheck();
             dataBind();
-            gvTorikomi.UseRowNo(true);
+            gvMainDetail.UseRowNo(true);
         }
 
         private void dataBind()
@@ -147,6 +147,8 @@ namespace ShukkaTorikomi
             }
             if (tagID == "10")
             {
+                gvMainDetail.ActionType = "F10";
+                gvMainDetail.ActionType = string.Empty;
                 DataGridviewBind();
             }
             base.FunctionProcess(tagID);
@@ -187,7 +189,7 @@ namespace ShukkaTorikomi
             obj.TorikomiDenpyouNO = txtDenpyouNO.Text;
             DataTable dt = objMethod.ShukkaTorikomi_Select_Check(obj);
            
-            gvTorikomi.DataSource = dt;
+            gvMainDetail.DataSource = dt;
         }
 
         private (string,string) ChooseFile()
