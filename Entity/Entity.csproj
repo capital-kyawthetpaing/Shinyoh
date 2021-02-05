@@ -54,6 +54,7 @@
     <Compile Include="IdouNyuuryokuEntity.cs" />
     <Compile Include="JuchuuEntity.cs" />
     <Compile Include="JuchuuNyuuryokuEntity.cs" />
+    <Compile Include="JuchuuTorikomiEntity.cs" />
     <Compile Include="KouritenEntity.cs" />
     <Compile Include="multipurposeEntity.cs" />
     <Compile Include="ProgramEntity.cs" />

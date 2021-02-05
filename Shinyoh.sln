@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30413.136
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shinyoh", "Shinyoh\Shinyoh.csproj", "{697E1304-F141-4CCE-B816-9CC225F441C4}"
 EndProject
@@ -70,6 +70,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HacchuuNyuuryoku", "HacchuuNyuuryoku\HacchuuNyuuryoku.csproj", "{CA2A3443-29B1-4B23-9904-5DF7CEF3DBC9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HaitaSakujo", "HaitaSakujo\HaitaSakujo.csproj", "{9BFE5CFD-05AB-4D28-8EFD-E5985881AD1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuchuuTorikomi", "JuchuuTorikomi\JuchuuTorikomi.csproj", "{6B571B1C-F895-477E-9666-92222BE7B20F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -213,6 +215,10 @@ Global
 		{9BFE5CFD-05AB-4D28-8EFD-E5985881AD1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BFE5CFD-05AB-4D28-8EFD-E5985881AD1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BFE5CFD-05AB-4D28-8EFD-E5985881AD1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B571B1C-F895-477E-9666-92222BE7B20F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B571B1C-F895-477E-9666-92222BE7B20F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B571B1C-F895-477E-9666-92222BE7B20F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B571B1C-F895-477E-9666-92222BE7B20F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

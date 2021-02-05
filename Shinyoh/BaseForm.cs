@@ -551,7 +551,7 @@ namespace Shinyoh
                 if(ctrl is SGridView)
                 {
                     SGridView sgv = ctrl as SGridView;
-                    if(sgv.Memory_Row_Count==0)
+                    if(sgv.Memory_Row_Count==0 && sgv.ActionType != "F10")
                     {
                         bbl.ShowMessage("E274");
                         return false;
