@@ -547,6 +547,7 @@ namespace HacchuuNyuuryoku
 
                 if (F8_dt1.Rows.Count == 0)
                     F8_dt1 = gv1_to_dt1.Clone();
+                gv_HacchuuNyuuryoku.Select();
             }
 
         }
@@ -895,7 +896,7 @@ namespace HacchuuNyuuryoku
                 else if (cboMode.SelectedValue.Equals("3"))
                 {
                     mode = "Delete";
-                    DoUpdate(mode, obj.Item1, obj.Item2);
+                    DoDelete(mode, obj.Item1, obj.Item2);
                 }
             }
         }
