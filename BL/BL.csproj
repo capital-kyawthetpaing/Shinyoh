@@ -92,6 +92,7 @@
     <Compile Include="IdouNyuuryokuBL.cs" />
     <Compile Include="JuchuuListBL.cs" />
     <Compile Include="JuchuuNyuuryokuBL.cs" />
+    <Compile Include="JuchuuTorikomiBL.cs" />
     <Compile Include="KouritenBL.cs" />
     <Compile Include="Login_BL.cs" />
     <Compile Include="multipurposeBL.cs" />
