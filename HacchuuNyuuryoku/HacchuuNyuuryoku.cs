@@ -519,37 +519,41 @@ namespace HacchuuNyuuryoku
 
         private void F10_Gridview_Bind()
         {
-            HacchuuNyuuryokuEntity obj = new HacchuuNyuuryokuEntity();
-            obj.BrandCD = txtBrandCD.Text;
-            obj.ShouhinCD = txtShouhinCD.Text;
-            obj.JANCD = txtJANCD.Text;
-            obj.ShouhinName = txtShouhinName.Text;
-            obj.YearTerm = txtYearTerm.Text;
-            obj.SeasonSS = chk_SS.Checked ? "1" : "0";
-            obj.SeasonFW = chk_FW.Checked ? "1" : "0";
-            obj.SizeNO = txtSizeNo.Text;
-            obj.ColorNO = txtColorNo.Text;
-
-            if(string.IsNullOrEmpty(obj.BrandCD) && string.IsNullOrEmpty(obj.ShouhinCD) && string.IsNullOrEmpty(obj.JANCD) && string.IsNullOrEmpty(obj.ShouhinName) && string.IsNullOrEmpty(obj.YearTerm) && obj.SeasonSS=="0" && obj.SeasonFW=="0" && string.IsNullOrEmpty(obj.SizeNO) && string.IsNullOrEmpty(obj.ColorNO))
+            gv_HacchuuNyuuryoku.ActionType = "F10";             //to skip gv error check at the ErrorCheck() of BaseForm.cs
+            if (ErrorCheck(PanelDetail))
             {
-                base_bl.ShowMessage("E111");
-                txtBrandCD.Focus();
-                return;
+                HacchuuNyuuryokuEntity obj = new HacchuuNyuuryokuEntity();
+                obj.BrandCD = txtBrandCD.Text;
+                obj.ShouhinCD = txtShouhinCD.Text;
+                obj.JANCD = txtJANCD.Text;
+                obj.ShouhinName = txtShouhinName.Text;
+                obj.YearTerm = txtYearTerm.Text;
+                obj.SeasonSS = chk_SS.Checked ? "1" : "0";
+                obj.SeasonFW = chk_FW.Checked ? "1" : "0";
+                obj.SizeNO = txtSizeNo.Text;
+                obj.ColorNO = txtColorNo.Text;
+
+                if (string.IsNullOrEmpty(obj.BrandCD) && string.IsNullOrEmpty(obj.ShouhinCD) && string.IsNullOrEmpty(obj.JANCD) && string.IsNullOrEmpty(obj.ShouhinName) && string.IsNullOrEmpty(obj.YearTerm) && obj.SeasonSS == "0" && obj.SeasonFW == "0" && string.IsNullOrEmpty(obj.SizeNO) && string.IsNullOrEmpty(obj.ColorNO))
+                {
+                    base_bl.ShowMessage("E111");
+                    txtBrandCD.Focus();
+                    return;
+                }
+
+                obj.ChangeDate = txtHacchuuDate.Text;
+                DataTable dt = obj_bl.HacchuuNyuuryoku_Display(obj);
+                if (dt.Rows.Count > 0)
+                {
+                    gv_HacchuuNyuuryoku.DataSource = dt;
+                    DataTable dt_temp = dt.Copy();
+                    gv1_to_dt1 = dt_temp;
+
+                    if (F8_dt1.Rows.Count == 0)
+                        F8_dt1 = gv1_to_dt1.Clone();
+                    gv_HacchuuNyuuryoku.Select();
+                }
             }
-
-            obj.ChangeDate = txtHacchuuDate.Text;
-            DataTable dt = obj_bl.HacchuuNyuuryoku_Display(obj);
-            if (dt.Rows.Count > 0)
-            {
-                gv_HacchuuNyuuryoku.DataSource = dt;
-                DataTable dt_temp = dt.Copy();
-                gv1_to_dt1 = dt_temp;
-
-                if (F8_dt1.Rows.Count == 0)
-                    F8_dt1 = gv1_to_dt1.Clone();
-                gv_HacchuuNyuuryoku.Select();
-            }
-
+            gv_HacchuuNyuuryoku.ActionType = string.Empty;             //to check gv error at the ErrorCheck() of BaseForm.cs
         }
 
         private void btnNameF11_Click(object sender, EventArgs e)
