@@ -525,6 +525,11 @@ namespace Shinyoh_Controls
                         rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE160_1.Text, string.Empty, "E160");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "JuchuuTorikomi":
+                        JuchuuTorikomiBL jubl = new JuchuuTorikomiBL();
+                        rDt = jubl.JuchuuTorikomi_Error_Check(sTextBox.ctrlE160_1.Text,"E160");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E160"))
                 {
@@ -596,6 +601,11 @@ namespace Shinyoh_Controls
                     case "HacchuuNyuuryoku":
                         HacchuuNyuuryokuBL H_bl = new HacchuuNyuuryokuBL();
                         rDt = H_bl.HacchuuNyuuryoku_Select_Check(sTextBox.ctrlE266_1.Text, string.Empty, "E265");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "JuchuuTorikomi":
+                        JuchuuTorikomiBL jubl = new JuchuuTorikomiBL();
+                        rDt = jubl.JuchuuTorikomi_Error_Check(sTextBox.ctrlE265_1.Text, "E265");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
