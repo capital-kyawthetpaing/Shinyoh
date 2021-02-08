@@ -37,7 +37,7 @@
             this.txtDenpyouNO = new Shinyoh_Controls.STextBox();
             this.sLabel6 = new Shinyoh_Controls.SLabel();
             this.label2 = new System.Windows.Forms.Label();
-            this.gvTorikomi = new Shinyoh_Controls.SGridView();
+            this.gvMainDetail = new Shinyoh_Controls.SGridView();
             this.colTorikomiDenpyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInsertDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShukkaNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,8 +56,12 @@
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvTorikomi)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMainDetail)).BeginInit();
             this.SuspendLayout();
+            // 
+            // panel1
+            // 
+            this.panel1.Size = new System.Drawing.Size(1370, 75);
             // 
             // PanelTitle
             // 
@@ -120,7 +124,7 @@
             this.PanelDetail.Controls.Add(this.txtDenpyouNO);
             this.PanelDetail.Controls.Add(this.sLabel6);
             this.PanelDetail.Controls.Add(this.label2);
-            this.PanelDetail.Controls.Add(this.gvTorikomi);
+            this.PanelDetail.Controls.Add(this.gvMainDetail);
             this.PanelDetail.Controls.Add(this.txtDate1);
             this.PanelDetail.Controls.Add(this.label1);
             this.PanelDetail.Controls.Add(this.txtShukkaToNo2);
@@ -131,7 +135,7 @@
             this.PanelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1713, 842);
+            this.PanelDetail.Size = new System.Drawing.Size(1370, 630);
             this.PanelDetail.TabIndex = 3;
             // 
             // txtDate2
@@ -215,11 +219,11 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "～";
             // 
-            // gvTorikomi
+            // gvMainDetail
             // 
-            this.gvTorikomi.AllowUserToAddRows = false;
-            this.gvTorikomi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gvTorikomi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gvMainDetail.AllowUserToAddRows = false;
+            this.gvMainDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvMainDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colTorikomiDenpyouNO,
             this.colInsertDateTime,
             this.colShukkaNO,
@@ -228,12 +232,12 @@
             this.colTokuisakiRyakuName,
             this.colKouritenCD,
             this.colKouritenRyakuName});
-            this.gvTorikomi.IsErrorOccurs = false;
-            this.gvTorikomi.ISRowColumn = null;
-            this.gvTorikomi.Location = new System.Drawing.Point(136, 182);
-            this.gvTorikomi.Name = "gvTorikomi";
-            this.gvTorikomi.Size = new System.Drawing.Size(1120, 600);
-            this.gvTorikomi.TabIndex = 8;
+            this.gvMainDetail.IsErrorOccurs = false;
+            this.gvMainDetail.ISRowColumn = null;
+            this.gvMainDetail.Location = new System.Drawing.Point(136, 182);
+            this.gvMainDetail.Name = "gvMainDetail";
+            this.gvMainDetail.Size = new System.Drawing.Size(1120, 600);
+            this.gvMainDetail.TabIndex = 8;
             // 
             // colTorikomiDenpyouNO
             // 
@@ -414,7 +418,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1713, 961);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "SqlDbType";
@@ -426,7 +430,7 @@
             this.PanelTitle.ResumeLayout(false);
             this.PanelDetail.ResumeLayout(false);
             this.PanelDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gvTorikomi)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMainDetail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,7 +450,7 @@
         private Shinyoh_Controls.SLabel sLabel5;
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.SLabel sLabel3;
-        private Shinyoh_Controls.SGridView gvTorikomi;
+        private Shinyoh_Controls.SGridView gvMainDetail;
         private System.Windows.Forms.Label label3;
         private Shinyoh_Controls.STextBox txtDenpyouNO;
         private Shinyoh_Controls.SLabel sLabel6;
