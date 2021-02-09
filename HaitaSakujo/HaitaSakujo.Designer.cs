@@ -39,6 +39,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_HM2 = new Shinyoh_Controls.STextBox();
             this.txt_Time2 = new Shinyoh_Controls.STextBox();
+            this.txt_InputPerson = new Shinyoh_Search.SearchBox();
+            this.txt_date = new Shinyoh_Controls.STextBox();
+            this.PanelDetail = new System.Windows.Forms.Panel();
             this.gvHaitaSakujo = new Shinyoh_Controls.SGridView();
             this.col_Target = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.col_DataPartition = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,10 +51,9 @@
             this.col_InputPeronName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_ProcessProgram = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Terminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txt_InputPerson = new Shinyoh_Search.SearchBox();
-            this.txt_date = new Shinyoh_Controls.STextBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
+            this.PanelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvHaitaSakujo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -333,81 +335,6 @@
             this.txt_Time2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_Time2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
-            // gvHaitaSakujo
-            // 
-            this.gvHaitaSakujo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.gvHaitaSakujo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_Target,
-            this.col_DataPartition,
-            this.col_DataPartitionName,
-            this.col_ExTargetNo,
-            this.col_ProcessTime,
-            this.col_InputPeronName,
-            this.col_ProcessProgram,
-            this.col_Terminal});
-            this.gvHaitaSakujo.IsErrorOccurs = false;
-            this.gvHaitaSakujo.ISRowColumn = null;
-            this.gvHaitaSakujo.Location = new System.Drawing.Point(152, 99);
-            this.gvHaitaSakujo.Name = "gvHaitaSakujo";
-            this.gvHaitaSakujo.Size = new System.Drawing.Size(1400, 800);
-            this.gvHaitaSakujo.TabIndex = 8;
-            // 
-            // col_Target
-            // 
-            this.col_Target.DataPropertyName = "Target";
-            this.col_Target.HeaderText = "対象";
-            this.col_Target.Name = "col_Target";
-            this.col_Target.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_Target.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_Target.Width = 70;
-            // 
-            // col_DataPartition
-            // 
-            this.col_DataPartition.DataPropertyName = "DataKBN";
-            this.col_DataPartition.HeaderText = "データ区分";
-            this.col_DataPartition.Name = "col_DataPartition";
-            // 
-            // col_DataPartitionName
-            // 
-            this.col_DataPartitionName.DataPropertyName = "Char1";
-            this.col_DataPartitionName.HeaderText = "データ区分名\t\t\t\t\t\t\t\t";
-            this.col_DataPartitionName.Name = "col_DataPartitionName";
-            this.col_DataPartitionName.Width = 170;
-            // 
-            // col_ExTargetNo
-            // 
-            this.col_ExTargetNo.DataPropertyName = "Number";
-            this.col_ExTargetNo.HeaderText = "排他対象番号";
-            this.col_ExTargetNo.Name = "col_ExTargetNo";
-            // 
-            // col_ProcessTime
-            // 
-            this.col_ProcessTime.DataPropertyName = "OperateDataTime";
-            this.col_ProcessTime.HeaderText = "処理時刻\t\t\t\t\t\t";
-            this.col_ProcessTime.Name = "col_ProcessTime";
-            this.col_ProcessTime.Width = 170;
-            // 
-            // col_InputPeronName
-            // 
-            this.col_InputPeronName.DataPropertyName = "StaffName";
-            this.col_InputPeronName.HeaderText = "入力担当者名";
-            this.col_InputPeronName.Name = "col_InputPeronName";
-            this.col_InputPeronName.Width = 170;
-            // 
-            // col_ProcessProgram
-            // 
-            this.col_ProcessProgram.DataPropertyName = "Program";
-            this.col_ProcessProgram.HeaderText = "処理プログラム";
-            this.col_ProcessProgram.Name = "col_ProcessProgram";
-            this.col_ProcessProgram.Width = 370;
-            // 
-            // col_Terminal
-            // 
-            this.col_Terminal.DataPropertyName = "PC";
-            this.col_Terminal.HeaderText = "処理端末";
-            this.col_Terminal.Name = "col_Terminal";
-            this.col_Terminal.Width = 220;
-            // 
             // txt_InputPerson
             // 
             this.txt_InputPerson.AllowMinus = false;
@@ -466,21 +393,105 @@
             this.txt_date.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txt_date.Visible = false;
             // 
+            // PanelDetail
+            // 
+            this.PanelDetail.Controls.Add(this.gvHaitaSakujo);
+            this.PanelDetail.Location = new System.Drawing.Point(2, 77);
+            this.PanelDetail.Name = "PanelDetail";
+            this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
+            this.PanelDetail.TabIndex = 3;
+            // 
+            // gvHaitaSakujo
+            // 
+            this.gvHaitaSakujo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.gvHaitaSakujo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_Target,
+            this.col_DataPartition,
+            this.col_DataPartitionName,
+            this.col_ExTargetNo,
+            this.col_ProcessTime,
+            this.col_InputPeronName,
+            this.col_ProcessProgram,
+            this.col_Terminal});
+            this.gvHaitaSakujo.IsErrorOccurs = false;
+            this.gvHaitaSakujo.ISRowColumn = null;
+            this.gvHaitaSakujo.Location = new System.Drawing.Point(155, 20);
+            this.gvHaitaSakujo.Name = "gvHaitaSakujo";
+            this.gvHaitaSakujo.Size = new System.Drawing.Size(1400, 800);
+            this.gvHaitaSakujo.TabIndex = 95;
+            // 
+            // col_Target
+            // 
+            this.col_Target.DataPropertyName = "Target";
+            this.col_Target.HeaderText = "対象";
+            this.col_Target.Name = "col_Target";
+            this.col_Target.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.col_Target.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_Target.Width = 70;
+            // 
+            // col_DataPartition
+            // 
+            this.col_DataPartition.DataPropertyName = "DataKBN";
+            this.col_DataPartition.HeaderText = "データ区分";
+            this.col_DataPartition.Name = "col_DataPartition";
+            // 
+            // col_DataPartitionName
+            // 
+            this.col_DataPartitionName.DataPropertyName = "Char1";
+            this.col_DataPartitionName.HeaderText = "データ区分名\t\t\t\t\t\t\t\t";
+            this.col_DataPartitionName.Name = "col_DataPartitionName";
+            this.col_DataPartitionName.Width = 170;
+            // 
+            // col_ExTargetNo
+            // 
+            this.col_ExTargetNo.DataPropertyName = "Number";
+            this.col_ExTargetNo.HeaderText = "排他対象番号";
+            this.col_ExTargetNo.Name = "col_ExTargetNo";
+            // 
+            // col_ProcessTime
+            // 
+            this.col_ProcessTime.DataPropertyName = "OperateDataTime";
+            this.col_ProcessTime.HeaderText = "処理時刻\t\t\t\t\t\t";
+            this.col_ProcessTime.Name = "col_ProcessTime";
+            this.col_ProcessTime.Width = 170;
+            // 
+            // col_InputPeronName
+            // 
+            this.col_InputPeronName.DataPropertyName = "StaffName";
+            this.col_InputPeronName.HeaderText = "入力担当者名";
+            this.col_InputPeronName.Name = "col_InputPeronName";
+            this.col_InputPeronName.Width = 170;
+            // 
+            // col_ProcessProgram
+            // 
+            this.col_ProcessProgram.DataPropertyName = "Program";
+            this.col_ProcessProgram.HeaderText = "処理プログラム";
+            this.col_ProcessProgram.Name = "col_ProcessProgram";
+            this.col_ProcessProgram.Width = 370;
+            // 
+            // col_Terminal
+            // 
+            this.col_Terminal.DataPropertyName = "PC";
+            this.col_Terminal.HeaderText = "処理端末";
+            this.col_Terminal.Name = "col_Terminal";
+            this.col_Terminal.Width = 220;
+            // 
             // HaitaSakujo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1713, 961);
-            this.Controls.Add(this.gvHaitaSakujo);
+            this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "HaitaSakujo";
             this.Text = "HaitaSakujo";
             this.Load += new System.EventHandler(this.HaitaSakujo_Load);
+            this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.gvHaitaSakujo, 0);
             this.panel1.ResumeLayout(false);
             this.PanelTitle.ResumeLayout(false);
             this.PanelTitle.PerformLayout();
+            this.PanelDetail.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvHaitaSakujo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -502,9 +513,10 @@
         private System.Windows.Forms.Label label2;
         private Shinyoh_Controls.STextBox txt_HM2;
         private Shinyoh_Controls.STextBox txt_Time2;
-        private Shinyoh_Controls.SGridView gvHaitaSakujo;
         private Shinyoh_Search.SearchBox txt_InputPerson;
         private Shinyoh_Controls.STextBox txt_date;
+        private System.Windows.Forms.Panel PanelDetail;
+        private Shinyoh_Controls.SGridView gvHaitaSakujo;
         private System.Windows.Forms.DataGridViewCheckBoxColumn col_Target;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_DataPartition;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_DataPartitionName;
