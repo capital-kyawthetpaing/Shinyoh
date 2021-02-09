@@ -9,7 +9,6 @@ namespace Entity
     public class JuchuuTorikomiEntity:BaseEntity
     {
         public string TorikomiDenpyouNO { get; set; }
-        public string ChangeDate { get; set; }
         public string JuchuuDate { get; set; }
         public string TokuisakiCD { get; set; }
         public string TokuisakiName { get; set; }

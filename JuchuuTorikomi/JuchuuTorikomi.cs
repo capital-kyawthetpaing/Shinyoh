@@ -98,12 +98,12 @@ namespace JuchuuTorikomi
             }
             if (tagID == "12")
             {
-                (string, string) Xml = GetFile();
+                string Xml = GetFile();
                 BaseBL bbl = new BaseBL();
-                if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
-                {
+                //if (!string.IsNullOrEmpty(Xml.Item1))
+                //{
 
-                }
+                //}
             }
                     base.FunctionProcess(tagID);
         }
@@ -140,11 +140,10 @@ namespace JuchuuTorikomi
             txtDate2.Enabled = true;
             txtDenpyouNO.Enabled = true;
         }
-        private (string, string) GetFile()
+        private string GetFile()
         {
             var filepath = string.Empty;
             JuchuuTorikomiEntity JEntity = new JuchuuTorikomiEntity();
-            string Xml_Main = string.Empty;
             string Xml_Detail = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
@@ -230,7 +229,7 @@ namespace JuchuuTorikomi
 
                         DataTable dt = new DataTable();
                         TokuisakiBL tBL = new TokuisakiBL();
-                        dt = tBL.M_Tokuisaki_Select(JEntity.TokuisakiCD, JEntity.ChangeDate, "E101");
+                        dt = tBL.M_Tokuisaki_Select(JEntity.TokuisakiCD, JEntity.JuchuuDate, "E101");
                         if (dt.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101", i.ToString(), "得意先CD");
@@ -239,7 +238,7 @@ namespace JuchuuTorikomi
 
                         DataTable dt1 = new DataTable();
                         KouritenBL kBL = new KouritenBL();
-                        dt1 = kBL.Kouriten_Select_Check(JEntity.KouritenCD, JEntity.ChangeDate, "E101");
+                        dt1 = kBL.Kouriten_Select_Check(JEntity.KouritenCD, JEntity.JuchuuDate, "E101");
                         if (dt1.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101", i.ToString(), "小売店CD");
@@ -248,7 +247,7 @@ namespace JuchuuTorikomi
 
                         DataTable dt2 = new DataTable();
                         StaffBL sBL = new StaffBL();
-                        dt2 = sBL.Staff_Select_Check(JEntity.StaffCD, JEntity.ChangeDate, "E101");
+                        dt2 = sBL.Staff_Select_Check(JEntity.StaffCD, JEntity.JuchuuDate, "E101");
                         if (dt2.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101", i.ToString(), "担当スタッフCD");
@@ -257,7 +256,7 @@ namespace JuchuuTorikomi
 
                         DataTable dt3 = new DataTable();
                         ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
-                        dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.ChangeDate, "E101", "ShouhinCD");
+                        dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.JuchuuDate, "E101", "ShouhinCD");
                         if (dt3.Rows.Count > 0 && dt3.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101", i.ToString(), "商品CD");
@@ -266,7 +265,7 @@ namespace JuchuuTorikomi
 
                         DataTable dt4 = new DataTable();
                         ShukkaTorikomi_BL jBL = new ShukkaTorikomi_BL();
-                        dt4 = jBL.ShukkaTorikomi_Check(JEntity.JANCD, JEntity.ChangeDate, "E101", "JANCD");
+                        dt4 = jBL.ShukkaTorikomi_Check(JEntity.JANCD, JEntity.JuchuuDate, "E101", "JANCD");
                         if (dt4.Rows.Count > 0 && dt4.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101", i.ToString(), "JANCD");
@@ -275,7 +274,7 @@ namespace JuchuuTorikomi
 
                         DataTable dt5 = new DataTable();
                         SiiresakiBL SiireBL = new SiiresakiBL();
-                        dt5 = SiireBL.Siiresaki_Select_Check(JEntity.SiiresakiCD, JEntity.ChangeDate, "E101");
+                        dt5 = SiireBL.Siiresaki_Select_Check(JEntity.SiiresakiCD, JEntity.JuchuuDate, "E101");
                         if (dt5.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101", i.ToString(), "仕入先CD");
@@ -310,14 +309,14 @@ namespace JuchuuTorikomi
                         create_dt.Rows.Add(dr);
                     }
                     if (create_dt.Rows.Count == csvRows.Length - 1)
-                        Xml_Main = cf.DataTableToXml(create_dt);
+                        Xml_Detail = cf.DataTableToXml(create_dt);
                 }
                 else
                 {
-                    Xml_Main = string.Empty;
+                    Xml_Detail = string.Empty;
                 }
             }
-            return (Xml_Detail, Xml_Main);
+            return Xml_Detail;
         }
         private bool Null_Check(string obj_text, int line_no, string error_msg)
         {
