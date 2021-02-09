@@ -21,7 +21,7 @@ BEGIN
 
    Select 
    TorikomiDenpyouNO,
-   InsertDateTime,
+   FORMAT(CONVERT(DATETIME,InsertDateTime), 'yyyy-MM-dd hh:mm:ss')as InsertDateTime,
    JuchuuNO,
    JuchuuDate,
    TokuisakiCD,

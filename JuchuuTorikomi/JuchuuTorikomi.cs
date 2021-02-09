@@ -148,7 +148,7 @@ namespace JuchuuTorikomi
             string Xml_Detail = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "C:\\CSV Folder\\";
+                openFileDialog.InitialDirectory = "C:\\csv\\";
                 openFileDialog.Title = "Browse CSV Files";
                 openFileDialog.Filter = "csv files (*.csv)|*.csv";
                 openFileDialog.FilterIndex = 2;
@@ -187,37 +187,46 @@ namespace JuchuuTorikomi
                         if (Null_Check(JEntity.StaffCD, i, "担当スタッフCD")) break;
                         if (Byte_Check(10, JEntity.StaffCD, i, "担当スタッフCD")) break;
 
-                        JEntity.ShouhinCD = splits[6];
+                        JEntity.ShouhinCD = splits[10];
                         if (Null_Check(JEntity.ShouhinCD, i, "商品CD")) break;
                         if (Byte_Check(20, JEntity.ShouhinCD, i, "商品CD")) break;
 
                         JEntity.KibouNouki = splits[7];
                         if (Date_Check(JEntity.KibouNouki, i, "希望納期")) break;
 
-                        JEntity.ColorNO = splits[8];
+                        JEntity.ColorNO = splits[11];
                         if (Null_Check(JEntity.ColorNO, i, "カラー")) break;
 
-                        JEntity.SizeNO = splits[9];
+                        JEntity.SizeNO = splits[12];
                         if (Null_Check(JEntity.SizeNO, i, "サイズ")) break;
 
-                        JEntity.JANCD = splits[10];
+                        JEntity.JANCD = splits[13];
                         if (Null_Check(JEntity.JANCD, i, "JANCD")) break;
                         if (Byte_Check(13, JEntity.JANCD, i, "JANCD")) break;
 
-                        JEntity.SiiresakiCD = splits[11];
+                        JEntity.Type = splits[14];
+                        if (Null_Check(JEntity.Type, i, "数量")) break;
+
+                       
+                        JEntity.SenpouHacchuuNO = splits[15];
+                        if (Number_Check(JEntity.SenpouHacchuuNO, i, "発注単価")) break;
+
+                        JEntity.JuchuuDenpyouTekiyou = splits[16];
+                        if (Number_Check(JEntity.JuchuuDenpyouTekiyou, i, "受注単価")) break;
+
+                        JEntity.SiiresakiCD = splits[18];
                         if (Null_Check(JEntity.SiiresakiCD, i, "仕入先CD")) break;
                         if (Byte_Check(10, JEntity.SiiresakiCD, i, "仕入先CD")) break;
 
-                        JEntity.SiiresakiName = splits[12];
-                        if (Byte_Check(10, JEntity.SiiresakiName, i, "仕入先名")) break;
+                        JEntity.SiiresakiName = splits[19];
+                        if (Byte_Check(80, JEntity.SiiresakiName, i, "仕入先名")) break;
 
-                        JEntity.SenpouHacchuuNO = splits[13];
-                        if (Byte_Check(20, JEntity.SenpouHacchuuNO, i, "先方発注番号")) break;
-
-                        JEntity.ChakuniYoteiDate = splits[14];
+                        JEntity.ChakuniYoteiDate = splits[20];
+                        if (Null_Check(JEntity.ChakuniYoteiDate, i, "着荷予定日")) break;
                         if (Date_Check(JEntity.ChakuniYoteiDate, i, "着荷予定日")) break;
 
-                        JEntity.SoukoCD = splits[15];
+
+                        JEntity.SoukoCD = splits[21];
                         if (Null_Check(JEntity.SoukoCD, i, "倉庫CD")) break;
                         if (Byte_Check(10, JEntity.SoukoCD, i, "倉庫CD")) break;
 
@@ -302,11 +311,17 @@ namespace JuchuuTorikomi
                         dr[56] = error;
                         create_dt.Rows.Add(dr);
                     }
+                    if (create_dt.Rows.Count == csvRows.Length - 1)
+                        Xml_Main = cf.DataTableToXml(create_dt);
+                }
+                else
+                {
+                    Xml_Main = string.Empty;
                 }
             }
             return (Xml_Detail, Xml_Main);
         }
-                    private bool Null_Check(string obj_text, int line_no, string error_msg)
+        private bool Null_Check(string obj_text, int line_no, string error_msg)
         {
             bool bl = false;
             if (string.IsNullOrWhiteSpace(obj_text))
@@ -370,7 +385,7 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("ColorNO");
             create_dt.Columns.Add("SizeNO");
             create_dt.Columns.Add("JANCD");
-            create_dt.Columns.Add("");
+            create_dt.Columns.Add("Type");
             create_dt.Columns.Add("HacchuuTanka");
             create_dt.Columns.Add("JuchuuNO");
             create_dt.Columns.Add("HacchuuMeisaiTekiyou");
