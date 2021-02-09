@@ -205,8 +205,7 @@ namespace JuchuuTorikomi
                         if (Byte_Check(13, JEntity.JANCD, i, "JANCD")) break;
 
                         JEntity.Type = splits[14];
-                        if (Null_Check(JEntity.Type, i, "数量")) break;
-
+                        if (Number_Check(JEntity.Type, i, "数量")) break;
                        
                         JEntity.SenpouHacchuuNO = splits[15];
                         if (Number_Check(JEntity.SenpouHacchuuNO, i, "発注単価")) break;
@@ -224,7 +223,6 @@ namespace JuchuuTorikomi
                         JEntity.ChakuniYoteiDate = splits[20];
                         if (Null_Check(JEntity.ChakuniYoteiDate, i, "着荷予定日")) break;
                         if (Date_Check(JEntity.ChakuniYoteiDate, i, "着荷予定日")) break;
-
 
                         JEntity.SoukoCD = splits[21];
                         if (Null_Check(JEntity.SoukoCD, i, "倉庫CD")) break;
