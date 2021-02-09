@@ -105,7 +105,7 @@ namespace JuchuuTorikomi
 
                 //}
             }
-                    base.FunctionProcess(tagID);
+              base.FunctionProcess(tagID);
         }
         private void Clear()
         {
