@@ -52,6 +52,7 @@ namespace JuchuuTorikomi
             SetButton(ButtonType.BType.Import, F12, "登録(F12)", true);
 
             base_Entity = _GetBaseData();
+            ErrorCheck();
             BindData();
             Enable_Panel();
             gvJuchuuTorikomi.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -84,7 +85,7 @@ namespace JuchuuTorikomi
             txtDate2.E103Check(true);
             txtDenpyouNO.E102Check(true);
             txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
-            //txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
+            txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -186,12 +187,12 @@ namespace JuchuuTorikomi
                         if (Null_Check(JEntity.StaffCD, i, "担当スタッフCD")) break;
                         if (Byte_Check(10, JEntity.StaffCD, i, "担当スタッフCD")) break;
 
+                        JEntity.KibouNouki = splits[7];
+                        if (Date_Check(JEntity.KibouNouki, i, "希望納期")) break;
+
                         JEntity.ShouhinCD = splits[10];
                         if (Null_Check(JEntity.ShouhinCD, i, "商品CD")) break;
                         if (Byte_Check(20, JEntity.ShouhinCD, i, "商品CD")) break;
-
-                        JEntity.KibouNouki = splits[7];
-                        if (Date_Check(JEntity.KibouNouki, i, "希望納期")) break;
 
                         JEntity.ColorNO = splits[11];
                         if (Null_Check(JEntity.ColorNO, i, "カラー")) break;
