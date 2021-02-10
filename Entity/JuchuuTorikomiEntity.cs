@@ -25,7 +25,7 @@ namespace Entity
         public string SoukoCD { get; set; }
         public string SenpouHacchuuNO { get; set; }
         public string KibouNouki { get; set; }
-        public string Type { get; set; }
+        public string HacchuuSuu { get; set; }
         public string JuchuuDenpyouTekiyou { get; set; }
     }
 }

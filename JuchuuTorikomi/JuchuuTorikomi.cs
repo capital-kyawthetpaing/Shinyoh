@@ -148,7 +148,7 @@ namespace JuchuuTorikomi
             string Xml_Detail = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = "C:\\csv\\";
+                openFileDialog.InitialDirectory = "C:\\Csv\\";
                 openFileDialog.Title = "Browse CSV Files";
                 openFileDialog.Filter = "csv files (*.csv)|*.csv";
                 openFileDialog.FilterIndex = 2;
@@ -204,8 +204,8 @@ namespace JuchuuTorikomi
                         if (Null_Check(JEntity.JANCD, i, "JANCD")) break;
                         if (Byte_Check(13, JEntity.JANCD, i, "JANCD")) break;
 
-                        JEntity.Type = splits[14];
-                        if (Number_Check(JEntity.Type, i, "数量")) break;
+                        JEntity.HacchuuSuu = splits[14];
+                        if (Number_Check(JEntity.HacchuuSuu, i, "数量")) break;
                        
                         JEntity.SenpouHacchuuNO = splits[15];
                         if (Number_Check(JEntity.SenpouHacchuuNO, i, "発注単価")) break;
@@ -309,8 +309,24 @@ namespace JuchuuTorikomi
                         dr[56] = error;
                         create_dt.Rows.Add(dr);
                     }
-                    if (create_dt.Rows.Count == csvRows.Length - 1)
-                        Xml_Detail = cf.DataTableToXml(create_dt);
+                    DataTable dt_Main = new DataTable();
+                    if (create_dt.Rows.Count > 0)
+                    {
+                        dt_Main = create_dt.AsEnumerable()
+                              .GroupBy(r => new { Col1 = r["JuchuuDate"], Col2 = r["TokuisakiCD"], Col3 = r["KouritenCD"], Col4 = r["SenpouBusho"], Col5 = r["KibouNouki"], Col6 = r["JuchuuDenpyouTekiyou"], Col7 = r["SoukoCD"] })
+                              .Select(g => g.OrderBy(r => r["JuchuuDate"]).First())
+                              .CopyToDataTable();
+
+                        dt_Main.Columns.Add("JuchuuNO", typeof(string));
+                        for (int i = 0; i < dt_Main.Rows.Count; i++)
+                        {
+                            DateTime date = DateTime.Parse(dt_Main.Rows[i]["JuchuuDate"].ToString());
+                            DataTable Dt_JuchuuNO = JBL.GetJuchuuNO("1", date, "0");
+                            dt_Main.Rows[i]["JuchuuNO"] = Dt_JuchuuNO.Rows[0]["Column1"];
+                        }
+                    }
+                        if (create_dt.Rows.Count == csvRows.Length - 1)
+                        Xml_Detail = cf.DataTableToXml(dt_Main);
                 }
                 else
                 {
@@ -383,10 +399,10 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("ColorNO");
             create_dt.Columns.Add("SizeNO");
             create_dt.Columns.Add("JANCD");
-            create_dt.Columns.Add("Type");
+            create_dt.Columns.Add("HacchuuSuu");
             create_dt.Columns.Add("HacchuuTanka");
-            create_dt.Columns.Add("JuchuuNO");
-            create_dt.Columns.Add("HacchuuMeisaiTekiyou");
+            create_dt.Columns.Add("UriageTanka");
+            create_dt.Columns.Add("JuchuuMeisaiTekiyou");
             create_dt.Columns.Add("SiiresakiCD");
             create_dt.Columns.Add("SiiresakiRyakuName");
             create_dt.Columns.Add("ChakuniYoteiDate");
