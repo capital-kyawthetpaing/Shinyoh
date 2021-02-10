@@ -103,14 +103,14 @@ namespace HikiateHenkouShoukai
             }
             if (tagID == "10")
             {
-                gvMainDetail.ActionType = "F10";     //Assigned value before F10 button click
-                gvAggregationDetails.ActionType = "F10";
-                gvFreeInventoryDetails.ActionType = "F10";
+                gvMainDetail.ActionType = "F10";     //to skip gv error check at the ErrorCheck() of BaseForm.cs
+                gvAggregationDetails.ActionType = "F10";    //to skip gv error check at the ErrorCheck() of BaseForm.cs
+                gvFreeInventoryDetails.ActionType = "F10";    //to skip gv error check at the ErrorCheck() of BaseForm.cs
                 if (ErrorCheck(PanelDetail))
                     Display_Data();
-                gvMainDetail.ActionType = string.Empty;     //Clear assigned value before F12 button click
-                gvAggregationDetails.ActionType = string.Empty;
-                gvFreeInventoryDetails.ActionType = string.Empty;
+                gvMainDetail.ActionType = string.Empty;    //to check gv error at the ErrorCheck() of BaseForm.cs
+                gvAggregationDetails.ActionType = string.Empty;    //to check gv error at the ErrorCheck() of BaseForm.cs
+                gvFreeInventoryDetails.ActionType = string.Empty;    //to check gv error at the ErrorCheck() of BaseForm.cs
             }
             if (tagID == "11")
             {
@@ -423,6 +423,7 @@ namespace HikiateHenkouShoukai
                 dtMain.Columns.RemoveAt(20);
                 dtMain.Columns.RemoveAt(19);
                 gvMainDetail.DataSource = dtMain;
+                gvMainDetail.Select();
                 //gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
             }
             else
@@ -436,43 +437,15 @@ namespace HikiateHenkouShoukai
         {
             if(gvMainDetail != null)
             {
-                if (dtMemory == null)
-                    dtMemory = createMemoryTable(1);
-                if(dtTemp != null)
+                if(!GridErrorCheck())
                 {
-                    if(dtMemory.Rows.Count == 0)
+                    if (dtMemory == null)
+                        dtMemory = createMemoryTable(1);
+                    if (dtTemp != null)
                     {
-                        foreach(DataRow temp_row in dtTemp.Rows)
+                        if (dtMemory.Rows.Count == 0)
                         {
-                            DataRow row = dtMemory.NewRow();
-                            for (int i = 0; i < dtMemory.Columns.Count; i++)
-                            {
-                                row[i] = temp_row[i].ToString();
-                            }
-                            dtMemory.Rows.Add(row);
-                        }
-                    }
-                    else
-                    {
-                        foreach (DataRow temp_row in dtTemp.Rows)
-                        {
-                            bool isexists = false;
-                            int index = 0;
-                            for (int i = 0; i < dtMemory.Rows.Count; i++)
-                            {
-                                if (temp_row["商品"].ToString() == dtMemory.Rows[i]["商品"].ToString() && temp_row["小売店名"].ToString() == dtMemory.Rows[i]["小売店名"].ToString() && temp_row["JANCD"].ToString() == dtMemory.Rows[i]["JANCD"].ToString())
-                                {
-                                    isexists = true;
-                                    index = i;
-                                    break;
-                                }
-                            }
-                            
-                            if(isexists)
-                            {
-                                dtMemory.Rows[index]["引当調整数"] = temp_row["引当調整数"].ToString();
-                            }
-                            else
+                            foreach (DataRow temp_row in dtTemp.Rows)
                             {
                                 DataRow row = dtMemory.NewRow();
                                 for (int i = 0; i < dtMemory.Columns.Count; i++)
@@ -482,11 +455,133 @@ namespace HikiateHenkouShoukai
                                 dtMemory.Rows.Add(row);
                             }
                         }
+                        else
+                        {
+                            foreach (DataRow temp_row in dtTemp.Rows)
+                            {
+                                bool isexists = false;
+                                int index = 0;
+                                for (int i = 0; i < dtMemory.Rows.Count; i++)
+                                {
+                                    if (temp_row["商品"].ToString() == dtMemory.Rows[i]["商品"].ToString() && temp_row["小売店名"].ToString() == dtMemory.Rows[i]["小売店名"].ToString() && temp_row["受注番号-行番号"].ToString() == dtMemory.Rows[i]["受注番号-行番号"].ToString())
+                                    {
+                                        isexists = true;
+                                        index = i;
+                                        break;
+                                    }
+                                }
+
+                                if (isexists)
+                                {
+                                    dtMemory.Rows[index]["引当調整数"] = temp_row["引当調整数"].ToString();
+                                }
+                                else
+                                {
+                                    DataRow row = dtMemory.NewRow();
+                                    for (int i = 0; i < dtMemory.Columns.Count; i++)
+                                    {
+                                        row[i] = temp_row[i].ToString();
+                                    }
+                                    dtMemory.Rows.Add(row);
+                                }
+                            }
+                        }
+                        dtTemp.Clear();
                     }
-                    dtTemp.Clear();
                 }
             }
             txtShouhinCD.Focus();
+        }
+
+        private bool GridErrorCheck()
+        {
+            bool iserror = false;
+            foreach (DataGridViewRow gvrow in gvMainDetail.Rows)
+            {
+                if (gvrow.Cells[11].EditedFormattedValue.ToString() != "0")
+                {
+                    string val = gvrow.Cells[11].EditedFormattedValue.ToString();
+                    Decimal Reserve_Val = Convert.ToDecimal(val);
+                    Decimal MiHikiateSuu = Convert.ToDecimal(gvrow.Cells[6].EditedFormattedValue.ToString());
+                    Decimal HikiateZumiSuu = Convert.ToDecimal(gvrow.Cells[7].EditedFormattedValue.ToString());
+
+                    if (!string.IsNullOrEmpty(gvrow.Cells[12].EditedFormattedValue.ToString()))
+                    {
+                        if (Decimal.ToInt32(HikiateZumiSuu) < Decimal.ToInt32(Reserve_Val))
+                        {
+                            iserror = true;
+                            bbl.ShowMessage("E271");
+                        }
+
+                        if (Decimal.ToInt32(MiHikiateSuu) > Decimal.ToInt32(Reserve_Val))
+                        {
+                            iserror = true;
+                            bbl.ShowMessage("E272");
+                        }
+                    }
+                    else if (string.IsNullOrEmpty(gvrow.Cells[12].EditedFormattedValue.ToString()))
+                    {
+                        if (Decimal.ToInt32(Reserve_Val) > 0)
+                        {
+                            iserror = true;
+                            bbl.ShowMessage("E275");
+                        }
+
+                        if (Decimal.ToInt32(MiHikiateSuu) < Decimal.ToInt32(Reserve_Val))
+                        {
+                            iserror = true;
+                            bbl.ShowMessage("E272");
+                        }
+                    }
+
+                    if (iserror)
+                    {
+                        gvMainDetail.CurrentCell = gvrow.Cells[11];
+                        break;
+                    }
+                    else
+                    {
+                        bool isexists = false;
+                        int index = 0;
+                        if (dtTemp == null)
+                        {
+                            dtTemp = createMemoryTable(1);
+                            dtTemp.Columns.Add("RowNO");
+                        }
+
+                        for (int i = 0; i < dtTemp.Rows.Count; i++)
+                        {
+                            if (dtTemp.Rows[i]["商品"].ToString() == gvrow.Cells["商品"].ToString() && dtTemp.Rows[i]["小売店名"].ToString() == gvrow.Cells["小売店名"].ToString() && dtTemp.Rows[i]["受注番号-行番号"].ToString() == gvrow.Cells["受注番号-行番号"].ToString())
+                            {
+                                isexists = true;
+                                index = i;
+                                break;
+                            }
+                        }
+
+                        if (isexists)    //For multi changes
+                        {
+                            dtTemp.Rows[index]["引当調整数"] = gvrow.Cells["引当調整数"].EditedFormattedValue;
+                        }
+                        //For new changes
+                        else
+                        {
+                            DataRow row = dtTemp.NewRow();
+                            for (int i = 0; i < gvMainDetail.Columns.Count; i++)
+                            {
+                                row[i] = gvrow.Cells[i].EditedFormattedValue;
+                            }
+                            row["RowNO"] = gvrow.Index;
+                            dtTemp.Rows.Add(row);
+                        }
+                    }
+                }
+            }
+
+            if (iserror)
+                return true;
+            else
+                return false;
         }
 
         private DataTable createMemoryTable(int type)
@@ -536,79 +631,15 @@ namespace HikiateHenkouShoukai
             return dt;
         }
 
-        private void gvMainDetail_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        private void gvMainDetail_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if(e.ColumnIndex == 11)
+            if(gvMainDetail.IsLastKeyEnter)
             {
                 string val = gvMainDetail.Rows[e.RowIndex].Cells[11].EditedFormattedValue.ToString();
                 if (string.IsNullOrEmpty(val))
                     gvMainDetail.Rows[e.RowIndex].Cells[11].Value = 0;
                 else if (Convert.ToInt32(val) < 0)
                     gvMainDetail.Rows[e.RowIndex].Cells[11].Style.ForeColor = Color.Red;
-
-                Decimal Reserve_Val = Convert.ToDecimal(val);
-                Decimal MiHikiateSuu = Convert.ToDecimal(gvMainDetail.Rows[e.RowIndex].Cells[6].EditedFormattedValue.ToString());
-                Decimal HikiateZumiSuu = Convert.ToDecimal(gvMainDetail.Rows[e.RowIndex].Cells[7].EditedFormattedValue.ToString());
-
-                if (!string.IsNullOrEmpty(gvMainDetail.Rows[e.RowIndex].Cells[12].EditedFormattedValue.ToString()))
-                {
-                    if (Decimal.ToInt32(HikiateZumiSuu) < Decimal.ToInt32(Reserve_Val))
-                        bbl.ShowMessage("E271");
-
-                    if (Decimal.ToInt32(MiHikiateSuu) > Decimal.ToInt32(Reserve_Val))
-                        bbl.ShowMessage("E272");
-                }
-                else if (string.IsNullOrEmpty(gvMainDetail.Rows[e.RowIndex].Cells[12].EditedFormattedValue.ToString()))
-                {
-                    if (Decimal.ToInt32(Reserve_Val) > 0)
-                        bbl.ShowMessage("E275");
-
-                    if (Decimal.ToInt32(MiHikiateSuu) < Decimal.ToInt32(Reserve_Val))
-                        bbl.ShowMessage("E272");
-                }
-            }
-        }
-
-        private void gvMainDetail_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if(gvMainDetail.IsLastKeyEnter)
-            {
-                if (e.RowIndex >= 0)
-                {
-                    bool isexists = false;
-                    int index = 0;
-                    if (dtTemp == null)
-                    {
-                        dtTemp = createMemoryTable(1);
-                        dtTemp.Columns.Add("RowNO");
-                    }
-
-                    for (int i = 0; i < dtTemp.Rows.Count; i++)
-                    {
-                        if (Convert.ToInt32(dtTemp.Rows[i]["RowNO"].ToString()) == e.RowIndex)
-                        {
-                            isexists = true;
-                            index = i;
-                            break;
-                        }
-                    }
-
-                    if (isexists)    //For multi changes
-                    {
-                        dtTemp.Rows[index]["引当調整数"] = gvMainDetail.Rows[e.RowIndex].Cells["引当調整数"].EditedFormattedValue;
-                    }
-                    //For new changes
-                    else
-                    {
-                        DataRow row = dtTemp.NewRow();
-                        for (int i = 0; i < gvMainDetail.Columns.Count; i++)
-                        {
-                            row[i] = gvMainDetail.Rows[e.RowIndex].Cells[i].EditedFormattedValue;
-                        }
-                        row["RowNO"] = e.RowIndex;
-                        dtTemp.Rows.Add(row);
-                    }
-                }
             }
         }
 

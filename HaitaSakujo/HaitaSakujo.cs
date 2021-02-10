@@ -1,4 +1,5 @@
 ﻿using BL;
+using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
 using System;
@@ -14,9 +15,12 @@ using System.Windows.Forms;
 namespace HaitaSakujo {
     public partial class HaitaSakujo : BaseForm {
         BaseEntity base_Entity;
+        CommonFunction cf;
         public HaitaSakujo()
         {
             InitializeComponent();
+            cf = new CommonFunction();
+            gvHaitaSakujo.SetReadOnlyColumn("col_DataPartition,col_DataPartitionName,col_ExTargetNo,col_ProcessTime,col_InputPeronName,col_ProcessProgram,col_Terminal");
         }
 
         private void HaitaSakujo_Load(object sender, EventArgs e)
@@ -54,6 +58,11 @@ namespace HaitaSakujo {
         }
         public override void FunctionProcess(string tagID)
         {
+            if (tagID == "6")
+            {
+                cf.Clear(PanelTitle);
+                cf.Clear(PanelDetail);
+            }
             if (tagID == "7")
             {
                 OnCheck();
