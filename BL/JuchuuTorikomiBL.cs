@@ -39,5 +39,14 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
             return dt;
         }
+        public string JuchuuTorikomi_CUD(string Xml_Hacchuu, string Xml_Juchuu, string chk_value)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = Xml_Hacchuu };
+            parameters[1] = new SqlParameter("@XML_Main", SqlDbType.Xml) { Value = Xml_Juchuu };
+            parameters[2] = new SqlParameter("@Condition", SqlDbType.VarChar) { Value = chk_value };
+            return ckmdl.InsertUpdateDeleteData("ShukkaTorikomi_Insert", GetConnectionString(), parameters);
+        }
     }
 }
