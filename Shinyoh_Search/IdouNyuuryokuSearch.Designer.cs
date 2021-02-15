@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtCurrentDate = new Shinyoh_Controls.STextBox();
             this.lblStaff = new Shinyoh_Controls.SLabel();
@@ -119,7 +119,7 @@
             this.txtCurrentDate.IsErrorOccurs = false;
             this.txtCurrentDate.IsRequire = false;
             this.txtCurrentDate.IsUseInitializedLayout = true;
-            this.txtCurrentDate.Location = new System.Drawing.Point(969, 34);
+            this.txtCurrentDate.Location = new System.Drawing.Point(966, 62);
             this.txtCurrentDate.MaxLength = 10;
             this.txtCurrentDate.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtCurrentDate.MoveNext = true;
@@ -141,7 +141,7 @@
             this.lblStaff.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStaff.Location = new System.Drawing.Point(713, 33);
             this.lblStaff.Name = "lblStaff";
-            this.lblStaff.Size = new System.Drawing.Size(250, 19);
+            this.lblStaff.Size = new System.Drawing.Size(300, 19);
             this.lblStaff.TabIndex = 97;
             this.lblStaff.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -153,7 +153,7 @@
             this.lblNyukoSouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNyukoSouko.Location = new System.Drawing.Point(213, 59);
             this.lblNyukoSouko.Name = "lblNyukoSouko";
-            this.lblNyukoSouko.Size = new System.Drawing.Size(250, 19);
+            this.lblNyukoSouko.Size = new System.Drawing.Size(300, 19);
             this.lblNyukoSouko.TabIndex = 96;
             this.lblNyukoSouko.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -165,7 +165,7 @@
             this.lblShukkosouko.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblShukkosouko.Location = new System.Drawing.Point(213, 33);
             this.lblShukkosouko.Name = "lblShukkosouko";
-            this.lblShukkosouko.Size = new System.Drawing.Size(250, 19);
+            this.lblShukkosouko.Size = new System.Drawing.Size(300, 19);
             this.lblShukkosouko.TabIndex = 95;
             this.lblShukkosouko.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -224,6 +224,7 @@
             this.txtShukkosouko.IsRequire = false;
             this.txtShukkosouko.IsUseInitializedLayout = true;
             this.txtShukkosouko.lblName = null;
+            this.txtShukkosouko.lblName1 = null;
             this.txtShukkosouko.Location = new System.Drawing.Point(123, 33);
             this.txtShukkosouko.MaxLength = 10;
             this.txtShukkosouko.MinimumSize = new System.Drawing.Size(90, 19);
@@ -236,6 +237,7 @@
             this.txtShukkosouko.TabIndex = 3;
             this.txtShukkosouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShukkosouko.TxtBox = null;
+            this.txtShukkosouko.TxtBox1 = null;
             this.txtShukkosouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtShukkosouko_KeyDown);
             // 
             // txtNyukosouko
@@ -254,6 +256,7 @@
             this.txtNyukosouko.IsRequire = false;
             this.txtNyukosouko.IsUseInitializedLayout = true;
             this.txtNyukosouko.lblName = null;
+            this.txtNyukosouko.lblName1 = null;
             this.txtNyukosouko.Location = new System.Drawing.Point(123, 59);
             this.txtNyukosouko.MaxLength = 10;
             this.txtNyukosouko.MinimumSize = new System.Drawing.Size(90, 19);
@@ -266,6 +269,7 @@
             this.txtNyukosouko.TabIndex = 4;
             this.txtNyukosouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtNyukosouko.TxtBox = null;
+            this.txtNyukosouko.TxtBox1 = null;
             this.txtNyukosouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNyukosouko_KeyDown);
             // 
             // btnShow
@@ -461,7 +465,7 @@
             this.txtShouhinName.NextControl = null;
             this.txtShouhinName.NextControlName = "txtNo11";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
-            this.txtShouhinName.Size = new System.Drawing.Size(590, 19);
+            this.txtShouhinName.Size = new System.Drawing.Size(500, 19);
             this.txtShouhinName.TabIndex = 5;
             this.txtShouhinName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -607,9 +611,11 @@
             this.colNyuukoSoukoCD,
             this.colNyuukoSoukoName,
             this.colCurrentDate});
+            this.gv_Idou.IsErrorOccurs = false;
+            this.gv_Idou.ISRowColumn = null;
             this.gv_Idou.Location = new System.Drawing.Point(33, 139);
             this.gv_Idou.Name = "gv_Idou";
-            this.gv_Idou.Size = new System.Drawing.Size(923, 294);
+            this.gv_Idou.Size = new System.Drawing.Size(923, 331);
             this.gv_Idou.TabIndex = 6;
             this.gv_Idou.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gv_Idou_CellMouseDoubleClick);
             this.gv_Idou.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_Idou_KeyDown);
@@ -624,8 +630,8 @@
             // colIdouDate
             // 
             this.colIdouDate.DataPropertyName = "IdouDate";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colIdouDate.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colIdouDate.DefaultCellStyle = dataGridViewCellStyle3;
             this.colIdouDate.HeaderText = "移動日";
             this.colIdouDate.Name = "colIdouDate";
             this.colIdouDate.Width = 90;

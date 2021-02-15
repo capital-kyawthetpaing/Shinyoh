@@ -31,7 +31,6 @@ namespace BL
                 staffEntity.StaffName = dtStaff.Rows[0]["StaffName"].ToString();
                 staffEntity.LoginDate = dtStaff.Rows[0]["LoginDate"].ToString();
             }
-
             return staffEntity;
         }
 
