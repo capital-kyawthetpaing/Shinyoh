@@ -204,6 +204,7 @@ namespace MasterList_Shouhin
             this.txtBrand_To.IsRequire = false;
             this.txtBrand_To.IsUseInitializedLayout = true;
             this.txtBrand_To.lblName = null;
+            this.txtBrand_To.lblName1 = null;
             this.txtBrand_To.Location = new System.Drawing.Point(227, 88);
             this.txtBrand_To.MaxLength = 10;
             this.txtBrand_To.MinimumSize = new System.Drawing.Size(80, 19);
@@ -216,6 +217,7 @@ namespace MasterList_Shouhin
             this.txtBrand_To.TabIndex = 8;
             this.txtBrand_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand_To.TxtBox = null;
+            this.txtBrand_To.TxtBox1 = null;
             // 
             // txtBrand_From
             // 
@@ -233,6 +235,7 @@ namespace MasterList_Shouhin
             this.txtBrand_From.IsRequire = false;
             this.txtBrand_From.IsUseInitializedLayout = true;
             this.txtBrand_From.lblName = null;
+            this.txtBrand_From.lblName1 = null;
             this.txtBrand_From.Location = new System.Drawing.Point(121, 87);
             this.txtBrand_From.MaxLength = 10;
             this.txtBrand_From.MinimumSize = new System.Drawing.Size(80, 19);
@@ -245,6 +248,7 @@ namespace MasterList_Shouhin
             this.txtBrand_From.TabIndex = 7;
             this.txtBrand_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand_From.TxtBox = null;
+            this.txtBrand_From.TxtBox1 = null;
             // 
             // txtSizeNO2
             // 
@@ -262,8 +266,9 @@ namespace MasterList_Shouhin
             this.txtSizeNO2.IsRequire = false;
             this.txtSizeNO2.IsUseInitializedLayout = true;
             this.txtSizeNO2.lblName = null;
+            this.txtSizeNO2.lblName1 = null;
             this.txtSizeNO2.Location = new System.Drawing.Point(241, 136);
-            this.txtSizeNO2.MaxLength = 10;
+            this.txtSizeNO2.MaxLength = 13;
             this.txtSizeNO2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSizeNO2.MoveNext = true;
             this.txtSizeNO2.Name = "txtSizeNO2";
@@ -274,6 +279,7 @@ namespace MasterList_Shouhin
             this.txtSizeNO2.TabIndex = 12;
             this.txtSizeNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNO2.TxtBox = null;
+            this.txtSizeNO2.TxtBox1 = null;
             // 
             // txtSizeNO1
             // 
@@ -291,8 +297,9 @@ namespace MasterList_Shouhin
             this.txtSizeNO1.IsRequire = false;
             this.txtSizeNO1.IsUseInitializedLayout = true;
             this.txtSizeNO1.lblName = null;
+            this.txtSizeNO1.lblName1 = null;
             this.txtSizeNO1.Location = new System.Drawing.Point(121, 136);
-            this.txtSizeNO1.MaxLength = 10;
+            this.txtSizeNO1.MaxLength = 13;
             this.txtSizeNO1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSizeNO1.MoveNext = true;
             this.txtSizeNO1.Name = "txtSizeNO1";
@@ -303,6 +310,7 @@ namespace MasterList_Shouhin
             this.txtSizeNO1.TabIndex = 11;
             this.txtSizeNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNO1.TxtBox = null;
+            this.txtSizeNO1.TxtBox1 = null;
             // 
             // lblSize
             // 
@@ -342,8 +350,9 @@ namespace MasterList_Shouhin
             this.txtColorNO2.IsRequire = false;
             this.txtColorNO2.IsUseInitializedLayout = true;
             this.txtColorNO2.lblName = null;
+            this.txtColorNO2.lblName1 = null;
             this.txtColorNO2.Location = new System.Drawing.Point(241, 112);
-            this.txtColorNO2.MaxLength = 10;
+            this.txtColorNO2.MaxLength = 13;
             this.txtColorNO2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtColorNO2.MoveNext = true;
             this.txtColorNO2.Name = "txtColorNO2";
@@ -354,6 +363,7 @@ namespace MasterList_Shouhin
             this.txtColorNO2.TabIndex = 10;
             this.txtColorNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColorNO2.TxtBox = null;
+            this.txtColorNO2.TxtBox1 = null;
             // 
             // txtColorNO1
             // 
@@ -371,8 +381,9 @@ namespace MasterList_Shouhin
             this.txtColorNO1.IsRequire = false;
             this.txtColorNO1.IsUseInitializedLayout = true;
             this.txtColorNO1.lblName = null;
+            this.txtColorNO1.lblName1 = null;
             this.txtColorNO1.Location = new System.Drawing.Point(121, 112);
-            this.txtColorNO1.MaxLength = 10;
+            this.txtColorNO1.MaxLength = 13;
             this.txtColorNO1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtColorNO1.MoveNext = true;
             this.txtColorNO1.Name = "txtColorNO1";
@@ -383,6 +394,7 @@ namespace MasterList_Shouhin
             this.txtColorNO1.TabIndex = 9;
             this.txtColorNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColorNO1.TxtBox = null;
+            this.txtColorNO1.TxtBox1 = null;
             // 
             // sLabel3
             // 
@@ -444,8 +456,9 @@ namespace MasterList_Shouhin
             this.txtJANCD_To.IsRequire = false;
             this.txtJANCD_To.IsUseInitializedLayout = true;
             this.txtJANCD_To.lblName = null;
+            this.txtJANCD_To.lblName1 = null;
             this.txtJANCD_To.Location = new System.Drawing.Point(247, 37);
-            this.txtJANCD_To.MaxLength = 10;
+            this.txtJANCD_To.MaxLength = 13;
             this.txtJANCD_To.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJANCD_To.MoveNext = true;
             this.txtJANCD_To.Name = "txtJANCD_To";
@@ -456,6 +469,7 @@ namespace MasterList_Shouhin
             this.txtJANCD_To.TabIndex = 5;
             this.txtJANCD_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJANCD_To.TxtBox = null;
+            this.txtJANCD_To.TxtBox1 = null;
             // 
             // txtJANCD_From
             // 
@@ -473,8 +487,9 @@ namespace MasterList_Shouhin
             this.txtJANCD_From.IsRequire = false;
             this.txtJANCD_From.IsUseInitializedLayout = true;
             this.txtJANCD_From.lblName = null;
+            this.txtJANCD_From.lblName1 = null;
             this.txtJANCD_From.Location = new System.Drawing.Point(121, 37);
-            this.txtJANCD_From.MaxLength = 10;
+            this.txtJANCD_From.MaxLength = 13;
             this.txtJANCD_From.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJANCD_From.MoveNext = true;
             this.txtJANCD_From.Name = "txtJANCD_From";
@@ -485,6 +500,7 @@ namespace MasterList_Shouhin
             this.txtJANCD_From.TabIndex = 4;
             this.txtJANCD_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJANCD_From.TxtBox = null;
+            this.txtJANCD_From.TxtBox1 = null;
             // 
             // lblJANCD
             // 
@@ -524,8 +540,9 @@ namespace MasterList_Shouhin
             this.txtShouhinCD_To.IsRequire = false;
             this.txtShouhinCD_To.IsUseInitializedLayout = true;
             this.txtShouhinCD_To.lblName = null;
+            this.txtShouhinCD_To.lblName1 = null;
             this.txtShouhinCD_To.Location = new System.Drawing.Point(317, 12);
-            this.txtShouhinCD_To.MaxLength = 10;
+            this.txtShouhinCD_To.MaxLength = 20;
             this.txtShouhinCD_To.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhinCD_To.MoveNext = true;
             this.txtShouhinCD_To.Name = "txtShouhinCD_To";
@@ -536,6 +553,7 @@ namespace MasterList_Shouhin
             this.txtShouhinCD_To.TabIndex = 3;
             this.txtShouhinCD_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShouhinCD_To.TxtBox = null;
+            this.txtShouhinCD_To.TxtBox1 = null;
             // 
             // txtShouhinCD_From
             // 
@@ -553,8 +571,9 @@ namespace MasterList_Shouhin
             this.txtShouhinCD_From.IsRequire = false;
             this.txtShouhinCD_From.IsUseInitializedLayout = true;
             this.txtShouhinCD_From.lblName = null;
+            this.txtShouhinCD_From.lblName1 = null;
             this.txtShouhinCD_From.Location = new System.Drawing.Point(121, 12);
-            this.txtShouhinCD_From.MaxLength = 10;
+            this.txtShouhinCD_From.MaxLength = 20;
             this.txtShouhinCD_From.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhinCD_From.MoveNext = true;
             this.txtShouhinCD_From.Name = "txtShouhinCD_From";
@@ -565,6 +584,7 @@ namespace MasterList_Shouhin
             this.txtShouhinCD_From.TabIndex = 2;
             this.txtShouhinCD_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShouhinCD_From.TxtBox = null;
+            this.txtShouhinCD_From.TxtBox1 = null;
             // 
             // lblShouhinCD
             // 
