@@ -155,7 +155,7 @@
             this.lblKouritenName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblKouritenName.Location = new System.Drawing.Point(221, 223);
             this.lblKouritenName.Name = "lblKouritenName";
-            this.lblKouritenName.Size = new System.Drawing.Size(200, 19);
+            this.lblKouritenName.Size = new System.Drawing.Size(300, 19);
             this.lblKouritenName.TabIndex = 103;
             this.lblKouritenName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -167,7 +167,7 @@
             this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTokuisakiName.Location = new System.Drawing.Point(221, 188);
             this.lblTokuisakiName.Name = "lblTokuisakiName";
-            this.lblTokuisakiName.Size = new System.Drawing.Size(200, 19);
+            this.lblTokuisakiName.Size = new System.Drawing.Size(300, 19);
             this.lblTokuisakiName.TabIndex = 102;
             this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -204,7 +204,7 @@
             this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBrandName.Location = new System.Drawing.Point(221, 154);
             this.lblBrandName.Name = "lblBrandName";
-            this.lblBrandName.Size = new System.Drawing.Size(200, 19);
+            this.lblBrandName.Size = new System.Drawing.Size(300, 19);
             this.lblBrandName.TabIndex = 99;
             this.lblBrandName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -216,7 +216,7 @@
             this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStaffCD_Name.Location = new System.Drawing.Point(221, 120);
             this.lblStaffCD_Name.Name = "lblStaffCD_Name";
-            this.lblStaffCD_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblStaffCD_Name.Size = new System.Drawing.Size(400, 19);
             this.lblStaffCD_Name.TabIndex = 98;
             this.lblStaffCD_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -434,6 +434,7 @@
             this.txtAddress.IsRequire = false;
             this.txtAddress.IsUseInitializedLayout = true;
             this.txtAddress.lblName = null;
+            this.txtAddress.lblName1 = null;
             this.txtAddress.Location = new System.Drawing.Point(141, 387);
             this.txtAddress.MaxLength = 80;
             this.txtAddress.MinimumSize = new System.Drawing.Size(80, 19);
@@ -446,6 +447,7 @@
             this.txtAddress.TabIndex = 18;
             this.txtAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtAddress.TxtBox = null;
+            this.txtAddress.TxtBox1 = null;
             // 
             // lblAddress
             // 
@@ -615,6 +617,7 @@
             this.txtStore.IsRequire = false;
             this.txtStore.IsUseInitializedLayout = true;
             this.txtStore.lblName = null;
+            this.txtStore.lblName1 = null;
             this.txtStore.Location = new System.Drawing.Point(141, 223);
             this.txtStore.MaxLength = 10;
             this.txtStore.MinimumSize = new System.Drawing.Size(80, 19);
@@ -627,6 +630,7 @@
             this.txtStore.TabIndex = 13;
             this.txtStore.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStore.TxtBox = null;
+            this.txtStore.TxtBox1 = null;
             // 
             // txtTokuisaki
             // 
@@ -644,6 +648,7 @@
             this.txtTokuisaki.IsRequire = false;
             this.txtTokuisaki.IsUseInitializedLayout = true;
             this.txtTokuisaki.lblName = null;
+            this.txtTokuisaki.lblName1 = null;
             this.txtTokuisaki.Location = new System.Drawing.Point(141, 188);
             this.txtTokuisaki.MaxLength = 10;
             this.txtTokuisaki.MinimumSize = new System.Drawing.Size(80, 19);
@@ -656,6 +661,7 @@
             this.txtTokuisaki.TabIndex = 12;
             this.txtTokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisaki.TxtBox = null;
+            this.txtTokuisaki.TxtBox1 = null;
             this.txtTokuisaki.Leave += new System.EventHandler(this.txtTokuisaki_Leave);
             // 
             // txtBrand
@@ -675,6 +681,7 @@
             this.txtBrand.IsRequire = false;
             this.txtBrand.IsUseInitializedLayout = true;
             this.txtBrand.lblName = null;
+            this.txtBrand.lblName1 = null;
             this.txtBrand.Location = new System.Drawing.Point(141, 154);
             this.txtBrand.MaxLength = 10;
             this.txtBrand.MinimumSize = new System.Drawing.Size(80, 19);
@@ -687,6 +694,7 @@
             this.txtBrand.TabIndex = 8;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand.TxtBox = null;
+            this.txtBrand.TxtBox1 = null;
             this.txtBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrand_KeyDown);
             // 
             // txtStaffCD
@@ -706,6 +714,7 @@
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
+            this.txtStaffCD.lblName1 = null;
             this.txtStaffCD.Location = new System.Drawing.Point(141, 120);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(80, 19);
@@ -718,6 +727,7 @@
             this.txtStaffCD.TabIndex = 7;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaffCD.TxtBox = null;
+            this.txtStaffCD.TxtBox1 = null;
             // 
             // label1
             // 
