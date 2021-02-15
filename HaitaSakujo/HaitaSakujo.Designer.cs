@@ -302,7 +302,7 @@
             this.txt_HM2.MoveNext = true;
             this.txt_HM2.Name = "txt_HM2";
             this.txt_HM2.NextControl = null;
-            this.txt_HM2.NextControlName = "BtnF10";
+            this.txt_HM2.NextControlName = "BtnF12";
             this.txt_HM2.SearchType = Entity.SearchType.ScType.None;
             this.txt_HM2.Size = new System.Drawing.Size(50, 19);
             this.txt_HM2.TabIndex = 7;
@@ -418,7 +418,7 @@
             this.gvHaitaSakujo.Location = new System.Drawing.Point(155, 20);
             this.gvHaitaSakujo.Name = "gvHaitaSakujo";
             this.gvHaitaSakujo.Size = new System.Drawing.Size(1400, 800);
-            this.gvHaitaSakujo.TabIndex = 95;
+            this.gvHaitaSakujo.TabIndex = 8;
             // 
             // col_Target
             // 
