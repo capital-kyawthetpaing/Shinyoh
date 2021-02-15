@@ -773,6 +773,7 @@ namespace JuchuuNyuuryoku
         {
             multipurposeBL bl = new multipurposeBL();
             DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
+            lblBrand_Name.Text = string.Empty;
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
         }
@@ -916,9 +917,9 @@ namespace JuchuuNyuuryoku
 
                 obj.ChangeDate = txtJuchuuDate.Text;
                 DataTable dt = obj_bl.JuchuuNyuuryoku_Display(obj);
+                gv_JuchuuNyuuryoku.DataSource = dt;                     //For task no. 120
                 if (dt.Rows.Count > 0)
                 {
-                    gv_JuchuuNyuuryoku.DataSource = dt;
                     DataTable dt_temp = dt.Copy();
                     gv1_to_dt1 = dt_temp;
 
