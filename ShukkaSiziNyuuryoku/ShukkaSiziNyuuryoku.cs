@@ -100,8 +100,11 @@ namespace ShukkaSiziNyuuryoku
             }
             if (tagID == "10")
             {
-                
-                FunctionProcedure(10);
+                dgvShukkasizi.ActionType = "F10";     //to skip gv error check at the ErrorCheck() of BaseForm.cs
+                if (ErrorCheck(PanelDetail))
+                    FunctionProcedure(10);
+                dgvShukkasizi.ActionType = string.Empty;    //to check gv error at the ErrorCheck() of BaseForm.cs
+               
             }
             if(tagID=="11")
             {
@@ -845,12 +848,12 @@ namespace ShukkaSiziNyuuryoku
                 string TorihikiShuuryouDate = dt.Rows[0]["TorihikiShuuryouDate"].ToString();
                 if (!string.IsNullOrEmpty(TorihikiKaisiDate) && Convert.ToDateTime(TorihikiKaisiDate) > Convert.ToDateTime(txtShippingDate.Text))
                 {
-                    bbl.ShowMessage("E267");
+                    bbl.ShowMessage("E267", "取引開始日");
                     return false;
                 }
                 else if (!string.IsNullOrEmpty(TorihikiShuuryouDate) && Convert.ToDateTime(TorihikiShuuryouDate) < Convert.ToDateTime(txtShippingDate.Text))
                 {
-                    bbl.ShowMessage("E227");
+                    bbl.ShowMessage("E227", "取引終了日");
                     return false;
                 }
             }
@@ -964,7 +967,6 @@ namespace ShukkaSiziNyuuryoku
                     if (cboMode.SelectedValue.ToString().Equals("2"))
                     {
                         dtGridview(1);
-
                     }
                     else
                     {
