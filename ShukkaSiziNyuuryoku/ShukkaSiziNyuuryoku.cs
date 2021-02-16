@@ -104,7 +104,6 @@ namespace ShukkaSiziNyuuryoku
                 if (ErrorCheck(PanelDetail))
                     FunctionProcedure(10);
                 dgvShukkasizi.ActionType = string.Empty;    //to check gv error at the ErrorCheck() of BaseForm.cs
-               
             }
             if(tagID=="11")
             {
@@ -112,8 +111,8 @@ namespace ShukkaSiziNyuuryoku
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
-                {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
+                //{
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -131,8 +130,8 @@ namespace ShukkaSiziNyuuryoku
                             break;
                 }
                 dtResult.Clear();
-                    dtTemp1.Clear();
-                }
+                dtTemp1.Clear();
+                //}
             }
             base.FunctionProcess(tagID);
         }
@@ -226,7 +225,6 @@ namespace ShukkaSiziNyuuryoku
                         }
                     }
                 }
-
                 DataRow dr1 = dtGS1.NewRow();
                 for (int i = 0; i < dtGS1.Columns.Count; i++)
                 {
@@ -236,7 +234,6 @@ namespace ShukkaSiziNyuuryoku
                         dr1[i] = string.IsNullOrEmpty(dgvShukkasizi[i, row].EditedFormattedValue.ToString().Trim()) ? null : dgvShukkasizi[i, row].EditedFormattedValue.ToString();
                 }
                 dtGS1.Rows.Add(dr1);
-
             }
         }
         private void Update_Data()
@@ -544,7 +541,10 @@ namespace ShukkaSiziNyuuryoku
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            FunctionProcedure(10);
+            dgvShukkasizi.ActionType = "F10"; 
+            if (ErrorCheck(PanelDetail))
+                FunctionProcedure(10);
+            dgvShukkasizi.ActionType = string.Empty;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -588,6 +588,7 @@ namespace ShukkaSiziNyuuryoku
                     {
                         dgvShukkasizi["SoukoCD", row].Value = ss.soukoCD.ToString();
                         dgvShukkasizi["SoukoName", row].Value = ss.soukoName.ToString();
+                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["SoukoCD"];
                         Temp_Save(row);
                     }
                 }
@@ -613,6 +614,25 @@ namespace ShukkaSiziNyuuryoku
                 {
                     Temp_Save(e.RowIndex);
                     dgvShukkasizi.MoveNextCell();
+                }
+            }
+        }
+        private void dgvShukkasizi_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F9)
+            {
+                int row = dgvShukkasizi.CurrentCell.RowIndex;
+                int col = dgvShukkasizi.CurrentCell.ColumnIndex;
+                if (row >= 0 && col == 15)
+                {
+                    SoukoSearch ss = new SoukoSearch();
+                    ss.ShowDialog();
+                    if (!string.IsNullOrEmpty(ss.soukoCD))
+                    {
+                        dgvShukkasizi["SoukoCD", row].Value = ss.soukoCD.ToString();
+                        dgvShukkasizi["SoukoName", row].Value = ss.soukoName.ToString();
+                        Temp_Save(row);
+                    }
                 }
             }
         }
@@ -902,32 +922,50 @@ namespace ShukkaSiziNyuuryoku
                 bbl.ShowMessage("E143", "未出荷指示数", "大きい");
                 return false;
             }
-            if (dgvShukkasizi.Rows[row].Cells["SoukoCD"].Value.ToString().Equals("") && (!dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0")))
-            {
-                bbl.ShowMessage("E102");
-                dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["SoukoCD"];
-                return false;
-            }
-            if(dgvShukkasizi.Rows[row].Cells["SoukoCD"].Value.ToString().Equals("") && (!dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0")))
-            {
-                bbl.ShowMessage("E102");
-                dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["SoukoCD"];
-                return false;
-            }
+            //if (dgvShukkasizi.Rows[row].Cells["SoukoCD"].Value.ToString().Equals("") && (!dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0")))
+            //{
+            //    bbl.ShowMessage("E102");
+            //    dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["SoukoCD"];
+            //    return false;
+            //}
             return true;
-        }        
+        }
         private bool GV_Check()
         {
-            foreach (DataGridViewRow gv in dgvShukkasizi.Rows)
+            for (int k = 0; k < dtGS1.Rows.Count; k++)
             {
-                if(!gv.Cells["colArrivalTime"].Value.ToString().Equals("0"))
+                if (!dtGS1.Rows[k]["KonkaiShukkaSiziSuu"].ToString().Equals("0"))
                 {
-                    int row = gv.Index;
-                    if (!ColArrivalTime(row, 8))
+                    if (!ColArrivalTime(k, 8))
                     {
                         return false;
                     }
+                    if (dtGS1.Rows[k]["SoukoCD"].ToString().Equals(""))
+                    {
+                        dgvShukkasizi.Select();
+                        bbl.ShowMessage("E102");
+                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[k].Cells["SoukoCD"];
+                        //dtGS1.Rows.RemoveAt(k);
+                        return false;
+                    }
                 }
+                //foreach (DataGridViewRow gv in dgvShukkasizi.Rows)
+                //{
+                //    if (!gv.Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0"))
+                //    {
+                //        int row = gv.Index;
+                //        if (!ColArrivalTime(row, 8))
+                //        {
+                //            return false;
+                //        }
+                //        if (dgvShukkasizi.Rows[row].Cells["SoukoCD"].Value.ToString().Equals(""))
+                //        {
+                //            bbl.ShowMessage("E102");
+                //            dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["SoukoCD"];
+                //            return false;
+                //        }
+                //    }
+                //}
             }
             return true;
         }
@@ -953,13 +991,15 @@ namespace ShukkaSiziNyuuryoku
                 case 8:
                     if (dtTemp1.Rows.Count > 0)
                     {
+                        var dtgv = dtTemp1.AsEnumerable().Where(s => s.Field<string>("SoukoCD") != null).CopyToDataTable();
                         var dtConfirm = dtTemp1.AsEnumerable().OrderBy(r => r.Field<string>("SKMSNO")).ThenBy(r => r.Field<string>("ShouhinCD")).CopyToDataTable();
                         dgvShukkasizi.DataSource = dtConfirm;  
                     }
                     else
                     {
-                        dtGS1 = CreateTable_Details();
-                        dgvShukkasizi.DataSource = dtGS1;
+                        DataTable dt = new DataTable();
+                        dt = CreateTable_Details();
+                        dgvShukkasizi.DataSource = dt;
                     }
                        break;
                 case 10:
@@ -972,7 +1012,8 @@ namespace ShukkaSiziNyuuryoku
                     {
                         dtGridview(2);
                     }
-                    dtHaita = dtgv1.Copy();                   
+                    dtHaita = dtgv1.Copy();
+                    bool count = false;
                     //Table_Y/排他テーブルに追加
                     if (dtgv1.Rows.Count>0)
                     {
@@ -994,17 +1035,21 @@ namespace ShukkaSiziNyuuryoku
 
                             if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
                             {
-                                bbl.ShowMessage("S004",ProgramID,OperatorCD);
+                                count = true;
                                 Gvrow_Delete(dr);
                             }
                         }
+                    }
+                    if(count)
+                    {
+                        bbl.ShowMessage("S004", ProgramID, OperatorCD);
                     }
                     dgvShukkasizi.DataSource = dtHaita;
                     dgvShukkasizi.Columns["colArrivalTime"].ReadOnly = false;
                     dgvShukkasizi.Columns["chk"].ReadOnly = false;                    
                     break;
                 case 11:
-                    if(GV_Check())
+                    if (dtGS1.Rows.Count>0 && GV_Check())
                     {
                         dtTemp1 = dtGS1;//temp add
 
@@ -1012,10 +1057,12 @@ namespace ShukkaSiziNyuuryoku
                         txtJuchuuNo.Focus();
                         dgvShukkasizi.ClearSelection();
                         dgvShukkasizi.DataSource = dtClear;
+                        dgvShukkasizi.Memory_Row_Count =dtTemp1.Rows.Count ;
                     }                    
                     break;
             }
         }
+
         private bool ShippingNO_Check()
         {
             sksz_e = new ShukkaSiziNyuuryokuEntity();
@@ -1054,6 +1101,7 @@ namespace ShukkaSiziNyuuryoku
         }
         private void ModeType(int type)
         {
+            dgvShukkasizi.Memory_Row_Count = 0;
             switch (type)
             {
                 case 1://New_Mode
@@ -1076,6 +1124,7 @@ namespace ShukkaSiziNyuuryoku
                     SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
                     SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
                     SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
+
                     break;
 
                 case 2://F3
@@ -1085,15 +1134,15 @@ namespace ShukkaSiziNyuuryoku
                     cf.DisablePanel(PanelDetail);
                     sbShippingNO.Focus();
                     rdoNeed.Checked = true;
+                    SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
+                    SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
+                    SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
                     break;
 
                 case 3:
                     lblTokuisakiName.Text = string.Empty;
                     lblKouritenName.Text = string.Empty;
                     lblStaffName.Text = string.Empty;
-                    SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
-                    SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
-                    SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
                     break;
 
                 case 4:  //start_Mode
@@ -1103,10 +1152,10 @@ namespace ShukkaSiziNyuuryoku
                     SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
                     SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
                     SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-                    SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
+                    SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
                     SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
-                    SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
-                    SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
+                    SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
+                    SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
                     SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
                     SetButton(ButtonType.BType.Empty, F7, "", false);
 
