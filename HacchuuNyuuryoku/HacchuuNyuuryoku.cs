@@ -648,7 +648,7 @@ namespace HacchuuNyuuryoku
                         expectedDate = string.IsNullOrEmpty(txt.Text) ? base_Entity.LoginDate : txt.Text;
                         if (Convert.ToDateTime(expectedDate) < JuchuuDate)
                         {
-                            base_bl.ShowMessage("E267", "受注日");
+                            base_bl.ShowMessage("E267", "発注日");
                             bl_error = true;
                         }
                     }
