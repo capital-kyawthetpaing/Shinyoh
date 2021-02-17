@@ -972,17 +972,10 @@ namespace JuchuuNyuuryoku
                 DataRow existDr1 = null;
                 if (chk_value != "False")
                     chk = "1";
-                    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "'and ISNULL([Free],'')='"+ chk + "' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
-                if (existDr1 != null)
-                {
-                    if (select_dr1[0][8].ToString() == "0")
-                    {
-                        F8_dt1.Rows.Remove(existDr1);
-                        existDr1 = null;
-                    }
-                }
+                existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "'and ISNULL([Free],'')='" + chk + "' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
+               
                 F8_drNew[0] = shouhinCD;
-                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" &&  row.Cells[8].Value.ToString() != select_dr1[0][8].ToString().Replace(".000000", string.Empty))
+                if (row.Cells[8].Value.ToString() != select_dr1[0][8].ToString().Replace(".000000", string.Empty))
                 {
                     for (int c = 1; c < gv_JuchuuNyuuryoku.Columns.Count; c++)
                     {
@@ -1016,23 +1009,44 @@ namespace JuchuuNyuuryoku
                     // grid 1 insert(if exist, remove exist and insert)
                     if (bl == true)
                     {
+                        if (row.Cells["colJuchuuSuu"].Value.ToString() != "0")
+                        {
+                            string Juchuu_max = string.Empty;
+                            string Hacchuu_max = string.Empty;
+                            if (F8_dt1.Rows.Count > 0)
+                            {
+                                if (existDr1 == null)
+                                {
+                                    Juchuu_max = F8_dt1.AsEnumerable()
+                                       .Where(d => d["JuchuuNO"].ToString() == F8_drNew["JuchuuNO"].ToString())
+                                       .Max(r => r["JuchuuGyouNO"].ToString())
+                                       .ToString();
+
+                                    Hacchuu_max = F8_dt1.AsEnumerable()
+                                       .Where(d => d["HacchuuNO"].ToString() == F8_drNew["HacchuuNO"].ToString())
+                                       .Max(r => r.IsNull("HacchuuGyouNO") ? "0" : r["HacchuuGyouNO"].ToString())
+                                       .ToString();
+
+                                    if (chk_value == "True" && !string.IsNullOrEmpty(Juchuu_max))
+                                    {
+                                        F8_drNew["JuchuuGyouNO"] = Convert.ToInt32(Juchuu_max) + 1;
+                                        F8_drNew["HacchuuNO"] = DBNull.Value;
+                                        F8_drNew["HacchuuGyouNO"] = DBNull.Value;
+                                    }
+                                    else if (chk_value == "False" && !string.IsNullOrEmpty(Hacchuu_max))
+                                    {
+                                        F8_drNew["JuchuuGyouNO"] = Convert.ToInt32(Juchuu_max) + 1;
+                                        F8_drNew["HacchuuGyouNO"] = Convert.ToInt32(Hacchuu_max) + 1;
+                                    }
+                                }
+                            }
+                            F8_dt1.Rows.Add(F8_drNew);
+                        }
                         if (existDr1 != null)
                             F8_dt1.Rows.Remove(existDr1);
-                        if(!string.IsNullOrEmpty(F8_drNew["JuchuuNO"].ToString()) && !string.IsNullOrEmpty(F8_drNew["JuchuuGyouNO"].ToString()))
-                        {
-                            DataRow[] results = F8_dt1.Select("JuchuuNO = '" + F8_drNew["JuchuuNO"] + "' AND JuchuuGyouNO = '" + F8_drNew["JuchuuGyouNO"] + "'");
-                            if (results.Length > 0)
-                            {
-                                F8_drNew["JuchuuGyouNO"] = Convert.ToInt32(F8_drNew["JuchuuGyouNO"]) + 1;
-                                F8_drNew["HacchuuNO"] = DBNull.Value;
-                                F8_drNew["HacchuuGyouNO"] = DBNull.Value;
-                            }
-                        }
-                        F8_dt1.Rows.Add(F8_drNew);
                     }
                 }
             }
-            
             gv_JuchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
             Focus_Clear();
         }
