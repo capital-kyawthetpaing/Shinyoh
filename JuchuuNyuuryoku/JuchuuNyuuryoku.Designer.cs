@@ -187,7 +187,7 @@
             this.PanelDetail.Controls.Add(this.lblPayment);
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1713, 838);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 860);
             this.PanelDetail.TabIndex = 1;
             // 
             // txtSizeNo
@@ -206,6 +206,7 @@
             this.txtSizeNo.IsRequire = false;
             this.txtSizeNo.IsUseInitializedLayout = true;
             this.txtSizeNo.lblName = null;
+            this.txtSizeNo.lblName1 = null;
             this.txtSizeNo.Location = new System.Drawing.Point(1423, 185);
             this.txtSizeNo.MaxLength = 13;
             this.txtSizeNo.MinimumSize = new System.Drawing.Size(100, 19);
@@ -218,6 +219,7 @@
             this.txtSizeNo.TabIndex = 21;
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNo.TxtBox = null;
+            this.txtSizeNo.TxtBox1 = null;
             // 
             // txtColorNo
             // 
@@ -235,6 +237,7 @@
             this.txtColorNo.IsRequire = false;
             this.txtColorNo.IsUseInitializedLayout = true;
             this.txtColorNo.lblName = null;
+            this.txtColorNo.lblName1 = null;
             this.txtColorNo.Location = new System.Drawing.Point(1103, 186);
             this.txtColorNo.MaxLength = 13;
             this.txtColorNo.MinimumSize = new System.Drawing.Size(100, 19);
@@ -247,6 +250,7 @@
             this.txtColorNo.TabIndex = 20;
             this.txtColorNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColorNo.TxtBox = null;
+            this.txtColorNo.TxtBox1 = null;
             // 
             // txtBrandCD
             // 
@@ -264,6 +268,7 @@
             this.txtBrandCD.IsRequire = false;
             this.txtBrandCD.IsUseInitializedLayout = true;
             this.txtBrandCD.lblName = null;
+            this.txtBrandCD.lblName1 = null;
             this.txtBrandCD.Location = new System.Drawing.Point(265, 155);
             this.txtBrandCD.MaxLength = 10;
             this.txtBrandCD.MinimumSize = new System.Drawing.Size(70, 19);
@@ -276,6 +281,8 @@
             this.txtBrandCD.TabIndex = 13;
             this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrandCD.TxtBox = null;
+            this.txtBrandCD.TxtBox1 = null;
+            this.txtBrandCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrandCD_KeyDown);
             // 
             // txtShouhinCD
             // 
@@ -293,6 +300,7 @@
             this.txtShouhinCD.IsRequire = false;
             this.txtShouhinCD.IsUseInitializedLayout = true;
             this.txtShouhinCD.lblName = null;
+            this.txtShouhinCD.lblName1 = null;
             this.txtShouhinCD.Location = new System.Drawing.Point(265, 186);
             this.txtShouhinCD.MaxLength = 20;
             this.txtShouhinCD.MinimumSize = new System.Drawing.Size(150, 19);
@@ -305,6 +313,7 @@
             this.txtShouhinCD.TabIndex = 14;
             this.txtShouhinCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShouhinCD.TxtBox = null;
+            this.txtShouhinCD.TxtBox1 = null;
             // 
             // gv_JuchuuNyuuryoku
             // 
@@ -366,7 +375,7 @@
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gv_JuchuuNyuuryoku.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1630, 570);
+            this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1630, 565);
             this.gv_JuchuuNyuuryoku.TabIndex = 106;
             this.gv_JuchuuNyuuryoku.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.gv_JuchuuNyuuryoku_CellBeginEdit);
             this.gv_JuchuuNyuuryoku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellContentClick);
@@ -688,6 +697,7 @@
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
+            this.txtStaffCD.lblName1 = null;
             this.txtStaffCD.Location = new System.Drawing.Point(265, 100);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
@@ -700,6 +710,7 @@
             this.txtStaffCD.TabIndex = 8;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaffCD.TxtBox = null;
+            this.txtStaffCD.TxtBox1 = null;
             // 
             // txtKouritenCD
             // 
@@ -718,6 +729,7 @@
             this.txtKouritenCD.IsRequire = false;
             this.txtKouritenCD.IsUseInitializedLayout = true;
             this.txtKouritenCD.lblName = null;
+            this.txtKouritenCD.lblName1 = null;
             this.txtKouritenCD.Location = new System.Drawing.Point(265, 71);
             this.txtKouritenCD.MaxLength = 10;
             this.txtKouritenCD.MinimumSize = new System.Drawing.Size(70, 19);
@@ -730,6 +742,7 @@
             this.txtKouritenCD.TabIndex = 6;
             this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtKouritenCD.TxtBox = null;
+            this.txtKouritenCD.TxtBox1 = null;
             this.txtKouritenCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtKouritenCD_KeyDown);
             // 
             // txtTokuisakiCD
@@ -749,6 +762,7 @@
             this.txtTokuisakiCD.IsRequire = false;
             this.txtTokuisakiCD.IsUseInitializedLayout = true;
             this.txtTokuisakiCD.lblName = null;
+            this.txtTokuisakiCD.lblName1 = null;
             this.txtTokuisakiCD.Location = new System.Drawing.Point(264, 43);
             this.txtTokuisakiCD.MaxLength = 10;
             this.txtTokuisakiCD.MinimumSize = new System.Drawing.Size(70, 19);
@@ -761,6 +775,7 @@
             this.txtTokuisakiCD.TabIndex = 4;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD.TxtBox = null;
+            this.txtTokuisakiCD.TxtBox1 = null;
             this.txtTokuisakiCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisakiCD_KeyDown);
             // 
             // lblYear
@@ -1397,6 +1412,7 @@
             this.txtCopy.IsRequire = false;
             this.txtCopy.IsUseInitializedLayout = true;
             this.txtCopy.lblName = null;
+            this.txtCopy.lblName1 = null;
             this.txtCopy.Location = new System.Drawing.Point(125, 34);
             this.txtCopy.MaxLength = 12;
             this.txtCopy.MinimumSize = new System.Drawing.Size(100, 19);
@@ -1409,6 +1425,7 @@
             this.txtCopy.TabIndex = 2;
             this.txtCopy.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtCopy.TxtBox = null;
+            this.txtCopy.TxtBox1 = null;
             this.txtCopy.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopy_KeyDown);
             // 
             // txtJuchuuNO
@@ -1427,6 +1444,7 @@
             this.txtJuchuuNO.IsRequire = false;
             this.txtJuchuuNO.IsUseInitializedLayout = true;
             this.txtJuchuuNO.lblName = null;
+            this.txtJuchuuNO.lblName1 = null;
             this.txtJuchuuNO.Location = new System.Drawing.Point(125, 9);
             this.txtJuchuuNO.MaxLength = 12;
             this.txtJuchuuNO.MinimumSize = new System.Drawing.Size(100, 19);
@@ -1439,13 +1457,14 @@
             this.txtJuchuuNO.TabIndex = 1;
             this.txtJuchuuNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJuchuuNO.TxtBox = null;
+            this.txtJuchuuNO.TxtBox1 = null;
             this.txtJuchuuNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNO_KeyDown);
             // 
             // JuchuuNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1713, 961);
+            this.ClientSize = new System.Drawing.Size(1713, 991);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "JuchuuNyuuryoku";

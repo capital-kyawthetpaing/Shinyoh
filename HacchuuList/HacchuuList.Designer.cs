@@ -139,6 +139,7 @@
             this.txtJuchuuNO2.IsRequire = false;
             this.txtJuchuuNO2.IsUseInitializedLayout = true;
             this.txtJuchuuNO2.lblName = null;
+            this.txtJuchuuNO2.lblName1 = null;
             this.txtJuchuuNO2.Location = new System.Drawing.Point(298, 296);
             this.txtJuchuuNO2.MaxLength = 12;
             this.txtJuchuuNO2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -151,6 +152,7 @@
             this.txtJuchuuNO2.TabIndex = 16;
             this.txtJuchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJuchuuNO2.TxtBox = null;
+            this.txtJuchuuNO2.TxtBox1 = null;
             // 
             // txtJuchuuNO1
             // 
@@ -168,6 +170,7 @@
             this.txtJuchuuNO1.IsRequire = false;
             this.txtJuchuuNO1.IsUseInitializedLayout = true;
             this.txtJuchuuNO1.lblName = null;
+            this.txtJuchuuNO1.lblName1 = null;
             this.txtJuchuuNO1.Location = new System.Drawing.Point(141, 295);
             this.txtJuchuuNO1.MaxLength = 12;
             this.txtJuchuuNO1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -180,6 +183,7 @@
             this.txtJuchuuNO1.TabIndex = 15;
             this.txtJuchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJuchuuNO1.TxtBox = null;
+            this.txtJuchuuNO1.TxtBox1 = null;
             // 
             // txtHacchuuNO2
             // 
@@ -197,6 +201,7 @@
             this.txtHacchuuNO2.IsRequire = false;
             this.txtHacchuuNO2.IsUseInitializedLayout = true;
             this.txtHacchuuNO2.lblName = null;
+            this.txtHacchuuNO2.lblName1 = null;
             this.txtHacchuuNO2.Location = new System.Drawing.Point(298, 82);
             this.txtHacchuuNO2.MaxLength = 12;
             this.txtHacchuuNO2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -209,6 +214,7 @@
             this.txtHacchuuNO2.TabIndex = 5;
             this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtHacchuuNO2.TxtBox = null;
+            this.txtHacchuuNO2.TxtBox1 = null;
             // 
             // txtHacchuuNO1
             // 
@@ -226,6 +232,7 @@
             this.txtHacchuuNO1.IsRequire = false;
             this.txtHacchuuNO1.IsUseInitializedLayout = true;
             this.txtHacchuuNO1.lblName = null;
+            this.txtHacchuuNO1.lblName1 = null;
             this.txtHacchuuNO1.Location = new System.Drawing.Point(141, 82);
             this.txtHacchuuNO1.MaxLength = 12;
             this.txtHacchuuNO1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -238,6 +245,7 @@
             this.txtHacchuuNO1.TabIndex = 4;
             this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtHacchuuNO1.TxtBox = null;
+            this.txtHacchuuNO1.TxtBox1 = null;
             // 
             // panel2
             // 
@@ -319,6 +327,7 @@
             this.txtBrandCD.IsRequire = false;
             this.txtBrandCD.IsUseInitializedLayout = true;
             this.txtBrandCD.lblName = null;
+            this.txtBrandCD.lblName1 = null;
             this.txtBrandCD.Location = new System.Drawing.Point(141, 183);
             this.txtBrandCD.MaxLength = 10;
             this.txtBrandCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -331,6 +340,8 @@
             this.txtBrandCD.TabIndex = 9;
             this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrandCD.TxtBox = null;
+            this.txtBrandCD.TxtBox1 = null;
+            this.txtBrandCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrandCD_KeyDown);
             // 
             // txtStaffCD
             // 
@@ -348,6 +359,7 @@
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
+            this.txtStaffCD.lblName1 = null;
             this.txtStaffCD.Location = new System.Drawing.Point(141, 149);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -360,6 +372,7 @@
             this.txtStaffCD.TabIndex = 8;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaffCD.TxtBox = null;
+            this.txtStaffCD.TxtBox1 = null;
             // 
             // lblYear
             // 
@@ -641,7 +654,7 @@
             this.lblBrand_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblBrand_Name.Location = new System.Drawing.Point(231, 183);
             this.lblBrand_Name.Name = "lblBrand_Name";
-            this.lblBrand_Name.Size = new System.Drawing.Size(200, 19);
+            this.lblBrand_Name.Size = new System.Drawing.Size(300, 19);
             this.lblBrand_Name.TabIndex = 62;
             this.lblBrand_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -653,7 +666,7 @@
             this.lblStaff_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblStaff_Name.Location = new System.Drawing.Point(231, 149);
             this.lblStaff_Name.Name = "lblStaff_Name";
-            this.lblStaff_Name.Size = new System.Drawing.Size(300, 19);
+            this.lblStaff_Name.Size = new System.Drawing.Size(400, 19);
             this.lblStaff_Name.TabIndex = 0;
             this.lblStaff_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 

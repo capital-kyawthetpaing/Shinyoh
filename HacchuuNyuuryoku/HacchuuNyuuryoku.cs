@@ -67,7 +67,7 @@ namespace HacchuuNyuuryoku
             txtShouhinCD.ChangeDate = txtHacchuuDate;
 
             base_Entity = _GetBaseData();
-            ChangeMode(Mode.New);
+            
 
             txtHacchuuNO.ChangeDate = txtHacchuuDate;
             txtCopy.ChangeDate = txtHacchuuDate;
@@ -77,6 +77,7 @@ namespace HacchuuNyuuryoku
             gv_HacchuuNyuuryoku.SetHiraganaColumn("colHacchuuMeisaiTekiyou");
             gv_HacchuuNyuuryoku.SetNumberColumn("colHacchuuSuu");
             gv_HacchuuNyuuryoku.ClearSelection();
+            ChangeMode(Mode.New);
         }
 
         private void ChangeMode(Mode mode)
@@ -648,7 +649,7 @@ namespace HacchuuNyuuryoku
                         expectedDate = string.IsNullOrEmpty(txt.Text) ? base_Entity.LoginDate : txt.Text;
                         if (Convert.ToDateTime(expectedDate) < JuchuuDate)
                         {
-                            base_bl.ShowMessage("E267", "受注日");
+                            base_bl.ShowMessage("E267", "発注日");
                             bl_error = true;
                         }
                     }
