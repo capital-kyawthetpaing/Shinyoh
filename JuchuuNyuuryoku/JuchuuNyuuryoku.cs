@@ -80,7 +80,7 @@ namespace JuchuuNyuuryoku
             txtShouhinCD.ChangeDate = txtJuchuuDate;
 
             base_Entity = _GetBaseData();
-            ChangeMode(Mode.New);
+            
 
             txtJuchuuNO.ChangeDate = txtJuchuuDate;
             txtCopy.ChangeDate = txtJuchuuDate;
@@ -108,6 +108,7 @@ namespace JuchuuNyuuryoku
             // gv_JuchuuNyuuryoku.ClearSelection();
 
             txtKouritenCD.TxtBox = txtTokuisakiCD;//ses
+            ChangeMode(Mode.New);
         }
 
         private void ChangeMode(Mode mode)
