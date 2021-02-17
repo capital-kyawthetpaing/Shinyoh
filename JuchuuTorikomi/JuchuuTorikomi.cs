@@ -115,7 +115,8 @@ namespace JuchuuTorikomi
                         if (rdo_Registration.Checked)
                             chk_val = "create_update";
                         else chk_val = "delete";
-                        string return_BL = Jbl.JuchuuTorikomi_CUD(Xml.Item1, Xml.Item2, chk_val);
+                        JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
+                        string return_BL = Jbl.JuchuuTorikomi_CUD(Xml.Item1, Xml.Item2, chk_val,JEntity);
                         if (return_BL == "true")
                         {
                             bbl.ShowMessage("I002");
@@ -136,6 +137,7 @@ namespace JuchuuTorikomi
         }
         private void GridviewBind()
         {
+            ErrorCheck();
             JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
             dtMain = JBL.JuchuuTorikomi_Display(JEntity);
             gvJuchuuTorikomi.DataSource = dtMain;
@@ -213,8 +215,8 @@ namespace JuchuuTorikomi
                         if (Null_Check(JEntity.ShouhinCD, i, "商品CD")) break;
                         if (Byte_Check(20, JEntity.ShouhinCD, i, "商品CD")) break;
 
-                        JEntity.ColorNO = splits[11];
-                        if (Null_Check(JEntity.ColorNO, i, "カラー")) break;
+                        JEntity.ColorRyakuName = splits[11];
+                        if (Null_Check(JEntity.ColorRyakuName, i, "カラー")) break;
 
                         JEntity.SizeNO = splits[12];
                         if (Null_Check(JEntity.SizeNO, i, "サイズ")) break;
@@ -348,10 +350,10 @@ namespace JuchuuTorikomi
                         Remove_Datatable_Column(dt_Main);
                         Xml_Hacchuu = cf.DataTableToXml(dt_Main);
                     }
-                    if (create_dt.Rows.Count == csvRows.Length - 1)
-                    {
+                    //if (create_dt.Rows.Count == csvRows.Length - 1)
+                    //{
                         Xml_Juchuu = cf.DataTableToXml(create_dt);
-                    }
+                    //}
                 }
                 else
                 {
@@ -400,7 +402,7 @@ namespace JuchuuTorikomi
             bool bl = false;
             if (string.IsNullOrWhiteSpace(obj_text))
             {
-                bbl.ShowMessage("E102", line_no.ToString(), error_msg);
+                bbl.ShowMessage("E102");
                 bl = true;
             }
             return bl;
@@ -456,7 +458,7 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("KibouNouki");
             create_dt.Columns.Add("HacchuuDenpyouTekiyou");
             create_dt.Columns.Add("ShouhinCD");
-            create_dt.Columns.Add("ColorNO");
+            create_dt.Columns.Add("ColorRyakuName");
             create_dt.Columns.Add("SizeNO");
             create_dt.Columns.Add("JANCD");
             create_dt.Columns.Add("HacchuuSuu");

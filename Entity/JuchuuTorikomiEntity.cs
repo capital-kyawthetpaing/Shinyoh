@@ -16,7 +16,7 @@ namespace Entity
         public string KouritenName { get; set; }
         public string StaffCD { get; set; }
         public string ShouhinCD { get; set; }
-        public string ColorNO { get; set; }
+        public string ColorRyakuName { get; set; }
         public string SizeNO { get; set; }
         public string JANCD { get; set; }
         public string SiiresakiCD { get; set; }

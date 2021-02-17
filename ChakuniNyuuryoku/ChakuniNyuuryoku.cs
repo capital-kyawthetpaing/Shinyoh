@@ -70,7 +70,7 @@ namespace ChakuniNyuuryoku
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
-            ChangeMode(Mode.New);
+            
             txtArrivalNO.Focus();
             txtArrivalNO.ChangeDate = txtArrivalDate;
             txtSiiresaki.ChangeDate = txtArrivalDate;
@@ -96,6 +96,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.SetGridDesign();
             gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
             gvChakuniNyuuryoku.SetHiraganaColumn("ChakuniMeisaiTekiyou");
+            ChangeMode(Mode.New);
         }
         private void ChangeMode(Mode mode)
         {
