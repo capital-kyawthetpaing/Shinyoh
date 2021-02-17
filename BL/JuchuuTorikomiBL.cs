@@ -39,14 +39,15 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
             return dt;
         }
-        public string JuchuuTorikomi_CUD(string Xml_Hacchuu, string Xml_Juchuu, string chk_value)
+        public string JuchuuTorikomi_CUD(string Xml_Hacchuu, string Xml_Juchuu, string chk_value,JuchuuTorikomiEntity Jentity)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = Xml_Hacchuu };
-            parameters[1] = new SqlParameter("@XML_Main", SqlDbType.Xml) { Value = Xml_Juchuu };
-            parameters[2] = new SqlParameter("@Condition", SqlDbType.VarChar) { Value = chk_value };
-            return ckmdl.InsertUpdateDeleteData("ShukkaTorikomi_Insert", GetConnectionString(), parameters);
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@XML_Hacchuu", SqlDbType.Xml) { Value = Xml_Hacchuu };
+            parameters[1] = new SqlParameter("@XML_Jucchuu", SqlDbType.Xml) { Value = Xml_Juchuu };
+            parameters[2] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = chk_value };
+            parameters[3] = new SqlParameter("@DenyouNO", SqlDbType.VarChar) { Value =Jentity.TorikomiDenpyouNO};
+            return ckmdl.InsertUpdateDeleteData("JuchuuTorikomi_CUD", GetConnectionString(), parameters);
         }
     }
 }
