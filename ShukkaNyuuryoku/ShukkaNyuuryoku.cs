@@ -75,14 +75,14 @@ namespace ShukkaNyuuryoku {
             txtKouriten.ChangeDate = txtShukkaDate;
             txtStaff.ChangeDate = txtShukkaDate;
 
-            ChangeMode(Mode.New);
-
             base_Entity = _GetBaseData();
 
             txtShukkaNo.ChangeDate = txtShukkaDate;
             txtShukkaSijiNo.ChangeDate = txtShukkaYoteiDate1;
 
             txtKouriten.TxtBox = txtTokuisaki;
+
+            ChangeMode(Mode.New);
         }
         public override void FunctionProcess(string tagID)
         {

@@ -59,8 +59,8 @@ namespace ShukkaSiziNyuuryoku
             StartProgram();
             cboMode.Bind(false, multi_Entity);
             ModeType(4);
-            ChangeMode(Mode.New);
             be = _GetBaseData();
+            ChangeMode(Mode.New);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -92,6 +92,7 @@ namespace ShukkaSiziNyuuryoku
                 }
                 ModeType(3);
                 dtResult.Clear();
+                dtGS1.Clear();
                 dtTemp1.Clear();
             }
             if(tagID=="8")
@@ -932,15 +933,17 @@ namespace ShukkaSiziNyuuryoku
         }
         private bool GV_Check()
         {
-            for (int k = 0; k < dtGS1.Rows.Count; k++)
+            var dt1 = dtGS1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("JuchuuNO")).CopyToDataTable();
+
+            for (int k = 0; k < dt1.Rows.Count; k++)
             {
-                if (!dtGS1.Rows[k]["KonkaiShukkaSiziSuu"].ToString().Equals("0"))
+                if (!dt1.Rows[k]["KonkaiShukkaSiziSuu"].ToString().Equals("0"))
                 {
                     if (!ColArrivalTime(k, 8))
                     {
                         return false;
                     }
-                    if (dtGS1.Rows[k]["SoukoCD"].ToString().Equals(""))
+                    if (dt1.Rows[k]["SoukoCD"].ToString().Equals(""))
                     {
                         dgvShukkasizi.Select();
                         bbl.ShowMessage("E102");
@@ -991,8 +994,7 @@ namespace ShukkaSiziNyuuryoku
                 case 8:
                     if (dtTemp1.Rows.Count > 0)
                     {
-                        var dtgv = dtTemp1.AsEnumerable().Where(s => s.Field<string>("SoukoCD") != null).CopyToDataTable();
-                        var dtConfirm = dtTemp1.AsEnumerable().OrderBy(r => r.Field<string>("SKMSNO")).ThenBy(r => r.Field<string>("ShouhinCD")).CopyToDataTable();
+                         var dtConfirm = dtTemp1.AsEnumerable().OrderBy(r => r.Field<string>("SKMSNO")).ThenBy(r => r.Field<string>("ShouhinCD")).CopyToDataTable();
                         dgvShukkasizi.DataSource = dtConfirm;  
                     }
                     else
@@ -1013,6 +1015,7 @@ namespace ShukkaSiziNyuuryoku
                         dtGridview(2);
                     }
                     dtHaita = dtgv1.Copy();
+                    dgvShukkasizi.ActionType = "F10";  //to skip gv error check at the ErrorCheck() of BaseForm.cs
                     bool count = false;
                     //Table_Y/排他テーブルに追加
                     if (dtgv1.Rows.Count>0)
