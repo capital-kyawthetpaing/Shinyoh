@@ -59,8 +59,8 @@ namespace ShukkaSiziNyuuryoku
             StartProgram();
             cboMode.Bind(false, multi_Entity);
             ModeType(4);
-            ChangeMode(Mode.New);
             be = _GetBaseData();
+            ChangeMode(Mode.New);
         }
         public override void FunctionProcess(string tagID)
         {
