@@ -30,18 +30,18 @@ namespace BL
         public DataTable Get_ExportData(HacchuuShoEntity hse)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[12];
+            var parameters = new SqlParameter[11];
             parameters[0] = new SqlParameter("@JuchuuNO1", SqlDbType.VarChar) { Value = hse.JuchuuNO1 };
             parameters[1] = new SqlParameter("@JuchuuNO2", SqlDbType.VarChar) { Value = hse.JuchuuNO2 };
-            parameters[3] = new SqlParameter("@HacchuuNO1", SqlDbType.VarChar) { Value = hse.HacchuuNO1 };
-            parameters[4] = new SqlParameter("@HacchuuNO2", SqlDbType.VarChar) { Value = hse.HacchuuNO2 };
-            parameters[5] = new SqlParameter("@InputDate1", SqlDbType.VarChar) { Value = hse.InputDate1 };
-            parameters[6] = new SqlParameter("@InputDate2", SqlDbType.VarChar) { Value = hse.InputDate2 };
-            parameters[7] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = hse.BrandCD };
-            parameters[8] = new SqlParameter("@YearTerm", SqlDbType.VarChar) { Value = hse.YearTerm };
-            parameters[9] = new SqlParameter("@SS", SqlDbType.VarChar) { Value = hse.SS };
-            parameters[10] = new SqlParameter("@FW", SqlDbType.VarChar) { Value = hse.FW };
-            parameters[11] = new SqlParameter("@Rdo_Type", SqlDbType.TinyInt) { Value = hse.Rdo_Type };
+            parameters[2] = new SqlParameter("@HacchuuNO1", SqlDbType.VarChar) { Value = hse.HacchuuNO1 };
+            parameters[3] = new SqlParameter("@HacchuuNO2", SqlDbType.VarChar) { Value = hse.HacchuuNO2 };
+            parameters[4] = new SqlParameter("@InputDate1", SqlDbType.VarChar) { Value = hse.InputDate1 };
+            parameters[5] = new SqlParameter("@InputDate2", SqlDbType.VarChar) { Value = hse.InputDate2 };
+            parameters[6] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = hse.BrandCD };
+            parameters[7] = new SqlParameter("@YearTerm", SqlDbType.VarChar) { Value = hse.YearTerm };
+            parameters[8] = new SqlParameter("@SS", SqlDbType.VarChar) { Value = hse.SS };
+            parameters[9] = new SqlParameter("@FW", SqlDbType.VarChar) { Value = hse.FW };
+            parameters[10] = new SqlParameter("@Rdo_Type", SqlDbType.TinyInt) { Value = hse.Rdo_Type };
 
             DataTable dt= ckmdl.SelectDatatable("Get_HacchuuSho_ExportData", GetConnectionString(), parameters);
             return dt;
