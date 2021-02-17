@@ -56,7 +56,7 @@ namespace IdouNyuuryoku
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
 
             base_Entity = _GetBaseData();
-            ChangeMode(Mode.New);
+            
 
             txtIdoukubun.lblName = lbl_IdouKubun;
             txtStaffCD.lblName = lblStaff_Name;
@@ -72,6 +72,7 @@ namespace IdouNyuuryoku
 
             gv_1.SetHiraganaColumn("colIdouMeisaiTekiyou");
             gv_1.SetNumberColumn("colIdouSuu,colGenkaTanka,colGenkaKingaku");
+            ChangeMode(Mode.New);
         }
         private void ChangeMode(Mode mode)
         {
