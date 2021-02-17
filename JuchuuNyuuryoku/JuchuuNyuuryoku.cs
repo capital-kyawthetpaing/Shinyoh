@@ -1370,24 +1370,29 @@ namespace JuchuuNyuuryoku
 
        private void Column_Remove_Datatable(DataTable dt)
         {
-            dt.Columns.Remove("ShouhinCD");
-            dt.Columns.Remove("ShouhinName");
-            dt.Columns.Remove("ColorRyakuName");
-            dt.Columns.Remove("ColorNO");
-            dt.Columns.Remove("SizeNO");
-            dt.Columns.Remove("Free");
-            dt.Columns.Remove("GenZaikoSuu");
-            dt.Columns.Remove("JuchuuSuu");
-            dt.Columns.Remove("DJMSenpouHacchuuNO");
-            dt.Columns.Remove("UriageTanka");
-            dt.Columns.Remove("Tanka");
-            dt.Columns.Remove("JuchuuMeisaiTekiyou");
-            dt.Columns.Remove("JANCD");
-            dt.Columns.Remove("ExpectedDate");
-            dt.Columns.Remove("SoukoCD");
-            dt.Columns.Remove("SoukoName");
-            dt.Columns.Remove("HacchuuGyouNO");
-            dt.Columns.Remove("JuchuuGyouNO");
+            //ktp error no 152
+            if(dt.Columns.Count>0)
+            {
+                dt.Columns.Remove("ShouhinCD");
+                dt.Columns.Remove("ShouhinName");
+                dt.Columns.Remove("ColorRyakuName");
+                dt.Columns.Remove("ColorNO");
+                dt.Columns.Remove("SizeNO");
+                dt.Columns.Remove("Free");
+                dt.Columns.Remove("GenZaikoSuu");
+                dt.Columns.Remove("JuchuuSuu");
+                dt.Columns.Remove("DJMSenpouHacchuuNO");
+                dt.Columns.Remove("UriageTanka");
+                dt.Columns.Remove("Tanka");
+                dt.Columns.Remove("JuchuuMeisaiTekiyou");
+                dt.Columns.Remove("JANCD");
+                dt.Columns.Remove("ExpectedDate");
+                dt.Columns.Remove("SoukoCD");
+                dt.Columns.Remove("SoukoName");
+                dt.Columns.Remove("HacchuuGyouNO");
+                dt.Columns.Remove("JuchuuGyouNO");
+            }
+            
         }
 
         private void gv_1_CellEnter(object sender, DataGridViewCellEventArgs e)
