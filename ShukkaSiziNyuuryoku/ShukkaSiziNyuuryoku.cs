@@ -92,6 +92,7 @@ namespace ShukkaSiziNyuuryoku
                 }
                 ModeType(3);
                 dtResult.Clear();
+                dtGS1.Clear();
                 dtTemp1.Clear();
             }
             if(tagID=="8")
@@ -932,15 +933,17 @@ namespace ShukkaSiziNyuuryoku
         }
         private bool GV_Check()
         {
-            for (int k = 0; k < dtGS1.Rows.Count; k++)
+            var dt1 = dtGS1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("JuchuuNO")).CopyToDataTable();
+
+            for (int k = 0; k < dt1.Rows.Count; k++)
             {
-                if (!dtGS1.Rows[k]["KonkaiShukkaSiziSuu"].ToString().Equals("0"))
+                if (!dt1.Rows[k]["KonkaiShukkaSiziSuu"].ToString().Equals("0"))
                 {
                     if (!ColArrivalTime(k, 8))
                     {
                         return false;
                     }
-                    if (dtGS1.Rows[k]["SoukoCD"].ToString().Equals(""))
+                    if (dt1.Rows[k]["SoukoCD"].ToString().Equals(""))
                     {
                         dgvShukkasizi.Select();
                         bbl.ShowMessage("E102");
@@ -991,8 +994,7 @@ namespace ShukkaSiziNyuuryoku
                 case 8:
                     if (dtTemp1.Rows.Count > 0)
                     {
-                        var dtgv = dtTemp1.AsEnumerable().Where(s => s.Field<string>("SoukoCD") != null).CopyToDataTable();
-                        var dtConfirm = dtTemp1.AsEnumerable().OrderBy(r => r.Field<string>("SKMSNO")).ThenBy(r => r.Field<string>("ShouhinCD")).CopyToDataTable();
+                         var dtConfirm = dtTemp1.AsEnumerable().OrderBy(r => r.Field<string>("SKMSNO")).ThenBy(r => r.Field<string>("ShouhinCD")).CopyToDataTable();
                         dgvShukkasizi.DataSource = dtConfirm;  
                     }
                     else
