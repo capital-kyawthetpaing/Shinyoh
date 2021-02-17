@@ -1015,6 +1015,7 @@ namespace ShukkaSiziNyuuryoku
                         dtGridview(2);
                     }
                     dtHaita = dtgv1.Copy();
+                    dgvShukkasizi.ActionType = "F10";  //to skip gv error check at the ErrorCheck() of BaseForm.cs
                     bool count = false;
                     //Table_Y/排他テーブルに追加
                     if (dtgv1.Rows.Count>0)
