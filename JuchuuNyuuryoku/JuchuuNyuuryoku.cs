@@ -1434,7 +1434,7 @@ namespace JuchuuNyuuryoku
         {
             Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
             Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
-            if (gv_JuchuuNyuuryoku.Columns[col].Name == "colSiiresakiCD")
+            if (gv_JuchuuNyuuryoku.Columns[col].Name == "colSiiresakiCD" || gv_JuchuuNyuuryoku.Columns[col].Name == "colSoukoCD")
             {
                 Control btnF9 = ctrlArr[0];
                 if (ctrlArr.Length > 0 && type=="Show")
@@ -1823,7 +1823,7 @@ namespace JuchuuNyuuryoku
             {
                 if (gv_JuchuuNyuuryoku.CurrentCell != null)
                 {
-                    if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14)
+                    if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14 || gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 19)
                     {
                         gridKeyDown();
                     }
@@ -1870,6 +1870,25 @@ namespace JuchuuNyuuryoku
                     sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
                 }
             }
+            else if(gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSoukoCD")
+            {
+                SoukoSearch souko = new SoukoSearch();
+                souko.ShowDialog();
+
+                if(!string.IsNullOrEmpty(souko.soukoCD))
+                {
+                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[6, row + 1];
+                    this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
+
+                    gv_JuchuuNyuuryoku[column, row].Value = souko.soukoCD.ToString();
+                    gv_JuchuuNyuuryoku[column + 1, row].Value = souko.soukoName.ToString();
+                }
+                else
+                {
+                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
+                    this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
+                }
+            }
         }
 
         private void gv_JuchuuNyuuryoku_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -1893,7 +1912,7 @@ namespace JuchuuNyuuryoku
         {
             if (gv_JuchuuNyuuryoku.CurrentCell != null)
             {
-                if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14)
+                if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14 || gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 19)
                 {
                     gridKeyDown();
                 }
