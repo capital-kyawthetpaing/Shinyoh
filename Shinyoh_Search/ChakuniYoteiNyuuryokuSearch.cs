@@ -18,6 +18,8 @@ namespace Shinyoh_Search
     {
         CommonFunction cf;
         public string ChakuniYoteiNO = string.Empty;
+        public string StaffName = string.Empty;
+        public string SiiresakiName = string.Empty;
         public ChakuniYoteiNyuuryokuSearch()
         {
             cf = new CommonFunction();           //Task no. 147 - tza
@@ -102,7 +104,7 @@ namespace Shinyoh_Search
             txtShouhinCDTo.E106Check(true, txtShouhinCDFrom, txtShouhinCDTo);
 
             sbSiiresaki.E101Check(true, "M_Siiresaki", sbSiiresaki, txtDateFrom, null);
-            sbStaff.E101Check(true, "staff", sbStaff, txtDateFrom, null);
+            sbStaff.E101Check(true, "M_Staff", sbStaff, txtDateFrom, null);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -131,6 +133,46 @@ namespace Shinyoh_Search
             {
                 if (gvChakuniYoteiNyuuryoku.CurrentCell != null)
                     GetGridviewData(gvChakuniYoteiNyuuryoku.Rows[gvChakuniYoteiNyuuryoku.CurrentCell.RowIndex]);
+            }
+        }
+
+        private void sbSiiresaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbSiiresaki.IsErrorOccurs)
+                {
+                    DataTable dt = sbSiiresaki.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        SiiresakiName = dt.Rows[0]["SiiresakiName"].ToString();
+                        lblSiiresaki.Text = SiiresakiName;
+                    }
+                    else
+                    {
+                        lblSiiresaki.Text = string.Empty;
+                    }
+                }
+            }
+        }
+
+        private void sbStaff_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbStaff.IsErrorOccurs)
+                {
+                    DataTable dt = sbStaff.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        StaffName = dt.Rows[0]["StaffName"].ToString();
+                        lblStaff.Text = StaffName;
+                    }
+                    else
+                    {
+                        lblStaff.Text = string.Empty;
+                    }
+                }
             }
         }
     }
