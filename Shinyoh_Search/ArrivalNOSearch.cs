@@ -18,6 +18,8 @@ namespace Shinyoh_Search
     {
         CommonFunction cf;
         public string ChakuniNO = string.Empty;
+        public string StaffName = string.Empty;
+        public string SiiresakiName = string.Empty;
         public ArrivalNOSearch()
         {
             cf = new CommonFunction();           //Task no. 147 - tza
@@ -69,8 +71,8 @@ namespace Shinyoh_Search
             txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
             txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
 
-            sbSiiresaki.E101Check(true, "M_Siiresaki", null, null, null);
-            sbStaff.E101Check(true, "staff", null, null, null);
+            sbSiiresaki.E101Check(true, "M_Siiresaki", sbSiiresaki, txtDateFrom, null);
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtDateFrom, null);
         }
         private void GridViewBind()
         {
@@ -81,7 +83,7 @@ namespace Shinyoh_Search
             if(cf.DateCheck(txtDateTo))            //Task no. 147 - tza
                 ane.ChakuniDateTo = txtDateTo.Text;
             ane.SiiresakiCD = sbSiiresaki.Text;
-            ane.StaffCD = sbStaff.Text;
+            ane.StaffCD = txtStaffCD.Text;
             ane.ShouhinName = txtProductName.Text;
             if(cf.DateCheck(txtExpectedDateFrom))           //Task no. 147 - tza
                 ane.ChakuniYoteiDateFrom = txtExpectedDateFrom.Text;
@@ -132,6 +134,46 @@ namespace Shinyoh_Search
             {
                 if(gvArrivalNo.CurrentCell!=null)
                 GetGridviewData(gvArrivalNo.Rows[gvArrivalNo.CurrentCell.RowIndex]);
+            }
+        }
+
+        private void sbSiiresaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbSiiresaki.IsErrorOccurs)
+                {
+                    DataTable dt = sbSiiresaki.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        SiiresakiName = dt.Rows[0]["SiiresakiName"].ToString();
+                        lblSiiresaki.Text = SiiresakiName;
+                    }
+                    else
+                    {
+                        lblSiiresaki.Text = string.Empty;
+                    }
+                }
+            }
+        }
+
+        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtStaffCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtStaffCD.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        StaffName = dt.Rows[0]["StaffName"].ToString();
+                        lblStaff.Text = StaffName;
+                    }
+                    else
+                    {
+                        lblStaff.Text = string.Empty;
+                    }
+                }
             }
         }
     }

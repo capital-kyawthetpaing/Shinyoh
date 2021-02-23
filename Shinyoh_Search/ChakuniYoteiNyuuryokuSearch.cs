@@ -101,8 +101,8 @@ namespace Shinyoh_Search
             txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
             txtShouhinCDTo.E106Check(true, txtShouhinCDFrom, txtShouhinCDTo);
 
-            sbSiiresaki.E101Check(true, "M_Siiresaki", null, null, null);
-            sbStaff.E101Check(true, "staff", null, null, null);
+            sbSiiresaki.E101Check(true, "M_Siiresaki", sbSiiresaki, txtDateFrom, null);
+            sbStaff.E101Check(true, "staff", sbStaff, txtDateFrom, null);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
