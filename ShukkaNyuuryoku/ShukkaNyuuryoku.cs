@@ -398,7 +398,7 @@ namespace ShukkaNyuuryoku {
                 case 8:
                     if (F8_dt1.Rows.Count > 0)
                     {
-                        F8_dt1.DefaultView.Sort = "HinbanCD";
+                        F8_dt1.DefaultView.Sort = "JANCD";
                         gvShukka1.DataSource = F8_dt1.DefaultView.ToTable();
                     }
                     else
@@ -504,6 +504,7 @@ namespace ShukkaNyuuryoku {
                 // grid 1 checkingTemptb1
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gvShukka1.Rows[t];// grid view data
+                string JANCD = row.Cells["colJANCD"].Value.ToString();
                 string HinbanCD = row.Cells["colShouhin"].Value.ToString();
                 string ShukkaSiziNOGyouNO = row.Cells["ShukkaSiziNOGyouNO"].Value.ToString();
                 string chk_value = row.Cells["colComplete"].EditedFormattedValue.ToString();
@@ -512,9 +513,9 @@ namespace ShukkaNyuuryoku {
                 //string color = row.Cells["colColorNO"].Value.ToString();
                 //string size = row.Cells["colSize"].Value.ToString();
 
-                DataRow[] select_dr1 = gvdt1.Select("HinbanCD ='" + HinbanCD + "' and ShukkaSiziNOGyouNO='" + ShukkaSiziNOGyouNO + "'");// original data
+                DataRow[] select_dr1 = gvdt1.Select("JANCD ='" + JANCD + "' and ShukkaSiziNOGyouNO='" + ShukkaSiziNOGyouNO + "'");// original data
                 //DataRow[] select_dr1 = gvdt1.Select("HinbanCD ='" + HinbanCD + "'");// original data
-                DataRow existDr1 = F8_dt1.Select("HinbanCD ='" + HinbanCD + "' and ShukkaMeisaiTekiyou='" + Detail + "'").SingleOrDefault();
+                DataRow existDr1 = F8_dt1.Select("JANCD ='" + JANCD + "' and ShukkaMeisaiTekiyou='" + Detail + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     if (select_dr1[0][9].ToString() == "0")
@@ -523,7 +524,7 @@ namespace ShukkaNyuuryoku {
                         existDr1 = null;
                     }
                 }
-                F8_drNew[0] = HinbanCD;
+                F8_drNew[0] = JANCD;
                 if (row.Cells["colKonkai"].Value.ToString() != "0" && row.Cells[9].Value.ToString() != select_dr1[0][9].ToString())
                 {
                     for (int c = 1; c < gvShukka1.Columns.Count; c++)
