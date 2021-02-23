@@ -10,14 +10,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Search
 {
     public partial class IdouNyuuryokuSearch : SearchBase
     {
+        CommonFunction cf;
         public string IdouNo = string.Empty;
         public IdouNyuuryokuSearch()
         {
+            cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
         }
 
@@ -56,8 +59,12 @@ namespace Shinyoh_Search
         private void DataGridviewBind()
         {
             IdouNyuuryokuEntity obj = new IdouNyuuryokuEntity();
-            obj.Date1 = txtDate1.Text;
-            obj.Date2 = txtDate2.Text;
+
+            if(cf.DateCheck(txtDate1))           //Task no. 147 - tza
+                obj.Date1 = txtDate1.Text;
+            if(cf.DateCheck(txtDate2))           //Task no. 147 - tza
+                obj.Date2 = txtDate2.Text;
+
             obj.ShukkoSoukoCD = txtShukkosouko.Text;
             obj.NyuukoSoukoCD = txtNyukosouko.Text;
             obj.ShouhinName = txtShouhinName.Text;
@@ -68,17 +75,20 @@ namespace Shinyoh_Search
             obj.ShouhinCD1 = txtShouhin1.Text;
             obj.ShouhinCD2 = txtShouhin2.Text;
 
-            IdouNyuuryokuBL objMethod = new IdouNyuuryokuBL();
-            DataTable dt = objMethod.IdouNyuuryo_Search(obj);
-            if (dt.Columns.Contains("CurrentDate"))
+            if(ErrorCheck(panel1))           //Task no. 147 - tza
             {
-                if (dt.Rows.Count > 0)
+                IdouNyuuryokuBL objMethod = new IdouNyuuryokuBL();
+                DataTable dt = objMethod.IdouNyuuryo_Search(obj);
+                if (dt.Columns.Contains("CurrentDate"))
                 {
-                    lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDate"]);
-                    txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDate"]);
+                    if (dt.Rows.Count > 0)
+                    {
+                        lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDate"]);
+                        txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDate"]);
+                    }
                 }
+                gv_Idou.DataSource = dt;
             }
-            gv_Idou.DataSource = dt;
         }
 
         private void btnShow_Click(object sender, EventArgs e)
