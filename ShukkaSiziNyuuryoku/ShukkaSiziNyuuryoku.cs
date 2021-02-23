@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using Shinyoh;
 using Entity;
 using BL;
@@ -24,7 +25,7 @@ namespace ShukkaSiziNyuuryoku
         TokuisakiDetail td;
         KouritenDetail kd;
         public string tdDate, Detail_XML;
-        DataTable dtgv1, dtTemp1, dtGS1, dtClear, dt_Header,dtResult, dtHaita;
+        DataTable dtgv1, dtTemp1, dtGS1, dtClear, dt_Header,dtResult, dtHaita,dtShippingNO;
         public ShukkaSiziNyuuryoku()
         {
             InitializeComponent();
@@ -1180,19 +1181,35 @@ namespace ShukkaSiziNyuuryoku
         private void DBProcess()
         {
             (string,string, string) obj = GetInsert();
-            sksz_bl = new ShukkasiziNyuuryokuBL(); 
-
-            if(cboMode.SelectedValue.Equals("3"))
+            sksz_bl = new ShukkasiziNyuuryokuBL();
+            //DataTable dtvalue = new DataTable();
+            //dtvalue = sksz_bl.GetFunctionNO("12", txtShippingDate.Text, "0");
+            if (cboMode.SelectedValue.Equals("3"))//delete
             {
                 Konkai_Price(dtTemp1);
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
+                sksz_bl.Get_HikiateFunctionNO("12",sbShippingNO.Text, "30", sksz_e.OperatorCD);
                 bbl.ShowMessage("I102");
             }
             else
             {
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
                 Konkai_Price(dtTemp1);
-                bbl.ShowMessage("I101");
+                if (cboMode.SelectedValue.Equals("1"))
+                {
+                    string FunctionNO = string.Empty;
+                    FunctionNO = dtResult.Rows[0]["ShukkaSiziNO"].ToString();
+                    if(!string.IsNullOrEmpty(FunctionNO))
+                    {
+                        sksz_bl.Get_HikiateFunctionNO("12", FunctionNO, "10", sksz_e.OperatorCD);
+                    }
+                }
+                else if (cboMode.SelectedValue.Equals("2"))
+                {
+                    sksz_bl.Get_HikiateFunctionNO("12",sbShippingNO.Text, "20", sksz_e.OperatorCD);
+                    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "21", sksz_e.OperatorCD);
+                }
+             bbl.ShowMessage("I101");
             }
         }
         private void Konkai_Price(DataTable dtTemp1)
@@ -1217,6 +1234,12 @@ namespace ShukkaSiziNyuuryoku
             if (cboMode.SelectedValue.ToString() != "1")
             {
                 dr["ShukkaSiziNO"] = sbShippingNO.Text;
+            }
+            else
+            {
+                dtShippingNO = new DataTable();
+                dtShippingNO= sksz_bl.GetFunctionNO("12", txtShippingDate.Text, "0");
+                dr["ShukkaSiziNO"] = dtShippingNO.Rows[0]["Column1"].ToString();
             }
             dr["StaffCD"] = sbStaffCD.Text;
             dr["ShukkaYoteiDate"] = txtShippingDate.Text;
