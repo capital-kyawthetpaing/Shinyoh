@@ -163,7 +163,7 @@ namespace JuchuuNyuuryoku
                     txtCopy.E102Check(false);
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
-                    txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
+                    txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
 
                     Disable_UDI_Mode();
                     Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
