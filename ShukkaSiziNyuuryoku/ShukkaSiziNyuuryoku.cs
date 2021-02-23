@@ -202,12 +202,6 @@ namespace ShukkaSiziNyuuryoku
                 //dgvShukkasizi.MoveNextCell();
             }
 
-            //ShukkaSiziMeisaiTekiyou
-            if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colDetails"])
-            {
-               // dgvShukkasizi.MoveNextCell();
-            }
-
             //data temp save
             if ((!dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString().Equals("0")))
             {
