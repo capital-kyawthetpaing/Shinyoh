@@ -125,6 +125,7 @@ namespace Shinyoh_Search
                 DataTable dt = txtStaffCD.IsDatatableOccurs;
                 if (dt.Rows.Count > 0)
                     lblStaff.Text = dt.Rows[0]["StaffName"].ToString();
+                else lblStaff.Text = string.Empty;
             }
         }
 
@@ -134,17 +135,19 @@ namespace Shinyoh_Search
             {
                 DataTable dt = txtShukkosouko.IsDatatableOccurs;
                 if (dt.Rows.Count > 0)
-                    lblStaff.Text = dt.Rows[0]["SoukoName"].ToString();
+                    lblShukkosouko.Text = dt.Rows[0]["SoukoName"].ToString();
+                else lblShukkosouko.Text = string.Empty;
             }
         }
 
         private void txtNyukosouko_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!txtShukkosouko.IsErrorOccurs)
+            if (!txtNyukosouko.IsErrorOccurs)
             {
-                DataTable dt = txtShukkosouko.IsDatatableOccurs;
+                DataTable dt = txtNyukosouko.IsDatatableOccurs;
                 if (dt.Rows.Count > 0)
-                    lblStaff.Text = dt.Rows[0]["SoukoName"].ToString();
+                    lblNyukoSouko.Text = dt.Rows[0]["SoukoName"].ToString();
+                else lblNyukoSouko.Text = string.Empty;
             }
         }
 

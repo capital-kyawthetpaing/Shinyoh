@@ -972,7 +972,10 @@ namespace JuchuuNyuuryoku
                 DataRow existDr1 = null;
                 if (chk_value != "False")
                     chk = "1";
-                existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ISNULL([Free],'')='" + chk + "' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
+                if(!string.IsNullOrEmpty(chk))
+                existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and [Free]='"+chk+"' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
+                else
+                existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "' and [Free] IS NULL").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     //if (select_dr1[0][8].ToString() == "0")
