@@ -10,14 +10,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Search
 {
     public partial class JuchuuNyuuryokuSearch : SearchBase
     {
+        CommonFunction cf;
+        BaseBL bbl;
         public string JuchuuNo = string.Empty;
         public JuchuuNyuuryokuSearch()
         {
+            cf = new CommonFunction();
+            bbl = new BaseBL();
             InitializeComponent();
         }
 
@@ -72,8 +77,26 @@ namespace Shinyoh_Search
         private void DataGridviewBind()
         {
             JuchuuNyuuryokuEntity obj = new JuchuuNyuuryokuEntity();
-            obj.JuchuuDate = txtDate1.Text;
-            obj.ChangeDate = txtDate2.Text;
+            bool iserror = false;
+            if (cf.DateCheck(txtDate1))
+                obj.JuchuuDate = txtDate1.Text;
+            else
+            {
+                iserror = true;
+                txtDate1.Focus();
+                bbl.ShowMessage("E103");
+            }
+            if(cf.DateCheck(txtDate2))
+                obj.ChangeDate = txtDate2.Text;
+            else
+            {
+                if (!iserror)
+                {
+                    iserror = true;
+                    txtDate2.Focus();
+                    bbl.ShowMessage("E103");
+                }
+            }
             obj.TokuisakiCD = txtTokuisaki.Text;
             obj.StaffCD = txtStaffCD.Text;            
             obj.ShouhinName = txtShouhinName.Text;
@@ -86,16 +109,19 @@ namespace Shinyoh_Search
             obj.ShouhinCD = txtShouhin1.Text;
             obj.SizeNO = txtShouhin2.Text;
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
-            DataTable dt = objMethod.JuchuuNyuuryoku_Search(obj);
-            if (dt.Columns.Contains("CurrentDay"))
+            if(!iserror)
             {
-                if (dt.Rows.Count > 0)
+                DataTable dt = objMethod.JuchuuNyuuryoku_Search(obj);
+                if (dt.Columns.Contains("CurrentDay"))
                 {
-                    lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                    txtCurrentDate.Text= String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                    if (dt.Rows.Count > 0)
+                    {
+                        lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                    }
                 }
+                gv_1.DataSource = dt;
             }
-            gv_1.DataSource = dt;
         }
 
         public override void FunctionProcess(string tagID)
