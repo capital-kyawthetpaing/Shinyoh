@@ -199,13 +199,13 @@ namespace ShukkaSiziNyuuryoku
             if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colTanka"] || dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colArrivalTime"])
             {
                 dgvShukkasizi.Rows[row].Cells["colPrice"].Value = Convert.ToInt32(dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString()) * Convert.ToInt32(dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString());
-                dgvShukkasizi.MoveNextCell();
+                //dgvShukkasizi.MoveNextCell();
             }
 
             //ShukkaSiziMeisaiTekiyou
             if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colDetails"])
             {
-                dgvShukkasizi.MoveNextCell();
+               // dgvShukkasizi.MoveNextCell();
             }
 
             //data temp save
@@ -539,7 +539,23 @@ namespace ShukkaSiziNyuuryoku
         }
         private void btnKouriren_Detail_Click(object sender, EventArgs e)
         {
-            kd.ShowDialog();
+            if (!string.IsNullOrWhiteSpace(sbKouriten.Text) && kd.Access_Kouriten_obj.KouritenCD != null)
+            {
+                if (!kd.Access_Kouriten_obj.KouritenCD.ToString().Equals(sbKouriten.Text))
+                {
+
+                    bbl.ShowMessage("E269");
+                    sbKouriten.Focus();
+                }
+                else
+                {
+                    kd.ShowDialog();
+                }
+            }
+            else
+            {
+                sbKouriten.Focus();
+            }
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
@@ -615,7 +631,7 @@ namespace ShukkaSiziNyuuryoku
                 if (Convert.ToBoolean(dgvShukkasizi.Rows[e.RowIndex].Cells["chk"].EditedFormattedValue))
                 {
                     Temp_Save(e.RowIndex);
-                    dgvShukkasizi.MoveNextCell();
+                    //dgvShukkasizi.MoveNextCell();
                 }
             }
         }
