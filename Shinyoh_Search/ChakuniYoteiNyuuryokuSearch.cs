@@ -10,14 +10,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Search
 {
     public partial class ChakuniYoteiNyuuryokuSearch : SearchBase
     {
+        CommonFunction cf;
         public string ChakuniYoteiNO = string.Empty;
         public ChakuniYoteiNyuuryokuSearch()
         {
+            cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
         }
         private void ChakuniYoteiNyuuryokuSearch_Load(object sender, EventArgs e)
@@ -56,27 +59,34 @@ namespace Shinyoh_Search
         {
             ChakuniYoteiNyuuryoku_BL cb = new ChakuniYoteiNyuuryoku_BL();
             ChakuniYoteiNyuuryokuEntity cyn = new ChakuniYoteiNyuuryokuEntity();
-            cyn.ChakuniYoteiDateFrom = txtDateFrom.Text;
-            cyn.ChakuniYoteiDateTo = txtDateTo.Text;
+            if(cf.DateCheck(txtDateFrom))           //Task no. 147 - tza
+                cyn.ChakuniYoteiDateFrom = txtDateFrom.Text;
+            if(cf.DateCheck(txtDateTo))           //Task no. 147 - tza
+                cyn.ChakuniYoteiDateTo = txtDateTo.Text;
             cyn.SiiresakiCD = sbSiiresaki.Text;
             cyn.StaffCD = sbStaff.Text;
             cyn.ShouhinName = txtShouhinName.Text;
-            cyn.HacchuuDateFrom = txtOrderDateFrom.Text;
-            cyn.HacchuuDateTo = txtOrderDateTo.Text;
+            if(cf.DateCheck(txtOrderDateFrom))           //Task no. 147 - tza
+                cyn.HacchuuDateFrom = txtOrderDateFrom.Text;
+            if(cf.DateCheck(txtOrderDateTo))           //Task no. 147 - tza
+                cyn.HacchuuDateTo = txtOrderDateTo.Text;
             cyn.KanriNOFrom = txtControlNoFrom.Text;
             cyn.KanriNOTo = txtControlNoTo.Text;
             cyn.ShouhinCDFrom = txtShouhinCDFrom.Text;
             cyn.ShouhinCDTo = txtShouhinCDTo.Text;
-            DataTable dt = cb.ChakuniYoteiNyuuryoku_Search(cyn);
-            if (dt.Columns.Contains("CurrentDay"))
+            if(ErrorCheck(PanelTitle))           //Task no. 147 - tza
             {
-                if (dt.Rows.Count > 0)
+                DataTable dt = cb.ChakuniYoteiNyuuryoku_Search(cyn);
+                if (dt.Columns.Contains("CurrentDay"))
                 {
-                    lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                    dt.Columns.Remove("CurrentDay");
+                    if (dt.Rows.Count > 0)
+                    {
+                        lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        dt.Columns.Remove("CurrentDay");
+                    }
                 }
+                gvChakuniYoteiNyuuryoku.DataSource = dt;
             }
-            gvChakuniYoteiNyuuryoku.DataSource = dt;
         }
         public void ErrorCheck()
         {
