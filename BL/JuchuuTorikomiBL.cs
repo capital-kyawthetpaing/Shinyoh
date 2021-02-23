@@ -39,6 +39,16 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
             return dt;
         }
+        public DataTable GetHacchuuNO(string SerialNO, DateTime JuchuuDate, string SEQNO)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@SerialNO", SqlDbType.VarChar) { Value = SerialNO };
+            parameters[1] = new SqlParameter("@refDate", SqlDbType.VarChar) { Value = JuchuuDate };
+            parameters[2] = new SqlParameter("@SEQNO", SqlDbType.VarChar) { Value = SEQNO };
+            DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
+            return dt;
+        }
         public string JuchuuTorikomi_CUD(string Xml_Hacchuu, string Xml_Juchuu, string chk_value,JuchuuTorikomiEntity Jentity)
         {
             CKMDL ckmdl = new CKMDL();
