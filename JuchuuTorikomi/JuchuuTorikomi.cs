@@ -278,30 +278,30 @@ namespace JuchuuTorikomi
 
                         DataTable dt3 = new DataTable();
                         ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
-                        dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.JuchuuDate, "E101", "ShouhinCD");
-                        if (dt3.Rows.Count > 0 && dt3.Rows[0]["MessageID"].ToString() == "E101")
-                        {
-                            bbl.ShowMessage("E101", i.ToString(), "商品CD");
-                            break;
-                        }
+                        //dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.JuchuuDate, "E101", "ShouhinCD");
+                        //if (dt3.Rows.Count > 0 && dt3.Rows[0]["MessageID"].ToString() == "E101")
+                        //{
+                        //    bbl.ShowMessage("E101", i.ToString(), "商品CD");
+                        //    break;
+                        //}
 
                         DataTable dt4 = new DataTable();
                         ShukkaTorikomi_BL jBL = new ShukkaTorikomi_BL();
-                        dt4 = jBL.ShukkaTorikomi_Check(JEntity.JANCD, JEntity.JuchuuDate, "E101", "JANCD");
-                        if (dt4.Rows.Count > 0 && dt4.Rows[0]["MessageID"].ToString() == "E101")
-                        {
-                            bbl.ShowMessage("E101", i.ToString(), "JANCD");
-                            break;
-                        }
+                        //dt4 = jBL.ShukkaTorikomi_Check(JEntity.JANCD, JEntity.JuchuuDate, "E101", "JANCD");
+                        //if (dt4.Rows.Count > 0 && dt4.Rows[0]["MessageID"].ToString() == "E101")
+                        //{
+                        //    bbl.ShowMessage("E101", i.ToString(), "JANCD");
+                        //    break;
+                        //}
 
                         DataTable dt5 = new DataTable();
                         SiiresakiBL SiireBL = new SiiresakiBL();
-                        dt5 = SiireBL.Siiresaki_Select_Check(JEntity.SiiresakiCD, JEntity.JuchuuDate, "E101");
-                        if (dt5.Rows[0]["MessageID"].ToString() == "E101")
-                        {
-                            bbl.ShowMessage("E101", i.ToString(), "仕入先CD");
-                            break;
-                        }
+                        //dt5 = SiireBL.Siiresaki_Select_Check(JEntity.SiiresakiCD, JEntity.JuchuuDate, "E101");
+                        //if (dt5.Rows[0]["MessageID"].ToString() == "E101")
+                        //{
+                        //    bbl.ShowMessage("E101", i.ToString(), "仕入先CD");
+                        //    break;
+                        //}
 
                         DataTable dt6 = new DataTable();
                         SoukoBL soukoBL = new SoukoBL();
@@ -326,8 +326,9 @@ namespace JuchuuTorikomi
                                 dr[j] = splits[j].ToString();
                         }
                         dr[54] = base_Entity.OperatorCD;
-                        dr[55] = base_Entity.OperatorCD;
-                        dr[56] = error;
+                        dr[55] = base_Entity.ProgramID;
+                        dr[56] = base_Entity.PC;
+                        dr[57] = error;
                         create_dt.Rows.Add(dr);
                     }
                     create_dt.Columns.Add("JuchuuNO", typeof(string));
@@ -338,7 +339,7 @@ namespace JuchuuTorikomi
                         DataTable Dt_JuchuuNO = JBL.GetJuchuuNO("1", date, "0");
                         DataTable Dt_HacchuuNO = JBL.GetJuchuuNO("2", date, "0");
                         create_dt.Rows[i]["JuchuuNO"] = Dt_JuchuuNO.Rows[0]["Column1"];
-                        create_dt.Rows[i]["Hacchuu"] = Dt_HacchuuNO.Rows[0]["Column1"];
+                        create_dt.Rows[i]["HacchuuNO"] = Dt_HacchuuNO.Rows[0]["Column1"];
                     }
                     DataTable dt_Main = new DataTable();
                     if (create_dt.Rows.Count > 0)
@@ -504,8 +505,9 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("SiiresakiTelNO2-1");
             create_dt.Columns.Add("SiiresakiTelNO2-2");
             create_dt.Columns.Add("SiiresakiTelNO2-3");
-            create_dt.Columns.Add("InsertOperator");
-            create_dt.Columns.Add("UpdateOperator");
+            create_dt.Columns.Add("Operator");
+            create_dt.Columns.Add("ProgramID");
+            create_dt.Columns.Add("PC");
             create_dt.Columns.Add("Error");
         }
         private void rdo_Registration_CheckedChanged(object sender, EventArgs e)
