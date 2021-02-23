@@ -78,5 +78,17 @@ namespace BL
             parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
             return ckmdl.InsertUpdateDeleteData("D_Exclusive_Insert", GetConnectionString(), parameters);
         }
+        public DataTable Get_Max_HacchuuNO(string JuchuuNo,string SiiresakiCD,string SoukoCD,string HacchuuNO)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@JuchuuNO", SqlDbType.VarChar) { Value = JuchuuNo };
+            parameters[1] = new SqlParameter("@SiiresakiCD", SqlDbType.VarChar) { Value = SiiresakiCD };
+            parameters[2] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = SoukoCD };
+            parameters[3] = new SqlParameter("@HacchuuNO", SqlDbType.VarChar) { Value = HacchuuNO };
+
+            DataTable dt = ckmdl.SelectDatatable("Get_Max_HacchuuNO", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }
