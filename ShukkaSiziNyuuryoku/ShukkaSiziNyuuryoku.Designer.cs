@@ -1112,7 +1112,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtShippingDate.NextControl = null;
             this.txtShippingDate.NextControlName = "sbTokuisaki";
             this.txtShippingDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtShippingDate.Size = new System.Drawing.Size(110, 19);
+            this.txtShippingDate.Size = new System.Drawing.Size(100, 19);
             this.txtShippingDate.TabIndex = 2;
             this.txtShippingDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtShippingDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
