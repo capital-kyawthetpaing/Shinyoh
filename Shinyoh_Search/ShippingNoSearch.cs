@@ -12,11 +12,13 @@ using BL;
 using Shinyoh;
 using Shinyoh_Controls;
 using Shinyoh_Search;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Search
 {
     public partial class ShippingNoSearch : SearchBase
     {
+        CommonFunction cf;
         public string ShippingNo= string.Empty;
         public string TokuisakiName = string.Empty;
         public string StaffName = string.Empty;
@@ -24,6 +26,7 @@ namespace Shinyoh_Search
         ShukkasiziNyuuryokuBL SKSZ_BL;
         public ShippingNoSearch()
         {
+            cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
@@ -79,29 +82,37 @@ namespace Shinyoh_Search
             SKSZ_Entity = GetShukkasiziEntity();
             SKSZ_BL = new ShukkasiziNyuuryokuBL();
             DataTable dt = new DataTable();
-            dt = SKSZ_BL.ShippingNO_Search(SKSZ_Entity);
-            if(dt.Rows.Count>0)
+            if(ErrorCheck(panel1))           //Task no. 147 - tza
             {
-                gvShippingNo.DataSource = dt;
+                dt = SKSZ_BL.ShippingNO_Search(SKSZ_Entity);
+                if (dt.Rows.Count > 0)
+                {
+                    gvShippingNo.DataSource = dt;
+                }
             }
             
         }
         private ShukkaSiziNyuuryokuEntity GetShukkasiziEntity()
         {
-            SKSZ_Entity = new ShukkaSiziNyuuryokuEntity()
-            {
-                ShukkaYoteiDate_From = txtShippingDateFrom.Text,
-                ShukkaYoteiDate_To = txtShippingDateTo.Text,
-                TokuisakiCD = txtTokuisakiCD.Text,
-                StaffCD = txtStaffCD.Text,
-                ShouhinName = txtProductName.Text,
-                DenpyouDate_From = txtSlipDateFrom.Text,
-                DenpyouDate_To = txtSlipDateTo.Text,
-                ShukkaSiziNO_From = txtShippingNoFrom.Text,
-                ShukkaSiziNO_To = txtShippingNoTo.Text,
-                ShouhinCD_From = txtProductFrom.Text,
-                ShouhinCD_To = txtProductTo.Text
-            };
+            SKSZ_Entity = new ShukkaSiziNyuuryokuEntity();
+            if(cf.DateCheck(txtShippingDateFrom))           //Task no. 147 - tza
+                SKSZ_Entity.ShukkaYoteiDate_From = txtShippingDateFrom.Text;
+            if(cf.DateCheck(txtShippingDateTo))            //Task no. 147 - tza
+                SKSZ_Entity.ShukkaYoteiDate_To = txtShippingDateTo.Text;
+
+            SKSZ_Entity.TokuisakiCD = txtTokuisakiCD.Text;
+            SKSZ_Entity.StaffCD = txtStaffCD.Text;
+            SKSZ_Entity.ShouhinName = txtProductName.Text;
+
+            if(cf.DateCheck(txtSlipDateFrom))           //Task no. 147 - tza
+                SKSZ_Entity.DenpyouDate_From = txtSlipDateFrom.Text;
+            if(cf.DateCheck(txtSlipDateTo))             //Task no. 147 - tza
+                SKSZ_Entity.DenpyouDate_To = txtSlipDateTo.Text;
+
+            SKSZ_Entity.ShukkaSiziNO_From = txtShippingNoFrom.Text;
+            SKSZ_Entity.ShukkaSiziNO_To = txtShippingNoTo.Text;
+            SKSZ_Entity.ShouhinCD_From = txtProductFrom.Text;
+            SKSZ_Entity.ShouhinCD_To = txtProductTo.Text;
 
             return SKSZ_Entity;
         }
@@ -124,20 +135,13 @@ namespace Shinyoh_Search
         }       
         private void txtTokuisakiCD_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            lblTokuisakiRyakuName.Text = string.Empty;
+            if (!txtTokuisakiCD.IsErrorOccurs)
             {
-                if (!txtTokuisakiCD.IsErrorOccurs)
+                DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
+                if (dt.Rows.Count > 0)
                 {
-                    DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                    {
-                        TokuisakiName = dt.Rows[0]["TokuisakiRyakuName"].ToString();
-                        lblTokuisakiRyakuName.Text = TokuisakiName;
-                    }
-                    else
-                    {
-                        lblTokuisakiRyakuName.Text = string.Empty;
-                    }
+                    lblTokuisakiRyakuName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
                 }
             }
         }

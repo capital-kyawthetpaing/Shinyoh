@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
-using Spire.Xls;
 
 namespace HacchuuSho
 {
@@ -321,12 +320,15 @@ namespace HacchuuSho
               //      row = R2 + dtgv.Rows.Count;
               //      R2 = row;
               //  }
-               xlWorkSheet.Rows[col+2].PageBreak = Excel.XlPageBreak.xlPageBreakManual;
+                xlWorkSheet.Rows[col+2].PageBreak = Excel.XlPageBreak.xlPageBreakManual;
                 startrow= col + 2;
                 EndRow = col + 6;
                 gvrow = col + 6;
             }
 
+            xlWorkSheet.Cells[col+4,2]= "1.Terms of Payment :";
+            xlWorkSheet.Cells[col + 4, 3] = "1.Terms of Payment :";
+            xlApp.get_Range("C" + col + 4, "L" + col + 4).Merge(Type.Missing);
             xlWorkBook.SaveAs("Testing.xlsx", misValue, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();

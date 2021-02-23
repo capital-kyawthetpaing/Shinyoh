@@ -629,6 +629,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlipDate.IsRequire = false;
             this.txtSlipDate.IsUseInitializedLayout = true;
             this.txtSlipDate.Location = new System.Drawing.Point(828, 11);
+            this.txtSlipDate.MaxLength = 10;
             this.txtSlipDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSlipDate.MoveNext = true;
             this.txtSlipDate.Name = "txtSlipDate";
@@ -1104,13 +1105,14 @@ namespace ShukkaSiziNyuuryoku
             this.txtShippingDate.IsRequire = false;
             this.txtShippingDate.IsUseInitializedLayout = true;
             this.txtShippingDate.Location = new System.Drawing.Point(268, 11);
+            this.txtShippingDate.MaxLength = 10;
             this.txtShippingDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShippingDate.MoveNext = true;
             this.txtShippingDate.Name = "txtShippingDate";
             this.txtShippingDate.NextControl = null;
             this.txtShippingDate.NextControlName = "sbTokuisaki";
             this.txtShippingDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtShippingDate.Size = new System.Drawing.Size(110, 19);
+            this.txtShippingDate.Size = new System.Drawing.Size(100, 19);
             this.txtShippingDate.TabIndex = 2;
             this.txtShippingDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtShippingDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;

@@ -147,6 +147,7 @@ namespace Shinyoh_Search
             this.txtTokuisakiCD.IsRequire = false;
             this.txtTokuisakiCD.IsUseInitializedLayout = true;
             this.txtTokuisakiCD.lblName = null;
+            this.txtTokuisakiCD.lblName1 = null;
             this.txtTokuisakiCD.Location = new System.Drawing.Point(113, 33);
             this.txtTokuisakiCD.MaxLength = 10;
             this.txtTokuisakiCD.MinimumSize = new System.Drawing.Size(100, 19);
@@ -159,6 +160,7 @@ namespace Shinyoh_Search
             this.txtTokuisakiCD.TabIndex = 25;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtTokuisakiCD.TxtBox = null;
+            this.txtTokuisakiCD.TxtBox1 = null;
             this.txtTokuisakiCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisakiCD_KeyDown);
             // 
             // lblStaffName
@@ -201,6 +203,7 @@ namespace Shinyoh_Search
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
+            this.txtStaffCD.lblName1 = null;
             this.txtStaffCD.Location = new System.Drawing.Point(113, 60);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(100, 19);
@@ -213,6 +216,7 @@ namespace Shinyoh_Search
             this.txtStaffCD.TabIndex = 22;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtStaffCD.TxtBox = null;
+            this.txtStaffCD.TxtBox1 = null;
             this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
             // 
             // btnSearch
@@ -389,6 +393,7 @@ namespace Shinyoh_Search
             this.txtSlipDateTo.SearchType = Entity.SearchType.ScType.None;
             this.txtSlipDateTo.Size = new System.Drawing.Size(100, 19);
             this.txtSlipDateTo.TabIndex = 11;
+            this.txtSlipDateTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSlipDateTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtSlipDateFrom
@@ -413,6 +418,7 @@ namespace Shinyoh_Search
             this.txtSlipDateFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtSlipDateFrom.Size = new System.Drawing.Size(100, 19);
             this.txtSlipDateFrom.TabIndex = 10;
+            this.txtSlipDateFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSlipDateFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtProductName
@@ -462,6 +468,7 @@ namespace Shinyoh_Search
             this.txtShippingDateTo.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingDateTo.Size = new System.Drawing.Size(100, 19);
             this.txtShippingDateTo.TabIndex = 8;
+            this.txtShippingDateTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtShippingDateTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtShippingDateFrom
@@ -486,6 +493,7 @@ namespace Shinyoh_Search
             this.txtShippingDateFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingDateFrom.Size = new System.Drawing.Size(100, 19);
             this.txtShippingDateFrom.TabIndex = 7;
+            this.txtShippingDateFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtShippingDateFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // sLabel7
@@ -494,9 +502,9 @@ namespace Shinyoh_Search
             this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel7.Location = new System.Drawing.Point(533, 60);
+            this.sLabel7.Location = new System.Drawing.Point(524, 60);
             this.sLabel7.Name = "sLabel7";
-            this.sLabel7.Size = new System.Drawing.Size(80, 19);
+            this.sLabel7.Size = new System.Drawing.Size(90, 19);
             this.sLabel7.TabIndex = 6;
             this.sLabel7.Text = "商品";
             this.sLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -507,9 +515,9 @@ namespace Shinyoh_Search
             this.lblShippingNo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblShippingNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShippingNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblShippingNo.Location = new System.Drawing.Point(533, 33);
+            this.lblShippingNo.Location = new System.Drawing.Point(524, 33);
             this.lblShippingNo.Name = "lblShippingNo";
-            this.lblShippingNo.Size = new System.Drawing.Size(80, 19);
+            this.lblShippingNo.Size = new System.Drawing.Size(90, 19);
             this.lblShippingNo.TabIndex = 5;
             this.lblShippingNo.Text = "出荷指示番号";
             this.lblShippingNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -520,9 +528,9 @@ namespace Shinyoh_Search
             this.lblSlipDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSlipDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSlipDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblSlipDate.Location = new System.Drawing.Point(533, 7);
+            this.lblSlipDate.Location = new System.Drawing.Point(524, 7);
             this.lblSlipDate.Name = "lblSlipDate";
-            this.lblSlipDate.Size = new System.Drawing.Size(80, 19);
+            this.lblSlipDate.Size = new System.Drawing.Size(90, 19);
             this.lblSlipDate.TabIndex = 4;
             this.lblSlipDate.Text = "伝票日付";
             this.lblSlipDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -533,9 +541,9 @@ namespace Shinyoh_Search
             this.lblProductName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblProductName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblProductName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblProductName.Location = new System.Drawing.Point(33, 87);
+            this.lblProductName.Location = new System.Drawing.Point(24, 87);
             this.lblProductName.Name = "lblProductName";
-            this.lblProductName.Size = new System.Drawing.Size(80, 19);
+            this.lblProductName.Size = new System.Drawing.Size(90, 19);
             this.lblProductName.TabIndex = 3;
             this.lblProductName.Text = "商品名";
             this.lblProductName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -546,9 +554,9 @@ namespace Shinyoh_Search
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(33, 60);
+            this.sLabel3.Location = new System.Drawing.Point(24, 60);
             this.sLabel3.Name = "sLabel3";
-            this.sLabel3.Size = new System.Drawing.Size(80, 19);
+            this.sLabel3.Size = new System.Drawing.Size(90, 19);
             this.sLabel3.TabIndex = 2;
             this.sLabel3.Text = "担当スタッフ";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -559,9 +567,9 @@ namespace Shinyoh_Search
             this.lblCustomer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblCustomer.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblCustomer.Location = new System.Drawing.Point(33, 33);
+            this.lblCustomer.Location = new System.Drawing.Point(24, 33);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(80, 19);
+            this.lblCustomer.Size = new System.Drawing.Size(90, 19);
             this.lblCustomer.TabIndex = 1;
             this.lblCustomer.Text = "得意先";
             this.lblCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -572,9 +580,9 @@ namespace Shinyoh_Search
             this.lblShippingDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblShippingDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblShippingDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblShippingDate.Location = new System.Drawing.Point(33, 7);
+            this.lblShippingDate.Location = new System.Drawing.Point(24, 7);
             this.lblShippingDate.Name = "lblShippingDate";
-            this.lblShippingDate.Size = new System.Drawing.Size(80, 19);
+            this.lblShippingDate.Size = new System.Drawing.Size(90, 19);
             this.lblShippingDate.TabIndex = 0;
             this.lblShippingDate.Text = "出荷予定日";
             this.lblShippingDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -597,6 +605,8 @@ namespace Shinyoh_Search
             this.colCustomerCD,
             this.colCustomerName,
             this.colJuchuuNO});
+            this.gvShippingNo.IsErrorOccurs = false;
+            this.gvShippingNo.ISRowColumn = null;
             this.gvShippingNo.Location = new System.Drawing.Point(35, 140);
             this.gvShippingNo.Name = "gvShippingNo";
             this.gvShippingNo.Size = new System.Drawing.Size(716, 302);
@@ -652,6 +662,7 @@ namespace Shinyoh_Search
             this.Controls.Add(this.gvShippingNo);
             this.Controls.Add(this.panel1);
             this.Name = "ShippingNoSearch";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "出荷指示番号検索";
             this.Load += new System.EventHandler(this.ShippingNoSearch_Load);
             this.Controls.SetChildIndex(this.panel1, 0);

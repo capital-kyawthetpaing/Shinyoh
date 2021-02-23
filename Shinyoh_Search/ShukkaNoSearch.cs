@@ -10,14 +10,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Search {
     public partial class ShukkaNoSearch : SearchBase {
+        CommonFunction cf;
         public string TokuisakiName = string.Empty;
         public string StaffName = string.Empty;
         public string ShukkaNo = string.Empty;
         public ShukkaNoSearch()
         {
+            cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
         }
         private void ShukkaNoSearch_Load(object sender, EventArgs e)
@@ -69,8 +72,10 @@ namespace Shinyoh_Search {
         private void DataGridviewBind()
         {
             ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
-            obj.ShukkaDate1 = txtShukkaDate1.Text;
-            obj.ShukkaDate2 = txtShukkaDate2.Text;
+            if(cf.DateCheck(txtShukkaDate1))           //Task no. 147 - tza
+                obj.ShukkaDate1 = txtShukkaDate1.Text;
+            if(cf.DateCheck(txtShukkaDate2))           //Task no. 147 - tza
+                obj.ShukkaDate2 = txtShukkaDate2.Text;
             obj.TokuisakiCD = txt_Tokuisaki.Text;
             obj.StaffCD = txt_StaffCD.Text;
             obj.ShouhinName = txtShouhinName.Text;
@@ -81,18 +86,21 @@ namespace Shinyoh_Search {
             obj.ShouhinCD1 = txtShouhin1.Text;
             obj.ShouhinCD2 = txtShouhin2.Text;
 
-            ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
-            DataTable dt = sBL.ShukkaNo_Search(obj);
-            if (dt.Columns.Contains("CurrentDay"))
+            if(ErrorCheck(panel1))           //Task no. 147 - tza
             {
-                if (dt.Rows.Count > 0)
+                ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
+                DataTable dt = sBL.ShukkaNo_Search(obj);
+                if (dt.Columns.Contains("CurrentDay"))
                 {
-                    lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                    txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                    if (dt.Rows.Count > 0)
+                    {
+                        lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                    }
                 }
+                dt.Columns.Remove("CurrentDay");
+                gvShukkaNo.DataSource = dt;
             }
-            dt.Columns.Remove("CurrentDay");
-            gvShukkaNo.DataSource = dt;
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {

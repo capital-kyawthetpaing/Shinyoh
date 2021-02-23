@@ -144,5 +144,26 @@ namespace BL
             return  ckmdl.InsertUpdateDeleteData("D_Exclusive_Remove_NO", GetConnectionString(), parameters);
         }
 
+        public DataTable GetFunctionNO(string SerialNO, string ShippingDate, string SEQNO)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@SerialNO", SqlDbType.VarChar) { Value = SerialNO };
+            parameters[1] = new SqlParameter("@refDate", SqlDbType.VarChar) { Value = ShippingDate };
+            parameters[2] = new SqlParameter("@SEQNO", SqlDbType.VarChar) { Value = SEQNO };
+            DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
+            return dt;
+        }
+        public string Get_HikiateFunctionNO(string SerialNO, string DenpyouNO, string ProcessKBN, string OperatorCD)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@SerialKBN", SqlDbType.VarChar) { Value = SerialNO };
+            parameters[1] = new SqlParameter("@SlipNo", SqlDbType.VarChar) { Value = DenpyouNO };
+            parameters[2] = new SqlParameter("@ProcessKBN", SqlDbType.VarChar) { Value = ProcessKBN };
+            parameters[3] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value =OperatorCD };
+            return ckmdl.InsertUpdateDeleteData("Fnc_Hikiate", GetConnectionString(), parameters);
+        }
+
     }
 }

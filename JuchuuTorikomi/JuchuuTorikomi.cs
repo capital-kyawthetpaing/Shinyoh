@@ -326,9 +326,20 @@ namespace JuchuuTorikomi
                                 dr[j] = splits[j].ToString();
                         }
                         dr[54] = base_Entity.OperatorCD;
-                        dr[55] = base_Entity.OperatorCD;
-                        dr[56] = error;
+                        dr[55] = base_Entity.ProgramID;
+                        dr[56] = base_Entity.PC;
+                        dr[57] = error;
                         create_dt.Rows.Add(dr);
+                    }
+                    create_dt.Columns.Add("JuchuuNO", typeof(string));
+                    create_dt.Columns.Add("HacchuuNO", typeof(string));
+                    for (int i = 0; i < create_dt.Rows.Count; i++)
+                    {
+                        DateTime date = DateTime.Parse(create_dt.Rows[i]["JuchuuDate"].ToString());
+                        DataTable Dt_JuchuuNO = JBL.GetJuchuuNO("1", date, "0");
+                        DataTable Dt_HacchuuNO = JBL.GetJuchuuNO("2", date, "0");
+                        create_dt.Rows[i]["JuchuuNO"] = Dt_JuchuuNO.Rows[0]["Column1"];
+                        create_dt.Rows[i]["HacchuuNO"] = Dt_HacchuuNO.Rows[0]["Column1"];
                     }
                     DataTable dt_Main = new DataTable();
                     if (create_dt.Rows.Count > 0)
@@ -338,15 +349,6 @@ namespace JuchuuTorikomi
                               .Select(g => g.OrderBy(r => r["JuchuuDate"]).First())
                               .CopyToDataTable();
 
-                        //dt_Main = create_dt.Copy();
-
-                        dt_Main.Columns.Add("JuchuuNO", typeof(string));
-                        for (int i = 0; i < dt_Main.Rows.Count; i++)
-                        {
-                            DateTime date = DateTime.Parse(dt_Main.Rows[i]["JuchuuDate"].ToString());
-                            DataTable Dt_JuchuuNO = JBL.GetJuchuuNO("1", date, "0");
-                            dt_Main.Rows[i]["JuchuuNO"] = Dt_JuchuuNO.Rows[0]["Column1"];
-                        }
                         Remove_Datatable_Column(dt_Main);
                         Xml_Hacchuu = cf.DataTableToXml(dt_Main);
                     }
@@ -503,8 +505,9 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("SiiresakiTelNO2-1");
             create_dt.Columns.Add("SiiresakiTelNO2-2");
             create_dt.Columns.Add("SiiresakiTelNO2-3");
-            create_dt.Columns.Add("InsertOperator");
-            create_dt.Columns.Add("UpdateOperator");
+            create_dt.Columns.Add("Operator");
+            create_dt.Columns.Add("ProgramID");
+            create_dt.Columns.Add("PC");
             create_dt.Columns.Add("Error");
         }
         private void rdo_Registration_CheckedChanged(object sender, EventArgs e)

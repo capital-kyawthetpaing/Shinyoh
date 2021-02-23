@@ -10,14 +10,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Search
 {
     public partial class ChakuniYoteiNyuuryokuSearch : SearchBase
     {
+        CommonFunction cf;
         public string ChakuniYoteiNO = string.Empty;
+        public string StaffName = string.Empty;
+        public string SiiresakiName = string.Empty;
         public ChakuniYoteiNyuuryokuSearch()
         {
+            cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
         }
         private void ChakuniYoteiNyuuryokuSearch_Load(object sender, EventArgs e)
@@ -56,27 +61,34 @@ namespace Shinyoh_Search
         {
             ChakuniYoteiNyuuryoku_BL cb = new ChakuniYoteiNyuuryoku_BL();
             ChakuniYoteiNyuuryokuEntity cyn = new ChakuniYoteiNyuuryokuEntity();
-            cyn.ChakuniYoteiDateFrom = txtDateFrom.Text;
-            cyn.ChakuniYoteiDateTo = txtDateTo.Text;
+            if(cf.DateCheck(txtDateFrom))           //Task no. 147 - tza
+                cyn.ChakuniYoteiDateFrom = txtDateFrom.Text;
+            if(cf.DateCheck(txtDateTo))           //Task no. 147 - tza
+                cyn.ChakuniYoteiDateTo = txtDateTo.Text;
             cyn.SiiresakiCD = sbSiiresaki.Text;
             cyn.StaffCD = sbStaff.Text;
             cyn.ShouhinName = txtShouhinName.Text;
-            cyn.HacchuuDateFrom = txtOrderDateFrom.Text;
-            cyn.HacchuuDateTo = txtOrderDateTo.Text;
+            if(cf.DateCheck(txtOrderDateFrom))           //Task no. 147 - tza
+                cyn.HacchuuDateFrom = txtOrderDateFrom.Text;
+            if(cf.DateCheck(txtOrderDateTo))           //Task no. 147 - tza
+                cyn.HacchuuDateTo = txtOrderDateTo.Text;
             cyn.KanriNOFrom = txtControlNoFrom.Text;
             cyn.KanriNOTo = txtControlNoTo.Text;
             cyn.ShouhinCDFrom = txtShouhinCDFrom.Text;
             cyn.ShouhinCDTo = txtShouhinCDTo.Text;
-            DataTable dt = cb.ChakuniYoteiNyuuryoku_Search(cyn);
-            if (dt.Columns.Contains("CurrentDay"))
+            if(ErrorCheck(PanelTitle))           //Task no. 147 - tza
             {
-                if (dt.Rows.Count > 0)
+                DataTable dt = cb.ChakuniYoteiNyuuryoku_Search(cyn);
+                if (dt.Columns.Contains("CurrentDay"))
                 {
-                    lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                    dt.Columns.Remove("CurrentDay");
+                    if (dt.Rows.Count > 0)
+                    {
+                        lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        dt.Columns.Remove("CurrentDay");
+                    }
                 }
+                gvChakuniYoteiNyuuryoku.DataSource = dt;
             }
-            gvChakuniYoteiNyuuryoku.DataSource = dt;
         }
         public void ErrorCheck()
         {
@@ -91,8 +103,8 @@ namespace Shinyoh_Search
             txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
             txtShouhinCDTo.E106Check(true, txtShouhinCDFrom, txtShouhinCDTo);
 
-            sbSiiresaki.E101Check(true, "M_Siiresaki", null, null, null);
-            sbStaff.E101Check(true, "staff", null, null, null);
+            sbSiiresaki.E101Check(true, "M_Siiresaki", sbSiiresaki, txtDateFrom, null);
+            sbStaff.E101Check(true, "M_Staff", sbStaff, txtDateFrom, null);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -121,6 +133,46 @@ namespace Shinyoh_Search
             {
                 if (gvChakuniYoteiNyuuryoku.CurrentCell != null)
                     GetGridviewData(gvChakuniYoteiNyuuryoku.Rows[gvChakuniYoteiNyuuryoku.CurrentCell.RowIndex]);
+            }
+        }
+
+        private void sbSiiresaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbSiiresaki.IsErrorOccurs)
+                {
+                    DataTable dt = sbSiiresaki.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        SiiresakiName = dt.Rows[0]["SiiresakiName"].ToString();
+                        lblSiiresaki.Text = SiiresakiName;
+                    }
+                    else
+                    {
+                        lblSiiresaki.Text = string.Empty;
+                    }
+                }
+            }
+        }
+
+        private void sbStaff_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!sbStaff.IsErrorOccurs)
+                {
+                    DataTable dt = sbStaff.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        StaffName = dt.Rows[0]["StaffName"].ToString();
+                        lblStaff.Text = StaffName;
+                    }
+                    else
+                    {
+                        lblStaff.Text = string.Empty;
+                    }
+                }
             }
         }
     }

@@ -162,6 +162,7 @@
     <Content Include="StoreProcedure\JuchuuNyuuryoku_Search.sql" />
     <Content Include="StoreProcedure\JuchuuNyuuryoku_Select_Check.sql" />
     <Content Include="StoreProcedure\JuchuuNyuuryoku_Update.sql" />
+    <Content Include="StoreProcedure\JuchuuTorikomi_CUD.sql" />
     <Content Include="StoreProcedure\JuchuuTorikomi_Display.sql" />
     <Content Include="StoreProcedure\JuchuuTorikomi_Error_Check.sql" />
     <Content Include="StoreProcedure\Kouriten_Search.sql" />
