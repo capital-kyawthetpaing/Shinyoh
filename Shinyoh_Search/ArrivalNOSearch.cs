@@ -10,14 +10,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Search
 {
     public partial class ArrivalNOSearch : SearchBase
     {
+        CommonFunction cf;
         public string ChakuniNO = string.Empty;
         public ArrivalNOSearch()
         {
+            cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
         }
 
@@ -73,27 +76,34 @@ namespace Shinyoh_Search
         {
             chakuniNyuuryoku_BL ab = new chakuniNyuuryoku_BL();
             ChakuniNyuuryoku_Entity ane = new ChakuniNyuuryoku_Entity();
-            ane.ChakuniDateFrom = txtDateFrom.Text;
-            ane.ChakuniDateTo = txtDateTo.Text;
+            if(cf.DateCheck(txtDateFrom))           //Task no. 147 - tza
+                ane.ChakuniDateFrom = txtDateFrom.Text;
+            if(cf.DateCheck(txtDateTo))            //Task no. 147 - tza
+                ane.ChakuniDateTo = txtDateTo.Text;
             ane.SiiresakiCD = sbSiiresaki.Text;
             ane.StaffCD = sbStaff.Text;
             ane.ShouhinName = txtProductName.Text;
-            ane.ChakuniYoteiDateFrom = txtExpectedDateFrom.Text;
-            ane.ChakuniYoteiDateTo = txtExpectedDateTo.Text;
+            if(cf.DateCheck(txtExpectedDateFrom))           //Task no. 147 - tza
+                ane.ChakuniYoteiDateFrom = txtExpectedDateFrom.Text;
+            if(cf.DateCheck(txtExpectedDateTo))           //Task no. 147 - tza
+                ane.ChakuniYoteiDateTo = txtExpectedDateTo.Text;
             ane.KanriNOFrom = txtControlNoFrom.Text;
             ane.KanriNOTo = txtControlNoTo.Text;
             ane.ShouhinCDFrom = txtProductFrom.Text;
             ane.ShouhinCDTo = txtProductTo.Text;
-            DataTable dt = ab.ArrivalNO_Search(ane);
-            if (dt.Columns.Contains("CurrentDay"))
+            if(ErrorCheck(PanelTitle))           //Task no. 147 - tza
             {
-                if (dt.Rows.Count > 0)
+                DataTable dt = ab.ArrivalNO_Search(ane);
+                if (dt.Columns.Contains("CurrentDay"))
                 {
-                    lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                    dt.Columns.Remove("CurrentDay");
+                    if (dt.Rows.Count > 0)
+                    {
+                        lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        dt.Columns.Remove("CurrentDay");
+                    }
                 }
+                gvArrivalNo.DataSource = dt;
             }
-            gvArrivalNo.DataSource = dt;
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {

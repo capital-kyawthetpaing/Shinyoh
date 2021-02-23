@@ -17,12 +17,10 @@ namespace Shinyoh_Search
     public partial class JuchuuNyuuryokuSearch : SearchBase
     {
         CommonFunction cf;
-        BaseBL bbl;
         public string JuchuuNo = string.Empty;
         public JuchuuNyuuryokuSearch()
         {
-            cf = new CommonFunction();
-            bbl = new BaseBL();
+            cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
         }
 
@@ -77,26 +75,10 @@ namespace Shinyoh_Search
         private void DataGridviewBind()
         {
             JuchuuNyuuryokuEntity obj = new JuchuuNyuuryokuEntity();
-            bool iserror = false;
-            if (cf.DateCheck(txtDate1))
+            if (cf.DateCheck(txtDate1))           //Task no. 147 - tza
                 obj.JuchuuDate = txtDate1.Text;
-            else
-            {
-                iserror = true;
-                txtDate1.Focus();
-                bbl.ShowMessage("E103");
-            }
-            if(cf.DateCheck(txtDate2))
+            if(cf.DateCheck(txtDate2))           //Task no. 147 - tza
                 obj.ChangeDate = txtDate2.Text;
-            else
-            {
-                if (!iserror)
-                {
-                    iserror = true;
-                    txtDate2.Focus();
-                    bbl.ShowMessage("E103");
-                }
-            }
             obj.TokuisakiCD = txtTokuisaki.Text;
             obj.StaffCD = txtStaffCD.Text;            
             obj.ShouhinName = txtShouhinName.Text;
@@ -109,7 +91,7 @@ namespace Shinyoh_Search
             obj.ShouhinCD = txtShouhin1.Text;
             obj.SizeNO = txtShouhin2.Text;
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
-            if(!iserror)
+            if(ErrorCheck(panel1))           //Task no. 147 - tza
             {
                 DataTable dt = objMethod.JuchuuNyuuryoku_Search(obj);
                 if (dt.Columns.Contains("CurrentDay"))
