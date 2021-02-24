@@ -135,20 +135,13 @@ namespace Shinyoh_Search
         }       
         private void txtTokuisakiCD_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            lblTokuisakiRyakuName.Text = string.Empty;
+            if (!txtTokuisakiCD.IsErrorOccurs)
             {
-                if (!txtTokuisakiCD.IsErrorOccurs)
+                DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
+                if (dt.Rows.Count > 0)
                 {
-                    DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                    {
-                        TokuisakiName = dt.Rows[0]["TokuisakiRyakuName"].ToString();
-                        lblTokuisakiRyakuName.Text = TokuisakiName;
-                    }
-                    else
-                    {
-                        lblTokuisakiRyakuName.Text = string.Empty;
-                    }
+                    lblTokuisakiRyakuName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
                 }
             }
         }

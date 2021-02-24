@@ -132,6 +132,8 @@ namespace HacchuuNyuuryoku
                     txtCopy.E102Check(false);
 
                     txtHacchuuNO.E133Check(true, "HacchuuNyuuryoku", txtHacchuuNO, null, null);
+                    txtHacchuuNO.E266Check(false, "HacchuuNyuuryoku", txtHacchuuNO);
+                    txtHacchuuNO.E265Check(false, "HacchuuNyuuryoku", txtHacchuuNO);
 
                     Disable_UDI_Mode();
                     Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];

@@ -59,6 +59,7 @@ namespace Shinyoh_Search
                 DataTable dt = txtTokuisaki.IsDatatableOccurs;
                 if (dt.Rows.Count > 0)
                     lblTokuisakiRyakuName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                else lblTokuisakiRyakuName.Text = string.Empty;
             }
         }
 
@@ -69,6 +70,7 @@ namespace Shinyoh_Search
                 DataTable dt = txtStaffCD.IsDatatableOccurs;
                 if (dt.Rows.Count > 0)
                     lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
+                else lblStaffCD_Name.Text = string.Empty;
             }
         }
 
