@@ -1187,6 +1187,7 @@ namespace ShukkaSiziNyuuryoku
             this.colKonkaiShukkaSiziSuu.DataPropertyName = "KonkaiShukkaSiziSuu";
             this.colKonkaiShukkaSiziSuu.HeaderText = "今回出荷指示数";
             this.colKonkaiShukkaSiziSuu.Name = "colKonkaiShukkaSiziSuu";
+            this.colKonkaiShukkaSiziSuu.Width = 150;
             // 
             // colTanka
             // 
