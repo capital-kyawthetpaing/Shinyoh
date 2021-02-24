@@ -51,7 +51,7 @@ namespace ShukkaSiziNyuuryoku
             sbShippingNO.ChangeDate = txtShippingDate;
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.SetHiraganaColumn("colDetails");
-            dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,ShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
+            dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
             td = new TokuisakiDetail();
             kd = new KouritenDetail();
             sbKouriten.TxtBox = sbTokuisaki;//ses
@@ -944,7 +944,7 @@ namespace ShukkaSiziNyuuryoku
                 return false;
             }
             string value2 = dgvShukkasizi.Rows[row].Cells["colJuchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
-            string value3 = dgvShukkasizi.Rows[row].Cells["ShukkaSiziZumiSuu"].EditedFormattedValue.ToString().Replace(",", "");
+            string value3 = dgvShukkasizi.Rows[row].Cells["colShukkaSiziZumiSuu"].EditedFormattedValue.ToString().Replace(",", "");
             if (Convert.ToInt64(value) > (Convert.ToInt64(value2) - Convert.ToInt64(value3)))
             {
                 bbl.ShowMessage("E143", "未出荷指示数", "大きい");

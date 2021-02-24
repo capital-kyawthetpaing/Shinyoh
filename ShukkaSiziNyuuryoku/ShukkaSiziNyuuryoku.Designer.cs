@@ -94,7 +94,7 @@ namespace ShukkaSiziNyuuryoku
             this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShukkakanousuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShukkaSiziZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShukkaSiziZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKonkaiShukkaSiziSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTanka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -749,7 +749,7 @@ namespace ShukkaSiziNyuuryoku
             this.colSizeNO,
             this.colJuchuuSuu,
             this.colShukkakanousuu,
-            this.ShukkaSiziZumiSuu,
+            this.colShukkaSiziZumiSuu,
             this.colKonkaiShukkaSiziSuu,
             this.colTanka,
             this.colPrice,
@@ -1170,17 +1170,17 @@ namespace ShukkaSiziNyuuryoku
             this.colShukkakanousuu.ReadOnly = true;
             this.colShukkakanousuu.Width = 110;
             // 
-            // ShukkaSiziZumiSuu
+            // colShukkaSiziZumiSuu
             // 
-            this.ShukkaSiziZumiSuu.DataPropertyName = "ShukkaSiziZumiSuu";
+            this.colShukkaSiziZumiSuu.DataPropertyName = "ShukkaSiziZumiSuu";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle4.Format = "N0";
             dataGridViewCellStyle4.NullValue = null;
-            this.ShukkaSiziZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ShukkaSiziZumiSuu.HeaderText = "出荷指示済数";
-            this.ShukkaSiziZumiSuu.Name = "ShukkaSiziZumiSuu";
-            this.ShukkaSiziZumiSuu.ReadOnly = true;
-            this.ShukkaSiziZumiSuu.Width = 110;
+            this.colShukkaSiziZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colShukkaSiziZumiSuu.HeaderText = "出荷指示済数";
+            this.colShukkaSiziZumiSuu.Name = "colShukkaSiziZumiSuu";
+            this.colShukkaSiziZumiSuu.ReadOnly = true;
+            this.colShukkaSiziZumiSuu.Width = 110;
             // 
             // colKonkaiShukkaSiziSuu
             // 
@@ -1449,7 +1449,7 @@ namespace ShukkaSiziNyuuryoku
         private System.Windows.Forms.DataGridViewTextBoxColumn colSizeNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuSuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShukkakanousuu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ShukkaSiziZumiSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkaSiziZumiSuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKonkaiShukkaSiziSuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTanka;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
