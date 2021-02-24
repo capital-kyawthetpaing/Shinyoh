@@ -50,12 +50,34 @@ namespace ShukkaSiziNyuuryoku
             //dgvShukkasizi.CellFormatting += DgvShukkasizi_CellFormatting;
             sbShippingNO.ChangeDate = txtShippingDate;
             dgvShukkasizi.SetGridDesign();
+            td = new TokuisakiDetail();
+            kd = new KouritenDetail(); 
+            sbKouriten.TxtBox = sbTokuisaki;//ses
+            GridView_UI();
+        }
+
+        private void GridView_UI()
+        {
+            dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //dgvShukkasizi.Columns["colPrice"].DefaultCellStyle.Format = "#,0";
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
-            dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            td = new TokuisakiDetail();
-            kd = new KouritenDetail();
-            sbKouriten.TxtBox = sbTokuisaki;//ses
+
+            var col = dgvShukkasizi.Columns;
+            for (int i = 5; i < col.Count; i++)
+            {
+                while (i <= 10)
+                {
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    //dgvShukkasizi.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                    ++i;
+                }
+                if (i == 11)
+                {
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    return;
+                }
+            }
         }
 
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
@@ -573,63 +595,20 @@ namespace ShukkaSiziNyuuryoku
         }
 
         //GV_Event
-        private void DgvShukkasizi_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            dgvShukkasizi.Columns["colJuchuuSuu"].DefaultCellStyle.Format = "#,0";
-            dgvShukkasizi.Columns["ShukkanouSuu"].DefaultCellStyle.Format = "#,0";
-            dgvShukkasizi.Columns["ShukkaSiziZumiSuu"].DefaultCellStyle.Format = "#,0";
-            dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Format = "#,0";
-            dgvShukkasizi.Columns["colPrice"].DefaultCellStyle.Format = "#,0";
-        }
-        private void dgvShukkasizi_Paint(object sender, PaintEventArgs e)
-        {
-            var col = dgvShukkasizi.Columns;
-            for (int i = 5; i < col.Count; i++)
-            {
-                while (i <= 10)
-                {
-                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    //dgvShukkasizi.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    ++i;
-                }
-                if (i == 11)
-                {
-                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    return;
-                }
-            }
-        }
-        private void dgvShukkasizi_RowEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex != 0 && dgvShukkasizi.CurrentCell != null)
-            {
-                int row = dgvShukkasizi.CurrentCell.RowIndex;
-                int col = dgvShukkasizi.CurrentCell.ColumnIndex;
-                if (row >= 0 && col == 15)
-                {
-                    SoukoSearch ss = new SoukoSearch();
-                    ss.ShowDialog();
-                    if (!string.IsNullOrEmpty(ss.soukoCD))
-                    {
-                        dgvShukkasizi["SoukoCD", row].Value = ss.soukoCD.ToString();
-                        dgvShukkasizi["SoukoName", row].Value = ss.soukoName.ToString();
-                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["SoukoCD"];
-                        Temp_Save(row);
-                    }
-                }
-            }
-        }
         private void DgvShukkasizi_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
+            if (dgvShukkasizi.IsLastKeyEnter)
             {
-                if (cboMode.SelectedValue.ToString().Equals("2"))
+                if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
                 {
-                    dtResult.Clear();
-                    dtTemp1.Clear();
+                    if (cboMode.SelectedValue.ToString().Equals("2"))
+                    {
+                        dtResult.Clear();
+                        dtTemp1.Clear();
+                    }
+                    Temp_Save(e.RowIndex);
                 }
-                Temp_Save(e.RowIndex);
-            }
+            }           
         }
         private void DgvShukkasizi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -900,8 +879,8 @@ namespace ShukkaSiziNyuuryoku
             return true;
         }
         private bool Grid_ErrorCheck(int row, int col)
-        {
-            if (string.IsNullOrEmpty(dgvShukkasizi.Rows[row].Cells[col].EditedFormattedValue.ToString()))
+        {            
+            if (string.IsNullOrEmpty(dgvShukkasizi.Rows[row].Cells[8].EditedFormattedValue.ToString())|| string.IsNullOrEmpty(dgvShukkasizi.Rows[row].Cells[9].EditedFormattedValue.ToString())|| string.IsNullOrEmpty(dgvShukkasizi.Rows[row].Cells[10].EditedFormattedValue.ToString()))
             {
                 dgvShukkasizi.Rows[row].Cells[col].Value = "0";
             }
