@@ -52,6 +52,7 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
+            dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             td = new TokuisakiDetail();
             kd = new KouritenDetail();
             sbKouriten.TxtBox = sbTokuisaki;//ses
@@ -865,15 +866,6 @@ namespace ShukkaSiziNyuuryoku
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
 
         }
-        private bool Temp_Null()
-        {
-            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp1.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && dtTemp1.Rows.Count == 0)
-            {
-                bbl.ShowMessage("E274");
-                return false;
-            }
-            return true;
-        }
         private void JuchuuNo_ErrorCheck()
         {
             sksz_bl = new ShukkasiziNyuuryokuBL();
@@ -909,6 +901,11 @@ namespace ShukkaSiziNyuuryoku
         }
         private bool Grid_ErrorCheck(int row, int col)
         {
+            if (string.IsNullOrEmpty(dgvShukkasizi.Rows[row].Cells[col].EditedFormattedValue.ToString()))
+            {
+                dgvShukkasizi.Rows[row].Cells[col].Value = "0";
+            }
+
             if (col == 8 || col == 9 || col == 10 || col == 12 || col == 15)
             {
                 if (!ColKonkaiShukkaSiziSuu(row, col))
