@@ -434,18 +434,31 @@ namespace IdouNyuuryoku
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
 
-                if (cboMode.SelectedValue.ToString() == "1")
+                if (F8_dt1.Rows.Count == 0)
                 {
                     F8_dt1 = gv1_to_dt1.Clone();
                     Souko_Disable_Enable(txtIdoukubun.Text);
                 }
-                else if(cboMode.SelectedValue.ToString() == "2")
+
+                if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "2" || !string.IsNullOrEmpty(txtCopy.Text))
                 {
                     F8_dt1 = gv1_to_dt1.Copy();
                     Souko_Disable_Enable(txtIdoukubun.Text);
                 }
-                else
-                    F8_dt1 = gv1_to_dt1.Copy();
+                    
+
+                //if (cboMode.SelectedValue.ToString() == "1")
+                //{
+                //    F8_dt1 = gv1_to_dt1.Clone();
+                //    Souko_Disable_Enable(txtIdoukubun.Text);
+                //}
+                //else if(cboMode.SelectedValue.ToString() == "2")
+                //{
+                //    F8_dt1 = gv1_to_dt1.Copy();
+                //    Souko_Disable_Enable(txtIdoukubun.Text);
+                //}
+                //else
+                //    F8_dt1 = gv1_to_dt1.Copy();
             }
         }
 
@@ -699,10 +712,17 @@ namespace IdouNyuuryoku
 
                 DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "'");// original data
                 DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  KanriNO='" + kanriNO + "'").SingleOrDefault();
-
+                if (existDr1 != null)
+                {
+                    if (row.Cells["colIdouSuu"].Value.ToString() == "0")
+                    {
+                        F8_dt1.Rows.Remove(existDr1);
+                        existDr1 = null;
+                    }
+                }
                 F8_drNew[0] = shouhinCD;
-
-                if (row.Cells["colIdouSuu"].Value.ToString() != "0" && (select_dr1[0][6].ToString() != row.Cells["colIdouSuu"].Value.ToString()))
+                //if (row.Cells["colIdouSuu"].Value.ToString() != "0" && (select_dr1[0][6].ToString() != row.Cells["colIdouSuu"].Value.ToString()))
+                if (row.Cells["colIdouSuu"].Value.ToString() != "0")
                 {
                     for (int c = 1; c < gv_1.Columns.Count; c++)
                     {
@@ -820,9 +840,12 @@ namespace IdouNyuuryoku
                 }
             }
             dt.Rows.Add(dr);
+            DataTable save_dt = F8_dt1.AsEnumerable()
+                   .GroupBy(r => new { Col1 = r["IdouNO"], Col2 = r["IdouGyouNO"] })
+                   .Select(g => g.OrderBy(r => r["IdouNO"]).Last()).CopyToDataTable();
             string header_XML = cf.DataTableToXml(dt);
 
-            string detail_XML = cf.DataTableToXml(F8_dt1);
+            string detail_XML = cf.DataTableToXml(save_dt);
             return (header_XML, detail_XML);
         }
         public void Create_Datatable_Column(DataTable create_dt)
