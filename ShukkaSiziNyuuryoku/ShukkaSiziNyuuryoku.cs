@@ -47,6 +47,7 @@ namespace ShukkaSiziNyuuryoku
             dtClear = CreateTable_Details();
             dgvShukkasizi.CellEndEdit += DgvShukkasizi_CellEndEdit;
             dgvShukkasizi.CellContentClick += DgvShukkasizi_CellContentClick;
+            dgvShukkasizi.CellFormatting += DgvShukkasizi_CellFormatting;
             sbShippingNO.ChangeDate = txtShippingDate;
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.SetHiraganaColumn("colDetails");
@@ -55,6 +56,7 @@ namespace ShukkaSiziNyuuryoku
             kd = new KouritenDetail();
             sbKouriten.TxtBox = sbTokuisaki;//ses
         }
+
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
         {
             ProgramID = "ShukkaSiziNyuuryoku";
@@ -570,6 +572,14 @@ namespace ShukkaSiziNyuuryoku
         }
 
         //GV_Event
+        private void DgvShukkasizi_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgvShukkasizi.Columns["colJuchuuSuu"].DefaultCellStyle.Format = "#,0";
+            dgvShukkasizi.Columns["ShukkanouSuu"].DefaultCellStyle.Format = "#,0";
+            dgvShukkasizi.Columns["ShukkaSiziZumiSuu"].DefaultCellStyle.Format = "#,0";
+            dgvShukkasizi.Columns["colArrivalTime"].DefaultCellStyle.Format = "#,0";
+            dgvShukkasizi.Columns["colPrice"].DefaultCellStyle.Format = "#,0";           
+        }
         private void dgvShukkasizi_Paint(object sender, PaintEventArgs e)
         {
             var col = dgvShukkasizi.Columns;
@@ -742,6 +752,10 @@ namespace ShukkaSiziNyuuryoku
                             bbl.ShowMessage("E267", "取引開始日");
                             sbKouriten.Focus();
                         }                        
+                    }
+                    if(string.IsNullOrEmpty(txtSlipDate.Text))
+                    {
+                        txtSlipDate.Text = txtShippingDate.Text;
                     }
                 }                
             }
@@ -998,15 +1012,7 @@ namespace ShukkaSiziNyuuryoku
             txtPhone3.Clear();
             txtName.Clear();
         }
-
-        private void txtSlipDate_TextChanged(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtSlipDate.Text))
-            {
-                txtSlipDate.Text = txtShippingDate.Text;
-            }
-        }
-
+       
         //Mode_Procedure
         private void FunctionProcedure(int tagID)
         {
