@@ -10,6 +10,7 @@ using Shinyoh_Controls;
 using Shinyoh_Search;
 using System.Data;
 using System.Linq;
+using System.Globalization;
 
 namespace ShukkaSiziNyuuryoku
 {
@@ -198,7 +199,8 @@ namespace ShukkaSiziNyuuryoku
             //price change case
             if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colTanka"] || dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colArrivalTime"])
             {
-                dgvShukkasizi.Rows[row].Cells["colPrice"].Value = Convert.ToInt32(dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString()) * Convert.ToInt32(dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString());
+                dgvShukkasizi.Rows[row].Cells["colPrice"].Value = Convert.ToInt64(dgvShukkasizi.Rows[row].Cells["colArrivalTime"].EditedFormattedValue.ToString()) * Convert.ToInt64(dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString());
+                //String.Format(CultureInfo.InvariantCulture, "{0:0,0}", dgvShukkasizi.Rows[row].Cells["colPrice"].Value);
                 //dgvShukkasizi.MoveNextCell();
             }
 
@@ -713,13 +715,13 @@ namespace ShukkaSiziNyuuryoku
 
                         DataTable dt1 = tbl.M_Tokuisaki_Select(sbTokuisaki.Text, txtShippingDate.Text, "E227");
                         DataTable dt2 = tbl.M_Tokuisaki_Select(sbTokuisaki.Text, txtShippingDate.Text, "E267");
-                        if (dt1.Rows[0]["MessageID"].ToString()=="E227")
+                        if (dt1.Rows.Count>0 && dt1.Rows[0]["MessageID"].ToString()=="E227")
                         {
                             bbl.ShowMessage("E227", "取引終了日");
                             sbTokuisaki.Focus();
                             return;
                         }
-                        else if(dt2.Rows[0]["MessageID"].ToString() == "E267")
+                        else if(dt2.Rows.Count>0 && dt2.Rows[0]["MessageID"].ToString() == "E267")
                         {
                             bbl.ShowMessage("E267", "取引開始日");
                             sbTokuisaki.Focus();
@@ -730,12 +732,12 @@ namespace ShukkaSiziNyuuryoku
                         KouritenBL kbl = new KouritenBL();
                         DataTable dt1 =kbl.Kouriten_Select_Check(sbKouriten.Text, txtShippingDate.Text, "E227");
                         DataTable dt2 = kbl.Kouriten_Select_Check(sbKouriten.Text, txtShippingDate.Text, "E267");
-                        if (dt1.Rows[0]["MessageID"].ToString() == "E227")
+                        if (dt1.Rows.Count > 0 && dt1.Rows[0]["MessageID"].ToString() == "E227")
                         {
                             bbl.ShowMessage("E227", "取引終了日");
                             sbKouriten.Focus();
                         }
-                        else if (dt2.Rows[0]["MessageID"].ToString() == "E267")
+                        else if (dt2.Rows.Count > 0 && dt2.Rows[0]["MessageID"].ToString() == "E267")
                         {
                             bbl.ShowMessage("E267", "取引開始日");
                             sbKouriten.Focus();
@@ -995,6 +997,14 @@ namespace ShukkaSiziNyuuryoku
             txtPhone2.Clear();
             txtPhone3.Clear();
             txtName.Clear();
+        }
+
+        private void txtSlipDate_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtSlipDate.Text))
+            {
+                txtSlipDate.Text = txtShippingDate.Text;
+            }
         }
 
         //Mode_Procedure
