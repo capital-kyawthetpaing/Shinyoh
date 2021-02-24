@@ -25,7 +25,7 @@ BEGIN
 	
 			CREATE TABLE #Temp_Main
 				(   
-					ShukkaNO				varchar(12) COLLATE DATABASE_DEFAULT,
+					--ShukkaNO				varchar(12) COLLATE DATABASE_DEFAULT,
 					StaffCD					varchar(10) COLLATE DATABASE_DEFAULT,
 					ShukkaDate				date,
 					TokuisakiCD				varchar(10) COLLATE DATABASE_DEFAULT,
@@ -64,8 +64,8 @@ BEGIN
 
 		
 	    INSERT INTO #Temp_Main
-           (ShukkaNO
-			  ,StaffCD          
+           (--ShukkaNO
+			  StaffCD          
 			  ,ShukkaDate          
 			  ,TokuisakiCD       
 			  ,TokuisakiName 
@@ -103,7 +103,7 @@ BEGIN
 					FROM OPENXML(@hQuantityAdjust, 'NewDataSet/test')
 					WITH
 					(
-					ShukkaNO				varchar(12) 'ShukkaNO',
+					--ShukkaNO				varchar(12) 'ShukkaNO',
 					StaffCD					varchar(10) 'StaffCD',
 					ShukkaDate				date 'ShukkaDate',
 					TokuisakiCD				varchar(10) 'TokuisakiCD',
@@ -156,7 +156,7 @@ BEGIN
 					Kanryo					tinyint DEFAULT 0,
 					ShukkaMeisaiTekiyou		varchar(80) COLLATE DATABASE_DEFAULT,		--Detail
 					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
-					ShukkaSiziNOGyouNO		varchar(12) COLLATE DATABASE_DEFAULT,
+					ShukkaSiziNOGyouNO		varchar(25) COLLATE DATABASE_DEFAULT,
 					JuchuuNOGyouNO			varchar(12) COLLATE DATABASE_DEFAULT,
 					DenpyouDate				date
 				)
@@ -197,7 +197,7 @@ BEGIN
 					Kanryo					tinyint 'Kanryo',
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					SoukoCD					varchar(12)'SoukoCD',
-					ShukkaSiziNOGyouNO		varchar(12)'ShukkaSiziNOGyouNO',
+					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
 					JuchuuNOGyouNO			varchar(12)'JuchuuNOGyouNO',
 					DenpyouDate				date 'DenpyouDate'
 					)
@@ -205,7 +205,7 @@ BEGIN
 					
 		declare		@Unique as uniqueidentifier = NewID(),
 					@ShukkaDate as varchar(10) = (select ShukkaDate from #Temp_Main),
-					@ShukkaNO varchar(12)=(select ShukkaNO from #Temp_Main ),
+					@ShukkaNO varchar(12),
 					@StaffCD varchar(10) = (select StaffCD from #Temp_Main),
 					@TokuisakiCD varchar(10) = (select TokuisakiCD from #Temp_Main),
 					@KouritenCD varchar(10) = (select KouritenCD from #Temp_Main),
@@ -213,7 +213,7 @@ BEGIN
 					@InsertOperator varchar(10) = (select InsertOperator from #Temp_Main),
 					@ProgramID varchar(100) = (select ProgramID from #Temp_Main),
 					@PC varchar(30) = (select PC from #Temp_Main),
-					@KeyItem varchar(100)= (select ShukkaNO from #Temp_Main),
+					--@KeyItem varchar(100)= (select ShukkaNO from #Temp_Main),
 					@currentDate as datetime = getdate()
 
 				EXEC [dbo].[Fnc_GetNumber]
@@ -401,7 +401,7 @@ BEGIN
 					--窶ｻ繧ｷ繝ｼ繝医梧ｶ郁ｾｼ鬆・榊盾辣ｧ
 			DECLARE @Price_table TABLE (idx int Primary Key IDENTITY(1,1),
 									KonkaiShukkaSiziSuu varchar(50),
-									ShukkaSiziNOGyouNO  varchar(12),ShouhinCD  varchar(50))
+									ShukkaSiziNOGyouNO  varchar(25),ShouhinCD  varchar(50))
 						INSERT @Price_table  SELECT ShukkaSuu,ShukkaSiziNOGyouNO,ShouhinCD FROM #Temp_Detail
 			
 			declare @Count as int = 1
@@ -409,7 +409,7 @@ BEGIN
 						WHILE @Count <= (SELECT COUNT(*) FROM #Temp_Detail)
 						BEGIN
 						declare @KonkaiShukkaSiziSuu varchar(50)=(select KonkaiShukkaSiziSuu from @Price_table  WHERE idx =@Count)
-						  declare @Value2 as varchar(12)=(select ShukkaSiziNOGyouNO from @Price_table WHERE idx =@Count),
+						  declare @Value2 as varchar(25)=(select ShukkaSiziNOGyouNO from @Price_table WHERE idx =@Count),
 								@Value3 as varchar(50)=(select ShouhinCD  from @Price_table WHERE idx =@Count)
 			 
 						 DECLARE CUR_POINTER CURSOR FAST_FORWARD FOR
@@ -508,7 +508,7 @@ BEGIN
 
 
 			--L_Log Z	
-			exec dbo.L_Log_Insert @InsertOperator,@ProgramID,@PC,'New',@KeyItem
+			exec dbo.L_Log_Insert @InsertOperator,@ProgramID,@PC,'New',@ShukkaNO
 
 		
 		--D_Exclusive Y
