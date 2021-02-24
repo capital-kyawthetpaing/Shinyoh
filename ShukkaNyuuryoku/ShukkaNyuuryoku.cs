@@ -137,7 +137,7 @@ namespace ShukkaNyuuryoku {
             }
             if (tagID == "12")
             {
-                if (F8_dt1.Rows.Count > 0)
+                if (F8_dt1.Rows.Count > 0 || gvdt1.Rows.Count > 0)
                 {
                     DBProcess();
                     switch (cboMode.SelectedValue)
@@ -164,8 +164,8 @@ namespace ShukkaNyuuryoku {
         {
             (string, string, string) obj = GetInsert();
             ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
+           // Konkai_Price(F8_dt1);
             string return_Bl = sBL.ShukkaNyuuryoku_CUD(obj.Item1, obj.Item2, obj.Item3);
-            //Konkai_Price(gvdt1);
             if (return_Bl == "true")
                 bbl.ShowMessage("I101");
         }
@@ -175,7 +175,7 @@ namespace ShukkaNyuuryoku {
         //    {
         //        string shukkasuu = dr["ShukkaSuu"].ToString();
         //        string ShukkaSiziNOGyouNO = dr["ShukkaSiziNOGyouNO"].ToString();
-        //        string ShouhinCD = dr["ShouhinCD"].ToString();
+        //        string ShouhinCD = dr["HinbanCD"].ToString();
         //        bl.Shukka_Price(shukkasuu, ShukkaSiziNOGyouNO, ShouhinCD);
         //    }
         //}
@@ -243,7 +243,7 @@ namespace ShukkaNyuuryoku {
             {
                 //DataTable dt = new DataTable();
                 //dt = dtGridview(1);
-                //Detail_XML = cf.DataTableToXml(dt);
+                Detail_XML = cf.DataTableToXml(gvdt1);
             }
             else
             {
@@ -511,6 +511,7 @@ namespace ShukkaNyuuryoku {
                 DataGridViewRow row = gvShukka1.Rows[t];// grid view data
                 string JANCD = row.Cells["colJANCD"].Value.ToString();
                 string HinbanCD = row.Cells["colShouhin"].Value.ToString();
+                string Konkai = row.Cells["colKonkai"].Value.ToString();
                 string ShukkaSiziNOGyouNO = row.Cells["ShukkaSiziNOGyouNO"].Value.ToString();
                 //string chk_value = row.Cells["colComplete"].EditedFormattedValue.ToString();
                 string Detail = row.Cells["colDetail"].EditedFormattedValue.ToString();
@@ -518,9 +519,9 @@ namespace ShukkaNyuuryoku {
                 //string color = row.Cells["colColorNO"].Value.ToString();
                 //string size = row.Cells["colSize"].Value.ToString();
 
-                DataRow[] select_dr1 = gvdt1.Select("JANCD ='" + JANCD + "' and ShukkaSiziNOGyouNO='" + ShukkaSiziNOGyouNO + "'");// original data
+                DataRow[] select_dr1 = gvdt1.Select("JANCD ='" + JANCD +  "'");// original data
                 //DataRow[] select_dr1 = gvdt1.Select("HinbanCD ='" + HinbanCD + "'");// original data
-                DataRow existDr1 = F8_dt1.Select("JANCD ='" + JANCD +  "'").SingleOrDefault();
+                DataRow existDr1 = F8_dt1.Select("JANCD ='" + JANCD + "' and ShukkaSuu='" + Konkai + "' and ShukkaMeisaiTekiyou='" + Detail + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     if (select_dr1[0][9].ToString() == "0")
@@ -530,7 +531,7 @@ namespace ShukkaNyuuryoku {
                     }
                 }
                 F8_drNew[0] = JANCD;
-                if (row.Cells["colKonkai"].Value.ToString() != "0" )
+                if (row.Cells["colKonkai"].Value.ToString() != "0")
                 {
                     for (int c = 1; c < gvShukka1.Columns.Count; c++)
                     {
