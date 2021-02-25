@@ -28,7 +28,7 @@ declare  @idoc AS INT
 
 CREATE TABLE  [dbo].[#Temp_Header]
 				(   
-				  --[ShukkaSiziNO] varchar(12) COLLATE DATABASE_DEFAULT,
+				  [ShukkaSiziNO] varchar(12) COLLATE DATABASE_DEFAULT,
 				  [StaffCD] varchar(10) COLLATE DATABASE_DEFAULT,
 				  [ShukkaYoteiDate] varchar(10) COLLATE DATABASE_DEFAULT,
 				  [DenpyouDate] varchar(10) COLLATE DATABASE_DEFAULT,
@@ -69,7 +69,7 @@ CREATE TABLE  [dbo].[#Temp_Header]
 INSERT INTO [#Temp_Header]
 		SELECT *  FROM openxml(@idoc,'/NewDataSet/test',2)
 		with(
-				--[ShukkaSiziNO] varchar(12) ,
+				[ShukkaSiziNO] varchar(12) ,
 				[StaffCD] varchar(10) ,
 				[ShukkaYoteiDate] varchar(10) ,
 				[DenpyouDate] varchar(10) ,
@@ -180,7 +180,7 @@ INSERT INTO [#Temp_Details]
 				exec sp_xml_removedocument @idoc
 
 declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header)
-, @ShukkaSiziNO varchar(100)
+, @ShukkaSiziNO varchar(100)=(select ShukkaSiziNO from #Temp_Header)
 , @StaffCD varchar(20) = (select StaffCD from #Temp_Header)
 , @OperatorCD as varchar(10) =(select OperatorCD from #Temp_Header)
 , @Program varchar(100) = (select ProgramID from #Temp_Header)
@@ -188,17 +188,6 @@ declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header
 , @currentDate as datetime = getdate()
 , @Unique as uniqueidentifier = NewID()
 
-
-EXEC [dbo].[Fnc_GetNumber]
-            12,-------------in連番区分
-            @ShippingDate,----in基準日
-            0,-------inSEQNO
-            @ShukkaSiziNO OUTPUT
-
-IF ISNULL(@ShukkaSiziNO,'') = ''
-            BEGIN
-                return  '1' ;
-            END
 --TabelA
 INSERT INTO [dbo].[D_ShukkaSizi]
 						(ShukkaSiziNO
@@ -728,12 +717,6 @@ exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperatorMode,@ShukkaSiziNO
 
 --テーブル転送仕様Ｙ--削除
 exec [dbo].[D_Exclusive_Remove_NO] 1,@OperatorCD,@Program,@PC
-	--DELETE 
-	--FROM D_Exclusive
-	--WHERE DataKBN=1
-	--AND Operator=@OperatorCD
-	--AND Program=@Program
-	--AND PC=@PC
 
 END
 

@@ -8,8 +8,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
+-- Author:		<Swe>
+-- Create date: <25-02-2021>
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_ErrorCheck_Select]
@@ -25,15 +25,18 @@ BEGIN
     -- Insert statements for procedure here
 if @Errortype='E115'
 	begin
-		if not exists(select 1 from M_Control mc
+
+		if @ShukkaYoteiDate is null
+			select 1 as MessageID
+		else if not exists(select 1 from M_Control mc
 						inner join M_FiscalYear mfy
 						on mfy.FiscalYear=mc.FiscalYear
 						and mc.MainKey=1--key
 						and mfy.InputPossibleStartDate<=@ShukkaYoteiDate
 						and mfy.InputPossibleEndDate>=@ShukkaYoteiDate)
 			begin
-			--not exist for ShippingDate
-			select * from M_Message where MessageID = 'E115'
+				--not exist for ShippingDate
+				select * from M_Message where MessageID = 'E115'
 			end
 		else if not exists(select 1 from M_Control mc
 							inner join M_FiscalYear mfy
@@ -52,7 +55,7 @@ if @Errortype='E115'
 
 	end
 
-	if @Errortype='E133'
+	else if @Errortype='E133'
 	begin
 		if not exists(select 1 from D_ShukkaSizi where ShukkaSiziNO=@ShippingNo)		
 			begin
@@ -66,9 +69,9 @@ if @Errortype='E115'
 			end
 	end
 	
-	if @Errortype='E160'
+	else if @Errortype='E160'
 	  begin
-		if exists(select 1 from D_ShukkaSizi where ShukkaKanryouKBN=1)
+		if exists(select 1 from D_ShukkaSizi where ShukkaKanryouKBN=1 and ShukkaSiziNO = @ShippingNo)
 			begin
 			select * from M_Message where MessageID = 'E160'
 			end
