@@ -90,10 +90,10 @@ namespace BL {
         public string Shukka_Price(string shukkasizisuu, string ShukkaSiziNO, string ShouhinCD)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[4];
+            var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@KonkaiShukkaSiziSuu", SqlDbType.VarChar) { Value = shukkasizisuu };
             parameters[1] = new SqlParameter("@ShukkaSiziNO_ShukkaSiziGyouNO", SqlDbType.VarChar) { Value = ShukkaSiziNO };
-            parameters[3] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
+            parameters[2] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
             return ckmdl.InsertUpdateDeleteData("Shukka_Price", GetConnectionString(), parameters);
         }      
         public DataTable D_Exclusive_Lock_Check(ShukkaNyuuryokuEntity se)

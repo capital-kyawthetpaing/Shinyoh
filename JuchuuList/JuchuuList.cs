@@ -70,7 +70,7 @@ namespace JuchuuList {
         private void Date_Setting()
         {
 
-            BaseEntity baseEntity = _GetBaseData();
+            baseEntity = _GetBaseData();
             txtOrderDate1.Text = baseEntity.LoginDate;
             txtOrderDate2.Text = baseEntity.LoginDate;
             txtInputDate1.Text = baseEntity.LoginDate;
