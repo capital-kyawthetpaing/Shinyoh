@@ -58,8 +58,9 @@ namespace ShukkaSiziNyuuryoku
         {
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dgvShukkasizi.Columns["colTanka"].DefaultCellStyle.Format = "#,0";
-            //dgvShukkasizi.Columns["colPrice"].DefaultCellStyle.Format = "#,0";
+            dgvShukkasizi.Columns["colShouhinCD"].Width = 150;
+            dgvShukkasizi.Columns["colShouhinName"].Width = 250; 
+            dgvShukkasizi.Columns["colDetails"].Width = 250;
             dgvShukkasizi.SetNumberColumn("colShukkakanousuu,colTanka,colPrice");
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
