@@ -89,7 +89,7 @@ BEGIN
 	where
 	(d.JuchuuDate >= @JuchuuDate1 and d.JuchuuDate <= @JuchuuDate2) 
 	and (@JuchuuNO1 is null or (d.JuchuuNO  >= @JuchuuNO1))	and (@JuchuuNO2 is null or (d.JuchuuNO  <= @JuchuuNO2)) 
-	and (d.UpdateDateTime >= @UpdateDateTime1 and d.UpdateDateTime <= @UpdateDateTime2)  
+	and (CONVERT(date, d.UpdateDateTime) >= @UpdateDateTime1 and CONVERT(date, d.UpdateDateTime) <= @UpdateDateTime2)  
 	and (@StaffCD is null or (d.StaffCD = @StaffCD))
 	and (@BrandCD is null or (dm.BrandCD = @BrandCD))
 	and (@Year is null or (FSH.YearTerm = @Year))   
@@ -151,7 +151,7 @@ BEGIN
 	where
 	(d.JuchuuDate >= @JuchuuDate1 and d.JuchuuDate <= @JuchuuDate2) 
 	and (@JuchuuNO1 is null or (d.JuchuuNO  >= @JuchuuNO1))	and (@JuchuuNO2 is null or (d.JuchuuNO  <= @JuchuuNO2)) 
-	and (d.UpdateDateTime >= @UpdateDateTime1 and d.UpdateDateTime <= @UpdateDateTime2)  
+	and (CONVERT(date, d.UpdateDateTime) >= @UpdateDateTime1 and CONVERT(date, d.UpdateDateTime) <= @UpdateDateTime2)  
 	and (@StaffCD is null or (d.StaffCD = @StaffCD))
 	and (@BrandCD is null or (dm.BrandCD = @BrandCD))
 	and (@Year is null or (FSH.YearTerm = @Year))   
