@@ -1789,7 +1789,7 @@ namespace JuchuuNyuuryoku
             {
                 if (gv_JuchuuNyuuryoku.CurrentCell != null)
                 {
-                    if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14 || gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 19)
+                    if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14 || gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 18)//ssa
                     {
                         gridKeyDown();
                     }
@@ -1878,7 +1878,7 @@ namespace JuchuuNyuuryoku
         {
             if (gv_JuchuuNyuuryoku.CurrentCell != null)
             {
-                if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14 || gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 19)
+                if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14 || gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 18)//ssa
                 {
                     gridKeyDown();
                 }
