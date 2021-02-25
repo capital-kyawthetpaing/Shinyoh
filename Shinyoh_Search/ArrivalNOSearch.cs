@@ -29,6 +29,7 @@ namespace Shinyoh_Search
         private void ArrivalNOSearch_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Normal, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -37,6 +38,10 @@ namespace Shinyoh_Search
             gvArrivalNo.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvArrivalNo.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvArrivalNo.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+            sbSiiresaki.ChangeDate = txtCurrentDate;
+            sbSiiresaki.lblName = lblSiiresaki;
+            txtStaffCD.ChangeDate = txtCurrentDate;
+            txtStaffCD.lblName = lblStaff;
             gvArrivalNo.UseRowNo(true);
             GridViewBind();
             gvArrivalNo.SetGridDesign();
@@ -47,11 +52,11 @@ namespace Shinyoh_Search
         }
         public override void FunctionProcess(string tagID)
         {
-            if (tagID == "2")
+            if (tagID == "3")
             {
                 GridViewBind();
             }
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 DataGridViewRow row = gvArrivalNo.CurrentRow;
                 GetGridviewData(row);
@@ -101,6 +106,7 @@ namespace Shinyoh_Search
                     if (dt.Rows.Count > 0)
                     {
                         lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                         dt.Columns.Remove("CurrentDay");
                     }
                 }
@@ -139,42 +145,12 @@ namespace Shinyoh_Search
 
         private void sbSiiresaki_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!sbSiiresaki.IsErrorOccurs)
-                {
-                    DataTable dt = sbSiiresaki.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                    {
-                        SiiresakiName = dt.Rows[0]["SiiresakiName"].ToString();
-                        lblSiiresaki.Text = SiiresakiName;
-                    }
-                    else
-                    {
-                        lblSiiresaki.Text = string.Empty;
-                    }
-                }
-            }
+
         }
 
         private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (!txtStaffCD.IsErrorOccurs)
-                {
-                    DataTable dt = txtStaffCD.IsDatatableOccurs;
-                    if (dt.Rows.Count > 0)
-                    {
-                        StaffName = dt.Rows[0]["StaffName"].ToString();
-                        lblStaff.Text = StaffName;
-                    }
-                    else
-                    {
-                        lblStaff.Text = string.Empty;
-                    }
-                }
-            }
+
         }
     }
 }

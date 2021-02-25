@@ -28,6 +28,7 @@ namespace Shinyoh_Search
         private void ChakuniYoteiNyuuryokuSearch_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Normal, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -36,6 +37,10 @@ namespace Shinyoh_Search
             gvChakuniYoteiNyuuryoku.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvChakuniYoteiNyuuryoku.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvChakuniYoteiNyuuryoku.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+            sbSiiresaki.ChangeDate = txtCurrentDate;
+            sbSiiresaki.lblName = lblSiiresaki;
+            sbStaff.ChangeDate = txtCurrentDate;
+            sbStaff.lblName = lblStaff;
             gvChakuniYoteiNyuuryoku.UseRowNo(true);
             GridViewBind();
             gvChakuniYoteiNyuuryoku.SetGridDesign();
@@ -46,11 +51,11 @@ namespace Shinyoh_Search
         }
         public override void FunctionProcess(string tagID)
         {
-            if (tagID == "2")
+            if (tagID == "3")
             {
                 GridViewBind();
             }
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 DataGridViewRow row = gvChakuniYoteiNyuuryoku.CurrentRow;
                 GetGridviewData(row);
@@ -84,6 +89,7 @@ namespace Shinyoh_Search
                     if (dt.Rows.Count > 0)
                     {
                         lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                         dt.Columns.Remove("CurrentDay");
                     }
                 }

@@ -65,6 +65,7 @@ namespace Shinyoh_Search
             this.colCustomerCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCurrentDate = new Shinyoh_Controls.STextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvShippingNo)).BeginInit();
             this.SuspendLayout();
@@ -72,6 +73,7 @@ namespace Shinyoh_Search
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.txtCurrentDate);
             this.panel1.Controls.Add(this.txtDate);
             this.panel1.Controls.Add(this.lblDate);
             this.panel1.Controls.Add(this.txtTokuisakiCD);
@@ -139,7 +141,7 @@ namespace Shinyoh_Search
             this.txtTokuisakiCD.Combo = null;
             this.txtTokuisakiCD.DecimalPlace = 0;
             this.txtTokuisakiCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtTokuisakiCD.DepandOnMode = true;
+            this.txtTokuisakiCD.DepandOnMode = false;
             this.txtTokuisakiCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtTokuisakiCD.IntegerPart = 0;
             this.txtTokuisakiCD.IsDatatableOccurs = null;
@@ -155,10 +157,10 @@ namespace Shinyoh_Search
             this.txtTokuisakiCD.Name = "txtTokuisakiCD";
             this.txtTokuisakiCD.NextControl = null;
             this.txtTokuisakiCD.NextControlName = "txtStaffCD";
-            this.txtTokuisakiCD.SearchType = Entity.SearchType.ScType.None;
+            this.txtTokuisakiCD.SearchType = Entity.SearchType.ScType.Tokuisaki;
             this.txtTokuisakiCD.Size = new System.Drawing.Size(100, 19);
-            this.txtTokuisakiCD.TabIndex = 25;
-            this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtTokuisakiCD.TabIndex = 3;
+            this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD.TxtBox = null;
             this.txtTokuisakiCD.TxtBox1 = null;
             this.txtTokuisakiCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisakiCD_KeyDown);
@@ -195,7 +197,7 @@ namespace Shinyoh_Search
             this.txtStaffCD.Combo = null;
             this.txtStaffCD.DecimalPlace = 0;
             this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtStaffCD.DepandOnMode = true;
+            this.txtStaffCD.DepandOnMode = false;
             this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtStaffCD.IntegerPart = 0;
             this.txtStaffCD.IsDatatableOccurs = null;
@@ -211,10 +213,10 @@ namespace Shinyoh_Search
             this.txtStaffCD.Name = "txtStaffCD";
             this.txtStaffCD.NextControl = null;
             this.txtStaffCD.NextControlName = "txtProductName";
-            this.txtStaffCD.SearchType = Entity.SearchType.ScType.None;
+            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
             this.txtStaffCD.Size = new System.Drawing.Size(100, 19);
-            this.txtStaffCD.TabIndex = 22;
-            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtStaffCD.TabIndex = 4;
+            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaffCD.TxtBox = null;
             this.txtStaffCD.TxtBox1 = null;
             this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
@@ -230,7 +232,7 @@ namespace Shinyoh_Search
             this.btnSearch.NextControl = null;
             this.btnSearch.NextControlName = null;
             this.btnSearch.Size = new System.Drawing.Size(130, 28);
-            this.btnSearch.TabIndex = 20;
+            this.btnSearch.TabIndex = 12;
             this.btnSearch.Text = "表示(F11)";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -293,7 +295,7 @@ namespace Shinyoh_Search
             this.txtProductTo.NextControlName = null;
             this.txtProductTo.SearchType = Entity.SearchType.ScType.None;
             this.txtProductTo.Size = new System.Drawing.Size(140, 19);
-            this.txtProductTo.TabIndex = 15;
+            this.txtProductTo.TabIndex = 11;
             this.txtProductTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtProductFrom
@@ -318,7 +320,7 @@ namespace Shinyoh_Search
             this.txtProductFrom.NextControlName = "txtProductTo";
             this.txtProductFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtProductFrom.Size = new System.Drawing.Size(140, 19);
-            this.txtProductFrom.TabIndex = 14;
+            this.txtProductFrom.TabIndex = 10;
             this.txtProductFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtShippingNoTo
@@ -343,7 +345,7 @@ namespace Shinyoh_Search
             this.txtShippingNoTo.NextControlName = "txtProductFrom";
             this.txtShippingNoTo.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingNoTo.Size = new System.Drawing.Size(100, 19);
-            this.txtShippingNoTo.TabIndex = 13;
+            this.txtShippingNoTo.TabIndex = 9;
             this.txtShippingNoTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtShippingNoFrom
@@ -368,7 +370,7 @@ namespace Shinyoh_Search
             this.txtShippingNoFrom.NextControlName = "txtShippingNoTo";
             this.txtShippingNoFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingNoFrom.Size = new System.Drawing.Size(100, 19);
-            this.txtShippingNoFrom.TabIndex = 12;
+            this.txtShippingNoFrom.TabIndex = 8;
             this.txtShippingNoFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtSlipDateTo
@@ -392,7 +394,7 @@ namespace Shinyoh_Search
             this.txtSlipDateTo.NextControlName = "txtShippingNoFrom";
             this.txtSlipDateTo.SearchType = Entity.SearchType.ScType.None;
             this.txtSlipDateTo.Size = new System.Drawing.Size(100, 19);
-            this.txtSlipDateTo.TabIndex = 11;
+            this.txtSlipDateTo.TabIndex = 7;
             this.txtSlipDateTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSlipDateTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -417,7 +419,7 @@ namespace Shinyoh_Search
             this.txtSlipDateFrom.NextControlName = "txtSlipDateTo";
             this.txtSlipDateFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtSlipDateFrom.Size = new System.Drawing.Size(100, 19);
-            this.txtSlipDateFrom.TabIndex = 10;
+            this.txtSlipDateFrom.TabIndex = 6;
             this.txtSlipDateFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSlipDateFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -443,7 +445,7 @@ namespace Shinyoh_Search
             this.txtProductName.NextControlName = "txtSlipDateFrom";
             this.txtProductName.SearchType = Entity.SearchType.ScType.None;
             this.txtProductName.Size = new System.Drawing.Size(500, 19);
-            this.txtProductName.TabIndex = 9;
+            this.txtProductName.TabIndex = 5;
             this.txtProductName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtShippingDateTo
@@ -467,7 +469,7 @@ namespace Shinyoh_Search
             this.txtShippingDateTo.NextControlName = "txtTokuisakiCD";
             this.txtShippingDateTo.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingDateTo.Size = new System.Drawing.Size(100, 19);
-            this.txtShippingDateTo.TabIndex = 8;
+            this.txtShippingDateTo.TabIndex = 2;
             this.txtShippingDateTo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtShippingDateTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -492,7 +494,7 @@ namespace Shinyoh_Search
             this.txtShippingDateFrom.NextControlName = "txtShippingDateTo";
             this.txtShippingDateFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtShippingDateFrom.Size = new System.Drawing.Size(100, 19);
-            this.txtShippingDateFrom.TabIndex = 7;
+            this.txtShippingDateFrom.TabIndex = 1;
             this.txtShippingDateFrom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtShippingDateFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -654,6 +656,33 @@ namespace Shinyoh_Search
             this.colJuchuuNO.ReadOnly = true;
             this.colJuchuuNO.Width = 213;
             // 
+            // txtCurrentDate
+            // 
+            this.txtCurrentDate.AllowMinus = false;
+            this.txtCurrentDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCurrentDate.DecimalPlace = 0;
+            this.txtCurrentDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtCurrentDate.DepandOnMode = true;
+            this.txtCurrentDate.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtCurrentDate.IntegerPart = 0;
+            this.txtCurrentDate.IsDatatableOccurs = null;
+            this.txtCurrentDate.IsErrorOccurs = false;
+            this.txtCurrentDate.IsRequire = false;
+            this.txtCurrentDate.IsUseInitializedLayout = true;
+            this.txtCurrentDate.Location = new System.Drawing.Point(1037, 45);
+            this.txtCurrentDate.MaxLength = 10;
+            this.txtCurrentDate.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtCurrentDate.MoveNext = true;
+            this.txtCurrentDate.Name = "txtCurrentDate";
+            this.txtCurrentDate.NextControl = null;
+            this.txtCurrentDate.NextControlName = null;
+            this.txtCurrentDate.ReadOnly = true;
+            this.txtCurrentDate.SearchType = Entity.SearchType.ScType.None;
+            this.txtCurrentDate.Size = new System.Drawing.Size(100, 19);
+            this.txtCurrentDate.TabIndex = 28;
+            this.txtCurrentDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtCurrentDate.Visible = false;
+            // 
             // ShippingNoSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -710,5 +739,6 @@ namespace Shinyoh_Search
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuNO;
+        private Shinyoh_Controls.STextBox txtCurrentDate;
     }
 }
