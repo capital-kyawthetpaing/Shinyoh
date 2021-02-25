@@ -60,6 +60,7 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //dgvShukkasizi.Columns["colTanka"].DefaultCellStyle.Format = "#,0";
             //dgvShukkasizi.Columns["colPrice"].DefaultCellStyle.Format = "#,0";
+            dgvShukkasizi.SetNumberColumn("colShukkakanousuu,colTanka,colPrice");
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
 
@@ -222,10 +223,10 @@ namespace ShukkaSiziNyuuryoku
             //price change case
             if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colTanka"] || dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"])
             {
-                //dgvShukkasizi.Columns["colPrice"].DefaultCellStyle.Format = "#,0";
-               // dgvShukkasizi.Columns[10].DefaultCellStyle.Format = "#%";
-                dgvShukkasizi.Rows[row].Cells["colPrice"].Value = Convert.ToInt64(dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString()) * Convert.ToInt64(dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString());
-                //dgvShukkasizi.Rows[row].Cells["colPrice"].Value= String.Format("{0:0,0}", dgvShukkasizi.Rows[row].Cells["colPrice"].Value);
+                string colKonkaiShukkaSiziSuu = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                string colTanka = dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString().Replace(",", "");
+                string val = Convert.ToString(Convert.ToInt64(colKonkaiShukkaSiziSuu) * Convert.ToInt64(colTanka));
+                dgvShukkasizi.Rows[row].Cells["colPrice"].Value = FormatPriceValue(val);
             }
 
             //data temp save
@@ -600,6 +601,13 @@ namespace ShukkaSiziNyuuryoku
             {
                 if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
                 {
+                    if(e.ColumnIndex==8 || e.ColumnIndex==9 || e.ColumnIndex==10)
+                    {
+                        string formatvalue = !string.IsNullOrEmpty(dgvShukkasizi.Rows[e.RowIndex].Cells[e.ColumnIndex].FormattedValue.ToString())? dgvShukkasizi.Rows[e.RowIndex].Cells[e.ColumnIndex].FormattedValue.ToString() : "0";
+                        formatvalue = FormatPriceValue(formatvalue);
+                        dgvShukkasizi.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = formatvalue;
+                    }
+
                     if (cboMode.SelectedValue.ToString().Equals("2"))
                     {
                         dtResult.Clear();
@@ -805,34 +813,6 @@ namespace ShukkaSiziNyuuryoku
                 }
             }
 
-        }
-        private void Gridview_F9ShowHide(int col, string type)
-        {
-            Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
-            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
-            if (dgvShukkasizi.Columns[col].Name == "SoukoCD")
-            {
-                Control btnF9 = ctrlArr[0];
-                if (ctrlArr.Length > 0 && type == "Show")
-                {
-                    if (btnF9 != null)
-                        btnF9.Visible = true;
-                }
-                else
-                {
-                    if (btnF9 != null)
-                        btnF9.Visible = false;
-                }
-            }
-            else
-            {
-                if (ctrlArr.Length > 0)
-                {
-                    Control btnF9 = ctrlArr[0];
-                    if (btnF9 != null)
-                        btnF9.Visible = false;
-                }
-            }
         }
 
         //Error_Check
@@ -1206,6 +1186,119 @@ namespace ShukkaSiziNyuuryoku
                     sbStaffCD.ChangeDate = txtShippingDate;
                     break;
             }
+        }
+
+        //Call_Function
+        private void Gridview_F9ShowHide(int col, string type)
+        {
+            Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+            if (dgvShukkasizi.Columns[col].Name == "SoukoCD")
+            {
+                Control btnF9 = ctrlArr[0];
+                if (ctrlArr.Length > 0 && type == "Show")
+                {
+                    if (btnF9 != null)
+                        btnF9.Visible = true;
+                }
+                else
+                {
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
+            else
+            {
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
+        }
+        private string FormatPriceValue(string val)
+        {
+            string value = val.Replace(",", "");
+            //int num;
+            long num;
+            int a = 0;
+
+            if (Int64.TryParse(value, out num))
+            {
+                if (!val.Equals("0"))
+                {
+                    if (a != 0)
+                    {
+                        val = string.Format("{0:#,#.0}", num); ;
+                        while (val.Split('.')[1].Length < a)
+                        {
+                            val = val + "0";
+                        }
+                    }
+                    else
+                        val = string.Format("{0:#,#}", num);
+                }
+            }
+            else if (string.IsNullOrWhiteSpace(value))
+            {
+                if (a != 0)
+                {
+                    val = "0.0";
+                    while (val.Split('.')[1].Length < a)
+                    {
+                        val = val + "0";
+                    }
+                }
+                else
+                    val = "0";
+            }
+            else
+            {
+                val = string.Format("{0:#,#}", value);
+
+                string[] p = val.Split('.');
+                if (a != p[1].Length)
+                {
+                    if (Int64.TryParse(p[0].ToString(), out num))
+                    {
+                        if (p[1].Length < a)
+                        {
+                            if (!p[0].ToString().Equals("0"))
+                                val = string.Format("{0:#,#}", num) + "." + p[1].ToString();
+                            else
+                                val = num + "." + p[1].ToString();
+                            while (val.Split('.')[1].Length < a)
+                            {
+                                val = Text + "0";
+                            }
+                        }
+                        else
+                        {
+                            if (!p[0].ToString().Equals("0"))
+                                val = string.Format("{0:#,#}", num) + "." + p[1].Substring(0, a);
+                            else
+                                val = num + "." + p[1].Substring(0, a);
+                        }
+                    }
+                    else
+                    {
+                        bbl.ShowMessage("E118");
+                    }
+                }
+                else
+                {
+                    val = p[0].ToString();
+                    if (Int64.TryParse(Text, out num))
+                    {
+                        if (!val.Equals("0"))
+                            val = string.Format("{0:#,#}", num);
+                        val = val + "." + p[1].ToString();
+                    }
+                }
+            }
+
+            return val;
         }
 
         //F12

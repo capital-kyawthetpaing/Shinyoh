@@ -27,12 +27,20 @@ namespace Shinyoh_Search
         private void IdouNyuuryokuSearch_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Normal, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
             lblNyukoSouko.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblShukkosouko.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
+
+            txtShukkosouko.ChangeDate = txtCurrentDate;
+            txtShukkosouko.lblName = lblShukkosouko;
+            txtNyukosouko.ChangeDate = txtCurrentDate;
+            txtNyukosouko.lblName = lblNyukoSouko;
+            txtStaffCD.ChangeDate = txtCurrentDate;
+            txtStaffCD.lblName = lblStaff;
 
             ErrorCheck();
 
@@ -49,8 +57,8 @@ namespace Shinyoh_Search
             txtDate1.E103Check(true);
             txtDate2.E103Check(true);
             txtDate2.E104Check(true, txtDate1, txtDate2);
-            txtShukkosouko.E101Check(false, "souko", txtShukkosouko, null, null);
-            txtNyukosouko.E101Check(false, "souko", txtNyukosouko, null, null);
+            txtShukkosouko.E101Check(true, "souko", txtShukkosouko, null, null);
+            txtNyukosouko.E101Check(true, "souko", txtNyukosouko, null, null);
             
             txtNo12.E106Check(true, txtNo11, txtNo12);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtCurrentDate, null);
@@ -97,11 +105,11 @@ namespace Shinyoh_Search
         }
         public override void FunctionProcess(string tagID)
         {
-            if (tagID == "2")
+            if (tagID == "3")
             {
                 DataGridviewBind();
             }
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 DataGridViewRow row = gv_Idou.CurrentRow;
                 GetGridviewData(row);

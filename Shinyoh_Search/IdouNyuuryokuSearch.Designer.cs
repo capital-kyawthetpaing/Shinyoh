@@ -45,7 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtShouhin2 = new Shinyoh_Controls.STextBox();
             this.txtShouhin1 = new Shinyoh_Controls.STextBox();
-            this.txtStaffCD = new Shinyoh_Controls.STextBox();
+            this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.txtNo12 = new Shinyoh_Controls.STextBox();
             this.txtNo11 = new Shinyoh_Controls.STextBox();
             this.txtShouhinName = new Shinyoh_Controls.STextBox();
@@ -216,7 +216,7 @@
             this.txtShukkosouko.Combo = null;
             this.txtShukkosouko.DecimalPlace = 0;
             this.txtShukkosouko.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtShukkosouko.DepandOnMode = true;
+            this.txtShukkosouko.DepandOnMode = false;
             this.txtShukkosouko.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShukkosouko.IntegerPart = 0;
             this.txtShukkosouko.IsDatatableOccurs = null;
@@ -232,13 +232,12 @@
             this.txtShukkosouko.Name = "txtShukkosouko";
             this.txtShukkosouko.NextControl = null;
             this.txtShukkosouko.NextControlName = "txtNyukosouko";
-            this.txtShukkosouko.SearchType = Entity.SearchType.ScType.None;
+            this.txtShukkosouko.SearchType = Entity.SearchType.ScType.Souko;
             this.txtShukkosouko.Size = new System.Drawing.Size(90, 19);
             this.txtShukkosouko.TabIndex = 3;
             this.txtShukkosouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShukkosouko.TxtBox = null;
             this.txtShukkosouko.TxtBox1 = null;
-            this.txtShukkosouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtShukkosouko_KeyDown);
             // 
             // txtNyukosouko
             // 
@@ -264,13 +263,12 @@
             this.txtNyukosouko.Name = "txtNyukosouko";
             this.txtNyukosouko.NextControl = null;
             this.txtNyukosouko.NextControlName = "txtShouhinName";
-            this.txtNyukosouko.SearchType = Entity.SearchType.ScType.None;
+            this.txtNyukosouko.SearchType = Entity.SearchType.ScType.Souko;
             this.txtNyukosouko.Size = new System.Drawing.Size(90, 19);
             this.txtNyukosouko.TabIndex = 4;
             this.txtNyukosouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtNyukosouko.TxtBox = null;
             this.txtNyukosouko.TxtBox1 = null;
-            this.txtNyukosouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNyukosouko_KeyDown);
             // 
             // btnShow
             // 
@@ -372,15 +370,19 @@
             // 
             this.txtStaffCD.AllowMinus = false;
             this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStaffCD.ChangeDate = null;
+            this.txtStaffCD.Combo = null;
             this.txtStaffCD.DecimalPlace = 0;
             this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtStaffCD.DepandOnMode = true;
+            this.txtStaffCD.DepandOnMode = false;
             this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtStaffCD.IntegerPart = 0;
             this.txtStaffCD.IsDatatableOccurs = null;
             this.txtStaffCD.IsErrorOccurs = false;
             this.txtStaffCD.IsRequire = false;
             this.txtStaffCD.IsUseInitializedLayout = true;
+            this.txtStaffCD.lblName = null;
+            this.txtStaffCD.lblName1 = null;
             this.txtStaffCD.Location = new System.Drawing.Point(623, 33);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(90, 19);
@@ -388,11 +390,12 @@
             this.txtStaffCD.Name = "txtStaffCD";
             this.txtStaffCD.NextControl = null;
             this.txtStaffCD.NextControlName = "txtShouhin1";
-            this.txtStaffCD.SearchType = Entity.SearchType.ScType.None;
+            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
             this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
             this.txtStaffCD.TabIndex = 8;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
+            this.txtStaffCD.TxtBox = null;
+            this.txtStaffCD.TxtBox1 = null;
             // 
             // txtNo12
             // 
@@ -413,7 +416,7 @@
             this.txtNo12.MoveNext = true;
             this.txtNo12.Name = "txtNo12";
             this.txtNo12.NextControl = null;
-            this.txtNo12.NextControlName = "txtNo21";
+            this.txtNo12.NextControlName = "txtStaffCD";
             this.txtNo12.SearchType = Entity.SearchType.ScType.None;
             this.txtNo12.Size = new System.Drawing.Size(100, 19);
             this.txtNo12.TabIndex = 7;
@@ -707,7 +710,7 @@
         private System.Windows.Forms.Label label1;
         private Shinyoh_Controls.STextBox txtShouhin2;
         private Shinyoh_Controls.STextBox txtShouhin1;
-        private Shinyoh_Controls.STextBox txtStaffCD;
+        private SearchBox txtStaffCD;
         private Shinyoh_Controls.STextBox txtNo12;
         private Shinyoh_Controls.STextBox txtNo11;
         private Shinyoh_Controls.STextBox txtShouhinName;

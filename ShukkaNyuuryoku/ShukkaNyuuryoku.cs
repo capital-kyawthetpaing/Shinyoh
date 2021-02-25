@@ -405,6 +405,7 @@ namespace ShukkaNyuuryoku {
                     {
                         F8_dt1.DefaultView.Sort = "JANCD";
                         gvShukka1.DataSource = F8_dt1.DefaultView.ToTable();
+                        //F8_dt1.Columns.Remove("ShukkaSiziNO");
                     }
                     else
                     {
@@ -524,7 +525,7 @@ namespace ShukkaNyuuryoku {
                 DataRow existDr1 = F8_dt1.Select("JANCD ='" + JANCD + "' and ShukkaSuu='" + Konkai + "' and ShukkaMeisaiTekiyou='" + Detail + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (select_dr1[0][9].ToString() == "0")
+                    if (row.Cells["colKonkai"].Value.ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
@@ -633,7 +634,7 @@ namespace ShukkaNyuuryoku {
             if (col_Name == "colKonkai")
             {
                 string split_val = gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString().Replace(",", "");
-                decimal Konkai_Number = string.IsNullOrEmpty(gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
+                decimal Konkai_Number = string.IsNullOrEmpty(gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString()) ? 0 : Convert.ToDecimal(split_val);
                 gvShukka1.Rows[row].Cells["colKonkai"].Value = Konkai_Number.ToString();
 
                 if (Konkai_Number < 0)
