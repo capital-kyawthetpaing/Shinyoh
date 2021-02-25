@@ -59,7 +59,7 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //dgvShukkasizi.Columns["colTanka"].DefaultCellStyle.Format = "#,0";
-            dgvShukkasizi.Columns["colPrice"].DefaultCellStyle.Format = "#,0";
+            //dgvShukkasizi.Columns["colPrice"].DefaultCellStyle.Format = "#,0";
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
 
@@ -222,8 +222,10 @@ namespace ShukkaSiziNyuuryoku
             //price change case
             if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colTanka"] || dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"])
             {
+                //dgvShukkasizi.Columns["colPrice"].DefaultCellStyle.Format = "#,0";
+               // dgvShukkasizi.Columns[10].DefaultCellStyle.Format = "#%";
                 dgvShukkasizi.Rows[row].Cells["colPrice"].Value = Convert.ToInt64(dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString()) * Convert.ToInt64(dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString());
-                dgvShukkasizi.Rows[row].Cells["colPrice"].Value= String.Format("{0:0,0}", dgvShukkasizi.Rows[row].Cells["colPrice"].Value);
+                //dgvShukkasizi.Rows[row].Cells["colPrice"].Value= String.Format("{0:0,0}", dgvShukkasizi.Rows[row].Cells["colPrice"].Value);
             }
 
             //data temp save
@@ -618,6 +620,10 @@ namespace ShukkaSiziNyuuryoku
                 }
             }
         }
+        private void dgvShukkasizi_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Gridview_F9ShowHide(e.ColumnIndex, "Show");
+        }
         private void dgvShukkasizi_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F9)
@@ -799,10 +805,6 @@ namespace ShukkaSiziNyuuryoku
                 }
             }
 
-        }
-        private void dgvShukkasizi_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            Gridview_F9ShowHide(e.ColumnIndex, "Show");
         }
         private void Gridview_F9ShowHide(int col, string type)
         {
