@@ -756,7 +756,7 @@ namespace HacchuuNyuuryoku
                         existDr1 = null;
                     }
                 }
-                F8_drNew[0] = shouhinCD;
+                F8_drNew[0] = row.Cells["colHinbanCD"].Value.ToString();
                 //if (row.Cells["colHacchuuSuu"].Value.ToString() != "0" && row.Cells[7].Value.ToString() != select_dr1[0][7].ToString())
                 if (row.Cells["colHacchuuSuu"].Value.ToString() != "0")
                 {
