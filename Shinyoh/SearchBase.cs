@@ -21,6 +21,7 @@ namespace Shinyoh
 
         #region Function Button
         protected SButton F1 { get => BtnF1; set => BtnF1 = value; }
+        protected SButton F9 { get => BtnF9; set => BtnF9 = value; }
         protected SButton F11 { get => BtnF11; set => BtnF11 = value; }
         protected SButton F12 { get => BtnF12; set => BtnF12 = value; }
         #endregion
@@ -32,7 +33,14 @@ namespace Shinyoh
         private void btnFunctionClick(object sender, EventArgs e)
         {
             SButton btn = (SButton)sender;
-            FireClickEvent(btn, 1);
+            if (btn.ButtonType == ButtonType.BType.Normal)
+            {
+                if (PreviousCtrl != null)
+                    PreviousCtrl.Focus();
+                SendKeys.Send("{F9}");
+            }
+            else
+                FireClickEvent(btn, 1);
         }
 
         /// <summary>
@@ -76,6 +84,9 @@ namespace Shinyoh
                 case ButtonType.BType.Close:
                     button.Text = buttonText;
                     break;
+                case ButtonType.BType.Normal:
+                    button.Text = buttonText;
+                    break;
                 case ButtonType.BType.Save:
                     button.Text = buttonText;
                     break;
@@ -92,6 +103,7 @@ namespace Shinyoh
             switch (e.KeyCode)
             {
                 case Keys.F1:
+                case Keys.F9:
                 case Keys.F11:
                 case Keys.F12:
                     SButton btn = this.Controls.Find("Btn" + e.KeyCode.ToString(), true)[0] as SButton;
