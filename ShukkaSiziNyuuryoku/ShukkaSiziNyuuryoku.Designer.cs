@@ -780,7 +780,7 @@ namespace ShukkaSiziNyuuryoku
             this.dgvShukkasizi.Name = "dgvShukkasizi";
             this.dgvShukkasizi.Size = new System.Drawing.Size(1450, 580);
             this.dgvShukkasizi.TabIndex = 23;
-            this.dgvShukkasizi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvShukkasizi_KeyDown);
+            this.dgvShukkasizi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNo_KeyDown);
             // 
             // colShouhinCD
             // 

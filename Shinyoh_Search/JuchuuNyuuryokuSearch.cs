@@ -27,10 +27,15 @@ namespace Shinyoh_Search
         private void JuchuuNyuuryokuSearch_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Normal, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             lblTokuisakiRyakuName.BorderStyle= System.Windows.Forms.BorderStyle.None;
             lblStaffCD_Name.BorderStyle= System.Windows.Forms.BorderStyle.None;
+            txtTokuisaki.ChangeDate = txtCurrentDate;
+            txtTokuisaki.lblName = lblTokuisakiRyakuName;
+            txtStaffCD.ChangeDate = txtCurrentDate;
+            txtStaffCD.lblName = lblStaffCD_Name;
             ErrorCheck();
             gv_1.UseRowNo(true);
             gv_1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -50,28 +55,6 @@ namespace Shinyoh_Search
             txtNo12.E106Check(true, txtNo11, txtNo12);
             txtNo22.E106Check(true, txtNo21, txtNo22);
             txtShouhin2.E106Check(true, txtShouhin1, txtShouhin2);
-        }
-
-        private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!txtTokuisaki.IsErrorOccurs)
-            {
-                DataTable dt = txtTokuisaki.IsDatatableOccurs;
-                if (dt.Rows.Count > 0)
-                    lblTokuisakiRyakuName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
-                else lblTokuisakiRyakuName.Text = string.Empty;
-            }
-        }
-
-        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!txtStaffCD.IsErrorOccurs)
-            {
-                DataTable dt = txtStaffCD.IsDatatableOccurs;
-                if (dt.Rows.Count > 0)
-                    lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
-                else lblStaffCD_Name.Text = string.Empty;
-            }
         }
 
         private void DataGridviewBind()
@@ -110,11 +93,11 @@ namespace Shinyoh_Search
 
         public override void FunctionProcess(string tagID)
         {
-            if (tagID == "2")
+            if (tagID == "3")
             {
                 DataGridviewBind();
             }
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 DataGridViewRow row = gv_1.CurrentRow;
                 GetGridviewData(row);
