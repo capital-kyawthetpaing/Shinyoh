@@ -528,8 +528,10 @@ namespace JuchuuNyuuryoku
                     F8_dt1 = gv1_to_dt1.Clone();
 
                 if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString()=="2" || !string.IsNullOrEmpty(txtCopy.Text))
+                {
                     F8_dt1 = gv1_to_dt1.Copy();
-
+                    gv_JuchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
+                }
                 //if (cboMode.SelectedValue.ToString() == "1")
                 //    F8_dt1 = gv1_to_dt1.Clone();
                 //else

@@ -61,7 +61,7 @@ BEGIN
 			left outer join M_Souko MS on MS.SoukoCD = DHM.SoukoCD 
 			where (DH.HacchuuDate >= @HacchuDate1 and DH.HacchuuDate <= @HacchuDate2) and
 			(@HacchuNO1 is null or (DH.HacchuuNO  >= @HacchuNO1))	and (@HacchuNO2 is null or (DH.HacchuuNO  <= @HacchuNO2))  and
-			(DH.UpdateDateTime >= @Update_HacchuDate1 and DH.UpdateDateTime <= @Update_HacchuDate1)  and
+			(CONVERT(date, DH.UpdateDateTime) >= @Update_HacchuDate1 and CONVERT(date, DH.UpdateDateTime) <= @Update_HacchuDate2)  and
 			(@StaffCD is null or (DH.StaffCD = @StaffCD))  and
 			(@BrandCD is null or (DHM.BrandCD = @BrandCD))and
 			(@Year is null or (FSH.YearTerm = @Year)) and  
@@ -89,7 +89,7 @@ BEGIN
 			left outer join M_Souko MS on MS.SoukoCD = DHM.SoukoCD 
 			where (DH.HacchuuDate >= @HacchuDate1 and DH.HacchuuDate <= @HacchuDate2) and 
 			(@HacchuNO1 is null or (DH.HacchuuNO  >= @HacchuNO1)) and (@HacchuNO2 is null or (DH.HacchuuNO  <= @HacchuNO2)) and 
-			(DH.UpdateDateTime >= @Update_HacchuDate1 and DH.UpdateDateTime <= @Update_HacchuDate1) and 
+			(CONVERT(date, DH.UpdateDateTime) >= @Update_HacchuDate1 and CONVERT(date, DH.UpdateDateTime) <= @Update_HacchuDate2) and 
 			(@StaffCD is null or (DH.StaffCD = @StaffCD)) and 
 			(@BrandCD is null or (DHM.BrandCD = @BrandCD)) and 
 			(@Year is null or (FSH.YearTerm = @Year)) and  
