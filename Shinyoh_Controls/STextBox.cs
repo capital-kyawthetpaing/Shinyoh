@@ -312,9 +312,15 @@ namespace Shinyoh_Controls
             {
                 if (this.TopLevelControl != null)
                 {
-                    Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+                    string mode = string.Empty;
+                    Control[] ctlmode = this.TopLevelControl.Controls.Find("cboMode", true);
+                    if (ctlmode.Length > 0)
+                    {
+                        Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+                        mode = cbo.Text;
+                    }
                     Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
-                    if (DepandOnMode == false || (DepandOnMode == true && cbo.Text != "新規"))
+                    if (DepandOnMode == false || (DepandOnMode == true && mode != "新規"))
                     {
 
                         if (ctrlArr.Length > 0)

@@ -156,7 +156,7 @@ BEGIN
 					Kanryo					tinyint DEFAULT 0,
 					ShukkaMeisaiTekiyou		varchar(80) COLLATE DATABASE_DEFAULT,		--Detail
 					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
-					ShukkaSiziNOGyouNO		varchar(12) COLLATE DATABASE_DEFAULT,
+					ShukkaSiziNOGyouNO		varchar(25) COLLATE DATABASE_DEFAULT,
 					JuchuuNOGyouNO			varchar(12) COLLATE DATABASE_DEFAULT,
 					DenpyouDate				date
 				)
@@ -197,7 +197,7 @@ BEGIN
 					Kanryo					tinyint 'Kanryo',
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					SoukoCD					varchar(12)'SoukoCD',
-					ShukkaSiziNOGyouNO		varchar(12)'ShukkaSiziNOGyouNO',
+					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
 					JuchuuNOGyouNO			varchar(12)'JuchuuNOGyouNO',
 					DenpyouDate				date 'DenpyouDate'
 					)
@@ -280,7 +280,7 @@ BEGIN
 			ColorRyakuName = d.ColorRyakuName,
 			ColorNO = d.ColorNO,
 			SizeNO = d.SizeNO,
-			ShukkaSuu = d.ShukkaSuu,
+			ShukkaSuu = case when d.ShukkaSuu is not null then d.ShukkaSuu else 0 end,
 			TaniCD = FS.TaniCD,
 			ShukkaMeisaiTekiyou = d.ShukkaMeisaiTekiyou,
 			UriageKanryouKBN = 0,
@@ -418,7 +418,7 @@ BEGIN
 				--窶ｻ繧ｷ繝ｼ繝医梧ｶ郁ｾｼ鬆・榊盾辣ｧ
 			DECLARE @Price_table TABLE (idx int Primary Key IDENTITY(1,1),
 									KonkaiShukkaSuu varchar(50),
-									ShukkaSiziNOGyouNO  varchar(12),ShouhinCD  varchar(50))
+									ShukkaSiziNOGyouNO  varchar(25),ShouhinCD  varchar(50))
 						INSERT @Price_table  SELECT ShukkaSuu,ShukkaSiziNOGyouNO,ShouhinCD FROM #Temp_Detail
 			
 			declare @Count as int = 1
@@ -426,7 +426,7 @@ BEGIN
 						WHILE @Count <= (SELECT COUNT(*) FROM #Temp_Detail)
 						BEGIN
 						declare @KonkaiShukkaSuu varchar(50)=(select KonkaiShukkaSuu from @Price_table  WHERE idx =@Count)
-							declare @Value2 as varchar(12)=(select ShukkaSiziNOGyouNO from @Price_table WHERE idx =@Count),
+							declare @Value2 as varchar(25)=(select ShukkaSiziNOGyouNO from @Price_table WHERE idx =@Count),
 								@Value3 as varchar(50)=(select ShouhinCD  from @Price_table WHERE idx =@Count)
 			 
 							DECLARE CUR_POINTER CURSOR FAST_FORWARD FOR

@@ -26,6 +26,7 @@ namespace Shinyoh_Search {
         private void TokuisakiSearch_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Normal, F9, "", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
@@ -41,12 +42,12 @@ namespace Shinyoh_Search {
         }
         public override void FunctionProcess(string tagID)
         {
-            if (tagID == "2")
+            if (tagID == "3")
             {
                 DataGridviewBind();
                 gvTokuisaki.Select();
             }
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 DataGridViewRow row = gvTokuisaki.CurrentRow;
                 GetGridviewData(row);

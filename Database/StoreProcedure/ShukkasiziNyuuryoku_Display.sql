@@ -8,9 +8,9 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
--- Description:	<Description,,>
+-- Author:		<Swe>
+-- Create date: <25-02-2021>
+-- Description:	<F10>
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Display]
 	-- Add the parameters for the stored procedure here
@@ -108,14 +108,14 @@ SELECT
 	,DJMS.ColorRyakuName	--カラー略名
 	,DJMS.ColorNO			--カラーNO
 	,DJMS.SizeNO			--サイズNO
-	,FLOOR(DJMS.JuchuuSuu) AS JuchuuSuu	--受注数
-	,ISNULL(FLOOR(SKKNS2.ShukkanouSuu),'0') AS ShukkanouSuu			--出荷可能数
-	,ISNULL(FLOOR(DJMS.ShukkaSiziZumiSuu),'0') AS ShukkaSiziZumiSuu	--出荷指示済数
-	,ISNULL((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FLOOR(SKKNS2.ShukkanouSuu)
-	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FLOOR(DJMS.ShukkaZumiSuu) END),'0') AS KonkaiShukkaSiziSuu--莉雁屓蜃ｺ闕ｷ謖・､ｺ謨ｰ
-	,ISNULL(FLOOR(DJMS.UriageTanka),0) UriageTanka	--単価
-	,ISNULL((FLOOR(DJMS.UriageTanka)*(case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FLOOR(SKKNS2.ShukkanouSuu) 
-	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FLOOR(DJMS.ShukkaZumiSuu) END)),'0') AS UriageKingaku	--金額
+	,FORMAT(DJMS.JuchuuSuu, '#,0') AS JuchuuSuu	--受注数
+	,ISNULL(FORMAT(SKKNS2.ShukkanouSuu, '#,0'),'0') AS ShukkanouSuu			--出荷可能数
+	,FORMAT(DJMS.ShukkaSiziZumiSuu, '#,0') AS ShukkaSiziZumiSuu	--出荷指示済数
+	,ISNULL((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FORMAT(SKKNS2.ShukkanouSuu, '#,0')
+	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FORMAT(DJMS.ShukkaZumiSuu, '#,0') END),'0') AS KonkaiShukkaSiziSuu
+	,ISNULL(FORMAT(DJMS.UriageTanka, '#,0'),'0') AS UriageTanka	--単価
+	,cast(ISNULL((FLOOR(DJMS.UriageTanka)*(case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FORMAT(SKKNS2.ShukkanouSuu, '#,0')
+	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FORMAT(DJMS.ShukkaZumiSuu, '#,0')END)),'0') as varchar(10)) AS UriageKingaku	--金額	
 	,0 as Kanryo --完了
 	,'' as ShukkaSiziMeisaiTekiyou --明細摘要
 	--details2
@@ -181,8 +181,7 @@ SELECT
 	((@KouritenJuusho1 is null or (DJ.KouritenJuusho1=@KouritenJuusho1))or
 	(@KouritenJuusho2 is null or (DJ.KouritenJuusho2=@KouritenJuusho2)))
 	)
-
-ORDER BY DJMS.ShouhinCD ASC,DJMS.JuchuuNO ASC,DJMS.GyouHyouziJun ASC
+	ORDER BY DJMS.ShouhinCD ASC,DJMS.JuchuuNO ASC,DJMS.GyouHyouziJun ASC
 
 If(OBJECT_ID('tempdb..#WK_ShukkaKanouSou2') Is Not Null)
 Begin

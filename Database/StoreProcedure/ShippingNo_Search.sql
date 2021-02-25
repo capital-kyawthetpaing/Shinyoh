@@ -35,6 +35,7 @@ BEGIN
 
     -- Insert statements for procedure here
 	SELECT
+		GETDATE() as CurrentDay,
 		dsksz.ShukkaSiziNO AS ShukkaSiziNO,
 		CONVERT(varchar, MAX(dsksz.ShukkaYoteiDate), 111) AS ShukkaYoteiDate,
 		MAX(dsksz.TokuisakiCD) AS TokuisakiCD,

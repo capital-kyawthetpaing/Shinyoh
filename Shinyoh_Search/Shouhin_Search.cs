@@ -32,6 +32,7 @@ namespace Shinyoh_Search
         private void Shouhin_Search_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Normal, F9, "", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             dgDetail.UseRowNo(true);
@@ -73,12 +74,12 @@ namespace Shinyoh_Search
 
         public override void FunctionProcess(string tagID)
         {
-            if (tagID == "2")
+            if (tagID == "3")
             {
                 BindDataGrid();
                 dgDetail.Select();
             }
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 DataGridViewRow row = dgDetail.CurrentRow;
                 GetGridviewData(row);

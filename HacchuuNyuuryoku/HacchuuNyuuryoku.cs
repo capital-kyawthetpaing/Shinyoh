@@ -132,6 +132,8 @@ namespace HacchuuNyuuryoku
                     txtCopy.E102Check(false);
 
                     txtHacchuuNO.E133Check(true, "HacchuuNyuuryoku", txtHacchuuNO, null, null);
+                    txtHacchuuNO.E266Check(false, "HacchuuNyuuryoku", txtHacchuuNO);
+                    txtHacchuuNO.E265Check(false, "HacchuuNyuuryoku", txtHacchuuNO);
 
                     Disable_UDI_Mode();
                     Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -357,7 +359,7 @@ namespace HacchuuNyuuryoku
                 if (F8_dt1.Rows.Count == 0)
                     F8_dt1 = gv1_to_dt1.Clone();
 
-                if (cboMode.SelectedValue.ToString() == "3")
+                if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "2" || !string.IsNullOrEmpty(txtCopy.Text))
                     F8_dt1 = gv1_to_dt1.Copy();
             }
         }
@@ -744,14 +746,15 @@ namespace HacchuuNyuuryoku
                 DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  ChakuniYoteiDate='" + ChakuniYoteiDate + "' and SoukoCD='" + soukoCD + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (select_dr1[0][8].ToString() == "0")
+                    if (row.Cells["colHacchuuSuu"].Value.ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
                 }
                 F8_drNew[0] = shouhinCD;
-                if (row.Cells["colHacchuuSuu"].Value.ToString() != "0" && row.Cells[7].Value.ToString() != select_dr1[0][7].ToString())
+                //if (row.Cells["colHacchuuSuu"].Value.ToString() != "0" && row.Cells[7].Value.ToString() != select_dr1[0][7].ToString())
+                if (row.Cells["colHacchuuSuu"].Value.ToString() != "0")
                 {
                     for (int c = 1; c < gv_HacchuuNyuuryoku.Columns.Count; c++)
                     {
@@ -937,7 +940,7 @@ namespace HacchuuNyuuryoku
             dr["PC"] = base_Entity.PC;
             dr["ProgramID"] = base_Entity.ProgramID;
             dt.Rows.Add(dr);
-
+            
             JuchuuNyuuryokuBL obj_bl = new JuchuuNyuuryokuBL();            
             if (cboMode.SelectedValue.ToString() == "1")
             {
@@ -949,8 +952,12 @@ namespace HacchuuNyuuryoku
                     F8_dt1.Rows[i]["HacchuuGyouNO"] = i + 1;
                 }
             }
+            DataTable save_dt = F8_dt1.AsEnumerable()
+                    .GroupBy(r => new { Col1 = r["HacchuuNO"], Col2 = r["HacchuuGyouNO"] })
+                    .Select(g => g.OrderBy(r => r["HacchuuNO"]).Last()).CopyToDataTable();
+
             string header_XML = cf.DataTableToXml(dt);
-            string detail_XML = cf.DataTableToXml(F8_dt1);
+            string detail_XML = cf.DataTableToXml(save_dt);
             return (header_XML, detail_XML);
         }
 
@@ -1002,6 +1009,14 @@ namespace HacchuuNyuuryoku
             string return_BL = objMethod.HacchuuNyuuryoku_CUD(mode, str_header, str_detail);
             if (return_BL == "true")
                 base_bl.ShowMessage("I102");
+        }
+
+        private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            multipurposeBL bl = new multipurposeBL();
+            DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
+            if (dt.Rows.Count > 0)
+                lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
         }
     }
 }

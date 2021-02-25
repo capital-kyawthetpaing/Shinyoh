@@ -127,6 +127,7 @@
     <Content Include="StoreProcedure\F_Siiresaki.sql" />
     <Content Include="StoreProcedure\F_Staff.sql" />
     <Content Include="StoreProcedure\F_Tokuisaki.sql" />
+    <Content Include="StoreProcedure\Get_Max_HacchuuNO.sql" />
     <Content Include="StoreProcedure\Get_Shouhin_ExportData.sql" />
     <Content Include="StoreProcedure\Get_Siiresaki_ExportData.sql" />
     <Content Include="StoreProcedure\Get_Tokuisaki_ExportData.sql" />

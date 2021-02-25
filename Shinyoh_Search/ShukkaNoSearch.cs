@@ -26,11 +26,16 @@ namespace Shinyoh_Search {
         private void ShukkaNoSearch_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Normal, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
             lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txt_Tokuisaki.ChangeDate = txtCurrentDate;
+            txt_Tokuisaki.lblName = lblTokuisaki_Name;
+            txt_StaffCD.ChangeDate = txtCurrentDate;
+            txt_StaffCD.lblName = lblStaffName;
             txtShukkaDate1.Focus();
             gvShukkaNo.UseRowNo(true);
             DataGridviewBind();
@@ -57,12 +62,11 @@ namespace Shinyoh_Search {
         }
         public override void FunctionProcess(string tagID)
         {
-
-            if (tagID == "2")
+            if (tagID == "3")
             {
                 DataGridviewBind();
             }
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 DataGridViewRow row = gvShukkaNo.CurrentRow;
                 GetGridviewData(row);

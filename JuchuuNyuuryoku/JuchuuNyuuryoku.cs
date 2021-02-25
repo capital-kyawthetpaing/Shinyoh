@@ -527,7 +527,7 @@ namespace JuchuuNyuuryoku
                 if (F8_dt1.Rows.Count == 0)
                     F8_dt1 = gv1_to_dt1.Clone();
 
-                if (cboMode.SelectedValue.ToString() == "3")
+                if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString()=="2" || !string.IsNullOrEmpty(txtCopy.Text))
                     F8_dt1 = gv1_to_dt1.Copy();
 
                 //if (cboMode.SelectedValue.ToString() == "1")
@@ -972,17 +972,22 @@ namespace JuchuuNyuuryoku
                 DataRow existDr1 = null;
                 if (chk_value != "False")
                     chk = "1";
-                existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ISNULL([Free],'')='" + chk + "' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
+                if(!string.IsNullOrEmpty(chk))
+                existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and [Free]='"+chk+"' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
+                else
+                existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "' and [Free] IS NULL").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (select_dr1[0][8].ToString() == "0")
+                    //if (select_dr1[0][8].ToString() == "0")
+                    if (row.Cells["colJuchuuSuu"].Value.ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
                 }
                 F8_drNew[0] = shouhinCD;
-                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" && row.Cells[8].Value.ToString() != select_dr1[0][8].ToString().Replace(".000000", string.Empty))
+                //if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" && row.Cells[8].Value.ToString() != select_dr1[0][8].ToString().Replace(".000000", string.Empty))
+                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0")
                 {
                     for (int c = 1; c < gv_JuchuuNyuuryoku.Columns.Count; c++)
                     {
@@ -1031,6 +1036,7 @@ namespace JuchuuNyuuryoku
                         F8_dt1.Rows.Add(F8_drNew);
                     }
                 }
+                
             }
 
             gv_JuchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
@@ -1171,6 +1177,8 @@ namespace JuchuuNyuuryoku
 
                 F8_dt1.DefaultView.Sort = "ShouhinCD";
                 gv_JuchuuNyuuryoku.DataSource = F8_dt1.DefaultView.ToTable();
+                
+                gv_JuchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
             }
             else
             {
@@ -1272,7 +1280,7 @@ namespace JuchuuNyuuryoku
                           .CopyToDataTable();
             }  
             
-            if (F8_dt1.Rows.Count > 0 && cboMode.SelectedValue.ToString() == "2")
+            if (F8_dt1.Rows.Count > 0 && (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString()=="3"))
             {
                    List<string> myList = F8_dt1.AsEnumerable()
                                          .Select(s => s.Field<string>("HacchuuNO"))
@@ -1280,11 +1288,15 @@ namespace JuchuuNyuuryoku
 
                     if (myList.Contains(null))
                     {
-                        var rows = F8_dt1.AsEnumerable()
-                                .GroupBy(r => new { Col1 = r["SiiresakiCD"], Col2 = r["SiiresakiName"], Col3 = r["SoukoCD"] })
-                                .Select(g => g.OrderBy(r => r["SiiresakiCD"]).First());
+                        //var rows = F8_dt1.AsEnumerable()
+                        //        .GroupBy(r => new { Col1 = r["SiiresakiCD"], Col2 = r["SiiresakiName"], Col3 = r["SoukoCD"] })
+                        //        .Select(g => g.OrderBy(r => r["SiiresakiCD"]).First()); change logic 02/03
 
-                        if (rows.Any())
+                        var rows = F8_dt1.AsEnumerable()
+                                .GroupBy(r => new { Col1 = r["JuchuuNO"], Col2 = r["JuchuuGyouNO"] })
+                                .Select(g => g.OrderBy(r => r["JuchuuNO"]).Last());
+
+                    if (rows.Any())
                             dt_Main = rows.CopyToDataTable();
                     }
                     else
@@ -1367,6 +1379,7 @@ namespace JuchuuNyuuryoku
                     }
                 }
             }
+
             if (cboMode.SelectedValue.ToString() == "2")
             {
                 for (int i = 0; i < dt_Main.Rows.Count; i++)
@@ -1381,11 +1394,19 @@ namespace JuchuuNyuuryoku
                         if (Max_HacchuuNO.Rows.Count > 0 && string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()))
                         {
                             dt_Main.Rows[i]["HacchuuNO"] = Max_HacchuuNO.Rows[0]["HacchuuNO"];
-                            dt_Main.Rows[i]["HacchuuGyouNO"] = Convert.ToInt32(Max_HacchuuNO.Rows[0]["HacchuuGyouNO"]) + 1;
+                            dt_Main.Rows[i]["HacchuuGyouNO"] = dt_Main.Rows[i]["JuchuuGyouNO"].ToString();
+                            //string max_HacchuuNO = dt_Main.AsEnumerable()
+                            //         .Where(d => d["HacchuuNO"].ToString() == dt_Main.Rows[i]["HacchuuNO"].ToString())
+                            //         .Max(r => r.IsNull("HacchuuGyouNO") ? "0" : r["HacchuuGyouNO"].ToString())
+                            //         .ToString();
+                            //if(Convert.ToInt32(max_HacchuuNO) < Convert.ToInt32(Max_HacchuuNO.Rows[0]["HacchuuGyouNO"]))
+                            //dt_Main.Rows[i]["HacchuuGyouNO"] = Convert.ToInt32(Max_HacchuuNO.Rows[0]["HacchuuGyouNO"]) + 1;
+                            //else dt_Main.Rows[i]["HacchuuGyouNO"] = Convert.ToInt32(max_HacchuuNO) + 1;
 
-                            for(int j=0;j<F8_dt1.Rows.Count;j++)
+                            for (int j=0;j<F8_dt1.Rows.Count;j++)
                             {
-                                if (F8_dt1.Rows[j]["JuchuuNO"].ToString() == dt_Main.Rows[i]["JuchuuNO"].ToString() && F8_dt1.Rows[i]["JuchuuGyouNO"].ToString() == dt_Main.Rows[i]["JuchuuGyouNO"].ToString() && F8_dt1.Rows[i]["SiiresakiCD"].ToString() == dt_Main.Rows[i]["SiiresakiCD"].ToString() && F8_dt1.Rows[i]["SoukoCD"].ToString() == dt_Main.Rows[i]["SoukoCD"].ToString())
+                                //if (F8_dt1.Rows[j]["JuchuuNO"].ToString() == dt_Main.Rows[i]["JuchuuNO"].ToString() && F8_dt1.Rows[i]["JuchuuGyouNO"].ToString() == dt_Main.Rows[i]["JuchuuGyouNO"].ToString() && F8_dt1.Rows[i]["SiiresakiCD"].ToString() == dt_Main.Rows[i]["SiiresakiCD"].ToString() && F8_dt1.Rows[i]["SoukoCD"].ToString() == dt_Main.Rows[i]["SoukoCD"].ToString()) // change logic 02/23
+                                if (F8_dt1.Rows[j]["JuchuuNO"].ToString() == dt_Main.Rows[i]["JuchuuNO"].ToString() && F8_dt1.Rows[j]["JuchuuGyouNO"].ToString() == dt_Main.Rows[i]["JuchuuGyouNO"].ToString() && string.IsNullOrEmpty(F8_dt1.Rows[j]["HacchuuNO"].ToString()) && string.IsNullOrEmpty(F8_dt1.Rows[j]["HacchuuGyouNO"].ToString()))
                                 {
                                     F8_dt1.Rows[j]["HacchuuNO"] = Max_HacchuuNO.Rows[0]["HacchuuNO"].ToString();
                                     F8_dt1.Rows[j]["HacchuuGyouNO"] = dt_Main.Rows[i]["HacchuuGyouNO"];
@@ -1433,9 +1454,13 @@ namespace JuchuuNyuuryoku
 
             Column_Remove_Datatable(dt_Main);
 
+            //DataTable save_dt = F8_dt1.AsEnumerable()
+            //                    .GroupBy(r => new { Col1 = r["JuchuuNO"], Col2 = r["JuchuuGyouNO"], Col3 = r["HacchuuNO"], Col4 = r["HacchuuGyouNO"] })
+            //                    .Select(g => g.OrderBy(r => r["SiiresakiCD"]).Last()).CopyToDataTable();  // change logic 02/23
+
             DataTable save_dt = F8_dt1.AsEnumerable()
-                                .GroupBy(r => new { Col1 = r["JuchuuNO"], Col2 = r["JuchuuGyouNO"], Col3 = r["HacchuuNO"], Col4 = r["HacchuuGyouNO"] })
-                                .Select(g => g.OrderBy(r => r["SiiresakiCD"]).Last()).CopyToDataTable();
+                    .GroupBy(r => new { Col1 = r["JuchuuNO"], Col2 = r["JuchuuGyouNO"]})
+                    .Select(g => g.OrderBy(r => r["JuchuuNO"]).Last()).CopyToDataTable();
 
             string main_XML = cf.DataTableToXml(dt_Main);
             string detail_XML = cf.DataTableToXml(save_dt);
