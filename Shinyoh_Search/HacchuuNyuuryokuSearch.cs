@@ -27,10 +27,15 @@ namespace Shinyoh_Search
         private void HacchuuNyuuryokuSearch_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Normal, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             lblSiiresakiRyakuName.BorderStyle= System.Windows.Forms.BorderStyle.None;
             lblStaffCD_Name.BorderStyle= System.Windows.Forms.BorderStyle.None;
+            txtSiiresaki.ChangeDate = txtCurrentDate;
+            txtSiiresaki.lblName = lblSiiresakiRyakuName;
+            txtStaffCD.ChangeDate = txtCurrentDate;
+            txtStaffCD.lblName = lblStaffCD_Name;
             ErrorCheck();
             gv_1.UseRowNo(true);
             gv_1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -111,11 +116,11 @@ namespace Shinyoh_Search
 
         public override void FunctionProcess(string tagID)
         {
-            if (tagID == "2")
+            if (tagID == "3")
             {
                 DataGridviewBind();
             }
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 DataGridViewRow row = gv_1.CurrentRow;
                 GetGridviewData(row);

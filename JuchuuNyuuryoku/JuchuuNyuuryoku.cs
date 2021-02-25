@@ -1394,12 +1394,19 @@ namespace JuchuuNyuuryoku
                         if (Max_HacchuuNO.Rows.Count > 0 && string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()))
                         {
                             dt_Main.Rows[i]["HacchuuNO"] = Max_HacchuuNO.Rows[0]["HacchuuNO"];
-                            dt_Main.Rows[i]["HacchuuGyouNO"] = Convert.ToInt32(Max_HacchuuNO.Rows[0]["HacchuuGyouNO"]) + 1;
+                            dt_Main.Rows[i]["HacchuuGyouNO"] = dt_Main.Rows[i]["JuchuuGyouNO"].ToString();
+                            //string max_HacchuuNO = dt_Main.AsEnumerable()
+                            //         .Where(d => d["HacchuuNO"].ToString() == dt_Main.Rows[i]["HacchuuNO"].ToString())
+                            //         .Max(r => r.IsNull("HacchuuGyouNO") ? "0" : r["HacchuuGyouNO"].ToString())
+                            //         .ToString();
+                            //if(Convert.ToInt32(max_HacchuuNO) < Convert.ToInt32(Max_HacchuuNO.Rows[0]["HacchuuGyouNO"]))
+                            //dt_Main.Rows[i]["HacchuuGyouNO"] = Convert.ToInt32(Max_HacchuuNO.Rows[0]["HacchuuGyouNO"]) + 1;
+                            //else dt_Main.Rows[i]["HacchuuGyouNO"] = Convert.ToInt32(max_HacchuuNO) + 1;
 
-                            for(int j=0;j<F8_dt1.Rows.Count;j++)
+                            for (int j=0;j<F8_dt1.Rows.Count;j++)
                             {
                                 //if (F8_dt1.Rows[j]["JuchuuNO"].ToString() == dt_Main.Rows[i]["JuchuuNO"].ToString() && F8_dt1.Rows[i]["JuchuuGyouNO"].ToString() == dt_Main.Rows[i]["JuchuuGyouNO"].ToString() && F8_dt1.Rows[i]["SiiresakiCD"].ToString() == dt_Main.Rows[i]["SiiresakiCD"].ToString() && F8_dt1.Rows[i]["SoukoCD"].ToString() == dt_Main.Rows[i]["SoukoCD"].ToString()) // change logic 02/23
-                                if (F8_dt1.Rows[j]["JuchuuNO"].ToString() == dt_Main.Rows[i]["JuchuuNO"].ToString() && F8_dt1.Rows[i]["JuchuuGyouNO"].ToString() == dt_Main.Rows[i]["JuchuuGyouNO"].ToString() && string.IsNullOrEmpty(F8_dt1.Rows[j]["HacchuuNO"].ToString()) && string.IsNullOrEmpty(F8_dt1.Rows[j]["HacchuuGyouNO"].ToString()))
+                                if (F8_dt1.Rows[j]["JuchuuNO"].ToString() == dt_Main.Rows[i]["JuchuuNO"].ToString() && F8_dt1.Rows[j]["JuchuuGyouNO"].ToString() == dt_Main.Rows[i]["JuchuuGyouNO"].ToString() && string.IsNullOrEmpty(F8_dt1.Rows[j]["HacchuuNO"].ToString()) && string.IsNullOrEmpty(F8_dt1.Rows[j]["HacchuuGyouNO"].ToString()))
                                 {
                                     F8_dt1.Rows[j]["HacchuuNO"] = Max_HacchuuNO.Rows[0]["HacchuuNO"].ToString();
                                     F8_dt1.Rows[j]["HacchuuGyouNO"] = dt_Main.Rows[i]["HacchuuGyouNO"];

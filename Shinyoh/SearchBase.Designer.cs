@@ -31,7 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.BtnF1 = new Shinyoh_Controls.SButton();
             this.BtnF12 = new Shinyoh_Controls.SButton();
-            this.sButton3 = new Shinyoh_Controls.SButton();
+            this.BtnF9 = new Shinyoh_Controls.SButton();
             this.BtnF11 = new Shinyoh_Controls.SButton();
             this.sButton1 = new Shinyoh_Controls.SButton();
             this.tableLayoutPanel1.SuspendLayout();
@@ -56,7 +56,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Controls.Add(this.BtnF1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.BtnF12, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.sButton3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.BtnF9, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.BtnF11, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.sButton1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -101,29 +101,32 @@
             this.BtnF12.NextControl = null;
             this.BtnF12.NextControlName = null;
             this.BtnF12.Size = new System.Drawing.Size(154, 28);
-            this.BtnF12.TabIndex = 3;
-            this.BtnF12.Tag = "3";
+            this.BtnF12.TabIndex = 4;
+            this.BtnF12.Tag = "4";
             this.BtnF12.Text = "(F12)";
             this.BtnF12.UseVisualStyleBackColor = false;
             this.BtnF12.Click += new System.EventHandler(this.btnFunctionClick);
             // 
-            // sButton3
+            // BtnF9
             // 
-            this.sButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.sButton3.ButtonType = Entity.ButtonType.BType.Normal;
-            this.sButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.sButton3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.sButton3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sButton3.Location = new System.Drawing.Point(307, 1);
-            this.sButton3.Margin = new System.Windows.Forms.Padding(0);
-            this.sButton3.MinimumSize = new System.Drawing.Size(100, 10);
-            this.sButton3.Name = "sButton3";
-            this.sButton3.NextControl = null;
-            this.sButton3.NextControlName = null;
-            this.sButton3.Size = new System.Drawing.Size(152, 28);
-            this.sButton3.TabIndex = 7;
-            this.sButton3.UseVisualStyleBackColor = false;
-            this.sButton3.Visible = false;
+            this.BtnF9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.BtnF9.ButtonType = Entity.ButtonType.BType.Normal;
+            this.BtnF9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BtnF9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.BtnF9.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.BtnF9.Location = new System.Drawing.Point(307, 1);
+            this.BtnF9.Margin = new System.Windows.Forms.Padding(0);
+            this.BtnF9.MinimumSize = new System.Drawing.Size(100, 10);
+            this.BtnF9.Name = "BtnF9";
+            this.BtnF9.NextControl = null;
+            this.BtnF9.NextControlName = null;
+            this.BtnF9.Size = new System.Drawing.Size(152, 28);
+            this.BtnF9.TabIndex = 2;
+            this.BtnF9.Tag = "2";
+            this.BtnF9.Text = "(F9)";
+            this.BtnF9.UseVisualStyleBackColor = false;
+            this.BtnF9.Visible = false;
+            this.BtnF9.Click += new System.EventHandler(this.btnFunctionClick);
             // 
             // BtnF11
             // 
@@ -139,8 +142,8 @@
             this.BtnF11.NextControl = null;
             this.BtnF11.NextControlName = null;
             this.BtnF11.Size = new System.Drawing.Size(152, 28);
-            this.BtnF11.TabIndex = 2;
-            this.BtnF11.Tag = "2";
+            this.BtnF11.TabIndex = 3;
+            this.BtnF11.Tag = "3";
             this.BtnF11.Text = "(F11)";
             this.BtnF11.UseVisualStyleBackColor = false;
             this.BtnF11.Click += new System.EventHandler(this.btnFunctionClick);
@@ -184,7 +187,7 @@
         private Shinyoh_Controls.SButton sButton1;
         private Shinyoh_Controls.SButton BtnF1;
         private Shinyoh_Controls.SButton BtnF12;
-        private Shinyoh_Controls.SButton sButton3;
+        private Shinyoh_Controls.SButton BtnF9;
         private Shinyoh_Controls.SButton BtnF11;
     }
 }

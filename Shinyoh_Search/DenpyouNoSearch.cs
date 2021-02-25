@@ -34,6 +34,7 @@ namespace Shinyoh_Search
             cbDivision1.Bind(true, multi_entity);
             cbDivision2.Bind(true, multi_entity);
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Normal, F9, "", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
@@ -53,12 +54,12 @@ namespace Shinyoh_Search
 
         public override void FunctionProcess(string tagID)
         {
-            if (tagID == "2")
+            if (tagID == "3")
             {
                 BindDataGrid();
                 gvDenpyouNo.Select();
             }
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 DataGridViewRow row = gvDenpyouNo.CurrentRow;
                 GetGridviewData(row);

@@ -29,10 +29,15 @@ namespace Shinyoh_Search
             cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
+            SetButton(ButtonType.BType.Normal, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             lblTokuisakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            txtTokuisakiCD.ChangeDate = txtCurrentDate;
+            txtTokuisakiCD.lblName = lblTokuisakiRyakuName;
+            txtStaffCD.ChangeDate = txtCurrentDate;
+            txtStaffCD.lblName = lblStaffName;
             gvShippingNo.SetGridDesign();
             txtShippingDateFrom.Focus();
             gvShippingNo.UseRowNo(true);
@@ -47,11 +52,11 @@ namespace Shinyoh_Search
         public override void FunctionProcess(string tagID)
         {
 
-            if (tagID == "2")
+            if (tagID == "3")
             {
                 GridViewBind();
             }
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 DataGridViewRow row = gvShippingNo.CurrentRow;
                 GetGridviewData(row);
@@ -87,6 +92,11 @@ namespace Shinyoh_Search
                 dt = SKSZ_BL.ShippingNO_Search(SKSZ_Entity);
                 if (dt.Rows.Count > 0)
                 {
+                    if (dt.Columns.Contains("CurrentDay"))
+                    {
+                        txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        dt.Columns.Remove("CurrentDay");
+                    }
                     gvShippingNo.DataSource = dt;
                 }
             }

@@ -574,7 +574,8 @@ namespace IdouNyuuryoku
                     DataTable dt_temp = dt.Copy();
                     gv1_to_dt1 = dt_temp;
 
-                    F8_dt1 = gv1_to_dt1.Clone();
+                    if (F8_dt1.Rows.Count == 0)
+                        F8_dt1 = gv1_to_dt1.Clone();
                 }
             }
             gv_1.ActionType = string.Empty;
