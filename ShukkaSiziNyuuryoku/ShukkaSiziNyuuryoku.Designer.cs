@@ -794,7 +794,7 @@ namespace ShukkaSiziNyuuryoku
             this.colShouhinCD.Name = "colShouhinCD";
             this.colShouhinCD.ReadOnly = true;
             this.colShouhinCD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.colShouhinCD.Width = 200;
+            this.colShouhinCD.Width = 150;
             // 
             // colShouhinName
             // 
@@ -802,7 +802,7 @@ namespace ShukkaSiziNyuuryoku
             this.colShouhinName.HeaderText = "商品名";
             this.colShouhinName.Name = "colShouhinName";
             this.colShouhinName.ReadOnly = true;
-            this.colShouhinName.Width = 150;
+            this.colShouhinName.Width = 250;
             // 
             // colColorRyakuName
             // 
@@ -865,6 +865,7 @@ namespace ShukkaSiziNyuuryoku
             this.colKonkaiShukkaSiziSuu.HeaderText = "今回出荷指示数";
             this.colKonkaiShukkaSiziSuu.Name = "colKonkaiShukkaSiziSuu";
             this.colKonkaiShukkaSiziSuu.Width = 150;
+            this.colKonkaiShukkaSiziSuu.MaxInputLength = 7;
             // 
             // colTanka
             // 
@@ -874,6 +875,7 @@ namespace ShukkaSiziNyuuryoku
             this.colTanka.DefaultCellStyle = dataGridViewCellStyle11;
             this.colTanka.HeaderText = "単価";
             this.colTanka.Name = "colTanka";
+            this.colTanka.MaxInputLength = 10;
             // 
             // colPrice
             // 
@@ -883,6 +885,7 @@ namespace ShukkaSiziNyuuryoku
             this.colPrice.DefaultCellStyle = dataGridViewCellStyle12;
             this.colPrice.HeaderText = "金額";
             this.colPrice.Name = "colPrice";
+            this.colPrice.MaxInputLength = 11;
             // 
             // chk
             // 
@@ -896,7 +899,7 @@ namespace ShukkaSiziNyuuryoku
             this.colDetails.DataPropertyName = "ShukkaSiziMeisaiTekiyou";
             this.colDetails.HeaderText = "明細摘要";
             this.colDetails.Name = "colDetails";
-            this.colDetails.Width = 150;
+            this.colDetails.Width = 620;
             // 
             // colJuchuuNo
             // 
