@@ -244,7 +244,7 @@
             this.txtTelNo3.IsErrorOccurs = false;
             this.txtTelNo3.IsRequire = false;
             this.txtTelNo3.IsUseInitializedLayout = true;
-            this.txtTelNo3.Location = new System.Drawing.Point(1102, 132);
+            this.txtTelNo3.Location = new System.Drawing.Point(1113, 132);
             this.txtTelNo3.MaxLength = 5;
             this.txtTelNo3.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtTelNo3.MoveNext = true;
@@ -260,7 +260,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1089, 130);
+            this.label10.Location = new System.Drawing.Point(1100, 130);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(15, 20);
             this.label10.TabIndex = 90;
@@ -269,7 +269,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1153, 134);
+            this.label8.Location = new System.Drawing.Point(1164, 134);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 13);
             this.label8.TabIndex = 85;
@@ -288,7 +288,7 @@
             this.txtTelNo2.IsErrorOccurs = false;
             this.txtTelNo2.IsRequire = false;
             this.txtTelNo2.IsUseInitializedLayout = true;
-            this.txtTelNo2.Location = new System.Drawing.Point(1039, 132);
+            this.txtTelNo2.Location = new System.Drawing.Point(1050, 132);
             this.txtTelNo2.MaxLength = 5;
             this.txtTelNo2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtTelNo2.MoveNext = true;
@@ -313,7 +313,7 @@
             this.txtTelNo1.IsErrorOccurs = false;
             this.txtTelNo1.IsRequire = false;
             this.txtTelNo1.IsUseInitializedLayout = true;
-            this.txtTelNo1.Location = new System.Drawing.Point(977, 132);
+            this.txtTelNo1.Location = new System.Drawing.Point(988, 132);
             this.txtTelNo1.MaxLength = 6;
             this.txtTelNo1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtTelNo1.MoveNext = true;
@@ -329,7 +329,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1026, 130);
+            this.label9.Location = new System.Drawing.Point(1037, 130);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(15, 20);
             this.label9.TabIndex = 88;
@@ -341,7 +341,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(877, 132);
+            this.sLabel3.Location = new System.Drawing.Point(888, 132);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 84;
@@ -528,7 +528,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(807, 134);
+            this.label5.Location = new System.Drawing.Point(819, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 60;
@@ -586,7 +586,7 @@
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(757, 132);
+            this.txtYubin2.Location = new System.Drawing.Point(768, 132);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin2.MoveNext = true;
@@ -614,13 +614,13 @@
             this.txtYubin1.IsUseInitializedLayout = true;
             this.txtYubin1.Location = new System.Drawing.Point(716, 132);
             this.txtYubin1.MaxLength = 3;
-            this.txtYubin1.MinimumSize = new System.Drawing.Size(30, 19);
+            this.txtYubin1.MinimumSize = new System.Drawing.Size(35, 19);
             this.txtYubin1.MoveNext = true;
             this.txtYubin1.Name = "txtYubin1";
             this.txtYubin1.NextControl = null;
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
-            this.txtYubin1.Size = new System.Drawing.Size(30, 19);
+            this.txtYubin1.Size = new System.Drawing.Size(35, 19);
             this.txtYubin1.TabIndex = 14;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -628,7 +628,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(744, 130);
+            this.label4.Location = new System.Drawing.Point(752, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 62;
@@ -782,8 +782,6 @@
             // gvShukka1
             // 
             this.gvShukka1.AllowUserToAddRows = false;
-            this.gvShukka1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gvShukka1.ColumnHeadersHeight = 21;
             this.gvShukka1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gvShukka1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1156,8 +1154,10 @@
             // 
             this.colKonkai.DataPropertyName = "ShukkaSuu";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
             this.colKonkai.DefaultCellStyle = dataGridViewCellStyle4;
             this.colKonkai.HeaderText = "今回出荷数\t\t\t\t\t";
+            this.colKonkai.MaxInputLength = 5;
             this.colKonkai.Name = "colKonkai";
             // 
             // colComplete
@@ -1173,8 +1173,9 @@
             // 
             this.colDetail.DataPropertyName = "ShukkaMeisaiTekiyou";
             this.colDetail.HeaderText = "明細摘要";
+            this.colDetail.MaxInputLength = 40;
             this.colDetail.Name = "colDetail";
-            this.colDetail.Width = 305;
+            this.colDetail.Width = 500;
             // 
             // ShukkaSiziNOGyouNO
             // 
