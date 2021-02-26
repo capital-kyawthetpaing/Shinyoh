@@ -610,7 +610,7 @@ namespace HacchuuNyuuryoku
             bool bl_error = false;
             string col_Name = gv_HacchuuNyuuryoku.Columns[col].Name;
 
-            if (col_Name == "colJuchuuSuu")
+            if (col_Name == "colHacchuuSuu")
             {
                 string split_val = gv_HacchuuNyuuryoku.Rows[row].Cells["colHacchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
                 int HacchuuSuu_Number = string.IsNullOrEmpty(gv_HacchuuNyuuryoku.Rows[row].Cells["colHacchuuSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
