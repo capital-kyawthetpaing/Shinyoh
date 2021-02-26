@@ -29,12 +29,12 @@ namespace ShukkaSiziNyuuryoku
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.panelRadio = new System.Windows.Forms.Panel();
@@ -736,15 +736,15 @@ namespace ShukkaSiziNyuuryoku
             // dgvShukkasizi
             // 
             this.dgvShukkasizi.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvShukkasizi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvShukkasizi.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvShukkasizi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvShukkasizi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -781,7 +781,7 @@ namespace ShukkaSiziNyuuryoku
             this.JuchuuNO});
             this.dgvShukkasizi.IsErrorOccurs = false;
             this.dgvShukkasizi.ISRowColumn = null;
-            this.dgvShukkasizi.Location = new System.Drawing.Point(48, 210);
+            this.dgvShukkasizi.Location = new System.Drawing.Point(48, 207);
             this.dgvShukkasizi.Name = "dgvShukkasizi";
             this.dgvShukkasizi.Size = new System.Drawing.Size(1600, 600);
             this.dgvShukkasizi.TabIndex = 23;
@@ -829,9 +829,9 @@ namespace ShukkaSiziNyuuryoku
             // colJuchuuSuu
             // 
             this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.NullValue = "0";
-            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.NullValue = "0";
+            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle8;
             this.colJuchuuSuu.HeaderText = "受注数";
             this.colJuchuuSuu.Name = "colJuchuuSuu";
             this.colJuchuuSuu.ReadOnly = true;
@@ -839,9 +839,9 @@ namespace ShukkaSiziNyuuryoku
             // colShukkakanousuu
             // 
             this.colShukkakanousuu.DataPropertyName = "ShukkanouSuu";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.NullValue = "0";
-            this.colShukkakanousuu.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.NullValue = "0";
+            this.colShukkakanousuu.DefaultCellStyle = dataGridViewCellStyle9;
             this.colShukkakanousuu.HeaderText = "出荷可能数";
             this.colShukkakanousuu.Name = "colShukkakanousuu";
             this.colShukkakanousuu.ReadOnly = true;
@@ -850,10 +850,10 @@ namespace ShukkaSiziNyuuryoku
             // colShukkaSiziZumiSuu
             // 
             this.colShukkaSiziZumiSuu.DataPropertyName = "ShukkaSiziZumiSuu";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.colShukkaSiziZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = null;
+            this.colShukkaSiziZumiSuu.DefaultCellStyle = dataGridViewCellStyle10;
             this.colShukkaSiziZumiSuu.HeaderText = "出荷指示済数";
             this.colShukkaSiziZumiSuu.Name = "colShukkaSiziZumiSuu";
             this.colShukkaSiziZumiSuu.ReadOnly = true;
@@ -869,18 +869,18 @@ namespace ShukkaSiziNyuuryoku
             // colTanka
             // 
             this.colTanka.DataPropertyName = "UriageTanka";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.NullValue = "0";
-            this.colTanka.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.NullValue = "0";
+            this.colTanka.DefaultCellStyle = dataGridViewCellStyle11;
             this.colTanka.HeaderText = "単価";
             this.colTanka.Name = "colTanka";
             // 
             // colPrice
             // 
             this.colPrice.DataPropertyName = "UriageKingaku";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.NullValue = "0";
-            this.colPrice.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.NullValue = "0";
+            this.colPrice.DefaultCellStyle = dataGridViewCellStyle12;
             this.colPrice.HeaderText = "金額";
             this.colPrice.Name = "colPrice";
             // 
@@ -1049,11 +1049,11 @@ namespace ShukkaSiziNyuuryoku
             this.btnSave.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(1546, 177);
+            this.btnSave.Location = new System.Drawing.Point(1572, 177);
             this.btnSave.Name = "btnSave";
             this.btnSave.NextControl = null;
             this.btnSave.NextControlName = null;
-            this.btnSave.Size = new System.Drawing.Size(100, 23);
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 22;
             this.btnSave.Text = "F11 保存";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -1065,11 +1065,11 @@ namespace ShukkaSiziNyuuryoku
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisplay.Location = new System.Drawing.Point(1420, 177);
+            this.btnDisplay.Location = new System.Drawing.Point(1473, 177);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.NextControl = null;
             this.btnDisplay.NextControlName = null;
-            this.btnDisplay.Size = new System.Drawing.Size(100, 23);
+            this.btnDisplay.Size = new System.Drawing.Size(75, 23);
             this.btnDisplay.TabIndex = 20;
             this.btnDisplay.Text = "F10 表示";
             this.btnDisplay.UseVisualStyleBackColor = false;
@@ -1081,11 +1081,11 @@ namespace ShukkaSiziNyuuryoku
             this.btnConfirm.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.Location = new System.Drawing.Point(1296, 177);
+            this.btnConfirm.Location = new System.Drawing.Point(1372, 177);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.NextControl = null;
             this.btnConfirm.NextControlName = null;
-            this.btnConfirm.Size = new System.Drawing.Size(100, 23);
+            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
             this.btnConfirm.TabIndex = 21;
             this.btnConfirm.Text = "F8 確認";
             this.btnConfirm.UseVisualStyleBackColor = false;
