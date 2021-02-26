@@ -47,6 +47,8 @@ namespace ShukkaNyuuryoku {
             gvShukka1.SetGridDesign();
             gvShukka1.SetHiraganaColumn("colDetail");
             gvShukka1.SetReadOnlyColumn("colJANCD,colShouhin,colShouhinName,colColorShortName,colColorNO,colSize,colShukkazansuu,colMiryoku,ShukkaSiziNOGyouNO");
+            gvShukka1.SetNumberColumn("colKonkai");
+
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -634,7 +636,7 @@ namespace ShukkaNyuuryoku {
             if (col_Name == "colKonkai")
             {
                 string split_val = gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString().Replace(",", "");
-                decimal Konkai_Number = string.IsNullOrEmpty(gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString()) ? 0 : Convert.ToDecimal(split_val);
+                int Konkai_Number = string.IsNullOrEmpty(gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
                 gvShukka1.Rows[row].Cells["colKonkai"].Value = Konkai_Number.ToString();
 
                 if (Konkai_Number < 0)
