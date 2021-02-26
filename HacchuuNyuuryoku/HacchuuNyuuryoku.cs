@@ -793,7 +793,7 @@ namespace HacchuuNyuuryoku
                         }
                         else
                         {
-                            if (c == 14 && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString()))
+                            if (c == 14 && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString()) && !string.IsNullOrEmpty(txtCopy.Text))
                                 F8_drNew[c] = DBNull.Value;
                             else
                                 F8_drNew[c] = row.Cells[c].Value;
