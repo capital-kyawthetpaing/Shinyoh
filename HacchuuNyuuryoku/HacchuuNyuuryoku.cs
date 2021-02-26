@@ -359,12 +359,20 @@ namespace HacchuuNyuuryoku
                 if (F8_dt1.Rows.Count == 0)
                     F8_dt1 = gv1_to_dt1.Clone();
 
-                if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "2" || !string.IsNullOrEmpty(txtCopy.Text))
+                if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "2")
                 {
                     F8_dt1 = gv1_to_dt1.Copy();
                     gv_HacchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
                 }
-                    
+                if (!string.IsNullOrEmpty(txtCopy.Text))
+                {
+                    F8_dt1 = gv1_to_dt1.Copy();
+                    F8_dt1.Rows.OfType<DataRow>().ToList().ForEach(r =>
+                    {
+                        r["HacchuuGyouNO"] = DBNull.Value;
+                    });
+                    gv_HacchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
+                }
             }
         }
 
@@ -723,7 +731,6 @@ namespace HacchuuNyuuryoku
         {
             for (int t = 0; t < gv_HacchuuNyuuryoku.RowCount; t++)
             {
-
                 bool bl = false;
                 // grid 1 checking
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
@@ -786,7 +793,10 @@ namespace HacchuuNyuuryoku
                         }
                         else
                         {
-                            F8_drNew[c] = row.Cells[c].Value;
+                            if (c == 14 && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString()))
+                                F8_drNew[c] = DBNull.Value;
+                            else
+                                F8_drNew[c] = row.Cells[c].Value;
                         }
                     }
                     // grid 1 insert(if exist, remove exist and insert)
@@ -799,7 +809,6 @@ namespace HacchuuNyuuryoku
                 }
             }
             gv_HacchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
-
             Focus_Clear();
             #region
             //comment nwe mar win logic difference
