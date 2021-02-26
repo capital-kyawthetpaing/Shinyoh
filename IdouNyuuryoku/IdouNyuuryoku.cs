@@ -761,6 +761,9 @@ namespace IdouNyuuryoku
                         }
                         else
                         {
+                            if (c == 12 && string.IsNullOrEmpty(row.Cells["colIdouGyouNO"].Value.ToString()) && !string.IsNullOrEmpty(txtCopy.Text))
+                                F8_drNew[c] = DBNull.Value;
+                            else
                             F8_drNew[c] = row.Cells[c].Value;
                         }
                     }

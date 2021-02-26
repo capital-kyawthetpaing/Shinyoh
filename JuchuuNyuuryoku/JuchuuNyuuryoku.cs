@@ -1023,7 +1023,10 @@ namespace JuchuuNyuuryoku
                         }
                         else
                         {
-                            F8_drNew[c] = row.Cells[c].Value;
+                            if (((c == 32 && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString())) || (c == 34 &&  string.IsNullOrEmpty(row.Cells["colJuchuuGyouNO"].Value.ToString()))) && !string.IsNullOrEmpty(txtCopy.Text))
+                                F8_drNew[c] = DBNull.Value;
+                            else
+                                F8_drNew[c] = row.Cells[c].Value;
                         }
                     }
                     // grid 1 insert(if exist, remove exist and insert)
@@ -1031,16 +1034,6 @@ namespace JuchuuNyuuryoku
                     {
                         if (existDr1 != null)
                             F8_dt1.Rows.Remove(existDr1);
-                        //if (!string.IsNullOrEmpty(F8_drNew["JuchuuNO"].ToString()) && !string.IsNullOrEmpty(F8_drNew["JuchuuGyouNO"].ToString()))
-                        //{
-                        //    DataRow[] results = F8_dt1.Select("JuchuuNO = '" + F8_drNew["JuchuuNO"] + "' AND JuchuuGyouNO = '" + F8_drNew["JuchuuGyouNO"] + "'");
-                        //    if (results.Length > 0)
-                        //    {
-                        //        F8_drNew["JuchuuGyouNO"] = Convert.ToInt32(F8_drNew["JuchuuGyouNO"]) + 1;
-                        //        F8_drNew["HacchuuNO"] = DBNull.Value;
-                        //        F8_drNew["HacchuuGyouNO"] = DBNull.Value;
-                        //    }
-                        //}
                         F8_dt1.Rows.Add(F8_drNew);
                     }
                 }
