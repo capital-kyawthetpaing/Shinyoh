@@ -446,7 +446,16 @@ namespace IdouNyuuryoku
                     gv_1.Memory_Row_Count = F8_dt1.Rows.Count;
                     Souko_Disable_Enable(txtIdoukubun.Text);
                 }
-                    
+                if (!string.IsNullOrEmpty(txtCopy.Text))
+                {
+                    F8_dt1 = gv1_to_dt1.Copy();
+                    F8_dt1.Rows.OfType<DataRow>().ToList().ForEach(r =>
+                    {
+                        r["IdouGyouNO"] = DBNull.Value;
+                    });
+                    gv_1.Memory_Row_Count = F8_dt1.Rows.Count;
+                    Souko_Disable_Enable(txtIdoukubun.Text);
+                }
 
                 //if (cboMode.SelectedValue.ToString() == "1")
                 //{
