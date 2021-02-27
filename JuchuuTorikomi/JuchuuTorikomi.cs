@@ -372,7 +372,7 @@ namespace JuchuuTorikomi
                     if (create_dt.Rows.Count > 0)
                     {
                         dt_Main = create_dt.AsEnumerable()
-                              .GroupBy(r => new { Col1 = r["JuchuuDate"], Col2 = r["TokuisakiCD"], Col3 = r["KouritenCD"], Col4 = r["SenpouBusho"], Col5 = r["KibouNouki"] })
+                              .GroupBy(r => new { Col1 = r["JuchuuDate"], Col2 = r["TokuisakiCD"], Col3 = r["KouritenCD"], Col4 = r["SenpouHacchuuNO"], Col5 = r["SenpouBusho"], Col6 = r["KibouNouki"], Col7 = r["SoukoCD"] })
                               .Select(g => g.OrderBy(r => r["JuchuuDate"]).First())
                               .CopyToDataTable();
 
