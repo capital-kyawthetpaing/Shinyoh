@@ -40,13 +40,11 @@ namespace ShukkaNyuuryoku {
             Main_dt = new DataTable();
             Temptb1 = new DataTable();
             gvdt1 = new DataTable();
-            F8_dt1 = CreateTable();
+            F8_dt1 = new DataTable();
             dtHaita = new DataTable();
             dtGS1 = CreateTable();
             dtClear = CreateTable();
-            gvShukka1.SetGridDesign();
-            gvShukka1.SetHiraganaColumn("colDetail");
-            gvShukka1.SetReadOnlyColumn("colJANCD,colShouhin,colShouhinName,colColorShortName,colColorNO,colSize,colShukkazansuu,colMiryoku,ShukkaSiziNOGyouNO");
+
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -80,6 +78,11 @@ namespace ShukkaNyuuryoku {
 
             txtShukkaNo.ChangeDate = txtShukkaDate;
             txtShukkaSijiNo.ChangeDate = txtShukkaYoteiDate1;
+
+            gvShukka1.SetGridDesign();
+            gvShukka1.SetHiraganaColumn("colDetail");
+            gvShukka1.SetReadOnlyColumn("colJANCD,colShouhin,colShouhinName,colColorShortName,colColorNO,colSize,colShukkazansuu,colMiryoku,ShukkaSiziNOGyouNO");
+            gvShukka1.SetNumberColumn("colKonkai");
 
             txtKouriten.TxtBox = txtTokuisaki;
 
@@ -403,8 +406,16 @@ namespace ShukkaNyuuryoku {
                 case 8:
                     if (F8_dt1.Rows.Count > 0)
                     {
+                        if(F8_dt1.Columns.Count == 13)
+                        {
+                            F8_dt1.Columns.Remove("ShukkaSiziNO");
+                        }
+                       
                         F8_dt1.DefaultView.Sort = "JANCD";
                         gvShukka1.DataSource = F8_dt1.DefaultView.ToTable();
+                        gvShukka1.Memory_Row_Count = F8_dt1.Rows.Count;
+
+                      
                     }
                     else
                     {
@@ -448,12 +459,20 @@ namespace ShukkaNyuuryoku {
                             gvShukka1.DataSource = dt;
                             DataTable dt_temp = dt.Copy();
                             gvdt1 = dt_temp;
+                            if(gvdt1.Rows.Count > 0)
+                            {
+                                F8_dt1 = gvdt1.Clone();
+                            }
                         }
                         else
                         {
                             gvShukka1.DataSource = dt;
                             DataTable dt_temp = dt.Copy();
                             gvdt1 = dt_temp;
+                            if (gvdt1.Rows.Count > 0)
+                            {
+                                F8_dt1 = gvdt1.Clone();
+                            }
                         }
                         dtHaita = gvdt1.Copy();
                         ShukkaSiZiNO_Delete();
@@ -483,8 +502,8 @@ namespace ShukkaNyuuryoku {
                         {
                             bbl.ShowMessage("S004", ProgramID, OperatorCD);
                         }
-                        dtHaita.Columns.Remove("ShukkaSiziNO");
-                        gvShukka1.DataSource = dtHaita;
+                        //dtHaita.Columns.Remove("ShukkaSiziNO");
+                        //gvShukka1.DataSource = dtHaita;
 
                     }
                     break;
@@ -524,7 +543,7 @@ namespace ShukkaNyuuryoku {
                 DataRow existDr1 = F8_dt1.Select("JANCD ='" + JANCD + "' and ShukkaSuu='" + Konkai + "' and ShukkaMeisaiTekiyou='" + Detail + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (select_dr1[0][9].ToString() == "0")
+                    if (row.Cells["colKonkai"].Value.ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
@@ -633,7 +652,7 @@ namespace ShukkaNyuuryoku {
             if (col_Name == "colKonkai")
             {
                 string split_val = gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString().Replace(",", "");
-                decimal Konkai_Number = string.IsNullOrEmpty(gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
+                int Konkai_Number = string.IsNullOrEmpty(gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
                 gvShukka1.Rows[row].Cells["colKonkai"].Value = Konkai_Number.ToString();
 
                 if (Konkai_Number < 0)

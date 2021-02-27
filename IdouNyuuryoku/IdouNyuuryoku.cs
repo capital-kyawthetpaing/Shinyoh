@@ -309,47 +309,50 @@ namespace IdouNyuuryoku
 
         private void Souko_Disable_Enable(string txt_val)
         {
-            if (txt_val == "1")
+            if(cboMode.SelectedValue.ToString() != "4")
             {
-                txtShukkosouko.Enabled = false;
-                txtShukkosouko.Text = string.Empty;
-                lbl_Shukko.Text = string.Empty;
-                txtNyukosouko.Enabled = true;
-                txtStaffCD.NextControlName = txtNyukosouko.Name;
+                if (txt_val == "1")
+                {
+                    txtShukkosouko.Enabled = false;
+                    txtShukkosouko.Text = string.Empty;
+                    lbl_Shukko.Text = string.Empty;
+                    txtNyukosouko.Enabled = true;
+                    txtStaffCD.NextControlName = txtNyukosouko.Name;
 
-                txtShukkosouko.E102Check(false);
-                txtShukkosouko.E101Check(false, "souko", txtShukkosouko, null, null);
+                    txtShukkosouko.E102Check(false);
+                    txtShukkosouko.E101Check(false, "souko", txtShukkosouko, null, null);
 
-                txtNyukosouko.E102Check(true);
-                txtNyukosouko.E101Check(true, "souko", txtNyukosouko, null, null);
-            }
-            else if (txt_val == "2")
-            {
-                txtShukkosouko.Enabled = true;
-                txtNyukosouko.Enabled = false;
-                txtNyukosouko.Text = string.Empty;
-                lbl_Nyuko.Text = string.Empty;
-                txtStaffCD.NextControlName = txtShukkosouko.Name;
-                txtShukkosouko.NextControlName = txtDenpyouTekiyou.Name;
+                    txtNyukosouko.E102Check(true);
+                    txtNyukosouko.E101Check(true, "souko", txtNyukosouko, null, null);
+                }
+                else if (txt_val == "2")
+                {
+                    txtShukkosouko.Enabled = true;
+                    txtNyukosouko.Enabled = false;
+                    txtNyukosouko.Text = string.Empty;
+                    lbl_Nyuko.Text = string.Empty;
+                    txtStaffCD.NextControlName = txtShukkosouko.Name;
+                    txtShukkosouko.NextControlName = txtDenpyouTekiyou.Name;
 
-                txtShukkosouko.E102Check(true);
-                txtShukkosouko.E101Check(true, "souko", txtShukkosouko, null, null);
+                    txtShukkosouko.E102Check(true);
+                    txtShukkosouko.E101Check(true, "souko", txtShukkosouko, null, null);
 
-                txtNyukosouko.E102Check(false);
-                txtNyukosouko.E101Check(false, "souko", txtNyukosouko, null, null);
-            }
-            else if (txt_val == "3")
-            {
-                txtShukkosouko.Enabled = true;
-                txtNyukosouko.Enabled = true;
-                txtStaffCD.NextControlName = txtShukkosouko.Name;
-                txtShukkosouko.NextControlName = txtNyukosouko.Name;
+                    txtNyukosouko.E102Check(false);
+                    txtNyukosouko.E101Check(false, "souko", txtNyukosouko, null, null);
+                }
+                else if (txt_val == "3")
+                {
+                    txtShukkosouko.Enabled = true;
+                    txtNyukosouko.Enabled = true;
+                    txtStaffCD.NextControlName = txtShukkosouko.Name;
+                    txtShukkosouko.NextControlName = txtNyukosouko.Name;
 
-                txtShukkosouko.E102Check(true);
-                txtShukkosouko.E101Check(true, "souko", txtShukkosouko, null, null);
+                    txtShukkosouko.E102Check(true);
+                    txtShukkosouko.E101Check(true, "souko", txtShukkosouko, null, null);
 
-                txtNyukosouko.E102Check(true);
-                txtNyukosouko.E101Check(true, "souko", txtNyukosouko, null, null);
+                    txtNyukosouko.E102Check(true);
+                    txtNyukosouko.E101Check(true, "souko", txtNyukosouko, null, null);
+                }
             }
         }
 
@@ -435,30 +438,29 @@ namespace IdouNyuuryoku
                 gv1_to_dt1 = dt_temp;
 
                 if (F8_dt1.Rows.Count == 0)
-                {
                     F8_dt1 = gv1_to_dt1.Clone();
-                    Souko_Disable_Enable(txtIdoukubun.Text);
-                }
 
-                if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "2" || !string.IsNullOrEmpty(txtCopy.Text))
+                if (cboMode.SelectedValue.ToString() == "2" || !string.IsNullOrEmpty(txtCopy.Text))
                 {
                     F8_dt1 = gv1_to_dt1.Copy();
+                    gv_1.Memory_Row_Count = F8_dt1.Rows.Count;
                     Souko_Disable_Enable(txtIdoukubun.Text);
                 }
-                    
-
-                //if (cboMode.SelectedValue.ToString() == "1")
-                //{
-                //    F8_dt1 = gv1_to_dt1.Clone();
-                //    Souko_Disable_Enable(txtIdoukubun.Text);
-                //}
-                //else if(cboMode.SelectedValue.ToString() == "2")
-                //{
-                //    F8_dt1 = gv1_to_dt1.Copy();
-                //    Souko_Disable_Enable(txtIdoukubun.Text);
-                //}
-                //else
-                //    F8_dt1 = gv1_to_dt1.Copy();
+                if(cboMode.SelectedValue.ToString() == "3")
+                {
+                    F8_dt1 = gv1_to_dt1.Copy();
+                    gv_1.Memory_Row_Count = F8_dt1.Rows.Count;
+                }
+                if (!string.IsNullOrEmpty(txtCopy.Text))
+                {
+                    F8_dt1 = gv1_to_dt1.Copy();
+                    F8_dt1.Rows.OfType<DataRow>().ToList().ForEach(r =>
+                    {
+                        r["IdouGyouNO"] = DBNull.Value;
+                    });
+                    gv_1.Memory_Row_Count = F8_dt1.Rows.Count;
+                    Souko_Disable_Enable(txtIdoukubun.Text);
+                }
             }
         }
 
@@ -471,6 +473,7 @@ namespace IdouNyuuryoku
                     if (ErrorCheck(PanelTitle))
                     {
                         EnablePanel();
+                        Souko_Disable_Enable(txtIdoukubun.Text);
                         DataTable dt = txtCopy.IsDatatableOccurs;
                         if (dt.Rows.Count > 0)
                             From_DB_To_Form(dt);
@@ -704,7 +707,7 @@ namespace IdouNyuuryoku
         {
             for (int t = 0; t < gv_1.RowCount; t++)
             {
-                bool bl = false;
+                //bool bl = false;
                 // grid 1 checking
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gv_1.Rows[t];// grid view data
@@ -733,7 +736,7 @@ namespace IdouNyuuryoku
                             {
                                 if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 {
-                                    bl = true;
+                                    //bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;
                                 }
                                 else
@@ -743,24 +746,27 @@ namespace IdouNyuuryoku
                             }
                             else
                             {
-                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-                                    bl = true;
+                                //if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                //    bl = true;
 
                                 F8_drNew[c] = row.Cells[c].Value;
                             }
                         }
                         else
                         {
+                            if (c == 12 && string.IsNullOrEmpty(row.Cells["colIdouGyouNO"].Value.ToString()) && !string.IsNullOrEmpty(txtCopy.Text))
+                                F8_drNew[c] = DBNull.Value;
+                            else
                             F8_drNew[c] = row.Cells[c].Value;
                         }
                     }
                     // grid 1 insert(if exist, remove exist and insert)
-                    if (bl == true)
-                    {
+                    //if (bl == true)
+                    //{
                         if (existDr1 != null)
                             F8_dt1.Rows.Remove(existDr1);
                         F8_dt1.Rows.Add(F8_drNew);
-                    }
+                    //}
                 }
             }
             gv_1.Memory_Row_Count = F8_dt1.Rows.Count;
@@ -787,9 +793,22 @@ namespace IdouNyuuryoku
 
         private void F8_Gridview_Bind()
         {
-            F8_dt1.DefaultView.Sort = "ShouhinCD";
-            gv_1.DataSource = F8_dt1.DefaultView.ToTable();
-            gv_1.ClearSelection();
+            if (F8_dt1.Rows.Count > 0)
+            {
+                
+                F8_dt1.DefaultView.Sort = "ShouhinCD";
+                gv_1.DataSource = F8_dt1.DefaultView.ToTable();
+
+                gv_1.Memory_Row_Count = F8_dt1.Rows.Count;
+            }
+            else
+            {
+                DataTable dtSource = (DataTable)gv_1.DataSource;
+                dtSource.Rows.Clear();
+            }
+            //F8_dt1.DefaultView.Sort = "ShouhinCD";
+            //gv_1.DataSource = F8_dt1.DefaultView.ToTable();
+            //gv_1.ClearSelection();
         }
 
         private void DBProcess()

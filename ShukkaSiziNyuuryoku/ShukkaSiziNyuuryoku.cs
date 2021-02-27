@@ -58,8 +58,9 @@ namespace ShukkaSiziNyuuryoku
         {
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dgvShukkasizi.Columns["colTanka"].DefaultCellStyle.Format = "#,0";
-            //dgvShukkasizi.Columns["colPrice"].DefaultCellStyle.Format = "#,0";
+            //dgvShukkasizi.Columns["colShouhinCD"].Width = 150;
+            //dgvShukkasizi.Columns["colShouhinName"].Width = 250;
+            //dgvShukkasizi.Columns["colDetails"].Width = 630;
             dgvShukkasizi.SetNumberColumn("colShukkakanousuu,colTanka,colPrice");
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
@@ -225,8 +226,11 @@ namespace ShukkaSiziNyuuryoku
             {
                 string colKonkaiShukkaSiziSuu = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Replace(",", "");
                 string colTanka = dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString().Replace(",", "");
-                string val = Convert.ToString(Convert.ToInt64(colKonkaiShukkaSiziSuu) * Convert.ToInt64(colTanka));
-                dgvShukkasizi.Rows[row].Cells["colPrice"].Value = FormatPriceValue(val);
+                if (colKonkaiShukkaSiziSuu.All(char.IsDigit)  && (colTanka.All(char.IsDigit)))
+                {
+                    string val = Convert.ToString(Convert.ToInt64(colKonkaiShukkaSiziSuu) * Convert.ToInt64(colTanka));
+                    dgvShukkasizi.Rows[row].Cells["colPrice"].Value = FormatPriceValue(val);
+                }
             }
 
             //data temp save
@@ -606,6 +610,7 @@ namespace ShukkaSiziNyuuryoku
                         string formatvalue = !string.IsNullOrEmpty(dgvShukkasizi.Rows[e.RowIndex].Cells[e.ColumnIndex].FormattedValue.ToString())? dgvShukkasizi.Rows[e.RowIndex].Cells[e.ColumnIndex].FormattedValue.ToString() : "0";
                         formatvalue = FormatPriceValue(formatvalue);
                         dgvShukkasizi.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = formatvalue;
+                       
                     }
 
                     if (cboMode.SelectedValue.ToString().Equals("2"))
@@ -893,16 +898,15 @@ namespace ShukkaSiziNyuuryoku
         {
             if (col == 8 || col == 9 || col == 10)
             {
-                string Result = dgvShukkasizi.Rows[row].Cells[col].EditedFormattedValue.ToString();
-                if (Result.All(char.IsDigit))
+                string Result = dgvShukkasizi.Rows[row].Cells[col].EditedFormattedValue.ToString().Replace(",","");
+                if (string.IsNullOrEmpty(Result))
                 {
-                    if(string.IsNullOrEmpty(Result))
-                    {
-                        dgvShukkasizi.Rows[row].Cells[col].Value = "0";
-                    }
+                    dgvShukkasizi.Rows[row].Cells[col].Value = "0";
                 }
-                else
+                else if (Convert.ToInt64(Result) < 0)
                 {
+                    bbl.ShowMessage("E109");
+                    Temp_Save(row);
                     return false;
                 }
             }
@@ -917,10 +921,22 @@ namespace ShukkaSiziNyuuryoku
             return true;
         }
         private bool ColKonkaiShukkaSiziSuu(int row, int col)
-        {
+        {            
+            if (col == 12)
+            {
+                int MaxLength = ((DataGridViewTextBoxColumn)dgvShukkasizi.Columns[12]).MaxInputLength;
+
+                string byte_text = dgvShukkasizi.Rows[row].Cells[12].EditedFormattedValue.ToString();
+                if (cf.IsByteLengthOver(MaxLength, byte_text))
+                {
+                    MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells[12];
+                    return false;
+                }
+            }
             if (col == 15)
             {
-                if (dgvShukkasizi.Rows[row].Cells["SoukoCD"].Value.ToString().Equals("") && (!dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Equals("0")))
+                if (dgvShukkasizi.Rows[row].Cells["SoukoCD"].EditedFormattedValue.ToString().Equals("") && (!dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Equals("0")))
                 {
                     bbl.ShowMessage("E102");
                     dgvShukkasizi.Rows[row].Cells["SoukoName"].Value = string.Empty;
@@ -928,37 +944,21 @@ namespace ShukkaSiziNyuuryoku
                     return false;
                 }
             }
-            
             string value = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Replace(",", "");
-            if (value.All(char.IsDigit))
-            {
-                if (Convert.ToInt64(value) < 0)
-                {
-                    bbl.ShowMessage("E109");
-                    return false;
-                }
-            }
-            
             string value1 = dgvShukkasizi.Rows[row].Cells["colShukkakanousuu"].EditedFormattedValue.ToString().Replace(",", "");
-            if (value.All(char.IsDigit)&& value1.All(char.IsDigit))
+            if (Convert.ToInt64(value) > Convert.ToInt64(value1))
             {
-                if (Convert.ToInt64(value) > Convert.ToInt64(value1))
-                {
-                    bbl.ShowMessage("E143", "出荷可能数", "大きい");
-                    dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"];
-                    return false;
-                }
+                bbl.ShowMessage("E143", "出荷可能数", "大きい");
+                dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"];
+                return false;
             }
-         
+
             string value2 = dgvShukkasizi.Rows[row].Cells["colJuchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
             string value3 = dgvShukkasizi.Rows[row].Cells["colShukkaSiziZumiSuu"].EditedFormattedValue.ToString().Replace(",", "");
-            if (value.All(char.IsDigit) && value2.All(char.IsDigit) && value3.All(char.IsDigit))
+            if (Convert.ToInt64(value) > (Convert.ToInt64(value2) - Convert.ToInt64(value3)))
             {
-                if (Convert.ToInt64(value) > (Convert.ToInt64(value2) - Convert.ToInt64(value3)))
-                {
-                    bbl.ShowMessage("E143", "未出荷指示数", "大きい");
-                    return false;
-                }
+                bbl.ShowMessage("E143", "未出荷指示数", "大きい");
+                return false;
             }
             return true;
         }
@@ -970,6 +970,11 @@ namespace ShukkaSiziNyuuryoku
             {
                 if (!dt1.Rows[k]["KonkaiShukkaSiziSuu"].ToString().Equals("0"))
                 {
+                    if (dt1.Rows[k]["KonkaiShukkaSiziSuu"].ToString().Contains("-")|| dt1.Rows[k]["UriageTanka"].ToString().Contains("-"))
+                    {                        
+                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[k].Cells["colTanka"];
+                        return false;
+                    }
                     if (!ColKonkaiShukkaSiziSuu(k, 8))
                     {
                         return false;
@@ -984,6 +989,33 @@ namespace ShukkaSiziNyuuryoku
                 }
             }
             return true;
+        }
+        private bool F11_Gridivew_ErrorCheck()
+        {
+            bool bl_error = false;
+
+            foreach (DataGridViewRow gv in dgvShukkasizi.Rows)
+            {
+                if (gv.Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString() != "0")
+                {
+                    for (int i = 0; i < gv.Cells.Count; i++)
+                    {
+                        string colName = dgvShukkasizi.Columns[i].Name;
+                        if (colName == "colKonkaiShukkaSiziSuu" || colName == "colTanka" || colName == "colPrice" ||colName== "colDetails"|| colName == "SoukoCD")
+                        {
+                            if (!Grid_ErrorCheck(gv.Index, i))
+                            {
+                                dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[gv.Index].Cells[i];
+                                bl_error = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (bl_error)
+                    return true;
+            }
+            return bl_error;
         }
         private void F11_Clear()
         {
@@ -1065,7 +1097,7 @@ namespace ShukkaSiziNyuuryoku
                     dgvShukkasizi.Columns["chk"].ReadOnly = false;
                     break;
                 case 11:
-                    if (dtGS1.Rows.Count > 0 && GV_Check())
+                    if (dtGS1.Rows.Count>0 && !F11_Gridivew_ErrorCheck())
                     {
                         dtTemp1 = dtGS1;//temp add
 

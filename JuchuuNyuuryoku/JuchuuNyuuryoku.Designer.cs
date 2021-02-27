@@ -377,7 +377,6 @@
             this.gv_JuchuuNyuuryoku.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1630, 565);
             this.gv_JuchuuNyuuryoku.TabIndex = 106;
-            this.gv_JuchuuNyuuryoku.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.gv_JuchuuNyuuryoku_CellBeginEdit);
             this.gv_JuchuuNyuuryoku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellContentClick);
             this.gv_JuchuuNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
             this.gv_JuchuuNyuuryoku.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEnter);

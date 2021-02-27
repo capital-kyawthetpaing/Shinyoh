@@ -359,8 +359,20 @@ namespace HacchuuNyuuryoku
                 if (F8_dt1.Rows.Count == 0)
                     F8_dt1 = gv1_to_dt1.Clone();
 
-                if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "2" || !string.IsNullOrEmpty(txtCopy.Text))
+                if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "2")
+                {
                     F8_dt1 = gv1_to_dt1.Copy();
+                    gv_HacchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
+                }
+                if (!string.IsNullOrEmpty(txtCopy.Text))
+                {
+                    F8_dt1 = gv1_to_dt1.Copy();
+                    F8_dt1.Rows.OfType<DataRow>().ToList().ForEach(r =>
+                    {
+                        r["HacchuuGyouNO"] = DBNull.Value;
+                    });
+                    gv_HacchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
+                }
             }
         }
 
@@ -606,7 +618,7 @@ namespace HacchuuNyuuryoku
             bool bl_error = false;
             string col_Name = gv_HacchuuNyuuryoku.Columns[col].Name;
 
-            if (col_Name == "colJuchuuSuu")
+            if (col_Name == "colHacchuuSuu")
             {
                 string split_val = gv_HacchuuNyuuryoku.Rows[row].Cells["colHacchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
                 int HacchuuSuu_Number = string.IsNullOrEmpty(gv_HacchuuNyuuryoku.Rows[row].Cells["colHacchuuSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
@@ -719,8 +731,7 @@ namespace HacchuuNyuuryoku
         {
             for (int t = 0; t < gv_HacchuuNyuuryoku.RowCount; t++)
             {
-
-                bool bl = false;
+                //bool bl = false;
                 // grid 1 checking
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gv_HacchuuNyuuryoku.Rows[t];// grid view data
@@ -752,7 +763,7 @@ namespace HacchuuNyuuryoku
                         existDr1 = null;
                     }
                 }
-                F8_drNew[0] = shouhinCD;
+                F8_drNew[0] = row.Cells["colHinbanCD"].Value.ToString();
                 //if (row.Cells["colHacchuuSuu"].Value.ToString() != "0" && row.Cells[7].Value.ToString() != select_dr1[0][7].ToString())
                 if (row.Cells["colHacchuuSuu"].Value.ToString() != "0")
                 {
@@ -764,7 +775,7 @@ namespace HacchuuNyuuryoku
                             {
                                 if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 {
-                                    bl = true;
+                                    //bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;
                                 }
                                 else
@@ -774,28 +785,30 @@ namespace HacchuuNyuuryoku
                             }
                             else
                             {
-                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-                                    bl = true;
+                                //if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                //    bl = true;
 
                                 F8_drNew[c] = row.Cells[c].Value;
                             }
                         }
                         else
                         {
-                            F8_drNew[c] = row.Cells[c].Value;
+                            if (c == 14 && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString()) && !string.IsNullOrEmpty(txtCopy.Text))
+                                F8_drNew[c] = DBNull.Value;
+                            else
+                                F8_drNew[c] = row.Cells[c].Value;
                         }
                     }
                     // grid 1 insert(if exist, remove exist and insert)
-                    if (bl == true)
-                    {
+                    //if (bl == true)
+                    //{
                         if (existDr1 != null)
                             F8_dt1.Rows.Remove(existDr1);
                         F8_dt1.Rows.Add(F8_drNew);
-                    }
+                    //}
                 }
             }
             gv_HacchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
-
             Focus_Clear();
             #region
             //comment nwe mar win logic difference
