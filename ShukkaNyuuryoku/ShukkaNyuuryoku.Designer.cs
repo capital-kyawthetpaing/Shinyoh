@@ -1132,7 +1132,7 @@
             // 
             this.colShukkazansuu.DataPropertyName = "ShukkaSiziZumiSuu";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.NullValue = "0";
+            dataGridViewCellStyle2.Format = "N0";
             this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle2;
             this.colShukkazansuu.HeaderText = "出荷残数\t\t\t\t";
             this.colShukkazansuu.Name = "colShukkazansuu";
@@ -1143,7 +1143,7 @@
             // 
             this.colMiryoku.DataPropertyName = "MiNyuukaSuu";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.NullValue = "0";
+            dataGridViewCellStyle3.NullValue = "N0";
             this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle3;
             this.colMiryoku.HeaderText = "未入荷数\t\t\t\t";
             this.colMiryoku.Name = "colMiryoku";
