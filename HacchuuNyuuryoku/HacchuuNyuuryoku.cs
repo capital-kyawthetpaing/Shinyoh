@@ -731,7 +731,7 @@ namespace HacchuuNyuuryoku
         {
             for (int t = 0; t < gv_HacchuuNyuuryoku.RowCount; t++)
             {
-                bool bl = false;
+                //bool bl = false;
                 // grid 1 checking
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gv_HacchuuNyuuryoku.Rows[t];// grid view data
