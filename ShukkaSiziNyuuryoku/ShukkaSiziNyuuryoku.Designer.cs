@@ -900,6 +900,7 @@ namespace ShukkaSiziNyuuryoku
             this.colDetails.HeaderText = "明細摘要";
             this.colDetails.Name = "colDetails";
             this.colDetails.Width = 620;
+            this.colDetails.MaxInputLength = 80;
             // 
             // colJuchuuNo
             // 
