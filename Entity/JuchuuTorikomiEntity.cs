@@ -27,5 +27,7 @@ namespace Entity
         public string KibouNouki { get; set; }
         public string HacchuuSuu { get; set; }
         public string JuchuuDenpyouTekiyou { get; set; }
+        public int DataKBN { get; set; }
+        public string Number { get; set; }
     }
 }
