@@ -1005,7 +1005,7 @@ namespace JuchuuNyuuryoku
                             {
                                 if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 {
-                                    bl = true;
+                                  //  bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;
                                 }
                                 else
@@ -1015,8 +1015,8 @@ namespace JuchuuNyuuryoku
                             }
                             else
                             {
-                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-                                    bl = true;
+                                //if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                //    bl = true;
 
                                 F8_drNew[c] = row.Cells[c].Value;
                             }
@@ -1030,12 +1030,12 @@ namespace JuchuuNyuuryoku
                         }
                     }
                     // grid 1 insert(if exist, remove exist and insert)
-                    if (bl == true)
-                    {
+                    //if (bl == true)
+                    //{
                         if (existDr1 != null)
                             F8_dt1.Rows.Remove(existDr1);
                         F8_dt1.Rows.Add(F8_drNew);
-                    }
+                   // }
                 }
                 
             }
