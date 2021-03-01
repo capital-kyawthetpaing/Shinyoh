@@ -65,7 +65,7 @@ namespace Shinyoh_Details
         }
         public override void FunctionProcess(string tagID)
         {
-            if (tagID == "3")
+            if (tagID == "4")
             {
                 if(ErrorCheck(Panel_Detail))
                 {
