@@ -459,7 +459,7 @@ namespace ShukkaNyuuryoku {
                             gvShukka1.DataSource = dt;
                             DataTable dt_temp = dt.Copy();
                             gvdt1 = dt_temp;
-                            if(gvdt1.Rows.Count > 0)
+                            if (gvdt1.Rows.Count > 0)
                             {
                                 F8_dt1 = gvdt1.Clone();
                             }
@@ -502,8 +502,8 @@ namespace ShukkaNyuuryoku {
                         {
                             bbl.ShowMessage("S004", ProgramID, OperatorCD);
                         }
-                        //dtHaita.Columns.Remove("ShukkaSiziNO");
-                        //gvShukka1.DataSource = dtHaita;
+                        dtHaita.Columns.Remove("ShukkaSiziNO");
+                        gvShukka1.DataSource = dtHaita;
 
                     }
                     break;
@@ -975,6 +975,7 @@ namespace ShukkaNyuuryoku {
         {
             if (e.KeyCode == Keys.Enter)
             {
+                
                 if (!txtShukkaNo.IsErrorOccurs)
                 {
                     ShukkaNyuuryokuEntity obj_shukka = new ShukkaNyuuryokuEntity();
@@ -1006,6 +1007,11 @@ namespace ShukkaNyuuryoku {
                 if (Main_dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
                     From_DB_To_Form(Main_dt);
+                    if (gvShukka1.Columns.Count == 13)
+                    {
+                        gvShukka1.Columns.Remove("ShukkaSiziNO");
+                    }
+
                 }
             }
         }
@@ -1067,20 +1073,14 @@ namespace ShukkaNyuuryoku {
                 dt.Columns.Remove("ShouhinCD");
                 dt.Columns.Remove("MessageID");
 
-                DataTable dt1 = dt.Copy();
-               
-                gvdt1 = dt1;
-                //dt1.Columns.Remove("ShukkaSiziNO");
+                gvShukka1.DataSource = dt;
+                //gvShukka1.ClearSelection();
 
-                gvShukka1.DataSource = dt1;
+                DataTable dt_temp = dt.Copy();
+                gvdt1 = dt_temp;
 
-                //Temptb1 = gvdt1.Copy();
-                //gvdt1 = Temptb1;
-                //F8_dt1 = gvdt1.Clone();
-                // Temptb1.Clear();
-                //Temptb2 = gvdt2.Copy();
-                //Temptb2.Clear();
-
+                if (F8_dt1.Rows.Count == 0)
+                    F8_dt1 = gvdt1.Clone();
             }
         }
 
