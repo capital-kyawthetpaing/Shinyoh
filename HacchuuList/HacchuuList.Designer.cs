@@ -254,7 +254,7 @@
             this.panel2.Location = new System.Drawing.Point(32, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(300, 30);
-            this.panel2.TabIndex = 81;
+            this.panel2.TabIndex = 1;
             // 
             // rdo_Juc
             // 
