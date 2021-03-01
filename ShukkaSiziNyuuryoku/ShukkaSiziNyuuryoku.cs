@@ -58,9 +58,6 @@ namespace ShukkaSiziNyuuryoku
         {
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //dgvShukkasizi.Columns["colShouhinCD"].Width = 150;
-            //dgvShukkasizi.Columns["colShouhinName"].Width = 250;
-            //dgvShukkasizi.Columns["colDetails"].Width = 630;
             dgvShukkasizi.SetNumberColumn("colShukkakanousuu,colTanka,colPrice");
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
@@ -1340,6 +1337,7 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();
             //DataTable dtvalue = new DataTable();
             //dtvalue = sksz_bl.GetFunctionNO("12", txtShippingDate.Text, "0");
+           
             if (cboMode.SelectedValue.Equals("3"))//delete
             {
                 Konkai_Price(dtTemp1);
@@ -1446,10 +1444,12 @@ namespace ShukkaSiziNyuuryoku
             {
                 DataTable dt = new DataTable();
                 dt = dtGridview(1);
+                dt = CommaRemove(dt);
                 Detail_XML = cf.DataTableToXml(dt);
             }
             else
             {
+                dtTemp1 = CommaRemove(dtTemp1);
                 Detail_XML = cf.DataTableToXml(dtTemp1);
             }
 
@@ -1468,6 +1468,23 @@ namespace ShukkaSiziNyuuryoku
             }
 
             return (Mode, Header_XML, Detail_XML);
+        }
+        private DataTable  CommaRemove (DataTable dt)
+        {
+            if (dt.Rows.Count > 0)
+            {
+                for (int j = 0; j < dt.Rows.Count; j++)
+                {
+                    for (int k = 5; k < 11; k++)
+                    {
+                        if (dt.Rows[j][k].ToString().Contains(","))
+                        {
+                            dt.Rows[j][k] = dt.Rows[j][k].ToString().Replace(",", "");
+                        }
+                    }
+                }
+            }
+            return dt;
         }
     }
 }
