@@ -417,7 +417,7 @@ namespace ShukkaNyuuryoku {
 
                       
                     }
-                    else
+                    else if(gvShukka1.Rows.Count > 0)
                     {
                         DataTable dtSource = (DataTable)gvShukka1.DataSource;
                         dtSource.Rows.Clear();

@@ -81,8 +81,10 @@ namespace JuchuuTorikomi
         {
             txtImportFolder.E102Check(true);
             txtImportFileName.E102Check(true);
-            txtDate1.E103Check(true);
-            txtDate2.E103Check(true);
+            if (cf.DateCheck(txtDate1))
+                txtDate1.E103Check(true);
+            if (cf.DateCheck(txtDate2))
+                txtDate2.E103Check(true);
             txtDenpyouNO.E102Check(true);
             txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
             txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
@@ -113,13 +115,38 @@ namespace JuchuuTorikomi
                         JuchuuTorikomiBL Jbl = new JuchuuTorikomiBL();
                         string chk_val = string.Empty;
                         if (rdo_Registration.Checked)
-                            chk_val = "create_update";
-                        else chk_val = "delete";
-                        JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
-                        string return_BL = Jbl.JuchuuTorikomi_CUD(Xml.Item1, Xml.Item2, chk_val,JEntity);
-                        if (return_BL == "true")
                         {
-                            bbl.ShowMessage("I002");
+                            chk_val = "create_update";
+                            string return_BL = Jbl.JuchuuTorikomi_CUD(Xml.Item1, Xml.Item2, chk_val, JEntity);
+                            if (return_BL == "true")
+                            {
+                                bbl.ShowMessage("I002");
+                            }
+                        }
+                        else 
+                        {
+                            chk_val = "delete";
+                            foreach (DataRow dr in dtMain.Rows)
+                            {
+                                string JuchuuNO = dr["JuchuuNO"].ToString();
+                                JEntity.DataKBN = 1;
+                                JEntity.Number = JuchuuNO;
+                                JEntity.ProgramID = ProgramID;
+                                JEntity.PC = PCID;
+                                JEntity.OperatorCD = OperatorCD;
+                                DataTable dt1 = new DataTable();
+                                dt1 = Jbl.D_Exclusive_Lock_Check(JEntity);
+                                if (dt1.Rows[0]["MessageID"].ToString().Equals("S004"))
+                                {
+                                    bbl.ShowMessage("S004");
+                                }
+                            }
+                            JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
+                            string return_BL1 = Jbl.JuchuuTorikomi_CUD(Xml.Item1, Xml.Item2, chk_val, JEntity);
+                            if (return_BL1 == "true")
+                            {
+                                bbl.ShowMessage("I002");
+                            }
                         }
                     }
                 }
@@ -278,30 +305,30 @@ namespace JuchuuTorikomi
 
                         DataTable dt3 = new DataTable();
                         ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
-                        //dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.JuchuuDate, "E101", "ShouhinCD");
-                        //if (dt3.Rows.Count > 0 && dt3.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "商品CD");
-                        //    break;
-                        //}
+                        dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.JuchuuDate, "E101", "ShouhinCD");
+                        if (dt3.Rows.Count > 0 && dt3.Rows[0]["MessageID"].ToString() == "E101")
+                        {
+                            bbl.ShowMessage("E101", i.ToString(), "商品CD");
+                            break;
+                        }
 
                         DataTable dt4 = new DataTable();
                         ShukkaTorikomi_BL jBL = new ShukkaTorikomi_BL();
-                        //dt4 = jBL.ShukkaTorikomi_Check(JEntity.JANCD, JEntity.JuchuuDate, "E101", "JANCD");
-                        //if (dt4.Rows.Count > 0 && dt4.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "JANCD");
-                        //    break;
-                        //}
+                        dt4 = jBL.ShukkaTorikomi_Check(JEntity.JANCD, JEntity.JuchuuDate, "E101", "JANCD");
+                        if (dt4.Rows.Count > 0 && dt4.Rows[0]["MessageID"].ToString() == "E101")
+                        {
+                            bbl.ShowMessage("E101", i.ToString(), "JANCD");
+                            break;
+                        }
 
                         DataTable dt5 = new DataTable();
                         SiiresakiBL SiireBL = new SiiresakiBL();
-                        //dt5 = SiireBL.Siiresaki_Select_Check(JEntity.SiiresakiCD, JEntity.JuchuuDate, "E101");
-                        //if (dt5.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "仕入先CD");
-                        //    break;
-                        //}
+                        dt5 = SiireBL.Siiresaki_Select_Check(JEntity.SiiresakiCD, JEntity.JuchuuDate, "E101");
+                        if (dt5.Rows[0]["MessageID"].ToString() == "E101")
+                        {
+                            bbl.ShowMessage("E101", i.ToString(), "仕入先CD");
+                            break;
+                        }
 
                         DataTable dt6 = new DataTable();
                         SoukoBL soukoBL = new SoukoBL();
@@ -325,8 +352,6 @@ namespace JuchuuTorikomi
                             else
                                 dr[j] = splits[j].ToString();
                         }
-                        //string s = Convert.ToDateTime(dr["20"].ToString()).ToString("YYYY-mm-dd").ToString();
-                        //dr[20] = s;
                         dr[54] = base_Entity.OperatorCD;
                         dr[55] = base_Entity.ProgramID;
                         dr[56] = base_Entity.PC;
@@ -337,9 +362,7 @@ namespace JuchuuTorikomi
                     create_dt.Columns.Add("HacchuuNO", typeof(string));
                     for (int i = 0; i < create_dt.Rows.Count; i++)
                     {
-                        DateTime date = DateTime.Parse(create_dt.Rows[i]["JuchuuDate"].ToString());
-                        string a = create_dt.Rows[i]["ChakuniYoteiDate"].ToString();
-                        a = String.Format("{0:yyyy-MM-dd}", create_dt.Rows[i]["JuchuuDate"].ToString()); 
+                        DateTime date = DateTime.Parse(create_dt.Rows[i]["JuchuuDate"].ToString().Replace('-','/'));
                         DataTable Dt_JuchuuNO = JBL.GetJuchuuNO("1", date, "0");
                         DataTable Dt_HacchuuNO = JBL.GetHacchuuNO("2", date, "0");
                         create_dt.Rows[i]["JuchuuNO"] = Dt_JuchuuNO.Rows[0]["Column1"];
@@ -349,7 +372,7 @@ namespace JuchuuTorikomi
                     if (create_dt.Rows.Count > 0)
                     {
                         dt_Main = create_dt.AsEnumerable()
-                              .GroupBy(r => new { Col1 = r["JuchuuDate"], Col2 = r["TokuisakiCD"], Col3 = r["KouritenCD"], Col4 = r["SenpouBusho"], Col5 = r["KibouNouki"] })
+                              .GroupBy(r => new { Col1 = r["JuchuuDate"], Col2 = r["TokuisakiCD"], Col3 = r["KouritenCD"], Col4 = r["SenpouHacchuuNO"], Col5 = r["SenpouBusho"], Col6 = r["KibouNouki"], Col7 = r["SoukoCD"] })
                               .Select(g => g.OrderBy(r => r["JuchuuDate"]).First())
                               .CopyToDataTable();
 
