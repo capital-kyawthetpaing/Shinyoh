@@ -209,7 +209,7 @@
             this.txtHacchuuNO2.Name = "txtHacchuuNO2";
             this.txtHacchuuNO2.NextControl = null;
             this.txtHacchuuNO2.NextControlName = "txtUpdate_HacchuuDate1";
-            this.txtHacchuuNO2.SearchType = Entity.SearchType.ScType.None;
+            this.txtHacchuuNO2.SearchType = Entity.SearchType.ScType.HacchuuNyuuryoku;
             this.txtHacchuuNO2.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO2.TabIndex = 5;
             this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -240,7 +240,7 @@
             this.txtHacchuuNO1.Name = "txtHacchuuNO1";
             this.txtHacchuuNO1.NextControl = null;
             this.txtHacchuuNO1.NextControlName = "txtHacchuuNO2";
-            this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.None;
+            this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.HacchuuNyuuryoku;
             this.txtHacchuuNO1.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO1.TabIndex = 4;
             this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -254,7 +254,7 @@
             this.panel2.Location = new System.Drawing.Point(32, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(300, 30);
-            this.panel2.TabIndex = 81;
+            this.panel2.TabIndex = 1;
             // 
             // rdo_Juc
             // 

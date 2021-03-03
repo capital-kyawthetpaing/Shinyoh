@@ -85,18 +85,18 @@ namespace HacchuuList
             txtHacchuuDate2.E102Check(true);
             txtHacchuuDate1.E103Check(true);
             txtHacchuuDate2.E103Check(true);
-            txtHacchuuDate2.E104Check(true, txtHacchuuDate1, txtHacchuuDate2);
+            txtHacchuuDate2.E106Check(true, txtHacchuuDate1, txtHacchuuDate2);
             txtHacchuuNO2.E106Check(true, txtHacchuuNO1, txtHacchuuNO2);
             txtUpdate_HacchuuDate1.E103Check(true);
             txtUpdate_HacchuuDate2.E103Check(true);
-            txtUpdate_HacchuuDate2.E104Check(true, txtUpdate_HacchuuDate1, txtUpdate_HacchuuDate2);
+            txtUpdate_HacchuuDate2.E106Check(true, txtUpdate_HacchuuDate1, txtUpdate_HacchuuDate2);
 
             txtJuchuuDate1.E103Check(true);
             txtJuchuuDate2.E103Check(true);
             txtUpdate_JuchuuDate1.E103Check(true);
             txtUpdate_JuchuuDate2.E103Check(true);
-            txtJuchuuDate2.E104Check(true, txtJuchuuDate1, txtJuchuuDate2);
-            txtUpdate_JuchuuDate2.E104Check(true, txtUpdate_JuchuuDate1, txtUpdate_JuchuuDate2);
+            txtJuchuuDate2.E106Check(true, txtJuchuuDate1, txtJuchuuDate2);
+            txtUpdate_JuchuuDate2.E106Check(true, txtUpdate_JuchuuDate1, txtUpdate_JuchuuDate2);
 
             txtJuchuuNO2.E106Check(true, txtJuchuuNO1, txtJuchuuNO2);
 
@@ -215,15 +215,7 @@ namespace HacchuuList
                 //}
             }
             base.FunctionProcess(tagID);
-        }        
-
-        //private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    multipurposeBL bl = new multipurposeBL();
-        //    DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
-        //    if (dt.Rows.Count > 0)
-        //        lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
-        //}
+        }
 
         private void rdo_Hac_CheckedChanged(object sender, EventArgs e)
         {
@@ -300,12 +292,10 @@ namespace HacchuuList
         private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
         {
             multipurposeBL bl = new multipurposeBL();
-            string brandName = txtBrandCD.Text.ToString();
-            DataTable dt = bl.M_Multiporpose_SelectData(brandName, 1, string.Empty, string.Empty);
-
+            DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
+            lblBrand_Name.Text = string.Empty;
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
-            else lblBrand_Name.Text = string.Empty;
         }
     }
 }
