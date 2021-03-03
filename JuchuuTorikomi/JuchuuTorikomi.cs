@@ -558,9 +558,9 @@ namespace JuchuuTorikomi
 
         private void txtDate2_KeyDown(object sender, KeyEventArgs e)
         {
-            txtDenpyouNO.E102Check(true);
             txtDate1.E103Check(true);
             txtDate2.E103Check(true);
+            txtDenpyouNO.E102Check(true);
             txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
             txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
             JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
