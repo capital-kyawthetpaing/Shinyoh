@@ -1014,8 +1014,7 @@ namespace ShukkaSiziNyuuryoku
         }
         private void F11_Clear()
         {
-            //txtJuchuuNo.Clear();
-            //txtAddress.Clear();
+            txtJuchuuNo.Clear();
             txtSenpyouhachuuNo.Clear();
             txtYubin1.Clear();
             txtYubin2.Clear();
@@ -1024,6 +1023,7 @@ namespace ShukkaSiziNyuuryoku
             txtPhone2.Clear();
             txtPhone3.Clear();
             txtName.Clear();
+            txtAddress.Clear();
         }
 
         //Mode_Procedure
