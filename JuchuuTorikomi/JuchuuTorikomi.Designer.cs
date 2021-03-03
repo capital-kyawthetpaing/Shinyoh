@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt1 = new Shinyoh_Controls.SLabel();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.rdo_Registration = new Shinyoh_Controls.SRadio();
@@ -78,9 +78,9 @@
             this.txt1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txt1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.txt1.ForeColor = System.Drawing.Color.White;
-            this.txt1.Location = new System.Drawing.Point(24, 8);
+            this.txt1.Location = new System.Drawing.Point(22, 8);
             this.txt1.Name = "txt1";
-            this.txt1.Size = new System.Drawing.Size(100, 19);
+            this.txt1.Size = new System.Drawing.Size(115, 19);
             this.txt1.TabIndex = 1;
             this.txt1.Text = "取込区分";
             this.txt1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -88,7 +88,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Delete.Location = new System.Drawing.Point(201, 8);
+            this.rdo_Delete.Location = new System.Drawing.Point(221, 8);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -103,7 +103,7 @@
             // 
             this.rdo_Registration.Checked = true;
             this.rdo_Registration.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Registration.Location = new System.Drawing.Point(129, 8);
+            this.rdo_Registration.Location = new System.Drawing.Point(141, 8);
             this.rdo_Registration.MoveNext = true;
             this.rdo_Registration.Name = "rdo_Registration";
             this.rdo_Registration.NextControl = null;
@@ -149,7 +149,7 @@
             this.txtDate2.IsErrorOccurs = false;
             this.txtDate2.IsRequire = false;
             this.txtDate2.IsUseInitializedLayout = true;
-            this.txtDate2.Location = new System.Drawing.Point(424, 137);
+            this.txtDate2.Location = new System.Drawing.Point(435, 137);
             this.txtDate2.MaxLength = 10;
             this.txtDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate2.MoveNext = true;
@@ -161,12 +161,13 @@
             this.txtDate2.TabIndex = 13;
             this.txtDate2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDate2_KeyDown);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS PGothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(737, 119);
+            this.label3.Location = new System.Drawing.Point(717, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 12);
             this.label3.TabIndex = 12;
@@ -185,13 +186,13 @@
             this.txtDenpyouNO.IsErrorOccurs = false;
             this.txtDenpyouNO.IsRequire = false;
             this.txtDenpyouNO.IsUseInitializedLayout = true;
-            this.txtDenpyouNO.Location = new System.Drawing.Point(829, 137);
+            this.txtDenpyouNO.Location = new System.Drawing.Point(816, 137);
             this.txtDenpyouNO.MaxLength = 12;
             this.txtDenpyouNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDenpyouNO.MoveNext = true;
             this.txtDenpyouNO.Name = "txtDenpyouNO";
             this.txtDenpyouNO.NextControl = null;
-            this.txtDenpyouNO.NextControlName = null;
+            this.txtDenpyouNO.NextControlName = "BtnF10";
             this.txtDenpyouNO.SearchType = Entity.SearchType.ScType.None;
             this.txtDenpyouNO.Size = new System.Drawing.Size(100, 19);
             this.txtDenpyouNO.TabIndex = 11;
@@ -203,9 +204,9 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(729, 137);
+            this.sLabel6.Location = new System.Drawing.Point(701, 137);
             this.sLabel6.Name = "sLabel6";
-            this.sLabel6.Size = new System.Drawing.Size(100, 19);
+            this.sLabel6.Size = new System.Drawing.Size(115, 19);
             this.sLabel6.TabIndex = 10;
             this.sLabel6.Text = "取込伝票番号";
             this.sLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -213,7 +214,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(384, 140);
+            this.label2.Location = new System.Drawing.Point(396, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 9;
@@ -234,7 +235,7 @@
             this.colKouritenRyakuName});
             this.gvJuchuuTorikomi.IsErrorOccurs = false;
             this.gvJuchuuTorikomi.ISRowColumn = null;
-            this.gvJuchuuTorikomi.Location = new System.Drawing.Point(160, 170);
+            this.gvJuchuuTorikomi.Location = new System.Drawing.Point(160, 173);
             this.gvJuchuuTorikomi.Name = "gvJuchuuTorikomi";
             this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1200, 620);
             this.gvJuchuuTorikomi.TabIndex = 8;
@@ -249,8 +250,8 @@
             // colInsertDateTime
             // 
             this.colInsertDateTime.DataPropertyName = "InsertDateTime";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle3;
             this.colInsertDateTime.HeaderText = "取込日時";
             this.colInsertDateTime.Name = "colInsertDateTime";
             this.colInsertDateTime.Width = 130;
@@ -264,8 +265,8 @@
             // colJuchuuDate
             // 
             this.colJuchuuDate.DataPropertyName = "JuchuuDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.colJuchuuDate.HeaderText = "受注日";
             this.colJuchuuDate.Name = "colJuchuuDate";
             this.colJuchuuDate.Width = 80;
@@ -310,7 +311,7 @@
             this.txtDate1.IsErrorOccurs = false;
             this.txtDate1.IsRequire = false;
             this.txtDate1.IsUseInitializedLayout = true;
-            this.txtDate1.Location = new System.Drawing.Point(260, 137);
+            this.txtDate1.Location = new System.Drawing.Point(275, 137);
             this.txtDate1.MaxLength = 10;
             this.txtDate1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate1.MoveNext = true;
@@ -346,7 +347,7 @@
             this.txtImportFileName.IsErrorOccurs = false;
             this.txtImportFileName.IsRequire = false;
             this.txtImportFileName.IsUseInitializedLayout = true;
-            this.txtImportFileName.Location = new System.Drawing.Point(273, 51);
+            this.txtImportFileName.Location = new System.Drawing.Point(275, 51);
             this.txtImportFileName.MaxLength = 255;
             this.txtImportFileName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtImportFileName.MoveNext = true;
@@ -371,7 +372,7 @@
             this.txtImportFolder.IsErrorOccurs = false;
             this.txtImportFolder.IsRequire = false;
             this.txtImportFolder.IsUseInitializedLayout = true;
-            this.txtImportFolder.Location = new System.Drawing.Point(273, 23);
+            this.txtImportFolder.Location = new System.Drawing.Point(275, 23);
             this.txtImportFolder.MaxLength = 255;
             this.txtImportFolder.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtImportFolder.MoveNext = true;
@@ -391,7 +392,7 @@
             this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel5.Location = new System.Drawing.Point(160, 137);
             this.sLabel5.Name = "sLabel5";
-            this.sLabel5.Size = new System.Drawing.Size(100, 19);
+            this.sLabel5.Size = new System.Drawing.Size(115, 19);
             this.sLabel5.TabIndex = 2;
             this.sLabel5.Text = "取込日";
             this.sLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

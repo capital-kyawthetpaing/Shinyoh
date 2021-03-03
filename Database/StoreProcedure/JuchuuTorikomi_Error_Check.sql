@@ -20,24 +20,31 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    if @Errortype='E160' 
+   if @Errortype='E160' 
 		begin
 			if exists(select * from D_Juchuu A Inner join D_JuchuuMeisai B On A.JuchuuNO=B.JuchuuNO where A.TorikomiDenpyouNO=@TorikomiDenpyouNO and B.ShukkaSiziKanryouKBN=1)
 				begin
 					Select * from M_Message where MessageID='E160'
 				end
+		    else
+		        begin
+		            select * From M_Message where MessageID='E132' 
+		        end
 		end
     
 	
-    if @Errortype='E265' 
+     if @Errortype='E265' 
 		begin
 			if exists(select * from D_HacchuuMeisai A Inner Join D_JuchuuMeisai B on A.JuchuuNO=B.JuchuuNO and A.JuchuuGyouNO=B.JuchuuGyouNO  inner join D_Juchuu C On B.JuchuuNO=C.JuchuuNO And C.TorikomiDenpyouNO=@TorikomiDenpyouNO 
-                      And A.ShouhizeirituKBN=1)
+                      And A.ChakuniYoteiKanryouKBN=1)
 				begin
 					Select * from M_Message where MessageID='E265'
 				end
+		   else
+		        begin
+		            select * From M_Message where MessageID='E132' 
+		        end
 		end
-
 
 END
 GO
