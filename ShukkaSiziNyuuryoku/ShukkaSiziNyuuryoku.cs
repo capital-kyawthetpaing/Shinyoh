@@ -1088,7 +1088,10 @@ namespace ShukkaSiziNyuuryoku
                         bbl.ShowMessage("S004", ProgramID, OperatorCD);
                     }
                     dgvShukkasizi.DataSource = dtHaita;
-                    dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[0].Cells["colKonkaiShukkaSiziSuu"];
+                    if(dtHaita.Rows.Count>0)
+                    {
+                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[0].Cells["colKonkaiShukkaSiziSuu"];
+                    }
                     dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].ReadOnly = false;
                     dgvShukkasizi.Columns["chk"].ReadOnly = false;
                     break;
