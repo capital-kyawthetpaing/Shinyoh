@@ -808,9 +808,6 @@ namespace IdouNyuuryoku
                 if (dtSource != null)
                     dtSource.Rows.Clear();
             }
-            //F8_dt1.DefaultView.Sort = "ShouhinCD";
-            //gv_1.DataSource = F8_dt1.DefaultView.ToTable();
-            //gv_1.ClearSelection();
         }
 
         private void DBProcess()
