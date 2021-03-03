@@ -97,7 +97,7 @@ BEGIN
 			(@FW is null or (FSH.SeasonFW = @FW)) and 
 			((@JuchuuDate1 is null or (DJ.JuchuuDate >= @JuchuuDate1)) and (@JuchuuDate2 is null or (DJ.JuchuuDate <= @JuchuuDate2))) and 
 			(@JuchuuNO1 is null or (DJ.JuchuuNO  >= @JuchuuNO1)) and (@JuchuuNO2 is null or (DJ.JuchuuNO  <= @JuchuuNO2)) and 
-			((@Update_JuchuuDate1 is null or (DJ.UpdateDateTime >= @Update_JuchuuDate1)) and (@Update_JuchuuDate2 is null or (DJ.UpdateDateTime <= @Update_JuchuuDate2))) 
+			((@Update_JuchuuDate1 is null or (CONVERT(date,DJ.UpdateDateTime) >= @Update_JuchuuDate1)) and (@Update_JuchuuDate2 is null or (CONVERT(date,DJ.UpdateDateTime) <= @Update_JuchuuDate2))) 
 			order by DHM.HacchuuNO,DHM.HacchuuGyouNO,DHM.JuchuuNO,DHM.JuchuuGyouNO
 		end
 END

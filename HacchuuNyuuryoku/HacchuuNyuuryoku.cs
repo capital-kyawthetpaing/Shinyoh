@@ -793,7 +793,7 @@ namespace HacchuuNyuuryoku
                         }
                         else
                         {
-                            if (c == 14 && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString()) && !string.IsNullOrEmpty(txtCopy.Text))
+                            if (c == 14 && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString()))
                                 F8_drNew[c] = DBNull.Value;
                             else
                                 F8_drNew[c] = row.Cells[c].Value;
@@ -868,6 +868,7 @@ namespace HacchuuNyuuryoku
         private void Focus_Clear()
         {
             txtBrandCD.Focus();
+            lblBrand_Name.Text = string.Empty;
             txtBrandCD.Text = string.Empty;
             txtShouhinCD.Text = string.Empty;
             txtJANCD.Text = string.Empty;

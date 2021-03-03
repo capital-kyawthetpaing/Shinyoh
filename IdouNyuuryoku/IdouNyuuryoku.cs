@@ -775,6 +775,7 @@ namespace IdouNyuuryoku
         private void Focus_Clear()
         {
             txtBrandCD.Focus();
+            lblBrand_Name.Text = string.Empty;
             txtBrandCD.Text = string.Empty;
             txtShouhinCD.Text = string.Empty;
             txtJANCD.Text = string.Empty;
