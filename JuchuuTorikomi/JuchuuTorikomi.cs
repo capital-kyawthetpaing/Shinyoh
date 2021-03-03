@@ -81,10 +81,8 @@ namespace JuchuuTorikomi
         {
             txtImportFolder.E102Check(true);
             txtImportFileName.E102Check(true);
-            if (cf.DateCheck(txtDate1))
-                txtDate1.E103Check(true);
-            if (cf.DateCheck(txtDate2))
-                txtDate2.E103Check(true);
+            txtDate1.E103Check(true);
+            txtDate2.E103Check(true);
             txtDenpyouNO.E102Check(true);
             txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
             txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
@@ -97,7 +95,8 @@ namespace JuchuuTorikomi
             }
             if (tagID == "10")
             {
-                GridviewBind();
+                //if (ErrorCheck(PanelDetail))
+                    GridviewBind();
             }
             if (tagID == "12")
             {
@@ -160,11 +159,23 @@ namespace JuchuuTorikomi
             txtDate1.Clear();
             txtDate2.Clear();
             txtDenpyouNO.Clear();
+            dtMain.Clear();
             gvJuchuuTorikomi.ClearSelection();
         }
         private void GridviewBind()
         {
-            ErrorCheck();
+            if (cf.DateCheck(txtDate1))
+                txtDate1.E103Check(true);
+            if (cf.DateCheck(txtDate2))
+                txtDate2.E103Check(true);
+            if (String.IsNullOrEmpty(txtDenpyouNO.Text))
+            {
+                bbl.ShowMessage("E102");
+                txtDenpyouNO.Focus();
+            }
+            txtDenpyouNO.E102Check(true);
+            txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
+            txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
             JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
             dtMain = JBL.JuchuuTorikomi_Display(JEntity);
             gvJuchuuTorikomi.DataSource = dtMain;
@@ -550,6 +561,22 @@ namespace JuchuuTorikomi
                 rdo_Registration.Checked = false;
                 Disable_Panel();
             }
+        }
+
+        private void txtDate2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(String.IsNullOrEmpty(txtDenpyouNO.Text))
+            {
+                bbl.ShowMessage("E102");
+                txtDenpyouNO.Focus();
+            }
+            txtDate1.E103Check(true);
+            txtDate2.E103Check(true);
+            txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
+            txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
+            JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
+            dtMain = JBL.JuchuuTorikomi_Display(JEntity);
+            gvJuchuuTorikomi.DataSource = dtMain;
         }
     }
 }
