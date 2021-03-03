@@ -171,6 +171,8 @@ namespace ShukkaNyuuryoku {
             string return_Bl = sBL.ShukkaNyuuryoku_CUD(obj.Item1, obj.Item2, obj.Item3);
             if (return_Bl == "true")
                 bbl.ShowMessage("I101");
+            gvdt1.Clear();
+            F8_dt1.Clear();
         }
         //private void Konkai_Price(DataTable dtTemp1)
         //{
@@ -300,6 +302,8 @@ namespace ShukkaNyuuryoku {
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     txtShukkaNo.Focus();
+                    gvdt1.Clear();
+                    F8_dt1.Clear();
                     break;
                 case Mode.Delete:
                     ErrorCheck();
@@ -609,6 +613,7 @@ namespace ShukkaNyuuryoku {
             txtTelNo2.Clear();
             txtTelNo3.Clear();
             txtName.Clear();
+            gvShukka1.DataSource = dtClear;
         }
 
         private bool F11_Gridivew_ErrorCheck()

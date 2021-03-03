@@ -19,11 +19,11 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-   Select 
+    Select 
    TorikomiDenpyouNO,
-   FORMAT(CONVERT(DATETIME,InsertDateTime), 'yyyy/MM/dd hh:mm:ss')as InsertDateTime,
+   FORMAT(CONVERT(DATETIME,InsertDateTime), 'yyyy/MM/dd hh:mm:ss')as InsertDateTime ,
    JuchuuNO,
-    convert(varchar(10), JuchuuDate, 111) as JuchuuDate,
+   convert(varchar(10), JuchuuDate, 111) as JuchuuDate,
    TokuisakiCD,
    TokuisakiRyakuName,
    KouritenCD,
