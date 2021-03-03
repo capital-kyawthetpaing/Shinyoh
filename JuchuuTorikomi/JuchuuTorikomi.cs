@@ -95,8 +95,7 @@ namespace JuchuuTorikomi
             }
             if (tagID == "10")
             {
-                //if (ErrorCheck(PanelDetail))
-                    GridviewBind();
+                GridviewBind();
             }
             if (tagID == "12")
             {
@@ -120,6 +119,7 @@ namespace JuchuuTorikomi
                             if (return_BL == "true")
                             {
                                 bbl.ShowMessage("I002");
+                                Clear();
                             }
                         }
                         else 
@@ -145,6 +145,7 @@ namespace JuchuuTorikomi
                             if (return_BL1 == "true")
                             {
                                 bbl.ShowMessage("I002");
+                                Clear();
                             }
                         }
                     }
