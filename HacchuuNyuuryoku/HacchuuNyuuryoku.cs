@@ -895,7 +895,8 @@ namespace HacchuuNyuuryoku
             else
             {
                 DataTable dtSource = (DataTable)gv_HacchuuNyuuryoku.DataSource;
-                dtSource.Rows.Clear();
+                if (dtSource != null)
+                    dtSource.Rows.Clear();
             }
         }
 

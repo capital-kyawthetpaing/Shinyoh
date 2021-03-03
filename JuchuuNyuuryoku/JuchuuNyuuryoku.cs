@@ -1185,7 +1185,8 @@ namespace JuchuuNyuuryoku
             else
             {
                 DataTable dtSource = (DataTable)gv_JuchuuNyuuryoku.DataSource;
-                dtSource.Rows.Clear();
+                if (dtSource != null)
+                    dtSource.Rows.Clear();
             }
         }
 

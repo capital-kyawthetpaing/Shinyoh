@@ -805,7 +805,8 @@ namespace IdouNyuuryoku
             else
             {
                 DataTable dtSource = (DataTable)gv_1.DataSource;
-                dtSource.Rows.Clear();
+                if (dtSource != null)
+                    dtSource.Rows.Clear();
             }
             //F8_dt1.DefaultView.Sort = "ShouhinCD";
             //gv_1.DataSource = F8_dt1.DefaultView.ToTable();
