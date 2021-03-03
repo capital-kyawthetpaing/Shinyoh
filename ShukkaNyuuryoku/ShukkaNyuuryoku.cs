@@ -613,6 +613,7 @@ namespace ShukkaNyuuryoku {
             txtTelNo2.Clear();
             txtTelNo3.Clear();
             txtName.Clear();
+            gvShukka1.DataSource = dtClear;
         }
 
         private bool F11_Gridivew_ErrorCheck()
