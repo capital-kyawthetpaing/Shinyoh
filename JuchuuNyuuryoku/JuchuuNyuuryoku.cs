@@ -1703,7 +1703,8 @@ namespace JuchuuNyuuryoku
                         if (colName == "colSiiresakiCD" || colName == "colexpectedDate" || colName == "colSoukoCD" || colName == "colJuchuuMeisaiTekiyou" || colName== "colJuchuuSuu")
                         {
                             if (ErrorCheck_CellEndEdit(gv.Index, i))
-                            {
+                            {                                
+                                gv_JuchuuNyuuryoku.Focus();//At first,set focus to gridview from F11 (ktp)
                                 gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[gv.Index].Cells[i];
                                 // gv_JuchuuNyuuryoku.BeginEdit(true);
                                 bl_error = true;
