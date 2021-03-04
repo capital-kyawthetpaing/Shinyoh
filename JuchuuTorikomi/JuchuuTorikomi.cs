@@ -427,7 +427,7 @@ namespace JuchuuTorikomi
             dtRemove.Columns.Remove("KouritenTelNO2-1");
             dtRemove.Columns.Remove("KouritenTelNO2-2");
             dtRemove.Columns.Remove("KouritenTelNO2-3");
-            //dtRemove.Columns.Remove("StaffCD");
+            dtRemove.Columns.Remove("ChakuniYoteiDate");
             dtRemove.Columns.Remove("SenpouHacchuuNO");
             dtRemove.Columns.Remove("SenpouBusho");
             dtRemove.Columns.Remove("KibouNouki");
