@@ -5,11 +5,9 @@ using BL;
 using Shinyoh_Details;
 using CKM_CommonFunction;
 using System.Windows.Forms;
-using Shinyoh_Controls;
 using Shinyoh_Search;
 using System.Data;
 using System.Linq;
-using System.Globalization;
 
 namespace ShukkaSiziNyuuryoku
 {
@@ -1016,8 +1014,7 @@ namespace ShukkaSiziNyuuryoku
         }
         private void F11_Clear()
         {
-            //txtJuchuuNo.Clear();
-            //txtAddress.Clear();
+            txtJuchuuNo.Clear();
             txtSenpyouhachuuNo.Clear();
             txtYubin1.Clear();
             txtYubin2.Clear();
@@ -1026,6 +1023,7 @@ namespace ShukkaSiziNyuuryoku
             txtPhone2.Clear();
             txtPhone3.Clear();
             txtName.Clear();
+            txtAddress.Clear();
         }
 
         //Mode_Procedure
@@ -1090,6 +1088,10 @@ namespace ShukkaSiziNyuuryoku
                         bbl.ShowMessage("S004", ProgramID, OperatorCD);
                     }
                     dgvShukkasizi.DataSource = dtHaita;
+                    if(dtHaita.Rows.Count>0)
+                    {
+                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[0].Cells["colKonkaiShukkaSiziSuu"];
+                    }
                     dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].ReadOnly = false;
                     dgvShukkasizi.Columns["chk"].ReadOnly = false;
                     break;

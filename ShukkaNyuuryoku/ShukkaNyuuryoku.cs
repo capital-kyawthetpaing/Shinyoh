@@ -508,6 +508,10 @@ namespace ShukkaNyuuryoku {
                         }
                         dtHaita.Columns.Remove("ShukkaSiziNO");
                         gvShukka1.DataSource = dtHaita;
+                        if (dtHaita.Rows.Count > 0)
+                        {
+                            gvShukka1.CurrentCell = gvShukka1.Rows[0].Cells["colKonkai"];
+                        }
 
                     }
                     break;
@@ -960,8 +964,24 @@ namespace ShukkaNyuuryoku {
 
             dt.AcceptChanges();
             return dt;
-        }    
+        }
 
+        private void gvShukka1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Gridview_F9ShowHide(e.ColumnIndex, "Show");
+        }
+        private void Gridview_F9ShowHide(int col, string type)
+        {
+            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+           
+        if (ctrlArr.Length > 0)
+            {
+                Control btnF9 = ctrlArr[0];
+                if (btnF9 != null)
+                    btnF9.Visible = false;
+            }
+            
+        }
         private void gvShukka1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             if (gvShukka1.IsLastKeyEnter)
