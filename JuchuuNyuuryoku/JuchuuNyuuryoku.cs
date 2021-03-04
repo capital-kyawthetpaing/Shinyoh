@@ -1331,6 +1331,36 @@ namespace JuchuuNyuuryoku
 
             if (cboMode.SelectedValue.ToString() == "2" && F8_dt1.Rows.Count > 0)
             {
+                //remove add new row 
+                //for (int k = F8_dt1.Rows.Count - 1; k >= 0; k--)
+                //{
+                //    DataRow dr_K = F8_dt1.Rows[k];
+                //    if (string.IsNullOrEmpty(dr_K["JuchuuNO"].ToString()))
+                //    {
+                //        dr_K.Delete();
+                //    }
+                //}
+                //F8_dt1.AcceptChanges();
+
+                //take JuchuuNo and JuchuuGyouNO For added New row (update case add new row 2021-03-03)
+                string J_NO = string.Empty;
+                for (int k = 0; k < F8_dt1.Rows.Count; k++)
+                {
+                    DataRow dr_K = F8_dt1.Rows[k];
+
+                    if (!string.IsNullOrEmpty(dr_K["JuchuuNO"].ToString()))
+                        J_NO = dr_K["JuchuuNO"].ToString();
+                    else
+                    {
+                        dr_K["JuchuuNO"] = J_NO;
+                        string max = F8_dt1.AsEnumerable()
+                                     .Where(d => d["JuchuuNO"].ToString() == dr_K["JuchuuNO"].ToString())
+                                     .Max(r => r.IsNull("JuchuuGyouNO") ? "0" : r["JuchuuGyouNO"].ToString())
+                                     .ToString();
+                        dr_K["JuchuuGyouNO"] = Convert.ToInt32(max) + 1;
+                    }
+                }
+
                 //first filter for hacchuu NO group by
                 dt_Main = F8_dt1.AsEnumerable()
                                     .GroupBy(r => new { Col1 = r["SiiresakiCD"], Col2 = r["SoukoCD"], Col3 = r["HacchuuNO"] })
