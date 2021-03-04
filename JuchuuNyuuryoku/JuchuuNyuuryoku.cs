@@ -1390,7 +1390,6 @@ namespace JuchuuNyuuryoku
                                                  .Max(r => r.IsNull("HacchuuGyouNO") ? "0" : r["HacchuuGyouNO"].ToString())
                                                  .ToString();
 
-
                                     F8_dt1.Rows[j]["HacchuuGyouNO"] = Convert.ToInt32(max) + 1;
                                 }
                             }
