@@ -158,6 +158,11 @@ namespace Shinyoh
                     case ButtonType.BType.Close:
                         if (bbl.ShowMessage("Q003") == DialogResult.Yes)
                         {
+                            BaseEntity be = new BaseEntity();
+                            be.OperatorCD = OperatorCD;
+                            be.ProgramID = ProgramID;
+                            be.PC =PCID;
+                            bbl.D_Exclusive_Number_Remove(be);
                             this.Close();
                         }
                         else
