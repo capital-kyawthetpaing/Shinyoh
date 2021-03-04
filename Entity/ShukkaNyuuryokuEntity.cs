@@ -29,5 +29,6 @@ namespace Entity {
         public string Juusho { get; set; }
         public string Condition { get; set; }
         public int DataKBN { get; set; }
+        public string Number { get; set; }
     }
 }
