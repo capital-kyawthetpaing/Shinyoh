@@ -957,34 +957,6 @@ namespace ShukkaSiziNyuuryoku
             }
             return true;
         }
-        private bool GV_Check()
-        {
-            var dt1 = dtGS1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("JuchuuNO")).CopyToDataTable();
-
-            for (int k = 0; k < dt1.Rows.Count; k++)
-            {
-                if (!dt1.Rows[k]["KonkaiShukkaSiziSuu"].ToString().Equals("0"))
-                {
-                    if (dt1.Rows[k]["KonkaiShukkaSiziSuu"].ToString().Contains("-")|| dt1.Rows[k]["UriageTanka"].ToString().Contains("-"))
-                    {                        
-                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[k].Cells["colTanka"];
-                        return false;
-                    }
-                    if (!ColKonkaiShukkaSiziSuu(k, 8))
-                    {
-                        return false;
-                    }
-                    if (dt1.Rows[k]["SoukoCD"].ToString().Equals(""))
-                    {
-                        dgvShukkasizi.Select();
-                        bbl.ShowMessage("E102");
-                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[k].Cells["SoukoCD"];
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
         private bool F11_Gridivew_ErrorCheck()
         {
             bool bl_error = false;
@@ -1340,14 +1312,12 @@ namespace ShukkaSiziNyuuryoku
         {
             (string, string, string) obj = GetInsert();
             sksz_bl = new ShukkasiziNyuuryokuBL();
-            //DataTable dtvalue = new DataTable();
-            //dtvalue = sksz_bl.GetFunctionNO("12", txtShippingDate.Text, "0");
            
             if (cboMode.SelectedValue.Equals("3"))//delete
             {
                 Konkai_Price(dtTemp1);
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-                sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
+                //sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
                 bbl.ShowMessage("I102");
             }
             else
@@ -1360,13 +1330,13 @@ namespace ShukkaSiziNyuuryoku
                     FunctionNO = dtResult.Rows[0]["ShukkaSiziNO"].ToString();
                     if (!string.IsNullOrEmpty(FunctionNO))
                     {
-                        sksz_bl.Get_HikiateFunctionNO("12", FunctionNO, "10", sksz_e.OperatorCD);
+                        //sksz_bl.Get_HikiateFunctionNO("12", FunctionNO, "10", sksz_e.OperatorCD);
                     }
                 }
                 else if (cboMode.SelectedValue.Equals("2"))
                 {
-                    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "20", sksz_e.OperatorCD);
-                    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "21", sksz_e.OperatorCD);
+                    //sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "20", sksz_e.OperatorCD);
+                    //sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "21", sksz_e.OperatorCD);
                 }
                 bbl.ShowMessage("I101");
             }
