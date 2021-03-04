@@ -113,9 +113,9 @@ namespace ShukkaSiziNyuuryoku
                     ModeType(2);
                 }
                 ModeType(3);
-                dtResult.Clear();
-                dtGS1.Clear();
-                dtTemp1.Clear();
+                //dtResult.Clear();
+                //dtGS1.Clear();
+                //dtTemp1.Clear();
             }
             if (tagID == "8")
             {
@@ -1189,6 +1189,9 @@ namespace ShukkaSiziNyuuryoku
                     lblTokuisakiName.Text = string.Empty;
                     lblKouritenName.Text = string.Empty;
                     lblStaffName.Text = string.Empty;
+                    dtResult.Clear();
+                    dtGS1.Clear();
+                    dtTemp1.Clear();
                     break;
 
                 case 4:  //start_Mode
