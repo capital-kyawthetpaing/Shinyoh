@@ -95,7 +95,11 @@ namespace JuchuuTorikomi
             }
             if (tagID == "10")
             {
-                GridviewBind();
+                if(rdo_Delete.Checked==true)
+                {
+                    GridviewBind();
+                }
+                //BtnF10.Visible = false;
             }
             if (tagID == "12")
             {
@@ -317,12 +321,12 @@ namespace JuchuuTorikomi
 
                         DataTable dt3 = new DataTable();
                         ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
-                        dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.JuchuuDate, "E101", "ShouhinCD");
-                        if (dt3.Rows.Count > 0 && dt3.Rows[0]["MessageID"].ToString() == "E101")
-                        {
-                            bbl.ShowMessage("E101", i.ToString(), "商品CD");
-                            break;
-                        }
+                        //dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.JuchuuDate, "E101", "ShouhinCD");
+                        //if (dt3.Rows.Count > 0 && dt3.Rows[0]["MessageID"].ToString() == "E101")
+                        //{
+                        //    bbl.ShowMessage("E101", i.ToString(), "商品CD");
+                        //    break;
+                        //}
 
                         DataTable dt4 = new DataTable();
                         ShukkaTorikomi_BL jBL = new ShukkaTorikomi_BL();
@@ -427,7 +431,7 @@ namespace JuchuuTorikomi
             dtRemove.Columns.Remove("KouritenTelNO2-1");
             dtRemove.Columns.Remove("KouritenTelNO2-2");
             dtRemove.Columns.Remove("KouritenTelNO2-3");
-            dtRemove.Columns.Remove("ChakuniYoteiDate");
+            //dtRemove.Columns.Remove("ChakuniYoteiDate");
             dtRemove.Columns.Remove("SenpouHacchuuNO");
             dtRemove.Columns.Remove("SenpouBusho");
             dtRemove.Columns.Remove("KibouNouki");
@@ -552,6 +556,7 @@ namespace JuchuuTorikomi
             {
                 rdo_Delete.Checked = false;
                 Enable_Panel();
+                Clear();
             }
         }
 
