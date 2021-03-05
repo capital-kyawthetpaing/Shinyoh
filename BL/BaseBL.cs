@@ -142,12 +142,12 @@ namespace BL
         public string D_Exclusive_Number_Remove(BaseEntity be)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[4];
-            parameters[0] = new SqlParameter("@DataKBN", SqlDbType.TinyInt) { Value =1 };
-            parameters[1] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = be.OperatorCD };
-            parameters[2] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = be.ProgramID };
-            parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = be.PC };
-            return ckmdl.InsertUpdateDeleteData("D_Exclusive_Remove_NO", GetConnectionString(), parameters);
+            var parameters = new SqlParameter[3];
+           // parameters[0] = new SqlParameter("@DataKBN", SqlDbType.TinyInt) { Value =1 };
+            parameters[0] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = be.OperatorCD };
+            parameters[1] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = be.ProgramID };
+            parameters[2] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = be.PC };
+            return ckmdl.InsertUpdateDeleteData("D_Exclusive_Number_Close", GetConnectionString(), parameters);
         }
         //NEW code was added for Image VARBINARY with DB
         #region
