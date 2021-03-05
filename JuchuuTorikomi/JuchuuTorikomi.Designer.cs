@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt1 = new Shinyoh_Controls.SLabel();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.rdo_Registration = new Shinyoh_Controls.SRadio();
@@ -92,7 +92,7 @@
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
-            this.rdo_Delete.NextControlName = "txtImportFolder";
+            this.rdo_Delete.NextControlName = "txtDate1";
             this.rdo_Delete.Size = new System.Drawing.Size(72, 19);
             this.rdo_Delete.TabIndex = 4;
             this.rdo_Delete.Text = "削除";
@@ -370,15 +370,17 @@
             this.colTorikomiDenpyouNO.DataPropertyName = "TorikomiDenpyouNO";
             this.colTorikomiDenpyouNO.HeaderText = "取込伝票番号";
             this.colTorikomiDenpyouNO.Name = "colTorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.ReadOnly = true;
             this.colTorikomiDenpyouNO.Width = 110;
             // 
             // colInsertDateTime
             // 
             this.colInsertDateTime.DataPropertyName = "InsertDateTime";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle1;
             this.colInsertDateTime.HeaderText = "取込日時";
             this.colInsertDateTime.Name = "colInsertDateTime";
+            this.colInsertDateTime.ReadOnly = true;
             this.colInsertDateTime.Width = 130;
             // 
             // colJuchuuNO
@@ -386,14 +388,16 @@
             this.colJuchuuNO.DataPropertyName = "JuchuuNO";
             this.colJuchuuNO.HeaderText = "受注番号";
             this.colJuchuuNO.Name = "colJuchuuNO";
+            this.colJuchuuNO.ReadOnly = true;
             // 
             // colJuchuuDate
             // 
             this.colJuchuuDate.DataPropertyName = "JuchuuDate";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colJuchuuDate.HeaderText = "受注日";
             this.colJuchuuDate.Name = "colJuchuuDate";
+            this.colJuchuuDate.ReadOnly = true;
             this.colJuchuuDate.Width = 80;
             // 
             // colTokuisakiCD
@@ -401,6 +405,7 @@
             this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
             this.colTokuisakiCD.HeaderText = "得意先";
             this.colTokuisakiCD.Name = "colTokuisakiCD";
+            this.colTokuisakiCD.ReadOnly = true;
             this.colTokuisakiCD.Width = 80;
             // 
             // colTokuisakiRyakuName
@@ -408,6 +413,7 @@
             this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
             this.colTokuisakiRyakuName.HeaderText = "得意先名";
             this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
+            this.colTokuisakiRyakuName.ReadOnly = true;
             this.colTokuisakiRyakuName.Width = 250;
             // 
             // colKouritenCD
@@ -415,12 +421,14 @@
             this.colKouritenCD.DataPropertyName = "KouritenCD";
             this.colKouritenCD.HeaderText = "小売店";
             this.colKouritenCD.Name = "colKouritenCD";
+            this.colKouritenCD.ReadOnly = true;
             // 
             // colKouritenRyakuName
             // 
             this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
             this.colKouritenRyakuName.HeaderText = "小売店名";
             this.colKouritenRyakuName.Name = "colKouritenRyakuName";
+            this.colKouritenRyakuName.ReadOnly = true;
             this.colKouritenRyakuName.Width = 290;
             // 
             // JuchuuTorikomi

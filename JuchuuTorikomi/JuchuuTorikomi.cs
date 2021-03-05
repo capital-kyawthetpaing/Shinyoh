@@ -91,7 +91,7 @@ namespace JuchuuTorikomi
         {
             if (tagID == "6")
             {
-                Clear();
+                 Clear();
             }
             if (tagID == "10")
             {
@@ -99,7 +99,6 @@ namespace JuchuuTorikomi
                 {
                     GridviewBind();
                 }
-                //BtnF10.Visible = false;
             }
             if (tagID == "12")
             {
@@ -166,6 +165,7 @@ namespace JuchuuTorikomi
             txtDenpyouNO.Clear();
             dtMain.Clear();
             gvJuchuuTorikomi.ClearSelection();
+            rdo_Registration.Focus();
         }
         private void GridviewBind()
         {
