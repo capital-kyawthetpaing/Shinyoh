@@ -732,6 +732,7 @@
             this.txtShukkaSijiNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtShukkaSijiNo.TxtBox = null;
             this.txtShukkaSijiNo.TxtBox1 = null;
+            this.txtShukkaSijiNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtShukkaSijiNo_KeyDown);
             // 
             // txtTokuisaki
             // 

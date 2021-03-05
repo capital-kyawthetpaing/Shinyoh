@@ -118,5 +118,14 @@ namespace BL {
             parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
             return ckmdl.InsertUpdateDeleteData("D_Exclusive_Remove_NO", GetConnectionString(), parameters);
         }
+        public DataTable ShukkaSiziNo_Check(string ShukkaSiziNo, string error_Type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@ShukkaSiziNo", SqlDbType.VarChar) { Value = ShukkaSiziNo };
+            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
+            DataTable dt = ckmdl.SelectDatatable("ShukkaSiziNo_Check", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }
