@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt1 = new Shinyoh_Controls.SLabel();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.rdo_Registration = new Shinyoh_Controls.SRadio();
@@ -197,6 +197,7 @@
             this.txtDenpyouNO.Size = new System.Drawing.Size(100, 19);
             this.txtDenpyouNO.TabIndex = 11;
             this.txtDenpyouNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtDenpyouNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDenpyouNO_KeyDown);
             // 
             // sLabel6
             // 
@@ -376,8 +377,8 @@
             // colInsertDateTime
             // 
             this.colInsertDateTime.DataPropertyName = "InsertDateTime";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle3;
             this.colInsertDateTime.HeaderText = "取込日時";
             this.colInsertDateTime.Name = "colInsertDateTime";
             this.colInsertDateTime.ReadOnly = true;
@@ -393,8 +394,8 @@
             // colJuchuuDate
             // 
             this.colJuchuuDate.DataPropertyName = "JuchuuDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.colJuchuuDate.HeaderText = "受注日";
             this.colJuchuuDate.Name = "colJuchuuDate";
             this.colJuchuuDate.ReadOnly = true;

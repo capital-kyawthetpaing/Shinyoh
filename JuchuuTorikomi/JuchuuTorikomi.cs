@@ -584,5 +584,16 @@ namespace JuchuuTorikomi
             dtMain = JBL.JuchuuTorikomi_Display(JEntity);
             gvJuchuuTorikomi.DataSource = dtMain;
         }
+
+        private void txtDenpyouNO_KeyDown(object sender, KeyEventArgs e)
+        {
+            txtDate1.E103Check(true);
+            txtDate2.E103Check(true);
+            txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
+            txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
+            JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
+            dtMain = JBL.JuchuuTorikomi_Display(JEntity);
+            gvJuchuuTorikomi.DataSource = dtMain;
+        }
     }
 }
