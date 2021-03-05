@@ -36,9 +36,11 @@ if not exists( select * from D_Exclusive where DataKBN=@DataKBN and Number=@Numb
 				@PC;
 				select '1' as MessageID
 			end
-	else if not exists( select * from D_Exclusive where DataKBN=@DataKBN and Number=@Number and Operator=@OperatorCD and Program=@Program)			
+	else if not exists(select * from D_Exclusive where DataKBN=@DataKBN and Number=@Number and Operator=@OperatorCD and Program=@Program and PC=@PC)			
 			begin
-				select * from M_Message where MessageID = 'S004'
+				select Program,Operator,PC,* from M_Message ,D_Exclusive
+				where MessageID = 'S004'
+				and DataKBN=@DataKBN and Number=@Number
 			end
 			else
 			begin
