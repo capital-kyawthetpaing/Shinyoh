@@ -23,7 +23,9 @@ namespace ShukkaSiziNyuuryoku
         TokuisakiDetail td;
         KouritenDetail kd;
         public string tdDate, Detail_XML;
+        string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
         DataTable dtgv1, dtTemp1, dtGS1, dtClear, dt_Header, dtResult, dtHaita, dtShippingNO;
+
         public ShukkaSiziNyuuryoku()
         {
             InitializeComponent();
@@ -956,7 +958,7 @@ namespace ShukkaSiziNyuuryoku
             {
                 if (!ColKonkaiShukkaSiziSuu(row, col))
                 {
-                    return false;
+                  return false;
                 }
             }
             return true;
@@ -1093,7 +1095,6 @@ namespace ShukkaSiziNyuuryoku
                             sksz_e.ProgramID = ProgramID;
                             sksz_e.PC = PCID;
                             sksz_e.OperatorCD = OperatorCD;
-
                             DataTable dt = new DataTable();
                             sksz_bl = new ShukkasiziNyuuryokuBL();
                             dt = sksz_bl.D_Exclusive_Lock_Check(sksz_e);
@@ -1101,13 +1102,16 @@ namespace ShukkaSiziNyuuryoku
                             if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
                             {
                                 count = true;
+                                Data1 = dt.Rows[0]["Program"].ToString();
+                                Data2 = dt.Rows[0]["Operator"].ToString();
+                                Data3 = dt.Rows[0]["PC"].ToString();
                                 Gvrow_Delete(dr);
                             }
                         }
                     }
                     if (count)
                     {
-                        bbl.ShowMessage("S004", ProgramID, OperatorCD);
+                        bbl.ShowMessage("S004", Data1, Data2, Data3);
                     }
                     dgvShukkasizi.DataSource = dtHaita;
                     if(dtHaita.Rows.Count>0)
