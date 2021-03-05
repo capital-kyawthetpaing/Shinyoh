@@ -949,7 +949,7 @@ namespace ShukkaSiziNyuuryoku
                 else if (Convert.ToInt64(Result) < 0)
                 {
                     bbl.ShowMessage("E109");
-                    Temp_Save(row);
+                    //Temp_Save(row);
                     return false;
                 }
             }
@@ -1122,7 +1122,7 @@ namespace ShukkaSiziNyuuryoku
                     dgvShukkasizi.Columns["chk"].ReadOnly = false;
                     break;
                 case 11:
-                    if (dtGS1.Rows.Count>0 && !F11_Gridivew_ErrorCheck())
+                    if ( !F11_Gridivew_ErrorCheck())
                     {
                         dtTemp1 = dtGS1;//temp add
 
