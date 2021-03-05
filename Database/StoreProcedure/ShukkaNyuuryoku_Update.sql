@@ -209,7 +209,7 @@ BEGIN
 					@StaffCD varchar(10) = (select StaffCD from #Temp_Main),
 					@TokuisakiCD varchar(10) = (select TokuisakiCD from #Temp_Main),
 					@KouritenCD varchar(10) = (select KouritenCD from #Temp_Main),
-					@ShouhinCD varchar(10) = (select ShouhinCD from #Temp_Detail),
+					--@ShouhinCD varchar(10) = (select ShouhinCD from #Temp_Detail),
 					@InsertOperator varchar(10) = (select InsertOperator from #Temp_Main),
 					@UpdateOperator varchar(10) = (select UpdateOperator from #Temp_Main),
 					@ProgramID varchar(100) = (select ProgramID from #Temp_Main),
@@ -266,6 +266,7 @@ BEGIN
 		FROM #Temp_Main m
 			left outer join F_Tokuisaki(@ShukkaDate) FT on FT.TokuisakiCD=m.TokuisakiCD
 			left outer join F_Kouriten(@ShukkaDate) FK on FK.KouritenCD=m.KouritenCD
+			where D_Shukka.ShukkaNO=m.ShukkaNO
 
 
 
@@ -282,7 +283,7 @@ BEGIN
 			SizeNO = d.SizeNO,
 			ShukkaSuu = case when d.ShukkaSuu is not null then d.ShukkaSuu else 0 end,
 			TaniCD = FS.TaniCD,
-			ShukkaMeisaiTekiyou = d.ShukkaMeisaiTekiyou,
+			ShukkaMeisaiTekiyou = NULLIF(d.ShukkaMeisaiTekiyou,''),
 			UriageKanryouKBN = 0,
 			UriageZumiSuu = 0,
 			ShukkaSiziNO = (select val from dbo.split(d.ShukkaSiziNOGyouNO,'-') where id=1),
@@ -550,10 +551,10 @@ BEGIN
 			where TokuisakiCD=@TokuisakiCD
 			and  ChangeDate = (select ChangeDate from F_Tokuisaki(@ShukkaDate) where TokuisakiCD = @TokuisakiCD)
 
-			UPDATE M_Shouhin 
-			set UsedFlg = 1 
-			where ShouhinCD=@ShouhinCD
-			and  ChangeDate = (select ChangeDate from F_Shouhin(@ShukkaDate) where ShouhinCD = @ShouhinCD)
+			UPDATE  M
+			set UsedFlg = 1 from M_Shouhin M ,#Temp_Detail d
+			where M.ShouhinCD=d.ShouhinCD
+			and  ChangeDate = (select ChangeDate from F_Shouhin(@ShukkaDate) where ShouhinCD = d.ShouhinCD)
 
 			UPDATE M_Kouriten 
 			set UsedFlg = 1 

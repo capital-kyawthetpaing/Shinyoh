@@ -30,6 +30,7 @@ namespace ShukkaNyuuryoku {
         string Address = string.Empty;
         public string Detail_XML;
         DataTable Main_dt, Temptb1, gvdt1, F8_dt1, dtGS1, dtClear, dtHaita;
+        string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
         public ShukkaNyuuryoku()
         {
             InitializeComponent();
@@ -498,13 +499,16 @@ namespace ShukkaNyuuryoku {
                             if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
                             {
                                 count = true;
-                                //bbl.ShowMessage("S004",ProgramID,OperatorCD);
-                                //Gvrow_Delete(dr);
+
+                                Data1 = dt.Rows[0]["Program"].ToString();
+                                Data2 = dt.Rows[0]["Operator"].ToString();
+                                Data3 = dt.Rows[0]["PC"].ToString();
+                                Gvrow_Delete(dr);
                             }
                         }
                         if (count)
                         {
-                            bbl.ShowMessage("S004", ProgramID, OperatorCD);
+                            bbl.ShowMessage("S004", Data1, Data2, Data3);
                         }
                         dtHaita.Columns.Remove("ShukkaSiziNO");
                         gvShukka1.DataSource = dtHaita;
@@ -518,6 +522,15 @@ namespace ShukkaNyuuryoku {
                 case 11:
                     Function_F11();
                     break;
+            }
+        }
+        private void Gvrow_Delete(DataRow dr)
+        {
+            DataRow[] existDr1 = dtHaita.Select("ShukkaSiziNO ='" + dr["ShukkaSiziNO"] + "'");
+
+            foreach (DataRow row in existDr1)
+            {
+                dtHaita.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
             }
         }
         private void Function_F11()
@@ -1050,7 +1063,7 @@ namespace ShukkaNyuuryoku {
                         }
                         else
                         {
-                            bbl.ShowMessage("S004", ProgramID, OperatorCD);
+                            bbl.ShowMessage("S004", Data1, Data2,Data3);
                             txtShukkaNo.Focus();
                         }
                     }
@@ -1128,6 +1141,10 @@ namespace ShukkaNyuuryoku {
             {
                 return true;
             }
+
+            Data1 = dt.Rows[0]["Program"].ToString();
+            Data2 = dt.Rows[0]["Operator"].ToString();
+            Data3 = dt.Rows[0]["PC"].ToString();
             return false;
         }
         private void From_DB_To_Form(DataTable dt)

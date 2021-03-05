@@ -60,15 +60,15 @@ BEGIN
 		 else
 			begin
 			---- not exists
-				select DS.ShukkaDate, DS.TokuisakiCD,DS.TokuisakiRyakuName,DS.TokuisakiName,DS.TokuisakiYuubinNO1,DS.TokuisakiYuubinNO2,
+			select DS.ShukkaDate, DS.TokuisakiCD,DS.TokuisakiRyakuName,DS.TokuisakiName,DS.TokuisakiYuubinNO1,DS.TokuisakiYuubinNO2,
 					DS.TokuisakiJuusho1,DS.TokuisakiJuusho2,DS.[TokuisakiTelNO1-1],DS.[TokuisakiTelNO1-2],DS.[TokuisakiTelNO1-3],
 					DS.[TokuisakiTelNO2-1],DS.[TokuisakiTelNO2-2], DS.[TokuisakiTelNO2-3], DS.KouritenCD, DS.KouritenRyakuName,
 					DS.KouritenName,DS.KouritenYuubinNO1, DS.KouritenYuubinNO2,DS.KouritenJuusho1,DS.KouritenJuusho2,
 					DS.[KouritenTelNO1-1],DS.[KouritenTelNO1-2],DS.[KouritenTelNO1-3],DS.[KouritenTelNO2-1],DS.[KouritenTelNO2-2],
 					DS.[KouritenTelNO2-3],DS.StaffCD,FS.StaffName,DS.ShukkaDenpyouTekiyou,DSM.JANCD,F.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,
-					DSM.ColorNO,DSM.SizeNO,(DSM1.ShukkaSiziSuu - DSM1.ShukkaZumiSuu) as ShukkaSiziZumiSuu,WK.MiNyuukaSuu,
+					DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM1.ShukkaSiziSuu - DSM1.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,
 					DSM.ShukkaSuu,NULL as Kanryou,DSM.ShukkaMeisaiTekiyou,
-					(DSM.ShukkaSiziNO +'-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,
+					(DSM.ShukkaSiziNO +'-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,DSM.ShukkaSiziNO,
 					DSM.DenpyouDate,(DSM1.JuchuuNO +'-'+ cast(DSM1.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,F.ShouhinCD,M_Message.MessageID						
 			from D_Shukka DS 
 			inner join D_ShukkaMeisai DSM on DSM.ShukkaNO=DS.ShukkaNO
@@ -85,15 +85,15 @@ BEGIN
 		 if exists(select * from D_Shukka where ShukkaNO=@ShukkaNo)
 		begin
 			--exists
-			select DS.ShukkaDate, DS.TokuisakiCD,DS.TokuisakiRyakuName,DS.TokuisakiName,DS.TokuisakiYuubinNO1,DS.TokuisakiYuubinNO2,
+				select DS.ShukkaDate, DS.TokuisakiCD,DS.TokuisakiRyakuName,DS.TokuisakiName,DS.TokuisakiYuubinNO1,DS.TokuisakiYuubinNO2,
 					DS.TokuisakiJuusho1,DS.TokuisakiJuusho2,DS.[TokuisakiTelNO1-1],DS.[TokuisakiTelNO1-2],DS.[TokuisakiTelNO1-3],
 					DS.[TokuisakiTelNO2-1],DS.[TokuisakiTelNO2-2], DS.[TokuisakiTelNO2-3], DS.KouritenCD, DS.KouritenRyakuName,
 					DS.KouritenName,DS.KouritenYuubinNO1, DS.KouritenYuubinNO2,DS.KouritenJuusho1,DS.KouritenJuusho2,
 					DS.[KouritenTelNO1-1],DS.[KouritenTelNO1-2],DS.[KouritenTelNO1-3],DS.[KouritenTelNO2-1],DS.[KouritenTelNO2-2],
 					DS.[KouritenTelNO2-3],DS.StaffCD,FS.StaffName,DS.ShukkaDenpyouTekiyou,DSM.JANCD,F.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,
-					DSM.ColorNO,DSM.SizeNO,(DSM1.ShukkaSiziSuu - DSM1.ShukkaZumiSuu) as ShukkaSiziZumiSuu,WK.MiNyuukaSuu,
+					DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM1.ShukkaSiziSuu - DSM1.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,
 					DSM.ShukkaSuu,NULL as Kanryou,DSM.ShukkaMeisaiTekiyou,
-					(DSM.ShukkaSiziNO +'-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,
+					(DSM.ShukkaSiziNO +'-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,DSM.ShukkaSiziNO,
 					DSM.DenpyouDate,(DSM1.JuchuuNO +'-'+ cast(DSM1.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,F.ShouhinCD,M_Message.MessageID						
 			from D_Shukka DS 
 			inner join D_ShukkaMeisai DSM on DSM.ShukkaNO=DS.ShukkaNO
@@ -111,7 +111,6 @@ BEGIN
 			select * from M_Message
 			where MessageID = 'E133'
 		end
-		
 
 		If(OBJECT_ID('tempdb..#WK_MiNyuukaSuu1') Is Not Null)
 		begin
