@@ -915,6 +915,7 @@ namespace ShukkaSiziNyuuryoku
             this.SoukoCD.DataPropertyName = "SoukoCD";
             this.SoukoCD.HeaderText = "倉庫";
             this.SoukoCD.Name = "SoukoCD";
+            this.SoukoCD.MaxInputLength = 10;
             // 
             // SoukoName
             // 
