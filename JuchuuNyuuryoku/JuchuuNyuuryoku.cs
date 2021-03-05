@@ -961,8 +961,7 @@ namespace JuchuuNyuuryoku
         {
             for (int t = 0; t < gv_JuchuuNyuuryoku.RowCount; t++)
             {
-
-                bool bl = false;
+               // bool bl = false;
                 // grid 1 checking
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gv_JuchuuNyuuryoku.Rows[t];// grid view data
@@ -1284,6 +1283,8 @@ namespace JuchuuNyuuryoku
                 {
                     F8_dt1.Rows[k]["JuchuuNO"] = Juchuu_dt.Rows[0]["Column1"];
                     F8_dt1.Rows[k]["JuchuuGyouNO"] = k + 1;
+                    F8_dt1.Rows[k]["HacchuuNO"] = DBNull.Value;
+                    F8_dt1.Rows[k]["HacchuuGyouNO"] = DBNull.Value;
                 }
                 //for HacchuuNo and HacchuuGyouNO
                 dt_Main = F8_dt1.AsEnumerable()
@@ -1353,11 +1354,8 @@ namespace JuchuuNyuuryoku
                     else
                     {
                         dr_K["JuchuuNO"] = J_NO;
-                        string max = F8_dt1.AsEnumerable()
-                                     .Where(d => d["JuchuuNO"].ToString() == dr_K["JuchuuNO"].ToString())
-                                     .Max(r => r.IsNull("JuchuuGyouNO") ? "0" : r["JuchuuGyouNO"].ToString())
-                                     .ToString();
-                        dr_K["JuchuuGyouNO"] = Convert.ToInt32(max) + 1;
+                        int[] TableB = F8_dt1.AsEnumerable().Select(s => s.IsNull("JuchuuGyouNO") ? 0 : Convert.ToInt32(s["JuchuuGyouNO"])).ToArray<int>();
+                        dr_K["JuchuuGyouNO"] = Convert.ToInt32(TableB.Max()) + 1;
                     }
                 }
 

@@ -101,7 +101,7 @@ namespace BL {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[5];
             parameters[0] = new SqlParameter("@DataKBN", SqlDbType.Int) { Value = se.DataKBN };
-            parameters[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = se.ShukkaSiziNO1 };
+            parameters[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = se.Number };
             parameters[2] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = se.OperatorCD };
             parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
             parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
