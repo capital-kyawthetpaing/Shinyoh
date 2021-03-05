@@ -196,6 +196,7 @@
     <Content Include="StoreProcedure\ShukkaNyuuryoku_Select_Check.sql" />
     <Content Include="StoreProcedure\ShukkaNyuuryoku_Update.sql" />
     <Content Include="StoreProcedure\ShukkaSiziDataShuturyoku_Excel.sql" />
+    <Content Include="StoreProcedure\ShukkaSiziNo_Check.sql" />
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_Data_Select.sql" />
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_Delete.sql" />
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_Display.sql" />

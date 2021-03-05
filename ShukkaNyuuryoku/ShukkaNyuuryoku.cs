@@ -991,6 +991,28 @@ namespace ShukkaNyuuryoku {
             }
         }
 
+        private void txtShukkaSijiNo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ShukkaSiziNo_Check();
+            }
+        }
+        private void ShukkaSiziNo_Check()
+        {
+            bl = new ShukkaNyuuryokuBL();
+            DataTable dt = new DataTable();
+            if (!string.IsNullOrWhiteSpace(txtShukkaSijiNo.Text))
+            {
+                dt = bl.ShukkaSiziNo_Check(txtShukkaSijiNo.Text, "E133");
+                if (dt.Rows[0]["MessageID"].ToString().Equals("E133"))
+                {
+                    bbl.ShowMessage("E133");
+                    txtShukkaSijiNo.Focus();
+                }
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             FunctionProcedure(11);
