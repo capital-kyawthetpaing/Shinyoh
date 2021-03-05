@@ -91,7 +91,7 @@ namespace JuchuuTorikomi
         {
             if (tagID == "6")
             {
-                Clear();
+                 Clear();
             }
             if (tagID == "10")
             {
@@ -99,7 +99,6 @@ namespace JuchuuTorikomi
                 {
                     GridviewBind();
                 }
-                //BtnF10.Visible = false;
             }
             if (tagID == "12")
             {
@@ -166,6 +165,7 @@ namespace JuchuuTorikomi
             txtDenpyouNO.Clear();
             dtMain.Clear();
             gvJuchuuTorikomi.ClearSelection();
+            rdo_Registration.Focus();
         }
         private void GridviewBind()
         {
@@ -576,6 +576,17 @@ namespace JuchuuTorikomi
                 bbl.ShowMessage("E102");
                 txtDenpyouNO.Focus();
             }
+            txtDate1.E103Check(true);
+            txtDate2.E103Check(true);
+            txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
+            txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
+            JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
+            dtMain = JBL.JuchuuTorikomi_Display(JEntity);
+            gvJuchuuTorikomi.DataSource = dtMain;
+        }
+
+        private void txtDenpyouNO_KeyDown(object sender, KeyEventArgs e)
+        {
             txtDate1.E103Check(true);
             txtDate2.E103Check(true);
             txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
