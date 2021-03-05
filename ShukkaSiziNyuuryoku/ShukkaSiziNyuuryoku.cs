@@ -23,7 +23,9 @@ namespace ShukkaSiziNyuuryoku
         TokuisakiDetail td;
         KouritenDetail kd;
         public string tdDate, Detail_XML;
+        string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
         DataTable dtgv1, dtTemp1, dtGS1, dtClear, dt_Header, dtResult, dtHaita, dtShippingNO;
+
         public ShukkaSiziNyuuryoku()
         {
             InitializeComponent();
@@ -227,7 +229,52 @@ namespace ShukkaSiziNyuuryoku
                     dgvShukkasizi.Rows[row].Cells["colPrice"].Value = FormatPriceValue(val);
                 }
             }
+           
+            //souko bind case
+            if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["SoukoCD"])
+            {
+                dtGridview(2);
+                if (dtgv1.Rows.Count == 0)
+                {
+                    dtGridview(1);
+                }
 
+                string SoukoCD = dgvShukkasizi.Rows[row].Cells["SoukoCD"].EditedFormattedValue.ToString();
+                if (SoukoCD != dtgv1.Rows[row]["SoukoCD"].ToString())
+                {
+                    SoukoBL sb = new SoukoBL();
+                    if (!string.IsNullOrEmpty(SoukoCD))
+                    {
+                        DataTable dt = sb.Souko_Select(SoukoCD, "E101");
+                        if (dt.Rows[0]["MessageID"].ToString().Equals("E101"))
+                        {
+                            bbl.ShowMessage("E101");
+                            dgvShukkasizi["SoukoName", row].Value = string.Empty;
+                        }
+                        else
+                        {
+                            dgvShukkasizi["SoukoCD", row].Value = dt.Rows[0]["SoukoCD"].ToString();
+                            dgvShukkasizi["SoukoName", row].Value = dt.Rows[0]["SoukoName"].ToString();
+                            dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row+1].Cells[8];
+                        }
+                    }
+                }
+                else//original_value
+                {
+                    dgvShukkasizi["SoukoCD", row].Value = dtgv1.Rows[row]["SoukoCD"].ToString();
+                    dgvShukkasizi["SoukoName", row].Value = dtgv1.Rows[row]["SoukoName"].ToString();
+                    dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row + 1].Cells[8];
+                }
+            }
+
+            //data temp save
+            if (!dgvShukkasizi.Rows[row].Cells[8].EditedFormattedValue.ToString().Equals("0"))
+            {
+                DataRowAdd(row);
+            }                
+        }
+        private void DataRowAdd(int row)
+        {
             //data temp save
             if ((!dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Equals("0")))
             {
@@ -646,7 +693,8 @@ namespace ShukkaSiziNyuuryoku
                     {
                         dgvShukkasizi["SoukoCD", row].Value = ss.soukoCD.ToString();
                         dgvShukkasizi["SoukoName", row].Value = ss.soukoName.ToString();
-                        Temp_Save(row);
+                        dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row + 1].Cells[8];
+                        DataRowAdd(row);
                     }
                 }
             }
@@ -901,7 +949,7 @@ namespace ShukkaSiziNyuuryoku
                 else if (Convert.ToInt64(Result) < 0)
                 {
                     bbl.ShowMessage("E109");
-                    Temp_Save(row);
+                    //Temp_Save(row);
                     return false;
                 }
             }
@@ -910,7 +958,7 @@ namespace ShukkaSiziNyuuryoku
             {
                 if (!ColKonkaiShukkaSiziSuu(row, col))
                 {
-                    return false;
+                  return false;
                 }
             }
             return true;
@@ -929,7 +977,7 @@ namespace ShukkaSiziNyuuryoku
                     return false;
                 }
             }
-            if (col == 15)
+            else if (col == 15)
             {
                 if (dgvShukkasizi.Rows[row].Cells["SoukoCD"].EditedFormattedValue.ToString().Equals("") && (!dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Equals("0")))
                 {
@@ -939,21 +987,25 @@ namespace ShukkaSiziNyuuryoku
                     return false;
                 }
             }
-            string value = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Replace(",", "");
-            string value1 = dgvShukkasizi.Rows[row].Cells["colShukkakanousuu"].EditedFormattedValue.ToString().Replace(",", "");
-            if (Convert.ToInt64(value) > Convert.ToInt64(value1))
+            else
             {
-                bbl.ShowMessage("E143", "出荷可能数", "大きい");
-                dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"];
-                return false;
-            }
+                string value = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                string value1 = dgvShukkasizi.Rows[row].Cells["colShukkakanousuu"].EditedFormattedValue.ToString().Replace(",", "");
+                if (Convert.ToInt64(value) > Convert.ToInt64(value1))
+                {
+                    bbl.ShowMessage("E143", "出荷可能数", "大きい");
+                    dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"];
+                    return false;
+                }
 
-            string value2 = dgvShukkasizi.Rows[row].Cells["colJuchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
-            string value3 = dgvShukkasizi.Rows[row].Cells["colShukkaSiziZumiSuu"].EditedFormattedValue.ToString().Replace(",", "");
-            if (Convert.ToInt64(value) > (Convert.ToInt64(value2) - Convert.ToInt64(value3)))
-            {
-                bbl.ShowMessage("E143", "未出荷指示数", "大きい");
-                return false;
+                string value2 = dgvShukkasizi.Rows[row].Cells["colJuchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                string value3 = dgvShukkasizi.Rows[row].Cells["colShukkaSiziZumiSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                if (Convert.ToInt64(value) > (Convert.ToInt64(value2) - Convert.ToInt64(value3)))
+                {
+                    bbl.ShowMessage("E143", "未出荷指示数", "大きい");
+                    return false;
+                }
+
             }
             return true;
         }
@@ -1043,7 +1095,6 @@ namespace ShukkaSiziNyuuryoku
                             sksz_e.ProgramID = ProgramID;
                             sksz_e.PC = PCID;
                             sksz_e.OperatorCD = OperatorCD;
-
                             DataTable dt = new DataTable();
                             sksz_bl = new ShukkasiziNyuuryokuBL();
                             dt = sksz_bl.D_Exclusive_Lock_Check(sksz_e);
@@ -1051,13 +1102,16 @@ namespace ShukkaSiziNyuuryoku
                             if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
                             {
                                 count = true;
+                                Data1 = dt.Rows[0]["Program"].ToString();
+                                Data2 = dt.Rows[0]["Operator"].ToString();
+                                Data3 = dt.Rows[0]["PC"].ToString();
                                 Gvrow_Delete(dr);
                             }
                         }
                     }
                     if (count)
                     {
-                        bbl.ShowMessage("S004", ProgramID, OperatorCD);
+                        bbl.ShowMessage("S004", Data1, Data2, Data3);
                     }
                     dgvShukkasizi.DataSource = dtHaita;
                     if(dtHaita.Rows.Count>0)
@@ -1068,7 +1122,7 @@ namespace ShukkaSiziNyuuryoku
                     dgvShukkasizi.Columns["chk"].ReadOnly = false;
                     break;
                 case 11:
-                    if (dtGS1.Rows.Count>0 && !F11_Gridivew_ErrorCheck())
+                    if ( !F11_Gridivew_ErrorCheck())
                     {
                         dtTemp1 = dtGS1;//temp add
 
