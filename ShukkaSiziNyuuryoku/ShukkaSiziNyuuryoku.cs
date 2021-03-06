@@ -280,8 +280,10 @@ namespace ShukkaSiziNyuuryoku
         private void Update_Data()
         {
             sksz_e = new ShukkaSiziNyuuryokuEntity();
-            sksz_e.ShippingDate = txtShippingDate.Text;
             sksz_e.ShippinNo = sbShippingNO.Text;
+            sksz_e.ProgramID = ProgramID;
+            sksz_e.OperatorCD = OperatorCD;
+            sksz_e.PC = PCID;
 
             sksz_bl = new ShukkasiziNyuuryokuBL();
             dt_Header = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sksz_e, 1);
@@ -289,6 +291,7 @@ namespace ShukkaSiziNyuuryoku
                 ShukkasiziNyuuryoku_Header_Select(dt_Header);
 
             dtGridview(1);
+
             if (dtgv1.Rows.Count > 0)
             {
                 dgvShukkasizi.DataSource = dtgv1;
@@ -649,7 +652,10 @@ namespace ShukkaSiziNyuuryoku
         }
         private void dgvShukkasizi_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            Gridview_F9ShowHide(e.ColumnIndex, "Show");
+            if(cboMode.SelectedValue.ToString().Equals("1") || cboMode.SelectedValue.ToString().Equals("2"))
+            {
+                Gridview_F9ShowHide(e.ColumnIndex, "Show");
+            }
         }
         private void dgvShukkasizi_KeyDown(object sender, KeyEventArgs e)
         {
@@ -720,7 +726,7 @@ namespace ShukkaSiziNyuuryoku
                         BtnF9.Visible = false;
                         Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                         btnF12.Focus();
-
+                        
                         Update_Data();
                     }
                 }
@@ -1096,8 +1102,7 @@ namespace ShukkaSiziNyuuryoku
                     break;
                 case 11:
                     if ( !F11_Gridivew_ErrorCheck())
-                    {
-                      
+                    {                      
                         foreach (DataGridViewRow gv in dgvShukkasizi.Rows)
                         {
                             if (gv.Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString() != "0")
@@ -1375,6 +1380,23 @@ namespace ShukkaSiziNyuuryoku
                 dtGS1.Rows.Add(dr1);
             }
         }
+        private DataTable CommaRemove(DataTable dt)
+        {
+            if (dt.Rows.Count > 0)
+            {
+                for (int j = 0; j < dt.Rows.Count; j++)
+                {
+                    for (int k = 5; k < 11; k++)
+                    {
+                        if (dt.Rows[j][k].ToString().Contains(","))
+                        {
+                            dt.Rows[j][k] = dt.Rows[j][k].ToString().Replace(",", "");
+                        }
+                    }
+                }
+            }
+            return dt;
+        }
 
         //F12
         private void DBProcess()
@@ -1512,23 +1534,6 @@ namespace ShukkaSiziNyuuryoku
             }
 
             return (Mode, Header_XML, Detail_XML);
-        }
-        private DataTable  CommaRemove (DataTable dt)
-        {
-            if (dt.Rows.Count > 0)
-            {
-                for (int j = 0; j < dt.Rows.Count; j++)
-                {
-                    for (int k = 5; k < 11; k++)
-                    {
-                        if (dt.Rows[j][k].ToString().Contains(","))
-                        {
-                            dt.Rows[j][k] = dt.Rows[j][k].ToString().Replace(",", "");
-                        }
-                    }
-                }
-            }
-            return dt;
         }
     }
 }
