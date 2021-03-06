@@ -413,7 +413,7 @@ INSERT INTO [dbo].[D_ShukkaSiziShousai]
 		from  D_JuchuuShousai dj,#Temp_Details D
 		where dj.JuchuuNO = LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1)
 		and dj.JuchuuGyouNO=RIGHT(D.SKMSNO, LEN(D.SKMSNO) - CHARINDEX('-', D.SKMSNO))
-		and dj.ShouhinCD=D.ShouhinCD
+		and dj.ShouhinCD=D.Hidden_ShouhinCD
 		and HikiateZumiSuu <> 0
 		order by dj.KanriNO asc,dj.NyuukoDate asc
 
@@ -692,7 +692,6 @@ SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1
 									when C.Kanryo=1 then 1 else 0 end
 FROM D_JuchuuMeisai A,#Temp_Details C
 where A.JuchuuNO = LEFT((C.SKMSNO), CHARINDEX('-', (C.SKMSNO)) - 1) 
-and A.ShouhinCD=C.ShouhinCD
 
 --D_Juchuu
 UPDATE	A
@@ -717,6 +716,5 @@ exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperatorMode,@ShukkaSiziNO
 
 --テーブル転送仕様Ｙ--削除
 exec [dbo].[D_Exclusive_Remove_NO] 1,@OperatorCD,@Program,@PC
-
+	
 END
-

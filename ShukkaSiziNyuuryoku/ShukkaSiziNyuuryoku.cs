@@ -1416,7 +1416,7 @@ namespace ShukkaSiziNyuuryoku
             {
                 string shukkasizisuu = dr["KonkaiShukkaSiziSuu"].ToString();
                 string JuchuuNO_GyouNO = dr["SKMSNO"].ToString();
-                string ShouhinCD = dr["ShouhinCD"].ToString();
+                string ShouhinCD = dr["Hidden_ShouhinCD"].ToString();
                 sksz_bl.Shukkasizi_Price(shukkasizisuu, JuchuuNO_GyouNO, ShouhinCD);
             }
         }

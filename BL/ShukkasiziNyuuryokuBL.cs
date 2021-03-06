@@ -109,7 +109,6 @@ namespace BL
             parameters[0] = new SqlParameter("@KonkaiShukkaSiziSuu", SqlDbType.VarChar) { Value = shukkasizisuu };
             parameters[1] = new SqlParameter("@JuchuuNO_JuchuuGyouNO", SqlDbType.VarChar) { Value = JuchuuNO_GyouNO };
             parameters[2] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
-            //parameters[4] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = SoukoCD };
             return ckmdl.InsertUpdateDeleteData("Shukkasizi_Price", GetConnectionString(), parameters);
         }
         public string ShukkasiziNyuuryoku_IUD(string mode, string xml_header, string xml_detail)
