@@ -24,7 +24,7 @@ namespace ShukkaSiziNyuuryoku
         KouritenDetail kd;
         public string tdDate, Detail_XML;
         string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
-        DataTable dtgv1, dtTemp1, dtGS1, dtClear, dt_Header, dtResult, dtHaita, dtShippingNO;
+        DataTable dtgv1, dtGS1, dtClear, dt_Header, dtResult, dtHaita, dtShippingNO;
 
         public ShukkaSiziNyuuryoku()
         {
@@ -37,7 +37,6 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();
             bbl = new BaseBL();
             tdDate = string.Empty;
-            dtTemp1 = new DataTable();
             dtgv1 = new DataTable();
             dt_Header = new DataTable();
             dtResult = new DataTable();
@@ -156,7 +155,7 @@ namespace ShukkaSiziNyuuryoku
                         break;
                 }
                 dtResult.Clear();
-                dtTemp1.Clear();
+                dtGS1.Clear();
                 //}
             }
             base.FunctionProcess(tagID);
@@ -631,7 +630,7 @@ namespace ShukkaSiziNyuuryoku
                     if (cboMode.SelectedValue.ToString().Equals("2"))
                     {
                         dtResult.Clear();
-                        dtTemp1.Clear();
+                        dtGS1.Clear();
                     }
                     Temp_Save(e.RowIndex);
                 }
@@ -1109,8 +1108,9 @@ namespace ShukkaSiziNyuuryoku
                         F11_Clear();
                         txtJuchuuNo.Focus();
                         dgvShukkasizi.ClearSelection();
-                        dtTemp1 = CreateTable_Details();
-                       dgvShukkasizi.DataSource = dtTemp1;
+                        DataTable dt = new DataTable();
+                        dt = CreateTable_Details();
+                       dgvShukkasizi.DataSource = dt;
                         dgvShukkasizi.Memory_Row_Count = dtGS1.Rows.Count;
                     }
                     break;
@@ -1201,7 +1201,6 @@ namespace ShukkaSiziNyuuryoku
                     lblStaffName.Text = string.Empty;
                     dtResult.Clear();
                     dtGS1.Clear();
-                    dtTemp1.Clear();
                     break;
 
                 case 4:  //start_Mode
@@ -1385,7 +1384,7 @@ namespace ShukkaSiziNyuuryoku
            
             if (cboMode.SelectedValue.Equals("3"))//delete
             {
-                Konkai_Price(dtTemp1);
+                Konkai_Price(dtGS1);
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
                 //sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
                 bbl.ShowMessage("I102");
@@ -1393,7 +1392,7 @@ namespace ShukkaSiziNyuuryoku
             else
             {
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-                Konkai_Price(dtTemp1);
+                Konkai_Price(dtGS1);
                 if (cboMode.SelectedValue.Equals("1"))
                 {
                     string FunctionNO = string.Empty;
@@ -1494,8 +1493,8 @@ namespace ShukkaSiziNyuuryoku
             }
             else
             {
-                dtTemp1 = CommaRemove(dtTemp1);
-                Detail_XML = cf.DataTableToXml(dtTemp1);
+                dtGS1 = CommaRemove(dtGS1);
+                Detail_XML = cf.DataTableToXml(dtGS1);
             }
 
             string Mode = string.Empty;
