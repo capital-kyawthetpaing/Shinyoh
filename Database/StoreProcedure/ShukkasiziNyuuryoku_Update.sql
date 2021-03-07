@@ -8,8 +8,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
+-- Author:		<SWE>
+-- Create date: <06-03-2021>
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Update]
@@ -306,11 +306,13 @@ SET [SoukoCD] = D.SoukoCD
 	,JuchuuShousaiNO=dj.JuchuuShousaiNO
 	,[UpdateOperator]=@OperatorCD
 	,[UpdateDateTime]=@currentDate
-from  D_JuchuuShousai dj,#Temp_Details D
-		where dj.JuchuuNO = LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1)
-		and dj.JuchuuGyouNO=RIGHT(D.SKMSNO, LEN(D.SKMSNO) - CHARINDEX('-', D.SKMSNO))
-		and dj.ShouhinCD=D.ShouhinCD
-		and HikiateZumiSuu <> 0
+ from  D_JuchuuShousai dj
+inner join #Temp_Details D
+on dj.JuchuuNO=LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1)
+and dj.JuchuuGyouNO=RIGHT(D.SKMSNO, LEN(D.SKMSNO) - CHARINDEX('-', D.SKMSNO))
+and dj.ShouhinCD=D.Hidden_ShouhinCD
+and dj.HikiateZumiSuu <> 0
+where D_ShukkaSiziShousai.ShukkaSiziNO=@ShukkaSiziNO
 --order by dj.KanriNO asc,dj.NyuukoDate asc
 
 --TableD
@@ -857,7 +859,6 @@ SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1
 ,UpdateDateTime=@currentDate
 FROM D_JuchuuMeisai A,#Temp_Details C
 where A.JuchuuNO = LEFT((C.SKMSNO), CHARINDEX('-', (C.SKMSNO)) - 1) 
-and A.ShouhinCD=C.ShouhinCD
 
 --D_Juchuu
 UPDATE	A

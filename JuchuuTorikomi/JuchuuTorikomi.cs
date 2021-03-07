@@ -321,12 +321,12 @@ namespace JuchuuTorikomi
 
                         DataTable dt3 = new DataTable();
                         ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
-                        //dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.JuchuuDate, "E101", "ShouhinCD");
-                        //if (dt3.Rows.Count > 0 && dt3.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "商品CD");
-                        //    break;
-                        //}
+                        dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.JuchuuDate, "E101", "ShouhinCD");
+                        if (dt3.Rows.Count > 0 && dt3.Rows[0]["MessageID"].ToString() == "E101")
+                        {
+                            bbl.ShowMessage("E101", i.ToString(), "商品CD");
+                            break;
+                        }
 
                         DataTable dt4 = new DataTable();
                         ShukkaTorikomi_BL jBL = new ShukkaTorikomi_BL();

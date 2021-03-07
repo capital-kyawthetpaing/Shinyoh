@@ -516,7 +516,12 @@ namespace ShukkaNyuuryoku {
                         {
                             gvShukka1.CurrentCell = gvShukka1.Rows[0].Cells["colKonkai"];
                         }
-
+                        else
+                        {
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
+                            return;
+                        }
                     }
                     break;
                 case 11:

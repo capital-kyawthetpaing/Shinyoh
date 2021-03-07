@@ -33,8 +33,8 @@ BEGIN
 					TokuisakiRyakuName		varchar(40) COLLATE DATABASE_DEFAULT,
 					TokuisakiYuubinNO1      varchar(3) COLLATE DATABASE_DEFAULT,
 					TokuisakiYuubinNO2      varchar(4) COLLATE DATABASE_DEFAULT,
-					TokuisakiJuusho1		varchar(50) COLLATE DATABASE_DEFAULT,
-					TokuisakiJuusho2        varchar(50) COLLATE DATABASE_DEFAULT,
+					TokuisakiJuusho1		varchar(80) COLLATE DATABASE_DEFAULT,
+					TokuisakiJuusho2        varchar(80) COLLATE DATABASE_DEFAULT,
 					TokuisakiTel11          varchar(6) COLLATE DATABASE_DEFAULT,
 					TokuisakiTel12          varchar(5) COLLATE DATABASE_DEFAULT,
 					TokuisakiTel13          varchar(5) COLLATE DATABASE_DEFAULT,
@@ -46,8 +46,8 @@ BEGIN
 					KouritenRyakuName		varchar(40) COLLATE DATABASE_DEFAULT,
 					KouritenYuubinNO1		varchar(3) COLLATE DATABASE_DEFAULT,
 					KouritenYuubinNO2       varchar(4) COLLATE DATABASE_DEFAULT,
-					KouritenJuusho1         varchar(50) COLLATE DATABASE_DEFAULT,
-					KouritenJuusho2			varchar(50) COLLATE DATABASE_DEFAULT,
+					KouritenJuusho1         varchar(80) COLLATE DATABASE_DEFAULT,
+					KouritenJuusho2			varchar(80) COLLATE DATABASE_DEFAULT,
 					KouritenTel11			varchar(6) COLLATE DATABASE_DEFAULT,	
 					KouritenTel12			varchar(5) COLLATE DATABASE_DEFAULT,	
 					KouritenTel13			varchar(5) COLLATE DATABASE_DEFAULT,	
@@ -111,8 +111,8 @@ BEGIN
 					TokuisakiRyakuName		varchar(40) 'TokuisakiRyakuName',
 					TokuisakiYuubinNO1      varchar(3) 'TokuisakiYuubinNO1',
 					TokuisakiYuubinNO2      varchar(4) 'TokuisakiYuubinNO2',
-					TokuisakiJuusho1		varchar(50) 'TokuisakiJuusho1',
-					TokuisakiJuusho2        varchar(50) 'TokuisakiJuusho2',
+					TokuisakiJuusho1		varchar(80) 'TokuisakiJuusho1',
+					TokuisakiJuusho2        varchar(80) 'TokuisakiJuusho2',
 					TokuisakiTel11          varchar(6) 'TokuisakiTel11',
 					TokuisakiTel12          varchar(5) 'TokuisakiTel12',
 					TokuisakiTel13          varchar(5) 'TokuisakiTel13',
@@ -124,8 +124,8 @@ BEGIN
 					KouritenRyakuName		varchar(40) 'KouritenRyakuName',
 					KouritenYuubinNO1		varchar(3) 'KouritenYuubinNO1',
 					KouritenYuubinNO2       varchar(4) 'KouritenYuubinNO2',
-					KouritenJuusho1         varchar(50) 'KouritenJuusho1',
-					KouritenJuusho2			varchar(50) 'KouritenJuusho2',
+					KouritenJuusho1         varchar(80) 'KouritenJuusho1',
+					KouritenJuusho2			varchar(80) 'KouritenJuusho2',
 					KouritenTel11			varchar(6) 'KouritenTel11',	
 					KouritenTel12			varchar(5) 'KouritenTel12',	
 					KouritenTel13			varchar(5) 'KouritenTel13',	
@@ -209,7 +209,7 @@ BEGIN
 					@StaffCD varchar(10) = (select StaffCD from #Temp_Main),
 					@TokuisakiCD varchar(10) = (select TokuisakiCD from #Temp_Main),
 					@KouritenCD varchar(10) = (select KouritenCD from #Temp_Main),
-					@ShouhinCD varchar(10) = (select ShouhinCD from #Temp_Detail),
+					--@ShouhinCD varchar(10) = (select ShouhinCD from #Temp_Detail),
 					@InsertOperator varchar(10) = (select InsertOperator from #Temp_Main),
 					@ProgramID varchar(100) = (select ProgramID from #Temp_Main),
 					@PC varchar(30) = (select PC from #Temp_Main),
@@ -320,7 +320,7 @@ BEGIN
 					[TokuisakiTelNO2-1],[TokuisakiTelNO2-2],[TokuisakiTelNO2-3],TokuisakiTantouBushoName,TokuisakiTantoushaYakushoku,TokuisakiTantoushaName,DS.KouritenName,DS.KouritenYuubinNO1,DS.KouritenYuubinNO2,
 					DS.KouritenJuusho1,DS.KouritenJuusho2,[KouritenTelNO1-1],[KouritenTelNO1-2],[KouritenTelNO1-3],[KouritenTelNO2-1],[KouritenTelNO2-2],[KouritenTelNO2-3],KouritenTantouBushoName,KouritenTantoushaYakushoku,
 					KouritenTantoushaName,TorikomiDenpyouNO,DS.InsertOperator,InsertDateTime,DS.UpdateOperator,UpdateDateTime,m.InsertOperator,@currentDate
-				 from D_Shukka DS, #Temp_Main m
+				 from D_Shukka DS, #Temp_Main m 
 		
 
 			  --D_ShukkaMeisaiHistory E
@@ -340,7 +340,7 @@ BEGIN
 
 			select  @Unique,DS.ShukkaNO,ShukkaGyouNO,ShukkaShousaiNO,10,SoukoCD,ShouhinCD,ShouhinName,ShukkaSuu,KanriNO,NyuukoDate,UriageZumiSuu,DS.ShukkaSiziNO,ShukkaSiziGyouNO,ShukkaSiziShousaiNO,
 				   JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,DS.InsertOperator,InsertDateTime,DS.UpdateOperator,UpdateDateTime,m.InsertOperator,@currentDate
-				from D_ShukkaShousai DS, #Temp_Main m
+				from D_ShukkaShousai DS, #Temp_Main m 
 	
 
 			--D_GenZaiko 
@@ -491,10 +491,10 @@ BEGIN
 			where TokuisakiCD=@TokuisakiCD
 			and  ChangeDate = (select ChangeDate from F_Tokuisaki(@ShukkaDate) where TokuisakiCD = @TokuisakiCD)
 
-			UPDATE M_Shouhin 
-			set UsedFlg = 1 
-			where ShouhinCD=@ShouhinCD
-			and  ChangeDate = (select ChangeDate from F_Shouhin(@ShukkaDate) where ShouhinCD = @ShouhinCD)
+			UPDATE  M
+			set UsedFlg = 1 from M_Shouhin M,#Temp_Detail d
+			where M.ShouhinCD=d.ShouhinCD
+			and  ChangeDate = (select ChangeDate from F_Shouhin(@ShukkaDate) where ShouhinCD = d.ShouhinCD)
 
 			UPDATE M_Kouriten 
 			set UsedFlg = 1 
