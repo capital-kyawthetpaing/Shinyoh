@@ -8,8 +8,8 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		<Author,,Name>
--- Create date: <Create Date,,>
+-- Author:		<swe>
+-- Create date: <03-06-2021>
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Delete]
@@ -460,8 +460,7 @@ DELETE A
 FROM D_ShukkaSiziShousai A
 WHERE A.ShukkaSiziNO=@ShukkaSiziNO
 
--- Konkai_Price --
-
+--Konkai_price
 
 --Table G --02
 UPDATE  A
@@ -482,7 +481,6 @@ SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1
 ,UpdateDateTime=@currentDate
 FROM D_JuchuuMeisai A,#Temp_Details C
 where A.JuchuuNO = LEFT((C.SKMSNO), CHARINDEX('-', (C.SKMSNO)) - 1) 
-and A.ShouhinCD=C.ShouhinCD
 
 --D_Juchuu
 UPDATE	A
