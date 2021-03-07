@@ -44,7 +44,7 @@ namespace IdouNyuuryoku
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
-            SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
+            SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
@@ -66,6 +66,7 @@ namespace IdouNyuuryoku
             txtIdouNO.ChangeDate = txtIdouDate;
             txtCopy.ChangeDate = txtIdouDate;
             txtStaffCD.ChangeDate = txtIdouDate;
+            txtShouhinCD.ChangeDate = txtIdouDate;
 
             gv_1.SetGridDesign();
             gv_1.SetReadOnlyColumn("colHinbanCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO");
@@ -362,6 +363,7 @@ namespace IdouNyuuryoku
             DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
+            else lblBrand_Name.Text = string.Empty;
         }
 
         private void txtIdouNO_KeyDown(object sender, KeyEventArgs e)
