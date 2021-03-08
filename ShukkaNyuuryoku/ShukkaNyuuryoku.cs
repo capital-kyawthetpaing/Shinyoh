@@ -839,7 +839,7 @@ namespace ShukkaNyuuryoku {
             if (dt.Columns.Contains("TokuisakiJuusho2"))
                 obj.Juusho2 = dt.Rows[0]["TokuisakiJuusho2"].ToString();
             else
-                obj.Juusho1 = dt.Rows[0]["Juusho2"].ToString();
+                obj.Juusho2 = dt.Rows[0]["Juusho2"].ToString();
             if (dt.Columns.Contains("TokuisakiTelNO1-1"))
                 obj.Tel11 = dt.Rows[0]["TokuisakiTelNO1-1"].ToString();
             else
