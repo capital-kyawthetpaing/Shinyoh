@@ -785,6 +785,7 @@ namespace JuchuuNyuuryoku
             lblBrand_Name.Text = string.Empty;
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
+            else lblBrand_Name.Text = string.Empty;
         }
 
         private void gv_1_CellContentClick(object sender, DataGridViewCellEventArgs e)

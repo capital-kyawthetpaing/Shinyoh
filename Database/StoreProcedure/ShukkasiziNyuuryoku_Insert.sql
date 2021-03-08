@@ -37,8 +37,8 @@ CREATE TABLE  [dbo].[#Temp_Header]
 					TokuisakiRyakuName	varchar(40) COLLATE DATABASE_DEFAULT,
 					TokuisakiYuubinNO1  varchar(3) COLLATE DATABASE_DEFAULT,
 					TokuisakiYuubinNO2  varchar(4) COLLATE DATABASE_DEFAULT,
-					TokuisakiJuusho1	varchar(50) COLLATE DATABASE_DEFAULT,
-					TokuisakiJuusho2    varchar(50) COLLATE DATABASE_DEFAULT,
+					TokuisakiJuusho1	varchar(80) COLLATE DATABASE_DEFAULT,
+					TokuisakiJuusho2    varchar(80) COLLATE DATABASE_DEFAULT,
 					TokuisakiTel11    varchar(6) COLLATE DATABASE_DEFAULT,
 					TokuisakiTel12   varchar(5) COLLATE DATABASE_DEFAULT,
 					TokuisakiTel13   varchar(5) COLLATE DATABASE_DEFAULT,
@@ -50,8 +50,8 @@ CREATE TABLE  [dbo].[#Temp_Header]
 					KouritenRyakuName    varchar(40) COLLATE DATABASE_DEFAULT,
 					KouritenYuubinNO1    varchar(3) COLLATE DATABASE_DEFAULT,
 					KouritenYuubinNO2    varchar(4) COLLATE DATABASE_DEFAULT,
-					KouritenJuusho1  varchar(50) COLLATE DATABASE_DEFAULT,
-					KouritenJuusho2	 varchar(50) COLLATE DATABASE_DEFAULT,
+					KouritenJuusho1  varchar(80) COLLATE DATABASE_DEFAULT,
+					KouritenJuusho2	 varchar(80) COLLATE DATABASE_DEFAULT,
 					KouritenTel11    varchar(6) COLLATE DATABASE_DEFAULT,	
 					KouritenTel12	 varchar(5) COLLATE DATABASE_DEFAULT,	
 					KouritenTel13	 varchar(5) COLLATE DATABASE_DEFAULT,	
@@ -78,8 +78,8 @@ INSERT INTO [#Temp_Header]
 				TokuisakiRyakuName	varchar(40) ,
 				TokuisakiYuubinNO1  varchar(3) ,
 				TokuisakiYuubinNO2  varchar(4) ,
-				TokuisakiJuusho1	varchar(50) ,
-				TokuisakiJuusho2    varchar(50) ,
+				TokuisakiJuusho1	varchar(80) ,
+				TokuisakiJuusho2    varchar(80) ,
 				TokuisakiTel11     varchar(6) ,
 				TokuisakiTel12     varchar(5) ,
 				TokuisakiTel13      varchar(5) ,
@@ -91,8 +91,8 @@ INSERT INTO [#Temp_Header]
 				KouritenRyakuName  varchar(40) ,
 				KouritenYuubinNO1  varchar(3) ,
 				KouritenYuubinNO2  varchar(4) ,
-				KouritenJuusho1 varchar(50) ,
-				KouritenJuusho2	varchar(50) ,
+				KouritenJuusho1 varchar(80) ,
+				KouritenJuusho2	varchar(80) ,
 				KouritenTel11 varchar(6) ,	
 				KouritenTel12 varchar(5) ,	
 				KouritenTel13 varchar(5) ,	
@@ -413,7 +413,7 @@ INSERT INTO [dbo].[D_ShukkaSiziShousai]
 		from  D_JuchuuShousai dj,#Temp_Details D
 		where dj.JuchuuNO = LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1)
 		and dj.JuchuuGyouNO=RIGHT(D.SKMSNO, LEN(D.SKMSNO) - CHARINDEX('-', D.SKMSNO))
-		and dj.ShouhinCD=D.ShouhinCD
+		and dj.ShouhinCD=D.Hidden_ShouhinCD
 		and HikiateZumiSuu <> 0
 		order by dj.KanriNO asc,dj.NyuukoDate asc
 
@@ -692,7 +692,6 @@ SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1
 									when C.Kanryo=1 then 1 else 0 end
 FROM D_JuchuuMeisai A,#Temp_Details C
 where A.JuchuuNO = LEFT((C.SKMSNO), CHARINDEX('-', (C.SKMSNO)) - 1) 
-and A.ShouhinCD=C.ShouhinCD
 
 --D_Juchuu
 UPDATE	A
@@ -717,6 +716,5 @@ exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperatorMode,@ShukkaSiziNO
 
 --テーブル転送仕様Ｙ--削除
 exec [dbo].[D_Exclusive_Remove_NO] 1,@OperatorCD,@Program,@PC
-
+	
 END
-
