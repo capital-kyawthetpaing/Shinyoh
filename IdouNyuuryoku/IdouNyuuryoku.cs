@@ -581,6 +581,13 @@ namespace IdouNyuuryoku
 
                     if (F8_dt1.Rows.Count == 0)
                         F8_dt1 = gv1_to_dt1.Clone();
+                    gv_1.Select();
+                }
+                else
+                {
+                    F8_dt1.Rows.Clear();
+                    gv_1.DataSource = F8_dt1;
+                    Focus_Clear();
                 }
             }
             gv_1.ActionType = string.Empty;
@@ -785,7 +792,7 @@ namespace IdouNyuuryoku
             txtYearTerm.Text = string.Empty;
             chk_SS.Checked = false;
             chk_FW.Checked = false;
-            txtColorNo.Text = string.Empty; ;
+            txtColorNo.Text = string.Empty; 
             txtSizeNo.Text = string.Empty;
         }
 

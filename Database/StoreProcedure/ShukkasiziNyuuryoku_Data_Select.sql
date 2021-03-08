@@ -84,7 +84,7 @@ begin
 	,convert(varchar(10),SK.DenpyouDate,111) as DenpyouDate	
 	,SK.ShukkaSiziDenpyouTekiyou
 	,SK.ShukkaSizishoHuyouKBN 
-	,SK.ShukkaKanryouKBN
+	,SKMS.ShukkaKanryouKBN
 	FROM D_ShukkaSizi SK						--Table1
 	inner join D_ShukkaSiziMeisai SKMS			--Table2
 	on SKMS.ShukkaSiziNO=SK.ShukkaSiziNO
