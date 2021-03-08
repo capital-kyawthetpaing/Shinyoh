@@ -118,6 +118,13 @@ namespace ShukkaNyuuryoku {
                     txtShukkaDate.Focus();
                 }
                F8_dt1.Clear();
+
+                BaseEntity be = new BaseEntity();
+                be.ProgramID = ProgramID;
+                be.OperatorCD = OperatorCD;
+                be.PC = PCID;
+                BaseBL bbl = new BaseBL();
+                bbl.D_Exclusive_Number_Remove(be);
             }
             if (tagID == "8")
             {

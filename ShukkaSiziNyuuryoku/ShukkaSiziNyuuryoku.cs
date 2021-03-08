@@ -288,7 +288,15 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();
             dt_Header = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sksz_e, 1);
             if (dt_Header.Rows.Count > 0)
+            {
                 ShukkasiziNyuuryoku_Header_Select(dt_Header);
+                if (dt_Header.Rows[0]["ShukkaKanryouKBN"].ToString().Equals("1"))
+                {
+                    dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].ReadOnly = true;
+                    dgvShukkasizi.Columns["chk"].ReadOnly = true;
+                }
+            }
+                
 
             dtGridview(1);
 
@@ -298,20 +306,7 @@ namespace ShukkaSiziNyuuryoku
             }
             else
                 dgvShukkasizi.DataSource = dtClear;
-
-            foreach (DataRow dr in dt_Header.Rows)
-            {
-                if (dr["ShukkaKanryouKBN"].ToString().Equals("1"))
-                {
-                    dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].ReadOnly = true;
-                    dgvShukkasizi.Columns["chk"].ReadOnly = true;
-                }
-                else
-                {
-                    dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].ReadOnly = false;
-                    dgvShukkasizi.Columns["chk"].ReadOnly = false;
-                }
-            }
+           
         }
         private DataTable dtGridview(int dt)
         {
