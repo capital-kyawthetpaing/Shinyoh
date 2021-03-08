@@ -1032,6 +1032,7 @@ namespace HacchuuNyuuryoku
             DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
+            else lblBrand_Name.Text = string.Empty;
         }
     }
 }
