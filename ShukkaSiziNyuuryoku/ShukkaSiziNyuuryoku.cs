@@ -392,7 +392,7 @@ namespace ShukkaSiziNyuuryoku
                 if (dt.Columns.Contains("TokuisakiJuusho2"))
                     te.Juusho2 = dt.Rows[0]["TokuisakiJuusho2"].ToString();
                 else
-                    te.Juusho1 = dt.Rows[0]["Juusho2"].ToString();
+                    te.Juusho2 = dt.Rows[0]["Juusho2"].ToString();
                 if (dt.Columns.Contains("TokuisakiTelNO1-1"))
                     te.Tel11 = dt.Rows[0]["TokuisakiTelNO1-1"].ToString();
                 else
