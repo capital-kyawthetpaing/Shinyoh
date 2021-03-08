@@ -284,7 +284,7 @@ namespace ShukkaSiziNyuuryoku
             sksz_e.ProgramID = ProgramID;
             sksz_e.OperatorCD = OperatorCD;
             sksz_e.PC = PCID;
-
+            //Header
             sksz_bl = new ShukkasiziNyuuryokuBL();
             dt_Header = sksz_bl.ShukkasiziNyuuryoku_Data_Select(sksz_e, 1);
             if (dt_Header.Rows.Count > 0)
@@ -295,9 +295,8 @@ namespace ShukkaSiziNyuuryoku
                     dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].ReadOnly = true;
                     dgvShukkasizi.Columns["chk"].ReadOnly = true;
                 }
-            }
-                
-
+            }               
+            //Details
             dtGridview(1);
 
             if (dtgv1.Rows.Count > 0)
@@ -561,7 +560,7 @@ namespace ShukkaSiziNyuuryoku
                 if (!td.Access_Tokuisaki_obj.TokuisakiCD.ToString().Equals(sbTokuisaki.Text))
                 {
 
-                    bbl.ShowMessage("E269");
+                    bbl.ShowMessage("E269", "受注時", "得意先");
                     sbTokuisaki.Focus();
                 }
                 else
@@ -576,18 +575,9 @@ namespace ShukkaSiziNyuuryoku
         }
         private void btnKouriren_Detail_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(sbKouriten.Text) && kd.Access_Kouriten_obj.KouritenCD != null)
+            if (!string.IsNullOrWhiteSpace(sbKouriten.Text))
             {
-                if (!kd.Access_Kouriten_obj.KouritenCD.ToString().Equals(sbKouriten.Text))
-                {
-
-                    bbl.ShowMessage("E269");
-                    sbKouriten.Focus();
-                }
-                else
-                {
-                    kd.ShowDialog();
-                }
+                kd.ShowDialog();
             }
             else
             {
