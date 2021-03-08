@@ -569,9 +569,10 @@ namespace HacchuuNyuuryoku
                 }
                 else
                 {
+
                     F8_dt1.Rows.Clear();
                     gv_HacchuuNyuuryoku.DataSource = F8_dt1;
-                    txtBrandCD.Focus();
+                    Focus_Clear();
                 }
             }
             gv_HacchuuNyuuryoku.ActionType = string.Empty;             //to check gv error at the ErrorCheck() of BaseForm.cs
