@@ -56,28 +56,6 @@ namespace Shinyoh_Search
             txtShouhin2.E106Check(true, txtShouhin1, txtShouhin2);
         }
 
-        private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!txtSiiresaki.IsErrorOccurs)
-            {
-                DataTable dt = txtSiiresaki.IsDatatableOccurs;
-                if (dt.Rows.Count > 0)
-                    lblSiiresakiRyakuName.Text = dt.Rows[0]["SiireSakiRyakuName"].ToString();
-                else lblSiiresakiRyakuName.Text = string.Empty;
-            }
-        }
-
-        private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (!txtStaffCD.IsErrorOccurs)
-            {
-                DataTable dt = txtStaffCD.IsDatatableOccurs;
-                if (dt.Rows.Count > 0)
-                    lblStaffCD_Name.Text = dt.Rows[0]["StaffName"].ToString();
-                else lblStaffCD_Name.Text = string.Empty;
-            }
-        }
-
         private void DataGridviewBind()
         {
             HacchuuNyuuryokuEntity obj = new HacchuuNyuuryokuEntity();
@@ -111,6 +89,7 @@ namespace Shinyoh_Search
                     }
                 }
                 gv_1.DataSource = dt;
+                gv_1.Select();
             }
         }
 

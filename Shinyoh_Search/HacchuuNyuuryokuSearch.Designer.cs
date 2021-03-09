@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.txtSiiresaki = new Shinyoh_Search.SearchBox();
@@ -133,7 +133,7 @@
             this.txtStaffCD.NextControl = null;
             this.txtStaffCD.NextControlName = "txtShouhinName";
             this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
-            this.txtStaffCD.Size = new System.Drawing.Size(75, 19);
+            this.txtStaffCD.Size = new System.Drawing.Size(100, 19);
             this.txtStaffCD.TabIndex = 4;
             this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtStaffCD.TxtBox = null;
@@ -164,7 +164,7 @@
             this.txtSiiresaki.NextControl = null;
             this.txtSiiresaki.NextControlName = "txtStaffCD";
             this.txtSiiresaki.SearchType = Entity.SearchType.ScType.Siiresaki;
-            this.txtSiiresaki.Size = new System.Drawing.Size(75, 19);
+            this.txtSiiresaki.Size = new System.Drawing.Size(100, 19);
             this.txtSiiresaki.TabIndex = 3;
             this.txtSiiresaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSiiresaki.TxtBox = null;
@@ -202,7 +202,7 @@
             this.lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffCD_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaffCD_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStaffCD_Name.Location = new System.Drawing.Point(198, 59);
+            this.lblStaffCD_Name.Location = new System.Drawing.Point(223, 59);
             this.lblStaffCD_Name.Name = "lblStaffCD_Name";
             this.lblStaffCD_Name.Size = new System.Drawing.Size(250, 19);
             this.lblStaffCD_Name.TabIndex = 96;
@@ -214,7 +214,7 @@
             this.lblSiiresakiRyakuName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblSiiresakiRyakuName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblSiiresakiRyakuName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSiiresakiRyakuName.Location = new System.Drawing.Point(198, 33);
+            this.lblSiiresakiRyakuName.Location = new System.Drawing.Point(223, 33);
             this.lblSiiresakiRyakuName.Name = "lblSiiresakiRyakuName";
             this.lblSiiresakiRyakuName.Size = new System.Drawing.Size(250, 19);
             this.lblSiiresakiRyakuName.TabIndex = 95;
@@ -309,7 +309,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(218, 12);
+            this.label1.Location = new System.Drawing.Point(230, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(17, 16);
             this.label1.TabIndex = 16;
@@ -503,7 +503,7 @@
             this.txtDate2.IsErrorOccurs = false;
             this.txtDate2.IsRequire = false;
             this.txtDate2.IsUseInitializedLayout = true;
-            this.txtDate2.Location = new System.Drawing.Point(256, 7);
+            this.txtDate2.Location = new System.Drawing.Point(257, 7);
             this.txtDate2.MaxLength = 10;
             this.txtDate2.MinimumSize = new System.Drawing.Size(75, 19);
             this.txtDate2.MoveNext = true;
@@ -511,7 +511,7 @@
             this.txtDate2.NextControl = null;
             this.txtDate2.NextControlName = "txtSiiresaki";
             this.txtDate2.SearchType = Entity.SearchType.ScType.None;
-            this.txtDate2.Size = new System.Drawing.Size(75, 19);
+            this.txtDate2.Size = new System.Drawing.Size(100, 19);
             this.txtDate2.TabIndex = 2;
             this.txtDate2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
@@ -537,7 +537,7 @@
             this.txtDate1.NextControl = null;
             this.txtDate1.NextControlName = "txtDate2";
             this.txtDate1.SearchType = Entity.SearchType.ScType.None;
-            this.txtDate1.Size = new System.Drawing.Size(75, 19);
+            this.txtDate1.Size = new System.Drawing.Size(100, 19);
             this.txtDate1.TabIndex = 1;
             this.txtDate1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
@@ -623,14 +623,14 @@
             // gv_1
             // 
             this.gv_1.AllowUserToAddRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gv_1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colHacchuuNO,
@@ -658,8 +658,8 @@
             // colHacchuuDate
             // 
             this.colHacchuuDate.DataPropertyName = "HacchuuDate";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colHacchuuDate.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colHacchuuDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.colHacchuuDate.HeaderText = "発注日";
             this.colHacchuuDate.Name = "colHacchuuDate";
             this.colHacchuuDate.ReadOnly = true;
