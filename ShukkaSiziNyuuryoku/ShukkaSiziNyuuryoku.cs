@@ -60,7 +60,7 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.SetNumberColumn("colShukkakanousuu,colTanka,colPrice");
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
-
+           
             var col = dgvShukkasizi.Columns;
             for (int i = 5; i < col.Count; i++)
             {
@@ -1077,6 +1077,7 @@ namespace ShukkaSiziNyuuryoku
                     {
                         bbl.ShowMessage("S004", Data1, Data2, Data3);
                     }
+                    dgvShukkasizi.Columns[10].DefaultCellStyle.Format = "#,0";
                     dgvShukkasizi.DataSource = dtHaita;
                     if(dtHaita.Rows.Count>0)
                     {

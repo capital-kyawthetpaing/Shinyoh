@@ -410,11 +410,12 @@ INSERT INTO [dbo].[D_ShukkaSiziShousai]
 			,dj.JuchuuGyouNO
 			,dj.JuchuuShousaiNO
 			,@OperatorCD,@currentDate,@OperatorCD,@currentDate
-		from  D_JuchuuShousai dj,#Temp_Details D
-		where dj.JuchuuNO = LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1)
+		from  D_JuchuuShousai dj
+		inner join #Temp_Details D
+		on dj.JuchuuNO=LEFT((D.SKMSNO), CHARINDEX('-', (D.SKMSNO)) - 1)
 		and dj.JuchuuGyouNO=RIGHT(D.SKMSNO, LEN(D.SKMSNO) - CHARINDEX('-', D.SKMSNO))
 		and dj.ShouhinCD=D.Hidden_ShouhinCD
-		and HikiateZumiSuu <> 0
+		and dj.HikiateZumiSuu <> 0
 		order by dj.KanriNO asc,dj.NyuukoDate asc
 
 --Table D
