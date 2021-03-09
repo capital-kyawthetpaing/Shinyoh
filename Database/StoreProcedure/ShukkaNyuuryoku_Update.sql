@@ -296,6 +296,7 @@ BEGIN
 			left outer join D_ShukkaSiziMeisai DSM  on DSM.ShukkaSiziNO=LEFT((d.ShukkaSiziNOGyouNO), CHARINDEX('-', (d.ShukkaSiziNOGyouNO)) - 1) 
 			and DSM.ShukkaSiziGyouNO=RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
 			left outer join F_Shouhin(@ShukkaDate) FS on FS.ShouhinCD=d.ShouhinCD
+			where D_ShukkaMeisai.ShukkaNo=@ShukkaNo
 
 
 		--D_ShukkaShousai C
