@@ -112,10 +112,10 @@ SELECT
 	,ISNULL(FORMAT(SKKNS2.ShukkanouSuu, '#,0'),'0') AS ShukkanouSuu			--出荷可能数
 	,FORMAT(DJMS.ShukkaSiziZumiSuu, '#,0') AS ShukkaSiziZumiSuu	--出荷指示済数
 	,ISNULL((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FORMAT(SKKNS2.ShukkanouSuu, '#,0')
-	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FORMAT(DJMS.ShukkaZumiSuu, '#,0') END),'0') AS KonkaiShukkaSiziSuu
+	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FORMAT((DJMS.JuchuuSuu-DJMS.ShukkaZumiSuu), '#,0') END),'0') AS KonkaiShukkaSiziSuu
 	,ISNULL(FORMAT(DJMS.UriageTanka, '#,0'),'0') AS UriageTanka	--単価
-	,cast(ISNULL((FLOOR(DJMS.UriageTanka)*(case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FORMAT(SKKNS2.ShukkanouSuu, '#,0')
-	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FORMAT(DJMS.ShukkaZumiSuu, '#,0')END)),'0') as varchar(10)) AS UriageKingaku	--金額	
+	,ISNULL(Format(((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN SKKNS2.ShukkanouSuu
+	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN DJMS.JuchuuSuu-DJMS.ShukkaZumiSuu END)*DJMS.UriageTanka),'#,0'),'0') AS UriageKingaku
 	,0 as Kanryo --完了
 	,'' as ShukkaSiziMeisaiTekiyou --明細摘要
 	--details2
