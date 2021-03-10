@@ -41,7 +41,7 @@ namespace ShukkaNyuuryoku {
             Main_dt = new DataTable();
             Temptb1 = new DataTable();
             gvdt1 = new DataTable();
-            F8_dt1 = new DataTable();
+            F8_dt1 = CreateTable();
             dtHaita = new DataTable();
             dtGS1 = CreateTable();
             dtClear = CreateTable();
@@ -419,11 +419,15 @@ namespace ShukkaNyuuryoku {
                 case 8:
                     if (F8_dt1.Rows.Count > 0)
                     {
-                        if(F8_dt1.Columns.Count == 13)
+                        if(F8_dt1.Columns.Contains("ShukkaSiziNO"))
                         {
                             F8_dt1.Columns.Remove("ShukkaSiziNO");
                         }
-                       
+                        if (F8_dt1.Columns.Contains("UriageKanryouKBN"))
+                        {
+                            F8_dt1.Columns.Remove("UriageKanryouKBN");
+                        }
+
                         F8_dt1.DefaultView.Sort = "JANCD";
                         gvShukka1.DataSource = F8_dt1.DefaultView.ToTable();
                         gvShukka1.Memory_Row_Count = F8_dt1.Rows.Count;
@@ -469,26 +473,33 @@ namespace ShukkaNyuuryoku {
                             dt.Columns.Remove("ShouhinCD");
                             dt.Columns.Remove("DenpyouDate");
                             dt.Columns.Remove("JuchuuNOGyouNO");
-                            if (obj.Condition == "1")
-                            {
-                                gvShukka1.DataSource = dt;
-                                DataTable dt_temp = dt.Copy();
-                                gvdt1 = dt_temp;
-                                if (gvdt1.Rows.Count > 0)
-                                {
-                                    F8_dt1 = gvdt1.Clone();
-                                }
-                            }
-                            else
-                            {
-                                gvShukka1.DataSource = dt;
-                                DataTable dt_temp = dt.Copy();
-                                gvdt1 = dt_temp;
-                                if (gvdt1.Rows.Count > 0)
-                                {
-                                    F8_dt1 = gvdt1.Clone();
-                                }
-                            }
+
+                            //gvShukka1.DataSource = dt;
+                            DataTable dt_temp = dt.Copy();
+                            gvdt1 = dt_temp;
+
+                            //if (obj.Condition == "1")
+                            //{
+                            //    gvShukka1.DataSource = dt;
+                            //    DataTable dt_temp = dt.Copy();
+                            //    gvdt1 = dt_temp;
+                            //    //if (gvdt1.Rows.Count > 0)
+                            //    //{
+                            //    //    F8_dt1 = new DataTable();
+                            //    //    F8_dt1 = CreateTable();
+                            //    //}
+                            //}
+                            //else
+                            //{
+                            //    gvShukka1.DataSource = dt;
+                            //    DataTable dt_temp = dt.Copy();
+                            //    gvdt1 = dt_temp;
+                            //    //if (gvdt1.Rows.Count > 0)
+                            //    //{
+                            //    //    F8_dt1 = new DataTable();
+                            //    //    F8_dt1 = CreateTable();
+                            //    //}
+                            //}
                             dtHaita = gvdt1.Copy();
                             ShukkaSiZiNO_Delete();
                             gvShukka1.ActionType = "F10";  //to skip gv error check at the ErrorCheck() of BaseForm.cs
@@ -519,9 +530,12 @@ namespace ShukkaNyuuryoku {
                             if (count)
                             {
                                 bbl.ShowMessage("S004", Data1, Data2, Data3);
-                            }
-                            dtHaita.Columns.Remove("ShukkaSiziNO");
+                            }                          
                             gvShukka1.DataSource = dtHaita;
+                            if (dtHaita.Columns.Contains("ShukkaSiziNO"))
+                                dtHaita.Columns.Remove("ShukkaSiziNO");
+                            //gvShukka1.Rows[0].Cells[8].Value = "1";
+                            //gvShukka1.Rows[1].Cells[8].Value = "1";
                             if (dtHaita.Rows.Count > 0)
                             {
                                 gvShukka1.CurrentCell = gvShukka1.Rows[0].Cells["colKonkai"];
@@ -536,26 +550,46 @@ namespace ShukkaNyuuryoku {
                     }
                     else
                     {
-                        Main_dt = txtShukkaNo.IsDatatableOccurs;
-                        if (Main_dt.Rows.Count > 0)
-                        {
-                            Main_dt.Columns.Add("MessageID", typeof(string));
-                            From_DB_To_Form(Main_dt);
-                            if (gvShukka1.Columns.Count == 14)
-                            {
-                                gvShukka1.Columns.Remove("MessageID");
-                            }
-                            if (gvShukka1.Columns.Count == 13)
-                            {
-                                gvShukka1.Columns.Remove("ShukkaSiziNO");
-                            }
-                        }
+                        Display();                        
                     }
-                  
+
                     break;
                 case 11:
                     Function_F11();
                     break;
+            }
+        }
+        private void Display()
+        {
+            Main_dt = txtShukkaNo.IsDatatableOccurs;
+            if (Main_dt.Rows.Count > 0)
+            {
+                if (!Main_dt.Columns.Contains("MessageID"))
+                    Main_dt.Columns.Add("MessageID", typeof(string));
+                From_DB_To_Form(Main_dt);
+                if (gvShukka1.Columns.Contains("ShukkaSiziNO"))
+                {
+                    gvShukka1.Columns.Remove("ShukkaSiziNO");
+                }
+                if (gvShukka1.Columns.Contains("MessageID"))
+                {
+                    gvShukka1.Columns.Remove("MessageID");
+                }
+                if (Main_dt.Rows[0]["UriageKanryouKBN"].ToString().Equals("1"))
+                {
+                    gvShukka1.Columns["colKonkai"].ReadOnly = true;
+                    gvShukka1.Columns["colComplete"].ReadOnly = true;
+                    if(gvShukka1.Columns.Contains("UriageKanryouKBN"))
+                    gvShukka1.Columns.Remove("UriageKanryouKBN");
+
+                }
+                else if (Main_dt.Rows[0]["UriageKanryouKBN"].ToString().Equals("0"))
+                {
+                    gvShukka1.Columns["colKonkai"].ReadOnly = false;
+                    gvShukka1.Columns["colComplete"].ReadOnly = false;
+                    if (gvShukka1.Columns.Contains("UriageKanryouKBN"))
+                        gvShukka1.Columns.Remove("UriageKanryouKBN");
+                }
             }
         }
         private void Gvrow_Delete(DataRow dr)
@@ -579,7 +613,7 @@ namespace ShukkaNyuuryoku {
             for (int t = 0; t < gvShukka1.RowCount; t++)
             {
 
-                bool bl = false;
+                //bool bl = false;
                 // grid 1 checkingTemptb1
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gvShukka1.Rows[t];// grid view data
@@ -593,12 +627,13 @@ namespace ShukkaNyuuryoku {
                 //string color = row.Cells["colColorNO"].Value.ToString();
                 //string size = row.Cells["colSize"].Value.ToString();
 
-                DataRow[] select_dr1 = gvdt1.Select("JANCD ='" + JANCD +  "'");// original data
+                DataRow[] select_dr1 = gvdt1.Select("ShukkaSiziNOGyouNO ='" + ShukkaSiziNOGyouNO + "'");// original data
                 //DataRow[] select_dr1 = gvdt1.Select("HinbanCD ='" + HinbanCD + "'");// original data
-                DataRow existDr1 = F8_dt1.Select("JANCD ='" + JANCD + "' and ShukkaSuu='" + Konkai + "' and ShukkaSiziNOGyouNO='" + ShukkaSiziNOGyouNO + "'").SingleOrDefault();
+                // DataRow existDr1 = F8_dt1.Select("JANCD ='" + JANCD + "' and ShukkaSuu='" + Konkai + "' and ShukkaSiziNOGyouNO='" + ShukkaSiziNOGyouNO + "'").SingleOrDefault();
+                DataRow existDr1 = F8_dt1.Select("ShukkaSiziNOGyouNO='" + ShukkaSiziNOGyouNO + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["colKonkai"].Value.ToString() == "0")
+                    if (row.Cells["colKonkai"].Value.ToString() == "0" && gvdt1.Rows.Count != gvShukka1.Rows.Count)
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
@@ -615,7 +650,7 @@ namespace ShukkaNyuuryoku {
                             {
                                 if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 {
-                                    bl = true;
+                                    //bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;
                                 }
                                 else
@@ -625,8 +660,8 @@ namespace ShukkaNyuuryoku {
                             }
                             else
                             {
-                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-                                    bl = true;
+                                //if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                //    bl = true;
 
                                 F8_drNew[c] = row.Cells[c].Value;
                             }
@@ -637,12 +672,12 @@ namespace ShukkaNyuuryoku {
                         }
                     }
                     // grid 1 insert(if exist, remove exist and insert)
-                    if (bl == true)
-                    {
-                        if (existDr1 != null)
-                            F8_dt1.Rows.Remove(existDr1);
-                        F8_dt1.Rows.Add(F8_drNew);
-                    }
+                    //if (bl == true)
+                    //{
+                    if (existDr1 != null)
+                        F8_dt1.Rows.Remove(existDr1);
+                    F8_dt1.Rows.Add(F8_drNew);
+                    // }
                 }
             }
             gvShukka1.Memory_Row_Count = F8_dt1.Rows.Count;
@@ -1083,15 +1118,7 @@ namespace ShukkaNyuuryoku {
                             Control btnSearch = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
                             btnSearch.Visible = false;
                         }
-                        Main_dt = txtShukkaNo.IsDatatableOccurs;
-                        if (Main_dt.Rows.Count > 0)
-                        {
-                            From_DB_To_Form(Main_dt);
-                            if (gvShukka1.Columns.Count == 13)
-                            {
-                                gvShukka1.Columns.Remove("ShukkaSiziNO");
-                            }
-                        }
+                        Display();
                     }
                     else
                     {
@@ -1105,15 +1132,7 @@ namespace ShukkaNyuuryoku {
                     Control btnSearch = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
                     btnSearch.Visible = false;
 
-                    Main_dt = txtShukkaNo.IsDatatableOccurs;
-                    if (Main_dt.Rows.Count > 0)
-                    {
-                        From_DB_To_Form(Main_dt);
-                        if (gvShukka1.Columns.Count == 13)
-                        {
-                            gvShukka1.Columns.Remove("ShukkaSiziNO");
-                        }
-                    }
+                    Display();
                 }
             }
             else
