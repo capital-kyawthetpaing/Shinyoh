@@ -558,6 +558,8 @@ namespace ChakuniYoteiNyuuryoku
             txtJANCD.Clear();
             txtYearTerm.Clear();
             txtColorNo.Clear();
+            chkSS.Checked = false;
+            chkFW.Checked = false;
             txtDateFrom.Clear();
             txtDateTo.Clear();
             txtSizeNo.Clear();

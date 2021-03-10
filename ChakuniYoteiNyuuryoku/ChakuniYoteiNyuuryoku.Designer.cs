@@ -1091,7 +1091,7 @@
             this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
             this.colChakuniZumiSuu.HeaderText = "着荷予定済数";
             this.colChakuniZumiSuu.Name = "colChakuniZumiSuu";
-            this.colChakuniZumiSuu.Width = 150;
+            this.colChakuniZumiSuu.Width = 130;
             // 
             // colYoteiSuu
             // 
@@ -1101,7 +1101,7 @@
             this.colYoteiSuu.DefaultCellStyle = dataGridViewCellStyle5;
             this.colYoteiSuu.HeaderText = "今回着荷予定数";
             this.colYoteiSuu.Name = "colYoteiSuu";
-            this.colYoteiSuu.Width = 120;
+            this.colYoteiSuu.Width = 130;
             // 
             // colDetails
             // 
