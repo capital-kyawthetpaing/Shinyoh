@@ -474,7 +474,7 @@ namespace ShukkaNyuuryoku {
                             dt.Columns.Remove("DenpyouDate");
                             dt.Columns.Remove("JuchuuNOGyouNO");
 
-                            gvShukka1.DataSource = dt;
+                            //gvShukka1.DataSource = dt;
                             DataTable dt_temp = dt.Copy();
                             gvdt1 = dt_temp;
 
@@ -530,9 +530,10 @@ namespace ShukkaNyuuryoku {
                             if (count)
                             {
                                 bbl.ShowMessage("S004", Data1, Data2, Data3);
-                            }
-                            dtHaita.Columns.Remove("ShukkaSiziNO");
+                            }                          
                             gvShukka1.DataSource = dtHaita;
+                            if (dtHaita.Columns.Contains("ShukkaSiziNO"))
+                                dtHaita.Columns.Remove("ShukkaSiziNO");
                             //gvShukka1.Rows[0].Cells[8].Value = "1";
                             //gvShukka1.Rows[1].Cells[8].Value = "1";
                             if (dtHaita.Rows.Count > 0)
