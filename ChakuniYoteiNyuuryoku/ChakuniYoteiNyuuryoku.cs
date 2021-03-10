@@ -165,18 +165,6 @@ namespace ChakuniYoteiNyuuryoku
             if (tagID == "10")
             {
                 F10_Gridview_Bind();
-                //if (string.IsNullOrWhiteSpace(txtBrandCD.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) &&
-                //string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtDateFrom.Text) && string.IsNullOrWhiteSpace(txtDateTo.Text) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
-                //{
-                //    bbl.ShowMessage("E111");
-                //    txtBrandCD.Focus();
-                //}
-                //else
-                //{
-                //    dtGridview();
-                //    gvChakuniYoteiNyuuryoku.DataSource = dtmain;
-                //    gvChakuniYoteiNyuuryoku.Select();
-                //}
             }
             if (tagID == "11")
             {
