@@ -14,7 +14,6 @@ GO
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Data_Select]
 	-- Add the parameters for the stored procedure here
-		--@ShippingDate as varchar(10),
 	@ShippingNo as varchar(12),
 	@Type as tinyint,
 	@Operator  varchar(10),
@@ -109,7 +108,7 @@ begin
 	--SKMS.ShouhinCD	
 	FShouhin.HinbanCD	as ShouhinCD
 	,SKMS.ShouhinName	
-	,SKMS.ColorRyakuName -
+	,SKMS.ColorRyakuName 
 	,SKMS.ColorNO
 	,SKMS.SizeNO		
 	,FORMAT(JCMS.JuchuuSuu, '#,0') as JuchuuSuu
@@ -118,12 +117,6 @@ begin
 	,ISNULL(FORMAT(SKMS.ShukkaSiziSuu, '#,0'),'0') as KonkaiShukkaSiziSuu	 
 	,ISNULL(FORMAT(SKMS.UriageTanka, '#,0'),'0') AS UriageTanka	
 	,ISNULL(FORMAT(SKMS.UriageKingaku, '#,0'),'0') AS UriageKingaku
-	--,FLOOR(JCMS.JuchuuSuu) as JuchuuSuu	
-	--,ISNULL(FLOOR(SKKNS.ShukkanouSuu)+FLOOR(SKMS.ShukkaSiziSuu),'0') AS ShukkanouSuu
-	--,ISNULL(FLOOR(JCMS.ShukkaSiziZumiSuu),'0') AS ShukkaSiziZumiSuu
-	--,ISNULL(FLOOR(SKMS.ShukkaSiziSuu),'0') as KonkaiShukkaSiziSuu
-	--,ISNULL(FLOOR(SKMS.UriageTanka),'0') AS UriageTanka
-	--,ISNULL(FLOOR(SKMS.UriageKingaku),'0') AS UriageKingaku
 	,0 as Kanryo
 	,SKMS.ShukkaSiziMeisaiTekiyou
 	,(SKMS.JuchuuNO+' - '+cast(SKMS.JuchuuGyouNO as varchar)) AS SKMSNO
