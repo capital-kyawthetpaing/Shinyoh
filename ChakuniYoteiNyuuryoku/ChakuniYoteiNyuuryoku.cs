@@ -813,10 +813,6 @@ namespace ChakuniYoteiNyuuryoku
                     bbl.ShowMessage("E109");
                     return false;
                 }
-                else
-                {
-                    gvChakuniYoteiNyuuryoku.MoveNextCell();
-                }
             }
             return true;
         }
