@@ -467,12 +467,12 @@ namespace ShukkaNyuuryoku {
                         DataTable dt = sBL.ShukkaNyuuryoku_Display(obj);
                         if (dt.Rows.Count > 0)
                         {
-                            dt.Columns.Remove("SoukoCD");
+                            //dt.Columns.Remove("SoukoCD");
                             dt.Columns.Remove("TokuisakiCD");
                             dt.Columns.Remove("KouritenCD");
-                            dt.Columns.Remove("ShouhinCD");
-                            dt.Columns.Remove("DenpyouDate");
-                            dt.Columns.Remove("JuchuuNOGyouNO");
+                            //dt.Columns.Remove("ShouhinCD");
+                            //dt.Columns.Remove("DenpyouDate");
+                            //dt.Columns.Remove("JuchuuNOGyouNO");
 
                             //gvShukka1.DataSource = dt;
                             DataTable dt_temp = dt.Copy();
@@ -530,8 +530,13 @@ namespace ShukkaNyuuryoku {
                             if (count)
                             {
                                 bbl.ShowMessage("S004", Data1, Data2, Data3);
-                            }                          
+                            }
                             gvShukka1.DataSource = dtHaita;
+                            gvShukka1.Columns[12].Visible = false;
+                            gvShukka1.Columns[13].Visible = false;
+                            gvShukka1.Columns[14].Visible = false;
+                            gvShukka1.Columns[15].Visible = false;
+
                             if (dtHaita.Columns.Contains("ShukkaSiziNO"))
                                 dtHaita.Columns.Remove("ShukkaSiziNO");
                             //gvShukka1.Rows[0].Cells[8].Value = "1";
@@ -591,7 +596,7 @@ namespace ShukkaNyuuryoku {
                         gvShukka1.Columns.Remove("UriageKanryouKBN");
                 }
             }
-        }
+        }     
         private void Gvrow_Delete(DataRow dr)
         {
             DataRow[] existDr1 = dtHaita.Select("ShukkaSiziNO ='" + dr["ShukkaSiziNO"] + "'");
@@ -1030,8 +1035,12 @@ namespace ShukkaNyuuryoku {
             dt.Columns.Add("Kanryou", typeof(int));
             dt.Columns.Add("ShukkaMeisaiTekiyou", typeof(string));
             dt.Columns.Add("ShukkaSiziNOGyouNO", typeof(string));
+            dt.Columns.Add("DenpyouDate", typeof(string));
+            dt.Columns.Add("JuchuuNOGyouNO", typeof(string));
+            dt.Columns.Add("SoukoCD", typeof(string));
+            dt.Columns.Add("ShouhinCD", typeof(string));          
             dt.Columns.Add("ShukkaSiziNO", typeof(string));
-
+     
             //dt.Columns.Add("SoukoCD", typeof(string));
 
             //dt.Columns.Add("DenpyouDate", typeof(string));
@@ -1257,19 +1266,24 @@ namespace ShukkaNyuuryoku {
                 dt.Columns.Remove("KouritenTelNO2-1");
                 dt.Columns.Remove("KouritenTelNO2-2");
                 dt.Columns.Remove("KouritenTelNO2-3");
-                dt.Columns.Remove("DenpyouDate");
-                dt.Columns.Remove("JuchuuNOGyouNO");
-                dt.Columns.Remove("ShouhinCD");
+                //dt.Columns.Remove("DenpyouDate");
+                //dt.Columns.Remove("JuchuuNOGyouNO");
+                //dt.Columns.Remove("SoukoCD");
+                //dt.Columns.Remove("ShouhinCD");
                 dt.Columns.Remove("MessageID");
 
                 gvShukka1.DataSource = dt;
+                gvShukka1.Columns[13].Visible = false;
+                gvShukka1.Columns[14].Visible = false;
+                gvShukka1.Columns[15].Visible = false;
+                gvShukka1.Columns[16].Visible = false;
                 //gvShukka1.ClearSelection();
 
                 DataTable dt_temp = dt.Copy();
                 gvdt1 = dt_temp;
 
-                if (F8_dt1.Rows.Count == 0)
-                    F8_dt1 = gvdt1.Clone();
+                //if (F8_dt1.Rows.Count == 0)
+                //    F8_dt1 = gvdt1.Clone();
             }
         }
 
