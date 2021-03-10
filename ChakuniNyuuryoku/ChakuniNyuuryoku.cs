@@ -77,6 +77,7 @@ namespace ChakuniNyuuryoku
             txtSiiresaki.lblName = lblSiiresaki;
             txtStaffCD.ChangeDate = txtArrivalDate;
             txtShouhinCD.ChangeDate = txtArrivalDate;
+            txtScheduled.ChangeDate= txtArrivalDate;
 
             base_Entity = _GetBaseData();
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -181,7 +182,8 @@ namespace ChakuniNyuuryoku
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
             txtSouko.E102Check(true);
             txtSouko.E101Check(true, "souko", txtSouko, null, null);
-            txtScheduled.E133Check(true, "M_Siiresaki", txtScheduled, txtArrivalDate, null);
+            txtScheduled.E133Check(true, "ChakuniYotei", txtScheduled, txtArrivalDate, null);
+            txtScheduled.E268Check(true, "ChakuniYotei", txtScheduled, null);
         }
         public override void FunctionProcess(string tagID)
         {

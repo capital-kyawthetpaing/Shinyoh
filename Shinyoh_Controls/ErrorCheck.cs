@@ -398,6 +398,12 @@ namespace Shinyoh_Controls
                         rDt = dt;
                         result = dt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "ChakuniYotei":
+                        chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
+                        dt = bl.ChakuniNyuuryoku_Select(sTextBox.ctrlE133_1.Text, string.Empty, "E133");
+                        rDt = dt;
+                        result = dt.Rows[0]["MessageID"].ToString();
+                        break;
                     case "ChakuniYoteiNyuuryoku":
                         ChakuniYoteiNyuuryoku_BL cybl = new ChakuniYoteiNyuuryoku_BL();
                         dt = cybl.ChakuniYoteiNyuuryoku_Select(sTextBox.ctrlE133_1.Text, string.Empty, "E133");
@@ -671,6 +677,11 @@ namespace Shinyoh_Controls
                     case "ChakuniNyuuryoku":
                         chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
                         rDt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE268_1.Text, string.Empty, "E268");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "ChakuniYotei":
+                        chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
+                        rDt = bl.ChakuniNyuuryoku_ErrorCheck(sTextBox.ctrlE268_1.Text, string.Empty, "E268");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                     case "ChakuniYoteiNyuuryoku":
