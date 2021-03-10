@@ -255,6 +255,19 @@ Group by C.HacchuuNO
 )B
 ON A.HacchuuNO=B.HacchuuNO
 
+DECLARE @fun_table TABLE (idx int Primary Key IDENTITY(1,1), ChakuniYoteiNO varchar(12))
+			INSERT @fun_table SELECT distinct ChakuniYoteiNO FROM #Temp_Main
+			declare @s_Count as int =(SELECT COUNT(*) FROM @fun_table)
+			declare @OperatorCD as varchar(10) = (select Operator from #Temp_Main)
+			declare @i_Count as int = 0
+			declare @slip_NO as varchar(12)
+			WHILE @i_Count < @s_Count
+			BEGIN
+			   set @slip_NO = (SELECT ChakuniYoteiNO FROM @fun_table WHERE idx = (@i_Count+1))
+			   exec dbo.Fnc_Hikiate 16,@slip_NO,30,@OperatorCD
+			   SET @i_Count = @i_Count + 1
+			END;
+
 --Insert table Z
             declare	@InsertOperator  varchar(10) = (select m.Operator from #Temp_Main m)
 			declare @Program         varchar(100) = (select m.ProgramID from #Temp_Main m)
