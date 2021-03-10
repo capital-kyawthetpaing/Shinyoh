@@ -23,6 +23,17 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("ChakuniNyuuryoku_ErrorCheck_Select", GetConnectionString(), parameters);
             return dt;
         }
+
+        public DataTable ChakuniNyuuryoku_ErrorCheck(string ChakuniYoteiNO, string chakunidate, string error_Type)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@ChakuniYoteiNo", SqlDbType.VarChar) { Value = ChakuniYoteiNO };
+            //parameters[1] = new SqlParameter("@ChakuniDate", SqlDbType.VarChar) { Value = chakunidate };
+            parameters[1] = new SqlParameter("@Errortype", SqlDbType.VarChar) { Value = error_Type };
+            DataTable dt = ckmdl.SelectDatatable("ChakuniNyuuryoku_ErrorCheck", GetConnectionString(), parameters);
+            return dt;
+        }
         public DataTable ChakuniNyuuryoku_Update_Select(ChakuniNyuuryoku_Entity ce,int type)
         {
             CKMDL ckmdl = new CKMDL();
