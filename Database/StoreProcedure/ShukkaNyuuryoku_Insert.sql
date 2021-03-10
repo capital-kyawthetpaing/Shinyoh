@@ -145,7 +145,7 @@ BEGIN
 		CREATE TABLE #Temp_Detail
 				(   
 					JANCD					varchar(13) COLLATE DATABASE_DEFAULT,
-					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
+					HinbanCD				varchar(20) COLLATE DATABASE_DEFAULT,
 					ShouhinName				varchar(100) COLLATE DATABASE_DEFAULT,
 					ColorRyakuName			varchar(25) COLLATE DATABASE_DEFAULT,
 					ColorNO					varchar(13) COLLATE DATABASE_DEFAULT,
@@ -154,18 +154,19 @@ BEGIN
 					MiNyuukaSuu				decimal(21,6) DEFAULT 0.0,
 					ShukkaSuu				decimal(21,6) DEFAULT 0.0,		--konkai
 					Kanryo					tinyint DEFAULT 0,
-					ShukkaMeisaiTekiyou		varchar(80) COLLATE DATABASE_DEFAULT,		--Detail
-					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
+					ShukkaMeisaiTekiyou		varchar(80) COLLATE DATABASE_DEFAULT,		--Detail				
 					ShukkaSiziNOGyouNO		varchar(25) COLLATE DATABASE_DEFAULT,
-					JuchuuNOGyouNO			varchar(12) COLLATE DATABASE_DEFAULT,
-					DenpyouDate				date
+					JuchuuNOGyouNO			varchar(25) COLLATE DATABASE_DEFAULT,
+					DenpyouDate				date,
+					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
+					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
 				)
 	    EXEC sp_xml_preparedocument @hQuantityAdjust OUTPUT,@XML_Detail
 
 		
 	    INSERT INTO #Temp_Detail
            (JANCD
-			  ,ShouhinCD
+			  ,HinbanCD
 			  ,ShouhinName          
 			  ,ColorRyakuName          
 			  ,ColorNO       
@@ -174,11 +175,12 @@ BEGIN
 			  ,MiNyuukaSuu    
 			  ,ShukkaSuu
 			  ,Kanryo
-			  ,ShukkaMeisaiTekiyou
-			  ,SoukoCD
+			  ,ShukkaMeisaiTekiyou			
 			  ,ShukkaSiziNOGyouNO   			 
 			  ,JuchuuNOGyouNO
 			  ,DenpyouDate
+			  ,ShouhinCD
+			  ,SoukoCD
 			 )
 			 
 			   SELECT *
@@ -186,7 +188,7 @@ BEGIN
 					WITH
 					(
 					JANCD					varchar(13) 'JANCD',
-					ShouhinCD				varchar(50) 'ShouhinCD',
+					HinbanCD				varchar(20) 'ShouhinCD',
 					ShouhinName				varchar(100) 'ShouhinName',
 					ColorRyakuName			varchar(25) 'ColorRyakuName',
 					ColorNO					varchar(13) 'ColorNO',
@@ -196,10 +198,11 @@ BEGIN
 					ShukkaSuu				decimal(21,6) 'ShukkaSuu',
 					Kanryo					tinyint 'Kanryo',
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
-					SoukoCD					varchar(12)'SoukoCD',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
-					JuchuuNOGyouNO			varchar(12)'JuchuuNOGyouNO',
-					DenpyouDate				date 'DenpyouDate'
+					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
+					DenpyouDate				date 'DenpyouDate',
+					ShouhinCD				varchar(50)'ShouhinCD',
+					SoukoCD					varchar(10)'SoukoCD'
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 					

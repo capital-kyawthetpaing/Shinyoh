@@ -1033,6 +1033,18 @@ namespace ShukkaSiziNyuuryoku
                     }
                     break;
                 case 10:
+                    sksz_bl = new ShukkasiziNyuuryokuBL();
+                    DataTable dt1 = new DataTable();
+                    if (!string.IsNullOrWhiteSpace(txtJuchuuNo.Text))
+                    {
+                        dt1 = sksz_bl.JuchuuNo_Check(txtJuchuuNo.Text, "E133");
+                        if (dt1.Rows[0]["MessageID"].ToString().Equals("E133"))
+                        {
+                            bbl.ShowMessage("E133");
+                            txtJuchuuNo.Focus();
+                            return;
+                        }
+                    }
 
                     if (cboMode.SelectedValue.ToString().Equals("2"))
                     {
@@ -1077,7 +1089,6 @@ namespace ShukkaSiziNyuuryoku
                     {
                         bbl.ShowMessage("S004", Data1, Data2, Data3);
                     }
-                    dgvShukkasizi.Columns[10].DefaultCellStyle.Format = "#,0";
                     dgvShukkasizi.DataSource = dtHaita;
                     if(dtHaita.Rows.Count>0)
                     {
