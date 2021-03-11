@@ -95,7 +95,16 @@ namespace BL {
             parameters[1] = new SqlParameter("@ShukkaSiziNO_ShukkaSiziGyouNO", SqlDbType.VarChar) { Value = ShukkaSiziNO };
             parameters[2] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
             return ckmdl.InsertUpdateDeleteData("Shukka_Price", GetConnectionString(), parameters);
-        }      
+        }
+        public string JuchuuShousai_Price(string shukkasizisuu, string JuchuuNO, string ShouhinCD)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@KonkaiShukkaSiziSuu", SqlDbType.VarChar) { Value = shukkasizisuu };
+            parameters[1] = new SqlParameter("@JuchuuNO_JuchuuGyouNO", SqlDbType.VarChar) { Value = JuchuuNO };
+            parameters[2] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = ShouhinCD };
+            return ckmdl.InsertUpdateDeleteData("JuchuuShousai_Price", GetConnectionString(), parameters);
+        }
         public DataTable D_Exclusive_Lock_Check(ShukkaNyuuryokuEntity se)
         {
             CKMDL ckmdl = new CKMDL();
