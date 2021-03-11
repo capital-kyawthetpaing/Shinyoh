@@ -890,6 +890,7 @@
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNo.TxtBox = null;
             this.txtSizeNo.TxtBox1 = null;
+            this.txtSizeNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSizeNo_KeyDown);
             // 
             // txtColorNo
             // 
