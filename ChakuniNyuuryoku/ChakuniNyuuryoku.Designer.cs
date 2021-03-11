@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.txtArrivalDate = new Shinyoh_Controls.STextBox();
             this.txtDescription = new Shinyoh_Controls.STextBox();
@@ -84,6 +84,7 @@
             this.lblWareHouse = new Shinyoh_Controls.SLabel();
             this.lblBrandName = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.txtScheduled = new Shinyoh_Search.SearchBox();
             this.txtSizeNo = new Shinyoh_Search.SearchBox();
             this.txtColorNo = new Shinyoh_Search.SearchBox();
             this.txtShouhinCD = new Shinyoh_Search.SearchBox();
@@ -96,7 +97,6 @@
             this.lblSiiresaki = new Shinyoh_Controls.SLabel();
             this.txtArrivalNO = new Shinyoh_Search.SearchBox();
             this.txtScheduledNo = new Shinyoh_Search.SearchBox();
-            this.txtScheduled = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
@@ -121,7 +121,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(39, 9);
+            this.sLabel3.Location = new System.Drawing.Point(39, 8);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 0;
@@ -543,15 +543,15 @@
             // gvChakuniNyuuryoku
             // 
             this.gvChakuniNyuuryoku.AllowUserToAddRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvChakuniNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvChakuniNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvChakuniNyuuryoku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvChakuniNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.HinbanCD,
@@ -623,8 +623,8 @@
             // ChakuniYoteiDate
             // 
             this.ChakuniYoteiDate.DataPropertyName = "ChakuniYoteiDate";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ChakuniYoteiDate.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ChakuniYoteiDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.ChakuniYoteiDate.HeaderText = "着荷予定日";
             this.ChakuniYoteiDate.Name = "ChakuniYoteiDate";
             this.ChakuniYoteiDate.ReadOnly = true;
@@ -632,8 +632,8 @@
             // ChakuniYoteiSuu
             // 
             this.ChakuniYoteiSuu.DataPropertyName = "ChakuniYoteiSuu";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle3;
             this.ChakuniYoteiSuu.HeaderText = "着荷予定数";
             this.ChakuniYoteiSuu.Name = "ChakuniYoteiSuu";
             this.ChakuniYoteiSuu.ReadOnly = true;
@@ -641,17 +641,17 @@
             // ChakuniZumiSuu
             // 
             this.ChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
             this.ChakuniZumiSuu.HeaderText = "着荷済数";
             this.ChakuniZumiSuu.Name = "ChakuniZumiSuu";
             // 
             // ChakuniSuu
             // 
             this.ChakuniSuu.DataPropertyName = "ChakuniSuu";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.NullValue = "0";
-            this.ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.NullValue = "0";
+            this.ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle5;
             this.ChakuniSuu.HeaderText = "今回着荷数";
             this.ChakuniSuu.Name = "ChakuniSuu";
             // 
@@ -830,6 +830,36 @@
             this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
             this.PanelDetail.TabIndex = 45;
             // 
+            // txtScheduled
+            // 
+            this.txtScheduled.AllowMinus = false;
+            this.txtScheduled.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtScheduled.ChangeDate = null;
+            this.txtScheduled.Combo = null;
+            this.txtScheduled.DecimalPlace = 0;
+            this.txtScheduled.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtScheduled.DepandOnMode = false;
+            this.txtScheduled.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtScheduled.IntegerPart = 0;
+            this.txtScheduled.IsDatatableOccurs = null;
+            this.txtScheduled.IsErrorOccurs = false;
+            this.txtScheduled.IsRequire = false;
+            this.txtScheduled.IsUseInitializedLayout = true;
+            this.txtScheduled.lblName = null;
+            this.txtScheduled.lblName1 = null;
+            this.txtScheduled.Location = new System.Drawing.Point(270, 133);
+            this.txtScheduled.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtScheduled.MoveNext = true;
+            this.txtScheduled.Name = "txtScheduled";
+            this.txtScheduled.NextControl = null;
+            this.txtScheduled.NextControlName = "txtShouhinCD";
+            this.txtScheduled.SearchType = Entity.SearchType.ScType.Siiresaki;
+            this.txtScheduled.Size = new System.Drawing.Size(100, 19);
+            this.txtScheduled.TabIndex = 7;
+            this.txtScheduled.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtScheduled.TxtBox = null;
+            this.txtScheduled.TxtBox1 = null;
+            // 
             // txtSizeNo
             // 
             this.txtSizeNo.AllowMinus = false;
@@ -860,6 +890,7 @@
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNo.TxtBox = null;
             this.txtSizeNo.TxtBox1 = null;
+            this.txtSizeNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSizeNo_KeyDown);
             // 
             // txtColorNo
             // 
@@ -1103,7 +1134,7 @@
             this.txtArrivalNO.IsUseInitializedLayout = true;
             this.txtArrivalNO.lblName = null;
             this.txtArrivalNO.lblName1 = null;
-            this.txtArrivalNO.Location = new System.Drawing.Point(138, 9);
+            this.txtArrivalNO.Location = new System.Drawing.Point(138, 8);
             this.txtArrivalNO.MaxLength = 12;
             this.txtArrivalNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtArrivalNO.MoveNext = true;
@@ -1148,36 +1179,6 @@
             this.txtScheduledNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtScheduledNo.TxtBox = null;
             this.txtScheduledNo.TxtBox1 = null;
-            // 
-            // txtScheduled
-            // 
-            this.txtScheduled.AllowMinus = false;
-            this.txtScheduled.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtScheduled.ChangeDate = null;
-            this.txtScheduled.Combo = null;
-            this.txtScheduled.DecimalPlace = 0;
-            this.txtScheduled.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtScheduled.DepandOnMode = false;
-            this.txtScheduled.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtScheduled.IntegerPart = 0;
-            this.txtScheduled.IsDatatableOccurs = null;
-            this.txtScheduled.IsErrorOccurs = false;
-            this.txtScheduled.IsRequire = false;
-            this.txtScheduled.IsUseInitializedLayout = true;
-            this.txtScheduled.lblName = null;
-            this.txtScheduled.lblName1 = null;
-            this.txtScheduled.Location = new System.Drawing.Point(270, 133);
-            this.txtScheduled.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtScheduled.MoveNext = true;
-            this.txtScheduled.Name = "txtScheduled";
-            this.txtScheduled.NextControl = null;
-            this.txtScheduled.NextControlName = "txtShouhinCD";
-            this.txtScheduled.SearchType = Entity.SearchType.ScType.Siiresaki;
-            this.txtScheduled.Size = new System.Drawing.Size(100, 19);
-            this.txtScheduled.TabIndex = 7;
-            this.txtScheduled.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtScheduled.TxtBox = null;
-            this.txtScheduled.TxtBox1 = null;
             // 
             // ChakuniNyuuryoku
             // 

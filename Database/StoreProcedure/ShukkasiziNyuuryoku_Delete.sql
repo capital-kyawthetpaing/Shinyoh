@@ -129,14 +129,15 @@ CREATE TABLE  [dbo].[#Temp_Details]
 					KouritenName	  varchar(120) COLLATE DATABASE_DEFAULT,
 					KouritenYuubinNO1    varchar(3) COLLATE DATABASE_DEFAULT,
 					KouritenYuubinNO2    varchar(4) COLLATE DATABASE_DEFAULT,
-					KouritenJuusho1  varchar(50) COLLATE DATABASE_DEFAULT,
-					KouritenJuusho2	 varchar(50) COLLATE DATABASE_DEFAULT,
+					KouritenJuusho1  varchar(80) COLLATE DATABASE_DEFAULT,
+					KouritenJuusho2	 varchar(80) COLLATE DATABASE_DEFAULT,
 					KouritenTel11    varchar(6) COLLATE DATABASE_DEFAULT,	
 					KouritenTel12	 varchar(5) COLLATE DATABASE_DEFAULT,	
 					KouritenTel13	 varchar(5) COLLATE DATABASE_DEFAULT,	
 					KouritenTel21   varchar(6) COLLATE DATABASE_DEFAULT,	
 					KouritenTel22   varchar(5) COLLATE DATABASE_DEFAULT,	
-					KouritenTel23   varchar(5) COLLATE DATABASE_DEFAULT
+					KouritenTel23   varchar(5) COLLATE DATABASE_DEFAULT,
+					Hidden_ShouhinCD varchar(50) COLLATE DATABASE_DEFAULT
 				)
 				EXEC sp_xml_preparedocument @idoc OUTPUT, @XML_Detail
 
@@ -165,14 +166,15 @@ INSERT INTO [#Temp_Details]
 					KouritenName	  varchar(120),
 					KouritenYuubinNO1    varchar(3),
 					KouritenYuubinNO2    varchar(4),
-					KouritenJuusho1  varchar(50),
-					KouritenJuusho2	 varchar(50),
+					KouritenJuusho1  varchar(80),
+					KouritenJuusho2	 varchar(80),
 					KouritenTel11    varchar(6),	
 					KouritenTel12	 varchar(5),	
 					KouritenTel13	 varchar(5),	
 					KouritenTel21   varchar(6),	
 					KouritenTel22   varchar(5),	
-					KouritenTel23   varchar(5)
+					KouritenTel23   varchar(5),
+					Hidden_ShouhinCD varchar(50)
 				)
 				exec sp_xml_removedocument @idoc
 

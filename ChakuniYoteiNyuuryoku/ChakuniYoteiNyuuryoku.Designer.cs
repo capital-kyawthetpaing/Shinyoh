@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.txtSizeNo = new Shinyoh_Search.SearchBox();
             this.txtColorNo = new Shinyoh_Search.SearchBox();
@@ -192,6 +192,7 @@
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNo.TxtBox = null;
             this.txtSizeNo.TxtBox1 = null;
+            this.txtSizeNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSizeNo_KeyDown);
             // 
             // txtColorNo
             // 
@@ -346,15 +347,15 @@
             // gvChakuniYoteiNyuuryoku
             // 
             this.gvChakuniYoteiNyuuryoku.AllowUserToAddRows = false;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvChakuniYoteiNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvChakuniYoteiNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvChakuniYoteiNyuuryoku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvChakuniYoteiNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -422,8 +423,8 @@
             // colDate
             // 
             this.colDate.DataPropertyName = "HacchuuDate";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colDate.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.colDate.HeaderText = "発注日";
             this.colDate.Name = "colDate";
             this.colDate.ReadOnly = true;
@@ -432,8 +433,8 @@
             // colHacchuuSuu
             // 
             this.colHacchuuSuu.DataPropertyName = "HacchuuSuu";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colHacchuuSuu.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colHacchuuSuu.DefaultCellStyle = dataGridViewCellStyle3;
             this.colHacchuuSuu.HeaderText = "発注数";
             this.colHacchuuSuu.Name = "colHacchuuSuu";
             this.colHacchuuSuu.ReadOnly = true;
@@ -442,28 +443,28 @@
             // colChakuniZumiSuu
             // 
             this.colChakuniZumiSuu.DataPropertyName = "ChakuniYoteiZumiSuu";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle24;
-            this.colChakuniZumiSuu.HeaderText = "着荷済数着荷予定済数";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colChakuniZumiSuu.HeaderText = "着荷予定済数";
             this.colChakuniZumiSuu.Name = "colChakuniZumiSuu";
-            this.colChakuniZumiSuu.Width = 200;
+            this.colChakuniZumiSuu.Width = 130;
             // 
             // colYoteiSuu
             // 
             this.colYoteiSuu.DataPropertyName = "ChakuniYoteiSuu";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.NullValue = null;
-            this.colYoteiSuu.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.NullValue = null;
+            this.colYoteiSuu.DefaultCellStyle = dataGridViewCellStyle5;
             this.colYoteiSuu.HeaderText = "今回着荷予定数";
             this.colYoteiSuu.Name = "colYoteiSuu";
-            this.colYoteiSuu.Width = 150;
+            this.colYoteiSuu.Width = 130;
             // 
             // colDetails
             // 
             this.colDetails.DataPropertyName = "ChakuniYoteiMeisaiTekiyou";
             this.colDetails.HeaderText = "明細摘要";
             this.colDetails.Name = "colDetails";
-            this.colDetails.Width = 250;
+            this.colDetails.Width = 420;
             // 
             // colJanCD
             // 
@@ -1106,7 +1107,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(26, 6);
+            this.sLabel3.Location = new System.Drawing.Point(26, 8);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 2;
@@ -1130,7 +1131,7 @@
             this.txtChakuniYoteiNO.IsUseInitializedLayout = true;
             this.txtChakuniYoteiNO.lblName = null;
             this.txtChakuniYoteiNO.lblName1 = null;
-            this.txtChakuniYoteiNO.Location = new System.Drawing.Point(126, 6);
+            this.txtChakuniYoteiNO.Location = new System.Drawing.Point(126, 8);
             this.txtChakuniYoteiNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtChakuniYoteiNO.MoveNext = true;
             this.txtChakuniYoteiNO.Name = "txtChakuniYoteiNO";
@@ -1211,6 +1212,9 @@
         private Shinyoh_Search.SearchBox txtChakuniYoteiNO;
         private Shinyoh_Controls.SCheckBox chkFW;
         private Shinyoh_Controls.SCheckBox chkSS;
+        private Shinyoh_Search.SearchBox txtShouhinCD;
+        private Shinyoh_Search.SearchBox txtColorNo;
+        private Shinyoh_Search.SearchBox txtSizeNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorRyakuName;
@@ -1226,9 +1230,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private Shinyoh_Search.SearchBox txtShouhinCD;
-        private Shinyoh_Search.SearchBox txtColorNo;
-        private Shinyoh_Search.SearchBox txtSizeNo;
     }
 }
 

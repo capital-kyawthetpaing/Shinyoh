@@ -928,6 +928,7 @@ namespace JuchuuNyuuryoku
                 obj.ChangeDate = txtJuchuuDate.Text;
                 DataTable dt = obj_bl.JuchuuNyuuryoku_Display(obj);
                 gv_JuchuuNyuuryoku.DataSource = dt;                     //For task no. 120
+                gv_JuchuuNyuuryoku.Focus();
                 if (dt.Rows.Count > 0)
                 {
                     DataTable dt_temp = dt.Copy();
@@ -1179,7 +1180,7 @@ namespace JuchuuNyuuryoku
 
                 F8_dt1.DefaultView.Sort = "ShouhinCD";
                 gv_JuchuuNyuuryoku.DataSource = F8_dt1.DefaultView.ToTable();
-                
+                gv_JuchuuNyuuryoku.Focus();
                 gv_JuchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
             }
             else

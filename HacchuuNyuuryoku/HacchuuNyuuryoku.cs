@@ -560,6 +560,7 @@ namespace HacchuuNyuuryoku
                 if (dt.Rows.Count > 0)
                 {
                     gv_HacchuuNyuuryoku.DataSource = dt;
+                    gv_HacchuuNyuuryoku.Focus();
                     DataTable dt_temp = dt.Copy();
                     gv1_to_dt1 = dt_temp;
 
@@ -605,6 +606,7 @@ namespace HacchuuNyuuryoku
                         {
                             if (ErrorCheck_CellEndEdit(gv.Index, i))
                             {
+                                gv_HacchuuNyuuryoku.Focus();
                                 gv_HacchuuNyuuryoku.CurrentCell = gv_HacchuuNyuuryoku.Rows[gv.Index].Cells[i];
                                 bl_error = true;
                                 break;
@@ -896,6 +898,7 @@ namespace HacchuuNyuuryoku
             if (F8_dt1.Rows.Count > 0)
             {
                 F8_dt1.DefaultView.Sort = "ShouhinCD";
+                gv_HacchuuNyuuryoku.Focus();
                 gv_HacchuuNyuuryoku.DataSource = F8_dt1.DefaultView.ToTable();
             }
             else
