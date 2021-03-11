@@ -177,21 +177,33 @@ namespace ShukkaNyuuryoku {
             ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
            // Konkai_Price(F8_dt1);
             string return_Bl = sBL.ShukkaNyuuryoku_CUD(obj.Item1, obj.Item2, obj.Item3);
+            Konkai_Price(F8_dt1);
+            Juchuu_Price(F8_dt1);
             if (return_Bl == "true")
                 bbl.ShowMessage("I101");
             gvdt1.Clear();
             F8_dt1.Clear();
         }
-        //private void Konkai_Price(DataTable dtTemp1)
-        //{
-        //    foreach (DataRow dr in dtTemp1.Rows)
-        //    {
-        //        string shukkasuu = dr["ShukkaSuu"].ToString();
-        //        string ShukkaSiziNOGyouNO = dr["ShukkaSiziNOGyouNO"].ToString();
-        //        string ShouhinCD = dr["HinbanCD"].ToString();
-        //        bl.Shukka_Price(shukkasuu, ShukkaSiziNOGyouNO, ShouhinCD);
-        //    }
-        //}
+        private void Konkai_Price(DataTable dtTemp1)
+        {
+            foreach (DataRow dr in dtTemp1.Rows)
+            {
+                string shukkasuu = dr["ShukkaSuu"].ToString();
+                string ShukkaSiziNOGyouNO = dr["ShukkaSiziNOGyouNO"].ToString();
+                string ShouhinCD = dr["ShouhinCD"].ToString();
+                bl.Shukka_Price(shukkasuu, ShukkaSiziNOGyouNO, ShouhinCD);
+            }
+        }
+        private void Juchuu_Price(DataTable dtTemp1)
+        {
+            foreach (DataRow dr in dtTemp1.Rows)
+            {
+                string shukkasuu = dr["ShukkaSuu"].ToString();
+                string JuchuuNOGyouNO = dr["JuchuuNOGyouNO"].ToString();
+                string ShouhinCD = dr["ShouhinCD"].ToString();
+                bl.JuchuuShousai_Price(shukkasuu, JuchuuNOGyouNO, ShouhinCD);
+            }
+        }
 
         private (string, string, string) GetInsert()
         {
@@ -738,8 +750,8 @@ namespace ShukkaNyuuryoku {
         {
 
             string Konkai = gvShukka1.Rows[row].Cells["colKonkai"].Value.ToString();
-            string a = gvShukka1.Rows[row].Cells["colShukkazansuu"].EditedFormattedValue.ToString();
-            string b = gvShukka1.Rows[row].Cells["colMiryoku"].EditedFormattedValue.ToString();
+            string a = gvShukka1.Rows[row].Cells["colShukkazansuu"].Value.ToString();
+            string b = gvShukka1.Rows[row].Cells["colMiryoku"].Value.ToString();
             decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
 
             bool bl_error = false;

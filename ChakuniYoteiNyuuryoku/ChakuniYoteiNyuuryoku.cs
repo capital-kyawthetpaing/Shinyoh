@@ -815,8 +815,7 @@ namespace ChakuniYoteiNyuuryoku
                 Temp_Save(e.RowIndex);
             }
         }
-
-        private void txtSizeNo_Click(object sender, EventArgs e)
+        private void txtSizeNo_KeyDown(object sender, KeyEventArgs e)
         {
             F10_Gridview_Bind();
         }

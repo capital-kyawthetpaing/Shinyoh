@@ -576,6 +576,7 @@ namespace IdouNyuuryoku
                 if (dt.Rows.Count > 0)
                 {
                     gv_1.DataSource = dt;
+                    gv_1.Focus();
                     DataTable dt_temp = dt.Copy();
                     gv1_to_dt1 = dt_temp;
 
@@ -698,6 +699,7 @@ namespace IdouNyuuryoku
                         {
                             if (ErrorCheck_CellEndEdit(gv.Index, i))
                             {
+                                gv_1.Focus();
                                 gv_1.CurrentCell = gv_1.Rows[gv.Index].Cells[i];
                                 bl_error = true;
                                 break;
@@ -808,7 +810,7 @@ namespace IdouNyuuryoku
                 
                 F8_dt1.DefaultView.Sort = "ShouhinCD";
                 gv_1.DataSource = F8_dt1.DefaultView.ToTable();
-
+                gv_1.Focus();
                 gv_1.Memory_Row_Count = F8_dt1.Rows.Count;
             }
             else
