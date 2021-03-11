@@ -1410,8 +1410,8 @@ namespace ShukkaSiziNyuuryoku
             }
             else
             {
-                sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-                Konkai_Price(dtGS1);
+               sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
+               Konkai_Price(dtGS1);
                 if (cboMode.SelectedValue.Equals("1"))
                 {
                     string FunctionNO = string.Empty;
