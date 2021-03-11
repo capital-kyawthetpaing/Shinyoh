@@ -57,7 +57,7 @@ namespace ShukkaSiziNyuuryoku
         {
             dgvShukkasizi.SetGridDesign();
             dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvShukkasizi.SetNumberColumn("colShukkakanousuu,colTanka,colPrice");
+            dgvShukkasizi.SetNumberColumn("colKonkaiShukkaSiziSuu,colTanka,colPrice");
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
            
@@ -1403,7 +1403,6 @@ namespace ShukkaSiziNyuuryoku
            
             if (cboMode.SelectedValue.Equals("3"))//delete
             {
-                Konkai_Price(dtGS1);
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
                 sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
                 bbl.ShowMessage("I102");
@@ -1411,7 +1410,6 @@ namespace ShukkaSiziNyuuryoku
             else
             {
                sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-               Konkai_Price(dtGS1);
                 if (cboMode.SelectedValue.Equals("1"))
                 {
                     string FunctionNO = string.Empty;
@@ -1427,16 +1425,6 @@ namespace ShukkaSiziNyuuryoku
                     sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "21", sksz_e.OperatorCD);
                 }
                 bbl.ShowMessage("I101");
-            }
-        }
-        private void Konkai_Price(DataTable dtTemp1)
-        {
-            foreach (DataRow dr in dtTemp1.Rows)
-            {
-                string shukkasizisuu = dr["KonkaiShukkaSiziSuu"].ToString();
-                string JuchuuNO_GyouNO = dr["SKMSNO"].ToString();
-                string ShouhinCD = dr["Hidden_ShouhinCD"].ToString();
-                sksz_bl.Shukkasizi_Price(shukkasizisuu, JuchuuNO_GyouNO, ShouhinCD);
             }
         }
         private (string, string, string) GetInsert()
