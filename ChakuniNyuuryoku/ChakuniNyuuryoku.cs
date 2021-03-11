@@ -182,8 +182,8 @@ namespace ChakuniNyuuryoku
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
             txtSouko.E102Check(true);
             txtSouko.E101Check(true, "souko", txtSouko, null, null);
-            txtScheduled.E133Check(true, "ChakuniYotei", txtScheduled, txtArrivalDate, null);
-            txtScheduled.E268Check(true, "ChakuniYotei", txtScheduled, null);
+            //txtScheduled.E133Check(true, "ChakuniYotei", txtScheduled, txtArrivalDate, null);
+            //txtScheduled.E268Check(true, "ChakuniYotei", txtScheduled, null);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -747,7 +747,7 @@ namespace ChakuniNyuuryoku
                 }
             }
         }
-            private bool ChakuniNO_Check()
+        private bool ChakuniNO_Check()
             {
                 chkEntity = new ChakuniNyuuryoku_Entity();
                 chkEntity.DataKBN = 5;
@@ -764,7 +764,7 @@ namespace ChakuniNyuuryoku
                 }
                 return false;
             }
-            private void Update_Data()
+        private void Update_Data()
             {
                 chkEntity = new ChakuniNyuuryoku_Entity();
                 chkEntity.ChakuniDate = string.IsNullOrEmpty(txtArrivalDate.Text) ? System.DateTime.Now.ToString("yyyy-MM-dd") : txtArrivalDate.Text;
@@ -799,11 +799,11 @@ namespace ChakuniNyuuryoku
                     }
                 }
             }
-            private void btn_Siiresaki_Click(object sender, EventArgs e)
+        private void btn_Siiresaki_Click(object sender, EventArgs e)
             {
                 sd.ShowDialog();
             }
-            private void txtSiiresaki_KeyDown(object sender, KeyEventArgs e)
+        private void txtSiiresaki_KeyDown(object sender, KeyEventArgs e)
             {
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -819,7 +819,7 @@ namespace ChakuniNyuuryoku
                     }
                 }
             }
-            private SiiresakiEntity From_DB_To_Siiresaki(DataTable dtSiiresaki)
+        private SiiresakiEntity From_DB_To_Siiresaki(DataTable dtSiiresaki)
             {
                 SiiresakiEntity obj = new SiiresakiEntity();
                 obj.SiiresakiCD = dtSiiresaki.Rows[0]["SiiresakiCD"].ToString();
@@ -867,7 +867,7 @@ namespace ChakuniNyuuryoku
                     obj.Tel23 = dtSiiresaki.Rows[0]["Tel23"].ToString();
                 return obj;
             }
-            private void txtSouko_KeyDown(object sender, KeyEventArgs e)
+        private void txtSouko_KeyDown(object sender, KeyEventArgs e)
             {
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -885,7 +885,7 @@ namespace ChakuniNyuuryoku
                     }
                 }
             }
-            private void gvChakuniNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        private void gvChakuniNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
             {
                 if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
                 {
@@ -896,7 +896,7 @@ namespace ChakuniNyuuryoku
                     Temp_Save(e.RowIndex);
                 }
             }
-            private void Temp_Save(int row)
+        private void Temp_Save(int row)
             {
                 if ((!gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].EditedFormattedValue.ToString().Equals("0")))
                 {
@@ -926,7 +926,7 @@ namespace ChakuniNyuuryoku
                 }
                 gvChakuniNyuuryoku.Memory_Row_Count = dtGS1.Rows.Count;
             }
-            private bool Grid_ErrorCheck(int row, int col)
+        private bool Grid_ErrorCheck(int row, int col)
             {
                 if (gvChakuniNyuuryoku.Columns[col].Name == "ChakuniSuu")
                 {
