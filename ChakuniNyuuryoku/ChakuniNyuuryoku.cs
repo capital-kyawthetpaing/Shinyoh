@@ -152,6 +152,7 @@ namespace ChakuniNyuuryoku
             cf.Clear(PanelTitle);
             cf.Clear(PanelDetail);
             cf.DisablePanel(PanelTitle);
+            cboMode.Enabled = true;
             cf.EnablePanel(PanelDetail);
             txtArrivalDate.Focus();
             tdDate = DateTime.Now.ToString("yyyy/MM/dd");
