@@ -452,7 +452,8 @@ namespace ShukkaNyuuryoku {
                         dtSource.Rows.Clear();
                     }             
                     break;
-                case 10:                
+                case 10:
+                    ShukkaSiziNo_Check();
                     if (cboMode.SelectedValue.ToString() == "1")
                     {
                         ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
@@ -557,12 +558,12 @@ namespace ShukkaNyuuryoku {
                             {
                                 gvShukka1.CurrentCell = gvShukka1.Rows[0].Cells["colKonkai"];
                             }
-                            else
-                            {
-                                if (PreviousCtrl != null)
-                                    PreviousCtrl.Focus();
-                                return;
-                            }
+                            //else
+                            //{
+                            //    if (PreviousCtrl != null)
+                            //        PreviousCtrl.Focus();
+                            //    return;
+                            //}
                         }
                     }
                     else
