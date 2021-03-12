@@ -59,7 +59,6 @@ namespace Shinyoh
         public BaseForm()
         {
             InitializeComponent();
-            this.FormClosing += BaseForm_FormClosing;
             programEntity = new ProgramEntity();
             bbl = new BaseBL();
             ff = new FileFunction();
@@ -158,18 +157,22 @@ namespace Shinyoh
             {
                 switch (btn.ButtonType)
                 {
-                    case ButtonType.BType.Close:
-                        this.Close();
-                        //if (bbl.ShowMessage("Q003") == DialogResult.Yes)
-                        //{
-                        //    this.Close();
-                        //}
-                        //else
-                        //{
-                        //    if (PreviousCtrl != null)
-                        //        PreviousCtrl.Focus();
-                        //    return;
-                        //}
+                    case ButtonType.BType.Close:                     
+                        if (bbl.ShowMessage("Q003") == DialogResult.Yes)
+                        {
+                            BaseEntity be = new BaseEntity();
+                            be.OperatorCD = OperatorCD;
+                            be.ProgramID = ProgramID;
+                            be.PC = PCID;
+                            bbl.D_Exclusive_Number_Remove(be);
+                            this.Close();
+                        }
+                        else
+                        {
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
+                            return;
+                        }
                         break;
                     case ButtonType.BType.New:
                         SetMode(btn,"1");
@@ -565,19 +568,16 @@ namespace Shinyoh
             return true;
         }
 
-        private void BaseForm_FormClosing(object sender, FormClosingEventArgs e)
+        protected override System.Windows.Forms.CreateParams CreateParams
         {
-            if (bbl.ShowMessage("Q003") == DialogResult.Yes)
+            get
             {
-                BaseEntity be = new BaseEntity();
-                be.OperatorCD = OperatorCD;
-                be.ProgramID = ProgramID;
-                be.PC = PCID;
-                bbl.D_Exclusive_Number_Remove(be);
-            }
-            else
-            {
-                e.Cancel = true;
+                const int CS_NOCLOSE = 0x200;
+
+                System.Windows.Forms.CreateParams createParam = base.CreateParams;
+                createParam.ClassStyle = createParam.ClassStyle | CS_NOCLOSE;
+
+                return createParam;
             }
         }
     }
