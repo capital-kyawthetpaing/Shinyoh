@@ -183,8 +183,8 @@ namespace ChakuniNyuuryoku
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
             txtSouko.E102Check(true);
             txtSouko.E101Check(true, "souko", txtSouko, null, null);
-            //txtScheduled.E133Check(true, "ChakuniYotei", txtScheduled, txtArrivalDate, null);
-            //txtScheduled.E268Check(true, "ChakuniYotei", txtScheduled, null);
+            txtScheduled.E133Check(true, "ChakuniYotei", txtScheduled, txtArrivalDate, null);
+            txtScheduled.E268Check(true, "ChakuniYotei", txtScheduled, null);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -970,6 +970,10 @@ namespace ChakuniNyuuryoku
             F10_Gridview_Bind();
         }
 
+        private void txtScheduled_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
         private void gvChakuniNyuuryoku_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
              if (e.RowIndex >= 0 && e.ColumnIndex == 9)
