@@ -1536,7 +1536,6 @@ namespace JuchuuNyuuryoku
                 dt.Columns.Remove("HacchuuGyouNO");
                 dt.Columns.Remove("JuchuuGyouNO");
             }
-            
         }
 
         private void gv_1_CellEnter(object sender, DataGridViewCellEventArgs e)

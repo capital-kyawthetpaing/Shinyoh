@@ -519,23 +519,7 @@ namespace ChakuniYoteiNyuuryoku
         {
             if (GV_Check())
             {
-                //Add by NMW F8 case
-                if (cboMode.SelectedValue.ToString() == "2")
-                {
-                    dtTemp.Clear();
-                    foreach (DataGridViewRow row in gvChakuniYoteiNyuuryoku.Rows)
-                    {
-                        DataRow dr = dtTemp.NewRow();
-                        for (int j = 0; j < gvChakuniYoteiNyuuryoku.Columns.Count; j++)
-                        {
-                            dr[j] = row.Cells[j].Value;
-                        }
-
-                        dtTemp.Rows.Add(dr);
-                    }
-                }
-                else
-                    dtTemp = dtGS;
+                dtTemp = dtGS;
                 SaveClear();
                 gvChakuniYoteiNyuuryoku.ClearSelection();
                 gvChakuniYoteiNyuuryoku.DataSource = dtClear;
@@ -658,8 +642,6 @@ namespace ChakuniYoteiNyuuryoku
             dt_Details = cbl.ChakuniYoteiNyuuryoku_Update_Select(chkEntity, 2);
             if (dt_Details.Rows.Count > 0)
             {
-                if (cboMode.SelectedValue.ToString() == "2") // add NMW for F8 Case
-                    dtTemp = dt_Details.Copy();
                 gvChakuniYoteiNyuuryoku.DataSource = dt_Details;
             }
             else
