@@ -964,7 +964,7 @@ namespace ShukkaSiziNyuuryoku
 
                 string value2 = dgvShukkasizi.Rows[row].Cells["colJuchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
                 string value3 = dgvShukkasizi.Rows[row].Cells["colShukkaSiziZumiSuu"].EditedFormattedValue.ToString().Replace(",", "");
-                if (Convert.ToInt64(value) > (Convert.ToInt64(value2) - Convert.ToInt64(value3)))
+                if (Convert.ToInt64(value) != 0 && Convert.ToInt64(value) > (Convert.ToInt64(value2) - Convert.ToInt64(value3)))        //add new condition(Convert.ToInt64(value) != 0) by tza to avoid showing error msg even the input value is 0
                 {
                     bbl.ShowMessage("E143", "未出荷指示数", "大きい");
                     return false;
