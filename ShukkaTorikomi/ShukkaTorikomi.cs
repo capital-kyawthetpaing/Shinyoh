@@ -172,7 +172,8 @@ namespace ShukkaTorikomi
                         if (rdo_Toroku.Checked)
                             chk_val = "create_update";
                         else chk_val = "delete";
-                        string return_BL=bl.ShukkaTorikomi_CUD(Xml.Item1,Xml.Item2,chk_val, JEntity);
+                        string TorikomiDenpyouNO = txtDenpyouNO.Text;
+                        string return_BL=bl.ShukkaTorikomi_CUD(Xml.Item1,Xml.Item2,chk_val, TorikomiDenpyouNO);
                         if (return_BL == "true")
                         {
                             bbl.ShowMessage("I002");                           
