@@ -191,172 +191,6 @@ declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header
 ,@row as int =0
 
 --TableA
-UPDATE [dbo].[D_ShukkaSizi]
-SET [StaffCD]=TM.StaffCD
-	,[ShukkaYoteiDate]=TM.ShukkaYoteiDate
-	,[DenpyouDate]=TM.DenpyouDate
-	,[KaikeiYYMM]=CONVERT(int, FORMAT(Cast(TM.ShukkaYoteiDate as Date), 'yyyyMM'))
-	,[TokuisakiCD]=TM.TokuisakiCD
-	,[TokuisakiRyakuName]=case when FT.ShokutiFLG=0 then FT.TokuisakiRyakuName else TM.TokuisakiRyakuName end
-	,[KouritenCD]=TM.KouritenCD
-	,[KouritenRyakuName]=case when FK.ShokutiFLG=0 then FK.KouritenRyakuName else TM.KouritenRyakuName end
-	,[ShukkaSiziDenpyouTekiyou]=TM.ShukkaSiziDenpyouTekiyou
-	,[ShukkaSizishoHuyouKBN]=TM.ShukkaSizishoHuyouKBN
-	,[ShukkaKanryouKBN]=0
-	,[TokuisakiName]=case when FT.ShokutiFLG=0 then FT.TokuisakiName else TM.TokuisakiName end
-	,[TokuisakiYuubinNO1]=case when FT.ShokutiFLG=0 then FT.YuubinNO1 else TM.TokuisakiYuubinNO1 end
-	,[TokuisakiYuubinNO2]=case when FT.ShokutiFLG=0 then FT.YuubinNO2 else TM.TokuisakiYuubinNO2 end
-	,[TokuisakiJuusho1]=case when FT.ShokutiFLG=0 then FT.Juusho1 else TM.TokuisakiJuusho1 end
-	,[TokuisakiJuusho2]=case when FT.ShokutiFLG=0 then FT.Juusho2 else TM.TokuisakiJuusho2 end
-	,[TokuisakiTelNO1-1]=case when FT.ShokutiFLG=0 then FT.Tel11 else TM.TokuisakiTel11 end
-	,[TokuisakiTelNO1-2]=case when FT.ShokutiFLG=0 then FT.Tel12 else TM.TokuisakiTel12 end
-	,[TokuisakiTelNO1-3]=case when FT.ShokutiFLG=0 then FT.Tel13 else TM.TokuisakiTel13 end
-	,[TokuisakiTelNO2-1]=case when FT.ShokutiFLG=0 then FT.Tel21 else TM.TokuisakiTel21 end
-	,[TokuisakiTelNO2-2]=case when FT.ShokutiFLG=0 then FT.Tel22 else TM.TokuisakiTel22 end
-	,[TokuisakiTelNO2-3]=case when FT.ShokutiFLG=0 then FT.Tel23 else TM.TokuisakiTel23 end
-	,[TokuisakiTantouBushoName]=case when FT.ShokutiFLG=0 then FT.TantouBusho else NULL end
-	,[TokuisakiTantoushaYakushoku]=case when FT.ShokutiFLG=0 then FT.TantouYakushoku else NULL end
-	,[TokuisakiTantoushaName]=case when FT.ShokutiFLG=0 then FT.TantoushaName else NULL end
-	,[KouritenName]=case when FK.ShokutiFLG=0 then FK.KouritenName else TM.KouritenName end
-	,[KouritenYuubinNO1]=case when FK.ShokutiFLG=0 then FK.YuubinNO1 else TM.KouritenYuubinNO1 end
-	,[KouritenYuubinNO2]=case when FK.ShokutiFLG=0 then FK.YuubinNO2 else TM.KouritenYuubinNO2 end
-	,[KouritenJuusho1]=case when FK.ShokutiFLG=0 then FK.Juusho1 else TM.KouritenJuusho1 end
-	,[KouritenJuusho2]=case when FK.ShokutiFLG=0 then FK.Juusho2 else TM.KouritenJuusho2 end
-	,[KouritenTelNO1-1]=case when FK.ShokutiFLG=0 then FK.Tel11 else TM.KouritenTel11 end
-	,[KouritenTelNO1-2]=case when FK.ShokutiFLG=0 then FK.Tel12 else TM.KouritenTel12 end
-	,[KouritenTelNO1-3]=case when FK.ShokutiFLG=0 then FK.Tel13 else TM.KouritenTel13 end
-	,[KouritenTelNO2-1]=case when FK.ShokutiFLG=0 then FK.Tel21 else TM.KouritenTel21 end
-	,[KouritenTelNO2-2]=case when FK.ShokutiFLG=0 then FK.Tel22 else TM.KouritenTel22 end
-	,[KouritenTelNO2-3]=case when FK.ShokutiFLG=0 then FK.Tel23 else TM.KouritenTel23 end
-	,[KouritenTantouBushoName]=case when FK.ShokutiFLG=0 then FK.TantouBusho else NULL end
-	,[KouritenTantoushaYakushoku]=case when FK.ShokutiFLG=0 then FK.TantouYakushoku else NULL end
-	,[KouritenTantoushaName]=case when FK.ShokutiFLG=0 then FK.TantoushaName else NULL end
-	,[ShukkaSiziShuturyokuKBN]=0
-	,[ShukkaSiziShuturyokuDateTime] = NULL
-	,[UpdateOperator]=@OperatorCD
-	,[UpdateDateTime]=@currentDate
-FROM [#Temp_Header] TM
-	left outer join F_Tokuisaki(@ShippingDate) FT on FT.TokuisakiCD=TM.TokuisakiCD
-	left outer join F_Kouriten(@ShippingDate) FK on FK.KouritenCD=TM.KouritenCD
-where D_Shukkasizi.ShukkaSiziNO=TM.ShukkaSiziNO
-
---TableB
-UPDATE [dbo].[D_ShukkaSiziMeisai] 
-SET [GyouHyouziJun]=@row, @row = @row + 1
-	,[KouritenCD]=case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
-	,[KouritenRyakuName]=case when TD.KouritenRyakuName is null then DJ.KouritenRyakuName else TD.KouritenRyakuName end
-	,[BrandCD]=FS.BrandCD
-	,[ShouhinCD]=TD.ShouhinCD
-	,[ShouhinName]=TD.ShouhinName
-	,[JANCD]=FS.JANCD
-	,[ColorRyakuName]=TD.ColorRyakuName
-	,[ColorNO]=TD.ColorNO
-	,[SizeNO]=TD.SizeNO
-	,[Kakeritu]=1
-	,[ShukkaSiziSuu]=TD.KonkaiShukkaSiziSuu
-	,[TaniCD]=FS.TaniCD
-	,[UriageTanka]=TD.UriageTanka
-	,[UriageTankaShouhizei]=0
-	,[UriageHontaiTanka]=0
-	,[UriageKingaku]=TD.UriageKingaku
-	,[UriageHontaiKingaku]=0
-	,[UriageShouhizeiGaku]=0
-	,[ShukkaSiziMeisaiTekiyou]=TD.ShukkaSiziMeisaiTekiyou
-	,[SoukoCD]=TD.SoukoCD
-	,[ShukkaKanryouKBN]=0
-	,[ShukkaZumiSuu]=0
-	,[JuchuuNO]=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
-	,[JuchuuGyouNO]=RIGHT(TD.SKMSNO, LEN(TD.SKMSNO) - CHARINDEX('-', TD.SKMSNO))
-	,[KouritenName]=case when TD.KouritenName is null then DJ.KouritenName else TD.KouritenName end
-	,[KouritenYuubinNO1]=case when TD.KouritenYuubinNO1  is null then DJ.KouritenYuubinNO1 else TD.KouritenYuubinNO1 end
-	,[KouritenYuubinNO2]=case when TD.KouritenYuubinNO2 is null then DJ.KouritenYuubinNO2 else TD.KouritenYuubinNO2 end
-	,[KouritenJuusho1]=case when TD.KouritenJuusho1 is null then DJ.KouritenJuusho1 else TD.KouritenJuusho1 end
-	,[KouritenJuusho2]=case when TD.KouritenJuusho2 is null then DJ.KouritenJuusho2 else TD.KouritenJuusho2 end
-	,[KouritenTelNO1-1]=case when TD.KouritenTel11 is null then DJ.[KouritenTelNO1-1] else TD.KouritenTel11 end
-	,[KouritenTelNO1-2]=case when TD.KouritenTel12 is null then DJ.[KouritenTelNO1-2] else TD.KouritenTel12 end
-	,[KouritenTelNO1-3]=case when TD.KouritenTel13 is null then DJ.[KouritenTelNO1-3] else TD.KouritenTel13 end
-	,[KouritenTelNO2-1]=case when TD.KouritenTel21 is null then DJ.[KouritenTelNO2-1] else TD.KouritenTel21 end
-	,[KouritenTelNO2-2]=case when TD.KouritenTel22 is null then DJ.[KouritenTelNO2-2] else TD.KouritenTel23 end
-	,[KouritenTelNO2-3]=case when TD.KouritenTel23 is null then DJ.[KouritenTelNO2-3] else TD.KouritenTel23 end
-	,[KouritenTantouBushoName]=NULL
-	,[KouritenTantoushaYakushoku]=NULL
-	,[KouritenTantoushaName]=NULL
-	,[UpdateOperator]=@OperatorCD
-	,[UpdateDateTime]=@currentDate
-FROM #Temp_Details TD
-	LEFT OUTER JOIN D_Juchuu DJ
-	ON DJ.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
-	LEFT OUTER JOIN [dbo].[F_Shouhin](@ShippingDate) FS
-	ON FS.ShouhinCD=TD.Hidden_ShouhinCD
-where D_ShukkaSiziMeisai.ShukkaSiziNO=@ShukkaSiziNO
-and D_ShukkaSiziMeisai.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
-and D_ShukkaSiziMeisai.JuchuuGyouNO=RIGHT(TD.SKMSNO, LEN(TD.SKMSNO) - CHARINDEX('-', TD.SKMSNO))
-
---TableC
-declare @GyouNo as smallint = 1
-	declare @a decimal(21,6), @b decimal(21, 6), @JuchuuNO VARCHAR(12), @JuchuuGyouNO SMALLINT, @KonkaiShukkaSiziSuu VARCHAR(30), @SKMSNO VARCHAR(25), @Hidden_ShouhinCD VARCHAR(25)
-	DECLARE @SoukoCD VARCHAR(10), @ShouhinCD VARCHAR(20), @ShouhinName VARCHAR(100)
-	DECLARE cursor1 CURSOR READ_ONLY FOR SELECT SoukoCD, ShouhinCD, ShouhinName, SKMSNO, Hidden_ShouhinCD, KonkaiShukkaSiziSuu FROM #Temp_Details
-	OPEN cursor1
-	FETCH NEXT FROM cursor1 INTO @SoukoCD, @ShouhinCD, @ShouhinName, @SKMSNO, @Hidden_ShouhinCD, @KonkaiShukkaSiziSuu
-	WHILE @@FETCH_STATUS = 0
-	BEGIN
-		SET @JuchuuNO = LEFT(@SKMSNO, CHARINDEX('-', @SKMSNO) - 1)
-		SET @JuchuuGyouNO = RIGHT(@SKMSNO, LEN(@SKMSNO) - CHARINDEX('-', @SKMSNO))
-		SET @a = ABS(@KonkaiShukkaSiziSuu)
-
-    -- Insert statements for procedure here
-		WHILE @a >0
-			BEGIN
-			IF EXISTS (SELECT TOP 1 * FROM D_JuchuuShousai dj
-				INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
-				AND JuchuuNO = @JuchuuNO AND JuchuuGyouNO = @JuchuuGyouNO ORDER BY KanriNO ASC, NyuukoDate ASC) dj1
-				ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
-				AND dj.JuchuuNO = @JuchuuNO AND dj.JuchuuGyouNO = @JuchuuGyouNO)
-			
-			BEGIN
-				UPDATE [dbo].[D_ShukkaSiziShousai]
-				SET [SoukoCD] =@SoukoCD
-					,[ShouhinCD] =@ShouhinCD
-					,[ShouhinName] =@ShouhinName
-					,ShukkaSiziSuu=dj.ShukkaSiziZumiSuu
-					,KanriNO=dj.KanriNO
-					,NyuukoDate=dj.NyuukoDate
-					,ShukkaZumiSuu=0
-					,JuchuuNO=dj.JuchuuNO
-					,JuchuuGyouNO=dj.JuchuuGyouNO
-					,JuchuuShousaiNO=dj.JuchuuShousaiNO
-					,[UpdateOperator]=@OperatorCD
-					,[UpdateDateTime]=@currentDate
-				from  D_JuchuuShousai dj
-				INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
-				AND JuchuuNO = @JuchuuNO AND JuchuuGyouNO = @JuchuuGyouNO ORDER BY KanriNO ASC, NyuukoDate ASC) dj1
-				ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
-				AND dj.JuchuuNO = @JuchuuNO AND dj.JuchuuGyouNO = @JuchuuGyouNO
-				where D_ShukkaSiziShousai.ShukkaSiziNO=@ShukkaSiziNO
-
-				UPDATE dj
-				SET dj.HikiateZumiSuu = CASE WHEN dj.HikiateZumiSuu > @a THEN dj.HikiateZumiSuu - @a ELSE 0 END, 
-					dj.ShukkaSiziZumiSuu = CASE WHEN dj.HikiateZumiSuu > @a THEN @a ELSE dj.HikiateZumiSuu END,
-					@b = CASE WHEN dj.HikiateZumiSuu > @a THEN 0 ELSE @a - dj.HikiateZumiSuu END
-				from  D_JuchuuShousai dj
-				INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
-				AND JuchuuNO = @JuchuuNO AND JuchuuGyouNO = @JuchuuGyouNO ORDER BY KanriNO ASC, NyuukoDate ASC) dj1
-				ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
-				AND dj.JuchuuNO = @JuchuuNO AND dj.JuchuuGyouNO = @JuchuuGyouNO
-			END
-			ELSE
-				BREAK
-			SET @a = @b
-		END
-		set @GyouNo = @GyouNo + 1		
-		FETCH NEXT FROM cursor1 INTO @SoukoCD, @ShouhinCD, @ShouhinName, @SKMSNO, @Hidden_ShouhinCD, @KonkaiShukkaSiziSuu
-	END
-	CLOSE cursor1
-	DEALLOCATE cursor1
-
-
---TableD
 INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	(
 		[HistoryGuid]
@@ -462,7 +296,56 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	,@OperatorCD
 	,@currentDate
     FROM [dbo].[D_ShukkaSizi] AS i
-	where i.ShukkaSiziNO=@ShukkaSiziNO
+	where i.ShukkaSiziNO=@ShukkaSiziNO -- KTP Change before update
+
+UPDATE [dbo].[D_ShukkaSizi]
+SET [StaffCD]=TM.StaffCD
+	,[ShukkaYoteiDate]=TM.ShukkaYoteiDate
+	,[DenpyouDate]=TM.DenpyouDate
+	,[KaikeiYYMM]=CONVERT(int, FORMAT(Cast(TM.ShukkaYoteiDate as Date), 'yyyyMM'))
+	,[TokuisakiCD]=TM.TokuisakiCD
+	,[TokuisakiRyakuName]=case when FT.ShokutiFLG=0 then FT.TokuisakiRyakuName else TM.TokuisakiRyakuName end
+	,[KouritenCD]=TM.KouritenCD
+	,[KouritenRyakuName]=case when FK.ShokutiFLG=0 then FK.KouritenRyakuName else TM.KouritenRyakuName end
+	,[ShukkaSiziDenpyouTekiyou]=TM.ShukkaSiziDenpyouTekiyou
+	,[ShukkaSizishoHuyouKBN]=TM.ShukkaSizishoHuyouKBN
+	,[ShukkaKanryouKBN]=0
+	,[TokuisakiName]=case when FT.ShokutiFLG=0 then FT.TokuisakiName else TM.TokuisakiName end
+	,[TokuisakiYuubinNO1]=case when FT.ShokutiFLG=0 then FT.YuubinNO1 else TM.TokuisakiYuubinNO1 end
+	,[TokuisakiYuubinNO2]=case when FT.ShokutiFLG=0 then FT.YuubinNO2 else TM.TokuisakiYuubinNO2 end
+	,[TokuisakiJuusho1]=case when FT.ShokutiFLG=0 then FT.Juusho1 else TM.TokuisakiJuusho1 end
+	,[TokuisakiJuusho2]=case when FT.ShokutiFLG=0 then FT.Juusho2 else TM.TokuisakiJuusho2 end
+	,[TokuisakiTelNO1-1]=case when FT.ShokutiFLG=0 then FT.Tel11 else TM.TokuisakiTel11 end
+	,[TokuisakiTelNO1-2]=case when FT.ShokutiFLG=0 then FT.Tel12 else TM.TokuisakiTel12 end
+	,[TokuisakiTelNO1-3]=case when FT.ShokutiFLG=0 then FT.Tel13 else TM.TokuisakiTel13 end
+	,[TokuisakiTelNO2-1]=case when FT.ShokutiFLG=0 then FT.Tel21 else TM.TokuisakiTel21 end
+	,[TokuisakiTelNO2-2]=case when FT.ShokutiFLG=0 then FT.Tel22 else TM.TokuisakiTel22 end
+	,[TokuisakiTelNO2-3]=case when FT.ShokutiFLG=0 then FT.Tel23 else TM.TokuisakiTel23 end
+	,[TokuisakiTantouBushoName]=case when FT.ShokutiFLG=0 then FT.TantouBusho else NULL end
+	,[TokuisakiTantoushaYakushoku]=case when FT.ShokutiFLG=0 then FT.TantouYakushoku else NULL end
+	,[TokuisakiTantoushaName]=case when FT.ShokutiFLG=0 then FT.TantoushaName else NULL end
+	,[KouritenName]=case when FK.ShokutiFLG=0 then FK.KouritenName else TM.KouritenName end
+	,[KouritenYuubinNO1]=case when FK.ShokutiFLG=0 then FK.YuubinNO1 else TM.KouritenYuubinNO1 end
+	,[KouritenYuubinNO2]=case when FK.ShokutiFLG=0 then FK.YuubinNO2 else TM.KouritenYuubinNO2 end
+	,[KouritenJuusho1]=case when FK.ShokutiFLG=0 then FK.Juusho1 else TM.KouritenJuusho1 end
+	,[KouritenJuusho2]=case when FK.ShokutiFLG=0 then FK.Juusho2 else TM.KouritenJuusho2 end
+	,[KouritenTelNO1-1]=case when FK.ShokutiFLG=0 then FK.Tel11 else TM.KouritenTel11 end
+	,[KouritenTelNO1-2]=case when FK.ShokutiFLG=0 then FK.Tel12 else TM.KouritenTel12 end
+	,[KouritenTelNO1-3]=case when FK.ShokutiFLG=0 then FK.Tel13 else TM.KouritenTel13 end
+	,[KouritenTelNO2-1]=case when FK.ShokutiFLG=0 then FK.Tel21 else TM.KouritenTel21 end
+	,[KouritenTelNO2-2]=case when FK.ShokutiFLG=0 then FK.Tel22 else TM.KouritenTel22 end
+	,[KouritenTelNO2-3]=case when FK.ShokutiFLG=0 then FK.Tel23 else TM.KouritenTel23 end
+	,[KouritenTantouBushoName]=case when FK.ShokutiFLG=0 then FK.TantouBusho else NULL end
+	,[KouritenTantoushaYakushoku]=case when FK.ShokutiFLG=0 then FK.TantouYakushoku else NULL end
+	,[KouritenTantoushaName]=case when FK.ShokutiFLG=0 then FK.TantoushaName else NULL end
+	,[ShukkaSiziShuturyokuKBN]=0
+	,[ShukkaSiziShuturyokuDateTime] = NULL
+	,[UpdateOperator]=@OperatorCD
+	,[UpdateDateTime]=@currentDate
+FROM [#Temp_Header] TM
+	left outer join F_Tokuisaki(@ShippingDate) FT on FT.TokuisakiCD=TM.TokuisakiCD
+	left outer join F_Kouriten(@ShippingDate) FK on FK.KouritenCD=TM.KouritenCD
+where D_Shukkasizi.ShukkaSiziNO=TM.ShukkaSiziNO
 
 INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	(
@@ -569,8 +452,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	,@OperatorCD
 	,@currentDate
     FROM [dbo].[D_ShukkaSizi] AS i
-WHERE i.ShukkaSiziNO=@ShukkaSiziNO
-
+WHERE i.ShukkaSiziNO=@ShukkaSiziNO-- KTP Change after update
 
 --TableE
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
@@ -670,7 +552,59 @@ SELECT
 		,@OperatorCD
 		,@currentDate
 FROM [dbo].[D_ShukkaSiziMeisai] AS j
-WHERE j.ShukkaSiziNO=@ShukkaSiziNO
+WHERE j.ShukkaSiziNO=@ShukkaSiziNO-- KTP Change before update
+
+--TableB
+UPDATE [dbo].[D_ShukkaSiziMeisai] 
+SET [GyouHyouziJun]=@row, @row = @row + 1
+	,[KouritenCD]=case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
+	,[KouritenRyakuName]=case when TD.KouritenRyakuName is null then DJ.KouritenRyakuName else TD.KouritenRyakuName end
+	,[BrandCD]=FS.BrandCD
+	,[ShouhinCD]=TD.ShouhinCD
+	,[ShouhinName]=TD.ShouhinName
+	,[JANCD]=FS.JANCD
+	,[ColorRyakuName]=TD.ColorRyakuName
+	,[ColorNO]=TD.ColorNO
+	,[SizeNO]=TD.SizeNO
+	,[Kakeritu]=1
+	,[ShukkaSiziSuu]=TD.KonkaiShukkaSiziSuu
+	,[TaniCD]=FS.TaniCD
+	,[UriageTanka]=TD.UriageTanka
+	,[UriageTankaShouhizei]=0
+	,[UriageHontaiTanka]=0
+	,[UriageKingaku]=TD.UriageKingaku
+	,[UriageHontaiKingaku]=0
+	,[UriageShouhizeiGaku]=0
+	,[ShukkaSiziMeisaiTekiyou]=TD.ShukkaSiziMeisaiTekiyou
+	,[SoukoCD]=TD.SoukoCD
+	,[ShukkaKanryouKBN]=0
+	,[ShukkaZumiSuu]=0
+	,[JuchuuNO]=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
+	,[JuchuuGyouNO]=RIGHT(TD.SKMSNO, LEN(TD.SKMSNO) - CHARINDEX('-', TD.SKMSNO))
+	,[KouritenName]=case when TD.KouritenName is null then DJ.KouritenName else TD.KouritenName end
+	,[KouritenYuubinNO1]=case when TD.KouritenYuubinNO1  is null then DJ.KouritenYuubinNO1 else TD.KouritenYuubinNO1 end
+	,[KouritenYuubinNO2]=case when TD.KouritenYuubinNO2 is null then DJ.KouritenYuubinNO2 else TD.KouritenYuubinNO2 end
+	,[KouritenJuusho1]=case when TD.KouritenJuusho1 is null then DJ.KouritenJuusho1 else TD.KouritenJuusho1 end
+	,[KouritenJuusho2]=case when TD.KouritenJuusho2 is null then DJ.KouritenJuusho2 else TD.KouritenJuusho2 end
+	,[KouritenTelNO1-1]=case when TD.KouritenTel11 is null then DJ.[KouritenTelNO1-1] else TD.KouritenTel11 end
+	,[KouritenTelNO1-2]=case when TD.KouritenTel12 is null then DJ.[KouritenTelNO1-2] else TD.KouritenTel12 end
+	,[KouritenTelNO1-3]=case when TD.KouritenTel13 is null then DJ.[KouritenTelNO1-3] else TD.KouritenTel13 end
+	,[KouritenTelNO2-1]=case when TD.KouritenTel21 is null then DJ.[KouritenTelNO2-1] else TD.KouritenTel21 end
+	,[KouritenTelNO2-2]=case when TD.KouritenTel22 is null then DJ.[KouritenTelNO2-2] else TD.KouritenTel23 end
+	,[KouritenTelNO2-3]=case when TD.KouritenTel23 is null then DJ.[KouritenTelNO2-3] else TD.KouritenTel23 end
+	,[KouritenTantouBushoName]=NULL
+	,[KouritenTantoushaYakushoku]=NULL
+	,[KouritenTantoushaName]=NULL
+	,[UpdateOperator]=@OperatorCD
+	,[UpdateDateTime]=@currentDate
+FROM #Temp_Details TD
+	LEFT OUTER JOIN D_Juchuu DJ
+	ON DJ.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
+	LEFT OUTER JOIN [dbo].[F_Shouhin](@ShippingDate) FS
+	ON FS.ShouhinCD=TD.Hidden_ShouhinCD
+where D_ShukkaSiziMeisai.ShukkaSiziNO=@ShukkaSiziNO
+and D_ShukkaSiziMeisai.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
+and D_ShukkaSiziMeisai.JuchuuGyouNO=RIGHT(TD.SKMSNO, LEN(TD.SKMSNO) - CHARINDEX('-', TD.SKMSNO))-- KTP Change after update
 
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
 (
@@ -771,7 +705,6 @@ SELECT
 FROM [dbo].[D_ShukkaSiziMeisai] AS j
 where j.ShukkaSiziNO=@ShukkaSiziNO
 
---TableF
 INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
 (	[HistoryGuid]
 	,[ShukkaSiziNO]
@@ -818,7 +751,135 @@ INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
 			,@OperatorCD
 			,@currentDate
 FROM [dbo].[D_ShukkaSiziShousai]
-WHERE ShukkaSiziNO=@ShukkaSiziNO
+WHERE ShukkaSiziNO=@ShukkaSiziNO  --KTP Change before update
+
+--ktp call fncHikiate
+exec dbo.Fnc_Hikiate 12,@ShukkaSiziNO,20,@OperatorCD
+
+--Reverse/Cancel Old Data KTP Change
+
+declare @tmpsss as decimal(21,6)
+select @tmpsss = sum(ShukkaSiziSuu) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO group by ShukkaSiziNO
+
+UPDATE  A
+SET	
+	HikiateZumiSuu = A.HikiateZumiSuu + @tmpsss -- KTP Add
+	,ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu - @tmpsss
+	,UpdateOperator=@OperatorCD
+	,UpdateDateTime=@currentDate
+FROM D_JuchuuMeisai A
+
+update D_JuchuuShousai
+set HikiateZumiSuu = js.HikiateZumiSuu + sss.ShukkaSiziSuu,
+	ShukkaSiziZumiSuu = js.ShukkaSiziZumiSuu - sss.ShukkaSiziSuu
+from D_JuchuuShousai js
+inner join D_ShukkaSiziShousai sss on js.KanriNO = sss.KanriNO and js.NyuukoDate = sss.NyuukoDate and js.SoukoCD = sss.SoukoCD
+and js.ShouhinCD = sss.ShouhinCD
+where sss.ShukkaSiziNO = @ShukkaSiziNO
+
+delete D_ShukkaSiziShousai
+where ShukkaSiziNO = @ShukkaSiziNO
+
+--TableC
+--TableC
+declare @GyouNo as smallint = 1
+	declare @a decimal(21,6), @b decimal(21, 6), @JuchuuNO VARCHAR(12), @JuchuuGyouNO SMALLINT, @KonkaiShukkaSiziSuu VARCHAR(30), @SKMSNO VARCHAR(25), @Hidden_ShouhinCD VARCHAR(25)
+	DECLARE @SoukoCD VARCHAR(10), @ShouhinCD VARCHAR(20), @ShouhinName VARCHAR(100)
+	DECLARE cursor1 CURSOR READ_ONLY FOR SELECT SoukoCD, ShouhinCD, ShouhinName, SKMSNO, Hidden_ShouhinCD, KonkaiShukkaSiziSuu FROM #Temp_Details
+	OPEN cursor1
+	FETCH NEXT FROM cursor1 INTO @SoukoCD, @ShouhinCD, @ShouhinName, @SKMSNO, @Hidden_ShouhinCD, @KonkaiShukkaSiziSuu
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		SET @JuchuuNO = LEFT(@SKMSNO, CHARINDEX('-', @SKMSNO) - 1)
+		SET @JuchuuGyouNO = RIGHT(@SKMSNO, LEN(@SKMSNO) - CHARINDEX('-', @SKMSNO))
+		SET @a = ABS(@KonkaiShukkaSiziSuu)
+
+		---KTP Change
+	declare 
+	@JuchuuShousaiNO as smallint,
+	@KanriNO as varchar(10),
+	@NyuukoDate as varchar(10),
+	@HikiateZumiSuu as decimal(21,6),
+	@ShukkaSiziZumiSuu as decimal(21,6)
+	
+	--Step 3(loop by JuchuuNO,JuchuuGyouNO)
+	declare cursorInner cursor read_only
+	for select JuchuuShousaiNO,SoukoCD,ShouhinCD,KanriNO,NyuukoDate,HikiateZumiSuu,ShukkaSiziZumiSuu
+	from D_JuchuuShousai 
+	where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
+	and HikiateZumiSuu > 0
+	order by KanriNO,case when NyuukoDate = '' or NyuukoDate is null then '2100-01-01' else NyuukoDate end
+	
+	open cursorInner
+	
+	fetch next from cursorInner
+	into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
+	@ShukkaSiziZumiSuu
+	
+	while @@FETCH_STATUS = 0
+		begin
+	
+			if(@a > 0)
+				begin
+					declare @tmpHikiateSuu as decimal(21,6)
+					declare @tmpShukkasiziSuu as decimal(21,6)
+	
+					--Step3 : Update D_JuchuuShousai(受注詳細)
+					update D_JuchuuShousai
+					set 
+						@tmpHikiateSuu = HikiateZumiSuu,
+						@tmpShukkasiziSuu = case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end,
+						HikiateZumiSuu = case when @a >= HikiateZumiSuu then 0 else HikiateZumiSuu - @a end,
+						ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + (case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end),
+						--ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + ( case when @a >= HikiateZumiSuu then HikiateZumiSuu else HikiateZumiSuu - @a end),
+						ShukkaZumiSuu = 0,
+						UriageZumiSuu = 0,
+						UpdateOperator = @OperatorCD,
+						UpdateDateTime = @currentDate
+					from D_JuchuuShousai
+					where JuchuuNO = @JuchuuNo
+					and JuchuuGyouNO = @JuchuuGyouNO 
+					and JuchuuShousaiNO = @JuchuuShousaiNO
+	
+					set @a = case when @a > @tmpHikiateSuu then @a - @tmpHikiateSuu else 0 end
+	
+					declare @maxShousaiNo as smallint
+	
+					select @maxShousaiNo = isnull(max(ShukkaSiziShousaiNO),0) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO
+	
+					-- Step5 : Insert D_ShukkaSiziShousai(出荷指示詳細)
+					insert into D_ShukkaSiziShousai( ShukkaSiziNO, ShukkaSiziGyouNO, ShukkaSiziShousaiNO, 
+					SoukoCD,ShouhinCD,ShouhinName,ShukkaSiziSuu,KanriNO,NyuukoDate,ShukkaZumiSuu,
+					JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime
+					)
+					select 
+						@ShukkaSiziNO,@GyouNo,@maxShousaiNo + 1,
+						js.SoukoCD,js.ShouhinCD,jms.ShouhinName,@tmpShukkasiziSuu,@KanriNO,@NyuukoDate,0,
+						@JuchuuNo,@JuchuuGyouNO,@JuchuuShousaiNO,@OperatorCD,@currentDate,@OperatorCD,@currentDate
+					
+					from D_JuchuuShousai js
+					left outer join D_JuchuuMeisai jms on js.JuchuuNO = jms.JuchuuNO and js.JuchuuGyouNO = jms.JuchuuGyouNO
+					where js.JuchuuNO = @JuchuuNo 
+					and js.JuchuuGyouNO = @JuchuuGyouNO
+					and js.JuchuuShousaiNO = @JuchuuShousaiNO
+				end
+			
+	
+			fetch next from 
+			cursorInner into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
+			@ShukkaSiziZumiSuu
+		end
+	
+	close cursorInner
+	deallocate cursorInner
+
+	set @GyouNO = @GyouNO + 1
+
+	---KTP Change
+
+
+--TableF
+
 
 INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
 (	[HistoryGuid]
@@ -873,7 +934,9 @@ WHERE ShukkaSiziNO=@ShukkaSiziNO
 
 --Table G--02
 UPDATE  A
-SET	ShukkaSiziZumiSuu= case when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu>0 then  A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu
+SET	
+	HikiateZumiSuu = A.HikiateZumiSuu - B.KonkaiShukkaSiziSuu, -- KTP Add
+	ShukkaSiziZumiSuu= case when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu>0 then  A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu
 									when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu<=0 then 0 end
 	,UpdateOperator=@OperatorCD
 	,UpdateDateTime=@currentDate
@@ -912,6 +975,9 @@ INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN
 ) as B
 ON A.JuchuuNO=B.JuchuuNO
 
+--ktp call fncHikiate
+exec dbo.Fnc_Hikiate 12,@ShukkaSiziNO,21,@OperatorCD
+
 --UsedFLG 
 update M_Staff 
 set UsedFlg = 1 
@@ -931,4 +997,5 @@ EXEC [dbo].[D_Exclusive_Delete]
 Drop Table #Temp_Header
 Drop Table #Temp_Details
 
+END
 END
