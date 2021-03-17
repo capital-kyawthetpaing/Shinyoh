@@ -19,6 +19,7 @@ namespace ShukkaTorikomi
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
         ShukkaTorikomi_BL ShukkaTorikomi_BL;
+        TorikomiEntity JEntity;
         BaseBL bbl;
         DataTable dt_Main;
         DataTable create_dt;
@@ -171,7 +172,7 @@ namespace ShukkaTorikomi
                         if (rdo_Toroku.Checked)
                             chk_val = "create_update";
                         else chk_val = "delete";
-                        string return_BL=bl.ShukkaTorikomi_CUD(Xml.Item1,Xml.Item2,chk_val);
+                        string return_BL=bl.ShukkaTorikomi_CUD(Xml.Item1,Xml.Item2,chk_val, JEntity);
                         if (return_BL == "true")
                         {
                             bbl.ShowMessage("I002");                           
