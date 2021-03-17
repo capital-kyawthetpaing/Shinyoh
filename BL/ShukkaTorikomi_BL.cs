@@ -64,13 +64,14 @@ namespace BL
             return ckmdl.InsertUpdateDeleteData("CSV_M_ShukkaTorikomi_CUD", GetConnectionString(), parameters);
         }
 
-        public string ShukkaTorikomi_CUD(string xml_Detail, string xml_Main,string chk_value)
+        public string ShukkaTorikomi_CUD(string xml_Detail, string xml_Main,string chk_value, TorikomiEntity Jentity)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_Detail };
             parameters[1] = new SqlParameter("@XML_Main", SqlDbType.Xml) { Value = xml_Main };
             parameters[2] = new SqlParameter("@Condition", SqlDbType.VarChar) { Value = chk_value };
+            parameters[3] = new SqlParameter("@TorikomiDenpyouNO", SqlDbType.VarChar) { Value = Jentity.TorikomiDenpyouNO };
             return ckmdl.InsertUpdateDeleteData("ShukkaTorikomi_Insert", GetConnectionString(), parameters);
         }
 
