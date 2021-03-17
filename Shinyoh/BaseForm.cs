@@ -212,7 +212,21 @@ namespace Shinyoh
                         FunctionProcess(btn.Tag.ToString());
                         break;
                     case ButtonType.BType.Save:
-                        if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
+                        if (cboMode.SelectedValue == null)
+                        {
+                            if (bbl.ShowMessage("Q101") != DialogResult.Yes)
+                            {
+                                //cboMode.Enabled = false;
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
+                            }
+                            else
+                            {
+                                //cboMode.Enabled = true;
+                                FunctionProcess(btn.Tag.ToString());
+                            }
+                        }
+                        else if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
                         {
                             if (ErrorCheck(PanelTitle) && ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
                             {

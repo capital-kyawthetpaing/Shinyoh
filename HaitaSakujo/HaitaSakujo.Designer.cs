@@ -403,6 +403,10 @@
             // 
             // gvHaitaSakujo
             // 
+            this.gvHaitaSakujo.AllowUserToAddRows = false;
+            this.gvHaitaSakujo.AllowUserToDeleteRows = false;
+            this.gvHaitaSakujo.AllowUserToResizeColumns = false;
+            this.gvHaitaSakujo.AllowUserToResizeRows = false;
             this.gvHaitaSakujo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gvHaitaSakujo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Target,
@@ -417,16 +421,18 @@
             this.gvHaitaSakujo.ISRowColumn = null;
             this.gvHaitaSakujo.Location = new System.Drawing.Point(155, 20);
             this.gvHaitaSakujo.Name = "gvHaitaSakujo";
-            this.gvHaitaSakujo.Size = new System.Drawing.Size(1400, 800);
+            this.gvHaitaSakujo.Size = new System.Drawing.Size(1400, 810);
             this.gvHaitaSakujo.TabIndex = 8;
             // 
             // col_Target
             // 
             this.col_Target.DataPropertyName = "Target";
+            this.col_Target.FalseValue = "0";
             this.col_Target.HeaderText = "対象";
             this.col_Target.Name = "col_Target";
             this.col_Target.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.col_Target.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_Target.TrueValue = "1";
             this.col_Target.Width = 70;
             // 
             // col_DataPartition
