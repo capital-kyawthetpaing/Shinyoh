@@ -23,6 +23,7 @@ namespace ShukkaTorikomi
         BaseBL bbl;
         DataTable dt_Main;
         DataTable create_dt;
+        DataTable dtShuKka;
 
         public SqlDbType()
         {
@@ -74,13 +75,12 @@ namespace ShukkaTorikomi
         private void dataBind()
         {
             multipurposeBL bl = new multipurposeBL();
+            dtShuKka = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
 
-            DataTable dt = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
-
-            if (dt.Rows.Count > 0)
+            if (dtShuKka.Rows.Count > 0)
             {
-                txtShukkaToNo1.Text = dt.Rows[0]["Char1"].ToString();
-                txtShukkaToNo2.Text = dt.Rows[0]["Char2"].ToString();
+                txtShukkaToNo1.Text = dtShuKka.Rows[0]["Char1"].ToString();
+                txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
             }
             else
             {
@@ -95,6 +95,14 @@ namespace ShukkaTorikomi
             {
                 rdo_Sakujo.Checked = false;
                 Enable_Method();
+                if (dtShuKka != null)
+                {
+                    if (dtShuKka.Rows.Count > 0)
+                    {
+                        txtShukkaToNo1.Text = dtShuKka.Rows[0]["Char1"].ToString();
+                        txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
+                    }
+                }
             }
         }
 

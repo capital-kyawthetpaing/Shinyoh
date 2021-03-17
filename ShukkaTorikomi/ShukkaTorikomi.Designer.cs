@@ -192,7 +192,7 @@
             this.txtDenpyouNO.MoveNext = true;
             this.txtDenpyouNO.Name = "txtDenpyouNO";
             this.txtDenpyouNO.NextControl = null;
-            this.txtDenpyouNO.NextControlName = "gvMainDetail";
+            this.txtDenpyouNO.NextControlName = "BtnF10";
             this.txtDenpyouNO.SearchType = Entity.SearchType.ScType.None;
             this.txtDenpyouNO.Size = new System.Drawing.Size(100, 19);
             this.txtDenpyouNO.TabIndex = 5;
@@ -345,7 +345,7 @@
             this.txtShukkaToNo2.MoveNext = true;
             this.txtShukkaToNo2.Name = "txtShukkaToNo2";
             this.txtShukkaToNo2.NextControl = null;
-            this.txtShukkaToNo2.NextControlName = "gvMainDetail";
+            this.txtShukkaToNo2.NextControlName = "BtnF10";
             this.txtShukkaToNo2.SearchType = Entity.SearchType.ScType.None;
             this.txtShukkaToNo2.Size = new System.Drawing.Size(500, 19);
             this.txtShukkaToNo2.TabIndex = 2;
