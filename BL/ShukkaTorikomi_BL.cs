@@ -67,7 +67,7 @@ namespace BL
         public string ShukkaTorikomi_CUD(string xml_Detail, string xml_Main,string chk_value, TorikomiEntity Jentity)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[3];
+            var parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_Detail };
             parameters[1] = new SqlParameter("@XML_Main", SqlDbType.Xml) { Value = xml_Main };
             parameters[2] = new SqlParameter("@Condition", SqlDbType.VarChar) { Value = chk_value };
