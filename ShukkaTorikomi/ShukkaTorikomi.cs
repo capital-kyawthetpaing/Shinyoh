@@ -264,11 +264,13 @@ namespace ShukkaTorikomi
 
                         obj.DenpyouDate = splits[5];
                         if(Null_Check(obj.DenpyouDate, i, "伝票日付未入力エラー"))break;
-                        if(Date_Check(obj.DenpyouDate, i, "入力可能値外エラー"))break;
+                        if (Date_Check(obj.DenpyouDate, i, "入力可能値外エラー") == "true") break;
+                        else splits[5] = Date_Check(obj.DenpyouDate, i, "入力可能値外エラー");
 
                         obj.ChangeDate = splits[6];
                         if(Null_Check(obj.ChangeDate, i, "改定日未入力エラー"))break;
-                        if(Date_Check(obj.ChangeDate, i, "入力可能値外エラー"))break;
+                        if (Date_Check(obj.ChangeDate, i, "入力可能値外エラー") == "true") break;
+                        else splits[6] = Date_Check(obj.ChangeDate, i, "入力可能値外エラー");
 
                         obj.ShouhinCD = splits[7];
                         if(Null_Check(obj.ShouhinCD, i, "商品コード未入力エラー"))break;
@@ -480,32 +482,54 @@ namespace ShukkaTorikomi
             return bl;
         }
 
-        public bool Date_Check(string csv_Date, int line_no, string error_msg)
+        public string Date_Check(string csv_Date, int line_no, string error_msg)
         {
-            bool bl = false;
+            TextBox txt = new TextBox();
+            txt.Text = csv_Date;
             if (!string.IsNullOrEmpty(csv_Date))
             {
-                if (!cf.CheckDateValue(csv_Date))
+                if (!cf.DateCheck(txt))
                 {
                     bbl.ShowMessage("E103");
-                    bl = true;
+                    txt.Text = "true";
                 }
             }
-            return bl;
+            return txt.Text;
+
+            //bool bl = false;
+            //if (!string.IsNullOrEmpty(csv_Date))
+            //{
+            //    if (!cf.CheckDateValue(csv_Date))
+            //    {
+            //        bbl.ShowMessage("E103");
+            //        bl = true;
+            //    }
+            //}
+            //return bl;
         }
 
         public bool Number_Check(string csv_number, int i, string v)
         {
-            bool bl = false; int result;
+            bool bl = false; //int result;
+            int n;
+            decimal d;
             if (!string.IsNullOrEmpty(csv_number))
             {
-                bool parsedSuccessfully = int.TryParse(csv_number, out result);
-
-                if (parsedSuccessfully == false)
+                if (!int.TryParse(csv_number, out n))
                 {
-                    bbl.ShowMessage("E103");
-                    bl = true;
+                    if (!decimal.TryParse(csv_number, out d))
+                    {
+                        bbl.ShowMessage("E103");
+                        bl = true;
+                    }
                 }
+                //bool parsedSuccessfully = int.TryParse(csv_number, out result);
+
+                //if (parsedSuccessfully == false)
+                //{
+                //    bbl.ShowMessage("E103");
+                //    bl = true;
+                //}
             }
             return bl;
         }
@@ -545,10 +569,6 @@ namespace ShukkaTorikomi
             remove_dt.Columns.Remove("SellingPrice");
             remove_dt.Columns.Remove("ShukkaSiziNO");
             //remove_dt.Columns.Remove("ShukkaGyouNO");
-
-
         }
-
-
     }
 }
