@@ -195,11 +195,18 @@ namespace ShukkaTorikomi
                     {
                         ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
                         string chk_val = string.Empty;
-                        if (rdo_Toroku.Checked)
-                            chk_val = "create_update";
-                        else chk_val = "delete";
                         string TorikomiDenpyouNO = txtDenpyouNO.Text;
-                        string return_BL=bl.ShukkaTorikomi_CUD(Xml.Item1,Xml.Item2,chk_val, TorikomiDenpyouNO);
+                        string return_BL = string.Empty;
+                        if (rdo_Toroku.Checked)
+                        {
+                            chk_val = "create_update";
+                            return_BL = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Insert", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                        }
+                        else
+                        {
+                            chk_val = "delete";
+                            return_BL = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                        }
                         if (return_BL == "true")
                         {
                             bbl.ShowMessage("I002");                           
