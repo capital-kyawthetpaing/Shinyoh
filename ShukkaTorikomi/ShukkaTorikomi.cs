@@ -94,7 +94,7 @@ namespace ShukkaTorikomi
             if (rdo_Toroku.Checked == true)
             {
                 rdo_Sakujo.Checked = false;
-                Enable_Method();
+                Disable_Enable_Method();
                 if (dtShuKka != null)
                 {
                     if (dtShuKka.Rows.Count > 0)
@@ -103,18 +103,11 @@ namespace ShukkaTorikomi
                         txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
                     }
                 }
+                ErrorCheck();
             }
         }
 
-        private void Enable_Method()
-        {
-            txtShukkaToNo1.Enabled = true;
-            txtShukkaToNo2.Enabled = true;
-            txtDate1.Enabled = false;
-            txtDate2.Enabled = false;
-            txtDenpyouNO.Enabled = false;
-        }
-        private void Disable_Method()
+        private void Disable_Enable_Method()
         {
             txtShukkaToNo1.Text = string.Empty;
             txtShukkaToNo2.Text = string.Empty;
@@ -122,11 +115,22 @@ namespace ShukkaTorikomi
             txtDate2.Text = string.Empty;
             txtDenpyouNO.Text = string.Empty;
 
-            txtShukkaToNo1.Enabled = false;
-            txtShukkaToNo2.Enabled = false;
-            txtDate1.Enabled = true;
-            txtDate2.Enabled = true;
-            txtDenpyouNO.Enabled = true;
+            if(rdo_Toroku.Checked)
+            {
+                txtShukkaToNo1.Enabled = true;
+                txtShukkaToNo2.Enabled = true;
+                txtDate1.Enabled = false;
+                txtDate2.Enabled = false;
+                txtDenpyouNO.Enabled = false;
+            }
+            else
+            {
+                txtShukkaToNo1.Enabled = false;
+                txtShukkaToNo2.Enabled = false;
+                txtDate1.Enabled = true;
+                txtDate2.Enabled = true;
+                txtDenpyouNO.Enabled = true;
+            }
         }
 
         private void rdo_Sakujo_CheckedChanged(object sender, EventArgs e)
@@ -134,18 +138,31 @@ namespace ShukkaTorikomi
             if (rdo_Sakujo.Checked == true)
             {
                 rdo_Toroku.Checked = false;
-                Disable_Method();
+                Disable_Enable_Method();
+                ErrorCheck();
             }
         }
 
         private void ErrorCheck()
         {
-            txtShukkaToNo1.E102Check(true);
-            txtShukkaToNo2.E102Check(true);
-            txtDate1.E103Check(true);
-            txtDate2.E103Check(true);
-            txtDenpyouNO.E102Check(true);
-            txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
+            if(rdo_Toroku.Checked)
+            {
+                txtShukkaToNo1.E102Check(true);
+                txtShukkaToNo2.E102Check(true);
+                txtDate1.E103Check(false);
+                txtDate2.E103Check(false);
+                txtDenpyouNO.E102Check(false);
+                txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
+            }
+            else
+            {
+                txtShukkaToNo1.E102Check(false);
+                txtShukkaToNo2.E102Check(false);
+                txtDate1.E103Check(true);
+                txtDate2.E103Check(true);
+                txtDenpyouNO.E102Check(true);
+                txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
+            }
         }
 
         public override void FunctionProcess(string tagID)
@@ -157,8 +174,9 @@ namespace ShukkaTorikomi
             if (tagID == "10")
             {
                 gvMainDetail.ActionType = "F10";
+                if(ErrorCheck(PanelDetail))
+                    DataGridviewBind();
                 gvMainDetail.ActionType = string.Empty;
-                DataGridviewBind();
             }
             base.FunctionProcess(tagID);
 

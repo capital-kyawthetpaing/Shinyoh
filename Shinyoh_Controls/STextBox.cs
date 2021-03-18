@@ -8,7 +8,6 @@ using Entity;
 using static Entity.SearchType;
 using System.Data;
 using System.Runtime.InteropServices;
-
 namespace Shinyoh_Controls
 {
     public class STextBox : TextBox
@@ -345,6 +344,7 @@ namespace Shinyoh_Controls
         }
         protected override void OnLeave(EventArgs e)
         {
+           
             if (SType == STextBoxType.Price)
             {
                 string value = Text.Replace(",", "");
@@ -428,6 +428,18 @@ namespace Shinyoh_Controls
                 }
             }
 
+
+            if (this.TopLevelControl != null && (SType == STextBoxType.Normal ||  SType == STextBoxType.Number))   // PTK Proceed for haita, KTP's below unfinished one (2021-03-18)
+            {
+                try
+                {
+                    (((Shinyoh.BaseForm)(((System.Windows.Forms.Form.ControlCollection)this.TopLevelControl.Controls).Owner as Form)).Controls.Find("BtnF9", true)[0] as Control).Visible = false;
+                }
+                catch (Exception ex) //can get catch for in some Codition
+                {
+                    var msg = ex.Message; 
+                }
+            }
             //KTP commented because of BtnF9 Click doesn't work
             //if (this.TopLevelControl != null)
             //{

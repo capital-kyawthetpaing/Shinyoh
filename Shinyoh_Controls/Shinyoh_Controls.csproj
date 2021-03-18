@@ -35,6 +35,9 @@
     <Reference Include="CKM_CommonFunction">
       <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
     </Reference>
+    <Reference Include="sinh">
+      <HintPath>..\Shinyoh\RequireDLL\sinh.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />

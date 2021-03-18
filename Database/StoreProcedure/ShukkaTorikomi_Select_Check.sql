@@ -22,7 +22,7 @@ BEGIN
 	SET NOCOUNT ON;
 	select TorikomiDenpyouNO, InsertDateTime, ShukkaNO, ShukkaDate, TokuisakiCD, TokuisakiRyakuName, KouritenCD, KouritenRyakuName
 	from D_Shukka Shu
-	where Shu.TorikomiDenpyouNO = @TorikomiDenpyouNO
+	where @TorikomiDenpyouNO IS NULL OR Shu.TorikomiDenpyouNO = @TorikomiDenpyouNO
 	Order By TorikomiDenpyouNO ASC,
 			 ShukkaNO ASC
 

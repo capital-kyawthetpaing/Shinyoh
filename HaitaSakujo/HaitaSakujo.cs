@@ -16,9 +16,11 @@ namespace HaitaSakujo {
     public partial class HaitaSakujo : BaseForm {
         BaseEntity base_Entity;
         CommonFunction cf;
+        BaseBL bll;
         public HaitaSakujo()
         {
             InitializeComponent();
+            bll = new BaseBL();
             cf = new CommonFunction();
             gvHaitaSakujo.SetReadOnlyColumn("col_DataPartition,col_DataPartitionName,col_ExTargetNo,col_ProcessTime,col_InputPeronName,col_ProcessProgram,col_Terminal");
         }
@@ -75,7 +77,54 @@ namespace HaitaSakujo {
             {
                 btnDisaplay();
             }
+            if (tagID == "12")
+            {
+                btnClearExclusive();
+            }
 
+        }
+        private bool IsCheckExist()
+        {
+            if (gvHaitaSakujo.DataSource !=null)
+           return (gvHaitaSakujo.DataSource as DataTable).Select("Target = 1").Count() > 0;
+
+            return false;
+        }
+            
+        private void btnClearExclusive()
+        {
+            if (!IsCheckExist())
+            {
+                bll.ShowMessage("E257");
+                F12.Focus();
+                return;
+            }
+            var dt = new DataTable();
+            dt = (gvHaitaSakujo.DataSource as DataTable).Select("Target = 1").CopyToDataTable();
+            HaitaSakujoBL bl = new HaitaSakujoBL();
+            HaitaSakujoEntity obj = new HaitaSakujoEntity();
+            obj.xml = DataTableToXml(dt);
+            dt.Rows.Clear();
+            obj.PC = PCID;
+            obj.ProgramID = ProgramID;
+            obj.InsertOperator = OperatorCD;
+            if (bl.HaitaSakujo_ClearExclusive(obj))
+            {
+                bll.ShowMessage("I101");
+
+                foreach (DataRow dr in (gvHaitaSakujo.DataSource as DataTable).Rows)
+                    dr.Delete();
+                gvHaitaSakujo.Refresh();
+                gvHaitaSakujo.RefreshEdit();
+            }
+        }
+        public String DataTableToXml(DataTable dt)
+        {
+            dt.TableName = "test";
+            System.IO.StringWriter writer = new System.IO.StringWriter();
+            dt.WriteXml(writer, XmlWriteMode.WriteSchema, false);
+            string result = writer.ToString();
+            return result;
         }
         private void btnDisaplay()
         {
@@ -98,7 +147,7 @@ namespace HaitaSakujo {
             {
                 foreach(DataGridViewRow row in gvHaitaSakujo.Rows)
                 {
-                    (row.Cells["col_Target"] as DataGridViewCheckBoxCell).Value = true;
+                    (row.Cells["col_Target"] as DataGridViewCheckBoxCell).Value = 1;
                 }
             }
         }
@@ -108,7 +157,7 @@ namespace HaitaSakujo {
             {
                 foreach (DataGridViewRow row in gvHaitaSakujo.Rows)
                 {
-                    (row.Cells["col_Target"] as DataGridViewCheckBoxCell).Value = false;
+                    (row.Cells["col_Target"] as DataGridViewCheckBoxCell).Value = 0;
                 }
             }
         }
