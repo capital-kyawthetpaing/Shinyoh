@@ -1405,7 +1405,7 @@ namespace ShukkaSiziNyuuryoku
             if (cboMode.SelectedValue.Equals("3"))//delete
             {
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-                sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
+                //sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
                 bbl.ShowMessage("I102");
             }
             else
