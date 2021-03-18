@@ -277,6 +277,7 @@ INSERT INTO [dbo].[D_ShukkaSizi]
 	left outer join F_Tokuisaki(@ShippingDate) FT on FT.TokuisakiCD=TM.TokuisakiCD
 	left outer join F_Kouriten(@ShippingDate) FK on FK.KouritenCD=TM.KouritenCD
 
+	declare @GyouNo as smallint = 1
 --TableB
 INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	(
@@ -329,8 +330,8 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	SELECT
 	
 		@ShukkaSiziNO --Fnc_Number
-		,ROW_NUMBER() OVER(ORDER BY (SELECT 1))
-		,ROW_NUMBER() OVER(ORDER BY (SELECT 1))
+		,@GyouNo
+		,@GyouNo
 		,case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
 		,case when TD.KouritenRyakuName is null then DJ.KouritenRyakuName else TD.KouritenRyakuName end
 		,FS.BrandCD
@@ -375,7 +376,7 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	ON FS.ShouhinCD=TD.ShouhinCD
 
 --TableC
-declare @GyouNo as smallint = 1
+
 	declare @a decimal(21,6), @b decimal(21, 6), @JuchuuNO VARCHAR(12), @JuchuuGyouNO SMALLINT, @KonkaiShukkaSiziSuu VARCHAR(30), @SKMSNO VARCHAR(25), @Hidden_ShouhinCD VARCHAR(25)
 	DECLARE @SoukoCD VARCHAR(10), @ShouhinCD VARCHAR(20), @ShouhinName VARCHAR(100)
 	DECLARE cursor1 CURSOR READ_ONLY FOR SELECT SoukoCD, ShouhinCD, ShouhinName, SKMSNO, Hidden_ShouhinCD, KonkaiShukkaSiziSuu FROM #Temp_Details
@@ -387,72 +388,155 @@ declare @GyouNo as smallint = 1
 		SET @JuchuuGyouNO = RIGHT(@SKMSNO, LEN(@SKMSNO) - CHARINDEX('-', @SKMSNO))
 		SET @a = ABS(@KonkaiShukkaSiziSuu)
 
-    -- Insert statements for procedure here
-		WHILE @a >0
-			BEGIN
-			IF EXISTS (SELECT TOP 1 * FROM D_JuchuuShousai dj
-				INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
-				AND JuchuuNO = @JuchuuNO AND JuchuuGyouNO = @JuchuuGyouNO ORDER BY KanriNO ASC, NyuukoDate ASC) dj1
-				ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
-				AND dj.JuchuuNO = @JuchuuNO AND dj.JuchuuGyouNO = @JuchuuGyouNO)
+	---KTP Change
+	declare 
+	@JuchuuShousaiNO as smallint,
+	@KanriNO as varchar(10),
+	@NyuukoDate as varchar(10),
+	@HikiateZumiSuu as decimal(21,6),
+	@ShukkaSiziZumiSuu as decimal(21,6)
+	
+	--Step 3(loop by JuchuuNO,JuchuuGyouNO)
+	declare cursorInner cursor read_only
+	for select JuchuuShousaiNO,SoukoCD,ShouhinCD,KanriNO,NyuukoDate,HikiateZumiSuu,ShukkaSiziZumiSuu
+	from D_JuchuuShousai 
+	where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
+	and HikiateZumiSuu > 0
+	order by KanriNO,case when NyuukoDate = '' or NyuukoDate is null then '2100-01-01' else NyuukoDate end
+	
+	open cursorInner
+	
+	fetch next from cursorInner
+	into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
+	@ShukkaSiziZumiSuu
+	
+	while @@FETCH_STATUS = 0
+		begin
+	
+			if(@a > 0)
+				begin
+					declare @tmpHikiateSuu as decimal(21,6)
+					declare @tmpShukkasiziSuu as decimal(21,6)
+	
+					--Step3 : Update D_JuchuuShousai(受注詳細)
+					update D_JuchuuShousai
+					set 
+						@tmpHikiateSuu = HikiateZumiSuu,
+						@tmpShukkasiziSuu = case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end,
+						HikiateZumiSuu = case when @a >= HikiateZumiSuu then 0 else HikiateZumiSuu - @a end,
+						ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + (case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end),
+						ShukkaZumiSuu = 0,
+						UriageZumiSuu = 0,
+						UpdateOperator = @OperatorCD,
+						UpdateDateTime = @currentDate
+					from D_JuchuuShousai
+					where JuchuuNO = @JuchuuNo
+					and JuchuuGyouNO = @JuchuuGyouNO 
+					and JuchuuShousaiNO = @JuchuuShousaiNO
+	
+					set @a = case when @a > @tmpHikiateSuu then @a - @tmpHikiateSuu else 0 end
+	
+					declare @maxShousaiNo as smallint
+	
+					select @maxShousaiNo = isnull(max(ShukkaSiziShousaiNO),0) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO
+	
+					-- Step5 : Insert D_ShukkaSiziShousai(出荷指示詳細)
+					insert into D_ShukkaSiziShousai( ShukkaSiziNO, ShukkaSiziGyouNO, ShukkaSiziShousaiNO, 
+					SoukoCD,ShouhinCD,ShouhinName,ShukkaSiziSuu,KanriNO,NyuukoDate,ShukkaZumiSuu,
+					JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime
+					)
+					select 
+						@ShukkaSiziNO,@GyouNo,@maxShousaiNo + 1,
+						js.SoukoCD,js.ShouhinCD,jms.ShouhinName,@tmpShukkasiziSuu,@KanriNO,@NyuukoDate,0,
+						@JuchuuNo,@JuchuuGyouNO,@JuchuuShousaiNO,@OperatorCD,@currentDate,@OperatorCD,@currentDate
+					
+					from D_JuchuuShousai js
+					left outer join D_JuchuuMeisai jms on js.JuchuuNO = jms.JuchuuNO and js.JuchuuGyouNO = jms.JuchuuGyouNO
+					where js.JuchuuNO = @JuchuuNo 
+					and js.JuchuuGyouNO = @JuchuuGyouNO
+					and js.JuchuuShousaiNO = @JuchuuShousaiNO
+				end
 			
-			BEGIN
-				INSERT INTO [dbo].[D_ShukkaSiziShousai]
-				(	[ShukkaSiziNO]
-				,[ShukkaSiziGyouNO]
-				,[ShukkaSiziShousaiNO]
-				,[SoukoCD]
-				,[ShouhinCD]
-				,[ShouhinName]
-				,[ShukkaSiziSuu]
-				,[KanriNO]
-				,[NyuukoDate]
-				,[ShukkaZumiSuu]
-				,[JuchuuNO]
-				,[JuchuuGyouNO]
-				,[JuchuuShousaiNO]
-				,[InsertOperator]
-				,[InsertDateTime]
-				,[UpdateOperator]
-				,[UpdateDateTime]
-				)
+	
+			fetch next from 
+			cursorInner into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
+			@ShukkaSiziZumiSuu
+		end
+	
+	close cursorInner
+	deallocate cursorInner
 
-				SELECT 
-				@ShukkaSiziNO
-				,@GyouNo				
-				,(select isnull(max(1),0) + 1 from D_ShukkaSiziShousai where ShukkaSiziNO =@ShukkaSiziNO and ShukkaSiziGyouNO = @GyouNo )				
-				,@SoukoCD
-				,@ShouhinCD
-				,@ShouhinName
-				,dj.ShukkaSiziZumiSuu
-				,dj.KanriNO	
-				,dj.NyuukoDate
-				,0
-				,dj.JuchuuNO
-				,dj.JuchuuGyouNO
-				,dj.JuchuuShousaiNO
-				,@OperatorCD,@currentDate,@OperatorCD,@currentDate
-				from  D_JuchuuShousai dj
-				INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
-				AND JuchuuNO = @JuchuuNO AND JuchuuGyouNO = @JuchuuGyouNO ORDER BY KanriNO ASC, NyuukoDate ASC) dj1
-				ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
-				AND dj.JuchuuNO = @JuchuuNO AND dj.JuchuuGyouNO = @JuchuuGyouNO
+	set @GyouNO = @GyouNO + 1
 
-				UPDATE dj
-				SET dj.HikiateZumiSuu = CASE WHEN dj.HikiateZumiSuu > @a THEN dj.HikiateZumiSuu - @a ELSE 0 END, 
-					dj.ShukkaSiziZumiSuu = CASE WHEN dj.HikiateZumiSuu > @a THEN @a ELSE dj.HikiateZumiSuu END,
-					@b = CASE WHEN dj.HikiateZumiSuu > @a THEN 0 ELSE @a - dj.HikiateZumiSuu END
-				from  D_JuchuuShousai dj
-				INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
-				AND JuchuuNO = @JuchuuNO AND JuchuuGyouNO = @JuchuuGyouNO ORDER BY KanriNO ASC, NyuukoDate ASC) dj1
-				ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
-				AND dj.JuchuuNO = @JuchuuNO AND dj.JuchuuGyouNO = @JuchuuGyouNO
-			END
-			ELSE
-				BREAK
-			SET @a = @b
-		END
-		set @GyouNo = @GyouNo + 1		
+	---KTP Change
+
+
+    -- Insert statements for procedure here
+		--WHILE @a >0
+		--	BEGIN
+		--	IF EXISTS (SELECT TOP 1 * FROM D_JuchuuShousai dj
+		--		INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
+		--		AND JuchuuNO = @JuchuuNO AND JuchuuGyouNO = @JuchuuGyouNO ORDER BY KanriNO ASC, NyuukoDate ASC) dj1
+		--		ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
+		--		AND dj.JuchuuNO = @JuchuuNO AND dj.JuchuuGyouNO = @JuchuuGyouNO)
+			
+		--	BEGIN
+		--		INSERT INTO [dbo].[D_ShukkaSiziShousai]
+		--		(	[ShukkaSiziNO]
+		--		,[ShukkaSiziGyouNO]
+		--		,[ShukkaSiziShousaiNO]
+		--		,[SoukoCD]
+		--		,[ShouhinCD]
+		--		,[ShouhinName]
+		--		,[ShukkaSiziSuu]
+		--		,[KanriNO]
+		--		,[NyuukoDate]
+		--		,[ShukkaZumiSuu]
+		--		,[JuchuuNO]
+		--		,[JuchuuGyouNO]
+		--		,[JuchuuShousaiNO]
+		--		,[InsertOperator]
+		--		,[InsertDateTime]
+		--		,[UpdateOperator]
+		--		,[UpdateDateTime]
+		--		)
+
+		--		SELECT 
+		--		@ShukkaSiziNO
+		--		,@GyouNo				
+		--		,(select isnull(max(1),0) + 1 from D_ShukkaSiziShousai where ShukkaSiziNO =@ShukkaSiziNO and ShukkaSiziGyouNO = @GyouNo )				
+		--		,@SoukoCD
+		--		,@ShouhinCD
+		--		,@ShouhinName
+		--		,dj.ShukkaSiziZumiSuu
+		--		,dj.KanriNO	
+		--		,dj.NyuukoDate
+		--		,0
+		--		,dj.JuchuuNO
+		--		,dj.JuchuuGyouNO
+		--		,dj.JuchuuShousaiNO
+		--		,@OperatorCD,@currentDate,@OperatorCD,@currentDate
+		--		from  D_JuchuuShousai dj
+		--		INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
+		--		AND JuchuuNO = @JuchuuNO AND JuchuuGyouNO = @JuchuuGyouNO ORDER BY KanriNO ASC, NyuukoDate ASC) dj1
+		--		ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
+		--		AND dj.JuchuuNO = @JuchuuNO AND dj.JuchuuGyouNO = @JuchuuGyouNO
+
+		--		UPDATE dj
+		--		SET dj.HikiateZumiSuu = CASE WHEN dj.HikiateZumiSuu > @a THEN dj.HikiateZumiSuu - @a ELSE 0 END, 
+		--			dj.ShukkaSiziZumiSuu = CASE WHEN dj.HikiateZumiSuu > @a THEN @a ELSE dj.HikiateZumiSuu END,
+		--			@b = CASE WHEN dj.HikiateZumiSuu > @a THEN 0 ELSE @a - dj.HikiateZumiSuu END
+		--		from  D_JuchuuShousai dj
+		--		INNER JOIN (SELECT TOP 1 * FROM D_JuchuuShousai WHERE HikiateZumiSuu <> 0
+		--		AND JuchuuNO = @JuchuuNO AND JuchuuGyouNO = @JuchuuGyouNO ORDER BY KanriNO ASC, NyuukoDate ASC) dj1
+		--		ON dj.JuchuuNO = dj1.JuchuuNO AND dj.JuchuuGyouNO = dj1.JuchuuGyouNO AND dj.JuchuuShousaiNO = dj1.JuchuuShousaiNO AND dj.HikiateZumiSuu <> 0
+		--		AND dj.JuchuuNO = @JuchuuNO AND dj.JuchuuGyouNO = @JuchuuGyouNO
+		--	END
+		--	ELSE
+		--		BREAK
+		--	SET @a = @b
+		--END
+		--set @GyouNo = @GyouNo + 1		
 		FETCH NEXT FROM cursor1 INTO @SoukoCD, @ShouhinCD, @ShouhinName, @SKMSNO, @Hidden_ShouhinCD, @KonkaiShukkaSiziSuu
 	END
 	CLOSE cursor1
@@ -719,7 +803,9 @@ where ShukkaSiziNO=@ShukkaSiziNO
 
 --Table G  --追加または修正後
 UPDATE  A
-SET	ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
+SET	
+	HikiateZumiSuu = A.HikiateZumiSuu - B.KonkaiShukkaSiziSuu -- KTP Add
+	,ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
 	,UpdateOperator=@OperatorCD
 	,UpdateDateTime=@currentDate
 FROM D_JuchuuMeisai A
@@ -746,6 +832,9 @@ INNER JOIN (select JuchuuNO,MIN(ShukkaSiziKanryouKBN) as ShukkaSiziKanryouKBN
 ) as B
 ON A.JuchuuNO=B.JuchuuNO
 
+--ktp call fncHikiate
+exec dbo.Fnc_Hikiate 12,@ShukkaSiziNO,10,@OperatorCD
+
 --スタッフマスタ
 UPDATE M_Staff 
 set UsedFlg = 1 
@@ -760,3 +849,4 @@ exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperatorMode,@ShukkaSiziNO
 exec [dbo].[D_Exclusive_Remove_NO] 1,@OperatorCD,@Program,@PC
 	
 END
+

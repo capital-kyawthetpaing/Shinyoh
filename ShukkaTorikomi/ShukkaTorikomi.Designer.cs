@@ -68,6 +68,7 @@
             this.PanelTitle.Controls.Add(this.rdo_Sakujo);
             this.PanelTitle.Controls.Add(this.rdo_Toroku);
             this.PanelTitle.Controls.Add(this.取込区分);
+            this.PanelTitle.TabIndex = 1;
             // 
             // cboMode
             // 
@@ -110,7 +111,7 @@
             this.rdo_Sakujo.MoveNext = true;
             this.rdo_Sakujo.Name = "rdo_Sakujo";
             this.rdo_Sakujo.NextControl = null;
-            this.rdo_Sakujo.NextControlName = null;
+            this.rdo_Sakujo.NextControlName = "txtDate1";
             this.rdo_Sakujo.Size = new System.Drawing.Size(72, 19);
             this.rdo_Sakujo.TabIndex = 2;
             this.rdo_Sakujo.Text = "削除";
@@ -136,7 +137,7 @@
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1370, 630);
-            this.PanelDetail.TabIndex = 3;
+            this.PanelDetail.TabIndex = 2;
             // 
             // txtDate2
             // 
@@ -156,10 +157,10 @@
             this.txtDate2.MoveNext = true;
             this.txtDate2.Name = "txtDate2";
             this.txtDate2.NextControl = null;
-            this.txtDate2.NextControlName = null;
+            this.txtDate2.NextControlName = "txtDenpyouNO";
             this.txtDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtDate2.Size = new System.Drawing.Size(100, 19);
-            this.txtDate2.TabIndex = 13;
+            this.txtDate2.TabIndex = 4;
             this.txtDate2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -191,10 +192,10 @@
             this.txtDenpyouNO.MoveNext = true;
             this.txtDenpyouNO.Name = "txtDenpyouNO";
             this.txtDenpyouNO.NextControl = null;
-            this.txtDenpyouNO.NextControlName = null;
+            this.txtDenpyouNO.NextControlName = "BtnF10";
             this.txtDenpyouNO.SearchType = Entity.SearchType.ScType.None;
             this.txtDenpyouNO.Size = new System.Drawing.Size(100, 19);
-            this.txtDenpyouNO.TabIndex = 11;
+            this.txtDenpyouNO.TabIndex = 5;
             this.txtDenpyouNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // sLabel6
@@ -309,10 +310,10 @@
             this.txtDate1.MoveNext = true;
             this.txtDate1.Name = "txtDate1";
             this.txtDate1.NextControl = null;
-            this.txtDate1.NextControlName = null;
+            this.txtDate1.NextControlName = "txtDate2";
             this.txtDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtDate1.Size = new System.Drawing.Size(100, 19);
-            this.txtDate1.TabIndex = 6;
+            this.txtDate1.TabIndex = 3;
             this.txtDate1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -344,10 +345,10 @@
             this.txtShukkaToNo2.MoveNext = true;
             this.txtShukkaToNo2.Name = "txtShukkaToNo2";
             this.txtShukkaToNo2.NextControl = null;
-            this.txtShukkaToNo2.NextControlName = null;
+            this.txtShukkaToNo2.NextControlName = "BtnF10";
             this.txtShukkaToNo2.SearchType = Entity.SearchType.ScType.None;
             this.txtShukkaToNo2.Size = new System.Drawing.Size(500, 19);
-            this.txtShukkaToNo2.TabIndex = 4;
+            this.txtShukkaToNo2.TabIndex = 2;
             this.txtShukkaToNo2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtShukkaToNo1
@@ -369,10 +370,10 @@
             this.txtShukkaToNo1.MoveNext = true;
             this.txtShukkaToNo1.Name = "txtShukkaToNo1";
             this.txtShukkaToNo1.NextControl = null;
-            this.txtShukkaToNo1.NextControlName = null;
+            this.txtShukkaToNo1.NextControlName = "txtShukkaToNo2";
             this.txtShukkaToNo1.SearchType = Entity.SearchType.ScType.None;
             this.txtShukkaToNo1.Size = new System.Drawing.Size(500, 19);
-            this.txtShukkaToNo1.TabIndex = 3;
+            this.txtShukkaToNo1.TabIndex = 1;
             this.txtShukkaToNo1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // sLabel5

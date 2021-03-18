@@ -24,12 +24,15 @@ BEGIN
 		begin
 			if exists(select * from D_Shukka Shu Inner Join D_ShukkaMeisai Skm  on Shu.ShukkaNO = Skm.ShukkaNO where Shu.TorikomiDenpyouNO = @TorikomiDenpyouNO and Skm.UriageKanryouKBN = 1 )
 				begin
-					--exists
-					 --select 1 from M_Message where MessageID = 'E165'
-					select * from D_Shukka Shu Inner Join D_ShukkaMeisai Skm  on Shu.ShukkaNO = Skm.ShukkaNO,M_Message m where Shu.TorikomiDenpyouNO = @TorikomiDenpyouNO and Skm.UriageKanryouKBN = 1
-					and m.MessageID='E165'
+					select * from D_Shukka Shu Inner Join D_ShukkaMeisai Skm  
+					on Shu.ShukkaNO = Skm.ShukkaNO,M_Message m 
+					where Shu.TorikomiDenpyouNO = @TorikomiDenpyouNO and Skm.UriageKanryouKBN = 1
+					and m.MessageID = @ErrorType
 				end
-			
+			ELSE
+			BEGIN
+				SELECT '' AS MessageID, '' AS MessageText1
+			END
 		end
 	
 END

@@ -1093,6 +1093,7 @@ namespace ShukkaSiziNyuuryoku
                     if(dtHaita.Rows.Count>0)
                     {
                         dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[0].Cells["colKonkaiShukkaSiziSuu"];
+                        dgvShukkasizi.Focus();
                     }
                     dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].ReadOnly = false;
                     dgvShukkasizi.Columns["chk"].ReadOnly = false;
@@ -1404,26 +1405,26 @@ namespace ShukkaSiziNyuuryoku
             if (cboMode.SelectedValue.Equals("3"))//delete
             {
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-                sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
+                //sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
                 bbl.ShowMessage("I102");
             }
             else
             {
                sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-                if (cboMode.SelectedValue.Equals("1"))
-                {
-                    string FunctionNO = string.Empty;
-                    FunctionNO = dtResult.Rows[0]["ShukkaSiziNO"].ToString();
-                    if (!string.IsNullOrEmpty(FunctionNO))
-                    {
-                        sksz_bl.Get_HikiateFunctionNO("12", FunctionNO, "10", sksz_e.OperatorCD);
-                    }
-                }
-                else if (cboMode.SelectedValue.Equals("2"))
-                {
-                    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "20", sksz_e.OperatorCD);
-                    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "21", sksz_e.OperatorCD);
-                }
+                //if (cboMode.SelectedValue.Equals("1"))
+                //{
+                //    string FunctionNO = string.Empty;
+                //    FunctionNO = dtResult.Rows[0]["ShukkaSiziNO"].ToString();
+                //    if (!string.IsNullOrEmpty(FunctionNO))
+                //    {
+                //        sksz_bl.Get_HikiateFunctionNO("12", FunctionNO, "10", sksz_e.OperatorCD);
+                //    }
+                //}
+                //else if (cboMode.SelectedValue.Equals("2"))
+                //{
+                //    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "20", sksz_e.OperatorCD);
+                //    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "21", sksz_e.OperatorCD);
+                //}
                 bbl.ShowMessage("I101");
             }
         }
