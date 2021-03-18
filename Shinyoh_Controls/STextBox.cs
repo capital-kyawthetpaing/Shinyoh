@@ -427,9 +427,19 @@ namespace Shinyoh_Controls
                     }
                 }
             }
-            
-            if (this.TopLevelControl != null)   // PTK Added for KTP's below unfinished one. .  .
-                (((Shinyoh.BaseForm)(((System.Windows.Forms.Form.ControlCollection)this.TopLevelControl.Controls).Owner as Form)).Controls.Find("BtnF9", true)[0] as Control).Visible = false;
+
+
+            if (this.TopLevelControl != null && (SType == STextBoxType.Normal ||  SType == STextBoxType.Number))   // PTK Proceed for haita, KTP's below unfinished one (2021-03-18)
+            {
+                try
+                {
+                    (((Shinyoh.BaseForm)(((System.Windows.Forms.Form.ControlCollection)this.TopLevelControl.Controls).Owner as Form)).Controls.Find("BtnF9", true)[0] as Control).Visible = false;
+                }
+                catch (Exception ex) //can get catch for in some Codition
+                {
+                    var msg = ex.Message; 
+                }
+            }
             //KTP commented because of BtnF9 Click doesn't work
             //if (this.TopLevelControl != null)
             //{
