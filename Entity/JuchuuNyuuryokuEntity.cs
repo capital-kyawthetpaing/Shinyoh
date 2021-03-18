@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Entity
 {
-    
-    public class JuchuuNyuuryokuEntity:BaseEntity
+
+    public class JuchuuNyuuryokuEntity : BaseEntity
     {
         public string StaffCD { get; set; }
         public string JuchuuDate { get; set; }
@@ -25,13 +25,22 @@ namespace Entity
         public string ShouhinCD { get; set; }
         public string JANCD { get; set; }
         public string ShouhinName { get; set; }
-        public string YearTerm { get; set; }        
+        public string YearTerm { get; set; }
         public string ColorNO { get; set; }
         public string SizeNO { get; set; }
         public string SeasonSS { get; set; }
         public string SeasonFW { get; set; }
         public string ChangeDate { get; set; }
         public string SiiresakiCD { get; set; }
+
+        public string JuchuuNoFrom { get; set; }
+        public string JuchuuNoTo { get; set; }
+        public string HacchuNoFrom { get; set; }
+        public string HacchuNoTo { get; set; }
+        public string ShouhinCDFrom { get; set; }
+        public string ShouhinCDTo { get; set; }
+        public string JuchuuDateFrom { get; set; }
+        public string JuchuuDateTo { get; set; }
     }
 
     //public class Main_JuchuuNyuuryokuEntity

@@ -46,35 +46,35 @@ namespace Shinyoh_Search
         private void ErrorCheck()
         {
            
-            txtDate1.Focus();
-            txtDate1.E103Check(true);
-            txtDate2.E103Check(true);
-            txtDate2.E104Check(true, txtDate1, txtDate2);
+            txtJuchuuDateFrom.Focus();
+            txtJuchuuDateFrom.E103Check(true);
+            txtJuchuuDateTo.E103Check(true);
+            txtJuchuuDateTo.E104Check(true, txtJuchuuDateFrom, txtJuchuuDateTo);
             txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtCurrentDate, null);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtCurrentDate, null);
-            txtNo12.E106Check(true, txtNo11, txtNo12);
-            txtNo22.E106Check(true, txtNo21, txtNo22);
-            txtShouhin2.E106Check(true, txtShouhin1, txtShouhin2);
+            txtJuchuuNoTo.E106Check(true, txtJuchuuNoFrom, txtJuchuuNoTo);
+            txtHacchuNoTo.E106Check(true, txtHacchuNoFrom, txtHacchuNoTo);
+            txtShouhinTo.E106Check(true, txtShouhinFrom, txtShouhinTo);
         }
 
         private void DataGridviewBind()
         {
             JuchuuNyuuryokuEntity obj = new JuchuuNyuuryokuEntity();
-            if (cf.DateCheck(txtDate1))           //Task no. 147 - tza
-                obj.JuchuuDate = txtDate1.Text;
-            if(cf.DateCheck(txtDate2))           //Task no. 147 - tza
-                obj.ChangeDate = txtDate2.Text;
+            if (cf.DateCheck(txtJuchuuDateFrom))           //Task no. 147 - tza
+                obj.JuchuuDateFrom = txtJuchuuDateFrom.Text;
+            if(cf.DateCheck(txtJuchuuDateTo))           //Task no. 147 - tza
+                obj.JuchuuDateTo = txtJuchuuDateTo.Text;
             obj.TokuisakiCD = txtTokuisaki.Text;
             obj.StaffCD = txtStaffCD.Text;            
             obj.ShouhinName = txtShouhinName.Text;
 
-            obj.BrandCD = txtNo11.Text;
-            obj.JANCD = txtNo12.Text;
-            obj.SiiresakiCD = txtNo21.Text;
-            obj.KouritenCD = txtNo22.Text;
+            obj.JuchuuNoFrom = txtJuchuuNoFrom.Text;
+            obj.JuchuuNoTo = txtJuchuuNoTo.Text;
+            obj.HacchuNoFrom = txtHacchuNoFrom.Text;
+            obj.HacchuNoTo = txtHacchuNoTo.Text;
 
-            obj.ShouhinCD = txtShouhin1.Text;
-            obj.SizeNO = txtShouhin2.Text;
+            obj.ShouhinCDFrom = txtShouhinFrom.Text;
+            obj.ShouhinCDTo = txtShouhinTo.Text;
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
             if(ErrorCheck(panel1))           //Task no. 147 - tza
             {
