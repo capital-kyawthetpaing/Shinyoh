@@ -55,12 +55,18 @@ namespace MasterTouroku_Shouhin
             txtProduct.lblName1 = lblSizeNO;
             txtProduct.ChangeDate = txtChangeDate;
 
-            txtCopyProduct.TxtBox = txtCopyProduct;//ses
+            txtCopyProduct.TxtBox = txtCopyColor;       //HET
+            txtCopyProduct.TxtBox1 = txtCopySize;       //HET
+            txtCopyProduct.lblName = lblCopyColorNO;    //HET
+            txtCopyProduct.lblName1 = lblCopySizeNO;    //HET
+            txtCopyProduct.ChangeDate = txtCopyChangeDate; //HET
+
+            ////txtCopyProduct.TxtBox = txtCopyProduct;//ses
             //txtCopyProduct.TxtBox =txtCopyColor;
             //txtCopyProduct.TxtBox1 = txtCopySize;
             //txtCopyProduct.lblName = lblCopyColorNO;
             //txtCopyProduct.lblName1 = lblCopySizeNO;
-            txtCopyProduct.ChangeDate = txtCopyColor;//ses
+            ////txtCopyProduct.ChangeDate = txtCopyColor;//ses
 
             txtMajorSuppliers.ChangeDate = txtChangeDate;
             txtColor.lblName = lblColorNO;
