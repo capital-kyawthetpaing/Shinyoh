@@ -794,7 +794,7 @@ namespace JuchuuNyuuryoku
             if (e.RowIndex >= 0)
             {
                 var row = this.gv_JuchuuNyuuryoku.Rows[e.RowIndex];
-                if (senderGrid.Columns[e.ColumnIndex].ReadOnly == true)
+                if (senderGrid.Columns[e.ColumnIndex].ReadOnly == false)
                 {
                     sobj = new SiiresakiDetail(false);
                 }
