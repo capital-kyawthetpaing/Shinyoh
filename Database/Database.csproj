@@ -209,6 +209,7 @@
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_Update.sql" />
     <Content Include="StoreProcedure\Shukkasizi_Price.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Check.sql" />
+    <Content Include="StoreProcedure\ShukkaTorikomi_Delete.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Error_Check.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Insert.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Select_Check.sql" />
