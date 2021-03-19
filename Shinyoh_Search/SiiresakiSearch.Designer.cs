@@ -334,7 +334,7 @@
             this.gvSupplier.ISRowColumn = null;
             this.gvSupplier.Location = new System.Drawing.Point(25, 146);
             this.gvSupplier.Name = "gvSupplier";
-            this.gvSupplier.Size = new System.Drawing.Size(658, 315);
+            this.gvSupplier.Size = new System.Drawing.Size(658, 351);
             this.gvSupplier.TabIndex = 4;
             this.gvSupplier.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSupplier_CellMouseDoubleClick);
             this.gvSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvSupplier_KeyDown);
@@ -371,7 +371,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 506);
+            this.ClientSize = new System.Drawing.Size(935, 551);
             this.Controls.Add(this.gvSupplier);
             this.Controls.Add(this.PanelTitle);
             this.Name = "SiiresakiSearch";

@@ -625,9 +625,9 @@
             this.colShukkaSijiNo});
             this.gvShukkaNo.IsErrorOccurs = false;
             this.gvShukkaNo.ISRowColumn = null;
-            this.gvShukkaNo.Location = new System.Drawing.Point(33, 129);
+            this.gvShukkaNo.Location = new System.Drawing.Point(33, 143);
             this.gvShukkaNo.Name = "gvShukkaNo";
-            this.gvShukkaNo.Size = new System.Drawing.Size(664, 332);
+            this.gvShukkaNo.Size = new System.Drawing.Size(664, 351);
             this.gvShukkaNo.TabIndex = 4;
             this.gvShukkaNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvShukkaNo_CellMouseDoubleClick);
             this.gvShukkaNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvShukkaNo_KeyDown);
@@ -676,7 +676,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 506);
+            this.ClientSize = new System.Drawing.Size(1184, 551);
             this.Controls.Add(this.gvShukkaNo);
             this.Controls.Add(this.panel1);
             this.Name = "ShukkaNoSearch";

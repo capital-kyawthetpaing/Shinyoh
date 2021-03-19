@@ -641,9 +641,9 @@
             this.colCurrentDay});
             this.gv_1.IsErrorOccurs = false;
             this.gv_1.ISRowColumn = null;
-            this.gv_1.Location = new System.Drawing.Point(33, 132);
+            this.gv_1.Location = new System.Drawing.Point(33, 141);
             this.gv_1.Name = "gv_1";
-            this.gv_1.Size = new System.Drawing.Size(699, 330);
+            this.gv_1.Size = new System.Drawing.Size(699, 351);
             this.gv_1.TabIndex = 13;
             this.gv_1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gv_1_CellMouseDoubleClick);
             this.gv_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_1_KeyDown);
@@ -698,7 +698,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 506);
+            this.ClientSize = new System.Drawing.Size(1184, 551);
             this.Controls.Add(this.gv_1);
             this.Controls.Add(this.panel1);
             this.Name = "HacchuuNyuuryokuSearch";

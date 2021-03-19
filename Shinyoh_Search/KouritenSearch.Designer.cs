@@ -503,9 +503,11 @@
             this.colChangeDate,
             this.colKouritenRyakuName,
             this.colCurrentDay});
-            this.gv_Kouriten.Location = new System.Drawing.Point(24, 146);
+            this.gv_Kouriten.IsErrorOccurs = false;
+            this.gv_Kouriten.ISRowColumn = null;
+            this.gv_Kouriten.Location = new System.Drawing.Point(24, 138);
             this.gv_Kouriten.Name = "gv_Kouriten";
-            this.gv_Kouriten.Size = new System.Drawing.Size(1020, 302);
+            this.gv_Kouriten.Size = new System.Drawing.Size(1020, 365);
             this.gv_Kouriten.TabIndex = 3;
             this.gv_Kouriten.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gv_Kouriten_CellMouseDoubleClick);
             this.gv_Kouriten.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_Kouriten_KeyDown);
@@ -574,7 +576,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 506);
+            this.ClientSize = new System.Drawing.Size(1184, 551);
             this.Controls.Add(this.gv_Kouriten);
             this.Controls.Add(this.PanelTitle);
             this.Name = "KouritenSearch";

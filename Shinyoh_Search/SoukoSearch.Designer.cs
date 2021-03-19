@@ -235,9 +235,11 @@
             this.gvSouko.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSouko,
             this.colSoukoName});
-            this.gvSouko.Location = new System.Drawing.Point(22, 111);
+            this.gvSouko.IsErrorOccurs = false;
+            this.gvSouko.ISRowColumn = null;
+            this.gvSouko.Location = new System.Drawing.Point(22, 122);
             this.gvSouko.Name = "gvSouko";
-            this.gvSouko.Size = new System.Drawing.Size(588, 347);
+            this.gvSouko.Size = new System.Drawing.Size(588, 351);
             this.gvSouko.TabIndex = 2;
             this.gvSouko.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSouko_CellMouseDoubleClick);
             this.gvSouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvSouko_KeyDown);
@@ -262,7 +264,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 506);
+            this.ClientSize = new System.Drawing.Size(884, 551);
             this.Controls.Add(this.gvSouko);
             this.Controls.Add(this.panel1);
             this.Name = "SoukoSearch";

@@ -75,11 +75,11 @@
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.btnDisplay.Location = new System.Drawing.Point(832, 83);
+            this.btnDisplay.Location = new System.Drawing.Point(802, 95);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.NextControl = null;
             this.btnDisplay.NextControlName = null;
-            this.btnDisplay.Size = new System.Drawing.Size(130, 30);
+            this.btnDisplay.Size = new System.Drawing.Size(150, 25);
             this.btnDisplay.TabIndex = 6;
             this.btnDisplay.Text = "表示(F11)";
             this.btnDisplay.UseVisualStyleBackColor = false;
@@ -276,9 +276,11 @@
             this.colID,
             this.colKey,
             this.colName});
-            this.gvMultiporpose.Location = new System.Drawing.Point(17, 133);
+            this.gvMultiporpose.IsErrorOccurs = false;
+            this.gvMultiporpose.ISRowColumn = null;
+            this.gvMultiporpose.Location = new System.Drawing.Point(17, 141);
             this.gvMultiporpose.Name = "gvMultiporpose";
-            this.gvMultiporpose.Size = new System.Drawing.Size(658, 520);
+            this.gvMultiporpose.Size = new System.Drawing.Size(658, 365);
             this.gvMultiporpose.TabIndex = 3;
             this.gvMultiporpose.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvMultiporpose_CellMouseDoubleClick);
             this.gvMultiporpose.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvMultiporpose_KeyDown);
@@ -310,7 +312,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 711);
+            this.ClientSize = new System.Drawing.Size(984, 551);
             this.Controls.Add(this.gvMultiporpose);
             this.Controls.Add(this.PanelTitle);
             this.Name = "MultiPorposeSearch";

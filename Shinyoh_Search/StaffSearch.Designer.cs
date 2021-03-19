@@ -332,9 +332,11 @@
             this.colStaffName,
             this.colChangeDate,
             this.colCurrentDay});
+            this.gvStaff.IsErrorOccurs = false;
+            this.gvStaff.ISRowColumn = null;
             this.gvStaff.Location = new System.Drawing.Point(45, 146);
             this.gvStaff.Name = "gvStaff";
-            this.gvStaff.Size = new System.Drawing.Size(739, 302);
+            this.gvStaff.Size = new System.Drawing.Size(739, 351);
             this.gvStaff.TabIndex = 3;
             this.gvStaff.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvStaff_CellMouseDoubleClick);
             this.gvStaff.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvStaff_KeyDown);
@@ -378,7 +380,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 506);
+            this.ClientSize = new System.Drawing.Size(935, 551);
             this.Controls.Add(this.gvStaff);
             this.Controls.Add(this.PanelTitle);
             this.Name = "StaffSearch";
