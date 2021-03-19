@@ -178,7 +178,7 @@ namespace ShukkaTorikomi
                     DataGridviewBind();
                 gvMainDetail.ActionType = string.Empty;
             }
-            base.FunctionProcess(tagID);
+            //base.FunctionProcess(tagID);
 
             if (tagID == "12")
             {
@@ -194,19 +194,18 @@ namespace ShukkaTorikomi
                     else
                     {
                         ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
-                        string chk_val = string.Empty;
+                        string spname = string.Empty;
                         string TorikomiDenpyouNO = txtDenpyouNO.Text;
                         string return_BL = string.Empty;
                         if (rdo_Toroku.Checked)
                         {
-                            chk_val = "create_update";
-                            return_BL = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Insert", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                            spname = "ShukkaTorikomi_Insert";
                         }
                         else
                         {
-                            chk_val = "delete";
-                            return_BL = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                            spname = "ShukkaTorikomi_Delete";
                         }
+                        return_BL = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
                         if (return_BL == "true")
                         {
                             bbl.ShowMessage("I002");                           
@@ -473,7 +472,8 @@ namespace ShukkaTorikomi
             bool bl = false;
             if (string.IsNullOrWhiteSpace(obj_text))
             {
-                bbl.ShowMessage("E102", line_no.ToString(), error_msg);
+                //bbl.ShowMessage("E102", line_no.ToString(), error_msg);
+                bbl.ShowMessage("E102");
                 bl = true;
             }
             return bl;
