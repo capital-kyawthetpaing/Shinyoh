@@ -829,8 +829,8 @@ namespace ChakuniYoteiNyuuryoku
              DataTable dt = cbl.ChakuniYoteiDataCheck(chkEntity);
             if(dt.Rows.Count>0)
             {
-                bbl.ShowMessage("Q325");
-                txtNumber.Focus();
+                if(bbl.ShowMessage("Q325") == DialogResult.Cancel) 
+                    txtNumber.Focus();
             }
 
         }
