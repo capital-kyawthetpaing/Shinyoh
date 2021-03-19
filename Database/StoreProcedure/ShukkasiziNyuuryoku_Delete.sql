@@ -447,6 +447,35 @@ SELECT
 FROM [dbo].[D_ShukkaSiziShousai]
 where ShukkaSiziNO=@ShukkaSiziNO
 
+-- KTP Add start
+--call fncHikiate
+exec dbo.Fnc_Hikiate 12,@ShukkaSiziNO,30,@OperatorCD
+
+--Reverse/Cancel Old Data KTP Change
+
+declare @tmpsss as decimal(21,6)
+select @tmpsss = sum(ShukkaSiziSuu) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO group by ShukkaSiziNO
+
+UPDATE  A
+SET	
+	HikiateZumiSuu = A.HikiateZumiSuu + @tmpsss -- KTP Add
+	,ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu - @tmpsss
+	,UpdateOperator=@OperatorCD
+	,UpdateDateTime=@currentDate
+FROM D_JuchuuMeisai A
+
+update D_JuchuuShousai
+set HikiateZumiSuu = js.HikiateZumiSuu + sss.ShukkaSiziSuu,
+	ShukkaSiziZumiSuu = js.ShukkaSiziZumiSuu - sss.ShukkaSiziSuu
+from D_JuchuuShousai js
+inner join D_ShukkaSiziShousai sss on js.KanriNO = sss.KanriNO and js.NyuukoDate = sss.NyuukoDate and js.SoukoCD = sss.SoukoCD
+and js.ShouhinCD = sss.ShouhinCD
+where sss.ShukkaSiziNO = @ShukkaSiziNO
+
+delete D_ShukkaSiziShousai
+where ShukkaSiziNO = @ShukkaSiziNO
+-- KTP Add end
+
 --TableA
 DELETE A
 FROM D_ShukkaSizi A
@@ -465,15 +494,15 @@ WHERE A.ShukkaSiziNO=@ShukkaSiziNO
 --Konkai_price
 
 --Table G --02
-UPDATE  A
-SET	ShukkaSiziZumiSuu= case when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu>0 then  A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu
-									when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu<=0 then 0 end
-	,UpdateOperator=@OperatorCD
-	,UpdateDateTime=@currentDate
-FROM D_JuchuuMeisai A
-inner join #Temp_Details B
-on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
-and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
+--UPDATE  A
+--SET	ShukkaSiziZumiSuu= case when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu>0 then  A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu
+--									when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu<=0 then 0 end
+--	,UpdateOperator=@OperatorCD
+--	,UpdateDateTime=@currentDate
+--FROM D_JuchuuMeisai A
+--inner join #Temp_Details B
+--on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
+--and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
 
 --D_JuchuuMeisai
 UPDATE  A 
