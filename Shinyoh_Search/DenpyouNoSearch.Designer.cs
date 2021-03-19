@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.btnSearch = new Shinyoh_Controls.SButton();
@@ -60,7 +60,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(935, 100);
+            this.panel1.Size = new System.Drawing.Size(935, 120);
             this.panel1.TabIndex = 2;
             // 
             // lbl_Date
@@ -84,11 +84,11 @@
             this.btnSearch.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSearch.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.btnSearch.Location = new System.Drawing.Point(756, 60);
+            this.btnSearch.Location = new System.Drawing.Point(756, 87);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.NextControl = null;
             this.btnSearch.NextControlName = null;
-            this.btnSearch.Size = new System.Drawing.Size(160, 30);
+            this.btnSearch.Size = new System.Drawing.Size(150, 25);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Tag = "2";
             this.btnSearch.Text = "表示(F11)";
@@ -178,11 +178,13 @@
             this.SEQNO1,
             this.Prefix1,
             this.Counter1});
-            this.gvDenpyouNo.Location = new System.Drawing.Point(11, 106);
+            this.gvDenpyouNo.IsErrorOccurs = false;
+            this.gvDenpyouNo.ISRowColumn = null;
+            this.gvDenpyouNo.Location = new System.Drawing.Point(11, 141);
             this.gvDenpyouNo.MultiSelect = false;
             this.gvDenpyouNo.Name = "gvDenpyouNo";
             this.gvDenpyouNo.ReadOnly = true;
-            this.gvDenpyouNo.Size = new System.Drawing.Size(394, 357);
+            this.gvDenpyouNo.Size = new System.Drawing.Size(394, 351);
             this.gvDenpyouNo.TabIndex = 3;
             this.gvDenpyouNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvDenpyouNo_CellMouseDoubleClick);
             this.gvDenpyouNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvDenpyouNo_KeyDown);
@@ -200,8 +202,8 @@
             // 
             this.SEQNO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.SEQNO1.DataPropertyName = "SEQNO";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.SEQNO1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.SEQNO1.DefaultCellStyle = dataGridViewCellStyle11;
             this.SEQNO1.FillWeight = 144.3299F;
             this.SEQNO1.HeaderText = "SEQNO";
             this.SEQNO1.Name = "SEQNO1";
@@ -220,8 +222,8 @@
             // 
             this.Counter1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Counter1.DataPropertyName = "Counter";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.Counter1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.Counter1.DefaultCellStyle = dataGridViewCellStyle12;
             this.Counter1.FillWeight = 61.66823F;
             this.Counter1.HeaderText = "カウンタ";
             this.Counter1.Name = "Counter1";
@@ -231,7 +233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 506);
+            this.ClientSize = new System.Drawing.Size(935, 551);
             this.Controls.Add(this.gvDenpyouNo);
             this.Controls.Add(this.panel1);
             this.Name = "DenpyouNoSearch";
