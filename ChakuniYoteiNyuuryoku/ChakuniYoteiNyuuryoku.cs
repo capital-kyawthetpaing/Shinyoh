@@ -473,6 +473,13 @@ namespace ChakuniYoteiNyuuryoku
 
             if (dt.Rows.Count > 0)
                 lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
+            else
+            {
+                txtBrandCD.Focus();
+                lblBrandName.Text = string.Empty;
+                bbl.ShowMessage("E101");
+            }
+
         }
         private void txtDate_KeyDown(object sender, KeyEventArgs e)
         {
