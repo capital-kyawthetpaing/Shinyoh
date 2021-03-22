@@ -55,12 +55,18 @@ namespace MasterTouroku_Shouhin
             txtProduct.lblName1 = lblSizeNO;
             txtProduct.ChangeDate = txtChangeDate;
 
-            txtCopyProduct.TxtBox = txtCopyProduct;//ses
+            txtCopyProduct.TxtBox = txtCopyColor;       //HET
+            txtCopyProduct.TxtBox1 = txtCopySize;       //HET
+            txtCopyProduct.lblName = lblCopyColorNO;    //HET
+            txtCopyProduct.lblName1 = lblCopySizeNO;    //HET
+            txtCopyProduct.ChangeDate = txtCopyChangeDate; //HET
+
+            ////txtCopyProduct.TxtBox = txtCopyProduct;//ses
             //txtCopyProduct.TxtBox =txtCopyColor;
             //txtCopyProduct.TxtBox1 = txtCopySize;
             //txtCopyProduct.lblName = lblCopyColorNO;
             //txtCopyProduct.lblName1 = lblCopySizeNO;
-            txtCopyProduct.ChangeDate = txtCopyColor;//ses
+            ////txtCopyProduct.ChangeDate = txtCopyColor;//ses
 
             txtMajorSuppliers.ChangeDate = txtChangeDate;
             txtColor.lblName = lblColorNO;
@@ -242,6 +248,8 @@ namespace MasterTouroku_Shouhin
                 {
                     txtCopyProduct.Enabled = false;
                     txtCopyChangeDate.Enabled = false;
+                    txtCopyColor.Enabled = false;       //HET
+                    txtCopySize.Enabled = false;        //HET
                 }
             }
             if (tagID == "10")
@@ -415,7 +423,7 @@ namespace MasterTouroku_Shouhin
                 DataTable dt1 = txtChangeDate.IsDatatableOccurs;
                 if (dt1.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
-                    DB_To_UI(dt1);
+                    DB_To_UI(dt1, "copy");
                 }
             }
         }
@@ -443,7 +451,7 @@ namespace MasterTouroku_Shouhin
                         EnableAndDisablePanel();
                         DataTable dt1 = txtCopyChangeDate.IsDatatableOccurs;
                         if (dt1.Rows.Count > 0)
-                            DB_To_UI(dt1);
+                            DB_To_UI(dt1, "copy");
                     }
                 }
             }
@@ -456,18 +464,21 @@ namespace MasterTouroku_Shouhin
             chkShukou.Focus();
         }
 
-        private void DB_To_UI(DataTable dt)
+        private void DB_To_UI(DataTable dt, string type)
         {
             if(dt.Rows[0]["MessageID"].ToString() == "E132")
             {
-                txtProduct.Text= dt.Rows[0]["HinbanCD"].ToString();
+                if(type != "copy")          // HET
+                {
+                    txtProduct.Text = dt.Rows[0]["HinbanCD"].ToString();
+                    txtColor.Text = dt.Rows[0]["ColorNO"].ToString();
+                    txtSize.Text = dt.Rows[0]["SizeNO"].ToString();
+                }
                 if (dt.Rows[0]["ShokutiFLG"].ToString() == "1")
                     chkShukou.Checked = true;
                 else
                     chkShukou.Checked = false;
                 txtProductName.Text = dt.Rows[0]["ShouhinName"].ToString();
-                txtColor.Text = dt.Rows[0]["ColorNO"].ToString();
-                txtSize.Text = dt.Rows[0]["SizeNO"].ToString();
                 txtShouhinRyakuName.Text = dt.Rows[0]["ShouhinRyakuName"].ToString();
                 txtKatakanaName.Text = dt.Rows[0]["KanaName"].ToString();
                 txtJANCD.Text = dt.Rows[0]["JANCD"].ToString();
