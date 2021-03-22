@@ -248,6 +248,8 @@ namespace MasterTouroku_Shouhin
                 {
                     txtCopyProduct.Enabled = false;
                     txtCopyChangeDate.Enabled = false;
+                    txtCopyColor.Enabled = false;       //HET
+                    txtCopySize.Enabled = false;        //HET
                 }
             }
             if (tagID == "10")
