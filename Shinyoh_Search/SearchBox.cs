@@ -135,18 +135,21 @@ namespace Shinyoh_Search
                         DenpyouNoSearch denpyouSearch = new DenpyouNoSearch();
                         denpyouSearch.ShowDialog();
                         //Combo.SelectedIndex = Convert.ToInt32(denpyouSearch.renban);
-                        Combo.SelectedValue = denpyouSearch.renban;
-                        if (this.Name == "txtSEQNO")
+                        if(!string.IsNullOrWhiteSpace(denpyouSearch.renban)) // ktp no 181 
                         {
-                            TxtBox.Text = denpyouSearch.prefix;
-                            TxtBox.Focus();
-                            CD = denpyouSearch.seqno;
-                        }
-                        else
-                        {
-                            TxtBox.Text = denpyouSearch.seqno;
-                            CD = denpyouSearch.prefix;
-                        }
+                            Combo.SelectedValue = denpyouSearch.renban;
+                            if (this.Name == "txtSEQNO")
+                            {
+                                TxtBox.Text = denpyouSearch.prefix;
+                                TxtBox.Focus();
+                                CD = denpyouSearch.seqno;
+                            }
+                            else
+                            {
+                                TxtBox.Text = denpyouSearch.seqno;
+                                CD = denpyouSearch.prefix;
+                            }
+                        }                       
                         break;
                     case Entity.SearchType.ScType.Siiresaki:
                         SiiresakiSearch siiresakiSearch = new SiiresakiSearch();
