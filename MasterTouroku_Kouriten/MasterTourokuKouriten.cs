@@ -35,7 +35,6 @@ namespace MasterTouroku_Kouriten
             InitializeComponent();
             cf = new CommonFunction();
             base_bl = new BaseBL();
-
             err = new ErrorCheck();
         }
         private void MasterTourokuKouriten_Load(object sender, EventArgs e)
