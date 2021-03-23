@@ -45,7 +45,7 @@ namespace HaitaSakujo {
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Import, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
-            SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
+            SetButton(ButtonType.BType.Confirm, F12, "登録(F12)", true);
 
             lbl_dataPartition.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lbl_InputPerson.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -75,13 +75,29 @@ namespace HaitaSakujo {
             }
             if (tagID == "10")
             {
-                btnDisaplay();
+                btnDisplay();
             }
             if (tagID == "12")
             {
-                btnClearExclusive();
+                if (!IsCheckExist())
+                {
+                    bll.ShowMessage("E257");
+                    F12.Focus();
+                    return;
+                }
+                else
+                {
+                    if (bll.ShowMessage("Q101") != DialogResult.Yes)
+                    {
+                        if (PreviousCtrl != null)
+                            PreviousCtrl.Focus();
+                    }
+                    else
+                    {
+                        btnClearExclusive();
+                    }
+                }
             }
-
         }
         private bool IsCheckExist()
         {
@@ -93,12 +109,12 @@ namespace HaitaSakujo {
             
         private void btnClearExclusive()
         {
-            if (!IsCheckExist())
-            {
-                bll.ShowMessage("E257");
-                F12.Focus();
-                return;
-            }
+            //if (!IsCheckExist())
+            //{
+            //    bll.ShowMessage("E257");
+            //    F12.Focus();
+            //    return;
+            //}
             var dt = new DataTable();
             dt = (gvHaitaSakujo.DataSource as DataTable).Select("Target = 1").CopyToDataTable();
             HaitaSakujoBL bl = new HaitaSakujoBL();
@@ -112,7 +128,7 @@ namespace HaitaSakujo {
             {
                 bll.ShowMessage("I101");
 
-                foreach (DataRow dr in (gvHaitaSakujo.DataSource as DataTable).Rows)
+                foreach (DataRow dr in (gvHaitaSakujo.DataSource as DataTable).Select("Target = 1"))
                     dr.Delete();
                 gvHaitaSakujo.Refresh();
                 gvHaitaSakujo.RefreshEdit();
@@ -126,7 +142,7 @@ namespace HaitaSakujo {
             string result = writer.ToString();
             return result;
         }
-        private void btnDisaplay()
+        private void btnDisplay()
         {
             HaitaSakujoBL bl = new HaitaSakujoBL();
             HaitaSakujoEntity obj = new HaitaSakujoEntity();
