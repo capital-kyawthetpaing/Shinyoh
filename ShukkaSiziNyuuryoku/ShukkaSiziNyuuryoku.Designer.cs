@@ -783,7 +783,7 @@ namespace ShukkaSiziNyuuryoku
             this.dgvShukkasizi.ISRowColumn = null;
             this.dgvShukkasizi.Location = new System.Drawing.Point(48, 207);
             this.dgvShukkasizi.Name = "dgvShukkasizi";
-            this.dgvShukkasizi.Size = new System.Drawing.Size(1600, 600);
+            this.dgvShukkasizi.Size = new System.Drawing.Size(1600, 592);
             this.dgvShukkasizi.TabIndex = 23;
             this.dgvShukkasizi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNo_KeyDown);
             // 
@@ -914,8 +914,8 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.SoukoCD.DataPropertyName = "SoukoCD";
             this.SoukoCD.HeaderText = "倉庫";
-            this.SoukoCD.Name = "SoukoCD";
             this.SoukoCD.MaxInputLength = 10;
+            this.SoukoCD.Name = "SoukoCD";
             // 
             // SoukoName
             // 

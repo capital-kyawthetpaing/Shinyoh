@@ -1756,7 +1756,11 @@ namespace JuchuuNyuuryoku
 
         private void gv_JuchuuNyuuryoku_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F9)
+            SCombo cbo = new SCombo();
+
+            if (this.TopLevelControl.Controls.Find("cboMode", true).Count() > 0)
+                cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+            if (e.KeyCode == Keys.F9 && (cbo.SelectedValue.Equals("1") || cbo.SelectedValue.Equals("2")))
             {
                 if (gv_JuchuuNyuuryoku.CurrentCell != null)
                 {

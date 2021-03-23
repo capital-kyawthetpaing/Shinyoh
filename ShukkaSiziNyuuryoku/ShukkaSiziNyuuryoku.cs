@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Shinyoh_Search;
 using System.Data;
 using System.Linq;
+using Shinyoh_Controls;
 
 namespace ShukkaSiziNyuuryoku
 {
@@ -644,7 +645,11 @@ namespace ShukkaSiziNyuuryoku
         }
         private void dgvShukkasizi_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F9)
+            SCombo cbo = new SCombo();
+
+            if(this.TopLevelControl.Controls.Find("cboMode", true).Count() > 0 )
+                cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+            if (e.KeyCode == Keys.F9 && (cbo.SelectedValue.Equals("1") || cbo.SelectedValue.Equals("2")))
             {
                 int row = dgvShukkasizi.CurrentCell.RowIndex;
                 int col = dgvShukkasizi.CurrentCell.ColumnIndex;
@@ -1237,14 +1242,16 @@ namespace ShukkaSiziNyuuryoku
         //Call_Function
         private void Gridview_F9ShowHide(int col, string type)
         {
-            Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+            SCombo cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
             Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
             if (dgvShukkasizi.Columns[col].Name == "SoukoCD")
             {
                 Control btnF9 = ctrlArr[0];
                 if (ctrlArr.Length > 0 && type == "Show")
                 {
-                    if (btnF9 != null)
+                    if (cbo.SelectedValue.Equals("3") || cbo.SelectedValue.Equals("4"))
+                        btnF9.Visible = false;
+                    else if (btnF9 != null)
                         btnF9.Visible = true;
                 }
                 else
