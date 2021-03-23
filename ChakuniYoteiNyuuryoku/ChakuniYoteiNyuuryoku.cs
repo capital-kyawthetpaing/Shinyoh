@@ -473,6 +473,13 @@ namespace ChakuniYoteiNyuuryoku
 
             if (dt.Rows.Count > 0)
                 lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
+            else
+            {
+                txtBrandCD.Focus();
+                lblBrandName.Text = string.Empty;
+                bbl.ShowMessage("E101");
+            }
+
         }
         private void txtDate_KeyDown(object sender, KeyEventArgs e)
         {
@@ -829,8 +836,8 @@ namespace ChakuniYoteiNyuuryoku
              DataTable dt = cbl.ChakuniYoteiDataCheck(chkEntity);
             if(dt.Rows.Count>0)
             {
-                bbl.ShowMessage("Q325");
-                txtNumber.Focus();
+                if(bbl.ShowMessage("Q325") == DialogResult.Cancel) 
+                    txtNumber.Focus();
             }
 
         }

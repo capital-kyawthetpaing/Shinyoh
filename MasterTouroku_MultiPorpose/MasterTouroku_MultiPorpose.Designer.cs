@@ -97,7 +97,7 @@
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel3.ForeColor = System.Drawing.Color.White;
-            this.sLabel3.Location = new System.Drawing.Point(19, 15);
+            this.sLabel3.Location = new System.Drawing.Point(19, 9);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 0;
@@ -111,7 +111,7 @@
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel4.ForeColor = System.Drawing.Color.White;
-            this.sLabel4.Location = new System.Drawing.Point(19, 47);
+            this.sLabel4.Location = new System.Drawing.Point(19, 41);
             this.sLabel4.Name = "sLabel4";
             this.sLabel4.Size = new System.Drawing.Size(100, 19);
             this.sLabel4.TabIndex = 1;
@@ -700,7 +700,7 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(512, 47);
+            this.sLabel6.Location = new System.Drawing.Point(512, 41);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
             this.sLabel6.TabIndex = 10;
@@ -713,7 +713,7 @@
             this.txtIDCopy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtIDCopy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.txtIDCopy.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.txtIDCopy.Location = new System.Drawing.Point(512, 15);
+            this.txtIDCopy.Location = new System.Drawing.Point(512, 9);
             this.txtIDCopy.Name = "txtIDCopy";
             this.txtIDCopy.Size = new System.Drawing.Size(100, 19);
             this.txtIDCopy.TabIndex = 9;
@@ -737,7 +737,7 @@
             this.txtKEYCopy.IsUseInitializedLayout = true;
             this.txtKEYCopy.lblName = null;
             this.txtKEYCopy.lblName1 = null;
-            this.txtKEYCopy.Location = new System.Drawing.Point(612, 47);
+            this.txtKEYCopy.Location = new System.Drawing.Point(612, 41);
             this.txtKEYCopy.MaxLength = 50;
             this.txtKEYCopy.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKEYCopy.MoveNext = true;
@@ -769,7 +769,7 @@
             this.txtKEY.IsUseInitializedLayout = true;
             this.txtKEY.lblName = null;
             this.txtKEY.lblName1 = null;
-            this.txtKEY.Location = new System.Drawing.Point(118, 47);
+            this.txtKEY.Location = new System.Drawing.Point(118, 41);
             this.txtKEY.MaxLength = 50;
             this.txtKEY.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtKEY.MoveNext = true;
@@ -778,7 +778,7 @@
             this.txtKEY.NextControlName = "txtCopyID";
             this.txtKEY.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtKEY.Size = new System.Drawing.Size(305, 19);
-            this.txtKEY.TabIndex = 15;
+            this.txtKEY.TabIndex = 14;
             this.txtKEY.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtKEY.TxtBox = null;
             this.txtKEY.TxtBox1 = null;
@@ -801,7 +801,7 @@
             this.txtCopyID.IsUseInitializedLayout = true;
             this.txtCopyID.lblName = null;
             this.txtCopyID.lblName1 = null;
-            this.txtCopyID.Location = new System.Drawing.Point(612, 15);
+            this.txtCopyID.Location = new System.Drawing.Point(612, 9);
             this.txtCopyID.MaxLength = 10;
             this.txtCopyID.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCopyID.MoveNext = true;
@@ -810,7 +810,7 @@
             this.txtCopyID.NextControlName = "txtKEYCopy";
             this.txtCopyID.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtCopyID.Size = new System.Drawing.Size(100, 19);
-            this.txtCopyID.TabIndex = 14;
+            this.txtCopyID.TabIndex = 15;
             this.txtCopyID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCopyID.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtCopyID.TxtBox = null;
@@ -833,7 +833,7 @@
             this.txtID.IsUseInitializedLayout = true;
             this.txtID.lblName = null;
             this.txtID.lblName1 = null;
-            this.txtID.Location = new System.Drawing.Point(118, 15);
+            this.txtID.Location = new System.Drawing.Point(118, 9);
             this.txtID.MaxLength = 9;
             this.txtID.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtID.MoveNext = true;

@@ -118,7 +118,7 @@ BEGIN
 		(ShouhinCD, ChangeDate, ShokutiFLG, HinbanCD, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD, ColorNO, SizeNO, JoudaiTanka,
 		GedaiTanka, HyoujunGenkaTanka, ZeirituKBN, ZaikoHyoukaKBN, ZaikoKanriKBN, MainSiiresakiCD, ToriatukaiShuuryouDate, HanbaiTeisiDate, Model_No, Model_Name, FOB, Shipping_Place,
 		HacchuuLot, ShouhinImageFilePathName, ShouhinImage, Remarks, UsedFlg, InsertOperator, InsertDateTime, UpdateOperator, UpdateDateTime)
-		SELECT  ShouhinCD, ChangeDate, ShokutiFLG, HinbanCD, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD, ColorNO, SizeNO, JoudaiTanka,
+		SELECT  (HinbanCD+ColorNO+SizeNO), ChangeDate, ShokutiFLG, HinbanCD, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD, ColorNO, SizeNO, JoudaiTanka,
 		GedaiTanka, HyoujunGenkaTanka, ZeirituKBN, ZaikoHyoukaKBN, ZaikoKanriKBN, MainSiiresakiCD, ToriatukaiShuuryouDate, HanbaiTeisiDate, Model_No, Model_Name, FOB, Shipping_Place,
 		HacchuuLot, ShouhinImageFilePathName, ShouhinImage, Remarks, UsedFlg, InsertOperator, GETDATE(), UpdateOperator, GETDATE()
 		FROM #Temp

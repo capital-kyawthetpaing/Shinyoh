@@ -740,11 +740,13 @@
             this.dgDetail.AllowUserToResizeColumns = false;
             this.dgDetail.AllowUserToResizeRows = false;
             this.dgDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgDetail.Location = new System.Drawing.Point(15, 120);
+            this.dgDetail.IsErrorOccurs = false;
+            this.dgDetail.ISRowColumn = null;
+            this.dgDetail.Location = new System.Drawing.Point(15, 131);
             this.dgDetail.MultiSelect = false;
             this.dgDetail.Name = "dgDetail";
             this.dgDetail.ReadOnly = true;
-            this.dgDetail.Size = new System.Drawing.Size(1175, 343);
+            this.dgDetail.Size = new System.Drawing.Size(1175, 365);
             this.dgDetail.TabIndex = 3;
             this.dgDetail.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDetail_CellMouseDoubleClick);
             this.dgDetail.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgDetail_CellPainting);
@@ -757,7 +759,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 506);
+            this.ClientSize = new System.Drawing.Size(1199, 551);
             this.Controls.Add(this.dgDetail);
             this.Controls.Add(this.PanelTitle);
             this.Name = "Shouhin_Search";

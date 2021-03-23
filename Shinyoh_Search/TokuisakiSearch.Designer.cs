@@ -328,6 +328,8 @@
             this.colTokuisakiName,
             this.colChangeDate,
             this.colTokuisakiRyakuName});
+            this.gvTokuisaki.IsErrorOccurs = false;
+            this.gvTokuisaki.ISRowColumn = null;
             this.gvTokuisaki.Location = new System.Drawing.Point(26, 147);
             this.gvTokuisaki.Name = "gvTokuisaki";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -338,7 +340,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gvTokuisaki.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.gvTokuisaki.Size = new System.Drawing.Size(660, 302);
+            this.gvTokuisaki.Size = new System.Drawing.Size(660, 351);
             this.gvTokuisaki.TabIndex = 5;
             this.gvTokuisaki.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvTokuisaki_CellMouseDoubleClick);
             this.gvTokuisaki.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvTokuisaki_KeyDown);
@@ -384,7 +386,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 506);
+            this.ClientSize = new System.Drawing.Size(935, 551);
             this.Controls.Add(this.gvTokuisaki);
             this.Controls.Add(this.PanelTitle);
             this.Name = "TokuisakiSearch";
