@@ -1549,14 +1549,16 @@ namespace JuchuuNyuuryoku
 
         private void Gridview_F9ShowHide(int col,string type)
         {
-            Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+            SCombo cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
             Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
             if (gv_JuchuuNyuuryoku.Columns[col].Name == "colSiiresakiCD" || gv_JuchuuNyuuryoku.Columns[col].Name == "colSoukoCD")
             {
                 Control btnF9 = ctrlArr[0];
                 if (ctrlArr.Length > 0 && type=="Show")
                 {
-                    if (btnF9 != null)
+                    if (cbo.SelectedValue.Equals("3") || cbo.SelectedValue.Equals("4"))
+                        btnF9.Visible = false;
+                    else if (btnF9 != null)
                         btnF9.Visible = true;
                 }
                 else
