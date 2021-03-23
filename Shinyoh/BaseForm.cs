@@ -113,7 +113,6 @@ namespace Shinyoh
                 System.Environment.Exit(0);
             }
         }
-
         private bool GetCmdLine()
         {
             string[] cmds = System.Environment.GetCommandLineArgs();
@@ -593,6 +592,11 @@ namespace Shinyoh
 
                 return createParam;
             }
+        }
+
+        private void BaseForm_MouseLeave(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -106,6 +106,8 @@ namespace HacchuuSho
 
         private void Excel_Export()
         {
+            //if (this.Name == "")
+            //return;
             hsbl = new HacchuuShoBL();
             DataTable dt = new DataTable();
             dt = hsbl.Get_ExportData(Get_UIData());
@@ -122,7 +124,7 @@ namespace HacchuuSho
             xlWorkSheet.Name = "Sheet1";
 
             xlApp.ActiveWindow.View = Excel.XlWindowView.xlPageBreakPreview;
-            xlWorkSheet.PageSetup.PaperSize = Excel.XlPaperSize.xlPaperA4;
+            //xlWorkSheet.PageSetup.PaperSize = Excel.XlPaperSize.xlPaperA4;
             xlWorkSheet.PageSetup.PrintArea = "A1:U100";
             xlWorkSheet.PageSetup.Zoom = 40;
 
@@ -187,12 +189,10 @@ namespace HacchuuSho
             xlWorkSheet.get_Range("A10", "U10").Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
             xlWorkSheet.get_Range("A11", "H11").Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
 
-            string path = @"D:\PROJ\ShinyohProject\Shinyoh\HacchuuSho\Image\SHINYOH_Logo.jpg";
+            string path = @"D:\GIT\ShinShin\Shinyoh\HacchuuSho\Image\SHINYOH_Logo.jpg";
             xlWorkSheet.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, 380, 5, 250, 30);
 
             //VARIABLE
-
-
             //int col = (18 + dt.Rows.Count);
             //string val1 = "A" + col + ":U" + col;
             //string val2 = "B" + col + ":U" + col;
@@ -236,7 +236,8 @@ namespace HacchuuSho
             ////xlWorkSheet.Cells[col, 8] = "TOTAL";
 
 
-            var dtsupplier = dt.AsEnumerable().Select(r => r.Field<string>("SiiresakiCD")).Distinct().ToList();
+            var dtsupplier = dt.Select("SiiresakiCD is not null").CopyToDataTable().AsEnumerable().Select(r => r.Field<string>("SiiresakiCD")).Distinct().ToList();
+            //var dtsupplier = dt.AsEnumerable().Select(r => r.Field<string>("SiiresakiCD")).Distinct().ToList();
             int EndRow = 0; int col = 0;
             int startrow = 12;int gvrow = 17;
             for (int j = 0; j < dtsupplier.Count(); j++)
@@ -320,7 +321,7 @@ namespace HacchuuSho
               //      row = R2 + dtgv.Rows.Count;
               //      R2 = row;
               //  }
-                xlWorkSheet.Rows[col+2].PageBreak = Excel.XlPageBreak.xlPageBreakManual;
+                //xlWorkSheet.Rows[col+2].PageBreak = Excel.XlPageBreak.xlPageBreakManual;
                 startrow= col + 2;
                 EndRow = col + 6;
                 gvrow = col + 6;
