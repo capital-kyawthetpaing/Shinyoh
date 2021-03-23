@@ -1802,6 +1802,7 @@ namespace JuchuuNyuuryoku
                     int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
                     selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
 
+                    sobj = new SiiresakiDetail();
                     sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
                 }
             }
