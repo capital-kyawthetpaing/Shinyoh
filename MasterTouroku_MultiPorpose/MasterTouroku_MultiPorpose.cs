@@ -285,6 +285,12 @@ namespace MasterTouroku_MultiPorpose
                         bbl.ShowMessage("E133");
                         txtKEY.Focus();
                     }
+                    //error check 183 ktp
+                    else if(dt.Rows.Count > 0 && (cboMode.SelectedValue.ToString() == "1"))
+                    {
+                        bbl.ShowMessage("E132");
+                        txtKEY.Focus();
+                    }
                     //if (cboMode.SelectedValue.ToString() == "2")//update
                     //{
                     //    cf.EnablePanel(PanelDetail);
@@ -310,7 +316,15 @@ namespace MasterTouroku_MultiPorpose
                 
                 if ( cboMode.SelectedValue.ToString() == "1")
                 {
-                    if (ErrorCheck(PanelTitle))
+                    //error check 183 ktp
+                    dt = mbl.M_Multiporpose_SelectData(string.Empty, 2, txtID.Text, txtKEY.Text);
+                    if(dt.Rows.Count > 0)
+                    {
+                        bbl.ShowMessage("E132");
+                        txtKEY.Focus();
+                    }
+
+                    else if (ErrorCheck(PanelTitle))
                     {
                         if (!string.IsNullOrEmpty(txtCopyID.Text) && !string.IsNullOrEmpty(txtKEYCopy.Text))
                         {

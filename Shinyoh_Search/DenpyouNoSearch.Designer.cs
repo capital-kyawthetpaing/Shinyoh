@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_Date = new Shinyoh_Controls.SLabel();
             this.btnSearch = new Shinyoh_Controls.SButton();
@@ -202,8 +202,8 @@
             // 
             this.SEQNO1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.SEQNO1.DataPropertyName = "SEQNO";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.SEQNO1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.SEQNO1.DefaultCellStyle = dataGridViewCellStyle1;
             this.SEQNO1.FillWeight = 144.3299F;
             this.SEQNO1.HeaderText = "SEQNO";
             this.SEQNO1.Name = "SEQNO1";
@@ -222,8 +222,8 @@
             // 
             this.Counter1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Counter1.DataPropertyName = "Counter";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.Counter1.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.Counter1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Counter1.FillWeight = 61.66823F;
             this.Counter1.HeaderText = "カウンタ";
             this.Counter1.Name = "Counter1";

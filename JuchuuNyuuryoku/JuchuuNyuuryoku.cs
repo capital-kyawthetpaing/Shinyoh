@@ -794,7 +794,7 @@ namespace JuchuuNyuuryoku
             if (e.RowIndex >= 0)
             {
                 var row = this.gv_JuchuuNyuuryoku.Rows[e.RowIndex];
-                if (senderGrid.Columns[e.ColumnIndex].ReadOnly == false)
+                if (cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
                 {
                     sobj = new SiiresakiDetail(false);
                 }
@@ -1549,14 +1549,16 @@ namespace JuchuuNyuuryoku
 
         private void Gridview_F9ShowHide(int col,string type)
         {
-            Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+            SCombo cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
             Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
             if (gv_JuchuuNyuuryoku.Columns[col].Name == "colSiiresakiCD" || gv_JuchuuNyuuryoku.Columns[col].Name == "colSoukoCD")
             {
                 Control btnF9 = ctrlArr[0];
                 if (ctrlArr.Length > 0 && type=="Show")
                 {
-                    if (btnF9 != null)
+                    if (cbo.SelectedValue.Equals("3") || cbo.SelectedValue.Equals("4"))
+                        btnF9.Visible = false;
+                    else if (btnF9 != null)
                         btnF9.Visible = true;
                 }
                 else
@@ -1754,7 +1756,11 @@ namespace JuchuuNyuuryoku
 
         private void gv_JuchuuNyuuryoku_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F9)
+            SCombo cbo = new SCombo();
+
+            if (this.TopLevelControl.Controls.Find("cboMode", true).Count() > 0)
+                cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+            if (e.KeyCode == Keys.F9 && (cbo.SelectedValue.Equals("1") || cbo.SelectedValue.Equals("2")))
             {
                 if (gv_JuchuuNyuuryoku.CurrentCell != null)
                 {
@@ -1802,6 +1808,7 @@ namespace JuchuuNyuuryoku
                     int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
                     selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
 
+                    sobj = new SiiresakiDetail();
                     sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
                 }
             }
