@@ -342,6 +342,28 @@ namespace Shinyoh_Controls
             }
             base.OnEnter(e);
         }
+        protected override void OnLostFocus(EventArgs e)
+        {
+            //if (this.TopLevelControl != null && (SType == STextBoxType.Normal) || SType == STextBoxType.Number)   // PTK Proceed for haita, KTP's below unfinished one (2021-03-18)
+            //{
+            //    try
+            //    {
+            //        (((Shinyoh.BaseForm)(((System.Windows.Forms.Form.ControlCollection)this.TopLevelControl.Controls).Owner as Form)).Controls.Find("BtnF9", true)[0] as Control).Visible = false;
+            //    }
+            //    catch (Exception ex) //can get catch for in some Codition
+            //    {
+            //        var msg = ex.Message;
+            //    }
+            //}
+            base.OnLostFocus(e);
+        }
+
+        protected override void OnMouseLeave(EventArgs e)
+        {
+
+            base.OnMouseLeave(e);
+        }
+      
         protected override void OnLeave(EventArgs e)
         {
            
@@ -429,17 +451,7 @@ namespace Shinyoh_Controls
             }
 
 
-            if (this.TopLevelControl != null && (SType == STextBoxType.Normal ||  SType == STextBoxType.Number))   // PTK Proceed for haita, KTP's below unfinished one (2021-03-18)
-            {
-                try
-                {
-                    (((Shinyoh.BaseForm)(((System.Windows.Forms.Form.ControlCollection)this.TopLevelControl.Controls).Owner as Form)).Controls.Find("BtnF9", true)[0] as Control).Visible = false;
-                }
-                catch (Exception ex) //can get catch for in some Codition
-                {
-                    var msg = ex.Message; 
-                }
-            }
+           
             //KTP commented because of BtnF9 Click doesn't work
             //if (this.TopLevelControl != null)
             //{

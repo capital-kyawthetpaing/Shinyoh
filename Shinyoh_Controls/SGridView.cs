@@ -81,7 +81,22 @@ namespace Shinyoh_Controls
         {
             NumberCol = colArr;
         }
-
+        protected override void OnEnter(EventArgs e)
+        {
+            if (this.TopLevelControl != null )
+            {
+                try
+                {
+                    (((Shinyoh.BaseForm)(((System.Windows.Forms.Form.ControlCollection)this.TopLevelControl.Controls).Owner as Form)).Controls.Find("BtnF9", true)[0] as Control).Visible = false;
+                }
+                catch (Exception ex) //can get catch for in some Codition
+                {
+                    var msg = ex.Message;
+                }
+                this.TopLevelControl.Refresh();
+            }
+            base.OnEnter(e);
+        }
         protected override void OnCellEnter(DataGridViewCellEventArgs e)
         {
             if (HiraganaCol.Equals("*"))
