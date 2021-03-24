@@ -278,9 +278,9 @@ namespace ShukkaTorikomi
                         if (Date_Check(obj.ChangeDate, i, "入力可能値外エラー") == "true") break;
                         else splits[6] = Date_Check(obj.ChangeDate, i, "入力可能値外エラー");
 
-                        obj.ShouhinCD = splits[7];
-                        if(Null_Check(obj.ShouhinCD, i, "商品コード未入力エラー"))break;
-                        if(Byte_Check(20, obj.ShouhinCD, i, "商品コード桁数エラー"))break;
+                        obj.HinbanCD = splits[7];
+                        if(Null_Check(obj.HinbanCD, i, "商品コード未入力エラー"))break;
+                        if(Byte_Check(20, obj.HinbanCD, i, "商品コード桁数エラー"))break;
 
                         obj.ColorRyakuName = splits[8];
                         if(Null_Check(obj.ColorRyakuName, i, "カラー未入力エラー"))break;
@@ -332,7 +332,7 @@ namespace ShukkaTorikomi
 
                         DataTable dt2 = new DataTable();
                         ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
-                        dt2 = rBL.ShukkaTorikomi_Check(obj.ShouhinCD, obj.ChangeDate, "E101", "ShouhinCD");
+                        dt2 = rBL.ShukkaTorikomi_Check(obj.HinbanCD + obj.ColorRyakuName + obj.SizeNO, obj.ChangeDate, "E101", "ShouhinCD");
                         if (dt2.Rows.Count > 0 && dt2.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101", i.ToString(), "商品コード未登録エラー");
@@ -353,7 +353,7 @@ namespace ShukkaTorikomi
 
                         DataTable dt4 = new DataTable();
                         ShukkaTorikomi_BL sBL = new ShukkaTorikomi_BL();
-                        dt4 = sBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E133");
+                        dt4 = sBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.HinbanCD + obj.ColorRyakuName + obj.SizeNO, "E133");
                         if (dt4.Rows.Count > 0 && dt4.Rows[0]["MessageID"].ToString() == "E133")
                         {
                             bbl.ShowMessage("E133", i.ToString(), "出荷指示番号未登録エラー");
@@ -363,7 +363,7 @@ namespace ShukkaTorikomi
 
                         DataTable dt5 = new DataTable();
                         ShukkaTorikomi_BL cBL = new ShukkaTorikomi_BL();
-                        dt5 = cBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E159");
+                        dt5 = cBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.HinbanCD + obj.ColorRyakuName + obj.SizeNO, "E159");
                         if (dt5.Rows.Count > 0 && dt5.Rows[0]["MessageID"].ToString() == "E159")
                         {
                             bbl.ShowMessage("E159", i.ToString(), "出荷指示番号未登録エラー");
@@ -373,7 +373,7 @@ namespace ShukkaTorikomi
 
                         DataTable dt6 = new DataTable();
                         ShukkaTorikomi_BL mBL = new ShukkaTorikomi_BL();
-                        dt6 = mBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E150");
+                        dt6 = mBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.HinbanCD + obj.ColorRyakuName + obj.SizeNO, "E150");
                         if (dt6.Rows.Count > 0 && dt6.Rows[0]["MessageID"].ToString() == "E150")
                         {
                             bbl.ShowMessage("E150", i.ToString(), "出荷指示番号未登録エラー");
@@ -550,7 +550,7 @@ namespace ShukkaTorikomi
             create_dt.Columns.Add("DenpyouNO");
             create_dt.Columns.Add("DenpyouDate");
             create_dt.Columns.Add("ChangeDate");
-            create_dt.Columns.Add("ShouhinCD");
+            create_dt.Columns.Add("HinbanCD");
             create_dt.Columns.Add("ColorRyakuName");
             create_dt.Columns.Add("SizeNO");
             create_dt.Columns.Add("JANCD");
@@ -567,7 +567,7 @@ namespace ShukkaTorikomi
         public void Column_Remove_Datatable(DataTable remove_dt)
         {
             remove_dt.Columns.Remove("DenpyouDate");
-            remove_dt.Columns.Remove("ShouhinCD");
+            remove_dt.Columns.Remove("HinbanCD");
             remove_dt.Columns.Remove("ColorRyakuName");
             remove_dt.Columns.Remove("SizeNO");
             remove_dt.Columns.Remove("JANCD");
