@@ -490,7 +490,7 @@
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "HaitaSakujo";
-            this.Text = "HaitaSakujo";
+            this.Text = "排他削除処理";
             this.Load += new System.EventHandler(this.HaitaSakujo_Load);
             this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.Controls.SetChildIndex(this.panel1, 0);

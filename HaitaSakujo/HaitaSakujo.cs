@@ -64,6 +64,8 @@ namespace HaitaSakujo {
             {
                 cf.Clear(PanelTitle);
                 cf.Clear(PanelDetail);
+                lbl_dataPartition.Text = "";
+                lbl_InputPerson.Text = "";
             }
             if (tagID == "7")
             {
