@@ -56,6 +56,9 @@ namespace HaitaSakujo {
         }
         private void ErrorCheck()
         {
+            //txt_Time1.E103Check(true);
+            //txt_Time2.E103Check(true);
+            txt_dataPartition.E101Check(true, "M_MultiPorpose", txt_dataPartition, txt_date, null);
             txt_InputPerson.E101Check(true, "M_Staff", txt_InputPerson, txt_date, null);
         }
         public override void FunctionProcess(string tagID)
@@ -78,6 +81,13 @@ namespace HaitaSakujo {
             if (tagID == "10")
             {
                 btnDisplay();
+                if (gvHaitaSakujo.Rows.Count > 0)
+                {
+                    gvHaitaSakujo.CurrentCell = gvHaitaSakujo.Rows[0].Cells["col_Target"];
+                    Control btnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                    btnF9.Visible = false;
+                }
+              
             }
             if (tagID == "12")
             {
