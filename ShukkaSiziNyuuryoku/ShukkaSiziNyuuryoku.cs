@@ -49,8 +49,8 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.KeyDown += dgvShukkasizi_KeyDown;
             dgvShukkasizi.CellEnter += dgvShukkasizi_CellEnter;
             sbShippingNO.ChangeDate = txtShippingDate;
-            td = new TokuisakiDetail();
-            kd = new KouritenDetail(); 
+            //td = new TokuisakiDetail();
+            //kd = new KouritenDetail(); 
             sbKouriten.TxtBox = sbTokuisaki;//ses
             GridView_UI();
         }
@@ -172,24 +172,36 @@ namespace ShukkaSiziNyuuryoku
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     F9.Visible = false;
+
+                    td = new TokuisakiDetail();
+                    kd = new KouritenDetail();
                     break;
                 case Mode.Update:
                     ModeType(2);
                     Form_ErrorCheck();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
+
+                    td = new TokuisakiDetail();
+                    kd = new KouritenDetail();
                     break;
                 case Mode.Delete:
                     ModeType(2);
                     Form_ErrorCheck();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
+
+                    td = new TokuisakiDetail(false);
+                    kd = new KouritenDetail(false);
                     break;
                 case Mode.Inquiry:
                     ModeType(2);
                     Form_ErrorCheck();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
+
+                    td = new TokuisakiDetail(false);
+                    kd = new KouritenDetail(false);
                     break;
             }
         }
