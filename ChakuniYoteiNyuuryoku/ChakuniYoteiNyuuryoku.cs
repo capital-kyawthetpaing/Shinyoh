@@ -225,10 +225,14 @@ namespace ChakuniYoteiNyuuryoku
                 bbl.ShowMessage("E111");
                 txtBrandCD.Focus();
             }
-            dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-            gvChakuniYoteiNyuuryoku.DataSource = dtmain;
-            gvChakuniYoteiNyuuryoku.Select();
-            gvChakuniYoteiNyuuryoku.ActionType = string.Empty;
+            else
+            {
+                dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
+                gvChakuniYoteiNyuuryoku.DataSource = dtmain;
+                gvChakuniYoteiNyuuryoku.Select();
+                gvChakuniYoteiNyuuryoku.ActionType = string.Empty;
+            }
+
         }
         private void DBProcess()
         {
@@ -443,6 +447,9 @@ namespace ChakuniYoteiNyuuryoku
             txtDateFrom.E103Check(true);
             txtDateTo.E103Check(true);
             txtDateTo.E106Check(true, txtDateFrom, txtDateTo);
+            txtChakuniYoteiNO.E102Check(false);//ktp add remove 102 check in new mode
+            txtChakuniYoteiNO.E133Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);//ktp add remove 133 check in new mode
+            txtChakuniYoteiNO.E268Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);//ktp add remove 268 check in new mode
         }
         private DataTable CreateTable_Detail()
         {
@@ -467,18 +474,22 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
         {
-            multipurposeBL bl = new multipurposeBL();
-            string a = txtBrandCD.Text.ToString();
-            DataTable dt = bl.M_Multiporpose_SelectData(a, 1, string.Empty, string.Empty);
-
-            if (dt.Rows.Count > 0)
-                lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
-            else
+            if(!string.IsNullOrWhiteSpace(txtBrandCD.Text))
             {
-                txtBrandCD.Focus();
-                lblBrandName.Text = string.Empty;
-                bbl.ShowMessage("E101");
+                multipurposeBL bl = new multipurposeBL();
+                string a = txtBrandCD.Text.ToString();
+                DataTable dt = bl.M_Multiporpose_SelectData(a, 1, string.Empty, string.Empty);
+
+                if (dt.Rows.Count > 0)
+                    lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
+                else
+                {
+                    txtBrandCD.Focus();
+                    lblBrandName.Text = string.Empty;
+                    bbl.ShowMessage("E101");
+                }
             }
+            
 
         }
         private void txtDate_KeyDown(object sender, KeyEventArgs e)
@@ -833,10 +844,10 @@ namespace ChakuniYoteiNyuuryoku
             {
                 KanriNO = txtNumber.Text
             };
-             DataTable dt = cbl.ChakuniYoteiDataCheck(chkEntity);
+            DataTable dt = cbl.ChakuniYoteiDataCheck(chkEntity);
             if(dt.Rows.Count>0)
             {
-                if(bbl.ShowMessage("Q325") == DialogResult.Cancel) 
+                if(bbl.ShowMessage("Q325") == DialogResult.No) 
                     txtNumber.Focus();
             }
 
