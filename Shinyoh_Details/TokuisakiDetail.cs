@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Details
 {
@@ -19,16 +20,25 @@ namespace Shinyoh_Details
         string YuuBinNO2 = string.Empty;
         string Address1 = string.Empty;
         string Address2 = string.Empty;
+        bool isEnable;
+        CommonFunction cf = new CommonFunction();
         public TokuisakiDetail()
         {
             InitializeComponent();
+            isEnable = true;
         }
-       
+
+        public TokuisakiDetail(bool val)
+        {
+            InitializeComponent();
+            isEnable = val;
+        }
+
         private void TokuisakiDetail_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "", false);
-            SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+            //SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             lblTokuisaki_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
             txtTokuisakiCD.Enabled=false;
@@ -42,6 +52,17 @@ namespace Shinyoh_Details
 
             //Get Data from JuchuuNyuuroku form
             Access_DB_Object(Access_Tokuisaki_obj);
+
+            if (!isEnable)
+            {
+                cf.DisablePanel(Panel_Detail);
+                SetButton(ButtonType.BType.Save, F12, "確定(F12)", false);
+            }
+            else
+            {
+                cf.EnablePanel(Panel_Detail);
+                SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+            }
         }
         private void Access_DB_Object(TokuisakiEntity obj)
         {

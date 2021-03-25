@@ -39,9 +39,9 @@ namespace JuchuuNyuuryoku
             InitializeComponent();
             cf = new CommonFunction();
             base_bl = new BaseBL();
-            kobj = new KouritenDetail();
+            //kobj = new KouritenDetail();
             //sobj = new SiiresakiDetail(false);
-            tobj = new TokuisakiDetail();
+            //tobj = new TokuisakiDetail();
             gv1_to_dt1 = new DataTable();
             F8_dt1 = new DataTable();
             obj_bl = new JuchuuNyuuryokuBL();
@@ -129,6 +129,9 @@ namespace JuchuuNyuuryoku
                    
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
+                    kobj = new KouritenDetail();
+                    sobj = new SiiresakiDetail();
+                    tobj = new TokuisakiDetail();
                     break;
 
                 case Mode.Update:
@@ -143,6 +146,9 @@ namespace JuchuuNyuuryoku
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
+                    kobj = new KouritenDetail();
+                    sobj = new SiiresakiDetail();
+                    tobj = new TokuisakiDetail();
                     break;
                 case Mode.Delete:
                     ErrorCheck();
@@ -156,7 +162,9 @@ namespace JuchuuNyuuryoku
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
-
+                    kobj = new KouritenDetail(false);
+                    sobj = new SiiresakiDetail(false);
+                    tobj = new TokuisakiDetail(false);
                     break;
                 case Mode.Inquiry:
                     txtJuchuuNO.E102Check(true);
@@ -172,6 +180,10 @@ namespace JuchuuNyuuryoku
                     btn10.Visible = false;
                     Control btn11 = this.TopLevelControl.Controls.Find("BtnF11", true)[0];
                     btn11.Visible = false;
+                    kobj = new KouritenDetail(false);
+                    sobj = new SiiresakiDetail(false);
+                    tobj = new TokuisakiDetail(false);
+
                     break;
             }
         }
@@ -567,6 +579,9 @@ namespace JuchuuNyuuryoku
                             obj_bl.JuchuuNyuuryoku_Exclusive_Insert(obj_staff);
                         }
                         cf.DisablePanel(PanelTitle);
+
+                        btn_Tokuisaki.Enabled = true;
+                        btn_Kouriten.Enabled = true;
                     }
                 }
                 DataTable dt = txtJuchuuNO.IsDatatableOccurs;
