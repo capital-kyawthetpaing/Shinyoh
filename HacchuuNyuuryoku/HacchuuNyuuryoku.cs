@@ -31,7 +31,7 @@ namespace HacchuuNyuuryoku
             InitializeComponent();
             cf = new CommonFunction();
             base_bl = new BaseBL();
-            sobj = new SiiresakiDetail();
+            //sobj = new SiiresakiDetail();
             obj_bl = new HacchuuNyuuryokuBL();
 
             gv1_to_dt1 = new DataTable();
@@ -97,6 +97,7 @@ namespace HacchuuNyuuryoku
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
+                    sobj = new SiiresakiDetail();
                     break;
 
                 case Mode.Update:
@@ -112,6 +113,7 @@ namespace HacchuuNyuuryoku
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
+                    sobj = new SiiresakiDetail();
                     break;
                 case Mode.Delete:
                     ErrorCheck();
@@ -125,6 +127,7 @@ namespace HacchuuNyuuryoku
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
+                    sobj = new SiiresakiDetail(false);
 
                     break;
                 case Mode.Inquiry:
@@ -142,6 +145,7 @@ namespace HacchuuNyuuryoku
                     btn10.Visible = false;
                     Control btn11 = this.TopLevelControl.Controls.Find("BtnF11", true)[0];
                     btn11.Visible = false;
+                    sobj = new SiiresakiDetail(false);
                     break;
             }
         }
@@ -466,6 +470,7 @@ namespace HacchuuNyuuryoku
                             obj_bl.HacchuuNyuuryoku_Exclusive_Insert(obj_staff);
                         }
                         cf.DisablePanel(PanelTitle);
+                        btn_Siiresaki.Enabled = true;
                     }
                 }
                 DataTable dt = txtHacchuuNO.IsDatatableOccurs;

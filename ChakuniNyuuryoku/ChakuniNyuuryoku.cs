@@ -44,7 +44,7 @@ namespace ChakuniNyuuryoku
             staffBL = new StaffBL();
             soukoBL = new SoukoBL();
             dtClear = CreateTable_Details();
-            sd = new SiiresakiDetail();
+            //sd = new SiiresakiDetail();
             chkEntity = new ChakuniNyuuryoku_Entity();
             dt_Header = new DataTable();
             dt_Details = new DataTable();
@@ -108,6 +108,7 @@ namespace ChakuniNyuuryoku
                     New_Mode();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
+                    sd = new SiiresakiDetail();
                     break;
                 case Mode.Update:
                     txtArrivalNO.E102Check(true);
@@ -116,6 +117,7 @@ namespace ChakuniNyuuryoku
                     Mode_Setting();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
+                    sd = new SiiresakiDetail();
                     break;
                 case Mode.Delete:
                     txtArrivalNO.E102Check(true);
@@ -124,6 +126,7 @@ namespace ChakuniNyuuryoku
                     Mode_Setting();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
+                    sd = new SiiresakiDetail(false);
                     break;
                 case Mode.Inquiry:
                     txtArrivalNO.E102Check(true);
@@ -132,6 +135,7 @@ namespace ChakuniNyuuryoku
                     Mode_Setting();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
+                    sd = new SiiresakiDetail(false);
                     break;
             }
         }
@@ -727,6 +731,7 @@ namespace ChakuniNyuuryoku
                                 BtnF9.Visible = false;
                                 Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                                 btnF12.Focus();
+                                btn_Siiresaki.Enabled = true;
                             }
                             Update_Data();
                         }
@@ -744,6 +749,7 @@ namespace ChakuniNyuuryoku
                         Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                         btnF12.Focus();
                         Update_Data();
+                        btn_Siiresaki.Enabled = true;
                     }
                 }
             }
@@ -802,7 +808,11 @@ namespace ChakuniNyuuryoku
             }
         private void btn_Siiresaki_Click(object sender, EventArgs e)
             {
-                sd.ShowDialog();
+            //if (cboMode.Equals("1") || cboMode.Equals("2"))
+            //    sd = new SiiresakiDetail();
+            //else if (cboMode.Equals("3") || cboMode.Equals("4"))
+            //    sd = new SiiresakiDetail(false);
+            sd.ShowDialog();
             }
         private void txtSiiresaki_KeyDown(object sender, KeyEventArgs e)
             {
