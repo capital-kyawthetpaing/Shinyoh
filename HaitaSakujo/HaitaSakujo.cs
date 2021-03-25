@@ -80,14 +80,16 @@ namespace HaitaSakujo {
             }
             if (tagID == "10")
             {
-                btnDisplay();
-                if (gvHaitaSakujo.Rows.Count > 0)
+                if (ErrorCheck(PanelTitle))
                 {
-                    gvHaitaSakujo.CurrentCell = gvHaitaSakujo.Rows[0].Cells["col_Target"];
-                    Control btnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
-                    btnF9.Visible = false;
-                }
-              
+                    btnDisplay();
+                    if (gvHaitaSakujo.Rows.Count > 0)
+                    {
+                        gvHaitaSakujo.CurrentCell = gvHaitaSakujo.Rows[0].Cells["col_Target"];
+                        Control btnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                        btnF9.Visible = false;
+                    }
+                }                          
             }
             if (tagID == "12")
             {
@@ -188,16 +190,6 @@ namespace HaitaSakujo {
                     (row.Cells["col_Target"] as DataGridViewCheckBoxCell).Value = 0;
                 }
             }
-        }
-        private void RegisterBtn()
-        {
-           //foreach(DataGridViewRow row in gvHaitaSakujo.Rows)
-           // {
-           //     if (row.Cells["col_Target"] == true)
-           //     {
-
-           //     }
-           // }
         }
     }
 }
