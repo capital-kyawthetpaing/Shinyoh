@@ -40,8 +40,7 @@ namespace ChakuniYoteiNyuuryoku
             dt_Header = new DataTable();
             dt_Details = new DataTable();
             chkEntity = new ChakuniYoteiNyuuryokuEntity();
-            cbl = new ChakuniYoteiNyuuryoku_BL();
-            sd = new SiiresakiDetail();
+            cbl = new ChakuniYoteiNyuuryoku_BL();           
             dtGS = CreateTable_Detail();
             dtTemp = new DataTable();
             dtClear= CreateTable_Detail();
@@ -91,6 +90,7 @@ namespace ChakuniYoteiNyuuryoku
                     ErrorCheck();
                     New_Mode();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    sd = new SiiresakiDetail();
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
@@ -98,6 +98,7 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
+                    sd = new SiiresakiDetail();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
@@ -106,6 +107,8 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
+                    sd = new SiiresakiDetail(false);
+                    //btn_Siiresaki.Enabled = true;
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
@@ -114,6 +117,8 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
+                    sd = new SiiresakiDetail(false);
+                    //btn_Siiresaki.Enabled = true;
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
@@ -636,6 +641,8 @@ namespace ChakuniYoteiNyuuryoku
                             Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                             btnF12.Focus();
                         }
+
+                        btn_Siiresaki.Enabled = true;
                     }
                 }
                 DataTable dt = txtChakuniYoteiNO.IsDatatableOccurs;
@@ -707,7 +714,7 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void btn_Siiresaki_Click(object sender, EventArgs e)
         {
-            sd.ShowDialog();
+                sd.ShowDialog();
         }
         private SiiresakiEntity From_DB_To_Siiresaki(DataTable dtSiiresaki)
         {
