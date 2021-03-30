@@ -218,6 +218,10 @@ namespace Shinyoh_Controls
             {
                 e.Handled = !cf.IsYYYYMMKey(e.KeyChar);
             }
+            else if (SType == STextBoxType.Time)
+            {
+                e.Handled = !cf.IsNumberKey(e.KeyChar, AllowMinus);
+            }
             //else if (SType == STextBoxType.Date)
             //{
             //    e.Handled = !cf.IsYYYYMMKey(e.KeyChar);
@@ -363,7 +367,65 @@ namespace Shinyoh_Controls
 
             base.OnMouseLeave(e);
         }
-      
+
+        protected override void OnValidated(EventArgs e)
+        {
+            CheckTime();
+            base.OnValidated(e);
+        }
+        private void CheckTime()
+        {
+            if (SType == STextBoxType.Time)
+            {
+                TimeCheck();
+            }
+        }
+        public bool TimeCheck()
+        {
+            if (!string.IsNullOrWhiteSpace(Text))
+            {
+                string hour = string.Empty;
+                string minutes = string.Empty;
+                string seconds = string.Empty;
+
+                string temp = Text;
+
+                temp = temp.Contains(":") ? temp : System.Text.RegularExpressions.Regex.Replace(temp, ".{2}", "$0:");
+                temp = temp.TrimEnd(':');
+
+                string[] strtime = temp.Split(':');
+                if (strtime.Length > 2)
+                {
+                    bbl.ShowMessage("E103");
+                    Focus();
+                    return false;
+                }
+                else
+                {
+                    hour = strtime[0].Trim().PadLeft(2, '0');
+                    minutes = strtime.Length > 1 ? strtime[1].Trim().PadLeft(2, '0') : "00";
+                    seconds = strtime.Length > 2 ? strtime[2].Trim().PadLeft(2, '0') : "00";
+
+                    if (!IsCorrectTime(hour, minutes, seconds))
+                    {
+                        bbl.ShowMessage("E103");
+                        Focus();
+                        return false;
+                    }
+
+                    Text = hour + ":" + minutes;// + ":" + seconds;
+                }
+            }
+
+            return true;
+        }
+        private bool IsCorrectTime(string hour, string minutes, string seconds)
+        {
+            if (Convert.ToInt32(hour) > 23 || Convert.ToInt32(minutes) > 59 || Convert.ToInt32(seconds) > 59)
+                return false;
+            return true;
+        }
+
         protected override void OnLeave(EventArgs e)
         {
            
@@ -652,5 +714,7 @@ namespace Shinyoh_Controls
             check1Yuubin_Juusho = check_Yuu1;
             check2Yuubin_Juusho = check_Yuu2;
         }
+
+        
     }
 }

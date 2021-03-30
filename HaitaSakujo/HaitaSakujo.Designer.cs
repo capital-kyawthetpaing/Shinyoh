@@ -271,7 +271,8 @@
             this.txt_HM1.Size = new System.Drawing.Size(50, 19);
             this.txt_HM1.TabIndex = 5;
             this.txt_HM1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_HM1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txt_HM1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Time;
+            this.txt_HM1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_HM2_KeyDown);
             // 
             // label2
             // 
@@ -307,7 +308,8 @@
             this.txt_HM2.Size = new System.Drawing.Size(50, 19);
             this.txt_HM2.TabIndex = 7;
             this.txt_HM2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_HM2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txt_HM2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Time;
+            this.txt_HM2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_HM2_KeyDown);
             // 
             // txt_Time2
             // 

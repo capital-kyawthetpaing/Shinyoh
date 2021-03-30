@@ -12,8 +12,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HaitaSakujo {
-    public partial class HaitaSakujo : BaseForm {
+namespace HaitaSakujo
+{
+    public partial class HaitaSakujo : BaseForm
+    {
         BaseEntity base_Entity;
         CommonFunction cf;
         BaseBL bll;
@@ -89,7 +91,7 @@ namespace HaitaSakujo {
                         Control btnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
                         btnF9.Visible = false;
                     }
-                }                          
+                }
             }
             if (tagID == "12")
             {
@@ -115,12 +117,12 @@ namespace HaitaSakujo {
         }
         private bool IsCheckExist()
         {
-            if (gvHaitaSakujo.DataSource !=null)
-           return (gvHaitaSakujo.DataSource as DataTable).Select("Target = 1").Count() > 0;
+            if (gvHaitaSakujo.DataSource != null)
+                return (gvHaitaSakujo.DataSource as DataTable).Select("Target = 1").Count() > 0;
 
             return false;
         }
-            
+
         private void btnClearExclusive()
         {
             //if (!IsCheckExist())
@@ -173,9 +175,9 @@ namespace HaitaSakujo {
         }
         private void OnCheck()
         {
-           if(gvHaitaSakujo.Rows.Count > 0)
+            if (gvHaitaSakujo.Rows.Count > 0)
             {
-                foreach(DataGridViewRow row in gvHaitaSakujo.Rows)
+                foreach (DataGridViewRow row in gvHaitaSakujo.Rows)
                 {
                     (row.Cells["col_Target"] as DataGridViewCheckBoxCell).Value = 1;
                 }
@@ -191,5 +193,11 @@ namespace HaitaSakujo {
                 }
             }
         }
+
+        private void txt_HM2_KeyDown(object sender, KeyEventArgs e)
+        {
+            cf.PeriodCheck(sender, e, txt_Time1, txt_HM1, txt_Time2, txt_HM2);
+        }
     }
 }
+
