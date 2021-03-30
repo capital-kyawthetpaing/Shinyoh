@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Shinyoh_Search;
 using System.Data;
 using System.Linq;
+using Shinyoh_Controls;
 
 namespace ShukkaSiziNyuuryoku
 {
@@ -48,8 +49,8 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.KeyDown += dgvShukkasizi_KeyDown;
             dgvShukkasizi.CellEnter += dgvShukkasizi_CellEnter;
             sbShippingNO.ChangeDate = txtShippingDate;
-            td = new TokuisakiDetail();
-            kd = new KouritenDetail(); 
+            //td = new TokuisakiDetail();
+            //kd = new KouritenDetail(); 
             sbKouriten.TxtBox = sbTokuisaki;//ses
             GridView_UI();
         }
@@ -171,24 +172,36 @@ namespace ShukkaSiziNyuuryoku
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     F9.Visible = false;
+
+                    td = new TokuisakiDetail();
+                    kd = new KouritenDetail();
                     break;
                 case Mode.Update:
                     ModeType(2);
                     Form_ErrorCheck();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
+
+                    td = new TokuisakiDetail();
+                    kd = new KouritenDetail();
                     break;
                 case Mode.Delete:
                     ModeType(2);
                     Form_ErrorCheck();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
+
+                    td = new TokuisakiDetail(false);
+                    kd = new KouritenDetail(false);
                     break;
                 case Mode.Inquiry:
                     ModeType(2);
                     Form_ErrorCheck();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
+
+                    td = new TokuisakiDetail(false);
+                    kd = new KouritenDetail(false);
                     break;
             }
         }
@@ -644,7 +657,11 @@ namespace ShukkaSiziNyuuryoku
         }
         private void dgvShukkasizi_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F9)
+            SCombo cbo = new SCombo();
+
+            if(this.TopLevelControl.Controls.Find("cboMode", true).Count() > 0 )
+                cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+            if (e.KeyCode == Keys.F9 && (cbo.SelectedValue.Equals("1") || cbo.SelectedValue.Equals("2")))
             {
                 int row = dgvShukkasizi.CurrentCell.RowIndex;
                 int col = dgvShukkasizi.CurrentCell.ColumnIndex;
@@ -964,7 +981,7 @@ namespace ShukkaSiziNyuuryoku
 
                 string value2 = dgvShukkasizi.Rows[row].Cells["colJuchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
                 string value3 = dgvShukkasizi.Rows[row].Cells["colShukkaSiziZumiSuu"].EditedFormattedValue.ToString().Replace(",", "");
-                if (Convert.ToInt64(value) > (Convert.ToInt64(value2) - Convert.ToInt64(value3)))
+                if (Convert.ToInt64(value) != 0 && Convert.ToInt64(value) > (Convert.ToInt64(value2) - Convert.ToInt64(value3)))        //add new condition(Convert.ToInt64(value) != 0) by tza to avoid showing error msg even the input value is 0
                 {
                     bbl.ShowMessage("E143", "未出荷指示数", "大きい");
                     return false;
@@ -1093,6 +1110,7 @@ namespace ShukkaSiziNyuuryoku
                     if(dtHaita.Rows.Count>0)
                     {
                         dgvShukkasizi.CurrentCell = dgvShukkasizi.Rows[0].Cells["colKonkaiShukkaSiziSuu"];
+                        dgvShukkasizi.Focus();
                     }
                     dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].ReadOnly = false;
                     dgvShukkasizi.Columns["chk"].ReadOnly = false;
@@ -1236,14 +1254,16 @@ namespace ShukkaSiziNyuuryoku
         //Call_Function
         private void Gridview_F9ShowHide(int col, string type)
         {
-            Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+            SCombo cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
             Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
             if (dgvShukkasizi.Columns[col].Name == "SoukoCD")
             {
                 Control btnF9 = ctrlArr[0];
                 if (ctrlArr.Length > 0 && type == "Show")
                 {
-                    if (btnF9 != null)
+                    if (cbo.SelectedValue.Equals("3") || cbo.SelectedValue.Equals("4"))
+                        btnF9.Visible = false;
+                    else if (btnF9 != null)
                         btnF9.Visible = true;
                 }
                 else
@@ -1404,26 +1424,26 @@ namespace ShukkaSiziNyuuryoku
             if (cboMode.SelectedValue.Equals("3"))//delete
             {
                 sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-                sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
+                //sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
                 bbl.ShowMessage("I102");
             }
             else
             {
                sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-                if (cboMode.SelectedValue.Equals("1"))
-                {
-                    string FunctionNO = string.Empty;
-                    FunctionNO = dtResult.Rows[0]["ShukkaSiziNO"].ToString();
-                    if (!string.IsNullOrEmpty(FunctionNO))
-                    {
-                        sksz_bl.Get_HikiateFunctionNO("12", FunctionNO, "10", sksz_e.OperatorCD);
-                    }
-                }
-                else if (cboMode.SelectedValue.Equals("2"))
-                {
-                    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "20", sksz_e.OperatorCD);
-                    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "21", sksz_e.OperatorCD);
-                }
+                //if (cboMode.SelectedValue.Equals("1"))
+                //{
+                //    string FunctionNO = string.Empty;
+                //    FunctionNO = dtResult.Rows[0]["ShukkaSiziNO"].ToString();
+                //    if (!string.IsNullOrEmpty(FunctionNO))
+                //    {
+                //        sksz_bl.Get_HikiateFunctionNO("12", FunctionNO, "10", sksz_e.OperatorCD);
+                //    }
+                //}
+                //else if (cboMode.SelectedValue.Equals("2"))
+                //{
+                //    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "20", sksz_e.OperatorCD);
+                //    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "21", sksz_e.OperatorCD);
+                //}
                 bbl.ShowMessage("I101");
             }
         }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtCurrentDate = new Shinyoh_Controls.STextBox();
             this.lblStaff = new Shinyoh_Controls.SLabel();
@@ -616,9 +616,9 @@
             this.colCurrentDate});
             this.gv_Idou.IsErrorOccurs = false;
             this.gv_Idou.ISRowColumn = null;
-            this.gv_Idou.Location = new System.Drawing.Point(33, 139);
+            this.gv_Idou.Location = new System.Drawing.Point(33, 137);
             this.gv_Idou.Name = "gv_Idou";
-            this.gv_Idou.Size = new System.Drawing.Size(923, 331);
+            this.gv_Idou.Size = new System.Drawing.Size(923, 365);
             this.gv_Idou.TabIndex = 6;
             this.gv_Idou.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gv_Idou_CellMouseDoubleClick);
             this.gv_Idou.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_Idou_KeyDown);
@@ -633,8 +633,8 @@
             // colIdouDate
             // 
             this.colIdouDate.DataPropertyName = "IdouDate";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colIdouDate.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colIdouDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.colIdouDate.HeaderText = "移動日";
             this.colIdouDate.Name = "colIdouDate";
             this.colIdouDate.Width = 90;
@@ -678,7 +678,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1085, 506);
+            this.ClientSize = new System.Drawing.Size(1085, 551);
             this.Controls.Add(this.gv_Idou);
             this.Controls.Add(this.panel1);
             this.Name = "IdouNyuuryokuSearch";

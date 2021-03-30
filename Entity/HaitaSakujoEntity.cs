@@ -14,5 +14,8 @@ namespace Entity {
         public string OperateDataTime2 { get; set; }
         public string OperateDataTimeHM1 { get; set; }
         public string OperateDataTimeHM2 { get; set; }
+        public string xml { get; set;}
+       
+        
     }
 }

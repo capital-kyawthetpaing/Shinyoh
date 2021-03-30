@@ -636,9 +636,9 @@ namespace Shinyoh_Search
             this.colJuchuuNO});
             this.gvShippingNo.IsErrorOccurs = false;
             this.gvShippingNo.ISRowColumn = null;
-            this.gvShippingNo.Location = new System.Drawing.Point(35, 140);
+            this.gvShippingNo.Location = new System.Drawing.Point(24, 135);
             this.gvShippingNo.Name = "gvShippingNo";
-            this.gvShippingNo.Size = new System.Drawing.Size(716, 302);
+            this.gvShippingNo.Size = new System.Drawing.Size(716, 365);
             this.gvShippingNo.TabIndex = 1;
             this.gvShippingNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvShippingNo_CellMouseDoubleClick);
             this.gvShippingNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvShippingNo_KeyDown);
@@ -687,7 +687,7 @@ namespace Shinyoh_Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1184, 506);
+            this.ClientSize = new System.Drawing.Size(1184, 551);
             this.Controls.Add(this.gvShippingNo);
             this.Controls.Add(this.panel1);
             this.Name = "ShippingNoSearch";

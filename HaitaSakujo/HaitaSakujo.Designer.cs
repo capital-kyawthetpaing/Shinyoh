@@ -261,7 +261,7 @@
             this.txt_HM1.IsRequire = false;
             this.txt_HM1.IsUseInitializedLayout = true;
             this.txt_HM1.Location = new System.Drawing.Point(658, 40);
-            this.txt_HM1.MaxLength = 10;
+            this.txt_HM1.MaxLength = 5;
             this.txt_HM1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txt_HM1.MoveNext = true;
             this.txt_HM1.Name = "txt_HM1";
@@ -271,7 +271,8 @@
             this.txt_HM1.Size = new System.Drawing.Size(50, 19);
             this.txt_HM1.TabIndex = 5;
             this.txt_HM1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_HM1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txt_HM1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Time;
+            this.txt_HM1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_HM2_KeyDown);
             // 
             // label2
             // 
@@ -297,17 +298,18 @@
             this.txt_HM2.IsRequire = false;
             this.txt_HM2.IsUseInitializedLayout = true;
             this.txt_HM2.Location = new System.Drawing.Point(893, 40);
-            this.txt_HM2.MaxLength = 10;
+            this.txt_HM2.MaxLength = 5;
             this.txt_HM2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txt_HM2.MoveNext = true;
             this.txt_HM2.Name = "txt_HM2";
             this.txt_HM2.NextControl = null;
-            this.txt_HM2.NextControlName = "BtnF12";
+            this.txt_HM2.NextControlName = "BtnF10";
             this.txt_HM2.SearchType = Entity.SearchType.ScType.None;
             this.txt_HM2.Size = new System.Drawing.Size(50, 19);
             this.txt_HM2.TabIndex = 7;
             this.txt_HM2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_HM2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txt_HM2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Time;
+            this.txt_HM2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_HM2_KeyDown);
             // 
             // txt_Time2
             // 
@@ -403,6 +405,10 @@
             // 
             // gvHaitaSakujo
             // 
+            this.gvHaitaSakujo.AllowUserToAddRows = false;
+            this.gvHaitaSakujo.AllowUserToDeleteRows = false;
+            this.gvHaitaSakujo.AllowUserToResizeColumns = false;
+            this.gvHaitaSakujo.AllowUserToResizeRows = false;
             this.gvHaitaSakujo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.gvHaitaSakujo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Target,
@@ -417,16 +423,18 @@
             this.gvHaitaSakujo.ISRowColumn = null;
             this.gvHaitaSakujo.Location = new System.Drawing.Point(155, 20);
             this.gvHaitaSakujo.Name = "gvHaitaSakujo";
-            this.gvHaitaSakujo.Size = new System.Drawing.Size(1400, 800);
+            this.gvHaitaSakujo.Size = new System.Drawing.Size(1400, 810);
             this.gvHaitaSakujo.TabIndex = 8;
             // 
             // col_Target
             // 
             this.col_Target.DataPropertyName = "Target";
+            this.col_Target.FalseValue = "0";
             this.col_Target.HeaderText = "対象";
             this.col_Target.Name = "col_Target";
             this.col_Target.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.col_Target.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.col_Target.TrueValue = "1";
             this.col_Target.Width = 70;
             // 
             // col_DataPartition
@@ -484,7 +492,7 @@
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "HaitaSakujo";
-            this.Text = "HaitaSakujo";
+            this.Text = "排他削除処理";
             this.Load += new System.EventHandler(this.HaitaSakujo_Load);
             this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.Controls.SetChildIndex(this.panel1, 0);

@@ -113,7 +113,6 @@ namespace Shinyoh
                 System.Environment.Exit(0);
             }
         }
-
         private bool GetCmdLine()
         {
             string[] cmds = System.Environment.GetCommandLineArgs();
@@ -212,7 +211,21 @@ namespace Shinyoh
                         FunctionProcess(btn.Tag.ToString());
                         break;
                     case ButtonType.BType.Save:
-                        if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
+                        if (cboMode.SelectedValue == null)
+                        {
+                            if (bbl.ShowMessage("Q101") != DialogResult.Yes)
+                            {
+                                //cboMode.Enabled = false;
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
+                            }
+                            else
+                            {
+                                //cboMode.Enabled = true;
+                                FunctionProcess(btn.Tag.ToString());
+                            }
+                        }
+                        else if (cboMode.SelectedValue.ToString() == "1" || cboMode.SelectedValue.ToString() == "2")
                         {
                             if (ErrorCheck(PanelTitle) && ErrorCheck(this.Controls.Find("PanelDetail", true)[0] as Panel))
                             {
@@ -579,6 +592,11 @@ namespace Shinyoh
 
                 return createParam;
             }
+        }
+
+        private void BaseForm_MouseLeave(object sender, EventArgs e)
+        {
+
         }
     }
 }

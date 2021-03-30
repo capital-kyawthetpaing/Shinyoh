@@ -19,9 +19,11 @@ namespace ShukkaTorikomi
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
         ShukkaTorikomi_BL ShukkaTorikomi_BL;
+        TorikomiEntity JEntity;
         BaseBL bbl;
         DataTable dt_Main;
         DataTable create_dt;
+        DataTable dtShuKka;
 
         public SqlDbType()
         {
@@ -73,13 +75,12 @@ namespace ShukkaTorikomi
         private void dataBind()
         {
             multipurposeBL bl = new multipurposeBL();
+            dtShuKka = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
 
-            DataTable dt = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
-
-            if (dt.Rows.Count > 0)
+            if (dtShuKka.Rows.Count > 0)
             {
-                txtShukkaToNo1.Text = dt.Rows[0]["Char1"].ToString();
-                txtShukkaToNo2.Text = dt.Rows[0]["Char2"].ToString();
+                txtShukkaToNo1.Text = dtShuKka.Rows[0]["Char1"].ToString();
+                txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
             }
             else
             {
@@ -93,19 +94,20 @@ namespace ShukkaTorikomi
             if (rdo_Toroku.Checked == true)
             {
                 rdo_Sakujo.Checked = false;
-                Enable_Method();
+                Disable_Enable_Method();
+                if (dtShuKka != null)
+                {
+                    if (dtShuKka.Rows.Count > 0)
+                    {
+                        txtShukkaToNo1.Text = dtShuKka.Rows[0]["Char1"].ToString();
+                        txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
+                    }
+                }
+                ErrorCheck();
             }
         }
 
-        private void Enable_Method()
-        {
-            txtShukkaToNo1.Enabled = true;
-            txtShukkaToNo2.Enabled = true;
-            txtDate1.Enabled = false;
-            txtDate2.Enabled = false;
-            txtDenpyouNO.Enabled = false;
-        }
-        private void Disable_Method()
+        private void Disable_Enable_Method()
         {
             txtShukkaToNo1.Text = string.Empty;
             txtShukkaToNo2.Text = string.Empty;
@@ -113,11 +115,22 @@ namespace ShukkaTorikomi
             txtDate2.Text = string.Empty;
             txtDenpyouNO.Text = string.Empty;
 
-            txtShukkaToNo1.Enabled = false;
-            txtShukkaToNo2.Enabled = false;
-            txtDate1.Enabled = true;
-            txtDate2.Enabled = true;
-            txtDenpyouNO.Enabled = true;
+            if(rdo_Toroku.Checked)
+            {
+                txtShukkaToNo1.Enabled = true;
+                txtShukkaToNo2.Enabled = true;
+                txtDate1.Enabled = false;
+                txtDate2.Enabled = false;
+                txtDenpyouNO.Enabled = false;
+            }
+            else
+            {
+                txtShukkaToNo1.Enabled = false;
+                txtShukkaToNo2.Enabled = false;
+                txtDate1.Enabled = true;
+                txtDate2.Enabled = true;
+                txtDenpyouNO.Enabled = true;
+            }
         }
 
         private void rdo_Sakujo_CheckedChanged(object sender, EventArgs e)
@@ -125,18 +138,31 @@ namespace ShukkaTorikomi
             if (rdo_Sakujo.Checked == true)
             {
                 rdo_Toroku.Checked = false;
-                Disable_Method();
+                Disable_Enable_Method();
+                ErrorCheck();
             }
         }
 
         private void ErrorCheck()
         {
-            txtShukkaToNo1.E102Check(true);
-            txtShukkaToNo2.E102Check(true);
-            txtDate1.E103Check(true);
-            txtDate2.E103Check(true);
-            txtDenpyouNO.E102Check(true);
-            txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
+            if(rdo_Toroku.Checked)
+            {
+                txtShukkaToNo1.E102Check(true);
+                txtShukkaToNo2.E102Check(true);
+                txtDate1.E103Check(false);
+                txtDate2.E103Check(false);
+                txtDenpyouNO.E102Check(false);
+                txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
+            }
+            else
+            {
+                txtShukkaToNo1.E102Check(false);
+                txtShukkaToNo2.E102Check(false);
+                txtDate1.E103Check(true);
+                txtDate2.E103Check(true);
+                txtDenpyouNO.E102Check(true);
+                txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
+            }
         }
 
         public override void FunctionProcess(string tagID)
@@ -148,10 +174,11 @@ namespace ShukkaTorikomi
             if (tagID == "10")
             {
                 gvMainDetail.ActionType = "F10";
+                if(ErrorCheck(PanelDetail))
+                    DataGridviewBind();
                 gvMainDetail.ActionType = string.Empty;
-                DataGridviewBind();
             }
-            base.FunctionProcess(tagID);
+            //base.FunctionProcess(tagID);
 
             if (tagID == "12")
             {
@@ -167,11 +194,18 @@ namespace ShukkaTorikomi
                     else
                     {
                         ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
-                        string chk_val = string.Empty;
+                        string spname = string.Empty;
+                        string TorikomiDenpyouNO = txtDenpyouNO.Text;
+                        string return_BL = string.Empty;
                         if (rdo_Toroku.Checked)
-                            chk_val = "create_update";
-                        else chk_val = "delete";
-                        string return_BL=bl.ShukkaTorikomi_CUD(Xml.Item1,Xml.Item2,chk_val);
+                        {
+                            spname = "ShukkaTorikomi_Insert";
+                        }
+                        else
+                        {
+                            spname = "ShukkaTorikomi_Delete";
+                        }
+                        return_BL = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
                         if (return_BL == "true")
                         {
                             bbl.ShowMessage("I002");                           
@@ -236,15 +270,17 @@ namespace ShukkaTorikomi
 
                         obj.DenpyouDate = splits[5];
                         if(Null_Check(obj.DenpyouDate, i, "伝票日付未入力エラー"))break;
-                        if(Date_Check(obj.DenpyouDate, i, "入力可能値外エラー"))break;
+                        if (Date_Check(obj.DenpyouDate, i, "入力可能値外エラー") == "true") break;
+                        else splits[5] = Date_Check(obj.DenpyouDate, i, "入力可能値外エラー");
 
                         obj.ChangeDate = splits[6];
                         if(Null_Check(obj.ChangeDate, i, "改定日未入力エラー"))break;
-                        if(Date_Check(obj.ChangeDate, i, "入力可能値外エラー"))break;
+                        if (Date_Check(obj.ChangeDate, i, "入力可能値外エラー") == "true") break;
+                        else splits[6] = Date_Check(obj.ChangeDate, i, "入力可能値外エラー");
 
-                        obj.ShouhinCD = splits[7];
-                        if(Null_Check(obj.ShouhinCD, i, "商品コード未入力エラー"))break;
-                        if(Byte_Check(20, obj.ShouhinCD, i, "商品コード桁数エラー"))break;
+                        obj.HinbanCD = splits[7];
+                        if(Null_Check(obj.HinbanCD, i, "商品コード未入力エラー"))break;
+                        if(Byte_Check(20, obj.HinbanCD, i, "商品コード桁数エラー"))break;
 
                         obj.ColorRyakuName = splits[8];
                         if(Null_Check(obj.ColorRyakuName, i, "カラー未入力エラー"))break;
@@ -296,7 +332,7 @@ namespace ShukkaTorikomi
 
                         DataTable dt2 = new DataTable();
                         ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
-                        dt2 = rBL.ShukkaTorikomi_Check(obj.ShouhinCD, obj.ChangeDate, "E101", "ShouhinCD");
+                        dt2 = rBL.ShukkaTorikomi_Check(obj.HinbanCD + obj.ColorRyakuName + obj.SizeNO, obj.ChangeDate, "E101", "ShouhinCD");
                         if (dt2.Rows.Count > 0 && dt2.Rows[0]["MessageID"].ToString() == "E101")
                         {
                             bbl.ShowMessage("E101", i.ToString(), "商品コード未登録エラー");
@@ -317,7 +353,7 @@ namespace ShukkaTorikomi
 
                         DataTable dt4 = new DataTable();
                         ShukkaTorikomi_BL sBL = new ShukkaTorikomi_BL();
-                        dt4 = sBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E133");
+                        dt4 = sBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.HinbanCD + obj.ColorRyakuName + obj.SizeNO, "E133");
                         if (dt4.Rows.Count > 0 && dt4.Rows[0]["MessageID"].ToString() == "E133")
                         {
                             bbl.ShowMessage("E133", i.ToString(), "出荷指示番号未登録エラー");
@@ -327,7 +363,7 @@ namespace ShukkaTorikomi
 
                         DataTable dt5 = new DataTable();
                         ShukkaTorikomi_BL cBL = new ShukkaTorikomi_BL();
-                        dt5 = cBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E159");
+                        dt5 = cBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.HinbanCD + obj.ColorRyakuName + obj.SizeNO, "E159");
                         if (dt5.Rows.Count > 0 && dt5.Rows[0]["MessageID"].ToString() == "E159")
                         {
                             bbl.ShowMessage("E159", i.ToString(), "出荷指示番号未登録エラー");
@@ -337,7 +373,7 @@ namespace ShukkaTorikomi
 
                         DataTable dt6 = new DataTable();
                         ShukkaTorikomi_BL mBL = new ShukkaTorikomi_BL();
-                        dt6 = mBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.ShouhinCD, "E150");
+                        dt6 = mBL.ShukkaTorikomi_Slip_Check(obj.ShukkaSiziNO, obj.HinbanCD + obj.ColorRyakuName + obj.SizeNO, "E150");
                         if (dt6.Rows.Count > 0 && dt6.Rows[0]["MessageID"].ToString() == "E150")
                         {
                             bbl.ShowMessage("E150", i.ToString(), "出荷指示番号未登録エラー");
@@ -436,7 +472,8 @@ namespace ShukkaTorikomi
             bool bl = false;
             if (string.IsNullOrWhiteSpace(obj_text))
             {
-                bbl.ShowMessage("E102", line_no.ToString(), error_msg);
+                //bbl.ShowMessage("E102", line_no.ToString(), error_msg);
+                bbl.ShowMessage("E102");
                 bl = true;
             }
             return bl;
@@ -452,32 +489,54 @@ namespace ShukkaTorikomi
             return bl;
         }
 
-        public bool Date_Check(string csv_Date, int line_no, string error_msg)
+        public string Date_Check(string csv_Date, int line_no, string error_msg)
         {
-            bool bl = false;
+            TextBox txt = new TextBox();
+            txt.Text = csv_Date;
             if (!string.IsNullOrEmpty(csv_Date))
             {
-                if (!cf.CheckDateValue(csv_Date))
+                if (!cf.DateCheck(txt))
                 {
                     bbl.ShowMessage("E103");
-                    bl = true;
+                    txt.Text = "true";
                 }
             }
-            return bl;
+            return txt.Text;
+
+            //bool bl = false;
+            //if (!string.IsNullOrEmpty(csv_Date))
+            //{
+            //    if (!cf.CheckDateValue(csv_Date))
+            //    {
+            //        bbl.ShowMessage("E103");
+            //        bl = true;
+            //    }
+            //}
+            //return bl;
         }
 
         public bool Number_Check(string csv_number, int i, string v)
         {
-            bool bl = false; int result;
+            bool bl = false; //int result;
+            int n;
+            decimal d;
             if (!string.IsNullOrEmpty(csv_number))
             {
-                bool parsedSuccessfully = int.TryParse(csv_number, out result);
-
-                if (parsedSuccessfully == false)
+                if (!int.TryParse(csv_number, out n))
                 {
-                    bbl.ShowMessage("E103");
-                    bl = true;
+                    if (!decimal.TryParse(csv_number, out d))
+                    {
+                        bbl.ShowMessage("E103");
+                        bl = true;
+                    }
                 }
+                //bool parsedSuccessfully = int.TryParse(csv_number, out result);
+
+                //if (parsedSuccessfully == false)
+                //{
+                //    bbl.ShowMessage("E103");
+                //    bl = true;
+                //}
             }
             return bl;
         }
@@ -491,7 +550,7 @@ namespace ShukkaTorikomi
             create_dt.Columns.Add("DenpyouNO");
             create_dt.Columns.Add("DenpyouDate");
             create_dt.Columns.Add("ChangeDate");
-            create_dt.Columns.Add("ShouhinCD");
+            create_dt.Columns.Add("HinbanCD");
             create_dt.Columns.Add("ColorRyakuName");
             create_dt.Columns.Add("SizeNO");
             create_dt.Columns.Add("JANCD");
@@ -508,7 +567,7 @@ namespace ShukkaTorikomi
         public void Column_Remove_Datatable(DataTable remove_dt)
         {
             remove_dt.Columns.Remove("DenpyouDate");
-            remove_dt.Columns.Remove("ShouhinCD");
+            remove_dt.Columns.Remove("HinbanCD");
             remove_dt.Columns.Remove("ColorRyakuName");
             remove_dt.Columns.Remove("SizeNO");
             remove_dt.Columns.Remove("JANCD");
@@ -517,10 +576,6 @@ namespace ShukkaTorikomi
             remove_dt.Columns.Remove("SellingPrice");
             remove_dt.Columns.Remove("ShukkaSiziNO");
             //remove_dt.Columns.Remove("ShukkaGyouNO");
-
-
         }
-
-
     }
 }

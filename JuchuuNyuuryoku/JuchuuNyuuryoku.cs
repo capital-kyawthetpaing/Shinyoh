@@ -39,9 +39,9 @@ namespace JuchuuNyuuryoku
             InitializeComponent();
             cf = new CommonFunction();
             base_bl = new BaseBL();
-            kobj = new KouritenDetail();
-            sobj = new SiiresakiDetail();
-            tobj = new TokuisakiDetail();
+            //kobj = new KouritenDetail();
+            //sobj = new SiiresakiDetail(false);
+            //tobj = new TokuisakiDetail();
             gv1_to_dt1 = new DataTable();
             F8_dt1 = new DataTable();
             obj_bl = new JuchuuNyuuryokuBL();
@@ -129,6 +129,9 @@ namespace JuchuuNyuuryoku
                    
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
+                    kobj = new KouritenDetail();
+                    sobj = new SiiresakiDetail();
+                    tobj = new TokuisakiDetail();
                     break;
 
                 case Mode.Update:
@@ -143,6 +146,9 @@ namespace JuchuuNyuuryoku
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
+                    kobj = new KouritenDetail();
+                    sobj = new SiiresakiDetail();
+                    tobj = new TokuisakiDetail();
                     break;
                 case Mode.Delete:
                     ErrorCheck();
@@ -156,7 +162,9 @@ namespace JuchuuNyuuryoku
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
-
+                    kobj = new KouritenDetail(false);
+                    sobj = new SiiresakiDetail(false);
+                    tobj = new TokuisakiDetail(false);
                     break;
                 case Mode.Inquiry:
                     txtJuchuuNO.E102Check(true);
@@ -172,6 +180,10 @@ namespace JuchuuNyuuryoku
                     btn10.Visible = false;
                     Control btn11 = this.TopLevelControl.Controls.Find("BtnF11", true)[0];
                     btn11.Visible = false;
+                    kobj = new KouritenDetail(false);
+                    sobj = new SiiresakiDetail(false);
+                    tobj = new TokuisakiDetail(false);
+
                     break;
             }
         }
@@ -226,7 +238,7 @@ namespace JuchuuNyuuryoku
                 cboMode.NextControlName = txtJuchuuNO.Name;
                 txtJuchuuNO.Focus();
             }
-            sobj = new SiiresakiDetail();
+            //sobj = new SiiresakiDetail(false);
             kobj = new KouritenDetail();
             tobj = new TokuisakiDetail();
         }
@@ -567,6 +579,9 @@ namespace JuchuuNyuuryoku
                             obj_bl.JuchuuNyuuryoku_Exclusive_Insert(obj_staff);
                         }
                         cf.DisablePanel(PanelTitle);
+
+                        btn_Tokuisaki.Enabled = true;
+                        btn_Kouriten.Enabled = true;
                     }
                 }
                 DataTable dt = txtJuchuuNO.IsDatatableOccurs;
@@ -794,43 +809,47 @@ namespace JuchuuNyuuryoku
             if (e.RowIndex >= 0)
             {
                 var row = this.gv_JuchuuNyuuryoku.Rows[e.RowIndex];
-                if (senderGrid.Columns[e.ColumnIndex].ReadOnly == false)
+                if (cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
                 {
-                    if (gv_JuchuuNyuuryoku.Columns["colSiiresakiDetail"].Index == e.ColumnIndex)
-                    {
-                        sobj.Access_Siiresaki_obj.SiiresakiCD = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiCD"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.SiiresakiRyakuName = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiRyakuName"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.SiiresakiName = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiName"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.YuubinNO1 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiYuubinNO1"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.YuubinNO2 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiYuubinNO2"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.Juusho1 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiJuusho1"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.Juusho2 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiJuusho2"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.Tel11 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO11"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.Tel12 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO12"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.Tel13 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO13"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.Tel21 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO21"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.Tel22 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO22"].Value.ToString();
-                        sobj.Access_Siiresaki_obj.Tel23 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO23"].Value.ToString();
-                        sobj.ShowDialog();
-
-
-                        SiiresakiEntity s_obj = sobj.Access_Siiresaki_obj;
-                        gv_JuchuuNyuuryoku["colSiiresakiCD", e.RowIndex].Value = s_obj.SiiresakiCD;
-                        gv_JuchuuNyuuryoku["colSiiresakiName", e.RowIndex].Value = s_obj.SiiresakiName;
-                        gv_JuchuuNyuuryoku["colSiiresakiRyakuName", e.RowIndex].Value = s_obj.SiiresakiRyakuName;
-                        gv_JuchuuNyuuryoku["colSiiresakiYuubinNO1", e.RowIndex].Value = s_obj.YuubinNO1;
-                        gv_JuchuuNyuuryoku["colSiiresakiYuubinNO2", e.RowIndex].Value = s_obj.YuubinNO2;
-                        gv_JuchuuNyuuryoku["colSiiresakiJuusho1", e.RowIndex].Value = s_obj.Juusho1;
-                        gv_JuchuuNyuuryoku["colSiiresakiJuusho2", e.RowIndex].Value = s_obj.Juusho2;
-                        gv_JuchuuNyuuryoku["colSiiresakiTelNO11", e.RowIndex].Value = s_obj.Tel11;
-                        gv_JuchuuNyuuryoku["colSiiresakiTelNO12", e.RowIndex].Value = s_obj.Tel12;
-                        gv_JuchuuNyuuryoku["colSiiresakiTelNO13", e.RowIndex].Value = s_obj.Tel13;
-                        gv_JuchuuNyuuryoku["colSiiresakiTelNO21", e.RowIndex].Value = s_obj.Tel21;
-                        gv_JuchuuNyuuryoku["colSiiresakiTelNO22", e.RowIndex].Value = s_obj.Tel22;
-                        gv_JuchuuNyuuryoku["colSiiresakiTelNO23", e.RowIndex].Value = s_obj.Tel23;
-                       
-                    }
+                    sobj = new SiiresakiDetail(false);
                 }
+                else
+                    sobj = new SiiresakiDetail();
+                if (gv_JuchuuNyuuryoku.Columns["colSiiresakiDetail"].Index == e.ColumnIndex)
+                {
+                    sobj.Access_Siiresaki_obj.SiiresakiCD = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiCD"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.SiiresakiRyakuName = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiRyakuName"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.SiiresakiName = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiName"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.YuubinNO1 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiYuubinNO1"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.YuubinNO2 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiYuubinNO2"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.Juusho1 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiJuusho1"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.Juusho2 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiJuusho2"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.Tel11 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO11"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.Tel12 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO12"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.Tel13 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO13"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.Tel21 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO21"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.Tel22 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO22"].Value.ToString();
+                    sobj.Access_Siiresaki_obj.Tel23 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO23"].Value.ToString();
+                    sobj.ShowDialog();
+
+
+                    SiiresakiEntity s_obj = sobj.Access_Siiresaki_obj;
+                    gv_JuchuuNyuuryoku["colSiiresakiCD", e.RowIndex].Value = s_obj.SiiresakiCD;
+                    gv_JuchuuNyuuryoku["colSiiresakiName", e.RowIndex].Value = s_obj.SiiresakiName;
+                    gv_JuchuuNyuuryoku["colSiiresakiRyakuName", e.RowIndex].Value = s_obj.SiiresakiRyakuName;
+                    gv_JuchuuNyuuryoku["colSiiresakiYuubinNO1", e.RowIndex].Value = s_obj.YuubinNO1;
+                    gv_JuchuuNyuuryoku["colSiiresakiYuubinNO2", e.RowIndex].Value = s_obj.YuubinNO2;
+                    gv_JuchuuNyuuryoku["colSiiresakiJuusho1", e.RowIndex].Value = s_obj.Juusho1;
+                    gv_JuchuuNyuuryoku["colSiiresakiJuusho2", e.RowIndex].Value = s_obj.Juusho2;
+                    gv_JuchuuNyuuryoku["colSiiresakiTelNO11", e.RowIndex].Value = s_obj.Tel11;
+                    gv_JuchuuNyuuryoku["colSiiresakiTelNO12", e.RowIndex].Value = s_obj.Tel12;
+                    gv_JuchuuNyuuryoku["colSiiresakiTelNO13", e.RowIndex].Value = s_obj.Tel13;
+                    gv_JuchuuNyuuryoku["colSiiresakiTelNO21", e.RowIndex].Value = s_obj.Tel21;
+                    gv_JuchuuNyuuryoku["colSiiresakiTelNO22", e.RowIndex].Value = s_obj.Tel22;
+                    gv_JuchuuNyuuryoku["colSiiresakiTelNO23", e.RowIndex].Value = s_obj.Tel23;
+                   
+                }
+                //}
             }
         }
 
@@ -1545,14 +1564,16 @@ namespace JuchuuNyuuryoku
 
         private void Gridview_F9ShowHide(int col,string type)
         {
-            Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+            SCombo cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
             Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
             if (gv_JuchuuNyuuryoku.Columns[col].Name == "colSiiresakiCD" || gv_JuchuuNyuuryoku.Columns[col].Name == "colSoukoCD")
             {
                 Control btnF9 = ctrlArr[0];
                 if (ctrlArr.Length > 0 && type=="Show")
                 {
-                    if (btnF9 != null)
+                    if (cbo.SelectedValue.Equals("3") || cbo.SelectedValue.Equals("4"))
+                        btnF9.Visible = false;
+                    else if (btnF9 != null)
                         btnF9.Visible = true;
                 }
                 else
@@ -1750,7 +1771,11 @@ namespace JuchuuNyuuryoku
 
         private void gv_JuchuuNyuuryoku_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F9)
+            SCombo cbo = new SCombo();
+
+            if (this.TopLevelControl.Controls.Find("cboMode", true).Count() > 0)
+                cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+            if (e.KeyCode == Keys.F9 && (cbo.SelectedValue.Equals("1") || cbo.SelectedValue.Equals("2")))
             {
                 if (gv_JuchuuNyuuryoku.CurrentCell != null)
                 {
@@ -1798,6 +1823,7 @@ namespace JuchuuNyuuryoku
                     int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
                     selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
 
+                    sobj = new SiiresakiDetail();
                     sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
                 }
             }

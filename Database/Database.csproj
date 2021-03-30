@@ -142,6 +142,7 @@
     <Content Include="StoreProcedure\HacchuuNyuuryoku_Select_Check.sql" />
     <Content Include="StoreProcedure\HacchuuNyuuryoku_Update.sql" />
     <Content Include="StoreProcedure\Hacchuu_Search.sql" />
+    <Content Include="StoreProcedure\HaitaSakujo_ClearExclusive.sql" />
     <Content Include="StoreProcedure\HaitaSakujo_Display.sql" />
     <Content Include="StoreProcedure\IdouNyuuryoku_Change_Detail_Flag.sql" />
     <Content Include="StoreProcedure\IdouNyuuryoku_Change_Main_Flag.sql" />
@@ -208,7 +209,9 @@
     <Content Include="StoreProcedure\ShukkasiziNyuuryoku_Update.sql" />
     <Content Include="StoreProcedure\Shukkasizi_Price.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Check.sql" />
+    <Content Include="StoreProcedure\ShukkaTorikomi_Delete.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Error_Check.sql" />
+    <Content Include="StoreProcedure\ShukkaTorikomi_Insert.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Select_Check.sql" />
     <Content Include="StoreProcedure\ShukkaTorikomi_Slip_Check.sql" />
     <Content Include="StoreProcedure\Shukka_Price.sql" />

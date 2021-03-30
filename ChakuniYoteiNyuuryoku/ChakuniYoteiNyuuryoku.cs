@@ -40,8 +40,7 @@ namespace ChakuniYoteiNyuuryoku
             dt_Header = new DataTable();
             dt_Details = new DataTable();
             chkEntity = new ChakuniYoteiNyuuryokuEntity();
-            cbl = new ChakuniYoteiNyuuryoku_BL();
-            sd = new SiiresakiDetail();
+            cbl = new ChakuniYoteiNyuuryoku_BL();           
             dtGS = CreateTable_Detail();
             dtTemp = new DataTable();
             dtClear= CreateTable_Detail();
@@ -92,6 +91,7 @@ namespace ChakuniYoteiNyuuryoku
                     ErrorCheck();
                     New_Mode();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                    sd = new SiiresakiDetail();
                     btnNew.Visible = true;
                     break;
                 case Mode.Update:
@@ -99,6 +99,7 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
+                    sd = new SiiresakiDetail();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     break;
@@ -107,6 +108,8 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
+                    sd = new SiiresakiDetail(false);
+                    //btn_Siiresaki.Enabled = true;
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     break;
@@ -115,6 +118,8 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
+                    sd = new SiiresakiDetail(false);
+                    //btn_Siiresaki.Enabled = true;
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     break;
@@ -226,12 +231,9 @@ namespace ChakuniYoteiNyuuryoku
                 bbl.ShowMessage("E111");
                 txtBrandCD.Focus();
             }
-            else //add NMW - 2021-03-30
-            {
-                dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-                gvChakuniYoteiNyuuryoku.DataSource = dtmain;
-                gvChakuniYoteiNyuuryoku.Select();
-            }
+            dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
+            gvChakuniYoteiNyuuryoku.DataSource = dtmain;
+            gvChakuniYoteiNyuuryoku.Select();
             gvChakuniYoteiNyuuryoku.ActionType = string.Empty;
         }
         private void DBProcess()
@@ -447,6 +449,9 @@ namespace ChakuniYoteiNyuuryoku
             txtDateFrom.E103Check(true);
             txtDateTo.E103Check(true);
             txtDateTo.E106Check(true, txtDateFrom, txtDateTo);
+            txtChakuniYoteiNO.E102Check(false);//ktp add remove 102 check in new mode
+            txtChakuniYoteiNO.E133Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);//ktp add remove 133 check in new mode
+            txtChakuniYoteiNO.E268Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);//ktp add remove 268 check in new mode
         }
         private DataTable CreateTable_Detail()
         {
@@ -471,12 +476,23 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
         {
-            multipurposeBL bl = new multipurposeBL();
-            string a = txtBrandCD.Text.ToString();
-            DataTable dt = bl.M_Multiporpose_SelectData(a, 1, string.Empty, string.Empty);
+            if(!string.IsNullOrWhiteSpace(txtBrandCD.Text))
+            {
+                multipurposeBL bl = new multipurposeBL();
+                string a = txtBrandCD.Text.ToString();
+                DataTable dt = bl.M_Multiporpose_SelectData(a, 1, string.Empty, string.Empty);
 
-            if (dt.Rows.Count > 0)
-                lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
+                if (dt.Rows.Count > 0)
+                    lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
+                else
+                {
+                    txtBrandCD.Focus();
+                    lblBrandName.Text = string.Empty;
+                    bbl.ShowMessage("E101");
+                }
+            }
+            
+
         }
         private void txtDate_KeyDown(object sender, KeyEventArgs e)
         {
@@ -622,6 +638,8 @@ namespace ChakuniYoteiNyuuryoku
                             Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                             btnF12.Focus();
                         }
+
+                        btn_Siiresaki.Enabled = true;
                     }
                 }
                 DataTable dt = txtChakuniYoteiNO.IsDatatableOccurs;
@@ -694,7 +712,7 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void btn_Siiresaki_Click(object sender, EventArgs e)
         {
-            sd.ShowDialog();
+                sd.ShowDialog();
         }
         private SiiresakiEntity From_DB_To_Siiresaki(DataTable dtSiiresaki)
         {
@@ -835,11 +853,11 @@ namespace ChakuniYoteiNyuuryoku
             {
                 KanriNO = txtNumber.Text
             };
-             DataTable dt = cbl.ChakuniYoteiDataCheck(chkEntity);
+            DataTable dt = cbl.ChakuniYoteiDataCheck(chkEntity);
             if(dt.Rows.Count>0)
             {
-                bbl.ShowMessage("Q325");
-                txtNumber.Focus();
+                if(bbl.ShowMessage("Q325") == DialogResult.No) 
+                    txtNumber.Focus();
             }
 
         }

@@ -135,18 +135,21 @@ namespace Shinyoh_Search
                         DenpyouNoSearch denpyouSearch = new DenpyouNoSearch();
                         denpyouSearch.ShowDialog();
                         //Combo.SelectedIndex = Convert.ToInt32(denpyouSearch.renban);
-                        Combo.SelectedValue = denpyouSearch.renban;
-                        if (this.Name == "txtSEQNO")
+                        if(!string.IsNullOrWhiteSpace(denpyouSearch.renban)) // ktp no 181 
                         {
-                            TxtBox.Text = denpyouSearch.prefix;
-                            TxtBox.Focus();
-                            CD = denpyouSearch.seqno;
-                        }
-                        else
-                        {
-                            TxtBox.Text = denpyouSearch.seqno;
-                            CD = denpyouSearch.prefix;
-                        }
+                            Combo.SelectedValue = denpyouSearch.renban;
+                            if (this.Name == "txtSEQNO")
+                            {
+                                TxtBox.Text = denpyouSearch.prefix;
+                                TxtBox.Focus();
+                                CD = denpyouSearch.seqno;
+                            }
+                            else
+                            {
+                                TxtBox.Text = denpyouSearch.seqno;
+                                CD = denpyouSearch.prefix;
+                            }
+                        }                       
                         break;
                     case Entity.SearchType.ScType.Siiresaki:
                         SiiresakiSearch siiresakiSearch = new SiiresakiSearch();
@@ -214,15 +217,15 @@ namespace Shinyoh_Search
                         Shouhin_Search shsearch = new Shouhin_Search();
                         shsearch.parent_changeDate = ChangeDate.Text;
                         shsearch.ShowDialog();
-                        if(this.Name == "txtCopyProduct")
-                        {
-                            //CD = shsearch.shouhinCD;
-                            CD = shsearch.hinbanCD;
-                            TxtBox.Text = shsearch.colorNO;
-                            TxtBox.Focus();
-                        }
-                        else
-                        {
+                        //if(this.Name == "txtCopyProduct")
+                        //{
+                        //    //CD = shsearch.shouhinCD;
+                        //    CD = shsearch.hinbanCD;
+                        //    TxtBox.Text = shsearch.colorNO;
+                        //    TxtBox.Focus();
+                        //}
+                        //else
+                        //{
                                 //CD = shsearch.shouhinCD;ses
                                 CD = shsearch.hinbanCD;
                                 colorNO = shsearch.colorNO;
@@ -230,7 +233,7 @@ namespace Shinyoh_Search
                                 sizeNO = shsearch.sizeNO;
                                 colName = shsearch.sizeName;
                                 CDate = shsearch.changeDate;
-                        }
+                        //}
                         break;
                     case Entity.SearchType.ScType.ArrivalNo:
                         ArrivalNOSearch search = new ArrivalNOSearch();
