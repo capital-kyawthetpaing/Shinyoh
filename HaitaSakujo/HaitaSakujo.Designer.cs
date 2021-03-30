@@ -261,7 +261,7 @@
             this.txt_HM1.IsRequire = false;
             this.txt_HM1.IsUseInitializedLayout = true;
             this.txt_HM1.Location = new System.Drawing.Point(658, 40);
-            this.txt_HM1.MaxLength = 10;
+            this.txt_HM1.MaxLength = 5;
             this.txt_HM1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txt_HM1.MoveNext = true;
             this.txt_HM1.Name = "txt_HM1";
@@ -297,12 +297,12 @@
             this.txt_HM2.IsRequire = false;
             this.txt_HM2.IsUseInitializedLayout = true;
             this.txt_HM2.Location = new System.Drawing.Point(893, 40);
-            this.txt_HM2.MaxLength = 10;
+            this.txt_HM2.MaxLength = 5;
             this.txt_HM2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txt_HM2.MoveNext = true;
             this.txt_HM2.Name = "txt_HM2";
             this.txt_HM2.NextControl = null;
-            this.txt_HM2.NextControlName = "BtnF12";
+            this.txt_HM2.NextControlName = "BtnF10";
             this.txt_HM2.SearchType = Entity.SearchType.ScType.None;
             this.txt_HM2.Size = new System.Drawing.Size(50, 19);
             this.txt_HM2.TabIndex = 7;
