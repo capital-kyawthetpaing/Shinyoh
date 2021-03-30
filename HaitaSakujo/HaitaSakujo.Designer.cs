@@ -272,7 +272,6 @@
             this.txt_HM1.TabIndex = 5;
             this.txt_HM1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_HM1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Time;
-            this.txt_HM1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_HM2_KeyDown);
             // 
             // label2
             // 
