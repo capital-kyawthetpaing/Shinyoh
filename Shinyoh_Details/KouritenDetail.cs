@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CKM_CommonFunction;
 
 namespace Shinyoh_Details
 {
@@ -19,15 +20,25 @@ namespace Shinyoh_Details
         string YuuBinNO2 = string.Empty;
         string Address1 = string.Empty;
         string Address2 = string.Empty;
+        bool isEnable;
+        CommonFunction cf = new CommonFunction();
         public KouritenDetail()
         {
             InitializeComponent();
+            isEnable = true;
         }
+
+        public KouritenDetail(bool val)
+        {
+            InitializeComponent();
+            isEnable = val;
+        }
+
         private void KouritenDetail_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Search, F11, "", false);
-            SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+            //SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
             lbl_Name.BorderStyle= System.Windows.Forms.BorderStyle.None;
             txtShort_Name.Focus();
@@ -41,6 +52,17 @@ namespace Shinyoh_Details
 
             //Get Data from JuchuuNyuuroku form
             Access_DB_Object(Access_Kouriten_obj);
+
+            if (!isEnable)
+            {
+                cf.DisablePanel(Panel_Detail);
+                SetButton(ButtonType.BType.Save, F12, "確定(F12)", false);
+            }
+            else
+            {
+                cf.EnablePanel(Panel_Detail);
+                SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+            }
         }
         private void Access_DB_Object(KouritenEntity obj)
         {

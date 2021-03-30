@@ -23,8 +23,8 @@ namespace ShukkaNyuuryoku {
         BaseEntity base_Entity;
         ShukkaNyuuryokuEntity obj;
         ShukkaNyuuryokuBL bl;
-        TokuisakiDetail tokuisakiDetail = new TokuisakiDetail();
-        KouritenDetail kouritenDetail = new KouritenDetail();
+        TokuisakiDetail tokuisakiDetail;//= new TokuisakiDetail();
+        KouritenDetail kouritenDetail;// = new KouritenDetail();
         string YuuBinNO1 = string.Empty;
         string YuuBinNO2 = string.Empty;
         string Address = string.Empty;
@@ -311,6 +311,8 @@ namespace ShukkaNyuuryoku {
                     SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
                     SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
                     SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
+                    tokuisakiDetail = new TokuisakiDetail();
+                    kouritenDetail = new KouritenDetail();
                     break;
 
                 case Mode.Update:
@@ -324,6 +326,9 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.Focus();
                     gvdt1.Clear();
                     F8_dt1.Clear();
+
+                    tokuisakiDetail = new TokuisakiDetail();
+                    kouritenDetail = new KouritenDetail();
                     break;
                 case Mode.Delete:
                     ErrorCheck();
@@ -334,6 +339,9 @@ namespace ShukkaNyuuryoku {
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     txtShukkaNo.Focus();
+
+                    tokuisakiDetail = new TokuisakiDetail(false);
+                    kouritenDetail = new KouritenDetail(false);
                     break;
                 case Mode.Inquiry:
                     txtShukkaNo.E102Check(true);
@@ -343,6 +351,9 @@ namespace ShukkaNyuuryoku {
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     txtShukkaNo.Focus();
+
+                    tokuisakiDetail = new TokuisakiDetail(false);
+                    kouritenDetail = new KouritenDetail(false);
                     break;
             }
         }
@@ -1139,6 +1150,9 @@ namespace ShukkaNyuuryoku {
                             cf.DisablePanel(PanelTitle);
                             Control btnSearch = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
                             btnSearch.Visible = false;
+
+                            btnDetail1.Enabled = true;
+                            btnDetail2.Enabled = true;
                         }
                         Display();
                     }
@@ -1155,6 +1169,9 @@ namespace ShukkaNyuuryoku {
                     btnSearch.Visible = false;
 
                     Display();
+
+                    btnDetail1.Enabled = true;
+                    btnDetail2.Enabled = true;
                 }
             }
             else
