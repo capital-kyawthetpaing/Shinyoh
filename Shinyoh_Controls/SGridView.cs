@@ -238,6 +238,15 @@ namespace Shinyoh_Controls
         }
         public void MoveNextCell()
         {
+            //ktp added -- to prevent infinite loop when all columns are readonly
+            Control[] ctlmode = this.TopLevelControl.Controls.Find("cboMode", true);
+            if (ctlmode.Length > 0)
+            {
+                SCombo cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+                if (cbo.SelectedValue.Equals("3") || cbo.SelectedValue.Equals("4"))//all col readonly
+                    return;
+            }
+
             int icolumn = this.CurrentCell.ColumnIndex;
             int irow = this.CurrentCell.RowIndex;
             bool found = false;
