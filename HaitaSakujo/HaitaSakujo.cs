@@ -56,8 +56,8 @@ namespace HaitaSakujo {
         }
         private void ErrorCheck()
         {
-            //txt_Time1.E103Check(true);
-            //txt_Time2.E103Check(true);
+            txt_Time1.E103Check(true);
+            txt_Time2.E103Check(true);
             txt_dataPartition.E101Check(true, "M_MultiPorpose", txt_dataPartition, txt_date, null);
             txt_InputPerson.E101Check(true, "M_Staff", txt_InputPerson, txt_date, null);
         }
