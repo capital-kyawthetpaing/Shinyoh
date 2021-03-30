@@ -596,6 +596,7 @@ namespace ChakuniNyuuryoku
             {
                 bbl.ShowMessage("E111");
                 txtScheduled.Focus();
+                return;//ktp added (show error message and stop process)
             }
             dtmain = cbl.ChakuniNyuuryoku_Display(chkEntity);
             ChakuniYoteiNO_Delete();
