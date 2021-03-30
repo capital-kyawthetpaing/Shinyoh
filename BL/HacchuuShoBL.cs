@@ -30,7 +30,7 @@ namespace BL
         public DataTable Get_ExportData(HacchuuShoEntity hse)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[11];
+            var parameters = new SqlParameter[13];
             parameters[0] = new SqlParameter("@JuchuuNO1", SqlDbType.VarChar) { Value = hse.JuchuuNO1 };
             parameters[1] = new SqlParameter("@JuchuuNO2", SqlDbType.VarChar) { Value = hse.JuchuuNO2 };
             parameters[2] = new SqlParameter("@HacchuuNO1", SqlDbType.VarChar) { Value = hse.HacchuuNO1 };
@@ -42,8 +42,10 @@ namespace BL
             parameters[8] = new SqlParameter("@SS", SqlDbType.VarChar) { Value = hse.SS };
             parameters[9] = new SqlParameter("@FW", SqlDbType.VarChar) { Value = hse.FW };
             parameters[10] = new SqlParameter("@Rdo_Type", SqlDbType.TinyInt) { Value = hse.Rdo_Type };
+            parameters[11] = new SqlParameter("@Opt", SqlDbType.VarChar) { Value = hse.OperatorCD };
+            parameters[12] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = hse.PC };
 
-            DataTable dt= ckmdl.SelectDatatable("Get_HacchuuSho_ExportData", GetConnectionString(), parameters);
+            DataTable dt = ckmdl.SelectDatatable("Get_HacchuuSho_ExportData", GetConnectionString(), parameters);
             return dt;
         }
     }
