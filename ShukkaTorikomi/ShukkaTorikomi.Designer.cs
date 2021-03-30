@@ -38,6 +38,13 @@
             this.sLabel6 = new Shinyoh_Controls.SLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.gvMainDetail = new Shinyoh_Controls.SGridView();
+            this.txtDate1 = new Shinyoh_Controls.STextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtShukkaToNo2 = new Shinyoh_Controls.STextBox();
+            this.txtShukkaToNo1 = new Shinyoh_Controls.STextBox();
+            this.sLabel5 = new Shinyoh_Controls.SLabel();
+            this.sLabel4 = new Shinyoh_Controls.SLabel();
+            this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.colTorikomiDenpyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInsertDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShukkaNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,22 +53,11 @@
             this.colTokuisakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKouritenCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKouritenRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDate1 = new Shinyoh_Controls.STextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtShukkaToNo2 = new Shinyoh_Controls.STextBox();
-            this.txtShukkaToNo1 = new Shinyoh_Controls.STextBox();
-            this.sLabel5 = new Shinyoh_Controls.SLabel();
-            this.sLabel4 = new Shinyoh_Controls.SLabel();
-            this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvMainDetail)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1370, 75);
             // 
             // PanelTitle
             // 
@@ -136,7 +132,7 @@
             this.PanelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1370, 630);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 872);
             this.PanelDetail.TabIndex = 2;
             // 
             // txtDate2
@@ -237,60 +233,8 @@
             this.gvMainDetail.ISRowColumn = null;
             this.gvMainDetail.Location = new System.Drawing.Point(136, 182);
             this.gvMainDetail.Name = "gvMainDetail";
-            this.gvMainDetail.Size = new System.Drawing.Size(1120, 600);
+            this.gvMainDetail.Size = new System.Drawing.Size(1200, 570);
             this.gvMainDetail.TabIndex = 8;
-            // 
-            // colTorikomiDenpyouNO
-            // 
-            this.colTorikomiDenpyouNO.DataPropertyName = "TorikomiDenpyouNO";
-            this.colTorikomiDenpyouNO.HeaderText = "取込伝票番号";
-            this.colTorikomiDenpyouNO.Name = "colTorikomiDenpyouNO";
-            this.colTorikomiDenpyouNO.Width = 120;
-            // 
-            // colInsertDateTime
-            // 
-            this.colInsertDateTime.DataPropertyName = "InsertDateTime";
-            this.colInsertDateTime.HeaderText = "取込日時";
-            this.colInsertDateTime.Name = "colInsertDateTime";
-            // 
-            // colShukkaNO
-            // 
-            this.colShukkaNO.DataPropertyName = "ShukkaNO";
-            this.colShukkaNO.HeaderText = "出荷番号";
-            this.colShukkaNO.Name = "colShukkaNO";
-            // 
-            // colShukkaDate
-            // 
-            this.colShukkaDate.DataPropertyName = "ShukkaDate";
-            this.colShukkaDate.HeaderText = "出荷日";
-            this.colShukkaDate.Name = "colShukkaDate";
-            // 
-            // colTokuisakiCD
-            // 
-            this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
-            this.colTokuisakiCD.HeaderText = "得意先";
-            this.colTokuisakiCD.Name = "colTokuisakiCD";
-            // 
-            // colTokuisakiRyakuName
-            // 
-            this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
-            this.colTokuisakiRyakuName.HeaderText = "得意先名";
-            this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
-            this.colTokuisakiRyakuName.Width = 220;
-            // 
-            // colKouritenCD
-            // 
-            this.colKouritenCD.DataPropertyName = "KouritenCD";
-            this.colKouritenCD.HeaderText = "小売店";
-            this.colKouritenCD.Name = "colKouritenCD";
-            this.colKouritenCD.Width = 80;
-            // 
-            // colKouritenRyakuName
-            // 
-            this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
-            this.colKouritenRyakuName.HeaderText = "小売店名";
-            this.colKouritenRyakuName.Name = "colKouritenRyakuName";
-            this.colKouritenRyakuName.Width = 300;
             // 
             // txtDate1
             // 
@@ -415,11 +359,63 @@
             this.sLabel3.Text = "取込元フォルダ";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // colTorikomiDenpyouNO
+            // 
+            this.colTorikomiDenpyouNO.DataPropertyName = "TorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.HeaderText = "取込伝票番号";
+            this.colTorikomiDenpyouNO.Name = "colTorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.Width = 120;
+            // 
+            // colInsertDateTime
+            // 
+            this.colInsertDateTime.DataPropertyName = "InsertDateTime";
+            this.colInsertDateTime.HeaderText = "取込日時";
+            this.colInsertDateTime.Name = "colInsertDateTime";
+            // 
+            // colShukkaNO
+            // 
+            this.colShukkaNO.DataPropertyName = "ShukkaNO";
+            this.colShukkaNO.HeaderText = "出荷番号";
+            this.colShukkaNO.Name = "colShukkaNO";
+            // 
+            // colShukkaDate
+            // 
+            this.colShukkaDate.DataPropertyName = "ShukkaDate";
+            this.colShukkaDate.HeaderText = "出荷日";
+            this.colShukkaDate.Name = "colShukkaDate";
+            // 
+            // colTokuisakiCD
+            // 
+            this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
+            this.colTokuisakiCD.HeaderText = "得意先";
+            this.colTokuisakiCD.Name = "colTokuisakiCD";
+            // 
+            // colTokuisakiRyakuName
+            // 
+            this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
+            this.colTokuisakiRyakuName.HeaderText = "得意先名";
+            this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
+            this.colTokuisakiRyakuName.Width = 220;
+            // 
+            // colKouritenCD
+            // 
+            this.colKouritenCD.DataPropertyName = "KouritenCD";
+            this.colKouritenCD.HeaderText = "小売店";
+            this.colKouritenCD.Name = "colKouritenCD";
+            this.colKouritenCD.Width = 80;
+            // 
+            // colKouritenRyakuName
+            // 
+            this.colKouritenRyakuName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
+            this.colKouritenRyakuName.HeaderText = "小売店名";
+            this.colKouritenRyakuName.Name = "colKouritenRyakuName";
+            // 
             // SqlDbType
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1713, 991);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "SqlDbType";
