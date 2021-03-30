@@ -166,10 +166,10 @@ namespace HaitaSakujo
             obj.DataKBN = txt_dataPartition.Text;
             obj.InputPerson = txt_InputPerson.Text;
             obj.Program = txt_Program.Text;
-            obj.OperateDataTime1 = txt_Time1.Text;
-            obj.OperateDataTime2 = txt_Time2.Text;
-            obj.OperateDataTimeHM1 = txt_HM1.Text;
-            obj.OperateDataTimeHM2 = txt_HM2.Text;
+            obj.OperateDataTime1 = txt_Time1.Text + txt_HM1.Text;
+            obj.OperateDataTime2 = txt_Time2.Text + txt_HM2.Text;
+            //obj.OperateDataTimeHM1 = txt_HM1.Text;
+            //obj.OperateDataTimeHM2 = txt_HM2.Text;
             DataTable dt = bl.HaitaSakujo_Display(obj);
             gvHaitaSakujo.DataSource = dt;
         }
