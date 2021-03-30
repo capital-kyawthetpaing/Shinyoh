@@ -24,7 +24,7 @@ namespace HacchuuSho
         HacchuuShoBL hsbl;
         string tmpPath = @"C:\DBConfig\Hacchuushou\imge.jpg";
         string tmpDir = @"C:\DBConfig\Hacchuushou\";
-        string tmpSourceLogo = "C:\\DBConfig\\SHINYOH_Logo.jpg";
+        string tmpSourceLogo = "C:\\DBConfig\\Hacchuushou\\SHINYOH_Logo.jpg";
         string tmpSave = @"C:\DBConfig\HacchuuShou\OutPut\";
         public HacchuuSho()
         {
