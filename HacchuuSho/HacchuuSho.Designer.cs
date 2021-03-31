@@ -149,7 +149,8 @@ namespace HacchuuSho
             this.txtBrandCD.IsRequire = false;
             this.txtBrandCD.IsUseInitializedLayout = true;
             this.txtBrandCD.lblName = null;
-            this.txtBrandCD.Location = new System.Drawing.Point(125, 117);
+            this.txtBrandCD.lblName1 = null;
+            this.txtBrandCD.Location = new System.Drawing.Point(125, 118);
             this.txtBrandCD.MaxLength = 10;
             this.txtBrandCD.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtBrandCD.MoveNext = true;
@@ -161,6 +162,7 @@ namespace HacchuuSho
             this.txtBrandCD.TabIndex = 117;
             this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrandCD.TxtBox = null;
+            this.txtBrandCD.TxtBox1 = null;
             this.txtBrandCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrandCD_KeyDown);
             // 
             // txtHacchuuNO2
@@ -179,6 +181,7 @@ namespace HacchuuSho
             this.txtHacchuuNO2.IsRequire = false;
             this.txtHacchuuNO2.IsUseInitializedLayout = true;
             this.txtHacchuuNO2.lblName = null;
+            this.txtHacchuuNO2.lblName1 = null;
             this.txtHacchuuNO2.Location = new System.Drawing.Point(251, 65);
             this.txtHacchuuNO2.MaxLength = 12;
             this.txtHacchuuNO2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -191,6 +194,7 @@ namespace HacchuuSho
             this.txtHacchuuNO2.TabIndex = 116;
             this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtHacchuuNO2.TxtBox = null;
+            this.txtHacchuuNO2.TxtBox1 = null;
             // 
             // txtHacchuuNO1
             // 
@@ -208,6 +212,7 @@ namespace HacchuuSho
             this.txtHacchuuNO1.IsRequire = false;
             this.txtHacchuuNO1.IsUseInitializedLayout = true;
             this.txtHacchuuNO1.lblName = null;
+            this.txtHacchuuNO1.lblName1 = null;
             this.txtHacchuuNO1.Location = new System.Drawing.Point(125, 67);
             this.txtHacchuuNO1.MaxLength = 12;
             this.txtHacchuuNO1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -220,6 +225,7 @@ namespace HacchuuSho
             this.txtHacchuuNO1.TabIndex = 115;
             this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtHacchuuNO1.TxtBox = null;
+            this.txtHacchuuNO1.TxtBox1 = null;
             // 
             // txtJuchuuNO2
             // 
@@ -237,6 +243,7 @@ namespace HacchuuSho
             this.txtJuchuuNO2.IsRequire = false;
             this.txtJuchuuNO2.IsUseInitializedLayout = true;
             this.txtJuchuuNO2.lblName = null;
+            this.txtJuchuuNO2.lblName1 = null;
             this.txtJuchuuNO2.Location = new System.Drawing.Point(251, 40);
             this.txtJuchuuNO2.MaxLength = 12;
             this.txtJuchuuNO2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -249,6 +256,7 @@ namespace HacchuuSho
             this.txtJuchuuNO2.TabIndex = 114;
             this.txtJuchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJuchuuNO2.TxtBox = null;
+            this.txtJuchuuNO2.TxtBox1 = null;
             // 
             // txtJuchuuNO1
             // 
@@ -266,6 +274,7 @@ namespace HacchuuSho
             this.txtJuchuuNO1.IsRequire = false;
             this.txtJuchuuNO1.IsUseInitializedLayout = true;
             this.txtJuchuuNO1.lblName = null;
+            this.txtJuchuuNO1.lblName1 = null;
             this.txtJuchuuNO1.Location = new System.Drawing.Point(125, 42);
             this.txtJuchuuNO1.MaxLength = 12;
             this.txtJuchuuNO1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -278,6 +287,7 @@ namespace HacchuuSho
             this.txtJuchuuNO1.TabIndex = 113;
             this.txtJuchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJuchuuNO1.TxtBox = null;
+            this.txtJuchuuNO1.TxtBox1 = null;
             // 
             // label4
             // 
@@ -654,7 +664,7 @@ namespace HacchuuSho
             this.lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblBrandName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBrandName.Location = new System.Drawing.Point(205, 117);
+            this.lblBrandName.Location = new System.Drawing.Point(205, 118);
             this.lblBrandName.Name = "lblBrandName";
             this.lblBrandName.Size = new System.Drawing.Size(200, 19);
             this.lblBrandName.TabIndex = 90;

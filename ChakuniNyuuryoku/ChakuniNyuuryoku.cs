@@ -97,6 +97,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.SetGridDesign();
             gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
             gvChakuniNyuuryoku.SetHiraganaColumn("ChakuniMeisaiTekiyou");
+            gvChakuniNyuuryoku.SetNumberColumn("ChakuniSuu");
             ChangeMode(Mode.New);
         }
         private void ChangeMode(Mode mode)
@@ -596,6 +597,7 @@ namespace ChakuniNyuuryoku
             {
                 bbl.ShowMessage("E111");
                 txtScheduled.Focus();
+                return;//ktp added (show error message and stop process)
             }
             dtmain = cbl.ChakuniNyuuryoku_Display(chkEntity);
             ChakuniYoteiNO_Delete();

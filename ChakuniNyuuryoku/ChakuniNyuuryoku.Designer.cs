@@ -489,7 +489,7 @@
             this.btnConfirm.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.Location = new System.Drawing.Point(1239, 181);
+            this.btnConfirm.Location = new System.Drawing.Point(1239, 185);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.NextControl = null;
             this.btnConfirm.NextControlName = null;
@@ -505,7 +505,7 @@
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisplay.Location = new System.Drawing.Point(1338, 181);
+            this.btnDisplay.Location = new System.Drawing.Point(1338, 185);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.NextControl = null;
             this.btnDisplay.NextControlName = null;
@@ -521,7 +521,7 @@
             this.btnSave.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(1438, 181);
+            this.btnSave.Location = new System.Drawing.Point(1438, 185);
             this.btnSave.Name = "btnSave";
             this.btnSave.NextControl = null;
             this.btnSave.NextControlName = null;
@@ -853,7 +853,7 @@
             this.txtScheduled.Name = "txtScheduled";
             this.txtScheduled.NextControl = null;
             this.txtScheduled.NextControlName = "txtShouhinCD";
-            this.txtScheduled.SearchType = Entity.SearchType.ScType.Siiresaki;
+            this.txtScheduled.SearchType = Entity.SearchType.ScType.ChakuniYoteiNyuuryoku;
             this.txtScheduled.Size = new System.Drawing.Size(100, 19);
             this.txtScheduled.TabIndex = 8;
             this.txtScheduled.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;

@@ -2,7 +2,9 @@
 using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
+using Shinyoh_Controls;
 using Shinyoh_Details;
+using Shinyoh_Search;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1049,6 +1051,117 @@ namespace HacchuuNyuuryoku
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
             else lblBrand_Name.Text = string.Empty;
+        }
+
+        private void gv_HacchuuNyuuryoku_KeyDown(object sender, KeyEventArgs e)
+        {
+            SCombo cbo = new SCombo();
+
+            if (this.TopLevelControl.Controls.Find("cboMode", true).Count() > 0)
+                cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+            if (e.KeyCode == Keys.F9 && (cbo.SelectedValue.Equals("1") || cbo.SelectedValue.Equals("2")))
+            {
+                if (gv_HacchuuNyuuryoku.CurrentCell != null)
+                {
+                    if (gv_HacchuuNyuuryoku.CurrentCell.ColumnIndex == 10)
+                    {
+                        gridKeyDown();
+                    }
+                }
+            }
+        }
+        private void gridKeyDown()
+        {
+            gv_HacchuuNyuuryoku.CellEndEdit -= new DataGridViewCellEventHandler(gv_HacchuuNyuuryoku_CellEndEdit);
+            gv_HacchuuNyuuryoku.EndEdit();
+            gv_HacchuuNyuuryoku.CellEndEdit += new DataGridViewCellEventHandler(gv_HacchuuNyuuryoku_CellEndEdit);
+
+            int row = gv_HacchuuNyuuryoku.CurrentCell.RowIndex;
+            int column = gv_HacchuuNyuuryoku.CurrentCell.ColumnIndex;
+            if (gv_HacchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSoukoCD")
+            {
+                SoukoSearch souko = new SoukoSearch();
+                souko.ShowDialog();
+
+                if (!string.IsNullOrEmpty(souko.soukoCD))
+                {
+                    if (gv_HacchuuNyuuryoku.Rows.Count-1 != row)
+                        gv_HacchuuNyuuryoku.CurrentCell = this.gv_HacchuuNyuuryoku[5, row + 1];
+                    else
+                        gv_HacchuuNyuuryoku.CurrentCell = this.gv_HacchuuNyuuryoku[column, row];
+                    this.gv_HacchuuNyuuryoku.CurrentCell.Selected = true;
+
+                    gv_HacchuuNyuuryoku[column, row].Value = souko.soukoCD.ToString();
+                    gv_HacchuuNyuuryoku[column + 1, row].Value = souko.soukoName.ToString();
+                }
+                else
+                {
+                    gv_HacchuuNyuuryoku.CurrentCell = this.gv_HacchuuNyuuryoku[column, row];
+                    this.gv_HacchuuNyuuryoku.CurrentCell.Selected = true;
+                }
+            }
+        }
+
+        private void gv_HacchuuNyuuryoku_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            if (e.Control is DataGridViewTextBoxEditingControl)
+            {
+                (e.Control as DataGridViewTextBoxEditingControl).KeyDown -= new KeyEventHandler(gv_HacchuuNyuuryoku_KeyDown);
+                (e.Control as DataGridViewTextBoxEditingControl).KeyDown += new KeyEventHandler(gv_HacchuuNyuuryoku_KeyDown);
+
+                Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                Control btnF9 = ctrlArr[0];
+                if (btnF9 != null)
+                {
+                    btnF9.Click -= BtnF9_Click;
+                    btnF9.Click += BtnF9_Click;
+                }
+            }
+        }
+        private void BtnF9_Click(object sender, EventArgs e)
+        {
+            if (gv_HacchuuNyuuryoku.CurrentCell != null)
+            {
+                if (gv_HacchuuNyuuryoku.CurrentCell.ColumnIndex == 10)
+                {
+                    gridKeyDown();
+                }
+            }
+        }
+
+        private void gv_HacchuuNyuuryoku_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Gridview_F9ShowHide(e.ColumnIndex, "Show");
+        }
+        private void Gridview_F9ShowHide(int col, string type)
+        {
+            SCombo cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+            if (gv_HacchuuNyuuryoku.Columns[col].Name == "colSoukoCD")
+            {
+                Control btnF9 = ctrlArr[0];
+                if (ctrlArr.Length > 0 && type == "Show")
+                {
+                    if (cbo.SelectedValue.Equals("3") || cbo.SelectedValue.Equals("4"))
+                        btnF9.Visible = false;
+                    else if (btnF9 != null)
+                        btnF9.Visible = true;
+                }
+                else
+                {
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
+            else
+            {
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
         }
     }
 }
