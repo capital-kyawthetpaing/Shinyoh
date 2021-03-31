@@ -202,10 +202,12 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gv_HacchuuNyuuryoku.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.gv_HacchuuNyuuryoku.Size = new System.Drawing.Size(1630, 592);
+            this.gv_HacchuuNyuuryoku.Size = new System.Drawing.Size(1630, 620);
             this.gv_HacchuuNyuuryoku.TabIndex = 20;
             this.gv_HacchuuNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_HacchuuNyuuryoku_CellEndEdit);
             this.gv_HacchuuNyuuryoku.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_HacchuuNyuuryoku_CellEnter);
+            this.gv_HacchuuNyuuryoku.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.gv_HacchuuNyuuryoku_EditingControlShowing);
+            this.gv_HacchuuNyuuryoku.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_HacchuuNyuuryoku_KeyDown);
             // 
             // ColHinbanCD
             // 

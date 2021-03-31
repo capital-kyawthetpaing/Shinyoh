@@ -76,6 +76,9 @@ namespace JuchuuList {
             txtInputDate1.Text = baseEntity.LoginDate;
             txtInputDate2.Text = baseEntity.LoginDate;
             txtTempDate.Text = baseEntity.LoginDate;
+
+            chk_SS.Checked = true;
+            chk_FW.Checked = true;
         }
         private void ErrorCheck()
         {
@@ -195,6 +198,8 @@ namespace JuchuuList {
             txtPhNo1.Enabled = true;
             txtPhNo2.Enabled = true;
             txtPhNo3.Enabled = true;
+            chk_SS.Checked = true;
+            chk_FW.Checked = true;
         }
         public override void FunctionProcess(string tagID)
         {
