@@ -2,6 +2,7 @@
 using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
+using Shinyoh_Controls;
 using Shinyoh_Details;
 using System;
 using System.Collections.Generic;
@@ -1049,6 +1050,42 @@ namespace HacchuuNyuuryoku
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
             else lblBrand_Name.Text = string.Empty;
+        }
+
+        private void gv_HacchuuNyuuryoku_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Gridview_F9ShowHide(e.ColumnIndex, "Show");
+        }
+
+        private void Gridview_F9ShowHide(int col, string type)
+        {
+            SCombo cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+            if (gv_HacchuuNyuuryoku.Columns[col].Name == "colSoukoCD")
+            {
+                Control btnF9 = ctrlArr[0];
+                if (ctrlArr.Length > 0 && type == "Show")
+                {
+                    if (cbo.SelectedValue.Equals("3") || cbo.SelectedValue.Equals("4"))
+                        btnF9.Visible = false;
+                    else if (btnF9 != null)
+                        btnF9.Visible = true;
+                }
+                else
+                {
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
+            else
+            {
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
         }
     }
 }

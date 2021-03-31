@@ -577,7 +577,7 @@
             this.gvChakuniNyuuryoku.ISRowColumn = null;
             this.gvChakuniNyuuryoku.Location = new System.Drawing.Point(23, 213);
             this.gvChakuniNyuuryoku.Name = "gvChakuniNyuuryoku";
-            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1500, 590);
+            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1500, 593);
             this.gvChakuniNyuuryoku.TabIndex = 35;
             this.gvChakuniNyuuryoku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvChakuniNyuuryoku_CellContentClick);
             this.gvChakuniNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvChakuniNyuuryoku_CellEndEdit);
