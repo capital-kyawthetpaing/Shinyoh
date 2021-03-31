@@ -146,7 +146,8 @@ namespace IdouNyuuryoku
             lbl_Shukko.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrand_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-
+            chk_SS.Checked = true; //HET
+            chk_FW.Checked = true; //HET
 
             lbl_IdouKubun.Text = string.Empty;
             lblStaff_Name.Text = string.Empty;
