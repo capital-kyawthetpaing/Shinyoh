@@ -280,7 +280,7 @@
             this.gvMultiporpose.ISRowColumn = null;
             this.gvMultiporpose.Location = new System.Drawing.Point(17, 141);
             this.gvMultiporpose.Name = "gvMultiporpose";
-            this.gvMultiporpose.Size = new System.Drawing.Size(658, 365);
+            this.gvMultiporpose.Size = new System.Drawing.Size(738, 350);
             this.gvMultiporpose.TabIndex = 3;
             this.gvMultiporpose.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvMultiporpose_CellMouseDoubleClick);
             this.gvMultiporpose.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvMultiporpose_KeyDown);
