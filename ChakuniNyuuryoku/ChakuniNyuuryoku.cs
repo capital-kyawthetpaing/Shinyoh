@@ -97,6 +97,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.SetGridDesign();
             gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
             gvChakuniNyuuryoku.SetHiraganaColumn("ChakuniMeisaiTekiyou");
+            gvChakuniNyuuryoku.SetNumberColumn("ChakuniSuu");
             ChangeMode(Mode.New);
         }
         private void ChangeMode(Mode mode)

@@ -853,7 +853,7 @@
             this.txtScheduled.Name = "txtScheduled";
             this.txtScheduled.NextControl = null;
             this.txtScheduled.NextControlName = "txtShouhinCD";
-            this.txtScheduled.SearchType = Entity.SearchType.ScType.Siiresaki;
+            this.txtScheduled.SearchType = Entity.SearchType.ScType.ChakuniYoteiNyuuryoku;
             this.txtScheduled.Size = new System.Drawing.Size(100, 19);
             this.txtScheduled.TabIndex = 8;
             this.txtScheduled.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
