@@ -1063,7 +1063,7 @@ namespace HacchuuNyuuryoku
             {
                 if (gv_HacchuuNyuuryoku.CurrentCell != null)
                 {
-                    if (gv_HacchuuNyuuryoku.CurrentCell.ColumnIndex == 11)//ssa
+                    if (gv_HacchuuNyuuryoku.CurrentCell.ColumnIndex == 10)
                     {
                         gridKeyDown();
                     }
@@ -1085,8 +1085,8 @@ namespace HacchuuNyuuryoku
 
                 if (!string.IsNullOrEmpty(souko.soukoCD))
                 {
-                    if (gv_HacchuuNyuuryoku.Rows.Count > 1)
-                        gv_HacchuuNyuuryoku.CurrentCell = this.gv_HacchuuNyuuryoku[6, row + 1];
+                    if (gv_HacchuuNyuuryoku.Rows.Count-1 != row)
+                        gv_HacchuuNyuuryoku.CurrentCell = this.gv_HacchuuNyuuryoku[5, row + 1];
                     else
                         gv_HacchuuNyuuryoku.CurrentCell = this.gv_HacchuuNyuuryoku[column, row];
                     this.gv_HacchuuNyuuryoku.CurrentCell.Selected = true;
@@ -1122,9 +1122,44 @@ namespace HacchuuNyuuryoku
         {
             if (gv_HacchuuNyuuryoku.CurrentCell != null)
             {
-                if (gv_HacchuuNyuuryoku.CurrentCell.ColumnIndex == 11)//ssa
+                if (gv_HacchuuNyuuryoku.CurrentCell.ColumnIndex == 10)
                 {
                     gridKeyDown();
+                }
+            }
+        }
+
+        private void gv_HacchuuNyuuryoku_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Gridview_F9ShowHide(e.ColumnIndex, "Show");
+        }
+        private void Gridview_F9ShowHide(int col, string type)
+        {
+            SCombo cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+            if (gv_HacchuuNyuuryoku.Columns[col].Name == "colSoukoCD")
+            {
+                Control btnF9 = ctrlArr[0];
+                if (ctrlArr.Length > 0 && type == "Show")
+                {
+                    if (cbo.SelectedValue.Equals("3") || cbo.SelectedValue.Equals("4"))
+                        btnF9.Visible = false;
+                    else if (btnF9 != null)
+                        btnF9.Visible = true;
+                }
+                else
+                {
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
+            else
+            {
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
                 }
             }
         }

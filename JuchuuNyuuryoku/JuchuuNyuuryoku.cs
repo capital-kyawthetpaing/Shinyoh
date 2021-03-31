@@ -1834,7 +1834,7 @@ namespace JuchuuNyuuryoku
 
                 if(!string.IsNullOrEmpty(souko.soukoCD))
                 {
-                    if (gv_JuchuuNyuuryoku.Rows.Count > 1)
+                    if (gv_JuchuuNyuuryoku.Rows.Count - 1 != row)
                         gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[6, row + 1];
                     else
                         gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
