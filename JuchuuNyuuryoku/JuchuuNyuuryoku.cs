@@ -201,7 +201,8 @@ namespace JuchuuNyuuryoku
             lblStaff_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrand_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;            
             lblYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
-
+            chk_SS.Checked = true; //HET
+            chk_FW.Checked = true; //HET
 
             lblTokuisakiShort_Name.Text = string.Empty;
             lblKouriten_Name.Text = string.Empty;

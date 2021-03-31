@@ -221,6 +221,9 @@ namespace MasterTouroku_Shouhin
             pImage.ImageLocation = null;
             pImage.Image = null;
             txtRetailPrice.Text = string.Empty;
+
+            chkSS.Checked = true; //HET
+            chkFW.Checked = true; //HET
         }
 
         public override void FunctionProcess(string tagID)

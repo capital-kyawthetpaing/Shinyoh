@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtIdouNO = new Shinyoh_Search.SearchBox();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
@@ -294,7 +294,7 @@
             this.gv_1.ISRowColumn = null;
             this.gv_1.Location = new System.Drawing.Point(49, 233);
             this.gv_1.Name = "gv_1";
-            this.gv_1.Size = new System.Drawing.Size(1630, 585);
+            this.gv_1.Size = new System.Drawing.Size(1630, 587);
             this.gv_1.TabIndex = 155;
             this.gv_1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
             // 
@@ -350,9 +350,9 @@
             // colIdouSuu
             // 
             this.colIdouSuu.DataPropertyName = "IdouSuu";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N0";
+            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle7;
             this.colIdouSuu.HeaderText = "移動数";
             this.colIdouSuu.MaxInputLength = 5;
             this.colIdouSuu.Name = "colIdouSuu";
@@ -362,9 +362,9 @@
             // colGenkaTanka
             // 
             this.colGenkaTanka.DataPropertyName = "GenkaTanka";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            this.colGenkaTanka.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N0";
+            this.colGenkaTanka.DefaultCellStyle = dataGridViewCellStyle8;
             this.colGenkaTanka.HeaderText = "原価単価";
             this.colGenkaTanka.MaxInputLength = 8;
             this.colGenkaTanka.Name = "colGenkaTanka";
@@ -373,9 +373,9 @@
             // colGenkaKingaku
             // 
             this.colGenkaKingaku.DataPropertyName = "GenkaKingaku";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            this.colGenkaKingaku.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N0";
+            this.colGenkaKingaku.DefaultCellStyle = dataGridViewCellStyle9;
             this.colGenkaKingaku.HeaderText = "原価金額";
             this.colGenkaKingaku.MaxInputLength = 9;
             this.colGenkaKingaku.Name = "colGenkaKingaku";

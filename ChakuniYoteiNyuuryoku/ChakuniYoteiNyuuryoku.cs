@@ -52,7 +52,7 @@ namespace ChakuniYoteiNyuuryoku
             cboMode.Bind(false, multi_Entity);
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
-            SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
+            SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
@@ -405,6 +405,8 @@ namespace ChakuniYoteiNyuuryoku
             lblStaff.Text = string.Empty;
             lblWareHouse.Text = string.Empty;
             txtChakuniYoteiNO.Focus();
+            chkSS.Checked = true; //HET
+            chkFW.Checked = true; //HET
         }
         private void New_Mode()
         {
@@ -428,6 +430,8 @@ namespace ChakuniYoteiNyuuryoku
             txtSouko.Text = soukoEntity.SoukoCD;
             lblWareHouse.Text = soukoEntity.SoukoName;
             lblSiiresaki.Text = string.Empty;
+            chkSS.Checked = true; //HET
+            chkFW.Checked = true; //HET
         }
         private bool Temp_Null()
         {
