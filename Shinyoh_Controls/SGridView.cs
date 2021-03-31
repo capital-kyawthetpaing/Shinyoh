@@ -81,22 +81,24 @@ namespace Shinyoh_Controls
         {
             NumberCol = colArr;
         }
-        protected override void OnEnter(EventArgs e)
-        {
-            if (this.TopLevelControl != null )
-            {
-                try
-                {
-                    (((Shinyoh.BaseForm)(((System.Windows.Forms.Form.ControlCollection)this.TopLevelControl.Controls).Owner as Form)).Controls.Find("BtnF9", true)[0] as Control).Visible = false;
-                }
-                catch (Exception ex) //can get catch for in some Codition
-                {
-                    var msg = ex.Message;
-                }
-                this.TopLevelControl.Refresh();
-            }
-            base.OnEnter(e);
-        }
+
+        //kpt commented
+        //protected override void OnEnter(EventArgs e)
+        //{
+        //    if (this.TopLevelControl != null )
+        //    {
+        //        try
+        //        {
+        //            (((Shinyoh.BaseForm)(((System.Windows.Forms.Form.ControlCollection)this.TopLevelControl.Controls).Owner as Form)).Controls.Find("BtnF9", true)[0] as Control).Visible = false;
+        //        }
+        //        catch (Exception ex) //can get catch for in some Codition
+        //        {
+        //            var msg = ex.Message;
+        //        }
+        //        this.TopLevelControl.Refresh();
+        //    }
+        //    base.OnEnter(e);
+        //}
         protected override void OnCellEnter(DataGridViewCellEventArgs e)
         {
             if (HiraganaCol.Equals("*"))
@@ -236,6 +238,15 @@ namespace Shinyoh_Controls
         }
         public void MoveNextCell()
         {
+            //ktp added -- to prevent infinite loop when all columns are readonly
+            Control[] ctlmode = this.TopLevelControl.Controls.Find("cboMode", true);
+            if (ctlmode.Length > 0)
+            {
+                SCombo cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0] as SCombo;
+                if (cbo.SelectedValue.Equals("3") || cbo.SelectedValue.Equals("4"))//all col readonly
+                    return;
+            }
+
             int icolumn = this.CurrentCell.ColumnIndex;
             int irow = this.CurrentCell.RowIndex;
             bool found = false;

@@ -353,5 +353,15 @@ namespace Shinyoh_Search
                 //}
             }            
         }
+
+        protected override void OnLeave(EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Text))
+            {
+                if(lblName != null)
+                    lblName.Text = string.Empty;
+            }
+            base.OnLeave(e);
+        }
     }
 }
