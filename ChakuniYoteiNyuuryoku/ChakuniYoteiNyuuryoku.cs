@@ -207,33 +207,39 @@ namespace ChakuniYoteiNyuuryoku
         private void F10_Gridview_Bind()
         {
             gvChakuniYoteiNyuuryoku.ActionType = "F10";
-            ChakuniYoteiNyuuryokuEntity chkEntity = new ChakuniYoteiNyuuryokuEntity();
-            chkEntity.ChakuniYoteiNO = txtChakuniYoteiNO.Text;
-            chkEntity.ChakuniYoteiDate = txtDate.Text;
-            chkEntity.BrandCD = txtBrandCD.Text;
-            chkEntity.HinbanCD = txtShouhinCD.Text;
-            chkEntity.ShouhinName = txtShouhinName.Text;
-            chkEntity.JANCD = txtJANCD.Text;
-            chkEntity.YearTerm = txtYearTerm.Text;
-            chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
-            chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
-            chkEntity.ColorNO = txtColorNo.Text;
-            chkEntity.SizeNO = txtSizeNo.Text;
-            chkEntity.SoukoCD = txtSouko.Text;
-            chkEntity.ChakuniYoteiDateFrom = txtDateFrom.Text;
-            chkEntity.ChakuniYoteiDateTo = txtDateTo.Text;
-            chkEntity.OperatorCD = OperatorCD;
-            chkEntity.ProgramID = ProgramID;
-            chkEntity.PC = PCID;
-            if (string.IsNullOrWhiteSpace(txtBrandCD.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) &&
-               string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtDateFrom.Text) && string.IsNullOrWhiteSpace(txtDateTo.Text) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
+            if (ErrorCheck(PanelDetail))
             {
-                bbl.ShowMessage("E111");
-                txtBrandCD.Focus();
+                ChakuniYoteiNyuuryokuEntity chkEntity = new ChakuniYoteiNyuuryokuEntity();
+                chkEntity.ChakuniYoteiNO = txtChakuniYoteiNO.Text;
+                chkEntity.ChakuniYoteiDate = txtDate.Text;
+                chkEntity.BrandCD = txtBrandCD.Text;
+                chkEntity.HinbanCD = txtShouhinCD.Text;
+                chkEntity.ShouhinName = txtShouhinName.Text;
+                chkEntity.JANCD = txtJANCD.Text;
+                chkEntity.YearTerm = txtYearTerm.Text;
+                chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
+                chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
+                chkEntity.ColorNO = txtColorNo.Text;
+                chkEntity.SizeNO = txtSizeNo.Text;
+                chkEntity.SoukoCD = txtSouko.Text;
+                chkEntity.ChakuniYoteiDateFrom = txtDateFrom.Text;
+                chkEntity.ChakuniYoteiDateTo = txtDateTo.Text;
+                chkEntity.OperatorCD = OperatorCD;
+                chkEntity.ProgramID = ProgramID;
+                chkEntity.PC = PCID;
+                if (string.IsNullOrWhiteSpace(txtBrandCD.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) &&
+                   string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtDateFrom.Text) && string.IsNullOrWhiteSpace(txtDateTo.Text) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
+                {
+                    bbl.ShowMessage("E111");
+                    txtBrandCD.Focus();
+                }
+                else
+                {
+                    dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
+                    gvChakuniYoteiNyuuryoku.DataSource = dtmain;
+                    gvChakuniYoteiNyuuryoku.Select();
+                }
             }
-            dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-            gvChakuniYoteiNyuuryoku.DataSource = dtmain;
-            gvChakuniYoteiNyuuryoku.Select();
             gvChakuniYoteiNyuuryoku.ActionType = string.Empty;
         }
         private void DBProcess()
@@ -664,8 +670,7 @@ namespace ChakuniYoteiNyuuryoku
             dt_Details = cbl.ChakuniYoteiNyuuryoku_Update_Select(chkEntity, 2);
             if (dt_Details.Rows.Count > 0)
             {
-                dtTemp = dt_Details.Copy(); //NMW
-                dtGS = dt_Details.Copy();//NMW
+                dtTemp = dt_Details.Copy();
                 gvChakuniYoteiNyuuryoku.DataSource = dt_Details;
             }
             else
@@ -781,31 +786,25 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void Temp_Save(int row)
         {
-            //NMW - 2021-03-14
-            //if ((!gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString().Equals("0")))
-            //{
-            //dtGridview();
             if (dtGS.Rows.Count > 0)
             {
-                string HacchuuNO = dtGS.Rows[row]["Hacchuu"].ToString();
-                string data = dtGS.Rows[row]["ChakuniYoteiSuu"].ToString();
-                if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colHacchuu"].Value.ToString() == HacchuuNO || gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString() == "0")
-                    dtGS.Rows[row].Delete();
-                dtGS.AcceptChanges();
-                //for (int i = dtGS.Rows.Count - 1; i >= 0; i--)
-                //{
-                //    string data = dtGS.Rows[i]["ChakuniYoteiSuu"].ToString();
-                //    string HacchuuNO = dtGS.Rows[i]["Hacchuu"].ToString();
-                //    //if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].Value.ToString() == data && gvChakuniYoteiNyuuryoku.Rows[row].Cells["colHacchuu"].Value.ToString() == HacchuuNO)
-                //    if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colHacchuu"].Value.ToString() == HacchuuNO)
-                //        dtGS.Rows[i].Delete();
-                //}
+                for (int i = dtGS.Rows.Count - 1; i >= 0; i--)
+                {
+                    string data = dtGS.Rows[i]["ChakuniYoteiSuu"].ToString();
+                    string HacchuuNO = dtGS.Rows[i]["Hacchuu"].ToString();
+                    
+                    if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colHacchuu"].Value.ToString() == HacchuuNO)
+                    {
+                        dtGS.Rows[i].Delete();
+                        dtGS.AcceptChanges();
+                        break;
+                    } 
+                }
             }
 
             DataRow dr1 = dtGS.NewRow();
             for (int i = 0; i < dtGS.Columns.Count; i++)
             {
-                //dr1[i] = gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue;
                 dr1[i] = string.IsNullOrEmpty(gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue.ToString();
             }
             if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString() != "0")
