@@ -83,6 +83,9 @@ namespace HacchuuSho
             txtBeneficiary2.Text= hsbl.HCS_M_MultiPorpose_Type(3);
             txtOriginCountry.Text= hsbl.HCS_M_MultiPorpose_Type(4);
             txtDestination.Text= hsbl.HCS_M_MultiPorpose_Type(5);
+
+            chkSS.Checked = true; //HET
+            chkFW.Checked = true; //HET
         }
         public override void FunctionProcess(string tagID)
         {
@@ -91,6 +94,8 @@ namespace HacchuuSho
                 Rdo1.Checked = true;
                 cf.Clear(PanelDetail);
                 txtJuchuuNO1.Focus();
+                chkSS.Checked = true; //HET
+                chkFW.Checked = true; //HET
             }
             if (tagID == "10")
             {
