@@ -37,7 +37,8 @@ namespace Shinyoh
             New,
             Update,
             Delete,
-            Inquiry
+            Inquiry,
+            //Idle // Ptk (idle , base int) added for hacchuushou
         }
         #endregion
 

@@ -1,7 +1,9 @@
 ﻿using BL;
 using CKM_CommonFunction;
+using DocumentFormat.OpenXml.Drawing;
 using DocumentFormat.OpenXml.Vml;
 using Entity;
+using Microsoft.Office.Interop.Excel;
 using Shinyoh;
 using System;
 using System.CodeDom;
@@ -12,6 +14,11 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using DataTable = System.Data.DataTable;
+using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Spreadsheet;
+using System.Windows.Media;
+using DocumentFormat.OpenXml.Packaging;
 
 namespace HacchuuSho
 {
@@ -24,7 +31,7 @@ namespace HacchuuSho
         HacchuuShoBL hsbl;
         string tmpPath = @"C:\DBConfig\Hacchuushou\imge.jpg";
         string tmpDir = @"C:\DBConfig\Hacchuushou\";
-        string tmpSourceLogo = "C:\\DBConfig\\Hacchuushou\\SHINYOH_Logo.jpg";
+        string tmpSourceLogo = @"C:\DBConfig\Hacchuushou\SHINYOH_Logo.jpg";
         string tmpSave = @"C:\DBConfig\HacchuuShou\OutPut\";
         public HacchuuSho()
         {
@@ -55,6 +62,7 @@ namespace HacchuuSho
             SetButton(ButtonType.BType.Empty, F11, "", false);
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             UI_ErrorCheck();
+            
 
         }
 
@@ -74,9 +82,9 @@ namespace HacchuuSho
             txtInputDate1.E103Check(true);
             txtInputDate2.E103Check(true);
             txtInputDate2.E106Check(true, txtInputDate1, txtInputDate2);
-            txtIssueDate.Text = System.DateTime.Now.ToString("yyyy/MM/dd");
+            
             txtIssueDate.E103Check(true);
-           // txtKanriNO.E102Check(true);
+            txtKanriNO.E102Check(true);
 
             txtPayment.Text = hsbl.HCS_M_MultiPorpose_Type(1);
             txtBeneficiary1.Text= hsbl.HCS_M_MultiPorpose_Type(2);
@@ -84,8 +92,11 @@ namespace HacchuuSho
             txtOriginCountry.Text= hsbl.HCS_M_MultiPorpose_Type(4);
             txtDestination.Text= hsbl.HCS_M_MultiPorpose_Type(5);
 
-            chkSS.Checked = true; //HET
-            chkFW.Checked = true; //HET
+            
+            txtIssueDate.Text =DateTime.Now.ToString("yyyy/MM/dd");
+            cboMode.SelectedIndex = 2;
+            Rdo1.Focus();
+            Rdo1.Select();
         }
         public override void FunctionProcess(string tagID)
         {
@@ -94,11 +105,15 @@ namespace HacchuuSho
                 Rdo1.Checked = true;
                 cf.Clear(PanelDetail);
                 txtJuchuuNO1.Focus();
-                chkSS.Checked = true; //HET
-                chkFW.Checked = true; //HET
             }
             if (tagID == "10")
             {
+                if (!ErrorCheckMain())
+                {
+                    bbl.ShowMessage("E102");
+                    txtKanriNO.Focus();
+                    return;
+                }
                 Excel_Export();
                 //if (ErrorCheck(PanelDetail))
                 //{
@@ -106,7 +121,14 @@ namespace HacchuuSho
 
             }
         }
-
+        private bool  ErrorCheckMain()
+        {
+            if (string.IsNullOrEmpty(txtKanriNO.Text))
+            {
+                return false;
+            }
+            return true;
+        }
         private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode==Keys.Enter)
@@ -117,14 +139,31 @@ namespace HacchuuSho
                     lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
             }
         }
+        private string GetDate(string dt)
+        {
+            var res = "";
+            try
+            {
+                var date = Convert.ToDateTime(dt);
+                res = date.Day.ToString() + "," + date.ToString("MMMM") + "," + date.Year.ToString();
+            }
+            catch
+            {
 
+            }
+            return res;
+        }
         private void Excel_Export()
         {
-            #region Heading Part
+            #region Coolumn Style
             hsbl = new HacchuuShoBL();
             DataTable dt = new DataTable();
             dt = hsbl.Get_ExportData(Get_UIData());
-
+            if (dt.Rows.Count == 0)
+            {
+                bbl.ShowMessage("E357");
+                return;
+            }
             Excel.Application xlApp;
             Excel.Workbook xlWorkBook;
             Excel.Worksheet xlWorkSheet;
@@ -135,55 +174,28 @@ namespace HacchuuSho
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
             xlWorkSheet = xlWorkBook.ActiveSheet;
             xlWorkSheet.Name = "発注書(PURCHASE ORDER)";
-
-            xlApp.ActiveWindow.View = Excel.XlWindowView.xlPageBreakPreview;
-
-            //xlWorkSheet.PageSetup.PaperSize = Excel.XlPaperSize.xlPaperA4;
             try
             {
-                xlWorkSheet.PageSetup.PaperSize = Excel.XlPaperSize.xlPaperLegal;
+                xlWorkSheet.PageSetup.PrintArea = "A1:V1000";
+                xlWorkSheet.PageSetup.Orientation = Microsoft.Office.Interop.Excel.XlPageOrientation.xlLandscape;//Page horizontal
+                xlWorkSheet.PageSetup.Zoom = 75; //page setting when printing, a few percent of the scale
+                xlWorkSheet.PageSetup.Zoom = false; //Page setting when printing, must be set to false, page height, page width is valid
+                try
+                {
+                    xlWorkSheet.PageSetup.PaperSize = Microsoft.Office.Interop.Excel.XlPaperSize.xlPaperA4;//paper size
+                }
+                catch { }
+                xlWorkSheet.PageSetup.FitToPagesWide = 1; //Set the page width of the page to be 1 page wide
+                xlWorkSheet.PageSetup.FitToPagesTall = false; //Set the page height of the page zoom automatically
             }
-            catch(Exception ex){
+            catch (Exception ex)
+            {
                 var msg = ex.Message;
             }
-            xlWorkSheet.PageSetup.PrintArea = "A1:U100";
-            xlWorkSheet.PageSetup.Zoom = 40;
+            
+            xlApp.ActiveWindow.View = Excel.XlWindowView.xlNormalView;
+            xlApp.ActiveWindow.DisplayGridlines = false;
 
-            xlWorkSheet.Cells[3, 6] = "RM605 6/F NANKAI SAKAIEKI BLDG.,";
-            xlWorkSheet.Cells[4, 6] = "NO.3-22 EBISUJIMACHO, SAKAI-KU,";
-            xlWorkSheet.Cells[5, 6] = "SAKAI-SHI, OSAKA, 590-0985, JAPAN";
-            xlWorkSheet.Cells[6, 19] = "TEL :";
-            xlWorkSheet.Cells[6, 20] = "81-72-229-2251";
-            xlWorkSheet.Cells[7, 19] = "FAX : :";
-            xlWorkSheet.Cells[7, 20] = "81-72-229-7830";
-            xlWorkSheet.Cells[10, 6] = "PURCHASE ORDER ";
-            //xlWorkSheet.Cells[12, 2] = "TO:   " + txtBeneficiary1.Text;
-            //xlWorkSheet.Cells[12, 20] = "PO NO. FK-248:";
-            //xlWorkSheet.Cells[13, 20] = "DATE. 8, April, 2020";
-            //xlWorkSheet.Cells[14, 2] = "We thank for your cooperation related to our business.";
-            //xlWorkSheet.Cells[15, 2] = "Here, we send our Purchase Order sheet for below items on the terms and conditions as under.";
-
-            xlApp.get_Range("A1", "U100").Cells.Font.Name = "Times New Roman";
-            xlApp.get_Range("I17", "S17").Cells.NumberFormat = "0.0";
-
-            xlApp.get_Range("A1:U1", "A3:U3").Merge(Type.Missing);
-            xlApp.get_Range("A4", "U4").Merge(Type.Missing);
-            xlApp.get_Range("A5", "U5").Merge(Type.Missing);
-            xlApp.get_Range("T6", "U6").Merge(Type.Missing);
-            xlApp.get_Range("T7", "U7").Merge(Type.Missing);
-            xlApp.get_Range("A10", "U10").Merge(Type.Missing);
-            //xlApp.get_Range("B11:L11", "B13:L13").Merge(Type.Missing);
-            //xlApp.get_Range("T12", "U12").Merge(Type.Missing);
-            //xlApp.get_Range("T13", "U13").Merge(Type.Missing);
-            //xlApp.get_Range("B14", "L14").Merge(Type.Missing);
-            //xlApp.get_Range("B15", "L15").Merge(Type.Missing);
-            //xlWorkSheet.get_Range("B14:L14", "B15:L15").Merge(Type.Missing);
-            var Cell = (Excel.Range)xlWorkSheet.Cells[2, 1];
-            Cell.RowHeight = 35;
-            var Cell1 = (Excel.Range)xlWorkSheet.Cells[10, 1];
-            Cell1.Font.Bold = true;
-            Cell1.Font.Size = 20;
-            Cell1.RowHeight = 50;
             xlWorkSheet.Columns[2].ColumnWidth = 10;
             xlWorkSheet.Columns[3].ColumnWidth = 20;
             xlWorkSheet.Columns[4].ColumnWidth = 15;
@@ -205,49 +217,31 @@ namespace HacchuuSho
             xlWorkSheet.Columns[20].ColumnWidth = 5;
             xlWorkSheet.Columns[21].ColumnWidth = 15;
 
-            xlWorkSheet.get_Range("A1:U1", "A5:U5").Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            xlWorkSheet.get_Range("A10", "U10").Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            xlWorkSheet.get_Range("A10", "U10").Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
-            xlWorkSheet.get_Range("A11", "H11").Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
-            xlWorkSheet.get_Range("A1:U1", "A3:U3").Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignBottom;
-            SetImage(1,6,"",xlWorkSheet,true);
-            //xlWorkSheet.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, 380, 5, 250, 30);
-
             #endregion
 
+            
             var dtsupplier = dt.Select("SiiresakiCD is not null").CopyToDataTable().AsEnumerable().Select(r => r.Field<string>("SiiresakiCD")).Distinct().ToList();
             
-            int EndRow = 0; int col = 0;
-            int startrow = 12;int gvrow = 17;
-            if (Name != "")
+             int col = 0; int startrow = 12;int gvrow = 17; 
             for (int j = 0; j < dtsupplier.Count(); j++)
             {
-               
+                //if (j > 0) break;
+                SetHeader(xlWorkSheet, dt, xlApp,col);
+                
                 string SiiresakiCD = dtsupplier[j].ToString();
-                //if (SiiresakiCD == "3333")
-                //{
+                
                     var dtgv = dt.AsEnumerable().Where(s => s.Field<string>("SiiresakiCD") == SiiresakiCD).CopyToDataTable();
                     var dgv = dtgv.AsEnumerable().GroupBy(x => x.Field<string>("ColorNo") ,x=> x.Field<string>("ModelNo")).Count();  // get Model and Color
-                    var dvresult= dtgv.AsEnumerable()
-    .GroupBy(r => new { Col1 = r["ColorNo"], Col2 = r["ModelNo"] })
-    .Select(g =>
-    {
-        var row = dt.NewRow();
-
-        row["Pairs"] = g.Sum(r => r.Field<int>("Pairs"));
-        row["Amount"] = g.Sum(r => r.Field<int>("Amount"));
-        row["ColorNo"] = g.Key.Col1;
-        row["ModelNo"] = g.Key.Col2;
-
-        return row;
-
-    })
-    .CopyToDataTable();
-                    //   var dgtv_Model_Color= dtgv.AsEnumerable().Select(c => c.Field<string>("ColorNo"))
+                    var dvresult= dtgv.AsEnumerable() .GroupBy(r => new { Col1 = r["ColorNo"], Col2 = r["ModelNo"] }).Select(g =>{ var row = dt.NewRow();
+                                    row["Pairs"] = g.Sum(r => r.Field<int>("Pairs"));
+                                    row["Amount"] = g.Sum(r => r.Field<int>("Amount"));
+                                    row["ColorNo"] = g.Key.Col1;
+                                    row["ModelNo"] = g.Key.Col2;
+                                    return row; }).CopyToDataTable();
                     #region Style top part
-                    xlWorkSheet.Cells[startrow, 2] = "TO:   " + dtgv.Rows[0]["SiiresakiName"].ToString();
-                    xlWorkSheet.Cells[startrow, 20] = "PO NO. FK-248:";
-                    xlWorkSheet.Cells[startrow + 1, 20] = "DATE. 8, April, 2020";
+                    xlWorkSheet.Cells[startrow, 2] = "TO : " + dtgv.Rows[0]["SiiresakiName"].ToString();
+                    xlWorkSheet.Cells[startrow, 20] = "PO NO : "+ txtKanriNO.Text;
+                    xlWorkSheet.Cells[startrow + 1, 20] = "DATE : "+ GetDate(txtIssueDate.Text);
                     xlWorkSheet.Cells[startrow + 2, 2] = "We thank for your cooperation related to our business.";
                     xlWorkSheet.Cells[startrow + 3, 2] = "Here, we send our Purchase Order sheet for below items on the terms and conditions as under.";
                     object st1 = "B" + (startrow) + ":L" + (startrow);
@@ -259,20 +253,8 @@ namespace HacchuuSho
                     xlApp.get_Range("B" + (startrow + 2), "L" + (startrow + 2)).Merge(Type.Missing);
                     xlApp.get_Range("B" + (startrow + 3), "L" + (startrow + 3)).Merge(Type.Missing);
                     xlWorkSheet.get_Range("A" + startrow, "L" + startrow).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
-                    #endregion
-                    if (j == 0)
-                    {
-                        //  col = (gvrow + 1) + dtgv.Rows.Count;
-                        col = (gvrow + 1) + dgv;
-                        EndRow = col;
-                    }
-                    else
-                    {
-                        //  col = EndRow + dtgv.Rows.Count;
-                        col = (gvrow + 1) + dgv;
-                        EndRow = col;
-                    }
-
+                #endregion
+                col = (gvrow + 1) + dgv;
                     #region Child Style
                     string idx = "A" + gvrow + ":U" + gvrow;
                     string idx1 = "B" + gvrow + ":U" + gvrow;
@@ -344,6 +326,7 @@ namespace HacchuuSho
                             modelno = dtgv.Rows[h]["ModelNo"].ToString();
                             colorno = dtgv.Rows[h]["ColorNo"].ToString();
                             otherModel++;
+                            xlWorkSheet.get_Range("B" + (otherModel + 1), "U" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
                         }
                         else if (modelno == dtgv.Rows[h]["ModelNo"].ToString() && colorno != dtgv.Rows[h]["ColorNo"].ToString())
                         {
@@ -356,7 +339,7 @@ namespace HacchuuSho
                             try
                             {
                                 SettingImg(dtgv.Rows[h]["IMAGE"] as byte[]);
-                                SetImage(gvrow + (otherModel + 1), 8, @"‪C:\SMS\Hacchuushou\imge.jpg", xlWorkSheet);
+                                SetImage(gvrow + (otherModel + 1), 8, tmpPath, xlWorkSheet);
                             }
                             catch (Exception ex) { var msg = ex.Message; }
                             xlWorkSheet.Cells[gvrow + (otherModel + 1), 20] = dtgv.Rows[h]["Pairs"].ToString();
@@ -367,22 +350,22 @@ namespace HacchuuSho
                         }
                         xlWorkSheet.Cells[gvrow + (otherModel), GetSizeTitile(dtgv.Rows[h]["SizeNo"].ToString())] = dtgv.Rows[h]["HacchuuSuu"].ToString();
                     }
+                    xlWorkSheet.get_Range("B" + (gvrow), "U" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
                     xlWorkSheet.Cells[col, 20].Formula =  "=Sum(" + xlWorkSheet.Cells[gvrow+1, 20].Address + ":" + xlWorkSheet.Cells[col-1, 20].Address + ")";
                     xlWorkSheet.Cells[col, 21].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 21].Address + ":" + xlWorkSheet.Cells[col - 1, 21].Address + ")";
-                    #endregion
-                    //xlWorkSheet.Rows[col+2].PageBreak = Excel.XlPageBreak.xlPageBreakManual;
-
-                    startrow = col + 2;
-                    EndRow = col + 6;
-                    gvrow = col + 6;
-                //}
+                #endregion
+                SetFooter(xlWorkBook,xlWorkSheet, col);
+                col += 17;
+                startrow = col +12;
+                gvrow = startrow + 5;
             }
 
-            xlWorkSheet.Cells[col+4,2]= "1.Terms of Payment :";
-            xlWorkSheet.Cells[col + 4, 3] = "1.Terms of Payment :";
+            // Footers
+            
             xlApp.get_Range("C" + col + 4, "L" + col + 4).Merge(Type.Missing);
             var dtnow = DateTime.Now.ToString("yyyyMMdd HHmmss");
             var fname = dtnow.Replace(" ", "_") + "_" +  OperatorCD + "_" + "PurchaseOrder.xlsx";
+
             if (!Directory.Exists(tmpSave))
             {
                 Directory.CreateDirectory(tmpSave); ;
@@ -390,9 +373,60 @@ namespace HacchuuSho
             xlWorkBook.SaveAs(tmpSave + fname, misValue, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
             xlWorkBook.Close(true, misValue, misValue);
             xlApp.Quit();
-            //MessageBox.Show("File created !");
             bbl.ShowMessage("I201", string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
             Process.Start(System.IO.Path.GetDirectoryName(tmpSave + fname));
+        }
+        private void SetFooter(Excel.Workbook wb,Excel.Worksheet xlWorkSheet, int col)
+        {
+            xlWorkSheet.Cells[col + 4, 3] = "1.Terms of Payment :"; xlWorkSheet.Cells[col + 4, 4] = txtPayment.Text;
+
+            xlWorkSheet.Cells[col + 6, 3] = "2. BENEFICIARY :"; xlWorkSheet.Cells[col + 6, 4] = txtBeneficiary1.Text; xlWorkSheet.Cells[col + 7, 4] = txtBeneficiary2.Text;
+
+            xlWorkSheet.Cells[col + 9, 3] = "3. Country of Origin : "; xlWorkSheet.Cells[col + 9, 4] = txtOriginCountry.Text;
+
+            xlWorkSheet.Cells[col + 11, 3] = "4. Shipping from : "; xlWorkSheet.Cells[col + 11, 4] = txtShipping.Text;
+
+            xlWorkSheet.Cells[col + 13, 3] = "5. Destination :"; xlWorkSheet.Cells[col + 13, 4] = txtDestination.Text;
+
+            xlWorkSheet.Cells[col + 15, 3] = "Looking forward to receiving your order confirmation.";
+
+            xlWorkSheet.Cells[col + 15, 19] = "Sincerely yours,"; 
+            wb.Worksheets[1].HPageBreaks.Add(xlWorkSheet.Range["W"+ (col + 16).ToString()]);
+        }
+        private void SetHeader(Excel.Worksheet xlWorkSheet,DataTable dt, Excel.Application xlApp ,int added)
+        {
+            xlWorkSheet.Cells[added+3, 6] = dt.Rows[0]["EiziAddress1"].ToString();
+            xlWorkSheet.Cells[added+4, 6] = dt.Rows[0]["EiziAddress2"].ToString();
+            xlWorkSheet.Cells[added+5, 6] = dt.Rows[0]["EiziAddress3"].ToString();
+
+            xlWorkSheet.Cells[added + 6, 19] = "TEL : ";
+            xlWorkSheet.Cells[added + 6, 20] = dt.Rows[0]["EiziTelephoneNO"].ToString();
+
+            xlWorkSheet.Cells[added + 7, 19] = "FAX : ";
+            xlWorkSheet.Cells[added + 7, 20] = dt.Rows[0]["EiziFaxNO"].ToString();
+
+            xlWorkSheet.Cells[added + 10, 6] = "PURCHASE ORDER "; 
+            xlApp.Cells.Font.Name = "Times New Roman"; 
+
+            xlApp.get_Range("I" +(added + 17).ToString(), "S"  +(added + 17).ToString()).Cells.NumberFormat = "0.0"; 
+            xlApp.get_Range("A"+(added+1).ToString()+":U"+(added + 1).ToString() , "A" + (added + 3).ToString() + ":U" + (added + 3).ToString() ).Merge(Type.Missing);
+            xlApp.get_Range("A" + (added + 4).ToString() , "U" + (added + 4).ToString() ).Merge(Type.Missing);
+            xlApp.get_Range("A"+ (added + 5).ToString(), "U"+ (added + 5).ToString()).Merge(Type.Missing);
+            xlApp.get_Range("T"+ (added + 6).ToString(), "U"+ (added + 6).ToString()).Merge(Type.Missing);
+            xlApp.get_Range("T"+(added + 7).ToString(), "U"+ (added + 7).ToString()).Merge(Type.Missing);
+            xlApp.get_Range("A"+ (added + 10).ToString(), "U"+ (added + 10).ToString()).Merge(Type.Missing); 
+            var Cell = (Excel.Range)xlWorkSheet.Cells[added+2, 1];
+            Cell.RowHeight = 35;
+            var Cell1 = (Excel.Range)xlWorkSheet.Cells[added+10, 1];
+            Cell1.Font.Bold = true;
+            Cell1.Font.Size = 20;
+            Cell1.RowHeight = 50;
+            xlWorkSheet.get_Range("A"+ (added + 1).ToString() + ":U"+ (added + 1).ToString(), "A"+ (added + 5).ToString() + ":U"+ (added + 5).ToString()).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            xlWorkSheet.get_Range("A"+ (added + 10).ToString(), "U"+ (added + 10).ToString()).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            xlWorkSheet.get_Range("A"+ (added + 10).ToString(), "U"+ (added + 10).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+            xlWorkSheet.get_Range("A"+ (added + 11).ToString(), "H"+ (added + 11).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+            xlWorkSheet.get_Range("A"+ (added + 1).ToString() + ":U"+ (added + 1).ToString(), "A"+ (added + 3).ToString() + ":U"+ (added + 3).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignBottom;
+            SetImage(added+1, 6, "", xlWorkSheet, true);
         }
         private void SettingImg(byte[] bt)
         {
@@ -404,7 +438,13 @@ namespace HacchuuSho
             {
                 File.Delete(tmpPath);
             }
-            File.WriteAllBytes(tmpPath, bt);
+            try
+            {
+                File.WriteAllBytes(tmpPath, bt);
+            }
+            catch{ 
+            
+            }
         }
         private void SetImage(int r, int c, string path, Excel.Worksheet ws, bool IsLogo = false)
         {
@@ -427,13 +467,13 @@ namespace HacchuuSho
                 {
                     ImageHeight = 32;
                     ImageWidth = 250;
-                    ws.Shapes.AddPicture(filePath, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)25, Top + (float)(2.5), ImageWidth, ImageHeight);
+                    ws.Shapes.AddPicture(filePath, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)30, Top + (float)(2.5), ImageWidth, ImageHeight);
                 }
                 else
                     ws.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)15, Top + (float)(2.5), ImageWidth, ImageHeight);
             }
             catch
-            { 
+            {
             }
         }
         private int GetSizeTitile(String title )

@@ -84,6 +84,8 @@
     <Content Include="StoreProcedure\ArrivalNO_Search.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_CUD.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Delete.sql" />
+    <Content Include="StoreProcedure\ChakuniNyuuryoku_D_Exclusive_Insert_Value.sql" />
+    <Content Include="StoreProcedure\ChakuniNyuuryoku_ErrorCheck.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_ErrorCheck_Select.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Insert.sql" />
     <Content Include="StoreProcedure\ChakuniNyuuryoku_Update.sql" />
@@ -128,6 +130,7 @@
     <Content Include="StoreProcedure\F_Siiresaki.sql" />
     <Content Include="StoreProcedure\F_Staff.sql" />
     <Content Include="StoreProcedure\F_Tokuisaki.sql" />
+    <Content Include="StoreProcedure\Get_HacchuuSho_ExportData.sql" />
     <Content Include="StoreProcedure\Get_Max_HacchuuNO.sql" />
     <Content Include="StoreProcedure\Get_Shouhin_ExportData.sql" />
     <Content Include="StoreProcedure\Get_Siiresaki_ExportData.sql" />
