@@ -60,7 +60,7 @@ namespace ChakuniNyuuryoku
             sbBrand.lblName = lblBrandName;
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", true);
-            SetButton(ButtonType.BType.Update, F3, "変更(F3)", true);
+            SetButton(ButtonType.BType.Update, F3, "修正(F3)", true);
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
@@ -78,7 +78,7 @@ namespace ChakuniNyuuryoku
             txtStaffCD.ChangeDate = txtArrivalDate;
             txtShouhinCD.ChangeDate = txtArrivalDate;
             txtScheduled.ChangeDate= txtArrivalDate;
-
+        
             base_Entity = _GetBaseData();
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -97,6 +97,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.SetGridDesign();
             gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
             gvChakuniNyuuryoku.SetHiraganaColumn("ChakuniMeisaiTekiyou");
+            gvChakuniNyuuryoku.SetNumberColumn("ChakuniSuu");         
             ChangeMode(Mode.New);
         }
         private void ChangeMode(Mode mode)
@@ -150,6 +151,8 @@ namespace ChakuniNyuuryoku
             lblBrandName.Text = string.Empty;
             lblWareHouse.Text = string.Empty;
             txtArrivalNO.Focus();
+            chkSS.Checked = true; //HET
+            chkFW.Checked = true; //HET
         }
         private void New_Mode()
         {
@@ -173,6 +176,8 @@ namespace ChakuniNyuuryoku
             txtSouko.Text = soukoEntity.SoukoCD;
             lblWareHouse.Text = soukoEntity.SoukoName;
             lblSiiresaki.Text = string.Empty;
+            chkSS.Checked = true; //HET
+            chkFW.Checked = true; //HET
         }
         public void ErrorCheck()
         {
@@ -217,7 +222,7 @@ namespace ChakuniNyuuryoku
                 else
                 {
                     Mode_Setting();
-                }
+                }              
                 dtTemp.Clear();
             }
             if (tagID == "8")
@@ -596,6 +601,7 @@ namespace ChakuniNyuuryoku
             {
                 bbl.ShowMessage("E111");
                 txtScheduled.Focus();
+                return;//ktp added (show error message and stop process)
             }
             dtmain = cbl.ChakuniNyuuryoku_Display(chkEntity);
             ChakuniYoteiNO_Delete();

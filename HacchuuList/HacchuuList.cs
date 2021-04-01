@@ -78,6 +78,9 @@ namespace HacchuuList
             txtUpdate_HacchuuDate1.Text = baseEntity.LoginDate;
             txtUpdate_HacchuuDate2.Text = baseEntity.LoginDate;
             txtTempDate.Text = baseEntity.LoginDate;
+
+            chk_SS.Checked = true; //HET
+            chk_FW.Checked = true; //HET
         }
         private void ErrorCheck()
         {
@@ -110,6 +113,8 @@ namespace HacchuuList
             Date_Setting();
             lblStaff_Name.Text = "";
             lblBrand_Name.Text = "";
+            chk_SS.Checked = true; //HET
+            chk_FW.Checked = true; //HET
         }
         public override void FunctionProcess(string tagID)
         {

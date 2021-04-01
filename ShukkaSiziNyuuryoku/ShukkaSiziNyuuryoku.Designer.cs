@@ -783,7 +783,7 @@ namespace ShukkaSiziNyuuryoku
             this.dgvShukkasizi.ISRowColumn = null;
             this.dgvShukkasizi.Location = new System.Drawing.Point(48, 207);
             this.dgvShukkasizi.Name = "dgvShukkasizi";
-            this.dgvShukkasizi.Size = new System.Drawing.Size(1600, 592);
+            this.dgvShukkasizi.Size = new System.Drawing.Size(1600, 593);
             this.dgvShukkasizi.TabIndex = 23;
             this.dgvShukkasizi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNo_KeyDown);
             // 

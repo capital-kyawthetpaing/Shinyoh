@@ -146,7 +146,8 @@ namespace IdouNyuuryoku
             lbl_Shukko.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrand_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-
+            chk_SS.Checked = true; //HET
+            chk_FW.Checked = true; //HET
 
             lbl_IdouKubun.Text = string.Empty;
             lblStaff_Name.Text = string.Empty;
@@ -913,6 +914,18 @@ namespace IdouNyuuryoku
             string return_BL = objMethod.IdouNyuuryoku_CUD(mode, str_header, str_detail);
             if (return_BL == "true")
                 base_bl.ShowMessage("I102");
+        }
+
+        //ktp hide btnF9 
+        private void gv_1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+            
+            if (ctrlArr.Length > 0)
+            {
+                Control btnF9 = ctrlArr[0];
+                btnF9.Visible = false;
+            }
         }
     }
 }

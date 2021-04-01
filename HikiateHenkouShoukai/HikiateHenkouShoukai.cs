@@ -72,18 +72,21 @@ namespace HikiateHenkouShoukai
             txtSoukoCD.lblName = lblSoukoName;
             txtKouritenCD.lblName = lblKouritenName;
             txtKouritenCD.ChangeDate = txtChangeDate;
+
+            chkSeasonSS.Checked = true; //HET
+            chkSeasonFW.Checked = true; //HET
         }
 
         private void Modified_Panel()
         {
-            cf.Clear(PanelDetail);
+            cf.Clear(PanelDetail);           
             rdoAggregation.Focus();
             UI_ErrorCheck();
 
             lblBrandName.Text = string.Empty;
             lblTokuisakiName.Text = string.Empty;
             lblSoukoName.Text = string.Empty;
-            lblKouritenName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;          
         }
 
         public override void FunctionProcess(string tagID)
@@ -91,6 +94,8 @@ namespace HikiateHenkouShoukai
             if (tagID == "6")
             {
                 Modified_Panel();
+                chkSeasonSS.Checked = true; //HET
+                chkSeasonFW.Checked = true; //HET
             }
             if (tagID == "7")
             {
@@ -291,14 +296,14 @@ namespace HikiateHenkouShoukai
 
         private void chkSeasonSS_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkSeasonSS.Checked)
-                chkSeasonFW.Checked = false;
+            //if (chkSeasonSS.Checked)
+            //    chkSeasonFW.Checked = false;
         }
 
         private void chkSeasonFW_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkSeasonFW.Checked)
-                chkSeasonSS.Checked = false;
+            //if (chkSeasonFW.Checked)
+            //    chkSeasonSS.Checked = false;
         }
 
         private void txtPostalCode2_KeyDown(object sender, KeyEventArgs e)

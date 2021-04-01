@@ -422,7 +422,7 @@
             this.gvHaitaSakujo.ISRowColumn = null;
             this.gvHaitaSakujo.Location = new System.Drawing.Point(155, 20);
             this.gvHaitaSakujo.Name = "gvHaitaSakujo";
-            this.gvHaitaSakujo.Size = new System.Drawing.Size(1400, 810);
+            this.gvHaitaSakujo.Size = new System.Drawing.Size(1400, 812);
             this.gvHaitaSakujo.TabIndex = 8;
             // 
             // col_Target

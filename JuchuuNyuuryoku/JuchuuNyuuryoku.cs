@@ -201,7 +201,8 @@ namespace JuchuuNyuuryoku
             lblStaff_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrand_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;            
             lblYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
-
+            chk_SS.Checked = true; //HET
+            chk_FW.Checked = true; //HET
 
             lblTokuisakiShort_Name.Text = string.Empty;
             lblKouriten_Name.Text = string.Empty;
@@ -1834,7 +1835,10 @@ namespace JuchuuNyuuryoku
 
                 if(!string.IsNullOrEmpty(souko.soukoCD))
                 {
-                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[6, row + 1];
+                    if (gv_JuchuuNyuuryoku.Rows.Count - 1 != row)
+                        gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[6, row + 1];
+                    else
+                        gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
                     this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
 
                     gv_JuchuuNyuuryoku[column, row].Value = souko.soukoCD.ToString();

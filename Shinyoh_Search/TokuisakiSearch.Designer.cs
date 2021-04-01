@@ -340,7 +340,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gvTokuisaki.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.gvTokuisaki.Size = new System.Drawing.Size(660, 351);
+            this.gvTokuisaki.Size = new System.Drawing.Size(660, 350);
             this.gvTokuisaki.TabIndex = 5;
             this.gvTokuisaki.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvTokuisaki_CellMouseDoubleClick);
             this.gvTokuisaki.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvTokuisaki_KeyDown);

@@ -28,6 +28,9 @@ namespace Shinyoh_Search
 
         private void MultiPorposeSearch_Load(object sender, EventArgs e)
         {
+            txtID1.Text = Access_Type;
+            txtID2.Text = Access_Type;
+
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Normal, F9, "", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);

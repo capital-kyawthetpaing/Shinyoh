@@ -77,7 +77,9 @@ namespace ShukkaSiziDataShuturyoku {
             txtShukkaDate2.E104Check(true, txtShukkaDate1, txtShukkaDate2);
             txtInputDate2.E104Check(true, txtInputDate1, txtInputDate2);
             txtShukkaNo2.E106Check(true, txtShukkaNo1, txtShukkaNo2);
-            
+
+            chk_SS.Checked = true; 
+            chk_FW.Checked = true; 
         }
 
         private void txtBrand_KeyDown(object sender, KeyEventArgs e)
@@ -98,6 +100,9 @@ namespace ShukkaSiziDataShuturyoku {
             lblBrand_Name.Text = "";
             lblTokuisakiName.Text = "";
             lblKouritenName.Text = "";
+
+            chk_SS.Checked = true; 
+            chk_FW.Checked = true; 
         }
         public override void FunctionProcess(string tagID)
         {
