@@ -149,6 +149,7 @@ namespace HacchuuSho
             this.txtBrandCD.IsRequire = false;
             this.txtBrandCD.IsUseInitializedLayout = true;
             this.txtBrandCD.lblName = null;
+            this.txtBrandCD.lblName1 = null;
             this.txtBrandCD.Location = new System.Drawing.Point(125, 117);
             this.txtBrandCD.MaxLength = 10;
             this.txtBrandCD.MinimumSize = new System.Drawing.Size(80, 19);
@@ -158,9 +159,10 @@ namespace HacchuuSho
             this.txtBrandCD.NextControlName = "txtYearTerm";
             this.txtBrandCD.SearchType = Entity.SearchType.ScType.multiporpose;
             this.txtBrandCD.Size = new System.Drawing.Size(80, 19);
-            this.txtBrandCD.TabIndex = 117;
+            this.txtBrandCD.TabIndex = 8;
             this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrandCD.TxtBox = null;
+            this.txtBrandCD.TxtBox1 = null;
             this.txtBrandCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBrandCD_KeyDown);
             // 
             // txtHacchuuNO2
@@ -179,18 +181,20 @@ namespace HacchuuSho
             this.txtHacchuuNO2.IsRequire = false;
             this.txtHacchuuNO2.IsUseInitializedLayout = true;
             this.txtHacchuuNO2.lblName = null;
+            this.txtHacchuuNO2.lblName1 = null;
             this.txtHacchuuNO2.Location = new System.Drawing.Point(251, 65);
             this.txtHacchuuNO2.MaxLength = 12;
             this.txtHacchuuNO2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO2.MoveNext = true;
             this.txtHacchuuNO2.Name = "txtHacchuuNO2";
             this.txtHacchuuNO2.NextControl = null;
-            this.txtHacchuuNO2.NextControlName = "txtHacchuuNO2";
-            this.txtHacchuuNO2.SearchType = Entity.SearchType.ScType.None;
+            this.txtHacchuuNO2.NextControlName = "txtInputDate1";
+            this.txtHacchuuNO2.SearchType = Entity.SearchType.ScType.JuchuuNo;
             this.txtHacchuuNO2.Size = new System.Drawing.Size(100, 19);
-            this.txtHacchuuNO2.TabIndex = 116;
+            this.txtHacchuuNO2.TabIndex = 5;
             this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtHacchuuNO2.TxtBox = null;
+            this.txtHacchuuNO2.TxtBox1 = null;
             // 
             // txtHacchuuNO1
             // 
@@ -208,6 +212,7 @@ namespace HacchuuSho
             this.txtHacchuuNO1.IsRequire = false;
             this.txtHacchuuNO1.IsUseInitializedLayout = true;
             this.txtHacchuuNO1.lblName = null;
+            this.txtHacchuuNO1.lblName1 = null;
             this.txtHacchuuNO1.Location = new System.Drawing.Point(125, 67);
             this.txtHacchuuNO1.MaxLength = 12;
             this.txtHacchuuNO1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -215,11 +220,12 @@ namespace HacchuuSho
             this.txtHacchuuNO1.Name = "txtHacchuuNO1";
             this.txtHacchuuNO1.NextControl = null;
             this.txtHacchuuNO1.NextControlName = "txtHacchuuNO2";
-            this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.None;
+            this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.JuchuuNo;
             this.txtHacchuuNO1.Size = new System.Drawing.Size(100, 19);
-            this.txtHacchuuNO1.TabIndex = 115;
+            this.txtHacchuuNO1.TabIndex = 4;
             this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtHacchuuNO1.TxtBox = null;
+            this.txtHacchuuNO1.TxtBox1 = null;
             // 
             // txtJuchuuNO2
             // 
@@ -237,6 +243,7 @@ namespace HacchuuSho
             this.txtJuchuuNO2.IsRequire = false;
             this.txtJuchuuNO2.IsUseInitializedLayout = true;
             this.txtJuchuuNO2.lblName = null;
+            this.txtJuchuuNO2.lblName1 = null;
             this.txtJuchuuNO2.Location = new System.Drawing.Point(251, 40);
             this.txtJuchuuNO2.MaxLength = 12;
             this.txtJuchuuNO2.MinimumSize = new System.Drawing.Size(100, 19);
@@ -246,9 +253,10 @@ namespace HacchuuSho
             this.txtJuchuuNO2.NextControlName = "txtHacchuuNO1";
             this.txtJuchuuNO2.SearchType = Entity.SearchType.ScType.JuchuuNo;
             this.txtJuchuuNO2.Size = new System.Drawing.Size(100, 19);
-            this.txtJuchuuNO2.TabIndex = 114;
+            this.txtJuchuuNO2.TabIndex = 3;
             this.txtJuchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJuchuuNO2.TxtBox = null;
+            this.txtJuchuuNO2.TxtBox1 = null;
             // 
             // txtJuchuuNO1
             // 
@@ -266,6 +274,7 @@ namespace HacchuuSho
             this.txtJuchuuNO1.IsRequire = false;
             this.txtJuchuuNO1.IsUseInitializedLayout = true;
             this.txtJuchuuNO1.lblName = null;
+            this.txtJuchuuNO1.lblName1 = null;
             this.txtJuchuuNO1.Location = new System.Drawing.Point(125, 42);
             this.txtJuchuuNO1.MaxLength = 12;
             this.txtJuchuuNO1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -275,9 +284,10 @@ namespace HacchuuSho
             this.txtJuchuuNO1.NextControlName = "txtJuchuuNO2";
             this.txtJuchuuNO1.SearchType = Entity.SearchType.ScType.JuchuuNo;
             this.txtJuchuuNO1.Size = new System.Drawing.Size(100, 19);
-            this.txtJuchuuNO1.TabIndex = 113;
+            this.txtJuchuuNO1.TabIndex = 2;
             this.txtJuchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJuchuuNO1.TxtBox = null;
+            this.txtJuchuuNO1.TxtBox1 = null;
             // 
             // label4
             // 
@@ -324,7 +334,7 @@ namespace HacchuuSho
             this.txtDestination.NextControlName = "BtnF1";
             this.txtDestination.SearchType = Entity.SearchType.ScType.None;
             this.txtDestination.Size = new System.Drawing.Size(600, 19);
-            this.txtDestination.TabIndex = 111;
+            this.txtDestination.TabIndex = 19;
             this.txtDestination.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblShipping
@@ -362,7 +372,7 @@ namespace HacchuuSho
             this.txtShipping.NextControlName = "txtDestination";
             this.txtShipping.SearchType = Entity.SearchType.ScType.None;
             this.txtShipping.Size = new System.Drawing.Size(600, 19);
-            this.txtShipping.TabIndex = 109;
+            this.txtShipping.TabIndex = 18;
             this.txtShipping.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtBeneficiary2
@@ -387,7 +397,7 @@ namespace HacchuuSho
             this.txtBeneficiary2.NextControlName = "txtOriginCountry";
             this.txtBeneficiary2.SearchType = Entity.SearchType.ScType.None;
             this.txtBeneficiary2.Size = new System.Drawing.Size(600, 19);
-            this.txtBeneficiary2.TabIndex = 107;
+            this.txtBeneficiary2.TabIndex = 16;
             this.txtBeneficiary2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblOrginCountry
@@ -425,7 +435,7 @@ namespace HacchuuSho
             this.txtOriginCountry.NextControlName = "txtShipping";
             this.txtOriginCountry.SearchType = Entity.SearchType.ScType.None;
             this.txtOriginCountry.Size = new System.Drawing.Size(600, 19);
-            this.txtOriginCountry.TabIndex = 106;
+            this.txtOriginCountry.TabIndex = 17;
             this.txtOriginCountry.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblBENEFICIARY
@@ -463,7 +473,7 @@ namespace HacchuuSho
             this.txtBeneficiary1.NextControlName = "txtBeneficiary2";
             this.txtBeneficiary1.SearchType = Entity.SearchType.ScType.None;
             this.txtBeneficiary1.Size = new System.Drawing.Size(600, 19);
-            this.txtBeneficiary1.TabIndex = 104;
+            this.txtBeneficiary1.TabIndex = 15;
             this.txtBeneficiary1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblPayment
@@ -501,7 +511,7 @@ namespace HacchuuSho
             this.txtPayment.NextControlName = "txtBeneficiary1";
             this.txtPayment.SearchType = Entity.SearchType.ScType.None;
             this.txtPayment.Size = new System.Drawing.Size(600, 19);
-            this.txtPayment.TabIndex = 102;
+            this.txtPayment.TabIndex = 14;
             this.txtPayment.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // sLabel4
@@ -529,7 +539,7 @@ namespace HacchuuSho
             this.txtKanriNO.IntegerPart = 0;
             this.txtKanriNO.IsDatatableOccurs = null;
             this.txtKanriNO.IsErrorOccurs = false;
-            this.txtKanriNO.IsRequire = false;
+            this.txtKanriNO.IsRequire = true;
             this.txtKanriNO.IsUseInitializedLayout = true;
             this.txtKanriNO.Location = new System.Drawing.Point(125, 213);
             this.txtKanriNO.MaxLength = 10;
@@ -540,7 +550,7 @@ namespace HacchuuSho
             this.txtKanriNO.NextControlName = "txtPayment";
             this.txtKanriNO.SearchType = Entity.SearchType.ScType.None;
             this.txtKanriNO.Size = new System.Drawing.Size(100, 19);
-            this.txtKanriNO.TabIndex = 99;
+            this.txtKanriNO.TabIndex = 13;
             this.txtKanriNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtIssueDate
@@ -561,10 +571,10 @@ namespace HacchuuSho
             this.txtIssueDate.MoveNext = true;
             this.txtIssueDate.Name = "txtIssueDate";
             this.txtIssueDate.NextControl = null;
-            this.txtIssueDate.NextControlName = "txtKanriDate";
+            this.txtIssueDate.NextControlName = "txtKanriNO";
             this.txtIssueDate.SearchType = Entity.SearchType.ScType.None;
             this.txtIssueDate.Size = new System.Drawing.Size(100, 19);
-            this.txtIssueDate.TabIndex = 98;
+            this.txtIssueDate.TabIndex = 12;
             this.txtIssueDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtIssueDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
@@ -603,7 +613,7 @@ namespace HacchuuSho
             this.txtYearTerm.NextControlName = "txtIssueDate";
             this.txtYearTerm.SearchType = Entity.SearchType.ScType.None;
             this.txtYearTerm.Size = new System.Drawing.Size(50, 19);
-            this.txtYearTerm.TabIndex = 95;
+            this.txtYearTerm.TabIndex = 9;
             this.txtYearTerm.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label3
@@ -621,7 +631,7 @@ namespace HacchuuSho
             this.chkFW.Location = new System.Drawing.Point(693, 117);
             this.chkFW.Name = "chkFW";
             this.chkFW.Size = new System.Drawing.Size(44, 19);
-            this.chkFW.TabIndex = 93;
+            this.chkFW.TabIndex = 11;
             this.chkFW.Text = "FW";
             this.chkFW.UseVisualStyleBackColor = true;
             // 
@@ -631,7 +641,7 @@ namespace HacchuuSho
             this.chkSS.Location = new System.Drawing.Point(645, 117);
             this.chkSS.Name = "chkSS";
             this.chkSS.Size = new System.Drawing.Size(42, 19);
-            this.chkSS.TabIndex = 92;
+            this.chkSS.TabIndex = 10;
             this.chkSS.Text = "SS";
             this.chkSS.UseVisualStyleBackColor = true;
             // 
@@ -694,7 +704,7 @@ namespace HacchuuSho
             this.txtInputDate2.NextControlName = "txtBrandCD";
             this.txtInputDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtInputDate2.Size = new System.Drawing.Size(100, 19);
-            this.txtInputDate2.TabIndex = 87;
+            this.txtInputDate2.TabIndex = 7;
             this.txtInputDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtInputDate1
@@ -718,7 +728,7 @@ namespace HacchuuSho
             this.txtInputDate1.NextControlName = "txtInputDate2";
             this.txtInputDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtInputDate1.Size = new System.Drawing.Size(100, 19);
-            this.txtInputDate1.TabIndex = 86;
+            this.txtInputDate1.TabIndex = 6;
             this.txtInputDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // lblIInputDate
