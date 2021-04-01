@@ -915,5 +915,17 @@ namespace IdouNyuuryoku
             if (return_BL == "true")
                 base_bl.ShowMessage("I102");
         }
+
+        //ktp hide btnF9 
+        private void gv_1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+            
+            if (ctrlArr.Length > 0)
+            {
+                Control btnF9 = ctrlArr[0];
+                btnF9.Visible = false;
+            }
+        }
     }
 }
