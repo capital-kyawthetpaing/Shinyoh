@@ -33,6 +33,7 @@ namespace HacchuuSho
         string tmpDir = @"C:\DBConfig\Hacchuushou\";
         string tmpSourceLogo = @"C:\DBConfig\Hacchuushou\SHINYOH_Logo.jpg";
         string tmpSave = @"C:\DBConfig\HacchuuShou\OutPut\";
+        byte[] headerLogo = null;
         public HacchuuSho()
         {
             InitializeComponent();
@@ -62,8 +63,8 @@ namespace HacchuuSho
             SetButton(ButtonType.BType.Empty, F11, "", false);
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             UI_ErrorCheck();
-            
-
+            headerLogo  = bbl.GetLogo("1","1");
+            SettingImg(headerLogo);
         }
 
         private void UI_ErrorCheck()
@@ -426,7 +427,9 @@ namespace HacchuuSho
             xlWorkSheet.get_Range("A"+ (added + 10).ToString(), "U"+ (added + 10).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
             xlWorkSheet.get_Range("A"+ (added + 11).ToString(), "H"+ (added + 11).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
             xlWorkSheet.get_Range("A"+ (added + 1).ToString() + ":U"+ (added + 1).ToString(), "A"+ (added + 3).ToString() + ":U"+ (added + 3).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignBottom;
-            SetImage(added+1, 6, "", xlWorkSheet, true);
+
+            SettingImg(headerLogo);
+            SetImage(added+1, 6, tmpPath, xlWorkSheet, true);
         }
         private void SettingImg(byte[] bt)
         {
@@ -455,19 +458,19 @@ namespace HacchuuSho
                 float Top = (float)((double)oRange.Top);
                 float ImageHeight = 32;
                 float ImageWidth = 64;
-                string filePath = string.Empty;
-                if (Debugger.IsAttached)
-                {
-                    System.Uri u = new System.Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
-                    filePath = System.IO.Path.GetDirectoryName(u.LocalPath).Replace("bin", "#").Split('#').First() + @"\HacchuuSho\Image\SHINYOH_Logo.jpg";
-                }
-                else
-                    filePath = tmpSourceLogo;
+               // string filePath = string.Empty;
+                //if (Debugger.IsAttached)
+                //{
+                //    System.Uri u = new System.Uri(System.Reflection.Assembly.GetExecutingAssembly().CodeBase);
+                //    filePath = System.IO.Path.GetDirectoryName(u.LocalPath).Replace("bin", "#").Split('#').First() + @"\HacchuuSho\Image\SHINYOH_Logo.jpg";
+                //}
+                //else
+                //    filePath = tmpSourceLogo;
                 if (IsLogo)
                 {
                     ImageHeight = 32;
                     ImageWidth = 250;
-                    ws.Shapes.AddPicture(filePath, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)30, Top + (float)(2.5), ImageWidth, ImageHeight);
+                    ws.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)30, Top + (float)(2.5), ImageWidth, ImageHeight);
                 }
                 else
                     ws.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)15, Top + (float)(2.5), ImageWidth, ImageHeight);
