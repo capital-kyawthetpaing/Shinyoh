@@ -182,8 +182,8 @@ namespace ChakuniYoteiNyuuryoku
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
-                {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
+                //{
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -199,7 +199,7 @@ namespace ChakuniYoteiNyuuryoku
                         case "4":
                             ChangeMode(Mode.Inquiry);
                             break;
-                    }
+                    //}
                 }
             }
             base.FunctionProcess(tagID);
