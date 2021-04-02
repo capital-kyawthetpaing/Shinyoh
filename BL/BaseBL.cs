@@ -161,7 +161,7 @@ namespace BL
             {
                 if (dtMsg.Rows.Count > 0)
                 {
-                    log = (dtMsg.Rows[0]["Image"] as byte[]);
+                    log = (dtMsg.Rows[0]["CompanyImage"] as byte[]);
                 }
             }
             catch { }

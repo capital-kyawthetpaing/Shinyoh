@@ -22,5 +22,5 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	select *  from M_Multiporpose_2 where ID = @ID and [Key] = @Key and DeleteFlg = 0
+	select CompanyImage  from M_Control where MainKey = @ID
 END

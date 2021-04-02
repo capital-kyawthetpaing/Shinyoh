@@ -63,7 +63,7 @@ namespace HacchuuSho
             SetButton(ButtonType.BType.Empty, F11, "", false);
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             UI_ErrorCheck();
-            headerLogo  = bbl.GetLogo("1","1");
+            headerLogo  = bbl.GetLogo("101","1");
             SettingImg(headerLogo);
         }
 
