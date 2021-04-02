@@ -53,6 +53,7 @@ namespace Shinyoh_Details
             //Get Data from JuchuuNyuuroku form
             Access_DB_Object(Access_Kouriten_obj);
 
+
             if (!isEnable)
             {
                 cf.DisablePanel(Panel_Detail);
@@ -60,8 +61,16 @@ namespace Shinyoh_Details
             }
             else
             {
-                cf.EnablePanel(Panel_Detail);
-                SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+                if(Access_Kouriten_obj.ShokutiFLG.Equals("0"))
+                {
+                    cf.EnablePanel(Panel_Detail);
+                    SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+                }
+                else
+                {
+                    cf.DisablePanel(Panel_Detail);
+                    SetButton(ButtonType.BType.Save, F12, "確定(F12)", false);
+                }
             }
         }
         private void Access_DB_Object(KouritenEntity obj)

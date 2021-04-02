@@ -247,34 +247,38 @@ namespace Shinyoh_Controls
                     return;
             }
 
-            int icolumn = this.CurrentCell.ColumnIndex;
-            int irow = this.CurrentCell.RowIndex;
-            bool found = false;
-            bool canrowIncrease = true;
-            while (!found)
+            if(this.CurrentCell != null)
             {
-                if (irow == this.Rows.Count - 1)
+                int icolumn = this.CurrentCell.ColumnIndex;
+                int irow = this.CurrentCell.RowIndex;
+                bool found = false;
+                bool canrowIncrease = true;
+                while (!found)
                 {
-                    canrowIncrease = false;
-                }
-                if (icolumn == this.Columns.Count - 1)
-                {
-                    if (canrowIncrease)
-                        irow++;
+                    if (irow == this.Rows.Count - 1)
+                    {
+                        canrowIncrease = false;
+                    }
+                    if (icolumn == this.Columns.Count - 1)
+                    {
+                        if (canrowIncrease)
+                            irow++;
+                        else
+                            irow = 0;
+                        icolumn = 0;
+                    }
                     else
-                        irow = 0;
-                    icolumn = 0;
-                }
-                else
-                    icolumn++;
+                        icolumn++;
 
 
-                if (this[icolumn, irow].Visible == true && this[icolumn, irow].ReadOnly == false)
-                {
-                    found = true;
+                    if (this[icolumn, irow].Visible == true && this[icolumn, irow].ReadOnly == false)
+                    {
+                        found = true;
+                    }
                 }
+                this.CurrentCell = this[icolumn, irow];
             }
-            this.CurrentCell = this[icolumn, irow];
+            
         }
 
         protected override void OnCellMouseDoubleClick(DataGridViewCellMouseEventArgs e)
