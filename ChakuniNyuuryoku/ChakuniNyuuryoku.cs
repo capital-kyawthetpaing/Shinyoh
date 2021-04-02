@@ -153,6 +153,8 @@ namespace ChakuniNyuuryoku
             txtArrivalNO.Focus();
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET
+
+
         }
         private void New_Mode()
         {
@@ -178,6 +180,14 @@ namespace ChakuniNyuuryoku
             lblSiiresaki.Text = string.Empty;
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET
+            //NMW
+            dtmain = new DataTable();
+            dt_Header = new DataTable();
+            dt_Details = new DataTable();
+            dtGS1 = CreateTable_Details();
+            dtTemp = new DataTable();
+            dtClear = CreateTable_Details();
+            dtGridSource = new DataTable();
         }
         public void ErrorCheck()
         {
@@ -192,8 +202,8 @@ namespace ChakuniNyuuryoku
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
             txtSouko.E102Check(true);
             txtSouko.E101Check(true, "souko", txtSouko, null, null);
-            txtScheduled.E133Check(true, "ChakuniYotei", txtScheduled, txtArrivalDate, null);
-            txtScheduled.E268Check(true, "ChakuniYotei", txtScheduled, null);
+            //txtScheduled.E133Check(true, "ChakuniYotei", txtScheduled, txtArrivalDate, null);
+            //txtScheduled.E268Check(true, "ChakuniYotei", txtScheduled, null);
         }
         public override void FunctionProcess(string tagID)
         {
@@ -579,69 +589,73 @@ namespace ChakuniNyuuryoku
         private void F10_Gridview_Bind()
         {
             gvChakuniNyuuryoku.ActionType = "F10";
-            ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity();
-            chkEntity.ChakuniDate = txtArrivalDate.Text;
-            chkEntity.ChakuniYoteiNO = txtScheduled.Text;
-            chkEntity.HinbanCD = txtShouhinCD.Text;
-            chkEntity.ShouhinName = txtShouhinName.Text;
-            chkEntity.JANCD = txtJANCD.Text;
-            chkEntity.BrandCD = sbBrand.Text;
-            chkEntity.ColorNO = txtColorNo.Text;
-            chkEntity.SizeNO = txtSizeNo.Text;
-            chkEntity.KanriNO = txtControlNo.Text;
-            chkEntity.SoukoCD = txtSouko.Text;
-            chkEntity.YearTerm = txtYearTerm.Text;
-            chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
-            chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
-            chkEntity.OperatorCD = OperatorCD;
-            chkEntity.ProgramID = ProgramID;
-            chkEntity.PC = PCID;
-            if (string.IsNullOrWhiteSpace(txtScheduled.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
-                 string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
+            if (ErrorCheck(PanelDetail))
             {
-                bbl.ShowMessage("E111");
-                txtScheduled.Focus();
-                return;//ktp added (show error message and stop process)
-            }
-            dtmain = cbl.ChakuniNyuuryoku_Display(chkEntity);
-            ChakuniYoteiNO_Delete();
-            foreach (DataRow dr in dtmain.Rows)
-            {
-                string ChakuniYoteiNO = dr["ChakuniYoteiNO"].ToString();
-                chkEntity = new ChakuniNyuuryoku_Entity();
-                chkEntity.DataKBN = 16;
-                chkEntity.Number = ChakuniYoteiNO;
+                ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity();
+                chkEntity.ChakuniDate = txtArrivalDate.Text;
+                chkEntity.ChakuniYoteiNO = txtScheduled.Text;
+                chkEntity.HinbanCD = txtShouhinCD.Text;
+                chkEntity.ShouhinName = txtShouhinName.Text;
+                chkEntity.JANCD = txtJANCD.Text;
+                chkEntity.BrandCD = sbBrand.Text;
+                chkEntity.ColorNO = txtColorNo.Text;
+                chkEntity.SizeNO = txtSizeNo.Text;
+                chkEntity.KanriNO = txtControlNo.Text;
+                chkEntity.SoukoCD = txtSouko.Text;
+                chkEntity.YearTerm = txtYearTerm.Text;
+                chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
+                chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
+                chkEntity.OperatorCD = OperatorCD;
                 chkEntity.ProgramID = ProgramID;
                 chkEntity.PC = PCID;
-                chkEntity.OperatorCD = OperatorCD;
-                DataTable dt = new DataTable();
-                cbl = new chakuniNyuuryoku_BL();
-                dt = cbl.D_Exclusive_Lock_Check(chkEntity);
-                if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                if (string.IsNullOrWhiteSpace(txtScheduled.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
+                     string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
                 {
-                    bbl.ShowMessage("S004");
-                    Gvrow_Delete(dr);
+                    bbl.ShowMessage("E111");
+                    txtScheduled.Focus();
+                    return;//ktp added (show error message and stop process)
                 }
-                string HacchuuNO = dr["HacchuuNO"].ToString();
-                chkEntity = new ChakuniNyuuryoku_Entity();
-                chkEntity.DataKBN = 2;
-                chkEntity.Number = HacchuuNO;
-                chkEntity.ProgramID = ProgramID;
-                chkEntity.PC = PCID;
-                chkEntity.OperatorCD = OperatorCD;
-                DataTable dt1 = new DataTable();
-                cbl = new chakuniNyuuryoku_BL();
-                dt1 = cbl.D_Exclusive_Lock_Check(chkEntity);
-                if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                dtmain = cbl.ChakuniNyuuryoku_Display(chkEntity);
+                ChakuniYoteiNO_Delete();
+                foreach (DataRow dr in dtmain.Rows)
                 {
-                    bbl.ShowMessage("S004");
-                    if (dr != null)
+                    string ChakuniYoteiNO = dr["ChakuniYoteiNO"].ToString();
+                    chkEntity = new ChakuniNyuuryoku_Entity();
+                    chkEntity.DataKBN = 16;
+                    chkEntity.Number = ChakuniYoteiNO;
+                    chkEntity.ProgramID = ProgramID;
+                    chkEntity.PC = PCID;
+                    chkEntity.OperatorCD = OperatorCD;
+                    DataTable dt = new DataTable();
+                    cbl = new chakuniNyuuryoku_BL();
+                    dt = cbl.D_Exclusive_Lock_Check(chkEntity);
+                    if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                    {
+                        bbl.ShowMessage("S004");
                         Gvrow_Delete(dr);
+                    }
+                    string HacchuuNO = dr["HacchuuNO"].ToString();
+                    chkEntity = new ChakuniNyuuryoku_Entity();
+                    chkEntity.DataKBN = 2;
+                    chkEntity.Number = HacchuuNO;
+                    chkEntity.ProgramID = ProgramID;
+                    chkEntity.PC = PCID;
+                    chkEntity.OperatorCD = OperatorCD;
+                    DataTable dt1 = new DataTable();
+                    cbl = new chakuniNyuuryoku_BL();
+                    dt1 = cbl.D_Exclusive_Lock_Check(chkEntity);
+                    if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                    {
+                        bbl.ShowMessage("S004");
+                        if (dr != null)
+                            Gvrow_Delete(dr);
+                    }
+                    dtGridSource = dtmain.Copy();
+                    gvChakuniNyuuryoku.DataSource = dtmain;
+                    gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
+                    gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
+                    gvChakuniNyuuryoku.Select();
                 }
-                gvChakuniNyuuryoku.DataSource = dtmain;
-                gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
-                gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
-                gvChakuniNyuuryoku.Select();
             }
             gvChakuniNyuuryoku.ActionType = string.Empty;
         }
@@ -791,11 +805,12 @@ namespace ChakuniNyuuryoku
                     ChakuniNyuuryokuSelect(dt_Header);
 
                 dt_Details = cbl.ChakuniNyuuryoku_Update_Select(chkEntity, 2);
-                if (dt_Details.Rows.Count > 0)
-                {
-                    gvChakuniNyuuryoku.DataSource = dt_Details;
-                }
-                else
+            if (dt_Details.Rows.Count > 0)
+            {
+                dtTemp = dt_Details.Copy();
+                gvChakuniNyuuryoku.DataSource = dt_Details;
+            }
+            else
                     gvChakuniNyuuryoku.DataSource = dtClear;
 
                 foreach (DataRow dr in dt_Header.Rows)
@@ -910,39 +925,41 @@ namespace ChakuniNyuuryoku
                     {
                         dtTemp.Clear();
                     }
-                    Temp_Save(e.RowIndex);
+                Temp_Save(e.RowIndex);
                 }
             }
         private void Temp_Save(int row)
+        {
+            if (dtGS1.Rows.Count > 0)
             {
-                if ((!gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].EditedFormattedValue.ToString().Equals("0")))
+                for (int i = dtGS1.Rows.Count - 1; i >= 0; i--)
                 {
-                    //dtGridview();
-                    //string a= gvChakuniNyuuryoku.Rows[row].Cells["colShouhinCD"].EditedFormattedValue.ToString();
-                    if (dtGS1.Rows.Count > 0)
+                    string Chakuni = dtGS1.Rows[i]["Chakuni"].ToString();
+                    string HacchuuNO = dtGS1.Rows[i]["Hacchuu"].ToString();
+                    if (gvChakuniNyuuryoku.Rows[row].Cells["Hacchuu"].Value.ToString() == HacchuuNO && gvChakuniNyuuryoku.Rows[row].Cells["Chakuni"].Value.ToString() == Chakuni)
                     {
-                        for (int i = dtGS1.Rows.Count - 1; i >= 0; i--)
-                        {
-                            string data = dtGS1.Rows[i]["ChakuniSuu"].ToString();
-                            if (gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].Value.ToString() == data)
-                            {
-                                dtGS1.Rows[i].Delete();
-                            }
-                        }
+                        dtGS1.Rows[i].Delete();
+                        dtGS1.AcceptChanges();
+                        break;
                     }
-                    DataRow dr1 = dtGS1.NewRow();
-                    for (int i = 0; i < dtGS1.Columns.Count; i++)
-                    {
-                        if (i == 10)
-                            dr1[i] = gvChakuniNyuuryoku.Rows[row].Cells[dtGS1.Columns[i].ColumnName].EditedFormattedValue;
-                        else
-                            dr1[i] = string.IsNullOrEmpty(gvChakuniNyuuryoku.Rows[row].Cells[dtGS1.Columns[i].ColumnName].ToString().Trim()) ? null : gvChakuniNyuuryoku[i, row].EditedFormattedValue.ToString();
-
-                    }
-                    dtGS1.Rows.Add(dr1);
                 }
-                gvChakuniNyuuryoku.Memory_Row_Count = dtGS1.Rows.Count;
             }
+
+            DataRow dr1 = dtGS1.NewRow();
+            for (int i = 0; i < dtGS1.Columns.Count; i++)
+            {
+                dr1[i] = string.IsNullOrEmpty(gvChakuniNyuuryoku[i, row].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniNyuuryoku[i, row].EditedFormattedValue.ToString();
+            }
+            
+            if (gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].EditedFormattedValue.ToString() != "0")
+            {
+                if (dtGridSource.Rows[row]["ChakuniSuu"].ToString() != dr1[8].ToString())
+                    dtGS1.Rows.Add(dr1);
+            }
+                
+
+            gvChakuniNyuuryoku.Memory_Row_Count = dtGS1.Rows.Count;
+        }
         private bool Grid_ErrorCheck(int row, int col)
             {
                 if (gvChakuniNyuuryoku.Columns[col].Name == "ChakuniSuu")
@@ -988,7 +1005,29 @@ namespace ChakuniNyuuryoku
 
         private void txtScheduled_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if(! string.IsNullOrEmpty(txtScheduled.Text))
+            {
+                bool bl_Next = false;
+                chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
+                DataTable  dt_E133 = bl.ChakuniNyuuryoku_ErrorCheck(txtScheduled.Text, string.Empty, "E133");
+                if (dt_E133.Rows[0]["MessageID"].ToString() == "E133")
+                {
+                    txtScheduled.Text = string.Empty;
+                    txtScheduled.Focus();
+                    bbl.ShowMessage("E133");
+                    bl_Next = true;
+                }
+                if(bl_Next == false)
+                {
+                    DataTable dt_E268 = bl.ChakuniNyuuryoku_ErrorCheck(txtScheduled.Text, string.Empty, "E268");
+                    if (dt_E268.Rows[0]["MessageID"].ToString() == "E268")
+                    {
+                        txtScheduled.Text = string.Empty;
+                        txtScheduled.Focus();
+                        bbl.ShowMessage("E268");
+                    }
+                }
+            }
         }
         private void gvChakuniNyuuryoku_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

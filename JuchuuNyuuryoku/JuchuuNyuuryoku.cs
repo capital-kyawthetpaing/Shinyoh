@@ -162,6 +162,8 @@ namespace JuchuuNyuuryoku
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
+                    btn_Tokuisaki.Enabled = true;
+                    btn_Kouriten.Enabled = true;
                     kobj = new KouritenDetail(false);
                     sobj = new SiiresakiDetail(false);
                     tobj = new TokuisakiDetail(false);
@@ -180,6 +182,8 @@ namespace JuchuuNyuuryoku
                     btn10.Visible = false;
                     Control btn11 = this.TopLevelControl.Controls.Find("BtnF11", true)[0];
                     btn11.Visible = false;
+                    btn_Tokuisaki.Enabled = true;
+                    btn_Kouriten.Enabled = true;
                     kobj = new KouritenDetail(false);
                     sobj = new SiiresakiDetail(false);
                     tobj = new TokuisakiDetail(false);
