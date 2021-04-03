@@ -60,7 +60,7 @@
             this.lbl2.ForeColor = System.Drawing.Color.Red;
             this.lbl2.Location = new System.Drawing.Point(49, 76);
             this.lbl2.Name = "lbl2";
-            this.lbl2.Size = new System.Drawing.Size(1100, 25);
+            this.lbl2.Size = new System.Drawing.Size(1024, 23);
             this.lbl2.TabIndex = 1;
             this.lbl2.Text = "※他のユーザ含め、以下のプログラムが起動されていないことをご確認の上、実行してください。";
             this.lbl2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -93,6 +93,7 @@
             this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.panel1.ResumeLayout(false);
             this.PanelDetail.ResumeLayout(false);
+            this.PanelDetail.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
