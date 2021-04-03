@@ -619,18 +619,20 @@ namespace HacchuuSho
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(619, 120);
+            this.label3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(621, 118);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(19, 15);
+            this.label3.Size = new System.Drawing.Size(17, 12);
             this.label3.TabIndex = 94;
             this.label3.Text = "年";
             // 
             // chkFW
             // 
             this.chkFW.AutoSize = true;
-            this.chkFW.Location = new System.Drawing.Point(693, 117);
+            this.chkFW.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFW.Location = new System.Drawing.Point(694, 116);
             this.chkFW.Name = "chkFW";
-            this.chkFW.Size = new System.Drawing.Size(44, 19);
+            this.chkFW.Size = new System.Drawing.Size(36, 16);
             this.chkFW.TabIndex = 11;
             this.chkFW.Text = "FW";
             this.chkFW.UseVisualStyleBackColor = true;
@@ -638,9 +640,10 @@ namespace HacchuuSho
             // chkSS
             // 
             this.chkSS.AutoSize = true;
-            this.chkSS.Location = new System.Drawing.Point(645, 117);
+            this.chkSS.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSS.Location = new System.Drawing.Point(645, 116);
             this.chkSS.Name = "chkSS";
-            this.chkSS.Size = new System.Drawing.Size(42, 19);
+            this.chkSS.Size = new System.Drawing.Size(36, 16);
             this.chkSS.TabIndex = 10;
             this.chkSS.Text = "SS";
             this.chkSS.UseVisualStyleBackColor = true;
