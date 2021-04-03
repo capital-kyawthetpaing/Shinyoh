@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="StoreProcedure\HCS_M_MultiPorpose_Type.sql" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -176,6 +177,7 @@
     <Content Include="StoreProcedure\L_Log_Insert.sql" />
     <Content Include="StoreProcedure\M_Authorization_Select.sql" />
     <Content Include="StoreProcedure\M_Kouriten_CUD.sql" />
+    <Content Include="StoreProcedure\M_LogoSelect.sql" />
     <Content Include="StoreProcedure\M_Menu_Select.sql" />
     <Content Include="StoreProcedure\M_Message_Select.sql" />
     <Content Include="StoreProcedure\M_Multiporpose_CopySelect.sql" />

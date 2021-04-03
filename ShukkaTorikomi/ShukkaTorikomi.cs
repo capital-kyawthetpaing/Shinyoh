@@ -397,7 +397,9 @@ namespace ShukkaTorikomi
                         //dr[28] = "0";
                         dr[16] = base_Entity.OperatorCD;
                         dr[17] = base_Entity.OperatorCD;
-                        dr[18] = error;
+                        dr[18] = base_Entity.ProgramID;
+                        dr[19] = base_Entity.PC;
+                        dr[20] = error;
                         create_dt.Rows.Add(dr);
                     }
 
@@ -405,7 +407,7 @@ namespace ShukkaTorikomi
                     if (create_dt.Rows.Count>0)
                     {
                         dt_Main = create_dt.AsEnumerable()
-                              .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["TokuisakiRyakuName"], Col4 = r["KouritenRyakuName"], Col5 = r["DenpyouNO"], Col6 = r["ChangeDate"], Col7 = r["ShukkaDenpyouTekiyou"]})
+                              .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["TokuisakiRyakuName"], Col4 = r["KouritenRyakuName"], Col5 = r["DenpyouNO"], Col6 = r["DenpyouDate"], Col7 = r["ChangeDate"], Col8 = r["ShukkaDenpyouTekiyou"]})
                               .Select(g => g.OrderBy(r => r["TokuisakiCD"]).First())
                               .CopyToDataTable();
 
@@ -424,6 +426,7 @@ namespace ShukkaTorikomi
                             string tokuisakiryakuName = dt_Main.Rows[i]["TokuisakiRyakuName"].ToString();
                             string kouritenryakuName = dt_Main.Rows[i]["KouritenRyakuName"].ToString();
                             string denpyouNO = dt_Main.Rows[i]["DenpyouNO"].ToString();
+                            string denpyouDate = dt_Main.Rows[i]["DenpyouDate"].ToString();
                             string changeDate = dt_Main.Rows[i]["ChangeDate"].ToString();
                             string shukkadenpyouTekiyou= dt_Main.Rows[i]["ShukkadenpyouTekiyou"].ToString();
                             string null_val= string.Empty;
@@ -431,8 +434,8 @@ namespace ShukkaTorikomi
                             if (string.IsNullOrEmpty(shukkadenpyouTekiyou))
                                 null_val = " and [ShukkadenpyouTekiyou] IS NULL";
                             if (!string.IsNullOrEmpty(null_val))
-                                select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "' and ChangeDate='" + changeDate + "'" + null_val + "");
-                            else select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "' and ChangeDate='" + changeDate + "'");
+                                select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "'and DenpyouDate = '" + denpyouDate + "' and ChangeDate='" + changeDate + "'" + null_val + "");
+                            else select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "'and DenpyouDate = '" + denpyouDate + "' and ChangeDate='" + changeDate + "'");
                             if (select_dr.Length > 0)
                             {
                                 for (int j = 0; j < select_dr.Length; j++)
@@ -561,12 +564,13 @@ namespace ShukkaTorikomi
             create_dt.Columns.Add("ShukkaSiziNO");
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
+            create_dt.Columns.Add("ProgramID");
+            create_dt.Columns.Add("PC");
             create_dt.Columns.Add("Error");            
         }
 
         public void Column_Remove_Datatable(DataTable remove_dt)
         {
-            remove_dt.Columns.Remove("DenpyouDate");
             remove_dt.Columns.Remove("HinbanCD");
             remove_dt.Columns.Remove("ColorRyakuName");
             remove_dt.Columns.Remove("SizeNO");

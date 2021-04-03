@@ -149,6 +149,24 @@ namespace BL
             parameters[2] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = be.PC };
             return ckmdl.InsertUpdateDeleteData("D_Exclusive_Number_Close", GetConnectionString(), parameters);
         }
+
+        public byte[] GetLogo(string id, string Key)
+        {
+            byte[] log = null;
+            SqlParameter[] etsql = new SqlParameter[2];
+            etsql[0] = new SqlParameter("@ID",  id);
+            etsql[1] = new SqlParameter("@Key", Key);
+            DataTable dtMsg = ckmdl.SelectDatatable("M_LogoSelect", GetConnectionString(), etsql);
+            try
+            {
+                if (dtMsg.Rows.Count > 0)
+                {
+                    log = (dtMsg.Rows[0]["CompanyImage"] as byte[]);
+                }
+            }
+            catch { }
+            return log;
+        }
         //NEW code was added for Image VARBINARY with DB
         #region
         public bool InsertUpdateDeleteData(string sp, params SqlParameter[] parameter)

@@ -20,33 +20,32 @@ CREATE PROCEDURE [dbo].[ShukkaTorikomi_Check]
 	@CD_Type as varchar(10)
 AS
 BEGIN
-
 	SET NOCOUNT ON;
 
-    -- select statements for procedure here
-		if @Errortype='E101'
-		begin
-			if @CD_Type='ShouhinCD'
-				begin
-					--exists
-					select * from F_Shouhin(@ChangeDate),M_Message m where ShouhinCD=@CD and m.MessageID='E132'
-				end
-
-			else if @CD_Type='JANCD' 
-				begin
-					--exists
-					select * from F_Shouhin(@ChangeDate),M_Message m where JANCD=@CD and m.MessageID='E132'
-				end
-
-			else
-				begin
-					--not exists
-					select * from M_Message
-					where MessageID = 'E101'
-				end
-		end
-
-		
-	
+	IF @Errortype='E101'
+	BEGIN
+		IF @CD_Type='ShouhinCD'
+		BEGIN
+			IF EXISTS (SELECT * FROM F_Shouhin(@ChangeDate) WHERE ShouhinCD=@CD) 
+			BEGIN
+				SELECT * FROM F_Shouhin(@ChangeDate),M_Message m WHERE ShouhinCD=@CD AND m.MessageID='E132'
+			END
+			ELSE
+			BEGIN
+				SELECT * FROM M_Message WHERE MessageID = 'E101'
+			END
+		END
+		ELSE IF @CD_Type='JANCD' 
+		BEGIN
+			IF EXISTS (SELECT * FROM F_Shouhin(@ChangeDate) WHERE JANCD=@CD)
+			BEGIN
+				SELECT * FROM F_Shouhin(@ChangeDate),M_Message m WHERE JANCD=@CD AND m.MessageID='E132'
+			END
+			ELSE
+			BEGIN
+				SELECT * FROM M_Message WHERE MessageID = 'E101'
+			END
+		END
+	END
 END
 
