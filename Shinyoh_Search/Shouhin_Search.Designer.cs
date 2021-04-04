@@ -322,7 +322,7 @@
             this.chkFW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkFW.IsDatatableOccurs = null;
             this.chkFW.IsErrorOccurs = false;
-            this.chkFW.Location = new System.Drawing.Point(739, 63);
+            this.chkFW.Location = new System.Drawing.Point(746, 59);
             this.chkFW.MoveNext = true;
             this.chkFW.Name = "chkFW";
             this.chkFW.NextControl = null;
@@ -337,7 +337,7 @@
             this.chkSS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkSS.IsDatatableOccurs = null;
             this.chkSS.IsErrorOccurs = false;
-            this.chkSS.Location = new System.Drawing.Point(697, 63);
+            this.chkSS.Location = new System.Drawing.Point(697, 59);
             this.chkSS.MoveNext = true;
             this.chkSS.Name = "chkSS";
             this.chkSS.NextControl = null;
@@ -350,7 +350,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(672, 65);
+            this.label4.Location = new System.Drawing.Point(672, 61);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 13);
             this.label4.TabIndex = 21;
@@ -747,7 +747,7 @@
             this.dgDetail.MultiSelect = false;
             this.dgDetail.Name = "dgDetail";
             this.dgDetail.ReadOnly = true;
-            this.dgDetail.Size = new System.Drawing.Size(1175, 365);
+            this.dgDetail.Size = new System.Drawing.Size(1175, 350);
             this.dgDetail.TabIndex = 3;
             this.dgDetail.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDetail_CellMouseDoubleClick);
             this.dgDetail.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgDetail_CellPainting);

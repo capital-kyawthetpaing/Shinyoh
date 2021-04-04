@@ -118,13 +118,13 @@ namespace Shinyoh_Search
                 {
                     case Entity.SearchType.ScType.Souko:
                         
-                        SoukoSearch soukoSearch = new SoukoSearch();
+                        SoukoSearch soukoSearch = new SoukoSearch(this.Text);
                         soukoSearch.ShowDialog();
                         CD = soukoSearch.soukoCD;
                         //CDate = soukoSearch.soukoName;
                         break;
                     case Entity.SearchType.ScType.Staff:
-                        StaffSearch staffSearch = new StaffSearch();
+                        StaffSearch staffSearch = new StaffSearch(this.Text);
                         staffSearch.changeDate_Access = ChangeDate.Text;
                         staffSearch.ShowDialog();
                         CD = staffSearch.staffCD;
@@ -152,14 +152,14 @@ namespace Shinyoh_Search
                         }                       
                         break;
                     case Entity.SearchType.ScType.Siiresaki:
-                        SiiresakiSearch siiresakiSearch = new SiiresakiSearch();
+                        SiiresakiSearch siiresakiSearch = new SiiresakiSearch(this.Text);
                         siiresakiSearch.Date_Access_Siiresaki = ChangeDate.Text;
                         siiresakiSearch.ShowDialog();
                         CD = siiresakiSearch.SiiresakiCD;
                         CDate = siiresakiSearch.changeDate;
                         break;
                     case Entity.SearchType.ScType.Tokuisaki:
-                        TokuisakiSearch tokuisakiSearch = new TokuisakiSearch();
+                        TokuisakiSearch tokuisakiSearch = new TokuisakiSearch(this.Text);
                         tokuisakiSearch.Date_Access_Tokuisaki = ChangeDate.Text;
                         tokuisakiSearch.ShowDialog();
                         CD = tokuisakiSearch.Tokuisaki;

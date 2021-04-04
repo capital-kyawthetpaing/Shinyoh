@@ -24,6 +24,7 @@ namespace Shinyoh_Search
         {
             cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
+            gvChakuniYoteiNyuuryoku.ScrollBars = ScrollBars.Vertical;
         }
         private void ChakuniYoteiNyuuryokuSearch_Load(object sender, EventArgs e)
         {
@@ -116,6 +117,7 @@ namespace Shinyoh_Search
         private void btnSearch_Click(object sender, EventArgs e)
         {
             GridViewBind();
+            gvChakuniYoteiNyuuryoku.Focus();
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {

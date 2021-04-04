@@ -15,9 +15,11 @@ namespace Shinyoh_Search
         public string SiiresakiName = string.Empty;
 
         public string Date_Access_Siiresaki;
-        public SiiresakiSearch()
+        public SiiresakiSearch(string supplierCD)
         {
             InitializeComponent();
+            txtSupplier1.Text = supplierCD;
+            txtSupplier2.Text = supplierCD;
         }
 
         private void SiiresakiSearch_Load(object sender, System.EventArgs e)

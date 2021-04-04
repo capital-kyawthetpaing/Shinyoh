@@ -18,9 +18,11 @@ namespace Shinyoh_Search {
         public string TokuisakiRyakuName = string.Empty;
         public string Date_Access_Tokuisaki = string.Empty;
 
-        public TokuisakiSearch()
+        public TokuisakiSearch(string TokuisakiCD)
         {
             InitializeComponent();
+            txtTokuisaki1.Text = TokuisakiCD;
+            txtTokuisaki2.Text = TokuisakiCD;
         }
 
         private void TokuisakiSearch_Load(object sender, EventArgs e)

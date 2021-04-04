@@ -667,7 +667,7 @@ namespace ShukkaSiziNyuuryoku
                 int col = dgvShukkasizi.CurrentCell.ColumnIndex;
                 if (row >= 0 && col == 15)
                 {
-                    SoukoSearch ss = new SoukoSearch();
+                    SoukoSearch ss = new SoukoSearch(dgvShukkasizi.CurrentCell.EditedFormattedValue.ToString());
                     ss.ShowDialog();
                     if (!string.IsNullOrEmpty(ss.soukoCD))
                     {

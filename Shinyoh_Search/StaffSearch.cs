@@ -20,9 +20,10 @@ namespace Shinyoh_Search
         public string changeDate = string.Empty;
         public string staffName = string.Empty;
 
-        public StaffSearch()
+        public StaffSearch(string SCD)
         {
             InitializeComponent();
+            txtStaff1.Text = txtStaff2.Text = SCD;            
         }
 
         private void StaffSearch_Load(object sender, EventArgs e)

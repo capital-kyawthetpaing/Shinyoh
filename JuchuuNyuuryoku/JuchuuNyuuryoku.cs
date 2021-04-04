@@ -307,7 +307,7 @@ namespace JuchuuNyuuryoku
             }
             if (tagID == "9")
             {
-                SiiresakiSearch detail = new SiiresakiSearch();
+                SiiresakiSearch detail = new SiiresakiSearch(string.Empty);
                 detail.ShowDialog();
             }
             if (tagID == "10")
@@ -1802,7 +1802,7 @@ namespace JuchuuNyuuryoku
             int column = gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex;
             if (gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSiiresakiCD")
             {
-                SiiresakiSearch detail = new SiiresakiSearch();
+                SiiresakiSearch detail = new SiiresakiSearch(gv_JuchuuNyuuryoku.CurrentCell.EditedFormattedValue.ToString());
                 detail.Date_Access_Siiresaki = txtJuchuuDate.Text;
                 detail.ShowDialog();
 
@@ -1834,7 +1834,7 @@ namespace JuchuuNyuuryoku
             }
             else if(gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSoukoCD")
             {
-                SoukoSearch souko = new SoukoSearch();
+                SoukoSearch souko = new SoukoSearch(gv_JuchuuNyuuryoku.CurrentCell.EditedFormattedValue.ToString());
                 souko.ShowDialog();
 
                 if(!string.IsNullOrEmpty(souko.soukoCD))

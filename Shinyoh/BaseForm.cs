@@ -442,7 +442,7 @@ namespace Shinyoh
                             }
                         }
                     }
-                    if (ActiveControl is SRadio)
+                    else if (ActiveControl is SRadio)
                     {
                         SRadio radio = ActiveControl as SRadio;
                         if (!string.IsNullOrWhiteSpace(radio.NextControlName))
@@ -454,7 +454,7 @@ namespace Shinyoh
                             }
                         }
                     }
-                    if (ActiveControl is SCheckBox)
+                    else if (ActiveControl is SCheckBox)
                     {
                         SCheckBox checkbox = ActiveControl as SCheckBox;
                         if (!string.IsNullOrWhiteSpace(checkbox.NextControlName))
