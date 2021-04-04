@@ -118,13 +118,13 @@ namespace Shinyoh_Search
                 {
                     case Entity.SearchType.ScType.Souko:
                         
-                        SoukoSearch soukoSearch = new SoukoSearch(this.Text);
+                        SoukoSearch soukoSearch = new SoukoSearch();
                         soukoSearch.ShowDialog();
                         CD = soukoSearch.soukoCD;
                         //CDate = soukoSearch.soukoName;
                         break;
                     case Entity.SearchType.ScType.Staff:
-                        StaffSearch staffSearch = new StaffSearch(this.Text);
+                        StaffSearch staffSearch = new StaffSearch();
                         staffSearch.changeDate_Access = ChangeDate.Text;
                         staffSearch.ShowDialog();
                         CD = staffSearch.staffCD;
@@ -152,14 +152,14 @@ namespace Shinyoh_Search
                         }                       
                         break;
                     case Entity.SearchType.ScType.Siiresaki:
-                        SiiresakiSearch siiresakiSearch = new SiiresakiSearch(this.Text);
+                        SiiresakiSearch siiresakiSearch = new SiiresakiSearch();
                         siiresakiSearch.Date_Access_Siiresaki = ChangeDate.Text;
                         siiresakiSearch.ShowDialog();
                         CD = siiresakiSearch.SiiresakiCD;
                         CDate = siiresakiSearch.changeDate;
                         break;
                     case Entity.SearchType.ScType.Tokuisaki:
-                        TokuisakiSearch tokuisakiSearch = new TokuisakiSearch(this.Text);
+                        TokuisakiSearch tokuisakiSearch = new TokuisakiSearch();
                         tokuisakiSearch.Date_Access_Tokuisaki = ChangeDate.Text;
                         tokuisakiSearch.ShowDialog();
                         CD = tokuisakiSearch.Tokuisaki;
@@ -167,8 +167,10 @@ namespace Shinyoh_Search
                         name = tokuisakiSearch.TokuisakiRyakuName;
                         break;
                     case Entity.SearchType.ScType.multiporpose:
-                        MultiPorposeSearch msearch = new MultiPorposeSearch(this.Text);
-                        if (this.Name.Contains("Tani"))
+                        MultiPorposeSearch msearch = new MultiPorposeSearch(this.Text);                       
+                        if (this.Name.Contains("Partition"))
+                            msearch.Access_Type = "101";
+                        else if (this.Name.Contains("Tani"))
                             msearch.Access_Type = "102";
                         else if (this.Name.Contains("Brand"))
                             msearch.Access_Type = "103";
@@ -246,7 +248,7 @@ namespace Shinyoh_Search
                         CD = cysearch.ChakuniYoteiNO;
                         break;
                     case Entity.SearchType.ScType.JuchuuNo:
-                        JuchuuNyuuryokuSearch obj_search = new JuchuuNyuuryokuSearch(this.Text);
+                        JuchuuNyuuryokuSearch obj_search = new JuchuuNyuuryokuSearch();
                         obj_search.ShowDialog();
                         CD = obj_search.JuchuuNo;
                         break;
@@ -261,7 +263,7 @@ namespace Shinyoh_Search
                         CD = idou_search.IdouNo;
                         break;
                     case Entity.SearchType.ScType.HacchuuNyuuryoku:
-                        HacchuuNyuuryokuSearch hacc_search = new HacchuuNyuuryokuSearch(this.Text);
+                        HacchuuNyuuryokuSearch hacc_search = new HacchuuNyuuryokuSearch();
                         hacc_search.ShowDialog();
                         CD = hacc_search.HacchuuNo;
                         break;

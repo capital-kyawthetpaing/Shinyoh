@@ -18,10 +18,9 @@ namespace Shinyoh_Search {
         public string soukoCD = string.Empty;
         public string soukoName = string.Empty;
 
-        public SoukoSearch(string SCD)
+        public SoukoSearch()
         {
             InitializeComponent();
-            txtSouko1.Text = txtSouko2.Text = SCD;
         }
         
         private void SoukoSearch_Load(object sender, EventArgs e)

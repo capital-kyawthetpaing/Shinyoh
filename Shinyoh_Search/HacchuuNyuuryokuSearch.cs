@@ -18,12 +18,10 @@ namespace Shinyoh_Search
     {
         CommonFunction cf;
         public string HacchuuNo = string.Empty;
-        public HacchuuNyuuryokuSearch(string HNo)
+        public HacchuuNyuuryokuSearch()
         {
             cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
-            txtNo11.Text = HNo;
-            txtNo12.Text = HNo;
         }
 
         private void HacchuuNyuuryokuSearch_Load(object sender, EventArgs e)

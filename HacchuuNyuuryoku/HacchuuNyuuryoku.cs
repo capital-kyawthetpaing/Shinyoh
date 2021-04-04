@@ -1081,7 +1081,7 @@ namespace HacchuuNyuuryoku
             int column = gv_HacchuuNyuuryoku.CurrentCell.ColumnIndex;
             if (gv_HacchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSoukoCD")
             {
-                SoukoSearch souko = new SoukoSearch(gv_HacchuuNyuuryoku.CurrentCell.EditedFormattedValue.ToString());
+                SoukoSearch souko = new SoukoSearch();
                 souko.ShowDialog();
 
                 if (!string.IsNullOrEmpty(souko.soukoCD))

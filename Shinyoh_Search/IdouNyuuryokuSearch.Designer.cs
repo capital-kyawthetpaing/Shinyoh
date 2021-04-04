@@ -618,7 +618,7 @@
             this.gv_Idou.ISRowColumn = null;
             this.gv_Idou.Location = new System.Drawing.Point(33, 137);
             this.gv_Idou.Name = "gv_Idou";
-            this.gv_Idou.Size = new System.Drawing.Size(923, 365);
+            this.gv_Idou.Size = new System.Drawing.Size(934, 365);
             this.gv_Idou.TabIndex = 6;
             this.gv_Idou.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gv_Idou_CellMouseDoubleClick);
             this.gv_Idou.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gv_Idou_KeyDown);
