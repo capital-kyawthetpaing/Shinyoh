@@ -189,7 +189,7 @@ namespace HacchuuSho
             this.txtHacchuuNO2.Name = "txtHacchuuNO2";
             this.txtHacchuuNO2.NextControl = null;
             this.txtHacchuuNO2.NextControlName = "txtInputDate1";
-            this.txtHacchuuNO2.SearchType = Entity.SearchType.ScType.JuchuuNo;
+            this.txtHacchuuNO2.SearchType = Entity.SearchType.ScType.HacchuuNyuuryoku;
             this.txtHacchuuNO2.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO2.TabIndex = 5;
             this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -220,7 +220,7 @@ namespace HacchuuSho
             this.txtHacchuuNO1.Name = "txtHacchuuNO1";
             this.txtHacchuuNO1.NextControl = null;
             this.txtHacchuuNO1.NextControlName = "txtHacchuuNO2";
-            this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.JuchuuNo;
+            this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.HacchuuNyuuryoku;
             this.txtHacchuuNO1.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO1.TabIndex = 4;
             this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -614,6 +614,7 @@ namespace HacchuuSho
             this.txtYearTerm.SearchType = Entity.SearchType.ScType.None;
             this.txtYearTerm.Size = new System.Drawing.Size(50, 19);
             this.txtYearTerm.TabIndex = 9;
+            this.txtYearTerm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtYearTerm.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label3
@@ -774,7 +775,7 @@ namespace HacchuuSho
             this.lblHacchuuNO.Name = "lblHacchuuNO";
             this.lblHacchuuNO.Size = new System.Drawing.Size(100, 19);
             this.lblHacchuuNO.TabIndex = 80;
-            this.lblHacchuuNO.Text = "受注番号";
+            this.lblHacchuuNO.Text = "発注番号";
             this.lblHacchuuNO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1

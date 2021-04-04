@@ -246,7 +246,7 @@ namespace Shinyoh_Search
                         CD = cysearch.ChakuniYoteiNO;
                         break;
                     case Entity.SearchType.ScType.JuchuuNo:
-                        JuchuuNyuuryokuSearch obj_search = new JuchuuNyuuryokuSearch();
+                        JuchuuNyuuryokuSearch obj_search = new JuchuuNyuuryokuSearch(this.Text);
                         obj_search.ShowDialog();
                         CD = obj_search.JuchuuNo;
                         break;

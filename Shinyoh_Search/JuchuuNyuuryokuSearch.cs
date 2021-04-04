@@ -18,10 +18,11 @@ namespace Shinyoh_Search
     {
         CommonFunction cf;
         public string JuchuuNo = string.Empty;
-        public JuchuuNyuuryokuSearch()
+        public JuchuuNyuuryokuSearch(string JNO)
         {
             cf = new CommonFunction();           //Task no. 147 - tza
             InitializeComponent();
+            txtJuchuuNoFrom.Text = txtJuchuuNoTo.Text = JNO;
         }
 
         private void JuchuuNyuuryokuSearch_Load(object sender, EventArgs e)
