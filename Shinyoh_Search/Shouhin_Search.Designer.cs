@@ -149,7 +149,7 @@
             this.txtSize.MoveNext = true;
             this.txtSize.Name = "txtSize";
             this.txtSize.NextControl = null;
-            this.txtSize.NextControlName = null;
+            this.txtSize.NextControlName = "btn_F11";
             this.txtSize.SearchType = Entity.SearchType.ScType.None;
             this.txtSize.Size = new System.Drawing.Size(110, 19);
             this.txtSize.TabIndex = 33;
@@ -187,7 +187,7 @@
             this.txtBrand1.MoveNext = true;
             this.txtBrand1.Name = "txtBrand1";
             this.txtBrand1.NextControl = null;
-            this.txtBrand1.NextControlName = "txtSize";
+            this.txtBrand1.NextControlName = "txtRemarks";
             this.txtBrand1.SearchType = Entity.SearchType.ScType.None;
             this.txtBrand1.Size = new System.Drawing.Size(80, 19);
             this.txtBrand1.TabIndex = 31;
@@ -260,7 +260,7 @@
             this.txtKanaName.MoveNext = true;
             this.txtKanaName.Name = "txtKanaName";
             this.txtKanaName.NextControl = null;
-            this.txtKanaName.NextControlName = "txtBrand";
+            this.txtKanaName.NextControlName = "txtJANCD";
             this.txtKanaName.SearchType = Entity.SearchType.ScType.None;
             this.txtKanaName.Size = new System.Drawing.Size(323, 19);
             this.txtKanaName.TabIndex = 27;
@@ -298,7 +298,7 @@
             this.txtColor.MoveNext = true;
             this.txtColor.Name = "txtColor";
             this.txtColor.NextControl = null;
-            this.txtColor.NextControlName = "txtKanaName";
+            this.txtColor.NextControlName = "txtSize";
             this.txtColor.SearchType = Entity.SearchType.ScType.None;
             this.txtColor.Size = new System.Drawing.Size(110, 19);
             this.txtColor.TabIndex = 25;
@@ -326,7 +326,7 @@
             this.chkFW.MoveNext = true;
             this.chkFW.Name = "chkFW";
             this.chkFW.NextControl = null;
-            this.chkFW.NextControlName = "txtColor";
+            this.chkFW.NextControlName = "txtBrand";
             this.chkFW.Size = new System.Drawing.Size(40, 19);
             this.chkFW.TabIndex = 23;
             this.chkFW.Text = "FW";
@@ -449,7 +449,7 @@
             this.txtProductName.MoveNext = true;
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.NextControl = null;
-            this.txtProductName.NextControlName = "txtExhibition";
+            this.txtProductName.NextControlName = "txtKanaName";
             this.txtProductName.SearchType = Entity.SearchType.ScType.None;
             this.txtProductName.Size = new System.Drawing.Size(323, 19);
             this.txtProductName.TabIndex = 16;
@@ -471,6 +471,7 @@
             // txtChangeDate
             // 
             this.txtChangeDate.AllowMinus = false;
+            this.txtChangeDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.txtChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtChangeDate.DecimalPlace = 0;
             this.txtChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
@@ -528,7 +529,7 @@
             this.txtRemarks.MoveNext = true;
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.NextControl = null;
-            this.txtRemarks.NextControlName = "txtProductName";
+            this.txtRemarks.NextControlName = "txtColor";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
             this.txtRemarks.Size = new System.Drawing.Size(300, 19);
             this.txtRemarks.TabIndex = 12;
@@ -566,7 +567,7 @@
             this.txtJANCD1.MoveNext = true;
             this.txtJANCD1.Name = "txtJANCD1";
             this.txtJANCD1.NextControl = null;
-            this.txtJANCD1.NextControlName = "txtRemarks";
+            this.txtJANCD1.NextControlName = "txtExhibition";
             this.txtJANCD1.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD1.Size = new System.Drawing.Size(110, 19);
             this.txtJANCD1.TabIndex = 10;
@@ -639,7 +640,7 @@
             this.txtHinbanCD1.MoveNext = true;
             this.txtHinbanCD1.Name = "txtHinbanCD1";
             this.txtHinbanCD1.NextControl = null;
-            this.txtHinbanCD1.NextControlName = "txtJANCD";
+            this.txtHinbanCD1.NextControlName = "txtProductName";
             this.txtHinbanCD1.SearchType = Entity.SearchType.ScType.None;
             this.txtHinbanCD1.Size = new System.Drawing.Size(150, 19);
             this.txtHinbanCD1.TabIndex = 6;
@@ -700,7 +701,7 @@
             this.rdoAll.MoveNext = true;
             this.rdoAll.Name = "rdoAll";
             this.rdoAll.NextControl = null;
-            this.rdoAll.NextControlName = "txtProduct";
+            this.rdoAll.NextControlName = "txtHinbanCD";
             this.rdoAll.Size = new System.Drawing.Size(72, 19);
             this.rdoAll.TabIndex = 2;
             this.rdoAll.Text = "全て";
@@ -714,7 +715,7 @@
             this.rdoRecentRevisionDate.MoveNext = true;
             this.rdoRecentRevisionDate.Name = "rdoRecentRevisionDate";
             this.rdoRecentRevisionDate.NextControl = null;
-            this.rdoRecentRevisionDate.NextControlName = "txtProduct";
+            this.rdoRecentRevisionDate.NextControlName = "txtHinbanCD";
             this.rdoRecentRevisionDate.Size = new System.Drawing.Size(97, 19);
             this.rdoRecentRevisionDate.TabIndex = 1;
             this.rdoRecentRevisionDate.TabStop = true;

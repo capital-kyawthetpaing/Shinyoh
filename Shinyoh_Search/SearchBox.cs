@@ -167,7 +167,7 @@ namespace Shinyoh_Search
                         name = tokuisakiSearch.TokuisakiRyakuName;
                         break;
                     case Entity.SearchType.ScType.multiporpose:
-                        MultiPorposeSearch msearch = new MultiPorposeSearch();
+                        MultiPorposeSearch msearch = new MultiPorposeSearch(this.Text);
                         if (this.Name.Contains("Tani"))
                             msearch.Access_Type = "102";
                         else if (this.Name.Contains("Brand"))
@@ -261,7 +261,7 @@ namespace Shinyoh_Search
                         CD = idou_search.IdouNo;
                         break;
                     case Entity.SearchType.ScType.HacchuuNyuuryoku:
-                        HacchuuNyuuryokuSearch hacc_search = new HacchuuNyuuryokuSearch();
+                        HacchuuNyuuryokuSearch hacc_search = new HacchuuNyuuryokuSearch(this.Text);
                         hacc_search.ShowDialog();
                         CD = hacc_search.HacchuuNo;
                         break;

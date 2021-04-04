@@ -21,9 +21,10 @@ namespace Shinyoh_Search
         public string Char1 = string.Empty;
 
         public string Access_Type;
-        public MultiPorposeSearch()
+        public MultiPorposeSearch(string key)
         {
             InitializeComponent();
+            txtKey1.Text = txtKey2.Text = key;
             gvMultiporpose.ScrollBars = ScrollBars.Vertical;
         }
 
@@ -37,6 +38,7 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             gvMultiporpose.UseRowNo(true);
+            Access_Type = string.Empty;
             GridViewBind();
             txtID2.E106Check(true, txtID1, txtID2);
             txtKey2.E106Check(true, txtKey1, txtKey2);
@@ -93,6 +95,7 @@ namespace Shinyoh_Search
         {
             Access_Type = string.Empty;
             GridViewBind();
+            gvMultiporpose.Focus();
         }
 
         private void gvMultiporpose_KeyDown(object sender, KeyEventArgs e)
