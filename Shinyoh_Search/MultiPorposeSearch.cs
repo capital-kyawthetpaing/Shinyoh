@@ -79,7 +79,7 @@ namespace Shinyoh_Search
                 DataGridViewRow row = gvrow;
                 Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
                 Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
-                Char1 = gvMultiporpose.CurrentRow.Cells["colName"].Value.ToString();
+                Char1 = gvMultiporpose.CurrentRow.Cells["colChar1"].Value.ToString();
             }
             this.Close();
         }

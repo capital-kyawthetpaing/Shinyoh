@@ -44,6 +44,7 @@
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colChar1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvMultiporpose)).BeginInit();
             this.SuspendLayout();
@@ -275,7 +276,8 @@
             this.gvMultiporpose.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
             this.colKey,
-            this.colName});
+            this.colName,
+            this.colChar1});
             this.gvMultiporpose.IsErrorOccurs = false;
             this.gvMultiporpose.ISRowColumn = null;
             this.gvMultiporpose.Location = new System.Drawing.Point(17, 141);
@@ -302,11 +304,18 @@
             // 
             // colName
             // 
-            this.colName.DataPropertyName = "Char1";
+            this.colName.DataPropertyName = "IDName";
             this.colName.HeaderText = "ID名";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
             this.colName.Width = 285;
+            // 
+            // colChar1
+            // 
+            this.colChar1.DataPropertyName = "Char1";
+            this.colChar1.HeaderText = "Char1";
+            this.colChar1.Name = "colChar1";
+            this.colChar1.Visible = false;
             // 
             // MultiPorposeSearch
             // 
@@ -346,5 +355,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKey;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colChar1;
     }
 }

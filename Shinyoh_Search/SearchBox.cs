@@ -77,7 +77,15 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Kouriten:
                         colName = "KouritenRyakuName";
                         break;
-                    case Entity.SearchType.ScType.multiporpose:
+                    case Entity.SearchType.ScType.Brand:
+                    case Entity.SearchType.ScType.Partition:
+                    case Entity.SearchType.ScType.Tani:
+                    case Entity.SearchType.ScType.Color:
+                    case Entity.SearchType.ScType.Size:
+                    case Entity.SearchType.ScType.TaxRate:
+                    case Entity.SearchType.ScType.Evaluation:
+                    case Entity.SearchType.ScType.Management:
+                    case Entity.SearchType.ScType.Kubun:
                         colName = "Char1";
                         break;
                     case Entity.SearchType.ScType.Souko:

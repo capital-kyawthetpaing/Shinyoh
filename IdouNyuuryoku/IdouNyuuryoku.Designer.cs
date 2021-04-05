@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
@@ -202,7 +202,7 @@
             this.txtSizeNo.Name = "txtSizeNo";
             this.txtSizeNo.NextControl = null;
             this.txtSizeNo.NextControlName = "btnNameF10";
-            this.txtSizeNo.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtSizeNo.SearchType = Entity.SearchType.ScType.Size;
             this.txtSizeNo.Size = new System.Drawing.Size(100, 19);
             this.txtSizeNo.TabIndex = 17;
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -233,7 +233,7 @@
             this.txtColorNo.Name = "txtColorNo";
             this.txtColorNo.NextControl = null;
             this.txtColorNo.NextControlName = "txtSizeNo";
-            this.txtColorNo.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtColorNo.SearchType = Entity.SearchType.ScType.Color;
             this.txtColorNo.Size = new System.Drawing.Size(100, 19);
             this.txtColorNo.TabIndex = 16;
             this.txtColorNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -319,9 +319,9 @@
             // colIdouSuu
             // 
             this.colIdouSuu.DataPropertyName = "IdouSuu";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle1;
             this.colIdouSuu.HeaderText = "移動数";
             this.colIdouSuu.MaxInputLength = 5;
             this.colIdouSuu.Name = "colIdouSuu";
@@ -331,9 +331,9 @@
             // colGenkaTanka
             // 
             this.colGenkaTanka.DataPropertyName = "GenkaTanka";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            this.colGenkaTanka.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            this.colGenkaTanka.DefaultCellStyle = dataGridViewCellStyle2;
             this.colGenkaTanka.HeaderText = "原価単価";
             this.colGenkaTanka.MaxInputLength = 8;
             this.colGenkaTanka.Name = "colGenkaTanka";
@@ -342,9 +342,9 @@
             // colGenkaKingaku
             // 
             this.colGenkaKingaku.DataPropertyName = "GenkaKingaku";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            this.colGenkaKingaku.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            this.colGenkaKingaku.DefaultCellStyle = dataGridViewCellStyle3;
             this.colGenkaKingaku.HeaderText = "原価金額";
             this.colGenkaKingaku.MaxInputLength = 9;
             this.colGenkaKingaku.Name = "colGenkaKingaku";
@@ -547,7 +547,7 @@
             this.txtBrandCD.Name = "txtBrandCD";
             this.txtBrandCD.NextControl = null;
             this.txtBrandCD.NextControlName = "txtShouhinCD";
-            this.txtBrandCD.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtBrandCD.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrandCD.Size = new System.Drawing.Size(70, 19);
             this.txtBrandCD.TabIndex = 9;
             this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -612,7 +612,7 @@
             this.txtIdoukubun.Name = "txtIdoukubun";
             this.txtIdoukubun.NextControl = null;
             this.txtIdoukubun.NextControlName = "txtStaffCD";
-            this.txtIdoukubun.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtIdoukubun.SearchType = Entity.SearchType.ScType.Kubun;
             this.txtIdoukubun.Size = new System.Drawing.Size(30, 19);
             this.txtIdoukubun.TabIndex = 4;
             this.txtIdoukubun.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
