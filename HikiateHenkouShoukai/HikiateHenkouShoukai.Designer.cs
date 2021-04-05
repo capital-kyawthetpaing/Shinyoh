@@ -1496,7 +1496,7 @@
             this.chkSeasonFW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkSeasonFW.IsDatatableOccurs = null;
             this.chkSeasonFW.IsErrorOccurs = false;
-            this.chkSeasonFW.Location = new System.Drawing.Point(325, 65);
+            this.chkSeasonFW.Location = new System.Drawing.Point(277, 63);
             this.chkSeasonFW.MoveNext = true;
             this.chkSeasonFW.Name = "chkSeasonFW";
             this.chkSeasonFW.NextControl = null;
@@ -1512,7 +1512,7 @@
             this.chkSeasonSS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkSeasonSS.IsDatatableOccurs = null;
             this.chkSeasonSS.IsErrorOccurs = false;
-            this.chkSeasonSS.Location = new System.Drawing.Point(255, 65);
+            this.chkSeasonSS.Location = new System.Drawing.Point(227, 63);
             this.chkSeasonSS.MoveNext = true;
             this.chkSeasonSS.Name = "chkSeasonSS";
             this.chkSeasonSS.NextControl = null;
@@ -1526,7 +1526,7 @@
             // lblYearSign
             // 
             this.lblYearSign.AutoSize = true;
-            this.lblYearSign.Location = new System.Drawing.Point(202, 68);
+            this.lblYearSign.Location = new System.Drawing.Point(202, 65);
             this.lblYearSign.Name = "lblYearSign";
             this.lblYearSign.Size = new System.Drawing.Size(19, 13);
             this.lblYearSign.TabIndex = 51;

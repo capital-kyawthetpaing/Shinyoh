@@ -53,8 +53,8 @@ namespace HacchuuSho
             this.lblIssueDate = new Shinyoh_Controls.SLabel();
             this.txtYearTerm = new Shinyoh_Controls.STextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.chkFW = new System.Windows.Forms.CheckBox();
-            this.chkSS = new System.Windows.Forms.CheckBox();
+            this.chkFW = new Shinyoh_Controls.SCheckBox();
+            this.chkSS = new Shinyoh_Controls.SCheckBox();
             this.sLabel16 = new Shinyoh_Controls.SLabel();
             this.lblBrandName = new Shinyoh_Controls.SLabel();
             this.lblBrand = new Shinyoh_Controls.SLabel();
@@ -150,7 +150,7 @@ namespace HacchuuSho
             this.txtBrandCD.IsUseInitializedLayout = true;
             this.txtBrandCD.lblName = null;
             this.txtBrandCD.lblName1 = null;
-            this.txtBrandCD.Location = new System.Drawing.Point(125, 117);
+            this.txtBrandCD.Location = new System.Drawing.Point(125, 118);
             this.txtBrandCD.MaxLength = 10;
             this.txtBrandCD.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtBrandCD.MoveNext = true;
@@ -189,7 +189,7 @@ namespace HacchuuSho
             this.txtHacchuuNO2.Name = "txtHacchuuNO2";
             this.txtHacchuuNO2.NextControl = null;
             this.txtHacchuuNO2.NextControlName = "txtInputDate1";
-            this.txtHacchuuNO2.SearchType = Entity.SearchType.ScType.JuchuuNo;
+            this.txtHacchuuNO2.SearchType = Entity.SearchType.ScType.HacchuuNyuuryoku;
             this.txtHacchuuNO2.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO2.TabIndex = 5;
             this.txtHacchuuNO2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -220,7 +220,7 @@ namespace HacchuuSho
             this.txtHacchuuNO1.Name = "txtHacchuuNO1";
             this.txtHacchuuNO1.NextControl = null;
             this.txtHacchuuNO1.NextControlName = "txtHacchuuNO2";
-            this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.JuchuuNo;
+            this.txtHacchuuNO1.SearchType = Entity.SearchType.ScType.HacchuuNyuuryoku;
             this.txtHacchuuNO1.Size = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO1.TabIndex = 4;
             this.txtHacchuuNO1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -604,43 +604,55 @@ namespace HacchuuSho
             this.txtYearTerm.IsErrorOccurs = false;
             this.txtYearTerm.IsRequire = false;
             this.txtYearTerm.IsUseInitializedLayout = true;
-            this.txtYearTerm.Location = new System.Drawing.Point(565, 117);
+            this.txtYearTerm.Location = new System.Drawing.Point(565, 118);
             this.txtYearTerm.MaxLength = 4;
             this.txtYearTerm.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYearTerm.MoveNext = true;
             this.txtYearTerm.Name = "txtYearTerm";
             this.txtYearTerm.NextControl = null;
-            this.txtYearTerm.NextControlName = "txtIssueDate";
+            this.txtYearTerm.NextControlName = "chkSS";
             this.txtYearTerm.SearchType = Entity.SearchType.ScType.None;
             this.txtYearTerm.Size = new System.Drawing.Size(50, 19);
             this.txtYearTerm.TabIndex = 9;
+            this.txtYearTerm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtYearTerm.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(619, 120);
+            this.label3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(621, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(19, 15);
+            this.label3.Size = new System.Drawing.Size(17, 12);
             this.label3.TabIndex = 94;
             this.label3.Text = "年";
             // 
             // chkFW
             // 
-            this.chkFW.AutoSize = true;
-            this.chkFW.Location = new System.Drawing.Point(693, 117);
+            this.chkFW.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFW.IsDatatableOccurs = null;
+            this.chkFW.IsErrorOccurs = false;
+            this.chkFW.Location = new System.Drawing.Point(694, 117);
+            this.chkFW.MoveNext = true;
             this.chkFW.Name = "chkFW";
-            this.chkFW.Size = new System.Drawing.Size(44, 19);
+            this.chkFW.NextControl = null;
+            this.chkFW.NextControlName = "txtIssueDate";
+            this.chkFW.Size = new System.Drawing.Size(36, 19);
             this.chkFW.TabIndex = 11;
             this.chkFW.Text = "FW";
             this.chkFW.UseVisualStyleBackColor = true;
             // 
             // chkSS
             // 
-            this.chkSS.AutoSize = true;
+            this.chkSS.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSS.IsDatatableOccurs = null;
+            this.chkSS.IsErrorOccurs = false;
             this.chkSS.Location = new System.Drawing.Point(645, 117);
+            this.chkSS.MoveNext = true;
             this.chkSS.Name = "chkSS";
-            this.chkSS.Size = new System.Drawing.Size(42, 19);
+            this.chkSS.NextControl = null;
+            this.chkSS.NextControlName = "chkFW";
+            this.chkSS.Size = new System.Drawing.Size(36, 19);
             this.chkSS.TabIndex = 10;
             this.chkSS.Text = "SS";
             this.chkSS.UseVisualStyleBackColor = true;
@@ -651,7 +663,7 @@ namespace HacchuuSho
             this.sLabel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel16.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel16.Location = new System.Drawing.Point(465, 117);
+            this.sLabel16.Location = new System.Drawing.Point(465, 118);
             this.sLabel16.Name = "sLabel16";
             this.sLabel16.Size = new System.Drawing.Size(100, 19);
             this.sLabel16.TabIndex = 91;
@@ -664,7 +676,7 @@ namespace HacchuuSho
             this.lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblBrandName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBrandName.Location = new System.Drawing.Point(205, 117);
+            this.lblBrandName.Location = new System.Drawing.Point(205, 118);
             this.lblBrandName.Name = "lblBrandName";
             this.lblBrandName.Size = new System.Drawing.Size(200, 19);
             this.lblBrandName.TabIndex = 90;
@@ -763,7 +775,7 @@ namespace HacchuuSho
             this.lblHacchuuNO.Name = "lblHacchuuNO";
             this.lblHacchuuNO.Size = new System.Drawing.Size(100, 19);
             this.lblHacchuuNO.TabIndex = 80;
-            this.lblHacchuuNO.Text = "受注番号";
+            this.lblHacchuuNO.Text = "発注番号";
             this.lblHacchuuNO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
@@ -804,7 +816,7 @@ namespace HacchuuSho
             this.Rdo2.MoveNext = true;
             this.Rdo2.Name = "Rdo2";
             this.Rdo2.NextControl = null;
-            this.Rdo2.NextControlName = null;
+            this.Rdo2.NextControlName = "txtJuchuuNO1";
             this.Rdo2.Size = new System.Drawing.Size(100, 19);
             this.Rdo2.TabIndex = 1;
             this.Rdo2.Text = "発行済含む";
@@ -817,7 +829,7 @@ namespace HacchuuSho
             this.Rdo1.MoveNext = true;
             this.Rdo1.Name = "Rdo1";
             this.Rdo1.NextControl = null;
-            this.Rdo1.NextControlName = null;
+            this.Rdo1.NextControlName = "txtJuchuuNO1";
             this.Rdo1.Size = new System.Drawing.Size(110, 19);
             this.Rdo1.TabIndex = 0;
             this.Rdo1.Text = "未発行分のみ";
@@ -891,8 +903,8 @@ namespace HacchuuSho
         private Shinyoh_Controls.SLabel lblIssueDate;
         private Shinyoh_Controls.STextBox txtYearTerm;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox chkFW;
-        private System.Windows.Forms.CheckBox chkSS;
+        private Shinyoh_Controls.SCheckBox chkFW;
+        private Shinyoh_Controls.SCheckBox chkSS;
         private Shinyoh_Controls.SLabel sLabel16;
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.STextBox txtKanriNO;

@@ -31,5 +31,28 @@ BEGIN
 			RETURN;
 		end
 
-END
+		if @Errortype = 'E159'
+		begin 
+		if exists (select * from D_ShukkaSiziMeisai where ShukkaSiziNO=@ShukkaSiziNO and ShouhinCD=@ShouhinCD 
+		and ShukkaKanryouKBN = (select min(ShukkaKanryouKBN) from D_ShukkaSiziMeisai where ShukkaKanryouKBN=1))
+		 
+		begin
+			--not exist
+			select * from M_Message where MessageID = 'E159'
+			end
+			RETURN;
+		end
 
+		if @Errortype = 'E150'
+		begin
+		if exists (select * from D_ShukkaSiziMeisai where ShukkaSiziNO=@ShukkaSiziNO and ShouhinCD=@ShouhinCD
+		and ShukkaSiziSuu - ShukkaZumiSuu < @ShukkaSiziNO and ShukkaKanryouKBN = 0 )
+		begin
+			--not exist
+			select * from M_Message where MessageID = 'E150'
+			end
+			RETURN;
+		end
+
+	
+END

@@ -125,6 +125,7 @@ namespace Shinyoh_Search
         private void sButton2_Click(object sender, EventArgs e)
         {
             GridViewBind();
+            gvArrivalNo.Focus();
         }
         private void gvArrivalNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {

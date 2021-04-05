@@ -474,14 +474,14 @@
             this.lblYear.Size = new System.Drawing.Size(25, 19);
             this.lblYear.TabIndex = 127;
             this.lblYear.Text = "年";
-            this.lblYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblYear.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // chk_FW
             // 
             this.chk_FW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_FW.IsDatatableOccurs = null;
             this.chk_FW.IsErrorOccurs = false;
-            this.chk_FW.Location = new System.Drawing.Point(1180, 100);
+            this.chk_FW.Location = new System.Drawing.Point(1179, 98);
             this.chk_FW.MoveNext = true;
             this.chk_FW.Name = "chk_FW";
             this.chk_FW.NextControl = null;
@@ -496,7 +496,7 @@
             this.chk_SS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_SS.IsDatatableOccurs = null;
             this.chk_SS.IsErrorOccurs = false;
-            this.chk_SS.Location = new System.Drawing.Point(1134, 100);
+            this.chk_SS.Location = new System.Drawing.Point(1131, 98);
             this.chk_SS.MoveNext = true;
             this.chk_SS.Name = "chk_SS";
             this.chk_SS.NextControl = null;
