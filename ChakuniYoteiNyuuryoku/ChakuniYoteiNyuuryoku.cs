@@ -463,9 +463,9 @@ namespace ChakuniYoteiNyuuryoku
             txtChakuniYoteiNO.E133Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);//ktp add remove 133 check in new mode
             txtChakuniYoteiNO.E268Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);//ktp add remove 268 check in new mode
 
-            txtBrandCD.E101Check(true, "M_MultiPorpose", txtBrandCD, txtDate, null);
-            txtColorNo.E101Check(true, "M_MultiPorpose", txtColorNo, txtDate, null);
-            txtSizeNo.E101Check(true, "M_MultiPorpose", txtSizeNo, txtDate, null);
+            //txtBrandCD.E101Check(true, "M_MultiPorpose", txtBrandCD, txtDate, null);
+            //txtColorNo.E101Check(true, "M_MultiPorpose", txtColorNo, txtDate, null);
+            //txtSizeNo.E101Check(true, "M_MultiPorpose", txtSizeNo, txtDate, null);
         }
         private DataTable CreateTable_Detail()
         {
