@@ -65,6 +65,12 @@ namespace Shinyoh_Controls
 
         [Browsable(true)]
         [Category("Shinyoh Properties")]
+        [Description("Multipurpose ID value for Multipurpose Type")]
+        [DisplayName("MultipurposeID")]
+        public string MultiPurposeID { get; set; } = string.Empty;
+
+        [Browsable(true)]
+        [Category("Shinyoh Properties")]
         [Description("Allow Minus")]
         [DisplayName("AllowMinus")]
         public bool AllowMinus { get; set; } = false;

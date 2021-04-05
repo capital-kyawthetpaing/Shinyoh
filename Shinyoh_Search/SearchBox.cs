@@ -167,7 +167,7 @@ namespace Shinyoh_Search
                         name = tokuisakiSearch.TokuisakiRyakuName;
                         break;
                     case Entity.SearchType.ScType.multiporpose:
-                        MultiPorposeSearch msearch = new MultiPorposeSearch(this.Text);                       
+                        MultiPorposeSearch msearch = new MultiPorposeSearch();                       
                         if (this.Name.Contains("Partition"))
                             msearch.Access_Type = "101";
                         else if (this.Name.Contains("Tani"))

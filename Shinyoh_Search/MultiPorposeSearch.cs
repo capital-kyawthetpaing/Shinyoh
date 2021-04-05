@@ -21,10 +21,9 @@ namespace Shinyoh_Search
         public string Char1 = string.Empty;
 
         public string Access_Type;
-        public MultiPorposeSearch(string key)
+        public MultiPorposeSearch()
         {
             InitializeComponent();
-            txtKey1.Text = txtKey2.Text = key;
             gvMultiporpose.ScrollBars = ScrollBars.Vertical;
         }
 
