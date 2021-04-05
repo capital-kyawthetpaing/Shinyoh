@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CKM_CommonFunction;
+using BL;
 
 namespace Shinyoh_Details
 {
@@ -20,8 +21,10 @@ namespace Shinyoh_Details
         string YuuBinNO2 = string.Empty;
         string Address1 = string.Empty;
         string Address2 = string.Empty;
+        string KouritenCD = string.Empty;
         bool isEnable;
         CommonFunction cf = new CommonFunction();
+        JuchuuNyuuryokuBL bl = new JuchuuNyuuryokuBL();
         public KouritenDetail()
         {
             InitializeComponent();
@@ -53,6 +56,8 @@ namespace Shinyoh_Details
             //Get Data from JuchuuNyuuroku form
             Access_DB_Object(Access_Kouriten_obj);
 
+            KouritenCD = Access_Kouriten_obj.KouritenCD;
+            DataTable dt= bl.ShokutiFLG_Select(string.Empty,KouritenCD,string.Empty, "Kouriten");            
 
             if (!isEnable)
             {
@@ -61,15 +66,18 @@ namespace Shinyoh_Details
             }
             else
             {
-                if(Access_Kouriten_obj.ShokutiFLG.Equals("0"))
+              if(dt.Rows.Count > 0)
                 {
-                    cf.EnablePanel(Panel_Detail);
-                    SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
-                }
-                else
-                {
-                    cf.DisablePanel(Panel_Detail);
-                    SetButton(ButtonType.BType.Save, F12, "確定(F12)", false);
+                    if (dt.Rows[0]["ShokutiFLG"].ToString() == "1")
+                    {
+                        cf.EnablePanel(Panel_Detail);
+                        SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+                    }
+                    else
+                    {
+                        cf.DisablePanel(Panel_Detail);
+                        SetButton(ButtonType.BType.Save, F12, "確定(F12)", false);
+                    }
                 }
             }
         }

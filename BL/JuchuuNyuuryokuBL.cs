@@ -90,5 +90,17 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("Get_Max_HacchuuNO", GetConnectionString(), parameters);
             return dt;
         }
+        public DataTable ShokutiFLG_Select(string TokuisakiCD, string KouritenCD, string SiiresakiCD, string Condition)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = TokuisakiCD };
+            parameters[1] = new SqlParameter("@KouritenCD", SqlDbType.VarChar) { Value = KouritenCD };
+            parameters[2] = new SqlParameter("@SiiresakiCD", SqlDbType.VarChar) { Value = SiiresakiCD };
+            parameters[3] = new SqlParameter("@Condition", SqlDbType.VarChar) { Value = Condition };
+
+            DataTable dt = ckmdl.SelectDatatable("ShokutiFLG_Select", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }
