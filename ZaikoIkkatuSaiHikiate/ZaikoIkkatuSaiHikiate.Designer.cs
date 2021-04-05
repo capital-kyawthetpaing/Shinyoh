@@ -74,7 +74,7 @@
             this.lbl1.ForeColor = System.Drawing.Color.Red;
             this.lbl1.Location = new System.Drawing.Point(50, 25);
             this.lbl1.Name = "lbl1";
-            this.lbl1.Size = new System.Drawing.Size(800, 25);
+            this.lbl1.Size = new System.Drawing.Size(449, 23);
             this.lbl1.TabIndex = 0;
             this.lbl1.Text = "※この処理は取り消すことができません。";
             this.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
