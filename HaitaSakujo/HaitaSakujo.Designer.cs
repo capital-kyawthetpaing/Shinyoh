@@ -102,7 +102,6 @@
             this.txt_Program.MaxLength = 60;
             this.txt_Program.MinimumSize = new System.Drawing.Size(80, 19);
             this.txt_Program.MoveNext = true;
-            this.txt_Program.MultiPurposeID = 0;
             this.txt_Program.Name = "txt_Program";
             this.txt_Program.NextControl = null;
             this.txt_Program.NextControlName = "txt_Time1";
@@ -134,7 +133,6 @@
             this.txt_dataPartition.MaxLength = 3;
             this.txt_dataPartition.MinimumSize = new System.Drawing.Size(60, 19);
             this.txt_dataPartition.MoveNext = true;
-            this.txt_dataPartition.MultiPurposeID = 101;
             this.txt_dataPartition.Name = "txt_dataPartition";
             this.txt_dataPartition.NextControl = null;
             this.txt_dataPartition.NextControlName = "txt_InputPerson";
@@ -162,7 +160,6 @@
             this.txt_Time1.MaxLength = 10;
             this.txt_Time1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txt_Time1.MoveNext = true;
-            this.txt_Time1.MultiPurposeID = 0;
             this.txt_Time1.Name = "txt_Time1";
             this.txt_Time1.NextControl = null;
             this.txt_Time1.NextControlName = "txt_HM1";
@@ -267,7 +264,6 @@
             this.txt_HM1.MaxLength = 5;
             this.txt_HM1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txt_HM1.MoveNext = true;
-            this.txt_HM1.MultiPurposeID = 0;
             this.txt_HM1.Name = "txt_HM1";
             this.txt_HM1.NextControl = null;
             this.txt_HM1.NextControlName = "txt_Time2";
@@ -304,7 +300,6 @@
             this.txt_HM2.MaxLength = 5;
             this.txt_HM2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txt_HM2.MoveNext = true;
-            this.txt_HM2.MultiPurposeID = 0;
             this.txt_HM2.Name = "txt_HM2";
             this.txt_HM2.NextControl = null;
             this.txt_HM2.NextControlName = "BtnF10";
@@ -332,7 +327,6 @@
             this.txt_Time2.MaxLength = 10;
             this.txt_Time2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txt_Time2.MoveNext = true;
-            this.txt_Time2.MultiPurposeID = 0;
             this.txt_Time2.Name = "txt_Time2";
             this.txt_Time2.NextControl = null;
             this.txt_Time2.NextControlName = "txt_HM2";
@@ -363,7 +357,6 @@
             this.txt_InputPerson.MaxLength = 10;
             this.txt_InputPerson.MinimumSize = new System.Drawing.Size(90, 19);
             this.txt_InputPerson.MoveNext = true;
-            this.txt_InputPerson.MultiPurposeID = 0;
             this.txt_InputPerson.Name = "txt_InputPerson";
             this.txt_InputPerson.NextControl = null;
             this.txt_InputPerson.NextControlName = "txt_Program";
@@ -391,7 +384,6 @@
             this.txt_date.MaxLength = 10;
             this.txt_date.MinimumSize = new System.Drawing.Size(100, 19);
             this.txt_date.MoveNext = true;
-            this.txt_date.MultiPurposeID = 0;
             this.txt_date.Name = "txt_date";
             this.txt_date.NextControl = null;
             this.txt_date.NextControlName = "txt_HM1";

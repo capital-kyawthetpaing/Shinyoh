@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.txtArrivalDate = new Shinyoh_Controls.STextBox();
             this.txtDescription = new Shinyoh_Controls.STextBox();
@@ -145,7 +145,6 @@
             this.txtArrivalDate.MaxLength = 10;
             this.txtArrivalDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtArrivalDate.MoveNext = true;
-            this.txtArrivalDate.MultiPurposeID = 0;
             this.txtArrivalDate.Name = "txtArrivalDate";
             this.txtArrivalDate.NextControl = null;
             this.txtArrivalDate.NextControlName = "txtSiiresaki";
@@ -173,7 +172,6 @@
             this.txtDescription.MaxLength = 80;
             this.txtDescription.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDescription.MoveNext = true;
-            this.txtDescription.MultiPurposeID = 0;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.NextControl = null;
             this.txtDescription.NextControlName = "txtScheduled";
@@ -316,7 +314,6 @@
             this.txtShouhinName.MaxLength = 80;
             this.txtShouhinName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhinName.MoveNext = true;
-            this.txtShouhinName.MultiPurposeID = 0;
             this.txtShouhinName.Name = "txtShouhinName";
             this.txtShouhinName.NextControl = null;
             this.txtShouhinName.NextControlName = "txtControlNo";
@@ -342,7 +339,6 @@
             this.txtControlNo.MaxLength = 10;
             this.txtControlNo.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtControlNo.MoveNext = true;
-            this.txtControlNo.MultiPurposeID = 0;
             this.txtControlNo.Name = "txtControlNo";
             this.txtControlNo.NextControl = this.txtJANCD;
             this.txtControlNo.NextControlName = null;
@@ -368,7 +364,6 @@
             this.txtJANCD.MaxLength = 13;
             this.txtJANCD.MinimumSize = new System.Drawing.Size(120, 19);
             this.txtJANCD.MoveNext = true;
-            this.txtJANCD.MultiPurposeID = 0;
             this.txtJANCD.Name = "txtJANCD";
             this.txtJANCD.NextControl = this.sbBrand;
             this.txtJANCD.NextControlName = null;
@@ -398,11 +393,10 @@
             this.sbBrand.MaxLength = 10;
             this.sbBrand.MinimumSize = new System.Drawing.Size(80, 19);
             this.sbBrand.MoveNext = true;
-            this.sbBrand.MultiPurposeID = 103;
             this.sbBrand.Name = "sbBrand";
             this.sbBrand.NextControl = null;
             this.sbBrand.NextControlName = "txtColorNO";
-            this.sbBrand.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.sbBrand.SearchType = Entity.SearchType.ScType.Brand;
             this.sbBrand.Size = new System.Drawing.Size(80, 19);
             this.sbBrand.TabIndex = 13;
             this.sbBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -549,15 +543,15 @@
             // gvChakuniNyuuryoku
             // 
             this.gvChakuniNyuuryoku.AllowUserToAddRows = false;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvChakuniNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvChakuniNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvChakuniNyuuryoku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvChakuniNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.HinbanCD,
@@ -629,8 +623,8 @@
             // ChakuniYoteiDate
             // 
             this.ChakuniYoteiDate.DataPropertyName = "ChakuniYoteiDate";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ChakuniYoteiDate.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ChakuniYoteiDate.DefaultCellStyle = dataGridViewCellStyle2;
             this.ChakuniYoteiDate.HeaderText = "着荷予定日";
             this.ChakuniYoteiDate.Name = "ChakuniYoteiDate";
             this.ChakuniYoteiDate.ReadOnly = true;
@@ -638,8 +632,8 @@
             // ChakuniYoteiSuu
             // 
             this.ChakuniYoteiSuu.DataPropertyName = "ChakuniYoteiSuu";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle3;
             this.ChakuniYoteiSuu.HeaderText = "着荷予定数";
             this.ChakuniYoteiSuu.Name = "ChakuniYoteiSuu";
             this.ChakuniYoteiSuu.ReadOnly = true;
@@ -647,17 +641,17 @@
             // ChakuniZumiSuu
             // 
             this.ChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
             this.ChakuniZumiSuu.HeaderText = "着荷済数";
             this.ChakuniZumiSuu.Name = "ChakuniZumiSuu";
             // 
             // ChakuniSuu
             // 
             this.ChakuniSuu.DataPropertyName = "ChakuniSuu";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.NullValue = "0";
-            this.ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.NullValue = "0";
+            this.ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle5;
             this.ChakuniSuu.HeaderText = "今回着荷数";
             this.ChakuniSuu.Name = "ChakuniSuu";
             // 
@@ -856,7 +850,6 @@
             this.txtScheduled.Location = new System.Drawing.Point(270, 133);
             this.txtScheduled.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtScheduled.MoveNext = true;
-            this.txtScheduled.MultiPurposeID = 0;
             this.txtScheduled.Name = "txtScheduled";
             this.txtScheduled.NextControl = null;
             this.txtScheduled.NextControlName = "txtShouhinCD";
@@ -885,15 +878,14 @@
             this.txtSizeNo.IsUseInitializedLayout = true;
             this.txtSizeNo.lblName = null;
             this.txtSizeNo.lblName1 = null;
-            this.txtSizeNo.Location = new System.Drawing.Point(1363, 159);
+            this.txtSizeNo.Location = new System.Drawing.Point(1356, 159);
             this.txtSizeNo.MaxLength = 13;
             this.txtSizeNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSizeNo.MoveNext = true;
-            this.txtSizeNo.MultiPurposeID = 105;
             this.txtSizeNo.Name = "txtSizeNo";
             this.txtSizeNo.NextControl = null;
             this.txtSizeNo.NextControlName = "btnDisplay";
-            this.txtSizeNo.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtSizeNo.SearchType = Entity.SearchType.ScType.Size;
             this.txtSizeNo.Size = new System.Drawing.Size(100, 19);
             this.txtSizeNo.TabIndex = 18;
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -922,11 +914,10 @@
             this.txtColorNo.MaxLength = 13;
             this.txtColorNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtColorNo.MoveNext = true;
-            this.txtColorNo.MultiPurposeID = 104;
             this.txtColorNo.Name = "txtColorNo";
             this.txtColorNo.NextControl = null;
             this.txtColorNo.NextControlName = "txtYearTerm";
-            this.txtColorNo.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtColorNo.SearchType = Entity.SearchType.ScType.Color;
             this.txtColorNo.Size = new System.Drawing.Size(100, 19);
             this.txtColorNo.TabIndex = 14;
             this.txtColorNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -954,7 +945,6 @@
             this.txtShouhinCD.MaxLength = 20;
             this.txtShouhinCD.MinimumSize = new System.Drawing.Size(150, 19);
             this.txtShouhinCD.MoveNext = true;
-            this.txtShouhinCD.MultiPurposeID = 0;
             this.txtShouhinCD.Name = "txtShouhinCD";
             this.txtShouhinCD.NextControl = null;
             this.txtShouhinCD.NextControlName = "txtShouhinName";
@@ -1012,7 +1002,6 @@
             this.txtYearTerm.MaxLength = 4;
             this.txtYearTerm.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYearTerm.MoveNext = true;
-            this.txtYearTerm.MultiPurposeID = 0;
             this.txtYearTerm.Name = "txtYearTerm";
             this.txtYearTerm.NextControl = null;
             this.txtYearTerm.NextControlName = "chkSS";
@@ -1043,7 +1032,6 @@
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtStaffCD.MoveNext = true;
-            this.txtStaffCD.MultiPurposeID = 0;
             this.txtStaffCD.Name = "txtStaffCD";
             this.txtStaffCD.NextControl = null;
             this.txtStaffCD.NextControlName = "txtSouko";
@@ -1075,7 +1063,6 @@
             this.txtSiiresaki.MaxLength = 10;
             this.txtSiiresaki.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtSiiresaki.MoveNext = true;
-            this.txtSiiresaki.MultiPurposeID = 0;
             this.txtSiiresaki.Name = "txtSiiresaki";
             this.txtSiiresaki.NextControl = null;
             this.txtSiiresaki.NextControlName = "txtStaffCD";
@@ -1108,7 +1095,6 @@
             this.txtSouko.MaxLength = 10;
             this.txtSouko.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtSouko.MoveNext = true;
-            this.txtSouko.MultiPurposeID = 0;
             this.txtSouko.Name = "txtSouko";
             this.txtSouko.NextControl = null;
             this.txtSouko.NextControlName = "txtDescription";
@@ -1153,7 +1139,6 @@
             this.txtArrivalNO.MaxLength = 12;
             this.txtArrivalNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtArrivalNO.MoveNext = true;
-            this.txtArrivalNO.MultiPurposeID = 0;
             this.txtArrivalNO.Name = "txtArrivalNO";
             this.txtArrivalNO.NextControl = null;
             this.txtArrivalNO.NextControlName = "txtArrivalDate";
@@ -1186,7 +1171,6 @@
             this.txtScheduledNo.MaxLength = 12;
             this.txtScheduledNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtScheduledNo.MoveNext = true;
-            this.txtScheduledNo.MultiPurposeID = 0;
             this.txtScheduledNo.Name = "txtScheduledNo";
             this.txtScheduledNo.NextControl = null;
             this.txtScheduledNo.NextControlName = "txtShouhinCD";

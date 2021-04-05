@@ -125,7 +125,27 @@ namespace Shinyoh_Controls
                         break;
                     case "M_MultiPorpose":
                         multipurposeEntity m_obj = new multipurposeEntity();
-                        m_obj.id = sTextBox.MultiPurposeID;
+                        int multiVal = 0;
+                        if (sTextBox.SearchType == SearchType.ScType.Brand)
+                            multiVal = 103;
+                        else if (sTextBox.SearchType == SearchType.ScType.Partition)
+                            multiVal = 101;
+                        else if (sTextBox.SearchType == SearchType.ScType.Tani)
+                            multiVal = 102;
+                        else if (sTextBox.SearchType == SearchType.ScType.Color)
+                            multiVal = 104;
+                        else if (sTextBox.SearchType == SearchType.ScType.Size)
+                            multiVal = 105;
+                        else if (sTextBox.SearchType == SearchType.ScType.TaxRate)
+                            multiVal = 221;
+                        else if (sTextBox.SearchType == SearchType.ScType.Evaluation)
+                            multiVal = 106;
+                        else if (sTextBox.SearchType == SearchType.ScType.Management)
+                            multiVal = 107;
+                        else if (sTextBox.SearchType == SearchType.ScType.Kubun)
+                            multiVal = 109;
+
+                        m_obj.id = multiVal;
                         m_obj.ErrorType = "E101";
                         m_obj.Key = sTextBox.ctrlE101_1.Text;
                         multipurposeBL m_BL = new multipurposeBL();
