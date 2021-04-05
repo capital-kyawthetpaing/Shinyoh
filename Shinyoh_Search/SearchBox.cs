@@ -167,25 +167,26 @@ namespace Shinyoh_Search
                         name = tokuisakiSearch.TokuisakiRyakuName;
                         break;
                     case Entity.SearchType.ScType.multiporpose:
-                        MultiPorposeSearch msearch = new MultiPorposeSearch();                       
-                        if (this.Name.Contains("Partition"))
-                            msearch.Access_Type = "101";
-                        else if (this.Name.Contains("Tani"))
-                            msearch.Access_Type = "102";
-                        else if (this.Name.Contains("Brand"))
-                            msearch.Access_Type = "103";
-                        else if (this.Name.Contains("Color"))
-                            msearch.Access_Type = "104";
-                        else if (this.Name.Contains("Size"))
-                            msearch.Access_Type = "105";
-                        else if (this.Name.Contains("TaxRate"))
-                            msearch.Access_Type = "221";
-                        else if (this.Name.Contains("Evaluation"))
-                            msearch.Access_Type = "106";
-                        else if (this.Name.Contains("Management"))
-                            msearch.Access_Type = "107";
-                        else if (this.Name.Contains("kubun"))
-                            msearch.Access_Type = "109";
+                        MultiPorposeSearch msearch = new MultiPorposeSearch();
+                        msearch.Access_Type = this.MultiPurposeID.ToString();
+                        //if (this.Name.Contains("Partition"))
+                        //    msearch.Access_Type = "101";
+                        //else if (this.Name.Contains("Tani"))
+                        //    msearch.Access_Type = "102";
+                        //else if (this.Name.Contains("Brand"))
+                        //    msearch.Access_Type = "103";
+                        //else if (this.Name.Contains("Color"))
+                        //    msearch.Access_Type = "104";
+                        //else if (this.Name.Contains("Size"))
+                        //    msearch.Access_Type = "105";
+                        //else if (this.Name.Contains("TaxRate"))
+                        //    msearch.Access_Type = "221";
+                        //else if (this.Name.Contains("Evaluation"))
+                        //    msearch.Access_Type = "106";
+                        //else if (this.Name.Contains("Management"))
+                        //    msearch.Access_Type = "107";
+                        //else if (this.Name.Contains("kubun"))
+                        //    msearch.Access_Type = "109";
                         msearch.ShowDialog();
                         //CD = msearch.Id;
                         //CDate = msearch.Key;

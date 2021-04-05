@@ -125,7 +125,7 @@ namespace Shinyoh_Controls
                         break;
                     case "M_MultiPorpose":
                         multipurposeEntity m_obj = new multipurposeEntity();
-                        m_obj.id = 109;
+                        m_obj.id = sTextBox.MultiPurposeID;
                         m_obj.ErrorType = "E101";
                         m_obj.Key = sTextBox.ctrlE101_1.Text;
                         multipurposeBL m_BL = new multipurposeBL();
