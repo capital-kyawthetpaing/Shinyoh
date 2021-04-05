@@ -508,7 +508,7 @@
             this.txtIManagement.Name = "txtIManagement";
             this.txtIManagement.NextControl = null;
             this.txtIManagement.NextControlName = "txtMajorSuppliers";
-            this.txtIManagement.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtIManagement.SearchType = Entity.SearchType.ScType.Management;
             this.txtIManagement.Size = new System.Drawing.Size(30, 19);
             this.txtIManagement.TabIndex = 19;
             this.txtIManagement.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -539,7 +539,7 @@
             this.txtIEvaluation.Name = "txtIEvaluation";
             this.txtIEvaluation.NextControl = null;
             this.txtIEvaluation.NextControlName = "txtIManagement";
-            this.txtIEvaluation.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtIEvaluation.SearchType = Entity.SearchType.ScType.Evaluation;
             this.txtIEvaluation.Size = new System.Drawing.Size(30, 19);
             this.txtIEvaluation.TabIndex = 18;
             this.txtIEvaluation.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -570,7 +570,7 @@
             this.txtTaxRate.Name = "txtTaxRate";
             this.txtTaxRate.NextControl = null;
             this.txtTaxRate.NextControlName = "txtIEvaluation";
-            this.txtTaxRate.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtTaxRate.SearchType = Entity.SearchType.ScType.TaxRate;
             this.txtTaxRate.Size = new System.Drawing.Size(30, 19);
             this.txtTaxRate.TabIndex = 17;
             this.txtTaxRate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -632,7 +632,7 @@
             this.txtTani.Name = "txtTani";
             this.txtTani.NextControl = null;
             this.txtTani.NextControlName = "txtBrand";
-            this.txtTani.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtTani.SearchType = Entity.SearchType.ScType.Tani;
             this.txtTani.Size = new System.Drawing.Size(50, 19);
             this.txtTani.TabIndex = 10;
             this.txtTani.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -1626,7 +1626,7 @@
             this.txtCopySize.Name = "txtCopySize";
             this.txtCopySize.NextControl = null;
             this.txtCopySize.NextControlName = "txtCopyChangeDate";
-            this.txtCopySize.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtCopySize.SearchType = Entity.SearchType.ScType.Size;
             this.txtCopySize.Size = new System.Drawing.Size(95, 19);
             this.txtCopySize.TabIndex = 7;
             this.txtCopySize.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -1657,7 +1657,7 @@
             this.txtCopyColor.Name = "txtCopyColor";
             this.txtCopyColor.NextControl = null;
             this.txtCopyColor.NextControlName = "txtCopySize";
-            this.txtCopyColor.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtCopyColor.SearchType = Entity.SearchType.ScType.Color;
             this.txtCopyColor.Size = new System.Drawing.Size(95, 19);
             this.txtCopyColor.TabIndex = 6;
             this.txtCopyColor.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
