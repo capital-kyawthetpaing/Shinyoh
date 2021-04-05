@@ -19,6 +19,7 @@ namespace HaitaSakujo
         BaseEntity base_Entity;
         CommonFunction cf;
         BaseBL bll;
+        DataTable dtr;
         public HaitaSakujo()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace HaitaSakujo
 
         private void HaitaSakujo_Load(object sender, EventArgs e)
         {
+            dtr = new DataTable();
             ProgramID = "HaitaSakujo";
             StartProgram();
             base_Entity = _GetBaseData();
@@ -132,7 +134,8 @@ namespace HaitaSakujo
             //    return;
             //}
             var dt = new DataTable();
-            dt = (gvHaitaSakujo.DataSource as DataTable).Select("Target = 1").CopyToDataTable();
+            //   dt = (gvHaitaSakujo.DataSource as DataTable).Select("Target = 1").CopyToDataTable();
+            dt = GetRes();
             HaitaSakujoBL bl = new HaitaSakujoBL();
             HaitaSakujoEntity obj = new HaitaSakujoEntity();
             obj.xml = DataTableToXml(dt);
@@ -143,17 +146,27 @@ namespace HaitaSakujo
             if (bl.HaitaSakujo_ClearExclusive(obj))
             {
                 bll.ShowMessage("I101");
-
-                foreach (DataRow dr in (gvHaitaSakujo.DataSource as DataTable).Select("Target = 1"))
-                    dr.Delete();
-                gvHaitaSakujo.Refresh();
-                gvHaitaSakujo.RefreshEdit();
                 try
                 {
                     cf.Clear(PanelDetail);
+                    F10.PerformClick();
                 }
                 catch { }
             }
+        }
+        private DataTable GetRes()
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("DataKBN",typeof(string));
+            dt.Columns.Add("Number", typeof(string));
+            foreach (DataGridViewRow row in gvHaitaSakujo.Rows)
+            {
+                if ((row.Cells["col_Target"] as DataGridViewCheckBoxCell).Value.ToString() == "1")
+                {
+                    dt.Rows.Add(new object[] { (row.Cells["col_DataPartition"] as DataGridViewTextBoxCell).Value.ToString(), (row.Cells["col_ExTargetNo"] as DataGridViewTextBoxCell).Value.ToString() });
+                }
+            }
+            return dt;
         }
         public String DataTableToXml(DataTable dt)
         {
@@ -175,7 +188,7 @@ namespace HaitaSakujo
             obj.OperateDataTime2 = txt_Time2.Text + txt_HM2.Text;
             //obj.OperateDataTimeHM1 = txt_HM1.Text;
             //obj.OperateDataTimeHM2 = txt_HM2.Text;
-            DataTable dt = bl.HaitaSakujo_Display(obj);
+            DataTable dt= dtr= bl.HaitaSakujo_Display(obj);
             gvHaitaSakujo.DataSource = dt;
         }
         private void OnCheck()
