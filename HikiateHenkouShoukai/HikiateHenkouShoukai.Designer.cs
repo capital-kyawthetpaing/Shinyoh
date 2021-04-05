@@ -239,7 +239,7 @@
             this.txtSizeNO.Name = "txtSizeNO";
             this.txtSizeNO.NextControl = null;
             this.txtSizeNO.NextControlName = "chkType1";
-            this.txtSizeNO.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtSizeNO.SearchType = Entity.SearchType.ScType.Size;
             this.txtSizeNO.Size = new System.Drawing.Size(100, 19);
             this.txtSizeNO.TabIndex = 24;
             this.txtSizeNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -270,7 +270,7 @@
             this.txtColorNO.Name = "txtColorNO";
             this.txtColorNO.NextControl = null;
             this.txtColorNO.NextControlName = "txtSizeNO";
-            this.txtColorNO.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtColorNO.SearchType = Entity.SearchType.ScType.Color;
             this.txtColorNO.Size = new System.Drawing.Size(100, 19);
             this.txtColorNO.TabIndex = 23;
             this.txtColorNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -501,7 +501,7 @@
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.NextControl = null;
             this.txtBrand.NextControlName = "txtYearTerm";
-            this.txtBrand.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtBrand.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrand.Size = new System.Drawing.Size(90, 19);
             this.txtBrand.TabIndex = 4;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
