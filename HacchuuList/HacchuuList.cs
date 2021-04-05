@@ -103,7 +103,9 @@ namespace HacchuuList
 
             txtJuchuuNO2.E106Check(true, txtJuchuuNO1, txtJuchuuNO2);
 
-            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtTempDate, null);           
+            txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtTempDate, null);
+
+            txtBrandCD.E101Check(true, "M_MultiPorpose", txtBrandCD, txtTempDate, null);
         }
         private void Clear()
         {

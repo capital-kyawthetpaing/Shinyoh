@@ -788,7 +788,7 @@
             this.lblYear.Size = new System.Drawing.Size(25, 19);
             this.lblYear.TabIndex = 105;
             this.lblYear.Text = "年";
-            this.lblYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblYear.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // chk_FW
             // 
