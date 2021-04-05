@@ -65,7 +65,10 @@ namespace JuchuuList {
 
             txtStaffCD.ChangeDate = txtTempDate;
             txtTokuisaki.ChangeDate = txtTempDate;
-            txtStore.ChangeDate = txtTempDate;        
+            txtStore.TxtBox = txtTokuisaki;
+            txtStore.ChangeDate = txtTempDate;     
+            
+            
         }
         private void Date_Setting()
         {
