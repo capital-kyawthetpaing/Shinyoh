@@ -352,12 +352,18 @@ namespace JuchuuNyuuryoku
 
         private void btn_Tokuisaki_Click(object sender, EventArgs e)
         {
-           tobj.ShowDialog();
+            if(!txtTokuisakiCD.IsErrorOccurs)
+                tobj.ShowDialog();
+            else
+                txtTokuisakiCD.Focus();
         }
 
         private void btn_Kouriten_Click(object sender, EventArgs e)
         {
-            kobj.ShowDialog();
+            if (!txtKouritenCD.IsErrorOccurs)
+                kobj.ShowDialog();
+            else
+                txtKouritenCD.Focus();
         }
 
         //private void txtStaffCD_KeyDown(object sender, KeyEventArgs e)

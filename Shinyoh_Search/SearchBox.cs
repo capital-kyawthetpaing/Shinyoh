@@ -52,8 +52,9 @@ namespace Shinyoh_Search
                     base.OnKeyDown(e);
 
                 //base.OnKeyDown(e);
-                if (string.IsNullOrWhiteSpace(this.Text))
+                if (string.IsNullOrWhiteSpace(this.Text) || this.IsErrorOccurs)
                 {
+                    this.Text = string.Empty;
                     if(lblName != null)
                         lblName.Text = string.Empty;
                 }
