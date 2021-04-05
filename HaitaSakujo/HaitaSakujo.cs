@@ -148,6 +148,11 @@ namespace HaitaSakujo
                     dr.Delete();
                 gvHaitaSakujo.Refresh();
                 gvHaitaSakujo.RefreshEdit();
+                try
+                {
+                    cf.Clear(PanelDetail);
+                }
+                catch { }
             }
         }
         public String DataTableToXml(DataTable dt)
