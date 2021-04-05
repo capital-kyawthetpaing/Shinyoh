@@ -123,7 +123,7 @@
             this.panel1.Controls.Add(this.rdo_Delete);
             this.panel1.Controls.Add(this.rdo_Registragion);
             this.panel1.Controls.Add(this.lblClassification);
-            this.panel1.Size = new System.Drawing.Size(1713, 120);
+            this.panel1.Size = new System.Drawing.Size(1370, 120);
             this.panel1.Controls.SetChildIndex(this.lblClassification, 0);
             this.panel1.Controls.SetChildIndex(this.rdo_Registragion, 0);
             this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
@@ -378,7 +378,7 @@
             this.PanelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDetail.Location = new System.Drawing.Point(0, 120);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1713, 797);
+            this.PanelDetail.Size = new System.Drawing.Size(1370, 585);
             this.PanelDetail.TabIndex = 2;
             // 
             // lbl_MajorSuppliers
@@ -601,7 +601,7 @@
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.NextControl = null;
             this.txtBrand.NextControlName = "txtRetailPrice";
-            this.txtBrand.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtBrand.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrand.Size = new System.Drawing.Size(100, 19);
             this.txtBrand.TabIndex = 11;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -1688,7 +1688,7 @@
             this.txtSize.Name = "txtSize";
             this.txtSize.NextControl = null;
             this.txtSize.NextControlName = "txtChangeDate";
-            this.txtSize.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtSize.SearchType = Entity.SearchType.ScType.Size;
             this.txtSize.Size = new System.Drawing.Size(95, 19);
             this.txtSize.TabIndex = 3;
             this.txtSize.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -1719,7 +1719,7 @@
             this.txtColor.Name = "txtColor";
             this.txtColor.NextControl = null;
             this.txtColor.NextControlName = "txtSize";
-            this.txtColor.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtColor.SearchType = Entity.SearchType.ScType.Color;
             this.txtColor.Size = new System.Drawing.Size(95, 19);
             this.txtColor.TabIndex = 2;
             this.txtColor.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -1792,7 +1792,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1713, 961);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.PanelDetail);
             this.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.Location = new System.Drawing.Point(0, 0);

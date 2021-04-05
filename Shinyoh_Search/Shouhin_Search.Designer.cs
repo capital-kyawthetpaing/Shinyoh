@@ -150,7 +150,7 @@
             this.txtSize.Name = "txtSize";
             this.txtSize.NextControl = null;
             this.txtSize.NextControlName = "btn_F11";
-            this.txtSize.SearchType = Entity.SearchType.ScType.None;
+            this.txtSize.SearchType = Entity.SearchType.ScType.Size;
             this.txtSize.Size = new System.Drawing.Size(110, 19);
             this.txtSize.TabIndex = 33;
             this.txtSize.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -188,7 +188,7 @@
             this.txtBrand1.Name = "txtBrand1";
             this.txtBrand1.NextControl = null;
             this.txtBrand1.NextControlName = "txtRemarks";
-            this.txtBrand1.SearchType = Entity.SearchType.ScType.None;
+            this.txtBrand1.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrand1.Size = new System.Drawing.Size(80, 19);
             this.txtBrand1.TabIndex = 31;
             this.txtBrand1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -223,7 +223,7 @@
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.NextControl = null;
             this.txtBrand.NextControlName = "txtBrand1";
-            this.txtBrand.SearchType = Entity.SearchType.ScType.None;
+            this.txtBrand.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrand.Size = new System.Drawing.Size(80, 19);
             this.txtBrand.TabIndex = 29;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -299,7 +299,7 @@
             this.txtColor.Name = "txtColor";
             this.txtColor.NextControl = null;
             this.txtColor.NextControlName = "txtSize";
-            this.txtColor.SearchType = Entity.SearchType.ScType.None;
+            this.txtColor.SearchType = Entity.SearchType.ScType.Color;
             this.txtColor.Size = new System.Drawing.Size(110, 19);
             this.txtColor.TabIndex = 25;
             this.txtColor.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;

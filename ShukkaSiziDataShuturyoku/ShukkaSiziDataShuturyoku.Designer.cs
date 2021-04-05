@@ -60,6 +60,10 @@
             this.Panel_Detail.SuspendLayout();
             this.SuspendLayout();
             // 
+            // panel1
+            // 
+            this.panel1.Size = new System.Drawing.Size(1370, 75);
+            // 
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.Color.Cyan;
@@ -295,7 +299,7 @@
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.NextControl = null;
             this.txtBrand.NextControlName = "txtYear";
-            this.txtBrand.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtBrand.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrand.Size = new System.Drawing.Size(90, 19);
             this.txtBrand.TabIndex = 8;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -641,7 +645,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1713, 961);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.Panel_Detail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ShukkaSiziDataShuturyoku";
