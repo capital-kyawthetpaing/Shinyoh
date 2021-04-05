@@ -64,6 +64,8 @@ namespace ShukkaSiziDataShuturyoku {
             txtToukuisaki.ChangeDate = txtTempDate;
             txtKouriten.ChangeDate = txtTempDate;
 
+            txtKouriten.TxtBox = txtToukuisaki;
+
             ErrorCheck();
         }
         private void ErrorCheck()

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CKM_CommonFunction;
+using BL;
 
 namespace Shinyoh_Details
 {
@@ -20,8 +21,10 @@ namespace Shinyoh_Details
         string YuuBinNO2 = string.Empty;
         string Address1 = string.Empty;
         string Address2 = string.Empty;
+        string SiiresakiCD = string.Empty;
         bool isEnable;
         CommonFunction cf = new CommonFunction();
+        JuchuuNyuuryokuBL bl = new JuchuuNyuuryokuBL();
         public SiiresakiDetail()
         {
             InitializeComponent();
@@ -53,6 +56,9 @@ namespace Shinyoh_Details
             //Get Data from JuchuuNyuuroku form
             Access_DB_Object(Access_Siiresaki_obj);
 
+            SiiresakiCD = Access_Siiresaki_obj.SiiresakiCD;
+            DataTable dt = bl.ShokutiFLG_Select(string.Empty, string.Empty, SiiresakiCD, "Siiresaki");
+
             if (!isEnable)
             {
                 cf.DisablePanel(Panel_Detail);
@@ -60,8 +66,19 @@ namespace Shinyoh_Details
             }
             else
             {
-                cf.EnablePanel(Panel_Detail);
-                SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+                if (dt.Rows.Count > 0)
+                {
+                    if (dt.Rows[0]["ShokutiFLG"].ToString() == "1")
+                    {
+                        cf.EnablePanel(Panel_Detail);
+                        SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
+                    }
+                    else
+                    {
+                        cf.DisablePanel(Panel_Detail);
+                        SetButton(ButtonType.BType.Save, F12, "確定(F12)", false);
+                    }
+                }
             }
         }
         private void Access_DB_Object(SiiresakiEntity obj)

@@ -22,7 +22,7 @@ namespace Shinyoh_Search
 
         public StaffSearch()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
 
         private void StaffSearch_Load(object sender, EventArgs e)

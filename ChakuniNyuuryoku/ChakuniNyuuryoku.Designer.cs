@@ -396,7 +396,7 @@
             this.sbBrand.Name = "sbBrand";
             this.sbBrand.NextControl = null;
             this.sbBrand.NextControlName = "txtColorNO";
-            this.sbBrand.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.sbBrand.SearchType = Entity.SearchType.ScType.Brand;
             this.sbBrand.Size = new System.Drawing.Size(80, 19);
             this.sbBrand.TabIndex = 13;
             this.sbBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -534,7 +534,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1409, 136);
+            this.label2.Location = new System.Drawing.Point(1406, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 34;
@@ -885,7 +885,7 @@
             this.txtSizeNo.Name = "txtSizeNo";
             this.txtSizeNo.NextControl = null;
             this.txtSizeNo.NextControlName = "btnDisplay";
-            this.txtSizeNo.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtSizeNo.SearchType = Entity.SearchType.ScType.Size;
             this.txtSizeNo.Size = new System.Drawing.Size(100, 19);
             this.txtSizeNo.TabIndex = 18;
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -917,7 +917,7 @@
             this.txtColorNo.Name = "txtColorNo";
             this.txtColorNo.NextControl = null;
             this.txtColorNo.NextControlName = "txtYearTerm";
-            this.txtColorNo.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtColorNo.SearchType = Entity.SearchType.ScType.Color;
             this.txtColorNo.Size = new System.Drawing.Size(100, 19);
             this.txtColorNo.TabIndex = 14;
             this.txtColorNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -960,7 +960,7 @@
             this.chkFW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkFW.IsDatatableOccurs = null;
             this.chkFW.IsErrorOccurs = false;
-            this.chkFW.Location = new System.Drawing.Point(1473, 133);
+            this.chkFW.Location = new System.Drawing.Point(1481, 131);
             this.chkFW.MoveNext = true;
             this.chkFW.Name = "chkFW";
             this.chkFW.NextControl = null;
@@ -975,7 +975,7 @@
             this.chkSS.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSS.IsDatatableOccurs = null;
             this.chkSS.IsErrorOccurs = false;
-            this.chkSS.Location = new System.Drawing.Point(1429, 133);
+            this.chkSS.Location = new System.Drawing.Point(1432, 131);
             this.chkSS.MoveNext = true;
             this.chkSS.Name = "chkSS";
             this.chkSS.NextControl = null;

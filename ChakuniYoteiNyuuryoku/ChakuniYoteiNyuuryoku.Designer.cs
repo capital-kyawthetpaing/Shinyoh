@@ -186,7 +186,7 @@
             this.txtSizeNo.Name = "txtSizeNo";
             this.txtSizeNo.NextControl = null;
             this.txtSizeNo.NextControlName = "btnDisplay";
-            this.txtSizeNo.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtSizeNo.SearchType = Entity.SearchType.ScType.Size;
             this.txtSizeNo.Size = new System.Drawing.Size(100, 19);
             this.txtSizeNo.TabIndex = 16;
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -218,7 +218,7 @@
             this.txtColorNo.Name = "txtColorNo";
             this.txtColorNo.NextControl = null;
             this.txtColorNo.NextControlName = "txtDateFrom";
-            this.txtColorNo.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtColorNo.SearchType = Entity.SearchType.ScType.Color;
             this.txtColorNo.Size = new System.Drawing.Size(100, 19);
             this.txtColorNo.TabIndex = 13;
             this.txtColorNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -261,7 +261,7 @@
             this.chkFW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkFW.IsDatatableOccurs = null;
             this.chkFW.IsErrorOccurs = false;
-            this.chkFW.Location = new System.Drawing.Point(982, 123);
+            this.chkFW.Location = new System.Drawing.Point(991, 121);
             this.chkFW.MoveNext = true;
             this.chkFW.Name = "chkFW";
             this.chkFW.NextControl = null;
@@ -276,7 +276,7 @@
             this.chkSS.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkSS.IsDatatableOccurs = null;
             this.chkSS.IsErrorOccurs = false;
-            this.chkSS.Location = new System.Drawing.Point(934, 123);
+            this.chkSS.Location = new System.Drawing.Point(942, 121);
             this.chkSS.MoveNext = true;
             this.chkSS.Name = "chkSS";
             this.chkSS.NextControl = null;
@@ -616,7 +616,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(914, 125);
+            this.label2.Location = new System.Drawing.Point(917, 122);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 77;
@@ -908,7 +908,7 @@
             this.txtBrandCD.Name = "txtBrandCD";
             this.txtBrandCD.NextControl = null;
             this.txtBrandCD.NextControlName = "txtShouhinCD";
-            this.txtBrandCD.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtBrandCD.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrandCD.Size = new System.Drawing.Size(80, 19);
             this.txtBrandCD.TabIndex = 6;
             this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;

@@ -27,6 +27,7 @@ namespace Shinyoh_Search
         public Shouhin_Search()
         {
             InitializeComponent();
+            dgDetail.ScrollBars = ScrollBars.Vertical;
         }
 
         private void Shouhin_Search_Load(object sender, EventArgs e)

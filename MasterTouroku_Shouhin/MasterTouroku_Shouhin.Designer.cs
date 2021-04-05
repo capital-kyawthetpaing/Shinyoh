@@ -123,7 +123,7 @@
             this.panel1.Controls.Add(this.rdo_Delete);
             this.panel1.Controls.Add(this.rdo_Registragion);
             this.panel1.Controls.Add(this.lblClassification);
-            this.panel1.Size = new System.Drawing.Size(1713, 120);
+            this.panel1.Size = new System.Drawing.Size(1370, 120);
             this.panel1.Controls.SetChildIndex(this.lblClassification, 0);
             this.panel1.Controls.SetChildIndex(this.rdo_Registragion, 0);
             this.panel1.Controls.SetChildIndex(this.PanelTitle, 0);
@@ -378,7 +378,7 @@
             this.PanelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDetail.Location = new System.Drawing.Point(0, 120);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1713, 797);
+            this.PanelDetail.Size = new System.Drawing.Size(1370, 585);
             this.PanelDetail.TabIndex = 2;
             // 
             // lbl_MajorSuppliers
@@ -508,7 +508,7 @@
             this.txtIManagement.Name = "txtIManagement";
             this.txtIManagement.NextControl = null;
             this.txtIManagement.NextControlName = "txtMajorSuppliers";
-            this.txtIManagement.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtIManagement.SearchType = Entity.SearchType.ScType.Management;
             this.txtIManagement.Size = new System.Drawing.Size(30, 19);
             this.txtIManagement.TabIndex = 19;
             this.txtIManagement.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -539,7 +539,7 @@
             this.txtIEvaluation.Name = "txtIEvaluation";
             this.txtIEvaluation.NextControl = null;
             this.txtIEvaluation.NextControlName = "txtIManagement";
-            this.txtIEvaluation.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtIEvaluation.SearchType = Entity.SearchType.ScType.Evaluation;
             this.txtIEvaluation.Size = new System.Drawing.Size(30, 19);
             this.txtIEvaluation.TabIndex = 18;
             this.txtIEvaluation.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -570,7 +570,7 @@
             this.txtTaxRate.Name = "txtTaxRate";
             this.txtTaxRate.NextControl = null;
             this.txtTaxRate.NextControlName = "txtIEvaluation";
-            this.txtTaxRate.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtTaxRate.SearchType = Entity.SearchType.ScType.TaxRate;
             this.txtTaxRate.Size = new System.Drawing.Size(30, 19);
             this.txtTaxRate.TabIndex = 17;
             this.txtTaxRate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
@@ -601,7 +601,7 @@
             this.txtBrand.Name = "txtBrand";
             this.txtBrand.NextControl = null;
             this.txtBrand.NextControlName = "txtRetailPrice";
-            this.txtBrand.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtBrand.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrand.Size = new System.Drawing.Size(100, 19);
             this.txtBrand.TabIndex = 11;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -632,7 +632,7 @@
             this.txtTani.Name = "txtTani";
             this.txtTani.NextControl = null;
             this.txtTani.NextControlName = "txtBrand";
-            this.txtTani.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtTani.SearchType = Entity.SearchType.ScType.Tani;
             this.txtTani.Size = new System.Drawing.Size(50, 19);
             this.txtTani.TabIndex = 10;
             this.txtTani.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -1245,7 +1245,7 @@
             this.chkFW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkFW.IsDatatableOccurs = null;
             this.chkFW.IsErrorOccurs = false;
-            this.chkFW.Location = new System.Drawing.Point(532, 115);
+            this.chkFW.Location = new System.Drawing.Point(532, 114);
             this.chkFW.MoveNext = true;
             this.chkFW.Name = "chkFW";
             this.chkFW.NextControl = null;
@@ -1260,7 +1260,7 @@
             this.chkSS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkSS.IsDatatableOccurs = null;
             this.chkSS.IsErrorOccurs = false;
-            this.chkSS.Location = new System.Drawing.Point(486, 115);
+            this.chkSS.Location = new System.Drawing.Point(483, 114);
             this.chkSS.MoveNext = true;
             this.chkSS.Name = "chkSS";
             this.chkSS.NextControl = null;
@@ -1273,7 +1273,7 @@
             // lblYear
             // 
             this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(457, 119);
+            this.lblYear.Location = new System.Drawing.Point(457, 117);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(17, 12);
             this.lblYear.TabIndex = 12;
@@ -1626,7 +1626,7 @@
             this.txtCopySize.Name = "txtCopySize";
             this.txtCopySize.NextControl = null;
             this.txtCopySize.NextControlName = "txtCopyChangeDate";
-            this.txtCopySize.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtCopySize.SearchType = Entity.SearchType.ScType.Size;
             this.txtCopySize.Size = new System.Drawing.Size(95, 19);
             this.txtCopySize.TabIndex = 7;
             this.txtCopySize.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -1657,7 +1657,7 @@
             this.txtCopyColor.Name = "txtCopyColor";
             this.txtCopyColor.NextControl = null;
             this.txtCopyColor.NextControlName = "txtCopySize";
-            this.txtCopyColor.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtCopyColor.SearchType = Entity.SearchType.ScType.Color;
             this.txtCopyColor.Size = new System.Drawing.Size(95, 19);
             this.txtCopyColor.TabIndex = 6;
             this.txtCopyColor.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -1688,7 +1688,7 @@
             this.txtSize.Name = "txtSize";
             this.txtSize.NextControl = null;
             this.txtSize.NextControlName = "txtChangeDate";
-            this.txtSize.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtSize.SearchType = Entity.SearchType.ScType.Size;
             this.txtSize.Size = new System.Drawing.Size(95, 19);
             this.txtSize.TabIndex = 3;
             this.txtSize.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -1719,7 +1719,7 @@
             this.txtColor.Name = "txtColor";
             this.txtColor.NextControl = null;
             this.txtColor.NextControlName = "txtSize";
-            this.txtColor.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtColor.SearchType = Entity.SearchType.ScType.Color;
             this.txtColor.Size = new System.Drawing.Size(95, 19);
             this.txtColor.TabIndex = 2;
             this.txtColor.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -1792,7 +1792,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1713, 961);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.PanelDetail);
             this.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.Location = new System.Drawing.Point(0, 0);

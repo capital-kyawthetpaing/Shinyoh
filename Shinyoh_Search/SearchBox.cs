@@ -52,8 +52,9 @@ namespace Shinyoh_Search
                     base.OnKeyDown(e);
 
                 //base.OnKeyDown(e);
-                if (string.IsNullOrWhiteSpace(this.Text))
+                if (string.IsNullOrWhiteSpace(this.Text) || this.IsErrorOccurs)
                 {
+                    //this.Text = string.Empty;
                     if(lblName != null)
                         lblName.Text = string.Empty;
                 }
@@ -77,7 +78,15 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Kouriten:
                         colName = "KouritenRyakuName";
                         break;
-                    case Entity.SearchType.ScType.multiporpose:
+                    case Entity.SearchType.ScType.Brand:
+                    case Entity.SearchType.ScType.Partition:
+                    case Entity.SearchType.ScType.Tani:
+                    case Entity.SearchType.ScType.Color:
+                    case Entity.SearchType.ScType.Size:
+                    case Entity.SearchType.ScType.TaxRate:
+                    case Entity.SearchType.ScType.Evaluation:
+                    case Entity.SearchType.ScType.Management:
+                    case Entity.SearchType.ScType.Kubun:
                         colName = "Char1";
                         break;
                     case Entity.SearchType.ScType.Souko:
@@ -114,6 +123,7 @@ namespace Shinyoh_Search
             Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
             if (DepandOnMode == false || (DepandOnMode == true && mode != "新規"))
             {
+                MultiPorposeSearch msearch = new MultiPorposeSearch();
                 switch (this.SearchType)
                 {
                     case Entity.SearchType.ScType.Souko:
@@ -166,27 +176,105 @@ namespace Shinyoh_Search
                         CDate = tokuisakiSearch.ChangeDate;
                         name = tokuisakiSearch.TokuisakiRyakuName;
                         break;
-                    case Entity.SearchType.ScType.multiporpose:
-                        MultiPorposeSearch msearch = new MultiPorposeSearch();
-                        if (this.Name.Contains("Tani"))
-                            msearch.Access_Type = "102";
-                        else if (this.Name.Contains("Brand"))
-                            msearch.Access_Type = "103";
-                        else if (this.Name.Contains("Color"))
-                            msearch.Access_Type = "104";
-                        else if (this.Name.Contains("Size"))
-                            msearch.Access_Type = "105";
-                        else if (this.Name.Contains("TaxRate"))
-                            msearch.Access_Type = "221";
-                        else if (this.Name.Contains("Evaluation"))
-                            msearch.Access_Type = "106";
-                        else if (this.Name.Contains("Management"))
-                            msearch.Access_Type = "107";
-                        else if (this.Name.Contains("kubun"))
-                            msearch.Access_Type = "109";
+                    case Entity.SearchType.ScType.Brand:                       
+                        msearch.Access_Type = "103";
                         msearch.ShowDialog();
-                        //CD = msearch.Id;
-                        //CDate = msearch.Key;
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Key;
+                        if (lblName != null)
+                            name = msearch.Char1;
+                        break;
+                    case Entity.SearchType.ScType.Partition:
+                        msearch.Access_Type = "101";
+                        msearch.ShowDialog();
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Key;
+                        if (lblName != null)
+                            name = msearch.Char1;
+                        break;
+                    case Entity.SearchType.ScType.Tani:
+                        msearch.Access_Type = "102";
+                        msearch.ShowDialog();
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Key;
+                        if (lblName != null)
+                            name = msearch.Char1;
+                        break;
+                    case Entity.SearchType.ScType.Color:
+                        msearch.Access_Type = "104";
+                        msearch.ShowDialog();
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Key;
+                        if (lblName != null)
+                            name = msearch.Char1;
+                        break;
+                    case Entity.SearchType.ScType.Size:
+                        msearch.Access_Type = "105";
+                        msearch.ShowDialog();
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Key;
+                        if (lblName != null)
+                            name = msearch.Char1;
+                        break;
+                    case Entity.SearchType.ScType.TaxRate:
+                        msearch.Access_Type = "221";
+                        msearch.ShowDialog();
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Key;
+                        if (lblName != null)
+                            name = msearch.Char1;
+                        break;
+                    case Entity.SearchType.ScType.Evaluation:
+                        msearch.Access_Type = "106";
+                        msearch.ShowDialog();
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Key;
+                        if (lblName != null)
+                            name = msearch.Char1;
+                        break;
+                    case Entity.SearchType.ScType.Management:
+                        msearch.Access_Type = "107";
+                        msearch.ShowDialog();
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Key;
+                        if (lblName != null)
+                            name = msearch.Char1;
+                        break;
+                    case Entity.SearchType.ScType.Kubun:
+                        msearch.Access_Type = "109";
+                        msearch.ShowDialog();
                         if (this.Name == "txtID" || this.Name == "txtCopyID")
                             CD = msearch.Id;
                         else

@@ -75,10 +75,10 @@ namespace BL
             multipurpose_entity.Sqlprms = new SqlParameter[6];
             multipurpose_entity.Sqlprms[0] = new SqlParameter("@ID1", SqlDbType.Int) { Value = multipurpose_entity.ID1 };
             multipurpose_entity.Sqlprms[1] = new SqlParameter("@ID2", SqlDbType.Int) { Value = multipurpose_entity.ID2 };
-            multipurpose_entity.Sqlprms[2] = new SqlParameter("@Key1", SqlDbType.Int) { Value = multipurpose_entity.Key1 };
-            multipurpose_entity.Sqlprms[3] = new SqlParameter("@Key2", SqlDbType.Int) { Value = multipurpose_entity.Key2 };
-            multipurpose_entity.Sqlprms[4] = new SqlParameter("@IDName", SqlDbType.Int) { Value = multipurpose_entity.IdName };
-            multipurpose_entity.Sqlprms[5] = new SqlParameter("@Type", SqlDbType.Int) { Value = multipurpose_entity.Type };
+            multipurpose_entity.Sqlprms[2] = new SqlParameter("@Key1", SqlDbType.VarChar) { Value = multipurpose_entity.Key1 };
+            multipurpose_entity.Sqlprms[3] = new SqlParameter("@Key2", SqlDbType.VarChar) { Value = multipurpose_entity.Key2 };
+            multipurpose_entity.Sqlprms[4] = new SqlParameter("@IDName", SqlDbType.VarChar) { Value = multipurpose_entity.IdName };
+            multipurpose_entity.Sqlprms[5] = new SqlParameter("@Type", SqlDbType.VarChar) { Value = multipurpose_entity.Type };
             DataTable dt = ckmdl.SelectDatatable("M_Multiporpose_Search", GetConnectionString(), multipurpose_entity.Sqlprms);
             return dt;
         }

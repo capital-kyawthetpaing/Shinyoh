@@ -182,8 +182,8 @@ namespace ChakuniYoteiNyuuryoku
             }
             if (tagID == "12")
             {
-                if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
-                {
+                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
+                //{
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -199,7 +199,7 @@ namespace ChakuniYoteiNyuuryoku
                         case "4":
                             ChangeMode(Mode.Inquiry);
                             break;
-                    }
+                    //}
                 }
             }
             base.FunctionProcess(tagID);
@@ -462,6 +462,10 @@ namespace ChakuniYoteiNyuuryoku
             txtChakuniYoteiNO.E102Check(false);//ktp add remove 102 check in new mode
             txtChakuniYoteiNO.E133Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);//ktp add remove 133 check in new mode
             txtChakuniYoteiNO.E268Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);//ktp add remove 268 check in new mode
+
+            //txtBrandCD.E101Check(true, "M_MultiPorpose", txtBrandCD, txtDate, null);
+            //txtColorNo.E101Check(true, "M_MultiPorpose", txtColorNo, txtDate, null);
+            //txtSizeNo.E101Check(true, "M_MultiPorpose", txtSizeNo, txtDate, null);
         }
         private DataTable CreateTable_Detail()
         {
@@ -722,7 +726,10 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void btn_Siiresaki_Click(object sender, EventArgs e)
         {
+            if (!txtSiiresaki.IsErrorOccurs)
                 sd.ShowDialog();
+            else
+                txtSiiresaki.Focus();
         }
         private SiiresakiEntity From_DB_To_Siiresaki(DataTable dtSiiresaki)
         {

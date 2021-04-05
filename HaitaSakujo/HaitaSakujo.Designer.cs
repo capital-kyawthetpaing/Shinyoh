@@ -136,7 +136,7 @@
             this.txt_dataPartition.Name = "txt_dataPartition";
             this.txt_dataPartition.NextControl = null;
             this.txt_dataPartition.NextControlName = "txt_InputPerson";
-            this.txt_dataPartition.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txt_dataPartition.SearchType = Entity.SearchType.ScType.Partition;
             this.txt_dataPartition.Size = new System.Drawing.Size(60, 19);
             this.txt_dataPartition.TabIndex = 1;
             this.txt_dataPartition.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;

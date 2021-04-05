@@ -214,7 +214,7 @@
             this.txtSizeNo.Name = "txtSizeNo";
             this.txtSizeNo.NextControl = null;
             this.txtSizeNo.NextControlName = "btnNameF10";
-            this.txtSizeNo.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtSizeNo.SearchType = Entity.SearchType.ScType.Size;
             this.txtSizeNo.Size = new System.Drawing.Size(100, 19);
             this.txtSizeNo.TabIndex = 21;
             this.txtSizeNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -245,7 +245,7 @@
             this.txtColorNo.Name = "txtColorNo";
             this.txtColorNo.NextControl = null;
             this.txtColorNo.NextControlName = "txtSizeNo";
-            this.txtColorNo.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtColorNo.SearchType = Entity.SearchType.ScType.Color;
             this.txtColorNo.Size = new System.Drawing.Size(100, 19);
             this.txtColorNo.TabIndex = 20;
             this.txtColorNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -276,7 +276,7 @@
             this.txtBrandCD.Name = "txtBrandCD";
             this.txtBrandCD.NextControl = null;
             this.txtBrandCD.NextControlName = "txtShouhinCD";
-            this.txtBrandCD.SearchType = Entity.SearchType.ScType.multiporpose;
+            this.txtBrandCD.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrandCD.Size = new System.Drawing.Size(70, 19);
             this.txtBrandCD.TabIndex = 13;
             this.txtBrandCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
@@ -788,14 +788,14 @@
             this.lblYear.Size = new System.Drawing.Size(25, 19);
             this.lblYear.TabIndex = 105;
             this.lblYear.Text = "年";
-            this.lblYear.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblYear.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // chk_FW
             // 
             this.chk_FW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_FW.IsDatatableOccurs = null;
             this.chk_FW.IsErrorOccurs = false;
-            this.chk_FW.Location = new System.Drawing.Point(1232, 155);
+            this.chk_FW.Location = new System.Drawing.Point(1231, 153);
             this.chk_FW.MoveNext = true;
             this.chk_FW.Name = "chk_FW";
             this.chk_FW.NextControl = null;
@@ -810,7 +810,7 @@
             this.chk_SS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_SS.IsDatatableOccurs = null;
             this.chk_SS.IsErrorOccurs = false;
-            this.chk_SS.Location = new System.Drawing.Point(1186, 155);
+            this.chk_SS.Location = new System.Drawing.Point(1183, 153);
             this.chk_SS.MoveNext = true;
             this.chk_SS.Name = "chk_SS";
             this.chk_SS.NextControl = null;

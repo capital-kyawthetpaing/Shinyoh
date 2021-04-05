@@ -334,7 +334,7 @@
             this.gvSupplier.ISRowColumn = null;
             this.gvSupplier.Location = new System.Drawing.Point(25, 146);
             this.gvSupplier.Name = "gvSupplier";
-            this.gvSupplier.Size = new System.Drawing.Size(658, 351);
+            this.gvSupplier.Size = new System.Drawing.Size(658, 350);
             this.gvSupplier.TabIndex = 4;
             this.gvSupplier.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvSupplier_CellMouseDoubleClick);
             this.gvSupplier.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvSupplier_KeyDown);

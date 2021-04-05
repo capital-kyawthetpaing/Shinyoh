@@ -202,6 +202,9 @@ namespace ChakuniNyuuryoku
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtArrivalDate);
             txtSouko.E102Check(true);
             txtSouko.E101Check(true, "souko", txtSouko, null, null);
+            //sbBrand.E101Check(true, "M_MultiPorpose", sbBrand, txtArrivalDate, null);
+            //txtColorNo.E101Check(true, "M_MultiPorpose", txtColorNo, txtArrivalDate, null);
+            //txtSizeNo.E101Check(true, "M_MultiPorpose", txtSizeNo, txtArrivalDate, null);
             //txtScheduled.E133Check(true, "ChakuniYotei", txtScheduled, txtArrivalDate, null);
             //txtScheduled.E268Check(true, "ChakuniYotei", txtScheduled, null);
         }
@@ -833,7 +836,10 @@ namespace ChakuniNyuuryoku
             //    sd = new SiiresakiDetail();
             //else if (cboMode.Equals("3") || cboMode.Equals("4"))
             //    sd = new SiiresakiDetail(false);
-            sd.ShowDialog();
+            if (!txtSiiresaki.IsErrorOccurs)
+                sd.ShowDialog();
+            else
+                txtSiiresaki.Focus();
             }
         private void txtSiiresaki_KeyDown(object sender, KeyEventArgs e)
             {
