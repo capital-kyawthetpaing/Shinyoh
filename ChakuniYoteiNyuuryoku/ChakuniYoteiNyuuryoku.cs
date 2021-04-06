@@ -726,7 +726,7 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void btn_Siiresaki_Click(object sender, EventArgs e)
         {
-            if (!txtSiiresaki.IsErrorOccurs)
+            if (!string.IsNullOrWhiteSpace(txtSiiresaki.Text) && !txtSiiresaki.IsErrorOccurs)
                 sd.ShowDialog();
             else
                 txtSiiresaki.Focus();
