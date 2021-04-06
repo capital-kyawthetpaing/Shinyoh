@@ -826,6 +826,7 @@
             this.txtInputDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtInputDate2.Size = new System.Drawing.Size(100, 19);
             this.txtInputDate2.TabIndex = 6;
+            this.txtInputDate2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtInputDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtInputDate1
@@ -851,6 +852,7 @@
             this.txtInputDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtInputDate1.Size = new System.Drawing.Size(100, 19);
             this.txtInputDate1.TabIndex = 5;
+            this.txtInputDate1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtInputDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // label3
@@ -896,6 +898,7 @@
             this.txtOrderDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtOrderDate2.Size = new System.Drawing.Size(100, 19);
             this.txtOrderDate2.TabIndex = 2;
+            this.txtOrderDate2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtOrderDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtOrderDate1
@@ -921,6 +924,7 @@
             this.txtOrderDate1.SearchType = Entity.SearchType.ScType.None;
             this.txtOrderDate1.Size = new System.Drawing.Size(100, 19);
             this.txtOrderDate1.TabIndex = 1;
+            this.txtOrderDate1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtOrderDate1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             // 
             // txtDestOrderNo
