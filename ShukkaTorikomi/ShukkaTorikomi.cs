@@ -337,7 +337,7 @@ namespace ShukkaTorikomi
                         {
                             bbl.ShowMessage("E276", i.ToString(), "品番CD未登録エラー");
                             //bl_List.Add(true);
-                            //break;
+                            break;
                         }
 
                         DataTable dt3 = new DataTable();
@@ -348,7 +348,7 @@ namespace ShukkaTorikomi
                             bbl.ShowMessage("E276", i.ToString(), "JANCD未登録エラー");
                             //err.ShowErrorMessage("E101");
                             //bl_List.Add(true);
-                            //break;
+                            break;
                         }
 
                         DataTable dt4 = new DataTable();
@@ -357,7 +357,7 @@ namespace ShukkaTorikomi
                         if (dt4.Rows.Count > 0 && dt4.Rows[0]["MessageID"].ToString() == "E276")
                         {
                             bbl.ShowMessage("E276", i.ToString(), "出荷指示伝票未登録エラー", "出荷指示番号：" + obj.ShukkaSiziNO);
-                            //break;
+                            break;
                         }
 
                         DataTable dt5 = new DataTable();
@@ -366,7 +366,7 @@ namespace ShukkaTorikomi
                         if (dt5.Rows.Count > 0 && dt5.Rows[0]["MessageID"].ToString() == "E276")
                         {
                             bbl.ShowMessage("E276", i.ToString(), "出荷済エラー", "出荷指示番号：" + obj.ShukkaSiziNO + " 品番：" + obj.HinbanCD + obj.ColorRyakuName + obj.SizeNO);
-                            //break;
+                            break;
                         }
 
                         DataTable dt6 = new DataTable();
@@ -375,7 +375,7 @@ namespace ShukkaTorikomi
                         if (dt6.Rows.Count > 0 && dt6.Rows[0]["MessageID"].ToString() == "E276")
                         {
                             bbl.ShowMessage("E276", i.ToString(), "出荷可能数を超えるデータ", "出荷指示番号：" + obj.ShukkaSiziNO + " 品番：" + obj.HinbanCD + obj.ColorRyakuName + obj.SizeNO);
-                            //break;
+                            break;
                         }
 
                         string error = string.Empty;

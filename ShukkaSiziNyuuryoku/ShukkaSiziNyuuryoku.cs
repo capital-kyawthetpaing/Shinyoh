@@ -1156,6 +1156,7 @@ namespace ShukkaSiziNyuuryoku
             Data3 = dtshippingno.Rows[0]["PC"].ToString();
             return false;
         }
+
         private void JuchuuNO_Delete()
         {
             sksz_e = new ShukkaSiziNyuuryokuEntity();
