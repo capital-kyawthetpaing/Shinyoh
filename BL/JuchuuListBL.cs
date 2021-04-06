@@ -13,7 +13,7 @@ namespace BL {
         public DataTable JuchuuList_Excel(JuchuuEntity obj)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[23];
+            var parameters = new SqlParameter[24];
             parameters[0] = new SqlParameter("@JuchuuDate1", SqlDbType.VarChar) { Value = obj.JuhuuDate1 };
             parameters[1] = new SqlParameter("@JuchuuDate2", SqlDbType.VarChar) { Value = obj.JuhuuDate2 };
             parameters[2] = new SqlParameter("@JuchuuNO1", SqlDbType.VarChar) { Value = obj.JuhuuNO1 };

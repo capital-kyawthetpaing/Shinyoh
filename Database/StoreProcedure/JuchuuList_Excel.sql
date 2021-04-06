@@ -12,7 +12,7 @@ GO
 -- Create date: 2020/11/19
 -- Description:	<Description,,>
 -- =============================================
-CREATE PROCEDURE [dbo].[JuchuuList_Excel]
+create PROCEDURE [dbo].[JuchuuList_Excel]
 	@JuchuuDate			   as date,	
 	@JuchuuDate1		   as  date,
 	@JuchuuDate2		   as  date,	
@@ -35,8 +35,8 @@ CREATE PROCEDURE [dbo].[JuchuuList_Excel]
 	@Tel1			       as varchar(6),
 	@Tel2			       as varchar(5),
 	@Tel3			       as varchar(5),
-	@condition             as varchar(10)
-
+	@condition             as varchar(10),
+	@Year_1					as varchar(200)
 
 AS
 BEGIN
@@ -59,10 +59,10 @@ BEGIN
 		   d.KibouNouki,
 		   d.JuchuuDenpyouTekiyou,
 		   m.Char1,
-		   CASE WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 0  THEN FSH.YearTerm + '年'
-						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 0	THEN FSH.YearTerm + '年' + 'SS'
-						   WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + '年' + 'FW'
-						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + '年' + 'SSFW' End AS Exhibition,
+		   CASE WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 0  THEN FSH.YearTerm + @Year_1
+						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 0	THEN FSH.YearTerm + @Year_1 + 'SS'
+						   WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + @Year_1 + 'FW'
+						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + @Year_1 + 'SSFW' End AS Exhibition,
 		   dm.JANCD,
 		   dm.ShouhinCD,
 		   dm.ShouhinName,
@@ -86,10 +86,13 @@ BEGIN
 	left outer join F_Shouhin(@JuchuuDate) FSH on FSH.ShouhinCD = dm.ShouhinCD 
 	left outer join M_Souko ms on ms.SoukoCD = dm.SoukoCD  
 	left outer join F_Tokuisaki(@JuchuuDate) FT on FT.TokuisakiCD = d.TokuisakiCD 
-	where
-	(d.JuchuuDate >= @JuchuuDate1 and d.JuchuuDate <= @JuchuuDate2) 
-	and (@JuchuuNO1 is null or (d.JuchuuNO  >= @JuchuuNO1))	and (@JuchuuNO2 is null or (d.JuchuuNO  <= @JuchuuNO2)) 
-	and (CONVERT(date, d.UpdateDateTime) >= @UpdateDateTime1 and CONVERT(date, d.UpdateDateTime) <= @UpdateDateTime2)  
+	where (@JuchuuDate1 is null or (d.JuchuuDate >= @JuchuuDate1))
+	and (@JuchuuDate2 is null or (d.JuchuuDate <= @JuchuuDate2))
+	and (@JuchuuNO1 is null or (d.JuchuuNO  >= @JuchuuNO1))	
+	and (@JuchuuNO2 is null or (d.JuchuuNO  <= @JuchuuNO2)) 
+	--and (CONVERT(date, d.UpdateDateTime) >= @UpdateDateTime1 and CONVERT(date, d.UpdateDateTime) <= @UpdateDateTime2) 
+	and (@UpdateDateTime1 is null or (d.UpdateDateTime >= @UpdateDateTime1))
+	and (@UpdateDateTime2 is null or (d.UpdateDateTime <= @UpdateDateTime2))
 	and (@StaffCD is null or (d.StaffCD = @StaffCD))
 	and (@BrandCD is null or (dm.BrandCD = @BrandCD))
 	and (@Year is null or (FSH.YearTerm = @Year))   
@@ -121,10 +124,10 @@ BEGIN
 		   d.KibouNouki,
 		   d.JuchuuDenpyouTekiyou,
 		   m.Char1,
-		   CASE WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 0  THEN FSH.YearTerm + '年'
-						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 0	THEN FSH.YearTerm + '年' + 'SS'
-						   WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + '年' + 'FW'
-						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + '年' + 'SSFW' End AS Exhibition,
+		   CASE WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 0  THEN FSH.YearTerm + @Year_1
+						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 0	THEN FSH.YearTerm + @Year_1 + 'SS'--@Year_1
+						   WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + @Year_1 + 'FW'
+						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + @Year_1 + 'SSFW' End AS Exhibition,
 		   dm.JANCD,
 		   dm.ShouhinCD,
 		   dm.ShouhinName,
@@ -148,10 +151,12 @@ BEGIN
 	left outer join F_Shouhin(@JuchuuDate) FSH on FSH.ShouhinCD = dm.ShouhinCD 
 	left outer join M_Souko ms on ms.SoukoCD = dm.SoukoCD  
 	left outer join F_Tokuisaki(@JuchuuDate) FT on FT.TokuisakiCD = d.TokuisakiCD 
-	where
-	(d.JuchuuDate >= @JuchuuDate1 and d.JuchuuDate <= @JuchuuDate2) 
+	where (@JuchuuDate1 is null or (d.JuchuuDate >= @JuchuuDate1))
+	and (@JuchuuDate2 is null or (d.JuchuuDate <= @JuchuuDate2))
 	and (@JuchuuNO1 is null or (d.JuchuuNO  >= @JuchuuNO1))	and (@JuchuuNO2 is null or (d.JuchuuNO  <= @JuchuuNO2)) 
-	and (CONVERT(date, d.UpdateDateTime) >= @UpdateDateTime1 and CONVERT(date, d.UpdateDateTime) <= @UpdateDateTime2)  
+	--and (CONVERT(date, d.UpdateDateTime) >= @UpdateDateTime1 and CONVERT(date, d.UpdateDateTime) <= @UpdateDateTime2)
+	and (@UpdateDateTime1 is null or (d.UpdateDateTime >= @UpdateDateTime1))
+	and (@UpdateDateTime2 is null or (d.UpdateDateTime <= @UpdateDateTime2))
 	and (@StaffCD is null or (d.StaffCD = @StaffCD))
 	and (@BrandCD is null or (dm.BrandCD = @BrandCD))
 	and (@Year is null or (FSH.YearTerm = @Year))   
@@ -164,4 +169,6 @@ BEGIN
 	end
 
 END
+
+
 
