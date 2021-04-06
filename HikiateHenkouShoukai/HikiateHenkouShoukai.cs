@@ -75,6 +75,7 @@ namespace HikiateHenkouShoukai
 
             chkSeasonSS.Checked = true; //HET
             chkSeasonFW.Checked = true; //HET
+            cboMode.SelectedIndex = 2;
         }
 
         private void Modified_Panel()
@@ -373,8 +374,12 @@ namespace HikiateHenkouShoukai
                 DataView dv = dtMemory.DefaultView;
                 dv.Sort = "商品 ASC, 引当調整数 ASC, 表示順 ASC, [受注番号-行番号] ASC";
                 DataTable dtBind = dv.ToTable();
-                dtBind.Columns.RemoveAt(21);
-                dtBind.Columns.RemoveAt(22);
+                try
+                {
+                    dtBind.Columns.RemoveAt(21);
+                    dtBind.Columns.RemoveAt(22);
+                }
+                catch { }
                 dtBind.AcceptChanges();
                 gvMainDetail.DataSource = null;
                 gvMainDetail.Rows.Clear();
@@ -556,7 +561,7 @@ namespace HikiateHenkouShoukai
 
                         for (int i = 0; i < dtTemp.Rows.Count; i++)
                         {
-                            if (dtTemp.Rows[i]["商品"].ToString() == gvrow.Cells["商品"].ToString() && dtTemp.Rows[i]["小売店名"].ToString() == gvrow.Cells["小売店名"].ToString() && dtTemp.Rows[i]["受注番号-行番号"].ToString() == gvrow.Cells["受注番号-行番号"].ToString())
+                            if (dtTemp.Rows[i]["商品"].ToString() == gvrow.Cells["col_Detail_ShouhinCD"].ToString() && dtTemp.Rows[i]["小売店名"].ToString() == gvrow.Cells["col_Detail_KanriNO"].ToString() && dtTemp.Rows[i]["受注番号-行番号"].ToString() == gvrow.Cells["col_Detail_JuchuuNO_JuchuuGyouNO"].ToString())
                             {
                                 isexists = true;
                                 index = i;
@@ -566,7 +571,7 @@ namespace HikiateHenkouShoukai
 
                         if (isexists)    //For multi changes
                         {
-                            dtTemp.Rows[index]["引当調整数"] = gvrow.Cells["引当調整数"].EditedFormattedValue;
+                            dtTemp.Rows[index]["引当調整数"] = gvrow.Cells["col_Detail_HikiateSuu"].EditedFormattedValue;
                         }
                         //For new changes
                         else
@@ -650,10 +655,10 @@ namespace HikiateHenkouShoukai
 
         private void DBData_IU()
         {
-            //string Xml = string.Empty;
-            //Xml = cf.DataTableToXml(dtMemory);
+            string Xml = string.Empty;
+            Xml = cf.DataTableToXml(dtMemory);
 
-            for(int i=0; i<dtMemory.Rows.Count; i++)
+            for (int i=0; i<dtMemory.Rows.Count; i++)
             {
                 HikiateHenkouShoukaiEntity entity = new HikiateHenkouShoukaiEntity();
                 entity.ShouhinCD = dtMemory.Rows[i]["商品"].ToString();

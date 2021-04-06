@@ -726,7 +726,10 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void btn_Siiresaki_Click(object sender, EventArgs e)
         {
+            if (!string.IsNullOrWhiteSpace(txtSiiresaki.Text) && !txtSiiresaki.IsErrorOccurs)
                 sd.ShowDialog();
+            else
+                txtSiiresaki.Focus();
         }
         private SiiresakiEntity From_DB_To_Siiresaki(DataTable dtSiiresaki)
         {
