@@ -37,7 +37,7 @@ namespace BL {
             parameters[20] = new SqlParameter("@Tel3", SqlDbType.VarChar) { Value = obj.Tel3 };
             parameters[21] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = obj.Condition };
             parameters[22] = new SqlParameter("@JuchuuDate", SqlDbType.VarChar) { Value = obj.LoginDate };
-            parameters[22] = new SqlParameter("@Year_1", SqlDbType.VarChar) { Value = "年" };
+            //parameters[22] = new SqlParameter("@Year_1", SqlDbType.VarChar) { Value = "年" };
             DataTable dt = ckmdl.SelectDatatable("JuchuuList_Excel", GetConnectionString(), parameters);
             return dt;
         }
