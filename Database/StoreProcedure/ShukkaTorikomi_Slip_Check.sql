@@ -21,38 +21,32 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-     if @Errortype = 'E133'
-	    begin
-			if NOT exists (select * from D_ShukkaSizi where ShukkaSiziNO=@ShukkaSiziNO)
-			begin
-			--not exist
-			select * from M_Message where MessageID = 'E133'
-			end
-			RETURN;
+    if @Errortype = 'Slip'
+	begin
+		if NOT exists (select * from D_ShukkaSizi where ShukkaSiziNO=@ShukkaSiziNO)
+		begin
+			select * from M_Message where MessageID = 'E276'
 		end
+		RETURN;
+	end
 
-		if @Errortype = 'E159'
-		begin 
+	if @Errortype = 'Shipped'
+	begin 
 		if exists (select * from D_ShukkaSiziMeisai where ShukkaSiziNO=@ShukkaSiziNO and ShouhinCD=@ShouhinCD 
 		and ShukkaKanryouKBN = (select min(ShukkaKanryouKBN) from D_ShukkaSiziMeisai where ShukkaKanryouKBN=1))
-		 
 		begin
-			--not exist
-			select * from M_Message where MessageID = 'E159'
-			end
-			RETURN;
+			select * from M_Message where MessageID = 'E276'
 		end
+		RETURN;
+	end
 
-		if @Errortype = 'E150'
-		begin
+	if @Errortype = 'Shippable'
+	begin
 		if exists (select * from D_ShukkaSiziMeisai where ShukkaSiziNO=@ShukkaSiziNO and ShouhinCD=@ShouhinCD
 		and ShukkaSiziSuu - ShukkaZumiSuu < @ShukkaSiziNO and ShukkaKanryouKBN = 0 )
 		begin
-			--not exist
-			select * from M_Message where MessageID = 'E150'
-			end
-			RETURN;
+			select * from M_Message where MessageID = 'E276'
 		end
-
-	
+		RETURN;
+	end
 END
