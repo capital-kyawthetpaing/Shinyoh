@@ -828,37 +828,43 @@ namespace JuchuuNyuuryoku
                     sobj = new SiiresakiDetail();
                 if (gv_JuchuuNyuuryoku.Columns["colSiiresakiDetail"].Index == e.ColumnIndex)
                 {
-                    sobj.Access_Siiresaki_obj.SiiresakiCD = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiCD"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.SiiresakiRyakuName = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiRyakuName"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.SiiresakiName = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiName"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.YuubinNO1 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiYuubinNO1"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.YuubinNO2 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiYuubinNO2"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.Juusho1 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiJuusho1"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.Juusho2 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiJuusho2"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.Tel11 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO11"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.Tel12 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO12"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.Tel13 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO13"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.Tel21 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO21"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.Tel22 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO22"].Value.ToString();
-                    sobj.Access_Siiresaki_obj.Tel23 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO23"].Value.ToString();
-                    sobj.ShowDialog();
+                    if(!ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex - 2) && !string.IsNullOrEmpty(gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiCD"].EditedFormattedValue.ToString().Trim()))
+                    {
+                        sobj.Access_Siiresaki_obj.SiiresakiCD = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiCD"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.SiiresakiRyakuName = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiRyakuName"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.SiiresakiName = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiName"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.YuubinNO1 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiYuubinNO1"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.YuubinNO2 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiYuubinNO2"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.Juusho1 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiJuusho1"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.Juusho2 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiJuusho2"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.Tel11 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO11"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.Tel12 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO12"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.Tel13 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO13"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.Tel21 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO21"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.Tel22 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO22"].Value.ToString();
+                        sobj.Access_Siiresaki_obj.Tel23 = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiTelNO23"].Value.ToString();
+                        sobj.ShowDialog();
 
 
-                    SiiresakiEntity s_obj = sobj.Access_Siiresaki_obj;
-                    gv_JuchuuNyuuryoku["colSiiresakiCD", e.RowIndex].Value = s_obj.SiiresakiCD;
-                    gv_JuchuuNyuuryoku["colSiiresakiName", e.RowIndex].Value = s_obj.SiiresakiName;
-                    gv_JuchuuNyuuryoku["colSiiresakiRyakuName", e.RowIndex].Value = s_obj.SiiresakiRyakuName;
-                    gv_JuchuuNyuuryoku["colSiiresakiYuubinNO1", e.RowIndex].Value = s_obj.YuubinNO1;
-                    gv_JuchuuNyuuryoku["colSiiresakiYuubinNO2", e.RowIndex].Value = s_obj.YuubinNO2;
-                    gv_JuchuuNyuuryoku["colSiiresakiJuusho1", e.RowIndex].Value = s_obj.Juusho1;
-                    gv_JuchuuNyuuryoku["colSiiresakiJuusho2", e.RowIndex].Value = s_obj.Juusho2;
-                    gv_JuchuuNyuuryoku["colSiiresakiTelNO11", e.RowIndex].Value = s_obj.Tel11;
-                    gv_JuchuuNyuuryoku["colSiiresakiTelNO12", e.RowIndex].Value = s_obj.Tel12;
-                    gv_JuchuuNyuuryoku["colSiiresakiTelNO13", e.RowIndex].Value = s_obj.Tel13;
-                    gv_JuchuuNyuuryoku["colSiiresakiTelNO21", e.RowIndex].Value = s_obj.Tel21;
-                    gv_JuchuuNyuuryoku["colSiiresakiTelNO22", e.RowIndex].Value = s_obj.Tel22;
-                    gv_JuchuuNyuuryoku["colSiiresakiTelNO23", e.RowIndex].Value = s_obj.Tel23;
-                   
+                        SiiresakiEntity s_obj = sobj.Access_Siiresaki_obj;
+                        gv_JuchuuNyuuryoku["colSiiresakiCD", e.RowIndex].Value = s_obj.SiiresakiCD;
+                        gv_JuchuuNyuuryoku["colSiiresakiName", e.RowIndex].Value = s_obj.SiiresakiName;
+                        gv_JuchuuNyuuryoku["colSiiresakiRyakuName", e.RowIndex].Value = s_obj.SiiresakiRyakuName;
+                        gv_JuchuuNyuuryoku["colSiiresakiYuubinNO1", e.RowIndex].Value = s_obj.YuubinNO1;
+                        gv_JuchuuNyuuryoku["colSiiresakiYuubinNO2", e.RowIndex].Value = s_obj.YuubinNO2;
+                        gv_JuchuuNyuuryoku["colSiiresakiJuusho1", e.RowIndex].Value = s_obj.Juusho1;
+                        gv_JuchuuNyuuryoku["colSiiresakiJuusho2", e.RowIndex].Value = s_obj.Juusho2;
+                        gv_JuchuuNyuuryoku["colSiiresakiTelNO11", e.RowIndex].Value = s_obj.Tel11;
+                        gv_JuchuuNyuuryoku["colSiiresakiTelNO12", e.RowIndex].Value = s_obj.Tel12;
+                        gv_JuchuuNyuuryoku["colSiiresakiTelNO13", e.RowIndex].Value = s_obj.Tel13;
+                        gv_JuchuuNyuuryoku["colSiiresakiTelNO21", e.RowIndex].Value = s_obj.Tel21;
+                        gv_JuchuuNyuuryoku["colSiiresakiTelNO22", e.RowIndex].Value = s_obj.Tel22;
+                        gv_JuchuuNyuuryoku["colSiiresakiTelNO23", e.RowIndex].Value = s_obj.Tel23;
+                    }
+                    else
+                    {
+                        gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colSiiresakiCD"];
+                    }
                 }
                 //}
             }
