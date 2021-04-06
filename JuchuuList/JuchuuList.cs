@@ -320,6 +320,7 @@ namespace JuchuuList {
             obj.Tel1 = txtPhNo1.Text;
             obj.Tel2 = txtPhNo2.Text;
             obj.Tel3 = txtPhNo3.Text;
+            obj.TokuisakiCD = txtTokuisaki.Text;
 
             if (chk.Equals("1")&& (!string.IsNullOrEmpty(txtTokuisaki.Text)))
             {
