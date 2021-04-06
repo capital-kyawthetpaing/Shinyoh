@@ -13,7 +13,7 @@ namespace BL {
         public DataTable JuchuuList_Excel(JuchuuEntity obj)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[23];
+            var parameters = new SqlParameter[24];
             parameters[0] = new SqlParameter("@JuchuuDate1", SqlDbType.VarChar) { Value = obj.JuhuuDate1 };
             parameters[1] = new SqlParameter("@JuchuuDate2", SqlDbType.VarChar) { Value = obj.JuhuuDate2 };
             parameters[2] = new SqlParameter("@JuchuuNO1", SqlDbType.VarChar) { Value = obj.JuhuuNO1 };
@@ -37,6 +37,7 @@ namespace BL {
             parameters[20] = new SqlParameter("@Tel3", SqlDbType.VarChar) { Value = obj.Tel3 };
             parameters[21] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = obj.Condition };
             parameters[22] = new SqlParameter("@JuchuuDate", SqlDbType.VarChar) { Value = obj.LoginDate };
+            //parameters[22] = new SqlParameter("@Year_1", SqlDbType.VarChar) { Value = "年" };
             DataTable dt = ckmdl.SelectDatatable("JuchuuList_Excel", GetConnectionString(), parameters);
             return dt;
         }

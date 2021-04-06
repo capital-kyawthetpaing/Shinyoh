@@ -43,6 +43,9 @@ namespace ZaikoIkkatuSaiHikiate
 
             Remove_LabelBorder();
             base_entity = _GetBaseData();
+
+            lbl1.AutoSize = true;
+            lbl2.AutoSize = true;
         }
 
         public override void FunctionProcess(string tagID)
