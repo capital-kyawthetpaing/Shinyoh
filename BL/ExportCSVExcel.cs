@@ -109,9 +109,9 @@ namespace BL
                 oWB = null;
                 oXL.Quit();
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                throw ex;
             }
             finally
             {
