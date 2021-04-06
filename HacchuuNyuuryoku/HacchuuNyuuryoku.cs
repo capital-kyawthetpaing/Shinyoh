@@ -433,7 +433,7 @@ namespace HacchuuNyuuryoku
 
         private void btn_Siiresaki_Click(object sender, EventArgs e)
         {
-            if (!txtSiiresakiCD.IsErrorOccurs)
+            if (!string.IsNullOrWhiteSpace(txtSiiresakiCD.Text) && !txtSiiresakiCD.IsErrorOccurs)
                 sobj.ShowDialog();
             else
                 txtSiiresakiCD.Focus();

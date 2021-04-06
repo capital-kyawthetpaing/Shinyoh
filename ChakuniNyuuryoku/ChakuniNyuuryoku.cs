@@ -836,7 +836,7 @@ namespace ChakuniNyuuryoku
             //    sd = new SiiresakiDetail();
             //else if (cboMode.Equals("3") || cboMode.Equals("4"))
             //    sd = new SiiresakiDetail(false);
-            if (!txtSiiresaki.IsErrorOccurs)
+            if (!string.IsNullOrWhiteSpace(txtSiiresaki.Text) && !txtSiiresaki.IsErrorOccurs)
                 sd.ShowDialog();
             else
                 txtSiiresaki.Focus();

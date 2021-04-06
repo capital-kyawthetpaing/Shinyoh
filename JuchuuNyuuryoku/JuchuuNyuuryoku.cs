@@ -352,7 +352,7 @@ namespace JuchuuNyuuryoku
 
         private void btn_Tokuisaki_Click(object sender, EventArgs e)
         {
-            if(!txtTokuisakiCD.IsErrorOccurs)
+            if(!string.IsNullOrWhiteSpace(txtTokuisakiCD.Text) && !txtTokuisakiCD.IsErrorOccurs )
                 tobj.ShowDialog();
             else
                 txtTokuisakiCD.Focus();
@@ -360,7 +360,7 @@ namespace JuchuuNyuuryoku
 
         private void btn_Kouriten_Click(object sender, EventArgs e)
         {
-            if (!txtKouritenCD.IsErrorOccurs)
+            if (!string.IsNullOrWhiteSpace(txtKouritenCD.Text) && !txtKouritenCD.IsErrorOccurs)
                 kobj.ShowDialog();
             else
                 txtKouritenCD.Focus();
