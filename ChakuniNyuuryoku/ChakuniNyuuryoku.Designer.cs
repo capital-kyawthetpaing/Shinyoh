@@ -979,7 +979,7 @@
             this.chkSS.MoveNext = true;
             this.chkSS.Name = "chkSS";
             this.chkSS.NextControl = null;
-            this.chkSS.NextControlName = "chkFW";
+            this.chkSS.NextControlName = "txtSizeNo";
             this.chkSS.Size = new System.Drawing.Size(44, 19);
             this.chkSS.TabIndex = 16;
             this.chkSS.Text = "SS";
