@@ -143,48 +143,7 @@ namespace JuchuuList {
                 }
 
             }
-        }
-        private void txtTokuisaki_Leave(object sender, EventArgs e)
-        {
-            if (!txtTokuisaki.IsErrorOccurs)
-            {
-                TokuisakiBL bl = new TokuisakiBL();
-                DataTable dt = bl.M_Tokuisaki_Select(txtTokuisaki.Text, txtTempDate.Text, "E101");
-                if (string.IsNullOrEmpty(txtTokuisaki.Text))
-                {
-                    Control control = this.TopLevelControl.Controls.Find("txtStore", true)[0];
-                    control.Focus();
-                }
-                else
-                {
-                    if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
-                    {
-                        txtName.Enabled = true;
-                        txtYubin1.Enabled = true;
-                        txtYubin2.Enabled = true;
-                        txtAddress.Enabled = true;
-                        txtPhNo1.Enabled = true;
-                        txtPhNo2.Enabled = true;
-                        txtPhNo3.Enabled = true;
-                        chk = "1";
-                        txtDestOrderNo.NextControlName = txtName.Name;
-                    }
-                    else
-                    {
-                        txtName.Enabled = false;
-                        txtYubin1.Enabled = false;
-                        txtYubin2.Enabled = false;
-                        txtAddress.Enabled = false;
-                        txtPhNo1.Enabled = false;
-                        txtPhNo2.Enabled = false;
-                        txtPhNo3.Enabled = false;
-                        chk = "0";
-                        Control btn = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
-                        txtDestOrderNo.NextControlName = btn.Name;
-                    }
-                }
-            }
-        }
+        }        
         private void Clear()
         {
             cf.Clear(PanelDetail);
@@ -330,6 +289,48 @@ namespace JuchuuList {
             obj.LoginDate = baseEntity.LoginDate;
             DataTable dataTable = juchuuListBL.JuchuuList_Excel(obj);
             return dataTable;
+        }
+
+        private void txtTokuisaki_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (!txtTokuisaki.IsErrorOccurs)
+            {
+                TokuisakiBL bl = new TokuisakiBL();
+                DataTable dt = bl.M_Tokuisaki_Select(txtTokuisaki.Text, txtTempDate.Text, "E101");
+                if (string.IsNullOrEmpty(txtTokuisaki.Text))
+                {
+                    Control control = this.TopLevelControl.Controls.Find("txtStore", true)[0];
+                    control.Focus();
+                }
+                else
+                {
+                    if (dt.Rows[0]["ShokutiFLG"].ToString().Equals("1"))
+                    {
+                        txtName.Enabled = true;
+                        txtYubin1.Enabled = true;
+                        txtYubin2.Enabled = true;
+                        txtAddress.Enabled = true;
+                        txtPhNo1.Enabled = true;
+                        txtPhNo2.Enabled = true;
+                        txtPhNo3.Enabled = true;
+                        chk = "1";
+                        txtDestOrderNo.NextControlName = txtName.Name;
+                    }
+                    else
+                    {
+                        txtName.Enabled = false;
+                        txtYubin1.Enabled = false;
+                        txtYubin2.Enabled = false;
+                        txtAddress.Enabled = false;
+                        txtPhNo1.Enabled = false;
+                        txtPhNo2.Enabled = false;
+                        txtPhNo3.Enabled = false;
+                        chk = "0";
+                        Control btn = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+                        txtDestOrderNo.NextControlName = btn.Name;
+                    }
+                }
+            }
         }
     }
 }

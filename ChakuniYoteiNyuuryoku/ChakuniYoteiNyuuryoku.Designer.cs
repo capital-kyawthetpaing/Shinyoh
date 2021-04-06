@@ -265,7 +265,7 @@
             this.chkFW.MoveNext = true;
             this.chkFW.Name = "chkFW";
             this.chkFW.NextControl = null;
-            this.chkFW.NextControlName = "txtColorNO";
+            this.chkFW.NextControlName = "txtColorNo";
             this.chkFW.Size = new System.Drawing.Size(44, 19);
             this.chkFW.TabIndex = 12;
             this.chkFW.Text = "FW";
@@ -280,7 +280,7 @@
             this.chkSS.MoveNext = true;
             this.chkSS.Name = "chkSS";
             this.chkSS.NextControl = null;
-            this.chkSS.NextControlName = "chkFW";
+            this.chkSS.NextControlName = "txtColorNo";
             this.chkSS.Size = new System.Drawing.Size(44, 19);
             this.chkSS.TabIndex = 11;
             this.chkSS.Text = "SS";

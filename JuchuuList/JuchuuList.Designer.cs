@@ -726,7 +726,7 @@
             this.txtTokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisaki.TxtBox = null;
             this.txtTokuisaki.TxtBox1 = null;
-            this.txtTokuisaki.Leave += new System.EventHandler(this.txtTokuisaki_Leave);
+            this.txtTokuisaki.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTokuisaki_KeyDown);
             // 
             // txtBrand
             // 

@@ -814,7 +814,7 @@
             this.chk_SS.MoveNext = true;
             this.chk_SS.Name = "chk_SS";
             this.chk_SS.NextControl = null;
-            this.chk_SS.NextControlName = "chk_FW";
+            this.chk_SS.NextControlName = "txtColorNo";
             this.chk_SS.Size = new System.Drawing.Size(40, 19);
             this.chk_SS.TabIndex = 18;
             this.chk_SS.Text = "SS";
