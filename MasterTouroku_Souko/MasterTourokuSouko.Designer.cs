@@ -411,7 +411,7 @@
             this.lblAddress2.Name = "lblAddress2";
             this.lblAddress2.Size = new System.Drawing.Size(100, 19);
             this.lblAddress2.TabIndex = 31;
-            this.lblAddress2.Text = "住所2";
+            this.lblAddress2.Text = "住所２";
             this.lblAddress2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtAddress1
@@ -665,6 +665,7 @@
             this.txtSouko.IsRequire = false;
             this.txtSouko.IsUseInitializedLayout = true;
             this.txtSouko.lblName = null;
+            this.txtSouko.lblName1 = null;
             this.txtSouko.Location = new System.Drawing.Point(119, 9);
             this.txtSouko.MaxLength = 10;
             this.txtSouko.MinimumSize = new System.Drawing.Size(100, 19);
@@ -677,6 +678,7 @@
             this.txtSouko.TabIndex = 1;
             this.txtSouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSouko.TxtBox = null;
+            this.txtSouko.TxtBox1 = null;
             this.txtSouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSouko_KeyDown);
             // 
             // lblCopySouko
@@ -751,6 +753,7 @@
             this.txtCopySouko.IsRequire = false;
             this.txtCopySouko.IsUseInitializedLayout = true;
             this.txtCopySouko.lblName = null;
+            this.txtCopySouko.lblName1 = null;
             this.txtCopySouko.Location = new System.Drawing.Point(119, 37);
             this.txtCopySouko.MaxLength = 10;
             this.txtCopySouko.MinimumSize = new System.Drawing.Size(100, 19);
@@ -763,6 +766,7 @@
             this.txtCopySouko.TabIndex = 27;
             this.txtCopySouko.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtCopySouko.TxtBox = null;
+            this.txtCopySouko.TxtBox1 = null;
             this.txtCopySouko.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCopySouko_KeyDown);
             // 
             // MasterTourokuSouko

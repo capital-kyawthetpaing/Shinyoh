@@ -40,6 +40,7 @@
             this.RadOnchuu = new Shinyoh_Controls.SRadio();
             this.RadSaMa = new Shinyoh_Controls.SRadio();
             this.lblShukaKBN = new Shinyoh_Controls.SLabel();
+            this.txtStaffCharge = new Shinyoh_Search.SearchBox();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.lblStaff = new System.Windows.Forms.Label();
             this.chk = new Shinyoh_Controls.SCheckBox();
@@ -93,7 +94,6 @@
             this.sRadDelete = new Shinyoh_Controls.SRadio();
             this.sRadRegister = new Shinyoh_Controls.SRadio();
             this.lbImportClassification = new Shinyoh_Controls.SLabel();
-            this.txtStaffCharge = new Shinyoh_Search.SearchBox();
             this.txtTokuisakiCopy = new Shinyoh_Search.SearchBox();
             this.txt_Tokuisaki = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
@@ -393,6 +393,37 @@
             this.lblShukaKBN.TabIndex = 97;
             this.lblShukaKBN.Text = "出荷指示書不要区分\t";
             this.lblShukaKBN.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtStaffCharge
+            // 
+            this.txtStaffCharge.AllowMinus = false;
+            this.txtStaffCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStaffCharge.ChangeDate = null;
+            this.txtStaffCharge.Combo = null;
+            this.txtStaffCharge.DecimalPlace = 0;
+            this.txtStaffCharge.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtStaffCharge.DepandOnMode = false;
+            this.txtStaffCharge.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtStaffCharge.IntegerPart = 0;
+            this.txtStaffCharge.IsDatatableOccurs = null;
+            this.txtStaffCharge.IsErrorOccurs = false;
+            this.txtStaffCharge.IsRequire = false;
+            this.txtStaffCharge.IsUseInitializedLayout = true;
+            this.txtStaffCharge.lblName = null;
+            this.txtStaffCharge.lblName1 = null;
+            this.txtStaffCharge.Location = new System.Drawing.Point(181, 544);
+            this.txtStaffCharge.MaxLength = 10;
+            this.txtStaffCharge.MinimumSize = new System.Drawing.Size(60, 19);
+            this.txtStaffCharge.MoveNext = true;
+            this.txtStaffCharge.Name = "txtStaffCharge";
+            this.txtStaffCharge.NextControl = null;
+            this.txtStaffCharge.NextControlName = "txtStartDate";
+            this.txtStaffCharge.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtStaffCharge.Size = new System.Drawing.Size(80, 19);
+            this.txtStaffCharge.TabIndex = 29;
+            this.txtStaffCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCharge.TxtBox = null;
+            this.txtStaffCharge.TxtBox1 = null;
             // 
             // lblStaffCD_Name
             // 
@@ -1119,7 +1150,7 @@
             this.lblAddress2.Name = "lblAddress2";
             this.lblAddress2.Size = new System.Drawing.Size(140, 19);
             this.lblAddress2.TabIndex = 31;
-            this.lblAddress2.Text = "住所2";
+            this.lblAddress2.Text = "住所２";
             this.lblAddress2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtAddress1
@@ -1356,37 +1387,6 @@
             this.lbImportClassification.TabIndex = 66;
             this.lbImportClassification.Text = "取込区分";
             this.lbImportClassification.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtStaffCharge
-            // 
-            this.txtStaffCharge.AllowMinus = false;
-            this.txtStaffCharge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaffCharge.ChangeDate = null;
-            this.txtStaffCharge.Combo = null;
-            this.txtStaffCharge.DecimalPlace = 0;
-            this.txtStaffCharge.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtStaffCharge.DepandOnMode = false;
-            this.txtStaffCharge.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaffCharge.IntegerPart = 0;
-            this.txtStaffCharge.IsDatatableOccurs = null;
-            this.txtStaffCharge.IsErrorOccurs = false;
-            this.txtStaffCharge.IsRequire = false;
-            this.txtStaffCharge.IsUseInitializedLayout = true;
-            this.txtStaffCharge.lblName = null;
-            this.txtStaffCharge.lblName1 = null;
-            this.txtStaffCharge.Location = new System.Drawing.Point(181, 544);
-            this.txtStaffCharge.MaxLength = 10;
-            this.txtStaffCharge.MinimumSize = new System.Drawing.Size(60, 19);
-            this.txtStaffCharge.MoveNext = true;
-            this.txtStaffCharge.Name = "txtStaffCharge";
-            this.txtStaffCharge.NextControl = null;
-            this.txtStaffCharge.NextControlName = "txtStartDate";
-            this.txtStaffCharge.SearchType = Entity.SearchType.ScType.Staff;
-            this.txtStaffCharge.Size = new System.Drawing.Size(80, 19);
-            this.txtStaffCharge.TabIndex = 29;
-            this.txtStaffCharge.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaffCharge.TxtBox = null;
-            this.txtStaffCharge.TxtBox1 = null;
             // 
             // txtTokuisakiCopy
             // 

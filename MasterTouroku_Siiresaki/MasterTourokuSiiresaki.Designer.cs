@@ -967,7 +967,7 @@
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 38;
-            this.sLabel3.Text = "住所2";
+            this.sLabel3.Text = "住所２";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtAddress1
