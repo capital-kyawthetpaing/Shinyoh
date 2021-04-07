@@ -346,7 +346,7 @@
             this.lblAddress2.Name = "lblAddress2";
             this.lblAddress2.Size = new System.Drawing.Size(100, 19);
             this.lblAddress2.TabIndex = 101;
-            this.lblAddress2.Text = "住所2";
+            this.lblAddress2.Text = "住所２";
             this.lblAddress2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtAddress1
