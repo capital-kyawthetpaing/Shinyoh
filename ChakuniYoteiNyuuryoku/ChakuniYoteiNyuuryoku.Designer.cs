@@ -59,7 +59,6 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtDateTo = new Shinyoh_Controls.STextBox();
             this.txtDateFrom = new Shinyoh_Controls.STextBox();
             this.sLabel10 = new Shinyoh_Controls.SLabel();
@@ -94,6 +93,7 @@
             this.sLabel6 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.txtChakuniYoteiNO = new Shinyoh_Search.SearchBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -114,6 +114,7 @@
             // 
             // PanelDetail
             // 
+            this.PanelDetail.Controls.Add(this.label7);
             this.PanelDetail.Controls.Add(this.txtSizeNo);
             this.PanelDetail.Controls.Add(this.txtColorNo);
             this.PanelDetail.Controls.Add(this.txtShouhinCD);
@@ -124,7 +125,6 @@
             this.PanelDetail.Controls.Add(this.btnDisplay);
             this.PanelDetail.Controls.Add(this.btnConfirm);
             this.PanelDetail.Controls.Add(this.gvChakuniYoteiNyuuryoku);
-            this.PanelDetail.Controls.Add(this.label1);
             this.PanelDetail.Controls.Add(this.txtDateTo);
             this.PanelDetail.Controls.Add(this.txtDateFrom);
             this.PanelDetail.Controls.Add(this.sLabel10);
@@ -499,15 +499,6 @@
             this.Column3.HeaderText = "ShouhinCD";
             this.Column3.Name = "Column3";
             this.Column3.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1273, 125);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(19, 13);
-            this.label1.TabIndex = 83;
-            this.label1.Text = "～";
             // 
             // txtDateTo
             // 
@@ -1145,6 +1136,16 @@
             this.txtChakuniYoteiNO.TxtBox1 = null;
             this.txtChakuniYoteiNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtArrivalNO_KeyDown);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(1268, 124);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(18, 20);
+            this.label7.TabIndex = 90;
+            this.label7.Text = "~";
+            // 
             // ChakuniYoteiNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1195,7 +1196,6 @@
         private Shinyoh_Controls.SLabel sLabel7;
         private Shinyoh_Controls.STextBox txtDescription;
         private Shinyoh_Controls.SLabel sLabel13;
-        private System.Windows.Forms.Label label1;
         private Shinyoh_Controls.STextBox txtDateTo;
         private Shinyoh_Controls.STextBox txtDateFrom;
         private Shinyoh_Controls.SLabel sLabel10;
@@ -1230,6 +1230,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Label label7;
     }
 }
 
