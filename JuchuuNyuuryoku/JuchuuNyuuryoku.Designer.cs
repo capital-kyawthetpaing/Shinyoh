@@ -307,7 +307,7 @@
             this.txtShouhinCD.MoveNext = true;
             this.txtShouhinCD.Name = "txtShouhinCD";
             this.txtShouhinCD.NextControl = null;
-            this.txtShouhinCD.NextControlName = "txtJANCD";
+            this.txtShouhinCD.NextControlName = "txtShouhinName";
             this.txtShouhinCD.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtShouhinCD.Size = new System.Drawing.Size(150, 19);
             this.txtShouhinCD.TabIndex = 14;
@@ -953,7 +953,7 @@
             this.txtJuchuuDenpyouTekiyou.MoveNext = true;
             this.txtJuchuuDenpyouTekiyou.Name = "txtJuchuuDenpyouTekiyou";
             this.txtJuchuuDenpyouTekiyou.NextControl = null;
-            this.txtJuchuuDenpyouTekiyou.NextControlName = "txtBrandCD";
+            this.txtJuchuuDenpyouTekiyou.NextControlName = "txtSenpouBusho";
             this.txtJuchuuDenpyouTekiyou.SearchType = Entity.SearchType.ScType.None;
             this.txtJuchuuDenpyouTekiyou.Size = new System.Drawing.Size(530, 19);
             this.txtJuchuuDenpyouTekiyou.TabIndex = 12;
@@ -1031,7 +1031,7 @@
             this.txtSenpouBusho.MoveNext = true;
             this.txtSenpouBusho.Name = "txtSenpouBusho";
             this.txtSenpouBusho.NextControl = null;
-            this.txtSenpouBusho.NextControlName = "txtKibouNouki";
+            this.txtSenpouBusho.NextControlName = "txtBrandCD";
             this.txtSenpouBusho.SearchType = Entity.SearchType.ScType.None;
             this.txtSenpouBusho.Size = new System.Drawing.Size(150, 19);
             this.txtSenpouBusho.TabIndex = 10;
@@ -1070,7 +1070,7 @@
             this.txtSenpouHacchuuNO.MoveNext = true;
             this.txtSenpouHacchuuNO.Name = "txtSenpouHacchuuNO";
             this.txtSenpouHacchuuNO.NextControl = null;
-            this.txtSenpouHacchuuNO.NextControlName = "txtSenpouBusho";
+            this.txtSenpouHacchuuNO.NextControlName = "txtKibouNouki";
             this.txtSenpouHacchuuNO.SearchType = Entity.SearchType.ScType.None;
             this.txtSenpouHacchuuNO.Size = new System.Drawing.Size(150, 19);
             this.txtSenpouHacchuuNO.TabIndex = 9;
@@ -1108,7 +1108,7 @@
             this.txtShouhinName.MoveNext = true;
             this.txtShouhinName.Name = "txtShouhinName";
             this.txtShouhinName.NextControl = null;
-            this.txtShouhinName.NextControlName = "txtYearTerm";
+            this.txtShouhinName.NextControlName = "txtJANCD";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
             this.txtShouhinName.Size = new System.Drawing.Size(530, 19);
             this.txtShouhinName.TabIndex = 16;
@@ -1147,7 +1147,7 @@
             this.txtJANCD.MoveNext = true;
             this.txtJANCD.Name = "txtJANCD";
             this.txtJANCD.NextControl = null;
-            this.txtJANCD.NextControlName = "txtShouhinName";
+            this.txtJANCD.NextControlName = "txtYearTerm";
             this.txtJANCD.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD.Size = new System.Drawing.Size(120, 19);
             this.txtJANCD.TabIndex = 15;

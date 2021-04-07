@@ -455,7 +455,7 @@
             this.txtShouhinCD.MoveNext = true;
             this.txtShouhinCD.Name = "txtShouhinCD";
             this.txtShouhinCD.NextControl = null;
-            this.txtShouhinCD.NextControlName = "txtJANCD";
+            this.txtShouhinCD.NextControlName = "txtShouhinName";
             this.txtShouhinCD.SearchType = Entity.SearchType.ScType.Shouhin;
             this.txtShouhinCD.Size = new System.Drawing.Size(150, 19);
             this.txtShouhinCD.TabIndex = 9;
@@ -638,7 +638,7 @@
             this.txtShouhinName.MoveNext = true;
             this.txtShouhinName.Name = "txtShouhinName";
             this.txtShouhinName.NextControl = null;
-            this.txtShouhinName.NextControlName = "txtYearTerm";
+            this.txtShouhinName.NextControlName = "txtJANCD";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
             this.txtShouhinName.Size = new System.Drawing.Size(530, 19);
             this.txtShouhinName.TabIndex = 11;
@@ -677,7 +677,7 @@
             this.txtJANCD.MoveNext = true;
             this.txtJANCD.Name = "txtJANCD";
             this.txtJANCD.NextControl = null;
-            this.txtJANCD.NextControlName = "txtShouhinName";
+            this.txtJANCD.NextControlName = "txtYearTerm";
             this.txtJANCD.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD.Size = new System.Drawing.Size(120, 19);
             this.txtJANCD.TabIndex = 10;
