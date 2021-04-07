@@ -89,7 +89,7 @@ namespace JuchuuList {
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD,txtTempDate , null);
             txtTokuisaki.E101Check(true, "M_Tokuisaki", txtTokuisaki, txtTempDate, null);
             txtStore.E101Check(true, "M_Kouriten", txtStore, txtTempDate, null);
-           // txtBrand.E101Check(true, "JuchuuList", txtBrand, null, null);
+            txtBrand.E101Check(true, "M_Shouhin", txtBrand, null, null);
 
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);

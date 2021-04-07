@@ -65,7 +65,7 @@ namespace HacchuuList
             Date_Setting();
 
             txtStaffCD.lblName = lblStaff_Name;
-            txtBrandCD.lblName = lblBrand_Name;
+            txtBrand.lblName = lblBrand_Name;
             Disable_Method();
 
             txtStaffCD.ChangeDate = txtTempDate;
@@ -105,7 +105,9 @@ namespace HacchuuList
 
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtTempDate, null);
 
-            txtBrandCD.E101Check(true, "M_MultiPorpose", txtBrandCD, txtTempDate, null);
+            //txtBrandCD.E101Check(true, "M_MultiPorpose", txtBrandCD, txtTempDate, null);
+
+            txtBrand.E101Check(true, "M_Shouhin", txtBrand, null, null);
         }
         private void Clear()
         {
@@ -278,7 +280,7 @@ namespace HacchuuList
             obj.Hacchuu_UpdateDate1 = string.IsNullOrEmpty(txtUpdate_HacchuuDate1.Text) ? baseEntity.LoginDate : txtUpdate_HacchuuDate1.Text;
             obj.Hacchuu_UpdateDate2 = string.IsNullOrEmpty(txtUpdate_HacchuuDate2.Text) ? baseEntity.LoginDate : txtUpdate_HacchuuDate2.Text;
             obj.StaffCD = txtStaffCD.Text;
-            obj.BrandCD = txtBrandCD.Text;
+            obj.BrandCD = txtBrand.Text;
             obj.Year = txtYear.Text;
             obj.SS = chk_SS.Checked == true ? "1" : "0";
             obj.FW = chk_FW.Checked == true ? "1" : "0";
@@ -299,7 +301,7 @@ namespace HacchuuList
         private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
         {
             multipurposeBL bl = new multipurposeBL();
-            DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, string.Empty, string.Empty);
+            DataTable dt = bl.M_Multiporpose_SelectData(txtBrand.Text, 1, string.Empty, string.Empty);
             lblBrand_Name.Text = string.Empty;
             if (dt.Rows.Count > 0)
                 lblBrand_Name.Text = dt.Rows[0]["Char1"].ToString();
