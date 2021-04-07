@@ -287,7 +287,7 @@
             // lblKanzen2
             // 
             this.lblKanzen2.AutoSize = true;
-            this.lblKanzen2.Location = new System.Drawing.Point(444, 425);
+            this.lblKanzen2.Location = new System.Drawing.Point(436, 425);
             this.lblKanzen2.Name = "lblKanzen2";
             this.lblKanzen2.Size = new System.Drawing.Size(61, 13);
             this.lblKanzen2.TabIndex = 97;
@@ -405,7 +405,7 @@
             // lblBubunn2
             // 
             this.lblBubunn2.AutoSize = true;
-            this.lblBubunn2.Location = new System.Drawing.Point(635, 390);
+            this.lblBubunn2.Location = new System.Drawing.Point(634, 390);
             this.lblBubunn2.Name = "lblBubunn2";
             this.lblBubunn2.Size = new System.Drawing.Size(61, 13);
             this.lblBubunn2.TabIndex = 71;
@@ -414,7 +414,7 @@
             // lblKanzen1
             // 
             this.lblKanzen1.AutoSize = true;
-            this.lblKanzen1.Location = new System.Drawing.Point(291, 356);
+            this.lblKanzen1.Location = new System.Drawing.Point(270, 356);
             this.lblKanzen1.Name = "lblKanzen1";
             this.lblKanzen1.Size = new System.Drawing.Size(61, 13);
             this.lblKanzen1.TabIndex = 70;
@@ -544,7 +544,7 @@
             // lblBubunn1
             // 
             this.lblBubunn1.AutoSize = true;
-            this.lblBubunn1.Location = new System.Drawing.Point(445, 323);
+            this.lblBubunn1.Location = new System.Drawing.Point(444, 323);
             this.lblBubunn1.Name = "lblBubunn1";
             this.lblBubunn1.Size = new System.Drawing.Size(61, 13);
             this.lblBubunn1.TabIndex = 60;
