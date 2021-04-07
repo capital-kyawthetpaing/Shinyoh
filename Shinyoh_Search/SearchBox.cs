@@ -78,6 +78,7 @@ namespace Shinyoh_Search
                     case Entity.SearchType.ScType.Kouriten:
                         colName = "KouritenRyakuName";
                         break;
+                    case Entity.SearchType.ScType.multiporpose:
                     case Entity.SearchType.ScType.Brand:
                     case Entity.SearchType.ScType.Partition:
                     case Entity.SearchType.ScType.Tani:
@@ -175,6 +176,18 @@ namespace Shinyoh_Search
                         CD = tokuisakiSearch.Tokuisaki;
                         CDate = tokuisakiSearch.ChangeDate;
                         name = tokuisakiSearch.TokuisakiRyakuName;
+                        break;
+                    case Entity.SearchType.ScType.multiporpose:
+                        msearch.Access_Type = string.Empty;
+                        msearch.ShowDialog();
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Key;
+                        if (CDate != null)
+                            CDate = msearch.Key;
+                        if (lblName != null)
+                            name = msearch.Char1;
                         break;
                     case Entity.SearchType.ScType.Brand:                       
                         msearch.Access_Type = "103";
