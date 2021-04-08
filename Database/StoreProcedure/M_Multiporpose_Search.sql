@@ -37,7 +37,7 @@ BEGIN
 		--from M_MultiPorpose where ID=105
 
 	else
-		Select ID,[Key],IDName as Char1
+		Select ID,[Key],IDName,Char1,Char2,Char3,Char4,Char5,Num1,Num2,Num3,Num4,Num5,Date1,Date2,Date3
 		From M_MultiPorpose mp
 		Where (@ID1 is null or(mp.ID>=@ID1))
 		And (@ID2 is null or(mp.ID<=@ID2))
