@@ -181,6 +181,7 @@ SELECT
 	((@KouritenJuusho1 is null or (DJ.KouritenJuusho1=@KouritenJuusho1))or
 	(@KouritenJuusho2 is null or (DJ.KouritenJuusho2=@KouritenJuusho2)))
 	)
+	AND SKKNS2.ShukkanouSuu <> 0	--èoâ◊â¬î\êî
 	ORDER BY DJMS.ShouhinCD ASC,DJMS.JuchuuNO ASC,DJMS.GyouHyouziJun ASC
 
 If(OBJECT_ID('tempdb..#WK_ShukkaKanouSou2') Is Not Null)

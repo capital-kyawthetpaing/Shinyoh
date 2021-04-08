@@ -232,7 +232,14 @@ namespace JuchuuNyuuryoku
 
             gv_JuchuuNyuuryoku.Memory_Row_Count = 0;
 
-            if(cboMode.SelectedValue.ToString()=="1")
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
+
+            if (cboMode.SelectedValue.ToString()=="1")
             {
                 cboMode.NextControlName = txtCopy.Name;
                 txtJuchuuNO.Enabled = false;
@@ -1018,9 +1025,9 @@ namespace JuchuuNyuuryoku
                 if (chk_value != "False")
                     chk = "1";
                 if(!string.IsNullOrEmpty(chk))
-                existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and [Free]='"+chk+"' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
+                    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and [Free]='"+chk+"' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
                 else
-                existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "' and [Free] IS NULL").SingleOrDefault();
+                    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "' and [Free] IS NULL").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     //if (select_dr1[0][8].ToString() == "0")
