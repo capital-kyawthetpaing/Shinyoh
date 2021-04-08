@@ -46,6 +46,8 @@ namespace JuchuuNyuuryoku
             F8_dt1 = new DataTable();
             obj_bl = new JuchuuNyuuryokuBL();
             siiresaki_bl = new SiiresakiBL();
+            
+            //this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
 
         private void JuchuuNyuuryoku_Load(object sender, EventArgs e)
@@ -1340,8 +1342,11 @@ namespace JuchuuNyuuryoku
                 for (int i = 0; i < dt_Main.Rows.Count; i++)
                 {
                     DataTable hacchuu_dt = new DataTable();
-                    
-                    if (dt_Main.Rows[i]["Free"].ToString() != "1")
+                    DataRow[] select_drF = null;
+                    select_drF = F8_dt1.Select("SiiresakiCD = '" + dt_Main.Rows[i]["SiiresakiCD"].ToString() + "' and SiiresakiName='" + dt_Main.Rows[i]["SiiresakiName"].ToString() + "' and SoukoCD='" + dt_Main.Rows[i]["SoukoCD"].ToString() + "' and [Free] IS NULL");
+
+                    //if (dt_Main.Rows[i]["Free"].ToString() != "1")
+                    if (select_drF.Length > 0)
                     {
                         hacchuu_dt = obj_bl.GetJuchuuNO("2", txtJuchuuDate.Text, "0");
                         dt_Main.Rows[i]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
@@ -1414,8 +1419,12 @@ namespace JuchuuNyuuryoku
                     JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
                     DataTable hacchuu_dt = new DataTable();
                     DataTable Max_HacchuuNO = new DataTable();
-                    if (!string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()) && dt_Main.Rows[i]["Free"].ToString() != "1")
-                    {
+                    DataRow[] select_dr = null;
+                    select_dr = F8_dt1.Select("SiiresakiCD = '" + dt_Main.Rows[i]["SiiresakiCD"].ToString() + "' and SoukoCD='" + dt_Main.Rows[i]["SoukoCD"].ToString() + "' and HacchuuNO='" + dt_Main.Rows[i]["HacchuuNO"].ToString() + "' and [Free] IS NULL");
+
+                    //if (!string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()) && dt_Main.Rows[i]["Free"].ToString() != "1")
+                    if (!string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()) && select_dr.Length > 0)
+                        {
                         //existing record take HacchuuNO
                         Max_HacchuuNO = objMethod.Get_Max_HacchuuNO(dt_Main.Rows[i]["JuchuuNO"].ToString(), dt_Main.Rows[i]["SiiresakiCD"].ToString(), dt_Main.Rows[i]["SoukoCD"].ToString(), dt_Main.Rows[i]["HacchuuNO"].ToString());
                         if (Max_HacchuuNO.Rows.Count > 0)
@@ -1438,7 +1447,8 @@ namespace JuchuuNyuuryoku
                             }
                         }
                     }
-                    else if (string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()) && dt_Main.Rows[i]["Free"].ToString() != "1")
+                    //else if (string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()) && dt_Main.Rows[i]["Free"].ToString() != "1")
+                    else if (string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()) && select_dr.Length > 0)
                     {
                         for (int j = 0; j < F8_dt1.Rows.Count; j++)
                         {
