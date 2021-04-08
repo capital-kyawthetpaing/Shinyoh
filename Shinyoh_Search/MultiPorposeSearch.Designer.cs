@@ -306,7 +306,7 @@
             this.gvMultiporpose.ISRowColumn = null;
             this.gvMultiporpose.Location = new System.Drawing.Point(17, 141);
             this.gvMultiporpose.Name = "gvMultiporpose";
-            this.gvMultiporpose.Size = new System.Drawing.Size(844, 367);
+            this.gvMultiporpose.Size = new System.Drawing.Size(850, 367);
             this.gvMultiporpose.TabIndex = 3;
             this.gvMultiporpose.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvMultiporpose_CellMouseDoubleClick);
             this.gvMultiporpose.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvMultiporpose_KeyDown);
@@ -324,7 +324,7 @@
             this.colKey.HeaderText = "KEY";
             this.colKey.Name = "colKey";
             this.colKey.ReadOnly = true;
-            this.colKey.Width = 150;
+            this.colKey.Width = 130;
             // 
             // colName
             // 
@@ -332,42 +332,42 @@
             this.colName.HeaderText = "ID名";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
-            this.colName.Width = 150;
+            this.colName.Width = 130;
             // 
             // colChar1
             // 
             this.colChar1.DataPropertyName = "Char1";
             this.colChar1.HeaderText = "文字型１";
             this.colChar1.Name = "colChar1";
-            this.colChar1.Width = 200;
+            this.colChar1.Width = 220;
             // 
             // colChar2
             // 
             this.colChar2.DataPropertyName = "Char2";
             this.colChar2.HeaderText = "文字型２";
             this.colChar2.Name = "colChar2";
-            this.colChar2.Width = 200;
+            this.colChar2.Width = 220;
             // 
             // colChar3
             // 
             this.colChar3.DataPropertyName = "Char3";
             this.colChar3.HeaderText = "文字型３";
             this.colChar3.Name = "colChar3";
-            this.colChar3.Width = 200;
+            this.colChar3.Width = 220;
             // 
             // colChar4
             // 
             this.colChar4.DataPropertyName = "Char4";
             this.colChar4.HeaderText = "文字型４";
             this.colChar4.Name = "colChar4";
-            this.colChar4.Width = 200;
+            this.colChar4.Width = 220;
             // 
             // colChar5
             // 
             this.colChar5.DataPropertyName = "Char5";
             this.colChar5.HeaderText = "文字型５";
             this.colChar5.Name = "colChar5";
-            this.colChar5.Width = 200;
+            this.colChar5.Width = 220;
             // 
             // colNum1
             // 
