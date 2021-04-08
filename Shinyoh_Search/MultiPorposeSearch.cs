@@ -24,7 +24,8 @@ namespace Shinyoh_Search
         public MultiPorposeSearch()
         {
             InitializeComponent();
-            gvMultiporpose.ScrollBars = ScrollBars.Vertical;
+           // gvMultiporpose.ScrollBars = ScrollBars.Vertical;
+            gvMultiporpose.ScrollBars = ScrollBars.Both;
         }
 
         private void MultiPorposeSearch_Load(object sender, EventArgs e)

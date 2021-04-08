@@ -489,7 +489,7 @@ namespace MasterTouroku_Shouhin
                 if (dt.Rows[0]["SeasonSS"].ToString() == "1")
                     chkSS.Checked = true;
                 else
-                    chkFW.Checked = false;
+                    chkSS.Checked = false;
                 if (dt.Rows[0]["SeasonFW"].ToString() == "1")
                     chkFW.Checked = true;
                 else

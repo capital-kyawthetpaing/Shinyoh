@@ -45,6 +45,18 @@
             this.colKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChar1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colChar2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colChar3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colChar4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colChar5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNum1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNum2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNum3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNum4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNum5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDate1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDate2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDate3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvMultiporpose)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +88,7 @@
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.btnDisplay.Location = new System.Drawing.Point(802, 95);
+            this.btnDisplay.Location = new System.Drawing.Point(806, 96);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.NextControl = null;
             this.btnDisplay.NextControlName = null;
@@ -277,12 +289,24 @@
             this.colID,
             this.colKey,
             this.colName,
-            this.colChar1});
+            this.colChar1,
+            this.colChar2,
+            this.colChar3,
+            this.colChar4,
+            this.colChar5,
+            this.colNum1,
+            this.colNum2,
+            this.colNum3,
+            this.colNum4,
+            this.colNum5,
+            this.colDate1,
+            this.colDate2,
+            this.colDate3});
             this.gvMultiporpose.IsErrorOccurs = false;
             this.gvMultiporpose.ISRowColumn = null;
             this.gvMultiporpose.Location = new System.Drawing.Point(17, 141);
             this.gvMultiporpose.Name = "gvMultiporpose";
-            this.gvMultiporpose.Size = new System.Drawing.Size(719, 350);
+            this.gvMultiporpose.Size = new System.Drawing.Size(850, 367);
             this.gvMultiporpose.TabIndex = 3;
             this.gvMultiporpose.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvMultiporpose_CellMouseDoubleClick);
             this.gvMultiporpose.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvMultiporpose_KeyDown);
@@ -300,7 +324,7 @@
             this.colKey.HeaderText = "KEY";
             this.colKey.Name = "colKey";
             this.colKey.ReadOnly = true;
-            this.colKey.Width = 290;
+            this.colKey.Width = 130;
             // 
             // colName
             // 
@@ -308,14 +332,90 @@
             this.colName.HeaderText = "ID名";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
-            this.colName.Width = 285;
+            this.colName.Width = 130;
             // 
             // colChar1
             // 
             this.colChar1.DataPropertyName = "Char1";
-            this.colChar1.HeaderText = "Char1";
+            this.colChar1.HeaderText = "文字型１";
             this.colChar1.Name = "colChar1";
-            this.colChar1.Visible = false;
+            this.colChar1.Width = 220;
+            // 
+            // colChar2
+            // 
+            this.colChar2.DataPropertyName = "Char2";
+            this.colChar2.HeaderText = "文字型２";
+            this.colChar2.Name = "colChar2";
+            this.colChar2.Width = 220;
+            // 
+            // colChar3
+            // 
+            this.colChar3.DataPropertyName = "Char3";
+            this.colChar3.HeaderText = "文字型３";
+            this.colChar3.Name = "colChar3";
+            this.colChar3.Width = 220;
+            // 
+            // colChar4
+            // 
+            this.colChar4.DataPropertyName = "Char4";
+            this.colChar4.HeaderText = "文字型４";
+            this.colChar4.Name = "colChar4";
+            this.colChar4.Width = 220;
+            // 
+            // colChar5
+            // 
+            this.colChar5.DataPropertyName = "Char5";
+            this.colChar5.HeaderText = "文字型５";
+            this.colChar5.Name = "colChar5";
+            this.colChar5.Width = 220;
+            // 
+            // colNum1
+            // 
+            this.colNum1.DataPropertyName = "Num1";
+            this.colNum1.HeaderText = "数値型１";
+            this.colNum1.Name = "colNum1";
+            // 
+            // colNum2
+            // 
+            this.colNum2.DataPropertyName = "Num2";
+            this.colNum2.HeaderText = "数値型２";
+            this.colNum2.Name = "colNum2";
+            // 
+            // colNum3
+            // 
+            this.colNum3.DataPropertyName = "Num3";
+            this.colNum3.HeaderText = "数値型３";
+            this.colNum3.Name = "colNum3";
+            // 
+            // colNum4
+            // 
+            this.colNum4.DataPropertyName = "Num4";
+            this.colNum4.HeaderText = "数値型４";
+            this.colNum4.Name = "colNum4";
+            // 
+            // colNum5
+            // 
+            this.colNum5.DataPropertyName = "Num5";
+            this.colNum5.HeaderText = "数値型５";
+            this.colNum5.Name = "colNum5";
+            // 
+            // colDate1
+            // 
+            this.colDate1.DataPropertyName = "Date1";
+            this.colDate1.HeaderText = "日付型１";
+            this.colDate1.Name = "colDate1";
+            // 
+            // colDate2
+            // 
+            this.colDate2.DataPropertyName = "Date2";
+            this.colDate2.HeaderText = "日付型２";
+            this.colDate2.Name = "colDate2";
+            // 
+            // colDate3
+            // 
+            this.colDate3.DataPropertyName = "Date3";
+            this.colDate3.HeaderText = "日付型３";
+            this.colDate3.Name = "colDate3";
             // 
             // MultiPorposeSearch
             // 
@@ -356,5 +456,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colKey;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChar1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colChar2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colChar3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colChar4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colChar5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNum1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNum2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNum3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNum4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNum5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDate1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDate2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDate3;
     }
 }
