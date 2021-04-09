@@ -271,8 +271,13 @@ namespace MasterTouroku_Shouhin
                         if (rdo_Registragion.Checked)
                             chk_val = "create_update";
                         else chk_val = "delete";
-                        bl.CSV_M_Shouhin_CUD(Xml, chk_val);
-                        bbl.ShowMessage("I002");
+                        string return_BL=bl.CSV_M_Shouhin_CUD(Xml, chk_val);
+                        if(return_BL == "true")  //HET
+                        {
+                            bbl.ShowMessage("I002");
+                            rdo_Registragion.Checked = true;
+                            rdo_Delete.Checked = false;
+                        }
                     }
                 }
             }
@@ -681,6 +686,11 @@ namespace MasterTouroku_Shouhin
                                 goto StopProcess;
                             }
                         }
+                        if (rdo_Registragion.Checked == true) //HET
+                        {
+                            if (Shouhin_Check(data[3].ToString(), data[14].ToString(), data[15].ToString(),data[1].ToString(), i))
+                                error = "true";
+                        }                      
 
                         if (ImageFile_Check(data[30].ToString(), i, "指定したパスに画像ファイルが存在しないエラー"))
                             error = "true";
@@ -793,6 +803,18 @@ namespace MasterTouroku_Shouhin
             if(!System.IO.File.Exists(obj_text) && !string.IsNullOrEmpty(obj_text.Trim()))
             {
                 bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                bl = true;
+            }
+            return bl;
+        }
+        public bool Shouhin_Check(string shouhinCD,string colorNo,string SizeNo, string Key_Date, int line_no)
+        {
+            bl = false;
+            DataTable dt = new DataTable();
+            dt = shouhinbl.Shouhin_Check(shouhinCD, colorNo, SizeNo, Key_Date, "E132");
+            if (dt.Rows[0]["MessageID"].ToString() == "E132")
+            {
+                bbl.ShowMessage("E276", line_no.ToString(), "商品CD登録済エラー");
                 bl = true;
             }
             return bl;
