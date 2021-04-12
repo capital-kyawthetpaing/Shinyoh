@@ -57,6 +57,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="StoreProcedure\CSV_M_Shouhin_CUD.sql" />
     <Content Include="StoreProcedure\HCS_M_MultiPorpose_Type.sql" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -101,7 +102,6 @@
     <Content Include="StoreProcedure\ChakuniYoteiNyuuryoku_Update_Select.sql" />
     <Content Include="StoreProcedure\ChakuniYotei_DataCheck.sql" />
     <Content Include="StoreProcedure\CSV_M_Kouriten_CUD.sql" />
-    <Content Include="StoreProcedure\CSV_M_Shouhin_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_ShukkaTorikomi_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_Siiresaki_CUD.sql" />
     <Content Include="StoreProcedure\CSV_M_Tokuisaki_CUD.sql" />
