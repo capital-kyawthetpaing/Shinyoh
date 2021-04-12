@@ -1,4 +1,4 @@
- BEGIN TRY 
+﻿ BEGIN TRY 
  Drop Procedure dbo.[CSV_M_Tokuisaki_CUD]
 END try
 BEGIN CATCH END CATCH 
@@ -21,47 +21,49 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-	DECLARE  @hQuantityAdjust	AS INT 
-	declare  @currentDate as datetime = getdate()
 
-	begin
+	DECLARE  @Rows AS INT 	
 
 		CREATE TABLE #Temp
-				(   
-					TokuisakiCD					varchar(10) COLLATE DATABASE_DEFAULT,
-					ChangeDate					date,
-					ShokutiFLG					tinyint,
-					TokuisakiName				varchar(80) COLLATE DATABASE_DEFAULT,
-					TokuisakiRyakuName			varchar(40) COLLATE DATABASE_DEFAULT, 
-					KanaName					varchar(80) COLLATE DATABASE_DEFAULT,
-					KensakuHyouziJun			int DEFAULT 0,
-					SeikyuusakiCD				varchar(10) COLLATE DATABASE_DEFAULT,
-					AliasKBN					tinyint,
-					YuubinNO1					varchar(3) COLLATE DATABASE_DEFAULT,
-					YuubinNO2					varchar(4) COLLATE DATABASE_DEFAULT,
-					Juusho1						varchar(80) COLLATE DATABASE_DEFAULT,
-					Juusho2						varchar(80) COLLATE DATABASE_DEFAULT,
-					Tel11						varchar(5) COLLATE DATABASE_DEFAULT,
-					Tel12						varchar(4) COLLATE DATABASE_DEFAULT,	
-					Tel13						varchar(4) COLLATE DATABASE_DEFAULT,	
-					Tel21						varchar(5) COLLATE DATABASE_DEFAULT,
-					Tel22						varchar(4) COLLATE DATABASE_DEFAULT,
-					Tel23					    varchar(4) COLLATE DATABASE_DEFAULT,
-					TantouBusho					varchar(40) COLLATE DATABASE_DEFAULT,
-					TantouYakushoku             varchar(40) COLLATE DATABASE_DEFAULT,
-					TantoushaName               varchar(40) COLLATE DATABASE_DEFAULT,
-					MailAddress					varchar(100) COLLATE DATABASE_DEFAULT,
-					StaffCD						varchar(10) COLLATE DATABASE_DEFAULT,	
-					TorihikiKaisiDate			date ,
-					TorihikiShuuryouDate		date ,
-					ShukkaSizishoHuyouKBN		tinyint,
-					Remarks					    varchar(80) COLLATE DATABASE_DEFAULT,
-					UsedFlg						tinyint DEFAULT 0,
-					InsertOperator				varchar(10) COLLATE DATABASE_DEFAULT,
-					UpdateOperator			    varchar(10) COLLATE DATABASE_DEFAULT,
-					Error						varchar(10)
+				(  
+					SEQ							int IDENTITY(1,1),
+					TokuisakiCD					VARCHAR(200),
+					ChangeDate					VARCHAR(200),
+					ShokutiFLG					VARCHAR(200),
+					TokuisakiName				VARCHAR(200),
+					TokuisakiRyakuName			VARCHAR(200), 
+					KanaName					VARCHAR(200),
+					KensakuHyouziJun			VARCHAR(200),
+					SeikyuusakiCD				VARCHAR(200),
+					AliasKBN					VARCHAR(200),
+					YuubinNO1					VARCHAR(200),
+					YuubinNO2					VARCHAR(200),
+					Juusho1						VARCHAR(200),
+					Juusho2						VARCHAR(200),
+					Tel11						VARCHAR(200),
+					Tel12						VARCHAR(200),	
+					Tel13						VARCHAR(200),	
+					Tel21						VARCHAR(200),
+					Tel22						VARCHAR(200),
+					Tel23					    VARCHAR(200),
+					TantouBusho					VARCHAR(200),
+					TantouYakushoku             VARCHAR(200),
+					TantoushaName               VARCHAR(200),
+					MailAddress					VARCHAR(200),
+					StaffCD						VARCHAR(200),	
+					TorihikiKaisiDate			VARCHAR(200),
+					TorihikiShuuryouDate		VARCHAR(200),
+					ShukkaSizishoHuyouKBN		VARCHAR(200),
+					Remarks					    VARCHAR(200),
+					UsedFlg						VARCHAR(200),
+					InsertOperator				VARCHAR(200),
+					UpdateOperator			    VARCHAR(200),
+					Error1						VARCHAR(100),
+					Error2						VARCHAR(100),
+					ErrorFlg					BIT default 'FALSE'
 				)
-	   EXEC sp_xml_preparedocument @hQuantityAdjust OUTPUT, @xml
+
+				EXEC sp_xml_preparedocument @Rows OUTPUT, @xml
 
 	    INSERT INTO #Temp
            (TokuisakiCD
@@ -94,49 +96,189 @@ BEGIN
 			  ,Remarks              
 			  ,UsedFlg              
 			  ,InsertOperator   
-			  ,UpdateOperator
-			  ,Error)
+			  ,UpdateOperator)
 			 
-			   SELECT *
-					FROM OPENXML(@hQuantityAdjust, 'NewDataSet/test')
-					WITH
+			 
+			 SELECT * FROM OPENXML(@Rows, 'NewDataSet/test') WITH
 					(
-					TokuisakiCD					varchar(10) 'TokuisakiCD',
-					ChangeDate					date 'ChangeDate',
-					ShokutiFLG					tinyint 'ShokutiFLG',
-					TokuisakiName				varchar(80) 'TokuisakiName',
-					TokuisakiRyakuName			varchar(40) 'TokuisakiRyakuName', 
-					KanaName					varchar(80) 'KanaName',
-					KensakuHyouziJun			int 'KensakuHyouziJun',
-					SeikyuusakiCD				varchar(13) 'SeikyuusakiCD',
-					AliasKBN					tinyint 'AliasKBN',
-					YuubinNO1					varchar(3) 'YuubinNO1',
-					YuubinNO2					varchar(4) 'YuubinNO2',
-					Juusho1						varchar(80) 'Juusho1',
-					Juusho2						varchar(80) 'Juusho2',
-					Tel11						varchar(5) 'Tel11',
-					Tel12						varchar(4) 'Tel12',	
-					Tel13						varchar(4) 'Tel13',	
-					Tel21						varchar(5) 'Tel21',
-					Tel22						varchar(4) 'Tel22',
-					Tel23					    varchar(4) 'Tel23',
-					TantouBusho					varchar(40) 'TantouBusho',
-					TantouYakushoku             varchar(40) 'TantouYakushoku',
-					TantoushaName               varchar(40) 'TantoushaName',
-					MailAddress					varchar(100) 'MailAddress',
-					StaffCD						varchar(10) 'StaffCD',	
-					TorihikiKaisiDate			date 'TorihikiKaisiDate',
-					TorihikiShuuryouDate	    date 'TorihikiShuuryouDate',
-					ShukkaSizishoHuyouKBN		tinyint 'ShukkaSizishoHuyouKBN',
-					Remarks					    varchar(80) 'Remarks',
-					UsedFlg						tinyint 'UsedFlg',
+					TokuisakiCD					VARCHAR(200) 'TokuisakiCD',
+					ChangeDate					VARCHAR(200) 'ChangeDate',
+					ShokutiFLG					VARCHAR(200) 'ShokutiFLG',
+					TokuisakiName				VARCHAR(200) 'TokuisakiName',
+					TokuisakiRyakuName			VARCHAR(200)'TokuisakiRyakuName', 
+					KanaName					VARCHAR(200) 'KanaName',
+					KensakuHyouziJun			VARCHAR(200) 'KensakuHyouziJun',
+					SeikyuusakiCD				VARCHAR(200) 'SeikyuusakiCD',
+					AliasKBN					VARCHAR(200) 'AliasKBN',
+					YuubinNO1					VARCHAR(200) 'YuubinNO1',
+					YuubinNO2					VARCHAR(200) 'YuubinNO2',
+					Juusho1						VARCHAR(200) 'Juusho1',
+					Juusho2						VARCHAR(200) 'Juusho2',
+					Tel11						VARCHAR(200) 'Tel11',
+					Tel12						VARCHAR(200) 'Tel12',	
+					Tel13						VARCHAR(200) 'Tel13',	
+					Tel21						VARCHAR(200) 'Tel21',
+					Tel22						VARCHAR(200) 'Tel22',
+					Tel23					    VARCHAR(200) 'Tel23',
+					TantouBusho					VARCHAR(200) 'TantouBusho',
+					TantouYakushoku             VARCHAR(200) 'TantouYakushoku',
+					TantoushaName               VARCHAR(200) 'TantoushaName',
+					MailAddress					VARCHAR(200) 'MailAddress',
+					StaffCD						VARCHAR(200) 'StaffCD',	
+					TorihikiKaisiDate			VARCHAR(200) 'TorihikiKaisiDate',
+					TorihikiShuuryouDate	    VARCHAR(200) 'TorihikiShuuryouDate',
+					ShukkaSizishoHuyouKBN		VARCHAR(200) 'ShukkaSizishoHuyouKBN',
+					Remarks					    VARCHAR(200) 'Remarks',
+					UsedFlg						VARCHAR(200) 'UsedFlg',
 					InsertOperator				varchar(10) 'InsertOperator',
-					UpdateOperator			    varchar(10) 'UpdateOperator',
-					Error						varchar(10) 'Error'
+					UpdateOperator			    varchar(10) 'UpdateOperator'
 					)
-		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-	    SELECT * FROM #Temp
+		EXEC SP_XML_REMOVEDOCUMENT @Rows
+--Null check
+	update #Temp
+	set ErrorFlg = 1,
+		Error1 = case when isnull(ltrim(rtrim(TokuisakiCD)),'') = '' then '得意先CD未入力エラー'
+					when isnull(ltrim(rtrim(ChangeDate)),'') = '' then '改定日未入力エラー' 
+					when isnull(ltrim(rtrim(ShokutiFLG)),'') = '' then '諸口未入力エラー' 
+					when isnull(ltrim(rtrim(TokuisakiName)),'') = '' then '得意先名未入力エラー' 
+					when isnull(ltrim(rtrim(TokuisakiRyakuName)),'') = '' then '略名未入力エラー' 
+					when isnull(ltrim(rtrim(SeikyuusakiCD)),'') = '' then '請求先CD未入力エラー' 
+					when isnull(ltrim(rtrim(AliasKBN)),'') = '' then '敬称未入力エラー' 
+					when isnull(ltrim(rtrim(StaffCD)),'') = '' then '担当スタッフCD未入力エラー' 
+					when isnull(ltrim(rtrim(ShukkaSizishoHuyouKBN)),'') = '' then '出荷指示書不要区分未入力エラー' 				
+					end
+	where isnull(ltrim(rtrim(TokuisakiCD)),'') = ''
+	or isnull(ltrim(rtrim(ChangeDate)),'') = ''
+	or isnull(ltrim(rtrim(ShokutiFLG)),'') = ''
+	or isnull(ltrim(rtrim(TokuisakiName)),'') = ''
+	or isnull(ltrim(rtrim(TokuisakiRyakuName)),'') = ''
+	or isnull(ltrim(rtrim(SeikyuusakiCD)),'') = ''
+	or isnull(ltrim(rtrim(AliasKBN)),'') = ''
+	or isnull(ltrim(rtrim(StaffCD)),'') = ''
+	or isnull(ltrim(rtrim(ShukkaSizishoHuyouKBN)),'') = ''
+	
+	if exists (select 1 from #Temp where ErrorFlg  = 1)
+		begin
+			goto error
+		end
+
+	--Length Check
+	update #Temp
+	set ErrorFlg = 1,
+		Error1 = case when datalength(TokuisakiCD) > 10 then '得意先CD桁数エラー'
+					when datalength(TokuisakiName) > 80 then '得意先名桁数エラー'
+					when datalength(TokuisakiRyakuName) > 40 then '略名桁数エラー'
+					when datalength(KanaName) > 80 then 'カナ名桁数エラー'
+					when datalength(SeikyuusakiCD) > 10 then '請求先CD桁数エラー'
+					when datalength(YuubinNO1) > 3 then '郵便番号１桁数エラー'
+					when datalength(YuubinNO2) > 4 then '郵便番号２桁数エラー'
+					when datalength(Juusho1) > 80 then '住所１桁数エラー'
+					when datalength(Juusho2) > 80 then '住所２桁数エラー'
+					when datalength(Tel11) > 6 then '電話番号①-1桁数エラー'
+					when datalength(Tel12) > 5 then '電話番号①-2桁数エラー'
+					when datalength(Tel13) > 5 then '電話番号①-3桁数エラー'
+					when datalength(Tel21) > 6 then '電話番号②-1桁数エラー'
+					when datalength(Tel22) > 5 then '電話番号②-2桁数エラー'
+					when datalength(Tel23) > 5 then '電話番号②-3桁数エラー'
+					when datalength(TantouBusho) > 40 then '担当部署桁数エラー'
+					when datalength(TantouYakushoku) > 40 then '担当役職桁数エラー'
+					when datalength(TantoushaName) > 40 then '担当者名桁数エラー'
+					when datalength(MailAddress) > 100 then 'メールアドレス桁数エラー'
+					when datalength(StaffCD) > 10 then '担当スタッフCD桁数エラー'
+					when datalength(Remarks) > 80 then '備考桁数エラー'
+				end
+	from #Temp
+	where datalength(TokuisakiCD) > 10
+	or datalength(TokuisakiName) > 80
+	or datalength(TokuisakiRyakuName) > 40
+	or datalength(KanaName) > 80
+	or datalength(SeikyuusakiCD) > 10
+	or datalength(YuubinNO1) > 3
+	or datalength(YuubinNO2) > 4
+	or datalength(Juusho1) > 80
+	or datalength(Juusho2) > 80
+	or datalength(Tel11) > 6
+	or datalength(Tel12) > 5
+	or datalength(Tel13) > 5
+	or datalength(Tel21) > 6
+	or datalength(Tel22) > 5
+	or datalength(Tel23) > 5
+	or datalength(TantouBusho) > 40
+	or datalength(TantouYakushoku) > 40
+	or datalength(TantoushaName) > 40
+	or datalength(MailAddress) > 100
+	or datalength(StaffCD) > 10
+	or datalength(Remarks) > 80
+
+
+	if exists (select 1 from #Temp where ErrorFlg  = 1)
+	begin
+		goto error
+	end
+
+	--input check
+	update #Temp
+	set ErrorFlg = 1,
+		Error1 = '入力可能値外エラー',
+		Error2 = case when (ShokutiFLG < 0 and ShokutiFLG > 1) then '項目:諸口区分(0～1)'
+					when (AliasKBN < 1 and AliasKBN > 2 ) then '項目:敬称(1～2)'
+					when isdate(ChangeDate) = 0 then '項目:改定日'
+					when isdate(isnull(nullif(ltrim(rtrim(TorihikiKaisiDate)),''),'2100-01-01')) = 0 then '取引開始日'
+					when isdate(isnull(nullif(ltrim(rtrim(TorihikiShuuryouDate)),''),'2100-01-01')) = 0 then '取引終了日'
+					when (ShukkaSizishoHuyouKBN < 0 and ShukkaSizishoHuyouKBN > 1 ) then '出荷指示書不要区分(0～1)'
+					end 
+	where (ShokutiFLG < 0 and ShokutiFLG > 1)
+	or (AliasKBN < 1 and AliasKBN > 2  )
+	or isdate(ChangeDate) = 0
+	or isdate(isnull(nullif(ltrim(rtrim(TorihikiKaisiDate)),''),'2100-01-01')) = 0 -- allow null, allow '' blank
+	or isdate(isnull(nullif(ltrim(rtrim(TorihikiShuuryouDate)),''),'2100-01-01')) = 0
+	or (ShukkaSizishoHuyouKBN < 0 and ShukkaSizishoHuyouKBN > 1  )
+
+	if exists (select 1 from #Temp where ErrorFlg  = 1)
+	begin
+		goto error
+	end
+
+	--Not exists item of staff
+	update #Temp
+	set ErrorFlg = 1,
+		Error1 = '担当スタッフCD未登録エラー'
+	from #Temp tmp
+	left outer join  F_Staff(getdate()) fs on fs.StaffCD = tmp.StaffCD 
+	where fs.StaffCD is null
+
+	if @condition = 'create_update'
+		begin
+			--Already exists item(not sure this check require. if we make this check, we can't update Tokuisaki.)
+			update #Temp
+			set ErrorFlg = 1,
+				Error1 = '得意先CD登録済エラー'
+			from #Temp tmp
+			inner join M_Tokuisaki mt on mt.TokuisakiCD = tmp.TokuisakiCD and mt.ChangeDate = tmp.ChangeDate
+		end
+
+
+	if exists (select 1 from #Temp where ErrorFlg  = 1)
+		begin
+			goto error
+		end
+	else
+		begin
+			goto process
+		end
+
+	error:
+		begin
+			select top 1 '0' as Result,SEQ,Error1,Error2 from #Temp  where ErrorFlg = 1
+			drop table #Temp
+			return
+		end
+			
+	goto process
+
+	process:
+		begin
 		if @condition = 'create_update'
 			begin
 				INSERT INTO M_Tokuisaki
@@ -204,55 +346,58 @@ BEGIN
 			  ,Remarks              
 			  ,UsedFlg              
 			  ,InsertOperator
-			  ,@currentDate
+			  ,GETDATE()
 			  ,UpdateOperator
-			  ,@currentDate
+			  ,GETDATE()
 			 from #Temp 
-			 WHERE  NOT EXISTS (SELECT TokuisakiCD,ChangeDate From M_Tokuisaki WHERE TokuisakiCD = #Temp.TokuisakiCD and ChangeDate=#Temp.ChangeDate)
-			 and #Temp.Error='false'
-
-			update M_Tokuisaki
-		set         
-						ShokutiFLG = t.ShokutiFLG,
-						TokuisakiName = t.TokuisakiName,
-						TokuisakiRyakuName = t.TokuisakiRyakuName,
-						KanaName = t.KanaName,
-						KensakuHyouziJun = t.KensakuHyouziJun, 
-						SeikyuusakiCD = t.SeikyuusakiCD,
-						AliasKBN=t.AliasKBN,
-						YuubinNO1 = t.YuubinNO1, 
-						YuubinNO2 = t.YuubinNO2, 
-						Juusho1 = t.Juusho1, 
-						Juusho2 = t.Juusho2,
-						Tel11 = t.Tel11,
-						Tel12 = t.Tel12,
-						Tel13 = t.Tel13,
-						Tel21 = t.Tel21,
-						Tel22 = t.Tel22,
-						Tel23 = t.Tel23,
-						TantouBusho = t.TantouBusho, 
-						TantouYakushoku = t.TantouYakushoku,
-						TantoushaName = t.TantoushaName, 
-						MailAddress = t.MailAddress, 
-						StaffCD = t.StaffCD,
-						TorihikiKaisiDate = t.TorihikiKaisiDate,
-						TorihikiShuuryouDate = t.TorihikiShuuryouDate,
-						ShukkaSizishoHuyouKBN=t.ShukkaSizishoHuyouKBN,
-						Remarks = t.Remarks,
-						UpdateOperator = t.UpdateOperator,
-						UpdateDateTime = @currentDate
-			from M_Tokuisaki ms inner join #Temp t on ms.TokuisakiCD=t.TokuisakiCD and ms.ChangeDate=t.ChangeDate
-			where EXISTS (SELECT TokuisakiCD,ChangeDate From M_Tokuisaki WHERE TokuisakiCD = t.TokuisakiCD and ChangeDate=t.ChangeDate)	and t.Error='false'			
+			
+		--	update M_Tokuisaki
+		--set         
+		--				ShokutiFLG = t.ShokutiFLG,
+		--				TokuisakiName = t.TokuisakiName,
+		--				TokuisakiRyakuName = t.TokuisakiRyakuName,
+		--				KanaName = t.KanaName,
+		--				KensakuHyouziJun = t.KensakuHyouziJun, 
+		--				SeikyuusakiCD = t.SeikyuusakiCD,
+		--				AliasKBN=t.AliasKBN,
+		--				YuubinNO1 = t.YuubinNO1, 
+		--				YuubinNO2 = t.YuubinNO2, 
+		--				Juusho1 = t.Juusho1, 
+		--				Juusho2 = t.Juusho2,
+		--				Tel11 = t.Tel11,
+		--				Tel12 = t.Tel12,
+		--				Tel13 = t.Tel13,
+		--				Tel21 = t.Tel21,
+		--				Tel22 = t.Tel22,
+		--				Tel23 = t.Tel23,
+		--				TantouBusho = t.TantouBusho, 
+		--				TantouYakushoku = t.TantouYakushoku,
+		--				TantoushaName = t.TantoushaName, 
+		--				MailAddress = t.MailAddress, 
+		--				StaffCD = t.StaffCD,
+		--				TorihikiKaisiDate = t.TorihikiKaisiDate,
+		--				TorihikiShuuryouDate = t.TorihikiShuuryouDate,
+		--				ShukkaSizishoHuyouKBN=t.ShukkaSizishoHuyouKBN,
+		--				Remarks = t.Remarks,
+		--				UpdateOperator = t.UpdateOperator,
+		--				UpdateDateTime = @currentDate
+		--	from M_Tokuisaki ms inner join #Temp t on ms.TokuisakiCD=t.TokuisakiCD and ms.ChangeDate=t.ChangeDate
+		--	where EXISTS (SELECT TokuisakiCD,ChangeDate From M_Tokuisaki WHERE TokuisakiCD = t.TokuisakiCD and ChangeDate=t.ChangeDate)	and t.Error='false'			
 			end
 
 		else if @condition= 'delete'
 		 begin
 		   delete mt from M_Tokuisaki mt inner join #Temp t on mt.TokuisakiCD= t.TokuisakiCD and mt.ChangeDate=t.ChangeDate
-		   where EXISTS (SELECT TokuisakiCD,ChangeDate From M_Tokuisaki WHERE TokuisakiCD = t.TokuisakiCD and ChangeDate = t.ChangeDate ) and t.Error='false'		
+		   --where EXISTS (SELECT TokuisakiCD,ChangeDate From M_Tokuisaki WHERE TokuisakiCD = t.TokuisakiCD and ChangeDate = t.ChangeDate ) and t.Error='false'		
 		 end
 		DROP TABLE #Temp
-	end
+	
+		select '1' as Result
+		end
 END
+
+
+
 
 
 

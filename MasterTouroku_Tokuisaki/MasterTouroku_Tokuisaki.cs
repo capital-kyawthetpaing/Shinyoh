@@ -201,12 +201,19 @@ namespace MasterTouroku_Tokuisaki {
                         if (sRadRegister.Checked)
                             chk_val = "create_update";
                         else chk_val = "delete";
-                        string return_BL = bl.CSV_M_Tokuisaki_CUD(Xml, chk_val);
-                        if (return_BL == "true")
-                        {
-                            bbl.ShowMessage("I002");
-                            sRadRegister.Checked = true;
-                            sRadDelete.Checked = false;
+                        DataTable dt = bl.CSV_M_Tokuisaki_CUD(Xml, chk_val);
+                        if (dt.Rows.Count > 0)
+                        {                       
+                            if (dt.Rows[0]["Result"].ToString().Equals("1"))
+                            {
+                                bbl.ShowMessage("I002");
+                                sRadRegister.Checked = true;
+                                sRadDelete.Checked = false;
+                            }
+                            else
+                            {
+                                bbl.ShowMessage("E276", dt.Rows[0]["SEQ"].ToString(), dt.Rows[0]["Error1"].ToString(), dt.Rows[0]["Error2"].ToString());
+                            }
                         }
                     }
                 }
@@ -520,178 +527,8 @@ namespace MasterTouroku_Tokuisaki {
 
                     for (int i = 1; i < csvRows.Length; i++)
                     {
+                        error = "false";
                         var splits = csvRows[i].Split(',');
-                        obj.TokuisakiCD = splits[0];
-                        if (Null_Check(obj.TokuisakiCD, i, "得意先CD未入力エラー")) break;
-                        if (Byte_Check(10, obj.TokuisakiCD, i, "得意先CD桁数エラー")) break;
-
-                        //
-                        obj.ChangeDate = splits[1];
-                        if (Null_Check(obj.ChangeDate, i, "改定日未入力エラー")) break;
-                        if (Date_Check(obj.ChangeDate, i, "入力可能値外エラー", "改定日") == "true") break;
-                        else splits[1] = Date_Check(obj.ChangeDate, i, "入力可能値外エラー", "改定日");
-
-                        //
-                        obj.ShokutiFLG = Convert.ToInt32(splits[2]);
-                        if (!(obj.ShokutiFLG == 0 || obj.ShokutiFLG == 1))
-                        {
-                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー", "項目:諸口区分(0～1)");
-                            //bl_List.Add(true);
-                            break;
-                        }
-                        if (Null_Check(obj.ShokutiFLG.ToString(), i, "諸口未入力エラー")) break;
-
-                        //
-                        obj.TokuisakiName = splits[3];
-                        if (Null_Check(obj.TokuisakiName, i, "得意先名未入力エラー")) break;
-                        if (Byte_Check(80, obj.TokuisakiName, i, "得意先名桁数エラー")) break;
-
-                        //
-                        obj.TokuisakiRyakuName = splits[4];
-                        if (Null_Check(obj.TokuisakiRyakuName, i, "略名未入力エラー")) break;
-                        if (Byte_Check(40, obj.TokuisakiRyakuName, i, "略名桁数エラー")) break;
-
-                        //
-                        obj.KanaName = splits[5];
-                        if (Byte_Check(80, obj.KanaName, i, "カナ名桁数エラー")) break;
-
-                        //no error check
-                        obj.KensakuHyouziJun = splits[6];
-
-                        obj.SeikyuusakiCD = splits[7];
-                        if (Null_Check(obj.SeikyuusakiCD, i, "請求先CD未入力エラー")) break;
-                        if (Byte_Check(10, obj.SeikyuusakiCD, i, "請求先CD桁数エラー")) break;
-
-                        //
-                        obj.AliasKBN = Convert.ToInt32(splits[8]);
-                        if (!(obj.AliasKBN == 1 || obj.AliasKBN == 2))
-                        {
-                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー", "項目:敬称(1～2)");
-                            //bl_List.Add(true);
-                            break;
-                        }
-                        if (Null_Check(obj.AliasKBN.ToString(), i, "敬称未入力エラー")) break;
-
-                        //
-                        obj.YuubinNO1 = splits[9];
-                        if (Byte_Check(3, obj.YuubinNO1, i, "郵便番号１桁数エラー")) break;
-
-                        //
-                        obj.YuubinNO2 = splits[10];
-                        if (Byte_Check(4, obj.YuubinNO2, i, "郵便番号２桁数エラー")) break;
-
-                        //
-                        obj.Juusho1 = splits[11];
-                        if (Byte_Check(80, obj.Juusho1, i, "住所１桁数エラー")) break;
-
-                        //
-                        obj.Juusho2 = splits[12];
-                        if (Byte_Check(80, obj.Juusho2, i, "住所２桁数エラー")) break;
-
-                        //
-                        obj.Tel11 = splits[13];
-                        if (Byte_Check(6, obj.Tel11, i, "電話番号①-1桁数エラー")) break;
-
-                        //
-                        obj.Tel12 = splits[14];
-                        if (Byte_Check(5, obj.Tel12, i, "電話番号①-2桁数エラー")) break;
-
-                        //
-                        obj.Tel13 = splits[15];
-                        if (Byte_Check(5, obj.Tel13, i, "電話番号①-3桁数エラー")) break;
-
-                        //
-                        obj.Tel21 = splits[16];
-                        if (Byte_Check(6, obj.Tel21, i, "電話番号②-1桁数エラー")) break;
-
-                        //
-                        obj.Tel22 = splits[17];
-                        if (Byte_Check(5, obj.Tel22, i, "電話番号②-2桁数エラー")) break;
-
-                        //
-                        obj.Tel23 = splits[18];
-                        if (Byte_Check(5, obj.Tel23, i, "電話番号②-3桁数エラー")) break;
-
-                        //
-                        obj.TantouBusho = splits[19];
-                        if (Byte_Check(40, obj.TantouBusho, i, "担当部署桁数エラー")) break;
-
-                        //
-                        obj.TantouYakushoku = splits[20];
-                        if (Byte_Check(40, obj.TantouYakushoku, i, "担当役職桁数エラー")) break;
-
-                        //
-                        obj.TantoushaName = splits[21];
-                        if (Byte_Check(40, obj.TantoushaName, i, "担当者名桁数エラー")) break;
-
-                        //
-                        obj.MailAddress = splits[22];
-                        if (Byte_Check(100, obj.MailAddress, i, "メールアドレス桁数エラー")) break;
-
-                        //
-                        obj.StaffCD = splits[23];
-                        if (Null_Check(obj.StaffCD, i, "担当スタッフCD未入力エラー")) break;
-                        if (Byte_Check(10, obj.StaffCD, i, "担当スタッフCD桁数エラー")) break;
-
-                        //
-                        obj.TorihikiKaisiDate = splits[24];
-                        if (!string.IsNullOrEmpty(obj.TorihikiKaisiDate))
-                        {
-                            if (Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日") == "true") break;
-                            else splits[24] = Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日");
-                        }
-
-                        //
-                        obj.TorihikiShuuryouDate = splits[25];
-                        if (!string.IsNullOrEmpty(obj.TorihikiShuuryouDate))
-                        {
-                            if (Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日") == "true") break;
-                            else splits[25] = Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日");
-                        }
-
-                        //
-                        obj.ShukkaSizishoHuyouKBN = Convert.ToInt32(splits[26]);
-                        if (!(obj.ShukkaSizishoHuyouKBN == 0 || obj.ShukkaSizishoHuyouKBN == 1))
-                        {
-                            bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー", "出荷指示書不要区分(0～1)");
-                            //bl_List.Add(true);
-                            break;
-
-                        }
-                        if (Null_Check(obj.ShukkaSizishoHuyouKBN.ToString(), i, "出荷指示書不要区分未入力エラー")) break;
-
-                        //
-                        obj.Remarks = splits[27];
-                        if (Byte_Check(80, obj.Remarks, i, "備考桁数エラー")) break;
-
-                        //
-                        DataTable dt = new DataTable();
-                        StaffBL sBL = new StaffBL();
-                        dt = sBL.Staff_Select_Check(obj.StaffCD, obj.ChangeDate, "E101");
-                        if (dt.Rows[0]["MessageID"].ToString() == "E101")
-                        {
-                            bbl.ShowMessage("E276", i.ToString(), "担当スタッフCD未登録エラー");
-                            //bl_List.Add(true);
-                            break;
-                        }
-
-                        if (sRadRegister.Checked == true)
-                        {
-                            DataTable dt1 = new DataTable();
-                            TokuisakiBL TBL = new TokuisakiBL();
-                            dt1 = TBL.M_Tokuisaki_Select(obj.TokuisakiCD, obj.ChangeDate, "E132");
-                            if (dt1.Rows[0]["MessageID"].ToString() == "E132")
-                            {
-                                bbl.ShowMessage("E276", i.ToString(), "得意先CD登録済エラー");
-                                //bl_List.Add(true);
-                                break;
-                            }
-                        }
-                       
-                        if (bl_List.Contains(true))
-                            error = "true";
-                        else error = "false";
-
                         DataRow dr = create_dt.NewRow();
                         for (int j = 0; j < splits.Length; j++)
                         {
@@ -700,13 +537,198 @@ namespace MasterTouroku_Tokuisaki {
                             else
                                 dr[j] = splits[j].ToString();
                         }
-                        dr[28] = "0";
-                        dr[29] = base_Entity.OperatorCD;
-                        dr[30] = base_Entity.OperatorCD;
-                        dr[31] = error;
+                        dr["UsedFlg"] = "0";
+                        dr["InsertOperator"] = base_Entity.OperatorCD;
+                        dr["UpdateOperator"] = base_Entity.OperatorCD;
+                        dr["Error"] = error;
                         create_dt.Rows.Add(dr);
+
+                        //obj.TokuisakiCD = splits[0];
+                        //if (Null_Check(obj.TokuisakiCD, i, "得意先CD未入力エラー")) break;
+                        //if (Byte_Check(10, obj.TokuisakiCD, i, "得意先CD桁数エラー")) break;
+
+                        ////
+                        //obj.ChangeDate = splits[1];
+                        //if (Null_Check(obj.ChangeDate, i, "改定日未入力エラー")) break;
+                        //if (Date_Check(obj.ChangeDate, i, "入力可能値外エラー", "改定日") == "true") break;
+                        //else splits[1] = Date_Check(obj.ChangeDate, i, "入力可能値外エラー", "改定日");
+
+                        ////
+                        //obj.ShokutiFLG = Convert.ToInt32(splits[2]);
+                        //if (!(obj.ShokutiFLG == 0 || obj.ShokutiFLG == 1))
+                        //{
+                        //    bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー", "項目:諸口区分(0～1)");
+                        //    //bl_List.Add(true);
+                        //    break;
+                        //}
+                        //if (Null_Check(obj.ShokutiFLG.ToString(), i, "諸口未入力エラー")) break;
+
+                        ////
+                        //obj.TokuisakiName = splits[3];
+                        //if (Null_Check(obj.TokuisakiName, i, "得意先名未入力エラー")) break;
+                        //if (Byte_Check(80, obj.TokuisakiName, i, "得意先名桁数エラー")) break;
+
+                        ////
+                        //obj.TokuisakiRyakuName = splits[4];
+                        //if (Null_Check(obj.TokuisakiRyakuName, i, "略名未入力エラー")) break;
+                        //if (Byte_Check(40, obj.TokuisakiRyakuName, i, "略名桁数エラー")) break;
+
+                        ////
+                        //obj.KanaName = splits[5];
+                        //if (Byte_Check(80, obj.KanaName, i, "カナ名桁数エラー")) break;
+
+                        ////no error check
+                        //obj.KensakuHyouziJun = splits[6];
+
+                        //obj.SeikyuusakiCD = splits[7];
+                        //if (Null_Check(obj.SeikyuusakiCD, i, "請求先CD未入力エラー")) break;
+                        //if (Byte_Check(10, obj.SeikyuusakiCD, i, "請求先CD桁数エラー")) break;
+
+                        ////
+                        //obj.AliasKBN = Convert.ToInt32(splits[8]);
+                        //if (!(obj.AliasKBN == 1 || obj.AliasKBN == 2))
+                        //{
+                        //    bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー", "項目:敬称(1～2)");
+                        //    //bl_List.Add(true);
+                        //    break;
+                        //}
+                        //if (Null_Check(obj.AliasKBN.ToString(), i, "敬称未入力エラー")) break;
+
+                        ////
+                        //obj.YuubinNO1 = splits[9];
+                        //if (Byte_Check(3, obj.YuubinNO1, i, "郵便番号１桁数エラー")) break;
+
+                        ////
+                        //obj.YuubinNO2 = splits[10];
+                        //if (Byte_Check(4, obj.YuubinNO2, i, "郵便番号２桁数エラー")) break;
+
+                        ////
+                        //obj.Juusho1 = splits[11];
+                        //if (Byte_Check(80, obj.Juusho1, i, "住所１桁数エラー")) break;
+
+                        ////
+                        //obj.Juusho2 = splits[12];
+                        //if (Byte_Check(80, obj.Juusho2, i, "住所２桁数エラー")) break;
+
+                        ////
+                        //obj.Tel11 = splits[13];
+                        //if (Byte_Check(6, obj.Tel11, i, "電話番号①-1桁数エラー")) break;
+
+                        ////
+                        //obj.Tel12 = splits[14];
+                        //if (Byte_Check(5, obj.Tel12, i, "電話番号①-2桁数エラー")) break;
+
+                        ////
+                        //obj.Tel13 = splits[15];
+                        //if (Byte_Check(5, obj.Tel13, i, "電話番号①-3桁数エラー")) break;
+
+                        ////
+                        //obj.Tel21 = splits[16];
+                        //if (Byte_Check(6, obj.Tel21, i, "電話番号②-1桁数エラー")) break;
+
+                        ////
+                        //obj.Tel22 = splits[17];
+                        //if (Byte_Check(5, obj.Tel22, i, "電話番号②-2桁数エラー")) break;
+
+                        ////
+                        //obj.Tel23 = splits[18];
+                        //if (Byte_Check(5, obj.Tel23, i, "電話番号②-3桁数エラー")) break;
+
+                        ////
+                        //obj.TantouBusho = splits[19];
+                        //if (Byte_Check(40, obj.TantouBusho, i, "担当部署桁数エラー")) break;
+
+                        ////
+                        //obj.TantouYakushoku = splits[20];
+                        //if (Byte_Check(40, obj.TantouYakushoku, i, "担当役職桁数エラー")) break;
+
+                        ////
+                        //obj.TantoushaName = splits[21];
+                        //if (Byte_Check(40, obj.TantoushaName, i, "担当者名桁数エラー")) break;
+
+                        ////
+                        //obj.MailAddress = splits[22];
+                        //if (Byte_Check(100, obj.MailAddress, i, "メールアドレス桁数エラー")) break;
+
+                        ////
+                        //obj.StaffCD = splits[23];
+                        //if (Null_Check(obj.StaffCD, i, "担当スタッフCD未入力エラー")) break;
+                        //if (Byte_Check(10, obj.StaffCD, i, "担当スタッフCD桁数エラー")) break;
+
+                        ////
+                        //obj.TorihikiKaisiDate = splits[24];
+                        //if (!string.IsNullOrEmpty(obj.TorihikiKaisiDate))
+                        //{
+                        //    if (Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日") == "true") break;
+                        //    else splits[24] = Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日");
+                        //}
+
+                        ////
+                        //obj.TorihikiShuuryouDate = splits[25];
+                        //if (!string.IsNullOrEmpty(obj.TorihikiShuuryouDate))
+                        //{
+                        //    if (Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日") == "true") break;
+                        //    else splits[25] = Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日");
+                        //}
+
+                        ////
+                        //obj.ShukkaSizishoHuyouKBN = Convert.ToInt32(splits[26]);
+                        //if (!(obj.ShukkaSizishoHuyouKBN == 0 || obj.ShukkaSizishoHuyouKBN == 1))
+                        //{
+                        //    bbl.ShowMessage("E276", i.ToString(), "入力可能値外エラー", "出荷指示書不要区分(0～1)");
+                        //    //bl_List.Add(true);
+                        //    break;
+
+                        //}
+                        //if (Null_Check(obj.ShukkaSizishoHuyouKBN.ToString(), i, "出荷指示書不要区分未入力エラー")) break;
+
+                        ////
+                        //obj.Remarks = splits[27];
+                        //if (Byte_Check(80, obj.Remarks, i, "備考桁数エラー")) break;
+
+                        ////
+                        //DataTable dt = new DataTable();
+                        //StaffBL sBL = new StaffBL();
+                        //dt = sBL.Staff_Select_Check(obj.StaffCD, obj.ChangeDate, "E101");
+                        //if (dt.Rows[0]["MessageID"].ToString() == "E101")
+                        //{
+                        //    bbl.ShowMessage("E276", i.ToString(), "担当スタッフCD未登録エラー");
+                        //    //bl_List.Add(true);
+                        //    break;
+                        //}
+
+                        //if (sRadRegister.Checked == true)
+                        //{
+                        //    DataTable dt1 = new DataTable();
+                        //    TokuisakiBL TBL = new TokuisakiBL();
+                        //    dt1 = TBL.M_Tokuisaki_Select(obj.TokuisakiCD, obj.ChangeDate, "E132");
+                        //    if (dt1.Rows[0]["MessageID"].ToString() == "E132")
+                        //    {
+                        //        bbl.ShowMessage("E276", i.ToString(), "得意先CD登録済エラー");
+                        //        //bl_List.Add(true);
+                        //        break;
+                        //    }
+                        //}
+
+                        //if (bl_List.Contains(true))
+                        //    error = "true";
+                        //else error = "false";
+
+                        //DataRow dr = create_dt.NewRow();
+                        //for (int j = 0; j < splits.Length; j++)
+                        //{
+                        //    if (string.IsNullOrEmpty(splits[j]))
+                        //        dr[j] = DBNull.Value;
+                        //    else
+                        //        dr[j] = splits[j].ToString();
+                        //}
+                        //dr[28] = "0";
+                        //dr[29] = base_Entity.OperatorCD;
+                        //dr[30] = base_Entity.OperatorCD;
+                        //dr[31] = error;
+                        //create_dt.Rows.Add(dr);
                     }
-                    if (create_dt.Rows.Count == csvRows.Length - 1)
+                    //if (create_dt.Rows.Count == csvRows.Length - 1)
                         Xml = cf.DataTableToXml(create_dt);
                 }
                 else
@@ -716,41 +738,41 @@ namespace MasterTouroku_Tokuisaki {
             }
             return Xml;
         }
-        private bool Null_Check(string obj_text, int line_no, string error_msg)
-        {
-            bool bl = false;
-            if (string.IsNullOrWhiteSpace(obj_text))
-            {
-                bbl.ShowMessage("E276", line_no.ToString(), error_msg);
-                bl = true;
-            }
-            return bl;
-        }
-        private bool Byte_Check(int obj_len, string obj_text, int line_no, string error_msg)
-        {
-            bool bl = false;
-            if (cf.IsByteLengthOver(obj_len, obj_text))
-            {
-                bbl.ShowMessage("E276", line_no.ToString(), error_msg);
-                bl = true;
-            }
-            return bl;
-        }
-        public string Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
-        {
-            //bool bl = false;
-            TextBox txt = new TextBox();
-            txt.Text = csv_Date;
-            if (!string.IsNullOrEmpty(csv_Date))
-            {
-                if (!cf.DateCheck(txt))
-                {
-                    bbl.ShowMessage("E276", line_no.ToString(), error_msg1,error_msg2);
-                    txt.Text = "true";
-                }
-            }
-            return txt.Text;
-        }
+        //private bool Null_Check(string obj_text, int line_no, string error_msg)
+        //{
+        //    bool bl = false;
+        //    if (string.IsNullOrWhiteSpace(obj_text))
+        //    {
+        //        bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+        //        bl = true;
+        //    }
+        //    return bl;
+        //}
+        //private bool Byte_Check(int obj_len, string obj_text, int line_no, string error_msg)
+        //{
+        //    bool bl = false;
+        //    if (cf.IsByteLengthOver(obj_len, obj_text))
+        //    {
+        //        bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+        //        bl = true;
+        //    }
+        //    return bl;
+        //}
+        //public string Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
+        //{
+        //    //bool bl = false;
+        //    TextBox txt = new TextBox();
+        //    txt.Text = csv_Date;
+        //    if (!string.IsNullOrEmpty(csv_Date))
+        //    {
+        //        if (!cf.DateCheck(txt))
+        //        {
+        //            bbl.ShowMessage("E276", line_no.ToString(), error_msg1,error_msg2);
+        //            txt.Text = "true";
+        //        }
+        //    }
+        //    return txt.Text;
+        //}
         public void Create_Datatable_Column(DataTable create_dt)
         {
             create_dt.Columns.Add("TokuisakiCD");
