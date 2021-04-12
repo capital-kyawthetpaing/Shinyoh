@@ -66,6 +66,9 @@ namespace Shinyoh_Search
             dgDetail.Columns[11].Width = 50;
             dgDetail.Columns[12].Width = 150;
             dgDetail.Columns[13].Width = 100;
+
+            chkSS.Checked = true;
+            chkFW.Checked = true;
         }
 
         private void dgDetail_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
