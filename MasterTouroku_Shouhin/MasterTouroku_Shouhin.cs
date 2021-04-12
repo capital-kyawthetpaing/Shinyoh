@@ -271,13 +271,18 @@ namespace MasterTouroku_Shouhin
                         if (rdo_Registragion.Checked)
                             chk_val = "create_update";
                         else chk_val = "delete";
-                        string return_BL=bl.CSV_M_Shouhin_CUD(Xml, chk_val);
-                        if(return_BL == "true")  //HET
+                        DataTable dt = bl.CSV_M_Shouhin_CUD(Xml, chk_val);
+                        if(dt.Rows.Count > 0)
                         {
-                            bbl.ShowMessage("I002");
-                            rdo_Registragion.Checked = true;
-                            rdo_Delete.Checked = false;
+                            if(dt.Rows[0]["Result"].ToString().Equals("1"))
+                                bbl.ShowMessage("I002");
+                            else
+                            {
+                                bbl.ShowMessage("E276", dt.Rows[0]["SEQ"].ToString(), dt.Rows[0]["Error1"].ToString(), dt.Rows[0]["Error2"].ToString());
+                            }
                         }
+
+                        
                     }
                 }
             }
@@ -586,127 +591,122 @@ namespace MasterTouroku_Shouhin
                         dr["InsertOperator"] = base_entity.OperatorCD;
                         dr["UpdateOperator"] = base_entity.OperatorCD;
 
-                        string[] NullCheck_List = { "0", "1", "2", "3", "4", "5", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"};
-                        string[] NullCheck_Msg = { "商品CD未入力エラー", "改定日未入力エラー", "諸口未入力エラー", "品番CD未入力エラー", "商品名未入力エラー", "略名未入力エラー", "単位CD未入力エラー", "ブランドCD未入力エラー", "カラーNO未入力エラー", "サイズNO未入力エラー", "上代単価未入力エラー", "下代単価未入力エラー", "標準原価単価未入力エラー", "税率区分未入力エラー", "在庫評価区分未入力エラー", "在庫管理区分未入力エラー", "主要仕入先未入力エラー" };
-                        string[] ByteCheck_List = { "0_50", "3_20", "4_100", "5_80", "6_80", "8_13", "9_6", "10_6", "11_6", "12_2", "13_10", "14_13", "15_13", "22_10", "31_80"};
-                        string[] ByteCheck_Msg = { "商品CD桁数エラー", "品番CD桁数エラー", "商品名桁数エラー", "略名桁数エラー", "カナ名桁数エラー", "JANCD桁数エラー", "年度桁数エラー", "シーズンSS桁数エラー", "シーズンFW桁数エラー", "単位CD桁数エラー", "ブランドCD桁数エラー", "カラーNO桁数エラー", "サイズNO桁数エラー", "主要仕入先CD桁数エラー", "備考桁数エラー" };
-                        string[] ValueCheck_List = { "2", "19", "20", "21" };
-                        string[] ValueCheck_Amt = { "1", "2", "3", "1" };
-                        string[] ValueCheck_Msg = { "項目:諸口区分(0～1)", "項目:税率区分(0～2)", "項目:在庫評価区分(0～3)", "項目:在庫管理区分(0～1)" };
-                        string[] DateCheck_List = { "1", "23", "24" };
-                        string[] DateCheck_Msg = { "項目:改定日", "項目:取扱終了日", "項目:販売停止日" };
-                        string[] NonNumeric_List = { "16", "17", "18", "27" };
-                        string[] NonNumeric_Msg = { "項目:上代単価", "項目:下代単価", "項目:標準原価単価", "項目:FOB" };
-                        string InputValue_Msg = "入力可能値外エラー";
-                        string[] MasterCheck_List = { "12", "13", "14", "15", "22" };
-                        string[] MasterCheck_ID = { "102", "103", "104", "105" };
-                        string[] MasterCheck_Msg = { "単位CD未登録エラー", "ブランドCD未登録エラー", "カラーNO未登録エラー", "サイズNO未登録エラー", "主要仕入先CD未登録エラー" };
+                        //string[] NullCheck_List = { "0", "1", "2", "3", "4", "5", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22"};
+                        //string[] NullCheck_Msg = { "商品CD未入力エラー", "改定日未入力エラー", "諸口未入力エラー", "品番CD未入力エラー", "商品名未入力エラー", "略名未入力エラー", "単位CD未入力エラー", "ブランドCD未入力エラー", "カラーNO未入力エラー", "サイズNO未入力エラー", "上代単価未入力エラー", "下代単価未入力エラー", "標準原価単価未入力エラー", "税率区分未入力エラー", "在庫評価区分未入力エラー", "在庫管理区分未入力エラー", "主要仕入先未入力エラー" };
+                        //string[] ByteCheck_List = { "0_50", "3_20", "4_100", "5_80", "6_80", "8_13", "9_6", "10_6", "11_6", "12_2", "13_10", "14_13", "15_13", "22_10", "31_80"};
+                        //string[] ByteCheck_Msg = { "商品CD桁数エラー", "品番CD桁数エラー", "商品名桁数エラー", "略名桁数エラー", "カナ名桁数エラー", "JANCD桁数エラー", "年度桁数エラー", "シーズンSS桁数エラー", "シーズンFW桁数エラー", "単位CD桁数エラー", "ブランドCD桁数エラー", "カラーNO桁数エラー", "サイズNO桁数エラー", "主要仕入先CD桁数エラー", "備考桁数エラー" };
+                        //string[] ValueCheck_List = { "2", "19", "20", "21" };
+                        //string[] ValueCheck_Amt = { "1", "2", "3", "1" };
+                        //string[] ValueCheck_Msg = { "項目:諸口区分(0～1)", "項目:税率区分(0～2)", "項目:在庫評価区分(0～3)", "項目:在庫管理区分(0～1)" };
+                        //string[] DateCheck_List = { "1", "23", "24" };
+                        //string[] DateCheck_Msg = { "項目:改定日", "項目:取扱終了日", "項目:販売停止日" };
+                        //string[] NonNumeric_List = { "16", "17", "18", "27" };
+                        //string[] NonNumeric_Msg = { "項目:上代単価", "項目:下代単価", "項目:標準原価単価", "項目:FOB" };
+                        //string InputValue_Msg = "入力可能値外エラー";
+                        //string[] MasterCheck_List = { "12", "13", "14", "15", "22" };
+                        //string[] MasterCheck_ID = { "102", "103", "104", "105" };
+                        //string[] MasterCheck_Msg = { "単位CD未登録エラー", "ブランドCD未登録エラー", "カラーNO未登録エラー", "サイズNO未登録エラー", "主要仕入先CD未登録エラー" };
 
-                        for (int nc = 0; nc < NullCheck_List.Length; nc++)
-                        {
-                            int ncl_index = Convert.ToInt32(NullCheck_List[nc].ToString());
-                            if (Null_Check(data[ncl_index].ToString(), i, NullCheck_Msg[nc].ToString()))
-                            {
-                                error = "true";
-                                goto StopProcess;
-                            }
-                        }
+                        //for (int nc = 0; nc < NullCheck_List.Length; nc++)
+                        //{
+                        //    int ncl_index = Convert.ToInt32(NullCheck_List[nc].ToString());
+                        //    if (Null_Check(data[ncl_index].ToString(), i, NullCheck_Msg[nc].ToString()))
+                        //    {
+                        //        error = "true";
+                        //        goto StopProcess;
+                        //    }
+                        //}
 
-                        for (int bc = 0; bc < ByteCheck_List.Length; bc++)
-                        {
-                            var bcl = ByteCheck_List[bc].ToString().Split('_');
-                            int bcl_index = Convert.ToInt32(bcl[0]);
-                            int bcl_len = Convert.ToInt32(bcl[1]);
-                            if (Byte_Check(bcl_len, data[bcl_index].ToString(), i, ByteCheck_Msg[bc].ToString()))
-                            {
-                                error = "true";
-                                goto StopProcess;
-                            }
-                        }
+                        //for (int bc = 0; bc < ByteCheck_List.Length; bc++)
+                        //{
+                        //    var bcl = ByteCheck_List[bc].ToString().Split('_');
+                        //    int bcl_index = Convert.ToInt32(bcl[0]);
+                        //    int bcl_len = Convert.ToInt32(bcl[1]);
+                        //    if (Byte_Check(bcl_len, data[bcl_index].ToString(), i, ByteCheck_Msg[bc].ToString()))
+                        //    {
+                        //        error = "true";
+                        //        goto StopProcess;
+                        //    }
+                        //}
 
-                        for (int vc = 0; vc < ValueCheck_List.Length; vc++)
-                        {
-                            int vcl_index = Convert.ToInt32(ValueCheck_List[vc].ToString());
-                            int vc_Amount = Convert.ToInt32(ValueCheck_Amt[vc].ToString());
-                            string vc_msg = ValueCheck_Msg[vc].ToString();
-                            if (Value_Check(data[vcl_index].ToString(), i, vc_Amount, InputValue_Msg, vc_msg))
-                            {
-                                error = "true";
-                                goto StopProcess;
-                            }
-                        }
+                        //for (int vc = 0; vc < ValueCheck_List.Length; vc++)
+                        //{
+                        //    int vcl_index = Convert.ToInt32(ValueCheck_List[vc].ToString());
+                        //    int vc_Amount = Convert.ToInt32(ValueCheck_Amt[vc].ToString());
+                        //    string vc_msg = ValueCheck_Msg[vc].ToString();
+                        //    if (Value_Check(data[vcl_index].ToString(), i, vc_Amount, InputValue_Msg, vc_msg))
+                        //    {
+                        //        error = "true";
+                        //        goto StopProcess;
+                        //    }
+                        //}
 
-                        for(int dc = 0; dc < DateCheck_List.Length; dc++)
-                        {
-                            int dcl_index = Convert.ToInt32(DateCheck_List[dc].ToString());
-                            string dc_msg = DateCheck_Msg[dc].ToString();
-                            if (Date_Check(data[dcl_index].ToString(), i, InputValue_Msg, dc_msg) == "true")
-                            {
-                                error = "true";
-                                goto StopProcess;
-                            }
-                            else
-                            {
-                                dr[dcl_index] = Date_Check(data[dcl_index].ToString(), i, InputValue_Msg, dc_msg);
-                            }
-                        }
+                        //for(int dc = 0; dc < DateCheck_List.Length; dc++)
+                        //{
+                        //    int dcl_index = Convert.ToInt32(DateCheck_List[dc].ToString());
+                        //    string dc_msg = DateCheck_Msg[dc].ToString();
+                        //    if (Date_Check(data[dcl_index].ToString(), i, InputValue_Msg, dc_msg) == "true")
+                        //    {
+                        //        error = "true";
+                        //        goto StopProcess;
+                        //    }
+                        //    else
+                        //    {
+                        //        dr[dcl_index] = Date_Check(data[dcl_index].ToString(), i, InputValue_Msg, dc_msg);
+                        //    }
+                        //}
 
-                        for(int nn = 0; nn < NonNumeric_List.Length; nn++)
-                        {
-                            int nnl_index = Convert.ToInt32(NonNumeric_List[nn].ToString());
-                            string nn_msg = NonNumeric_Msg[nn].ToString();
-                            if (NonNumeric_Check(data[nnl_index].ToString(), i, InputValue_Msg, nn_msg))
-                            {
-                                error = "true";
-                                goto StopProcess;
-                            }
-                        }
+                        //for(int nn = 0; nn < NonNumeric_List.Length; nn++)
+                        //{
+                        //    int nnl_index = Convert.ToInt32(NonNumeric_List[nn].ToString());
+                        //    string nn_msg = NonNumeric_Msg[nn].ToString();
+                        //    if (NonNumeric_Check(data[nnl_index].ToString(), i, InputValue_Msg, nn_msg))
+                        //    {
+                        //        error = "true";
+                        //        goto StopProcess;
+                        //    }
+                        //}
 
-                        for(int mc = 0; mc < MasterCheck_List.Length; mc++)
-                        {
-                            string CD_ID = string.Empty, Key_Date = string.Empty;
-                            int type;
-                            int mcl_index = Convert.ToInt32(MasterCheck_List[mc].ToString());
-                            if(mc != MasterCheck_List.Length - 1)
-                            {
-                                CD_ID = MasterCheck_ID[mc].ToString();
-                                Key_Date = data[mcl_index].ToString();
-                                type = 0;
-                            }
-                            else
-                            {
-                                CD_ID = data[0].ToString();
-                                Key_Date = data[1].ToString();
-                                type = 1;
-                            }
+                        //for(int mc = 0; mc < MasterCheck_List.Length; mc++)
+                        //{
+                        //    string CD_ID = string.Empty, Key_Date = string.Empty;
+                        //    int type;
+                        //    int mcl_index = Convert.ToInt32(MasterCheck_List[mc].ToString());
+                        //    if(mc != MasterCheck_List.Length - 1)
+                        //    {
+                        //        CD_ID = MasterCheck_ID[mc].ToString();
+                        //        Key_Date = data[mcl_index].ToString();
+                        //        type = 0;
+                        //    }
+                        //    else
+                        //    {
+                        //        CD_ID = data[0].ToString();
+                        //        Key_Date = data[1].ToString();
+                        //        type = 1;
+                        //    }
 
-                            if (Master_Check(CD_ID, Key_Date, type, i, MasterCheck_Msg[mc].ToString()))
-                            {
-                                error = "true";
-                                goto StopProcess;
-                            }
-                        }
-                        if (rdo_Registragion.Checked == true) //HET
-                        {
-                            if (Shouhin_Check(data[3].ToString(), data[14].ToString(), data[15].ToString(),data[1].ToString(), i))
-                                error = "true";
-                        }                      
+                        //    if (Master_Check(CD_ID, Key_Date, type, i, MasterCheck_Msg[mc].ToString()))
+                        //    {
+                        //        error = "true";
+                        //        goto StopProcess;
+                        //    }
+                        //}
 
                         if (ImageFile_Check(data[30].ToString(), i, "指定したパスに画像ファイルが存在しないエラー"))
-                            error = "true";
+                        {
+                            bbl.ShowMessage("E276", i.ToString(), "指定したパスに画像ファイルが存在しないエラー");
+                            return string.Empty;
+                        }                           
                         else
                             dr[31] = !string.IsNullOrEmpty(data[30].ToString().Trim()) ? System.IO.File.ReadAllBytes(data[30].ToString()) : null;
 
                         dr["Error"] = error;
                         create_dt.Rows.Add(dr);
-                    
-                    StopProcess: if (error == "true")
-                            break;
                     }
-                    if (error == "false")
-                        Xml = cf.DataTableToXml(create_dt);
-                    else
-                        Xml = string.Empty;
+                    //if (error == "false")
+                    Xml = cf.DataTableToXml(create_dt);
+                    //else
+                    //    Xml = string.Empty;
                 }
                 else
                 {
