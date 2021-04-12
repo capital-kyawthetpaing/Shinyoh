@@ -32,32 +32,32 @@ CREATE PROCEDURE [dbo].[D_ChakuniYotei_Display]
 
 AS
 BEGIN
-	-- SET NOCOUNT ON added to prevent extra result sets from
-	-- interfering with SELECT statements.
-	SET NOCOUNT ON;
+    -- SET NOCOUNT ON added to prevent extra result sets from
+    -- interfering with SELECT statements.
+    SET NOCOUNT ON;
 Select
---B.ShouhinCD,	
-D.HinbanCD,
-B.ShouhinName,															
-B.ColorRyakuName,															
-B.ColorNO,															
-B.SizeNO,															
-convert(varchar(10),A.ChakuniYoteiDate,111) as ChakuniYoteiDate,															
-FLOOR(B.ChakuniYoteiSuu) as ChakuniYoteiSuu,															
-FLOOR(B.ChakuniZumiSuu)as ChakuniZumiSuu,															
---B.ChakuniYoteiSuu - B.ChakuniZumiSuu as ChakuniSuu,
-FLOOR(B.ChakuniYoteiSuu) - FLOOR(B.ChakuniZumiSuu) as ChakuniSuu,
-0 as SiireKanryouKBN, --螳御ｺ・
-'' as ChakuniMeisaiTekiyou,														
-B.JANCD,	
-B.ChakuniYoteiNO,
-B.ChakuniYoteiGyouNO,
-B.ChakuniYoteiNO + '-' + cast(B.ChakuniYoteiGyouNO as varchar) as Chakuni,
-B.HacchuuNO,
-B.HacchuuGyouNO,
-B.HacchuuNO + '-'+ cast(B.HacchuuGyouNO as varchar)as Hacchuu,
-D.ShouhinCD
-From 	D_ChakuniYotei A
+    --B.ShouhinCD,  
+    D.HinbanCD,
+    B.ShouhinName,
+    B.ColorRyakuName,
+    B.ColorNO,
+    B.SizeNO,
+    convert(varchar(10),A.ChakuniYoteiDate,111) as ChakuniYoteiDate,
+    FLOOR(B.ChakuniYoteiSuu) as ChakuniYoteiSuu,
+    FLOOR(B.ChakuniZumiSuu)as ChakuniZumiSuu,
+    --B.ChakuniYoteiSuu - B.ChakuniZumiSuu as ChakuniSuu,
+    FLOOR(B.ChakuniYoteiSuu) - FLOOR(B.ChakuniZumiSuu) as ChakuniSuu,
+    0 as SiireKanryouKBN, --螳御ｺ・
+    '' as ChakuniMeisaiTekiyou,
+    B.JANCD,
+    B.ChakuniYoteiNO,
+    B.ChakuniYoteiGyouNO,
+    B.ChakuniYoteiNO + '-' + cast(B.ChakuniYoteiGyouNO as varchar) as Chakuni,
+    B.HacchuuNO,
+    B.HacchuuGyouNO,
+    B.HacchuuNO + '-'+ cast(B.HacchuuGyouNO as varchar)as Hacchuu,
+    D.ShouhinCD
+From D_ChakuniYotei A
 Left outer join D_ChakuniYoteiMeisai B On B.ChakuniYoteiNO=A.ChakuniYoteiNO
 Left outer join M_Souko C on C.SoukoCD=A.SoukoCD
 Left outer join F_Shouhin(@ChakuniDate) D on D.ShouhinCD=B.ShouhinCD
@@ -71,7 +71,7 @@ And B.ChakuniKanryouKBN=0
 And (@ChakuniYoteiNO is null or(B.ChakuniYoteiNO=@ChakuniYoteiNO))
 And (@KanriNO is null or(B.KanriNO=@KanriNO))
 And A.SoukoCD=@SoukoCD
-And D.YearTerm=@YearTerm
+And (@YearTerm is null or (D.YearTerm=@YearTerm))
 And D.SeasonSS=@SeasonSS
 And D.SeasonFW=@SeasonFW
 And (@HinbanCD is null or (D.HinbanCD  like '%' + @HinbanCD + '%'))
