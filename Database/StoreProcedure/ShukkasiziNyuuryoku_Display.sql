@@ -102,31 +102,34 @@ INSERT INTO  #WK_ShukkaKanouSou2
 	GROUP BY DJSS.JuchuuNO,DJSS.JuchuuGyouNO
 
 SELECT
---DJMS.ShouhinCD			--å•†å“ã‚³ãƒ¼ãƒ‰
-	FS.HinbanCD	as ShouhinCD--å•†å“ã‚³ãƒ¼ãƒ‰
-	,DJMS.ShouhinName		--å•†å“å
-	,DJMS.ColorRyakuName	--ã‚«ãƒ©ãƒ¼ç•¥å
+--DJMS.ShouhinCD			--å•E“ã‚³ãƒ¼ãƒE
+	FS.HinbanCD	as ShouhinCD--å•E“ã‚³ãƒ¼ãƒE
+	,DJMS.ShouhinName		--å•E“åE
+	,DJMS.ColorRyakuName	--ã‚«ãƒ©ãƒ¼ç•¥åE
 	,DJMS.ColorNO			--ã‚«ãƒ©ãƒ¼NO
 	,DJMS.SizeNO			--ã‚µã‚¤ã‚ºNO
 	,FORMAT(DJMS.JuchuuSuu, '#,0') AS JuchuuSuu	--å—æ³¨æ•°
 	,ISNULL(FORMAT(SKKNS2.ShukkanouSuu, '#,0'),'0') AS ShukkanouSuu			--å‡ºè·å¯èƒ½æ•°
-	,FORMAT(DJMS.ShukkaSiziZumiSuu, '#,0') AS ShukkaSiziZumiSuu	--å‡ºè·æŒ‡ç¤ºæ¸ˆæ•°
+	,FORMAT(DJMS.ShukkaSiziZumiSuu, '#,0') AS ShukkaSiziZumiSuu	--å‡ºè·æŒE¤ºæ¸ˆæ•°
 	,ISNULL((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FORMAT(SKKNS2.ShukkanouSuu, '#,0')
 	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FORMAT((DJMS.JuchuuSuu-DJMS.ShukkaZumiSuu), '#,0') END),'0') AS KonkaiShukkaSiziSuu
 	,ISNULL(FORMAT(DJMS.UriageTanka, '#,0'),'0') AS UriageTanka	--å˜ä¾¡
 	,ISNULL(Format(((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN SKKNS2.ShukkanouSuu
 	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN DJMS.JuchuuSuu-DJMS.ShukkaZumiSuu END)*DJMS.UriageTanka),'#,0'),'0') AS UriageKingaku
-	,0 as Kanryo --å®Œäº†
-	,'' as ShukkaSiziMeisaiTekiyou --æ˜Žç´°æ‘˜è¦
+	,0 as Kanryo --å®ŒäºE
+	,'' as ShukkaSiziMeisaiTekiyou --æ˜Žç´°æ‘˜è¦E
 	--details2
-	,(DJMS.JuchuuNO +' - ' +cast(DJMS.JuchuuGyouNO as varchar)) AS SKMSNO
+	--2021/04/12 Y.Nishikawa CHG “o˜^Žž‚ÉD_ShukkaSiziMeisai‚ÉINSERT‚·‚éÛ‚ÉƒoƒCƒiƒŠƒGƒ‰[(ƒnƒCƒtƒ“‚Ü‚Å‚ðØ‚èŽæ‚Á‚Ä‚¢‚é‚Ì‚Å13byte‚É‚È‚Á‚Ä‚é)««
+	--,(DJMS.JuchuuNO +' - ' +cast(DJMS.JuchuuGyouNO as varchar)) AS SKMSNO
+	,(DJMS.JuchuuNO +'-' +cast(DJMS.JuchuuGyouNO as varchar)) AS SKMSNO
+	--2021/04/12 Y.Nishikawa CHG “o˜^Žž‚ÉD_ShukkaSiziMeisai‚ÉINSERT‚·‚éÛ‚ÉƒoƒCƒiƒŠƒGƒ‰[(ƒnƒCƒtƒ“‚Ü‚Å‚ðØ‚èŽæ‚Á‚Ä‚¢‚é‚Ì‚Å13byte‚É‚È‚Á‚Ä‚é)ªª
 	,DJMS.JuchuuNO
 	,DJMS.SoukoCD
 	,MS.SoukoName
 	--HiddenFields
-	,DJ.TokuisakiCD		--å¾—æ„å…ˆ
-	,DJ.KouritenCD		--å°å£²åº—
-	,DJ.KouritenRyakuName	--å°å£²åº—ç•¥å
+	,DJ.TokuisakiCD		--å¾—æ„å…E
+	,DJ.KouritenCD		--å°å£²åºE
+	,DJ.KouritenRyakuName	--å°å£²åº—ç•¥åE
 	,DJ.KouritenName		--å°å£²åº—å
 	,DJ.KouritenYuubinNO1	--å°å£²åº—éƒµä¾¿ç•ªå·1
 	,DJ.KouritenYuubinNO2	--å°å£²åº—éƒµä¾¿ç•ªå·2
@@ -138,7 +141,7 @@ SELECT
 	,DJ.[KouritenTelNO2-1]	--å°å£²åº—é›»è©±ç•ªå·2-1
 	,DJ.[KouritenTelNO2-2]	--å°å£²åº—é›»è©±ç•ªå·2-2
 	,DJ.[KouritenTelNO2-3]	--å°å£²åº—é›»è©±ç•ªå·2-3
-	,FS.ShouhinCD as Hidden_ShouhinCD--å•†å“ã‚³ãƒ¼ãƒ‰_æ›´æ–°ç”¨
+	,FS.ShouhinCD as Hidden_ShouhinCD--å•E“ã‚³ãƒ¼ãƒ‰_æ›´æ–°ç”¨
 	FROM D_Juchuu DJ
 	INNER JOIN D_JuchuuMeisai DJMS ON DJMS.JuchuuNO=DJ.JuchuuNO
 	LEFT OUTER JOIN #WK_ShukkaKanouSou2 SKKNS2 ON SKKNS2.JuchuuNO=DJMS.JuchuuNO	AND SKKNS2.JuchuuGyouNO=DJMS.JuchuuGyouNO
