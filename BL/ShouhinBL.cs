@@ -147,13 +147,14 @@ namespace BL
             return ckmdl.SelectDatatable("sp_Shouhin_SearchData", GetConnectionString(), shouhin.Sqlprms);
         }
 
-        public string CSV_M_Shouhin_CUD(string xml, string condition)
+        public DataTable CSV_M_Shouhin_CUD(string xml, string condition)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@xml", SqlDbType.Xml) { Value = xml };
             parameters[1] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = condition };
-            return ckmdl.InsertUpdateDeleteData("CSV_M_Shouhin_CUD", GetConnectionString(), parameters);
+            DataTable dt = ckmdl.SelectDatatable("CSV_M_Shouhin_CUD", GetConnectionString(), parameters);
+            return dt;
         }
 
         public DataTable Get_ExportData(ShouhinEntity sh_e)//add ssa
