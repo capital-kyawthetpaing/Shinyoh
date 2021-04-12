@@ -60,7 +60,6 @@ namespace BL
             if (dtMsg.Rows.Count > 0)
             {
                 message = ReplaceMessage(dtMsg.Rows[0]["MessageText1"].ToString(), me);
-                message = ReplaceMessage(dtMsg.Rows[0]["MessageText1"].ToString(), me);
                 message += !string.IsNullOrWhiteSpace(dtMsg.Rows[0]["MessageText2"].ToString()) ? "\n\n" + ReplaceMessage(dtMsg.Rows[0]["MessageText2"].ToString(), me) : string.Empty;
                 message += !string.IsNullOrWhiteSpace(dtMsg.Rows[0]["MessageText3"].ToString()) ? "\n\n" + ReplaceMessage(dtMsg.Rows[0]["MessageText3"].ToString(), me) : string.Empty;
                 message += !string.IsNullOrWhiteSpace(dtMsg.Rows[0]["MessageText4"].ToString()) ? "\n\n" + ReplaceMessage(dtMsg.Rows[0]["MessageText4"].ToString(), me) : string.Empty;
