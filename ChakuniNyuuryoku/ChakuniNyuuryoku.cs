@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using Shinyoh_Controls;
 using Shinyoh_Search;
 using System.Data;
+using System.Linq;
 
 namespace ChakuniNyuuryoku
 {
@@ -187,7 +188,7 @@ namespace ChakuniNyuuryoku
             dtGS1 = CreateTable_Details();
             dtTemp = new DataTable();
             dtClear = CreateTable_Details();
-            dtGridSource = new DataTable();
+            //dtGridSource = new DataTable();
         }
         public void ErrorCheck()
         {
@@ -271,6 +272,7 @@ namespace ChakuniNyuuryoku
                 txtScheduled.Focus();
                 gvChakuniNyuuryoku.ClearSelection();
                 gvChakuniNyuuryoku.DataSource = dtClear;
+                gvChakuniNyuuryoku.Memory_Row_Count = dtGS1.Rows.Count;
             }
             if (tagID == "12")
             {
@@ -653,7 +655,7 @@ namespace ChakuniNyuuryoku
                         if (dr != null)
                             Gvrow_Delete(dr);
                     }
-                    dtGridSource = dtmain.Copy();
+                    //dtGridSource = dtmain.Copy();                
                     gvChakuniNyuuryoku.DataSource = dtmain;
                     gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
                     gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
@@ -924,16 +926,17 @@ namespace ChakuniNyuuryoku
                 }
             }
         private void gvChakuniNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
             {
-                if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
+                if (cboMode.SelectedValue.ToString().Equals("2"))
                 {
-                    if (cboMode.SelectedValue.ToString().Equals("2"))
-                    {
-                        dtTemp.Clear();
-                    }
-                Temp_Save(e.RowIndex);
+                    dtTemp.Clear();
                 }
+                Temp_Save(e.RowIndex);
             }
+        }
+
         private void Temp_Save(int row)
         {
             if (dtGS1.Rows.Count > 0)
@@ -942,6 +945,7 @@ namespace ChakuniNyuuryoku
                 {
                     string Chakuni = dtGS1.Rows[i]["Chakuni"].ToString();
                     string HacchuuNO = dtGS1.Rows[i]["Hacchuu"].ToString();
+
                     if (gvChakuniNyuuryoku.Rows[row].Cells["Hacchuu"].Value.ToString() == HacchuuNO && gvChakuniNyuuryoku.Rows[row].Cells["Chakuni"].Value.ToString() == Chakuni)
                     {
                         dtGS1.Rows[i].Delete();
@@ -956,13 +960,12 @@ namespace ChakuniNyuuryoku
             {
                 dr1[i] = string.IsNullOrEmpty(gvChakuniNyuuryoku[i, row].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniNyuuryoku[i, row].EditedFormattedValue.ToString();
             }
-            
+
             if (gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].EditedFormattedValue.ToString() != "0")
             {
-                if (dtGridSource.Rows[row]["ChakuniSuu"].ToString() != dr1[8].ToString())
+                //if (dtGridSource.Rows[row]["ChakuniSuu"].ToString() != dr1[8].ToString())
                     dtGS1.Rows.Add(dr1);
             }
-                
 
             gvChakuniNyuuryoku.Memory_Row_Count = dtGS1.Rows.Count;
         }
