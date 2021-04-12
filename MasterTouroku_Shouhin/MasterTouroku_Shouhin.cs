@@ -807,6 +807,18 @@ namespace MasterTouroku_Shouhin
             }
             return bl;
         }
+        public bool Shouhin_Check(string shouhinCD,string colorNo,string SizeNo, string Key_Date, int line_no)
+        {
+            bl = false;
+            DataTable dt = new DataTable();
+            dt = shouhinbl.Shouhin_Check(shouhinCD, colorNo, SizeNo, Key_Date, "E132");
+            if (dt.Rows[0]["MessageID"].ToString() == "E132")
+            {
+                bbl.ShowMessage("E276", line_no.ToString(), "商品CD登録済エラー");
+                bl = true;
+            }
+            return bl;
+        }
 
         public void Add_Datatable_Column(DataTable create_dt)
         {
