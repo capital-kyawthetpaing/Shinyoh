@@ -675,6 +675,19 @@ namespace MasterTouroku_Tokuisaki {
                             break;
                         }
 
+                        if (sRadRegister.Checked == true)
+                        {
+                            DataTable dt1 = new DataTable();
+                            TokuisakiBL TBL = new TokuisakiBL();
+                            dt1 = TBL.M_Tokuisaki_Select(obj.TokuisakiCD, obj.ChangeDate, "E132");
+                            if (dt1.Rows[0]["MessageID"].ToString() == "E132")
+                            {
+                                bbl.ShowMessage("E276", i.ToString(), "得意先CD登録済エラー");
+                                //bl_List.Add(true);
+                                break;
+                            }
+                        }
+                       
                         if (bl_List.Contains(true))
                             error = "true";
                         else error = "false";

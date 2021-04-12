@@ -668,7 +668,20 @@ namespace MasterTouroku_Siiresaki
                             //bl_List.Add(true);
                             break;
                         }
-                        
+
+                        if (rdo_Registragion.Checked == true)
+                        {
+                            DataTable dt1 = new DataTable();
+                            SiiresakiBL SBL = new SiiresakiBL();
+                            dt1 = SBL.Siiresaki_Select_Check(obj.SiiresakiCD, obj.ChangeDate, "E132");
+                            if (dt1.Rows[0]["MessageID"].ToString() == "E132")
+                            {
+                                bbl.ShowMessage("E276", i.ToString(), "仕入先CD登録済エラー");
+                                //bl_List.Add(true);
+                                break;
+                            }
+                        }
+
                         if (bl_List.Contains(true))
                             error = "true";
                         else error = "false";
