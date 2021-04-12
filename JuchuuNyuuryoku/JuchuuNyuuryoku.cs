@@ -1442,7 +1442,10 @@ namespace JuchuuNyuuryoku
                     DataTable hacchuu_dt = new DataTable();
                     DataTable Max_HacchuuNO = new DataTable();
                     DataRow[] select_dr = null;
-                    select_dr = F8_dt1.Select("SiiresakiCD = '" + dt_Main.Rows[i]["SiiresakiCD"].ToString() + "' and SoukoCD='" + dt_Main.Rows[i]["SoukoCD"].ToString() + "' and HacchuuNO='" + dt_Main.Rows[i]["HacchuuNO"].ToString() + "' and [Free] IS NULL");
+                    if (!string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()))
+                        select_dr = F8_dt1.Select("SiiresakiCD = '" + dt_Main.Rows[i]["SiiresakiCD"].ToString() + "' and SoukoCD='" + dt_Main.Rows[i]["SoukoCD"].ToString() + "' and HacchuuNO='" + dt_Main.Rows[i]["HacchuuNO"].ToString() + "' and [Free] IS NULL");
+                    else
+                        select_dr = F8_dt1.Select("SiiresakiCD = '" + dt_Main.Rows[i]["SiiresakiCD"].ToString() + "' and SoukoCD='" + dt_Main.Rows[i]["SoukoCD"].ToString() + "' and [Free] IS NULL");
 
                     //if (!string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()) && dt_Main.Rows[i]["Free"].ToString() != "1")
                     if (!string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()) && select_dr.Length > 0)
