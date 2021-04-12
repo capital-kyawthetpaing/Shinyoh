@@ -794,15 +794,19 @@ namespace MasterTouroku_Kouriten
                             // bl_List.Add(true);
                             break;
                         }
-                        //2020/12/14 Y.Nishikawa ADD
-                        DataTable dt2 = new DataTable();
-                        KouritenBL kBL = new KouritenBL();
-                        dt2 = kBL.Kouriten_Select_Check(obj.KouritenCD, obj.ChangeDate, string.Empty,obj.TokuisakiCD);
-                        if (dt2.Rows[0]["MessageID"].ToString() == "E132")
+
+                        if (rdo_Registragion.Checked == true) //2020/12/14 Y.HET ADD
                         {
-                            bbl.ShowMessage("E276", i.ToString(), "小売店CD登録済エラー");
-                            // bl_List.Add(true);
-                            break;
+                            //2020/12/14 Y.Nishikawa ADD
+                            DataTable dt2 = new DataTable();
+                            KouritenBL kBL = new KouritenBL();
+                            dt2 = kBL.Kouriten_Select_Check(obj.KouritenCD, obj.ChangeDate, "E132", obj.TokuisakiCD);
+                            if (dt2.Rows[0]["MessageID"].ToString() == "E132")
+                            {
+                                bbl.ShowMessage("E276", i.ToString(), "小売店CD登録済エラー");
+                                // bl_List.Add(true);
+                                break;
+                            }
                         }
 
                         string error = string.Empty;

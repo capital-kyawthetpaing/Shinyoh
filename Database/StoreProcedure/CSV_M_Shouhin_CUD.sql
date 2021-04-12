@@ -160,13 +160,13 @@ BEGIN
 			ms.UsedFlg = t.UsedFlg,
 			ms.UpdateOperator = t.UpdateOperator,
 			ms.UpdateDateTime = GETDATE()
-		FROM M_Shouhin ms INNER JOIN #Temp t ON ms.ShouhinCD = t.ShouhinCD AND ms.ChangeDate = t.ChangeDate AND t.Error = 'false'
+		FROM M_Shouhin ms INNER JOIN #Temp t ON ms.ShouhinCD = (t.HinbanCD+t.ColorNO+t.SizeNO) AND ms.ChangeDate = t.ChangeDate AND t.Error = 'false'
 	END
 
 	ELSE IF @condition = 'delete'
 	BEGIN
 		DELETE ms
-		FROM M_Shouhin ms INNER JOIN #Temp t ON ms.ShouhinCD = t.ShouhinCD AND ms.ChangeDate = t.ChangeDate AND t.Error = 'false'
+		FROM M_Shouhin ms INNER JOIN #Temp t ON ms.ShouhinCD = (t.HinbanCD+t.ColorNO+t.SizeNO) AND ms.ChangeDate = t.ChangeDate AND t.Error = 'false'
 	END
 
 	DROP TABLE #Temp

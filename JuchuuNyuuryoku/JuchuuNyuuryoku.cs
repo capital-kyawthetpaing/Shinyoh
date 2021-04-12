@@ -724,47 +724,66 @@ namespace JuchuuNyuuryoku
         {
             SiiresakiEntity obj = new SiiresakiEntity();
             obj.SiiresakiCD = dt.Rows[0]["SiiresakiCD"].ToString();
-            obj.SiiresakiRyakuName = dt.Rows[0]["SiiresakiRyakuName"].ToString();
-            obj.SiiresakiName = dt.Rows[0]["SiiresakiName"].ToString();
-            if (dt.Columns.Contains("SiiresakiYuubinNO1"))
-                obj.YuubinNO1 = dt.Rows[0]["SiiresakiYuubinNO1"].ToString();
+
+            if (selectedRow.Cells["colSiiresakiCD"].Value.ToString().Equals(obj.SiiresakiCD))
+            {
+                obj.SiiresakiRyakuName= selectedRow.Cells["colSiiresakiRyakuName"].Value.ToString();
+                obj.SiiresakiName= selectedRow.Cells["colSiiresakiName"].Value.ToString();
+                obj.YuubinNO1=selectedRow.Cells["colSiiresakiYuubinNO1"].Value.ToString();
+                obj.YuubinNO2=selectedRow.Cells["colSiiresakiYuubinNO2"].Value.ToString();
+                obj.Juusho1=selectedRow.Cells["colSiiresakiJuusho1"].Value.ToString();
+                obj.Juusho2=selectedRow.Cells["colSiiresakiJuusho2"].Value.ToString();
+                obj.Tel11=selectedRow.Cells["colSiiresakiTelNO11"].Value.ToString();
+                obj.Tel12=selectedRow.Cells["colSiiresakiTelNO12"].Value.ToString();
+                obj.Tel13=selectedRow.Cells["colSiiresakiTelNO13"].Value.ToString();
+                obj.Tel21=selectedRow.Cells["colSiiresakiTelNO21"].Value.ToString();
+                obj.Tel22=selectedRow.Cells["colSiiresakiTelNO22"].Value.ToString();
+                obj.Tel23=selectedRow.Cells["colSiiresakiTelNO23"].Value.ToString();
+            }
             else
-                obj.YuubinNO1 = dt.Rows[0]["YuubinNO1"].ToString();
-            if (dt.Columns.Contains("SiiresakiYuubinNO2"))
-                obj.YuubinNO2 = dt.Rows[0]["SiiresakiYuubinNO2"].ToString();
-            else
-                obj.YuubinNO2 = dt.Rows[0]["YuubinNO2"].ToString();
-            if (dt.Columns.Contains("SiiresakiJuusho1"))
-                obj.Juusho1 = dt.Rows[0]["SiiresakiJuusho1"].ToString();
-            else
-                obj.Juusho1 = dt.Rows[0]["Juusho1"].ToString();
-            if (dt.Columns.Contains("SiiresakiJuusho2"))
-                obj.Juusho2 = dt.Rows[0]["SiiresakiJuusho2"].ToString();
-            else
-                obj.Juusho2 = dt.Rows[0]["Juusho2"].ToString();
-            if (dt.Columns.Contains("SiiresakiTelNO11"))
-                obj.Tel11 = dt.Rows[0]["SiiresakiTelNO11"].ToString();
-            else obj.Tel11 = dt.Rows[0]["Tel11"].ToString();
-            if (dt.Columns.Contains("SiiresakiTelNO12"))
-                obj.Tel12 = dt.Rows[0]["SiiresakiTelNO12"].ToString();
-            else
-                obj.Tel12 = dt.Rows[0]["Tel12"].ToString();
-            if (dt.Columns.Contains("SiiresakiTelNO13"))
-                obj.Tel13 = dt.Rows[0]["SiiresakiTelNO13"].ToString();
-            else
-                obj.Tel13 = dt.Rows[0]["Tel13"].ToString();
-            if (dt.Columns.Contains("SiiresakiTelNO21"))
-                obj.Tel21 = dt.Rows[0]["SiiresakiTelNO21"].ToString();
-            else
-                obj.Tel21 = dt.Rows[0]["Tel21"].ToString();
-            if (dt.Columns.Contains("SiiresakiTelNO22"))
-                obj.Tel22 = dt.Rows[0]["SiiresakiTelNO22"].ToString();
-            else
-                obj.Tel22 = dt.Rows[0]["Tel22"].ToString();
-            if (dt.Columns.Contains("SiiresakiTelNO23"))
-                obj.Tel23 = dt.Rows[0]["SiiresakiTelNO23"].ToString();
-            else
-                obj.Tel23 = dt.Rows[0]["Tel23"].ToString();
+            {
+                obj.SiiresakiRyakuName = dt.Rows[0]["SiiresakiRyakuName"].ToString();
+                obj.SiiresakiName = dt.Rows[0]["SiiresakiName"].ToString();
+                if (dt.Columns.Contains("SiiresakiYuubinNO1"))
+                    obj.YuubinNO1 = dt.Rows[0]["SiiresakiYuubinNO1"].ToString();
+                else
+                    obj.YuubinNO1 = dt.Rows[0]["YuubinNO1"].ToString();
+                if (dt.Columns.Contains("SiiresakiYuubinNO2"))
+                    obj.YuubinNO2 = dt.Rows[0]["SiiresakiYuubinNO2"].ToString();
+                else
+                    obj.YuubinNO2 = dt.Rows[0]["YuubinNO2"].ToString();
+                if (dt.Columns.Contains("SiiresakiJuusho1"))
+                    obj.Juusho1 = dt.Rows[0]["SiiresakiJuusho1"].ToString();
+                else
+                    obj.Juusho1 = dt.Rows[0]["Juusho1"].ToString();
+                if (dt.Columns.Contains("SiiresakiJuusho2"))
+                    obj.Juusho2 = dt.Rows[0]["SiiresakiJuusho2"].ToString();
+                else
+                    obj.Juusho2 = dt.Rows[0]["Juusho2"].ToString();
+                if (dt.Columns.Contains("SiiresakiTelNO11"))
+                    obj.Tel11 = dt.Rows[0]["SiiresakiTelNO11"].ToString();
+                else obj.Tel11 = dt.Rows[0]["Tel11"].ToString();
+                if (dt.Columns.Contains("SiiresakiTelNO12"))
+                    obj.Tel12 = dt.Rows[0]["SiiresakiTelNO12"].ToString();
+                else
+                    obj.Tel12 = dt.Rows[0]["Tel12"].ToString();
+                if (dt.Columns.Contains("SiiresakiTelNO13"))
+                    obj.Tel13 = dt.Rows[0]["SiiresakiTelNO13"].ToString();
+                else
+                    obj.Tel13 = dt.Rows[0]["Tel13"].ToString();
+                if (dt.Columns.Contains("SiiresakiTelNO21"))
+                    obj.Tel21 = dt.Rows[0]["SiiresakiTelNO21"].ToString();
+                else
+                    obj.Tel21 = dt.Rows[0]["Tel21"].ToString();
+                if (dt.Columns.Contains("SiiresakiTelNO22"))
+                    obj.Tel22 = dt.Rows[0]["SiiresakiTelNO22"].ToString();
+                else
+                    obj.Tel22 = dt.Rows[0]["Tel22"].ToString();
+                if (dt.Columns.Contains("SiiresakiTelNO23"))
+                    obj.Tel23 = dt.Rows[0]["SiiresakiTelNO23"].ToString();
+                else
+                    obj.Tel23 = dt.Rows[0]["Tel23"].ToString();
+            }
 
             selectedRow.Cells["colSiiresakiCD"].Value = obj.SiiresakiCD;
             selectedRow.Cells["colSiiresakiRyakuName"].Value = obj.SiiresakiRyakuName;
@@ -1006,6 +1025,7 @@ namespace JuchuuNyuuryoku
 
         private void F11_Gridview_Bind()
         {
+
             for (int t = 0; t < gv_JuchuuNyuuryoku.RowCount; t++)
             {
                // bool bl = false;
@@ -1016,20 +1036,22 @@ namespace JuchuuNyuuryoku
                 string chk_value = row.Cells["colFree"].EditedFormattedValue.ToString();
                 string senpouHacchuuNO = row.Cells["colSenpouHacchuuNO"].EditedFormattedValue.ToString();
                 string siiresakiCD = row.Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
+                string siiresakiName = row.Cells["colSiiresakiName"].EditedFormattedValue.ToString();
                 string soukoCD = row.Cells["colSoukoCD"].EditedFormattedValue.ToString();
 
                 string color = row.Cells["colColorNO"].Value.ToString();
                 string size = row.Cells["colSizeNO"].Value.ToString();
 
+                //商品・カラー・サイズ・Free・仕入先CD・仕入先名・倉庫CD・先方発注番号の明細行が存在する時→Update,存在しない時→Insert
                 string chk = string.Empty;
                 DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='" + color + "' and SizeNO='" + size + "'");// original data
                 DataRow existDr1 = null;
                 if (chk_value != "False")
                     chk = "1";
                 if(!string.IsNullOrEmpty(chk))
-                    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and [Free]='"+chk+"' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
+                    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and [Free]='"+chk+"' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([SiiresakiName],'')='" + siiresakiName + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
                 else
-                    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "' and [Free] IS NULL").SingleOrDefault();
+                    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([SiiresakiName],'')='" + siiresakiName + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "' and [Free] IS NULL").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     //if (select_dr1[0][8].ToString() == "0")
@@ -1420,7 +1442,10 @@ namespace JuchuuNyuuryoku
                     DataTable hacchuu_dt = new DataTable();
                     DataTable Max_HacchuuNO = new DataTable();
                     DataRow[] select_dr = null;
-                    select_dr = F8_dt1.Select("SiiresakiCD = '" + dt_Main.Rows[i]["SiiresakiCD"].ToString() + "' and SoukoCD='" + dt_Main.Rows[i]["SoukoCD"].ToString() + "' and HacchuuNO='" + dt_Main.Rows[i]["HacchuuNO"].ToString() + "' and [Free] IS NULL");
+                    if (!string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()))
+                        select_dr = F8_dt1.Select("SiiresakiCD = '" + dt_Main.Rows[i]["SiiresakiCD"].ToString() + "' and SoukoCD='" + dt_Main.Rows[i]["SoukoCD"].ToString() + "' and HacchuuNO='" + dt_Main.Rows[i]["HacchuuNO"].ToString() + "' and [Free] IS NULL");
+                    else
+                        select_dr = F8_dt1.Select("SiiresakiCD = '" + dt_Main.Rows[i]["SiiresakiCD"].ToString() + "' and SoukoCD='" + dt_Main.Rows[i]["SoukoCD"].ToString() + "' and [Free] IS NULL");
 
                     //if (!string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()) && dt_Main.Rows[i]["Free"].ToString() != "1")
                     if (!string.IsNullOrEmpty(dt_Main.Rows[i]["HacchuuNO"].ToString()) && select_dr.Length > 0)
