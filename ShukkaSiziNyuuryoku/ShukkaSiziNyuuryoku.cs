@@ -53,6 +53,8 @@ namespace ShukkaSiziNyuuryoku
             //kd = new KouritenDetail(); 
             sbKouriten.TxtBox = sbTokuisaki;//ses
             GridView_UI();
+
+            this.dgvShukkasizi.Size = new System.Drawing.Size(1300, 387);
         }
         private void GridView_UI()
         {
@@ -1402,6 +1404,8 @@ namespace ShukkaSiziNyuuryoku
         {
             if (dt.Rows.Count > 0)
             {
+                dt.Columns.Add("ShukkaSiziGyouNO");
+
                 for (int j = 0; j < dt.Rows.Count; j++)
                 {
                     for (int k = 5; k < 11; k++)
@@ -1411,6 +1415,7 @@ namespace ShukkaSiziNyuuryoku
                             dt.Rows[j][k] = dt.Rows[j][k].ToString().Replace(",", "");
                         }
                     }
+                    dt.Rows[j]["ShukkaSiziGyouNO"] = j + 1;
                 }
             }
             return dt;
@@ -1419,33 +1424,40 @@ namespace ShukkaSiziNyuuryoku
         //F12
         private void DBProcess()
         {
-            (string, string, string) obj = GetInsert();
-            sksz_bl = new ShukkasiziNyuuryokuBL();
-           
-            if (cboMode.SelectedValue.Equals("3"))//delete
+            try
             {
-                sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-                //sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
-                bbl.ShowMessage("I102");
+                (string, string, string) obj = GetInsert();
+                sksz_bl = new ShukkasiziNyuuryokuBL();
+
+                if (cboMode.SelectedValue.Equals("3"))//delete
+                {
+                    sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
+                    //sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "30", sksz_e.OperatorCD);
+                    bbl.ShowMessage("I102");
+                }
+                else
+                {
+                    sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
+                    //if (cboMode.SelectedValue.Equals("1"))
+                    //{
+                    //    string FunctionNO = string.Empty;
+                    //    FunctionNO = dtResult.Rows[0]["ShukkaSiziNO"].ToString();
+                    //    if (!string.IsNullOrEmpty(FunctionNO))
+                    //    {
+                    //        sksz_bl.Get_HikiateFunctionNO("12", FunctionNO, "10", sksz_e.OperatorCD);
+                    //    }
+                    //}
+                    //else if (cboMode.SelectedValue.Equals("2"))
+                    //{
+                    //    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "20", sksz_e.OperatorCD);
+                    //    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "21", sksz_e.OperatorCD);
+                    //}
+                    bbl.ShowMessage("I101");
+                }
             }
-            else
+            catch (Exception ex)
             {
-               sksz_bl.ShukkasiziNyuuryoku_IUD(obj.Item1, obj.Item2, obj.Item3);
-                //if (cboMode.SelectedValue.Equals("1"))
-                //{
-                //    string FunctionNO = string.Empty;
-                //    FunctionNO = dtResult.Rows[0]["ShukkaSiziNO"].ToString();
-                //    if (!string.IsNullOrEmpty(FunctionNO))
-                //    {
-                //        sksz_bl.Get_HikiateFunctionNO("12", FunctionNO, "10", sksz_e.OperatorCD);
-                //    }
-                //}
-                //else if (cboMode.SelectedValue.Equals("2"))
-                //{
-                //    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "20", sksz_e.OperatorCD);
-                //    sksz_bl.Get_HikiateFunctionNO("12", sbShippingNO.Text, "21", sksz_e.OperatorCD);
-                //}
-                bbl.ShowMessage("I101");
+                MessageBox.Show(ex.Message);
             }
         }
         private (string, string, string) GetInsert()
@@ -1518,11 +1530,13 @@ namespace ShukkaSiziNyuuryoku
                 dt = dtGridview(1);
                 dt = CommaRemove(dt);
                 Detail_XML = cf.DataTableToXml(dt);
+                dt.Columns.Remove("ShukkaSiziGyouNO");
             }
             else
             {
                 dtGS1 = CommaRemove(dtGS1);
                 Detail_XML = cf.DataTableToXml(dtGS1);
+                dtGS1.Columns.Remove("ShukkaSiziGyouNO");
             }
 
             string Mode = string.Empty;
