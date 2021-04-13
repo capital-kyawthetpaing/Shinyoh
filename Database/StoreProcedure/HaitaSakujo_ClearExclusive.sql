@@ -23,23 +23,32 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-	declare @DocHandle as int;
-  exec sp_xml_preparedocument @DocHandle output, @xml
-select * into #temp
-	 FROM OPENXML (@DocHandle, '/NewDataSet/test',2)
+	begin try
+		begin tran
+			declare @DocHandle as int;
+			exec sp_xml_preparedocument @DocHandle output, @xml
+			select * into #temp
+			FROM OPENXML (@DocHandle, '/NewDataSet/test',2)
 			with
 			(
 			 DataKBN int
 			 ,Number varchar(200)
 			)
-		exec sp_xml_removedocument @DocHandle;
-		delete  ex from D_Exclusive ex inner join #temp em on ex.DataKBN = em.DataKBN and ex.Number = em.Number 
-		drop  table #temp 
-		exec  L_Log_insert 
-		@OperatorCD
-		,@Program
-		,@PC
-		,null
-		,null
+			exec sp_xml_removedocument @DocHandle;
+			delete  ex from D_Exclusive ex inner join #temp em on ex.DataKBN = em.DataKBN and ex.Number = em.Number 
+			drop  table #temp 
+
+			exec  L_Log_insert 
+			@OperatorCD
+			,@Program
+			,@PC
+			,null
+			,null
+			commit tran
+		end try
+	begin catch
+		rollback tran
+		throw
+	end catch
 END
 GO
