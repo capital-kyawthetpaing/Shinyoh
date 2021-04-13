@@ -698,6 +698,10 @@ namespace ChakuniNyuuryoku
                     bbl.ShowMessage("E109");
                     return false;
                 }
+                if (Convert.ToInt64(value) != 0)
+                {
+                    Temp_Save(gv.Index);
+                }
             }
             return true;
         }
