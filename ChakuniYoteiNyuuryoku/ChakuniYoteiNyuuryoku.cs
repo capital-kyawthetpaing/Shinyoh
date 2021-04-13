@@ -174,11 +174,14 @@ namespace ChakuniYoteiNyuuryoku
             }
             if (tagID == "11")
             {
-                dtTemp = dtGS;
-                SaveClear();
-                gvChakuniYoteiNyuuryoku.ClearSelection();
-                gvChakuniYoteiNyuuryoku.DataSource = dtClear;
-                gvChakuniYoteiNyuuryoku.Memory_Row_Count = dtGS.Rows.Count;
+                if (GV_Check())
+                {
+                    dtTemp = dtGS;
+                    SaveClear();
+                    gvChakuniYoteiNyuuryoku.ClearSelection();
+                    gvChakuniYoteiNyuuryoku.DataSource = dtClear;
+                    gvChakuniYoteiNyuuryoku.Memory_Row_Count = dtGS.Rows.Count;
+                }
             }
             if (tagID == "12")
             {
@@ -557,6 +560,7 @@ namespace ChakuniYoteiNyuuryoku
                 SaveClear();
                 gvChakuniYoteiNyuuryoku.ClearSelection();
                 gvChakuniYoteiNyuuryoku.DataSource = dtClear;
+                gvChakuniYoteiNyuuryoku.Memory_Row_Count = dtGS.Rows.Count;
             }
         }
         public void SaveClear()
@@ -846,6 +850,10 @@ namespace ChakuniYoteiNyuuryoku
                 //    bbl.ShowMessage("E109");
                 //    return false;
                 //}
+                if (Convert.ToInt64(value) != 0)
+                {
+                    Temp_Save(gv.Index);
+                }
             }
             return true;
         }
