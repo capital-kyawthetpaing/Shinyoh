@@ -1,16 +1,21 @@
-ï»¿ BEGIN TRY 
- Drop Procedure [dbo].[ShukkasiziNyuuryoku_Insert]
-END try
-BEGIN CATCH END CATCH 
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Insert]    Script Date: 2021/04/13 13:05:34 ******/
+IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ShukkasiziNyuuryoku_Insert%' and type like '%P%')
+DROP PROCEDURE [dbo].[ShukkasiziNyuuryoku_Insert]
+GO
+
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Insert]    Script Date: 2021/04/13 13:05:34 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		Swe Swe
 -- Create date: <19-01-2021>
 -- Description:	<Description,,>
+-- History    : 2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã
 -- =============================================
 CREATE  PROCEDURE [dbo].[ShukkasiziNyuuryoku_Insert]
 	-- Add the parameters for the stored procedure here
@@ -388,83 +393,85 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 		SET @JuchuuGyouNO = RIGHT(@SKMSNO, LEN(@SKMSNO) - CHARINDEX('-', @SKMSNO))
 		SET @a = ABS(@KonkaiShukkaSiziSuu)
 
-	---KTP Change
-	declare 
-	@JuchuuShousaiNO as smallint,
-	@KanriNO as varchar(10),
-	@NyuukoDate as varchar(10),
-	@HikiateZumiSuu as decimal(21,6),
-	@ShukkaSiziZumiSuu as decimal(21,6)
+	--2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã««
+	-----KTP Change
+	--declare 
+	--@JuchuuShousaiNO as smallint,
+	--@KanriNO as varchar(10),
+	--@NyuukoDate as varchar(10),
+	--@HikiateZumiSuu as decimal(21,6),
+	--@ShukkaSiziZumiSuu as decimal(21,6)
 	
-	--Step 3(loop by JuchuuNO,JuchuuGyouNO)
-	declare cursorInner cursor read_only
-	for select JuchuuShousaiNO,SoukoCD,ShouhinCD,KanriNO,NyuukoDate,HikiateZumiSuu,ShukkaSiziZumiSuu
-	from D_JuchuuShousai 
-	where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
-	and HikiateZumiSuu > 0
-	order by KanriNO,case when NyuukoDate = '' or NyuukoDate is null then '2100-01-01' else NyuukoDate end
+	----Step 3(loop by JuchuuNO,JuchuuGyouNO)
+	--declare cursorInner cursor read_only
+	--for select JuchuuShousaiNO,SoukoCD,ShouhinCD,KanriNO,NyuukoDate,HikiateZumiSuu,ShukkaSiziZumiSuu
+	--from D_JuchuuShousai 
+	--where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
+	--and HikiateZumiSuu > 0
+	--order by KanriNO,case when NyuukoDate = '' or NyuukoDate is null then '2100-01-01' else NyuukoDate end
 	
-	open cursorInner
+	--open cursorInner
 	
-	fetch next from cursorInner
-	into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
-	@ShukkaSiziZumiSuu
+	--fetch next from cursorInner
+	--into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
+	--@ShukkaSiziZumiSuu
 	
-	while @@FETCH_STATUS = 0
-		begin
+	--while @@FETCH_STATUS = 0
+	--	begin
 	
-			if(@a > 0)
-				begin
-					declare @tmpHikiateSuu as decimal(21,6)
-					declare @tmpShukkasiziSuu as decimal(21,6)
+	--		if(@a > 0)
+	--			begin
+	--				declare @tmpHikiateSuu as decimal(21,6)
+	--				declare @tmpShukkasiziSuu as decimal(21,6)
 	
-					--Step3 : Update D_JuchuuShousai(å—æ³¨è©³ç´°)
-					update D_JuchuuShousai
-					set 
-						@tmpHikiateSuu = HikiateZumiSuu,
-						@tmpShukkasiziSuu = case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end,
-						HikiateZumiSuu = case when @a >= HikiateZumiSuu then 0 else HikiateZumiSuu - @a end,
-						ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + (case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end),
-						ShukkaZumiSuu = 0,
-						UriageZumiSuu = 0,
-						UpdateOperator = @OperatorCD,
-						UpdateDateTime = @currentDate
-					from D_JuchuuShousai
-					where JuchuuNO = @JuchuuNo
-					and JuchuuGyouNO = @JuchuuGyouNO 
-					and JuchuuShousaiNO = @JuchuuShousaiNO
+	--				--Step3 : Update D_JuchuuShousai(ó’Ú×)
+	--				update D_JuchuuShousai
+	--				set 
+	--					@tmpHikiateSuu = HikiateZumiSuu,
+	--					@tmpShukkasiziSuu = case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end,
+	--					HikiateZumiSuu = case when @a >= HikiateZumiSuu then 0 else HikiateZumiSuu - @a end,
+	--					ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + (case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end),
+	--					ShukkaZumiSuu = 0,
+	--					UriageZumiSuu = 0,
+	--					UpdateOperator = @OperatorCD,
+	--					UpdateDateTime = @currentDate
+	--				from D_JuchuuShousai
+	--				where JuchuuNO = @JuchuuNo
+	--				and JuchuuGyouNO = @JuchuuGyouNO 
+	--				and JuchuuShousaiNO = @JuchuuShousaiNO
 	
-					set @a = case when @a > @tmpHikiateSuu then @a - @tmpHikiateSuu else 0 end
+	--				set @a = case when @a > @tmpHikiateSuu then @a - @tmpHikiateSuu else 0 end
 	
-					declare @maxShousaiNo as smallint
+	--				declare @maxShousaiNo as smallint
 	
-					select @maxShousaiNo = isnull(max(ShukkaSiziShousaiNO),0) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO
+	--				select @maxShousaiNo = isnull(max(ShukkaSiziShousaiNO),0) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO
 	
-					-- Step5 : Insert D_ShukkaSiziShousai(å‡ºè·æŒ‡ç¤ºè©³ç´°)
-					insert into D_ShukkaSiziShousai( ShukkaSiziNO, ShukkaSiziGyouNO, ShukkaSiziShousaiNO, 
-					SoukoCD,ShouhinCD,ShouhinName,ShukkaSiziSuu,KanriNO,NyuukoDate,ShukkaZumiSuu,
-					JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime
-					)
-					select 
-						@ShukkaSiziNO,@GyouNo,@maxShousaiNo + 1,
-						js.SoukoCD,js.ShouhinCD,jms.ShouhinName,@tmpShukkasiziSuu,@KanriNO,@NyuukoDate,0,
-						@JuchuuNo,@JuchuuGyouNO,@JuchuuShousaiNO,@OperatorCD,@currentDate,@OperatorCD,@currentDate
+	--				-- Step5 : Insert D_ShukkaSiziShousai(o‰×w¦Ú×)
+	--				insert into D_ShukkaSiziShousai( ShukkaSiziNO, ShukkaSiziGyouNO, ShukkaSiziShousaiNO, 
+	--				SoukoCD,ShouhinCD,ShouhinName,ShukkaSiziSuu,KanriNO,NyuukoDate,ShukkaZumiSuu,
+	--				JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime
+	--				)
+	--				select 
+	--					@ShukkaSiziNO,@GyouNo,@maxShousaiNo + 1,
+	--					js.SoukoCD,js.ShouhinCD,jms.ShouhinName,@tmpShukkasiziSuu,@KanriNO,@NyuukoDate,0,
+	--					@JuchuuNo,@JuchuuGyouNO,@JuchuuShousaiNO,@OperatorCD,@currentDate,@OperatorCD,@currentDate
 					
-					from D_JuchuuShousai js
-					left outer join D_JuchuuMeisai jms on js.JuchuuNO = jms.JuchuuNO and js.JuchuuGyouNO = jms.JuchuuGyouNO
-					where js.JuchuuNO = @JuchuuNo 
-					and js.JuchuuGyouNO = @JuchuuGyouNO
-					and js.JuchuuShousaiNO = @JuchuuShousaiNO
-				end
+	--				from D_JuchuuShousai js
+	--				left outer join D_JuchuuMeisai jms on js.JuchuuNO = jms.JuchuuNO and js.JuchuuGyouNO = jms.JuchuuGyouNO
+	--				where js.JuchuuNO = @JuchuuNo 
+	--				and js.JuchuuGyouNO = @JuchuuGyouNO
+	--				and js.JuchuuShousaiNO = @JuchuuShousaiNO
+	--			end
 			
 	
-			fetch next from 
-			cursorInner into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
-			@ShukkaSiziZumiSuu
-		end
+	--		fetch next from 
+	--		cursorInner into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
+	--		@ShukkaSiziZumiSuu
+	--	end
 	
-	close cursorInner
-	deallocate cursorInner
+	--close cursorInner
+	--deallocate cursorInner
+	--2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvãªª
 
 	set @GyouNO = @GyouNO + 1
 
@@ -598,7 +605,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	SELECT 
 	@Unique
 	,i.ShukkaSiziNO
-	,10--æ–°è¦
+	,10--V‹K
 	,i.StaffCD
 	,i.ShukkaYoteiDate
 	,i.DenpyouDate
@@ -704,7 +711,7 @@ SELECT
 		,j.[ShukkaSiziNO]
 		,j.[ShukkaSiziGyouNO]
 		,j.[GyouHyouziJun]
-		,10--æ–°è¦
+		,10--V‹K
 		,j.[KouritenCD]
 		,j.[KouritenRyakuName]
 		,j.[BrandCD]
@@ -779,7 +786,7 @@ SELECT
 [ShukkaSiziNO]
 			,[ShukkaSiziGyouNO]
 			,[ShukkaSiziShousaiNO]
-			,10 --æ–°è¦
+			,10 --V‹K
 			,[SoukoCD]
 			,[ShouhinCD]
 			,[ShouhinName]
@@ -801,17 +808,19 @@ where ShukkaSiziNO=@ShukkaSiziNO
 
 --Konkai_Price
 
---Table G  --è¿½åŠ ã¾ãŸã¯ä¿®æ­£å¾Œ
-UPDATE  A
-SET	
-	HikiateZumiSuu = A.HikiateZumiSuu - B.KonkaiShukkaSiziSuu -- KTP Add
-	,ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
-	,UpdateOperator=@OperatorCD
-	,UpdateDateTime=@currentDate
-FROM D_JuchuuMeisai A
-inner join #Temp_Details B
-on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
-and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
+--2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã««
+----Table G  --’Ç‰Á‚Ü‚½‚ÍC³Œã
+--UPDATE  A
+--SET	
+--	HikiateZumiSuu = A.HikiateZumiSuu - B.KonkaiShukkaSiziSuu -- KTP Add
+--	,ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
+--	,UpdateOperator=@OperatorCD
+--	,UpdateDateTime=@currentDate
+--FROM D_JuchuuMeisai A
+--inner join #Temp_Details B
+--on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
+--and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
+--2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvãªª
 
 --D_JuchuuMeisai
 UPDATE  A
@@ -835,18 +844,21 @@ ON A.JuchuuNO=B.JuchuuNO
 --ktp call fncHikiate
 exec dbo.Fnc_Hikiate 12,@ShukkaSiziNO,10,@OperatorCD
 
---ã‚¹ã‚¿ãƒƒãƒ•ãƒã‚¹ã‚¿
+--ƒXƒ^ƒbƒtƒ}ƒXƒ^
 UPDATE M_Staff 
 set UsedFlg = 1 
 where StaffCD=@StaffCD
 and  ChangeDate = (select ChangeDate from F_Staff(@ShippingDate) where StaffCD = @StaffCD)
 
 --L_Log
-declare @OperatorMode varchar(50)='æ–°è¦'
+declare @OperatorMode varchar(50)='V‹K'
 exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperatorMode,@ShukkaSiziNO
 
---ãƒ†ãƒ¼ãƒ–ãƒ«è»¢é€ä»•æ§˜ï¼¹--å‰Šé™¤
+--ƒe[ƒuƒ‹“]‘—d—l‚x--íœ
 exec [dbo].[D_Exclusive_Remove_NO] 1,@OperatorCD,@Program,@PC
 	
 END
+
+GO
+
 
