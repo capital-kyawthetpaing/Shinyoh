@@ -77,13 +77,13 @@ namespace BL
             return dt;
         }
 
-        public string CSV_M_Siiresaki_CUD(string obj,string condition)
+        public DataTable CSV_M_Siiresaki_CUD(string obj,string condition)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@xml", SqlDbType.Xml) { Value = obj };
             parameters[1] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = condition };
-            return ckmdl.InsertUpdateDeleteData("CSV_M_Siiresaki_CUD", GetConnectionString(), parameters);
+            return ckmdl.SelectDatatable("CSV_M_Siiresaki_CUD", GetConnectionString(), parameters);
         }
 
         public DataTable Get_ExportData(SiiresakiEntity entity)//add ssa
