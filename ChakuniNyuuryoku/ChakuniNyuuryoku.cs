@@ -562,7 +562,7 @@ namespace ChakuniNyuuryoku
             DataRow[] existDr1;
             if (dr["ChakuniYoteiNO"] != null)
             {
-                existDr1 = dtmain.Select("ChakuniYotei ='" + dr["ChakuniYoteiNO"] + "'");
+                existDr1 = dtmain.Select("ChakuniYoteiNO ='" + dr["ChakuniYoteiNO"] + "'");
                 foreach (DataRow row in existDr1)
                 {
                     dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection

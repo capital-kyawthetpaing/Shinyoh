@@ -54,7 +54,7 @@ namespace ShukkaSiziNyuuryoku
             sbKouriten.TxtBox = sbTokuisaki;//ses
             GridView_UI();
 
-            this.dgvShukkasizi.Size = new System.Drawing.Size(1300, 387);
+            //this.dgvShukkasizi.Size = new System.Drawing.Size(1300, 387);
         }
         private void GridView_UI()
         {
