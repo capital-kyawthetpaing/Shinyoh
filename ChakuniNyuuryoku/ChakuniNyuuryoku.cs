@@ -258,21 +258,24 @@ namespace ChakuniNyuuryoku
             }
             if (tagID == "11")
             {
-                dtTemp = dtGS1;
-                txtScheduled.Clear();
-                txtShouhinCD.Clear();
-                txtShouhinName.Clear();
-                txtControlNo.Clear();
-                txtJANCD.Clear();
-                sbBrand.Clear();
-                lblBrandName.Text = string.Empty;
-                txtColorNo.Clear();
-                txtYearTerm.Clear();
-                txtSizeNo.Clear();
-                txtScheduled.Focus();
-                gvChakuniNyuuryoku.ClearSelection();
-                gvChakuniNyuuryoku.DataSource = dtClear;
-                gvChakuniNyuuryoku.Memory_Row_Count = dtGS1.Rows.Count;
+                if (GV_Check())
+                {
+                    dtTemp = dtGS1;
+                    txtScheduled.Clear();
+                    txtShouhinCD.Clear();
+                    txtShouhinName.Clear();
+                    txtControlNo.Clear();
+                    txtJANCD.Clear();
+                    sbBrand.Clear();
+                    lblBrandName.Text = string.Empty;
+                    txtColorNo.Clear();
+                    txtYearTerm.Clear();
+                    txtSizeNo.Clear();
+                    txtScheduled.Focus();
+                    gvChakuniNyuuryoku.ClearSelection();
+                    gvChakuniNyuuryoku.DataSource = dtClear;
+                    gvChakuniNyuuryoku.Memory_Row_Count = dtGS1.Rows.Count;
+                }
             }
             if (tagID == "12")
             {
@@ -682,6 +685,7 @@ namespace ChakuniNyuuryoku
                 txtScheduled.Focus();
                 gvChakuniNyuuryoku.ClearSelection();
                 gvChakuniNyuuryoku.DataSource = dtClear;
+                gvChakuniNyuuryoku.Memory_Row_Count = dtGS1.Rows.Count;
             }
         }
         private bool GV_Check()
