@@ -155,7 +155,7 @@ namespace ChakuniNyuuryoku
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET
 
-
+            dtGS1 = CreateTable_Details();
         }
         private void New_Mode()
         {
