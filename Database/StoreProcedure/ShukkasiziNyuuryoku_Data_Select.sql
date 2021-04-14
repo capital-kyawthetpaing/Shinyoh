@@ -1,16 +1,21 @@
- BEGIN TRY 
- Drop Procedure dbo.[ShukkasiziNyuuryoku_Data_Select]
-END try
-BEGIN CATCH END CATCH 
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Data_Select]    Script Date: 2021/04/14 16:08:39 ******/
+IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ShukkasiziNyuuryoku_Data_Select%' and type like '%P%')
+DROP PROCEDURE [dbo].[ShukkasiziNyuuryoku_Data_Select]
+GO
+
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Data_Select]    Script Date: 2021/04/14 16:08:39 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:      Swe Swe
 -- Create date: <25-05-2021>
 -- Description: <Update,Delete,Inquiry data select>
+-- History    : 2021/04/14 Y.Nishikawa CHG �o�׎w���ϐ����󒍖���.�o�׎w���� - ���`�[.�o�׎w�����i�܂葼�`�[�̏o�׎w�������v�j
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Data_Select]
     -- Add the parameters for the stored procedure here
@@ -33,27 +38,42 @@ CREATE TABLE  #WK_ShukkaKanouSou1
             [ShukkanouSuu]  decimal(21,6)
         )
 Insert Into #WK_ShukkaKanouSou1
-select SKSS.ShukkaSiziNO,
-SKSS.ShukkaSiziGyouNO,
-SUM(JCSA.HikiateZumiSuu) as ShukkaSiziSuu
+--2021/04/12 Y.Nishikawa CHG �ڍׂ��w�肵�Ă���̂ŁA�Y���󒍑S�̂̏o�׉\�����Z�o�ł��Ȃ�����
+--select SKSS.ShukkaSiziNO,
+--SKSS.ShukkaSiziGyouNO,
+--SUM(JCSA.HikiateZumiSuu) as ShukkaSiziSuu
+--from D_ShukkaSizi SK
+--inner join D_ShukkaSiziMeisai SKMS
+--on SKMS.ShukkaSiziNO=SK.ShukkaSiziNO
+
+--inner join D_ShukkaSiziShousai SKSS
+--on SKSS.ShukkaSiziNO=SKMS.ShukkaSiziNO
+--and SKSS.ShukkaSiziGyouNO=SKMS.ShukkaSiziGyouNO
+--inner join D_JuchuuShousai JCSA
+--on JCSA.JuchuuNO=SKSS.JuchuuNO
+--and JCSA.JuchuuGyouNO=SKSS.JuchuuGyouNO
+--and JCSA.JuchuuShousaiNO=SKSS.JuchuuShousaiNO
+--where SK.ShukkaSiziNO=@ShippingNo
+--group by SKSS.[ShukkaSiziNO],SKSS.[ShukkaSiziGyouNO]
+select SKMS.ShukkaSiziNO,
+SKMS.ShukkaSiziGyouNO,
+SUM(DJUM.HikiateZumiSuu) as ShukkaSiziSuu
 from D_ShukkaSizi SK
 inner join D_ShukkaSiziMeisai SKMS
 on SKMS.ShukkaSiziNO=SK.ShukkaSiziNO
-inner join D_ShukkaSiziShousai SKSS
-on SKSS.ShukkaSiziNO=SKMS.ShukkaSiziNO
-and SKSS.ShukkaSiziGyouNO=SKMS.ShukkaSiziGyouNO
-inner join D_JuchuuShousai JCSA
-on JCSA.JuchuuNO=SKSS.JuchuuNO
-and JCSA.JuchuuGyouNO=SKSS.JuchuuGyouNO
-and JCSA.JuchuuShousaiNO=SKSS.JuchuuShousaiNO
+inner join D_JuchuuMeisai DJUM
+on SKMS.JuchuuNO = DJUM.JuchuuNO
+and SKMS.JuchuuGyouNO = DJUM.JuchuuGyouNO
 where SK.ShukkaSiziNO=@ShippingNo
-group by SKSS.[ShukkaSiziNO],SKSS.[ShukkaSiziGyouNO]
+group by SKMS.[ShukkaSiziNO],SKMS.[ShukkaSiziGyouNO]
+--2021/04/12 Y.Nishikawa CHG �ڍׂ��w�肵�Ă���̂ŁA�Y���󒍑S�̂̏o�׉\�����Z�o�ł��Ȃ�����
 
-if @Type=1--【Data Area Header】
+
+if @Type=1--【Data Area Header、E
 begin   
     SELECT CONVERT(varchar(10),SK.ShukkaYoteiDate,111) as ShukkaYoteiDate--出荷予定日
-    ,SK.TokuisakiCD         --得意先
-    ,SK.TokuisakiRyakuName  --得意先略名
+    ,SK.TokuisakiCD         --得意允E
+    ,SK.TokuisakiRyakuName  --得意先略吁E
     ,SK.TokuisakiName       --得意先名
     ,SK.TokuisakiYuubinNO1 --得意先郵便番号1
     ,SK.TokuisakiYuubinNO2 --得意先郵便番号2
@@ -65,8 +85,8 @@ begin
     ,SK.[TokuisakiTelNO2-1] --得意先電話番号2-1
     ,SK.[TokuisakiTelNO2-2] --得意先電話番号2-2
     ,SK.[TokuisakiTelNO2-3] --得意先電話番号2-3
-    ,SK.KouritenCD          --小売店
-    ,SK.KouritenRyakuName   --小売店略名
+    ,SK.KouritenCD          --小売庁E
+    ,SK.KouritenRyakuName   --小売店略吁E
     ,SK.KouritenName        --小売店名
     ,SK.KouritenYuubinNO1   --小売店郵便番号1
     ,SK.KouritenYuubinNO2   --小売店郵便番号2
@@ -78,12 +98,12 @@ begin
     ,SK.[KouritenTelNO2-1]  --小売店電話番号2-1
     ,SK.[KouritenTelNO2-2]  --小売店電話番号2-2
     ,SK.[KouritenTelNO2-3]  --小売店電話番号2-3
-    ,SK.StaffCD             --担当スタッフ
-    ,FS.StaffName           --担当スタッフ名 
-    ,convert(varchar(10),SK.DenpyouDate,111) as DenpyouDate --伝票日付
-    ,SK.ShukkaSiziDenpyouTekiyou --伝票摘要
-    ,SK.ShukkaSizishoHuyouKBN ----出荷指示書(0,1)
-    --,CASE WHEN SK.ShukkaSizishoHuyouKBN=0 THEN '必要' ELSE '不要'END as ShukkaSizishoHuyouKBN --出荷指示書(0,1)  
+    ,SK.StaffCD             --拁E��スタチE��
+    ,FS.StaffName           --拁E��スタチE��吁E
+    ,convert(varchar(10),SK.DenpyouDate,111) as DenpyouDate --伝票日仁E
+    ,SK.ShukkaSiziDenpyouTekiyou --伝票摘要E
+    ,SK.ShukkaSizishoHuyouKBN ----出荷持E��書(0,1)
+    --,CASE WHEN SK.ShukkaSizishoHuyouKBN=0 THEN '忁E��E ELSE '不要EEND as ShukkaSizishoHuyouKBN --出荷持E��書(0,1)  
     ,SKMS.ShukkaKanryouKBN
     FROM D_ShukkaSizi SK                        --Table1
     inner join D_ShukkaSiziMeisai SKMS          --Table2
@@ -107,34 +127,37 @@ if @Type=2--Data Area Detail
 begin
     SELECT 
     --SKMS.ShouhinCD    
-    FShouhin.HinbanCD   as ShouhinCD--商品コード
-    ,SKMS.ShouhinName   --商品名
-    ,SKMS.ColorRyakuName --カラー略名
+    FShouhin.HinbanCD   as ShouhinCD--啁E��コーチE
+    ,SKMS.ShouhinName   --啁E��吁E
+    ,SKMS.ColorRyakuName --カラー略吁E
     ,SKMS.ColorNO        --カラーNO
     ,SKMS.SizeNO         --サイズNO
     ,FORMAT(JCMS.JuchuuSuu, '#,0') as JuchuuSuu     --受注数
     ,ISNULL(FORMAT(SKKNS.ShukkanouSuu + SKMS.ShukkaSiziSuu,'#,0'),'0')  AS ShukkanouSuu--出荷可能数 -- ktp Change
     --,ISNULL(FORMAT(SKKNS.ShukkanouSuu, '#,0')+FORMAT(SKMS.ShukkaSiziSuu, '#,0'),'0') AS ShukkanouSuu--出荷可能数
-    ,ISNULL(FORMAT(JCMS.ShukkaSiziZumiSuu, '#,0'),'0') AS ShukkaSiziZumiSuu  --出荷指示済数
-    ,ISNULL(FORMAT(SKMS.ShukkaSiziSuu, '#,0'),'0') as KonkaiShukkaSiziSuu    --今回出荷指示数
+	--2021/04/14 Y.Nishikawa CHG �o�׎w���ϐ����󒍖���.�o�׎w���� - ���`�[.�o�׎w�����i�܂葼�`�[�̏o�׎w�������v�j����
+    --,ISNULL(FORMAT(JCMS.ShukkaSiziZumiSuu, '#,0'),'0') AS ShukkaSiziZumiSuu  --出荷持E��済数
+	,ISNULL(FORMAT(JCMS.ShukkaSiziZumiSuu - SKMS.ShukkaSiziSuu, '#,0'),'0') AS ShukkaSiziZumiSuu  --出荷持E��済数
+	--2021/04/14 Y.Nishikawa CHG �o�׎w���ϐ����󒍖���.�o�׎w���� - ���`�[.�o�׎w�����i�܂葼�`�[�̏o�׎w�������v�j����
+    ,ISNULL(FORMAT(SKMS.ShukkaSiziSuu, '#,0'),'0') as KonkaiShukkaSiziSuu    --今回出荷持E��数
     ,ISNULL(FORMAT(SKMS.UriageTanka, '#,0'),'0') AS UriageTanka      --単価
-    ,ISNULL(FORMAT(SKMS.UriageKingaku, '#,0'),'0') AS UriageKingaku --金額
+    ,ISNULL(FORMAT(SKMS.UriageKingaku, '#,0'),'0') AS UriageKingaku --金顁E
     --,FLOOR(JCMS.JuchuuSuu) as JuchuuSuu       --受注数
     --,ISNULL(FLOOR(SKKNS.ShukkanouSuu)+FLOOR(SKMS.ShukkaSiziSuu),'0') AS ShukkanouSuu--出荷可能数
-    --,ISNULL(FLOOR(JCMS.ShukkaSiziZumiSuu),'0') AS ShukkaSiziZumiSuu  --出荷指示済数
-    --,ISNULL(FLOOR(SKMS.ShukkaSiziSuu),'0') as KonkaiShukkaSiziSuu  --今回出荷指示数
+    --,ISNULL(FLOOR(JCMS.ShukkaSiziZumiSuu),'0') AS ShukkaSiziZumiSuu  --出荷持E��済数
+    --,ISNULL(FLOOR(SKMS.ShukkaSiziSuu),'0') as KonkaiShukkaSiziSuu  --今回出荷持E��数
     --,ISNULL(FLOOR(SKMS.UriageTanka),'0') AS UriageTanka        --単価
-    --,ISNULL(FLOOR(SKMS.UriageKingaku),'0') AS UriageKingaku   --金額    
-    ,0 as Kanryo --完了
-    ,SKMS.ShukkaSiziMeisaiTekiyou  --明細摘要
+    --,ISNULL(FLOOR(SKMS.UriageKingaku),'0') AS UriageKingaku   --金顁E   
+    ,0 as Kanryo --完亁E
+    ,SKMS.ShukkaSiziMeisaiTekiyou  --明細摘要E
     ,(SKMS.JuchuuNO+' - '+cast(SKMS.JuchuuGyouNO as varchar)) AS SKMSNO  --受注番号-行番号
     ,SKMS.JuchuuNO
-    ,SKMS.SoukoCD       --倉庫コード
-    ,MS.SoukoName       --倉庫名
+    ,SKMS.SoukoCD       --倉庫コーチE
+    ,MS.SoukoName       --倉庫吁E
     --hidden fields
-    ,SK.TokuisakiCD     --得意先
-    ,SKMS.KouritenCD    --小売店
-    ,SKMS.KouritenRyakuName--小売店略名
+    ,SK.TokuisakiCD     --得意允E
+    ,SKMS.KouritenCD    --小売庁E
+    ,SKMS.KouritenRyakuName--小売店略吁E
     ,SKMS.KouritenName  --小売店名
     ,SKMS.KouritenYuubinNO1     --小売店郵便番号1
     ,SKMS.KouritenYuubinNO2     --小売店郵便番号2
@@ -146,7 +169,7 @@ begin
     ,SKMS.[KouritenTelNO2-1]    --小売店電話番号2-1
     ,SKMS.[KouritenTelNO2-2]    --小売店電話番号2-2
     ,SKMS.[KouritenTelNO2-3]    --小売店電話番号2-3
-    ,FShouhin.ShouhinCD as Hidden_ShouhinCD--商品コード_更新用
+    ,FShouhin.ShouhinCD as Hidden_ShouhinCD--啁E��コード_更新用
     ,SKMS.ShukkaSiziGyouNO as Hidden_ShukkaSiziGyouNO
     FROM D_ShukkaSizi SK                        --Table1
     inner join D_ShukkaSiziMeisai SKMS          --Table2
@@ -182,3 +205,6 @@ End
 
 
 END
+GO
+
+

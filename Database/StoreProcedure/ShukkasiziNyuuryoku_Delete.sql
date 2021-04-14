@@ -17,7 +17,8 @@ GO
 -- Create date: <03-06-2021>
 -- Description:	<Description,,>
 -- History    : 2021/04/13 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上
---              2021/04/13 Y.Nishikawa DEL すぐ上で同じ処理してる
+--                         Y.Nishikawa DEL すぐ上で同じ処理してる
+--              2021/04/14 Y.Nishikawa CHG この時点では受注明細の出荷指示済数に今回出荷指示数を更新していないので、分納時は完了区分が完了にならない(削除なので、必ず完了区分は未完)
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Delete]
 	-- Add the parameters for the stored procedure here
@@ -517,8 +518,11 @@ WHERE A.ShukkaSiziNO=@ShukkaSiziNO
 
 --D_JuchuuMeisai
 UPDATE  A 
-SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1 
-									when C.Kanryo=1 then 1 else 0 end
+--2021/04/14 Y.Nishikawa CHG この時点では受注明細の出荷指示済数に今回出荷指示数を更新していないので、分納時は完了区分が完了にならない(削除なので、必ず完了区分は未完)↓↓
+----SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1 
+--when C.Kanryo=1 then 1 else 0 end
+SET	[ShukkaSiziKanryouKBN]= 0
+--2021/04/14 Y.Nishikawa CHG この時点では受注明細の出荷指示済数に今回出荷指示数を更新していないので、分納時は完了区分が完了にならない(削除なので、必ず完了区分は未完)↑↑
 ,UpdateOperator=@OperatorCD
 ,UpdateDateTime=@currentDate
 FROM D_JuchuuMeisai A,#Temp_Details C

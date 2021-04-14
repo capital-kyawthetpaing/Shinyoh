@@ -1,16 +1,22 @@
- BEGIN TRY 
- Drop Procedure dbo.[ShukkasiziNyuuryoku_Update]
-END try
-BEGIN CATCH END CATCH 
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Update]    Script Date: 2021/04/14 16:49:42 ******/
+IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ShukkasiziNyuuryoku_Update%' and type like '%P%')
+DROP PROCEDURE [dbo].[ShukkasiziNyuuryoku_Update]
+GO
+
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Update]    Script Date: 2021/04/14 16:49:42 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:      <SWE>
 -- Create date: <06-03-2021>
 -- Description: <Description,,>
+-- History    : 2021/04/14 Y.Nishikawa DEL 出荷指示詳細履歴は引当ファンクションで処理しているため、二重計上
+--                         Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Update]
     -- Add the parameters for the stored procedure here
@@ -299,6 +305,10 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
     ,@currentDate
     FROM [dbo].[D_ShukkaSizi] AS i
     where i.ShukkaSiziNO=@ShukkaSiziNO -- KTP Change before update
+
+--2021/04/14 Y.Nishikawa CHG 場所移動（このタイミングでは修正登録後の状態なので、修正前のタイミングで呼び出さないと意味がない）↓↓
+exec dbo.Fnc_Hikiate 12,@ShukkaSiziNO,20,@OperatorCD
+--2021/04/14 Y.Nishikawa CHG 場所移動（このタイミングでは修正登録後の状態なので、修正前のタイミングで呼び出さないと意味がない）↑↑
 
 UPDATE [dbo].[D_ShukkaSizi]
 SET [StaffCD]=TM.StaffCD
@@ -708,173 +718,182 @@ SELECT
 FROM [dbo].[D_ShukkaSiziMeisai] AS j
 where j.ShukkaSiziNO=@ShukkaSiziNO
 
-INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
-(   [HistoryGuid]
-    ,[ShukkaSiziNO]
-    ,[ShukkaSiziGyouNO]
-    ,[ShukkaSiziShousaiNO]
-    ,[ShoriKBN]
-    ,[SoukoCD]
-    ,[ShouhinCD]
-    ,[ShouhinName]
-    ,[ShukkaSiziSuu]
-    ,[KanriNO]
-    ,[NyuukoDate]
-    ,[ShukkaZumiSuu]
-    ,[JuchuuNO]
-    ,[JuchuuGyouNO]
-    ,[JuchuuShousaiNO]
-    ,[InsertOperator]
-    ,[InsertDateTime]
-    ,[UpdateOperator]
-    ,[UpdateDateTime]
-    ,[HistoryOperator]
-    ,[HistoryDateTime]
-)
-    SELECT 
-            @Unique_20,
-            [ShukkaSiziNO]
-            ,[ShukkaSiziGyouNO]
-            ,[ShukkaSiziShousaiNO]
-            ,20 --Before correction
-            ,[SoukoCD]
-            ,[ShouhinCD]
-            ,[ShouhinName]
-            ,[ShukkaSiziSuu]
-            ,[KanriNO]
-            ,[NyuukoDate]
-            ,[ShukkaZumiSuu]
-            ,[JuchuuNO]
-            ,[JuchuuGyouNO]
-            ,[JuchuuShousaiNO]
-            ,[InsertOperator]
-            ,[InsertDateTime]
-            ,[UpdateOperator]
-            ,[UpdateDateTime]
-            ,@OperatorCD
-            ,@currentDate
-FROM [dbo].[D_ShukkaSiziShousai]
-WHERE ShukkaSiziNO=@ShukkaSiziNO  --KTP Change before update
+--2021/04/14 Y.Nishikawa DEL 出荷指示詳細履歴は引当ファンクションで処理しているため、二重計上↓↓
+--INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
+--(   [HistoryGuid]
+--    ,[ShukkaSiziNO]
+--    ,[ShukkaSiziGyouNO]
+--    ,[ShukkaSiziShousaiNO]
+--    ,[ShoriKBN]
+--    ,[SoukoCD]
+--    ,[ShouhinCD]
+--    ,[ShouhinName]
+--    ,[ShukkaSiziSuu]
+--    ,[KanriNO]
+--    ,[NyuukoDate]
+--    ,[ShukkaZumiSuu]
+--    ,[JuchuuNO]
+--    ,[JuchuuGyouNO]
+--    ,[JuchuuShousaiNO]
+--    ,[InsertOperator]
+--    ,[InsertDateTime]
+--    ,[UpdateOperator]
+--    ,[UpdateDateTime]
+--    ,[HistoryOperator]
+--    ,[HistoryDateTime]
+--)
+--    SELECT 
+--            @Unique_20,
+--            [ShukkaSiziNO]
+--            ,[ShukkaSiziGyouNO]
+--            ,[ShukkaSiziShousaiNO]
+--            ,20 --Before correction
+--            ,[SoukoCD]
+--            ,[ShouhinCD]
+--            ,[ShouhinName]
+--            ,[ShukkaSiziSuu]
+--            ,[KanriNO]
+--            ,[NyuukoDate]
+--            ,[ShukkaZumiSuu]
+--            ,[JuchuuNO]
+--            ,[JuchuuGyouNO]
+--            ,[JuchuuShousaiNO]
+--            ,[InsertOperator]
+--            ,[InsertDateTime]
+--            ,[UpdateOperator]
+--            ,[UpdateDateTime]
+--            ,@OperatorCD
+--            ,@currentDate
+--FROM [dbo].[D_ShukkaSiziShousai]
+--WHERE ShukkaSiziNO=@ShukkaSiziNO  --KTP Change before update
+--2021/04/14 Y.Nishikawa DEL 出荷指示詳細履歴は引当ファンクションで処理しているため、二重計上↑↑
 
 --ktp call fncHikiate
-exec dbo.Fnc_Hikiate 12,@ShukkaSiziNO,20,@OperatorCD
+--2021/04/14 Y.Nishikawa CHG 場所移動（このタイミングでは修正登録後の状態なので、修正前のタイミングで呼び出さないと意味がない）↓↓
+--exec dbo.Fnc_Hikiate 12,@ShukkaSiziNO,20,@OperatorCD
+--2021/04/14 Y.Nishikawa CHG 場所移動（このタイミングでは修正登録後の状態なので、修正前のタイミングで呼び出さないと意味がない）↑↑
 
 --Reverse/Cancel Old Data KTP Change
 
-declare @tmpsss as decimal(21,6)
-select @tmpsss = sum(ShukkaSiziSuu) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO group by ShukkaSiziNO
+--2021/04/14 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上↓↓
+--declare @tmpsss as decimal(21,6)
+--select @tmpsss = sum(ShukkaSiziSuu) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO group by ShukkaSiziNO
 
-UPDATE  A
-SET 
-    HikiateZumiSuu = A.HikiateZumiSuu + @tmpsss -- KTP Add
-    ,ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu - @tmpsss
-    ,UpdateOperator=@OperatorCD
-    ,UpdateDateTime=@currentDate
-FROM D_JuchuuMeisai A
+--UPDATE  A
+--SET 
+--    HikiateZumiSuu = A.HikiateZumiSuu + @tmpsss -- KTP Add
+--    ,ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu - @tmpsss
+--    ,UpdateOperator=@OperatorCD
+--    ,UpdateDateTime=@currentDate
+--FROM D_JuchuuMeisai A
 
-update D_JuchuuShousai
-set HikiateZumiSuu = js.HikiateZumiSuu + sss.ShukkaSiziSuu,
-    ShukkaSiziZumiSuu = js.ShukkaSiziZumiSuu - sss.ShukkaSiziSuu
-from D_JuchuuShousai js
-inner join D_ShukkaSiziShousai sss on js.KanriNO = sss.KanriNO and js.NyuukoDate = sss.NyuukoDate and js.SoukoCD = sss.SoukoCD
-and js.ShouhinCD = sss.ShouhinCD
-where sss.ShukkaSiziNO = @ShukkaSiziNO
+--update D_JuchuuShousai
+--set HikiateZumiSuu = js.HikiateZumiSuu + sss.ShukkaSiziSuu,
+--    ShukkaSiziZumiSuu = js.ShukkaSiziZumiSuu - sss.ShukkaSiziSuu
+--from D_JuchuuShousai js
+--inner join D_ShukkaSiziShousai sss on js.KanriNO = sss.KanriNO and js.NyuukoDate = sss.NyuukoDate and js.SoukoCD = sss.SoukoCD
+--and js.ShouhinCD = sss.ShouhinCD
+--where sss.ShukkaSiziNO = @ShukkaSiziNO
+--2021/04/14 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上↑↑
 
 delete D_ShukkaSiziShousai
 where ShukkaSiziNO = @ShukkaSiziNO
 
---TableC
---TableC
-declare @GyouNo as smallint = 1
-    declare @a decimal(21,6), @b decimal(21, 6), @JuchuuNO VARCHAR(12), @JuchuuGyouNO SMALLINT, @KonkaiShukkaSiziSuu VARCHAR(30), @SKMSNO VARCHAR(25), @Hidden_ShouhinCD VARCHAR(25)
-    DECLARE @SoukoCD VARCHAR(10), @ShouhinCD VARCHAR(20), @ShouhinName VARCHAR(100)
-    DECLARE cursor1 CURSOR READ_ONLY FOR SELECT SoukoCD, ShouhinCD, ShouhinName, SKMSNO, Hidden_ShouhinCD, KonkaiShukkaSiziSuu FROM #Temp_Details
-    OPEN cursor1
-    FETCH NEXT FROM cursor1 INTO @SoukoCD, @ShouhinCD, @ShouhinName, @SKMSNO, @Hidden_ShouhinCD, @KonkaiShukkaSiziSuu
-    WHILE @@FETCH_STATUS = 0
-    BEGIN
-        SET @JuchuuNO = LEFT(@SKMSNO, CHARINDEX('-', @SKMSNO) - 1)
-        SET @JuchuuGyouNO = RIGHT(@SKMSNO, LEN(@SKMSNO) - CHARINDEX('-', @SKMSNO))
-        SET @a = ABS(@KonkaiShukkaSiziSuu)
 
-        ---KTP Change
-    declare 
-    @JuchuuShousaiNO as smallint,
-    @KanriNO as varchar(10),
-    @NyuukoDate as varchar(10),
-    @HikiateZumiSuu as decimal(21,6),
-    @ShukkaSiziZumiSuu as decimal(21,6)
+----TableC
+----TableC
+declare @GyouNo as smallint = 1
+--2021/04/14 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上↓↓
+--    declare @a decimal(21,6), @b decimal(21, 6), @JuchuuNO VARCHAR(12), @JuchuuGyouNO SMALLINT, @KonkaiShukkaSiziSuu VARCHAR(30), @SKMSNO VARCHAR(25), @Hidden_ShouhinCD VARCHAR(25)
+--    DECLARE @SoukoCD VARCHAR(10), @ShouhinCD VARCHAR(20), @ShouhinName VARCHAR(100)
+--    DECLARE cursor1 CURSOR READ_ONLY FOR SELECT SoukoCD, ShouhinCD, ShouhinName, SKMSNO, Hidden_ShouhinCD, KonkaiShukkaSiziSuu FROM #Temp_Details
+--    OPEN cursor1
+--    FETCH NEXT FROM cursor1 INTO @SoukoCD, @ShouhinCD, @ShouhinName, @SKMSNO, @Hidden_ShouhinCD, @KonkaiShukkaSiziSuu
+--    WHILE @@FETCH_STATUS = 0
+--    BEGIN
+--        SET @JuchuuNO = LEFT(@SKMSNO, CHARINDEX('-', @SKMSNO) - 1)
+--        SET @JuchuuGyouNO = RIGHT(@SKMSNO, LEN(@SKMSNO) - CHARINDEX('-', @SKMSNO))
+--        SET @a = ABS(@KonkaiShukkaSiziSuu)
+
+--        ---KTP Change
+--    declare 
+--    @JuchuuShousaiNO as smallint,
+--    @KanriNO as varchar(10),
+--    @NyuukoDate as varchar(10),
+--    @HikiateZumiSuu as decimal(21,6),
+--    @ShukkaSiziZumiSuu as decimal(21,6)
     
-    --Step 3(loop by JuchuuNO,JuchuuGyouNO)
-    declare cursorInner cursor read_only
-    for select JuchuuShousaiNO,SoukoCD,ShouhinCD,KanriNO,NyuukoDate,HikiateZumiSuu,ShukkaSiziZumiSuu
-    from D_JuchuuShousai 
-    where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
-    and HikiateZumiSuu > 0
-    order by KanriNO,case when NyuukoDate = '' or NyuukoDate is null then '2100-01-01' else NyuukoDate end
+--    --Step 3(loop by JuchuuNO,JuchuuGyouNO)
+--    declare cursorInner cursor read_only
+--    for select JuchuuShousaiNO,SoukoCD,ShouhinCD,KanriNO,NyuukoDate,HikiateZumiSuu,ShukkaSiziZumiSuu
+--    from D_JuchuuShousai 
+--    where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
+--    and HikiateZumiSuu > 0
+--    order by KanriNO,case when NyuukoDate = '' or NyuukoDate is null then '2100-01-01' else NyuukoDate end
     
-    open cursorInner
+--    open cursorInner
     
-    fetch next from cursorInner
-    into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
-    @ShukkaSiziZumiSuu
+--    fetch next from cursorInner
+--    into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
+--    @ShukkaSiziZumiSuu
     
-    while @@FETCH_STATUS = 0
-        begin
+--    while @@FETCH_STATUS = 0
+--        begin
     
-            if(@a > 0)
-                begin
-                    declare @tmpHikiateSuu as decimal(21,6)
-                    declare @tmpShukkasiziSuu as decimal(21,6)
+--            if(@a > 0)
+--                begin
+--                    declare @tmpHikiateSuu as decimal(21,6)
+--                    declare @tmpShukkasiziSuu as decimal(21,6)
     
-                    --Step3 : Update D_JuchuuShousai(蜿玲ｳｨ隧ｳ邏ｰ)
-                    update D_JuchuuShousai
-                    set 
-                        @tmpHikiateSuu = HikiateZumiSuu,
-                        @tmpShukkasiziSuu = case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end,
-                        HikiateZumiSuu = case when @a >= HikiateZumiSuu then 0 else HikiateZumiSuu - @a end,
-                        ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + (case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end),
-                        --ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + ( case when @a >= HikiateZumiSuu then HikiateZumiSuu else HikiateZumiSuu - @a end),
-                        ShukkaZumiSuu = 0,
-                        UriageZumiSuu = 0,
-                        UpdateOperator = @OperatorCD,
-                        UpdateDateTime = @currentDate
-                    from D_JuchuuShousai
-                    where JuchuuNO = @JuchuuNo
-                    and JuchuuGyouNO = @JuchuuGyouNO 
-                    and JuchuuShousaiNO = @JuchuuShousaiNO
+--                    --Step3 : Update D_JuchuuShousai(蜿玲ｳｨ隧ｳ邏ｰ)
+--                    update D_JuchuuShousai
+--                    set 
+--                        @tmpHikiateSuu = HikiateZumiSuu,
+--                        @tmpShukkasiziSuu = case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end,
+--                        HikiateZumiSuu = case when @a >= HikiateZumiSuu then 0 else HikiateZumiSuu - @a end,
+--                        ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + (case when @a <= HikiateZumiSuu then @a else HikiateZumiSuu end),
+--                        --ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + ( case when @a >= HikiateZumiSuu then HikiateZumiSuu else HikiateZumiSuu - @a end),
+--                        ShukkaZumiSuu = 0,
+--                        UriageZumiSuu = 0,
+--                        UpdateOperator = @OperatorCD,
+--                        UpdateDateTime = @currentDate
+--                    from D_JuchuuShousai
+--                    where JuchuuNO = @JuchuuNo
+--                    and JuchuuGyouNO = @JuchuuGyouNO 
+--                    and JuchuuShousaiNO = @JuchuuShousaiNO
     
-                    set @a = case when @a > @tmpHikiateSuu then @a - @tmpHikiateSuu else 0 end
+--                    set @a = case when @a > @tmpHikiateSuu then @a - @tmpHikiateSuu else 0 end
     
-                    declare @maxShousaiNo as smallint
+--                    declare @maxShousaiNo as smallint
     
-                    select @maxShousaiNo = isnull(max(ShukkaSiziShousaiNO),0) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO
+--                    select @maxShousaiNo = isnull(max(ShukkaSiziShousaiNO),0) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO
     
-                    -- Step5 : Insert D_ShukkaSiziShousai(蜃ｺ闕ｷ謖�遉ｺ隧ｳ邏ｰ)
-                    insert into D_ShukkaSiziShousai( ShukkaSiziNO, ShukkaSiziGyouNO, ShukkaSiziShousaiNO, 
-                    SoukoCD,ShouhinCD,ShouhinName,ShukkaSiziSuu,KanriNO,NyuukoDate,ShukkaZumiSuu,
-                    JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime
-                    )
-                    select 
-                        @ShukkaSiziNO,@GyouNo,@maxShousaiNo + 1,
-                        js.SoukoCD,js.ShouhinCD,jms.ShouhinName,@tmpShukkasiziSuu,@KanriNO,@NyuukoDate,0,
-                        @JuchuuNo,@JuchuuGyouNO,@JuchuuShousaiNO,@OperatorCD,@currentDate,@OperatorCD,@currentDate
+--                    -- Step5 : Insert D_ShukkaSiziShousai(蜃ｺ闕ｷ謖・､ｺ隧ｳ邏ｰ)
+--                    insert into D_ShukkaSiziShousai( ShukkaSiziNO, ShukkaSiziGyouNO, ShukkaSiziShousaiNO, 
+--                    SoukoCD,ShouhinCD,ShouhinName,ShukkaSiziSuu,KanriNO,NyuukoDate,ShukkaZumiSuu,
+--                    JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime
+--                    )
+--                    select 
+--                        @ShukkaSiziNO,@GyouNo,@maxShousaiNo + 1,
+--                        js.SoukoCD,js.ShouhinCD,jms.ShouhinName,@tmpShukkasiziSuu,@KanriNO,@NyuukoDate,0,
+--                        @JuchuuNo,@JuchuuGyouNO,@JuchuuShousaiNO,@OperatorCD,@currentDate,@OperatorCD,@currentDate
                     
-                    from D_JuchuuShousai js
-                    left outer join D_JuchuuMeisai jms on js.JuchuuNO = jms.JuchuuNO and js.JuchuuGyouNO = jms.JuchuuGyouNO
-                    where js.JuchuuNO = @JuchuuNo 
-                    and js.JuchuuGyouNO = @JuchuuGyouNO
-                    and js.JuchuuShousaiNO = @JuchuuShousaiNO
-                end
+--                    from D_JuchuuShousai js
+--                    left outer join D_JuchuuMeisai jms on js.JuchuuNO = jms.JuchuuNO and js.JuchuuGyouNO = jms.JuchuuGyouNO
+--                    where js.JuchuuNO = @JuchuuNo 
+--                    and js.JuchuuGyouNO = @JuchuuGyouNO
+--                    and js.JuchuuShousaiNO = @JuchuuShousaiNO
+--                end
             
     
-            fetch next from 
-            cursorInner into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
-            @ShukkaSiziZumiSuu
-        end
+--            fetch next from 
+--            cursorInner into @JuchuuShousaiNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@HikiateZumiSuu,
+--            @ShukkaSiziZumiSuu
+--        end
     
-    close cursorInner
-    deallocate cursorInner
+--    close cursorInner
+--    deallocate cursorInner
+	--2021/04/14 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上↑↑
 
     set @GyouNO = @GyouNO + 1
 
@@ -883,80 +902,82 @@ declare @GyouNo as smallint = 1
 
 --TableF
 
+--2021/04/14 Y.Nishikawa DEL 出荷指示詳細履歴は引当ファンクションで処理しているため、二重計上↓↓
+--INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
+--(   [HistoryGuid]
+--    ,[ShukkaSiziNO]
+--    ,[ShukkaSiziGyouNO]
+--    ,[ShukkaSiziShousaiNO]
+--    ,[ShoriKBN]
+--    ,[SoukoCD]
+--    ,[ShouhinCD]
+--    ,[ShouhinName]
+--    ,[ShukkaSiziSuu]
+--    ,[KanriNO]
+--    ,[NyuukoDate]
+--    ,[ShukkaZumiSuu]
+--    ,[JuchuuNO]
+--    ,[JuchuuGyouNO]
+--    ,[JuchuuShousaiNO]
+--    ,[InsertOperator]
+--    ,[InsertDateTime]
+--    ,[UpdateOperator]
+--    ,[UpdateDateTime]
+--    ,[HistoryOperator]
+--    ,[HistoryDateTime]
+--)
 
-INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
-(   [HistoryGuid]
-    ,[ShukkaSiziNO]
-    ,[ShukkaSiziGyouNO]
-    ,[ShukkaSiziShousaiNO]
-    ,[ShoriKBN]
-    ,[SoukoCD]
-    ,[ShouhinCD]
-    ,[ShouhinName]
-    ,[ShukkaSiziSuu]
-    ,[KanriNO]
-    ,[NyuukoDate]
-    ,[ShukkaZumiSuu]
-    ,[JuchuuNO]
-    ,[JuchuuGyouNO]
-    ,[JuchuuShousaiNO]
-    ,[InsertOperator]
-    ,[InsertDateTime]
-    ,[UpdateOperator]
-    ,[UpdateDateTime]
-    ,[HistoryOperator]
-    ,[HistoryDateTime]
-)
-
-SELECT 
-    @Unique_21,
-    [ShukkaSiziNO]
-    ,[ShukkaSiziGyouNO]
-    ,[ShukkaSiziShousaiNO]
-    ,21 --After modification
-    ,[SoukoCD]
-    ,[ShouhinCD]
-    ,[ShouhinName]
-    ,[ShukkaSiziSuu]
-    ,[KanriNO]
-    ,[NyuukoDate]
-    ,[ShukkaZumiSuu]
-    ,[JuchuuNO]
-    ,[JuchuuGyouNO]
-    ,[JuchuuShousaiNO]
-    ,[InsertOperator]
-    ,[InsertDateTime]
-    ,[UpdateOperator]
-    ,[UpdateDateTime]
-    ,@OperatorCD
-    ,@currentDate
-    FROM [dbo].[D_ShukkaSiziShousai]
-WHERE ShukkaSiziNO=@ShukkaSiziNO
-
+--SELECT 
+--    @Unique_21,
+--    [ShukkaSiziNO]
+--    ,[ShukkaSiziGyouNO]
+--    ,[ShukkaSiziShousaiNO]
+--    ,21 --After modification
+--    ,[SoukoCD]
+--    ,[ShouhinCD]
+--    ,[ShouhinName]
+--    ,[ShukkaSiziSuu]
+--    ,[KanriNO]
+--    ,[NyuukoDate]
+--    ,[ShukkaZumiSuu]
+--    ,[JuchuuNO]
+--    ,[JuchuuGyouNO]
+--    ,[JuchuuShousaiNO]
+--    ,[InsertOperator]
+--    ,[InsertDateTime]
+--    ,[UpdateOperator]
+--    ,[UpdateDateTime]
+--    ,@OperatorCD
+--    ,@currentDate
+--    FROM [dbo].[D_ShukkaSiziShousai]
+--WHERE ShukkaSiziNO=@ShukkaSiziNO
+--2021/04/14 Y.Nishikawa DEL 出荷指示詳細履歴は引当ファンクションで処理しているため、二重計上↑↑
 --Konkai_Price--
 
---Table G--02
-UPDATE  A
-SET 
-    HikiateZumiSuu = A.HikiateZumiSuu - B.KonkaiShukkaSiziSuu, -- KTP Add
-    ShukkaSiziZumiSuu= case when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu>0 then  A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu
-                                    when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu<=0 then 0 end
-    ,UpdateOperator=@OperatorCD
-    ,UpdateDateTime=@currentDate
-FROM D_JuchuuMeisai A
-inner join #Temp_Details B
-on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
-and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
+--2021/04/14 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上↓↓
+----Table G--02
+--UPDATE  A
+--SET 
+--    HikiateZumiSuu = A.HikiateZumiSuu - B.KonkaiShukkaSiziSuu, -- KTP Add
+--    ShukkaSiziZumiSuu= case when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu>0 then  A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu
+--                                    when A.ShukkaSiziZumiSuu-B.KonkaiShukkaSiziSuu<=0 then 0 end
+--    ,UpdateOperator=@OperatorCD
+--    ,UpdateDateTime=@currentDate
+--FROM D_JuchuuMeisai A
+--inner join #Temp_Details B
+--on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
+--and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
 
---Table G --01
-UPDATE  A
-SET ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
-    ,UpdateOperator=@OperatorCD
-    ,UpdateDateTime=@currentDate
-FROM D_JuchuuMeisai A
-inner join #Temp_Details B
-on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
-and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
+----Table G --01
+--UPDATE  A
+--SET ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu + B.KonkaiShukkaSiziSuu
+--    ,UpdateOperator=@OperatorCD
+--    ,UpdateDateTime=@currentDate
+--FROM D_JuchuuMeisai A
+--inner join #Temp_Details B
+--on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
+--and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
+--2021/04/14 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上↑↑
 
 --D_JuchuuMeisai
 UPDATE  A 
@@ -1001,4 +1022,7 @@ Drop Table #Temp_Header
 Drop Table #Temp_Details
 
 END
-END
+--END
+GO
+
+
