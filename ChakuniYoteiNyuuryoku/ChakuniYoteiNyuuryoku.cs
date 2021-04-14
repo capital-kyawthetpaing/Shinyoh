@@ -20,7 +20,7 @@ namespace ChakuniYoteiNyuuryoku
         BaseBL bbl;
         SiiresakiDetail sd;
         DataTable dtmain;
-        DataTable dtGS;
+        DataTable dtGS;//F8_dt1
         DataTable dtTemp;
         DataTable dtClear;
         public string detail_XML;
@@ -157,9 +157,9 @@ namespace ChakuniYoteiNyuuryoku
             }
             if (tagID == "8")
             {
-                if (dtTemp.Rows.Count > 0)
+                if (dtGS.Rows.Count > 0)
                 {
-                    var dtConfirm = dtTemp.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("HacchuuDate")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
+                    var dtConfirm = dtGS.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("HacchuuDate")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
                     gvChakuniYoteiNyuuryoku.DataSource = dtConfirm;
                 }
                 else
@@ -410,6 +410,8 @@ namespace ChakuniYoteiNyuuryoku
             txtChakuniYoteiNO.Focus();
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET
+
+            dtGS = CreateTable_Detail();
         }
         private void New_Mode()
         {
@@ -435,6 +437,8 @@ namespace ChakuniYoteiNyuuryoku
             lblSiiresaki.Text = string.Empty;
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET
+
+            dtGS = CreateTable_Detail();
         }
         private bool Temp_Null()
         {
@@ -536,9 +540,9 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (dtTemp.Rows.Count > 0)
+            if (dtGS.Rows.Count > 0)
             {
-                var dtConfirm = dtTemp.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("HacchuuDate")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
+                var dtConfirm = dtGS.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("HacchuuDate")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
                 gvChakuniYoteiNyuuryoku.DataSource = dtConfirm;
             }
             else
@@ -554,14 +558,7 @@ namespace ChakuniYoteiNyuuryoku
        
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (GV_Check())
-            {
-                dtTemp = dtGS;
-                SaveClear();
-                gvChakuniYoteiNyuuryoku.ClearSelection();
-                gvChakuniYoteiNyuuryoku.DataSource = dtClear;
-                gvChakuniYoteiNyuuryoku.Memory_Row_Count = dtGS.Rows.Count;
-            }
+            FunctionProcess("11");
         }
         public void SaveClear()
         {
@@ -801,6 +798,11 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void Temp_Save(int row)
         {
+            if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString() == "0")
+            {
+                return;
+            }
+
             if (dtGS.Rows.Count > 0)
             {
                 for (int i = dtGS.Rows.Count - 1; i >= 0; i--)

@@ -1028,7 +1028,12 @@ namespace JuchuuNyuuryoku
 
             for (int t = 0; t < gv_JuchuuNyuuryoku.RowCount; t++)
             {
-               // bool bl = false;
+                if (gv_JuchuuNyuuryoku.Rows[t].Cells["colJuchuuSuu"].Value.ToString() == "0")
+                {
+                    continue;
+                }
+
+                // bool bl = false;
                 // grid 1 checking
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gv_JuchuuNyuuryoku.Rows[t];// grid view data

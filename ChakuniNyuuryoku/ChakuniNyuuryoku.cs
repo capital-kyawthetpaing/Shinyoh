@@ -22,7 +22,7 @@ namespace ChakuniNyuuryoku
         DataTable dtTemp;
         DataTable dtGridSource = new DataTable();
         SiiresakiDetail sd;
-        DataTable dtGS1;
+        DataTable dtGS1; //F8_dt1
         BaseEntity base_Entity;
         StaffBL staffBL;
         SoukoBL soukoBL;
@@ -155,7 +155,7 @@ namespace ChakuniNyuuryoku
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET
 
-
+            dtGS1 = CreateTable_Details();
         }
         private void New_Mode()
         {
@@ -241,10 +241,12 @@ namespace ChakuniNyuuryoku
             }
             if (tagID == "8")
             {
-                if (dtTemp.Rows.Count > 0)
+                if (dtGS1.Rows.Count > 0)
                 {
-                    var dtConfirm = dtTemp.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("ChakuniYoteiGyouNO")).ThenBy(r => r.Field<string>("HacchuuGyouNO")).CopyToDataTable();
+                    var dtConfirm = dtGS1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("ChakuniYoteiGyouNO")).ThenBy(r => r.Field<string>("HacchuuGyouNO")).CopyToDataTable();
                     gvChakuniNyuuryoku.DataSource = dtConfirm;
+                    gvChakuniNyuuryoku.Focus();
+                    gvChakuniNyuuryoku.Memory_Row_Count = dtGS1.Rows.Count;
                 }
                 else
                 {
@@ -503,9 +505,9 @@ namespace ChakuniNyuuryoku
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (dtTemp.Rows.Count > 0)
+            if (dtGS1.Rows.Count > 0)
             {
-                var dtConfirm = dtTemp.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("Chakuni")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
+                var dtConfirm = dtGS1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("Chakuni")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
                 gvChakuniNyuuryoku.DataSource = dtConfirm;
             }
             else
@@ -562,7 +564,7 @@ namespace ChakuniNyuuryoku
             DataRow[] existDr1;
             if (dr["ChakuniYoteiNO"] != null)
             {
-                existDr1 = dtmain.Select("ChakuniYotei ='" + dr["ChakuniYoteiNO"] + "'");
+                existDr1 = dtmain.Select("ChakuniYoteiNO ='" + dr["ChakuniYoteiNO"] + "'");
                 foreach (DataRow row in existDr1)
                 {
                     dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
@@ -669,24 +671,7 @@ namespace ChakuniNyuuryoku
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (GV_Check())
-            {
-                dtTemp = dtGS1;
-                txtScheduled.Clear();
-                txtShouhinCD.Clear();
-                txtShouhinName.Clear();
-                txtControlNo.Clear();
-                txtJANCD.Clear();
-                sbBrand.Clear();
-                lblBrandName.Text = string.Empty;
-                txtColorNo.Clear();
-                txtYearTerm.Clear();
-                txtSizeNo.Clear();
-                txtScheduled.Focus();
-                gvChakuniNyuuryoku.ClearSelection();
-                gvChakuniNyuuryoku.DataSource = dtClear;
-                gvChakuniNyuuryoku.Memory_Row_Count = dtGS1.Rows.Count;
-            }
+            FunctionProcess("11");
         }
         private bool GV_Check()
         {
@@ -947,6 +932,11 @@ namespace ChakuniNyuuryoku
 
         private void Temp_Save(int row)
         {
+            if (gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].EditedFormattedValue.ToString() == "0")
+            {
+                return;
+            }
+
             if (dtGS1.Rows.Count > 0)
             {
                 for (int i = dtGS1.Rows.Count - 1; i >= 0; i--)
