@@ -65,6 +65,14 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
            
             var col = dgvShukkasizi.Columns;
+
+            DataGridViewTextBoxColumn newCol = new DataGridViewTextBoxColumn();
+            newCol.Name = "Hidden_ShukkaSiziGyouNO";
+            newCol.DataPropertyName = "Hidden_ShukkaSiziGyouNO";
+            newCol.Visible = false;
+            dgvShukkasizi.Columns.Insert(col.Count,newCol);
+            newCol.DisplayIndex = col.Count - 1;
+
             for (int i = 5; i < col.Count; i++)
             {
                 while (i <= 10)
@@ -562,6 +570,7 @@ namespace ShukkaSiziNyuuryoku
             dt.Columns.Add("KouritenTelNO2-2", typeof(string));
             dt.Columns.Add("KouritenTelNO2-3", typeof(string));
             dt.Columns.Add("Hidden_ShouhinCD", typeof(string));
+            dt.Columns.Add("Hidden_ShukkaSiziGyouNO", typeof(int));
 
             dt.AcceptChanges();
             return dt;
@@ -1415,7 +1424,10 @@ namespace ShukkaSiziNyuuryoku
                             dt.Rows[j][k] = dt.Rows[j][k].ToString().Replace(",", "");
                         }
                     }
-                    dt.Rows[j]["ShukkaSiziGyouNO"] = j + 1;
+                    if (cboMode.SelectedValue.Equals("1"))
+                        dt.Rows[j]["ShukkaSiziGyouNO"] = j + 1;
+                    else
+                        dt.Rows[j]["ShukkaSiziGyouNO"] = dt.Rows[j]["Hidden_ShukkaSiziGyouNO"];
                 }
             }
             return dt;
