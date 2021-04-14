@@ -53,119 +53,130 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-	declare @currentDate as datetime = getdate()
+	begin try
+		begin tran
 
-	exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
+			declare @currentDate as datetime = getdate()
 
-   if @Mode='New'
-	begin
-	    INSERT INTO M_Kouriten
-           ([KouritenCD]
-			  ,[ChangeDate]           
-			  ,[ShokutiFLG]          
-			  ,[KouritenName]       
-			  ,[KouritenRyakuName]  
-			  ,[KanaName]           
-			  ,[KensakuHyouziJun]    
-			  ,[TokuisakiCD] 
-			  ,[AliasKBN]
-			  ,[YuubinNO1]            
-			  ,[YuubinNO2]           
-			  ,[Juusho1]             
-			  ,[Juusho2]             
-			  ,[Tel11]                
-			  ,[Tel12]                
-			  ,[Tel13]                
-			  ,[Tel21]                
-			  ,[Tel22]                
-			  ,[Tel23]               
-			  ,[TantouBusho]          
-			  ,[TantouYakushoku]      
-			  ,[TantoushaName]       
-			  ,[MailAddress]  
-			  ,[StaffCD]             
-			  ,[TorihikiKaisiDate]    
-			  ,[TorihikiShuuryouDate] 
-			  ,[Remarks]              
-			  ,[UsedFlg]              
-			  ,[InsertOperator]       
-			  ,[InsertDateTime]       
-			  ,[UpdateOperator]      
-			  ,[UpdateDateTime])
-     VALUES
-           (@KouritenCD
-		   , @ChangeDate
-			,@ShokutiFLG
-			,@KouritenName
-			,@KouritenRyakuName  
-			,@KanaName		
-			,@KensakuHyouziJun     
-			,@TokuisakiCD 
-			,@AliasKBN 
-			,@YuubinNO1              
-			,@YuubinNO2             
-			,@Juusho1            
-			,@Juusho2               
-			,@Tel11			    
-			,@Tel12         
-			,@Tel13         
-			,@Tel21				   
-			,@Tel22			   
-			,@Tel23					   
-			,@TantouBusho			   
-			,@TantouYakushoku               
-			,@TantoushaName               
-			,@MailAddress	
-			,@StaffCD        
-			,@TorihikiKaisiDate				   
-			,@TorihikiShuuryouDate			    
-			,@Remarks					   
-			,@UsedFlg			   
-			,@InsertOperator
-			,@currentDate 
-			,@UpdateOperator
-			,@currentDate);
-	end
-	
+			exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
 
-	else if @Mode = 'Update'
-		begin
-			update
-				M_Kouriten
-			set         
-						ShokutiFLG = @ShokutiFLG,
-						KouritenName = @KouritenName,
-						KouritenRyakuName = @KouritenRyakuName,
-						KanaName = @KanaName,
-						KensakuHyouziJun = @KensakuHyouziJun, 
-						TokuisakiCD = @TokuisakiCD,
-						AliasKBN = @AliasKBN,
-						YuubinNO1 = @YuubinNO1, 
-						YuubinNO2 = @YuubinNO2, 
-						Juusho1 = @Juusho1, 
-						Juusho2 = @Juusho2,
-						Tel11 = @Tel11,
-						Tel12 = @Tel12,
-						Tel13 = @Tel13,
-						Tel21 = @Tel21,
-						Tel22 = @Tel22,
-						Tel23 = @Tel23,
-						TantouBusho =@TantouBusho, 
-						TantouYakushoku = @TantouYakushoku,
-						TantoushaName = @TantoushaName, 
-						MailAddress = @MailAddress, 
-						StaffCD = @StaffCD,
-						TorihikiKaisiDate = @TorihikiKaisiDate,
-						TorihikiShuuryouDate = @TorihikiShuuryouDate,
-						Remarks = @Remarks,
-						UpdateOperator = @UpdateOperator,
-						UpdateDateTime = @currentDate
-			where  
-			      KouritenCD = @KouritenCD and ChangeDate = @ChangeDate
-	end
-	else if @Mode = 'Delete'
-	 begin
-	       delete from M_Kouriten where KouritenCD = @KouritenCD and ChangeDate = @ChangeDate
-	 end
+			if @Mode='New'
+				begin
+				    INSERT INTO M_Kouriten
+			        ([KouritenCD]
+						  ,[ChangeDate]           
+						  ,[ShokutiFLG]          
+						  ,[KouritenName]       
+						  ,[KouritenRyakuName]  
+						  ,[KanaName]           
+						  ,[KensakuHyouziJun]    
+						  ,[TokuisakiCD] 
+						  ,[AliasKBN]
+						  ,[YuubinNO1]            
+						  ,[YuubinNO2]           
+						  ,[Juusho1]             
+						  ,[Juusho2]             
+						  ,[Tel11]                
+						  ,[Tel12]                
+						  ,[Tel13]                
+						  ,[Tel21]                
+						  ,[Tel22]                
+						  ,[Tel23]               
+						  ,[TantouBusho]          
+						  ,[TantouYakushoku]      
+						  ,[TantoushaName]       
+						  ,[MailAddress]  
+						  ,[StaffCD]             
+						  ,[TorihikiKaisiDate]    
+						  ,[TorihikiShuuryouDate] 
+						  ,[Remarks]              
+						  ,[UsedFlg]              
+						  ,[InsertOperator]       
+						  ,[InsertDateTime]       
+						  ,[UpdateOperator]      
+						  ,[UpdateDateTime])
+			  VALUES
+			        (@KouritenCD
+					   , @ChangeDate
+						,@ShokutiFLG
+						,@KouritenName
+						,@KouritenRyakuName  
+						,@KanaName		
+						,@KensakuHyouziJun     
+						,@TokuisakiCD 
+						,@AliasKBN 
+						,@YuubinNO1              
+						,@YuubinNO2             
+						,@Juusho1            
+						,@Juusho2               
+						,@Tel11			    
+						,@Tel12         
+						,@Tel13         
+						,@Tel21				   
+						,@Tel22			   
+						,@Tel23					   
+						,@TantouBusho			   
+						,@TantouYakushoku               
+						,@TantoushaName               
+						,@MailAddress	
+						,@StaffCD        
+						,@TorihikiKaisiDate				   
+						,@TorihikiShuuryouDate			    
+						,@Remarks					   
+						,@UsedFlg			   
+						,@InsertOperator
+						,@currentDate 
+						,@UpdateOperator
+						,@currentDate);
+				end
+				
+
+				else if @Mode = 'Update'
+					begin
+						update
+							M_Kouriten
+						set         
+									ShokutiFLG = @ShokutiFLG,
+									KouritenName = @KouritenName,
+									KouritenRyakuName = @KouritenRyakuName,
+									KanaName = @KanaName,
+									KensakuHyouziJun = @KensakuHyouziJun, 
+									TokuisakiCD = @TokuisakiCD,
+									AliasKBN = @AliasKBN,
+									YuubinNO1 = @YuubinNO1, 
+									YuubinNO2 = @YuubinNO2, 
+									Juusho1 = @Juusho1, 
+									Juusho2 = @Juusho2,
+									Tel11 = @Tel11,
+									Tel12 = @Tel12,
+									Tel13 = @Tel13,
+									Tel21 = @Tel21,
+									Tel22 = @Tel22,
+									Tel23 = @Tel23,
+									TantouBusho =@TantouBusho, 
+									TantouYakushoku = @TantouYakushoku,
+									TantoushaName = @TantoushaName, 
+									MailAddress = @MailAddress, 
+									StaffCD = @StaffCD,
+									TorihikiKaisiDate = @TorihikiKaisiDate,
+									TorihikiShuuryouDate = @TorihikiShuuryouDate,
+									Remarks = @Remarks,
+									UpdateOperator = @UpdateOperator,
+									UpdateDateTime = @currentDate
+						where  
+						      KouritenCD = @KouritenCD and ChangeDate = @ChangeDate
+				end
+				else if @Mode = 'Delete'
+				 begin
+				       delete from M_Kouriten where KouritenCD = @KouritenCD and ChangeDate = @ChangeDate
+				 end
+
+		commit tran
+	end try
+	begin catch
+		rollback tran
+		throw
+	end catch
+
 END
 
