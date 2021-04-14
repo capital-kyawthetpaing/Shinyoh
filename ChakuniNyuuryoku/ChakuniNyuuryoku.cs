@@ -926,13 +926,13 @@ namespace ChakuniNyuuryoku
                 {
                     dtTemp.Clear();
                 }
-                Temp_Save(e.RowIndex);
+                Temp_Save(e.RowIndex, true);
             }
         }
 
-        private void Temp_Save(int row)
+        private void Temp_Save(int row, bool textChange = false)
         {
-            if (gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].EditedFormattedValue.ToString() == "0")
+            if (gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].EditedFormattedValue.ToString() == "0" && !textChange)
             {
                 return;
             }

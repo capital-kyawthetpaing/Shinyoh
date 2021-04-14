@@ -796,9 +796,9 @@ namespace ChakuniYoteiNyuuryoku
                 }
             }
         }
-        private void Temp_Save(int row)
+        private void Temp_Save(int row, bool textChange = false)
         {
-            if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString() == "0")
+            if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString() == "0" && !textChange)
             {
                 return;
             }
@@ -863,7 +863,7 @@ namespace ChakuniYoteiNyuuryoku
         {
             if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
             {
-                Temp_Save(e.RowIndex);
+                Temp_Save(e.RowIndex, true);
             }
         }
         private void txtSizeNo_KeyDown(object sender, KeyEventArgs e)
