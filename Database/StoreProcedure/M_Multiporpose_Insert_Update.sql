@@ -41,89 +41,102 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON
 
-	declare @currentDate as datetime = getdate()
-	exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
+	
+	begin try
+		begin tran
 
-	if @Mode='New'
-	Begin
-	Insert Into M_MultiPorpose
-	(
-	 ID,
-	 [Key],
-	 IDName,
-	 Char1,
-	 Char2,
-	 Char3,
-	 Char4,
-	 Char5,
-	 Num1,
-	 Num2,
-	 Num3,
-	 Num4,
-	 Num5,
-	 Date1,
-	 Date2,
-	 Date3,
-	 InsertOperator,
-	 InsertDateTime,
-	 UpdateOperator,
-	 UpdateDateTime
-	)
-	Values
-	(
-	 @ID,
-	 @Key,
-	 @IdName,
-	 @Char1,
-	 @Char2,
-	 @Char3,
-	 @Char4,
-	 @Char5,
-	 @Num1,
-	 @Num2,
-	 @Num3,
-	 @Num4,
-	 @Num5,
-	 @Date1,
-	 @Date2,
-	 @Date3,
-	 @InsertOperator,
-	 @currentDate,
-	 @UpdateOperator,
-	 @currentDate
-	)
-	End
+			declare @currentDate as datetime = getdate()
+			exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
 
-	else if @Mode = 'Update'
-		begin
-		Update 
-		    M_MultiPorpose
-		SET
-		   IDName=@IdName,
-		   Char1=@Char1,
-		   Char2=@Char2,
-		   Char3=@Char3,
-		   Char4=@Char4,
-		   Char5=@Char5,
-		   Num1=@Num1,
-		   Num2=@Num2,
-		   Num3=@Num3,
-		   Num4=@Num4,
-		   Num5=@Num5,
-		   Date1=@Date1,
-		   Date2=@Date2,
-		   Date3=@Date3,
-		   UpdateOperator=@UpdateOperator,
-		   UpdateDateTime=@currentDate
-		WHERE 
-		   ID=@ID
-		AND
-		   [Key]=@Key
-		end
+			if @Mode='New'
+				Begin
+					Insert Into M_MultiPorpose
+					(
+					 ID,
+					 [Key],
+					 IDName,
+					 Char1,
+					 Char2,
+					 Char3,
+					 Char4,
+					 Char5,
+					 Num1,
+					 Num2,
+					 Num3,
+					 Num4,
+					 Num5,
+					 Date1,
+					 Date2,
+					 Date3,
+					 InsertOperator,
+					 InsertDateTime,
+					 UpdateOperator,
+					 UpdateDateTime
+					)
+					Values
+					(
+					 @ID,
+					 @Key,
+					 @IdName,
+					 @Char1,
+					 @Char2,
+					 @Char3,
+					 @Char4,
+					 @Char5,
+					 @Num1,
+					 @Num2,
+					 @Num3,
+					 @Num4,
+					 @Num5,
+					 @Date1,
+					 @Date2,
+					 @Date3,
+					 @InsertOperator,
+					 @currentDate,
+					 @UpdateOperator,
+					 @currentDate
+					)
+			End
 
-		else if @Mode = 'Delete'
-	 begin
-	       delete from M_MultiPorpose where ID=@ID AND [Key]=@Key
-	 end
+			else if @Mode = 'Update'
+				begin
+					Update 
+					    M_MultiPorpose
+					SET
+					   IDName=@IdName,
+					   Char1=@Char1,
+					   Char2=@Char2,
+					   Char3=@Char3,
+					   Char4=@Char4,
+					   Char5=@Char5,
+					   Num1=@Num1,
+					   Num2=@Num2,
+					   Num3=@Num3,
+					   Num4=@Num4,
+					   Num5=@Num5,
+					   Date1=@Date1,
+					   Date2=@Date2,
+					   Date3=@Date3,
+					   UpdateOperator=@UpdateOperator,
+					   UpdateDateTime=@currentDate
+					WHERE 
+					   ID=@ID
+					AND
+					   [Key]=@Key
+				end
+
+			else if @Mode = 'Delete'
+				begin
+			       delete from M_MultiPorpose where ID=@ID AND [Key]=@Key
+			end
+
+		commit tran
+	end try
+	begin catch
+		rollback tran
+		throw
+	end catch
+
+
 END
 

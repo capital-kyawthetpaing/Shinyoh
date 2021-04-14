@@ -59,60 +59,73 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 		
-	EXEC dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
+			
+	begin try
+		begin tran
 
-	IF @Mode = 'New'
-	BEGIN
-		INSERT INTO M_Shouhin (ShouhinCD, ChangeDate, ShokutiFLG, HinbanCD, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD,
-			ColorNO, SizeNO, JoudaiTanka, GedaiTanka, HyoujunGenkaTanka, ZeirituKBN, ZaikoHyoukaKBN, ZaikoKanriKBN, MainSiiresakiCD, ToriatukaiShuuryouDate, HanbaiTeisiDate,
-			Model_No, Model_Name, FOB, Shipping_Place, HacchuuLot, ShouhinImageFilePathName, ShouhinImage, Remarks, UsedFlg, InsertOperator, InsertDateTime, UpdateOperator, UpdateDateTime)
-		VALUES (@ShouhinCD, @ChangeDate, @ShokutiFLG, @HinbanCD, @ShouhinName, @ShouhinRyakuName, @KanaName, @KensakuHyouziJun, @JANCD, @YearTerm, @SeasonSS, @SeasonFW, @TaniCD, @BrandCD,
-			@ColorNO, @SizeNO, @JoudaiTanka, @GedaiTanka, @HyoujunGenkaTanka, @ZeirituKBN, @ZaikoHyoukaKBN, @ZaikoKanriKBN, @MainSiiresakiCD, @ToriatukaiShuuryouDate, @HanbaiTeisiDate,
-			@Model_No, @Model_Name, @FOB, @Shipping_Place, @HacchuuLot, @ShouhinImageFilePathName, @ShouhinImage, @Remarks, 0, @InsertOperator, GETDATE(), @UpdateOperator, GETDATE())
-	END
+			EXEC dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
 
-	ELSE IF @Mode = 'Update'
-	BEGIN
-		UPDATE M_Shouhin
-		SET ShokutiFLG = @ShokutiFLG,
-			HinbanCD = @HinbanCD,
-			ShouhinName = @ShouhinName,
-			ShouhinRyakuName = @ShouhinRyakuName,
-			KanaName = @KanaName,
-			KensakuHyouziJun = @KensakuHyouziJun,
-			JANCD = @JANCD,
-			YearTerm = @YearTerm,
-			SeasonSS = @SeasonSS,
-			SeasonFW = @SeasonFW,
-			TaniCD = @TaniCD,
-			BrandCD = @BrandCD,
-			ColorNO = @ColorNO,
-			SizeNO = @SizeNO,
-			JoudaiTanka = @JoudaiTanka,
-			GedaiTanka = @GedaiTanka,
-			HyoujunGenkaTanka = @HyoujunGenkaTanka,
-			ZeirituKBN = @ZeirituKBN,
-			ZaikoHyoukaKBN = @ZaikoHyoukaKBN,
-			ZaikoKanriKBN = @ZaikoKanriKBN,
-			MainSiiresakiCD = @MainSiiresakiCD,
-			ToriatukaiShuuryouDate = @ToriatukaiShuuryouDate,
-			HanbaiTeisiDate = @HanbaiTeisiDate,
-			Model_No = @Model_No,
-			Model_Name = @Model_Name,
-			FOB = @FOB,
-			Shipping_Place = @Shipping_Place,
-			HacchuuLot = @HacchuuLot,
-			ShouhinImageFilePathName = @ShouhinImageFilePathName,
-			ShouhinImage = @ShouhinImage,
-			Remarks = @Remarks,
-			UpdateOperator = @UpdateOperator,
-			UpdateDateTime = GETDATE()
-		WHERE ShouhinCD = @ShouhinCD AND ChangeDate = @ChangeDate
-	END
+			IF @Mode = 'New'
+			BEGIN
+				INSERT INTO M_Shouhin (ShouhinCD, ChangeDate, ShokutiFLG, HinbanCD, ShouhinName, ShouhinRyakuName, KanaName, KensakuHyouziJun, JANCD, YearTerm, SeasonSS, SeasonFW, TaniCD, BrandCD,
+					ColorNO, SizeNO, JoudaiTanka, GedaiTanka, HyoujunGenkaTanka, ZeirituKBN, ZaikoHyoukaKBN, ZaikoKanriKBN, MainSiiresakiCD, ToriatukaiShuuryouDate, HanbaiTeisiDate,
+					Model_No, Model_Name, FOB, Shipping_Place, HacchuuLot, ShouhinImageFilePathName, ShouhinImage, Remarks, UsedFlg, InsertOperator, InsertDateTime, UpdateOperator, UpdateDateTime)
+				VALUES (@ShouhinCD, @ChangeDate, @ShokutiFLG, @HinbanCD, @ShouhinName, @ShouhinRyakuName, @KanaName, @KensakuHyouziJun, @JANCD, @YearTerm, @SeasonSS, @SeasonFW, @TaniCD, @BrandCD,
+					@ColorNO, @SizeNO, @JoudaiTanka, @GedaiTanka, @HyoujunGenkaTanka, @ZeirituKBN, @ZaikoHyoukaKBN, @ZaikoKanriKBN, @MainSiiresakiCD, @ToriatukaiShuuryouDate, @HanbaiTeisiDate,
+					@Model_No, @Model_Name, @FOB, @Shipping_Place, @HacchuuLot, @ShouhinImageFilePathName, @ShouhinImage, @Remarks, 0, @InsertOperator, GETDATE(), @UpdateOperator, GETDATE())
+			END
 
-	ELSE IF @Mode = 'Delete'
-	BEGIN
-		DELETE FROM M_Shouhin WHERE ShouhinCD = @ShouhinCD AND ChangeDate = @ChangeDate
-	END
+			ELSE IF @Mode = 'Update'
+			BEGIN
+				UPDATE M_Shouhin
+				SET ShokutiFLG = @ShokutiFLG,
+					HinbanCD = @HinbanCD,
+					ShouhinName = @ShouhinName,
+					ShouhinRyakuName = @ShouhinRyakuName,
+					KanaName = @KanaName,
+					KensakuHyouziJun = @KensakuHyouziJun,
+					JANCD = @JANCD,
+					YearTerm = @YearTerm,
+					SeasonSS = @SeasonSS,
+					SeasonFW = @SeasonFW,
+					TaniCD = @TaniCD,
+					BrandCD = @BrandCD,
+					ColorNO = @ColorNO,
+					SizeNO = @SizeNO,
+					JoudaiTanka = @JoudaiTanka,
+					GedaiTanka = @GedaiTanka,
+					HyoujunGenkaTanka = @HyoujunGenkaTanka,
+					ZeirituKBN = @ZeirituKBN,
+					ZaikoHyoukaKBN = @ZaikoHyoukaKBN,
+					ZaikoKanriKBN = @ZaikoKanriKBN,
+					MainSiiresakiCD = @MainSiiresakiCD,
+					ToriatukaiShuuryouDate = @ToriatukaiShuuryouDate,
+					HanbaiTeisiDate = @HanbaiTeisiDate,
+					Model_No = @Model_No,
+					Model_Name = @Model_Name,
+					FOB = @FOB,
+					Shipping_Place = @Shipping_Place,
+					HacchuuLot = @HacchuuLot,
+					ShouhinImageFilePathName = @ShouhinImageFilePathName,
+					ShouhinImage = @ShouhinImage,
+					Remarks = @Remarks,
+					UpdateOperator = @UpdateOperator,
+					UpdateDateTime = GETDATE()
+				WHERE ShouhinCD = @ShouhinCD AND ChangeDate = @ChangeDate
+			END
+
+			ELSE IF @Mode = 'Delete'
+			BEGIN
+				DELETE FROM M_Shouhin WHERE ShouhinCD = @ShouhinCD AND ChangeDate = @ChangeDate
+			END
+
+		commit tran
+	end try
+	begin catch
+		rollback tran
+		throw
+	end catch
+
+	
 END
 
