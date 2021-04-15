@@ -946,9 +946,26 @@ namespace ChakuniNyuuryoku
 
                     if (gvChakuniNyuuryoku.Rows[row].Cells["Hacchuu"].Value.ToString() == HacchuuNO && gvChakuniNyuuryoku.Rows[row].Cells["Chakuni"].Value.ToString() == Chakuni)
                     {
-                        dtGS1.Rows[i].Delete();
-                        dtGS1.AcceptChanges();
-                        break;
+                        if (textChange)
+                        {
+                            DialogResult ret = MessageBox.Show("前回入力分を削除しますか？数量＝" + dtGS1.Rows[i]["ChakuniSuu"].ToString(), "", MessageBoxButtons.YesNo);
+                            if (ret == DialogResult.Yes)
+                            {
+                                dtGS1.Rows[i].Delete();
+                                dtGS1.AcceptChanges();
+                                break;
+                            }
+                            else
+                            {
+                                gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].Value = dtGS1.Rows[i]["ChakuniSuu"];
+                            }
+                        }
+                        else
+                        {
+                            dtGS1.Rows[i].Delete();
+                            dtGS1.AcceptChanges();
+                            break;
+                        }
                     }
                 }
             }
