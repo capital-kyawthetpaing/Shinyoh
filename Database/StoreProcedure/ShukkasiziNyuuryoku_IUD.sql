@@ -23,15 +23,22 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-    -- Insert statements for procedure here
-	if @Mode='New'
-	EXEC [dbo].[ShukkasiziNyuuryoku_Insert] @XML_Header,@XML_Detail
+     begin try
+		begin tran
+			if @Mode='New'
+				EXEC [dbo].[ShukkasiziNyuuryoku_Insert] @XML_Header,@XML_Detail
 
-	if @Mode='Update'
-	EXEC [dbo].[ShukkasiziNyuuryoku_Update] @XML_Header,@XML_Detail
+			if @Mode='Update'
+				EXEC [dbo].[ShukkasiziNyuuryoku_Update] @XML_Header,@XML_Detail
 
-	if @Mode='Delete'
-	EXEC [dbo].[ShukkasiziNyuuryoku_Delete] @XML_Header,@XML_Detail
+			if @Mode='Delete'
+				EXEC [dbo].[ShukkasiziNyuuryoku_Delete] @XML_Header,@XML_Detail
+		commit tran
+	end try
+	begin catch
+		rollback tran
+		throw
+	end catch
 
 END
 
