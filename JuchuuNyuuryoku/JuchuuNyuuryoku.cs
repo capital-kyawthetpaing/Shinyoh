@@ -47,7 +47,7 @@ namespace JuchuuNyuuryoku
             obj_bl = new JuchuuNyuuryokuBL();
             siiresaki_bl = new SiiresakiBL();
             
-            //this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
 
         private void JuchuuNyuuryoku_Load(object sender, EventArgs e)
@@ -1663,6 +1663,38 @@ namespace JuchuuNyuuryoku
             {
                 if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
                 gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+            if (e.ColumnIndex == 8)
+            {
+                //0に変更された場合はワークテーブルから削除
+                if (gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colJuchuuSuu"].EditedFormattedValue.ToString() == "0")
+                {
+                    DataGridViewRow row = gv_JuchuuNyuuryoku.Rows[e.RowIndex];// grid view data
+                    string shouhinCD = row.Cells["colShouhinCD"].Value.ToString();
+                    string chk_value = row.Cells["colFree"].EditedFormattedValue.ToString();
+                    string senpouHacchuuNO = row.Cells["colSenpouHacchuuNO"].EditedFormattedValue.ToString();
+                    string siiresakiCD = row.Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
+                    string siiresakiName = row.Cells["colSiiresakiName"].EditedFormattedValue.ToString();
+                    string soukoCD = row.Cells["colSoukoCD"].EditedFormattedValue.ToString();
+
+                    string color = row.Cells["colColorNO"].Value.ToString();
+                    string size = row.Cells["colSizeNO"].Value.ToString();
+
+                    //商品・カラー・サイズ・Free・仕入先CD・仕入先名・倉庫CD・先方発注番号の明細行が存在する時→Update,存在しない時→Insert
+                    string chk = string.Empty;
+                    DataRow existDr1 = null;
+                    if (chk_value != "False")
+                        chk = "1";
+                    if (!string.IsNullOrEmpty(chk))
+                        existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and [Free]='" + chk + "' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([SiiresakiName],'')='" + siiresakiName + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
+                    else
+                        existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([SiiresakiName],'')='" + siiresakiName + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "' and [Free] IS NULL").SingleOrDefault();
+                    if (existDr1 != null)
+                    {
+                        F8_dt1.Rows.Remove(existDr1);
+                        existDr1 = null;
+                    }
+                }
             }
         }
 
