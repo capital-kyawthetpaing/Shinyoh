@@ -643,6 +643,7 @@ namespace ChakuniNyuuryoku
                     {
                         bbl.ShowMessage("S004");
                         Gvrow_Delete(dr);
+                        return;
                     }
                     string HacchuuNO = dr["HacchuuNO"].ToString();
                     chkEntity = new ChakuniNyuuryoku_Entity();
@@ -659,6 +660,7 @@ namespace ChakuniNyuuryoku
                         bbl.ShowMessage("S004");
                         if (dr != null)
                             Gvrow_Delete(dr);
+                        return;
                     }
                     //dtGridSource = dtmain.Copy();                
                     gvChakuniNyuuryoku.DataSource = dtmain;
@@ -948,7 +950,7 @@ namespace ChakuniNyuuryoku
                     {
                         if (textChange)
                         {
-                            DialogResult ret = MessageBox.Show("前回入力分を削除しますか？数量＝" + dtGS1.Rows[i]["ChakuniSuu"].ToString(), "", MessageBoxButtons.YesNo);
+                            DialogResult ret = MessageBox.Show("前回入力分を削除しますか？数量＝" + dtGS1.Rows[i]["ChakuniSuu"].ToString(), this.Text, MessageBoxButtons.YesNo);
                             if (ret == DialogResult.Yes)
                             {
                                 dtGS1.Rows[i].Delete();
@@ -958,6 +960,7 @@ namespace ChakuniNyuuryoku
                             else
                             {
                                 gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].Value = dtGS1.Rows[i]["ChakuniSuu"];
+                                return;
                             }
                         }
                         else
