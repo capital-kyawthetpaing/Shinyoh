@@ -22,13 +22,21 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-	if @Mode= 'New'
-	Exec dbo.ChakuniNyuuryoku_Insert  @XML_Main,@XML_Detail
+	begin try
+		begin tran
+			if @Mode= 'New'
+			Exec dbo.ChakuniNyuuryoku_Insert  @XML_Main,@XML_Detail
 
-	if @Mode= 'Update'
-	Exec dbo.ChakuniNyuuryoku_Update @XML_Main,@XML_Detail
+			if @Mode= 'Update'
+			Exec dbo.ChakuniNyuuryoku_Update @XML_Main,@XML_Detail
 
-	if @Mode= 'Delete'
-	Exec dbo.ChakuniNyuuryoku_Delete  @XML_Main,@XML_Detail
+			if @Mode= 'Delete'
+			Exec dbo.ChakuniNyuuryoku_Delete  @XML_Main,@XML_Detail
+		commit tran
+	end try
+	begin catch
+		rollback tran
+		throw
+	end catch
 END
 
