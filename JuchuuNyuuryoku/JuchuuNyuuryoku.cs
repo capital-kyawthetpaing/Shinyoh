@@ -47,7 +47,7 @@ namespace JuchuuNyuuryoku
             obj_bl = new JuchuuNyuuryokuBL();
             siiresaki_bl = new SiiresakiBL();
             
-            this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            //this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
 
         private void JuchuuNyuuryoku_Load(object sender, EventArgs e)
