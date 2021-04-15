@@ -1135,6 +1135,21 @@ namespace ShukkaSiziNyuuryoku
                             {
                                 DataRowAdd(gv.Index);
                             }
+                            else
+                            {
+                                //0に変更された場合はワークテーブルから削除
+                                if (dtGS1.Rows.Count > 0)
+                                {
+                                    for (int i = dtGS1.Rows.Count - 1; i >= 0; i--)
+                                    {
+                                        string data = dtGS1.Rows[i]["SKMSNO"].ToString();
+                                        if (gv.Cells["colJuchuuNo"].Value.ToString() == data)
+                                        {
+                                            dtGS1.Rows[i].Delete();
+                                        }
+                                    }
+                                }
+                            }
                         }
                         F11_Clear();
                         txtJuchuuNo.Focus();
@@ -1408,6 +1423,7 @@ namespace ShukkaSiziNyuuryoku
                 }
                 dtGS1.Rows.Add(dr1);
             }
+
         }
         private DataTable CommaRemove(DataTable dt)
         {
