@@ -530,6 +530,26 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
+            if (sTextBox.E159)
+            {
+
+                string result = string.Empty;
+                switch (sTextBox.E159Type)
+                {
+                    case "ShukkaSiziNyuuryoku":
+                        ShukkasiziNyuuryokuBL skszbl = new ShukkasiziNyuuryokuBL();
+                        rDt = skszbl.ShukkasiziNyuuryoku_ErrorCheck(sTextBox.ctrlE159_1.Text, "E159");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                 
+                }
+                if (result.Equals("E159"))
+                {
+                    ShowErrorMessage("E159");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
+            }
             if (sTextBox.E160)
             {
                 
