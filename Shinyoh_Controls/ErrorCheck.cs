@@ -574,6 +574,12 @@ namespace Shinyoh_Controls
                         rDt = sbl.ShukkaTorikomi_Error_Check(sTextBox.ctrlE165_1.Text,"E165");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "ShukkaNyuuryoku":
+                        ShukkaNyuuryokuBL skbl = new ShukkaNyuuryokuBL();
+                        rDt = skbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE165_1.Text, string.Empty, "E165");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+
                 }
                 if (result.Equals("E165"))
                 {
