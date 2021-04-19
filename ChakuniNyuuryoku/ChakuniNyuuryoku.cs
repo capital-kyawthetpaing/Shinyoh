@@ -736,6 +736,9 @@ namespace ChakuniNyuuryoku
                 {
                     if (cboMode.SelectedValue.ToString().Equals("2") || cboMode.SelectedValue.ToString().Equals("3"))
                     {
+                        if (!Update_Data(true))
+                            return;
+
                         if (ChakuniNO_Check())
                         {
                             if (cboMode.SelectedValue.ToString() == "2" )
@@ -791,42 +794,58 @@ namespace ChakuniNyuuryoku
                 }
                 return false;
             }
-        private void Update_Data()
+        private bool Update_Data(bool check = false)
+        {
+            chkEntity = new ChakuniNyuuryoku_Entity();
+            chkEntity.ChakuniDate = string.IsNullOrEmpty(txtArrivalDate.Text) ? System.DateTime.Now.ToString("yyyy-MM-dd") : txtArrivalDate.Text;
+            chkEntity.ChakuniNO = txtArrivalNO.Text;
+            chkEntity.ProgramID = ProgramID;
+            chkEntity.PC = PCID;
+            chkEntity.OperatorCD = OperatorCD;
+            cbl = new chakuniNyuuryoku_BL();
+            dt_Header = cbl.ChakuniNyuuryoku_Update_Select(chkEntity, 1);
+            if (dt_Header.Rows.Count > 0)
             {
-                chkEntity = new ChakuniNyuuryoku_Entity();
-                chkEntity.ChakuniDate = string.IsNullOrEmpty(txtArrivalDate.Text) ? System.DateTime.Now.ToString("yyyy-MM-dd") : txtArrivalDate.Text;
-                chkEntity.ChakuniNO = txtArrivalNO.Text;
-                chkEntity.ProgramID = ProgramID;
-                chkEntity.PC = PCID;
-                chkEntity.OperatorCD = OperatorCD;
-                cbl = new chakuniNyuuryoku_BL();
-                dt_Header = cbl.ChakuniNyuuryoku_Update_Select(chkEntity, 1);
-                if (dt_Header.Rows.Count > 0)
-                    ChakuniNyuuryokuSelect(dt_Header);
+                if (check)
+                {
+                    if (dt_Header.Rows[0]["SiireKanryouKBN_Head"].ToString().Equals("1") || dt_Header.Rows[0]["SiireZumiSuu_Sum"].ToString() != "0")
+                    {
+                        bbl.ShowMessage("E164");
+                        txtArrivalNO.Focus();
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                ChakuniNyuuryokuSelect(dt_Header);
+            }
 
-                dt_Details = cbl.ChakuniNyuuryoku_Update_Select(chkEntity, 2);
+            dt_Details = cbl.ChakuniNyuuryoku_Update_Select(chkEntity, 2);
             if (dt_Details.Rows.Count > 0)
             {
                 dtTemp = dt_Details.Copy();
                 gvChakuniNyuuryoku.DataSource = dt_Details;
             }
             else
-                    gvChakuniNyuuryoku.DataSource = dtClear;
+                gvChakuniNyuuryoku.DataSource = dtClear;
 
-                foreach (DataRow dr in dt_Header.Rows)
+            foreach (DataRow dr in dt_Header.Rows)
+            {
+                if (dr["SiireKanryouKBN"].ToString().Equals("1"))
                 {
-                    if (dr["SiireKanryouKBN"].ToString().Equals("1"))
-                    {
-                        gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = true;
-                        gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = true;
-                    }
-                    else
-                    {
-                        gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
-                        gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
-                    }
+                    gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = true;
+                    gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = true;
+                }
+                else
+                {
+                    gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
+                    gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
                 }
             }
+            return true;
+        }
         private void btn_Siiresaki_Click(object sender, EventArgs e)
             {
             //if (cboMode.Equals("1") || cboMode.Equals("2"))
