@@ -27,7 +27,7 @@ namespace JuchuuNyuuryoku
         SiiresakiDetail sobj;
         TokuisakiDetail tobj;
         
-        DataTable gv1_to_dt1;
+        DataTable gvdt1;
         DataTable F8_dt1;
         JuchuuNyuuryokuBL obj_bl;
         SiiresakiBL siiresaki_bl;
@@ -42,12 +42,12 @@ namespace JuchuuNyuuryoku
             //kobj = new KouritenDetail();
             //sobj = new SiiresakiDetail(false);
             //tobj = new TokuisakiDetail();
-            gv1_to_dt1 = new DataTable();
+            gvdt1 = new DataTable();
             F8_dt1 = new DataTable();
             obj_bl = new JuchuuNyuuryokuBL();
             siiresaki_bl = new SiiresakiBL();
             
-            //this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
 
         private void JuchuuNyuuryoku_Load(object sender, EventArgs e)
@@ -215,7 +215,7 @@ namespace JuchuuNyuuryoku
             lblStaff_Name.Text = string.Empty;
             lblBrand_Name.Text = string.Empty;
 
-            gv1_to_dt1 = new DataTable();
+            gvdt1 = new DataTable();
             F8_dt1 = new DataTable();
             txtJuchuuNO.Focus();
             txtJuchuuDate.Text = base_Entity.LoginDate;
@@ -326,7 +326,6 @@ namespace JuchuuNyuuryoku
             if (tagID == "11")
             {
                 Function_F11();
-                // F11_Gridview_Bind();
             }
             if (tagID == "12")
             {
@@ -554,19 +553,19 @@ namespace JuchuuNyuuryoku
               //  gv_JuchuuNyuuryoku.ClearSelection();
 
                 DataTable dt_temp = dt.Copy();
-                gv1_to_dt1 = dt_temp;
+                gvdt1 = dt_temp;
 
                 if (F8_dt1.Rows.Count == 0)
-                    F8_dt1 = gv1_to_dt1.Clone();
+                    F8_dt1 = gvdt1.Clone();
 
                 if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString()=="2")
                 {
-                    F8_dt1 = gv1_to_dt1.Copy();
+                    F8_dt1 = gvdt1.Copy();
                     gv_JuchuuNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
                 }
                 if (!string.IsNullOrEmpty(txtCopy.Text))
                 {
-                    F8_dt1 = gv1_to_dt1.Copy();
+                    F8_dt1 = gvdt1.Copy();
                     F8_dt1.Rows.OfType<DataRow>().ToList().ForEach(r =>
                     {
                         r["JuchuuGyouNO"] = DBNull.Value;
@@ -996,10 +995,10 @@ namespace JuchuuNyuuryoku
                 if (dt.Rows.Count > 0)
                 {
                     DataTable dt_temp = dt.Copy();
-                    gv1_to_dt1 = dt_temp;
+                    gvdt1 = dt_temp;
 
                     if (F8_dt1.Rows.Count == 0)
-                        F8_dt1 = gv1_to_dt1.Clone();
+                        F8_dt1 = gvdt1.Clone();
                 }
             }
             gv_JuchuuNyuuryoku.ActionType = string.Empty;             //to check gv error at the ErrorCheck() of BaseForm.cs
@@ -1028,7 +1027,12 @@ namespace JuchuuNyuuryoku
 
             for (int t = 0; t < gv_JuchuuNyuuryoku.RowCount; t++)
             {
-               // bool bl = false;
+                //if (gv_JuchuuNyuuryoku.Rows[t].Cells["colJuchuuSuu"].Value.ToString() == "0")
+                //{
+                //    continue;
+                //}
+
+                // bool bl = false;
                 // grid 1 checking
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gv_JuchuuNyuuryoku.Rows[t];// grid view data
@@ -1044,7 +1048,7 @@ namespace JuchuuNyuuryoku
 
                 //商品・カラー・サイズ・Free・仕入先CD・仕入先名・倉庫CD・先方発注番号の明細行が存在する時→Update,存在しない時→Insert
                 string chk = string.Empty;
-                DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='" + color + "' and SizeNO='" + size + "'");// original data
+                DataRow[] select_dr1 = gvdt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='" + color + "' and SizeNO='" + size + "'");// original data
                 DataRow existDr1 = null;
                 if (chk_value != "False")
                     chk = "1";
@@ -1055,7 +1059,7 @@ namespace JuchuuNyuuryoku
                 if (existDr1 != null)
                 {
                     //if (select_dr1[0][8].ToString() == "0")
-                    if (row.Cells["colJuchuuSuu"].Value.ToString() == "0")
+                    if (row.Cells["colJuchuuSuu"].Value.ToString() == "0" && gvdt1.Rows.Count != gv_JuchuuNyuuryoku.Rows.Count)
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
@@ -1071,7 +1075,7 @@ namespace JuchuuNyuuryoku
                         {
                             if (existDr1 != null)
                             {
-                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                if (select_dr1.Length >0 &&  select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 {
                                   //  bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;
@@ -1658,6 +1662,38 @@ namespace JuchuuNyuuryoku
             {
                 if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
                 gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+            if (e.ColumnIndex == 8)
+            {
+                //0に変更された場合はワークテーブルから削除
+                if (gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colJuchuuSuu"].EditedFormattedValue.ToString() == "0")
+                {
+                    DataGridViewRow row = gv_JuchuuNyuuryoku.Rows[e.RowIndex];// grid view data
+                    string shouhinCD = row.Cells["colShouhinCD"].Value.ToString();
+                    string chk_value = row.Cells["colFree"].EditedFormattedValue.ToString();
+                    string senpouHacchuuNO = row.Cells["colSenpouHacchuuNO"].EditedFormattedValue.ToString();
+                    string siiresakiCD = row.Cells["colSiiresakiCD"].EditedFormattedValue.ToString();
+                    string siiresakiName = row.Cells["colSiiresakiName"].EditedFormattedValue.ToString();
+                    string soukoCD = row.Cells["colSoukoCD"].EditedFormattedValue.ToString();
+
+                    string color = row.Cells["colColorNO"].Value.ToString();
+                    string size = row.Cells["colSizeNO"].Value.ToString();
+
+                    //商品・カラー・サイズ・Free・仕入先CD・仕入先名・倉庫CD・先方発注番号の明細行が存在する時→Update,存在しない時→Insert
+                    string chk = string.Empty;
+                    DataRow existDr1 = null;
+                    if (chk_value != "False")
+                        chk = "1";
+                    if (!string.IsNullOrEmpty(chk))
+                        existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and [Free]='" + chk + "' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([SiiresakiName],'')='" + siiresakiName + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
+                    else
+                        existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([SiiresakiName],'')='" + siiresakiName + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "' and [Free] IS NULL").SingleOrDefault();
+                    if (existDr1 != null)
+                    {
+                        F8_dt1.Rows.Remove(existDr1);
+                        existDr1 = null;
+                    }
+                }
             }
         }
 

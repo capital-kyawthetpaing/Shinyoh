@@ -43,81 +43,93 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-	declare @currentDate as datetime = getdate()
-	exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
+	
+	begin try
+		begin tran
 
-	if @Mode='New'
-	begin
-	    INSERT INTO M_Souko
-           ([SoukoCD]
-           ,[SoukoName]
-           ,[KanaName]
-           ,[KensakuHyouziJun]
-           ,[YuubinNO1]
-           ,[YuubinNO2]
-           ,[Juusho1]
-		   ,[Juusho2]
-		   ,[Tel11]
-		   ,[Tel12]
-		   ,[Tel13]
-		   ,[Tel21]
-		   ,[Tel22]
-		   ,[Tel23]
-		   ,[Remarks]
-		   ,[UsedFlg]
-		   ,[InsertOperator]
-		   ,[InsertDateTime]
-		   ,[UpdateOperator]
-		   ,[UpdateDateTime])
-     VALUES
-           (@SoukoCD
-           ,@SoukoName
-           ,@KanaName
-           ,@KensakuHyouziJun
-           ,@YuubinNO1
-           ,@YuubinNO2
-           ,@Juusho1
-		   ,@Juusho2
-		   ,@Tel11
-		   ,@Tel12
-		   ,@Tel13
-		   ,@Tel21
-		   ,@Tel22
-		   ,@Tel23
-		   ,@Remarks
-		   ,@UsedFlg
-		   ,@InsertOperator
-		   ,@currentDate
-		   ,@UpdateOperator
-		   ,@currentDate);
-	end
-	else if @Mode = 'Update'
-		begin
-			update
-				M_Souko
-			set         
-						SoukoName=@SoukoName,
-						KanaName=@KanaName,
-						KensakuHyouziJun=@KensakuHyouziJun,
-						YuubinNO1=@YuubinNO1,
-						YuubinNO2=@YuubinNO2,
-						Juusho1=@Juusho1,
-						Juusho2=@Juusho2,
-						Tel11=@Tel11,
-						Tel12=@Tel12,
-						Tel13=@Tel13,
-						Tel21=@Tel21,
-						Tel22=@Tel22,
-						Tel23=@Tel23,
-						Remarks=@Remarks,
-						UpdateOperator=@UpdateOperator,
-						UpdateDateTime=@currentDate
-			where  
-			      SoukoCD = @SoukoCD
-		end
-     else if @Mode = 'Delete'
-	 begin
-	       delete from M_Souko where SoukoCD=@SoukoCD
-	 end
+			declare @currentDate as datetime = getdate()
+			exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
+
+			if @Mode='New'
+			begin
+			    INSERT INTO M_Souko
+			       ([SoukoCD]
+			       ,[SoukoName]
+			       ,[KanaName]
+			       ,[KensakuHyouziJun]
+			       ,[YuubinNO1]
+			       ,[YuubinNO2]
+			       ,[Juusho1]
+				   ,[Juusho2]
+				   ,[Tel11]
+				   ,[Tel12]
+				   ,[Tel13]
+				   ,[Tel21]
+				   ,[Tel22]
+				   ,[Tel23]
+				   ,[Remarks]
+				   ,[UsedFlg]
+				   ,[InsertOperator]
+				   ,[InsertDateTime]
+				   ,[UpdateOperator]
+				   ,[UpdateDateTime])
+			 VALUES
+			       (@SoukoCD
+			       ,@SoukoName
+			       ,@KanaName
+			       ,@KensakuHyouziJun
+			       ,@YuubinNO1
+			       ,@YuubinNO2
+			       ,@Juusho1
+				   ,@Juusho2
+				   ,@Tel11
+				   ,@Tel12
+				   ,@Tel13
+				   ,@Tel21
+				   ,@Tel22
+				   ,@Tel23
+				   ,@Remarks
+				   ,@UsedFlg
+				   ,@InsertOperator
+				   ,@currentDate
+				   ,@UpdateOperator
+				   ,@currentDate);
+			end
+			else if @Mode = 'Update'
+				begin
+					update
+						M_Souko
+					set         
+								SoukoName=@SoukoName,
+								KanaName=@KanaName,
+								KensakuHyouziJun=@KensakuHyouziJun,
+								YuubinNO1=@YuubinNO1,
+								YuubinNO2=@YuubinNO2,
+								Juusho1=@Juusho1,
+								Juusho2=@Juusho2,
+								Tel11=@Tel11,
+								Tel12=@Tel12,
+								Tel13=@Tel13,
+								Tel21=@Tel21,
+								Tel22=@Tel22,
+								Tel23=@Tel23,
+								Remarks=@Remarks,
+								UpdateOperator=@UpdateOperator,
+								UpdateDateTime=@currentDate
+					where  
+					      SoukoCD = @SoukoCD
+				end
+			 else if @Mode = 'Delete'
+			 begin
+			       delete from M_Souko where SoukoCD=@SoukoCD
+			 end
+
+		commit tran
+	end try
+	begin catch
+		rollback tran
+		throw
+	end catch
+
 END
 

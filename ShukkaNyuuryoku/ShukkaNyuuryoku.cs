@@ -29,7 +29,7 @@ namespace ShukkaNyuuryoku {
         string YuuBinNO2 = string.Empty;
         string Address = string.Empty;
         public string Detail_XML;
-        DataTable Main_dt, Temptb1, gvdt1, F8_dt1, dtGS1, dtClear, dtHaita;
+        DataTable Main_dt, Temptb1, gvdt1, F8_dt1, dtClear, dtHaita;
         string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
         public ShukkaNyuuryoku()
         {
@@ -43,7 +43,6 @@ namespace ShukkaNyuuryoku {
             gvdt1 = new DataTable();
             F8_dt1 = CreateTable();
             dtHaita = new DataTable();
-            dtGS1 = CreateTable();
             dtClear = CreateTable();
 
         }
@@ -173,16 +172,23 @@ namespace ShukkaNyuuryoku {
         }
         private void DBProcess()
         {
-            (string, string, string) obj = GetInsert();
-            ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
-           // Konkai_Price(F8_dt1);
-            string return_Bl = sBL.ShukkaNyuuryoku_CUD(obj.Item1, obj.Item2, obj.Item3);
-            Konkai_Price(F8_dt1);
-            Juchuu_Price(F8_dt1);
-            if (return_Bl == "true")
-                bbl.ShowMessage("I101");
-            gvdt1.Clear();
-            F8_dt1.Clear();
+            try
+            {
+                (string, string, string) obj = GetInsert();
+                ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
+                // Konkai_Price(F8_dt1);
+                string return_Bl = sBL.ShukkaNyuuryoku_CUD(obj.Item1, obj.Item2, obj.Item3);
+                Konkai_Price(F8_dt1);
+                Juchuu_Price(F8_dt1);
+                if (return_Bl == "true")
+                    bbl.ShowMessage("I101");
+                gvdt1.Clear();
+                F8_dt1.Clear();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, this.Text);
+            }
         }
         private void Konkai_Price(DataTable dtTemp1)
         {
@@ -320,6 +326,7 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E102Check(true);
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    txtShukkaNo.E165Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
@@ -335,6 +342,7 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E102Check(true);
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    txtShukkaNo.E165Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;

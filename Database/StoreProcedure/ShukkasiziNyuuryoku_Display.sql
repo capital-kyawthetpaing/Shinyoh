@@ -1,16 +1,22 @@
- BEGIN TRY 
- Drop Procedure dbo.[ShukkasiziNyuuryoku_Display]
-END try
-BEGIN CATCH END CATCH 
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Display]    Script Date: 2021/04/12 17:20:49 ******/
+IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ShukkasiziNyuuryoku_Display%' and type like '%P%')
+DROP PROCEDURE [dbo].[ShukkasiziNyuuryoku_Display]
+GO
+
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Display]    Script Date: 2021/04/12 17:20:49 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Swe>
 -- Create date: <25-02-2021>
 -- Description:	<F10>
+-- History    :2021/04/12 Y.Nishikawa CHG 登録時にD_ShukkaSiziMeisaiにINSERTする際にバイナリエラー(ハイフンまでを切り取っているので13byteになってる)
+--             2021/04/14 Y.Nishikawa CHG 符号が不正(明細表示時、今回出荷指示数に出荷可能数が表示されない)
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Display]
 	-- Add the parameters for the stored procedure here
@@ -101,6 +107,7 @@ INSERT INTO  #WK_ShukkaKanouSou2
 	)
 	GROUP BY DJSS.JuchuuNO,DJSS.JuchuuGyouNO
 
+
 SELECT
 --DJMS.ShouhinCD			--蝠・刀繧ｳ繝ｼ繝・
 	FS.HinbanCD	as ShouhinCD--蝠・刀繧ｳ繝ｼ繝・
@@ -111,8 +118,12 @@ SELECT
 	,FORMAT(DJMS.JuchuuSuu, '#,0') AS JuchuuSuu	--蜿玲ｳｨ謨ｰ
 	,ISNULL(FORMAT(SKKNS2.ShukkanouSuu, '#,0'),'0') AS ShukkanouSuu			--蜃ｺ闕ｷ蜿ｯ閭ｽ謨ｰ
 	,FORMAT(DJMS.ShukkaSiziZumiSuu, '#,0') AS ShukkaSiziZumiSuu	--蜃ｺ闕ｷ謖・､ｺ貂域焚
-	,ISNULL((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FORMAT(SKKNS2.ShukkanouSuu, '#,0')
-	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FORMAT((DJMS.JuchuuSuu-DJMS.ShukkaZumiSuu), '#,0') END),'0') AS KonkaiShukkaSiziSuu
+	--2021/04/14 Y.Nishikawa CHG 符号が不正(明細表示時、今回出荷指示数に出荷可能数が表示されない)↓↓
+	--,ISNULL((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FORMAT(SKKNS2.ShukkanouSuu, '#,0')
+	--  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FORMAT((DJMS.JuchuuSuu-DJMS.ShukkaZumiSuu), '#,0') END),'0') AS KonkaiShukkaSiziSuu
+	,ISNULL((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>=SKKNS2.ShukkanouSuu THEN FORMAT(SKKNS2.ShukkanouSuu, '#,0')
+	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<SKKNS2.ShukkanouSuu THEN FORMAT((DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu), '#,0') END),'0') AS KonkaiShukkaSiziSuu
+	--2021/04/14 Y.Nishikawa CHG 符号が不正(明細表示時、今回出荷指示数に出荷可能数が表示されない)↑↑
 	,ISNULL(FORMAT(DJMS.UriageTanka, '#,0'),'0') AS UriageTanka	--蜊倅ｾ｡
 	,ISNULL(Format(((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN SKKNS2.ShukkanouSuu
 	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN DJMS.JuchuuSuu-DJMS.ShukkaZumiSuu END)*DJMS.UriageTanka),'#,0'),'0') AS UriageKingaku
@@ -142,6 +153,7 @@ SELECT
 	,DJ.[KouritenTelNO2-2]	--蟆丞｣ｲ蠎鈴崕隧ｱ逡ｪ蜿ｷ2-2
 	,DJ.[KouritenTelNO2-3]	--蟆丞｣ｲ蠎鈴崕隧ｱ逡ｪ蜿ｷ2-3
 	,FS.ShouhinCD as Hidden_ShouhinCD--蝠・刀繧ｳ繝ｼ繝雲譖ｴ譁ｰ逕ｨ
+	,0 AS Hidden_ShukkaSiziGyouNO
 	FROM D_Juchuu DJ
 	INNER JOIN D_JuchuuMeisai DJMS ON DJMS.JuchuuNO=DJ.JuchuuNO
 	LEFT OUTER JOIN #WK_ShukkaKanouSou2 SKKNS2 ON SKKNS2.JuchuuNO=DJMS.JuchuuNO	AND SKKNS2.JuchuuGyouNO=DJMS.JuchuuGyouNO
@@ -193,3 +205,6 @@ Begin
 End
 
 END
+GO
+
+

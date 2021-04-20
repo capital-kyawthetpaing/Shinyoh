@@ -1,16 +1,24 @@
- BEGIN TRY 
- Drop Procedure dbo.[ShukkasiziNyuuryoku_Delete]
-END try
-BEGIN CATCH END CATCH 
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Delete]    Script Date: 2021/04/13 18:08:39 ******/
+IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ShukkasiziNyuuryoku_Delete%' and type like '%P%')
+DROP PROCEDURE [dbo].[ShukkasiziNyuuryoku_Delete]
+GO
+
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Delete]    Script Date: 2021/04/13 18:08:39 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
+
 
 -- =============================================
 -- Author:		<swe>
 -- Create date: <03-06-2021>
 -- Description:	<Description,,>
+-- History    : 2021/04/13 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上
+--                         Y.Nishikawa DEL すぐ上で同じ処理してる
+--              2021/04/14 Y.Nishikawa CHG この時点では受注明細の出荷指示済数に今回出荷指示数を更新していないので、分納時は完了区分が完了にならない(削除なので、必ず完了区分は未完)
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Delete]
 	-- Add the parameters for the stored procedure here
@@ -456,21 +464,23 @@ exec dbo.Fnc_Hikiate 12,@ShukkaSiziNO,30,@OperatorCD
 declare @tmpsss as decimal(21,6)
 select @tmpsss = sum(ShukkaSiziSuu) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO group by ShukkaSiziNO
 
-UPDATE  A
-SET	
-	HikiateZumiSuu = A.HikiateZumiSuu + @tmpsss -- KTP Add
-	,ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu - @tmpsss
-	,UpdateOperator=@OperatorCD
-	,UpdateDateTime=@currentDate
-FROM D_JuchuuMeisai A
+--2021/04/13 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上↓↓
+--UPDATE  A
+--SET	
+--	HikiateZumiSuu = A.HikiateZumiSuu + @tmpsss -- KTP Add
+--	,ShukkaSiziZumiSuu=A.ShukkaSiziZumiSuu - @tmpsss
+--	,UpdateOperator=@OperatorCD
+--	,UpdateDateTime=@currentDate
+--FROM D_JuchuuMeisai A
 
-update D_JuchuuShousai
-set HikiateZumiSuu = js.HikiateZumiSuu + sss.ShukkaSiziSuu,
-	ShukkaSiziZumiSuu = js.ShukkaSiziZumiSuu - sss.ShukkaSiziSuu
-from D_JuchuuShousai js
-inner join D_ShukkaSiziShousai sss on js.KanriNO = sss.KanriNO and js.NyuukoDate = sss.NyuukoDate and js.SoukoCD = sss.SoukoCD
-and js.ShouhinCD = sss.ShouhinCD
-where sss.ShukkaSiziNO = @ShukkaSiziNO
+--update D_JuchuuShousai
+--set HikiateZumiSuu = js.HikiateZumiSuu + sss.ShukkaSiziSuu,
+--	ShukkaSiziZumiSuu = js.ShukkaSiziZumiSuu - sss.ShukkaSiziSuu
+--from D_JuchuuShousai js
+--inner join D_ShukkaSiziShousai sss on js.KanriNO = sss.KanriNO and js.NyuukoDate = sss.NyuukoDate and js.SoukoCD = sss.SoukoCD
+--and js.ShouhinCD = sss.ShouhinCD
+--where sss.ShukkaSiziNO = @ShukkaSiziNO
+--2021/04/13 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上↑↑
 
 delete D_ShukkaSiziShousai
 where ShukkaSiziNO = @ShukkaSiziNO
@@ -486,10 +496,12 @@ DELETE A
 FROM D_ShukkaSiziMeisai A
 WHERE A.ShukkaSiziNO=@ShukkaSiziNO
 
---TableC
-DELETE A
-FROM D_ShukkaSiziShousai A
-WHERE A.ShukkaSiziNO=@ShukkaSiziNO
+--2021/04/13 Y.Nishikawa DEL すぐ上で同じ処理してる↓↓
+----TableC
+--DELETE A
+--FROM D_ShukkaSiziShousai A
+--WHERE A.ShukkaSiziNO=@ShukkaSiziNO
+--2021/04/13 Y.Nishikawa DEL すぐ上で同じ処理してる↑↑
 
 --Konkai_price
 
@@ -506,8 +518,11 @@ WHERE A.ShukkaSiziNO=@ShukkaSiziNO
 
 --D_JuchuuMeisai
 UPDATE  A 
-SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1 
-									when C.Kanryo=1 then 1 else 0 end
+--2021/04/14 Y.Nishikawa CHG この時点では受注明細の出荷指示済数に今回出荷指示数を更新していないので、分納時は完了区分が完了にならない(削除なので、必ず完了区分は未完)↓↓
+----SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1 
+--when C.Kanryo=1 then 1 else 0 end
+SET	[ShukkaSiziKanryouKBN]= 0
+--2021/04/14 Y.Nishikawa CHG この時点では受注明細の出荷指示済数に今回出荷指示数を更新していないので、分納時は完了区分が完了にならない(削除なので、必ず完了区分は未完)↑↑
 ,UpdateOperator=@OperatorCD
 ,UpdateDateTime=@currentDate
 FROM D_JuchuuMeisai A,#Temp_Details C
@@ -537,4 +552,7 @@ Drop Table #Temp_Header
 Drop Table #Temp_Details
 
 END
+
+GO
+
 

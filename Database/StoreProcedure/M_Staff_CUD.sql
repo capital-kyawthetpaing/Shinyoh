@@ -41,77 +41,90 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-	declare @currentDate as datetime = getdate()
+		begin try
+		begin tran
 
-	exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
+			declare @currentDate as datetime = getdate()
 
-   if @Mode='New'
-	begin
-	    INSERT INTO M_Staff
-           ([StaffCD]
-           ,[ChangeDate]
-           ,[StaffName]
-           ,[KanaName]
-           ,[KensakuHyouziJun]
-		   --,[YuubinNO1]
-		   --,[YuubinNO2]
-           ,[MenuCD]
-           ,[AuthorizationsCD]
-		   ,[PositionCD]
-		   ,[JoinDate]
-		   ,[LeaveDate]
-		   ,[Passward]
-		   ,[Remarks]
-		   ,[UsedFlg]
-		   ,[InsertOperator]
-		   ,[InsertDateTime]
-		   ,[UpdateOperator]
-		   ,[UpdateDateTime])
-     VALUES
-           (@StaffCD
-           ,@ChangeDate
-           ,@StaffName
-           ,@KanaName
-           ,@KensakuHyouziJun
-		   --,@YuubinNO1
-		   --,@YuubinNO2
-           ,@MenuCD
-           ,@AuthorizationsCD 
-		   ,@PositionCD 
-		   ,@JoinDate 
-		   ,@LeaveDate 
-		   ,@Passward 
-		   ,@Remarks
-		   ,0
-		   ,@InsertOperator
-		   ,@currentDate 
-		   ,@UpdateOperator
-		   ,@currentDate);
-	end
-	else if @Mode = 'Update'
-		begin
-			update
-				M_Staff
-			set         
-						StaffName = @StaffName,
-						KanaName = @KanaName,
-						KensakuHyouziJun = @KensakuHyouziJun,
-						MenuCD = @MenuCD,
-						AuthorizationsCD = @AuthorizationsCD, 
-						PositionCD = @PositionCD,
-						JoinDate = @JoinDate, 
-						LeaveDate = @LeaveDate, 
-						Passward = @Passward, 
-						Remarks = @Remarks,
-						UpdateOperator = @UpdateOperator,
-						UpdateDateTime = @currentDate
-			where  
-			      StaffCD = @StaffCD and ChangeDate = @ChangeDate
-	end
-	else if @Mode = 'Delete'
-	 begin
-	       delete from M_Staff where StaffCD = @StaffCD and ChangeDate = @ChangeDate
-	 end
+			exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
+
+			if @Mode='New'
+				begin
+				    INSERT INTO M_Staff
+			        ([StaffCD]
+			        ,[ChangeDate]
+			        ,[StaffName]
+			        ,[KanaName]
+			        ,[KensakuHyouziJun]
+					   --,[YuubinNO1]
+					   --,[YuubinNO2]
+			        ,[MenuCD]
+			        ,[AuthorizationsCD]
+					,[PositionCD]
+					,[JoinDate]
+					,[LeaveDate]
+					,[Passward]
+					,[Remarks]
+					,[UsedFlg]
+					,[InsertOperator]
+					,[InsertDateTime]
+					,[UpdateOperator]
+					,[UpdateDateTime])
+			  VALUES
+			        (@StaffCD
+			        ,@ChangeDate
+			        ,@StaffName
+			        ,@KanaName
+			        ,@KensakuHyouziJun
+					   --,@YuubinNO1
+					   --,@YuubinNO2
+			        ,@MenuCD
+			        ,@AuthorizationsCD 
+					   ,@PositionCD 
+					   ,@JoinDate 
+					   ,@LeaveDate 
+					   ,@Passward 
+					   ,@Remarks
+					   ,0
+					   ,@InsertOperator
+					   ,@currentDate 
+					   ,@UpdateOperator
+					   ,@currentDate);
+				end
+				else if @Mode = 'Update'
+					begin
+						update
+							M_Staff
+						set         
+									StaffName = @StaffName,
+									KanaName = @KanaName,
+									KensakuHyouziJun = @KensakuHyouziJun,
+									--YuubinNO1 = @YuubinNO1,
+									--YuubinNO2 = @YuubinNO2,
+									MenuCD = @MenuCD,
+									AuthorizationsCD = @AuthorizationsCD, 
+									PositionCD = @PositionCD,
+									JoinDate = @JoinDate, 
+									LeaveDate = @LeaveDate, 
+									Passward = @Passward, 
+									Remarks = @Remarks,
+									UpdateOperator = @UpdateOperator,
+									UpdateDateTime = @currentDate
+						where  
+						      StaffCD = @StaffCD and ChangeDate = @ChangeDate
+				end
+				else if @Mode = 'Delete'
+				 begin
+				       delete from M_Staff where StaffCD = @StaffCD and ChangeDate = @ChangeDate
+				 end
+
+		commit tran
+	end try
+	begin catch
+		rollback tran
+		throw
+	end catch
+
 END
 
 GO
