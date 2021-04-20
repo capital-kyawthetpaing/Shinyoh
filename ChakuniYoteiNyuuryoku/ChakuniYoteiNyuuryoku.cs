@@ -422,7 +422,7 @@ namespace ChakuniYoteiNyuuryoku
             cf.Clear(PanelTitle);
             cf.Clear(PanelDetail);
             cf.DisablePanel(PanelTitle);
-            cboMode.Enabled = true;
+            //cboMode.Enabled = true;       //Task 291 TZA
             cf.EnablePanel(PanelDetail);
             txtDate.Focus();
             tdDate = DateTime.Now.ToString("yyyy/MM/dd");

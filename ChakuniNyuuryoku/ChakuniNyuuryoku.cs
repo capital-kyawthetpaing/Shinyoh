@@ -169,7 +169,7 @@ namespace ChakuniNyuuryoku
             cf.Clear(PanelTitle);
             cf.Clear(PanelDetail);
             cf.DisablePanel(PanelTitle);
-            cboMode.Enabled = true;
+            //cboMode.Enabled = true;       //Task 292 TZA
             cf.EnablePanel(PanelDetail);
             txtArrivalDate.Focus();
             tdDate = DateTime.Now.ToString("yyyy/MM/dd");
