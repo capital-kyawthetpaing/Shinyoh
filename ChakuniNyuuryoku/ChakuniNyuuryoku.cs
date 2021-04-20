@@ -111,6 +111,7 @@ namespace ChakuniNyuuryoku
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     sd = new SiiresakiDetail();
+                    cboMode.NextControlName = "txtArrivalDate";
                     break;
                 case Mode.Update:
                     txtArrivalNO.E102Check(true);
@@ -120,6 +121,7 @@ namespace ChakuniNyuuryoku
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
                     sd = new SiiresakiDetail();
+                    cboMode.NextControlName = "txtArrivalNO";
                     break;
                 case Mode.Delete:
                     txtArrivalNO.E102Check(true);
@@ -129,6 +131,7 @@ namespace ChakuniNyuuryoku
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
                     sd = new SiiresakiDetail(false);
+                    cboMode.NextControlName = "txtArrivalNO";
                     break;
                 case Mode.Inquiry:
                     txtArrivalNO.E102Check(true);
@@ -138,6 +141,7 @@ namespace ChakuniNyuuryoku
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
                     sd = new SiiresakiDetail(false);
+                    cboMode.NextControlName = "txtArrivalNO";
                     break;
             }
         }
