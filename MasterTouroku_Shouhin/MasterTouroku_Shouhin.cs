@@ -692,13 +692,17 @@ namespace MasterTouroku_Shouhin
                         //    }
                         //}
 
+                        byte[] img;
                         if (ImageFile_Check(data[30].ToString(), i, "指定したパスに画像ファイルが存在しないエラー"))
                         {
                             bbl.ShowMessage("E276", i.ToString(), "指定したパスに画像ファイルが存在しないエラー");
                             return string.Empty;
                         }                           
                         else
-                            dr[31] = !string.IsNullOrEmpty(data[30].ToString().Trim()) ? System.IO.File.ReadAllBytes(data[30].ToString()) : null;
+                        {
+                            img = !string.IsNullOrEmpty(data[30].ToString().Trim()) ? System.IO.File.ReadAllBytes(data[30].ToString()) : new byte[] { };
+                            dr[31] = Convert.ToBase64String(img);
+                        }
 
                         dr["Error"] = error;
                         create_dt.Rows.Add(dr);
