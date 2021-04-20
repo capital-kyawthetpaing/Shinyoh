@@ -675,6 +675,9 @@ namespace ShukkaSiziNyuuryoku
         }
         private void dgvShukkasizi_KeyDown(object sender, KeyEventArgs e)
         {
+            if (dgvShukkasizi.Rows.Count.Equals(0))
+                return;
+
             SCombo cbo = new SCombo();
 
             if(this.TopLevelControl.Controls.Find("cboMode", true).Count() > 0 )
