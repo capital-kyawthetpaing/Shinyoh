@@ -109,6 +109,7 @@
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
+            this.cboMode.NextControlName = "";
             // 
             // lblShukkaNo
             // 
