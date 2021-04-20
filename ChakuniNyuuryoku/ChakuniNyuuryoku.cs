@@ -106,6 +106,9 @@ namespace ChakuniNyuuryoku
             switch (mode)
             {
                 case Mode.New:
+                    txtArrivalNO.E102Check(false);
+                    txtArrivalNO.E133Check(false, "ChakuniNyuuryoku", txtArrivalNO, null, null);
+                    txtArrivalNO.E268Check(false, "ChakuniNyuuryoku", txtArrivalNO, null);
                     ErrorCheck();
                     New_Mode();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -668,6 +671,9 @@ namespace ChakuniNyuuryoku
                     gvChakuniNyuuryoku.DataSource = dtmain;
                     gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
                     gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
+
+                    gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
+                    gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
                     gvChakuniNyuuryoku.Select();
                 }
             }
