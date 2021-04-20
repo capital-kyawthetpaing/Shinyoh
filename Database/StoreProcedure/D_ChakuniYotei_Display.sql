@@ -57,6 +57,9 @@ Select
     B.HacchuuGyouNO,
     B.HacchuuNO + '-'+ cast(B.HacchuuGyouNO as varchar)as Hacchuu,
     D.ShouhinCD
+    ,0 AS SiireKanryouKBN_Head
+    ,0 AS SiireZumiSuu_Sum
+    ,0 AS ChakuniGyouNO
 From D_ChakuniYotei A
 Left outer join D_ChakuniYoteiMeisai B On B.ChakuniYoteiNO=A.ChakuniYoteiNO
 Left outer join M_Souko C on C.SoukoCD=A.SoukoCD
