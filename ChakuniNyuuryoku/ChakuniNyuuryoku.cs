@@ -276,7 +276,6 @@ namespace ChakuniNyuuryoku
             {
                 if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
                 {
-
                     if (F8_dt1.Rows.Count > 0 || dt_Details.Rows.Count > 0)
                     {
                         DBProcess();
@@ -667,15 +666,15 @@ namespace ChakuniNyuuryoku
                             Gvrow_Delete(dr);
                         return;
                     }
-                    //dtGridSource = dtmain.Copy();                
-                    gvChakuniNyuuryoku.DataSource = dtmain;
-                    gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
-                    gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
-
-                    gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
-                    gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
-                    gvChakuniNyuuryoku.Select();
+                    //dtGridSource = dtmain.Copy();     
                 }
+                gvChakuniNyuuryoku.DataSource = dtmain;
+                gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
+                gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
+
+                gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
+                gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
+                gvChakuniNyuuryoku.Select();
             }
             gvChakuniNyuuryoku.ActionType = string.Empty;
         }
@@ -935,6 +934,11 @@ namespace ChakuniNyuuryoku
                 dtTemp = dt_Details.Copy();
                 dtmain = dtTemp;
                 gvChakuniNyuuryoku.DataSource = dt_Details;
+
+                if (cboMode.SelectedValue.ToString() == "3")
+                {
+                    gvChakuniNyuuryoku.Memory_Row_Count = dt_Details.Rows.Count;
+                }
             }
             else
                 gvChakuniNyuuryoku.DataSource = dtClear;
