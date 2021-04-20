@@ -637,6 +637,12 @@ namespace ChakuniYoteiNyuuryoku
             {
                 if (!txtChakuniYoteiNO.IsErrorOccurs)
                 {
+                    if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "3")
+                    {
+                        if (!Update_Data(true))
+                            return;
+                    }
+
                     if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")
                     {
                         cf.EnablePanel(PanelDetail);
@@ -664,7 +670,7 @@ namespace ChakuniYoteiNyuuryoku
                 }
             }
         }
-        private void Update_Data()
+        private bool Update_Data(bool check = false)
         {
             chkEntity = new ChakuniYoteiNyuuryokuEntity();
             chkEntity.ChakuniYoteiDate = string.IsNullOrEmpty(txtDate.Text) ? System.DateTime.Now.ToString("yyyy-MM-dd") : txtDate.Text;
@@ -673,8 +679,22 @@ namespace ChakuniYoteiNyuuryoku
             cbl = new ChakuniYoteiNyuuryoku_BL();
             dt_Header = cbl.ChakuniYoteiNyuuryoku_Update_Select(chkEntity, 1);
             if (dt_Header.Rows.Count > 0)
+            {
+                if (check)
+                {
+                    if (dt_Header.Rows[0]["ChakuniKanryouKBN"].ToString().Equals("1") || dt_Header.Rows[0]["ChakuniZumiSuu_Sum"].ToString() != "0")
+                    {
+                        bbl.ShowMessage("E163");
+                        txtChakuniYoteiNO.Focus();
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
                 ChakuniYoteiNyuuryokuSelect(dt_Header);
-
+            }
 
             dt_Details = cbl.ChakuniYoteiNyuuryoku_Update_Select(chkEntity, 2);
             if (dt_Details.Rows.Count > 0)
@@ -696,6 +716,7 @@ namespace ChakuniYoteiNyuuryoku
                     gvChakuniYoteiNyuuryoku.Columns["colYoteiSuu"].ReadOnly = false;
                 }
             }
+            return true;
         }
         private void ChakuniYoteiNyuuryokuSelect(DataTable dt)
         {
