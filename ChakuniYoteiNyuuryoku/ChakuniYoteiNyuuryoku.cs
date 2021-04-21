@@ -188,6 +188,7 @@ namespace ChakuniYoteiNyuuryoku
                 //{
                 if (F8_dt1.Rows.Count > 0 || dt_Details.Rows.Count > 0)
                 {
+                    try { 
                     DBProcess();
                     switch (cboMode.SelectedValue)
                     {
@@ -204,6 +205,11 @@ namespace ChakuniYoteiNyuuryoku
                             ChangeMode(Mode.Inquiry);
                             break;
                             //}
+                    }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(this, ex.Message, this.Text);
                     }
                 }
             }
@@ -395,7 +401,7 @@ namespace ChakuniYoteiNyuuryoku
             }
             else
             {
-                detail_XML = cf.DataTableToXml(dtTemp);
+                detail_XML = cf.DataTableToXml(F8_dt1);
             }
 
             return (main_XML, detail_XML);
@@ -703,6 +709,7 @@ namespace ChakuniYoteiNyuuryoku
             if (dt_Details.Rows.Count > 0)
             {
                 dtTemp = dt_Details.Copy();
+                dtmain = dtTemp;
                 gvChakuniYoteiNyuuryoku.DataSource = dt_Details;
             }
             else
