@@ -114,6 +114,7 @@ namespace BL
         public string ShukkasiziNyuuryoku_IUD(string mode, string xml_header, string xml_detail)
         {
             CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = mode.ToString() };
             parameters[1] = new SqlParameter("@XML_Header", SqlDbType.Xml) { Value = xml_header };
