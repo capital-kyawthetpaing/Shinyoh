@@ -557,7 +557,6 @@ namespace ShukkaTorikomi
             create_dt.Columns.Add("SellingPrice");
             create_dt.Columns.Add("ShukkaDenpyouTekiyou");
             create_dt.Columns.Add("ShukkaSiziNO");
-            //create_dt.Columns.Add("UsedFlg");
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
             create_dt.Columns.Add("ProgramID");
