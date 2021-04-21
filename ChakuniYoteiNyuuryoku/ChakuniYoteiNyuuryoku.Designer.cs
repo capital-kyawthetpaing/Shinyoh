@@ -109,7 +109,7 @@
             // 
             this.cboMode.BackColor = System.Drawing.SystemColors.Window;
             this.cboMode.Location = new System.Drawing.Point(37, 8);
-            this.cboMode.NextControlName = "";
+            this.cboMode.NextControlName = "txtChakuniYoteiNO";
             this.cboMode.TabIndex = 0;
             // 
             // PanelDetail
