@@ -15,6 +15,7 @@ namespace BL
         public string DenpyouNO_IUD(DenpyouNOEntity denpyou_entity)
         {
             CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             denpyou_entity.Sqlprms = new SqlParameter[10];
             denpyou_entity.Sqlprms[0] = new SqlParameter("@RenbenKBN", SqlDbType.TinyInt) { Value = denpyou_entity.RenbenKBN };
             denpyou_entity.Sqlprms[1] = new SqlParameter("@seqno", SqlDbType.TinyInt) { Value = denpyou_entity.seqno };
