@@ -43,6 +43,7 @@ namespace BL
         public DataTable M_Multiporpose_Insert_Update(multipurposeEntity multipurpose_entity)
         {
             ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             multipurpose_entity.Sqlprms = new SqlParameter[22];
             multipurpose_entity.Sqlprms[0] = new SqlParameter("@id", SqlDbType.Int) { Value = multipurpose_entity.ID };
             multipurpose_entity.Sqlprms[1] = new SqlParameter("@Key", SqlDbType.VarChar) { Value = multipurpose_entity.Key };

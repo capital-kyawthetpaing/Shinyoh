@@ -18,6 +18,7 @@ namespace BL {
         public string M_Souko_CUD(SoukoEntity soukoEntity)
         {
             CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             soukoEntity.Sqlprms = new SqlParameter[22];
             soukoEntity.Sqlprms[0] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = soukoEntity.SoukoCD };
             soukoEntity.Sqlprms[1] = new SqlParameter("@SoukoName", SqlDbType.VarChar) { Value = soukoEntity.SoukoName };
