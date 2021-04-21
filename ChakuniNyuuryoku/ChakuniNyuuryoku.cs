@@ -240,6 +240,7 @@ namespace ChakuniNyuuryoku
                 else
                 {
                     Mode_Setting();
+                    Disable();
                 }              
                 dtTemp.Clear();
             }
@@ -669,8 +670,8 @@ namespace ChakuniNyuuryoku
                 gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
                 gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
 
-                gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
-                gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
+                //gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
+                //gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
                 gvChakuniNyuuryoku.Select();
             }
             gvChakuniNyuuryoku.ActionType = string.Empty;
@@ -792,6 +793,12 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.DataSource = dtClear;
         }
 
+        //HET
+        private void Disable()
+        {
+            gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
+            gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
+        }
         private DataTable CreateTable_Details()
         {
             DataTable dt = new DataTable();
@@ -860,6 +867,7 @@ namespace ChakuniNyuuryoku
                                 btn_Siiresaki.Enabled = true;
                             }
                             Update_Data();
+                            Disable();
                         }
                         else
                         {
@@ -876,6 +884,7 @@ namespace ChakuniNyuuryoku
                         btnF12.Focus();
                         Update_Data();
                         btn_Siiresaki.Enabled = true;
+                        Disable();
                     }
                 }
             }
