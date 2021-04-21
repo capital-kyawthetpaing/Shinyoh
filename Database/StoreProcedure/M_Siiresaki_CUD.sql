@@ -54,10 +54,6 @@ BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
-
-		begin try
-		begin tran
-
 			declare @currentDate as datetime = getdate()
 
 			exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
@@ -170,15 +166,6 @@ BEGIN
 				begin
 				    delete from M_Siiresaki where SiiresakiCD = @SiiresakiCD and ChangeDate = @ChangeDate
 				end
-
-
-		commit tran
-	end try
-	begin catch
-		rollback tran
-		throw
-	end catch
-
 END
 
 
