@@ -1572,9 +1572,9 @@ namespace ShukkaSiziNyuuryoku
             }
             else
             {
-                dtShippingNO = new DataTable();
-                dtShippingNO = sksz_bl.GetFunctionNO("12", txtShippingDate.Text, "0");
-                dr["ShukkaSiziNO"] = dtShippingNO.Rows[0]["Column1"].ToString();
+                //dtShippingNO = new DataTable();
+                //dtShippingNO = sksz_bl.GetFunctionNO("12", txtShippingDate.Text, "0");
+                dr["ShukkaSiziNO"] = string.Empty; //dtShippingNO.Rows[0]["Column1"].ToString();
             }
             dr["StaffCD"] = sbStaffCD.Text;
             dr["ShukkaYoteiDate"] = txtShippingDate.Text;

@@ -195,13 +195,15 @@ INSERT INTO [#Temp_Details]
 				exec sp_xml_removedocument @idoc
 
 declare @ShippingDate as varchar(10) = (select ShukkaYoteiDate from #Temp_Header)
-, @ShukkaSiziNO varchar(100)=(select ShukkaSiziNO from #Temp_Header)
+, @ShukkaSiziNO varchar(100) -- =(select ShukkaSiziNO from #Temp_Header)
 , @StaffCD varchar(20) = (select StaffCD from #Temp_Header)
 , @OperatorCD as varchar(10) =(select OperatorCD from #Temp_Header)
 , @Program varchar(100) = (select ProgramID from #Temp_Header)
 ,@PC       varchar(30) = (select PC from #Temp_Header)
 , @currentDate as datetime = getdate()
 , @Unique as uniqueidentifier = NewID()
+
+exec Fnc_GetNumber'12',@ShippingDate,0,@ShukkaSiziNO output
 
 --TabelA
 INSERT INTO [dbo].[D_ShukkaSizi]
@@ -989,8 +991,7 @@ GO
                  S E T   @ J u c h u u G y o u N O   =   R I G H T ( @ S K M S N O ,   L E N ( @ S K M S N O )   -   C H A R I N D E X ( ' - ' ,   @ S K M S N O ) )  
                  S E T   @ a   =   A B S ( @ K o n k a i S h u k k a S i z i S u u )  
   
-         - - 2 0 2 1 / 0 4 / 1 3   Y . N i s h i k a w a   D E L   _S_ôf°eo0_S_Õ0¡0ó0¯0·0ç0ó0g0æQtW0f0D0‹0_000ŒNÍ‘Š
-N“!“! 
+         - - 2 0 2 1 / 0 4 / 1 3   Y . N i s h i k a w a   D E L   _S_ôf°eo0_S_Õ0¡0E¯0·0EEg0æQtW0f0D0E_0E0ŒNÍEENEE 
          - - - - - K T P   C h a n g e  
          - - d e c l a r e    
          - - @ J u c h u u S h o u s a i N O   a s   s m a l l i n t ,  
@@ -1021,7 +1022,7 @@ N“!“! 
          - -                             d e c l a r e   @ t m p H i k i a t e S u u   a s   d e c i m a l ( 2 1 , 6 )  
          - -                             d e c l a r e   @ t m p S h u k k a s i z i S u u   a s   d e c i m a l ( 2 1 , 6 )  
           
-         - -                             - - S t e p 3   :   U p d a t e   D _ J u c h u u S h o u s a i ( ×SèlsŠ0})  
+         - -                             - - S t e p 3   :   U p d a t e   D _ J u c h u u S h o u s a i ( ×SèlsE})  
          - -                             u p d a t e   D _ J u c h u u S h o u s a i  
          - -                             s e t    
          - -                                     @ t m p H i k i a t e S u u   =   H i k i a t e Z u m i S u u ,  
@@ -1043,7 +1044,7 @@ N“!“! 
           
          - -                             s e l e c t   @ m a x S h o u s a i N o   =   i s n u l l ( m a x ( S h u k k a S i z i S h o u s a i N O ) , 0 )   f r o m   D _ S h u k k a S i z i S h o u s a i   w h e r e   S h u k k a S i z i N O   =   @ S h u k k a S i z i N O  
           
-         - -                             - -   S t e p 5   :   I n s e r t   D _ S h u k k a S i z i S h o u s a i ( úQwƒc:ysŠ0})  
+         - -                             - -   S t e p 5   :   I n s e r t   D _ S h u k k a S i z i S h o u s a i ( ‡[wEc:ysE})  
          - -                             i n s e r t   i n t o   D _ S h u k k a S i z i S h o u s a i (   S h u k k a S i z i N O ,   S h u k k a S i z i G y o u N O ,   S h u k k a S i z i S h o u s a i N O ,    
          - -                             S o u k o C D , S h o u h i n C D , S h o u h i n N a m e , S h u k k a S i z i S u u , K a n r i N O , N y u u k o D a t e , S h u k k a Z u m i S u u ,  
          - -                             J u c h u u N O , J u c h u u G y o u N O , J u c h u u S h o u s a i N O , I n s e r t O p e r a t o r , I n s e r t D a t e T i m e , U p d a t e O p e r a t o r , U p d a t e D a t e T i m e  
@@ -1068,8 +1069,7 @@ N“!“! 
           
          - - c l o s e   c u r s o r I n n e r  
          - - d e a l l o c a t e   c u r s o r I n n e r  
-         - - 2 0 2 1 / 0 4 / 1 3   Y . N i s h i k a w a   D E L   _S_ôf°eo0_S_Õ0¡0ó0¯0·0ç0ó0g0æQtW0f0D0‹0_000ŒNÍ‘Š
-N‘!‘! 
+         - - 2 0 2 1 / 0 4 / 1 3   Y . N i s h i k a w a   D E L   _S_ôf°eo0_S_Õ0¡0E¯0·0EEg0æQtW0f0D0E_0E0ŒNÍEENEE 
   
          s e t   @ G y o u N O   =   @ G y o u N O   +   1  
   
@@ -1406,9 +1406,8 @@ N‘!‘! 
   
  - - K o n k a i _ P r i c e  
   
- - - 2 0 2 1 / 0 4 / 1 3   Y . N i s h i k a w a   D E L   _S_ôf°eo0_S_Õ0¡0ó0¯0·0ç0ó0g0æQtW0f0D0‹0_000ŒNÍ‘Š
-N“!“! 
- - - - - T a b l e   G     - - ý R~0_0o0îOckŒ_ 
+ - - 2 0 2 1 / 0 4 / 1 3   Y . N i s h i k a w a   D E L   _S_ôf°eo0_S_Õ0¡0E¯0·0EEg0æQtW0f0D0E_0E0ŒNÍEENEE 
+ - - - - T a b l e   G     - - ý R~0_0o0ûkckŒ_ 
  - - U P D A T E     A  
  - - S E T        
  - -     H i k i a t e Z u m i S u u   =   A . H i k i a t e Z u m i S u u   -   B . K o n k a i S h u k k a S i z i S u u   - -   K T P   A d d  
@@ -1419,8 +1418,7 @@ N“!“! 
  - - i n n e r   j o i n   # T e m p _ D e t a i l s   B  
  - - o n   A . J u c h u u N O   =   L E F T ( ( B . S K M S N O ) ,   C H A R I N D E X ( ' - ' ,   ( B . S K M S N O ) )   -   1 )    
  - - a n d   A . J u c h u u G y o u N O = R I G H T ( B . S K M S N O ,   L E N ( B . S K M S N O )   -   C H A R I N D E X ( ' - ' ,   B . S K M S N O ) )  
- - - 2 0 2 1 / 0 4 / 1 3   Y . N i s h i k a w a   D E L   _S_ôf°eo0_S_Õ0¡0ó0¯0·0ç0ó0g0æQtW0f0D0‹0_000ŒNÍ‘Š
-N‘!‘! 
+ - - 2 0 2 1 / 0 4 / 1 3   Y . N i s h i k a w a   D E L   _S_ôf°eo0_S_Õ0¡0E¯0·0EEg0æQtW0f0D0E_0E0ŒNÍEENEE 
   
  - - D _ J u c h u u M e i s a i  
  U P D A T E     A  
@@ -1454,7 +1452,7 @@ N‘!‘! 
  d e c l a r e   @ O p e r a t o r M o d e   v a r c h a r ( 5 0 ) = ' °e‰'  
  e x e c   d b o . L _ L o g _ I n s e r t   @ O p e r a t o r C D , @ P r o g r a m , @ P C , @ O p e r a t o r M o d e , @ S h u k k a S i z i N O  
   
- - - Æ0ü0Ö0ë0âŽÕNØi9ÿ- - JRd– 
+ - - Æ0EÖ0EâŽÕNØi9ÿ- - JRdE 
  e x e c   [ d b o ] . [ D _ E x c l u s i v e _ R e m o v e _ N O ]   1 , @ O p e r a t o r C D , @ P r o g r a m , @ P C  
           
  E N D  
