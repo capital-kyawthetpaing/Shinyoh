@@ -15,6 +15,7 @@ namespace BL
         public string M_Siiresaki_CUD(SiiresakiEntity obj)
         {
             CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             obj.Sqlprms = new SqlParameter[34];
             obj.Sqlprms[0] = new SqlParameter("@SiiresakiCD", SqlDbType.VarChar) { Value = obj.SiiresakiCD };
             obj.Sqlprms[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate };
@@ -80,6 +81,7 @@ namespace BL
         public DataTable CSV_M_Siiresaki_CUD(string obj,string condition)
         {
             CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@xml", SqlDbType.Xml) { Value = obj };
             parameters[1] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = condition };
