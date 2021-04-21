@@ -234,14 +234,19 @@ namespace Shinyoh_Controls
                 e.Handled = false;
             }
             base.OnKeyPress(e);
+            e.Handled = false;          //Task 286 tza
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                if(!ErrorCheck())
+                if (!ErrorCheck())
+                {
+                    e.Handled = true;                   //Task 286 tza
+                    e.SuppressKeyPress = true;          //Task 286 tza
                     base.OnKeyDown(e);
+                }
             }
         }
 

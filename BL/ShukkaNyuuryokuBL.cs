@@ -81,6 +81,7 @@ namespace BL {
         public string ShukkaNyuuryoku_CUD(string mode, string xml_Main, string xml_detail)
         {
             CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = mode };
             parameters[1] = new SqlParameter("@XML_Main", SqlDbType.Xml) { Value = xml_Main };
