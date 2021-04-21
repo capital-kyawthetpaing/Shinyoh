@@ -249,17 +249,30 @@ namespace ShukkaSiziNyuuryoku
         private void Temp_Save(int row)
         {
             //price change case
+            //if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colTanka"] || dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"])
+            //{
+            //    string colKonkaiShukkaSiziSuu = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Replace(",", "");
+            //    string colTanka = dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString().Replace(",", "");
+            //    if (colKonkaiShukkaSiziSuu.All(char.IsDigit)  && (colTanka.All(char.IsDigit)))
+            //    {
+            //        string val = Convert.ToString(Convert.ToInt64(colKonkaiShukkaSiziSuu) * Convert.ToInt64(colTanka));
+            //        dgvShukkasizi.Rows[row].Cells["colPrice"].Value = FormatPriceValue(val);
+            //    }
+            //}
+
+            //price change case  //HET
             if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colTanka"] || dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"])
             {
-                string colKonkaiShukkaSiziSuu = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                string colKonkai = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                int colKonkaiShukkaSiziSuu = string.IsNullOrEmpty(dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(colKonkai);
+                dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].Value = colKonkaiShukkaSiziSuu.ToString();
                 string colTanka = dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString().Replace(",", "");
-                if (colKonkaiShukkaSiziSuu.All(char.IsDigit)  && (colTanka.All(char.IsDigit)))
+                if ((colTanka.All(char.IsDigit)))
                 {
-                    string val = Convert.ToString(Convert.ToInt64(colKonkaiShukkaSiziSuu) * Convert.ToInt64(colTanka));
+                    string val = Convert.ToString(colKonkaiShukkaSiziSuu * Convert.ToInt32(colTanka));
                     dgvShukkasizi.Rows[row].Cells["colPrice"].Value = FormatPriceValue(val);
                 }
             }
-           
             //souko bind case
             if (dgvShukkasizi.CurrentCell == dgvShukkasizi.Rows[row].Cells["SoukoCD"])
             {
