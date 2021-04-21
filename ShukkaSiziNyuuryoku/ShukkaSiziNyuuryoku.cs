@@ -1572,6 +1572,7 @@ namespace ShukkaSiziNyuuryoku
             }
             else
             {
+                //KTP 2021-04-21 GetNo from Qurey directly
                 //dtShippingNO = new DataTable();
                 //dtShippingNO = sksz_bl.GetFunctionNO("12", txtShippingDate.Text, "0");
                 dr["ShukkaSiziNO"] = string.Empty; //dtShippingNO.Rows[0]["Column1"].ToString();
