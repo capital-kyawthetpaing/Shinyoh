@@ -979,22 +979,23 @@ namespace HacchuuNyuuryoku
             dt.Rows.Add(dr);
             
             JuchuuNyuuryokuBL obj_bl = new JuchuuNyuuryokuBL();            
-            if (cboMode.SelectedValue.ToString() == "1")
-            {
-                DataTable hacchuu_dt = obj_bl.GetJuchuuNO("2", txtHacchuuNO.Text, "0");
-                dt.Rows[0]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
-                for (int i = 0; i < F8_dt1.Rows.Count; i++)
-                {
-                    F8_dt1.Rows[i]["HacchuuNO"] = dt.Rows[0]["HacchuuNO"];
-                    F8_dt1.Rows[i]["HacchuuGyouNO"] = i + 1;
-                }
-            }
-            DataTable save_dt = F8_dt1.AsEnumerable()
-                    .GroupBy(r => new { Col1 = r["HacchuuNO"], Col2 = r["HacchuuGyouNO"] })
-                    .Select(g => g.OrderBy(r => r["HacchuuNO"]).Last()).CopyToDataTable();
+            //if (cboMode.SelectedValue.ToString() == "1")
+            //{
+            //    DataTable hacchuu_dt = obj_bl.GetJuchuuNO("2", txtHacchuuNO.Text, "0");
+            //    dt.Rows[0]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
+            //    for (int i = 0; i < F8_dt1.Rows.Count; i++)
+            //    {
+            //        F8_dt1.Rows[i]["HacchuuNO"] = dt.Rows[0]["HacchuuNO"];
+            //        F8_dt1.Rows[i]["HacchuuGyouNO"] = i + 1;
+            //    }
+            //}
+            //DataTable save_dt = F8_dt1.AsEnumerable()
+            //        .GroupBy(r => new { Col1 = r["HacchuuNO"], Col2 = r["HacchuuGyouNO"] })
+            //        .Select(g => g.OrderBy(r => r["HacchuuNO"]).Last()).CopyToDataTable();
 
             string header_XML = cf.DataTableToXml(dt);
-            string detail_XML = cf.DataTableToXml(save_dt);
+            //string detail_XML = cf.DataTableToXml(save_dt);
+            string detail_XML = cf.DataTableToXml(F8_dt1);
             return (header_XML, detail_XML);
         }
 
