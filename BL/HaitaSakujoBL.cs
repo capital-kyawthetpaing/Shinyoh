@@ -32,6 +32,7 @@ namespace BL {
             try
             {
                 CKMDL ckmdl = new CKMDL();
+                ckmdl.UseTran = true;
                 var parameters = new SqlParameter[4];
                 parameters[0] = new SqlParameter("@xml", SqlDbType.Xml) { Value = obj.xml };
                 parameters[1] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
