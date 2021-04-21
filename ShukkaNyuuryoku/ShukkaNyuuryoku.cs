@@ -310,7 +310,7 @@ namespace ShukkaNyuuryoku {
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
-                    //cboMode.Enabled = false;
+                    cboMode.Enabled = false;
                     txtShukkaNo.Enabled = false;
                     cf.EnablePanel(PanelDetail);
                     txtShukkaDate.Focus();
@@ -319,7 +319,6 @@ namespace ShukkaNyuuryoku {
                     SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
                     tokuisakiDetail = new TokuisakiDetail();
                     kouritenDetail = new KouritenDetail();
-                    cboMode.NextControlName = "txtShukkaDate";
                     break;
 
                 case Mode.Update:
@@ -337,7 +336,6 @@ namespace ShukkaNyuuryoku {
 
                     tokuisakiDetail = new TokuisakiDetail();
                     kouritenDetail = new KouritenDetail();
-                    cboMode.NextControlName = "txtShukkaNo";
                     break;
                 case Mode.Delete:
                     ErrorCheck();
@@ -352,7 +350,6 @@ namespace ShukkaNyuuryoku {
 
                     tokuisakiDetail = new TokuisakiDetail(false);
                     kouritenDetail = new KouritenDetail(false);
-                    cboMode.NextControlName = "txtShukkaNo";
                     break;
                 case Mode.Inquiry:
                     txtShukkaNo.E102Check(true);
@@ -365,7 +362,6 @@ namespace ShukkaNyuuryoku {
 
                     tokuisakiDetail = new TokuisakiDetail(false);
                     kouritenDetail = new KouritenDetail(false);
-                    cboMode.NextControlName = "txtShukkaNo";
                     break;
             }
         }
