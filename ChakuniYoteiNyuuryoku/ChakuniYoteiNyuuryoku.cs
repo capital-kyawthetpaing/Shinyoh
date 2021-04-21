@@ -447,7 +447,7 @@ namespace ChakuniYoteiNyuuryoku
         }
         private bool Temp_Null()
         {
-            if (cboMode.SelectedValue.ToString().Equals("1") && dtTemp.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && dtTemp.Rows.Count == 0)
+            if (cboMode.SelectedValue.ToString().Equals("1") && F8_dt1.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && F8_dt1.Rows.Count == 0)
             {
                 bbl.ShowMessage("E274");
                 return false;
@@ -497,6 +497,7 @@ namespace ChakuniYoteiNyuuryoku
             dt.Columns.Add("HacchuuGyouNO", typeof(string));
             dt.Columns.Add("Hacchuu", typeof(string));
             dt.Columns.Add("ShouhinCD", typeof(string));
+            dt.Columns.Add("ChakuniYoteiGyouNO", typeof(int));
             dt.AcceptChanges();
             return dt;
         }
@@ -822,44 +823,13 @@ namespace ChakuniYoteiNyuuryoku
                 }
             }
         }
-        private void Temp_Save(int row, bool textChange = false)
-        {
-            if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString() == "0" && !textChange)
-            {
-                return;
-            }
-
-            if (F8_dt1.Rows.Count > 0)
-            {
-                for (int i = F8_dt1.Rows.Count - 1; i >= 0; i--)
-                {
-                    string data = F8_dt1.Rows[i]["ChakuniYoteiSuu"].ToString();
-                    string HacchuuNO = F8_dt1.Rows[i]["Hacchuu"].ToString();
-                    
-                    if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colHacchuu"].Value.ToString() == HacchuuNO)
-                    {
-                        F8_dt1.Rows[i].Delete();
-                        F8_dt1.AcceptChanges();
-                        break;
-                    } 
-                }
-            }
-
-            DataRow dr1 = F8_dt1.NewRow();
-            for (int i = 0; i < F8_dt1.Columns.Count; i++)
-            {
-                dr1[i] = string.IsNullOrEmpty(gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniYoteiNyuuryoku[i, row].EditedFormattedValue.ToString();
-            }
-            if (gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString() != "0")
-                F8_dt1.Rows.Add(dr1);
-
-            gvChakuniYoteiNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
-        }
         private bool Grid_ErrorCheck(int row, int col)
         {
             if (gvChakuniYoteiNyuuryoku.Columns[col].Name == "colYoteiSuu")
             {
                 string value = gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString().Replace(",", "");
+                int Konkai_Number = string.IsNullOrEmpty(gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(value);
+                gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].Value = Konkai_Number.ToString();
                 if (Convert.ToInt64(value) < 0)
                 {
                     bbl.ShowMessage("E109");
@@ -872,15 +842,20 @@ namespace ChakuniYoteiNyuuryoku
         {
             foreach (DataGridViewRow gv in gvChakuniYoteiNyuuryoku.Rows)
             {
-                string value = gv.Cells["colYoteiSuu"].EditedFormattedValue.ToString().Replace(",", "");
-                //if (Convert.ToInt64(value) < 0)
-                //{
-                //    bbl.ShowMessage("E109");
-                //    return false;
-                //}
-                if (Convert.ToInt64(value) != 0)
+                if (gv.Cells["colYoteiSuu"].Value.ToString() != "0")
                 {
-                    Temp_Save(gv.Index);
+                    for (int i = 0; i < gv.Cells.Count; i++)
+                    {
+                        string colName = gvChakuniYoteiNyuuryoku.Columns[i].Name;
+                        if (colName == "colYoteiSuu")
+                        {
+                            if (!Grid_ErrorCheck(gv.Index, i))
+                            {
+                                gvChakuniYoteiNyuuryoku.CurrentCell = gvChakuniYoteiNyuuryoku.Rows[gv.Index].Cells[i];
+                                return false;
+                            }
+                        }
+                    }
                 }
             }
             return true;
@@ -893,31 +868,31 @@ namespace ChakuniYoteiNyuuryoku
                 // grid 1 checkingTemptb1
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gvChakuniYoteiNyuuryoku.Rows[t];// grid view data
-                string HinbanCD = row.Cells["HinbanCD"].Value.ToString();
-                string Konkai = row.Cells["ChakuniSuu"].Value.ToString();
+                string HinbanCD = row.Cells["colShouhinCD"].Value.ToString();
+                string Konkai = row.Cells["colYoteiSuu"].Value.ToString();
                 string Hacchu = row.Cells["colHacchuu"].Value.ToString();
-                string Detail = row.Cells["ChakuniMeisaiTekiyou"].EditedFormattedValue.ToString();
+                string Detail = row.Cells["colDetails"].EditedFormattedValue.ToString();
 
-                DataRow[] select_dr1 = dtmain.Select("Chakuni ='" + Hacchu + "'");// original data
-                DataRow existDr1 = F8_dt1.Select("Chakuni='" + Hacchu + "'").SingleOrDefault();
+                DataRow[] select_dr1 = dtmain.Select("Hacchuu ='" + Hacchu + "'");// original data
+                DataRow existDr1 = F8_dt1.Select("Hacchuu='" + Hacchu + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["ChakuniSuu"].Value.ToString() == "0" && dtmain.Rows.Count != gvChakuniYoteiNyuuryoku.Rows.Count)
+                    if (row.Cells["colYoteiSuu"].Value.ToString() == "0" && dtmain.Rows.Count != gvChakuniYoteiNyuuryoku.Rows.Count)
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
                 }
                 F8_drNew[0] = HinbanCD;
-                if (row.Cells["ChakuniSuu"].Value.ToString() != "0")
+                if (row.Cells["colYoteiSuu"].Value.ToString() != "0")
                 {
                     for (int c = 1; c < gvChakuniYoteiNyuuryoku.Columns.Count; c++)
                     {
-                        if (gvChakuniYoteiNyuuryoku.Columns[c].Name == "ChakuniSuu" || gvChakuniYoteiNyuuryoku.Columns[c].Name == "ChakuniMeisaiTekiyou")
+                        if (gvChakuniYoteiNyuuryoku.Columns[c].Name == "colYoteiSuu" || gvChakuniYoteiNyuuryoku.Columns[c].Name == "colDetails")
                         {
                             if (existDr1 != null)
                             {
-                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                if (select_dr1.Length > 0 && select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 {
                                     //bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;
@@ -965,7 +940,7 @@ namespace ChakuniYoteiNyuuryoku
         {
             if (Grid_ErrorCheck(e.RowIndex, e.ColumnIndex))
             {
-                Temp_Save(e.RowIndex, true);
+                //Temp_Save(e.RowIndex, true);
             }
         }
         private void txtSizeNo_KeyDown(object sender, KeyEventArgs e)

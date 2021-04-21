@@ -1065,62 +1065,6 @@ namespace ChakuniNyuuryoku
                 }
             }
         }
-
-        private void Temp_Save(int row, bool textChange = false)
-        {
-            if (gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].EditedFormattedValue.ToString() == "0" && !textChange)
-            {
-                return;
-            }
-
-            if (F8_dt1.Rows.Count > 0)
-            {
-                for (int i = F8_dt1.Rows.Count - 1; i >= 0; i--)
-                {
-                    string Chakuni = F8_dt1.Rows[i]["Chakuni"].ToString();
-                    string HacchuuNO = F8_dt1.Rows[i]["Hacchuu"].ToString();
-
-                    if (gvChakuniNyuuryoku.Rows[row].Cells["Hacchuu"].Value.ToString() == HacchuuNO && gvChakuniNyuuryoku.Rows[row].Cells["Chakuni"].Value.ToString() == Chakuni)
-                    {
-                        if (textChange)
-                        {
-                            DialogResult ret = MessageBox.Show("前回入力分を削除しますか？数量＝" + F8_dt1.Rows[i]["ChakuniSuu"].ToString(), this.Text, MessageBoxButtons.YesNo);
-                            if (ret == DialogResult.Yes)
-                            {
-                                F8_dt1.Rows[i].Delete();
-                                F8_dt1.AcceptChanges();
-                                break;
-                            }
-                            else
-                            {
-                                gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].Value = F8_dt1.Rows[i]["ChakuniSuu"];
-                                return;
-                            }
-                        }
-                        else
-                        {
-                            F8_dt1.Rows[i].Delete();
-                            F8_dt1.AcceptChanges();
-                            break;
-                        }
-                    }
-                }
-            }
-
-            DataRow dr1 = F8_dt1.NewRow();
-            for (int i = 0; i < F8_dt1.Columns.Count; i++)
-            {
-                dr1[i] = string.IsNullOrEmpty(gvChakuniNyuuryoku[i, row].EditedFormattedValue.ToString().Trim()) ? null : gvChakuniNyuuryoku[i, row].EditedFormattedValue.ToString();
-            }
-
-            if (gvChakuniNyuuryoku.Rows[row].Cells["ChakuniSuu"].EditedFormattedValue.ToString() != "0")
-            {
-                //if (dtGridSource.Rows[row]["ChakuniSuu"].ToString() != dr1[8].ToString())
-                    F8_dt1.Rows.Add(dr1);
-            }
-
-            gvChakuniNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
-        }
         private bool Grid_ErrorCheck(int row, int col)
         {
             if (gvChakuniNyuuryoku.Columns[col].Name == "ChakuniSuu")
