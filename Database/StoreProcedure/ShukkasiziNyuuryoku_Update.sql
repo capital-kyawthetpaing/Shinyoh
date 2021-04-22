@@ -587,7 +587,8 @@ SET [GyouHyouziJun]=@row, @row = @row + 1
     ,[UriageKingaku]=TD.UriageKingaku
     ,[UriageHontaiKingaku]=0
     ,[UriageShouhizeiGaku]=0
-    ,[ShukkaSiziMeisaiTekiyou]=TD.ShukkaSiziMeisaiTekiyou
+    ,[ShukkaSiziMeisaiTekiyou]=(CASE ISNULL(TD.ShukkaSiziMeisaiTekiyou,'') WHEN '' THEN NULL
+		                        ELSE TD.ShukkaSiziMeisaiTekiyou END)
     ,[SoukoCD]=TD.SoukoCD
     ,[ShukkaKanryouKBN]=0
     ,[ShukkaZumiSuu]=0
