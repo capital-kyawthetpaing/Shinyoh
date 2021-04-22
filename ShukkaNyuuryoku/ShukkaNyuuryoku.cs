@@ -83,7 +83,14 @@ namespace ShukkaNyuuryoku {
             gvShukka1.SetHiraganaColumn("colDetail");
             gvShukka1.SetReadOnlyColumn("colJANCD,colShouhin,colShouhinName,colColorShortName,colColorNO,colSize,colShukkazansuu,colMiryoku,ShukkaSiziNOGyouNO");
             gvShukka1.SetNumberColumn("colKonkai");
-
+            gvShukka1.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvShukka1.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvShukka1.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvShukka1.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvShukka1.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvShukka1.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvShukka1.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvShukka1.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             txtKouriten.TxtBox = txtTokuisaki;
 
             ChangeMode(Mode.New);
@@ -306,7 +313,8 @@ namespace ShukkaNyuuryoku {
                     ErrorCheck();
                     txtShukkaNo.E102Check(false);
                     txtShukkaNo.E133Check(false, "ShukkaNyuuryoku", txtShukkaNo, null, null);
-                    txtShukkaNo.E160Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    //txtShukkaNo.E160Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    txtShukkaNo.E165Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -325,7 +333,7 @@ namespace ShukkaNyuuryoku {
                     ErrorCheck();
                     txtShukkaNo.E102Check(true);
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
-                    txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    //txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
                     txtShukkaNo.E165Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -341,7 +349,7 @@ namespace ShukkaNyuuryoku {
                     ErrorCheck();
                     txtShukkaNo.E102Check(true);
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
-                    txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    //txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
                     txtShukkaNo.E165Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];

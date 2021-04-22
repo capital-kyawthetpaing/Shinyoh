@@ -77,7 +77,7 @@
             this.取込区分.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.取込区分.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.取込区分.ForeColor = System.Drawing.Color.White;
-            this.取込区分.Location = new System.Drawing.Point(15, 12);
+            this.取込区分.Location = new System.Drawing.Point(19, 12);
             this.取込区分.Name = "取込区分";
             this.取込区分.Size = new System.Drawing.Size(100, 19);
             this.取込区分.TabIndex = 0;
@@ -88,7 +88,7 @@
             // 
             this.rdo_Toroku.Checked = true;
             this.rdo_Toroku.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Toroku.Location = new System.Drawing.Point(146, 13);
+            this.rdo_Toroku.Location = new System.Drawing.Point(150, 13);
             this.rdo_Toroku.MoveNext = true;
             this.rdo_Toroku.Name = "rdo_Toroku";
             this.rdo_Toroku.NextControl = null;
@@ -103,7 +103,7 @@
             // rdo_Sakujo
             // 
             this.rdo_Sakujo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Sakujo.Location = new System.Drawing.Point(245, 13);
+            this.rdo_Sakujo.Location = new System.Drawing.Point(249, 13);
             this.rdo_Sakujo.MoveNext = true;
             this.rdo_Sakujo.Name = "rdo_Sakujo";
             this.rdo_Sakujo.NextControl = null;
@@ -148,7 +148,7 @@
             this.txtDate2.IsErrorOccurs = false;
             this.txtDate2.IsRequire = false;
             this.txtDate2.IsUseInitializedLayout = true;
-            this.txtDate2.Location = new System.Drawing.Point(403, 135);
+            this.txtDate2.Location = new System.Drawing.Point(424, 135);
             this.txtDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate2.MoveNext = true;
             this.txtDate2.Name = "txtDate2";
@@ -163,9 +163,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(599, 119);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(714, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.Size = new System.Drawing.Size(85, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "＜削除対象＞";
             // 
@@ -182,7 +183,7 @@
             this.txtDenpyouNO.IsErrorOccurs = false;
             this.txtDenpyouNO.IsRequire = false;
             this.txtDenpyouNO.IsUseInitializedLayout = true;
-            this.txtDenpyouNO.Location = new System.Drawing.Point(699, 135);
+            this.txtDenpyouNO.Location = new System.Drawing.Point(814, 135);
             this.txtDenpyouNO.MaxLength = 12;
             this.txtDenpyouNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDenpyouNO.MoveNext = true;
@@ -200,7 +201,7 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(599, 135);
+            this.sLabel6.Location = new System.Drawing.Point(714, 135);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
             this.sLabel6.TabIndex = 10;
@@ -210,7 +211,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(359, 141);
+            this.label2.Location = new System.Drawing.Point(380, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 9;
@@ -231,7 +232,7 @@
             this.colKouritenRyakuName});
             this.gvMainDetail.IsErrorOccurs = false;
             this.gvMainDetail.ISRowColumn = null;
-            this.gvMainDetail.Location = new System.Drawing.Point(136, 182);
+            this.gvMainDetail.Location = new System.Drawing.Point(156, 171);
             this.gvMainDetail.Name = "gvMainDetail";
             this.gvMainDetail.Size = new System.Drawing.Size(1200, 570);
             this.gvMainDetail.TabIndex = 8;
@@ -301,7 +302,7 @@
             this.txtDate1.IsErrorOccurs = false;
             this.txtDate1.IsRequire = false;
             this.txtDate1.IsUseInitializedLayout = true;
-            this.txtDate1.Location = new System.Drawing.Point(236, 137);
+            this.txtDate1.Location = new System.Drawing.Point(257, 137);
             this.txtDate1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate1.MoveNext = true;
             this.txtDate1.Name = "txtDate1";
@@ -316,9 +317,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(138, 119);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(159, 119);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(85, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "＜条件指定＞";
             // 
@@ -335,7 +337,7 @@
             this.txtShukkaToNo2.IsErrorOccurs = false;
             this.txtShukkaToNo2.IsRequire = false;
             this.txtShukkaToNo2.IsUseInitializedLayout = true;
-            this.txtShukkaToNo2.Location = new System.Drawing.Point(249, 61);
+            this.txtShukkaToNo2.Location = new System.Drawing.Point(270, 61);
             this.txtShukkaToNo2.MaxLength = 255;
             this.txtShukkaToNo2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShukkaToNo2.MoveNext = true;
@@ -360,7 +362,7 @@
             this.txtShukkaToNo1.IsErrorOccurs = false;
             this.txtShukkaToNo1.IsRequire = false;
             this.txtShukkaToNo1.IsUseInitializedLayout = true;
-            this.txtShukkaToNo1.Location = new System.Drawing.Point(249, 23);
+            this.txtShukkaToNo1.Location = new System.Drawing.Point(270, 23);
             this.txtShukkaToNo1.MaxLength = 255;
             this.txtShukkaToNo1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShukkaToNo1.MoveNext = true;
@@ -378,7 +380,7 @@
             this.sLabel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel5.Location = new System.Drawing.Point(136, 137);
+            this.sLabel5.Location = new System.Drawing.Point(157, 137);
             this.sLabel5.Name = "sLabel5";
             this.sLabel5.Size = new System.Drawing.Size(100, 19);
             this.sLabel5.TabIndex = 2;
@@ -391,7 +393,7 @@
             this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel4.Location = new System.Drawing.Point(136, 61);
+            this.sLabel4.Location = new System.Drawing.Point(157, 61);
             this.sLabel4.Name = "sLabel4";
             this.sLabel4.Size = new System.Drawing.Size(115, 19);
             this.sLabel4.TabIndex = 1;
@@ -404,7 +406,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(136, 23);
+            this.sLabel3.Location = new System.Drawing.Point(157, 23);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(115, 19);
             this.sLabel3.TabIndex = 0;

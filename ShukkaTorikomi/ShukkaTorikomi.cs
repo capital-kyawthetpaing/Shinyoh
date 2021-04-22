@@ -66,7 +66,10 @@ namespace ShukkaTorikomi
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
             txtDenpyouNO.Enabled = false;
-
+            gvMainDetail.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvMainDetail.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvMainDetail.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvMainDetail.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
             ErrorCheck();
             dataBind();
             gvMainDetail.UseRowNo(true);

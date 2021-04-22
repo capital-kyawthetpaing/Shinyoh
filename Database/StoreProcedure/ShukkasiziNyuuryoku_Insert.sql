@@ -371,7 +371,8 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 		,TD.UriageKingaku
 		,0
 		,0
-		,TD.ShukkaSiziMeisaiTekiyou
+		,(CASE ISNULL(TD.ShukkaSiziMeisaiTekiyou,'') WHEN '' THEN NULL
+		  ELSE TD.ShukkaSiziMeisaiTekiyou END)
 		,TD.SoukoCD
 		,0
 		,0

@@ -88,18 +88,20 @@ namespace JuchuuNyuuryoku
             txtCopy.ChangeDate = txtJuchuuDate;
 
 
-            gv_JuchuuNyuuryoku.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gv_JuchuuNyuuryoku.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gv_JuchuuNyuuryoku.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_JuchuuNyuuryoku.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gv_JuchuuNyuuryoku.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_JuchuuNyuuryoku.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_JuchuuNyuuryoku.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gv_JuchuuNyuuryoku.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gv_JuchuuNyuuryoku.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_JuchuuNyuuryoku.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_JuchuuNyuuryoku.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_JuchuuNyuuryoku.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_JuchuuNyuuryoku.Columns[10].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_JuchuuNyuuryoku.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_JuchuuNyuuryoku.Columns[11].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_JuchuuNyuuryoku.Columns[16].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gv_JuchuuNyuuryoku.Columns[16].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_JuchuuNyuuryoku.Columns[17].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_JuchuuNyuuryoku.Columns[17].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             gv_JuchuuNyuuryoku.SetGridDesign();
            // gv_1.SetReadOnlyColumn("ColHinbanCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName,colSiiresakiRyakuName,colSiiresakiYuubinNO1,colSiiresakiYuubinNO2,colSiiresakiJuusho1,colSiiresakiJuusho2,colSiiresakiTelNO11,colSiiresakiTelNO12,colSiiresakiTelNO13,colSiiresakiTelNO21,colSiiresakiTelNO22,colSiiresakiTelNO23,colHacchuuNO,colHacchuuGyouNO,colJuchuuNO,colJuchuuGyouNO");
@@ -123,7 +125,8 @@ namespace JuchuuNyuuryoku
                     txtJuchuuNO.E102Check(false);
                     txtJuchuuNO.E133Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                   // txtJuchuuNO.E115Check(false, "JuchuuNyuuryoku", txtJuchuuDate);
+                    // txtJuchuuNO.E115Check(false, "JuchuuNyuuryoku", txtJuchuuDate);
+                    txtJuchuuNO.E265Check(false, "JuchuuNyuuryoku", txtJuchuuNO);
 
                     //txtCopy.E102Check(true);
                     txtCopy.E133Check(true, "JuchuuNyuuryoku", txtCopy, null, null);
@@ -143,7 +146,8 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                    // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);                   
+                    // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);     
+                    txtJuchuuNO.E265Check(true, "JuchuuNyuuryoku", txtJuchuuNO);
 
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -160,7 +164,8 @@ namespace JuchuuNyuuryoku
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
                     // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
-                   
+                    txtJuchuuNO.E265Check(true, "JuchuuNyuuryoku", txtJuchuuNO);
+
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -176,6 +181,7 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
+                    txtJuchuuNO.E265Check(false, "JuchuuNyuuryoku", txtJuchuuNO);
 
                     Disable_UDI_Mode();
                     Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
