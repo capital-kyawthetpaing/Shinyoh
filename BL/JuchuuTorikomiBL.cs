@@ -52,6 +52,7 @@ namespace BL
         public string JuchuuTorikomi_CUD(string Xml_Hacchuu, string Xml_Juchuu, string chk_value,JuchuuTorikomiEntity Jentity)
         {
             CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             var parameters = new SqlParameter[4];
             parameters[0] = new SqlParameter("@XML_Hacchuu", SqlDbType.Xml) { Value = Xml_Hacchuu };
             parameters[1] = new SqlParameter("@XML_Jucchuu", SqlDbType.Xml) { Value = Xml_Juchuu };
