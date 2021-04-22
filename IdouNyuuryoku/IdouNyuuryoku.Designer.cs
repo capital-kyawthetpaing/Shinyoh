@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
@@ -112,7 +112,7 @@
             this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel4.Location = new System.Drawing.Point(20, 34);
+            this.sLabel4.Location = new System.Drawing.Point(38, 34);
             this.sLabel4.Name = "sLabel4";
             this.sLabel4.Size = new System.Drawing.Size(100, 19);
             this.sLabel4.TabIndex = 61;
@@ -125,7 +125,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(20, 9);
+            this.sLabel3.Location = new System.Drawing.Point(38, 9);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 60;
@@ -195,7 +195,7 @@
             this.txtSizeNo.IsUseInitializedLayout = true;
             this.txtSizeNo.lblName = null;
             this.txtSizeNo.lblName1 = null;
-            this.txtSizeNo.Location = new System.Drawing.Point(1149, 165);
+            this.txtSizeNo.Location = new System.Drawing.Point(1150, 165);
             this.txtSizeNo.MaxLength = 13;
             this.txtSizeNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSizeNo.MoveNext = true;
@@ -226,7 +226,7 @@
             this.txtColorNo.IsUseInitializedLayout = true;
             this.txtColorNo.lblName = null;
             this.txtColorNo.lblName1 = null;
-            this.txtColorNo.Location = new System.Drawing.Point(866, 163);
+            this.txtColorNo.Location = new System.Drawing.Point(857, 163);
             this.txtColorNo.MaxLength = 13;
             this.txtColorNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtColorNo.MoveNext = true;
@@ -260,9 +260,9 @@
             this.colIdouGyouNO});
             this.gv_1.IsErrorOccurs = false;
             this.gv_1.ISRowColumn = null;
-            this.gv_1.Location = new System.Drawing.Point(49, 233);
+            this.gv_1.Location = new System.Drawing.Point(49, 225);
             this.gv_1.Name = "gv_1";
-            this.gv_1.Size = new System.Drawing.Size(1630, 587);
+            this.gv_1.Size = new System.Drawing.Size(1450, 587);
             this.gv_1.TabIndex = 155;
             this.gv_1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEndEdit);
             this.gv_1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_1_CellEnter);
@@ -319,9 +319,9 @@
             // colIdouSuu
             // 
             this.colIdouSuu.DataPropertyName = "IdouSuu";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.Format = "N0";
-            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.Format = "N0";
+            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle25;
             this.colIdouSuu.HeaderText = "移動数";
             this.colIdouSuu.MaxInputLength = 5;
             this.colIdouSuu.Name = "colIdouSuu";
@@ -331,9 +331,9 @@
             // colGenkaTanka
             // 
             this.colGenkaTanka.DataPropertyName = "GenkaTanka";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            this.colGenkaTanka.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle26.Format = "N0";
+            this.colGenkaTanka.DefaultCellStyle = dataGridViewCellStyle26;
             this.colGenkaTanka.HeaderText = "原価単価";
             this.colGenkaTanka.MaxInputLength = 8;
             this.colGenkaTanka.Name = "colGenkaTanka";
@@ -342,9 +342,9 @@
             // colGenkaKingaku
             // 
             this.colGenkaKingaku.DataPropertyName = "GenkaKingaku";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            this.colGenkaKingaku.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle27.Format = "N0";
+            this.colGenkaKingaku.DefaultCellStyle = dataGridViewCellStyle27;
             this.colGenkaKingaku.HeaderText = "原価金額";
             this.colGenkaKingaku.MaxInputLength = 9;
             this.colGenkaKingaku.Name = "colGenkaKingaku";
@@ -379,7 +379,7 @@
             this.lbl_Nyuko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Nyuko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Nyuko.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lbl_Nyuko.Location = new System.Drawing.Point(936, 50);
+            this.lbl_Nyuko.Location = new System.Drawing.Point(927, 50);
             this.lbl_Nyuko.Name = "lbl_Nyuko";
             this.lbl_Nyuko.Size = new System.Drawing.Size(300, 19);
             this.lbl_Nyuko.TabIndex = 154;
@@ -392,7 +392,7 @@
             this.lbl_Shukko.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Shukko.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_Shukko.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lbl_Shukko.Location = new System.Drawing.Point(935, 19);
+            this.lbl_Shukko.Location = new System.Drawing.Point(926, 19);
             this.lbl_Shukko.Name = "lbl_Shukko";
             this.lbl_Shukko.Size = new System.Drawing.Size(300, 19);
             this.lbl_Shukko.TabIndex = 153;
@@ -417,7 +417,7 @@
             this.txtNyukosouko.IsUseInitializedLayout = true;
             this.txtNyukosouko.lblName = null;
             this.txtNyukosouko.lblName1 = null;
-            this.txtNyukosouko.Location = new System.Drawing.Point(866, 50);
+            this.txtNyukosouko.Location = new System.Drawing.Point(857, 50);
             this.txtNyukosouko.MaxLength = 10;
             this.txtNyukosouko.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtNyukosouko.MoveNext = true;
@@ -449,7 +449,7 @@
             this.txtShukkosouko.IsUseInitializedLayout = true;
             this.txtShukkosouko.lblName = null;
             this.txtShukkosouko.lblName1 = null;
-            this.txtShukkosouko.Location = new System.Drawing.Point(865, 19);
+            this.txtShukkosouko.Location = new System.Drawing.Point(856, 19);
             this.txtShukkosouko.MaxLength = 10;
             this.txtShukkosouko.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtShukkosouko.MoveNext = true;
@@ -470,7 +470,7 @@
             this.sLabel10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel10.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sLabel10.Location = new System.Drawing.Point(765, 19);
+            this.sLabel10.Location = new System.Drawing.Point(756, 19);
             this.sLabel10.Name = "sLabel10";
             this.sLabel10.Size = new System.Drawing.Size(100, 19);
             this.sLabel10.TabIndex = 152;
@@ -484,7 +484,7 @@
             this.sLable11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLable11.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLable11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sLable11.Location = new System.Drawing.Point(766, 50);
+            this.sLable11.Location = new System.Drawing.Point(757, 50);
             this.sLable11.Name = "sLable11";
             this.sLable11.Size = new System.Drawing.Size(100, 19);
             this.sLable11.TabIndex = 151;
@@ -508,7 +508,7 @@
             this.txtShouhinCD.IsUseInitializedLayout = true;
             this.txtShouhinCD.lblName = null;
             this.txtShouhinCD.lblName1 = null;
-            this.txtShouhinCD.Location = new System.Drawing.Point(258, 165);
+            this.txtShouhinCD.Location = new System.Drawing.Point(275, 165);
             this.txtShouhinCD.MaxLength = 20;
             this.txtShouhinCD.MinimumSize = new System.Drawing.Size(130, 19);
             this.txtShouhinCD.MoveNext = true;
@@ -540,7 +540,7 @@
             this.txtBrandCD.IsUseInitializedLayout = true;
             this.txtBrandCD.lblName = null;
             this.txtBrandCD.lblName1 = null;
-            this.txtBrandCD.Location = new System.Drawing.Point(258, 134);
+            this.txtBrandCD.Location = new System.Drawing.Point(275, 134);
             this.txtBrandCD.MaxLength = 10;
             this.txtBrandCD.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtBrandCD.MoveNext = true;
@@ -573,7 +573,7 @@
             this.txtStaffCD.IsUseInitializedLayout = true;
             this.txtStaffCD.lblName = null;
             this.txtStaffCD.lblName1 = null;
-            this.txtStaffCD.Location = new System.Drawing.Point(258, 79);
+            this.txtStaffCD.Location = new System.Drawing.Point(275, 79);
             this.txtStaffCD.MaxLength = 10;
             this.txtStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtStaffCD.MoveNext = true;
@@ -605,7 +605,7 @@
             this.txtIdoukubun.IsUseInitializedLayout = true;
             this.txtIdoukubun.lblName = null;
             this.txtIdoukubun.lblName1 = null;
-            this.txtIdoukubun.Location = new System.Drawing.Point(258, 48);
+            this.txtIdoukubun.Location = new System.Drawing.Point(275, 48);
             this.txtIdoukubun.MaxLength = 3;
             this.txtIdoukubun.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtIdoukubun.MoveNext = true;
@@ -626,7 +626,7 @@
             this.lblYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblYear.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lblYear.Location = new System.Drawing.Point(916, 133);
+            this.lblYear.Location = new System.Drawing.Point(907, 133);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(25, 19);
             this.lblYear.TabIndex = 148;
@@ -638,7 +638,7 @@
             this.chk_FW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_FW.IsDatatableOccurs = null;
             this.chk_FW.IsErrorOccurs = false;
-            this.chk_FW.Location = new System.Drawing.Point(993, 132);
+            this.chk_FW.Location = new System.Drawing.Point(984, 132);
             this.chk_FW.MoveNext = true;
             this.chk_FW.Name = "chk_FW";
             this.chk_FW.NextControl = null;
@@ -653,7 +653,7 @@
             this.chk_SS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_SS.IsDatatableOccurs = null;
             this.chk_SS.IsErrorOccurs = false;
-            this.chk_SS.Location = new System.Drawing.Point(945, 132);
+            this.chk_SS.Location = new System.Drawing.Point(936, 132);
             this.chk_SS.MoveNext = true;
             this.chk_SS.Name = "chk_SS";
             this.chk_SS.NextControl = null;
@@ -669,7 +669,7 @@
             this.btnNameF11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnNameF11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnNameF11.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.btnNameF11.Location = new System.Drawing.Point(1599, 196);
+            this.btnNameF11.Location = new System.Drawing.Point(1423, 196);
             this.btnNameF11.Name = "btnNameF11";
             this.btnNameF11.NextControl = null;
             this.btnNameF11.NextControlName = null;
@@ -685,7 +685,7 @@
             this.btnNameF10.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnNameF10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnNameF10.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.btnNameF10.Location = new System.Drawing.Point(1509, 196);
+            this.btnNameF10.Location = new System.Drawing.Point(1322, 196);
             this.btnNameF10.Name = "btnNameF10";
             this.btnNameF10.NextControl = null;
             this.btnNameF10.NextControlName = "gv_1";
@@ -701,7 +701,7 @@
             this.btnNameF8.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnNameF8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnNameF8.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.btnNameF8.Location = new System.Drawing.Point(1416, 196);
+            this.btnNameF8.Location = new System.Drawing.Point(1219, 196);
             this.btnNameF8.Name = "btnNameF8";
             this.btnNameF8.NextControl = null;
             this.btnNameF8.NextControlName = null;
@@ -717,7 +717,7 @@
             this.sLabel20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel20.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel20.Location = new System.Drawing.Point(1049, 165);
+            this.sLabel20.Location = new System.Drawing.Point(1050, 165);
             this.sLabel20.Name = "sLabel20";
             this.sLabel20.Size = new System.Drawing.Size(100, 19);
             this.sLabel20.TabIndex = 147;
@@ -730,7 +730,7 @@
             this.sLabel21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel21.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel21.Location = new System.Drawing.Point(766, 163);
+            this.sLabel21.Location = new System.Drawing.Point(757, 163);
             this.sLabel21.Name = "sLabel21";
             this.sLabel21.Size = new System.Drawing.Size(100, 19);
             this.sLabel21.TabIndex = 146;
@@ -750,7 +750,7 @@
             this.txtYearTerm.IsErrorOccurs = false;
             this.txtYearTerm.IsRequire = false;
             this.txtYearTerm.IsUseInitializedLayout = true;
-            this.txtYearTerm.Location = new System.Drawing.Point(866, 133);
+            this.txtYearTerm.Location = new System.Drawing.Point(857, 133);
             this.txtYearTerm.MaxLength = 4;
             this.txtYearTerm.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYearTerm.MoveNext = true;
@@ -769,7 +769,7 @@
             this.sLabel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel19.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel19.Location = new System.Drawing.Point(766, 133);
+            this.sLabel19.Location = new System.Drawing.Point(757, 133);
             this.sLabel19.Name = "sLabel19";
             this.sLabel19.Size = new System.Drawing.Size(100, 19);
             this.sLabel19.TabIndex = 145;
@@ -790,7 +790,7 @@
             this.txtDenpyouTekiyou.IsErrorOccurs = false;
             this.txtDenpyouTekiyou.IsRequire = false;
             this.txtDenpyouTekiyou.IsUseInitializedLayout = true;
-            this.txtDenpyouTekiyou.Location = new System.Drawing.Point(865, 78);
+            this.txtDenpyouTekiyou.Location = new System.Drawing.Point(856, 78);
             this.txtDenpyouTekiyou.MaxLength = 80;
             this.txtDenpyouTekiyou.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDenpyouTekiyou.MoveNext = true;
@@ -808,7 +808,7 @@
             this.sLabel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel18.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel18.Location = new System.Drawing.Point(765, 78);
+            this.sLabel18.Location = new System.Drawing.Point(756, 78);
             this.sLabel18.Name = "sLabel18";
             this.sLabel18.Size = new System.Drawing.Size(100, 19);
             this.sLabel18.TabIndex = 144;
@@ -828,7 +828,7 @@
             this.txtShouhinName.IsErrorOccurs = false;
             this.txtShouhinName.IsRequire = false;
             this.txtShouhinName.IsUseInitializedLayout = true;
-            this.txtShouhinName.Location = new System.Drawing.Point(258, 196);
+            this.txtShouhinName.Location = new System.Drawing.Point(275, 196);
             this.txtShouhinName.MaxLength = 80;
             this.txtShouhinName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhinName.MoveNext = true;
@@ -846,7 +846,7 @@
             this.sLabel14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel14.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel14.Location = new System.Drawing.Point(158, 196);
+            this.sLabel14.Location = new System.Drawing.Point(175, 196);
             this.sLabel14.Name = "sLabel14";
             this.sLabel14.Size = new System.Drawing.Size(100, 19);
             this.sLabel14.TabIndex = 140;
@@ -867,7 +867,7 @@
             this.txtJANCD.IsErrorOccurs = false;
             this.txtJANCD.IsRequire = false;
             this.txtJANCD.IsUseInitializedLayout = true;
-            this.txtJANCD.Location = new System.Drawing.Point(581, 164);
+            this.txtJANCD.Location = new System.Drawing.Point(598, 164);
             this.txtJANCD.MaxLength = 13;
             this.txtJANCD.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJANCD.MoveNext = true;
@@ -885,7 +885,7 @@
             this.sLabel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel13.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel13.Location = new System.Drawing.Point(481, 164);
+            this.sLabel13.Location = new System.Drawing.Point(498, 164);
             this.sLabel13.Name = "sLabel13";
             this.sLabel13.Size = new System.Drawing.Size(100, 19);
             this.sLabel13.TabIndex = 139;
@@ -898,7 +898,7 @@
             this.lblStaff_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaff_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaff_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lblStaff_Name.Location = new System.Drawing.Point(328, 79);
+            this.lblStaff_Name.Location = new System.Drawing.Point(345, 79);
             this.lblStaff_Name.Name = "lblStaff_Name";
             this.lblStaff_Name.Size = new System.Drawing.Size(300, 19);
             this.lblStaff_Name.TabIndex = 138;
@@ -911,7 +911,7 @@
             this.lbl_IdouKubun.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_IdouKubun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl_IdouKubun.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lbl_IdouKubun.Location = new System.Drawing.Point(288, 48);
+            this.lbl_IdouKubun.Location = new System.Drawing.Point(305, 48);
             this.lbl_IdouKubun.Name = "lbl_IdouKubun";
             this.lbl_IdouKubun.Size = new System.Drawing.Size(300, 19);
             this.lbl_IdouKubun.TabIndex = 136;
@@ -924,7 +924,7 @@
             this.lblBrand_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblBrand_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblBrand_Name.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lblBrand_Name.Location = new System.Drawing.Point(328, 134);
+            this.lblBrand_Name.Location = new System.Drawing.Point(345, 134);
             this.lblBrand_Name.Name = "lblBrand_Name";
             this.lblBrand_Name.Size = new System.Drawing.Size(300, 19);
             this.lblBrand_Name.TabIndex = 135;
@@ -937,7 +937,7 @@
             this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel8.Location = new System.Drawing.Point(158, 165);
+            this.sLabel8.Location = new System.Drawing.Point(175, 165);
             this.sLabel8.Name = "sLabel8";
             this.sLabel8.Size = new System.Drawing.Size(100, 19);
             this.sLabel8.TabIndex = 134;
@@ -948,7 +948,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(118, 118);
+            this.label1.Location = new System.Drawing.Point(135, 118);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 12);
             this.label1.TabIndex = 133;
@@ -960,7 +960,7 @@
             this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel7.Location = new System.Drawing.Point(158, 134);
+            this.sLabel7.Location = new System.Drawing.Point(175, 134);
             this.sLabel7.Name = "sLabel7";
             this.sLabel7.Size = new System.Drawing.Size(100, 19);
             this.sLabel7.TabIndex = 129;
@@ -974,7 +974,7 @@
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sLabel6.Location = new System.Drawing.Point(158, 48);
+            this.sLabel6.Location = new System.Drawing.Point(175, 48);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
             this.sLabel6.TabIndex = 132;
@@ -988,7 +988,7 @@
             this.sLabel9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sLabel9.Location = new System.Drawing.Point(158, 79);
+            this.sLabel9.Location = new System.Drawing.Point(175, 79);
             this.sLabel9.Name = "sLabel9";
             this.sLabel9.Size = new System.Drawing.Size(100, 19);
             this.sLabel9.TabIndex = 130;
@@ -1008,7 +1008,7 @@
             this.txtIdouDate.IsErrorOccurs = false;
             this.txtIdouDate.IsRequire = false;
             this.txtIdouDate.IsUseInitializedLayout = true;
-            this.txtIdouDate.Location = new System.Drawing.Point(259, 19);
+            this.txtIdouDate.Location = new System.Drawing.Point(275, 19);
             this.txtIdouDate.MaxLength = 10;
             this.txtIdouDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtIdouDate.MoveNext = true;
@@ -1029,7 +1029,7 @@
             this.sLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sLabel5.Location = new System.Drawing.Point(159, 19);
+            this.sLabel5.Location = new System.Drawing.Point(175, 19);
             this.sLabel5.Name = "sLabel5";
             this.sLabel5.Size = new System.Drawing.Size(100, 19);
             this.sLabel5.TabIndex = 115;
@@ -1053,7 +1053,7 @@
             this.txtCopy.IsUseInitializedLayout = true;
             this.txtCopy.lblName = null;
             this.txtCopy.lblName1 = null;
-            this.txtCopy.Location = new System.Drawing.Point(120, 34);
+            this.txtCopy.Location = new System.Drawing.Point(138, 34);
             this.txtCopy.MaxLength = 12;
             this.txtCopy.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCopy.MoveNext = true;
@@ -1085,7 +1085,7 @@
             this.txtIdouNO.IsUseInitializedLayout = true;
             this.txtIdouNO.lblName = null;
             this.txtIdouNO.lblName1 = null;
-            this.txtIdouNO.Location = new System.Drawing.Point(120, 9);
+            this.txtIdouNO.Location = new System.Drawing.Point(138, 9);
             this.txtIdouNO.MaxLength = 12;
             this.txtIdouNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtIdouNO.MoveNext = true;
