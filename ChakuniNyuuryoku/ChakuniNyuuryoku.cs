@@ -239,10 +239,10 @@ namespace ChakuniNyuuryoku
                 }
                 else
                 {
-                    Mode_Setting();
-                    Disable();
+                    Mode_Setting();                   
                 }              
                 dtTemp.Clear();
+                Disable();
             }
             if (tagID == "8")
             {
@@ -511,11 +511,13 @@ namespace ChakuniNyuuryoku
             {
                 var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("Chakuni")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
                 gvChakuniNyuuryoku.DataSource = dtConfirm;
+                Disable();
             }
             else
             {
                 F8_dt1 = CreateTable_Details();
                 gvChakuniNyuuryoku.DataSource = F8_dt1;
+                Disable();
             }
         }
         private void btnDisplay_Click(object sender, EventArgs e)
@@ -776,6 +778,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
 
             Focus_Clear();
+            Disable();
         }
         private void Focus_Clear()
         {
@@ -792,14 +795,24 @@ namespace ChakuniNyuuryoku
             txtScheduled.Focus();
             gvChakuniNyuuryoku.ClearSelection();
             gvChakuniNyuuryoku.DataSource = dtClear;
+            chkSS.Checked = true; //HET
+            chkFW.Checked = true; //HET
         }
 
         //HET
         private void Disable()
         {
-            gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
-            gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
-            gvChakuniNyuuryoku.Columns["ChakuniGyouNO"].Visible = false;
+            if(gvChakuniNyuuryoku.Columns.Contains("SiireKanryouKBN_Head"))
+                gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
+            if (gvChakuniNyuuryoku.Columns.Contains("SiireZumiSuu_Sum"))
+                gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
+            if (gvChakuniNyuuryoku.Columns.Contains("ChakuniGyouNO"))
+                gvChakuniNyuuryoku.Columns["ChakuniGyouNO"].Visible = false;
+            
+            //gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
+            //gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
+            //gvChakuniNyuuryoku.Columns["ChakuniGyouNO"].Visible = false;
+            
         }
         private DataTable CreateTable_Details()
         {
