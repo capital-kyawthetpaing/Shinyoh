@@ -82,10 +82,13 @@ namespace ShukkaSiziNyuuryoku
                 {
                     col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
                     col[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+                }else if (dgvShukkasizi.Columns[i].Name.Equals("chk"))
+                {
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
                 else
                 {
-                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.TopLeft;
                 }
             }
 
