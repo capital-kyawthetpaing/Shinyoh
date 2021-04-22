@@ -46,6 +46,8 @@ namespace ChakuniYoteiNyuuryoku
             F8_dt1 = CreateTable_Detail();
             dtTemp = new DataTable();
             dtClear= CreateTable_Detail();
+
+            //this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniYoteiNyuuryoku_Load(object sender, EventArgs e)
         {
@@ -100,7 +102,7 @@ namespace ChakuniYoteiNyuuryoku
                 case Mode.Update:
                     txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
-                    txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
+                    //txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
                     sd = new SiiresakiDetail();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -109,7 +111,7 @@ namespace ChakuniYoteiNyuuryoku
                 case Mode.Delete:
                     txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
-                    txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
+                    //txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
                     sd = new SiiresakiDetail(false);
                     //btn_Siiresaki.Enabled = true;
@@ -119,7 +121,7 @@ namespace ChakuniYoteiNyuuryoku
                 case Mode.Inquiry:
                     txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
-                    txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
+                    //txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
                     sd = new SiiresakiDetail(false);
                     //btn_Siiresaki.Enabled = true;
@@ -155,6 +157,7 @@ namespace ChakuniYoteiNyuuryoku
                 else
                 {
                     Mode_Setting();
+                    Disable();
                 }
                 dtTemp.Clear();
             }
@@ -249,6 +252,7 @@ namespace ChakuniYoteiNyuuryoku
                     dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
                     gvChakuniYoteiNyuuryoku.DataSource = dtmain;
                     gvChakuniYoteiNyuuryoku.Select();
+                    Disable();
                 }
             }
             gvChakuniYoteiNyuuryoku.ActionType = string.Empty;
@@ -476,7 +480,7 @@ namespace ChakuniYoteiNyuuryoku
             txtDateTo.E106Check(true, txtDateFrom, txtDateTo);
             txtChakuniYoteiNO.E102Check(false);//ktp add remove 102 check in new mode
             txtChakuniYoteiNO.E133Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);//ktp add remove 133 check in new mode
-            txtChakuniYoteiNO.E268Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);//ktp add remove 268 check in new mode
+            //txtChakuniYoteiNO.E268Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);//ktp add remove 268 check in new mode
 
             //txtBrandCD.E101Check(true, "M_MultiPorpose", txtBrandCD, txtDate, null);
             //txtColorNo.E101Check(true, "M_MultiPorpose", txtColorNo, txtDate, null);
@@ -676,6 +680,7 @@ namespace ChakuniYoteiNyuuryoku
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
                     Update_Data();
+                    Disable();
                 }
             }
         }
@@ -691,7 +696,7 @@ namespace ChakuniYoteiNyuuryoku
             {
                 if (check)
                 {
-                    if (dt_Header.Rows[0]["ChakuniKanryouKBN"].ToString().Equals("1") || dt_Header.Rows[0]["ChakuniZumiSuu_Sum"].ToString() != "0")
+                    if (dt_Header.Rows[0]["ChakuniKanryouKBN"].ToString() != "0" || dt_Header.Rows[0]["ChakuniZumiSuu_Sum"].ToString() != "0")
                     {
                         bbl.ShowMessage("E163");
                         txtChakuniYoteiNO.Focus();
@@ -939,6 +944,10 @@ namespace ChakuniYoteiNyuuryoku
             gvChakuniYoteiNyuuryoku.DataSource = dtClear;
             gvChakuniYoteiNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
             
+        }
+        private void Disable()
+        {
+            gvChakuniYoteiNyuuryoku.Columns["ChakuniYoteiGyouNO"].Visible = false;
         }
         private void gvChakuniYoteiNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {

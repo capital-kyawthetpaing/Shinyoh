@@ -108,7 +108,7 @@ namespace ChakuniNyuuryoku
                 case Mode.New:
                     txtArrivalNO.E102Check(false);
                     txtArrivalNO.E133Check(false, "ChakuniNyuuryoku", txtArrivalNO, null, null);
-                    txtArrivalNO.E268Check(false, "ChakuniNyuuryoku", txtArrivalNO, null);
+                    //txtArrivalNO.E268Check(false, "ChakuniNyuuryoku", txtArrivalNO, null);
                     ErrorCheck();
                     New_Mode();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -119,7 +119,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Update:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
-                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
+                    //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     Mode_Setting();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
@@ -128,7 +128,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Delete:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
-                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
+                    //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     Mode_Setting();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -137,7 +137,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Inquiry:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
-                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
+                    //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     Mode_Setting();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
@@ -672,6 +672,7 @@ namespace ChakuniNyuuryoku
 
                 //gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
                 //gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
+                Disable();
                 gvChakuniNyuuryoku.Select();
             }
             gvChakuniNyuuryoku.ActionType = string.Empty;
@@ -798,6 +799,7 @@ namespace ChakuniNyuuryoku
         {
             gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
             gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
+            gvChakuniNyuuryoku.Columns["ChakuniGyouNO"].Visible = false;
         }
         private DataTable CreateTable_Details()
         {
@@ -920,7 +922,7 @@ namespace ChakuniNyuuryoku
             {
                 if (check)
                 {
-                    if (dt_Header.Rows[0]["SiireKanryouKBN_Head"].ToString().Equals("1") || dt_Header.Rows[0]["SiireZumiSuu_Sum"].ToString() != "0")
+                    if (dt_Header.Rows[0]["SiireKanryouKBN_Head"].ToString() != "0"|| dt_Header.Rows[0]["SiireZumiSuu_Sum"].ToString() != "0")
                     {
                         bbl.ShowMessage("E164");
                         txtArrivalNO.Focus();
