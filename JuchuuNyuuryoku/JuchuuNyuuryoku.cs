@@ -1273,6 +1273,7 @@ namespace JuchuuNyuuryoku
 
         private void DBProcess()
         {
+            //ktp Add transaction 2021-04-23
             using (SqlConnection sqlConnection = new SqlConnection(obj_bl.GetCon()))
             {
                 sqlConnection.Open();
