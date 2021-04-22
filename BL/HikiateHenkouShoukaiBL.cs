@@ -88,7 +88,8 @@ namespace BL
         //For ZaikoIkkatuSaiHikiate Prj
         public void IData_DB(HikiateHenkouShoukaiEntity entity)
         {
-            CKMDL ckmdl = new CKMDL(); 
+            CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             entity.Sqlprms = new SqlParameter[8];
             entity.Sqlprms[0] = new SqlParameter("@SerialKBN", SqlDbType.Int) { Value = entity.SerialKBN };
             entity.Sqlprms[1] = new SqlParameter("@SlipNo", SqlDbType.VarChar) { Value = entity.SlipNO };
