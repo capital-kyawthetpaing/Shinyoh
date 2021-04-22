@@ -306,7 +306,8 @@ namespace ShukkaNyuuryoku {
                     ErrorCheck();
                     txtShukkaNo.E102Check(false);
                     txtShukkaNo.E133Check(false, "ShukkaNyuuryoku", txtShukkaNo, null, null);
-                    txtShukkaNo.E160Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    //txtShukkaNo.E160Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    txtShukkaNo.E165Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -325,7 +326,7 @@ namespace ShukkaNyuuryoku {
                     ErrorCheck();
                     txtShukkaNo.E102Check(true);
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
-                    txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    //txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
                     txtShukkaNo.E165Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -341,7 +342,7 @@ namespace ShukkaNyuuryoku {
                     ErrorCheck();
                     txtShukkaNo.E102Check(true);
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
-                    txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    //txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
                     txtShukkaNo.E165Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];

@@ -660,6 +660,11 @@ namespace Shinyoh_Controls
                         rDt = jubl.JuchuuTorikomi_Error_Check(sTextBox.ctrlE265_1.Text, "E265");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "JuchuuNyuuryoku":
+                        JuchuuListBL jbl = new JuchuuListBL();
+                        rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE265_1.Text, string.Empty, "E265");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
                 if (result.Equals("E265"))
                 {

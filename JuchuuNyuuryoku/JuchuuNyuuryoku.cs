@@ -123,7 +123,8 @@ namespace JuchuuNyuuryoku
                     txtJuchuuNO.E102Check(false);
                     txtJuchuuNO.E133Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                   // txtJuchuuNO.E115Check(false, "JuchuuNyuuryoku", txtJuchuuDate);
+                    // txtJuchuuNO.E115Check(false, "JuchuuNyuuryoku", txtJuchuuDate);
+                    txtJuchuuNO.E265Check(false, "JuchuuNyuuryoku", txtJuchuuNO);
 
                     //txtCopy.E102Check(true);
                     txtCopy.E133Check(true, "JuchuuNyuuryoku", txtCopy, null, null);
@@ -143,7 +144,8 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
-                    // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);                   
+                    // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);     
+                    txtJuchuuNO.E265Check(true, "JuchuuNyuuryoku", txtJuchuuNO);
 
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -160,7 +162,8 @@ namespace JuchuuNyuuryoku
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
                     // txtJuchuuNO.E115Check(true, "JuchuuNyuuryoku", txtJuchuuDate);
-                   
+                    txtJuchuuNO.E265Check(true, "JuchuuNyuuryoku", txtJuchuuNO);
+
                     Disable_UDI_Mode();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -176,6 +179,7 @@ namespace JuchuuNyuuryoku
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
                     txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
+                    txtJuchuuNO.E265Check(false, "JuchuuNyuuryoku", txtJuchuuNO);
 
                     Disable_UDI_Mode();
                     Control btn12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
