@@ -860,23 +860,23 @@ namespace IdouNyuuryoku
             dr["PC"] = base_Entity.PC;
             dr["ProgramID"] = base_Entity.ProgramID;
 
-            if (cboMode.SelectedValue.ToString() == "1")
-            {
-                DataTable Idou_dt = Idou_BL.GetIdouNO("15", txtIdouDate.Text, "0");
-                dr["IdouNO"] = Idou_dt.Rows[0]["Column1"];
-                for (int i = 0; i < F8_dt1.Rows.Count; i++)
-                {
-                    F8_dt1.Rows[i]["IdouNO"] = Idou_dt.Rows[0]["Column1"];
-                    F8_dt1.Rows[i]["IdouGyouNO"] = i + 1;
-                }
-            }
+            //if (cboMode.SelectedValue.ToString() == "1")
+            //{
+            //    DataTable Idou_dt = Idou_BL.GetIdouNO("15", txtIdouDate.Text, "0");
+            //    dr["IdouNO"] = Idou_dt.Rows[0]["Column1"];
+            //    for (int i = 0; i < F8_dt1.Rows.Count; i++)
+            //    {
+            //        F8_dt1.Rows[i]["IdouNO"] = Idou_dt.Rows[0]["Column1"];
+            //        F8_dt1.Rows[i]["IdouGyouNO"] = i + 1;
+            //    }
+            //}
             dt.Rows.Add(dr);
-            DataTable save_dt = F8_dt1.AsEnumerable()
-                   .GroupBy(r => new { Col1 = r["IdouNO"], Col2 = r["IdouGyouNO"] })
-                   .Select(g => g.OrderBy(r => r["IdouNO"]).Last()).CopyToDataTable();
+            //DataTable save_dt = F8_dt1.AsEnumerable()
+            //       .GroupBy(r => new { Col1 = r["IdouNO"], Col2 = r["IdouGyouNO"] })
+            //       .Select(g => g.OrderBy(r => r["IdouNO"]).Last()).CopyToDataTable();
             string header_XML = cf.DataTableToXml(dt);
 
-            string detail_XML = cf.DataTableToXml(save_dt);
+            string detail_XML = cf.DataTableToXml(F8_dt1);
             return (header_XML, detail_XML);
         }
         public void Create_Datatable_Column(DataTable create_dt)

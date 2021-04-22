@@ -77,6 +77,14 @@ namespace ChakuniYoteiNyuuryoku
             lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            gvChakuniYoteiNyuuryoku.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvChakuniYoteiNyuuryoku.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniYoteiNyuuryoku.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvChakuniYoteiNyuuryoku.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniYoteiNyuuryoku.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvChakuniYoteiNyuuryoku.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvChakuniYoteiNyuuryoku.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvChakuniYoteiNyuuryoku.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
             txtSiiresaki.lblName = lblSiiresaki;
             txtStaffCD.lblName = lblStaff;
             txtSouko.lblName = lblWareHouse;

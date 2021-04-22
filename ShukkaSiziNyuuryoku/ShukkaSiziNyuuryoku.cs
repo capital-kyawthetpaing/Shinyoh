@@ -63,29 +63,48 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.SetNumberColumn("colKonkaiShukkaSiziSuu,colTanka,colPrice");
             dgvShukkasizi.SetHiraganaColumn("colDetails");
             dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
-           
+
             var col = dgvShukkasizi.Columns;
 
             DataGridViewTextBoxColumn newCol = new DataGridViewTextBoxColumn();
             newCol.Name = "Hidden_ShukkaSiziGyouNO";
             newCol.DataPropertyName = "Hidden_ShukkaSiziGyouNO";
             newCol.Visible = false;
-            dgvShukkasizi.Columns.Insert(col.Count,newCol);
+            dgvShukkasizi.Columns.Insert(col.Count, newCol);
             newCol.DisplayIndex = col.Count - 1;
 
-            for (int i = 5; i < col.Count; i++)
+            for (int i = 0; i < dgvShukkasizi.Columns.Count; i++)
             {
-                while (i <= 10)
+                if (dgvShukkasizi.Columns[i].Name.Equals("colJuchuuSuu") || dgvShukkasizi.Columns[i].Name.Equals("colShukkakanousuu") ||
+                    dgvShukkasizi.Columns[i].Name.Equals("colShukkaSiziZumiSuu") || dgvShukkasizi.Columns[i].Name.Equals("colKonkaiShukkaSiziSuu") ||
+                    dgvShukkasizi.Columns[i].Name.Equals("colTanka") || dgvShukkasizi.Columns[i].Name.Equals("colPrice")
+                    )
                 {
                     col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    ++i;
-                }
-                if (i == 11)
+                    col[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+                }else if (dgvShukkasizi.Columns[i].Name.Equals("chk"))
                 {
                     col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    return;
+                }
+                else
+                {
+                    col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.TopLeft;
                 }
             }
+
+            //for (int i = 5; i < col.Count; i++)
+            //{
+            //    while (i <= 10)
+            //    {
+            //        col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //        ++i;
+            //    }
+            //    if (i == 11)
+            //    {
+            //        col[i].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //        return;
+            //    }
+            //}
         }
         private void ShukkaSiziNyuuryoku_Load(object sender, EventArgs e)
         {
