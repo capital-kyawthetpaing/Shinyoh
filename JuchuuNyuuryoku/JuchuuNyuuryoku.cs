@@ -88,18 +88,20 @@ namespace JuchuuNyuuryoku
             txtCopy.ChangeDate = txtJuchuuDate;
 
 
-            gv_JuchuuNyuuryoku.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gv_JuchuuNyuuryoku.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gv_JuchuuNyuuryoku.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_JuchuuNyuuryoku.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gv_JuchuuNyuuryoku.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_JuchuuNyuuryoku.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_JuchuuNyuuryoku.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gv_JuchuuNyuuryoku.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gv_JuchuuNyuuryoku.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_JuchuuNyuuryoku.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_JuchuuNyuuryoku.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_JuchuuNyuuryoku.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_JuchuuNyuuryoku.Columns[10].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_JuchuuNyuuryoku.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_JuchuuNyuuryoku.Columns[11].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_JuchuuNyuuryoku.Columns[16].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gv_JuchuuNyuuryoku.Columns[16].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_JuchuuNyuuryoku.Columns[17].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_JuchuuNyuuryoku.Columns[17].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             gv_JuchuuNyuuryoku.SetGridDesign();
            // gv_1.SetReadOnlyColumn("ColHinbanCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colGenZaikoSuu,colUriageTanka,colTanka,colJANCD,colSiiresakiName,colSoukoName,colSiiresakiRyakuName,colSiiresakiYuubinNO1,colSiiresakiYuubinNO2,colSiiresakiJuusho1,colSiiresakiJuusho2,colSiiresakiTelNO11,colSiiresakiTelNO12,colSiiresakiTelNO13,colSiiresakiTelNO21,colSiiresakiTelNO22,colSiiresakiTelNO23,colHacchuuNO,colHacchuuGyouNO,colJuchuuNO,colJuchuuGyouNO");
