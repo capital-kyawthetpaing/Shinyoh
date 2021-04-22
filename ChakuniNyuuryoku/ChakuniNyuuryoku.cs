@@ -672,6 +672,7 @@ namespace ChakuniNyuuryoku
 
                 //gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
                 //gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
+                Disable();
                 gvChakuniNyuuryoku.Select();
             }
             gvChakuniNyuuryoku.ActionType = string.Empty;
@@ -798,6 +799,7 @@ namespace ChakuniNyuuryoku
         {
             gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
             gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
+            gvChakuniNyuuryoku.Columns["ChakuniGyouNO"].Visible = false;
         }
         private DataTable CreateTable_Details()
         {

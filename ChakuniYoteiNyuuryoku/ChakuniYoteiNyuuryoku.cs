@@ -46,6 +46,8 @@ namespace ChakuniYoteiNyuuryoku
             F8_dt1 = CreateTable_Detail();
             dtTemp = new DataTable();
             dtClear= CreateTable_Detail();
+
+            //this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniYoteiNyuuryoku_Load(object sender, EventArgs e)
         {
@@ -155,6 +157,7 @@ namespace ChakuniYoteiNyuuryoku
                 else
                 {
                     Mode_Setting();
+                    Disable();
                 }
                 dtTemp.Clear();
             }
@@ -249,6 +252,7 @@ namespace ChakuniYoteiNyuuryoku
                     dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
                     gvChakuniYoteiNyuuryoku.DataSource = dtmain;
                     gvChakuniYoteiNyuuryoku.Select();
+                    Disable();
                 }
             }
             gvChakuniYoteiNyuuryoku.ActionType = string.Empty;
@@ -676,6 +680,7 @@ namespace ChakuniYoteiNyuuryoku
                 if (dt.Rows.Count > 0 && cboMode.SelectedValue.ToString() != "1")
                 {
                     Update_Data();
+                    Disable();
                 }
             }
         }
@@ -939,6 +944,10 @@ namespace ChakuniYoteiNyuuryoku
             gvChakuniYoteiNyuuryoku.DataSource = dtClear;
             gvChakuniYoteiNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
             
+        }
+        private void Disable()
+        {
+            gvChakuniYoteiNyuuryoku.Columns["ChakuniYoteiGyouNO"].Visible = false;
         }
         private void gvChakuniYoteiNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
