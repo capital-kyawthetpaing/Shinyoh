@@ -52,7 +52,7 @@ BEGIN
 
     if @Errortype = 'E165'
     begin
-        if exists(select * from D_ShukkaMeisai where ShukkaNO=@ShukkaNO and UriageZumiSuu>0)
+        if exists(select * from D_ShukkaMeisai where ShukkaNO=@ShukkaNO and (UriageZumiSuu>0 OR UriageKanryouKBN=1))
             begin
             --exist
             select * from M_Message where MessageID = 'E165'
