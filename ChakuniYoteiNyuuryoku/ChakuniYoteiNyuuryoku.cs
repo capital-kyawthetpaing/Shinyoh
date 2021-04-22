@@ -696,7 +696,7 @@ namespace ChakuniYoteiNyuuryoku
             {
                 if (check)
                 {
-                    if (dt_Header.Rows[0]["ChakuniKanryouKBN"].ToString().Equals("1") || dt_Header.Rows[0]["ChakuniZumiSuu_Sum"].ToString() != "0")
+                    if (dt_Header.Rows[0]["ChakuniKanryouKBN"].ToString() != "0" || dt_Header.Rows[0]["ChakuniZumiSuu_Sum"].ToString() != "0")
                     {
                         bbl.ShowMessage("E163");
                         txtChakuniYoteiNO.Focus();

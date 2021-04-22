@@ -922,7 +922,7 @@ namespace ChakuniNyuuryoku
             {
                 if (check)
                 {
-                    if (dt_Header.Rows[0]["SiireKanryouKBN_Head"].ToString().Equals("1") || dt_Header.Rows[0]["SiireZumiSuu_Sum"].ToString() != "0")
+                    if (dt_Header.Rows[0]["SiireKanryouKBN_Head"].ToString() != "0"|| dt_Header.Rows[0]["SiireZumiSuu_Sum"].ToString() != "0")
                     {
                         bbl.ShowMessage("E164");
                         txtArrivalNO.Focus();

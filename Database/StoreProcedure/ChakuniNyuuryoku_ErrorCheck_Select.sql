@@ -55,7 +55,7 @@ if @Errortype='E268'
 	 begin
 	 --exists
 	   select * from  M_Message
-	   where MessageID='E268'
+	   where MessageID='E278'
 	   end
 	else
 	   begin
