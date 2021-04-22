@@ -83,7 +83,14 @@ namespace ShukkaNyuuryoku {
             gvShukka1.SetHiraganaColumn("colDetail");
             gvShukka1.SetReadOnlyColumn("colJANCD,colShouhin,colShouhinName,colColorShortName,colColorNO,colSize,colShukkazansuu,colMiryoku,ShukkaSiziNOGyouNO");
             gvShukka1.SetNumberColumn("colKonkai");
-
+            gvShukka1.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvShukka1.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvShukka1.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvShukka1.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvShukka1.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvShukka1.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvShukka1.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvShukka1.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             txtKouriten.TxtBox = txtTokuisaki;
 
             ChangeMode(Mode.New);

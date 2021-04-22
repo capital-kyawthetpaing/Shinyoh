@@ -167,7 +167,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS PGothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(717, 120);
+            this.label3.Location = new System.Drawing.Point(716, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 12);
             this.label3.TabIndex = 12;
@@ -186,7 +186,7 @@
             this.txtDenpyouNO.IsErrorOccurs = false;
             this.txtDenpyouNO.IsRequire = false;
             this.txtDenpyouNO.IsUseInitializedLayout = true;
-            this.txtDenpyouNO.Location = new System.Drawing.Point(816, 137);
+            this.txtDenpyouNO.Location = new System.Drawing.Point(815, 137);
             this.txtDenpyouNO.MaxLength = 12;
             this.txtDenpyouNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDenpyouNO.MoveNext = true;
@@ -205,7 +205,7 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(701, 137);
+            this.sLabel6.Location = new System.Drawing.Point(700, 137);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(115, 19);
             this.sLabel6.TabIndex = 10;
@@ -415,7 +415,7 @@
             this.colTokuisakiRyakuName.HeaderText = "得意先名";
             this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
             this.colTokuisakiRyakuName.ReadOnly = true;
-            this.colTokuisakiRyakuName.Width = 250;
+            this.colTokuisakiRyakuName.Width = 277;
             // 
             // colKouritenCD
             // 
@@ -430,7 +430,7 @@
             this.colKouritenRyakuName.HeaderText = "小売店名";
             this.colKouritenRyakuName.Name = "colKouritenRyakuName";
             this.colKouritenRyakuName.ReadOnly = true;
-            this.colKouritenRyakuName.Width = 290;
+            this.colKouritenRyakuName.Width = 280;
             // 
             // JuchuuTorikomi
             // 
