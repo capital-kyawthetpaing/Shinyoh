@@ -15,6 +15,8 @@ namespace BL
         public bool Shouhin_IUD(ShouhinEntity shouhin_entity)
         {
             BaseBL bl = new BaseBL();
+            CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             shouhin_entity.Sqlprms = new SqlParameter[39];
             shouhin_entity.Sqlprms[0] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = shouhin_entity.Product };
             shouhin_entity.Sqlprms[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = shouhin_entity.RevisionDate };
@@ -150,6 +152,7 @@ namespace BL
         public DataTable CSV_M_Shouhin_CUD(string xml, string condition)
         {
             CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             var parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("@xml", SqlDbType.Xml) { Value = xml };
             parameters[1] = new SqlParameter("@condition", SqlDbType.VarChar) { Value = condition };

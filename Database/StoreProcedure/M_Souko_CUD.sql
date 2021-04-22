@@ -43,10 +43,6 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-	
-	begin try
-		begin tran
-
 			declare @currentDate as datetime = getdate()
 			exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
 
@@ -123,13 +119,5 @@ BEGIN
 			 begin
 			       delete from M_Souko where SoukoCD=@SoukoCD
 			 end
-
-		commit tran
-	end try
-	begin catch
-		rollback tran
-		throw
-	end catch
-
 END
 

@@ -70,6 +70,7 @@ namespace BL
         public string M_Staff_CUD(MasterTourokuStaff obj)
         {
             CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             obj.Sqlprms = new SqlParameter[18];
             obj.Sqlprms[0] = new SqlParameter("@StaffCD", SqlDbType.VarChar) { Value = obj.StaffCD };
             obj.Sqlprms[1] = new SqlParameter("@ChangeDate", SqlDbType.VarChar) { Value = obj.ChangeDate };

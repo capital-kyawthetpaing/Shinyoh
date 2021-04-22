@@ -41,9 +41,6 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-		begin try
-		begin tran
-
 			declare @currentDate as datetime = getdate()
 
 			exec dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
@@ -116,15 +113,7 @@ BEGIN
 				else if @Mode = 'Delete'
 				 begin
 				       delete from M_Staff where StaffCD = @StaffCD and ChangeDate = @ChangeDate
-				 end
-
-		commit tran
-	end try
-	begin catch
-		rollback tran
-		throw
-	end catch
-
+				 end	
 END
 
 GO

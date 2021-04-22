@@ -59,6 +59,7 @@ namespace BL
         public void DBData_IU(HikiateHenkouShoukaiEntity entity)
         {
             CKMDL ckmdl = new CKMDL();
+            ckmdl.UseTran = true;
             entity.Sqlprms = new SqlParameter[20];
             entity.Sqlprms[0] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = entity.ShouhinCD };
             entity.Sqlprms[1] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = entity.ShouhinName };
