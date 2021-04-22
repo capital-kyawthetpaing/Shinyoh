@@ -53,6 +53,8 @@ namespace HaitaSakujo
 
             lbl_dataPartition.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lbl_InputPerson.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            gvHaitaSakujo.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvHaitaSakujo.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
             txt_dataPartition.Focus();
             txt_InputPerson.ChangeDate = txt_date;
             txt_date.Text = base_Entity.LoginDate;
