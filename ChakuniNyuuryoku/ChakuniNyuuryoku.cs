@@ -108,7 +108,7 @@ namespace ChakuniNyuuryoku
                 case Mode.New:
                     txtArrivalNO.E102Check(false);
                     txtArrivalNO.E133Check(false, "ChakuniNyuuryoku", txtArrivalNO, null, null);
-                    txtArrivalNO.E268Check(false, "ChakuniNyuuryoku", txtArrivalNO, null);
+                    //txtArrivalNO.E268Check(false, "ChakuniNyuuryoku", txtArrivalNO, null);
                     ErrorCheck();
                     New_Mode();
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -119,7 +119,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Update:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
-                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
+                    //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     Mode_Setting();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
@@ -128,7 +128,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Delete:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
-                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
+                    //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     Mode_Setting();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -137,7 +137,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Inquiry:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
-                    txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
+                    //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     Mode_Setting();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
