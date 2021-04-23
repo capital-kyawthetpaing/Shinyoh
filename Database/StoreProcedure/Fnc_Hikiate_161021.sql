@@ -39,16 +39,16 @@ BEGIN
 		@HacchuuNo as varchar(12),
 		@HacchuuGyouNo as smallint
 
-	declare cursorOuter cursor read_only
+	declare curOuter cursor read_only
 	for
 	select cym.ChakuniYoteiNO,cym.ChakuniYoteiGyouNO,cy.SoukoCD,cym.ShouhinCD,cym.KanriNO,
 	cym.ChakuniYoteiSuu,cym.JuchuuNO,cym.JuchuuGyouNO,cym.HacchuuNO,cym.HacchuuGyouNO
 	from D_ChakuniYoteiMeisai cym inner join D_ChakuniYotei cy on cym.ChakuniYoteiNO = cy.ChakuniYoteiNO 
 	where cym.ChakuniYoteiNO = @SlipNo
 	
-	open cursorOuter
+	open curOuter
 	
-	fetch next from cursorOuter into @ChakuniYoteiNO,@ChakuniYoteiGyouNO,@SoukoCD,@ShouhinCD,@KanriNo,@ChakuniYoteiSuu,
+	fetch next from curOuter into @ChakuniYoteiNO,@ChakuniYoteiGyouNO,@SoukoCD,@ShouhinCD,@KanriNo,@ChakuniYoteiSuu,
 		@JuchuuNO,@JuchuuGyouNO,@HacchuuNo,@HacchuuGyouNo
 	while @@FETCH_STATUS = 0
 		begin
@@ -153,13 +153,13 @@ BEGIN
 			--2021/04/19 Y.Nishikawa DEL V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é(êŠˆÚ“®)ªª
 
 
-			fetch next from cursorOuter 
+			fetch next from curOuter 
 			into  @ChakuniYoteiNO,@ChakuniYoteiGyouNO,@SoukoCD,@ShouhinCD,@KanriNo,@ChakuniYoteiSuu,
 			@JuchuuNO,@JuchuuGyouNO,@HacchuuNo,@HacchuuGyouNo
 		end
 	
-	close cursorOuter
-	deallocate cursorOuter
+	close curOuter
+	deallocate curOuter
 END
 
 GO

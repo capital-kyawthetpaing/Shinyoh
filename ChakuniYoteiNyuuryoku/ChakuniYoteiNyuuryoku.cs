@@ -258,10 +258,14 @@ namespace ChakuniYoteiNyuuryoku
                 else
                 {
                     dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-                    HacchuuNO_Delete();
+                    //HacchuuNO_Delete();
                     foreach (DataRow dr in dtmain.Rows)
                     {
                         string HacchuuNO = dr["HacchuuNO"].ToString();
+                        DataRow[] selectRow = F8_dt1.Select("HacchuuNO ='" + HacchuuNO + "'");
+                        if (selectRow.Length > 0)
+                            continue;
+
                         ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
                         chkLockEntity.DataKBN = 2;
                         chkLockEntity.Number = HacchuuNO;
