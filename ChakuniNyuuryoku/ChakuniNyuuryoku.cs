@@ -160,6 +160,13 @@ namespace ChakuniNyuuryoku
             chkFW.Checked = true; //HET
 
             F8_dt1 = CreateTable_Details();
+
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
         }
         private void New_Mode()
         {
@@ -193,6 +200,13 @@ namespace ChakuniNyuuryoku
             dtTemp = new DataTable();
             dtClear = CreateTable_Details();
             //dtGridSource = new DataTable();
+
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
         }
         public void ErrorCheck()
         {
