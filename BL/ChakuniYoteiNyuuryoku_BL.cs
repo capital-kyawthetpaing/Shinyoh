@@ -91,5 +91,17 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("ChakuniYotei_DataCheck", GetConnectionString(), cyn.Sqlprms);
             return dt;
         }
+        public DataTable D_Exclusive_Lock_Check(ChakuniNyuuryoku_Entity ce)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = ce.Number };
+            parameters[1] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = ce.OperatorCD };
+            parameters[2] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = ce.ProgramID };
+            parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = ce.PC };
+            parameters[4] = new SqlParameter("@DataKBN", SqlDbType.Int) { Value = ce.DataKBN };
+            DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Lock_Check", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }

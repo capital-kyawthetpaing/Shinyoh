@@ -432,6 +432,13 @@ namespace ChakuniYoteiNyuuryoku
             chkFW.Checked = true; //HET
 
             F8_dt1 = CreateTable_Detail();
+
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
         }
         private void New_Mode()
         {
@@ -459,6 +466,13 @@ namespace ChakuniYoteiNyuuryoku
             chkFW.Checked = true; //HET
 
             F8_dt1 = CreateTable_Detail();
+
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
         }
         private bool Temp_Null()
         {
@@ -664,6 +678,12 @@ namespace ChakuniYoteiNyuuryoku
                     {
                         if (!Update_Data(true))
                             return;
+
+
+                        if (!ChakuniYoteiNO_Check())
+                        {
+                            return;
+                        }
                     }
 
                     if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")
@@ -693,6 +713,31 @@ namespace ChakuniYoteiNyuuryoku
                     Disable();
                 }
             }
+        }
+        private bool ChakuniYoteiNO_Check()
+        {
+            ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity();
+            chkEntity.DataKBN = 16;
+            chkEntity.Number = txtChakuniYoteiNO.Text;
+            chkEntity.ProgramID = ProgramID;
+            chkEntity.PC = PCID;
+            chkEntity.OperatorCD = OperatorCD;
+            DataTable dt = new DataTable();
+            cbl = new ChakuniYoteiNyuuryoku_BL();
+            dt = cbl.D_Exclusive_Lock_Check(chkEntity);
+            if (dt.Rows[0]["MessageID"].ToString().Equals("1"))
+            {
+                return true;
+            }
+
+            string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
+            Data1 = dt.Rows[0]["Program"].ToString();
+            Data2 = dt.Rows[0]["Operator"].ToString();
+            Data3 = dt.Rows[0]["PC"].ToString();
+
+            bbl.ShowMessage("S004", Data1, Data2, Data3);
+            txtChakuniYoteiNO.Focus();
+            return false;
         }
         private bool Update_Data(bool check = false)
         {
