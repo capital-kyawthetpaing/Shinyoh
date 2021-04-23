@@ -905,6 +905,8 @@ namespace HacchuuNyuuryoku
             chk_FW.Checked = false;
             txtColorNo.Text = string.Empty; ;
             txtSizeNo.Text = string.Empty;
+            chk_SS.Checked = true;
+            chk_FW.Checked = true;
         }
 
         private void btnNameF8_Click(object sender, EventArgs e)
