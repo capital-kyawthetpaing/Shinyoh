@@ -293,6 +293,8 @@ namespace ChakuniYoteiNyuuryoku
                     gvChakuniYoteiNyuuryoku.DataSource = dtmain;
                     gvChakuniYoteiNyuuryoku.Select();
                     Disable();
+                    if (dtmain.Rows.Count > 0)   //HET
+                        gvChakuniYoteiNyuuryoku.CurrentCell = gvChakuniYoteiNyuuryoku.Rows[0].Cells["colYoteiSuu"];
                 }
             }
             gvChakuniYoteiNyuuryoku.ActionType = string.Empty;

@@ -696,6 +696,8 @@ namespace ChakuniNyuuryoku
                 gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
                 gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
 
+                if(dtmain.Rows.Count > 0)
+                gvChakuniNyuuryoku.CurrentCell = gvChakuniNyuuryoku.Rows[0].Cells["ChakuniSuu"];
                 //gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
                 //gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
                 Disable();

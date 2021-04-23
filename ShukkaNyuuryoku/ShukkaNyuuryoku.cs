@@ -1397,6 +1397,10 @@ namespace ShukkaNyuuryoku {
             if (ErrorCheck(PanelDetail))
                 FunctionProcedure(10);
             gvShukka1.ActionType = string.Empty;
+            if(Main_dt.Rows.Count > 0)
+            {
+                gvShukka1.CurrentCell = gvShukka1.Rows[0].Cells["colKonkai"];
+            }
             
         }
     }

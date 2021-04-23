@@ -441,7 +441,7 @@ namespace IdouNyuuryoku
                 dt.Columns.Remove("MessageID");
 
                 gv_1.DataSource = dt;
-                gv_1.ClearSelection();
+               // gv_1.ClearSelection();
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
@@ -590,6 +590,7 @@ namespace IdouNyuuryoku
                     if (F8_dt1.Rows.Count == 0)
                         F8_dt1 = gv1_to_dt1.Clone();
                     gv_1.Select();
+                    gv_1.CurrentCell = gv_1.Rows[0].Cells["colKanriNO"];
                 }
                 else
                 {
