@@ -280,7 +280,7 @@ BEGIN
 			BrandCD = FS.BrandCD,
 			ShouhinCD = d.ShouhinCD,
 			ShouhinName = d.ShouhinName,
-			JANCD =NULLIF(d.JANCD,''),
+			JANCD =d.JANCD,
 			ColorRyakuName = d.ColorRyakuName,
 			ColorNO = d.ColorNO,
 			SizeNO = d.SizeNO,

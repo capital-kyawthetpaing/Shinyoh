@@ -572,7 +572,7 @@ SET [GyouHyouziJun]=@row, @row = @row + 1
     ,[KouritenCD]=case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
     ,[KouritenRyakuName]=case when TD.KouritenRyakuName is null then DJ.KouritenRyakuName else TD.KouritenRyakuName end
     ,[BrandCD]=FS.BrandCD
-    ,[ShouhinCD]=TD.Hidden_ShouhinCD
+    ,[ShouhinCD]=TD.ShouhinCD
     ,[ShouhinName]=TD.ShouhinName
     ,[JANCD]=FS.JANCD
     ,[ColorRyakuName]=TD.ColorRyakuName
