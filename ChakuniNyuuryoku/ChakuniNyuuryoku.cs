@@ -644,7 +644,7 @@ namespace ChakuniNyuuryoku
                     return;//ktp added (show error message and stop process)
                 }
                 dtmain = cbl.ChakuniNyuuryoku_Display(chkEntity);
-                ChakuniYoteiNO_Delete();
+                //ChakuniYoteiNO_Delete();
                 foreach (DataRow dr in dtmain.Rows)
                 {
                     string ChakuniYoteiNO = dr["ChakuniYoteiNO"].ToString();

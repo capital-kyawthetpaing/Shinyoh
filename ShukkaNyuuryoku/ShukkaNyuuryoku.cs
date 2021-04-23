@@ -550,7 +550,7 @@ namespace ShukkaNyuuryoku {
                             //    //}
                             //}
                             dtHaita = gvdt1.Copy();
-                            ShukkaSiZiNO_Delete();
+                            //ShukkaSiZiNO_Delete();
                             gvShukka1.ActionType = "F10";  //to skip gv error check at the ErrorCheck() of BaseForm.cs
                             bool count = false;
                             foreach (DataRow dr in gvdt1.Rows)
