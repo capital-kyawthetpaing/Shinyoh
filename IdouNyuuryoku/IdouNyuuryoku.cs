@@ -441,7 +441,7 @@ namespace IdouNyuuryoku
                 dt.Columns.Remove("MessageID");
 
                 gv_1.DataSource = dt;
-                gv_1.ClearSelection();
+               // gv_1.ClearSelection();
 
                 DataTable dt_temp = dt.Copy();
                 gv1_to_dt1 = dt_temp;
