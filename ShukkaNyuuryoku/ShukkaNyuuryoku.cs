@@ -441,7 +441,16 @@ namespace ShukkaNyuuryoku {
             lblTokuisakiName.Text = string.Empty;
             lblKouritenName.Text = string.Empty;
             lblStatffName.Text = string.Empty;
-            
+
+            F8_dt1 = CreateTable();
+
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
+
             if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
             {
                 txtShukkaNo.Focus();
