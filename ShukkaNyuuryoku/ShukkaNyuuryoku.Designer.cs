@@ -26,10 +26,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblShukkaNo = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.txtStaff = new Shinyoh_Search.SearchBox();
@@ -66,6 +66,19 @@
             this.txtTokuisaki = new Shinyoh_Search.SearchBox();
             this.lblShukkaDate = new Shinyoh_Controls.SLabel();
             this.gvShukka1 = new Shinyoh_Controls.SGridView();
+            this.colJANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShouhin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShukkazansuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMiryoku = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colKonkai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colComplete = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colDetail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShukkaSiziNOGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ShukkaSiziNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSave = new Shinyoh_Controls.SButton();
             this.btnDisplay = new Shinyoh_Controls.SButton();
             this.btnConfirm = new Shinyoh_Controls.SButton();
@@ -82,19 +95,6 @@
             this.lblDenpyou = new Shinyoh_Controls.SLabel();
             this.lblStaffCD = new Shinyoh_Controls.SLabel();
             this.txtShukkaNo = new Shinyoh_Search.SearchBox();
-            this.colJANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShouhin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShukkazansuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMiryoku = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colKonkai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colComplete = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colDetail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShukkaSiziNOGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ShukkaSiziNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -197,7 +197,7 @@
             this.txtStaff.IsUseInitializedLayout = true;
             this.txtStaff.lblName = null;
             this.txtStaff.lblName1 = null;
-            this.txtStaff.Location = new System.Drawing.Point(947, 10);
+            this.txtStaff.Location = new System.Drawing.Point(988, 10);
             this.txtStaff.MaxLength = 10;
             this.txtStaff.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtStaff.MoveNext = true;
@@ -217,7 +217,7 @@
             this.lblStatffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStatffName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStatffName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatffName.Location = new System.Drawing.Point(1047, 10);
+            this.lblStatffName.Location = new System.Drawing.Point(1088, 10);
             this.lblStatffName.Name = "lblStatffName";
             this.lblStatffName.Size = new System.Drawing.Size(250, 19);
             this.lblStatffName.TabIndex = 93;
@@ -245,7 +245,7 @@
             this.txtTelNo3.IsErrorOccurs = false;
             this.txtTelNo3.IsRequire = false;
             this.txtTelNo3.IsUseInitializedLayout = true;
-            this.txtTelNo3.Location = new System.Drawing.Point(1072, 132);
+            this.txtTelNo3.Location = new System.Drawing.Point(1113, 132);
             this.txtTelNo3.MaxLength = 5;
             this.txtTelNo3.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtTelNo3.MoveNext = true;
@@ -261,7 +261,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(1059, 130);
+            this.label10.Location = new System.Drawing.Point(1100, 130);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(15, 20);
             this.label10.TabIndex = 90;
@@ -270,7 +270,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1123, 134);
+            this.label8.Location = new System.Drawing.Point(1164, 134);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 13);
             this.label8.TabIndex = 85;
@@ -289,7 +289,7 @@
             this.txtTelNo2.IsErrorOccurs = false;
             this.txtTelNo2.IsRequire = false;
             this.txtTelNo2.IsUseInitializedLayout = true;
-            this.txtTelNo2.Location = new System.Drawing.Point(1009, 132);
+            this.txtTelNo2.Location = new System.Drawing.Point(1050, 132);
             this.txtTelNo2.MaxLength = 5;
             this.txtTelNo2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtTelNo2.MoveNext = true;
@@ -314,7 +314,7 @@
             this.txtTelNo1.IsErrorOccurs = false;
             this.txtTelNo1.IsRequire = false;
             this.txtTelNo1.IsUseInitializedLayout = true;
-            this.txtTelNo1.Location = new System.Drawing.Point(947, 132);
+            this.txtTelNo1.Location = new System.Drawing.Point(988, 132);
             this.txtTelNo1.MaxLength = 6;
             this.txtTelNo1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtTelNo1.MoveNext = true;
@@ -330,7 +330,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(996, 130);
+            this.label9.Location = new System.Drawing.Point(1037, 130);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(15, 20);
             this.label9.TabIndex = 88;
@@ -342,7 +342,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(847, 132);
+            this.sLabel3.Location = new System.Drawing.Point(888, 132);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 84;
@@ -520,7 +520,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1195, 162);
+            this.label6.Location = new System.Drawing.Point(1236, 162);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
             this.label6.TabIndex = 65;
@@ -529,7 +529,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(778, 134);
+            this.label5.Location = new System.Drawing.Point(819, 134);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
             this.label5.TabIndex = 60;
@@ -548,7 +548,7 @@
             this.txtJuusho.IsErrorOccurs = false;
             this.txtJuusho.IsRequire = false;
             this.txtJuusho.IsUseInitializedLayout = true;
-            this.txtJuusho.Location = new System.Drawing.Point(675, 160);
+            this.txtJuusho.Location = new System.Drawing.Point(716, 160);
             this.txtJuusho.MaxLength = 80;
             this.txtJuusho.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJuusho.MoveNext = true;
@@ -566,7 +566,7 @@
             this.lblAddress1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblAddress1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblAddress1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblAddress1.Location = new System.Drawing.Point(575, 160);
+            this.lblAddress1.Location = new System.Drawing.Point(616, 160);
             this.lblAddress1.MinimumSize = new System.Drawing.Size(100, 19);
             this.lblAddress1.Name = "lblAddress1";
             this.lblAddress1.Size = new System.Drawing.Size(100, 19);
@@ -587,7 +587,7 @@
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(727, 132);
+            this.txtYubin2.Location = new System.Drawing.Point(768, 132);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin2.MoveNext = true;
@@ -613,7 +613,7 @@
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
             this.txtYubin1.IsUseInitializedLayout = true;
-            this.txtYubin1.Location = new System.Drawing.Point(675, 132);
+            this.txtYubin1.Location = new System.Drawing.Point(716, 132);
             this.txtYubin1.MaxLength = 3;
             this.txtYubin1.MinimumSize = new System.Drawing.Size(35, 19);
             this.txtYubin1.MoveNext = true;
@@ -629,7 +629,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(711, 130);
+            this.label4.Location = new System.Drawing.Point(752, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 62;
@@ -639,7 +639,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(530, 109);
+            this.label3.Location = new System.Drawing.Point(571, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 12);
             this.label3.TabIndex = 59;
@@ -809,6 +809,117 @@
             this.gvShukka1.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvShukka1_CellEndEdit);
             this.gvShukka1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvShukka1_CellEnter);
             // 
+            // colJANCD
+            // 
+            this.colJANCD.DataPropertyName = "JANCD";
+            this.colJANCD.Frozen = true;
+            this.colJANCD.HeaderText = "JANCD";
+            this.colJANCD.Name = "colJANCD";
+            this.colJANCD.ReadOnly = true;
+            // 
+            // colShouhin
+            // 
+            this.colShouhin.DataPropertyName = "HinbanCD";
+            this.colShouhin.HeaderText = "商品";
+            this.colShouhin.Name = "colShouhin";
+            this.colShouhin.ReadOnly = true;
+            this.colShouhin.Width = 120;
+            // 
+            // colShouhinName
+            // 
+            this.colShouhinName.DataPropertyName = "ShouhinName";
+            this.colShouhinName.HeaderText = "商品名";
+            this.colShouhinName.Name = "colShouhinName";
+            this.colShouhinName.ReadOnly = true;
+            this.colShouhinName.Width = 305;
+            // 
+            // colColorShortName
+            // 
+            this.colColorShortName.DataPropertyName = "ColorRyakuName";
+            this.colColorShortName.HeaderText = "カラー略名\t\t\t\t\t\t\t\t";
+            this.colColorShortName.Name = "colColorShortName";
+            this.colColorShortName.ReadOnly = true;
+            this.colColorShortName.Width = 120;
+            // 
+            // colColorNO
+            // 
+            this.colColorNO.DataPropertyName = "ColorNO";
+            this.colColorNO.HeaderText = "カラー";
+            this.colColorNO.Name = "colColorNO";
+            this.colColorNO.ReadOnly = true;
+            // 
+            // colSize
+            // 
+            this.colSize.DataPropertyName = "SizeNO";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colSize.DefaultCellStyle = dataGridViewCellStyle9;
+            this.colSize.HeaderText = "サイズ\t\t\t\t\t\t";
+            this.colSize.Name = "colSize";
+            this.colSize.ReadOnly = true;
+            // 
+            // colShukkazansuu
+            // 
+            this.colShukkazansuu.DataPropertyName = "ShukkaSiziZumiSuu";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N0";
+            this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle10;
+            this.colShukkazansuu.HeaderText = "出荷残数\t\t\t\t";
+            this.colShukkazansuu.Name = "colShukkazansuu";
+            this.colShukkazansuu.ReadOnly = true;
+            this.colShukkazansuu.Width = 90;
+            // 
+            // colMiryoku
+            // 
+            this.colMiryoku.DataPropertyName = "MiNyuukaSuu";
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.NullValue = "N0";
+            this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle11;
+            this.colMiryoku.HeaderText = "未入荷数\t\t\t\t";
+            this.colMiryoku.Name = "colMiryoku";
+            this.colMiryoku.ReadOnly = true;
+            this.colMiryoku.Width = 90;
+            // 
+            // colKonkai
+            // 
+            this.colKonkai.DataPropertyName = "ShukkaSuu";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N0";
+            this.colKonkai.DefaultCellStyle = dataGridViewCellStyle12;
+            this.colKonkai.HeaderText = "今回出荷数\t\t\t\t\t";
+            this.colKonkai.MaxInputLength = 5;
+            this.colKonkai.Name = "colKonkai";
+            // 
+            // colComplete
+            // 
+            this.colComplete.DataPropertyName = "Kanryou";
+            this.colComplete.HeaderText = "完了\t\t";
+            this.colComplete.Name = "colComplete";
+            this.colComplete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colComplete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colComplete.Width = 40;
+            // 
+            // colDetail
+            // 
+            this.colDetail.DataPropertyName = "ShukkaMeisaiTekiyou";
+            this.colDetail.HeaderText = "明細摘要";
+            this.colDetail.MaxInputLength = 80;
+            this.colDetail.Name = "colDetail";
+            this.colDetail.Width = 500;
+            // 
+            // ShukkaSiziNOGyouNO
+            // 
+            this.ShukkaSiziNOGyouNO.DataPropertyName = "ShukkaSiziNOGyouNO";
+            this.ShukkaSiziNOGyouNO.HeaderText = "出荷指示番号-行番号";
+            this.ShukkaSiziNOGyouNO.Name = "ShukkaSiziNOGyouNO";
+            this.ShukkaSiziNOGyouNO.Width = 142;
+            // 
+            // ShukkaSiziNO
+            // 
+            this.ShukkaSiziNO.DataPropertyName = "ShukkaSiziNO";
+            this.ShukkaSiziNO.HeaderText = "ShukkaSiziNO";
+            this.ShukkaSiziNO.Name = "ShukkaSiziNO";
+            this.ShukkaSiziNO.Visible = false;
+            // 
             // btnSave
             // 
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
@@ -910,7 +1021,7 @@
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = true;
             this.txtName.IsUseInitializedLayout = true;
-            this.txtName.Location = new System.Drawing.Point(1294, 132);
+            this.txtName.Location = new System.Drawing.Point(1335, 132);
             this.txtName.MaxLength = 40;
             this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtName.MoveNext = true;
@@ -956,7 +1067,7 @@
             this.lblName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblName.Location = new System.Drawing.Point(1194, 132);
+            this.lblName.Location = new System.Drawing.Point(1235, 132);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(100, 19);
             this.lblName.TabIndex = 25;
@@ -992,7 +1103,7 @@
             this.lblYubin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblYubin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblYubin.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblYubin.Location = new System.Drawing.Point(575, 132);
+            this.lblYubin.Location = new System.Drawing.Point(616, 132);
             this.lblYubin.Name = "lblYubin";
             this.lblYubin.Size = new System.Drawing.Size(100, 19);
             this.lblYubin.TabIndex = 10;
@@ -1012,7 +1123,7 @@
             this.txtDenpyou.IsErrorOccurs = false;
             this.txtDenpyou.IsRequire = false;
             this.txtDenpyou.IsUseInitializedLayout = true;
-            this.txtDenpyou.Location = new System.Drawing.Point(947, 35);
+            this.txtDenpyou.Location = new System.Drawing.Point(988, 35);
             this.txtDenpyou.MaxLength = 80;
             this.txtDenpyou.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDenpyou.MoveNext = true;
@@ -1030,7 +1141,7 @@
             this.lblDenpyou.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblDenpyou.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblDenpyou.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblDenpyou.Location = new System.Drawing.Point(847, 35);
+            this.lblDenpyou.Location = new System.Drawing.Point(888, 35);
             this.lblDenpyou.Name = "lblDenpyou";
             this.lblDenpyou.Size = new System.Drawing.Size(100, 19);
             this.lblDenpyou.TabIndex = 19;
@@ -1044,7 +1155,7 @@
             this.lblStaffCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblStaffCD.ForeColor = System.Drawing.Color.White;
-            this.lblStaffCD.Location = new System.Drawing.Point(847, 10);
+            this.lblStaffCD.Location = new System.Drawing.Point(888, 10);
             this.lblStaffCD.Name = "lblStaffCD";
             this.lblStaffCD.Size = new System.Drawing.Size(100, 19);
             this.lblStaffCD.TabIndex = 18;
@@ -1082,117 +1193,6 @@
             this.txtShukkaNo.TxtBox = null;
             this.txtShukkaNo.TxtBox1 = null;
             this.txtShukkaNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtShukkaNo_KeyDown);
-            // 
-            // colJANCD
-            // 
-            this.colJANCD.DataPropertyName = "JANCD";
-            this.colJANCD.Frozen = true;
-            this.colJANCD.HeaderText = "JANCD";
-            this.colJANCD.Name = "colJANCD";
-            this.colJANCD.ReadOnly = true;
-            // 
-            // colShouhin
-            // 
-            this.colShouhin.DataPropertyName = "HinbanCD";
-            this.colShouhin.HeaderText = "商品";
-            this.colShouhin.Name = "colShouhin";
-            this.colShouhin.ReadOnly = true;
-            this.colShouhin.Width = 120;
-            // 
-            // colShouhinName
-            // 
-            this.colShouhinName.DataPropertyName = "ShouhinName";
-            this.colShouhinName.HeaderText = "商品名";
-            this.colShouhinName.Name = "colShouhinName";
-            this.colShouhinName.ReadOnly = true;
-            this.colShouhinName.Width = 305;
-            // 
-            // colColorShortName
-            // 
-            this.colColorShortName.DataPropertyName = "ColorRyakuName";
-            this.colColorShortName.HeaderText = "カラー略名\t\t\t\t\t\t\t\t";
-            this.colColorShortName.Name = "colColorShortName";
-            this.colColorShortName.ReadOnly = true;
-            this.colColorShortName.Width = 120;
-            // 
-            // colColorNO
-            // 
-            this.colColorNO.DataPropertyName = "ColorNO";
-            this.colColorNO.HeaderText = "カラー";
-            this.colColorNO.Name = "colColorNO";
-            this.colColorNO.ReadOnly = true;
-            // 
-            // colSize
-            // 
-            this.colSize.DataPropertyName = "SizeNO";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colSize.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colSize.HeaderText = "サイズ\t\t\t\t\t\t";
-            this.colSize.Name = "colSize";
-            this.colSize.ReadOnly = true;
-            // 
-            // colShukkazansuu
-            // 
-            this.colShukkazansuu.DataPropertyName = "ShukkaSiziZumiSuu";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            this.colShukkazansuu.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colShukkazansuu.HeaderText = "出荷残数\t\t\t\t";
-            this.colShukkazansuu.Name = "colShukkazansuu";
-            this.colShukkazansuu.ReadOnly = true;
-            this.colShukkazansuu.Width = 90;
-            // 
-            // colMiryoku
-            // 
-            this.colMiryoku.DataPropertyName = "MiNyuukaSuu";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.NullValue = "N0";
-            this.colMiryoku.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colMiryoku.HeaderText = "未入荷数\t\t\t\t";
-            this.colMiryoku.Name = "colMiryoku";
-            this.colMiryoku.ReadOnly = true;
-            this.colMiryoku.Width = 90;
-            // 
-            // colKonkai
-            // 
-            this.colKonkai.DataPropertyName = "ShukkaSuu";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            this.colKonkai.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colKonkai.HeaderText = "今回出荷数\t\t\t\t\t";
-            this.colKonkai.MaxInputLength = 5;
-            this.colKonkai.Name = "colKonkai";
-            // 
-            // colComplete
-            // 
-            this.colComplete.DataPropertyName = "Kanryou";
-            this.colComplete.HeaderText = "完了\t\t";
-            this.colComplete.Name = "colComplete";
-            this.colComplete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colComplete.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.colComplete.Width = 40;
-            // 
-            // colDetail
-            // 
-            this.colDetail.DataPropertyName = "ShukkaMeisaiTekiyou";
-            this.colDetail.HeaderText = "明細摘要";
-            this.colDetail.MaxInputLength = 80;
-            this.colDetail.Name = "colDetail";
-            this.colDetail.Width = 500;
-            // 
-            // ShukkaSiziNOGyouNO
-            // 
-            this.ShukkaSiziNOGyouNO.DataPropertyName = "ShukkaSiziNOGyouNO";
-            this.ShukkaSiziNOGyouNO.HeaderText = "出荷指示番号-行番号";
-            this.ShukkaSiziNOGyouNO.Name = "ShukkaSiziNOGyouNO";
-            this.ShukkaSiziNOGyouNO.Width = 142;
-            // 
-            // ShukkaSiziNO
-            // 
-            this.ShukkaSiziNO.DataPropertyName = "ShukkaSiziNO";
-            this.ShukkaSiziNO.HeaderText = "ShukkaSiziNO";
-            this.ShukkaSiziNO.Name = "ShukkaSiziNO";
-            this.ShukkaSiziNO.Visible = false;
             // 
             // ShukkaNyuuryoku
             // 
