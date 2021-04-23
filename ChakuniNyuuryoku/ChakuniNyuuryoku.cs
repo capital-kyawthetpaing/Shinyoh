@@ -659,7 +659,12 @@ namespace ChakuniNyuuryoku
                     dt = cbl.D_Exclusive_Lock_Check(chkEntity);
                     if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
                     {
-                        bbl.ShowMessage("S004");
+                        string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
+                        Data1 = dt.Rows[0]["Program"].ToString();
+                        Data2 = dt.Rows[0]["Operator"].ToString();
+                        Data3 = dt.Rows[0]["PC"].ToString();
+
+                        bbl.ShowMessage("S004", Data1, Data2, Data3);
                         Gvrow_Delete(dr);
                         return;
                     }
@@ -675,7 +680,12 @@ namespace ChakuniNyuuryoku
                     dt1 = cbl.D_Exclusive_Lock_Check(chkEntity);
                     if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
                     {
-                        bbl.ShowMessage("S004");
+                        string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
+                        Data1 = dt.Rows[0]["Program"].ToString();
+                        Data2 = dt.Rows[0]["Operator"].ToString();
+                        Data3 = dt.Rows[0]["PC"].ToString();
+
+                        bbl.ShowMessage("S004", Data1, Data2, Data3);
                         if (dr != null)
                             Gvrow_Delete(dr);
                         return;
