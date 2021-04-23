@@ -196,6 +196,13 @@ namespace HacchuuNyuuryoku
 
             gv_HacchuuNyuuryoku.Memory_Row_Count = 0;
 
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
+
             if (cboMode.SelectedValue.ToString() == "1")
             {
                 cboMode.NextControlName = txtCopy.Name;
