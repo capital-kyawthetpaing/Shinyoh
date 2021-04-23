@@ -47,6 +47,25 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("JuchuuNyuuryoku_Search", GetConnectionString(), parameters);
             return dt;
         }
+
+        public string JuchuuNyuuryoku_CUD(string mode, string xml_header, string xml_Main, string xml_detail, SqlCommand sqlCommand)
+        {
+            sqlCommand.CommandText = "JuchuuNyuuryoku_CUD";
+            sqlCommand.Parameters.Clear();
+            var parameters = new SqlParameter[4];
+            parameters[0] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = mode };
+            parameters[1] = new SqlParameter("@XML_Header", SqlDbType.Xml) { Value = xml_header };
+            parameters[2] = new SqlParameter("@XML_Main", SqlDbType.Xml) { Value = xml_Main };
+            parameters[3] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
+
+            if (parameters != null)
+                parameters = ChangeToDBNull(parameters);
+            sqlCommand.Parameters.AddRange(parameters);
+
+            sqlCommand.ExecuteNonQuery();
+
+            return "true";
+        }
         public string JuchuuNyuuryoku_CUD(string mode,string xml_header,string xml_Main,string xml_detail)
         {
             CKMDL ckmdl = new CKMDL();
@@ -66,6 +85,51 @@ namespace BL
             parameters[2] = new SqlParameter("@SEQNO", SqlDbType.VarChar) { Value = SEQNO };
             DataTable dt= ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
             return dt;
+        }
+
+        private SqlParameter[] ChangeToDBNull(SqlParameter[] para)
+        {
+            foreach (var p in para)
+            {
+                if (p.Value == null || string.IsNullOrWhiteSpace(p.Value.ToString()))
+                {
+                    p.Value = DBNull.Value;
+                    p.SqlValue = DBNull.Value;
+                }
+                else
+                {
+                    p.Value = p.Value.ToString().Trim();
+                    p.SqlValue = p.Value.ToString().Trim();
+                }
+            }
+
+            return para;
+        }
+        public DataTable GetJuchuuNO(string SerialNO, string JuchuuDate, string SEQNO,SqlCommand sqlCommand)
+        {
+            CKMDL ckmdl = new CKMDL();
+            sqlCommand.CommandText = "Fnc_GetDenpyouNO";
+            sqlCommand.Parameters.Clear();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@SerialNO", SqlDbType.VarChar) { Value = SerialNO };
+            parameters[1] = new SqlParameter("@refDate", SqlDbType.VarChar) { Value = JuchuuDate };
+            parameters[2] = new SqlParameter("@SEQNO", SqlDbType.VarChar) { Value = SEQNO };
+
+            if (parameters != null)
+                parameters = ChangeToDBNull(parameters);
+            sqlCommand.Parameters.AddRange(parameters);
+
+            DataTable dt = new DataTable("data");
+            var adapt = new SqlDataAdapter();
+            adapt.SelectCommand = sqlCommand;
+            adapt.Fill(dt);
+           
+            return dt;
+        }
+
+        public string GetCon()
+        {
+            return GetConnectionString();
         }
         public string JuchuuNyuuryoku_Exclusive_Insert(StaffEntity obj)
         {

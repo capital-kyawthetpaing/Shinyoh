@@ -164,10 +164,10 @@ namespace ChakuniYoteiNyuuryoku
                 }
                 else
                 {
-                    Mode_Setting();
-                    Disable();
+                    Mode_Setting();                 
                 }
                 dtTemp.Clear();
+                Disable();
             }
             if (tagID == "8")
             {
@@ -565,11 +565,13 @@ namespace ChakuniYoteiNyuuryoku
             {
                 var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("HacchuuDate")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
                 gvChakuniYoteiNyuuryoku.DataSource = dtConfirm;
+                Disable();
             }
             else
             {
                 F8_dt1 = CreateTable_Detail();
                 gvChakuniYoteiNyuuryoku.DataSource = F8_dt1;
+                Disable();
             }
         }
         private void btnDisplay_Click(object sender, EventArgs e)
@@ -944,6 +946,7 @@ namespace ChakuniYoteiNyuuryoku
             gvChakuniYoteiNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
 
             Focus_Clear();
+            Disable();
         }
         private void Focus_Clear()
         {
@@ -951,10 +954,13 @@ namespace ChakuniYoteiNyuuryoku
             gvChakuniYoteiNyuuryoku.ClearSelection();
             gvChakuniYoteiNyuuryoku.DataSource = dtClear;
             gvChakuniYoteiNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
+            chkSS.Checked = true;
+            chkFW.Checked = true;
             
         }
         private void Disable()
         {
+            if(gvChakuniYoteiNyuuryoku.Columns.Contains("ChakuniYoteiGyouNO"))
             gvChakuniYoteiNyuuryoku.Columns["ChakuniYoteiGyouNO"].Visible = false;
         }
         private void gvChakuniYoteiNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)

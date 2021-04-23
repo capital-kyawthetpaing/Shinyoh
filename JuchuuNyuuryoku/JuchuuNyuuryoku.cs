@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -1236,8 +1237,10 @@ namespace JuchuuNyuuryoku
             txtYearTerm.Text = string.Empty;
             chk_SS.Checked = false;
             chk_FW.Checked = false;
-            txtColorNo.Text = string.Empty; ;
+            txtColorNo.Text = string.Empty; 
             txtSizeNo.Text = string.Empty;
+            chk_SS.Checked = true;
+            chk_FW.Checked = true;
         }
 
         private void btnNameF8_Click(object sender, EventArgs e)
@@ -1270,29 +1273,51 @@ namespace JuchuuNyuuryoku
 
         private void DBProcess()
         {
-            string mode = string.Empty;
-            (string, string, string) obj = GetInsert();
-            if ((!string.IsNullOrEmpty(obj.Item1)) && (!string.IsNullOrEmpty(obj.Item2)) && (!string.IsNullOrEmpty(obj.Item3)))
+            //ktp Add transaction 2021-04-23
+            using (SqlConnection sqlConnection = new SqlConnection(obj_bl.GetCon()))
             {
-                if (cboMode.SelectedValue.Equals("1"))
+                sqlConnection.Open();
+                SqlCommand sqlCommand = sqlConnection.CreateCommand();
+                SqlTransaction sqlTransaction = sqlConnection.BeginTransaction();
+                sqlCommand.Connection = sqlConnection;
+                sqlCommand.Transaction = sqlTransaction;
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+
+                try
                 {
-                    mode = "New";
-                    DoInsert(mode, obj.Item1, obj.Item2, obj.Item3);
+                    string mode = string.Empty;
+                    (string, string, string) obj = GetInsert(sqlCommand);
+                    if ((!string.IsNullOrEmpty(obj.Item1)) && (!string.IsNullOrEmpty(obj.Item2)) && (!string.IsNullOrEmpty(obj.Item3)))
+                    {
+                        if (cboMode.SelectedValue.Equals("1"))
+                        {
+                            mode = "New";
+                            DoInsert(mode, obj.Item1, obj.Item2, obj.Item3, sqlCommand);
+                        }
+                        else if (cboMode.SelectedValue.Equals("2"))
+                        {
+                            mode = "Update";
+                            DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3, sqlCommand);
+                        }
+                        else if (cboMode.SelectedValue.Equals("3"))
+                        {
+                            mode = "Delete";
+                            DoDelete(mode, obj.Item1, obj.Item2, obj.Item3, sqlCommand);
+                        }
+                    }
+
+                    sqlTransaction.Commit();
                 }
-                else if (cboMode.SelectedValue.Equals("2"))
+                catch(Exception ex)
                 {
-                    mode = "Update";
-                    DoUpdate(mode, obj.Item1, obj.Item2, obj.Item3);
+                    sqlTransaction.Rollback();
+                    base_bl.ShowMessage(ex.Message);
                 }
-                else if (cboMode.SelectedValue.Equals("3"))
-                {
-                    mode = "Delete";
-                    DoDelete(mode, obj.Item1, obj.Item2, obj.Item3);
-                }
-            }
+                
+            }            
         }
 
-        private (string, string, string) GetInsert()
+        private (string, string, string) GetInsert(SqlCommand sqlCommand)
         {
             TokuisakiEntity t_obj = tobj.Access_Tokuisaki_obj;
             KouritenEntity k_obj = kobj.Access_Kouriten_obj;
@@ -1357,7 +1382,7 @@ namespace JuchuuNyuuryoku
             if (cboMode.SelectedValue.ToString() == "1" && F8_dt1.Rows.Count > 0)
             {
                 //Get JuchuuNo and JuchuuGyouNO
-                DataTable Juchuu_dt = obj_bl.GetJuchuuNO("1", txtJuchuuDate.Text, "0");
+                DataTable Juchuu_dt = obj_bl.GetJuchuuNO("1", txtJuchuuDate.Text, "0",sqlCommand);
                 for(int k=0;k<F8_dt1.Rows.Count;k++)
                 {
                     F8_dt1.Rows[k]["JuchuuNO"] = Juchuu_dt.Rows[0]["Column1"];
@@ -1380,7 +1405,7 @@ namespace JuchuuNyuuryoku
                     //if (dt_Main.Rows[i]["Free"].ToString() != "1")
                     if (select_drF.Length > 0)
                     {
-                        hacchuu_dt = obj_bl.GetJuchuuNO("2", txtJuchuuDate.Text, "0");
+                        hacchuu_dt = obj_bl.GetJuchuuNO("2", txtJuchuuDate.Text, "0",sqlCommand);
                         dt_Main.Rows[i]["HacchuuNO"] = hacchuu_dt.Rows[0]["Column1"];
                     }
 
@@ -1576,26 +1601,26 @@ namespace JuchuuNyuuryoku
             create_dt.Columns.Add("ProgramID");
         }
 
-        private void DoInsert(string mode,string str_header,string str_main,string str_detail)
+        private void DoInsert(string mode,string str_header,string str_main,string str_detail,SqlCommand sqlCommand)
         {
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
-            string return_BL =  objMethod.JuchuuNyuuryoku_CUD(mode,str_header,str_main,str_detail);
+            string return_BL =  objMethod.JuchuuNyuuryoku_CUD(mode,str_header,str_main,str_detail,sqlCommand);
             if (return_BL == "true")
                 base_bl.ShowMessage("I101");
         }
 
-        private void DoUpdate(string mode, string str_header, string str_main, string str_detail)
+        private void DoUpdate(string mode, string str_header, string str_main, string str_detail, SqlCommand sqlCommand)
         {
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
-            string return_BL = objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail);
+            string return_BL = objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail,sqlCommand);
             if (return_BL == "true")
                 base_bl.ShowMessage("I101");
         }
 
-        private void DoDelete(string mode, string str_header, string str_main, string str_detail)
+        private void DoDelete(string mode, string str_header, string str_main, string str_detail, SqlCommand sqlCommand)
         {
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
-            string return_BL = objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail);
+            string return_BL = objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail,sqlCommand);
             if (return_BL == "true")
                 base_bl.ShowMessage("I102");
         }
