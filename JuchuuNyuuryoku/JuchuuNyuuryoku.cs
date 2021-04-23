@@ -1006,6 +1006,8 @@ namespace JuchuuNyuuryoku
 
                     if (F8_dt1.Rows.Count == 0)
                         F8_dt1 = gvdt1.Clone();
+
+                    gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[0].Cells["colFree"]; //HET
                 }
             }
             gv_JuchuuNyuuryoku.ActionType = string.Empty;             //to check gv error at the ErrorCheck() of BaseForm.cs

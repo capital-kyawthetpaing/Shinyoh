@@ -592,7 +592,7 @@ namespace HacchuuNyuuryoku
                         F8_dt1 = gv1_to_dt1.Clone();
                     gv_HacchuuNyuuryoku.Select();
 
-                    gv_HacchuuNyuuryoku.CurrentCell = gv_HacchuuNyuuryoku.Rows[0].Cells[5];//set focus to chakuniyotei date (ktp)
+                    gv_HacchuuNyuuryoku.CurrentCell = gv_HacchuuNyuuryoku.Rows[0].Cells["colChakuniYoteiDate"];//set focus to chakuniyotei date (ktp)
                 }
                 else
                 {
