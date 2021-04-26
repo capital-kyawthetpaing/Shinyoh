@@ -579,6 +579,7 @@ namespace ShukkaNyuuryoku {
                             if (count)
                             {
                                 bbl.ShowMessage("S004", Data1, Data2, Data3);
+                                return;
                             }
                             gvShukka1.DataSource = dtHaita;
                             gvShukka1.Columns[12].Visible = false;
