@@ -283,8 +283,9 @@ namespace ChakuniYoteiNyuuryoku
                             Data3 = dt1.Rows[0]["PC"].ToString();
 
                             bbl.ShowMessage("S004", Data1, Data2, Data3);
-                            if (dr != null)
-                                Gvrow_Delete(dr);
+                            //if (dr != null)
+                            //    Gvrow_Delete(dr);
+                            D_Exclusive_HacchuuNO_Delete();
                             return;
                         }
                         //dtGridSource = dtmain.Copy();     
@@ -299,11 +300,37 @@ namespace ChakuniYoteiNyuuryoku
             }
             gvChakuniYoteiNyuuryoku.ActionType = string.Empty;
         }
+        private void D_Exclusive_HacchuuNO_Delete()
+        {
+            if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")//update
+            {
+                foreach (DataRow dr in dtmain.Rows)
+                {
+                    string HacchuuNO = dr["HacchuuNO"].ToString();
+
+                    DataRow[] selectRow = F8_dt1.Select("HacchuuNO ='" + HacchuuNO + "'");
+                    if (selectRow.Length > 0)
+                        continue;
+
+                    ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+                    chkLockEntity.DataKBN = 2;
+                    chkLockEntity.Number = HacchuuNO;
+                    chkLockEntity.ProgramID = ProgramID;
+                    chkLockEntity.PC = PCID;
+                    chkLockEntity.OperatorCD = OperatorCD;
+                    cbl.D_Exclusive_HacchuuNO_Delete(chkLockEntity);
+                }
+            }
+        }
         private void Gvrow_Delete(DataRow dr)
         {
             DataRow[] existDr1;
             if (dr["HacchuuNO"] != null)
             {
+                DataRow[] selectRow = F8_dt1.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
+                if (selectRow.Length > 0)
+                    return;
+
                 existDr1 = dtmain.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
                 foreach (DataRow row in existDr1)
                 {

@@ -112,17 +112,17 @@ BEGIN
     --And (@HinbanCD is null or (fs.HinbanCD  like '%' + @HinbanCD + '%'))
     --Order by dhm.HacchuuNO,dhm.GyouHyouziJun
      
-      DECLARE @HacchuuNO_table TABLE (idx int Primary Key IDENTITY(1,1), HacchuuNO varchar(20))
-            INSERT @HacchuuNO_table SELECT distinct HacchuuNO FROM D_HacchuuMeisai
-            declare @Count as int = 1
-            WHILE @Count <= (SELECT COUNT(*) FROM @HacchuuNO_table)
-            BEGIN
-            declare @Number as int=(select HacchuuNO from @HacchuuNO_table WHERE idx =@Count)
-            Insert into D_Exclusive
-            (DataKBN,Number,OperateDataTime,Operator,Program,PC)
-            Select 2,@Number,@currentDate,@Operator,@Program,@PC
-        SET @Count = @Count + 1
-            END;
+--      DECLARE @HacchuuNO_table TABLE (idx int Primary Key IDENTITY(1,1), HacchuuNO varchar(20))
+--            INSERT @HacchuuNO_table SELECT distinct HacchuuNO FROM D_HacchuuMeisai
+--            declare @Count as int = 1
+--            WHILE @Count <= (SELECT COUNT(*) FROM @HacchuuNO_table)
+--            BEGIN
+--            declare @Number as int=(select HacchuuNO from @HacchuuNO_table WHERE idx =@Count)
+--            Insert into D_Exclusive
+--            (DataKBN,Number,OperateDataTime,Operator,Program,PC)
+--            Select 2,@Number,@currentDate,@Operator,@Program,@PC
+--        SET @Count = @Count + 1
+--            END;
 END
 
 GO
