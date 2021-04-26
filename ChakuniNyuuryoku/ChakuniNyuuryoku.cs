@@ -718,7 +718,7 @@ namespace ChakuniNyuuryoku
                     for (int i = 0; i < gv.Cells.Count; i++)
                     {
                         string colName = gvChakuniNyuuryoku.Columns[i].Name;
-                        if (colName == "ChakuniSuu" || colName == "colDetail")
+                        if (colName == "ChakuniSuu" || colName == "ChakuniMeisaiTekiyou")
                         {
                             if (!Grid_ErrorCheck(gv.Index, i))
                             {
@@ -1126,6 +1126,17 @@ namespace ChakuniNyuuryoku
                 if (Convert.ToInt64(value) < 0)
                 {
                     bbl.ShowMessage("E109");
+                    return false;
+                }
+            }
+            if (gvChakuniNyuuryoku.Columns[col].Name == "ChakuniMeisaiTekiyou")   //HET
+            {
+                int MaxLength = ((DataGridViewTextBoxColumn)gvChakuniNyuuryoku.Columns["ChakuniMeisaiTekiyou"]).MaxInputLength;
+
+                string byte_text = gvChakuniNyuuryoku.Rows[row].Cells["ChakuniMeisaiTekiyou"].EditedFormattedValue.ToString();
+                if (cf.IsByteLengthOver(MaxLength, byte_text))
+                {
+                    MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
             }
