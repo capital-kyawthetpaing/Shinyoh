@@ -466,30 +466,63 @@ namespace HacchuuNyuuryoku
                 }
             }
         }
+        private bool HacchuuNO_Check()
+        {
+            HacchuuNyuuryokuEntity obj = new HacchuuNyuuryokuEntity();
+            obj.DataKBN = 2;
+            obj.Number = txtHacchuuNO.Text;
+            obj.ProgramID = ProgramID;
+            obj.PC = PCID;
+            obj.OperatorCD = OperatorCD;
+            DataTable dt = new DataTable();
+            dt = obj_bl.D_Exclusive_Lock_Check(obj);
+            if (dt.Rows[0]["MessageID"].ToString().Equals("1"))
+            {
+                return true;
+            }
 
+            string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
+            Data1 = dt.Rows[0]["Program"].ToString();
+            Data2 = dt.Rows[0]["Operator"].ToString();
+            Data3 = dt.Rows[0]["PC"].ToString();
+
+            obj_bl.ShowMessage("S004", Data1, Data2, Data3);
+            txtHacchuuNO.Focus();
+            return false;
+        }
         private void txtHacchuuNO_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 if (!txtHacchuuNO.IsErrorOccurs)
                 {
-                    StaffEntity obj_staff = new StaffEntity();
-                    obj_staff.OperatorCD = OperatorCD;
-                    obj_staff.PC = PCID;
-                    obj_staff.StaffName = txtHacchuuNO.Text;
-                    if (cboMode.SelectedValue.ToString() == "2")//update
+                    if (cboMode.SelectedValue.ToString().Equals("2") || cboMode.SelectedValue.ToString().Equals("3"))
                     {
-                        obj_bl.HacchuuNyuuryoku_Exclusive_Insert(obj_staff);
-                        EnablePanel();
-                    }
-                    else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
-                    {
-                        if (cboMode.SelectedValue.ToString() == "3")
+                        if (HacchuuNO_Check())
                         {
-                            obj_bl.HacchuuNyuuryoku_Exclusive_Insert(obj_staff);
+                            StaffEntity obj_staff = new StaffEntity();
+                            obj_staff.OperatorCD = OperatorCD;
+                            obj_staff.PC = PCID;
+                            obj_staff.StaffName = txtHacchuuNO.Text;
+                            if (cboMode.SelectedValue.ToString() == "2")//update
+                            {
+                                obj_bl.HacchuuNyuuryoku_Exclusive_Insert(obj_staff);
+                                EnablePanel();
+                            }
+                            else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                            {
+                                if (cboMode.SelectedValue.ToString() == "3")
+                                {
+                                    obj_bl.HacchuuNyuuryoku_Exclusive_Insert(obj_staff);
+                                }
+                                cf.DisablePanel(PanelTitle);
+                                btn_Siiresaki.Enabled = true;
+                            }
                         }
-                        cf.DisablePanel(PanelTitle);
-                        btn_Siiresaki.Enabled = true;
+                        else
+                        {
+                            return;
+                        }
                     }
                 }
                 DataTable dt = txtHacchuuNO.IsDatatableOccurs;

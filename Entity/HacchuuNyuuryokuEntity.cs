@@ -24,8 +24,9 @@ namespace Entity
         public string SeasonSS { get; set; }
         public string SeasonFW { get; set; }
         public string ChangeDate { get; set; }
-       
-
+        //For insert exclusive
+        public int DataKBN { get; set; }
+        public string Number { get; set; }
         //Search 
         public string Date1 { get; set; }
         public string Date2 { get; set; }
