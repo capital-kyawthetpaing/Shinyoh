@@ -1226,6 +1226,7 @@ namespace ShukkaSiziNyuuryoku
                     if (count)
                     {
                         bbl.ShowMessage("S004", Data1, Data2, Data3);
+                        return;
                     }
                     dgvShukkasizi.DataSource = dtHaita;
                     if(dtHaita.Rows.Count>0)
