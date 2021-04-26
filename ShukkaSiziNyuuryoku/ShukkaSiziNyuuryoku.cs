@@ -284,7 +284,7 @@ namespace ShukkaSiziNyuuryoku
             {
                 string colKonkai = dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString().Replace(",", "");
                 int colKonkaiShukkaSiziSuu = string.IsNullOrEmpty(dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(colKonkai);
-                dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].Value = colKonkaiShukkaSiziSuu.ToString();
+                dgvShukkasizi.Rows[row].Cells["colKonkaiShukkaSiziSuu"].Value =FormatPriceValue(colKonkaiShukkaSiziSuu.ToString());
                 string colTanka = dgvShukkasizi.Rows[row].Cells["colTanka"].EditedFormattedValue.ToString().Replace(",", "");
                 if ((colTanka.All(char.IsDigit)))
                 {
