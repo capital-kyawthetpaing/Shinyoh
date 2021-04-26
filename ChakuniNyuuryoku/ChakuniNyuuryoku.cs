@@ -577,26 +577,57 @@ namespace ChakuniNyuuryoku
                 //    gvChakuniNyuuryoku.Select();
                 //}
         }
-        private void Gvrow_Delete(DataRow dr)
+        private void D_Exclusive_Number_Delete()
         {
-            DataRow[] existDr1;
-            if (dr["ChakuniYoteiNO"] != null)
+            if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")//update
             {
-                existDr1 = dtmain.Select("ChakuniYoteiNO ='" + dr["ChakuniYoteiNO"] + "'");
-                foreach (DataRow row in existDr1)
+                foreach (DataRow dr in dtmain.Rows)
                 {
-                    dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
-                }
-            }
-            else if (dr["HacchuuNO"] != null)
-            {
-                existDr1 = dtmain.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
-                foreach (DataRow row in existDr1)
-                {
-                    dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+                    string ChakuniYoteiNO = dr["ChakuniYoteiNO"].ToString();
+                    string HacchuuNO = dr["HacchuuNO"].ToString();
+                    ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+                    chkLockEntity.ProgramID = ProgramID;
+                    chkLockEntity.PC = PCID;
+                    chkLockEntity.OperatorCD = OperatorCD;
+
+                    DataRow[] selectRowC = F8_dt1.Select("ChakuniYoteiNO ='" + ChakuniYoteiNO + "'");
+                    if (selectRowC.Length == 0)
+                    {
+                        chkLockEntity.DataKBN = 16;
+                        chkLockEntity.Number = ChakuniYoteiNO;
+
+                        cbl.D_Exclusive_Number_Delete(chkLockEntity);
+                    }
+                    DataRow[] selectRow = F8_dt1.Select("HacchuuNO ='" + HacchuuNO + "'");
+                    if (selectRow.Length == 0)
+                    {
+                        chkLockEntity.DataKBN = 2;
+                        chkLockEntity.Number = HacchuuNO;
+                        cbl.D_Exclusive_Number_Delete(chkLockEntity);
+                    }
                 }
             }
         }
+        //private void Gvrow_Delete(DataRow dr)
+        //{
+        //    DataRow[] existDr1;
+        //    if (dr["ChakuniYoteiNO"] != null)
+        //    {
+        //        existDr1 = dtmain.Select("ChakuniYoteiNO ='" + dr["ChakuniYoteiNO"] + "'");
+        //        foreach (DataRow row in existDr1)
+        //        {
+        //            dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+        //        }
+        //    }
+        //    else if (dr["HacchuuNO"] != null)
+        //    {
+        //        existDr1 = dtmain.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
+        //        foreach (DataRow row in existDr1)
+        //        {
+        //            dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+        //        }
+        //    }
+        //}
         private void ChakuniYoteiNO_Delete()
         {
             chkEntity = new ChakuniNyuuryoku_Entity();
@@ -665,7 +696,8 @@ namespace ChakuniNyuuryoku
                         Data3 = dt.Rows[0]["PC"].ToString();
 
                         bbl.ShowMessage("S004", Data1, Data2, Data3);
-                        Gvrow_Delete(dr);
+                        //Gvrow_Delete(dr);
+                        D_Exclusive_Number_Delete();
                         return;
                     }
                     string HacchuuNO = dr["HacchuuNO"].ToString();
@@ -678,16 +710,17 @@ namespace ChakuniNyuuryoku
                     DataTable dt1 = new DataTable();
                     cbl = new chakuniNyuuryoku_BL();
                     dt1 = cbl.D_Exclusive_Lock_Check(chkEntity);
-                    if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                    if (dt1.Rows[0]["MessageID"].ToString().Equals("S004"))
                     {
                         string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
-                        Data1 = dt.Rows[0]["Program"].ToString();
-                        Data2 = dt.Rows[0]["Operator"].ToString();
-                        Data3 = dt.Rows[0]["PC"].ToString();
+                        Data1 = dt1.Rows[0]["Program"].ToString();
+                        Data2 = dt1.Rows[0]["Operator"].ToString();
+                        Data3 = dt1.Rows[0]["PC"].ToString();
 
                         bbl.ShowMessage("S004", Data1, Data2, Data3);
-                        if (dr != null)
-                            Gvrow_Delete(dr);
+                        //if (dr != null)
+                        //    Gvrow_Delete(dr);
+                        D_Exclusive_Number_Delete();
                         return;
                     }
                     //dtGridSource = dtmain.Copy();     

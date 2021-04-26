@@ -322,32 +322,22 @@ namespace ChakuniYoteiNyuuryoku
                 }
             }
         }
-        private void Gvrow_Delete(DataRow dr)
-        {
-            DataRow[] existDr1;
-            if (dr["HacchuuNO"] != null)
-            {
-                DataRow[] selectRow = F8_dt1.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
-                if (selectRow.Length > 0)
-                    return;
+        //private void Gvrow_Delete(DataRow dr)
+        //{
+        //    DataRow[] existDr1;
+        //    if (dr["HacchuuNO"] != null)
+        //    {
+        //        DataRow[] selectRow = F8_dt1.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
+        //        if (selectRow.Length > 0)
+        //            return;
 
-                existDr1 = dtmain.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
-                foreach (DataRow row in existDr1)
-                {
-                    dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
-                }
-            }
-        }
-        private void HacchuuNO_Delete()
-        {
-            ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity();
-            chkEntity.DataKBN = 2;
-            chkEntity.OperatorCD = OperatorCD;
-            chkEntity.ProgramID = ProgramID;
-            chkEntity.PC = PCID;
-            cbl = new ChakuniYoteiNyuuryoku_BL();
-            cbl.D_Exclusive_HacchuuNO_Delete(chkEntity);
-        }
+        //        existDr1 = dtmain.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
+        //        foreach (DataRow row in existDr1)
+        //        {
+        //            dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+        //        }
+        //    }
+        //}
 
         private void DBProcess()
         {
