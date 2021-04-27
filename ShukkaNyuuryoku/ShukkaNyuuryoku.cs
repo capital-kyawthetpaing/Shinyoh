@@ -573,7 +573,10 @@ namespace ShukkaNyuuryoku {
                                     Data1 = dt.Rows[0]["Program"].ToString();
                                     Data2 = dt.Rows[0]["Operator"].ToString();
                                     Data3 = dt.Rows[0]["PC"].ToString();
-                                    Gvrow_Delete(dr);
+                                    //Gvrow_Delete(dr);
+                                    D_Exclusive_ShukkaSiziNO_Delete();
+                                    bbl.ShowMessage("S004", Data1, Data2, Data3);
+                                    return;
                                 }
                             }
                             if (count)
@@ -646,16 +649,38 @@ namespace ShukkaNyuuryoku {
                         gvShukka1.Columns.Remove("UriageKanryouKBN");
                 }
             }
-        }     
-        private void Gvrow_Delete(DataRow dr)
+        }
+        private void D_Exclusive_ShukkaSiziNO_Delete()
         {
-            DataRow[] existDr1 = dtHaita.Select("ShukkaSiziNO ='" + dr["ShukkaSiziNO"] + "'");
-
-            foreach (DataRow row in existDr1)
+            if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")//update
             {
-                dtHaita.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+                foreach (DataRow dr in gvdt1.Rows)
+                {
+                    string ShukkaSiziNO = dr["ShukkaSiziNO"].ToString();
+
+                    DataRow[] selectRow = F8_dt1.Select("ShukkaSiziNO ='" + ShukkaSiziNO + "'");
+                    if (selectRow.Length > 0)
+                        continue;
+
+                    ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+                    chkLockEntity.DataKBN = 12;
+                    chkLockEntity.Number = ShukkaSiziNO;
+                    chkLockEntity.ProgramID = ProgramID;
+                    chkLockEntity.PC = PCID;
+                    chkLockEntity.OperatorCD = OperatorCD;
+                    bl.D_Exclusive_ShukkaSiziNO_Delete(chkLockEntity);
+                }
             }
         }
+        //private void Gvrow_Delete(DataRow dr)
+        //{
+        //    DataRow[] existDr1 = dtHaita.Select("ShukkaSiziNO ='" + dr["ShukkaSiziNO"] + "'");
+
+        //    foreach (DataRow row in existDr1)
+        //    {
+        //        dtHaita.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+        //    }
+        //}
         private void Function_F11()
         {
             if (F11_Gridivew_ErrorCheck())
