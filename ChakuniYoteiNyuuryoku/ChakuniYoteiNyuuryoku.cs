@@ -974,6 +974,17 @@ namespace ChakuniYoteiNyuuryoku
                     return false;
                 }
             }
+            if (gvChakuniYoteiNyuuryoku.Columns[col].Name == "colDetails")   //HET
+            {
+                int MaxLength = ((DataGridViewTextBoxColumn)gvChakuniYoteiNyuuryoku.Columns["colDetails"]).MaxInputLength;
+
+                string byte_text = gvChakuniYoteiNyuuryoku.Rows[row].Cells["colDetails"].EditedFormattedValue.ToString();
+                if (cf.IsByteLengthOver(MaxLength, byte_text))
+                {
+                    MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
             return true;
         }
         private bool GV_Check()
@@ -985,7 +996,7 @@ namespace ChakuniYoteiNyuuryoku
                     for (int i = 0; i < gv.Cells.Count; i++)
                     {
                         string colName = gvChakuniYoteiNyuuryoku.Columns[i].Name;
-                        if (colName == "colYoteiSuu")
+                        if (colName == "colYoteiSuu" || colName == "colDetails")
                         {
                             if (!Grid_ErrorCheck(gv.Index, i))
                             {
