@@ -1219,7 +1219,11 @@ namespace ShukkaSiziNyuuryoku
                                 Data1 = dt.Rows[0]["Program"].ToString();
                                 Data2 = dt.Rows[0]["Operator"].ToString();
                                 Data3 = dt.Rows[0]["PC"].ToString();
-                                Gvrow_Delete(dr);
+                                //Gvrow_Delete(dr);
+                                D_Exclusive_JuchuuNO_Delete();
+                                bbl.ShowMessage("S004", Data1, Data2, Data3);
+                                return;
+
                             }
                         }
                     }
@@ -1283,15 +1287,37 @@ namespace ShukkaSiziNyuuryoku
             sksz_bl = new ShukkasiziNyuuryokuBL();
             sksz_bl.SKSZ_D_Exclusive_JuchuuNO_Delete(sksz_e);
         }
-        private void Gvrow_Delete(DataRow dr)
+        private void D_Exclusive_JuchuuNO_Delete()
         {
-            DataRow[] existDr1 = dtHaita.Select("JuchuuNO ='" + dr["JuchuuNO"] + "'");
-
-            foreach (DataRow row in existDr1)
+            if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")//update
             {
-                dtHaita.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+                foreach (DataRow dr in dtgv1.Rows)
+                {
+                    string JuchuuNO = dr["JuchuuNO"].ToString();
+
+                    DataRow[] selectRow = F8_dt1.Select("JuchuuNO ='" + JuchuuNO + "'");
+                    if (selectRow.Length > 0)
+                        continue;
+
+                    ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+                    chkLockEntity.DataKBN = 1;
+                    chkLockEntity.Number = JuchuuNO;
+                    chkLockEntity.ProgramID = ProgramID;
+                    chkLockEntity.PC = PCID;
+                    chkLockEntity.OperatorCD = OperatorCD;
+                    sksz_bl.D_Exclusive_JuchuuNO_Delete(chkLockEntity);
+                }
             }
         }
+        //private void Gvrow_Delete(DataRow dr)
+        //{
+        //    DataRow[] existDr1 = dtHaita.Select("JuchuuNO ='" + dr["JuchuuNO"] + "'");
+
+        //    foreach (DataRow row in existDr1)
+        //    {
+        //        dtHaita.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+        //    }
+        //}
         private void ModeType(int type)
         {
             dgvShukkasizi.Memory_Row_Count = 0;
