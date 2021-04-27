@@ -1101,6 +1101,7 @@
             // 
             this.ChakuniSuu.DataPropertyName = "ChakuniSuu";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
             dataGridViewCellStyle5.NullValue = "0";
             this.ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle5;
             this.ChakuniSuu.HeaderText = "今回着荷数";

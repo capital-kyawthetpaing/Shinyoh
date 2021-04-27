@@ -1098,6 +1098,7 @@
             // 
             this.colYoteiSuu.DataPropertyName = "ChakuniYoteiSuu";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
             dataGridViewCellStyle5.NullValue = null;
             this.colYoteiSuu.DefaultCellStyle = dataGridViewCellStyle5;
             this.colYoteiSuu.HeaderText = "今回着荷予定数";
