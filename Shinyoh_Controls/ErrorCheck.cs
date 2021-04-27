@@ -15,7 +15,10 @@ namespace Shinyoh_Controls
         {
             bbl.ShowMessage(messageID);
         }
-
+        public void ShowErrorMessage(string messageID, string par0)
+        {
+            bbl.ShowMessage(messageID, par0);
+        }
         public (bool,DataTable) Check(Control ctrl)
         {
             DataTable dt = new DataTable();
@@ -887,7 +890,7 @@ namespace Shinyoh_Controls
             {
                 if(!sCheckBox.ctrlE188_1.Checked && !sCheckBox.ctrlE188_2.Checked)
                 {
-                    ShowErrorMessage("E188");
+                    ShowErrorMessage("E188", sCheckBox.E188_ErrText);
                     sCheckBox.Focus();
                     return (true, rDt);
                 }
