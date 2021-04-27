@@ -773,7 +773,7 @@ namespace IdouNyuuryoku
                         }
                         else
                         {
-                            if (c == 12 && string.IsNullOrEmpty(row.Cells["colIdouGyouNO"].Value.ToString()) && !string.IsNullOrEmpty(txtCopy.Text))
+                            if (c == 12 && row.Cells["colIdouGyouNO"].Value.ToString().Equals("0") && !string.IsNullOrEmpty(txtCopy.Text))
                                 F8_drNew[c] = DBNull.Value;
                             else
                             F8_drNew[c] = row.Cells[c].Value;
