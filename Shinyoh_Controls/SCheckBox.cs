@@ -80,12 +80,14 @@ namespace Shinyoh_Controls
 
         public SCheckBox ctrlE188_1;
         public SCheckBox ctrlE188_2;
+        public string E188_ErrText;
 
-        public void E188Check(bool value, SCheckBox ctrl1, SCheckBox ctrl2)
+        public void E188Check(bool value, SCheckBox ctrl1, SCheckBox ctrl2, string errText)
         {
             E188 = value;
             ctrlE188_1 = ctrl1;
             ctrlE188_2 = ctrl2;
+            E188_ErrText= errText;
         }
 
         public bool ErrorCheck()

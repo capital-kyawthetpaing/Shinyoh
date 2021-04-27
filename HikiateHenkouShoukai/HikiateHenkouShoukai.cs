@@ -2,18 +2,10 @@
 using CKM_CommonFunction;
 using Entity;
 using Shinyoh;
-using Shinyoh_Search;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace HikiateHenkouShoukai
 {
@@ -208,7 +200,7 @@ namespace HikiateHenkouShoukai
             txtPostalCode2.Yuubin_Juusho(true, txtPostalCode1, txtPostalCode2, string.Empty, string.Empty);
 
             txtYearTerm.E102Check(true);
-            chkSeasonFW.E188Check(true, chkSeasonFW, chkSeasonSS);
+            chkSeasonFW.E188Check(true, chkSeasonFW, chkSeasonSS, "展示会 SS、展示会 FW ");
             txtSoukoCD.E102Check(true);
             txtSoukoCD.E101Check(true, "souko", txtSoukoCD, null, null);
             txtChakuniYoteiNO.E133Check(true, "HikiateHenkouShoukai", txtChakuniYoteiNO, null, null);
