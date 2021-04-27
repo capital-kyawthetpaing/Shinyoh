@@ -1135,6 +1135,7 @@
             this.txtChakuniYoteiNO.lblName = null;
             this.txtChakuniYoteiNO.lblName1 = null;
             this.txtChakuniYoteiNO.Location = new System.Drawing.Point(126, 8);
+            this.txtChakuniYoteiNO.MaxLength = 12;
             this.txtChakuniYoteiNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtChakuniYoteiNO.MoveNext = true;
             this.txtChakuniYoteiNO.Name = "txtChakuniYoteiNO";
