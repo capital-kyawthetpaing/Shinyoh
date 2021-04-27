@@ -646,7 +646,7 @@ namespace IdouNyuuryoku
                     {
                         if (IdouSuu > Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]))
                         {
-                            base_bl.ShowMessage("Q325", IdouSuu.ToString(), dt.Rows[0]["GenZaikoSuu"].ToString());
+                            base_bl.ShowMessage("Q326", IdouSuu.ToString(), dt.Rows[0]["GenZaikoSuu"].ToString());
                             bl_error = true;
                             return bl_error;
                         }
