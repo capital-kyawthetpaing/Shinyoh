@@ -399,7 +399,7 @@
             this.sbBrand.SearchType = Entity.SearchType.ScType.Brand;
             this.sbBrand.Size = new System.Drawing.Size(80, 19);
             this.sbBrand.TabIndex = 13;
-            this.sbBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.sbBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.sbBrand.TxtBox = null;
             this.sbBrand.TxtBox1 = null;
             this.sbBrand.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sbBrand_KeyDown);
