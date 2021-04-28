@@ -195,32 +195,34 @@ namespace ChakuniYoteiNyuuryoku
             }
             if (tagID == "12")
             {
-                //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail) && Temp_Null())
-                //{
-                if (F8_dt1.Rows.Count > 0 || dt_Details.Rows.Count > 0)
+                if (Temp_Null())
                 {
-                    try { 
-                    DBProcess();
-                    switch (cboMode.SelectedValue)
+                    if (F8_dt1.Rows.Count > 0 || dt_Details.Rows.Count > 0)
                     {
-                        case "1":
-                            ChangeMode(Mode.New);
-                            break;
-                        case "2":
-                            ChangeMode(Mode.Update);
-                            break;
-                        case "3":
-                            ChangeMode(Mode.Delete);
-                            break;
-                        case "4":
-                            ChangeMode(Mode.Inquiry);
-                            break;
-                            //}
-                    }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(this, ex.Message, this.Text);
+                        try
+                        {
+                            DBProcess();
+                            switch (cboMode.SelectedValue)
+                            {
+                                case "1":
+                                    ChangeMode(Mode.New);
+                                    break;
+                                case "2":
+                                    ChangeMode(Mode.Update);
+                                    break;
+                                case "3":
+                                    ChangeMode(Mode.Delete);
+                                    break;
+                                case "4":
+                                    ChangeMode(Mode.Inquiry);
+                                    break;
+                                    //}
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(this, ex.Message, this.Text);
+                        }
                     }
                 }
             }
