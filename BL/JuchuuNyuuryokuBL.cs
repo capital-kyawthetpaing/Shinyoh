@@ -142,6 +142,18 @@ namespace BL
             parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
             return ckmdl.InsertUpdateDeleteData("D_Exclusive_Insert", GetConnectionString(), parameters);
         }
+        public DataTable D_Exclusive_Lock_Check(StaffEntity se)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@DataKBN", SqlDbType.Int) { Value = "1" };
+            parameters[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = se.StaffName };
+            parameters[2] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = se.OperatorCD };
+            parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
+            parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
+            DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Lock_Check", GetConnectionString(), parameters);
+            return dt;
+        }
         public DataTable Get_Max_HacchuuNO(string JuchuuNo,string SiiresakiCD,string SoukoCD,string HacchuuNO)
         {
             CKMDL ckmdl = new CKMDL();

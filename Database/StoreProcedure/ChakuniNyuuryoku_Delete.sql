@@ -1,24 +1,25 @@
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/04/20 11:22:38 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/04/27 16:18:18 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ChakuniNyuuryoku_Delete%' and type like '%P%')
 DROP PROCEDURE [dbo].[ChakuniNyuuryoku_Delete]
 GO
 
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/04/20 11:22:38 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/04/27 16:18:18 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
--- History    : 2021/04/20 Y.Nishikawa �폜�o�^���Ă��폜����Ȃ�
---            : 2021/04/20 Y.Nishikawa ���ʂ�SELECT�폜
---            : 2021/04/20 Y.Nishikawa ���낢��(�ϐ����㏑������Ă�����폜���Ɋ����敪�̏ꍇ��������������)
---            : 2021/04/20 Y.Nishikawa ���݌ɂ��X�V����Ȃ�
+-- History    : 2021/04/20 Y.Nishikawa 削除登録しても削除されない
+--            : 2021/04/20 Y.Nishikawa 無駄なSELECT削除
+--            : 2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)
+--            : 2021/04/20 Y.Nishikawa 現在庫が更新されない
+--            : 2021/04/27 Y.Nishikawa 着荷情報を削除する際に、各テーブルの入庫日が消えないので、再計上すると在庫情報は新しい入庫日で作成されるが、受注詳細や出荷指示詳細は入庫日が上書きされないので、古い入庫日のままになっている
+--            : 2021/04/27 Y.Nishikawa 在庫更新を引当ファンクションに移動
 -- =============================================
 CREATE PROCEDURE [dbo].[ChakuniNyuuryoku_Delete]
 @XML_Main as xml,
@@ -147,9 +148,9 @@ declare @Unique as uniqueidentifier = NewID()
 				)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-		--2021/04/20 Y.Nishikawa DEL ���ʂ�SELECT�폜����
+		--2021/04/20 Y.Nishikawa DEL 無駄なSELECT削除↓↓
 	    --SELECT * FROM #Temp_Main
-		--2021/04/20 Y.Nishikawa DEL ���ʂ�SELECT�폜����
+		--2021/04/20 Y.Nishikawa DEL 無駄なSELECT削除↑↑
 
 		CREATE TABLE #Temp_Detail
 				(   
@@ -218,13 +219,13 @@ declare @Unique as uniqueidentifier = NewID()
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-		--2021/04/20 Y.Nishikawa DEL ���ʂ�SELECT�폜����
+		--2021/04/20 Y.Nishikawa DEL 無駄なSELECT削除↓↓
 	    --SELECT * FROM #Temp_Detail
-		--2021/04/20 Y.Nishikawa DEL ���ʂ�SELECT�폜����
+		--2021/04/20 Y.Nishikawa DEL 無駄なSELECT削除↑↑
 
 		Declare @OperatorCD as varchar(10) =(select Operator from #Temp_Main)
 
-		--2021/04/20 Y.Nishikawa ���낢��(�ϐ����㏑������Ă�����폜���Ɋ����敪�̏ꍇ��������������)/�X�V�ꏊ�ύX����
+		--2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)/更新場所変更↓↓
 		--Update D_ChakuniYoteiMeisai
         Update DCYM
         SET ChakuniZumiSuu = DCYM.ChakuniZumiSuu - DCKM.ChakuniSuu,
@@ -301,103 +302,112 @@ declare @Unique as uniqueidentifier = NewID()
 					 Group by DHAM.HacchuuNO
 					) DHAM
 		ON DHAM.HacchuuNO = DHAH.HacchuuNO
-        --2021/04/20 Y.Nishikawa ���낢��(�ϐ����㏑������Ă�����폜���Ɋ����敪�̏ꍇ��������������)/�X�V�ꏊ�ύX����
+        --2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)/更新場所変更↑↑
 
-		--2021/04/20 Y.Nishikawa ADD ���݌ɂ��쐬����Ȃ�����
-        IF EXISTS ( 
-                    SELECT * 
-                    FROM D_GenZaiko DGZK
-                    INNER JOIN (
-        			             SELECT H.SoukoCD
-        						       ,M.ShouhinCD
-        							   ,M.KanriNO
-        							   ,H.ChakuniDate
-        						 FROM D_Chakuni H
-                                 INNER JOIN D_ChakuniMeisai M
-                                 ON H.ChakuniNO = M.ChakuniNO
-                                 WHERE exists ( select *
-                                                from #Temp_Main
-                     			                where ChakuniNO = M.ChakuniNO
-                     			              )
-        						 GROUP BY H.SoukoCD
-        						         ,M.ShouhinCD
-        							     ,M.KanriNO
-        							     ,H.ChakuniDate
-        			           ) DCKM
-                                   ON DGZK.SoukoCD = DCKM.SoukoCD
-                                   AND DGZK.ShouhinCD = DCKM.ShouhinCD
-                                   AND DGZK.KanriNO = DCKM.KanriNO
-                                   AND DGZK.NyuukoDate = DCKM.ChakuniDate
-                   )
-        BEGIN
+		--2021/04/27 Y.Nishikawa DEL 在庫更新を引当ファンクションに移動↓↓
+		----2021/04/20 Y.Nishikawa ADD 現在庫が作成されない↓↓
+  --      IF EXISTS ( 
+  --                  SELECT * 
+  --                  FROM D_GenZaiko DGZK
+  --                  INNER JOIN (
+  --      			             SELECT H.SoukoCD
+  --      						       ,M.ShouhinCD
+  --      							   ,M.KanriNO
+  --      							   ,H.ChakuniDate
+  --      						 FROM D_Chakuni H
+  --                               INNER JOIN D_ChakuniMeisai M
+  --                               ON H.ChakuniNO = M.ChakuniNO
+  --                               WHERE exists ( select *
+  --                                              from #Temp_Main
+  --                   			                where ChakuniNO = M.ChakuniNO
+  --                   			              )
+  --      						 GROUP BY H.SoukoCD
+  --      						         ,M.ShouhinCD
+  --      							     ,M.KanriNO
+  --      							     ,H.ChakuniDate
+  --      			           ) DCKM
+  --                                 ON DGZK.SoukoCD = DCKM.SoukoCD
+  --                                 AND DGZK.ShouhinCD = DCKM.ShouhinCD
+  --                                 AND DGZK.KanriNO = DCKM.KanriNO
+  --                                 AND DGZK.NyuukoDate = DCKM.ChakuniDate
+  --                 )
+  --      BEGIN
         
-           UPDATE DGZK
-              SET GenZaikoSuu = GenZaikoSuu - DCKM.ChakuniSuu
-                 ,UpdateOperator = @OperatorCD
-                 ,UpdateDateTime = @currentDate
-        	FROM D_GenZaiko DGZK
-        	INNER JOIN (
-        			      SELECT H.SoukoCD
-        		         	    ,M.ShouhinCD
-        		         	    ,M.KanriNO
-        		         	    ,H.ChakuniDate
-        						,SUM(M.ChakuniSuu) ChakuniSuu
-        		          FROM D_Chakuni H
-                          INNER JOIN D_ChakuniMeisai M
-                          ON H.ChakuniNO = M.ChakuniNO
-                          WHERE exists ( select *
-                                                from #Temp_Main
-                     			                where ChakuniNO = M.ChakuniNO
-                     			              )
-        		          GROUP BY H.SoukoCD
-        		         	      ,M.ShouhinCD
-        		         	      ,M.KanriNO
-        		         	      ,H.ChakuniDate
-        			    ) DCKM
-           ON DGZK.SoukoCD = DCKM.SoukoCD
-           AND DGZK.ShouhinCD = DCKM.ShouhinCD
-           AND DGZK.KanriNO = DCKM.KanriNO
-           AND DGZK.NyuukoDate = DCKM.ChakuniDate
-        END
-        ELSE
-        BEGIN
+  --         UPDATE DGZK
+  --            SET GenZaikoSuu = GenZaikoSuu - DCKM.ChakuniSuu
+		--	     ,NyuukoDate = ''
+  --               ,UpdateOperator = @OperatorCD
+  --               ,UpdateDateTime = @currentDate
+  --      	FROM D_GenZaiko DGZK
+  --      	INNER JOIN (
+  --      			      SELECT H.SoukoCD
+  --      		         	    ,M.ShouhinCD
+  --      		         	    ,M.KanriNO
+  --      		         	    ,H.ChakuniDate
+  --      						,SUM(M.ChakuniSuu) ChakuniSuu
+  --      		          FROM D_Chakuni H
+  --                        INNER JOIN D_ChakuniMeisai M
+  --                        ON H.ChakuniNO = M.ChakuniNO
+  --                        WHERE exists ( select *
+  --                                              from #Temp_Main
+  --                   			                where ChakuniNO = M.ChakuniNO
+  --                   			              )
+  --      		          GROUP BY H.SoukoCD
+  --      		         	      ,M.ShouhinCD
+  --      		         	      ,M.KanriNO
+  --      		         	      ,H.ChakuniDate
+  --      			    ) DCKM
+  --         ON DGZK.SoukoCD = DCKM.SoukoCD
+  --         AND DGZK.ShouhinCD = DCKM.ShouhinCD
+  --         AND DGZK.KanriNO = DCKM.KanriNO
+  --         AND DGZK.NyuukoDate = DCKM.ChakuniDate
+  --      END
+  --      ELSE
+  --      BEGIN
         
-           INSERT INTO D_GenZaiko
-                      (SoukoCD
-                      ,ShouhinCD
-                      ,KanriNO
-                      ,NyuukoDate
-                      ,GenZaikoSuu
-                      ,IdouSekisouSuu
-                      ,InsertOperator
-                      ,InsertDateTime
-                      ,UpdateOperator
-                      ,UpdateDateTime)
-           SELECT DCKH.SoukoCD
-                 ,DCKM.ShouhinCD
-                 ,DCKM.KanriNO
-                 ,DCKH.ChakuniDate
-                 ,DCKM.ChakuniSuu * (-1)
-                 ,0
-                 ,@OperatorCD
-                 ,@currentDate
-                 ,@OperatorCD
-                 ,@currentDate
-             FROM D_Chakuni DCKH
-             INNER JOIN D_ChakuniMeisai DCKM
-             ON DCKH.ChakuniNO = DCKM.ChakuniNO
-             WHERE exists ( select *
-                            from #Temp_Main
-                     		where ChakuniNO = DCKH.ChakuniNO
-                     	  )
+  --         INSERT INTO D_GenZaiko
+  --                    (SoukoCD
+  --                    ,ShouhinCD
+  --                    ,KanriNO
+  --                    ,NyuukoDate
+  --                    ,GenZaikoSuu
+  --                    ,IdouSekisouSuu
+  --                    ,InsertOperator
+  --                    ,InsertDateTime
+  --                    ,UpdateOperator
+  --                    ,UpdateDateTime)
+  --         SELECT DCKH.SoukoCD
+  --               ,DCKM.ShouhinCD
+  --               ,DCKM.KanriNO
+  --               ,''
+  --               ,DCKM.ChakuniSuu * (-1)
+  --               ,0
+  --               ,@OperatorCD
+  --               ,@currentDate
+  --               ,@OperatorCD
+  --               ,@currentDate
+  --           FROM D_Chakuni DCKH
+  --           INNER JOIN D_ChakuniMeisai DCKM
+  --           ON DCKH.ChakuniNO = DCKM.ChakuniNO
+  --           WHERE exists ( select *
+  --                          from #Temp_Main
+  --                   		where ChakuniNO = DCKH.ChakuniNO
+  --                   	  )
         
-        END
-        --2021/04/20 Y.Nishikawa ADD ���݌ɂ��쐬����Ȃ�����
+  --      END
+        --2021/04/20 Y.Nishikawa ADD 現在庫が作成されない↑↑
+		--2021/04/27 Y.Nishikawa DEL 在庫更新を引当ファンクションに移動↑↑
+
+		--2021/04/27 Y.Nishikawa ADD 各テーブルの入庫日が消えないので、再計上すると在庫情報は新しい入庫日で作成されるが、受注詳細や出荷指示詳細は入庫日が上書きされないので、古い入庫日のままになっている(場所移動)↓↓
+        --Fnc
+        declare @ChankuniNO as varchar(100)=(select ChakuniNO from #Temp_Main)
+        exec dbo.Fnc_Hikiate 5,@ChankuniNO,30,@OperatorCD
+        --2021/04/27 Y.Nishikawa ADD 各テーブルの入庫日が消えないので、再計上すると在庫情報は新しい入庫日で作成されるが、受注詳細や出荷指示詳細は入庫日が上書きされないので、古い入庫日のままになっている(場所移動)↑↑
 
 
 		--Delete D_Chakuni
 		--Delete A
-		----2021/04/20 Y.Nishikawa �폜�o�^���Ă��폜����Ȃ�����
+		----2021/04/20 Y.Nishikawa 削除登録しても削除されない↓↓
 		--from D_ChakuniYotei A
 		--Where A.ChakuniYoteiNO IN (select ChakuniNO from #Temp_Main)
 
@@ -406,15 +416,15 @@ declare @Unique as uniqueidentifier = NewID()
 		--from D_ChakuniYoteiMeisai A,#Temp_Main TM
 		--Where A.ChakuniYoteiNO IN (select ChakuniNO from #Temp_Main)
 		Delete A
-		--2021/04/20 Y.Nishikawa �폜�o�^���Ă��폜����Ȃ�����
+		--2021/04/20 Y.Nishikawa 削除登録しても削除されない↓↓
 		from D_Chakuni A
-		Where A.ChakuniNO IN (select ChakuniNO from #Temp_Main)
+		Where A.ChakuniNO = @ChankuniNO
 
 		--Delete D_ChakuniMeisai
 		Delete A
 		from D_ChakuniMeisai A
-		Where A.ChakuniNO IN (select ChakuniNO from #Temp_Main)
-		--2021/04/20 Y.Nishikawa �폜�o�^���Ă��폜����Ȃ�����
+		Where A.ChakuniNO = @ChankuniNO
+		--2021/04/20 Y.Nishikawa 削除登録しても削除されない↑↑
 		
 		--Insert Sheet D
 Insert into D_ChakuniMeisaiHistory(HistoryGuid,ChakuniNO,ChakuniGyouNO,GyouHyouziJun,ShoriKBN,KanriNO,BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO,ChakuniSuu,TaniCD,ChakuniMeisaiTekiyou,
@@ -425,8 +435,8 @@ Select @Unique,dc.ChakuniNO,dc.ChakuniGyouNO,dc.GyouHyouziJun,30,dc.KanriNO,dc.B
 dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuGyouNO,dc.JuchuuNO,dc.JuchuuGyouNO,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,@OperatorCD,@currentDate
 from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 
---2021/04/20 Y.Nishikawa ���낢��(�ϐ����㏑������Ă�����폜���Ɋ����敪�̏ꍇ��������������)/�X�V�ꏊ�ύX����
-----Update D_ChakuniYoteiMeisai(for 修正前また�E削除)
+--2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)/更新場所変更↓↓
+----Update D_ChakuniYoteiMeisai(for 菫ｮ豁｣蜑阪∪縺溘・蜑企勁)
 --Update D_ChakuniYoteiMeisai
 --SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END,
 --    UpdateOperator=@OperatorCD,
@@ -436,7 +446,7 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --                          and D_ChakuniMeisai.ChakuniYoteiGyouNO=D_ChakuniYoteiMeisai.ChakuniYoteiGyouNO,#Temp_Detail d,#Temp_Main m
 --Where D_ChakuniMeisai.ChakuniNO=m.ChakuniNO
 
-----Update D_ChakuniYoteiMeisai(for 追加また�E修正�)
+----Update D_ChakuniYoteiMeisai(for 霑ｽ蜉縺ｾ縺溘・菫ｮ豁｣蠕)
 --Update a
 --SET a.ChakuniZumiSuu=a.ChakuniZumiSuu+d.ChakuniZumiSuu,
 --    UpdateOperator=@OperatorCD,
@@ -471,7 +481,7 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --ON D_ChakuniYotei.ChakuniYoteiNO=C.ChakuniYoteiNO
 
 
-----Update D_HacchuuMeisai(for 修正前また�E削除)
+----Update D_HacchuuMeisai(for 菫ｮ豁｣蜑阪∪縺溘・蜑企勁)
 --Update D_HacchuuMeisai
 --SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END
 --From D_HacchuuMeisai 
@@ -503,11 +513,13 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --Group By D_HacchuuMeisai.HacchuuNO
 --) DH
 --ON D_Hacchuu.HacchuuNO=DH.HacchuuNO
---2021/04/20 Y.Nishikawa ���낢��(�ϐ����㏑������Ă�����폜���Ɋ����敪�̏ꍇ��������������)/�X�V�ꏊ�ύX����
+--2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)/更新場所変更↑↑
 
---Fnc
-declare @ChankuniNO as varchar(100)=(select ChakuniNO from #Temp_Main)
-exec dbo.Fnc_Hikiate 5,@ChankuniNO,30,@OperatorCD
+--2021/04/27 Y.Nishikawa DEL 各テーブルの入庫日が消えないので、再計上すると在庫情報は新しい入庫日で作成されるが、受注詳細や出荷指示詳細は入庫日が上書きされないので、古い入庫日のままになっている(場所移動)↓↓
+----Fnc
+--declare @ChankuniNO as varchar(100)=(select ChakuniNO from #Temp_Main)
+--exec dbo.Fnc_Hikiate 5,@ChankuniNO,30,@OperatorCD
+--2021/04/27 Y.Nishikawa DEL 各テーブルの入庫日が消えないので、再計上すると在庫情報は新しい入庫日で作成されるが、受注詳細や出荷指示詳細は入庫日が上書きされないので、古い入庫日のままになっている(場所移動)↑↑
 
 --Insert table Z
 declare	@InsertOperator  varchar(10) = (select m.Operator from #Temp_Main m)
@@ -527,4 +539,5 @@ declare	@InsertOperator  varchar(10) = (select m.Operator from #Temp_Main m)
 END
 
 GO
- 
+
+

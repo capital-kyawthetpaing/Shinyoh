@@ -592,7 +592,23 @@ namespace JuchuuNyuuryoku
                     StaffEntity obj_staff = new StaffEntity();
                     obj_staff.OperatorCD = OperatorCD;
                     obj_staff.PC = PCID;
+                    obj_staff.ProgramID = ProgramID;
                     obj_staff.StaffName = txtJuchuuNO.Text;
+
+                    if (cboMode.SelectedValue.ToString().Equals("2") || cboMode.SelectedValue.ToString().Equals("3"))
+                    {
+                        DataTable dtE = obj_bl.D_Exclusive_Lock_Check(obj_staff);
+                        if (!dtE.Rows[0]["MessageID"].ToString().Equals("1"))
+                        {
+                            string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
+                            Data1 = dtE.Rows[0]["Program"].ToString();
+                            Data2 = dtE.Rows[0]["Operator"].ToString();
+                            Data3 = dtE.Rows[0]["PC"].ToString();
+                            obj_bl.ShowMessage("S004", Data1, Data2, Data3);
+                            txtJuchuuNO.Focus();
+                            return;
+                        }
+                    }
                     if (cboMode.SelectedValue.ToString() == "2")//update
                     {
                         obj_bl.JuchuuNyuuryoku_Exclusive_Insert(obj_staff);
@@ -726,12 +742,12 @@ namespace JuchuuNyuuryoku
             return obj;
         }
 
-        private SiiresakiEntity From_DB_To_Siiresaki(DataTable dt,DataGridViewRow selectedRow)
+        private SiiresakiEntity From_DB_To_Siiresaki(DataTable dt,DataGridViewRow selectedRow,bool changeFlg = false)
         {
             SiiresakiEntity obj = new SiiresakiEntity();
             obj.SiiresakiCD = dt.Rows[0]["SiiresakiCD"].ToString();
 
-            if (selectedRow.Cells["colSiiresakiCD"].Value.ToString().Equals(obj.SiiresakiCD))
+            if (selectedRow.Cells["colSiiresakiCD"].Value.ToString().Equals(obj.SiiresakiCD) && !changeFlg)
             {
                 obj.SiiresakiRyakuName= selectedRow.Cells["colSiiresakiRyakuName"].Value.ToString();
                 obj.SiiresakiName= selectedRow.Cells["colSiiresakiName"].Value.ToString();
@@ -1693,7 +1709,7 @@ namespace JuchuuNyuuryoku
         {
             if(gv_JuchuuNyuuryoku.IsLastKeyEnter)
             {
-                if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
+                if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex, true))
                 gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
             }
             if (e.ColumnIndex == 8)
@@ -1730,7 +1746,7 @@ namespace JuchuuNyuuryoku
             }
         }
 
-        private bool ErrorCheck_CellEndEdit(int row,int col)
+        private bool ErrorCheck_CellEndEdit(int row,int col, bool changeFlg=false)
         {
             string isSelected = string.Empty;
             string free = gv_JuchuuNyuuryoku.Rows[row].Cells["colFree"].Value.ToString();
@@ -1788,7 +1804,7 @@ namespace JuchuuNyuuryoku
                         //int selectedrowindex = row;
                         selectedRow = gv_JuchuuNyuuryoku.Rows[row];
                     }
-                    sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(siiresaki_dt, selectedRow);
+                    sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(siiresaki_dt, selectedRow, changeFlg);
                 }
                 if(bl_error==false && string.IsNullOrEmpty(siiresakiCD))
                 {
