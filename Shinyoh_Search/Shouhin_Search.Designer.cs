@@ -744,11 +744,11 @@
             this.dgDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgDetail.IsErrorOccurs = false;
             this.dgDetail.ISRowColumn = null;
-            this.dgDetail.Location = new System.Drawing.Point(15, 131);
+            this.dgDetail.Location = new System.Drawing.Point(15, 132);
             this.dgDetail.MultiSelect = false;
             this.dgDetail.Name = "dgDetail";
             this.dgDetail.ReadOnly = true;
-            this.dgDetail.Size = new System.Drawing.Size(1175, 350);
+            this.dgDetail.Size = new System.Drawing.Size(1075, 367);
             this.dgDetail.TabIndex = 3;
             this.dgDetail.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDetail_CellMouseDoubleClick);
             this.dgDetail.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgDetail_CellPainting);
