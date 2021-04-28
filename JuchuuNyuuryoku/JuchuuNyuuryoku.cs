@@ -6,8 +6,6 @@ using Shinyoh_Controls;
 using Shinyoh_Details;
 using Shinyoh_Search;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -48,7 +46,7 @@ namespace JuchuuNyuuryoku
             obj_bl = new JuchuuNyuuryokuBL();
             siiresaki_bl = new SiiresakiBL();
             
-            this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            //this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
 
         private void JuchuuNyuuryoku_Load(object sender, EventArgs e)
@@ -1710,7 +1708,7 @@ namespace JuchuuNyuuryoku
             if(gv_JuchuuNyuuryoku.IsLastKeyEnter)
             {
                 if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex, true))
-                gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                    gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
             }
             if (e.ColumnIndex == 8)
             {
@@ -1743,6 +1741,11 @@ namespace JuchuuNyuuryoku
                         existDr1 = null;
                     }
                 }
+            }
+            else if (e.ColumnIndex == 14)
+            {
+                if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex, true))
+                    gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
             }
         }
 
@@ -1963,12 +1966,27 @@ namespace JuchuuNyuuryoku
                 DataTable dt = siiresaki_bl.Siiresaki_Select_Check(detail.SiiresakiCD.ToString(), txtJuchuuDate.Text, "E101");
                 if (dt.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() != "E101")
                 {
-                    DataGridViewRow selectedRow = null;
-                    int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
-                    selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
+                    bool bl_error = false;
+                    DataTable siiresaki_dt = new DataTable();
+                    (bl_error, siiresaki_dt) = Gridview_Error_Check("E101", detail.SiiresakiCD.ToString(), "Siiresaki");
+                    if (bl_error == false)
+                        (bl_error, siiresaki_dt) = Gridview_Error_Check("E227", detail.SiiresakiCD.ToString(), "Siiresaki");
+                    if (bl_error == false)
+                        (bl_error, siiresaki_dt) = Gridview_Error_Check("E267", detail.SiiresakiCD.ToString(), "Siiresaki");
 
-                    sobj = new SiiresakiDetail();
-                    sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
+                    if (bl_error == false)
+                    {
+                        DataGridViewRow selectedRow = null;
+                        int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
+                        selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
+
+                        sobj = new SiiresakiDetail();
+                        sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
+                    }
+                    else
+                    {
+                        gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[row].Cells[column];
+                    }
                 }
             }
             else if(gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSoukoCD")
