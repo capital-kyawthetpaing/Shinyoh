@@ -119,7 +119,7 @@
             this.btn_F11.ButtonType = Entity.ButtonType.BType.Normal;
             this.btn_F11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_F11.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.btn_F11.Location = new System.Drawing.Point(1090, 85);
+            this.btn_F11.Location = new System.Drawing.Point(1078, 85);
             this.btn_F11.Name = "btn_F11";
             this.btn_F11.NextControl = null;
             this.btn_F11.NextControlName = null;
@@ -748,7 +748,7 @@
             this.dgDetail.MultiSelect = false;
             this.dgDetail.Name = "dgDetail";
             this.dgDetail.ReadOnly = true;
-            this.dgDetail.Size = new System.Drawing.Size(1075, 367);
+            this.dgDetail.Size = new System.Drawing.Size(1062, 367);
             this.dgDetail.TabIndex = 3;
             this.dgDetail.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgDetail_CellMouseDoubleClick);
             this.dgDetail.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dgDetail_CellPainting);

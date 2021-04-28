@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSizeNo = new Shinyoh_Search.SearchBox();
@@ -357,15 +357,15 @@
             // gvChakuniYoteiNyuuryoku
             // 
             this.gvChakuniYoteiNyuuryoku.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvChakuniYoteiNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvChakuniYoteiNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.gvChakuniYoteiNyuuryoku.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvChakuniYoteiNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -433,8 +433,8 @@
             // colDate
             // 
             this.colDate.DataPropertyName = "HacchuuDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colDate.DefaultCellStyle = dataGridViewCellStyle12;
             this.colDate.HeaderText = "発注日";
             this.colDate.Name = "colDate";
             this.colDate.ReadOnly = true;
@@ -442,8 +442,8 @@
             // colHacchuuSuu
             // 
             this.colHacchuuSuu.DataPropertyName = "HacchuuSuu";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colHacchuuSuu.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colHacchuuSuu.DefaultCellStyle = dataGridViewCellStyle13;
             this.colHacchuuSuu.HeaderText = "発注数";
             this.colHacchuuSuu.Name = "colHacchuuSuu";
             this.colHacchuuSuu.ReadOnly = true;
@@ -451,8 +451,8 @@
             // colChakuniZumiSuu
             // 
             this.colChakuniZumiSuu.DataPropertyName = "ChakuniYoteiZumiSuu";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.colChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle14;
             this.colChakuniZumiSuu.HeaderText = "着荷予定済数";
             this.colChakuniZumiSuu.Name = "colChakuniZumiSuu";
             this.colChakuniZumiSuu.Width = 110;
@@ -460,10 +460,10 @@
             // colYoteiSuu
             // 
             this.colYoteiSuu.DataPropertyName = "ChakuniYoteiSuu";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.colYoteiSuu.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N0";
+            dataGridViewCellStyle15.NullValue = null;
+            this.colYoteiSuu.DefaultCellStyle = dataGridViewCellStyle15;
             this.colYoteiSuu.HeaderText = "今回着荷予定数";
             this.colYoteiSuu.MaxInputLength = 5;
             this.colYoteiSuu.Name = "colYoteiSuu";
@@ -1068,11 +1068,11 @@
             this.btn_Siiresaki.ButtonType = Entity.ButtonType.BType.Normal;
             this.btn_Siiresaki.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Siiresaki.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Siiresaki.Location = new System.Drawing.Point(618, 41);
+            this.btn_Siiresaki.Location = new System.Drawing.Point(596, 41);
             this.btn_Siiresaki.Name = "btn_Siiresaki";
             this.btn_Siiresaki.NextControl = null;
             this.btn_Siiresaki.NextControlName = null;
-            this.btn_Siiresaki.Size = new System.Drawing.Size(60, 22);
+            this.btn_Siiresaki.Size = new System.Drawing.Size(50, 23);
             this.btn_Siiresaki.TabIndex = 51;
             this.btn_Siiresaki.Text = "詳細";
             this.btn_Siiresaki.UseVisualStyleBackColor = false;

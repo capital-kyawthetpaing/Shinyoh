@@ -27,7 +27,7 @@ namespace Shinyoh_Search
         public Shouhin_Search()
         {
             InitializeComponent();
-            dgDetail.ScrollBars = ScrollBars.Vertical;
+            dgDetail.ScrollBars = ScrollBars.Both;  //HET
         }
 
         private void Shouhin_Search_Load(object sender, EventArgs e)
@@ -43,12 +43,15 @@ namespace Shinyoh_Search
                 txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", DateTime.Now);
             else
                 txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", parent_changeDate);
-            BindDataGrid();
 
             txtHinbanCD1.E106Check(true, txtHinbanCD, txtHinbanCD1);
             txtJANCD1.E106Check(true, txtJANCD, txtJANCD1);
             txtExhibition1.E106Check(true, txtExhibition, txtExhibition1);
             txtBrand1.E106Check(true, txtBrand, txtBrand1);
+
+            chkSS.Checked = true;
+            chkFW.Checked = true;
+            BindDataGrid();
 
             dgDetail.SetGridDesign();
             dgDetail.SetReadOnlyColumn("**");//readonly for search form 
@@ -65,11 +68,7 @@ namespace Shinyoh_Search
             dgDetail.Columns[10].Width = 270;
             dgDetail.Columns[11].Width = 50;
             dgDetail.Columns[12].Width = 150;
-            dgDetail.Columns[13].Width = 100;
-
-            chkSS.Checked = true;
-            chkFW.Checked = true;
-            dgDetail.ScrollBars = ScrollBars.Both;  //HET
+            dgDetail.Columns[13].Width = 100;          
         }
 
         private void dgDetail_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
