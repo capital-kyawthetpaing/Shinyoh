@@ -69,6 +69,7 @@ namespace Shinyoh_Search
 
             chkSS.Checked = true;
             chkFW.Checked = true;
+            dgDetail.ScrollBars = ScrollBars.Both;  //HET
         }
 
         private void dgDetail_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
