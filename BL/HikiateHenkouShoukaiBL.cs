@@ -81,10 +81,43 @@ namespace BL
             entity.Sqlprms[17] = new SqlParameter("@KibouNouki", SqlDbType.VarChar) { Value = entity.KibouNouki };
             entity.Sqlprms[18] = new SqlParameter("@JANCD", SqlDbType.VarChar) { Value = entity.JANCD };
             entity.Sqlprms[19] = new SqlParameter("@SoukoCD", SqlDbType.VarChar) { Value = entity.SoukoCD };
-            //ckmdl.InsertUpdateDeleteData("sp_HikiateHenkoShoukai_DataIU", GetConnectionString(), entity.Sqlprms);
+            ckmdl.InsertUpdateDeleteData("sp_HikiateHenkoShoukai_DataIU", GetConnectionString(), entity.Sqlprms);
         }
+        public string DBData_IU(HikiateHenkouShoukaiEntity entity, string xml_detail, SqlCommand sqlCommand)
+        {
+            sqlCommand.CommandText = "sp_HikiateHenkoShoukai_DataIU";
+            sqlCommand.Parameters.Clear();
+            var parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = entity.InsertOperator };
+            parameters[1] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = entity.PC };
+            parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
 
+            if (parameters != null)
+                parameters = ChangeToDBNull(parameters);
+            sqlCommand.Parameters.AddRange(parameters);
 
+            sqlCommand.ExecuteNonQuery();
+
+            return "true";
+        }
+        private SqlParameter[] ChangeToDBNull(SqlParameter[] para)
+        {
+            foreach (var p in para)
+            {
+                if (p.Value == null || string.IsNullOrWhiteSpace(p.Value.ToString()))
+                {
+                    p.Value = DBNull.Value;
+                    p.SqlValue = DBNull.Value;
+                }
+                else
+                {
+                    p.Value = p.Value.ToString().Trim();
+                    p.SqlValue = p.Value.ToString().Trim();
+                }
+            }
+
+            return para;
+        }
         //For ZaikoIkkatuSaiHikiate Prj
         public void IData_DB(HikiateHenkouShoukaiEntity entity)
         {
@@ -100,6 +133,10 @@ namespace BL
             entity.Sqlprms[6] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = entity.Mode };
             entity.Sqlprms[7] = new SqlParameter("@KeyItem", SqlDbType.VarChar) { Value = entity.KeyItem };
             ckmdl.InsertUpdateDeleteData("sp_ZaikoIkkatuSaiHikiate_Process", GetConnectionString(), entity.Sqlprms);
+        }
+        public string GetCon()
+        {
+            return GetConnectionString();
         }
     }
 }
