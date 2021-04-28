@@ -394,8 +394,9 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	FROM #Temp_Details TD
 	LEFT OUTER JOIN D_Juchuu DJ
 	ON DJ.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1)
-	LEFT OUTER JOIN [dbo].[F_Shouhin](@ShippingDate) FS
-	ON FS.ShouhinCD=TD.ShouhinCD
+	LEFT OUTER JOIN F_Shouhin(@ShippingDate) FS
+	ON FS.ShouhinCD=TD.Hidden_ShouhinCD
+	;
 
 --TableC
 

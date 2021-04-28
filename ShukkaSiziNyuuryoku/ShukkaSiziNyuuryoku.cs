@@ -55,7 +55,7 @@ namespace ShukkaSiziNyuuryoku
             GridView_UI();
 
             //this.dgvShukkasizi.Size = new System.Drawing.Size(1300, 387);
-        }
+         }
         private void GridView_UI()
         {
             dgvShukkasizi.SetGridDesign();
