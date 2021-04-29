@@ -112,7 +112,7 @@ namespace BL
             var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = entity.InsertOperator };
             parameters[1] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = entity.PC };
-            parameters[2] = new SqlParameter("@XML_Detail", SqlDbType.Xml) { Value = xml_detail };
+            parameters[2] = new SqlParameter("@xml", SqlDbType.Xml) { Value = xml_detail };
 
             if (parameters != null)
                 parameters = ChangeToDBNull(parameters);

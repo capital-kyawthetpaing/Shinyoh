@@ -414,9 +414,11 @@ namespace HikiateHenkouShoukai
           
             if (F8_dt1.Rows.Count > 0)
             {
-                var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("商品")).ThenBy(r => r.Field<string>("引当調整数")).ThenBy(r => r.Field<string>("表示順")).ThenBy(r => r.Field<string>("[受注番号-行番号]")).CopyToDataTable();
+                var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("商品")).ThenBy(r => r.Field<string>("引当調整数")).ThenBy(r => r.Field<string>("表示順")).ThenBy(r => r.Field<string>("受注番号-行番号")).CopyToDataTable();
                 gvMainDetail.DataSource = dtConfirm;
                 gvMainDetail.Memory_Row_Count = F8_dt1.Rows.Count;
+                gvAggregationDetails.Memory_Row_Count = F8_dt1.Rows.Count;      //For Error Check
+                gvFreeInventoryDetails.Memory_Row_Count = F8_dt1.Rows.Count;    //For Error Check
 
                 //DataView dv = F8_dt1.DefaultView;
                 //dv.Sort = "商品 ASC, 引当調整数 ASC, 表示順 ASC, [受注番号-行番号] ASC";
@@ -607,8 +609,8 @@ namespace HikiateHenkouShoukai
                         }
                         dtTemp.Clear();
                     }
+                    txtShouhinCD.Focus();
                 }
-                txtShouhinCD.Focus();
             }
         }
         private void F11_Gridview_Bind()
@@ -621,8 +623,8 @@ namespace HikiateHenkouShoukai
                 string JuchuuNo = row.Cells[12].Value.ToString();
                 string KanriNO = row.Cells[14].Value.ToString();
 
-                DataRow[] select_dr1 = dtMain.Select("[受注番号-行番号] ='" + JuchuuNo + "' AND 小売店名 = '" + KanriNO + "'");// original data                
-                DataRow existDr1 = F8_dt1.Select("[受注番号-行番号]='" + JuchuuNo + "' AND 小売店名 = '" + KanriNO + "'").SingleOrDefault();
+                DataRow[] select_dr1 = dtMain.Select("([受注番号-行番号] ='" + JuchuuNo + "' OR [受注番号-行番号] IS NULL) AND 小売店名 = '" + KanriNO + "' AND 商品 = '" + HinbanCD + "'");// original data                
+                DataRow existDr1 = F8_dt1.Select("([受注番号-行番号] ='" + JuchuuNo + "' OR [受注番号-行番号] IS NULL) AND 小売店名 = '" + KanriNO + "' AND 商品 = '" + HinbanCD + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     if (row.Cells[11].Value.ToString() == "0")
@@ -668,6 +670,8 @@ namespace HikiateHenkouShoukai
                 }
             }
             gvMainDetail.Memory_Row_Count = F8_dt1.Rows.Count;
+            gvAggregationDetails.Memory_Row_Count = F8_dt1.Rows.Count;      //For Error Check
+            gvFreeInventoryDetails.Memory_Row_Count = F8_dt1.Rows.Count;    //For Error Check
 
             //Focus_Clear();
         }
@@ -875,7 +879,7 @@ namespace HikiateHenkouShoukai
                         bbl.ShowMessage("I101");
 
                     sqlTransaction.Commit();
-                    F8_dt1.Clear();
+                    
                     Modified_Panel();   //Clear Data
                 }
                 catch (Exception ex)
