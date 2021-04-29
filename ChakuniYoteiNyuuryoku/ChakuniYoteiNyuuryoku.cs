@@ -135,6 +135,7 @@ namespace ChakuniYoteiNyuuryoku
                     //btn_Siiresaki.Enabled = true;
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
+                    SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
                     break;
             }
         }
@@ -515,6 +516,15 @@ namespace ChakuniYoteiNyuuryoku
             be.PC = PCID;
             BaseBL bbl = new BaseBL();
             bbl.D_Exclusive_Number_Remove(be);
+
+            //HET
+            if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
+            {
+                txtChakuniYoteiNO.Focus();
+                SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
+                SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
+                SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
+            }
         }
         private void New_Mode()
         {
@@ -549,6 +559,11 @@ namespace ChakuniYoteiNyuuryoku
             be.PC = PCID;
             BaseBL bbl = new BaseBL();
             bbl.D_Exclusive_Number_Remove(be);
+
+            //HET
+            SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+            SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
+            SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
         }
         private bool Temp_Null()
         {
@@ -767,6 +782,11 @@ namespace ChakuniYoteiNyuuryoku
                         cf.EnablePanel(PanelDetail);
                         cf.DisablePanel(PanelTitle);
                         txtDate.Focus();
+
+                        //HET
+                        SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
+                        SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
+                        SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
                     }
                     else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
                     {
@@ -780,6 +800,10 @@ namespace ChakuniYoteiNyuuryoku
                         }
 
                         btn_Siiresaki.Enabled = true;
+                        //HET
+                        SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
+                        SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
+                        SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
                     }
                 }
                 DataTable dt = txtChakuniYoteiNO.IsDatatableOccurs;
