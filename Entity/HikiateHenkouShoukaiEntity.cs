@@ -49,7 +49,8 @@ namespace Entity
         public string NyuukoDate { get; set; }
         public string JuchuuDate { get; set; }
         public string KibouNouki { get; set; }
-
+        public int DataKBN { get; set; }
+        public string Number { get; set; }
 
         //For ZaikoIkkatuSaiHikiate Prj
         public int SerialKBN { get; set; }

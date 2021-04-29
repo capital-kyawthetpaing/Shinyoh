@@ -1199,7 +1199,7 @@ namespace ShukkaSiziNyuuryoku
                     if (dtgv1.Rows.Count > 0)
                     {
                         var dtRow = dtgv1.AsEnumerable().OrderBy(r => r.Field<string>("SKMSNO")).ThenBy(r => r.Field<string>("JuchuuNO")).CopyToDataTable();
-                        JuchuuNO_Delete();
+                        //JuchuuNO_Delete();
                         foreach (DataRow dr in dtRow.Rows)
                         {
                             string JuchuuNO = dr["JuchuuNO"].ToString();

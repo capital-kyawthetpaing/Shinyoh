@@ -55,7 +55,29 @@ namespace BL
             h_entity.Sqlprms[26] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = h_entity.ProgramID };
             return ckmdl.SelectDatatable("sp_HikiateHenkouShoukaiBL_GetData", GetConnectionString(), h_entity.Sqlprms);
         }
-
+        public DataTable D_Exclusive_Lock_Check(HikiateHenkouShoukaiEntity se)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@DataKBN", SqlDbType.Int) { Value = se.DataKBN };
+            parameters[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = se.Number };
+            parameters[2] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = se.OperatorCD };
+            parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
+            parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
+            DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Lock_Check", GetConnectionString(), parameters);
+            return dt;
+        }
+        public string D_Exclusive_JuchuuNO_Delete(ChakuniNyuuryoku_Entity obj)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@DataKBN", SqlDbType.VarChar) { Value = obj.DataKBN };
+            parameters[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = obj.Number };
+            parameters[2] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = obj.OperatorCD };
+            parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = obj.ProgramID };
+            parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
+            return ckmdl.InsertUpdateDeleteData("D_Exclusive_Remove_BY_NO", GetConnectionString(), parameters);
+        }
         public void DBData_IU(HikiateHenkouShoukaiEntity entity)
         {
             CKMDL ckmdl = new CKMDL();
