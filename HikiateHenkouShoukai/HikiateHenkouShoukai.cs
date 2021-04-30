@@ -130,6 +130,9 @@ namespace HikiateHenkouShoukai
             lblKouritenName.Text = string.Empty;
             F8_dt1 = createMemoryTable(1);
             dtMain = new DataTable();
+            gvAggregationDetails.Memory_Row_Count = 0;
+            gvMainDetail.Memory_Row_Count = 0;
+            gvFreeInventoryDetails.Memory_Row_Count = 0;
         }
 
         public override void FunctionProcess(string tagID)
@@ -298,7 +301,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = false;
                     gvMainDetail.Location = new Point(22, 250);
                     gvMainDetail.Size = new Size(1660, 630);
-                    this.gvMainDetail.Size = new System.Drawing.Size(1300, 387);
+                    //this.gvMainDetail.Size = new System.Drawing.Size(1300, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = false;
                     //gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
@@ -556,7 +559,14 @@ namespace HikiateHenkouShoukai
             {
                 gvFreeInventoryDetails.DataSource = dtMain;
                 gvFreeInventoryDetails.Focus();
-                gvFreeInventoryDetails.CurrentCell = gvFreeInventoryDetails.Rows[0].Cells[0];
+                if (dtMain.Rows.Count > 0)
+                {
+                    gvFreeInventoryDetails.CurrentCell = gvFreeInventoryDetails.Rows[0].Cells[0];
+                    gvFreeInventoryDetails.Select();
+                    gvFreeInventoryDetails.Memory_Row_Count = dtMain.Rows.Count;
+                    gvMainDetail.Memory_Row_Count = dtMain.Rows.Count;
+                    gvAggregationDetails.Memory_Row_Count = dtMain.Rows.Count;
+                }
             }
 
             if(dtTemp != null)

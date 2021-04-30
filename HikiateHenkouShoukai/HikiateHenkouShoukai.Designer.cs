@@ -232,10 +232,9 @@
             this.PanelDetail.Controls.Add(this.rdoDetails);
             this.PanelDetail.Controls.Add(this.rdoAggregation);
             this.PanelDetail.Controls.Add(this.lblRepresentation);
-            this.PanelDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelDetail.Location = new System.Drawing.Point(0, 69);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1713, 777);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 840);
             this.PanelDetail.TabIndex = 3;
             // 
             // txtSizeNO
