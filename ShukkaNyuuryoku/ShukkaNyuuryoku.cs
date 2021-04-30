@@ -45,7 +45,7 @@ namespace ShukkaNyuuryoku {
             dtHaita = new DataTable();
             dtClear = CreateTable();
 
-            this.gvShukka1.Size = new System.Drawing.Size(1300, 387);
+            //this.gvShukka1.Size = new System.Drawing.Size(1300, 387);
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
