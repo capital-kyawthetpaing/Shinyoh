@@ -298,6 +298,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = false;
                     gvMainDetail.Location = new Point(22, 250);
                     gvMainDetail.Size = new Size(1660, 630);
+                    this.gvMainDetail.Size = new System.Drawing.Size(1300, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = false;
                     //gvMainDetail.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
@@ -479,13 +480,34 @@ namespace HikiateHenkouShoukai
             {
                 gvAggregationDetails.DataSource = dtMain;
                 gvAggregationDetails.Focus();
-                gvAggregationDetails.CurrentCell = gvAggregationDetails.Rows[0].Cells[0];
+
+                if (dtMain.Rows.Count > 0)
+                {
+                    gvAggregationDetails.CurrentCell = gvAggregationDetails.Rows[0].Cells[3];
+                    gvAggregationDetails.Select();
+                }
             }
             else if (rdoDetails.Checked)
             {
                 foreach (DataRow dr in dtMain.Rows)
                 {
-                    if (!string.IsNullOrWhiteSpace(dr["受注番号"].ToString()))
+                    bool exists = false;
+                    if (F8_dt1.Rows.Count > 0)
+                    {
+                        //重複行はDelete
+                        string HinbanCD = dr["商品"].ToString();
+                        string JuchuuNo = dr["受注番号-行番号"].ToString();
+                        string KanriNO = dr["小売店名"].ToString();
+
+                        DataRow existDr1 = F8_dt1.Select("([受注番号-行番号] ='" + JuchuuNo + "' OR [受注番号-行番号] IS NULL) AND 小売店名 = '" + KanriNO + "' AND 商品 = '" + HinbanCD + "'").SingleOrDefault();
+                        if (existDr1 != null)
+                        {
+                            dr["表示順"] = "9";
+                            exists = true;
+                        }
+                    }                    
+
+                    if (!string.IsNullOrWhiteSpace(dr["受注番号"].ToString()) && !exists)
                     {
                         string JuchuuNO = dr["受注番号"].ToString();
                         entity.DataKBN = 1;
@@ -511,12 +533,23 @@ namespace HikiateHenkouShoukai
                     }
                 }
 
-                dtMain.Columns.RemoveAt(20);
-                dtMain.Columns.RemoveAt(19);
+                DataRow[] select_dr1 = dtMain.Select("表示順 = '9'");
+                foreach (DataRow dr in select_dr1)
+                    dtMain.Rows.Remove(dr);
+
+                //dtMain.Columns.RemoveAt(20);
+                //dtMain.Columns.RemoveAt(19);
                 gvMainDetail.DataSource = dtMain;
+
+                gvMainDetail.Columns[19].Visible = false;
+                gvMainDetail.Columns[20].Visible = false;
+                gvMainDetail.Columns[21].Visible = false;
                 gvMainDetail.Focus();
-                gvMainDetail.CurrentCell = gvMainDetail.Rows[0].Cells[11];
-                gvMainDetail.Select();
+                if (dtMain.Rows.Count > 0)
+                {
+                    gvMainDetail.CurrentCell = gvMainDetail.Rows[0].Cells[11];
+                    gvMainDetail.Select();
+                }
                 //gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
             }
             else
@@ -642,7 +675,7 @@ namespace HikiateHenkouShoukai
                         {
                             if (existDr1 != null)
                             {
-                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                if (select_dr1.Length > 0 &&  select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 {
                                     //bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;

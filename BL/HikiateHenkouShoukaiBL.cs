@@ -110,7 +110,7 @@ namespace BL
             sqlCommand.CommandText = "sp_HikiateHenkoShoukai_DataIU";
             sqlCommand.Parameters.Clear();
             var parameters = new SqlParameter[3];
-            parameters[0] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = entity.InsertOperator };
+            parameters[0] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = entity.InsertOperator };
             parameters[1] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = entity.PC };
             parameters[2] = new SqlParameter("@xml", SqlDbType.Xml) { Value = xml_detail };
 
