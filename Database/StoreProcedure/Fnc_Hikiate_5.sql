@@ -185,7 +185,7 @@ BEGIN
                             ,DCKM.ShouhinCD
                             ,DCKM.KanriNO
                             ,DCKH.ChakuniDate
-                            ,DCKM.ChakuniSuu
+                            ,SUM(DCKM.ChakuniSuu)
                             ,0
                             ,@UpdateOperator
                             ,@UpdateDateTime
@@ -195,6 +195,10 @@ BEGIN
                         INNER JOIN D_ChakuniMeisai DCKM
                         ON DCKH.ChakuniNO = DCKM.ChakuniNO
                         WHERE DCKH.ChakuniNO = @ChakuniNO
+                        GROUP BY DCKH.SoukoCD
+                            ,DCKM.ShouhinCD
+                            ,DCKM.KanriNO
+                            ,DCKH.ChakuniDate
                    
                    END
 				  --2021/04/27 Y.Nishikawa ADD 在庫更新を引当ファンクション内に移動↑↑
