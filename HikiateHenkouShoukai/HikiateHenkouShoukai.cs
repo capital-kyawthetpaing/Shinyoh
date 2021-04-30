@@ -423,22 +423,6 @@ namespace HikiateHenkouShoukai
                 gvMainDetail.Memory_Row_Count = F8_dt1.Rows.Count;
                 gvAggregationDetails.Memory_Row_Count = F8_dt1.Rows.Count;      //For Error Check
                 gvFreeInventoryDetails.Memory_Row_Count = F8_dt1.Rows.Count;    //For Error Check
-
-                //DataView dv = F8_dt1.DefaultView;
-                //dv.Sort = "商品 ASC, 引当調整数 ASC, 表示順 ASC, [受注番号-行番号] ASC";
-                //DataTable dtBind = dv.ToTable();
-                //try
-                //{
-                //    dtBind.Columns.RemoveAt(21);
-                //    dtBind.Columns.RemoveAt(22);
-                //}
-                //catch { }
-                //dtBind.AcceptChanges();
-                ////gvMainDetail.DataSource = null;
-                ////gvMainDetail.Rows.Clear();
-                //gvMainDetail.DataSource = dtBind;
-                //gvMainDetail.Columns[gvMainDetail.Columns.Count - 1].Visible = false;
-                //gvMainDetail.Columns[gvMainDetail.Columns.Count - 2].Visible = false;
             }
         }
 
@@ -600,58 +584,46 @@ namespace HikiateHenkouShoukai
             {
                 if(!GridErrorCheck())
                 {
+                    for (int t = 0; t < gvMainDetail.RowCount; t++)
+                    {
+                        DataGridViewRow row = gvMainDetail.Rows[t];// grid view data
+                        string HinbanCD = row.Cells[0].Value.ToString().TrimEnd();
+                        decimal sumSu = 0;
+
+                        for (int tt = t; tt < gvMainDetail.RowCount; tt++)
+                        {
+                            if(HinbanCD.Equals(gvMainDetail.Rows[tt].Cells[0].Value.ToString().TrimEnd()))
+                            {
+                                sumSu += Convert.ToDecimal(gvMainDetail.Rows[tt].Cells[11].Value.ToString());
+                            }
+                        }
+                        if(t>=1)
+                        {
+                            bool breakFlg = false;
+                            //既にチェック済みの場合は次の明細へ
+                            for (int z = 0; z < t; z++)
+                            {
+                                if (HinbanCD.Equals(gvMainDetail.Rows[z].Cells[0].Value.ToString().TrimEnd()))
+                                {
+                                    breakFlg = true;
+                                    break;
+                                }
+                            }
+                            if (breakFlg)
+                                continue;
+                        }
+
+                        if (sumSu > 0)
+                        {
+                            //同一商品について、引当調整数の合計　＞　０
+                            bbl.ShowMessage("E273");
+                            gvMainDetail.Focus();
+                            gvMainDetail.CurrentCell = row.Cells[11];
+                            return;
+                        }
+                    }
                     //明細部で入力した引当調整数＜＞０の明細情報を保存(Save the detail information of "引当調整数" <> 0 entered in the detail section)
                     F11_Gridview_Bind();
-
-                    if (F8_dt1 == null)
-                        F8_dt1 = createMemoryTable(1);
-                    if (dtTemp != null)
-                    {
-                        if (F8_dt1.Rows.Count == 0)
-                        {
-                            foreach (DataRow temp_row in dtTemp.Rows)
-                            {
-                                DataRow row = F8_dt1.NewRow();
-                                for (int i = 0; i < F8_dt1.Columns.Count; i++)
-                                {
-                                    row[i] = temp_row[i].ToString();
-                                }
-                                F8_dt1.Rows.Add(row);
-                            }
-                        }
-                        else
-                        {
-                            foreach (DataRow temp_row in dtTemp.Rows)
-                            {
-                                bool isexists = false;
-                                int index = 0;
-                                for (int i = 0; i < F8_dt1.Rows.Count; i++)
-                                {
-                                    if (temp_row["商品"].ToString() == F8_dt1.Rows[i]["商品"].ToString() && temp_row["小売店名"].ToString() == F8_dt1.Rows[i]["小売店名"].ToString() && temp_row["受注番号-行番号"].ToString() == F8_dt1.Rows[i]["受注番号-行番号"].ToString())
-                                    {
-                                        isexists = true;
-                                        index = i;
-                                        break;
-                                    }
-                                }
-
-                                if (isexists)
-                                {
-                                    F8_dt1.Rows[index]["引当調整数"] = temp_row["引当調整数"].ToString();
-                                }
-                                else
-                                {
-                                    DataRow row = F8_dt1.NewRow();
-                                    for (int i = 0; i < F8_dt1.Columns.Count; i++)
-                                    {
-                                        row[i] = temp_row[i].ToString();
-                                    }
-                                    F8_dt1.Rows.Add(row);
-                                }
-                            }
-                        }
-                        dtTemp.Clear();
-                    }
                     txtShouhinCD.Focus();
                 }
             }
@@ -714,9 +686,7 @@ namespace HikiateHenkouShoukai
             }
             gvMainDetail.Memory_Row_Count = F8_dt1.Rows.Count;
             gvAggregationDetails.Memory_Row_Count = F8_dt1.Rows.Count;      //For Error Check
-            gvFreeInventoryDetails.Memory_Row_Count = F8_dt1.Rows.Count;    //For Error Check
-
-            //Focus_Clear();
+            gvFreeInventoryDetails.Memory_Row_Count = F8_dt1.Rows.Count;    //For Error Check            
         }
         private bool GridErrorCheck()
         {
@@ -734,18 +704,26 @@ namespace HikiateHenkouShoukai
                     //該当行が受注行（受注番号-行番号 is not null）について、以下の場合はErrorとする。
                     if (!string.IsNullOrEmpty(gvrow.Cells[12].EditedFormattedValue.ToString()))
                     {
-                        if (Decimal.ToInt32(HikiateZumiSuu) < Decimal.ToInt32(Reserve_Val)*(-1))
+                        if (Reserve_Val < 0)
                         {
-                            iserror = true;
-                            bbl.ShowMessage("E271");
+                            if (Decimal.ToInt32(HikiateZumiSuu) < Decimal.ToInt32(Reserve_Val) * (-1))
+                            {
+                                iserror = true;
+                                //「引当済数がマイナスになる値は入力できません。」
+                                bbl.ShowMessage("E271");
+                            }
                         }
-
-                        else if (Decimal.ToInt32(MiHikiateSuu) > Decimal.ToInt32(Reserve_Val))
+                        else
                         {
-                            iserror = true;
-                            bbl.ShowMessage("E272");
+                            if (Decimal.ToInt32(MiHikiateSuu) < Decimal.ToInt32(Reserve_Val))
+                            {
+                                iserror = true;
+                                //「未引当数を超えて引当することはできません。」
+                                bbl.ShowMessage("E272");
+                            }
                         }
                     }
+
                     //該当行が在庫行（受注番号-行番号 is null）について、以下の場合はErrorとする。
                     else
                     {
@@ -755,7 +733,7 @@ namespace HikiateHenkouShoukai
                             bbl.ShowMessage("E275");
                         }
 
-                        else if (Decimal.ToInt32(MiHikiateSuu) < Decimal.ToInt32(Reserve_Val)*(-1))
+                        else if (Decimal.ToInt32(MiHikiateSuu) < Decimal.ToInt32(Reserve_Val) * (-1))
                         {
                             iserror = true;
                             bbl.ShowMessage("E272");
@@ -767,42 +745,6 @@ namespace HikiateHenkouShoukai
                         gvMainDetail.Focus();
                         gvMainDetail.CurrentCell = gvrow.Cells[11];
                         break;
-                    }
-                    else
-                    {
-                        bool isexists = false;
-                        int index = 0;
-                        if (dtTemp == null)
-                        {
-                            dtTemp = createMemoryTable(1);
-                            dtTemp.Columns.Add("RowNO");
-                        }
-
-                        for (int i = 0; i < dtTemp.Rows.Count; i++)
-                        {
-                            if (dtTemp.Rows[i]["商品"].ToString() == gvrow.Cells["col_Detail_ShouhinCD"].ToString() && dtTemp.Rows[i]["小売店名"].ToString() == gvrow.Cells["col_Detail_KanriNO"].ToString() && dtTemp.Rows[i]["受注番号-行番号"].ToString() == gvrow.Cells["col_Detail_JuchuuNO_JuchuuGyouNO"].ToString())
-                            {
-                                isexists = true;
-                                index = i;
-                                break;
-                            }
-                        }
-
-                        if (isexists)    //For multi changes
-                        {
-                            dtTemp.Rows[index]["引当調整数"] = gvrow.Cells["col_Detail_HikiateSuu"].EditedFormattedValue;
-                        }
-                        //For new changes
-                        else
-                        {
-                            DataRow row = dtTemp.NewRow();
-                            for (int i = 0; i < gvMainDetail.Columns.Count; i++)
-                            {
-                                row[i] = gvrow.Cells[i].EditedFormattedValue;
-                            }
-                            row["RowNO"] = gvrow.Index;
-                            dtTemp.Rows.Add(row);
-                        }
                     }
                 }
             }

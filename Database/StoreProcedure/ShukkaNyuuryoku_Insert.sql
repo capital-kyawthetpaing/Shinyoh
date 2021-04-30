@@ -1,9 +1,12 @@
-﻿ BEGIN TRY 
- Drop Procedure dbo.[ShukkaNyuuryoku_Insert]
-END try
-BEGIN CATCH END CATCH 
+/****** Object:  StoredProcedure [dbo].[ShukkaNyuuryoku_Insert]    Script Date: 2021/04/27 17:50:41 ******/
+IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ShukkaNyuuryoku_Insert%' and type like '%P%')
+DROP PROCEDURE [dbo].[ShukkaNyuuryoku_Insert]
+GO
+
+/****** Object:  StoredProcedure [dbo].[ShukkaNyuuryoku_Insert]    Script Date: 2021/04/27 17:50:41 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
 
@@ -11,6 +14,10 @@ GO
 -- Author:		Hnin Ei Thu
 -- Create date: 12/21/2020 
 -- Description:	<Description,,>
+-- History    : 2021/04/27 Y.Nishikawa 出荷データ、在庫データの更新が不正
+--            : 2021/04/27 Y.Nishikawa 無駄なSELECT削除
+--            : 2021/04/30 Y.Nishikawa 条件不足
+--            : 2021/04/30 Y.Nishikawa [Shukka_Price.sql][JuchuuShousai_Price.sql]で処理されていた（左記のクエリがバグってたら、ここを戻す）
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkaNyuuryoku_Insert]
 	-- Add the parameters for the stored procedure here
@@ -140,7 +147,9 @@ BEGIN
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-	    SELECT * FROM #Temp_Main
+		--2021/04/27 Y.Nishikawa DEL 無駄なSELECT削除↓↓
+	    --SELECT * FROM #Temp_Main
+		--2021/04/27 Y.Nishikawa DEL 無駄なSELECT削除↑↑
 
 		CREATE TABLE #Temp_Detail
 				(   
@@ -290,24 +299,289 @@ BEGIN
 				 left outer join D_ShukkaSiziMeisai DSM on DSM.ShukkaSiziNO =LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
 								and DSM.ShukkaSiziGyouNO = RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))								
 				 left outer join F_Shouhin(@ShukkaDate) FS on FS.ShouhinCD  = d.ShouhinCD
-
+            
+			--2021/04/27 Y.Nishikawa ADD 出荷データ、在庫データの更新が不正↓↓
 			--D_ShukkaShousai C
-			INSERT INTO D_ShukkaShousai
-				(ShukkaNO,ShukkaGyouNO,ShukkaShousaiNO,SoukoCD,ShouhinCD,ShouhinName,ShukkaSuu,KanriNO,NyuukoDate,UriageZumiSuu
-				,ShukkaSiziNO,ShukkaSiziGyouNO,ShukkaSiziShousaiNO,JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO
-				,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
+			--INSERT INTO D_ShukkaShousai
+			--	(ShukkaNO,ShukkaGyouNO,ShukkaShousaiNO,SoukoCD,ShouhinCD,ShouhinName,ShukkaSuu,KanriNO,NyuukoDate,UriageZumiSuu
+			--	,ShukkaSiziNO,ShukkaSiziGyouNO,ShukkaSiziShousaiNO,JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO
+			--	,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
 
-			select @ShukkaNO,ROW_NUMBER() OVER(ORDER BY (SELECT 1)),ROW_NUMBER() OVER(ORDER BY (SELECT 1)),d.SoukoCD,d.ShouhinCD,d.ShouhinName,
-					DS.ShukkaZumiSuu,DS.KanriNO,DS.NyuukoDate,0,
-					DS.ShukkaSiziNO,DS.ShukkaSiziGyouNO,DS.ShukkaSiziShousaiNO,DS.JuchuuNO,DS.JuchuuGyouNO,DS.JuchuuShousaiNO,
-					m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate
-				 from D_ShukkaSiziShousai DS,#Temp_Detail d,#Temp_Main m
-				 where DS.ShukkaSiziNO = LEFT((d.ShukkaSiziNOGyouNO), CHARINDEX('-', (d.ShukkaSiziNOGyouNO)) - 1)
-					and DS.ShukkaSiziGyouNO=RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
-					and d.ShouhinCD=DS.ShouhinCD
-					and  ShukkaSiziSuu > ShukkaZumiSuu and NyuukoDate != ''
-					order by DS.KanriNO asc,DS.NyuukoDate asc
-			
+			--select @ShukkaNO,ROW_NUMBER() OVER(ORDER BY (SELECT 1)),ROW_NUMBER() OVER(ORDER BY (SELECT 1)),d.SoukoCD,d.ShouhinCD,d.ShouhinName,
+			--		DS.ShukkaZumiSuu,DS.KanriNO,DS.NyuukoDate,0,
+			--		DS.ShukkaSiziNO,DS.ShukkaSiziGyouNO,DS.ShukkaSiziShousaiNO,DS.JuchuuNO,DS.JuchuuGyouNO,DS.JuchuuShousaiNO,
+			--		m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate
+			--	 from D_ShukkaSiziShousai DS,#Temp_Detail d,#Temp_Main m
+			--	 where DS.ShukkaSiziNO = LEFT((d.ShukkaSiziNOGyouNO), CHARINDEX('-', (d.ShukkaSiziNOGyouNO)) - 1)
+			--		and DS.ShukkaSiziGyouNO=RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
+			--		and d.ShouhinCD=DS.ShouhinCD
+			--		and  ShukkaSiziSuu > ShukkaZumiSuu and NyuukoDate != ''
+			--		order by DS.KanriNO asc,DS.NyuukoDate asc
+
+			DECLARE @ShukkaGyouNO AS SMALLINT,
+			        @ShukkaSiziNO AS VARCHAR(12),
+	        	    @ShukkaSiziGyouNO AS SMALLINT,
+					@JuchuuNO AS VARCHAR(12),
+	        	    @JuchuuGyouNO AS SMALLINT,
+					@SoukoCD AS VARCHAR(10),
+					@ShouhinCD AS VARCHAR(50),
+				    @ShukkaSuu AS DECIMAL(21,6)
+	        
+	        --出荷明細単位でループ
+	        DECLARE cursorShukkaMeisai CURSOR READ_ONLY
+	        FOR
+	            SELECT ShukkaGyouNO
+				      ,ShukkaSiziNO
+				      ,ShukkaSiziGyouNO
+					  ,JuchuuNO
+				      ,JuchuuGyouNO
+					  ,SoukoCD
+					  ,ShouhinCD
+					  ,ShukkaSuu        --この時点では、画面今回出荷数が出荷明細の出荷数に更新されている状態
+			    FROM D_ShukkaMeisai 
+				WHERE ShukkaNO = @ShukkaNO
+	        
+	        OPEN cursorShukkaMeisai
+	        
+	        FETCH NEXT FROM cursorShukkaMeisai INTO @ShukkaGyouNO,@ShukkaSiziNO,@ShukkaSiziGyouNO,@JuchuuNO,@JuchuuGyouNO,@SoukoCD,@ShouhinCD,@ShukkaSuu
+	        WHILE @@FETCH_STATUS = 0
+	        	BEGIN
+	                
+					DECLARE @ShukkaSiziShousaiNO AS SMALLINT,
+					        @KanriNO AS VARCHAR(10),
+	        	            @NyuukoDate AS VARCHAR(10),
+					        @MiShukkaSuu AS DECIMAL(21,6)
+	        
+	                --出荷指示詳細単位でループ
+	                DECLARE cursorShukkaSiziShousai CURSOR READ_ONLY
+	                FOR
+	                    SELECT DSSS.ShukkaSiziShousaiNO
+						      ,DSSS.KanriNO
+		  	      	          ,DSSS.NyuukoDate
+		  	      		      ,DSSS.ShukkaSiziSuu - DSSS.ShukkaZumiSuu 
+		  	          FROM D_ShukkaSiziShousai DSSS
+					  INNER JOIN D_ShukkaSiziMeisai DSSM
+					  ON DSSS.ShukkaSiziNO = DSSM.ShukkaSiziNO
+					  AND DSSS.ShukkaSiziGyouNO = DSSM.ShukkaSiziGyouNO
+		  	      	WHERE DSSS.ShukkaSiziNO = @ShukkaSiziNO
+					AND DSSS.ShukkaSiziGyouNO = @ShukkaSiziGyouNO
+					AND DSSS.NyuukoDate != '' --入庫日が無い情報はまだ未入荷なので、在庫に無いから対象外とする
+					AND DSSM.ShukkaKanryouKBN = 0 --完納分は対象外とする
+					AND DSSS.ShukkaSiziSuu > DSSS.ShukkaZumiSuu
+					ORDER BY DSSS.KanriNO ASC
+					       , DSSS.NyuukoDate ASC
+	                
+	                OPEN cursorShukkaSiziShousai
+	                
+	                FETCH NEXT FROM cursorShukkaSiziShousai INTO @ShukkaSiziShousaiNO,@KanriNO,@NyuukoDate,@MiShukkaSuu
+	                WHILE @@FETCH_STATUS = 0
+	                	BEGIN 
+						   IF (@ShukkaSuu > 0)
+						   BEGIN
+						      DECLARE @maxShousaiNO AS SMALLINT
+							  SELECT @maxShousaiNO = ISNULL(MAX(ShukkaShousaiNO),0) + 1 from D_ShukkaShousai where ShukkaNO = @ShukkaNO
+
+						      IF(@ShukkaSuu >= @MiShukkaSuu)
+							  BEGIN
+							     --出荷詳細
+								 INSERT INTO D_ShukkaShousai
+                                       (ShukkaNO
+                                       ,ShukkaGyouNO
+                                       ,ShukkaShousaiNO
+                                       ,SoukoCD
+                                       ,ShouhinCD
+                                       ,ShouhinName
+                                       ,ShukkaSuu
+                                       ,KanriNO
+                                       ,NyuukoDate
+                                       ,UriageZumiSuu
+                                       ,ShukkaSiziNO
+                                       ,ShukkaSiziGyouNO
+                                       ,ShukkaSiziShousaiNO
+                                       ,JuchuuNO
+                                       ,JuchuuGyouNO
+                                       ,JuchuuShousaiNO
+                                       ,InsertOperator
+                                       ,InsertDateTime
+                                       ,UpdateOperator
+                                       ,UpdateDateTime)
+                                 SELECT
+                                       @ShukkaNO
+									  ,@ShukkaGyouNO
+									  ,@maxShousaiNO
+									  ,DSKM.SoukoCD
+									  ,DSKM.ShouhinCD
+									  ,DSKM.ShouhinName
+									  ,@MiShukkaSuu
+									  ,@KanriNO
+									  ,@NyuukoDate
+									  ,0 --UriageZumiSuu
+									  ,@ShukkaSiziNO
+									  ,@ShukkaSiziGyouNO
+									  ,@ShukkaSiziShousaiNO
+									  ,DSSS.JuchuuNO
+									  ,DSSS.JuchuuGyouNO
+									  ,DSSS.JuchuuShousaiNO
+									  ,DSKM.InsertOperator
+									  ,DSKM.InsertDateTime
+									  ,DSKM.UpdateOperator
+									  ,DSKM.UpdateDateTime
+								 FROM D_ShukkaSiziShousai DSSS
+								 INNER JOIN D_ShukkaMeisai DSKM
+								 ON DSKM.ShukkaSiziNO = DSSS.ShukkaSiziNO
+								 AND DSKM.ShukkaSiziGyouNO = DSSS.ShukkaSiziGyouNO
+								 AND DSKM.ShukkaNO = @ShukkaNO
+								 AND DSKM.ShukkaGyouNO = @ShukkaGyouNO
+								 INNER JOIN D_JuchuuShousai DJUS
+								 ON DJUS.JuchuuNO = DSSS.JuchuuNO
+								 AND DJUS.JuchuuGyouNO = DSSS.JuchuuGyouNO
+								 AND DJUS.JuchuuShousaiNO = DSSS.JuchuuShousaiNO
+								 WHERE DSSS.ShukkaSiziNO = @ShukkaSiziNO
+								 AND DSSS.ShukkaSiziGyouNO = @ShukkaSiziGyouNO
+								 AND DSSS.ShukkaSiziShousaiNO = @ShukkaSiziShousaiNO
+								 
+								 --2021/04/30 Y.Nishikawa DEL [Shukka_Price.sql][JuchuuShousai_Price.sql]で処理されていた（左記のクエリがバグってたら、ここを戻す）↓↓
+							  --   --出荷指示詳細
+								 --UPDATE DSSS
+								 --SET ShukkaZumiSuu = ShukkaZumiSuu + @MiShukkaSuu
+								 --FROM D_ShukkaSiziShousai DSSS
+								 --WHERE DSSS.ShukkaSiziNO = @ShukkaSiziNO
+								 --AND DSSS.ShukkaSiziGyouNO = @ShukkaSiziGyouNO
+								 --AND DSSS.ShukkaSiziShousaiNO = @ShukkaSiziShousaiNO
+
+								 ----受注詳細
+								 --UPDATE DJUS
+								 --SET ShukkaZumiSuu = DJUS.ShukkaZumiSuu + @MiShukkaSuu
+								 --FROM D_JuchuuShousai DJUS
+								 --INNER JOIN D_ShukkaSiziShousai DSSS
+								 --ON DSSS.JuchuuNO = DJUS.JuchuuNO
+								 --AND DSSS.JuchuuGyouNO = DJUS.JuchuuGyouNO
+								 --AND DSSS.JuchuuShousaiNO = DJUS.JuchuuShousaiNO
+								 --WHERE DSSS.ShukkaSiziNO = @ShukkaSiziNO
+								 --AND DSSS.ShukkaSiziGyouNO = @ShukkaSiziGyouNO
+								 --AND DSSS.ShukkaSiziShousaiNO = @ShukkaSiziShousaiNO 
+								 --2021/04/30 Y.Nishikawa DEL [Shukka_Price.sql][JuchuuShousai_Price.sql]で処理されていた（左記のクエリがバグってたら、ここを戻す）↑↑
+
+								 --現在庫
+								 UPDATE DGZK
+								 SET GenZaikoSuu = GenZaikoSuu - @MiShukkaSuu
+								 FROM D_GenZaiko DGZK
+								 WHERE DGZK.SoukoCD = @SoukoCD
+								 AND DGZK.ShouhinCD = @ShouhinCD
+								 AND DGZK.KanriNO = @KanriNO
+								 AND DGZK.NyuukoDate = @NyuukoDate
+
+								 SET @ShukkaSuu = @ShukkaSuu - @MiShukkaSuu
+							  END
+						      ELSE
+							  BEGIN
+							     --出荷詳細
+								 INSERT INTO D_ShukkaShousai
+                                       (ShukkaNO
+                                       ,ShukkaGyouNO
+                                       ,ShukkaShousaiNO
+                                       ,SoukoCD
+                                       ,ShouhinCD
+                                       ,ShouhinName
+                                       ,ShukkaSuu
+                                       ,KanriNO
+                                       ,NyuukoDate
+                                       ,UriageZumiSuu
+                                       ,ShukkaSiziNO
+                                       ,ShukkaSiziGyouNO
+                                       ,ShukkaSiziShousaiNO
+                                       ,JuchuuNO
+                                       ,JuchuuGyouNO
+                                       ,JuchuuShousaiNO
+                                       ,InsertOperator
+                                       ,InsertDateTime
+                                       ,UpdateOperator
+                                       ,UpdateDateTime)
+                                 SELECT
+                                       @ShukkaNO
+									  ,@ShukkaGyouNO
+									  ,@maxShousaiNO
+									  ,DSKM.SoukoCD
+									  ,DSKM.ShouhinCD
+									  ,DSKM.ShouhinName
+									  ,@ShukkaSuu
+									  ,@KanriNO
+									  ,@NyuukoDate
+									  ,0 --UriageZumiSuu
+									  ,@ShukkaSiziNO
+									  ,@ShukkaSiziGyouNO
+									  ,@ShukkaSiziShousaiNO
+									  ,DSSS.JuchuuNO
+									  ,DSSS.JuchuuGyouNO
+									  ,DSSS.JuchuuShousaiNO
+									  ,DSKM.InsertOperator
+									  ,DSKM.InsertDateTime
+									  ,DSKM.UpdateOperator
+									  ,DSKM.UpdateDateTime
+								 FROM D_ShukkaSiziShousai DSSS
+								 INNER JOIN D_ShukkaMeisai DSKM
+								 ON DSKM.ShukkaSiziNO = DSSS.ShukkaSiziNO
+								 AND DSKM.ShukkaSiziGyouNO = DSSS.ShukkaSiziGyouNO
+								 AND DSKM.ShukkaNO = @ShukkaNO
+								 AND DSKM.ShukkaGyouNO = @ShukkaGyouNO
+								 INNER JOIN D_JuchuuShousai DJUS
+								 ON DJUS.JuchuuNO = DSSS.JuchuuNO
+								 AND DJUS.JuchuuGyouNO = DSSS.JuchuuGyouNO
+								 AND DJUS.JuchuuShousaiNO = DSSS.JuchuuShousaiNO
+								 WHERE DSSS.ShukkaSiziNO = @ShukkaSiziNO
+								 AND DSSS.ShukkaSiziGyouNO = @ShukkaSiziGyouNO
+								 AND DSSS.ShukkaSiziShousaiNO = @ShukkaSiziShousaiNO
+
+								 --2021/04/30 Y.Nishikawa DEL [Shukka_Price.sql][JuchuuShousai_Price.sql]で処理されていた（左記のクエリがバグってたら、ここを戻す）↓↓
+							  --   --出荷指示詳細
+								 --UPDATE DSSS
+								 --SET ShukkaZumiSuu = ShukkaZumiSuu + DSUS.ShukkaSuu
+								 --FROM D_ShukkaSiziShousai DSSS
+								 --INNER JOIN D_ShukkaShousai DSUS
+								 --ON DSUS.ShukkaSiziNO = DSSS.ShukkaSiziNO
+								 --AND DSUS.ShukkaSiziGyouNO = DSSS.ShukkaSiziGyouNO
+								 --AND DSUS.ShukkaSiziShousaiNO = DSSS.ShukkaSiziShousaiNO
+								 --WHERE DSSS.ShukkaSiziNO = @ShukkaSiziNO
+								 --AND DSSS.ShukkaSiziGyouNO = @ShukkaSiziGyouNO
+								 --AND DSSS.ShukkaSiziShousaiNO = @ShukkaSiziShousaiNO
+
+								 ----受注詳細
+								 --UPDATE DJUS
+								 --SET ShukkaZumiSuu = DJUS.ShukkaZumiSuu + @ShukkaSuu
+								 --FROM D_JuchuuShousai DJUS
+								 --INNER JOIN D_ShukkaShousai DSUS
+								 --ON DSUS.JuchuuNO = DJUS.JuchuuNO
+								 --AND DSUS.JuchuuGyouNO = DJUS.JuchuuGyouNO
+								 --AND DSUS.JuchuuShousaiNO = DJUS.JuchuuShousaiNO
+								 --WHERE DSUS.ShukkaSiziNO = @ShukkaSiziNO
+								 --AND DSUS.ShukkaSiziGyouNO = @ShukkaSiziGyouNO
+								 --AND DSUS.ShukkaSiziShousaiNO = @ShukkaSiziShousaiNO 
+								 --2021/04/30 Y.Nishikawa DEL [Shukka_Price.sql][JuchuuShousai_Price.sql]で処理されていた（左記のクエリがバグってたら、ここを戻す）↑↑
+
+								 --現在庫
+								 UPDATE DGZK
+								 SET GenZaikoSuu = GenZaikoSuu - @ShukkaSuu
+								 FROM D_GenZaiko DGZK
+								 WHERE DGZK.SoukoCD = @SoukoCD
+								 AND DGZK.ShouhinCD = @ShouhinCD
+								 AND DGZK.KanriNO = @KanriNO
+								 AND DGZK.NyuukoDate = @NyuukoDate
+
+								 SET @ShukkaSuu = 0
+							  END
+						   END
+
+						   FETCH NEXT FROM cursorShukkaSiziShousai INTO  @ShukkaSiziShousaiNO,@KanriNO,@NyuukoDate,@MiShukkaSuu
+						END
+                    CLOSE cursorShukkaSiziShousai
+	                DEALLOCATE cursorShukkaSiziShousai
+	        		
+	        		FETCH NEXT FROM cursorShukkaMeisai INTO  @ShukkaGyouNO,@ShukkaSiziNO,@ShukkaSiziGyouNO,@JuchuuNO,@JuchuuGyouNO,@SoukoCD,@ShouhinCD,@ShukkaSuu
+	        	END
+	        
+	        CLOSE cursorShukkaMeisai
+	        DEALLOCATE cursorShukkaMeisai
+			--2021/04/27 Y.Nishikawa ADD 出荷データ、在庫データの更新が不正↑↑
 
 
 			--D_ShukkaHistory D
@@ -387,7 +661,9 @@ BEGIN
 				ShukkaKanryouKBN = case WHEN A.ShukkaSiziZumiSuu <= ShukkaZumiSuu Then 1 WHEN d.Kanryo = 1 Then 1 ELSE 0 End
 			from #Temp_Detail d,D_JuchuuMeisai A
 			where A.JuchuuNO=LEFT(d.JuchuuNOGyouNO, CHARINDEX('-', d.JuchuuNOGyouNO) - 1)
-
+			--2021/04/30 Y.Nishikawa ADD 条件不足↓↓
+			and A.ShukkaSiziKanryouKBN = 1
+			--2021/04/30 Y.Nishikawa ADD 条件不足↑↑
 
 			--D_Juchuu A
 			update A set	
@@ -397,29 +673,29 @@ BEGIN
 			where DM.JuchuuNO=LEFT(d.JuchuuNOGyouNO, CHARINDEX('-', d.JuchuuNOGyouNO) - 1)	group by JuchuuNO) B
 			on A.JuchuuNO=B.JuchuuNO
 			
-			
-			--D_GenZaiko 
-			Update  DG set  
-			SoukoCD = DS.SoukoCD,
-			ShouhinCD = DS.ShouhinCD,
-			KanriNO = DS.KanriNO,
-			NyuukoDate = DS.NyuukoDate,
-			GenZaikoSuu = DS.ShukkaSiziSuu,
-			IdouSekisouSuu = DS.ShukkaZumiSuu,
-			InsertOperator = m.InsertOperator,
-			InsertDateTime = @currentDate,
-			UpdateOperator = m.UpdateOperator,
-			UpdateDateTime = @currentDate
-				 from D_ShukkaSiziShousai DS,#Temp_Detail d,#Temp_Main m,D_GenZaiko DG
-				 where DS.ShukkaSiziNO = LEFT((d.ShukkaSiziNOGyouNO), CHARINDEX('-', (d.ShukkaSiziNOGyouNO)) - 1)
-					and DS.ShukkaSiziGyouNO=RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
-					and d.ShouhinCD=DS.ShouhinCD
-					and  ShukkaSiziSuu > ShukkaZumiSuu and DS.NyuukoDate != '' and  	DG.SoukoCD= DS.SoukoCD and
-			DG.ShouhinCD = DS.ShouhinCD and
-			DG.KanriNO = DS.KanriNO and
-			DG.NyuukoDate= DS.NyuukoDate
-		--			--order by DS.KanriNO asc,DS.NyuukoDate asc	
-
+			--2021/04/27 Y.Nishikawa DEL 出荷データ、在庫データの更新が不正↓↓
+		--	--D_GenZaiko 
+		--	Update  DG set  
+		--	SoukoCD = DS.SoukoCD,
+		--	ShouhinCD = DS.ShouhinCD,
+		--	KanriNO = DS.KanriNO,
+		--	NyuukoDate = DS.NyuukoDate,
+		--	GenZaikoSuu = DS.ShukkaSiziSuu,
+		--	IdouSekisouSuu = DS.ShukkaZumiSuu,
+		--	InsertOperator = m.InsertOperator,
+		--	InsertDateTime = @currentDate,
+		--	UpdateOperator = m.UpdateOperator,
+		--	UpdateDateTime = @currentDate
+		--		 from D_ShukkaSiziShousai DS,#Temp_Detail d,#Temp_Main m,D_GenZaiko DG
+		--		 where DS.ShukkaSiziNO = LEFT((d.ShukkaSiziNOGyouNO), CHARINDEX('-', (d.ShukkaSiziNOGyouNO)) - 1)
+		--			and DS.ShukkaSiziGyouNO=RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
+		--			and d.ShouhinCD=DS.ShouhinCD
+		--			and  ShukkaSiziSuu > ShukkaZumiSuu and DS.NyuukoDate != '' and  	DG.SoukoCD= DS.SoukoCD and
+		--	DG.ShouhinCD = DS.ShouhinCD and
+		--	DG.KanriNO = DS.KanriNO and
+		--	DG.NyuukoDate= DS.NyuukoDate
+		----			--order by DS.KanriNO asc,DS.NyuukoDate asc	
+		    --2021/04/27 Y.Nishikawa DEL 出荷データ、在庫データの更新が不正↑↑
 		
 			UPDATE M_Tokuisaki 
 			set UsedFlg = 1 
@@ -468,5 +744,8 @@ BEGIN
 END
 
 
+
+
+GO
 
 
