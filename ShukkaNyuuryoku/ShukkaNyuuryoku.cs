@@ -45,6 +45,7 @@ namespace ShukkaNyuuryoku {
             dtHaita = new DataTable();
             dtClear = CreateTable();
 
+            this.gvShukka1.Size = new System.Drawing.Size(1300, 387);
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -815,7 +816,8 @@ namespace ShukkaNyuuryoku {
             string Konkai = gvShukka1.Rows[row].Cells["colKonkai"].Value.ToString();
             string a = gvShukka1.Rows[row].Cells["colShukkazansuu"].Value.ToString();
             string b = gvShukka1.Rows[row].Cells["colMiryoku"].Value.ToString();
-            decimal c = Convert.ToDecimal(a) - Convert.ToDecimal(b);
+            string old = cboMode.SelectedValue.ToString().Equals("2") ? gvShukka1.Rows[row].Cells["OldShukkasuu"].Value.ToString() : "0";
+            decimal c = Convert.ToDecimal(old) +Convert.ToDecimal(a) - Convert.ToDecimal(b);
 
             bool bl_error = false;
             string col_Name = gvShukka1.Columns[col].Name;
@@ -1353,11 +1355,20 @@ namespace ShukkaNyuuryoku {
                 //dt.Columns.Remove("ShouhinCD");
                 dt.Columns.Remove("MessageID");
 
+                DataColumn column = new DataColumn();
+                column.ColumnName = "OldShukkaSuu";
+                dt.Columns.Add(column);
+                foreach(DataRow dr in dt.Rows)
+                {
+                    dr["OldShukkaSuu"] = dr["ShukkaSuu"];
+                }
+
                 gvShukka1.DataSource = dt;
                 gvShukka1.Columns[13].Visible = false;
                 gvShukka1.Columns[14].Visible = false;
                 gvShukka1.Columns[15].Visible = false;
                 gvShukka1.Columns[16].Visible = false;
+                gvShukka1.Columns[18].Visible = false;
                 //gvShukka1.ClearSelection();
 
                 DataTable dt_temp = dt.Copy();
