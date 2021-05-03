@@ -825,7 +825,23 @@ namespace Shinyoh_Controls
                     return (true, rDt);
                 }
             }
-            if(sTextBox.E128)
+
+            //HET
+            if (sTextBox.E279)
+            {
+                switch (sTextBox.E279Type)
+                {
+                    case "IdouNyuuryoku":
+                        if (sTextBox.ctrlE279_1.Text.ToString() =="3" && sTextBox.ctrlE279_2.Text.ToString() == sTextBox.ctrlE279_3.Text.ToString())
+                        {
+                            sTextBox.Focus();
+                            bbl.ShowMessage("E279");
+                            return (true, rDt);
+                        }
+                        break;
+                }              
+            }
+            if (sTextBox.E128)
             {
                 if (!System.IO.File.Exists(sTextBox.ctrlE128_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE128_1.Text.Trim()))
                 {

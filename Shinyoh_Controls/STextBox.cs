@@ -136,6 +136,8 @@ namespace Shinyoh_Controls
         public bool E270;
         public bool E270Multi;
         public string E270Type;
+        public bool E279;
+        public string E279Type;
         public bool CYuubin_Juusho;
         public bool E128;
 
@@ -178,6 +180,9 @@ namespace Shinyoh_Controls
         public Control ctrlE270_2;
         public Control ctrlE270_3;
         public Control ctrlE270_4;
+        public Control ctrlE279_1;
+        public Control ctrlE279_2;
+        public Control ctrlE279_3;
         public Control ctrlE128_1;
         public PictureBox ctrlE128_2;
 
@@ -720,7 +725,14 @@ namespace Shinyoh_Controls
             ctrlE270_3 = ctrl3;
             ctrlE270_4 = ctrl4;
         }
-
+        public void E279Check(bool value, string type, Control ctrl1, Control ctrl2, Control ctrl3)
+        {
+            E279 = value;
+            E279Type = type;
+            ctrlE279_1 = ctrl1;
+            ctrlE279_2 = ctrl2;
+            ctrlE279_3 = ctrl3;
+        }
         public void Yuubin_Juusho(bool value,Control ctrl1, Control ctrl2,string check_Yuu1,string check_Yuu2)
         {
             CYuubin_Juusho = value;
