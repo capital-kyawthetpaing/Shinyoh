@@ -199,7 +199,7 @@ namespace ShukkaTorikomi
                         ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
                         string spname = string.Empty;
                         string TorikomiDenpyouNO = txtDenpyouNO.Text;
-                        string return_BL = string.Empty;
+                        DataTable return_DT = new DataTable();
                         if (rdo_Toroku.Checked)
                         {
                             spname = "ShukkaTorikomi_Insert";
@@ -208,10 +208,15 @@ namespace ShukkaTorikomi
                         {
                             spname = "ShukkaTorikomi_Delete";
                         }
-                        return_BL = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
-                        if (return_BL == "true")
+                        return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                        if (return_DT.Rows.Count > 0)
                         {
-                            bbl.ShowMessage("I002");                           
+                            if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
+                                bbl.ShowMessage("I002");
+                            else
+                            {
+                                bbl.ShowMessage("E276", return_DT.Rows[0]["SEQ"].ToString(), return_DT.Rows[0]["Error1"].ToString(), return_DT.Rows[0]["Error2"].ToString());
+                            }
                         }
                     }
                 }
