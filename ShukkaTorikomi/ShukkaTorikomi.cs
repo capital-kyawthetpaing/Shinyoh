@@ -199,7 +199,7 @@ namespace ShukkaTorikomi
                         ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
                         string spname = string.Empty;
                         string TorikomiDenpyouNO = txtDenpyouNO.Text;
-                        DataTable return_DT = new DataTable();
+                        //DataTable return_DT = new DataTable();
                         if (rdo_Toroku.Checked)
                         {
                             spname = "ShukkaTorikomi_Insert";
