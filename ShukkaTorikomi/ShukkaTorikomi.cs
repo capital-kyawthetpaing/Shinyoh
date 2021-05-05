@@ -208,7 +208,7 @@ namespace ShukkaTorikomi
                         {
                             spname = "ShukkaTorikomi_Delete";
                         }
-                        return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                        DataTable return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
                         if (return_DT.Rows.Count > 0)
                         {
                             if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
