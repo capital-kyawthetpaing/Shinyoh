@@ -229,6 +229,7 @@ namespace IdouNyuuryoku
 
             txtNyukosouko.E102Check(true);
             txtNyukosouko.E101Check(true, "souko", txtNyukosouko, null, null);
+            txtNyukosouko.E279Check(true, "IdouNyuuryoku", txtIdoukubun, txtShukkosouko, txtNyukosouko); //HET
         }       
         
         public override void FunctionProcess(string tagID)

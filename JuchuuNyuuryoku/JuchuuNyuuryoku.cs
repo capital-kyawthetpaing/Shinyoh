@@ -1323,6 +1323,15 @@ namespace JuchuuNyuuryoku
                     }
 
                     sqlTransaction.Commit();
+                    //ssa_Taskno250
+                    if (cboMode.SelectedValue.Equals("1") || cboMode.SelectedValue.Equals("2"))
+                    {
+                        base_bl.ShowMessage("I101");
+                    }
+                    else
+                    {
+                        base_bl.ShowMessage("I102");
+                    }
                 }
                 catch(Exception ex)
                 {
@@ -1621,24 +1630,24 @@ namespace JuchuuNyuuryoku
         {
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
             string return_BL =  objMethod.JuchuuNyuuryoku_CUD(mode,str_header,str_main,str_detail,sqlCommand);
-            if (return_BL == "true")
-                base_bl.ShowMessage("I101");
+            //if (return_BL == "true")
+            //    base_bl.ShowMessage("I101");
         }
 
         private void DoUpdate(string mode, string str_header, string str_main, string str_detail, SqlCommand sqlCommand)
         {
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
             string return_BL = objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail,sqlCommand);
-            if (return_BL == "true")
-                base_bl.ShowMessage("I101");
+            //if (return_BL == "true")
+            //    base_bl.ShowMessage("I101");
         }
 
         private void DoDelete(string mode, string str_header, string str_main, string str_detail, SqlCommand sqlCommand)
         {
             JuchuuNyuuryokuBL objMethod = new JuchuuNyuuryokuBL();
             string return_BL = objMethod.JuchuuNyuuryoku_CUD(mode, str_header, str_main, str_detail,sqlCommand);
-            if (return_BL == "true")
-                base_bl.ShowMessage("I102");
+            //if (return_BL == "true")
+            //    base_bl.ShowMessage("I102");
         }
 
        private void Column_Remove_Datatable(DataTable dt)

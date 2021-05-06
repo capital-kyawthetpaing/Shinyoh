@@ -537,8 +537,9 @@ namespace ChakuniNyuuryoku
         {
             if (F8_dt1.Rows.Count > 0)
             {
-                var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("Chakuni")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
-                gvChakuniNyuuryoku.DataSource = dtConfirm;
+               // var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("Chakuni")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
+                var dtF8 = F8_dt1.Copy();//Task_NO351_ssa
+                gvChakuniNyuuryoku.DataSource = dtF8;//Task_NO351_ssa
                 Disable();
             }
             else
