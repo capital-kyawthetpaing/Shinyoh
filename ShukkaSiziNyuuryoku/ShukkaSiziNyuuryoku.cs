@@ -1093,7 +1093,7 @@ namespace ShukkaSiziNyuuryoku
                     }
                 }
                 F8_drNew[0] = HinbanCD;
-                if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() != "0")
+                if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() != "0" || row.Cells["chk"].Value.ToString() == "1")
                 {
                     for (int c = 1; c < dgvShukkasizi.Columns.Count; c++)
                     {
