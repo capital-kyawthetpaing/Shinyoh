@@ -649,18 +649,22 @@ namespace IdouNyuuryoku
                         {
                             if (IdouSuu > Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]))
                             {
-                                base_bl.ShowMessage("Q326", IdouSuu.ToString(), Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]).ToString());
-                                bl_error = true;
-                                return bl_error;
+                                if (base_bl.ShowMessage("Q326", IdouSuu.ToString(), Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]).ToString()) != DialogResult.Yes)
+                                {
+                                    bl_error = true;
+                                    return bl_error;
+                                }
                             }
                         }
                         else
                         {
                             if (IdouSuu > 0)
                             {
-                                base_bl.ShowMessage("Q326", IdouSuu.ToString(), "0");
-                                bl_error = true;
-                                return bl_error;
+                                if (base_bl.ShowMessage("Q326", IdouSuu.ToString(), "0") != DialogResult.Yes)
+                                {
+                                    bl_error = true;
+                                    return bl_error;
+                                }
                             }
                         }
                     }
