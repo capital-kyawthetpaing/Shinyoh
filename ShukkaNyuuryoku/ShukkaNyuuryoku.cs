@@ -839,6 +839,9 @@ namespace ShukkaNyuuryoku {
             string a = gvShukka1.Rows[row].Cells["colShukkazansuu"].Value.ToString();
             string b = gvShukka1.Rows[row].Cells["colMiryoku"].Value.ToString();
             string old = cboMode.SelectedValue.ToString().Equals("2") ? gvShukka1.Rows[row].Cells["OldShukkasuu"].Value.ToString() : "0";
+            if (old == "")
+                old = "0";
+
             decimal c = Convert.ToDecimal(old) +Convert.ToDecimal(a) - Convert.ToDecimal(b);
 
             bool bl_error = false;
@@ -1139,7 +1142,7 @@ namespace ShukkaNyuuryoku {
             dt.Columns.Add("SoukoCD", typeof(string));
             dt.Columns.Add("ShouhinCD", typeof(string));          
             dt.Columns.Add("ShukkaSiziNO", typeof(string));
-     
+            dt.Columns.Add("OldShukkaSuu", typeof(string));
             //dt.Columns.Add("SoukoCD", typeof(string));
 
             //dt.Columns.Add("DenpyouDate", typeof(string));
