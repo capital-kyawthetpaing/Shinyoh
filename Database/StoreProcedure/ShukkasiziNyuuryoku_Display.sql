@@ -1,9 +1,9 @@
-/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Display]    Script Date: 2021/04/12 17:20:49 ******/
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Display]    Script Date: 2021/05/06 16:00:56 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ShukkasiziNyuuryoku_Display%' and type like '%P%')
 DROP PROCEDURE [dbo].[ShukkasiziNyuuryoku_Display]
 GO
 
-/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Display]    Script Date: 2021/04/12 17:20:49 ******/
+/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Display]    Script Date: 2021/05/06 16:00:56 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -11,12 +11,14 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+
 -- =============================================
 -- Author:		<Swe>
 -- Create date: <25-02-2021>
 -- Description:	<F10>
--- History    :2021/04/12 Y.Nishikawa CHG �o�^����D_ShukkaSiziMeisai��INSERT����ۂɃo�C�i���G���[(�n�C�t���܂ł�؂����Ă���̂�13byte�ɂȂ��Ă�)
---             2021/04/14 Y.Nishikawa CHG �������s��(���ו\�����A����o�׎w�����ɏo�׉\�����\������Ȃ�)
+-- History    : 2021/04/12 Y.Nishikawa 登録時にD_ShukkaSiziMeisaiにINSERTする際にバイナリエラー(ハイフンまでを切り取っているので13byteになってる)
+--            : 2021/04/14 Y.Nishikawa 符号が不正(明細表示時、今回出荷指示数に出荷可能数が表示されない)
+--            : 2021/05/06 Y.Nishikawa 完了区分が別の項目
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Display]
 	-- Add the parameters for the stored procedure here
@@ -72,7 +74,10 @@ INSERT INTO  #WK_ShukkaKanouSou2
 	WHERE DJ.TokuisakiCD=@TokuisakiCD
 	AND (@JuchuuNO is null or (DJ.JuchuuNO=@JuchuuNO))
 	AND (@SenpouHacchuuNO is null or (DJMS.SenpouHacchuuNO=@SenpouHacchuuNO))
-	AND DJMS.ShukkaKanryouKBN=0
+	--2021/05/06 Y.Nishikawa CHG 完了区分が別の項目↓↓
+	--AND DJMS.ShukkaKanryouKBN=0
+	AND DJMS.ShukkaSiziKanryouKBN = 0
+	--2021/05/06 Y.Nishikawa CHG 完了区分が別の項目↑↑
 	AND (FT.ShokutiFLG=0 OR(
 	(@TokuisakiYuubinNO1 is null or (DJ.TokuisakiYuubinNO1=@TokuisakiYuubinNO1))and
 	(@TokuisakiYuubinNO2 is null or (DJ.TokuisakiYuubinNO1=@TokuisakiYuubinNO2)))
@@ -109,50 +114,50 @@ INSERT INTO  #WK_ShukkaKanouSou2
 
 
 SELECT
---DJMS.ShouhinCD			--啁E��コーチE
-	FS.HinbanCD	as ShouhinCD--啁E��コーチE
-	,DJMS.ShouhinName		--啁E��吁E
-	,DJMS.ColorRyakuName	--カラー略吁E
-	,DJMS.ColorNO			--カラーNO
-	,DJMS.SizeNO			--サイズNO
-	,FORMAT(DJMS.JuchuuSuu, '#,0') AS JuchuuSuu	--受注数
-	,ISNULL(FORMAT(SKKNS2.ShukkanouSuu, '#,0'),'0') AS ShukkanouSuu			--出荷可能数
-	,FORMAT(DJMS.ShukkaSiziZumiSuu, '#,0') AS ShukkaSiziZumiSuu	--出荷持E��済数
-	--2021/04/14 Y.Nishikawa CHG �������s��(���ו\�����A����o�׎w�����ɏo�׉\�����\������Ȃ�)����
+--DJMS.ShouhinCD			--蝠・刀繧ｳ繝ｼ繝・
+	FS.HinbanCD	as ShouhinCD--蝠・刀繧ｳ繝ｼ繝・
+	,DJMS.ShouhinName		--蝠・刀蜷・
+	,DJMS.ColorRyakuName	--繧ｫ繝ｩ繝ｼ逡･蜷・
+	,DJMS.ColorNO			--繧ｫ繝ｩ繝ｼNO
+	,DJMS.SizeNO			--繧ｵ繧､繧ｺNO
+	,FORMAT(DJMS.JuchuuSuu, '#,0') AS JuchuuSuu	--蜿玲ｳｨ謨ｰ
+	,ISNULL(FORMAT(SKKNS2.ShukkanouSuu, '#,0'),'0') AS ShukkanouSuu			--蜃ｺ闕ｷ蜿ｯ閭ｽ謨ｰ
+	,FORMAT(DJMS.ShukkaSiziZumiSuu, '#,0') AS ShukkaSiziZumiSuu	--蜃ｺ闕ｷ謖・､ｺ貂域焚
+	--2021/04/14 Y.Nishikawa CHG 符号が不正(明細表示時、今回出荷指示数に出荷可能数が表示されない)↓↓
 	--,ISNULL((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN FORMAT(SKKNS2.ShukkanouSuu, '#,0')
 	--  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN FORMAT((DJMS.JuchuuSuu-DJMS.ShukkaZumiSuu), '#,0') END),'0') AS KonkaiShukkaSiziSuu
 	,ISNULL((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>=SKKNS2.ShukkanouSuu THEN FORMAT(SKKNS2.ShukkanouSuu, '#,0')
 	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<SKKNS2.ShukkanouSuu THEN FORMAT((DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu), '#,0') END),'0') AS KonkaiShukkaSiziSuu
-	--2021/04/14 Y.Nishikawa CHG �������s��(���ו\�����A����o�׎w�����ɏo�׉\�����\������Ȃ�)����
-	,ISNULL(FORMAT(DJMS.UriageTanka, '#,0'),'0') AS UriageTanka	--単価
+	--2021/04/14 Y.Nishikawa CHG 符号が不正(明細表示時、今回出荷指示数に出荷可能数が表示されない)↑↑
+	,ISNULL(FORMAT(DJMS.UriageTanka, '#,0'),'0') AS UriageTanka	--蜊倅ｾ｡
 	,ISNULL(Format(((case when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)>SKKNS2.ShukkanouSuu THEN SKKNS2.ShukkanouSuu
 	  when(DJMS.JuchuuSuu-DJMS.ShukkaSiziZumiSuu)<=SKKNS2.ShukkanouSuu THEN DJMS.JuchuuSuu-DJMS.ShukkaZumiSuu END)*DJMS.UriageTanka),'#,0'),'0') AS UriageKingaku
-	,0 as Kanryo --完亁E
-	,'' as ShukkaSiziMeisaiTekiyou --明細摘要E
+	,0 as Kanryo --螳御ｺ・
+	,'' as ShukkaSiziMeisaiTekiyou --譏守ｴｰ鞫倩ｦ・
 	--details2
-	--2021/04/12 Y.Nishikawa CHG �o�^����D_ShukkaSiziMeisai��INSERT����ۂɃo�C�i���G���[(�n�C�t���܂ł�؂����Ă���̂�13byte�ɂȂ��Ă�)����
+	--2021/04/12 Y.Nishikawa CHG 登録時にD_ShukkaSiziMeisaiにINSERTする際にバイナリエラー(ハイフンまでを切り取っているので13byteになってる)↓↓
 	--,(DJMS.JuchuuNO +' - ' +cast(DJMS.JuchuuGyouNO as varchar)) AS SKMSNO
 	,(DJMS.JuchuuNO +'-' +cast(DJMS.JuchuuGyouNO as varchar)) AS SKMSNO
-	--2021/04/12 Y.Nishikawa CHG �o�^����D_ShukkaSiziMeisai��INSERT����ۂɃo�C�i���G���[(�n�C�t���܂ł�؂����Ă���̂�13byte�ɂȂ��Ă�)����
+	--2021/04/12 Y.Nishikawa CHG 登録時にD_ShukkaSiziMeisaiにINSERTする際にバイナリエラー(ハイフンまでを切り取っているので13byteになってる)↑↑
 	,DJMS.JuchuuNO
 	,DJMS.SoukoCD
 	,MS.SoukoName
 	--HiddenFields
-	,DJ.TokuisakiCD		--得意允E
-	,DJ.KouritenCD		--小売庁E
-	,DJ.KouritenRyakuName	--小売店略吁E
-	,DJ.KouritenName		--小売店名
-	,DJ.KouritenYuubinNO1	--小売店郵便番号1
-	,DJ.KouritenYuubinNO2	--小売店郵便番号2
-	,DJ.KouritenJuusho1		--小売店住所1
-	,DJ.KouritenJuusho2		--小売店住所2
-	,DJ.[KouritenTelNO1-1]	--小売店電話番号1-1
-	,DJ.[KouritenTelNO1-2]	--小売店電話番号1-2
-	,DJ.[KouritenTelNO1-3]	--小売店電話番号1-3
-	,DJ.[KouritenTelNO2-1]	--小売店電話番号2-1
-	,DJ.[KouritenTelNO2-2]	--小売店電話番号2-2
-	,DJ.[KouritenTelNO2-3]	--小売店電話番号2-3
-	,FS.ShouhinCD as Hidden_ShouhinCD--啁E��コード_更新用
+	,DJ.TokuisakiCD		--蠕玲э蜈・
+	,DJ.KouritenCD		--蟆丞｣ｲ蠎・
+	,DJ.KouritenRyakuName	--蟆丞｣ｲ蠎礼払蜷・
+	,DJ.KouritenName		--蟆丞｣ｲ蠎怜錐
+	,DJ.KouritenYuubinNO1	--蟆丞｣ｲ蠎鈴Ψ萓ｿ逡ｪ蜿ｷ1
+	,DJ.KouritenYuubinNO2	--蟆丞｣ｲ蠎鈴Ψ萓ｿ逡ｪ蜿ｷ2
+	,DJ.KouritenJuusho1		--蟆丞｣ｲ蠎嶺ｽ乗園1
+	,DJ.KouritenJuusho2		--蟆丞｣ｲ蠎嶺ｽ乗園2
+	,DJ.[KouritenTelNO1-1]	--蟆丞｣ｲ蠎鈴崕隧ｱ逡ｪ蜿ｷ1-1
+	,DJ.[KouritenTelNO1-2]	--蟆丞｣ｲ蠎鈴崕隧ｱ逡ｪ蜿ｷ1-2
+	,DJ.[KouritenTelNO1-3]	--蟆丞｣ｲ蠎鈴崕隧ｱ逡ｪ蜿ｷ1-3
+	,DJ.[KouritenTelNO2-1]	--蟆丞｣ｲ蠎鈴崕隧ｱ逡ｪ蜿ｷ2-1
+	,DJ.[KouritenTelNO2-2]	--蟆丞｣ｲ蠎鈴崕隧ｱ逡ｪ蜿ｷ2-2
+	,DJ.[KouritenTelNO2-3]	--蟆丞｣ｲ蠎鈴崕隧ｱ逡ｪ蜿ｷ2-3
+	,FS.ShouhinCD as Hidden_ShouhinCD--蝠・刀繧ｳ繝ｼ繝雲譖ｴ譁ｰ逕ｨ
 	,0 AS Hidden_ShukkaSiziGyouNO
 	FROM D_Juchuu DJ
 	INNER JOIN D_JuchuuMeisai DJMS ON DJMS.JuchuuNO=DJ.JuchuuNO
@@ -163,7 +168,10 @@ SELECT
 	WHERE DJ.TokuisakiCD=@TokuisakiCD
 	AND (@JuchuuNO is null or (DJ.JuchuuNO=@JuchuuNO))
 	AND (@SenpouHacchuuNO is null or (DJMS.SenpouHacchuuNO=@SenpouHacchuuNO))
-	AND DJMS.ShukkaKanryouKBN=0
+	--2021/05/06 Y.Nishikawa CHG 完了区分が別の項目↓↓
+	--AND DJMS.ShukkaKanryouKBN=0
+	AND DJMS.ShukkaSiziKanryouKBN = 0
+	--2021/05/06 Y.Nishikawa CHG 完了区分が別の項目↑↑
 	AND (FT.ShokutiFLG=0 OR(
 	(@TokuisakiYuubinNO1 is null or (DJ.TokuisakiYuubinNO1=@TokuisakiYuubinNO1))and
 	(@TokuisakiYuubinNO2 is null or (DJ.TokuisakiYuubinNO1=@TokuisakiYuubinNO2)))
@@ -196,7 +204,7 @@ SELECT
 	((@KouritenJuusho1 is null or (DJ.KouritenJuusho1=@KouritenJuusho1))or
 	(@KouritenJuusho2 is null or (DJ.KouritenJuusho2=@KouritenJuusho2)))
 	)
-	AND SKKNS2.ShukkanouSuu <> 0	--�o�׉\��
+	AND SKKNS2.ShukkanouSuu <> 0	--出荷可能数
 	ORDER BY DJMS.ShouhinCD ASC,DJMS.JuchuuNO ASC,DJMS.GyouHyouziJun ASC
 
 If(OBJECT_ID('tempdb..#WK_ShukkaKanouSou2') Is Not Null)

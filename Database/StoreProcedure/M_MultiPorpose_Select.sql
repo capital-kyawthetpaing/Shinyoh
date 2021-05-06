@@ -25,9 +25,9 @@ BEGIN
 
 	if @ErrorType='E101'
 		begin
-			if exists(select * from M_MultiPorpose where ID=109 and [Key]=@Key)
+			if exists(select * from M_MultiPorpose where ID=@id and [Key]=@Key)
 				--exists
-					select * from M_MultiPorpose,M_Message m where ID=109 and [Key]=@Key and m.MessageID='E132'
+					select * from M_MultiPorpose,M_Message m where ID=@id and [Key]=@Key and m.MessageID='E132'
 			else
 				--not exists
 					select * from M_Message	where MessageID = 'E101'

@@ -179,7 +179,7 @@ namespace JuchuuNyuuryoku
                     txtCopy.E102Check(false);
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
-                    txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
+                    txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
                     txtJuchuuNO.E265Check(false, "JuchuuNyuuryoku", txtJuchuuNO);
 
                     Disable_UDI_Mode();
@@ -1011,6 +1011,25 @@ namespace JuchuuNyuuryoku
 
                 obj.ChangeDate = txtJuchuuDate.Text;
                 DataTable dt = obj_bl.JuchuuNyuuryoku_Display(obj);
+
+                if (F8_dt1.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        //重複行はDelete
+                        string ShouhinCD = dr["ShouhinCD"].ToString();
+                        DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + ShouhinCD + "'").SingleOrDefault();
+                        if (existDr1 != null)
+                        {
+                            dr["JuchuuGyouNO"] = "99";    //未使用項目のため
+                        }
+                    }
+
+                    DataRow[] select_dr1 = dt.Select("JuchuuGyouNO = '99'");
+                    foreach (DataRow dr in select_dr1)
+                        dt.Rows.Remove(dr);
+                }
+
                 gv_JuchuuNyuuryoku.DataSource = dt;                     //For task no. 120
                 gv_JuchuuNyuuryoku.Focus();
                 if (dt.Rows.Count > 0)
@@ -1082,7 +1101,7 @@ namespace JuchuuNyuuryoku
                 if (existDr1 != null)
                 {
                     //if (select_dr1[0][8].ToString() == "0")
-                    if (row.Cells["colJuchuuSuu"].Value.ToString() == "0" && gvdt1.Rows.Count != gv_JuchuuNyuuryoku.Rows.Count)
+                    if (row.Cells["colJuchuuSuu"].Value.ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
