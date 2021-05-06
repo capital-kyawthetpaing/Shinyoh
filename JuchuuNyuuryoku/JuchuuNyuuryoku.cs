@@ -179,7 +179,7 @@ namespace JuchuuNyuuryoku
                     txtCopy.E102Check(false);
 
                     txtJuchuuNO.E133Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null, null);
-                    txtJuchuuNO.E160Check(true, "JuchuuNyuuryoku", txtJuchuuNO, null);
+                    txtJuchuuNO.E160Check(false, "JuchuuNyuuryoku", txtJuchuuNO, null);
                     txtJuchuuNO.E265Check(false, "JuchuuNyuuryoku", txtJuchuuNO);
 
                     Disable_UDI_Mode();
