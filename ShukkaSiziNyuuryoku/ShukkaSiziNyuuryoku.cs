@@ -1086,7 +1086,7 @@ namespace ShukkaSiziNyuuryoku
                 DataRow existDr1 = F8_dt1.Select("SKMSNO='" + SKMSNO + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() == "0" && dtgv1.Rows.Count != dgvShukkasizi.Rows.Count)
+                    if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
@@ -1202,6 +1202,8 @@ namespace ShukkaSiziNyuuryoku
                         //JuchuuNO_Delete();
                         foreach (DataRow dr in dtRow.Rows)
                         {
+
+
                             string JuchuuNO = dr["JuchuuNO"].ToString();
                             sksz_e = new ShukkaSiziNyuuryokuEntity();
                             sksz_e.DataKBN = 1;

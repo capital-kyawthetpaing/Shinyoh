@@ -1082,7 +1082,7 @@ namespace JuchuuNyuuryoku
                 if (existDr1 != null)
                 {
                     //if (select_dr1[0][8].ToString() == "0")
-                    if (row.Cells["colJuchuuSuu"].Value.ToString() == "0" && gvdt1.Rows.Count != gv_JuchuuNyuuryoku.Rows.Count)
+                    if (row.Cells["colJuchuuSuu"].Value.ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
