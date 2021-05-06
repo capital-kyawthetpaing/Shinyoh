@@ -44,8 +44,6 @@ namespace HacchuuSho
 
         private void HacchuuSho_Load(object sender, EventArgs e)
         {
-            
-
             ProgramID = "HacchuuSho";
             StartProgram();
             cboMode.Bind(false, multi_Entity);
@@ -174,7 +172,9 @@ namespace HacchuuSho
             xlWorkBook = xlApp.Workbooks.Add(misValue);
             xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
             xlWorkSheet = xlWorkBook.ActiveSheet;
-            xlWorkSheet.Name = "発注書(PURCHASE ORDER)";
+            //xlWorkSheet.Name = "発注書(PURCHASE ORDER)";
+            xlWorkSheet.Name = txtKanriNO.Text;//ssa
+
             try
             {
                 xlWorkSheet.PageSetup.PrintArea = "A1:V1000";
@@ -215,7 +215,7 @@ namespace HacchuuSho
             xlWorkSheet.Columns[17].ColumnWidth = 5;
             xlWorkSheet.Columns[18].ColumnWidth = 5;
             xlWorkSheet.Columns[19].ColumnWidth = 5;
-            xlWorkSheet.Columns[20].ColumnWidth = 5;
+            xlWorkSheet.Columns[20].ColumnWidth = 10;
             xlWorkSheet.Columns[21].ColumnWidth = 15;
 
             #endregion
@@ -255,6 +255,7 @@ namespace HacchuuSho
                     xlApp.get_Range("B" + (startrow + 3), "L" + (startrow + 3)).Merge(Type.Missing);
                     xlWorkSheet.get_Range("A" + startrow, "L" + startrow).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
                 #endregion
+
                 col = (gvrow + 1) + dgv;
                     #region Child Style
                     string idx = "A" + gvrow + ":U" + gvrow;
@@ -270,12 +271,14 @@ namespace HacchuuSho
                     xlWorkSheet.get_Range("B" + gvrow, "U" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeTop].Weight = 3d;//row17
                     xlWorkSheet.get_Range("B" + gvrow, "U" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;//row17
 
+                    xlApp.get_Range("T" + (gvrow + 1), "T" + col).Cells.NumberFormat = "#,##0";//ssa
                     xlApp.get_Range("U" + (gvrow + 1), "U" + col).Cells.NumberFormat = "$#,##0.00";
                     xlWorkSheet.get_Range("A" + (gvrow + 1) + ":U" + (gvrow + 1), val2).RowHeight = 40;
                     xlApp.get_Range("A17", "U" + col).Cells.Font.Name = "Arial";
 
                     xlWorkSheet.get_Range("B" + gvrow, "U" + col).Borders[Excel.XlBordersIndex.xlEdgeLeft].Weight = 3d;
                     xlWorkSheet.get_Range("B" + gvrow, "U" + col).Borders[Excel.XlBordersIndex.xlEdgeRight].Weight = 3d;
+                    xlWorkSheet.get_Range("B" + (col-1), "U" + (col-1)).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;//ssa
                     xlWorkSheet.get_Range("B" + (col), "U" + (col)).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;//total
 
                     #endregion
@@ -306,28 +309,40 @@ namespace HacchuuSho
 
                     #region Child Item
                     var modelno = ""; var otherModel = 0;var colorno = ""; var otherCkolor = "";
-                    for (int h = 0; h < dtgv.Rows.Count; h++)
+                
+
+                for (int h = 0; h < dtgv.Rows.Count; h++)
                     {
                         if (modelno != dtgv.Rows[h]["ModelNo"].ToString())
                         {
-                            xlWorkSheet.Cells[gvrow + (otherModel + 1), 2] = dtgv.Rows[h]["ModelNo"].ToString();
-                            xlWorkSheet.Cells[gvrow + (otherModel + 1), 3] = dtgv.Rows[h]["ModelName"].ToString();
-                            xlWorkSheet.Cells[gvrow + (otherModel + 1), 4] = dtgv.Rows[h]["FOBPRICE"].ToString();
-                            xlWorkSheet.Cells[gvrow + (otherModel + 1), 5] = dtgv.Rows[h]["JAPANColor"].ToString();
-                            xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["KOREAColor"].ToString();
-                            xlWorkSheet.Cells[gvrow + (otherModel + 1), 7] = dtgv.Rows[h]["Shippingplace"].ToString();
-                            try
-                            {
-                                SettingImg(dtgv.Rows[h]["IMAGE"] as byte[]);
-                                SetImage(gvrow + (otherModel + 1), 8, tmpPath, xlWorkSheet);
+                                xlWorkSheet.Cells[gvrow + (otherModel + 1), 2] = dtgv.Rows[h]["ModelNo"].ToString();
+                                xlWorkSheet.Cells[gvrow + (otherModel + 1), 3] = dtgv.Rows[h]["ModelName"].ToString();
+                                xlWorkSheet.Cells[gvrow + (otherModel + 1), 4] = dtgv.Rows[h]["FOBPRICE"].ToString();
+                                xlWorkSheet.Cells[gvrow + (otherModel + 1), 5] = dtgv.Rows[h]["JAPANColor"].ToString();
+                                xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["KOREAColor"].ToString();
+                                xlWorkSheet.Cells[gvrow + (otherModel + 1), 7] = dtgv.Rows[h]["Shippingplace"].ToString();
+                            //Yellow_Color_Change_Item ==> [ModelNO]
+                            var Cell_Color = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 2];
+                            var Cell_Color1 = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 5];
+                            if (dtgv.Rows[h]["HacchuuLotFLG"].ToString().Equals("1"))
+                            {                            
+                                Cell_Color.Interior.Color= System.Drawing.ColorTranslator.FromHtml("#F0F179");
+                                Cell_Color1.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
                             }
-                            catch (Exception ex) { var msg = ex.Message; }
-                            xlWorkSheet.Cells[gvrow + (otherModel + 1), 20] = dtgv.Rows[h]["Pairs"].ToString();
-                            xlWorkSheet.Cells[gvrow + (otherModel + 1), 21] = dtgv.Rows[h]["Amount"].ToString();
-                            modelno = dtgv.Rows[h]["ModelNo"].ToString();
-                            colorno = dtgv.Rows[h]["ColorNo"].ToString();
-                            otherModel++;
-                            xlWorkSheet.get_Range("B" + (otherModel + 1), "U" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
+                                try
+                                {
+                                    SettingImg(dtgv.Rows[h]["IMAGE"] as byte[]);
+                                    SetImage(gvrow + (otherModel + 1), 8, tmpPath, xlWorkSheet);
+                                }
+                                catch (Exception ex) { var msg = ex.Message; }
+
+                                xlWorkSheet.Cells[gvrow + (otherModel + 1), 20] = dtgv.Rows[h]["Pairs"].ToString();
+                                xlWorkSheet.Cells[gvrow + (otherModel + 1), 21] = dtgv.Rows[h]["Amount"].ToString();
+                                modelno = dtgv.Rows[h]["ModelNo"].ToString();
+                                colorno = dtgv.Rows[h]["ColorNo"].ToString();
+                                otherModel++;
+                                xlWorkSheet.get_Range("B" + (otherModel + 1), "U" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
+
                         }
                         else if (modelno == dtgv.Rows[h]["ModelNo"].ToString() && colorno != dtgv.Rows[h]["ColorNo"].ToString())
                         {
@@ -337,7 +352,18 @@ namespace HacchuuSho
                             xlWorkSheet.Cells[gvrow + (otherModel + 1), 5] = dtgv.Rows[h]["JAPANColor"].ToString();
                             xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["KOREAColor"].ToString();
                             xlWorkSheet.Cells[gvrow + (otherModel + 1), 7] = dtgv.Rows[h]["Shippingplace"].ToString();
-                            try
+
+                            //Yellow_Color_Change_Item ==> [ModelNO]
+                            var Cell_Color = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 2];
+                            var Cell_Color1 = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 5];
+
+                            if (dtgv.Rows[h]["HacchuuLotFLG"].ToString().Equals("1"))
+                            {
+                               Cell_Color.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
+                               Cell_Color1.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
+                            }
+
+                        try
                             {
                                 SettingImg(dtgv.Rows[h]["IMAGE"] as byte[]);
                                 SetImage(gvrow + (otherModel + 1), 8, tmpPath, xlWorkSheet);
@@ -349,12 +375,22 @@ namespace HacchuuSho
                             colorno = dtgv.Rows[h]["ColorNo"].ToString();
                             otherModel++;
                         }
+
                         xlWorkSheet.Cells[gvrow + (otherModel), GetSizeTitile(dtgv.Rows[h]["SizeNo"].ToString())] = dtgv.Rows[h]["HacchuuSuu"].ToString();
+                    //Yellow_Color_Change_Item ==> [ModelNO]
+                    if (dtgv.Rows[h]["HacchuuLotFLG"].ToString().Equals("1"))
+                    {
+                        var Cell_Color2 = xlWorkSheet.Cells[gvrow + (otherModel), GetSizeTitile(dtgv.Rows[h]["SizeNo"].ToString())];
+                        Cell_Color2.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
                     }
+
+                }
                     xlWorkSheet.get_Range("B" + (gvrow), "U" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
                     xlWorkSheet.Cells[col, 20].Formula =  "=Sum(" + xlWorkSheet.Cells[gvrow+1, 20].Address + ":" + xlWorkSheet.Cells[col-1, 20].Address + ")";
                     xlWorkSheet.Cells[col, 21].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 21].Address + ":" + xlWorkSheet.Cells[col - 1, 21].Address + ")";
+                    
                 #endregion
+
                 SetFooter(xlWorkBook,xlWorkSheet, col);
                 col += 17;
                 startrow = col +12;
@@ -365,7 +401,8 @@ namespace HacchuuSho
             
             xlApp.get_Range("C" + col + 4, "L" + col + 4).Merge(Type.Missing);
             var dtnow = DateTime.Now.ToString("yyyyMMdd HHmmss");
-            var fname = dtnow.Replace(" ", "_") + "_" +  OperatorCD + "_" + "PurchaseOrder.xlsx";
+            //var fname = dtnow.Replace(" ", "_") + "_" +  OperatorCD + "_" + "PurchaseOrder.xlsx";
+            var fname = "PURCHASE_ORDER" + "_"+ txtKanriNO.Text + ".xlsx";//ssa
 
             if (!Directory.Exists(tmpSave))
             {
@@ -407,7 +444,7 @@ namespace HacchuuSho
             xlWorkSheet.Cells[added + 7, 20] = dt.Rows[0]["EiziFaxNO"].ToString();
 
             xlWorkSheet.Cells[added + 10, 6] = "PURCHASE ORDER "; 
-            xlApp.Cells.Font.Name = "Times New Roman"; 
+            xlApp.Cells.Font.Name = "Times New Roman";
 
             xlApp.get_Range("I" +(added + 17).ToString(), "S"  +(added + 17).ToString()).Cells.NumberFormat = "0.0"; 
             xlApp.get_Range("A"+(added+1).ToString()+":U"+(added + 1).ToString() , "A" + (added + 3).ToString() + ":U" + (added + 3).ToString() ).Merge(Type.Missing);
@@ -482,6 +519,7 @@ namespace HacchuuSho
         private int GetSizeTitile(String title )
         {
             var sizetitle = 0;
+            
             if (title == "23.0")
             {
                 sizetitle = 9;

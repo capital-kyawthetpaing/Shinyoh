@@ -62,7 +62,7 @@ FROM
 	)A
 LEFT OUTER JOIN
 	(SELECT A.SiiresakiCD AS 'SiiresakiCD', C.Model_No AS 'ModelNo', B.ColorNO,B.SizeNO,SUM(B.HacchuuSuu) as 'HacchuuSuu',
-	case WHEN SUM(B.HacchuuSuu) / NULLIF(MAX(C.HacchuuLot), 0) = 0 Then 0 Else 1 END AS 'HacchuuLotFLG'
+	case WHEN SUM(CAST(B.HacchuuSuu as INTEGER)) / NULLIF(MAX(CAST(C.HacchuuLot as INTEGER)), 0) = 0 Then 0 Else 1 END AS 'HacchuuLotFLG'
 	from D_Hacchuu A
 	left outer join D_HacchuuMeisai B
 	on B.HacchuuNO=A.HacchuuNO
