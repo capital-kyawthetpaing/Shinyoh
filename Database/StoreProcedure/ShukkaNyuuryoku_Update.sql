@@ -206,7 +206,7 @@ BEGIN
 					ShukkaSiziZumiSuu		decimal(21,6) 'ShukkaSiziZumiSuu',
 					MiNyuukaSuu				decimal(21,6) 'MiNyuukaSuu',
 					ShukkaSuu				decimal(21,6) 'ShukkaSuu',
-					Kanryo					tinyint 'Kanryo',
+					Kanryo					tinyint 'Kanryou',
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
 					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
@@ -754,6 +754,7 @@ BEGIN
 				ShukkaKanryouKBN = case WHEN ShukkaSiziSuu <= ShukkaZumiSuu Then 1 WHEN d.Kanryo = 1 Then 1 ELSE 0 End
 			from D_ShukkaSiziMeisai A,#Temp_Detail d
 			where A.ShukkaSiziNO=LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
+			and A.ShukkaSiziGyouNO = RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
 
 
 				--D_ShukkaSizi A
