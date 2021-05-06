@@ -743,7 +743,7 @@ namespace ShukkaNyuuryoku {
                     }
                 }
                 F8_drNew[0] = JANCD;
-                if (row.Cells["colKonkai"].Value.ToString() != "0")
+                if (row.Cells["colKonkai"].Value.ToString() != "0" || row.Cells["colComplete"].Value.ToString() == "1")
                 {
                     for (int c = 1; c < gvShukka1.Columns.Count; c++)
                     {
