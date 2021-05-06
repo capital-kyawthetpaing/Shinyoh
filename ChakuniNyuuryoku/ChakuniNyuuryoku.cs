@@ -833,7 +833,7 @@ namespace ChakuniNyuuryoku
                     }
                 }
                 F8_drNew[0] = HinbanCD;
-                if (row.Cells["ChakuniSuu"].Value.ToString() != "0")
+                if (row.Cells["ChakuniSuu"].Value.ToString() != "0" || row.Cells["SiireKanryouKBN"].Value.ToString() == "1")
                 {
                     for (int c = 1; c < gvChakuniNyuuryoku.Columns.Count; c++)
                     {
