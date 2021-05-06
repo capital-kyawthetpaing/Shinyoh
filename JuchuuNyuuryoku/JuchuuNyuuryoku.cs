@@ -1011,6 +1011,25 @@ namespace JuchuuNyuuryoku
 
                 obj.ChangeDate = txtJuchuuDate.Text;
                 DataTable dt = obj_bl.JuchuuNyuuryoku_Display(obj);
+
+                if (F8_dt1.Rows.Count > 0)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        //重複行はDelete
+                        string ShouhinCD = dr["ShouhinCD"].ToString();
+                        DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + ShouhinCD + "'").SingleOrDefault();
+                        if (existDr1 != null)
+                        {
+                            dr["JuchuuGyouNO"] = "99";    //未使用項目のため
+                        }
+                    }
+
+                    DataRow[] select_dr1 = dt.Select("JuchuuGyouNO = '99'");
+                    foreach (DataRow dr in select_dr1)
+                        dt.Rows.Remove(dr);
+                }
+
                 gv_JuchuuNyuuryoku.DataSource = dt;                     //For task no. 120
                 gv_JuchuuNyuuryoku.Focus();
                 if (dt.Rows.Count > 0)
