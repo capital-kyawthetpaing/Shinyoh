@@ -1,5 +1,5 @@
 ﻿ BEGIN TRY 
- Drop Function dbo.[M_LogoSelect]
+ Drop Procedure dbo.[M_LogoSelect]
 END try
 BEGIN CATCH END CATCH 
 SET ANSI_NULLS ON

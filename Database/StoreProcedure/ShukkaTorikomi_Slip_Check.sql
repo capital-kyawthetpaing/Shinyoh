@@ -14,6 +14,7 @@ GO
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkaTorikomi_Slip_Check]
 	@ShukkaSiziNO as varchar(12),
+	@ShouhinCD VARCHAR(50),
 	@Errortype as varchar(10)
 AS
 BEGIN
