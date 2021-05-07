@@ -96,7 +96,7 @@ namespace ShukkaSiziDataShuturyoku {
         }
         private void Clear()
         {
-            cf.Clear(Panel_Detail);
+            cf.Clear(PanelDetail);
             rdo_MiHakkou.Checked = true;
             txtShukkaNo1.Focus();
             lblBrand_Name.Text = "";
@@ -114,70 +114,70 @@ namespace ShukkaSiziDataShuturyoku {
             }
             if (tagID == "10")
             {             
-                    DataTable dt = new DataTable { TableName = "MyTableName" };
-                    dt = Get_Form_Object();
-                    if (dt.Rows.Count > 0)
+                DataTable dt = new DataTable { TableName = "MyTableName" };
+                dt = Get_Form_Object();
+                if (dt.Rows.Count > 0)
+                {
+                    dt.Columns["TokuisakiCD"].ColumnName = "得意先CD";
+                    dt.Columns["TokuisakiName"].ColumnName = "店舗CD";
+                    dt.Columns["KouritenCD"].ColumnName = "得意先名";
+                    dt.Columns["KouritenName"].ColumnName = "店舗名";
+                    dt.Columns["DenpyouDate"].ColumnName = "伝票日付";
+                    dt.Columns["ShukkaYoteiDate"].ColumnName = "出荷日";
+                    dt.Columns["HinbanCD"].ColumnName = "品番";
+                    dt.Columns["ColorRyakuName"].ColumnName = "ｶﾗｰ";
+                    dt.Columns["SizeNO"].ColumnName = "ｻｲｽﾞ";
+                    dt.Columns["JANCD"].ColumnName = "JANｺｰﾄﾞ";
+                    dt.Columns["ShukkaSiziSuu"].ColumnName = "数量";
+                    dt.Columns["UriageTanka"].ColumnName = "単価";
+                    dt.Columns["UriageKingaku"].ColumnName = "金額";
+                    dt.Columns["KouritenJuusho2"].ColumnName = "先方発注№";
+                    dt.Columns["SenpouHacchuuNO"].ColumnName = "出荷指示番号";
+                    dt.Columns["ShukkaSiziMeisaiTekiyou"].ColumnName = "備考";
+
+                    if (!System.IO.Directory.Exists("C:\\Excel"))
+                        System.IO.Directory.CreateDirectory("C:\\Excel");
+
+                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    saveFileDialog1.InitialDirectory = @"C:\Excel\";
+
+                    //for excel
+                    saveFileDialog1.Filter = "ExcelFile|*.xls";
+                    saveFileDialog1.FileName = ".xls";
+                    saveFileDialog1.RestoreDirectory = true;
+                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
-                        dt.Columns["TokuisakiCD"].ColumnName = "得意先CD";
-                        dt.Columns["TokuisakiName"].ColumnName = "店舗CD";
-                        dt.Columns["KouritenCD"].ColumnName = "得意先名";
-                        dt.Columns["KouritenName"].ColumnName = "店舗名";
-                        dt.Columns["DenpyouDate"].ColumnName = "伝票日付";
-                        dt.Columns["ShukkaYoteiDate"].ColumnName = "出荷日";
-                        dt.Columns["HinbanCD"].ColumnName = "品番";
-                        dt.Columns["ColorRyakuName"].ColumnName = "ｶﾗｰ";
-                        dt.Columns["SizeNO"].ColumnName = "ｻｲｽﾞ";
-                        dt.Columns["JANCD"].ColumnName = "JANｺｰﾄﾞ";
-                        dt.Columns["ShukkaSiziSuu"].ColumnName = "数量";
-                        dt.Columns["UriageTanka"].ColumnName = "単価";
-                        dt.Columns["UriageKingaku"].ColumnName = "金額";
-                        dt.Columns["KouritenJuusho2"].ColumnName = "先方発注№";
-                        dt.Columns["SenpouHacchuuNO"].ColumnName = "出荷指示番号";
-                        dt.Columns["ShukkaSiziMeisaiTekiyou"].ColumnName = "備考";
-
-                        if (!System.IO.Directory.Exists("C:\\Excel"))
-                            System.IO.Directory.CreateDirectory("C:\\Excel");
-
-                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                        saveFileDialog1.InitialDirectory = @"C:\Excel\";
-
-                        //for excel
-                        saveFileDialog1.Filter = "ExcelFile|*.xls";
-                        saveFileDialog1.FileName = ".xls";
-                        saveFileDialog1.RestoreDirectory = true;
-                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                        ExcelDesignSetting obj = new ExcelDesignSetting();
+                        obj.FilePath = saveFileDialog1.FileName;
+                        obj.SheetName = "Sheet1";
+                        obj.Start_Interior_Column = "A1";
+                        obj.End_Interior_Column = "P1";
+                        obj.Interior_Color = Color.Orange;
+                        obj.Start_Font_Column = "A1";
+                        obj.End_Font_Column = "P1";
+                        obj.Font_Color = Color.Black;
+                        //For column E,F
+                        obj.Date_Column = new List<int>();
+                        obj.Date_Column.Add(5);
+                        obj.Date_Column.Add(6);
+                        obj.Date_Format = "DD/MM/YYYY";
+                        obj.Start_Title_Center_Column = "A1";
+                        obj.End_Title_Center_Column = "P1";                            
+                        bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
+                        if (bl)
                         {
-                            ExcelDesignSetting obj = new ExcelDesignSetting();
-                            obj.FilePath = saveFileDialog1.FileName;
-                            obj.SheetName = "Sheet1";
-                            obj.Start_Interior_Column = "A1";
-                            obj.End_Interior_Column = "P1";
-                            obj.Interior_Color = Color.Orange;
-                            obj.Start_Font_Column = "A1";
-                            obj.End_Font_Column = "P1";
-                            obj.Font_Color = Color.Black;
-                            //For column E,F
-                            obj.Date_Column = new List<int>();
-                            obj.Date_Column.Add(5);
-                            obj.Date_Column.Add(6);
-                            obj.Date_Format = "DD/MM/YYYY";
-                            obj.Start_Title_Center_Column = "A1";
-                            obj.End_Title_Center_Column = "P1";                            
-                            bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
-                            if (bl)
-                            {
-                                bbl.ShowMessage("I203");
-                                Clear();
-                            }
+                            bbl.ShowMessage("I203");
+                            Clear();
                         }
                     }
-                    else if (dt.Rows.Count == 0)
-                    {
-                        bbl.ShowMessage("S013");
-                        if (PreviousCtrl != null)
-                            PreviousCtrl.Focus();
-                    }                           
-                base.FunctionProcess(tagID);
+                }
+                else if (dt.Rows.Count == 0)
+                {
+                    bbl.ShowMessage("S013");
+                    if (PreviousCtrl != null)
+                        PreviousCtrl.Focus();
+                }                           
+            base.FunctionProcess(tagID);
             }
         } 
 

@@ -26,7 +26,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Panel_Detail = new System.Windows.Forms.Panel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.rdo_Hakkou = new Shinyoh_Controls.SRadio();
+            this.rdo_MiHakkou = new Shinyoh_Controls.SRadio();
             this.txtKouriten = new Shinyoh_Search.SearchBox();
             this.txtToukuisaki = new Shinyoh_Search.SearchBox();
             this.lblKouritenName = new Shinyoh_Controls.SLabel();
@@ -50,55 +53,90 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtShukkaDate2 = new Shinyoh_Controls.STextBox();
             this.lblHacchuuNO = new Shinyoh_Controls.SLabel();
-            this.rdo_Hakkou = new Shinyoh_Controls.SRadio();
-            this.rdo_MiHakkou = new Shinyoh_Controls.SRadio();
             this.label2 = new System.Windows.Forms.Label();
             this.txtShukkaNo2 = new Shinyoh_Controls.STextBox();
             this.txtShukkaNo1 = new Shinyoh_Controls.STextBox();
             this.lblHacchuuDate = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
-            this.Panel_Detail.SuspendLayout();
+            this.PanelDetail.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // cboMode
             // 
             this.cboMode.BackColor = System.Drawing.Color.Cyan;
             // 
-            // Panel_Detail
+            // PanelDetail
             // 
-            this.Panel_Detail.Controls.Add(this.txtKouriten);
-            this.Panel_Detail.Controls.Add(this.txtToukuisaki);
-            this.Panel_Detail.Controls.Add(this.lblKouritenName);
-            this.Panel_Detail.Controls.Add(this.lblTokuisakiName);
-            this.Panel_Detail.Controls.Add(this.sLabel7);
-            this.Panel_Detail.Controls.Add(this.sLabel9);
-            this.Panel_Detail.Controls.Add(this.txtTempDate);
-            this.Panel_Detail.Controls.Add(this.txtShukkaDate1);
-            this.Panel_Detail.Controls.Add(this.txtBrand);
-            this.Panel_Detail.Controls.Add(this.lblYear);
-            this.Panel_Detail.Controls.Add(this.chk_FW);
-            this.Panel_Detail.Controls.Add(this.chk_SS);
-            this.Panel_Detail.Controls.Add(this.txtYear);
-            this.Panel_Detail.Controls.Add(this.sLabel8);
-            this.Panel_Detail.Controls.Add(this.lblBrand_Name);
-            this.Panel_Detail.Controls.Add(this.sLabel4);
-            this.Panel_Detail.Controls.Add(this.label1);
-            this.Panel_Detail.Controls.Add(this.txtInputDate2);
-            this.Panel_Detail.Controls.Add(this.txtInputDate1);
-            this.Panel_Detail.Controls.Add(this.lblUpdate_HacchuuDate);
-            this.Panel_Detail.Controls.Add(this.label3);
-            this.Panel_Detail.Controls.Add(this.txtShukkaDate2);
-            this.Panel_Detail.Controls.Add(this.lblHacchuuNO);
-            this.Panel_Detail.Controls.Add(this.rdo_Hakkou);
-            this.Panel_Detail.Controls.Add(this.rdo_MiHakkou);
-            this.Panel_Detail.Controls.Add(this.label2);
-            this.Panel_Detail.Controls.Add(this.txtShukkaNo2);
-            this.Panel_Detail.Controls.Add(this.txtShukkaNo1);
-            this.Panel_Detail.Controls.Add(this.lblHacchuuDate);
-            this.Panel_Detail.Location = new System.Drawing.Point(1, 75);
-            this.Panel_Detail.Name = "Panel_Detail";
-            this.Panel_Detail.Size = new System.Drawing.Size(1710, 840);
-            this.Panel_Detail.TabIndex = 3;
+            this.PanelDetail.Controls.Add(this.panel2);
+            this.PanelDetail.Controls.Add(this.txtKouriten);
+            this.PanelDetail.Controls.Add(this.txtToukuisaki);
+            this.PanelDetail.Controls.Add(this.lblKouritenName);
+            this.PanelDetail.Controls.Add(this.lblTokuisakiName);
+            this.PanelDetail.Controls.Add(this.sLabel7);
+            this.PanelDetail.Controls.Add(this.sLabel9);
+            this.PanelDetail.Controls.Add(this.txtTempDate);
+            this.PanelDetail.Controls.Add(this.txtShukkaDate1);
+            this.PanelDetail.Controls.Add(this.txtBrand);
+            this.PanelDetail.Controls.Add(this.lblYear);
+            this.PanelDetail.Controls.Add(this.chk_FW);
+            this.PanelDetail.Controls.Add(this.chk_SS);
+            this.PanelDetail.Controls.Add(this.txtYear);
+            this.PanelDetail.Controls.Add(this.sLabel8);
+            this.PanelDetail.Controls.Add(this.lblBrand_Name);
+            this.PanelDetail.Controls.Add(this.sLabel4);
+            this.PanelDetail.Controls.Add(this.label1);
+            this.PanelDetail.Controls.Add(this.txtInputDate2);
+            this.PanelDetail.Controls.Add(this.txtInputDate1);
+            this.PanelDetail.Controls.Add(this.lblUpdate_HacchuuDate);
+            this.PanelDetail.Controls.Add(this.label3);
+            this.PanelDetail.Controls.Add(this.txtShukkaDate2);
+            this.PanelDetail.Controls.Add(this.lblHacchuuNO);
+            this.PanelDetail.Controls.Add(this.label2);
+            this.PanelDetail.Controls.Add(this.txtShukkaNo2);
+            this.PanelDetail.Controls.Add(this.txtShukkaNo1);
+            this.PanelDetail.Controls.Add(this.lblHacchuuDate);
+            this.PanelDetail.Location = new System.Drawing.Point(1, 75);
+            this.PanelDetail.Name = "PanelDetail";
+            this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
+            this.PanelDetail.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.rdo_Hakkou);
+            this.panel2.Controls.Add(this.rdo_MiHakkou);
+            this.panel2.Location = new System.Drawing.Point(35, 12);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(300, 30);
+            this.panel2.TabIndex = 1;
+            // 
+            // rdo_Hakkou
+            // 
+            this.rdo_Hakkou.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.rdo_Hakkou.Location = new System.Drawing.Point(164, 6);
+            this.rdo_Hakkou.MoveNext = true;
+            this.rdo_Hakkou.Name = "rdo_Hakkou";
+            this.rdo_Hakkou.NextControl = null;
+            this.rdo_Hakkou.NextControlName = "txtShukkaNo1";
+            this.rdo_Hakkou.Size = new System.Drawing.Size(90, 19);
+            this.rdo_Hakkou.TabIndex = 88;
+            this.rdo_Hakkou.Text = "発行済含む\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+            this.rdo_Hakkou.UseVisualStyleBackColor = true;
+            // 
+            // rdo_MiHakkou
+            // 
+            this.rdo_MiHakkou.Checked = true;
+            this.rdo_MiHakkou.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.rdo_MiHakkou.Location = new System.Drawing.Point(8, 6);
+            this.rdo_MiHakkou.MoveNext = true;
+            this.rdo_MiHakkou.Name = "rdo_MiHakkou";
+            this.rdo_MiHakkou.NextControl = null;
+            this.rdo_MiHakkou.NextControlName = "txtShukkaNo1";
+            this.rdo_MiHakkou.Size = new System.Drawing.Size(115, 19);
+            this.rdo_MiHakkou.TabIndex = 89;
+            this.rdo_MiHakkou.TabStop = true;
+            this.rdo_MiHakkou.Text = "未発行分のみ\t\t\t\t\t\t\t\t";
+            this.rdo_MiHakkou.UseVisualStyleBackColor = true;
             // 
             // txtKouriten
             // 
@@ -538,34 +576,6 @@
             this.lblHacchuuNO.Text = "出荷予定日\t\t\t\t\t\t\t";
             this.lblHacchuuNO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // rdo_Hakkou
-            // 
-            this.rdo_Hakkou.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_Hakkou.Location = new System.Drawing.Point(202, 19);
-            this.rdo_Hakkou.MoveNext = true;
-            this.rdo_Hakkou.Name = "rdo_Hakkou";
-            this.rdo_Hakkou.NextControl = null;
-            this.rdo_Hakkou.NextControlName = "txtShukkaNo1";
-            this.rdo_Hakkou.Size = new System.Drawing.Size(90, 19);
-            this.rdo_Hakkou.TabIndex = 1;
-            this.rdo_Hakkou.Text = "発行済含む\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-            this.rdo_Hakkou.UseVisualStyleBackColor = true;
-            // 
-            // rdo_MiHakkou
-            // 
-            this.rdo_MiHakkou.Checked = true;
-            this.rdo_MiHakkou.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.rdo_MiHakkou.Location = new System.Drawing.Point(46, 19);
-            this.rdo_MiHakkou.MoveNext = true;
-            this.rdo_MiHakkou.Name = "rdo_MiHakkou";
-            this.rdo_MiHakkou.NextControl = null;
-            this.rdo_MiHakkou.NextControlName = "txtShukkaNo1";
-            this.rdo_MiHakkou.Size = new System.Drawing.Size(115, 19);
-            this.rdo_MiHakkou.TabIndex = 1;
-            this.rdo_MiHakkou.TabStop = true;
-            this.rdo_MiHakkou.Text = "未発行分のみ\t\t\t\t\t\t\t\t";
-            this.rdo_MiHakkou.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -646,16 +656,17 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1713, 961);
-            this.Controls.Add(this.Panel_Detail);
+            this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ShukkaSiziDataShuturyoku";
             this.Text = "出荷指示データ出力\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
             this.Load += new System.EventHandler(this.ShukkaSiziDataShuturyoku_Load);
+            this.Controls.SetChildIndex(this.PanelDetail, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.Panel_Detail, 0);
             this.panel1.ResumeLayout(false);
-            this.Panel_Detail.ResumeLayout(false);
-            this.Panel_Detail.PerformLayout();
+            this.PanelDetail.ResumeLayout(false);
+            this.PanelDetail.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -663,7 +674,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel Panel_Detail;
+        private System.Windows.Forms.Panel PanelDetail;
         private Shinyoh_Controls.STextBox txtTempDate;
         private Shinyoh_Search.SearchBox txtShukkaDate1;
         private Shinyoh_Search.SearchBox txtBrand;
@@ -681,8 +692,6 @@
         private System.Windows.Forms.Label label3;
         private Shinyoh_Controls.STextBox txtShukkaDate2;
         private Shinyoh_Controls.SLabel lblHacchuuNO;
-        private Shinyoh_Controls.SRadio rdo_Hakkou;
-        private Shinyoh_Controls.SRadio rdo_MiHakkou;
         private System.Windows.Forms.Label label2;
         private Shinyoh_Controls.STextBox txtShukkaNo2;
         private Shinyoh_Controls.STextBox txtShukkaNo1;
@@ -693,6 +702,9 @@
         private Shinyoh_Controls.SLabel lblTokuisakiName;
         private Shinyoh_Controls.SLabel sLabel7;
         private Shinyoh_Controls.SLabel sLabel9;
+        private System.Windows.Forms.Panel panel2;
+        private Shinyoh_Controls.SRadio rdo_Hakkou;
+        private Shinyoh_Controls.SRadio rdo_MiHakkou;
     }
 }
 
