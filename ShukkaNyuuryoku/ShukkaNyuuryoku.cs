@@ -604,11 +604,11 @@ namespace ShukkaNyuuryoku {
 
                             dtHaita = gvdt1.Copy();
 
-                            gvShukka1.DataSource = dtHaita;
-                            gvShukka1.Columns[12].Visible = false;
-                            gvShukka1.Columns[13].Visible = false;
-                            gvShukka1.Columns[14].Visible = false;
-                            gvShukka1.Columns[15].Visible = false;
+                            current_gv.DataSource = dtHaita;
+                            current_gv.Columns[12].Visible = false;
+                            current_gv.Columns[13].Visible = false;
+                            current_gv.Columns[14].Visible = false;
+                            current_gv.Columns[15].Visible = false;
 
                             if (dtHaita.Columns.Contains("ShukkaSiziNO"))
                                 dtHaita.Columns.Remove("ShukkaSiziNO");
@@ -835,10 +835,10 @@ namespace ShukkaNyuuryoku {
         private bool ErrorCheck_CellEndEdit(int row, int col)
         {
 
-            string Konkai = gvShukka1.Rows[row].Cells["colKonkai"].Value.ToString();
-            string a = gvShukka1.Rows[row].Cells["colShukkazansuu"].Value.ToString();
-            string b = gvShukka1.Rows[row].Cells["colMiryoku"].Value.ToString();
-            string old = cboMode.SelectedValue.ToString().Equals("2") ? gvShukka1.Rows[row].Cells["OldShukkasuu"].Value.ToString() : "0";
+            string Konkai = current_gv.Rows[row].Cells["colKonkai"].Value.ToString();
+            string a = current_gv.Rows[row].Cells["colShukkazansuu"].Value.ToString();
+            string b = current_gv.Rows[row].Cells["colMiryoku"].Value.ToString();
+            string old = cboMode.SelectedValue.ToString().Equals("2") ? current_gv.Rows[row].Cells["OldShukkasuu"].Value.ToString() : "0";
             if (old == "")
                 old = "0";
 
