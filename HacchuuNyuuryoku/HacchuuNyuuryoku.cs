@@ -121,6 +121,7 @@ namespace HacchuuNyuuryoku
                     Disable_UDI_Mode();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
+                    btn_Siiresaki.Enabled = true;
                     sobj = new SiiresakiDetail();
                     break;
                 case Mode.Delete:
@@ -153,6 +154,7 @@ namespace HacchuuNyuuryoku
                     btn10.Visible = false;
                     Control btn11 = this.TopLevelControl.Controls.Find("BtnF11", true)[0];
                     btn11.Visible = false;
+                    btn_Siiresaki.Enabled = true;
                     sobj = new SiiresakiDetail(false);
                     break;
             }

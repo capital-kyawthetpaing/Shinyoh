@@ -226,7 +226,8 @@ namespace ShukkaSiziNyuuryoku
                     Form_ErrorCheck();
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
-
+                    btn_Tokuisaki.Enabled = true;
+                    btnKouriren_Detail.Enabled = true;
                     td = new TokuisakiDetail(false);
                     kd = new KouritenDetail(false);
                     break;
@@ -235,7 +236,8 @@ namespace ShukkaSiziNyuuryoku
                     Form_ErrorCheck();
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;
-
+                    btn_Tokuisaki.Enabled = true;
+                    btnKouriren_Detail.Enabled = true;
                     td = new TokuisakiDetail(false);
                     kd = new KouritenDetail(false);
                     break;
