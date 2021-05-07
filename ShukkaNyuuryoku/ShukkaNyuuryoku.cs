@@ -709,11 +709,7 @@ namespace ShukkaNyuuryoku {
                 F11_Gridview_Bind();           
         }
         private void F11_Gridview_Bind()
-        {         
-            if (!F8_dt1.Columns.Contains("ShukkaSiziNO"))
-            {
-                F8_dt1.Columns.Add("ShukkaSiziNO", typeof(string));
-            }        
+        {                       
             for (int t = 0; t < current_gv.RowCount; t++)
             {
 
@@ -1141,7 +1137,7 @@ namespace ShukkaNyuuryoku {
             dt.Columns.Add("JuchuuNOGyouNO", typeof(string));
             dt.Columns.Add("SoukoCD", typeof(string));
             dt.Columns.Add("ShouhinCD", typeof(string));          
-            //dt.Columns.Add("ShukkaSiziNO", typeof(string));
+            dt.Columns.Add("ShukkaSiziNO", typeof(string));
             dt.Columns.Add("OldShukkaSuu", typeof(string));
             //dt.Columns.Add("SoukoCD", typeof(string));
 
@@ -1220,6 +1216,8 @@ namespace ShukkaNyuuryoku {
                 current_gv.Columns["SoukoCD"].Visible = false;
                 current_gv.Columns["ShouhinCD"].Visible = false;
                 current_gv.Columns["OldShukkaSuu"].Visible = false;
+                if (current_gv.Columns.Contains("ShukkaSiziNO"))
+                    current_gv.Columns["ShukkaSiziNO"].Visible = false;
             }
         }
         private void ShukkaNo_KeyDown()
