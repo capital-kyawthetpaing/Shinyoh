@@ -102,7 +102,7 @@ namespace Shinyoh_Search
                 {
                     if (dt.Rows.Count > 0)
                     {
-                        if (lblName != null)
+                        if (lblName != null && !string.IsNullOrEmpty(this.Text))//ssa_07052021
                         {
                             if (dt.Columns.Contains(colName))
                                 lblName.Text = dt.Rows[0][colName].ToString();
