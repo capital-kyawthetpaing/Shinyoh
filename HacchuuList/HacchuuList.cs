@@ -217,9 +217,11 @@ namespace HacchuuList
                         }
                     }
                 }
-                else
+                else if (dt.Rows.Count == 0)
                 {
                     bbl.ShowMessage("S013");
+                    if (PreviousCtrl != null)
+                        PreviousCtrl.Focus();
                 }
                 //}
             }

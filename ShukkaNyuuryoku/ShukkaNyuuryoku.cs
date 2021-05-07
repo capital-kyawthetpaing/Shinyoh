@@ -80,18 +80,18 @@ namespace ShukkaNyuuryoku {
             txtShukkaNo.ChangeDate = txtShukkaDate;
             txtShukkaSijiNo.ChangeDate = txtShukkaYoteiDate1;
 
-            gvShukka1.SetGridDesign();
-            gvShukka1.SetHiraganaColumn("colDetail");
-            gvShukka1.SetReadOnlyColumn("colJANCD,colShouhin,colShouhinName,colColorShortName,colColorNO,colSize,colShukkazansuu,colMiryoku,ShukkaSiziNOGyouNO");
-            gvShukka1.SetNumberColumn("colKonkai");
-            gvShukka1.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvShukka1.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvShukka1.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvShukka1.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvShukka1.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvShukka1.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvShukka1.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gvShukka1.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
+            current_gv.SetGridDesign();
+            current_gv.SetHiraganaColumn("col_Detail");
+            current_gv.SetReadOnlyColumn("col_JANCD,col_Shouhin,col_ShouhinName,col_ColorShortName,col_ColorNO,col_Size,col_Shukkazansuu,col_Miryoku,col_ShukkaSiziNOGyouNO");
+            current_gv.SetNumberColumn("col_Konkai");
+            current_gv.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            current_gv.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            current_gv.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            current_gv.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            current_gv.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            current_gv.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
+            current_gv.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            current_gv.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             txtKouriten.TxtBox = txtTokuisaki;
 
             ChangeMode(Mode.New);
@@ -144,14 +144,11 @@ namespace ShukkaNyuuryoku {
             }
             if (tagID == "10")
             {
-                gvShukka1.ActionType = "F10";
-                if (ErrorCheck(PanelDetail))
-                    FunctionProcedure(10);
-                gvShukka1.ActionType = string.Empty;
+                F10_Show();
             }
             if (tagID == "11")
             {
-                FunctionProcedure(11);
+                F11_Save();
             }
             if (tagID == "12")
             {
@@ -478,14 +475,14 @@ namespace ShukkaNyuuryoku {
                         }
 
                         F8_dt1.DefaultView.Sort = "JANCD";
-                        gvShukka1.DataSource = F8_dt1.DefaultView.ToTable();
-                        gvShukka1.Memory_Row_Count = F8_dt1.Rows.Count;
+                        current_gv.DataSource = F8_dt1.DefaultView.ToTable();
+                        current_gv.Memory_Row_Count = F8_dt1.Rows.Count;
 
                       
                     }
-                    else if(gvShukka1.Rows.Count > 0)
+                    else if(current_gv.Rows.Count > 0)
                     {
-                        DataTable dtSource = (DataTable)gvShukka1.DataSource;
+                        DataTable dtSource = (DataTable)current_gv.DataSource;
                         dtSource.Rows.Clear();
                     }             
                     break;
@@ -551,7 +548,7 @@ namespace ShukkaNyuuryoku {
                             //    //}
                             //}
                             //ShukkaSiZiNO_Delete();
-                            gvShukka1.ActionType = "F10";  //to skip gv error check at the ErrorCheck() of BaseForm.cs
+                            current_gv.ActionType = "F10";  //to skip gv error check at the ErrorCheck() of BaseForm.cs
                             bool count = false;
                             foreach (DataRow dr in gvdt1.Rows)
                             {
@@ -607,11 +604,11 @@ namespace ShukkaNyuuryoku {
 
                             dtHaita = gvdt1.Copy();
 
-                            gvShukka1.DataSource = dtHaita;
-                            gvShukka1.Columns[12].Visible = false;
-                            gvShukka1.Columns[13].Visible = false;
-                            gvShukka1.Columns[14].Visible = false;
-                            gvShukka1.Columns[15].Visible = false;
+                            current_gv.DataSource = dtHaita;
+                            current_gv.Columns[12].Visible = false;
+                            current_gv.Columns[13].Visible = false;
+                            current_gv.Columns[14].Visible = false;
+                            current_gv.Columns[15].Visible = false;
 
                             if (dtHaita.Columns.Contains("ShukkaSiziNO"))
                                 dtHaita.Columns.Remove("ShukkaSiziNO");
@@ -619,7 +616,7 @@ namespace ShukkaNyuuryoku {
                             //gvShukka1.Rows[1].Cells[8].Value = "1";
                             if (dtHaita.Rows.Count > 0)
                             {
-                                gvShukka1.CurrentCell = gvShukka1.Rows[0].Cells["colKonkai"];
+                                current_gv.CurrentCell = current_gv.Rows[0].Cells["col_Konkai"];
                             }
                             //else
                             //{
@@ -639,7 +636,7 @@ namespace ShukkaNyuuryoku {
                     Function_F11();
                     break;
             }
-        }
+        }   
         private void Display()
         {
             Main_dt = txtShukkaNo.IsDatatableOccurs;
@@ -648,28 +645,28 @@ namespace ShukkaNyuuryoku {
                 if (!Main_dt.Columns.Contains("MessageID"))
                     Main_dt.Columns.Add("MessageID", typeof(string));
                 From_DB_To_Form(Main_dt);
-                if (gvShukka1.Columns.Contains("ShukkaSiziNO"))
+                if (current_gv.Columns.Contains("ShukkaSiziNO"))
                 {
-                    gvShukka1.Columns.Remove("ShukkaSiziNO");
+                    current_gv.Columns.Remove("ShukkaSiziNO");
                 }
-                if (gvShukka1.Columns.Contains("MessageID"))
+                if (current_gv.Columns.Contains("MessageID"))
                 {
-                    gvShukka1.Columns.Remove("MessageID");
+                    current_gv.Columns.Remove("MessageID");
                 }
                 if (Main_dt.Rows[0]["UriageKanryouKBN"].ToString().Equals("1"))
                 {
-                    gvShukka1.Columns["colKonkai"].ReadOnly = true;
-                    gvShukka1.Columns["colComplete"].ReadOnly = true;
-                    if(gvShukka1.Columns.Contains("UriageKanryouKBN"))
-                    gvShukka1.Columns.Remove("UriageKanryouKBN");
+                    current_gv.Columns["col_Konkai"].ReadOnly = true;
+                    current_gv.Columns["col_Complete"].ReadOnly = true;
+                    if(current_gv.Columns.Contains("UriageKanryouKBN"))
+                    current_gv.Columns.Remove("UriageKanryouKBN");
 
                 }
                 else if (Main_dt.Rows[0]["UriageKanryouKBN"].ToString().Equals("0"))
                 {
-                    gvShukka1.Columns["colKonkai"].ReadOnly = false;
-                    gvShukka1.Columns["colComplete"].ReadOnly = false;
-                    if (gvShukka1.Columns.Contains("UriageKanryouKBN"))
-                        gvShukka1.Columns.Remove("UriageKanryouKBN");
+                    current_gv.Columns["col_Konkai"].ReadOnly = false;
+                    current_gv.Columns["col_Complete"].ReadOnly = false;
+                    if (current_gv.Columns.Contains("UriageKanryouKBN"))
+                        current_gv.Columns.Remove("UriageKanryouKBN");
                 }
             }
         }
@@ -709,23 +706,23 @@ namespace ShukkaNyuuryoku {
             if (F11_Gridivew_ErrorCheck())
                 return;
             else
-                F11_Gridview_Bind();
+                F11_Gridview_Bind();           
         }
         private void F11_Gridview_Bind()
-        {
-            for (int t = 0; t < gvShukka1.RowCount; t++)
+        {                       
+            for (int t = 0; t < current_gv.RowCount; t++)
             {
 
                 //bool bl = false;
                 // grid 1 checkingTemptb1
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
-                DataGridViewRow row = gvShukka1.Rows[t];// grid view data
-                string JANCD = row.Cells["colJANCD"].Value.ToString();
-                string HinbanCD = row.Cells["colShouhin"].Value.ToString();
-                string Konkai = row.Cells["colKonkai"].Value.ToString();
-                string ShukkaSiziNOGyouNO = row.Cells["ShukkaSiziNOGyouNO"].Value.ToString();
+                DataGridViewRow row = current_gv.Rows[t];// grid view data
+                string JANCD = row.Cells["col_JANCD"].Value.ToString();
+                string HinbanCD = row.Cells["col_Shouhin"].Value.ToString();
+                string Konkai = row.Cells["col_Konkai"].Value.ToString();
+                string ShukkaSiziNOGyouNO = row.Cells["col_ShukkaSiziNOGyouNO"].Value.ToString();
                 //string chk_value = row.Cells["colComplete"].EditedFormattedValue.ToString();
-                string Detail = row.Cells["colDetail"].EditedFormattedValue.ToString();
+                string Detail = row.Cells["col_Detail"].EditedFormattedValue.ToString();
 
                 //string color = row.Cells["colColorNO"].Value.ToString();
                 //string size = row.Cells["colSize"].Value.ToString();
@@ -736,18 +733,18 @@ namespace ShukkaNyuuryoku {
                 DataRow existDr1 = F8_dt1.Select("ShukkaSiziNOGyouNO='" + ShukkaSiziNOGyouNO + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["colKonkai"].Value.ToString() == "0")
+                    if (row.Cells["col_Konkai"].Value.ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
                 }
                 F8_drNew[0] = JANCD;
-                if (row.Cells["colKonkai"].Value.ToString() != "0" || row.Cells["colComplete"].Value.ToString() == "1")
+                if (row.Cells["col_Konkai"].Value.ToString() != "0" || row.Cells["col_Complete"].Value.ToString() == "1")
                 {
-                    for (int c = 1; c < gvShukka1.Columns.Count; c++)
+                    for (int c = 1; c < current_gv.Columns.Count; c++)
                     {
-                        if (gvShukka1.Columns[c].Name == "colKonkai" || gvShukka1.Columns[c].Name == "colDetail")
+                        if (current_gv.Columns[c].Name == "col_Konkai" || current_gv.Columns[c].Name == "col_Detail")
                         {
                             if (existDr1 != null)
                             {
@@ -778,13 +775,12 @@ namespace ShukkaNyuuryoku {
                     //if (bl == true)
                     //{
                     if (existDr1 != null)
-                        F8_dt1.Rows.Remove(existDr1);
-                    F8_dt1.Rows.Add(F8_drNew);
+                        F8_dt1.Rows.Remove(existDr1);                          
+                    F8_dt1.Rows.Add(F8_drNew);                   
                     // }
                 }
-            }
-            gvShukka1.Memory_Row_Count = F8_dt1.Rows.Count;
-
+            }          
+            current_gv.Memory_Row_Count = F8_dt1.Rows.Count;          
             Focus_Clear();
         }
 
@@ -802,25 +798,25 @@ namespace ShukkaNyuuryoku {
             txtTelNo2.Clear();
             txtTelNo3.Clear();
             txtName.Clear();
-            gvShukka1.DataSource = dtClear;
+            current_gv.DataSource = dtClear;
         }
 
         private bool F11_Gridivew_ErrorCheck()
         {
             bool bl_error = false;
 
-            foreach (DataGridViewRow gv in gvShukka1.Rows)
+            foreach (DataGridViewRow gv in current_gv.Rows)
             {
-                if (gv.Cells["colKonkai"].Value.ToString() != "0")
+                if (gv.Cells["col_Konkai"].Value.ToString() != "0")
                 {
                     for (int i = 0; i < gv.Cells.Count; i++)
                     {
-                        string colName = gvShukka1.Columns[i].Name;
-                        if (colName == "colKonkai" || colName == "colDetail")
+                        string colName = current_gv.Columns[i].Name;
+                        if (colName == "col_Konkai" || colName == "col_Detail")
                         {
                             if (ErrorCheck_CellEndEdit(gv.Index, i))
                             {
-                                gvShukka1.CurrentCell = gvShukka1.Rows[gv.Index].Cells[i];
+                                current_gv.CurrentCell = current_gv.Rows[gv.Index].Cells[i];
                                 bl_error = true;
                                 break;
                             }
@@ -835,23 +831,23 @@ namespace ShukkaNyuuryoku {
         private bool ErrorCheck_CellEndEdit(int row, int col)
         {
 
-            string Konkai = gvShukka1.Rows[row].Cells["colKonkai"].Value.ToString();
-            string a = gvShukka1.Rows[row].Cells["colShukkazansuu"].Value.ToString();
-            string b = gvShukka1.Rows[row].Cells["colMiryoku"].Value.ToString();
-            string old = cboMode.SelectedValue.ToString().Equals("2") ? gvShukka1.Rows[row].Cells["OldShukkasuu"].Value.ToString() : "0";
+            string Konkai = current_gv.Rows[row].Cells["col_Konkai"].Value.ToString();
+            string a = current_gv.Rows[row].Cells["col_Shukkazansuu"].Value.ToString();
+            string b = current_gv.Rows[row].Cells["col_Miryoku"].Value.ToString();
+            string old = cboMode.SelectedValue.ToString().Equals("2") ? current_gv.Rows[row].Cells["OldShukkasuu"].Value.ToString() : "0";
             if (old == "")
                 old = "0";
 
             decimal c = Convert.ToDecimal(old) +Convert.ToDecimal(a) - Convert.ToDecimal(b);
 
             bool bl_error = false;
-            string col_Name = gvShukka1.Columns[col].Name;
+            string col_Name = current_gv.Columns[col].Name;
 
-            if (col_Name == "colKonkai")
+            if (col_Name == "col_Konkai")
             {
-                string split_val = gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString().Replace(",", "");
-                int Konkai_Number = string.IsNullOrEmpty(gvShukka1.Rows[row].Cells["colKonkai"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
-                gvShukka1.Rows[row].Cells["colKonkai"].Value = Konkai_Number.ToString();
+                string split_val = current_gv.Rows[row].Cells["col_Konkai"].EditedFormattedValue.ToString().Replace(",", "");
+                int Konkai_Number = string.IsNullOrEmpty(current_gv.Rows[row].Cells["col_Konkai"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
+                current_gv.Rows[row].Cells["col_Konkai"].Value = Konkai_Number.ToString();
 
                 if (Konkai_Number < 0)
                 {
@@ -865,11 +861,11 @@ namespace ShukkaNyuuryoku {
                 }
                 return bl_error;
             }
-            if (col_Name == "colDetail")
+            if (col_Name == "col_Detail")
             {
-                int MaxLength = ((DataGridViewTextBoxColumn)gvShukka1.Columns[col_Name]).MaxInputLength;
+                int MaxLength = ((DataGridViewTextBoxColumn)current_gv.Columns[col_Name]).MaxInputLength;
 
-                string byte_text = gvShukka1.Rows[row].Cells[col_Name].EditedFormattedValue.ToString();
+                string byte_text = current_gv.Rows[row].Cells[col_Name].EditedFormattedValue.ToString();
                 if (cf.IsByteLengthOver(MaxLength, byte_text))
                 {
                     MessageBox.Show("入力された文字が長すぎます", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -1158,11 +1154,6 @@ namespace ShukkaNyuuryoku {
             dt.AcceptChanges();
             return dt;
         }
-
-        private void gvShukka1_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            Gridview_F9ShowHide(e.ColumnIndex, "Show");
-        }
         private void Gridview_F9ShowHide(int col, string type)
         {
             Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
@@ -1175,15 +1166,6 @@ namespace ShukkaNyuuryoku {
             }
             
         }
-        private void gvShukka1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            if (gvShukka1.IsLastKeyEnter)
-            {
-                if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
-                    gvShukka1.CurrentCell = gvShukka1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            }
-        }
-
         private void txtShukkaSijiNo_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -1206,11 +1188,38 @@ namespace ShukkaNyuuryoku {
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void current_gv_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
-            FunctionProcedure(11);
+            Gridview_F9ShowHide(e.ColumnIndex, "Show");
         }
 
+        private void current_gv_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (current_gv.IsLastKeyEnter)
+            {
+                if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex))
+                    current_gv.CurrentCell = current_gv.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            F11_Save();
+        }
+        private void F11_Save()
+        {
+            if (F8_dt1.Rows.Count == 0)
+            {
+                FunctionProcedure(11);
+                current_gv.Columns["DenpyouDate"].Visible=false;
+                current_gv.Columns["JuchuuNOGyouNO"].Visible = false;
+                current_gv.Columns["SoukoCD"].Visible = false;
+                current_gv.Columns["ShouhinCD"].Visible = false;
+                current_gv.Columns["OldShukkaSuu"].Visible = false;
+                if (current_gv.Columns.Contains("ShukkaSiziNO"))
+                    current_gv.Columns["ShukkaSiziNO"].Visible = false;
+            }
+        }
         private void ShukkaNo_KeyDown()
         {
             if (!txtShukkaNo.IsErrorOccurs && (cboMode.SelectedValue.ToString() != "1"))
@@ -1388,12 +1397,12 @@ namespace ShukkaNyuuryoku {
                     dr["OldShukkaSuu"] = dr["ShukkaSuu"];
                 }
 
-                gvShukka1.DataSource = dt;
-                gvShukka1.Columns[13].Visible = false;
-                gvShukka1.Columns[14].Visible = false;
-                gvShukka1.Columns[15].Visible = false;
-                gvShukka1.Columns[16].Visible = false;
-                gvShukka1.Columns[18].Visible = false;
+                current_gv.DataSource = dt;
+                current_gv.Columns[13].Visible = false;
+                current_gv.Columns[14].Visible = false;
+                current_gv.Columns[15].Visible = false;
+                current_gv.Columns[16].Visible = false;
+                current_gv.Columns[18].Visible = false;
                 //gvShukka1.ClearSelection();
 
                 DataTable dt_temp = dt.Copy();
@@ -1455,15 +1464,19 @@ namespace ShukkaNyuuryoku {
 
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            gvShukka1.ActionType = "F10";
+            F10_Show();
+        }
+        private void F10_Show()
+        {
+            current_gv.ActionType = "F10";
             if (ErrorCheck(PanelDetail))
                 FunctionProcedure(10);
-            gvShukka1.ActionType = string.Empty;
-            if(Main_dt.Rows.Count > 0)
+            current_gv.ActionType = string.Empty;
+            if (Main_dt.Rows.Count > 0)
             {
-                gvShukka1.CurrentCell = gvShukka1.Rows[0].Cells["colKonkai"];
+                current_gv.CurrentCell = current_gv.Rows[0].Cells["col_Konkai"];
             }
-            
+
         }
     }
 }
