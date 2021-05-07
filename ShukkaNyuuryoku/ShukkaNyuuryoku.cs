@@ -148,7 +148,7 @@ namespace ShukkaNyuuryoku {
             }
             if (tagID == "11")
             {
-                F11_Save();
+                FunctionProcedure(11);
             }
             if (tagID == "12")
             {
@@ -476,7 +476,7 @@ namespace ShukkaNyuuryoku {
 
                         F8_dt1.DefaultView.Sort = "JANCD";
                         current_gv.DataSource = F8_dt1.DefaultView.ToTable();
-                        current_gv.Columns["OldShukkaSuu"].Visible = false;
+                        SetVisibleForGridColumns();
                         current_gv.Memory_Row_Count = F8_dt1.Rows.Count;
 
                       
@@ -633,7 +633,7 @@ namespace ShukkaNyuuryoku {
 
                         if (current_gv.Rows.Count > 0)
                         {
-                            current_gv.CurrentCell = current_gv.Rows[0].Cells["colKonkai"];
+                            current_gv.CurrentCell = current_gv.Rows[0].Cells["col_Konkai"];
                             current_gv.Focus();
                         }
                     }
@@ -713,7 +713,10 @@ namespace ShukkaNyuuryoku {
             if (F11_Gridivew_ErrorCheck())
                 return;
             else
-                F11_Gridview_Bind();           
+            {
+                F11_Gridview_Bind();
+                SetVisibleForGridColumns();
+            }
         }
         private void F11_Gridview_Bind()
         {                       
@@ -1211,23 +1214,19 @@ namespace ShukkaNyuuryoku {
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            F11_Save();
+            FunctionProcedure(11); 
         }
-        private void F11_Save()
+        private void SetVisibleForGridColumns()
         {
-            FunctionProcedure(11);
-
-            if (F8_dt1.Rows.Count == 0)
-            {
-                current_gv.Columns["DenpyouDate"].Visible=false;
-                current_gv.Columns["JuchuuNOGyouNO"].Visible = false;
-                current_gv.Columns["SoukoCD"].Visible = false;
-                current_gv.Columns["ShouhinCD"].Visible = false;
-                current_gv.Columns["OldShukkaSuu"].Visible = false;
-                if (current_gv.Columns.Contains("ShukkaSiziNO"))
-                    current_gv.Columns["ShukkaSiziNO"].Visible = false;
-            }
+            current_gv.Columns["DenpyouDate"].Visible = false;
+            current_gv.Columns["JuchuuNOGyouNO"].Visible = false;
+            current_gv.Columns["SoukoCD"].Visible = false;
+            current_gv.Columns["ShouhinCD"].Visible = false;
+            current_gv.Columns["OldShukkaSuu"].Visible = false;
+            if (current_gv.Columns.Contains("ShukkaSiziNO"))
+                current_gv.Columns["ShukkaSiziNO"].Visible = false;
         }
+
         private void ShukkaNo_KeyDown()
         {
             if (!txtShukkaNo.IsErrorOccurs && (cboMode.SelectedValue.ToString() != "1"))
