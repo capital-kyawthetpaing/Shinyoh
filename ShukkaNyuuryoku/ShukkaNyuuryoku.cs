@@ -476,6 +476,7 @@ namespace ShukkaNyuuryoku {
 
                         F8_dt1.DefaultView.Sort = "JANCD";
                         current_gv.DataSource = F8_dt1.DefaultView.ToTable();
+                        current_gv.Columns["OldShukkaSuu"].Visible = false;
                         current_gv.Memory_Row_Count = F8_dt1.Rows.Count;
 
                       
