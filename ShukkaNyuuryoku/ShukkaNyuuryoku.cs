@@ -629,10 +629,11 @@ namespace ShukkaNyuuryoku {
                     else
                     {
                         Display();
-                        if (gvShukka1.Rows.Count > 0)
+
+                        if (current_gv.Rows.Count > 0)
                         {
-                            gvShukka1.CurrentCell = gvShukka1.Rows[0].Cells["colKonkai"];
-                            gvShukka1.Focus();
+                            current_gv.CurrentCell = current_gv.Rows[0].Cells["colKonkai"];
+                            current_gv.Focus();
                         }
                     }
 
