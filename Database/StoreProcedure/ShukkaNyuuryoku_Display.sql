@@ -1,16 +1,21 @@
- BEGIN TRY 
- Drop Procedure dbo.[ShukkaNyuuryoku_Display]
-END try
-BEGIN CATCH END CATCH 
+/****** Object:  StoredProcedure [dbo].[ShukkaNyuuryoku_Display]    Script Date: 2021/05/07 20:54:06 ******/
+IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ShukkaNyuuryoku_Display%' and type like '%P%')
+DROP PROCEDURE [dbo].[ShukkaNyuuryoku_Display]
+GO
+
+/****** Object:  StoredProcedure [dbo].[ShukkaNyuuryoku_Display]    Script Date: 2021/05/07 20:54:06 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		Hnin Ei Thu
 -- Create date: 12/15/2020
 -- Description:	<Description,,>
+-- History    : 2021/05/07 Y.Nishikawa 表示順変更
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkaNyuuryoku_Display]
 	@TokuisakiCD		AS varchar(10),
@@ -67,7 +72,7 @@ BEGIN
 	if (@Condition = 1)
 	begin
 		select DSM.JANCD,FS.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,
-			   ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + ISNULL(FLOOR(WK.MiNyuukaSuu),'0'))),'0') as ShukkaSuu,NULL as Kanryou,'' as ShukkaMeisaiTekiyou,--譏守ｴｰ鞫倩ｦ・
+			   ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + ISNULL(FLOOR(WK.MiNyuukaSuu),'0'))),'0') as ShukkaSuu,NULL as Kanryou,'' as ShukkaMeisaiTekiyou,--隴丞ｮ茨ｽｴ・ｰ髷ｫ蛟ｩ・ｦ繝ｻ
 			   (DSM.ShukkaSiziNO + '-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,
 			   --hidden field
 			   DS.TokuisakiCD,DSM.KouritenCD,DS.DenpyouDate,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM.SoukoCD,FS.ShouhinCD,DSM.ShukkaSiziNO
@@ -91,13 +96,15 @@ BEGIN
 			or ((@TelNO1 is null or(DSM.[KouritenTelNO1-1]=@TelNO1))  and (@TelNO2 is null or(DSM.[KouritenTelNO1-2]=@TelNO2)) and (@TelNO3 is null or(DSM.[KouritenTelNO1-3]=@TelNO3))))
 		and ((@Name is null or(DS.TokuisakiRyakuName=@Name)) or (@Name is null or(DS.TokuisakiName=@Name)) or (@Name is null or(DSM.KouritenRyakuName=@Name)) or (@Name is null or(DSM.KouritenName=@Name)))
 		and ((@Name is null or(DS.TokuisakiJuusho1=@Name)) or (@Name is null or(DS.TokuisakiJuusho2=@Name)) or (@Name is null or(DSM.KouritenJuusho1=@Name)) or (@Name is null or(DSM.KouritenJuusho2=@Name)))
-
-		order by DSM.ShouhinCD ASC,DSM.ShukkaSiziNO ASC,DSM.GyouHyouziJun ASC
+		--2021/05/07 Y.Nishikawa CHG 表示順変更↓↓
+		--order by DSM.ShouhinCD ASC,DSM.ShukkaSiziNO ASC,DSM.GyouHyouziJun ASC
+		order by DSM.JANCD ASC,DSM.ShukkaSiziNO ASC,DSM.GyouHyouziJun ASC
+		--2021/05/07 Y.Nishikawa CHG 表示順変更↑↑
 	end
 	else 
 	begin
 		select DSM.JANCD,FS.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,
-			   ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + ISNULL(FLOOR(WK.MiNyuukaSuu),'0'))),'0') as ShukkaSuu,NULL as Kanryou,'' as ShukkaMeisaiTekiyou,--譏守ｴｰ鞫倩ｦ・
+			   ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + ISNULL(FLOOR(WK.MiNyuukaSuu),'0'))),'0') as ShukkaSuu,NULL as Kanryou,'' as ShukkaMeisaiTekiyou,--隴丞ｮ茨ｽｴ・ｰ髷ｫ蛟ｩ・ｦ繝ｻ
 			   (DSM.ShukkaSiziNO + '-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,
 			   --hidden field
 			   DS.TokuisakiCD,DSM.KouritenCD,DS.DenpyouDate,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM.SoukoCD,FS.ShouhinCD,DSM.ShukkaSiziNO
@@ -115,7 +122,10 @@ BEGIN
 		and (@ShukkaYoteiDate2 is null or(DS.ShukkaYoteiDate<=@ShukkaYoteiDate2))  
 		and (@DenpyouDate1 is null or(DS.DenpyouDate>=@DenpyouDate1))  
 		and (@DenpyouDate2 is null or(DS.DenpyouDate<=@DenpyouDate2))  
-		order by DSM.ShouhinCD ASC,DSM.ShukkaSiziNO ASC,DSM.GyouHyouziJun ASC
+		--2021/05/07 Y.Nishikawa CHG 表示順変更↓↓
+		--order by DSM.ShouhinCD ASC,DSM.ShukkaSiziNO ASC,DSM.GyouHyouziJun ASC
+		order by DSM.JANCD ASC,DSM.ShukkaSiziNO ASC,DSM.GyouHyouziJun ASC
+		--2021/05/07 Y.Nishikawa CHG 表示順変更↑↑
 	end
 
 		If(OBJECT_ID('tempdb..#WK_MiNyuukaSuu2') Is Not Null)
@@ -132,4 +142,7 @@ BEGIN
 	
 	
 END
+
+GO
+
 

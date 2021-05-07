@@ -17,6 +17,7 @@ GO
 -- Description:	5:着荷 (all in処理区分 10,21,20,30) 
 -- History    : 2021/04/20 Y.Nishikawa 条件が不正
 --            : 2021/04/27 Y.Nishikawa 在庫更新を引当ファンクション内に移動
+--            : 2021/05/07 Y.Nishikawa 条件追加
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_5]
 	-- Add the parameters for the stored procedure here
@@ -130,10 +131,9 @@ BEGIN
                                             INNER JOIN D_ChakuniMeisai M
                                             ON H.ChakuniNO = M.ChakuniNO
                                             WHERE H.ChakuniNO = @ChakuniNO
-                   						 GROUP BY H.SoukoCD
-                   						         ,M.ShouhinCD
-                   							     ,M.KanriNO
-                   							     ,H.ChakuniDate
+											--2021/05/07 Y.Nishikawa ADD 条件追加↓↓
+											AND M.ChakuniGyouNO = @ChakuniGyouNO
+											--2021/05/07 Y.Nishikawa ADD 条件追加↑↑
                    			           ) DCKM
                                               ON DGZK.SoukoCD = DCKM.SoukoCD
                                               AND DGZK.ShouhinCD = DCKM.ShouhinCD
@@ -152,15 +152,14 @@ BEGIN
                    		         	    ,M.ShouhinCD
                    		         	    ,M.KanriNO
                    		         	    ,H.ChakuniDate
-                   						,SUM(M.ChakuniSuu) ChakuniSuu
+                   						,M.ChakuniSuu
                    		          FROM D_Chakuni H
                                      INNER JOIN D_ChakuniMeisai M
                                      ON H.ChakuniNO = M.ChakuniNO
                                      WHERE H.ChakuniNO = @ChakuniNO
-                   		          GROUP BY H.SoukoCD
-                   		         	      ,M.ShouhinCD
-                   		         	      ,M.KanriNO
-                   		         	      ,H.ChakuniDate
+									 --2021/05/07 Y.Nishikawa ADD 条件追加↓↓
+									 AND M.ChakuniGyouNO = @ChakuniGyouNO
+									 --2021/05/07 Y.Nishikawa ADD 条件追加↑↑
                    			    ) DCKM
                       ON DGZK.SoukoCD = DCKM.SoukoCD
                       AND DGZK.ShouhinCD = DCKM.ShouhinCD
@@ -185,7 +184,7 @@ BEGIN
                             ,DCKM.ShouhinCD
                             ,DCKM.KanriNO
                             ,DCKH.ChakuniDate
-                            ,SUM(DCKM.ChakuniSuu)
+                            ,DCKM.ChakuniSuu
                             ,0
                             ,@UpdateOperator
                             ,@UpdateDateTime
@@ -195,11 +194,9 @@ BEGIN
                         INNER JOIN D_ChakuniMeisai DCKM
                         ON DCKH.ChakuniNO = DCKM.ChakuniNO
                         WHERE DCKH.ChakuniNO = @ChakuniNO
-                        GROUP BY DCKH.SoukoCD
-                            ,DCKM.ShouhinCD
-                            ,DCKM.KanriNO
-                            ,DCKH.ChakuniDate
-                   
+                        --2021/05/07 Y.Nishikawa ADD 条件追加↓↓
+						AND DCKM.ChakuniGyouNO = @ChakuniGyouNO
+						--2021/05/07 Y.Nishikawa ADD 条件追加↑↑
                    END
 				  --2021/04/27 Y.Nishikawa ADD 在庫更新を引当ファンクション内に移動↑↑
 
@@ -249,10 +246,9 @@ BEGIN
                                            INNER JOIN D_ChakuniMeisai M
                                            ON H.ChakuniNO = M.ChakuniNO
                                            WHERE H.ChakuniNO = @ChakuniNO
-                  						 GROUP BY H.SoukoCD
-                  						         ,M.ShouhinCD
-                  							     ,M.KanriNO
-                  							     ,H.ChakuniDate
+										   --2021/05/07 Y.Nishikawa ADD 条件追加↓↓
+										   AND M.ChakuniGyouNO = @ChakuniGyouNO
+										   --2021/05/07 Y.Nishikawa ADD 条件追加↑↑
                   			           ) DCKM
                                              ON DGZK.SoukoCD = DCKM.SoukoCD
                                              AND DGZK.ShouhinCD = DCKM.ShouhinCD
@@ -271,15 +267,14 @@ BEGIN
                   		         	    ,M.ShouhinCD
                   		         	    ,M.KanriNO
                   		         	    ,H.ChakuniDate
-                  						,SUM(M.ChakuniSuu) ChakuniSuu
+                  						,M.ChakuniSuu
                   		          FROM D_Chakuni H
                                     INNER JOIN D_ChakuniMeisai M
                                     ON H.ChakuniNO = M.ChakuniNO
                                     WHERE H.ChakuniNO = @ChakuniNO
-                  		          GROUP BY H.SoukoCD
-                  		         	      ,M.ShouhinCD
-                  		         	      ,M.KanriNO
-                  		         	      ,H.ChakuniDate
+									--2021/05/07 Y.Nishikawa ADD 条件追加↓↓
+									AND M.ChakuniGyouNO = @ChakuniGyouNO
+									--2021/05/07 Y.Nishikawa ADD 条件追加↑↑
                   			    ) DCKM
                      ON DGZK.SoukoCD = DCKM.SoukoCD
                      AND DGZK.ShouhinCD = DCKM.ShouhinCD
@@ -314,6 +309,9 @@ BEGIN
                        INNER JOIN D_ChakuniMeisai DCKM
                        ON DCKH.ChakuniNO = DCKM.ChakuniNO
                        WHERE DCKH.ChakuniNO = @ChakuniNO
+					   --2021/05/07 Y.Nishikawa ADD 条件追加↓↓
+					   AND DCKM.ChakuniGyouNO = @ChakuniGyouNO
+					   --2021/05/07 Y.Nishikawa ADD 条件追加↑↑
                   
                   END
           		--2021/04/27 Y.Nishikawa ADD 在庫更新を引当ファンクション内に移動↑↑
