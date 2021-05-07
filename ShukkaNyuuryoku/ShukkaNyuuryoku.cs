@@ -631,7 +631,12 @@ namespace ShukkaNyuuryoku {
                     }
                     else
                     {
-                        Display();                        
+                        Display();
+                        if (gvShukka1.Rows.Count > 0)
+                        {
+                            gvShukka1.CurrentCell = gvShukka1.Rows[0].Cells["colKonkai"];
+                            gvShukka1.Focus();
+                        }
                     }
 
                     break;
@@ -751,7 +756,7 @@ namespace ShukkaNyuuryoku {
                         {
                             if (existDr1 != null)
                             {
-                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                if (select_dr1.Length > 0 && select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 {
                                     //bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;
