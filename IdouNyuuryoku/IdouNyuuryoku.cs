@@ -642,14 +642,30 @@ namespace IdouNyuuryoku
                 }
                 if (!bl_error)
                 {
-                    DataTable dt = Idou_BL.IdouNyuuryoku_Select_Check(ShouhinCD, soukoCD, "Sum_Com", KanriNO);
-                    if (dt.Rows.Count > 0)
+                    if (txtIdoukubun.Text != "1")
                     {
-                        if (IdouSuu > Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]))
+                        DataTable dt = Idou_BL.IdouNyuuryoku_Select_Check(ShouhinCD, soukoCD, "Sum_Com", KanriNO);
+                        if (dt.Rows.Count > 0)
                         {
-                            base_bl.ShowMessage("Q326", IdouSuu.ToString(), dt.Rows[0]["GenZaikoSuu"].ToString());
-                            bl_error = true;
-                            return bl_error;
+                            if (IdouSuu > Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]))
+                            {
+                                if (base_bl.ShowMessage("Q326", IdouSuu.ToString(), Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]).ToString()) != DialogResult.Yes)
+                                {
+                                    bl_error = true;
+                                    return bl_error;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (IdouSuu > 0)
+                            {
+                                if (base_bl.ShowMessage("Q326", IdouSuu.ToString(), "0") != DialogResult.Yes)
+                                {
+                                    bl_error = true;
+                                    return bl_error;
+                                }
+                            }
                         }
                     }
                     gv_1.Rows[row].Cells["colGenkaKingaku"].Value = Convert.ToInt32(gv_1.Rows[row].Cells["colGenkaTanka"].Value) * Convert.ToInt32(gv_1.Rows[row].Cells["colIdouSuu"].Value);

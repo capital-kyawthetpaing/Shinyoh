@@ -1086,14 +1086,14 @@ namespace ShukkaSiziNyuuryoku
                 DataRow existDr1 = F8_dt1.Select("SKMSNO='" + SKMSNO + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() == "0" && dtgv1.Rows.Count != dgvShukkasizi.Rows.Count)
+                    if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
                 }
                 F8_drNew[0] = HinbanCD;
-                if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() != "0")
+                if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() != "0" || row.Cells["chk"].Value.ToString() == "1")
                 {
                     for (int c = 1; c < dgvShukkasizi.Columns.Count; c++)
                     {
@@ -1101,7 +1101,7 @@ namespace ShukkaSiziNyuuryoku
                         {
                             if (existDr1 != null)
                             {
-                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                if (select_dr1.Length > 0 && select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 {
                                     //bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;
@@ -1192,7 +1192,6 @@ namespace ShukkaSiziNyuuryoku
                     {
                         dtGridview(2);
                     }
-                    dtHaita = dtgv1.Copy();
                     dgvShukkasizi.ActionType = "F10";  //to skip gv error check at the ErrorCheck() of BaseForm.cs
                     bool count = false;
                     //Table_Y/排他テーブルに追加
@@ -1202,36 +1201,59 @@ namespace ShukkaSiziNyuuryoku
                         //JuchuuNO_Delete();
                         foreach (DataRow dr in dtRow.Rows)
                         {
-                            string JuchuuNO = dr["JuchuuNO"].ToString();
-                            sksz_e = new ShukkaSiziNyuuryokuEntity();
-                            sksz_e.DataKBN = 1;
-                            sksz_e.Number = JuchuuNO;
-                            sksz_e.ProgramID = ProgramID;
-                            sksz_e.PC = PCID;
-                            sksz_e.OperatorCD = OperatorCD;
-                            DataTable dt = new DataTable();
-                            sksz_bl = new ShukkasiziNyuuryokuBL();
-                            dt = sksz_bl.D_Exclusive_Lock_Check(sksz_e);
-
-                            if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                            bool exists = false;
+                            if (F8_dt1.Rows.Count > 0)
                             {
-                                count = true;
-                                Data1 = dt.Rows[0]["Program"].ToString();
-                                Data2 = dt.Rows[0]["Operator"].ToString();
-                                Data3 = dt.Rows[0]["PC"].ToString();
-                                //Gvrow_Delete(dr);
-                                D_Exclusive_JuchuuNO_Delete();
-                                bbl.ShowMessage("S004", Data1, Data2, Data3);
-                                return;
+                                //重複行はDelete
+                                string SKMSNO = dr["SKMSNO"].ToString();
+                                DataRow existDr1 = F8_dt1.Select("SKMSNO ='" + SKMSNO + "'").SingleOrDefault();
+                                if (existDr1 != null)
+                                {
+                                    DataRow data=  dtgv1.Select("SKMSNO ='" + SKMSNO + "'").SingleOrDefault();
+                                    data["Kanryo"] = "9";    //未使用項目のため
+                                    exists = true;
+                                }
+                            }
 
+                            if (!exists)
+                            {
+                                string JuchuuNO = dr["JuchuuNO"].ToString();
+                                sksz_e = new ShukkaSiziNyuuryokuEntity();
+                                sksz_e.DataKBN = 1;
+                                sksz_e.Number = JuchuuNO;
+                                sksz_e.ProgramID = ProgramID;
+                                sksz_e.PC = PCID;
+                                sksz_e.OperatorCD = OperatorCD;
+                                DataTable dt = new DataTable();
+                                sksz_bl = new ShukkasiziNyuuryokuBL();
+                                dt = sksz_bl.D_Exclusive_Lock_Check(sksz_e);
+
+                                if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                                {
+                                    count = true;
+                                    Data1 = dt.Rows[0]["Program"].ToString();
+                                    Data2 = dt.Rows[0]["Operator"].ToString();
+                                    Data3 = dt.Rows[0]["PC"].ToString();
+                                    //Gvrow_Delete(dr);
+                                    D_Exclusive_JuchuuNO_Delete();
+                                    bbl.ShowMessage("S004", Data1, Data2, Data3);
+                                    return;
+
+                                }
                             }
                         }
+                        if (count)
+                        {
+                            bbl.ShowMessage("S004", Data1, Data2, Data3);
+                            return;
+                        }
                     }
-                    if (count)
-                    {
-                        bbl.ShowMessage("S004", Data1, Data2, Data3);
-                        return;
-                    }
+                    DataRow[] select_dr1 = dtgv1.Select("Kanryo = '9'");
+                    foreach (DataRow dr in select_dr1)
+                        dtgv1.Rows.Remove(dr);
+
+                    dtHaita = dtgv1.Copy();
+
                     dgvShukkasizi.DataSource = dtHaita;
                     if(dtHaita.Rows.Count>0)
                     {
