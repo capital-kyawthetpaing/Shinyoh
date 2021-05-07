@@ -737,14 +737,14 @@ namespace ShukkaNyuuryoku {
                 DataRow existDr1 = F8_dt1.Select("ShukkaSiziNOGyouNO='" + ShukkaSiziNOGyouNO + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["colKonkai"].Value.ToString() == "0")
+                    if (row.Cells["col_Konkai"].Value.ToString() == "0")
                     {
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
                 }
                 F8_drNew[0] = JANCD;
-                if (row.Cells["colKonkai"].Value.ToString() != "0" || row.Cells["colComplete"].Value.ToString() == "1")
+                if (row.Cells["col_Konkai"].Value.ToString() != "0" || row.Cells["col_Complete"].Value.ToString() == "1")
                 {
                     for (int c = 1; c < current_gv.Columns.Count; c++)
                     {
@@ -835,9 +835,9 @@ namespace ShukkaNyuuryoku {
         private bool ErrorCheck_CellEndEdit(int row, int col)
         {
 
-            string Konkai = current_gv.Rows[row].Cells["colKonkai"].Value.ToString();
-            string a = current_gv.Rows[row].Cells["colShukkazansuu"].Value.ToString();
-            string b = current_gv.Rows[row].Cells["colMiryoku"].Value.ToString();
+            string Konkai = current_gv.Rows[row].Cells["col_Konkai"].Value.ToString();
+            string a = current_gv.Rows[row].Cells["col_Shukkazansuu"].Value.ToString();
+            string b = current_gv.Rows[row].Cells["col_Miryoku"].Value.ToString();
             string old = cboMode.SelectedValue.ToString().Equals("2") ? current_gv.Rows[row].Cells["OldShukkasuu"].Value.ToString() : "0";
             if (old == "")
                 old = "0";
@@ -1141,7 +1141,7 @@ namespace ShukkaNyuuryoku {
             dt.Columns.Add("JuchuuNOGyouNO", typeof(string));
             dt.Columns.Add("SoukoCD", typeof(string));
             dt.Columns.Add("ShouhinCD", typeof(string));          
-            dt.Columns.Add("ShukkaSiziNO", typeof(string));
+            //dt.Columns.Add("ShukkaSiziNO", typeof(string));
             dt.Columns.Add("OldShukkaSuu", typeof(string));
             //dt.Columns.Add("SoukoCD", typeof(string));
 
@@ -1219,6 +1219,7 @@ namespace ShukkaNyuuryoku {
                 current_gv.Columns["JuchuuNOGyouNO"].Visible = false;
                 current_gv.Columns["SoukoCD"].Visible = false;
                 current_gv.Columns["ShouhinCD"].Visible = false;
+                current_gv.Columns["OldShukkaSuu"].Visible = false;
             }
         }
         private void ShukkaNo_KeyDown()
