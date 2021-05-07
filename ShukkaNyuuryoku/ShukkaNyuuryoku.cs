@@ -45,7 +45,7 @@ namespace ShukkaNyuuryoku {
             dtHaita = new DataTable();
             dtClear = CreateTable();
 
-            //this.gvShukka1.Size = new System.Drawing.Size(1300, 387);
+            //this.current_gv.Size = new System.Drawing.Size(1300, 387);
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -1214,9 +1214,10 @@ namespace ShukkaNyuuryoku {
         }
         private void F11_Save()
         {
+            FunctionProcedure(11);
+
             if (F8_dt1.Rows.Count == 0)
             {
-                FunctionProcedure(11);
                 current_gv.Columns["DenpyouDate"].Visible=false;
                 current_gv.Columns["JuchuuNOGyouNO"].Visible = false;
                 current_gv.Columns["SoukoCD"].Visible = false;
