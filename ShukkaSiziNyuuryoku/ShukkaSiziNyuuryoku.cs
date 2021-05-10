@@ -170,30 +170,42 @@ namespace ShukkaSiziNyuuryoku
             }
             if (tagID == "12")
             {
-                if (F8_dt1.Rows.Count > 0 || dtgv1.Rows.Count > 0)
+                if (Temp_Null())
                 {
-                    DBProcess();
-                    switch (cboMode.SelectedValue)
+                    if (F8_dt1.Rows.Count > 0 || dtgv1.Rows.Count > 0)
                     {
-                        case "1":
-                            ChangeMode(Mode.New);
-                            break;
-                        case "2":
-                            ChangeMode(Mode.Update);
-                            break;
-                        case "3":
-                            ChangeMode(Mode.Delete);
-                            break;
-                        case "4":
-                            ChangeMode(Mode.Inquiry);
-                            break;
+                        DBProcess();
+                        switch (cboMode.SelectedValue)
+                        {
+                            case "1":
+                                ChangeMode(Mode.New);
+                                break;
+                            case "2":
+                                ChangeMode(Mode.Update);
+                                break;
+                            case "3":
+                                ChangeMode(Mode.Delete);
+                                break;
+                            case "4":
+                                ChangeMode(Mode.Inquiry);
+                                break;
+                        }
                     }
+                    dtResult.Clear();
+                    F8_dt1.Clear();
+                    //}
                 }
-                dtResult.Clear();
-                F8_dt1.Clear();
-                //}
             }
             base.FunctionProcess(tagID);
+        }
+        private bool Temp_Null()
+        {
+            if (cboMode.SelectedValue.ToString().Equals("1") && F8_dt1.Rows.Count == 0 || cboMode.SelectedValue.ToString().Equals("2") && F8_dt1.Rows.Count == 0)
+            {
+                bbl.ShowMessage("E274");
+                return false;
+            }
+            return true;
         }
         private void ChangeMode(Mode mode)
         {
