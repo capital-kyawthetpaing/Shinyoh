@@ -195,7 +195,7 @@ namespace MasterTouroku_Kouriten
 
             txtStartDate.E103Check(true);
             txtEndDate.E103Check(true);
-            txtEndDate.E106Check(true, txtStartDate, txtEndDate);
+            txtEndDate.E104Check(true, txtStartDate, txtEndDate);
         }
         public void Disable_UDI_Mode()
         {
