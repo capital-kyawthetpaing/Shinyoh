@@ -122,7 +122,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(355, 226);
+            this.label4.Location = new System.Drawing.Point(322, 226);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 62;
@@ -132,7 +132,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(240, 225);
+            this.label5.Location = new System.Drawing.Point(231, 226);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 20);
             this.label5.TabIndex = 61;
@@ -151,7 +151,7 @@
             this.txtPhone2_3.IsErrorOccurs = false;
             this.txtPhone2_3.IsRequire = false;
             this.txtPhone2_3.IsUseInitializedLayout = true;
-            this.txtPhone2_3.Location = new System.Drawing.Point(384, 227);
+            this.txtPhone2_3.Location = new System.Drawing.Point(340, 227);
             this.txtPhone2_3.MaxLength = 5;
             this.txtPhone2_3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2_3.MoveNext = true;
@@ -176,7 +176,7 @@
             this.txtPhone2_2.IsErrorOccurs = false;
             this.txtPhone2_2.IsRequire = false;
             this.txtPhone2_2.IsUseInitializedLayout = true;
-            this.txtPhone2_2.Location = new System.Drawing.Point(271, 227);
+            this.txtPhone2_2.Location = new System.Drawing.Point(249, 227);
             this.txtPhone2_2.MaxLength = 5;
             this.txtPhone2_2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone2_2.MoveNext = true;
@@ -231,7 +231,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(352, 191);
+            this.label3.Location = new System.Drawing.Point(322, 191);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(15, 20);
             this.label3.TabIndex = 59;
@@ -241,7 +241,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(240, 190);
+            this.label2.Location = new System.Drawing.Point(231, 190);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(15, 20);
             this.label2.TabIndex = 58;
@@ -260,7 +260,7 @@
             this.txtPhone1_3.IsErrorOccurs = false;
             this.txtPhone1_3.IsRequire = false;
             this.txtPhone1_3.IsUseInitializedLayout = true;
-            this.txtPhone1_3.Location = new System.Drawing.Point(384, 191);
+            this.txtPhone1_3.Location = new System.Drawing.Point(340, 191);
             this.txtPhone1_3.MaxLength = 5;
             this.txtPhone1_3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1_3.MoveNext = true;
@@ -285,7 +285,7 @@
             this.txtPhone1_2.IsErrorOccurs = false;
             this.txtPhone1_2.IsRequire = false;
             this.txtPhone1_2.IsUseInitializedLayout = true;
-            this.txtPhone1_2.Location = new System.Drawing.Point(271, 191);
+            this.txtPhone1_2.Location = new System.Drawing.Point(249, 191);
             this.txtPhone1_2.MaxLength = 5;
             this.txtPhone1_2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhone1_2.MoveNext = true;
@@ -466,7 +466,7 @@
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(239, 83);
+            this.txtYubin2.Location = new System.Drawing.Point(209, 83);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin2.MoveNext = true;
@@ -602,7 +602,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(207, 81);
+            this.label1.Location = new System.Drawing.Point(191, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 20);
             this.label1.TabIndex = 19;

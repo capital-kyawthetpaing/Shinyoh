@@ -143,9 +143,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label1.Location = new System.Drawing.Point(223, 13);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.Size = new System.Drawing.Size(14, 15);
             this.label1.TabIndex = 13;
             this.label1.Text = "~";
             // 
@@ -237,10 +238,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(173, 63);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(173, 62);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(11, 13);
+            this.label3.Size = new System.Drawing.Size(12, 15);
             this.label3.TabIndex = 12;
             this.label3.Text = "-";
             // 
@@ -257,7 +258,7 @@
             this.txtYuubinNO2.IsErrorOccurs = false;
             this.txtYuubinNO2.IsRequire = false;
             this.txtYuubinNO2.IsUseInitializedLayout = true;
-            this.txtYuubinNO2.Location = new System.Drawing.Point(187, 60);
+            this.txtYuubinNO2.Location = new System.Drawing.Point(188, 60);
             this.txtYuubinNO2.MaxLength = 4;
             this.txtYuubinNO2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYuubinNO2.MoveNext = true;
@@ -358,10 +359,10 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(193, 113);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(193, 112);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(11, 13);
+            this.label5.Size = new System.Drawing.Size(12, 15);
             this.label5.TabIndex = 19;
             this.label5.Text = "-";
             // 
@@ -378,7 +379,7 @@
             this.txtPhNO2.IsErrorOccurs = false;
             this.txtPhNO2.IsRequire = false;
             this.txtPhNO2.IsUseInitializedLayout = true;
-            this.txtPhNO2.Location = new System.Drawing.Point(207, 110);
+            this.txtPhNO2.Location = new System.Drawing.Point(208, 110);
             this.txtPhNO2.MaxLength = 5;
             this.txtPhNO2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNO2.MoveNext = true;
@@ -393,10 +394,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(280, 113);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(281, 112);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(11, 13);
+            this.label6.Size = new System.Drawing.Size(12, 15);
             this.label6.TabIndex = 21;
             this.label6.Text = "-";
             // 
@@ -413,7 +414,7 @@
             this.txtPhNO3.IsErrorOccurs = false;
             this.txtPhNO3.IsRequire = false;
             this.txtPhNO3.IsUseInitializedLayout = true;
-            this.txtPhNO3.Location = new System.Drawing.Point(294, 110);
+            this.txtPhNO3.Location = new System.Drawing.Point(296, 110);
             this.txtPhNO3.MaxLength = 5;
             this.txtPhNO3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNO3.MoveNext = true;
@@ -519,6 +520,7 @@
             this.txtTokuisakiCD1.IsRequire = false;
             this.txtTokuisakiCD1.IsUseInitializedLayout = true;
             this.txtTokuisakiCD1.lblName = null;
+            this.txtTokuisakiCD1.lblName1 = null;
             this.txtTokuisakiCD1.Location = new System.Drawing.Point(240, 10);
             this.txtTokuisakiCD1.MaxLength = 10;
             this.txtTokuisakiCD1.MinimumSize = new System.Drawing.Size(100, 19);
@@ -531,6 +533,7 @@
             this.txtTokuisakiCD1.TabIndex = 3;
             this.txtTokuisakiCD1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD1.TxtBox = null;
+            this.txtTokuisakiCD1.TxtBox1 = null;
             // 
             // txtTokuisakiCD
             // 
@@ -548,6 +551,7 @@
             this.txtTokuisakiCD.IsRequire = false;
             this.txtTokuisakiCD.IsUseInitializedLayout = true;
             this.txtTokuisakiCD.lblName = null;
+            this.txtTokuisakiCD.lblName1 = null;
             this.txtTokuisakiCD.Location = new System.Drawing.Point(120, 10);
             this.txtTokuisakiCD.MaxLength = 10;
             this.txtTokuisakiCD.MinimumSize = new System.Drawing.Size(100, 19);
@@ -560,10 +564,12 @@
             this.txtTokuisakiCD.TabIndex = 2;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD.TxtBox = null;
+            this.txtTokuisakiCD.TxtBox1 = null;
             // 
             // txtChangeDate
             // 
             this.txtChangeDate.AllowMinus = false;
+            this.txtChangeDate.BackColor = System.Drawing.Color.Cyan;
             this.txtChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtChangeDate.DecimalPlace = 0;
             this.txtChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;

@@ -148,7 +148,7 @@
             this.txtDate2.IsErrorOccurs = false;
             this.txtDate2.IsRequire = false;
             this.txtDate2.IsUseInitializedLayout = true;
-            this.txtDate2.Location = new System.Drawing.Point(424, 135);
+            this.txtDate2.Location = new System.Drawing.Point(380, 136);
             this.txtDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate2.MoveNext = true;
             this.txtDate2.Name = "txtDate2";
@@ -211,7 +211,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(380, 141);
+            this.label2.Location = new System.Drawing.Point(360, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 9;

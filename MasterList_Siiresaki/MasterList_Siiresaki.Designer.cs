@@ -128,7 +128,7 @@ namespace MasterList_Siiresaki
             // txtChangeDate
             // 
             this.txtChangeDate.AllowMinus = false;
-            this.txtChangeDate.BackColor = System.Drawing.SystemColors.Control;
+            this.txtChangeDate.BackColor = System.Drawing.Color.Cyan;
             this.txtChangeDate.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtChangeDate.DecimalPlace = 0;
             this.txtChangeDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
@@ -199,6 +199,7 @@ namespace MasterList_Siiresaki
             this.txtSiiresakiCD_To.IsRequire = false;
             this.txtSiiresakiCD_To.IsUseInitializedLayout = true;
             this.txtSiiresakiCD_To.lblName = null;
+            this.txtSiiresakiCD_To.lblName1 = null;
             this.txtSiiresakiCD_To.Location = new System.Drawing.Point(241, 5);
             this.txtSiiresakiCD_To.MaxLength = 10;
             this.txtSiiresakiCD_To.MinimumSize = new System.Drawing.Size(100, 19);
@@ -211,6 +212,7 @@ namespace MasterList_Siiresaki
             this.txtSiiresakiCD_To.TabIndex = 3;
             this.txtSiiresakiCD_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSiiresakiCD_To.TxtBox = null;
+            this.txtSiiresakiCD_To.TxtBox1 = null;
             // 
             // txtSiiresakiCD_From
             // 
@@ -228,6 +230,7 @@ namespace MasterList_Siiresaki
             this.txtSiiresakiCD_From.IsRequire = false;
             this.txtSiiresakiCD_From.IsUseInitializedLayout = true;
             this.txtSiiresakiCD_From.lblName = null;
+            this.txtSiiresakiCD_From.lblName1 = null;
             this.txtSiiresakiCD_From.Location = new System.Drawing.Point(121, 5);
             this.txtSiiresakiCD_From.MaxLength = 10;
             this.txtSiiresakiCD_From.MinimumSize = new System.Drawing.Size(100, 19);
@@ -240,6 +243,7 @@ namespace MasterList_Siiresaki
             this.txtSiiresakiCD_From.TabIndex = 2;
             this.txtSiiresakiCD_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSiiresakiCD_From.TxtBox = null;
+            this.txtSiiresakiCD_From.TxtBox1 = null;
             // 
             // lblTokuisakiCD
             // 
@@ -291,9 +295,10 @@ namespace MasterList_Siiresaki
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label1.Location = new System.Drawing.Point(224, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.Size = new System.Drawing.Size(14, 15);
             this.label1.TabIndex = 52;
             this.label1.Text = "~";
             // 
@@ -323,7 +328,7 @@ namespace MasterList_Siiresaki
             this.txtPhNO3.IsErrorOccurs = false;
             this.txtPhNO3.IsRequire = false;
             this.txtPhNO3.IsUseInitializedLayout = true;
-            this.txtPhNO3.Location = new System.Drawing.Point(295, 105);
+            this.txtPhNO3.Location = new System.Drawing.Point(297, 105);
             this.txtPhNO3.MaxLength = 5;
             this.txtPhNO3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNO3.MoveNext = true;
@@ -351,10 +356,10 @@ namespace MasterList_Siiresaki
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(281, 108);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(282, 107);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(11, 13);
+            this.label6.Size = new System.Drawing.Size(12, 15);
             this.label6.TabIndex = 69;
             this.label6.Text = "-";
             // 
@@ -396,7 +401,7 @@ namespace MasterList_Siiresaki
             this.txtPhNO2.IsErrorOccurs = false;
             this.txtPhNO2.IsRequire = false;
             this.txtPhNO2.IsUseInitializedLayout = true;
-            this.txtPhNO2.Location = new System.Drawing.Point(208, 105);
+            this.txtPhNO2.Location = new System.Drawing.Point(209, 105);
             this.txtPhNO2.MaxLength = 5;
             this.txtPhNO2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNO2.MoveNext = true;
@@ -420,10 +425,10 @@ namespace MasterList_Siiresaki
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(194, 108);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(194, 107);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(11, 13);
+            this.label5.Size = new System.Drawing.Size(12, 15);
             this.label5.TabIndex = 68;
             this.label5.Text = "-";
             // 
@@ -506,10 +511,10 @@ namespace MasterList_Siiresaki
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(174, 58);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(174, 57);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(11, 13);
+            this.label3.Size = new System.Drawing.Size(12, 15);
             this.label3.TabIndex = 64;
             this.label3.Text = "-";
             // 
@@ -535,7 +540,7 @@ namespace MasterList_Siiresaki
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(188, 55);
+            this.txtYubin2.Location = new System.Drawing.Point(189, 55);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtYubin2.MoveNext = true;
