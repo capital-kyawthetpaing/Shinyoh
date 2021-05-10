@@ -944,11 +944,17 @@ namespace ShukkaSiziNyuuryoku
             }
             else
             {
+                bool NotShowMode = true;
+                if (cboMode.SelectedValue.ToString().Equals("4"))
+                {
+                    NotShowMode = false;
+                }
+
                 sbShippingNO.E102Check(true);
                 sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
-                sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
-                sbShippingNO.E159Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
-                sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null);
+                sbShippingNO.E115Check(NotShowMode, "ShukkaSiziNyuuryoku", sbShippingNO);
+                sbShippingNO.E159Check(NotShowMode, "ShukkaSiziNyuuryoku", sbShippingNO);
+                sbShippingNO.E160Check(NotShowMode, "ShukkaSiziNyuuryoku", sbShippingNO, null);
             }
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
@@ -1100,8 +1106,9 @@ namespace ShukkaSiziNyuuryoku
                 DataRow existDr1 = F8_dt1.Select("SKMSNO='" + SKMSNO + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() == "0")
+                    if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() == "0" && row.Cells["chk"].Value.ToString() != "1")
                     {
+                        D_Exclusive_Delete_One(row.Cells["colJuchuuNo"].Value.ToString());
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
@@ -1137,9 +1144,26 @@ namespace ShukkaSiziNyuuryoku
                     }
                     // grid 1 insert(if exist, remove exist and insert)
                     if (existDr1 != null)
+                    {
                         F8_dt1.Rows.Remove(existDr1);
+                    }
+                    else
+                    {
+                        string JuchuuNO = F8_drNew["JuchuuNO"].ToString();
+                        sksz_e = new ShukkaSiziNyuuryokuEntity();
+                        sksz_e.DataKBN = 1;
+                        sksz_e.Number = JuchuuNO;
+                        sksz_e.ProgramID = ProgramID;
+                        sksz_e.PC = PCID;
+                        sksz_e.OperatorCD = OperatorCD;
+                        DataTable dt = new DataTable();
+                        sksz_bl = new ShukkasiziNyuuryokuBL();
+                        dt = sksz_bl.D_Exclusive_Lock_Check(sksz_e);
+                    }
                     F8_dt1.Rows.Add(F8_drNew);
-                   
+                }
+                else {
+                    D_Exclusive_Delete_One(row.Cells["colJuchuuNo"].Value.ToString());
                 }
             }
             dgvShukkasizi.Memory_Row_Count = F8_dt1.Rows.Count;
@@ -1345,6 +1369,28 @@ namespace ShukkaSiziNyuuryoku
                 }
             }
         }
+        private void D_Exclusive_Delete_One(string SKMSNO)
+        {
+            if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")//update
+            {
+                string JuchuuNO = SKMSNO.Substring(0, SKMSNO.IndexOf('-'));
+                string GyoNO = SKMSNO.Substring(SKMSNO.IndexOf('-')+1);
+
+                DataRow[] existDr1 = F8_dt1.Select("JuchuuNO='" + JuchuuNO + "' AND SKMSNO <> '" + SKMSNO + "'");
+                if (existDr1.Length != 0)
+                {
+                    return;
+                }
+                ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+                chkLockEntity.DataKBN = 1;
+                chkLockEntity.Number = JuchuuNO;
+                chkLockEntity.ProgramID = ProgramID;
+                chkLockEntity.PC = PCID;
+                chkLockEntity.OperatorCD = OperatorCD;
+                sksz_bl.D_Exclusive_JuchuuNO_Delete(chkLockEntity);
+            }
+        }
+
         //private void Gvrow_Delete(DataRow dr)
         //{
         //    DataRow[] existDr1 = dtHaita.Select("JuchuuNO ='" + dr["JuchuuNO"] + "'");
