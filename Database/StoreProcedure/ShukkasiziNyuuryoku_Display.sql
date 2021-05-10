@@ -159,6 +159,7 @@ SELECT
 	,DJ.[KouritenTelNO2-3]	--蟆丞｣ｲ蠎鈴崕隧ｱ逡ｪ蜿ｷ2-3
 	,FS.ShouhinCD as Hidden_ShouhinCD--蝠・刀繧ｳ繝ｼ繝雲譖ｴ譁ｰ逕ｨ
 	,0 AS Hidden_ShukkaSiziGyouNO
+	,DJMS.JuchuuGyouNO AS Hidden_JuchuuGyouNO
 	FROM D_Juchuu DJ
 	INNER JOIN D_JuchuuMeisai DJMS ON DJMS.JuchuuNO=DJ.JuchuuNO
 	LEFT OUTER JOIN #WK_ShukkaKanouSou2 SKKNS2 ON SKKNS2.JuchuuNO=DJMS.JuchuuNO	AND SKKNS2.JuchuuGyouNO=DJMS.JuchuuGyouNO

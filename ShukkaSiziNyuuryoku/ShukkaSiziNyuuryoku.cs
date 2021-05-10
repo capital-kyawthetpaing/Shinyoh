@@ -73,6 +73,13 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.Columns.Insert(col.Count, newCol);
             newCol.DisplayIndex = col.Count - 1;
 
+            DataGridViewTextBoxColumn newCol2 = new DataGridViewTextBoxColumn();
+            newCol2.Name = "Hidden_JuchuuGyouNO";
+            newCol2.DataPropertyName = "Hidden_JuchuuGyouNO";
+            newCol2.Visible = false;
+            dgvShukkasizi.Columns.Insert(col.Count, newCol2);
+            newCol2.DisplayIndex = col.Count - 1;
+
             for (int i = 0; i < dgvShukkasizi.Columns.Count; i++)
             {
                 if (dgvShukkasizi.Columns[i].Name.Equals("colJuchuuSuu") || dgvShukkasizi.Columns[i].Name.Equals("colShukkakanousuu") ||
@@ -624,6 +631,7 @@ namespace ShukkaSiziNyuuryoku
             dt.Columns.Add("KouritenTelNO2-3", typeof(string));
             dt.Columns.Add("Hidden_ShouhinCD", typeof(string));
             dt.Columns.Add("Hidden_ShukkaSiziGyouNO", typeof(int));
+            dt.Columns.Add("Hidden_JuchuuGyouNO", typeof(int));
 
             dt.AcceptChanges();
             return dt;
@@ -1192,7 +1200,7 @@ namespace ShukkaSiziNyuuryoku
                 case 8:
                     if (F8_dt1.Rows.Count > 0)
                     {
-                        var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("SKMSNO")).CopyToDataTable();
+                        var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("JuchuuNO")).ThenBy(r => r.Field<int>("Hidden_JuchuuGyouNO")).CopyToDataTable();
                         dgvShukkasizi.DataSource = dtConfirm;
                         dgvShukkasizi.Memory_Row_Count = F8_dt1.Rows.Count;
                     }
