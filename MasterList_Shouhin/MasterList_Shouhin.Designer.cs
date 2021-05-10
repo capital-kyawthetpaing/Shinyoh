@@ -205,7 +205,7 @@ namespace MasterList_Shouhin
             this.txtBrand_To.IsUseInitializedLayout = true;
             this.txtBrand_To.lblName = null;
             this.txtBrand_To.lblName1 = null;
-            this.txtBrand_To.Location = new System.Drawing.Point(227, 88);
+            this.txtBrand_To.Location = new System.Drawing.Point(221, 88);
             this.txtBrand_To.MaxLength = 10;
             this.txtBrand_To.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtBrand_To.MoveNext = true;
@@ -328,9 +328,10 @@ namespace MasterList_Shouhin
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label5.Location = new System.Drawing.Point(224, 139);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 13);
+            this.label5.Size = new System.Drawing.Size(14, 15);
             this.label5.TabIndex = 91;
             this.label5.Text = "~";
             // 
@@ -412,9 +413,10 @@ namespace MasterList_Shouhin
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label4.Location = new System.Drawing.Point(224, 115);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(14, 13);
+            this.label4.Size = new System.Drawing.Size(14, 15);
             this.label4.TabIndex = 86;
             this.label4.Text = "~";
             // 
@@ -457,7 +459,7 @@ namespace MasterList_Shouhin
             this.txtJANCD_To.IsUseInitializedLayout = true;
             this.txtJANCD_To.lblName = null;
             this.txtJANCD_To.lblName1 = null;
-            this.txtJANCD_To.Location = new System.Drawing.Point(247, 37);
+            this.txtJANCD_To.Location = new System.Drawing.Point(240, 37);
             this.txtJANCD_To.MaxLength = 13;
             this.txtJANCD_To.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJANCD_To.MoveNext = true;
@@ -518,9 +520,10 @@ namespace MasterList_Shouhin
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(227, 40);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.label8.Location = new System.Drawing.Point(224, 40);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(14, 13);
+            this.label8.Size = new System.Drawing.Size(14, 15);
             this.label8.TabIndex = 75;
             this.label8.Text = "~";
             // 
@@ -541,7 +544,7 @@ namespace MasterList_Shouhin
             this.txtShouhinCD_To.IsUseInitializedLayout = true;
             this.txtShouhinCD_To.lblName = null;
             this.txtShouhinCD_To.lblName1 = null;
-            this.txtShouhinCD_To.Location = new System.Drawing.Point(317, 12);
+            this.txtShouhinCD_To.Location = new System.Drawing.Point(301, 12);
             this.txtShouhinCD_To.MaxLength = 20;
             this.txtShouhinCD_To.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShouhinCD_To.MoveNext = true;
@@ -636,9 +639,10 @@ namespace MasterList_Shouhin
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(292, 16);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(284, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.Size = new System.Drawing.Size(14, 15);
             this.label1.TabIndex = 52;
             this.label1.Text = "~";
             // 
