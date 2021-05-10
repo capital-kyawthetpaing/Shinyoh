@@ -118,7 +118,7 @@
             this.PanelDetail.Controls.Add(this.txtHacchuuDate2);
             this.PanelDetail.Controls.Add(this.txtHacchuuDate1);
             this.PanelDetail.Controls.Add(this.lblHacchuuDate);
-            this.PanelDetail.Location = new System.Drawing.Point(0, 76);
+            this.PanelDetail.Location = new System.Drawing.Point(-2, 76);
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1713, 838);
             this.PanelDetail.TabIndex = 1;
@@ -140,7 +140,7 @@
             this.txtJuchuuNO2.IsUseInitializedLayout = true;
             this.txtJuchuuNO2.lblName = null;
             this.txtJuchuuNO2.lblName1 = null;
-            this.txtJuchuuNO2.Location = new System.Drawing.Point(298, 296);
+            this.txtJuchuuNO2.Location = new System.Drawing.Point(265, 296);
             this.txtJuchuuNO2.MaxLength = 12;
             this.txtJuchuuNO2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO2.MoveNext = true;
@@ -202,7 +202,7 @@
             this.txtHacchuuNO2.IsUseInitializedLayout = true;
             this.txtHacchuuNO2.lblName = null;
             this.txtHacchuuNO2.lblName1 = null;
-            this.txtHacchuuNO2.Location = new System.Drawing.Point(298, 82);
+            this.txtHacchuuNO2.Location = new System.Drawing.Point(265, 82);
             this.txtHacchuuNO2.MaxLength = 12;
             this.txtHacchuuNO2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuNO2.MoveNext = true;
@@ -391,7 +391,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(261, 331);
+            this.label6.Location = new System.Drawing.Point(244, 331);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(18, 20);
             this.label6.TabIndex = 79;
@@ -410,7 +410,7 @@
             this.txtUpdate_JuchuuDate2.IsErrorOccurs = false;
             this.txtUpdate_JuchuuDate2.IsRequire = false;
             this.txtUpdate_JuchuuDate2.IsUseInitializedLayout = true;
-            this.txtUpdate_JuchuuDate2.Location = new System.Drawing.Point(298, 328);
+            this.txtUpdate_JuchuuDate2.Location = new System.Drawing.Point(265, 328);
             this.txtUpdate_JuchuuDate2.MaxLength = 10;
             this.txtUpdate_JuchuuDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtUpdate_JuchuuDate2.MoveNext = true;
@@ -467,7 +467,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(261, 299);
+            this.label5.Location = new System.Drawing.Point(244, 299);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(18, 20);
             this.label5.TabIndex = 75;
@@ -504,7 +504,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(261, 267);
+            this.label4.Location = new System.Drawing.Point(244, 266);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(18, 20);
             this.label4.TabIndex = 70;
@@ -523,7 +523,7 @@
             this.txtJuchuuDate2.IsErrorOccurs = false;
             this.txtJuchuuDate2.IsRequire = false;
             this.txtJuchuuDate2.IsUseInitializedLayout = true;
-            this.txtJuchuuDate2.Location = new System.Drawing.Point(298, 264);
+            this.txtJuchuuDate2.Location = new System.Drawing.Point(264, 264);
             this.txtJuchuuDate2.MaxLength = 10;
             this.txtJuchuuDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJuchuuDate2.MoveNext = true;
@@ -702,7 +702,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(261, 121);
+            this.label1.Location = new System.Drawing.Point(244, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 20);
             this.label1.TabIndex = 56;
@@ -721,7 +721,7 @@
             this.txtUpdate_HacchuuDate2.IsErrorOccurs = false;
             this.txtUpdate_HacchuuDate2.IsRequire = false;
             this.txtUpdate_HacchuuDate2.IsUseInitializedLayout = true;
-            this.txtUpdate_HacchuuDate2.Location = new System.Drawing.Point(298, 118);
+            this.txtUpdate_HacchuuDate2.Location = new System.Drawing.Point(265, 118);
             this.txtUpdate_HacchuuDate2.MaxLength = 10;
             this.txtUpdate_HacchuuDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtUpdate_HacchuuDate2.MoveNext = true;
@@ -778,7 +778,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(261, 86);
+            this.label3.Location = new System.Drawing.Point(244, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 20);
             this.label3.TabIndex = 52;
@@ -802,7 +802,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(261, 52);
+            this.label2.Location = new System.Drawing.Point(243, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 20);
             this.label2.TabIndex = 46;
@@ -821,7 +821,7 @@
             this.txtHacchuuDate2.IsErrorOccurs = false;
             this.txtHacchuuDate2.IsRequire = false;
             this.txtHacchuuDate2.IsUseInitializedLayout = true;
-            this.txtHacchuuDate2.Location = new System.Drawing.Point(298, 48);
+            this.txtHacchuuDate2.Location = new System.Drawing.Point(264, 48);
             this.txtHacchuuDate2.MaxLength = 10;
             this.txtHacchuuDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtHacchuuDate2.MoveNext = true;

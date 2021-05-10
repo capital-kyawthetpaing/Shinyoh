@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt1 = new Shinyoh_Controls.SLabel();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.rdo_Registration = new Shinyoh_Controls.SRadio();
@@ -40,13 +40,6 @@
             this.sLabel6 = new Shinyoh_Controls.SLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.gvJuchuuTorikomi = new Shinyoh_Controls.SGridView();
-            this.txtDate1 = new Shinyoh_Controls.STextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtImportFileName = new Shinyoh_Controls.STextBox();
-            this.txtImportFolder = new Shinyoh_Controls.STextBox();
-            this.sLabel5 = new Shinyoh_Controls.SLabel();
-            this.sLabel4 = new Shinyoh_Controls.SLabel();
-            this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.colTorikomiDenpyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInsertDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +48,13 @@
             this.colTokuisakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKouritenCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKouritenRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtDate1 = new Shinyoh_Controls.STextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtImportFileName = new Shinyoh_Controls.STextBox();
+            this.txtImportFolder = new Shinyoh_Controls.STextBox();
+            this.sLabel5 = new Shinyoh_Controls.SLabel();
+            this.sLabel4 = new Shinyoh_Controls.SLabel();
+            this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -149,7 +149,7 @@
             this.txtDate2.IsErrorOccurs = false;
             this.txtDate2.IsRequire = false;
             this.txtDate2.IsUseInitializedLayout = true;
-            this.txtDate2.Location = new System.Drawing.Point(435, 137);
+            this.txtDate2.Location = new System.Drawing.Point(400, 137);
             this.txtDate2.MaxLength = 10;
             this.txtDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDate2.MoveNext = true;
@@ -215,7 +215,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(396, 139);
+            this.label2.Location = new System.Drawing.Point(378, 140);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 9;
@@ -240,6 +240,72 @@
             this.gvJuchuuTorikomi.Name = "gvJuchuuTorikomi";
             this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1200, 620);
             this.gvJuchuuTorikomi.TabIndex = 8;
+            // 
+            // colTorikomiDenpyouNO
+            // 
+            this.colTorikomiDenpyouNO.DataPropertyName = "TorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.HeaderText = "取込伝票番号";
+            this.colTorikomiDenpyouNO.Name = "colTorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.ReadOnly = true;
+            this.colTorikomiDenpyouNO.Width = 110;
+            // 
+            // colInsertDateTime
+            // 
+            this.colInsertDateTime.DataPropertyName = "InsertDateTime";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colInsertDateTime.HeaderText = "取込日時";
+            this.colInsertDateTime.Name = "colInsertDateTime";
+            this.colInsertDateTime.ReadOnly = true;
+            this.colInsertDateTime.Width = 130;
+            // 
+            // colJuchuuNO
+            // 
+            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
+            this.colJuchuuNO.HeaderText = "受注番号";
+            this.colJuchuuNO.Name = "colJuchuuNO";
+            this.colJuchuuNO.ReadOnly = true;
+            // 
+            // colJuchuuDate
+            // 
+            this.colJuchuuDate.DataPropertyName = "JuchuuDate";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colJuchuuDate.HeaderText = "受注日";
+            this.colJuchuuDate.Name = "colJuchuuDate";
+            this.colJuchuuDate.ReadOnly = true;
+            this.colJuchuuDate.Width = 80;
+            // 
+            // colTokuisakiCD
+            // 
+            this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
+            this.colTokuisakiCD.HeaderText = "得意先";
+            this.colTokuisakiCD.Name = "colTokuisakiCD";
+            this.colTokuisakiCD.ReadOnly = true;
+            this.colTokuisakiCD.Width = 80;
+            // 
+            // colTokuisakiRyakuName
+            // 
+            this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
+            this.colTokuisakiRyakuName.HeaderText = "得意先名";
+            this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
+            this.colTokuisakiRyakuName.ReadOnly = true;
+            this.colTokuisakiRyakuName.Width = 277;
+            // 
+            // colKouritenCD
+            // 
+            this.colKouritenCD.DataPropertyName = "KouritenCD";
+            this.colKouritenCD.HeaderText = "小売店";
+            this.colKouritenCD.Name = "colKouritenCD";
+            this.colKouritenCD.ReadOnly = true;
+            // 
+            // colKouritenRyakuName
+            // 
+            this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
+            this.colKouritenRyakuName.HeaderText = "小売店名";
+            this.colKouritenRyakuName.Name = "colKouritenRyakuName";
+            this.colKouritenRyakuName.ReadOnly = true;
+            this.colKouritenRyakuName.Width = 280;
             // 
             // txtDate1
             // 
@@ -365,72 +431,6 @@
             this.sLabel3.TabIndex = 0;
             this.sLabel3.Text = "取込元フォルダ";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // colTorikomiDenpyouNO
-            // 
-            this.colTorikomiDenpyouNO.DataPropertyName = "TorikomiDenpyouNO";
-            this.colTorikomiDenpyouNO.HeaderText = "取込伝票番号";
-            this.colTorikomiDenpyouNO.Name = "colTorikomiDenpyouNO";
-            this.colTorikomiDenpyouNO.ReadOnly = true;
-            this.colTorikomiDenpyouNO.Width = 110;
-            // 
-            // colInsertDateTime
-            // 
-            this.colInsertDateTime.DataPropertyName = "InsertDateTime";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colInsertDateTime.HeaderText = "取込日時";
-            this.colInsertDateTime.Name = "colInsertDateTime";
-            this.colInsertDateTime.ReadOnly = true;
-            this.colInsertDateTime.Width = 130;
-            // 
-            // colJuchuuNO
-            // 
-            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
-            this.colJuchuuNO.HeaderText = "受注番号";
-            this.colJuchuuNO.Name = "colJuchuuNO";
-            this.colJuchuuNO.ReadOnly = true;
-            // 
-            // colJuchuuDate
-            // 
-            this.colJuchuuDate.DataPropertyName = "JuchuuDate";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle4;
-            this.colJuchuuDate.HeaderText = "受注日";
-            this.colJuchuuDate.Name = "colJuchuuDate";
-            this.colJuchuuDate.ReadOnly = true;
-            this.colJuchuuDate.Width = 80;
-            // 
-            // colTokuisakiCD
-            // 
-            this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
-            this.colTokuisakiCD.HeaderText = "得意先";
-            this.colTokuisakiCD.Name = "colTokuisakiCD";
-            this.colTokuisakiCD.ReadOnly = true;
-            this.colTokuisakiCD.Width = 80;
-            // 
-            // colTokuisakiRyakuName
-            // 
-            this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
-            this.colTokuisakiRyakuName.HeaderText = "得意先名";
-            this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
-            this.colTokuisakiRyakuName.ReadOnly = true;
-            this.colTokuisakiRyakuName.Width = 277;
-            // 
-            // colKouritenCD
-            // 
-            this.colKouritenCD.DataPropertyName = "KouritenCD";
-            this.colKouritenCD.HeaderText = "小売店";
-            this.colKouritenCD.Name = "colKouritenCD";
-            this.colKouritenCD.ReadOnly = true;
-            // 
-            // colKouritenRyakuName
-            // 
-            this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
-            this.colKouritenRyakuName.HeaderText = "小売店名";
-            this.colKouritenRyakuName.Name = "colKouritenRyakuName";
-            this.colKouritenRyakuName.ReadOnly = true;
-            this.colKouritenRyakuName.Width = 280;
             // 
             // JuchuuTorikomi
             // 

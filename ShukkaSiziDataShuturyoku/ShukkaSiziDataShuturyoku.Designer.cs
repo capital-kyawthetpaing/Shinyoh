@@ -454,7 +454,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(261, 121);
+            this.label1.Location = new System.Drawing.Point(244, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 20);
             this.label1.TabIndex = 56;
@@ -473,7 +473,7 @@
             this.txtInputDate2.IsErrorOccurs = false;
             this.txtInputDate2.IsRequire = false;
             this.txtInputDate2.IsUseInitializedLayout = true;
-            this.txtInputDate2.Location = new System.Drawing.Point(298, 118);
+            this.txtInputDate2.Location = new System.Drawing.Point(265, 118);
             this.txtInputDate2.MaxLength = 10;
             this.txtInputDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtInputDate2.MoveNext = true;
@@ -530,7 +530,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(261, 86);
+            this.label3.Location = new System.Drawing.Point(244, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 20);
             this.label3.TabIndex = 52;
@@ -549,7 +549,7 @@
             this.txtShukkaDate2.IsErrorOccurs = false;
             this.txtShukkaDate2.IsRequire = false;
             this.txtShukkaDate2.IsUseInitializedLayout = true;
-            this.txtShukkaDate2.Location = new System.Drawing.Point(298, 82);
+            this.txtShukkaDate2.Location = new System.Drawing.Point(265, 82);
             this.txtShukkaDate2.MaxLength = 10;
             this.txtShukkaDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShukkaDate2.MoveNext = true;
@@ -580,7 +580,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(261, 52);
+            this.label2.Location = new System.Drawing.Point(244, 52);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 20);
             this.label2.TabIndex = 46;
@@ -599,7 +599,7 @@
             this.txtShukkaNo2.IsErrorOccurs = false;
             this.txtShukkaNo2.IsRequire = false;
             this.txtShukkaNo2.IsUseInitializedLayout = true;
-            this.txtShukkaNo2.Location = new System.Drawing.Point(298, 48);
+            this.txtShukkaNo2.Location = new System.Drawing.Point(265, 48);
             this.txtShukkaNo2.MaxLength = 12;
             this.txtShukkaNo2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShukkaNo2.MoveNext = true;

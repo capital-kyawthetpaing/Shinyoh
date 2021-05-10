@@ -165,7 +165,7 @@
             this.txtOrderNo2.IsUseInitializedLayout = true;
             this.txtOrderNo2.lblName = null;
             this.txtOrderNo2.lblName1 = null;
-            this.txtOrderNo2.Location = new System.Drawing.Point(298, 51);
+            this.txtOrderNo2.Location = new System.Drawing.Point(263, 51);
             this.txtOrderNo2.MaxLength = 12;
             this.txtOrderNo2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtOrderNo2.MoveNext = true;
@@ -287,7 +287,7 @@
             // lblKanzen2
             // 
             this.lblKanzen2.AutoSize = true;
-            this.lblKanzen2.Location = new System.Drawing.Point(436, 425);
+            this.lblKanzen2.Location = new System.Drawing.Point(396, 425);
             this.lblKanzen2.Name = "lblKanzen2";
             this.lblKanzen2.Size = new System.Drawing.Size(61, 13);
             this.lblKanzen2.TabIndex = 97;
@@ -297,7 +297,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(335, 422);
+            this.label5.Location = new System.Drawing.Point(305, 422);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 20);
             this.label5.TabIndex = 96;
@@ -307,7 +307,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(221, 422);
+            this.label6.Location = new System.Drawing.Point(214, 422);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(15, 20);
             this.label6.TabIndex = 95;
@@ -326,7 +326,7 @@
             this.txtPhNo3.IsErrorOccurs = false;
             this.txtPhNo3.IsRequire = false;
             this.txtPhNo3.IsUseInitializedLayout = true;
-            this.txtPhNo3.Location = new System.Drawing.Point(363, 422);
+            this.txtPhNo3.Location = new System.Drawing.Point(323, 422);
             this.txtPhNo3.MaxLength = 5;
             this.txtPhNo3.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo3.MoveNext = true;
@@ -351,7 +351,7 @@
             this.txtPhNo2.IsErrorOccurs = false;
             this.txtPhNo2.IsRequire = false;
             this.txtPhNo2.IsUseInitializedLayout = true;
-            this.txtPhNo2.Location = new System.Drawing.Point(247, 422);
+            this.txtPhNo2.Location = new System.Drawing.Point(232, 422);
             this.txtPhNo2.MaxLength = 5;
             this.txtPhNo2.MinimumSize = new System.Drawing.Size(70, 19);
             this.txtPhNo2.MoveNext = true;
@@ -414,7 +414,7 @@
             // lblKanzen1
             // 
             this.lblKanzen1.AutoSize = true;
-            this.lblKanzen1.Location = new System.Drawing.Point(270, 356);
+            this.lblKanzen1.Location = new System.Drawing.Point(245, 356);
             this.lblKanzen1.Name = "lblKanzen1";
             this.lblKanzen1.Size = new System.Drawing.Size(61, 13);
             this.lblKanzen1.TabIndex = 70;
@@ -433,7 +433,7 @@
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(217, 353);
+            this.txtYubin2.Location = new System.Drawing.Point(192, 353);
             this.txtYubin2.MaxLength = 4;
             this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin2.MoveNext = true;
@@ -475,7 +475,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(187, 351);
+            this.label4.Location = new System.Drawing.Point(174, 351);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 69;
@@ -797,7 +797,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(261, 90);
+            this.label1.Location = new System.Drawing.Point(244, 90);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 20);
             this.label1.TabIndex = 48;
@@ -816,7 +816,7 @@
             this.txtInputDate2.IsErrorOccurs = false;
             this.txtInputDate2.IsRequire = false;
             this.txtInputDate2.IsUseInitializedLayout = true;
-            this.txtInputDate2.Location = new System.Drawing.Point(298, 87);
+            this.txtInputDate2.Location = new System.Drawing.Point(265, 87);
             this.txtInputDate2.MaxLength = 10;
             this.txtInputDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtInputDate2.MoveNext = true;
@@ -859,7 +859,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(261, 55);
+            this.label3.Location = new System.Drawing.Point(243, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(18, 20);
             this.label3.TabIndex = 45;
@@ -869,7 +869,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(261, 22);
+            this.label2.Location = new System.Drawing.Point(244, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(18, 20);
             this.label2.TabIndex = 42;
@@ -888,7 +888,7 @@
             this.txtOrderDate2.IsErrorOccurs = false;
             this.txtOrderDate2.IsRequire = false;
             this.txtOrderDate2.IsUseInitializedLayout = true;
-            this.txtOrderDate2.Location = new System.Drawing.Point(298, 19);
+            this.txtOrderDate2.Location = new System.Drawing.Point(265, 19);
             this.txtOrderDate2.MaxLength = 10;
             this.txtOrderDate2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtOrderDate2.MoveNext = true;
