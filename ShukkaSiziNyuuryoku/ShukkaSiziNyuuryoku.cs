@@ -787,7 +787,7 @@ namespace ShukkaSiziNyuuryoku
                                 Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                                 btnF12.Focus();
                             }
-
+                            
                             Update_Data();
                         }
                         else
@@ -798,7 +798,10 @@ namespace ShukkaSiziNyuuryoku
                     }
                     else if (cboMode.SelectedValue.ToString().Equals("4"))
                     {
-                        cf.DisablePanel(PanelTitle);
+                        cf.DisablePanel(PanelTitle);                        
+                        btn_Tokuisaki.Enabled = true;
+                        btnKouriren_Detail.Enabled = true;
+                        
                         Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
                         BtnF9.Visible = false;
                         Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
