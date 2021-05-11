@@ -77,6 +77,7 @@ BEGIN
 			   --hidden field
 			   DS.TokuisakiCD,DSM.KouritenCD,DS.DenpyouDate,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM.SoukoCD,FS.ShouhinCD,DSM.ShukkaSiziNO
 			   ,0 AS ShukkaGyouNO
+			   ,0 AS OldShukkasuu
 
 		from D_ShukkaSizi DS
 		inner join D_ShukkaSiziMeisai DSM on DSM.ShukkaSiziNO = DS.ShukkaSiziNO
@@ -110,6 +111,7 @@ BEGIN
 			   --hidden field
 			   DS.TokuisakiCD,DSM.KouritenCD,DS.DenpyouDate,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM.SoukoCD,FS.ShouhinCD,DSM.ShukkaSiziNO
 			   ,0 AS ShukkaGyouNO
+			   ,0 AS OldShukkasuu
 
 		from D_ShukkaSizi DS
 		inner join D_ShukkaSiziMeisai DSM on DSM.ShukkaSiziNO = DS.ShukkaSiziNO

@@ -170,7 +170,7 @@ BEGIN
 					DenpyouDate				date,
 					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
 					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
-					ShukkaGyouNO            smallint
+					ShukkaGyouNO            smallint DEFAULT 0,
 				)
 	    EXEC sp_xml_preparedocument @hQuantityAdjust OUTPUT,@XML_Detail
 
@@ -187,15 +187,31 @@ BEGIN
 			  ,ShukkaSuu
 			  ,Kanryo
 			  ,ShukkaMeisaiTekiyou			
-			  ,ShukkaSiziNOGyouNO   			 
+			  ,ShukkaSiziNOGyouNO 
+			  ,DenpyouDate  			 
 			  ,JuchuuNOGyouNO
-			  ,DenpyouDate
 			  ,ShouhinCD
 			  ,SoukoCD
 			  ,ShukkaGyouNO
 			 )
 			 
-			   SELECT *
+			   SELECT JANCD
+                      ,HinbanCD
+                      ,ShouhinName          
+                      ,ColorRyakuName          
+                      ,ColorNO       
+                      ,SizeNO 
+                      ,ShukkaSiziZumiSuu           
+                      ,MiNyuukaSuu    
+                      ,ShukkaSuu
+                      ,Kanryo
+                      ,ShukkaMeisaiTekiyou          
+                      ,ShukkaSiziNOGyouNO    
+                      ,DenpyouDate            
+                      ,JuchuuNOGyouNO
+                      ,ShouhinCD
+                      ,SoukoCD
+                      ,NULLIF(ShukkaGyouNO,0)
 					FROM OPENXML(@hQuantityAdjust, 'NewDataSet/test')
 					WITH
 					(
@@ -211,8 +227,8 @@ BEGIN
 					Kanryo					tinyint 'Kanryou',
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
-					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
 					DenpyouDate				date 'DenpyouDate',
+					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
 					ShouhinCD				varchar(50)'ShouhinCD',
 					SoukoCD					varchar(10)'SoukoCD',
 					ShukkaGyouNO            smallint 'ShukkaGyouNO'

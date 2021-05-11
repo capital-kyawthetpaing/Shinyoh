@@ -96,12 +96,23 @@ namespace ShukkaNyuuryoku {
 
             var col = current_gv.Columns;
 
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             DataGridViewTextBoxColumn newCol = new DataGridViewTextBoxColumn();
             newCol.Name = "ShukkaGyouNO";
             newCol.DataPropertyName = "ShukkaGyouNO";
+            dataGridViewCellStyle11.Format = "NO";
+            newCol.DefaultCellStyle = dataGridViewCellStyle11;
             newCol.Visible = false;
             col.Insert(col.Count, newCol);
             newCol.DisplayIndex = col.Count - 1;
+
+            DataGridViewTextBoxColumn newCol2 = new DataGridViewTextBoxColumn();
+            newCol2.Name = "OldShukkasuu";
+            newCol2.DataPropertyName = "OldShukkasuu";
+            newCol2.DefaultCellStyle = dataGridViewCellStyle11;
+            newCol2.Visible = false;
+            col.Insert(col.Count, newCol2);
+            newCol2.DisplayIndex = col.Count - 1;
 
             ChangeMode(Mode.New);
 
@@ -486,14 +497,14 @@ namespace ShukkaNyuuryoku {
                 case 8:
                     if (F8_dt1.Rows.Count > 0)
                     {
-                        if(F8_dt1.Columns.Contains("ShukkaSiziNO"))
-                        {
-                            F8_dt1.Columns.Remove("ShukkaSiziNO");
-                        }
-                        if (F8_dt1.Columns.Contains("UriageKanryouKBN"))
-                        {
-                            F8_dt1.Columns.Remove("UriageKanryouKBN");
-                        }
+                        //if(F8_dt1.Columns.Contains("ShukkaSiziNO"))
+                        //{
+                        //    F8_dt1.Columns.Remove("ShukkaSiziNO");
+                        //}
+                        //if (F8_dt1.Columns.Contains("UriageKanryouKBN"))
+                        //{
+                        //    F8_dt1.Columns.Remove("UriageKanryouKBN");
+                        //}
 
                         F8_dt1.DefaultView.Sort = "JANCD";
                         current_gv.DataSource = F8_dt1.DefaultView.ToTable();
@@ -796,6 +807,10 @@ namespace ShukkaNyuuryoku {
 
                                 F8_drNew[c] = row.Cells[c].Value;
                             }
+                        }
+                        else if (current_gv.Columns[c].Name == "ShukkaGyouNO")
+                        {
+                            F8_drNew[c] =Convert.ToInt32( row.Cells[c].Value);
                         }
                         else
                         {
@@ -1173,8 +1188,8 @@ namespace ShukkaNyuuryoku {
             dt.Columns.Add("SoukoCD", typeof(string));
             dt.Columns.Add("ShouhinCD", typeof(string));          
             dt.Columns.Add("ShukkaSiziNO", typeof(string));
-            dt.Columns.Add("OldShukkaSuu", typeof(string));
             dt.Columns.Add("ShukkaGyouNO", typeof(int));
+            dt.Columns.Add("OldShukkaSuu", typeof(string));
             //dt.Columns.Add("SoukoCD", typeof(string));
 
             //dt.Columns.Add("DenpyouDate", typeof(string));
@@ -1422,13 +1437,13 @@ namespace ShukkaNyuuryoku {
                 //dt.Columns.Remove("ShouhinCD");
                 dt.Columns.Remove("MessageID");
 
-                DataColumn column = new DataColumn();
-                column.ColumnName = "OldShukkaSuu";
-                dt.Columns.Add(column);
-                foreach(DataRow dr in dt.Rows)
-                {
-                    dr["OldShukkaSuu"] = dr["ShukkaSuu"];
-                }
+                //DataColumn column = new DataColumn();
+                //column.ColumnName = "OldShukkaSuu";
+                //dt.Columns.Add(column);
+                //foreach(DataRow dr in dt.Rows)
+                //{
+                //    dr["OldShukkaSuu"] = dr["ShukkaSuu"];
+                //}
 
                 current_gv.DataSource = dt;
                 current_gv.Columns[13].Visible = false;
