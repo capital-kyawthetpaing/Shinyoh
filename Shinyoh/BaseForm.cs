@@ -421,6 +421,15 @@ namespace Shinyoh
                 case Keys.F12:
                     PreviousCtrl = this.ActiveControl;
                     SButton btn = this.Controls.Find("Btn" + e.KeyCode.ToString(), true)[0] as SButton;
+                    if (e.KeyCode == Keys.F10)
+                    {
+                        // 何かの処理
+
+                        //F10 はメニューバーをアクティブにする、Windows 標準のショートカットキーです。
+                        //このショートカットの動作をさせないように
+                        // 既定の処理は実行しない
+                        e.Handled = true;
+                    }
                     if (e.KeyCode != Keys.F9)
                     {
                         PreviousCtrl = this.ActiveControl;
