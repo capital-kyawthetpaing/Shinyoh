@@ -854,7 +854,53 @@ namespace MasterTouroku_Kouriten
                         //create_dt.Rows.Add(dr);
                     }
                     //if(create_dt.Rows.Count == csvRows.Length-1)
-                    Xml = cf.DataTableToXml(create_dt);
+                    if(create_dt.Rows.Count>0)
+                    {
+                        for(int r=0;r<create_dt.Rows.Count;r++)
+                        {
+                            string date1 = create_dt.Rows[r]["ChangeDate"].ToString();//column_1
+                            string date2 = create_dt.Rows[r]["TorihikiKaisiDate"].ToString();//column_2
+                            string date3 = create_dt.Rows[r]["TorihikiShuuryouDate"].ToString();//column_3
+                            int line_No = r + 1;
+
+                            if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
+                            {
+                                return null;
+                            }
+                            else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
+                            {
+                                return null;
+                            }
+                            else if (Date_Check(date3, line_No, "入力可能値外エラー", "取引終了日") == "true")
+                            {
+                                return null;
+                            }
+                            else if (r == create_dt.Rows.Count - 1)
+                            {
+                                Xml = cf.DataTableToXml(create_dt);
+                            }
+
+                            //if (!string.IsNullOrEmpty(date1) && !DateCheck(date1))
+                            //{
+                            //    bbl.ShowMessage("E276", line_No.ToString(), "入力可能値外エラー", "項目:改定日");
+                            //    return null;
+                            //}
+                            //else if (!string.IsNullOrEmpty(date2) && !DateCheck(date2))
+                            //{
+                            //    bbl.ShowMessage("E276", line_No.ToString(), "入力可能値外エラー", "取引開始日");
+                            //    return null;
+                            //}
+                            //else if (!string.IsNullOrEmpty(date3) && !DateCheck(date3))
+                            //{
+                            //    bbl.ShowMessage("E276", line_No.ToString(), "入力可能値外エラー", "取引終了日");
+                            //    return null;
+                            //}
+                            //else if(r==create_dt.Rows.Count-1)
+                            //{
+                            //    Xml = cf.DataTableToXml(create_dt);
+                            //}
+                        }
+                    }
                 }
                 else
                 {
@@ -884,21 +930,21 @@ namespace MasterTouroku_Kouriten
         //    }
         //    return bl;
         //}
-        //public string Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
-        //{
-        //    //bool bl = false;
-        //    TextBox txt = new TextBox();
-        //    txt.Text = csv_Date;
-        //    if (!string.IsNullOrEmpty(csv_Date))
-        //    {
-        //        if (!cf.DateCheck(txt))
-        //        {
-        //            bbl.ShowMessage("E276", line_no.ToString(), error_msg1, error_msg2);
-        //            txt.Text = "true";
-        //        }
-        //    }
-        //    return txt.Text;
-        //}
+        public string Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
+        {
+            //bool bl = false;
+            TextBox txt = new TextBox();
+            txt.Text = csv_Date;
+            if (!string.IsNullOrEmpty(csv_Date))
+            {
+                if (!cf.DateCheck(txt))
+                {
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg1, error_msg2);
+                    txt.Text = "true";
+                }
+            }
+            return txt.Text;
+        }
         public void Create_Datatable_Column(DataTable create_dt)
         {
             create_dt.Columns.Add("KouritenCD");
@@ -932,6 +978,18 @@ namespace MasterTouroku_Kouriten
             create_dt.Columns.Add("InsertOperator");
             create_dt.Columns.Add("UpdateOperator");
             create_dt.Columns.Add("Error");
+        }
+
+        private bool DateCheck(string date)//ssa
+        {
+            if (DateTime.TryParseExact(date, "yyyy/mm/dd", CultureInfo.InvariantCulture,DateTimeStyles.None, out DateTime Temp))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
