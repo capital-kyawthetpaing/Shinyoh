@@ -23,7 +23,8 @@ namespace IdouNyuuryoku
         IdouNyuuryokuBL Idou_BL;
         DataTable gv1_to_dt1;
         DataTable F8_dt1;
-       
+        string OldIdoukubun = "";
+
         public IdouNyuuryoku()
         {
             InitializeComponent();
@@ -163,6 +164,7 @@ namespace IdouNyuuryoku
 
             gv1_to_dt1 = new DataTable();
             F8_dt1 = new DataTable();
+            OldIdoukubun = "";
 
             txtIdouNO.Focus();
             txtIdouDate.Text = base_Entity.LoginDate;
@@ -198,6 +200,7 @@ namespace IdouNyuuryoku
             if (dt_Multi.Rows.Count > 0)
             {
                 txtIdoukubun.Text = dt_Multi.Rows[0]["Key"].ToString();
+                OldIdoukubun = txtIdoukubun.Text;
                 lbl_IdouKubun.Text = dt_Multi.Rows[0]["Char1"].ToString();
             }
             DataTable dt_Souko = Idou_BL.IdouNyuuryoku_Select_Check(string.Empty, string.Empty, "Load_Souko");
@@ -308,6 +311,11 @@ namespace IdouNyuuryoku
                         lbl_IdouKubun.Text = dt.Rows[0]["Char1"].ToString();
                         Souko_Disable_Enable(txtIdoukubun.Text);
                     }
+
+                    if(!txtIdoukubun.Text.Equals(OldIdoukubun))
+                        F8_dt1 = new DataTable();
+
+                    OldIdoukubun = txtIdoukubun.Text;
                 }
                 else
                 {
@@ -420,6 +428,7 @@ namespace IdouNyuuryoku
             {
                 txtIdouDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["IdouDate"]);
                 txtIdoukubun.Text = dt.Rows[0]["IdouKBN"].ToString();
+                OldIdoukubun = txtIdoukubun.Text;
                 lbl_IdouKubun.Text = dt.Rows[0]["Char1"].ToString();
                 txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
                 lblStaff_Name.Text = dt.Rows[0]["StaffName"].ToString();
