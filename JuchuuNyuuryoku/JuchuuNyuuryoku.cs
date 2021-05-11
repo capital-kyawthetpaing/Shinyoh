@@ -402,6 +402,8 @@ namespace JuchuuNyuuryoku
                     DataTable dt = txtCopy.IsDatatableOccurs;
                     if (dt.Rows.Count > 0)
                         From_DB_To_Form(dt);
+
+                        txtJuchuuDate.Text = System.DateTime.Now.ToString("yyyy/MM/dd");
                     }
                     else
                     {
