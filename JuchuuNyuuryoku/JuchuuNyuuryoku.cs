@@ -258,8 +258,8 @@ namespace JuchuuNyuuryoku
                 txtJuchuuNO.Focus();
             }
             //sobj = new SiiresakiDetail(false);
-            kobj = new KouritenDetail();
-            tobj = new TokuisakiDetail();
+            ////kobj = new KouritenDetail();
+            ////tobj = new TokuisakiDetail();
         }
 
         public void Disable_UDI_Mode()
