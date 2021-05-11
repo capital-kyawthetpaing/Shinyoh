@@ -11,7 +11,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 -- =============================================
--- Author:		Hnin Ei Thu
+-- Author:		Hnin Ei Thu 
 -- Create date: 12/21/2020 
 -- Description:	<Description,,>
 -- History    : 2021/04/27 Y.Nishikawa 出荷データ、在庫データの更新が不正
