@@ -1298,7 +1298,7 @@ namespace ChakuniNyuuryoku
                  if (Convert.ToBoolean(gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["SiireKanryouKBN"].EditedFormattedValue))
                  {
                         //Temp_Save(e.RowIndex);
-                        gvChakuniNyuuryoku.MoveNextCell();
+                        //gvChakuniNyuuryoku.MoveNextCell();
                  }
              }
         }
