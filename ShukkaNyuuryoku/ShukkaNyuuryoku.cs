@@ -731,6 +731,38 @@ namespace ShukkaNyuuryoku {
                 }
             }
         }
+        private void D_Exclusive_OneNumber_Delete(DataRow dr)
+        {
+            string ShukkaSiziNO = dr["ShukkaSiziNO"].ToString();
+            ShukkaNyuuryokuEntity chkLockEntity = new ShukkaNyuuryokuEntity();
+            chkLockEntity.DataKBN = 12;
+            chkLockEntity.Number = ShukkaSiziNO;
+            chkLockEntity.ProgramID = ProgramID;
+            chkLockEntity.PC = PCID;
+            chkLockEntity.OperatorCD = OperatorCD;
+
+            DataRow[] selectRow = F8_dt1.Select("ShukkaSiziNO ='" + ShukkaSiziNO + "'");
+            if (selectRow.Length == 0)
+            {
+                bl.D_Exclusive_Number_Delete(chkLockEntity);
+            }
+        }
+        private void D_Exclusive_OneNumber_Insert(DataRow dr)
+        {
+            string ShukkaSiziNO = dr["ShukkaSiziNO"].ToString();
+            ShukkaNyuuryokuEntity chkLockEntity = new ShukkaNyuuryokuEntity();
+            chkLockEntity.DataKBN = 12;
+            chkLockEntity.Number = ShukkaSiziNO;
+            chkLockEntity.ProgramID = ProgramID;
+            chkLockEntity.PC = PCID;
+            chkLockEntity.OperatorCD = OperatorCD;
+
+            DataRow[] selectRow = F8_dt1.Select("ShukkaSiziNO ='" + ShukkaSiziNO + "'");
+            if (selectRow.Length > 0)
+            {
+                bl.D_Exclusive_Lock_Check(chkLockEntity);
+            }
+        }
         //private void Gvrow_Delete(DataRow dr)
         //{
         //    DataRow[] existDr1 = dtHaita.Select("ShukkaSiziNO ='" + dr["ShukkaSiziNO"] + "'");
@@ -751,7 +783,7 @@ namespace ShukkaNyuuryoku {
             }
         }
         private void F11_Gridview_Bind()
-        {                       
+        {
             for (int t = 0; t < current_gv.RowCount; t++)
             {
 
@@ -777,6 +809,7 @@ namespace ShukkaNyuuryoku {
                 {
                     if (row.Cells["col_Konkai"].Value.ToString() == "0")
                     {
+                        D_Exclusive_OneNumber_Delete(existDr1);
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
@@ -810,7 +843,7 @@ namespace ShukkaNyuuryoku {
                         }
                         else if (current_gv.Columns[c].Name == "ShukkaGyouNO")
                         {
-                            F8_drNew[c] =Convert.ToInt32( row.Cells[c].Value);
+                            F8_drNew[c] = Convert.ToInt32(row.Cells[c].Value);
                         }
                         else
                         {
@@ -821,11 +854,19 @@ namespace ShukkaNyuuryoku {
                     //if (bl == true)
                     //{
                     if (existDr1 != null)
-                        F8_dt1.Rows.Remove(existDr1);                          
-                    F8_dt1.Rows.Add(F8_drNew);                   
+                        F8_dt1.Rows.Remove(existDr1);
+                    F8_dt1.Rows.Add(F8_drNew);
+
+                    D_Exclusive_OneNumber_Insert(F8_drNew);
                     // }
                 }
-            }          
+                else
+                {
+                    if (select_dr1.Length > 0)
+                        //排他Delete
+                        D_Exclusive_OneNumber_Delete(select_dr1[0]);
+                }
+            }     
             current_gv.Memory_Row_Count = F8_dt1.Rows.Count;          
             Focus_Clear();
         }

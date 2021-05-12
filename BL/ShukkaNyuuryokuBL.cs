@@ -118,6 +118,17 @@ namespace BL {
             DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Lock_Check", GetConnectionString(), parameters);
             return dt;
         }
+        public string D_Exclusive_Number_Delete(ShukkaNyuuryokuEntity obj)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@DataKBN", SqlDbType.VarChar) { Value = obj.DataKBN };
+            parameters[1] = new SqlParameter("@Number", SqlDbType.VarChar) { Value = obj.Number };
+            parameters[2] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = obj.OperatorCD };
+            parameters[3] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = obj.ProgramID };
+            parameters[4] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = obj.PC };
+            return ckmdl.InsertUpdateDeleteData("D_Exclusive_Remove_BY_NO", GetConnectionString(), parameters);
+        }
         public string D_Exclusive_ShukkaSiZiNo_Delete(ShukkaNyuuryokuEntity se)
         {
             CKMDL ckmdl = new CKMDL();
