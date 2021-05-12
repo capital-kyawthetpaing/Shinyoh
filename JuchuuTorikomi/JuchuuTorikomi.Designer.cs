@@ -88,7 +88,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Delete.Location = new System.Drawing.Point(221, 8);
+            this.rdo_Delete.Location = new System.Drawing.Point(241, 8);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -103,7 +103,7 @@
             // 
             this.rdo_Registration.Checked = true;
             this.rdo_Registration.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Registration.Location = new System.Drawing.Point(141, 8);
+            this.rdo_Registration.Location = new System.Drawing.Point(161, 8);
             this.rdo_Registration.MoveNext = true;
             this.rdo_Registration.Name = "rdo_Registration";
             this.rdo_Registration.NextControl = null;
