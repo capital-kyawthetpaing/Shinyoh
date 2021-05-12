@@ -14,7 +14,7 @@ GO
 -- =============================================
 -- Author:		Hnin Ei Thu
 -- Create date: 2020/12/07
--- Description:	<Description,,>
+-- Description:	<Description,,> 
 -- History    : 2021/05/12 Y.Nishikawa 出荷指示出力区分更新時、全出荷指示を対象としている
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkaSiziDataShuturyoku_Excel]
