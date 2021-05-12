@@ -1158,8 +1158,7 @@ namespace ShukkaSiziNyuuryoku
                     {
                         F8_dt1.Rows.Remove(existDr1);
                     }
-                    else
-                    {
+
                         string JuchuuNO = F8_drNew["JuchuuNO"].ToString();
                         sksz_e = new ShukkaSiziNyuuryokuEntity();
                         sksz_e.DataKBN = 1;
@@ -1170,11 +1169,12 @@ namespace ShukkaSiziNyuuryoku
                         DataTable dt = new DataTable();
                         sksz_bl = new ShukkasiziNyuuryokuBL();
                         dt = sksz_bl.D_Exclusive_Lock_Check(sksz_e);
-                    }
+                    
                     F8_dt1.Rows.Add(F8_drNew);
+                    
                 }
                 else {
-                    //D_Exclusive_Delete_One(row.Cells["colJuchuuNo"].Value.ToString());
+                    D_Exclusive_Delete_One(row.Cells["colJuchuuNo"].Value.ToString());
                 }
             }
             dgvShukkasizi.Memory_Row_Count = F8_dt1.Rows.Count;
@@ -1401,7 +1401,7 @@ namespace ShukkaSiziNyuuryoku
                 sksz_bl.D_Exclusive_JuchuuNO_Delete(chkLockEntity);
             }
         }
-
+ 
         //private void Gvrow_Delete(DataRow dr)
         //{
         //    DataRow[] existDr1 = dtHaita.Select("JuchuuNO ='" + dr["JuchuuNO"] + "'");
