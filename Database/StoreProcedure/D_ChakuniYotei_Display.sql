@@ -79,7 +79,7 @@ And D.SeasonSS=@SeasonSS
 And D.SeasonFW=@SeasonFW
 And (@HinbanCD is null or (D.HinbanCD  like '%' + @HinbanCD + '%'))
 Order by 
-B.ChakuniYoteiNO,B.GyouHyouziJun ASC
+D.ShouhinCD,A.ChakuniYoteiDate,B.ChakuniYoteiNO,B.ChakuniYoteiGyouNO,B.HacchuuNO,B.HacchuuGyouNO
 
 EXEC D_Exclusive_Insert
 		16,

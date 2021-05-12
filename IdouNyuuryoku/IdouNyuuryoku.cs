@@ -312,9 +312,11 @@ namespace IdouNyuuryoku
                         Souko_Disable_Enable(txtIdoukubun.Text);
                     }
 
-                    if(!txtIdoukubun.Text.Equals(OldIdoukubun))
-                        F8_dt1 = new DataTable();
-
+                    if (!txtIdoukubun.Text.Equals(OldIdoukubun))
+                    {
+                        F8_dt1.Rows.Clear();
+                        gv_1.DataSource = F8_dt1;
+                    }
                     OldIdoukubun = txtIdoukubun.Text;
                 }
                 else
