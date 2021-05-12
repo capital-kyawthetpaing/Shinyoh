@@ -274,8 +274,12 @@ namespace MasterTouroku_Shouhin
                         DataTable dt = bl.CSV_M_Shouhin_CUD(Xml, chk_val);
                         if(dt.Rows.Count > 0)
                         {
-                            if(dt.Rows[0]["Result"].ToString().Equals("1"))
+                            if (dt.Rows[0]["Result"].ToString().Equals("1"))
+                            {
                                 bbl.ShowMessage("I002");
+                                rdo_Registragion.Checked = true;
+                                rdo_Delete.Checked = false;
+                            }
                             else
                             {
                                 bbl.ShowMessage("E276", dt.Rows[0]["SEQ"].ToString(), dt.Rows[0]["Error1"].ToString(), dt.Rows[0]["Error2"].ToString());
@@ -707,10 +711,37 @@ namespace MasterTouroku_Shouhin
                         dr["Error"] = error;
                         create_dt.Rows.Add(dr);
                     }
-                    //if (error == "false")
-                    Xml = cf.DataTableToXml(create_dt);
-                    //else
-                    //    Xml = string.Empty;
+                    if (create_dt.Rows.Count > 0)
+                    {
+                        for (int r = 0; r < create_dt.Rows.Count; r++)
+                        {
+                            string date1 = create_dt.Rows[r]["ChangeDate"].ToString();//column_1
+                            string date2 = create_dt.Rows[r]["ToriatukaiShuuryouDate"].ToString();//column_2
+                            string date3 = create_dt.Rows[r]["HanbaiTeisiDate"].ToString();//column_3
+                            int line_No = r + 1;
+
+                            if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
+                            {
+                                return null;
+                            }
+                            else if (Date_Check(date2, line_No, "入力可能値外エラー", "項目:取扱終了日") == "true")
+                            {
+                                return null;
+                            }
+                            else if (Date_Check(date3, line_No, "入力可能値外エラー", "項目:販売停止日") == "true")
+                            {
+                                return null;
+                            }
+                            else if (r == create_dt.Rows.Count - 1)
+                            {
+                                Xml = cf.DataTableToXml(create_dt);
+                            }                         
+                        }
+                    }
+                    ////if (error == "false")
+                    //Xml = cf.DataTableToXml(create_dt);
+                    ////else
+                    ////    Xml = string.Empty;
                 }
                 else
                 {
