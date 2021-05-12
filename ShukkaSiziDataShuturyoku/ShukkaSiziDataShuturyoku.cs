@@ -72,6 +72,7 @@ namespace ShukkaSiziDataShuturyoku {
         {
             txtToukuisaki.E101Check(true, "M_Tokuisaki", txtToukuisaki, txtTempDate, null);
             txtKouriten.E101Check(true, "M_Kouriten", txtKouriten, txtTempDate, null);
+            txtBrand.E101Check(true, "M_Shouhin", txtBrand, null, null);
             txtShukkaDate1.E103Check(true);
             txtShukkaDate2.E103Check(true);
             txtInputDate1.E103Check(true);
