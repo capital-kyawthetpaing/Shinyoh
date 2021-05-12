@@ -264,6 +264,7 @@ BEGIN
 		--出荷指示明細
 		UPDATE DSSM
 		SET ShukkaZumiSuu = ShukkaZumiSuu - DSUM.ShukkaSuu
+			,ShukkaKanryouKBN = 0
 		FROM D_ShukkaSiziMeisai DSSM
 		INNER JOIN D_ShukkaMeisai DSUM
 		ON DSUM.ShukkaSiziNO = DSSM.ShukkaSiziNO
