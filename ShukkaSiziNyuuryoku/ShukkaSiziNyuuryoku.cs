@@ -1119,7 +1119,7 @@ namespace ShukkaSiziNyuuryoku
                 {
                     if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() == "0" && row.Cells["chk"].Value.ToString() != "1")
                     {
-                        D_Exclusive_Delete_One(row.Cells["colJuchuuNo"].Value.ToString());
+                        //D_Exclusive_Delete_One(row.Cells["colJuchuuNo"].Value.ToString());
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
@@ -1174,7 +1174,7 @@ namespace ShukkaSiziNyuuryoku
                     F8_dt1.Rows.Add(F8_drNew);
                 }
                 else {
-                    D_Exclusive_Delete_One(row.Cells["colJuchuuNo"].Value.ToString());
+                    //D_Exclusive_Delete_One(row.Cells["colJuchuuNo"].Value.ToString());
                 }
             }
             dgvShukkasizi.Memory_Row_Count = F8_dt1.Rows.Count;
