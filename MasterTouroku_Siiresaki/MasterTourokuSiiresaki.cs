@@ -562,16 +562,16 @@ namespace MasterTouroku_Siiresaki
                         //obj.SiiresakiName = splits[3];
                         //if (Null_Check(obj.SiiresakiName, i, "仕入先名未入力エラー")) break;
                         //if(Byte_Check(80, obj.SiiresakiName,i, "仕入先名桁数エラー"))break;
-                        
+
                         ////
                         //obj.SiiresakiRyakuName = splits[4];
                         //if(Null_Check(obj.SiiresakiRyakuName,i, "略名未入力エラー"))break;
                         //if(Byte_Check(40, obj.SiiresakiRyakuName,i, "略名桁数エラー	"))break;
-                        
+
                         ////
                         //obj.KanaName = splits[5];
                         //if(Byte_Check(80, obj.KanaName,i, "カナ名桁数エラー"))break;
-                        
+
                         ////no error check
                         //obj.KensakuHyouziJun = splits[6];
 
@@ -579,73 +579,73 @@ namespace MasterTouroku_Siiresaki
                         //obj.SiharaisakiCD = splits[7];
                         //if(Null_Check(obj.SiharaisakiCD,i, "支払先CD未入力エラー"))break;
                         //if(Byte_Check(10, obj.SiharaisakiCD,i, "支払先CD桁数エラー"))break;
-                        
+
                         ////
                         //obj.YuubinNO1 = splits[8];
                         //if(Byte_Check(3, obj.YuubinNO1,i, "郵便番号１桁数エラー"))break;
-                       
+
                         ////
                         //obj.YuubinNO2 = splits[9];
                         //if(Byte_Check(4, obj.YuubinNO2,i, "郵便番号２桁数エラー"))break;
-                       
+
                         ////
                         //obj.Juusho1 = splits[10];
                         //if(Byte_Check(80, obj.Juusho1,i, "住所１桁数エラー"))break;
-                        
+
                         ////
                         //obj.Juusho2 = splits[11];
                         //if(Byte_Check(80, obj.Juusho2,i, "住所２桁数エラー"))break;
-                        
+
                         ////
                         //obj.Tel11 = splits[12];
                         //if(Byte_Check(6, obj.Tel11,i, "電話番号①-1桁数エラー"))break;
-                        
+
                         ////
                         //obj.Tel12 = splits[13];
                         //if(Byte_Check(5, obj.Tel12,i, "電話番号①-2桁数エラー"))break;
-                       
+
                         ////
                         //obj.Tel13 = splits[14];
                         //if(Byte_Check(5, obj.Tel13,i, "電話番号①-3桁数エラー"))break;
-                        
+
                         ////
                         //obj.Tel21 = splits[15];
                         //if(Byte_Check(6, obj.Tel21,i, "電話番号②-1桁数エラー"))break;
-                        
+
                         ////
                         //obj.Tel22 = splits[16];
                         //if(Byte_Check(5, obj.Tel22,i, "電話番号②-2桁数エラー"))break;
-                        
+
                         ////
                         //obj.Tel23 = splits[17];
                         //if(Byte_Check(5, obj.Tel23,i, "電話番号②-3桁数エラー"))break;
-                        
+
                         ////
                         //obj.TantouBusho = splits[18];
                         //if(Byte_Check(40, obj.TantouBusho,i, "担当部署桁数エラー"))break;
-                        
+
                         ////
                         //obj.TantouYakushoku = splits[19];
                         //if(Byte_Check(40, obj.TantouYakushoku,i, "担当役職桁数エラー"))break;
-                        
+
                         ////
                         //obj.TantoushaName = splits[20];
                         //if(Byte_Check(40, obj.TantoushaName,i, "担当者名桁数エラー"))break;
-                        
+
                         ////
                         //obj.MailAddress = splits[21];
                         //if(Byte_Check(100, obj.MailAddress,i, "メールアドレス桁数エラー"))break;
-                        
+
                         ////
                         //obj.TuukaCD = splits[22];
                         //if(Null_Check(obj.TuukaCD,i, "通貨CD未入力エラー"))break;
                         //if(Byte_Check(3, obj.TuukaCD,i, "通貨CD桁数エラー"))break;
-                        
+
                         ////
                         //obj.StaffCD = splits[23];
                         //if(Null_Check(obj.StaffCD,i, "担当スタッフCD未入力エラー"))break;
                         //if(Byte_Check(10, obj.StaffCD,i,"担当スタッフCD桁数エラー"))break;
-                        
+
                         ////
                         //obj.TorihikiKaisiDate = splits[24];
                         //if(!string.IsNullOrEmpty(obj.TorihikiKaisiDate))
@@ -653,7 +653,7 @@ namespace MasterTouroku_Siiresaki
                         //    if (Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日") == "true") break;
                         //    else splits[24] = Date_Check(obj.TorihikiKaisiDate, i, "入力可能値外エラー", "取引開始日");
                         //}
-                        
+
                         ////
                         //obj.TorihikiShuuryouDate = splits[25];
                         //if(!string.IsNullOrEmpty(obj.TorihikiShuuryouDate))
@@ -661,7 +661,7 @@ namespace MasterTouroku_Siiresaki
                         //    if (Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日") == "true") break;
                         //    else splits[25] = Date_Check(obj.TorihikiShuuryouDate, i, "入力可能値外エラー", "取引終了日");
                         //}
-                       
+
                         ////
                         //obj.Remarks = splits[26];
                         //if(Byte_Check(80, obj.Remarks,i, "備考桁数エラー"))break;
@@ -709,8 +709,37 @@ namespace MasterTouroku_Siiresaki
                         create_dt.Rows.Add(dr);
                     }
 
-                    if(create_dt.Rows.Count==csvRows.Length-1)
-                        Xml = cf.DataTableToXml(create_dt);
+                    //if(create_dt.Rows.Count==csvRows.Length-1)
+                    //    Xml = cf.DataTableToXml(create_dt);
+
+                    //05_12_2021[ssa]
+                    if (create_dt.Rows.Count > 0)
+                    {
+                        for (int r = 0; r < create_dt.Rows.Count; r++)
+                        {
+                            string date1 = create_dt.Rows[r]["ChangeDate"].ToString();//column_1
+                            string date2 = create_dt.Rows[r]["TorihikiKaisiDate"].ToString();//column_2
+                            string date3 = create_dt.Rows[r]["TorihikiShuuryouDate"].ToString();//column_3
+                            int line_No = r + 1;
+
+                            if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
+                            {
+                                return null;
+                            }
+                            else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
+                            {
+                                return null;
+                            }
+                            else if (Date_Check(date3, line_No, "入力可能値外エラー", "取引終了日") == "true")
+                            {
+                                return null;
+                            }
+                            else if (r == create_dt.Rows.Count - 1)
+                            {
+                                Xml = cf.DataTableToXml(create_dt);
+                            }
+                        }
+                    }
                 }
                 else
                 {
