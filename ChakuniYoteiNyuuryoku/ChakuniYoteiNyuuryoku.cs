@@ -47,7 +47,7 @@ namespace ChakuniYoteiNyuuryoku
             dtTemp = new DataTable();
             dtClear= CreateTable_Detail();
 
-            //this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniYoteiNyuuryoku_Load(object sender, EventArgs e)
         {
@@ -349,24 +349,40 @@ namespace ChakuniYoteiNyuuryoku
             chkLockEntity.OperatorCD = OperatorCD;
             cbl.D_Exclusive_HacchuuNO_Delete(chkLockEntity);
         }
-            //private void Gvrow_Delete(DataRow dr)
-            //{
-            //    DataRow[] existDr1;
-            //    if (dr["HacchuuNO"] != null)
-            //    {
-            //        DataRow[] selectRow = F8_dt1.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
-            //        if (selectRow.Length > 0)
-            //            return;
+        private void D_Exclusive_OneNumber_Insert(DataRow dr)
+        {
+            string HacchuuNO = dr["HacchuuNO"].ToString();
 
-            //        existDr1 = dtmain.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
-            //        foreach (DataRow row in existDr1)
-            //        {
-            //            dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
-            //        }
-            //    }
-            //}
+            DataRow[] selectRow = F8_dt1.Select("HacchuuNO ='" + HacchuuNO + "'");
+            if (selectRow.Length == 0)
+                return;
 
-            private void DBProcess()
+            ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+            chkLockEntity.DataKBN = 2;
+            chkLockEntity.Number = HacchuuNO;
+            chkLockEntity.ProgramID = ProgramID;
+            chkLockEntity.PC = PCID;
+            chkLockEntity.OperatorCD = OperatorCD;
+            cbl.D_Exclusive_Lock_Check(chkLockEntity);
+        }
+        //private void Gvrow_Delete(DataRow dr)
+        //{
+        //    DataRow[] existDr1;
+        //    if (dr["HacchuuNO"] != null)
+        //    {
+        //        DataRow[] selectRow = F8_dt1.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
+        //        if (selectRow.Length > 0)
+        //            return;
+
+        //        existDr1 = dtmain.Select("HacchuuNO ='" + dr["HacchuuNO"] + "'");
+        //        foreach (DataRow row in existDr1)
+        //        {
+        //            dtmain.Rows.Remove(row);// Here The given DataRow is not in the current DataRowCollection
+        //        }
+        //    }
+        //}
+
+        private void DBProcess()
         {
             string mode = string.Empty;
             (string, string) obj = GetInsert();
@@ -1078,6 +1094,7 @@ namespace ChakuniYoteiNyuuryoku
                 {
                     if (row.Cells["colYoteiSuu"].Value.ToString() == "0" )
                     {
+                        D_Exclusive_OneNumber_Delete(existDr1);
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
@@ -1120,6 +1137,8 @@ namespace ChakuniYoteiNyuuryoku
                     if (existDr1 != null)
                         F8_dt1.Rows.Remove(existDr1);
                     F8_dt1.Rows.Add(F8_drNew);
+
+                    D_Exclusive_OneNumber_Insert(F8_drNew);
                     // }
                 }
                 else
