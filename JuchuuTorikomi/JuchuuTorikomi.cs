@@ -37,6 +37,23 @@ namespace JuchuuTorikomi
             StartProgram();
             cboMode.Visible = false;
             cboMode.Enabled = false;
+            gvJuchuuTorikomi.SetGridDesign();
+            gvJuchuuTorikomi.SetReadOnlyColumn("**");
+
+            //For_Test[ssa]
+            //DataTable dt1 = new DataTable();
+            //dt1 = Create_gvColumn();
+            //DataRow dr = dt1.NewRow();
+            //dr[0] = "XXXXXXXXXX12";
+            //dr[1] = "YYYY/MM/DD HH:MM:SS";
+            //dr[2] = "XXXXXXXXXX12";
+            //dr[3] = "YYYY/MM/DD";
+            //dr[4] = "XXXXXXXX10";
+            //dr[5] = "ＸＸＸＸＸＸＸＸＸ10ＸＸＸＸＸＸＸＸＸ20";
+            //dr[6] = "XXXXXXXX10";
+            //dr[7] = "ＸＸＸＸＸＸＸＸＸ10ＸＸＸＸＸＸＸＸＸ20";
+            //dt1.Rows.Add(dr);
+            //gvJuchuuTorikomi.DataSource = dt1;
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", false);
@@ -202,6 +219,22 @@ namespace JuchuuTorikomi
             txtDate1.Enabled = true;
             txtDate2.Enabled = true;
             txtDenpyouNO.Enabled = true;
+            DataTable dtclear = new DataTable();
+            dtclear = Create_gvColumn();
+            gvJuchuuTorikomi.DataSource = dtclear;
+        }
+        private DataTable Create_gvColumn()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TorikomiDenpyouNO", typeof(string));
+            dt.Columns.Add("InsertDateTime", typeof(string));
+            dt.Columns.Add("JuchuuNO", typeof(string));
+            dt.Columns.Add("JuchuuDate", typeof(string));
+            dt.Columns.Add("TokuisakiCD", typeof(string));
+            dt.Columns.Add("TokuisakiRyakuName", typeof(string));
+            dt.Columns.Add("KouritenCD", typeof(string));
+            dt.Columns.Add("KouritenRyakuName", typeof(string));
+            return dt;
         }
         private (string,string) GetFile()
         {
