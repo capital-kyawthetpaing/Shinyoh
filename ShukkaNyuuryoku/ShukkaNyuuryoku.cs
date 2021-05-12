@@ -94,6 +94,26 @@ namespace ShukkaNyuuryoku {
             current_gv.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             txtKouriten.TxtBox = txtTokuisaki;
 
+            var col = current_gv.Columns;
+
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            DataGridViewTextBoxColumn newCol = new DataGridViewTextBoxColumn();
+            newCol.Name = "ShukkaGyouNO";
+            newCol.DataPropertyName = "ShukkaGyouNO";
+            dataGridViewCellStyle11.Format = "NO";
+            newCol.DefaultCellStyle = dataGridViewCellStyle11;
+            newCol.Visible = false;
+            col.Insert(col.Count, newCol);
+            newCol.DisplayIndex = col.Count - 1;
+
+            DataGridViewTextBoxColumn newCol2 = new DataGridViewTextBoxColumn();
+            newCol2.Name = "OldShukkasuu";
+            newCol2.DataPropertyName = "OldShukkasuu";
+            newCol2.DefaultCellStyle = dataGridViewCellStyle11;
+            newCol2.Visible = false;
+            col.Insert(col.Count, newCol2);
+            newCol2.DisplayIndex = col.Count - 1;
+
             ChangeMode(Mode.New);
 
         }
@@ -477,14 +497,14 @@ namespace ShukkaNyuuryoku {
                 case 8:
                     if (F8_dt1.Rows.Count > 0)
                     {
-                        if(F8_dt1.Columns.Contains("ShukkaSiziNO"))
-                        {
-                            F8_dt1.Columns.Remove("ShukkaSiziNO");
-                        }
-                        if (F8_dt1.Columns.Contains("UriageKanryouKBN"))
-                        {
-                            F8_dt1.Columns.Remove("UriageKanryouKBN");
-                        }
+                        //if(F8_dt1.Columns.Contains("ShukkaSiziNO"))
+                        //{
+                        //    F8_dt1.Columns.Remove("ShukkaSiziNO");
+                        //}
+                        //if (F8_dt1.Columns.Contains("UriageKanryouKBN"))
+                        //{
+                        //    F8_dt1.Columns.Remove("UriageKanryouKBN");
+                        //}
 
                         F8_dt1.DefaultView.Sort = "JANCD";
                         current_gv.DataSource = F8_dt1.DefaultView.ToTable();
@@ -501,8 +521,8 @@ namespace ShukkaNyuuryoku {
                     break;
                 case 10:
                     ShukkaSiziNo_Check();
-                    if (cboMode.SelectedValue.ToString() == "1")
-                    {
+                    //if (cboMode.SelectedValue.ToString() == "1")
+                    //{
                         ShukkaNyuuryokuEntity obj = new ShukkaNyuuryokuEntity();
                         ShukkaNyuuryokuBL sBL = new ShukkaNyuuryokuBL();
                         BaseEntity baseEntity = _GetBaseData();
@@ -638,17 +658,17 @@ namespace ShukkaNyuuryoku {
                             //    return;
                             //}
                         }
-                    }
-                    else
-                    {
-                        Display();
+                    //}
+                    //else
+                    //{
+                    //    Display();
 
-                        if (current_gv.Rows.Count > 0)
-                        {
-                            current_gv.CurrentCell = current_gv.Rows[0].Cells["col_Konkai"];
-                            current_gv.Focus();
-                        }
-                    }
+                    //    if (current_gv.Rows.Count > 0)
+                    //    {
+                    //        current_gv.CurrentCell = current_gv.Rows[0].Cells["col_Konkai"];
+                    //        current_gv.Focus();
+                    //    }
+                    //}
 
                     break;
                 case 11:
@@ -788,6 +808,10 @@ namespace ShukkaNyuuryoku {
                                 F8_drNew[c] = row.Cells[c].Value;
                             }
                         }
+                        else if (current_gv.Columns[c].Name == "ShukkaGyouNO")
+                        {
+                            F8_drNew[c] =Convert.ToInt32( row.Cells[c].Value);
+                        }
                         else
                         {
                             F8_drNew[c] = row.Cells[c].Value;
@@ -856,7 +880,11 @@ namespace ShukkaNyuuryoku {
             string Konkai = current_gv.Rows[row].Cells["col_Konkai"].Value.ToString();
             string a = current_gv.Rows[row].Cells["col_Shukkazansuu"].Value.ToString();
             string b = current_gv.Rows[row].Cells["col_Miryoku"].Value.ToString();
-            string old = cboMode.SelectedValue.ToString().Equals("2") ? current_gv.Rows[row].Cells["OldShukkasuu"].Value.ToString() : "0";
+            
+            string old = "";
+            if(current_gv.Columns.Contains("OldShukkasuu"))
+                old = cboMode.SelectedValue.ToString().Equals("2") ? current_gv.Rows[row].Cells["OldShukkasuu"].Value.ToString() : "0";
+
             if (old == "")
                 old = "0";
 
@@ -1160,6 +1188,7 @@ namespace ShukkaNyuuryoku {
             dt.Columns.Add("SoukoCD", typeof(string));
             dt.Columns.Add("ShouhinCD", typeof(string));          
             dt.Columns.Add("ShukkaSiziNO", typeof(string));
+            dt.Columns.Add("ShukkaGyouNO", typeof(int));
             dt.Columns.Add("OldShukkaSuu", typeof(string));
             //dt.Columns.Add("SoukoCD", typeof(string));
 
@@ -1408,13 +1437,13 @@ namespace ShukkaNyuuryoku {
                 //dt.Columns.Remove("ShouhinCD");
                 dt.Columns.Remove("MessageID");
 
-                DataColumn column = new DataColumn();
-                column.ColumnName = "OldShukkaSuu";
-                dt.Columns.Add(column);
-                foreach(DataRow dr in dt.Rows)
-                {
-                    dr["OldShukkaSuu"] = dr["ShukkaSuu"];
-                }
+                //DataColumn column = new DataColumn();
+                //column.ColumnName = "OldShukkaSuu";
+                //dt.Columns.Add(column);
+                //foreach(DataRow dr in dt.Rows)
+                //{
+                //    dr["OldShukkaSuu"] = dr["ShukkaSuu"];
+                //}
 
                 current_gv.DataSource = dt;
                 current_gv.Columns[13].Visible = false;
@@ -1491,7 +1520,7 @@ namespace ShukkaNyuuryoku {
             if (ErrorCheck(PanelDetail))
                 FunctionProcedure(10);
             current_gv.ActionType = string.Empty;
-            if (Main_dt.Rows.Count > 0)
+            if (current_gv.Rows.Count > 0)
             {
                 current_gv.CurrentCell = current_gv.Rows[0].Cells["col_Konkai"];
             }
