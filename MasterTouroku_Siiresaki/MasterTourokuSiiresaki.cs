@@ -712,7 +712,7 @@ namespace MasterTouroku_Siiresaki
                     //if(create_dt.Rows.Count==csvRows.Length-1)
                     //    Xml = cf.DataTableToXml(create_dt);
 
-                    //05_12_2021[ssa]
+                    //05_12_2021_[ssa]
                     if (create_dt.Rows.Count > 0)
                     {
                         for (int r = 0; r < create_dt.Rows.Count; r++)
