@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.btn_Siiresaki = new Shinyoh_Controls.SButton();
             this.gv_HacchuuNyuuryoku = new Shinyoh_Controls.SGridView();
@@ -167,14 +167,14 @@
             // gv_HacchuuNyuuryoku
             // 
             this.gv_HacchuuNyuuryoku.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_HacchuuNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_HacchuuNyuuryoku.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.gv_HacchuuNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColHinbanCD,
             this.colShouhinName,
@@ -195,14 +195,14 @@
             this.gv_HacchuuNyuuryoku.ISRowColumn = null;
             this.gv_HacchuuNyuuryoku.Location = new System.Drawing.Point(49, 193);
             this.gv_HacchuuNyuuryoku.Name = "gv_HacchuuNyuuryoku";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_HacchuuNyuuryoku.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_HacchuuNyuuryoku.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.gv_HacchuuNyuuryoku.Size = new System.Drawing.Size(1640, 592);
             this.gv_HacchuuNyuuryoku.TabIndex = 20;
             this.gv_HacchuuNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_HacchuuNyuuryoku_CellEndEdit);
@@ -252,9 +252,9 @@
             // colChakuniYoteiDate
             // 
             this.colChakuniYoteiDate.DataPropertyName = "ChakuniYoteiDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = null;
-            this.colChakuniYoteiDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.NullValue = null;
+            this.colChakuniYoteiDate.DefaultCellStyle = dataGridViewCellStyle8;
             this.colChakuniYoteiDate.HeaderText = "着荷予定日";
             this.colChakuniYoteiDate.MaxInputLength = 10;
             this.colChakuniYoteiDate.Name = "colChakuniYoteiDate";
@@ -263,10 +263,10 @@
             // colHacchuuTanka
             // 
             this.colHacchuuTanka.DataPropertyName = "HacchuuTanka";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.colHacchuuTanka.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N0";
+            dataGridViewCellStyle9.NullValue = null;
+            this.colHacchuuTanka.DefaultCellStyle = dataGridViewCellStyle9;
             this.colHacchuuTanka.HeaderText = "発注単価";
             this.colHacchuuTanka.MaxInputLength = 7;
             this.colHacchuuTanka.Name = "colHacchuuTanka";
@@ -276,9 +276,9 @@
             // colHacchuuSuu
             // 
             this.colHacchuuSuu.DataPropertyName = "HacchuuSuu";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            this.colHacchuuSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N0";
+            this.colHacchuuSuu.DefaultCellStyle = dataGridViewCellStyle10;
             this.colHacchuuSuu.HeaderText = "数量";
             this.colHacchuuSuu.MaxInputLength = 5;
             this.colHacchuuSuu.Name = "colHacchuuSuu";
@@ -287,8 +287,8 @@
             // colHacchuuMeisaiTekiyou
             // 
             this.colHacchuuMeisaiTekiyou.DataPropertyName = "HacchuuMeisaiTekiyou";
-            dataGridViewCellStyle5.NullValue = null;
-            this.colHacchuuMeisaiTekiyou.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.NullValue = null;
+            this.colHacchuuMeisaiTekiyou.DefaultCellStyle = dataGridViewCellStyle11;
             this.colHacchuuMeisaiTekiyou.HeaderText = "明細摘要";
             this.colHacchuuMeisaiTekiyou.MaxInputLength = 80;
             this.colHacchuuMeisaiTekiyou.MinimumWidth = 200;
@@ -466,13 +466,13 @@
             // 
             // lblYear
             // 
-            this.lblYear.BackColor = System.Drawing.SystemColors.Menu;
+            this.lblYear.BackColor = System.Drawing.SystemColors.Control;
             this.lblYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblYear.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.Location = new System.Drawing.Point(1101, 100);
+            this.lblYear.Location = new System.Drawing.Point(1101, 102);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(25, 19);
+            this.lblYear.Size = new System.Drawing.Size(21, 19);
             this.lblYear.TabIndex = 127;
             this.lblYear.Text = "年";
             this.lblYear.TextAlign = System.Drawing.ContentAlignment.TopCenter;

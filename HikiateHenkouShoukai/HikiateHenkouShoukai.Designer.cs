@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.txtSizeNO = new Shinyoh_Search.SearchBox();
             this.txtColorNO = new Shinyoh_Search.SearchBox();
@@ -536,14 +536,14 @@
             this.gvFreeInventoryDetails.AllowUserToDeleteRows = false;
             this.gvFreeInventoryDetails.AllowUserToResizeColumns = false;
             this.gvFreeInventoryDetails.AllowUserToResizeRows = false;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvFreeInventoryDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvFreeInventoryDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.gvFreeInventoryDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvFreeInventoryDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Free_HinbanCD,
@@ -595,10 +595,10 @@
             // col_Free_HikiateZumiSuu
             // 
             this.col_Free_HikiateZumiSuu.DataPropertyName = "引当済数";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle22.Format = "N0";
-            dataGridViewCellStyle22.NullValue = null;
-            this.col_Free_HikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.col_Free_HikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle2;
             this.col_Free_HikiateZumiSuu.FillWeight = 120F;
             this.col_Free_HikiateZumiSuu.HeaderText = "引当済数";
             this.col_Free_HikiateZumiSuu.Name = "col_Free_HikiateZumiSuu";
@@ -607,10 +607,10 @@
             // col_Free_GenZaikoSuu
             // 
             this.col_Free_GenZaikoSuu.DataPropertyName = "現在庫数";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle23.Format = "N0";
-            dataGridViewCellStyle23.NullValue = null;
-            this.col_Free_GenZaikoSuu.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.col_Free_GenZaikoSuu.DefaultCellStyle = dataGridViewCellStyle3;
             this.col_Free_GenZaikoSuu.FillWeight = 120F;
             this.col_Free_GenZaikoSuu.HeaderText = "現在庫数";
             this.col_Free_GenZaikoSuu.Name = "col_Free_GenZaikoSuu";
@@ -638,13 +638,13 @@
             this.gvAggregationDetails.AllowUserToDeleteRows = false;
             this.gvAggregationDetails.AllowUserToResizeColumns = false;
             this.gvAggregationDetails.AllowUserToResizeRows = false;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.gvAggregationDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.gvAggregationDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.gvAggregationDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvAggregationDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -699,10 +699,10 @@
             // colJuchuuSuu
             // 
             this.colJuchuuSuu.DataPropertyName = "受注数";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Format = "N0";
-            dataGridViewCellStyle25.NullValue = null;
-            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle5;
             this.colJuchuuSuu.HeaderText = "受注数";
             this.colJuchuuSuu.Name = "colJuchuuSuu";
             this.colJuchuuSuu.Width = 70;
@@ -710,10 +710,10 @@
             // colChakuniYoteiSuu
             // 
             this.colChakuniYoteiSuu.DataPropertyName = "着荷予定数";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Format = "N0";
-            dataGridViewCellStyle26.NullValue = null;
-            this.colChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.colChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle6;
             this.colChakuniYoteiSuu.HeaderText = "着荷予定数";
             this.colChakuniYoteiSuu.Name = "colChakuniYoteiSuu";
             this.colChakuniYoteiSuu.Width = 90;
@@ -721,10 +721,10 @@
             // colMiHikiateSuu
             // 
             this.colMiHikiateSuu.DataPropertyName = "未引当数";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle27.Format = "N0";
-            dataGridViewCellStyle27.NullValue = null;
-            this.colMiHikiateSuu.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle7.Format = "N0";
+            dataGridViewCellStyle7.NullValue = null;
+            this.colMiHikiateSuu.DefaultCellStyle = dataGridViewCellStyle7;
             this.colMiHikiateSuu.HeaderText = "未引当数";
             this.colMiHikiateSuu.Name = "colMiHikiateSuu";
             this.colMiHikiateSuu.Width = 90;
@@ -732,10 +732,10 @@
             // colHikiateZumiSuu
             // 
             this.colHikiateZumiSuu.DataPropertyName = "引当済数";
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle28.Format = "N0";
-            dataGridViewCellStyle28.NullValue = null;
-            this.colHikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Format = "N0";
+            dataGridViewCellStyle8.NullValue = null;
+            this.colHikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle8;
             this.colHikiateZumiSuu.HeaderText = "引当済数";
             this.colHikiateZumiSuu.Name = "colHikiateZumiSuu";
             this.colHikiateZumiSuu.Width = 90;
@@ -743,10 +743,10 @@
             // colChakuniSuu
             // 
             this.colChakuniSuu.DataPropertyName = "着荷済数";
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle29.Format = "N0";
-            dataGridViewCellStyle29.NullValue = null;
-            this.colChakuniSuu.DefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Format = "N0";
+            dataGridViewCellStyle9.NullValue = null;
+            this.colChakuniSuu.DefaultCellStyle = dataGridViewCellStyle9;
             this.colChakuniSuu.HeaderText = "着荷済数";
             this.colChakuniSuu.Name = "colChakuniSuu";
             this.colChakuniSuu.Width = 90;
@@ -754,10 +754,10 @@
             // colShukkaSiziSuu
             // 
             this.colShukkaSiziSuu.DataPropertyName = "出荷指示数";
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle30.Format = "N0";
-            dataGridViewCellStyle30.NullValue = null;
-            this.colShukkaSiziSuu.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N0";
+            dataGridViewCellStyle10.NullValue = null;
+            this.colShukkaSiziSuu.DefaultCellStyle = dataGridViewCellStyle10;
             this.colShukkaSiziSuu.HeaderText = "出荷指示数";
             this.colShukkaSiziSuu.Name = "colShukkaSiziSuu";
             this.colShukkaSiziSuu.Width = 90;
@@ -765,10 +765,10 @@
             // colShukkaSuu
             // 
             this.colShukkaSuu.DataPropertyName = "出荷済数";
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle31.Format = "N0";
-            dataGridViewCellStyle31.NullValue = null;
-            this.colShukkaSuu.DefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle11.Format = "N0";
+            dataGridViewCellStyle11.NullValue = null;
+            this.colShukkaSuu.DefaultCellStyle = dataGridViewCellStyle11;
             this.colShukkaSuu.HeaderText = "出荷済数";
             this.colShukkaSuu.Name = "colShukkaSuu";
             this.colShukkaSuu.Width = 90;
@@ -811,14 +811,14 @@
             this.gvMainDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvMainDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvMainDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.gvMainDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvMainDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Detail_ShouhinCD,
@@ -880,10 +880,10 @@
             // col_Detail_JuchuuSuu
             // 
             this.col_Detail_JuchuuSuu.DataPropertyName = "受注数";
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle33.Format = "N0";
-            dataGridViewCellStyle33.NullValue = null;
-            this.col_Detail_JuchuuSuu.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N0";
+            dataGridViewCellStyle13.NullValue = null;
+            this.col_Detail_JuchuuSuu.DefaultCellStyle = dataGridViewCellStyle13;
             this.col_Detail_JuchuuSuu.HeaderText = "受注数";
             this.col_Detail_JuchuuSuu.Name = "col_Detail_JuchuuSuu";
             this.col_Detail_JuchuuSuu.Width = 70;
@@ -891,10 +891,10 @@
             // col_Detail_ChakuniYoteiSuu
             // 
             this.col_Detail_ChakuniYoteiSuu.DataPropertyName = "着荷予定数";
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle34.Format = "N0";
-            dataGridViewCellStyle34.NullValue = null;
-            this.col_Detail_ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N0";
+            dataGridViewCellStyle14.NullValue = null;
+            this.col_Detail_ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle14;
             this.col_Detail_ChakuniYoteiSuu.HeaderText = "着荷予定数";
             this.col_Detail_ChakuniYoteiSuu.Name = "col_Detail_ChakuniYoteiSuu";
             this.col_Detail_ChakuniYoteiSuu.Width = 95;
@@ -902,10 +902,10 @@
             // col_Detail_MiHikiateSuu
             // 
             this.col_Detail_MiHikiateSuu.DataPropertyName = "未引当数";
-            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle35.Format = "N0";
-            dataGridViewCellStyle35.NullValue = null;
-            this.col_Detail_MiHikiateSuu.DefaultCellStyle = dataGridViewCellStyle35;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle15.Format = "N0";
+            dataGridViewCellStyle15.NullValue = null;
+            this.col_Detail_MiHikiateSuu.DefaultCellStyle = dataGridViewCellStyle15;
             this.col_Detail_MiHikiateSuu.HeaderText = "未引当数";
             this.col_Detail_MiHikiateSuu.Name = "col_Detail_MiHikiateSuu";
             this.col_Detail_MiHikiateSuu.Width = 90;
@@ -913,10 +913,10 @@
             // col_Detail_HikiateZumiSuu
             // 
             this.col_Detail_HikiateZumiSuu.DataPropertyName = "引当済数";
-            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle36.Format = "N0";
-            dataGridViewCellStyle36.NullValue = null;
-            this.col_Detail_HikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle36;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle16.Format = "N0";
+            dataGridViewCellStyle16.NullValue = null;
+            this.col_Detail_HikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle16;
             this.col_Detail_HikiateZumiSuu.HeaderText = "引当済数";
             this.col_Detail_HikiateZumiSuu.Name = "col_Detail_HikiateZumiSuu";
             this.col_Detail_HikiateZumiSuu.Width = 90;
@@ -924,10 +924,10 @@
             // col_Detail_ChakuniSuu
             // 
             this.col_Detail_ChakuniSuu.DataPropertyName = "着荷済数";
-            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle37.Format = "N0";
-            dataGridViewCellStyle37.NullValue = null;
-            this.col_Detail_ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle37;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle17.Format = "N0";
+            dataGridViewCellStyle17.NullValue = null;
+            this.col_Detail_ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle17;
             this.col_Detail_ChakuniSuu.HeaderText = "着荷済数";
             this.col_Detail_ChakuniSuu.Name = "col_Detail_ChakuniSuu";
             this.col_Detail_ChakuniSuu.Width = 90;
@@ -935,10 +935,10 @@
             // col_Detail_ShukkaSiziSuu
             // 
             this.col_Detail_ShukkaSiziSuu.DataPropertyName = "出荷指示数";
-            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle38.Format = "N0";
-            dataGridViewCellStyle38.NullValue = null;
-            this.col_Detail_ShukkaSiziSuu.DefaultCellStyle = dataGridViewCellStyle38;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle18.Format = "N0";
+            dataGridViewCellStyle18.NullValue = null;
+            this.col_Detail_ShukkaSiziSuu.DefaultCellStyle = dataGridViewCellStyle18;
             this.col_Detail_ShukkaSiziSuu.HeaderText = "出荷指示数";
             this.col_Detail_ShukkaSiziSuu.Name = "col_Detail_ShukkaSiziSuu";
             this.col_Detail_ShukkaSiziSuu.Width = 95;
@@ -946,10 +946,10 @@
             // col_Detail_ShukkaSuu
             // 
             this.col_Detail_ShukkaSuu.DataPropertyName = "出荷済数";
-            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle39.Format = "N0";
-            dataGridViewCellStyle39.NullValue = null;
-            this.col_Detail_ShukkaSuu.DefaultCellStyle = dataGridViewCellStyle39;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle19.Format = "N0";
+            dataGridViewCellStyle19.NullValue = null;
+            this.col_Detail_ShukkaSuu.DefaultCellStyle = dataGridViewCellStyle19;
             this.col_Detail_ShukkaSuu.HeaderText = "出荷済数";
             this.col_Detail_ShukkaSuu.Name = "col_Detail_ShukkaSuu";
             this.col_Detail_ShukkaSuu.Width = 90;
@@ -957,10 +957,10 @@
             // col_Detail_HikiateSuu
             // 
             this.col_Detail_HikiateSuu.DataPropertyName = "引当調整数";
-            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle40.Format = "N0";
-            dataGridViewCellStyle40.NullValue = null;
-            this.col_Detail_HikiateSuu.DefaultCellStyle = dataGridViewCellStyle40;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle20.Format = "N0";
+            dataGridViewCellStyle20.NullValue = null;
+            this.col_Detail_HikiateSuu.DefaultCellStyle = dataGridViewCellStyle20;
             this.col_Detail_HikiateSuu.HeaderText = "引当調整数";
             this.col_Detail_HikiateSuu.Name = "col_Detail_HikiateSuu";
             this.col_Detail_HikiateSuu.Width = 95;
@@ -1667,7 +1667,7 @@
             // 
             this.lblYearSign.AutoSize = true;
             this.lblYearSign.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYearSign.Location = new System.Drawing.Point(310, 66);
+            this.lblYearSign.Location = new System.Drawing.Point(308, 68);
             this.lblYearSign.Name = "lblYearSign";
             this.lblYearSign.Size = new System.Drawing.Size(21, 13);
             this.lblYearSign.TabIndex = 51;
