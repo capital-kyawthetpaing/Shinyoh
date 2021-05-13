@@ -160,7 +160,15 @@ namespace ShukkaSiziDataShuturyoku {
                         obj.Date_Column = new List<int>();
                         obj.Date_Column.Add(5);
                         obj.Date_Column.Add(6);
-                        obj.Date_Format = "DD/MM/YYYY";
+                        obj.Date_Format = "YYYY/M/DD";
+                        //for column 9(I)
+                        obj.OnePlaceDecimal_Column = new List<int>();
+                        obj.OnePlaceDecimal_Column.Add(9);
+                        obj.Decimal_Format = "0.0";
+                        //for column 10(J)
+                        obj.Not_Exponential_Column = new List<int>();
+                        obj.Not_Exponential_Column.Add(10);
+                        obj.Not_Exponential_Format = "@";
                         obj.Start_Title_Center_Column = "A1";
                         obj.End_Title_Center_Column = "P1";                            
                         bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
