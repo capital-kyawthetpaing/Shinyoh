@@ -620,7 +620,7 @@
             // 
             this.lblYear.AutoSize = true;
             this.lblYear.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.Location = new System.Drawing.Point(716, 155);
+            this.lblYear.Location = new System.Drawing.Point(713, 157);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(21, 13);
             this.lblYear.TabIndex = 55;
@@ -649,6 +649,7 @@
             this.txtYear.SearchType = Entity.SearchType.ScType.None;
             this.txtYear.Size = new System.Drawing.Size(70, 19);
             this.txtYear.TabIndex = 9;
+            this.txtYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtYear.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblTenjikai

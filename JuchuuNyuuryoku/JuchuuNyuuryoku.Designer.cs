@@ -783,9 +783,9 @@
             this.lblYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblYear.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.Location = new System.Drawing.Point(982, 155);
+            this.lblYear.Location = new System.Drawing.Point(982, 157);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(25, 19);
+            this.lblYear.Size = new System.Drawing.Size(21, 19);
             this.lblYear.TabIndex = 105;
             this.lblYear.Text = "年";
             this.lblYear.TextAlign = System.Drawing.ContentAlignment.TopCenter;

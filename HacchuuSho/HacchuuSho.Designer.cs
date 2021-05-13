@@ -551,7 +551,7 @@ namespace HacchuuSho
             this.txtKanriNO.SearchType = Entity.SearchType.ScType.None;
             this.txtKanriNO.Size = new System.Drawing.Size(100, 19);
             this.txtKanriNO.TabIndex = 13;
-            this.txtKanriNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtKanriNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtIssueDate
             // 
@@ -621,7 +621,7 @@ namespace HacchuuSho
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(618, 119);
+            this.label3.Location = new System.Drawing.Point(613, 121);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(21, 13);
             this.label3.TabIndex = 94;

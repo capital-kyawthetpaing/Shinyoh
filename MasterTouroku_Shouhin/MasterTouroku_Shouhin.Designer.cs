@@ -1274,7 +1274,7 @@
             // 
             this.lblYear.AutoSize = true;
             this.lblYear.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.Location = new System.Drawing.Point(456, 116);
+            this.lblYear.Location = new System.Drawing.Point(454, 118);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(21, 13);
             this.lblYear.TabIndex = 12;
