@@ -410,9 +410,9 @@
             this.lblYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblYear.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYear.Location = new System.Drawing.Point(191, 183);
+            this.lblYear.Location = new System.Drawing.Point(191, 185);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(25, 19);
+            this.lblYear.Size = new System.Drawing.Size(21, 19);
             this.lblYear.TabIndex = 80;
             this.lblYear.Text = "年";
             this.lblYear.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -470,6 +470,7 @@
             this.txtYear.SearchType = Entity.SearchType.ScType.None;
             this.txtYear.Size = new System.Drawing.Size(50, 19);
             this.txtYear.TabIndex = 9;
+            this.txtYear.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtYear.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // sLabel8

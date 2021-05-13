@@ -551,7 +551,7 @@ namespace HacchuuSho
             this.txtKanriNO.SearchType = Entity.SearchType.ScType.None;
             this.txtKanriNO.Size = new System.Drawing.Size(100, 19);
             this.txtKanriNO.TabIndex = 13;
-            this.txtKanriNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
+            this.txtKanriNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtIssueDate
             // 

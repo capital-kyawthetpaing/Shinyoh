@@ -283,6 +283,7 @@ namespace HikiateHenkouShoukai
                     txtPhoneNo3.Enabled = true;
                     txtName.Enabled = true;
                     txtAddress.Enabled = true;
+                    txtChakuniYoteiNO.Enabled = true;
                     chkType1.Enabled = true;
                     chkType2.Enabled = true;
                     F7.Enabled = false;
@@ -295,7 +296,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = false;
                     gvAggregationDetails.Location = new Point(22, 250);
-                    gvAggregationDetails.Size = new Size(1430, 630);
+                    gvAggregationDetails.Size = new Size(1450, 565);
                     txtKanriNO.NextControlName = "txtTokuisakiCD";
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
@@ -310,6 +311,7 @@ namespace HikiateHenkouShoukai
                     txtPhoneNo3.Enabled = false;
                     txtName.Enabled = false;
                     txtAddress.Enabled = false;
+                    txtChakuniYoteiNO.Enabled = true;
                     chkType1.Enabled = true;
                     chkType2.Enabled = true;
                     F7.Enabled = false;
@@ -322,7 +324,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = true;
                     gvFreeInventoryDetails.Visible = false;
                     gvMainDetail.Location = new Point(22, 250);
-                    gvMainDetail.Size = new Size(1660, 630);
+                    gvMainDetail.Size = new Size(1650, 560);
                     //this.gvMainDetail.Size = new System.Drawing.Size(1300, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = false;
@@ -338,6 +340,7 @@ namespace HikiateHenkouShoukai
                     txtPhoneNo3.Enabled = false;
                     txtName.Enabled = false;
                     txtAddress.Enabled = false;
+                    txtChakuniYoteiNO.Enabled = false;
                     chkType1.Enabled = false;
                     chkType2.Enabled = false;
                     F7.Enabled = true;
@@ -351,7 +354,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = true;
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
                     gvFreeInventoryDetails.Location = new Point(22, 250);
-                    gvFreeInventoryDetails.Size = new Size(1100, 630);
+                    gvFreeInventoryDetails.Size = new Size(1100, 560);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
