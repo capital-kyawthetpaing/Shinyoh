@@ -45,8 +45,8 @@ BEGIN
 	begin
 		select 
 		ds.TokuisakiCD,
-		ds.TokuisakiName,
 		ds.KouritenCD,
+		ds.TokuisakiName,		
 		ds.KouritenName,
 		ds.DenpyouDate,
 		ds.ShukkaYoteiDate,
@@ -57,8 +57,9 @@ BEGIN
 		dsm.ShukkaSiziSuu,
 		dsm.UriageTanka,
 		dsm.UriageKingaku,
-		dsm.KouritenJuusho2,
+		--dsm.KouritenJuusho2,
 		djm.SenpouHacchuuNO,
+		ds.ShukkaSiziNO,
 		dsm.ShukkaSiziMeisaiTekiyou
 
 		from D_ShukkaSizi ds
@@ -108,8 +109,8 @@ BEGIN
 	begin
 		select 
 		ds.TokuisakiCD,
-		ds.TokuisakiName,
 		ds.KouritenCD,
+		ds.TokuisakiName,		
 		ds.KouritenName,
 		ds.DenpyouDate,
 		ds.ShukkaYoteiDate,
@@ -120,8 +121,9 @@ BEGIN
 		dsm.ShukkaSiziSuu,
 		dsm.UriageTanka,
 		dsm.UriageKingaku,
-		dsm.KouritenJuusho2,
+		--dsm.KouritenJuusho2,
 		djm.SenpouHacchuuNO,
+		ds.ShukkaSiziNO,
 		dsm.ShukkaSiziMeisaiTekiyou
 
 		from D_ShukkaSizi ds
