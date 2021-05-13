@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
@@ -319,9 +319,9 @@
             // colIdouSuu
             // 
             this.colIdouSuu.DataPropertyName = "IdouSuu";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Format = "N0";
-            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.Format = "N0";
+            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle1;
             this.colIdouSuu.HeaderText = "移動数";
             this.colIdouSuu.MaxInputLength = 5;
             this.colIdouSuu.Name = "colIdouSuu";
@@ -331,9 +331,9 @@
             // colGenkaTanka
             // 
             this.colGenkaTanka.DataPropertyName = "GenkaTanka";
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle26.Format = "N0";
-            this.colGenkaTanka.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            this.colGenkaTanka.DefaultCellStyle = dataGridViewCellStyle2;
             this.colGenkaTanka.HeaderText = "原価単価";
             this.colGenkaTanka.MaxInputLength = 8;
             this.colGenkaTanka.Name = "colGenkaTanka";
@@ -342,9 +342,9 @@
             // colGenkaKingaku
             // 
             this.colGenkaKingaku.DataPropertyName = "GenkaKingaku";
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle27.Format = "N0";
-            this.colGenkaKingaku.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            this.colGenkaKingaku.DefaultCellStyle = dataGridViewCellStyle3;
             this.colGenkaKingaku.HeaderText = "原価金額";
             this.colGenkaKingaku.MaxInputLength = 9;
             this.colGenkaKingaku.Name = "colGenkaKingaku";
@@ -625,7 +625,7 @@
             this.lblYear.BackColor = System.Drawing.SystemColors.Menu;
             this.lblYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblYear.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.lblYear.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblYear.Location = new System.Drawing.Point(907, 133);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(25, 19);
@@ -638,7 +638,7 @@
             this.chk_FW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_FW.IsDatatableOccurs = null;
             this.chk_FW.IsErrorOccurs = false;
-            this.chk_FW.Location = new System.Drawing.Point(984, 132);
+            this.chk_FW.Location = new System.Drawing.Point(984, 133);
             this.chk_FW.MoveNext = true;
             this.chk_FW.Name = "chk_FW";
             this.chk_FW.NextControl = null;
@@ -653,7 +653,7 @@
             this.chk_SS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chk_SS.IsDatatableOccurs = null;
             this.chk_SS.IsErrorOccurs = false;
-            this.chk_SS.Location = new System.Drawing.Point(936, 132);
+            this.chk_SS.Location = new System.Drawing.Point(936, 133);
             this.chk_SS.MoveNext = true;
             this.chk_SS.Name = "chk_SS";
             this.chk_SS.NextControl = null;

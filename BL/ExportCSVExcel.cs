@@ -92,6 +92,24 @@ namespace BL
                         rg.EntireColumn.NumberFormat = obj.Number_Format;
                     }
                 }
+                //change decimal .0 format 
+                if (obj.OnePlaceDecimal_Column != null && obj.OnePlaceDecimal_Column.Count > 0)
+                {
+                    for (int k = 0; k < obj.OnePlaceDecimal_Column.Count; k++)
+                    {
+                        rg = (Excel.Range)oSheet.Cells[obj.OnePlaceDecimal_Column[k], obj.OnePlaceDecimal_Column[k]];
+                        rg.EntireColumn.NumberFormat = obj.Decimal_Format;
+                    }
+                }
+                //Change Expotential format to number 
+                if (obj.Not_Exponential_Column != null && obj.Not_Exponential_Column.Count > 0)
+                {
+                    for (int k = 0; k < obj.Not_Exponential_Column.Count; k++)
+                    {
+                        rg = (Excel.Range)oSheet.Cells[obj.Not_Exponential_Column[k], obj.Not_Exponential_Column[k]];
+                        rg.EntireColumn.NumberFormat = obj.Not_Exponential_Format;
+                    }
+                }
                 //no border 
                 oXL.Windows.Application.ActiveWindow.DisplayGridlines = false;
 
@@ -248,6 +266,10 @@ namespace BL
         public string End_Title_Center_Column { get; set; }
         public List<int> Number_Column { get; set; }
         public string Number_Format { get; set; }
+        public List<int> OnePlaceDecimal_Column { get; set; }
+        public string Decimal_Format { get; set; }
+        public List<int> Not_Exponential_Column { get; set; }
+        public string Not_Exponential_Format { get; set; }
     }   
     
 }
