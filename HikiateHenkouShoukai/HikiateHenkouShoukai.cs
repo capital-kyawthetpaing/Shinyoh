@@ -53,10 +53,6 @@ namespace HikiateHenkouShoukai
             gvAggregationDetails.SetGridDesign();
             gvAggregationDetails.SetReadOnlyColumn("*");
 
-            gvMainDetail.SetGridDesign();
-            gvMainDetail.SetReadOnlyColumn("col_Detail_ShouhinCD,col_Detail_ShouhinName,col_Detail_ColorNO,col_Detail_SizeNO,col_Detail_JuchuuSuu,col_Detail_ChakuniYoteiSuu,col_Detail_MiHikiateSuu,col_Detail_HikiateZumiSuu,col_Detail_ChakuniSuu,col_Detail_ShukkaSiziSuu,col_Detail_ShukkaSuu,col_Detail_JuchuuNO_JuchuuGyouNO,col_Detail_TokuisakiRyakuName,col_Detail_KanriNO,col_Detail_NyuukoDate,col_Detail_JuchuuDate,col_Detail_KibouNouki,col_Detail_JANCD");
-            gvMainDetail.SetNumberColumn("col_Detail_HikiateSuu");
-
             var col = gvMainDetail.Columns;
             DataGridViewTextBoxColumn newCol = new DataGridViewTextBoxColumn();
             newCol.Name = "ShouhinCD";
@@ -65,6 +61,9 @@ namespace HikiateHenkouShoukai
             col.Insert(col.Count, newCol);
             newCol.DisplayIndex = col.Count - 1;
 
+            gvMainDetail.SetGridDesign();
+            gvMainDetail.SetReadOnlyColumn("col_Detail_ShouhinCD,col_Detail_ShouhinName,col_Detail_ColorNO,col_Detail_SizeNO,col_Detail_JuchuuSuu,col_Detail_ChakuniYoteiSuu,col_Detail_MiHikiateSuu,col_Detail_HikiateZumiSuu,col_Detail_ChakuniSuu,col_Detail_ShukkaSiziSuu,col_Detail_ShukkaSuu,col_Detail_JuchuuNO_JuchuuGyouNO,col_Detail_TokuisakiRyakuName,col_Detail_KanriNO,col_Detail_NyuukoDate,col_Detail_JuchuuDate,col_Detail_KibouNouki,col_Detail_JANCD,ShouhinCD");
+            gvMainDetail.SetNumberColumn("col_Detail_HikiateSuu");
 
             gvFreeInventoryDetails.SetGridDesign();
             gvFreeInventoryDetails.SetReadOnlyColumn("*");
@@ -151,7 +150,7 @@ namespace HikiateHenkouShoukai
             SoukoEntity soukoEntity = new SoukoEntity();
             soukoEntity = soukoBL.GetSoukoEntity(soukoEntity);
             txtSoukoCD.Text = soukoEntity.SoukoCD;
-            lblSoukoName.Text = string.Empty;
+            lblSoukoName.Text = soukoEntity.SoukoName;
 
             chkSeasonSS.Checked = true; //HET
             chkSeasonFW.Checked = true; //HET
@@ -297,6 +296,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = false;
                     gvAggregationDetails.Location = new Point(22, 250);
                     gvAggregationDetails.Size = new Size(1450, 565);
+                    //this.gvAggregationDetails.Size = new System.Drawing.Size(1300, 387);
                     txtKanriNO.NextControlName = "txtTokuisakiCD";
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
@@ -355,6 +355,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
                     gvFreeInventoryDetails.Location = new Point(22, 250);
                     gvFreeInventoryDetails.Size = new Size(1100, 560);
+                    //this.gvFreeInventoryDetails.Size = new System.Drawing.Size(1100, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
@@ -497,6 +498,9 @@ namespace HikiateHenkouShoukai
                 {
                     gvAggregationDetails.CurrentCell = gvAggregationDetails.Rows[0].Cells[3];
                     gvAggregationDetails.Select();
+                    gvAggregationDetails.Memory_Row_Count = dtMain.Rows.Count;
+                    gvFreeInventoryDetails.Memory_Row_Count = dtMain.Rows.Count;
+                    gvMainDetail.Memory_Row_Count = dtMain.Rows.Count;
                 }
             }
             else if (rdoDetails.Checked)
