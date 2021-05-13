@@ -40,6 +40,14 @@ namespace BL
                 oSheet = (Excel.Worksheet)oWB.ActiveSheet;
                 oSheet.Name = obj.SheetName;
 
+                foreach(DataColumn dc in dt.Columns)
+                {
+                    if(dc.DataType == typeof(string))
+                    {
+                        oSheet.Cells[1, dt.Columns.IndexOf(dc) + 1].EntireColumn.NumberFormat = "@";
+                    }
+                }
+
                 int rowCount = 1;
                 foreach (DataRow dr in dt.Rows)
                 {
@@ -51,6 +59,7 @@ namespace BL
                         {
                             oSheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
                         }
+
                         oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
                     }
                     oSheet.Columns.AutoFit();
