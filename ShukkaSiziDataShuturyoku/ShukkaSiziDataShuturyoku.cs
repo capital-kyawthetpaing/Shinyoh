@@ -163,7 +163,7 @@ namespace ShukkaSiziDataShuturyoku {
                         obj.Date_Column = new List<int>();
                         obj.Date_Column.Add(5);
                         obj.Date_Column.Add(6);
-                        obj.Date_Format = "YYYY/M/DD";
+                        obj.Date_Format = "YYYY/MM/DD";
                         //for column 9(I)
                         obj.OnePlaceDecimal_Column = new List<int>();
                         obj.OnePlaceDecimal_Column.Add(9);

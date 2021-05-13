@@ -249,6 +249,14 @@ namespace Shinyoh_Search
                         if (lblName != null)
                             name = msearch.Char1;
                         break;
+                    case Entity.SearchType.ScType.FileImport:
+                        msearch.Access_Type = "111";
+                        msearch.ShowDialog();
+                        if (this.Name == "txtID" || this.Name == "txtCopyID")
+                            CD = msearch.Id;
+                        else
+                            CD = msearch.Char1;
+                        break;
                     case Entity.SearchType.ScType.TaxRate:
                         msearch.Access_Type = "221";
                         msearch.ShowDialog();
