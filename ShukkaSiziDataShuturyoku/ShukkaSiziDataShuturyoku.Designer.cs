@@ -27,6 +27,8 @@
         private void InitializeComponent()
         {
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.txtShukkaNo2 = new Shinyoh_Search.SearchBox();
+            this.txtShukkaNo1 = new Shinyoh_Search.SearchBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.rdo_Hakkou = new Shinyoh_Controls.SRadio();
             this.rdo_MiHakkou = new Shinyoh_Controls.SRadio();
@@ -55,8 +57,6 @@
             this.lblHacchuuNO = new Shinyoh_Controls.SLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.lblHacchuuDate = new Shinyoh_Controls.SLabel();
-            this.txtShukkaNo1 = new Shinyoh_Search.SearchBox();
-            this.txtShukkaNo2 = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -100,6 +100,68 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
             this.PanelDetail.TabIndex = 1;
+            // 
+            // txtShukkaNo2
+            // 
+            this.txtShukkaNo2.AllowMinus = false;
+            this.txtShukkaNo2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtShukkaNo2.ChangeDate = null;
+            this.txtShukkaNo2.Combo = null;
+            this.txtShukkaNo2.DecimalPlace = 0;
+            this.txtShukkaNo2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShukkaNo2.DepandOnMode = true;
+            this.txtShukkaNo2.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtShukkaNo2.IntegerPart = 0;
+            this.txtShukkaNo2.IsDatatableOccurs = null;
+            this.txtShukkaNo2.IsErrorOccurs = false;
+            this.txtShukkaNo2.IsRequire = false;
+            this.txtShukkaNo2.IsUseInitializedLayout = true;
+            this.txtShukkaNo2.lblName = null;
+            this.txtShukkaNo2.lblName1 = null;
+            this.txtShukkaNo2.Location = new System.Drawing.Point(265, 49);
+            this.txtShukkaNo2.MaxLength = 12;
+            this.txtShukkaNo2.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtShukkaNo2.MoveNext = true;
+            this.txtShukkaNo2.Name = "txtShukkaNo2";
+            this.txtShukkaNo2.NextControl = null;
+            this.txtShukkaNo2.NextControlName = "txtShukkaDate1";
+            this.txtShukkaNo2.SearchType = Entity.SearchType.ScType.ShippingNO;
+            this.txtShukkaNo2.Size = new System.Drawing.Size(100, 19);
+            this.txtShukkaNo2.TabIndex = 3;
+            this.txtShukkaNo2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtShukkaNo2.TxtBox = null;
+            this.txtShukkaNo2.TxtBox1 = null;
+            // 
+            // txtShukkaNo1
+            // 
+            this.txtShukkaNo1.AllowMinus = false;
+            this.txtShukkaNo1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtShukkaNo1.ChangeDate = null;
+            this.txtShukkaNo1.Combo = null;
+            this.txtShukkaNo1.DecimalPlace = 0;
+            this.txtShukkaNo1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShukkaNo1.DepandOnMode = true;
+            this.txtShukkaNo1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtShukkaNo1.IntegerPart = 0;
+            this.txtShukkaNo1.IsDatatableOccurs = null;
+            this.txtShukkaNo1.IsErrorOccurs = false;
+            this.txtShukkaNo1.IsRequire = false;
+            this.txtShukkaNo1.IsUseInitializedLayout = true;
+            this.txtShukkaNo1.lblName = null;
+            this.txtShukkaNo1.lblName1 = null;
+            this.txtShukkaNo1.Location = new System.Drawing.Point(141, 48);
+            this.txtShukkaNo1.MaxLength = 12;
+            this.txtShukkaNo1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtShukkaNo1.MoveNext = true;
+            this.txtShukkaNo1.Name = "txtShukkaNo1";
+            this.txtShukkaNo1.NextControl = null;
+            this.txtShukkaNo1.NextControlName = "txtShukkaNo2";
+            this.txtShukkaNo1.SearchType = Entity.SearchType.ScType.ShippingNO;
+            this.txtShukkaNo1.Size = new System.Drawing.Size(100, 19);
+            this.txtShukkaNo1.TabIndex = 2;
+            this.txtShukkaNo1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtShukkaNo1.TxtBox = null;
+            this.txtShukkaNo1.TxtBox1 = null;
             // 
             // panel2
             // 
@@ -600,66 +662,6 @@
             this.lblHacchuuDate.TabIndex = 45;
             this.lblHacchuuDate.Text = "出荷指示番号\t\t\t\t\t\t";
             this.lblHacchuuDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // txtShukkaNo1
-            // 
-            this.txtShukkaNo1.AllowMinus = false;
-            this.txtShukkaNo1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtShukkaNo1.ChangeDate = null;
-            this.txtShukkaNo1.Combo = null;
-            this.txtShukkaNo1.DecimalPlace = 0;
-            this.txtShukkaNo1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtShukkaNo1.DepandOnMode = true;
-            this.txtShukkaNo1.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtShukkaNo1.IntegerPart = 0;
-            this.txtShukkaNo1.IsDatatableOccurs = null;
-            this.txtShukkaNo1.IsErrorOccurs = false;
-            this.txtShukkaNo1.IsRequire = false;
-            this.txtShukkaNo1.IsUseInitializedLayout = true;
-            this.txtShukkaNo1.lblName = null;
-            this.txtShukkaNo1.lblName1 = null;
-            this.txtShukkaNo1.Location = new System.Drawing.Point(141, 48);
-            this.txtShukkaNo1.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtShukkaNo1.MoveNext = true;
-            this.txtShukkaNo1.Name = "txtShukkaNo1";
-            this.txtShukkaNo1.NextControl = null;
-            this.txtShukkaNo1.NextControlName = "txtShukkaNo2";
-            this.txtShukkaNo1.SearchType = Entity.SearchType.ScType.ShippingNO;
-            this.txtShukkaNo1.Size = new System.Drawing.Size(100, 19);
-            this.txtShukkaNo1.TabIndex = 2;
-            this.txtShukkaNo1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtShukkaNo1.TxtBox = null;
-            this.txtShukkaNo1.TxtBox1 = null;
-            // 
-            // txtShukkaNo2
-            // 
-            this.txtShukkaNo2.AllowMinus = false;
-            this.txtShukkaNo2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtShukkaNo2.ChangeDate = null;
-            this.txtShukkaNo2.Combo = null;
-            this.txtShukkaNo2.DecimalPlace = 0;
-            this.txtShukkaNo2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtShukkaNo2.DepandOnMode = true;
-            this.txtShukkaNo2.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtShukkaNo2.IntegerPart = 0;
-            this.txtShukkaNo2.IsDatatableOccurs = null;
-            this.txtShukkaNo2.IsErrorOccurs = false;
-            this.txtShukkaNo2.IsRequire = false;
-            this.txtShukkaNo2.IsUseInitializedLayout = true;
-            this.txtShukkaNo2.lblName = null;
-            this.txtShukkaNo2.lblName1 = null;
-            this.txtShukkaNo2.Location = new System.Drawing.Point(265, 49);
-            this.txtShukkaNo2.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtShukkaNo2.MoveNext = true;
-            this.txtShukkaNo2.Name = "txtShukkaNo2";
-            this.txtShukkaNo2.NextControl = null;
-            this.txtShukkaNo2.NextControlName = "txtShukkaDate1";
-            this.txtShukkaNo2.SearchType = Entity.SearchType.ScType.ShippingNO;
-            this.txtShukkaNo2.Size = new System.Drawing.Size(100, 19);
-            this.txtShukkaNo2.TabIndex = 3;
-            this.txtShukkaNo2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtShukkaNo2.TxtBox = null;
-            this.txtShukkaNo2.TxtBox1 = null;
             // 
             // ShukkaSiziDataShuturyoku
             // 
