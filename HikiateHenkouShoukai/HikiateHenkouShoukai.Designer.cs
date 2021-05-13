@@ -1666,13 +1666,10 @@
             // lblYearSign
             // 
             this.lblYearSign.AutoSize = true;
-<<<<<<< HEAD
             this.lblYearSign.Font = new System.Drawing.Font("ＭＳ ゴシック", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblYearSign.Location = new System.Drawing.Point(310, 61);
-=======
             this.lblYearSign.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblYearSign.Location = new System.Drawing.Point(308, 68);
->>>>>>> 5f379ba85d44b1e23b2b82a58cc17832e4cf0f6f
             this.lblYearSign.Name = "lblYearSign";
             this.lblYearSign.Size = new System.Drawing.Size(21, 13);
             this.lblYearSign.TabIndex = 51;

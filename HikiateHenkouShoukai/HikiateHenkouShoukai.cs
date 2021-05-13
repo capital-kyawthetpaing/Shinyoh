@@ -283,6 +283,7 @@ namespace HikiateHenkouShoukai
                     txtPhoneNo3.Enabled = true;
                     txtName.Enabled = true;
                     txtAddress.Enabled = true;
+                    txtChakuniYoteiNO.Enabled = true;
                     chkType1.Enabled = true;
                     chkType2.Enabled = true;
                     F7.Enabled = false;
@@ -310,6 +311,7 @@ namespace HikiateHenkouShoukai
                     txtPhoneNo3.Enabled = false;
                     txtName.Enabled = false;
                     txtAddress.Enabled = false;
+                    txtChakuniYoteiNO.Enabled = true;
                     chkType1.Enabled = true;
                     chkType2.Enabled = true;
                     F7.Enabled = false;
@@ -338,6 +340,7 @@ namespace HikiateHenkouShoukai
                     txtPhoneNo3.Enabled = false;
                     txtName.Enabled = false;
                     txtAddress.Enabled = false;
+                    txtChakuniYoteiNO.Enabled = false;
                     chkType1.Enabled = false;
                     chkType2.Enabled = false;
                     F7.Enabled = true;
