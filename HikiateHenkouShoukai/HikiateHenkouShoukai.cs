@@ -57,6 +57,15 @@ namespace HikiateHenkouShoukai
             gvMainDetail.SetReadOnlyColumn("col_Detail_ShouhinCD,col_Detail_ShouhinName,col_Detail_ColorNO,col_Detail_SizeNO,col_Detail_JuchuuSuu,col_Detail_ChakuniYoteiSuu,col_Detail_MiHikiateSuu,col_Detail_HikiateZumiSuu,col_Detail_ChakuniSuu,col_Detail_ShukkaSiziSuu,col_Detail_ShukkaSuu,col_Detail_JuchuuNO_JuchuuGyouNO,col_Detail_TokuisakiRyakuName,col_Detail_KanriNO,col_Detail_NyuukoDate,col_Detail_JuchuuDate,col_Detail_KibouNouki,col_Detail_JANCD");
             gvMainDetail.SetNumberColumn("col_Detail_HikiateSuu");
 
+            var col = gvMainDetail.Columns;
+            DataGridViewTextBoxColumn newCol = new DataGridViewTextBoxColumn();
+            newCol.Name = "ShouhinCD";
+            newCol.DataPropertyName = "ShouhinCD";
+            newCol.Visible = false;
+            col.Insert(col.Count, newCol);
+            newCol.DisplayIndex = col.Count - 1;
+
+
             gvFreeInventoryDetails.SetGridDesign();
             gvFreeInventoryDetails.SetReadOnlyColumn("*");
             Grid_UI();
@@ -829,6 +838,7 @@ namespace HikiateHenkouShoukai
                 dt.Columns.Add("表示順");
                 dt.Columns.Add("倉庫");
                 dt.Columns.Add("受注番号");
+                dt.Columns.Add("ShouhinCD");
             }
             return dt;
         }
