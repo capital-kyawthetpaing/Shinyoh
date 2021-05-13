@@ -120,8 +120,8 @@ namespace ShukkaSiziDataShuturyoku {
                 if (dt.Rows.Count > 0)
                 {
                     dt.Columns["TokuisakiCD"].ColumnName = "得意先CD";
-                    dt.Columns["TokuisakiName"].ColumnName = "店舗CD";
-                    dt.Columns["KouritenCD"].ColumnName = "得意先名";
+                    dt.Columns["KouritenCD"].ColumnName = "店舗CD";
+                    dt.Columns["TokuisakiName"].ColumnName = "得意先名";
                     dt.Columns["KouritenName"].ColumnName = "店舗名";
                     dt.Columns["DenpyouDate"].ColumnName = "伝票日付";
                     dt.Columns["ShukkaYoteiDate"].ColumnName = "出荷日";
@@ -171,7 +171,8 @@ namespace ShukkaSiziDataShuturyoku {
                         //for column 10(J)
                         obj.Not_Exponential_Column = new List<int>();
                         obj.Not_Exponential_Column.Add(10);
-                        obj.Not_Exponential_Format = "@";
+                        obj.Not_Exponential_Column.Add(15);
+                        obj.Not_Exponential_Format = "0";
                         obj.Start_Title_Center_Column = "A1";
                         obj.End_Title_Center_Column = "P1";                            
                         bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
