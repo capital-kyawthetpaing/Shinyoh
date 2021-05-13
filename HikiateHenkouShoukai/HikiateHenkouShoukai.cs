@@ -137,20 +137,30 @@ namespace HikiateHenkouShoukai
             lblTokuisakiName.Text = string.Empty;
             lblSoukoName.Text = string.Empty;
             lblKouritenName.Text = string.Empty;
+            initScr();
+
             F8_dt1 = createMemoryTable(1);
             dtMain = new DataTable();
             gvAggregationDetails.Memory_Row_Count = 0;
             gvMainDetail.Memory_Row_Count = 0;
             gvFreeInventoryDetails.Memory_Row_Count = 0;
         }
+        private void initScr()
+        {
+            SoukoBL soukoBL = new SoukoBL();
+            SoukoEntity soukoEntity = new SoukoEntity();
+            soukoEntity = soukoBL.GetSoukoEntity(soukoEntity);
+            txtSoukoCD.Text = soukoEntity.SoukoCD;
+            lblSoukoName.Text = string.Empty;
 
+            chkSeasonSS.Checked = true; //HET
+            chkSeasonFW.Checked = true; //HET
+        }
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "6")
             {
                 Modified_Panel();
-                chkSeasonSS.Checked = true; //HET
-                chkSeasonFW.Checked = true; //HET
             }
             if (tagID == "7")
             {
@@ -258,6 +268,9 @@ namespace HikiateHenkouShoukai
             lblKouritenName.Text = string.Empty;
             lblSoukoName.Text = string.Empty;
             lblTokuisakiName.Text = string.Empty;
+
+            initScr();
+
             switch (type)
             {
                 case 0:
