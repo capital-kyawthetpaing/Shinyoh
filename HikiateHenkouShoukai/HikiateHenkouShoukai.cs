@@ -562,20 +562,43 @@ namespace HikiateHenkouShoukai
             {
                 if (!string.IsNullOrWhiteSpace(dr["受注番号"].ToString()))
                 {
-                    string JuchuuNO = dr["受注番号"].ToString();
-
-                    DataRow[] selectRow = F8_dt1.Select("受注番号 ='" + JuchuuNO + "'");
-                    if (selectRow.Length > 0)
-                        continue;
-
-                    ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
-                    chkLockEntity.DataKBN = 1;
-                    chkLockEntity.Number = JuchuuNO;
-                    chkLockEntity.ProgramID = ProgramID;
-                    chkLockEntity.PC = PCID;
-                    chkLockEntity.OperatorCD = OperatorCD;
-                    hbl.D_Exclusive_JuchuuNO_Delete(chkLockEntity);
+                    D_Exclusive_OneNumber_Delete(dr);
                 }
+            }
+        }
+        private void D_Exclusive_OneNumber_Delete(DataRow dr)
+        {
+            string JuchuuNO = dr["受注番号"].ToString();
+
+            DataRow[] selectRow = F8_dt1.Select("受注番号 ='" + JuchuuNO + "'");
+            if (selectRow.Length > 0)
+                return;
+
+            ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+            chkLockEntity.DataKBN = 1;
+            chkLockEntity.Number = JuchuuNO;
+            chkLockEntity.ProgramID = ProgramID;
+            chkLockEntity.PC = PCID;
+            chkLockEntity.OperatorCD = OperatorCD;
+            hbl.D_Exclusive_JuchuuNO_Delete(chkLockEntity);
+        }
+        private void D_Exclusive_OneNumber_Insert(DataRow dr)
+        {
+            if (!string.IsNullOrWhiteSpace(dr["受注番号"].ToString()))
+            {
+                string JuchuuNO = dr["受注番号"].ToString();
+
+                DataRow[] selectRow = F8_dt1.Select("受注番号 ='" + JuchuuNO + "'");
+                if (selectRow.Length == 0)
+                    return;
+
+                HikiateHenkouShoukaiEntity chkLockEntity = new HikiateHenkouShoukaiEntity();
+                chkLockEntity.DataKBN = 1;
+                chkLockEntity.Number = JuchuuNO;
+                chkLockEntity.ProgramID = ProgramID;
+                chkLockEntity.PC = PCID;
+                chkLockEntity.OperatorCD = OperatorCD;
+                hbl.D_Exclusive_Lock_Check(chkLockEntity);
             }
         }
         private void TemporarySave_Data()
@@ -681,7 +704,14 @@ namespace HikiateHenkouShoukai
                     if (existDr1 != null)
                         F8_dt1.Rows.Remove(existDr1);
                     F8_dt1.Rows.Add(F8_drNew);
-
+                    
+                    D_Exclusive_OneNumber_Insert(F8_drNew);
+                }
+                else
+                {
+                    if (select_dr1.Length > 0)
+                        //排他Delete
+                        D_Exclusive_OneNumber_Delete(select_dr1[0]);
                 }
             }
             gvMainDetail.Memory_Row_Count = F8_dt1.Rows.Count;
