@@ -274,9 +274,9 @@ namespace ChakuniNyuuryoku
             }
             if (tagID == "8")
             {
-                if (F8_dt1.Rows.Count > 0)
+                if (F8_dt1.Rows.Count > 0)//
                 {
-                    var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("ChakuniYoteiGyouNO")).ThenBy(r => r.Field<string>("HacchuuGyouNO")).CopyToDataTable();
+                    var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("ChakuniYoteiNO")).ThenBy(r => r.Field<string>("ChakuniYoteiGyouNO")).ThenBy(r => r.Field<string>("HacchuuNO")).ThenBy(r => r.Field<string>("HacchuuGyouNO")).CopyToDataTable();
                     gvChakuniNyuuryoku.DataSource = dtConfirm;
                     gvChakuniNyuuryoku.Focus();
                     gvChakuniNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
@@ -285,6 +285,7 @@ namespace ChakuniNyuuryoku
                 {
                     F8_dt1 = CreateTable_Details();
                     gvChakuniNyuuryoku.DataSource = F8_dt1;
+                    Disable();
                 }
             }
             if (tagID == "10")
@@ -535,19 +536,20 @@ namespace ChakuniNyuuryoku
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (F8_dt1.Rows.Count > 0)
-            {
-               // var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("Chakuni")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
-                var dtF8 = F8_dt1.Copy();//Task_NO351_ssa
-                gvChakuniNyuuryoku.DataSource = dtF8;//Task_NO351_ssa
-                Disable();
-            }
-            else
-            {
-                F8_dt1 = CreateTable_Details();
-                gvChakuniNyuuryoku.DataSource = F8_dt1;
-                Disable();
-            }
+            FunctionProcess("8");
+            //if (F8_dt1.Rows.Count > 0)
+            //{
+            //   // var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("Chakuni")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
+            //    var dtF8 = F8_dt1.Copy();//Task_NO351_ssa
+            //    gvChakuniNyuuryoku.DataSource = dtF8;//Task_NO351_ssa
+            //    Disable();
+            //}
+            //else
+            //{
+            //    F8_dt1 = CreateTable_Details();
+            //    gvChakuniNyuuryoku.DataSource = F8_dt1;
+            //    Disable();
+            //}
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
@@ -625,6 +627,31 @@ namespace ChakuniNyuuryoku
                 chkLockEntity.DataKBN = 2;
                 chkLockEntity.Number = HacchuuNO;
                 cbl.D_Exclusive_Number_Delete(chkLockEntity);
+            }
+        }
+        private void D_Exclusive_OneNumber_Insert(DataRow dr)
+        {
+            string ChakuniYoteiNO = dr["ChakuniYoteiNO"].ToString();
+            string HacchuuNO = dr["HacchuuNO"].ToString();
+            ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+            chkLockEntity.ProgramID = ProgramID;
+            chkLockEntity.PC = PCID;
+            chkLockEntity.OperatorCD = OperatorCD;
+
+            DataRow[] selectRowC = F8_dt1.Select("ChakuniYoteiNO ='" + ChakuniYoteiNO + "'");
+            if (selectRowC.Length > 0)
+            {
+                chkLockEntity.DataKBN = 16;
+                chkLockEntity.Number = ChakuniYoteiNO;
+
+                cbl.D_Exclusive_Lock_Check(chkLockEntity);
+            }
+            DataRow[] selectRow = F8_dt1.Select("HacchuuNO ='" + HacchuuNO + "'");
+            if (selectRow.Length > 0)
+            {
+                chkLockEntity.DataKBN = 2;
+                chkLockEntity.Number = HacchuuNO;
+                cbl.D_Exclusive_Lock_Check(chkLockEntity);
             }
         }
         //private void Gvrow_Delete(DataRow dr)
@@ -828,6 +855,7 @@ namespace ChakuniNyuuryoku
                 {
                     if (row.Cells["ChakuniSuu"].Value.ToString() == "0")
                     {
+                        D_Exclusive_OneNumber_Delete(existDr1);
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
@@ -870,6 +898,8 @@ namespace ChakuniNyuuryoku
                     if (existDr1 != null)
                         F8_dt1.Rows.Remove(existDr1);
                     F8_dt1.Rows.Add(F8_drNew);
+
+                    D_Exclusive_OneNumber_Insert(F8_drNew);
                     // }
                 }
                 else
@@ -1298,7 +1328,7 @@ namespace ChakuniNyuuryoku
                  if (Convert.ToBoolean(gvChakuniNyuuryoku.Rows[e.RowIndex].Cells["SiireKanryouKBN"].EditedFormattedValue))
                  {
                         //Temp_Save(e.RowIndex);
-                        gvChakuniNyuuryoku.MoveNextCell();
+                        //gvChakuniNyuuryoku.MoveNextCell();
                  }
              }
         }

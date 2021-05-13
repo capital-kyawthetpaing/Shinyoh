@@ -171,6 +171,7 @@ begin
     ,SKMS.[KouritenTelNO2-3]    --小売店電話番号2-3
     ,FShouhin.ShouhinCD as Hidden_ShouhinCD--啁E��コード_更新用
     ,SKMS.ShukkaSiziGyouNO as Hidden_ShukkaSiziGyouNO
+    ,SKMS.JuchuuGyouNO AS Hidden_JuchuuGyouNO
     FROM D_ShukkaSizi SK                        --Table1
     inner join D_ShukkaSiziMeisai SKMS          --Table2
     on SKMS.ShukkaSiziNO=SK.ShukkaSiziNO

@@ -23,7 +23,8 @@ namespace IdouNyuuryoku
         IdouNyuuryokuBL Idou_BL;
         DataTable gv1_to_dt1;
         DataTable F8_dt1;
-       
+        string OldIdoukubun = "";
+
         public IdouNyuuryoku()
         {
             InitializeComponent();
@@ -163,6 +164,7 @@ namespace IdouNyuuryoku
 
             gv1_to_dt1 = new DataTable();
             F8_dt1 = new DataTable();
+            OldIdoukubun = "";
 
             txtIdouNO.Focus();
             txtIdouDate.Text = base_Entity.LoginDate;
@@ -198,6 +200,7 @@ namespace IdouNyuuryoku
             if (dt_Multi.Rows.Count > 0)
             {
                 txtIdoukubun.Text = dt_Multi.Rows[0]["Key"].ToString();
+                OldIdoukubun = txtIdoukubun.Text;
                 lbl_IdouKubun.Text = dt_Multi.Rows[0]["Char1"].ToString();
             }
             DataTable dt_Souko = Idou_BL.IdouNyuuryoku_Select_Check(string.Empty, string.Empty, "Load_Souko");
@@ -308,6 +311,13 @@ namespace IdouNyuuryoku
                         lbl_IdouKubun.Text = dt.Rows[0]["Char1"].ToString();
                         Souko_Disable_Enable(txtIdoukubun.Text);
                     }
+
+                    if (!txtIdoukubun.Text.Equals(OldIdoukubun))
+                    {
+                        F8_dt1.Rows.Clear();
+                        gv_1.DataSource = F8_dt1;
+                    }
+                    OldIdoukubun = txtIdoukubun.Text;
                 }
                 else
                 {
@@ -420,6 +430,7 @@ namespace IdouNyuuryoku
             {
                 txtIdouDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["IdouDate"]);
                 txtIdoukubun.Text = dt.Rows[0]["IdouKBN"].ToString();
+                OldIdoukubun = txtIdoukubun.Text;
                 lbl_IdouKubun.Text = dt.Rows[0]["Char1"].ToString();
                 txtStaffCD.Text = dt.Rows[0]["StaffCD"].ToString();
                 lblStaff_Name.Text = dt.Rows[0]["StaffName"].ToString();
@@ -583,6 +594,23 @@ namespace IdouNyuuryoku
                 DataTable dt = Idou_BL.IdouNyuuryoku_Display(obj);
                 if (dt.Rows.Count > 0)
                 {
+                    if (F8_dt1.Rows.Count > 0)
+                    {
+                        foreach (DataRow dr in dt.Rows)
+                        {
+                            //重複行はDelete
+                            string ShouhinCD = dr["ShouhinCD"].ToString();
+                            DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + ShouhinCD + "'").SingleOrDefault();
+                            if (existDr1 != null)
+                            {
+                                dr["IdouGyouNO"] = "99";    //未使用項目のため
+                            }
+                        }
+                    }
+                    DataRow[] select_dr1 = dt.Select("IdouGyouNO = '99'");
+                    foreach (DataRow dr in select_dr1)
+                        dt.Rows.Remove(dr);
+
                     gv_1.DataSource = dt;
                     gv_1.Focus();
                     DataTable dt_temp = dt.Copy();
@@ -751,7 +779,8 @@ namespace IdouNyuuryoku
                 string kanriNO = row.Cells["colKanriNO"].Value.ToString();
 
                 DataRow[] select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "'");// original data
-                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  KanriNO='" + kanriNO + "'").SingleOrDefault();
+                //DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  KanriNO='" + kanriNO + "'").SingleOrDefault();
+                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     if (row.Cells["colIdouSuu"].Value.ToString() == "0")
@@ -770,7 +799,7 @@ namespace IdouNyuuryoku
                         {
                             if (existDr1 != null)
                             {
-                                if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                if (select_dr1.Length > 0 && select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 {
                                     //bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;

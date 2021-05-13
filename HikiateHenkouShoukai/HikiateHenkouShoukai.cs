@@ -57,6 +57,15 @@ namespace HikiateHenkouShoukai
             gvMainDetail.SetReadOnlyColumn("col_Detail_ShouhinCD,col_Detail_ShouhinName,col_Detail_ColorNO,col_Detail_SizeNO,col_Detail_JuchuuSuu,col_Detail_ChakuniYoteiSuu,col_Detail_MiHikiateSuu,col_Detail_HikiateZumiSuu,col_Detail_ChakuniSuu,col_Detail_ShukkaSiziSuu,col_Detail_ShukkaSuu,col_Detail_JuchuuNO_JuchuuGyouNO,col_Detail_TokuisakiRyakuName,col_Detail_KanriNO,col_Detail_NyuukoDate,col_Detail_JuchuuDate,col_Detail_KibouNouki,col_Detail_JANCD");
             gvMainDetail.SetNumberColumn("col_Detail_HikiateSuu");
 
+            var col = gvMainDetail.Columns;
+            DataGridViewTextBoxColumn newCol = new DataGridViewTextBoxColumn();
+            newCol.Name = "ShouhinCD";
+            newCol.DataPropertyName = "ShouhinCD";
+            newCol.Visible = false;
+            col.Insert(col.Count, newCol);
+            newCol.DisplayIndex = col.Count - 1;
+
+
             gvFreeInventoryDetails.SetGridDesign();
             gvFreeInventoryDetails.SetReadOnlyColumn("*");
             Grid_UI();
@@ -562,20 +571,43 @@ namespace HikiateHenkouShoukai
             {
                 if (!string.IsNullOrWhiteSpace(dr["受注番号"].ToString()))
                 {
-                    string JuchuuNO = dr["受注番号"].ToString();
-
-                    DataRow[] selectRow = F8_dt1.Select("受注番号 ='" + JuchuuNO + "'");
-                    if (selectRow.Length > 0)
-                        continue;
-
-                    ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
-                    chkLockEntity.DataKBN = 1;
-                    chkLockEntity.Number = JuchuuNO;
-                    chkLockEntity.ProgramID = ProgramID;
-                    chkLockEntity.PC = PCID;
-                    chkLockEntity.OperatorCD = OperatorCD;
-                    hbl.D_Exclusive_JuchuuNO_Delete(chkLockEntity);
+                    D_Exclusive_OneNumber_Delete(dr);
                 }
+            }
+        }
+        private void D_Exclusive_OneNumber_Delete(DataRow dr)
+        {
+            string JuchuuNO = dr["受注番号"].ToString();
+
+            DataRow[] selectRow = F8_dt1.Select("受注番号 ='" + JuchuuNO + "'");
+            if (selectRow.Length > 0)
+                return;
+
+            ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+            chkLockEntity.DataKBN = 1;
+            chkLockEntity.Number = JuchuuNO;
+            chkLockEntity.ProgramID = ProgramID;
+            chkLockEntity.PC = PCID;
+            chkLockEntity.OperatorCD = OperatorCD;
+            hbl.D_Exclusive_JuchuuNO_Delete(chkLockEntity);
+        }
+        private void D_Exclusive_OneNumber_Insert(DataRow dr)
+        {
+            if (!string.IsNullOrWhiteSpace(dr["受注番号"].ToString()))
+            {
+                string JuchuuNO = dr["受注番号"].ToString();
+
+                DataRow[] selectRow = F8_dt1.Select("受注番号 ='" + JuchuuNO + "'");
+                if (selectRow.Length == 0)
+                    return;
+
+                HikiateHenkouShoukaiEntity chkLockEntity = new HikiateHenkouShoukaiEntity();
+                chkLockEntity.DataKBN = 1;
+                chkLockEntity.Number = JuchuuNO;
+                chkLockEntity.ProgramID = ProgramID;
+                chkLockEntity.PC = PCID;
+                chkLockEntity.OperatorCD = OperatorCD;
+                hbl.D_Exclusive_Lock_Check(chkLockEntity);
             }
         }
         private void TemporarySave_Data()
@@ -681,7 +713,14 @@ namespace HikiateHenkouShoukai
                     if (existDr1 != null)
                         F8_dt1.Rows.Remove(existDr1);
                     F8_dt1.Rows.Add(F8_drNew);
-
+                    
+                    D_Exclusive_OneNumber_Insert(F8_drNew);
+                }
+                else
+                {
+                    if (select_dr1.Length > 0)
+                        //排他Delete
+                        D_Exclusive_OneNumber_Delete(select_dr1[0]);
                 }
             }
             gvMainDetail.Memory_Row_Count = F8_dt1.Rows.Count;
@@ -799,6 +838,7 @@ namespace HikiateHenkouShoukai
                 dt.Columns.Add("表示順");
                 dt.Columns.Add("倉庫");
                 dt.Columns.Add("受注番号");
+                dt.Columns.Add("ShouhinCD");
             }
             return dt;
         }

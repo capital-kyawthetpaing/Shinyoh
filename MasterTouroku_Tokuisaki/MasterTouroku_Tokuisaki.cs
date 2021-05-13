@@ -543,6 +543,35 @@ namespace MasterTouroku_Tokuisaki {
                         dr["Error"] = error;
                         create_dt.Rows.Add(dr);
 
+                        //05_12_2021[ssa]
+                        if (create_dt.Rows.Count > 0)
+                        {
+                            for (int r = 0; r < create_dt.Rows.Count; r++)
+                            {
+                                string date1 = create_dt.Rows[r]["ChangeDate"].ToString();//column_1
+                                string date2 = create_dt.Rows[r]["TorihikiKaisiDate"].ToString();//column_2
+                                string date3 = create_dt.Rows[r]["TorihikiShuuryouDate"].ToString();//column_3
+                                int line_No = r + 1;
+
+                                if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
+                                {
+                                    return null;
+                                }
+                                else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
+                                {
+                                    return null;
+                                }
+                                else if (Date_Check(date3, line_No, "入力可能値外エラー", "取引終了日") == "true")
+                                {
+                                    return null;
+                                }
+                                else if (r == create_dt.Rows.Count - 1)
+                                {
+                                    Xml = cf.DataTableToXml(create_dt);
+                                }
+                            }
+                        }
+
                         //obj.TokuisakiCD = splits[0];
                         //if (Null_Check(obj.TokuisakiCD, i, "得意先CD未入力エラー")) break;
                         //if (Byte_Check(10, obj.TokuisakiCD, i, "得意先CD桁数エラー")) break;
@@ -729,7 +758,9 @@ namespace MasterTouroku_Tokuisaki {
                         //create_dt.Rows.Add(dr);
                     }
                     //if (create_dt.Rows.Count == csvRows.Length - 1)
-                        Xml = cf.DataTableToXml(create_dt);
+                    //Xml = cf.DataTableToXml(create_dt);
+
+                   
                 }
                 else
                 {
@@ -758,21 +789,21 @@ namespace MasterTouroku_Tokuisaki {
         //    }
         //    return bl;
         //}
-        //public string Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
-        //{
-        //    //bool bl = false;
-        //    TextBox txt = new TextBox();
-        //    txt.Text = csv_Date;
-        //    if (!string.IsNullOrEmpty(csv_Date))
-        //    {
-        //        if (!cf.DateCheck(txt))
-        //        {
-        //            bbl.ShowMessage("E276", line_no.ToString(), error_msg1,error_msg2);
-        //            txt.Text = "true";
-        //        }
-        //    }
-        //    return txt.Text;
-        //}
+        public string Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
+        {
+            //bool bl = false;
+            TextBox txt = new TextBox();
+            txt.Text = csv_Date;
+            if (!string.IsNullOrEmpty(csv_Date))
+            {
+                if (!cf.DateCheck(txt))
+                {
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg1, error_msg2);
+                    txt.Text = "true";
+                }
+            }
+            return txt.Text;
+        }
         public void Create_Datatable_Column(DataTable create_dt)
         {
             create_dt.Columns.Add("TokuisakiCD");

@@ -1245,7 +1245,7 @@
             this.chkFW.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkFW.IsDatatableOccurs = null;
             this.chkFW.IsErrorOccurs = false;
-            this.chkFW.Location = new System.Drawing.Point(532, 114);
+            this.chkFW.Location = new System.Drawing.Point(532, 116);
             this.chkFW.MoveNext = true;
             this.chkFW.Name = "chkFW";
             this.chkFW.NextControl = null;
@@ -1260,7 +1260,7 @@
             this.chkSS.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.chkSS.IsDatatableOccurs = null;
             this.chkSS.IsErrorOccurs = false;
-            this.chkSS.Location = new System.Drawing.Point(483, 114);
+            this.chkSS.Location = new System.Drawing.Point(483, 116);
             this.chkSS.MoveNext = true;
             this.chkSS.Name = "chkSS";
             this.chkSS.NextControl = null;
@@ -1273,9 +1273,10 @@
             // lblYear
             // 
             this.lblYear.AutoSize = true;
-            this.lblYear.Location = new System.Drawing.Point(457, 117);
+            this.lblYear.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblYear.Location = new System.Drawing.Point(456, 116);
             this.lblYear.Name = "lblYear";
-            this.lblYear.Size = new System.Drawing.Size(17, 12);
+            this.lblYear.Size = new System.Drawing.Size(21, 13);
             this.lblYear.TabIndex = 12;
             this.lblYear.Text = "年";
             // 

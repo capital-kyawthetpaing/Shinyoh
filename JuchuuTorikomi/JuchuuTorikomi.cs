@@ -37,6 +37,8 @@ namespace JuchuuTorikomi
             StartProgram();
             cboMode.Visible = false;
             cboMode.Enabled = false;
+            gvJuchuuTorikomi.SetGridDesign();
+            gvJuchuuTorikomi.SetReadOnlyColumn("**");
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", false);
@@ -202,6 +204,19 @@ namespace JuchuuTorikomi
             txtDate1.Enabled = true;
             txtDate2.Enabled = true;
             txtDenpyouNO.Enabled = true;
+        }
+        private DataTable Create_gvColumn()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("TorikomiDenpyouNO", typeof(string));
+            dt.Columns.Add("InsertDateTime", typeof(string));
+            dt.Columns.Add("JuchuuNO", typeof(string));
+            dt.Columns.Add("JuchuuDate", typeof(string));
+            dt.Columns.Add("TokuisakiCD", typeof(string));
+            dt.Columns.Add("TokuisakiRyakuName", typeof(string));
+            dt.Columns.Add("KouritenCD", typeof(string));
+            dt.Columns.Add("KouritenRyakuName", typeof(string));
+            return dt;
         }
         private (string,string) GetFile()
         {

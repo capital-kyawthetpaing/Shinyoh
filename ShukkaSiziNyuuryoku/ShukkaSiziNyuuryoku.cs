@@ -73,6 +73,13 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.Columns.Insert(col.Count, newCol);
             newCol.DisplayIndex = col.Count - 1;
 
+            DataGridViewTextBoxColumn newCol2 = new DataGridViewTextBoxColumn();
+            newCol2.Name = "Hidden_JuchuuGyouNO";
+            newCol2.DataPropertyName = "Hidden_JuchuuGyouNO";
+            newCol2.Visible = false;
+            dgvShukkasizi.Columns.Insert(col.Count, newCol2);
+            newCol2.DisplayIndex = col.Count - 1;
+
             for (int i = 0; i < dgvShukkasizi.Columns.Count; i++)
             {
                 if (dgvShukkasizi.Columns[i].Name.Equals("colJuchuuSuu") || dgvShukkasizi.Columns[i].Name.Equals("colShukkakanousuu") ||
@@ -624,6 +631,7 @@ namespace ShukkaSiziNyuuryoku
             dt.Columns.Add("KouritenTelNO2-3", typeof(string));
             dt.Columns.Add("Hidden_ShouhinCD", typeof(string));
             dt.Columns.Add("Hidden_ShukkaSiziGyouNO", typeof(int));
+            dt.Columns.Add("Hidden_JuchuuGyouNO", typeof(int));
 
             dt.AcceptChanges();
             return dt;
@@ -779,7 +787,7 @@ namespace ShukkaSiziNyuuryoku
                                 Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                                 btnF12.Focus();
                             }
-
+                            
                             Update_Data();
                         }
                         else
@@ -790,7 +798,10 @@ namespace ShukkaSiziNyuuryoku
                     }
                     else if (cboMode.SelectedValue.ToString().Equals("4"))
                     {
-                        cf.DisablePanel(PanelTitle);
+                        cf.DisablePanel(PanelTitle);                        
+                        btn_Tokuisaki.Enabled = true;
+                        btnKouriren_Detail.Enabled = true;
+                        
                         Control BtnF9 = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
                         BtnF9.Visible = false;
                         Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -944,11 +955,17 @@ namespace ShukkaSiziNyuuryoku
             }
             else
             {
+                bool NotShowMode = true;
+                if (cboMode.SelectedValue.ToString().Equals("4"))
+                {
+                    NotShowMode = false;
+                }
+
                 sbShippingNO.E102Check(true);
                 sbShippingNO.E133Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
-                sbShippingNO.E115Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
-                sbShippingNO.E159Check(true, "ShukkaSiziNyuuryoku", sbShippingNO);
-                sbShippingNO.E160Check(true, "ShukkaSiziNyuuryoku", sbShippingNO, null);
+                sbShippingNO.E115Check(NotShowMode, "ShukkaSiziNyuuryoku", sbShippingNO);
+                sbShippingNO.E159Check(NotShowMode, "ShukkaSiziNyuuryoku", sbShippingNO);
+                sbShippingNO.E160Check(NotShowMode, "ShukkaSiziNyuuryoku", sbShippingNO, null);
             }
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
@@ -1100,8 +1117,9 @@ namespace ShukkaSiziNyuuryoku
                 DataRow existDr1 = F8_dt1.Select("SKMSNO='" + SKMSNO + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() == "0")
+                    if (row.Cells["colKonkaiShukkaSiziSuu"].Value.ToString() == "0" && row.Cells["chk"].Value.ToString() != "1")
                     {
+                        //D_Exclusive_Delete_One(row.Cells["colJuchuuNo"].Value.ToString());
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }
@@ -1137,9 +1155,26 @@ namespace ShukkaSiziNyuuryoku
                     }
                     // grid 1 insert(if exist, remove exist and insert)
                     if (existDr1 != null)
+                    {
                         F8_dt1.Rows.Remove(existDr1);
+                    }
+
+                        string JuchuuNO = F8_drNew["JuchuuNO"].ToString();
+                        sksz_e = new ShukkaSiziNyuuryokuEntity();
+                        sksz_e.DataKBN = 1;
+                        sksz_e.Number = JuchuuNO;
+                        sksz_e.ProgramID = ProgramID;
+                        sksz_e.PC = PCID;
+                        sksz_e.OperatorCD = OperatorCD;
+                        DataTable dt = new DataTable();
+                        sksz_bl = new ShukkasiziNyuuryokuBL();
+                        dt = sksz_bl.D_Exclusive_Lock_Check(sksz_e);
+                    
                     F8_dt1.Rows.Add(F8_drNew);
-                   
+                    
+                }
+                else {
+                    D_Exclusive_Delete_One(row.Cells["colJuchuuNo"].Value.ToString());
                 }
             }
             dgvShukkasizi.Memory_Row_Count = F8_dt1.Rows.Count;
@@ -1168,7 +1203,7 @@ namespace ShukkaSiziNyuuryoku
                 case 8:
                     if (F8_dt1.Rows.Count > 0)
                     {
-                        var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("SKMSNO")).CopyToDataTable();
+                        var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("JuchuuNO")).ThenBy(r => r.Field<int>("Hidden_JuchuuGyouNO")).CopyToDataTable();
                         dgvShukkasizi.DataSource = dtConfirm;
                         dgvShukkasizi.Memory_Row_Count = F8_dt1.Rows.Count;
                     }
@@ -1198,14 +1233,14 @@ namespace ShukkaSiziNyuuryoku
                         }
                     }
 
-                    if (cboMode.SelectedValue.ToString().Equals("2"))
-                    {
-                        dtGridview(1);
-                    }
-                    else
-                    {
+                    //if (cboMode.SelectedValue.ToString().Equals("2"))
+                    //{
+                    //    dtGridview(1);
+                    //}
+                    //else
+                    //{
                         dtGridview(2);
-                    }
+                    //}
                     dgvShukkasizi.ActionType = "F10";  //to skip gv error check at the ErrorCheck() of BaseForm.cs
                     bool count = false;
                     //Table_Y/排他テーブルに追加
@@ -1345,6 +1380,28 @@ namespace ShukkaSiziNyuuryoku
                 }
             }
         }
+        private void D_Exclusive_Delete_One(string SKMSNO)
+        {
+            if (cboMode.SelectedValue.ToString() == "2" || cboMode.SelectedValue.ToString() == "1")//update
+            {
+                string JuchuuNO = SKMSNO.Substring(0, SKMSNO.IndexOf('-'));
+                string GyoNO = SKMSNO.Substring(SKMSNO.IndexOf('-')+1);
+
+                DataRow[] existDr1 = F8_dt1.Select("JuchuuNO='" + JuchuuNO + "' AND SKMSNO <> '" + SKMSNO + "'");
+                if (existDr1.Length != 0)
+                {
+                    return;
+                }
+                ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+                chkLockEntity.DataKBN = 1;
+                chkLockEntity.Number = JuchuuNO;
+                chkLockEntity.ProgramID = ProgramID;
+                chkLockEntity.PC = PCID;
+                chkLockEntity.OperatorCD = OperatorCD;
+                sksz_bl.D_Exclusive_JuchuuNO_Delete(chkLockEntity);
+            }
+        }
+ 
         //private void Gvrow_Delete(DataRow dr)
         //{
         //    DataRow[] existDr1 = dtHaita.Select("JuchuuNO ='" + dr["JuchuuNO"] + "'");

@@ -18,6 +18,7 @@ GO
 --            : 2021/04/27 Y.Nishikawa 無駄なSELECT削除
 --            : 2021/04/30 Y.Nishikawa 条件不足
 --            : 2021/04/30 Y.Nishikawa [Shukka_Price.sql][JuchuuShousai_Price.sql]で処理されていた（左記のクエリがバグってたら、ここを戻す）
+--            : 2021/05/10 Y.Nishikawa 出荷行番号の採番方法修正
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkaNyuuryoku_Insert]
 	-- Add the parameters for the stored procedure here
@@ -205,7 +206,7 @@ BEGIN
 					ShukkaSiziZumiSuu		decimal(21,6) 'ShukkaSiziZumiSuu',
 					MiNyuukaSuu				decimal(21,6) 'MiNyuukaSuu',
 					ShukkaSuu				decimal(21,6) 'ShukkaSuu',
-					Kanryo					tinyint 'Kanryou',
+					Kanryo					tinyint 'Kanryo',
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
 					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
@@ -286,19 +287,54 @@ BEGIN
 				 left outer join F_Kouriten(@ShukkaDate) FK on FK.KouritenCD  = m.KouritenCD
 
 			--D_ShukkaMeisai B
+			--2021/05/10 Y.Nishikawa ADD 出荷行番号の採番方法修正↓↓
+			DECLARE @ShukkaSiziNO_INSERT  AS VARCHAR(12),
+            		@ShukkaSiziGyouNO_INSERT AS SMALLINT,
+            		@GyouNO AS SMALLINT = 1
+            
+            	DECLARE cursorShukkaSizi CURSOR READ_ONLY
+            	FOR
+            	SELECT DSM.ShukkaSiziNO
+            	      ,DSM.ShukkaSiziGyouNO 
+            	FROM #Temp_Main m,#Temp_Detail d
+                INNER JOIN D_ShukkaSiziMeisai DSM 
+            	ON DSM.ShukkaSiziNO = LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
+                AND DSM.ShukkaSiziGyouNO = RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
+            	ORDER BY DSM.ShukkaSiziNO
+            	        ,DSM.ShukkaSiziGyouNO
+            	
+            	OPEN cursorShukkaSizi
+            	
+            	FETCH NEXT FROM cursorShukkaSizi INTO @ShukkaSiziNO_INSERT,@ShukkaSiziGyouNO_INSERT
+            	WHILE @@FETCH_STATUS = 0
+            		BEGIN
+		    --2021/05/10 Y.Nishikawa ADD 出荷行番号の採番方法修正↑↑
+
 			INSERT INTO D_ShukkaMeisai
 			   (ShukkaNO,ShukkaGyouNO,GyouHyouziJun,DenpyouDate,BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO, 
 				ShukkaSuu,TaniCD,ShukkaMeisaiTekiyou,SoukoCD,UriageKanryouKBN,UriageZumiSuu,ShukkaSiziNO,ShukkaSiziGyouNO,JuchuuNO,JuchuuGyouNO,
 				InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime) 
 
-			select @ShukkaNO,ROW_NUMBER() OVER(ORDER BY (SELECT 1)),ROW_NUMBER() OVER(ORDER BY (SELECT 1)),d.DenpyouDate,FS.BrandCD,d.ShouhinCD,d.ShouhinName,NULLIF(d.JANCD,''),d.ColorRyakuName,d.ColorNO,d.SizeNO,
+			select @ShukkaNO,@GyouNO,@GyouNO,d.DenpyouDate,FS.BrandCD,d.ShouhinCD,d.ShouhinName,NULLIF(d.JANCD,''),d.ColorRyakuName,d.ColorNO,d.SizeNO,
 					d.ShukkaSuu,FS.TaniCD,NULLIF(d.ShukkaMeisaiTekiyou,''),d.SoukoCD,0,0,LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1),
 					RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO)),
 					DSM.JuchuuNO,DSM.JuchuuGyouNO,m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate
 				 from  #Temp_Main m , #Temp_Detail d
-				 left outer join D_ShukkaSiziMeisai DSM on DSM.ShukkaSiziNO =LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
+				 Inner join D_ShukkaSiziMeisai DSM on DSM.ShukkaSiziNO =LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
 								and DSM.ShukkaSiziGyouNO = RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))								
 				 left outer join F_Shouhin(@ShukkaDate) FS on FS.ShouhinCD  = d.ShouhinCD
+				 --2021/05/10 Y.Nishikawa ADD 出荷行番号の採番方法修正↓↓
+            	WHERE DSM.ShukkaSiziNO = @ShukkaSiziNO_INSERT
+            	AND DSM.ShukkaSiziGyouNO = @ShukkaSiziGyouNO_INSERT
+            
+            	SET @GyouNO = @GyouNO + 1
+            	FETCH NEXT FROM cursorShukkaSizi INTO @ShukkaSiziNO_INSERT,@ShukkaSiziGyouNO_INSERT
+            
+            		END
+            		
+            	CLOSE cursorShukkaSizi
+            	DEALLOCATE cursorShukkaSizi
+            --2021/05/10 Y.Nishikawa ADD 出荷行番号の採番方法修正↑↑
             
 			--2021/04/27 Y.Nishikawa ADD 出荷データ、在庫データの更新が不正↓↓
 			--D_ShukkaShousai C
@@ -635,8 +671,8 @@ BEGIN
 			update A set	
 				ShukkaKanryouKBN = case WHEN ShukkaSiziSuu <= ShukkaZumiSuu Then 1 WHEN d.Kanryo = 1 Then 1 ELSE 0 End
 			from D_ShukkaSiziMeisai A,#Temp_Detail d
-			where A.ShukkaSiziNO=LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1)
-			and A.ShukkaSiziGyouNO = RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
+			where A.ShukkaSiziNO=LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
+
 
 			--D_ShukkaSizi A
 			update A set	

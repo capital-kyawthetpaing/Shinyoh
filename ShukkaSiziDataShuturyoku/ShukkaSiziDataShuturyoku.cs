@@ -72,6 +72,7 @@ namespace ShukkaSiziDataShuturyoku {
         {
             txtToukuisaki.E101Check(true, "M_Tokuisaki", txtToukuisaki, txtTempDate, null);
             txtKouriten.E101Check(true, "M_Kouriten", txtKouriten, txtTempDate, null);
+            txtBrand.E101Check(true, "M_Shouhin", txtBrand, null, null);
             txtShukkaDate1.E103Check(true);
             txtShukkaDate2.E103Check(true);
             txtInputDate1.E103Check(true);
@@ -131,8 +132,10 @@ namespace ShukkaSiziDataShuturyoku {
                     dt.Columns["ShukkaSiziSuu"].ColumnName = "数量";
                     dt.Columns["UriageTanka"].ColumnName = "単価";
                     dt.Columns["UriageKingaku"].ColumnName = "金額";
-                    dt.Columns["KouritenJuusho2"].ColumnName = "先方発注№";
-                    dt.Columns["SenpouHacchuuNO"].ColumnName = "出荷指示番号";
+                    //dt.Columns["KouritenJuusho2"].ColumnName = "先方発注№";
+                    //dt.Columns["SenpouHacchuuNO"].ColumnName = "出荷指示番号";
+                    dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注№";
+                    dt.Columns["ShukkaSiziNO"].ColumnName = "出荷指示番号";
                     dt.Columns["ShukkaSiziMeisaiTekiyou"].ColumnName = "備考";
 
                     if (!System.IO.Directory.Exists("C:\\Excel"))

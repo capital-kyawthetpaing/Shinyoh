@@ -258,8 +258,8 @@ namespace JuchuuNyuuryoku
                 txtJuchuuNO.Focus();
             }
             //sobj = new SiiresakiDetail(false);
-            kobj = new KouritenDetail();
-            tobj = new TokuisakiDetail();
+            ////kobj = new KouritenDetail();
+            ////tobj = new TokuisakiDetail();
         }
 
         public void Disable_UDI_Mode()
@@ -402,6 +402,8 @@ namespace JuchuuNyuuryoku
                     DataTable dt = txtCopy.IsDatatableOccurs;
                     if (dt.Rows.Count > 0)
                         From_DB_To_Form(dt);
+
+                        txtJuchuuDate.Text = System.DateTime.Now.ToString("yyyy/MM/dd");
                     }
                     else
                     {

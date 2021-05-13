@@ -170,6 +170,7 @@ BEGIN
 					DenpyouDate				date,
 					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
 					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
+					ShukkaGyouNO            smallint DEFAULT 0,
 				)
 	    EXEC sp_xml_preparedocument @hQuantityAdjust OUTPUT,@XML_Detail
 
@@ -186,14 +187,31 @@ BEGIN
 			  ,ShukkaSuu
 			  ,Kanryo
 			  ,ShukkaMeisaiTekiyou			
-			  ,ShukkaSiziNOGyouNO   			 
+			  ,ShukkaSiziNOGyouNO 
+			  ,DenpyouDate  			 
 			  ,JuchuuNOGyouNO
-			  ,DenpyouDate
 			  ,ShouhinCD
 			  ,SoukoCD
+			  ,ShukkaGyouNO
 			 )
 			 
-			   SELECT *
+			   SELECT JANCD
+                      ,HinbanCD
+                      ,ShouhinName          
+                      ,ColorRyakuName          
+                      ,ColorNO       
+                      ,SizeNO 
+                      ,ShukkaSiziZumiSuu           
+                      ,MiNyuukaSuu    
+                      ,ShukkaSuu
+                      ,Kanryo
+                      ,ShukkaMeisaiTekiyou          
+                      ,ShukkaSiziNOGyouNO    
+                      ,DenpyouDate            
+                      ,JuchuuNOGyouNO
+                      ,ShouhinCD
+                      ,SoukoCD
+                      ,NULLIF(ShukkaGyouNO,0)
 					FROM OPENXML(@hQuantityAdjust, 'NewDataSet/test')
 					WITH
 					(
@@ -209,10 +227,11 @@ BEGIN
 					Kanryo					tinyint 'Kanryou',
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
-					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
 					DenpyouDate				date 'DenpyouDate',
+					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
 					ShouhinCD				varchar(50)'ShouhinCD',
-					SoukoCD					varchar(10)'SoukoCD'
+					SoukoCD					varchar(10)'SoukoCD',
+					ShukkaGyouNO            smallint 'ShukkaGyouNO'
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 					
@@ -245,6 +264,7 @@ BEGIN
 		--出荷指示明細
 		UPDATE DSSM
 		SET ShukkaZumiSuu = ShukkaZumiSuu - DSUM.ShukkaSuu
+			,ShukkaKanryouKBN = 0
 		FROM D_ShukkaSiziMeisai DSSM
 		INNER JOIN D_ShukkaMeisai DSUM
 		ON DSUM.ShukkaSiziNO = DSSM.ShukkaSiziNO
@@ -371,8 +391,38 @@ BEGIN
 			left outer join D_ShukkaSiziMeisai DSM  on DSM.ShukkaSiziNO=LEFT((d.ShukkaSiziNOGyouNO), CHARINDEX('-', (d.ShukkaSiziNOGyouNO)) - 1) 
 			and DSM.ShukkaSiziGyouNO=RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))			
 			left outer join F_Shouhin(@ShukkaDate) FS on FS.ShouhinCD=d.ShouhinCD
-			where D_ShukkaMeisai.ShukkaNo=@ShukkaNo and D_ShukkaMeisai.ShukkaSiziNO=DSM.ShukkaSiziNO and D_ShukkaMeisai.ShukkaSiziGyouNO=DSM.ShukkaSiziGyouNO
-			
+			where D_ShukkaMeisai.ShukkaNo=@ShukkaNo 
+			and D_ShukkaMeisai.ShukkaSiziNO=DSM.ShukkaSiziNO 
+			and D_ShukkaMeisai.ShukkaSiziGyouNO=DSM.ShukkaSiziGyouNO
+			and D_ShukkaMeisai.ShukkaGyouNO = d.ShukkaGyouNO
+
+            --行削除分をDelete
+            Delete From D_ShukkaMeisai
+            Where not exists(Select 1 From #Temp_Detail AS TD Where TD.ShukkaGyouNO = D_ShukkaMeisai.ShukkaGyouNO And D_ShukkaMeisai.ShukkaNO = @ShukkaNO)
+            And D_ShukkaMeisai.ShukkaNO = @ShukkaNO
+            ;
+
+            --行追加分
+            --D_ShukkaMeisai B
+            INSERT INTO D_ShukkaMeisai
+               (ShukkaNO,ShukkaGyouNO,GyouHyouziJun,DenpyouDate,BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO, 
+                ShukkaSuu,TaniCD,ShukkaMeisaiTekiyou,SoukoCD,UriageKanryouKBN,UriageZumiSuu,ShukkaSiziNO,ShukkaSiziGyouNO,JuchuuNO,JuchuuGyouNO,
+                InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime) 
+
+            select @ShukkaNO,
+                    ISNULL((select MAX(ShukkaGyouNO) from D_ShukkaMeisai Where ShukkaNO = @ShukkaNO group by ShukkaNO),0) + ROW_NUMBER() OVER(ORDER BY d.ShukkaSiziNOGyouNO),
+                    ISNULL((select MAX(ShukkaGyouNO) from D_ShukkaMeisai Where ShukkaNO = @ShukkaNO group by ShukkaNO),0) + ROW_NUMBER() OVER(ORDER BY d.ShukkaSiziNOGyouNO),
+                    d.DenpyouDate,FS.BrandCD,d.ShouhinCD,d.ShouhinName,NULLIF(d.JANCD,''),d.ColorRyakuName,d.ColorNO,d.SizeNO,
+                    d.ShukkaSuu,FS.TaniCD,NULLIF(d.ShukkaMeisaiTekiyou,''),d.SoukoCD,0,0,LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1),
+                    RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO)),
+                    DSM.JuchuuNO,DSM.JuchuuGyouNO,m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate
+                 from  #Temp_Main m , #Temp_Detail d
+                 left outer join D_ShukkaSiziMeisai DSM on DSM.ShukkaSiziNO =LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
+                                and DSM.ShukkaSiziGyouNO = RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))                                
+                 left outer join F_Shouhin(@ShukkaDate) FS on FS.ShouhinCD  = d.ShouhinCD
+            WHERE NOT EXISTS(SELECT 1 FROM D_ShukkaMeisai AS DM WHERE DM.ShukkaNO = @ShukkaNO AND DM.ShukkaGyouNO = d.ShukkaGyouNO)
+            
+						
 		--2021/04/27 Y.Nishikawa CHG 出荷データ、在庫データの更新が不正↓↓
 		----D_ShukkaShousai C
 		--Update  D_ShukkaShousai set				

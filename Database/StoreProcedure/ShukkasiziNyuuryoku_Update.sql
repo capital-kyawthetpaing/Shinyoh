@@ -620,6 +620,118 @@ and D_ShukkaSiziMeisai.ShukkaSiziGyouNO=TD.ShukkaSiziGyouNO
 and D_ShukkaSiziMeisai.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1) 
 and D_ShukkaSiziMeisai.JuchuuGyouNO=RIGHT(TD.SKMSNO, LEN(TD.SKMSNO) - CHARINDEX('-', TD.SKMSNO))-- KTP Change after update
 
+--çsçÌèúï™ÇDelete
+Delete From D_ShukkaSiziMeisai
+Where not exists(Select 1 From #Temp_Details AS TD Where TD.ShukkaSiziGyouNO = D_ShukkaSiziMeisai.ShukkaSiziGyouNO And D_ShukkaSiziMeisai.ShukkaSiziNO = @ShukkaSiziNO)
+And D_ShukkaSiziMeisai.ShukkaSiziNO = @ShukkaSiziNO
+;
+
+--çsí«â¡ï™
+--TableB
+INSERT INTO [dbo].[D_ShukkaSiziMeisai]
+	(
+		[ShukkaSiziNO]
+		,[ShukkaSiziGyouNO]
+		,[GyouHyouziJun]
+		,[KouritenCD]
+		,[KouritenRyakuName]
+		,[BrandCD]
+		,[ShouhinCD]
+		,[ShouhinName]
+		,[JANCD]
+		,[ColorRyakuName]
+		,[ColorNO]
+		,[SizeNO]
+		,[Kakeritu]
+		,[ShukkaSiziSuu]
+		,[TaniCD]
+		,[UriageTanka]
+		,[UriageTankaShouhizei]
+		,[UriageHontaiTanka]
+		,[UriageKingaku]
+		,[UriageHontaiKingaku]
+		,[UriageShouhizeiGaku]
+		,[ShukkaSiziMeisaiTekiyou]
+		,[SoukoCD]
+		,[ShukkaKanryouKBN]
+		,[ShukkaZumiSuu]
+		,[JuchuuNO]
+		,[JuchuuGyouNO]
+		,[KouritenName]
+		,[KouritenYuubinNO1]
+		,[KouritenYuubinNO2]
+		,[KouritenJuusho1]
+		,[KouritenJuusho2]
+		,[KouritenTelNO1-1]
+		,[KouritenTelNO1-2]
+		,[KouritenTelNO1-3]
+		,[KouritenTelNO2-1]
+		,[KouritenTelNO2-2]
+		,[KouritenTelNO2-3]
+		,[KouritenTantouBushoName]
+		,[KouritenTantoushaYakushoku]
+		,[KouritenTantoushaName]
+		,[InsertOperator]
+		,[InsertDateTime]
+		,[UpdateOperator]
+		,[UpdateDateTime]
+	)
+	SELECT
+	
+		@ShukkaSiziNO --Fnc_Number
+		--2021/04/14 Y.Nishikawa ADD TaskNO.0271Å´Å´
+		--,@GyouNo
+		--,@GyouNo
+		,ISNULL((select MAX(ShukkaSiziGyouNO) from D_ShukkaSiziMeisai Where ShukkaSiziNO = @ShukkaSiziNO group by ShukkaSiziNO),0) + ROW_NUMBER() OVER(ORDER BY FS.HinbanCD,TD.SKMSNO)
+		,ISNULL((select MAX(ShukkaSiziGyouNO) from D_ShukkaSiziMeisai Where ShukkaSiziNO = @ShukkaSiziNO group by ShukkaSiziNO),0) + ROW_NUMBER() OVER(ORDER BY FS.HinbanCD,TD.SKMSNO)
+		--2021/04/14 Y.Nishikawa ADD TaskNO.0271Å™Å™
+		,case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
+		,case when TD.KouritenRyakuName is null then DJ.KouritenRyakuName else TD.KouritenRyakuName end
+		,FS.BrandCD
+		,TD.Hidden_ShouhinCD--Add
+		,TD.ShouhinName
+		,FS.JANCD
+		,TD.ColorRyakuName
+		,TD.ColorNO
+		,TD.SizeNO
+		,1
+		,TD.KonkaiShukkaSiziSuu
+		,FS.TaniCD
+		,TD.UriageTanka
+		,0
+		,0
+		,TD.UriageKingaku
+		,0
+		,0
+		,(CASE ISNULL(TD.ShukkaSiziMeisaiTekiyou,'') WHEN '' THEN NULL
+		  ELSE TD.ShukkaSiziMeisaiTekiyou END)
+		,TD.SoukoCD
+		,0
+		,0
+		,LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1)
+		,RIGHT(TD.SKMSNO, LEN(TD.SKMSNO) - CHARINDEX('-', TD.SKMSNO))
+		,case when TD.KouritenName is null then DJ.KouritenName else TD.KouritenName end
+		,case when TD.KouritenYuubinNO1  is null then DJ.KouritenYuubinNO1 else TD.KouritenYuubinNO1 end
+		,case when TD.KouritenYuubinNO2  is null then DJ.KouritenYuubinNO2 else TD.KouritenYuubinNO2 end
+		,case when TD.KouritenJuusho1  is null then DJ.KouritenJuusho1 else TD.KouritenJuusho1 end
+		,case when TD.KouritenJuusho2  is null then DJ.KouritenJuusho2 else TD.KouritenJuusho2 end
+		,case when TD.KouritenTel11  is null then DJ.[KouritenTelNO1-1] else TD.KouritenTel11 end
+		,case when TD.KouritenTel12  is null then DJ.[KouritenTelNO1-2] else TD.KouritenTel12 end
+		,case when TD.KouritenTel13  is null then DJ.[KouritenTelNO1-3] else TD.KouritenTel13 end
+		,case when TD.KouritenTel21  is null then DJ.[KouritenTelNO2-1] else TD.KouritenTel21 end
+		,case when TD.KouritenTel22  is null then DJ.[KouritenTelNO2-2] else TD.KouritenTel23 end
+		,case when TD.KouritenTel23  is null then DJ.[KouritenTelNO2-3] else TD.KouritenTel23 end
+		,NULL,NULL,NULL
+		,@OperatorCD,@currentDate,@OperatorCD,@currentDate
+	FROM #Temp_Details TD
+	LEFT OUTER JOIN D_Juchuu DJ
+	ON DJ.JuchuuNO=LEFT(TD.SKMSNO, CHARINDEX('-', TD.SKMSNO) - 1)
+	LEFT OUTER JOIN F_Shouhin(@ShippingDate) FS
+	ON FS.ShouhinCD=TD.Hidden_ShouhinCD
+	WHERE NOT EXISTS(SELECT 1 FROM D_ShukkaSiziMeisai AS DM WHERE DM.ShukkaSiziNO = @ShukkaSiziNO AND DM.ShukkaSiziGyouNO = TD.ShukkaSiziGyouNO)
+	;
+
+
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
 (
         [HistoryGuid]

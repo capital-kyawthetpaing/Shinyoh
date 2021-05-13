@@ -21,6 +21,7 @@ GO
 --            : 2021/04/20 Y.Nishikawa 無駄なSELECT削除
 --            : 2021/04/20 Y.Nishikawa 着荷済数、着荷完了区分が更新されない
 --            : 2021/04/27 Y.Nishikawa 在庫更新を引当ファンクションに移動
+--            : 2021/05/11 Y.Nishikawa 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）
 -- =============================================
 CREATE PROCEDURE [dbo].[ChakuniNyuuryoku_Insert]
 @XML_Main as xml,
@@ -466,7 +467,10 @@ from D_ChakuniMeisai dc Inner join #Temp_Main m on dc.ChakuniNO=@ChakuniNO
 Update DCYM
 SET ChakuniZumiSuu = DCYM.ChakuniZumiSuu + DCKM.ChakuniSuu,
 	ChakuniKanryouKBN = Case When DCYM.ChakuniYoteiSuu <= (DCYM.ChakuniZumiSuu + DCKM.ChakuniSuu) Then 1 
-	                         When TempD.SiireKanryouKBN = 'True' Then 1
+	                         --2021/05/11 Y.Nishikawa CHG 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）↓↓
+	                         --When TempD.SiireKanryouKBN = 'True' Then 1
+							 When TempD.SiireKanryouKBN = '1' Then 1
+							 --2021/05/11 Y.Nishikawa CHG 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）↑↑
 							 Else 0 End,
     UpdateOperator = @Operator,
     UpdateDateTime = @currentDate
@@ -508,7 +512,10 @@ Where D_ChakuniYoteiMeisai.ChakuniYoteiNO=m.ChakuniYoteiNO
 Update DHAM
 SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu + DCKM.ChakuniSuu,
 	ChakuniKanryouKBN = Case When DHAM.ChakuniYoteiZumiSuu <= (DHAM.ChakuniZumiSuu + DCKM.ChakuniSuu) Then 1 
-	                         When TempD.SiireKanryouKBN = 'True' Then 1
+	                         --2021/05/11 Y.Nishikawa CHG 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）↓↓
+	                         --When TempD.SiireKanryouKBN = 'True' Then 1
+							 When TempD.SiireKanryouKBN = '1' Then 1
+							 --2021/05/11 Y.Nishikawa CHG 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）↑↑
 							 Else 0 End,
     UpdateOperator = @Operator,
     UpdateDateTime = @currentDate
