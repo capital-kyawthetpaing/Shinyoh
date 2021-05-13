@@ -132,8 +132,10 @@ namespace ShukkaSiziDataShuturyoku {
                     dt.Columns["ShukkaSiziSuu"].ColumnName = "数量";
                     dt.Columns["UriageTanka"].ColumnName = "単価";
                     dt.Columns["UriageKingaku"].ColumnName = "金額";
-                    dt.Columns["KouritenJuusho2"].ColumnName = "先方発注№";
-                    dt.Columns["SenpouHacchuuNO"].ColumnName = "出荷指示番号";
+                    //dt.Columns["KouritenJuusho2"].ColumnName = "先方発注№";
+                    //dt.Columns["SenpouHacchuuNO"].ColumnName = "出荷指示番号";
+                    dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注№";
+                    dt.Columns["ShukkaSiziNO"].ColumnName = "出荷指示番号";
                     dt.Columns["ShukkaSiziMeisaiTekiyou"].ColumnName = "備考";
 
                     if (!System.IO.Directory.Exists("C:\\Excel"))
