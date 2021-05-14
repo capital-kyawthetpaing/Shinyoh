@@ -19,8 +19,10 @@ namespace Shinyoh_Search
         public string Id = string.Empty;
         public string Key = string.Empty;
         public string Char1 = string.Empty;
+        public string Char2 = string.Empty;
 
         public string Access_Type;
+        public string Access_Key;
         public MultiPorposeSearch()
         {
             InitializeComponent();
@@ -32,6 +34,8 @@ namespace Shinyoh_Search
         {
             txtID1.Text = Access_Type;
             txtID2.Text = Access_Type;
+            txtKey1.Text = Access_Key;
+            txtKey2.Text = Access_Key;
 
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
             SetButton(ButtonType.BType.Normal, F9, "", false);
@@ -81,6 +85,7 @@ namespace Shinyoh_Search
                 Id = gvMultiporpose.CurrentRow.Cells["colID"].Value.ToString();
                 Key = gvMultiporpose.CurrentRow.Cells["colKey"].Value.ToString();
                 Char1 = gvMultiporpose.CurrentRow.Cells["colChar1"].Value.ToString();
+                Char2 = gvMultiporpose.CurrentRow.Cells["colChar2"].Value.ToString();
             }
             this.Close();
         }

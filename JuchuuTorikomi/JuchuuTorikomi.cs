@@ -66,7 +66,7 @@ namespace JuchuuTorikomi
         {
             multipurposeBL bl = new multipurposeBL();
 
-            DataTable dt = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
+            DataTable dt = bl.M_Multiporpose_SelectData(string.Empty, 2, "111", "1");
 
             if (dt.Rows.Count > 0)
             {
@@ -200,6 +200,7 @@ namespace JuchuuTorikomi
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
             txtDenpyouNO.Enabled = false;
+            F10.Visible = false;
         }
         private void Disable_Panel()
         {
@@ -210,6 +211,8 @@ namespace JuchuuTorikomi
             txtDate1.Enabled = true;
             txtDate2.Enabled = true;
             txtDenpyouNO.Enabled = true;
+            F10.Enabled = true;
+            F10.Visible = true;
         }
         private DataTable Create_gvColumn()
         {

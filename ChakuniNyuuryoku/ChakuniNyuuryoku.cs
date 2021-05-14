@@ -720,8 +720,10 @@ namespace ChakuniNyuuryoku
                     txtScheduled.Focus();
                     return;//ktp added (show error message and stop process)
                 }
+                D_Exclusive_Number_Delete();
+
                 dtmain = cbl.ChakuniNyuuryoku_Display(chkEntity);
-                //ChakuniYoteiNO_Delete();
+                
                 foreach (DataRow dr in dtmain.Rows)
                 {
                     bool exists = false;

@@ -75,11 +75,14 @@ namespace ShukkaTorikomi
             ErrorCheck();
             dataBind();
             gvShukkaTorikomi.UseRowNo(true);
+            Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+            btnF10.Visible = false;
         }
 
         private void dataBind()
         {
             multipurposeBL bl = new multipurposeBL();
+
             dtShuKka = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
 
             if (dtShuKka.Rows.Count > 0)
@@ -119,6 +122,7 @@ namespace ShukkaTorikomi
             txtDate1.Text = string.Empty;
             txtDate2.Text = string.Empty;
             txtDenpyouNO.Text = string.Empty;
+           
 
             if(rdo_Toroku.Checked)
             {
@@ -127,6 +131,11 @@ namespace ShukkaTorikomi
                 txtDate1.Enabled = false;
                 txtDate2.Enabled = false;
                 txtDenpyouNO.Enabled = false;
+                //F10.Enabled = false;
+                //F6.Enabled = true;
+                Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+                btnF10.Visible = false;
+
             }
             else
             {
@@ -135,6 +144,10 @@ namespace ShukkaTorikomi
                 txtDate1.Enabled = true;
                 txtDate2.Enabled = true;
                 txtDenpyouNO.Enabled = true;
+                //F10.Enabled = true;
+                //F6.Enabled = true;
+                Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+                btnF10.Visible = true;
             }
         }
 
@@ -175,6 +188,10 @@ namespace ShukkaTorikomi
             if (tagID == "6")
             {
                 //Clear();
+                rdo_Toroku.Checked = true;
+                rdo_Toroku.Focus();
+                Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+                btnF10.Visible = false;
             }
             if (tagID == "10")
             {

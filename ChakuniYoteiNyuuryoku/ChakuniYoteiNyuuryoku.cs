@@ -47,7 +47,7 @@ namespace ChakuniYoteiNyuuryoku
             dtTemp = new DataTable();
             dtClear= CreateTable_Detail();
 
-            this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            //this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniYoteiNyuuryoku_Load(object sender, EventArgs e)
         {
@@ -260,8 +260,10 @@ namespace ChakuniYoteiNyuuryoku
                 }
                 else
                 {
+                    D_Exclusive_HacchuuNO_Delete();
+                    
                     dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-                    //HacchuuNO_Delete();
+                  
                     foreach (DataRow dr in dtmain.Rows)
                     {
                         bool exists = false;
@@ -1094,7 +1096,19 @@ namespace ChakuniYoteiNyuuryoku
                 {
                     if (row.Cells["colYoteiSuu"].Value.ToString() == "0" )
                     {
-                        D_Exclusive_OneNumber_Delete(existDr1);
+                        //確認テーブルの中で１つの場合にはDeleteしてOK
+                        DataRow[] dataRows = F8_dt1.Select("HacchuuNO ='" + existDr1["HacchuuNO"].ToString() + "'");
+                        if (dataRows.Length == 1)
+                        {
+                            ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
+                            chkLockEntity.DataKBN = 2;
+                            chkLockEntity.Number = existDr1["HacchuuNO"].ToString();
+                            chkLockEntity.ProgramID = ProgramID;
+                            chkLockEntity.PC = PCID;
+                            chkLockEntity.OperatorCD = OperatorCD;
+                            cbl.D_Exclusive_HacchuuNO_Delete(chkLockEntity);
+                        }
+
                         F8_dt1.Rows.Remove(existDr1);
                         existDr1 = null;
                     }

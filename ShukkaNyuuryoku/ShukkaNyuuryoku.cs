@@ -544,7 +544,10 @@ namespace ShukkaNyuuryoku {
                         obj.ProgramID = ProgramID;
                         obj.PC = PCID;
 
-                        DataTable dt = sBL.ShukkaNyuuryoku_Display(obj);
+
+                    D_Exclusive_ShukkaSiziNO_Delete();
+
+                    DataTable dt = sBL.ShukkaNyuuryoku_Display(obj);
                         if (dt.Rows.Count > 0)
                         {
                             //dt.Columns.Remove("SoukoCD");
