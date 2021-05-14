@@ -115,7 +115,7 @@ namespace MasterList_Shouhin
             // rdo_All
             // 
             this.rdo_All.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_All.Location = new System.Drawing.Point(222, 13);
+            this.rdo_All.Location = new System.Drawing.Point(251, 13);
             this.rdo_All.MoveNext = true;
             this.rdo_All.Name = "rdo_All";
             this.rdo_All.NextControl = null;
@@ -130,7 +130,7 @@ namespace MasterList_Shouhin
             this.rdo_ChokkinDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
             this.rdo_ChokkinDate.Checked = true;
             this.rdo_ChokkinDate.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_ChokkinDate.Location = new System.Drawing.Point(117, 13);
+            this.rdo_ChokkinDate.Location = new System.Drawing.Point(141, 13);
             this.rdo_ChokkinDate.MoveNext = true;
             this.rdo_ChokkinDate.Name = "rdo_ChokkinDate";
             this.rdo_ChokkinDate.NextControl = null;
@@ -148,7 +148,7 @@ namespace MasterList_Shouhin
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblClassification.ForeColor = System.Drawing.Color.White;
-            this.lblClassification.Location = new System.Drawing.Point(12, 13);
+            this.lblClassification.Location = new System.Drawing.Point(21, 13);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
             this.lblClassification.TabIndex = 7;
