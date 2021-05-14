@@ -183,8 +183,8 @@ namespace HacchuuList
 
 
                     //for excel
-                    saveFileDialog1.Filter = "ExcelFile|*.xls";
-                    saveFileDialog1.FileName = "発注リスト.xls";
+                    saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                    saveFileDialog1.FileName = "発注リスト.xlsx";
                     saveFileDialog1.RestoreDirectory = true;
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {

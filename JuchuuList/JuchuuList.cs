@@ -213,8 +213,8 @@ namespace JuchuuList {
 
 
                         //for excel
-                        saveFileDialog1.Filter = "ExcelFile|*.xls";
-                        saveFileDialog1.FileName = "受注リスト.xls";
+                        saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                        saveFileDialog1.FileName = "受注リスト.xlsx";
                         saveFileDialog1.RestoreDirectory = true;
                         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                         {

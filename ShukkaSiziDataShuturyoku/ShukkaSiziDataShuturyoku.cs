@@ -145,8 +145,8 @@ namespace ShukkaSiziDataShuturyoku {
                     saveFileDialog1.InitialDirectory = @"C:\Excel\";
 
                     //for excel
-                    saveFileDialog1.Filter = "ExcelFile|*.xls";
-                   // saveFileDialog1.FileName = ".xls";
+                    saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                    saveFileDialog1.FileName = "出荷指示データ出力.xlsx";
                     saveFileDialog1.RestoreDirectory = true;
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {

@@ -118,7 +118,7 @@ namespace BL
 
                 // Save the sheet and close 
                 oSheet = null;
-                oWB.SaveAs(obj.FilePath, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookNormal,//ssa
+                oWB.SaveAs(obj.FilePath, Microsoft.Office.Interop.Excel.XlFileFormat.xlWorkbookDefault,
                     Missing.Value, Missing.Value, Missing.Value, Missing.Value,
                     Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive,//ssa
                     Missing.Value, Missing.Value, Missing.Value,
