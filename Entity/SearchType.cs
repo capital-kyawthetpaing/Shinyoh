@@ -32,7 +32,8 @@ namespace Entity {
             TaxRate,//221
             Evaluation,//106
             Management,//107
-            Kubun//109
+            Kubun,//109
+            FileImport//111
         }
     }
 }

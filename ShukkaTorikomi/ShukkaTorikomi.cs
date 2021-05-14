@@ -44,6 +44,8 @@ namespace ShukkaTorikomi
             cboMode.Visible = false;
             cboMode.Enabled = false;
             cboMode.Bind(false, multi_Entity);
+            gvShukkaTorikomi.SetGridDesign();
+            gvShukkaTorikomi.SetReadOnlyColumn("**");
 
             SetButton(ButtonType.BType.Close, F1, "終了(F1)", true);
             SetButton(ButtonType.BType.New, F2, "新規(F2)", false);
@@ -66,13 +68,13 @@ namespace ShukkaTorikomi
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
             txtDenpyouNO.Enabled = false;
-            gvMainDetail.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gvMainDetail.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gvMainDetail.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvShukkaTorikomi.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvShukkaTorikomi.Columns[1].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvShukkaTorikomi.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gvShukkaTorikomi.Columns[3].SortMode = DataGridViewColumnSortMode.NotSortable;
             ErrorCheck();
             dataBind();
-            gvMainDetail.UseRowNo(true);
+            gvShukkaTorikomi.UseRowNo(true);
         }
 
         private void dataBind()
@@ -176,10 +178,10 @@ namespace ShukkaTorikomi
             }
             if (tagID == "10")
             {
-                gvMainDetail.ActionType = "F10";
+                gvShukkaTorikomi.ActionType = "F10";
                 if(ErrorCheck(PanelDetail))
                     DataGridviewBind();
-                gvMainDetail.ActionType = string.Empty;
+                gvShukkaTorikomi.ActionType = string.Empty;
             }
             //base.FunctionProcess(tagID);
 
@@ -231,7 +233,7 @@ namespace ShukkaTorikomi
             obj.TorikomiDenpyouNO = txtDenpyouNO.Text;
             DataTable dt = objMethod.ShukkaTorikomi_Select_Check(obj);
 
-            gvMainDetail.DataSource = dt;
+            gvShukkaTorikomi.DataSource = dt;
         }
 
         private (string,string) ChooseFile()
