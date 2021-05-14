@@ -1295,7 +1295,7 @@
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sLabel6.Location = new System.Drawing.Point(164, 43);
+            this.sLabel6.Location = new System.Drawing.Point(165, 43);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(100, 19);
             this.sLabel6.TabIndex = 64;
@@ -1343,7 +1343,7 @@
             this.txtJuchuuDate.IsErrorOccurs = false;
             this.txtJuchuuDate.IsRequire = false;
             this.txtJuchuuDate.IsUseInitializedLayout = true;
-            this.txtJuchuuDate.Location = new System.Drawing.Point(265, 14);
+            this.txtJuchuuDate.Location = new System.Drawing.Point(264, 13);
             this.txtJuchuuDate.MaxLength = 10;
             this.txtJuchuuDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJuchuuDate.MoveNext = true;
@@ -1364,7 +1364,7 @@
             this.lblPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblPayment.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblPayment.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblPayment.Location = new System.Drawing.Point(165, 14);
+            this.lblPayment.Location = new System.Drawing.Point(164, 13);
             this.lblPayment.Name = "lblPayment";
             this.lblPayment.Size = new System.Drawing.Size(100, 19);
             this.lblPayment.TabIndex = 11;
@@ -1377,7 +1377,7 @@
             this.lblKana_Name.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblKana_Name.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblKana_Name.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblKana_Name.Location = new System.Drawing.Point(25, 9);
+            this.lblKana_Name.Location = new System.Drawing.Point(26, 9);
             this.lblKana_Name.Name = "lblKana_Name";
             this.lblKana_Name.Size = new System.Drawing.Size(100, 19);
             this.lblKana_Name.TabIndex = 55;
@@ -1390,7 +1390,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(25, 34);
+            this.sLabel3.Location = new System.Drawing.Point(26, 34);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 57;
@@ -1414,7 +1414,7 @@
             this.txtCopy.IsUseInitializedLayout = true;
             this.txtCopy.lblName = null;
             this.txtCopy.lblName1 = null;
-            this.txtCopy.Location = new System.Drawing.Point(125, 34);
+            this.txtCopy.Location = new System.Drawing.Point(126, 34);
             this.txtCopy.MaxLength = 12;
             this.txtCopy.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtCopy.MoveNext = true;
@@ -1446,7 +1446,7 @@
             this.txtJuchuuNO.IsUseInitializedLayout = true;
             this.txtJuchuuNO.lblName = null;
             this.txtJuchuuNO.lblName1 = null;
-            this.txtJuchuuNO.Location = new System.Drawing.Point(125, 9);
+            this.txtJuchuuNO.Location = new System.Drawing.Point(126, 9);
             this.txtJuchuuNO.MaxLength = 12;
             this.txtJuchuuNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJuchuuNO.MoveNext = true;

@@ -145,8 +145,8 @@ namespace ShukkaSiziDataShuturyoku {
                     saveFileDialog1.InitialDirectory = @"C:\Excel\";
 
                     //for excel
-                    saveFileDialog1.Filter = "ExcelFile|*.xls";
-                    saveFileDialog1.FileName = ".xls";
+                    saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                    saveFileDialog1.FileName = "出荷指示データ出力.xlsx";
                     saveFileDialog1.RestoreDirectory = true;
                     if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     {
@@ -155,7 +155,7 @@ namespace ShukkaSiziDataShuturyoku {
                         obj.SheetName = "Sheet1";
                         obj.Start_Interior_Column = "A1";
                         obj.End_Interior_Column = "P1";
-                        obj.Interior_Color = Color.Gold;
+                        obj.Interior_Color = Color.FromArgb(255, 192, 0);
                         obj.Start_Font_Column = "A1";
                         obj.End_Font_Column = "P1";
                         obj.Font_Color = Color.Black;
@@ -167,14 +167,9 @@ namespace ShukkaSiziDataShuturyoku {
                         //for column 9(I)
                         obj.OnePlaceDecimal_Column = new List<int>();
                         obj.OnePlaceDecimal_Column.Add(9);
-                        obj.Decimal_Format = "0.0";
-                        //for column 10(J)
-                        obj.Not_Exponential_Column = new List<int>();
-                        obj.Not_Exponential_Column.Add(10);
-                        obj.Not_Exponential_Column.Add(15);
-                        obj.Not_Exponential_Format = "0";
+                        obj.Decimal_Format = "#.0";
                         obj.Start_Title_Center_Column = "A1";
-                        obj.End_Title_Center_Column = "P1";                            
+                        obj.End_Title_Center_Column = "P1";
                         bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
                         if (bl)
                         {

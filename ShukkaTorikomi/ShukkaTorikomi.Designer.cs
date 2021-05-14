@@ -32,6 +32,8 @@
             this.rdo_Toroku = new Shinyoh_Controls.SRadio();
             this.rdo_Sakujo = new Shinyoh_Controls.SRadio();
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.txtShukkaToNo2 = new Shinyoh_Search.SearchBox();
+            this.txtShukkaToNo1 = new Shinyoh_Search.SearchBox();
             this.txtDate2 = new Shinyoh_Controls.STextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDenpyouNO = new Shinyoh_Controls.STextBox();
@@ -48,8 +50,6 @@
             this.colKouritenRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDate1 = new Shinyoh_Controls.STextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtImportFileName = new Shinyoh_Controls.STextBox();
-            this.txtImportFolder = new Shinyoh_Controls.STextBox();
             this.sLabel5 = new Shinyoh_Controls.SLabel();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
@@ -120,6 +120,8 @@
             // 
             // PanelDetail
             // 
+            this.PanelDetail.Controls.Add(this.txtShukkaToNo2);
+            this.PanelDetail.Controls.Add(this.txtShukkaToNo1);
             this.PanelDetail.Controls.Add(this.txtDate2);
             this.PanelDetail.Controls.Add(this.label3);
             this.PanelDetail.Controls.Add(this.txtDenpyouNO);
@@ -128,8 +130,6 @@
             this.PanelDetail.Controls.Add(this.gvShukkaTorikomi);
             this.PanelDetail.Controls.Add(this.txtDate1);
             this.PanelDetail.Controls.Add(this.label1);
-            this.PanelDetail.Controls.Add(this.txtImportFileName);
-            this.PanelDetail.Controls.Add(this.txtImportFolder);
             this.PanelDetail.Controls.Add(this.sLabel5);
             this.PanelDetail.Controls.Add(this.sLabel4);
             this.PanelDetail.Controls.Add(this.sLabel3);
@@ -138,6 +138,67 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1370, 630);
             this.PanelDetail.TabIndex = 2;
+            this.PanelDetail.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelDetail_Paint);
+            // 
+            // txtShukkaToNo2
+            // 
+            this.txtShukkaToNo2.AllowMinus = false;
+            this.txtShukkaToNo2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtShukkaToNo2.ChangeDate = null;
+            this.txtShukkaToNo2.Combo = null;
+            this.txtShukkaToNo2.DecimalPlace = 0;
+            this.txtShukkaToNo2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShukkaToNo2.DepandOnMode = false;
+            this.txtShukkaToNo2.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtShukkaToNo2.IntegerPart = 0;
+            this.txtShukkaToNo2.IsDatatableOccurs = null;
+            this.txtShukkaToNo2.IsErrorOccurs = false;
+            this.txtShukkaToNo2.IsRequire = false;
+            this.txtShukkaToNo2.IsUseInitializedLayout = true;
+            this.txtShukkaToNo2.lblName = null;
+            this.txtShukkaToNo2.lblName1 = null;
+            this.txtShukkaToNo2.Location = new System.Drawing.Point(271, 61);
+            this.txtShukkaToNo2.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtShukkaToNo2.MoveNext = true;
+            this.txtShukkaToNo2.Name = "txtShukkaToNo2";
+            this.txtShukkaToNo2.NextControl = null;
+            this.txtShukkaToNo2.NextControlName = null;
+            this.txtShukkaToNo2.SearchType = Entity.SearchType.ScType.FileImport;
+            this.txtShukkaToNo2.Size = new System.Drawing.Size(500, 19);
+            this.txtShukkaToNo2.TabIndex = 14;
+            this.txtShukkaToNo2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtShukkaToNo2.TxtBox = null;
+            this.txtShukkaToNo2.TxtBox1 = null;
+            // 
+            // txtShukkaToNo1
+            // 
+            this.txtShukkaToNo1.AllowMinus = false;
+            this.txtShukkaToNo1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtShukkaToNo1.ChangeDate = null;
+            this.txtShukkaToNo1.Combo = null;
+            this.txtShukkaToNo1.DecimalPlace = 0;
+            this.txtShukkaToNo1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShukkaToNo1.DepandOnMode = false;
+            this.txtShukkaToNo1.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtShukkaToNo1.IntegerPart = 0;
+            this.txtShukkaToNo1.IsDatatableOccurs = null;
+            this.txtShukkaToNo1.IsErrorOccurs = false;
+            this.txtShukkaToNo1.IsRequire = false;
+            this.txtShukkaToNo1.IsUseInitializedLayout = true;
+            this.txtShukkaToNo1.lblName = null;
+            this.txtShukkaToNo1.lblName1 = null;
+            this.txtShukkaToNo1.Location = new System.Drawing.Point(271, 23);
+            this.txtShukkaToNo1.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtShukkaToNo1.MoveNext = true;
+            this.txtShukkaToNo1.Name = "txtShukkaToNo1";
+            this.txtShukkaToNo1.NextControl = null;
+            this.txtShukkaToNo1.NextControlName = "txtShukkaToNo2";
+            this.txtShukkaToNo1.SearchType = Entity.SearchType.ScType.FileImport;
+            this.txtShukkaToNo1.Size = new System.Drawing.Size(500, 19);
+            this.txtShukkaToNo1.TabIndex = 13;
+            this.txtShukkaToNo1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtShukkaToNo1.TxtBox = null;
+            this.txtShukkaToNo1.TxtBox1 = null;
             // 
             // txtDate2
             // 
@@ -328,56 +389,6 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "＜条件指定＞";
             // 
-            // txtImportFileName
-            // 
-            this.txtImportFileName.AllowMinus = false;
-            this.txtImportFileName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtImportFileName.DecimalPlace = 0;
-            this.txtImportFileName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
-            this.txtImportFileName.DepandOnMode = true;
-            this.txtImportFileName.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtImportFileName.IntegerPart = 0;
-            this.txtImportFileName.IsDatatableOccurs = null;
-            this.txtImportFileName.IsErrorOccurs = false;
-            this.txtImportFileName.IsRequire = false;
-            this.txtImportFileName.IsUseInitializedLayout = true;
-            this.txtImportFileName.Location = new System.Drawing.Point(270, 61);
-            this.txtImportFileName.MaxLength = 255;
-            this.txtImportFileName.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtImportFileName.MoveNext = true;
-            this.txtImportFileName.Name = "txtImportFileName";
-            this.txtImportFileName.NextControl = null;
-            this.txtImportFileName.NextControlName = "BtnF10";
-            this.txtImportFileName.SearchType = Entity.SearchType.ScType.None;
-            this.txtImportFileName.Size = new System.Drawing.Size(500, 19);
-            this.txtImportFileName.TabIndex = 2;
-            this.txtImportFileName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // txtImportFolder
-            // 
-            this.txtImportFolder.AllowMinus = false;
-            this.txtImportFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtImportFolder.DecimalPlace = 0;
-            this.txtImportFolder.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
-            this.txtImportFolder.DepandOnMode = true;
-            this.txtImportFolder.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtImportFolder.IntegerPart = 0;
-            this.txtImportFolder.IsDatatableOccurs = null;
-            this.txtImportFolder.IsErrorOccurs = false;
-            this.txtImportFolder.IsRequire = false;
-            this.txtImportFolder.IsUseInitializedLayout = true;
-            this.txtImportFolder.Location = new System.Drawing.Point(270, 23);
-            this.txtImportFolder.MaxLength = 255;
-            this.txtImportFolder.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtImportFolder.MoveNext = true;
-            this.txtImportFolder.Name = "txtImportFolder";
-            this.txtImportFolder.NextControl = null;
-            this.txtImportFolder.NextControlName = "txtImportFileName";
-            this.txtImportFolder.SearchType = Entity.SearchType.ScType.None;
-            this.txtImportFolder.Size = new System.Drawing.Size(500, 19);
-            this.txtImportFolder.TabIndex = 1;
-            this.txtImportFolder.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
             // sLabel5
             // 
             this.sLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
@@ -448,8 +459,6 @@
         private Shinyoh_Controls.STextBox txtDate1;
         private Shinyoh_Controls.STextBox txtDate2;
         private System.Windows.Forms.Label label1;
-        private Shinyoh_Controls.STextBox txtImportFileName;
-        private Shinyoh_Controls.STextBox txtImportFolder;
         private Shinyoh_Controls.SLabel sLabel5;
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.SLabel sLabel3;
@@ -466,6 +475,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiRyakuName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKouritenCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKouritenRyakuName;
+        private Shinyoh_Search.SearchBox txtShukkaToNo1;
+        private Shinyoh_Search.SearchBox txtShukkaToNo2;
     }
 }
 

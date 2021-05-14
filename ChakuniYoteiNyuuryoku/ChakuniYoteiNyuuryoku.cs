@@ -172,6 +172,8 @@ namespace ChakuniYoteiNyuuryoku
             }
             if (tagID == "8")
             {
+                D_Exclusive_HacchuuNO_Delete();
+
                 if (F8_dt1.Rows.Count > 0)
                 {
                     var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("HacchuuDate")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
@@ -1100,6 +1102,7 @@ namespace ChakuniYoteiNyuuryoku
                         DataRow[] dataRows = F8_dt1.Select("HacchuuNO ='" + existDr1["HacchuuNO"].ToString() + "'");
                         if (dataRows.Length == 1)
                         {
+
                             ChakuniNyuuryoku_Entity chkLockEntity = new ChakuniNyuuryoku_Entity();
                             chkLockEntity.DataKBN = 2;
                             chkLockEntity.Number = existDr1["HacchuuNO"].ToString();

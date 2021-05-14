@@ -239,7 +239,6 @@ namespace Shinyoh_Controls
                 e.Handled = false;
             }
             base.OnKeyPress(e);
-            e.Handled = false;          //Task 286 tza
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
