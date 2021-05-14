@@ -366,7 +366,7 @@
             this.txtStaffCD.MoveNext = true;
             this.txtStaffCD.Name = "txtStaffCD";
             this.txtStaffCD.NextControl = null;
-            this.txtStaffCD.NextControlName = "txtBrandCD";
+            this.txtStaffCD.NextControlName = "txtBrand";
             this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
             this.txtStaffCD.Size = new System.Drawing.Size(90, 19);
             this.txtStaffCD.TabIndex = 8;
