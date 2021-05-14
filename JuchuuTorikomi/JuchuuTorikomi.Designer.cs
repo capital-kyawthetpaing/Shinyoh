@@ -53,8 +53,8 @@
             this.sLabel5 = new Shinyoh_Controls.SLabel();
             this.sLabel4 = new Shinyoh_Controls.SLabel();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
-            this.txtImportFolder = new Shinyoh_Search.SearchBox();
             this.txtImportFileName = new Shinyoh_Search.SearchBox();
+            this.txtImportFolder = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -88,7 +88,7 @@
             // rdo_Delete
             // 
             this.rdo_Delete.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Delete.Location = new System.Drawing.Point(241, 8);
+            this.rdo_Delete.Location = new System.Drawing.Point(242, 8);
             this.rdo_Delete.MoveNext = true;
             this.rdo_Delete.Name = "rdo_Delete";
             this.rdo_Delete.NextControl = null;
@@ -103,7 +103,7 @@
             // 
             this.rdo_Registration.Checked = true;
             this.rdo_Registration.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.rdo_Registration.Location = new System.Drawing.Point(161, 8);
+            this.rdo_Registration.Location = new System.Drawing.Point(162, 8);
             this.rdo_Registration.MoveNext = true;
             this.rdo_Registration.Name = "rdo_Registration";
             this.rdo_Registration.NextControl = null;
@@ -373,37 +373,6 @@
             this.sLabel3.Text = "取込元フォルダ";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtImportFolder
-            // 
-            this.txtImportFolder.AllowMinus = false;
-            this.txtImportFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtImportFolder.ChangeDate = null;
-            this.txtImportFolder.Combo = null;
-            this.txtImportFolder.DecimalPlace = 0;
-            this.txtImportFolder.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
-            this.txtImportFolder.DepandOnMode = true;
-            this.txtImportFolder.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtImportFolder.IntegerPart = 0;
-            this.txtImportFolder.IsDatatableOccurs = null;
-            this.txtImportFolder.IsErrorOccurs = false;
-            this.txtImportFolder.IsRequire = false;
-            this.txtImportFolder.IsUseInitializedLayout = true;
-            this.txtImportFolder.lblName = null;
-            this.txtImportFolder.lblName1 = null;
-            this.txtImportFolder.Location = new System.Drawing.Point(275, 23);
-            this.txtImportFolder.MaxLength = 255;
-            this.txtImportFolder.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtImportFolder.MoveNext = true;
-            this.txtImportFolder.Name = "txtImportFolder";
-            this.txtImportFolder.NextControl = null;
-            this.txtImportFolder.NextControlName = "txtImportFileName";
-            this.txtImportFolder.SearchType = Entity.SearchType.ScType.FileImport;
-            this.txtImportFolder.Size = new System.Drawing.Size(500, 19);
-            this.txtImportFolder.TabIndex = 14;
-            this.txtImportFolder.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtImportFolder.TxtBox = null;
-            this.txtImportFolder.TxtBox1 = null;
-            // 
             // txtImportFileName
             // 
             this.txtImportFileName.AllowMinus = false;
@@ -434,6 +403,37 @@
             this.txtImportFileName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtImportFileName.TxtBox = null;
             this.txtImportFileName.TxtBox1 = null;
+            // 
+            // txtImportFolder
+            // 
+            this.txtImportFolder.AllowMinus = false;
+            this.txtImportFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtImportFolder.ChangeDate = null;
+            this.txtImportFolder.Combo = null;
+            this.txtImportFolder.DecimalPlace = 0;
+            this.txtImportFolder.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
+            this.txtImportFolder.DepandOnMode = true;
+            this.txtImportFolder.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtImportFolder.IntegerPart = 0;
+            this.txtImportFolder.IsDatatableOccurs = null;
+            this.txtImportFolder.IsErrorOccurs = false;
+            this.txtImportFolder.IsRequire = false;
+            this.txtImportFolder.IsUseInitializedLayout = true;
+            this.txtImportFolder.lblName = null;
+            this.txtImportFolder.lblName1 = null;
+            this.txtImportFolder.Location = new System.Drawing.Point(275, 23);
+            this.txtImportFolder.MaxLength = 255;
+            this.txtImportFolder.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtImportFolder.MoveNext = true;
+            this.txtImportFolder.Name = "txtImportFolder";
+            this.txtImportFolder.NextControl = null;
+            this.txtImportFolder.NextControlName = "txtImportFileName";
+            this.txtImportFolder.SearchType = Entity.SearchType.ScType.FileImport;
+            this.txtImportFolder.Size = new System.Drawing.Size(500, 19);
+            this.txtImportFolder.TabIndex = 14;
+            this.txtImportFolder.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtImportFolder.TxtBox = null;
+            this.txtImportFolder.TxtBox1 = null;
             // 
             // JuchuuTorikomi
             // 
