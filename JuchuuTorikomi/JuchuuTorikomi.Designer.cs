@@ -155,7 +155,7 @@
             this.txtDate2.MoveNext = true;
             this.txtDate2.Name = "txtDate2";
             this.txtDate2.NextControl = null;
-            this.txtDate2.NextControlName = "BtnF10";
+            this.txtDate2.NextControlName = "txtDenpyouNO";
             this.txtDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtDate2.Size = new System.Drawing.Size(100, 19);
             this.txtDate2.TabIndex = 13;
