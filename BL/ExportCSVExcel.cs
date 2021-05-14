@@ -40,9 +40,9 @@ namespace BL
                 oSheet = (Excel.Worksheet)oWB.ActiveSheet;
                 oSheet.Name = obj.SheetName;
 
-                foreach(DataColumn dc in dt.Columns)
+                foreach (DataColumn dc in dt.Columns)
                 {
-                    if(dc.DataType == typeof(string))
+                    if (dc.DataType == typeof(string))
                     {
                         oSheet.Cells[1, dt.Columns.IndexOf(dc) + 1].EntireColumn.NumberFormat = "@";
                     }
@@ -90,6 +90,8 @@ namespace BL
                     {
                         rg = (Excel.Range)oSheet.Cells[obj.Date_Column[k], obj.Date_Column[k]];
                         rg.EntireColumn.NumberFormat = obj.Date_Format;
+                        rg.EntireColumn.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+                        rg.EntireColumn.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
                     }
                 }
                 //change number format
@@ -110,15 +112,7 @@ namespace BL
                         rg.EntireColumn.NumberFormat = obj.Decimal_Format;
                     }
                 }
-                //Change Expotential format to number 
-                if (obj.Not_Exponential_Column != null && obj.Not_Exponential_Column.Count > 0)
-                {
-                    for (int k = 0; k < obj.Not_Exponential_Column.Count; k++)
-                    {
-                        rg = (Excel.Range)oSheet.Cells[obj.Not_Exponential_Column[k], obj.Not_Exponential_Column[k]];
-                        rg.EntireColumn.NumberFormat = obj.Not_Exponential_Format;
-                    }
-                }
+                
                 //no border 
                 oXL.Windows.Application.ActiveWindow.DisplayGridlines = false;
 
@@ -277,8 +271,6 @@ namespace BL
         public string Number_Format { get; set; }
         public List<int> OnePlaceDecimal_Column { get; set; }
         public string Decimal_Format { get; set; }
-        public List<int> Not_Exponential_Column { get; set; }
-        public string Not_Exponential_Format { get; set; }
     }   
     
 }

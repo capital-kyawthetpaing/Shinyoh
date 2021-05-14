@@ -121,7 +121,7 @@
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(40, 10);
+            this.sLabel3.Location = new System.Drawing.Point(41, 11);
             this.sLabel3.Name = "sLabel3";
             this.sLabel3.Size = new System.Drawing.Size(100, 19);
             this.sLabel3.TabIndex = 0;
@@ -1141,7 +1141,7 @@
             this.txtArrivalNO.IsUseInitializedLayout = true;
             this.txtArrivalNO.lblName = null;
             this.txtArrivalNO.lblName1 = null;
-            this.txtArrivalNO.Location = new System.Drawing.Point(140, 10);
+            this.txtArrivalNO.Location = new System.Drawing.Point(141, 11);
             this.txtArrivalNO.MaxLength = 12;
             this.txtArrivalNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtArrivalNO.MoveNext = true;
