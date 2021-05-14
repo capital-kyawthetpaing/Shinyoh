@@ -603,5 +603,15 @@ namespace ShukkaTorikomi
             remove_dt.Columns.Remove("ShukkaSiziNO");
             //remove_dt.Columns.Remove("ShukkaGyouNO");
         }
+
+        private void PanelDetail_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void searchBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
