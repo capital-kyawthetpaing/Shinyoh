@@ -639,14 +639,14 @@ namespace HikiateHenkouShoukai
                     for (int t = 0; t < gvMainDetail.RowCount; t++)
                     {
                         DataGridViewRow row = gvMainDetail.Rows[t];// grid view data
-                        string HinbanCD = row.Cells[0].Value.ToString().TrimEnd();
+                        string ShouhinCD = row.Cells["ShouhinCD"].Value.ToString().TrimEnd();
                         decimal sumSu = 0;
 
                         for (int tt = t; tt < gvMainDetail.RowCount; tt++)
                         {
-                            if(HinbanCD.Equals(gvMainDetail.Rows[tt].Cells[0].Value.ToString().TrimEnd()))
+                            if(ShouhinCD.Equals(gvMainDetail.Rows[tt].Cells["ShouhinCD"].Value.ToString().TrimEnd()))
                             {
-                                sumSu += Convert.ToDecimal(gvMainDetail.Rows[tt].Cells[11].Value.ToString());
+                                sumSu += Convert.ToDecimal(gvMainDetail.Rows[tt].Cells["col_Detail_HikiateSuu"].Value.ToString());
                             }
                         }
                         if(t>=1)
@@ -655,7 +655,7 @@ namespace HikiateHenkouShoukai
                             //既にチェック済みの場合は次の明細へ
                             for (int z = 0; z < t; z++)
                             {
-                                if (HinbanCD.Equals(gvMainDetail.Rows[z].Cells[0].Value.ToString().TrimEnd()))
+                                if (ShouhinCD.Equals(gvMainDetail.Rows[z].Cells["ShouhinCD"].Value.ToString().TrimEnd()))
                                 {
                                     breakFlg = true;
                                     break;
@@ -670,7 +670,7 @@ namespace HikiateHenkouShoukai
                             //同一商品について、引当調整数の合計　＞　０
                             bbl.ShowMessage("E273");
                             gvMainDetail.Focus();
-                            gvMainDetail.CurrentCell = row.Cells[11];
+                            gvMainDetail.CurrentCell = row.Cells["col_Detail_HikiateSuu"];
                             return;
                         }
                     }
