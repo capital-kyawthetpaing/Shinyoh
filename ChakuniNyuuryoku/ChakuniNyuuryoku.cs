@@ -274,6 +274,8 @@ namespace ChakuniNyuuryoku
             }
             if (tagID == "8")
             {
+                D_Exclusive_Number_Delete();
+
                 if (F8_dt1.Rows.Count > 0)//
                 {
                     var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("ChakuniYoteiNO")).ThenBy(r => r.Field<string>("ChakuniYoteiGyouNO")).ThenBy(r => r.Field<string>("HacchuuNO")).ThenBy(r => r.Field<string>("HacchuuGyouNO")).CopyToDataTable();

@@ -495,6 +495,8 @@ namespace ShukkaNyuuryoku {
             switch (tagID)
             {
                 case 8:
+                    D_Exclusive_ShukkaSiziNO_Delete();
+
                     if (F8_dt1.Rows.Count > 0)
                     {
                         //if(F8_dt1.Columns.Contains("ShukkaSiziNO"))
