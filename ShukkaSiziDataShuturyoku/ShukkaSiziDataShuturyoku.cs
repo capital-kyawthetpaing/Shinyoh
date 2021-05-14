@@ -155,7 +155,7 @@ namespace ShukkaSiziDataShuturyoku {
                         obj.SheetName = "Sheet1";
                         obj.Start_Interior_Column = "A1";
                         obj.End_Interior_Column = "P1";
-                        obj.Interior_Color = Color.Orange;
+                        obj.Interior_Color = Color.Gold;
                         obj.Start_Font_Column = "A1";
                         obj.End_Font_Column = "P1";
                         obj.Font_Color = Color.Black;
