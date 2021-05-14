@@ -62,8 +62,8 @@ namespace ShukkaTorikomi
             base_Entity = _GetBaseData();
             //multipurposeEntity multipurpose_entity = new multipurposeEntity();
 
-            txtImportFolder.Enabled = true;
-            txtImportFileName.Enabled = true;
+            txtShukkaToNo1.Enabled = true;
+            txtShukkaToNo2.Enabled = true;
 
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
@@ -75,22 +75,25 @@ namespace ShukkaTorikomi
             ErrorCheck();
             dataBind();
             gvShukkaTorikomi.UseRowNo(true);
+            Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+            btnF10.Visible = false;
         }
 
         private void dataBind()
         {
             multipurposeBL bl = new multipurposeBL();
+
             dtShuKka = bl.M_Multiporpose_SelectData(string.Empty, 3, string.Empty, string.Empty);
 
             if (dtShuKka.Rows.Count > 0)
             {
-                txtImportFolder.Text = dtShuKka.Rows[0]["Char1"].ToString();
-                txtImportFileName.Text = dtShuKka.Rows[0]["Char2"].ToString();
+                txtShukkaToNo1.Text = dtShuKka.Rows[0]["Char1"].ToString();
+                txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
             }
             else
             {
-                txtImportFolder.Text = string.Empty;
-                txtImportFileName.Text = string.Empty;
+                txtShukkaToNo1.Text = string.Empty;
+                txtShukkaToNo2.Text = string.Empty;
             }
         }
 
@@ -104,8 +107,8 @@ namespace ShukkaTorikomi
                 {
                     if (dtShuKka.Rows.Count > 0)
                     {
-                        txtImportFolder.Text = dtShuKka.Rows[0]["Char1"].ToString();
-                        txtImportFileName.Text = dtShuKka.Rows[0]["Char2"].ToString();
+                        txtShukkaToNo1.Text = dtShuKka.Rows[0]["Char1"].ToString();
+                        txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
                     }
                 }
                 ErrorCheck();
@@ -114,8 +117,8 @@ namespace ShukkaTorikomi
 
         private void Disable_Enable_Method()
         {
-            txtImportFolder.Text = string.Empty;
-            txtImportFileName.Text = string.Empty;
+            txtShukkaToNo1.Text = string.Empty;
+            txtShukkaToNo2.Text = string.Empty;
             txtDate1.Text = string.Empty;
             txtDate2.Text = string.Empty;
             txtDenpyouNO.Text = string.Empty;
@@ -123,21 +126,28 @@ namespace ShukkaTorikomi
 
             if(rdo_Toroku.Checked)
             {
-                txtImportFolder.Enabled = true;
-                txtImportFileName.Enabled = true;
+                txtShukkaToNo1.Enabled = true;
+                txtShukkaToNo2.Enabled = true;
                 txtDate1.Enabled = false;
                 txtDate2.Enabled = false;
                 txtDenpyouNO.Enabled = false;
-                F10.Enabled = false;
+                //F10.Enabled = false;
+                //F6.Enabled = true;
+                Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+                btnF10.Visible = false;
+
             }
             else
             {
-                txtImportFolder.Enabled = false;
-                txtImportFileName.Enabled = false;
+                txtShukkaToNo1.Enabled = false;
+                txtShukkaToNo2.Enabled = false;
                 txtDate1.Enabled = true;
                 txtDate2.Enabled = true;
                 txtDenpyouNO.Enabled = true;
-                F10.Enabled = true;
+                //F10.Enabled = true;
+                //F6.Enabled = true;
+                Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+                btnF10.Visible = true;
             }
         }
 
@@ -155,8 +165,8 @@ namespace ShukkaTorikomi
         {
             if(rdo_Toroku.Checked)
             {
-                txtImportFolder.E102Check(true);
-                txtImportFileName.E102Check(true);
+                txtShukkaToNo1.E102Check(true);
+                txtShukkaToNo2.E102Check(true);
                 txtDate1.E103Check(false);
                 txtDate2.E103Check(false);
                 txtDenpyouNO.E102Check(false);
@@ -164,8 +174,8 @@ namespace ShukkaTorikomi
             }
             else
             {
-                txtImportFolder.E102Check(false);
-                txtImportFileName.E102Check(false);
+                txtShukkaToNo1.E102Check(false);
+                txtShukkaToNo2.E102Check(false);
                 txtDate1.E103Check(true);
                 txtDate2.E103Check(true);
                 txtDenpyouNO.E102Check(true);
@@ -178,6 +188,10 @@ namespace ShukkaTorikomi
             if (tagID == "6")
             {
                 //Clear();
+                rdo_Toroku.Checked = true;
+                rdo_Toroku.Focus();
+                Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
+                btnF10.Visible = false;
             }
             if (tagID == "10")
             {
