@@ -91,7 +91,7 @@
             this.lblClassification.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblClassification.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblClassification.ForeColor = System.Drawing.Color.White;
-            this.lblClassification.Location = new System.Drawing.Point(20, 10);
+            this.lblClassification.Location = new System.Drawing.Point(1, 10);
             this.lblClassification.Name = "lblClassification";
             this.lblClassification.Size = new System.Drawing.Size(100, 19);
             this.lblClassification.TabIndex = 0;
