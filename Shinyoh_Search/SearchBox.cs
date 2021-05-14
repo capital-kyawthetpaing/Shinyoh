@@ -250,12 +250,36 @@ namespace Shinyoh_Search
                             name = msearch.Char1;
                         break;
                     case Entity.SearchType.ScType.FileImport:
-                        msearch.Access_Type = "111";
-                        msearch.ShowDialog();
-                        if (this.Name == "txtID" || this.Name == "txtCopyID")
-                            CD = msearch.Id;
-                        else
+                        //JuchuuTorikomi_Form
+                        if (this.Name == "txtImportFolder")
+                        {
+                            msearch.Access_Type = "111";
+                            msearch.Access_Key = "1";
+                            msearch.ShowDialog();
                             CD = msearch.Char1;
+                        }
+                        else if (this.Name == "txtImportFileName")
+                        {
+                            msearch.Access_Type = "111";
+                            msearch.Access_Key = "1";
+                            msearch.ShowDialog();
+                            CD = msearch.Char2;                        
+                        }
+                        //ShukkaTorikomi_Form
+                        else if (this.Name == "txtShukkaToNo1")
+                        {
+                            msearch.Access_Type = "110";
+                            msearch.Access_Key = "1";
+                            msearch.ShowDialog();
+                            CD = msearch.Char2;
+                        }
+                        else if (this.Name == "txtShukkaToNo2")
+                        {
+                            msearch.Access_Type = "110";
+                            msearch.Access_Key = "1";
+                            msearch.ShowDialog();
+                            CD = msearch.Char2;
+                        }
                         break;
                     case Entity.SearchType.ScType.TaxRate:
                         msearch.Access_Type = "221";
