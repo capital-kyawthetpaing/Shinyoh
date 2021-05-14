@@ -49,7 +49,7 @@ namespace ShukkaSiziDataShuturyoku {
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", false);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", false);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
+            SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
@@ -155,7 +155,7 @@ namespace ShukkaSiziDataShuturyoku {
                         obj.SheetName = "Sheet1";
                         obj.Start_Interior_Column = "A1";
                         obj.End_Interior_Column = "P1";
-                        obj.Interior_Color = Color.Orange;
+                        obj.Interior_Color = Color.Gold;
                         obj.Start_Font_Column = "A1";
                         obj.End_Font_Column = "P1";
                         obj.Font_Color = Color.Black;

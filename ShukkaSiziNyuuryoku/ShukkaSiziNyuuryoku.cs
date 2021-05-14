@@ -1233,13 +1233,15 @@ namespace ShukkaSiziNyuuryoku
                         }
                     }
 
+                    D_Exclusive_JuchuuNO_Delete();
+
                     //if (cboMode.SelectedValue.ToString().Equals("2"))
                     //{
                     //    dtGridview(1);
                     //}
                     //else
                     //{
-                        dtGridview(2);
+                    dtGridview(2);
                     //}
                     dgvShukkasizi.ActionType = "F10";  //to skip gv error check at the ErrorCheck() of BaseForm.cs
                     bool count = false;
