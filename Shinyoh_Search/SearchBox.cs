@@ -251,11 +251,19 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.FileImport:
                         msearch.Access_Type = "111";
+                        msearch.Access_Key = "1";
                         msearch.ShowDialog();
-                        if (this.Name == "txtID" || this.Name == "txtCopyID")
-                            CD = msearch.Id;
-                        else
-                            CD = msearch.Char1;
+                        if(msearch.Key=="1")
+                        {
+                            if(this.Name== "txtImportFolder")
+                            {
+                                CD = msearch.Char1;
+                            }
+                            else if(this.Name== "txtImportFileName")
+                            {
+                                CD = msearch.Char2;
+                            }
+                        }
                         break;
                     case Entity.SearchType.ScType.TaxRate:
                         msearch.Access_Type = "221";
