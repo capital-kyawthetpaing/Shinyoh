@@ -1201,6 +1201,8 @@ namespace ShukkaSiziNyuuryoku
             switch (tagID)
             {
                 case 8:
+                    D_Exclusive_JuchuuNO_Delete();
+
                     if (F8_dt1.Rows.Count > 0)
                     {
                         var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("JuchuuNO")).ThenBy(r => r.Field<int>("Hidden_JuchuuGyouNO")).CopyToDataTable();

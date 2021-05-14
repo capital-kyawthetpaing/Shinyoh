@@ -193,7 +193,7 @@ namespace HacchuuList
                         obj.SheetName = "発注リスト";
                         obj.Start_Interior_Column = "A1";
                         obj.End_Interior_Column = "Y1";
-                        obj.Interior_Color = Color.Orange;
+                        obj.Interior_Color = Color.FromArgb(255, 192, 0);
                         obj.Start_Font_Column = "A1";
                         obj.End_Font_Column = "Y1";
                         obj.Font_Color = Color.Black;
@@ -209,6 +209,10 @@ namespace HacchuuList
                         obj.Number_Column.Add(21);
                         obj.Number_Column.Add(22);
                         obj.Number_Format = "#,###,###";
+                        //for column (S)
+                        obj.OnePlaceDecimal_Column = new List<int>();
+                        obj.OnePlaceDecimal_Column.Add(19);
+                        obj.Decimal_Format = "#.0";
                         bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
                         if (bl)
                         {
