@@ -47,7 +47,7 @@ namespace ChakuniYoteiNyuuryoku
             dtTemp = new DataTable();
             dtClear= CreateTable_Detail();
 
-            this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            //this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniYoteiNyuuryoku_Load(object sender, EventArgs e)
         {
@@ -260,8 +260,10 @@ namespace ChakuniYoteiNyuuryoku
                 }
                 else
                 {
+                    D_Exclusive_HacchuuNO_Delete();
+                    
                     dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-                    //HacchuuNO_Delete();
+                  
                     foreach (DataRow dr in dtmain.Rows)
                     {
                         bool exists = false;
