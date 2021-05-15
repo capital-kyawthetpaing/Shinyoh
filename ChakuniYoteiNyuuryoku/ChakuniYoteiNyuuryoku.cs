@@ -42,10 +42,10 @@ namespace ChakuniYoteiNyuuryoku
             dt_Header = new DataTable();
             dt_Details = new DataTable();
             chkEntity = new ChakuniYoteiNyuuryokuEntity();
-            cbl = new ChakuniYoteiNyuuryoku_BL();           
+            cbl = new ChakuniYoteiNyuuryoku_BL();
             F8_dt1 = CreateTable_Detail();
             dtTemp = new DataTable();
-            dtClear= CreateTable_Detail();
+            dtClear = CreateTable_Detail();
 
             //this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
@@ -66,7 +66,7 @@ namespace ChakuniYoteiNyuuryoku
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", true);
             SetButton(ButtonType.BType.Empty, F7, "", false);
-            
+
             txtChakuniYoteiNO.Focus();
             base_Entity = _GetBaseData();
             txtSiiresaki.ChangeDate = txtDate;
@@ -165,7 +165,7 @@ namespace ChakuniYoteiNyuuryoku
                 }
                 else
                 {
-                    Mode_Setting();                 
+                    Mode_Setting();
                 }
                 dtTemp.Clear();
                 Disable();
@@ -263,9 +263,9 @@ namespace ChakuniYoteiNyuuryoku
                 else
                 {
                     D_Exclusive_HacchuuNO_Delete();
-                    
+
                     dtmain = cbl.ChakuniYoteiNyuuryoku_Display(chkEntity);
-                  
+
                     foreach (DataRow dr in dtmain.Rows)
                     {
                         bool exists = false;
@@ -667,7 +667,7 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void txtBrandCD_KeyDown(object sender, KeyEventArgs e)
         {
-            if(!string.IsNullOrWhiteSpace(txtBrandCD.Text))
+            if (!string.IsNullOrWhiteSpace(txtBrandCD.Text))
             {
                 multipurposeBL bl = new multipurposeBL();
                 string a = txtBrandCD.Text.ToString();
@@ -682,7 +682,7 @@ namespace ChakuniYoteiNyuuryoku
                     bbl.ShowMessage("E101");
                 }
             }
-            
+
 
         }
         private void txtDate_KeyDown(object sender, KeyEventArgs e)
@@ -727,7 +727,7 @@ namespace ChakuniYoteiNyuuryoku
         {
             F10_Gridview_Bind();
         }
-       
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             FunctionProcess("11");
@@ -1096,7 +1096,7 @@ namespace ChakuniYoteiNyuuryoku
                 DataRow existDr1 = F8_dt1.Select("Hacchuu='" + Hacchu + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["colYoteiSuu"].Value.ToString() == "0" )
+                    if (row.Cells["colYoteiSuu"].Value.ToString() == "0")
                     {
                         //確認テーブルの中で１つの場合にはDeleteしてOK
                         DataRow[] dataRows = F8_dt1.Select("HacchuuNO ='" + existDr1["HacchuuNO"].ToString() + "'");
@@ -1178,12 +1178,12 @@ namespace ChakuniYoteiNyuuryoku
             gvChakuniYoteiNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
             chkSS.Checked = true;
             chkFW.Checked = true;
-            
+
         }
         private void Disable()
         {
-            if(gvChakuniYoteiNyuuryoku.Columns.Contains("ChakuniYoteiGyouNO"))
-            gvChakuniYoteiNyuuryoku.Columns["ChakuniYoteiGyouNO"].Visible = false;
+            if (gvChakuniYoteiNyuuryoku.Columns.Contains("ChakuniYoteiGyouNO"))
+                gvChakuniYoteiNyuuryoku.Columns["ChakuniYoteiGyouNO"].Visible = false;
         }
         private void gvChakuniYoteiNyuuryoku_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -1204,9 +1204,9 @@ namespace ChakuniYoteiNyuuryoku
                 KanriNO = txtNumber.Text
             };
             DataTable dt = cbl.ChakuniYoteiDataCheck(chkEntity);
-            if(dt.Rows.Count>0)
+            if (dt.Rows.Count > 0)
             {
-                if(bbl.ShowMessage("Q325") == DialogResult.No) 
+                if (bbl.ShowMessage("Q325") == DialogResult.No)
                     txtNumber.Focus();
             }
 
