@@ -671,18 +671,19 @@ namespace ShukkaSiziNyuuryoku
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            dgvShukkasizi.ActionType = "F10";
-            if (ErrorCheck(PanelDetail))
-                FunctionProcedure(10);
-            dgvShukkasizi.ActionType = string.Empty;
+            FunctionProcess("10");
+            //dgvShukkasizi.ActionType = "F10";
+            //if (ErrorCheck(PanelDetail))
+            //    FunctionProcedure(10);
+            //dgvShukkasizi.ActionType = string.Empty;
         }
         private void btnSave_Click(object sender, EventArgs e)
         {
-            FunctionProcedure(11);
+            FunctionProcess("11");
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            FunctionProcedure(8);
+            FunctionProcess("8");
         }
 
         //GV_Event

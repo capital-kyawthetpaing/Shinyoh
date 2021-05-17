@@ -45,7 +45,7 @@ namespace ShukkaNyuuryoku {
             dtHaita = new DataTable();
             dtClear = CreateTable();
 
-            //this.current_gv.Size = new System.Drawing.Size(1300, 387);
+            this.current_gv.Size = new System.Drawing.Size(1300, 387);
         }
 
         private void ShukkaNyuuryoku_Load(object sender, EventArgs e)
@@ -648,8 +648,8 @@ namespace ShukkaNyuuryoku {
                             current_gv.Columns[14].Visible = false;
                             current_gv.Columns[15].Visible = false;
 
-                            if (dtHaita.Columns.Contains("ShukkaSiziNO"))
-                                dtHaita.Columns.Remove("ShukkaSiziNO");
+                            //if (dtHaita.Columns.Contains("ShukkaSiziNO"))
+                            //    dtHaita.Columns.Remove("ShukkaSiziNO");
                             //gvShukka1.Rows[0].Cells[8].Value = "1";
                             //gvShukka1.Rows[1].Cells[8].Value = "1";
                             if (dtHaita.Rows.Count > 0)
@@ -689,10 +689,10 @@ namespace ShukkaNyuuryoku {
                 if (!Main_dt.Columns.Contains("MessageID"))
                     Main_dt.Columns.Add("MessageID", typeof(string));
                 From_DB_To_Form(Main_dt);
-                if (current_gv.Columns.Contains("ShukkaSiziNO"))
-                {
-                    current_gv.Columns.Remove("ShukkaSiziNO");
-                }
+                //if (current_gv.Columns.Contains("ShukkaSiziNO"))
+                //{
+                //    current_gv.Columns.Remove("ShukkaSiziNO");
+                //}
                 if (current_gv.Columns.Contains("MessageID"))
                 {
                     current_gv.Columns.Remove("MessageID");
@@ -1212,7 +1212,7 @@ namespace ShukkaNyuuryoku {
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            FunctionProcedure(8);
+            FunctionProcess("8");
         }
         private DataTable CreateTable()
         {
@@ -1301,7 +1301,7 @@ namespace ShukkaNyuuryoku {
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            FunctionProcedure(11); 
+            FunctionProcess("11"); 
         }
         private void SetVisibleForGridColumns()
         {
@@ -1558,7 +1558,8 @@ namespace ShukkaNyuuryoku {
 
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            F10_Show();
+            //F10_Show();
+            FunctionProcess("10");
         }
         private void F10_Show()
         {
