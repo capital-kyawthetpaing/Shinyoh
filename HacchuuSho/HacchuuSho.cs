@@ -160,7 +160,7 @@ namespace HacchuuSho
             dt = hsbl.Get_ExportData(Get_UIData());
             if (dt.Rows.Count == 0)
             {
-                bbl.ShowMessage("E357");
+                bbl.ShowMessage("S013"); //HET
                 return;
             }
             Excel.Application xlApp;
