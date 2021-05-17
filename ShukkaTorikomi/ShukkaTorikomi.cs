@@ -169,7 +169,7 @@ namespace ShukkaTorikomi
                 txtShukkaToNo2.E102Check(true);
                 txtDate1.E103Check(false);
                 txtDate2.E103Check(false);
-                txtDate2.E104Check(true, txtDate1, txtDate2);
+                txtDate2.E104Check(true, txtDate1, txtDate2); //HET
                 txtDenpyouNO.E102Check(false);
                 txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
             }
@@ -179,7 +179,7 @@ namespace ShukkaTorikomi
                 txtShukkaToNo2.E102Check(false);
                 txtDate1.E103Check(true);
                 txtDate2.E103Check(true);
-                txtDate2.E104Check(true, txtDate1, txtDate2);
+                txtDate2.E104Check(true, txtDate1, txtDate2); //HET
                 txtDenpyouNO.E102Check(true);
                 txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
             }
