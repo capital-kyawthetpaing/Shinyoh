@@ -85,6 +85,7 @@ namespace JuchuuTorikomi
             txtImportFileName.E102Check(true);
             txtDate1.E103Check(true);
             txtDate2.E103Check(true);
+            txtDate2.E104Check(true, txtDate1, txtDate1);
             txtDenpyouNO.E102Check(true);
             txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
             txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
@@ -122,13 +123,6 @@ namespace JuchuuTorikomi
                         if (rdo_Registration.Checked)
                         {
                             spname = "JuchuuTorikomi_Insert";
-                            //chk_val = "create_update";
-                            //string return_BL = Jbl.JuchuuTorikomi_CUD(Xml.Item1, Xml.Item2, chk_val, JEntity);
-                            //if (return_BL == "true")
-                            //{
-                            //    bbl.ShowMessage("I002");
-                            //    Clear();
-                            //}
                         }
                         else
                         {
@@ -181,6 +175,7 @@ namespace JuchuuTorikomi
                 txtDate1.E103Check(true);
             if (cf.DateCheck(txtDate2))
                 txtDate2.E103Check(true);
+            txtDate2.E104Check(true, txtDate1, txtDate2);
             if (String.IsNullOrEmpty(txtDenpyouNO.Text))
             {
                 bbl.ShowMessage("E102");
@@ -412,6 +407,33 @@ namespace JuchuuTorikomi
                         dr[56] = base_Entity.PC;
                         dr[57] = error;
                         create_dt.Rows.Add(dr);
+                        if (create_dt.Rows.Count > 0)
+                        {
+                            for (int r = 0; r < create_dt.Rows.Count; r++)
+                            {
+                                string date1 = create_dt.Rows[r]["JuchuuDate"].ToString();
+                                string date2 = create_dt.Rows[r]["KibouNouki"].ToString();
+                                string date3 = create_dt.Rows[r]["ChakuniYoteiDate"].ToString();
+                                int line_No = r + 1;
+
+                                if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
+                                {
+                                    //return string.Empty; 
+                                }
+                                else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
+                                {
+                                    //return null;
+                                }
+                                else if (Date_Check(date3, line_No, "入力可能値外エラー", "取引終了日") == "true")
+                                {
+                                    //return null;
+                                }
+                                else if (r == create_dt.Rows.Count - 1)
+                                {
+                                    Xml_Juchuu = cf.DataTableToXml(create_dt);
+                                }
+                            }
+                        }
                     }
                     create_dt.Columns.Add("JuchuuNO", typeof(string));
                     create_dt.Columns.Add("HacchuuNO", typeof(string));
@@ -511,6 +533,21 @@ namespace JuchuuTorikomi
         //    }
         //    return bl;
         //}
+
+        public string Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
+        {
+            TextBox txt = new TextBox();
+            txt.Text = csv_Date;
+            if (!string.IsNullOrEmpty(csv_Date))
+            {
+                if (!cf.DateCheck(txt))
+                {
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg1, error_msg2);
+                    txt.Text = "true";
+                }
+            }
+            return txt.Text;
+        }
         //public bool Number_Check(string csv_number, int i, string v)
         //{
         //    bool bl = false; int result;
@@ -628,6 +665,7 @@ namespace JuchuuTorikomi
         {
             txtDate1.E103Check(true);
             txtDate2.E103Check(true);
+            txtDate2.E104Check(true, txtDate1, txtDate2);
             txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
             txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
             JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;

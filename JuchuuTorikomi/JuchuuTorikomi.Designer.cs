@@ -34,12 +34,19 @@
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.rdo_Registration = new Shinyoh_Controls.SRadio();
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.txtImportFileName = new Shinyoh_Search.SearchBox();
+            this.txtImportFolder = new Shinyoh_Search.SearchBox();
             this.txtDate2 = new Shinyoh_Controls.STextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDenpyouNO = new Shinyoh_Controls.STextBox();
             this.sLabel6 = new Shinyoh_Controls.SLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.gvJuchuuTorikomi = new Shinyoh_Controls.SGridView();
+            this.txtDate1 = new Shinyoh_Controls.STextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.sLabel5 = new Shinyoh_Controls.SLabel();
+            this.sLabel4 = new Shinyoh_Controls.SLabel();
+            this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.colTorikomiDenpyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInsertDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,13 +55,6 @@
             this.colTokuisakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKouritenCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKouritenRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDate1 = new Shinyoh_Controls.STextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.sLabel5 = new Shinyoh_Controls.SLabel();
-            this.sLabel4 = new Shinyoh_Controls.SLabel();
-            this.sLabel3 = new Shinyoh_Controls.SLabel();
-            this.txtImportFileName = new Shinyoh_Search.SearchBox();
-            this.txtImportFolder = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -135,6 +135,68 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1713, 842);
             this.PanelDetail.TabIndex = 4;
+            // 
+            // txtImportFileName
+            // 
+            this.txtImportFileName.AllowMinus = false;
+            this.txtImportFileName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtImportFileName.ChangeDate = null;
+            this.txtImportFileName.Combo = null;
+            this.txtImportFileName.DecimalPlace = 0;
+            this.txtImportFileName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
+            this.txtImportFileName.DepandOnMode = true;
+            this.txtImportFileName.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtImportFileName.IntegerPart = 0;
+            this.txtImportFileName.IsDatatableOccurs = null;
+            this.txtImportFileName.IsErrorOccurs = false;
+            this.txtImportFileName.IsRequire = false;
+            this.txtImportFileName.IsUseInitializedLayout = true;
+            this.txtImportFileName.lblName = null;
+            this.txtImportFileName.lblName1 = null;
+            this.txtImportFileName.Location = new System.Drawing.Point(275, 51);
+            this.txtImportFileName.MaxLength = 255;
+            this.txtImportFileName.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtImportFileName.MoveNext = true;
+            this.txtImportFileName.Name = "txtImportFileName";
+            this.txtImportFileName.NextControl = null;
+            this.txtImportFileName.NextControlName = "txtDate1";
+            this.txtImportFileName.SearchType = Entity.SearchType.ScType.FileImport;
+            this.txtImportFileName.Size = new System.Drawing.Size(500, 19);
+            this.txtImportFileName.TabIndex = 15;
+            this.txtImportFileName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtImportFileName.TxtBox = null;
+            this.txtImportFileName.TxtBox1 = null;
+            // 
+            // txtImportFolder
+            // 
+            this.txtImportFolder.AllowMinus = false;
+            this.txtImportFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtImportFolder.ChangeDate = null;
+            this.txtImportFolder.Combo = null;
+            this.txtImportFolder.DecimalPlace = 0;
+            this.txtImportFolder.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
+            this.txtImportFolder.DepandOnMode = true;
+            this.txtImportFolder.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtImportFolder.IntegerPart = 0;
+            this.txtImportFolder.IsDatatableOccurs = null;
+            this.txtImportFolder.IsErrorOccurs = false;
+            this.txtImportFolder.IsRequire = false;
+            this.txtImportFolder.IsUseInitializedLayout = true;
+            this.txtImportFolder.lblName = null;
+            this.txtImportFolder.lblName1 = null;
+            this.txtImportFolder.Location = new System.Drawing.Point(275, 23);
+            this.txtImportFolder.MaxLength = 255;
+            this.txtImportFolder.MinimumSize = new System.Drawing.Size(100, 19);
+            this.txtImportFolder.MoveNext = true;
+            this.txtImportFolder.Name = "txtImportFolder";
+            this.txtImportFolder.NextControl = null;
+            this.txtImportFolder.NextControlName = "txtImportFileName";
+            this.txtImportFolder.SearchType = Entity.SearchType.ScType.FileImport;
+            this.txtImportFolder.Size = new System.Drawing.Size(500, 19);
+            this.txtImportFolder.TabIndex = 14;
+            this.txtImportFolder.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtImportFolder.TxtBox = null;
+            this.txtImportFolder.TxtBox1 = null;
             // 
             // txtDate2
             // 
@@ -238,65 +300,8 @@
             this.gvJuchuuTorikomi.ISRowColumn = null;
             this.gvJuchuuTorikomi.Location = new System.Drawing.Point(160, 173);
             this.gvJuchuuTorikomi.Name = "gvJuchuuTorikomi";
-            this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1200, 620);
+            this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1245, 620);
             this.gvJuchuuTorikomi.TabIndex = 8;
-            // 
-            // colTorikomiDenpyouNO
-            // 
-            this.colTorikomiDenpyouNO.DataPropertyName = "TorikomiDenpyouNO";
-            this.colTorikomiDenpyouNO.HeaderText = "取込伝票番号";
-            this.colTorikomiDenpyouNO.Name = "colTorikomiDenpyouNO";
-            this.colTorikomiDenpyouNO.Width = 110;
-            // 
-            // colInsertDateTime
-            // 
-            this.colInsertDateTime.DataPropertyName = "InsertDateTime";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colInsertDateTime.HeaderText = "取込日時";
-            this.colInsertDateTime.Name = "colInsertDateTime";
-            this.colInsertDateTime.Width = 150;
-            // 
-            // colJuchuuNO
-            // 
-            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
-            this.colJuchuuNO.HeaderText = "受注番号";
-            this.colJuchuuNO.Name = "colJuchuuNO";
-            // 
-            // colJuchuuDate
-            // 
-            this.colJuchuuDate.DataPropertyName = "JuchuuDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colJuchuuDate.HeaderText = "受注日";
-            this.colJuchuuDate.Name = "colJuchuuDate";
-            this.colJuchuuDate.Width = 80;
-            // 
-            // colTokuisakiCD
-            // 
-            this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
-            this.colTokuisakiCD.HeaderText = "得意先";
-            this.colTokuisakiCD.Name = "colTokuisakiCD";
-            // 
-            // colTokuisakiRyakuName
-            // 
-            this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
-            this.colTokuisakiRyakuName.HeaderText = "得意先名";
-            this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
-            this.colTokuisakiRyakuName.Width = 277;
-            // 
-            // colKouritenCD
-            // 
-            this.colKouritenCD.DataPropertyName = "KouritenCD";
-            this.colKouritenCD.HeaderText = "小売店";
-            this.colKouritenCD.Name = "colKouritenCD";
-            // 
-            // colKouritenRyakuName
-            // 
-            this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
-            this.colKouritenRyakuName.HeaderText = "小売店名";
-            this.colKouritenRyakuName.Name = "colKouritenRyakuName";
-            this.colKouritenRyakuName.Width = 280;
             // 
             // txtDate1
             // 
@@ -373,67 +378,62 @@
             this.sLabel3.Text = "取込元フォルダ";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txtImportFileName
+            // colTorikomiDenpyouNO
             // 
-            this.txtImportFileName.AllowMinus = false;
-            this.txtImportFileName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtImportFileName.ChangeDate = null;
-            this.txtImportFileName.Combo = null;
-            this.txtImportFileName.DecimalPlace = 0;
-            this.txtImportFileName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
-            this.txtImportFileName.DepandOnMode = true;
-            this.txtImportFileName.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtImportFileName.IntegerPart = 0;
-            this.txtImportFileName.IsDatatableOccurs = null;
-            this.txtImportFileName.IsErrorOccurs = false;
-            this.txtImportFileName.IsRequire = false;
-            this.txtImportFileName.IsUseInitializedLayout = true;
-            this.txtImportFileName.lblName = null;
-            this.txtImportFileName.lblName1 = null;
-            this.txtImportFileName.Location = new System.Drawing.Point(275, 51);
-            this.txtImportFileName.MaxLength = 255;
-            this.txtImportFileName.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtImportFileName.MoveNext = true;
-            this.txtImportFileName.Name = "txtImportFileName";
-            this.txtImportFileName.NextControl = null;
-            this.txtImportFileName.NextControlName = "txtDate1";
-            this.txtImportFileName.SearchType = Entity.SearchType.ScType.FileImport;
-            this.txtImportFileName.Size = new System.Drawing.Size(500, 19);
-            this.txtImportFileName.TabIndex = 15;
-            this.txtImportFileName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtImportFileName.TxtBox = null;
-            this.txtImportFileName.TxtBox1 = null;
+            this.colTorikomiDenpyouNO.DataPropertyName = "TorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.HeaderText = "取込伝票番号";
+            this.colTorikomiDenpyouNO.Name = "colTorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.Width = 110;
             // 
-            // txtImportFolder
+            // colInsertDateTime
             // 
-            this.txtImportFolder.AllowMinus = false;
-            this.txtImportFolder.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtImportFolder.ChangeDate = null;
-            this.txtImportFolder.Combo = null;
-            this.txtImportFolder.DecimalPlace = 0;
-            this.txtImportFolder.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
-            this.txtImportFolder.DepandOnMode = true;
-            this.txtImportFolder.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtImportFolder.IntegerPart = 0;
-            this.txtImportFolder.IsDatatableOccurs = null;
-            this.txtImportFolder.IsErrorOccurs = false;
-            this.txtImportFolder.IsRequire = false;
-            this.txtImportFolder.IsUseInitializedLayout = true;
-            this.txtImportFolder.lblName = null;
-            this.txtImportFolder.lblName1 = null;
-            this.txtImportFolder.Location = new System.Drawing.Point(275, 23);
-            this.txtImportFolder.MaxLength = 255;
-            this.txtImportFolder.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtImportFolder.MoveNext = true;
-            this.txtImportFolder.Name = "txtImportFolder";
-            this.txtImportFolder.NextControl = null;
-            this.txtImportFolder.NextControlName = "txtImportFileName";
-            this.txtImportFolder.SearchType = Entity.SearchType.ScType.FileImport;
-            this.txtImportFolder.Size = new System.Drawing.Size(500, 19);
-            this.txtImportFolder.TabIndex = 14;
-            this.txtImportFolder.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtImportFolder.TxtBox = null;
-            this.txtImportFolder.TxtBox1 = null;
+            this.colInsertDateTime.DataPropertyName = "InsertDateTime";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colInsertDateTime.HeaderText = "取込日時";
+            this.colInsertDateTime.Name = "colInsertDateTime";
+            this.colInsertDateTime.Width = 150;
+            // 
+            // colJuchuuNO
+            // 
+            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
+            this.colJuchuuNO.HeaderText = "受注番号";
+            this.colJuchuuNO.Name = "colJuchuuNO";
+            // 
+            // colJuchuuDate
+            // 
+            this.colJuchuuDate.DataPropertyName = "JuchuuDate";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colJuchuuDate.HeaderText = "受注日";
+            this.colJuchuuDate.Name = "colJuchuuDate";
+            this.colJuchuuDate.Width = 85;
+            // 
+            // colTokuisakiCD
+            // 
+            this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
+            this.colTokuisakiCD.HeaderText = "得意先";
+            this.colTokuisakiCD.Name = "colTokuisakiCD";
+            // 
+            // colTokuisakiRyakuName
+            // 
+            this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
+            this.colTokuisakiRyakuName.HeaderText = "得意先名";
+            this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
+            this.colTokuisakiRyakuName.Width = 275;
+            // 
+            // colKouritenCD
+            // 
+            this.colKouritenCD.DataPropertyName = "KouritenCD";
+            this.colKouritenCD.HeaderText = "小売店";
+            this.colKouritenCD.Name = "colKouritenCD";
+            // 
+            // colKouritenRyakuName
+            // 
+            this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
+            this.colKouritenRyakuName.HeaderText = "小売店名";
+            this.colKouritenRyakuName.Name = "colKouritenRyakuName";
+            this.colKouritenRyakuName.Width = 275;
             // 
             // JuchuuTorikomi
             // 
@@ -474,6 +474,8 @@
         private Shinyoh_Controls.SLabel sLabel5;
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.SLabel sLabel3;
+        private Shinyoh_Search.SearchBox txtImportFolder;
+        private Shinyoh_Search.SearchBox txtImportFileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTorikomiDenpyouNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInsertDateTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuNO;
@@ -482,8 +484,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiRyakuName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKouritenCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKouritenRyakuName;
-        private Shinyoh_Search.SearchBox txtImportFolder;
-        private Shinyoh_Search.SearchBox txtImportFileName;
     }
 }
 
