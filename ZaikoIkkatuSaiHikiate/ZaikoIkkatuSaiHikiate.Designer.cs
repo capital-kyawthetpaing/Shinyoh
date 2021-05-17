@@ -102,11 +102,11 @@
             this.lbl3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl3.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl3.ForeColor = System.Drawing.Color.Black;
-            this.lbl3.Location = new System.Drawing.Point(140, 134);
+            this.lbl3.Location = new System.Drawing.Point(130, 127);
             this.lbl3.Name = "lbl3";
-            this.lbl3.Size = new System.Drawing.Size(140, 25);
+            this.lbl3.Size = new System.Drawing.Size(150, 25);
             this.lbl3.TabIndex = 2;
-            this.lbl3.Text = "・受注入力";
+            this.lbl3.Text = "・ 受注入力";
             this.lbl3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl4
@@ -116,11 +116,11 @@
             this.lbl4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl4.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl4.ForeColor = System.Drawing.Color.Black;
-            this.lbl4.Location = new System.Drawing.Point(139, 168);
+            this.lbl4.Location = new System.Drawing.Point(130, 163);
             this.lbl4.Name = "lbl4";
-            this.lbl4.Size = new System.Drawing.Size(160, 25);
+            this.lbl4.Size = new System.Drawing.Size(170, 25);
             this.lbl4.TabIndex = 2;
-            this.lbl4.Text = "・受注取込処理";
+            this.lbl4.Text = "・ 受注取込処理";
             this.lbl4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl6
@@ -130,11 +130,11 @@
             this.lbl6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl6.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl6.ForeColor = System.Drawing.Color.Black;
-            this.lbl6.Location = new System.Drawing.Point(139, 233);
+            this.lbl6.Location = new System.Drawing.Point(130, 234);
             this.lbl6.Name = "lbl6";
-            this.lbl6.Size = new System.Drawing.Size(160, 25);
+            this.lbl6.Size = new System.Drawing.Size(170, 25);
             this.lbl6.TabIndex = 2;
-            this.lbl6.Text = "・着荷入力";
+            this.lbl6.Text = "・ 着荷入力";
             this.lbl6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl5
@@ -144,11 +144,11 @@
             this.lbl5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl5.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl5.ForeColor = System.Drawing.Color.Black;
-            this.lbl5.Location = new System.Drawing.Point(139, 199);
+            this.lbl5.Location = new System.Drawing.Point(130, 199);
             this.lbl5.Name = "lbl5";
-            this.lbl5.Size = new System.Drawing.Size(160, 25);
+            this.lbl5.Size = new System.Drawing.Size(170, 25);
             this.lbl5.TabIndex = 2;
-            this.lbl5.Text = "・着荷予定入力";
+            this.lbl5.Text = "・ 着荷予定入力";
             this.lbl5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl7
@@ -158,11 +158,11 @@
             this.lbl7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl7.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl7.ForeColor = System.Drawing.Color.Black;
-            this.lbl7.Location = new System.Drawing.Point(139, 268);
+            this.lbl7.Location = new System.Drawing.Point(130, 268);
             this.lbl7.Name = "lbl7";
-            this.lbl7.Size = new System.Drawing.Size(160, 25);
+            this.lbl7.Size = new System.Drawing.Size(170, 25);
             this.lbl7.TabIndex = 2;
-            this.lbl7.Text = "・出荷指示入力\r\n";
+            this.lbl7.Text = "・ 出荷指示入力\r\n";
             this.lbl7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lbl8
@@ -172,11 +172,11 @@
             this.lbl8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lbl8.Font = new System.Drawing.Font("MS Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl8.ForeColor = System.Drawing.Color.Black;
-            this.lbl8.Location = new System.Drawing.Point(139, 303);
+            this.lbl8.Location = new System.Drawing.Point(130, 305);
             this.lbl8.Name = "lbl8";
-            this.lbl8.Size = new System.Drawing.Size(160, 25);
+            this.lbl8.Size = new System.Drawing.Size(170, 25);
             this.lbl8.TabIndex = 2;
-            this.lbl8.Text = "・引当変更照会";
+            this.lbl8.Text = "・ 引当変更照会";
             this.lbl8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ZaikoIkkatuSaiHikiate
