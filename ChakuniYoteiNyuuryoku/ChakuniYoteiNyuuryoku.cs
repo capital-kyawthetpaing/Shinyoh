@@ -178,11 +178,13 @@ namespace ChakuniYoteiNyuuryoku
                 {
                     var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("HacchuuDate")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
                     gvChakuniYoteiNyuuryoku.DataSource = dtConfirm;
+                    Disable();
                 }
                 else
                 {
                     F8_dt1 = CreateTable_Detail();
                     gvChakuniYoteiNyuuryoku.DataSource = F8_dt1;
+                    Disable();
                 }
             }
             if (tagID == "10")
@@ -710,22 +712,24 @@ namespace ChakuniYoteiNyuuryoku
         }
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            if (F8_dt1.Rows.Count > 0)
-            {
-                var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("HacchuuDate")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
-                gvChakuniYoteiNyuuryoku.DataSource = dtConfirm;
-                Disable();
-            }
-            else
-            {
-                F8_dt1 = CreateTable_Detail();
-                gvChakuniYoteiNyuuryoku.DataSource = F8_dt1;
-                Disable();
-            }
+            FunctionProcess("8");
+            //if (F8_dt1.Rows.Count > 0)
+            //{
+            //    var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("HacchuuDate")).ThenBy(r => r.Field<string>("Hacchuu")).CopyToDataTable();
+            //    gvChakuniYoteiNyuuryoku.DataSource = dtConfirm;
+            //    Disable();
+            //}
+            //else
+            //{
+            //    F8_dt1 = CreateTable_Detail();
+            //    gvChakuniYoteiNyuuryoku.DataSource = F8_dt1;
+            //    Disable();
+            //}
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            F10_Gridview_Bind();
+            FunctionProcess("10");
+            //F10_Gridview_Bind();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
