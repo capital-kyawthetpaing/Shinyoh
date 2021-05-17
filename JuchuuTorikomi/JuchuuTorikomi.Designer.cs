@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt1 = new Shinyoh_Controls.SLabel();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.rdo_Registration = new Shinyoh_Controls.SRadio();
@@ -220,7 +220,7 @@
             this.txtDate2.NextControlName = "txtDenpyouNO";
             this.txtDate2.SearchType = Entity.SearchType.ScType.None;
             this.txtDate2.Size = new System.Drawing.Size(100, 19);
-            this.txtDate2.TabIndex = 13;
+            this.txtDate2.TabIndex = 7;
             this.txtDate2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtDate2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
             this.txtDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDate2_KeyDown);
@@ -257,7 +257,7 @@
             this.txtDenpyouNO.NextControlName = "BtnF10";
             this.txtDenpyouNO.SearchType = Entity.SearchType.ScType.None;
             this.txtDenpyouNO.Size = new System.Drawing.Size(100, 19);
-            this.txtDenpyouNO.TabIndex = 11;
+            this.txtDenpyouNO.TabIndex = 8;
             this.txtDenpyouNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // sLabel6
@@ -300,7 +300,7 @@
             this.gvJuchuuTorikomi.Location = new System.Drawing.Point(160, 173);
             this.gvJuchuuTorikomi.Name = "gvJuchuuTorikomi";
             this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1245, 620);
-            this.gvJuchuuTorikomi.TabIndex = 8;
+            this.gvJuchuuTorikomi.TabIndex = 9;
             // 
             // txtDate1
             // 
@@ -387,8 +387,8 @@
             // colInsertDateTime
             // 
             this.colInsertDateTime.DataPropertyName = "InsertDateTime";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle3;
             this.colInsertDateTime.HeaderText = "取込日時";
             this.colInsertDateTime.Name = "colInsertDateTime";
             this.colInsertDateTime.Width = 150;
@@ -402,8 +402,8 @@
             // colJuchuuDate
             // 
             this.colJuchuuDate.DataPropertyName = "JuchuuDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.colJuchuuDate.HeaderText = "受注日";
             this.colJuchuuDate.Name = "colJuchuuDate";
             this.colJuchuuDate.Width = 85;

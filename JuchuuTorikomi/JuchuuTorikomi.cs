@@ -89,7 +89,7 @@ namespace JuchuuTorikomi
                     txtDate1.E103Check(false);
                 if (cf.DateCheck(txtDate2))
                     txtDate2.E103Check(false);
-                txtDate2.E106Check(false, txtDate1, txtDate1);
+                txtDate2.E106Check(false, txtDate1, txtDate2);
                 txtDenpyouNO.E102Check(false);
                 txtDenpyouNO.E160Check(false, "JuchuuTorikomi", txtDenpyouNO, null);
                 txtDenpyouNO.E265Check(false, "JuchuuTorikomi", txtDenpyouNO);
@@ -98,27 +98,16 @@ namespace JuchuuTorikomi
             {
                 txtImportFolder.E102Check(false);
                 txtImportFileName.E102Check(false);
-                if (cf.DateCheck(txtDate1))
+                //if (cf.DateCheck(txtDate1))
                     txtDate1.E103Check(true);
-                if (cf.DateCheck(txtDate2))
+                //if (cf.DateCheck(txtDate2))
                     txtDate2.E103Check(true);
-                txtDate2.E106Check(true, txtDate1, txtDate1);
+                txtDate2.E106Check(true, txtDate1, txtDate2);
                 txtDenpyouNO.E102Check(true);
                 txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
                 txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
             }
         }
-        //private void ErrorCheck()
-        //{
-        //    txtImportFolder.E102Check(true);
-        //    txtImportFileName.E102Check(true);
-        //    txtDate1.E103Check(true);
-        //    txtDate2.E103Check(true);
-        //    txtDate2.E104Check(true, txtDate1, txtDate1);
-        //    txtDenpyouNO.E102Check(true);
-        //    txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
-        //    txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
-        //}
         public override void FunctionProcess(string tagID)
         {
             if (tagID == "6")
@@ -130,7 +119,8 @@ namespace JuchuuTorikomi
                 gvJuchuuTorikomi.ActionType = "F10";
                 if (rdo_Delete.Checked == true)
                 {
-                    GridviewBind();
+                    if (ErrorCheck(PanelDetail))
+                        GridviewBind();
                 }
                 gvJuchuuTorikomi.ActionType = string.Empty;
             }
@@ -148,7 +138,6 @@ namespace JuchuuTorikomi
                     else
                     {
                         JuchuuTorikomiBL Jbl = new JuchuuTorikomiBL();
-                        //string chk_val = string.Empty;
                         string spname = string.Empty;
                         string DenpyouNO = txtDenpyouNO.Text;
                         if (rdo_Registration.Checked)
@@ -235,19 +224,19 @@ namespace JuchuuTorikomi
             F10.Enabled = true;
             F10.Visible = true;
         }
-        private DataTable Create_gvColumn()
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("TorikomiDenpyouNO", typeof(string));
-            dt.Columns.Add("InsertDateTime", typeof(string));
-            dt.Columns.Add("JuchuuNO", typeof(string));
-            dt.Columns.Add("JuchuuDate", typeof(string));
-            dt.Columns.Add("TokuisakiCD", typeof(string));
-            dt.Columns.Add("TokuisakiRyakuName", typeof(string));
-            dt.Columns.Add("KouritenCD", typeof(string));
-            dt.Columns.Add("KouritenRyakuName", typeof(string));
-            return dt;
-        }
+        //private DataTable Create_gvColumn()
+        //{
+        //    DataTable dt = new DataTable();
+        //    dt.Columns.Add("TorikomiDenpyouNO", typeof(string));
+        //    dt.Columns.Add("InsertDateTime", typeof(string));
+        //    dt.Columns.Add("JuchuuNO", typeof(string));
+        //    dt.Columns.Add("JuchuuDate", typeof(string));
+        //    dt.Columns.Add("TokuisakiCD", typeof(string));
+        //    dt.Columns.Add("TokuisakiRyakuName", typeof(string));
+        //    dt.Columns.Add("KouritenCD", typeof(string));
+        //    dt.Columns.Add("KouritenRyakuName", typeof(string));
+        //    return dt;
+        //}
         private (string,string) GetFile()
         {
             var filepath = string.Empty;
@@ -661,6 +650,7 @@ namespace JuchuuTorikomi
                 Enable_Panel();
                 Clear();
             }
+            ErrorCheck();
         }
 
         private void rdo_Delete_CheckedChanged(object sender, EventArgs e)
@@ -670,6 +660,7 @@ namespace JuchuuTorikomi
                 rdo_Registration.Checked = false;
                 Disable_Panel();
             }
+            ErrorCheck();
         }
 
         private void txtDate2_KeyDown(object sender, KeyEventArgs e)
