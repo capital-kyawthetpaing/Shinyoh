@@ -209,10 +209,6 @@ namespace HacchuuList
                         obj.Number_Column.Add(21);
                         obj.Number_Column.Add(22);
                         obj.Number_Format = "#,###,###";
-                        //for column (S)
-                        obj.OnePlaceDecimal_Column = new List<int>();
-                        obj.OnePlaceDecimal_Column.Add(19);
-                        obj.Decimal_Format = "#.0";
                         bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
                         if (bl)
                         {
