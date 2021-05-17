@@ -1,7 +1,7 @@
 ﻿using BL;
 using CKM_CommonFunction;
-using DocumentFormat.OpenXml.Drawing;
-using DocumentFormat.OpenXml.Vml;
+//using DocumentFormat.OpenXml.Drawing;
+//using DocumentFormat.OpenXml.Vml;
 using Entity;
 using Microsoft.Office.Interop.Excel;
 using Shinyoh;
@@ -15,10 +15,10 @@ using System.Linq;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
-using DocumentFormat.OpenXml.Office2010.Excel;
-using DocumentFormat.OpenXml.Spreadsheet;
-using System.Windows.Media;
-using DocumentFormat.OpenXml.Packaging;
+//using DocumentFormat.OpenXml.Office2010.Excel;
+//using DocumentFormat.OpenXml.Spreadsheet;
+//using System.Windows.Media;
+//using DocumentFormat.OpenXml.Packaging;
 
 namespace HacchuuSho
 {
@@ -101,9 +101,10 @@ namespace HacchuuSho
         {
             if (tagID == "6")
             {
-                Rdo1.Checked = true;
-                cf.Clear(PanelDetail);
-                txtJuchuuNO1.Focus();
+                //Rdo1.Checked = true;
+                //cf.Clear(PanelDetail);
+                //txtJuchuuNO1.Focus();
+                Clear(); //HET
             }
             if (tagID == "10")
             {
@@ -119,6 +120,20 @@ namespace HacchuuSho
                 //}
 
             }
+        }
+        //HET
+        private void Clear()
+        {
+            txtJuchuuNO1.Focus();
+            Rdo1.Checked = true;
+            lblBrandName.Text = "";
+            cf.Clear(PanelDetail);
+            txtIssueDate.Text = DateTime.Now.ToString("yyyy/MM/dd");
+            txtPayment.Text = hsbl.HCS_M_MultiPorpose_Type(1);
+            txtBeneficiary1.Text = hsbl.HCS_M_MultiPorpose_Type(2);
+            txtBeneficiary2.Text = hsbl.HCS_M_MultiPorpose_Type(3);
+            txtOriginCountry.Text = hsbl.HCS_M_MultiPorpose_Type(4);
+            txtDestination.Text = hsbl.HCS_M_MultiPorpose_Type(5);
         }
         private bool  ErrorCheckMain()
         {
@@ -160,7 +175,7 @@ namespace HacchuuSho
             dt = hsbl.Get_ExportData(Get_UIData());
             if (dt.Rows.Count == 0)
             {
-                bbl.ShowMessage("E357");
+                bbl.ShowMessage("S013"); //HET
                 return;
             }
             Excel.Application xlApp;
@@ -413,6 +428,7 @@ namespace HacchuuSho
             xlApp.Quit();
             bbl.ShowMessage("I201", string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
             Process.Start(System.IO.Path.GetDirectoryName(tmpSave + fname));
+            Clear(); //HET
         }
         private void SetFooter(Excel.Workbook wb,Excel.Worksheet xlWorkSheet, int col)
         {
