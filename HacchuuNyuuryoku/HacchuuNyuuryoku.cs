@@ -511,20 +511,24 @@ namespace HacchuuNyuuryoku
                                 obj_bl.HacchuuNyuuryoku_Exclusive_Insert(obj_staff);
                                 EnablePanel();
                             }
-                            else if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "4")
+                            else if (cboMode.SelectedValue.ToString() == "3")
                             {
-                                if (cboMode.SelectedValue.ToString() == "3")
-                                {
-                                    obj_bl.HacchuuNyuuryoku_Exclusive_Insert(obj_staff);
-                                }
-                                cf.DisablePanel(PanelTitle);
-                                btn_Siiresaki.Enabled = true;
+                                obj_bl.HacchuuNyuuryoku_Exclusive_Insert(obj_staff);
                             }
+                            cf.DisablePanel(PanelTitle);
+                            btn_Siiresaki.Enabled = true;
                         }
                         else
                         {
                             return;
                         }
+                    }
+                    else if (cboMode.SelectedValue.ToString() == "4")
+                    {
+                        cf.DisablePanel(PanelTitle);
+                        Control btnSearch = this.TopLevelControl.Controls.Find("BtnF9", true)[0];
+                        btnSearch.Visible = false;
+                        btn_Siiresaki.Enabled = true;
                     }
                 }
                 DataTable dt = txtHacchuuNO.IsDatatableOccurs;
