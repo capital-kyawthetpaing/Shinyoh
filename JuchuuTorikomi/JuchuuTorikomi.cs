@@ -202,14 +202,14 @@ namespace JuchuuTorikomi
         }
         private void GridviewBind()
         {
-            if (!cf.DateCheck(txtDate1))
-                txtDate1.E103Check(true);
-            if (!cf.DateCheck(txtDate2))
-                txtDate2.E103Check(true);
-            txtDate2.E106Check(true, txtDate1, txtDate2);
-            txtDenpyouNO.E102Check(true);
-            txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
-            txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
+            //if (!cf.DateCheck(txtDate1))
+            //    txtDate1.E103Check(true);
+            //if (!cf.DateCheck(txtDate2))
+            //    txtDate2.E103Check(true);
+            //txtDate2.E106Check(true, txtDate1, txtDate2);
+            //txtDenpyouNO.E102Check(true);
+            //txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
+            //txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
             JEntity.TorikomiDenpyouNO = txtDenpyouNO.Text;
             dtMain = JBL.JuchuuTorikomi_Display(JEntity);
             gvJuchuuTorikomi.DataSource = dtMain;
