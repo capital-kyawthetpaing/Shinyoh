@@ -1,7 +1,7 @@
 ﻿using BL;
 using CKM_CommonFunction;
-using DocumentFormat.OpenXml.Drawing;
-using DocumentFormat.OpenXml.Vml;
+//using DocumentFormat.OpenXml.Drawing;
+//using DocumentFormat.OpenXml.Vml;
 using Entity;
 using Microsoft.Office.Interop.Excel;
 using Shinyoh;
@@ -15,10 +15,10 @@ using System.Linq;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
-using DocumentFormat.OpenXml.Office2010.Excel;
-using DocumentFormat.OpenXml.Spreadsheet;
-using System.Windows.Media;
-using DocumentFormat.OpenXml.Packaging;
+//using DocumentFormat.OpenXml.Office2010.Excel;
+//using DocumentFormat.OpenXml.Spreadsheet;
+//using System.Windows.Media;
+//using DocumentFormat.OpenXml.Packaging;
 
 namespace HacchuuSho
 {
