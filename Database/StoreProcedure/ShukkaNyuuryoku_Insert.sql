@@ -206,7 +206,7 @@ BEGIN
 					ShukkaSiziZumiSuu		decimal(21,6) 'ShukkaSiziZumiSuu',
 					MiNyuukaSuu				decimal(21,6) 'MiNyuukaSuu',
 					ShukkaSuu				decimal(21,6) 'ShukkaSuu',
-					Kanryo					tinyint 'Kanryo',
+					Kanryo					tinyint 'Kanryou',
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
 					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
@@ -663,16 +663,17 @@ BEGIN
 				UpdateDateTime = @currentDate			
 			from #Temp_Main m,D_ShukkaSiziMeisai DS
 			inner join #Temp_Detail d on LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1)=DS.ShukkaSiziNO 
-										and RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))=DS.ShukkaSiziGyouNO
+			and RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))=DS.ShukkaSiziGyouNO
 			
 
 
 			----D_ShukkaSiziMeisai A
 			update A set	
 				ShukkaKanryouKBN = case WHEN ShukkaSiziSuu <= ShukkaZumiSuu Then 1 WHEN d.Kanryo = 1 Then 1 ELSE 0 End
-			from D_ShukkaSiziMeisai A,#Temp_Detail d
-			where A.ShukkaSiziNO=LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
-
+			from D_ShukkaSiziMeisai A
+			inner join #Temp_Detail d 
+			on LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1)=A.ShukkaSiziNO 
+			and RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))=A.ShukkaSiziGyouNO
 
 			--D_ShukkaSizi A
 			update A set	
