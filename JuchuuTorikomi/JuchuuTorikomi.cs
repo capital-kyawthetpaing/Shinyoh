@@ -406,34 +406,7 @@ namespace JuchuuTorikomi
                         dr[55] = base_Entity.ProgramID;
                         dr[56] = base_Entity.PC;
                         dr[57] = error;
-                        create_dt.Rows.Add(dr);
-                        if (create_dt.Rows.Count > 0)
-                        {
-                            for (int r = 0; r < create_dt.Rows.Count; r++)
-                            {
-                                string date1 = create_dt.Rows[r]["JuchuuDate"].ToString();
-                                string date2 = create_dt.Rows[r]["KibouNouki"].ToString();
-                                string date3 = create_dt.Rows[r]["ChakuniYoteiDate"].ToString();
-                                int line_No = r + 1;
-
-                                if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
-                                {
-                                    //return string.Empty; 
-                                }
-                                else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
-                                {
-                                    //return null;
-                                }
-                                else if (Date_Check(date3, line_No, "入力可能値外エラー", "取引終了日") == "true")
-                                {
-                                    //return null;
-                                }
-                                else if (r == create_dt.Rows.Count - 1)
-                                {
-                                    Xml_Juchuu = cf.DataTableToXml(create_dt);
-                                }
-                            }
-                        }
+                        create_dt.Rows.Add(dr);                       
                     }
                     create_dt.Columns.Add("JuchuuNO", typeof(string));
                     create_dt.Columns.Add("HacchuuNO", typeof(string));
@@ -456,7 +429,35 @@ namespace JuchuuTorikomi
                         Remove_Datatable_Column(dt_Main);
                         Xml_Hacchuu = cf.DataTableToXml(dt_Main);
                     }
-                        Xml_Juchuu = cf.DataTableToXml(create_dt);
+                    // Xml_Juchuu = cf.DataTableToXml(create_dt);
+                    //05_17_2021[ssa]
+                    if (create_dt.Rows.Count > 0)
+                    {
+                        for (int r = 0; r < create_dt.Rows.Count; r++)
+                        {
+                            string date1 = create_dt.Rows[r]["ChangeDate"].ToString();//column_1
+                            string date2 = create_dt.Rows[r]["TorihikiKaisiDate"].ToString();//column_2
+                            string date3 = create_dt.Rows[r]["TorihikiShuuryouDate"].ToString();//column_3
+                            int line_No = r + 1;
+
+                            if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
+                            {
+                                Xml_Hacchuu = string.Empty;
+                            }
+                            else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
+                            {
+                                Xml_Hacchuu = string.Empty;
+                            }
+                            else if (Date_Check(date3, line_No, "入力可能値外エラー", "取引終了日") == "true")
+                            {
+                                Xml_Hacchuu = string.Empty;
+                            }
+                            else if (r == create_dt.Rows.Count - 1)
+                            {
+                                Xml_Juchuu = cf.DataTableToXml(create_dt);
+                            }
+                        }
+                    }
                 }
                 else
                 {
