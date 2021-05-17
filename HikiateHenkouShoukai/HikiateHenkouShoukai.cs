@@ -297,7 +297,7 @@ namespace HikiateHenkouShoukai
                     gvAggregationDetails.Location = new Point(22, 250);
                     gvAggregationDetails.Size = new Size(1450, 565);
                     //this.gvAggregationDetails.Size = new System.Drawing.Size(1300, 387);
-                    txtKanriNO.NextControlName = "txtTokuisakiCD";
+                     txtKanriNO.NextControlName = "txtTokuisakiCD";
                     //gvMainDetail.ReadOnly = true;
                     //gvMainDetail.CellValidating -= new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.gvMainDetail_CellValidating);
                     break;
