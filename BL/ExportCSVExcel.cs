@@ -62,7 +62,8 @@ namespace BL
 
                         oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
                     }
-                    oSheet.Columns.AutoFit();
+                     //oSheet.Columns.AutoFit();
+                   oSheet.Columns.ColumnWidth = 15;
                 }
 
                 //header alignment
@@ -76,12 +77,12 @@ namespace BL
                 // color the columns 
                 if (!string.IsNullOrEmpty(obj.Start_Interior_Column) && !string.IsNullOrEmpty(obj.End_Interior_Column))
                 {
-                    oSheet.Range[obj.Start_Interior_Column, obj.End_Interior_Column].Interior.Color = obj.Interior_Color;
+                    oSheet.Range[obj.Start_Interior_Column, obj.End_Interior_Column].Interior.Color = Color.FromArgb(255, 192, 0);
                 }
                 //font color 
                 if (!string.IsNullOrEmpty(obj.Start_Font_Column) && !string.IsNullOrEmpty(obj.End_Font_Column))
                 {
-                    oSheet.Range[obj.Start_Font_Column, obj.End_Font_Column].Font.Color = Color.FromArgb(255, 192, 0);
+                    oSheet.Range[obj.Start_Font_Column, obj.End_Font_Column].Font.Color = Color.Black;
                 }
                 //Change date format               
                 if (obj.Date_Column != null && obj.Date_Column.Count > 0)//change
@@ -169,8 +170,8 @@ namespace BL
                             ws.Range(ws.Cell(1, 1), ws.Cell(1, bgcol)).Style.Fill.BackgroundColor = XLColor.FromArgb(255, 192, 0);
                             //ws.FirstRow().Style.Fill.BackgroundColor = XLColor.Orange;
                             ws.FirstRow().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                            //ws.ColumnWidth = 20;
-                            worksheet.Columns.AutoFit();
+                            ws.ColumnWidth = 15;
+                           // worksheet.Columns.AutoFit();
 
                             foreach (DataColumn dc in dtvalue.Columns)
                             {
