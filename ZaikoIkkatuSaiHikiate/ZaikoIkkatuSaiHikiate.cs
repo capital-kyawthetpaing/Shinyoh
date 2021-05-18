@@ -52,7 +52,7 @@ namespace ZaikoIkkatuSaiHikiate
         {
             Remove_LabelBorder();
             if (tagID == "12")
-            { 
+            {
                 HikiateHenkouShoukaiBL bl = new HikiateHenkouShoukaiBL();
                 bl.IData_DB(GetRequired_UIData());
             }
@@ -62,12 +62,6 @@ namespace ZaikoIkkatuSaiHikiate
         {
             lbl1.BorderStyle = BorderStyle.None;
             lbl2.BorderStyle = BorderStyle.None;
-            lbl3.BorderStyle = BorderStyle.None;
-            lbl4.BorderStyle = BorderStyle.None;
-            lbl5.BorderStyle = BorderStyle.None;
-            lbl6.BorderStyle = BorderStyle.None;
-            lbl7.BorderStyle = BorderStyle.None;
-            lbl8.BorderStyle = BorderStyle.None;
         }
 
         private HikiateHenkouShoukaiEntity GetRequired_UIData()
