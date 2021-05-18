@@ -89,7 +89,7 @@ namespace JuchuuTorikomi
                     txtDate1.E103Check(false);
                 if (cf.DateCheck(txtDate2))
                     txtDate2.E103Check(false);
-                txtDate2.E106Check(false, txtDate1, txtDate2);
+                txtDate2.E104Check(false, txtDate1, txtDate2);
                 txtDenpyouNO.E102Check(false);
                 txtDenpyouNO.E160Check(false, "JuchuuTorikomi", txtDenpyouNO, null);
                 txtDenpyouNO.E265Check(false, "JuchuuTorikomi", txtDenpyouNO);
@@ -102,7 +102,7 @@ namespace JuchuuTorikomi
                     txtDate1.E103Check(true);
                 //if (cf.DateCheck(txtDate2))
                     txtDate2.E103Check(true);
-                txtDate2.E106Check(true, txtDate1, txtDate2);
+                txtDate2.E104Check(true, txtDate1, txtDate2);
                 txtDenpyouNO.E102Check(true);
                 txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
                 txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
@@ -674,7 +674,7 @@ namespace JuchuuTorikomi
                 txtDate1.E103Check(true);
             if (cf.DateCheck(txtDate2))
                 txtDate2.E103Check(true);
-            txtDate2.E106Check(true, txtDate1, txtDate2);
+            txtDate2.E104Check(true, txtDate1, txtDate2);
             txtDenpyouNO.E102Check(true);
             txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
             txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
