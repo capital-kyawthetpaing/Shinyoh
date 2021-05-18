@@ -47,7 +47,7 @@ BEGIN
 	begin
 		SELECT
 		 MS.ShouhinCD AS '商品CD'
-		,MS.ChangeDate AS '改定日'
+		,CONVERT(varchar, MS.ChangeDate, 111)  AS '改定日'
 		,MS.ShokutiFLG AS '諸口区分'
 		,CASE WHEN MS.ShokutiFLG = 0 THEN '通常' ELSE '諸口' END AS '諸口区分名'
 		,MS.HinbanCD AS '品番CD'
@@ -65,7 +65,7 @@ BEGIN
 		,M_MultiPorpose_Brand.Char1 AS 'ブランド名'
 		,MS.ColorNO AS 'カラーNO'
 		,M_MultiPorpose_Color.Char1 AS 'カラー名'
-		,MS.SizeNO as 'サイズNO'
+		,CASE ISNUMERIC(MS.SizeNO+'.e0') WHEN 1 THEN MS.SizeNO+'.0' ELSE MS.SizeNO END  as 'サイズNO'
 		,M_MultiPorpose_Size.Char1 AS 'サイズ名'
 		,MS.JoudaiTanka AS '上代単価'
 		,MS.GedaiTanka AS '下代単価'
@@ -78,8 +78,8 @@ BEGIN
 		,M_MultiPorpose_ZaikoKanriKBN.Char1 AS '在庫管理区分名'
 		,MS.MainSiiresakiCD AS '主要仕入先CD'
 		,FS.SiiresakiName AS '主要仕入先名'
-		,MS.ToriatukaiShuuryouDate AS '取扱終了日'
-		,MS.HanbaiTeisiDate AS '販売停止日'
+		,CONVERT(varchar, MS.ToriatukaiShuuryouDate, 111) AS '取扱終了日'
+		,CONVERT(varchar, MS.HanbaiTeisiDate, 111) AS '販売停止日'
 		,MS.Model_No AS 'モデルNO'
 		,MS.Model_Name AS 'モデル名'
 		,MS.FOB
@@ -120,7 +120,7 @@ BEGIN
 	begin
 		SELECT
 		 MS.ShouhinCD AS '商品CD'
-		,MS.ChangeDate AS '改定日'
+		,CONVERT(varchar, MS.ChangeDate, 111)  AS '改定日'
 		,MS.ShokutiFLG AS '諸口区分'
 		,CASE WHEN MS.ShokutiFLG = 0 THEN '通常' ELSE '諸口' END AS '諸口区分名'
 		,MS.HinbanCD AS '品番CD'
@@ -138,7 +138,7 @@ BEGIN
 		,M_MultiPorpose_Brand.Char1 AS 'ブランド名'
 		,MS.ColorNO AS 'カラーNO'
 		,M_MultiPorpose_Color.Char1 AS 'カラー名'
-		,MS.SizeNO as 'サイズNO'
+		,CASE ISNUMERIC(MS.SizeNO+'.e0') WHEN 1 THEN MS.SizeNO+'.0' ELSE MS.SizeNO END  as 'サイズNO'
 		,M_MultiPorpose_Size.Char1 AS 'サイズ名'
 		,MS.JoudaiTanka AS '上代単価'
 		,MS.GedaiTanka AS '下代単価'
@@ -151,8 +151,8 @@ BEGIN
 		,M_MultiPorpose_ZaikoKanriKBN.Char1 AS '在庫管理区分名'
 		,MS.MainSiiresakiCD AS '主要仕入先CD'
 		,FS.SiiresakiName AS '主要仕入先名'
-		,MS.ToriatukaiShuuryouDate AS '取扱終了日'
-		,MS.HanbaiTeisiDate AS '販売停止日'
+		,CONVERT(varchar, MS.ToriatukaiShuuryouDate, 111) AS '取扱終了日'
+		,CONVERT(varchar, MS.HanbaiTeisiDate, 111) AS '販売停止日'
 		,MS.Model_No AS 'モデルNO'
 		,MS.Model_Name AS 'モデル名'
 		,MS.FOB
