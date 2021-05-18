@@ -143,6 +143,13 @@ namespace HikiateHenkouShoukai
             gvAggregationDetails.Memory_Row_Count = 0;
             gvMainDetail.Memory_Row_Count = 0;
             gvFreeInventoryDetails.Memory_Row_Count = 0;
+            
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
         }
         private void initScr()
         {
@@ -168,6 +175,7 @@ namespace HikiateHenkouShoukai
             }
             if (tagID == "8")
             {
+                D_Exclusive_JuchuuNO_Delete();
                 Confirm_Data();
             }
             if (tagID == "10")
@@ -454,6 +462,9 @@ namespace HikiateHenkouShoukai
 
         private void Display_Data()
         {
+
+            D_Exclusive_JuchuuNO_Delete();
+
             HikiateHenkouShoukaiEntity entity = new HikiateHenkouShoukaiEntity();
             if (rdoAggregation.Checked)
                 entity.Representation = 0;

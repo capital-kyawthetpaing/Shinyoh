@@ -134,7 +134,6 @@
             this.PanelDetail.Name = "PanelDetail";
             this.PanelDetail.Size = new System.Drawing.Size(1713, 842);
             this.PanelDetail.TabIndex = 2;
-            this.PanelDetail.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelDetail_Paint);
             // 
             // txtShukkaToNo2
             // 
