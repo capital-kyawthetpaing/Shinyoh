@@ -16,22 +16,22 @@ GO
 -- =============================================
 CREATE  PROCEDURE [dbo].[Get_Shouhin_ExportData]
 	-- Add the parameters for the stored procedure here
-	@ShouhinCD1 varchar(50),
-	@ShouhinCD2 varchar(50),
-	@JANCD1		varchar(13),
-	@JANCD2		varchar(13),
-	@ShouhinName varchar(80),
+	@ShouhinCD1		varchar(50),
+	@ShouhinCD2		varchar(50),
+	@JANCD1			varchar(13),
+	@JANCD2			varchar(13),
+	@ShouhinName	varchar(80),
 	@BrandCD1		varchar(10),
 	@BrandCD2		varchar(10),
 	@ColorNO1		varchar(13),
 	@ColorNO2		varchar(13),
 	@SizeNO1		varchar(13),
 	@SizeNO2		varchar(13),
-	@Remarks varchar(80),
-	@Output_Type VARCHAR(1),
-	@InsertOperator				VARCHAR(10),
-    @Program					VARCHAR(40),
-	@PC							VARCHAR(100)
+	@Remarks		varchar(80),
+	@Output_Type	VARCHAR(1),
+	@InsertOperator	VARCHAR(10),
+    @Program		VARCHAR(40),
+	@PC				VARCHAR(100)
 
 AS
 BEGIN
@@ -92,7 +92,7 @@ BEGIN
 		,MS.UpdateOperator AS '変更登録者'
 		,MS.UpdateDateTime AS '変更登録日時'
 		FROM M_Shouhin MS
-		LEFT OUTER JOIN M_MultiPorpose MP ON MP.ID=102 AND [Key]=Ms.TaniCD
+		--LEFT OUTER JOIN M_MultiPorpose MP ON MP.ID=102 AND [Key]=Ms.TaniCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 102) M_MultiPorpose_Tani ON M_MultiPorpose_Tani.[Key] =MS.TaniCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 103) M_MultiPorpose_Brand ON M_MultiPorpose_Brand.[Key] = MS.BrandCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 104) M_MultiPorpose_Color ON M_MultiPorpose_Color.[Key] = MS.ColorNO
@@ -105,7 +105,7 @@ BEGIN
 		AND (@ShouhinCD2 IS NULL OR MS.HinbanCD <= @ShouhinCD2)
 		AND (@JANCD1 IS NULL OR MS.JanCD >= @JANCD1)
 		AND (@JANCD2 IS NULL OR MS.JanCD <= @JANCD2)
-		AND (@ShouhinName IS NULL OR ((MS.ShouhinRyakuName LIKE '%' + @ShouhinName + '%') OR (MS.ShouhinRyakuName LIKE '%' + @ShouhinName + '%')))
+		AND (@ShouhinName IS NULL OR ((MS.ShouhinRyakuName LIKE '%' + @ShouhinName + '%') OR (MS.ShouhinName LIKE '%' + @ShouhinName + '%')))
 		AND (@BrandCD1 IS NULL OR MS.BrandCD >= @BrandCD1)
 		AND (@BrandCD2 IS NULL OR MS.BrandCD <= @BrandCD2)
 		AND (@ColorNO1 IS NULL OR MS.ColorNO >= @ColorNO1)
@@ -165,8 +165,7 @@ BEGIN
 		,MS.UpdateOperator AS '変更登録者'
 		,MS.UpdateDateTime AS '変更登録日時'
 		FROM F_Shouhin(getdate()) MS
-		LEFT OUTER JOIN M_MultiPorpose MP
-		ON MP.ID=102 AND [Key]=Ms.TaniCD
+		--LEFT OUTER JOIN M_MultiPorpose MP ON MP.ID=102 AND [Key]=Ms.TaniCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 102) M_MultiPorpose_Tani ON M_MultiPorpose_Tani.[Key] =MS.TaniCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 103) M_MultiPorpose_Brand ON M_MultiPorpose_Brand.[Key] = MS.BrandCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 104) M_MultiPorpose_Color ON M_MultiPorpose_Color.[Key] = MS.ColorNO
@@ -179,7 +178,7 @@ BEGIN
 		AND (@ShouhinCD2 IS NULL OR MS.HinbanCD <= @ShouhinCD2)
 		AND (@JANCD1 IS NULL OR MS.JanCD >= @JANCD1)
 		AND (@JANCD2 IS NULL OR MS.JanCD <= @JANCD2)
-		AND (@ShouhinName IS NULL OR ((MS.ShouhinRyakuName LIKE '%' + @ShouhinName + '%') OR (MS.ShouhinRyakuName LIKE '%' + @ShouhinName + '%')))
+		AND (@ShouhinName IS NULL OR ((MS.ShouhinRyakuName LIKE '%' + @ShouhinName + '%') OR (MS.ShouhinName LIKE '%' + @ShouhinName + '%')))
 		AND (@BrandCD1 IS NULL OR MS.BrandCD >= @BrandCD1)
 		AND (@BrandCD2 IS NULL OR MS.BrandCD <= @BrandCD2)
 		AND (@ColorNO1 IS NULL OR MS.ColorNO >= @ColorNO1)
