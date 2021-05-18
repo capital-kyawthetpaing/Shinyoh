@@ -74,7 +74,8 @@ BEGIN
 					from D_JuchuuShousai
 					where JuchuuNO = @JuchuuNo
 					and JuchuuGyouNO = @JuchuuGyouNO
-					and ShukkaSiziZumiSuu = 0
+					--and ShukkaSiziZumiSuu = 0
+					and MiHikiateSuu <> 0
 					
 					declare @maxJuchuuShousaiNo as smallint
 
