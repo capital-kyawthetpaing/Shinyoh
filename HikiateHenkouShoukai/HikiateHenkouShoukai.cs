@@ -295,7 +295,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = false;
                     gvAggregationDetails.Location = new Point(22, 250);
-                    gvAggregationDetails.Size = new Size(1450, 565);
+                    gvAggregationDetails.Size = new Size(1430, 565);
                     //this.gvAggregationDetails.Size = new System.Drawing.Size(1300, 387);
                      txtKanriNO.NextControlName = "txtTokuisakiCD";
                     //gvMainDetail.ReadOnly = true;
@@ -324,7 +324,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = true;
                     gvFreeInventoryDetails.Visible = false;
                     gvMainDetail.Location = new Point(22, 250);
-                    gvMainDetail.Size = new Size(1650, 560);
+                    gvMainDetail.Size = new Size(1640, 560);
                     //this.gvMainDetail.Size = new System.Drawing.Size(1300, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = false;
