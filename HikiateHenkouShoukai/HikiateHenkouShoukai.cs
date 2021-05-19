@@ -598,11 +598,14 @@ namespace HikiateHenkouShoukai
         }
         private void D_Exclusive_JuchuuNO_Delete()
         {
-            foreach (DataRow dr in dtMain.Rows)
+            if (rdoDetails.Checked)
             {
-                if (!string.IsNullOrWhiteSpace(dr["受注番号"].ToString()))
+                foreach (DataRow dr in dtMain.Rows)
                 {
-                    D_Exclusive_OneNumber_Delete(dr);
+                    if (!string.IsNullOrWhiteSpace(dr["受注番号"].ToString()))
+                    {
+                        D_Exclusive_OneNumber_Delete(dr);
+                    }
                 }
             }
         }
