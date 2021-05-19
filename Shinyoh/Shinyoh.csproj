@@ -114,6 +114,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ExcelDLL\ClosedXML.dll" />
+    <Content Include="ExcelDLL\DocumentFormat.OpenXml.dll" />
+    <Content Include="ExcelDLL\ExcelNumberFormat.dll" />
+    <Content Include="ExcelDLL\System.IO.Packaging.dll" />
     <Content Include="RequireDLL\CKM_CommonFunction.dll" />
     <Content Include="RequireDLL\CKM_DataLayer.dll" />
     <Content Include="RequireDLL\ClientFtp.dll" />
@@ -148,5 +152,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
