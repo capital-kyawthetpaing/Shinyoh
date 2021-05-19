@@ -62,5 +62,27 @@ if @Errortype='E268'
 	    select 3 as MessageID
 	   end
 	end
+	
+
+    if @Errortype='E280'
+    begin
+        if  exists(select * from D_ChakuniMeisai AS DCKM
+                Inner Join D_HacchuuMeisai AS DHAM
+                On  DCKM.HacchuuNO = DHAM.HacchuuNO
+                And DCKM.HacchuuGyouNO = DHAM.HacchuuGyouNO
+                Where DCKM.ChakuniNO = @ChakuniNo
+                And   DHAM.ChakuniKanryouKBN = 1
+                And   DHAM.HacchuuSuu <> DHAM.ChakuniZumiSuu
+                )
+        begin
+        --exists
+           select * from  M_Message
+           where MessageID='E280'
+        end
+        else
+        begin
+            select 4 as MessageID
+        end
+    end
 END
 GO

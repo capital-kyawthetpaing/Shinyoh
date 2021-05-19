@@ -839,8 +839,21 @@ namespace Shinyoh_Controls
                             return (true, rDt);
                         }
                         break;
-                }              
+                }
             }
+            if (sTextBox.E280)
+            {
+                string result = string.Empty;
+                switch (sTextBox.E280Type)
+                {
+                    case "ChakuniNyuuryoku":
+                        chakuniNyuuryoku_BL bl = new chakuniNyuuryoku_BL();
+                        rDt = bl.ChakuniNyuuryoku_Select(sTextBox.ctrlE280_1.Text, string.Empty, "E280");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                }
+            }
+
             if (sTextBox.E128)
             {
                 if (!System.IO.File.Exists(sTextBox.ctrlE128_1.Text) && !string.IsNullOrEmpty(sTextBox.ctrlE128_1.Text.Trim()))
