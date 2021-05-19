@@ -103,9 +103,9 @@ namespace JuchuuTorikomi
                 if (cf.DateCheck(txtDate2))
                     txtDate2.E103Check(true);
                 txtDate2.E104Check(true, txtDate1, txtDate2);
-                txtDenpyouNO.E102Check(true);
-                txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
-                txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
+                txtDenpyouNO.E102Check(false);
+                txtDenpyouNO.E160Check(false, "JuchuuTorikomi", txtDenpyouNO, null);
+                txtDenpyouNO.E265Check(false, "JuchuuTorikomi", txtDenpyouNO);
             }
         }
         public override void FunctionProcess(string tagID)
@@ -175,12 +175,6 @@ namespace JuchuuTorikomi
                             }
                         }
                 }
-            //}
-            //    else
-            //    {
-            //        return;
-            //    }
-                
                 //(string, string) Xml = GetFile();
                 //BaseBL bbl = new BaseBL();
                 //if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
@@ -306,153 +300,6 @@ namespace JuchuuTorikomi
                     var bl_List = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
                     {
-                        //var splits = csvRows[i].Split(',');
-                        //JEntity.JuchuuDate= splits[0];
-                        //if (Null_Check(JEntity.JuchuuDate, i, "受注日")) break;
-                        //if(Date_Check(JEntity.JuchuuDate,i, "受注日")) break;
-
-                        //JEntity.TokuisakiCD = splits[1];
-                        //if (Null_Check(JEntity.TokuisakiCD, i, "得意先CD")) break;
-                        //if (Byte_Check(10, JEntity.TokuisakiCD, i, "得意先CD")) break;
-
-                        //JEntity.TokuisakiName = splits[2];
-                        //if (Null_Check(JEntity.TokuisakiName, i, "得意先名")) break;
-                        //if (Byte_Check(80, JEntity.TokuisakiName, i, "得意先名")) break;
-
-                        //JEntity.KouritenCD = splits[3];
-                        //if (Null_Check(JEntity.KouritenCD, i, "小売店CD")) break;
-                        //if (Byte_Check(10, JEntity.KouritenCD, i, "小売店CD")) break;
-
-                        //JEntity.KouritenName = splits[4];
-                        //if (Null_Check(JEntity.KouritenName, i, "小売店名")) break;
-                        //if (Byte_Check(80, JEntity.KouritenName, i, "得意先名")) break;
-
-                        //JEntity.StaffCD = splits[5];
-                        //if (Null_Check(JEntity.StaffCD, i, "担当スタッフCD")) break;
-                        //if (Byte_Check(10, JEntity.StaffCD, i, "担当スタッフCD")) break;
-
-                        //JEntity.KibouNouki = splits[7];
-                        //if (Date_Check(JEntity.KibouNouki, i, "希望納期")) break;
-
-                        //JEntity.ShouhinCD = splits[10];
-                        //if (Null_Check(JEntity.ShouhinCD, i, "商品CD")) break;
-                        //if (Byte_Check(20, JEntity.ShouhinCD, i, "商品CD")) break;
-
-                        //JEntity.ColorRyakuName = splits[11];
-                        //if (Null_Check(JEntity.ColorRyakuName, i, "カラー")) break;
-
-                        //JEntity.SizeNO = splits[12];
-                        //if (Null_Check(JEntity.SizeNO, i, "サイズ")) break;
-
-                        //JEntity.JANCD = splits[13];
-                        //if (Null_Check(JEntity.JANCD, i, "JANCD")) break;
-                        //if (Byte_Check(13, JEntity.JANCD, i, "JANCD")) break;
-
-                        //JEntity.HacchuuSuu = splits[14];
-                        //if (Number_Check(JEntity.HacchuuSuu, i, "数量")) break;
-
-                        //JEntity.SenpouHacchuuNO = splits[15];
-                        //if (Number_Check(JEntity.SenpouHacchuuNO, i, "発注単価")) break;
-
-                        //JEntity.JuchuuDenpyouTekiyou = splits[16];///
-                        //if (Number_Check(JEntity.JuchuuDenpyouTekiyou, i, "受注単価")) break;
-
-                        //JEntity.SiiresakiCD = splits[18];
-                        //if (Null_Check(JEntity.SiiresakiCD, i, "仕入先CD")) break;
-                        //if (Byte_Check(10, JEntity.SiiresakiCD, i, "仕入先CD")) break;
-
-                        //JEntity.SiiresakiName = splits[19];
-                        //if (Byte_Check(80, JEntity.SiiresakiName, i, "仕入先名")) break;
-
-                        //JEntity.ChakuniYoteiDate = splits[20];
-                        //if (Null_Check(JEntity.ChakuniYoteiDate, i, "着荷予定日")) break;
-                        //if (Date_Check(JEntity.ChakuniYoteiDate, i, "着荷予定日")) break;
-
-                        //JEntity.SoukoCD = splits[21];
-                        //if (Null_Check(JEntity.SoukoCD, i, "倉庫CD")) break;
-                        //if (Byte_Check(10, JEntity.SoukoCD, i, "倉庫CD")) break;
-
-                        //DataTable dt = new DataTable();
-                        //TokuisakiBL tBL = new TokuisakiBL();
-                        //dt = tBL.M_Tokuisaki_Select(JEntity.TokuisakiCD, JEntity.JuchuuDate, "E101");
-                        //if (dt.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "得意先CD");
-                        //    break;
-                        //}
-
-                        //DataTable dt1 = new DataTable();
-                        //KouritenBL kBL = new KouritenBL();
-                        //dt1 = kBL.Kouriten_Select_Check(JEntity.KouritenCD, JEntity.JuchuuDate, "E101");
-                        //if (dt1.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "小売店CD");
-                        //    break;
-                        //}
-
-                        //DataTable dt2 = new DataTable();
-                        //StaffBL sBL = new StaffBL();
-                        //dt2 = sBL.Staff_Select_Check(JEntity.StaffCD, JEntity.JuchuuDate, "E101");
-                        //if (dt2.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "担当スタッフCD");
-                        //    break;
-                        //}
-
-                        //DataTable dt3 = new DataTable();
-                        //ShukkaTorikomi_BL rBL = new ShukkaTorikomi_BL();
-                        //dt3 = rBL.ShukkaTorikomi_Check(JEntity.ShouhinCD, JEntity.JuchuuDate, "E101", "ShouhinCD");
-                        //if (dt3.Rows.Count > 0 && dt3.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "商品CD");
-                        //    break;
-                        //}
-
-                        //DataTable dt4 = new DataTable();
-                        //ShukkaTorikomi_BL jBL = new ShukkaTorikomi_BL();
-                        //dt4 = jBL.ShukkaTorikomi_Check(JEntity.JANCD, JEntity.JuchuuDate, "E101", "JANCD");
-                        //if (dt4.Rows.Count > 0 && dt4.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "JANCD");
-                        //    break;
-                        //}
-
-                        //DataTable dt5 = new DataTable();
-                        //SiiresakiBL SiireBL = new SiiresakiBL();
-                        //dt5 = SiireBL.Siiresaki_Select_Check(JEntity.SiiresakiCD, JEntity.JuchuuDate, "E101");
-                        //if (dt5.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "仕入先CD");
-                        //    break;
-                        //}
-
-                        //DataTable dt6 = new DataTable();
-                        //SoukoBL soukoBL = new SoukoBL();
-                        //dt6 = soukoBL.Souko_Select(JEntity.SoukoCD, "E101");
-                        //if (dt6.Rows[0]["MessageID"].ToString() == "E101")
-                        //{
-                        //    bbl.ShowMessage("E101", i.ToString(), "倉庫CD");
-                        //    break;
-                        //}
-
-                        //string error = string.Empty;
-                        //if (bl_List.Contains(true))
-                        //    error = "true";
-                        //else error = "false";
-
-                        //DataRow dr = create_dt.NewRow();
-                        //for (int j = 0; j < splits.Length; j++)
-                        //{
-                        //    if (string.IsNullOrEmpty(splits[j]))
-                        //        dr[j] = DBNull.Value;
-                        //    else
-                        //        dr[j] = splits[j].ToString();
-                        //}
-                        //dr[54] = base_Entity.OperatorCD;
-                        //dr[55] = base_Entity.ProgramID;
-                        //dr[56] = base_Entity.PC;
-                        //dr[57] = error;
-                        //create_dt.Rows.Add(dr);
                         error = "false";
                         var splits = csvRows[i].Split(',');
                         DataRow dr = create_dt.NewRow();
