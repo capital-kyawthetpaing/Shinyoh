@@ -149,7 +149,7 @@ namespace HacchuuList
                     dt.Columns["Char1"].ColumnName = "ブランド名";
                     dt.Columns["Exhibition"].ColumnName = "展示会";
                     dt.Columns["JANCD"].ColumnName = "JANコード";
-                    dt.Columns["ShouhinCD"].ColumnName = "商品番";
+                    dt.Columns["ShouhinCD"].ColumnName = "商品";
                     dt.Columns["ShouhinName"].ColumnName = "商品名";
                     dt.Columns["ColorRyakuName"].ColumnName = "カラー";
                     dt.Columns["SizeNO"].ColumnName = "サイズ";
@@ -205,7 +205,7 @@ namespace HacchuuList
                         obj.End_Title_Center_Column = "Y1";
                         //for column T,U,V
                         obj.Number_Column = new List<int>();
-                        obj.Number_Column.Add(20);
+                        //obj.Number_Column.Add(20);
                         obj.Number_Column.Add(21);
                         obj.Number_Column.Add(22);
                         obj.Number_Format = "#,###,###";
