@@ -205,7 +205,7 @@ namespace HacchuuList
                         obj.End_Title_Center_Column = "Y1";
                         //for column T,U,V
                         obj.Number_Column = new List<int>();
-                        obj.Number_Column.Add(20);
+                        //obj.Number_Column.Add(20);
                         obj.Number_Column.Add(21);
                         obj.Number_Column.Add(22);
                         obj.Number_Format = "#,###,###";
