@@ -159,7 +159,7 @@ namespace HacchuuList
                     dt.Columns["HacchuuMeisaiTekiyou"].ColumnName = "明細摘要";
                     dt.Columns["SiiresakiCD"].ColumnName = "発注先";
                     dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
-                    dt.Columns.Remove("発注先名");                              //not include in Excel
+                   // dt.Columns.Remove("発注先名");                              //not include in Excel
                     dt.Columns["SoukoName"].ColumnName = "倉庫";
 
                     if (!System.IO.Directory.Exists("C:\\Excel"))
