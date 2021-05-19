@@ -181,6 +181,20 @@ namespace ShukkaSiziNyuuryoku
                 {
                     if (F8_dt1.Rows.Count > 0 || dtgv1.Rows.Count > 0)
                     {
+                        switch (cboMode.SelectedValue)
+                        {
+                            case "1":
+                            case "2":
+                                DataRow[] dataRows = F8_dt1.Select("Kanryo='1'");
+                                if (dataRows.Length > 0)
+                                {
+                                    //F11保存ボタンで保存されている情報の中で、完了チェックがONの明細が存在する場合、警告
+                                    if (bbl.ShowMessage("Q327") == DialogResult.No)
+                                        return;
+                                }
+                                break;
+                        }
+
                         DBProcess();
                         switch (cboMode.SelectedValue)
                         {
@@ -953,6 +967,7 @@ namespace ShukkaSiziNyuuryoku
                 sbShippingNO.E133Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
                 sbShippingNO.E115Check(false, "ShukkaSiziNyuuryoku", sbShippingNO);
                 sbShippingNO.E160Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null);
+                sbShippingNO.E280Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
             }
             else
             {
@@ -967,6 +982,7 @@ namespace ShukkaSiziNyuuryoku
                 sbShippingNO.E115Check(NotShowMode, "ShukkaSiziNyuuryoku", sbShippingNO);
                 sbShippingNO.E159Check(NotShowMode, "ShukkaSiziNyuuryoku", sbShippingNO);
                 sbShippingNO.E160Check(NotShowMode, "ShukkaSiziNyuuryoku", sbShippingNO, null);
+                sbShippingNO.E280Check(NotShowMode, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
             }
             txtYubin2.E102MultiCheck(true, txtYubin1, txtYubin2);
             txtYubin2.Yuubin_Juusho(true, txtYubin1, txtYubin2, string.Empty, string.Empty);
