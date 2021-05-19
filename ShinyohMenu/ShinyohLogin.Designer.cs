@@ -40,6 +40,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblVer = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblProgress = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +93,8 @@
             this.ckM_Button2.ForeColor = System.Drawing.Color.White;
             this.ckM_Button2.Location = new System.Drawing.Point(3, 3);
             this.ckM_Button2.Name = "ckM_Button2";
+            this.ckM_Button2.NextControl = null;
+            this.ckM_Button2.NextControlName = null;
             this.ckM_Button2.Size = new System.Drawing.Size(281, 61);
             this.ckM_Button2.TabIndex = 7;
             this.ckM_Button2.Text = "終了(F1)";
@@ -111,6 +115,8 @@
             this.ckM_Button1.ForeColor = System.Drawing.Color.White;
             this.ckM_Button1.Location = new System.Drawing.Point(864, 3);
             this.ckM_Button1.Name = "ckM_Button1";
+            this.ckM_Button1.NextControl = null;
+            this.ckM_Button1.NextControlName = null;
             this.ckM_Button1.Size = new System.Drawing.Size(281, 61);
             this.ckM_Button1.TabIndex = 6;
             this.ckM_Button1.Text = "ロ グ イ ン(F12)";
@@ -131,6 +137,8 @@
             this.ckM_Button3.ForeColor = System.Drawing.Color.White;
             this.ckM_Button3.Location = new System.Drawing.Point(577, 3);
             this.ckM_Button3.Name = "ckM_Button3";
+            this.ckM_Button3.NextControl = null;
+            this.ckM_Button3.NextControlName = null;
             this.ckM_Button3.Size = new System.Drawing.Size(281, 61);
             this.ckM_Button3.TabIndex = 8;
             this.ckM_Button3.Text = "同期する (F11)";
@@ -224,12 +232,34 @@
             this.label6.Text = "Version - ";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(406, 292);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(405, 23);
+            this.progressBar1.Step = 1;
+            this.progressBar1.TabIndex = 81;
+            this.progressBar1.Visible = false;
+            // 
+            // lblProgress
+            // 
+            this.lblProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lblProgress.Location = new System.Drawing.Point(512, 245);
+            this.lblProgress.Name = "lblProgress";
+            this.lblProgress.Size = new System.Drawing.Size(200, 23);
+            this.lblProgress.TabIndex = 80;
+            this.lblProgress.Text = "lblProgress";
+            this.lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblProgress.Visible = false;
+            // 
             // ShinyohLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1176, 462);
+            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.lblVer);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox1);
@@ -264,5 +294,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblVer;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label lblProgress;
     }
 }

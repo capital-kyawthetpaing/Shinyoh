@@ -135,14 +135,15 @@ namespace ShinyohMenu
         {
             try
             {
-                var result = MessageBox.Show("Do you want to asynchronize AppData Files?", "Synchronous Update Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("サーバーから最新プログラムをダウンロードしますか？", "Synchronous Update Information", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     this.Cursor = Cursors.WaitCursor;
-                    ftpClient = new ClientFtp.ClientFtp("C:\\DBConfig\\DBConfig.ini");
+                    this.Cursor = Cursors.WaitCursor;
+                    ftpClient = new ClientFtp.ClientFtp("C:\\DBConfig\\DBConfig.ini", "ShinyohLogin");
                     ftpClient.UpdateSyncData();
                     
-                    MessageBox.Show("Now AppData Files are updated!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  //  MessageBox.Show("Now AppData Files are updated!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
