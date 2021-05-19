@@ -332,7 +332,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = true;
                     gvFreeInventoryDetails.Visible = false;
                     gvMainDetail.Location = new Point(22, 250);
-                    gvMainDetail.Size = new Size(1640, 560);
+                    gvMainDetail.Size = new Size(1640, 565);
                     //this.gvMainDetail.Size = new System.Drawing.Size(1300, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = false;
@@ -362,7 +362,7 @@ namespace HikiateHenkouShoukai
                     gvFreeInventoryDetails.Visible = true;
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
                     gvFreeInventoryDetails.Location = new Point(22, 250);
-                    gvFreeInventoryDetails.Size = new Size(1100, 560);
+                    gvFreeInventoryDetails.Size = new Size(1100, 565);
                     //this.gvFreeInventoryDetails.Size = new System.Drawing.Size(1100, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = true;
