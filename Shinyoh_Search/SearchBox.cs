@@ -125,6 +125,8 @@ namespace Shinyoh_Search
             if (DepandOnMode == false || (DepandOnMode == true && mode != "新規"))
             {
                 MultiPorposeSearch msearch = new MultiPorposeSearch();
+
+
                 switch (this.SearchType)
                 {
                     case Entity.SearchType.ScType.Souko:
@@ -250,23 +252,44 @@ namespace Shinyoh_Search
                             name = msearch.Char1;
                         break;
                     case Entity.SearchType.ScType.FileImport:
-                        //JuchuuTorikomi_Form
+
                         if (this.Name == "txtImportFolder")
                         {
-                            msearch.Access_Type = "111";
-                            msearch.Access_Key = "1";
-                            msearch.ShowDialog();
-                            CD = msearch.Char1;
+                            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                            {
+                                openFileDialog.InitialDirectory = "C:\\";
+                                openFileDialog.Title = "Browse CSV Files";
+                                openFileDialog.Filter = "csv files (*.csv)|*.csv";
+                                openFileDialog.FilterIndex = 2;
+                                openFileDialog.RestoreDirectory = true;
+                                openFileDialog.ShowDialog();
+                                //if(this.Name== "txtImportFolder")
+                                //{
+                                   CD = openFileDialog.InitialDirectory;
+                                //}
+                                //else if (this.Name == "txtImportFileName")
+                                //{
+                                //   name = openFileDialog.FileName;
+                                //}
+                            }
                         }
                         else if (this.Name == "txtImportFileName")
                         {
-                            msearch.Access_Type = "111";
-                            msearch.Access_Key = "1";
-                            msearch.ShowDialog();
-                            CD = msearch.Char2;                        
+                            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                            {
+                                openFileDialog.InitialDirectory = "C:\\";
+                                openFileDialog.Title = "Browse CSV Files";
+                                openFileDialog.Filter = "csv files (*.csv)|*.csv";
+                                openFileDialog.FilterIndex = 2;
+                                openFileDialog.RestoreDirectory = true;
+                                openFileDialog.ShowDialog();
+
+                                CD = openFileDialog.FileName;
+                               
+                            }
                         }
                         //ShukkaTorikomi_Form
-                        else if (this.Name == "txtShukkaToNo1")
+                        if (this.Name == "txtShukkaToNo1")
                         {
                             msearch.Access_Type = "110";
                             msearch.Access_Key = "1";

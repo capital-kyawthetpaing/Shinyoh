@@ -12,7 +12,8 @@ GO
 -- Description:	<Description,,>
 -- =============================================
 CREATE PROCEDURE [dbo].[JuchuuTorikomi_Display]
-@TorikomiDenpyouNO as varchar(12)
+@Datefrom as varchar(10),
+@Dateto as varchar(10)
 AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
@@ -29,7 +30,9 @@ BEGIN
    KouritenCD,
    KouritenRyakuName
    From D_Juchuu
-   where  TorikomiDenpyouNO=@TorikomiDenpyouNO
+   where  TorikomiDenpyouNO is not Null
+   And (@Datefrom is null or(InsertDateTime>=@Datefrom))
+   And (@Dateto is null or(InsertDateTime<=@Dateto))
    Order by TorikomiDenpyouNO,JuchuuNO ASC
 
 END
