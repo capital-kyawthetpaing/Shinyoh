@@ -202,7 +202,7 @@ namespace JuchuuList {
                         dt.Columns["JuchuuMeisaiTekiyou"].ColumnName = "明細摘要";
                         dt.Columns["SiiresakiCD"].ColumnName = "発注先";
                         dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
-                        dt.Columns.Remove("発注先名");
+                        //dt.Columns.Remove("発注先名");           //HET
                         dt.Columns["SoukoName"].ColumnName = "倉庫";
 
                         if (!System.IO.Directory.Exists("C:\\Excel"))
@@ -222,10 +222,10 @@ namespace JuchuuList {
                             obj.FilePath = saveFileDialog1.FileName;
                             obj.SheetName = "受注リスト";
                             obj.Start_Interior_Column = "A1";
-                            obj.End_Interior_Column = "Y1";
+                            obj.End_Interior_Column = "Z1";
                             obj.Interior_Color = Color.FromArgb(255, 192, 0);
                             obj.Start_Font_Column = "A1";
-                            obj.End_Font_Column = "Y1";
+                            obj.End_Font_Column = "Z1";
                             obj.Font_Color = Color.Black;
                             //For column B
                             obj.Date_Column = new List<int>();
@@ -233,7 +233,7 @@ namespace JuchuuList {
                             obj.Date_Column.Add(10);
                             obj.Date_Format = "YYYY/MM/DD";
                             obj.Start_Title_Center_Column = "A1";
-                            obj.End_Title_Center_Column = "Y1";
+                            obj.End_Title_Center_Column = "Z1";
                             //for column T,U
                             obj.Number_Column = new List<int>();
                             obj.Number_Column.Add(19);
