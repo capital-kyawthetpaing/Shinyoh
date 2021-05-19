@@ -15,8 +15,9 @@ namespace BL
         public DataTable JuchuuTorikomi_Display(JuchuuTorikomiEntity entity)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[1];
-            parameters[0] = new SqlParameter("@TorikomiDenpyouNO", SqlDbType.VarChar) { Value = entity.TorikomiDenpyouNO };
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@Datefrom", SqlDbType.VarChar) { Value = entity.DateFrom };
+            parameters[1] = new SqlParameter("@Dateto", SqlDbType.VarChar) { Value = entity.DateTo };
             DataTable dt = ckmdl.SelectDatatable("JuchuuTorikomi_Display", GetConnectionString(), parameters);
             return dt;
         }

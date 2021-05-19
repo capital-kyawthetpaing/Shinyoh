@@ -24,6 +24,7 @@ namespace ShukkaTorikomi
         DataTable dt_Main;
         DataTable create_dt;
         DataTable dtShuKka;
+        DataTable dt;
 
         public SqlDbType()
         {
@@ -32,6 +33,7 @@ namespace ShukkaTorikomi
             multi_Entity = new multipurposeEntity();
             dt_Main = new DataTable();
             create_dt = new DataTable();
+            dt = new DataTable();
 
             bbl = new BaseBL();
             ShukkaTorikomi_BL = new ShukkaTorikomi_BL();
@@ -194,6 +196,8 @@ namespace ShukkaTorikomi
                 rdo_Toroku.Focus();
                 Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
                 btnF10.Visible = false;
+                gvShukkaTorikomi.ClearSelection();
+                dt.Clear();
             }
             if (tagID == "10")
             {
@@ -250,7 +254,7 @@ namespace ShukkaTorikomi
             TorikomiEntity obj = new TorikomiEntity();
             ShukkaTorikomi_BL objMethod = new ShukkaTorikomi_BL();
             obj.TorikomiDenpyouNO = txtDenpyouNO.Text;
-            DataTable dt = objMethod.ShukkaTorikomi_Select_Check(obj);
+            dt = objMethod.ShukkaTorikomi_Select_Check(obj);
 
             gvShukkaTorikomi.DataSource = dt;
         }
@@ -606,14 +610,6 @@ namespace ShukkaTorikomi
             //remove_dt.Columns.Remove("ShukkaGyouNO");
         }
 
-        private void PanelDetail_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void searchBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
