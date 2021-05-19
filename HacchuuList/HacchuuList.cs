@@ -192,17 +192,17 @@ namespace HacchuuList
                         obj.FilePath = saveFileDialog1.FileName;
                         obj.SheetName = "発注リスト";
                         obj.Start_Interior_Column = "A1";
-                        obj.End_Interior_Column = "Y1";
+                        obj.End_Interior_Column = "Z1";
                         obj.Interior_Color = Color.FromArgb(255, 192, 0);
                         obj.Start_Font_Column = "A1";
-                        obj.End_Font_Column = "Y1";
+                        obj.End_Font_Column = "Z1";
                         obj.Font_Color = Color.Black;
                         //For column C
                         obj.Date_Column = new List<int>();
                         obj.Date_Column.Add(3);
                         obj.Date_Format = "YYYY/MM/DD";
                         obj.Start_Title_Center_Column = "A1";
-                        obj.End_Title_Center_Column = "Y1";
+                        obj.End_Title_Center_Column = "Z1";
                         //for column T,U,V
                         obj.Number_Column = new List<int>();
                         //obj.Number_Column.Add(20);
