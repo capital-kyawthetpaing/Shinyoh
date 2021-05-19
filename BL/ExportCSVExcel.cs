@@ -123,6 +123,7 @@ namespace BL
             }
             catch(Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace);
                 throw ex;
             }
             finally
