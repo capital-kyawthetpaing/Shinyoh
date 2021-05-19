@@ -176,6 +176,20 @@ namespace ShukkaNyuuryoku {
                 {
                     if (F8_dt1.Rows.Count > 0 || gvdt1.Rows.Count > 0)
                     {
+                        switch (cboMode.SelectedValue)
+                        {
+                            case "1":
+                            case "2":
+                                DataRow[] dataRows = F8_dt1.Select("Kanryou='1'");
+                                if (dataRows.Length > 0)
+                                {
+                                    //F11保存ボタンで保存されている情報の中で、完了チェックがONの明細が存在する場合、警告
+                                    if (bbl.ShowMessage("Q327") == DialogResult.No)
+                                        return;
+                                }
+                                break;
+                        }
+
                         DBProcess();
                         switch (cboMode.SelectedValue)
                         {
@@ -345,6 +359,7 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E133Check(false, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     //txtShukkaNo.E160Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
                     txtShukkaNo.E165Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    txtShukkaNo.E280Check(false, "ShukkaNyuuryoku", txtShukkaNo, null, null);
 
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
@@ -365,6 +380,7 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     //txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
                     txtShukkaNo.E165Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    txtShukkaNo.E280Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
 
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
@@ -381,6 +397,7 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     //txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
                     txtShukkaNo.E165Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    txtShukkaNo.E280Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
 
                     Control btnDelete = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnDelete.Visible = true;
@@ -393,6 +410,7 @@ namespace ShukkaNyuuryoku {
                     txtShukkaNo.E102Check(true);
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    txtShukkaNo.E280Check(false, "ShukkaNyuuryoku", txtShukkaNo, null, null);
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnInquiry.Visible = false;

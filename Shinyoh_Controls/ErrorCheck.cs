@@ -851,6 +851,16 @@ namespace Shinyoh_Controls
                         rDt = bl.ChakuniNyuuryoku_Select(sTextBox.ctrlE280_1.Text, string.Empty, "E280");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                    case "ShukkaSiziNyuuryoku":
+                        ShukkasiziNyuuryokuBL skszbl = new ShukkasiziNyuuryokuBL();
+                        rDt = skszbl.ShukkasiziNyuuryoku_ErrorCheck(sTextBox.ctrlE280_1.Text, "E280");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+                    case "ShukkaNyuuryoku":
+                        ShukkaNyuuryokuBL sbl = new ShukkaNyuuryokuBL();
+                        rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE280_1.Text, string.Empty, "E280");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                 }
             }
 
