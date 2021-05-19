@@ -257,7 +257,7 @@ namespace Shinyoh_Search
                         {
                             using (OpenFileDialog openFileDialog = new OpenFileDialog())
                             {
-                                openFileDialog.InitialDirectory = "C:\\";
+                                openFileDialog.InitialDirectory = "C:\\Excel\\";
                                 openFileDialog.Title = "Browse CSV Files";
                                 openFileDialog.Filter = "csv files (*.csv)|*.csv";
                                 openFileDialog.FilterIndex = 2;
@@ -277,7 +277,7 @@ namespace Shinyoh_Search
                         {
                             using (OpenFileDialog openFileDialog = new OpenFileDialog())
                             {
-                                openFileDialog.InitialDirectory = "C:\\";
+                                openFileDialog.InitialDirectory = "C:\\Excel\\";
                                 openFileDialog.Title = "Browse CSV Files";
                                 openFileDialog.Filter = "csv files (*.csv)|*.csv";
                                 openFileDialog.FilterIndex = 2;
