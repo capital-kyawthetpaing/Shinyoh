@@ -33,7 +33,7 @@ C.EiziTelephoneNO,C.EiziFaxNO,
 A.SiiresakiName,
 --FORM
 A.ModelNo,A.ModelName,A.FOBPRICE,A.JAPANColor,A.KOREAColor,A.Shippingplace,A.[IMAGE],A.Pairs,A.Amount,
-B.SizeNO,B.HacchuuSuu,B.HacchuuLotFLG
+LTRIM(RTRIM(B.SizeNO)) as SizeNO,B.HacchuuSuu,B.HacchuuLotFLG
 FROM 
 (	SELECT 
 	A.SiiresakiCD AS 'SiiresakiCD', MAX(A.SiiresakiName) AS 'SiiresakiName', C.Model_No AS 'ModelNo', 

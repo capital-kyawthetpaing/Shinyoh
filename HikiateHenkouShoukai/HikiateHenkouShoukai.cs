@@ -411,9 +411,9 @@ namespace HikiateHenkouShoukai
                 dtExcel.AcceptChanges();
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 saveFileDialog1.InitialDirectory = @"C:\Excel";
-                saveFileDialog1.DefaultExt = "xls";
-                saveFileDialog1.Filter = "ExcelFile|*.xls";
-                saveFileDialog1.FileName = "在庫表.xls";
+                saveFileDialog1.DefaultExt = "xlsx";
+                saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                saveFileDialog1.FileName = "在庫表.xlsx";
                 saveFileDialog1.RestoreDirectory = true;
 
                 if (!System.IO.Directory.Exists("C:\\Excel"))

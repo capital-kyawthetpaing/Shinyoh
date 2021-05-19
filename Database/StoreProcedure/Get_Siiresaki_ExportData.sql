@@ -80,10 +80,10 @@ BEGIN
 			fs.UpdateDateTime AS '変更登録日時'
 		FROM F_Siiresaki(GETDATE()) fs
 		LEFT OUTER JOIN F_Staff(GETDATE()) fstaff ON fstaff.StaffCD = fs.StaffCD
-		LEFT OUTER JOIN M_MultiPorpose mp ON mp.ID=108 and mp.[Key]=fs.TuukaCD
+		LEFT OUTER JOIN M_MultiPorpose mp ON mp.ID=108 and mp.[Key] = fs.TuukaCD
 
 		WHERE (@SiiresakiCD1 IS NULL OR (fs.SiiresakiCD>= @SiiresakiCD1))
-		AND (@SiiresakiCD2 IS NULL OR (fs.SiharaisakiCD <= @SiiresakiCD2))
+		AND (@SiiresakiCD2 IS NULL OR (fs.SiiresakiCD <= @SiiresakiCD2))
 		AND (@SiiresakiName IS NULL OR ((fs.SiiresakiRyakuName LIKE '%' + @SiiresakiName + '%') OR (fs.SiiresakiName LIKE '%' + @SiiresakiName + '%')))
 		AND (@YuubinNO1 IS NULL OR (fs.YuubinNO1 = @YuubinNO1))
 		AND (@YuubinNO2 IS NULL OR (fs.YuubinNO2 = @YuubinNO2))
@@ -134,7 +134,7 @@ BEGIN
 		LEFT OUTER JOIN M_MultiPorpose mp ON mp.ID=108 and mp.[Key]=fs.TuukaCD
 
 		WHERE (@SiiresakiCD1 IS NULL OR (fs.SiiresakiCD>= @SiiresakiCD1))
-		AND (@SiiresakiCD2 IS NULL OR (fs.SiharaisakiCD <= @SiiresakiCD2))
+		AND (@SiiresakiCD2 IS NULL OR (fs.SiiresakiCD <= @SiiresakiCD2))
 		AND (@SiiresakiName IS NULL OR ((fs.SiiresakiRyakuName LIKE '%' + @SiiresakiName + '%') OR (fs.SiiresakiName LIKE '%' + @SiiresakiName + '%')))
 		AND (@YuubinNO1 IS NULL OR (fs.YuubinNO1 = @YuubinNO1))
 		AND (@YuubinNO2 IS NULL OR (fs.YuubinNO2 = @YuubinNO2))
