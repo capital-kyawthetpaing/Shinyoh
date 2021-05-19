@@ -207,7 +207,7 @@ BEGIN
 					ShukkaSiziZumiSuu		decimal(21,6) 'ShukkaSiziZumiSuu',
 					MiNyuukaSuu				decimal(21,6) 'MiNyuukaSuu',
 					ShukkaSuu				decimal(21,6) 'ShukkaSuu',
-					Kanryo					tinyint 'Kanryo',
+					Kanryo					tinyint 'Kanryou',
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
 					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',

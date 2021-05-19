@@ -52,7 +52,7 @@ namespace ZaikoIkkatuSaiHikiate
         {
             Remove_LabelBorder();
             if (tagID == "12")
-            { 
+            {
                 HikiateHenkouShoukaiBL bl = new HikiateHenkouShoukaiBL();
                 bl.IData_DB(GetRequired_UIData());
             }

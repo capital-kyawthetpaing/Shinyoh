@@ -172,6 +172,7 @@
     <Content Include="StoreProcedure\JuchuuTorikomi_CUD.sql" />
     <Content Include="StoreProcedure\JuchuuTorikomi_Display.sql" />
     <Content Include="StoreProcedure\JuchuuTorikomi_Error_Check.sql" />
+    <Content Include="StoreProcedure\JuchuuTorikomi_Insert.sql" />
     <Content Include="StoreProcedure\Kouriten_Search.sql" />
     <Content Include="StoreProcedure\Kouriten_Select_Check.sql" />
     <Content Include="StoreProcedure\L_Log_Insert.sql" />

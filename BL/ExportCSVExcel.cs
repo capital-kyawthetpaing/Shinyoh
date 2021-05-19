@@ -62,7 +62,8 @@ namespace BL
 
                         oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
                     }
-                    oSheet.Columns.AutoFit();
+                     //oSheet.Columns.AutoFit();
+                   oSheet.Columns.ColumnWidth = 15;
                 }
 
                 //header alignment
@@ -76,12 +77,12 @@ namespace BL
                 // color the columns 
                 if (!string.IsNullOrEmpty(obj.Start_Interior_Column) && !string.IsNullOrEmpty(obj.End_Interior_Column))
                 {
-                    oSheet.Range[obj.Start_Interior_Column, obj.End_Interior_Column].Interior.Color = obj.Interior_Color;
+                    oSheet.Range[obj.Start_Interior_Column, obj.End_Interior_Column].Interior.Color = Color.FromArgb(255, 192, 0);
                 }
                 //font color 
                 if (!string.IsNullOrEmpty(obj.Start_Font_Column) && !string.IsNullOrEmpty(obj.End_Font_Column))
                 {
-                    oSheet.Range[obj.Start_Font_Column, obj.End_Font_Column].Font.Color = obj.Font_Color;
+                    oSheet.Range[obj.Start_Font_Column, obj.End_Font_Column].Font.Color = Color.Black;
                 }
                 //Change date format               
                 if (obj.Date_Column != null && obj.Date_Column.Count > 0)//change
@@ -103,16 +104,6 @@ namespace BL
                         rg.EntireColumn.NumberFormat = obj.Number_Format;
                     }
                 }
-                //change decimal .0 format 
-                if (obj.OnePlaceDecimal_Column != null && obj.OnePlaceDecimal_Column.Count > 0)
-                {
-                    for (int k = 0; k < obj.OnePlaceDecimal_Column.Count; k++)
-                    {
-                        rg = (Excel.Range)oSheet.Cells[obj.OnePlaceDecimal_Column[k], obj.OnePlaceDecimal_Column[k]];
-                        rg.EntireColumn.NumberFormat = obj.Decimal_Format;
-                    }
-                }
-                
                 //no border 
                 oXL.Windows.Application.ActiveWindow.DisplayGridlines = false;
 
@@ -176,10 +167,19 @@ namespace BL
                         using (XLWorkbook wb = new XLWorkbook())
                         {
                             var ws = wb.Worksheets.Add(dtvalue, SheetName);
-                            ws.Range(ws.Cell(1, 1), ws.Cell(1, bgcol)).Style.Fill.BackgroundColor = XLColor.Orange;
+                            ws.Range(ws.Cell(1, 1), ws.Cell(1, bgcol)).Style.Fill.BackgroundColor = XLColor.FromArgb(255, 192, 0);
                             //ws.FirstRow().Style.Fill.BackgroundColor = XLColor.Orange;
                             ws.FirstRow().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                            ws.ColumnWidth = 20;
+                            ws.ColumnWidth = 15;
+                           // worksheet.Columns.AutoFit();
+
+                            foreach (DataColumn dc in dtvalue.Columns)
+                            {
+                                if (dc.DataType == typeof(string))
+                                {
+                                    worksheet.Cells[1, dtvalue.Columns.IndexOf(dc) + 1].EntireColumn.NumberFormat = "@";
+                                }
+                            }
 
                             if (datecol != null)
                             {
@@ -187,6 +187,7 @@ namespace BL
                                 {
                                     string val = datecol[i].ToString();
                                     ws.Column(val).Style.NumberFormat.Format = "YYYY/MM/DD";
+                                    ws.Column(val).Style.Alignment.Horizontal= XLAlignmentHorizontalValues.Center;
                                 }
                             }
 
@@ -269,8 +270,6 @@ namespace BL
         public string End_Title_Center_Column { get; set; }
         public List<int> Number_Column { get; set; }
         public string Number_Format { get; set; }
-        public List<int> OnePlaceDecimal_Column { get; set; }
-        public string Decimal_Format { get; set; }
     }   
     
 }

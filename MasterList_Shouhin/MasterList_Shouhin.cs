@@ -26,10 +26,12 @@ namespace MasterList_Shouhin
         multipurposeEntity multi_Entity;
         BaseBL bbl = new BaseBL();
         DataTable dtShouhin = new DataTable();
+        ExportCSVExcel obj_Export;
         public MasterList_Shouhin()
         {
             InitializeComponent();
             cf = new CommonFunction();
+            obj_Export = new ExportCSVExcel();
         }
         private void MasterList_Shouhin_Load(object sender, EventArgs e)
         {
@@ -89,11 +91,48 @@ namespace MasterList_Shouhin
             {
                 string ProgramID = "MasterList_Shouhin";
                 string fname= "商品マスタリスト";
-                string[] datacol = { "2", "33", "34" };
-                string[] numcol= { "22", "23", "24" ,"37"};
+                //string[] datacol = { "2", "33", "34" };
+                //string[] numcol= { "22", "23", "24" ,"37"};
 
-                ExportCSVExcel list = new ExportCSVExcel();
-                list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);               
+                //ExportCSVExcel list = new ExportCSVExcel();
+                //list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);     
+
+                if (!System.IO.Directory.Exists("C:\\ShinYoh\\" + ProgramID + "\\"))
+                    System.IO.Directory.CreateDirectory("C:\\ShinYoh\\" + ProgramID + "\\");
+
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.InitialDirectory = @"C:\ShinYoh\" + ProgramID + "\"";
+
+                //for excel
+                saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                saveFileDialog1.FileName = fname;
+                saveFileDialog1.RestoreDirectory = true;
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    ExcelDesignSetting obj = new ExcelDesignSetting();
+                    obj.FilePath = saveFileDialog1.FileName;
+                    obj.SheetName = "Sheet1";
+                    obj.Start_Interior_Column = "A1";
+                    obj.End_Interior_Column = "AS1";
+                    obj.Interior_Color = Color.FromArgb(255, 192, 0);
+                    obj.Start_Font_Column = "A1";
+                    obj.End_Font_Column = "AS1";
+                    obj.Font_Color = Color.Black;
+                    obj.Start_Title_Center_Column = "A1";
+                    obj.End_Title_Center_Column = "AS1";
+                    obj.Number_Column = new List<int>();
+                    obj.Number_Column.Add(22);
+                    obj.Number_Column.Add(23);
+                    obj.Number_Column.Add(24);
+                    obj.Number_Column.Add(37);
+                    obj.Number_Format = "#,###,###";
+                    bool bl = obj_Export.ExportDataTableToExcel(dtShouhin, obj);
+                    if (bl)
+                    {
+                        bbl.ShowMessage("I203");
+                        Clear();
+                    }
+                }
             }
             else
             {
@@ -123,6 +162,24 @@ namespace MasterList_Shouhin
             sh_e.ProgramID = ProgramID;
             sh_e.InsertOperator = OperatorCD;
             return sh_e;
+        }
+        private void Clear()
+        {
+            cf.Clear(PanelDetail);
+            rdo_ChokkinDate.Checked = true;
+            txtShouhinCD_From.Focus();
+            txtShouhinCD_From.Text = string.Empty;
+            txtShouhinCD_To.Text = string.Empty;
+            txtJANCD_From.Text = string.Empty;
+            txtJANCD_To.Text = string.Empty;
+            txtShouhinName.Text = string.Empty;
+            txtBrand_From.Text = string.Empty;
+            txtBrand_To.Text = string.Empty;
+            txtColorNO1.Text = string.Empty;
+            txtColorNO2.Text = string.Empty;
+            txtSizeNO1.Text = string.Empty;
+            txtSizeNO2.Text = string.Empty;
+            txtRemarks.Text = string.Empty;
         }
     }
 }

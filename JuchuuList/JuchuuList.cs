@@ -230,19 +230,17 @@ namespace JuchuuList {
                             //For column B
                             obj.Date_Column = new List<int>();
                             obj.Date_Column.Add(2);
+                            obj.Date_Column.Add(10);
                             obj.Date_Format = "YYYY/MM/DD";
                             obj.Start_Title_Center_Column = "A1";
                             obj.End_Title_Center_Column = "Y1";
                             //for column T,U
                             obj.Number_Column = new List<int>();
+                            obj.Number_Column.Add(19);
                             obj.Number_Column.Add(20);
                             obj.Number_Column.Add(21);
                             obj.Number_Format = "#,###,###";
-                            //for column (R)
-                            obj.OnePlaceDecimal_Column = new List<int>();
-                            obj.OnePlaceDecimal_Column.Add(18);
-                            obj.Decimal_Format = "#.0";
-                        bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
+                            bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
                             if (bl)
                             {
                                 bbl.ShowMessage("I203");

@@ -555,46 +555,46 @@ namespace ChakuniNyuuryoku
         }
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-             F10_Gridview_Bind();
-                //ChakuniYoteiNO_Delete();
-                //foreach (DataRow dr in dtmain.Rows)
-                //{
-                //    string ChakuniYoteiNO = dr["ChakuniYoteiNO"].ToString();
-                //    chkEntity = new ChakuniNyuuryoku_Entity();
-                //    chkEntity.DataKBN = 16;
-                //    chkEntity.Number = ChakuniYoteiNO;
-                //    chkEntity.ProgramID = ProgramID;
-                //    chkEntity.PC = PCID;
-                //    chkEntity.OperatorCD = OperatorCD;
-                //    DataTable dt = new DataTable();
-                //    cbl = new chakuniNyuuryoku_BL();
-                //    dt = cbl.D_Exclusive_Lock_Check(chkEntity);
-                //    if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
-                //    {
-                //        bbl.ShowMessage("S004");
-                //        Gvrow_Delete(dr);
-                //    }
-                //    string HacchuuNO = dr["HacchuuNO"].ToString();
-                //    chkEntity = new ChakuniNyuuryoku_Entity();
-                //    chkEntity.DataKBN = 2;
-                //    chkEntity.Number = HacchuuNO;
-                //    chkEntity.ProgramID = ProgramID;
-                //    chkEntity.PC = PCID;
-                //    chkEntity.OperatorCD = OperatorCD;
-                //    DataTable dt1 = new DataTable();
-                //    cbl = new chakuniNyuuryoku_BL();
-                //    dt1 = cbl.D_Exclusive_Lock_Check(chkEntity);
-                //    if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
-                //    {
-                //        bbl.ShowMessage("S004");
-                //        if (dr != null)
-                //            Gvrow_Delete(dr);
-                //    }
-                //    gvChakuniNyuuryoku.DataSource = dtmain;
-                //    gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
-                //    gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
-                //    gvChakuniNyuuryoku.Select();
-                //}
+            FunctionProcess("10");
+            //ChakuniYoteiNO_Delete();
+            //foreach (DataRow dr in dtmain.Rows)
+            //{
+            //    string ChakuniYoteiNO = dr["ChakuniYoteiNO"].ToString();
+            //    chkEntity = new ChakuniNyuuryoku_Entity();
+            //    chkEntity.DataKBN = 16;
+            //    chkEntity.Number = ChakuniYoteiNO;
+            //    chkEntity.ProgramID = ProgramID;
+            //    chkEntity.PC = PCID;
+            //    chkEntity.OperatorCD = OperatorCD;
+            //    DataTable dt = new DataTable();
+            //    cbl = new chakuniNyuuryoku_BL();
+            //    dt = cbl.D_Exclusive_Lock_Check(chkEntity);
+            //    if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+            //    {
+            //        bbl.ShowMessage("S004");
+            //        Gvrow_Delete(dr);
+            //    }
+            //    string HacchuuNO = dr["HacchuuNO"].ToString();
+            //    chkEntity = new ChakuniNyuuryoku_Entity();
+            //    chkEntity.DataKBN = 2;
+            //    chkEntity.Number = HacchuuNO;
+            //    chkEntity.ProgramID = ProgramID;
+            //    chkEntity.PC = PCID;
+            //    chkEntity.OperatorCD = OperatorCD;
+            //    DataTable dt1 = new DataTable();
+            //    cbl = new chakuniNyuuryoku_BL();
+            //    dt1 = cbl.D_Exclusive_Lock_Check(chkEntity);
+            //    if (dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+            //    {
+            //        bbl.ShowMessage("S004");
+            //        if (dr != null)
+            //            Gvrow_Delete(dr);
+            //    }
+            //    gvChakuniNyuuryoku.DataSource = dtmain;
+            //    gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
+            //    gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
+            //    gvChakuniNyuuryoku.Select();
+            //}
         }
         private void D_Exclusive_Number_Delete()
         {
