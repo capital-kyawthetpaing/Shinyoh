@@ -42,14 +42,21 @@ BEGIN
 
 	if @condition = 'Hacchuu'
 		begin 
-		select DH.HacchuuNO,DH.JuchuuNO,DH.HacchuuDate,FS.StaffName,DJ.TokuisakiCD,DJ.TokuisakiRyakuName,
-			DJ.KouritenCD,DJ.KouritenRyakuName,DJM.SenpouHacchuuNO,DJ.SenpouBusho,DJ.KibouNouki,DH.HacchuuDenpyouTekiyou,
+		select DH.HacchuuNO,DH.JuchuuNO,
+		 CONVERT(varchar, DH.HacchuuDate, 111) AS HacchuuDate 
+		,FS.StaffName,DJ.TokuisakiCD,DJ.TokuisakiRyakuName,
+			DJ.KouritenCD,DJ.KouritenRyakuName,DJM.SenpouHacchuuNO,DJ.SenpouBusho,
+			 CONVERT(varchar, DJ.KibouNouki, 111) AS KibouNouki --2021/05/19 nmw CHG TaskNO 446
+			,DH.HacchuuDenpyouTekiyou,
 			MMP.Char1,CASE WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 0  THEN FSH.YearTerm + '年'
 						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 0	THEN FSH.YearTerm + '年' + 'SS'
 						   WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + '年' + 'FW'
 						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + '年' + 'SSFW' End AS Exhibition,
-			DHM.JANCD,DHM.ShouhinCD,DHM.ShouhinName,DHM.ColorRyakuName,DHM.SizeNO,DHM.HacchuuSuu,DJM.UriageTanka,
-			DHM.HacchuuTanka,DHM.HacchuuMeisaiTekiyou,DH.SiiresakiCD,DH.SiiresakiRyakuName,MS.SoukoName
+			DHM.JANCD,DHM.ShouhinCD,DHM.ShouhinName,DHM.ColorRyakuName,
+			CASE ISNUMERIC(DHM.SizeNO+'.e0') WHEN 1 THEN DHM.SizeNO+'.0' ELSE DHM.SizeNO END AS SizeNO ,			
+			--DHM.HacchuuSuu,
+			convert(int,isnull(null,0)) as HacchuuSuu,--2021/05/19 ssa CHG TaskNO 426
+			DJM.UriageTanka,DHM.HacchuuTanka,DHM.HacchuuMeisaiTekiyou,DH.SiiresakiCD,DH.SiiresakiRyakuName,MS.SoukoName
 
 			from D_Hacchuu DH
 			left outer join D_HacchuuMeisai DHM on DHM.HacchuuNO = DH.HacchuuNO 
@@ -67,18 +74,26 @@ BEGIN
 			(@Year is null or (FSH.YearTerm = @Year)) and  
 			(@SS is null or (FSH.SeasonSS = @SS)) and
 			(@FW is null or (FSH.SeasonFW = @FW))
-			order by DHM.HacchuuNO
+			and DH.JuchuuNO IS NULL --2021/05/19 nmw add TaskNO 439
+			order by DHM.HacchuuNO,DHM.HacchuuGyouNO,DHM.JuchuuNO,DHM.JuchuuGyouNO ASC
 		end 
 	else
 		begin
-			select DH.HacchuuNO,DH.JuchuuNO,DH.HacchuuDate,FS.StaffName,DJ.TokuisakiCD,DJ.TokuisakiRyakuName,
-			DJ.KouritenCD,DJ.KouritenRyakuName,DJM.SenpouHacchuuNO,DJ.SenpouBusho,DJ.KibouNouki,DH.HacchuuDenpyouTekiyou,
+			select DH.HacchuuNO,DH.JuchuuNO
+			,CONVERT(varchar, DH.HacchuuDate, 111) AS HacchuuDate 
+			,FS.StaffName,DJ.TokuisakiCD,DJ.TokuisakiRyakuName,
+			DJ.KouritenCD,DJ.KouritenRyakuName,DJM.SenpouHacchuuNO,DJ.SenpouBusho,
+			 CONVERT(varchar, DJ.KibouNouki, 111) AS KibouNouki --2021/05/19 nmw CHG TaskNO 446
+			,DH.HacchuuDenpyouTekiyou,
 			MMP.Char1,CASE WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 0  THEN FSH.YearTerm + '年'
 						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 0	THEN FSH.YearTerm + '年' + 'SS'
 						   WHEN FSH.SeasonSS = 0 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + '年' + 'FW'
 						   WHEN FSH.SeasonSS = 1 AND FSH.SeasonFW = 1	THEN FSH.YearTerm + '年' + 'SSFW' End AS Exhibition,
-			DHM.JANCD,DHM.ShouhinCD,DHM.ShouhinName,DHM.ColorRyakuName,DHM.SizeNO,DHM.HacchuuSuu,DJM.UriageTanka,
-			DHM.HacchuuTanka,DHM.HacchuuMeisaiTekiyou,DH.SiiresakiCD,DH.SiiresakiRyakuName,MS.SoukoName
+			DHM.JANCD,DHM.ShouhinCD,DHM.ShouhinName,DHM.ColorRyakuName,
+			CASE ISNUMERIC(DHM.SizeNO+'.e0') WHEN 1 THEN DHM.SizeNO+'.0' ELSE DHM.SizeNO END AS SizeNO,
+			--DHM.HacchuuSuu,
+			convert(int,isnull(null,0)) as HacchuuSuu,--2021/05/19 ssa CHG TaskNO 426
+			DJM.UriageTanka,DHM.HacchuuTanka,DHM.HacchuuMeisaiTekiyou,DH.SiiresakiCD,DH.SiiresakiRyakuName,MS.SoukoName
 			from D_Hacchuu DH
 			left outer join D_HacchuuMeisai DHM on DHM.HacchuuNO = DH.HacchuuNO 
 			left outer join D_JuchuuMeisai DJM on DJM.JuchuuNO = DHM.JuchuuNO and DJM.JuchuuGyouNO = DHM.JuchuuGyouNO
