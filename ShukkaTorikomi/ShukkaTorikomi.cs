@@ -67,6 +67,8 @@ namespace ShukkaTorikomi
             txtImportFolder.Enabled = true;
             txtImportFileName.Enabled = true;
 
+            txtImportFileName.TxtBox = txtImportFolder;         //Task 452
+
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
             txtDenpyouNO.Enabled = false;
@@ -281,12 +283,13 @@ namespace ShukkaTorikomi
             string Xml_Main = string.Empty;
             string Xml_Detail = string.Empty;
             string error = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            //using (OpenFileDialog openFileDialog = new OpenFileDialog())         //Task 452
+            if (File.Exists(txtImportFolder.Text + txtImportFileName.Text))         //Task 452
             {               
                 DataTable create_dt = new DataTable();                          //HET
                 Creat_Datatable_Column(create_dt);
-                openFileDialog.FileName = txtImportFolder.Text + txtImportFileName.Text;
-                filepath = openFileDialog.FileName;
+                //openFileDialog.FileName = txtImportFolder.Text + txtImportFileName.Text;         //Task 452
+                filepath = txtImportFolder.Text + txtImportFileName.Text;         //Task 452
                 string[] csvRows = File.ReadAllLines(filepath);
                 var bl_List = new List<bool>();
                             

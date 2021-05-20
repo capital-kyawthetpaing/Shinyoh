@@ -79,14 +79,15 @@ namespace MasterList_Shouhin
         {
             ShouhinBL sh_bl = new ShouhinBL();
             dtShouhin = sh_bl.Get_ExportData(Get_UIData());
-            if(dtShouhin.Rows.Count>0)
+            if (dtShouhin.Rows.Count > 0)
             {
                 string ProgramID = "MasterList_Shouhin";
-                string fname= "商品マスタリスト";
+                string fname = "商品マスタリスト";
                 string[] datacol = { "2", "33", "34" };
                 string[] numcol = { "22", "23", "24", "37" };
 
                 ExportCSVExcel list = new ExportCSVExcel();
+                list.stringCol = new string[] { "10" };
                 list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);
 
                 //if (!System.IO.Directory.Exists("C:\\ShinYoh\\" + ProgramID + "\\"))
