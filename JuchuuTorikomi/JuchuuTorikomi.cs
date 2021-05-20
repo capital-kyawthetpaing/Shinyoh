@@ -253,7 +253,7 @@ namespace JuchuuTorikomi
                     DataTable create_dt = new DataTable();
                     Create_Datatable_Column(create_dt);
                     openFileDialog.FileName = txtImportFileName.Text;
-                    filepath = openFileDialog.FileName;
+                    filepath =txtImportFileName.Text;
                     string[] csvRows = File.ReadAllLines(filepath);
                     var bl_List = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
@@ -333,7 +333,7 @@ namespace JuchuuTorikomi
         public void Remove_Datatable_Column(DataTable dtRemove)
         {
             dtRemove.Columns.Remove("TokuisakiCD");
-            dtRemove.Columns.Remove("TokuisakiName");
+            dtRemove.Columns.Remove("TokuisakiRyakuName");
             dtRemove.Columns.Remove("TokuisakiYuubinNO1");
             dtRemove.Columns.Remove("TokuisakiYuubinNO2");
             dtRemove.Columns.Remove("TokuisakiJuusho1");
@@ -345,7 +345,7 @@ namespace JuchuuTorikomi
             dtRemove.Columns.Remove("TokuisakiTelNO2-2");
             dtRemove.Columns.Remove("TokuisakiTelNO2-3");
             dtRemove.Columns.Remove("KouritenCD");
-            dtRemove.Columns.Remove("KouritenName");
+            dtRemove.Columns.Remove("KouritenRyakuName");
             dtRemove.Columns.Remove("KouritenYuubinNO1");
             dtRemove.Columns.Remove("KouritenYuubinNO2");
             dtRemove.Columns.Remove("KouritenJuusho1");
@@ -384,9 +384,9 @@ namespace JuchuuTorikomi
         {
             create_dt.Columns.Add("JuchuuDate");
             create_dt.Columns.Add("TokuisakiCD");
-            create_dt.Columns.Add("TokuisakiName");
+            create_dt.Columns.Add("TokuisakiRyakuName");
             create_dt.Columns.Add("KouritenCD");
-            create_dt.Columns.Add("KouritenName");
+            create_dt.Columns.Add("KouritenRyakuName");
             create_dt.Columns.Add("StaffCD");
             create_dt.Columns.Add("SenpouHacchuuNO");
             create_dt.Columns.Add("SenpouBusho");
@@ -405,7 +405,8 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("ChakuniYoteiDate");
             create_dt.Columns.Add("SoukoCD");
             create_dt.Columns.Add("SoukoName");
-            //create_dt.Columns.Add("TokuisakiName");
+
+            create_dt.Columns.Add("TokuisakiuName");
             create_dt.Columns.Add("TokuisakiYuubinNO1");
             create_dt.Columns.Add("TokuisakiYuubinNO2");
             create_dt.Columns.Add("TokuisakiJuusho1");
@@ -416,7 +417,8 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("TokuisakiTelNO2-1");
             create_dt.Columns.Add("TokuisakiTelNO2-2");
             create_dt.Columns.Add("TokuisakiTelNO2-3");
-            //create_dt.Columns.Add("KouritenName");
+
+            create_dt.Columns.Add("KouritenName");
             create_dt.Columns.Add("KouritenYuubinNO1");
             create_dt.Columns.Add("KouritenYuubinNO2");
             create_dt.Columns.Add("KouritenJuusho1");
@@ -427,6 +429,7 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("KouritenTelNO2-1");
             create_dt.Columns.Add("KouritenTelNO2-2");
             create_dt.Columns.Add("KouritenTelNO2-3");
+
             create_dt.Columns.Add("SiiresakiName");
             create_dt.Columns.Add("SiiresakiYuubinNO1");
             create_dt.Columns.Add("SiiresakiYuubinNO2");
