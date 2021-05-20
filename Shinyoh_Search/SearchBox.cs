@@ -278,7 +278,7 @@ namespace Shinyoh_Search
                                 openFileDialog.RestoreDirectory = true;
                                 openFileDialog.ShowDialog();
 
-                                CD = openFileDialog.FileName;
+                                CD = openFileDialog.SafeFileName;
                                
                             }
                         }
