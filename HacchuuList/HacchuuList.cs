@@ -162,60 +162,54 @@ namespace HacchuuList
                    // dt.Columns.Remove("発注先名");                              //not include in Excel
                     dt.Columns["SoukoName"].ColumnName = "倉庫";
 
-                    if (!System.IO.Directory.Exists("C:\\Excel"))
-                        System.IO.Directory.CreateDirectory("C:\\Excel");
+                    string ProgramID = "HacchuuList";
+                    string fname = "発注リスト";
+                    string[] datacol = { "3","11" };
+                    string[] numcol = { "20", "21", "22" };
 
-                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.InitialDirectory = @"C:\Excel\";
-                    ////for csv
-                    //saveFileDialog1.Filter = "csv files (*.csv)|*.csv";
-                    //saveFileDialog1.FileName = ProgramID + " (" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.Hour + DateTime.Now.Day + DateTime.Now.Month + ") " + OperatorCD;
+                    ExportCSVExcel list = new ExportCSVExcel();
+                    list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
+
+                    //if (!System.IO.Directory.Exists("C:\\Excel"))
+                    //    System.IO.Directory.CreateDirectory("C:\\Excel");
+
+                    //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    //saveFileDialog1.InitialDirectory = @"C:\Excel\";
+
+                    ////for excel
+                    //saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                    //saveFileDialog1.FileName = "発注リスト.xlsx";
                     //saveFileDialog1.RestoreDirectory = true;
                     //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     //{
-                    //    string sb = obj_Export.DataTableToCSV(dt, ',');
-                    //    if (!string.IsNullOrEmpty(sb))
+                    //    ExcelDesignSetting obj = new ExcelDesignSetting();
+                    //    obj.FilePath = saveFileDialog1.FileName;
+                    //    obj.SheetName = "発注リスト";
+                    //    obj.Start_Interior_Column = "A1";
+                    //    obj.End_Interior_Column = "Z1";
+                    //    obj.Interior_Color = Color.FromArgb(255, 192, 0);
+                    //    obj.Start_Font_Column = "A1";
+                    //    obj.End_Font_Column = "Z1";
+                    //    obj.Font_Color = Color.Black;
+                    //    //For column C
+                    //    obj.Date_Column = new List<int>();
+                    //    obj.Date_Column.Add(3);
+                    //    obj.Date_Format = "YYYY/MM/DD";
+                    //    obj.Start_Title_Center_Column = "A1";
+                    //    obj.End_Title_Center_Column = "Z1";
+                    //    //for column T,U,V
+                    //    obj.Number_Column = new List<int>();
+                    //    //obj.Number_Column.Add(20);
+                    //    obj.Number_Column.Add(21);
+                    //    obj.Number_Column.Add(22);
+                    //    obj.Number_Format = "#,###,###";
+                    //    bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
+                    //    if (bl)
                     //    {
-                    //        File.WriteAllText(saveFileDialog1.FileName, sb.ToString(), Encoding.UTF8);
+                    //        bbl.ShowMessage("I203");
                     //        Clear();
                     //    }
                     //}
-
-
-                    //for excel
-                    saveFileDialog1.Filter = "ExcelFile|*.xlsx";
-                    saveFileDialog1.FileName = "発注リスト.xlsx";
-                    saveFileDialog1.RestoreDirectory = true;
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        ExcelDesignSetting obj = new ExcelDesignSetting();
-                        obj.FilePath = saveFileDialog1.FileName;
-                        obj.SheetName = "発注リスト";
-                        obj.Start_Interior_Column = "A1";
-                        obj.End_Interior_Column = "Z1";
-                        obj.Interior_Color = Color.FromArgb(255, 192, 0);
-                        obj.Start_Font_Column = "A1";
-                        obj.End_Font_Column = "Z1";
-                        obj.Font_Color = Color.Black;
-                        //For column C
-                        obj.Date_Column = new List<int>();
-                        obj.Date_Column.Add(3);
-                        obj.Date_Format = "YYYY/MM/DD";
-                        obj.Start_Title_Center_Column = "A1";
-                        obj.End_Title_Center_Column = "Z1";
-                        //for column T,U,V
-                        obj.Number_Column = new List<int>();
-                        //obj.Number_Column.Add(20);
-                        obj.Number_Column.Add(21);
-                        obj.Number_Column.Add(22);
-                        obj.Number_Format = "#,###,###";
-                        bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
-                        if (bl)
-                        {
-                            bbl.ShowMessage("I203");
-                            Clear();
-                        }
-                    }
                 }
                 else if (dt.Rows.Count == 0)
                 {
