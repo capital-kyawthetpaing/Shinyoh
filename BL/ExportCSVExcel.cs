@@ -59,8 +59,8 @@ namespace BL
                         {
                             oSheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
                         }
-                        oSheet.Cells[rowCount, i].EntireColumn.NumberFormat = "@";
-                        // oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
+                       // oSheet.Cells[rowCount, i].EntireColumn.NumberFormat = "@";
+                        oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
                     }
                      //oSheet.Columns.AutoFit();
                    oSheet.Columns.ColumnWidth = 15;
