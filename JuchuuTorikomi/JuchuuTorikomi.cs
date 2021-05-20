@@ -53,6 +53,7 @@ namespace JuchuuTorikomi
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", false);
             SetButton(ButtonType.BType.Import, F12, "登録(F12)", true);
 
+            txtImportFileName.TxtBox = txtImportFolder;         //Task 453
             base_Entity = _GetBaseData();
             ErrorCheck();
             BindData();
@@ -243,19 +244,18 @@ namespace JuchuuTorikomi
        
         private (string,string) GetFile()
         {
-            var filepath = string.Empty;
             JuchuuTorikomiEntity JEntity = new JuchuuTorikomiEntity();
             string Xml_Hacchuu = string.Empty;
             string Xml_Juchuu = string.Empty;
             string error = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            //using (OpenFileDialog openFileDialog = new OpenFileDialog())         //Task 453
+            if (File.Exists(txtImportFolder.Text + txtImportFileName.Text))         //Task 453
             {
-                    DataTable create_dt = new DataTable();
-                    Create_Datatable_Column(create_dt);
-                    openFileDialog.FileName = txtImportFileName.Text;
-                    filepath =txtImportFileName.Text;
-                    string[] csvRows = File.ReadAllLines(filepath);
-                    var bl_List = new List<bool>();
+                DataTable create_dt = new DataTable();
+                Create_Datatable_Column(create_dt);
+                //openFileDialog.FileName = txtImportFolder.Text + txtImportFileName.Text;         //Task 453
+                string[] csvRows = File.ReadAllLines(txtImportFolder.Text + txtImportFileName.Text);         //Task 453
+                var bl_List = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
                     {
                         error = "false";
