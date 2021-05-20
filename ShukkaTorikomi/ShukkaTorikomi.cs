@@ -64,8 +64,8 @@ namespace ShukkaTorikomi
             base_Entity = _GetBaseData();
             //multipurposeEntity multipurpose_entity = new multipurposeEntity();
 
-            txtShukkaToNo1.Enabled = true;
-            txtShukkaToNo2.Enabled = true;
+            txtImportFolder.Enabled = true;
+            txtImportFileName.Enabled = true;
 
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
@@ -89,13 +89,13 @@ namespace ShukkaTorikomi
 
             if (dtShuKka.Rows.Count > 0)
             {
-                txtShukkaToNo1.Text = dtShuKka.Rows[0]["Char1"].ToString();
-                txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
+                txtImportFolder.Text = dtShuKka.Rows[0]["Char1"].ToString();
+                txtImportFileName.Text = dtShuKka.Rows[0]["Char2"].ToString();
             }
             else
             {
-                txtShukkaToNo1.Text = string.Empty;
-                txtShukkaToNo2.Text = string.Empty;
+                txtImportFolder.Text = string.Empty;
+                txtImportFileName.Text = string.Empty;
             }
         }
 
@@ -109,8 +109,8 @@ namespace ShukkaTorikomi
                 {
                     if (dtShuKka.Rows.Count > 0)
                     {
-                        txtShukkaToNo1.Text = dtShuKka.Rows[0]["Char1"].ToString();
-                        txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
+                        txtImportFolder.Text = dtShuKka.Rows[0]["Char1"].ToString();
+                        txtImportFileName.Text = dtShuKka.Rows[0]["Char2"].ToString();
                     }
                 }
                 ErrorCheck();
@@ -119,8 +119,8 @@ namespace ShukkaTorikomi
 
         private void Disable_Enable_Method()
         {
-            txtShukkaToNo1.Text = string.Empty;
-            txtShukkaToNo2.Text = string.Empty;
+            txtImportFolder.Text = string.Empty;
+            txtImportFileName.Text = string.Empty;
             txtDate1.Text = string.Empty;
             txtDate2.Text = string.Empty;
             txtDenpyouNO.Text = string.Empty;
@@ -128,8 +128,8 @@ namespace ShukkaTorikomi
 
             if(rdo_Toroku.Checked)
             {
-                txtShukkaToNo1.Enabled = true;
-                txtShukkaToNo2.Enabled = true;
+                txtImportFolder.Enabled = true;
+                txtImportFileName.Enabled = true;
                 txtDate1.Enabled = false;
                 txtDate2.Enabled = false;
                 txtDenpyouNO.Enabled = false;
@@ -141,8 +141,8 @@ namespace ShukkaTorikomi
             }
             else
             {
-                txtShukkaToNo1.Enabled = false;
-                txtShukkaToNo2.Enabled = false;
+                txtImportFolder.Enabled = false;
+                txtImportFileName.Enabled = false;
                 txtDate1.Enabled = true;
                 txtDate2.Enabled = true;
                 txtDenpyouNO.Enabled = true;
@@ -167,23 +167,23 @@ namespace ShukkaTorikomi
         {
             if(rdo_Toroku.Checked)
             {
-                txtShukkaToNo1.E102Check(true);
-                txtShukkaToNo2.E102Check(true);
+                txtImportFolder.E102Check(true);
+                txtImportFileName.E102Check(true);
                 txtDate1.E103Check(false);
                 txtDate2.E103Check(false);
-                txtDate2.E104Check(true, txtDate1, txtDate2); //HET
+                txtDate2.E104Check(false, txtDate1, txtDate2); //HET
                 txtDenpyouNO.E102Check(false);
-                txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
+                txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);  
             }
             else
             {
-                txtShukkaToNo1.E102Check(false);
-                txtShukkaToNo2.E102Check(false);
+                txtImportFolder.E102Check(false);
+                txtImportFileName.E102Check(false);
                 txtDate1.E103Check(true);
                 txtDate2.E103Check(true);
                 txtDate2.E104Check(true, txtDate1, txtDate2); //HET
-                txtDenpyouNO.E102Check(true);
-                txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
+                txtDenpyouNO.E102Check(false);
+                txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);  
             }
         }
 
@@ -210,45 +210,59 @@ namespace ShukkaTorikomi
 
             if (tagID == "12")
             {
-                (string,string) Xml = ChooseFile();
-                BaseBL bbl = new BaseBL();
-                if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
+                //HET
+                gvShukkaTorikomi.ActionType = "F10";
+                if (rdo_Sakujo.Checked)
                 {
-                    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                    txtDenpyouNO.E102Check(true);
+                    txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
+                }
+                else
+                {
+                    txtDenpyouNO.E102Check(false);
+                    txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
+                }
+
+                if (ErrorCheck(PanelDetail))             //HET
+                {
+                    (string, string) Xml = ChooseFile();
+                    BaseBL bbl = new BaseBL();
+                    if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
                     {
-                        if (PreviousCtrl != null)
-                            PreviousCtrl.Focus();
-                    }
-                    else
-                    {
-                        ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
-                        string spname = string.Empty;
-                        string TorikomiDenpyouNO = txtDenpyouNO.Text;
-                        //DataTable return_DT = new DataTable();
-                        if (rdo_Toroku.Checked)
+                        if (bbl.ShowMessage("Q206") != DialogResult.Yes)
                         {
-                            spname = "ShukkaTorikomi_Insert";
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
                         }
                         else
                         {
-                            spname = "ShukkaTorikomi_Delete";
-                        }
-                        DataTable return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
-                        if (return_DT.Rows.Count > 0)
-                        {
-                            if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
-                                bbl.ShowMessage("I002");
+                            ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
+                            string spname = string.Empty;
+                            string TorikomiDenpyouNO = txtDenpyouNO.Text;
+                            //DataTable return_DT = new DataTable();
+                            if (rdo_Toroku.Checked)
+                            {
+                                spname = "ShukkaTorikomi_Insert";
+                            }
                             else
                             {
-                                bbl.ShowMessage("E276", return_DT.Rows[0]["SEQ"].ToString(), return_DT.Rows[0]["Error1"].ToString(), return_DT.Rows[0]["Error2"].ToString());
+                                spname = "ShukkaTorikomi_Delete";
+                            }
+                            DataTable return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                            if (return_DT.Rows.Count > 0)
+                            {
+                                if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
+                                    bbl.ShowMessage("I002");
+                                else
+                                {
+                                    bbl.ShowMessage("E276", return_DT.Rows[0]["SEQ"].ToString(), return_DT.Rows[0]["Error1"].ToString(), return_DT.Rows[0]["Error2"].ToString());
+                                }
                             }
                         }
                     }
-                }
+                }             
             }
         }
-
-
         private void DataGridviewBind()
         {
             TorikomiEntity obj = new TorikomiEntity();

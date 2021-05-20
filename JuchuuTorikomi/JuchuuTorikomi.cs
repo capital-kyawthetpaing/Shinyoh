@@ -90,18 +90,16 @@ namespace JuchuuTorikomi
                 if (cf.DateCheck(txtDate2))
                     txtDate2.E103Check(false);
                 txtDate2.E104Check(false, txtDate1, txtDate2);
-                //txtDenpyouNO.E102Check(false);
-                //txtDenpyouNO.E160Check(false, "JuchuuTorikomi", txtDenpyouNO, null);
-                //txtDenpyouNO.E265Check(false, "JuchuuTorikomi", txtDenpyouNO);
+                txtDenpyouNO.E102Check(false);
+                txtDenpyouNO.E160Check(false, "JuchuuTorikomi", txtDenpyouNO, null);
+                txtDenpyouNO.E265Check(false, "JuchuuTorikomi", txtDenpyouNO);
             }
             else
             {
                 txtImportFolder.E102Check(false);
                 txtImportFileName.E102Check(false);
-                if (cf.DateCheck(txtDate1))
-                    txtDate1.E103Check(true);
-                if (cf.DateCheck(txtDate2))
-                    txtDate2.E103Check(true);
+                txtDate1.E103Check(true);
+                txtDate2.E103Check(true);
                 txtDate2.E104Check(true, txtDate1, txtDate2);
                 txtDenpyouNO.E102Check(false);
                 txtDenpyouNO.E160Check(false, "JuchuuTorikomi", txtDenpyouNO, null);
@@ -126,6 +124,21 @@ namespace JuchuuTorikomi
             }
             if (tagID == "12")
             {
+                gvJuchuuTorikomi.ActionType = "F10";
+                if(rdo_Delete.Checked)
+                {
+                    txtDenpyouNO.E102Check(true);
+                    txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
+                    txtDenpyouNO.E265Check(true, "JuchuuTorikomi", txtDenpyouNO);
+                }
+                else
+                {
+                    txtDenpyouNO.E102Check(false);
+                    txtDenpyouNO.E160Check(false, "JuchuuTorikomi", txtDenpyouNO, null);
+                    txtDenpyouNO.E265Check(false, "JuchuuTorikomi", txtDenpyouNO);
+                }
+                if (ErrorCheck(PanelDetail))
+                {
                     (string, string) Xml = GetFile();
                     BaseBL bbl = new BaseBL();
                     if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
@@ -174,56 +187,8 @@ namespace JuchuuTorikomi
                                 }
                             }
                         }
+                    }
                 }
-                //(string, string) Xml = GetFile();
-                //BaseBL bbl = new BaseBL();
-                //if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
-                //{
-                //    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
-                //    {
-                //        if (PreviousCtrl != null)
-                //            PreviousCtrl.Focus();
-                //    }
-                //    else
-                //    {
-                //        JuchuuTorikomiBL Jbl = new JuchuuTorikomiBL();
-                //        string spname = string.Empty;
-                //        string DenpyouNO = txtDenpyouNO.Text;
-                //        if (rdo_Registration.Checked)
-                //        {
-                //            spname = "JuchuuTorikomi_Insert";
-                //        }
-                //        else
-                //        {
-                //            spname = "JuchuuTorikomi_Delete";
-                //            foreach (DataRow dr in dtMain.Rows)
-                //            {
-                //                string JuchuuNO = dr["JuchuuNO"].ToString();
-                //                JEntity.DataKBN = 1;
-                //                JEntity.Number = JuchuuNO;
-                //                JEntity.ProgramID = ProgramID;
-                //                JEntity.PC = PCID;
-                //                JEntity.OperatorCD = OperatorCD;
-                //                DataTable dt1 = new DataTable();
-                //                dt1 = Jbl.D_Exclusive_Lock_Check(JEntity);
-                //                if (dt1.Rows[0]["MessageID"].ToString().Equals("S004"))
-                //                {
-                //                    bbl.ShowMessage("S004");
-                //                }
-                //            }
-                //        }
-                //        DataTable return_BL1 = Jbl.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2, DenpyouNO);
-                //        if (return_BL1.Rows.Count > 0)
-                //        {
-                //            if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
-                //                bbl.ShowMessage("I002");
-                //            else
-                //            {
-                //                bbl.ShowMessage("E276", return_BL1.Rows[0]["SEQ"].ToString(), return_BL1.Rows[0]["Error1"].ToString(), return_BL1.Rows[0]["Error2"].ToString());
-                //            }
-                //        }
-                //    }
-                //}
             }
               base.FunctionProcess(tagID);
         }
@@ -285,16 +250,9 @@ namespace JuchuuTorikomi
             string error = string.Empty;
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                //openFileDialog.InitialDirectory = "C:\\Csv\\";
-                //openFileDialog.Title = "Browse CSV Files";
-                //openFileDialog.Filter = "csv files (*.csv)|*.csv";
-                //openFileDialog.FilterIndex = 2;
-                //openFileDialog.RestoreDirectory = true;
-                DataTable create_dt = new DataTable();
-                Create_Datatable_Column(create_dt);
-                openFileDialog.FileName = txtImportFileName.Text;
-                //if (openFileDialog.ShowDialog() == DialogResult.OK)
-                //{
+                    DataTable create_dt = new DataTable();
+                    Create_Datatable_Column(create_dt);
+                    openFileDialog.FileName = txtImportFileName.Text;
                     filepath = openFileDialog.FileName;
                     string[] csvRows = File.ReadAllLines(filepath);
                     var bl_List = new List<bool>();
@@ -337,8 +295,6 @@ namespace JuchuuTorikomi
                         Remove_Datatable_Column(dt_Main);
                         Xml_Hacchuu = cf.DataTableToXml(dt_Main);
                     }
-                    // Xml_Juchuu = cf.DataTableToXml(create_dt);
-                    //05_17_2021[ssa]
                     if (create_dt.Rows.Count > 0)
                     {
                         for (int r = 0; r < create_dt.Rows.Count; r++)
@@ -366,7 +322,6 @@ namespace JuchuuTorikomi
                             }
                         }
                     }
-               // }
                 else
                 {
                     Xml_Hacchuu = string.Empty;

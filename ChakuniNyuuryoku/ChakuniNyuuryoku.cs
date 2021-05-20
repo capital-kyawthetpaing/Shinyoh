@@ -108,6 +108,7 @@ namespace ChakuniNyuuryoku
                 case Mode.New:
                     txtArrivalNO.E102Check(false);
                     txtArrivalNO.E133Check(false, "ChakuniNyuuryoku", txtArrivalNO, null, null);
+                    txtArrivalNO.E159Check(false, "ChakuniNyuuryoku", txtArrivalNO);
                     //txtArrivalNO.E268Check(false, "ChakuniNyuuryoku", txtArrivalNO, null);
                     txtArrivalNO.E280Check(false, "ChakuniNyuuryoku", txtArrivalNO, null, null);
                     ErrorCheck();
@@ -120,6 +121,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Update:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
+                    txtArrivalNO.E159Check(true, "ChakuniNyuuryoku", txtArrivalNO);
                     //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     txtArrivalNO.E280Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
                     Mode_Setting();
@@ -130,6 +132,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Delete:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
+                    txtArrivalNO.E159Check(true, "ChakuniNyuuryoku", txtArrivalNO);
                     //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     txtArrivalNO.E280Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
                     Mode_Setting();
@@ -140,6 +143,7 @@ namespace ChakuniNyuuryoku
                 case Mode.Inquiry:
                     txtArrivalNO.E102Check(true);
                     txtArrivalNO.E133Check(true, "ChakuniNyuuryoku", txtArrivalNO, null, null);
+                    txtArrivalNO.E159Check(false, "ChakuniNyuuryoku", txtArrivalNO);
                     //txtArrivalNO.E268Check(true, "ChakuniNyuuryoku", txtArrivalNO, null);
                     txtArrivalNO.E280Check(false, "ChakuniNyuuryoku", txtArrivalNO, null, null);
                     Mode_Setting();

@@ -49,6 +49,26 @@ if @Errortype='E133'
 			end
 	end
 
+    if @Errortype='E159'
+    begin
+        if  exists(select * from D_ChakuniMeisai AS DCKM
+                Inner Join D_JuchuuMeisai AS DJUM
+                On  DCKM.JuchuuNO = DJUM.JuchuuNO
+                And DCKM.JuchuuGyouNO = DJUM.JuchuuGyouNO
+                Where DCKM.ChakuniNO = @ChakuniNo
+                And   DJUM.ShukkaKanryouKBN = 1
+                )
+        begin
+        --exists
+           select * from  M_Message
+           where MessageID='E159'
+        end
+        else
+        begin
+            select 5 as MessageID
+        end
+    end
+    
 if @Errortype='E268'
 	begin
 	 if  exists(select * from D_Chakuni where SiireKanryouKBN=1 AND ChakuniNO=@ChakuniNo)
