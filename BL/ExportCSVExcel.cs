@@ -17,6 +17,7 @@ namespace BL
     public  class ExportCSVExcel
     {
         BaseBL bbl = new BaseBL();
+        public string[] stringCol;
         public  bool ExportDataTableToExcel(DataTable dt,ExcelDesignSetting  obj)
         {
             Excel.Application oXL;
@@ -212,6 +213,16 @@ namespace BL
                             //ws.ColumnWidth = 15;
                             // worksheet.Columns.AutoFit();
                             ws.Columns().AdjustToContents();
+
+                            if (stringCol.Count() > 0)
+                            {
+                                for (int i = 0; i < stringCol.Count(); i++)
+                                {
+                                    string val = stringCol[i].ToString();
+                                    ws.Column(val).DataType = XLDataType.Text;
+                                    ws.Column(val).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                                }
+                            }
 
                             if (datecol != null)
                             {

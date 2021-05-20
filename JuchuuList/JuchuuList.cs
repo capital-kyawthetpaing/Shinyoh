@@ -211,6 +211,7 @@ namespace JuchuuList {
                     string[] numcol = { "19", "20", "21"};
 
                     ExportCSVExcel list = new ExportCSVExcel();
+                    list.stringCol = new string[1] { "14" };
                     list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
 
                     //if (!System.IO.Directory.Exists("C:\\Excel"))
