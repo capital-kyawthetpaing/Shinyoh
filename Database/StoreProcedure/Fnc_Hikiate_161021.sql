@@ -1,20 +1,23 @@
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_161021]    Script Date: 2021/04/19 16:45:09 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_161021]    Script Date: 2021/05/19 13:51:57 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%Fnc_Hikiate_161021%' and type like '%P%')
 DROP PROCEDURE [dbo].[Fnc_Hikiate_161021]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_161021]    Script Date: 2021/04/19 16:45:10 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_161021]    Script Date: 2021/05/19 13:51:57 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
+
 -- =============================================
 -- Author:		Kyaw Thet Paing
 -- Create date: 2021-01-12
--- Description:	16:’…‰×—\’è (inˆ—‹æ•ª=10,21)
--- History    : 2021/04/19 Y.Nishikawa V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é
+-- Description:	16:ç€è·äºˆå®š (inå‡¦ç†åŒºåˆ†=10,21)
+-- History    : 2021/04/19 Y.Nishikawa æ–°è¦ç™»éŒ²æ™‚ã€å¼•å½“å…ƒãŒç„¡ã„ã®ã«å¼•å½“åœ¨åº«ã«å¼•å½“æ•°ã‚’æ›´æ–°ã—ã¦ã„ã‚‹
+--            : 2021/05/19 Y.Nishikawa 1å›ç›®ã¯å—æ³¨è©³ç´°ãŒç„¡ã„ã®ã§ã€æœªå¼•å½“ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒä½œæˆã•ã‚Œãªã„
+--            : 2021/05/19 Y.Nishikawa åˆ†ç´æ™‚ã€æœªå¼•å½“æ•°åˆ†ã®å—æ³¨ã«å¯¾ã—ã¦å¼•å½“ã‚’è¡Œã†
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_161021]
 	-- Add the parameters for the stored procedure here
@@ -31,7 +34,7 @@ BEGIN
 	declare @ChakuniYoteiNO as varchar(12),
 		@ChakuniYoteiGyouNO as smallint,
 		@SoukoCD as varchar(10),
-		@ShouhinCD as varchar(25),
+		@ShouhinCD as varchar(50),
 		@KanriNo as varchar(10),
 		@ChakuniYoteiSuu decimal(21,6),
 		@JuchuuNo as varchar(12),
@@ -64,11 +67,23 @@ BEGIN
 					and JuchuuGyouNO = @JuchuuGyouNO
 
 					declare @TotalJuchuuSuu as decimal(21,6)
+					SET @TotalJuchuuSuu = 0
 
 					select @TotalJuchuuSuu = sum(JuchuuSuu) from D_JuchuuShousai
 					where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
-					and ShukkaSiziZumiSuu = 0
+					--2021/05/19 Y.Nishikawa ADD åˆ†ç´æ™‚ã€æœªå¼•å½“æ•°åˆ†ã®å—æ³¨ã«å¯¾ã—ã¦å¼•å½“ã‚’è¡Œã†â†“â†“
+					--and ShukkaSiziZumiSuu = 0
+					and MiHikiateSuu > 0
+					--2021/05/19 Y.Nishikawa ADD åˆ†ç´æ™‚ã€æœªå¼•å½“æ•°åˆ†ã®å—æ³¨ã«å¯¾ã—ã¦å¼•å½“ã‚’è¡Œã†â†‘â†‘
 					group by JuchuuNO,JuchuuGyouNO
+
+					--2021/05/19 Y.Nishikawa ADD 1å›ç›®ã¯å—æ³¨è©³ç´°ãŒç„¡ã„ã®ã§ã€æœªå¼•å½“ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒä½œæˆã•ã‚Œãªã„â†“â†“
+					IF(ISNULL(@TotalJuchuuSuu, 0) = 0)
+					BEGIN
+					   SELECT @TotalJuchuuSuu = JuchuuSuu from D_JuchuuMeisai
+					   WHERE JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
+					END
+					--2021/05/19 Y.Nishikawa ADD 1å›ç›®ã¯å—æ³¨è©³ç´°ãŒç„¡ã„ã®ã§ã€æœªå¼•å½“ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒä½œæˆã•ã‚Œãªã„â†‘â†‘
 
 					delete 
 					from D_JuchuuShousai
@@ -76,7 +91,7 @@ BEGIN
 					and JuchuuGyouNO = @JuchuuGyouNO
 					--and ShukkaSiziZumiSuu = 0
 					and MiHikiateSuu <> 0
-					
+
 					declare @maxJuchuuShousaiNo as smallint
 
 					select @maxJuchuuShousaiNo = max(JuchuuShousaiNO) from D_JuchuuShousai
@@ -112,7 +127,7 @@ BEGIN
 								@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime
 						end
 
-					--2021/04/19 Y.Nishikawa ADD V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é(êŠˆÚ“®)««
+					--2021/04/19 Y.Nishikawa ADD æ–°è¦ç™»éŒ²æ™‚ã€å¼•å½“å…ƒãŒç„¡ã„ã®ã«å¼•å½“åœ¨åº«ã«å¼•å½“æ•°ã‚’æ›´æ–°ã—ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†“â†“
 			        if not exists (select 1 from D_HikiateZaiko where SoukoCD = @SoukoCD and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo)
 			        	begin
 			        		insert into D_HikiateZaiko
@@ -130,10 +145,12 @@ BEGIN
 			        		where SoukoCD = @SoukoCD
 			        		and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo
 			        	end
-			        --2021/04/19 Y.Nishikawa ADD V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é(êŠˆÚ“®)ªª
+			        --2021/04/19 Y.Nishikawa ADD æ–°è¦ç™»éŒ²æ™‚ã€å¼•å½“å…ƒãŒç„¡ã„ã®ã«å¼•å½“åœ¨åº«ã«å¼•å½“æ•°ã‚’æ›´æ–°ã—ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†‘â†‘
+
+					
 				end
 
-			--2021/04/19 Y.Nishikawa DEL V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é(êŠˆÚ“®)««
+			--2021/04/19 Y.Nishikawa DEL æ–°è¦ç™»éŒ²æ™‚ã€å¼•å½“å…ƒãŒç„¡ã„ã®ã«å¼•å½“åœ¨åº«ã«å¼•å½“æ•°ã‚’æ›´æ–°ã—ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†“â†“
 			--if not exists (select 1 from D_HikiateZaiko where SoukoCD = @SoukoCD and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo)
 			--	begin
 			--		insert into D_HikiateZaiko
@@ -151,7 +168,7 @@ BEGIN
 			--		where SoukoCD = @SoukoCD
 			--		and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo
 			--	end
-			--2021/04/19 Y.Nishikawa DEL V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é(êŠˆÚ“®)ªª
+			--2021/04/19 Y.Nishikawa DEL æ–°è¦ç™»éŒ²æ™‚ã€å¼•å½“å…ƒãŒç„¡ã„ã®ã«å¼•å½“åœ¨åº«ã«å¼•å½“æ•°ã‚’æ›´æ–°ã—ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†‘â†‘
 
 
 			fetch next from curOuter 
@@ -164,3 +181,5 @@ BEGIN
 END
 
 GO
+
+

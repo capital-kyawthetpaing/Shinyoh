@@ -1,25 +1,26 @@
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/04/27 16:18:18 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/05/19 15:34:51 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ChakuniNyuuryoku_Delete%' and type like '%P%')
 DROP PROCEDURE [dbo].[ChakuniNyuuryoku_Delete]
 GO
 
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/04/27 16:18:18 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/05/19 15:34:51 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
+
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
--- History    : 2021/04/20 Y.Nishikawa å‰Šé™¤ç™»éŒ²ã—ã¦ã‚‚å‰Šé™¤ã•ã‚Œãªã„
---            : 2021/04/20 Y.Nishikawa ç„¡é§„ãªSELECTå‰Šé™¤
---            : 2021/04/20 Y.Nishikawa ã„ã‚ã„ã‚(æ¸ˆæ•°ãŒä¸Šæ›¸ãã•ã‚Œã¦ã„ãŸã‚Šå‰Šé™¤æ™‚ã«å®Œäº†åŒºåˆ†ã®å ´åˆåˆ†ã‘ãŒã‚ã£ãŸã‚Š)
---            : 2021/04/20 Y.Nishikawa ç¾åœ¨åº«ãŒæ›´æ–°ã•ã‚Œãªã„
---            : 2021/04/27 Y.Nishikawa ç€è·æƒ…å ±ã‚’å‰Šé™¤ã™ã‚‹éš›ã«ã€å„ãƒ†ãƒ¼ãƒ–ãƒ«ã®å…¥åº«æ—¥ãŒæ¶ˆãˆãªã„ã®ã§ã€å†è¨ˆä¸Šã™ã‚‹ã¨åœ¨åº«æƒ…å ±ã¯æ–°ã—ã„å…¥åº«æ—¥ã§ä½œæˆã•ã‚Œã‚‹ãŒã€å—æ³¨è©³ç´°ã‚„å‡ºè·æŒ‡ç¤ºè©³ç´°ã¯å…¥åº«æ—¥ãŒä¸Šæ›¸ãã•ã‚Œãªã„ã®ã§ã€å¤ã„å…¥åº«æ—¥ã®ã¾ã¾ã«ãªã£ã¦ã„ã‚‹
---            : 2021/04/27 Y.Nishikawa åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã«ç§»å‹•
+-- History    : 2021/04/20 Y.Nishikawa íœ“o˜^‚µ‚Ä‚àíœ‚³‚ê‚È‚¢
+--            : 2021/04/20 Y.Nishikawa –³‘Ê‚ÈSELECTíœ
+--            : 2021/04/20 Y.Nishikawa ‚¢‚ë‚¢‚ë(Ï”‚ªã‘‚«‚³‚ê‚Ä‚¢‚½‚èíœ‚ÉŠ®—¹‹æ•ª‚Ìê‡•ª‚¯‚ª‚ ‚Á‚½‚è)
+--            : 2021/04/20 Y.Nishikawa Œ»İŒÉ‚ªXV‚³‚ê‚È‚¢
+--            : 2021/04/27 Y.Nishikawa ’…‰×î•ñ‚ğíœ‚·‚éÛ‚ÉAŠeƒe[ƒuƒ‹‚Ì“üŒÉ“ú‚ªÁ‚¦‚È‚¢‚Ì‚ÅAÄŒvã‚·‚é‚ÆİŒÉî•ñ‚ÍV‚µ‚¢“üŒÉ“ú‚Åì¬‚³‚ê‚é‚ªAó’Ú×‚âo‰×w¦Ú×‚Í“üŒÉ“ú‚ªã‘‚«‚³‚ê‚È‚¢‚Ì‚ÅAŒÃ‚¢“üŒÉ“ú‚Ì‚Ü‚Ü‚É‚È‚Á‚Ä‚¢‚é
+--            : 2021/04/27 Y.Nishikawa İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚ÉˆÚ“®
 -- =============================================
 CREATE PROCEDURE [dbo].[ChakuniNyuuryoku_Delete]
 @XML_Main as xml,
@@ -148,9 +149,9 @@ declare @Unique as uniqueidentifier = NewID()
 				)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-		--2021/04/20 Y.Nishikawa DEL ç„¡é§„ãªSELECTå‰Šé™¤â†“â†“
+		--2021/04/20 Y.Nishikawa DEL –³‘Ê‚ÈSELECTíœ««
 	    --SELECT * FROM #Temp_Main
-		--2021/04/20 Y.Nishikawa DEL ç„¡é§„ãªSELECTå‰Šé™¤â†‘â†‘
+		--2021/04/20 Y.Nishikawa DEL –³‘Ê‚ÈSELECTíœªª
 
 		CREATE TABLE #Temp_Detail
 				(   
@@ -219,13 +220,13 @@ declare @Unique as uniqueidentifier = NewID()
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-		--2021/04/20 Y.Nishikawa DEL ç„¡é§„ãªSELECTå‰Šé™¤â†“â†“
+		--2021/04/20 Y.Nishikawa DEL –³‘Ê‚ÈSELECTíœ««
 	    --SELECT * FROM #Temp_Detail
-		--2021/04/20 Y.Nishikawa DEL ç„¡é§„ãªSELECTå‰Šé™¤â†‘â†‘
+		--2021/04/20 Y.Nishikawa DEL –³‘Ê‚ÈSELECTíœªª
 
 		Declare @OperatorCD as varchar(10) =(select Operator from #Temp_Main)
 
-		--2021/04/20 Y.Nishikawa ã„ã‚ã„ã‚(æ¸ˆæ•°ãŒä¸Šæ›¸ãã•ã‚Œã¦ã„ãŸã‚Šå‰Šé™¤æ™‚ã«å®Œäº†åŒºåˆ†ã®å ´åˆåˆ†ã‘ãŒã‚ã£ãŸã‚Š)/æ›´æ–°å ´æ‰€å¤‰æ›´â†“â†“
+		--2021/04/20 Y.Nishikawa ‚¢‚ë‚¢‚ë(Ï”‚ªã‘‚«‚³‚ê‚Ä‚¢‚½‚èíœ‚ÉŠ®—¹‹æ•ª‚Ìê‡•ª‚¯‚ª‚ ‚Á‚½‚è)/XVêŠ•ÏX««
 		--Update D_ChakuniYoteiMeisai
         Update DCYM
         SET ChakuniZumiSuu = DCYM.ChakuniZumiSuu - DCKM.ChakuniSuu,
@@ -264,30 +265,36 @@ declare @Unique as uniqueidentifier = NewID()
         
         --Update D_HacchuuMeisai
         Update DHAM
-        SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu - DCKM.ChakuniSuu,
-		    ChakuniKanryouKBN = Case When DHAM.ChakuniYoteiZumiSuu <= (DHAM.ChakuniZumiSuu - DCKM.ChakuniSuu) Then 1 Else 0 End,
-            UpdateOperator = @OperatorCD,
+        SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu - DCYM.ChakuniSuu,
+		    ChakuniKanryouKBN = Case When DHAM.ChakuniYoteiZumiSuu <= (DHAM.ChakuniZumiSuu - DCYM.ChakuniSuu) Then 1 Else 0 End,
+            ChakuniYoteiKanryouKBN = Case When DHAM.HacchuuSuu <= DHAM.ChakuniYoteiZumiSuu Then 1 Else 0 End,
+			UpdateOperator = @OperatorCD,
         	UpdateDateTime = @currentDate
         From D_HacchuuMeisai DHAM
-        Inner Join D_ChakuniYoteiMeisai DCYM
-		on DHAM.HacchuuNO = DCYM.HacchuuNO
+		Inner Join (
+		              SELECT DCKM.HacchuuNO
+					        ,DCKM.HacchuuGyouNO
+							,SUM(DCKM.ChakuniSuu) ChakuniSuu
+					  FROM D_ChakuniMeisai DCKM
+                      Where exists ( select *
+                                     from #Temp_Main
+                      			     where ChakuniNO = DCKM.ChakuniNO)
+					  Group by DCKM.HacchuuNO
+					          ,DCKM.HacchuuGyouNO
+                   ) DCYM
+		On DHAM.HacchuuNO = DCYM.HacchuuNO
 		and DHAM.HacchuuGyouNO = DCYM.HacchuuGyouNO
-        Inner Join D_ChakuniMeisai DCKM
-        on DCKM.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
-        and DCKM.ChakuniYoteiGyouNO = DCYM.ChakuniYoteiGyouNO
-        Where exists ( select *
-                       from #Temp_Main
-        			   where ChakuniNO = DCKM.ChakuniNO
-        			 )
 
         
         --Update D_Hacchuu
         Update DHAH
-        Set ChakuniKanryouKBN = DHAM.ChakuniKanryouKBN
+        Set ChakuniKanryouKBN = DHAM.ChakuniKanryouKBN,
+		    ChakuniYoteiKanryouKBN = DHAM.ChakuniYoteiKanryouKBN
         From D_Hacchuu DHAH
         Inner Join (
 		             select DHAM.HacchuuNO
 					       ,MIN(DHAM.ChakuniKanryouKBN) ChakuniKanryouKBN
+						   ,MIN(DHAM.ChakuniYoteiKanryouKBN) ChakuniYoteiKanryouKBN
 					 from D_HacchuuMeisai DHAM
 					 Inner Join D_ChakuniYoteiMeisai DCYM
 		             on DHAM.HacchuuNO = DCYM.HacchuuNO
@@ -302,10 +309,10 @@ declare @Unique as uniqueidentifier = NewID()
 					 Group by DHAM.HacchuuNO
 					) DHAM
 		ON DHAM.HacchuuNO = DHAH.HacchuuNO
-        --2021/04/20 Y.Nishikawa ã„ã‚ã„ã‚(æ¸ˆæ•°ãŒä¸Šæ›¸ãã•ã‚Œã¦ã„ãŸã‚Šå‰Šé™¤æ™‚ã«å®Œäº†åŒºåˆ†ã®å ´åˆåˆ†ã‘ãŒã‚ã£ãŸã‚Š)/æ›´æ–°å ´æ‰€å¤‰æ›´â†‘â†‘
+        --2021/04/20 Y.Nishikawa ‚¢‚ë‚¢‚ë(Ï”‚ªã‘‚«‚³‚ê‚Ä‚¢‚½‚èíœ‚ÉŠ®—¹‹æ•ª‚Ìê‡•ª‚¯‚ª‚ ‚Á‚½‚è)/XVêŠ•ÏXªª
 
-		--2021/04/27 Y.Nishikawa DEL åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã«ç§»å‹•â†“â†“
-		----2021/04/20 Y.Nishikawa ADD ç¾åœ¨åº«ãŒä½œæˆã•ã‚Œãªã„â†“â†“
+		--2021/04/27 Y.Nishikawa DEL İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚ÉˆÚ“®««
+		----2021/04/20 Y.Nishikawa ADD Œ»İŒÉ‚ªì¬‚³‚ê‚È‚¢««
   --      IF EXISTS ( 
   --                  SELECT * 
   --                  FROM D_GenZaiko DGZK
@@ -395,19 +402,19 @@ declare @Unique as uniqueidentifier = NewID()
   --                   	  )
         
   --      END
-        --2021/04/20 Y.Nishikawa ADD ç¾åœ¨åº«ãŒä½œæˆã•ã‚Œãªã„â†‘â†‘
-		--2021/04/27 Y.Nishikawa DEL åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã«ç§»å‹•â†‘â†‘
+        --2021/04/20 Y.Nishikawa ADD Œ»İŒÉ‚ªì¬‚³‚ê‚È‚¢ªª
+		--2021/04/27 Y.Nishikawa DEL İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚ÉˆÚ“®ªª
 
-		--2021/04/27 Y.Nishikawa ADD å„ãƒ†ãƒ¼ãƒ–ãƒ«ã®å…¥åº«æ—¥ãŒæ¶ˆãˆãªã„ã®ã§ã€å†è¨ˆä¸Šã™ã‚‹ã¨åœ¨åº«æƒ…å ±ã¯æ–°ã—ã„å…¥åº«æ—¥ã§ä½œæˆã•ã‚Œã‚‹ãŒã€å—æ³¨è©³ç´°ã‚„å‡ºè·æŒ‡ç¤ºè©³ç´°ã¯å…¥åº«æ—¥ãŒä¸Šæ›¸ãã•ã‚Œãªã„ã®ã§ã€å¤ã„å…¥åº«æ—¥ã®ã¾ã¾ã«ãªã£ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†“â†“
+		--2021/04/27 Y.Nishikawa ADD Šeƒe[ƒuƒ‹‚Ì“üŒÉ“ú‚ªÁ‚¦‚È‚¢‚Ì‚ÅAÄŒvã‚·‚é‚ÆİŒÉî•ñ‚ÍV‚µ‚¢“üŒÉ“ú‚Åì¬‚³‚ê‚é‚ªAó’Ú×‚âo‰×w¦Ú×‚Í“üŒÉ“ú‚ªã‘‚«‚³‚ê‚È‚¢‚Ì‚ÅAŒÃ‚¢“üŒÉ“ú‚Ì‚Ü‚Ü‚É‚È‚Á‚Ä‚¢‚é(êŠˆÚ“®)««
         --Fnc
         declare @ChankuniNO as varchar(100)=(select ChakuniNO from #Temp_Main)
         exec dbo.Fnc_Hikiate 5,@ChankuniNO,30,@OperatorCD
-        --2021/04/27 Y.Nishikawa ADD å„ãƒ†ãƒ¼ãƒ–ãƒ«ã®å…¥åº«æ—¥ãŒæ¶ˆãˆãªã„ã®ã§ã€å†è¨ˆä¸Šã™ã‚‹ã¨åœ¨åº«æƒ…å ±ã¯æ–°ã—ã„å…¥åº«æ—¥ã§ä½œæˆã•ã‚Œã‚‹ãŒã€å—æ³¨è©³ç´°ã‚„å‡ºè·æŒ‡ç¤ºè©³ç´°ã¯å…¥åº«æ—¥ãŒä¸Šæ›¸ãã•ã‚Œãªã„ã®ã§ã€å¤ã„å…¥åº«æ—¥ã®ã¾ã¾ã«ãªã£ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†‘â†‘
+        --2021/04/27 Y.Nishikawa ADD Šeƒe[ƒuƒ‹‚Ì“üŒÉ“ú‚ªÁ‚¦‚È‚¢‚Ì‚ÅAÄŒvã‚·‚é‚ÆİŒÉî•ñ‚ÍV‚µ‚¢“üŒÉ“ú‚Åì¬‚³‚ê‚é‚ªAó’Ú×‚âo‰×w¦Ú×‚Í“üŒÉ“ú‚ªã‘‚«‚³‚ê‚È‚¢‚Ì‚ÅAŒÃ‚¢“üŒÉ“ú‚Ì‚Ü‚Ü‚É‚È‚Á‚Ä‚¢‚é(êŠˆÚ“®)ªª
 
 
 		--Delete D_Chakuni
 		--Delete A
-		----2021/04/20 Y.Nishikawa å‰Šé™¤ç™»éŒ²ã—ã¦ã‚‚å‰Šé™¤ã•ã‚Œãªã„â†“â†“
+		----2021/04/20 Y.Nishikawa íœ“o˜^‚µ‚Ä‚àíœ‚³‚ê‚È‚¢««
 		--from D_ChakuniYotei A
 		--Where A.ChakuniYoteiNO IN (select ChakuniNO from #Temp_Main)
 
@@ -416,7 +423,6 @@ declare @Unique as uniqueidentifier = NewID()
 		--from D_ChakuniYoteiMeisai A,#Temp_Main TM
 		--Where A.ChakuniYoteiNO IN (select ChakuniNO from #Temp_Main)
 		Delete A
-		--2021/04/20 Y.Nishikawa å‰Šé™¤ç™»éŒ²ã—ã¦ã‚‚å‰Šé™¤ã•ã‚Œãªã„â†“â†“
 		from D_Chakuni A
 		Where A.ChakuniNO = @ChankuniNO
 
@@ -424,7 +430,7 @@ declare @Unique as uniqueidentifier = NewID()
 		Delete A
 		from D_ChakuniMeisai A
 		Where A.ChakuniNO = @ChankuniNO
-		--2021/04/20 Y.Nishikawa å‰Šé™¤ç™»éŒ²ã—ã¦ã‚‚å‰Šé™¤ã•ã‚Œãªã„â†‘â†‘
+		--2021/04/20 Y.Nishikawa íœ“o˜^‚µ‚Ä‚àíœ‚³‚ê‚È‚¢ªª
 		
 		--Insert Sheet D
 Insert into D_ChakuniMeisaiHistory(HistoryGuid,ChakuniNO,ChakuniGyouNO,GyouHyouziJun,ShoriKBN,KanriNO,BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO,ChakuniSuu,TaniCD,ChakuniMeisaiTekiyou,
@@ -435,8 +441,8 @@ Select @Unique,dc.ChakuniNO,dc.ChakuniGyouNO,dc.GyouHyouziJun,30,dc.KanriNO,dc.B
 dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuGyouNO,dc.JuchuuNO,dc.JuchuuGyouNO,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,@OperatorCD,@currentDate
 from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 
---2021/04/20 Y.Nishikawa ã„ã‚ã„ã‚(æ¸ˆæ•°ãŒä¸Šæ›¸ãã•ã‚Œã¦ã„ãŸã‚Šå‰Šé™¤æ™‚ã«å®Œäº†åŒºåˆ†ã®å ´åˆåˆ†ã‘ãŒã‚ã£ãŸã‚Š)/æ›´æ–°å ´æ‰€å¤‰æ›´â†“â†“
-----Update D_ChakuniYoteiMeisai(for è«ï½®è±ï½£èœ‘é˜ªâˆªç¸ºæº˜ãƒ»èœ‘ä¼å‹)
+--2021/04/20 Y.Nishikawa ‚¢‚ë‚¢‚ë(Ï”‚ªã‘‚«‚³‚ê‚Ä‚¢‚½‚èíœ‚ÉŠ®—¹‹æ•ª‚Ìê‡•ª‚¯‚ª‚ ‚Á‚½‚è)/XVêŠ•ÏX««
+----Update D_ChakuniYoteiMeisai(for è«E®è±E½£èœ‘é˜ªâˆªç¸ºæº˜ãEèœ‘ä¼å‹)
 --Update D_ChakuniYoteiMeisai
 --SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END,
 --    UpdateOperator=@OperatorCD,
@@ -446,7 +452,7 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --                          and D_ChakuniMeisai.ChakuniYoteiGyouNO=D_ChakuniYoteiMeisai.ChakuniYoteiGyouNO,#Temp_Detail d,#Temp_Main m
 --Where D_ChakuniMeisai.ChakuniNO=m.ChakuniNO
 
-----Update D_ChakuniYoteiMeisai(for éœ‘ï½½èœ‰ï£°ç¸ºï½¾ç¸ºæº˜ãƒ»è«ï½®è±ï½£è •)
+----Update D_ChakuniYoteiMeisai(for éœ‘ï½½èœ‰ï£°ç¸ºE¾ç¸ºæº˜ãEè«E®è±E½£è E
 --Update a
 --SET a.ChakuniZumiSuu=a.ChakuniZumiSuu+d.ChakuniZumiSuu,
 --    UpdateOperator=@OperatorCD,
@@ -481,7 +487,7 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --ON D_ChakuniYotei.ChakuniYoteiNO=C.ChakuniYoteiNO
 
 
-----Update D_HacchuuMeisai(for è«ï½®è±ï½£èœ‘é˜ªâˆªç¸ºæº˜ãƒ»èœ‘ä¼å‹)
+----Update D_HacchuuMeisai(for è«E®è±E½£èœ‘é˜ªâˆªç¸ºæº˜ãEèœ‘ä¼å‹)
 --Update D_HacchuuMeisai
 --SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END
 --From D_HacchuuMeisai 
@@ -513,13 +519,13 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --Group By D_HacchuuMeisai.HacchuuNO
 --) DH
 --ON D_Hacchuu.HacchuuNO=DH.HacchuuNO
---2021/04/20 Y.Nishikawa ã„ã‚ã„ã‚(æ¸ˆæ•°ãŒä¸Šæ›¸ãã•ã‚Œã¦ã„ãŸã‚Šå‰Šé™¤æ™‚ã«å®Œäº†åŒºåˆ†ã®å ´åˆåˆ†ã‘ãŒã‚ã£ãŸã‚Š)/æ›´æ–°å ´æ‰€å¤‰æ›´â†‘â†‘
+--2021/04/20 Y.Nishikawa ‚¢‚ë‚¢‚ë(Ï”‚ªã‘‚«‚³‚ê‚Ä‚¢‚½‚èíœ‚ÉŠ®—¹‹æ•ª‚Ìê‡•ª‚¯‚ª‚ ‚Á‚½‚è)/XVêŠ•ÏXªª
 
---2021/04/27 Y.Nishikawa DEL å„ãƒ†ãƒ¼ãƒ–ãƒ«ã®å…¥åº«æ—¥ãŒæ¶ˆãˆãªã„ã®ã§ã€å†è¨ˆä¸Šã™ã‚‹ã¨åœ¨åº«æƒ…å ±ã¯æ–°ã—ã„å…¥åº«æ—¥ã§ä½œæˆã•ã‚Œã‚‹ãŒã€å—æ³¨è©³ç´°ã‚„å‡ºè·æŒ‡ç¤ºè©³ç´°ã¯å…¥åº«æ—¥ãŒä¸Šæ›¸ãã•ã‚Œãªã„ã®ã§ã€å¤ã„å…¥åº«æ—¥ã®ã¾ã¾ã«ãªã£ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†“â†“
+--2021/04/27 Y.Nishikawa DEL Šeƒe[ƒuƒ‹‚Ì“üŒÉ“ú‚ªÁ‚¦‚È‚¢‚Ì‚ÅAÄŒvã‚·‚é‚ÆİŒÉî•ñ‚ÍV‚µ‚¢“üŒÉ“ú‚Åì¬‚³‚ê‚é‚ªAó’Ú×‚âo‰×w¦Ú×‚Í“üŒÉ“ú‚ªã‘‚«‚³‚ê‚È‚¢‚Ì‚ÅAŒÃ‚¢“üŒÉ“ú‚Ì‚Ü‚Ü‚É‚È‚Á‚Ä‚¢‚é(êŠˆÚ“®)««
 ----Fnc
 --declare @ChankuniNO as varchar(100)=(select ChakuniNO from #Temp_Main)
 --exec dbo.Fnc_Hikiate 5,@ChankuniNO,30,@OperatorCD
---2021/04/27 Y.Nishikawa DEL å„ãƒ†ãƒ¼ãƒ–ãƒ«ã®å…¥åº«æ—¥ãŒæ¶ˆãˆãªã„ã®ã§ã€å†è¨ˆä¸Šã™ã‚‹ã¨åœ¨åº«æƒ…å ±ã¯æ–°ã—ã„å…¥åº«æ—¥ã§ä½œæˆã•ã‚Œã‚‹ãŒã€å—æ³¨è©³ç´°ã‚„å‡ºè·æŒ‡ç¤ºè©³ç´°ã¯å…¥åº«æ—¥ãŒä¸Šæ›¸ãã•ã‚Œãªã„ã®ã§ã€å¤ã„å…¥åº«æ—¥ã®ã¾ã¾ã«ãªã£ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†‘â†‘
+--2021/04/27 Y.Nishikawa DEL Šeƒe[ƒuƒ‹‚Ì“üŒÉ“ú‚ªÁ‚¦‚È‚¢‚Ì‚ÅAÄŒvã‚·‚é‚ÆİŒÉî•ñ‚ÍV‚µ‚¢“üŒÉ“ú‚Åì¬‚³‚ê‚é‚ªAó’Ú×‚âo‰×w¦Ú×‚Í“üŒÉ“ú‚ªã‘‚«‚³‚ê‚È‚¢‚Ì‚ÅAŒÃ‚¢“üŒÉ“ú‚Ì‚Ü‚Ü‚É‚È‚Á‚Ä‚¢‚é(êŠˆÚ“®)ªª
 
 --Insert table Z
 declare	@InsertOperator  varchar(10) = (select m.Operator from #Temp_Main m)
