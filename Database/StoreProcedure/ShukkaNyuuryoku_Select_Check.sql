@@ -58,6 +58,20 @@ BEGIN
             select * from M_Message where MessageID = 'E165'
             end
     end
+
+    if @Errortype='E280'
+    begin
+        if exists(select 1 From D_ShukkaMeisai AS DSKM                              
+                    Inner Join D_JuchuuMeisai AS DJUM                               
+                    On  DSKM.JuchuuNO = DJUM.JuchuuNO           
+                    And DSKM.JuchuuGyouNO = DJUM.JuchuuGyouNO           
+                    Where DSKM.ShukkaNO = @ShukkaNO   --èoâ◊î‘çÜ          
+                    And DJUM.ShukkaKanryouKBN= 1    
+                    And DJUM.JuchuuSuu <> DJUM.ShukkaZumiSuu)
+        begin
+            select * from M_Message where MessageID = 'E280'
+        end
+    end
     
     if @Errortype='E160'
     begin

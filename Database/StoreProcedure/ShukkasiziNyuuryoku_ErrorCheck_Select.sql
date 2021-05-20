@@ -92,6 +92,23 @@ if @Errortype='E115'
                 select 3 as MessageID
             end
       end
-    
+
+    else if @Errortype='E280'
+    begin
+        if exists(select 1 From D_ShukkaSiziMeisai AS DSSM                              
+                    Inner Join D_JuchuuMeisai AS DJUM                               
+                    On  DSSM.JuchuuNO = DJUM.JuchuuNO           
+                    And DSSM.JuchuuGyouNO = DJUM.JuchuuGyouNO           
+                    Where DSSM.ShukkaSiziNO = @ShippingNo   --èoâ◊éwé¶î‘çÜ          
+                    And DJUM.ShukkaSiziKanryouKBN= 1    
+                    And DJUM.JuchuuSuu <> DJUM.ShukkaSiziZumiSuu)
+            begin
+            select * from M_Message where MessageID = 'E280'
+            end
+        else
+            begin
+                select 4 as MessageID
+            end
+    end
 END
 

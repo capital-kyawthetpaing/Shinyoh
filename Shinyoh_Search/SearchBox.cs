@@ -252,32 +252,26 @@ namespace Shinyoh_Search
                             name = msearch.Char1;
                         break;
                     case Entity.SearchType.ScType.FileImport:
-
                         if (this.Name == "txtImportFolder")
                         {
                             using (OpenFileDialog openFileDialog = new OpenFileDialog())
                             {
-                                openFileDialog.InitialDirectory = "C:\\";
+                                openFileDialog.InitialDirectory = "C:\\Excel\\";
                                 openFileDialog.Title = "Browse CSV Files";
                                 openFileDialog.Filter = "csv files (*.csv)|*.csv";
                                 openFileDialog.FilterIndex = 2;
                                 openFileDialog.RestoreDirectory = true;
                                 openFileDialog.ShowDialog();
-                                //if(this.Name== "txtImportFolder")
-                                //{
-                                   CD = openFileDialog.InitialDirectory;
-                                //}
-                                //else if (this.Name == "txtImportFileName")
-                                //{
-                                //   name = openFileDialog.FileName;
-                                //}
+
+                                CD = openFileDialog.InitialDirectory;
+
                             }
                         }
                         else if (this.Name == "txtImportFileName")
                         {
                             using (OpenFileDialog openFileDialog = new OpenFileDialog())
                             {
-                                openFileDialog.InitialDirectory = "C:\\";
+                                openFileDialog.InitialDirectory = "C:\\Excel\\";
                                 openFileDialog.Title = "Browse CSV Files";
                                 openFileDialog.Filter = "csv files (*.csv)|*.csv";
                                 openFileDialog.FilterIndex = 2;

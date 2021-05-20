@@ -1,24 +1,25 @@
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_121021]    Script Date: 2021/04/12 18:39:43 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_121021]    Script Date: 2021/05/19 15:06:20 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%Fnc_Hikiate_121021%' and type like '%P%')
 DROP PROCEDURE [dbo].[Fnc_Hikiate_121021]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_121021]    Script Date: 2021/04/12 18:39:43 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_121021]    Script Date: 2021/05/19 15:06:20 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
+
 -- =============================================
 -- Author:		Kyaw Thet Paing
 -- Create date: 2021-01-11
 -- Description:	Fnc_Hikiate
--- in˜A”Ô‹æ•ª : 12:o‰×w¦
--- inˆ—‹æ•ª : 10,21 (‰ÁZXV)
--- History    : 2021/04/13 Y.Nishikawa CHG “–Update“à‚Å‚ÌHikiateZumiSuu‚ÍA“–XV“_‚Å‚ÍXV‘O‚Ìî•ñ‚È‚Ì‚ÅAHikiateZumiSuu‚Æ“¯‚¶“à—e‚ğƒZƒbƒg
---              2021/04/14 Y.Nishikawa ADD o‰×w¦Ú×—š—ğ‚ÌXV’Ç‰Á
---              2021/04/14 Y.Nishikawa CHG @tmpHikiateSuu‚ÅŒvZ‚·‚é‚Ì‚Å‚Í‚È‚­Aƒ‹[ƒv“à‚Ìo‰×w¦”‚ÅŒvZ‚·‚é•K—v‚ª‚ ‚é
+-- iné€£ç•ªåŒºåˆ† : 12:å‡ºè·æŒ‡ç¤º
+-- inå‡¦ç†åŒºåˆ† : 10,21 (åŠ ç®—æ›´æ–°)
+-- History    : 2021/04/13 Y.Nishikawa CHG å½“Updateå†…ã§ã®HikiateZumiSuuã¯ã€å½“æ›´æ–°æ™‚ç‚¹ã§ã¯æ›´æ–°å‰ã®æƒ…å ±ãªã®ã§ã€HikiateZumiSuuã¨åŒã˜å†…å®¹ã‚’ã‚»ãƒƒãƒˆ
+--              2021/04/14 Y.Nishikawa ADD å‡ºè·æŒ‡ç¤ºè©³ç´°å±¥æ­´ã®æ›´æ–°è¿½åŠ 
+--              2021/04/14 Y.Nishikawa CHG @tmpHikiateSuuã§è¨ˆç®—ã™ã‚‹ã®ã§ã¯ãªãã€ãƒ«ãƒ¼ãƒ—å†…ã®å‡ºè·æŒ‡ç¤ºæ•°ã§è¨ˆç®—ã™ã‚‹å¿…è¦ãŒã‚ã‚‹
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_121021] 
 	-- Add the parameters for the stored procedure here
@@ -37,11 +38,11 @@ BEGIN
 		@JuchuuNo as varchar(12),
 		@JuchuuGyoNo as smallint
 
-	-- Step1 : Get o‰×w¦” from D_ShukkaSiziMeisai(o‰×w¦–¾×) 
-	-- Step2 : Update D_JuchuuMeisai(ó’–¾×)
-	-- Step3 : Update D_JuchuuShousai(ó’Ú×)
-	-- Step4 : Update D_HikiateZaiko(ˆø“–İŒÉ)
-	-- Step5 : Insert D_ShukkaSiziShousai(o‰×w¦Ú×)
+	-- Step1 : Get å‡ºè·æŒ‡ç¤ºæ•° from D_ShukkaSiziMeisai(å‡ºè·æŒ‡ç¤ºæ˜ç´°) 
+	-- Step2 : Update D_JuchuuMeisai(å—æ³¨æ˜ç´°)
+	-- Step3 : Update D_JuchuuShousai(å—æ³¨è©³ç´°)
+	-- Step4 : Update D_HikiateZaiko(å¼•å½“åœ¨åº«)
+	-- Step5 : Insert D_ShukkaSiziShousai(å‡ºè·æŒ‡ç¤ºè©³ç´°)
 
 
 	-- Step1(Loop by ShukkaSiziNO,ShukkaSiziGyouNO)
@@ -55,7 +56,7 @@ BEGIN
 	while @@FETCH_STATUS = 0
 		begin
 	
-			--Step2 Update D_JuchuuMeisai(ó’–¾×)
+			--Step2 Update D_JuchuuMeisai(å—æ³¨æ˜ç´°)
 			update D_JuchuuMeisai
 			set HikiateZumiSuu = HikiateZumiSuu - @ShukkaSiziSuu, 
 				ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + @ShukkaSiziSuu,
@@ -68,7 +69,7 @@ BEGIN
 			declare 
 			@JuchuuShousaiNO as smallint,
 			@SoukoCD as varchar(10),
-			@ShouhinCD as varchar(25),
+			@ShouhinCD as varchar(50),
 			@KanriNO as varchar(10),
 			@NyuukoDate as varchar(10),
 			@HikiateZumiSuu as decimal(21,6),
@@ -96,33 +97,33 @@ BEGIN
 							declare @tmpHikiateSuu as decimal(21,6)
 							declare @tmpShukkasiziSuu as decimal(21,6)
 
-							--Step3 : Update D_JuchuuShousai(ó’Ú×)
+							--Step3 : Update D_JuchuuShousai(å—æ³¨è©³ç´°)
 							update D_JuchuuShousai
 							set HikiateZumiSuu = case when @ShukkaSiziSuu >= HikiateZumiSuu then 0 else HikiateZumiSuu - @ShukkaSiziSuu end,
-							    --2021/04/14 Y.Nishikawa CHG o‰×w¦Ï”‚ÌZo‚ª•s³««
+							    --2021/04/14 Y.Nishikawa CHG å‡ºè·æŒ‡ç¤ºæ¸ˆæ•°ã®ç®—å‡ºãŒä¸æ­£â†“â†“
 								--ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + ( case when @ShukkaSiziSuu >= HikiateZumiSuu then HikiateZumiSuu else HikiateZumiSuu - @ShukkaSiziSuu end),
 								ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + ( case when @ShukkaSiziSuu >= HikiateZumiSuu then HikiateZumiSuu else @ShukkaSiziSuu end),
-								--2021/04/14 Y.Nishikawa CHG o‰×w¦Ï”‚ÌZo‚ª•s³ªª
+								--2021/04/14 Y.Nishikawa CHG å‡ºè·æŒ‡ç¤ºæ¸ˆæ•°ã®ç®—å‡ºãŒä¸æ­£â†‘â†‘
 								ShukkaZumiSuu = 0,
 								UriageZumiSuu = 0,
 								UpdateOperator = @UpdateOperator,
 								UpdateDateTime = @UpdateDateTime,
-								--2021/04/13 Y.Nishikawa CHG “–Update“à‚Å‚ÌHikiateZumiSuu‚ÍA“–XV“_‚Å‚ÍXV‘O‚Ìî•ñ‚È‚Ì‚ÅAHikiateZumiSuu‚Æ“¯‚¶“à—e‚ğƒZƒbƒg««
+								--2021/04/13 Y.Nishikawa CHG å½“Updateå†…ã§ã®HikiateZumiSuuã¯ã€å½“æ›´æ–°æ™‚ç‚¹ã§ã¯æ›´æ–°å‰ã®æƒ…å ±ãªã®ã§ã€HikiateZumiSuuã¨åŒã˜å†…å®¹ã‚’ã‚»ãƒƒãƒˆâ†“â†“
 								--@tmpHikiateSuu = HikiateZumiSuu,
 								@tmpHikiateSuu = case when @ShukkaSiziSuu >= HikiateZumiSuu then 0 else HikiateZumiSuu - @ShukkaSiziSuu end,
-								--2021/04/13 Y.Nishikawa CHG “–Update“à‚Å‚ÌHikiateZumiSuu‚ÍA“–XV“_‚Å‚ÍXV‘O‚Ìî•ñ‚È‚Ì‚ÅAHikiateZumiSuu‚Æ“¯‚¶“à—e‚ğƒZƒbƒgªª
+								--2021/04/13 Y.Nishikawa CHG å½“Updateå†…ã§ã®HikiateZumiSuuã¯ã€å½“æ›´æ–°æ™‚ç‚¹ã§ã¯æ›´æ–°å‰ã®æƒ…å ±ãªã®ã§ã€HikiateZumiSuuã¨åŒã˜å†…å®¹ã‚’ã‚»ãƒƒãƒˆâ†‘â†‘
 								@tmpShukkasiziSuu = case when @ShukkaSiziSuu >= HikiateZumiSuu then HikiateZumiSuu else @ShukkaSiziSuu end
 							from D_JuchuuShousai
 							where JuchuuNO = @JuchuuNo
 							and JuchuuGyouNO = @JuchuuGyoNo 
 							and JuchuuShousaiNO = @JuchuuShousaiNO
 							
-							--2021/04/14 Y.Nishikawa CHG @tmpHikiateSuu‚ÅŒvZ‚·‚é‚Ì‚Å‚Í‚È‚­Aƒ‹[ƒv“à‚Ìo‰×w¦”‚ÅŒvZ‚·‚é•K—v‚ª‚ ‚é««
+							--2021/04/14 Y.Nishikawa CHG @tmpHikiateSuuã§è¨ˆç®—ã™ã‚‹ã®ã§ã¯ãªãã€ãƒ«ãƒ¼ãƒ—å†…ã®å‡ºè·æŒ‡ç¤ºæ•°ã§è¨ˆç®—ã™ã‚‹å¿…è¦ãŒã‚ã‚‹â†“â†“
 							--set @ShukkaSiziSuu = case when @ShukkaSiziSuu > @tmpHikiateSuu then @ShukkaSiziSuu - @tmpHikiateSuu else 0 end
 							set @ShukkaSiziSuu = case when @ShukkaSiziSuu > @tmpShukkasiziSuu then @ShukkaSiziSuu - @tmpShukkasiziSuu else 0 end
-							--2021/04/14 Y.Nishikawa CHG @tmpHikiateSuu‚ÅŒvZ‚·‚é‚Ì‚Å‚Í‚È‚­Aƒ‹[ƒv“à‚Ìo‰×w¦”‚ÅŒvZ‚·‚é•K—v‚ª‚ ‚éªª
+							--2021/04/14 Y.Nishikawa CHG @tmpHikiateSuuã§è¨ˆç®—ã™ã‚‹ã®ã§ã¯ãªãã€ãƒ«ãƒ¼ãƒ—å†…ã®å‡ºè·æŒ‡ç¤ºæ•°ã§è¨ˆç®—ã™ã‚‹å¿…è¦ãŒã‚ã‚‹â†‘â†‘
 	
-							-- Step4 : Update D_HikiateZaiko(ˆø“–İŒÉ)
+							-- Step4 : Update D_HikiateZaiko(å¼•å½“åœ¨åº«)
 							update D_HikiateZaiko
 							set ShukkaSiziSuu = hz.ShukkaSiziSuu + @tmpShukkasiziSuu,
 								HikiateZumiSuu = hz.HikiateZumiSuu - @tmpShukkasiziSuu,
@@ -139,7 +140,7 @@ BEGIN
 	
 							select @maxShousaiNo = isnull(max(ShukkaSiziShousaiNO),0) from D_ShukkaSiziShousai where ShukkaSiziNO = @SlipNo
 	
-							-- Step5 : Insert D_ShukkaSiziShousai(o‰×w¦Ú×)
+							-- Step5 : Insert D_ShukkaSiziShousai(å‡ºè·æŒ‡ç¤ºè©³ç´°)
 							insert into D_ShukkaSiziShousai( ShukkaSiziNO, ShukkaSiziGyouNO, ShukkaSiziShousaiNO, 
 							SoukoCD,ShouhinCD,ShouhinName,ShukkaSiziSuu,KanriNO,NyuukoDate,ShukkaZumiSuu,
 							JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime
@@ -170,7 +171,7 @@ BEGIN
 	close cursorOuter
 	deallocate cursorOuter
 
-	--2021/04/14 Y.Nishikawa ADD o‰×w¦Ú×—š—ğ‚ÌXV’Ç‰Á««
+	--2021/04/14 Y.Nishikawa ADD å‡ºè·æŒ‡ç¤ºè©³ç´°å±¥æ­´ã®æ›´æ–°è¿½åŠ â†“â†“
 	declare @Unique as uniqueidentifier
              , @OperatorCD as varchar(10)
              , @currentDate as datetime
@@ -211,7 +212,7 @@ BEGIN
        [ShukkaSiziNO]
        			,[ShukkaSiziGyouNO]
        			,[ShukkaSiziShousaiNO]
-       			,10 --V‹K
+       			,10 --æ–°è¦
        			,[SoukoCD]
        			,[ShouhinCD]
        			,[ShouhinName]
@@ -230,60 +231,9 @@ BEGIN
        			,@currentDate
        FROM [dbo].[D_ShukkaSiziShousai]
        where ShukkaSiziNO=@ShukkaSiziNO
-	--2021/04/14 Y.Nishikawa ADD o‰×w¦Ú×—š—ğ‚ÌXV’Ç‰Áªª
+	--2021/04/14 Y.Nishikawa ADD å‡ºè·æŒ‡ç¤ºè©³ç´°å±¥æ­´ã®æ›´æ–°è¿½åŠ â†‘â†‘
 
 END
 GO
 
 
- i z i S u u ,  
- 	 	 	 	 	 	 	 	 H i k i a t e Z u m i S u u   =   h z . H i k i a t e Z u m i S u u   -   @ t m p S h u k k a s i z i S u u ,  
- 	 	 	 	 	 	 	 	 U p d a t e O p e r a t o r   =   @ U p d a t e O p e r a t o r ,  
- 	 	 	 	 	 	 	 	 U p d a t e D a t e T i m e   =   @ U p d a t e D a t e T i m e  
- 	 	 	 	 	 	 	 f r o m   D _ H i k i a t e Z a i k o   h z  
- 	 	 	 	 	 	 	 i n n e r   j o i n   D _ J u c h u u S h o u s a i   j s  
- 	 	 	 	 	 	 	 o n   h z . S o u k o C D   =   j s . S o u k o C D   a n d   h z . S h o u h i n C D   =   j s . S h o u h i n C D   a n d   h z . K a n r i N O   =   j s . K a n r i N O   a n d   h z . N y u u k o D a t e   =   j s . N y u u k o D a t e  
- 	 	 	 	 	 	 	 w h e r e   j s . J u c h u u N O   =   @ J u c h u u N o  
- 	 	 	 	 	 	 	 a n d   j s . J u c h u u G y o u N O   =   @ J u c h u u G y o N o    
- 	 	 	 	 	 	 	 a n d   j s . J u c h u u S h o u s a i N O   =   @ J u c h u u S h o u s a i N O  
- 	  
- 	 	 	 	 	 	 	 d e c l a r e   @ m a x S h o u s a i N o   a s   s m a l l i n t  
- 	  
- 	 	 	 	 	 	 	 s e l e c t   @ m a x S h o u s a i N o   =   i s n u l l ( m a x ( S h u k k a S i z i S h o u s a i N O ) , 0 )   f r o m   D _ S h u k k a S i z i S h o u s a i   w h e r e   S h u k k a S i z i N O   =   @ S l i p N o  
- 	  
- 	 	 	 	 	 	 	 - -   S t e p 5   :   I n s e r t   D _ S h u k k a S i z i S h o u s a i ( úQwƒc:ysŠ0})  
- 	 	 	 	 	 	 	 i n s e r t   i n t o   D _ S h u k k a S i z i S h o u s a i (   S h u k k a S i z i N O ,   S h u k k a S i z i G y o u N O ,   S h u k k a S i z i S h o u s a i N O ,    
- 	 	 	 	 	 	 	 S o u k o C D , S h o u h i n C D , S h o u h i n N a m e , S h u k k a S i z i S u u , K a n r i N O , N y u u k o D a t e , S h u k k a Z u m i S u u ,  
- 	 	 	 	 	 	 	 J u c h u u N O , J u c h u u G y o u N O , J u c h u u S h o u s a i N O , I n s e r t O p e r a t o r , I n s e r t D a t e T i m e , U p d a t e O p e r a t o r , U p d a t e D a t e T i m e  
- 	 	 	 	 	 	 	 )  
- 	 	 	 	 	 	 	 s e l e c t    
- 	 	 	 	 	 	 	 	 @ S h u k k a S i z i N O , @ S h u k k a S i z i G y o u N O , @ m a x S h o u s a i N o   +   1 ,  
- 	 	 	 	 	 	 	 	 j s . S o u k o C D , j s . S h o u h i n C D , j m s . S h o u h i n N a m e , @ t m p S h u k k a s i z i S u u , @ K a n r i N O , @ N y u u k o D a t e , 0 ,  
- 	 	 	 	 	 	 	 	 @ J u c h u u N o , @ J u c h u u G y o N o , @ J u c h u u S h o u s a i N O , @ U p d a t e O p e r a t o r , @ U p d a t e D a t e T i m e , @ U p d a t e O p e r a t o r , @ U p d a t e D a t e T i m e  
- 	 	 	 	 	 	 	  
- 	 	 	 	 	 	 	 f r o m   D _ J u c h u u S h o u s a i   j s  
- 	 	 	 	 	 	 	 l e f t   o u t e r   j o i n   D _ J u c h u u M e i s a i   j m s   o n   j s . J u c h u u N O   =   j m s . J u c h u u N O   a n d   j s . J u c h u u G y o u N O   =   j m s . J u c h u u G y o u N O  
- 	 	 	 	 	 	 	 w h e r e   j s . J u c h u u N O   =   @ J u c h u u N o    
- 	 	 	 	 	 	 	 a n d   j s . J u c h u u G y o u N O   =   @ J u c h u u G y o N o  
- 	 	 	 	 	 	 	 a n d   j s . J u c h u u S h o u s a i N O   =   @ J u c h u u S h o u s a i N O  
- 	 	 	 	 	 	 e n d  
- 	 	 	 	 	  
- 	  
- 	 	 	 	 	 f e t c h   n e x t   f r o m    
- 	 	 	 	 	 c u r s o r I n n e r   i n t o   @ J u c h u u S h o u s a i N O , @ S o u k o C D , @ S h o u h i n C D , @ K a n r i N O , @ N y u u k o D a t e , @ H i k i a t e Z u m i S u u ,  
- 	 	 	 	 	 @ S h u k k a S i z i Z u m i S u u  
- 	 	 	 	 e n d  
- 	 	 	  
- 	 	 	 c l o s e   c u r s o r I n n e r  
- 	 	 	 d e a l l o c a t e   c u r s o r I n n e r  
- 	 	 	  
- 	 	 	 f e t c h   n e x t   f r o m   c u r s o r O u t e r   i n t o     @ S h u k k a S i z i N O , @ S h u k k a S i z i G y o u N O , @ S h u k k a S i z i S u u , @ J u c h u u N o , @ J u c h u u G y o N o  
- 	 	 e n d  
- 	  
- 	 c l o s e   c u r s o r O u t e r  
- 	 d e a l l o c a t e   c u r s o r O u t e r  
- E N D  
- G O  
-  
-  
- 
