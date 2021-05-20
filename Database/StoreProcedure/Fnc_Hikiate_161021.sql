@@ -1,20 +1,23 @@
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_161021]    Script Date: 2021/04/19 16:45:09 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_161021]    Script Date: 2021/05/19 13:51:57 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%Fnc_Hikiate_161021%' and type like '%P%')
 DROP PROCEDURE [dbo].[Fnc_Hikiate_161021]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_161021]    Script Date: 2021/04/19 16:45:10 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_161021]    Script Date: 2021/05/19 13:51:57 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
+
 -- =============================================
 -- Author:		Kyaw Thet Paing
 -- Create date: 2021-01-12
 -- Description:	16:着荷予定 (in処理区分=10,21)
 -- History    : 2021/04/19 Y.Nishikawa 新規登録時、引当元が無いのに引当在庫に引当数を更新している
+--            : 2021/05/19 Y.Nishikawa 1回目は受注詳細が無いので、未引当レコードが作成されない
+--            : 2021/05/19 Y.Nishikawa 分納時、未引当数分の受注に対して引当を行う
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_161021]
 	-- Add the parameters for the stored procedure here
@@ -31,7 +34,7 @@ BEGIN
 	declare @ChakuniYoteiNO as varchar(12),
 		@ChakuniYoteiGyouNO as smallint,
 		@SoukoCD as varchar(10),
-		@ShouhinCD as varchar(25),
+		@ShouhinCD as varchar(50),
 		@KanriNo as varchar(10),
 		@ChakuniYoteiSuu decimal(21,6),
 		@JuchuuNo as varchar(12),
@@ -64,11 +67,23 @@ BEGIN
 					and JuchuuGyouNO = @JuchuuGyouNO
 
 					declare @TotalJuchuuSuu as decimal(21,6)
+					SET @TotalJuchuuSuu = 0
 
 					select @TotalJuchuuSuu = sum(JuchuuSuu) from D_JuchuuShousai
 					where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
-					and ShukkaSiziZumiSuu = 0
+					--2021/05/19 Y.Nishikawa ADD 分納時、未引当数分の受注に対して引当を行う↓↓
+					--and ShukkaSiziZumiSuu = 0
+					and MiHikiateSuu > 0
+					--2021/05/19 Y.Nishikawa ADD 分納時、未引当数分の受注に対して引当を行う↑↑
 					group by JuchuuNO,JuchuuGyouNO
+
+					--2021/05/19 Y.Nishikawa ADD 1回目は受注詳細が無いので、未引当レコードが作成されない↓↓
+					IF(ISNULL(@TotalJuchuuSuu, 0) = 0)
+					BEGIN
+					   SELECT @TotalJuchuuSuu = JuchuuSuu from D_JuchuuMeisai
+					   WHERE JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
+					END
+					--2021/05/19 Y.Nishikawa ADD 1回目は受注詳細が無いので、未引当レコードが作成されない↑↑
 
 					delete 
 					from D_JuchuuShousai
@@ -76,7 +91,7 @@ BEGIN
 					and JuchuuGyouNO = @JuchuuGyouNO
 					--and ShukkaSiziZumiSuu = 0
 					and MiHikiateSuu <> 0
-					
+
 					declare @maxJuchuuShousaiNo as smallint
 
 					select @maxJuchuuShousaiNo = max(JuchuuShousaiNO) from D_JuchuuShousai
@@ -131,6 +146,8 @@ BEGIN
 			        		and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo
 			        	end
 			        --2021/04/19 Y.Nishikawa ADD 新規登録時、引当元が無いのに引当在庫に引当数を更新している(場所移動)↑↑
+
+					
 				end
 
 			--2021/04/19 Y.Nishikawa DEL 新規登録時、引当元が無いのに引当在庫に引当数を更新している(場所移動)↓↓
@@ -164,3 +181,5 @@ BEGIN
 END
 
 GO
+
+

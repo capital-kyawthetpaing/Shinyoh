@@ -1,14 +1,15 @@
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/04/27 16:18:18 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/05/19 15:34:51 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ChakuniNyuuryoku_Delete%' and type like '%P%')
 DROP PROCEDURE [dbo].[ChakuniNyuuryoku_Delete]
 GO
 
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/04/27 16:18:18 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/05/19 15:34:51 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -264,30 +265,36 @@ declare @Unique as uniqueidentifier = NewID()
         
         --Update D_HacchuuMeisai
         Update DHAM
-        SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu - DCKM.ChakuniSuu,
-		    ChakuniKanryouKBN = Case When DHAM.ChakuniYoteiZumiSuu <= (DHAM.ChakuniZumiSuu - DCKM.ChakuniSuu) Then 1 Else 0 End,
-            UpdateOperator = @OperatorCD,
+        SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu - DCYM.ChakuniSuu,
+		    ChakuniKanryouKBN = Case When DHAM.ChakuniYoteiZumiSuu <= (DHAM.ChakuniZumiSuu - DCYM.ChakuniSuu) Then 1 Else 0 End,
+            ChakuniYoteiKanryouKBN = Case When DHAM.HacchuuSuu <= DHAM.ChakuniYoteiZumiSuu Then 1 Else 0 End,
+			UpdateOperator = @OperatorCD,
         	UpdateDateTime = @currentDate
         From D_HacchuuMeisai DHAM
-        Inner Join D_ChakuniYoteiMeisai DCYM
-		on DHAM.HacchuuNO = DCYM.HacchuuNO
+		Inner Join (
+		              SELECT DCKM.HacchuuNO
+					        ,DCKM.HacchuuGyouNO
+							,SUM(DCKM.ChakuniSuu) ChakuniSuu
+					  FROM D_ChakuniMeisai DCKM
+                      Where exists ( select *
+                                     from #Temp_Main
+                      			     where ChakuniNO = DCKM.ChakuniNO)
+					  Group by DCKM.HacchuuNO
+					          ,DCKM.HacchuuGyouNO
+                   ) DCYM
+		On DHAM.HacchuuNO = DCYM.HacchuuNO
 		and DHAM.HacchuuGyouNO = DCYM.HacchuuGyouNO
-        Inner Join D_ChakuniMeisai DCKM
-        on DCKM.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
-        and DCKM.ChakuniYoteiGyouNO = DCYM.ChakuniYoteiGyouNO
-        Where exists ( select *
-                       from #Temp_Main
-        			   where ChakuniNO = DCKM.ChakuniNO
-        			 )
 
         
         --Update D_Hacchuu
         Update DHAH
-        Set ChakuniKanryouKBN = DHAM.ChakuniKanryouKBN
+        Set ChakuniKanryouKBN = DHAM.ChakuniKanryouKBN,
+		    ChakuniYoteiKanryouKBN = DHAM.ChakuniYoteiKanryouKBN
         From D_Hacchuu DHAH
         Inner Join (
 		             select DHAM.HacchuuNO
 					       ,MIN(DHAM.ChakuniKanryouKBN) ChakuniKanryouKBN
+						   ,MIN(DHAM.ChakuniYoteiKanryouKBN) ChakuniYoteiKanryouKBN
 					 from D_HacchuuMeisai DHAM
 					 Inner Join D_ChakuniYoteiMeisai DCYM
 		             on DHAM.HacchuuNO = DCYM.HacchuuNO
@@ -416,7 +423,6 @@ declare @Unique as uniqueidentifier = NewID()
 		--from D_ChakuniYoteiMeisai A,#Temp_Main TM
 		--Where A.ChakuniYoteiNO IN (select ChakuniNO from #Temp_Main)
 		Delete A
-		--2021/04/20 Y.Nishikawa 削除登録しても削除されない↓↓
 		from D_Chakuni A
 		Where A.ChakuniNO = @ChankuniNO
 
@@ -436,7 +442,7 @@ dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuG
 from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 
 --2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)/更新場所変更↓↓
-----Update D_ChakuniYoteiMeisai(for 菫ｮ豁｣蜑阪∪縺溘・蜑企勁)
+----Update D_ChakuniYoteiMeisai(for 闖ｫ・ｮ雎・ｽ｣陷鷹亂竏ｪ邵ｺ貅倥・陷台ｼ∝求)
 --Update D_ChakuniYoteiMeisai
 --SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END,
 --    UpdateOperator=@OperatorCD,
@@ -446,7 +452,7 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --                          and D_ChakuniMeisai.ChakuniYoteiGyouNO=D_ChakuniYoteiMeisai.ChakuniYoteiGyouNO,#Temp_Detail d,#Temp_Main m
 --Where D_ChakuniMeisai.ChakuniNO=m.ChakuniNO
 
-----Update D_ChakuniYoteiMeisai(for 霑ｽ蜉縺ｾ縺溘・菫ｮ豁｣蠕)
+----Update D_ChakuniYoteiMeisai(for 髴托ｽｽ陷会｣ｰ邵ｺ・ｾ邵ｺ貅倥・闖ｫ・ｮ雎・ｽ｣陟・
 --Update a
 --SET a.ChakuniZumiSuu=a.ChakuniZumiSuu+d.ChakuniZumiSuu,
 --    UpdateOperator=@OperatorCD,
@@ -481,7 +487,7 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --ON D_ChakuniYotei.ChakuniYoteiNO=C.ChakuniYoteiNO
 
 
-----Update D_HacchuuMeisai(for 菫ｮ豁｣蜑阪∪縺溘・蜑企勁)
+----Update D_HacchuuMeisai(for 闖ｫ・ｮ雎・ｽ｣陷鷹亂竏ｪ邵ｺ貅倥・陷台ｼ∝求)
 --Update D_HacchuuMeisai
 --SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END
 --From D_HacchuuMeisai 

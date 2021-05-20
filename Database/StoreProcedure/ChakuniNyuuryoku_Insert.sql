@@ -1,14 +1,15 @@
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Insert]    Script Date: 2021/04/27 16:55:58 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Insert]    Script Date: 2021/05/19 15:30:20 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ChakuniNyuuryoku_Insert%' and type like '%P%')
 DROP PROCEDURE [dbo].[ChakuniNyuuryoku_Insert]
 GO
 
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Insert]    Script Date: 2021/04/27 16:55:58 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Insert]    Script Date: 2021/05/19 15:30:20 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 
 
@@ -154,9 +155,9 @@ declare @Unique as uniqueidentifier = NewID()
 				)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-		--2021/04/20 Y.Nishikawa 無駄なSELECT削除↓↓
+		--2021/04/20 Y.Nishikawa 無駄なSELECT削除
 	    --SELECT * FROM #Temp_Main
-		--2021/04/20 Y.Nishikawa 無駄なSELECT削除↑↑
+		--2021/04/20 Y.Nishikawa 無駄なSELECT削除
 
 		CREATE TABLE #Temp_Detail
 				(   
@@ -226,9 +227,9 @@ declare @Unique as uniqueidentifier = NewID()
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-		--2021/04/20 Y.Nishikawa 無駄なSELECT削除↓↓
+		--2021/04/20 Y.Nishikawa 無駄なSELECT削除
 	    --SELECT * FROM #Temp_Detail
-		--2021/04/20 Y.Nishikawa 無駄なSELECT削除↑↑
+		--2021/04/20 Y.Nishikawa 無駄なSELECT削除
 
 declare @filter_date as date = (select distinct ChakuniDate from #Temp_Main)
 declare @StaffCD varchar(10) = (select distinct StaffCD from #Temp_Main)
@@ -434,7 +435,7 @@ from D_ChakuniMeisai dc Inner join #Temp_Main m on dc.ChakuniNO=@ChakuniNO
 --Update A
 --Set A.ChakuniKanryouKBN=B.ChakuniKanryouKBN
 --From D_ChakuniYotei A
---Inner Join (Select C.ChakuniYoteiNO,MIN(ChakuniKanryouKBN)　ChakuniKanryouKBN
+--Inner Join (Select C.ChakuniYoteiNO,MIN(ChakuniKanryouKBN)縲ChakuniKanryouKBN
 --From D_ChakuniYoteiMeisai C,#Temp_Detail d
 --Where C.ChakuniYoteiNO=d.ChakuniYoteiNO
 --Group by C.ChakuniYoteiNO
@@ -500,18 +501,24 @@ Inner Join (
 ON DCYH.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
 
  --Update Table F
- Update a
-SET a.ChakuniZumiSuu=a.ChakuniZumiSuu+d.ChakuniZumiSuu,
-    UpdateOperator=@Operator,
-	UpdateDateTime=@currentDate
-From D_HacchuuMeisai a
-Inner Join D_ChakuniYoteiMeisai on D_ChakuniYoteiMeisai.HacchuuNO=a.HacchuuNO
-                          and D_ChakuniYoteiMeisai.HacchuuGyouNO=a.HacchuuGyouNO,#Temp_Detail d,#Temp_Main m
-Where D_ChakuniYoteiMeisai.ChakuniYoteiNO=m.ChakuniYoteiNO
+-- Update a
+--SET a.ChakuniZumiSuu=a.ChakuniZumiSuu+d.ChakuniZumiSuu,
+--    UpdateOperator=@Operator,
+--	UpdateDateTime=@currentDate
+--From D_HacchuuMeisai a
+--Inner Join D_ChakuniYoteiMeisai on D_ChakuniYoteiMeisai.HacchuuNO=a.HacchuuNO
+--                          and D_ChakuniYoteiMeisai.HacchuuGyouNO=a.HacchuuGyouNO,#Temp_Detail d,#Temp_Main m
+--Where D_ChakuniYoteiMeisai.ChakuniYoteiNO=m.ChakuniYoteiNO
 
 Update DHAM
-SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu + DCKM.ChakuniSuu,
-	ChakuniKanryouKBN = Case When DHAM.ChakuniYoteiZumiSuu <= (DHAM.ChakuniZumiSuu + DCKM.ChakuniSuu) Then 1 
+SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu + TempD.ChakuniSuu,
+	ChakuniKanryouKBN = Case When DHAM.ChakuniYoteiZumiSuu <= (DHAM.ChakuniZumiSuu + TempD.ChakuniSuu) Then 1 
+	                         --2021/05/11 Y.Nishikawa CHG 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）↓↓
+	                         --When TempD.SiireKanryouKBN = 'True' Then 1
+							 When TempD.SiireKanryouKBN = '1' Then 1
+							 --2021/05/11 Y.Nishikawa CHG 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）↑↑
+							 Else 0 End,
+	ChakuniYoteiKanryouKBN = Case When DHAM.HacchuuSuu <= DHAM.ChakuniYoteiZumiSuu Then 1 
 	                         --2021/05/11 Y.Nishikawa CHG 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）↓↓
 	                         --When TempD.SiireKanryouKBN = 'True' Then 1
 							 When TempD.SiireKanryouKBN = '1' Then 1
@@ -520,16 +527,57 @@ SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu + DCKM.ChakuniSuu,
     UpdateOperator = @Operator,
     UpdateDateTime = @currentDate
 From D_HacchuuMeisai DHAM
-Inner Join D_ChakuniYoteiMeisai DCYM
-on DHAM.HacchuuNO = DCYM.HacchuuNO
-and DHAM.HacchuuGyouNO = DCYM.HacchuuGyouNO
-Inner Join #Temp_Detail TempD
-on TempD.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
-and TempD.ChakuniYoteiGyouNO = DCYM.ChakuniYoteiGyouNO
-Inner Join D_ChakuniMeisai DCKM
-on DCKM.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
-and DCKM.ChakuniYoteiGyouNO = DCYM.ChakuniYoteiGyouNO
-Where DCKM.ChakuniNO = @ChakuniNO
+--2021↓↓
+--Inner Join D_ChakuniYoteiMeisai DCYM
+--on DHAM.HacchuuNO = DCYM.HacchuuNO
+--and DHAM.HacchuuGyouNO = DCYM.HacchuuGyouNO
+--Inner Join #Temp_Detail TempD
+--on TempD.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
+--and TempD.ChakuniYoteiGyouNO = DCYM.ChakuniYoteiGyouNO
+--Inner Join D_ChakuniMeisai DCKM
+--on DCKM.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
+--and DCKM.ChakuniYoteiGyouNO = DCYM.ChakuniYoteiGyouNO
+--Where DCKM.ChakuniNO = @ChakuniNO
+Inner Join (
+             SELECT DCKM.HacchuuNO
+			       ,DCKM.HacchuuGyouNO
+				   ,SUM(DCKM.ChakuniSuu) ChakuniSuu
+				   ,MAX(TempD.SiireKanryouKBN) SiireKanryouKBN
+			 FROM #Temp_Detail TempD
+			 Inner Join D_ChakuniMeisai DCKM
+			 on DCKM.ChakuniYoteiNO = TempD.ChakuniYoteiNO
+			 and DCKM.ChakuniYoteiGyouNO = TempD.ChakuniYoteiGyouNO
+			 Where DCKM.ChakuniNO = @ChakuniNO
+			 Group by DCKM.HacchuuNO
+			         ,DCKM.HacchuuGyouNO
+			) TempD
+ON DHAM.HacchuuNO = TempD.HacchuuNO
+and DHAM.HacchuuGyouNO = TempD.HacchuuGyouNO
+--2021↑↑
+
+--Update D_Hacchuu
+Update DHAH
+Set ChakuniKanryouKBN = DHAM.ChakuniKanryouKBN,
+	ChakuniYoteiKanryouKBN = DHAM.ChakuniYoteiKanryouKBN
+From D_Hacchuu DHAH
+Inner Join (
+		        select DHAM.HacchuuNO
+					,MIN(DHAM.ChakuniKanryouKBN) ChakuniKanryouKBN
+					,MIN(DHAM.ChakuniYoteiKanryouKBN) ChakuniYoteiKanryouKBN
+				From D_HacchuuMeisai DHAM
+				Inner Join D_ChakuniYoteiMeisai DCYM
+				on DHAM.HacchuuNO = DCYM.HacchuuNO
+				and DHAM.HacchuuGyouNO = DCYM.HacchuuGyouNO
+				Inner Join #Temp_Detail TempD
+				on TempD.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
+				and TempD.ChakuniYoteiGyouNO = DCYM.ChakuniYoteiGyouNO
+				Inner Join D_ChakuniMeisai DCKM
+				on DCKM.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
+				and DCKM.ChakuniYoteiGyouNO = DCYM.ChakuniYoteiGyouNO
+				Where DCKM.ChakuniNO = @ChakuniNO
+				Group by DHAM.HacchuuNO
+			) DHAM
+ON DHAM.HacchuuNO = DHAH.HacchuuNO
 --2021/04/20 Y.Nishikawa ADD 着荷済数、着荷完了区分が更新されない↑↑
 	
 --Fnc_Hikiate

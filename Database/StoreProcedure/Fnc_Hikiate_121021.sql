@@ -1,14 +1,15 @@
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_121021]    Script Date: 2021/04/12 18:39:43 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_121021]    Script Date: 2021/05/19 15:06:20 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%Fnc_Hikiate_121021%' and type like '%P%')
 DROP PROCEDURE [dbo].[Fnc_Hikiate_121021]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_121021]    Script Date: 2021/04/12 18:39:43 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_121021]    Script Date: 2021/05/19 15:06:20 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		Kyaw Thet Paing
@@ -68,7 +69,7 @@ BEGIN
 			declare 
 			@JuchuuShousaiNO as smallint,
 			@SoukoCD as varchar(10),
-			@ShouhinCD as varchar(25),
+			@ShouhinCD as varchar(50),
 			@KanriNO as varchar(10),
 			@NyuukoDate as varchar(10),
 			@HikiateZumiSuu as decimal(21,6),
@@ -236,54 +237,3 @@ END
 GO
 
 
- i z i S u u ,  
- 	 	 	 	 	 	 	 	 H i k i a t e Z u m i S u u   =   h z . H i k i a t e Z u m i S u u   -   @ t m p S h u k k a s i z i S u u ,  
- 	 	 	 	 	 	 	 	 U p d a t e O p e r a t o r   =   @ U p d a t e O p e r a t o r ,  
- 	 	 	 	 	 	 	 	 U p d a t e D a t e T i m e   =   @ U p d a t e D a t e T i m e  
- 	 	 	 	 	 	 	 f r o m   D _ H i k i a t e Z a i k o   h z  
- 	 	 	 	 	 	 	 i n n e r   j o i n   D _ J u c h u u S h o u s a i   j s  
- 	 	 	 	 	 	 	 o n   h z . S o u k o C D   =   j s . S o u k o C D   a n d   h z . S h o u h i n C D   =   j s . S h o u h i n C D   a n d   h z . K a n r i N O   =   j s . K a n r i N O   a n d   h z . N y u u k o D a t e   =   j s . N y u u k o D a t e  
- 	 	 	 	 	 	 	 w h e r e   j s . J u c h u u N O   =   @ J u c h u u N o  
- 	 	 	 	 	 	 	 a n d   j s . J u c h u u G y o u N O   =   @ J u c h u u G y o N o    
- 	 	 	 	 	 	 	 a n d   j s . J u c h u u S h o u s a i N O   =   @ J u c h u u S h o u s a i N O  
- 	  
- 	 	 	 	 	 	 	 d e c l a r e   @ m a x S h o u s a i N o   a s   s m a l l i n t  
- 	  
- 	 	 	 	 	 	 	 s e l e c t   @ m a x S h o u s a i N o   =   i s n u l l ( m a x ( S h u k k a S i z i S h o u s a i N O ) , 0 )   f r o m   D _ S h u k k a S i z i S h o u s a i   w h e r e   S h u k k a S i z i N O   =   @ S l i p N o  
- 	  
- 	 	 	 	 	 	 	 - -   S t e p 5   :   I n s e r t   D _ S h u k k a S i z i S h o u s a i ( úQwƒc:ysŠ0})  
- 	 	 	 	 	 	 	 i n s e r t   i n t o   D _ S h u k k a S i z i S h o u s a i (   S h u k k a S i z i N O ,   S h u k k a S i z i G y o u N O ,   S h u k k a S i z i S h o u s a i N O ,    
- 	 	 	 	 	 	 	 S o u k o C D , S h o u h i n C D , S h o u h i n N a m e , S h u k k a S i z i S u u , K a n r i N O , N y u u k o D a t e , S h u k k a Z u m i S u u ,  
- 	 	 	 	 	 	 	 J u c h u u N O , J u c h u u G y o u N O , J u c h u u S h o u s a i N O , I n s e r t O p e r a t o r , I n s e r t D a t e T i m e , U p d a t e O p e r a t o r , U p d a t e D a t e T i m e  
- 	 	 	 	 	 	 	 )  
- 	 	 	 	 	 	 	 s e l e c t    
- 	 	 	 	 	 	 	 	 @ S h u k k a S i z i N O , @ S h u k k a S i z i G y o u N O , @ m a x S h o u s a i N o   +   1 ,  
- 	 	 	 	 	 	 	 	 j s . S o u k o C D , j s . S h o u h i n C D , j m s . S h o u h i n N a m e , @ t m p S h u k k a s i z i S u u , @ K a n r i N O , @ N y u u k o D a t e , 0 ,  
- 	 	 	 	 	 	 	 	 @ J u c h u u N o , @ J u c h u u G y o N o , @ J u c h u u S h o u s a i N O , @ U p d a t e O p e r a t o r , @ U p d a t e D a t e T i m e , @ U p d a t e O p e r a t o r , @ U p d a t e D a t e T i m e  
- 	 	 	 	 	 	 	  
- 	 	 	 	 	 	 	 f r o m   D _ J u c h u u S h o u s a i   j s  
- 	 	 	 	 	 	 	 l e f t   o u t e r   j o i n   D _ J u c h u u M e i s a i   j m s   o n   j s . J u c h u u N O   =   j m s . J u c h u u N O   a n d   j s . J u c h u u G y o u N O   =   j m s . J u c h u u G y o u N O  
- 	 	 	 	 	 	 	 w h e r e   j s . J u c h u u N O   =   @ J u c h u u N o    
- 	 	 	 	 	 	 	 a n d   j s . J u c h u u G y o u N O   =   @ J u c h u u G y o N o  
- 	 	 	 	 	 	 	 a n d   j s . J u c h u u S h o u s a i N O   =   @ J u c h u u S h o u s a i N O  
- 	 	 	 	 	 	 e n d  
- 	 	 	 	 	  
- 	  
- 	 	 	 	 	 f e t c h   n e x t   f r o m    
- 	 	 	 	 	 c u r s o r I n n e r   i n t o   @ J u c h u u S h o u s a i N O , @ S o u k o C D , @ S h o u h i n C D , @ K a n r i N O , @ N y u u k o D a t e , @ H i k i a t e Z u m i S u u ,  
- 	 	 	 	 	 @ S h u k k a S i z i Z u m i S u u  
- 	 	 	 	 e n d  
- 	 	 	  
- 	 	 	 c l o s e   c u r s o r I n n e r  
- 	 	 	 d e a l l o c a t e   c u r s o r I n n e r  
- 	 	 	  
- 	 	 	 f e t c h   n e x t   f r o m   c u r s o r O u t e r   i n t o     @ S h u k k a S i z i N O , @ S h u k k a S i z i G y o u N O , @ S h u k k a S i z i S u u , @ J u c h u u N o , @ J u c h u u G y o N o  
- 	 	 e n d  
- 	  
- 	 c l o s e   c u r s o r O u t e r  
- 	 d e a l l o c a t e   c u r s o r O u t e r  
- E N D  
- G O  
-  
-  
- 
