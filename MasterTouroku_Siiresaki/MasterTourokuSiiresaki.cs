@@ -211,36 +211,46 @@ namespace MasterTouroku_Siiresaki
                 string Xml = ChooseFile();
                 if (!string.IsNullOrEmpty(Xml))
                 {
-                    BaseBL bbl = new BaseBL();
-                    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                    SiiresakiBL bl = new SiiresakiBL();
+                    string chk_val = string.Empty;
+                    if (rdo_Registragion.Checked)
+                        chk_val = "create_Err_Check";
+                    else chk_val = "delete_Err_Check";
+                    DataTable dt = bl.CSV_M_Siiresaki_CUD(Xml, chk_val);
+                    if (dt.Rows.Count > 0)
                     {
-                        PreviousCtrl.Focus();
-                    }
-                    else
-                    {
-                        SiiresakiBL bl = new SiiresakiBL();
-                        string chk_val = string.Empty;
-                        if (rdo_Registragion.Checked)
-                            chk_val = "create_update";
-                        else chk_val = "delete";
-                        DataTable dt= bl.CSV_M_Siiresaki_CUD(Xml, chk_val);
-                        if (dt.Rows.Count > 0)
+                        if (dt.Rows[0]["Result"].ToString().Equals("1"))
                         {
-                            if (dt.Rows[0]["Result"].ToString().Equals("1"))
+                            if (bbl.ShowMessage("Q206") != DialogResult.Yes)
                             {
-                                bbl.ShowMessage("I002");
-                                rdo_Registragion.Checked = true;
-                                rdo_Delete.Checked = false;
+                                PreviousCtrl.Focus();
                             }
-                                
                             else
+                            {
+                                if (rdo_Registragion.Checked)
+                                    chk_val = "create_update";
+                                else chk_val = "delete";
+                                dt = bl.CSV_M_Siiresaki_CUD(Xml, chk_val);
+                                if (dt.Rows.Count > 0)
+                                {
+                                    if (dt.Rows[0]["Result"].ToString().Equals("1"))
+                                    {
+                                        bbl.ShowMessage("I002");
+                                        rdo_Registragion.Checked = true;
+                                        rdo_Delete.Checked = false;
+                                    }
+                                }
+
+                            }
+                        }
+                        else
                             {
                                 bbl.ShowMessage("E276", dt.Rows[0]["SEQ"].ToString(), dt.Rows[0]["Error1"].ToString(), dt.Rows[0]["Error2"].ToString());
                             }
                         }
                     }
                 }
-            }
+            
             if (tagID == "12")
             {
                 //if (ErrorCheck(PanelTitle) && ErrorCheck(PanelDetail))

@@ -59,8 +59,8 @@ namespace BL
                         {
                             oSheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
                         }
-                        oSheet.Cells[rowCount, i].EntireColumn.NumberFormat = "@";
-                        // oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
+                       // oSheet.Cells[rowCount, i].EntireColumn.NumberFormat = "@";
+                        oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
                     }
                      //oSheet.Columns.AutoFit();
                    oSheet.Columns.ColumnWidth = 15;
@@ -137,11 +137,50 @@ namespace BL
             }
             return true;
         }
+        protected DataTable GetJanCD(DataTable dt,string[] eColName=null)
+        {
+            foreach (DataRow dr in dt.Rows)
+            {
+                var d="";
+                /////if (eColName.)
+                try
+                {
+                  d  = PureJan(dr["JanCD"].ToString());
+                    dr["JanCD"] = PureJan(dr["JanCD"].ToString());
+                }
+                catch (Exception ex) { 
+                
+                }
+            }
+            return dt;
+        }
+        protected string PureJan(string va)
+        {
+            string vl = "";
+            if (va != "")
+            {
+                try
+                {
+                    vl = string.Format("{0:f}", Convert.ToDouble(va));
 
+                }
+                catch
+                {
+
+                    vl = Double.Parse(va, System.Globalization.NumberStyles.Any).ToString();
+                }
+
+                if (vl.Contains("."))
+                    vl = vl.Split('.').First();
+            }
+            return vl;
+        }
+             
         public bool ExcelOutputFile(DataTable dtvalue, string ProgramID, string fname, string SheetName, int bgcol, string[] datecol, string[] numcol)
         {
             try
             {
+                GetJanCD(dtvalue);
                 string folderPath = "C:\\ShinYoh\\" + ProgramID + "\\";
                 if (!Directory.Exists(folderPath))
                 {
@@ -159,11 +198,11 @@ namespace BL
                 {
                     if (Path.GetExtension(savedialog.FileName).Contains(".xlsx"))
                     {
-                        Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
-                        Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
-                        Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-                        worksheet = workbook.ActiveSheet;
-                        worksheet.Name = SheetName;
+                        //Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();  // PTK removed 2021/05/20
+                        //Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+                        //Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+                        //worksheet = workbook.ActiveSheet;
+                        //worksheet.Name = SheetName;
 
                         using (XLWorkbook wb = new XLWorkbook())
                         {
@@ -184,12 +223,21 @@ namespace BL
                                 }
                             }
 
+                            // PTK removed 2021/05/20
+                            int j = 0;
+                            foreach (DataColumn dc in dtvalue.Columns)   /// Make Every JanCD to be not allow Exponential when Edit cell
+                            {
+                                j++;
+                                if (dc.ColumnName.ToUpper() == "JANCD")
+                                ws.Columns(j.ToString()).Style.NumberFormat.SetNumberFormatId(49);
+                            }
                             if (numcol != null)
                             {
+                                // PTK removed 2021/05/20
                                 for (int k = 0; k < numcol.Count(); k++)
                                 {
                                     string val1 = numcol[k].ToString();
-                                    ws.Column(val1).Style.NumberFormat.Format = "#,###,###";
+                                    ws.Column(val1).Style.NumberFormat.Format = "#,##0";
                                 }
                             }
                             ws.ShowGridLines = false;
@@ -200,8 +248,8 @@ namespace BL
                             bbl.ShowMessage("I203");
                         }
                         Process.Start(Path.GetDirectoryName(savedialog.FileName));
-                        workbook.Close(false, Missing.Value, Missing.Value);
-                        excel.Quit();
+                        //workbook.Close(false, Missing.Value, Missing.Value);
+                        //excel.Quit();
                     }
                 }
             }
