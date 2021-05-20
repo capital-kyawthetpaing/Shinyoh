@@ -64,8 +64,8 @@ namespace ShukkaTorikomi
             base_Entity = _GetBaseData();
             //multipurposeEntity multipurpose_entity = new multipurposeEntity();
 
-            txtShukkaToNo1.Enabled = true;
-            txtShukkaToNo2.Enabled = true;
+            txtImportFolder.Enabled = true;
+            txtImportFileName.Enabled = true;
 
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
@@ -89,13 +89,13 @@ namespace ShukkaTorikomi
 
             if (dtShuKka.Rows.Count > 0)
             {
-                txtShukkaToNo1.Text = dtShuKka.Rows[0]["Char1"].ToString();
-                txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
+                txtImportFolder.Text = dtShuKka.Rows[0]["Char1"].ToString();
+                txtImportFileName.Text = dtShuKka.Rows[0]["Char2"].ToString();
             }
             else
             {
-                txtShukkaToNo1.Text = string.Empty;
-                txtShukkaToNo2.Text = string.Empty;
+                txtImportFolder.Text = string.Empty;
+                txtImportFileName.Text = string.Empty;
             }
         }
 
@@ -109,8 +109,8 @@ namespace ShukkaTorikomi
                 {
                     if (dtShuKka.Rows.Count > 0)
                     {
-                        txtShukkaToNo1.Text = dtShuKka.Rows[0]["Char1"].ToString();
-                        txtShukkaToNo2.Text = dtShuKka.Rows[0]["Char2"].ToString();
+                        txtImportFolder.Text = dtShuKka.Rows[0]["Char1"].ToString();
+                        txtImportFileName.Text = dtShuKka.Rows[0]["Char2"].ToString();
                     }
                 }
                 ErrorCheck();
@@ -119,8 +119,8 @@ namespace ShukkaTorikomi
 
         private void Disable_Enable_Method()
         {
-            txtShukkaToNo1.Text = string.Empty;
-            txtShukkaToNo2.Text = string.Empty;
+            txtImportFolder.Text = string.Empty;
+            txtImportFileName.Text = string.Empty;
             txtDate1.Text = string.Empty;
             txtDate2.Text = string.Empty;
             txtDenpyouNO.Text = string.Empty;
@@ -128,8 +128,8 @@ namespace ShukkaTorikomi
 
             if(rdo_Toroku.Checked)
             {
-                txtShukkaToNo1.Enabled = true;
-                txtShukkaToNo2.Enabled = true;
+                txtImportFolder.Enabled = true;
+                txtImportFileName.Enabled = true;
                 txtDate1.Enabled = false;
                 txtDate2.Enabled = false;
                 txtDenpyouNO.Enabled = false;
@@ -141,8 +141,8 @@ namespace ShukkaTorikomi
             }
             else
             {
-                txtShukkaToNo1.Enabled = false;
-                txtShukkaToNo2.Enabled = false;
+                txtImportFolder.Enabled = false;
+                txtImportFileName.Enabled = false;
                 txtDate1.Enabled = true;
                 txtDate2.Enabled = true;
                 txtDenpyouNO.Enabled = true;
@@ -167,8 +167,8 @@ namespace ShukkaTorikomi
         {
             if(rdo_Toroku.Checked)
             {
-                txtShukkaToNo1.E102Check(true);
-                txtShukkaToNo2.E102Check(true);
+                txtImportFolder.E102Check(true);
+                txtImportFileName.E102Check(true);
                 txtDate1.E103Check(false);
                 txtDate2.E103Check(false);
                 txtDate2.E104Check(false, txtDate1, txtDate2); //HET
@@ -177,8 +177,8 @@ namespace ShukkaTorikomi
             }
             else
             {
-                txtShukkaToNo1.E102Check(false);
-                txtShukkaToNo2.E102Check(false);
+                txtImportFolder.E102Check(false);
+                txtImportFileName.E102Check(false);
                 txtDate1.E103Check(true);
                 txtDate2.E103Check(true);
                 txtDate2.E104Check(true, txtDate1, txtDate2); //HET
