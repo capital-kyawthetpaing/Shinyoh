@@ -174,86 +174,94 @@ namespace JuchuuList {
                
                     DataTable dt = new DataTable { TableName = "JuchuuListTable" };
                     dt = Get_Form_Object();
-                    if (dt.Rows.Count > 0)
-                    {
+                if (dt.Rows.Count > 0)
+                {
 
-                        dt.Columns["JuchuuNO"].ColumnName = "受注番号";
-                        dt.Columns["JuchuuDate"].ColumnName = "受発注日";
-                        dt.Columns["StaffName"].ColumnName = "担当者	";
-                        dt.Columns["TokuisakiCD"].ColumnName = "得意先コード";
-                        dt.Columns["TokuisakiRyakuName"].ColumnName = "得意先名";
-                        dt.Columns["KouritenCD"].ColumnName = "小売店コード";
-                        dt.Columns["KouritenRyakuName"].ColumnName = "小売店";
-                        dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注番号";
-                        dt.Columns["SenpouBusho"].ColumnName = "先方部署	";
-                        dt.Columns["KibouNouki"].ColumnName = "希望納期";
-                        dt.Columns["JuchuuDenpyouTekiyou"].ColumnName = "伝票摘要";
-                        dt.Columns["Char1"].ColumnName = "ブランド";
-                        dt.Columns["Exhibition"].ColumnName = "展示会";
-                        dt.Columns["JANCD"].ColumnName = "JANコード";
-                        dt.Columns["ShouhinCD"].ColumnName = "商品";
-                        dt.Columns["ShouhinName"].ColumnName = "品名";
-                        dt.Columns["ColorRyakuName"].ColumnName = "カラー";
-                        dt.Columns["SizeNO"].ColumnName = "サイズ";
-                        dt.Columns["JuchuuSuu"].ColumnName = "数量";
-                        dt.Columns["UriageTanka"].ColumnName = "上代	";
-                        dt.Columns["HacchuuTanka"].ColumnName = "下代";
-                        dt.Columns["Free"].ColumnName = "Free";
-                        dt.Columns["JuchuuMeisaiTekiyou"].ColumnName = "明細摘要";
-                        dt.Columns["SiiresakiCD"].ColumnName = "発注先";
-                        dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
-                        //dt.Columns.Remove("発注先名");           //HET
-                        dt.Columns["SoukoName"].ColumnName = "倉庫";
+                    dt.Columns["JuchuuNO"].ColumnName = "受注番号";
+                    dt.Columns["JuchuuDate"].ColumnName = "受発注日";
+                    dt.Columns["StaffName"].ColumnName = "担当者	";
+                    dt.Columns["TokuisakiCD"].ColumnName = "得意先コード";
+                    dt.Columns["TokuisakiRyakuName"].ColumnName = "得意先名";
+                    dt.Columns["KouritenCD"].ColumnName = "小売店コード";
+                    dt.Columns["KouritenRyakuName"].ColumnName = "小売店";
+                    dt.Columns["SenpouHacchuuNO"].ColumnName = "先方発注番号";
+                    dt.Columns["SenpouBusho"].ColumnName = "先方部署	";
+                    dt.Columns["KibouNouki"].ColumnName = "希望納期";
+                    dt.Columns["JuchuuDenpyouTekiyou"].ColumnName = "伝票摘要";
+                    dt.Columns["Char1"].ColumnName = "ブランド";
+                    dt.Columns["Exhibition"].ColumnName = "展示会";
+                    dt.Columns["JANCD"].ColumnName = "JANコード";
+                    dt.Columns["ShouhinCD"].ColumnName = "商品";
+                    dt.Columns["ShouhinName"].ColumnName = "品名";
+                    dt.Columns["ColorRyakuName"].ColumnName = "カラー";
+                    dt.Columns["SizeNO"].ColumnName = "サイズ";
+                    dt.Columns["JuchuuSuu"].ColumnName = "数量";
+                    dt.Columns["UriageTanka"].ColumnName = "上代	";
+                    dt.Columns["HacchuuTanka"].ColumnName = "下代";
+                    dt.Columns["Free"].ColumnName = "Free";
+                    dt.Columns["JuchuuMeisaiTekiyou"].ColumnName = "明細摘要";
+                    dt.Columns["SiiresakiCD"].ColumnName = "発注先";
+                    dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
+                    //dt.Columns.Remove("発注先名");           //HET
+                    dt.Columns["SoukoName"].ColumnName = "倉庫";
 
-                        if (!System.IO.Directory.Exists("C:\\Excel"))
-                            System.IO.Directory.CreateDirectory("C:\\Excel");
+                    string ProgramID = "JuchuuList";
+                    string fname = "受注リスト";
+                    string[] datacol = { "2", "10" };
+                    string[] numcol = { "19", "20", "21" };
 
-                        SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                        saveFileDialog1.InitialDirectory = @"C:\Excel\";
+                    ExportCSVExcel list = new ExportCSVExcel();
+                    list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
+
+                    //if (!System.IO.Directory.Exists("C:\\Excel"))
+                    //    System.IO.Directory.CreateDirectory("C:\\Excel");
+
+                    //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    //saveFileDialog1.InitialDirectory = @"C:\Excel\";
 
 
-                        //for excel
-                        saveFileDialog1.Filter = "ExcelFile|*.xlsx";
-                        saveFileDialog1.FileName = "受注リスト.xlsx";
-                        saveFileDialog1.RestoreDirectory = true;
-                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                        {
-                            ExcelDesignSetting obj = new ExcelDesignSetting();
-                            obj.FilePath = saveFileDialog1.FileName;
-                            obj.SheetName = "受注リスト";
-                            obj.Start_Interior_Column = "A1";
-                            obj.End_Interior_Column = "Z1";
-                            obj.Interior_Color = Color.FromArgb(255, 192, 0);
-                            obj.Start_Font_Column = "A1";
-                            obj.End_Font_Column = "Z1";
-                            obj.Font_Color = Color.Black;
-                            //For column B
-                            obj.Date_Column = new List<int>();
-                            obj.Date_Column.Add(2);
-                            obj.Date_Column.Add(10);
-                            obj.Date_Format = "YYYY/MM/DD";
-                            obj.Start_Title_Center_Column = "A1";
-                            obj.End_Title_Center_Column = "Z1";
-                            //for column T,U
-                            obj.Number_Column = new List<int>();
-                            obj.Number_Column.Add(19);
-                            obj.Number_Column.Add(20);
-                            obj.Number_Column.Add(21);
-                            obj.Number_Format = "#,###,###";
-                            bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
-                            if (bl)
-                            {
-                                bbl.ShowMessage("I203");
-                                Clear();
-                            }
-                        }
-                    }
-                    else if (dt.Rows.Count == 0)
-                    {
-                        bbl.ShowMessage("S013");
-                        if (PreviousCtrl != null)
-                            PreviousCtrl.Focus();
-                    }
+                    ////for excel
+                    //saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                    //saveFileDialog1.FileName = "受注リスト.xlsx";
+                    //saveFileDialog1.RestoreDirectory = true;
+                    //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    ExcelDesignSetting obj = new ExcelDesignSetting();
+                    //    obj.FilePath = saveFileDialog1.FileName;
+                    //    obj.SheetName = "受注リスト";
+                    //    obj.Start_Interior_Column = "A1";
+                    //    obj.End_Interior_Column = "Z1";
+                    //    obj.Interior_Color = Color.FromArgb(255, 192, 0);
+                    //    obj.Start_Font_Column = "A1";
+                    //    obj.End_Font_Column = "Z1";
+                    //    obj.Font_Color = Color.Black;
+                    //    //For column B
+                    //    obj.Date_Column = new List<int>();
+                    //    obj.Date_Column.Add(2);
+                    //    obj.Date_Column.Add(10);
+                    //    obj.Date_Format = "YYYY/MM/DD";
+                    //    obj.Start_Title_Center_Column = "A1";
+                    //    obj.End_Title_Center_Column = "Z1";
+                    //    //for column T,U
+                    //    //obj.Number_Column = new List<int>();
+                    //    //obj.Number_Column.Add(19);
+                    //    //obj.Number_Column.Add(20);
+                    //    //obj.Number_Column.Add(21);
+                    //    //obj.Number_Format = "#,###,###";
+                    //    bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
+                    //    if (bl)
+                    //    {
+                    //        bbl.ShowMessage("I203");
+                    //        Clear();
+                    //    }
+                    //}
+                }
+                else if (dt.Rows.Count == 0)
+                {
+                    bbl.ShowMessage("S013");
+                    if (PreviousCtrl != null)
+                        PreviousCtrl.Focus();
+                }
             }            
             base.FunctionProcess(tagID);
         }

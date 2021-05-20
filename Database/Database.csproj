@@ -58,6 +58,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="StoreProcedure\CSV_M_Shouhin_CUD.sql" />
+    <Content Include="StoreProcedure\Hacchuu_Search.sql" />
     <Content Include="StoreProcedure\HCS_M_MultiPorpose_Type.sql" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -145,7 +146,6 @@
     <Content Include="StoreProcedure\HacchuuNyuuryoku_Search.sql" />
     <Content Include="StoreProcedure\HacchuuNyuuryoku_Select_Check.sql" />
     <Content Include="StoreProcedure\HacchuuNyuuryoku_Update.sql" />
-    <Content Include="StoreProcedure\Hacchuu_Search.sql" />
     <Content Include="StoreProcedure\HaitaSakujo_ClearExclusive.sql" />
     <Content Include="StoreProcedure\HaitaSakujo_Display.sql" />
     <Content Include="StoreProcedure\IdouNyuuryoku_Change_Detail_Flag.sql" />
