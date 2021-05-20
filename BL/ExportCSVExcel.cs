@@ -59,8 +59,8 @@ namespace BL
                         {
                             oSheet.Cells[1, i] = dt.Columns[i - 1].ColumnName;
                         }
-
-                        oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
+                        oSheet.Cells[rowCount, i].EntireColumn.NumberFormat = "@";
+                        // oSheet.Cells[rowCount, i] = dr[i - 1].ToString();
                     }
                      //oSheet.Columns.AutoFit();
                    oSheet.Columns.ColumnWidth = 15;
@@ -169,18 +169,10 @@ namespace BL
                         {
                             var ws = wb.Worksheets.Add(dtvalue, SheetName);
                             ws.Range(ws.Cell(1, 1), ws.Cell(1, bgcol)).Style.Fill.BackgroundColor = XLColor.FromArgb(255, 192, 0);
-                            //ws.FirstRow().Style.Fill.BackgroundColor = XLColor.Orange;
                             ws.FirstRow().Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center;
-                            ws.ColumnWidth = 15;
-                           // worksheet.Columns.AutoFit();
-
-                            foreach (DataColumn dc in dtvalue.Columns)
-                            {
-                                if (dc.DataType == typeof(string))
-                                {
-                                    worksheet.Cells[1, dtvalue.Columns.IndexOf(dc) + 1].EntireColumn.NumberFormat = "@";
-                                }
-                            }
+                            //ws.ColumnWidth = 15;
+                            // worksheet.Columns.AutoFit();
+                            ws.Columns().AdjustToContents();
 
                             if (datecol != null)
                             {
@@ -200,7 +192,6 @@ namespace BL
                                     ws.Column(val1).Style.NumberFormat.Format = "#,###,###";
                                 }
                             }
-
                             ws.ShowGridLines = false;
                             ws.Tables.FirstOrDefault().ShowAutoFilter = false;
                             ws.Tables.FirstOrDefault().Theme = XLTableTheme.None;
@@ -216,7 +207,8 @@ namespace BL
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                bbl.ShowMessage("E122");
+                //MessageBox.Show(ex.Message);
                 return false;
             }
             finally
