@@ -252,7 +252,6 @@ namespace Shinyoh_Search
                             name = msearch.Char1;
                         break;
                     case Entity.SearchType.ScType.FileImport:
-
                         if (this.Name == "txtImportFolder")
                         {
                             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -263,14 +262,9 @@ namespace Shinyoh_Search
                                 openFileDialog.FilterIndex = 2;
                                 openFileDialog.RestoreDirectory = true;
                                 openFileDialog.ShowDialog();
-                                //if(this.Name== "txtImportFolder")
-                                //{
-                                   CD = openFileDialog.InitialDirectory;
-                                //}
-                                //else if (this.Name == "txtImportFileName")
-                                //{
-                                //   name = openFileDialog.FileName;
-                                //}
+
+                                CD = openFileDialog.InitialDirectory;
+
                             }
                         }
                         else if (this.Name == "txtImportFileName")
