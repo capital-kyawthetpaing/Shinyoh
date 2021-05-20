@@ -87,6 +87,7 @@ namespace MasterList_Shouhin
                 string[] numcol = { "22", "23", "24", "37" };
 
                 ExportCSVExcel list = new ExportCSVExcel();
+                list.stringCol = new string[1] { "10" };
                 list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);
 
                 //if (!System.IO.Directory.Exists("C:\\ShinYoh\\" + ProgramID + "\\"))
