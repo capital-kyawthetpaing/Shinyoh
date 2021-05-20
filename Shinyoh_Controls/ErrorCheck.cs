@@ -862,6 +862,12 @@ namespace Shinyoh_Controls
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
                 }
+                if (result.Equals("E280"))
+                {
+                    ShowErrorMessage("E280");
+                    sTextBox.Focus();
+                    return (true, rDt);
+                }
             }
 
             if (sTextBox.E128)
