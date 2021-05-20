@@ -225,18 +225,18 @@ namespace BL
 
                             if (numcol != null)
                             {
-                                // PTK removed 2021/05/20
-                                for (int k = 0; k < numcol.Count(); k++)
-                                {
-                                    string val1 = numcol[k].ToString();
-                                    ws.Columns(val1).Style.NumberFormat.SetNumberFormatId(49);
-                                }
-                                ws.Columns("10").Style.NumberFormat.SetNumberFormatId(49);
+                                //// PTK removed 2021/05/20
                                 //for (int k = 0; k < numcol.Count(); k++)
                                 //{
                                 //    string val1 = numcol[k].ToString();
-                                //    ws.Column(val1).Style.NumberFormat.Format = "#,###,###";
+                                //    ws.Columns(val1).Style.NumberFormat.SetNumberFormatId(49);
                                 //}
+                                //ws.Columns("10").Style.NumberFormat.SetNumberFormatId(49);
+                                for (int k = 0; k < numcol.Count(); k++)
+                                {
+                                    string val1 = numcol[k].ToString();
+                                    ws.Column(val1).Style.NumberFormat.Format = "#,##0";
+                                }
                             }
                             ws.ShowGridLines = false;
                             ws.Tables.FirstOrDefault().ShowAutoFilter = false;
