@@ -207,8 +207,8 @@ namespace JuchuuList {
 
                     string ProgramID = "JuchuuList";
                     string fname = "受注リスト";
-                    string[] datacol = { "2", "10"};
-                    string[] numcol = { "19", "20", "21"};
+                    string[] datacol = { "2", "10" };
+                    string[] numcol = { "19", "20", "21" };
 
                     ExportCSVExcel list = new ExportCSVExcel();
                     list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
@@ -243,11 +243,11 @@ namespace JuchuuList {
                     //    obj.Start_Title_Center_Column = "A1";
                     //    obj.End_Title_Center_Column = "Z1";
                     //    //for column T,U
-                    //    obj.Number_Column = new List<int>();
-                    //    obj.Number_Column.Add(19);
-                    //    obj.Number_Column.Add(20);
-                    //    obj.Number_Column.Add(21);
-                    //    obj.Number_Format = "#,###,###";
+                    //    //obj.Number_Column = new List<int>();
+                    //    //obj.Number_Column.Add(19);
+                    //    //obj.Number_Column.Add(20);
+                    //    //obj.Number_Column.Add(21);
+                    //    //obj.Number_Format = "#,###,###";
                     //    bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
                     //    if (bl)
                     //    {

@@ -189,31 +189,42 @@ namespace MasterTouroku_Tokuisaki {
                 BaseBL bbl = new BaseBL();
                 if (!string.IsNullOrEmpty(Xml))
                 {
-                    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                    TokuisakiBL bl = new TokuisakiBL();
+                    string chk_val = string.Empty;
+                    if (sRadRegister.Checked)
+                        chk_val = "create_Err_Check";
+                    else chk_val = "delete_Err_Check";
+                    DataTable dt = bl.CSV_M_Tokuisaki_CUD(Xml, chk_val);
+                    if (dt.Rows.Count > 0)
                     {
-                        if (PreviousCtrl != null)
-                            PreviousCtrl.Focus();
-                    }
-                    else
-                    {
-                        TokuisakiBL bl = new TokuisakiBL();
-                        string chk_val = string.Empty;
-                        if (sRadRegister.Checked)
-                            chk_val = "create_update";
-                        else chk_val = "delete";
-                        DataTable dt = bl.CSV_M_Tokuisaki_CUD(Xml, chk_val);
-                        if (dt.Rows.Count > 0)
-                        {                       
-                            if (dt.Rows[0]["Result"].ToString().Equals("1"))
+                        if (dt.Rows[0]["Result"].ToString().Equals("1"))
+                        {
+                            if (bbl.ShowMessage("Q206") != DialogResult.Yes)
                             {
-                                bbl.ShowMessage("I002");
-                                sRadRegister.Checked = true;
-                                sRadDelete.Checked = false;
+                                if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
                             }
                             else
                             {
-                                bbl.ShowMessage("E276", dt.Rows[0]["SEQ"].ToString(), dt.Rows[0]["Error1"].ToString(), dt.Rows[0]["Error2"].ToString());
+                                if (sRadRegister.Checked)
+                                    chk_val = "create_update";
+                                else chk_val = "delete";
+                                dt = bl.CSV_M_Tokuisaki_CUD(Xml, chk_val);
+                                if (dt.Rows.Count > 0)
+                                {
+                                    if (dt.Rows[0]["Result"].ToString().Equals("1"))
+                                    {
+                                        bbl.ShowMessage("I002");
+                                        sRadRegister.Checked = true;
+                                        sRadDelete.Checked = false;
+                                    }
+                                }
+
                             }
+                        }
+                        else
+                        {
+                            bbl.ShowMessage("E276", dt.Rows[0]["SEQ"].ToString(), dt.Rows[0]["Error1"].ToString(), dt.Rows[0]["Error2"].ToString());
                         }
                     }
                 }
