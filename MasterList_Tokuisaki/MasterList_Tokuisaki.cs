@@ -95,7 +95,11 @@ namespace MasterList_Tokuisaki
                 string[] datacol = { "2", "28", "29" };
 
                 ExportCSVExcel list = new ExportCSVExcel();
-                list.ExcelOutputFile(dt, ProgramID, fname, fname, 36, datacol, null);
+                bool Clear_bl= list.ExcelOutputFile(dt, ProgramID, fname, fname, 36, datacol, null);
+                if (Clear_bl)
+                {
+                    Clear();
+                }
             }
             else
             {
@@ -121,6 +125,21 @@ namespace MasterList_Tokuisaki
             entity.Tel13 = txtPhNO3.Text;
             entity.Remarks = txtRemarks.Text;
             return entity;
+        }
+        private void Clear()
+        {
+            rdo_RRevisionDate.Checked = true;
+            txtTokuisakiCD.Focus();
+            txtTokuisakiCD.Text = string.Empty;
+            txtTokuisakiCD1.Text = string.Empty;
+            txtTokuisakiName.Text = string.Empty;
+            txtYuubinNO1.Text = string.Empty;
+            txtYuubinNO2.Text = string.Empty;
+            txtJuusho.Text = string.Empty;
+            txtPhNO1.Text = string.Empty;
+            txtPhNO2.Text = string.Empty;
+            txtPhNO3.Text = string.Empty;
+            txtRemarks.Text = string.Empty;
         }
     }
 }

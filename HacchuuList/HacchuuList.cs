@@ -168,7 +168,11 @@ namespace HacchuuList
                     string[] numcol = { "20", "21", "22" };
 
                     ExportCSVExcel list = new ExportCSVExcel();
-                    list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
+                    bool bl=  list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
+                    if(bl)
+                    {
+                        Clear();
+                    }
 
                     //if (!System.IO.Directory.Exists("C:\\Excel"))
                     //    System.IO.Directory.CreateDirectory("C:\\Excel");
