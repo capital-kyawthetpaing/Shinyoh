@@ -67,9 +67,12 @@ BEGIN
 		,M_MultiPorpose_Color.Char1 AS 'カラー名'
 		,CASE ISNUMERIC(MS.SizeNO+'.e0') WHEN 1 THEN MS.SizeNO+'.0' ELSE MS.SizeNO END  as 'サイズNO'
 		,M_MultiPorpose_Size.Char1 AS 'サイズ名'
-		,MS.JoudaiTanka AS '上代単価'
-		,MS.GedaiTanka AS '下代単価'
-		,MS.HyoujunGenkaTanka AS '標準原価単価'
+		--,MS.JoudaiTanka AS '上代単価'
+		--,MS.GedaiTanka AS '下代単価'
+		--,MS.HyoujunGenkaTanka AS '標準原価単価'
+		,convert(int,isnull(MS.JoudaiTanka,0)) as '上代単価'--2021/05/21 ssa CHG TaskNO 426
+		,convert(int,isnull(MS.GedaiTanka,0)) as '下代単価'--2021/05/21 ssa CHG TaskNO 426
+		,convert(int,isnull(MS.HyoujunGenkaTanka,0)) as '標準原価単価'--2021/05/21 ssa CHG TaskNO 426
 		,MS.ZeirituKBN AS '税率区分'
 		,M_MultiPorpose_Shouhizeiritu.Char1 as '税率区分名'
 		,MS.ZaikoHyoukaKBN AS '在庫評価区分'
@@ -140,9 +143,12 @@ BEGIN
 		,M_MultiPorpose_Color.Char1 AS 'カラー名'
 		,CASE ISNUMERIC(MS.SizeNO+'.e0') WHEN 1 THEN MS.SizeNO+'.0' ELSE MS.SizeNO END  as 'サイズNO'
 		,M_MultiPorpose_Size.Char1 AS 'サイズ名'
-		,MS.JoudaiTanka AS '上代単価'
-		,MS.GedaiTanka AS '下代単価'
-		,MS.HyoujunGenkaTanka AS '標準原価単価'
+		--,MS.JoudaiTanka AS '上代単価'
+		--,MS.GedaiTanka AS '下代単価'
+		--,MS.HyoujunGenkaTanka AS '標準原価単価'
+		,convert(int,isnull(MS.JoudaiTanka,0)) as '上代単価'--2021/05/21 ssa CHG TaskNO 426
+		,convert(int,isnull(MS.GedaiTanka,0)) as '下代単価'--2021/05/21 ssa CHG TaskNO 426
+		,convert(int,isnull(MS.HyoujunGenkaTanka,0)) as '標準原価単価'--2021/05/21 ssa CHG TaskNO 426
 		,MS.ZeirituKBN AS '税率区分'
 		,M_MultiPorpose_Shouhizeiritu.Char1 as '税率区分名'
 		,MS.ZaikoHyoukaKBN AS '在庫評価区分'

@@ -7,6 +7,7 @@ using Shinyoh_Controls;
 using System.Windows.Forms;
 using Entity;
 using System.Data;
+using System.IO;
 
 namespace Shinyoh_Search
 {
@@ -263,40 +264,29 @@ namespace Shinyoh_Search
                                 openFileDialog.RestoreDirectory = true;
                                 openFileDialog.ShowDialog();
 
-                                CD = openFileDialog.InitialDirectory;
-
+                                //CD = openFileDialog.InitialDirectory;
+                                if(!string.IsNullOrEmpty(openFileDialog.FileName))
+                                    CD = openFileDialog.FileName.Remove(openFileDialog.FileName.LastIndexOf("\\") + 1);
                             }
                         }
                         else if (this.Name == "txtImportFileName")
                         {
                             using (OpenFileDialog openFileDialog = new OpenFileDialog())
                             {
-                                openFileDialog.InitialDirectory = "C:\\Excel\\";
+                                if(!string.IsNullOrEmpty(TxtBox.Text) && Directory.Exists(TxtBox.Text))
+                                    openFileDialog.InitialDirectory = TxtBox.Text;
+                                else
+                                    openFileDialog.InitialDirectory = "C:\\";
                                 openFileDialog.Title = "Browse CSV Files";
                                 openFileDialog.Filter = "csv files (*.csv)|*.csv";
                                 openFileDialog.FilterIndex = 2;
                                 openFileDialog.RestoreDirectory = true;
                                 openFileDialog.ShowDialog();
 
-                                CD = openFileDialog.SafeFileName;
-                               
+                                if (!string.IsNullOrEmpty(openFileDialog.FileName))
+                                    CD = openFileDialog.SafeFileName;                               
                             }
-                        }
-                        //ShukkaTorikomi_Form
-                        if (this.Name == "txtShukkaToNo1")
-                        {
-                            msearch.Access_Type = "110";
-                            msearch.Access_Key = "1";
-                            msearch.ShowDialog();
-                            CD = msearch.Char2;
-                        }
-                        else if (this.Name == "txtShukkaToNo2")
-                        {
-                            msearch.Access_Type = "110";
-                            msearch.Access_Key = "1";
-                            msearch.ShowDialog();
-                            CD = msearch.Char2;
-                        }
+                        }                       
                         break;
                     case Entity.SearchType.ScType.TaxRate:
                         msearch.Access_Type = "221";

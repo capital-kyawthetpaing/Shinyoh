@@ -18,6 +18,7 @@ namespace ShukkaTorikomi
         CommonFunction cf;
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
+        TorikomiEntity SEntity;
         ShukkaTorikomi_BL ShukkaTorikomi_BL;
         TorikomiEntity JEntity;
         BaseBL bbl;
@@ -36,6 +37,7 @@ namespace ShukkaTorikomi
             dt = new DataTable();
 
             bbl = new BaseBL();
+            SEntity = new TorikomiEntity();
             ShukkaTorikomi_BL = new ShukkaTorikomi_BL();
         }
 
@@ -66,6 +68,8 @@ namespace ShukkaTorikomi
 
             txtImportFolder.Enabled = true;
             txtImportFileName.Enabled = true;
+
+            txtImportFileName.TxtBox = txtImportFolder;         //Task 452
 
             txtDate1.Enabled = false;
             txtDate2.Enabled = false;
@@ -203,7 +207,12 @@ namespace ShukkaTorikomi
             if (tagID == "10")
             {
                 gvShukkaTorikomi.ActionType = "F10";
-                if(ErrorCheck(PanelDetail))
+                if (rdo_Sakujo.Checked)
+                {
+                    txtDenpyouNO.E102Check(false);
+                    txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
+                }               
+                if (ErrorCheck(PanelDetail))
                     DataGridviewBind();
                 gvShukkaTorikomi.ActionType = string.Empty;
             }
@@ -218,12 +227,6 @@ namespace ShukkaTorikomi
                     txtDenpyouNO.E102Check(true);
                     txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
                 }
-                else
-                {
-                    txtDenpyouNO.E102Check(false);
-                    txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
-                }
-
                 if (ErrorCheck(PanelDetail))             //HET
                 {
                     (string, string) Xml = ChooseFile();
@@ -265,13 +268,22 @@ namespace ShukkaTorikomi
             }
         }
         private void DataGridviewBind()
-        {
-            TorikomiEntity obj = new TorikomiEntity();
-            ShukkaTorikomi_BL objMethod = new ShukkaTorikomi_BL();
-            obj.TorikomiDenpyouNO = txtDenpyouNO.Text;
-            dt = objMethod.ShukkaTorikomi_Select_Check(obj);
-
-            gvShukkaTorikomi.DataSource = dt;
+        {  
+            //TaskNo456 HET
+            SEntity.DateFrom = txtDate1.Text;
+            SEntity.DateTo = txtDate2.Text;
+            dt = ShukkaTorikomi_BL.ShukkaTorikomi_Select_Check(SEntity);
+            if (dt.Rows.Count > 0)
+            {
+                gvShukkaTorikomi.DataSource = dt;
+            }
+            else
+            {
+                bbl.ShowMessage("S013");
+                dt.Clear();
+                gvShukkaTorikomi.DataSource = dt;
+                txtDate1.Focus();
+            }
         }
 
         private (string,string) ChooseFile()
@@ -281,12 +293,13 @@ namespace ShukkaTorikomi
             string Xml_Main = string.Empty;
             string Xml_Detail = string.Empty;
             string error = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            //using (OpenFileDialog openFileDialog = new OpenFileDialog())         //Task 452
+            if (File.Exists(txtImportFolder.Text + txtImportFileName.Text))         //Task 452
             {               
                 DataTable create_dt = new DataTable();                          //HET
                 Creat_Datatable_Column(create_dt);
-                openFileDialog.FileName = txtImportFolder.Text + txtImportFileName.Text;
-                filepath = openFileDialog.FileName;
+                //openFileDialog.FileName = txtImportFolder.Text + txtImportFileName.Text;         //Task 452
+                filepath = txtImportFolder.Text + txtImportFileName.Text;         //Task 452
                 string[] csvRows = File.ReadAllLines(filepath);
                 var bl_List = new List<bool>();
                             
