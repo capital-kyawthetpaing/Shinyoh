@@ -165,18 +165,18 @@ namespace MasterList_Shouhin
             cf.Clear(PanelDetail);
             rdo_ChokkinDate.Checked = true;
             txtShouhinCD_From.Focus();
-            txtShouhinCD_From.Text = string.Empty;
-            txtShouhinCD_To.Text = string.Empty;
-            txtJANCD_From.Text = string.Empty;
-            txtJANCD_To.Text = string.Empty;
-            txtShouhinName.Text = string.Empty;
-            txtBrand_From.Text = string.Empty;
-            txtBrand_To.Text = string.Empty;
-            txtColorNO1.Text = string.Empty;
-            txtColorNO2.Text = string.Empty;
-            txtSizeNO1.Text = string.Empty;
-            txtSizeNO2.Text = string.Empty;
-            txtRemarks.Text = string.Empty;
+            //txtShouhinCD_From.Text = string.Empty;
+            //txtShouhinCD_To.Text = string.Empty;
+            //txtJANCD_From.Text = string.Empty;
+            //txtJANCD_To.Text = string.Empty;
+            //txtShouhinName.Text = string.Empty;
+            //txtBrand_From.Text = string.Empty;
+            //txtBrand_To.Text = string.Empty;
+            //txtColorNO1.Text = string.Empty;
+            //txtColorNO2.Text = string.Empty;
+            //txtSizeNO1.Text = string.Empty;
+            //txtSizeNO2.Text = string.Empty;
+            //txtRemarks.Text = string.Empty;
         }
     }
 }

@@ -69,6 +69,11 @@ namespace HacchuuSho
         {
             be = _GetBaseData();
             txtChangeDate.Text = be.LoginDate;
+            txtInputDate1.Text = be.LoginDate;
+            txtInputDate2.Text = be.LoginDate;
+            chkFW.Checked = true;
+            chkSS.Checked = true;
+
             txtJuchuuNO1.ChangeDate = txtChangeDate;
             txtJuchuuNO2.ChangeDate = txtChangeDate;
             txtHacchuuNO1.ChangeDate = txtChangeDate;
@@ -126,7 +131,7 @@ namespace HacchuuSho
         {
             txtJuchuuNO1.Focus();
             Rdo1.Checked = true;
-            lblBrandName.Text = "";
+            
             cf.Clear(PanelDetail);
             txtIssueDate.Text = DateTime.Now.ToString("yyyy/MM/dd");
             txtPayment.Text = hsbl.HCS_M_MultiPorpose_Type(1);
@@ -134,6 +139,12 @@ namespace HacchuuSho
             txtBeneficiary2.Text = hsbl.HCS_M_MultiPorpose_Type(3);
             txtOriginCountry.Text = hsbl.HCS_M_MultiPorpose_Type(4);
             txtDestination.Text = hsbl.HCS_M_MultiPorpose_Type(5);
+
+            chkSS.Checked = true;
+            chkFW.Checked = true;
+            txtInputDate1.Text = be.LoginDate;
+            txtInputDate2.Text = be.LoginDate;
+            lblBrandName.Text = "";
         }
         private bool  ErrorCheckMain()
         {
