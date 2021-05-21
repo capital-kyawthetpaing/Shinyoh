@@ -15,12 +15,12 @@ GO
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
--- History    : 2021/04/20 Y.Nishikawa 削除登録しても削除されない
---            : 2021/04/20 Y.Nishikawa 無駄なSELECT削除
---            : 2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)
---            : 2021/04/20 Y.Nishikawa 現在庫が更新されない
---            : 2021/04/27 Y.Nishikawa 着荷情報を削除する際に、各テーブルの入庫日が消えないので、再計上すると在庫情報は新しい入庫日で作成されるが、受注詳細や出荷指示詳細は入庫日が上書きされないので、古い入庫日のままになっている
---            : 2021/04/27 Y.Nishikawa 在庫更新を引当ファンクションに移動
+-- History    : 2021/04/20 Y.Nishikawa �폜�o�^���Ă��폜����Ȃ�
+--            : 2021/04/20 Y.Nishikawa ���ʂ�SELECT�폜
+--            : 2021/04/20 Y.Nishikawa ���낢��(�ϐ����㏑������Ă�����폜���Ɋ����敪�̏ꍇ��������������)
+--            : 2021/04/20 Y.Nishikawa ���݌ɂ��X�V����Ȃ�
+--            : 2021/04/27 Y.Nishikawa ���׏����폜����ۂɁA�e�e�[�u���̓��ɓ��������Ȃ��̂ŁA�Čv�シ��ƍ݌ɏ��͐V�������ɓ��ō쐬����邪�A�󒍏ڍׂ�o�׎w���ڍׂ͓��ɓ����㏑������Ȃ��̂ŁA�Â����ɓ��̂܂܂ɂȂ��Ă���
+--            : 2021/04/27 Y.Nishikawa �݌ɍX�V�������t�@���N�V�����Ɉړ�
 -- =============================================
 CREATE PROCEDURE [dbo].[ChakuniNyuuryoku_Delete]
 @XML_Main as xml,
@@ -149,9 +149,9 @@ declare @Unique as uniqueidentifier = NewID()
 				)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-		--2021/04/20 Y.Nishikawa DEL 無駄なSELECT削除↓↓
+		--2021/04/20 Y.Nishikawa DEL ���ʂ�SELECT�폜����
 	    --SELECT * FROM #Temp_Main
-		--2021/04/20 Y.Nishikawa DEL 無駄なSELECT削除↑↑
+		--2021/04/20 Y.Nishikawa DEL ���ʂ�SELECT�폜����
 
 		CREATE TABLE #Temp_Detail
 				(   
@@ -220,13 +220,13 @@ declare @Unique as uniqueidentifier = NewID()
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-		--2021/04/20 Y.Nishikawa DEL 無駄なSELECT削除↓↓
+		--2021/04/20 Y.Nishikawa DEL ���ʂ�SELECT�폜����
 	    --SELECT * FROM #Temp_Detail
-		--2021/04/20 Y.Nishikawa DEL 無駄なSELECT削除↑↑
+		--2021/04/20 Y.Nishikawa DEL ���ʂ�SELECT�폜����
 
 		Declare @OperatorCD as varchar(10) =(select Operator from #Temp_Main)
 
-		--2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)/更新場所変更↓↓
+		--2021/04/20 Y.Nishikawa ���낢��(�ϐ����㏑������Ă�����폜���Ɋ����敪�̏ꍇ��������������)/�X�V�ꏊ�ύX����
 		--Update D_ChakuniYoteiMeisai
         Update DCYM
         SET ChakuniZumiSuu = DCYM.ChakuniZumiSuu - DCKM.ChakuniSuu,
@@ -309,10 +309,10 @@ declare @Unique as uniqueidentifier = NewID()
 					 Group by DHAM.HacchuuNO
 					) DHAM
 		ON DHAM.HacchuuNO = DHAH.HacchuuNO
-        --2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)/更新場所変更↑↑
+        --2021/04/20 Y.Nishikawa ���낢��(�ϐ����㏑������Ă�����폜���Ɋ����敪�̏ꍇ��������������)/�X�V�ꏊ�ύX����
 
-		--2021/04/27 Y.Nishikawa DEL 在庫更新を引当ファンクションに移動↓↓
-		----2021/04/20 Y.Nishikawa ADD 現在庫が作成されない↓↓
+		--2021/04/27 Y.Nishikawa DEL �݌ɍX�V�������t�@���N�V�����Ɉړ�����
+		----2021/04/20 Y.Nishikawa ADD ���݌ɂ��쐬����Ȃ�����
   --      IF EXISTS ( 
   --                  SELECT * 
   --                  FROM D_GenZaiko DGZK
@@ -402,19 +402,19 @@ declare @Unique as uniqueidentifier = NewID()
   --                   	  )
         
   --      END
-        --2021/04/20 Y.Nishikawa ADD 現在庫が作成されない↑↑
-		--2021/04/27 Y.Nishikawa DEL 在庫更新を引当ファンクションに移動↑↑
+        --2021/04/20 Y.Nishikawa ADD ���݌ɂ��쐬����Ȃ�����
+		--2021/04/27 Y.Nishikawa DEL �݌ɍX�V�������t�@���N�V�����Ɉړ�����
 
-		--2021/04/27 Y.Nishikawa ADD 各テーブルの入庫日が消えないので、再計上すると在庫情報は新しい入庫日で作成されるが、受注詳細や出荷指示詳細は入庫日が上書きされないので、古い入庫日のままになっている(場所移動)↓↓
+		--2021/04/27 Y.Nishikawa ADD �e�e�[�u���̓��ɓ��������Ȃ��̂ŁA�Čv�シ��ƍ݌ɏ��͐V�������ɓ��ō쐬����邪�A�󒍏ڍׂ�o�׎w���ڍׂ͓��ɓ����㏑������Ȃ��̂ŁA�Â����ɓ��̂܂܂ɂȂ��Ă���(�ꏊ�ړ�)����
         --Fnc
         declare @ChankuniNO as varchar(100)=(select ChakuniNO from #Temp_Main)
         exec dbo.Fnc_Hikiate 5,@ChankuniNO,30,@OperatorCD
-        --2021/04/27 Y.Nishikawa ADD 各テーブルの入庫日が消えないので、再計上すると在庫情報は新しい入庫日で作成されるが、受注詳細や出荷指示詳細は入庫日が上書きされないので、古い入庫日のままになっている(場所移動)↑↑
+        --2021/04/27 Y.Nishikawa ADD �e�e�[�u���̓��ɓ��������Ȃ��̂ŁA�Čv�シ��ƍ݌ɏ��͐V�������ɓ��ō쐬����邪�A�󒍏ڍׂ�o�׎w���ڍׂ͓��ɓ����㏑������Ȃ��̂ŁA�Â����ɓ��̂܂܂ɂȂ��Ă���(�ꏊ�ړ�)����
 
 
 		--Delete D_Chakuni
 		--Delete A
-		----2021/04/20 Y.Nishikawa 削除登録しても削除されない↓↓
+		----2021/04/20 Y.Nishikawa �폜�o�^���Ă��폜����Ȃ�����
 		--from D_ChakuniYotei A
 		--Where A.ChakuniYoteiNO IN (select ChakuniNO from #Temp_Main)
 
@@ -430,7 +430,7 @@ declare @Unique as uniqueidentifier = NewID()
 		Delete A
 		from D_ChakuniMeisai A
 		Where A.ChakuniNO = @ChankuniNO
-		--2021/04/20 Y.Nishikawa 削除登録しても削除されない↑↑
+		--2021/04/20 Y.Nishikawa �폜�o�^���Ă��폜����Ȃ�����
 		
 		--Insert Sheet D
 Insert into D_ChakuniMeisaiHistory(HistoryGuid,ChakuniNO,ChakuniGyouNO,GyouHyouziJun,ShoriKBN,KanriNO,BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO,ChakuniSuu,TaniCD,ChakuniMeisaiTekiyou,
@@ -441,8 +441,8 @@ Select @Unique,dc.ChakuniNO,dc.ChakuniGyouNO,dc.GyouHyouziJun,30,dc.KanriNO,dc.B
 dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuGyouNO,dc.JuchuuNO,dc.JuchuuGyouNO,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,@OperatorCD,@currentDate
 from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 
---2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)/更新場所変更↓↓
-----Update D_ChakuniYoteiMeisai(for 闖ｫ・ｮ雎・ｽ｣陷鷹亂竏ｪ邵ｺ貅倥・陷台ｼ∝求)
+--2021/04/20 Y.Nishikawa ���낢��(�ϐ����㏑������Ă�����폜���Ɋ����敪�̏ꍇ��������������)/�X�V�ꏊ�ύX����
+----Update D_ChakuniYoteiMeisai(for 菫�E�豁E��蜑阪∪縺溘�E蜑企勁)
 --Update D_ChakuniYoteiMeisai
 --SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END,
 --    UpdateOperator=@OperatorCD,
@@ -452,7 +452,7 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --                          and D_ChakuniMeisai.ChakuniYoteiGyouNO=D_ChakuniYoteiMeisai.ChakuniYoteiGyouNO,#Temp_Detail d,#Temp_Main m
 --Where D_ChakuniMeisai.ChakuniNO=m.ChakuniNO
 
-----Update D_ChakuniYoteiMeisai(for 髴托ｽｽ陷会｣ｰ邵ｺ・ｾ邵ｺ貅倥・闖ｫ・ｮ雎・ｽ｣陟・
+----Update D_ChakuniYoteiMeisai(for 霑ｽ蜉縺�E�縺溘�E菫�E�豁E��蠁E
 --Update a
 --SET a.ChakuniZumiSuu=a.ChakuniZumiSuu+d.ChakuniZumiSuu,
 --    UpdateOperator=@OperatorCD,
@@ -487,7 +487,7 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --ON D_ChakuniYotei.ChakuniYoteiNO=C.ChakuniYoteiNO
 
 
-----Update D_HacchuuMeisai(for 闖ｫ・ｮ雎・ｽ｣陷鷹亂竏ｪ邵ｺ貅倥・陷台ｼ∝求)
+----Update D_HacchuuMeisai(for 菫�E�豁E��蜑阪∪縺溘�E蜑企勁)
 --Update D_HacchuuMeisai
 --SET ChakuniZumiSuu=CASE WHEN d.ChakuniZumiSuu>0 THEN d.ChakuniZumiSuu ElSE 0 END
 --From D_HacchuuMeisai 
@@ -519,13 +519,13 @@ from D_ChakuniMeisai dc,#Temp_Main m where dc.ChakuniNO=m.ChakuniNO
 --Group By D_HacchuuMeisai.HacchuuNO
 --) DH
 --ON D_Hacchuu.HacchuuNO=DH.HacchuuNO
---2021/04/20 Y.Nishikawa いろいろ(済数が上書きされていたり削除時に完了区分の場合分けがあったり)/更新場所変更↑↑
+--2021/04/20 Y.Nishikawa ���낢��(�ϐ����㏑������Ă�����폜���Ɋ����敪�̏ꍇ��������������)/�X�V�ꏊ�ύX����
 
---2021/04/27 Y.Nishikawa DEL 各テーブルの入庫日が消えないので、再計上すると在庫情報は新しい入庫日で作成されるが、受注詳細や出荷指示詳細は入庫日が上書きされないので、古い入庫日のままになっている(場所移動)↓↓
+--2021/04/27 Y.Nishikawa DEL �e�e�[�u���̓��ɓ��������Ȃ��̂ŁA�Čv�シ��ƍ݌ɏ��͐V�������ɓ��ō쐬����邪�A�󒍏ڍׂ�o�׎w���ڍׂ͓��ɓ����㏑������Ȃ��̂ŁA�Â����ɓ��̂܂܂ɂȂ��Ă���(�ꏊ�ړ�)����
 ----Fnc
 --declare @ChankuniNO as varchar(100)=(select ChakuniNO from #Temp_Main)
 --exec dbo.Fnc_Hikiate 5,@ChankuniNO,30,@OperatorCD
---2021/04/27 Y.Nishikawa DEL 各テーブルの入庫日が消えないので、再計上すると在庫情報は新しい入庫日で作成されるが、受注詳細や出荷指示詳細は入庫日が上書きされないので、古い入庫日のままになっている(場所移動)↑↑
+--2021/04/27 Y.Nishikawa DEL �e�e�[�u���̓��ɓ��������Ȃ��̂ŁA�Čv�シ��ƍ݌ɏ��͐V�������ɓ��ō쐬����邪�A�󒍏ڍׂ�o�׎w���ڍׂ͓��ɓ����㏑������Ȃ��̂ŁA�Â����ɓ��̂܂܂ɂȂ��Ă���(�ꏊ�ړ�)����
 
 --Insert table Z
 declare	@InsertOperator  varchar(10) = (select m.Operator from #Temp_Main m)

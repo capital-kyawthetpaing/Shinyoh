@@ -16,10 +16,10 @@ GO
 -- =============================================
 -- Author:		Kyaw Thet Paing
 -- Create date: 2021-01-12
--- Description:	5:ç€è· (all inå‡¦ç†åŒºåˆ† 10,21,20,30) 
--- History    : 2021/04/20 Y.Nishikawa æ¡ä»¶ãŒä¸æ­£
---            : 2021/04/27 Y.Nishikawa åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³å†…ã«ç§»å‹•
---            : 2021/05/07 Y.Nishikawa æ¡ä»¶è¿½åŠ 
+-- Description:	5:’…‰× (all inˆ—‹æ•ª 10,21,20,30) 
+-- History    : 2021/04/20 Y.Nishikawa ğŒ‚ª•s³
+--            : 2021/04/27 Y.Nishikawa İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ““à‚ÉˆÚ“®
+--            : 2021/05/07 Y.Nishikawa ğŒ’Ç‰Á
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_5]
 	-- Add the parameters for the stored procedure here
@@ -54,7 +54,7 @@ BEGIN
 	fetch next from cursorOuter into @ChakuniNO,@ChakuniGyouNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@ChakuniSuu,@JuchuuNO,@JuchuuGyouNO
 	while @@FETCH_STATUS = 0
 		begin
-			--2021/04/20 Y.Nishikawa CHG æ¡ä»¶ãŒä¸æ­£
+			--2021/04/20 Y.Nishikawa CHG ğŒ‚ª•s³
 			--update D_HikiateZaiko
 			--set NyuukoDate = case when @ProcessKBN = 10 or @ProcessKBN = 21 then @NyuukoDate
 			--					when @ProcessKBN = 20 or @ProcessKBN = 30 then '' else NyuukoDate end,
@@ -88,7 +88,7 @@ BEGIN
 			--and KanriNO = @KanriNO
 			--and ShukkaZumiSuu = 0
 
-			--æ–°è¦ãƒ¢ãƒ¼ãƒ‰(@ProcessKBN = 10)ã¾ãŸã¯ä¿®æ­£ãƒ¢ãƒ¼ãƒ‰ä¿®æ­£å¾Œ(@ProcessKBN = 21)ã®å ´åˆã€
+			--V‹Kƒ‚[ƒh(@ProcessKBN = 10)‚Ü‚½‚ÍC³ƒ‚[ƒhC³Œã(@ProcessKBN = 21)‚Ìê‡A
 			IF (@ProcessKBN = 10 OR @ProcessKBN = 21)
 			BEGIN
 
@@ -111,7 +111,7 @@ BEGIN
 			      AND KanriNO = @KanriNO
 			      AND NyuukoDate = ''
 
-				  --2021/05/19â†“â†“
+				  --2021/05/19««
 				  IF EXISTS (SELECT * 
 				             FROM D_JuchuuShousai DJUS
 							 INNER JOIN D_HacchuuMeisai DHAM
@@ -215,7 +215,7 @@ BEGIN
 				  AND DHAM.ChakuniYoteiKanryouKBN = 1
 				  AND DHAM.ChakuniKanryouKBN = 1
 				  AND DJUS.MiHikiateSuu > 0
-				  --2021/05/19â†‘â†‘
+				  --2021/05/19ªª
 
 				  UPDATE D_ShukkaSiziShousai
 			      SET NyuukoDate = @NyuukoDate
@@ -226,7 +226,7 @@ BEGIN
 			      AND KanriNO = @KanriNO
 			      AND NyuukoDate = ''
 
-				  --2021/04/27 Y.Nishikawa ADD åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³å†…ã«ç§»å‹•
+				  --2021/04/27 Y.Nishikawa ADD İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ““à‚ÉˆÚ“®
 				  IF EXISTS ( 
                                SELECT * 
                                FROM D_GenZaiko DGZK
@@ -239,9 +239,9 @@ BEGIN
                                             INNER JOIN D_ChakuniMeisai M
                                             ON H.ChakuniNO = M.ChakuniNO
                                             WHERE H.ChakuniNO = @ChakuniNO
-											--2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ 
+											--2021/05/07 Y.Nishikawa ADD ğŒ’Ç‰Á
 											AND M.ChakuniGyouNO = @ChakuniGyouNO
-											--2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ 
+											--2021/05/07 Y.Nishikawa ADD ğŒ’Ç‰Á
                    			           ) DCKM
                                               ON DGZK.SoukoCD = DCKM.SoukoCD
                                               AND DGZK.ShouhinCD = DCKM.ShouhinCD
@@ -265,9 +265,9 @@ BEGIN
                                      INNER JOIN D_ChakuniMeisai M
                                      ON H.ChakuniNO = M.ChakuniNO
                                      WHERE H.ChakuniNO = @ChakuniNO
-									 --2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ 
+									 --2021/05/07 Y.Nishikawa ADD ğŒ’Ç‰Á
 									 AND M.ChakuniGyouNO = @ChakuniGyouNO
-									 --2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ 
+									 --2021/05/07 Y.Nishikawa ADD ğŒ’Ç‰Á
                    			    ) DCKM
                       ON DGZK.SoukoCD = DCKM.SoukoCD
                       AND DGZK.ShouhinCD = DCKM.ShouhinCD
@@ -302,14 +302,14 @@ BEGIN
                         INNER JOIN D_ChakuniMeisai DCKM
                         ON DCKH.ChakuniNO = DCKM.ChakuniNO
                         WHERE DCKH.ChakuniNO = @ChakuniNO
-                        --2021/05/07 Y.Nishikawa ADD è­šï½¡è‰ï½¶éœ‘ï½½èœ‰ï£°ç«Šå‡ªãƒ»
+                        --2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ â†“âE
 						AND DCKM.ChakuniGyouNO = @ChakuniGyouNO
-						--2021/05/07 Y.Nishikawa ADD è­šï½¡è‰ï½¶éœ‘ï½½èœ‰ï£°ç«Šé¯›ãƒ»
+						--2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ â†‘âE
                    END
-				  --2021/04/27 Y.Nishikawa ADD  åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³å†…ã«ç§»å‹•
+				  --2021/04/27 Y.Nishikawa ADD  İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ““à‚ÉˆÚ“®
 
 			END
-			--ä¿®æ­£ãƒ¢ãƒ¼ãƒ‰ä¿®æ­£å‰(@ProcessKBN = 20)ã¾ãŸã¯å‰Šé™¤ãƒ¢ãƒ¼ãƒ‰(@ProcessKBN = 30)ã®å ´åˆã€
+			--C³ƒ‚[ƒhC³‘O(@ProcessKBN = 20)‚Ü‚½‚Ííœƒ‚[ƒh(@ProcessKBN = 30)‚Ìê‡A
 			ELSE
 			BEGIN
 			
@@ -332,7 +332,7 @@ BEGIN
 			      AND KanriNO = @KanriNO
 			      AND NyuukoDate = @NyuukoDate
 
-				  --2021/05/19â†“â†“
+				  --2021/05/19««
 				  UPDATE DJUS
 			      SET HacchuuNO = DJUM.HacchuuNO
 			      	 ,HacchuuGyouNO = DJUM.HacchuuGyouNO
@@ -342,7 +342,7 @@ BEGIN
 				  AND DJUS.JuchuuGyouNO = DJUM.JuchuuGyouNO
 			      WHERE DJUM.JuchuuNO = @JuchuuNO
 			      AND DJUM.JuchuuGyouNO = @JuchuuGyouNO
-				  --2021/05/19â†‘â†‘
+				  --2021/05/19ªª
 
 				  UPDATE D_ShukkaSiziShousai
 			      SET NyuukoDate = ''
@@ -353,7 +353,7 @@ BEGIN
 			      AND KanriNO = @KanriNO
 			      AND NyuukoDate = @NyuukoDate
 
-				  --2021/04/27 Y.Nishikawa ADD  åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³å†…ã«ç§»å‹•
+				  --2021/04/27 Y.Nishikawa ADD  İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ““à‚ÉˆÚ“®
                   IF EXISTS ( 
                               SELECT * 
                               FROM D_GenZaiko DGZK
@@ -366,9 +366,9 @@ BEGIN
                                            INNER JOIN D_ChakuniMeisai M
                                            ON H.ChakuniNO = M.ChakuniNO
                                            WHERE H.ChakuniNO = @ChakuniNO
-										   --2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ 
+										   --2021/05/07 Y.Nishikawa ADD ğŒ’Ç‰Á
 										   AND M.ChakuniGyouNO = @ChakuniGyouNO
-										   --2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ 
+										   --2021/05/07 Y.Nishikawa ADD ğŒ’Ç‰Á
                   			           ) DCKM
                                              ON DGZK.SoukoCD = DCKM.SoukoCD
                                              AND DGZK.ShouhinCD = DCKM.ShouhinCD
@@ -392,9 +392,9 @@ BEGIN
                                     INNER JOIN D_ChakuniMeisai M
                                     ON H.ChakuniNO = M.ChakuniNO
                                     WHERE H.ChakuniNO = @ChakuniNO
-									--2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ 
+									--2021/05/07 Y.Nishikawa ADD ğŒ’Ç‰Á
 									AND M.ChakuniGyouNO = @ChakuniGyouNO
-									--2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ 
+									--2021/05/07 Y.Nishikawa ADD ğŒ’Ç‰Á
                   			    ) DCKM
                      ON DGZK.SoukoCD = DCKM.SoukoCD
                      AND DGZK.ShouhinCD = DCKM.ShouhinCD
@@ -429,15 +429,15 @@ BEGIN
                        INNER JOIN D_ChakuniMeisai DCKM
                        ON DCKH.ChakuniNO = DCKM.ChakuniNO
                        WHERE DCKH.ChakuniNO = @ChakuniNO
-					   --2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ 
+					   --2021/05/07 Y.Nishikawa ADD ğŒ’Ç‰Á
 					   AND DCKM.ChakuniGyouNO = @ChakuniGyouNO
-					   --2021/05/07 Y.Nishikawa ADD æ¡ä»¶è¿½åŠ 
+					   --2021/05/07 Y.Nishikawa ADD ğŒ’Ç‰Á
                   
                   END
-          		--2021/04/27 Y.Nishikawa ADD åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³å†…ã«ç§»å‹•
+          		--2021/04/27 Y.Nishikawa ADD İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ““à‚ÉˆÚ“®
 
 			END
-			--2021/04/20 Y.Nishikawa CHG æ¡ä»¶ãŒä¸æ­£
+			--2021/04/20 Y.Nishikawa CHG ğŒ‚ª•s³
 
 			fetch next from cursorOuter into @ChakuniNO,@ChakuniGyouNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@ChakuniSuu,@JuchuuNO,@JuchuuGyouNO
 

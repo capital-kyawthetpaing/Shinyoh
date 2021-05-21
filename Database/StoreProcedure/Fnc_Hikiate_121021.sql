@@ -15,11 +15,11 @@ GO
 -- Author:		Kyaw Thet Paing
 -- Create date: 2021-01-11
 -- Description:	Fnc_Hikiate
--- in˜A”Ô‹æ•ª : 12:o‰×w¦
--- inˆ—‹æ•ª : 10,21 (‰ÁZXV)
--- History    : 2021/04/13 Y.Nishikawa CHG “–Update“à‚Å‚ÌHikiateZumiSuu‚ÍA“–XV“_‚Å‚ÍXV‘O‚Ìî•ñ‚È‚Ì‚ÅAHikiateZumiSuu‚Æ“¯‚¶“à—e‚ğƒZƒbƒg
---              2021/04/14 Y.Nishikawa ADD o‰×w¦Ú×—š—ğ‚ÌXV’Ç‰Á
---              2021/04/14 Y.Nishikawa CHG @tmpHikiateSuu‚ÅŒvZ‚·‚é‚Ì‚Å‚Í‚È‚­Aƒ‹[ƒv“à‚Ìo‰×w¦”‚ÅŒvZ‚·‚é•K—v‚ª‚ ‚é
+-- iné€£ç•ªåŒºåˆ† : 12:å‡ºè·æŒ‡ç¤º
+-- inå‡¦ç†åŒºåˆ† : 10,21 (åŠ ç®—æ›´æ–°)
+-- History    : 2021/04/13 Y.Nishikawa CHG å½“Updateå†…ã§ã®HikiateZumiSuuã¯ã€å½“æ›´æ–°æ™‚ç‚¹ã§ã¯æ›´æ–°å‰ã®æƒ…å ±ãªã®ã§ã€HikiateZumiSuuã¨åŒã˜å†…å®¹ã‚’ã‚»ãƒƒãƒˆ
+--              2021/04/14 Y.Nishikawa ADD å‡ºè·æŒ‡ç¤ºè©³ç´°å±¥æ­´ã®æ›´æ–°è¿½åŠ 
+--              2021/04/14 Y.Nishikawa CHG @tmpHikiateSuuã§è¨ˆç®—ã™ã‚‹ã®ã§ã¯ãªãã€ãƒ«ãƒ¼ãƒ—å†…ã®å‡ºè·æŒ‡ç¤ºæ•°ã§è¨ˆç®—ã™ã‚‹å¿…è¦ãŒã‚ã‚‹
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_121021] 
 	-- Add the parameters for the stored procedure here
@@ -38,11 +38,11 @@ BEGIN
 		@JuchuuNo as varchar(12),
 		@JuchuuGyoNo as smallint
 
-	-- Step1 : Get o‰×w¦” from D_ShukkaSiziMeisai(o‰×w¦–¾×) 
-	-- Step2 : Update D_JuchuuMeisai(ó’–¾×)
-	-- Step3 : Update D_JuchuuShousai(ó’Ú×)
-	-- Step4 : Update D_HikiateZaiko(ˆø“–İŒÉ)
-	-- Step5 : Insert D_ShukkaSiziShousai(o‰×w¦Ú×)
+	-- Step1 : Get å‡ºè·æŒ‡ç¤ºæ•° from D_ShukkaSiziMeisai(å‡ºè·æŒ‡ç¤ºæ˜ç´°) 
+	-- Step2 : Update D_JuchuuMeisai(å—æ³¨æ˜ç´°)
+	-- Step3 : Update D_JuchuuShousai(å—æ³¨è©³ç´°)
+	-- Step4 : Update D_HikiateZaiko(å¼•å½“åœ¨åº«)
+	-- Step5 : Insert D_ShukkaSiziShousai(å‡ºè·æŒ‡ç¤ºè©³ç´°)
 
 
 	-- Step1(Loop by ShukkaSiziNO,ShukkaSiziGyouNO)
@@ -56,7 +56,7 @@ BEGIN
 	while @@FETCH_STATUS = 0
 		begin
 	
-			--Step2 Update D_JuchuuMeisai(ó’–¾×)
+			--Step2 Update D_JuchuuMeisai(å—æ³¨æ˜ç´°)
 			update D_JuchuuMeisai
 			set HikiateZumiSuu = HikiateZumiSuu - @ShukkaSiziSuu, 
 				ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + @ShukkaSiziSuu,
@@ -97,33 +97,33 @@ BEGIN
 							declare @tmpHikiateSuu as decimal(21,6)
 							declare @tmpShukkasiziSuu as decimal(21,6)
 
-							--Step3 : Update D_JuchuuShousai(ó’Ú×)
+							--Step3 : Update D_JuchuuShousai(å—æ³¨è©³ç´°)
 							update D_JuchuuShousai
 							set HikiateZumiSuu = case when @ShukkaSiziSuu >= HikiateZumiSuu then 0 else HikiateZumiSuu - @ShukkaSiziSuu end,
-							    --2021/04/14 Y.Nishikawa CHG o‰×w¦Ï”‚ÌZo‚ª•s³««
+							    --2021/04/14 Y.Nishikawa CHG å‡ºè·æŒ‡ç¤ºæ¸ˆæ•°ã®ç®—å‡ºãŒä¸æ­£â†“â†“
 								--ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + ( case when @ShukkaSiziSuu >= HikiateZumiSuu then HikiateZumiSuu else HikiateZumiSuu - @ShukkaSiziSuu end),
 								ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + ( case when @ShukkaSiziSuu >= HikiateZumiSuu then HikiateZumiSuu else @ShukkaSiziSuu end),
-								--2021/04/14 Y.Nishikawa CHG o‰×w¦Ï”‚ÌZo‚ª•s³ªª
+								--2021/04/14 Y.Nishikawa CHG å‡ºè·æŒ‡ç¤ºæ¸ˆæ•°ã®ç®—å‡ºãŒä¸æ­£â†‘â†‘
 								ShukkaZumiSuu = 0,
 								UriageZumiSuu = 0,
 								UpdateOperator = @UpdateOperator,
 								UpdateDateTime = @UpdateDateTime,
-								--2021/04/13 Y.Nishikawa CHG “–Update“à‚Å‚ÌHikiateZumiSuu‚ÍA“–XV“_‚Å‚ÍXV‘O‚Ìî•ñ‚È‚Ì‚ÅAHikiateZumiSuu‚Æ“¯‚¶“à—e‚ğƒZƒbƒg««
+								--2021/04/13 Y.Nishikawa CHG å½“Updateå†…ã§ã®HikiateZumiSuuã¯ã€å½“æ›´æ–°æ™‚ç‚¹ã§ã¯æ›´æ–°å‰ã®æƒ…å ±ãªã®ã§ã€HikiateZumiSuuã¨åŒã˜å†…å®¹ã‚’ã‚»ãƒƒãƒˆâ†“â†“
 								--@tmpHikiateSuu = HikiateZumiSuu,
 								@tmpHikiateSuu = case when @ShukkaSiziSuu >= HikiateZumiSuu then 0 else HikiateZumiSuu - @ShukkaSiziSuu end,
-								--2021/04/13 Y.Nishikawa CHG “–Update“à‚Å‚ÌHikiateZumiSuu‚ÍA“–XV“_‚Å‚ÍXV‘O‚Ìî•ñ‚È‚Ì‚ÅAHikiateZumiSuu‚Æ“¯‚¶“à—e‚ğƒZƒbƒgªª
+								--2021/04/13 Y.Nishikawa CHG å½“Updateå†…ã§ã®HikiateZumiSuuã¯ã€å½“æ›´æ–°æ™‚ç‚¹ã§ã¯æ›´æ–°å‰ã®æƒ…å ±ãªã®ã§ã€HikiateZumiSuuã¨åŒã˜å†…å®¹ã‚’ã‚»ãƒƒãƒˆâ†‘â†‘
 								@tmpShukkasiziSuu = case when @ShukkaSiziSuu >= HikiateZumiSuu then HikiateZumiSuu else @ShukkaSiziSuu end
 							from D_JuchuuShousai
 							where JuchuuNO = @JuchuuNo
 							and JuchuuGyouNO = @JuchuuGyoNo 
 							and JuchuuShousaiNO = @JuchuuShousaiNO
 							
-							--2021/04/14 Y.Nishikawa CHG @tmpHikiateSuu‚ÅŒvZ‚·‚é‚Ì‚Å‚Í‚È‚­Aƒ‹[ƒv“à‚Ìo‰×w¦”‚ÅŒvZ‚·‚é•K—v‚ª‚ ‚é««
+							--2021/04/14 Y.Nishikawa CHG @tmpHikiateSuuã§è¨ˆç®—ã™ã‚‹ã®ã§ã¯ãªãã€ãƒ«ãƒ¼ãƒ—å†…ã®å‡ºè·æŒ‡ç¤ºæ•°ã§è¨ˆç®—ã™ã‚‹å¿…è¦ãŒã‚ã‚‹â†“â†“
 							--set @ShukkaSiziSuu = case when @ShukkaSiziSuu > @tmpHikiateSuu then @ShukkaSiziSuu - @tmpHikiateSuu else 0 end
 							set @ShukkaSiziSuu = case when @ShukkaSiziSuu > @tmpShukkasiziSuu then @ShukkaSiziSuu - @tmpShukkasiziSuu else 0 end
-							--2021/04/14 Y.Nishikawa CHG @tmpHikiateSuu‚ÅŒvZ‚·‚é‚Ì‚Å‚Í‚È‚­Aƒ‹[ƒv“à‚Ìo‰×w¦”‚ÅŒvZ‚·‚é•K—v‚ª‚ ‚éªª
+							--2021/04/14 Y.Nishikawa CHG @tmpHikiateSuuã§è¨ˆç®—ã™ã‚‹ã®ã§ã¯ãªãã€ãƒ«ãƒ¼ãƒ—å†…ã®å‡ºè·æŒ‡ç¤ºæ•°ã§è¨ˆç®—ã™ã‚‹å¿…è¦ãŒã‚ã‚‹â†‘â†‘
 	
-							-- Step4 : Update D_HikiateZaiko(ˆø“–İŒÉ)
+							-- Step4 : Update D_HikiateZaiko(å¼•å½“åœ¨åº«)
 							update D_HikiateZaiko
 							set ShukkaSiziSuu = hz.ShukkaSiziSuu + @tmpShukkasiziSuu,
 								HikiateZumiSuu = hz.HikiateZumiSuu - @tmpShukkasiziSuu,
@@ -140,7 +140,7 @@ BEGIN
 	
 							select @maxShousaiNo = isnull(max(ShukkaSiziShousaiNO),0) from D_ShukkaSiziShousai where ShukkaSiziNO = @SlipNo
 	
-							-- Step5 : Insert D_ShukkaSiziShousai(o‰×w¦Ú×)
+							-- Step5 : Insert D_ShukkaSiziShousai(å‡ºè·æŒ‡ç¤ºè©³ç´°)
 							insert into D_ShukkaSiziShousai( ShukkaSiziNO, ShukkaSiziGyouNO, ShukkaSiziShousaiNO, 
 							SoukoCD,ShouhinCD,ShouhinName,ShukkaSiziSuu,KanriNO,NyuukoDate,ShukkaZumiSuu,
 							JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime
@@ -171,7 +171,7 @@ BEGIN
 	close cursorOuter
 	deallocate cursorOuter
 
-	--2021/04/14 Y.Nishikawa ADD o‰×w¦Ú×—š—ğ‚ÌXV’Ç‰Á««
+	--2021/04/14 Y.Nishikawa ADD å‡ºè·æŒ‡ç¤ºè©³ç´°å±¥æ­´ã®æ›´æ–°è¿½åŠ â†“â†“
 	declare @Unique as uniqueidentifier
              , @OperatorCD as varchar(10)
              , @currentDate as datetime
@@ -212,7 +212,7 @@ BEGIN
        [ShukkaSiziNO]
        			,[ShukkaSiziGyouNO]
        			,[ShukkaSiziShousaiNO]
-       			,10 --V‹K
+       			,10 --æ–°è¦
        			,[SoukoCD]
        			,[ShouhinCD]
        			,[ShouhinName]
@@ -231,7 +231,7 @@ BEGIN
        			,@currentDate
        FROM [dbo].[D_ShukkaSiziShousai]
        where ShukkaSiziNO=@ShukkaSiziNO
-	--2021/04/14 Y.Nishikawa ADD o‰×w¦Ú×—š—ğ‚ÌXV’Ç‰Áªª
+	--2021/04/14 Y.Nishikawa ADD å‡ºè·æŒ‡ç¤ºè©³ç´°å±¥æ­´ã®æ›´æ–°è¿½åŠ â†‘â†‘
 
 END
 GO

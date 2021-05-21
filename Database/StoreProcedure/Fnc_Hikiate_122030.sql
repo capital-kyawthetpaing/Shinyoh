@@ -15,7 +15,7 @@ GO
 -- Author:		Kyaw Thet Paing
 -- Create date: 2020-01-11
 -- Description:	<Description,,>
--- History    : 2021/04/13 Y.Nishikawa CHG €–Ú‚ªˆá‚¤
+-- History    : 2021/04/13 Y.Nishikawa CHG é …ç›®ãŒé•ã†
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_122030]
 	-- Add the parameters for the stored procedure here
@@ -43,10 +43,10 @@ BEGIN
 
 	update D_JuchuuShousai
 	set HikiateZumiSuu = js.HikiateZumiSuu + sss.ShukkaSiziSuu,
-	    --2021/04/13 Y.Nishikawa CHG €–Ú‚ªˆá‚¤««
+	    --2021/04/13 Y.Nishikawa CHG é …ç›®ãŒé•ã†â†“â†“
 		--ShukkaSiziZumiSuu = js.MiHikiateSuu - sss.ShukkaSiziSuu,
 		ShukkaSiziZumiSuu = js.ShukkaSiziZumiSuu - sss.ShukkaSiziSuu,
-		--2021/04/13 Y.Nishikawa CHG €–Ú‚ªˆá‚¤ªª
+		--2021/04/13 Y.Nishikawa CHG é …ç›®ãŒé•ã†â†‘â†‘
 		UpdateOperator = @UpdateOperator,
 		UpdateDateTime = @UpdateDateTime
 	from D_JuchuuShousai js

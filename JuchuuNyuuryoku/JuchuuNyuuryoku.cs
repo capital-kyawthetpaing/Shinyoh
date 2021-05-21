@@ -1023,11 +1023,11 @@ namespace JuchuuNyuuryoku
                         DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + ShouhinCD + "'").SingleOrDefault();
                         if (existDr1 != null)
                         {
-                            dr["JuchuuGyouNO"] = "99";    //未使用項目のため
+                            dr["JuchuuGyouNO"] = "-1";    //未使用項目のため
                         }
                     }
 
-                    DataRow[] select_dr1 = dt.Select("JuchuuGyouNO = '99'");
+                    DataRow[] select_dr1 = dt.Select("JuchuuGyouNO = '-1'");
                     foreach (DataRow dr in select_dr1)
                         dt.Rows.Remove(dr);
                 }
@@ -1094,12 +1094,14 @@ namespace JuchuuNyuuryoku
                 string chk = string.Empty;
                 DataRow[] select_dr1 = gvdt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='" + color + "' and SizeNO='" + size + "'");// original data
                 DataRow existDr1 = null;
-                if (chk_value != "False")
-                    chk = "1";
-                if(!string.IsNullOrEmpty(chk))
-                    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and [Free]='"+chk+"' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([SiiresakiName],'')='" + siiresakiName + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
-                else
-                    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([SiiresakiName],'')='" + siiresakiName + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "' and [Free] IS NULL").SingleOrDefault();
+                //Check関係なしにデータをUpdateする
+                //if (chk_value != "False")
+                //    chk = "1";
+                //if(!string.IsNullOrEmpty(chk))
+                //    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and [Free]='"+chk+"' and SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([SiiresakiName],'')='" + siiresakiName + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "'").SingleOrDefault();
+                //else
+                //    existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  SoukoCD='" + soukoCD + "' and ISNULL([SiiresakiCD],'')='" + siiresakiCD + "' and ISNULL([SiiresakiName],'')='" + siiresakiName + "' and ISNULL([DJMSenpouHacchuuNO],'')='" + senpouHacchuuNO + "' and [Free] IS NULL").SingleOrDefault();
+                existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     //if (select_dr1[0][8].ToString() == "0")
@@ -1117,25 +1119,25 @@ namespace JuchuuNyuuryoku
                     {
                         if (gv_JuchuuNyuuryoku.Columns[c].Name == "colFree" || gv_JuchuuNyuuryoku.Columns[c].Name == "colJuchuuSuu" || gv_JuchuuNyuuryoku.Columns[c].Name == "colSenpouHacchuuNO" || gv_JuchuuNyuuryoku.Columns[c].Name == "colSiiresakiCD" || gv_JuchuuNyuuryoku.Columns[c].Name == "colSoukoCD")
                         {
-                            if (existDr1 != null)
-                            {
-                                if (select_dr1.Length >0 &&  select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-                                {
-                                  //  bl = true;
-                                    F8_drNew[c] = row.Cells[c].Value;
-                                }
-                                else
-                                {
-                                    F8_drNew[c] = existDr1[c];
-                                }
-                            }
-                            else
-                            {
+                            //if (existDr1 != null)
+                            //{
+                            //    if (select_dr1.Length >0 &&  select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                            //    {
+                            //      //  bl = true;
+                            //        F8_drNew[c] = row.Cells[c].Value;
+                            //    }
+                            //    else
+                            //    {
+                            //        F8_drNew[c] = existDr1[c];
+                            //    }
+                            //}
+                            //else
+                            //{
                                 //if (select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
                                 //    bl = true;
 
                                 F8_drNew[c] = row.Cells[c].Value;
-                            }
+                            //}
                         }
                         else
                         {

@@ -14,10 +14,10 @@ GO
 -- =============================================
 -- Author:		Kyaw Thet Paing
 -- Create date: 2021-01-12
--- Description:	16:’…‰×—\’è (inˆ—‹æ•ª=10,21)
--- History    : 2021/04/19 Y.Nishikawa V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é
---            : 2021/05/19 Y.Nishikawa 1‰ñ–Ú‚Íó’Ú×‚ª–³‚¢‚Ì‚ÅA–¢ˆø“–ƒŒƒR[ƒh‚ªì¬‚³‚ê‚È‚¢
---            : 2021/05/19 Y.Nishikawa •ª”[A–¢ˆø“–”•ª‚Ìó’‚É‘Î‚µ‚Äˆø“–‚ğs‚¤
+-- Description:	16:ç€è·äºˆå®š (inå‡¦ç†åŒºåˆ†=10,21)
+-- History    : 2021/04/19 Y.Nishikawa æ–°è¦ç™»éŒ²æ™‚ã€å¼•å½“å…ƒãŒç„¡ã„ã®ã«å¼•å½“åœ¨åº«ã«å¼•å½“æ•°ã‚’æ›´æ–°ã—ã¦ã„ã‚‹
+--            : 2021/05/19 Y.Nishikawa 1å›ç›®ã¯å—æ³¨è©³ç´°ãŒç„¡ã„ã®ã§ã€æœªå¼•å½“ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒä½œæˆã•ã‚Œãªã„
+--            : 2021/05/19 Y.Nishikawa åˆ†ç´æ™‚ã€æœªå¼•å½“æ•°åˆ†ã®å—æ³¨ã«å¯¾ã—ã¦å¼•å½“ã‚’è¡Œã†
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_161021]
 	-- Add the parameters for the stored procedure here
@@ -71,19 +71,19 @@ BEGIN
 
 					select @TotalJuchuuSuu = sum(JuchuuSuu) from D_JuchuuShousai
 					where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
-					--2021/05/19 Y.Nishikawa ADD •ª”[A–¢ˆø“–”•ª‚Ìó’‚É‘Î‚µ‚Äˆø“–‚ğs‚¤««
+					--2021/05/19 Y.Nishikawa ADD åˆ†ç´æ™‚ã€æœªå¼•å½“æ•°åˆ†ã®å—æ³¨ã«å¯¾ã—ã¦å¼•å½“ã‚’è¡Œã†â†“â†“
 					--and ShukkaSiziZumiSuu = 0
 					and MiHikiateSuu > 0
-					--2021/05/19 Y.Nishikawa ADD •ª”[A–¢ˆø“–”•ª‚Ìó’‚É‘Î‚µ‚Äˆø“–‚ğs‚¤ªª
+					--2021/05/19 Y.Nishikawa ADD åˆ†ç´æ™‚ã€æœªå¼•å½“æ•°åˆ†ã®å—æ³¨ã«å¯¾ã—ã¦å¼•å½“ã‚’è¡Œã†â†‘â†‘
 					group by JuchuuNO,JuchuuGyouNO
 
-					--2021/05/19 Y.Nishikawa ADD 1‰ñ–Ú‚Íó’Ú×‚ª–³‚¢‚Ì‚ÅA–¢ˆø“–ƒŒƒR[ƒh‚ªì¬‚³‚ê‚È‚¢««
+					--2021/05/19 Y.Nishikawa ADD 1å›ç›®ã¯å—æ³¨è©³ç´°ãŒç„¡ã„ã®ã§ã€æœªå¼•å½“ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒä½œæˆã•ã‚Œãªã„â†“â†“
 					IF(ISNULL(@TotalJuchuuSuu, 0) = 0)
 					BEGIN
 					   SELECT @TotalJuchuuSuu = JuchuuSuu from D_JuchuuMeisai
 					   WHERE JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
 					END
-					--2021/05/19 Y.Nishikawa ADD 1‰ñ–Ú‚Íó’Ú×‚ª–³‚¢‚Ì‚ÅA–¢ˆø“–ƒŒƒR[ƒh‚ªì¬‚³‚ê‚È‚¢ªª
+					--2021/05/19 Y.Nishikawa ADD 1å›ç›®ã¯å—æ³¨è©³ç´°ãŒç„¡ã„ã®ã§ã€æœªå¼•å½“ãƒ¬ã‚³ãƒ¼ãƒ‰ãŒä½œæˆã•ã‚Œãªã„â†‘â†‘
 
 					delete 
 					from D_JuchuuShousai
@@ -127,7 +127,7 @@ BEGIN
 								@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime
 						end
 
-					--2021/04/19 Y.Nishikawa ADD V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é(êŠˆÚ“®)««
+					--2021/04/19 Y.Nishikawa ADD æ–°è¦ç™»éŒ²æ™‚ã€å¼•å½“å…ƒãŒç„¡ã„ã®ã«å¼•å½“åœ¨åº«ã«å¼•å½“æ•°ã‚’æ›´æ–°ã—ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†“â†“
 			        if not exists (select 1 from D_HikiateZaiko where SoukoCD = @SoukoCD and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo)
 			        	begin
 			        		insert into D_HikiateZaiko
@@ -145,12 +145,12 @@ BEGIN
 			        		where SoukoCD = @SoukoCD
 			        		and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo
 			        	end
-			        --2021/04/19 Y.Nishikawa ADD V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é(êŠˆÚ“®)ªª
+			        --2021/04/19 Y.Nishikawa ADD æ–°è¦ç™»éŒ²æ™‚ã€å¼•å½“å…ƒãŒç„¡ã„ã®ã«å¼•å½“åœ¨åº«ã«å¼•å½“æ•°ã‚’æ›´æ–°ã—ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†‘â†‘
 
 					
 				end
 
-			--2021/04/19 Y.Nishikawa DEL V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é(êŠˆÚ“®)««
+			--2021/04/19 Y.Nishikawa DEL æ–°è¦ç™»éŒ²æ™‚ã€å¼•å½“å…ƒãŒç„¡ã„ã®ã«å¼•å½“åœ¨åº«ã«å¼•å½“æ•°ã‚’æ›´æ–°ã—ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†“â†“
 			--if not exists (select 1 from D_HikiateZaiko where SoukoCD = @SoukoCD and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo)
 			--	begin
 			--		insert into D_HikiateZaiko
@@ -168,7 +168,7 @@ BEGIN
 			--		where SoukoCD = @SoukoCD
 			--		and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo
 			--	end
-			--2021/04/19 Y.Nishikawa DEL V‹K“o˜^Aˆø“–Œ³‚ª–³‚¢‚Ì‚Éˆø“–İŒÉ‚Éˆø“–”‚ğXV‚µ‚Ä‚¢‚é(êŠˆÚ“®)ªª
+			--2021/04/19 Y.Nishikawa DEL æ–°è¦ç™»éŒ²æ™‚ã€å¼•å½“å…ƒãŒç„¡ã„ã®ã«å¼•å½“åœ¨åº«ã«å¼•å½“æ•°ã‚’æ›´æ–°ã—ã¦ã„ã‚‹(å ´æ‰€ç§»å‹•)â†‘â†‘
 
 
 			fetch next from curOuter 

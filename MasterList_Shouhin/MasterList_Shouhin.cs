@@ -79,52 +79,53 @@ namespace MasterList_Shouhin
         {
             ShouhinBL sh_bl = new ShouhinBL();
             dtShouhin = sh_bl.Get_ExportData(Get_UIData());
-            if(dtShouhin.Rows.Count>0)
+            if (dtShouhin.Rows.Count > 0)
             {
                 string ProgramID = "MasterList_Shouhin";
-                string fname= "商品マスタリスト";
-                //string[] datacol = { "2", "33", "34" };
-                //string[] numcol= { "22", "23", "24" ,"37"};
+                string fname = "商品マスタリスト";
+                string[] datacol = { "2", "33", "34" };
+                string[] numcol = { "22", "23", "24", "37" };
 
-                //ExportCSVExcel list = new ExportCSVExcel();
-                //list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);     
+                ExportCSVExcel list = new ExportCSVExcel();
+                list.stringCol = new string[] { "10" };
+                list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);
 
-                if (!System.IO.Directory.Exists("C:\\ShinYoh\\" + ProgramID + "\\"))
-                    System.IO.Directory.CreateDirectory("C:\\ShinYoh\\" + ProgramID + "\\");
+                //if (!System.IO.Directory.Exists("C:\\ShinYoh\\" + ProgramID + "\\"))
+                //    System.IO.Directory.CreateDirectory("C:\\ShinYoh\\" + ProgramID + "\\");
 
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\ShinYoh\" + ProgramID + "\"";
+                //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                //saveFileDialog1.InitialDirectory = @"C:\ShinYoh\" + ProgramID + "\"";
 
-                //for excel
-                saveFileDialog1.Filter = "ExcelFile|*.xlsx";
-                saveFileDialog1.FileName = fname;
-                saveFileDialog1.RestoreDirectory = true;
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    ExcelDesignSetting obj = new ExcelDesignSetting();
-                    obj.FilePath = saveFileDialog1.FileName;
-                    obj.SheetName = "Sheet1";
-                    obj.Start_Interior_Column = "A1";
-                    obj.End_Interior_Column = "AS1";
-                    obj.Interior_Color = Color.FromArgb(255, 192, 0);
-                    obj.Start_Font_Column = "A1";
-                    obj.End_Font_Column = "AS1";
-                    obj.Font_Color = Color.Black;
-                    obj.Start_Title_Center_Column = "A1";
-                    obj.End_Title_Center_Column = "AS1";
-                    obj.Number_Column = new List<int>();
-                    obj.Number_Column.Add(22);
-                    obj.Number_Column.Add(23);
-                    obj.Number_Column.Add(24);
-                    obj.Number_Column.Add(37);
-                    obj.Number_Format = "#,###,###";
-                    bool bl = obj_Export.ExportDataTableToExcel(dtShouhin, obj);
-                    if (bl)
-                    {
-                        bbl.ShowMessage("I203");
-                        Clear();
-                    }
-                }
+                ////for excel
+                //saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                //saveFileDialog1.FileName = fname;
+                //saveFileDialog1.RestoreDirectory = true;
+                //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                //{
+                //    ExcelDesignSetting obj = new ExcelDesignSetting();
+                //    obj.FilePath = saveFileDialog1.FileName;
+                //    obj.SheetName = "Sheet1";
+                //    obj.Start_Interior_Column = "A1";
+                //    obj.End_Interior_Column = "AS1";
+                //    obj.Interior_Color = Color.FromArgb(255, 192, 0);
+                //    obj.Start_Font_Column = "A1";
+                //    obj.End_Font_Column = "AS1";
+                //    obj.Font_Color = Color.Black;
+                //    obj.Start_Title_Center_Column = "A1";
+                //    obj.End_Title_Center_Column = "AS1";
+                //    obj.Number_Column = new List<int>();
+                //    obj.Number_Column.Add(22);
+                //    obj.Number_Column.Add(23);
+                //    obj.Number_Column.Add(24);
+                //    obj.Number_Column.Add(37);
+                //    obj.Number_Format = "#,###,###";
+                //    bool bl = obj_Export.ExportDataTableToExcel(dtShouhin, obj);
+                //    if (bl)
+                //    {
+                //        bbl.ShowMessage("I203");
+                //        Clear();
+                //    }
+                //}
             }
             else
             {

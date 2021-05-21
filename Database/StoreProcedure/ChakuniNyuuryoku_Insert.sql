@@ -17,12 +17,12 @@ GO
 -- Author:		Shwe Eain San
 -- Create date: <Create Date,,>
 -- Description:	<Description,,>
--- History    : 2021/04/20 Y.Nishikawa ç€è·æ˜ç´°ãŒä½œæˆã•ã‚Œãªã„
---            : 2021/04/20 Y.Nishikawa ç¾åœ¨åº«ãŒä½œæˆã•ã‚Œãªã„
---            : 2021/04/20 Y.Nishikawa ç„¡é§„ãªSELECTå‰Šé™¤
---            : 2021/04/20 Y.Nishikawa ç€è·æ¸ˆæ•°ã€ç€è·å®Œäº†åŒºåˆ†ãŒæ›´æ–°ã•ã‚Œãªã„
---            : 2021/04/27 Y.Nishikawa åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã«ç§»å‹•
---            : 2021/05/11 Y.Nishikawa å®Œäº†CheckBoxï¼ONã®å ´åˆã§ã‚‚å®Œäº†æ‰±ã„ã«ãªã‚‰ãªã„ï¼ˆç”»é¢ã®å®Œäº†CheckBoxã¯ã€ŒTrue(ON)ãƒ»False(OFF)ã€ã§ã¯ãªãã€ã€Œ1(ON)ãƒ»0(OFF)ã€ã§å¼•ãç¶™ãŒã‚Œã¦ã„ã‚‹ï¼‰
+-- History    : 2021/04/20 Y.Nishikawa ’…‰×–¾×‚ªì¬‚³‚ê‚È‚¢
+--            : 2021/04/20 Y.Nishikawa Œ»İŒÉ‚ªì¬‚³‚ê‚È‚¢
+--            : 2021/04/20 Y.Nishikawa –³‘Ê‚ÈSELECTíœ
+--            : 2021/04/20 Y.Nishikawa ’…‰×Ï”A’…‰×Š®—¹‹æ•ª‚ªXV‚³‚ê‚È‚¢
+--            : 2021/04/27 Y.Nishikawa İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚ÉˆÚ“®
+--            : 2021/05/11 Y.Nishikawa Š®—¹CheckBoxON‚Ìê‡‚Å‚àŠ®—¹ˆµ‚¢‚É‚È‚ç‚È‚¢i‰æ–Ê‚ÌŠ®—¹CheckBox‚ÍuTrue(ON)EFalse(OFF)v‚Å‚Í‚È‚­Au1(ON)E0(OFF)v‚Åˆø‚«Œp‚ª‚ê‚Ä‚¢‚éj
 -- =============================================
 CREATE PROCEDURE [dbo].[ChakuniNyuuryoku_Insert]
 @XML_Main as xml,
@@ -155,9 +155,9 @@ declare @Unique as uniqueidentifier = NewID()
 				)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-		--2021/04/20 Y.Nishikawa ç„¡é§„ãªSELECTå‰Šé™¤
+		--2021/04/20 Y.Nishikawa –³‘Ê‚ÈSELECTíœ
 	    --SELECT * FROM #Temp_Main
-		--2021/04/20 Y.Nishikawa ç„¡é§„ãªSELECTå‰Šé™¤
+		--2021/04/20 Y.Nishikawa –³‘Ê‚ÈSELECTíœ
 
 		CREATE TABLE #Temp_Detail
 				(   
@@ -227,9 +227,9 @@ declare @Unique as uniqueidentifier = NewID()
 					)
 		EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
 
-		--2021/04/20 Y.Nishikawa ç„¡é§„ãªSELECTå‰Šé™¤
+		--2021/04/20 Y.Nishikawa –³‘Ê‚ÈSELECTíœ
 	    --SELECT * FROM #Temp_Detail
-		--2021/04/20 Y.Nishikawa ç„¡é§„ãªSELECTå‰Šé™¤
+		--2021/04/20 Y.Nishikawa –³‘Ê‚ÈSELECTíœ
 
 declare @filter_date as date = (select distinct ChakuniDate from #Temp_Main)
 declare @StaffCD varchar(10) = (select distinct StaffCD from #Temp_Main)
@@ -241,8 +241,8 @@ declare @ChakuniNO as varchar(100)
 
 
 EXEC [dbo].[Fnc_GetNumber]
-            5,-------------iné€£ç•ªåŒºåˆ†
-            @filter_date,----inåŸºæº–æ—¥
+            5,-------------in˜A”Ô‹æ•ª
+            @filter_date,----inŠî€“ú
             0,-------inSEQNO
             @ChakuniNO OUTPUT
 
@@ -294,11 +294,11 @@ Insert into D_ChakuniMeisai
 	dcm.ChakuniYoteiGyouNO,
 	dcm.HacchuuNO,dcm.HacchuuGyouNO,dcm.JuchuuNO,dcm.JuchuuGyouNO,m.Operator,@currentDate,@Operator,@currentDate
 	from #Temp_Main m , #Temp_Detail d
-	--2021/04/20 Y.Nishikawa CHG ç€è·æ˜ç´°ãŒä½œæˆã•ã‚Œãªã„â†“â†“
+	--2021/04/20 Y.Nishikawa CHG ’…‰×–¾×‚ªì¬‚³‚ê‚È‚¢««
 	--inner  join D_ChakuniYoteiMeisai dcm on dcm.ChakuniYoteiNO=d.ChakuniYoteiGyouNO
 	inner  join D_ChakuniYoteiMeisai dcm on dcm.ChakuniYoteiNO=d.ChakuniYoteiNO
 	and dcm.ChakuniYoteiGyouNO=d.ChakuniYoteiGyouNO
-	--2021/04/20 Y.Nishikawa CHG ç€è·æ˜ç´°ãŒä½œæˆã•ã‚Œãªã„â†‘â†‘
+	--2021/04/20 Y.Nishikawa CHG ’…‰×–¾×‚ªì¬‚³‚ê‚È‚¢ªª
 	Left outer join F_Shouhin(@filter_date) fs on fs.ShouhinCD=d.ShouhinCD
 
 --SheetC
@@ -323,8 +323,8 @@ Select @Unique,dc.ChakuniNO,dc.ChakuniGyouNO,dc.GyouHyouziJun,10,dc.KanriNO,dc.B
 dc.SiireZumiSuu,dc.ChakuniYoteiNO,dc.ChakuniYoteiGyouNO,dc.HacchuuNO,dc.HacchuuGyouNO,dc.JuchuuNO,dc.JuchuuGyouNO,dc.InsertOperator,dc.InsertDateTime,dc.UpdateOperator,dc.UpdateDateTime,@Operator,@currentDate
 from D_ChakuniMeisai dc Inner join #Temp_Main m on dc.ChakuniNO=@ChakuniNO
 
---2021/04/27 Y.Nishikawa DEL åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã«ç§»å‹•â†“â†“
-----2021/04/20 Y.Nishikawa ADD ç¾åœ¨åº«ãŒä½œæˆã•ã‚Œãªã„â†“â†“
+--2021/04/27 Y.Nishikawa DEL İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚ÉˆÚ“®««
+----2021/04/20 Y.Nishikawa ADD Œ»İŒÉ‚ªì¬‚³‚ê‚È‚¢««
 --IF EXISTS ( 
 --            SELECT * 
 --            FROM D_GenZaiko DGZK
@@ -404,10 +404,10 @@ from D_ChakuniMeisai dc Inner join #Temp_Main m on dc.ChakuniNO=@ChakuniNO
 --     WHERE DCKH.ChakuniNO = @ChakuniNO
 
 --END
-----2021/04/20 Y.Nishikawa ADD ç¾åœ¨åº«ãŒä½œæˆã•ã‚Œãªã„â†‘â†‘
---2021/04/27 Y.Nishikawa DEL åœ¨åº«æ›´æ–°ã‚’å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã«ç§»å‹•â†‘â†‘
+----2021/04/20 Y.Nishikawa ADD Œ»İŒÉ‚ªì¬‚³‚ê‚È‚¢ªª
+--2021/04/27 Y.Nishikawa DEL İŒÉXV‚ğˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚ÉˆÚ“®ªª
 
---2021/04/20 Y.Nishikawa ADD ç€è·æ¸ˆæ•°ã€ç€è·å®Œäº†åŒºåˆ†ãŒæ›´æ–°ã•ã‚Œãªã„â†“â†“
+--2021/04/20 Y.Nishikawa ADD ’…‰×Ï”A’…‰×Š®—¹‹æ•ª‚ªXV‚³‚ê‚È‚¢««
 ----update table E
 --Update a
 --SET a.ChakuniZumiSuu=a.ChakuniZumiSuu+d.ChakuniZumiSuu,
@@ -435,7 +435,7 @@ from D_ChakuniMeisai dc Inner join #Temp_Main m on dc.ChakuniNO=@ChakuniNO
 --Update A
 --Set A.ChakuniKanryouKBN=B.ChakuniKanryouKBN
 --From D_ChakuniYotei A
---Inner Join (Select C.ChakuniYoteiNO,MIN(ChakuniKanryouKBN)ç¸²Â€ChakuniKanryouKBN
+--Inner Join (Select C.ChakuniYoteiNO,MIN(ChakuniKanryouKBN)ã€€ChakuniKanryouKBN
 --From D_ChakuniYoteiMeisai C,#Temp_Detail d
 --Where C.ChakuniYoteiNO=d.ChakuniYoteiNO
 --Group by C.ChakuniYoteiNO
@@ -468,10 +468,10 @@ from D_ChakuniMeisai dc Inner join #Temp_Main m on dc.ChakuniNO=@ChakuniNO
 Update DCYM
 SET ChakuniZumiSuu = DCYM.ChakuniZumiSuu + DCKM.ChakuniSuu,
 	ChakuniKanryouKBN = Case When DCYM.ChakuniYoteiSuu <= (DCYM.ChakuniZumiSuu + DCKM.ChakuniSuu) Then 1 
-	                         --2021/05/11 Y.Nishikawa CHG å®Œäº†CheckBoxï¼ONã®å ´åˆã§ã‚‚å®Œäº†æ‰±ã„ã«ãªã‚‰ãªã„ï¼ˆç”»é¢ã®å®Œäº†CheckBoxã¯ã€ŒTrue(ON)ãƒ»False(OFF)ã€ã§ã¯ãªãã€ã€Œ1(ON)ãƒ»0(OFF)ã€ã§å¼•ãç¶™ãŒã‚Œã¦ã„ã‚‹ï¼‰â†“â†“
+	                         --2021/05/11 Y.Nishikawa CHG Š®—¹CheckBoxON‚Ìê‡‚Å‚àŠ®—¹ˆµ‚¢‚É‚È‚ç‚È‚¢i‰æ–Ê‚ÌŠ®—¹CheckBox‚ÍuTrue(ON)EFalse(OFF)v‚Å‚Í‚È‚­Au1(ON)E0(OFF)v‚Åˆø‚«Œp‚ª‚ê‚Ä‚¢‚éj««
 	                         --When TempD.SiireKanryouKBN = 'True' Then 1
 							 When TempD.SiireKanryouKBN = '1' Then 1
-							 --2021/05/11 Y.Nishikawa CHG å®Œäº†CheckBoxï¼ONã®å ´åˆã§ã‚‚å®Œäº†æ‰±ã„ã«ãªã‚‰ãªã„ï¼ˆç”»é¢ã®å®Œäº†CheckBoxã¯ã€ŒTrue(ON)ãƒ»False(OFF)ã€ã§ã¯ãªãã€ã€Œ1(ON)ãƒ»0(OFF)ã€ã§å¼•ãç¶™ãŒã‚Œã¦ã„ã‚‹ï¼‰â†‘â†‘
+							 --2021/05/11 Y.Nishikawa CHG Š®—¹CheckBoxON‚Ìê‡‚Å‚àŠ®—¹ˆµ‚¢‚É‚È‚ç‚È‚¢i‰æ–Ê‚ÌŠ®—¹CheckBox‚ÍuTrue(ON)EFalse(OFF)v‚Å‚Í‚È‚­Au1(ON)E0(OFF)v‚Åˆø‚«Œp‚ª‚ê‚Ä‚¢‚éjªª
 							 Else 0 End,
     UpdateOperator = @Operator,
     UpdateDateTime = @currentDate
@@ -513,21 +513,21 @@ ON DCYH.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
 Update DHAM
 SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu + TempD.ChakuniSuu,
 	ChakuniKanryouKBN = Case When DHAM.ChakuniYoteiZumiSuu <= (DHAM.ChakuniZumiSuu + TempD.ChakuniSuu) Then 1 
-	                         --2021/05/11 Y.Nishikawa CHG å®Œäº†CheckBoxï¼ONã®å ´åˆã§ã‚‚å®Œäº†æ‰±ã„ã«ãªã‚‰ãªã„ï¼ˆç”»é¢ã®å®Œäº†CheckBoxã¯ã€ŒTrue(ON)ãƒ»False(OFF)ã€ã§ã¯ãªãã€ã€Œ1(ON)ãƒ»0(OFF)ã€ã§å¼•ãç¶™ãŒã‚Œã¦ã„ã‚‹ï¼‰â†“â†“
+	                         --2021/05/11 Y.Nishikawa CHG Š®—¹CheckBoxON‚Ìê‡‚Å‚àŠ®—¹ˆµ‚¢‚É‚È‚ç‚È‚¢i‰æ–Ê‚ÌŠ®—¹CheckBox‚ÍuTrue(ON)EFalse(OFF)v‚Å‚Í‚È‚­Au1(ON)E0(OFF)v‚Åˆø‚«Œp‚ª‚ê‚Ä‚¢‚éj««
 	                         --When TempD.SiireKanryouKBN = 'True' Then 1
 							 When TempD.SiireKanryouKBN = '1' Then 1
-							 --2021/05/11 Y.Nishikawa CHG å®Œäº†CheckBoxï¼ONã®å ´åˆã§ã‚‚å®Œäº†æ‰±ã„ã«ãªã‚‰ãªã„ï¼ˆç”»é¢ã®å®Œäº†CheckBoxã¯ã€ŒTrue(ON)ãƒ»False(OFF)ã€ã§ã¯ãªãã€ã€Œ1(ON)ãƒ»0(OFF)ã€ã§å¼•ãç¶™ãŒã‚Œã¦ã„ã‚‹ï¼‰â†‘â†‘
+							 --2021/05/11 Y.Nishikawa CHG Š®—¹CheckBoxON‚Ìê‡‚Å‚àŠ®—¹ˆµ‚¢‚É‚È‚ç‚È‚¢i‰æ–Ê‚ÌŠ®—¹CheckBox‚ÍuTrue(ON)EFalse(OFF)v‚Å‚Í‚È‚­Au1(ON)E0(OFF)v‚Åˆø‚«Œp‚ª‚ê‚Ä‚¢‚éjªª
 							 Else 0 End,
 	ChakuniYoteiKanryouKBN = Case When DHAM.HacchuuSuu <= DHAM.ChakuniYoteiZumiSuu Then 1 
-	                         --2021/05/11 Y.Nishikawa CHG å®Œäº†CheckBoxï¼ONã®å ´åˆã§ã‚‚å®Œäº†æ‰±ã„ã«ãªã‚‰ãªã„ï¼ˆç”»é¢ã®å®Œäº†CheckBoxã¯ã€ŒTrue(ON)ãƒ»False(OFF)ã€ã§ã¯ãªãã€ã€Œ1(ON)ãƒ»0(OFF)ã€ã§å¼•ãç¶™ãŒã‚Œã¦ã„ã‚‹ï¼‰â†“â†“
+	                         --2021/05/11 Y.Nishikawa CHG Š®—¹CheckBoxON‚Ìê‡‚Å‚àŠ®—¹ˆµ‚¢‚É‚È‚ç‚È‚¢i‰æ–Ê‚ÌŠ®—¹CheckBox‚ÍuTrue(ON)EFalse(OFF)v‚Å‚Í‚È‚­Au1(ON)E0(OFF)v‚Åˆø‚«Œp‚ª‚ê‚Ä‚¢‚éj««
 	                         --When TempD.SiireKanryouKBN = 'True' Then 1
 							 When TempD.SiireKanryouKBN = '1' Then 1
-							 --2021/05/11 Y.Nishikawa CHG å®Œäº†CheckBoxï¼ONã®å ´åˆã§ã‚‚å®Œäº†æ‰±ã„ã«ãªã‚‰ãªã„ï¼ˆç”»é¢ã®å®Œäº†CheckBoxã¯ã€ŒTrue(ON)ãƒ»False(OFF)ã€ã§ã¯ãªãã€ã€Œ1(ON)ãƒ»0(OFF)ã€ã§å¼•ãç¶™ãŒã‚Œã¦ã„ã‚‹ï¼‰â†‘â†‘
+							 --2021/05/11 Y.Nishikawa CHG Š®—¹CheckBoxON‚Ìê‡‚Å‚àŠ®—¹ˆµ‚¢‚É‚È‚ç‚È‚¢i‰æ–Ê‚ÌŠ®—¹CheckBox‚ÍuTrue(ON)EFalse(OFF)v‚Å‚Í‚È‚­Au1(ON)E0(OFF)v‚Åˆø‚«Œp‚ª‚ê‚Ä‚¢‚éjªª
 							 Else 0 End,
     UpdateOperator = @Operator,
     UpdateDateTime = @currentDate
 From D_HacchuuMeisai DHAM
---2021â†“â†“
+--2021««
 --Inner Join D_ChakuniYoteiMeisai DCYM
 --on DHAM.HacchuuNO = DCYM.HacchuuNO
 --and DHAM.HacchuuGyouNO = DCYM.HacchuuGyouNO
@@ -553,7 +553,7 @@ Inner Join (
 			) TempD
 ON DHAM.HacchuuNO = TempD.HacchuuNO
 and DHAM.HacchuuGyouNO = TempD.HacchuuGyouNO
---2021â†‘â†‘
+--2021ªª
 
 --Update D_Hacchuu
 Update DHAH
@@ -578,7 +578,7 @@ Inner Join (
 				Group by DHAM.HacchuuNO
 			) DHAM
 ON DHAM.HacchuuNO = DHAH.HacchuuNO
---2021/04/20 Y.Nishikawa ADD ç€è·æ¸ˆæ•°ã€ç€è·å®Œäº†åŒºåˆ†ãŒæ›´æ–°ã•ã‚Œãªã„â†‘â†‘
+--2021/04/20 Y.Nishikawa ADD ’…‰×Ï”A’…‰×Š®—¹‹æ•ª‚ªXV‚³‚ê‚È‚¢ªª
 	
 --Fnc_Hikiate
 exec dbo.Fnc_Hikiate 5,@ChakuniNO,10,@Operator

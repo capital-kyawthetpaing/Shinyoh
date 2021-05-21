@@ -539,6 +539,12 @@ namespace Shinyoh_Controls
                 string result = string.Empty;
                 switch (sTextBox.E159Type)
                 {
+                    case "ChakuniNyuuryoku":
+                        chakuniNyuuryoku_BL cbl = new chakuniNyuuryoku_BL();
+                        rDt = cbl.ChakuniNyuuryoku_Select(sTextBox.ctrlE159_1.Text, string.Empty, "E159");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
+     
                     case "ShukkaSiziNyuuryoku":
                         ShukkasiziNyuuryokuBL skszbl = new ShukkasiziNyuuryokuBL();
                         rDt = skszbl.ShukkasiziNyuuryoku_ErrorCheck(sTextBox.ctrlE159_1.Text, "E159");
@@ -861,6 +867,12 @@ namespace Shinyoh_Controls
                         rDt = sbl.ShukkaNyuuryoku_Select_Check(sTextBox.ctrlE280_1.Text, string.Empty, "E280");
                         result = rDt.Rows[0]["MessageID"].ToString();
                         break;
+                }
+                if (result.Equals("E280"))
+                {
+                    ShowErrorMessage("E280");
+                    sTextBox.Focus();
+                    return (true, rDt);
                 }
             }
 
