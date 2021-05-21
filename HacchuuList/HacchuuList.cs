@@ -56,7 +56,7 @@ namespace HacchuuList
             SetButton(ButtonType.BType.Save, F12, "登録(F12)", false);
             SetButton(ButtonType.BType.Empty, F7, "", false);
             SetButton(ButtonType.BType.Empty, F8, "", false);
-            SetButton(ButtonType.BType.ExcelExport, F10, "出力(F10)", true); 
+            SetButton(ButtonType.BType.ExcelExport, F10, "出力(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
             ErrorCheck();
@@ -159,17 +159,32 @@ namespace HacchuuList
                     dt.Columns["HacchuuMeisaiTekiyou"].ColumnName = "明細摘要";
                     dt.Columns["SiiresakiCD"].ColumnName = "発注先";
                     dt.Columns["SiiresakiRyakuName"].ColumnName = "発注先名";
-                   // dt.Columns.Remove("発注先名");                              //not include in Excel
+                    // dt.Columns.Remove("発注先名");                              //not include in Excel
                     dt.Columns["SoukoName"].ColumnName = "倉庫";
 
-                    if (!System.IO.Directory.Exists("C:\\Excel"))
-                        System.IO.Directory.CreateDirectory("C:\\Excel");
+                    //2021 / 05 / 21 ssa CHG XMLExcel
+                    string ProgramID = "HacchuuList";
+                    string fname = "発注リスト";
+                    string[] datacol = { "2", "10" };
+                    string[] numcol = { "20", "21", "22" };
 
-                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.InitialDirectory = @"C:\Excel\";
+                    ExportCSVExcel list = new ExportCSVExcel();
+                    list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
+
+                    //if (!System.IO.Directory.Exists("C:\\Excel"))
+                    //    System.IO.Directory.CreateDirectory("C:\\Excel");
+
+                    //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    //saveFileDialog1.InitialDirectory = @"C:\Excel\";
+
                     ////for csv
                     //saveFileDialog1.Filter = "csv files (*.csv)|*.csv";
                     //saveFileDialog1.FileName = ProgramID + " (" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.Hour + DateTime.Now.Day + DateTime.Now.Month + ") " + OperatorCD;
+
+                    ////for excel
+                    //saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                    //saveFileDialog1.FileName = "発注リスト.xlsx";
+
                     //saveFileDialog1.RestoreDirectory = true;
                     //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                     //{
@@ -204,39 +219,39 @@ namespace HacchuuList
 
 
                     //for excel
-                    saveFileDialog1.Filter = "ExcelFile|*.xlsx";
-                    saveFileDialog1.FileName = "発注リスト.xlsx";
-                    saveFileDialog1.RestoreDirectory = true;
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        ExcelDesignSetting obj = new ExcelDesignSetting();
-                        obj.FilePath = saveFileDialog1.FileName;
-                        obj.SheetName = "発注リスト";
-                        obj.Start_Interior_Column = "A1";
-                        obj.End_Interior_Column = "Z1";
-                        obj.Interior_Color = Color.FromArgb(255, 192, 0);
-                        obj.Start_Font_Column = "A1";
-                        obj.End_Font_Column = "Z1";
-                        obj.Font_Color = Color.Black;
-                        //For column C
-                        obj.Date_Column = new List<int>();
-                        obj.Date_Column.Add(3);
-                        obj.Date_Format = "YYYY/MM/DD";
-                        obj.Start_Title_Center_Column = "A1";
-                        obj.End_Title_Center_Column = "Z1";
-                        //for column T,U,V
-                        obj.Number_Column = new List<int>();
-                        //obj.Number_Column.Add(20);
-                        obj.Number_Column.Add(21);
-                        obj.Number_Column.Add(22);
-                        obj.Number_Format = "#,###,###";
-                        bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
-                        if (bl)
-                        {
-                            bbl.ShowMessage("I203");
-                            Clear();
-                        }
-                    }
+                    //    saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                    //    saveFileDialog1.FileName = "発注リスト.xlsx";
+                    //    saveFileDialog1.RestoreDirectory = true;
+                    //    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    //    {
+                    //        ExcelDesignSetting obj = new ExcelDesignSetting();
+                    //        obj.FilePath = saveFileDialog1.FileName;
+                    //        obj.SheetName = "発注リスト";
+                    //        obj.Start_Interior_Column = "A1";
+                    //        obj.End_Interior_Column = "Z1";
+                    //        obj.Interior_Color = Color.FromArgb(255, 192, 0);
+                    //        obj.Start_Font_Column = "A1";
+                    //        obj.End_Font_Column = "Z1";
+                    //        obj.Font_Color = Color.Black;
+                    //        //For column C
+                    //        obj.Date_Column = new List<int>();
+                    //        obj.Date_Column.Add(3);
+                    //        obj.Date_Format = "YYYY/MM/DD";
+                    //        obj.Start_Title_Center_Column = "A1";
+                    //        obj.End_Title_Center_Column = "Z1";
+                    //        //for column T,U,V
+                    //        obj.Number_Column = new List<int>();
+                    //        //obj.Number_Column.Add(20);
+                    //        obj.Number_Column.Add(21);
+                    //        obj.Number_Column.Add(22);
+                    //        obj.Number_Format = "#,###,###";
+                    //        bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
+                    //        if (bl)
+                    //        {
+                    //            bbl.ShowMessage("I203");
+                    //            Clear();
+                    //        }
+                    //    }
                 }
                 else if (dt.Rows.Count == 0)
                 {
@@ -255,7 +270,7 @@ namespace HacchuuList
             {
                 rdo_Juc.Checked = false;
                 Disable_Method();
-            } 
+            }
         }
         private void Enable_Method()
         {
