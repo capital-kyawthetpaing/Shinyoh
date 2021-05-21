@@ -18,6 +18,7 @@ namespace ShukkaTorikomi
         CommonFunction cf;
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
+        TorikomiEntity SEntity;
         ShukkaTorikomi_BL ShukkaTorikomi_BL;
         TorikomiEntity JEntity;
         BaseBL bbl;
@@ -36,6 +37,7 @@ namespace ShukkaTorikomi
             dt = new DataTable();
 
             bbl = new BaseBL();
+            SEntity = new TorikomiEntity();
             ShukkaTorikomi_BL = new ShukkaTorikomi_BL();
         }
 
@@ -266,13 +268,22 @@ namespace ShukkaTorikomi
             }
         }
         private void DataGridviewBind()
-        {
-            TorikomiEntity obj = new TorikomiEntity();
-            ShukkaTorikomi_BL objMethod = new ShukkaTorikomi_BL();
-            obj.TorikomiDenpyouNO = txtDenpyouNO.Text;
-            dt = objMethod.ShukkaTorikomi_Select_Check(obj);
-
-            gvShukkaTorikomi.DataSource = dt;
+        {  
+            //TaskNo456 HET
+            SEntity.DateFrom = txtDate1.Text;
+            SEntity.DateTo = txtDate2.Text;
+            dt = ShukkaTorikomi_BL.ShukkaTorikomi_Select_Check(SEntity);
+            if (dt.Rows.Count > 0)
+            {
+                gvShukkaTorikomi.DataSource = dt;
+            }
+            else
+            {
+                bbl.ShowMessage("S013");
+                dt.Clear();
+                gvShukkaTorikomi.DataSource = dt;
+                txtDate1.Focus();
+            }
         }
 
         private (string,string) ChooseFile()
