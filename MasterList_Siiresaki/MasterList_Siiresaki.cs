@@ -81,7 +81,11 @@ namespace MasterList_Siiresaki
                 string[] datacol = { "2", "28", "29" };
 
                 ExportCSVExcel list = new ExportCSVExcel();
-                list.ExcelOutputFile(dtSiiresaki, ProgramID, fname, fname, 34, datacol, null);
+                bool bl = list.ExcelOutputFile(dtSiiresaki, ProgramID, fname, fname, 34, datacol, null);
+                if(bl)
+                {
+                    Clear();
+                }
             }
             else
             {
@@ -109,6 +113,21 @@ namespace MasterList_Siiresaki
             ske.ProgramID = ProgramID;
             ske.InsertOperator = OperatorCD;
             return ske;
+        }
+        private void Clear()
+        {
+            txtSiiresakiCD_From.Focus();
+            rdo_ChokkinDate.Checked = true;
+            txtSiiresakiCD_From.Text = string.Empty;
+            txtSiiresakiCD_To.Text = string.Empty;
+            txtSiiresakiName.Text = string.Empty;
+            txtYuubinNO1.Text = string.Empty;
+            txtYubin2.Text = string.Empty;
+            txtAddress.Text = string.Empty;
+            txtPhNO1.Text = string.Empty;
+            txtPhNO2.Text = string.Empty;
+            txtPhNO3.Text = string.Empty;
+            txtRemarks.Text = string.Empty;
         }
         private void txtYuubinNO2_KeyDown(object sender, KeyEventArgs e)
         {

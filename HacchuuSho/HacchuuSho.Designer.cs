@@ -326,14 +326,14 @@ namespace HacchuuSho
             this.txtDestination.IsRequire = false;
             this.txtDestination.IsUseInitializedLayout = true;
             this.txtDestination.Location = new System.Drawing.Point(175, 401);
-            this.txtDestination.MaxLength = 40;
+            this.txtDestination.MaxLength = 80;
             this.txtDestination.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtDestination.MoveNext = true;
             this.txtDestination.Name = "txtDestination";
             this.txtDestination.NextControl = null;
             this.txtDestination.NextControlName = "BtnF1";
             this.txtDestination.SearchType = Entity.SearchType.ScType.None;
-            this.txtDestination.Size = new System.Drawing.Size(600, 19);
+            this.txtDestination.Size = new System.Drawing.Size(500, 19);
             this.txtDestination.TabIndex = 19;
             this.txtDestination.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -364,14 +364,14 @@ namespace HacchuuSho
             this.txtShipping.IsRequire = false;
             this.txtShipping.IsUseInitializedLayout = true;
             this.txtShipping.Location = new System.Drawing.Point(175, 366);
-            this.txtShipping.MaxLength = 40;
+            this.txtShipping.MaxLength = 80;
             this.txtShipping.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShipping.MoveNext = true;
             this.txtShipping.Name = "txtShipping";
             this.txtShipping.NextControl = null;
             this.txtShipping.NextControlName = "txtDestination";
             this.txtShipping.SearchType = Entity.SearchType.ScType.None;
-            this.txtShipping.Size = new System.Drawing.Size(600, 19);
+            this.txtShipping.Size = new System.Drawing.Size(500, 19);
             this.txtShipping.TabIndex = 18;
             this.txtShipping.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -389,14 +389,14 @@ namespace HacchuuSho
             this.txtBeneficiary2.IsRequire = false;
             this.txtBeneficiary2.IsUseInitializedLayout = true;
             this.txtBeneficiary2.Location = new System.Drawing.Point(175, 303);
-            this.txtBeneficiary2.MaxLength = 40;
+            this.txtBeneficiary2.MaxLength = 80;
             this.txtBeneficiary2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtBeneficiary2.MoveNext = true;
             this.txtBeneficiary2.Name = "txtBeneficiary2";
             this.txtBeneficiary2.NextControl = null;
             this.txtBeneficiary2.NextControlName = "txtOriginCountry";
             this.txtBeneficiary2.SearchType = Entity.SearchType.ScType.None;
-            this.txtBeneficiary2.Size = new System.Drawing.Size(600, 19);
+            this.txtBeneficiary2.Size = new System.Drawing.Size(500, 19);
             this.txtBeneficiary2.TabIndex = 16;
             this.txtBeneficiary2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -427,14 +427,14 @@ namespace HacchuuSho
             this.txtOriginCountry.IsRequire = false;
             this.txtOriginCountry.IsUseInitializedLayout = true;
             this.txtOriginCountry.Location = new System.Drawing.Point(175, 334);
-            this.txtOriginCountry.MaxLength = 40;
+            this.txtOriginCountry.MaxLength = 80;
             this.txtOriginCountry.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtOriginCountry.MoveNext = true;
             this.txtOriginCountry.Name = "txtOriginCountry";
             this.txtOriginCountry.NextControl = null;
             this.txtOriginCountry.NextControlName = "txtShipping";
             this.txtOriginCountry.SearchType = Entity.SearchType.ScType.None;
-            this.txtOriginCountry.Size = new System.Drawing.Size(600, 19);
+            this.txtOriginCountry.Size = new System.Drawing.Size(500, 19);
             this.txtOriginCountry.TabIndex = 17;
             this.txtOriginCountry.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -465,14 +465,14 @@ namespace HacchuuSho
             this.txtBeneficiary1.IsRequire = false;
             this.txtBeneficiary1.IsUseInitializedLayout = true;
             this.txtBeneficiary1.Location = new System.Drawing.Point(175, 283);
-            this.txtBeneficiary1.MaxLength = 40;
+            this.txtBeneficiary1.MaxLength = 80;
             this.txtBeneficiary1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtBeneficiary1.MoveNext = true;
             this.txtBeneficiary1.Name = "txtBeneficiary1";
             this.txtBeneficiary1.NextControl = null;
             this.txtBeneficiary1.NextControlName = "txtBeneficiary2";
             this.txtBeneficiary1.SearchType = Entity.SearchType.ScType.None;
-            this.txtBeneficiary1.Size = new System.Drawing.Size(600, 19);
+            this.txtBeneficiary1.Size = new System.Drawing.Size(500, 19);
             this.txtBeneficiary1.TabIndex = 15;
             this.txtBeneficiary1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -503,14 +503,14 @@ namespace HacchuuSho
             this.txtPayment.IsRequire = false;
             this.txtPayment.IsUseInitializedLayout = true;
             this.txtPayment.Location = new System.Drawing.Point(175, 252);
-            this.txtPayment.MaxLength = 40;
+            this.txtPayment.MaxLength = 80;
             this.txtPayment.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtPayment.MoveNext = true;
             this.txtPayment.Name = "txtPayment";
             this.txtPayment.NextControl = null;
             this.txtPayment.NextControlName = "txtBeneficiary1";
             this.txtPayment.SearchType = Entity.SearchType.ScType.None;
-            this.txtPayment.Size = new System.Drawing.Size(600, 19);
+            this.txtPayment.Size = new System.Drawing.Size(500, 19);
             this.txtPayment.TabIndex = 14;
             this.txtPayment.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 

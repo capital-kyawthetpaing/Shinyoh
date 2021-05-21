@@ -136,41 +136,53 @@ namespace ShukkaSiziDataShuturyoku {
                     dt.Columns["ShukkaSiziNO"].ColumnName = "出荷指示番号";
                     dt.Columns["ShukkaSiziMeisaiTekiyou"].ColumnName = "備考";
 
-                    if (!System.IO.Directory.Exists("C:\\Excel"))
-                        System.IO.Directory.CreateDirectory("C:\\Excel");
+                    string ProgramID = "ShukkaSiziDataShuturyoku";
+                    string fname = "出荷指示データ出力";
+                    string[] datacol = { "5", "6" };
+                    string[] numcol = null;
 
-                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.InitialDirectory = @"C:\Excel\";
-
-                    //for excel
-                    saveFileDialog1.Filter = "ExcelFile|*.xlsx";
-                    saveFileDialog1.FileName = "出荷指示データ出力.xlsx";
-                    saveFileDialog1.RestoreDirectory = true;
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    ExportCSVExcel list = new ExportCSVExcel();
+                    bool bl= list.ExcelOutputFile(dt, ProgramID, fname, fname, 16, datacol, numcol);
+                    if(bl)
                     {
-                        ExcelDesignSetting obj = new ExcelDesignSetting();
-                        obj.FilePath = saveFileDialog1.FileName;
-                        obj.SheetName = "Sheet1";
-                        obj.Start_Interior_Column = "A1";
-                        obj.End_Interior_Column = "P1";
-                        obj.Interior_Color = Color.FromArgb(255, 192, 0);
-                        obj.Start_Font_Column = "A1";
-                        obj.End_Font_Column = "P1";
-                        obj.Font_Color = Color.Black;
-                        //For column E,F
-                        obj.Date_Column = new List<int>();
-                        obj.Date_Column.Add(5);
-                        obj.Date_Column.Add(6);
-                        obj.Date_Format = "YYYY/MM/DD";
-                        obj.Start_Title_Center_Column = "A1";
-                        obj.End_Title_Center_Column = "P1";
-                        bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
-                        if (bl)
-                        {
-                            bbl.ShowMessage("I203");
-                            Clear();
-                        }
+                        Clear();
                     }
+
+                    //if (!System.IO.Directory.Exists("C:\\Excel"))
+                    //    System.IO.Directory.CreateDirectory("C:\\Excel");
+
+                    //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    //saveFileDialog1.InitialDirectory = @"C:\Excel\";
+
+                    ////for excel
+                    //saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                    //saveFileDialog1.FileName = "出荷指示データ出力.xlsx";
+                    //saveFileDialog1.RestoreDirectory = true;
+                    //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    ExcelDesignSetting obj = new ExcelDesignSetting();
+                    //    obj.FilePath = saveFileDialog1.FileName;
+                    //    obj.SheetName = "Sheet1";
+                    //    obj.Start_Interior_Column = "A1";
+                    //    obj.End_Interior_Column = "P1";
+                    //    obj.Interior_Color = Color.FromArgb(255, 192, 0);
+                    //    obj.Start_Font_Column = "A1";
+                    //    obj.End_Font_Column = "P1";
+                    //    obj.Font_Color = Color.Black;
+                    //    //For column E,F
+                    //    obj.Date_Column = new List<int>();
+                    //    obj.Date_Column.Add(5);
+                    //    obj.Date_Column.Add(6);
+                    //    obj.Date_Format = "YYYY/MM/DD";
+                    //    obj.Start_Title_Center_Column = "A1";
+                    //    obj.End_Title_Center_Column = "P1";
+                    //    bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
+                    //    if (bl)
+                    //    {
+                    //        bbl.ShowMessage("I203");
+                    //        Clear();
+                    //    }
+                    //}
                 }
                 else if (dt.Rows.Count == 0)
                 {

@@ -126,7 +126,8 @@ namespace JuchuuTorikomi
             if (tagID == "12")
             {
                 gvJuchuuTorikomi.ActionType = "F10";
-                if(rdo_Delete.Checked)
+                string spname = string.Empty;
+                if (rdo_Delete.Checked)
                 {
                     txtDenpyouNO.E102Check(true);
                     txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
@@ -140,44 +141,21 @@ namespace JuchuuTorikomi
                 }
                 if (ErrorCheck(PanelDetail))
                 {
-                    (string, string) Xml = GetFile();
-                    BaseBL bbl = new BaseBL();
-                    if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
+                    if (rdo_Registration.Checked)
                     {
-                        if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                        (string, string) Xml = GetFile();
+                        if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
                         {
-                            if (PreviousCtrl != null)
-                                PreviousCtrl.Focus();
-                        }
-                        else
-                        {
-                            JuchuuTorikomiBL Jbl = new JuchuuTorikomiBL();
-                            string spname = string.Empty;
-                            string DenpyouNO = txtDenpyouNO.Text;
-                            if (rdo_Registration.Checked)
+                            if (bbl.ShowMessage("Q206") != DialogResult.Yes)
                             {
-                                spname = "JuchuuTorikomi_Insert";
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
                             }
                             else
                             {
-                                spname = "JuchuuTorikomi_Delete";
-                                foreach (DataRow dr in dtMain.Rows)
-                                {
-                                    string JuchuuNO = dr["JuchuuNO"].ToString();
-                                    JEntity.DataKBN = 1;
-                                    JEntity.Number = JuchuuNO;
-                                    JEntity.ProgramID = ProgramID;
-                                    JEntity.PC = PCID;
-                                    JEntity.OperatorCD = OperatorCD;
-                                    DataTable dt1 = new DataTable();
-                                    dt1 = Jbl.D_Exclusive_Lock_Check(JEntity);
-                                    if (dt1.Rows[0]["MessageID"].ToString().Equals("S004"))
-                                    {
-                                        bbl.ShowMessage("S004");
-                                    }
-                                }
+                                spname = "JuchuuTorikomi_Insert";
                             }
-                            DataTable return_BL1 = Jbl.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2, DenpyouNO);
+                            DataTable return_BL1 = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2);
                             if (return_BL1.Rows.Count > 0)
                             {
                                 if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
@@ -189,8 +167,43 @@ namespace JuchuuTorikomi
                             }
                         }
                     }
+                    else
+                    {
+                        string DenpyouNO = txtDenpyouNO.Text;
+                        gvJuchuuTorikomi.DataSource = dtMain;
+                        if (bbl.ShowMessage("Q102") != DialogResult.Yes)
+                        {
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
+                        }
+                        else
+                        {
+                            string Xml = string.Empty;
+                            spname = "JuchuuTorikomi_Delete";
+                            Xml = cf.DataTableToXml(dtMain);
+                            foreach (DataRow dr in dtMain.Rows)
+                            {
+                                string JuchuuNO = dr["JuchuuNO"].ToString();
+                                JEntity.DataKBN = 1;
+                                JEntity.Number = JuchuuNO;
+                                JEntity.ProgramID = ProgramID;
+                                JEntity.PC = PCID;
+                                JEntity.OperatorCD = OperatorCD;
+                                DataTable dt1 = new DataTable();
+                                dt1 = JBL.D_Exclusive_Lock_Check(JEntity);
+                                if (dt1.Rows[0]["MessageID"].ToString().Equals("S004"))
+                                {
+                                    bbl.ShowMessage("S004");
+                                }
+                            }
+                            DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml,DenpyouNO);
+
+                        }
+                    }   
                 }
-            }
+                    }
+            //    }
+            //}
               base.FunctionProcess(tagID);
         }
         private void Clear()
