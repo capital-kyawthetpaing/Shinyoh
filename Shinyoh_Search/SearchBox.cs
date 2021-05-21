@@ -286,22 +286,7 @@ namespace Shinyoh_Search
                                 if (!string.IsNullOrEmpty(openFileDialog.FileName))
                                     CD = openFileDialog.SafeFileName;                               
                             }
-                        }
-                        //ShukkaTorikomi_Form
-                        if (this.Name == "txtShukkaToNo1")
-                        {
-                            msearch.Access_Type = "110";
-                            msearch.Access_Key = "1";
-                            msearch.ShowDialog();
-                            CD = msearch.Char2;
-                        }
-                        else if (this.Name == "txtShukkaToNo2")
-                        {
-                            msearch.Access_Type = "110";
-                            msearch.Access_Key = "1";
-                            msearch.ShowDialog();
-                            CD = msearch.Char2;
-                        }
+                        }                       
                         break;
                     case Entity.SearchType.ScType.TaxRate:
                         msearch.Access_Type = "221";

@@ -205,7 +205,12 @@ namespace ShukkaTorikomi
             if (tagID == "10")
             {
                 gvShukkaTorikomi.ActionType = "F10";
-                if(ErrorCheck(PanelDetail))
+                if (rdo_Sakujo.Checked)
+                {
+                    txtDenpyouNO.E102Check(false);
+                    txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
+                }               
+                if (ErrorCheck(PanelDetail))
                     DataGridviewBind();
                 gvShukkaTorikomi.ActionType = string.Empty;
             }
@@ -220,12 +225,6 @@ namespace ShukkaTorikomi
                     txtDenpyouNO.E102Check(true);
                     txtDenpyouNO.E165Check(true, "ShukkaTorikom", txtDenpyouNO, null);
                 }
-                else
-                {
-                    txtDenpyouNO.E102Check(false);
-                    txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
-                }
-
                 if (ErrorCheck(PanelDetail))             //HET
                 {
                     (string, string) Xml = ChooseFile();
