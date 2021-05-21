@@ -80,5 +80,17 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Lock_Check", GetConnectionString(), parameters);
             return dt;
         }
+        public DataTable L_Log_Check(JuchuuTorikomiEntity ce,string DenyouNO)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[5];
+            parameters[0] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = ce.OperatorCD };
+            parameters[1] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = ce.ProgramID };
+            parameters[2] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = ce.PC };
+            parameters[3] = new SqlParameter("@OperateMode", SqlDbType.VarChar) { Value = ce.OperateMode };
+            parameters[4] = new SqlParameter("@KeyItem", SqlDbType.Int) { Value = DenyouNO };
+            DataTable dt = ckmdl.SelectDatatable("L_Log_Insert", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }

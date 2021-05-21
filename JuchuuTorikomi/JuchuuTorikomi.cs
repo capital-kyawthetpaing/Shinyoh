@@ -197,13 +197,15 @@ namespace JuchuuTorikomi
                                 }
                             }
                             DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml,DenpyouNO);
-
+                            JuchuuTorikomiEntity obj = new JuchuuTorikomiEntity();
+                            obj.InsertOperator = base_Entity.OperatorCD;
+                            obj.ProgramID = base_Entity.ProgramID;
+                            obj.PC = base_Entity.PC;
+                            
                         }
                     }   
                 }
-                    }
-            //    }
-            //}
+            }
               base.FunctionProcess(tagID);
         }
         private void Clear()

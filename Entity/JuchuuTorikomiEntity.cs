@@ -31,5 +31,6 @@ namespace Entity
         public string JuchuuDenpyouTekiyou { get; set; }
         public int DataKBN { get; set; }
         public string Number { get; set; }
+        public string OperateMode { get; set; }
     }
 }
