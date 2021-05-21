@@ -56,9 +56,12 @@ BEGIN
 		dsm.ColorRyakuName,
 		CASE ISNUMERIC(dsm.SizeNO+'.e0') WHEN 1 THEN dsm.SizeNO+'.0' ELSE dsm.SizeNO END AS SizeNO,
 		dsm.JANCD,
-		dsm.ShukkaSiziSuu,
-		dsm.UriageTanka,
-		dsm.UriageKingaku,
+		--dsm.ShukkaSiziSuu,
+		--dsm.UriageTanka,
+		--dsm.UriageKingaku,
+		convert(int,isnull(dsm.ShukkaSiziSuu,0)) as ShukkaSiziSuu,--2021/05/21 ssa CHG TaskNO 426
+		convert(int,isnull(dsm.UriageTanka,0)) as UriageTanka,--2021/05/21 ssa CHG TaskNO 426
+		convert(int,isnull(dsm.UriageKingaku,0)) as UriageKingaku,--2021/05/21 ssa CHG TaskNO 426
 		--dsm.KouritenJuusho2,
 		djm.SenpouHacchuuNO,
 		ds.ShukkaSiziNO,
@@ -122,9 +125,12 @@ BEGIN
 		dsm.ColorRyakuName,
 		CASE ISNUMERIC(dsm.SizeNO+'.e0') WHEN 1 THEN dsm.SizeNO+'.0' ELSE dsm.SizeNO END AS SizeNO,
 		dsm.JANCD,
-		dsm.ShukkaSiziSuu,
-		dsm.UriageTanka,
-		dsm.UriageKingaku,
+		--dsm.ShukkaSiziSuu,
+		--dsm.UriageTanka,
+		--dsm.UriageKingaku,
+		convert(int,isnull(dsm.ShukkaSiziSuu,0)) as ShukkaSiziSuu,--2021/05/21 ssa CHG TaskNO 426
+		convert(int,isnull(dsm.UriageTanka,0)) as UriageTanka,--2021/05/21 ssa CHG TaskNO 426
+		convert(int,isnull(dsm.UriageKingaku,0)) as UriageKingaku,--2021/05/21 ssa CHG TaskNO 426
 		--dsm.KouritenJuusho2,
 		djm.SenpouHacchuuNO,
 		ds.ShukkaSiziNO,
