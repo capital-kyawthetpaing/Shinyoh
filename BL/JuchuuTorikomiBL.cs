@@ -59,13 +59,16 @@ namespace BL
             parameters[1] = new SqlParameter("@XML_Jucchuu", SqlDbType.Xml) { Value = Xml_Juchuu };
             return ckmdl.SelectDatatable(sp_name, GetConnectionString(), parameters);
         }
-        public DataTable JuchuuTorikomi_Delete(string sp_name,string Xml, string DenpyouNO)
+        public DataTable JuchuuTorikomi_Delete(string sp_name,string Xml, string DenpyouNO, JuchuuTorikomiEntity entity)
         {
             CKMDL ckmdl = new CKMDL();
             ckmdl.UseTran = true;
-            var parameters = new SqlParameter[2];
+            var parameters = new SqlParameter[5];
             parameters[0] = new SqlParameter("@XML", SqlDbType.Xml) { Value = Xml };
             parameters[1] = new SqlParameter("@DenyouNO", SqlDbType.VarChar) { Value = DenpyouNO };
+            parameters[2]= new SqlParameter("@ProgramID", SqlDbType.VarChar) { Value = entity.ProgramID };
+            parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = entity.PC };
+            parameters[4] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = entity.Mode };
             return ckmdl.SelectDatatable(sp_name, GetConnectionString(), parameters);
         }
         public DataTable D_Exclusive_Lock_Check(JuchuuTorikomiEntity ce)
@@ -78,18 +81,6 @@ namespace BL
             parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = ce.PC };
             parameters[4] = new SqlParameter("@DataKBN", SqlDbType.Int) { Value = ce.DataKBN };
             DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Lock_Check", GetConnectionString(), parameters);
-            return dt;
-        }
-        public DataTable L_Log_Check(JuchuuTorikomiEntity ce,string DenyouNO)
-        {
-            CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[5];
-            parameters[0] = new SqlParameter("@InsertOperator", SqlDbType.VarChar) { Value = ce.OperatorCD };
-            parameters[1] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = ce.ProgramID };
-            parameters[2] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = ce.PC };
-            parameters[3] = new SqlParameter("@OperateMode", SqlDbType.VarChar) { Value = ce.OperateMode };
-            parameters[4] = new SqlParameter("@KeyItem", SqlDbType.Int) { Value = DenyouNO };
-            DataTable dt = ckmdl.SelectDatatable("L_Log_Insert", GetConnectionString(), parameters);
             return dt;
         }
     }

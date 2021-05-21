@@ -196,12 +196,11 @@ namespace JuchuuTorikomi
                                     bbl.ShowMessage("S004");
                                 }
                             }
-                            DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml,DenpyouNO);
-                            JuchuuTorikomiEntity obj = new JuchuuTorikomiEntity();
-                            obj.InsertOperator = base_Entity.OperatorCD;
-                            obj.ProgramID = base_Entity.ProgramID;
-                            obj.PC = base_Entity.PC;
-                            
+                            JEntity.ProgramID = base_Entity.ProgramID;
+                            JEntity.PC = base_Entity.PC;
+                            JEntity.OperateMode = "Delete";
+                            DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml,DenpyouNO,JEntity);
+                            bbl.ShowMessage("I002");
                         }
                     }   
                 }
@@ -224,7 +223,7 @@ namespace JuchuuTorikomi
             JEntity.DateFrom = txtDate1.Text;
             JEntity.DateTo = txtDate2.Text;
             dtMain = JBL.JuchuuTorikomi_Display(JEntity);
-            if (dtMain.Rows.Count>0)
+            if(dtMain.Rows.Count > 0)
             {
                 gvJuchuuTorikomi.DataSource = dtMain;
             }

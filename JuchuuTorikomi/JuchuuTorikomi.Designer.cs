@@ -301,6 +301,7 @@
             this.gvJuchuuTorikomi.ISRowColumn = null;
             this.gvJuchuuTorikomi.Location = new System.Drawing.Point(160, 173);
             this.gvJuchuuTorikomi.Name = "gvJuchuuTorikomi";
+            this.gvJuchuuTorikomi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1245, 620);
             this.gvJuchuuTorikomi.TabIndex = 9;
             // 
