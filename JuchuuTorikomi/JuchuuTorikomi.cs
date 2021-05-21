@@ -146,26 +146,71 @@ namespace JuchuuTorikomi
                         (string, string) Xml = GetFile();
                         if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
                         {
-                            if (bbl.ShowMessage("Q206") != DialogResult.Yes)
                             {
-                                if (PreviousCtrl != null)
-                                    PreviousCtrl.Focus();
-                            }
-                            else
-                            {
-                                spname = "JuchuuTorikomi_Insert";
-                            }
-                            DataTable return_BL1 = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2);
-                            if (return_BL1.Rows.Count > 0)
-                            {
-                                if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
-                                    bbl.ShowMessage("I002");
-                                else
+                                if (rdo_Registration.Checked)
                                 {
-                                    bbl.ShowMessage("E276", return_BL1.Rows[0]["SEQ"].ToString(), return_BL1.Rows[0]["Error1"].ToString(), return_BL1.Rows[0]["Error2"].ToString());
+                                    spname = "JuchuuTorikomi_Insert";
+                                }
+                                DataTable return_BL1 = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2);
+                                if (return_BL1.Rows.Count > 0)
+                                {
+                                    if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
+                                    {
+                                        if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                                        {
+                                            if (PreviousCtrl != null)
+                                                PreviousCtrl.Focus();
+                                        }
+                                        else
+                                        {
+                                            if (rdo_Registration.Checked)
+                                            {
+                                                spname = "JuchuuTorikomi_Insert";
+                                            }
+                                            else
+                                            {
+                                                spname = "JuchuuTorikomi_Delete";
+                                            }
+                                            DataTable return_BL = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2);
+                                            if (return_BL.Rows.Count > 0)
+                                            {
+                                                if (return_BL.Rows[0]["Result"].ToString().Equals("1"))
+                                                {
+                                                    bbl.ShowMessage("I002");
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    else
+                                    {
+                                        bbl.ShowMessage("E276", return_BL1.Rows[0]["SEQ"].ToString(), return_BL1.Rows[0]["Error1"].ToString(), return_BL1.Rows[0]["Error2"].ToString());
+                                    }
                                 }
                             }
                         }
+                        //if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
+                        //{
+                        //    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                        //    {
+                        //        if (PreviousCtrl != null)
+                        //            PreviousCtrl.Focus();
+                        //    }
+                        //    else
+                        //    {
+                        //        spname = "JuchuuTorikomi_Insert";
+                        //    }
+                        //    DataTable return_BL1 = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2);
+                        //    if (return_BL1.Rows.Count > 0)
+                        //    {
+                        //        if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
+                        //            bbl.ShowMessage("I002");
+                        //        else
+                        //        {
+                        //            bbl.ShowMessage("E276", return_BL1.Rows[0]["SEQ"].ToString(), return_BL1.Rows[0]["Error1"].ToString(), return_BL1.Rows[0]["Error2"].ToString());
+                        //        }
+                        //    }
+                        //}
                     }
                     else
                     {
