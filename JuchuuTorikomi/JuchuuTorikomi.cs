@@ -248,7 +248,6 @@ namespace JuchuuTorikomi
             string Xml_Hacchuu = string.Empty;
             string Xml_Juchuu = string.Empty;
             string error = string.Empty;
-            //using (OpenFileDialog openFileDialog = new OpenFileDialog())         //Task 453
             if (File.Exists(txtImportFolder.Text + txtImportFileName.Text))         //Task 453
             {
                 DataTable create_dt = new DataTable();
