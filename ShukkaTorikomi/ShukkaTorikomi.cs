@@ -18,6 +18,7 @@ namespace ShukkaTorikomi
         CommonFunction cf;
         BaseEntity base_Entity;
         multipurposeEntity multi_Entity;
+        TorikomiEntity SEntity;
         ShukkaTorikomi_BL ShukkaTorikomi_BL;
         TorikomiEntity JEntity;
         BaseBL bbl;
@@ -36,6 +37,7 @@ namespace ShukkaTorikomi
             dt = new DataTable();
 
             bbl = new BaseBL();
+            SEntity = new TorikomiEntity();
             ShukkaTorikomi_BL = new ShukkaTorikomi_BL();
         }
 
@@ -231,12 +233,6 @@ namespace ShukkaTorikomi
                     BaseBL bbl = new BaseBL();
                     if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
                     {
-                        if (bbl.ShowMessage("Q206") != DialogResult.Yes)
-                        {
-                            if (PreviousCtrl != null)
-                                PreviousCtrl.Focus();
-                        }
-                        else
                         {
                             ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
                             string spname = string.Empty;
@@ -254,7 +250,33 @@ namespace ShukkaTorikomi
                             if (return_DT.Rows.Count > 0)
                             {
                                 if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
-                                    bbl.ShowMessage("I002");
+                                {
+                                    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                                    {
+                                        if (PreviousCtrl != null)
+                                            PreviousCtrl.Focus();
+                                    }
+                                    else
+                                    {
+                                        if (rdo_Toroku.Checked)
+                                        {
+                                            spname = "ShukkaTorikomi_Insert";
+                                        }
+                                        else
+                                        {
+                                            spname = "ShukkaTorikomi_Delete";
+                                        }
+                                        return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                                        if (return_DT.Rows.Count > 0)
+                                        {
+                                            if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
+                                            {
+                                                bbl.ShowMessage("I002");
+                                            }
+                                        }
+                                    }
+                                }
+
                                 else
                                 {
                                     bbl.ShowMessage("E276", return_DT.Rows[0]["SEQ"].ToString(), return_DT.Rows[0]["Error1"].ToString(), return_DT.Rows[0]["Error2"].ToString());
@@ -262,17 +284,30 @@ namespace ShukkaTorikomi
                             }
                         }
                     }
-                }             
+
+                }
+
             }
         }
+            
+        
         private void DataGridviewBind()
-        {
-            TorikomiEntity obj = new TorikomiEntity();
-            ShukkaTorikomi_BL objMethod = new ShukkaTorikomi_BL();
-            obj.TorikomiDenpyouNO = txtDenpyouNO.Text;
-            dt = objMethod.ShukkaTorikomi_Select_Check(obj);
-
-            gvShukkaTorikomi.DataSource = dt;
+        {  
+            //TaskNo456 HET
+            SEntity.DateFrom = txtDate1.Text;
+            SEntity.DateTo = txtDate2.Text;
+            dt = ShukkaTorikomi_BL.ShukkaTorikomi_Select_Check(SEntity);
+            if (dt.Rows.Count > 0)
+            {
+                gvShukkaTorikomi.DataSource = dt;
+            }
+            else
+            {
+                bbl.ShowMessage("S013");
+                dt.Clear();
+                gvShukkaTorikomi.DataSource = dt;
+                txtDate1.Focus();
+            }
         }
 
         private (string,string) ChooseFile()

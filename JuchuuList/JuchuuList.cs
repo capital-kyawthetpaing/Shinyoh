@@ -212,7 +212,11 @@ namespace JuchuuList {
 
                     ExportCSVExcel list = new ExportCSVExcel();
                     list.stringCol = new string[1] { "14" };
-                    list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
+                    bool bl = list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
+                    if (bl)
+                    {
+                        Clear();
+                    }
 
                     //if (!System.IO.Directory.Exists("C:\\Excel"))
                     //    System.IO.Directory.CreateDirectory("C:\\Excel");
@@ -255,7 +259,7 @@ namespace JuchuuList {
                     //        bbl.ShowMessage("I203");
                     //        Clear();
                     //    }
-                    //}
+                //}
                 }
                 else if (dt.Rows.Count == 0)
                 {

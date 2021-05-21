@@ -36,8 +36,10 @@ namespace BL
         public DataTable ShukkaTorikomi_Select_Check(TorikomiEntity obj)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[1];
-            parameters[0] = new SqlParameter("@TorikomiDenpyouNO", SqlDbType.VarChar) { Value = obj.TorikomiDenpyouNO };
+            var parameters = new SqlParameter[2];
+            //parameters[0] = new SqlParameter("@TorikomiDenpyouNO", SqlDbType.VarChar) { Value = obj.TorikomiDenpyouNO };
+            parameters[0] = new SqlParameter("@Datefrom", SqlDbType.VarChar) { Value = obj.DateFrom };
+            parameters[1] = new SqlParameter("@Dateto", SqlDbType.VarChar) { Value = obj.DateTo };
             DataTable dt = ckmdl.SelectDatatable("ShukkaTorikomi_Select_Check", GetConnectionString(), parameters);
             return dt;
 

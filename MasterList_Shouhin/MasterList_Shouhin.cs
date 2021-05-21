@@ -79,16 +79,20 @@ namespace MasterList_Shouhin
         {
             ShouhinBL sh_bl = new ShouhinBL();
             dtShouhin = sh_bl.Get_ExportData(Get_UIData());
-            if (dtShouhin.Rows.Count > 0)
+            if(dtShouhin.Rows.Count>0)
             {
                 string ProgramID = "MasterList_Shouhin";
-                string fname = "商品マスタリスト";
+                string fname= "商品マスタリスト";
                 string[] datacol = { "2", "33", "34" };
                 string[] numcol = { "22", "23", "24", "37" };
 
                 ExportCSVExcel list = new ExportCSVExcel();
-                list.stringCol = new string[] { "10" };
-                list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);
+                //list.stringCol = new string[1] { "10" };
+                bool bl= list.ExcelOutputFile(dtShouhin, ProgramID, fname, fname, 45, datacol, numcol);
+                if(bl)
+                {
+                    Clear();
+                }
 
                 //if (!System.IO.Directory.Exists("C:\\ShinYoh\\" + ProgramID + "\\"))
                 //    System.IO.Directory.CreateDirectory("C:\\ShinYoh\\" + ProgramID + "\\");
@@ -161,18 +165,18 @@ namespace MasterList_Shouhin
             cf.Clear(PanelDetail);
             rdo_ChokkinDate.Checked = true;
             txtShouhinCD_From.Focus();
-            txtShouhinCD_From.Text = string.Empty;
-            txtShouhinCD_To.Text = string.Empty;
-            txtJANCD_From.Text = string.Empty;
-            txtJANCD_To.Text = string.Empty;
-            txtShouhinName.Text = string.Empty;
-            txtBrand_From.Text = string.Empty;
-            txtBrand_To.Text = string.Empty;
-            txtColorNO1.Text = string.Empty;
-            txtColorNO2.Text = string.Empty;
-            txtSizeNO1.Text = string.Empty;
-            txtSizeNO2.Text = string.Empty;
-            txtRemarks.Text = string.Empty;
+            //txtShouhinCD_From.Text = string.Empty;
+            //txtShouhinCD_To.Text = string.Empty;
+            //txtJANCD_From.Text = string.Empty;
+            //txtJANCD_To.Text = string.Empty;
+            //txtShouhinName.Text = string.Empty;
+            //txtBrand_From.Text = string.Empty;
+            //txtBrand_To.Text = string.Empty;
+            //txtColorNO1.Text = string.Empty;
+            //txtColorNO2.Text = string.Empty;
+            //txtSizeNO1.Text = string.Empty;
+            //txtSizeNO2.Text = string.Empty;
+            //txtRemarks.Text = string.Empty;
         }
     }
 }

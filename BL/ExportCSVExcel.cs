@@ -234,14 +234,14 @@ namespace BL
                                 }
                             }
 
-                            // PTK removed 2021/05/20
-                            int j = 0;
-                            foreach (DataColumn dc in dtvalue.Columns)   /// Make Every JanCD to be not allow Exponential when Edit cell
-                            {
-                                j++;
-                                if (dc.ColumnName.ToUpper() == "JANCD")
-                                ws.Columns(j.ToString()).Style.NumberFormat.SetNumberFormatId(49);
-                            }
+                            //// PTK removed 2021/05/20
+                            //int j = 0;
+                            //foreach (DataColumn dc in dtvalue.Columns)   /// Make Every JanCD to be not allow Exponential when Edit cell
+                            //{
+                            //    j++;
+                            //    if (dc.ColumnName.ToUpper() == "JANCD")
+                            //    ws.Columns(j.ToString()).Style.NumberFormat.SetNumberFormatId(49);
+                            //}
                             if (numcol != null)
                             {
                                 // PTK removed 2021/05/20
