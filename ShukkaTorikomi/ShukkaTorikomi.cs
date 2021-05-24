@@ -554,6 +554,11 @@ namespace ShukkaTorikomi
                     Xml_Main = string.Empty;
                 }
             }
+            else
+            {
+                bbl.ShowMessage("E281");
+                txtImportFolder.Focus();
+            }
             return (Xml_Detail, Xml_Main);
         }
 
