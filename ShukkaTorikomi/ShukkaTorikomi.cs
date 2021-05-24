@@ -555,22 +555,25 @@ namespace ShukkaTorikomi
                         if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
                         {
                             Xml_Detail = string.Empty;
+                            r = create_dt.Rows.Count; //chg 24-05-2021 ssa
+
                         }
                         else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
                         {
                             Xml_Detail = string.Empty;
+                            r = create_dt.Rows.Count;//chg 24-05-2021 ssa
                         }
                       
                         else if (r == create_dt.Rows.Count - 1)
                         {
-                            Xml_Main= cf.DataTableToXml(create_dt);
+                            Xml_Detail = cf.DataTableToXml(create_dt);
                         }
                     }
                 }
-                if (create_dt.Rows.Count == csvRows.Length - 1)
-                {
-                    Xml_Detail = cf.DataTableToXml(create_dt);
-                }              
+                //if (create_dt.Rows.Count == csvRows.Length - 1)
+                //{
+                //    Xml_Detail = cf.DataTableToXml(create_dt);
+                //}              
                 else
                 {
                     Xml_Detail = string.Empty;
