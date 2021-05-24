@@ -44,7 +44,7 @@ BEGIN
 
 	IF @Output_Type = 0
 	BEGIN
-		SELECT fs.SiharaisakiCD AS '仕入先CD',
+		SELECT fs.SiiresakiCD AS '仕入先CD',
 			CONVERT(varchar(10),fs.ChangeDate,111)  AS '改定日',
 			fs.ShokutiFLG AS '諸口区分',
 			CASE WHEN fs.ShokutiFLG = 0 THEN '通常' ELSE '諸口' END AS '諸口区分名',
@@ -90,12 +90,12 @@ BEGIN
 		AND (@Juusho IS NULL OR ((fs.Juusho1 LIKE '%' + @Juusho + '%') OR (fs.Juusho2 LIKE '%' + @Juusho + '%')))
 		AND ((@Tel1 IS NULL AND @Tel2 IS NULL AND @Tel3 IS NULL) OR (fs.Tel11 = @Tel1 AND fs.Tel12 = @Tel2 AND fs.Tel13 = @Tel3) OR (fs.Tel21 = @Tel1 AND fs.Tel22 = @Tel2 AND fs.Tel23 = @Tel3))
 		AND (@Remarks IS NULL OR (fs.Remarks LIKE '%' + @Remarks + '%'))
-		ORDER BY fs.SiiresakiCD ASC, fs.ChangeDate ASC
+		ORDER BY fs.SiiresakiCD , fs.ChangeDate ASC
 	END
 
 	ELSE
 	BEGIN
-		SELECT fs.SiharaisakiCD AS '仕入先CD',
+		SELECT fs.SiiresakiCD AS '仕入先CD',
 			CONVERT(varchar(10),fs.ChangeDate,111)  AS '改定日',
 			fs.ShokutiFLG AS '諸口区分',
 			CASE WHEN fs.ShokutiFLG = 0 THEN '通常' ELSE '諸口' END AS '諸口区分名',
@@ -141,7 +141,7 @@ BEGIN
 		AND (@Juusho IS NULL OR ((fs.Juusho1 LIKE '%' + @Juusho + '%') OR (fs.Juusho2 LIKE '%' + @Juusho + '%')))
 		AND ((@Tel1 IS NULL AND @Tel2 IS NULL AND @Tel3 IS NULL) OR (fs.Tel11 = @Tel1 AND fs.Tel12 = @Tel2 AND fs.Tel13 = @Tel3) OR (fs.Tel21 = @Tel1 AND fs.Tel22 = @Tel2 AND fs.Tel23 = @Tel3))
 		AND (@Remarks IS NULL OR (fs.Remarks LIKE '%' + @Remarks + '%'))
-		ORDER BY fs.SiiresakiCD ASC, fs.ChangeDate ASC
+		ORDER BY fs.SiiresakiCD , fs.ChangeDate ASC
 	END
 
 	EXEC dbo.L_Log_Insert @InsertOperator,@Program,@PC,@Mode,@KeyItem
