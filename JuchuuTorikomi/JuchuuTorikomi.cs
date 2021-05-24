@@ -386,6 +386,11 @@ namespace JuchuuTorikomi
                     Xml_Juchuu = string.Empty;
                 }
             }
+            else
+            {
+                bbl.ShowMessage("E281");
+                txtImportFolder.Focus();
+            }
             return (Xml_Hacchuu,Xml_Juchuu);
         }
         public void Remove_Datatable_Column(DataTable dtRemove)
