@@ -560,7 +560,7 @@ namespace ShukkaTorikomi
                         {
                             Xml_Detail = string.Empty;
                         }
-                        
+                      
                         else if (r == create_dt.Rows.Count - 1)
                         {
                             Xml_Main= cf.DataTableToXml(create_dt);
