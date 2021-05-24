@@ -554,7 +554,7 @@ namespace ShukkaTorikomi
                     Xml_Main = string.Empty;
                 }
             }
-            else
+            else //2021 / 05 / 24 ssa CHG TaskNO 492
             {
                 bbl.ShowMessage("E281");
                 txtImportFolder.Focus();
