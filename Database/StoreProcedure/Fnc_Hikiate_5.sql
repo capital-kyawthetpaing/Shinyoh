@@ -12,7 +12,7 @@ GO
 
 -- =============================================
 -- Author:		Kyaw Thet Paing
--- Create date: 2021-01-12
+-- Create date: 2021-01-12 
 -- Description:	5:着荷 (all in処理区分 10,21,20,30) 
 -- History    : 2021/04/20 Y.Nishikawa 条件が不正
 --            : 2021/04/27 Y.Nishikawa 在庫更新を引当ファンクション内に移動
