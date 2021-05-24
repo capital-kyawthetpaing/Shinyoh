@@ -610,7 +610,7 @@ namespace ShukkaTorikomi
             {
                 if (!cf.DateCheck(txt))
                 {
-                    bbl.ShowMessage("E276", line_no.ToString(), error_msg);
+                    bbl.ShowMessage("E276", line_no.ToString(), error_msg1, error_msg2);
                     txt.Text = "true";
                 }
             }
