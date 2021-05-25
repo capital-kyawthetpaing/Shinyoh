@@ -277,7 +277,7 @@ namespace HacchuuSho
                             var dvresult = dtgv.AsEnumerable().GroupBy(r => new { Col1 = r["ColorNo"], Col2 = r["ModelNo"] }).Select(g => {
                                 var row = dt.NewRow();
                                 row["Pairs"] = g.Sum(r => r.Field<int>("Pairs"));
-                                row["Amount"] = g.Sum(r => r.Field<int>("Amount"));
+                                row["Amount"] = g.Sum(r => r.Field<decimal>("Amount"));
                                 row["ColorNo"] = g.Key.Col1;
                                 row["ModelNo"] = g.Key.Col2;
                                 return row;
@@ -648,7 +648,7 @@ namespace HacchuuSho
                 YearTerm=txtYearTerm.Text,
                 SS=chkSS.Checked?"1":"",
                 FW=chkFW.Checked?"1":"",
-                Rdo_Type=Rdo1.Checked?1:0
+                Rdo_Type=Rdo1.Checked?0:1
             };
             hse.OperatorCD = OperatorCD;
             hse.PC = PCID;

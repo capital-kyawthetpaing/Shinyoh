@@ -1823,23 +1823,26 @@ namespace JuchuuNyuuryoku
                         bl_error = true;
                     }
                 }
-                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
+                if (isSelected == "OFF")
                 {
-                    (bl_error, siiresaki_dt) = Gridview_Error_Check("E101", siiresakiCD, "Siiresaki");
-                    if (bl_error == false)
-                        (bl_error, siiresaki_dt) = Gridview_Error_Check("E227", siiresakiCD, "Siiresaki");
-                    if (bl_error == false)
-                        (bl_error, siiresaki_dt) = Gridview_Error_Check("E267", siiresakiCD, "Siiresaki");
-                }
-                if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
-                {
-                    
-                    if (gv_JuchuuNyuuryoku.SelectedCells.Count > 0)
+                    if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
                     {
-                        //int selectedrowindex = row;
-                        selectedRow = gv_JuchuuNyuuryoku.Rows[row];
+                        (bl_error, siiresaki_dt) = Gridview_Error_Check("E101", siiresakiCD, "Siiresaki");
+                        if (bl_error == false)
+                            (bl_error, siiresaki_dt) = Gridview_Error_Check("E227", siiresakiCD, "Siiresaki");
+                        if (bl_error == false)
+                            (bl_error, siiresaki_dt) = Gridview_Error_Check("E267", siiresakiCD, "Siiresaki");
                     }
-                    sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(siiresaki_dt, selectedRow, changeFlg);
+                    if (bl_error == false && (!string.IsNullOrEmpty(siiresakiCD)))
+                    {
+
+                        if (gv_JuchuuNyuuryoku.SelectedCells.Count > 0)
+                        {
+                            //int selectedrowindex = row;
+                            selectedRow = gv_JuchuuNyuuryoku.Rows[row];
+                        }
+                        sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(siiresaki_dt, selectedRow, changeFlg);
+                    }
                 }
                 if(bl_error==false && string.IsNullOrEmpty(siiresakiCD))
                 {
@@ -1994,30 +1997,36 @@ namespace JuchuuNyuuryoku
                     this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
                 }
 
-
-                DataTable dt = siiresaki_bl.Siiresaki_Select_Check(detail.SiiresakiCD.ToString(), txtJuchuuDate.Text, "E101");
-                if (dt.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() != "E101")
+                string isSelected = string.Empty;
+                string free = gv_JuchuuNyuuryoku.Rows[row].Cells["colFree"].Value.ToString();
+                if (string.IsNullOrEmpty(free))
+                    isSelected = "OFF";
+                if (isSelected == "OFF")
                 {
-                    bool bl_error = false;
-                    DataTable siiresaki_dt = new DataTable();
-                    (bl_error, siiresaki_dt) = Gridview_Error_Check("E101", detail.SiiresakiCD.ToString(), "Siiresaki");
-                    if (bl_error == false)
-                        (bl_error, siiresaki_dt) = Gridview_Error_Check("E227", detail.SiiresakiCD.ToString(), "Siiresaki");
-                    if (bl_error == false)
-                        (bl_error, siiresaki_dt) = Gridview_Error_Check("E267", detail.SiiresakiCD.ToString(), "Siiresaki");
-
-                    if (bl_error == false)
+                    DataTable dt = siiresaki_bl.Siiresaki_Select_Check(detail.SiiresakiCD.ToString(), txtJuchuuDate.Text, "E101");
+                    if (dt.Rows.Count > 0 && dt.Rows[0]["MessageID"].ToString() != "E101")
                     {
-                        DataGridViewRow selectedRow = null;
-                        int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
-                        selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
+                        bool bl_error = false;
+                        DataTable siiresaki_dt = new DataTable();
+                        (bl_error, siiresaki_dt) = Gridview_Error_Check("E101", detail.SiiresakiCD.ToString(), "Siiresaki");
+                        if (bl_error == false)
+                            (bl_error, siiresaki_dt) = Gridview_Error_Check("E227", detail.SiiresakiCD.ToString(), "Siiresaki");
+                        if (bl_error == false)
+                            (bl_error, siiresaki_dt) = Gridview_Error_Check("E267", detail.SiiresakiCD.ToString(), "Siiresaki");
 
-                        sobj = new SiiresakiDetail();
-                        sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
-                    }
-                    else
-                    {
-                        gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[row].Cells[column];
+                        if (bl_error == false)
+                        {
+                            DataGridViewRow selectedRow = null;
+                            int selectedrowindex = gv_JuchuuNyuuryoku.SelectedCells[0].RowIndex;
+                            selectedRow = gv_JuchuuNyuuryoku.Rows[selectedrowindex];
+
+                            sobj = new SiiresakiDetail();
+                            sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(dt, selectedRow);
+                        }
+                        else
+                        {
+                            gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[row].Cells[column];
+                        }
                     }
                 }
             }
