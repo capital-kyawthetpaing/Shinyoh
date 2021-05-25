@@ -170,7 +170,8 @@ namespace HacchuuSho
             try
             {
                 var date = Convert.ToDateTime(dt);
-                res = date.Day.ToString() + "," + date.ToString("MMMM") + "," + date.Year.ToString();
+                //res = date.Day.ToString() + "," + date.ToString("MMMM") + "," + date.Year.ToString();
+                res = date.Day.ToString() + ", " + date.ToString("MMM", System.Globalization.CultureInfo.InvariantCulture) + ", " + date.Year.ToString();
             }
             catch
             {
