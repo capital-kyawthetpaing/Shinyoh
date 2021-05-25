@@ -275,6 +275,10 @@ namespace HacchuuSho
 
                             var dtgv = dt.AsEnumerable().Where(s => s.Field<string>("SiiresakiCD") == SiiresakiCD).CopyToDataTable();
                             var dgv = dtgv.AsEnumerable().GroupBy(x => x.Field<string>("ColorNo"), x => x.Field<string>("ModelNo")).Count();  // get Model and Color
+                            //「FLOOR、MEMO」で Distinct したレコードを取得
+                            var dtDis = dt.DefaultView.ToTable(true, "ColorNo", "ModelNo");
+                            dgv = dtDis.Rows.Count;
+
                             var dvresult = dtgv.AsEnumerable().GroupBy(r => new { Col1 = r["ColorNo"], Col2 = r["ModelNo"] }).Select(g => {
                                 var row = dt.NewRow();
                                 row["Pairs"] = g.Sum(r => r.Field<int>("Pairs"));
@@ -348,7 +352,7 @@ namespace HacchuuSho
                             xlWorkSheet.Cells[gvrow, 19] = "28.0";
                             xlWorkSheet.Cells[gvrow, 20] = "Pairs";
                             xlWorkSheet.Cells[gvrow, 21] = "Amount";
-                            xlWorkSheet.Cells[col, 8] = "TOTAL";
+                            //xlWorkSheet.Cells[col, 8] = "TOTAL";
                             #endregion
 
                             #region Child Item
@@ -428,10 +432,12 @@ namespace HacchuuSho
                                     Cell_Color2.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
                                 }
                             }
+
                             xlWorkSheet.get_Range("B" + (gvrow), "U" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
                             xlWorkSheet.Cells[col, 20].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 20].Address + ":" + xlWorkSheet.Cells[col - 1, 20].Address + ")";
                             xlWorkSheet.Cells[col, 21].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 21].Address + ":" + xlWorkSheet.Cells[col - 1, 21].Address + ")";
 
+                            xlWorkSheet.Cells[col, 8] = "TOTAL";
                             #endregion
 
                             SetFooter(xlWorkBook, xlWorkSheet, col);
@@ -439,6 +445,8 @@ namespace HacchuuSho
                             startrow = col + 12;
                             gvrow = startrow + 5;
                         }
+
+
                         // Footers
 
                         xlApp.get_Range("C" + col + 4, "L" + col + 4).Merge(Type.Missing);
