@@ -247,6 +247,13 @@ namespace JuchuuTorikomi
                             JEntity.OperateMode = "Delete";
                             DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml,DenpyouNO,JEntity);
                             bbl.ShowMessage("I002");
+                            txtDate1.Clear();
+                            txtDate2.Clear();
+                            txtDenpyouNO.Clear();
+                            dtMain.Clear();
+                            gvJuchuuTorikomi.ClearSelection();
+                            rdo_Delete.Focus();
+
                         }
                     }   
                 }
@@ -277,7 +284,7 @@ namespace JuchuuTorikomi
             {
                 bbl.ShowMessage("S013");
                 dtMain.Clear();
-                gvJuchuuTorikomi.DataSource = dtMain;   //HET
+                gvJuchuuTorikomi.DataSource = dtMain;  
                 txtDate1.Focus();
                 return;
             }
@@ -367,15 +374,15 @@ namespace JuchuuTorikomi
 
                             if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
                             {
-                                Xml_Hacchuu = string.Empty;
+                                 Xml_Juchuu = string.Empty;
                             }
                             else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
                             {
-                                Xml_Hacchuu = string.Empty;
+                                 Xml_Juchuu = string.Empty;
                             }
                             else if (Date_Check(date3, line_No, "入力可能値外エラー", "取引終了日") == "true")
                             {
-                                Xml_Hacchuu = string.Empty;
+                                Xml_Juchuu = string.Empty;
                             }
                             else if (r == create_dt.Rows.Count - 1)
                             {
