@@ -278,7 +278,7 @@ namespace HacchuuSho
                             var dtgv = dt.AsEnumerable().Where(s => s.Field<string>("SiiresakiCD") == SiiresakiCD).CopyToDataTable();
                             var dgv = dtgv.AsEnumerable().GroupBy(x => x.Field<string>("ColorNo"), x => x.Field<string>("ModelNo")).Count();  // get Model and Color
                             //「FLOOR、MEMO」で Distinct したレコードを取得
-                            var dtDis = dt.DefaultView.ToTable(true, "ColorNo", "ModelNo");
+                            var dtDis = dtgv.DefaultView.ToTable(true, "ColorNo", "ModelNo");
                             dgv = dtDis.Rows.Count;
 
                             var dvresult = dtgv.AsEnumerable().GroupBy(r => new { Col1 = r["ColorNo"], Col2 = r["ModelNo"] }).Select(g => {
