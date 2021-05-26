@@ -111,6 +111,7 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     //txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
+                    txtChakuniYoteiNO.E160Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
                     sd = new SiiresakiDetail();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -120,6 +121,7 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     //txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
+                    txtChakuniYoteiNO.E160Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
                     sd = new SiiresakiDetail(false);
                     //btn_Siiresaki.Enabled = true;
@@ -130,6 +132,7 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     //txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
+                    txtChakuniYoteiNO.E160Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
                     sd = new SiiresakiDetail(false);
                     //btn_Siiresaki.Enabled = true;

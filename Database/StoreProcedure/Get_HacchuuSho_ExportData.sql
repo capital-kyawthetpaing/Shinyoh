@@ -108,7 +108,7 @@ BEGIN
 	CREATE TABLE #WK_HacchuuMeisai
 	(
 		SiiresakiCD varchar(10),
-		SiiresakiName varchar(50),
+		SiiresakiName varchar(120),
 		Model_No varchar(16),
 		Model_Name varchar(40),
 		FOB varchar(15),
