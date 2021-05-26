@@ -39,8 +39,8 @@ BEGIN
    KouritenRyakuName
    From D_Shukka
    where  TorikomiDenpyouNO is not Null
-   And (@Datefrom is null or(InsertDateTime>=@Datefrom))
-   And (@Dateto is null or(InsertDateTime<=@Dateto))
+   And (@Datefrom is null or(FORMAT(InsertDateTime,'yyyy/MM/dd')>=@Datefrom))
+   And (@Dateto is null or(FORMAT(InsertDateTime,'yyyy/MM/dd')<=@Dateto))
    Order by TorikomiDenpyouNO,ShukkaNO ASC
 
 
