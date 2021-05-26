@@ -276,6 +276,8 @@ namespace JuchuuTorikomi
             else
             {
                 bbl.ShowMessage("S013");
+                dtMain.Clear();
+                gvJuchuuTorikomi.DataSource = dtMain;   //HET
                 txtDate1.Focus();
                 return;
             }
