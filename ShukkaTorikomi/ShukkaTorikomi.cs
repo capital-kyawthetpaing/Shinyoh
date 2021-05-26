@@ -682,6 +682,9 @@ namespace ShukkaTorikomi
             //remove_dt.Columns.Remove("ShukkaGyouNO");
         }
 
-       
+        private void txtDate2_KeyDown(object sender, KeyEventArgs e)
+        {
+            DataGridviewBind();
+        }
     }
 }
