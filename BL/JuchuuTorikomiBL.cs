@@ -68,7 +68,7 @@ namespace BL
             parameters[1] = new SqlParameter("@DenyouNO", SqlDbType.VarChar) { Value = DenpyouNO };
             parameters[2]= new SqlParameter("@ProgramID", SqlDbType.VarChar) { Value = entity.ProgramID };
             parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = entity.PC };
-            parameters[4] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = entity.Mode };
+            parameters[4] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = entity.OperatorCD };
             return ckmdl.SelectDatatable(sp_name, GetConnectionString(), parameters);
         }
         public DataTable D_Exclusive_Lock_Check(JuchuuTorikomiEntity ce)

@@ -241,6 +241,7 @@ namespace JuchuuTorikomi
                                     bbl.ShowMessage("S004");
                                 }
                             }
+                            JEntity.OperatorCD = base_Entity.OperatorCD;
                             JEntity.ProgramID = base_Entity.ProgramID;
                             JEntity.PC = base_Entity.PC;
                             JEntity.OperateMode = "Delete";
