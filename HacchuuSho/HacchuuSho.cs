@@ -15,6 +15,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using DataTable = System.Data.DataTable;
+using System.Text.RegularExpressions;
 //using DocumentFormat.OpenXml.Office2010.Excel;
 //using DocumentFormat.OpenXml.Spreadsheet;
 //using System.Windows.Media;
@@ -34,6 +35,7 @@ namespace HacchuuSho
         string tmpSourceLogo = @"C:\ShinYoh\HacchuuSho\SHINYOH_Logo.jpg";
         string tmpSave = @"C:\ShinYoh\HacchuuSho\";
         byte[] headerLogo = null;
+        static readonly Regex SheetNameForbiddenRegex = new Regex("[:\\\\?\\[\\]\\/*：￥＼？［］／＊]");
         public HacchuuSho()
         {
             InitializeComponent();
@@ -116,7 +118,6 @@ namespace HacchuuSho
             {
                 if (!ErrorCheckMain())
                 {
-                    bbl.ShowMessage("E102");
                     txtKanriNO.Focus();
                     return;
                 }
@@ -152,6 +153,14 @@ namespace HacchuuSho
         {
             if (string.IsNullOrEmpty(txtKanriNO.Text))
             {
+                bbl.ShowMessage("E102");
+                return false;
+            }
+            
+        string knrno=    SheetNameForbiddenRegex.Replace(txtKanriNO.Text, "");
+            if(!txtKanriNO.Text.Equals(knrno))
+            {
+                bbl.ShowMessage("E118");
                 return false;
             }
             return true;
