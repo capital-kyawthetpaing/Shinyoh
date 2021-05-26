@@ -91,12 +91,13 @@ namespace HacchuuSho
             txtKanriNO.E102Check(true);
 
             txtPayment.Text = hsbl.HCS_M_MultiPorpose_Type(1);
-            txtBeneficiary1.Text= hsbl.HCS_M_MultiPorpose_Type(2);
-            txtBeneficiary2.Text= hsbl.HCS_M_MultiPorpose_Type(3);
-            txtOriginCountry.Text= hsbl.HCS_M_MultiPorpose_Type(4);
-            txtDestination.Text= hsbl.HCS_M_MultiPorpose_Type(5);
+            txtBeneficiary1.Text = hsbl.HCS_M_MultiPorpose_Type(2);
+            txtBeneficiary2.Text = hsbl.HCS_M_MultiPorpose_Type(3);
+            txtOriginCountry.Text = hsbl.HCS_M_MultiPorpose_Type(4);
+            txtShipping.Text = hsbl.HCS_M_MultiPorpose_Type(5);
+            txtDestination.Text = hsbl.HCS_M_MultiPorpose_Type(6);
 
-            
+
             txtIssueDate.Text =DateTime.Now.ToString("yyyy/MM/dd");
             cboMode.SelectedIndex = 2;
             Rdo1.Focus();
@@ -138,7 +139,8 @@ namespace HacchuuSho
             txtBeneficiary1.Text = hsbl.HCS_M_MultiPorpose_Type(2);
             txtBeneficiary2.Text = hsbl.HCS_M_MultiPorpose_Type(3);
             txtOriginCountry.Text = hsbl.HCS_M_MultiPorpose_Type(4);
-            txtDestination.Text = hsbl.HCS_M_MultiPorpose_Type(5);
+            txtShipping.Text= hsbl.HCS_M_MultiPorpose_Type(5);
+            txtDestination.Text = hsbl.HCS_M_MultiPorpose_Type(6);
 
             chkSS.Checked = true;
             chkFW.Checked = true;
@@ -170,7 +172,8 @@ namespace HacchuuSho
             try
             {
                 var date = Convert.ToDateTime(dt);
-                res = date.Day.ToString() + "," + date.ToString("MMMM") + "," + date.Year.ToString();
+                //res = date.Day.ToString() + "," + date.ToString("MMMM") + "," + date.Year.ToString();
+                res = date.Day.ToString() + ", " + date.ToString("MMM", System.Globalization.CultureInfo.InvariantCulture) + ", " + date.Year.ToString();
             }
             catch
             {
@@ -274,10 +277,14 @@ namespace HacchuuSho
 
                             var dtgv = dt.AsEnumerable().Where(s => s.Field<string>("SiiresakiCD") == SiiresakiCD).CopyToDataTable();
                             var dgv = dtgv.AsEnumerable().GroupBy(x => x.Field<string>("ColorNo"), x => x.Field<string>("ModelNo")).Count();  // get Model and Color
+                            //「FLOOR、MEMO」で Distinct したレコードを取得
+                            var dtDis = dt.DefaultView.ToTable(true, "ColorNo", "ModelNo");
+                            dgv = dtDis.Rows.Count;
+
                             var dvresult = dtgv.AsEnumerable().GroupBy(r => new { Col1 = r["ColorNo"], Col2 = r["ModelNo"] }).Select(g => {
                                 var row = dt.NewRow();
                                 row["Pairs"] = g.Sum(r => r.Field<int>("Pairs"));
-                                row["Amount"] = g.Sum(r => r.Field<int>("Amount"));
+                                row["Amount"] = g.Sum(r => r.Field<decimal>("Amount"));
                                 row["ColorNo"] = g.Key.Col1;
                                 row["ModelNo"] = g.Key.Col2;
                                 return row;
@@ -347,7 +354,7 @@ namespace HacchuuSho
                             xlWorkSheet.Cells[gvrow, 19] = "28.0";
                             xlWorkSheet.Cells[gvrow, 20] = "Pairs";
                             xlWorkSheet.Cells[gvrow, 21] = "Amount";
-                            xlWorkSheet.Cells[col, 8] = "TOTAL";
+                            //xlWorkSheet.Cells[col, 8] = "TOTAL";
                             #endregion
 
                             #region Child Item
@@ -427,10 +434,12 @@ namespace HacchuuSho
                                     Cell_Color2.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
                                 }
                             }
+
                             xlWorkSheet.get_Range("B" + (gvrow), "U" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
                             xlWorkSheet.Cells[col, 20].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 20].Address + ":" + xlWorkSheet.Cells[col - 1, 20].Address + ")";
                             xlWorkSheet.Cells[col, 21].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 21].Address + ":" + xlWorkSheet.Cells[col - 1, 21].Address + ")";
 
+                            xlWorkSheet.Cells[col, 8] = "TOTAL";
                             #endregion
 
                             SetFooter(xlWorkBook, xlWorkSheet, col);
@@ -438,6 +447,8 @@ namespace HacchuuSho
                             startrow = col + 12;
                             gvrow = startrow + 5;
                         }
+
+
                         // Footers
 
                         xlApp.get_Range("C" + col + 4, "L" + col + 4).Merge(Type.Missing);
@@ -648,7 +659,7 @@ namespace HacchuuSho
                 YearTerm=txtYearTerm.Text,
                 SS=chkSS.Checked?"1":"",
                 FW=chkFW.Checked?"1":"",
-                Rdo_Type=Rdo1.Checked?1:0
+                Rdo_Type=Rdo1.Checked?0:1
             };
             hse.OperatorCD = OperatorCD;
             hse.PC = PCID;
