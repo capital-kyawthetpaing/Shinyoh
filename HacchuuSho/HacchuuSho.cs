@@ -91,12 +91,13 @@ namespace HacchuuSho
             txtKanriNO.E102Check(true);
 
             txtPayment.Text = hsbl.HCS_M_MultiPorpose_Type(1);
-            txtBeneficiary1.Text= hsbl.HCS_M_MultiPorpose_Type(2);
-            txtBeneficiary2.Text= hsbl.HCS_M_MultiPorpose_Type(3);
-            txtOriginCountry.Text= hsbl.HCS_M_MultiPorpose_Type(4);
-            txtDestination.Text= hsbl.HCS_M_MultiPorpose_Type(5);
+            txtBeneficiary1.Text = hsbl.HCS_M_MultiPorpose_Type(2);
+            txtBeneficiary2.Text = hsbl.HCS_M_MultiPorpose_Type(3);
+            txtOriginCountry.Text = hsbl.HCS_M_MultiPorpose_Type(4);
+            txtShipping.Text = hsbl.HCS_M_MultiPorpose_Type(5);
+            txtDestination.Text = hsbl.HCS_M_MultiPorpose_Type(6);
 
-            
+
             txtIssueDate.Text =DateTime.Now.ToString("yyyy/MM/dd");
             cboMode.SelectedIndex = 2;
             Rdo1.Focus();
@@ -138,7 +139,8 @@ namespace HacchuuSho
             txtBeneficiary1.Text = hsbl.HCS_M_MultiPorpose_Type(2);
             txtBeneficiary2.Text = hsbl.HCS_M_MultiPorpose_Type(3);
             txtOriginCountry.Text = hsbl.HCS_M_MultiPorpose_Type(4);
-            txtDestination.Text = hsbl.HCS_M_MultiPorpose_Type(5);
+            txtShipping.Text= hsbl.HCS_M_MultiPorpose_Type(5);
+            txtDestination.Text = hsbl.HCS_M_MultiPorpose_Type(6);
 
             chkSS.Checked = true;
             chkFW.Checked = true;
