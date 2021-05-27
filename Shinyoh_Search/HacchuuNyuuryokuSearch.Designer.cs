@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtStaffCD = new Shinyoh_Search.SearchBox();
+            this.txtSiiresaki = new Shinyoh_Search.SearchBox();
             this.txtCurrentDate = new Shinyoh_Controls.STextBox();
             this.lblStaffCD_Name = new Shinyoh_Controls.SLabel();
             this.lblSiiresakiRyakuName = new Shinyoh_Controls.SLabel();
@@ -64,8 +66,6 @@
             this.colSiiresakiName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCurrentDay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtStaffCD = new Shinyoh_Search.SearchBox();
-            this.txtSiiresaki = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gv_1)).BeginInit();
             this.SuspendLayout();
@@ -107,6 +107,68 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1184, 120);
             this.panel1.TabIndex = 4;
+            // 
+            // txtStaffCD
+            // 
+            this.txtStaffCD.AllowMinus = false;
+            this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStaffCD.ChangeDate = null;
+            this.txtStaffCD.Combo = null;
+            this.txtStaffCD.DecimalPlace = 0;
+            this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtStaffCD.DepandOnMode = false;
+            this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtStaffCD.IntegerPart = 0;
+            this.txtStaffCD.IsDatatableOccurs = null;
+            this.txtStaffCD.IsErrorOccurs = false;
+            this.txtStaffCD.IsRequire = false;
+            this.txtStaffCD.IsUseInitializedLayout = true;
+            this.txtStaffCD.lblName = null;
+            this.txtStaffCD.lblName1 = null;
+            this.txtStaffCD.Location = new System.Drawing.Point(123, 59);
+            this.txtStaffCD.MaxLength = 10;
+            this.txtStaffCD.MinimumSize = new System.Drawing.Size(75, 19);
+            this.txtStaffCD.MoveNext = true;
+            this.txtStaffCD.Name = "txtStaffCD";
+            this.txtStaffCD.NextControl = null;
+            this.txtStaffCD.NextControlName = "txtShouhinName";
+            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
+            this.txtStaffCD.Size = new System.Drawing.Size(100, 19);
+            this.txtStaffCD.TabIndex = 4;
+            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtStaffCD.TxtBox = null;
+            this.txtStaffCD.TxtBox1 = null;
+            // 
+            // txtSiiresaki
+            // 
+            this.txtSiiresaki.AllowMinus = false;
+            this.txtSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSiiresaki.ChangeDate = null;
+            this.txtSiiresaki.Combo = null;
+            this.txtSiiresaki.DecimalPlace = 0;
+            this.txtSiiresaki.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtSiiresaki.DepandOnMode = false;
+            this.txtSiiresaki.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtSiiresaki.IntegerPart = 0;
+            this.txtSiiresaki.IsDatatableOccurs = null;
+            this.txtSiiresaki.IsErrorOccurs = false;
+            this.txtSiiresaki.IsRequire = false;
+            this.txtSiiresaki.IsUseInitializedLayout = true;
+            this.txtSiiresaki.lblName = null;
+            this.txtSiiresaki.lblName1 = null;
+            this.txtSiiresaki.Location = new System.Drawing.Point(123, 33);
+            this.txtSiiresaki.MaxLength = 10;
+            this.txtSiiresaki.MinimumSize = new System.Drawing.Size(75, 19);
+            this.txtSiiresaki.MoveNext = true;
+            this.txtSiiresaki.Name = "txtSiiresaki";
+            this.txtSiiresaki.NextControl = null;
+            this.txtSiiresaki.NextControlName = "txtStaffCD";
+            this.txtSiiresaki.SearchType = Entity.SearchType.ScType.Siiresaki;
+            this.txtSiiresaki.Size = new System.Drawing.Size(100, 19);
+            this.txtSiiresaki.TabIndex = 3;
+            this.txtSiiresaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtSiiresaki.TxtBox = null;
+            this.txtSiiresaki.TxtBox1 = null;
             // 
             // txtCurrentDate
             // 
@@ -217,41 +279,41 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(750, 65);
+            this.label4.Location = new System.Drawing.Point(746, 63);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 16);
+            this.label4.Size = new System.Drawing.Size(23, 16);
             this.label4.TabIndex = 19;
-            this.label4.Text = "~";
+            this.label4.Text = "～";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(710, 38);
+            this.label3.Location = new System.Drawing.Point(710, 36);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 16);
+            this.label3.Size = new System.Drawing.Size(23, 16);
             this.label3.TabIndex = 18;
-            this.label3.Text = "~";
+            this.label3.Text = "～";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(710, 12);
+            this.label2.Location = new System.Drawing.Point(709, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 16);
+            this.label2.Size = new System.Drawing.Size(23, 16);
             this.label2.TabIndex = 17;
-            this.label2.Text = "~";
+            this.label2.Text = "～";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(230, 12);
+            this.label1.Location = new System.Drawing.Point(229, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 16);
+            this.label1.Size = new System.Drawing.Size(23, 16);
             this.label1.TabIndex = 16;
-            this.label1.Text = "~";
+            this.label1.Text = "～";
             // 
             // txtShouhin2
             // 
@@ -561,14 +623,14 @@
             // gv_1
             // 
             this.gv_1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.gv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gv_1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colHacchuuNO,
@@ -596,8 +658,8 @@
             // colHacchuuDate
             // 
             this.colHacchuuDate.DataPropertyName = "HacchuuDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colHacchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colHacchuuDate.DefaultCellStyle = dataGridViewCellStyle6;
             this.colHacchuuDate.HeaderText = "発注日";
             this.colHacchuuDate.Name = "colHacchuuDate";
             this.colHacchuuDate.ReadOnly = true;
@@ -631,68 +693,6 @@
             this.colCurrentDay.HeaderText = "CurrentDay";
             this.colCurrentDay.Name = "colCurrentDay";
             this.colCurrentDay.Visible = false;
-            // 
-            // txtStaffCD
-            // 
-            this.txtStaffCD.AllowMinus = false;
-            this.txtStaffCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStaffCD.ChangeDate = null;
-            this.txtStaffCD.Combo = null;
-            this.txtStaffCD.DecimalPlace = 0;
-            this.txtStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtStaffCD.DepandOnMode = false;
-            this.txtStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtStaffCD.IntegerPart = 0;
-            this.txtStaffCD.IsDatatableOccurs = null;
-            this.txtStaffCD.IsErrorOccurs = false;
-            this.txtStaffCD.IsRequire = false;
-            this.txtStaffCD.IsUseInitializedLayout = true;
-            this.txtStaffCD.lblName = null;
-            this.txtStaffCD.lblName1 = null;
-            this.txtStaffCD.Location = new System.Drawing.Point(123, 59);
-            this.txtStaffCD.MaxLength = 10;
-            this.txtStaffCD.MinimumSize = new System.Drawing.Size(75, 19);
-            this.txtStaffCD.MoveNext = true;
-            this.txtStaffCD.Name = "txtStaffCD";
-            this.txtStaffCD.NextControl = null;
-            this.txtStaffCD.NextControlName = "txtShouhinName";
-            this.txtStaffCD.SearchType = Entity.SearchType.ScType.Staff;
-            this.txtStaffCD.Size = new System.Drawing.Size(100, 19);
-            this.txtStaffCD.TabIndex = 4;
-            this.txtStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtStaffCD.TxtBox = null;
-            this.txtStaffCD.TxtBox1 = null;
-            // 
-            // txtSiiresaki
-            // 
-            this.txtSiiresaki.AllowMinus = false;
-            this.txtSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSiiresaki.ChangeDate = null;
-            this.txtSiiresaki.Combo = null;
-            this.txtSiiresaki.DecimalPlace = 0;
-            this.txtSiiresaki.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtSiiresaki.DepandOnMode = false;
-            this.txtSiiresaki.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtSiiresaki.IntegerPart = 0;
-            this.txtSiiresaki.IsDatatableOccurs = null;
-            this.txtSiiresaki.IsErrorOccurs = false;
-            this.txtSiiresaki.IsRequire = false;
-            this.txtSiiresaki.IsUseInitializedLayout = true;
-            this.txtSiiresaki.lblName = null;
-            this.txtSiiresaki.lblName1 = null;
-            this.txtSiiresaki.Location = new System.Drawing.Point(123, 33);
-            this.txtSiiresaki.MaxLength = 10;
-            this.txtSiiresaki.MinimumSize = new System.Drawing.Size(75, 19);
-            this.txtSiiresaki.MoveNext = true;
-            this.txtSiiresaki.Name = "txtSiiresaki";
-            this.txtSiiresaki.NextControl = null;
-            this.txtSiiresaki.NextControlName = "txtStaffCD";
-            this.txtSiiresaki.SearchType = Entity.SearchType.ScType.Siiresaki;
-            this.txtSiiresaki.Size = new System.Drawing.Size(100, 19);
-            this.txtSiiresaki.TabIndex = 3;
-            this.txtSiiresaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtSiiresaki.TxtBox = null;
-            this.txtSiiresaki.TxtBox1 = null;
             // 
             // HacchuuNyuuryokuSearch
             // 
