@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.txtSiiresaki = new Shinyoh_Search.SearchBox();
@@ -279,41 +279,41 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(750, 65);
+            this.label4.Location = new System.Drawing.Point(746, 63);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 16);
+            this.label4.Size = new System.Drawing.Size(23, 16);
             this.label4.TabIndex = 19;
-            this.label4.Text = "~";
+            this.label4.Text = "～";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(710, 38);
+            this.label3.Location = new System.Drawing.Point(710, 36);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 16);
+            this.label3.Size = new System.Drawing.Size(23, 16);
             this.label3.TabIndex = 18;
-            this.label3.Text = "~";
+            this.label3.Text = "～";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(710, 12);
+            this.label2.Location = new System.Drawing.Point(709, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 16);
+            this.label2.Size = new System.Drawing.Size(23, 16);
             this.label2.TabIndex = 17;
-            this.label2.Text = "~";
+            this.label2.Text = "～";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(230, 12);
+            this.label1.Location = new System.Drawing.Point(229, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(17, 16);
+            this.label1.Size = new System.Drawing.Size(23, 16);
             this.label1.TabIndex = 16;
-            this.label1.Text = "~";
+            this.label1.Text = "～";
             // 
             // txtShouhin2
             // 
@@ -623,14 +623,14 @@
             // gv_1
             // 
             this.gv_1.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gv_1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.gv_1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gv_1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colHacchuuNO,
@@ -658,8 +658,8 @@
             // colHacchuuDate
             // 
             this.colHacchuuDate.DataPropertyName = "HacchuuDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colHacchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colHacchuuDate.DefaultCellStyle = dataGridViewCellStyle6;
             this.colHacchuuDate.HeaderText = "発注日";
             this.colHacchuuDate.Name = "colHacchuuDate";
             this.colHacchuuDate.ReadOnly = true;
