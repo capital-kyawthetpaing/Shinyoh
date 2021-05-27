@@ -42,13 +42,13 @@ namespace Shinyoh_Search
             txtShippingDateFrom.Focus();
             gvShippingNo.UseRowNo(true);
             gvShippingNo.SetReadOnlyColumn("**");//readonly for search form 
-            lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", DateTime.Now.ToString());
-            txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", DateTime.Now.ToString());
         }
         private void ShippingNoSearch_Load(object sender, EventArgs e)
-        {
+        {            
             GridViewBind();
             ErrorCheck();
+            txtProductFrom.ChangeDate = txtCurrentDate;//20210527Taskno_541_ssa
+            txtProductTo.ChangeDate = txtCurrentDate;//20210527Taskno_541_ssa
         }
            
         public override void FunctionProcess(string tagID)
@@ -95,6 +95,7 @@ namespace Shinyoh_Search
                 {
                     if (dt.Columns.Contains("CurrentDay"))
                     {
+                        lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);//ssa
                         txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                         dt.Columns.Remove("CurrentDay");
                     }
