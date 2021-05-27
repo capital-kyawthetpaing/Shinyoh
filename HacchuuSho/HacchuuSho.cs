@@ -233,7 +233,7 @@ namespace HacchuuSho
                     {
                         //            try
                         //{
-                        xlWorkSheet.PageSetup.PrintArea = "A1:V1000";
+                        //xlWorkSheet.PageSetup.PrintArea = "A1:V1000";
                         xlWorkSheet.PageSetup.Orientation = Microsoft.Office.Interop.Excel.XlPageOrientation.xlLandscape;//Page horizontal
                         xlWorkSheet.PageSetup.Zoom = 75; //page setting when printing, a few percent of the scale
                         xlWorkSheet.PageSetup.Zoom = false; //Page setting when printing, must be set to false, page height, page width is valid
@@ -342,7 +342,7 @@ namespace HacchuuSho
                                         xlWorkSheet.Cells[col, 21] = "**********";
 
                                         SetFooter(xlWorkBook, xlWorkSheet, col);
-                                        col += 17;
+                                        col += 17 - 2;
                                         startrow = col + 12;
                                         gvrow = startrow + 5;
 
@@ -463,11 +463,12 @@ namespace HacchuuSho
                             #endregion
 
                             SetFooter(xlWorkBook, xlWorkSheet, col);
-                            col += 17;
+                            col += 17-2;
                             startrow = col + 12;
                             gvrow = startrow + 5;
                         }
 
+                        xlWorkSheet.PageSetup.PrintArea = "A1:V"+ col;
 
                         // Footers
 
