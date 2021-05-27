@@ -42,6 +42,8 @@ namespace Shinyoh_Search
             sbSiiresaki.lblName = lblSiiresaki;
             txtStaffCD.ChangeDate = txtCurrentDate;
             txtStaffCD.lblName = lblStaff;
+            txtProductFrom.ChangeDate = txtCurrentDate;
+            txtProductTo.ChangeDate = txtCurrentDate;
             gvArrivalNo.UseRowNo(true);
             GridViewBind();
             gvArrivalNo.SetGridDesign();
