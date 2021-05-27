@@ -41,7 +41,8 @@ namespace Shinyoh_Search
             txtNyukosouko.lblName = lblNyukoSouko;
             txtStaffCD.ChangeDate = txtCurrentDate;
             txtStaffCD.lblName = lblStaff;
-
+            txtShouhin1.ChangeDate = txtCurrentDate;        //TaskNo546 for shouhin HET
+            txtShouhin2.ChangeDate = txtCurrentDate;        //TaskNo546 for shouhin HET
             ErrorCheck();
 
             gv_Idou.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
