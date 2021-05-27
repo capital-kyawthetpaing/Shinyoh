@@ -384,11 +384,11 @@ namespace HacchuuSho
                                     //Yellow_Color_Change_Item ==> [ModelNO]
                                     var Cell_Color = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 2];
                                     var Cell_Color1 = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 5];
-                                    if (dtgv.Rows[h]["HacchuuLotFLG"].ToString().Equals("1"))
-                                    {
-                                        Cell_Color.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
-                                        Cell_Color1.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
-                                    }
+                                    //if (dtgv.Rows[h]["HacchuuLotFLG"].ToString().Equals("1"))
+                                    //{
+                                    //    Cell_Color.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
+                                    //    Cell_Color1.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
+                                    //}
                                     //try
                                     //{
                                     SettingImg(dtgv.Rows[h]["IMAGE"] as byte[]);
@@ -417,11 +417,11 @@ namespace HacchuuSho
                                     var Cell_Color = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 2];
                                     var Cell_Color1 = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 5];
 
-                                    if (dtgv.Rows[h]["HacchuuLotFLG"].ToString().Equals("1"))
-                                    {
-                                        Cell_Color.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
-                                        Cell_Color1.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
-                                    }
+                                    //if (dtgv.Rows[h]["HacchuuLotFLG"].ToString().Equals("1"))
+                                    //{
+                                    //    Cell_Color.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
+                                    //    Cell_Color1.Interior.Color = System.Drawing.ColorTranslator.FromHtml("#F0F179");
+                                    //}
 
                                     //try
                                     //    {

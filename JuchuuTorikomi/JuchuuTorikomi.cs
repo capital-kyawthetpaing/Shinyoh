@@ -149,7 +149,7 @@ namespace JuchuuTorikomi
                         {
                             {
                                 spname = "JuchuuTorikomi_Insert";
-                                DataTable return_BL1 = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2);
+                                DataTable return_BL1 = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2, "ErrorCheck");
                                 if (return_BL1.Rows.Count > 0)
                                 {
                                     if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
@@ -161,6 +161,7 @@ namespace JuchuuTorikomi
                                         }
                                         else
                                         {
+                                            return_BL1 = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2, "");
                                             if (return_BL1.Rows.Count > 0)
                                             {
                                                 if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))

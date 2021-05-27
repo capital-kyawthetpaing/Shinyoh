@@ -587,7 +587,7 @@ namespace MasterTouroku_Shouhin
                 if(openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    string[] csvRows = File.ReadAllLines(filePath);
+                    string[] csvRows = File.ReadAllLines(filePath,Encoding.GetEncoding(932));
                     var bl_list = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
                     {

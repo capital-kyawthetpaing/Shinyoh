@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvArrivalNo = new Shinyoh_Controls.SGridView();
             this.colChakuniNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -38,6 +38,8 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PanelTitle = new System.Windows.Forms.Panel();
+            this.sbHinbanCDTo = new Shinyoh_Search.SearchBox();
+            this.sbHinbanCDFrom = new Shinyoh_Search.SearchBox();
             this.txtCurrentDate = new Shinyoh_Controls.STextBox();
             this.txtStaffCD = new Shinyoh_Search.SearchBox();
             this.lblStaffCD = new Shinyoh_Controls.SLabel();
@@ -51,8 +53,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtProductTo = new Shinyoh_Controls.STextBox();
-            this.txtProductFrom = new Shinyoh_Controls.STextBox();
             this.txtControlNoTo = new Shinyoh_Controls.STextBox();
             this.txtControlNoFrom = new Shinyoh_Controls.STextBox();
             this.txtExpectedDateTo = new Shinyoh_Controls.STextBox();
@@ -100,8 +100,8 @@
             // Column2
             // 
             this.Column2.DataPropertyName = "ChakuniDate";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column2.HeaderText = "着荷日";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -110,8 +110,8 @@
             // Column3
             // 
             this.Column3.DataPropertyName = "ChakuniYoteiDate";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column3.HeaderText = "着荷予定日";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -143,6 +143,8 @@
             // PanelTitle
             // 
             this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.PanelTitle.Controls.Add(this.sbHinbanCDTo);
+            this.PanelTitle.Controls.Add(this.sbHinbanCDFrom);
             this.PanelTitle.Controls.Add(this.txtCurrentDate);
             this.PanelTitle.Controls.Add(this.txtStaffCD);
             this.PanelTitle.Controls.Add(this.lblStaffCD);
@@ -156,8 +158,6 @@
             this.PanelTitle.Controls.Add(this.label3);
             this.PanelTitle.Controls.Add(this.label2);
             this.PanelTitle.Controls.Add(this.label1);
-            this.PanelTitle.Controls.Add(this.txtProductTo);
-            this.PanelTitle.Controls.Add(this.txtProductFrom);
             this.PanelTitle.Controls.Add(this.txtControlNoTo);
             this.PanelTitle.Controls.Add(this.txtControlNoFrom);
             this.PanelTitle.Controls.Add(this.txtExpectedDateTo);
@@ -176,6 +176,68 @@
             this.PanelTitle.Name = "PanelTitle";
             this.PanelTitle.Size = new System.Drawing.Size(1184, 120);
             this.PanelTitle.TabIndex = 2;
+            // 
+            // sbHinbanCDTo
+            // 
+            this.sbHinbanCDTo.AllowMinus = false;
+            this.sbHinbanCDTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sbHinbanCDTo.ChangeDate = null;
+            this.sbHinbanCDTo.Combo = null;
+            this.sbHinbanCDTo.DecimalPlace = 0;
+            this.sbHinbanCDTo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.sbHinbanCDTo.DepandOnMode = true;
+            this.sbHinbanCDTo.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.sbHinbanCDTo.IntegerPart = 0;
+            this.sbHinbanCDTo.IsDatatableOccurs = null;
+            this.sbHinbanCDTo.IsErrorOccurs = false;
+            this.sbHinbanCDTo.IsRequire = false;
+            this.sbHinbanCDTo.IsUseInitializedLayout = true;
+            this.sbHinbanCDTo.lblName = null;
+            this.sbHinbanCDTo.lblName1 = null;
+            this.sbHinbanCDTo.Location = new System.Drawing.Point(809, 62);
+            this.sbHinbanCDTo.MaxLength = 20;
+            this.sbHinbanCDTo.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sbHinbanCDTo.MoveNext = true;
+            this.sbHinbanCDTo.Name = "sbHinbanCDTo";
+            this.sbHinbanCDTo.NextControl = null;
+            this.sbHinbanCDTo.NextControlName = "btnSearch";
+            this.sbHinbanCDTo.SearchType = Entity.SearchType.ScType.Shouhin;
+            this.sbHinbanCDTo.Size = new System.Drawing.Size(140, 19);
+            this.sbHinbanCDTo.TabIndex = 11;
+            this.sbHinbanCDTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sbHinbanCDTo.TxtBox = null;
+            this.sbHinbanCDTo.TxtBox1 = null;
+            // 
+            // sbHinbanCDFrom
+            // 
+            this.sbHinbanCDFrom.AllowMinus = false;
+            this.sbHinbanCDFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sbHinbanCDFrom.ChangeDate = null;
+            this.sbHinbanCDFrom.Combo = null;
+            this.sbHinbanCDFrom.DecimalPlace = 0;
+            this.sbHinbanCDFrom.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.sbHinbanCDFrom.DepandOnMode = true;
+            this.sbHinbanCDFrom.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.sbHinbanCDFrom.IntegerPart = 0;
+            this.sbHinbanCDFrom.IsDatatableOccurs = null;
+            this.sbHinbanCDFrom.IsErrorOccurs = false;
+            this.sbHinbanCDFrom.IsRequire = false;
+            this.sbHinbanCDFrom.IsUseInitializedLayout = true;
+            this.sbHinbanCDFrom.lblName = null;
+            this.sbHinbanCDFrom.lblName1 = null;
+            this.sbHinbanCDFrom.Location = new System.Drawing.Point(596, 60);
+            this.sbHinbanCDFrom.MaxLength = 20;
+            this.sbHinbanCDFrom.MinimumSize = new System.Drawing.Size(100, 19);
+            this.sbHinbanCDFrom.MoveNext = true;
+            this.sbHinbanCDFrom.Name = "sbHinbanCDFrom";
+            this.sbHinbanCDFrom.NextControl = null;
+            this.sbHinbanCDFrom.NextControlName = "sbHinbanCDTo";
+            this.sbHinbanCDFrom.SearchType = Entity.SearchType.ScType.Shouhin;
+            this.sbHinbanCDFrom.Size = new System.Drawing.Size(140, 19);
+            this.sbHinbanCDFrom.TabIndex = 10;
+            this.sbHinbanCDFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.sbHinbanCDFrom.TxtBox = null;
+            this.sbHinbanCDFrom.TxtBox1 = null;
             // 
             // txtCurrentDate
             // 
@@ -349,7 +411,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(761, 63);
+            this.label4.Location = new System.Drawing.Point(766, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 13);
             this.label4.TabIndex = 19;
@@ -358,7 +420,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(690, 36);
+            this.label3.Location = new System.Drawing.Point(695, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(19, 13);
             this.label3.TabIndex = 18;
@@ -367,7 +429,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(689, 10);
+            this.label2.Location = new System.Drawing.Point(694, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 17;
@@ -382,56 +444,6 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "～";
             // 
-            // txtProductTo
-            // 
-            this.txtProductTo.AllowMinus = false;
-            this.txtProductTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProductTo.DecimalPlace = 0;
-            this.txtProductTo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtProductTo.DepandOnMode = true;
-            this.txtProductTo.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtProductTo.IntegerPart = 0;
-            this.txtProductTo.IsDatatableOccurs = null;
-            this.txtProductTo.IsErrorOccurs = false;
-            this.txtProductTo.IsRequire = false;
-            this.txtProductTo.IsUseInitializedLayout = true;
-            this.txtProductTo.Location = new System.Drawing.Point(802, 60);
-            this.txtProductTo.MaxLength = 20;
-            this.txtProductTo.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtProductTo.MoveNext = true;
-            this.txtProductTo.Name = "txtProductTo";
-            this.txtProductTo.NextControl = null;
-            this.txtProductTo.NextControlName = "btnSearch";
-            this.txtProductTo.SearchType = Entity.SearchType.ScType.None;
-            this.txtProductTo.Size = new System.Drawing.Size(140, 19);
-            this.txtProductTo.TabIndex = 11;
-            this.txtProductTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
-            // txtProductFrom
-            // 
-            this.txtProductFrom.AllowMinus = false;
-            this.txtProductFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProductFrom.DecimalPlace = 0;
-            this.txtProductFrom.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtProductFrom.DepandOnMode = true;
-            this.txtProductFrom.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtProductFrom.IntegerPart = 0;
-            this.txtProductFrom.IsDatatableOccurs = null;
-            this.txtProductFrom.IsErrorOccurs = false;
-            this.txtProductFrom.IsRequire = false;
-            this.txtProductFrom.IsUseInitializedLayout = true;
-            this.txtProductFrom.Location = new System.Drawing.Point(591, 60);
-            this.txtProductFrom.MaxLength = 20;
-            this.txtProductFrom.MinimumSize = new System.Drawing.Size(100, 19);
-            this.txtProductFrom.MoveNext = true;
-            this.txtProductFrom.Name = "txtProductFrom";
-            this.txtProductFrom.NextControl = this.txtProductTo;
-            this.txtProductFrom.NextControlName = "txtProductTo";
-            this.txtProductFrom.SearchType = Entity.SearchType.ScType.None;
-            this.txtProductFrom.Size = new System.Drawing.Size(140, 19);
-            this.txtProductFrom.TabIndex = 10;
-            this.txtProductFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            // 
             // txtControlNoTo
             // 
             this.txtControlNoTo.AllowMinus = false;
@@ -445,13 +457,13 @@
             this.txtControlNoTo.IsErrorOccurs = false;
             this.txtControlNoTo.IsRequire = false;
             this.txtControlNoTo.IsUseInitializedLayout = true;
-            this.txtControlNoTo.Location = new System.Drawing.Point(723, 34);
+            this.txtControlNoTo.Location = new System.Drawing.Point(728, 34);
             this.txtControlNoTo.MaxLength = 10;
             this.txtControlNoTo.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtControlNoTo.MoveNext = true;
             this.txtControlNoTo.Name = "txtControlNoTo";
-            this.txtControlNoTo.NextControl = this.txtProductFrom;
-            this.txtControlNoTo.NextControlName = "txtProductFrom";
+            this.txtControlNoTo.NextControl = null;
+            this.txtControlNoTo.NextControlName = "sbHinbanCDFrom";
             this.txtControlNoTo.SearchType = Entity.SearchType.ScType.None;
             this.txtControlNoTo.Size = new System.Drawing.Size(80, 19);
             this.txtControlNoTo.TabIndex = 9;
@@ -470,7 +482,7 @@
             this.txtControlNoFrom.IsErrorOccurs = false;
             this.txtControlNoFrom.IsRequire = false;
             this.txtControlNoFrom.IsUseInitializedLayout = true;
-            this.txtControlNoFrom.Location = new System.Drawing.Point(591, 33);
+            this.txtControlNoFrom.Location = new System.Drawing.Point(596, 33);
             this.txtControlNoFrom.MaxLength = 10;
             this.txtControlNoFrom.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtControlNoFrom.MoveNext = true;
@@ -495,7 +507,7 @@
             this.txtExpectedDateTo.IsErrorOccurs = false;
             this.txtExpectedDateTo.IsRequire = false;
             this.txtExpectedDateTo.IsUseInitializedLayout = true;
-            this.txtExpectedDateTo.Location = new System.Drawing.Point(722, 7);
+            this.txtExpectedDateTo.Location = new System.Drawing.Point(727, 7);
             this.txtExpectedDateTo.MaxLength = 10;
             this.txtExpectedDateTo.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtExpectedDateTo.MoveNext = true;
@@ -522,7 +534,7 @@
             this.txtExpectedDateFrom.IsErrorOccurs = false;
             this.txtExpectedDateFrom.IsRequire = false;
             this.txtExpectedDateFrom.IsUseInitializedLayout = true;
-            this.txtExpectedDateFrom.Location = new System.Drawing.Point(591, 7);
+            this.txtExpectedDateFrom.Location = new System.Drawing.Point(596, 7);
             this.txtExpectedDateFrom.MaxLength = 10;
             this.txtExpectedDateFrom.MinimumSize = new System.Drawing.Size(80, 19);
             this.txtExpectedDateFrom.MoveNext = true;
@@ -618,11 +630,11 @@
             this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel7.Location = new System.Drawing.Point(501, 60);
+            this.sLabel7.Location = new System.Drawing.Point(506, 60);
             this.sLabel7.Name = "sLabel7";
             this.sLabel7.Size = new System.Drawing.Size(90, 19);
             this.sLabel7.TabIndex = 6;
-            this.sLabel7.Text = "商品";
+            this.sLabel7.Text = "品番";
             this.sLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sLabel6
@@ -631,7 +643,7 @@
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel6.Location = new System.Drawing.Point(501, 33);
+            this.sLabel6.Location = new System.Drawing.Point(506, 33);
             this.sLabel6.Name = "sLabel6";
             this.sLabel6.Size = new System.Drawing.Size(90, 19);
             this.sLabel6.TabIndex = 5;
@@ -644,7 +656,7 @@
             this.sLabel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel5.Location = new System.Drawing.Point(501, 7);
+            this.sLabel5.Location = new System.Drawing.Point(506, 7);
             this.sLabel5.Name = "sLabel5";
             this.sLabel5.Size = new System.Drawing.Size(90, 19);
             this.sLabel5.TabIndex = 4;
@@ -723,8 +735,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private Shinyoh_Controls.STextBox txtProductTo;
-        private Shinyoh_Controls.STextBox txtProductFrom;
         private Shinyoh_Controls.STextBox txtControlNoTo;
         private Shinyoh_Controls.STextBox txtControlNoFrom;
         private Shinyoh_Controls.STextBox txtExpectedDateTo;
@@ -747,5 +757,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private SearchBox sbHinbanCDFrom;
+        private SearchBox sbHinbanCDTo;
     }
 }

@@ -552,7 +552,7 @@
             this.lblShouhin.Name = "lblShouhin";
             this.lblShouhin.Size = new System.Drawing.Size(90, 19);
             this.lblShouhin.TabIndex = 6;
-            this.lblShouhin.Text = "商品";
+            this.lblShouhin.Text = "品番";
             this.lblShouhin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblShukkaSijiNo

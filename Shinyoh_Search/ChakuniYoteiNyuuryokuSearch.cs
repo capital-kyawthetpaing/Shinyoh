@@ -42,6 +42,8 @@ namespace Shinyoh_Search
             sbSiiresaki.lblName = lblSiiresaki;
             sbStaff.ChangeDate = txtCurrentDate;
             sbStaff.lblName = lblStaff;
+            sbHinbanCDFrom.ChangeDate = txtCurrentDate;
+            sbHinbanCDTo.ChangeDate = txtCurrentDate;
             gvChakuniYoteiNyuuryoku.UseRowNo(true);
             GridViewBind();
             gvChakuniYoteiNyuuryoku.SetGridDesign();
@@ -80,8 +82,8 @@ namespace Shinyoh_Search
                 cyn.HacchuuDateTo = txtOrderDateTo.Text;
             cyn.KanriNOFrom = txtControlNoFrom.Text;
             cyn.KanriNOTo = txtControlNoTo.Text;
-            cyn.ShouhinCDFrom = txtShouhinCDFrom.Text;
-            cyn.ShouhinCDTo = txtShouhinCDTo.Text;
+            cyn.ShouhinCDFrom = sbHinbanCDFrom.Text;
+            cyn.ShouhinCDTo = sbHinbanCDTo.Text;
             if(ErrorCheck(PanelTitle))           //Task no. 147 - tza
             {
                 DataTable dt = cb.ChakuniYoteiNyuuryoku_Search(cyn);
@@ -91,6 +93,10 @@ namespace Shinyoh_Search
                     {
                         lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                         txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        dt.Columns.Remove("CurrentDay");
+                    }
+                    else
+                    {
                         dt.Columns.Remove("CurrentDay");
                     }
                 }
@@ -108,7 +114,7 @@ namespace Shinyoh_Search
             txtOrderDateTo.E104Check(true, txtOrderDateFrom, txtOrderDateTo);
 
             txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
-            txtShouhinCDTo.E106Check(true, txtShouhinCDFrom, txtShouhinCDTo);
+            sbHinbanCDTo.E106Check(true, sbHinbanCDFrom, sbHinbanCDTo);
 
             sbSiiresaki.E101Check(true, "M_Siiresaki", sbSiiresaki, txtDateFrom, null);
             sbStaff.E101Check(true, "M_Staff", sbStaff, txtDateFrom, null);

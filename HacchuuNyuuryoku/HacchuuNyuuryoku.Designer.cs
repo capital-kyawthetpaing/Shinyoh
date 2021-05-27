@@ -720,7 +720,7 @@
             this.sLabel8.Name = "sLabel8";
             this.sLabel8.Size = new System.Drawing.Size(100, 19);
             this.sLabel8.TabIndex = 120;
-            this.sLabel8.Text = "商品";
+            this.sLabel8.Text = "品番";
             this.sLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
