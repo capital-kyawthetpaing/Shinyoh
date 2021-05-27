@@ -62,7 +62,7 @@ if @Errortype = 'E115'
 		
 if @Errortype = 'E160'
 		begin
-		if NOT exists(select 1
+		if exists(select 1
 		             from D_ChakuniYoteiMeisai DCYM 
 			         where DCYM.ChakuniYoteiNo=@ChakuniYoteiNo 
 			         and EXISTS(SELECT 1 From D_JuchuuMeisai AS DJ
@@ -71,7 +71,7 @@ if @Errortype = 'E160'
 			                       AND (DJ.ShukkaSiziZumiSuu>0 Or ShukkaSiziKanryouKBN=1))
 			)
 			begin
-			--not exist
+			--exist
 			select * from M_Message where MessageID = 'E160'
 			end
 		else

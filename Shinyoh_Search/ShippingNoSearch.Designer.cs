@@ -55,17 +55,17 @@ namespace Shinyoh_Search
             this.lblCustomer = new Shinyoh_Controls.SLabel();
             this.lblShippingDate = new Shinyoh_Controls.SLabel();
             this.gvShippingNo = new Shinyoh_Controls.SGridView();
+            this.colShippingNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colShippingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtProductTo = new Shinyoh_Search.SearchBox();
             this.txtProductFrom = new Shinyoh_Search.SearchBox();
             this.txtShippingNoTo = new Shinyoh_Search.SearchBox();
             this.txtShippingNoFrom = new Shinyoh_Search.SearchBox();
             this.txtTokuisakiCD = new Shinyoh_Search.SearchBox();
             this.txtStaffCD = new Shinyoh_Search.SearchBox();
-            this.colShippingNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colShippingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvShippingNo)).BeginInit();
             this.SuspendLayout();
@@ -371,7 +371,7 @@ namespace Shinyoh_Search
             this.sLabel7.Name = "sLabel7";
             this.sLabel7.Size = new System.Drawing.Size(90, 19);
             this.sLabel7.TabIndex = 6;
-            this.sLabel7.Text = "商品";
+            this.sLabel7.Text = "品番";
             this.sLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblShippingNo
@@ -479,6 +479,46 @@ namespace Shinyoh_Search
             this.gvShippingNo.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.gvShippingNo_CellMouseDoubleClick);
             this.gvShippingNo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gvShippingNo_KeyDown);
             // 
+            // colShippingNO
+            // 
+            this.colShippingNO.DataPropertyName = "ShukkaSiziNO";
+            this.colShippingNO.HeaderText = "出荷指示番号";
+            this.colShippingNO.Name = "colShippingNO";
+            this.colShippingNO.ReadOnly = true;
+            this.colShippingNO.Width = 120;
+            // 
+            // colShippingDate
+            // 
+            this.colShippingDate.DataPropertyName = "ShukkaYoteiDate";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colShippingDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colShippingDate.HeaderText = "出荷予定日";
+            this.colShippingDate.Name = "colShippingDate";
+            this.colShippingDate.ReadOnly = true;
+            // 
+            // colCustomerCD
+            // 
+            this.colCustomerCD.DataPropertyName = "TokuisakiCD";
+            this.colCustomerCD.HeaderText = "得意先";
+            this.colCustomerCD.Name = "colCustomerCD";
+            this.colCustomerCD.ReadOnly = true;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.DataPropertyName = "TokuisakiName";
+            this.colCustomerName.HeaderText = "得意先名";
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.ReadOnly = true;
+            this.colCustomerName.Width = 250;
+            // 
+            // colJuchuuNO
+            // 
+            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
+            this.colJuchuuNO.HeaderText = "受注番号";
+            this.colJuchuuNO.Name = "colJuchuuNO";
+            this.colJuchuuNO.ReadOnly = true;
+            this.colJuchuuNO.Width = 150;
+            // 
             // txtProductTo
             // 
             this.txtProductTo.AllowMinus = false;
@@ -486,7 +526,7 @@ namespace Shinyoh_Search
             this.txtProductTo.ChangeDate = null;
             this.txtProductTo.Combo = null;
             this.txtProductTo.DecimalPlace = 0;
-            this.txtProductTo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtProductTo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtProductTo.DepandOnMode = true;
             this.txtProductTo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtProductTo.IntegerPart = 0;
@@ -517,7 +557,7 @@ namespace Shinyoh_Search
             this.txtProductFrom.ChangeDate = null;
             this.txtProductFrom.Combo = null;
             this.txtProductFrom.DecimalPlace = 0;
-            this.txtProductFrom.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtProductFrom.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtProductFrom.DepandOnMode = true;
             this.txtProductFrom.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtProductFrom.IntegerPart = 0;
@@ -548,7 +588,7 @@ namespace Shinyoh_Search
             this.txtShippingNoTo.ChangeDate = null;
             this.txtShippingNoTo.Combo = null;
             this.txtShippingNoTo.DecimalPlace = 0;
-            this.txtShippingNoTo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShippingNoTo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtShippingNoTo.DepandOnMode = true;
             this.txtShippingNoTo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShippingNoTo.IntegerPart = 0;
@@ -579,7 +619,7 @@ namespace Shinyoh_Search
             this.txtShippingNoFrom.ChangeDate = null;
             this.txtShippingNoFrom.Combo = null;
             this.txtShippingNoFrom.DecimalPlace = 0;
-            this.txtShippingNoFrom.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShippingNoFrom.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtShippingNoFrom.DepandOnMode = true;
             this.txtShippingNoFrom.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShippingNoFrom.IntegerPart = 0;
@@ -666,46 +706,6 @@ namespace Shinyoh_Search
             this.txtStaffCD.TxtBox = null;
             this.txtStaffCD.TxtBox1 = null;
             this.txtStaffCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtStaffCD_KeyDown);
-            // 
-            // colShippingNO
-            // 
-            this.colShippingNO.DataPropertyName = "ShukkaSiziNO";
-            this.colShippingNO.HeaderText = "出荷指示番号";
-            this.colShippingNO.Name = "colShippingNO";
-            this.colShippingNO.ReadOnly = true;
-            this.colShippingNO.Width = 120;
-            // 
-            // colShippingDate
-            // 
-            this.colShippingDate.DataPropertyName = "ShukkaYoteiDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colShippingDate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colShippingDate.HeaderText = "出荷予定日";
-            this.colShippingDate.Name = "colShippingDate";
-            this.colShippingDate.ReadOnly = true;
-            // 
-            // colCustomerCD
-            // 
-            this.colCustomerCD.DataPropertyName = "TokuisakiCD";
-            this.colCustomerCD.HeaderText = "得意先";
-            this.colCustomerCD.Name = "colCustomerCD";
-            this.colCustomerCD.ReadOnly = true;
-            // 
-            // colCustomerName
-            // 
-            this.colCustomerName.DataPropertyName = "TokuisakiName";
-            this.colCustomerName.HeaderText = "得意先名";
-            this.colCustomerName.Name = "colCustomerName";
-            this.colCustomerName.ReadOnly = true;
-            this.colCustomerName.Width = 250;
-            // 
-            // colJuchuuNO
-            // 
-            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
-            this.colJuchuuNO.HeaderText = "受注番号";
-            this.colJuchuuNO.Name = "colJuchuuNO";
-            this.colJuchuuNO.ReadOnly = true;
-            this.colJuchuuNO.Width = 150;
             // 
             // ShippingNoSearch
             // 
