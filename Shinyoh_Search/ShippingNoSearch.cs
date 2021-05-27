@@ -42,6 +42,8 @@ namespace Shinyoh_Search
             txtShippingDateFrom.Focus();
             gvShippingNo.UseRowNo(true);
             gvShippingNo.SetReadOnlyColumn("**");//readonly for search form 
+            lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", DateTime.Now.ToString());
+            txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", DateTime.Now.ToString());
         }
         private void ShippingNoSearch_Load(object sender, EventArgs e)
         {
@@ -51,7 +53,6 @@ namespace Shinyoh_Search
            
         public override void FunctionProcess(string tagID)
         {
-
             if (tagID == "3")
             {
                 GridViewBind();
