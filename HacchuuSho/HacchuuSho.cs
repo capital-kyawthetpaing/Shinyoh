@@ -394,9 +394,13 @@ namespace HacchuuSho
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 21] = dtgv.Rows[h]["Amount"].ToString();
                                     modelno = dtgv.Rows[h]["ModelNo"].ToString();
                                     colorno = dtgv.Rows[h]["ColorNo"].ToString();
-                                    otherModel++;
-                                    xlWorkSheet.get_Range("B" + (otherModel + 1), "U" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
 
+                                    int rowIndex = gvrow + otherModel;
+                                    xlWorkSheet.get_Range("B" + rowIndex, "U" + rowIndex).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
+
+                                    otherModel++;
+                                    //xlWorkSheet.get_Range("B" + (otherModel + 1), "U" + gvrow + (otherModel + 1)).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
+                                    
                                 }
                                 else if (modelno == dtgv.Rows[h]["ModelNo"].ToString() && colorno != dtgv.Rows[h]["ColorNo"].ToString())
                                 {
@@ -439,6 +443,9 @@ namespace HacchuuSho
                                 }
 
                             }
+
+                            int rowNo = gvrow + otherModel;
+                            xlWorkSheet.get_Range("B" + rowNo, "U" + rowNo).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
 
                             xlWorkSheet.get_Range("B" + (gvrow), "U" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
                             xlWorkSheet.Cells[col, 20].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 20].Address + ":" + xlWorkSheet.Cells[col - 1, 20].Address + ")";
