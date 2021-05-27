@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using Shinyoh_Controls;
+using System.Text;
 
 namespace MasterTouroku_Siiresaki
 {
@@ -542,7 +543,7 @@ namespace MasterTouroku_Siiresaki
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    string[] csvRows = File.ReadAllLines(filePath);
+                    string[] csvRows = File.ReadAllLines(filePath,Encoding.GetEncoding(932));
                    
                     for (int i = 1; i < csvRows.Length; i++)
                     {
