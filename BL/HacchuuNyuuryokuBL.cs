@@ -25,8 +25,8 @@ namespace BL
             parameters[6] = new SqlParameter("@HacchuuNo12", SqlDbType.VarChar) { Value = obj.NO12 };
             parameters[7] = new SqlParameter("@JuchuuNo21", SqlDbType.VarChar) { Value = obj.NO21 };
             parameters[8] = new SqlParameter("@JuchuuNo22", SqlDbType.VarChar) { Value = obj.NO22 };
-            parameters[9] = new SqlParameter("@ShouhinCD1", SqlDbType.VarChar) { Value = obj.ShouhinCD };
-            parameters[10] = new SqlParameter("@ShouhinCD2", SqlDbType.VarChar) { Value = obj.SizeNO };
+            parameters[9] = new SqlParameter("@ShouhinCD1", SqlDbType.VarChar) { Value = obj.ShouhinCD1 };  //TaskNo521 HET
+            parameters[10] = new SqlParameter("@ShouhinCD2", SqlDbType.VarChar) { Value = obj.ShouhinCD2 }; //TaskNo521 HET
             DataTable dt = ckmdl.SelectDatatable("HacchuuNyuuryoku_Search", GetConnectionString(), parameters);
             return dt;
         }

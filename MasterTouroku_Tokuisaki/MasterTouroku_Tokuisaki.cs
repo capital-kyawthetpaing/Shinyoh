@@ -534,7 +534,7 @@ namespace MasterTouroku_Tokuisaki {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    string[] csvRows = File.ReadAllLines(filePath);
+                    string[] csvRows = File.ReadAllLines(filePath,Encoding.GetEncoding(932));
 
                     for (int i = 1; i < csvRows.Length; i++)
                     {
