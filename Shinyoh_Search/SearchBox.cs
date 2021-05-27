@@ -355,7 +355,8 @@ namespace Shinyoh_Search
                         break;
                     case Entity.SearchType.ScType.Shouhin:
                         Shouhin_Search shsearch = new Shouhin_Search();
-                        shsearch.parent_changeDate = ChangeDate.Text;
+                        //shsearch.parent_changeDate = ChangeDate.Text;
+                        shsearch.parent_changeDate = ChangeDate==null? DateTime.Now.ToString("yyyy/MM/dd"):ChangeDate.Text;//ssa
                         shsearch.ShowDialog();
                         //if(this.Name == "txtCopyProduct")
                         //{
