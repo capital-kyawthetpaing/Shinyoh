@@ -18,6 +18,7 @@ GO
 --            : 2021/04/27 Y.Nishikawa 在庫更新を引当ファンクション内に移動
 --            : 2021/05/07 Y.Nishikawa 条件追加
 --            : 2021/05/24 Y.Nishikawa 過剰入荷時は、受注数まで計上可とする(現在庫は着荷データをベースに更新しているので、このパラを上書いても問題無い)
+--            : 2021/05/26 Y.Nishikawa 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_5]
 	-- Add the parameters for the stored procedure here
@@ -86,6 +87,17 @@ BEGIN
 			--and KanriNO = @KanriNO
 			--and ShukkaZumiSuu = 0
 
+			--2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↓↓
+			DECLARE @IsShukkaSiziKanryou SMALLINT
+			SELECT @IsShukkaSiziKanryou = CASE WHEN ShukkaSiziKanryouKBN = 1 
+			                                   THEN 1
+											   ELSE 0
+										  END
+			FROM D_JuchuuMeisai
+			WHERE JuchuuNO = @JuchuuNO
+			AND JuchuuGyouNO = @JuchuuGyouNO
+			--2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
+
 			--2021/05/24 Y.Nishikawa ADD 過剰入荷時は、受注数まで計上可とする(現在庫は着荷データをベースに更新しているので、このパラを上書いても問題無い)↓↓
 			SELECT @ChakuniSuu = CASE WHEN JuchuuSuu < @ChakuniSuu
 			                          THEN JuchuuSuu
@@ -99,6 +111,11 @@ BEGIN
 			--新規モード(@ProcessKBN = 10)または修正モード修正後(@ProcessKBN = 21)の場合、
 			IF (@ProcessKBN = 10 OR @ProcessKBN = 21)
 			BEGIN
+			      --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↓↓
+				  IF (@IsShukkaSiziKanryou = 0)
+				  BEGIN
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
+
 			      --１．同一入庫日の受注詳細が既に存在する場合、他の着荷伝票で既に計上済みのため、その受注詳細に足し込む
 				  IF EXISTS (
 				               SELECT *
@@ -810,6 +827,9 @@ BEGIN
 	              CLOSE cursorShukkaSiziMeisai
 	              DEALLOCATE cursorShukkaSiziMeisai
 
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↓↓
+				  END
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
 
 				  --６．現在庫
 				  --2021/04/27 Y.Nishikawa ADD 在庫更新を引当ファンクション内に移動
@@ -918,6 +938,11 @@ BEGIN
 						  WHERE JuchuuNO = @JuchuuNO
 						  AND JuchuuGyouNO = @JuchuuGyouNO
 				  
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↓↓
+				  IF (@IsShukkaSiziKanryou = 0)
+				  BEGIN
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
+
 				  --入庫日が空の受注詳細が存在する場合、同一入庫日の受注詳細から差し引き、入庫日が空の受注詳細に足し込む
 				  IF EXISTS (
 				               SELECT *
@@ -1781,6 +1806,9 @@ BEGIN
 	              CLOSE cursorShukkaSiziMeisai
 	              DEALLOCATE cursorShukkaSiziMeisai
 
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↓↓
+				  END
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
 
 				  --４．現在庫
 				  --2021/04/27 Y.Nishikawa ADD  在庫更新を引当ファンクション内に移動

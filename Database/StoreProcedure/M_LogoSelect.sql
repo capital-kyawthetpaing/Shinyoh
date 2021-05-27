@@ -22,5 +22,5 @@ BEGIN
 	SET NOCOUNT ON;
 
     -- Insert statements for procedure here
-	select CompanyImage  from M_Control where MainKey = @ID
+	select CompanyImage  from M_Control where MainKey = @Key
 END
