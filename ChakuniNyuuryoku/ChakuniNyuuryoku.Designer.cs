@@ -87,7 +87,7 @@
             this.txtScheduled = new Shinyoh_Search.SearchBox();
             this.txtSizeNo = new Shinyoh_Search.SearchBox();
             this.txtColorNo = new Shinyoh_Search.SearchBox();
-            this.txtShouhinCD = new Shinyoh_Search.SearchBox();
+            this.txtHinbanCD = new Shinyoh_Search.SearchBox();
             this.chkFW = new Shinyoh_Controls.SCheckBox();
             this.chkSS = new Shinyoh_Controls.SCheckBox();
             this.txtYearTerm = new Shinyoh_Controls.STextBox();
@@ -255,7 +255,7 @@
             this.sLabel8.Name = "sLabel8";
             this.sLabel8.Size = new System.Drawing.Size(100, 19);
             this.sLabel8.TabIndex = 8;
-            this.sLabel8.Text = "商品";
+            this.sLabel8.Text = "品番";
             this.sLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sLabel9
@@ -792,7 +792,7 @@
             this.PanelDetail.Controls.Add(this.txtScheduled);
             this.PanelDetail.Controls.Add(this.txtSizeNo);
             this.PanelDetail.Controls.Add(this.txtColorNo);
-            this.PanelDetail.Controls.Add(this.txtShouhinCD);
+            this.PanelDetail.Controls.Add(this.txtHinbanCD);
             this.PanelDetail.Controls.Add(this.chkFW);
             this.PanelDetail.Controls.Add(this.chkSS);
             this.PanelDetail.Controls.Add(this.txtYearTerm);
@@ -858,7 +858,7 @@
             this.txtScheduled.MoveNext = true;
             this.txtScheduled.Name = "txtScheduled";
             this.txtScheduled.NextControl = null;
-            this.txtScheduled.NextControlName = "txtShouhinCD";
+            this.txtScheduled.NextControlName = "txtHinbanCD";
             this.txtScheduled.SearchType = Entity.SearchType.ScType.ChakuniYoteiNyuuryoku;
             this.txtScheduled.Size = new System.Drawing.Size(100, 19);
             this.txtScheduled.TabIndex = 8;
@@ -930,36 +930,36 @@
             this.txtColorNo.TxtBox = null;
             this.txtColorNo.TxtBox1 = null;
             // 
-            // txtShouhinCD
+            // txtHinbanCD
             // 
-            this.txtShouhinCD.AllowMinus = false;
-            this.txtShouhinCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtShouhinCD.ChangeDate = null;
-            this.txtShouhinCD.Combo = null;
-            this.txtShouhinCD.DecimalPlace = 0;
-            this.txtShouhinCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtShouhinCD.DepandOnMode = false;
-            this.txtShouhinCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtShouhinCD.IntegerPart = 0;
-            this.txtShouhinCD.IsDatatableOccurs = null;
-            this.txtShouhinCD.IsErrorOccurs = false;
-            this.txtShouhinCD.IsRequire = false;
-            this.txtShouhinCD.IsUseInitializedLayout = true;
-            this.txtShouhinCD.lblName = null;
-            this.txtShouhinCD.lblName1 = null;
-            this.txtShouhinCD.Location = new System.Drawing.Point(268, 159);
-            this.txtShouhinCD.MaxLength = 20;
-            this.txtShouhinCD.MinimumSize = new System.Drawing.Size(150, 19);
-            this.txtShouhinCD.MoveNext = true;
-            this.txtShouhinCD.Name = "txtShouhinCD";
-            this.txtShouhinCD.NextControl = null;
-            this.txtShouhinCD.NextControlName = "txtShouhinName";
-            this.txtShouhinCD.SearchType = Entity.SearchType.ScType.Shouhin;
-            this.txtShouhinCD.Size = new System.Drawing.Size(150, 19);
-            this.txtShouhinCD.TabIndex = 9;
-            this.txtShouhinCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtShouhinCD.TxtBox = null;
-            this.txtShouhinCD.TxtBox1 = null;
+            this.txtHinbanCD.AllowMinus = false;
+            this.txtHinbanCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHinbanCD.ChangeDate = null;
+            this.txtHinbanCD.Combo = null;
+            this.txtHinbanCD.DecimalPlace = 0;
+            this.txtHinbanCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtHinbanCD.DepandOnMode = false;
+            this.txtHinbanCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtHinbanCD.IntegerPart = 0;
+            this.txtHinbanCD.IsDatatableOccurs = null;
+            this.txtHinbanCD.IsErrorOccurs = false;
+            this.txtHinbanCD.IsRequire = false;
+            this.txtHinbanCD.IsUseInitializedLayout = true;
+            this.txtHinbanCD.lblName = null;
+            this.txtHinbanCD.lblName1 = null;
+            this.txtHinbanCD.Location = new System.Drawing.Point(268, 159);
+            this.txtHinbanCD.MaxLength = 20;
+            this.txtHinbanCD.MinimumSize = new System.Drawing.Size(150, 19);
+            this.txtHinbanCD.MoveNext = true;
+            this.txtHinbanCD.Name = "txtHinbanCD";
+            this.txtHinbanCD.NextControl = null;
+            this.txtHinbanCD.NextControlName = "txtShouhinName";
+            this.txtHinbanCD.SearchType = Entity.SearchType.ScType.Shouhin;
+            this.txtHinbanCD.Size = new System.Drawing.Size(150, 19);
+            this.txtHinbanCD.TabIndex = 9;
+            this.txtHinbanCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtHinbanCD.TxtBox = null;
+            this.txtHinbanCD.TxtBox1 = null;
             // 
             // chkFW
             // 
@@ -1251,7 +1251,7 @@
         private Shinyoh_Controls.STextBox txtYearTerm;
         private Shinyoh_Controls.SCheckBox chkSS;
         private Shinyoh_Controls.SCheckBox chkFW;
-        private Shinyoh_Search.SearchBox txtShouhinCD;
+        private Shinyoh_Search.SearchBox txtHinbanCD;
         private Shinyoh_Search.SearchBox txtColorNo;
         private Shinyoh_Search.SearchBox txtSizeNo;
         private Shinyoh_Search.SearchBox txtScheduled;

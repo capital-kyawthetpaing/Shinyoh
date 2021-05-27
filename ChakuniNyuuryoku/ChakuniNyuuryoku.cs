@@ -77,7 +77,7 @@ namespace ChakuniNyuuryoku
             txtSiiresaki.ChangeDate = txtArrivalDate;
             txtSiiresaki.lblName = lblSiiresaki;
             txtStaffCD.ChangeDate = txtArrivalDate;
-            txtShouhinCD.ChangeDate = txtArrivalDate;
+            txtHinbanCD.ChangeDate = txtArrivalDate;
             txtScheduled.ChangeDate= txtArrivalDate;
         
             base_Entity = _GetBaseData();
@@ -464,7 +464,7 @@ namespace ChakuniNyuuryoku
             dr["SoukoCD"] = txtSouko.Text;
             dr["ChakuniDenpyouTekiyou"] = txtDescription.Text;
             dr["ChakuniYoteiNO"] = txtScheduled.Text;
-            dr["ShouhinCD"] = string.IsNullOrEmpty(txtShouhinCD.Text) ? null : txtShouhinCD.Text;
+            dr["ShouhinCD"] = string.IsNullOrEmpty(txtHinbanCD.Text) ? null : txtHinbanCD.Text;
             dr["ShouhinName"] = string.IsNullOrEmpty(txtShouhinName.Text) ? null : txtShouhinName.Text;
             dr["KanriNO"] = string.IsNullOrEmpty(txtControlNo.Text) ? null : txtControlNo.Text;
             dr["JANCD"] = string.IsNullOrEmpty(txtJANCD.Text) ? null : txtJANCD.Text;
@@ -514,7 +514,7 @@ namespace ChakuniNyuuryoku
             {
                 ChakuniDate = txtArrivalDate.Text,
                 ChakuniYoteiNO = txtScheduled.Text,
-                HinbanCD = txtShouhinCD.Text,
+                HinbanCD = txtHinbanCD.Text,
                 ShouhinName = txtShouhinName.Text,
                 JANCD = txtJANCD.Text,
                 BrandCD = sbBrand.Text,
@@ -724,7 +724,7 @@ namespace ChakuniNyuuryoku
                 ChakuniNyuuryoku_Entity chkEntity = new ChakuniNyuuryoku_Entity();
                 chkEntity.ChakuniDate = txtArrivalDate.Text;
                 chkEntity.ChakuniYoteiNO = txtScheduled.Text;
-                chkEntity.HinbanCD = txtShouhinCD.Text;
+                chkEntity.HinbanCD = txtHinbanCD.Text;
                 chkEntity.ShouhinName = txtShouhinName.Text;
                 chkEntity.JANCD = txtJANCD.Text;
                 chkEntity.BrandCD = sbBrand.Text;
@@ -738,7 +738,7 @@ namespace ChakuniNyuuryoku
                 chkEntity.OperatorCD = OperatorCD;
                 chkEntity.ProgramID = ProgramID;
                 chkEntity.PC = PCID;
-                if (string.IsNullOrWhiteSpace(txtScheduled.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
+                if (string.IsNullOrWhiteSpace(txtScheduled.Text) && string.IsNullOrWhiteSpace(txtHinbanCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
                      string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
                 {
                     bbl.ShowMessage("E111");
@@ -944,7 +944,7 @@ namespace ChakuniNyuuryoku
         private void Focus_Clear()
         {
             txtScheduled.Clear();
-            txtShouhinCD.Clear();
+            txtHinbanCD.Clear();
             txtShouhinName.Clear();
             txtControlNo.Clear();
             txtJANCD.Clear();
