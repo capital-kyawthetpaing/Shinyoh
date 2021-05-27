@@ -42,6 +42,8 @@ namespace Shinyoh_Search {
             gvShukkaNo.SetReadOnlyColumn("**");//readonly for search form 
             ErrorCheck();
             gvShukkaNo.Select();
+            txtShouhin1.ChangeDate = txtCurrentDate; //2021 / 05 / 27 ssa CHG TaskNO 544
+            txtShouhin2.ChangeDate = txtCurrentDate;//2021 / 05 / 27 ssa CHG TaskNO 544
         }
         private void ErrorCheck()
         {

@@ -233,7 +233,7 @@ namespace HacchuuSho
                     {
                         //            try
                         //{
-                        xlWorkSheet.PageSetup.PrintArea = "A1:V1000";
+                        //xlWorkSheet.PageSetup.PrintArea = "A1:V1000";
                         xlWorkSheet.PageSetup.Orientation = Microsoft.Office.Interop.Excel.XlPageOrientation.xlLandscape;//Page horizontal
                         xlWorkSheet.PageSetup.Zoom = 75; //page setting when printing, a few percent of the scale
                         xlWorkSheet.PageSetup.Zoom = false; //Page setting when printing, must be set to false, page height, page width is valid
@@ -342,7 +342,7 @@ namespace HacchuuSho
                                         xlWorkSheet.Cells[col, 21] = "**********";
 
                                         SetFooter(xlWorkBook, xlWorkSheet, col);
-                                        col += 17;
+                                        col += 17 - 2;
                                         startrow = col + 12;
                                         gvrow = startrow + 5;
 
@@ -394,9 +394,13 @@ namespace HacchuuSho
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 21] = dtgv.Rows[h]["Amount"].ToString();
                                     modelno = dtgv.Rows[h]["ModelNo"].ToString();
                                     colorno = dtgv.Rows[h]["ColorNo"].ToString();
-                                    otherModel++;
-                                    xlWorkSheet.get_Range("B" + (otherModel + 1), "U" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
 
+                                    int rowIndex = gvrow + otherModel;
+                                    xlWorkSheet.get_Range("B" + rowIndex, "U" + rowIndex).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
+
+                                    otherModel++;
+                                    //xlWorkSheet.get_Range("B" + (otherModel + 1), "U" + gvrow + (otherModel + 1)).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
+                                    
                                 }
                                 else if (modelno == dtgv.Rows[h]["ModelNo"].ToString() && colorno != dtgv.Rows[h]["ColorNo"].ToString())
                                 {
@@ -440,6 +444,9 @@ namespace HacchuuSho
 
                             }
 
+                            int rowNo = gvrow + otherModel;
+                            xlWorkSheet.get_Range("B" + rowNo, "U" + rowNo).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
+
                             xlWorkSheet.get_Range("B" + (gvrow), "U" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
                             xlWorkSheet.Cells[col, 20].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 20].Address + ":" + xlWorkSheet.Cells[col - 1, 20].Address + ")";
                             xlWorkSheet.Cells[col, 21].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 21].Address + ":" + xlWorkSheet.Cells[col - 1, 21].Address + ")";
@@ -456,11 +463,12 @@ namespace HacchuuSho
                             #endregion
 
                             SetFooter(xlWorkBook, xlWorkSheet, col);
-                            col += 17;
+                            col += 17-2;
                             startrow = col + 12;
                             gvrow = startrow + 5;
                         }
 
+                        xlWorkSheet.PageSetup.PrintArea = "A1:V"+ col;
 
                         // Footers
 
