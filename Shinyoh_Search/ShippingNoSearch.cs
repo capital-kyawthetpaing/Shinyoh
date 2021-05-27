@@ -98,9 +98,9 @@ namespace Shinyoh_Search
                         lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);//ssa
                         txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                         dt.Columns.Remove("CurrentDay");
-                    }
-                    gvShippingNo.DataSource = dt;
+                    }                    
                 }
+                gvShippingNo.DataSource = dt;
             }
             
         }
