@@ -267,8 +267,8 @@ namespace ShukkaTorikomi
                         }
                         //DataTable return_DT = new DataTable();
                        
-                        if (return_DT.Rows.Count > 0)
-                        {
+                        //if (return_DT.Rows.Count > 0)
+                        //{
                            
                                 
                                 
@@ -296,7 +296,7 @@ namespace ShukkaTorikomi
                             //{
                                
                             //}
-                        }
+                        //}
                     }
                 }
             }
