@@ -42,8 +42,8 @@ namespace Shinyoh_Search
             sbSiiresaki.lblName = lblSiiresaki;
             txtStaffCD.ChangeDate = txtCurrentDate;
             txtStaffCD.lblName = lblStaff;
-            txtProductFrom.ChangeDate = txtCurrentDate;
-            txtProductTo.ChangeDate = txtCurrentDate;
+            sbHinbanCDFrom.ChangeDate = txtCurrentDate;
+            sbHinbanCDTo.ChangeDate = txtCurrentDate;
             gvArrivalNo.UseRowNo(true);
             GridViewBind();
             gvArrivalNo.SetGridDesign();
@@ -76,7 +76,7 @@ namespace Shinyoh_Search
             txtExpectedDateTo.E104Check(true, txtExpectedDateFrom, txtExpectedDateTo);
 
             txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
-            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
+            sbHinbanCDTo.E106Check(true, sbHinbanCDFrom, sbHinbanCDTo);
 
             sbSiiresaki.E101Check(true, "M_Siiresaki", sbSiiresaki, txtDateFrom, null);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtDateFrom, null);
@@ -98,8 +98,8 @@ namespace Shinyoh_Search
                 ane.ChakuniYoteiDateTo = txtExpectedDateTo.Text;
             ane.KanriNOFrom = txtControlNoFrom.Text;
             ane.KanriNOTo = txtControlNoTo.Text;
-            ane.ShouhinCDFrom = txtProductFrom.Text;
-            ane.ShouhinCDTo = txtProductTo.Text;
+            ane.ShouhinCDFrom = sbHinbanCDFrom.Text;
+            ane.ShouhinCDTo = sbHinbanCDTo.Text;
             if(ErrorCheck(PanelTitle))           //Task no. 147 - tza
             {
                 DataTable dt = ab.ArrivalNO_Search(ane);
