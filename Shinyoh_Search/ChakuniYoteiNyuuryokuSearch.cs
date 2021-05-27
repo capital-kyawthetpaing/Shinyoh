@@ -95,6 +95,10 @@ namespace Shinyoh_Search
                         txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                         dt.Columns.Remove("CurrentDay");
                     }
+                    else
+                    {
+                        dt.Columns.Remove("CurrentDay");
+                    }
                 }
                 gvChakuniYoteiNyuuryoku.DataSource = dt;
             }
