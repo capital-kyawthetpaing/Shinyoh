@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gvArrivalNo = new Shinyoh_Controls.SGridView();
             this.colChakuniNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -100,8 +100,8 @@
             // Column2
             // 
             this.Column2.DataPropertyName = "ChakuniDate";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column2.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column2.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column2.HeaderText = "着荷日";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
@@ -110,8 +110,8 @@
             // Column3
             // 
             this.Column3.DataPropertyName = "ChakuniYoteiDate";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column3.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column3.HeaderText = "着荷予定日";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
@@ -467,7 +467,7 @@
             this.txtControlNoTo.SearchType = Entity.SearchType.ScType.None;
             this.txtControlNoTo.Size = new System.Drawing.Size(80, 19);
             this.txtControlNoTo.TabIndex = 9;
-            this.txtControlNoTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtControlNoTo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtControlNoFrom
             // 
@@ -492,7 +492,7 @@
             this.txtControlNoFrom.SearchType = Entity.SearchType.ScType.None;
             this.txtControlNoFrom.Size = new System.Drawing.Size(80, 19);
             this.txtControlNoFrom.TabIndex = 8;
-            this.txtControlNoFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
+            this.txtControlNoFrom.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtExpectedDateTo
             // 
