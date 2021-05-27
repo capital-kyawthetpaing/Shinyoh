@@ -114,7 +114,7 @@ namespace ShukkaSiziDataShuturyoku {
             if (tagID == "10")
             {             
                 DataTable dt = new DataTable { TableName = "MyTableName" };
-                dt = Get_Form_Object();
+                dt = Get_Form_Object(string.Empty);
                 if (dt.Rows.Count > 0)
                 {
                     dt.Columns["TokuisakiCD"].ColumnName = "得意先CD";
@@ -145,6 +145,7 @@ namespace ShukkaSiziDataShuturyoku {
                     bool bl= list.ExcelOutputFile(dt, ProgramID, fname, fname, 16, datacol, numcol);
                     if(bl)
                     {
+                        Get_Form_Object("Update");
                         Clear();
                     }
 
@@ -194,7 +195,7 @@ namespace ShukkaSiziDataShuturyoku {
             }
         } 
 
-        private DataTable Get_Form_Object()
+        private DataTable Get_Form_Object(string str)
         {
             ShukkaSiziDataShuturyokuEntity obj = new ShukkaSiziDataShuturyokuEntity();
             obj.ShukkaNo1 = txtShukkaNo1.Text;
@@ -210,8 +211,14 @@ namespace ShukkaSiziDataShuturyoku {
             obj.TokuisakiCD = txtToukuisaki.Text;
             obj.KouritenCD = txtKouriten.Text;
             if (rdo_MiHakkou.Checked)
-                obj.Condition = "Mihakkoubunnomi";
+            {
+                if (str == string.Empty)
+                    obj.Condition = "Mihakkoubunnomi";
+                else
+                    obj.Condition = "Mihakkoubunnomi_" + str;
+            }
             else obj.Condition = "Hakkou";
+            
             obj.LoginDate = baseEntity.LoginDate;
             DataTable dt = shukkaBL.ShukkaSiziDataShuturyoku_Excel(obj);
             return dt;
