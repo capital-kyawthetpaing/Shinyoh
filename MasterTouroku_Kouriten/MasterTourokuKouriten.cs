@@ -659,7 +659,8 @@ namespace MasterTouroku_Kouriten
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    string[] csvRows = File.ReadAllLines(filePath);
+                    string[] csvRows = File.ReadAllLines(filePath,Encoding.GetEncoding(932));
+                    //string[] csvRows = File.ReadAllLines(OpenFileDialog, Encoding.GetEncoding(932));
                     var bl_List = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
                     {

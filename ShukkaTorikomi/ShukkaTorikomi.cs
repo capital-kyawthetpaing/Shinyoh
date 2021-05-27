@@ -10,6 +10,7 @@ using System.Data;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace ShukkaTorikomi
 {
@@ -324,7 +325,7 @@ namespace ShukkaTorikomi
                 Creat_Datatable_Column(create_dt);
                 //openFileDialog.FileName = txtImportFolder.Text + txtImportFileName.Text;         //Task 452
                 filepath = txtImportFolder.Text + txtImportFileName.Text;         //Task 452
-                string[] csvRows = File.ReadAllLines(filepath);
+                string[] csvRows = File.ReadAllLines(txtImportFolder.Text + txtImportFileName.Text, Encoding.GetEncoding(932));
                 var bl_List = new List<bool>();
                             
                 for (int i = 1; i < csvRows.Length; i++)
