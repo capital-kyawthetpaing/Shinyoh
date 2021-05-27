@@ -331,7 +331,8 @@ namespace HacchuuSho
                             xlWorkSheet.get_Range("B" + gvrow, "U" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;//row17
 
                             xlApp.get_Range("T" + (gvrow + 1), "T" + col).Cells.NumberFormat = "#,##0";//ssa
-                            xlApp.get_Range("U" + (gvrow + 1), "U" + col).Cells.NumberFormat = "$#,##0.00";
+                            xlApp.get_Range("D" + (gvrow + 1), "D" + col).Cells.NumberFormatLocal = "$#,##0.00";
+                            xlApp.get_Range("U" + (gvrow + 1), "U" + col).Cells.NumberFormatLocal = "$#,##0.00";
                             xlWorkSheet.get_Range("A" + (gvrow + 1) + ":U" + (gvrow + 1), val2).RowHeight = 40;
                             xlApp.get_Range("A17", "U" + col).Cells.Font.Name = "Arial";
 
