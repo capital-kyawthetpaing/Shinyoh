@@ -76,7 +76,10 @@ BEGIN
 		where
 		(@ShukkaSiziNO1 is null or (ds.ShukkaSiziNO  >= @ShukkaSiziNO1)) and (@ShukkaSiziNO2 is null or (ds.ShukkaSiziNO  <= @ShukkaSiziNO2)) 
 		and (@ShukkaYoteiDate1 is null or (ds.ShukkaYoteiDate  >= @ShukkaYoteiDate1)) and (@ShukkaYoteiDate2 is null or (ds.ShukkaYoteiDate  <= @ShukkaYoteiDate2)) 
-		and (@UpdateDateTime1 is null or (ds.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (ds.UpdateDateTime  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↓↓
+		--and (@UpdateDateTime1 is null or (ds.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (ds.UpdateDateTime  <= @UpdateDateTime2)) 
+		and (@UpdateDateTime1 is null or (convert(date,ds.UpdateDateTime)  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (convert(date,ds.UpdateDateTime)  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↑↑
 		and (@TokuisakiCD is null or (ds.TokuisakiCD = @TokuisakiCD))
 		and (@KouritenCD is null or (ds.KouritenCD = @KouritenCD))
 		and (@BrandCD is null or (FS.BrandCD = @BrandCD))
@@ -85,9 +88,12 @@ BEGIN
 		and (@SeasonFW is null or (FS.SeasonFW = @SeasonFW))
 		and (FT.ShukkaSizishoHuyouKBN = 0)
 		and (ds.ShukkaSiziShuturyokuKBN =0)
-		order by dsm.ShukkaSiziNO,dsm.ShukkaSiziGyouNO
+		order by dsm.ShukkaSiziNO,dsm.ShukkaSiziGyouNO		
+	end
 
-		--2021/05/12 Y.Nishikawa CHG 出荷指示出力区分更新時、全出荷指示を対象としている↓↓
+	else if @condition='Mihakkoubunnomi_Update'  --For Task 503 NMW 2021-05-27
+	begin
+	--2021/05/12 Y.Nishikawa CHG 出荷指示出力区分更新時、全出荷指示を対象としている↓↓
 	--update D_ShukkaSizi set ShukkaSiziShuturyokuKBN = 1, ShukkaSiziShuturyokuDateTime=getdate()
 	    UPDATE DSSH
 		SET ShukkaSiziShuturyokuKBN = 1
@@ -100,7 +106,10 @@ BEGIN
 		WHERE
 		(@ShukkaSiziNO1 is null or (DSSH.ShukkaSiziNO  >= @ShukkaSiziNO1)) and (@ShukkaSiziNO2 is null or (DSSH.ShukkaSiziNO  <= @ShukkaSiziNO2)) 
 		and (@ShukkaYoteiDate1 is null or (DSSH.ShukkaYoteiDate  >= @ShukkaYoteiDate1)) and (@ShukkaYoteiDate2 is null or (DSSH.ShukkaYoteiDate  <= @ShukkaYoteiDate2)) 
-		and (@UpdateDateTime1 is null or (DSSH.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (DSSH.UpdateDateTime  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↓↓
+		--and (@UpdateDateTime1 is null or (DSSH.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (DSSH.UpdateDateTime  <= @UpdateDateTime2)) 
+		and (@UpdateDateTime1 is null or (convert(date,DSSH.UpdateDateTime)  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (convert(date,DSSH.UpdateDateTime)  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↑↑		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正ueue 
 		and (@TokuisakiCD is null or (DSSH.TokuisakiCD = @TokuisakiCD))
 		and (@KouritenCD is null or (DSSH.KouritenCD = @KouritenCD))
 		and (@BrandCD is null or (FS.BrandCD = @BrandCD))
@@ -146,7 +155,10 @@ BEGIN
 		where
 		(@ShukkaSiziNO1 is null or (ds.ShukkaSiziNO  >= @ShukkaSiziNO1)) and (@ShukkaSiziNO2 is null or (ds.ShukkaSiziNO  <= @ShukkaSiziNO2)) 
 		and (@ShukkaYoteiDate1 is null or (ds.ShukkaYoteiDate  >= @ShukkaYoteiDate1)) and (@ShukkaYoteiDate2 is null or (ds.ShukkaYoteiDate  <= @ShukkaYoteiDate2)) 
-		and (@UpdateDateTime1 is null or (ds.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (ds.UpdateDateTime  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↓↓
+		--and (@UpdateDateTime1 is null or (ds.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (ds.UpdateDateTime  <= @UpdateDateTime2)) 
+		and (@UpdateDateTime1 is null or (convert(date,ds.UpdateDateTime)  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (convert(date,ds.UpdateDateTime)  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↑↑
 		and (@TokuisakiCD is null or (ds.TokuisakiCD = @TokuisakiCD))
 		and (@KouritenCD is null or (ds.KouritenCD = @KouritenCD))
 		and (@BrandCD is null or (FS.BrandCD = @BrandCD))
