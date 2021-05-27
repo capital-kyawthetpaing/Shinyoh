@@ -20,6 +20,7 @@ GO
 -- History    : 2021/04/13 Y.Nishikawa CHG 当Update内でのHikiateZumiSuuは、当更新時点では更新前の情報なので、HikiateZumiSuuと同じ内容をセット
 --              2021/04/14 Y.Nishikawa ADD 出荷指示詳細履歴の更新追加
 --              2021/04/14 Y.Nishikawa CHG @tmpHikiateSuuで計算するのではなく、ループ内の出荷指示数で計算する必要がある
+--              2021/05/26 Y.Nishikawa ADD 完納処理した場合、残った引当は削除する
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_121021] 
 	-- Add the parameters for the stored procedure here
@@ -164,6 +165,82 @@ BEGIN
 			
 			close cursorInner
 			deallocate cursorInner
+
+			--2021/05/26 Y.Nishikawa ADD 完納処理した場合、残った引当は削除する↓↓
+			--完納時、引当情報をクリアする
+			--まず、引当在庫から差し引く
+			UPDATE DHZK
+			SET HikiateZumiSuu = DHZK.HikiateZumiSuu - DJUS.HikiateZumiSuu
+			   ,UpdateOperator = @UpdateOperator
+			   ,UpdateDateTime = @UpdateDateTime
+			FROM D_HikiateZaiko DHZK
+			INNER JOIN ( 
+			              SELECT DJUS.SoukoCD
+						        ,DJUS.ShouhinCD
+								,DJUS.KanriNO
+								,DJUS.NyuukoDate
+								,SUM(DJUS.HikiateZumiSuu) HikiateZumiSuu
+						  FROM D_JuchuuMeisai DJUM
+						  INNER JOIN D_JuchuuShousai DJUS
+						  ON DJUM.JuchuuNO = DJUS.JuchuuNO
+						  AND DJUM.JuchuuGyouNO = DJUS.JuchuuGyouNO
+						  WHERE DJUM.JuchuuNO = @JuchuuNo
+						  AND DJUM.JuchuuGyouNO = @JuchuuGyoNo
+						  AND DJUM.ShukkaSiziKanryouKBN = 1
+						  AND DJUS.HikiateZumiSuu > 0
+						  GROUP BY DJUS.SoukoCD
+						          ,DJUS.ShouhinCD
+								  ,DJUS.KanriNO
+								  ,DJUS.NyuukoDate
+					   ) DJUS
+			ON DHZK.SoukoCD = DJUS.SoukoCD
+			AND DHZK.ShouhinCD = DJUS.ShouhinCD
+			AND DHZK.KanriNO = DJUS.KanriNO
+			AND DHZK.NyuukoDate = DJUS.NyuukoDate
+
+			UPDATE DJUS
+			SET HikiateZumiSuu = 0
+			   ,MiHikiateSuu = 0
+			   ,UpdateOperator = @UpdateOperator
+			   ,UpdateDateTime = @UpdateDateTime
+			FROM D_JuchuuShousai DJUS
+			INNER JOIN ( 
+			              SELECT DJUS.SoukoCD
+						        ,DJUS.ShouhinCD
+								,DJUS.KanriNO
+								,DJUS.NyuukoDate
+								,SUM(DJUS.HikiateZumiSuu) HikiateZumiSuu
+						  FROM D_JuchuuMeisai DJUM
+						  INNER JOIN D_JuchuuShousai DJUS
+						  ON DJUM.JuchuuNO = DJUS.JuchuuNO
+						  AND DJUM.JuchuuGyouNO = DJUS.JuchuuGyouNO
+						  WHERE DJUM.JuchuuNO = @JuchuuNo
+						  AND DJUM.JuchuuGyouNO = @JuchuuGyoNo
+						  AND DJUM.ShukkaSiziKanryouKBN = 1
+						  AND DJUS.HikiateZumiSuu > 0
+						  GROUP BY DJUS.SoukoCD
+						          ,DJUS.ShouhinCD
+								  ,DJUS.KanriNO
+								  ,DJUS.NyuukoDate
+					   ) DJUS_SUB
+			ON DJUS.SoukoCD = DJUS_SUB.SoukoCD
+			AND DJUS.ShouhinCD = DJUS_SUB.ShouhinCD
+			AND DJUS.KanriNO = DJUS_SUB.KanriNO
+			AND DJUS.NyuukoDate = DJUS_SUB.NyuukoDate
+			AND DJUS.JuchuuNO = @JuchuuNo
+			AND DJUS.JuchuuGyouNO = @JuchuuGyoNo
+
+			UPDATE DJUM
+			SET HikiateZumiSuu = 0
+			   ,MiHikiateSuu = 0
+			   ,UpdateOperator = @UpdateOperator
+			   ,UpdateDateTime = @UpdateDateTime
+			FROM D_JuchuuMeisai DJUM
+			WHERE DJUM.ShukkaSiziKanryouKBN = 1
+			AND DJUM.HikiateZumiSuu > 0
+			AND DJUM.JuchuuNO = @JuchuuNo
+			AND DJUM.JuchuuGyouNO = @JuchuuGyoNo
+			--2021/05/26 Y.Nishikawa ADD 完納処理した場合、残った引当は削除する↑↑
 			
 			fetch next from cursorOuter into  @ShukkaSiziNO,@ShukkaSiziGyouNO,@ShukkaSiziSuu,@JuchuuNo,@JuchuuGyoNo
 		end

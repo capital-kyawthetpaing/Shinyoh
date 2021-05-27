@@ -10,6 +10,7 @@ using System.Data;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace JuchuuTorikomi
 {
@@ -287,7 +288,7 @@ namespace JuchuuTorikomi
                 DataTable create_dt = new DataTable();
                 Create_Datatable_Column(create_dt);
                 //openFileDialog.FileName = txtImportFolder.Text + txtImportFileName.Text;         //Task 453
-                string[] csvRows = File.ReadAllLines(txtImportFolder.Text + txtImportFileName.Text);         //Task 453
+                string[] csvRows = File.ReadAllLines(txtImportFolder.Text + txtImportFileName.Text,Encoding.GetEncoding(932));//Task 453 --repaired encoding 2021/05/29 ssa CHG TaskNO 469
                 var bl_List = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
                     {

@@ -566,7 +566,7 @@
             // 
             this.col_Free_HinbanCD.DataPropertyName = "商品";
             this.col_Free_HinbanCD.FillWeight = 200F;
-            this.col_Free_HinbanCD.HeaderText = "商品";
+            this.col_Free_HinbanCD.HeaderText = "品番";
             this.col_Free_HinbanCD.Name = "col_Free_HinbanCD";
             this.col_Free_HinbanCD.Width = 180;
             // 
@@ -673,7 +673,7 @@
             // colShouhinCD
             // 
             this.colShouhinCD.DataPropertyName = "商品";
-            this.colShouhinCD.HeaderText = "商品";
+            this.colShouhinCD.HeaderText = "品番";
             this.colShouhinCD.Name = "colShouhinCD";
             this.colShouhinCD.Width = 180;
             // 
@@ -853,7 +853,7 @@
             // 
             this.col_Detail_ShouhinCD.DataPropertyName = "商品";
             this.col_Detail_ShouhinCD.FillWeight = 200F;
-            this.col_Detail_ShouhinCD.HeaderText = "商品";
+            this.col_Detail_ShouhinCD.HeaderText = "品番";
             this.col_Detail_ShouhinCD.Name = "col_Detail_ShouhinCD";
             this.col_Detail_ShouhinCD.Width = 180;
             // 
@@ -1236,7 +1236,7 @@
             this.lblShouhinCD.Name = "lblShouhinCD";
             this.lblShouhinCD.Size = new System.Drawing.Size(100, 18);
             this.lblShouhinCD.TabIndex = 86;
-            this.lblShouhinCD.Text = "商品";
+            this.lblShouhinCD.Text = "品番";
             this.lblShouhinCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
