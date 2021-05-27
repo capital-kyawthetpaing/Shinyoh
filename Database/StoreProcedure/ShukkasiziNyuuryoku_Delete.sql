@@ -115,7 +115,7 @@ INSERT INTO [#Temp_Header]
 		exec sp_xml_removedocument @idoc
 		
 CREATE TABLE  [dbo].[#Temp_Details]
-				(	[ShouhinCD]			varchar(25) COLLATE DATABASE_DEFAULT,
+				(	[ShouhinCD]			varchar(50) COLLATE DATABASE_DEFAULT,
 					[ShouhinName]		varchar(100) COLLATE DATABASE_DEFAULT,
 					[ColorRyakuName]	varchar(25) COLLATE DATABASE_DEFAULT,
 					[ColorNO]			varchar(13) COLLATE DATABASE_DEFAULT,
@@ -152,7 +152,7 @@ CREATE TABLE  [dbo].[#Temp_Details]
 INSERT INTO [#Temp_Details]
 			SELECT *  FROM openxml(@idoc,'/NewDataSet/test',2)
 			with(	
-					[ShouhinCD]			varchar(25),
+					[ShouhinCD]			varchar(50),
 					[ShouhinName]		varchar(100),
 					[ColorRyakuName]	varchar(25),
 					[ColorNO]			varchar(13),

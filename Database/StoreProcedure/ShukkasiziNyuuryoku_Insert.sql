@@ -1,4 +1,4 @@
-/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Insert]    Script Date: 2021/04/13 13:05:34 ******/
+ï»¿/****** Object:  StoredProcedure [dbo].[ShukkasiziNyuuryoku_Insert]    Script Date: 2021/04/13 13:05:34 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ShukkasiziNyuuryoku_Insert%' and type like '%P%')
 DROP PROCEDURE [dbo].[ShukkasiziNyuuryoku_Insert]
 GO
@@ -15,11 +15,11 @@ GO
 -- Author:		Swe Swe
 -- Create date: <19-01-2021>
 -- Description:	<Description,,>
--- History    : 2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã
+-- History    : 2021/04/13 Y.Nishikawa DEL Ë†Ã¸â€œâ€“ÂXÂVâ€šÃË†Ã¸â€œâ€“Æ’tÆ’@Æ’â€œÆ’NÆ’VÆ’â€¡Æ’â€œâ€šÃ…ÂË†â€”Ââ€šÂµâ€šÃ„â€šÂ¢â€šÃ©â€šÂ½â€šÃŸÂAâ€œÃ±ÂdÅ’vÂÃ£
 --              2021/04/14 Y.Nishikawa ADD TaskNO.0271
---                         Y.Nishikawa DEL o‰×w¦Ú×—š—ğ‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã
---                         Y.Nishikawa CHG ‚±‚Ì“_‚Å‚Íó’–¾×‚Ìo‰×w¦Ï”‚É¡‰ño‰×w¦”‚ğXV‚µ‚Ä‚¢‚È‚¢‚Ì‚ÅA•ª”[‚ÍŠ®—¹‹æ•ª‚ªŠ®—¹‚É‚È‚ç‚È‚¢
---                         Y.Nishikawa ADD ğŒ•s‘«iğŒ‚És”Ô†‚ª‚È‚¢‚Ì‚ÅAó’–¾×”•ª–c‚ê‚ÄŒvZ‚³‚ê‚éj
+--                         Y.Nishikawa DEL Âoâ€°Ã—Å½wÅ½Â¦ÂÃšÂÃ—â€”Å¡â€”Ã°â€šÃË†Ã¸â€œâ€“Æ’tÆ’@Æ’â€œÆ’NÆ’VÆ’â€¡Æ’â€œâ€šÃ…ÂË†â€”Ââ€šÂµâ€šÃ„â€šÂ¢â€šÃ©â€šÂ½â€šÃŸÂAâ€œÃ±ÂdÅ’vÂÃ£
+--                         Y.Nishikawa CHG â€šÂ±â€šÃŒÅ½Å¾â€œ_â€šÃ…â€šÃÅ½Ã³â€™Ââ€“Â¾ÂÃ—â€šÃŒÂoâ€°Ã—Å½wÅ½Â¦ÂÃÂâ€â€šÃ‰ÂÂ¡â€°Ã±Âoâ€°Ã—Å½wÅ½Â¦Ââ€â€šÃ°ÂXÂVâ€šÂµâ€šÃ„â€šÂ¢â€šÃˆâ€šÂ¢â€šÃŒâ€šÃ…ÂAâ€¢Âªâ€[Å½Å¾â€šÃÅ Â®â€”Â¹â€¹Ã¦â€¢Âªâ€šÂªÅ Â®â€”Â¹â€šÃ‰â€šÃˆâ€šÃ§â€šÃˆâ€šÂ¢
+--                         Y.Nishikawa ADD ÂÃ°Å’Ââ€¢sâ€˜Â«ÂiÂÃ°Å’Ââ€šÃ‰Âsâ€Ã”Ââ€ â€šÂªâ€šÃˆâ€šÂ¢â€šÃŒâ€šÃ…ÂAÅ½Ã³â€™Ââ€“Â¾ÂÃ—Ââ€â€¢Âªâ€“câ€šÃªâ€šÃ„Å’vÅ½Zâ€šÂ³â€šÃªâ€šÃ©Âj
 -- =============================================
 CREATE  PROCEDURE [dbo].[ShukkasiziNyuuryoku_Insert]
 	-- Add the parameters for the stored procedure here
@@ -117,7 +117,7 @@ INSERT INTO [#Temp_Header]
 
 
 CREATE TABLE  [dbo].[#Temp_Details]
-				(	[ShouhinCD]			varchar(25) COLLATE DATABASE_DEFAULT,
+				(	[ShouhinCD]			varchar(50) COLLATE DATABASE_DEFAULT,
 					[ShouhinName]		varchar(100) COLLATE DATABASE_DEFAULT,
 					[ColorRyakuName]	varchar(25) COLLATE DATABASE_DEFAULT,
 					[ColorNO]			varchar(13) COLLATE DATABASE_DEFAULT,
@@ -148,16 +148,16 @@ CREATE TABLE  [dbo].[#Temp_Details]
 					KouritenTel22   varchar(5) COLLATE DATABASE_DEFAULT,	
 					KouritenTel23   varchar(5) COLLATE DATABASE_DEFAULT,
 					Hidden_ShouhinCD varchar(50) COLLATE DATABASE_DEFAULT,
-					--2021/04/14 Y.Nishikawa ADD TaskNO.0271««
+					--2021/04/14 Y.Nishikawa ADD TaskNO.0271â†“â†“
 					ShukkaSiziGyouNO smallint
-					--2021/04/14 Y.Nishikawa ADD TaskNO.0271ªª
+					--2021/04/14 Y.Nishikawa ADD TaskNO.0271â†‘â†‘
 				)
 				EXEC sp_xml_preparedocument @idoc OUTPUT, @XML_Detail
 
 INSERT INTO [#Temp_Details]
 			SELECT *  FROM openxml(@idoc,'/NewDataSet/test',2)
 			with(	
-					[ShouhinCD]			varchar(25),
+					[ShouhinCD]			varchar(50),
 					[ShouhinName]		varchar(100),
 					[ColorRyakuName]	varchar(25),
 					[ColorNO]			varchar(13),
@@ -188,9 +188,9 @@ INSERT INTO [#Temp_Details]
 					KouritenTel22   varchar(5),	
 					KouritenTel23   varchar(5),
 					Hidden_ShouhinCD varchar(50),
-					--2021/04/14 Y.Nishikawa ADD TaskNO.0271««
+					--2021/04/14 Y.Nishikawa ADD TaskNO.0271â†“â†“
 					ShukkaSiziGyouNO smallint
-					--2021/04/14 Y.Nishikawa ADD TaskNO.0271ªª
+					--2021/04/14 Y.Nishikawa ADD TaskNO.0271â†‘â†‘
 				)
 				exec sp_xml_removedocument @idoc
 
@@ -347,12 +347,12 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	SELECT
 	
 		@ShukkaSiziNO --Fnc_Number
-		--2021/04/14 Y.Nishikawa ADD TaskNO.0271««
+		--2021/04/14 Y.Nishikawa ADD TaskNO.0271â†“â†“
 		--,@GyouNo
 		--,@GyouNo
 		,TD.ShukkaSiziGyouNO                        --@GyouNo
 		,TD.ShukkaSiziGyouNO                        --@GyouNo
-		--2021/04/14 Y.Nishikawa ADD TaskNO.0271ªª
+		--2021/04/14 Y.Nishikawa ADD TaskNO.0271â†‘â†‘
 		,case when TD.KouritenCD is null then DJ.KouritenCD else TD.KouritenCD end
 		,case when TD.KouritenRyakuName is null then DJ.KouritenRyakuName else TD.KouritenRyakuName end
 		,FS.BrandCD
@@ -401,7 +401,7 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 --TableC
 
 	declare @a decimal(21,6), @b decimal(21, 6), @JuchuuNO VARCHAR(12), @JuchuuGyouNO SMALLINT, @KonkaiShukkaSiziSuu VARCHAR(30), @SKMSNO VARCHAR(25), @Hidden_ShouhinCD VARCHAR(25)
-	DECLARE @SoukoCD VARCHAR(10), @ShouhinCD VARCHAR(20), @ShouhinName VARCHAR(100)
+	DECLARE @SoukoCD VARCHAR(10), @ShouhinCD VARCHAR(50), @ShouhinName VARCHAR(100)
 	DECLARE cursor1 CURSOR READ_ONLY FOR SELECT SoukoCD, ShouhinCD, ShouhinName, SKMSNO, Hidden_ShouhinCD, KonkaiShukkaSiziSuu FROM #Temp_Details
 	OPEN cursor1
 	FETCH NEXT FROM cursor1 INTO @SoukoCD, @ShouhinCD, @ShouhinName, @SKMSNO, @Hidden_ShouhinCD, @KonkaiShukkaSiziSuu
@@ -411,7 +411,7 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 		SET @JuchuuGyouNO = RIGHT(@SKMSNO, LEN(@SKMSNO) - CHARINDEX('-', @SKMSNO))
 		SET @a = ABS(@KonkaiShukkaSiziSuu)
 
-	--2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã««
+	--2021/04/13 Y.Nishikawa DEL å¼•å½“æ›´æ–°ã¯å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã§å‡¦ç†ã—ã¦ã„ã‚‹ãŸã‚ã€äºŒé‡è¨ˆä¸Šâ†“â†“
 	-----KTP Change
 	--declare 
 	--@JuchuuShousaiNO as smallint,
@@ -442,7 +442,7 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	--				declare @tmpHikiateSuu as decimal(21,6)
 	--				declare @tmpShukkasiziSuu as decimal(21,6)
 	
-	--				--Step3 : Update D_JuchuuShousai(ó’Ú×)
+	--				--Step3 : Update D_JuchuuShousai(å—æ³¨è©³ç´°)
 	--				update D_JuchuuShousai
 	--				set 
 	--					@tmpHikiateSuu = HikiateZumiSuu,
@@ -464,7 +464,7 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	
 	--				select @maxShousaiNo = isnull(max(ShukkaSiziShousaiNO),0) from D_ShukkaSiziShousai where ShukkaSiziNO = @ShukkaSiziNO
 	
-	--				-- Step5 : Insert D_ShukkaSiziShousai(o‰×w¦Ú×)
+	--				-- Step5 : Insert D_ShukkaSiziShousai(å‡ºè·æŒ‡ç¤ºè©³ç´°)
 	--				insert into D_ShukkaSiziShousai( ShukkaSiziNO, ShukkaSiziGyouNO, ShukkaSiziShousaiNO, 
 	--				SoukoCD,ShouhinCD,ShouhinName,ShukkaSiziSuu,KanriNO,NyuukoDate,ShukkaZumiSuu,
 	--				JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime
@@ -489,7 +489,7 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	
 	--close cursorInner
 	--deallocate cursorInner
-	--2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvãªª
+	--2021/04/13 Y.Nishikawa DEL å¼•å½“æ›´æ–°ã¯å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã§å‡¦ç†ã—ã¦ã„ã‚‹ãŸã‚ã€äºŒé‡è¨ˆä¸Šâ†‘â†‘
 
 	set @GyouNO = @GyouNO + 1
 
@@ -623,7 +623,7 @@ INSERT INTO [dbo].[D_ShukkaSiziHistory]
 	SELECT 
 	@Unique
 	,i.ShukkaSiziNO
-	,10--V‹K
+	,10--æ–°è¦
 	,i.StaffCD
 	,i.ShukkaYoteiDate
 	,i.DenpyouDate
@@ -729,7 +729,7 @@ SELECT
 		,j.[ShukkaSiziNO]
 		,j.[ShukkaSiziGyouNO]
 		,j.[GyouHyouziJun]
-		,10--V‹K
+		,10--æ–°è¦
 		,j.[KouritenCD]
 		,j.[KouritenRyakuName]
 		,j.[BrandCD]
@@ -774,7 +774,7 @@ SELECT
 FROM [dbo].[D_ShukkaSiziMeisai] AS j
 where j.ShukkaSiziNO=@ShukkaSiziNO
 
---2021/04/14 Y.Nishikawa DEL o‰×w¦Ú×‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã««
+--2021/04/14 Y.Nishikawa DEL å‡ºè·æŒ‡ç¤ºè©³ç´°ã¯å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã§å‡¦ç†ã—ã¦ã„ã‚‹ãŸã‚ã€äºŒé‡è¨ˆä¸Šâ†“â†“
 ----TableF
 --INSERT INTO [dbo].[D_ShukkaSiziShousaiHistory]
 --(
@@ -805,7 +805,7 @@ where j.ShukkaSiziNO=@ShukkaSiziNO
 --[ShukkaSiziNO]
 --			,[ShukkaSiziGyouNO]
 --			,[ShukkaSiziShousaiNO]
---			,10 --V‹K
+--			,10 --æ–°è¦
 --			,[SoukoCD]
 --			,[ShouhinCD]
 --			,[ShouhinName]
@@ -824,11 +824,11 @@ where j.ShukkaSiziNO=@ShukkaSiziNO
 --			,@currentDate
 --FROM [dbo].[D_ShukkaSiziShousai]
 --where ShukkaSiziNO=@ShukkaSiziNO
---2021/04/14 Y.Nishikawa DEL o‰×w¦Ú×‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvãªª
+--2021/04/14 Y.Nishikawa DEL å‡ºè·æŒ‡ç¤ºè©³ç´°ã¯å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã§å‡¦ç†ã—ã¦ã„ã‚‹ãŸã‚ã€äºŒé‡è¨ˆä¸Šâ†‘â†‘
 --Konkai_Price
 
---2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã««
-----Table G  --’Ç‰Á‚Ü‚½‚ÍC³Œã
+--2021/04/13 Y.Nishikawa DEL å¼•å½“æ›´æ–°ã¯å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã§å‡¦ç†ã—ã¦ã„ã‚‹ãŸã‚ã€äºŒé‡è¨ˆä¸Šâ†“â†“
+----Table G  --è¿½åŠ ã¾ãŸã¯ä¿®æ­£å¾Œ
 --UPDATE  A
 --SET	
 --	HikiateZumiSuu = A.HikiateZumiSuu - B.KonkaiShukkaSiziSuu -- KTP Add
@@ -839,25 +839,25 @@ where j.ShukkaSiziNO=@ShukkaSiziNO
 --inner join #Temp_Details B
 --on A.JuchuuNO = LEFT((B.SKMSNO), CHARINDEX('-', (B.SKMSNO)) - 1) 
 --and A.JuchuuGyouNO=RIGHT(B.SKMSNO, LEN(B.SKMSNO) - CHARINDEX('-', B.SKMSNO))
---2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvãªª
+--2021/04/13 Y.Nishikawa DEL å¼•å½“æ›´æ–°ã¯å¼•å½“ãƒ•ã‚¡ãƒ³ã‚¯ã‚·ãƒ§ãƒ³ã§å‡¦ç†ã—ã¦ã„ã‚‹ãŸã‚ã€äºŒé‡è¨ˆä¸Šâ†‘â†‘
 
 
 --D_JuchuuMeisai
 UPDATE  A
---2021/04/14 Y.Nishikawa CHG ‚±‚Ì“_‚Å‚Íó’–¾×‚Ìo‰×w¦Ï”‚É¡‰ño‰×w¦”‚ğXV‚µ‚Ä‚¢‚È‚¢‚Ì‚ÅA•ª”[‚ÍŠ®—¹‹æ•ª‚ªŠ®—¹‚É‚È‚ç‚È‚¢««
+--2021/04/14 Y.Nishikawa CHG ã“ã®æ™‚ç‚¹ã§ã¯å—æ³¨æ˜ç´°ã®å‡ºè·æŒ‡ç¤ºæ¸ˆæ•°ã«ä»Šå›å‡ºè·æŒ‡ç¤ºæ•°ã‚’æ›´æ–°ã—ã¦ã„ãªã„ã®ã§ã€åˆ†ç´æ™‚ã¯å®Œäº†åŒºåˆ†ãŒå®Œäº†ã«ãªã‚‰ãªã„â†“â†“
 --SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu<=A.ShukkaSiziZumiSuu then 1 
 SET	[ShukkaSiziKanryouKBN]= case when A.JuchuuSuu <= (case when ISNUMERIC(C.KonkaiShukkaSiziSuu) = 1 then cast(C.KonkaiShukkaSiziSuu as decimal(21, 6)) else 0 end 
                                                     + case when ISNUMERIC(C.ShukkaSiziZumiSuu) = 1 then cast(C.ShukkaSiziZumiSuu as decimal(21, 6)) else 0 end) then 1
---2021/04/14 Y.Nishikawa CHG ‚±‚Ì“_‚Å‚Íó’–¾×‚Ìo‰×w¦Ï”‚É¡‰ño‰×w¦”‚ğXV‚µ‚Ä‚¢‚È‚¢‚Ì‚ÅA•ª”[‚ÍŠ®—¹‹æ•ª‚ªŠ®—¹‚É‚È‚ç‚È‚¢ªª
+--2021/04/14 Y.Nishikawa CHG ã“ã®æ™‚ç‚¹ã§ã¯å—æ³¨æ˜ç´°ã®å‡ºè·æŒ‡ç¤ºæ¸ˆæ•°ã«ä»Šå›å‡ºè·æŒ‡ç¤ºæ•°ã‚’æ›´æ–°ã—ã¦ã„ãªã„ã®ã§ã€åˆ†ç´æ™‚ã¯å®Œäº†åŒºåˆ†ãŒå®Œäº†ã«ãªã‚‰ãªã„â†‘â†‘
 									when C.Kanryo=1 then 1 else 0 end
---2021/04/14 Y.Nishikawa ADD ğŒ•s‘«iğŒ‚És”Ô†‚ª‚È‚¢‚Ì‚ÅAó’–¾×”•ª–c‚ê‚ÄŒvZ‚³‚ê‚éj««
+--2021/04/14 Y.Nishikawa ADD æ¡ä»¶ä¸è¶³ï¼ˆæ¡ä»¶ã«è¡Œç•ªå·ãŒãªã„ã®ã§ã€å—æ³¨æ˜ç´°æ•°åˆ†è†¨ã‚Œã¦è¨ˆç®—ã•ã‚Œã‚‹ï¼‰â†“â†“
 --FROM D_JuchuuMeisai A,#Temp_Details C
 --where A.JuchuuNO = LEFT((C.SKMSNO), CHARINDEX('-', (C.SKMSNO)) - 1) 
 FROM D_JuchuuMeisai A
 INNER JOIN #Temp_Details C
 ON A.JuchuuNO = LEFT((C.SKMSNO), CHARINDEX('-', (C.SKMSNO)) - 1) 
 and A.JuchuuGyouNO = RIGHT(C.SKMSNO, LEN(C.SKMSNO) - CHARINDEX('-', C.SKMSNO)) 
---2021/04/14 Y.Nishikawa ADD ğŒ•s‘«iğŒ‚És”Ô†‚ª‚È‚¢‚Ì‚ÅAó’–¾×”•ª–c‚ê‚ÄŒvZ‚³‚ê‚éjªª
+--2021/04/14 Y.Nishikawa ADD æ¡ä»¶ä¸è¶³ï¼ˆæ¡ä»¶ã«è¡Œç•ªå·ãŒãªã„ã®ã§ã€å—æ³¨æ˜ç´°æ•°åˆ†è†¨ã‚Œã¦è¨ˆç®—ã•ã‚Œã‚‹ï¼‰â†‘â†‘
 --and A.ShouhinCD=C.ShouhinCD
 
 
@@ -877,20 +877,21 @@ ON A.JuchuuNO=B.JuchuuNO
 --ktp call fncHikiate
 exec dbo.Fnc_Hikiate 12,@ShukkaSiziNO,10,@OperatorCD
 
---ƒXƒ^ƒbƒtƒ}ƒXƒ^
+--ã‚¹ã‚¿ãƒƒãƒ•ãƒã‚¹ã‚¿
 UPDATE M_Staff 
 set UsedFlg = 1 
 where StaffCD=@StaffCD
 and  ChangeDate = (select ChangeDate from F_Staff(@ShippingDate) where StaffCD = @StaffCD)
 
 --L_Log
-declare @OperatorMode varchar(50)='V‹K'
+declare @OperatorMode varchar(50)='æ–°è¦'
 exec dbo.L_Log_Insert @OperatorCD,@Program,@PC,@OperatorMode,@ShukkaSiziNO
 
---ƒe[ƒuƒ‹“]‘—d—l‚x--íœ
+--ãƒ†ãƒ¼ãƒ–ãƒ«è»¢é€ä»•æ§˜ï¼¹--å‰Šé™¤
 exec [dbo].[D_Exclusive_Remove_NO] 1,@OperatorCD,@Program,@PC
 	
 END
+
 
 GO
 
