@@ -59,6 +59,25 @@ if @Errortype = 'E115'
 			select * from M_Message where MessageID = 'E115'
 			end
 		end
-
+		
+if @Errortype = 'E160'
+		begin
+		if exists(select 1
+		             from D_ChakuniYoteiMeisai DCYM 
+			         where DCYM.ChakuniYoteiNo=@ChakuniYoteiNo 
+			         and EXISTS(SELECT 1 From D_JuchuuMeisai AS DJ
+			                     WHERE DJ.JuchuuNO = DCYM.JuchuuNO
+			                       AND DJ.JuchuuGyouNO = DCYM.JuchuuGyouNO
+			                       AND (DJ.ShukkaSiziZumiSuu>0 Or ShukkaSiziKanryouKBN=1))
+			)
+			begin
+			--exist
+			select * from M_Message where MessageID = 'E160'
+			end
+		else
+		begin
+            select 4 as MessageID
+		end
+		end
 END
 GO

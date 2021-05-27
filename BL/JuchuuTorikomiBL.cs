@@ -50,22 +50,26 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
             return dt;
         }
-        public DataTable JuchuuTorikomi_CUD(string sp_name,string Xml_Hacchuu, string Xml_Juchuu)
+        public DataTable JuchuuTorikomi_CUD(string sp_name,string Xml_Hacchuu, string Xml_Juchuu, string type)
         {
             CKMDL ckmdl = new CKMDL();
             ckmdl.UseTran = true;
-            var parameters = new SqlParameter[2];
+            var parameters = new SqlParameter[3];
             parameters[0] = new SqlParameter("@XML_Hacchuu", SqlDbType.Xml) { Value = Xml_Hacchuu };
             parameters[1] = new SqlParameter("@XML_Jucchuu", SqlDbType.Xml) { Value = Xml_Juchuu };
+            parameters[2] = new SqlParameter("@type", SqlDbType.VarChar) { Value = type };
             return ckmdl.SelectDatatable(sp_name, GetConnectionString(), parameters);
         }
-        public DataTable JuchuuTorikomi_Delete(string sp_name,string Xml, string DenpyouNO)
+        public DataTable JuchuuTorikomi_Delete(string sp_name,string Xml, string DenpyouNO, JuchuuTorikomiEntity entity)
         {
             CKMDL ckmdl = new CKMDL();
             ckmdl.UseTran = true;
-            var parameters = new SqlParameter[2];
+            var parameters = new SqlParameter[5];
             parameters[0] = new SqlParameter("@XML", SqlDbType.Xml) { Value = Xml };
             parameters[1] = new SqlParameter("@DenyouNO", SqlDbType.VarChar) { Value = DenpyouNO };
+            parameters[2]= new SqlParameter("@ProgramID", SqlDbType.VarChar) { Value = entity.ProgramID };
+            parameters[3] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = entity.PC };
+            parameters[4] = new SqlParameter("@OperatorCD", SqlDbType.VarChar) { Value = entity.OperatorCD };
             return ckmdl.SelectDatatable(sp_name, GetConnectionString(), parameters);
         }
         public DataTable D_Exclusive_Lock_Check(JuchuuTorikomiEntity ce)

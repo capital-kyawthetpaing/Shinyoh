@@ -60,6 +60,24 @@
             this.btnSave = new Shinyoh_Controls.SButton();
             this.label2 = new System.Windows.Forms.Label();
             this.gvChakuniNyuuryoku = new Shinyoh_Controls.SGridView();
+            this.btn_Siiresaki = new Shinyoh_Controls.SButton();
+            this.lblStaff = new Shinyoh_Controls.SLabel();
+            this.lblWareHouse = new Shinyoh_Controls.SLabel();
+            this.lblBrandName = new Shinyoh_Controls.SLabel();
+            this.PanelDetail = new System.Windows.Forms.Panel();
+            this.txtScheduled = new Shinyoh_Search.SearchBox();
+            this.txtSizeNo = new Shinyoh_Search.SearchBox();
+            this.txtColorNo = new Shinyoh_Search.SearchBox();
+            this.txtHinbanCD = new Shinyoh_Search.SearchBox();
+            this.chkFW = new Shinyoh_Controls.SCheckBox();
+            this.chkSS = new Shinyoh_Controls.SCheckBox();
+            this.txtYearTerm = new Shinyoh_Controls.STextBox();
+            this.txtStaffCD = new Shinyoh_Search.SearchBox();
+            this.txtSiiresaki = new Shinyoh_Search.SearchBox();
+            this.txtSouko = new Shinyoh_Search.SearchBox();
+            this.lblSiiresaki = new Shinyoh_Controls.SLabel();
+            this.txtArrivalNO = new Shinyoh_Search.SearchBox();
+            this.txtScheduledNo = new Shinyoh_Search.SearchBox();
             this.HinbanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,24 +97,6 @@
             this.HacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HacchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_Siiresaki = new Shinyoh_Controls.SButton();
-            this.lblStaff = new Shinyoh_Controls.SLabel();
-            this.lblWareHouse = new Shinyoh_Controls.SLabel();
-            this.lblBrandName = new Shinyoh_Controls.SLabel();
-            this.PanelDetail = new System.Windows.Forms.Panel();
-            this.txtScheduled = new Shinyoh_Search.SearchBox();
-            this.txtSizeNo = new Shinyoh_Search.SearchBox();
-            this.txtColorNo = new Shinyoh_Search.SearchBox();
-            this.txtShouhinCD = new Shinyoh_Search.SearchBox();
-            this.chkFW = new Shinyoh_Controls.SCheckBox();
-            this.chkSS = new Shinyoh_Controls.SCheckBox();
-            this.txtYearTerm = new Shinyoh_Controls.STextBox();
-            this.txtStaffCD = new Shinyoh_Search.SearchBox();
-            this.txtSiiresaki = new Shinyoh_Search.SearchBox();
-            this.txtSouko = new Shinyoh_Search.SearchBox();
-            this.lblSiiresaki = new Shinyoh_Controls.SLabel();
-            this.txtArrivalNO = new Shinyoh_Search.SearchBox();
-            this.txtScheduledNo = new Shinyoh_Search.SearchBox();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniNyuuryoku)).BeginInit();
@@ -255,7 +255,7 @@
             this.sLabel8.Name = "sLabel8";
             this.sLabel8.Size = new System.Drawing.Size(100, 19);
             this.sLabel8.TabIndex = 8;
-            this.sLabel8.Text = "商品";
+            this.sLabel8.Text = "品番";
             this.sLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // sLabel9
@@ -583,157 +583,6 @@
             this.gvChakuniNyuuryoku.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvChakuniNyuuryoku_CellContentClick);
             this.gvChakuniNyuuryoku.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvChakuniNyuuryoku_CellEndEdit);
             // 
-            // HinbanCD
-            // 
-            this.HinbanCD.DataPropertyName = "HinbanCD";
-            this.HinbanCD.HeaderText = "商品";
-            this.HinbanCD.Name = "HinbanCD";
-            this.HinbanCD.ReadOnly = true;
-            this.HinbanCD.Width = 120;
-            // 
-            // ShouhinName
-            // 
-            this.ShouhinName.DataPropertyName = "ShouhinName";
-            this.ShouhinName.HeaderText = "商品名";
-            this.ShouhinName.Name = "ShouhinName";
-            this.ShouhinName.ReadOnly = true;
-            this.ShouhinName.Width = 250;
-            // 
-            // ColorRyakuName
-            // 
-            this.ColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.ColorRyakuName.HeaderText = "カラー略名";
-            this.ColorRyakuName.Name = "ColorRyakuName";
-            this.ColorRyakuName.ReadOnly = true;
-            this.ColorRyakuName.Width = 150;
-            // 
-            // ColorNO
-            // 
-            this.ColorNO.DataPropertyName = "ColorNO";
-            this.ColorNO.HeaderText = "カラー";
-            this.ColorNO.Name = "ColorNO";
-            this.ColorNO.ReadOnly = true;
-            // 
-            // SizeNO
-            // 
-            this.SizeNO.DataPropertyName = "SizeNO";
-            this.SizeNO.HeaderText = "サイズ";
-            this.SizeNO.Name = "SizeNO";
-            this.SizeNO.ReadOnly = true;
-            // 
-            // ChakuniYoteiDate
-            // 
-            this.ChakuniYoteiDate.DataPropertyName = "ChakuniYoteiDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ChakuniYoteiDate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ChakuniYoteiDate.HeaderText = "着荷予定日";
-            this.ChakuniYoteiDate.Name = "ChakuniYoteiDate";
-            this.ChakuniYoteiDate.ReadOnly = true;
-            // 
-            // ChakuniYoteiSuu
-            // 
-            this.ChakuniYoteiSuu.DataPropertyName = "ChakuniYoteiSuu";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ChakuniYoteiSuu.HeaderText = "着荷予定数";
-            this.ChakuniYoteiSuu.Name = "ChakuniYoteiSuu";
-            this.ChakuniYoteiSuu.ReadOnly = true;
-            // 
-            // ChakuniZumiSuu
-            // 
-            this.ChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ChakuniZumiSuu.HeaderText = "着荷済数";
-            this.ChakuniZumiSuu.Name = "ChakuniZumiSuu";
-            // 
-            // ChakuniSuu
-            // 
-            this.ChakuniSuu.DataPropertyName = "ChakuniSuu";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = "0";
-            this.ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ChakuniSuu.HeaderText = "今回着荷数";
-            this.ChakuniSuu.MaxInputLength = 5;
-            this.ChakuniSuu.Name = "ChakuniSuu";
-            // 
-            // SiireKanryouKBN
-            // 
-            this.SiireKanryouKBN.DataPropertyName = "SiireKanryouKBN";
-            this.SiireKanryouKBN.FalseValue = "0";
-            this.SiireKanryouKBN.HeaderText = "完了";
-            this.SiireKanryouKBN.Name = "SiireKanryouKBN";
-            this.SiireKanryouKBN.TrueValue = "1";
-            this.SiireKanryouKBN.Width = 70;
-            // 
-            // ChakuniMeisaiTekiyou
-            // 
-            this.ChakuniMeisaiTekiyou.DataPropertyName = "ChakuniMeisaiTekiyou";
-            this.ChakuniMeisaiTekiyou.HeaderText = "明細摘要";
-            this.ChakuniMeisaiTekiyou.MaxInputLength = 80;
-            this.ChakuniMeisaiTekiyou.Name = "ChakuniMeisaiTekiyou";
-            this.ChakuniMeisaiTekiyou.Width = 420;
-            // 
-            // JanCD
-            // 
-            this.JanCD.DataPropertyName = "JanCD";
-            this.JanCD.HeaderText = "JANCD";
-            this.JanCD.Name = "JanCD";
-            // 
-            // Chakuni
-            // 
-            this.Chakuni.DataPropertyName = "Chakuni";
-            this.Chakuni.HeaderText = "着荷予定番号-行番号";
-            this.Chakuni.Name = "Chakuni";
-            this.Chakuni.Width = 200;
-            // 
-            // Hacchuu
-            // 
-            this.Hacchuu.DataPropertyName = "Hacchuu";
-            this.Hacchuu.HeaderText = "発注番号-行番号";
-            this.Hacchuu.Name = "Hacchuu";
-            this.Hacchuu.Width = 180;
-            // 
-            // ChakuniYoteiNO
-            // 
-            this.ChakuniYoteiNO.DataPropertyName = "ChakuniYoteiNO";
-            this.ChakuniYoteiNO.HeaderText = "ChakuniYoteiNO";
-            this.ChakuniYoteiNO.Name = "ChakuniYoteiNO";
-            this.ChakuniYoteiNO.Visible = false;
-            this.ChakuniYoteiNO.Width = 10;
-            // 
-            // ChakuniYoteiGyouNO
-            // 
-            this.ChakuniYoteiGyouNO.DataPropertyName = "ChakuniYoteiGyouNO";
-            this.ChakuniYoteiGyouNO.HeaderText = "ChakuniYoteiGyouNO";
-            this.ChakuniYoteiGyouNO.Name = "ChakuniYoteiGyouNO";
-            this.ChakuniYoteiGyouNO.Visible = false;
-            this.ChakuniYoteiGyouNO.Width = 10;
-            // 
-            // HacchuuNO
-            // 
-            this.HacchuuNO.DataPropertyName = "HacchuuNO";
-            this.HacchuuNO.HeaderText = "HacchuuNO";
-            this.HacchuuNO.Name = "HacchuuNO";
-            this.HacchuuNO.Visible = false;
-            this.HacchuuNO.Width = 10;
-            // 
-            // HacchuuGyouNO
-            // 
-            this.HacchuuGyouNO.DataPropertyName = "HacchuuGyouNO";
-            this.HacchuuGyouNO.HeaderText = "HacchuuGyouNO";
-            this.HacchuuGyouNO.Name = "HacchuuGyouNO";
-            this.HacchuuGyouNO.Visible = false;
-            this.HacchuuGyouNO.Width = 10;
-            // 
-            // ShouhinCD
-            // 
-            this.ShouhinCD.DataPropertyName = "ShouhinCD";
-            this.ShouhinCD.HeaderText = "ShouhinCD";
-            this.ShouhinCD.Name = "ShouhinCD";
-            this.ShouhinCD.Visible = false;
-            // 
             // btn_Siiresaki
             // 
             this.btn_Siiresaki.AutoSize = true;
@@ -792,7 +641,7 @@
             this.PanelDetail.Controls.Add(this.txtScheduled);
             this.PanelDetail.Controls.Add(this.txtSizeNo);
             this.PanelDetail.Controls.Add(this.txtColorNo);
-            this.PanelDetail.Controls.Add(this.txtShouhinCD);
+            this.PanelDetail.Controls.Add(this.txtHinbanCD);
             this.PanelDetail.Controls.Add(this.chkFW);
             this.PanelDetail.Controls.Add(this.chkSS);
             this.PanelDetail.Controls.Add(this.txtYearTerm);
@@ -858,7 +707,7 @@
             this.txtScheduled.MoveNext = true;
             this.txtScheduled.Name = "txtScheduled";
             this.txtScheduled.NextControl = null;
-            this.txtScheduled.NextControlName = "txtShouhinCD";
+            this.txtScheduled.NextControlName = "txtHinbanCD";
             this.txtScheduled.SearchType = Entity.SearchType.ScType.ChakuniYoteiNyuuryoku;
             this.txtScheduled.Size = new System.Drawing.Size(100, 19);
             this.txtScheduled.TabIndex = 8;
@@ -930,36 +779,36 @@
             this.txtColorNo.TxtBox = null;
             this.txtColorNo.TxtBox1 = null;
             // 
-            // txtShouhinCD
+            // txtHinbanCD
             // 
-            this.txtShouhinCD.AllowMinus = false;
-            this.txtShouhinCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtShouhinCD.ChangeDate = null;
-            this.txtShouhinCD.Combo = null;
-            this.txtShouhinCD.DecimalPlace = 0;
-            this.txtShouhinCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
-            this.txtShouhinCD.DepandOnMode = false;
-            this.txtShouhinCD.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtShouhinCD.IntegerPart = 0;
-            this.txtShouhinCD.IsDatatableOccurs = null;
-            this.txtShouhinCD.IsErrorOccurs = false;
-            this.txtShouhinCD.IsRequire = false;
-            this.txtShouhinCD.IsUseInitializedLayout = true;
-            this.txtShouhinCD.lblName = null;
-            this.txtShouhinCD.lblName1 = null;
-            this.txtShouhinCD.Location = new System.Drawing.Point(268, 159);
-            this.txtShouhinCD.MaxLength = 20;
-            this.txtShouhinCD.MinimumSize = new System.Drawing.Size(150, 19);
-            this.txtShouhinCD.MoveNext = true;
-            this.txtShouhinCD.Name = "txtShouhinCD";
-            this.txtShouhinCD.NextControl = null;
-            this.txtShouhinCD.NextControlName = "txtShouhinName";
-            this.txtShouhinCD.SearchType = Entity.SearchType.ScType.Shouhin;
-            this.txtShouhinCD.Size = new System.Drawing.Size(150, 19);
-            this.txtShouhinCD.TabIndex = 9;
-            this.txtShouhinCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
-            this.txtShouhinCD.TxtBox = null;
-            this.txtShouhinCD.TxtBox1 = null;
+            this.txtHinbanCD.AllowMinus = false;
+            this.txtHinbanCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHinbanCD.ChangeDate = null;
+            this.txtHinbanCD.Combo = null;
+            this.txtHinbanCD.DecimalPlace = 0;
+            this.txtHinbanCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtHinbanCD.DepandOnMode = false;
+            this.txtHinbanCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtHinbanCD.IntegerPart = 0;
+            this.txtHinbanCD.IsDatatableOccurs = null;
+            this.txtHinbanCD.IsErrorOccurs = false;
+            this.txtHinbanCD.IsRequire = false;
+            this.txtHinbanCD.IsUseInitializedLayout = true;
+            this.txtHinbanCD.lblName = null;
+            this.txtHinbanCD.lblName1 = null;
+            this.txtHinbanCD.Location = new System.Drawing.Point(268, 159);
+            this.txtHinbanCD.MaxLength = 20;
+            this.txtHinbanCD.MinimumSize = new System.Drawing.Size(150, 19);
+            this.txtHinbanCD.MoveNext = true;
+            this.txtHinbanCD.Name = "txtHinbanCD";
+            this.txtHinbanCD.NextControl = null;
+            this.txtHinbanCD.NextControlName = "txtShouhinName";
+            this.txtHinbanCD.SearchType = Entity.SearchType.ScType.Shouhin;
+            this.txtHinbanCD.Size = new System.Drawing.Size(150, 19);
+            this.txtHinbanCD.TabIndex = 9;
+            this.txtHinbanCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtHinbanCD.TxtBox = null;
+            this.txtHinbanCD.TxtBox1 = null;
             // 
             // chkFW
             // 
@@ -1187,6 +1036,157 @@
             this.txtScheduledNo.TxtBox = null;
             this.txtScheduledNo.TxtBox1 = null;
             // 
+            // HinbanCD
+            // 
+            this.HinbanCD.DataPropertyName = "HinbanCD";
+            this.HinbanCD.HeaderText = "品番";
+            this.HinbanCD.Name = "HinbanCD";
+            this.HinbanCD.ReadOnly = true;
+            this.HinbanCD.Width = 120;
+            // 
+            // ShouhinName
+            // 
+            this.ShouhinName.DataPropertyName = "ShouhinName";
+            this.ShouhinName.HeaderText = "商品名";
+            this.ShouhinName.Name = "ShouhinName";
+            this.ShouhinName.ReadOnly = true;
+            this.ShouhinName.Width = 250;
+            // 
+            // ColorRyakuName
+            // 
+            this.ColorRyakuName.DataPropertyName = "ColorRyakuName";
+            this.ColorRyakuName.HeaderText = "カラー略名";
+            this.ColorRyakuName.Name = "ColorRyakuName";
+            this.ColorRyakuName.ReadOnly = true;
+            this.ColorRyakuName.Width = 150;
+            // 
+            // ColorNO
+            // 
+            this.ColorNO.DataPropertyName = "ColorNO";
+            this.ColorNO.HeaderText = "カラー";
+            this.ColorNO.Name = "ColorNO";
+            this.ColorNO.ReadOnly = true;
+            // 
+            // SizeNO
+            // 
+            this.SizeNO.DataPropertyName = "SizeNO";
+            this.SizeNO.HeaderText = "サイズ";
+            this.SizeNO.Name = "SizeNO";
+            this.SizeNO.ReadOnly = true;
+            // 
+            // ChakuniYoteiDate
+            // 
+            this.ChakuniYoteiDate.DataPropertyName = "ChakuniYoteiDate";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ChakuniYoteiDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ChakuniYoteiDate.HeaderText = "着荷予定日";
+            this.ChakuniYoteiDate.Name = "ChakuniYoteiDate";
+            this.ChakuniYoteiDate.ReadOnly = true;
+            // 
+            // ChakuniYoteiSuu
+            // 
+            this.ChakuniYoteiSuu.DataPropertyName = "ChakuniYoteiSuu";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ChakuniYoteiSuu.HeaderText = "着荷予定数";
+            this.ChakuniYoteiSuu.Name = "ChakuniYoteiSuu";
+            this.ChakuniYoteiSuu.ReadOnly = true;
+            // 
+            // ChakuniZumiSuu
+            // 
+            this.ChakuniZumiSuu.DataPropertyName = "ChakuniZumiSuu";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ChakuniZumiSuu.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ChakuniZumiSuu.HeaderText = "着荷済数";
+            this.ChakuniZumiSuu.Name = "ChakuniZumiSuu";
+            // 
+            // ChakuniSuu
+            // 
+            this.ChakuniSuu.DataPropertyName = "ChakuniSuu";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = "0";
+            this.ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ChakuniSuu.HeaderText = "今回着荷数";
+            this.ChakuniSuu.MaxInputLength = 5;
+            this.ChakuniSuu.Name = "ChakuniSuu";
+            // 
+            // SiireKanryouKBN
+            // 
+            this.SiireKanryouKBN.DataPropertyName = "SiireKanryouKBN";
+            this.SiireKanryouKBN.FalseValue = "0";
+            this.SiireKanryouKBN.HeaderText = "完了";
+            this.SiireKanryouKBN.Name = "SiireKanryouKBN";
+            this.SiireKanryouKBN.TrueValue = "1";
+            this.SiireKanryouKBN.Width = 70;
+            // 
+            // ChakuniMeisaiTekiyou
+            // 
+            this.ChakuniMeisaiTekiyou.DataPropertyName = "ChakuniMeisaiTekiyou";
+            this.ChakuniMeisaiTekiyou.HeaderText = "明細摘要";
+            this.ChakuniMeisaiTekiyou.MaxInputLength = 80;
+            this.ChakuniMeisaiTekiyou.Name = "ChakuniMeisaiTekiyou";
+            this.ChakuniMeisaiTekiyou.Width = 420;
+            // 
+            // JanCD
+            // 
+            this.JanCD.DataPropertyName = "JanCD";
+            this.JanCD.HeaderText = "JANCD";
+            this.JanCD.Name = "JanCD";
+            // 
+            // Chakuni
+            // 
+            this.Chakuni.DataPropertyName = "Chakuni";
+            this.Chakuni.HeaderText = "着荷予定番号-行番号";
+            this.Chakuni.Name = "Chakuni";
+            this.Chakuni.Width = 200;
+            // 
+            // Hacchuu
+            // 
+            this.Hacchuu.DataPropertyName = "Hacchuu";
+            this.Hacchuu.HeaderText = "発注番号-行番号";
+            this.Hacchuu.Name = "Hacchuu";
+            this.Hacchuu.Width = 180;
+            // 
+            // ChakuniYoteiNO
+            // 
+            this.ChakuniYoteiNO.DataPropertyName = "ChakuniYoteiNO";
+            this.ChakuniYoteiNO.HeaderText = "ChakuniYoteiNO";
+            this.ChakuniYoteiNO.Name = "ChakuniYoteiNO";
+            this.ChakuniYoteiNO.Visible = false;
+            this.ChakuniYoteiNO.Width = 10;
+            // 
+            // ChakuniYoteiGyouNO
+            // 
+            this.ChakuniYoteiGyouNO.DataPropertyName = "ChakuniYoteiGyouNO";
+            this.ChakuniYoteiGyouNO.HeaderText = "ChakuniYoteiGyouNO";
+            this.ChakuniYoteiGyouNO.Name = "ChakuniYoteiGyouNO";
+            this.ChakuniYoteiGyouNO.Visible = false;
+            this.ChakuniYoteiGyouNO.Width = 10;
+            // 
+            // HacchuuNO
+            // 
+            this.HacchuuNO.DataPropertyName = "HacchuuNO";
+            this.HacchuuNO.HeaderText = "HacchuuNO";
+            this.HacchuuNO.Name = "HacchuuNO";
+            this.HacchuuNO.Visible = false;
+            this.HacchuuNO.Width = 10;
+            // 
+            // HacchuuGyouNO
+            // 
+            this.HacchuuGyouNO.DataPropertyName = "HacchuuGyouNO";
+            this.HacchuuGyouNO.HeaderText = "HacchuuGyouNO";
+            this.HacchuuGyouNO.Name = "HacchuuGyouNO";
+            this.HacchuuGyouNO.Visible = false;
+            this.HacchuuGyouNO.Width = 10;
+            // 
+            // ShouhinCD
+            // 
+            this.ShouhinCD.DataPropertyName = "ShouhinCD";
+            this.ShouhinCD.HeaderText = "ShouhinCD";
+            this.ShouhinCD.Name = "ShouhinCD";
+            this.ShouhinCD.Visible = false;
+            // 
             // ChakuniNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1251,7 +1251,7 @@
         private Shinyoh_Controls.STextBox txtYearTerm;
         private Shinyoh_Controls.SCheckBox chkSS;
         private Shinyoh_Controls.SCheckBox chkFW;
-        private Shinyoh_Search.SearchBox txtShouhinCD;
+        private Shinyoh_Search.SearchBox txtHinbanCD;
         private Shinyoh_Search.SearchBox txtColorNo;
         private Shinyoh_Search.SearchBox txtSizeNo;
         private Shinyoh_Search.SearchBox txtScheduled;

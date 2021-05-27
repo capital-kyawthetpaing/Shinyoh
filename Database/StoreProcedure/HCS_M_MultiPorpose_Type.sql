@@ -24,34 +24,34 @@ BEGIN
 if @Type=1
 begin
 --Terms of Payment
-select LEFT(Char1, 40) as Char1 from M_MultiPorpose M where M.ID=215 and M.[Key]= 1
+select Char1 as Char1 from M_MultiPorpose M where M.ID=215 and M.[Key]= 1
 end
 
 if @Type= 2
 begin
 --BENEFICIARY1
-select LEFT (Char1, 40) as Char1 from M_MultiPorpose M where M.ID=216 and M.[Key]= 1
+select Char1 as Char1 from M_MultiPorpose M where M.ID=216 and M.[Key]= 1
 end
 
 if @Type= 3
 begin
 --BENEFICIARY2
-select LEFT (Char1, 40) as Char1 from M_MultiPorpose M where M.ID=217 and M.[Key]= 1
-end
-
-if @Type= 3
-begin
---Country of Origin
-select LEFT (Char1, 40) as Char1 from M_MultiPorpose M where M.ID=218 and M.[Key]= 1
+select Char1 as Char1 from M_MultiPorpose M where M.ID=217 and M.[Key]= 1
 end
 
 if @Type= 4
 begin
---Shipping from
-select LEFT (Char1, 40) as Char1 from M_MultiPorpose M where M.ID=219 and M.[Key]= 1
+--Country of Origin
+select Char1 as Char1 from M_MultiPorpose M where M.ID=218 and M.[Key]= 1
 end
 
 if @Type= 5
+begin
+--Shipping from
+select Char1 as Char1 from M_MultiPorpose M where M.ID=219 and M.[Key]= 1
+end
+
+if @Type= 6
 begin
 --Destination
 select Char1 from M_MultiPorpose M where M.ID= 220 and M.[Key]= 1

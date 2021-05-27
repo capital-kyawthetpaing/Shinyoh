@@ -17,6 +17,8 @@ GO
 -- History    : 2021/04/20 Y.Nishikawa 条件が不正
 --            : 2021/04/27 Y.Nishikawa 在庫更新を引当ファンクション内に移動
 --            : 2021/05/07 Y.Nishikawa 条件追加
+--            : 2021/05/24 Y.Nishikawa 過剰入荷時は、受注数まで計上可とする(現在庫は着荷データをベースに更新しているので、このパラを上書いても問題無い)
+--            : 2021/05/26 Y.Nishikawa 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_5]
 	-- Add the parameters for the stored procedure here
@@ -85,9 +87,35 @@ BEGIN
 			--and KanriNO = @KanriNO
 			--and ShukkaZumiSuu = 0
 
+			--2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↓↓
+			DECLARE @IsShukkaSiziKanryou SMALLINT
+			SELECT @IsShukkaSiziKanryou = CASE WHEN ShukkaSiziKanryouKBN = 1 
+			                                   THEN 1
+											   ELSE 0
+										  END
+			FROM D_JuchuuMeisai
+			WHERE JuchuuNO = @JuchuuNO
+			AND JuchuuGyouNO = @JuchuuGyouNO
+			--2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
+
+			--2021/05/24 Y.Nishikawa ADD 過剰入荷時は、受注数まで計上可とする(現在庫は着荷データをベースに更新しているので、このパラを上書いても問題無い)↓↓
+			SELECT @ChakuniSuu = CASE WHEN JuchuuSuu < @ChakuniSuu
+			                          THEN JuchuuSuu
+									  ELSE @ChakuniSuu
+								 END
+			FROM D_JuchuuMeisai
+			WHERE JuchuuNO = @JuchuuNO
+			AND JuchuuGyouNO = @JuchuuGyouNO
+			--2021/05/24 Y.Nishikawa ADD 過剰入荷時は、受注数まで計上可とする(現在庫は着荷データをベースに更新しているので、このパラを上書いても問題無い)↑↑
+
 			--新規モード(@ProcessKBN = 10)または修正モード修正後(@ProcessKBN = 21)の場合、
 			IF (@ProcessKBN = 10 OR @ProcessKBN = 21)
 			BEGIN
+			      --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↓↓
+				  IF (@IsShukkaSiziKanryou = 0)
+				  BEGIN
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
+
 			      --１．同一入庫日の受注詳細が既に存在する場合、他の着荷伝票で既に計上済みのため、その受注詳細に足し込む
 				  IF EXISTS (
 				               SELECT *
@@ -799,6 +827,9 @@ BEGIN
 	              CLOSE cursorShukkaSiziMeisai
 	              DEALLOCATE cursorShukkaSiziMeisai
 
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↓↓
+				  END
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
 
 				  --６．現在庫
 				  --2021/04/27 Y.Nishikawa ADD 在庫更新を引当ファンクション内に移動
@@ -907,6 +938,11 @@ BEGIN
 						  WHERE JuchuuNO = @JuchuuNO
 						  AND JuchuuGyouNO = @JuchuuGyouNO
 				  
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↓↓
+				  IF (@IsShukkaSiziKanryou = 0)
+				  BEGIN
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
+
 				  --入庫日が空の受注詳細が存在する場合、同一入庫日の受注詳細から差し引き、入庫日が空の受注詳細に足し込む
 				  IF EXISTS (
 				               SELECT *
@@ -923,25 +959,69 @@ BEGIN
 				        --同一入庫日の受注詳細の出荷指示済数≧今回着荷数の場合、
 				        IF (@ShukkaSiziZumiSuu_11 >= @ChakuniSuu)
 				        BEGIN
-						   UPDATE D_JuchuuShousai
-						   SET JuchuuSuu = JuchuuSuu - @ChakuniSuu
-						      ,ShukkaSiziZumiSuu = ShukkaSiziZumiSuu - @ChakuniSuu
-							  ,UpdateOperator = @UpdateOperator
-							  ,UpdateDateTime = @UpdateDateTime
-						   WHERE JuchuuNO = @JuchuuNO
-					       AND JuchuuGyouNO = @JuchuuGyouNO
-					       AND KanriNO = @KanriNO
-						   AND NyuukoDate = @NyuukoDate
+						   --同一入庫日の受注詳細の引当済数＞０の場合、引当済数から優先的に調整する
+						   IF (@HikiateZumiSuu_11 > 0)
+						   BEGIN
+						      DECLARE @ShukkaSiziZumiSuu_Chouseigo_11 DECIMAL(21, 6)
+							  DECLARE @HikiateZumiSuu_Chouseigo_11 DECIMAL(21, 6)
+							  SELECT @ShukkaSiziZumiSuu_Chouseigo_11 = CASE WHEN HikiateZumiSuu - @ChakuniSuu > 0
+								                                            THEN CAST(0 AS DECIMAL(21, 6))
+												 		                    ELSE @ChakuniSuu - HikiateZumiSuu
+												                       END
+								    ,@HikiateZumiSuu_Chouseigo_11 = CASE WHEN HikiateZumiSuu - @ChakuniSuu > 0
+								                                         THEN @ChakuniSuu
+												 		                 ELSE HikiateZumiSuu
+												                    END
+							  FROM D_JuchuuShousai
+						      WHERE JuchuuNO = @JuchuuNO
+					          AND JuchuuGyouNO = @JuchuuGyouNO
+					          AND KanriNO = @KanriNO
+						      AND NyuukoDate = @NyuukoDate
 
-						   UPDATE D_JuchuuShousai
-						   SET JuchuuSuu = JuchuuSuu + @ChakuniSuu
-						      ,ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + @ChakuniSuu
-							  ,UpdateOperator = @UpdateOperator
-							  ,UpdateDateTime = @UpdateDateTime
-						   WHERE JuchuuNO = @JuchuuNO
-					       AND JuchuuGyouNO = @JuchuuGyouNO
-					       AND KanriNO = @KanriNO
-						   AND ISNULL(NyuukoDate, '') = ''
+						      UPDATE D_JuchuuShousai
+						      SET JuchuuSuu = JuchuuSuu - @ChakuniSuu
+							     ,HikiateZumiSuu = HikiateZumiSuu - @HikiateZumiSuu_Chouseigo_11
+								 ,ShukkaSiziZumiSuu = ShukkaSiziZumiSuu - @ShukkaSiziZumiSuu_Chouseigo_11
+								 ,UpdateOperator = @UpdateOperator
+							     ,UpdateDateTime = @UpdateDateTime
+						      WHERE JuchuuNO = @JuchuuNO
+					          AND JuchuuGyouNO = @JuchuuGyouNO
+					          AND KanriNO = @KanriNO
+						      AND NyuukoDate = @NyuukoDate
+						      
+						      UPDATE D_JuchuuShousai
+						      SET JuchuuSuu = JuchuuSuu + @ChakuniSuu
+							     ,HikiateZumiSuu = HikiateZumiSuu + @HikiateZumiSuu_Chouseigo_11
+						         ,ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + @ShukkaSiziZumiSuu_Chouseigo_11
+							     ,UpdateOperator = @UpdateOperator
+							     ,UpdateDateTime = @UpdateDateTime
+						      WHERE JuchuuNO = @JuchuuNO
+					          AND JuchuuGyouNO = @JuchuuGyouNO
+					          AND KanriNO = @KanriNO
+						      AND ISNULL(NyuukoDate, '') = ''
+						   END
+						   ELSE
+						   BEGIN
+						      UPDATE D_JuchuuShousai
+						      SET JuchuuSuu = JuchuuSuu - @ChakuniSuu
+						         ,ShukkaSiziZumiSuu = ShukkaSiziZumiSuu - @ChakuniSuu
+							     ,UpdateOperator = @UpdateOperator
+							     ,UpdateDateTime = @UpdateDateTime
+						      WHERE JuchuuNO = @JuchuuNO
+					          AND JuchuuGyouNO = @JuchuuGyouNO
+					          AND KanriNO = @KanriNO
+						      AND NyuukoDate = @NyuukoDate
+						      
+						      UPDATE D_JuchuuShousai
+						      SET JuchuuSuu = JuchuuSuu + @ChakuniSuu
+						         ,ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + @ChakuniSuu
+							     ,UpdateOperator = @UpdateOperator
+							     ,UpdateDateTime = @UpdateDateTime
+						      WHERE JuchuuNO = @JuchuuNO
+					          AND JuchuuGyouNO = @JuchuuGyouNO
+					          AND KanriNO = @KanriNO
+						      AND ISNULL(NyuukoDate, '') = ''
+						   END
 						END
 						--同一入庫日の受注詳細の出荷指示済数＜今回着荷数の場合、
 						ELSE
@@ -993,60 +1073,138 @@ BEGIN
 				        --同一入庫日の受注詳細の出荷指示済数≧今回着荷数の場合、
 				        IF (@ShukkaSiziZumiSuu_11 >= @ChakuniSuu)
 				        BEGIN
-						   UPDATE D_JuchuuShousai
-						   SET JuchuuSuu = JuchuuSuu - @ChakuniSuu
-						      ,ShukkaSiziZumiSuu = ShukkaSiziZumiSuu - @ChakuniSuu
-							  ,UpdateOperator = @UpdateOperator
-							  ,UpdateDateTime = @UpdateDateTime
-						   WHERE JuchuuNO = @JuchuuNO
-					       AND JuchuuGyouNO = @JuchuuGyouNO
-					       AND KanriNO = @KanriNO
-						   AND NyuukoDate = @NyuukoDate
-
-						   INSERT INTO D_JuchuuShousai
-                           (JuchuuNO
-                           ,JuchuuGyouNO
-                           ,JuchuuShousaiNO
-                           ,SoukoCD
-                           ,ShouhinCD
-                           ,ShouhinName
-                           ,JuchuuSuu
-                           ,KanriNO
-                           ,NyuukoDate
-                           ,HikiateZumiSuu
-                           ,MiHikiateSuu
-                           ,ShukkaSiziZumiSuu
-                           ,ShukkaZumiSuu
-                           ,UriageZumiSuu
-                           ,HacchuuNO
-                           ,HacchuuGyouNO
-                           ,InsertOperator
-                           ,InsertDateTime
-                           ,UpdateOperator
-                           ,UpdateDateTime)
-                           SELECT JuchuuNO
-                                ,JuchuuGyouNO
-                                ,@JuchuuShousaiNO_11
-                                ,SoukoCD
-                                ,ShouhinCD
-                                ,ShouhinName
-                                ,@ChakuniSuu
-                                ,@KanriNO
-                                ,''
-                                ,0
-                                ,0
-                                ,@ChakuniSuu
-                                ,0
-                                ,0
-                                ,HacchuuNO
-                                ,HacchuuGyouNO
-                                ,@UpdateOperator
-                                ,@UpdateDateTime
-                                ,@UpdateOperator
-                                ,@UpdateDateTime
-                            FROM D_JuchuuMeisai
-						    WHERE JuchuuNO = @JuchuuNO
-						    AND JuchuuGyouNO = @JuchuuGyouNO
+						   --同一入庫日の受注詳細の引当済数＞０の場合、引当済数から優先的に調整する
+						   IF (@HikiateZumiSuu_11 > 0)
+						   BEGIN
+						      DECLARE @ShukkaSiziZumiSuu_Chouseigo_111 DECIMAL(21, 6)
+						      DECLARE @HikiateZumiSuu_Chouseigo_111 DECIMAL(21, 6)
+						      SELECT @ShukkaSiziZumiSuu_Chouseigo_111 = CASE WHEN HikiateZumiSuu - @ChakuniSuu > 0
+							                                                 THEN CAST(0 AS DECIMAL(21, 6))
+							   				 		                         ELSE @ChakuniSuu - HikiateZumiSuu
+							   				                            END
+							        ,@HikiateZumiSuu_Chouseigo_111 = CASE WHEN HikiateZumiSuu - @ChakuniSuu > 0
+							                                              THEN @ChakuniSuu
+							   				 		                      ELSE HikiateZumiSuu
+							   				                         END
+						      FROM D_JuchuuShousai
+						      WHERE JuchuuNO = @JuchuuNO
+					          AND JuchuuGyouNO = @JuchuuGyouNO
+					          AND KanriNO = @KanriNO
+						      AND NyuukoDate = @NyuukoDate
+						      
+						      UPDATE D_JuchuuShousai
+						      SET JuchuuSuu = JuchuuSuu - @ChakuniSuu
+						         ,HikiateZumiSuu = HikiateZumiSuu - @HikiateZumiSuu_Chouseigo_11
+						         ,ShukkaSiziZumiSuu = ShukkaSiziZumiSuu - @ShukkaSiziZumiSuu_Chouseigo_11
+						         ,UpdateOperator = @UpdateOperator
+						         ,UpdateDateTime = @UpdateDateTime
+						      WHERE JuchuuNO = @JuchuuNO
+					          AND JuchuuGyouNO = @JuchuuGyouNO
+					          AND KanriNO = @KanriNO
+						      AND NyuukoDate = @NyuukoDate
+						      
+						      INSERT INTO D_JuchuuShousai
+                              (JuchuuNO
+                              ,JuchuuGyouNO
+                              ,JuchuuShousaiNO
+                              ,SoukoCD
+                              ,ShouhinCD
+                              ,ShouhinName
+                              ,JuchuuSuu
+                              ,KanriNO
+                              ,NyuukoDate
+                              ,HikiateZumiSuu
+                              ,MiHikiateSuu
+                              ,ShukkaSiziZumiSuu
+                              ,ShukkaZumiSuu
+                              ,UriageZumiSuu
+                              ,HacchuuNO
+                              ,HacchuuGyouNO
+                              ,InsertOperator
+                              ,InsertDateTime
+                              ,UpdateOperator
+                              ,UpdateDateTime)
+                              SELECT JuchuuNO
+                                   ,JuchuuGyouNO
+                                   ,@JuchuuShousaiNO_11
+                                   ,SoukoCD
+                                   ,ShouhinCD
+                                   ,ShouhinName
+                                   ,@ChakuniSuu
+                                   ,@KanriNO
+                                   ,''
+                                   ,@HikiateZumiSuu_Chouseigo_11
+                                   ,0
+                                   ,@ShukkaSiziZumiSuu_Chouseigo_11
+                                   ,0
+                                   ,0
+                                   ,HacchuuNO
+                                   ,HacchuuGyouNO
+                                   ,@UpdateOperator
+                                   ,@UpdateDateTime
+                                   ,@UpdateOperator
+                                   ,@UpdateDateTime
+                               FROM D_JuchuuMeisai
+						       WHERE JuchuuNO = @JuchuuNO
+						       AND JuchuuGyouNO = @JuchuuGyouNO
+						   END
+						   ELSE
+						   BEGIN
+						      UPDATE D_JuchuuShousai
+						      SET JuchuuSuu = JuchuuSuu - @ChakuniSuu
+						         ,ShukkaSiziZumiSuu = ShukkaSiziZumiSuu - @ChakuniSuu
+						         ,UpdateOperator = @UpdateOperator
+						         ,UpdateDateTime = @UpdateDateTime
+						      WHERE JuchuuNO = @JuchuuNO
+					          AND JuchuuGyouNO = @JuchuuGyouNO
+					          AND KanriNO = @KanriNO
+						      AND NyuukoDate = @NyuukoDate
+						      
+						      INSERT INTO D_JuchuuShousai
+                              (JuchuuNO
+                              ,JuchuuGyouNO
+                              ,JuchuuShousaiNO
+                              ,SoukoCD
+                              ,ShouhinCD
+                              ,ShouhinName
+                              ,JuchuuSuu
+                              ,KanriNO
+                              ,NyuukoDate
+                              ,HikiateZumiSuu
+                              ,MiHikiateSuu
+                              ,ShukkaSiziZumiSuu
+                              ,ShukkaZumiSuu
+                              ,UriageZumiSuu
+                              ,HacchuuNO
+                              ,HacchuuGyouNO
+                              ,InsertOperator
+                              ,InsertDateTime
+                              ,UpdateOperator
+                              ,UpdateDateTime)
+                              SELECT JuchuuNO
+                                   ,JuchuuGyouNO
+                                   ,@JuchuuShousaiNO_11
+                                   ,SoukoCD
+                                   ,ShouhinCD
+                                   ,ShouhinName
+                                   ,@ChakuniSuu
+                                   ,@KanriNO
+                                   ,''
+                                   ,0
+                                   ,0
+                                   ,@ChakuniSuu
+                                   ,0
+                                   ,0
+                                   ,HacchuuNO
+                                   ,HacchuuGyouNO
+                                   ,@UpdateOperator
+                                   ,@UpdateDateTime
+                                   ,@UpdateOperator
+                                   ,@UpdateDateTime
+                               FROM D_JuchuuMeisai
+						       WHERE JuchuuNO = @JuchuuNO
+						       AND JuchuuGyouNO = @JuchuuGyouNO
+						   END
 						END
 						--同一入庫日の受注詳細の出荷指示済数＜今回着荷数の場合、
 						ELSE
@@ -1176,25 +1334,70 @@ BEGIN
 				     --出荷指示数≧今回着荷数の場合、
 				     IF (@ShukkaSiziSuu_21 >= @ChakuniSuu) 
 				     BEGIN
-				        --同一入庫日の情報から差し引く
-				        UPDATE D_HikiateZaiko
-				        SET ShukkaSiziSuu = ShukkaSiziSuu - @ChakuniSuu
-						   ,UpdateOperator = @UpdateOperator
-			               ,UpdateDateTime = @UpdateDateTime
-				        WHERE SoukoCD = @SoukoCD
-			            AND ShouhinCD = @ShouhinCD
-			            AND KanriNO = @KanriNO
-			            AND NyuukoDate = @NyuukoDate
-
-						--入庫日が空白の情報に更新
-						UPDATE D_HikiateZaiko
-				        SET ShukkaSiziSuu = ShukkaSiziSuu + @ChakuniSuu
-						   ,UpdateOperator = @UpdateOperator
-			               ,UpdateDateTime = @UpdateDateTime
-				        WHERE SoukoCD = @SoukoCD
-			            AND ShouhinCD = @ShouhinCD
-			            AND KanriNO = @KanriNO
-			            AND ISNULL(NyuukoDate, '') = ''
+					    --同一入庫日の引当済数＞０の場合、同一入庫日の引当情報から優先的に差し引く
+						IF (@HikiateZumiSuu_21 > 0)
+						BEGIN
+						   DECLARE @ShukkaSiziSuu_Chouseigo_21 DECIMAL(21, 6)
+						   DECLARE @HikiateZumiSuu_Chouseigo_21 DECIMAL(21, 6)
+						   SELECT @ShukkaSiziSuu_Chouseigo_21 = CASE WHEN HikiateZumiSuu - @ChakuniSuu > 0
+						   	                                         THEN CAST(0 AS DECIMAL(21, 6))
+						   					 	                     ELSE @ChakuniSuu - HikiateZumiSuu
+						   					                    END
+						         ,@HikiateZumiSuu_Chouseigo_21 = CASE WHEN HikiateZumiSuu - @ChakuniSuu > 0
+						   	                                          THEN @ChakuniSuu
+						   					 	                      ELSE HikiateZumiSuu
+						   					                     END
+						   FROM D_HikiateZaiko
+						   WHERE SoukoCD = @SoukoCD
+			               AND ShouhinCD = @ShouhinCD
+			               AND KanriNO = @KanriNO
+			               AND NyuukoDate = @NyuukoDate
+						   
+				           --同一入庫日の情報から差し引く
+				           UPDATE D_HikiateZaiko
+				           SET ShukkaSiziSuu = ShukkaSiziSuu - @ShukkaSiziSuu_Chouseigo_21
+						      ,HikiateZumiSuu = HikiateZumiSuu - @HikiateZumiSuu_Chouseigo_21
+						      ,UpdateOperator = @UpdateOperator
+			                  ,UpdateDateTime = @UpdateDateTime
+				           WHERE SoukoCD = @SoukoCD
+			               AND ShouhinCD = @ShouhinCD
+			               AND KanriNO = @KanriNO
+			               AND NyuukoDate = @NyuukoDate
+						   
+						   --入庫日が空白の情報に更新
+						   UPDATE D_HikiateZaiko
+				           SET ShukkaSiziSuu = ShukkaSiziSuu + @ShukkaSiziSuu_Chouseigo_21
+						      ,HikiateZumiSuu = HikiateZumiSuu + @HikiateZumiSuu_Chouseigo_21
+						      ,UpdateOperator = @UpdateOperator
+			                  ,UpdateDateTime = @UpdateDateTime
+				           WHERE SoukoCD = @SoukoCD
+			               AND ShouhinCD = @ShouhinCD
+			               AND KanriNO = @KanriNO
+			               AND ISNULL(NyuukoDate, '') = ''
+						END
+						--同一入庫日の引当済数≦０の場合、引当済数は考慮しない
+						ELSE
+						BEGIN
+						   --同一入庫日の情報から差し引く
+				           UPDATE D_HikiateZaiko
+				           SET ShukkaSiziSuu = ShukkaSiziSuu - @ChakuniSuu
+						      ,UpdateOperator = @UpdateOperator
+			                  ,UpdateDateTime = @UpdateDateTime
+				           WHERE SoukoCD = @SoukoCD
+			               AND ShouhinCD = @ShouhinCD
+			               AND KanriNO = @KanriNO
+			               AND NyuukoDate = @NyuukoDate
+						   
+						   --入庫日が空白の情報に更新
+						   UPDATE D_HikiateZaiko
+				           SET ShukkaSiziSuu = ShukkaSiziSuu + @ChakuniSuu
+						      ,UpdateOperator = @UpdateOperator
+			                  ,UpdateDateTime = @UpdateDateTime
+				           WHERE SoukoCD = @SoukoCD
+			               AND ShouhinCD = @ShouhinCD
+			               AND KanriNO = @KanriNO
+			               AND ISNULL(NyuukoDate, '') = ''
+						END
 				     END
 					 --出荷指示数＜今回着荷数の場合、
 					 ELSE
@@ -1237,38 +1440,95 @@ BEGIN
 				     --出荷指示数≧今回着荷数の場合、
 				     IF (@ShukkaSiziSuu_21 >= @ChakuniSuu) 
 				     BEGIN
-				        --同一入庫日の情報から差し引く
-				        UPDATE D_HikiateZaiko
-				        SET ShukkaSiziSuu = ShukkaSiziSuu - @ChakuniSuu
-						   ,UpdateOperator = @UpdateOperator
-			               ,UpdateDateTime = @UpdateDateTime
-				        WHERE SoukoCD = @SoukoCD
-			            AND ShouhinCD = @ShouhinCD
-			            AND KanriNO = @KanriNO
-			            AND NyuukoDate = @NyuukoDate
+					    --同一入庫日の引当情報から優先的に差し引く
+						IF (@HikiateZumiSuu_21 > 0)
+						BEGIN
+						   DECLARE @ShukkaSiziSuu_Chouseigo_211 DECIMAL(21, 6)
+						   DECLARE @HikiateZumiSuu_Chouseigo_211 DECIMAL(21, 6)
+						   SELECT @ShukkaSiziSuu_Chouseigo_211 = CASE WHEN HikiateZumiSuu - @ChakuniSuu > 0
+						   	                                          THEN CAST(0 AS DECIMAL(21, 6))
+						   					 	                      ELSE @ChakuniSuu - HikiateZumiSuu
+						   					                     END
+						         ,@HikiateZumiSuu_Chouseigo_211 = CASE WHEN HikiateZumiSuu - @ChakuniSuu > 0
+						   	                                           THEN @ChakuniSuu
+						   					 	                       ELSE HikiateZumiSuu
+						   					                      END
+						   FROM D_HikiateZaiko
+						   WHERE SoukoCD = @SoukoCD
+			               AND ShouhinCD = @ShouhinCD
+			               AND KanriNO = @KanriNO
+			               AND NyuukoDate = @NyuukoDate
 
-						--入庫日が空白の情報に更新
-						INSERT INTO D_HikiateZaiko
-                        (SoukoCD
-                        ,ShouhinCD
-                        ,KanriNO
-                        ,NyuukoDate
-                        ,ShukkaSiziSuu
-                        ,HikiateZumiSuu
-                        ,InsertOperator
-                        ,InsertDateTime
-                        ,UpdateOperator
-                        ,UpdateDateTime)
-                        SELECT @SoukoCD
-                             ,@ShouhinCD
-                             ,@KanriNO
-                             ,''
-                             ,@ChakuniSuu
-                             ,0
-                             ,@UpdateOperator
-                             ,@UpdateDateTime
-                             ,@UpdateOperator
-                             ,@UpdateDateTime
+				           --同一入庫日の情報から差し引く
+				           UPDATE D_HikiateZaiko
+				           SET ShukkaSiziSuu = ShukkaSiziSuu - @ShukkaSiziSuu_Chouseigo_211
+						      ,HikiateZumiSuu = HikiateZumiSuu - @HikiateZumiSuu_Chouseigo_211
+						      ,UpdateOperator = @UpdateOperator
+			                  ,UpdateDateTime = @UpdateDateTime
+				           WHERE SoukoCD = @SoukoCD
+			               AND ShouhinCD = @ShouhinCD
+			               AND KanriNO = @KanriNO
+			               AND NyuukoDate = @NyuukoDate
+						   
+						   --入庫日が空白の情報に更新
+						   INSERT INTO D_HikiateZaiko
+                           (SoukoCD
+                           ,ShouhinCD
+                           ,KanriNO
+                           ,NyuukoDate
+                           ,ShukkaSiziSuu
+                           ,HikiateZumiSuu
+                           ,InsertOperator
+                           ,InsertDateTime
+                           ,UpdateOperator
+                           ,UpdateDateTime)
+                           SELECT @SoukoCD
+                                ,@ShouhinCD
+                                ,@KanriNO
+                                ,''
+                                ,@ShukkaSiziSuu_Chouseigo_211
+                                ,@HikiateZumiSuu_Chouseigo_211
+                                ,@UpdateOperator
+                                ,@UpdateDateTime
+                                ,@UpdateOperator
+                                ,@UpdateDateTime
+						END
+						--同一入庫日の引当済数≦０の場合、引当済数は考慮しない
+						ELSE
+						BEGIN
+						   --同一入庫日の情報から差し引く
+				           UPDATE D_HikiateZaiko
+				           SET ShukkaSiziSuu = ShukkaSiziSuu - @ChakuniSuu
+						      ,UpdateOperator = @UpdateOperator
+			                  ,UpdateDateTime = @UpdateDateTime
+				           WHERE SoukoCD = @SoukoCD
+			               AND ShouhinCD = @ShouhinCD
+			               AND KanriNO = @KanriNO
+			               AND NyuukoDate = @NyuukoDate
+						   
+						   --入庫日が空白の情報に更新
+						   INSERT INTO D_HikiateZaiko
+                           (SoukoCD
+                           ,ShouhinCD
+                           ,KanriNO
+                           ,NyuukoDate
+                           ,ShukkaSiziSuu
+                           ,HikiateZumiSuu
+                           ,InsertOperator
+                           ,InsertDateTime
+                           ,UpdateOperator
+                           ,UpdateDateTime)
+                           SELECT @SoukoCD
+                                ,@ShouhinCD
+                                ,@KanriNO
+                                ,''
+                                ,@ChakuniSuu
+                                ,0
+                                ,@UpdateOperator
+                                ,@UpdateDateTime
+                                ,@UpdateOperator
+                                ,@UpdateDateTime
+						END
 				     END
 				     --出荷指示数＜今回着荷数の場合、
 					 ELSE
@@ -1546,6 +1806,9 @@ BEGIN
 	              CLOSE cursorShukkaSiziMeisai
 	              DEALLOCATE cursorShukkaSiziMeisai
 
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↓↓
+				  END
+				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
 
 				  --４．現在庫
 				  --2021/04/27 Y.Nishikawa ADD  在庫更新を引当ファンクション内に移動

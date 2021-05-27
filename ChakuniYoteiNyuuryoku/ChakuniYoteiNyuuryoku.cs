@@ -72,7 +72,7 @@ namespace ChakuniYoteiNyuuryoku
             txtSiiresaki.ChangeDate = txtDate;
             txtStaffCD.ChangeDate = txtDate;
             txtChakuniYoteiNO.ChangeDate = txtDate;
-            txtShouhinCD.ChangeDate = txtDate;
+            txtHinbanCD.ChangeDate = txtDate;
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -111,6 +111,7 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     //txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
+                    txtChakuniYoteiNO.E160Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
                     sd = new SiiresakiDetail();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -120,6 +121,7 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     //txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
+                    txtChakuniYoteiNO.E160Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
                     sd = new SiiresakiDetail(false);
                     //btn_Siiresaki.Enabled = true;
@@ -130,6 +132,7 @@ namespace ChakuniYoteiNyuuryoku
                     txtChakuniYoteiNO.E102Check(true);
                     txtChakuniYoteiNO.E133Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null, null);
                     //txtChakuniYoteiNO.E268Check(true, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
+                    txtChakuniYoteiNO.E160Check(false, "ChakuniYoteiNyuuryoku", txtChakuniYoteiNO, null);
                     Mode_Setting();
                     sd = new SiiresakiDetail(false);
                     //btn_Siiresaki.Enabled = true;
@@ -242,7 +245,7 @@ namespace ChakuniYoteiNyuuryoku
                 chkEntity.ChakuniYoteiNO = txtChakuniYoteiNO.Text;
                 chkEntity.ChakuniYoteiDate = txtDate.Text;
                 chkEntity.BrandCD = txtBrandCD.Text;
-                chkEntity.HinbanCD = txtShouhinCD.Text;
+                chkEntity.HinbanCD = txtHinbanCD.Text;
                 chkEntity.ShouhinName = txtShouhinName.Text;
                 chkEntity.JANCD = txtJANCD.Text;
                 chkEntity.YearTerm = txtYearTerm.Text;
@@ -256,7 +259,7 @@ namespace ChakuniYoteiNyuuryoku
                 chkEntity.OperatorCD = OperatorCD;
                 chkEntity.ProgramID = ProgramID;
                 chkEntity.PC = PCID;
-                if (string.IsNullOrWhiteSpace(txtBrandCD.Text) && string.IsNullOrWhiteSpace(txtShouhinCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) &&
+                if (string.IsNullOrWhiteSpace(txtBrandCD.Text) && string.IsNullOrWhiteSpace(txtHinbanCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) &&
                    string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtDateFrom.Text) && string.IsNullOrWhiteSpace(txtDateTo.Text) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
                 {
                     bbl.ShowMessage("E111");
@@ -491,7 +494,7 @@ namespace ChakuniYoteiNyuuryoku
             dr["KanriNO"] = txtNumber.Text;
             dr["ChakuniYoteiDenpyouTekiyou"] = string.IsNullOrEmpty(txtDescription.Text) ? null : txtDescription.Text;
             dr["BrandCD"] = string.IsNullOrEmpty(txtBrandCD.Text) ? null : txtBrandCD.Text;
-            dr["ShouhinCD"] = string.IsNullOrEmpty(txtShouhinCD.Text) ? null : txtShouhinCD.Text;
+            dr["ShouhinCD"] = string.IsNullOrEmpty(txtHinbanCD.Text) ? null : txtHinbanCD.Text;
             dr["ShouhinName"] = string.IsNullOrEmpty(txtShouhinName.Text) ? null : txtShouhinName.Text;
             dr["JANCD"] = string.IsNullOrEmpty(txtJANCD.Text) ? null : txtJANCD.Text;
             dr["YearTerm"] = string.IsNullOrEmpty(txtYearTerm.Text) ? null : txtYearTerm.Text;
@@ -740,7 +743,7 @@ namespace ChakuniYoteiNyuuryoku
         {
             txtBrandCD.Clear();
             lblBrandName.Text = string.Empty;
-            txtShouhinCD.Clear();
+            txtHinbanCD.Clear();
             txtShouhinName.Clear();
             txtJANCD.Clear();
             txtYearTerm.Clear();

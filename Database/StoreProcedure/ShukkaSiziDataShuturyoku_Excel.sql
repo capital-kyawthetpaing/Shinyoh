@@ -16,6 +16,7 @@ GO
 -- Create date: 2020/12/07
 -- Description:	<Description,,> 
 -- History    : 2021/05/12 Y.Nishikawa 出荷指示出力区分更新時、全出荷指示を対象としている
+--            : 2021/05/26 Y.Nishikawa 日付の条件が不正
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkaSiziDataShuturyoku_Excel]
 	@ShukkaYoteiDate		as date,

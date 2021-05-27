@@ -565,6 +565,11 @@ namespace Shinyoh_Controls
                 string result = string.Empty;
                 switch (sTextBox.E160Type)
                 {
+                    case "ChakuniYoteiNyuuryoku":
+                        ChakuniYoteiNyuuryoku_BL cybl = new ChakuniYoteiNyuuryoku_BL();
+                        rDt = cybl.ChakuniYoteiNyuuryoku_Select(sTextBox.ctrlE160_1.Text, string.Empty, "E160");
+                        result = rDt.Rows[0]["MessageID"].ToString();
+                        break;
                     case "JuchuuNyuuryoku":
                         JuchuuListBL jbl = new JuchuuListBL();
                         rDt = jbl.JuchuuNyuuryoku_Select_Check(sTextBox.ctrlE160_1.Text, string.Empty, "E160");

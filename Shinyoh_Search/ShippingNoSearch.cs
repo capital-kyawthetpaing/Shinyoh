@@ -44,14 +44,15 @@ namespace Shinyoh_Search
             gvShippingNo.SetReadOnlyColumn("**");//readonly for search form 
         }
         private void ShippingNoSearch_Load(object sender, EventArgs e)
-        {
+        {            
             GridViewBind();
             ErrorCheck();
+            txtProductFrom.ChangeDate = txtCurrentDate;//20210527Taskno_541_ssa
+            txtProductTo.ChangeDate = txtCurrentDate;//20210527Taskno_541_ssa
         }
            
         public override void FunctionProcess(string tagID)
         {
-
             if (tagID == "3")
             {
                 GridViewBind();
@@ -94,11 +95,12 @@ namespace Shinyoh_Search
                 {
                     if (dt.Columns.Contains("CurrentDay"))
                     {
+                        lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);//ssa
                         txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                         dt.Columns.Remove("CurrentDay");
-                    }
-                    gvShippingNo.DataSource = dt;
+                    }                    
                 }
+                gvShippingNo.DataSource = dt;
             }
             
         }

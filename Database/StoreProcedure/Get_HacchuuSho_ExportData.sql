@@ -108,7 +108,7 @@ BEGIN
 	CREATE TABLE #WK_HacchuuMeisai
 	(
 		SiiresakiCD varchar(10),
-		SiiresakiName varchar(50),
+		SiiresakiName varchar(120),
 		Model_No varchar(16),
 		Model_Name varchar(40),
 		FOB varchar(15),
@@ -191,8 +191,8 @@ BEGIN
 	AND	(@JuchuuNO2 is null or(DHAM.JuchuuNO <= @JuchuuNO2))
 	AND (@HacchuuNO1 is null or(DHAM.HacchuuNO >= @HacchuuNO1))
 	AND	(@HacchuuNO2 is null or(DHAM.HacchuuNO <= @HacchuuNO2))
-	AND (@InputDate1 is null or(DHAM.UpdateDateTime >= @InputDate1))
-	AND (@InputDate2 is null or(DHAM.UpdateDateTime <= @InputDate2))
+	AND (@InputDate1 is null or(convert(date,DHAM.UpdateDateTime) >= @InputDate1))
+	AND (@InputDate2 is null or(convert(date,DHAM.UpdateDateTime) <= @InputDate2))
 	AND (@BrandCD is null or(DHAM.BrandCD = @BrandCD))
 	AND (@YearTerm is null or(MSHO.YearTerm = @YearTerm))
 	AND (@SS is null or(MSHO.SeasonSS = @SS))
@@ -234,8 +234,8 @@ BEGIN
 	AND	(@JuchuuNO2 is null or(DHAM.JuchuuNO <= @JuchuuNO2))
 	AND (@HacchuuNO1 is null or(DHAM.HacchuuNO >= @HacchuuNO1))
 	AND	(@HacchuuNO2 is null or(DHAM.HacchuuNO <= @HacchuuNO2))
-	AND (@InputDate1 is null or(DHAM.UpdateDateTime >= @InputDate1))
-	AND (@InputDate2 is null or(DHAM.UpdateDateTime <= @InputDate2))
+	AND (@InputDate1 is null or(convert(date,DHAM.UpdateDateTime) >= @InputDate1))
+	AND (@InputDate2 is null or(convert(date,DHAM.UpdateDateTime) <= @InputDate2))
 	AND (@BrandCD is null or(DHAM.BrandCD = @BrandCD))
 	AND (@YearTerm is null or(MSHO.YearTerm = @YearTerm))
 	AND (@SS is null or(MSHO.SeasonSS = @SS))
@@ -307,8 +307,8 @@ BEGIN
 	AND	(@JuchuuNO2 is null or(DHAM.JuchuuNO <= @JuchuuNO2))
 	AND (@HacchuuNO1 is null or(DHAM.HacchuuNO >= @HacchuuNO1))
 	AND	(@HacchuuNO2 is null or(DHAM.HacchuuNO <= @HacchuuNO2))
-	AND (@InputDate1 is null or(DHAM.UpdateDateTime >= @InputDate1))
-	AND (@InputDate2 is null or(DHAM.UpdateDateTime <= @InputDate2))
+	AND (@InputDate1 is null or(convert(date,DHAM.UpdateDateTime) >= @InputDate1))
+	AND (@InputDate2 is null or(convert(date,DHAM.UpdateDateTime) <= @InputDate2))
 	AND (@BrandCD is null or(DHAM.BrandCD = @BrandCD))
 	AND (@YearTerm is null or(MSHO.YearTerm = @YearTerm))
 	AND (@SS is null or(MSHO.SeasonSS = @SS))

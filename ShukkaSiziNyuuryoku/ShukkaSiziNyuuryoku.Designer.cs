@@ -792,7 +792,7 @@ namespace ShukkaSiziNyuuryoku
             // colShouhinCD
             // 
             this.colShouhinCD.DataPropertyName = "ShouhinCD";
-            this.colShouhinCD.HeaderText = "商品";
+            this.colShouhinCD.HeaderText = "品番";
             this.colShouhinCD.Name = "colShouhinCD";
             this.colShouhinCD.ReadOnly = true;
             this.colShouhinCD.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
