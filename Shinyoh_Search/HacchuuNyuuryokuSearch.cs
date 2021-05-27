@@ -36,6 +36,8 @@ namespace Shinyoh_Search
             txtSiiresaki.lblName = lblSiiresakiRyakuName;
             txtStaffCD.ChangeDate = txtCurrentDate;
             txtStaffCD.lblName = lblStaffCD_Name;
+            txtShouhin1.ChangeDate = txtCurrentDate;        //TaskNo530 for shouhin HET
+            txtShouhin2.ChangeDate = txtCurrentDate;        //TaskNo530 for shouhin HET
             ErrorCheck();
             gv_1.UseRowNo(true);
             gv_1.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
