@@ -1,9 +1,9 @@
-/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Delete]    Script Date: 2021/04/26 10:53:28 ******/
+/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Delete]    Script Date: 2021/05/28 16:20:27 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%IdouNyuuryoku_Delete%' and type like '%P%')
 DROP PROCEDURE [dbo].[IdouNyuuryoku_Delete]
 GO
 
-/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Delete]    Script Date: 2021/04/26 10:53:28 ******/
+/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Delete]    Script Date: 2021/05/28 16:20:27 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -16,6 +16,8 @@ GO
 -- Description:	<Description,,>
 -- History    : 2021/04/26 Y.Nishikawa 在庫更新が不正
 --              2021/04/26 Y.Nishikawa 無駄なSELECT削除
+--              2021/05/28 Y.Nishikawa 在庫更新が一番直近の入庫日のものを優先的にマイナスしている
+--              2021/05/28 Y.Nishikawa 在庫更新作り直し
 -- =============================================
 CREATE PROCEDURE [dbo].[IdouNyuuryoku_Delete]
 	-- Add the parameters for the stored procedure here
@@ -148,80 +150,162 @@ BEGIN
 				declare @ShukkoSoukoCD as varchar(10)= (select ShukkoSoukoCD from #Temp_Header)
 				declare @NyuukoSoukoCD as varchar(10)= (select NyuukoSoukoCD from #Temp_Header)
 				declare @IdouKBN as smallint = (select IdouKBN from #Temp_Header)
+				declare @UpdateOperator as varchar(10)= (select UpdateOperator from #Temp_Header)
 
 				declare @ShouhinCD varchar(50)
 				
 				if @IdouKBN = 1 or @IdouKBN = 3
 					begin 
-					update D_GenZaiko set 
-					--2021/04/26 Y.Nishikawa CHG 在庫更新が不正↓↓
-					--GenZaikoSuu = GenZaikoSuu + TD.IdouSuu
-					GenZaikoSuu = GenZaikoSuu - TD.IdouSuu
-					--2021/04/26 Y.Nishikawa CHG 在庫更新が不正↑↑
-					from #Temp_Detail TD
-					inner join D_GenZaiko DGZ on DGZ.SoukoCD=@NyuukoSoukoCD and DGZ.ShouhinCD=TD.ShouhinCD and DGZ.KanriNO=TD.KanriNO and DGZ.NyuukoDate= (select MAX(NyuukoDate) from D_GenZaiko DGZ
-					inner join #Temp_Detail TD on DGZ.SoukoCD=@NyuukoSoukoCD and DGZ.ShouhinCD=TD.ShouhinCD and DGZ.KanriNO=TD.KanriNO)
-
+					--2021/05/28 Y.Nishikawa CHG 在庫更新作り直し↓↓
+					--update D_GenZaiko set 
+					----2021/04/26 Y.Nishikawa CHG 在庫更新が不正↓↓
+					----GenZaikoSuu = GenZaikoSuu + TD.IdouSuu
+					--GenZaikoSuu = GenZaikoSuu - DIDM.IdouSuu
+					----2021/04/26 Y.Nishikawa CHG 在庫更新が不正↑↑
+					----2021/05/28 Y.Nishikawa CHG 在庫更新が一番直近の入庫日のものを優先的にマイナスしている↓↓
+					----from #Temp_Detail TD
+					----inner join D_GenZaiko DGZ on DGZ.SoukoCD=@NyuukoSoukoCD and DGZ.ShouhinCD=TD.ShouhinCD and DGZ.KanriNO=TD.KanriNO and DGZ.NyuukoDate= (select MAX(NyuukoDate) from D_GenZaiko DGZ
+					----inner join #Temp_Detail TD on DGZ.SoukoCD=@NyuukoSoukoCD and DGZ.ShouhinCD=TD.ShouhinCD and DGZ.KanriNO=TD.KanriNO)
+					--FROM D_Idou DIDH
+					--INNER JOIN D_IdouMeisai DIDM
+					--ON DIDH.IdouNO = DIDM.IdouNO
+					--INNER JOIN D_GenZaiko DGZ 
+					--ON DGZ.SoukoCD = DIDH.NyuukoSoukoCD 
+					--AND DGZ.ShouhinCD = DIDM.ShouhinCD 
+					--AND DGZ.KanriNO = DIDM.KanriNO 
+					--AND DGZ.NyuukoDate = DIDH.IdouDate
+     --               --2021/05/28 Y.Nishikawa CHG 在庫更新が一番直近の入庫日のものを優先的にマイナスしている↑↑
 					
-					--exec dbo.IdouNyuuryoku_Change_Main_Flag @filter_date,NULL,@NyuukoSoukoCD,'Souko'
+					----exec dbo.IdouNyuuryoku_Change_Main_Flag @filter_date,NULL,@NyuukoSoukoCD,'Souko'
+					DECLARE @NyuukoDate_Nyuuko as date,
+	                    	@SoukoCD_Nyuuko as varchar(10),
+	                    	@KanriNO_Nyuuko as varchar(10),
+	                    	@IdouSuu_Nyuuko as decimal(21,6)
+
+							SET @ShouhinCD = NULL
+	                    
+	                    DECLARE cursorIdouNyuuko CURSOR READ_ONLY
+	                    FOR
+	                    SELECT DIDH.IdouDate
+						      ,DIDH.NyuukoSoukoCD
+							  ,DIDM.KanriNO
+							  ,DIDM.ShouhinCD
+							  ,DIDM.IdouSuu
+	                    FROM D_Idou DIDH
+						INNER JOIN D_IdouMeisai DIDM 
+						ON DIDH.IdouNO = DIDM.IdouNO
+						INNER JOIN #Temp_Header SUB 
+						ON DIDH.IdouNO = SUB.IdouNO
+	                    
+	                    OPEN cursorIdouNyuuko
+	                    
+	                    FETCH NEXT FROM cursorIdouNyuuko INTO @NyuukoDate_Nyuuko,@SoukoCD_Nyuuko,@KanriNO_Nyuuko,@ShouhinCD,@IdouSuu_Nyuuko
+	                    WHILE @@FETCH_STATUS = 0
+	                    	BEGIN
+							   exec pr_ZaikoRegister -1, @SoukoCD_Nyuuko, @ShouhinCD, @KanriNO_Nyuuko, @NyuukoDate_Nyuuko, @IdouSuu_Nyuuko, @UpdateOperator, @currentDate
+
+							FETCH NEXT FROM cursorIdouNyuuko INTO @NyuukoDate_Nyuuko,@SoukoCD_Nyuuko,@KanriNO_Nyuuko,@ShouhinCD,@IdouSuu_Nyuuko
+
+	                     	END
+	                     	
+	                     CLOSE cursorIdouNyuuko
+	                     DEALLOCATE cursorIdouNyuuko
+
+					--2021/05/28 Y.Nishikawa CHG 在庫更新作り直し↑↑
 					end
 
 			   if @IdouKBN = 2 or @IdouKBN = 3
 					begin 
-						DECLARE @Detail_table TABLE (idx int Primary Key IDENTITY(1,1), IdouSuu decimal(21,6),SoukoCD varchar(10),ShouhinCD varchar(50),KanriNO varchar(10))
-						INSERT @Detail_table SELECT IdouSuu,@ShukkoSoukoCD,ShouhinCD,KanriNO FROM #Temp_Detail
-						declare @Detail_Count as int =(SELECT COUNT(*) FROM @Detail_table)
-						declare @i_Count as int = 1
-						declare @IdouSuu as decimal(21,6)
+					    --2021/05/28 Y.Nishikawa CHG 在庫更新作り直し↓↓
+						--DECLARE @Detail_table TABLE (idx int Primary Key IDENTITY(1,1), IdouSuu decimal(21,6),SoukoCD varchar(10),ShouhinCD varchar(50),KanriNO varchar(10))
+						--INSERT @Detail_table SELECT IdouSuu,@ShukkoSoukoCD,ShouhinCD,KanriNO FROM #Temp_Detail
+						--declare @Detail_Count as int =(SELECT COUNT(*) FROM @Detail_table)
+						--declare @i_Count as int = 1
+						--declare @IdouSuu as decimal(21,6)
 						
-						WHILE @i_Count <= @Detail_Count
-						BEGIN
+						--WHILE @i_Count <= @Detail_Count
+						--BEGIN
 						
-						   set @IdouSuu = (SELECT IdouSuu FROM @Detail_table WHERE idx = @i_Count)	
+						--   set @IdouSuu = (SELECT IdouSuu FROM @Detail_table WHERE idx = @i_Count)	
 							
-									DECLARE @DGZ_table TABLE (idx int, DGZ_IdouSuu decimal(21,6),SoukoCD varchar(10),ShouhinCD varchar(50),KanriNO varchar(10),NyuukoDate Date)
+						--			DECLARE @DGZ_table TABLE (idx int, DGZ_IdouSuu decimal(21,6),SoukoCD varchar(10),ShouhinCD varchar(50),KanriNO varchar(10),NyuukoDate Date)
 
-									INSERT @DGZ_table SELECT Row_Number() OVER (ORDER BY idx),DGZ.GenZaikoSuu,DGZ.SoukoCD,DGZ.ShouhinCD,DGZ.KanriNO,DGZ.NyuukoDate FROM @Detail_Table TD
-									inner join D_GenZaiko DGZ on DGZ.SoukoCD=@ShukkoSoukoCD and DGZ.ShouhinCD=TD.ShouhinCD and DGZ.KanriNO=TD.KanriNO
-									where idx = @i_Count
-									ORDER BY DGZ.NyuukoDate desc
+						--			INSERT @DGZ_table SELECT Row_Number() OVER (ORDER BY idx),DGZ.GenZaikoSuu,DGZ.SoukoCD,DGZ.ShouhinCD,DGZ.KanriNO,DGZ.NyuukoDate FROM @Detail_Table TD
+						--			inner join D_GenZaiko DGZ on DGZ.SoukoCD=@ShukkoSoukoCD and DGZ.ShouhinCD=TD.ShouhinCD and DGZ.KanriNO=TD.KanriNO
+						--			where idx = @i_Count
+						--			ORDER BY DGZ.NyuukoDate desc
 
-									--2021/04/26 Y.Nishikawa DEL 無駄なSELECT削除↓↓
-									--select * from @DGZ_table
-									--2021/04/26 Y.Nishikawa DEL 無駄なSELECT削除↑↑
+						--			--2021/04/26 Y.Nishikawa DEL 無駄なSELECT削除↓↓
+						--			--select * from @DGZ_table
+						--			--2021/04/26 Y.Nishikawa DEL 無駄なSELECT削除↑↑
 
-									declare @DGZ_Count  int =(SELECT COUNT(*) FROM @DGZ_table)
+						--			declare @DGZ_Count  int =(SELECT COUNT(*) FROM @DGZ_table)
 									
-									declare @j_Count int = 1
-										WHILE @j_Count <=  @DGZ_Count and @IdouSuu <> 0
-											Begin
-													declare @DGZ_IdouSuu decimal(21,6) = (SELECT DGZ_IdouSuu FROM @DGZ_table WHERE idx = @j_Count)													
-													select @IdouSuu,@DGZ_IdouSuu 
-													 if @IdouSuu > @DGZ_IdouSuu 
-														begin
-															update D_GenZaiko set GenZaikoSuu = 0 
-															from D_GenZaiko DGZ inner join @DGZ_Table tDGZ on tDGZ.SoukoCD=DGZ.SoukoCD and tDGZ.ShouhinCD= DGZ.ShouhinCD and tDGZ.KanriNO=DGZ.KanriNO and tDGZ.NyuukoDate= DGZ.NyuukoDate
-														    where tDGZ.idx= @j_Count
+						--			declare @j_Count int = 1
+						--				WHILE @j_Count <=  @DGZ_Count and @IdouSuu <> 0
+						--					Begin
+						--							declare @DGZ_IdouSuu decimal(21,6) = (SELECT DGZ_IdouSuu FROM @DGZ_table WHERE idx = @j_Count)													
+						--							select @IdouSuu,@DGZ_IdouSuu 
+						--							 if @IdouSuu > @DGZ_IdouSuu 
+						--								begin
+						--									update D_GenZaiko set GenZaikoSuu = 0 
+						--									from D_GenZaiko DGZ inner join @DGZ_Table tDGZ on tDGZ.SoukoCD=DGZ.SoukoCD and tDGZ.ShouhinCD= DGZ.ShouhinCD and tDGZ.KanriNO=DGZ.KanriNO and tDGZ.NyuukoDate= DGZ.NyuukoDate
+						--								    where tDGZ.idx= @j_Count
 														  
 															
-															set @IdouSuu = @IdouSuu- @DGZ_IdouSuu
-														end
-													 else 
-														begin
-															update D_GenZaiko set GenZaikoSuu = GenZaikoSuu - @IdouSuu
-															from D_GenZaiko DGZ inner join @DGZ_Table tDGZ on  tDGZ.SoukoCD=DGZ.SoukoCD and tDGZ.ShouhinCD= DGZ.ShouhinCD and tDGZ.KanriNO=DGZ.KanriNO and tDGZ.NyuukoDate= DGZ.NyuukoDate
-															where tDGZ.idx= @j_Count
+						--									set @IdouSuu = @IdouSuu- @DGZ_IdouSuu
+						--								end
+						--							 else 
+						--								begin
+						--									update D_GenZaiko set GenZaikoSuu = GenZaikoSuu - @IdouSuu
+						--									from D_GenZaiko DGZ inner join @DGZ_Table tDGZ on  tDGZ.SoukoCD=DGZ.SoukoCD and tDGZ.ShouhinCD= DGZ.ShouhinCD and tDGZ.KanriNO=DGZ.KanriNO and tDGZ.NyuukoDate= DGZ.NyuukoDate
+						--									where tDGZ.idx= @j_Count
 														
-														set @IdouSuu = 0
-														end
+						--								set @IdouSuu = 0
+						--								end
 										
-												SET @j_Count = @j_Count + 1
-											End
-							SET @i_Count = @i_Count + 1
-							delete from  @DGZ_table
-						END
+						--						SET @j_Count = @j_Count + 1
+						--					End
+						--	SET @i_Count = @i_Count + 1
+						--	delete from  @DGZ_table
+						--END
 						
-						--exec dbo.IdouNyuuryoku_Change_Main_Flag @filter_date,NULL,@ShukkoSoukoCD,'Souko'
+						----exec dbo.IdouNyuuryoku_Change_Main_Flag @filter_date,NULL,@ShukkoSoukoCD,'Souko'
+
+						DECLARE @NyuukoDate_Shukko as date,
+	                    	@SoukoCD_Shukko as varchar(10),
+	                    	@KanriNO_Shukko as varchar(10),
+	                    	@IdouSuu_Shukko as decimal(21,6)
+
+							SET @ShouhinCD = NULL
+	                    
+	                    DECLARE cursorIdouShukko CURSOR READ_ONLY
+	                    FOR
+	                    SELECT DIDH.IdouDate
+						      ,DIDH.ShukkoSoukoCD
+							  ,DIDM.KanriNO
+							  ,DIDM.ShouhinCD
+							  ,DIDM.IdouSuu
+	                    FROM D_Idou DIDH
+						INNER JOIN D_IdouMeisai DIDM 
+						ON DIDH.IdouNO = DIDM.IdouNO
+						INNER JOIN #Temp_Header SUB 
+						ON DIDH.IdouNO = SUB.IdouNO
+	                    
+	                    OPEN cursorIdouShukko
+	                    
+	                    FETCH NEXT FROM cursorIdouShukko INTO @NyuukoDate_Shukko,@SoukoCD_Shukko,@KanriNO_Shukko,@ShouhinCD,@IdouSuu_Shukko
+	                    WHILE @@FETCH_STATUS = 0
+	                    	BEGIN
+							   exec pr_ZaikoRegister 1, @SoukoCD_Shukko, @ShouhinCD, @KanriNO_Shukko, @NyuukoDate_Shukko, @IdouSuu_Shukko, @UpdateOperator, @currentDate
+					           
+							FETCH NEXT FROM cursorIdouShukko INTO @NyuukoDate_Shukko,@SoukoCD_Shukko,@KanriNO_Shukko,@ShouhinCD,@IdouSuu_Shukko
+
+	                     	END
+	                     	
+	                     CLOSE cursorIdouShukko
+	                     DEALLOCATE cursorIdouShukko
+						--2021/05/28 Y.Nishikawa CHG 在庫更新作り直し↑↑
 				End
 				--L_Log Z
 			declare	@InsertOperator  varchar(10) = (select h.InsertOperator from #Temp_Header h)
@@ -238,3 +322,5 @@ BEGIN
 	
 END
 GO
+
+
