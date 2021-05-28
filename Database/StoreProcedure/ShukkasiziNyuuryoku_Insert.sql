@@ -15,11 +15,11 @@ GO
 -- Author:		Swe Swe
 -- Create date: <19-01-2021>
 -- Description:	<Description,,>
--- History    : 2021/04/13 Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã
+-- History    : 2021/04/13 Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上
 --              2021/04/14 Y.Nishikawa ADD TaskNO.0271
---                         Y.Nishikawa DEL o‰×ŽwŽ¦Ú×—š—ð‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã
---                         Y.Nishikawa CHG ‚±‚ÌŽž“_‚Å‚ÍŽó’–¾×‚Ìo‰×ŽwŽ¦Ï”‚É¡‰ño‰×ŽwŽ¦”‚ðXV‚µ‚Ä‚¢‚È‚¢‚Ì‚ÅA•ª”[Žž‚ÍŠ®—¹‹æ•ª‚ªŠ®—¹‚É‚È‚ç‚È‚¢
---                         Y.Nishikawa ADD ðŒ•s‘«iðŒ‚És”Ô†‚ª‚È‚¢‚Ì‚ÅAŽó’–¾×”•ª–c‚ê‚ÄŒvŽZ‚³‚ê‚éj
+--                         Y.Nishikawa DEL 出荷指示詳細履歴は引当ファンクションで処理しているため、二重計上
+--                         Y.Nishikawa CHG この時点では受注明細の出荷指示済数に今回出荷指示数を更新していないので、分納時は完了区分が完了にならない
+--                         Y.Nishikawa ADD 条件不足（条件に行番号がないので、受注明細数分膨れて計算される）
 -- =============================================
 CREATE  PROCEDURE [dbo].[ShukkasiziNyuuryoku_Insert]
 	-- Add the parameters for the stored procedure here
