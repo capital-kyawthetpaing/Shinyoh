@@ -103,11 +103,11 @@ namespace Shinyoh_Search {
                         lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                         txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                     }
-                }
-                else
-                {
-                    ClearSession();
-                }
+                    else
+                    {
+                        ClearSession();
+                    }
+                }               
                 dt.Columns.Remove("CurrentDay");
                 gvShukkaNo.DataSource = dt;
             }
@@ -115,6 +115,7 @@ namespace Shinyoh_Search {
 
         private void ClearSession()
         {
+            txtShukkaDate1.Focus();
             txtShukkaDate1.Clear();
             txtShukkaDate2.Clear();
             txt_Tokuisaki.Clear();

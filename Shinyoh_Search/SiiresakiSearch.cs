@@ -86,6 +86,11 @@ namespace Shinyoh_Search
                 }
                 dt.Columns.Remove("CurrentDay");
             }
+            else
+            {
+                if (dt.Rows.Count == 0)
+                    ClearSession();
+            }
             //dt.Columns.Remove("CurrentDay");
             gvSupplier.DataSource = dt;
         }
@@ -96,6 +101,7 @@ namespace Shinyoh_Search
             txtSupplier2.Clear();
             txtSupplierName.Clear();
             txtKanaName.Clear();
+            rdo_Date.Checked = true;
         }
         private void gvSupplier_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
