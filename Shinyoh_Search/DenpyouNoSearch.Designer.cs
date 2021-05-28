@@ -90,7 +90,7 @@
             this.btnSearch.NextControlName = null;
             this.btnSearch.Size = new System.Drawing.Size(150, 25);
             this.btnSearch.TabIndex = 5;
-            this.btnSearch.Tag = "2";
+            this.btnSearch.Tag = "3";
             this.btnSearch.Text = "表示(F11)";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);

@@ -278,7 +278,7 @@ namespace HacchuuSho
 
                         var dtsupplier = dt.Select("SiiresakiCD is not null").CopyToDataTable().AsEnumerable().Select(r => r.Field<string>("SiiresakiCD")).Distinct().ToList();
 
-                        int col = 0; int startrow = 12; int gvrow = 17;
+                        int col = 1; int startrow = 11; int gvrow = 16;
                         for (int j = 0; j < dtsupplier.Count(); j++)
                         {
                             int pageCount = 1;
@@ -343,8 +343,8 @@ namespace HacchuuSho
                                         xlWorkSheet.Cells[col, 21] = "**********";
 
                                         SetFooter(xlWorkBook, xlWorkSheet, col);
-                                        col += 17 - 2;
-                                        startrow = col + 12;
+                                        col += 17 - 1;
+                                        startrow = col + 10;
                                         gvrow = startrow + 5;
 
                                         //次のページの設定
@@ -466,12 +466,12 @@ namespace HacchuuSho
                             #endregion
 
                             SetFooter(xlWorkBook, xlWorkSheet, col);
-                            col += 17-2;
-                            startrow = col + 12;
+                            col += 17 - 1;
+                            startrow = col + 10;
                             gvrow = startrow + 5;
                         }
 
-                        xlWorkSheet.PageSetup.PrintArea = "A1:V"+ col;
+                        xlWorkSheet.PageSetup.PrintArea = "A1:V"+ (col-1);
 
                         // Footers
 
@@ -506,6 +506,7 @@ namespace HacchuuSho
             xlWorkSheet.Cells[col + 15, 3] = "Looking forward to receiving your order confirmation.";
 
             xlWorkSheet.Cells[col + 15, 19] = "Sincerely yours,"; 
+
             wb.Worksheets[1].HPageBreaks.Add(xlWorkSheet.Range["W"+ (col + 16).ToString()]);
         }
         private void SetHeader(Excel.Worksheet xlWorkSheet,DataTable dt, Excel.Application xlApp ,int added)
@@ -520,7 +521,7 @@ namespace HacchuuSho
             xlWorkSheet.Cells[added + 7, 19] = "FAX : ";
             xlWorkSheet.Cells[added + 7, 20] = dt.Rows[0]["EiziFaxNO"].ToString();
 
-            xlWorkSheet.Cells[added + 10, 6] = "PURCHASE ORDER "; 
+            xlWorkSheet.Cells[added + 9, 6] = "PURCHASE ORDER "; 
             xlApp.Cells.Font.Name = "Times New Roman";
 
             xlApp.get_Range("I" +(added + 17).ToString(), "S"  +(added + 17).ToString()).Cells.NumberFormat = "0.0"; 
@@ -529,17 +530,17 @@ namespace HacchuuSho
             xlApp.get_Range("A"+ (added + 5).ToString(), "U"+ (added + 5).ToString()).Merge(Type.Missing);
             xlApp.get_Range("T"+ (added + 6).ToString(), "U"+ (added + 6).ToString()).Merge(Type.Missing);
             xlApp.get_Range("T"+(added + 7).ToString(), "U"+ (added + 7).ToString()).Merge(Type.Missing);
-            xlApp.get_Range("A"+ (added + 10).ToString(), "U"+ (added + 10).ToString()).Merge(Type.Missing); 
+            xlApp.get_Range("A"+ (added + 9).ToString(), "U"+ (added + 9).ToString()).Merge(Type.Missing); 
             var Cell = (Excel.Range)xlWorkSheet.Cells[added+2, 1];
             Cell.RowHeight = 35;
-            var Cell1 = (Excel.Range)xlWorkSheet.Cells[added+10, 1];
+            var Cell1 = (Excel.Range)xlWorkSheet.Cells[added+9, 1];
             Cell1.Font.Bold = true;
             Cell1.Font.Size = 20;
             Cell1.RowHeight = 50;
             xlWorkSheet.get_Range("A"+ (added + 1).ToString() + ":U"+ (added + 1).ToString(), "A"+ (added + 5).ToString() + ":U"+ (added + 5).ToString()).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            xlWorkSheet.get_Range("A"+ (added + 10).ToString(), "U"+ (added + 10).ToString()).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            xlWorkSheet.get_Range("A"+ (added + 10).ToString(), "U"+ (added + 10).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
-            xlWorkSheet.get_Range("A"+ (added + 11).ToString(), "H"+ (added + 11).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+            xlWorkSheet.get_Range("A"+ (added + 9).ToString(), "U"+ (added + 9).ToString()).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            xlWorkSheet.get_Range("A"+ (added + 9).ToString(), "U"+ (added + 9).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+            xlWorkSheet.get_Range("A"+ (added + 10).ToString(), "H"+ (added + 10).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
             xlWorkSheet.get_Range("A"+ (added + 1).ToString() + ":U"+ (added + 1).ToString(), "A"+ (added + 3).ToString() + ":U"+ (added + 3).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignBottom;
 
             SettingImg(headerLogo);
@@ -595,6 +596,7 @@ namespace HacchuuSho
         }
         private void SetStyleTopPart(Excel.Worksheet xlWorkSheet, int startrow,DataTable dtgv, Excel.Application xlApp)
         {
+            //xlApp.Cells.Font.Name = "Times New Roman";
             xlWorkSheet.Cells[startrow, 2] = "TO : " + dtgv.Rows[0]["SiiresakiName"].ToString();
             xlWorkSheet.Cells[startrow, 20] = "PO NO : " + txtKanriNO.Text;
             xlWorkSheet.Cells[startrow + 1, 20] = "DATE : " + GetDate(txtIssueDate.Text);

@@ -111,12 +111,33 @@ namespace Shinyoh_Search
                         {
                             lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                             txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                            dt.Columns.Remove("CurrentDay");
                         }
                     }
+                    else
+                    {
+                        ClearSession();//ssa
+                    }
                 }
+                dt.Columns.Remove("CurrentDay");//ssa
                 gvArrivalNo.DataSource = dt;
             }
+        }
+        private void ClearSession()
+        {
+            txtDateFrom.Clear();
+            txtDateTo.Clear();
+            sbSiiresaki.Clear();
+            lblSiiresaki.Text = string.Empty;
+            txtStaffCD.Clear();
+            lblStaff.Text = string.Empty;
+            txtProductName.Clear();
+            txtExpectedDateFrom.Clear();
+            txtExpectedDateTo.Clear();
+            txtControlNoFrom.Clear();
+            txtControlNoTo.Clear();
+            sbHinbanCDFrom.Clear();
+            sbHinbanCDTo.Clear();
+            txtDateFrom.Focus();
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
@@ -130,7 +151,7 @@ namespace Shinyoh_Search
         private void sButton2_Click(object sender, EventArgs e)
         {
             GridViewBind();
-            gvArrivalNo.Focus();
+            //gvArrivalNo.Focus();//ssa
         }
         private void gvArrivalNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {

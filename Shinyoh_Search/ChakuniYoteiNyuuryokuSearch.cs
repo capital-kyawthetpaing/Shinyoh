@@ -95,13 +95,36 @@ namespace Shinyoh_Search
                         {
                             lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                             txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                            dt.Columns.Remove("CurrentDay");
                         }
                     }
+                    else
+                    {
+                        ClearSession();//ssa
+                    }
                 }
+                dt.Columns.Remove("CurrentDay");//ssa
                 gvChakuniYoteiNyuuryoku.DataSource = dt;
             }
         }
+
+        private void ClearSession()
+        {
+            txtDateFrom.Clear();
+            txtDateTo.Clear();
+            sbSiiresaki.Clear();
+            lblSiiresaki.Text = string.Empty;
+            sbStaff.Clear();
+            lblStaff.Text = string.Empty;
+            txtShouhinName.Clear();
+            txtOrderDateFrom.Clear();
+            txtOrderDateTo.Clear();
+            txtControlNoFrom.Clear();
+            txtControlNoTo.Clear();
+            sbHinbanCDFrom.Clear();
+            sbHinbanCDTo.Clear();
+            txtDateFrom.Focus();
+        }
+
         public void ErrorCheck()
         {
             txtDateFrom.E103Check(true);
@@ -122,7 +145,7 @@ namespace Shinyoh_Search
         private void btnSearch_Click(object sender, EventArgs e)
         {
             GridViewBind();
-            gvChakuniYoteiNyuuryoku.Focus();
+            //gvChakuniYoteiNyuuryoku.Focus();//ssa
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {

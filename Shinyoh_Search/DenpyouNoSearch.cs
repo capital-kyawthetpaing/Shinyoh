@@ -57,7 +57,7 @@ namespace Shinyoh_Search
             if (tagID == "3")
             {
                 BindDataGrid();
-                gvDenpyouNo.Select();
+                //gvDenpyouNo.Select();//ssa
             }
             if (tagID == "4")
             {
@@ -81,6 +81,13 @@ namespace Shinyoh_Search
                 {
                     lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                 }
+                else
+                {
+                    //ssa
+                    cbDivision1.Text = string.Empty;
+                    cbDivision2.Text = string.Empty;
+                    cbDivision1.Focus();
+                }
             }
             dt.Columns.Remove("CurrentDay");
             gvDenpyouNo.Columns[0].Visible = false;
@@ -95,6 +102,7 @@ namespace Shinyoh_Search
                 renban = row.Cells[0].Value.ToString();
                 seqno = row.Cells[1].Value.ToString();
                 prefix = row.Cells[2].Value.ToString();
+            
             }
             this.Close();
         }
