@@ -75,11 +75,28 @@ namespace Shinyoh_Search {
                 {
                     lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                 }
+                else
+                {
+                    ClearSession();         //HET
+                }
                 dt.Columns.Remove("CurrentDay");
+            }
+            else
+            {
+                if(dt.Rows.Count == 0)      //HET
+                    ClearSession();                
             }
             gvTokuisaki.DataSource = dt;
         }
-
+        //HET
+        private void ClearSession()
+        {          
+            txtTokuisaki1.Clear();
+            txtTokuisaki2.Clear();
+            txtTokuisakiName.Clear();
+            txtKanaName.Clear();
+            rdo_Date.Checked = true;
+        }
         private void gvTokuisaki_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)

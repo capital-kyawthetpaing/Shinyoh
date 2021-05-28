@@ -49,7 +49,7 @@ namespace Shinyoh_Search {
             if (tagID == "3")
             {
                 GridViewBind();
-                selectRow();
+                selectRow();   //comment close HET
             }
             if (tagID == "4")
             {
@@ -68,13 +68,26 @@ namespace Shinyoh_Search {
             soukoEntity.KanaName = txtKanaName.Text;
             DataTable dt = bl.Souko_Search(soukoEntity);
             gvSouko.DataSource = dt;
+            if(dt.Rows.Count == 0)  //HET
+            {
+                ClearSession();
+            }
+           
         }
-
+        //HET
+        private void ClearSession()
+        {
+            txtSouko1.Focus();
+            txtSouko1.Clear();
+            txtSouko2.Clear();
+            txtSoukoName.Clear();
+            txtKanaName.Clear();
+        }
         private void BtnF11_Soko_Click(object sender, EventArgs e)
         {
             FunctionProcess(BtnF11_Soko.Tag.ToString());
             GridViewBind();
-            selectRow();
+            //selectRow();     //comment close HET
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
