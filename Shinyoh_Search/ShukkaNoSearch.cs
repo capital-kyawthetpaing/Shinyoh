@@ -104,9 +104,31 @@ namespace Shinyoh_Search {
                         txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                     }
                 }
+                else
+                {
+                    ClearSession();
+                }
                 dt.Columns.Remove("CurrentDay");
                 gvShukkaNo.DataSource = dt;
             }
+        }
+
+        private void ClearSession()
+        {
+            txtShukkaDate1.Clear();
+            txtShukkaDate2.Clear();
+            txt_Tokuisaki.Clear();
+            lblTokuisaki_Name.Text = string.Empty;
+            txt_StaffCD.Clear();
+            lblStaffName.Text = string.Empty;
+            txtShouhinName.Clear();
+            txtShukkaNo1.Clear();
+            txtShukkaNo2.Clear();
+            txtShukkaSijiNo1.Clear();
+            txtShukkaSijiNo2.Clear();
+            txtShouhin1.Clear();
+            txtShouhin2.Clear();
+
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {

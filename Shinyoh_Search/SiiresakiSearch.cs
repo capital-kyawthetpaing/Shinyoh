@@ -80,12 +80,23 @@ namespace Shinyoh_Search
                     lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                     //dt.Columns.Remove("CurrentDay");
                 }
+                else
+                {
+                    ClearSession();
+                }
                 dt.Columns.Remove("CurrentDay");
             }
             //dt.Columns.Remove("CurrentDay");
             gvSupplier.DataSource = dt;
         }
 
+        private void ClearSession()
+        {
+            txtSupplier1.Clear();
+            txtSupplier2.Clear();
+            txtSupplierName.Clear();
+            txtKanaName.Clear();
+        }
         private void gvSupplier_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetGridviewData(gvSupplier.Rows[e.RowIndex]);
