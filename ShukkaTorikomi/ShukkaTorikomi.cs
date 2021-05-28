@@ -258,7 +258,14 @@ namespace ShukkaTorikomi
                                         {
                                             if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
                                                 bbl.ShowMessage("I002");
+                                            rdo_Toroku.Checked = true;
+                                            rdo_Toroku.Focus();
                                         }
+                                    }
+                                    else
+                                    {
+                                        if (PreviousCtrl != null)
+                                            PreviousCtrl.Focus();
                                     }
                                 }
                                 else
@@ -269,14 +276,21 @@ namespace ShukkaTorikomi
                         }
                         else
                         {
-                            if (bbl.ShowMessage("Q206") == DialogResult.Yes)
+                            if (bbl.ShowMessage("Q102") == DialogResult.Yes)
                             {
                                 return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
                                 if (return_DT.Rows.Count > 0)
                                 {
                                     if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
                                         bbl.ShowMessage("I002");
+                                    rdo_Sakujo.Checked = true;
+                                    rdo_Sakujo.Focus();
                                 }
+                            }
+                            else
+                            {
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
                             }
                         }
 
