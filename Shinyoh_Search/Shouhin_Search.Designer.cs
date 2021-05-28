@@ -124,7 +124,7 @@
             this.btn_F11.NextControl = null;
             this.btn_F11.NextControlName = null;
             this.btn_F11.Size = new System.Drawing.Size(100, 23);
-            this.btn_F11.TabIndex = 34;
+            this.btn_F11.TabIndex = 18;
             this.btn_F11.Tag = "2";
             this.btn_F11.Text = "表示(F11)";
             this.btn_F11.UseVisualStyleBackColor = false;
@@ -152,7 +152,7 @@
             this.txtSize.NextControlName = "btn_F11";
             this.txtSize.SearchType = Entity.SearchType.ScType.Size;
             this.txtSize.Size = new System.Drawing.Size(110, 19);
-            this.txtSize.TabIndex = 33;
+            this.txtSize.TabIndex = 17;
             this.txtSize.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblSize
@@ -190,7 +190,7 @@
             this.txtBrand1.NextControlName = "txtRemarks";
             this.txtBrand1.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrand1.Size = new System.Drawing.Size(80, 19);
-            this.txtBrand1.TabIndex = 31;
+            this.txtBrand1.TabIndex = 14;
             this.txtBrand1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label5
@@ -225,7 +225,7 @@
             this.txtBrand.NextControlName = "txtBrand1";
             this.txtBrand.SearchType = Entity.SearchType.ScType.Brand;
             this.txtBrand.Size = new System.Drawing.Size(80, 19);
-            this.txtBrand.TabIndex = 29;
+            this.txtBrand.TabIndex = 13;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblBrand
@@ -263,7 +263,7 @@
             this.txtKanaName.NextControlName = "txtJANCD";
             this.txtKanaName.SearchType = Entity.SearchType.ScType.None;
             this.txtKanaName.Size = new System.Drawing.Size(323, 19);
-            this.txtKanaName.TabIndex = 27;
+            this.txtKanaName.TabIndex = 6;
             this.txtKanaName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblKanaName
@@ -301,7 +301,7 @@
             this.txtColor.NextControlName = "txtSize";
             this.txtColor.SearchType = Entity.SearchType.ScType.Color;
             this.txtColor.Size = new System.Drawing.Size(110, 19);
-            this.txtColor.TabIndex = 25;
+            this.txtColor.TabIndex = 16;
             this.txtColor.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblColor
@@ -328,7 +328,7 @@
             this.chkFW.NextControl = null;
             this.chkFW.NextControlName = "txtBrand";
             this.chkFW.Size = new System.Drawing.Size(40, 19);
-            this.chkFW.TabIndex = 23;
+            this.chkFW.TabIndex = 12;
             this.chkFW.Text = "FW";
             this.chkFW.UseVisualStyleBackColor = true;
             // 
@@ -341,9 +341,9 @@
             this.chkSS.MoveNext = true;
             this.chkSS.Name = "chkSS";
             this.chkSS.NextControl = null;
-            this.chkSS.NextControlName = "chkFW";
+            this.chkSS.NextControlName = "txtBrand";
             this.chkSS.Size = new System.Drawing.Size(36, 19);
-            this.chkSS.TabIndex = 22;
+            this.chkSS.TabIndex = 11;
             this.chkSS.Text = "SS";
             this.chkSS.UseVisualStyleBackColor = true;
             // 
@@ -379,7 +379,7 @@
             this.txtExhibition1.NextControlName = "chkSS";
             this.txtExhibition1.SearchType = Entity.SearchType.ScType.None;
             this.txtExhibition1.Size = new System.Drawing.Size(50, 19);
-            this.txtExhibition1.TabIndex = 20;
+            this.txtExhibition1.TabIndex = 10;
             this.txtExhibition1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label3
@@ -414,7 +414,7 @@
             this.txtExhibition.NextControlName = "txtExhibition1";
             this.txtExhibition.SearchType = Entity.SearchType.ScType.None;
             this.txtExhibition.Size = new System.Drawing.Size(50, 19);
-            this.txtExhibition.TabIndex = 18;
+            this.txtExhibition.TabIndex = 9;
             this.txtExhibition.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblExhibition
@@ -452,7 +452,7 @@
             this.txtProductName.NextControlName = "txtKanaName";
             this.txtProductName.SearchType = Entity.SearchType.ScType.None;
             this.txtProductName.Size = new System.Drawing.Size(323, 19);
-            this.txtProductName.TabIndex = 16;
+            this.txtProductName.TabIndex = 5;
             this.txtProductName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblProductName
@@ -532,7 +532,7 @@
             this.txtRemarks.NextControlName = "txtColor";
             this.txtRemarks.SearchType = Entity.SearchType.ScType.None;
             this.txtRemarks.Size = new System.Drawing.Size(300, 19);
-            this.txtRemarks.TabIndex = 12;
+            this.txtRemarks.TabIndex = 15;
             this.txtRemarks.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblRemarks
@@ -570,7 +570,7 @@
             this.txtJANCD1.NextControlName = "txtExhibition";
             this.txtJANCD1.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD1.Size = new System.Drawing.Size(110, 19);
-            this.txtJANCD1.TabIndex = 10;
+            this.txtJANCD1.TabIndex = 8;
             this.txtJANCD1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label2
@@ -605,7 +605,7 @@
             this.txtJANCD.NextControlName = "txtJANCD1";
             this.txtJANCD.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD.Size = new System.Drawing.Size(110, 19);
-            this.txtJANCD.TabIndex = 8;
+            this.txtJANCD.TabIndex = 7;
             this.txtJANCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblJANCD
@@ -643,7 +643,7 @@
             this.txtHinbanCD1.NextControlName = "txtProductName";
             this.txtHinbanCD1.SearchType = Entity.SearchType.ScType.None;
             this.txtHinbanCD1.Size = new System.Drawing.Size(150, 19);
-            this.txtHinbanCD1.TabIndex = 6;
+            this.txtHinbanCD1.TabIndex = 4;
             this.txtHinbanCD1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // label1
@@ -678,7 +678,7 @@
             this.txtHinbanCD.NextControlName = "txtHinbanCD1";
             this.txtHinbanCD.SearchType = Entity.SearchType.ScType.None;
             this.txtHinbanCD.Size = new System.Drawing.Size(150, 19);
-            this.txtHinbanCD.TabIndex = 4;
+            this.txtHinbanCD.TabIndex = 3;
             this.txtHinbanCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // lblHinbanCD
