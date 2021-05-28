@@ -199,12 +199,6 @@ namespace BL
                 {
                     if (Path.GetExtension(savedialog.FileName).Contains(".xlsx"))
                     {
-                        //Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();  // PTK removed 2021/05/20
-                        //Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
-                        //Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-                        //worksheet = workbook.ActiveSheet;
-                        //worksheet.Name = SheetName;
-
                         using (XLWorkbook wb = new XLWorkbook())
                         {
                             var ws = wb.Worksheets.Add(dtvalue, SheetName);
@@ -262,6 +256,10 @@ namespace BL
                         //workbook.Close(false, Missing.Value, Missing.Value);
                         //excel.Quit();
                     }
+                }
+                else
+                {
+                    return false;
                 }
             }
             catch (Exception ex)

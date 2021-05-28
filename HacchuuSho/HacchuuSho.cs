@@ -233,7 +233,7 @@ namespace HacchuuSho
                     {
                         //            try
                         //{
-                        xlWorkSheet.PageSetup.PrintArea = "A1:V1000";
+                        //xlWorkSheet.PageSetup.PrintArea = "A1:V1000";
                         xlWorkSheet.PageSetup.Orientation = Microsoft.Office.Interop.Excel.XlPageOrientation.xlLandscape;//Page horizontal
                         xlWorkSheet.PageSetup.Zoom = 75; //page setting when printing, a few percent of the scale
                         xlWorkSheet.PageSetup.Zoom = false; //Page setting when printing, must be set to false, page height, page width is valid
@@ -282,6 +282,7 @@ namespace HacchuuSho
                         for (int j = 0; j < dtsupplier.Count(); j++)
                         {
                             int pageCount = 1;
+                            int gyoCount = 0;
 
                             //if (j > 0) break;
                             SetHeader(xlWorkSheet, dt, xlApp, col);
@@ -292,7 +293,7 @@ namespace HacchuuSho
                             var dgv = dtgv.AsEnumerable().GroupBy(x => x.Field<string>("ColorNo"), x => x.Field<string>("ModelNo")).Count();  // get Model and Color
                             //「FLOOR、MEMO」で Distinct したレコードを取得
                             var dtDis = dtgv.DefaultView.ToTable(true, "ColorNo", "ModelNo");
-                            dgv = dtDis.Rows.Count;
+                            dgv = dtDis.Rows.Count; //仕入先CD毎の行数
 
                             var dvresult = dtgv.AsEnumerable().GroupBy(r => new { Col1 = r["ColorNo"], Col2 = r["ModelNo"] }).Select(g => {
                                 var row = dt.NewRow();
@@ -329,7 +330,7 @@ namespace HacchuuSho
                                     pageCount++;
 
                                     //最終ページでない場合
-                                    if (h != dtgv.Rows.Count - 1)
+                                    if (gyoCount != dgv)
                                     {
                                         xlWorkSheet.get_Range("B" + (gvrow), "U" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
                                         xlWorkSheet.Cells[col, 20].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 20].Address + ":" + xlWorkSheet.Cells[col - 1, 20].Address + ")";
@@ -342,7 +343,7 @@ namespace HacchuuSho
                                         xlWorkSheet.Cells[col, 21] = "**********";
 
                                         SetFooter(xlWorkBook, xlWorkSheet, col);
-                                        col += 17;
+                                        col += 17 - 2;
                                         startrow = col + 12;
                                         gvrow = startrow + 5;
 
@@ -399,8 +400,9 @@ namespace HacchuuSho
                                     xlWorkSheet.get_Range("B" + rowIndex, "U" + rowIndex).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
 
                                     otherModel++;
+                                    gyoCount++;
                                     //xlWorkSheet.get_Range("B" + (otherModel + 1), "U" + gvrow + (otherModel + 1)).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
-                                    
+
                                 }
                                 else if (modelno == dtgv.Rows[h]["ModelNo"].ToString() && colorno != dtgv.Rows[h]["ColorNo"].ToString())
                                 {
@@ -432,6 +434,7 @@ namespace HacchuuSho
                                     modelno = dtgv.Rows[h]["ModelNo"].ToString();
                                     colorno = dtgv.Rows[h]["ColorNo"].ToString();
                                     otherModel++;
+                                    gyoCount++;
                                 }
 
                                 xlWorkSheet.Cells[gvrow + (otherModel), GetSizeTitile(dtgv.Rows[h]["SizeNo"].ToString())] = dtgv.Rows[h]["HacchuuSuu"].ToString();
@@ -463,11 +466,12 @@ namespace HacchuuSho
                             #endregion
 
                             SetFooter(xlWorkBook, xlWorkSheet, col);
-                            col += 17;
+                            col += 17-2;
                             startrow = col + 12;
                             gvrow = startrow + 5;
                         }
 
+                        xlWorkSheet.PageSetup.PrintArea = "A1:V"+ col;
 
                         // Footers
 
