@@ -143,6 +143,8 @@ namespace ShukkaTorikomi
                 Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
                 btnF10.Visible = false;
 
+                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                txtImportFileName.NextControlName = btnF12.Name;
             }
             else
             {
@@ -151,10 +153,15 @@ namespace ShukkaTorikomi
                 txtDate1.Enabled = true;
                 txtDate2.Enabled = true;
                 txtDenpyouNO.Enabled = true;
+                rdo_Sakujo.NextControlName = txtDate1.Name;
+                txtDate1.NextControlName = txtDate2.Name;
+                txtDate2.NextControlName = txtDenpyouNO.Name;
                 //F10.Enabled = true;
                 //F6.Enabled = true;
                 Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
                 btnF10.Visible = true;
+                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                txtDenpyouNO.NextControlName = btnF12.Name;
             }
         }
 
