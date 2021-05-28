@@ -619,12 +619,14 @@ namespace IdouNyuuryoku
                     if (F8_dt1.Rows.Count == 0)
                         F8_dt1 = gv1_to_dt1.Clone();
                     gv_1.Select();
-                    gv_1.CurrentCell = gv_1.Rows[0].Cells["colKanriNO"];
+                    if (dt.Rows.Count > 0)
+                        gv_1.CurrentCell = gv_1.Rows[0].Cells["colKanriNO"];
                 }
                 else
                 {
-                    F8_dt1.Rows.Clear();
-                    gv_1.DataSource = F8_dt1;
+                    //F8_dt1.Rows.Clear();
+                    //gv_1.DataSource = F8_dt1;
+                    gv_1.DataSource = dt;
                     Focus_Clear();
                 }
             }
