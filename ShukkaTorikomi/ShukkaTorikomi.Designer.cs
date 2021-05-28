@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.取込区分 = new Shinyoh_Controls.SLabel();
             this.rdo_Toroku = new Shinyoh_Controls.SRadio();
             this.rdo_Sakujo = new Shinyoh_Controls.SRadio();
@@ -143,7 +143,7 @@
             this.txtImportFileName.ChangeDate = null;
             this.txtImportFileName.Combo = null;
             this.txtImportFileName.DecimalPlace = 0;
-            this.txtImportFileName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtImportFileName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtImportFileName.DepandOnMode = false;
             this.txtImportFileName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtImportFileName.IntegerPart = 0;
@@ -173,7 +173,7 @@
             this.txtImportFolder.ChangeDate = null;
             this.txtImportFolder.Combo = null;
             this.txtImportFolder.DecimalPlace = 0;
-            this.txtImportFolder.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtImportFolder.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtImportFolder.DepandOnMode = false;
             this.txtImportFolder.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtImportFolder.IntegerPart = 0;
@@ -309,8 +309,8 @@
             // colInsertDateTime
             // 
             this.colInsertDateTime.DataPropertyName = "InsertDateTime";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle1;
             this.colInsertDateTime.HeaderText = "取込日時";
             this.colInsertDateTime.Name = "colInsertDateTime";
             this.colInsertDateTime.Width = 140;

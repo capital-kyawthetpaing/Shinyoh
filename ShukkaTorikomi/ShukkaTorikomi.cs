@@ -291,7 +291,9 @@ namespace ShukkaTorikomi
                                     if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
                                         bbl.ShowMessage("I002");
                                     rdo_Sakujo.Checked = true;
-                                    rdo_Sakujo.Focus();
+                                    txtDenpyouNO.Text = string.Empty;
+                                    txtDenpyouNO.Focus();
+                                    DataGridviewBind();
                                 }
                             }
                             else
