@@ -51,7 +51,7 @@ namespace Shinyoh_Search
         private void btnKouriten_F11_Click(object sender, EventArgs e)
         {
             DataGridviewBind();
-            gv_Kouriten.Select();
+            //gv_Kouriten.Select();
         }
         private void DataGridviewBind()
         {
@@ -80,6 +80,18 @@ namespace Shinyoh_Search
                 {
                     lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                     //dt.Columns.Remove("CurrentDay");
+                }
+                else
+                {
+                    txtCD1.Clear();
+                    txtCD2.Clear();
+                    txtName.Clear();
+                    txtKanaName.Clear();
+                    txtTokuisakiCD1.Clear();
+                    txtTokuisakiCD2.Clear();
+                    txtTokuisakiName.Clear();
+                    txtTokuisaki_Kana.Clear();
+                    txtCD1.Focus();
                 }
             }
             dt.Columns.Remove("CurrentDay");

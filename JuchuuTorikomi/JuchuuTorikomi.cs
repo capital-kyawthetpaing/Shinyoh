@@ -184,12 +184,7 @@ namespace JuchuuTorikomi
                     {
                         string DenpyouNO = txtDenpyouNO.Text;
                         gvJuchuuTorikomi.DataSource = dtMain;
-                        if (bbl.ShowMessage("Q102") != DialogResult.Yes)
-                        {
-                            if (PreviousCtrl != null)
-                                PreviousCtrl.Focus();
-                        }
-                        else
+                        if (bbl.ShowMessage("Q102") == DialogResult.Yes)
                         {
                             string Xml = string.Empty;
                             spname = "JuchuuTorikomi_Delete";
@@ -213,14 +208,23 @@ namespace JuchuuTorikomi
                             JEntity.ProgramID = base_Entity.ProgramID;
                             JEntity.PC = base_Entity.PC;
                             JEntity.OperateMode = "Delete";
-                            DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml,DenpyouNO,JEntity);
-                            bbl.ShowMessage("I002");
-                            txtDate1.Clear();
-                            txtDate2.Clear();
-                            txtDenpyouNO.Clear();
-                            dtMain.Clear();
-                            gvJuchuuTorikomi.ClearSelection();
-                            rdo_Delete.Focus();
+                            DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml, DenpyouNO, JEntity);
+                            if (return_BL1.Rows.Count > 0)
+                            {
+                                if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
+                                    bbl.ShowMessage("I002");
+                                txtDate1.Clear();
+                                txtDate2.Clear();
+                                txtDenpyouNO.Clear();
+                                dtMain.Clear();
+                                gvJuchuuTorikomi.ClearSelection();
+                                rdo_Delete.Focus();
+                            }
+                        }
+                        else
+                        {
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
                         }
                     }   
                 }

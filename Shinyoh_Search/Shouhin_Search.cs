@@ -33,7 +33,7 @@ namespace Shinyoh_Search
         private void Shouhin_Search_Load(object sender, EventArgs e)
         {
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
-            SetButton(ButtonType.BType.Normal, F9, "", false);
+            SetButton(ButtonType.BType.Normal, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             dgDetail.UseRowNo(true);
@@ -123,6 +123,11 @@ namespace Shinyoh_Search
             DataTable dt = shouhinbl.Shouhin_SearchData(shouhin);
             dgDetail.DataSource = dt;
 
+            if(dt.Rows.Count == 0)  //HET
+            {
+                ClearSession();
+            }
+
             this.dgDetail.CellPainting += new DataGridViewCellPaintingEventHandler(dgDetail_CellPainting);
             this.dgDetail.Paint += new PaintEventHandler(dgDetail_Paint);
             this.dgDetail.Scroll += new ScrollEventHandler(dgDetail_Scroll);
@@ -143,7 +148,26 @@ namespace Shinyoh_Search
             this.dgDetail.Columns[11].HeaderText = "";
             this.dgDetail.Columns[12].HeaderText = "";
         }
-
+        //HET
+        private void ClearSession()
+        {
+            txtHinbanCD.Clear();
+            txtHinbanCD1.Clear();
+            txtProductName.Clear();
+            txtKanaName.Clear();
+            txtJANCD.Clear();
+            txtJANCD1.Clear();
+            txtExhibition.Clear();
+            txtExhibition1.Clear();
+            txtBrand.Clear();
+            txtBrand1.Clear();
+            txtRemarks.Clear();
+            txtColor.Clear();
+            txtSize.Clear();
+            chkSS.Checked = true;
+            chkFW.Checked = true;
+            rdoRecentRevisionDate.Checked = true;
+        }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
             if (gvrow != null)

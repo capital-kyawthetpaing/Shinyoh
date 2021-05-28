@@ -143,6 +143,8 @@ namespace ShukkaTorikomi
                 Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
                 btnF10.Visible = false;
 
+                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                txtImportFileName.NextControlName = btnF12.Name;
             }
             else
             {
@@ -151,10 +153,15 @@ namespace ShukkaTorikomi
                 txtDate1.Enabled = true;
                 txtDate2.Enabled = true;
                 txtDenpyouNO.Enabled = true;
+                rdo_Sakujo.NextControlName = txtDate1.Name;
+                txtDate1.NextControlName = txtDate2.Name;
+                txtDate2.NextControlName = txtDenpyouNO.Name;
                 //F10.Enabled = true;
                 //F6.Enabled = true;
                 Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
                 btnF10.Visible = true;
+                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                txtDenpyouNO.NextControlName = btnF12.Name;
             }
         }
 
@@ -258,7 +265,14 @@ namespace ShukkaTorikomi
                                         {
                                             if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
                                                 bbl.ShowMessage("I002");
+                                            rdo_Toroku.Checked = true;
+                                            rdo_Toroku.Focus();
                                         }
+                                    }
+                                    else
+                                    {
+                                        if (PreviousCtrl != null)
+                                            PreviousCtrl.Focus();
                                     }
                                 }
                                 else
@@ -269,14 +283,23 @@ namespace ShukkaTorikomi
                         }
                         else
                         {
-                            if (bbl.ShowMessage("Q206") == DialogResult.Yes)
+                            if (bbl.ShowMessage("Q102") == DialogResult.Yes)
                             {
                                 return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
                                 if (return_DT.Rows.Count > 0)
                                 {
                                     if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
                                         bbl.ShowMessage("I002");
+                                    rdo_Sakujo.Checked = true;
+                                    txtDenpyouNO.Text = string.Empty;
+                                    txtDenpyouNO.Focus();
+                                    DataGridviewBind();
                                 }
+                            }
+                            else
+                            {
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
                             }
                         }
 
