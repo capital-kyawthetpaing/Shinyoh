@@ -15,8 +15,8 @@ GO
 -- Author:      <SWE>
 -- Create date: <06-03-2021>
 -- Description: <Description,,>
--- History    : 2021/04/14 Y.Nishikawa DEL o‰×ŽwŽ¦Ú×—š—ð‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã
---                         Y.Nishikawa DEL ˆø“–XV‚Íˆø“–ƒtƒ@ƒ“ƒNƒVƒ‡ƒ“‚Åˆ—‚µ‚Ä‚¢‚é‚½‚ßA“ñdŒvã
+-- History    : 2021/04/14 Y.Nishikawa DEL 出荷指示詳細履歴は引当ファンクションで処理しているため、二重計上
+--                         Y.Nishikawa DEL 引当更新は引当ファンクションで処理しているため、二重計上
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Update]
     -- Add the parameters for the stored procedure here
