@@ -222,6 +222,7 @@ namespace ShukkaTorikomi
             if (tagID == "12")
             {
                 //HET
+                (string, string) Xml = (string.Empty,string.Empty);
                 gvShukkaTorikomi.ActionType = "F10";
                 if (rdo_Sakujo.Checked)
                 {
@@ -230,64 +231,74 @@ namespace ShukkaTorikomi
                 }
                 if (ErrorCheck(PanelDetail))             //HET
                 {
-                    (string, string) Xml = ChooseFile();
+                    if(rdo_Toroku.Checked)
+                        Xml = ChooseFile();
+                    else
+                       Xml = ChooseFileDelete();
+
                     BaseBL bbl = new BaseBL();
                     if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
                     {
+                        DataTable return_DT = new DataTable();
+                        ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
+                        string spname = string.Empty;
+                        string TorikomiDenpyouNO = txtDenpyouNO.Text;
+
+                        if (bbl.ShowMessage("Q206") == DialogResult.Yes)
                         {
-                            ShukkaTorikomi_BL bl = new ShukkaTorikomi_BL();
-                            string spname = string.Empty;
-                            string TorikomiDenpyouNO = txtDenpyouNO.Text;
-                            //DataTable return_DT = new DataTable();
                             if (rdo_Toroku.Checked)
-                            {
-                                spname = "ShukkaTorikomi_Insert";
-                            }
+                                return_DT = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Insert", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
                             else
-                            {
-                                spname = "ShukkaTorikomi_Delete";
-                            }
-                            DataTable return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                                return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
                             if (return_DT.Rows.Count > 0)
                             {
                                 if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
-                                {
-                                    if (bbl.ShowMessage("Q206") != DialogResult.Yes)
-                                    {
-                                        if (PreviousCtrl != null)
-                                            PreviousCtrl.Focus();
-                                    }
-                                    else
-                                    {
-                                        if (rdo_Toroku.Checked)
-                                        {
-                                            spname = "ShukkaTorikomi_Insert";
-                                        }
-                                        else
-                                        {
-                                            spname = "ShukkaTorikomi_Delete";
-                                        }
-                                        return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
-                                        if (return_DT.Rows.Count > 0)
-                                        {
-                                            if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
-                                            {
-                                                bbl.ShowMessage("I002");
-                                            }
-                                        }
-                                    }
-                                }
-
+                                    bbl.ShowMessage("I002");
                                 else
                                 {
                                     bbl.ShowMessage("E276", return_DT.Rows[0]["SEQ"].ToString(), return_DT.Rows[0]["Error1"].ToString(), return_DT.Rows[0]["Error2"].ToString());
                                 }
                             }
+                            
                         }
+                        else
+                        {
+
+                        }
+                        //DataTable return_DT = new DataTable();
+                       
+                        //if (return_DT.Rows.Count > 0)
+                        //{
+                           
+                                
+                                
+                                //else
+                                //{
+                                //    if (rdo_Toroku.Checked)
+                                //    {
+                                //        spname = "ShukkaTorikomi_Insert";
+                                //    }
+                                //    else
+                                //    {
+                                //        spname = "NewShukkaTorikomi_Delete";
+                                //    }
+                                //    return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                                //    if (return_DT.Rows.Count > 0)
+                                //    {
+                                //        if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
+                                //        {
+                                           
+                                //        }
+                                //    }
+                                //}
+                           // }
+                            //else
+                            //{
+                               
+                            //}
+                        //}
                     }
-
                 }
-
             }
         }
             
@@ -589,6 +600,29 @@ namespace ShukkaTorikomi
             return (Xml_Detail, Xml_Main);
         }
 
+        private (string, string) ChooseFileDelete()
+        {
+            string Xml_Main = string.Empty;
+            string Xml_Detail = string.Empty;
+            DataTable gv_dt = gvShukkaTorikomi.DataSource as DataTable;
+            DataTable dt = gv_dt.Copy();
+            dt.Columns.Remove("TorikomiDenpyouNO");
+            dt.Columns.Remove("InsertDateTime");
+            dt.Columns.Remove("TokuisakiRyakuName");
+            dt.Columns.Remove("KouritenRyakuName");
+            DataColumn dataColumn = new DataColumn("InsertOperator", typeof(string));
+            dataColumn.DefaultValue = base_Entity.OperatorCD;
+            dt.Columns.Add(dataColumn);
+            DataColumn dataColumn1 = new DataColumn("PC", typeof(string));
+            dataColumn.DefaultValue = base_Entity.PC;
+            dt.Columns.Add(dataColumn1);
+            if (dt.Rows.Count>0)
+            {
+                Xml_Detail = cf.DataTableToXml(dt);
+                Xml_Main = txtDenpyouNO.Text;
+            }
+            return (Xml_Detail, Xml_Main);
+        }
 
         //private bool Null_Check(string obj_text, int line_no, string error_msg)
         //{

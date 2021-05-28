@@ -89,9 +89,12 @@ BEGIN
 		and (@SeasonFW is null or (FS.SeasonFW = @SeasonFW))
 		and (FT.ShukkaSizishoHuyouKBN = 0)
 		and (ds.ShukkaSiziShuturyokuKBN =0)
-		order by dsm.ShukkaSiziNO,dsm.ShukkaSiziGyouNO
+		order by dsm.ShukkaSiziNO,dsm.ShukkaSiziGyouNO		
+	end
 
-		--2021/05/12 Y.Nishikawa CHG 出荷指示出力区分更新時、全出荷指示を対象としている↓↓
+	else if @condition='Mihakkoubunnomi_Update'  --For Task 503 NMW 2021-05-27
+	begin
+	--2021/05/12 Y.Nishikawa CHG 出荷指示出力区分更新時、全出荷指示を対象としている↓↓
 	--update D_ShukkaSizi set ShukkaSiziShuturyokuKBN = 1, ShukkaSiziShuturyokuDateTime=getdate()
 	    UPDATE DSSH
 		SET ShukkaSiziShuturyokuKBN = 1
