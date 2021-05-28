@@ -76,6 +76,20 @@ namespace Shinyoh_Search
             mentity.Type = Access_Type;
             DataTable dt = bl.M_Multiporpose_Search(mentity);
             gvMultiporpose.DataSource = dt;
+            if(dt.Rows.Count == 0)    //HET
+            {
+                ClearSession();
+            }
+        }
+        //HET
+        private void ClearSession()
+        {
+            txtID1.Clear();
+            txtID2.Clear();
+            txtKey1.Clear();
+            txtKey2.Clear();
+            txtIDName.Clear();
+            txtID1.Focus();
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
@@ -100,7 +114,7 @@ namespace Shinyoh_Search
         {
             Access_Type = string.Empty;
             GridViewBind();
-            gvMultiporpose.Focus();
+            //gvMultiporpose.Focus();       //comment close HET
         }
 
         private void gvMultiporpose_KeyDown(object sender, KeyEventArgs e)

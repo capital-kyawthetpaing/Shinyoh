@@ -88,9 +88,31 @@ namespace Shinyoh_Search
                         lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                         txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                     }
+                    else
+                    {
+                        ClearSession();
+                    }
                 }
                 gv_1.DataSource = dt;
             }
+        }
+
+        private void ClearSession()
+        {
+            txtJuchuuDateFrom.Clear();
+            txtJuchuuDateTo.Clear();
+            txtTokuisaki.Clear();
+            lblTokuisakiRyakuName.Text = string.Empty;
+            txtStaffCD.Clear();
+            lblStaffCD_Name.Text = string.Empty;
+            txtShouhinName.Clear();
+            txtJuchuuNoFrom.Clear();
+            txtJuchuuDateTo.Clear();
+            txtHacchuNoFrom.Clear();
+            txtHacchuNoTo.Clear();
+            txtShouhinFrom.Clear();
+            txtShouhinTo.Clear();
+            txtJuchuuDateFrom.Focus();
         }
 
         public override void FunctionProcess(string tagID)
