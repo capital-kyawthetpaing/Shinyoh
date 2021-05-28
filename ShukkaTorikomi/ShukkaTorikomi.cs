@@ -143,6 +143,8 @@ namespace ShukkaTorikomi
                 Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
                 btnF10.Visible = false;
 
+                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                txtImportFileName.NextControlName = btnF12.Name;
             }
             else
             {
@@ -151,10 +153,15 @@ namespace ShukkaTorikomi
                 txtDate1.Enabled = true;
                 txtDate2.Enabled = true;
                 txtDenpyouNO.Enabled = true;
+                rdo_Sakujo.NextControlName = txtDate1.Name;
+                txtDate1.NextControlName = txtDate2.Name;
+                txtDate2.NextControlName = txtDenpyouNO.Name;
                 //F10.Enabled = true;
                 //F6.Enabled = true;
                 Control btnF10 = this.TopLevelControl.Controls.Find("BtnF10", true)[0];
                 btnF10.Visible = true;
+                Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
+                txtDenpyouNO.NextControlName = btnF12.Name;
             }
         }
 
@@ -244,58 +251,112 @@ namespace ShukkaTorikomi
                         string spname = string.Empty;
                         string TorikomiDenpyouNO = txtDenpyouNO.Text;
 
-                        if (bbl.ShowMessage("Q206") == DialogResult.Yes)
+                        if (rdo_Toroku.Checked)
                         {
-                            if (rdo_Toroku.Checked)
-                                return_DT = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Insert", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
-                            else
-                                return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                            return_DT = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Insert", Xml.Item1, Xml.Item2, "ErrorCheck");
                             if (return_DT.Rows.Count > 0)
                             {
                                 if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
-                                    bbl.ShowMessage("I002");
+                                {
+                                    if (bbl.ShowMessage("Q206") == DialogResult.Yes)
+                                    {
+                                        return_DT = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Insert", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                                        if (return_DT.Rows.Count > 0)
+                                        {
+                                            if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
+                                                bbl.ShowMessage("I002");
+                                            rdo_Toroku.Checked = true;
+                                            rdo_Toroku.Focus();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (PreviousCtrl != null)
+                                            PreviousCtrl.Focus();
+                                    }
+                                }
                                 else
                                 {
                                     bbl.ShowMessage("E276", return_DT.Rows[0]["SEQ"].ToString(), return_DT.Rows[0]["Error1"].ToString(), return_DT.Rows[0]["Error2"].ToString());
                                 }
                             }
-                            
                         }
                         else
                         {
-
+                            if (bbl.ShowMessage("Q102") == DialogResult.Yes)
+                            {
+                                return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                                if (return_DT.Rows.Count > 0)
+                                {
+                                    if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
+                                        bbl.ShowMessage("I002");
+                                    rdo_Sakujo.Checked = true;
+                                    rdo_Sakujo.Focus();
+                                }
+                            }
+                            else
+                            {
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
+                            }
                         }
+
+                        //START         COMMENT BY TZA FOR TASK 437 28/05/2021
+                        //if (bbl.ShowMessage("Q206") == DialogResult.Yes)
+                        //{
+                        //    if (rdo_Toroku.Checked)
+                        //        return_DT = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Insert", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                        //    else
+                        //        return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                        //    if (return_DT.Rows.Count > 0)
+                        //    {
+                        //        if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
+                        //            bbl.ShowMessage("I002");
+                        //        else
+                        //        {
+                        //            bbl.ShowMessage("E276", return_DT.Rows[0]["SEQ"].ToString(), return_DT.Rows[0]["Error1"].ToString(), return_DT.Rows[0]["Error2"].ToString());
+                        //        }
+                        //    }
+
+                        //}
+                        //else
+                        //{
+
+                        //}
+                        //END         COMMENT BY TZA FOR TASK 437 28/05/2021
+
+
                         //DataTable return_DT = new DataTable();
-                       
+
                         //if (return_DT.Rows.Count > 0)
                         //{
-                           
-                                
-                                
-                                //else
-                                //{
-                                //    if (rdo_Toroku.Checked)
-                                //    {
-                                //        spname = "ShukkaTorikomi_Insert";
-                                //    }
-                                //    else
-                                //    {
-                                //        spname = "NewShukkaTorikomi_Delete";
-                                //    }
-                                //    return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
-                                //    if (return_DT.Rows.Count > 0)
-                                //    {
-                                //        if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
-                                //        {
-                                           
-                                //        }
-                                //    }
-                                //}
-                           // }
-                            //else
-                            //{
-                               
-                            //}
+
+
+
+                        //else
+                        //{
+                        //    if (rdo_Toroku.Checked)
+                        //    {
+                        //        spname = "ShukkaTorikomi_Insert";
+                        //    }
+                        //    else
+                        //    {
+                        //        spname = "NewShukkaTorikomi_Delete";
+                        //    }
+                        //    return_DT = bl.ShukkaTorikomi_CUD(spname, Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                        //    if (return_DT.Rows.Count > 0)
+                        //    {
+                        //        if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
+                        //        {
+
+                        //        }
+                        //    }
+                        //}
+                        // }
+                        //else
+                        //{
+
+                        //}
                         //}
                     }
                 }
