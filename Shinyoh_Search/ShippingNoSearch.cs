@@ -100,9 +100,29 @@ namespace Shinyoh_Search
                         dt.Columns.Remove("CurrentDay");
                     }                    
                 }
+                else
+                {
+                    ClearSession();
+                }
                 gvShippingNo.DataSource = dt;
-            }
-            
+            }            
+        }
+        private void ClearSession()
+        {
+            txtShippingDateFrom.Clear();
+            txtShippingDateTo.Clear();
+            txtTokuisakiCD.Clear();
+            lblTokuisakiRyakuName.Text = string.Empty;
+            txtStaffCD.Clear();
+            lblStaffName.Text = string.Empty;
+            txtProductName.Clear();
+            txtSlipDateFrom.Clear();
+            txtSlipDateTo.Clear();
+            txtShippingNoFrom.Clear();
+            txtShippingNoTo.Clear();
+            txtProductFrom.Clear();
+            txtProductTo.Clear();
+            txtShippingDateFrom.Focus();
         }
         private ShukkaSiziNyuuryokuEntity GetShukkasiziEntity()
         {
