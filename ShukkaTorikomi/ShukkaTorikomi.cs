@@ -21,7 +21,7 @@ namespace ShukkaTorikomi
         multipurposeEntity multi_Entity;
         TorikomiEntity SEntity;
         ShukkaTorikomi_BL ShukkaTorikomi_BL;
-        TorikomiEntity JEntity;
+        //TorikomiEntity JEntity;
         BaseBL bbl;
         DataTable dt_Main;
         DataTable create_dt;
