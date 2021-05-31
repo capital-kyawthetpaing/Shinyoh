@@ -1,9 +1,9 @@
-/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Update]    Script Date: 2021/05/28 14:47:06 ******/
+/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Update]    Script Date: 2021/05/31 10:50:01 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%IdouNyuuryoku_Update%' and type like '%P%')
 DROP PROCEDURE [dbo].[IdouNyuuryoku_Update]
 GO
 
-/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Update]    Script Date: 2021/05/28 14:47:06 ******/
+/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Update]    Script Date: 2021/05/31 10:50:01 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -67,7 +67,7 @@ BEGIN
                     ProgramID           varchar(100) 'ProgramID'
                     )
         EXEC SP_XML_REMOVEDOCUMENT @hQuantityAdjust
-
+		
         --2021/04/26 Y.Nishikawa DEL 無駄なSELECT削除↓↓
         --SELECT * FROM #Temp_Header
         --2021/04/26 Y.Nishikawa DEL 無駄なSELECT削除↑↑
@@ -122,8 +122,6 @@ BEGIN
          --2021/04/26 Y.Nishikawa ADD 修正前の赤在庫更新がない↑↑
 		 declare @IdouKBN as smallint = (SELECT DIDH.IdouKBN --修正前の移動区分で在庫更新を判断する必要がある
 	                                     FROM D_Idou DIDH
-		 	                             INNER JOIN D_IdouMeisai DIDM 
-		 	                             ON DIDH.IdouNO = DIDM.IdouNO
 		 	                             INNER JOIN #Temp_Header SUB 
 		 	                             ON DIDH.IdouNO = SUB.IdouNO)
 		 declare @UpdateOperator as varchar(10)= (select UpdateOperator from #Temp_Header)
@@ -156,16 +154,16 @@ BEGIN
 	          FETCH NEXT FROM cursorIdouNyuuko INTO @NyuukoDate_Nyuuko,@SoukoCD_Nyuuko,@KanriNO_Nyuuko,@ShouhinCD,@IdouSuu_Nyuuko
 	          WHILE @@FETCH_STATUS = 0
 	          	BEGIN
-				    exec pr_ZaikoRegister -1, @SoukoCD_Nyuuko, @ShouhinCD, @KanriNO_Nyuuko, @NyuukoDate_Nyuuko, @IdouSuu_Nyuuko, @UpdateOperator, @currentDate
+				    EXEC pr_ZaikoRegister -1, @SoukoCD_Nyuuko, @ShouhinCD, @KanriNO_Nyuuko, @NyuukoDate_Nyuuko, @IdouSuu_Nyuuko, @UpdateOperator, @currentDate
 		            
-		 		FETCH NEXT FROM cursorIdouNyuuko INTO @NyuukoDate_Nyuuko,@SoukoCD_Nyuuko,@KanriNO_Nyuuko,@ShouhinCD,@IdouSuu_Nyuuko
+		 		    FETCH NEXT FROM cursorIdouNyuuko INTO @NyuukoDate_Nyuuko,@SoukoCD_Nyuuko,@KanriNO_Nyuuko,@ShouhinCD,@IdouSuu_Nyuuko
 		 
 	           	END
 	           	
 	           CLOSE cursorIdouNyuuko
 	           DEALLOCATE cursorIdouNyuuko
 		 end
-		  
+		 
 		 if @IdouKBN = 2 or @IdouKBN = 3
 		 	begin 
 		 	    DECLARE @NyuukoDate_Shukko as date,
@@ -193,8 +191,10 @@ BEGIN
 	              FETCH NEXT FROM cursorIdouShukko INTO @NyuukoDate_Shukko,@SoukoCD_Shukko,@KanriNO_Shukko,@ShouhinCD,@IdouSuu_Shukko
 	              WHILE @@FETCH_STATUS = 0
 	              	BEGIN
-					   exec pr_ZaikoRegister 1, @SoukoCD_Shukko, @ShouhinCD, @KanriNO_Shukko, @NyuukoDate_Shukko, @IdouSuu_Shukko, @UpdateOperator, @currentDate
+					   EXEC pr_ZaikoRegister 1, @SoukoCD_Shukko, @ShouhinCD, @KanriNO_Shukko, @NyuukoDate_Shukko, @IdouSuu_Shukko, @UpdateOperator, @currentDate
 		 	           
+					   FETCH NEXT FROM cursorIdouShukko INTO @NyuukoDate_Shukko,@SoukoCD_Shukko,@KanriNO_Shukko,@ShouhinCD,@IdouSuu_Shukko
+
 	               	END
 	               	
 	               CLOSE cursorIdouShukko
@@ -349,9 +349,9 @@ BEGIN
 	                    FETCH NEXT FROM cursorIdouNyuuko INTO @NyuukoDate_Nyuuko,@SoukoCD_Nyuuko,@KanriNO_Nyuuko,@ShouhinCD,@IdouSuu_Nyuuko
 	                    WHILE @@FETCH_STATUS = 0
 	                    	BEGIN
-			          	    exec pr_ZaikoRegister 1, @SoukoCD_Nyuuko, @ShouhinCD, @KanriNO_Nyuuko, @NyuukoDate_Nyuuko, @IdouSuu_Nyuuko, @UpdateOperator, @currentDate
+			          	    EXEC pr_ZaikoRegister 1, @SoukoCD_Nyuuko, @ShouhinCD, @KanriNO_Nyuuko, @NyuukoDate_Nyuuko, @IdouSuu_Nyuuko, @UpdateOperator, @currentDate
 		                      
-		 	          	FETCH NEXT FROM cursorIdouNyuuko INTO @NyuukoDate_Nyuuko,@SoukoCD_Nyuuko,@KanriNO_Nyuuko,@ShouhinCD,@IdouSuu_Nyuuko
+		 	          	    FETCH NEXT FROM cursorIdouNyuuko INTO @NyuukoDate_Nyuuko,@SoukoCD_Nyuuko,@KanriNO_Nyuuko,@ShouhinCD,@IdouSuu_Nyuuko
 		 	          
 	                     	END
 	                     	
@@ -437,9 +437,9 @@ BEGIN
 	                    FETCH NEXT FROM cursorIdouShukko INTO @NyuukoDate_Shukko,@SoukoCD_Shukko,@KanriNO_Shukko,@ShouhinCD,@IdouSuu_Shukko
 	                    WHILE @@FETCH_STATUS = 0
 	                    	BEGIN
-							   exec pr_ZaikoRegister -1, @SoukoCD_Shukko, @ShouhinCD, @KanriNO_Shukko, @NyuukoDate_Shukko, @IdouSuu_Shukko, @UpdateOperator, @currentDate
+							   EXEC pr_ZaikoRegister -1, @SoukoCD_Shukko, @ShouhinCD, @KanriNO_Shukko, @NyuukoDate_Shukko, @IdouSuu_Shukko, @UpdateOperator, @currentDate
 					           
-							FETCH NEXT FROM cursorIdouShukko INTO @NyuukoDate_Shukko,@SoukoCD_Shukko,@KanriNO_Shukko,@ShouhinCD,@IdouSuu_Shukko
+							   FETCH NEXT FROM cursorIdouShukko INTO @NyuukoDate_Shukko,@SoukoCD_Shukko,@KanriNO_Shukko,@ShouhinCD,@IdouSuu_Shukko
 
 	                     	END
 	                     	

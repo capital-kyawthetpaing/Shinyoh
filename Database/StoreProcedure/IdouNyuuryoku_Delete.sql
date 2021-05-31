@@ -1,14 +1,15 @@
-/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Delete]    Script Date: 2021/05/28 16:20:27 ******/
+/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Delete]    Script Date: 2021/05/31 9:31:39 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%IdouNyuuryoku_Delete%' and type like '%P%')
 DROP PROCEDURE [dbo].[IdouNyuuryoku_Delete]
 GO
 
-/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Delete]    Script Date: 2021/05/28 16:20:27 ******/
+/****** Object:  StoredProcedure [dbo].[IdouNyuuryoku_Delete]    Script Date: 2021/05/31 9:31:39 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
+
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -139,13 +140,15 @@ BEGIN
 				DIM.TaniCD,DIM.GenkaTanka,DIM.GenkaKingaku,DIM.IdouMeisaiTekiyou,DIM.InsertOperator,DIM.InsertDateTime,DIM.UpdateOperator,DIM.UpdateDateTime,h.InsertOperator,@currentDate
 				from D_IdouMeisai DIM inner join #Temp_Detail TD on DIM.IdouNO = TD.IdouNO and DIM.IdouGyouNO=TD.IdouGyouNO,#Temp_Header h 
 
-			  --D_Iodu A
-				Delete from D_Idou  
-				where IdouNO IN (select IdouNO From #Temp_Header) 
+				--2021/05/28 Y.Nishikawa CHG 在庫更新作り直し↓↓
+			 -- --D_Iodu A
+				--Delete from D_Idou  
+				--where IdouNO IN (select IdouNO From #Temp_Header) 
 
-			  --D_IdouMeisai B
-			    Delete From D_IdouMeisai 
-				where IdouNO IN (select IdouNO From #Temp_Detail) and IdouGyouNO IN (select IdouGyouNO From #Temp_Detail)
+			 -- --D_IdouMeisai B
+			 --   Delete From D_IdouMeisai 
+				--where IdouNO IN (select IdouNO From #Temp_Detail) and IdouGyouNO IN (select IdouGyouNO From #Temp_Detail)
+				--2021/05/28 Y.Nishikawa CHG 在庫更新作り直し↑↑
 
 				declare @ShukkoSoukoCD as varchar(10)= (select ShukkoSoukoCD from #Temp_Header)
 				declare @NyuukoSoukoCD as varchar(10)= (select NyuukoSoukoCD from #Temp_Header)
@@ -306,7 +309,18 @@ BEGIN
 	                     CLOSE cursorIdouShukko
 	                     DEALLOCATE cursorIdouShukko
 						--2021/05/28 Y.Nishikawa CHG 在庫更新作り直し↑↑
-				End
+				END
+
+				--2021/05/28 Y.Nishikawa CHG 在庫更新作り直し↓↓
+			  --D_Iodu A
+				Delete from D_Idou  
+				where IdouNO IN (select IdouNO From #Temp_Header) 
+
+			  --D_IdouMeisai B
+			    Delete From D_IdouMeisai 
+				where IdouNO IN (select IdouNO From #Temp_Detail) and IdouGyouNO IN (select IdouGyouNO From #Temp_Detail)
+				--2021/05/28 Y.Nishikawa CHG 在庫更新作り直し↑↑
+
 				--L_Log Z
 			declare	@InsertOperator  varchar(10) = (select h.InsertOperator from #Temp_Header h)
 			declare @Program         varchar(100) = (select h.ProgramID from #Temp_Header h)
