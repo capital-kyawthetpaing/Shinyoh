@@ -212,13 +212,20 @@ namespace JuchuuTorikomi
                             if (return_BL1.Rows.Count > 0)
                             {
                                 if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
+                                {
                                     bbl.ShowMessage("I002");
-                                txtDate1.Clear();
-                                txtDate2.Clear();
-                                txtDenpyouNO.Clear();
-                                dtMain.Clear();
-                                gvJuchuuTorikomi.ClearSelection();
-                                rdo_Delete.Focus();
+                                    txtDate1.Clear();
+                                    txtDate2.Clear();
+                                    txtDenpyouNO.Clear();
+                                    dtMain.Clear();
+                                    gvJuchuuTorikomi.ClearSelection();
+                                    rdo_Delete.Focus();
+                                }
+                                else
+                                {
+                                    bbl.ShowMessage("S013");
+                                    txtDenpyouNO.Focus();
+                                }
                             }
                         }
                         else

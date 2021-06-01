@@ -21,7 +21,7 @@ namespace ShukkaTorikomi
         multipurposeEntity multi_Entity;
         TorikomiEntity SEntity;
         ShukkaTorikomi_BL ShukkaTorikomi_BL;
-        TorikomiEntity JEntity;
+        //TorikomiEntity JEntity;
         BaseBL bbl;
         DataTable dt_Main;
         DataTable create_dt;
@@ -283,17 +283,25 @@ namespace ShukkaTorikomi
                         }
                         else
                         {
-                            if (bbl.ShowMessage("Q102") == DialogResult.Yes)
+                            return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                            if (return_DT.Rows.Count > 0)
                             {
-                                return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
-                                if (return_DT.Rows.Count > 0)
+                                if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
                                 {
-                                    if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
+                                    if (bbl.ShowMessage("Q102") == DialogResult.Yes)
+                                    {
+                                        return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
                                         bbl.ShowMessage("I002");
-                                    rdo_Sakujo.Checked = true;
-                                    txtDenpyouNO.Text = string.Empty;
+                                        rdo_Sakujo.Checked = true;
+                                        txtDenpyouNO.Text = string.Empty;
+                                        txtDenpyouNO.Focus();
+                                        DataGridviewBind();
+                                    }
+                                }
+                                else
+                                {
+                                    bbl.ShowMessage("S013");
                                     txtDenpyouNO.Focus();
-                                    DataGridviewBind();
                                 }
                             }
                             else
@@ -783,6 +791,6 @@ namespace ShukkaTorikomi
         private void txtDate2_KeyDown(object sender, KeyEventArgs e)
         {
             DataGridviewBind();
-        }
+        }        
     }
 }
