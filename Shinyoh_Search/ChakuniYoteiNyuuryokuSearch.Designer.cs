@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.PanelTitle = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.sbHinbanCDTo = new Shinyoh_Search.SearchBox();
             this.sbHinbanCDFrom = new Shinyoh_Search.SearchBox();
             this.txtCurrentDate = new Shinyoh_Controls.STextBox();
@@ -66,46 +66,46 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PanelTitle.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniYoteiNyuuryoku)).BeginInit();
             this.SuspendLayout();
             // 
-            // PanelTitle
+            // panel1
             // 
-            this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.PanelTitle.Controls.Add(this.sbHinbanCDTo);
-            this.PanelTitle.Controls.Add(this.sbHinbanCDFrom);
-            this.PanelTitle.Controls.Add(this.txtCurrentDate);
-            this.PanelTitle.Controls.Add(this.lblStaffCD);
-            this.PanelTitle.Controls.Add(this.lblStaff);
-            this.PanelTitle.Controls.Add(this.lblSiiresaki);
-            this.PanelTitle.Controls.Add(this.lbl_Date);
-            this.PanelTitle.Controls.Add(this.sLabel8);
-            this.PanelTitle.Controls.Add(this.sbSiiresaki);
-            this.PanelTitle.Controls.Add(this.sbStaff);
-            this.PanelTitle.Controls.Add(this.btnSearch);
-            this.PanelTitle.Controls.Add(this.label4);
-            this.PanelTitle.Controls.Add(this.label3);
-            this.PanelTitle.Controls.Add(this.label2);
-            this.PanelTitle.Controls.Add(this.label1);
-            this.PanelTitle.Controls.Add(this.txtControlNoTo);
-            this.PanelTitle.Controls.Add(this.txtControlNoFrom);
-            this.PanelTitle.Controls.Add(this.txtOrderDateTo);
-            this.PanelTitle.Controls.Add(this.txtOrderDateFrom);
-            this.PanelTitle.Controls.Add(this.txtShouhinName);
-            this.PanelTitle.Controls.Add(this.txtDateTo);
-            this.PanelTitle.Controls.Add(this.txtDateFrom);
-            this.PanelTitle.Controls.Add(this.sLabel7);
-            this.PanelTitle.Controls.Add(this.sLabel6);
-            this.PanelTitle.Controls.Add(this.sLabel5);
-            this.PanelTitle.Controls.Add(this.sLabel4);
-            this.PanelTitle.Controls.Add(this.sLabel2);
-            this.PanelTitle.Controls.Add(this.sLabel1);
-            this.PanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelTitle.Location = new System.Drawing.Point(0, 0);
-            this.PanelTitle.Name = "PanelTitle";
-            this.PanelTitle.Size = new System.Drawing.Size(1184, 120);
-            this.PanelTitle.TabIndex = 3;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.sbHinbanCDTo);
+            this.panel1.Controls.Add(this.sbHinbanCDFrom);
+            this.panel1.Controls.Add(this.txtCurrentDate);
+            this.panel1.Controls.Add(this.lblStaffCD);
+            this.panel1.Controls.Add(this.lblStaff);
+            this.panel1.Controls.Add(this.lblSiiresaki);
+            this.panel1.Controls.Add(this.lbl_Date);
+            this.panel1.Controls.Add(this.sLabel8);
+            this.panel1.Controls.Add(this.sbSiiresaki);
+            this.panel1.Controls.Add(this.sbStaff);
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtControlNoTo);
+            this.panel1.Controls.Add(this.txtControlNoFrom);
+            this.panel1.Controls.Add(this.txtOrderDateTo);
+            this.panel1.Controls.Add(this.txtOrderDateFrom);
+            this.panel1.Controls.Add(this.txtShouhinName);
+            this.panel1.Controls.Add(this.txtDateTo);
+            this.panel1.Controls.Add(this.txtDateFrom);
+            this.panel1.Controls.Add(this.sLabel7);
+            this.panel1.Controls.Add(this.sLabel6);
+            this.panel1.Controls.Add(this.sLabel5);
+            this.panel1.Controls.Add(this.sLabel4);
+            this.panel1.Controls.Add(this.sLabel2);
+            this.panel1.Controls.Add(this.sLabel1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1184, 120);
+            this.panel1.TabIndex = 3;
             // 
             // sbHinbanCDTo
             // 
@@ -711,15 +711,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 551);
             this.Controls.Add(this.gvChakuniYoteiNyuuryoku);
-            this.Controls.Add(this.PanelTitle);
+            this.Controls.Add(this.panel1);
             this.Name = "ChakuniYoteiNyuuryokuSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "着荷予定番号検索";
             this.Load += new System.EventHandler(this.ChakuniYoteiNyuuryokuSearch_Load);
-            this.Controls.SetChildIndex(this.PanelTitle, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.gvChakuniYoteiNyuuryoku, 0);
-            this.PanelTitle.ResumeLayout(false);
-            this.PanelTitle.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvChakuniYoteiNyuuryoku)).EndInit();
             this.ResumeLayout(false);
 
@@ -727,7 +727,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel PanelTitle;
+        private System.Windows.Forms.Panel panel1;
         private Shinyoh_Controls.SLabel lblStaffCD;
         private Shinyoh_Controls.SLabel lblStaff;
         private Shinyoh_Controls.SLabel lblSiiresaki;

@@ -84,7 +84,7 @@ namespace Shinyoh_Search
             cyn.KanriNOTo = txtControlNoTo.Text;
             cyn.ShouhinCDFrom = sbHinbanCDFrom.Text;
             cyn.ShouhinCDTo = sbHinbanCDTo.Text;
-            if(ErrorCheck(PanelTitle))           //Task no. 147 - tza
+            if(ErrorCheck(panel1))           //Task no. 147 - tza
             {
                 DataTable dt = cb.ChakuniYoteiNyuuryoku_Search(cyn);
                 if (dt.Columns.Contains("CurrentDay"))
