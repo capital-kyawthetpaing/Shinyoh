@@ -37,7 +37,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PanelTitle = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.sbHinbanCDTo = new Shinyoh_Search.SearchBox();
             this.sbHinbanCDFrom = new Shinyoh_Search.SearchBox();
             this.txtCurrentDate = new Shinyoh_Controls.STextBox();
@@ -67,7 +67,7 @@
             this.sLabel2 = new Shinyoh_Controls.SLabel();
             this.sLabel1 = new Shinyoh_Controls.SLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gvArrivalNo)).BeginInit();
-            this.PanelTitle.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gvArrivalNo
@@ -140,42 +140,42 @@
             this.Column6.ReadOnly = true;
             this.Column6.Width = 102;
             // 
-            // PanelTitle
+            // panel1
             // 
-            this.PanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
-            this.PanelTitle.Controls.Add(this.sbHinbanCDTo);
-            this.PanelTitle.Controls.Add(this.sbHinbanCDFrom);
-            this.PanelTitle.Controls.Add(this.txtCurrentDate);
-            this.PanelTitle.Controls.Add(this.txtStaffCD);
-            this.PanelTitle.Controls.Add(this.lblStaffCD);
-            this.PanelTitle.Controls.Add(this.lblStaff);
-            this.PanelTitle.Controls.Add(this.lblSiiresaki);
-            this.PanelTitle.Controls.Add(this.lbl_Date);
-            this.PanelTitle.Controls.Add(this.sLabel8);
-            this.PanelTitle.Controls.Add(this.sbSiiresaki);
-            this.PanelTitle.Controls.Add(this.btnSearch);
-            this.PanelTitle.Controls.Add(this.label4);
-            this.PanelTitle.Controls.Add(this.label3);
-            this.PanelTitle.Controls.Add(this.label2);
-            this.PanelTitle.Controls.Add(this.label1);
-            this.PanelTitle.Controls.Add(this.txtControlNoTo);
-            this.PanelTitle.Controls.Add(this.txtControlNoFrom);
-            this.PanelTitle.Controls.Add(this.txtExpectedDateTo);
-            this.PanelTitle.Controls.Add(this.txtExpectedDateFrom);
-            this.PanelTitle.Controls.Add(this.txtProductName);
-            this.PanelTitle.Controls.Add(this.txtDateTo);
-            this.PanelTitle.Controls.Add(this.txtDateFrom);
-            this.PanelTitle.Controls.Add(this.sLabel7);
-            this.PanelTitle.Controls.Add(this.sLabel6);
-            this.PanelTitle.Controls.Add(this.sLabel5);
-            this.PanelTitle.Controls.Add(this.sLabel4);
-            this.PanelTitle.Controls.Add(this.sLabel2);
-            this.PanelTitle.Controls.Add(this.sLabel1);
-            this.PanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PanelTitle.Location = new System.Drawing.Point(0, 0);
-            this.PanelTitle.Name = "PanelTitle";
-            this.PanelTitle.Size = new System.Drawing.Size(1184, 120);
-            this.PanelTitle.TabIndex = 2;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(176)))), ((int)(((byte)(240)))));
+            this.panel1.Controls.Add(this.sbHinbanCDTo);
+            this.panel1.Controls.Add(this.sbHinbanCDFrom);
+            this.panel1.Controls.Add(this.txtCurrentDate);
+            this.panel1.Controls.Add(this.txtStaffCD);
+            this.panel1.Controls.Add(this.lblStaffCD);
+            this.panel1.Controls.Add(this.lblStaff);
+            this.panel1.Controls.Add(this.lblSiiresaki);
+            this.panel1.Controls.Add(this.lbl_Date);
+            this.panel1.Controls.Add(this.sLabel8);
+            this.panel1.Controls.Add(this.sbSiiresaki);
+            this.panel1.Controls.Add(this.btnSearch);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.txtControlNoTo);
+            this.panel1.Controls.Add(this.txtControlNoFrom);
+            this.panel1.Controls.Add(this.txtExpectedDateTo);
+            this.panel1.Controls.Add(this.txtExpectedDateFrom);
+            this.panel1.Controls.Add(this.txtProductName);
+            this.panel1.Controls.Add(this.txtDateTo);
+            this.panel1.Controls.Add(this.txtDateFrom);
+            this.panel1.Controls.Add(this.sLabel7);
+            this.panel1.Controls.Add(this.sLabel6);
+            this.panel1.Controls.Add(this.sLabel5);
+            this.panel1.Controls.Add(this.sLabel4);
+            this.panel1.Controls.Add(this.sLabel2);
+            this.panel1.Controls.Add(this.sLabel1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1184, 120);
+            this.panel1.TabIndex = 2;
             // 
             // sbHinbanCDTo
             // 
@@ -707,24 +707,24 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 551);
-            this.Controls.Add(this.PanelTitle);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.gvArrivalNo);
             this.Name = "ArrivalNOSearch";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "  着荷番号検索";
             this.Load += new System.EventHandler(this.ArrivalNOSearch_Load);
             this.Controls.SetChildIndex(this.gvArrivalNo, 0);
-            this.Controls.SetChildIndex(this.PanelTitle, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.gvArrivalNo)).EndInit();
-            this.PanelTitle.ResumeLayout(false);
-            this.PanelTitle.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private Shinyoh_Controls.SGridView gvArrivalNo;
-        private System.Windows.Forms.Panel PanelTitle;
+        private System.Windows.Forms.Panel panel1;
         private Shinyoh_Controls.SLabel sLabel4;
         private Shinyoh_Controls.SLabel sLabel2;
         private Shinyoh_Controls.SLabel sLabel1;

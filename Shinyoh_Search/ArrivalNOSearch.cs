@@ -100,7 +100,7 @@ namespace Shinyoh_Search
             ane.KanriNOTo = txtControlNoTo.Text;
             ane.ShouhinCDFrom = sbHinbanCDFrom.Text;
             ane.ShouhinCDTo = sbHinbanCDTo.Text;
-            if(ErrorCheck(PanelTitle))           //Task no. 147 - tza
+            if(ErrorCheck(panel1))           //Task no. 147 - tza
             {
                 DataTable dt = ab.ArrivalNO_Search(ane);
                 if (dt.Columns.Contains("CurrentDay"))
