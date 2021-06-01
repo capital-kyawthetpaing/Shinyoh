@@ -188,10 +188,10 @@ namespace IdouNyuuryoku
                 cboMode.NextControlName = txtIdouNO.Name;
                 txtIdouNO.Focus();
             }
-            for (int i = 0; i < gv_1.RowCount; i++)
-            {
-                gv_1.Rows.Remove(gv_1.Rows[0]);
-            }
+            //for (int i = 0; i < gv_1.RowCount; i++)
+            //{
+            //    gv_1.Rows.Remove(gv_1.Rows[0]);
+            //}
             gv_1.Memory_Row_Count = 0;
         }
         private void Load_Setting()
@@ -315,7 +315,8 @@ namespace IdouNyuuryoku
                     if (!txtIdoukubun.Text.Equals(OldIdoukubun))
                     {
                         F8_dt1.Rows.Clear();
-                        gv_1.DataSource = F8_dt1;
+                        DataTable dtClear = CreateTable_Detail();
+                        gv_1.DataSource = dtClear;
                     }
                     OldIdoukubun = txtIdoukubun.Text;
                 }
@@ -935,6 +936,26 @@ namespace IdouNyuuryoku
 
             string detail_XML = cf.DataTableToXml(F8_dt1);
             return (header_XML, detail_XML);
+        }
+        private DataTable CreateTable_Detail()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ShouhinCD", typeof(string));
+            dt.Columns.Add("HinbanCD", typeof(string));
+            dt.Columns.Add("ShouhinName", typeof(string));
+            dt.Columns.Add("ColorRyakuName", typeof(string));
+            dt.Columns.Add("ColorNO", typeof(string));
+            dt.Columns.Add("SizeNO", typeof(string));
+            dt.Columns.Add("KanriNO", typeof(string));
+            dt.Columns.Add("IdouSuu", typeof(string));
+
+            dt.Columns.Add("GenkaTanka", typeof(string));
+            dt.Columns.Add("GenkaKingaku", typeof(string));
+            dt.Columns.Add("IdouMeisaiTekiyou", typeof(string));
+            dt.Columns.Add("IdouNO", typeof(string));
+            dt.Columns.Add("IdouGyouNO", typeof(string));
+            dt.AcceptChanges();
+            return dt;
         }
         public void Create_Datatable_Column(DataTable create_dt)
         {
