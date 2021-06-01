@@ -234,8 +234,8 @@ BEGIN
             TaniCD,GenkaTanka,GenkaKingaku,IdouMeisaiTekiyou,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
 
             select h.IdouNO
-                  ,(select MAX(IdouGyouNO) from D_IdouMeisai Where IdouNO = h.IdouNO group by IdouNO) + ROW_NUMBER() OVER(ORDER BY (SELECT 1)) AS IdouGyouNO
-                  ,(select MAX(IdouGyouNO) from D_IdouMeisai Where IdouNO = h.IdouNO group by IdouNO) + ROW_NUMBER() OVER(ORDER BY (SELECT 1)) AS IdouGyouNO
+                  ,ISNULL((select MAX(IdouGyouNO) from D_IdouMeisai Where IdouNO = h.IdouNO group by IdouNO),0) + ROW_NUMBER() OVER(ORDER BY (SELECT 1)) AS IdouGyouNO
+                  ,ISNULL((select MAX(IdouGyouNO) from D_IdouMeisai Where IdouNO = h.IdouNO group by IdouNO),0) + ROW_NUMBER() OVER(ORDER BY (SELECT 1)) AS IdouGyouNO
                   ,d.KanriNO,FS.BrandCD,d.ShouhinCD,d.ShouhinName,FS.JANCD,d.ColorRyakuName,d.ColorNO,d.SizeNO,d.IdouSuu,
                    FS.TaniCD,d.GenkaTanka,d.GenkaKingaku,d.IdouMeisaiTekiyou,h.InsertOperator,@currentDate,h.UpdateOperator,@currentDate
             from #Temp_Header h, #Temp_Detail d

@@ -88,6 +88,7 @@
             this.colIdouMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIdouGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colOldIdouSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -257,7 +258,8 @@
             this.colGenkaKingaku,
             this.colIdouMeisaiTekiyou,
             this.colIdouNO,
-            this.colIdouGyouNO});
+            this.colIdouGyouNO,
+            this.colOldIdouSuu});
             this.gv_1.IsErrorOccurs = false;
             this.gv_1.ISRowColumn = null;
             this.gv_1.Location = new System.Drawing.Point(49, 225);
@@ -1099,6 +1101,13 @@
             this.colIdouGyouNO.HeaderText = "IdouGyouNO";
             this.colIdouGyouNO.Name = "colIdouGyouNO";
             this.colIdouGyouNO.Visible = false;
+            // colOldIdouSuu
+            // 
+            this.colOldIdouSuu.DataPropertyName = "OldIdouSuu";
+            this.colIdouSuu.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colOldIdouSuu.HeaderText = "OldIdouSuu";
+            this.colOldIdouSuu.Name = "colOldIdouSuu";
+            this.colOldIdouSuu.Visible = false;
             // 
             // IdouNyuuryoku
             // 
@@ -1180,6 +1189,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdouMeisaiTekiyou;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdouNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIdouGyouNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colOldIdouSuu;
     }
 }
 

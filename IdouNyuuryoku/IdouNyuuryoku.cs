@@ -678,9 +678,10 @@ namespace IdouNyuuryoku
                         DataTable dt = Idou_BL.IdouNyuuryoku_Select_Check(ShouhinCD, soukoCD, "Sum_Com", KanriNO);
                         if (dt.Rows.Count > 0)
                         {
-                            if (IdouSuu > Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]))
+                            int genzaiko = Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]) + (cboMode.SelectedValue.Equals("2") ? Convert.ToInt32(gv_1.Rows[row].Cells["colOldIdouSuu"].Value) : 0);
+                            if (IdouSuu > genzaiko)
                             {
-                                if (base_bl.ShowMessage("Q326", IdouSuu.ToString(), Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]).ToString()) != DialogResult.Yes)
+                                if (base_bl.ShowMessage("Q326", IdouSuu.ToString(), genzaiko.ToString()) != DialogResult.Yes)
                                 {
                                     bl_error = true;
                                     return bl_error;
@@ -954,6 +955,7 @@ namespace IdouNyuuryoku
             dt.Columns.Add("IdouMeisaiTekiyou", typeof(string));
             dt.Columns.Add("IdouNO", typeof(string));
             dt.Columns.Add("IdouGyouNO", typeof(string));
+            dt.Columns.Add("OldIdouSuu", typeof(string));
             dt.AcceptChanges();
             return dt;
         }
