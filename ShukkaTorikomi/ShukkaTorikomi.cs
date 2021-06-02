@@ -293,7 +293,9 @@ namespace ShukkaTorikomi
                                         return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
                                         bbl.ShowMessage("I002");
                                         rdo_Sakujo.Checked = true;
-                                        txtDenpyouNO.Text = string.Empty;
+                                        txtDate1.Clear();
+                                        txtDate2.Clear();
+                                        txtDenpyouNO.Clear();
                                         txtDenpyouNO.Focus();
                                         DataGridviewBind();
                                     }
