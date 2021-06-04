@@ -44,7 +44,7 @@ namespace MasterTouroku_MultiPorpose
             SetButton(ButtonType.BType.Empty, F8, "", false);
             SetButton(ButtonType.BType.Empty, F10, "", false);
             SetButton(ButtonType.BType.Empty, F11, "", false);
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
             base_Entity = _GetBaseData();
             txtID.Focus();
             txtID.ChangeDate = txtKEY;

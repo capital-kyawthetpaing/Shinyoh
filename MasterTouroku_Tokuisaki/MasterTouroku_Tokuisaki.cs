@@ -54,7 +54,7 @@ namespace MasterTouroku_Tokuisaki {
             SetButton(ButtonType.BType.Import, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             txt_Tokuisaki.Focus();
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
             base_Entity = _GetBaseData();
 
             txtStaffCharge.ChangeDate = txtChange_Date;

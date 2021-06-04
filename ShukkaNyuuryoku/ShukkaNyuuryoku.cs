@@ -114,7 +114,7 @@ namespace ShukkaNyuuryoku {
             col.Insert(col.Count, newCol2);
             newCol2.DisplayIndex = col.Count - 1;
 
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
 
         }
         public override void FunctionProcess(string tagID)

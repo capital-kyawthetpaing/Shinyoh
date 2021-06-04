@@ -85,7 +85,7 @@ namespace HacchuuNyuuryoku
             gv_HacchuuNyuuryoku.SetHiraganaColumn("colHacchuuMeisaiTekiyou");
             gv_HacchuuNyuuryoku.SetNumberColumn("colHacchuuSuu");
             gv_HacchuuNyuuryoku.ClearSelection();
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
         }
 
         private void ChangeMode(Mode mode)

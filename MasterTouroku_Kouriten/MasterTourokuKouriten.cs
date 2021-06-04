@@ -59,7 +59,7 @@ namespace MasterTouroku_Kouriten
             SetButton(ButtonType.BType.Import, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
             txtTokuisakiCD.Focus();
 
             base_Entity = _GetBaseData();

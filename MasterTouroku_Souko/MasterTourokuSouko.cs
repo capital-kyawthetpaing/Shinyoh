@@ -45,7 +45,7 @@ namespace MasterTouroku_Souko
             SetButton(ButtonType.BType.Empty, F8, "",false);
             SetButton(ButtonType.BType.Empty, F10, "",false);
             SetButton(ButtonType.BType.Empty, F11, "",false);
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
             txtSouko.Focus();
             base_Entity = _GetBaseData();
 

@@ -49,7 +49,7 @@ namespace MasterTouroku_Staff
             SetButton(ButtonType.BType.Empty, F10, "", false);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
 
             txt_Staff.Focus();
             base_Entity = _GetBaseData();
