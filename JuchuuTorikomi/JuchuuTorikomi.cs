@@ -119,9 +119,12 @@ namespace JuchuuTorikomi
                 gvJuchuuTorikomi.ActionType = "F10";
                 if (rdo_Delete.Checked == true)
                 {
-                    if (ErrorCheck(PanelDetail))
-                        GridviewBind();
+                    txtDenpyouNO.E102Check(false);
+                    txtDenpyouNO.E160Check(false, "JuchuuTorikomi", txtDenpyouNO, null);
+                    txtDenpyouNO.E265Check(false, "JuchuuTorikomi", txtDenpyouNO);
                 }
+                if (ErrorCheck(PanelDetail))
+                    GridviewBind();
                 gvJuchuuTorikomi.ActionType = string.Empty;
             }
             if (tagID == "12")
@@ -214,12 +217,12 @@ namespace JuchuuTorikomi
                                 if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
                                 {
                                     bbl.ShowMessage("I002");
+                                    rdo_Delete.Checked = true;
                                     txtDate1.Clear();
                                     txtDate2.Clear();
                                     txtDenpyouNO.Clear();
-                                    dtMain.Clear();
-                                    gvJuchuuTorikomi.ClearSelection();
-                                    rdo_Delete.Focus();
+                                    txtDenpyouNO.Focus();
+                                    GridviewBind();                                  
                                 }
                                 else
                                 {
