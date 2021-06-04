@@ -463,7 +463,7 @@ ON D_ChakuniYotei.ChakuniYoteiNO=C.ChakuniYoteiNO
 
 --Update D_HacchuuMeisai
 Update D_HacchuuMeisai
-Set ChakuniKanryouKBN=Case When D_HacchuuMeisai.ChakuniYoteiZumiSuu<=D_HacchuuMeisai.ChakuniZumiSuu
+Set ChakuniKanryouKBN=Case When D_HacchuuMeisai.HacchuuSuu<=D_HacchuuMeisai.ChakuniZumiSuu
 Then 1
 --2021/05/11 Y.Nishikawa CHG 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）↓↓
 --When  TD.SiireKanryouKBN='True'
