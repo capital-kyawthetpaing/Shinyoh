@@ -175,6 +175,7 @@ namespace Shinyoh
                         }
                         break;
                     case ButtonType.BType.New:
+
                         SetMode(btn,"1");
                         break;
                     case ButtonType.BType.Update:
@@ -350,15 +351,43 @@ namespace Shinyoh
                     break;
                 case ButtonType.BType.New:
                     CheckButton(programEntity.Insertable, buttonText, button);
+
+                    if (programEntity.Insertable.Equals("0"))
+                    {
+                        DataTable dt = (DataTable)cboMode.DataSource;
+                        DataRow row = dt.Select("ID='1'").SingleOrDefault();
+                        dt.Rows.Remove(row);
+                    }
                     break;
                 case ButtonType.BType.Update:
                     CheckButton(programEntity.Updatable, buttonText, button);
+
+                    if (programEntity.Updatable.Equals("0"))
+                    {
+                        DataTable dt = (DataTable)cboMode.DataSource;
+                        DataRow row = dt.Select("ID='2'").SingleOrDefault();
+                        dt.Rows.Remove(row);
+                    }
                     break;
                 case ButtonType.BType.Delete:
                     CheckButton(programEntity.Deletable, buttonText, button);
+
+                    if (programEntity.Deletable.Equals("0"))
+                    {
+                        DataTable dt = (DataTable)cboMode.DataSource;
+                        DataRow row = dt.Select("ID='3'").SingleOrDefault();
+                        dt.Rows.Remove(row);
+                    }
                     break;
                 case ButtonType.BType.Inquiry:
                     CheckButton(programEntity.Inquirable, buttonText, button);
+
+                    if (programEntity.Inquirable.Equals("0"))
+                    {
+                        DataTable dt = (DataTable)cboMode.DataSource;
+                        DataRow row = dt.Select("ID='4'").SingleOrDefault();
+                        dt.Rows.Remove(row);
+                    }
                     break;
                 case ButtonType.BType.Print:
                     CheckButton(programEntity.Printable, buttonText, button);
@@ -527,18 +556,38 @@ namespace Shinyoh
 
             if (cboMode.SelectedValue.ToString().Equals("1"))
             {
+                if(programEntity.Insertable.Equals("0"))
+                {
+                    //権限なし
+                    return;
+                }
                 FunctionProcess("2");
             }
             else if (cboMode.SelectedValue.ToString().Equals("2"))
             {
+                if (programEntity.Updatable.Equals("0"))
+                {
+                    //権限なし
+                    return;
+                }
                 FunctionProcess("3");
             }
             else if (cboMode.SelectedValue.ToString().Equals("3"))
             {
+                if (programEntity.Deletable.Equals("0"))
+                {
+                    //権限なし
+                    return;
+                }
                 FunctionProcess("4");
             }
             else if (cboMode.SelectedValue.ToString().Equals("4"))
             {
+                if (programEntity.Inquirable.Equals("0"))
+                {
+                    //権限なし
+                    return;
+                }
                 FunctionProcess("5");
             }
             if (ismode)
