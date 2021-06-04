@@ -191,7 +191,7 @@ namespace JuchuuList {
                     dt.Columns["Char1"].ColumnName = "ブランド";
                     dt.Columns["Exhibition"].ColumnName = "展示会";
                     dt.Columns["JANCD"].ColumnName = "JANコード";
-                    dt.Columns["ShouhinCD"].ColumnName = "商品";
+                    dt.Columns["HinbanCD"].ColumnName = "品番";   //TaskNo564 HET
                     dt.Columns["ShouhinName"].ColumnName = "品名";
                     dt.Columns["ColorRyakuName"].ColumnName = "カラー";
                     dt.Columns["SizeNO"].ColumnName = "サイズ";
