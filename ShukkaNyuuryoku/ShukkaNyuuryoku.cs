@@ -1517,6 +1517,8 @@ namespace ShukkaNyuuryoku {
                 current_gv.Columns[18].Visible = false;
                 //gvShukka1.ClearSelection();
 
+                SetVisibleForGridColumns();
+
                 DataTable dt_temp = dt.Copy();
                 gvdt1 = dt_temp;
 
