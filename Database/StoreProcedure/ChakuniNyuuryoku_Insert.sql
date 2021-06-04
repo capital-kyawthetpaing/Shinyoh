@@ -1,17 +1,14 @@
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Insert]    Script Date: 2021/05/19 15:30:20 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Insert]    Script Date: 2021/06/04 15:27:18 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ChakuniNyuuryoku_Insert%' and type like '%P%')
 DROP PROCEDURE [dbo].[ChakuniNyuuryoku_Insert]
 GO
 
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Insert]    Script Date: 2021/05/19 15:30:20 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Insert]    Script Date: 2021/06/04 15:27:18 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
-
-
 
 -- =============================================
 -- Author:		Shwe Eain San
@@ -512,7 +509,7 @@ ON DCYH.ChakuniYoteiNO = DCYM.ChakuniYoteiNO
 
 Update DHAM
 SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu + TempD.ChakuniSuu,
-	ChakuniKanryouKBN = Case When DHAM.ChakuniYoteiZumiSuu <= (DHAM.ChakuniZumiSuu + TempD.ChakuniSuu) Then 1 
+	ChakuniKanryouKBN = Case When DHAM.HacchuuSuu <= (DHAM.ChakuniZumiSuu + TempD.ChakuniSuu) Then 1 
 	                         --2021/05/11 Y.Nishikawa CHG 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）↓↓
 	                         --When TempD.SiireKanryouKBN = 'True' Then 1
 							 When TempD.SiireKanryouKBN = '1' Then 1

@@ -1,15 +1,14 @@
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/05/19 15:34:51 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/06/04 15:29:58 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ChakuniNyuuryoku_Delete%' and type like '%P%')
 DROP PROCEDURE [dbo].[ChakuniNyuuryoku_Delete]
 GO
 
-/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/05/19 15:34:51 ******/
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_Delete]    Script Date: 2021/06/04 15:29:58 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 -- =============================================
 -- Author:		<Author,,Name>
@@ -266,7 +265,7 @@ declare @Unique as uniqueidentifier = NewID()
         --Update D_HacchuuMeisai
         Update DHAM
         SET ChakuniZumiSuu = DHAM.ChakuniZumiSuu - DCYM.ChakuniSuu,
-		    ChakuniKanryouKBN = Case When DHAM.ChakuniYoteiZumiSuu <= (DHAM.ChakuniZumiSuu - DCYM.ChakuniSuu) Then 1 Else 0 End,
+		    ChakuniKanryouKBN = Case When DHAM.HacchuuSuu <= (DHAM.ChakuniZumiSuu - DCYM.ChakuniSuu) Then 1 Else 0 End,
             ChakuniYoteiKanryouKBN = Case When DHAM.HacchuuSuu <= DHAM.ChakuniYoteiZumiSuu Then 1 Else 0 End,
 			UpdateOperator = @OperatorCD,
         	UpdateDateTime = @currentDate
