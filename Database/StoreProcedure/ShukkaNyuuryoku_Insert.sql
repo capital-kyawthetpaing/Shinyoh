@@ -167,7 +167,7 @@ BEGIN
 					ShukkaMeisaiTekiyou		varchar(80) COLLATE DATABASE_DEFAULT,		--Detail				
 					ShukkaSiziNOGyouNO		varchar(25) COLLATE DATABASE_DEFAULT,
 					JuchuuNOGyouNO			varchar(25) COLLATE DATABASE_DEFAULT,
-					DenpyouDate				date,
+					DenpyouDate				varchar(10) COLLATE DATABASE_DEFAULT,
 					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
 					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
 				)
@@ -210,7 +210,7 @@ BEGIN
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
 					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
-					DenpyouDate				date 'DenpyouDate',
+					DenpyouDate				varchar(10) 'DenpyouDate',
 					ShouhinCD				varchar(50)'ShouhinCD',
 					SoukoCD					varchar(10)'SoukoCD'
 					)
@@ -315,7 +315,7 @@ BEGIN
 				ShukkaSuu,TaniCD,ShukkaMeisaiTekiyou,SoukoCD,UriageKanryouKBN,UriageZumiSuu,ShukkaSiziNO,ShukkaSiziGyouNO,JuchuuNO,JuchuuGyouNO,
 				InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime) 
 
-			select @ShukkaNO,@GyouNO,@GyouNO,d.DenpyouDate,FS.BrandCD,d.ShouhinCD,d.ShouhinName,NULLIF(d.JANCD,''),d.ColorRyakuName,d.ColorNO,d.SizeNO,
+			select @ShukkaNO,@GyouNO,@GyouNO,convert(date,d.DenpyouDate),FS.BrandCD,d.ShouhinCD,d.ShouhinName,NULLIF(d.JANCD,''),d.ColorRyakuName,d.ColorNO,d.SizeNO,
 					d.ShukkaSuu,FS.TaniCD,NULLIF(d.ShukkaMeisaiTekiyou,''),d.SoukoCD,0,0,LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1),
 					RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO)),
 					DSM.JuchuuNO,DSM.JuchuuGyouNO,m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate
@@ -641,7 +641,7 @@ BEGIN
 				(HistoryGuid,ShukkaNO,ShukkaGyouNO,GyouHyouziJun,ShoriKBN,DenpyouDate,BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO,ShukkaSuu,TaniCD,ShukkaMeisaiTekiyou, SoukoCD,
 				 UriageKanryouKBN,UriageZumiSuu,ShukkaSiziNO,ShukkaSiziGyouNO,JuchuuNO,JuchuuGyouNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime,HistoryOperator,HistoryDateTime)
 
-			select  @Unique,DS.ShukkaNO,ShukkaGyouNO,GyouHyouziJun,10,DenpyouDate,BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO,ShukkaSuu,TaniCD,ShukkaMeisaiTekiyou,SoukoCD,
+			select  @Unique,DS.ShukkaNO,ShukkaGyouNO,GyouHyouziJun,10,convert(date,DenpyouDate),BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO,ShukkaSuu,TaniCD,ShukkaMeisaiTekiyou,SoukoCD,
 					UriageKanryouKBN,UriageZumiSuu,DS.ShukkaSiziNO,DS.ShukkaSiziGyouNO,JuchuuNO,JuchuuGyouNO,DS.InsertOperator,InsertDateTime,DS.UpdateOperator,UpdateDateTime,m.InsertOperator,@currentDate
 				from D_ShukkaMeisai DS,#Temp_Main m where DS.ShukkaNO=@ShukkaNO
 

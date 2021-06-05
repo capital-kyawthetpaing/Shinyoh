@@ -92,7 +92,7 @@ BEGIN
                     DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM1.ShukkaSiziSuu - DSM1.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,
                     DSM.ShukkaSuu,NULL as Kanryou,DSM.ShukkaMeisaiTekiyou,
                     (DSM.ShukkaSiziNO +'-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,DSM.ShukkaSiziNO,
-                    DSM.DenpyouDate,(DSM1.JuchuuNO +'-'+ cast(DSM1.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM1.SoukoCD,F.ShouhinCD,M_Message.MessageID,DSM.UriageKanryouKBN                            
+                    convert(varchar(10), DSM.DenpyouDate, 111) as DenpyouDate,(DSM1.JuchuuNO +'-'+ cast(DSM1.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM1.SoukoCD,F.ShouhinCD,M_Message.MessageID,DSM.UriageKanryouKBN                            
             from D_Shukka DS 
             inner join D_ShukkaMeisai DSM on DSM.ShukkaNO=DS.ShukkaNO
             left outer join D_ShukkaSiziMeisai DSM1 on DSM1.ShukkaSiziNO=DSM.ShukkaSiziNO and DSM1.ShukkaSiziGyouNO = DSM.ShukkaSiziGyouNO
@@ -117,7 +117,7 @@ BEGIN
                     DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM1.ShukkaSiziSuu - DSM1.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,
                     DSM.ShukkaSuu,NULL as Kanryou,DSM.ShukkaMeisaiTekiyou,
                     (DSM.ShukkaSiziNO +'-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,DSM.ShukkaSiziNO,
-                    DSM.DenpyouDate,(DSM1.JuchuuNO +'-'+ cast(DSM1.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM1.SoukoCD,F.ShouhinCD,M_Message.MessageID,DSM.UriageKanryouKBN
+                    convert(varchar(10), DSM.DenpyouDate, 111) as DenpyouDate,(DSM1.JuchuuNO +'-'+ cast(DSM1.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM1.SoukoCD,F.ShouhinCD,M_Message.MessageID,DSM.UriageKanryouKBN
                     ,DSM.ShukkaGyouNO
                     ,DSM.ShukkaSuu AS OldShukkaSuu                            
             from D_Shukka DS 
