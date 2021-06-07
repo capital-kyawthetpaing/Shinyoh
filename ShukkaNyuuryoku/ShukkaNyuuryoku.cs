@@ -232,7 +232,12 @@ namespace ShukkaNyuuryoku {
                 Konkai_Price(F8_dt1);
                 Juchuu_Price(F8_dt1);
                 if (return_Bl == "true")
-                    bbl.ShowMessage("I101");
+                {
+                    if (cboMode.SelectedValue.ToString().Equals("3"))
+                        bbl.ShowMessage("I102");
+                    else
+                        bbl.ShowMessage("I101");
+                }
                 gvdt1.Clear();
                 F8_dt1.Clear();
             }
