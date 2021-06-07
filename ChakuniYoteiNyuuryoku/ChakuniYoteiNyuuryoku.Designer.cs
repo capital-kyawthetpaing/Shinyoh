@@ -159,7 +159,7 @@
             this.PanelDetail.Controls.Add(this.sLabel6);
             this.PanelDetail.Location = new System.Drawing.Point(3, 78);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
+            this.PanelDetail.Size = new System.Drawing.Size(1710, 775);
             this.PanelDetail.TabIndex = 0;
             // 
             // label7
