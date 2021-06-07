@@ -291,6 +291,7 @@ namespace HikiateHenkouShoukai
                     txtName.Enabled = true;
                     txtAddress.Enabled = true;
                     txtChakuniYoteiNO.Enabled = true;
+                    this.txtSoukoCD.NextControlName = txtChakuniYoteiNO.Name;
                     chkType1.Enabled = true;
                     chkType2.Enabled = true;
                     F7.Enabled = false;
@@ -320,6 +321,7 @@ namespace HikiateHenkouShoukai
                     txtName.Enabled = false;
                     txtAddress.Enabled = false;
                     txtChakuniYoteiNO.Enabled = true;
+                    this.txtSoukoCD.NextControlName = txtChakuniYoteiNO.Name;
                     chkType1.Enabled = true;
                     chkType2.Enabled = true;
                     F7.Enabled = false;
@@ -349,6 +351,7 @@ namespace HikiateHenkouShoukai
                     txtName.Enabled = false;
                     txtAddress.Enabled = false;
                     txtChakuniYoteiNO.Enabled = false;
+                    this.txtSoukoCD.NextControlName = txtKanriNO.Name;
                     chkType1.Enabled = false;
                     chkType2.Enabled = false;
                     F7.Enabled = true;
