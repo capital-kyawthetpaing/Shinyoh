@@ -70,10 +70,12 @@ namespace MasterTouroku_Tokuisaki {
         private void ChangeMode(Mode mode)
         {
             Mode_Setting();
+            ErrorCheck();
+
             switch (mode)
             {
                 case Mode.New:
-                    ErrorCheck();
+                    //ErrorCheck();
                     txtChange_Date.E132Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E133Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
@@ -87,7 +89,7 @@ namespace MasterTouroku_Tokuisaki {
                     break;
 
                 case Mode.Update:
-                    ErrorCheck();
+                    //ErrorCheck();
                     txtChange_Date.E132Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
