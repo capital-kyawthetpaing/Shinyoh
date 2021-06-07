@@ -792,8 +792,8 @@ BEGIN
 					      AND ShukkaSiziGyouNO = @ShukkaSiziGyouNO_5
 						  AND @MeisaiShukkaSiziSuuZan_5 - @ShukkaSiziZumiSuu_5 > 0
 					 END
-					 --明細出荷指示残数≦受注詳細の出荷指示済数の場合
-					 ELSE
+					 --明細出荷指示残数≦受注詳細の出荷指示済数 かつ @MeisaiShukkaSiziSuuZan_5＞0 の場合
+					 ELSE IF(@MeisaiShukkaSiziSuuZan_5 <= @ShukkaSiziZumiSuu_5 AND @MeisaiShukkaSiziSuuZan_5 > 0)
 					 BEGIN
 					     --受注詳細の出荷指示済数で出荷指示詳細を作成
 					     INSERT INTO D_ShukkaSiziShousai
@@ -834,9 +834,13 @@ BEGIN
                           FROM D_ShukkaSiziMeisai
 					      WHERE ShukkaSiziNO = @ShukkaSiziNO_5
 					      AND ShukkaSiziGyouNO = @ShukkaSiziGyouNO_5
-						  AND @MeisaiShukkaSiziSuuZan_5 - @ShukkaSiziZumiSuu_5 > 0
 
 						  SET @ShukkaSiziZumiSuu_5 = @ShukkaSiziZumiSuu_5 - @MeisaiShukkaSiziSuuZan_5
+					 END
+					 --明細出荷指示残数＝受注詳細の出荷指示済数の場合
+					 ELSE
+					 BEGIN
+					     SELECT 1
 					 END
 				    
 				     FETCH NEXT FROM cursorShukkaSiziMeisai INTO @ShukkaSiziNO_5, @ShukkaSiziGyouNO_5, @MeisaiShukkaSiziSuuZan_5
@@ -1773,9 +1777,10 @@ BEGIN
                           FROM D_ShukkaSiziMeisai
 					      WHERE ShukkaSiziNO = @ShukkaSiziNO_31
 					      AND ShukkaSiziGyouNO = @ShukkaSiziGyouNO_31
+						  AND @MeisaiShukkaSiziSuuZan_31 - @ShukkaSiziZumiSuu_31 > 0
 					 END
-					 --明細出荷指示残数≦受注詳細の出荷指示済数の場合
-					 ELSE
+					 --明細出荷指示残数≦受注詳細の出荷指示済数 かつ @MeisaiShukkaSiziSuuZan_31＞0 の場合
+					 ELSE IF(@MeisaiShukkaSiziSuuZan_31 <= @ShukkaSiziZumiSuu_31 AND @MeisaiShukkaSiziSuuZan_31 > 0)
 					 BEGIN
 					     --受注詳細の出荷指示済数で出荷指示詳細を作成
 					     INSERT INTO D_ShukkaSiziShousai

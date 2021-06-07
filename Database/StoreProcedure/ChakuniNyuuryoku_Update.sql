@@ -10,8 +10,6 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
-
 -- =============================================
 -- Author:      <Author,,Name>
 -- Create date: <Create Date,,>
@@ -247,6 +245,16 @@ exec dbo.Fnc_Hikiate 5,@ChakuniNO,20,@Operator
     and D_ChakuniMeisai.ChakuniYoteiGyouNO=D_ChakuniYoteiMeisai.ChakuniYoteiGyouNO
     ;
 
+	Update D_ChakuniYoteiMeisai
+    SET ChakuniKanryouKBN=CASE WHEN D_ChakuniYoteiMeisai.ChakuniYoteiSuu - D_ChakuniYoteiMeisai.ChakuniZumiSuu>0 
+                               THEN 0 
+                               ElSE 1 END
+    From D_ChakuniMeisai  
+    Where D_ChakuniMeisai.ChakuniNO=@ChakuniNO
+    and D_ChakuniMeisai.ChakuniYoteiNO=D_ChakuniYoteiMeisai.ChakuniYoteiNO
+    and D_ChakuniMeisai.ChakuniYoteiGyouNO=D_ChakuniYoteiMeisai.ChakuniYoteiGyouNO
+    ;
+
     --Update D_HacchuuMeisai(for 修正前または削除)
     --Update D_HacchuuMeisai
     --SET ChakuniZumiSuu=CASE WHEN D_HacchuuMeisai.ChakuniZumiSuu- D_ChakuniMeisai.ChakuniSuu>0 THEN D_HacchuuMeisai.ChakuniZumiSuu - D_ChakuniMeisai.ChakuniSuu ElSE 0 END
@@ -259,6 +267,21 @@ exec dbo.Fnc_Hikiate 5,@ChakuniNO,20,@Operator
     --;
 	Update DHAM
     SET ChakuniZumiSuu=CASE WHEN DHAM.ChakuniZumiSuu- DCKM.ChakuniSuu>0 THEN DHAM.ChakuniZumiSuu - DCKM.ChakuniSuu ElSE 0 END
+    From D_HacchuuMeisai DHAM
+	Inner Join ( SELECT D_ChakuniMeisai.HacchuuNO
+				       ,D_ChakuniMeisai.HacchuuGyouNO
+					   ,SUM(D_ChakuniMeisai.ChakuniSuu) ChakuniSuu
+	             FROM D_ChakuniMeisai 
+                 Where D_ChakuniMeisai.ChakuniNO=@ChakuniNO
+				 Group By D_ChakuniMeisai.HacchuuNO
+				         ,D_ChakuniMeisai.HacchuuGyouNO
+			   ) DCKM
+	ON DCKM.HacchuuNO=DHAM.HacchuuNO
+    and DCKM.HacchuuGyouNO=DHAM.HacchuuGyouNO
+    ;
+
+	Update DHAM
+    SET ChakuniKanryouKBN=CASE WHEN DHAM.ChakuniYoteiZumiSuu- DHAM.ChakuniZumiSuu>0 THEN 0 ElSE 1 END
     From D_HacchuuMeisai DHAM
 	Inner Join ( SELECT D_ChakuniMeisai.HacchuuNO
 				       ,D_ChakuniMeisai.HacchuuGyouNO
