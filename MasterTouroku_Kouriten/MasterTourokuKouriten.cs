@@ -78,11 +78,11 @@ namespace MasterTouroku_Kouriten
         private void ChangeMode(Mode mode)
         {
             Mode_Setting();
-            
+            ErrorCheck();
+
             switch (mode)
             {
                 case Mode.New:
-                    ErrorCheck();
 
                     txtChangeDate.E132Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
                     txtChangeDate.E133Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate,null);
@@ -113,7 +113,6 @@ namespace MasterTouroku_Kouriten
                     break;
 
                 case Mode.Update:
-                    ErrorCheck();
 
                     txtChangeDate.E132Check(false, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, txtTokuisakiCD);
