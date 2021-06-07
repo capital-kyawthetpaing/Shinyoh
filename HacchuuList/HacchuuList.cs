@@ -319,8 +319,10 @@ namespace HacchuuList
             obj.HacchuuNO2 = txtHacchuuNO2.Text;
             obj.HacchuuDate1 = txtHacchuuDate1.Text;
             obj.HacchuuDate2 = txtHacchuuDate2.Text;
-            obj.Hacchuu_UpdateDate1 = string.IsNullOrEmpty(txtUpdate_HacchuuDate1.Text) ? baseEntity.LoginDate : txtUpdate_HacchuuDate1.Text;
-            obj.Hacchuu_UpdateDate2 = string.IsNullOrEmpty(txtUpdate_HacchuuDate2.Text) ? baseEntity.LoginDate : txtUpdate_HacchuuDate2.Text;
+            //obj.Hacchuu_UpdateDate1 = string.IsNullOrEmpty(txtUpdate_HacchuuDate1.Text) ? baseEntity.LoginDate : txtUpdate_HacchuuDate1.Text;
+            //obj.Hacchuu_UpdateDate2 = string.IsNullOrEmpty(txtUpdate_HacchuuDate2.Text) ? baseEntity.LoginDate : txtUpdate_HacchuuDate2.Text;
+            obj.Hacchuu_UpdateDate1 = txtUpdate_HacchuuDate1.Text;    //TaskNo575 HET
+            obj.Hacchuu_UpdateDate2 = txtUpdate_HacchuuDate2.Text;
             obj.StaffCD = txtStaffCD.Text;
             obj.BrandCD = txtBrand.Text;
             obj.Year = txtYear.Text;

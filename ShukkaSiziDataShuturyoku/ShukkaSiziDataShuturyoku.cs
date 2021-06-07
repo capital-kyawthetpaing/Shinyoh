@@ -202,8 +202,10 @@ namespace ShukkaSiziDataShuturyoku {
             obj.ShukkaNo2 = txtShukkaNo2.Text;
             obj.ShukkaDate1 = txtShukkaDate1.Text;
             obj.ShukkaDate2 = txtShukkaDate2.Text;
-            obj.InputDate1 = string.IsNullOrEmpty(txtInputDate1.Text) ? baseEntity.LoginDate : txtInputDate1.Text;
-            obj.InputDate2 = string.IsNullOrEmpty(txtInputDate2.Text) ? baseEntity.LoginDate : txtInputDate2.Text;
+            //obj.InputDate1 = string.IsNullOrEmpty(txtInputDate1.Text) ? baseEntity.LoginDate : txtInputDate1.Text;
+            //obj.InputDate2 = string.IsNullOrEmpty(txtInputDate2.Text) ? baseEntity.LoginDate : txtInputDate2.Text;
+            obj.InputDate1 = txtInputDate1.Text;   //TaskNo575 HET
+            obj.InputDate2 = txtInputDate2.Text;
             obj.BrandCD = txtBrand.Text;
             obj.Year = txtYear.Text;
             obj.SS = chk_SS.Checked == true ? "1" : "0";
