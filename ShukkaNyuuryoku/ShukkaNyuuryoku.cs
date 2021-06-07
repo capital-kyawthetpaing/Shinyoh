@@ -351,10 +351,11 @@ namespace ShukkaNyuuryoku {
         private void ChangeMode(Mode mode)
         {
             Mode_Setting();
+            ErrorCheck();
+
             switch (mode)
             {
                 case Mode.New:
-                    ErrorCheck();
                     txtShukkaNo.E102Check(false);
                     txtShukkaNo.E133Check(false, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     //txtShukkaNo.E160Check(false, "ShukkaNyuuryoku", txtShukkaNo, null);
@@ -375,7 +376,6 @@ namespace ShukkaNyuuryoku {
                     break;
 
                 case Mode.Update:
-                    ErrorCheck();
                     txtShukkaNo.E102Check(true);
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     //txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
@@ -392,7 +392,6 @@ namespace ShukkaNyuuryoku {
                     kouritenDetail = new KouritenDetail();
                     break;
                 case Mode.Delete:
-                    ErrorCheck();
                     txtShukkaNo.E102Check(true);
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
                     //txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
