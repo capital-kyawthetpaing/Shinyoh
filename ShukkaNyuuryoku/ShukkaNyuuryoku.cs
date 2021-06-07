@@ -94,25 +94,25 @@ namespace ShukkaNyuuryoku {
             current_gv.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             txtKouriten.TxtBox = txtTokuisaki;
 
-            var col = current_gv.Columns;
+            //var col = current_gv.Columns;
 
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            DataGridViewTextBoxColumn newCol = new DataGridViewTextBoxColumn();
-            newCol.Name = "ShukkaGyouNO";
-            newCol.DataPropertyName = "ShukkaGyouNO";
-            dataGridViewCellStyle11.Format = "NO";
-            newCol.DefaultCellStyle = dataGridViewCellStyle11;
-            newCol.Visible = false;
-            col.Insert(col.Count, newCol);
-            newCol.DisplayIndex = col.Count - 1;
+            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            //DataGridViewTextBoxColumn newCol = new DataGridViewTextBoxColumn();
+            //newCol.Name = "ShukkaGyouNO";
+            //newCol.DataPropertyName = "ShukkaGyouNO";
+            //dataGridViewCellStyle11.Format = "NO";
+            //newCol.DefaultCellStyle = dataGridViewCellStyle11;
+            //newCol.Visible = false;
+            //col.Insert(col.Count, newCol);
+            //newCol.DisplayIndex = col.Count - 1;
 
-            DataGridViewTextBoxColumn newCol2 = new DataGridViewTextBoxColumn();
-            newCol2.Name = "OldShukkasuu";
-            newCol2.DataPropertyName = "OldShukkasuu";
-            newCol2.DefaultCellStyle = dataGridViewCellStyle11;
-            newCol2.Visible = false;
-            col.Insert(col.Count, newCol2);
-            newCol2.DisplayIndex = col.Count - 1;
+            //DataGridViewTextBoxColumn newCol2 = new DataGridViewTextBoxColumn();
+            //newCol2.Name = "OldShukkasuu";
+            //newCol2.DataPropertyName = "OldShukkasuu";
+            //newCol2.DefaultCellStyle = dataGridViewCellStyle11;
+            //newCol2.Visible = false;
+            //col.Insert(col.Count, newCol2);
+            //newCol2.DisplayIndex = col.Count - 1;
 
             ChangeMode(GetMode(Mode.New));
 
@@ -409,7 +409,7 @@ namespace ShukkaNyuuryoku {
                 case Mode.Inquiry:
                     txtShukkaNo.E102Check(true);
                     txtShukkaNo.E133Check(true, "ShukkaNyuuryoku", txtShukkaNo, null, null);
-                    txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
+                    //txtShukkaNo.E160Check(true, "ShukkaNyuuryoku", txtShukkaNo, null);
                     txtShukkaNo.E280Check(false, "ShukkaNyuuryoku", txtShukkaNo, null, null);
 
                     Control btnInquiry = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
@@ -571,8 +571,8 @@ namespace ShukkaNyuuryoku {
                     if (dt.Rows.Count > 0)
                     {
                         //dt.Columns.Remove("SoukoCD");
-                        dt.Columns.Remove("TokuisakiCD");
-                        dt.Columns.Remove("KouritenCD");
+                        //dt.Columns.Remove("TokuisakiCD");
+                        //dt.Columns.Remove("KouritenCD");
                         //dt.Columns.Remove("ShouhinCD");
                         //dt.Columns.Remove("DenpyouDate");
                         //dt.Columns.Remove("JuchuuNOGyouNO");
@@ -661,10 +661,7 @@ namespace ShukkaNyuuryoku {
                         dtHaita = gvdt1.Copy();
 
                         current_gv.DataSource = dtHaita;
-                        current_gv.Columns[12].Visible = false;
-                        current_gv.Columns[13].Visible = false;
-                        current_gv.Columns[14].Visible = false;
-                        current_gv.Columns[15].Visible = false;
+                        SetVisibleForGridColumns();
 
                         //if (dtHaita.Columns.Contains("ShukkaSiziNO"))
                         //    dtHaita.Columns.Remove("ShukkaSiziNO");
@@ -720,16 +717,16 @@ namespace ShukkaNyuuryoku {
                 {
                     current_gv.Columns["col_Konkai"].ReadOnly = true;
                     current_gv.Columns["col_Complete"].ReadOnly = true;
-                    if(current_gv.Columns.Contains("UriageKanryouKBN"))
-                    current_gv.Columns.Remove("UriageKanryouKBN");
+                    //if(current_gv.Columns.Contains("UriageKanryouKBN"))
+                    //    current_gv.Columns.Remove("UriageKanryouKBN");
 
                 }
                 else if (Main_dt.Rows[0]["UriageKanryouKBN"].ToString().Equals("0"))
                 {
                     current_gv.Columns["col_Konkai"].ReadOnly = false;
                     current_gv.Columns["col_Complete"].ReadOnly = false;
-                    if (current_gv.Columns.Contains("UriageKanryouKBN"))
-                        current_gv.Columns.Remove("UriageKanryouKBN");
+                    //if (current_gv.Columns.Contains("UriageKanryouKBN"))
+                    //    current_gv.Columns.Remove("UriageKanryouKBN");
                 }
             }
         }
@@ -947,8 +944,8 @@ namespace ShukkaNyuuryoku {
             string b = current_gv.Rows[row].Cells["col_Miryoku"].Value.ToString();
             
             string old = "";
-            if(current_gv.Columns.Contains("OldShukkasuu"))
-                old = cboMode.SelectedValue.ToString().Equals("2") ? current_gv.Rows[row].Cells["OldShukkasuu"].Value.ToString() : "0";
+            if(current_gv.Columns.Contains("colOldShukkasuu"))
+                old = cboMode.SelectedValue.ToString().Equals("2") ? current_gv.Rows[row].Cells["colOldShukkasuu"].Value.ToString() : "0";
 
             if (old == "")
                 old = "0";
@@ -1248,11 +1245,12 @@ namespace ShukkaNyuuryoku {
             dt.Columns.Add("Kanryou", typeof(int));
             dt.Columns.Add("ShukkaMeisaiTekiyou", typeof(string));
             dt.Columns.Add("ShukkaSiziNOGyouNO", typeof(string));
+            dt.Columns.Add("ShukkaSiziNO", typeof(string));
             dt.Columns.Add("DenpyouDate", typeof(string));
             dt.Columns.Add("JuchuuNOGyouNO", typeof(string));
             dt.Columns.Add("SoukoCD", typeof(string));
-            dt.Columns.Add("ShouhinCD", typeof(string));          
-            dt.Columns.Add("ShukkaSiziNO", typeof(string));
+            dt.Columns.Add("ShouhinCD", typeof(string));
+            dt.Columns.Add("UriageKanryouKBN", typeof(string));
             dt.Columns.Add("ShukkaGyouNO", typeof(int));
             dt.Columns.Add("OldShukkaSuu", typeof(string));
             //dt.Columns.Add("SoukoCD", typeof(string));
@@ -1324,13 +1322,14 @@ namespace ShukkaNyuuryoku {
         }
         private void SetVisibleForGridColumns()
         {
-            current_gv.Columns["DenpyouDate"].Visible = false;
-            current_gv.Columns["JuchuuNOGyouNO"].Visible = false;
-            current_gv.Columns["SoukoCD"].Visible = false;
-            current_gv.Columns["ShouhinCD"].Visible = false;
-            current_gv.Columns["OldShukkaSuu"].Visible = false;
-            if (current_gv.Columns.Contains("ShukkaSiziNO"))
-                current_gv.Columns["ShukkaSiziNO"].Visible = false;
+            current_gv.Columns["colDenpyouDate"].Visible = false;
+            current_gv.Columns["colJuchuuNOGyouNO"].Visible = false;
+            current_gv.Columns["colSoukoCD"].Visible = false;
+            current_gv.Columns["colShouhinCD"].Visible = false;
+            current_gv.Columns["colUriageKanryouKBN"].Visible = false;
+            current_gv.Columns["colOldShukkaSuu"].Visible = false;
+            if (current_gv.Columns.Contains("col_ShukkaSiziNO"))
+                current_gv.Columns["col_ShukkaSiziNO"].Visible = false;
         }
 
         private void ShukkaNo_KeyDown()
@@ -1511,11 +1510,11 @@ namespace ShukkaNyuuryoku {
                 //}
 
                 current_gv.DataSource = dt;
-                current_gv.Columns[13].Visible = false;
-                current_gv.Columns[14].Visible = false;
-                current_gv.Columns[15].Visible = false;
-                current_gv.Columns[16].Visible = false;
-                current_gv.Columns[18].Visible = false;
+                //current_gv.Columns[13].Visible = false;
+                //current_gv.Columns[14].Visible = false;
+                //current_gv.Columns[15].Visible = false;
+                //current_gv.Columns[16].Visible = false;
+                //current_gv.Columns[18].Visible = false;
                 //gvShukka1.ClearSelection();
 
                 SetVisibleForGridColumns();
