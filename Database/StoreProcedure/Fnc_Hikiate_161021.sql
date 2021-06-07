@@ -18,6 +18,7 @@ GO
 -- History    : 2021/04/19 Y.Nishikawa 新規登録時、引当元が無いのに引当在庫に引当数を更新している
 --            : 2021/05/19 Y.Nishikawa 1回目は受注詳細が無いので、未引当レコードが作成されない
 --            : 2021/05/19 Y.Nishikawa 分納時、未引当数分の受注に対して引当を行う
+--            : 2021/06/07 Y.Nishikawa 引当済未出荷指示の明細が存在する場合、その明細に足し込む
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_161021]
 	-- Add the parameters for the stored procedure here
@@ -101,34 +102,105 @@ BEGIN
 
 					set @maxJuchuuShousaiNo = isnull(@maxJuchuuShousaiNo,0)
 
-					insert into D_JuchuuShousai(JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,SoukoCD,ShouhinCD,
-						ShouhinName,JuchuuSuu,KanriNO,NyuukoDate,HikiateZumiSuu,MiHikiateSuu,
-						ShukkaSiziZumiSuu,ShukkaZumiSuu,UriageZumiSuu,HacchuuNO,HacchuuGyouNO,
-						InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
-					select @JuchuuNo,@JuchuuGyouNO,@maxJuchuuShousaiNo + 1,@SoukoCD,@ShouhinCD,
-						(select ShouhinName from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
-						@ChakuniYoteiSuu,@KanriNo,'',@ChakuniYoteiSuu,0,0,0,0,
-						(select HacchuuNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
-						(select HacchuuGyouNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
-						@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime
+					--2021/06/07 Y.Nishikawa ADD 引当済未出荷指示の明細が存在する場合、その明細に足し込む↓↓
+					--insert into D_JuchuuShousai(JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,SoukoCD,ShouhinCD,
+					--	ShouhinName,JuchuuSuu,KanriNO,NyuukoDate,HikiateZumiSuu,MiHikiateSuu,
+					--	ShukkaSiziZumiSuu,ShukkaZumiSuu,UriageZumiSuu,HacchuuNO,HacchuuGyouNO,
+					--	InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
+					--select @JuchuuNo,@JuchuuGyouNO,@maxJuchuuShousaiNo + 1,@SoukoCD,@ShouhinCD,
+					--	(select ShouhinName from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					--	@ChakuniYoteiSuu,@KanriNo,'',@ChakuniYoteiSuu,0,0,0,0,
+					--	(select HacchuuNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					--	(select HacchuuGyouNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					--	@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime
 
-					if @TotalJuchuuSuu > @ChakuniYoteiSuu
-						begin
-							--insert lastrow
-							insert into D_JuchuuShousai(JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,SoukoCD,ShouhinCD,
-								ShouhinName,JuchuuSuu,KanriNO,NyuukoDate,HikiateZumiSuu,MiHikiateSuu,
-								ShukkaSiziZumiSuu,ShukkaZumiSuu,UriageZumiSuu,HacchuuNO,HacchuuGyouNO,
-								InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
-							select @JuchuuNo,@JuchuuGyouNO,@maxJuchuuShousaiNo + 2,@SoukoCD,@ShouhinCD,
-								(select ShouhinName from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
-								@TotalJuchuuSuu - @ChakuniYoteiSuu,null,'',0,@TotalJuchuuSuu - @ChakuniYoteiSuu,0,0,0,
-								(select HacchuuNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
-								(select HacchuuGyouNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
-								@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime
-						end
+					--if @TotalJuchuuSuu > @ChakuniYoteiSuu
+					--	begin
+					--		--insert lastrow
+					--		insert into D_JuchuuShousai(JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,SoukoCD,ShouhinCD,
+					--			ShouhinName,JuchuuSuu,KanriNO,NyuukoDate,HikiateZumiSuu,MiHikiateSuu,
+					--			ShukkaSiziZumiSuu,ShukkaZumiSuu,UriageZumiSuu,HacchuuNO,HacchuuGyouNO,
+					--			InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
+					--		select @JuchuuNo,@JuchuuGyouNO,@maxJuchuuShousaiNo + 2,@SoukoCD,@ShouhinCD,
+					--			(select ShouhinName from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					--			@TotalJuchuuSuu - @ChakuniYoteiSuu,null,'',0,@TotalJuchuuSuu - @ChakuniYoteiSuu,0,0,0,
+					--			(select HacchuuNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					--			(select HacchuuGyouNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					--			@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime
+					--	end
+
+					IF EXISTS (SELECT *
+					           FROM D_JuchuuShousai
+							   WHERE JuchuuNO = @JuchuuNo
+							   AND JuchuuGyouNO = @JuchuuGyouNO
+							   AND HacchuuNO = @HacchuuNo
+							   AND HacchuuGyouNO = @HacchuuGyouNo
+							   AND SoukoCD = @SoukoCD
+							   AND ShouhinCD = @ShouhinCD
+							   AND KanriNO = @KanriNo
+							   AND NyuukoDate = '')
+					BEGIN 
+					    UPDATE D_JuchuuShousai
+						      SET JuchuuSuu = JuchuuSuu + @ChakuniYoteiSuu
+						         ,HikiateZumiSuu = HikiateZumiSuu + @ChakuniYoteiSuu
+						         ,UpdateOperator = @UpdateOperator
+						         ,UpdateDateTime = @UpdateDateTime
+						      WHERE JuchuuNO = @JuchuuNo
+							  AND JuchuuGyouNO = @JuchuuGyouNO
+							  AND HacchuuNO = @HacchuuNo
+							  AND HacchuuGyouNO = @HacchuuGyouNo
+							  AND SoukoCD = @SoukoCD
+							  AND ShouhinCD = @ShouhinCD
+							  AND KanriNO = @KanriNo
+							  AND NyuukoDate = ''
+
+					    if @TotalJuchuuSuu > @ChakuniYoteiSuu
+					    	begin
+					    		--insert lastrow
+					    		insert into D_JuchuuShousai(JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,SoukoCD,ShouhinCD,
+					    			ShouhinName,JuchuuSuu,KanriNO,NyuukoDate,HikiateZumiSuu,MiHikiateSuu,
+					    			ShukkaSiziZumiSuu,ShukkaZumiSuu,UriageZumiSuu,HacchuuNO,HacchuuGyouNO,
+					    			InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
+					    		select @JuchuuNo,@JuchuuGyouNO,@maxJuchuuShousaiNo + 1,@SoukoCD,@ShouhinCD,
+					    			(select ShouhinName from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					    			@TotalJuchuuSuu - @ChakuniYoteiSuu,null,'',0,@TotalJuchuuSuu - @ChakuniYoteiSuu,0,0,0,
+					    			(select HacchuuNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					    			(select HacchuuGyouNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					    			@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime
+					    	end
+					END
+					ELSE 
+					BEGIN
+					    insert into D_JuchuuShousai(JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,SoukoCD,ShouhinCD,
+					    	ShouhinName,JuchuuSuu,KanriNO,NyuukoDate,HikiateZumiSuu,MiHikiateSuu,
+					    	ShukkaSiziZumiSuu,ShukkaZumiSuu,UriageZumiSuu,HacchuuNO,HacchuuGyouNO,
+					    	InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
+					    select @JuchuuNo,@JuchuuGyouNO,@maxJuchuuShousaiNo + 1,@SoukoCD,@ShouhinCD,
+					    	(select ShouhinName from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					    	@ChakuniYoteiSuu,@KanriNo,'',@ChakuniYoteiSuu,0,0,0,0,
+					    	(select HacchuuNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					    	(select HacchuuGyouNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					    	@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime
+					    
+					    if @TotalJuchuuSuu > @ChakuniYoteiSuu
+					    	begin
+					    		--insert lastrow
+					    		insert into D_JuchuuShousai(JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,SoukoCD,ShouhinCD,
+					    			ShouhinName,JuchuuSuu,KanriNO,NyuukoDate,HikiateZumiSuu,MiHikiateSuu,
+					    			ShukkaSiziZumiSuu,ShukkaZumiSuu,UriageZumiSuu,HacchuuNO,HacchuuGyouNO,
+					    			InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime)
+					    		select @JuchuuNo,@JuchuuGyouNO,@maxJuchuuShousaiNo + 2,@SoukoCD,@ShouhinCD,
+					    			(select ShouhinName from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					    			@TotalJuchuuSuu - @ChakuniYoteiSuu,null,'',0,@TotalJuchuuSuu - @ChakuniYoteiSuu,0,0,0,
+					    			(select HacchuuNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					    			(select HacchuuGyouNO from D_JuchuuMeisai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
+					    			@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime
+					    	end
+					END
+					--2021/06/07 Y.Nishikawa ADD 引当済未出荷指示の明細が存在する場合、その明細に足し込む↑↑
 
 					--2021/04/19 Y.Nishikawa ADD 新規登録時、引当元が無いのに引当在庫に引当数を更新している(場所移動)↓↓
-			        if not exists (select 1 from D_HikiateZaiko where SoukoCD = @SoukoCD and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo)
+			        if not exists (select 1 from D_HikiateZaiko where SoukoCD = @SoukoCD and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo and NyuukoDate = '')
 			        	begin
 			        		insert into D_HikiateZaiko
 			        		(SoukoCD,ShouhinCD,KanriNO,NyuukoDate,ShukkaSiziSuu,HikiateZumiSuu,InsertOperator,
@@ -143,10 +215,11 @@ BEGIN
 			        			UpdateOperator = @UpdateOperator,
 			        			UpdateDateTime = @UpdateDateTime
 			        		where SoukoCD = @SoukoCD
-			        		and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo
+			        		and ShouhinCD = @ShouhinCD 
+							and KanriNO = @KanriNo
+							and NyuukoDate = ''
 			        	end
 			        --2021/04/19 Y.Nishikawa ADD 新規登録時、引当元が無いのに引当在庫に引当数を更新している(場所移動)↑↑
-
 					
 				end
 
