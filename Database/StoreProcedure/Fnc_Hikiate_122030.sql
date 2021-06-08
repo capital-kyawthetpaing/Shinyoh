@@ -15,7 +15,6 @@ GO
 -- Author:		Kyaw Thet Paing
 -- Create date: 2020-01-11
 -- Description:	<Description,,>
--- History    : 2021/04/13 Y.Nishikawa CHG 項目が違う
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_122030]
 	-- Add the parameters for the stored procedure here
@@ -43,15 +42,26 @@ BEGIN
 
 	update D_JuchuuShousai
 	set HikiateZumiSuu = js.HikiateZumiSuu + sss.ShukkaSiziSuu,
-	    --2021/04/13 Y.Nishikawa CHG 項目が違う↓↓
+	    --2021/04/13 Y.Nishikawa CHG↓↓
 		--ShukkaSiziZumiSuu = js.MiHikiateSuu - sss.ShukkaSiziSuu,
 		ShukkaSiziZumiSuu = js.ShukkaSiziZumiSuu - sss.ShukkaSiziSuu,
-		--2021/04/13 Y.Nishikawa CHG 項目が違う↑↑
+		--2021/04/13 Y.Nishikawa CHG↑↑
 		UpdateOperator = @UpdateOperator,
 		UpdateDateTime = @UpdateDateTime
 	from D_JuchuuShousai js
 	inner join D_ShukkaSiziShousai sss on js.JuchuuNO = sss.JuchuuNO and js.JuchuuGyouNO = sss.JuchuuGyouNO and js.JuchuuShousaiNO = sss.JuchuuShousaiNO
 	where sss.ShukkaSiziNO = @SlipNo
+
+	--2021/04/13 Y.Nishikawa CHG↓↓
+	--update D_HikiateZaiko
+	--set ShukkaSiziSuu = hz.ShukkaSiziSuu - sss.ShukkaSiziSuu,
+	--	HikiateZumiSuu = hz.HikiateZumiSuu + sss.ShukkaSiziSuu,
+	--	UpdateOperator = @UpdateOperator,
+	--	UpdateDateTime = @UpdateDateTime
+	--from D_HikiateZaiko hz
+	--inner join D_ShukkaSiziShousai sss on hz.SoukoCD = sss.SoukoCD and hz.ShouhinCD = sss.ShouhinCD 
+	--and hz.KanriNO = sss.KanriNO and hz.NyuukoDate = sss.NyuukoDate
+	--where sss.ShukkaSiziNO = @SlipNo
 
 	 declare @ShukkaSiziNO as varchar(12),
 		@ShukkaSiziGyouNO as smallint,
@@ -85,16 +95,7 @@ BEGIN
 		
 	close cursorOuter
 	deallocate cursorOuter
-
-	--update D_HikiateZaiko
-	--set ShukkaSiziSuu = hz.ShukkaSiziSuu - sss.ShukkaSiziSuu,
-	--	HikiateZumiSuu = hz.HikiateZumiSuu + sss.ShukkaSiziSuu,
-	--	UpdateOperator = @UpdateOperator,
-	--	UpdateDateTime = @UpdateDateTime
-	--from D_HikiateZaiko hz
-	--inner join D_ShukkaSiziShousai sss on hz.SoukoCD = sss.SoukoCD and hz.ShouhinCD = sss.ShouhinCD 
-	--and hz.KanriNO = sss.KanriNO and hz.NyuukoDate = sss.NyuukoDate
-	--where sss.ShukkaSiziNO = @SlipNo
+	--2021/04/13 Y.Nishikawa CHG↑↑
 
 	update D_ShukkaSiziShousai
 	set ShukkaSiziSuu = 0,
