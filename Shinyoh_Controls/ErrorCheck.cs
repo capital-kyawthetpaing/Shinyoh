@@ -925,7 +925,7 @@ namespace Shinyoh_Controls
             }
             if(sCombo.E106)
             {
-                if (!string.IsNullOrEmpty(sCombo.ctrlE106_1.SelectedValue.ToString()) && !string.IsNullOrEmpty(sCombo.ctrlE106_2.SelectedValue.ToString()))
+                if (!string.IsNullOrEmpty(sCombo.ctrlE106_1.Text.ToString()) && !string.IsNullOrEmpty(sCombo.ctrlE106_2.Text.ToString()))
                 {
                     bool bl = Matches(sCombo.ctrlE106_2.SelectedValue.ToString(), sCombo.ctrlE106_1.SelectedValue.ToString());
                     if (!bl)
