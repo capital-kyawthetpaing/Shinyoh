@@ -141,22 +141,22 @@ namespace Shinyoh_Controls
                         mode = cbo.Text;
                     }
                     if (mode != "新規" && this.Name != "cboMode")
-                    {
                         this.DroppedDown = true;
-                        if (this.E106)
-                            ErrorCheck();
-                    }
-                    
                     else
                         ErrorCheck();
                 }
                 else
                 {
                     this.DroppedDown = false;
-                    Control nextControl = this.TopLevelControl.Controls.Find(NextControlName, true)[0];
-                    nextControl.Focus();
+                    bool bl_error = false;
+                    if (this.E106)
+                        bl_error = ErrorCheck();
+                    if (!bl_error)
+                    {
+                        Control nextControl = this.TopLevelControl.Controls.Find(NextControlName, true)[0];
+                        nextControl.Focus();
+                    }
                 }
-                    
             }
             //else if (e.KeyCode == Keys.Enter)// comment by NMW
             //{
