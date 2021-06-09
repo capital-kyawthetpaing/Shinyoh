@@ -73,9 +73,14 @@ BEGIN
 	begin
 		select DSM.JANCD,FS.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,
 			   ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + ISNULL(FLOOR(WK.MiNyuukaSuu),'0'))),'0') as ShukkaSuu,NULL as Kanryou,'' as ShukkaMeisaiTekiyou,
-			   (DSM.ShukkaSiziNO + '-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,
+			   (DSM.ShukkaSiziNO + '-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO
 			   --hidden field
-			   DS.TokuisakiCD,DSM.KouritenCD,DS.DenpyouDate,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM.SoukoCD,FS.ShouhinCD,DSM.ShukkaSiziNO
+			   ,DSM.ShukkaSiziNO
+			   ,convert(varchar(10),DS.DenpyouDate, 111) as DenpyouDate
+			   --DS.TokuisakiCD,DSM.KouritenCD
+			   ,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO
+			   ,DSM.SoukoCD,FS.ShouhinCD
+			   ,0 AS UriageKanryouKBN
 			   ,0 AS ShukkaGyouNO
 			   ,0 AS OldShukkasuu
 
@@ -98,18 +103,23 @@ BEGIN
 			or ((@TelNO1 is null or(DSM.[KouritenTelNO1-1]=@TelNO1))  and (@TelNO2 is null or(DSM.[KouritenTelNO1-2]=@TelNO2)) and (@TelNO3 is null or(DSM.[KouritenTelNO1-3]=@TelNO3))))
 		and ((@Name is null or(DS.TokuisakiRyakuName=@Name)) or (@Name is null or(DS.TokuisakiName=@Name)) or (@Name is null or(DSM.KouritenRyakuName=@Name)) or (@Name is null or(DSM.KouritenName=@Name)))
 		and ((@Name is null or(DS.TokuisakiJuusho1=@Name)) or (@Name is null or(DS.TokuisakiJuusho2=@Name)) or (@Name is null or(DSM.KouritenJuusho1=@Name)) or (@Name is null or(DSM.KouritenJuusho2=@Name)))
-		--2021/05/07 Y.Nishikawa CHG 表示順変更↓↓
+		--2021/05/07 Y.Nishikawa CHG 
 		--order by DSM.ShouhinCD ASC,DSM.ShukkaSiziNO ASC,DSM.GyouHyouziJun ASC
 		order by DSM.JANCD ASC,DSM.ShukkaSiziNO ASC,DSM.GyouHyouziJun ASC
-		--2021/05/07 Y.Nishikawa CHG 表示順変更↑↑
+		--2021/05/07 Y.Nishikawa CHG 
 	end
 	else 
 	begin
 		select DSM.JANCD,FS.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,
 			   ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + ISNULL(FLOOR(WK.MiNyuukaSuu),'0'))),'0') as ShukkaSuu,NULL as Kanryou,'' as ShukkaMeisaiTekiyou,
-			   (DSM.ShukkaSiziNO + '-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,
+			   (DSM.ShukkaSiziNO + '-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO
 			   --hidden field
-			   DS.TokuisakiCD,DSM.KouritenCD,DS.DenpyouDate,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO,DSM.SoukoCD,FS.ShouhinCD,DSM.ShukkaSiziNO
+			   --DS.TokuisakiCD,DSM.KouritenCD
+			   ,DSM.ShukkaSiziNO
+			   ,convert(varchar(10),DS.DenpyouDate, 111) as DenpyouDate
+			   ,(DSM.JuchuuNO+'-'+cast(DSM.JuchuuGyouNO as varchar)) as JuchuuNOGyouNO
+			   ,DSM.SoukoCD,FS.ShouhinCD
+			   ,0 AS UriageKanryouKBN
 			   ,0 AS ShukkaGyouNO
 			   ,0 AS OldShukkasuu
 
@@ -126,10 +136,10 @@ BEGIN
 		and (@ShukkaYoteiDate2 is null or(DS.ShukkaYoteiDate<=@ShukkaYoteiDate2))  
 		and (@DenpyouDate1 is null or(DS.DenpyouDate>=@DenpyouDate1))  
 		and (@DenpyouDate2 is null or(DS.DenpyouDate<=@DenpyouDate2))  
-		--2021/05/07 Y.Nishikawa CHG 表示順変更↓↓
+		--2021/05/07 Y.Nishikawa CHG
 		--order by DSM.ShouhinCD ASC,DSM.ShukkaSiziNO ASC,DSM.GyouHyouziJun ASC
 		order by DSM.JANCD ASC,DSM.ShukkaSiziNO ASC,DSM.GyouHyouziJun ASC
-		--2021/05/07 Y.Nishikawa CHG 表示順変更↑↑
+		--2021/05/07 Y.Nishikawa CHG
 	end
 
 		If(OBJECT_ID('tempdb..#WK_MiNyuukaSuu2') Is Not Null)

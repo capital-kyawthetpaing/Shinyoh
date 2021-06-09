@@ -150,7 +150,7 @@ begin
     --,ISNULL(FLOOR(SKMS.UriageKingaku),'0') AS UriageKingaku   --金顁E   
     ,0 as Kanryo --完亁E
     ,SKMS.ShukkaSiziMeisaiTekiyou  --明細摘要E
-    ,(SKMS.JuchuuNO+' - '+cast(SKMS.JuchuuGyouNO as varchar)) AS SKMSNO  --受注番号-行番号
+    ,(SKMS.JuchuuNO+'-'+cast(SKMS.JuchuuGyouNO as varchar)) AS SKMSNO  --受注番号-行番号
     ,SKMS.JuchuuNO
     ,SKMS.SoukoCD       --倉庫コーチE
     ,MS.SoukoName       --倉庫吁E

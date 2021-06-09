@@ -49,7 +49,7 @@ namespace MasterTouroku_Staff
             SetButton(ButtonType.BType.Empty, F10, "", false);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
 
             txt_Staff.Focus();
             base_Entity = _GetBaseData();
@@ -69,12 +69,12 @@ namespace MasterTouroku_Staff
             //txtStaff_Search.Text = "0";
 
             Mode_Setting();
+            ErrorChek();
 
             switch (mode)
             {
                 case Mode.New:
                     
-                    ErrorChek();
                     //E102
                     txtStaff_CDate.E102Check(true);
                     txtStaff_CopyDate.E102MultiCheck(true, txtStaff_Copy, txtStaff_CopyDate);
@@ -95,8 +95,7 @@ namespace MasterTouroku_Staff
                     btnNew.Visible = true;
                     break;
 
-                case Mode.Update:                    
-                    ErrorChek();
+                case Mode.Update:
                     //E132
                     txtStaff_CDate.E132Check(false, "M_Staff", txt_Staff, txtStaff_CDate, null);
                     //E133

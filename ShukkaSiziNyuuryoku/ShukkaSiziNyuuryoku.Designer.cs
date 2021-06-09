@@ -133,7 +133,6 @@ namespace ShukkaSiziNyuuryoku
             // 
             // cboMode
             // 
-            this.cboMode.BackColor = System.Drawing.Color.Cyan;
             this.cboMode.NextControlName = "sbShippingNO";
             // 
             // sLabel3
@@ -1373,7 +1372,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbShippingNO.NextControlName = "txtShippingDate";
             this.sbShippingNO.SearchType = Entity.SearchType.ScType.ShippingNO;
             this.sbShippingNO.Size = new System.Drawing.Size(100, 19);
-            this.sbShippingNO.TabIndex = 1;
+            this.sbShippingNO.TabIndex = 0;
             this.sbShippingNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.sbShippingNO.TxtBox = null;
             this.sbShippingNO.TxtBox1 = null;

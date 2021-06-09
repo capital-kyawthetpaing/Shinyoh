@@ -168,7 +168,7 @@ BEGIN
 					ShukkaMeisaiTekiyou		varchar(80) COLLATE DATABASE_DEFAULT,		--Detail				
 					ShukkaSiziNOGyouNO		varchar(25) COLLATE DATABASE_DEFAULT,
 					JuchuuNOGyouNO			varchar(25) COLLATE DATABASE_DEFAULT,
-					DenpyouDate				date,
+					DenpyouDate				varchar(10) COLLATE DATABASE_DEFAULT,
 					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
 					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
 				)
@@ -211,7 +211,7 @@ BEGIN
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
 					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
-					DenpyouDate				date 'DenpyouDate',
+					DenpyouDate				varchar(10) 'DenpyouDate',
 					ShouhinCD				varchar(50)'ShouhinCD',
 					SoukoCD					varchar(10)'SoukoCD'
 					)

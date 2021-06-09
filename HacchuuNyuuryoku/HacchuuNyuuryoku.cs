@@ -38,6 +38,7 @@ namespace HacchuuNyuuryoku
 
             gv1_to_dt1 = new DataTable();
             F8_dt1 = new DataTable();
+            //this.gv_HacchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
 
         private void HacchuuNyuuryoku_Load(object sender, EventArgs e)
@@ -85,7 +86,7 @@ namespace HacchuuNyuuryoku
             gv_HacchuuNyuuryoku.SetHiraganaColumn("colHacchuuMeisaiTekiyou");
             gv_HacchuuNyuuryoku.SetNumberColumn("colHacchuuSuu");
             gv_HacchuuNyuuryoku.ClearSelection();
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
         }
 
         private void ChangeMode(Mode mode)
@@ -845,7 +846,8 @@ namespace HacchuuNyuuryoku
                 else
                     select_dr1 = gv1_to_dt1.Select("ShouhinCD ='" + shouhinCD + "' and ColorNO='" + color + "' and SizeNO='" + size + "'");// original data
 
-                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  ChakuniYoteiDate='" + ChakuniYoteiDate + "' and SoukoCD='" + soukoCD + "'").SingleOrDefault();
+                //DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "' and  ChakuniYoteiDate='" + ChakuniYoteiDate + "' and SoukoCD='" + soukoCD + "'").SingleOrDefault();
+                DataRow existDr1 = F8_dt1.Select("ShouhinCD ='" + shouhinCD + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     if (row.Cells["colHacchuuSuu"].Value.ToString() == "0")

@@ -80,7 +80,7 @@ namespace IdouNyuuryoku
             gv_1.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_1.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_1.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
         }
         private void ChangeMode(Mode mode)
         {

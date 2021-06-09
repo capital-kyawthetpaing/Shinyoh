@@ -111,7 +111,7 @@ namespace JuchuuNyuuryoku
             // gv_JuchuuNyuuryoku.ClearSelection();
 
             txtKouritenCD.TxtBox = txtTokuisakiCD;//ses
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
         }
 
         private void ChangeMode(Mode mode)

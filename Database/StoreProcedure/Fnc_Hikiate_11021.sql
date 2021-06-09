@@ -1,21 +1,19 @@
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_11021]    Script Date: 2021/04/26 18:37:41 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_11021]    Script Date: 2021/06/08 10:30:32 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%Fnc_Hikiate_11021%' and type like '%P%')
 DROP PROCEDURE [dbo].[Fnc_Hikiate_11021]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_11021]    Script Date: 2021/04/26 18:37:41 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_11021]    Script Date: 2021/06/08 10:30:32 ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-
 -- =============================================
 -- Author:	Kyaw Thet Paing
 -- Create date: 2021-01-15
 -- Description:	in連番区分 ＝ 1:受注 (in処理区分=10,21)
--- History    : 2021/04/26 Y.Nishikawa 受発注データの受注明細の引当情報が更新されない
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_11021]
 	-- Add the parameters for the stored procedure here
@@ -65,6 +63,7 @@ BEGIN
 		HikiateZumiSuu decimal(21,6),
 		HikiateKanouSuu decimal(21,6)
 	)
+	--2021/04/26 Y.Nishikawa ADD↓↓
 	CREATE NONCLUSTERED INDEX [IX_#tmp_Zaiko_01] ON [#tmp_Zaiko]
     (
             [SoukoCD]          ASC,
@@ -79,14 +78,15 @@ BEGIN
 			[ShukkaSiziSuu]    ASC
     )
     WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+	--2021/04/26 Y.Nishikawa ADD↑↑
 
 	declare cursorOuter cursor read_only
 	for
 	select JuchuuNO,JuchuuGyouNO,SoukoCD,ShouhinCD,ShouhinName,HacchuuNO,HacchuuGyouNO
-	--2021/04/26 Y.Nishikawa CHG 受発注データの受注明細の引当情報が更新されない↓↓
+	--2021/04/26 Y.Nishikawa CHG↓↓
 	--from D_JuchuuMeisai where JuchuuNO = @SlipNo and HacchuuNO is null
 	from D_JuchuuMeisai where JuchuuNO = @SlipNo
-	--2021/04/26 Y.Nishikawa CHG 受発注データの受注明細の引当情報が更新されない↑↑
+	--2021/04/26 Y.Nishikawa CHG↑↑
 	open cursorOuter
 
 	fetch next from cursorOuter into @JuchuuNO,@JuchuuGyouNO,@SoukoCD,@ShouhinCD,@ShouhinName,
@@ -94,11 +94,11 @@ BEGIN
 
 	while @@FETCH_STATUS = 0
 		begin
-		　--2021/04/26 Y.Nishikawa ADD 受発注データの受注明細の引当情報が更新されない↓↓
+		　--2021/04/26 Y.Nishikawa ADD↓↓
 	      IF(@HacchuuNO IS NULL)
 		  BEGIN
-	      --2021/04/26 Y.Nishikawa ADD 受発注データの受注明細の引当情報が更新されない↑↑
-			--2021/04/12 Y.Nishikawa CHG ???C?“?????????????X????
+	      --2021/04/26 Y.Nishikawa ADD↑↑
+		    --2021/04/26 Y.Nishikawa CHG↓↓
 			--insert into #tmp_Zaiko
 			--	(SoukoCD,ShouhinCD,KanriNO,NyuukoDate,ShukkaSiziSuu,HikiateZumiSuu,HikiateKanouSuu)
 			--select
@@ -119,7 +119,7 @@ BEGIN
 			on gz.SoukoCD = hz.SoukoCD and gz.ShouhinCD = hz.ShouhinCD 
 			and gz.KanriNO = hz.KanriNO and gz.NyuukoDate = hz.NyuukoDate
 			where gz.SoukoCD = @SoukoCD and gz.ShouhinCD = @ShouhinCD
-			--2021/04/12 Y.Nishikawa CHG ???C?“?????????????X????
+			--2021/04/26 Y.Nishikawa CHG↑↑
 
 			if not exists (select 1 from D_JuchuuShousai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO)
 				begin
@@ -147,24 +147,20 @@ BEGIN
 			and JuchuuGyouNO = @JuchuuGyouNO
 			and ShukkaSiziZumiSuu = 0
 
-			--2021/04/12 Y.Nishikawa CHG ??????“?????
+			--2021/04/12 Y.Nishikawa DEL↓↓
 			--update D_JuchuuMeisai
 			--set HikiateZumiSuu = HikiateZumiSuu + @KonkaiHikiateSuu,
-			--     --2021/04/12 Y.Nishikawa DEL????
-			--	--MiHikiateSuu = MiHikiateSuu - @KonkaiHikiateSuu,
 			--	MiHikiateSuu = JuchuuSuu - (HikiateZumiSuu + @KonkaiHikiateSuu),
-			--	 --2021/04/12 Y.Nishikawa CHG ????
 			--	UpdateOperator = @UpdateOperator,
 			--	UpdateDateTime = @UpdateDateTime
 			--where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO
-			--2021/04/12 Y.Nishikawa CHG ??????“?????
+			--2021/04/12 Y.Nishikawa DEL↑↑
 
 			declare @KanriNO varchar(10),
 					@NyuukoDate varchar(10),
 					@ShukkaSiziSuu decimal(21,6),
 					@HikiateZumiSuu decimal(21,6),
 					@HikiateKanouSuu decimal(21,6)
-
 
 			while @KonkaiHikiateSuu > 0 
 				begin
@@ -185,14 +181,13 @@ BEGIN
 							and ShouhinCD = @ShouhinCD
 							order by KanriNO,case when NyuukoDate = '' then '2100-01-01' else NyuukoDate end
 
-							--2021/04/12 Y.Nishikawa ADD????
-							--??“?‰?”\?”????‰???“??”??”??r
+							--2021/04/26 Y.Nishikawa ADD↓↓
 							declare @juchuuSuu decimal(21,6) = 0
 							if @KonkaiHikiateSuu >= @HikiateKanouSuu
 							 begin set @juchuuSuu = @HikiateKanouSuu end
 							else 
 							 begin set @juchuuSuu = @KonkaiHikiateSuu end
-							--2021/04/12 Y.Nishikawa ADD????
+							--2021/04/26 Y.Nishikawa ADD↑↑
 
 							insert into D_JuchuuShousai
 								(JuchuuNO,JuchuuGyouNO,JuchuuShousaiNO,SoukoCD,ShouhinCD,ShouhinName,JuchuuSuu,
@@ -201,17 +196,17 @@ BEGIN
 							values
 								(@JuchuuNo,@JuchuuGyouNO,
 								(select isnull(max(JuchuuShousaiNO),0) + 1 from D_JuchuuShousai where JuchuuNO = @JuchuuNo and JuchuuGyouNO = @JuchuuGyouNO),
-								--2021/04/12 Y.Nishikawa CHG????
+								--2021/04/26 Y.Nishikawa CHG↓↓
 								--@SoukoCD,@ShouhinCD,@ShouhinName,@HikiateKanouSuu,@KanriNO,@NyuukoDate,@HikiateKanouSuu,0,0,0,0,@HacchuuNO,@HacchuuGyouNO,@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime)
 								@SoukoCD,@ShouhinCD,@ShouhinName,@juchuuSuu,@KanriNO,@NyuukoDate,@juchuuSuu,0,0,0,0,@HacchuuNO,@HacchuuGyouNO,@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime)
-				                --2021/04/12 Y.Nishikawa CHG????
+				                --2021/04/26 Y.Nishikawa CHG↑↑
 
-							--2021/04/12 Y.Nishikawa CHG????
+							--2021/04/12 Y.Nishikawa CHG↓↓
 							--set @KonkaiHikiateSuu = @KonkaiHikiateSuu - @HikiateKanouSuu
 							set @KonkaiHikiateSuu = @KonkaiHikiateSuu - @juchuuSuu
-							--2021/04/12 Y.Nishikawa CHG????
+							--2021/04/12 Y.Nishikawa CHG↑↑
 
-							--2021/04/12 Y.Nishikawa ADD ??“????????f?[?^?????????????X?V?????????????C??????
+							--2021/04/12 Y.Nishikawa ADD↓↓
 							if not exists (select *
 							           from D_HikiateZaiko 
 							           where SoukoCD = @SoukoCD 
@@ -244,19 +239,19 @@ BEGIN
 							end
 							else
 							begin
-							--2021/04/12 Y.Nishikawa ADD ??“????????f?[?^?????????????X?V?????????????C??????
+							--2021/04/12 Y.Nishikawa ADD↑↑
 							update D_HikiateZaiko
-							--2021/04/12 Y.Nishikawa CHG????
+							--2021/04/12 Y.Nishikawa CHG↓↓
 							--set HikiateZumiSuu = HikiateZumiSuu + @HikiateKanouSuu,
 							set HikiateZumiSuu = HikiateZumiSuu + @juchuuSuu,
-							--2021/04/12 Y.Nishikawa CHG????
+							--2021/04/12 Y.Nishikawa CHG↑↑
 								UpdateOperator = @UpdateOperator,
 								UpdateDateTime = @UpdateDateTime
 							where SoukoCD = @SoukoCD and ShouhinCD = @ShouhinCD
 							and KanriNO = @KanriNO and NyuukoDate = @NyuukoDate
-							--2021/04/12 Y.Nishikawa ADD ??“????????f?[?^?????????????X?V?????????????C??????
+							--2021/04/12 Y.Nishikawa ADD↓↓
 							end
-							--2021/04/12 Y.Nishikawa ADD ??“????????f?[?^?????????????X?V?????????????C??????
+							--2021/04/12 Y.Nishikawa ADD↑↑
 
 							delete #tmp_Zaiko
 							where SoukoCD = @SoukoCD
@@ -266,7 +261,7 @@ BEGIN
 						end
 				end
 
-			--2021/04/12 Y.Nishikawa CHG ??????“?????
+			--2021/04/12 Y.Nishikawa ADD↓↓
 			UPDATE dm
 			SET HikiateZumiSuu = ISNULL(ds.HikiateZumiSuu, 0),
 				MiHikiateSuu = dm.JuchuuSuu - ISNULL(ds.HikiateZumiSuu, 0),
@@ -286,7 +281,7 @@ BEGIN
 			ON dm.JuchuuNO = ds.JuchuuNO
 			AND dm.JuchuuGyouNO = ds.JuchuuGyouNO
 			WHERE dm.JuchuuNO = @JuchuuNo and dm.JuchuuGyouNO = @JuchuuGyouNO
-			--2021/04/12 Y.Nishikawa CHG ??????“?????
+			--2021/04/12 Y.Nishikawa ADD↑↑
 
 			if @KonkaiHikiateSuu > 0
 				begin
@@ -300,7 +295,7 @@ BEGIN
 						@SoukoCD,@ShouhinCD,@ShouhinName,@KonkaiHikiateSuu,null,'',0,@KonkaiHikiateSuu,0,0,0,@HacchuuNO,@HacchuuGyouNO,@UpdateOperator,@UpdateDateTime,@UpdateOperator,@UpdateDateTime)
 				
 				end
-		  --2021/04/26 Y.Nishikawa ADD 受発注データの受注明細の引当情報が更新されない↓↓
+		  --2021/04/26 Y.Nishikawa ADD↓↓
 	      END
 		  ELSE
 		  BEGIN
@@ -324,7 +319,7 @@ BEGIN
 			 AND dm.JuchuuGyouNO = ds.JuchuuGyouNO
 			 WHERE dm.JuchuuNO = @JuchuuNo and dm.JuchuuGyouNO = @JuchuuGyouNO
 		  END
-	      --2021/04/26 Y.Nishikawa ADD 受発注データの受注明細の引当情報が更新されない↑↑
+	      --2021/04/26 Y.Nishikawa ADD↑↑
 			
 			truncate table #tmp_Zaiko
 			truncate table #tmp_D_JuchuuShousai
@@ -341,4 +336,5 @@ BEGIN
 
 END
 GO
+
 

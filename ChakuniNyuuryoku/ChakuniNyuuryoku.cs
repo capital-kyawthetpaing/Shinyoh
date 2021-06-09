@@ -99,7 +99,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
             gvChakuniNyuuryoku.SetHiraganaColumn("ChakuniMeisaiTekiyou");
             gvChakuniNyuuryoku.SetNumberColumn("ChakuniSuu");         
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
         }
         private void ChangeMode(Mode mode)
         {
@@ -876,7 +876,7 @@ namespace ChakuniNyuuryoku
                 string Chakuni = row.Cells["Chakuni"].Value.ToString();
                 string Detail = row.Cells["ChakuniMeisaiTekiyou"].EditedFormattedValue.ToString();
                 
-                DataRow[] select_dr1 = dtmain.Select("Chakuni ='" + Chakuni + "'");// original data
+                DataRow[] select_dr1 = dt_Details.Select("Chakuni ='" + Chakuni + "'");// original data
                 DataRow existDr1 = F8_dt1.Select("Chakuni='" + Chakuni + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {

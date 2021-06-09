@@ -93,7 +93,7 @@ namespace ChakuniYoteiNyuuryoku
             gvChakuniYoteiNyuuryoku.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colDate,colHacchuuSuu,colChakuniZumiSuu,colJanCD,colHacchuu");
             gvChakuniYoteiNyuuryoku.SetHiraganaColumn("colDetails");
             gvChakuniYoteiNyuuryoku.SetNumberColumn("colYoteiSuu");
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
         }
         private void ChangeMode(Mode mode)
         {

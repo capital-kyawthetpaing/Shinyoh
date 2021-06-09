@@ -55,7 +55,9 @@ namespace ZaikoIkkatuSaiHikiate
             {
                 HikiateHenkouShoukaiBL bl = new HikiateHenkouShoukaiBL();
                 bl.IData_DB(GetRequired_UIData());
+                bl.ShowMessage("I002");
             }
+            
         }
 
         public void Remove_LabelBorder()

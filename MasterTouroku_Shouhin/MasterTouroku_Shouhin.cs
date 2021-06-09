@@ -47,7 +47,7 @@ namespace MasterTouroku_Shouhin
             SetButton(ButtonType.BType.Import, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
             base_entity = _GetBaseData();
             txtProduct.TxtBox = txtColor;
             txtProduct.TxtBox1 = txtSize;

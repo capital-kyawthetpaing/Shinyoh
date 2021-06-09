@@ -1,9 +1,9 @@
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_5]    Script Date: 2021/05/20 11:12:39 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_5]    Script Date: 2021/06/07 16:50:51 ******/
 IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%Fnc_Hikiate_5%' and type like '%P%')
 DROP PROCEDURE [dbo].[Fnc_Hikiate_5]
 GO
 
-/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_5]    Script Date: 2021/05/20 11:12:39 ******/
+/****** Object:  StoredProcedure [dbo].[Fnc_Hikiate_5]    Script Date: 2021/06/07 16:50:51 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -44,9 +44,24 @@ BEGIN
 
 	declare cursorOuter cursor read_only
 	for
-	select cm.ChakuniNO,cm.ChakuniGyouNO,c.SoukoCD,cm.ShouhinCD,cm.KanriNO,c.ChakuniDate,cm.ChakuniSuu,cm.JuchuuNO,cm.JuchuuGyouNO 
+	--2021/04/20 Y.Nishikawa ADD 受注詳細単位で着荷明細が作成されるため、受注明細単位（＝発注明細単位）で集計↓↓
+	--select cm.ChakuniNO,cm.ChakuniGyouNO,c.SoukoCD,cm.ShouhinCD,cm.KanriNO,c.ChakuniDate,cm.ChakuniSuu,cm.JuchuuNO,cm.JuchuuGyouNO 
+	--from D_ChakuniMeisai cm inner join D_Chakuni c on cm.ChakuniNO = c.ChakuniNO
+	--where cm.ChakuniNO = @SlipNo
+	select MAX(cm.ChakuniNO) ChakuniNO
+	      ,MAX(cm.ChakuniGyouNO) ChakuniGyouNO
+		  ,MAX(c.SoukoCD) SoukoCD
+		  ,MAX(cm.ShouhinCD) ShouhinCD
+		  ,MAX(cm.KanriNO) KanriNO
+		  ,MAX(c.ChakuniDate) ChakuniDate
+		  ,SUM(cm.ChakuniSuu) ChakuniSuu
+		  ,MAX(cm.JuchuuNO) JuchuuNO
+		  ,MAX(cm.JuchuuGyouNO) JuchuuGyouNO
 	from D_ChakuniMeisai cm inner join D_Chakuni c on cm.ChakuniNO = c.ChakuniNO
 	where cm.ChakuniNO = @SlipNo
+	Group by HacchuuNO
+	        ,HacchuuGyouNO
+	--2021/04/20 Y.Nishikawa ADD 受注詳細単位で着荷明細が作成されるため、受注明細単位（＝発注明細単位）で集計↑↑
 	
 	open cursorOuter
 	
@@ -775,9 +790,10 @@ BEGIN
                           FROM D_ShukkaSiziMeisai
 					      WHERE ShukkaSiziNO = @ShukkaSiziNO_5
 					      AND ShukkaSiziGyouNO = @ShukkaSiziGyouNO_5
+						  AND @MeisaiShukkaSiziSuuZan_5 - @ShukkaSiziZumiSuu_5 > 0
 					 END
-					 --明細出荷指示残数≦受注詳細の出荷指示済数の場合
-					 ELSE
+					 --明細出荷指示残数≦受注詳細の出荷指示済数 かつ @MeisaiShukkaSiziSuuZan_5＞0 の場合
+					 ELSE IF(@MeisaiShukkaSiziSuuZan_5 <= @ShukkaSiziZumiSuu_5 AND @MeisaiShukkaSiziSuuZan_5 > 0)
 					 BEGIN
 					     --受注詳細の出荷指示済数で出荷指示詳細を作成
 					     INSERT INTO D_ShukkaSiziShousai
@@ -821,6 +837,11 @@ BEGIN
 
 						  SET @ShukkaSiziZumiSuu_5 = @ShukkaSiziZumiSuu_5 - @MeisaiShukkaSiziSuuZan_5
 					 END
+					 --明細出荷指示残数＝受注詳細の出荷指示済数の場合
+					 ELSE
+					 BEGIN
+					     SELECT 1
+					 END
 				    
 				     FETCH NEXT FROM cursorShukkaSiziMeisai INTO @ShukkaSiziNO_5, @ShukkaSiziGyouNO_5, @MeisaiShukkaSiziSuuZan_5
 		          END
@@ -831,88 +852,90 @@ BEGIN
 				  END
 				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
 
-				  --６．現在庫
-				  --2021/04/27 Y.Nishikawa ADD 在庫更新を引当ファンクション内に移動
-				  IF EXISTS ( 
-                               SELECT * 
-                               FROM D_GenZaiko DGZK
-                               INNER JOIN (
-                   			             SELECT H.SoukoCD
-                   						       ,M.ShouhinCD
-                   							   ,M.KanriNO
-                   							   ,H.ChakuniDate
-                   						 FROM D_Chakuni H
-                                            INNER JOIN D_ChakuniMeisai M
-                                            ON H.ChakuniNO = M.ChakuniNO
-                                            WHERE H.ChakuniNO = @ChakuniNO
-											--2021/05/07 Y.Nishikawa ADD 条件追加
-											AND M.ChakuniGyouNO = @ChakuniGyouNO
-											--2021/05/07 Y.Nishikawa ADD 条件追加
-                   			           ) DCKM
-                                              ON DGZK.SoukoCD = DCKM.SoukoCD
-                                              AND DGZK.ShouhinCD = DCKM.ShouhinCD
-                                              AND DGZK.KanriNO = DCKM.KanriNO
-                                              AND DGZK.NyuukoDate = DCKM.ChakuniDate
-                              )
-                   BEGIN
+				  --2021/06/07 Y.Nishikawa DEL 在庫更新は入荷明細単位で行う↓↓
+				  ----６．現在庫
+				  ----2021/04/27 Y.Nishikawa ADD 在庫更新を引当ファンクション内に移動
+				  --IF EXISTS ( 
+      --                         SELECT * 
+      --                         FROM D_GenZaiko DGZK
+      --                         INNER JOIN (
+      --             			             SELECT H.SoukoCD
+      --             						       ,M.ShouhinCD
+      --             							   ,M.KanriNO
+      --             							   ,H.ChakuniDate
+      --             						 FROM D_Chakuni H
+      --                                      INNER JOIN D_ChakuniMeisai M
+      --                                      ON H.ChakuniNO = M.ChakuniNO
+      --                                      WHERE H.ChakuniNO = @ChakuniNO
+						--					--2021/05/07 Y.Nishikawa ADD 条件追加
+						--					AND M.ChakuniGyouNO = @ChakuniGyouNO
+						--					--2021/05/07 Y.Nishikawa ADD 条件追加
+      --             			           ) DCKM
+      --                                        ON DGZK.SoukoCD = DCKM.SoukoCD
+      --                                        AND DGZK.ShouhinCD = DCKM.ShouhinCD
+      --                                        AND DGZK.KanriNO = DCKM.KanriNO
+      --                                        AND DGZK.NyuukoDate = DCKM.ChakuniDate
+      --                        )
+      --             BEGIN
                    
-                      UPDATE DGZK
-                         SET GenZaikoSuu = GenZaikoSuu + DCKM.ChakuniSuu
-                            ,UpdateOperator = @UpdateOperator
-                            ,UpdateDateTime = @UpdateDateTime
-                   	FROM D_GenZaiko DGZK
-                   	INNER JOIN (
-                   			      SELECT H.SoukoCD
-                   		         	    ,M.ShouhinCD
-                   		         	    ,M.KanriNO
-                   		         	    ,H.ChakuniDate
-                   						,M.ChakuniSuu
-                   		          FROM D_Chakuni H
-                                     INNER JOIN D_ChakuniMeisai M
-                                     ON H.ChakuniNO = M.ChakuniNO
-                                     WHERE H.ChakuniNO = @ChakuniNO
-									 --2021/05/07 Y.Nishikawa ADD 条件追加
-									 AND M.ChakuniGyouNO = @ChakuniGyouNO
-									 --2021/05/07 Y.Nishikawa ADD 条件追加
-                   			    ) DCKM
-                      ON DGZK.SoukoCD = DCKM.SoukoCD
-                      AND DGZK.ShouhinCD = DCKM.ShouhinCD
-                      AND DGZK.KanriNO = DCKM.KanriNO
-                      AND DGZK.NyuukoDate = DCKM.ChakuniDate
-                   END
-                   ELSE
-                   BEGIN
+      --                UPDATE DGZK
+      --                   SET GenZaikoSuu = GenZaikoSuu + DCKM.ChakuniSuu
+      --                      ,UpdateOperator = @UpdateOperator
+      --                      ,UpdateDateTime = @UpdateDateTime
+      --             	FROM D_GenZaiko DGZK
+      --             	INNER JOIN (
+      --             			      SELECT H.SoukoCD
+      --             		         	    ,M.ShouhinCD
+      --             		         	    ,M.KanriNO
+      --             		         	    ,H.ChakuniDate
+      --             						,M.ChakuniSuu
+      --             		          FROM D_Chakuni H
+      --                               INNER JOIN D_ChakuniMeisai M
+      --                               ON H.ChakuniNO = M.ChakuniNO
+      --                               WHERE H.ChakuniNO = @ChakuniNO
+						--			 --2021/05/07 Y.Nishikawa ADD 条件追加
+						--			 AND M.ChakuniGyouNO = @ChakuniGyouNO
+						--			 --2021/05/07 Y.Nishikawa ADD 条件追加
+      --             			    ) DCKM
+      --                ON DGZK.SoukoCD = DCKM.SoukoCD
+      --                AND DGZK.ShouhinCD = DCKM.ShouhinCD
+      --                AND DGZK.KanriNO = DCKM.KanriNO
+      --                AND DGZK.NyuukoDate = DCKM.ChakuniDate
+      --             END
+      --             ELSE
+      --             BEGIN
                    
-                      INSERT INTO D_GenZaiko
-                                 (SoukoCD
-                                 ,ShouhinCD
-                                 ,KanriNO
-                                 ,NyuukoDate
-                                 ,GenZaikoSuu
-                                 ,IdouSekisouSuu
-                                 ,InsertOperator
-                                 ,InsertDateTime
-                                 ,UpdateOperator
-                                 ,UpdateDateTime)
-                      SELECT DCKH.SoukoCD
-                            ,DCKM.ShouhinCD
-                            ,DCKM.KanriNO
-                            ,DCKH.ChakuniDate
-                            ,DCKM.ChakuniSuu
-                            ,0
-                            ,@UpdateOperator
-                            ,@UpdateDateTime
-                            ,@UpdateOperator
-                            ,@UpdateDateTime
-                        FROM D_Chakuni DCKH
-                        INNER JOIN D_ChakuniMeisai DCKM
-                        ON DCKH.ChakuniNO = DCKM.ChakuniNO
-                        WHERE DCKH.ChakuniNO = @ChakuniNO
-                        --2021/05/07 Y.Nishikawa ADD 条件追加
-						AND DCKM.ChakuniGyouNO = @ChakuniGyouNO
-						--2021/05/07 Y.Nishikawa ADD 条件追加
-                   END
-				  --2021/04/27 Y.Nishikawa ADD  在庫更新を引当ファンクション内に移動
+      --                INSERT INTO D_GenZaiko
+      --                           (SoukoCD
+      --                           ,ShouhinCD
+      --                           ,KanriNO
+      --                           ,NyuukoDate
+      --                           ,GenZaikoSuu
+      --                           ,IdouSekisouSuu
+      --                           ,InsertOperator
+      --                           ,InsertDateTime
+      --                           ,UpdateOperator
+      --                           ,UpdateDateTime)
+      --                SELECT DCKH.SoukoCD
+      --                      ,DCKM.ShouhinCD
+      --                      ,DCKM.KanriNO
+      --                      ,DCKH.ChakuniDate
+      --                      ,DCKM.ChakuniSuu
+      --                      ,0
+      --                      ,@UpdateOperator
+      --                      ,@UpdateDateTime
+      --                      ,@UpdateOperator
+      --                      ,@UpdateDateTime
+      --                  FROM D_Chakuni DCKH
+      --                  INNER JOIN D_ChakuniMeisai DCKM
+      --                  ON DCKH.ChakuniNO = DCKM.ChakuniNO
+      --                  WHERE DCKH.ChakuniNO = @ChakuniNO
+      --                  --2021/05/07 Y.Nishikawa ADD 条件追加
+						--AND DCKM.ChakuniGyouNO = @ChakuniGyouNO
+						----2021/05/07 Y.Nishikawa ADD 条件追加
+      --             END
+				  ----2021/04/27 Y.Nishikawa ADD  在庫更新を引当ファンクション内に移動
+				  --2021/06/07 Y.Nishikawa DEL 在庫更新は入荷明細単位で行う↑↑
 
 			END
 			--修正モード修正前(@ProcessKBN = 20)または削除モード(@ProcessKBN = 30)の場合、
@@ -1754,9 +1777,10 @@ BEGIN
                           FROM D_ShukkaSiziMeisai
 					      WHERE ShukkaSiziNO = @ShukkaSiziNO_31
 					      AND ShukkaSiziGyouNO = @ShukkaSiziGyouNO_31
+						  AND @MeisaiShukkaSiziSuuZan_31 - @ShukkaSiziZumiSuu_31 > 0
 					 END
-					 --明細出荷指示残数≦受注詳細の出荷指示済数の場合
-					 ELSE
+					 --明細出荷指示残数≦受注詳細の出荷指示済数 かつ @MeisaiShukkaSiziSuuZan_31＞0 の場合
+					 ELSE IF(@MeisaiShukkaSiziSuuZan_31 <= @ShukkaSiziZumiSuu_31 AND @MeisaiShukkaSiziSuuZan_31 > 0)
 					 BEGIN
 					     --受注詳細の出荷指示済数で出荷指示詳細を作成
 					     INSERT INTO D_ShukkaSiziShousai
@@ -1810,8 +1834,205 @@ BEGIN
 				  END
 				  --2021/05/26 Y.Nishikawa ADD 紐づく受注が出荷指示完了済（出荷指示完了区分＝１）の場合、引当ロジックはスルー↑↑
 
-				  --４．現在庫
-				  --2021/04/27 Y.Nishikawa ADD  在庫更新を引当ファンクション内に移動
+				  --2021/06/07 Y.Nishikawa ADD 在庫更新は入荷明細単位で行う↓↓
+				  ----４．現在庫
+				  ----2021/04/27 Y.Nishikawa DEL 在庫更新を引当ファンクション内に移動
+      --            IF EXISTS ( 
+      --                        SELECT * 
+      --                        FROM D_GenZaiko DGZK
+      --                        INNER JOIN (
+      --            			             SELECT H.SoukoCD
+      --            						       ,M.ShouhinCD
+      --            							   ,M.KanriNO
+      --            							   ,H.ChakuniDate
+      --            						 FROM D_Chakuni H
+      --                                     INNER JOIN D_ChakuniMeisai M
+      --                                     ON H.ChakuniNO = M.ChakuniNO
+      --                                     WHERE H.ChakuniNO = @ChakuniNO
+						--				   --2021/05/07 Y.Nishikawa ADD 条件追加
+						--				   AND M.ChakuniGyouNO = @ChakuniGyouNO
+						--				   --2021/05/07 Y.Nishikawa ADD 条件追加
+      --            			           ) DCKM
+      --                                       ON DGZK.SoukoCD = DCKM.SoukoCD
+      --                                       AND DGZK.ShouhinCD = DCKM.ShouhinCD
+      --                                       AND DGZK.KanriNO = DCKM.KanriNO
+      --                                       AND DGZK.NyuukoDate = DCKM.ChakuniDate
+      --                       )
+      --            BEGIN
+                  
+      --               UPDATE DGZK
+      --                  SET GenZaikoSuu = GenZaikoSuu - DCKM.ChakuniSuu
+      --                     ,UpdateOperator = @UpdateOperator
+      --                     ,UpdateDateTime = @UpdateDateTime
+      --            	FROM D_GenZaiko DGZK
+      --            	INNER JOIN (
+      --            			      SELECT H.SoukoCD
+      --            		         	    ,M.ShouhinCD
+      --            		         	    ,M.KanriNO
+      --            		         	    ,H.ChakuniDate
+      --            						,M.ChakuniSuu
+      --            		          FROM D_Chakuni H
+      --                              INNER JOIN D_ChakuniMeisai M
+      --                              ON H.ChakuniNO = M.ChakuniNO
+      --                              WHERE H.ChakuniNO = @ChakuniNO
+						--			--2021/05/07 Y.Nishikawa ADD 条件追加
+						--			AND M.ChakuniGyouNO = @ChakuniGyouNO
+						--			--2021/05/07 Y.Nishikawa ADD 条件追加
+      --            			    ) DCKM
+      --               ON DGZK.SoukoCD = DCKM.SoukoCD
+      --               AND DGZK.ShouhinCD = DCKM.ShouhinCD
+      --               AND DGZK.KanriNO = DCKM.KanriNO
+      --               AND DGZK.NyuukoDate = DCKM.ChakuniDate
+      --            END
+      --            ELSE
+      --            BEGIN
+                  
+      --               INSERT INTO D_GenZaiko
+      --                          (SoukoCD
+      --                          ,ShouhinCD
+      --                          ,KanriNO
+      --                          ,NyuukoDate
+      --                          ,GenZaikoSuu
+      --                          ,IdouSekisouSuu
+      --                          ,InsertOperator
+      --                          ,InsertDateTime
+      --                          ,UpdateOperator
+      --                          ,UpdateDateTime)
+      --               SELECT DCKH.SoukoCD
+      --                     ,DCKM.ShouhinCD
+      --                     ,DCKM.KanriNO
+      --                     ,DCKH.ChakuniDate
+      --                     ,DCKM.ChakuniSuu * (-1)
+      --                     ,0
+      --                     ,@UpdateOperator
+      --                     ,@UpdateDateTime
+      --                     ,@UpdateOperator
+      --                     ,@UpdateDateTime
+      --                 FROM D_Chakuni DCKH
+      --                 INNER JOIN D_ChakuniMeisai DCKM
+      --                 ON DCKH.ChakuniNO = DCKM.ChakuniNO
+      --                 WHERE DCKH.ChakuniNO = @ChakuniNO
+					 --  --2021/05/07 Y.Nishikawa ADD 条件追加
+					 --  AND DCKM.ChakuniGyouNO = @ChakuniGyouNO
+					 --  --2021/05/07 Y.Nishikawa ADD 条件追加
+                  
+      --            END
+      --    		--2021/04/27 Y.Nishikawa ADD 在庫更新を引当ファンクション内に移動
+				--2021/06/07 Y.Nishikawa DEL 在庫更新は入荷明細単位で行う↑↑
+
+			END
+			--2021/04/20 Y.Nishikawa CHG 条件が不正
+
+			fetch next from cursorOuter into @ChakuniNO,@ChakuniGyouNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@ChakuniSuu,@JuchuuNO,@JuchuuGyouNO
+
+		end
+		
+	close cursorOuter
+	deallocate cursorOuter
+
+	--2021/06/07 Y.Nishikawa ADD 在庫更新は入荷明細単位で行う↓↓
+	--在庫更新は入荷明細単位でおこなう
+	declare @ChakuniNo_Zaiko  as varchar(12),
+		@ChakuniGyouNO_Zaiko as smallint,
+		@SoukoCD_Zaiko as varchar(10),
+		@ShouhinCD_Zaiko as varchar(50),
+		@KanriNO_Zaiko as varchar(10),
+		@NyuukoDate_Zaiko as varchar(10),
+		@ChakuniSuu_Zaiko as decimal(21,6)
+
+	declare cursorZaiko cursor read_only
+	for
+	select cm.ChakuniNO,cm.ChakuniGyouNO,c.SoukoCD,cm.ShouhinCD,cm.KanriNO,c.ChakuniDate,cm.ChakuniSuu
+	from D_ChakuniMeisai cm inner join D_Chakuni c on cm.ChakuniNO = c.ChakuniNO
+	where cm.ChakuniNO = @SlipNo
+	
+	open cursorZaiko
+	
+	fetch next from cursorZaiko into @ChakuniNo_Zaiko,@ChakuniGyouNO_Zaiko,@SoukoCD_Zaiko,@ShouhinCD_Zaiko,@KanriNO_Zaiko,@NyuukoDate_Zaiko,@ChakuniSuu_Zaiko
+	while @@FETCH_STATUS = 0
+		begin
+		    --新規モード(@ProcessKBN = 10)または修正モード修正後(@ProcessKBN = 21)の場合、
+			IF (@ProcessKBN = 10 OR @ProcessKBN = 21)
+			BEGIN
+			   --６．現在庫
+				  IF EXISTS ( 
+                               SELECT * 
+                               FROM D_GenZaiko DGZK
+                               INNER JOIN (
+                   			             SELECT H.SoukoCD
+                   						       ,M.ShouhinCD
+                   							   ,M.KanriNO
+                   							   ,H.ChakuniDate
+                   						 FROM D_Chakuni H
+                                            INNER JOIN D_ChakuniMeisai M
+                                            ON H.ChakuniNO = M.ChakuniNO
+                                            WHERE H.ChakuniNO = @ChakuniNO_Zaiko
+											AND M.ChakuniGyouNO = @ChakuniGyouNO_Zaiko
+                   			           ) DCKM
+                                              ON DGZK.SoukoCD = DCKM.SoukoCD
+                                              AND DGZK.ShouhinCD = DCKM.ShouhinCD
+                                              AND DGZK.KanriNO = DCKM.KanriNO
+                                              AND DGZK.NyuukoDate = DCKM.ChakuniDate
+                              )
+                   BEGIN
+                   
+                      UPDATE DGZK
+                         SET GenZaikoSuu = GenZaikoSuu + DCKM.ChakuniSuu
+                            ,UpdateOperator = @UpdateOperator
+                            ,UpdateDateTime = @UpdateDateTime
+                   	FROM D_GenZaiko DGZK
+                   	INNER JOIN (
+                   			      SELECT H.SoukoCD
+                   		         	    ,M.ShouhinCD
+                   		         	    ,M.KanriNO
+                   		         	    ,H.ChakuniDate
+                   						,M.ChakuniSuu
+                   		          FROM D_Chakuni H
+                                     INNER JOIN D_ChakuniMeisai M
+                                     ON H.ChakuniNO = M.ChakuniNO
+                                     WHERE H.ChakuniNO = @ChakuniNO_Zaiko
+									 AND M.ChakuniGyouNO = @ChakuniGyouNO_Zaiko
+                   			    ) DCKM
+                      ON DGZK.SoukoCD = DCKM.SoukoCD
+                      AND DGZK.ShouhinCD = DCKM.ShouhinCD
+                      AND DGZK.KanriNO = DCKM.KanriNO
+                      AND DGZK.NyuukoDate = DCKM.ChakuniDate
+                   END
+                   ELSE
+                   BEGIN
+                   
+                      INSERT INTO D_GenZaiko
+                                 (SoukoCD
+                                 ,ShouhinCD
+                                 ,KanriNO
+                                 ,NyuukoDate
+                                 ,GenZaikoSuu
+                                 ,IdouSekisouSuu
+                                 ,InsertOperator
+                                 ,InsertDateTime
+                                 ,UpdateOperator
+                                 ,UpdateDateTime)
+                      SELECT DCKH.SoukoCD
+                            ,DCKM.ShouhinCD
+                            ,DCKM.KanriNO
+                            ,DCKH.ChakuniDate
+                            ,DCKM.ChakuniSuu
+                            ,0
+                            ,@UpdateOperator
+                            ,@UpdateDateTime
+                            ,@UpdateOperator
+                            ,@UpdateDateTime
+                        FROM D_Chakuni DCKH
+                        INNER JOIN D_ChakuniMeisai DCKM
+                        ON DCKH.ChakuniNO = DCKM.ChakuniNO
+                        WHERE DCKH.ChakuniNO = @ChakuniNO_Zaiko
+						AND DCKM.ChakuniGyouNO = @ChakuniGyouNO_Zaiko
+                   END
+			END
+			--修正モード修正前(@ProcessKBN = 20)または削除モード(@ProcessKBN = 30)の場合、
+			ELSE
+			BEGIN
+			--４．現在庫
                   IF EXISTS ( 
                               SELECT * 
                               FROM D_GenZaiko DGZK
@@ -1823,10 +2044,8 @@ BEGIN
                   						 FROM D_Chakuni H
                                            INNER JOIN D_ChakuniMeisai M
                                            ON H.ChakuniNO = M.ChakuniNO
-                                           WHERE H.ChakuniNO = @ChakuniNO
-										   --2021/05/07 Y.Nishikawa ADD 条件追加
-										   AND M.ChakuniGyouNO = @ChakuniGyouNO
-										   --2021/05/07 Y.Nishikawa ADD 条件追加
+                                           WHERE H.ChakuniNO = @ChakuniNO_Zaiko
+										   AND M.ChakuniGyouNO = @ChakuniGyouNO_Zaiko
                   			           ) DCKM
                                              ON DGZK.SoukoCD = DCKM.SoukoCD
                                              AND DGZK.ShouhinCD = DCKM.ShouhinCD
@@ -1849,10 +2068,8 @@ BEGIN
                   		          FROM D_Chakuni H
                                     INNER JOIN D_ChakuniMeisai M
                                     ON H.ChakuniNO = M.ChakuniNO
-                                    WHERE H.ChakuniNO = @ChakuniNO
-									--2021/05/07 Y.Nishikawa ADD 条件追加
-									AND M.ChakuniGyouNO = @ChakuniGyouNO
-									--2021/05/07 Y.Nishikawa ADD 条件追加
+                                    WHERE H.ChakuniNO = @ChakuniNO_Zaiko
+									AND M.ChakuniGyouNO = @ChakuniGyouNO_Zaiko
                   			    ) DCKM
                      ON DGZK.SoukoCD = DCKM.SoukoCD
                      AND DGZK.ShouhinCD = DCKM.ShouhinCD
@@ -1886,23 +2103,19 @@ BEGIN
                        FROM D_Chakuni DCKH
                        INNER JOIN D_ChakuniMeisai DCKM
                        ON DCKH.ChakuniNO = DCKM.ChakuniNO
-                       WHERE DCKH.ChakuniNO = @ChakuniNO
-					   --2021/05/07 Y.Nishikawa ADD 条件追加
-					   AND DCKM.ChakuniGyouNO = @ChakuniGyouNO
-					   --2021/05/07 Y.Nishikawa ADD 条件追加
+                       WHERE DCKH.ChakuniNO = @ChakuniNO_Zaiko
+					   AND DCKM.ChakuniGyouNO = @ChakuniGyouNO_Zaiko
                   
                   END
-          		--2021/04/27 Y.Nishikawa ADD 在庫更新を引当ファンクション内に移動
-
 			END
-			--2021/04/20 Y.Nishikawa CHG 条件が不正
 
-			fetch next from cursorOuter into @ChakuniNO,@ChakuniGyouNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@ChakuniSuu,@JuchuuNO,@JuchuuGyouNO
+			fetch next from cursorZaiko into @ChakuniNo_Zaiko,@ChakuniGyouNO_Zaiko,@SoukoCD_Zaiko,@ShouhinCD_Zaiko,@KanriNO_Zaiko,@NyuukoDate_Zaiko,@ChakuniSuu_Zaiko
 
 		end
 		
-	close cursorOuter
-	deallocate cursorOuter
+	close cursorZaiko
+	deallocate cursorZaiko
+	--2021/06/07 Y.Nishikawa ADD 在庫更新は入荷明細単位で行う↑↑
 	
 END
 GO
