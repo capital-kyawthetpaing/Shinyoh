@@ -573,7 +573,7 @@ BEGIN
 
 				UPDATE dm
 		    	SET HikiateZumiSuu = ISNULL(ds.HikiateZumiSuu, 0),
-		    		MiHikiateSuu = dm.JuchuuSuu - ISNULL(ds.HikiateZumiSuu, 0),
+		    		MiHikiateSuu = dm.JuchuuSuu - ISNULL(ds.HikiateZumiSuu, 0) - ISNULL(ds.ShukkaSiziZumiSuu, 0),
 		    		UpdateOperator = @UpdateOperator,
 		    		UpdateDateTime = @UpdateDateTime
 		    	FROM D_JuchuuMeisai dm
@@ -581,6 +581,7 @@ BEGIN
 		    	             SELECT JuchuuNO
 		    				       ,JuchuuGyouNO
 		    					   ,SUM(HikiateZumiSuu) HikiateZumiSuu
+								   ,SUM(ShukkaSiziZumiSuu) ShukkaSiziZumiSuu
 		    				 FROM D_JuchuuShousai
 		    				 WHERE JuchuuNO = @JuchuuNo
 		    				 AND JuchuuGyouNO = @JuchuuGyouNO
