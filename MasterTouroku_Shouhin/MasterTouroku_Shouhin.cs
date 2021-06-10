@@ -553,7 +553,7 @@ namespace MasterTouroku_Shouhin
                     if (imgBytes.Length > 0)
                     {
                         pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
-                        pImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pImage.SizeMode = PictureBoxSizeMode.Zoom;
                     }
                 }
 
@@ -566,7 +566,7 @@ namespace MasterTouroku_Shouhin
         {
             pImage.Image = null;
             pImage.ImageLocation = txtImage.Text;
-            pImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            pImage.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private string GetFileData()
