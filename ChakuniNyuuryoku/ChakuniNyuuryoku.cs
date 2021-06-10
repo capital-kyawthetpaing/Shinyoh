@@ -1136,10 +1136,19 @@ namespace ChakuniNyuuryoku
                 dtmain = dtTemp;
                 gvChakuniNyuuryoku.DataSource = dt_Details;
 
-                if (cboMode.SelectedValue.ToString() == "3")
+                if (F8_dt1.Rows.Count == 0)
+                    F8_dt1 = dt_Details.Clone();
+
+                if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "2")
                 {
-                    gvChakuniNyuuryoku.Memory_Row_Count = dt_Details.Rows.Count;
+                    F8_dt1 = dtTemp;
+                    gvChakuniNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
                 }
+
+                //if (cboMode.SelectedValue.ToString() == "3")
+                //{
+                //    gvChakuniNyuuryoku.Memory_Row_Count = dt_Details.Rows.Count;
+                //}
             }
             else
                 gvChakuniNyuuryoku.DataSource = dtClear;

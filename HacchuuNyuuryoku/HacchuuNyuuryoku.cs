@@ -648,9 +648,13 @@ namespace HacchuuNyuuryoku
 
                     if (F8_dt1.Rows.Count == 0)
                         F8_dt1 = gv1_to_dt1.Clone();
-                    gv_HacchuuNyuuryoku.Select();
 
-                    gv_HacchuuNyuuryoku.CurrentCell = gv_HacchuuNyuuryoku.Rows[0].Cells["colChakuniYoteiDate"];//set focus to chakuniyotei date (ktp)
+                    if (dt.Rows.Count > 0)
+                    {
+                        gv_HacchuuNyuuryoku.Select();
+
+                        gv_HacchuuNyuuryoku.CurrentCell = gv_HacchuuNyuuryoku.Rows[0].Cells["colChakuniYoteiDate"];//set focus to chakuniyotei date (ktp)
+                    }
                 }
                 else
                 {
