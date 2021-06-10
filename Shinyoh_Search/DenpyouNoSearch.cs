@@ -34,7 +34,7 @@ namespace Shinyoh_Search
             cbDivision1.Bind(true, multi_entity);
             cbDivision2.Bind(true, multi_entity);
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
-            SetButton(ButtonType.BType.Normal, F9, "", false);
+            SetButton(ButtonType.BType.Normal, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
@@ -43,8 +43,9 @@ namespace Shinyoh_Search
             gvDenpyouNo.SetGridDesign();
             gvDenpyouNo.SetReadOnlyColumn("**");//readonly for search form 
             BindDataGrid();
-            cbDivision2.E106Check(true, cbDivision1, cbDivision2);
+            cbDivision2.E106Check(true, cbDivision1, cbDivision2);            
             gvDenpyouNo.Select();
+            cbDivision1.Select();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
