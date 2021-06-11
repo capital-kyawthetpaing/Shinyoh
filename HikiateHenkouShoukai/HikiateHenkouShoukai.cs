@@ -455,7 +455,7 @@ namespace HikiateHenkouShoukai
           
             if (F8_dt1.Rows.Count > 0)
             {
-                var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("商品")).ThenBy(r => r.Field<string>("引当調整数")).ThenBy(r => r.Field<string>("表示順")).ThenBy(r => r.Field<string>("受注番号-行番号")).CopyToDataTable();
+                var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("商品")).ThenBy(r => r.Field<int>("引当調整数")).ThenBy(r => r.Field<string>("表示順")).ThenBy(r => r.Field<string>("受注番号-行番号")).CopyToDataTable();
                 gvMainDetail.DataSource = dtConfirm;
                 gvMainDetail.Memory_Row_Count = F8_dt1.Rows.Count;
                 gvAggregationDetails.Memory_Row_Count = F8_dt1.Rows.Count;      //For Error Check
@@ -840,11 +840,11 @@ namespace HikiateHenkouShoukai
             dt.Columns.Add("サイズ");
             if (type != 2)
             {
-                dt.Columns.Add("受注数");
-                dt.Columns.Add("着荷予定数");
-                dt.Columns.Add("未引当数");
+                dt.Columns.Add("受注数" ,typeof(int));
+                dt.Columns.Add("着荷予定数", typeof(int));
+                dt.Columns.Add("未引当数", typeof(int));
             }
-            dt.Columns.Add("引当済数");
+            dt.Columns.Add("引当済数", typeof(int));
             switch(type)
             {
                 case 0:
@@ -853,10 +853,10 @@ namespace HikiateHenkouShoukai
                     dt.Columns.Add("出荷済数");
                     break;
                 case 1:
-                    dt.Columns.Add("着荷済数");
-                    dt.Columns.Add("出荷指示数");
-                    dt.Columns.Add("出荷済数");
-                    dt.Columns.Add("引当調整数");
+                    dt.Columns.Add("着荷済数", typeof(int));
+                    dt.Columns.Add("出荷指示数", typeof(int));
+                    dt.Columns.Add("出荷済数", typeof(int));
+                    dt.Columns.Add("引当調整数", typeof(int));
                     dt.Columns.Add("受注番号-行番号");
                     dt.Columns.Add("得意先名");
                     dt.Columns.Add("小売店名");
@@ -884,10 +884,10 @@ namespace HikiateHenkouShoukai
         {
             if(gvMainDetail.IsLastKeyEnter)
             {
-                string val = gvMainDetail.Rows[e.RowIndex].Cells[11].EditedFormattedValue.ToString();
+                string val = gvMainDetail.Rows[e.RowIndex].Cells[11].EditedFormattedValue.ToString().Replace(",", "");
                 if (string.IsNullOrEmpty(val))
                     gvMainDetail.Rows[e.RowIndex].Cells[11].Value = 0;
-                else if (Convert.ToInt32(val) < 0)
+                else if (Convert.ToInt64(val) < 0)
                     gvMainDetail.Rows[e.RowIndex].Cells[11].Style.ForeColor = Color.Red;
             }
         }
