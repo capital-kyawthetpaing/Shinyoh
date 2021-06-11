@@ -286,7 +286,7 @@ namespace ChakuniNyuuryoku
 
                 if (F8_dt1.Rows.Count > 0)//
                 {
-                    var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("ChakuniYoteiNO")).ThenBy(r => r.Field<string>("ChakuniYoteiGyouNO")).ThenBy(r => r.Field<string>("HacchuuNO")).ThenBy(r => r.Field<string>("HacchuuGyouNO")).CopyToDataTable();
+                    var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("ChakuniYoteiDate")).ThenBy(r => r.Field<string>("ChakuniYoteiNO")).ThenBy(r => r.Field<Int16>("ChakuniYoteiGyouNO")).ThenBy(r => r.Field<string>("HacchuuNO")).ThenBy(r => r.Field<Int16>("HacchuuGyouNO")).CopyToDataTable();
                     gvChakuniNyuuryoku.DataSource = dtConfirm;
                     gvChakuniNyuuryoku.Focus();
                     gvChakuniNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
@@ -819,11 +819,14 @@ namespace ChakuniNyuuryoku
                     dtmain.Rows.Remove(dr);
 
                 gvChakuniNyuuryoku.DataSource = dtmain;
+                DataTable dt_temp = dtmain.Copy();
+                dt_Details = dt_temp;
+                
                 gvChakuniNyuuryoku.Columns["ChakuniSuu"].ReadOnly = false;
                 gvChakuniNyuuryoku.Columns["SiireKanryouKBN"].ReadOnly = false;
 
                 if(dtmain.Rows.Count > 0)
-                gvChakuniNyuuryoku.CurrentCell = gvChakuniNyuuryoku.Rows[0].Cells["ChakuniSuu"];
+                    gvChakuniNyuuryoku.CurrentCell = gvChakuniNyuuryoku.Rows[0].Cells["ChakuniSuu"];
                 //gvChakuniNyuuryoku.Columns["SiireKanryouKBN_Head"].Visible = false;
                 //gvChakuniNyuuryoku.Columns["SiireZumiSuu_Sum"].Visible = false;
                 Disable();
@@ -990,10 +993,10 @@ namespace ChakuniNyuuryoku
             dt.Columns.Add("ChakuniMeisaiTekiyou", typeof(string));
             dt.Columns.Add("JanCD", typeof(string));
             dt.Columns.Add("ChakuniYoteiNO", typeof(string));
-            dt.Columns.Add("ChakuniYoteiGyouNO", typeof(string));
+            dt.Columns.Add("ChakuniYoteiGyouNO", typeof(int));
             dt.Columns.Add("Chakuni", typeof(string));
             dt.Columns.Add("HacchuuNO", typeof(string));
-            dt.Columns.Add("HacchuuGyouNO", typeof(string));
+            dt.Columns.Add("HacchuuGyouNO", typeof(int));
             dt.Columns.Add("Hacchuu", typeof(string));
             dt.Columns.Add("ShouhinCD", typeof(string));
             dt.Columns.Add("SiireKanryouKBN_Head", typeof(string));
@@ -1132,14 +1135,24 @@ namespace ChakuniNyuuryoku
             dt_Details = cbl.ChakuniNyuuryoku_Update_Select(chkEntity, 2);
             if (dt_Details.Rows.Count > 0)
             {
-                dtTemp = dt_Details.Copy();
-                dtmain = dtTemp;
                 gvChakuniNyuuryoku.DataSource = dt_Details;
 
-                if (cboMode.SelectedValue.ToString() == "3")
+                dtTemp = dt_Details.Copy();
+                dtmain = dtTemp;
+
+                if (F8_dt1.Rows.Count == 0)
+                    F8_dt1 = dt_Details.Clone();
+
+                if (cboMode.SelectedValue.ToString() == "3" || cboMode.SelectedValue.ToString() == "2")
                 {
-                    gvChakuniNyuuryoku.Memory_Row_Count = dt_Details.Rows.Count;
+                    F8_dt1 = dtmain.Copy();
+                    gvChakuniNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
                 }
+
+                //if (cboMode.SelectedValue.ToString() == "3")
+                //{
+                //    gvChakuniNyuuryoku.Memory_Row_Count = dt_Details.Rows.Count;
+                //}
             }
             else
                 gvChakuniNyuuryoku.DataSource = dtClear;
