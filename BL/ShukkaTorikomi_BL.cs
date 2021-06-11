@@ -78,7 +78,7 @@ namespace BL
             return ckmdl.SelectDatatable(sp_name, GetConnectionString(), parameters);
         }
 
-        public DataTable GetShukkaNO(string SerialNO, DateTime ShukkaDate, string SEQNO)
+        public DataTable GetShukkaNO(string SerialNO, string ShukkaDate, string SEQNO)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[3];
