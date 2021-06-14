@@ -15,6 +15,7 @@ GO
 -- Create date: <Create Date,,>
 -- Description: <Description,,>
 -- History    : 2021/05/11 Y.Nishikawa 完了CheckBox＝ONの場合でも完了扱いにならない（画面の完了CheckBoxは「True(ON)・False(OFF)」ではなく、「1(ON)・0(OFF)」で引き継がれている）
+--            : 2021/06/14 Y.Nishikawa 改定日直近の意味をはきちがえてる
 -- =============================================
 CREATE PROCEDURE [dbo].[ChakuniNyuuryoku_Update]
 @XML_Main as xml,
@@ -328,7 +329,10 @@ exec dbo.Fnc_Hikiate 5,@ChakuniNO,20,@Operator
         UpdateOperator=@Operator,
         UpdateDateTime=@currentDate
      from #Temp_Main m 
-     LEFT OUTER JOIN F_Siiresaki(getdate()) FS on FS.SiiresakiCD=m.SiiresakiCD
+	 --2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↓↓
+	 --LEFT OUTER JOIN F_Siiresaki(getdate()) FS on FS.SiiresakiCD=m.SiiresakiCD
+	 LEFT OUTER JOIN F_Siiresaki(@filter_date) FS on FS.SiiresakiCD=m.SiiresakiCD
+	 --2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↑↑
      where D_Chakuni.ChakuniNO=m.ChakuniNO
 
      --Update Sheet B
