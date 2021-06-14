@@ -629,7 +629,6 @@
             this.col_Free_JANCD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.col_Free_JANCD.DataPropertyName = "JANCD";
             this.col_Free_JANCD.HeaderText = "JANCD";
-            this.col_Free_JANCD.MinimumWidth = 100;
             this.col_Free_JANCD.Name = "col_Free_JANCD";
             // 
             // gvAggregationDetails
@@ -777,7 +776,6 @@
             // 
             this.colJANCD.DataPropertyName = "JANCD";
             this.colJANCD.HeaderText = "JANCD";
-            this.colJANCD.MinimumWidth = 100;
             this.colJANCD.Name = "colJANCD";
             this.colJANCD.Width = 117;
             // 
@@ -970,9 +968,7 @@
             this.col_Detail_JuchuuNO_JuchuuGyouNO.DataPropertyName = "受注番号-行番号";
             this.col_Detail_JuchuuNO_JuchuuGyouNO.FillWeight = 150F;
             this.col_Detail_JuchuuNO_JuchuuGyouNO.HeaderText = "受注番号-行番号";
-            this.col_Detail_JuchuuNO_JuchuuGyouNO.MinimumWidth = 110;
             this.col_Detail_JuchuuNO_JuchuuGyouNO.Name = "col_Detail_JuchuuNO_JuchuuGyouNO";
-            this.col_Detail_JuchuuNO_JuchuuGyouNO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.col_Detail_JuchuuNO_JuchuuGyouNO.Width = 130;
             // 
             // col_Detail_TokuisakiRyakuName
@@ -980,7 +976,6 @@
             this.col_Detail_TokuisakiRyakuName.DataPropertyName = "得意先名";
             this.col_Detail_TokuisakiRyakuName.FillWeight = 400F;
             this.col_Detail_TokuisakiRyakuName.HeaderText = "得意先名";
-            this.col_Detail_TokuisakiRyakuName.MinimumWidth = 400;
             this.col_Detail_TokuisakiRyakuName.Name = "col_Detail_TokuisakiRyakuName";
             this.col_Detail_TokuisakiRyakuName.Width = 400;
             // 
@@ -1015,7 +1010,6 @@
             this.col_Detail_JANCD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.col_Detail_JANCD.DataPropertyName = "JANCD";
             this.col_Detail_JANCD.HeaderText = "JANCD";
-            this.col_Detail_JANCD.MinimumWidth = 110;
             this.col_Detail_JANCD.Name = "col_Detail_JANCD";
             // 
             // btn_F11
