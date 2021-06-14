@@ -458,7 +458,7 @@ namespace HikiateHenkouShoukai
           
             if (F8_dt1.Rows.Count > 0)
             {
-                var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("商品")).ThenBy(r => r.Field<int>("引当調整数")).ThenBy(r => r.Field<string>("表示順")).ThenBy(r => r.Field<string>("受注番号-行番号")).CopyToDataTable();
+                var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<int>("引当調整数")).ThenBy(r => r.Field<string>("表示順")).ThenBy(r => r.Field<string>("受注番号-行番号")).CopyToDataTable();
                 gvMainDetail.DataSource = dtConfirm;
                 gvMainDetail.Memory_Row_Count = F8_dt1.Rows.Count;
                 gvAggregationDetails.Memory_Row_Count = F8_dt1.Rows.Count;      //For Error Check
