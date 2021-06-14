@@ -534,8 +534,8 @@
             // 
             this.gvFreeInventoryDetails.AllowUserToAddRows = false;
             this.gvFreeInventoryDetails.AllowUserToDeleteRows = false;
-            this.gvFreeInventoryDetails.AllowUserToResizeColumns = false;
-            this.gvFreeInventoryDetails.AllowUserToResizeRows = false;
+            this.gvFreeInventoryDetails.AllowUserToResizeColumns = true;
+            this.gvFreeInventoryDetails.AllowUserToResizeRows = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
@@ -636,8 +636,8 @@
             // 
             this.gvAggregationDetails.AllowUserToAddRows = false;
             this.gvAggregationDetails.AllowUserToDeleteRows = false;
-            this.gvAggregationDetails.AllowUserToResizeColumns = false;
-            this.gvAggregationDetails.AllowUserToResizeRows = false;
+            this.gvAggregationDetails.AllowUserToResizeColumns = true;
+            this.gvAggregationDetails.AllowUserToResizeRows = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
@@ -806,8 +806,8 @@
             // 
             this.gvMainDetail.AllowUserToAddRows = false;
             this.gvMainDetail.AllowUserToDeleteRows = false;
-            this.gvMainDetail.AllowUserToResizeColumns = false;
-            this.gvMainDetail.AllowUserToResizeRows = false;
+            this.gvMainDetail.AllowUserToResizeColumns = true;
+            this.gvMainDetail.AllowUserToResizeRows = true;
             this.gvMainDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
