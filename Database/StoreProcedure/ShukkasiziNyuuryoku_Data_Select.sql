@@ -16,6 +16,7 @@ GO
 -- Create date: <25-05-2021>
 -- Description: <Update,Delete,Inquiry data select>
 -- History    : 2021/04/14 Y.Nishikawa CHG 出荷指示済数＝受注明細.出荷指示数 - 当伝票.出荷指示数（つまり他伝票の出荷指示数合計）
+--            : 2021/06/14 Y.Nishikawa 改定日直近の意味をはきちがえてる
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Data_Select]
     -- Add the parameters for the stored procedure here
@@ -114,8 +115,13 @@ begin
     left outer join D_JuchuuMeisai JCMS         --Table4
     on JCMS.JuchuuNO=SKMS.JuchuuNO
     and JCMS.JuchuuGyouNO=SKMS.JuchuuGyouNO
-    left outer join F_Staff(GETDATE()) FS       --Table5
-    on FS.StaffCD=SK.StaffCD
+	--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↓↓
+	--left outer join F_Staff(GETDATE()) FS       --Table5
+	--on FS.StaffCD=SK.StaffCD
+	OUTER APPLY (SELECT * FROM F_Staff(SK.ShukkaYoteiDate) F WHERE F.StaffCD = SK.StaffCD) FS
+	--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↑↑
+    
+    
     left outer join M_Souko MS                  --Table6
     on MS.SoukoCD=SKMS.SoukoCD
 
@@ -181,11 +187,18 @@ begin
     left outer join D_JuchuuMeisai JCMS         --Table4
     on JCMS.JuchuuNO=SKMS.JuchuuNO
     and JCMS.JuchuuGyouNO=SKMS.JuchuuGyouNO
-    left outer join F_Staff(GETDATE()) FS       --Table5
-    on FS.StaffCD=SK.StaffCD
+	--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↓↓
+	--left outer join F_Staff(GETDATE()) FS       --Table5
+    --on FS.StaffCD=SK.StaffCD
+	OUTER APPLY (SELECT * FROM F_Staff(SK.ShukkaYoteiDate) F WHERE F.StaffCD = SK.StaffCD) FS
+	--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↑↑
     left outer join M_Souko MS                  --Table6
     on MS.SoukoCD=SKMS.SoukoCD
-    left outer join F_Shouhin(GETDATE()) FShouhin ON FShouhin.ShouhinCD=SKMS.ShouhinCD --Table7
+	--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↓↓
+	--left outer join F_Shouhin(GETDATE()) FShouhin ON FShouhin.ShouhinCD=SKMS.ShouhinCD --Table7
+	OUTER APPLY (SELECT * FROM F_Shouhin(SK.ShukkaYoteiDate) F WHERE F.ShouhinCD = SKMS.ShouhinCD) FShouhin
+	--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↑↑
+    
     where SK.ShukkaSiziNO=@ShippingNo
     order by SKMS.GyouHyouziJun ASC
 
