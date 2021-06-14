@@ -524,7 +524,7 @@ namespace HacchuuSho
             xlWorkSheet.Cells[added + 9, 6] = "PURCHASE ORDER "; 
             xlApp.Cells.Font.Name = "Times New Roman";
 
-            xlApp.get_Range("I" +(added + 17).ToString(), "S"  +(added + 17).ToString()).Cells.NumberFormat = "0.0"; 
+            xlApp.get_Range("I" +(added + 15).ToString(), "S"  +(added + 15).ToString()).Cells.NumberFormat = "0.0"; 
             xlApp.get_Range("A"+(added+1).ToString()+":U"+(added + 1).ToString() , "A" + (added + 3).ToString() + ":U" + (added + 3).ToString() ).Merge(Type.Missing);
             xlApp.get_Range("A" + (added + 4).ToString() , "U" + (added + 4).ToString() ).Merge(Type.Missing);
             xlApp.get_Range("A"+ (added + 5).ToString(), "U"+ (added + 5).ToString()).Merge(Type.Missing);
