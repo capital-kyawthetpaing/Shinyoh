@@ -172,7 +172,7 @@ namespace JuchuuList {
             if (tagID == "10")
             {
                
-                    DataTable dt = new DataTable { TableName = "JuchuuListTable" };
+                    DataTable dt = new DataTable { TableName = "JuchuuListTable" }; 
                     dt = Get_Form_Object();
                 if (dt.Rows.Count > 0)
                 {
