@@ -889,6 +889,7 @@ namespace HikiateHenkouShoukai
             if(gvMainDetail.IsLastKeyEnter)
             {
                 string val = gvMainDetail.Rows[e.RowIndex].Cells[11].EditedFormattedValue.ToString().Replace(",", "");
+                gvMainDetail.Rows[e.RowIndex].Cells[11].Style.ForeColor = Color.Black;
                 if (string.IsNullOrEmpty(val))
                     gvMainDetail.Rows[e.RowIndex].Cells[11].Value = 0;
                 else if (Convert.ToInt64(val) < 0)
