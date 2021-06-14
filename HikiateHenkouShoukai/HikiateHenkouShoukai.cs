@@ -23,6 +23,7 @@ namespace HikiateHenkouShoukai
         {
             InitializeComponent();
             cf = new CommonFunction();
+            gvMainDetail.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.gvMainDetail_DataError);
         }
 
         private void HikiateHenkouShoukai_Load(object sender, EventArgs e)
@@ -949,6 +950,19 @@ namespace HikiateHenkouShoukai
                     sqlTransaction.Rollback();
                     bbl.ShowMessage(ex.Message);
                 }
+            }
+        }
+        private void gvMainDetail_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+                //MessageBox.Show("Enter valid no");
+                //gvMainDetail.RefreshEdit();
+                e.Cancel = false;
             }
         }
     }
