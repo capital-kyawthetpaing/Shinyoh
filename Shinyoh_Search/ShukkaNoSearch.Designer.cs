@@ -499,7 +499,7 @@
             this.txtShouhinName.AllowMinus = false;
             this.txtShouhinName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtShouhinName.DecimalPlace = 0;
-            this.txtShouhinName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtShouhinName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtShouhinName.DepandOnMode = true;
             this.txtShouhinName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShouhinName.IntegerPart = 0;
