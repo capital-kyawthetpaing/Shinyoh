@@ -175,6 +175,8 @@ namespace HacchuuSho
                 DataTable dt = bl.M_Multiporpose_SelectData(txtBrandCD.Text, 1, "103", string.Empty);
                 if (dt.Rows.Count > 0)
                     lblBrandName.Text = dt.Rows[0]["Char1"].ToString();
+                else
+                    lblBrandName.Text = string.Empty;//ssa
             }
         }
         private string GetDate(string dt)
