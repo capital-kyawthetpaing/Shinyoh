@@ -40,8 +40,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblVer = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.lblProgress = new System.Windows.Forms.Label();
+            this.progressBar2 = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -232,25 +234,40 @@
             this.label6.Text = "Version - ";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // progressBar1
+            // progressBar2
             // 
-            this.progressBar1.Location = new System.Drawing.Point(406, 292);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(405, 23);
-            this.progressBar1.Step = 1;
-            this.progressBar1.TabIndex = 81;
-            this.progressBar1.Visible = false;
+            this.progressBar2.Location = new System.Drawing.Point(405, 295);
+            this.progressBar2.Name = "progressBar2";
+            this.progressBar2.Size = new System.Drawing.Size(405, 23);
+            this.progressBar2.TabIndex = 82;
+            this.progressBar2.Visible = false;
             // 
-            // lblProgress
+            // label1
             // 
-            this.lblProgress.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblProgress.Location = new System.Drawing.Point(512, 245);
-            this.lblProgress.Name = "lblProgress";
-            this.lblProgress.Size = new System.Drawing.Size(200, 23);
-            this.lblProgress.TabIndex = 80;
-            this.lblProgress.Text = "lblProgress";
-            this.lblProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblProgress.Visible = false;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(542, 263);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(10, 13);
+            this.label1.TabIndex = 83;
+            this.label1.Text = " ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.WorkerReportsProgress = true;
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(588, 324);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(10, 13);
+            this.label2.TabIndex = 84;
+            this.label2.Text = " ";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ShinyohLogin
             // 
@@ -258,8 +275,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1176, 462);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.lblProgress);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.progressBar2);
             this.Controls.Add(this.lblVer);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.pictureBox1);
@@ -294,7 +312,9 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblVer;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label lblProgress;
+        private System.Windows.Forms.ProgressBar progressBar2;
+        private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.Label label2;
     }
 }

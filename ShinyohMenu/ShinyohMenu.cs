@@ -13,6 +13,7 @@ using Shinyoh_Controls;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Security.AccessControl;
+using static Shinyoh_Controls.STextBox;
 
 namespace ShinyohMenu
 {
@@ -308,6 +309,11 @@ namespace ShinyohMenu
             if (Gym == 1)
                 result = k0.Select().OrderBy(row => row["BusinessSEQ"]);
             else
+                if (Gym == 2)
+            {
+                result = k0.Select().OrderBy(row => row["Index"]);
+            }
+            else
                 result = k0.Select().OrderBy(row => row["ProgramSEQ"]);
             var k = result.CopyToDataTable();
             // MainMenuLogin
@@ -404,11 +410,24 @@ namespace ShinyohMenu
 
         }
         private string Search_Text { get; set; } = "起動する画面名を入力してください。";
+        public DefKey DefaultKeyboard { get; set; } = 0;
         private void sTextBox1_Enter(object sender, EventArgs e)
         {
             if (Search_Box.Text == Search_Text)
             {
                 Search_Box.Text = "";
+                //if (DefaultKeyboard == DefKey.Japanese)
+                //{
+                    foreach (InputLanguage lang in InputLanguage.InstalledInputLanguages)
+                    {
+                        if (lang.LayoutName.Equals("Japanese"))
+                        {
+                            InputLanguage.CurrentInputLanguage = lang;
+                            this.ImeMode = ImeMode.Hiragana;
+                            break;
+                        }
+                    }
+                //}
             }
             else
             {
@@ -497,9 +516,9 @@ namespace ShinyohMenu
         {
              ShinyohLogin tcl = new ShinyohLogin(true);
             this.Hide();
-
-            tcl.ShowDialog();
+            tcl.ShowDialog(); 
             this.Close();
+            
         }
 
         public void ShinyohMenu_FormClosing(object sender, FormClosingEventArgs e)
@@ -548,13 +567,16 @@ namespace ShinyohMenu
         }
         private void SearchForm()//マスタ  入力
         {
-            if (String.IsNullOrEmpty(Search_Box.Text) || Search_Box.Text ==  Search_Text)
+            if (String.IsNullOrEmpty(Search_Box.Text.TrimEnd()) || Search_Box.Text.TrimEnd() ==  Search_Text.TrimEnd())
                 return;
             ButtonText(panel_right, dtMenu,3);
-            var dr = dtMenu.Select(" ProgramID like '%" + Search_Box.Text + "%'");
+            var dr = dtMenu.Select(" ProgramID like '%" + Search_Box.Text.TrimEnd() + "%'" );
+            
+
             if (dr.Count() > 0)
             {
                 var dtsend = dr.CopyToDataTable();
+                dtsend.DefaultView.Sort = "BusinessID ASC,BusinessSEQ ASC,ProgramID ASC";
                 dtsend.Columns.Add("Index", typeof(string));
                 int g = 0;
                 foreach (DataRow dro in dtsend.Rows)

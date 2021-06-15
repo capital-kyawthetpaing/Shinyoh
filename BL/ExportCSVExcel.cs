@@ -237,7 +237,7 @@ namespace BL
                                 for (int k = 0; k < numcol.Count(); k++)
                                 {
                                     string val1 = numcol[k].ToString();
-                                    ws.Column(val1).Style.NumberFormat.Format = "#,##0";
+                                    ws.Column(val1).Style.NumberFormat.Format = "#,##0";//ID 3 is the same
                                 }
                             }
                             ws.ShowGridLines = false;

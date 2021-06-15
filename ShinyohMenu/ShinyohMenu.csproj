@@ -27,7 +27,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://163.43.194.87/Shinyoh-Globe/</UpdateUrl>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -89,10 +89,6 @@
     <Reference Include="CKM_CommonFunction">
       <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
     </Reference>
-    <Reference Include="ClientFtp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>Media\ClientFtp.dll</HintPath>
-    </Reference>
     <Reference Include="Entity">
       <HintPath>..\bin\Debug\Entity.dll</HintPath>
     </Reference>
@@ -109,6 +105,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientFtp.cs" />
     <Compile Include="ShinyohLogin.cs">
       <SubType>Form</SubType>
     </Compile>
