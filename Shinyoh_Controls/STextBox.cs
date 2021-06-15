@@ -289,30 +289,35 @@ namespace Shinyoh_Controls
         protected override void OnEnter(EventArgs e)
         {
             this.BackColor = Color.Cyan;
-            if(DefaultKeyboard == DefKey.Japanese)
+            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(new System.Globalization.CultureInfo("ja-JP"));
+            if (DefaultKeyboard == DefKey.Japanese)
             {
-                foreach (InputLanguage lang in InputLanguage.InstalledInputLanguages)
-                {
-                    if (lang.LayoutName.Equals("Japanese"))
-                    {
-                        InputLanguage.CurrentInputLanguage = lang;
-                        this.ImeMode = ImeMode.Hiragana;
-                        break;
-                    }
-                }
+                this.ImeMode = ImeMode.Hiragana;
+                //foreach (InputLanguage lang in InputLanguage.InstalledInputLanguages)
+                //{
+                //    if (lang.LayoutName.Equals("Japanese"))
+                //    {
+                //        InputLanguage.CurrentInputLanguage = lang;
+                //        this.ImeMode = ImeMode.Hiragana;
+                //        break;
+                //    }
+                //}
             }
             else if(DefaultKeyboard == DefKey.JapaneseHalf)
             {
-                foreach (InputLanguage lang in InputLanguage.InstalledInputLanguages)
-                {
-                    if (lang.LayoutName.Equals("Japanese"))
-                    {
-                        InputLanguage.CurrentInputLanguage = lang;
-                        this.ImeMode = ImeMode.KatakanaHalf;
-                        break;
-                    }
-                }
+                this.ImeMode = ImeMode.KatakanaHalf;
+                //foreach (InputLanguage lang in InputLanguage.InstalledInputLanguages)
+                //{
+                //    if (lang.LayoutName.Equals("Japanese"))
+                //    {
+                //        InputLanguage.CurrentInputLanguage = lang;
+                //        this.ImeMode = ImeMode.KatakanaHalf;
+                //        break;
+                //    }
+                //}
             }
+            else
+                this.ImeMode = ImeMode.NoControl;
 
 
             if (SearchType == ScType.None)
