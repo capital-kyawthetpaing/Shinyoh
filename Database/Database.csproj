@@ -170,6 +170,7 @@
     <Content Include="StoreProcedure\JuchuuNyuuryoku_Update.sql" />
     <Content Include="StoreProcedure\JuchuuShousai_Price.sql" />
     <Content Include="StoreProcedure\JuchuuTorikomi_CUD.sql" />
+    <Content Include="StoreProcedure\JuchuuTorikomi_Delete.sql" />
     <Content Include="StoreProcedure\JuchuuTorikomi_Display.sql" />
     <Content Include="StoreProcedure\JuchuuTorikomi_Error_Check.sql" />
     <Content Include="StoreProcedure\JuchuuTorikomi_Insert.sql" />
@@ -195,6 +196,7 @@
     <Content Include="StoreProcedure\M_Staff_Select.sql" />
     <Content Include="StoreProcedure\M_Tokuisaki_CUD.sql" />
     <Content Include="StoreProcedure\M_Tokuisaki_Select.sql" />
+    <Content Include="StoreProcedure\NewShukkaTorikomi_Delete.sql" />
     <Content Include="StoreProcedure\Shinyoh_Test.sql" />
     <Content Include="StoreProcedure\ShippingNo_Search.sql" />
     <Content Include="StoreProcedure\ShokutiFLG_Select.sql" />

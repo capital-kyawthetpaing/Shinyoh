@@ -80,7 +80,7 @@ namespace IdouNyuuryoku
             gv_1.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_1.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_1.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
         }
         private void ChangeMode(Mode mode)
         {
@@ -188,10 +188,10 @@ namespace IdouNyuuryoku
                 cboMode.NextControlName = txtIdouNO.Name;
                 txtIdouNO.Focus();
             }
-            for (int i = 0; i < gv_1.RowCount; i++)
-            {
-                gv_1.Rows.Remove(gv_1.Rows[0]);
-            }
+            //for (int i = 0; i < gv_1.RowCount; i++)
+            //{
+            //    gv_1.Rows.Remove(gv_1.Rows[0]);
+            //}
             gv_1.Memory_Row_Count = 0;
         }
         private void Load_Setting()
@@ -315,7 +315,8 @@ namespace IdouNyuuryoku
                     if (!txtIdoukubun.Text.Equals(OldIdoukubun))
                     {
                         F8_dt1.Rows.Clear();
-                        gv_1.DataSource = F8_dt1;
+                        DataTable dtClear = CreateTable_Detail();
+                        gv_1.DataSource = dtClear;
                     }
                     OldIdoukubun = txtIdoukubun.Text;
                 }
@@ -619,12 +620,14 @@ namespace IdouNyuuryoku
                     if (F8_dt1.Rows.Count == 0)
                         F8_dt1 = gv1_to_dt1.Clone();
                     gv_1.Select();
-                    gv_1.CurrentCell = gv_1.Rows[0].Cells["colKanriNO"];
+                    if (dt.Rows.Count > 0)
+                        gv_1.CurrentCell = gv_1.Rows[0].Cells["colKanriNO"];
                 }
                 else
                 {
-                    F8_dt1.Rows.Clear();
-                    gv_1.DataSource = F8_dt1;
+                    //F8_dt1.Rows.Clear();
+                    //gv_1.DataSource = F8_dt1;
+                    gv_1.DataSource = dt;
                     Focus_Clear();
                 }
             }
@@ -675,9 +678,10 @@ namespace IdouNyuuryoku
                         DataTable dt = Idou_BL.IdouNyuuryoku_Select_Check(ShouhinCD, soukoCD, "Sum_Com", KanriNO);
                         if (dt.Rows.Count > 0)
                         {
-                            if (IdouSuu > Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]))
+                            int genzaiko = Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]) + (cboMode.SelectedValue.Equals("2") ? Convert.ToInt32(gv_1.Rows[row].Cells["colOldIdouSuu"].Value) : 0);
+                            if (IdouSuu > genzaiko)
                             {
-                                if (base_bl.ShowMessage("Q326", IdouSuu.ToString(), Convert.ToInt32(dt.Rows[0]["GenZaikoSuu"]).ToString()) != DialogResult.Yes)
+                                if (base_bl.ShowMessage("Q326", IdouSuu.ToString(), genzaiko.ToString()) != DialogResult.Yes)
                                 {
                                     bl_error = true;
                                     return bl_error;
@@ -933,6 +937,27 @@ namespace IdouNyuuryoku
 
             string detail_XML = cf.DataTableToXml(F8_dt1);
             return (header_XML, detail_XML);
+        }
+        private DataTable CreateTable_Detail()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ShouhinCD", typeof(string));
+            dt.Columns.Add("HinbanCD", typeof(string));
+            dt.Columns.Add("ShouhinName", typeof(string));
+            dt.Columns.Add("ColorRyakuName", typeof(string));
+            dt.Columns.Add("ColorNO", typeof(string));
+            dt.Columns.Add("SizeNO", typeof(string));
+            dt.Columns.Add("KanriNO", typeof(string));
+            dt.Columns.Add("IdouSuu", typeof(string));
+
+            dt.Columns.Add("GenkaTanka", typeof(string));
+            dt.Columns.Add("GenkaKingaku", typeof(string));
+            dt.Columns.Add("IdouMeisaiTekiyou", typeof(string));
+            dt.Columns.Add("IdouNO", typeof(string));
+            dt.Columns.Add("IdouGyouNO", typeof(string));
+            dt.Columns.Add("OldIdouSuu", typeof(string));
+            dt.AcceptChanges();
+            return dt;
         }
         public void Create_Datatable_Column(DataTable create_dt)
         {

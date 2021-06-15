@@ -42,6 +42,8 @@ namespace Shinyoh_Search
             sbSiiresaki.lblName = lblSiiresaki;
             sbStaff.ChangeDate = txtCurrentDate;
             sbStaff.lblName = lblStaff;
+            sbHinbanCDFrom.ChangeDate = txtCurrentDate;
+            sbHinbanCDTo.ChangeDate = txtCurrentDate;
             gvChakuniYoteiNyuuryoku.UseRowNo(true);
             GridViewBind();
             gvChakuniYoteiNyuuryoku.SetGridDesign();
@@ -80,23 +82,49 @@ namespace Shinyoh_Search
                 cyn.HacchuuDateTo = txtOrderDateTo.Text;
             cyn.KanriNOFrom = txtControlNoFrom.Text;
             cyn.KanriNOTo = txtControlNoTo.Text;
-            cyn.ShouhinCDFrom = txtShouhinCDFrom.Text;
-            cyn.ShouhinCDTo = txtShouhinCDTo.Text;
-            if(ErrorCheck(PanelTitle))           //Task no. 147 - tza
+            cyn.ShouhinCDFrom = sbHinbanCDFrom.Text;
+            cyn.ShouhinCDTo = sbHinbanCDTo.Text;
+            if(ErrorCheck(panel1))           //Task no. 147 - tza
             {
                 DataTable dt = cb.ChakuniYoteiNyuuryoku_Search(cyn);
                 if (dt.Columns.Contains("CurrentDay"))
                 {
                     if (dt.Rows.Count > 0)
                     {
-                        lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                        txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                        dt.Columns.Remove("CurrentDay");
+                        if (dt.Columns.Contains("CurrentDay"))
+                        {
+                            lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                            txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        }
+                    }
+                    else
+                    {
+                        ClearSession();//ssa
                     }
                 }
+                dt.Columns.Remove("CurrentDay");//ssa
                 gvChakuniYoteiNyuuryoku.DataSource = dt;
             }
         }
+
+        private void ClearSession()
+        {
+            txtDateFrom.Clear();
+            txtDateTo.Clear();
+            sbSiiresaki.Clear();
+            lblSiiresaki.Text = string.Empty;
+            sbStaff.Clear();
+            lblStaff.Text = string.Empty;
+            txtShouhinName.Clear();
+            txtOrderDateFrom.Clear();
+            txtOrderDateTo.Clear();
+            txtControlNoFrom.Clear();
+            txtControlNoTo.Clear();
+            sbHinbanCDFrom.Clear();
+            sbHinbanCDTo.Clear();
+            txtDateFrom.Focus();
+        }
+
         public void ErrorCheck()
         {
             txtDateFrom.E103Check(true);
@@ -108,7 +136,7 @@ namespace Shinyoh_Search
             txtOrderDateTo.E104Check(true, txtOrderDateFrom, txtOrderDateTo);
 
             txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
-            txtShouhinCDTo.E106Check(true, txtShouhinCDFrom, txtShouhinCDTo);
+            sbHinbanCDTo.E106Check(true, sbHinbanCDFrom, sbHinbanCDTo);
 
             sbSiiresaki.E101Check(true, "M_Siiresaki", sbSiiresaki, txtDateFrom, null);
             sbStaff.E101Check(true, "M_Staff", sbStaff, txtDateFrom, null);
@@ -117,7 +145,7 @@ namespace Shinyoh_Search
         private void btnSearch_Click(object sender, EventArgs e)
         {
             GridViewBind();
-            gvChakuniYoteiNyuuryoku.Focus();
+            //gvChakuniYoteiNyuuryoku.Focus();//ssa
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {

@@ -1,11 +1,15 @@
-BEGIN TRY 
- Drop Procedure dbo.[ChakuniNyuuryoku_ErrorCheck_Select]
-END try
-BEGIN CATCH END CATCH 
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_ErrorCheck_Select]    Script Date: 2021/05/21 10:08:42 ******/
+IF EXISTS (SELECT * FROM sys.procedures WHERE name like '%ChakuniNyuuryoku_ErrorCheck_Select%' and type like '%P%')
+DROP PROCEDURE [dbo].[ChakuniNyuuryoku_ErrorCheck_Select]
+GO
+
+/****** Object:  StoredProcedure [dbo].[ChakuniNyuuryoku_ErrorCheck_Select]    Script Date: 2021/05/21 10:08:42 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
 -- =============================================
 -- Author:		<Author,,Name>
 -- Create date: <Create Date,,>
@@ -56,7 +60,7 @@ if @Errortype='E133'
                 On  DCKM.JuchuuNO = DJUM.JuchuuNO
                 And DCKM.JuchuuGyouNO = DJUM.JuchuuGyouNO
                 Where DCKM.ChakuniNO = @ChakuniNo
-                And   DJUM.ShukkaKanryouKBN = 1
+                And  (DJUM.ShukkaKanryouKBN = 1 OR DJUM.ShukkaZumiSuu > 0)
                 )
         begin
         --exists
@@ -106,3 +110,5 @@ if @Errortype='E268'
     end
 END
 GO
+
+

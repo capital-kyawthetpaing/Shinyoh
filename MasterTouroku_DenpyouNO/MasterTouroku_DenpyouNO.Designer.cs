@@ -54,7 +54,6 @@
             // 
             // cboMode
             // 
-            this.cboMode.BackColor = System.Drawing.Color.Cyan;
             this.cboMode.Location = new System.Drawing.Point(22, 8);
             this.cboMode.NextControlName = "cbDivision";
             // 

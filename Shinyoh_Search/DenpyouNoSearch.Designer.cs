@@ -90,7 +90,7 @@
             this.btnSearch.NextControlName = null;
             this.btnSearch.Size = new System.Drawing.Size(150, 25);
             this.btnSearch.TabIndex = 5;
-            this.btnSearch.Tag = "2";
+            this.btnSearch.Tag = "3";
             this.btnSearch.Text = "表示(F11)";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -121,7 +121,7 @@
             this.cbDivision2.MoveNext = true;
             this.cbDivision2.Name = "cbDivision2";
             this.cbDivision2.NextControl = null;
-            this.cbDivision2.NextControlName = "lbl_Date";
+            this.cbDivision2.NextControlName = "btnSearch";
             this.cbDivision2.Size = new System.Drawing.Size(135, 20);
             this.cbDivision2.TabIndex = 2;
             // 

@@ -9,6 +9,7 @@ using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 using Shinyoh_Controls;
+using System.Text;
 
 namespace MasterTouroku_Siiresaki
 {
@@ -52,7 +53,7 @@ namespace MasterTouroku_Siiresaki
             SetButton(ButtonType.BType.Import, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
             txtSupplierCD.Focus();
 
             base_Entity = _GetBaseData();
@@ -75,12 +76,11 @@ namespace MasterTouroku_Siiresaki
             //lblStaffCD_Name.BorderStyle = System.Windows.Forms.BorderStyle.None;
 
             Mode_Setting();
+            ErrorCheck();
 
             switch (mode)
             {
                 case Mode.New:
-                    ErrorCheck();
-
                     txtChangeDate.E132Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate,null);
                     txtChangeDate.E133Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
                     txtChangeDate.E270Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate);
@@ -100,8 +100,6 @@ namespace MasterTouroku_Siiresaki
                     break;
 
                 case Mode.Update:
-                    ErrorCheck();
-
                     txtChangeDate.E132Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
                     txtChangeDate.E133Check(true, "M_Siiresaki", txtSupplierCD, txtChangeDate, null);
                     txtChangeDate.E270Check(false, "M_Siiresaki", txtSupplierCD, txtChangeDate);
@@ -542,7 +540,7 @@ namespace MasterTouroku_Siiresaki
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    string[] csvRows = File.ReadAllLines(filePath);
+                    string[] csvRows = File.ReadAllLines(filePath,Encoding.GetEncoding(932));
                    
                     for (int i = 1; i < csvRows.Length; i++)
                     {

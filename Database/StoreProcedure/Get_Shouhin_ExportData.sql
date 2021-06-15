@@ -67,9 +67,12 @@ BEGIN
 		,M_MultiPorpose_Color.Char1 AS 'カラー名'
 		,CASE ISNUMERIC(MS.SizeNO+'.e0') WHEN 1 THEN MS.SizeNO+'.0' ELSE MS.SizeNO END  as 'サイズNO'
 		,M_MultiPorpose_Size.Char1 AS 'サイズ名'
-		,MS.JoudaiTanka AS '上代単価'
-		,MS.GedaiTanka AS '下代単価'
-		,MS.HyoujunGenkaTanka AS '標準原価単価'
+		--,MS.JoudaiTanka AS '上代単価'
+		--,MS.GedaiTanka AS '下代単価'
+		--,MS.HyoujunGenkaTanka AS '標準原価単価'
+		,convert(int,isnull(MS.JoudaiTanka,0)) as '上代単価'--2021/05/21 ssa CHG TaskNO 426
+		,convert(int,isnull(MS.GedaiTanka,0)) as '下代単価'--2021/05/21 ssa CHG TaskNO 426
+		,convert(int,isnull(MS.HyoujunGenkaTanka,0)) as '標準原価単価'--2021/05/21 ssa CHG TaskNO 426
 		,MS.ZeirituKBN AS '税率区分'
 		,M_MultiPorpose_Shouhizeiritu.Char1 as '税率区分名'
 		,MS.ZaikoHyoukaKBN AS '在庫評価区分'
@@ -91,7 +94,7 @@ BEGIN
 		,MS.InsertDateTime AS '新規登録日時'
 		,MS.UpdateOperator AS '変更登録者'
 		,MS.UpdateDateTime AS '変更登録日時'
-		FROM M_Shouhin MS
+		FROM F_Shouhin(getdate()) MS
 		--LEFT OUTER JOIN M_MultiPorpose MP ON MP.ID=102 AND [Key]=Ms.TaniCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 102) M_MultiPorpose_Tani ON M_MultiPorpose_Tani.[Key] =MS.TaniCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 103) M_MultiPorpose_Brand ON M_MultiPorpose_Brand.[Key] = MS.BrandCD
@@ -113,8 +116,7 @@ BEGIN
 		AND (@SizeNO1 IS NULL OR MS.SizeNO >= @SizeNO1)
 		AND (@SizeNO2 IS NULL OR MS.SizeNO <= @SizeNO2)
 		AND (@Remarks IS NULL OR (MS.Remarks LIKE '%' + @Remarks + '%'))
-		ORDER BY MS.ShouhinCD ASC, MS.ChangeDate ASC
-		
+		ORDER BY MS.ShouhinCD ASC, MS.ChangeDate ASC		
 	end
 	ELSE
 	begin
@@ -140,9 +142,12 @@ BEGIN
 		,M_MultiPorpose_Color.Char1 AS 'カラー名'
 		,CASE ISNUMERIC(MS.SizeNO+'.e0') WHEN 1 THEN MS.SizeNO+'.0' ELSE MS.SizeNO END  as 'サイズNO'
 		,M_MultiPorpose_Size.Char1 AS 'サイズ名'
-		,MS.JoudaiTanka AS '上代単価'
-		,MS.GedaiTanka AS '下代単価'
-		,MS.HyoujunGenkaTanka AS '標準原価単価'
+		--,MS.JoudaiTanka AS '上代単価'
+		--,MS.GedaiTanka AS '下代単価'
+		--,MS.HyoujunGenkaTanka AS '標準原価単価'
+		,convert(int,isnull(MS.JoudaiTanka,0)) as '上代単価'--2021/05/21 ssa CHG TaskNO 426
+		,convert(int,isnull(MS.GedaiTanka,0)) as '下代単価'--2021/05/21 ssa CHG TaskNO 426
+		,convert(int,isnull(MS.HyoujunGenkaTanka,0)) as '標準原価単価'--2021/05/21 ssa CHG TaskNO 426
 		,MS.ZeirituKBN AS '税率区分'
 		,M_MultiPorpose_Shouhizeiritu.Char1 as '税率区分名'
 		,MS.ZaikoHyoukaKBN AS '在庫評価区分'
@@ -164,7 +169,7 @@ BEGIN
 		,MS.InsertDateTime AS '新規登録日時'
 		,MS.UpdateOperator AS '変更登録者'
 		,MS.UpdateDateTime AS '変更登録日時'
-		FROM F_Shouhin(getdate()) MS
+		FROM M_Shouhin MS
 		--LEFT OUTER JOIN M_MultiPorpose MP ON MP.ID=102 AND [Key]=Ms.TaniCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 102) M_MultiPorpose_Tani ON M_MultiPorpose_Tani.[Key] =MS.TaniCD
 		LEFT OUTER JOIN (SELECT * FROM M_MultiPorpose WHERE ID = 103) M_MultiPorpose_Brand ON M_MultiPorpose_Brand.[Key] = MS.BrandCD

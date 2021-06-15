@@ -114,7 +114,7 @@ namespace ShukkaSiziDataShuturyoku {
             if (tagID == "10")
             {             
                 DataTable dt = new DataTable { TableName = "MyTableName" };
-                dt = Get_Form_Object();
+                dt = Get_Form_Object(string.Empty);
                 if (dt.Rows.Count > 0)
                 {
                     dt.Columns["TokuisakiCD"].ColumnName = "得意先CD";
@@ -136,41 +136,54 @@ namespace ShukkaSiziDataShuturyoku {
                     dt.Columns["ShukkaSiziNO"].ColumnName = "出荷指示番号";
                     dt.Columns["ShukkaSiziMeisaiTekiyou"].ColumnName = "備考";
 
-                    if (!System.IO.Directory.Exists("C:\\Excel"))
-                        System.IO.Directory.CreateDirectory("C:\\Excel");
+                    string ProgramID = "ShukkaSiziDataShuturyoku";
+                    string fname = "出荷指示データ出力";
+                    string[] datacol = { "5", "6" };
+                    string[] numcol = null;
 
-                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.InitialDirectory = @"C:\Excel\";
-
-                    //for excel
-                    saveFileDialog1.Filter = "ExcelFile|*.xlsx";
-                    saveFileDialog1.FileName = "出荷指示データ出力.xlsx";
-                    saveFileDialog1.RestoreDirectory = true;
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    ExportCSVExcel list = new ExportCSVExcel();
+                    bool bl= list.ExcelOutputFile(dt, ProgramID, fname, fname, 16, datacol, numcol);
+                    if(bl)
                     {
-                        ExcelDesignSetting obj = new ExcelDesignSetting();
-                        obj.FilePath = saveFileDialog1.FileName;
-                        obj.SheetName = "Sheet1";
-                        obj.Start_Interior_Column = "A1";
-                        obj.End_Interior_Column = "P1";
-                        obj.Interior_Color = Color.FromArgb(255, 192, 0);
-                        obj.Start_Font_Column = "A1";
-                        obj.End_Font_Column = "P1";
-                        obj.Font_Color = Color.Black;
-                        //For column E,F
-                        obj.Date_Column = new List<int>();
-                        obj.Date_Column.Add(5);
-                        obj.Date_Column.Add(6);
-                        obj.Date_Format = "YYYY/MM/DD";
-                        obj.Start_Title_Center_Column = "A1";
-                        obj.End_Title_Center_Column = "P1";
-                        bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
-                        if (bl)
-                        {
-                            bbl.ShowMessage("I203");
-                            Clear();
-                        }
+                        Get_Form_Object("Update");
+                        Clear();
                     }
+
+                    //if (!System.IO.Directory.Exists("C:\\Excel"))
+                    //    System.IO.Directory.CreateDirectory("C:\\Excel");
+
+                    //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                    //saveFileDialog1.InitialDirectory = @"C:\Excel\";
+
+                    ////for excel
+                    //saveFileDialog1.Filter = "ExcelFile|*.xlsx";
+                    //saveFileDialog1.FileName = "出荷指示データ出力.xlsx";
+                    //saveFileDialog1.RestoreDirectory = true;
+                    //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                    //{
+                    //    ExcelDesignSetting obj = new ExcelDesignSetting();
+                    //    obj.FilePath = saveFileDialog1.FileName;
+                    //    obj.SheetName = "Sheet1";
+                    //    obj.Start_Interior_Column = "A1";
+                    //    obj.End_Interior_Column = "P1";
+                    //    obj.Interior_Color = Color.FromArgb(255, 192, 0);
+                    //    obj.Start_Font_Column = "A1";
+                    //    obj.End_Font_Column = "P1";
+                    //    obj.Font_Color = Color.Black;
+                    //    //For column E,F
+                    //    obj.Date_Column = new List<int>();
+                    //    obj.Date_Column.Add(5);
+                    //    obj.Date_Column.Add(6);
+                    //    obj.Date_Format = "YYYY/MM/DD";
+                    //    obj.Start_Title_Center_Column = "A1";
+                    //    obj.End_Title_Center_Column = "P1";
+                    //    bool bl = obj_Export.ExportDataTableToExcel(dt, obj);
+                    //    if (bl)
+                    //    {
+                    //        bbl.ShowMessage("I203");
+                    //        Clear();
+                    //    }
+                    //}
                 }
                 else if (dt.Rows.Count == 0)
                 {
@@ -182,15 +195,17 @@ namespace ShukkaSiziDataShuturyoku {
             }
         } 
 
-        private DataTable Get_Form_Object()
+        private DataTable Get_Form_Object(string str)
         {
             ShukkaSiziDataShuturyokuEntity obj = new ShukkaSiziDataShuturyokuEntity();
             obj.ShukkaNo1 = txtShukkaNo1.Text;
             obj.ShukkaNo2 = txtShukkaNo2.Text;
             obj.ShukkaDate1 = txtShukkaDate1.Text;
             obj.ShukkaDate2 = txtShukkaDate2.Text;
-            obj.InputDate1 = string.IsNullOrEmpty(txtInputDate1.Text) ? baseEntity.LoginDate : txtInputDate1.Text;
-            obj.InputDate2 = string.IsNullOrEmpty(txtInputDate2.Text) ? baseEntity.LoginDate : txtInputDate2.Text;
+            //obj.InputDate1 = string.IsNullOrEmpty(txtInputDate1.Text) ? baseEntity.LoginDate : txtInputDate1.Text;
+            //obj.InputDate2 = string.IsNullOrEmpty(txtInputDate2.Text) ? baseEntity.LoginDate : txtInputDate2.Text;
+            obj.InputDate1 = txtInputDate1.Text;   //TaskNo575 HET
+            obj.InputDate2 = txtInputDate2.Text;
             obj.BrandCD = txtBrand.Text;
             obj.Year = txtYear.Text;
             obj.SS = chk_SS.Checked == true ? "1" : "0";
@@ -198,8 +213,14 @@ namespace ShukkaSiziDataShuturyoku {
             obj.TokuisakiCD = txtToukuisaki.Text;
             obj.KouritenCD = txtKouriten.Text;
             if (rdo_MiHakkou.Checked)
-                obj.Condition = "Mihakkoubunnomi";
+            {
+                if (str == string.Empty)
+                    obj.Condition = "Mihakkoubunnomi";
+                else
+                    obj.Condition = "Mihakkoubunnomi_" + str;
+            }
             else obj.Condition = "Hakkou";
+            
             obj.LoginDate = baseEntity.LoginDate;
             DataTable dt = shukkaBL.ShukkaSiziDataShuturyoku_Excel(obj);
             return dt;

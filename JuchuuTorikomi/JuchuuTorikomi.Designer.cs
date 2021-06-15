@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt1 = new Shinyoh_Controls.SLabel();
             this.rdo_Delete = new Shinyoh_Controls.SRadio();
             this.rdo_Registration = new Shinyoh_Controls.SRadio();
@@ -42,6 +42,11 @@
             this.sLabel6 = new Shinyoh_Controls.SLabel();
             this.label2 = new System.Windows.Forms.Label();
             this.gvJuchuuTorikomi = new Shinyoh_Controls.SGridView();
+            this.txtDate1 = new Shinyoh_Controls.STextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.sLabel5 = new Shinyoh_Controls.SLabel();
+            this.sLabel4 = new Shinyoh_Controls.SLabel();
+            this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.colTorikomiDenpyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colInsertDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJuchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,11 +55,7 @@
             this.colTokuisakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKouritenCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKouritenRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtDate1 = new Shinyoh_Controls.STextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.sLabel5 = new Shinyoh_Controls.SLabel();
-            this.sLabel4 = new Shinyoh_Controls.SLabel();
-            this.sLabel3 = new Shinyoh_Controls.SLabel();
+            this.InsertOperator = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelTitle.SuspendLayout();
             this.PanelDetail.SuspendLayout();
@@ -254,7 +255,7 @@
             this.txtDenpyouNO.MoveNext = true;
             this.txtDenpyouNO.Name = "txtDenpyouNO";
             this.txtDenpyouNO.NextControl = null;
-            this.txtDenpyouNO.NextControlName = "BtnF10";
+            this.txtDenpyouNO.NextControlName = "BtnF12";
             this.txtDenpyouNO.SearchType = Entity.SearchType.ScType.None;
             this.txtDenpyouNO.Size = new System.Drawing.Size(100, 19);
             this.txtDenpyouNO.TabIndex = 8;
@@ -294,70 +295,15 @@
             this.colTokuisakiCD,
             this.colTokuisakiRyakuName,
             this.colKouritenCD,
-            this.colKouritenRyakuName});
+            this.colKouritenRyakuName,
+            this.InsertOperator});
             this.gvJuchuuTorikomi.IsErrorOccurs = false;
             this.gvJuchuuTorikomi.ISRowColumn = null;
             this.gvJuchuuTorikomi.Location = new System.Drawing.Point(160, 173);
             this.gvJuchuuTorikomi.Name = "gvJuchuuTorikomi";
-            this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1245, 620);
+            this.gvJuchuuTorikomi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1235, 570);
             this.gvJuchuuTorikomi.TabIndex = 9;
-            // 
-            // colTorikomiDenpyouNO
-            // 
-            this.colTorikomiDenpyouNO.DataPropertyName = "TorikomiDenpyouNO";
-            this.colTorikomiDenpyouNO.HeaderText = "取込伝票番号";
-            this.colTorikomiDenpyouNO.Name = "colTorikomiDenpyouNO";
-            this.colTorikomiDenpyouNO.Width = 110;
-            // 
-            // colInsertDateTime
-            // 
-            this.colInsertDateTime.DataPropertyName = "InsertDateTime";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colInsertDateTime.HeaderText = "取込日時";
-            this.colInsertDateTime.Name = "colInsertDateTime";
-            this.colInsertDateTime.Width = 150;
-            // 
-            // colJuchuuNO
-            // 
-            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
-            this.colJuchuuNO.HeaderText = "受注番号";
-            this.colJuchuuNO.Name = "colJuchuuNO";
-            // 
-            // colJuchuuDate
-            // 
-            this.colJuchuuDate.DataPropertyName = "JuchuuDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colJuchuuDate.HeaderText = "受注日";
-            this.colJuchuuDate.Name = "colJuchuuDate";
-            this.colJuchuuDate.Width = 85;
-            // 
-            // colTokuisakiCD
-            // 
-            this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
-            this.colTokuisakiCD.HeaderText = "得意先";
-            this.colTokuisakiCD.Name = "colTokuisakiCD";
-            // 
-            // colTokuisakiRyakuName
-            // 
-            this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
-            this.colTokuisakiRyakuName.HeaderText = "得意先名";
-            this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
-            this.colTokuisakiRyakuName.Width = 275;
-            // 
-            // colKouritenCD
-            // 
-            this.colKouritenCD.DataPropertyName = "KouritenCD";
-            this.colKouritenCD.HeaderText = "小売店";
-            this.colKouritenCD.Name = "colKouritenCD";
-            // 
-            // colKouritenRyakuName
-            // 
-            this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
-            this.colKouritenRyakuName.HeaderText = "小売店名";
-            this.colKouritenRyakuName.Name = "colKouritenRyakuName";
-            this.colKouritenRyakuName.Width = 281;
             // 
             // txtDate1
             // 
@@ -434,6 +380,69 @@
             this.sLabel3.Text = "取込元フォルダ";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // colTorikomiDenpyouNO
+            // 
+            this.colTorikomiDenpyouNO.DataPropertyName = "TorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.HeaderText = "取込伝票番号";
+            this.colTorikomiDenpyouNO.Name = "colTorikomiDenpyouNO";
+            this.colTorikomiDenpyouNO.Width = 110;
+            // 
+            // colInsertDateTime
+            // 
+            this.colInsertDateTime.DataPropertyName = "InsertDateTime";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colInsertDateTime.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colInsertDateTime.HeaderText = "取込日時";
+            this.colInsertDateTime.Name = "colInsertDateTime";
+            this.colInsertDateTime.Width = 150;
+            // 
+            // colJuchuuNO
+            // 
+            this.colJuchuuNO.DataPropertyName = "JuchuuNO";
+            this.colJuchuuNO.HeaderText = "受注番号";
+            this.colJuchuuNO.Name = "colJuchuuNO";
+            // 
+            // colJuchuuDate
+            // 
+            this.colJuchuuDate.DataPropertyName = "JuchuuDate";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colJuchuuDate.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colJuchuuDate.HeaderText = "受注日";
+            this.colJuchuuDate.Name = "colJuchuuDate";
+            this.colJuchuuDate.Width = 85;
+            // 
+            // colTokuisakiCD
+            // 
+            this.colTokuisakiCD.DataPropertyName = "TokuisakiCD";
+            this.colTokuisakiCD.HeaderText = "得意先";
+            this.colTokuisakiCD.Name = "colTokuisakiCD";
+            // 
+            // colTokuisakiRyakuName
+            // 
+            this.colTokuisakiRyakuName.DataPropertyName = "TokuisakiRyakuName";
+            this.colTokuisakiRyakuName.HeaderText = "得意先名";
+            this.colTokuisakiRyakuName.Name = "colTokuisakiRyakuName";
+            this.colTokuisakiRyakuName.Width = 275;
+            // 
+            // colKouritenCD
+            // 
+            this.colKouritenCD.DataPropertyName = "KouritenCD";
+            this.colKouritenCD.HeaderText = "小売店";
+            this.colKouritenCD.Name = "colKouritenCD";
+            // 
+            // colKouritenRyakuName
+            // 
+            this.colKouritenRyakuName.DataPropertyName = "KouritenRyakuName";
+            this.colKouritenRyakuName.HeaderText = "小売店名";
+            this.colKouritenRyakuName.Name = "colKouritenRyakuName";
+            this.colKouritenRyakuName.Width = 275;
+            // 
+            // InsertOperator
+            // 
+            this.InsertOperator.HeaderText = "Column1";
+            this.InsertOperator.Name = "InsertOperator";
+            this.InsertOperator.Visible = false;
+            // 
             // JuchuuTorikomi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -483,6 +492,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colTokuisakiRyakuName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKouritenCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKouritenRyakuName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InsertOperator;
     }
 }
 

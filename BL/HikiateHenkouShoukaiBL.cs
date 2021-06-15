@@ -43,7 +43,7 @@ namespace BL
             h_entity.Sqlprms[14] = new SqlParameter("@Phoneno3", SqlDbType.VarChar) { Value = h_entity.Phoneno3 };
             h_entity.Sqlprms[15] = new SqlParameter("@Name", SqlDbType.VarChar) { Value = h_entity.Name };
             h_entity.Sqlprms[16] = new SqlParameter("@Address", SqlDbType.VarChar) { Value = h_entity.Address };
-            h_entity.Sqlprms[17] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = h_entity.ShouhinName };
+            h_entity.Sqlprms[17] = new SqlParameter("@ShouhinCD", SqlDbType.VarChar) { Value = h_entity.ShouhinCD };
             h_entity.Sqlprms[18] = new SqlParameter("@JANCD", SqlDbType.VarChar) { Value = h_entity.JANCD };
             h_entity.Sqlprms[19] = new SqlParameter("@ColorNO", SqlDbType.VarChar) { Value = h_entity.ColorNO };
             h_entity.Sqlprms[20] = new SqlParameter("@SizeNO", SqlDbType.VarChar) { Value = h_entity.SizeNO };

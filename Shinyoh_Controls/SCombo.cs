@@ -129,13 +129,42 @@ namespace Shinyoh_Controls
             {
                 this.DroppedDown = true;
             }
-            else if(e.KeyCode == Keys.Enter)
+            else if (e.KeyCode == Keys.Enter)//to show search screen when user press enter in Combo Task NO. 576 NMW
             {
-                ErrorCheck();
-                base.OnKeyDown(e);
+                if (this.TopLevelControl != null && string.IsNullOrEmpty(this.Text.ToString()))
+                {
+                    string mode = string.Empty;
+                    Control[] ctlmode = this.TopLevelControl.Controls.Find("cboMode", true);
+                    if (ctlmode.Length > 0)
+                    {
+                        Control cbo = this.TopLevelControl.Controls.Find("cboMode", true)[0];
+                        mode = cbo.Text;
+                    }
+                    if (mode != "新規" && this.Name != "cboMode")
+                        this.DroppedDown = true;
+                    else
+                        ErrorCheck();
+                }
+                else
+                {
+                    this.DroppedDown = false;
+                    bool bl_error = false;
+                    if (this.E106)
+                        bl_error = ErrorCheck();
+                    if (!bl_error)
+                    {
+                        Control nextControl = this.TopLevelControl.Controls.Find(NextControlName, true)[0];
+                        nextControl.Focus();
+                    }
+                }
             }
+            //else if (e.KeyCode == Keys.Enter)// comment by NMW
+            //{
+            //    ErrorCheck();
+            //    base.OnKeyDown(e);
+            //}
         }
-            
+        
         public bool ErrorCheck()
         {
             (bool, DataTable) r_value = errchk.Check(this);
@@ -148,7 +177,6 @@ namespace Shinyoh_Controls
             }
             return IsErrorOccurs;
         }
-
         protected override void OnGotFocus(EventArgs e)
         {
             if (this.TopLevelControl != null)
@@ -164,20 +192,20 @@ namespace Shinyoh_Controls
             base.OnGotFocus(e);
         }
 
-        //protected override void OnLostFocus(EventArgs e)
-        //{
-        //    if(this.TopLevelControl != null)
-        //    {
-        //        Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
-        //        if (ctrlArr.Length > 0)
-        //        {
-        //            Control btnF9 = ctrlArr[0];
-        //            if (btnF9 != null)
-        //                btnF9.Visible = false;
-        //        }
-        //    }
-        //    base.OnLostFocus(e);
-        //}
+        protected override void OnLostFocus(EventArgs e)
+        {
+            if (this.TopLevelControl != null)
+            {
+                Control[] ctrlArr = this.TopLevelControl.Controls.Find("BtnF9", true);
+                if (ctrlArr.Length > 0)
+                {
+                    Control btnF9 = ctrlArr[0];
+                    if (btnF9 != null)
+                        btnF9.Visible = false;
+                }
+            }
+            base.OnLostFocus(e);
+        }
 
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
@@ -211,7 +239,7 @@ namespace Shinyoh_Controls
 
             base.OnEnabledChanged(e);
         }
-
+        
         public void E102Check(bool value)
         {
             E102 = value;

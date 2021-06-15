@@ -10,6 +10,7 @@ using System.Data;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace JuchuuTorikomi
 {
@@ -53,6 +54,7 @@ namespace JuchuuTorikomi
             SetButton(ButtonType.BType.Search, F11, "保存(F11)", false);
             SetButton(ButtonType.BType.Import, F12, "登録(F12)", true);
 
+            txtImportFileName.TxtBox = txtImportFolder;         //Task 453
             base_Entity = _GetBaseData();
             ErrorCheck();
             BindData();
@@ -117,15 +119,19 @@ namespace JuchuuTorikomi
                 gvJuchuuTorikomi.ActionType = "F10";
                 if (rdo_Delete.Checked == true)
                 {
-                    if (ErrorCheck(PanelDetail))
-                        GridviewBind();
+                    txtDenpyouNO.E102Check(false);
+                    txtDenpyouNO.E160Check(false, "JuchuuTorikomi", txtDenpyouNO, null);
+                    txtDenpyouNO.E265Check(false, "JuchuuTorikomi", txtDenpyouNO);
                 }
+                if (ErrorCheck(PanelDetail))
+                    GridviewBind();
                 gvJuchuuTorikomi.ActionType = string.Empty;
             }
             if (tagID == "12")
             {
                 gvJuchuuTorikomi.ActionType = "F10";
-                if(rdo_Delete.Checked)
+                string spname = string.Empty;
+                if (rdo_Delete.Checked)
                 {
                     txtDenpyouNO.E102Check(true);
                     txtDenpyouNO.E160Check(true, "JuchuuTorikomi", txtDenpyouNO, null);
@@ -139,55 +145,98 @@ namespace JuchuuTorikomi
                 }
                 if (ErrorCheck(PanelDetail))
                 {
-                    (string, string) Xml = GetFile();
-                    BaseBL bbl = new BaseBL();
-                    if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
+                    if (rdo_Registration.Checked)
                     {
-                        if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                        (string, string) Xml = GetFile();
+                        if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
                         {
-                            if (PreviousCtrl != null)
-                                PreviousCtrl.Focus();
-                        }
-                        else
-                        {
-                            JuchuuTorikomiBL Jbl = new JuchuuTorikomiBL();
-                            string spname = string.Empty;
-                            string DenpyouNO = txtDenpyouNO.Text;
-                            if (rdo_Registration.Checked)
                             {
                                 spname = "JuchuuTorikomi_Insert";
-                            }
-                            else
-                            {
-                                spname = "JuchuuTorikomi_Delete";
-                                foreach (DataRow dr in dtMain.Rows)
+                                DataTable return_BL1 = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2, "ErrorCheck");
+                                if (return_BL1.Rows.Count > 0)
                                 {
-                                    string JuchuuNO = dr["JuchuuNO"].ToString();
-                                    JEntity.DataKBN = 1;
-                                    JEntity.Number = JuchuuNO;
-                                    JEntity.ProgramID = ProgramID;
-                                    JEntity.PC = PCID;
-                                    JEntity.OperatorCD = OperatorCD;
-                                    DataTable dt1 = new DataTable();
-                                    dt1 = Jbl.D_Exclusive_Lock_Check(JEntity);
-                                    if (dt1.Rows[0]["MessageID"].ToString().Equals("S004"))
+                                    if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
                                     {
-                                        bbl.ShowMessage("S004");
+                                        if (bbl.ShowMessage("Q206") != DialogResult.Yes)
+                                        {
+                                            if (PreviousCtrl != null)
+                                                PreviousCtrl.Focus();
+                                        }
+                                        else
+                                        {
+                                            return_BL1 = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2, "");
+                                            if (return_BL1.Rows.Count > 0)
+                                            {
+                                                if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
+                                                {
+                                                    bbl.ShowMessage("I002");
+                                                    rdo_Registration.Focus();
+                                                }
+                                            }
+                                        }
                                     }
-                                }
-                            }
-                            DataTable return_BL1 = Jbl.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2, DenpyouNO);
-                            if (return_BL1.Rows.Count > 0)
-                            {
-                                if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
-                                    bbl.ShowMessage("I002");
-                                else
-                                {
-                                    bbl.ShowMessage("E276", return_BL1.Rows[0]["SEQ"].ToString(), return_BL1.Rows[0]["Error1"].ToString(), return_BL1.Rows[0]["Error2"].ToString());
+                                    else
+                                    {
+                                        bbl.ShowMessage("E276", return_BL1.Rows[0]["SEQ"].ToString(), return_BL1.Rows[0]["Error1"].ToString(), return_BL1.Rows[0]["Error2"].ToString());
+                                    }
                                 }
                             }
                         }
                     }
+                    else
+                    {
+                        string DenpyouNO = txtDenpyouNO.Text;
+                        gvJuchuuTorikomi.DataSource = dtMain;
+                        if (bbl.ShowMessage("Q102") == DialogResult.Yes)
+                        {
+                            string Xml = string.Empty;
+                            spname = "JuchuuTorikomi_Delete";
+                            Xml = cf.DataTableToXml(dtMain);
+                            foreach (DataRow dr in dtMain.Rows)
+                            {
+                                string JuchuuNO = dr["JuchuuNO"].ToString();
+                                JEntity.DataKBN = 1;
+                                JEntity.Number = JuchuuNO;
+                                JEntity.ProgramID = ProgramID;
+                                JEntity.PC = PCID;
+                                JEntity.OperatorCD = OperatorCD;
+                                DataTable dt1 = new DataTable();
+                                dt1 = JBL.D_Exclusive_Lock_Check(JEntity);
+                                if (dt1.Rows[0]["MessageID"].ToString().Equals("S004"))
+                                {
+                                    bbl.ShowMessage("S004");
+                                }
+                            }
+                            JEntity.OperatorCD = base_Entity.OperatorCD;
+                            JEntity.ProgramID = base_Entity.ProgramID;
+                            JEntity.PC = base_Entity.PC;
+                            JEntity.OperateMode = "Delete";
+                            DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml, DenpyouNO, JEntity);
+                            if (return_BL1.Rows.Count > 0)
+                            {
+                                if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
+                                {
+                                    bbl.ShowMessage("I002");
+                                    rdo_Delete.Checked = true;
+                                    txtDate1.Clear();
+                                    txtDate2.Clear();
+                                    txtDenpyouNO.Clear();
+                                    txtDenpyouNO.Focus();
+                                    GridviewBind();                                  
+                                }
+                                else
+                                {
+                                    bbl.ShowMessage("S013");
+                                    txtDenpyouNO.Focus();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (PreviousCtrl != null)
+                                PreviousCtrl.Focus();
+                        }
+                    }   
                 }
             }
               base.FunctionProcess(tagID);
@@ -208,13 +257,15 @@ namespace JuchuuTorikomi
             JEntity.DateFrom = txtDate1.Text;
             JEntity.DateTo = txtDate2.Text;
             dtMain = JBL.JuchuuTorikomi_Display(JEntity);
-            if (dtMain.Rows.Count>0)
+            if(dtMain.Rows.Count > 0)
             {
                 gvJuchuuTorikomi.DataSource = dtMain;
             }
             else
             {
                 bbl.ShowMessage("S013");
+                dtMain.Clear();
+                gvJuchuuTorikomi.DataSource = dtMain;  
                 txtDate1.Focus();
                 return;
             }
@@ -243,19 +294,17 @@ namespace JuchuuTorikomi
        
         private (string,string) GetFile()
         {
-            var filepath = string.Empty;
             JuchuuTorikomiEntity JEntity = new JuchuuTorikomiEntity();
             string Xml_Hacchuu = string.Empty;
             string Xml_Juchuu = string.Empty;
             string error = string.Empty;
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            if (File.Exists(txtImportFolder.Text + txtImportFileName.Text))         //Task 453
             {
-                    DataTable create_dt = new DataTable();
-                    Create_Datatable_Column(create_dt);
-                    openFileDialog.FileName = txtImportFileName.Text;
-                    filepath = openFileDialog.FileName;
-                    string[] csvRows = File.ReadAllLines(filepath);
-                    var bl_List = new List<bool>();
+                DataTable create_dt = new DataTable();
+                Create_Datatable_Column(create_dt);
+                //openFileDialog.FileName = txtImportFolder.Text + txtImportFileName.Text;         //Task 453
+                string[] csvRows = File.ReadAllLines(txtImportFolder.Text + txtImportFileName.Text,Encoding.GetEncoding(932));//Task 453 --repaired encoding 2021/05/29 ssa CHG TaskNO 469
+                var bl_List = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
                     {
                         error = "false";
@@ -306,15 +355,15 @@ namespace JuchuuTorikomi
 
                             if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
                             {
-                                Xml_Hacchuu = string.Empty;
+                                 Xml_Juchuu = string.Empty;
                             }
                             else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
                             {
-                                Xml_Hacchuu = string.Empty;
+                                 Xml_Juchuu = string.Empty;
                             }
                             else if (Date_Check(date3, line_No, "入力可能値外エラー", "取引終了日") == "true")
                             {
-                                Xml_Hacchuu = string.Empty;
+                                Xml_Juchuu = string.Empty;
                             }
                             else if (r == create_dt.Rows.Count - 1)
                             {
@@ -328,12 +377,17 @@ namespace JuchuuTorikomi
                     Xml_Juchuu = string.Empty;
                 }
             }
+            else
+            {
+                bbl.ShowMessage("E281");
+                txtImportFolder.Focus();
+            }
             return (Xml_Hacchuu,Xml_Juchuu);
         }
         public void Remove_Datatable_Column(DataTable dtRemove)
         {
             dtRemove.Columns.Remove("TokuisakiCD");
-            dtRemove.Columns.Remove("TokuisakiName");
+            dtRemove.Columns.Remove("TokuisakiRyakuName");
             dtRemove.Columns.Remove("TokuisakiYuubinNO1");
             dtRemove.Columns.Remove("TokuisakiYuubinNO2");
             dtRemove.Columns.Remove("TokuisakiJuusho1");
@@ -345,7 +399,7 @@ namespace JuchuuTorikomi
             dtRemove.Columns.Remove("TokuisakiTelNO2-2");
             dtRemove.Columns.Remove("TokuisakiTelNO2-3");
             dtRemove.Columns.Remove("KouritenCD");
-            dtRemove.Columns.Remove("KouritenName");
+            dtRemove.Columns.Remove("KouritenRyakuName");
             dtRemove.Columns.Remove("KouritenYuubinNO1");
             dtRemove.Columns.Remove("KouritenYuubinNO2");
             dtRemove.Columns.Remove("KouritenJuusho1");
@@ -384,9 +438,9 @@ namespace JuchuuTorikomi
         {
             create_dt.Columns.Add("JuchuuDate");
             create_dt.Columns.Add("TokuisakiCD");
-            create_dt.Columns.Add("TokuisakiName");
+            create_dt.Columns.Add("TokuisakiRyakuName");
             create_dt.Columns.Add("KouritenCD");
-            create_dt.Columns.Add("KouritenName");
+            create_dt.Columns.Add("KouritenRyakuName");
             create_dt.Columns.Add("StaffCD");
             create_dt.Columns.Add("SenpouHacchuuNO");
             create_dt.Columns.Add("SenpouBusho");
@@ -405,7 +459,8 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("ChakuniYoteiDate");
             create_dt.Columns.Add("SoukoCD");
             create_dt.Columns.Add("SoukoName");
-            //create_dt.Columns.Add("TokuisakiName");
+
+            create_dt.Columns.Add("TokuisakiuName");
             create_dt.Columns.Add("TokuisakiYuubinNO1");
             create_dt.Columns.Add("TokuisakiYuubinNO2");
             create_dt.Columns.Add("TokuisakiJuusho1");
@@ -416,7 +471,8 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("TokuisakiTelNO2-1");
             create_dt.Columns.Add("TokuisakiTelNO2-2");
             create_dt.Columns.Add("TokuisakiTelNO2-3");
-            //create_dt.Columns.Add("KouritenName");
+
+            create_dt.Columns.Add("KouritenName");
             create_dt.Columns.Add("KouritenYuubinNO1");
             create_dt.Columns.Add("KouritenYuubinNO2");
             create_dt.Columns.Add("KouritenJuusho1");
@@ -427,6 +483,7 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("KouritenTelNO2-1");
             create_dt.Columns.Add("KouritenTelNO2-2");
             create_dt.Columns.Add("KouritenTelNO2-3");
+
             create_dt.Columns.Add("SiiresakiName");
             create_dt.Columns.Add("SiiresakiYuubinNO1");
             create_dt.Columns.Add("SiiresakiYuubinNO2");

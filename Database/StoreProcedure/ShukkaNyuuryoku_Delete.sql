@@ -168,7 +168,7 @@ BEGIN
 					ShukkaMeisaiTekiyou		varchar(80) COLLATE DATABASE_DEFAULT,		--Detail				
 					ShukkaSiziNOGyouNO		varchar(25) COLLATE DATABASE_DEFAULT,
 					JuchuuNOGyouNO			varchar(25) COLLATE DATABASE_DEFAULT,
-					DenpyouDate				date,
+					DenpyouDate				varchar(10) COLLATE DATABASE_DEFAULT,
 					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
 					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
 				)
@@ -211,7 +211,7 @@ BEGIN
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
 					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
-					DenpyouDate				date 'DenpyouDate',
+					DenpyouDate				varchar(10) 'DenpyouDate',
 					ShouhinCD				varchar(50)'ShouhinCD',
 					SoukoCD					varchar(10)'SoukoCD'
 					)
@@ -385,16 +385,27 @@ BEGIN
 				--DG.NyuukoDate= DS.NyuukoDate
 						--order by DS.KanriNO asc,DS.NyuukoDate asc
 				
-				--現在庫
-				UPDATE DGZK
-				SET GenZaikoSuu = GenZaikoSuu + DSSS.ShukkaSuu
-				FROM D_GenZaiko DGZK
-				INNER JOIN D_ShukkaShousai DSSS
-				ON DSSS.SoukoCD = DGZK.SoukoCD
-				AND DSSS.ShouhinCD = DGZK.ShouhinCD
-				AND DSSS.KanriNO = DGZK.KanriNO
-				AND DSSS.NyuukoDate = DGZK.NyuukoDate
-				WHERE DSSS.ShukkaNO = @ShukkaNO
+			    --現在庫
+		        UPDATE DGZK
+		        SET GenZaikoSuu = GenZaikoSuu + DSUS.ShukkaSuu
+		        FROM D_GenZaiko DGZK
+		        INNER JOIN (
+		                      SELECT SoukoCD
+		        			        ,ShouhinCD
+		        				    ,KanriNO
+		        				    ,NyuukoDate
+		        					,SUM(ShukkaSuu) ShukkaSuu
+		        			  FROM D_ShukkaShousai
+		        			  WHERE ShukkaNO = @ShukkaNO
+		        			  GROUP BY SoukoCD
+		        			          ,ShouhinCD
+		        					  ,KanriNO
+		        					  ,NyuukoDate
+		                    ) DSUS
+		        ON DSUS.SoukoCD = DGZK.SoukoCD
+		        AND DSUS.ShouhinCD = DGZK.ShouhinCD
+		        AND DSUS.KanriNO = DGZK.KanriNO
+		        AND DSUS.NyuukoDate = DGZK.NyuukoDate
 				--2021/04/30 Y.Nishikawa CHG 在庫データの更新が不正↑↑
 
 				--2021/04/30 Y.Nishikawa ADD 履歴が作成されない(場所移動)↓↓

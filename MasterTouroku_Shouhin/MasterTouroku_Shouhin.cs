@@ -47,7 +47,7 @@ namespace MasterTouroku_Shouhin
             SetButton(ButtonType.BType.Import, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
 
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
             base_entity = _GetBaseData();
             txtProduct.TxtBox = txtColor;
             txtProduct.TxtBox1 = txtSize;
@@ -553,7 +553,7 @@ namespace MasterTouroku_Shouhin
                     if (imgBytes.Length > 0)
                     {
                         pImage.Image = Image.FromStream(new MemoryStream(imgBytes));
-                        pImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pImage.SizeMode = PictureBoxSizeMode.Zoom;
                     }
                 }
 
@@ -566,7 +566,7 @@ namespace MasterTouroku_Shouhin
         {
             pImage.Image = null;
             pImage.ImageLocation = txtImage.Text;
-            pImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            pImage.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
         private string GetFileData()
@@ -587,7 +587,7 @@ namespace MasterTouroku_Shouhin
                 if(openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    string[] csvRows = File.ReadAllLines(filePath);
+                    string[] csvRows = File.ReadAllLines(filePath,Encoding.GetEncoding(932));
                     var bl_list = new List<bool>();
                     for (int i = 1; i < csvRows.Length; i++)
                     {

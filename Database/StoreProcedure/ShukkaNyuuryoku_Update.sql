@@ -167,7 +167,7 @@ BEGIN
 					ShukkaMeisaiTekiyou		varchar(80) COLLATE DATABASE_DEFAULT,		--Detail				
 					ShukkaSiziNOGyouNO		varchar(25) COLLATE DATABASE_DEFAULT,
 					JuchuuNOGyouNO			varchar(25) COLLATE DATABASE_DEFAULT,
-					DenpyouDate				date,
+					DenpyouDate				varchar(10) COLLATE DATABASE_DEFAULT,
 					ShouhinCD				varchar(50) COLLATE DATABASE_DEFAULT,
 					SoukoCD					varchar(10) COLLATE DATABASE_DEFAULT,
 					ShukkaGyouNO            smallint DEFAULT 0,
@@ -187,9 +187,9 @@ BEGIN
 			  ,ShukkaSuu
 			  ,Kanryo
 			  ,ShukkaMeisaiTekiyou			
-			  ,ShukkaSiziNOGyouNO 
-			  ,DenpyouDate  			 
+			  ,ShukkaSiziNOGyouNO 		 
 			  ,JuchuuNOGyouNO
+			  ,DenpyouDate  	
 			  ,ShouhinCD
 			  ,SoukoCD
 			  ,ShukkaGyouNO
@@ -207,8 +207,8 @@ BEGIN
                       ,Kanryo
                       ,ShukkaMeisaiTekiyou          
                       ,ShukkaSiziNOGyouNO    
-                      ,DenpyouDate            
                       ,JuchuuNOGyouNO
+                      ,DenpyouDate            
                       ,ShouhinCD
                       ,SoukoCD
                       ,NULLIF(ShukkaGyouNO,0)
@@ -227,8 +227,8 @@ BEGIN
 					Kanryo					tinyint 'Kanryou',
 					ShukkaMeisaiTekiyou		varchar(80) 'ShukkaMeisaiTekiyou',
 					ShukkaSiziNOGyouNO		varchar(25)'ShukkaSiziNOGyouNO',
-					DenpyouDate				date 'DenpyouDate',
 					JuchuuNOGyouNO			varchar(25)'JuchuuNOGyouNO',
+					DenpyouDate				varchar(10)'DenpyouDate',
 					ShouhinCD				varchar(50)'ShouhinCD',
 					SoukoCD					varchar(10)'SoukoCD',
 					ShukkaGyouNO            smallint 'ShukkaGyouNO'
@@ -363,38 +363,37 @@ BEGIN
 			left outer join F_Kouriten(@ShukkaDate) FK on FK.KouritenCD=m.KouritenCD
 			where D_Shukka.ShukkaNO=m.ShukkaNO
 
-
-
 			--D_ShukkaMeisai B
 			update D_ShukkaMeisai set 
-			GyouHyouziJun = @row + @row + 1,
-			DenpyouDate = d.DenpyouDate,
-			BrandCD = FS.BrandCD,
-			ShouhinCD = d.ShouhinCD,
-			ShouhinName = d.ShouhinName,
-			JANCD =NULLIF(d.JANCD,''),
-			ColorRyakuName = d.ColorRyakuName,
-			ColorNO = d.ColorNO,
-			SizeNO = d.SizeNO,
-			ShukkaSuu = case when d.ShukkaSuu is not null then d.ShukkaSuu else 0 end,
-			TaniCD = FS.TaniCD,
-			ShukkaMeisaiTekiyou = NULLIF(d.ShukkaMeisaiTekiyou,''),
-			UriageKanryouKBN = 0,
-			UriageZumiSuu = 0,
-			ShukkaSiziNO = LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1),
-			ShukkaSiziGyouNO =RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO)),
-			JuchuuNO = DSM.JuchuuNO,
-			JuchuuGyouNO =DSM.JuchuuGyouNO,
-			UpdateOperator = @UpdateOperator,
-			UpdateDateTime = @currentDate
-			from #Temp_Detail d
-			left outer join D_ShukkaSiziMeisai DSM  on DSM.ShukkaSiziNO=LEFT((d.ShukkaSiziNOGyouNO), CHARINDEX('-', (d.ShukkaSiziNOGyouNO)) - 1) 
-			and DSM.ShukkaSiziGyouNO=RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))			
-			left outer join F_Shouhin(@ShukkaDate) FS on FS.ShouhinCD=d.ShouhinCD
-			where D_ShukkaMeisai.ShukkaNo=@ShukkaNo 
-			and D_ShukkaMeisai.ShukkaSiziNO=DSM.ShukkaSiziNO 
-			and D_ShukkaMeisai.ShukkaSiziGyouNO=DSM.ShukkaSiziGyouNO
-			and D_ShukkaMeisai.ShukkaGyouNO = d.ShukkaGyouNO
+                GyouHyouziJun = @row + @row + 1,
+                DenpyouDate = convert(date,d.DenpyouDate),
+                BrandCD = FS.BrandCD,
+                ShouhinCD = d.ShouhinCD,
+                ShouhinName = d.ShouhinName,
+                JANCD =NULLIF(d.JANCD,''),
+                ColorRyakuName = d.ColorRyakuName,
+                ColorNO = d.ColorNO,
+                SizeNO = d.SizeNO,
+                ShukkaSuu = case when d.ShukkaSuu is not null then d.ShukkaSuu else 0 end,
+                TaniCD = FS.TaniCD,
+                ShukkaMeisaiTekiyou = NULLIF(d.ShukkaMeisaiTekiyou,''),
+                UriageKanryouKBN = 0,
+                UriageZumiSuu = 0,
+                ShukkaSiziNO = LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1),
+                ShukkaSiziGyouNO =RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO)),
+                JuchuuNO = DSM.JuchuuNO,
+                JuchuuGyouNO =DSM.JuchuuGyouNO,
+                UpdateOperator = @UpdateOperator,
+                UpdateDateTime = @currentDate
+            from #Temp_Detail d
+            left outer join D_ShukkaSiziMeisai DSM  
+            on DSM.ShukkaSiziNO=LEFT((d.ShukkaSiziNOGyouNO), CHARINDEX('-', (d.ShukkaSiziNOGyouNO)) - 1) 
+            and DSM.ShukkaSiziGyouNO=RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
+            left outer join F_Shouhin(@ShukkaDate) FS on FS.ShouhinCD=d.ShouhinCD
+            where D_ShukkaMeisai.ShukkaNo=@ShukkaNo 
+            and D_ShukkaMeisai.ShukkaSiziNO=DSM.ShukkaSiziNO 
+            and D_ShukkaMeisai.ShukkaSiziGyouNO=DSM.ShukkaSiziGyouNO
+            and D_ShukkaMeisai.ShukkaGyouNO = d.ShukkaGyouNO
 
             --行削除分をDelete
             Delete From D_ShukkaMeisai
@@ -412,7 +411,7 @@ BEGIN
             select @ShukkaNO,
                     ISNULL((select MAX(ShukkaGyouNO) from D_ShukkaMeisai Where ShukkaNO = @ShukkaNO group by ShukkaNO),0) + ROW_NUMBER() OVER(ORDER BY d.ShukkaSiziNOGyouNO),
                     ISNULL((select MAX(ShukkaGyouNO) from D_ShukkaMeisai Where ShukkaNO = @ShukkaNO group by ShukkaNO),0) + ROW_NUMBER() OVER(ORDER BY d.ShukkaSiziNOGyouNO),
-                    d.DenpyouDate,FS.BrandCD,d.ShouhinCD,d.ShouhinName,NULLIF(d.JANCD,''),d.ColorRyakuName,d.ColorNO,d.SizeNO,
+                    convert(date,d.DenpyouDate),FS.BrandCD,d.ShouhinCD,d.ShouhinName,NULLIF(d.JANCD,''),d.ColorRyakuName,d.ColorNO,d.SizeNO,
                     d.ShukkaSuu,FS.TaniCD,NULLIF(d.ShukkaMeisaiTekiyou,''),d.SoukoCD,0,0,LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1),
                     RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO)),
                     DSM.JuchuuNO,DSM.JuchuuGyouNO,m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate
@@ -421,7 +420,7 @@ BEGIN
                                 and DSM.ShukkaSiziGyouNO = RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))                                
                  left outer join F_Shouhin(@ShukkaDate) FS on FS.ShouhinCD  = d.ShouhinCD
             WHERE NOT EXISTS(SELECT 1 FROM D_ShukkaMeisai AS DM WHERE DM.ShukkaNO = @ShukkaNO AND DM.ShukkaGyouNO = d.ShukkaGyouNO)
-            
+            ;
 						
 		--2021/04/27 Y.Nishikawa CHG 出荷データ、在庫データの更新が不正↓↓
 		----D_ShukkaShousai C
@@ -763,7 +762,7 @@ BEGIN
 				(HistoryGuid,ShukkaNO,ShukkaGyouNO,GyouHyouziJun,ShoriKBN,DenpyouDate,BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO,ShukkaSuu,TaniCD,ShukkaMeisaiTekiyou, SoukoCD,
 				 UriageKanryouKBN,UriageZumiSuu,ShukkaSiziNO,ShukkaSiziGyouNO,JuchuuNO,JuchuuGyouNO,InsertOperator,InsertDateTime,UpdateOperator,UpdateDateTime,HistoryOperator,HistoryDateTime)
 
-			select  @Unique,DS.ShukkaNO,ShukkaGyouNO,GyouHyouziJun,20,DenpyouDate,BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO,ShukkaSuu,TaniCD,ShukkaMeisaiTekiyou,SoukoCD,
+			select  @Unique,DS.ShukkaNO,ShukkaGyouNO,GyouHyouziJun,20,DS.DenpyouDate,BrandCD,ShouhinCD,ShouhinName,JANCD,ColorRyakuName,ColorNO,SizeNO,ShukkaSuu,TaniCD,ShukkaMeisaiTekiyou,SoukoCD,
 					UriageKanryouKBN,UriageZumiSuu,DS.ShukkaSiziNO,DS.ShukkaSiziGyouNO,JuchuuNO,JuchuuGyouNO,DS.InsertOperator,InsertDateTime,DS.UpdateOperator,UpdateDateTime,m.InsertOperator,@currentDate
 				from D_ShukkaMeisai DS,#Temp_Main m where DS.ShukkaNO=@ShukkaNO
 
@@ -802,28 +801,39 @@ BEGIN
 			----D_ShukkaSiziMeisai A
 			update A set	
 				ShukkaKanryouKBN = case WHEN ShukkaSiziSuu <= ShukkaZumiSuu Then 1 WHEN d.Kanryo = 1 Then 1 ELSE 0 End
-			from D_ShukkaSiziMeisai A,#Temp_Detail d
-			where A.ShukkaSiziNO=LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
+			from D_ShukkaSiziMeisai A
+			inner join #Temp_Detail d
+			on A.ShukkaSiziNO=LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1) 
 			and A.ShukkaSiziGyouNO = RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
+			;
 
-
-				--D_ShukkaSizi A
+			--D_ShukkaSizi A
 			update A set	
 				ShukkaKanryouKBN = B.ShukkaKanryouKBN
 			from D_ShukkaSizi A
-			inner join (select ShukkaSiziNO,min(ShukkaKanryouKBN) ShukkaKanryouKBN from D_ShukkaSiziMeisai, #Temp_Detail d 
-			where ShukkaSiziNO=LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1)	group by ShukkaSiziNO)B
+			inner join (select ShukkaSiziNO,min(ShukkaKanryouKBN) ShukkaKanryouKBN from D_ShukkaSiziMeisai
+						inner join #Temp_Detail d 
+						   on ShukkaSiziNO=LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1)
+						  and ShukkaSiziGyouNO = RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO))
+						group by ShukkaSiziNO)B
 			on A.ShukkaSiziNO=B.ShukkaSiziNO 
-
-
-				--D_JuchuuMeisai H
-			update DJ set	
-				ShukkaZumiSuu = ShukkaZumiSuu + d.ShukkaSuu,
-				UpdateOperator = m.InsertOperator,
-				UpdateDateTime = @currentDate			
-			from #Temp_Main m,D_JuchuuMeisai DJ
-			inner join #Temp_Detail d on LEFT(d.JuchuuNOGyouNO, CHARINDEX('-', d.JuchuuNOGyouNO) - 1)=DJ.JuchuuNO 
-			and RIGHT(d.JuchuuNOGyouNO, LEN(d.JuchuuNOGyouNO) - CHARINDEX('-', d.JuchuuNOGyouNO))=DJ.JuchuuGyouNO
+			;
+			
+            --D_JuchuuMeisai H
+            update D_JuchuuMeisai set   
+                ShukkaZumiSuu = ShukkaZumiSuu + Detail.ShukkaSuu,
+                UpdateOperator = m.InsertOperator,
+                UpdateDateTime = @currentDate           
+            from #Temp_Main m
+            ,(SELECT LEFT(d.JuchuuNOGyouNO, CHARINDEX('-', d.JuchuuNOGyouNO) - 1) AS JuchuuNO
+                    ,RIGHT(d.JuchuuNOGyouNO, LEN(d.JuchuuNOGyouNO) - CHARINDEX('-', d.JuchuuNOGyouNO)) AS GyouNO
+                    ,SUM(d.ShukkaSuu) AS ShukkaSuu 
+                FROM #Temp_Detail AS d 
+                WHERE ISNULL(d.JuchuuNOGyouNO,'') <> ''
+                GROUP BY d.JuchuuNOGyouNO) AS Detail
+            Where Detail.JuchuuNO=D_JuchuuMeisai.JuchuuNO 
+            and Detail.GyouNO=D_JuchuuMeisai.JuchuuGyouNO
+            ;
 
 			--2021/05/06 Y.Nishikawa DEL 出荷指示明細/受注明細の出荷済数に２回更新している↓↓
 			----D_JuchuuMeisai H
@@ -839,18 +849,25 @@ BEGIN
 			
 			--D_JuchuuMeisai A
 			update A set	
-				ShukkaKanryouKBN = case WHEN A.ShukkaSiziZumiSuu <= ShukkaZumiSuu Then 1 WHEN d.Kanryo = 1 Then 1 ELSE 0 End
-			from #Temp_Detail d,D_JuchuuMeisai A
-			where A.JuchuuNO=LEFT(d.JuchuuNOGyouNO, CHARINDEX('-', d.JuchuuNOGyouNO) - 1)
-
-			
+				ShukkaKanryouKBN = case WHEN A.ShukkaSiziZumiSuu <= A.ShukkaZumiSuu Then 1 WHEN Detail.Kanryo = 1 Then 1 ELSE 0 End
+			from D_JuchuuMeisai A
+			inner join (SELECT d.JuchuuNOGyouNO, MAX(d.Kanryo) AS Kanryo FROM #Temp_Detail d
+						GROUP BY d.JuchuuNOGyouNO) AS Detail
+			   on A.JuchuuNO=LEFT(Detail.JuchuuNOGyouNO, CHARINDEX('-', Detail.JuchuuNOGyouNO) - 1)
+			  and A.JuchuuGyouNO=RIGHT(Detail.JuchuuNOGyouNO, LEN(Detail.JuchuuNOGyouNO) - CHARINDEX('-', Detail.JuchuuNOGyouNO))
+			  ;
+		
 			--D_Juchuu A
 			update A set	
 				ShukkaKanryouKBN = B.ShukkaKanryouKBN
-			from #Temp_Detail d,D_Juchuu A
-			inner join (select JuchuuNO,min(ShukkaKanryouKBN) ShukkaKanryouKBN from D_JuchuuMeisai DM,#Temp_Detail d 
-			where DM.JuchuuNO=LEFT(d.JuchuuNOGyouNO, CHARINDEX('-', d.JuchuuNOGyouNO) - 1)	group by JuchuuNO) B
+			from D_Juchuu A
+			inner join (select DM.JuchuuNO,min(ShukkaKanryouKBN) ShukkaKanryouKBN from D_JuchuuMeisai DM
+						inner join #Temp_Detail d 
+						   on DM.JuchuuNO=LEFT(d.JuchuuNOGyouNO, CHARINDEX('-', d.JuchuuNOGyouNO) - 1)
+						  and DM.JuchuuGyouNO=RIGHT(d.JuchuuNOGyouNO, LEN(d.JuchuuNOGyouNO) - CHARINDEX('-', d.JuchuuNOGyouNO))
+						group by DM.JuchuuNO) B
 			on A.JuchuuNO=B.JuchuuNO
+			;
 			
 			--2021/04/30 Y.Nishikawa DEL 在庫データの更新が不正↓↓
 			----D_GenZaiko 
@@ -875,7 +892,6 @@ BEGIN
 			--	DG.NyuukoDate= DS.NyuukoDate
 			--2021/04/30 Y.Nishikawa DEL 在庫データの更新が不正↑↑
 						
-
 			UPDATE M_Tokuisaki 
 			set UsedFlg = 1 
 			where TokuisakiCD=@TokuisakiCD

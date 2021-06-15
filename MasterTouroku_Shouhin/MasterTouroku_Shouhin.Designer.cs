@@ -641,10 +641,10 @@
             // 
             // pImage
             // 
-            this.pImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pImage.Location = new System.Drawing.Point(869, 15);
             this.pImage.Name = "pImage";
-            this.pImage.Size = new System.Drawing.Size(350, 300);
+            this.pImage.Size = new System.Drawing.Size(422, 300);
             this.pImage.TabIndex = 66;
             this.pImage.TabStop = false;
             this.pImage.WaitOnLoad = true;

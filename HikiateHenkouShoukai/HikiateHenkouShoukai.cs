@@ -23,6 +23,9 @@ namespace HikiateHenkouShoukai
         {
             InitializeComponent();
             cf = new CommonFunction();
+            gvMainDetail.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.gvMainDetail_DataError);
+            gvMainDetail.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gvMainDetail_CellFormatting);
+
         }
 
         private void HikiateHenkouShoukai_Load(object sender, EventArgs e)
@@ -291,6 +294,7 @@ namespace HikiateHenkouShoukai
                     txtName.Enabled = true;
                     txtAddress.Enabled = true;
                     txtChakuniYoteiNO.Enabled = true;
+                    this.txtSoukoCD.NextControlName = txtChakuniYoteiNO.Name;
                     chkType1.Enabled = true;
                     chkType2.Enabled = true;
                     F7.Enabled = false;
@@ -320,6 +324,7 @@ namespace HikiateHenkouShoukai
                     txtName.Enabled = false;
                     txtAddress.Enabled = false;
                     txtChakuniYoteiNO.Enabled = true;
+                    this.txtSoukoCD.NextControlName = txtChakuniYoteiNO.Name;
                     chkType1.Enabled = true;
                     chkType2.Enabled = true;
                     F7.Enabled = false;
@@ -349,6 +354,7 @@ namespace HikiateHenkouShoukai
                     txtName.Enabled = false;
                     txtAddress.Enabled = false;
                     txtChakuniYoteiNO.Enabled = false;
+                    this.txtSoukoCD.NextControlName = txtKanriNO.Name;
                     chkType1.Enabled = false;
                     chkType2.Enabled = false;
                     F7.Enabled = true;
@@ -452,7 +458,7 @@ namespace HikiateHenkouShoukai
           
             if (F8_dt1.Rows.Count > 0)
             {
-                var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("商品")).ThenBy(r => r.Field<string>("引当調整数")).ThenBy(r => r.Field<string>("表示順")).ThenBy(r => r.Field<string>("受注番号-行番号")).CopyToDataTable();
+                var dtConfirm = F8_dt1.AsEnumerable().OrderBy(r => r.Field<string>("ShouhinCD")).ThenBy(r => r.Field<string>("表示順")).ThenBy(r => r.Field<string>("受注番号-行番号")).ThenBy(r => r.Field<string>("小売店名")).CopyToDataTable();
                 gvMainDetail.DataSource = dtConfirm;
                 gvMainDetail.Memory_Row_Count = F8_dt1.Rows.Count;
                 gvAggregationDetails.Memory_Row_Count = F8_dt1.Rows.Count;      //For Error Check
@@ -522,11 +528,11 @@ namespace HikiateHenkouShoukai
                     if (F8_dt1.Rows.Count > 0)
                     {
                         //重複行はDelete
-                        string HinbanCD = dr["商品"].ToString();
+                        string ShouhinCD = dr["ShouhinCD"].ToString();
                         string JuchuuNo = dr["受注番号-行番号"].ToString();
                         string KanriNO = dr["小売店名"].ToString();
 
-                        DataRow existDr1 = F8_dt1.Select("([受注番号-行番号] ='" + JuchuuNo + "' OR [受注番号-行番号] IS NULL) AND 小売店名 = '" + KanriNO + "' AND 商品 = '" + HinbanCD + "'").SingleOrDefault();
+                        DataRow existDr1 = F8_dt1.Select("([受注番号-行番号] ='" + JuchuuNo + "' OR [受注番号-行番号] IS NULL) AND 小売店名 = '" + KanriNO + "' AND ShouhinCD = '" + ShouhinCD + "'").SingleOrDefault();
                         if (existDr1 != null)
                         {
                             dr["表示順"] = "9";
@@ -701,11 +707,12 @@ namespace HikiateHenkouShoukai
                 DataRow F8_drNew = F8_dt1.NewRow();// save updated data 
                 DataGridViewRow row = gvMainDetail.Rows[t];// grid view data
                 string HinbanCD = row.Cells[0].Value.ToString();
+                string ShouhinCD = row.Cells["ShouhinCD"].Value.ToString();
                 string JuchuuNo = row.Cells[12].Value.ToString();
                 string KanriNO = row.Cells[14].Value.ToString();
 
-                DataRow[] select_dr1 = dtMain.Select("([受注番号-行番号] ='" + JuchuuNo + "' OR [受注番号-行番号] IS NULL) AND 小売店名 = '" + KanriNO + "' AND 商品 = '" + HinbanCD + "'");// original data                
-                DataRow existDr1 = F8_dt1.Select("([受注番号-行番号] ='" + JuchuuNo + "' OR [受注番号-行番号] IS NULL) AND 小売店名 = '" + KanriNO + "' AND 商品 = '" + HinbanCD + "'").SingleOrDefault();
+                DataRow[] select_dr1 = dtMain.Select("([受注番号-行番号] ='" + JuchuuNo + "' OR [受注番号-行番号] IS NULL) AND 小売店名 = '" + KanriNO + "' AND ShouhinCD = '" + ShouhinCD + "'");// original data                
+                DataRow existDr1 = F8_dt1.Select("([受注番号-行番号] ='" + JuchuuNo + "' OR [受注番号-行番号] IS NULL) AND 小売店名 = '" + KanriNO + "' AND ShouhinCD = '" + ShouhinCD + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
                     if (row.Cells[11].Value.ToString() == "0")
@@ -837,11 +844,11 @@ namespace HikiateHenkouShoukai
             dt.Columns.Add("サイズ");
             if (type != 2)
             {
-                dt.Columns.Add("受注数");
-                dt.Columns.Add("着荷予定数");
-                dt.Columns.Add("未引当数");
+                dt.Columns.Add("受注数" ,typeof(int));
+                dt.Columns.Add("着荷予定数", typeof(int));
+                dt.Columns.Add("未引当数", typeof(int));
             }
-            dt.Columns.Add("引当済数");
+            dt.Columns.Add("引当済数", typeof(int));
             switch(type)
             {
                 case 0:
@@ -850,10 +857,10 @@ namespace HikiateHenkouShoukai
                     dt.Columns.Add("出荷済数");
                     break;
                 case 1:
-                    dt.Columns.Add("着荷済数");
-                    dt.Columns.Add("出荷指示数");
-                    dt.Columns.Add("出荷済数");
-                    dt.Columns.Add("引当調整数");
+                    dt.Columns.Add("着荷済数", typeof(int));
+                    dt.Columns.Add("出荷指示数", typeof(int));
+                    dt.Columns.Add("出荷済数", typeof(int));
+                    dt.Columns.Add("引当調整数", typeof(int));
                     dt.Columns.Add("受注番号-行番号");
                     dt.Columns.Add("得意先名");
                     dt.Columns.Add("小売店名");
@@ -881,10 +888,11 @@ namespace HikiateHenkouShoukai
         {
             if(gvMainDetail.IsLastKeyEnter)
             {
-                string val = gvMainDetail.Rows[e.RowIndex].Cells[11].EditedFormattedValue.ToString();
+                string val = gvMainDetail.Rows[e.RowIndex].Cells[11].EditedFormattedValue.ToString().Replace(",", "");
+                gvMainDetail.Rows[e.RowIndex].Cells[11].Style.ForeColor = Color.Black;
                 if (string.IsNullOrEmpty(val))
                     gvMainDetail.Rows[e.RowIndex].Cells[11].Value = 0;
-                else if (Convert.ToInt32(val) < 0)
+                else if (Convert.ToInt64(val) < 0)
                     gvMainDetail.Rows[e.RowIndex].Cells[11].Style.ForeColor = Color.Red;
             }
         }
@@ -946,6 +954,30 @@ namespace HikiateHenkouShoukai
                     sqlTransaction.Rollback();
                     bbl.ShowMessage(ex.Message);
                 }
+            }
+        }
+        private void gvMainDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == 11)
+            {
+                string val = gvMainDetail.Rows[e.RowIndex].Cells[11].Value.ToString().Replace(",", "");
+                if (string.IsNullOrEmpty(val))
+                    gvMainDetail.Rows[e.RowIndex].Cells[11].Value = 0;
+                else if (Convert.ToInt64(val) < 0)
+                    e.CellStyle.ForeColor = Color.Red;
+            }
+        }
+        private void gvMainDetail_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+                //MessageBox.Show("Enter valid no");
+                //gvMainDetail.RefreshEdit();
+                e.Cancel = false;
             }
         }
     }

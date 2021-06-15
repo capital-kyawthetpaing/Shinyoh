@@ -16,6 +16,8 @@ GO
 -- Create date: 2020/12/07
 -- Description:	<Description,,> 
 -- History    : 2021/05/12 Y.Nishikawa 出荷指示出力区分更新時、全出荷指示を対象としている
+--            : 2021/05/26 Y.Nishikawa 日付の条件が不正
+--            : 2021/06/14 Y.Nishikawa 改定日直近の意味をはきちがえてる
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkaSiziDataShuturyoku_Excel]
 	@ShukkaYoteiDate		as date,
@@ -39,7 +41,9 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 
-	set @ShukkaYoteiDate = GETDATE();
+	--2021/06/14 Y.Nishikawa DEL 改定日直近の意味をはきちがえてる↓↓
+	--set @ShukkaYoteiDate = GETDATE();
+	--2021/06/14 Y.Nishikawa DEL 改定日直近の意味をはきちがえてる↑↑
 
 	if @condition='Mihakkoubunnomi'
 	begin
@@ -55,10 +59,14 @@ BEGIN
 		FS.HinbanCD,
 		dsm.ColorRyakuName,
 		CASE ISNUMERIC(dsm.SizeNO+'.e0') WHEN 1 THEN dsm.SizeNO+'.0' ELSE dsm.SizeNO END AS SizeNO,
-		dsm.JANCD,
-		dsm.ShukkaSiziSuu,
-		dsm.UriageTanka,
-		dsm.UriageKingaku,
+		--dsm.JANCD,
+		convert(varchar(50),CONVERT(numeric(16,0), CAST(dsm.JANCD AS FLOAT))) as JANCD,
+		--dsm.ShukkaSiziSuu,
+		--dsm.UriageTanka,
+		--dsm.UriageKingaku,
+		convert(int,isnull(dsm.ShukkaSiziSuu,0)) as ShukkaSiziSuu,--2021/05/21 ssa CHG TaskNO 426
+		convert(int,isnull(dsm.UriageTanka,0)) as UriageTanka,--2021/05/21 ssa CHG TaskNO 426
+		convert(int,isnull(dsm.UriageKingaku,0)) as UriageKingaku,--2021/05/21 ssa CHG TaskNO 426
 		--dsm.KouritenJuusho2,
 		djm.SenpouHacchuuNO,
 		ds.ShukkaSiziNO,
@@ -67,12 +75,20 @@ BEGIN
 		from D_ShukkaSizi ds
 		inner join D_ShukkaSiziMeisai dsm on dsm.ShukkaSiziNO = ds.ShukkaSiziNO
 		left outer join D_JuchuuMeisai djm on djm.JuchuuNO = dsm.JuchuuNO and djm.JuchuuGyouNO = dsm.JuchuuGyouNO
-		left outer join  F_Shouhin (@ShukkaYoteiDate) FS on FS.ShouhinCD = dsm.ShouhinCD
-		left outer join F_Tokuisaki(@ShukkaYoteiDate) FT on FT.TokuisakiCD = ds.TokuisakiCD 
+		--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↓↓
+		--left outer join  F_Shouhin (@ShukkaYoteiDate) FS on FS.ShouhinCD = dsm.ShouhinCD
+		--left outer join F_Tokuisaki(@ShukkaYoteiDate) FT on FT.TokuisakiCD = ds.TokuisakiCD
+		OUTER APPLY (SELECT * FROM F_Shouhin(ds.ShukkaYoteiDate) F WHERE F.ShouhinCD = dsm.ShouhinCD) FS
+		OUTER APPLY (SELECT * FROM F_Tokuisaki(ds.ShukkaYoteiDate) F WHERE F.TokuisakiCD = ds.TokuisakiCD) FT
+		--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↑↑
+		 
 		where
 		(@ShukkaSiziNO1 is null or (ds.ShukkaSiziNO  >= @ShukkaSiziNO1)) and (@ShukkaSiziNO2 is null or (ds.ShukkaSiziNO  <= @ShukkaSiziNO2)) 
 		and (@ShukkaYoteiDate1 is null or (ds.ShukkaYoteiDate  >= @ShukkaYoteiDate1)) and (@ShukkaYoteiDate2 is null or (ds.ShukkaYoteiDate  <= @ShukkaYoteiDate2)) 
-		and (@UpdateDateTime1 is null or (ds.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (ds.UpdateDateTime  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↓↓
+		--and (@UpdateDateTime1 is null or (ds.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (ds.UpdateDateTime  <= @UpdateDateTime2)) 
+		and (@UpdateDateTime1 is null or (convert(date,ds.UpdateDateTime)  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (convert(date,ds.UpdateDateTime)  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↑↑
 		and (@TokuisakiCD is null or (ds.TokuisakiCD = @TokuisakiCD))
 		and (@KouritenCD is null or (ds.KouritenCD = @KouritenCD))
 		and (@BrandCD is null or (FS.BrandCD = @BrandCD))
@@ -81,9 +97,12 @@ BEGIN
 		and (@SeasonFW is null or (FS.SeasonFW = @SeasonFW))
 		and (FT.ShukkaSizishoHuyouKBN = 0)
 		and (ds.ShukkaSiziShuturyokuKBN =0)
-		order by dsm.ShukkaSiziNO,dsm.ShukkaSiziGyouNO
+		order by dsm.ShukkaSiziNO,dsm.ShukkaSiziGyouNO		
+	end
 
-		--2021/05/12 Y.Nishikawa CHG 出荷指示出力区分更新時、全出荷指示を対象としている↓↓
+	else if @condition='Mihakkoubunnomi_Update'  --For Task 503 NMW 2021-05-27
+	begin
+	--2021/05/12 Y.Nishikawa CHG 出荷指示出力区分更新時、全出荷指示を対象としている↓↓
 	--update D_ShukkaSizi set ShukkaSiziShuturyokuKBN = 1, ShukkaSiziShuturyokuDateTime=getdate()
 	    UPDATE DSSH
 		SET ShukkaSiziShuturyokuKBN = 1
@@ -91,12 +110,20 @@ BEGIN
 		FROM D_ShukkaSizi DSSH
 		inner join D_ShukkaSiziMeisai dsm on dsm.ShukkaSiziNO = DSSH.ShukkaSiziNO
 		left outer join D_JuchuuMeisai djm on djm.JuchuuNO = dsm.JuchuuNO and djm.JuchuuGyouNO = dsm.JuchuuGyouNO
-		left outer join  F_Shouhin (@ShukkaYoteiDate) FS on FS.ShouhinCD = dsm.ShouhinCD
-		left outer join F_Tokuisaki(@ShukkaYoteiDate) FT on FT.TokuisakiCD = DSSH.TokuisakiCD
+		--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↓↓
+		--left outer join  F_Shouhin (@ShukkaYoteiDate) FS on FS.ShouhinCD = dsm.ShouhinCD
+		--left outer join F_Tokuisaki(@ShukkaYoteiDate) FT on FT.TokuisakiCD = DSSH.TokuisakiCD
+		OUTER APPLY (SELECT * FROM F_Shouhin(DSSH.ShukkaYoteiDate) F WHERE F.ShouhinCD = dsm.ShouhinCD) FS
+		OUTER APPLY (SELECT * FROM F_Tokuisaki(DSSH.ShukkaYoteiDate) F WHERE F.TokuisakiCD = DSSH.TokuisakiCD) FT
+		--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↑↑
+		
 		WHERE
 		(@ShukkaSiziNO1 is null or (DSSH.ShukkaSiziNO  >= @ShukkaSiziNO1)) and (@ShukkaSiziNO2 is null or (DSSH.ShukkaSiziNO  <= @ShukkaSiziNO2)) 
 		and (@ShukkaYoteiDate1 is null or (DSSH.ShukkaYoteiDate  >= @ShukkaYoteiDate1)) and (@ShukkaYoteiDate2 is null or (DSSH.ShukkaYoteiDate  <= @ShukkaYoteiDate2)) 
-		and (@UpdateDateTime1 is null or (DSSH.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (DSSH.UpdateDateTime  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↓↓
+		--and (@UpdateDateTime1 is null or (DSSH.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (DSSH.UpdateDateTime  <= @UpdateDateTime2)) 
+		and (@UpdateDateTime1 is null or (convert(date,DSSH.UpdateDateTime)  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (convert(date,DSSH.UpdateDateTime)  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↑↑		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正ueue 
 		and (@TokuisakiCD is null or (DSSH.TokuisakiCD = @TokuisakiCD))
 		and (@KouritenCD is null or (DSSH.KouritenCD = @KouritenCD))
 		and (@BrandCD is null or (FS.BrandCD = @BrandCD))
@@ -121,10 +148,14 @@ BEGIN
 		FS.HinbanCD,
 		dsm.ColorRyakuName,
 		CASE ISNUMERIC(dsm.SizeNO+'.e0') WHEN 1 THEN dsm.SizeNO+'.0' ELSE dsm.SizeNO END AS SizeNO,
-		dsm.JANCD,
-		dsm.ShukkaSiziSuu,
-		dsm.UriageTanka,
-		dsm.UriageKingaku,
+		--dsm.JANCD,
+		convert(varchar(50),CONVERT(numeric(16,0), CAST(dsm.JANCD AS FLOAT))) as JANCD,
+		--dsm.ShukkaSiziSuu,
+		--dsm.UriageTanka,
+		--dsm.UriageKingaku,
+		convert(int,isnull(dsm.ShukkaSiziSuu,0)) as ShukkaSiziSuu,--2021/05/21 ssa CHG TaskNO 426
+		convert(int,isnull(dsm.UriageTanka,0)) as UriageTanka,--2021/05/21 ssa CHG TaskNO 426
+		convert(int,isnull(dsm.UriageKingaku,0)) as UriageKingaku,--2021/05/21 ssa CHG TaskNO 426
 		--dsm.KouritenJuusho2,
 		djm.SenpouHacchuuNO,
 		ds.ShukkaSiziNO,
@@ -133,12 +164,20 @@ BEGIN
 		from D_ShukkaSizi ds
 		inner join D_ShukkaSiziMeisai dsm on dsm.ShukkaSiziNO = ds.ShukkaSiziNO
 		left outer join D_JuchuuMeisai djm on djm.JuchuuNO = dsm.JuchuuNO and djm.JuchuuGyouNO = dsm.JuchuuGyouNO
-		left outer join  F_Shouhin (@ShukkaYoteiDate) FS on FS.ShouhinCD = dsm.ShouhinCD
-		left outer join F_Tokuisaki(@ShukkaYoteiDate) FT on FT.TokuisakiCD = ds.TokuisakiCD 
+		--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↓↓
+		--left outer join  F_Shouhin (@ShukkaYoteiDate) FS on FS.ShouhinCD = dsm.ShouhinCD
+		--left outer join F_Tokuisaki(@ShukkaYoteiDate) FT on FT.TokuisakiCD = ds.TokuisakiCD
+		OUTER APPLY (SELECT * FROM F_Shouhin(ds.ShukkaYoteiDate) F WHERE F.ShouhinCD = dsm.ShouhinCD) FS
+		OUTER APPLY (SELECT * FROM F_Tokuisaki(ds.ShukkaYoteiDate) F WHERE F.TokuisakiCD = ds.TokuisakiCD) FT
+		--2021/06/14 Y.Nishikawa CHG 改定日直近の意味をはきちがえてる↑↑
+		 
 		where
 		(@ShukkaSiziNO1 is null or (ds.ShukkaSiziNO  >= @ShukkaSiziNO1)) and (@ShukkaSiziNO2 is null or (ds.ShukkaSiziNO  <= @ShukkaSiziNO2)) 
 		and (@ShukkaYoteiDate1 is null or (ds.ShukkaYoteiDate  >= @ShukkaYoteiDate1)) and (@ShukkaYoteiDate2 is null or (ds.ShukkaYoteiDate  <= @ShukkaYoteiDate2)) 
-		and (@UpdateDateTime1 is null or (ds.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (ds.UpdateDateTime  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↓↓
+		--and (@UpdateDateTime1 is null or (ds.UpdateDateTime  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (ds.UpdateDateTime  <= @UpdateDateTime2)) 
+		and (@UpdateDateTime1 is null or (convert(date,ds.UpdateDateTime)  >= @UpdateDateTime1)) and (@UpdateDateTime2 is null or (convert(date,ds.UpdateDateTime)  <= @UpdateDateTime2)) 
+		--2021/05/26 Y.Nishikawa CHG 日付の条件が不正↑↑
 		and (@TokuisakiCD is null or (ds.TokuisakiCD = @TokuisakiCD))
 		and (@KouritenCD is null or (ds.KouritenCD = @KouritenCD))
 		and (@BrandCD is null or (FS.BrandCD = @BrandCD))

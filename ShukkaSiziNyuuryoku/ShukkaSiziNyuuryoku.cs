@@ -120,7 +120,7 @@ namespace ShukkaSiziNyuuryoku
             cboMode.Bind(false, multi_Entity);
             ModeType(4);
             be = _GetBaseData();
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
         }
         public override void FunctionProcess(string tagID)
         {
@@ -241,7 +241,7 @@ namespace ShukkaSiziNyuuryoku
                     Control btnNew = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnNew.Visible = true;
                     F9.Visible = false;
-
+                    txtShippingDate.Focus();
                     td = new TokuisakiDetail();
                     kd = new KouritenDetail();
                     break;
@@ -250,7 +250,6 @@ namespace ShukkaSiziNyuuryoku
                     Form_ErrorCheck();
                     Control btnUpdate = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                     btnUpdate.Visible = true;
-
                     td = new TokuisakiDetail();
                     kd = new KouritenDetail();
                     break;

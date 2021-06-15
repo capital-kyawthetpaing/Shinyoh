@@ -172,7 +172,7 @@ namespace JuchuuList {
             if (tagID == "10")
             {
                
-                    DataTable dt = new DataTable { TableName = "JuchuuListTable" };
+                    DataTable dt = new DataTable { TableName = "JuchuuListTable" }; 
                     dt = Get_Form_Object();
                 if (dt.Rows.Count > 0)
                 {
@@ -191,7 +191,7 @@ namespace JuchuuList {
                     dt.Columns["Char1"].ColumnName = "ブランド";
                     dt.Columns["Exhibition"].ColumnName = "展示会";
                     dt.Columns["JANCD"].ColumnName = "JANコード";
-                    dt.Columns["ShouhinCD"].ColumnName = "商品";
+                    dt.Columns["HinbanCD"].ColumnName = "品番";   //TaskNo564 HET
                     dt.Columns["ShouhinName"].ColumnName = "品名";
                     dt.Columns["ColorRyakuName"].ColumnName = "カラー";
                     dt.Columns["SizeNO"].ColumnName = "サイズ";
@@ -211,7 +211,12 @@ namespace JuchuuList {
                     string[] numcol = { "19", "20", "21" };
 
                     ExportCSVExcel list = new ExportCSVExcel();
-                    list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
+                    list.stringCol = new string[1] { "14" };
+                    bool bl = list.ExcelOutputFile(dt, ProgramID, fname, fname, 26, datacol, numcol);
+                    if (bl)
+                    {
+                        Clear();
+                    }
 
                     //if (!System.IO.Directory.Exists("C:\\Excel"))
                     //    System.IO.Directory.CreateDirectory("C:\\Excel");
@@ -254,7 +259,7 @@ namespace JuchuuList {
                     //        bbl.ShowMessage("I203");
                     //        Clear();
                     //    }
-                    //}
+                //}
                 }
                 else if (dt.Rows.Count == 0)
                 {

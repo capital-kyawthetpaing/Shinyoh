@@ -42,6 +42,8 @@ namespace Shinyoh_Search
             sbSiiresaki.lblName = lblSiiresaki;
             txtStaffCD.ChangeDate = txtCurrentDate;
             txtStaffCD.lblName = lblStaff;
+            sbHinbanCDFrom.ChangeDate = txtCurrentDate;
+            sbHinbanCDTo.ChangeDate = txtCurrentDate;
             gvArrivalNo.UseRowNo(true);
             GridViewBind();
             gvArrivalNo.SetGridDesign();
@@ -74,7 +76,7 @@ namespace Shinyoh_Search
             txtExpectedDateTo.E104Check(true, txtExpectedDateFrom, txtExpectedDateTo);
 
             txtControlNoTo.E106Check(true, txtControlNoFrom, txtControlNoTo);
-            txtProductTo.E106Check(true, txtProductFrom, txtProductTo);
+            sbHinbanCDTo.E106Check(true, sbHinbanCDFrom, sbHinbanCDTo);
 
             sbSiiresaki.E101Check(true, "M_Siiresaki", sbSiiresaki, txtDateFrom, null);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtDateFrom, null);
@@ -96,22 +98,46 @@ namespace Shinyoh_Search
                 ane.ChakuniYoteiDateTo = txtExpectedDateTo.Text;
             ane.KanriNOFrom = txtControlNoFrom.Text;
             ane.KanriNOTo = txtControlNoTo.Text;
-            ane.ShouhinCDFrom = txtProductFrom.Text;
-            ane.ShouhinCDTo = txtProductTo.Text;
-            if(ErrorCheck(PanelTitle))           //Task no. 147 - tza
+            ane.ShouhinCDFrom = sbHinbanCDFrom.Text;
+            ane.ShouhinCDTo = sbHinbanCDTo.Text;
+            if(ErrorCheck(panel1))           //Task no. 147 - tza
             {
                 DataTable dt = ab.ArrivalNO_Search(ane);
                 if (dt.Columns.Contains("CurrentDay"))
                 {
                     if (dt.Rows.Count > 0)
                     {
-                        lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                        txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
-                        dt.Columns.Remove("CurrentDay");
+                        if (dt.Columns.Contains("CurrentDay"))
+                        {
+                            lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                            txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
+                        }
+                    }
+                    else
+                    {
+                        ClearSession();//ssa
                     }
                 }
+                dt.Columns.Remove("CurrentDay");//ssa
                 gvArrivalNo.DataSource = dt;
             }
+        }
+        private void ClearSession()
+        {
+            txtDateFrom.Clear();
+            txtDateTo.Clear();
+            sbSiiresaki.Clear();
+            lblSiiresaki.Text = string.Empty;
+            txtStaffCD.Clear();
+            lblStaff.Text = string.Empty;
+            txtProductName.Clear();
+            txtExpectedDateFrom.Clear();
+            txtExpectedDateTo.Clear();
+            txtControlNoFrom.Clear();
+            txtControlNoTo.Clear();
+            sbHinbanCDFrom.Clear();
+            sbHinbanCDTo.Clear();
+            txtDateFrom.Focus();
         }
         private void GetGridviewData(DataGridViewRow gvrow)
         {
@@ -125,7 +151,7 @@ namespace Shinyoh_Search
         private void sButton2_Click(object sender, EventArgs e)
         {
             GridViewBind();
-            gvArrivalNo.Focus();
+            //gvArrivalNo.Focus();//ssa
         }
         private void gvArrivalNo_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {

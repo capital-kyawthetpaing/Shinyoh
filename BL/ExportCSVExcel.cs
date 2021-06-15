@@ -17,6 +17,7 @@ namespace BL
     public  class ExportCSVExcel
     {
         BaseBL bbl = new BaseBL();
+        public string[] stringCol = null;
         public  bool ExportDataTableToExcel(DataTable dt,ExcelDesignSetting  obj)
         {
             Excel.Application oXL;
@@ -198,12 +199,6 @@ namespace BL
                 {
                     if (Path.GetExtension(savedialog.FileName).Contains(".xlsx"))
                     {
-                        //Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();  // PTK removed 2021/05/20
-                        //Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
-                        //Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
-                        //worksheet = workbook.ActiveSheet;
-                        //worksheet.Name = SheetName;
-
                         using (XLWorkbook wb = new XLWorkbook())
                         {
                             var ws = wb.Worksheets.Add(dtvalue, SheetName);
@@ -212,6 +207,16 @@ namespace BL
                             //ws.ColumnWidth = 15;
                             // worksheet.Columns.AutoFit();
                             ws.Columns().AdjustToContents();
+
+                            if (stringCol != null)
+                            {
+                                for (int i = 0; i < stringCol.Count(); i++)
+                                {
+                                    string val = stringCol[i].ToString();
+                                    ws.Column(val).DataType = XLDataType.Text;
+                                    ws.Column(val).Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left;
+                                }
+                            }
 
                             if (datecol != null)
                             {
@@ -223,14 +228,14 @@ namespace BL
                                 }
                             }
 
-                            // PTK removed 2021/05/20
-                            int j = 0;
-                            foreach (DataColumn dc in dtvalue.Columns)   /// Make Every JanCD to be not allow Exponential when Edit cell
-                            {
-                                j++;
-                                if (dc.ColumnName.ToUpper() == "JANCD")
-                                ws.Columns(j.ToString()).Style.NumberFormat.SetNumberFormatId(49);
-                            }
+                            //// PTK removed 2021/05/20
+                            //int j = 0;
+                            //foreach (DataColumn dc in dtvalue.Columns)   /// Make Every JanCD to be not allow Exponential when Edit cell
+                            //{
+                            //    j++;
+                            //    if (dc.ColumnName.ToUpper() == "JANCD")
+                            //    ws.Columns(j.ToString()).Style.NumberFormat.SetNumberFormatId(49);
+                            //}
                             if (numcol != null)
                             {
                                 // PTK removed 2021/05/20
@@ -251,6 +256,10 @@ namespace BL
                         //workbook.Close(false, Missing.Value, Missing.Value);
                         //excel.Quit();
                     }
+                }
+                else
+                {
+                    return false;
                 }
             }
             catch (Exception ex)

@@ -83,7 +83,7 @@
             this.rdo_All.MoveNext = true;
             this.rdo_All.Name = "rdo_All";
             this.rdo_All.NextControl = null;
-            this.rdo_All.NextControlName = "txtTokuisaki2";
+            this.rdo_All.NextControlName = "txtTokuisaki1";
             this.rdo_All.Size = new System.Drawing.Size(49, 19);
             this.rdo_All.TabIndex = 2;
             this.rdo_All.Text = "全て";

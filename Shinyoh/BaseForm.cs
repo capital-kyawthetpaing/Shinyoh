@@ -38,6 +38,7 @@ namespace Shinyoh
             Update,
             Delete,
             Inquiry,
+            Null
             //Idle // Ptk (idle , base int) added for hacchuushou
         }
         #endregion
@@ -175,16 +176,20 @@ namespace Shinyoh
                         }
                         break;
                     case ButtonType.BType.New:
-                        SetMode(btn,"1");
+                        if (programEntity.Insertable.Equals("1"))
+                            SetMode(btn,"1");
                         break;
                     case ButtonType.BType.Update:
-                        SetMode(btn,"2");
+                        if (programEntity.Updatable.Equals("1"))
+                            SetMode(btn,"2");
                         break;
                     case ButtonType.BType.Delete:
-                        SetMode(btn,"3");
+                        if (programEntity.Deletable.Equals("1"))
+                            SetMode(btn,"3");
                         break;
                     case ButtonType.BType.Inquiry:
-                        SetMode(btn,"4");
+                        if (programEntity.Inquirable.Equals("1"))
+                            SetMode(btn,"4");
                         break;
                     case ButtonType.BType.Cancel:
                         if (bbl.ShowMessage("Q004") != DialogResult.Yes)
@@ -350,15 +355,47 @@ namespace Shinyoh
                     break;
                 case ButtonType.BType.New:
                     CheckButton(programEntity.Insertable, buttonText, button);
+
+                    if (programEntity.Insertable.Equals("0"))
+                    {
+                        DataTable dt = (DataTable)cboMode.DataSource;
+                        DataRow[] row = dt.Select("ID='1'");
+                        if(row.Length>0)
+                            dt.Rows.Remove(row[0]);
+                    }
                     break;
                 case ButtonType.BType.Update:
                     CheckButton(programEntity.Updatable, buttonText, button);
+
+                    if (programEntity.Updatable.Equals("0"))
+                    {
+                        DataTable dt = (DataTable)cboMode.DataSource;
+                        DataRow[] row = dt.Select("ID='2'");
+                        if (row.Length > 0)
+                            dt.Rows.Remove(row[0]);
+                    }
                     break;
                 case ButtonType.BType.Delete:
                     CheckButton(programEntity.Deletable, buttonText, button);
+
+                    if (programEntity.Deletable.Equals("0"))
+                    {
+                        DataTable dt = (DataTable)cboMode.DataSource;
+                        DataRow[] row = dt.Select("ID='3'");
+                        if (row.Length > 0)
+                            dt.Rows.Remove(row[0]);
+                    }
                     break;
                 case ButtonType.BType.Inquiry:
                     CheckButton(programEntity.Inquirable, buttonText, button);
+
+                    if (programEntity.Inquirable.Equals("0"))
+                    {
+                        DataTable dt = (DataTable)cboMode.DataSource;
+                        DataRow[] row = dt.Select("ID='4'");
+                        if (row.Length > 0)
+                            dt.Rows.Remove(row[0]);
+                    }
                     break;
                 case ButtonType.BType.Print:
                     CheckButton(programEntity.Printable, buttonText, button);
@@ -388,7 +425,38 @@ namespace Shinyoh
 
             button.Visible = visible;
         }
+        protected Mode GetMode(Mode initMode)
+        {
+            Mode mode = Mode.Null;
 
+            if (!string.IsNullOrWhiteSpace(BtnF5.Text) && programEntity.Inquirable.Equals("1"))
+            {
+                mode = Mode.Inquiry;
+                if (initMode == mode)
+                    return mode;
+            }
+                if (!string.IsNullOrWhiteSpace(BtnF4.Text) && programEntity.Deletable.Equals("1"))
+            {
+                mode = Mode.Delete;
+                if (initMode == mode)
+                    return mode;
+            }
+                if (!string.IsNullOrWhiteSpace(BtnF3.Text) && programEntity.Updatable.Equals("1"))
+            {
+                mode = Mode.Update;
+                if (initMode == mode)
+                    return mode;
+            }
+
+            if (!string.IsNullOrWhiteSpace(BtnF2.Text) && programEntity.Insertable.Equals("1"))
+            {
+                mode = Mode.New;
+                if (initMode == mode)
+                    return mode;
+            }
+                        
+            return mode;
+        }
         private void CheckButton(string Value,string Text,Button button)
         {
             if(Value.Equals("0"))
@@ -527,18 +595,38 @@ namespace Shinyoh
 
             if (cboMode.SelectedValue.ToString().Equals("1"))
             {
+                if(programEntity.Insertable.Equals("0"))
+                {
+                    //権限なし
+                    return;
+                }
                 FunctionProcess("2");
             }
             else if (cboMode.SelectedValue.ToString().Equals("2"))
             {
+                if (programEntity.Updatable.Equals("0"))
+                {
+                    //権限なし
+                    return;
+                }
                 FunctionProcess("3");
             }
             else if (cboMode.SelectedValue.ToString().Equals("3"))
             {
+                if (programEntity.Deletable.Equals("0"))
+                {
+                    //権限なし
+                    return;
+                }
                 FunctionProcess("4");
             }
             else if (cboMode.SelectedValue.ToString().Equals("4"))
             {
+                if (programEntity.Inquirable.Equals("0"))
+                {
+                    //権限なし
+                    return;
+                }
                 FunctionProcess("5");
             }
             if (ismode)

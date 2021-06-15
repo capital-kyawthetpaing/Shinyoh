@@ -54,7 +54,7 @@ namespace MasterTouroku_Tokuisaki {
             SetButton(ButtonType.BType.Import, F10, "CSV取込(F10)", true);
             SetButton(ButtonType.BType.Empty, F11, "", false);
             txt_Tokuisaki.Focus();
-            ChangeMode(Mode.New);
+            ChangeMode(GetMode(Mode.New));
             base_Entity = _GetBaseData();
 
             txtStaffCharge.ChangeDate = txtChange_Date;
@@ -70,10 +70,12 @@ namespace MasterTouroku_Tokuisaki {
         private void ChangeMode(Mode mode)
         {
             Mode_Setting();
+            ErrorCheck();
+
             switch (mode)
             {
                 case Mode.New:
-                    ErrorCheck();
+                    //ErrorCheck();
                     txtChange_Date.E132Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E133Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
@@ -87,7 +89,7 @@ namespace MasterTouroku_Tokuisaki {
                     break;
 
                 case Mode.Update:
-                    ErrorCheck();
+                    //ErrorCheck();
                     txtChange_Date.E132Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E133Check(true, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date, null);
                     txtChange_Date.E270Check(false, "M_Tokuisaki", txt_Tokuisaki, txtChange_Date);
@@ -534,7 +536,7 @@ namespace MasterTouroku_Tokuisaki {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     filePath = openFileDialog.FileName;
-                    string[] csvRows = File.ReadAllLines(filePath);
+                    string[] csvRows = File.ReadAllLines(filePath,Encoding.GetEncoding(932));
 
                     for (int i = 1; i < csvRows.Length; i++)
                     {

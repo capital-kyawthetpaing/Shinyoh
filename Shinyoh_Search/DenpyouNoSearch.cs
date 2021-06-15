@@ -34,7 +34,7 @@ namespace Shinyoh_Search
             cbDivision1.Bind(true, multi_entity);
             cbDivision2.Bind(true, multi_entity);
             SetButton(ButtonType.BType.Close, F1, "戻る(F1)", true);
-            SetButton(ButtonType.BType.Normal, F9, "", false);
+            SetButton(ButtonType.BType.Normal, F9, "検索(F9)", false);
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
 
@@ -43,8 +43,9 @@ namespace Shinyoh_Search
             gvDenpyouNo.SetGridDesign();
             gvDenpyouNo.SetReadOnlyColumn("**");//readonly for search form 
             BindDataGrid();
-            cbDivision2.E106Check(true, cbDivision1, cbDivision2);
+            cbDivision2.E106Check(true, cbDivision1, cbDivision2);            
             gvDenpyouNo.Select();
+            cbDivision1.Select();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -57,7 +58,7 @@ namespace Shinyoh_Search
             if (tagID == "3")
             {
                 BindDataGrid();
-                gvDenpyouNo.Select();
+                //gvDenpyouNo.Select();//ssa
             }
             if (tagID == "4")
             {
@@ -81,6 +82,13 @@ namespace Shinyoh_Search
                 {
                     lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDay"]);
                 }
+                else
+                {
+                    //ssa
+                    cbDivision1.Text = string.Empty;
+                    cbDivision2.Text = string.Empty;
+                    cbDivision1.Focus();
+                }
             }
             dt.Columns.Remove("CurrentDay");
             gvDenpyouNo.Columns[0].Visible = false;
@@ -95,6 +103,7 @@ namespace Shinyoh_Search
                 renban = row.Cells[0].Value.ToString();
                 seqno = row.Cells[1].Value.ToString();
                 prefix = row.Cells[2].Value.ToString();
+            
             }
             this.Close();
         }

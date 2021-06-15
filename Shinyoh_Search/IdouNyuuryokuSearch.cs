@@ -41,7 +41,8 @@ namespace Shinyoh_Search
             txtNyukosouko.lblName = lblNyukoSouko;
             txtStaffCD.ChangeDate = txtCurrentDate;
             txtStaffCD.lblName = lblStaff;
-
+            txtShouhin1.ChangeDate = txtCurrentDate;        //TaskNo546 for shouhin HET
+            txtShouhin2.ChangeDate = txtCurrentDate;        //TaskNo546 for shouhin HET
             ErrorCheck();
 
             gv_Idou.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -94,9 +95,32 @@ namespace Shinyoh_Search
                         lbl_Date.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDate"]);
                         txtCurrentDate.Text = String.Format("{0:yyyy/MM/dd}", dt.Rows[0]["CurrentDate"]);
                     }
+                    else
+                    {
+                        ClearSession();
+                    }
                 }
                 gv_Idou.DataSource = dt;
+
             }
+        }
+
+        private void ClearSession()
+        {
+            txtDate1.Clear();
+            txtDate2.Clear();
+            txtShukkosouko.Clear();
+            lblShukkosouko.Text = string.Empty;
+            txtNyukosouko.Clear();
+            lblNyukoSouko.Text = string.Empty;
+            txtShouhinName.Clear();
+            txtNo11.Clear();
+            txtNo12.Clear();
+            txtStaffCD.Clear();
+            lblStaff.Text = string.Empty;
+            txtShouhin1.Clear();
+            txtShouhin2.Clear();
+            txtDate1.Focus();
         }
 
         private void btnShow_Click(object sender, EventArgs e)

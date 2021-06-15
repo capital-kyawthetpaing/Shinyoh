@@ -534,8 +534,8 @@
             // 
             this.gvFreeInventoryDetails.AllowUserToAddRows = false;
             this.gvFreeInventoryDetails.AllowUserToDeleteRows = false;
-            this.gvFreeInventoryDetails.AllowUserToResizeColumns = false;
-            this.gvFreeInventoryDetails.AllowUserToResizeRows = false;
+            this.gvFreeInventoryDetails.AllowUserToResizeColumns = true;
+            this.gvFreeInventoryDetails.AllowUserToResizeRows = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
@@ -566,7 +566,7 @@
             // 
             this.col_Free_HinbanCD.DataPropertyName = "商品";
             this.col_Free_HinbanCD.FillWeight = 200F;
-            this.col_Free_HinbanCD.HeaderText = "商品";
+            this.col_Free_HinbanCD.HeaderText = "品番";
             this.col_Free_HinbanCD.Name = "col_Free_HinbanCD";
             this.col_Free_HinbanCD.Width = 180;
             // 
@@ -629,15 +629,14 @@
             this.col_Free_JANCD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.col_Free_JANCD.DataPropertyName = "JANCD";
             this.col_Free_JANCD.HeaderText = "JANCD";
-            this.col_Free_JANCD.MinimumWidth = 100;
             this.col_Free_JANCD.Name = "col_Free_JANCD";
             // 
             // gvAggregationDetails
             // 
             this.gvAggregationDetails.AllowUserToAddRows = false;
             this.gvAggregationDetails.AllowUserToDeleteRows = false;
-            this.gvAggregationDetails.AllowUserToResizeColumns = false;
-            this.gvAggregationDetails.AllowUserToResizeRows = false;
+            this.gvAggregationDetails.AllowUserToResizeColumns = true;
+            this.gvAggregationDetails.AllowUserToResizeRows = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
@@ -673,7 +672,7 @@
             // colShouhinCD
             // 
             this.colShouhinCD.DataPropertyName = "商品";
-            this.colShouhinCD.HeaderText = "商品";
+            this.colShouhinCD.HeaderText = "品番";
             this.colShouhinCD.Name = "colShouhinCD";
             this.colShouhinCD.Width = 180;
             // 
@@ -777,7 +776,6 @@
             // 
             this.colJANCD.DataPropertyName = "JANCD";
             this.colJANCD.HeaderText = "JANCD";
-            this.colJANCD.MinimumWidth = 100;
             this.colJANCD.Name = "colJANCD";
             this.colJANCD.Width = 117;
             // 
@@ -806,8 +804,8 @@
             // 
             this.gvMainDetail.AllowUserToAddRows = false;
             this.gvMainDetail.AllowUserToDeleteRows = false;
-            this.gvMainDetail.AllowUserToResizeColumns = false;
-            this.gvMainDetail.AllowUserToResizeRows = false;
+            this.gvMainDetail.AllowUserToResizeColumns = true;
+            this.gvMainDetail.AllowUserToResizeRows = true;
             this.gvMainDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -853,7 +851,7 @@
             // 
             this.col_Detail_ShouhinCD.DataPropertyName = "商品";
             this.col_Detail_ShouhinCD.FillWeight = 200F;
-            this.col_Detail_ShouhinCD.HeaderText = "商品";
+            this.col_Detail_ShouhinCD.HeaderText = "品番";
             this.col_Detail_ShouhinCD.Name = "col_Detail_ShouhinCD";
             this.col_Detail_ShouhinCD.Width = 180;
             // 
@@ -970,9 +968,7 @@
             this.col_Detail_JuchuuNO_JuchuuGyouNO.DataPropertyName = "受注番号-行番号";
             this.col_Detail_JuchuuNO_JuchuuGyouNO.FillWeight = 150F;
             this.col_Detail_JuchuuNO_JuchuuGyouNO.HeaderText = "受注番号-行番号";
-            this.col_Detail_JuchuuNO_JuchuuGyouNO.MinimumWidth = 110;
             this.col_Detail_JuchuuNO_JuchuuGyouNO.Name = "col_Detail_JuchuuNO_JuchuuGyouNO";
-            this.col_Detail_JuchuuNO_JuchuuGyouNO.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.col_Detail_JuchuuNO_JuchuuGyouNO.Width = 130;
             // 
             // col_Detail_TokuisakiRyakuName
@@ -980,7 +976,6 @@
             this.col_Detail_TokuisakiRyakuName.DataPropertyName = "得意先名";
             this.col_Detail_TokuisakiRyakuName.FillWeight = 400F;
             this.col_Detail_TokuisakiRyakuName.HeaderText = "得意先名";
-            this.col_Detail_TokuisakiRyakuName.MinimumWidth = 400;
             this.col_Detail_TokuisakiRyakuName.Name = "col_Detail_TokuisakiRyakuName";
             this.col_Detail_TokuisakiRyakuName.Width = 400;
             // 
@@ -1015,7 +1010,6 @@
             this.col_Detail_JANCD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.col_Detail_JANCD.DataPropertyName = "JANCD";
             this.col_Detail_JANCD.HeaderText = "JANCD";
-            this.col_Detail_JANCD.MinimumWidth = 110;
             this.col_Detail_JANCD.Name = "col_Detail_JANCD";
             // 
             // btn_F11
@@ -1236,7 +1230,7 @@
             this.lblShouhinCD.Name = "lblShouhinCD";
             this.lblShouhinCD.Size = new System.Drawing.Size(100, 18);
             this.lblShouhinCD.TabIndex = 86;
-            this.lblShouhinCD.Text = "商品";
+            this.lblShouhinCD.Text = "品番";
             this.lblShouhinCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
