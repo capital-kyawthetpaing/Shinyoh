@@ -290,6 +290,7 @@ namespace Shinyoh_Controls
         {
             this.BackColor = Color.Cyan;
             InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(new System.Globalization.CultureInfo("ja-JP"));
+            this.ImeMode = ImeMode.NoControl;
             if (DefaultKeyboard == DefKey.Japanese)
             {
                 this.ImeMode = ImeMode.Hiragana;
@@ -316,8 +317,7 @@ namespace Shinyoh_Controls
                 //    }
                 //}
             }
-            else
-                this.ImeMode = ImeMode.NoControl;
+            
 
 
             if (SearchType == ScType.None)
