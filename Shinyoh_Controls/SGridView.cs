@@ -118,7 +118,7 @@ namespace Shinyoh_Controls
                     this.ImeMode = ImeMode.Hiragana;
                 }
                 else
-                    this.ImeMode = ImeMode.Disable;
+                    this.ImeMode = ImeMode.NoControl;
             }
 
             base.OnCellEnter(e);
