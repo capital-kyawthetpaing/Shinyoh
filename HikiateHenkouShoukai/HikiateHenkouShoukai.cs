@@ -953,13 +953,12 @@ namespace HikiateHenkouShoukai
                     //    entity.JANCD = F8_dt1.Rows[i]["JANCD"].ToString();
                     //    entity.SoukoCD = F8_dt1.Rows[i]["倉庫"].ToString();
                     //    hbl.DBData_IU(entity);
-                    //}
+                    //}                   
 
                     string return_BL = hbl.DBData_IU(entity, Xml, sqlCommand);
+                    sqlTransaction.Commit();
                     if (return_BL == "true")
                         bbl.ShowMessage("I101");
-
-                    sqlTransaction.Commit();
                     
                     Modified_Panel();   //Clear Data
                 }
