@@ -429,10 +429,6 @@ BEGIN
 			@KanriNO varchar(10),
 			@NyuukoDate varchar(10),
 		    @KonkaiHikiateSuu decimal(21,6)
-
-			--test
-			--SELECT * FROM SSS
-			--test
                   
             DECLARE cursorSaiHikiateTaishou CURSOR READ_ONLY
             FOR
