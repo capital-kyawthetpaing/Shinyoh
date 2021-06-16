@@ -460,7 +460,7 @@
             this.txtKensakuHyouziJun.IsRequire = false;
             this.txtKensakuHyouziJun.IsUseInitializedLayout = true;
             this.txtKensakuHyouziJun.Location = new System.Drawing.Point(126, 623);
-            this.txtKensakuHyouziJun.MaxLength = 6;
+            this.txtKensakuHyouziJun.MaxLength = 5;
             this.txtKensakuHyouziJun.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtKensakuHyouziJun.MoveNext = true;
             this.txtKensakuHyouziJun.Name = "txtKensakuHyouziJun";

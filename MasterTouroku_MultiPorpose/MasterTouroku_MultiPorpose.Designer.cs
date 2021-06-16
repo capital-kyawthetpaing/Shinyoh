@@ -465,7 +465,7 @@
             this.txtNum1.IsRequire = false;
             this.txtNum1.IsUseInitializedLayout = true;
             this.txtNum1.Location = new System.Drawing.Point(138, 231);
-            this.txtNum1.MaxLength = 9;
+            this.txtNum1.MaxLength = 10;
             this.txtNum1.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum1.MoveNext = true;
             this.txtNum1.Name = "txtNum1";
@@ -491,7 +491,7 @@
             this.txtNum2.IsRequire = false;
             this.txtNum2.IsUseInitializedLayout = true;
             this.txtNum2.Location = new System.Drawing.Point(138, 269);
-            this.txtNum2.MaxLength = 9;
+            this.txtNum2.MaxLength = 10;
             this.txtNum2.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum2.MoveNext = true;
             this.txtNum2.Name = "txtNum2";
@@ -517,7 +517,7 @@
             this.txtNum3.IsRequire = false;
             this.txtNum3.IsUseInitializedLayout = true;
             this.txtNum3.Location = new System.Drawing.Point(138, 307);
-            this.txtNum3.MaxLength = 9;
+            this.txtNum3.MaxLength = 10;
             this.txtNum3.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum3.MoveNext = true;
             this.txtNum3.Name = "txtNum3";
@@ -543,7 +543,7 @@
             this.txtNum4.IsRequire = false;
             this.txtNum4.IsUseInitializedLayout = true;
             this.txtNum4.Location = new System.Drawing.Point(138, 345);
-            this.txtNum4.MaxLength = 9;
+            this.txtNum4.MaxLength = 10;
             this.txtNum4.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum4.MoveNext = true;
             this.txtNum4.Name = "txtNum4";
@@ -569,7 +569,7 @@
             this.txtNum5.IsRequire = false;
             this.txtNum5.IsUseInitializedLayout = true;
             this.txtNum5.Location = new System.Drawing.Point(138, 383);
-            this.txtNum5.MaxLength = 9;
+            this.txtNum5.MaxLength = 10;
             this.txtNum5.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtNum5.MoveNext = true;
             this.txtNum5.Name = "txtNum5";
@@ -652,7 +652,7 @@
             this.txtDate3.MoveNext = true;
             this.txtDate3.Name = "txtDate3";
             this.txtDate3.NextControl = null;
-            this.txtDate3.NextControlName = null;
+            this.txtDate3.NextControlName = "BtnF12";
             this.txtDate3.SearchType = Entity.SearchType.ScType.None;
             this.txtDate3.Size = new System.Drawing.Size(100, 19);
             this.txtDate3.TabIndex = 30;
@@ -834,7 +834,7 @@
             this.txtID.lblName = null;
             this.txtID.lblName1 = null;
             this.txtID.Location = new System.Drawing.Point(118, 9);
-            this.txtID.MaxLength = 9;
+            this.txtID.MaxLength = 10;
             this.txtID.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtID.MoveNext = true;
             this.txtID.Name = "txtID";
