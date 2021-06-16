@@ -747,7 +747,7 @@
             this.txtMailAddress.AllowMinus = false;
             this.txtMailAddress.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtMailAddress.DecimalPlace = 0;
-            this.txtMailAddress.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
+            this.txtMailAddress.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtMailAddress.DepandOnMode = true;
             this.txtMailAddress.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtMailAddress.IntegerPart = 0;

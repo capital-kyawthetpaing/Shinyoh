@@ -526,7 +526,7 @@
             this.txtKanaName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
             this.txtKanaName.DepandOnMode = true;
             this.txtKanaName.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.txtKanaName.ImeMode = System.Windows.Forms.ImeMode.KatakanaHalf;
+            this.txtKanaName.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtKanaName.IntegerPart = 0;
             this.txtKanaName.IsDatatableOccurs = null;
             this.txtKanaName.IsErrorOccurs = false;
