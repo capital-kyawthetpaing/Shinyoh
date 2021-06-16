@@ -54,6 +54,7 @@
             // 
             // cboMode
             // 
+            this.cboMode.BackColor = System.Drawing.Color.Cyan;
             this.cboMode.Location = new System.Drawing.Point(22, 8);
             this.cboMode.NextControlName = "cbDivision";
             // 
@@ -181,6 +182,7 @@
             this.txt_Prefix.IsRequire = false;
             this.txt_Prefix.IsUseInitializedLayout = true;
             this.txt_Prefix.lblName = null;
+            this.txt_Prefix.lblName1 = null;
             this.txt_Prefix.Location = new System.Drawing.Point(125, 53);
             this.txt_Prefix.MaxLength = 4;
             this.txt_Prefix.MinimumSize = new System.Drawing.Size(50, 19);
@@ -193,6 +195,7 @@
             this.txt_Prefix.TabIndex = 3;
             this.txt_Prefix.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txt_Prefix.TxtBox = null;
+            this.txt_Prefix.TxtBox1 = null;
             this.txt_Prefix.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_Prefix_KeyDown);
             // 
             // txtSEQNO
@@ -211,8 +214,9 @@
             this.txtSEQNO.IsRequire = false;
             this.txtSEQNO.IsUseInitializedLayout = true;
             this.txtSEQNO.lblName = null;
+            this.txtSEQNO.lblName1 = null;
             this.txtSEQNO.Location = new System.Drawing.Point(125, 30);
-            this.txtSEQNO.MaxLength = 3;
+            this.txtSEQNO.MaxLength = 1;
             this.txtSEQNO.MinimumSize = new System.Drawing.Size(40, 19);
             this.txtSEQNO.MoveNext = true;
             this.txtSEQNO.Name = "txtSEQNO";
@@ -223,6 +227,7 @@
             this.txtSEQNO.TabIndex = 2;
             this.txtSEQNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtSEQNO.TxtBox = null;
+            this.txtSEQNO.TxtBox1 = null;
             // 
             // MasterTouroku_DenpyouNO
             // 

@@ -502,7 +502,7 @@
             this.txtIManagement.lblName = null;
             this.txtIManagement.lblName1 = null;
             this.txtIManagement.Location = new System.Drawing.Point(141, 291);
-            this.txtIManagement.MaxLength = 3;
+            this.txtIManagement.MaxLength = 1;
             this.txtIManagement.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtIManagement.MoveNext = true;
             this.txtIManagement.Name = "txtIManagement";
@@ -533,7 +533,7 @@
             this.txtIEvaluation.lblName = null;
             this.txtIEvaluation.lblName1 = null;
             this.txtIEvaluation.Location = new System.Drawing.Point(141, 266);
-            this.txtIEvaluation.MaxLength = 3;
+            this.txtIEvaluation.MaxLength = 1;
             this.txtIEvaluation.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtIEvaluation.MoveNext = true;
             this.txtIEvaluation.Name = "txtIEvaluation";
@@ -564,7 +564,7 @@
             this.txtTaxRate.lblName = null;
             this.txtTaxRate.lblName1 = null;
             this.txtTaxRate.Location = new System.Drawing.Point(141, 241);
-            this.txtTaxRate.MaxLength = 3;
+            this.txtTaxRate.MaxLength = 1;
             this.txtTaxRate.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtTaxRate.MoveNext = true;
             this.txtTaxRate.Name = "txtTaxRate";
