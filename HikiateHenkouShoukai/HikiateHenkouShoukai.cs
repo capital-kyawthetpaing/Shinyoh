@@ -661,12 +661,17 @@ namespace HikiateHenkouShoukai
                         DataGridViewRow row = gvMainDetail.Rows[t];// grid view data
                         string ShouhinCD = row.Cells["ShouhinCD"].Value.ToString().TrimEnd();
                         decimal sumSu = 0;
+                        bool isZaikoRow = false;
 
                         for (int tt = t; tt < gvMainDetail.RowCount; tt++)
                         {
                             if(ShouhinCD.Equals(gvMainDetail.Rows[tt].Cells["ShouhinCD"].Value.ToString().TrimEnd()))
                             {
                                 sumSu += Convert.ToDecimal(gvMainDetail.Rows[tt].Cells["col_Detail_HikiateSuu"].Value.ToString());
+                               if (string.IsNullOrWhiteSpace(Convert.ToString(gvMainDetail.Rows[tt].Cells["col_Detail_JuchuuNO_JuchuuGyouNO"].Value.ToString())))
+                                {
+                                    isZaikoRow = true;
+                                }
                             }
                         }
                         if(t>=1)
@@ -686,6 +691,15 @@ namespace HikiateHenkouShoukai
                         }
 
                         if (sumSu > 0)
+                        {
+                            //同一商品について、引当調整数の合計　＞　０
+                            bbl.ShowMessage("E273");
+                            gvMainDetail.Focus();
+                            gvMainDetail.CurrentCell = row.Cells["col_Detail_HikiateSuu"];
+                            return;
+                        }
+
+                        if (isZaikoRow && sumSu != 0)
                         {
                             //同一商品について、引当調整数の合計　＞　０
                             bbl.ShowMessage("E273");
