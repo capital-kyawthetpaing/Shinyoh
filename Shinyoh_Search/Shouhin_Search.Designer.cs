@@ -396,7 +396,7 @@
             this.txtExhibition1.IsRequire = false;
             this.txtExhibition1.IsUseInitializedLayout = true;
             this.txtExhibition1.Location = new System.Drawing.Point(619, 60);
-            this.txtExhibition1.MaxLength = 6;
+            this.txtExhibition1.MaxLength = 4;
             this.txtExhibition1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtExhibition1.MoveNext = true;
             this.txtExhibition1.Name = "txtExhibition1";
@@ -432,7 +432,7 @@
             this.txtExhibition.IsRequire = false;
             this.txtExhibition.IsUseInitializedLayout = true;
             this.txtExhibition.Location = new System.Drawing.Point(545, 60);
-            this.txtExhibition.MaxLength = 6;
+            this.txtExhibition.MaxLength = 4;
             this.txtExhibition.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtExhibition.MoveNext = true;
             this.txtExhibition.Name = "txtExhibition";

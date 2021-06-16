@@ -147,7 +147,7 @@
             this.txtKey2.AllowMinus = false;
             this.txtKey2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKey2.DecimalPlace = 0;
-            this.txtKey2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtKey2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtKey2.DepandOnMode = true;
             this.txtKey2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKey2.IntegerPart = 0;
@@ -172,7 +172,7 @@
             this.txtKey1.AllowMinus = false;
             this.txtKey1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtKey1.DecimalPlace = 0;
-            this.txtKey1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.JapaneseHalf;
+            this.txtKey1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtKey1.DepandOnMode = true;
             this.txtKey1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtKey1.IntegerPart = 0;

@@ -29,8 +29,8 @@ namespace Shinyoh_Search
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtProductTo = new Shinyoh_Search.SearchBox();
             this.txtProductFrom = new Shinyoh_Search.SearchBox();
@@ -438,6 +438,7 @@ namespace Shinyoh_Search
             this.txtSlipDateTo.IsRequire = false;
             this.txtSlipDateTo.IsUseInitializedLayout = true;
             this.txtSlipDateTo.Location = new System.Drawing.Point(744, 7);
+            this.txtSlipDateTo.MaxLength = 10;
             this.txtSlipDateTo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSlipDateTo.MoveNext = true;
             this.txtSlipDateTo.Name = "txtSlipDateTo";
@@ -463,6 +464,7 @@ namespace Shinyoh_Search
             this.txtSlipDateFrom.IsRequire = false;
             this.txtSlipDateFrom.IsUseInitializedLayout = true;
             this.txtSlipDateFrom.Location = new System.Drawing.Point(613, 7);
+            this.txtSlipDateFrom.MaxLength = 10;
             this.txtSlipDateFrom.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSlipDateFrom.MoveNext = true;
             this.txtSlipDateFrom.Name = "txtSlipDateFrom";
@@ -513,6 +515,7 @@ namespace Shinyoh_Search
             this.txtShippingDateTo.IsRequire = false;
             this.txtShippingDateTo.IsUseInitializedLayout = true;
             this.txtShippingDateTo.Location = new System.Drawing.Point(252, 7);
+            this.txtShippingDateTo.MaxLength = 10;
             this.txtShippingDateTo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShippingDateTo.MoveNext = true;
             this.txtShippingDateTo.Name = "txtShippingDateTo";
@@ -538,6 +541,7 @@ namespace Shinyoh_Search
             this.txtShippingDateFrom.IsRequire = false;
             this.txtShippingDateFrom.IsUseInitializedLayout = true;
             this.txtShippingDateFrom.Location = new System.Drawing.Point(113, 7);
+            this.txtShippingDateFrom.MaxLength = 10;
             this.txtShippingDateFrom.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShippingDateFrom.MoveNext = true;
             this.txtShippingDateFrom.Name = "txtShippingDateFrom";
@@ -643,14 +647,14 @@ namespace Shinyoh_Search
             // gvShippingNo
             // 
             this.gvShippingNo.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvShippingNo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvShippingNo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.gvShippingNo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvShippingNo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShippingNO,
@@ -678,8 +682,8 @@ namespace Shinyoh_Search
             // colShippingDate
             // 
             this.colShippingDate.DataPropertyName = "ShukkaYoteiDate";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colShippingDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colShippingDate.DefaultCellStyle = dataGridViewCellStyle4;
             this.colShippingDate.HeaderText = "出荷予定日";
             this.colShippingDate.Name = "colShippingDate";
             this.colShippingDate.ReadOnly = true;
