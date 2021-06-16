@@ -668,7 +668,9 @@ namespace HikiateHenkouShoukai
                             if(ShouhinCD.Equals(gvMainDetail.Rows[tt].Cells["ShouhinCD"].Value.ToString().TrimEnd()))
                             {
                                 sumSu += Convert.ToDecimal(gvMainDetail.Rows[tt].Cells["col_Detail_HikiateSuu"].Value.ToString());
-                               if (string.IsNullOrWhiteSpace(Convert.ToString(gvMainDetail.Rows[tt].Cells["col_Detail_JuchuuNO_JuchuuGyouNO"].Value.ToString())))
+                               if (string.IsNullOrWhiteSpace(Convert.ToString(gvMainDetail.Rows[tt].Cells["col_Detail_JuchuuNO_JuchuuGyouNO"].Value.ToString()))
+                                  && Convert.ToDecimal(gvMainDetail.Rows[tt].Cells["col_Detail_HikiateSuu"].Value.ToString()) < (decimal)0)
+
                                 {
                                     isZaikoRow = true;
                                 }
