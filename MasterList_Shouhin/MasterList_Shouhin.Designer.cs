@@ -470,7 +470,7 @@ namespace MasterList_Shouhin
             this.txtJANCD_To.SearchType = Entity.SearchType.ScType.Siiresaki;
             this.txtJANCD_To.Size = new System.Drawing.Size(100, 19);
             this.txtJANCD_To.TabIndex = 5;
-            this.txtJANCD_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJANCD_To.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtJANCD_To.TxtBox = null;
             this.txtJANCD_To.TxtBox1 = null;
             // 
@@ -501,7 +501,7 @@ namespace MasterList_Shouhin
             this.txtJANCD_From.SearchType = Entity.SearchType.ScType.None;
             this.txtJANCD_From.Size = new System.Drawing.Size(100, 19);
             this.txtJANCD_From.TabIndex = 4;
-            this.txtJANCD_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJANCD_From.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtJANCD_From.TxtBox = null;
             this.txtJANCD_From.TxtBox1 = null;
             // 
