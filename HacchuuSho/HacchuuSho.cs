@@ -30,10 +30,10 @@ namespace HacchuuSho
         multipurposeEntity multi_Entity;
         BaseBL bbl = new BaseBL();
         HacchuuShoBL hsbl;
-        string tmpPath = @"C:\ShinYoh\HacchuuSho\imge.jpg";
-        string tmpDir = @"C:\ShinYoh\HacchuuSho\";
-        string tmpSourceLogo = @"C:\ShinYoh\HacchuuSho\SHINYOH_Logo.jpg";
-        string tmpSave = @"C:\ShinYoh\HacchuuSho\";
+        string tmpPath = @"C:\SHINYOH\HacchuuSho\imge.jpg";
+        string tmpDir = @"C:\SHINYOH\HacchuuSho\";
+        string tmpSourceLogo = @"C:\SHINYOH\HacchuuSho\SHINYOH_Logo.jpg";
+        string tmpSave = @"C:\SHINYOH\HacchuuSho\";
         byte[] headerLogo = null;
         static readonly Regex SheetNameForbiddenRegex = new Regex("[:\\\\?\\[\\]\\/*：￥＼？［］／＊]");
         const int MaxRow = 8;

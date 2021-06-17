@@ -394,7 +394,7 @@ namespace ShukkaTorikomi
                         
                         string changeDate = dt_Main.Rows[i]["ChangeDate"].ToString();
 
-                        // begin For Task NO. 592 NMW
+                        // begin For Task NO. 593 NMW
                         TextBox txt = new TextBox();
                         txt.Text = dt_Main.Rows[i]["ChangeDate"].ToString();
                         string date = string.Empty;
@@ -409,7 +409,7 @@ namespace ShukkaTorikomi
                         {
                             dt_Main.Rows[i]["DenpyouDate"] = d_txt.Text;
                         }
-                        // end For Task NO. 592 NMW
+                        // end For Task NO. 593 NMW
                         DataTable shukkano_dt = ShukkaTorikomi_BL.GetShukkaNO("6",date, "0");
                         dt_Main.Rows[i]["ShukkaNO"] = shukkano_dt.Rows[0]["Column1"];
                         string tokuisakiCD = dt_Main.Rows[i]["TokuisakiCD"].ToString();
@@ -460,12 +460,12 @@ namespace ShukkaTorikomi
                         string date2 = create_dt.Rows[r]["ChangeDate"].ToString();//column_2
                         int line_No = r + 1;
                         
-                        if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
+                        if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:伝票日付") == "true")
                         {
                             Xml_Detail = string.Empty;
                             r = create_dt.Rows.Count; //chg 24-05-2021 ssa
                         }
-                        else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
+                        else if (Date_Check(date2, line_No, "入力可能値外エラー", "項目:出荷日") == "true")
                         {
                             Xml_Detail = string.Empty;
                             r = create_dt.Rows.Count;//chg 24-05-2021 ssa
