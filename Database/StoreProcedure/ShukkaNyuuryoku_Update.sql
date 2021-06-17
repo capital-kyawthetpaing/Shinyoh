@@ -855,6 +855,9 @@ BEGIN
 						GROUP BY d.JuchuuNOGyouNO) AS Detail
 			   on A.JuchuuNO=LEFT(Detail.JuchuuNOGyouNO, CHARINDEX('-', Detail.JuchuuNOGyouNO) - 1)
 			  and A.JuchuuGyouNO=RIGHT(Detail.JuchuuNOGyouNO, LEN(Detail.JuchuuNOGyouNO) - CHARINDEX('-', Detail.JuchuuNOGyouNO))
+			--2021/04/30 Y.Nishikawa ADD 条件不足↓↓
+			and A.ShukkaSiziKanryouKBN = 1
+			--2021/04/30 Y.Nishikawa ADD 条件不足↑↑
 			  ;
 		
 			--D_Juchuu A

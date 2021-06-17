@@ -182,7 +182,7 @@ namespace BL
             try
             {
                 GetJanCD(dtvalue);
-                string folderPath = "C:\\ShinYoh\\" + ProgramID + "\\";
+                string folderPath = "C:\\SHINYOH\\" + ProgramID + "\\";
                 if (!Directory.Exists(folderPath))
                 {
                     Directory.CreateDirectory(folderPath);
