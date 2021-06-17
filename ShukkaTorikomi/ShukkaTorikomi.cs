@@ -460,12 +460,12 @@ namespace ShukkaTorikomi
                         string date2 = create_dt.Rows[r]["ChangeDate"].ToString();//column_2
                         int line_No = r + 1;
                         
-                        if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
+                        if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:伝票日付") == "true")
                         {
                             Xml_Detail = string.Empty;
                             r = create_dt.Rows.Count; //chg 24-05-2021 ssa
                         }
-                        else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
+                        else if (Date_Check(date2, line_No, "入力可能値外エラー", "項目:出荷日") == "true")
                         {
                             Xml_Detail = string.Empty;
                             r = create_dt.Rows.Count;//chg 24-05-2021 ssa
