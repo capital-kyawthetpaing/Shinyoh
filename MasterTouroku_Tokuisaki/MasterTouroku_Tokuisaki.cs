@@ -573,6 +573,7 @@ namespace MasterTouroku_Tokuisaki {
                                 if (cf.DateCheck(txt2))
                                     create_dt.Rows[r]["TorihikiKaisiDate"] = txt2.Text;
                                 string date2 = create_dt.Rows[r]["TorihikiKaisiDate"].ToString();//column_2
+
                                 TextBox txt3 = new TextBox();
                                 txt3.Text = create_dt.Rows[r]["TorihikiShuuryouDate"].ToString();//column_3
                                 if (cf.DateCheck(txt3))
