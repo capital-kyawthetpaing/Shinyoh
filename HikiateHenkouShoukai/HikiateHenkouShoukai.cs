@@ -415,37 +415,11 @@ namespace HikiateHenkouShoukai
                 dtExcel = dt.Copy();
                 dtExcel.Columns.Remove(dtExcel.Columns[4]);
                 dtExcel.AcceptChanges();
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.InitialDirectory = @"C:\Excel";
-                saveFileDialog1.DefaultExt = "xlsx";
-                saveFileDialog1.Filter = "ExcelFile|*.xlsx";
-                saveFileDialog1.FileName = "在庫表.xlsx";
-                saveFileDialog1.RestoreDirectory = true;
 
-                if (!System.IO.Directory.Exists("C:\\Excel"))
-                    System.IO.Directory.CreateDirectory("C:\\Excel");
-
-                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    ExcelDesignSetting obj = new ExcelDesignSetting();
-                    obj.FilePath = saveFileDialog1.FileName;
-                    obj.SheetName = "在庫表";
-                    obj.Start_Interior_Column = "A1";
-                    obj.End_Interior_Column = "G1";
-                    obj.Interior_Color = Color.Orange;
-                    obj.Start_Font_Column = "A1";
-                    obj.End_Font_Column = "G1";
-                    obj.Font_Color = Color.Black;
-                    obj.Start_Title_Center_Column = "A1";
-                    obj.End_Title_Center_Column = "G1";
-                    ExportCSVExcel excel = new ExportCSVExcel();
-                    excel.ExportDataTableToExcel(dtExcel, obj);
-
-                    //cf.Clear(PanelDetail);
-                    //rdoFreeInventory.Focus();
-
-                    bbl.ShowMessage("I203");
-                }
+                string fname = "在庫表";
+               
+                ExportCSVExcel list = new ExportCSVExcel();
+                bool bl = list.ExcelOutputFile(dtExcel, ProgramID, fname, fname, 7, null, null);
             }
             else
             {
