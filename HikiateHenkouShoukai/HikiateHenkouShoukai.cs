@@ -661,6 +661,8 @@ namespace HikiateHenkouShoukai
                         DataGridViewRow row = gvMainDetail.Rows[t];// grid view data
                         string ShouhinCD = row.Cells["ShouhinCD"].Value.ToString().TrimEnd();
                         decimal sumSu = 0;
+                        decimal sumSu_JuchuuRow_Plus = 0;
+                        decimal sumSu_ZaikoRow = 0;
                         bool isZaikoRow = false;
 
                         for (int tt = t; tt < gvMainDetail.RowCount; tt++)
@@ -668,11 +670,18 @@ namespace HikiateHenkouShoukai
                             if(ShouhinCD.Equals(gvMainDetail.Rows[tt].Cells["ShouhinCD"].Value.ToString().TrimEnd()))
                             {
                                 sumSu += Convert.ToDecimal(gvMainDetail.Rows[tt].Cells["col_Detail_HikiateSuu"].Value.ToString());
-                               if (string.IsNullOrWhiteSpace(Convert.ToString(gvMainDetail.Rows[tt].Cells["col_Detail_JuchuuNO_JuchuuGyouNO"].Value.ToString()))
-                                  && Convert.ToDecimal(gvMainDetail.Rows[tt].Cells["col_Detail_HikiateSuu"].Value.ToString()) < (decimal)0)
 
+                               if (!string.IsNullOrWhiteSpace(Convert.ToString(gvMainDetail.Rows[tt].Cells["col_Detail_JuchuuNO_JuchuuGyouNO"].Value.ToString()))
+                                  && Convert.ToDecimal(gvMainDetail.Rows[tt].Cells["col_Detail_HikiateSuu"].Value.ToString()) > (decimal)0)
+                                {
+                                    sumSu_JuchuuRow_Plus += Convert.ToDecimal(gvMainDetail.Rows[tt].Cells["col_Detail_HikiateSuu"].Value.ToString());
+                                }
+
+                                if (string.IsNullOrWhiteSpace(Convert.ToString(gvMainDetail.Rows[tt].Cells["col_Detail_JuchuuNO_JuchuuGyouNO"].Value.ToString()))
+                                   && Convert.ToDecimal(gvMainDetail.Rows[tt].Cells["col_Detail_HikiateSuu"].Value.ToString()) < (decimal)0)
                                 {
                                     isZaikoRow = true;
+                                    sumSu_ZaikoRow += Convert.ToDecimal(gvMainDetail.Rows[tt].Cells["col_Detail_HikiateSuu"].Value.ToString());
                                 }
                             }
                         }
@@ -701,7 +710,7 @@ namespace HikiateHenkouShoukai
                             return;
                         }
 
-                        if (isZaikoRow && sumSu != 0)
+                        if (isZaikoRow && (sumSu_JuchuuRow_Plus + sumSu_ZaikoRow) < 0)
                         {
                             //同一商品について、引当調整数の合計　＞　０
                             bbl.ShowMessage("E273");
