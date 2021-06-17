@@ -849,7 +849,7 @@ BEGIN
 			
 			--D_JuchuuMeisai A
 			update A set	
-				ShukkaKanryouKBN = case WHEN A.ShukkaSiziZumiSuu <= A.ShukkaZumiSuu Then 1 WHEN Detail.Kanryo = 1 Then 1 ELSE 0 End
+				ShukkaKanryouKBN = case WHEN A.JuchuuSuu <= A.ShukkaZumiSuu Then 1 WHEN Detail.Kanryo = 1 Then 1 ELSE 0 End
 			from D_JuchuuMeisai A
 			inner join (SELECT d.JuchuuNOGyouNO, MAX(d.Kanryo) AS Kanryo FROM #Temp_Detail d
 						GROUP BY d.JuchuuNOGyouNO) AS Detail
