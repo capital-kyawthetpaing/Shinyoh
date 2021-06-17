@@ -482,7 +482,7 @@ namespace HacchuuSho
                         xlWorkBook.SaveAs(savedialog.FileName, misValue, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                         xlWorkBook.Close(true, misValue, misValue);
                         xlApp.Quit();
-                        bbl.ShowMessage("I201", string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
+                        bbl.ShowMessage("I203", string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
                         Process.Start(System.IO.Path.GetDirectoryName(savedialog.FileName));
                         Clear(); //HET
                     }
