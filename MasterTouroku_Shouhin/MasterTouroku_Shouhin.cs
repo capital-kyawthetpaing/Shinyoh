@@ -729,19 +729,19 @@ namespace MasterTouroku_Shouhin
                             TextBox txt1 = new TextBox();
                             txt1.Text = create_dt.Rows[r]["ChangeDate"].ToString();//column_1
                             if (cf.DateCheck(txt1))
-                                create_dt.Rows[r]["ChangeDate"] = txt1.Text;
+                                create_dt.Rows[r]["ChangeDate"] = string.IsNullOrEmpty(txt1.Text)? null:txt1.Text;
                             string date1 = create_dt.Rows[r]["ChangeDate"].ToString();//column_1
 
                             TextBox txt2 = new TextBox();
                             txt2.Text = create_dt.Rows[r]["ToriatukaiShuuryouDate"].ToString();//column_2
                             if (cf.DateCheck(txt2))
-                                create_dt.Rows[r]["ToriatukaiShuuryouDate"] = txt2.Text;
+                                create_dt.Rows[r]["ToriatukaiShuuryouDate"] = string.IsNullOrEmpty(txt2.Text)?null:txt2.Text;
                             string date2 = create_dt.Rows[r]["ToriatukaiShuuryouDate"].ToString();//column_2
 
                             TextBox txt3 = new TextBox();
                             txt3.Text = create_dt.Rows[r]["HanbaiTeisiDate"].ToString();//column_3
                             if (cf.DateCheck(txt3))
-                                create_dt.Rows[r]["HanbaiTeisiDate"] = txt3.Text;
+                                create_dt.Rows[r]["HanbaiTeisiDate"] = string.IsNullOrEmpty(txt3.Text) ? null : txt3.Text;
                             string date3 = create_dt.Rows[r]["HanbaiTeisiDate"].ToString();//column_3
                             //NMW Task NO 592 end
                             int line_No = r + 1;
