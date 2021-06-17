@@ -317,10 +317,10 @@ namespace JuchuuTorikomi
                             else
                                 dr[j] = splits[j].ToString();
                         }
-                        dr[54] = base_Entity.OperatorCD;
-                        dr[55] = base_Entity.ProgramID;
-                        dr[56] = base_Entity.PC;
-                        dr[57] = error;
+                        dr[56] = base_Entity.OperatorCD;
+                        dr[57] = base_Entity.ProgramID;
+                        dr[58] = base_Entity.PC;
+                        dr[59] = error;
                         create_dt.Rows.Add(dr);                       
                     }
                     create_dt.Columns.Add("JuchuuNO", typeof(string));
