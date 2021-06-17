@@ -725,9 +725,25 @@ namespace MasterTouroku_Siiresaki
                     {
                         for (int r = 0; r < create_dt.Rows.Count; r++)
                         {
+                            //NMW Task NO. 529 begin
+                            TextBox txt1 = new TextBox();
+                            txt1.Text = create_dt.Rows[r]["ChangeDate"].ToString();//column_1
+                            if (cf.DateCheck(txt1))
+                                create_dt.Rows[r]["ChangeDate"] = txt1.Text;
                             string date1 = create_dt.Rows[r]["ChangeDate"].ToString();//column_1
+
+                            TextBox txt2 = new TextBox();
+                            txt2.Text= create_dt.Rows[r]["TorihikiKaisiDate"].ToString();//column_2
+                            if (cf.DateCheck(txt2))
+                                create_dt.Rows[r]["TorihikiKaisiDate"] = txt2.Text;
                             string date2 = create_dt.Rows[r]["TorihikiKaisiDate"].ToString();//column_2
+
+                            TextBox txt3 = new TextBox();
+                            txt3.Text = create_dt.Rows[r]["TorihikiShuuryouDate"].ToString();//column_3
+                            if (cf.DateCheck(txt3))
+                                create_dt.Rows[r]["TorihikiShuuryouDate"] = txt3.Text;
                             string date3 = create_dt.Rows[r]["TorihikiShuuryouDate"].ToString();//column_3
+                            //NMW Task NO. 529 end
                             int line_No = r + 1;
 
                             if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
