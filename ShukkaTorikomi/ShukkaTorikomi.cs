@@ -394,7 +394,7 @@ namespace ShukkaTorikomi
                         
                         string changeDate = dt_Main.Rows[i]["ChangeDate"].ToString();
 
-                        // begin For Task NO. 592 NMW
+                        // begin For Task NO. 593 NMW
                         TextBox txt = new TextBox();
                         txt.Text = dt_Main.Rows[i]["ChangeDate"].ToString();
                         string date = string.Empty;
@@ -409,7 +409,7 @@ namespace ShukkaTorikomi
                         {
                             dt_Main.Rows[i]["DenpyouDate"] = d_txt.Text;
                         }
-                        // end For Task NO. 592 NMW
+                        // end For Task NO. 593 NMW
                         DataTable shukkano_dt = ShukkaTorikomi_BL.GetShukkaNO("6",date, "0");
                         dt_Main.Rows[i]["ShukkaNO"] = shukkano_dt.Rows[0]["Column1"];
                         string tokuisakiCD = dt_Main.Rows[i]["TokuisakiCD"].ToString();
