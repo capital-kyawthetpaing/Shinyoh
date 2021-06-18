@@ -30,7 +30,7 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("JuchuuTorikomi_Error_Check", GetConnectionString(), parameters);
             return dt;
         }
-        public DataTable GetJuchuuNO(string SerialNO, DateTime JuchuuDate, string SEQNO)
+        public DataTable GetJuchuuNO(string SerialNO, string JuchuuDate, string SEQNO)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[3];
@@ -40,7 +40,7 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("Fnc_GetDenpyouNO", GetConnectionString(), parameters);
             return dt;
         }
-        public DataTable GetHacchuuNO(string SerialNO, DateTime JuchuuDate, string SEQNO)
+        public DataTable GetHacchuuNO(string SerialNO, string JuchuuDate, string SEQNO)
         {
             CKMDL ckmdl = new CKMDL();
             var parameters = new SqlParameter[3];

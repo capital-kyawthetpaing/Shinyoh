@@ -305,34 +305,44 @@ namespace JuchuuTorikomi
                 //openFileDialog.FileName = txtImportFolder.Text + txtImportFileName.Text;         //Task 453
                 string[] csvRows = File.ReadAllLines(txtImportFolder.Text + txtImportFileName.Text,Encoding.GetEncoding(932));//Task 453 --repaired encoding 2021/05/29 ssa CHG TaskNO 469
                 var bl_List = new List<bool>();
-                    for (int i = 1; i < csvRows.Length; i++)
+                for (int i = 1; i < csvRows.Length; i++)
+                {
+                    error = "false";
+                    var splits = csvRows[i].Split(',');
+                    DataRow dr = create_dt.NewRow();
+                    for (int j = 0; j < splits.Length; j++)
                     {
-                        error = "false";
-                        var splits = csvRows[i].Split(',');
-                        DataRow dr = create_dt.NewRow();
-                        for (int j = 0; j < splits.Length; j++)
-                        {
-                            if (string.IsNullOrEmpty(splits[j]))
-                                dr[j] = DBNull.Value;
-                            else
-                                dr[j] = splits[j].ToString();
-                        }
-                        dr[56] = base_Entity.OperatorCD;
-                        dr[57] = base_Entity.ProgramID;
-                        dr[58] = base_Entity.PC;
-                        dr[59] = error;
-                        create_dt.Rows.Add(dr);                       
+                        if (string.IsNullOrEmpty(splits[j]))
+                            dr[j] = DBNull.Value;
+                        else
+                            dr[j] = splits[j].ToString();
                     }
-                    create_dt.Columns.Add("JuchuuNO", typeof(string));
+                    dr[56] = base_Entity.OperatorCD;
+                    dr[57] = base_Entity.ProgramID;
+                    dr[58] = base_Entity.PC;
+                    dr[59] = error;
+                    create_dt.Rows.Add(dr);
+                }
+                create_dt.Columns.Add("JuchuuNO", typeof(string));
                     create_dt.Columns.Add("HacchuuNO", typeof(string));
-                    for (int i = 0; i < create_dt.Rows.Count; i++)
+                for (int i = 0; i < create_dt.Rows.Count; i++)
+                {
+                    TextBox txt = new TextBox();
+                    txt.Text = create_dt.Rows[i]["JuchuuDate"].ToString();
+                    string date = string.Empty;
+                    if (cf.DateCheck(txt))
+                        create_dt.Rows[i]["JuchuuDate"] = txt.Text;
+                    date = create_dt.Rows[i]["JuchuuDate"].ToString();
+
+                    if (!string.IsNullOrEmpty(date))
                     {
-                        DateTime date = DateTime.Parse(create_dt.Rows[i]["JuchuuDate"].ToString().Replace('-','/'));
                         DataTable Dt_JuchuuNO = JBL.GetJuchuuNO("1", date, "0");
                         DataTable Dt_HacchuuNO = JBL.GetHacchuuNO("2", date, "0");
                         create_dt.Rows[i]["JuchuuNO"] = Dt_JuchuuNO.Rows[0]["Column1"];
                         create_dt.Rows[i]["HacchuuNO"] = Dt_HacchuuNO.Rows[0]["Column1"];
                     }
+
+                }
                     DataTable dt_Main = new DataTable();
                     if (create_dt.Rows.Count > 0)
                     {
