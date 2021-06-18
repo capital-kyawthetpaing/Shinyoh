@@ -348,20 +348,37 @@ namespace JuchuuTorikomi
                     {
                         for (int r = 0; r < create_dt.Rows.Count; r++)
                         {
-                            string date1 = create_dt.Rows[r]["JuchuuDate"].ToString();//column_1
-                            string date2 = create_dt.Rows[r]["KibouNouki"].ToString();//column_2
-                            string date3 = create_dt.Rows[r]["ChakuniYoteiDate"].ToString();//column_3
-                            int line_No = r + 1;
+                        //NMW task NO. 592 begin
+                        TextBox txt1 = new TextBox();
+                        txt1.Text = create_dt.Rows[r]["JuchuuDate"].ToString();//column_1
+                        if (cf.DateCheck(txt1))
+                            create_dt.Rows[r]["JuchuuDate"] = string.IsNullOrEmpty(txt1.Text) ? null : txt1.Text;
+                        string date1 = create_dt.Rows[r]["JuchuuDate"].ToString();//column_1
 
-                            if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:改定日") == "true")
+                        TextBox txt2 = new TextBox();
+                        txt2.Text = create_dt.Rows[r]["KibouNouki"].ToString();//column_1
+                        if (cf.DateCheck(txt2))
+                            create_dt.Rows[r]["KibouNouki"] = string.IsNullOrEmpty(txt2.Text) ? null : txt2.Text;
+                        string date2 = create_dt.Rows[r]["KibouNouki"].ToString();//column_2
+
+                        TextBox txt3 = new TextBox();
+                        txt3.Text = create_dt.Rows[r]["ChakuniYoteiDate"].ToString();//column_3
+                        if (cf.DateCheck(txt3))
+                            create_dt.Rows[r]["ChakuniYoteiDate"] = string.IsNullOrEmpty(txt3.Text) ? null : txt3.Text;
+                        string date3 = create_dt.Rows[r]["ChakuniYoteiDate"].ToString();//column_3
+                        //NMW task NO.592 end
+
+                        int line_No = r + 1;
+
+                            if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:受注日") == "true")
                             {
                                  Xml_Juchuu = string.Empty;
                             }
-                            else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
+                            else if (Date_Check(date2, line_No, "入力可能値外エラー", "項目:希望納期") == "true")
                             {
                                  Xml_Juchuu = string.Empty;
                             }
-                            else if (Date_Check(date3, line_No, "入力可能値外エラー", "取引終了日") == "true")
+                            else if (Date_Check(date3, line_No, "入力可能値外エラー", "項目:着荷予定日") == "true")
                             {
                                 Xml_Juchuu = string.Empty;
                             }
