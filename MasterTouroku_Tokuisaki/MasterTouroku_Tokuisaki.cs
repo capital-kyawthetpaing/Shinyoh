@@ -586,11 +586,11 @@ namespace MasterTouroku_Tokuisaki {
                                 {
                                     return null;
                                 }
-                                else if (Date_Check(date2, line_No, "入力可能値外エラー", "取引開始日") == "true")
+                                else if (Date_Check(date2, line_No, "入力可能値外エラー", "項目:取引開始日") == "true")
                                 {
                                     return null;
                                 }
-                                else if (Date_Check(date3, line_No, "入力可能値外エラー", "取引終了日") == "true")
+                                else if (Date_Check(date3, line_No, "入力可能値外エラー", "項目:取引終了日") == "true")
                                 {
                                     return null;
                                 }
