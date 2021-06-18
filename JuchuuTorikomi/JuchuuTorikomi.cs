@@ -331,9 +331,10 @@ namespace JuchuuTorikomi
                     txt.Text = create_dt.Rows[i]["JuchuuDate"].ToString();
                     string date = string.Empty;
                     if (cf.DateCheck(txt))
+                    {
                         create_dt.Rows[i]["JuchuuDate"] = txt.Text;
-                    date = create_dt.Rows[i]["JuchuuDate"].ToString();
-
+                        date = create_dt.Rows[i]["JuchuuDate"].ToString();
+                    }
                     if (!string.IsNullOrEmpty(date))
                     {
                         DataTable Dt_JuchuuNO = JBL.GetJuchuuNO("1", date, "0");
@@ -380,23 +381,23 @@ namespace JuchuuTorikomi
 
                         int line_No = r + 1;
 
-                            if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:受注日") == "true")
-                            {
-                                 Xml_Juchuu = string.Empty;
-                            }
-                            else if (Date_Check(date2, line_No, "入力可能値外エラー", "項目:希望納期") == "true")
-                            {
-                                 Xml_Juchuu = string.Empty;
-                            }
-                            else if (Date_Check(date3, line_No, "入力可能値外エラー", "項目:着荷予定日") == "true")
-                            {
-                                Xml_Juchuu = string.Empty;
-                            }
-                            else if (r == create_dt.Rows.Count - 1)
-                            {
-                                Xml_Juchuu = cf.DataTableToXml(create_dt);
-                            }
+                        if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:受注日") == "true")
+                        {
+                            return (null, null);
                         }
+                        else if (Date_Check(date2, line_No, "入力可能値外エラー", "項目:希望納期") == "true")
+                        {
+                            return (null, null);
+                        }
+                        else if (Date_Check(date3, line_No, "入力可能値外エラー", "項目:着荷予定日") == "true")
+                        {
+                            return (null, null);
+                        }
+                        else if (r == create_dt.Rows.Count - 1)
+                        {
+                            Xml_Juchuu = cf.DataTableToXml(create_dt);
+                        }
+                    }
                     }
                 else
                 {

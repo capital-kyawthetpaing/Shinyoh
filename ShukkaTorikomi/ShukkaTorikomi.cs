@@ -462,13 +462,15 @@ namespace ShukkaTorikomi
                         
                         if (Date_Check(date1, line_No, "入力可能値外エラー", "項目:伝票日付") == "true")
                         {
-                            Xml_Detail = string.Empty;
-                            r = create_dt.Rows.Count; //chg 24-05-2021 ssa
+                            return (null, null);
+                            //comment by NMW
+                           // r = create_dt.Rows.Count; //chg 24-05-2021 ssa
                         }
                         else if (Date_Check(date2, line_No, "入力可能値外エラー", "項目:出荷日") == "true")
                         {
-                            Xml_Detail = string.Empty;
-                            r = create_dt.Rows.Count;//chg 24-05-2021 ssa
+                            return (null, null);
+                            //comment by NMW
+                            //r = create_dt.Rows.Count;//chg 24-05-2021 ssa
                         }
                         else if (r == create_dt.Rows.Count - 1)
                         {
