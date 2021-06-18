@@ -452,9 +452,9 @@ namespace ShukkaTorikomi
                         TextBox d_t2 = new TextBox();
                         d_t2.Text = create_dt.Rows[r]["ChangeDate"].ToString();//column_2
                         if (cf.DateCheck(d_t1))
-                            create_dt.Rows[r]["DenpyouDate"] = d_t1.Text;
+                            create_dt.Rows[r]["DenpyouDate"] = string.IsNullOrEmpty(d_t1.Text) ? null : d_t1.Text;
                         if (cf.DateCheck(d_t2))
-                            create_dt.Rows[r]["ChangeDate"] = d_t2.Text;
+                            create_dt.Rows[r]["ChangeDate"] = string.IsNullOrEmpty(d_t2.Text) ? null : d_t2.Text;
                         //--end -- NMW Task 592
                         string date1 = create_dt.Rows[r]["DenpyouDate"].ToString();//column_1
                         string date2 = create_dt.Rows[r]["ChangeDate"].ToString();//column_2
