@@ -37,8 +37,8 @@ namespace Shinyoh_Search
             SetButton(ButtonType.BType.Search, F11, "表示(F11)", true);
             SetButton(ButtonType.BType.Save, F12, "確定(F12)", true);
             dgDetail.UseRowNo(true);
-            //dgDetail.Columns[3].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             //dgDetail.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //dgDetail.Columns[13].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             if (string.IsNullOrWhiteSpace(parent_changeDate))
                 txtChangeDate.Text = string.Format("{0:yyyy/MM/dd}", DateTime.Now);
             else
@@ -57,18 +57,17 @@ namespace Shinyoh_Search
             dgDetail.SetReadOnlyColumn("**");//readonly for search form 
             dgDetail.Select();
             dgDetail.Columns[1].Width = 150;
-            dgDetail.Columns[2].Width = 320;
-            dgDetail.Columns[3].Width = 100;
+            dgDetail.Columns[2].Width = 100;
+            dgDetail.Columns[3].Width = 270;
             dgDetail.Columns[4].Width = 100;
-            dgDetail.Columns[5].Width = 80;
-            dgDetail.Columns[6].Width = 270;
+            dgDetail.Columns[5].Width = 270;
+            dgDetail.Columns[6].Width = 320;
             dgDetail.Columns[7].Width = 100;
-            dgDetail.Columns[8].Width = 270;
-            dgDetail.Columns[9].Width = 100;
+            dgDetail.Columns[8].Width = 100;
+            dgDetail.Columns[9].Width = 160;
             dgDetail.Columns[10].Width = 270;
-            dgDetail.Columns[11].Width = 50;
-            dgDetail.Columns[12].Width = 150;
-            dgDetail.Columns[13].Width = 100;          
+            dgDetail.Columns[11].Width = 60;
+            dgDetail.Columns[12].Width = 100;
         }
 
         private void dgDetail_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -134,15 +133,15 @@ namespace Shinyoh_Search
             this.dgDetail.ColumnWidthChanged += new DataGridViewColumnEventHandler(dgDetail_ColumnWidthChanged);
 
             this.dgDetail.Columns[0].Visible = false;
-            this.dgDetail.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            this.dgDetail.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgDetail.Columns[8].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.dgDetail.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dgDetail.Columns[13].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.dgDetail.Columns[13].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            this.dgDetail.Columns[2].HeaderText = "";
+            this.dgDetail.Columns[3].HeaderText = "";
+            this.dgDetail.Columns[4].HeaderText = "";
             this.dgDetail.Columns[5].HeaderText = "";
-            this.dgDetail.Columns[6].HeaderText = "";
-            this.dgDetail.Columns[7].HeaderText = "";
-            this.dgDetail.Columns[8].HeaderText = "";
             this.dgDetail.Columns[9].HeaderText = "";
             this.dgDetail.Columns[10].HeaderText = "";
             this.dgDetail.Columns[11].HeaderText = "";
@@ -200,20 +199,42 @@ namespace Shinyoh_Search
 
         private void dgDetail_Paint(object sender, PaintEventArgs e)
         {
-            string[] months = { "ブランド", "カラー", "サイズ", "単位" };
-            for (int j = 0; j < 8;)
+            //string[] months = { "ブランド", "カラー", "サイズ", "単位" };
+            string[] months = { "カラー", "サイズ"};
+            for (int j = 0; j < 4;)
             {
-                Rectangle r1 = this.dgDetail.GetCellDisplayRectangle(j + 5, -1, true);
-                int w2 = this.dgDetail.GetCellDisplayRectangle(j + 6, -1, true).Width;
+                Rectangle r1 = this.dgDetail.GetCellDisplayRectangle(j+2 , -1, true);
+                int w1 = this.dgDetail.GetCellDisplayRectangle(j +3, -1, true).Width;
                 r1.X += 1;
                 r1.Y += 1;
-                r1.Width = r1.Width + w2 - 2;
+                r1.Width = r1.Width + w1 - 2;
                 r1.Height = r1.Height - 2;
                 e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(191, 191, 191)), r1);
                 StringFormat format = new StringFormat();
                 format.Alignment = StringAlignment.Near;
                 format.LineAlignment = StringAlignment.Near;
                 e.Graphics.DrawString(months[j / 2],
+                    this.dgDetail.ColumnHeadersDefaultCellStyle.Font,
+                    new SolidBrush(this.dgDetail.ColumnHeadersDefaultCellStyle.ForeColor),
+                    r1,
+                    format);
+                j += 2;
+            }
+
+            string[] months1 = { "ブランド", "単位" };
+            for (int j = 0; j < 4;)
+            {
+                Rectangle r1 = this.dgDetail.GetCellDisplayRectangle(j + 9, -1, true);
+                int w1 = this.dgDetail.GetCellDisplayRectangle(j + 10, -1, true).Width;
+                r1.X += 1;
+                r1.Y += 1;
+                r1.Width = r1.Width + w1 - 2;
+                r1.Height = r1.Height - 2;
+                e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(191, 191, 191)), r1);
+                StringFormat format = new StringFormat();
+                format.Alignment = StringAlignment.Near;
+                format.LineAlignment = StringAlignment.Near;
+                e.Graphics.DrawString(months1[j / 2],
                     this.dgDetail.ColumnHeadersDefaultCellStyle.Font,
                     new SolidBrush(this.dgDetail.ColumnHeadersDefaultCellStyle.ForeColor),
                     r1,
