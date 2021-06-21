@@ -213,6 +213,7 @@ namespace JuchuuTorikomi
                                         if (dt1.Rows[0]["MessageID"].ToString().Equals("S004"))
                                         {
                                             bbl.ShowMessage("S004", ProgramID, PCID, OperatorCD);
+                                            return;
                                         }
                                     }
                                     JEntity.OperatorCD = base_Entity.OperatorCD;
