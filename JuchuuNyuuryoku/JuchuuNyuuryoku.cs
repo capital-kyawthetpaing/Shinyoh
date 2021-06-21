@@ -89,16 +89,16 @@ namespace JuchuuNyuuryoku
 
             gv_JuchuuNyuuryoku.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gv_JuchuuNyuuryoku.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gv_JuchuuNyuuryoku.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_JuchuuNyuuryoku.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gv_JuchuuNyuuryoku.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_JuchuuNyuuryoku.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_JuchuuNyuuryoku.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gv_JuchuuNyuuryoku.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gv_JuchuuNyuuryoku.Columns[10].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_JuchuuNyuuryoku.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_JuchuuNyuuryoku.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_JuchuuNyuuryoku.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_JuchuuNyuuryoku.Columns[11].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gv_JuchuuNyuuryoku.Columns[16].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gv_JuchuuNyuuryoku.Columns[16].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_JuchuuNyuuryoku.Columns[12].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_JuchuuNyuuryoku.Columns[12].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_JuchuuNyuuryoku.Columns[17].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gv_JuchuuNyuuryoku.Columns[17].SortMode = DataGridViewColumnSortMode.NotSortable;
 
@@ -1046,6 +1046,7 @@ namespace JuchuuNyuuryoku
                 }
             }
             gv_JuchuuNyuuryoku.ActionType = string.Empty;             //to check gv error at the ErrorCheck() of BaseForm.cs
+           
         }
 
         private void btnNameF11_Click(object sender, EventArgs e)
@@ -1792,7 +1793,6 @@ namespace JuchuuNyuuryoku
             else isSelected = "ON";
             bool bl_error = false;
             string col_Name = gv_JuchuuNyuuryoku.Columns[col].Name;
-
             if (col_Name == "colJuchuuSuu")
             {
                 string split_val = gv_JuchuuNyuuryoku.Rows[row].Cells["colJuchuuSuu"].EditedFormattedValue.ToString().Replace(",", "");
@@ -1890,7 +1890,6 @@ namespace JuchuuNyuuryoku
                     return bl_error;
 
             }
-
             if (col_Name == "colSoukoCD")
             {
                 DataTable souko_dt = new DataTable();
@@ -1915,8 +1914,6 @@ namespace JuchuuNyuuryoku
                 if (bl_error)
                     return bl_error;
             }
-
-
             return bl_error;
         }
        
@@ -1931,7 +1928,7 @@ namespace JuchuuNyuuryoku
                     for (int i = 0; i < gv.Cells.Count; i++)
                     {
                         string colName = gv_JuchuuNyuuryoku.Columns[i].Name;
-                        if (colName == "colSiiresakiCD" || colName == "colexpectedDate" || colName == "colSoukoCD" || colName == "colJuchuuMeisaiTekiyou" || colName== "colJuchuuSuu")
+                        if (colName == "colSiiresakiCD" || colName == "colSoukoCD" || colName == "colexpectedDate" || colName == "colJuchuuMeisaiTekiyou" || colName== "colJuchuuSuu")// 
                         {
                             if (ErrorCheck_CellEndEdit(gv.Index, i))
                             {                                

@@ -93,6 +93,7 @@
             this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colFree = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colexpectedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGenZaikoSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSenpouHacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,7 +104,6 @@
             this.colSiiresakiCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSiiresakiName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSiiresakiDetail = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colexpectedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSoukoCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSoukoName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSiiresakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -335,6 +335,7 @@
             this.colColorNO,
             this.colSizeNO,
             this.colFree,
+            this.colexpectedDate,
             this.colGenZaikoSuu,
             this.colJuchuuSuu,
             this.colSenpouHacchuuNO,
@@ -345,7 +346,6 @@
             this.colSiiresakiCD,
             this.colSiiresakiName,
             this.colSiiresakiDetail,
-            this.colexpectedDate,
             this.colSoukoCD,
             this.colSoukoName,
             this.colSiiresakiRyakuName,
@@ -1222,25 +1222,36 @@
             this.colFree.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.colFree.Width = 50;
             // 
+            // colexpectedDate
+            // 
+            this.colexpectedDate.DataPropertyName = "ExpectedDate";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = null;
+            this.colexpectedDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colexpectedDate.HeaderText = "着荷予定日";
+            this.colexpectedDate.MaxInputLength = 10;
+            this.colexpectedDate.Name = "colexpectedDate";
+            this.colexpectedDate.Width = 110;
+            // 
             // colGenZaikoSuu
             // 
             this.colGenZaikoSuu.DataPropertyName = "GenZaikoSuu";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colGenZaikoSuu.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.colGenZaikoSuu.DefaultCellStyle = dataGridViewCellStyle3;
             this.colGenZaikoSuu.HeaderText = "現在庫数";
             this.colGenZaikoSuu.MaxInputLength = 7;
             this.colGenZaikoSuu.Name = "colGenZaikoSuu";
             this.colGenZaikoSuu.ReadOnly = true;
-            this.colGenZaikoSuu.Width = 75;
+            this.colGenZaikoSuu.Width = 90;
             // 
             // colJuchuuSuu
             // 
             this.colJuchuuSuu.DataPropertyName = "JuchuuSuu";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N0";
+            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle4;
             this.colJuchuuSuu.HeaderText = "数量";
             this.colJuchuuSuu.MaxInputLength = 5;
             this.colJuchuuSuu.Name = "colJuchuuSuu";
@@ -1258,10 +1269,10 @@
             // colUriageTanka
             // 
             this.colUriageTanka.DataPropertyName = "UriageTanka";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N0";
-            dataGridViewCellStyle4.NullValue = null;
-            this.colUriageTanka.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.colUriageTanka.DefaultCellStyle = dataGridViewCellStyle5;
             this.colUriageTanka.HeaderText = "受注単価";
             this.colUriageTanka.MaxInputLength = 10;
             this.colUriageTanka.Name = "colUriageTanka";
@@ -1270,10 +1281,10 @@
             // colTanka
             // 
             this.colTanka.DataPropertyName = "Tanka";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.colTanka.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.colTanka.DefaultCellStyle = dataGridViewCellStyle6;
             this.colTanka.HeaderText = "発注単価";
             this.colTanka.MaxInputLength = 10;
             this.colTanka.Name = "colTanka";
@@ -1282,8 +1293,8 @@
             // colJuchuuMeisaiTekiyou
             // 
             this.colJuchuuMeisaiTekiyou.DataPropertyName = "JuchuuMeisaiTekiyou";
-            dataGridViewCellStyle6.NullValue = null;
-            this.colJuchuuMeisaiTekiyou.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle7.NullValue = null;
+            this.colJuchuuMeisaiTekiyou.DefaultCellStyle = dataGridViewCellStyle7;
             this.colJuchuuMeisaiTekiyou.HeaderText = "明細摘要";
             this.colJuchuuMeisaiTekiyou.MaxInputLength = 80;
             this.colJuchuuMeisaiTekiyou.MinimumWidth = 200;
@@ -1317,9 +1328,9 @@
             // colSiiresakiDetail
             // 
             this.colSiiresakiDetail.DataPropertyName = "SiiresakiDetail";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(6, 1, 6, 1);
-            this.colSiiresakiDetail.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(6, 1, 6, 1);
+            this.colSiiresakiDetail.DefaultCellStyle = dataGridViewCellStyle8;
             this.colSiiresakiDetail.HeaderText = "仕入先詳細";
             this.colSiiresakiDetail.Name = "colSiiresakiDetail";
             this.colSiiresakiDetail.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -1327,17 +1338,6 @@
             this.colSiiresakiDetail.Text = "詳細";
             this.colSiiresakiDetail.UseColumnTextForButtonValue = true;
             this.colSiiresakiDetail.Width = 95;
-            // 
-            // colexpectedDate
-            // 
-            this.colexpectedDate.DataPropertyName = "ExpectedDate";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.NullValue = null;
-            this.colexpectedDate.DefaultCellStyle = dataGridViewCellStyle8;
-            this.colexpectedDate.HeaderText = "着荷予定日";
-            this.colexpectedDate.MaxInputLength = 10;
-            this.colexpectedDate.Name = "colexpectedDate";
-            this.colexpectedDate.Width = 95;
             // 
             // colSoukoCD
             // 
@@ -1541,6 +1541,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSizeNO;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colFree;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colexpectedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colGenZaikoSuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuSuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSenpouHacchuuNO;
@@ -1551,7 +1552,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colSiiresakiCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSiiresakiName;
         private System.Windows.Forms.DataGridViewButtonColumn colSiiresakiDetail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colexpectedDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSiiresakiRyakuName;
