@@ -21,7 +21,9 @@ namespace JuchuuTorikomi
         BaseBL bbl;
         JuchuuTorikomiBL JBL;
         JuchuuTorikomiEntity JEntity;
-        DataTable dtMain;
+        DataTable dtMain,dt1;
+        //string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
+
         public JuchuuTorikomi()
         {
             InitializeComponent();
@@ -189,46 +191,59 @@ namespace JuchuuTorikomi
                         gvJuchuuTorikomi.DataSource = dtMain;
                         if (bbl.ShowMessage("Q102") == DialogResult.Yes)
                         {
-                            string Xml = string.Empty;
-                            spname = "JuchuuTorikomi_Delete";
-                            Xml = cf.DataTableToXml(dtMain);
-                            foreach (DataRow dr in dtMain.Rows)
+                            if(dtMain.Rows.Count>0)
                             {
-                                string JuchuuNO = dr["JuchuuNO"].ToString();
-                                JEntity.DataKBN = 1;
-                                JEntity.Number = JuchuuNO;
-                                JEntity.ProgramID = ProgramID;
-                                JEntity.PC = PCID;
-                                JEntity.OperatorCD = OperatorCD;
-                                DataTable dt1 = new DataTable();
-                                dt1 = JBL.D_Exclusive_Lock_Check(JEntity);
-                                if (dt1.Rows[0]["MessageID"].ToString().Equals("S004"))
+                                string Xml = string.Empty;
+                                spname = "JuchuuTorikomi_Delete";
+                                Xml = cf.DataTableToXml(dtMain);
+
+                                DataRow[] dtgv_row = dtMain.Select("TorikomiDenpyouNO ='" + DenpyouNO + "'");
+                                if (dtgv_row != null)
                                 {
-                                    bbl.ShowMessage("S004");
+                                    foreach (DataRow dr in dtgv_row)
+                                    {
+                                        string JuchuuNO = dr["JuchuuNO"].ToString();
+                                        JEntity.DataKBN = 1;
+                                        JEntity.Number = JuchuuNO;
+                                        JEntity.ProgramID = ProgramID;
+                                        JEntity.PC = PCID;
+                                        JEntity.OperatorCD = OperatorCD;
+                                        dt1 = new DataTable();
+                                        dt1 = JBL.D_Exclusive_Lock_Check(JEntity);
+                                        if (dt1.Rows[0]["MessageID"].ToString().Equals("S004"))
+                                        {
+                                            bbl.ShowMessage("S004", ProgramID, PCID, OperatorCD);
+                                        }
+                                    }
+                                    JEntity.OperatorCD = base_Entity.OperatorCD;
+                                    JEntity.ProgramID = base_Entity.ProgramID;
+                                    JEntity.PC = base_Entity.PC;
+                                    JEntity.OperateMode = "Delete";
+                                    DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml, DenpyouNO, JEntity);
+                                    if (return_BL1.Rows.Count > 0)
+                                    {
+                                        if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
+                                        {
+                                            bbl.ShowMessage("I002");
+                                            rdo_Delete.Checked = true;
+                                            txtDate1.Clear();
+                                            txtDate2.Clear();
+                                            txtDenpyouNO.Clear();
+                                            txtDenpyouNO.Focus();
+                                            GridviewBind();
+                                        }
+                                        else
+                                        {
+                                            bbl.ShowMessage("S013");
+                                            txtDenpyouNO.Focus();
+                                        }
+                                    }
                                 }
                             }
-                            JEntity.OperatorCD = base_Entity.OperatorCD;
-                            JEntity.ProgramID = base_Entity.ProgramID;
-                            JEntity.PC = base_Entity.PC;
-                            JEntity.OperateMode = "Delete";
-                            DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml, DenpyouNO, JEntity);
-                            if (return_BL1.Rows.Count > 0)
+                            else
                             {
-                                if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
-                                {
-                                    bbl.ShowMessage("I002");
-                                    rdo_Delete.Checked = true;
-                                    txtDate1.Clear();
-                                    txtDate2.Clear();
-                                    txtDenpyouNO.Clear();
-                                    txtDenpyouNO.Focus();
-                                    GridviewBind();                                  
-                                }
-                                else
-                                {
-                                    bbl.ShowMessage("S013");
-                                    txtDenpyouNO.Focus();
-                                }
+                                bbl.ShowMessage("E274");
+                                txtDate1.Focus();
                             }
                         }
                         else
