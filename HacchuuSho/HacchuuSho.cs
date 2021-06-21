@@ -30,10 +30,10 @@ namespace HacchuuSho
         multipurposeEntity multi_Entity;
         BaseBL bbl = new BaseBL();
         HacchuuShoBL hsbl;
-        string tmpPath = @"C:\SHINYOH\HacchuuSho\imge.jpg";
-        string tmpDir = @"C:\SHINYOH\HacchuuSho\";
-        string tmpSourceLogo = @"C:\SHINYOH\HacchuuSho\SHINYOH_Logo.jpg";
-        string tmpSave = @"C:\SHINYOH\HacchuuSho\";
+        string tmpPath = @"C:\TEMP\SHINYOH\HacchuuSho\imge.jpg";
+        string tmpDir = @"C:\TEMP\SHINYOH\HacchuuSho\";
+        string tmpSourceLogo = @"C:\TEMP\SHINYOH\HacchuuSho\SHINYOH_Logo.jpg";
+        string tmpSave = @"C:\TEMP\SHINYOH\HacchuuSho\";
         byte[] headerLogo = null;
         static readonly Regex SheetNameForbiddenRegex = new Regex("[:\\\\?\\[\\]\\/*：￥＼？［］／＊]");
         const int MaxRow = 8;
@@ -66,7 +66,7 @@ namespace HacchuuSho
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             UI_ErrorCheck();
             headerLogo  = bbl.GetLogo("101","1");
-            SettingImg(headerLogo);
+           // SettingImg(headerLogo);
         }
 
         private void UI_ErrorCheck()
@@ -483,6 +483,11 @@ namespace HacchuuSho
                         xlWorkBook.Close(true, misValue, misValue);
                         xlApp.Quit();
                         bbl.ShowMessage("I203", string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
+                        //NMW 
+                        if (File.Exists(tmpPath))
+                        {
+                            File.Delete(tmpPath);
+                        }
                         Process.Start(System.IO.Path.GetDirectoryName(savedialog.FileName));
                         Clear(); //HET
                     }
