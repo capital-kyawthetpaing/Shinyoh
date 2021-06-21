@@ -178,11 +178,14 @@ BEGIN
 	FROM D_Hacchuu DHAH
 	INNER JOIN D_HacchuuMeisai DHAM
 	ON DHAH.HacchuuNO = DHAM.HacchuuNO
-	OUTER APPLY (
-	              SELECT *
-				  FROM F_Shouhin(DHAH.HacchuuDate) A
-				  WHERE A.ShouhinCD = DHAM.ShouhinCD
-				) MSHO
+	-- NMW add 2021-06-21
+	LEFT OUTER JOIN F_Shouhin(GetDate()) MSHO on MSHO.ShouhinCD=DHAM.ShouhinCD 
+	--NMW comment 2021-06-21
+	--OUTER APPLY (
+	--              SELECT *
+	--			  FROM F_Shouhin(DHAH.HacchuuDate) A
+	--			  WHERE A.ShouhinCD = DHAM.ShouhinCD
+	--			) MSHO
     LEFT OUTER JOIN M_MultiPorpose MMPP_COLOR
 	ON MMPP_COLOR.ID = 104
 	AND MMPP_COLOR.[KEY] = MSHO.ColorNO
@@ -224,11 +227,14 @@ BEGIN
 	FROM D_Hacchuu DHAH
 	INNER JOIN D_HacchuuMeisai DHAM
 	ON DHAH.HacchuuNO = DHAM.HacchuuNO
-	OUTER APPLY (
-	              SELECT *
-				  FROM F_Shouhin(DHAH.HacchuuDate) A
-				  WHERE A.ShouhinCD = DHAM.ShouhinCD
-				) MSHO
+	-- NMW add 2021-06-21
+	LEFT OUTER JOIN F_Shouhin(GetDate()) MSHO on MSHO.ShouhinCD = DHAM.ShouhinCD 
+	--NMW comment 2021-06-21
+	--OUTER APPLY (
+	--              SELECT *
+	--			  FROM F_Shouhin(DHAH.HacchuuDate) A
+	--			  WHERE A.ShouhinCD = DHAM.ShouhinCD
+	--			) MSHO
     WHERE DHAM.SizeNO in (select val from split(N'23.0,23.5,24.0,24.5,25.0,25.5,26.0,26.5,27.0,27.5,28.0',','))
 	AND (@JuchuuNO1 is null or(DHAM.JuchuuNO >= @JuchuuNO1))
 	AND	(@JuchuuNO2 is null or(DHAM.JuchuuNO <= @JuchuuNO2))
@@ -297,11 +303,14 @@ BEGIN
 	FROM D_Hacchuu DHAH
 	INNER JOIN D_HacchuuMeisai DHAM
 	ON DHAH.HacchuuNO = DHAM.HacchuuNO
-	OUTER APPLY (
-	              SELECT *
-				  FROM F_Shouhin(DHAH.HacchuuDate) A
-				  WHERE A.ShouhinCD = DHAM.ShouhinCD
-				) MSHO
+	-- NMW add 2021-06-21
+	LEFT OUTER JOIN F_Shouhin(GetDate()) MSHO on MSHO.ShouhinCD = DHAM.ShouhinCD 
+	--NMW comment 2021-06-21
+	--OUTER APPLY (
+	--              SELECT *
+	--			  FROM F_Shouhin(DHAH.HacchuuDate) A
+	--			  WHERE A.ShouhinCD = DHAM.ShouhinCD
+	--			) MSHO
     WHERE DHAM.SizeNO in (select val from split(N'23.0,23.5,24.0,24.5,25.0,25.5,26.0,26.5,27.0,27.5,28.0',','))
 	AND (@JuchuuNO1 is null or(DHAM.JuchuuNO >= @JuchuuNO1))
 	AND	(@JuchuuNO2 is null or(DHAM.JuchuuNO <= @JuchuuNO2))
