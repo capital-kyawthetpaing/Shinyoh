@@ -173,6 +173,8 @@ namespace JuchuuTorikomi
                                                 {
                                                     bbl.ShowMessage("I002");
                                                     rdo_Registration.Focus();
+                                                    BindData();
+
                                                 }
                                             }
                                         }
@@ -423,8 +425,11 @@ namespace JuchuuTorikomi
             }
             else
             {
-                bbl.ShowMessage("E281");
-                txtImportFolder.Focus();
+                if(txtDenpyouNO.Enabled==true)
+                {
+                    bbl.ShowMessage("E281");
+                    txtImportFolder.Focus();
+                }
             }
             return (Xml_Hacchuu,Xml_Juchuu);
         }
