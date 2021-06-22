@@ -267,6 +267,7 @@ namespace ShukkaTorikomi
                                                 bbl.ShowMessage("I002");
                                             rdo_Toroku.Checked = true;
                                             rdo_Toroku.Focus();
+                                            dataBind();
                                         }
                                     }
                                     else
