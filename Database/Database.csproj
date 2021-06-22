@@ -246,6 +246,7 @@
     <Content Include="StoreProcedure\Staff_Search.sql" />
     <Content Include="StoreProcedure\Staff_Select_Check.sql" />
     <Content Include="StoreProcedure\Tokuisaki_Search.sql" />
+    <Content Include="StoreProcedure\TorikomiDenpyouNO_Check.sql" />
     <Content Include="StoreProcedure\Yuubin_Search.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

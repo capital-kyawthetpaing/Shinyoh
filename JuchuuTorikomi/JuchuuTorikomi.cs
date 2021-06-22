@@ -21,7 +21,7 @@ namespace JuchuuTorikomi
         BaseBL bbl;
         JuchuuTorikomiBL JBL;
         JuchuuTorikomiEntity JEntity;
-        DataTable dtMain,dt1;
+        DataTable dtMain, dt1,dtResult;
         //string Data1 = string.Empty, Data2 = string.Empty, Data3 = string.Empty;
 
         public JuchuuTorikomi()
@@ -191,10 +191,15 @@ namespace JuchuuTorikomi
                     {
                         string DenpyouNO = txtDenpyouNO.Text;
                         gvJuchuuTorikomi.DataSource = dtMain;
-                        if (dtMain.Rows.Count > 0)                            
+                        if (Data_Check())
                         {
-                            if (bbl.ShowMessage("Q102") == DialogResult.Yes)
-                            {
+                            txtDenpyouNO.Focus();
+                            return;
+                        }
+                        else if (dtMain.Rows.Count > 0)                            
+                        {
+                            //if (bbl.ShowMessage("Q102") == DialogResult.Yes)
+                            //{
                                 string Xml = string.Empty;
                                 spname = "JuchuuTorikomi_Delete";
                                 Xml = cf.DataTableToXml(dtMain);
@@ -223,10 +228,10 @@ namespace JuchuuTorikomi
                                     JEntity.PC = base_Entity.PC;
                                     JEntity.OperateMode = "Delete";
                                     DataTable return_BL1 = JBL.JuchuuTorikomi_Delete(spname, Xml, DenpyouNO, JEntity);
-                                    if (return_BL1.Rows.Count > 0)
-                                    {
-                                        if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
-                                        {
+                                    //if (return_BL1.Rows.Count > 0)
+                                    //{
+                                        //if (return_BL1.Rows[0]["Result"].ToString().Equals("1"))
+                                        //{
                                             bbl.ShowMessage("I002");
                                             rdo_Delete.Checked = true;
                                             txtDate1.Clear();
@@ -234,20 +239,20 @@ namespace JuchuuTorikomi
                                             txtDenpyouNO.Clear();
                                             txtDenpyouNO.Focus();
                                             GridviewBind();
-                                        }
-                                        else
-                                        {
-                                            bbl.ShowMessage("S013");
-                                            txtDenpyouNO.Focus();
-                                        }
-                                    }
+                                        //}
+                                        //else
+                                        //{
+                                        //    bbl.ShowMessage("S013");
+                                        //    txtDenpyouNO.Focus();
+                                        //}
+                                    //}
                                 }
-                            }
-                            else
-                            {
-                                if (PreviousCtrl != null)
-                                    PreviousCtrl.Focus();
-                            }
+                           // }
+                            //else
+                            //{
+                            //    if (PreviousCtrl != null)
+                            //        PreviousCtrl.Focus();
+                            //}
                         }
                         else
                         {
@@ -281,7 +286,7 @@ namespace JuchuuTorikomi
             }
             else
             {
-                bbl.ShowMessage("S013");
+                //bbl.ShowMessage("S013");//to need F10
                 dtMain.Clear();
                 gvJuchuuTorikomi.DataSource = dtMain;  
                 txtDate1.Focus();
@@ -570,7 +575,29 @@ namespace JuchuuTorikomi
             }
             ErrorCheck();
         }
-        
+
+        private void txtDenpyouNO_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Enter)
+            {
+               if (Data_Check())
+                {
+                    txtDenpyouNO.Focus();
+                }
+            }
+        }
+        private bool Data_Check()
+        {
+            dtResult = new DataTable();
+            dtResult = JBL.TorikomiDenpyouNO_Check(ProgramID, txtDenpyouNO.Text);
+            if (dtResult.Rows.Count > 0 && dtResult.Rows[0]["Result"].ToString().Equals("0"))
+            {
+                bbl.ShowMessage("S013");
+                return true;
+            }
+            return false;
+        }
+
         private void txtDate2_KeyDown(object sender, KeyEventArgs e)
         {
               GridviewBind();

@@ -84,5 +84,14 @@ namespace BL
             DataTable dt = ckmdl.SelectDatatable("D_Exclusive_Lock_Check", GetConnectionString(), parameters);
             return dt;
         }
+        public DataTable TorikomiDenpyouNO_Check(string value1,string value2)
+        {
+            CKMDL ckmdl = new CKMDL();
+            var parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("@ProgramID", SqlDbType.VarChar) { Value =value1};
+            parameters[1] = new SqlParameter("@DenyouNO", SqlDbType.VarChar) { Value =value2};
+            DataTable dt = ckmdl.SelectDatatable("TorikomiDenpyouNO_Check", GetConnectionString(), parameters);
+            return dt;
+        }
     }
 }
