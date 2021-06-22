@@ -191,9 +191,9 @@ namespace JuchuuTorikomi
                     {
                         string DenpyouNO = txtDenpyouNO.Text;
                         gvJuchuuTorikomi.DataSource = dtMain;
-                        if (bbl.ShowMessage("Q102") == DialogResult.Yes)
+                        if (dtMain.Rows.Count > 0)                            
                         {
-                            if(dtMain.Rows.Count>0)
+                            if (bbl.ShowMessage("Q102") == DialogResult.Yes)
                             {
                                 string Xml = string.Empty;
                                 spname = "JuchuuTorikomi_Delete";
@@ -245,14 +245,14 @@ namespace JuchuuTorikomi
                             }
                             else
                             {
-                                bbl.ShowMessage("E274");
-                                txtDate1.Focus();
+                                if (PreviousCtrl != null)
+                                    PreviousCtrl.Focus();
                             }
                         }
                         else
                         {
-                            if (PreviousCtrl != null)
-                                PreviousCtrl.Focus();
+                            bbl.ShowMessage("E274");
+                            txtDate1.Focus();
                         }
                     }   
                 }
@@ -316,7 +316,8 @@ namespace JuchuuTorikomi
             string Xml_Hacchuu = string.Empty;
             string Xml_Juchuu = string.Empty;
             string error = string.Empty;
-            if (File.Exists(txtImportFolder.Text + txtImportFileName.Text))         //Task 453
+            string path = txtImportFolder.Text + txtImportFileName.Text;
+            if (File.Exists(path))         //Task 453
             {
                 DataTable create_dt = new DataTable();
                 Create_Datatable_Column(create_dt);
