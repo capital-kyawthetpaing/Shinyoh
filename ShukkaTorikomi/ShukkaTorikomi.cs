@@ -28,6 +28,10 @@ namespace ShukkaTorikomi
         DataTable dtShuKka;
         DataTable dt;
 
+        JuchuuTorikomiBL JBL;
+        JuchuuTorikomiEntity JEntity;
+
+
         public SqlDbType()
         {
             InitializeComponent();
@@ -36,10 +40,11 @@ namespace ShukkaTorikomi
             dt_Main = new DataTable();
             create_dt = new DataTable();
             dt = new DataTable();
-
-            bbl = new BaseBL();
             SEntity = new TorikomiEntity();
+            bbl = new BaseBL();
+            JEntity = new JuchuuTorikomiEntity();
             ShukkaTorikomi_BL = new ShukkaTorikomi_BL();
+            JBL = new JuchuuTorikomiBL();
         }
 
         private void ShukkaTorikomi_Load(object sender, EventArgs e)
@@ -290,6 +295,23 @@ namespace ShukkaTorikomi
                                 {
                                     if (bbl.ShowMessage("Q102") == DialogResult.Yes)
                                     {
+                                        DataTable dt_Check = (DataTable)gvShukkaTorikomi.DataSource;
+                                        DataRow[] dt_Check_Row = dt_Check.Select("TorikomiDenpyouNO ='" + txtDenpyouNO.Text + "'");
+                                        foreach (DataRow dr in dt_Check_Row)
+                                        {
+                                            string ShukkaNO = dr["ShukkaNO"].ToString();
+                                            JEntity.DataKBN = 6;
+                                            JEntity.Number = ShukkaNO;
+                                            JEntity.ProgramID = ProgramID;
+                                            JEntity.PC = PCID;
+                                            JEntity.OperatorCD = OperatorCD;
+                                            DataTable r_dt =  JBL.D_Exclusive_Lock_Check(JEntity);
+                                            if (r_dt.Rows[0]["MessageID"].ToString().Equals("S004"))
+                                            {
+                                                bbl.ShowMessage("S004", ProgramID, PCID, OperatorCD);
+                                                return;
+                                            }
+                                        }
                                         return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
                                         bbl.ShowMessage("I002");
                                         rdo_Sakujo.Checked = true;
