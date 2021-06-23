@@ -150,6 +150,9 @@ namespace ShukkaTorikomi
 
                 Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                 txtImportFileName.NextControlName = btnF12.Name;
+
+                gvShukkaTorikomi.ClearSelection();   //HET
+                dt.Clear();
             }
             else
             {
