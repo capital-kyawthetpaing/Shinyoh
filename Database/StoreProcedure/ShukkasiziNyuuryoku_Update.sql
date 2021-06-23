@@ -731,6 +731,25 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 	WHERE NOT EXISTS(SELECT 1 FROM D_ShukkaSiziMeisai AS DM WHERE DM.ShukkaSiziNO = @ShukkaSiziNO AND DM.ShukkaSiziGyouNO = TD.ShukkaSiziGyouNO)
 	;
 
+	UPDATE DSSH
+	SET KouritenCD = ISNULL(DSSH.KouritenCD, DSSM.KouritenCD) 
+	   ,KouritenRyakuName = ISNULL(DSSH.KouritenRyakuName, DSSM.KouritenRyakuName) 
+	   ,KouritenName = ISNULL(DSSH.KouritenName, DSSM.KouritenName)
+	   ,KouritenYuubinNO1 = ISNULL(DSSH.KouritenYuubinNO1, DSSM.KouritenYuubinNO1)
+	   ,KouritenYuubinNO2 = ISNULL(DSSH.KouritenYuubinNO2, DSSM.KouritenYuubinNO2)
+	   ,KouritenJuusho1 = ISNULL(DSSH.KouritenJuusho1, DSSM.KouritenJuusho1)
+	   ,KouritenJuusho2 = ISNULL(DSSH.KouritenJuusho2, DSSM.KouritenJuusho2)
+	   ,[KouritenTelNO1-1] = ISNULL(DSSH.[KouritenTelNO1-1], DSSM.[KouritenTelNO1-1])
+	   ,[KouritenTelNO1-2] = ISNULL(DSSH.[KouritenTelNO1-2], DSSM.[KouritenTelNO1-2])
+	   ,[KouritenTelNO1-3] = ISNULL(DSSH.[KouritenTelNO1-3], DSSM.[KouritenTelNO1-3])
+	   ,[KouritenTelNO2-1] = ISNULL(DSSH.[KouritenTelNO2-1], DSSM.[KouritenTelNO2-1])
+	   ,[KouritenTelNO2-2] = ISNULL(DSSH.[KouritenTelNO2-2], DSSM.[KouritenTelNO2-2])
+	   ,[KouritenTelNO2-3] = ISNULL(DSSH.[KouritenTelNO2-3], DSSM.[KouritenTelNO2-3])
+	FROM D_ShukkaSizi DSSH
+	INNER JOIN D_ShukkaSiziMeisai DSSM
+	ON DSSH.ShukkaSiziNO = DSSM.ShukkaSiziNO
+	WHERE DSSH.ShukkaSiziNO = @ShukkaSiziNO
+
 
 INSERT INTO [dbo].[D_ShukkaSiziMeisaiHistory]
 (
