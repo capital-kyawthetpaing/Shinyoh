@@ -256,6 +256,7 @@
             this.txtDenpyouNO.Size = new System.Drawing.Size(100, 19);
             this.txtDenpyouNO.TabIndex = 5;
             this.txtDenpyouNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtDenpyouNO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDenpyouNO_KeyDown);
             // 
             // sLabel6
             // 
