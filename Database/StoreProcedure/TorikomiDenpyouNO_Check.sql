@@ -29,6 +29,13 @@ BEGIN
 					select '0' as Result
 					END
 		end
+	IF @ProgramID='ShukkaTorikomi'
+		begin
+			IF NOT EXISTS(select * FROM D_Shukka  WHERE TorikomiDenpyouNO = @DenyouNO)
+					BEGIN
+					select '0' as Result
+					END
+		end
 	else
 		begin
 			select '1' as Result
