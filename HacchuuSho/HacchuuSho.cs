@@ -36,7 +36,8 @@ namespace HacchuuSho
         string tmpSave = @"C:\SHINYOH\HacchuuSho\";
         byte[] headerLogo = null;
         static readonly Regex SheetNameForbiddenRegex = new Regex("[:\\\\?\\[\\]\\/*：￥＼？［］／＊]");
-        const int MaxRow = 8;
+        const int MaxRow = 33;
+        const int AddRow = 33 - 8;
 
         public HacchuuSho()
         {
@@ -236,12 +237,12 @@ namespace HacchuuSho
                         //            try
                         //{
                         //xlWorkSheet.PageSetup.PrintArea = "A1:V1000";
-                        xlWorkSheet.PageSetup.Orientation = Microsoft.Office.Interop.Excel.XlPageOrientation.xlLandscape;//Page horizontal
+                        xlWorkSheet.PageSetup.Orientation = Microsoft.Office.Interop.Excel.XlPageOrientation.xlPortrait;//Page horizontal
                         xlWorkSheet.PageSetup.Zoom = 75; //page setting when printing, a few percent of the scale
                         xlWorkSheet.PageSetup.Zoom = false; //Page setting when printing, must be set to false, page height, page width is valid
                                                             //try
                                                             //{
-                        xlWorkSheet.PageSetup.PaperSize = Microsoft.Office.Interop.Excel.XlPaperSize.xlPaperA4;//paper size
+                        xlWorkSheet.PageSetup.PaperSize = Microsoft.Office.Interop.Excel.XlPaperSize.xlPaperA3;//paper size
                                                                                                                //}
                                                                                                                //catch { }
                         xlWorkSheet.PageSetup.FitToPagesWide = 1; //Set the page width of the page to be 1 page wide
@@ -257,11 +258,11 @@ namespace HacchuuSho
 
                         xlWorkSheet.Columns[2].ColumnWidth = 10;
                         xlWorkSheet.Columns[3].ColumnWidth = 20;
-                        xlWorkSheet.Columns[4].ColumnWidth = 15;
-                        xlWorkSheet.Columns[5].ColumnWidth = 20;
-                        xlWorkSheet.Columns[6].ColumnWidth = 20;
-                        xlWorkSheet.Columns[7].ColumnWidth = 15;
-                        xlWorkSheet.Columns[8].ColumnWidth = 15;
+                        xlWorkSheet.Columns[4].ColumnWidth = 20;
+                        xlWorkSheet.Columns[5].ColumnWidth = 15;
+                        xlWorkSheet.Columns[6].ColumnWidth = 15;
+                        xlWorkSheet.Columns[7].ColumnWidth = 5;
+                        xlWorkSheet.Columns[8].ColumnWidth = 5;
                         xlWorkSheet.Columns[9].ColumnWidth = 5;
                         xlWorkSheet.Columns[10].ColumnWidth = 5;
                         xlWorkSheet.Columns[11].ColumnWidth = 5;
@@ -271,10 +272,9 @@ namespace HacchuuSho
                         xlWorkSheet.Columns[15].ColumnWidth = 5;
                         xlWorkSheet.Columns[16].ColumnWidth = 5;
                         xlWorkSheet.Columns[17].ColumnWidth = 5;
-                        xlWorkSheet.Columns[18].ColumnWidth = 5;
-                        xlWorkSheet.Columns[19].ColumnWidth = 5;
-                        xlWorkSheet.Columns[20].ColumnWidth = 10;
-                        xlWorkSheet.Columns[21].ColumnWidth = 15;
+                        xlWorkSheet.Columns[18].ColumnWidth = 10;
+                        xlWorkSheet.Columns[19].ColumnWidth = 15;
+                        xlWorkSheet.Columns[20].ColumnWidth = 15;
 
                         #endregion
 
@@ -334,18 +334,21 @@ namespace HacchuuSho
                                     //最終ページでない場合
                                     if (gyoCount != dgv)
                                     {
-                                        xlWorkSheet.get_Range("B" + (gvrow), "U" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
-                                        xlWorkSheet.Cells[col, 20].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 20].Address + ":" + xlWorkSheet.Cells[col - 1, 20].Address + ")";
-                                        xlWorkSheet.Cells[col, 21].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 21].Address + ":" + xlWorkSheet.Cells[col - 1, 21].Address + ")";
+                                        xlWorkSheet.get_Range("B" + (gvrow), "T" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
+                                        xlWorkSheet.Cells[col, 20 - 2].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 20 - 2].Address + ":" + xlWorkSheet.Cells[col - 1, 20].Address + ")";
+                                        xlWorkSheet.Cells[col, 21 - 2].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 21 - 2].Address + ":" + xlWorkSheet.Cells[col - 1, 21].Address + ")";
 
-                                        sum1 += xlWorkSheet.Cells[col, 20].value;
-                                        sum2 += xlWorkSheet.Cells[col, 21].value;
+                                        sum1 += xlWorkSheet.Cells[col, 20-2].value;
+                                        sum2 += xlWorkSheet.Cells[col, 21 - 2].value;
 
-                                        xlWorkSheet.Cells[col, 20] = "****";
-                                        xlWorkSheet.Cells[col, 21] = "**********";
+                                        xlWorkSheet.Cells[col, 20 - 2] = "****";
+                                        xlWorkSheet.Cells[col, 21 - 2] = "**********";
+
+                                        SettingImg(dtgv.Rows[0]["SIGN_IMAGE"] as byte[]);
+                                        SetImage(col + 4, 21 - 2, tmpPath, xlWorkSheet, false, true);
 
                                         SetFooter(xlWorkBook, xlWorkSheet, col);
-                                        col += 17 - 1;
+                                        col += 17 - 1+ AddRow;
                                         startrow = col + 10;
                                         gvrow = startrow + 5;
 
@@ -374,10 +377,10 @@ namespace HacchuuSho
                                 {
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 2] = dtgv.Rows[h]["ModelNo"].ToString();
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 3] = dtgv.Rows[h]["ModelName"].ToString();
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 4] = dtgv.Rows[h]["FOBPRICE"].ToString();
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 5] = dtgv.Rows[h]["JAPANColor"].ToString();
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["KOREAColor"].ToString();
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 7] = dtgv.Rows[h]["Shippingplace"].ToString();
+                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["FOBPRICE"].ToString();
+                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 4] = dtgv.Rows[h]["JAPANColor"].ToString();
+                                    //xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["KOREAColor"].ToString();
+                                    //xlWorkSheet.Cells[gvrow + (otherModel + 1), 7] = dtgv.Rows[h]["Shippingplace"].ToString();
                                     //Yellow_Color_Change_Item ==> [ModelNO]
                                     var Cell_Color = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 2];
                                     var Cell_Color1 = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 5];
@@ -389,17 +392,17 @@ namespace HacchuuSho
                                     //try
                                     //{
                                     SettingImg(dtgv.Rows[h]["IMAGE"] as byte[]);
-                                    SetImage(gvrow + (otherModel + 1), 8, tmpPath, xlWorkSheet);
+                                    SetImage(gvrow + (otherModel + 1), 5, tmpPath, xlWorkSheet);
                                     //}
                                     //catch (Exception ex) { var msg = ex.Message; }
 
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 20] = dtgv.Rows[h]["Pairs"].ToString();
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 21] = dtgv.Rows[h]["Amount"].ToString();
+                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 20 -2] = dtgv.Rows[h]["Pairs"].ToString();
+                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 21 - 2] = dtgv.Rows[h]["Amount"].ToString();
                                     modelno = dtgv.Rows[h]["ModelNo"].ToString();
                                     colorno = dtgv.Rows[h]["ColorNo"].ToString();
 
                                     int rowIndex = gvrow + otherModel;
-                                    xlWorkSheet.get_Range("B" + rowIndex, "U" + rowIndex).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
+                                    xlWorkSheet.get_Range("B" + rowIndex, "T" + rowIndex).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
 
                                     otherModel++;
                                     gyoCount++;
@@ -410,10 +413,10 @@ namespace HacchuuSho
                                 {
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 2] = dtgv.Rows[h]["ModelNo"].ToString();
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 3] = dtgv.Rows[h]["ModelName"].ToString();
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 4] = dtgv.Rows[h]["FOBPRICE"].ToString();
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 5] = dtgv.Rows[h]["JAPANColor"].ToString();
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["KOREAColor"].ToString();
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 7] = dtgv.Rows[h]["Shippingplace"].ToString();
+                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["FOBPRICE"].ToString();
+                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 4] = dtgv.Rows[h]["JAPANColor"].ToString();
+                                    //xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["KOREAColor"].ToString();
+                                    //xlWorkSheet.Cells[gvrow + (otherModel + 1), 7] = dtgv.Rows[h]["Shippingplace"].ToString();
 
                                     //Yellow_Color_Change_Item ==> [ModelNO]
                                     var Cell_Color = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 2];
@@ -428,11 +431,11 @@ namespace HacchuuSho
                                     //try
                                     //    {
                                     SettingImg(dtgv.Rows[h]["IMAGE"] as byte[]);
-                                    SetImage(gvrow + (otherModel + 1), 8, tmpPath, xlWorkSheet);
+                                    SetImage(gvrow + (otherModel + 1), 5, tmpPath, xlWorkSheet);
                                     //}
                                     //catch (Exception ex) { var msg = ex.Message; }
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 20] = dtgv.Rows[h]["Pairs"].ToString();
-                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 21] = dtgv.Rows[h]["Amount"].ToString();
+                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 20 - 2] = dtgv.Rows[h]["Pairs"].ToString();
+                                    xlWorkSheet.Cells[gvrow + (otherModel + 1), 21 - 2] = dtgv.Rows[h]["Amount"].ToString();
                                     modelno = dtgv.Rows[h]["ModelNo"].ToString();
                                     colorno = dtgv.Rows[h]["ColorNo"].ToString();
                                     otherModel++;
@@ -450,30 +453,33 @@ namespace HacchuuSho
                             }
 
                             int rowNo = gvrow + otherModel;
-                            xlWorkSheet.get_Range("B" + rowNo, "U" + rowNo).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
+                            xlWorkSheet.get_Range("B" + rowNo, "T" + rowNo).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;
 
-                            xlWorkSheet.get_Range("B" + (gvrow), "U" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
-                            xlWorkSheet.Cells[col, 20].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 20].Address + ":" + xlWorkSheet.Cells[col - 1, 20].Address + ")";
-                            xlWorkSheet.Cells[col, 21].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 21].Address + ":" + xlWorkSheet.Cells[col - 1, 21].Address + ")";
+                            xlWorkSheet.get_Range("B" + (gvrow), "T" + (gvrow)).Interior.Color = System.Drawing.ColorTranslator.FromHtml("#FFF2CC");
+                            xlWorkSheet.Cells[col, 20 - 2].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 20 - 2].Address + ":" + xlWorkSheet.Cells[col - 1, 20].Address + ")";
+                            xlWorkSheet.Cells[col, 21 - 2].Formula = "=Sum(" + xlWorkSheet.Cells[gvrow + 1, 21 - 2].Address + ":" + xlWorkSheet.Cells[col - 1, 21].Address + ")";
 
                             //xlWorkSheet.Cells[col, 8] = "TOTAL";
                             if (sum1 != 0 || sum2 != 0)
                             {
-                                sum1 += xlWorkSheet.Cells[col, 20].value;
-                                sum2 += xlWorkSheet.Cells[col, 21].value;
+                                sum1 += xlWorkSheet.Cells[col, 20 - 2].value;
+                                sum2 += xlWorkSheet.Cells[col, 21 - 2].value;
 
-                                xlWorkSheet.Cells[col, 20] = sum1;
-                                xlWorkSheet.Cells[col, 21] = sum2;
+                                xlWorkSheet.Cells[col, 20 - 2] = sum1;
+                                xlWorkSheet.Cells[col, 21 - 2] = sum2;
                             }
                             #endregion
+                            
+                            SettingImg(dtgv.Rows[0]["SIGN_IMAGE"] as byte[]);
+                            SetImage(col+4, 21 - 2, tmpPath, xlWorkSheet,false,true);
 
                             SetFooter(xlWorkBook, xlWorkSheet, col);
-                            col += 17 - 1;
+                            col += 17 - 1+ AddRow;
                             startrow = col + 10;
                             gvrow = startrow + 5;
                         }
 
-                        xlWorkSheet.PageSetup.PrintArea = "A1:V"+ (col-1);
+                        xlWorkSheet.PageSetup.PrintArea = "A1:U"+ (col-1-AddRow);
 
                         // Footers
 
@@ -519,6 +525,7 @@ namespace HacchuuSho
             xlWorkSheet.Cells[col + 15, 19] = "Sincerely yours,"; 
 
             wb.Worksheets[1].HPageBreaks.Add(xlWorkSheet.Range["W"+ (col + 16).ToString()]);
+
         }
         private void SetHeader(Excel.Worksheet xlWorkSheet,DataTable dt, Excel.Application xlApp ,int added)
         {
@@ -531,28 +538,29 @@ namespace HacchuuSho
 
             xlWorkSheet.Cells[added + 7, 19] = "FAX : ";
             xlWorkSheet.Cells[added + 7, 20] = dt.Rows[0]["EiziFaxNO"].ToString();
+            xlWorkSheet.get_Range("S" + (added + 6).ToString(), "S" + (added + 7).ToString()).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
 
             xlWorkSheet.Cells[added + 9, 6] = "PURCHASE ORDER "; 
             xlApp.Cells.Font.Name = "Times New Roman";
 
-            xlApp.get_Range("I" +(added + 15).ToString(), "S"  +(added + 15).ToString()).Cells.NumberFormat = "0.0"; 
-            xlApp.get_Range("A"+(added+1).ToString()+":U"+(added + 1).ToString() , "A" + (added + 3).ToString() + ":U" + (added + 3).ToString() ).Merge(Type.Missing);
-            xlApp.get_Range("A" + (added + 4).ToString() , "U" + (added + 4).ToString() ).Merge(Type.Missing);
-            xlApp.get_Range("A"+ (added + 5).ToString(), "U"+ (added + 5).ToString()).Merge(Type.Missing);
-            xlApp.get_Range("T"+ (added + 6).ToString(), "U"+ (added + 6).ToString()).Merge(Type.Missing);
-            xlApp.get_Range("T"+(added + 7).ToString(), "U"+ (added + 7).ToString()).Merge(Type.Missing);
-            xlApp.get_Range("A"+ (added + 9).ToString(), "U"+ (added + 9).ToString()).Merge(Type.Missing); 
+            xlApp.get_Range("I" + (added + 15).ToString(), "S"  +(added + 15).ToString()).Cells.NumberFormat = "0.0"; 
+            xlApp.get_Range("A" + (added + 1).ToString()+":T"+(added + 1).ToString() , "A" + (added + 3).ToString() + ":T" + (added + 3).ToString() ).Merge(Type.Missing);
+            xlApp.get_Range("A" + (added + 4).ToString() , "T" + (added + 4).ToString() ).Merge(Type.Missing);
+            xlApp.get_Range("A" + (added + 5).ToString(), "T"+ (added + 5).ToString()).Merge(Type.Missing);
+            xlApp.get_Range("T" + (added + 6).ToString(), "T"+ (added + 6).ToString()).Merge(Type.Missing);
+            xlApp.get_Range("T" + (added + 7).ToString(), "T"+ (added + 7).ToString()).Merge(Type.Missing);
+            xlApp.get_Range("A" + (added + 9).ToString(), "T"+ (added + 9).ToString()).Merge(Type.Missing); 
             var Cell = (Excel.Range)xlWorkSheet.Cells[added+2, 1];
             Cell.RowHeight = 35;
             var Cell1 = (Excel.Range)xlWorkSheet.Cells[added+9, 1];
             Cell1.Font.Bold = true;
             Cell1.Font.Size = 20;
             Cell1.RowHeight = 50;
-            xlWorkSheet.get_Range("A"+ (added + 1).ToString() + ":U"+ (added + 1).ToString(), "A"+ (added + 5).ToString() + ":U"+ (added + 5).ToString()).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            xlWorkSheet.get_Range("A"+ (added + 9).ToString(), "U"+ (added + 9).ToString()).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            xlWorkSheet.get_Range("A"+ (added + 9).ToString(), "U"+ (added + 9).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
+            xlWorkSheet.get_Range("A"+ (added + 1).ToString() + ":T"+ (added + 1).ToString(), "A"+ (added + 5).ToString() + ":T"+ (added + 5).ToString()).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            xlWorkSheet.get_Range("A"+ (added + 9).ToString(), "T"+ (added + 9).ToString()).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            xlWorkSheet.get_Range("A"+ (added + 9).ToString(), "T"+ (added + 9).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
             xlWorkSheet.get_Range("A"+ (added + 10).ToString(), "H"+ (added + 10).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
-            xlWorkSheet.get_Range("A"+ (added + 1).ToString() + ":U"+ (added + 1).ToString(), "A"+ (added + 3).ToString() + ":U"+ (added + 3).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignBottom;
+            xlWorkSheet.get_Range("A"+ (added + 1).ToString() + ":T"+ (added + 1).ToString(), "A"+ (added + 3).ToString() + ":T"+ (added + 3).ToString()).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignBottom;
 
             SettingImg(headerLogo);
             SetImage(added+1, 6, tmpPath, xlWorkSheet, true);
@@ -575,7 +583,7 @@ namespace HacchuuSho
             
             }
         }
-        private void SetImage(int r, int c, string path, Excel.Worksheet ws, bool IsLogo = false)
+        private void SetImage(int r, int c, string path, Excel.Worksheet ws, bool IsLogo = false, bool IsSign =false)
         {
             try
             {
@@ -598,6 +606,12 @@ namespace HacchuuSho
                     ImageWidth = 250;
                     ws.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)30, Top + (float)(2.5), ImageWidth, ImageHeight);
                 }
+                else if(IsSign)
+                {
+                    ImageHeight = 90;
+                    ImageWidth = 180;
+                    ws.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)15, Top + (float)(2.5), ImageWidth, ImageHeight);
+                }
                 else
                     ws.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)15, Top + (float)(2.5), ImageWidth, ImageHeight);
             }
@@ -609,16 +623,18 @@ namespace HacchuuSho
         {
             //xlApp.Cells.Font.Name = "Times New Roman";
             xlWorkSheet.Cells[startrow, 2] = "TO : " + dtgv.Rows[0]["SiiresakiName"].ToString();
-            xlWorkSheet.Cells[startrow, 20] = "PO NO : " + txtKanriNO.Text;
-            xlWorkSheet.Cells[startrow + 1, 20] = "DATE : " + GetDate(txtIssueDate.Text);
+            xlWorkSheet.Cells[startrow, 20-2] = "PO NO : " + txtKanriNO.Text;
+            xlWorkSheet.Cells[startrow + 1, 20-2] = "DATE : " + GetDate(txtIssueDate.Text);
             xlWorkSheet.Cells[startrow + 2, 2] = "We thank for your cooperation related to our business.";
             xlWorkSheet.Cells[startrow + 3, 2] = "Here, we send our Purchase Order sheet for below items on the terms and conditions as under.";
             object st1 = "B" + (startrow) + ":L" + (startrow);
             object st2 = "B" + (startrow + 1) + ":L" + (startrow + 1);
             xlApp.get_Range(st1, st2).Merge(Type.Missing);
             // xlApp.get_Range("B11:L11", "B13:L13").Merge(Type.Missing);
-            xlApp.get_Range("T" + startrow, "U" + startrow).Merge(Type.Missing);
-            xlApp.get_Range("T" + (startrow + 1), "U" + (startrow + 1)).Merge(Type.Missing);
+            xlApp.get_Range("R" + startrow, "T" + startrow).Merge(Type.Missing);
+            xlApp.get_Range("R" + (startrow + 1), "T" + (startrow + 1)).Merge(Type.Missing);
+            xlWorkSheet.get_Range("R" + startrow, "T" + startrow).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
+            xlWorkSheet.get_Range("R" + (startrow+1), "T" + (startrow + 1)).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
             xlApp.get_Range("B" + (startrow + 2), "L" + (startrow + 2)).Merge(Type.Missing);
             xlApp.get_Range("B" + (startrow + 3), "L" + (startrow + 3)).Merge(Type.Missing);
             xlWorkSheet.get_Range("A" + startrow, "L" + startrow).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
@@ -626,54 +642,59 @@ namespace HacchuuSho
         }
         private void SetChildStyle(Excel.Worksheet xlWorkSheet, int gvrow, int col, Excel.Application xlApp)
         {
-            string idx = "A" + gvrow + ":U" + gvrow;
-            string idx1 = "B" + gvrow + ":U" + gvrow;
-            string s_value = "A" + col + ":U" + col;
-            string val1 = "A" + col + ":U" + col;
-            string val2 = "B" + col + ":U" + col;
+            string idx = "A" + gvrow + ":T" + gvrow;
+            string idx1 = "B" + gvrow + ":T" + gvrow;
+            string s_value = "A" + col + ":T" + col;
+            string val1 = "A" + col + ":T" + col;
+            string val2 = "B" + col + ":T" + col;
             xlWorkSheet.get_Range(idx, val1).Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             xlWorkSheet.get_Range(idx, val1).Cells.VerticalAlignment = Microsoft.Office.Interop.Excel.XlVAlign.xlVAlignCenter;
             xlWorkSheet.get_Range(idx1, val2).Borders[Excel.XlBordersIndex.xlInsideHorizontal].LineStyle = Excel.XlLineStyle.xlContinuous;
             xlWorkSheet.get_Range(idx, val2).Borders[Excel.XlBordersIndex.xlInsideVertical].LineStyle = Excel.XlLineStyle.xlContinuous;
 
-            xlWorkSheet.get_Range("B" + gvrow, "U" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeTop].Weight = 3d;//row17
-            xlWorkSheet.get_Range("B" + gvrow, "U" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;//row17
+            xlWorkSheet.get_Range("B" + gvrow, "T" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeTop].Weight = 3d;//row17
+            xlWorkSheet.get_Range("B" + gvrow, "T" + gvrow).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;//row17
 
-            xlApp.get_Range("T" + (gvrow + 1), "T" + col).Cells.NumberFormat = "#,##0";//ssa
-            xlApp.get_Range("D" + (gvrow + 1), "D" + col).Cells.NumberFormatLocal = "$#,##0.00";
-            xlApp.get_Range("U" + (gvrow + 1), "U" + col).Cells.NumberFormatLocal = "$#,##0.00";
-            xlWorkSheet.get_Range("A" + (gvrow + 1) + ":U" + (gvrow + 1), val2).RowHeight = 40;
-            xlApp.get_Range("A17", "U" + col).Cells.Font.Name = "Arial";
+            xlApp.get_Range("R" + (gvrow + 1), "R" + col).Cells.NumberFormat = "#,##0";//ssa Total PRS
+            xlApp.get_Range("F" + (gvrow + 1), "F" + col).Cells.NumberFormatLocal = "$#,##0.00";//FOB Price
+            xlApp.get_Range("S" + (gvrow + 1), "S" + col).Cells.NumberFormatLocal = "$#,##0.00";//Total Amount
+            xlWorkSheet.get_Range("A" + (gvrow + 1) + ":T" + (gvrow + 1), val2).RowHeight = 40;
+            xlApp.get_Range("A17", "T" + col).Cells.Font.Name = "Arial";
 
-            xlWorkSheet.get_Range("B" + gvrow, "U" + col).Borders[Excel.XlBordersIndex.xlEdgeLeft].Weight = 3d;
-            xlWorkSheet.get_Range("B" + gvrow, "U" + col).Borders[Excel.XlBordersIndex.xlEdgeRight].Weight = 3d;
-            xlWorkSheet.get_Range("B" + (col - 1), "U" + (col - 1)).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;//ssa
-            xlWorkSheet.get_Range("B" + (col), "U" + (col)).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;//total
+            xlWorkSheet.get_Range("B" + gvrow, "T" + col).Borders[Excel.XlBordersIndex.xlEdgeLeft].Weight = 3d;
+            xlWorkSheet.get_Range("B" + gvrow, "T" + col).Borders[Excel.XlBordersIndex.xlEdgeRight].Weight = 3d;
+            xlWorkSheet.get_Range("B" + (col - 1), "T" + (col - 1)).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;//ssa
+            xlWorkSheet.get_Range("B" + (col), "T" + (col)).Borders[Excel.XlBordersIndex.xlEdgeBottom].Weight = 3d;//total
 
         }
         private void SetHeaderSupplier(Excel.Worksheet xlWorkSheet, int gvrow)
         {
             xlWorkSheet.Cells[gvrow, 2] = "Model No";
             xlWorkSheet.Cells[gvrow, 3] = "Model Name";
-            xlWorkSheet.Cells[gvrow, 4] = "FOB PRICE";
-            xlWorkSheet.Cells[gvrow, 5] = "JAPAN Color";
-            xlWorkSheet.Cells[gvrow, 6] = "KOREA Color";
-            xlWorkSheet.Cells[gvrow, 7] = "Shipping place";
-            xlWorkSheet.Cells[gvrow, 8] = "IMAGE";
-            xlWorkSheet.Cells[gvrow, 9] = "23.0";
-            xlWorkSheet.Cells[gvrow, 10] = "23.5";
-            xlWorkSheet.Cells[gvrow, 11] = "24.0";
-            xlWorkSheet.Cells[gvrow, 12] = "24.5";
-            xlWorkSheet.Cells[gvrow, 13] = "25.0";
-            xlWorkSheet.Cells[gvrow, 14] = "25.5";
-            xlWorkSheet.Cells[gvrow, 15] = "26.0";
-            xlWorkSheet.Cells[gvrow, 16] = "26.5";
-            xlWorkSheet.Cells[gvrow, 17] = "27.0";
-            xlWorkSheet.Cells[gvrow, 18] = "27.5";
-            xlWorkSheet.Cells[gvrow, 19] = "28.0";
-            xlWorkSheet.Cells[gvrow, 20] = "Pairs";
-            xlWorkSheet.Cells[gvrow, 21] = "Amount";
-            xlWorkSheet.Cells[gvrow + 9, 8] = "TOTAL";
+            //xlWorkSheet.Cells[gvrow, 4] = "FOB PRICE";
+            //xlWorkSheet.Cells[gvrow, 5] = "JAPAN Color";
+            xlWorkSheet.Cells[gvrow, 4] = "Color";
+            //xlWorkSheet.Cells[gvrow, 6] = "KOREA Color";
+            //xlWorkSheet.Cells[gvrow, 7] = "Shipping place";
+            //xlWorkSheet.Cells[gvrow, 8] = "IMAGE";
+            xlWorkSheet.Cells[gvrow, 5] = "IMAGE";
+            xlWorkSheet.Cells[gvrow, 6] = "FOB Price";
+            xlWorkSheet.Cells[gvrow, 9-2] = "23.0";
+            xlWorkSheet.Cells[gvrow, 10 - 2] = "23.5";
+            xlWorkSheet.Cells[gvrow, 11 - 2] = "24.0";
+            xlWorkSheet.Cells[gvrow, 12 - 2] = "24.5";
+            xlWorkSheet.Cells[gvrow, 13 - 2] = "25.0";
+            xlWorkSheet.Cells[gvrow, 14 - 2] = "25.5";
+            xlWorkSheet.Cells[gvrow, 15 - 2] = "26.0";
+            xlWorkSheet.Cells[gvrow, 16 - 2] = "26.5";
+            xlWorkSheet.Cells[gvrow, 17 - 2] = "27.0";
+            xlWorkSheet.Cells[gvrow, 18 - 2] = "27.5";
+            xlWorkSheet.Cells[gvrow, 19 - 2] = "28.0";
+            xlWorkSheet.Cells[gvrow, 20 - 2] = "Total PRS";
+            xlWorkSheet.Cells[gvrow, 21 - 2] = "Total Amount";
+            xlWorkSheet.Cells[gvrow, 22 - 2] = "Remark";
+            //xlWorkSheet.Cells[gvrow + 9+ AddRow, 8] = "TOTAL";
+            xlWorkSheet.Cells[gvrow + 9 + AddRow, 5] = "TOTAL";
         }
         private int GetSizeTitile(String title )
         {
@@ -724,7 +745,7 @@ namespace HacchuuSho
                 sizetitle = 19;
             }
             
-            return sizetitle; 
+            return sizetitle - 2; 
         }
         private string GetSize(DataTable dt, int r=0, string SizeNo="")
         {
