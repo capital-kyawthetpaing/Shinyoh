@@ -235,7 +235,7 @@ namespace HikiateHenkouShoukai
             txtPostalCode2.E102MultiCheck(true, txtPostalCode1, txtPostalCode2);
             txtPostalCode2.Yuubin_Juusho(true, txtPostalCode1, txtPostalCode2, string.Empty, string.Empty);
 
-            txtYearTerm.E102Check(true);
+            //txtYearTerm.E102Check(true);
             chkSeasonFW.E188Check(true, chkSeasonFW, chkSeasonSS, "展示会 SS、展示会 FW ");
             txtSoukoCD.E102Check(true);
             txtSoukoCD.E101Check(true, "souko", txtSoukoCD, null, null);
@@ -306,7 +306,7 @@ namespace HikiateHenkouShoukai
                     gvAggregationDetails.Visible = true;
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = false;
-                    gvAggregationDetails.Location = new Point(22, 250);
+                    gvAggregationDetails.Location = new Point(22, 271);
                     gvAggregationDetails.Size = new Size(1430, 565);
                     //this.gvAggregationDetails.Size = new System.Drawing.Size(1300, 387);
                      txtKanriNO.NextControlName = "txtTokuisakiCD";
@@ -336,8 +336,8 @@ namespace HikiateHenkouShoukai
                     gvAggregationDetails.Visible = false;
                     gvMainDetail.Visible = true;
                     gvFreeInventoryDetails.Visible = false;
-                    gvMainDetail.Location = new Point(22, 250);
-                    gvMainDetail.Size = new Size(1640, 565);
+                    gvMainDetail.Location = new Point(22, 271);
+                    gvMainDetail.Size = new Size(1660, 565);
                     //this.gvMainDetail.Size = new System.Drawing.Size(1300, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = false;
@@ -367,7 +367,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = true;
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
-                    gvFreeInventoryDetails.Location = new Point(22, 250);
+                    gvFreeInventoryDetails.Location = new Point(22, 271);
                     gvFreeInventoryDetails.Size = new Size(1100, 565);
                     //this.gvFreeInventoryDetails.Size = new System.Drawing.Size(1100, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
@@ -548,7 +548,7 @@ namespace HikiateHenkouShoukai
                 //dtMain.Columns.RemoveAt(19);
                 gvMainDetail.DataSource = dtMain;
 
-                gvMainDetail.Columns[19].Visible = false;
+                //gvMainDetail.Columns[19].Visible = false; comment By NMW Task No. 625
                 gvMainDetail.Columns[20].Visible = false;
                 gvMainDetail.Columns[21].Visible = false;
                 gvMainDetail.Focus();
