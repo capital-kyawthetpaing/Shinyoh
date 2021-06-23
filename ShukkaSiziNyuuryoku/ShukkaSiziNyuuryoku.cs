@@ -885,6 +885,11 @@ namespace ShukkaSiziNyuuryoku
                     if (dt.Rows.Count > 0)
                     {
                         lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                        if (dt.Rows[0]["ShukkaSizishoHuyouKBN"].ToString() == "0")
+                            rdoNeed.Checked = true;
+                        else
+                            rdoNO.Checked = true;
+
                         td.Access_Tokuisaki_obj = Tokuisaki_Data_Select(dt);
                     }
                 }
