@@ -270,6 +270,7 @@ BEGIN
 		  ,MAIN.KOREAColor
 		  ,MAIN.Shippingplace
 		  ,MAIN.ShouhinImage [IMAGE]
+		  ,(SELECT M.SignImage FROM M_Control AS M WHERE M.Mainkey=1) AS [SIGN_IMAGE]
 		  ,MAIN.Pairs
 		  ,MAIN.Amount
 		  ,SUB.SizeNO
