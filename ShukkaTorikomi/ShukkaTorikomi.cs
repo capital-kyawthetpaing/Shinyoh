@@ -150,6 +150,9 @@ namespace ShukkaTorikomi
 
                 Control btnF12 = this.TopLevelControl.Controls.Find("BtnF12", true)[0];
                 txtImportFileName.NextControlName = btnF12.Name;
+
+                gvShukkaTorikomi.ClearSelection();   //HET
+                dt.Clear();
             }
             else
             {
@@ -297,6 +300,7 @@ namespace ShukkaTorikomi
                                     if (bbl.ShowMessage("Q102") == DialogResult.Yes)
                                     {
                                         DataTable dt_Check = (DataTable)gvShukkaTorikomi.DataSource;
+                                        
                                         DataRow[] dt_Check_Row = dt_Check.Select("TorikomiDenpyouNO ='" + txtDenpyouNO.Text + "'");
                                         foreach (DataRow dr in dt_Check_Row)
                                         {
@@ -313,7 +317,19 @@ namespace ShukkaTorikomi
                                                 return;
                                             }
                                         }
-                                        return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
+                                        dt_Check.Columns.Remove("TorikomiDenpyouNO");
+                                        dt_Check.Columns.Remove("InsertDateTime");
+                                        dt_Check.Columns.Remove("TokuisakiRyakuName");
+                                        dt_Check.Columns.Remove("KouritenRyakuName");
+                                        DataColumn dataColumn = new DataColumn("InsertOperator", typeof(string));
+                                        dataColumn.DefaultValue = base_Entity.OperatorCD;
+                                        dt_Check.Columns.Add(dataColumn);
+                                        DataColumn dataColumn1 = new DataColumn("PC", typeof(string));
+                                        dataColumn1.DefaultValue = base_Entity.PC;
+                                        dt_Check.Columns.Add(dataColumn1);
+                                        string del_XML = cf.DataTableToXml(dt_Check);
+
+                                        return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", del_XML, Xml.Item2, TorikomiDenpyouNO);
                                         bbl.ShowMessage("I002");
                                         rdo_Sakujo.Checked = true;
                                         txtDate1.Clear();

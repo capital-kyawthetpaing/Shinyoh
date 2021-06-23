@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle61 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle62 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle63 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle64 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle65 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle66 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle73 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle74 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle75 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle76 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle77 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle78 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle79 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle80 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PanelDetail = new System.Windows.Forms.Panel();
             this.txtSizeNO = new Shinyoh_Search.SearchBox();
             this.txtColorNO = new Shinyoh_Search.SearchBox();
@@ -87,25 +87,6 @@
             this.colSoukoCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJuchuuNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gvMainDetail = new Shinyoh_Controls.SGridView();
-            this.col_Detail_ShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_ShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_ColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_SizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_JuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_ChakuniYoteiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_MiHikiateSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_HikiateZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_ChakuniSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_ShukkaSiziSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_ShukkaSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_HikiateSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_JuchuuNO_JuchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_TokuisakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_KanriNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_NyuukoDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_JuchuuDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_KibouNouki = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Detail_JANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_F11 = new Shinyoh_Controls.SButton();
             this.btn_F10 = new Shinyoh_Controls.SButton();
             this.btn_F8 = new Shinyoh_Controls.SButton();
@@ -154,6 +135,25 @@
             this.rdoDetails = new Shinyoh_Controls.SRadio();
             this.rdoAggregation = new Shinyoh_Controls.SRadio();
             this.lblRepresentation = new Shinyoh_Controls.SLabel();
+            this.col_Detail_ShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_SizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_JuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ChakuniYoteiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_MiHikiateSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_HikiateZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ChakuniSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ShukkaSiziSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_ShukkaSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_HikiateSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_JuchuuNO_JuchuuGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_TokuisakiRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_KanriNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_NyuukoDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_JuchuuDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_KibouNouki = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_Detail_JANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.PanelDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvFreeInventoryDetails)).BeginInit();
@@ -234,7 +234,7 @@
             this.PanelDetail.Controls.Add(this.lblRepresentation);
             this.PanelDetail.Location = new System.Drawing.Point(0, 75);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1713, 906);
+            this.PanelDetail.Size = new System.Drawing.Size(1713, 838);
             this.PanelDetail.TabIndex = 3;
             // 
             // txtSizeNO
@@ -262,7 +262,7 @@
             this.txtSizeNO.NextControl = null;
             this.txtSizeNO.NextControlName = "chkType1";
             this.txtSizeNO.SearchType = Entity.SearchType.ScType.Size;
-            this.txtSizeNO.Size = new System.Drawing.Size(100, 20);
+            this.txtSizeNO.Size = new System.Drawing.Size(100, 19);
             this.txtSizeNO.TabIndex = 24;
             this.txtSizeNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSizeNO.TxtBox = null;
@@ -293,7 +293,7 @@
             this.txtColorNO.NextControl = null;
             this.txtColorNO.NextControlName = "txtSizeNO";
             this.txtColorNO.SearchType = Entity.SearchType.ScType.Color;
-            this.txtColorNO.Size = new System.Drawing.Size(100, 20);
+            this.txtColorNO.Size = new System.Drawing.Size(100, 19);
             this.txtColorNO.TabIndex = 23;
             this.txtColorNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtColorNO.TxtBox = null;
@@ -322,7 +322,7 @@
             this.txtChangeDate.NextControlName = null;
             this.txtChangeDate.ReadOnly = true;
             this.txtChangeDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtChangeDate.Size = new System.Drawing.Size(100, 20);
+            this.txtChangeDate.Size = new System.Drawing.Size(100, 19);
             this.txtChangeDate.TabIndex = 113;
             this.txtChangeDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtChangeDate.Visible = false;
@@ -335,7 +335,7 @@
             this.lblKouritenName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblKouritenName.Location = new System.Drawing.Point(1115, 90);
             this.lblKouritenName.Name = "lblKouritenName";
-            this.lblKouritenName.Size = new System.Drawing.Size(300, 20);
+            this.lblKouritenName.Size = new System.Drawing.Size(300, 19);
             this.lblKouritenName.TabIndex = 112;
             this.lblKouritenName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -364,7 +364,7 @@
             this.txtKouritenCD.NextControl = null;
             this.txtKouritenCD.NextControlName = "txtPostalCode1";
             this.txtKouritenCD.SearchType = Entity.SearchType.ScType.Kouriten;
-            this.txtKouritenCD.Size = new System.Drawing.Size(90, 20);
+            this.txtKouritenCD.Size = new System.Drawing.Size(90, 19);
             this.txtKouritenCD.TabIndex = 12;
             this.txtKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtKouritenCD.TxtBox = null;
@@ -378,7 +378,7 @@
             this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblTokuisakiName.Location = new System.Drawing.Point(1115, 65);
             this.lblTokuisakiName.Name = "lblTokuisakiName";
-            this.lblTokuisakiName.Size = new System.Drawing.Size(300, 20);
+            this.lblTokuisakiName.Size = new System.Drawing.Size(300, 19);
             this.lblTokuisakiName.TabIndex = 110;
             this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -407,7 +407,7 @@
             this.txtTokuisakiCD.NextControl = null;
             this.txtTokuisakiCD.NextControlName = "txtKouritenCD";
             this.txtTokuisakiCD.SearchType = Entity.SearchType.ScType.Tokuisaki;
-            this.txtTokuisakiCD.Size = new System.Drawing.Size(90, 20);
+            this.txtTokuisakiCD.Size = new System.Drawing.Size(90, 19);
             this.txtTokuisakiCD.TabIndex = 11;
             this.txtTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtTokuisakiCD.TxtBox = null;
@@ -438,7 +438,7 @@
             this.txtChakuniYoteiNO.NextControl = null;
             this.txtChakuniYoteiNO.NextControlName = "txtKanriNO";
             this.txtChakuniYoteiNO.SearchType = Entity.SearchType.ScType.ChakuniYoteiNyuuryoku;
-            this.txtChakuniYoteiNO.Size = new System.Drawing.Size(100, 20);
+            this.txtChakuniYoteiNO.Size = new System.Drawing.Size(100, 19);
             this.txtChakuniYoteiNO.TabIndex = 9;
             this.txtChakuniYoteiNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtChakuniYoteiNO.TxtBox = null;
@@ -452,7 +452,7 @@
             this.lblSoukoName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblSoukoName.Location = new System.Drawing.Point(348, 90);
             this.lblSoukoName.Name = "lblSoukoName";
-            this.lblSoukoName.Size = new System.Drawing.Size(350, 20);
+            this.lblSoukoName.Size = new System.Drawing.Size(350, 19);
             this.lblSoukoName.TabIndex = 107;
             this.lblSoukoName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -481,7 +481,7 @@
             this.txtSoukoCD.NextControl = null;
             this.txtSoukoCD.NextControlName = "txtChakuniYoteiNO";
             this.txtSoukoCD.SearchType = Entity.SearchType.ScType.Souko;
-            this.txtSoukoCD.Size = new System.Drawing.Size(90, 20);
+            this.txtSoukoCD.Size = new System.Drawing.Size(90, 19);
             this.txtSoukoCD.TabIndex = 8;
             this.txtSoukoCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtSoukoCD.TxtBox = null;
@@ -495,7 +495,7 @@
             this.lblBrandName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.lblBrandName.Location = new System.Drawing.Point(348, 40);
             this.lblBrandName.Name = "lblBrandName";
-            this.lblBrandName.Size = new System.Drawing.Size(300, 20);
+            this.lblBrandName.Size = new System.Drawing.Size(300, 19);
             this.lblBrandName.TabIndex = 105;
             this.lblBrandName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -524,7 +524,7 @@
             this.txtBrand.NextControl = null;
             this.txtBrand.NextControlName = "txtYearTerm";
             this.txtBrand.SearchType = Entity.SearchType.ScType.Brand;
-            this.txtBrand.Size = new System.Drawing.Size(90, 20);
+            this.txtBrand.Size = new System.Drawing.Size(90, 19);
             this.txtBrand.TabIndex = 4;
             this.txtBrand.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtBrand.TxtBox = null;
@@ -534,14 +534,14 @@
             // 
             this.gvFreeInventoryDetails.AllowUserToAddRows = false;
             this.gvFreeInventoryDetails.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvFreeInventoryDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle61.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle61.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle61.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle61.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle61.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle61.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle61.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvFreeInventoryDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle61;
             this.gvFreeInventoryDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvFreeInventoryDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Free_HinbanCD,
@@ -554,7 +554,7 @@
             this.col_Free_JANCD});
             this.gvFreeInventoryDetails.IsErrorOccurs = false;
             this.gvFreeInventoryDetails.ISRowColumn = null;
-            this.gvFreeInventoryDetails.Location = new System.Drawing.Point(22, 680);
+            this.gvFreeInventoryDetails.Location = new System.Drawing.Point(22, 635);
             this.gvFreeInventoryDetails.MultiSelect = false;
             this.gvFreeInventoryDetails.Name = "gvFreeInventoryDetails";
             this.gvFreeInventoryDetails.Size = new System.Drawing.Size(1100, 100);
@@ -593,10 +593,10 @@
             // col_Free_HikiateZumiSuu
             // 
             this.col_Free_HikiateZumiSuu.DataPropertyName = "引当済数";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.col_Free_HikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle62.Format = "N0";
+            dataGridViewCellStyle62.NullValue = null;
+            this.col_Free_HikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle62;
             this.col_Free_HikiateZumiSuu.FillWeight = 120F;
             this.col_Free_HikiateZumiSuu.HeaderText = "引当済数";
             this.col_Free_HikiateZumiSuu.Name = "col_Free_HikiateZumiSuu";
@@ -605,10 +605,10 @@
             // col_Free_GenZaikoSuu
             // 
             this.col_Free_GenZaikoSuu.DataPropertyName = "現在庫数";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.col_Free_GenZaikoSuu.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle63.Format = "N0";
+            dataGridViewCellStyle63.NullValue = null;
+            this.col_Free_GenZaikoSuu.DefaultCellStyle = dataGridViewCellStyle63;
             this.col_Free_GenZaikoSuu.FillWeight = 120F;
             this.col_Free_GenZaikoSuu.HeaderText = "現在庫数";
             this.col_Free_GenZaikoSuu.Name = "col_Free_GenZaikoSuu";
@@ -633,13 +633,13 @@
             // 
             this.gvAggregationDetails.AllowUserToAddRows = false;
             this.gvAggregationDetails.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.gvAggregationDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle64.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle64.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle64.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle64.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle64.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle64.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.gvAggregationDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle64;
             this.gvAggregationDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvAggregationDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
@@ -659,7 +659,7 @@
             this.colJuchuuNo});
             this.gvAggregationDetails.IsErrorOccurs = false;
             this.gvAggregationDetails.ISRowColumn = null;
-            this.gvAggregationDetails.Location = new System.Drawing.Point(22, 561);
+            this.gvAggregationDetails.Location = new System.Drawing.Point(22, 499);
             this.gvAggregationDetails.MultiSelect = false;
             this.gvAggregationDetails.Name = "gvAggregationDetails";
             this.gvAggregationDetails.Size = new System.Drawing.Size(1430, 100);
@@ -694,10 +694,10 @@
             // colJuchuuSuu
             // 
             this.colJuchuuSuu.DataPropertyName = "受注数";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle65.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle65.Format = "N0";
+            dataGridViewCellStyle65.NullValue = null;
+            this.colJuchuuSuu.DefaultCellStyle = dataGridViewCellStyle65;
             this.colJuchuuSuu.HeaderText = "受注数";
             this.colJuchuuSuu.Name = "colJuchuuSuu";
             this.colJuchuuSuu.Width = 70;
@@ -705,10 +705,10 @@
             // colChakuniYoteiSuu
             // 
             this.colChakuniYoteiSuu.DataPropertyName = "着荷予定数";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N0";
-            dataGridViewCellStyle6.NullValue = null;
-            this.colChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle66.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle66.Format = "N0";
+            dataGridViewCellStyle66.NullValue = null;
+            this.colChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle66;
             this.colChakuniYoteiSuu.HeaderText = "着荷予定数";
             this.colChakuniYoteiSuu.Name = "colChakuniYoteiSuu";
             this.colChakuniYoteiSuu.Width = 90;
@@ -716,10 +716,10 @@
             // colMiHikiateSuu
             // 
             this.colMiHikiateSuu.DataPropertyName = "未引当数";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N0";
-            dataGridViewCellStyle7.NullValue = null;
-            this.colMiHikiateSuu.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle67.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle67.Format = "N0";
+            dataGridViewCellStyle67.NullValue = null;
+            this.colMiHikiateSuu.DefaultCellStyle = dataGridViewCellStyle67;
             this.colMiHikiateSuu.HeaderText = "未引当数";
             this.colMiHikiateSuu.Name = "colMiHikiateSuu";
             this.colMiHikiateSuu.Width = 90;
@@ -727,10 +727,10 @@
             // colHikiateZumiSuu
             // 
             this.colHikiateZumiSuu.DataPropertyName = "引当済数";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N0";
-            dataGridViewCellStyle8.NullValue = null;
-            this.colHikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle68.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle68.Format = "N0";
+            dataGridViewCellStyle68.NullValue = null;
+            this.colHikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle68;
             this.colHikiateZumiSuu.HeaderText = "引当済数";
             this.colHikiateZumiSuu.Name = "colHikiateZumiSuu";
             this.colHikiateZumiSuu.Width = 90;
@@ -738,10 +738,10 @@
             // colChakuniSuu
             // 
             this.colChakuniSuu.DataPropertyName = "着荷済数";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N0";
-            dataGridViewCellStyle9.NullValue = null;
-            this.colChakuniSuu.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle69.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle69.Format = "N0";
+            dataGridViewCellStyle69.NullValue = null;
+            this.colChakuniSuu.DefaultCellStyle = dataGridViewCellStyle69;
             this.colChakuniSuu.HeaderText = "着荷済数";
             this.colChakuniSuu.Name = "colChakuniSuu";
             this.colChakuniSuu.Width = 90;
@@ -749,10 +749,10 @@
             // colShukkaSiziSuu
             // 
             this.colShukkaSiziSuu.DataPropertyName = "出荷指示数";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle10.Format = "N0";
-            dataGridViewCellStyle10.NullValue = null;
-            this.colShukkaSiziSuu.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle70.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle70.Format = "N0";
+            dataGridViewCellStyle70.NullValue = null;
+            this.colShukkaSiziSuu.DefaultCellStyle = dataGridViewCellStyle70;
             this.colShukkaSiziSuu.HeaderText = "出荷指示数";
             this.colShukkaSiziSuu.Name = "colShukkaSiziSuu";
             this.colShukkaSiziSuu.Width = 90;
@@ -760,10 +760,10 @@
             // colShukkaSuu
             // 
             this.colShukkaSuu.DataPropertyName = "出荷済数";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle11.Format = "N0";
-            dataGridViewCellStyle11.NullValue = null;
-            this.colShukkaSuu.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle71.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle71.Format = "N0";
+            dataGridViewCellStyle71.NullValue = null;
+            this.colShukkaSuu.DefaultCellStyle = dataGridViewCellStyle71;
             this.colShukkaSuu.HeaderText = "出荷済数";
             this.colShukkaSuu.Name = "colShukkaSuu";
             this.colShukkaSuu.Width = 90;
@@ -803,14 +803,14 @@
             this.gvMainDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvMainDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle72.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle72.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle72.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle72.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle72.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle72.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle72.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvMainDetail.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle72;
             this.gvMainDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvMainDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Detail_ShouhinCD,
@@ -837,174 +837,9 @@
             this.gvMainDetail.Location = new System.Drawing.Point(22, 271);
             this.gvMainDetail.MultiSelect = false;
             this.gvMainDetail.Name = "gvMainDetail";
-            this.gvMainDetail.Size = new System.Drawing.Size(1660, 622);
+            this.gvMainDetail.Size = new System.Drawing.Size(1660, 200);
             this.gvMainDetail.TabIndex = 30;
             this.gvMainDetail.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvMainDetail_CellEndEdit);
-            // 
-            // col_Detail_ShouhinCD
-            // 
-            this.col_Detail_ShouhinCD.DataPropertyName = "商品";
-            this.col_Detail_ShouhinCD.FillWeight = 200F;
-            this.col_Detail_ShouhinCD.HeaderText = "品番";
-            this.col_Detail_ShouhinCD.Name = "col_Detail_ShouhinCD";
-            this.col_Detail_ShouhinCD.Width = 180;
-            // 
-            // col_Detail_ShouhinName
-            // 
-            this.col_Detail_ShouhinName.DataPropertyName = "商品名";
-            this.col_Detail_ShouhinName.FillWeight = 300F;
-            this.col_Detail_ShouhinName.HeaderText = "商品名";
-            this.col_Detail_ShouhinName.Name = "col_Detail_ShouhinName";
-            this.col_Detail_ShouhinName.Width = 280;
-            // 
-            // col_Detail_ColorNO
-            // 
-            this.col_Detail_ColorNO.DataPropertyName = "カラー";
-            this.col_Detail_ColorNO.HeaderText = "カラー";
-            this.col_Detail_ColorNO.Name = "col_Detail_ColorNO";
-            // 
-            // col_Detail_SizeNO
-            // 
-            this.col_Detail_SizeNO.DataPropertyName = "サイズ";
-            this.col_Detail_SizeNO.HeaderText = "サイズ";
-            this.col_Detail_SizeNO.Name = "col_Detail_SizeNO";
-            // 
-            // col_Detail_JuchuuSuu
-            // 
-            this.col_Detail_JuchuuSuu.DataPropertyName = "受注数";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle13.Format = "N0";
-            dataGridViewCellStyle13.NullValue = null;
-            this.col_Detail_JuchuuSuu.DefaultCellStyle = dataGridViewCellStyle13;
-            this.col_Detail_JuchuuSuu.HeaderText = "受注数";
-            this.col_Detail_JuchuuSuu.Name = "col_Detail_JuchuuSuu";
-            this.col_Detail_JuchuuSuu.Width = 70;
-            // 
-            // col_Detail_ChakuniYoteiSuu
-            // 
-            this.col_Detail_ChakuniYoteiSuu.DataPropertyName = "着荷予定数";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle14.Format = "N0";
-            dataGridViewCellStyle14.NullValue = null;
-            this.col_Detail_ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle14;
-            this.col_Detail_ChakuniYoteiSuu.HeaderText = "着荷予定数";
-            this.col_Detail_ChakuniYoteiSuu.Name = "col_Detail_ChakuniYoteiSuu";
-            this.col_Detail_ChakuniYoteiSuu.Width = 95;
-            // 
-            // col_Detail_MiHikiateSuu
-            // 
-            this.col_Detail_MiHikiateSuu.DataPropertyName = "未引当数";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle15.Format = "N0";
-            dataGridViewCellStyle15.NullValue = null;
-            this.col_Detail_MiHikiateSuu.DefaultCellStyle = dataGridViewCellStyle15;
-            this.col_Detail_MiHikiateSuu.HeaderText = "未引当数";
-            this.col_Detail_MiHikiateSuu.Name = "col_Detail_MiHikiateSuu";
-            this.col_Detail_MiHikiateSuu.Width = 90;
-            // 
-            // col_Detail_HikiateZumiSuu
-            // 
-            this.col_Detail_HikiateZumiSuu.DataPropertyName = "引当済数";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle16.Format = "N0";
-            dataGridViewCellStyle16.NullValue = null;
-            this.col_Detail_HikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle16;
-            this.col_Detail_HikiateZumiSuu.HeaderText = "引当済数";
-            this.col_Detail_HikiateZumiSuu.Name = "col_Detail_HikiateZumiSuu";
-            this.col_Detail_HikiateZumiSuu.Width = 90;
-            // 
-            // col_Detail_ChakuniSuu
-            // 
-            this.col_Detail_ChakuniSuu.DataPropertyName = "着荷済数";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Format = "N0";
-            dataGridViewCellStyle17.NullValue = null;
-            this.col_Detail_ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle17;
-            this.col_Detail_ChakuniSuu.HeaderText = "着荷済数";
-            this.col_Detail_ChakuniSuu.Name = "col_Detail_ChakuniSuu";
-            this.col_Detail_ChakuniSuu.Width = 90;
-            // 
-            // col_Detail_ShukkaSiziSuu
-            // 
-            this.col_Detail_ShukkaSiziSuu.DataPropertyName = "出荷指示数";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N0";
-            dataGridViewCellStyle18.NullValue = null;
-            this.col_Detail_ShukkaSiziSuu.DefaultCellStyle = dataGridViewCellStyle18;
-            this.col_Detail_ShukkaSiziSuu.HeaderText = "出荷指示数";
-            this.col_Detail_ShukkaSiziSuu.Name = "col_Detail_ShukkaSiziSuu";
-            this.col_Detail_ShukkaSiziSuu.Width = 95;
-            // 
-            // col_Detail_ShukkaSuu
-            // 
-            this.col_Detail_ShukkaSuu.DataPropertyName = "出荷済数";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "N0";
-            dataGridViewCellStyle19.NullValue = null;
-            this.col_Detail_ShukkaSuu.DefaultCellStyle = dataGridViewCellStyle19;
-            this.col_Detail_ShukkaSuu.HeaderText = "出荷済数";
-            this.col_Detail_ShukkaSuu.Name = "col_Detail_ShukkaSuu";
-            this.col_Detail_ShukkaSuu.Width = 90;
-            // 
-            // col_Detail_HikiateSuu
-            // 
-            this.col_Detail_HikiateSuu.DataPropertyName = "引当調整数";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle20.Format = "N0";
-            dataGridViewCellStyle20.NullValue = null;
-            this.col_Detail_HikiateSuu.DefaultCellStyle = dataGridViewCellStyle20;
-            this.col_Detail_HikiateSuu.HeaderText = "引当調整数";
-            this.col_Detail_HikiateSuu.Name = "col_Detail_HikiateSuu";
-            this.col_Detail_HikiateSuu.Width = 95;
-            // 
-            // col_Detail_JuchuuNO_JuchuuGyouNO
-            // 
-            this.col_Detail_JuchuuNO_JuchuuGyouNO.DataPropertyName = "受注番号-行番号";
-            this.col_Detail_JuchuuNO_JuchuuGyouNO.FillWeight = 150F;
-            this.col_Detail_JuchuuNO_JuchuuGyouNO.HeaderText = "受注番号-行番号";
-            this.col_Detail_JuchuuNO_JuchuuGyouNO.Name = "col_Detail_JuchuuNO_JuchuuGyouNO";
-            this.col_Detail_JuchuuNO_JuchuuGyouNO.Width = 130;
-            // 
-            // col_Detail_TokuisakiRyakuName
-            // 
-            this.col_Detail_TokuisakiRyakuName.DataPropertyName = "得意先名";
-            this.col_Detail_TokuisakiRyakuName.FillWeight = 400F;
-            this.col_Detail_TokuisakiRyakuName.HeaderText = "得意先名";
-            this.col_Detail_TokuisakiRyakuName.Name = "col_Detail_TokuisakiRyakuName";
-            this.col_Detail_TokuisakiRyakuName.Width = 400;
-            // 
-            // col_Detail_KanriNO
-            // 
-            this.col_Detail_KanriNO.DataPropertyName = "小売店名";
-            this.col_Detail_KanriNO.FillWeight = 400F;
-            this.col_Detail_KanriNO.HeaderText = "小売店名";
-            this.col_Detail_KanriNO.Name = "col_Detail_KanriNO";
-            this.col_Detail_KanriNO.Width = 400;
-            // 
-            // col_Detail_NyuukoDate
-            // 
-            this.col_Detail_NyuukoDate.DataPropertyName = "入庫日";
-            this.col_Detail_NyuukoDate.HeaderText = "入庫日";
-            this.col_Detail_NyuukoDate.Name = "col_Detail_NyuukoDate";
-            // 
-            // col_Detail_JuchuuDate
-            // 
-            this.col_Detail_JuchuuDate.DataPropertyName = "受注日";
-            this.col_Detail_JuchuuDate.HeaderText = "受注日";
-            this.col_Detail_JuchuuDate.Name = "col_Detail_JuchuuDate";
-            // 
-            // col_Detail_KibouNouki
-            // 
-            this.col_Detail_KibouNouki.DataPropertyName = "希望納期";
-            this.col_Detail_KibouNouki.HeaderText = "希望納期";
-            this.col_Detail_KibouNouki.Name = "col_Detail_KibouNouki";
-            // 
-            // col_Detail_JANCD
-            // 
-            this.col_Detail_JANCD.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_Detail_JANCD.DataPropertyName = "JANCD";
-            this.col_Detail_JANCD.HeaderText = "JANCD";
-            this.col_Detail_JANCD.Name = "col_Detail_JANCD";
             // 
             // btn_F11
             // 
@@ -1067,7 +902,7 @@
             this.chkType2.Name = "chkType2";
             this.chkType2.NextControl = null;
             this.chkType2.NextControlName = "btn_F8";
-            this.chkType2.Size = new System.Drawing.Size(150, 21);
+            this.chkType2.Size = new System.Drawing.Size(150, 19);
             this.chkType2.TabIndex = 26;
             this.chkType2.Text = "着荷予定数＞着荷済数";
             this.chkType2.UseVisualStyleBackColor = true;
@@ -1082,7 +917,7 @@
             this.chkType1.Name = "chkType1";
             this.chkType1.NextControl = null;
             this.chkType1.NextControlName = "chkType2";
-            this.chkType1.Size = new System.Drawing.Size(100, 21);
+            this.chkType1.Size = new System.Drawing.Size(100, 19);
             this.chkType1.TabIndex = 25;
             this.chkType1.Text = "未引当分のみ";
             this.chkType1.UseVisualStyleBackColor = true;
@@ -1108,7 +943,7 @@
             this.txtShouhinName.NextControl = null;
             this.txtShouhinName.NextControlName = "txtColorNO";
             this.txtShouhinName.SearchType = Entity.SearchType.ScType.None;
-            this.txtShouhinName.Size = new System.Drawing.Size(550, 20);
+            this.txtShouhinName.Size = new System.Drawing.Size(550, 19);
             this.txtShouhinName.TabIndex = 22;
             this.txtShouhinName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1120,7 +955,7 @@
             this.lblShouhinName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblShouhinName.Location = new System.Drawing.Point(158, 233);
             this.lblShouhinName.Name = "lblShouhinName";
-            this.lblShouhinName.Size = new System.Drawing.Size(100, 20);
+            this.lblShouhinName.Size = new System.Drawing.Size(100, 19);
             this.lblShouhinName.TabIndex = 94;
             this.lblShouhinName.Text = "商品名";
             this.lblShouhinName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1133,7 +968,7 @@
             this.lblSizeNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblSizeNO.Location = new System.Drawing.Point(1274, 208);
             this.lblSizeNO.Name = "lblSizeNO";
-            this.lblSizeNO.Size = new System.Drawing.Size(100, 20);
+            this.lblSizeNO.Size = new System.Drawing.Size(100, 19);
             this.lblSizeNO.TabIndex = 92;
             this.lblSizeNO.Text = "サイズ";
             this.lblSizeNO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1146,7 +981,7 @@
             this.lblColorNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblColorNO.Location = new System.Drawing.Point(925, 208);
             this.lblColorNO.Name = "lblColorNO";
-            this.lblColorNO.Size = new System.Drawing.Size(100, 20);
+            this.lblColorNO.Size = new System.Drawing.Size(100, 19);
             this.lblColorNO.TabIndex = 90;
             this.lblColorNO.Text = "カラー";
             this.lblColorNO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1172,7 +1007,7 @@
             this.txtJANCD.NextControl = null;
             this.txtJANCD.NextControlName = "txtShouhinName";
             this.txtJANCD.SearchType = Entity.SearchType.ScType.None;
-            this.txtJANCD.Size = new System.Drawing.Size(150, 20);
+            this.txtJANCD.Size = new System.Drawing.Size(150, 19);
             this.txtJANCD.TabIndex = 21;
             this.txtJANCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -1184,7 +1019,7 @@
             this.lblJANCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblJANCD.Location = new System.Drawing.Point(489, 208);
             this.lblJANCD.Name = "lblJANCD";
-            this.lblJANCD.Size = new System.Drawing.Size(100, 20);
+            this.lblJANCD.Size = new System.Drawing.Size(100, 19);
             this.lblJANCD.TabIndex = 88;
             this.lblJANCD.Text = "JANCD";
             this.lblJANCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1210,7 +1045,7 @@
             this.txtShouhinCD.NextControl = null;
             this.txtShouhinCD.NextControlName = "txtJANCD";
             this.txtShouhinCD.SearchType = Entity.SearchType.ScType.None;
-            this.txtShouhinCD.Size = new System.Drawing.Size(200, 20);
+            this.txtShouhinCD.Size = new System.Drawing.Size(200, 19);
             this.txtShouhinCD.TabIndex = 20;
             this.txtShouhinCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1222,7 +1057,7 @@
             this.lblShouhinCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblShouhinCD.Location = new System.Drawing.Point(158, 208);
             this.lblShouhinCD.Name = "lblShouhinCD";
-            this.lblShouhinCD.Size = new System.Drawing.Size(100, 20);
+            this.lblShouhinCD.Size = new System.Drawing.Size(100, 19);
             this.lblShouhinCD.TabIndex = 86;
             this.lblShouhinCD.Text = "品番";
             this.lblShouhinCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1257,7 +1092,7 @@
             this.txtAddress.NextControl = null;
             this.txtAddress.NextControlName = "txtShouhinCD";
             this.txtAddress.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress.Size = new System.Drawing.Size(550, 20);
+            this.txtAddress.Size = new System.Drawing.Size(550, 19);
             this.txtAddress.TabIndex = 19;
             this.txtAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1269,7 +1104,7 @@
             this.lblAddress.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblAddress.Location = new System.Drawing.Point(158, 170);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(100, 20);
+            this.lblAddress.Size = new System.Drawing.Size(100, 19);
             this.lblAddress.TabIndex = 83;
             this.lblAddress.Text = "住所";
             this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1304,7 +1139,7 @@
             this.txtName.NextControl = null;
             this.txtName.NextControlName = "txtAddress";
             this.txtName.SearchType = Entity.SearchType.ScType.None;
-            this.txtName.Size = new System.Drawing.Size(250, 20);
+            this.txtName.Size = new System.Drawing.Size(250, 19);
             this.txtName.TabIndex = 18;
             this.txtName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1316,7 +1151,7 @@
             this.lblName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblName.Location = new System.Drawing.Point(925, 145);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(100, 20);
+            this.lblName.Size = new System.Drawing.Size(100, 19);
             this.lblName.TabIndex = 80;
             this.lblName.Text = "名称";
             this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1351,7 +1186,7 @@
             this.txtPhoneNo3.NextControl = null;
             this.txtPhoneNo3.NextControlName = "txtName";
             this.txtPhoneNo3.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhoneNo3.Size = new System.Drawing.Size(60, 20);
+            this.txtPhoneNo3.Size = new System.Drawing.Size(60, 19);
             this.txtPhoneNo3.TabIndex = 17;
             this.txtPhoneNo3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -1385,7 +1220,7 @@
             this.txtPhoneNo2.NextControl = null;
             this.txtPhoneNo2.NextControlName = "txtPhoneNo3";
             this.txtPhoneNo2.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhoneNo2.Size = new System.Drawing.Size(60, 20);
+            this.txtPhoneNo2.Size = new System.Drawing.Size(60, 19);
             this.txtPhoneNo2.TabIndex = 16;
             this.txtPhoneNo2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -1419,7 +1254,7 @@
             this.txtPhoneNo1.NextControl = null;
             this.txtPhoneNo1.NextControlName = "txtPhoneNo2";
             this.txtPhoneNo1.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhoneNo1.Size = new System.Drawing.Size(60, 20);
+            this.txtPhoneNo1.Size = new System.Drawing.Size(60, 19);
             this.txtPhoneNo1.TabIndex = 15;
             this.txtPhoneNo1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -1431,7 +1266,7 @@
             this.lblPhoneNo.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblPhoneNo.Location = new System.Drawing.Point(489, 145);
             this.lblPhoneNo.Name = "lblPhoneNo";
-            this.lblPhoneNo.Size = new System.Drawing.Size(100, 20);
+            this.lblPhoneNo.Size = new System.Drawing.Size(100, 19);
             this.lblPhoneNo.TabIndex = 73;
             this.lblPhoneNo.Text = "電話番号";
             this.lblPhoneNo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1466,7 +1301,7 @@
             this.txtPostalCode2.NextControl = null;
             this.txtPostalCode2.NextControlName = "txtPhoneNo1";
             this.txtPostalCode2.SearchType = Entity.SearchType.ScType.None;
-            this.txtPostalCode2.Size = new System.Drawing.Size(60, 20);
+            this.txtPostalCode2.Size = new System.Drawing.Size(60, 19);
             this.txtPostalCode2.TabIndex = 14;
             this.txtPostalCode2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtPostalCode2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPostalCode2_KeyDown);
@@ -1501,7 +1336,7 @@
             this.txtPostalCode1.NextControl = null;
             this.txtPostalCode1.NextControlName = "txtPostalCode2";
             this.txtPostalCode1.SearchType = Entity.SearchType.ScType.None;
-            this.txtPostalCode1.Size = new System.Drawing.Size(40, 20);
+            this.txtPostalCode1.Size = new System.Drawing.Size(40, 19);
             this.txtPostalCode1.TabIndex = 13;
             this.txtPostalCode1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -1513,7 +1348,7 @@
             this.lblPostalCode.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblPostalCode.Location = new System.Drawing.Point(158, 145);
             this.lblPostalCode.Name = "lblPostalCode";
-            this.lblPostalCode.Size = new System.Drawing.Size(100, 20);
+            this.lblPostalCode.Size = new System.Drawing.Size(100, 19);
             this.lblPostalCode.TabIndex = 68;
             this.lblPostalCode.Text = "郵便番号";
             this.lblPostalCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1536,7 +1371,7 @@
             this.lblKouritenCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblKouritenCD.Location = new System.Drawing.Point(925, 90);
             this.lblKouritenCD.Name = "lblKouritenCD";
-            this.lblKouritenCD.Size = new System.Drawing.Size(100, 20);
+            this.lblKouritenCD.Size = new System.Drawing.Size(100, 19);
             this.lblKouritenCD.TabIndex = 64;
             this.lblKouritenCD.Text = "小売店";
             this.lblKouritenCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1549,7 +1384,7 @@
             this.lblTokuisakiCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblTokuisakiCD.Location = new System.Drawing.Point(925, 65);
             this.lblTokuisakiCD.Name = "lblTokuisakiCD";
-            this.lblTokuisakiCD.Size = new System.Drawing.Size(100, 20);
+            this.lblTokuisakiCD.Size = new System.Drawing.Size(100, 19);
             this.lblTokuisakiCD.TabIndex = 61;
             this.lblTokuisakiCD.Text = "得意先";
             this.lblTokuisakiCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1575,7 +1410,7 @@
             this.txtKanriNO.NextControl = null;
             this.txtKanriNO.NextControlName = "txtTokuisakiCD";
             this.txtKanriNO.SearchType = Entity.SearchType.ScType.None;
-            this.txtKanriNO.Size = new System.Drawing.Size(90, 20);
+            this.txtKanriNO.Size = new System.Drawing.Size(90, 19);
             this.txtKanriNO.TabIndex = 10;
             this.txtKanriNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1587,7 +1422,7 @@
             this.lblKanriNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblKanriNO.Location = new System.Drawing.Point(1274, 40);
             this.lblKanriNO.Name = "lblKanriNO";
-            this.lblKanriNO.Size = new System.Drawing.Size(100, 20);
+            this.lblKanriNO.Size = new System.Drawing.Size(100, 19);
             this.lblKanriNO.TabIndex = 59;
             this.lblKanriNO.Text = "管理番号";
             this.lblKanriNO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1600,7 +1435,7 @@
             this.lblChakuniYoteiNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.lblChakuniYoteiNO.Location = new System.Drawing.Point(925, 40);
             this.lblChakuniYoteiNO.Name = "lblChakuniYoteiNO";
-            this.lblChakuniYoteiNO.Size = new System.Drawing.Size(100, 20);
+            this.lblChakuniYoteiNO.Size = new System.Drawing.Size(100, 19);
             this.lblChakuniYoteiNO.TabIndex = 57;
             this.lblChakuniYoteiNO.Text = "着荷予定番号";
             this.lblChakuniYoteiNO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1614,7 +1449,7 @@
             this.lblSoukoCD.ForeColor = System.Drawing.Color.White;
             this.lblSoukoCD.Location = new System.Drawing.Point(158, 90);
             this.lblSoukoCD.Name = "lblSoukoCD";
-            this.lblSoukoCD.Size = new System.Drawing.Size(100, 20);
+            this.lblSoukoCD.Size = new System.Drawing.Size(100, 19);
             this.lblSoukoCD.TabIndex = 54;
             this.lblSoukoCD.Text = "倉庫";
             this.lblSoukoCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1629,7 +1464,7 @@
             this.chkSeasonFW.Name = "chkSeasonFW";
             this.chkSeasonFW.NextControl = null;
             this.chkSeasonFW.NextControlName = "txtSoukoCD";
-            this.chkSeasonFW.Size = new System.Drawing.Size(50, 21);
+            this.chkSeasonFW.Size = new System.Drawing.Size(50, 19);
             this.chkSeasonFW.TabIndex = 7;
             this.chkSeasonFW.Text = "FW";
             this.chkSeasonFW.UseVisualStyleBackColor = true;
@@ -1645,7 +1480,7 @@
             this.chkSeasonSS.Name = "chkSeasonSS";
             this.chkSeasonSS.NextControl = null;
             this.chkSeasonSS.NextControlName = "chkSeasonFW";
-            this.chkSeasonSS.Size = new System.Drawing.Size(50, 21);
+            this.chkSeasonSS.Size = new System.Drawing.Size(50, 19);
             this.chkSeasonSS.TabIndex = 6;
             this.chkSeasonSS.Text = "SS";
             this.chkSeasonSS.UseVisualStyleBackColor = true;
@@ -1655,7 +1490,7 @@
             // 
             this.lblYearSign.AutoSize = true;
             this.lblYearSign.Font = new System.Drawing.Font("MS Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblYearSign.Location = new System.Drawing.Point(308, 74);
+            this.lblYearSign.Location = new System.Drawing.Point(308, 67);
             this.lblYearSign.Name = "lblYearSign";
             this.lblYearSign.Size = new System.Drawing.Size(21, 13);
             this.lblYearSign.TabIndex = 51;
@@ -1682,21 +1517,21 @@
             this.txtYearTerm.NextControl = null;
             this.txtYearTerm.NextControlName = "chkSeasonSS";
             this.txtYearTerm.SearchType = Entity.SearchType.ScType.None;
-            this.txtYearTerm.Size = new System.Drawing.Size(50, 20);
+            this.txtYearTerm.Size = new System.Drawing.Size(50, 19);
             this.txtYearTerm.TabIndex = 5;
             this.txtYearTerm.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtYearTerm.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblYearTerm
             // 
-            this.lblYearTerm.BackColor = System.Drawing.Color.Red;
+            this.lblYearTerm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lblYearTerm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblYearTerm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblYearTerm.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblYearTerm.ForeColor = System.Drawing.Color.White;
+            this.lblYearTerm.ForeColor = System.Drawing.SystemColors.ControlText;
             this.lblYearTerm.Location = new System.Drawing.Point(158, 65);
             this.lblYearTerm.Name = "lblYearTerm";
-            this.lblYearTerm.Size = new System.Drawing.Size(100, 20);
+            this.lblYearTerm.Size = new System.Drawing.Size(100, 19);
             this.lblYearTerm.TabIndex = 49;
             this.lblYearTerm.Text = "展示会";
             this.lblYearTerm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1710,7 +1545,7 @@
             this.lblBrandCD.ForeColor = System.Drawing.Color.White;
             this.lblBrandCD.Location = new System.Drawing.Point(158, 40);
             this.lblBrandCD.Name = "lblBrandCD";
-            this.lblBrandCD.Size = new System.Drawing.Size(100, 20);
+            this.lblBrandCD.Size = new System.Drawing.Size(100, 19);
             this.lblBrandCD.TabIndex = 46;
             this.lblBrandCD.Text = "ブランド";
             this.lblBrandCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1723,7 +1558,7 @@
             this.rdoFreeInventory.Name = "rdoFreeInventory";
             this.rdoFreeInventory.NextControl = null;
             this.rdoFreeInventory.NextControlName = "txtBrand";
-            this.rdoFreeInventory.Size = new System.Drawing.Size(90, 21);
+            this.rdoFreeInventory.Size = new System.Drawing.Size(90, 19);
             this.rdoFreeInventory.TabIndex = 3;
             this.rdoFreeInventory.Text = "Free在庫";
             this.rdoFreeInventory.UseVisualStyleBackColor = true;
@@ -1737,7 +1572,7 @@
             this.rdoDetails.Name = "rdoDetails";
             this.rdoDetails.NextControl = null;
             this.rdoDetails.NextControlName = "txtBrand";
-            this.rdoDetails.Size = new System.Drawing.Size(65, 21);
+            this.rdoDetails.Size = new System.Drawing.Size(65, 19);
             this.rdoDetails.TabIndex = 2;
             this.rdoDetails.Text = "明細";
             this.rdoDetails.UseVisualStyleBackColor = true;
@@ -1752,7 +1587,7 @@
             this.rdoAggregation.Name = "rdoAggregation";
             this.rdoAggregation.NextControl = null;
             this.rdoAggregation.NextControlName = "txtBrand";
-            this.rdoAggregation.Size = new System.Drawing.Size(130, 21);
+            this.rdoAggregation.Size = new System.Drawing.Size(130, 19);
             this.rdoAggregation.TabIndex = 1;
             this.rdoAggregation.TabStop = true;
             this.rdoAggregation.Text = "集計（変更不可）";
@@ -1768,16 +1603,180 @@
             this.lblRepresentation.ForeColor = System.Drawing.Color.White;
             this.lblRepresentation.Location = new System.Drawing.Point(158, 15);
             this.lblRepresentation.Name = "lblRepresentation";
-            this.lblRepresentation.Size = new System.Drawing.Size(100, 20);
+            this.lblRepresentation.Size = new System.Drawing.Size(100, 19);
             this.lblRepresentation.TabIndex = 42;
             this.lblRepresentation.Text = "表示形式";
             this.lblRepresentation.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // col_Detail_ShouhinCD
+            // 
+            this.col_Detail_ShouhinCD.DataPropertyName = "商品";
+            this.col_Detail_ShouhinCD.FillWeight = 200F;
+            this.col_Detail_ShouhinCD.HeaderText = "品番";
+            this.col_Detail_ShouhinCD.Name = "col_Detail_ShouhinCD";
+            this.col_Detail_ShouhinCD.Width = 180;
+            // 
+            // col_Detail_ShouhinName
+            // 
+            this.col_Detail_ShouhinName.DataPropertyName = "商品名";
+            this.col_Detail_ShouhinName.FillWeight = 280F;
+            this.col_Detail_ShouhinName.HeaderText = "商品名";
+            this.col_Detail_ShouhinName.Name = "col_Detail_ShouhinName";
+            this.col_Detail_ShouhinName.Width = 280;
+            // 
+            // col_Detail_ColorNO
+            // 
+            this.col_Detail_ColorNO.DataPropertyName = "カラー";
+            this.col_Detail_ColorNO.HeaderText = "カラー";
+            this.col_Detail_ColorNO.Name = "col_Detail_ColorNO";
+            // 
+            // col_Detail_SizeNO
+            // 
+            this.col_Detail_SizeNO.DataPropertyName = "サイズ";
+            this.col_Detail_SizeNO.HeaderText = "サイズ";
+            this.col_Detail_SizeNO.Name = "col_Detail_SizeNO";
+            // 
+            // col_Detail_JuchuuSuu
+            // 
+            this.col_Detail_JuchuuSuu.DataPropertyName = "受注数";
+            dataGridViewCellStyle73.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle73.Format = "N0";
+            dataGridViewCellStyle73.NullValue = null;
+            this.col_Detail_JuchuuSuu.DefaultCellStyle = dataGridViewCellStyle73;
+            this.col_Detail_JuchuuSuu.HeaderText = "受注数";
+            this.col_Detail_JuchuuSuu.Name = "col_Detail_JuchuuSuu";
+            this.col_Detail_JuchuuSuu.Width = 70;
+            // 
+            // col_Detail_ChakuniYoteiSuu
+            // 
+            this.col_Detail_ChakuniYoteiSuu.DataPropertyName = "着荷予定数";
+            dataGridViewCellStyle74.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle74.Format = "N0";
+            dataGridViewCellStyle74.NullValue = null;
+            this.col_Detail_ChakuniYoteiSuu.DefaultCellStyle = dataGridViewCellStyle74;
+            this.col_Detail_ChakuniYoteiSuu.HeaderText = "着荷予定数";
+            this.col_Detail_ChakuniYoteiSuu.Name = "col_Detail_ChakuniYoteiSuu";
+            this.col_Detail_ChakuniYoteiSuu.Width = 95;
+            // 
+            // col_Detail_MiHikiateSuu
+            // 
+            this.col_Detail_MiHikiateSuu.DataPropertyName = "未引当数";
+            dataGridViewCellStyle75.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle75.Format = "N0";
+            dataGridViewCellStyle75.NullValue = null;
+            this.col_Detail_MiHikiateSuu.DefaultCellStyle = dataGridViewCellStyle75;
+            this.col_Detail_MiHikiateSuu.HeaderText = "未引当数";
+            this.col_Detail_MiHikiateSuu.Name = "col_Detail_MiHikiateSuu";
+            this.col_Detail_MiHikiateSuu.Width = 90;
+            // 
+            // col_Detail_HikiateZumiSuu
+            // 
+            this.col_Detail_HikiateZumiSuu.DataPropertyName = "引当済数";
+            dataGridViewCellStyle76.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle76.Format = "N0";
+            dataGridViewCellStyle76.NullValue = null;
+            this.col_Detail_HikiateZumiSuu.DefaultCellStyle = dataGridViewCellStyle76;
+            this.col_Detail_HikiateZumiSuu.HeaderText = "引当済数";
+            this.col_Detail_HikiateZumiSuu.Name = "col_Detail_HikiateZumiSuu";
+            this.col_Detail_HikiateZumiSuu.Width = 90;
+            // 
+            // col_Detail_ChakuniSuu
+            // 
+            this.col_Detail_ChakuniSuu.DataPropertyName = "着荷済数";
+            dataGridViewCellStyle77.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle77.Format = "N0";
+            dataGridViewCellStyle77.NullValue = null;
+            this.col_Detail_ChakuniSuu.DefaultCellStyle = dataGridViewCellStyle77;
+            this.col_Detail_ChakuniSuu.HeaderText = "着荷済数";
+            this.col_Detail_ChakuniSuu.Name = "col_Detail_ChakuniSuu";
+            this.col_Detail_ChakuniSuu.Width = 90;
+            // 
+            // col_Detail_ShukkaSiziSuu
+            // 
+            this.col_Detail_ShukkaSiziSuu.DataPropertyName = "出荷指示数";
+            dataGridViewCellStyle78.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle78.Format = "N0";
+            dataGridViewCellStyle78.NullValue = null;
+            this.col_Detail_ShukkaSiziSuu.DefaultCellStyle = dataGridViewCellStyle78;
+            this.col_Detail_ShukkaSiziSuu.HeaderText = "出荷指示数";
+            this.col_Detail_ShukkaSiziSuu.Name = "col_Detail_ShukkaSiziSuu";
+            this.col_Detail_ShukkaSiziSuu.Width = 95;
+            // 
+            // col_Detail_ShukkaSuu
+            // 
+            this.col_Detail_ShukkaSuu.DataPropertyName = "出荷済数";
+            dataGridViewCellStyle79.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle79.Format = "N0";
+            dataGridViewCellStyle79.NullValue = null;
+            this.col_Detail_ShukkaSuu.DefaultCellStyle = dataGridViewCellStyle79;
+            this.col_Detail_ShukkaSuu.HeaderText = "出荷済数";
+            this.col_Detail_ShukkaSuu.Name = "col_Detail_ShukkaSuu";
+            this.col_Detail_ShukkaSuu.Width = 90;
+            // 
+            // col_Detail_HikiateSuu
+            // 
+            this.col_Detail_HikiateSuu.DataPropertyName = "引当調整数";
+            dataGridViewCellStyle80.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle80.Format = "N0";
+            dataGridViewCellStyle80.NullValue = null;
+            this.col_Detail_HikiateSuu.DefaultCellStyle = dataGridViewCellStyle80;
+            this.col_Detail_HikiateSuu.HeaderText = "引当調整数";
+            this.col_Detail_HikiateSuu.Name = "col_Detail_HikiateSuu";
+            this.col_Detail_HikiateSuu.Width = 95;
+            // 
+            // col_Detail_JuchuuNO_JuchuuGyouNO
+            // 
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.DataPropertyName = "受注番号-行番号";
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.FillWeight = 150F;
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.HeaderText = "受注番号-行番号";
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.Name = "col_Detail_JuchuuNO_JuchuuGyouNO";
+            this.col_Detail_JuchuuNO_JuchuuGyouNO.Width = 130;
+            // 
+            // col_Detail_TokuisakiRyakuName
+            // 
+            this.col_Detail_TokuisakiRyakuName.DataPropertyName = "得意先名";
+            this.col_Detail_TokuisakiRyakuName.FillWeight = 350F;
+            this.col_Detail_TokuisakiRyakuName.HeaderText = "得意先名";
+            this.col_Detail_TokuisakiRyakuName.Name = "col_Detail_TokuisakiRyakuName";
+            this.col_Detail_TokuisakiRyakuName.Width = 350;
+            // 
+            // col_Detail_KanriNO
+            // 
+            this.col_Detail_KanriNO.DataPropertyName = "小売店名";
+            this.col_Detail_KanriNO.FillWeight = 350F;
+            this.col_Detail_KanriNO.HeaderText = "小売店名";
+            this.col_Detail_KanriNO.Name = "col_Detail_KanriNO";
+            this.col_Detail_KanriNO.Width = 350;
+            // 
+            // col_Detail_NyuukoDate
+            // 
+            this.col_Detail_NyuukoDate.DataPropertyName = "入庫日";
+            this.col_Detail_NyuukoDate.HeaderText = "入庫日";
+            this.col_Detail_NyuukoDate.Name = "col_Detail_NyuukoDate";
+            // 
+            // col_Detail_JuchuuDate
+            // 
+            this.col_Detail_JuchuuDate.DataPropertyName = "受注日";
+            this.col_Detail_JuchuuDate.HeaderText = "受注日";
+            this.col_Detail_JuchuuDate.Name = "col_Detail_JuchuuDate";
+            // 
+            // col_Detail_KibouNouki
+            // 
+            this.col_Detail_KibouNouki.DataPropertyName = "希望納期";
+            this.col_Detail_KibouNouki.HeaderText = "希望納期";
+            this.col_Detail_KibouNouki.Name = "col_Detail_KibouNouki";
+            // 
+            // col_Detail_JANCD
+            // 
+            this.col_Detail_JANCD.DataPropertyName = "JANCD";
+            this.col_Detail_JANCD.HeaderText = "JANCD";
+            this.col_Detail_JANCD.Name = "col_Detail_JANCD";
             // 
             // HikiateHenkouShoukai
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1713, 1041);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "HikiateHenkouShoukai";
@@ -1870,6 +1869,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_GenZaikoSuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_KanriNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Free_JANCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colColorNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSizeNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniYoteiSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMiHikiateSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHikiateZumiSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkaSiziSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkaSuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJANCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colHyoujijun;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoCD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_ShouhinCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_ShouhinName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_ColorNO;
@@ -1889,20 +1903,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_JuchuuDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_KibouNouki;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Detail_JANCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colColorNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSizeNO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuSuu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniYoteiSuu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colMiHikiateSuu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHikiateZumiSuu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniSuu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkaSiziSuu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colShukkaSuu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colJANCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colHyoujijun;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colSoukoCD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuNo;
     }
 }
