@@ -36,8 +36,8 @@ namespace HacchuuSho
         string tmpSave = @"C:\SHINYOH\HacchuuSho\";
         byte[] headerLogo = null;
         static readonly Regex SheetNameForbiddenRegex = new Regex("[:\\\\?\\[\\]\\/*：￥＼？［］／＊]");
-        const int MaxRow = 33;
-        const int AddRow = 33 - 8;
+        const int MaxRow = 32;
+        const int AddRow = 32 - 8;
 
         public HacchuuSho()
         {
