@@ -95,7 +95,10 @@ BEGIN
 		and (@YearTerm is null or (FS.YearTerm = @YearTerm))
 		and (@SeasonSS is null or (FS.SeasonSS = @SeasonSS))
 		and (@SeasonFW is null or (FS.SeasonFW = @SeasonFW))
-		and (FT.ShukkaSizishoHuyouKBN = 0)
+		--2021/06/23 Y.Nishikawa CHG↓↓
+		--and (FT.ShukkaSizishoHuyouKBN = 0)
+		and (ds.ShukkaSizishoHuyouKBN = 0)
+		--2021/06/23 Y.Nishikawa CHG↑↑
 		and (ds.ShukkaSiziShuturyokuKBN =0)
 		order by dsm.ShukkaSiziNO,dsm.ShukkaSiziGyouNO		
 	end
@@ -130,7 +133,10 @@ BEGIN
 		and (@YearTerm is null or (FS.YearTerm = @YearTerm))
 		and (@SeasonSS is null or (FS.SeasonSS = @SeasonSS))
 		and (@SeasonFW is null or (FS.SeasonFW = @SeasonFW))
-		and (FT.ShukkaSizishoHuyouKBN = 0)
+		--2021/06/23 Y.Nishikawa CHG↓↓
+		--and (FT.ShukkaSizishoHuyouKBN = 0)
+		and (DSSH.ShukkaSizishoHuyouKBN = 0)
+		--2021/06/23 Y.Nishikawa CHG↑↑
 		and (DSSH.ShukkaSiziShuturyokuKBN = 0)
 	    --2021/05/12 Y.Nishikawa CHG 出荷指示出力区分更新時、全出荷指示を対象としている↑↑
 	end
@@ -184,7 +190,10 @@ BEGIN
 		and (@YearTerm is null or (FS.YearTerm = @YearTerm))
 		and (@SeasonSS is null or (FS.SeasonSS = @SeasonSS))
 		and (@SeasonFW is null or (FS.SeasonFW = @SeasonFW))
-		and (FT.ShukkaSizishoHuyouKBN = 0)
+		--2021/06/23 Y.Nishikawa CHG↓↓
+		--and (FT.ShukkaSizishoHuyouKBN = 0)
+		and (ds.ShukkaSizishoHuyouKBN = 0)
+		--2021/06/23 Y.Nishikawa CHG↑↑
 		order by dsm.ShukkaSiziNO,dsm.ShukkaSiziGyouNO
 	end
 END
