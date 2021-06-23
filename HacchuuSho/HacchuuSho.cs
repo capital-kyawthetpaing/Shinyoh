@@ -258,7 +258,7 @@ namespace HacchuuSho
 
                         xlWorkSheet.Columns[2].ColumnWidth = 10;
                         xlWorkSheet.Columns[3].ColumnWidth = 20;
-                        xlWorkSheet.Columns[4].ColumnWidth = 20;
+                        xlWorkSheet.Columns[4].ColumnWidth = 25;
                         xlWorkSheet.Columns[5].ColumnWidth = 15;
                         xlWorkSheet.Columns[6].ColumnWidth = 15;
                         xlWorkSheet.Columns[7].ColumnWidth = 5;
@@ -348,7 +348,7 @@ namespace HacchuuSho
                                         SetImage(col + 4, 21 - 2, tmpPath, xlWorkSheet, false, true);
 
                                         SetFooter(xlWorkBook, xlWorkSheet, col);
-                                        col += 17 - 1+ AddRow;
+                                        col += 17 - 1;
                                         startrow = col + 10;
                                         gvrow = startrow + 5;
 
@@ -377,6 +377,10 @@ namespace HacchuuSho
                                 {
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 2] = dtgv.Rows[h]["ModelNo"].ToString();
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 3] = dtgv.Rows[h]["ModelName"].ToString();
+                                    // 折り返して全体を表示する
+                                    var CellWrap = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 3];
+                                    CellWrap.WrapText = true;
+
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["FOBPRICE"].ToString();
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 4] = dtgv.Rows[h]["JAPANColor"].ToString();
                                     //xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["KOREAColor"].ToString();
@@ -413,6 +417,10 @@ namespace HacchuuSho
                                 {
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 2] = dtgv.Rows[h]["ModelNo"].ToString();
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 3] = dtgv.Rows[h]["ModelName"].ToString();
+                                    // 折り返して全体を表示する
+                                    var CellWrap = (Excel.Range)xlWorkSheet.Cells[gvrow + (otherModel + 1), 3];
+                                    CellWrap.WrapText = true;
+
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["FOBPRICE"].ToString();
                                     xlWorkSheet.Cells[gvrow + (otherModel + 1), 4] = dtgv.Rows[h]["JAPANColor"].ToString();
                                     //xlWorkSheet.Cells[gvrow + (otherModel + 1), 6] = dtgv.Rows[h]["KOREAColor"].ToString();
@@ -474,12 +482,12 @@ namespace HacchuuSho
                             SetImage(col+4, 21 - 2, tmpPath, xlWorkSheet,false,true);
 
                             SetFooter(xlWorkBook, xlWorkSheet, col);
-                            col += 17 - 1+ AddRow;
+                            col += 17 - 1;
                             startrow = col + 10;
                             gvrow = startrow + 5;
                         }
 
-                        xlWorkSheet.PageSetup.PrintArea = "A1:U"+ (col-1-AddRow);
+                        xlWorkSheet.PageSetup.PrintArea = "A1:U"+ (col-1);
 
                         // Footers
 
@@ -511,16 +519,22 @@ namespace HacchuuSho
         private void SetFooter(Excel.Workbook wb,Excel.Worksheet xlWorkSheet, int col)
         {
             xlWorkSheet.Cells[col + 4, 3] = "1.Terms of Payment :"; xlWorkSheet.Cells[col + 4, 4] = txtPayment.Text;
+            xlWorkSheet.Cells[col + 4, 4].Style.WrapText = false;
 
             xlWorkSheet.Cells[col + 6, 3] = "2. BENEFICIARY :"; xlWorkSheet.Cells[col + 6, 4] = txtBeneficiary1.Text; xlWorkSheet.Cells[col + 7, 4] = txtBeneficiary2.Text;
+            xlWorkSheet.Cells[col + 6, 4].Style.WrapText = false;
 
             xlWorkSheet.Cells[col + 9, 3] = "3. Country of Origin : "; xlWorkSheet.Cells[col + 9, 4] = txtOriginCountry.Text;
+            xlWorkSheet.Cells[col + 9, 4].Style.WrapText = false;
 
             xlWorkSheet.Cells[col + 11, 3] = "4. Shipping from : "; xlWorkSheet.Cells[col + 11, 4] = txtShipping.Text;
+            xlWorkSheet.Cells[col + 11, 4].Style.WrapText = false;
 
             xlWorkSheet.Cells[col + 13, 3] = "5. Destination :"; xlWorkSheet.Cells[col + 13, 4] = txtDestination.Text;
+            xlWorkSheet.Cells[col + 13, 4].Style.WrapText = false;
 
             xlWorkSheet.Cells[col + 15, 3] = "Looking forward to receiving your order confirmation.";
+            xlWorkSheet.Cells[col + 15, 4].Style.WrapText = false;
 
             xlWorkSheet.Cells[col + 15, 19] = "Sincerely yours,"; 
 
@@ -543,7 +557,7 @@ namespace HacchuuSho
             xlWorkSheet.Cells[added + 9, 6] = "PURCHASE ORDER "; 
             xlApp.Cells.Font.Name = "Times New Roman";
 
-            xlApp.get_Range("I" + (added + 15).ToString(), "S"  +(added + 15).ToString()).Cells.NumberFormat = "0.0"; 
+            xlApp.get_Range("G" + (added + 15).ToString(), "Q"  +(added + 15).ToString()).Cells.NumberFormat = "0.0"; 
             xlApp.get_Range("A" + (added + 1).ToString()+":T"+(added + 1).ToString() , "A" + (added + 3).ToString() + ":T" + (added + 3).ToString() ).Merge(Type.Missing);
             xlApp.get_Range("A" + (added + 4).ToString() , "T" + (added + 4).ToString() ).Merge(Type.Missing);
             xlApp.get_Range("A" + (added + 5).ToString(), "T"+ (added + 5).ToString()).Merge(Type.Missing);
