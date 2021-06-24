@@ -1742,8 +1742,8 @@ namespace JuchuuNyuuryoku
             {
                 if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex, true))
                     gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            }
-            if (e.ColumnIndex == 8)
+            }            
+            if (gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colJuchuuSuu")
             {
                 //0に変更された場合はワークテーブルから削除
                 if (gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells["colJuchuuSuu"].EditedFormattedValue.ToString() == "0")
@@ -1775,7 +1775,7 @@ namespace JuchuuNyuuryoku
                     }
                 }
             }
-            else if (e.ColumnIndex == 14)
+            else if (gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSiiresakiCD")
             {
                 if (ErrorCheck_CellEndEdit(e.RowIndex, e.ColumnIndex, true))
                     gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[e.RowIndex].Cells[e.ColumnIndex];
@@ -1844,7 +1844,7 @@ namespace JuchuuNyuuryoku
                         sobj.Access_Siiresaki_obj = From_DB_To_Siiresaki(siiresaki_dt, selectedRow, changeFlg);
                     }
                 }
-                if(bl_error==false && string.IsNullOrEmpty(siiresakiCD))
+                if (bl_error == false && string.IsNullOrEmpty(siiresakiCD))
                 {
                     selectedRow = gv_JuchuuNyuuryoku.Rows[row];
                     ClearSiiresakiData(selectedRow);
@@ -1958,7 +1958,7 @@ namespace JuchuuNyuuryoku
             {
                 if (gv_JuchuuNyuuryoku.CurrentCell != null)
                 {
-                    if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14 || gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 18)//ssa
+                    if (gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSiiresakiCD" || gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSoukoCD")//ssa
                     {
                         gridKeyDown();
                     }
@@ -1979,20 +1979,6 @@ namespace JuchuuNyuuryoku
                 SiiresakiSearch detail = new SiiresakiSearch();
                 detail.Date_Access_Siiresaki = txtJuchuuDate.Text;
                 detail.ShowDialog();
-
-                if (!string.IsNullOrEmpty(detail.SiiresakiCD))
-                {
-                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column + 3, row];
-                    this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
-
-                    gv_JuchuuNyuuryoku[column, row].Value = detail.SiiresakiCD.ToString();
-                    gv_JuchuuNyuuryoku[column + 1, row].Value = detail.SiiresakiName.ToString();
-                }
-                else
-                {
-                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
-                    this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
-                }
 
                 string isSelected = string.Empty;
                 string free = gv_JuchuuNyuuryoku.Rows[row].Cells["colFree"].Value.ToString();
@@ -2025,6 +2011,19 @@ namespace JuchuuNyuuryoku
                             gv_JuchuuNyuuryoku.CurrentCell = gv_JuchuuNyuuryoku.Rows[row].Cells[column];
                         }
                     }
+                }
+                if (!string.IsNullOrEmpty(detail.SiiresakiCD))
+                {
+                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column + 3, row];
+                    this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
+
+                    gv_JuchuuNyuuryoku[column, row].Value = detail.SiiresakiCD.ToString();
+                    gv_JuchuuNyuuryoku[column + 1, row].Value = detail.SiiresakiName.ToString();
+                }
+                else
+                {
+                    gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
+                    this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
                 }
             }
             else if(gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSoukoCD")
@@ -2072,7 +2071,7 @@ namespace JuchuuNyuuryoku
         {
             if (gv_JuchuuNyuuryoku.CurrentCell != null)
             {
-                if (gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 14 || gv_JuchuuNyuuryoku.CurrentCell.ColumnIndex == 18)//ssa
+                if (gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSiiresakiCD" || gv_JuchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSoukoCD")//ssa
                 {
                     gridKeyDown();
                 }
