@@ -36,8 +36,8 @@ namespace HacchuuSho
         string tmpSave = @"C:\SHINYOH\HacchuuSho\";
         byte[] headerLogo = null;
         static readonly Regex SheetNameForbiddenRegex = new Regex("[:\\\\?\\[\\]\\/*：￥＼？［］／＊]");
-        const int MaxRow = 34;
-        const int AddRow = 34 - 8;
+        const int MaxRow = 33;
+        const int AddRow = 33 - 8;
 
         public HacchuuSho()
         {
@@ -558,12 +558,13 @@ namespace HacchuuSho
             xlApp.Cells.Font.Name = "Times New Roman";
 
             xlApp.get_Range("G" + (added + 15).ToString(), "Q"  +(added + 15).ToString()).Cells.NumberFormat = "0.0"; 
-            xlApp.get_Range("A" + (added + 1).ToString()+":T"+(added + 1).ToString() , "A" + (added + 3).ToString() + ":T" + (added + 3).ToString() ).Merge(Type.Missing);
-            xlApp.get_Range("A" + (added + 4).ToString() , "T" + (added + 4).ToString() ).Merge(Type.Missing);
-            xlApp.get_Range("A" + (added + 5).ToString(), "T"+ (added + 5).ToString()).Merge(Type.Missing);
+            xlApp.get_Range("A" + (added + 1).ToString()+":T"+(added + 1).ToString() , "A" + (added + 1).ToString() + ":T" + (added + 1).ToString() ).Merge(Type.Missing);
+            xlApp.get_Range("A" + (added + 3).ToString(), "U"+ (added + 3).ToString()).Merge(Type.Missing);
+            xlApp.get_Range("A" + (added + 4).ToString(), "U"+ (added + 4).ToString()).Merge(Type.Missing);
+            xlApp.get_Range("A" + (added + 5).ToString(), "U"+ (added + 5).ToString()).Merge(Type.Missing);
             xlApp.get_Range("T" + (added + 6).ToString(), "T"+ (added + 6).ToString()).Merge(Type.Missing);
             xlApp.get_Range("T" + (added + 7).ToString(), "T"+ (added + 7).ToString()).Merge(Type.Missing);
-            xlApp.get_Range("A" + (added + 9).ToString(), "T"+ (added + 9).ToString()).Merge(Type.Missing); 
+            xlApp.get_Range("A" + (added + 9).ToString(), "U"+ (added + 9).ToString()).Merge(Type.Missing); 
             var Cell = (Excel.Range)xlWorkSheet.Cells[added+2, 1];
             Cell.RowHeight = 35;
             var Cell1 = (Excel.Range)xlWorkSheet.Cells[added+9, 1];
