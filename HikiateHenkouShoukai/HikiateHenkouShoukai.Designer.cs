@@ -834,7 +834,7 @@
             this.col_Detail_JANCD});
             this.gvMainDetail.IsErrorOccurs = false;
             this.gvMainDetail.ISRowColumn = null;
-            this.gvMainDetail.Location = new System.Drawing.Point(49, 259);
+            this.gvMainDetail.Location = new System.Drawing.Point(49, 262);
             this.gvMainDetail.MultiSelect = false;
             this.gvMainDetail.Name = "gvMainDetail";
             this.gvMainDetail.Size = new System.Drawing.Size(1632, 575);
