@@ -292,63 +292,58 @@ namespace ShukkaTorikomi
                         }
                         else
                         {
-                            return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", Xml.Item1, Xml.Item2, TorikomiDenpyouNO);
-                            if (return_DT.Rows.Count > 0)
+                            DataTable temp_Check = (DataTable)gvShukkaTorikomi.DataSource;
+                            if(Data_Check())
                             {
-                                if (return_DT.Rows[0]["Result"].ToString().Equals("1"))
+                                txtDenpyouNO.Focus();
+                                return;
+                            }
+                            else if (temp_Check.Rows.Count > 0 )
+                            {
+                                if (bbl.ShowMessage("Q102") == DialogResult.Yes)
                                 {
-                                    if (bbl.ShowMessage("Q102") == DialogResult.Yes)
+                                    DataTable dt_Check = temp_Check.Copy();
+                                    DataRow[] dt_Check_Row = dt_Check.Select("TorikomiDenpyouNO ='" + txtDenpyouNO.Text + "'");
+                                    foreach (DataRow dr in dt_Check_Row)
                                     {
-                                        DataTable dt_Check = (DataTable)gvShukkaTorikomi.DataSource;
-                                        
-                                        DataRow[] dt_Check_Row = dt_Check.Select("TorikomiDenpyouNO ='" + txtDenpyouNO.Text + "'");
-                                        foreach (DataRow dr in dt_Check_Row)
+                                        string ShukkaNO = dr["ShukkaNO"].ToString();
+                                        JEntity.DataKBN = 6;
+                                        JEntity.Number = ShukkaNO;
+                                        JEntity.ProgramID = ProgramID;
+                                        JEntity.PC = PCID;
+                                        JEntity.OperatorCD = OperatorCD;
+                                        DataTable r_dt = JBL.D_Exclusive_Lock_Check(JEntity);
+                                        if (r_dt.Rows[0]["MessageID"].ToString().Equals("S004"))
                                         {
-                                            string ShukkaNO = dr["ShukkaNO"].ToString();
-                                            JEntity.DataKBN = 6;
-                                            JEntity.Number = ShukkaNO;
-                                            JEntity.ProgramID = ProgramID;
-                                            JEntity.PC = PCID;
-                                            JEntity.OperatorCD = OperatorCD;
-                                            DataTable r_dt =  JBL.D_Exclusive_Lock_Check(JEntity);
-                                            if (r_dt.Rows[0]["MessageID"].ToString().Equals("S004"))
-                                            {
-                                                bbl.ShowMessage("S004", ProgramID, PCID, OperatorCD);
-                                                return;
-                                            }
+                                            bbl.ShowMessage("S004", ProgramID, PCID, OperatorCD);
+                                            return;
                                         }
-                                        dt_Check.Columns.Remove("TorikomiDenpyouNO");
-                                        dt_Check.Columns.Remove("InsertDateTime");
-                                        dt_Check.Columns.Remove("TokuisakiRyakuName");
-                                        dt_Check.Columns.Remove("KouritenRyakuName");
-                                        DataColumn dataColumn = new DataColumn("InsertOperator", typeof(string));
-                                        dataColumn.DefaultValue = base_Entity.OperatorCD;
-                                        dt_Check.Columns.Add(dataColumn);
-                                        DataColumn dataColumn1 = new DataColumn("PC", typeof(string));
-                                        dataColumn1.DefaultValue = base_Entity.PC;
-                                        dt_Check.Columns.Add(dataColumn1);
-                                        string del_XML = cf.DataTableToXml(dt_Check);
-
-                                        return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", del_XML, Xml.Item2, TorikomiDenpyouNO);
-                                        bbl.ShowMessage("I002");
-                                        rdo_Sakujo.Checked = true;
-                                        txtDate1.Clear();
-                                        txtDate2.Clear();
-                                        txtDenpyouNO.Clear();
-                                        txtDenpyouNO.Focus();
-                                        DataGridviewBind();
                                     }
+                                    dt_Check.Columns.Remove("TorikomiDenpyouNO");
+                                    dt_Check.Columns.Remove("InsertDateTime");
+                                    dt_Check.Columns.Remove("TokuisakiRyakuName");
+                                    dt_Check.Columns.Remove("KouritenRyakuName");
+                                    DataColumn dataColumn = new DataColumn("InsertOperator", typeof(string));
+                                    dataColumn.DefaultValue = base_Entity.OperatorCD;
+                                    dt_Check.Columns.Add(dataColumn);
+                                    DataColumn dataColumn1 = new DataColumn("PC", typeof(string));
+                                    dataColumn1.DefaultValue = base_Entity.PC;
+                                    dt_Check.Columns.Add(dataColumn1);
+                                    string del_XML = cf.DataTableToXml(dt_Check);
+
+                                    return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", del_XML, Xml.Item2, TorikomiDenpyouNO);
+                                    bbl.ShowMessage("I002");
+                                    rdo_Sakujo.Checked = true;
+                                    txtDate1.Clear();
+                                    txtDate2.Clear();
+                                    txtDenpyouNO.Clear();
+                                    txtDenpyouNO.Focus();
+                                    DataGridviewBind();
                                 }
                                 else
                                 {
-                                    bbl.ShowMessage("S013");
-                                    txtDenpyouNO.Focus();
+                                    txtDate1.Focus();
                                 }
-                            }
-                            else
-                            {
-                                if (PreviousCtrl != null)
-                                    PreviousCtrl.Focus();
                             }
                         }
                     }
@@ -369,7 +364,7 @@ namespace ShukkaTorikomi
             }
             else
             {
-                bbl.ShowMessage("S013");
+                //bbl.ShowMessage("S013");
                 dt.Clear();
                 gvShukkaTorikomi.DataSource = dt;
                 txtDate1.Focus();
@@ -536,21 +531,29 @@ namespace ShukkaTorikomi
             string Xml_Main = string.Empty;
             string Xml_Detail = string.Empty;
             DataTable gv_dt = gvShukkaTorikomi.DataSource as DataTable;
-            DataTable dt = gv_dt.Copy();
-            dt.Columns.Remove("TorikomiDenpyouNO");
-            dt.Columns.Remove("InsertDateTime");
-            dt.Columns.Remove("TokuisakiRyakuName");
-            dt.Columns.Remove("KouritenRyakuName");
-            DataColumn dataColumn = new DataColumn("InsertOperator", typeof(string));
-            dataColumn.DefaultValue = base_Entity.OperatorCD;
-            dt.Columns.Add(dataColumn);
-            DataColumn dataColumn1 = new DataColumn("PC", typeof(string));
-            dataColumn.DefaultValue = base_Entity.PC;
-            dt.Columns.Add(dataColumn1);
-            if (dt.Rows.Count>0)
+            if (gv_dt == null || gv_dt.Rows.Count==0)
             {
-                Xml_Detail = cf.DataTableToXml(dt);
-                Xml_Main = txtDenpyouNO.Text;
+                bbl.ShowMessage("E274");
+                txtDate1.Focus();
+            }
+            else
+            {
+                DataTable dt = gv_dt.Copy();
+                dt.Columns.Remove("TorikomiDenpyouNO");
+                dt.Columns.Remove("InsertDateTime");
+                dt.Columns.Remove("TokuisakiRyakuName");
+                dt.Columns.Remove("KouritenRyakuName");
+                DataColumn dataColumn = new DataColumn("InsertOperator", typeof(string));
+                dataColumn.DefaultValue = base_Entity.OperatorCD;
+                dt.Columns.Add(dataColumn);
+                DataColumn dataColumn1 = new DataColumn("PC", typeof(string));
+                dataColumn.DefaultValue = base_Entity.PC;
+                dt.Columns.Add(dataColumn1);
+                if (dt.Rows.Count > 0)
+                {
+                    Xml_Detail = cf.DataTableToXml(dt);
+                    Xml_Main = txtDenpyouNO.Text;
+                }
             }
             return (Xml_Detail, Xml_Main);
         }
@@ -651,6 +654,29 @@ namespace ShukkaTorikomi
         private void txtDate2_KeyDown(object sender, KeyEventArgs e)
         {
             DataGridviewBind();
-        }        
+        }
+
+        private bool Data_Check()
+        {
+          DataTable dt = new DataTable();
+            dt = JBL.TorikomiDenpyouNO_Check(ProgramID, txtDenpyouNO.Text);
+            if (dt.Rows.Count > 0 && dt.Rows[0]["Result"].ToString().Equals("0"))
+            {
+                bbl.ShowMessage("S013");
+                return true;
+            }
+            return false;
+        }
+
+        private void txtDenpyouNO_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (Data_Check())
+                {
+                    txtDenpyouNO.Focus();
+                }
+            }
+        }
     }
 }
