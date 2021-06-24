@@ -549,8 +549,8 @@ namespace HikiateHenkouShoukai
                 gvMainDetail.DataSource = dtMain;
 
                 //gvMainDetail.Columns[19].Visible = false; comment By NMW Task No. 625
-                gvMainDetail.Columns[20].Visible = false;
-                gvMainDetail.Columns[21].Visible = false;
+                gvMainDetail.Columns["表示順"].Visible = false;
+                gvMainDetail.Columns["倉庫"].Visible = false;
                 gvMainDetail.Focus();
                 if (dtMain.Rows.Count > 0)
                 {
