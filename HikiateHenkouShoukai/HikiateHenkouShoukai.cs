@@ -306,8 +306,8 @@ namespace HikiateHenkouShoukai
                     gvAggregationDetails.Visible = true;
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = false;
-                    gvAggregationDetails.Location = new Point(22, 271);
-                    gvAggregationDetails.Size = new Size(1430, 565);
+                    gvAggregationDetails.Location = new Point(49, 259);
+                    gvAggregationDetails.Size = new Size(1430, 570);
                     //this.gvAggregationDetails.Size = new System.Drawing.Size(1300, 387);
                      txtKanriNO.NextControlName = "txtTokuisakiCD";
                     //gvMainDetail.ReadOnly = true;
@@ -336,8 +336,8 @@ namespace HikiateHenkouShoukai
                     gvAggregationDetails.Visible = false;
                     gvMainDetail.Visible = true;
                     gvFreeInventoryDetails.Visible = false;
-                    gvMainDetail.Location = new Point(22, 271);
-                    gvMainDetail.Size = new Size(1660, 565);
+                    gvMainDetail.Location = new Point(49, 259);
+                    gvMainDetail.Size = new Size(1632, 570);
                     //this.gvMainDetail.Size = new System.Drawing.Size(1300, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = false;
@@ -367,8 +367,8 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = true;
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
-                    gvFreeInventoryDetails.Location = new Point(22, 271);
-                    gvFreeInventoryDetails.Size = new Size(1100, 565);
+                    gvFreeInventoryDetails.Location = new Point(49, 259);
+                    gvFreeInventoryDetails.Size = new Size(1100, 570);
                     //this.gvFreeInventoryDetails.Size = new System.Drawing.Size(1100, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = true;
