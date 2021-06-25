@@ -1663,6 +1663,7 @@
             dataGridViewCellStyle17.Format = "N0";
             this.col_Detail_HikiateSuu.DefaultCellStyle = dataGridViewCellStyle17;
             this.col_Detail_HikiateSuu.HeaderText = "引当調整数";
+            this.col_Detail_HikiateSuu.MaxInputLength = 5;
             this.col_Detail_HikiateSuu.Name = "col_Detail_HikiateSuu";
             this.col_Detail_HikiateSuu.Width = 95;
             // 
