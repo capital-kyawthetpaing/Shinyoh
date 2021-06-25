@@ -619,7 +619,7 @@ namespace HacchuuSho
                 {
                     ImageHeight = 32;
                     ImageWidth = 250;
-                    ws.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)30, Top + (float)(2.5), ImageWidth, ImageHeight);
+                    ws.Shapes.AddPicture(path, Microsoft.Office.Core.MsoTriState.msoFalse, Microsoft.Office.Core.MsoTriState.msoCTrue, Left + (float)20, Top + (float)(2.5), ImageWidth, ImageHeight);
                 }
                 else if(IsSign)
                 {
