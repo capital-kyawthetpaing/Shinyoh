@@ -957,14 +957,7 @@ namespace HikiateHenkouShoukai
         }
         private void gvMainDetail_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.ColumnIndex == 11)
-            {
-                string val = gvMainDetail.Rows[e.RowIndex].Cells[11].Value.ToString().Replace(",", "");
-                if (string.IsNullOrEmpty(val))
-                    gvMainDetail.Rows[e.RowIndex].Cells[11].Value = 0;
-                else if (Convert.ToInt64(val) < 0)
-                    e.CellStyle.ForeColor = Color.Red;
-            }
+
         }
         private void gvMainDetail_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
