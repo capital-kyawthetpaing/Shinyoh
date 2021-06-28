@@ -50,7 +50,7 @@ namespace ChakuniNyuuryoku
             dt_Header = new DataTable();
             dt_Details = new DataTable();
 
-            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            //this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniNyuuryoku_Load(object sender, EventArgs e)
         {
