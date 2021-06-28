@@ -88,9 +88,9 @@
             this.ChakuniSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SiireKanryouKBN = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ChakuniMeisaiTekiyou = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.JanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Chakuni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Hacchuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.JanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChakuniYoteiNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChakuniYoteiGyouNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HacchuuNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -564,9 +564,9 @@
             this.ChakuniSuu,
             this.SiireKanryouKBN,
             this.ChakuniMeisaiTekiyou,
-            this.JanCD,
             this.Chakuni,
             this.Hacchuu,
+            this.JanCD,
             this.ChakuniYoteiNO,
             this.ChakuniYoteiGyouNO,
             this.HacchuuNO,
@@ -1120,12 +1120,6 @@
             this.ChakuniMeisaiTekiyou.Name = "ChakuniMeisaiTekiyou";
             this.ChakuniMeisaiTekiyou.Width = 420;
             // 
-            // JanCD
-            // 
-            this.JanCD.DataPropertyName = "JanCD";
-            this.JanCD.HeaderText = "JANCD";
-            this.JanCD.Name = "JanCD";
-            // 
             // Chakuni
             // 
             this.Chakuni.DataPropertyName = "Chakuni";
@@ -1139,6 +1133,12 @@
             this.Hacchuu.HeaderText = "発注番号-行番号";
             this.Hacchuu.Name = "Hacchuu";
             this.Hacchuu.Width = 180;
+            // 
+            // JanCD
+            // 
+            this.JanCD.DataPropertyName = "JanCD";
+            this.JanCD.HeaderText = "JANCD";
+            this.JanCD.Name = "JanCD";
             // 
             // ChakuniYoteiNO
             // 
@@ -1257,9 +1257,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniSuu;
         private System.Windows.Forms.DataGridViewCheckBoxColumn SiireKanryouKBN;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniMeisaiTekiyou;
-        private System.Windows.Forms.DataGridViewTextBoxColumn JanCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn Chakuni;
         private System.Windows.Forms.DataGridViewTextBoxColumn Hacchuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn JanCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniYoteiNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniYoteiGyouNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn HacchuuNO;

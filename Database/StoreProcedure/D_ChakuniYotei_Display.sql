@@ -49,13 +49,13 @@ Select
     FLOOR(B.ChakuniYoteiSuu) - FLOOR(B.ChakuniZumiSuu) as ChakuniSuu,
     0 as SiireKanryouKBN, --螳御ｺ・
     '' as ChakuniMeisaiTekiyou,
+    B.ChakuniYoteiNO + '-' + cast(B.ChakuniYoteiGyouNO as varchar) as Chakuni,
+    B.HacchuuNO + '-'+ cast(B.HacchuuGyouNO as varchar)as Hacchuu,
     B.JANCD,
     B.ChakuniYoteiNO,
     B.ChakuniYoteiGyouNO,
-    B.ChakuniYoteiNO + '-' + cast(B.ChakuniYoteiGyouNO as varchar) as Chakuni,
     B.HacchuuNO,
     B.HacchuuGyouNO,
-    B.HacchuuNO + '-'+ cast(B.HacchuuGyouNO as varchar)as Hacchuu,
     D.ShouhinCD
     ,0 AS SiireKanryouKBN_Head
     ,0 AS SiireZumiSuu_Sum

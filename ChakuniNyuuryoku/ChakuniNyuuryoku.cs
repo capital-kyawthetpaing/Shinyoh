@@ -49,6 +49,8 @@ namespace ChakuniNyuuryoku
             chkEntity = new ChakuniNyuuryoku_Entity();
             dt_Header = new DataTable();
             dt_Details = new DataTable();
+
+            this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniNyuuryoku_Load(object sender, EventArgs e)
         {
@@ -991,13 +993,13 @@ namespace ChakuniNyuuryoku
             dt.Columns.Add("ChakuniSuu", typeof(string));
             dt.Columns.Add("SiireKanryouKBN", typeof(string));
             dt.Columns.Add("ChakuniMeisaiTekiyou", typeof(string));
+            dt.Columns.Add("Chakuni", typeof(string));
+            dt.Columns.Add("Hacchuu", typeof(string));
             dt.Columns.Add("JanCD", typeof(string));
             dt.Columns.Add("ChakuniYoteiNO", typeof(string));
             dt.Columns.Add("ChakuniYoteiGyouNO", typeof(int));
-            dt.Columns.Add("Chakuni", typeof(string));
             dt.Columns.Add("HacchuuNO", typeof(string));
             dt.Columns.Add("HacchuuGyouNO", typeof(int));
-            dt.Columns.Add("Hacchuu", typeof(string));
             dt.Columns.Add("ShouhinCD", typeof(string));
             dt.Columns.Add("SiireKanryouKBN_Head", typeof(string));
             dt.Columns.Add("SiireZumiSuu_Sum", typeof(string));
