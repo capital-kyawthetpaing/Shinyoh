@@ -82,7 +82,7 @@ namespace HacchuuNyuuryoku
             gv_HacchuuNyuuryoku.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_HacchuuNyuuryoku.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_HacchuuNyuuryoku.SetGridDesign();
-            gv_HacchuuNyuuryoku.SetReadOnlyColumn("ColHinbanCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colHacchuuTanka,colJANCD,colSoukoName");
+            gv_HacchuuNyuuryoku.SetReadOnlyColumn("ColHinbanCD,colShouhinName,colColorNO,colSizeNO,colHacchuuTanka,colJANCD,colSoukoName");
             gv_HacchuuNyuuryoku.SetHiraganaColumn("colHacchuuMeisaiTekiyou");
             gv_HacchuuNyuuryoku.SetNumberColumn("colHacchuuSuu");
             gv_HacchuuNyuuryoku.ClearSelection();

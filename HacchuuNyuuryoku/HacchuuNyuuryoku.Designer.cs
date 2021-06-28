@@ -75,7 +75,6 @@
             this.txtHacchuuNO = new Shinyoh_Search.SearchBox();
             this.ColHinbanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colChakuniYoteiDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -178,7 +177,6 @@
             this.gv_HacchuuNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColHinbanCD,
             this.colShouhinName,
-            this.colColorRyakuName,
             this.colColorNO,
             this.colSizeNO,
             this.colChakuniYoteiDate,
@@ -923,14 +921,6 @@
             this.colShouhinName.ReadOnly = true;
             this.colShouhinName.Width = 250;
             // 
-            // colColorRyakuName
-            // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            this.colColorRyakuName.ReadOnly = true;
-            this.colColorRyakuName.Width = 150;
-            // 
             // colColorNO
             // 
             this.colColorNO.DataPropertyName = "ColorNO";
@@ -1100,7 +1090,6 @@
         private Shinyoh_Controls.SButton btn_Siiresaki;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColHinbanCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colColorRyakuName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSizeNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniYoteiDate;
