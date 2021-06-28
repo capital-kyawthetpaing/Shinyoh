@@ -53,10 +53,10 @@ BEGIN
     FLOOR(dhm.ChakuniYoteiZumiSuu) as ChakuniYoteiZumiSuu,
     FLOOR(dhm.HacchuuSuu) - FLOOR(dhm.ChakuniYoteiZumiSuu) as ChakuniYoteiSuu,
     '' as ChakuniYoteiMeisaiTekiyou,    
+    dhm.HacchuuNO + '-'+ cast(dhm.HacchuuGyouNO as varchar)as Hacchuu,
     dhm.JANCD,
     dhm.HacchuuNO,
     dhm.HacchuuGyouNO,
-    dhm.HacchuuNO + '-'+ cast(dhm.HacchuuGyouNO as varchar)as Hacchuu,
     fs.ShouhinCD,
     0 AS ChakuniYoteiGyouNO
     From D_Hacchuu dh

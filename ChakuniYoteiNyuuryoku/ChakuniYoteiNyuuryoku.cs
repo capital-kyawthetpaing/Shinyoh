@@ -47,7 +47,7 @@ namespace ChakuniYoteiNyuuryoku
             dtTemp = new DataTable();
             dtClear = CreateTable_Detail();
 
-            //this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniYoteiNyuuryoku_Load(object sender, EventArgs e)
         {
@@ -661,10 +661,10 @@ namespace ChakuniYoteiNyuuryoku
             dt.Columns.Add("ChakuniYoteiZumiSuu", typeof(string));
             dt.Columns.Add("ChakuniYoteiSuu", typeof(string));
             dt.Columns.Add("ChakuniYoteiMeisaiTekiyou", typeof(string));
+            dt.Columns.Add("Hacchuu", typeof(string));
             dt.Columns.Add("JANCD", typeof(string));
             dt.Columns.Add("HacchuuNO", typeof(string));
             dt.Columns.Add("HacchuuGyouNO", typeof(string));
-            dt.Columns.Add("Hacchuu", typeof(string));
             dt.Columns.Add("ShouhinCD", typeof(string));
             dt.Columns.Add("ChakuniYoteiGyouNO", typeof(int));
             dt.AcceptChanges();

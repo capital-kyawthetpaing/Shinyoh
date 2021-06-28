@@ -89,8 +89,8 @@
             this.colChakuniZumiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colYoteiSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDetails = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colJanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHacchuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colJanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -378,8 +378,8 @@
             this.colChakuniZumiSuu,
             this.colYoteiSuu,
             this.colDetails,
-            this.colJanCD,
             this.colHacchuu,
+            this.colJanCD,
             this.Column1,
             this.Column2,
             this.Column3});
@@ -1118,18 +1118,18 @@
             this.colDetails.Name = "colDetails";
             this.colDetails.Width = 420;
             // 
-            // colJanCD
-            // 
-            this.colJanCD.DataPropertyName = "JANCD";
-            this.colJanCD.HeaderText = "JANCD";
-            this.colJanCD.Name = "colJanCD";
-            // 
             // colHacchuu
             // 
             this.colHacchuu.DataPropertyName = "Hacchuu";
             this.colHacchuu.HeaderText = "発注番号-行番号";
             this.colHacchuu.Name = "colHacchuu";
             this.colHacchuu.Width = 200;
+            // 
+            // colJanCD
+            // 
+            this.colJanCD.DataPropertyName = "JANCD";
+            this.colJanCD.HeaderText = "JANCD";
+            this.colJanCD.Name = "colJanCD";
             // 
             // Column1
             // 
@@ -1232,8 +1232,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colChakuniZumiSuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colYoteiSuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDetails;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colJanCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHacchuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colJanCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
