@@ -55,6 +55,9 @@ namespace Entity
         public string Number { get; set; }
         public string OperatorMode { get; set; }
         public string KeyItem { get; set; }
+
+        public string TokuisakiCD { get; set; }
+        public string KouritenCD { get; set; }
     }
     
 }

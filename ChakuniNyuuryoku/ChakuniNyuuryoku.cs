@@ -527,6 +527,8 @@ namespace ChakuniNyuuryoku
                 YearTerm = txtYearTerm.Text,
                 SeasonSS = chkSS.Checked ? "1" : "0",
                 SeasonFW = chkFW.Checked ? "1" : "0",
+                //TokuisakiCD = txtTokuisakiCD.text,
+                //KouritenCD= txtKouritenCD.text,
                 OperatorCD = OperatorCD,
                 ProgramID = ProgramID,
                 PC = PCID
@@ -737,6 +739,8 @@ namespace ChakuniNyuuryoku
                 chkEntity.YearTerm = txtYearTerm.Text;
                 chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
                 chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
+                //chkEntity.TokuisakiCD = txtTokuisakiCD.text;
+                //chkEntity.KouritenCD = txtKouritenCD.text;
                 chkEntity.OperatorCD = OperatorCD;
                 chkEntity.ProgramID = ProgramID;
                 chkEntity.PC = PCID;

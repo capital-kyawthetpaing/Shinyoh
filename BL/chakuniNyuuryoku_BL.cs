@@ -63,10 +63,12 @@ namespace BL
             cne.Sqlprms[9] = new SqlParameter("@YearTerm", SqlDbType.VarChar) { Value = cne.YearTerm };
             cne.Sqlprms[10] = new SqlParameter("@SeasonSS", SqlDbType.VarChar) { Value = cne.SeasonSS };
             cne.Sqlprms[11] = new SqlParameter("@SeasonFW", SqlDbType.VarChar) { Value = cne.SeasonFW };
-            cne.Sqlprms[12] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cne.OperatorCD };
-            cne.Sqlprms[13] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cne.ProgramID };
-            cne.Sqlprms[14] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cne.PC };
-            cne.Sqlprms[15] = new SqlParameter("@ChakuniDate", SqlDbType.VarChar) { Value = cne.ChakuniDate };
+            cne.Sqlprms[12] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = cne.TokuisakiCD };
+            cne.Sqlprms[13] = new SqlParameter("@KouritenCD", SqlDbType.VarChar) { Value = cne.KouritenCD };
+            cne.Sqlprms[14] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cne.OperatorCD };
+            cne.Sqlprms[15] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cne.ProgramID };
+            cne.Sqlprms[16] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cne.PC };
+            cne.Sqlprms[17] = new SqlParameter("@ChakuniDate", SqlDbType.VarChar) { Value = cne.ChakuniDate };
             DataTable dt = ckmdl.SelectDatatable("D_ChakuniYotei_Display", GetConnectionString(), cne.Sqlprms);
             return dt;
         }
