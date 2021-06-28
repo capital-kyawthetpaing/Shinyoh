@@ -90,7 +90,7 @@ namespace ChakuniYoteiNyuuryoku
             txtSouko.lblName = lblWareHouse;
             txtBrandCD.lblName = lblBrandName;
             gvChakuniYoteiNyuuryoku.SetGridDesign();
-            gvChakuniYoteiNyuuryoku.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colDate,colHacchuuSuu,colChakuniZumiSuu,colJanCD,colHacchuu");
+            gvChakuniYoteiNyuuryoku.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorNO,colSizeNO,colDate,colHacchuuSuu,colChakuniZumiSuu,colJanCD,colHacchuu");
             gvChakuniYoteiNyuuryoku.SetHiraganaColumn("colDetails");
             gvChakuniYoteiNyuuryoku.SetNumberColumn("colYoteiSuu");
             ChangeMode(GetMode(Mode.New));
@@ -653,7 +653,7 @@ namespace ChakuniYoteiNyuuryoku
             DataTable dt = new DataTable();
             dt.Columns.Add("HinbanCD", typeof(string));
             dt.Columns.Add("ShouhinName", typeof(string));
-            dt.Columns.Add("ColorRyakuName", typeof(string));
+            //dt.Columns.Add("ColorRyakuName", typeof(string));
             dt.Columns.Add("ColorNO", typeof(string));
             dt.Columns.Add("SizeNO", typeof(string));
             dt.Columns.Add("HacchuuDate", typeof(string));

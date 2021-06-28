@@ -45,7 +45,7 @@ BEGIN
     Select 
     fs.HinbanCD,
     dhm.ShouhinName,
-    dhm.ColorRyakuName,
+    --dhm.ColorRyakuName,
     dhm.ColorNO,
     dhm.SizeNO,
     convert(varchar(10),dh.HacchuuDate,111) as HacchuuDate,
