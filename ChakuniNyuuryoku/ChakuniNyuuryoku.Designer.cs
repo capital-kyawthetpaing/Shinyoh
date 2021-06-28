@@ -80,7 +80,6 @@
             this.txtScheduledNo = new Shinyoh_Search.SearchBox();
             this.HinbanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ChakuniYoteiDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -557,7 +556,6 @@
             this.gvChakuniNyuuryoku.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.HinbanCD,
             this.ShouhinName,
-            this.ColorRyakuName,
             this.ColorNO,
             this.SizeNO,
             this.ChakuniYoteiDate,
@@ -1052,14 +1050,6 @@
             this.ShouhinName.ReadOnly = true;
             this.ShouhinName.Width = 250;
             // 
-            // ColorRyakuName
-            // 
-            this.ColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.ColorRyakuName.HeaderText = "カラー略名";
-            this.ColorRyakuName.Name = "ColorRyakuName";
-            this.ColorRyakuName.ReadOnly = true;
-            this.ColorRyakuName.Width = 150;
-            // 
             // ColorNO
             // 
             this.ColorNO.DataPropertyName = "ColorNO";
@@ -1259,7 +1249,6 @@
         private Shinyoh_Search.SearchBox txtScheduled;
         private System.Windows.Forms.DataGridViewTextBoxColumn HinbanCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShouhinName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColorRyakuName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColorNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn SizeNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ChakuniYoteiDate;

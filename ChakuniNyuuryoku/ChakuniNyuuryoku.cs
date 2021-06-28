@@ -96,7 +96,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvChakuniNyuuryoku.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvChakuniNyuuryoku.SetGridDesign();
-            gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorRyakuName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
+            gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
             gvChakuniNyuuryoku.SetHiraganaColumn("ChakuniMeisaiTekiyou");
             gvChakuniNyuuryoku.SetNumberColumn("ChakuniSuu");         
             ChangeMode(GetMode(Mode.New));
@@ -982,7 +982,7 @@ namespace ChakuniNyuuryoku
             DataTable dt = new DataTable();
             dt.Columns.Add("HinbanCD", typeof(string));
             dt.Columns.Add("ShouhinName", typeof(string));
-            dt.Columns.Add("ColorRyakuName", typeof(string));
+            //dt.Columns.Add("ColorRyakuName", typeof(string));
             dt.Columns.Add("ColorNO", typeof(string));
             dt.Columns.Add("SizeNO", typeof(string));
             dt.Columns.Add("ChakuniYoteiDate", typeof(string));

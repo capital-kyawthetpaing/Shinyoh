@@ -39,7 +39,7 @@ Select
     --B.ShouhinCD,  
     D.HinbanCD,
     B.ShouhinName,
-    B.ColorRyakuName,
+    --B.ColorRyakuName,
     B.ColorNO,
     B.SizeNO,
     convert(varchar(10),A.ChakuniYoteiDate,111) as ChakuniYoteiDate,
