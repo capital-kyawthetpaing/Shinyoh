@@ -374,10 +374,10 @@ namespace JuchuuTorikomi
                         else
                             dr[j] = splits[j].ToString();
                     }
-                    dr[56] = base_Entity.OperatorCD;
-                    dr[57] = base_Entity.ProgramID;
-                    dr[58] = base_Entity.PC;
-                    dr[59] = error;
+                    dr[56-1] = base_Entity.OperatorCD;
+                    dr[57 - 1] = base_Entity.ProgramID;
+                    dr[58 - 1] = base_Entity.PC;
+                    dr[59 - 1] = error;
                     create_dt.Rows.Add(dr);
                 }
                 create_dt.Columns.Add("JuchuuNO", typeof(string));
@@ -537,7 +537,7 @@ namespace JuchuuTorikomi
             create_dt.Columns.Add("ShouhinCD");
             create_dt.Columns.Add("ColorRyakuName");
             create_dt.Columns.Add("SizeNO");
-            create_dt.Columns.Add("JANCD");
+            //create_dt.Columns.Add("JANCD");
             create_dt.Columns.Add("HacchuuSuu");
             create_dt.Columns.Add("HacchuuTanka");
             create_dt.Columns.Add("UriageTanka");
