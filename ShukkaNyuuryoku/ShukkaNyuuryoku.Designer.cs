@@ -35,7 +35,6 @@
             this.col_JANCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Shouhin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_ShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_ColorShortName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_ColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Shukkazansuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -194,7 +193,6 @@
             this.col_JANCD,
             this.col_Shouhin,
             this.col_ShouhinName,
-            this.col_ColorShortName,
             this.col_ColorNO,
             this.col_Size,
             this.col_Shukkazansuu,
@@ -239,13 +237,6 @@
             this.col_ShouhinName.HeaderText = "商品名";
             this.col_ShouhinName.Name = "col_ShouhinName";
             this.col_ShouhinName.Width = 305;
-            // 
-            // col_ColorShortName
-            // 
-            this.col_ColorShortName.DataPropertyName = "ColorRyakuName";
-            this.col_ColorShortName.HeaderText = "カラー略名";
-            this.col_ColorShortName.Name = "col_ColorShortName";
-            this.col_ColorShortName.Width = 120;
             // 
             // col_ColorNO
             // 
@@ -1325,7 +1316,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_JANCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Shouhin;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_ShouhinName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_ColorShortName;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_ColorNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Size;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Shukkazansuu;

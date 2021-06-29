@@ -118,7 +118,7 @@ BEGIN
                     DS.[TokuisakiTelNO2-1],DS.[TokuisakiTelNO2-2], DS.[TokuisakiTelNO2-3], DS.KouritenCD, DS.KouritenRyakuName,
                     DS.KouritenName,DS.KouritenYuubinNO1, DS.KouritenYuubinNO2,DS.KouritenJuusho1,DS.KouritenJuusho2,
                     DS.[KouritenTelNO1-1],DS.[KouritenTelNO1-2],DS.[KouritenTelNO1-3],DS.[KouritenTelNO2-1],DS.[KouritenTelNO2-2],
-                    DS.[KouritenTelNO2-3],DS.StaffCD,FS.StaffName,DS.ShukkaDenpyouTekiyou,DSM.JANCD,F.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,
+                    DS.[KouritenTelNO2-3],DS.StaffCD,FS.StaffName,DS.ShukkaDenpyouTekiyou,DSM.JANCD,F.HinbanCD,DSM.ShouhinName,--DSM.ColorRyakuName,
                     DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM1.ShukkaSiziSuu - DSM1.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,
                     DSM.ShukkaSuu,NULL as Kanryou,DSM.ShukkaMeisaiTekiyou,
                     (DSM.ShukkaSiziNO +'-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO,DSM.ShukkaSiziNO,

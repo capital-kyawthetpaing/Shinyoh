@@ -71,7 +71,8 @@ BEGIN
 
 	if (@Condition = 1)
 	begin
-		select DSM.JANCD,FS.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,
+		select DSM.JANCD,FS.HinbanCD,DSM.ShouhinName--,DSM.ColorRyakuName
+		       ,DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,
 			   ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + ISNULL(FLOOR(WK.MiNyuukaSuu),'0'))),'0') as ShukkaSuu,NULL as Kanryou,'' as ShukkaMeisaiTekiyou,
 			   (DSM.ShukkaSiziNO + '-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO
 			   --hidden field
@@ -110,7 +111,8 @@ BEGIN
 	end
 	else 
 	begin
-		select DSM.JANCD,FS.HinbanCD,DSM.ShouhinName,DSM.ColorRyakuName,DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,
+		select DSM.JANCD,FS.HinbanCD,DSM.ShouhinName--,DSM.ColorRyakuName
+		       ,DSM.ColorNO,DSM.SizeNO,ISNULL(FLOOR(DSM.ShukkaSiziSuu-DSM.ShukkaZumiSuu),'0') as ShukkaSiziZumiSuu,
 			   ISNULL(FLOOR(WK.MiNyuukaSuu),'0') as MiNyuukaSuu,ISNULL(FLOOR(DSM.ShukkaSiziSuu -(DSM.ShukkaZumiSuu + ISNULL(FLOOR(WK.MiNyuukaSuu),'0'))),'0') as ShukkaSuu,NULL as Kanryou,'' as ShukkaMeisaiTekiyou,
 			   (DSM.ShukkaSiziNO + '-'+ cast(DSM.ShukkaSiziGyouNO as varchar)) as ShukkaSiziNOGyouNO
 			   --hidden field
