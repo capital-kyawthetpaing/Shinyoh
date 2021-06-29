@@ -100,7 +100,7 @@ BEGIN
                     (
                     ShouhinCD           varchar(50) 'ShouhinCD',
                     ShouhinName         varchar(100) 'ShouhinName',
-                    ColorRyakuName      varchar(100) 'ColorRyakuName',
+                    ColorRyakuName      varchar(100) 'ColorNO',
                     ColorNO             varchar(50) 'ColorNO',
                     SizeNO              varchar(13) 'SizeNO',
                     KanriNO             varchar(10) 'KanriNO',

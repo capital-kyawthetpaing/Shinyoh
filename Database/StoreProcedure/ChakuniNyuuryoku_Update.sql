@@ -198,7 +198,7 @@ DECLARE  @hQuantityAdjust AS INT
                     (
                     HinbanCD                varchar(20) 'HinbanCD',
                     ShouhinName             varchar(100) 'ShouhinName',
-                    ColorRyakuName              varchar(25) 'ColorRyakuName',
+                    ColorRyakuName              varchar(25) 'ColorNO',
                     ColorNO             varchar(13) 'ColorNO',
                     SizeNO              varchar(13) 'SizeNO',
                     ChakuniYoteiDate            varchar(10) 'ChakuniYoteiDate',

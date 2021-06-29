@@ -923,15 +923,15 @@ namespace ChakuniNyuuryoku
                         {
                             if (existDr1 != null)
                             {
-                                if (select_dr1.Length > 0 && select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
-                                {
+                                //if (select_dr1.Length > 0 && select_dr1[0][c].ToString() != row.Cells[c].Value.ToString())
+                                //{
                                     //bl = true;
                                     F8_drNew[c] = row.Cells[c].Value;
-                                }
-                                else
-                                {
-                                    F8_drNew[c] = existDr1[c];
-                                }
+                                //}
+                                //else
+                                //{
+                                //    F8_drNew[c] = existDr1[c];
+                                //}
                             }
                             else
                             {
