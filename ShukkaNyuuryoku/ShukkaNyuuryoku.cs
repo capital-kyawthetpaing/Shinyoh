@@ -82,16 +82,16 @@ namespace ShukkaNyuuryoku {
 
             current_gv.SetGridDesign();
             current_gv.SetHiraganaColumn("col_Detail");
-            current_gv.SetReadOnlyColumn("col_JANCD,col_Shouhin,col_ShouhinName,col_ColorShortName,col_ColorNO,col_Size,col_Shukkazansuu,col_Miryoku,col_ShukkaSiziNOGyouNO");
+            current_gv.SetReadOnlyColumn("col_JANCD,col_Shouhin,col_ShouhinName,col_ColorNO,col_Size,col_Shukkazansuu,col_Miryoku,col_ShukkaSiziNOGyouNO");
             current_gv.SetNumberColumn("col_Konkai");
+            current_gv.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            current_gv.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
             current_gv.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             current_gv.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
             current_gv.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             current_gv.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
-            current_gv.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            current_gv.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             current_gv.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
-            current_gv.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            current_gv.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             txtKouriten.TxtBox = txtTokuisaki;
 
             //var col = current_gv.Columns;
@@ -1240,7 +1240,7 @@ namespace ShukkaNyuuryoku {
             dt.Columns.Add("JANCD", typeof(string));
             dt.Columns.Add("HinbanCD", typeof(string));
             dt.Columns.Add("ShouhinName", typeof(string));
-            dt.Columns.Add("ColorRyakuName", typeof(string));
+            //dt.Columns.Add("ColorRyakuName", typeof(string));
             dt.Columns.Add("ColorNO", typeof(string));
             dt.Columns.Add("SizeNO", typeof(string));
             dt.Columns.Add("ShukkaSiziZumiSuu", typeof(string));
