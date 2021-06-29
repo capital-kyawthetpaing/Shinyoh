@@ -45,7 +45,7 @@ namespace HikiateHenkouShoukai_New
             //gvAggregationDetails.SetGridDesign();
             //gvAggregationDetails.SetReadOnlyColumn("*");
 
-            var col = gvMainDetail.Columns;
+            var col = gv_Detail.Columns;
             DataGridViewTextBoxColumn newCol = new DataGridViewTextBoxColumn();
             newCol.Name = "ShouhinCD";
             newCol.DataPropertyName = "ShouhinCD";
@@ -53,9 +53,9 @@ namespace HikiateHenkouShoukai_New
             col.Insert(col.Count, newCol);
             newCol.DisplayIndex = col.Count - 1;
 
-            gvMainDetail.SetGridDesign();
-            gvMainDetail.SetReadOnlyColumn("col_Detail_ShouhinCD,col_Detail_ShouhinName,col_Detail_ColorNO,col_Detail_SizeNO,col_Detail_JuchuuSuu,col_Detail_ChakuniYoteiSuu,col_Detail_MiHikiateSuu,col_Detail_HikiateZumiSuu,col_Detail_ChakuniSuu,col_Detail_ShukkaSiziSuu,col_Detail_ShukkaSuu,col_Detail_JuchuuNO_JuchuuGyouNO,col_Detail_TokuisakiRyakuName,col_Detail_KanriNO,col_Detail_NyuukoDate,col_Detail_JuchuuDate,col_Detail_KibouNouki,col_Detail_JANCD,ShouhinCD");
-            gvMainDetail.SetNumberColumn("col_Detail_HikiateSuu");
+            gv_Detail.SetGridDesign();
+            gv_Detail.SetReadOnlyColumn("col_Detail_ShouhinCD,col_Detail_ShouhinName,col_Detail_ColorNO,col_Detail_SizeNO,col_Detail_JuchuuSuu,col_Detail_ChakuniYoteiSuu,col_Detail_MiHikiateSuu,col_Detail_HikiateZumiSuu,col_Detail_ChakuniSuu,col_Detail_ShukkaSiziSuu,col_Detail_ShukkaSuu,col_Detail_JuchuuNO_JuchuuGyouNO,col_Detail_TokuisakiRyakuName,col_Detail_KanriNO,col_Detail_NyuukoDate,col_Detail_JuchuuDate,col_Detail_KibouNouki,col_Detail_JANCD,ShouhinCD");
+            gv_Detail.SetNumberColumn("col_Detail_HikiateSuu");
 
             //gvFreeInventoryDetails.SetGridDesign();
             //gvFreeInventoryDetails.SetReadOnlyColumn("*");
@@ -81,28 +81,28 @@ namespace HikiateHenkouShoukai_New
             //gvAggregationDetails.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             //gvAggregationDetails.Columns[10].SortMode = DataGridViewColumnSortMode.NotSortable;
 
-            gvMainDetail.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvMainDetail.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvMainDetail.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvMainDetail.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvMainDetail.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvMainDetail.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvMainDetail.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvMainDetail.Columns[10].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gvMainDetail.Columns[11].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[15].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gvMainDetail.Columns[15].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[16].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gvMainDetail.Columns[16].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gvMainDetail.Columns[17].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            gvMainDetail.Columns[17].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_Detail.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_Detail.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_Detail.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_Detail.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_Detail.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_Detail.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[10].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_Detail.Columns[10].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[11].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_Detail.Columns[11].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[15].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_Detail.Columns[15].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[16].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_Detail.Columns[16].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_Detail.Columns[17].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_Detail.Columns[17].SortMode = DataGridViewColumnSortMode.NotSortable;
 
             //gvFreeInventoryDetails.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             //gvFreeInventoryDetails.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -143,7 +143,7 @@ namespace HikiateHenkouShoukai_New
                     btn_F8.Enabled = false;
                     btn_F11.Enabled = false;
                     //gvAggregationDetails.Visible = true;
-                    gvMainDetail.Visible = false;
+                    gv_Detail.Visible = false;
                     //gvFreeInventoryDetails.Visible = false;
                     //gvAggregationDetails.Location = new Point(45, 264);
                     //gvAggregationDetails.Size = new Size(1430, 550);
@@ -170,10 +170,10 @@ namespace HikiateHenkouShoukai_New
                     btn_F8.Enabled = true;
                     btn_F11.Enabled = true;
                     //gvAggregationDetails.Visible = false;
-                    gvMainDetail.Visible = true;
+                    gv_Detail.Visible = true;
                     //gvFreeInventoryDetails.Visible = false;
-                    gvMainDetail.Location = new Point(45, 264);
-                    gvMainDetail.Size = new Size(1632, 565);
+                    gv_Detail.Location = new Point(45, 264);
+                    gv_Detail.Size = new Size(1632, 565);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     break;
                 case 2:
@@ -197,7 +197,7 @@ namespace HikiateHenkouShoukai_New
                     btn_F8.Enabled = false;
                     btn_F11.Enabled = false;
                     //gvAggregationDetails.Visible = false;
-                    gvMainDetail.Visible = false;
+                    gv_Detail.Visible = false;
                     //gvFreeInventoryDetails.Visible = true;
                     //gvFreeInventoryDetails.DataSource = createMemoryTable(type);
                     //gvFreeInventoryDetails.Location = new Point(45, 264);
@@ -311,7 +311,7 @@ namespace HikiateHenkouShoukai_New
                 row["JANCD"] = "4580543959141";
                 dt_Detail.Rows.Add(row);
             }
-            gvMainDetail.DataSource = dt_Detail;
+            gv_Detail.DataSource = dt_Detail;
 
             //DataTable dt_Free = new DataTable();
             //dt_Free.Columns.Add("商品");
