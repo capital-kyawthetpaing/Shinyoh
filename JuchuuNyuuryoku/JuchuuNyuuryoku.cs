@@ -1683,7 +1683,7 @@ namespace JuchuuNyuuryoku
             {
                 dt.Columns.Remove("ShouhinCD");
                 dt.Columns.Remove("ShouhinName");
-                dt.Columns.Remove("ColorRyakuName");
+                //dt.Columns.Remove("ColorRyakuName");
                 dt.Columns.Remove("ColorNO");
                 dt.Columns.Remove("SizeNO");
                 dt.Columns.Remove("Free");

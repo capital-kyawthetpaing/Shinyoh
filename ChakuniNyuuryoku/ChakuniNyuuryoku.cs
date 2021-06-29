@@ -173,6 +173,8 @@ namespace ChakuniNyuuryoku
             lblStaff.Text = string.Empty;
             lblBrandName.Text = string.Empty;
             lblWareHouse.Text = string.Empty;
+            lblTokuisakiName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
             txtArrivalNO.Focus();
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET
@@ -216,6 +218,8 @@ namespace ChakuniNyuuryoku
             soukoEntity = soukoBL.GetSoukoEntity(soukoEntity);
             txtSouko.Text = soukoEntity.SoukoCD;
             lblWareHouse.Text = soukoEntity.SoukoName;
+            lblTokuisakiName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
             lblSiiresaki.Text = string.Empty;
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET
