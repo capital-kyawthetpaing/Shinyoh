@@ -70,7 +70,6 @@ namespace ShukkaSiziNyuuryoku
             this.dgvShukkasizi = new Shinyoh_Controls.SGridView();
             this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colJuchuuSuu = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -750,7 +749,6 @@ namespace ShukkaSiziNyuuryoku
             this.dgvShukkasizi.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colShouhinCD,
             this.colShouhinName,
-            this.colColorRyakuName,
             this.colColorNO,
             this.colSizeNO,
             this.colJuchuuSuu,
@@ -804,14 +802,6 @@ namespace ShukkaSiziNyuuryoku
             this.colShouhinName.Name = "colShouhinName";
             this.colShouhinName.ReadOnly = true;
             this.colShouhinName.Width = 250;
-            // 
-            // colColorRyakuName
-            // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            this.colColorRyakuName.ReadOnly = true;
-            this.colColorRyakuName.Width = 120;
             // 
             // colColorNO
             // 
@@ -1456,7 +1446,6 @@ namespace ShukkaSiziNyuuryoku
         private System.Windows.Forms.Panel panelRadio;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colColorRyakuName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSizeNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colJuchuuSuu;

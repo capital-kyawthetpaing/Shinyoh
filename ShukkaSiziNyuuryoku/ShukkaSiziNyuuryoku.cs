@@ -62,7 +62,7 @@ namespace ShukkaSiziNyuuryoku
             dgvShukkasizi.Columns["colKonkaiShukkaSiziSuu"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvShukkasizi.SetNumberColumn("colKonkaiShukkaSiziSuu,colTanka,colPrice");
             dgvShukkasizi.SetHiraganaColumn("colDetails");
-            dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
+            dgvShukkasizi.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorNO,colSizeNO,colJuchuuSuu,colShukkakanousuu,colShukkaSiziZumiSuu,colJuchuuNo,SoukoName");
 
             var col = dgvShukkasizi.Columns;
 
@@ -613,7 +613,7 @@ namespace ShukkaSiziNyuuryoku
             DataTable dt = new DataTable();
             dt.Columns.Add("ShouhinCD", typeof(string));
             dt.Columns.Add("ShouhinName", typeof(string));
-            dt.Columns.Add("ColorRyakuName", typeof(string));
+            //dt.Columns.Add("ColorRyakuName", typeof(string));
             dt.Columns.Add("ColorNO", typeof(string));
             dt.Columns.Add("SizeNO", typeof(string));
             dt.Columns.Add("JuchuuSuu", typeof(string));

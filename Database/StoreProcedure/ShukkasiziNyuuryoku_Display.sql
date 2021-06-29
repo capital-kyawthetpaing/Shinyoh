@@ -117,7 +117,7 @@ SELECT
 --DJMS.ShouhinCD			--蝠・刀繧ｳ繝ｼ繝・
 	FS.HinbanCD	as ShouhinCD--蝠・刀繧ｳ繝ｼ繝・
 	,DJMS.ShouhinName		--蝠・刀蜷・
-	,DJMS.ColorRyakuName	--繧ｫ繝ｩ繝ｼ逡･蜷・
+	--,DJMS.ColorRyakuName	--繧ｫ繝ｩ繝ｼ逡･蜷・
 	,DJMS.ColorNO			--繧ｫ繝ｩ繝ｼNO
 	,DJMS.SizeNO			--繧ｵ繧､繧ｺNO
 	,FORMAT(DJMS.JuchuuSuu, '#,0') AS JuchuuSuu	--蜿玲ｳｨ謨ｰ

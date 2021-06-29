@@ -135,7 +135,7 @@ begin
     --SKMS.ShouhinCD    
     FShouhin.HinbanCD   as ShouhinCD--蝠・刀繧ｳ繝ｼ繝・
     ,SKMS.ShouhinName   --蝠・刀蜷・
-    ,SKMS.ColorRyakuName --繧ｫ繝ｩ繝ｼ逡･蜷・
+    --,SKMS.ColorRyakuName --繧ｫ繝ｩ繝ｼ逡･蜷・
     ,SKMS.ColorNO        --繧ｫ繝ｩ繝ｼNO
     ,SKMS.SizeNO         --繧ｵ繧､繧ｺNO
     ,FORMAT(JCMS.JuchuuSuu, '#,0') as JuchuuSuu     --蜿玲ｳｨ謨ｰ
