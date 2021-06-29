@@ -359,7 +359,7 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 		,TD.Hidden_ShouhinCD--Add
 		,TD.ShouhinName
 		,FS.JANCD
-		,TD.ColorRyakuName
+		,TD.ColorNO
 		,TD.ColorNO
 		,TD.SizeNO
 		,1
