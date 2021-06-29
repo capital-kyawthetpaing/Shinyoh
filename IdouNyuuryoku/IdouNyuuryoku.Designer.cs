@@ -78,7 +78,6 @@
             this.colShouhinCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHinbanCD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colShouhinName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colColorRyakuName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colColorNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSizeNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colKanriNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -249,7 +248,6 @@
             this.colShouhinCD,
             this.colHinbanCD,
             this.colShouhinName,
-            this.colColorRyakuName,
             this.colColorNO,
             this.colSizeNO,
             this.colKanriNO,
@@ -1018,13 +1016,6 @@
             this.colShouhinName.Name = "colShouhinName";
             this.colShouhinName.Width = 250;
             // 
-            // colColorRyakuName
-            // 
-            this.colColorRyakuName.DataPropertyName = "ColorRyakuName";
-            this.colColorRyakuName.HeaderText = "カラー略名";
-            this.colColorRyakuName.Name = "colColorRyakuName";
-            this.colColorRyakuName.Width = 125;
-            // 
             // colColorNO
             // 
             this.colColorNO.DataPropertyName = "ColorNO";
@@ -1179,7 +1170,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHinbanCD;
         private System.Windows.Forms.DataGridViewTextBoxColumn colShouhinName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colColorRyakuName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colColorNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSizeNO;
         private System.Windows.Forms.DataGridViewTextBoxColumn colKanriNO;

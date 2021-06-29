@@ -70,7 +70,7 @@ namespace IdouNyuuryoku
             txtShouhinCD.ChangeDate = txtIdouDate;
 
             gv_1.SetGridDesign();
-            gv_1.SetReadOnlyColumn("colHinbanCD,colShouhinName,colColorRyakuName,colColorNO,colSizeNO");
+            gv_1.SetReadOnlyColumn("colHinbanCD,colShouhinName,colColorNO,colSizeNO");
 
             gv_1.SetHiraganaColumn("colIdouMeisaiTekiyou");
             gv_1.SetNumberColumn("colIdouSuu,colGenkaTanka,colGenkaKingaku");
@@ -944,7 +944,7 @@ namespace IdouNyuuryoku
             dt.Columns.Add("ShouhinCD", typeof(string));
             dt.Columns.Add("HinbanCD", typeof(string));
             dt.Columns.Add("ShouhinName", typeof(string));
-            dt.Columns.Add("ColorRyakuName", typeof(string));
+            //dt.Columns.Add("ColorRyakuName", typeof(string));
             dt.Columns.Add("ColorNO", typeof(string));
             dt.Columns.Add("SizeNO", typeof(string));
             dt.Columns.Add("KanriNO", typeof(string));
