@@ -62,6 +62,7 @@ namespace HikiateHenkouShoukai_New
 
             Header_Alignment();
             Creat_DataTable();
+
         }
         private void Header_Alignment()
         {
