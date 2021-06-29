@@ -75,12 +75,12 @@ namespace HacchuuNyuuryoku
             txtHacchuuNO.ChangeDate = txtHacchuuDate;
             txtCopy.ChangeDate = txtHacchuuDate;
 
-            gv_HacchuuNyuuryoku.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_HacchuuNyuuryoku.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gv_HacchuuNyuuryoku.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gv_HacchuuNyuuryoku.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_HacchuuNyuuryoku.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_HacchuuNyuuryoku.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_HacchuuNyuuryoku.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gv_HacchuuNyuuryoku.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gv_HacchuuNyuuryoku.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_HacchuuNyuuryoku.SetGridDesign();
             gv_HacchuuNyuuryoku.SetReadOnlyColumn("ColHinbanCD,colShouhinName,colColorNO,colSizeNO,colHacchuuTanka,colJANCD,colSoukoName");
             gv_HacchuuNyuuryoku.SetHiraganaColumn("colHacchuuMeisaiTekiyou");

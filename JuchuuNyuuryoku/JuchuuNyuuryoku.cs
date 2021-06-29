@@ -45,7 +45,9 @@ namespace JuchuuNyuuryoku
             F8_dt1 = new DataTable();
             obj_bl = new JuchuuNyuuryokuBL();
             siiresaki_bl = new SiiresakiBL();
-            
+
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             //this.gv_JuchuuNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
 
