@@ -29,6 +29,8 @@ CREATE PROCEDURE [dbo].[ChakuniYoteiNyuuryoku_Display]
 @YearTerm AS varchar(6),
 @SeasonSS AS varchar(6),
 @SeasonFW AS varchar(6),
+@TokuisakiCD AS varchar(10),
+@KouritenCD AS varchar(10),
 @Operator  varchar(10),
 @Program  varchar(100),
 @PC  varchar(30),
@@ -52,6 +54,8 @@ BEGIN
     FLOOR(dhm.HacchuuSuu) as HacchuuSuu,
     FLOOR(dhm.ChakuniYoteiZumiSuu) as ChakuniYoteiZumiSuu,
     FLOOR(dhm.HacchuuSuu) - FLOOR(dhm.ChakuniYoteiZumiSuu) as ChakuniYoteiSuu,
+    J.TokuisakiRyakuName,
+    J.KouritenRyakuName,
     '' as ChakuniYoteiMeisaiTekiyou,    
     dhm.HacchuuNO + '-'+ cast(dhm.HacchuuGyouNO as varchar)as Hacchuu,
     dhm.JANCD,
@@ -66,6 +70,7 @@ BEGIN
     on ms.SoukoCD=dhm.SoukoCD
     Left Outer Join F_Shouhin(@ChakuniYoteiDate) fs
     on fs.ShouhinCD=dhm.ShouhinCD
+    Left outer join D_Juchuu J on J.JuchuuNO = dhm.JuchuuNO
     Where (@BrandCD is null or(dhm.BrandCD=@BrandCD))
     And (@JANCD is null or (dhm.JANCD  like '%' + @JANCD + '%'))
     And (@ShouhinName is null or (dhm.ShouhinName  like '%' + @ShouhinName + '%'))
@@ -84,6 +89,8 @@ BEGIN
     And (@SeasonSS = 0 or (fs.SeasonSS=@SeasonSS))--ktp
     And (@SeasonFW = 0 or (fs.SeasonFW=@SeasonFW))--ktp
     And (@HinbanCD is null or (fs.HinbanCD  like '%' + @HinbanCD + '%'))
+    And (@TokuisakiCD is null or (J.TokuisakiCD=@TokuisakiCD))
+    And (@KouritenCD is null or (J.KouritenCD=@KouritenCD))
     Order by dhm.HacchuuNO,dhm.GyouHyouziJun ASC
 
     --Insert into D_Exclusive

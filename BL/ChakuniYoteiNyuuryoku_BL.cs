@@ -34,7 +34,7 @@ namespace BL
         public DataTable ChakuniYoteiNyuuryoku_Display(ChakuniYoteiNyuuryokuEntity cyn)
         {
             CKMDL ckmdl = new CKMDL();
-            cyn.Sqlprms = new SqlParameter[16];
+            cyn.Sqlprms = new SqlParameter[18];
             cyn.Sqlprms[0] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = cyn.BrandCD };
             cyn.Sqlprms[1] = new SqlParameter("@HinbanCD", SqlDbType.VarChar) { Value = cyn.HinbanCD };
             cyn.Sqlprms[2] = new SqlParameter("@JANCD", SqlDbType.VarChar) { Value = cyn.JANCD };
@@ -47,10 +47,12 @@ namespace BL
             cyn.Sqlprms[9] = new SqlParameter("@YearTerm", SqlDbType.VarChar) { Value = cyn.YearTerm };
             cyn.Sqlprms[10] = new SqlParameter("@SeasonSS", SqlDbType.VarChar) { Value = cyn.SeasonSS };
             cyn.Sqlprms[11] = new SqlParameter("@SeasonFW", SqlDbType.VarChar) { Value = cyn.SeasonFW };
-            cyn.Sqlprms[12] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cyn.OperatorCD };
-            cyn.Sqlprms[13] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cyn.ProgramID };
-            cyn.Sqlprms[14] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cyn.PC };
-            cyn.Sqlprms[15] = new SqlParameter("@ChakuniYoteiDate", SqlDbType.VarChar) { Value = cyn.ChakuniYoteiDate };
+            cyn.Sqlprms[12] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = cyn.TokuisakiCD };
+            cyn.Sqlprms[13] = new SqlParameter("@KouritenCD", SqlDbType.VarChar) { Value = cyn.KouritenCD };
+            cyn.Sqlprms[14] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = cyn.OperatorCD };
+            cyn.Sqlprms[15] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = cyn.ProgramID };
+            cyn.Sqlprms[16] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = cyn.PC };
+            cyn.Sqlprms[17] = new SqlParameter("@ChakuniYoteiDate", SqlDbType.VarChar) { Value = cyn.ChakuniYoteiDate };
             DataTable dt = ckmdl.SelectDatatable("ChakuniYoteiNyuuryoku_Display", GetConnectionString(), cyn.Sqlprms);
             return dt;
         }

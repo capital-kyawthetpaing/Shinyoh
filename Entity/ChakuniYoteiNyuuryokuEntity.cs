@@ -34,5 +34,8 @@ namespace Entity
         public string SeasonSS { get; set; }
         public string SeasonFW { get; set; }
         public string HacchuuNO { get; set; }
+
+        public string TokuisakiCD { get; set; }
+        public string KouritenCD { get; set; }
     }
 }
