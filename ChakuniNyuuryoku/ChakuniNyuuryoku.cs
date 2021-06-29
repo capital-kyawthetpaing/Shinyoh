@@ -81,7 +81,12 @@ namespace ChakuniNyuuryoku
             txtStaffCD.ChangeDate = txtArrivalDate;
             txtHinbanCD.ChangeDate = txtArrivalDate;
             txtScheduled.ChangeDate= txtArrivalDate;
-        
+
+            txtTokuisakiCD.lblName = lblTokuisakiName;
+            txtTokuisakiCD.ChangeDate = txtChangeDate;
+            txtKouritenCD.lblName = lblKouritenName;
+            txtKouritenCD.ChangeDate = txtChangeDate;
+
             base_Entity = _GetBaseData();
             lblSiiresaki.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -98,7 +103,7 @@ namespace ChakuniNyuuryoku
             gvChakuniNyuuryoku.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvChakuniNyuuryoku.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvChakuniNyuuryoku.SetGridDesign();
-            gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu");
+            gvChakuniNyuuryoku.SetReadOnlyColumn("HinbanCD,ShouhinName,ColorNO,SizeNO,ChakuniYoteiDate,ChakuniYoteiSuu,ChakuniZumiSuu,JanCD,Chakuni,Hacchuu,colTokuisaki,colKouriten");
             gvChakuniNyuuryoku.SetHiraganaColumn("ChakuniMeisaiTekiyou");
             gvChakuniNyuuryoku.SetNumberColumn("ChakuniSuu");         
             ChangeMode(GetMode(Mode.New));
@@ -250,6 +255,9 @@ namespace ChakuniNyuuryoku
             //txtSizeNo.E101Check(true, "M_MultiPorpose", txtSizeNo, txtArrivalDate, null);
             //txtScheduled.E133Check(true, "ChakuniYotei", txtScheduled, txtArrivalDate, null);
             //txtScheduled.E268Check(true, "ChakuniYotei", txtScheduled, null);
+            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtChangeDate, null);
+            txtKouritenCD.E101Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
+
         }
         public override void FunctionProcess(string tagID)
         {
@@ -371,6 +379,8 @@ namespace ChakuniNyuuryoku
             lblStaff.Text = string.Empty;
             lblBrandName.Text = string.Empty;
             lblWareHouse.Text = string.Empty;
+            lblTokuisakiName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
             txtArrivalNO.Focus();
             New_Mode();
         }
@@ -527,8 +537,8 @@ namespace ChakuniNyuuryoku
                 YearTerm = txtYearTerm.Text,
                 SeasonSS = chkSS.Checked ? "1" : "0",
                 SeasonFW = chkFW.Checked ? "1" : "0",
-                //TokuisakiCD = txtTokuisakiCD.text,
-                //KouritenCD= txtKouritenCD.text,
+                TokuisakiCD = txtTokuisakiCD.Text,
+                KouritenCD = txtKouritenCD.Text,
                 OperatorCD = OperatorCD,
                 ProgramID = ProgramID,
                 PC = PCID
@@ -739,13 +749,14 @@ namespace ChakuniNyuuryoku
                 chkEntity.YearTerm = txtYearTerm.Text;
                 chkEntity.SeasonSS = chkSS.Checked ? "1" : "0";
                 chkEntity.SeasonFW = chkFW.Checked ? "1" : "0";
-                //chkEntity.TokuisakiCD = txtTokuisakiCD.text;
-                //chkEntity.KouritenCD = txtKouritenCD.text;
+                chkEntity.TokuisakiCD = txtTokuisakiCD.Text;
+                chkEntity.KouritenCD = txtKouritenCD.Text;
                 chkEntity.OperatorCD = OperatorCD;
                 chkEntity.ProgramID = ProgramID;
                 chkEntity.PC = PCID;
                 if (string.IsNullOrWhiteSpace(txtScheduled.Text) && string.IsNullOrWhiteSpace(txtHinbanCD.Text) && string.IsNullOrWhiteSpace(txtShouhinName.Text) && string.IsNullOrWhiteSpace(txtControlNo.Text) &&
-                     string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && string.IsNullOrWhiteSpace(txtSizeNo.Text))
+                     string.IsNullOrWhiteSpace(txtJANCD.Text) && string.IsNullOrWhiteSpace(sbBrand.Text) && string.IsNullOrWhiteSpace(txtColorNo.Text) && string.IsNullOrWhiteSpace(txtYearTerm.Text) && (!chkFW.Checked) && (!chkSS.Checked) && 
+                     string.IsNullOrWhiteSpace(txtSizeNo.Text) && string.IsNullOrWhiteSpace(txtTokuisakiCD.Text) && string.IsNullOrWhiteSpace(txtKouritenCD.Text))
                 {
                     bbl.ShowMessage("E111");
                     txtScheduled.Focus();
@@ -963,6 +974,8 @@ namespace ChakuniNyuuryoku
             txtYearTerm.Clear();
             txtSizeNo.Clear();
             txtScheduled.Focus();
+            txtTokuisakiCD.Clear();
+            txtKouritenCD.Clear();
             gvChakuniNyuuryoku.ClearSelection();
             gvChakuniNyuuryoku.DataSource = dtClear;
             chkSS.Checked = true; //HET
@@ -996,6 +1009,8 @@ namespace ChakuniNyuuryoku
             dt.Columns.Add("ChakuniZumiSuu", typeof(string));
             dt.Columns.Add("ChakuniSuu", typeof(string));
             dt.Columns.Add("SiireKanryouKBN", typeof(string));
+            dt.Columns.Add("TokuisakiRyakuName", typeof(string));
+            dt.Columns.Add("KouritenRyakuName", typeof(string));
             dt.Columns.Add("ChakuniMeisaiTekiyou", typeof(string));
             dt.Columns.Add("Chakuni", typeof(string));
             dt.Columns.Add("Hacchuu", typeof(string));
@@ -1338,7 +1353,7 @@ namespace ChakuniNyuuryoku
 
         private void txtSizeNo_KeyDown(object sender, KeyEventArgs e)
         {
-            F10_Gridview_Bind();
+            //F10_Gridview_Bind();
         }
 
         private void txtScheduled_KeyDown(object sender, KeyEventArgs e)
@@ -1367,6 +1382,47 @@ namespace ChakuniNyuuryoku
                 }
             }
         }
+
+        private void txtKouritenCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtKouritenCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtKouritenCD.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        lblKouritenName.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
+                    }
+                    else
+                    {
+                        lblKouritenName.Text = string.Empty;
+                    }
+                }
+
+                F10_Gridview_Bind();
+            }
+        }
+
+        private void txtTokuisakiCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtTokuisakiCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtTokuisakiCD.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        lblTokuisakiName.Text = dt.Rows[0]["TokuisakiRyakuName"].ToString();
+                    }
+                    else
+                    {
+                        lblTokuisakiName.Text = string.Empty;
+                    }
+                }
+            }
+        }
+
         private void gvChakuniNyuuryoku_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
              if (e.RowIndex >= 0 && e.ColumnIndex == 9)

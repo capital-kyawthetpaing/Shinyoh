@@ -50,7 +50,7 @@ namespace BL
         public DataTable ChakuniNyuuryoku_Display(ChakuniNyuuryoku_Entity cne)
         {
             CKMDL ckmdl = new CKMDL();
-            cne.Sqlprms = new SqlParameter[16];
+            cne.Sqlprms = new SqlParameter[18];
             cne.Sqlprms[0] = new SqlParameter("@BrandCD", SqlDbType.VarChar) { Value = cne.BrandCD };
             cne.Sqlprms[1] = new SqlParameter("@HinbanCD", SqlDbType.VarChar) { Value = cne.HinbanCD };
             cne.Sqlprms[2] = new SqlParameter("@ShouhinName", SqlDbType.VarChar) { Value = cne.ShouhinName };
