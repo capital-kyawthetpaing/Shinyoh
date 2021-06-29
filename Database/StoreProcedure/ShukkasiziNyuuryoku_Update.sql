@@ -575,7 +575,7 @@ SET [GyouHyouziJun]=@row, @row = @row + 1
     ,[ShouhinCD]=TD.Hidden_ShouhinCD
     ,[ShouhinName]=TD.ShouhinName
     ,[JANCD]=FS.JANCD
-    ,[ColorRyakuName]=TD.ColorRyakuName
+    ,[ColorRyakuName]=TD.ColorNO
     ,[ColorNO]=TD.ColorNO
     ,[SizeNO]=TD.SizeNO
     ,[Kakeritu]=1
@@ -691,7 +691,7 @@ INSERT INTO [dbo].[D_ShukkaSiziMeisai]
 		,TD.Hidden_ShouhinCD--Add
 		,TD.ShouhinName
 		,FS.JANCD
-		,TD.ColorRyakuName
+		,TD.ColorNO
 		,TD.ColorNO
 		,TD.SizeNO
 		,1

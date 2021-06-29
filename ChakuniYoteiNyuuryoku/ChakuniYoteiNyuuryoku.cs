@@ -47,7 +47,9 @@ namespace ChakuniYoteiNyuuryoku
             dtTemp = new DataTable();
             dtClear = CreateTable_Detail();
 
-            this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
+            //this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniYoteiNyuuryoku_Load(object sender, EventArgs e)
         {
@@ -94,6 +96,8 @@ namespace ChakuniYoteiNyuuryoku
             txtTokuisakiCD.ChangeDate = txtChangeDate;
             txtKouritenCD.lblName = lblKouritenName;
             txtKouritenCD.ChangeDate = txtChangeDate;
+            txtTokuisakiCD.E101Check(true, "M_Tokuisaki", txtTokuisakiCD, txtChangeDate, null);
+            txtKouritenCD.E101Check(true, "M_Kouriten", txtKouritenCD, txtChangeDate, null);
 
             gvChakuniYoteiNyuuryoku.SetGridDesign();
             gvChakuniYoteiNyuuryoku.SetReadOnlyColumn("colShouhinCD,colShouhinName,colColorNO,colSizeNO,colDate,colHacchuuSuu,colChakuniZumiSuu,colJanCD,colHacchuu,colTokuisakiName,colKouritenName");
@@ -561,6 +565,8 @@ namespace ChakuniYoteiNyuuryoku
             lblSiiresaki.Text = string.Empty;
             lblStaff.Text = string.Empty;
             lblWareHouse.Text = string.Empty;
+            lblTokuisakiName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
             txtChakuniYoteiNO.Focus();
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET
@@ -604,6 +610,8 @@ namespace ChakuniYoteiNyuuryoku
             soukoEntity = soukoBL.GetSoukoEntity(soukoEntity);
             txtSouko.Text = soukoEntity.SoukoCD;
             lblWareHouse.Text = soukoEntity.SoukoName;
+            lblTokuisakiName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
             lblSiiresaki.Text = string.Empty;
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET

@@ -50,6 +50,9 @@ namespace ChakuniNyuuryoku
             dt_Header = new DataTable();
             dt_Details = new DataTable();
 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
+
             //this.gvChakuniNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniNyuuryoku_Load(object sender, EventArgs e)
@@ -170,6 +173,8 @@ namespace ChakuniNyuuryoku
             lblStaff.Text = string.Empty;
             lblBrandName.Text = string.Empty;
             lblWareHouse.Text = string.Empty;
+            lblTokuisakiName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
             txtArrivalNO.Focus();
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET
@@ -213,6 +218,8 @@ namespace ChakuniNyuuryoku
             soukoEntity = soukoBL.GetSoukoEntity(soukoEntity);
             txtSouko.Text = soukoEntity.SoukoCD;
             lblWareHouse.Text = soukoEntity.SoukoName;
+            lblTokuisakiName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
             lblSiiresaki.Text = string.Empty;
             chkSS.Checked = true; //HET
             chkFW.Checked = true; //HET

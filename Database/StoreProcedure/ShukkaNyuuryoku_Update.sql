@@ -371,7 +371,7 @@ BEGIN
                 ShouhinCD = d.ShouhinCD,
                 ShouhinName = d.ShouhinName,
                 JANCD =NULLIF(d.JANCD,''),
-                ColorRyakuName = d.ColorRyakuName,
+                ColorRyakuName = d.ColorNO,
                 ColorNO = d.ColorNO,
                 SizeNO = d.SizeNO,
                 ShukkaSuu = case when d.ShukkaSuu is not null then d.ShukkaSuu else 0 end,
@@ -411,7 +411,7 @@ BEGIN
             select @ShukkaNO,
                     ISNULL((select MAX(ShukkaGyouNO) from D_ShukkaMeisai Where ShukkaNO = @ShukkaNO group by ShukkaNO),0) + ROW_NUMBER() OVER(ORDER BY d.ShukkaSiziNOGyouNO),
                     ISNULL((select MAX(ShukkaGyouNO) from D_ShukkaMeisai Where ShukkaNO = @ShukkaNO group by ShukkaNO),0) + ROW_NUMBER() OVER(ORDER BY d.ShukkaSiziNOGyouNO),
-                    convert(date,d.DenpyouDate),FS.BrandCD,d.ShouhinCD,d.ShouhinName,NULLIF(d.JANCD,''),d.ColorRyakuName,d.ColorNO,d.SizeNO,
+                    convert(date,d.DenpyouDate),FS.BrandCD,d.ShouhinCD,d.ShouhinName,NULLIF(d.JANCD,''),d.ColorNO,d.ColorNO,d.SizeNO,
                     d.ShukkaSuu,FS.TaniCD,NULLIF(d.ShukkaMeisaiTekiyou,''),d.SoukoCD,0,0,LEFT(d.ShukkaSiziNOGyouNO, CHARINDEX('-', d.ShukkaSiziNOGyouNO) - 1),
                     RIGHT(d.ShukkaSiziNOGyouNO, LEN(d.ShukkaSiziNOGyouNO) - CHARINDEX('-', d.ShukkaSiziNOGyouNO)),
                     DSM.JuchuuNO,DSM.JuchuuGyouNO,m.InsertOperator,@currentDate,m.UpdateOperator,@currentDate

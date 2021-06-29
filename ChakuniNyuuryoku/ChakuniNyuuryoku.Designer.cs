@@ -111,10 +111,6 @@
             this.PanelDetail.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1370, 69);
-            // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.txtArrivalNO);

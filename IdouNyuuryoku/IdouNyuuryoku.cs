@@ -74,12 +74,12 @@ namespace IdouNyuuryoku
 
             gv_1.SetHiraganaColumn("colIdouMeisaiTekiyou");
             gv_1.SetNumberColumn("colIdouSuu,colGenkaTanka,colGenkaKingaku");
+            gv_1.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gv_1.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_1.Columns[7].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_1.Columns[7].SortMode = DataGridViewColumnSortMode.NotSortable;
             gv_1.Columns[8].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gv_1.Columns[8].SortMode = DataGridViewColumnSortMode.NotSortable;
-            gv_1.Columns[9].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gv_1.Columns[9].SortMode = DataGridViewColumnSortMode.NotSortable;
             ChangeMode(GetMode(Mode.New));
         }
         private void ChangeMode(Mode mode)
