@@ -47,7 +47,9 @@ namespace ChakuniYoteiNyuuryoku
             dtTemp = new DataTable();
             dtClear = CreateTable_Detail();
 
-            this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
+            //this.gvChakuniYoteiNyuuryoku.Size = new System.Drawing.Size(1300, 387);
         }
         private void ChakuniYoteiNyuuryoku_Load(object sender, EventArgs e)
         {
