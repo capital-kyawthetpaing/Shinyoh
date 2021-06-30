@@ -585,6 +585,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Memory_Row_Count = dtMain.Rows.Count;
                     gvAggregationDetails.Memory_Row_Count = dtMain.Rows.Count;
                 }
+                SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
             }
 
             if(dtTemp != null)
