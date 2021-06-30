@@ -79,6 +79,8 @@ namespace ChakuniYoteiNyuuryoku
             lblStaff.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblWareHouse.BorderStyle = System.Windows.Forms.BorderStyle.None;
             lblBrandName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             gvChakuniYoteiNyuuryoku.Columns[4].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gvChakuniYoteiNyuuryoku.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvChakuniYoteiNyuuryoku.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -760,7 +762,11 @@ namespace ChakuniYoteiNyuuryoku
         public void SaveClear()
         {
             txtBrandCD.Clear();
+            txtTokuisakiCD.Clear();
+            txtKouritenCD.Clear();
             lblBrandName.Text = string.Empty;
+            lblTokuisakiName.Text = string.Empty;
+            lblKouritenName.Text = string.Empty;
             txtHinbanCD.Clear();
             txtShouhinName.Clear();
             txtJANCD.Clear();
