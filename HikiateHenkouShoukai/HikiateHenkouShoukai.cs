@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Shinyoh_Controls;
 
 namespace HikiateHenkouShoukai
 {
@@ -50,7 +51,13 @@ namespace HikiateHenkouShoukai
             base_entity = _GetBaseData();
             txtTokuisakiCD.E102Type = base_entity.LoginDate;        //ChangeDate value For E101 Error check of txtTokuisakiCD
             txtKouritenCD.E102Type = base_entity.LoginDate;         //ChangeDate value For E101 Error check of txtKouritenCD
-            if(rdoAggregation.Checked)
+            //NMW 2021-06-30 Task No 699 begin
+            STextBox txt_Date = new STextBox();
+            txt_Date.Text = base_entity.LoginDate;
+            txtShouhinCD.ChangeDate = txt_Date;
+            //NMW 2021-06-30 Task No 699 end
+
+            if (rdoAggregation.Checked)
                 Radio_Changed(0);
 
             gvAggregationDetails.SetGridDesign();
