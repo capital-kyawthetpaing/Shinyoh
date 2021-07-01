@@ -434,7 +434,6 @@ namespace HikiateHenkouShoukai
                 //add NMW Task No. 673
                 dtExcel.Columns["Free在庫"].ColumnName = "現在庫";
                 dtExcel.Columns.Remove(dtExcel.Columns[4]);
-                
                 //end
                 dtExcel.AcceptChanges();
 
