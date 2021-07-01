@@ -46,7 +46,8 @@ CREATE PROCEDURE [dbo].[ShukkasiziNyuuryoku_Display]
 	@KouritenJuusho2 as varchar(80),
 	@Operator  varchar(10),
     @Program  varchar(100),
-    @PC  varchar(30)
+    @PC  varchar(30),
+	@KouritenCD as varchar(10)
 	
 AS
 BEGIN
@@ -110,6 +111,7 @@ INSERT INTO  #WK_ShukkaKanouSou2
 	((@KouritenJuusho1 is null or (DJ.KouritenJuusho1=@KouritenJuusho1))or
 	(@KouritenJuusho2 is null or (DJ.KouritenJuusho2=@KouritenJuusho2)))
 	)
+	AND (@KouritenCD is null or (DJ.KouritenCD=@KouritenCD))
 	GROUP BY DJSS.JuchuuNO,DJSS.JuchuuGyouNO
 
 
@@ -205,6 +207,7 @@ SELECT
 	((@KouritenJuusho1 is null or (DJ.KouritenJuusho1=@KouritenJuusho1))or
 	(@KouritenJuusho2 is null or (DJ.KouritenJuusho2=@KouritenJuusho2)))
 	)
+	AND (@KouritenCD is null or (DJ.KouritenCD=@KouritenCD))
 	AND SKKNS2.ShukkanouSuu <> 0	--出荷可能数
 	ORDER BY DJMS.ShouhinCD ASC,DJMS.JuchuuNO ASC,DJMS.GyouHyouziJun ASC
 

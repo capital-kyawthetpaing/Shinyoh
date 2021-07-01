@@ -33,7 +33,7 @@ namespace BL
         public DataTable ShukkasiziNyuuryoku_Display(ShukkaSiziNyuuryokuEntity se)
         {
             CKMDL ckmdl = new CKMDL();
-            var parameters = new SqlParameter[25];
+            var parameters = new SqlParameter[26];
             parameters[0] = new SqlParameter("@ShippingDate", SqlDbType.VarChar) { Value = se.ShippingDate };
             parameters[1] = new SqlParameter("@TokuisakiCD", SqlDbType.VarChar) { Value = se.TokuisakiCD };
             parameters[2] = new SqlParameter("@JuchuuNO", SqlDbType.VarChar) { Value = se.JuchuuNO };
@@ -59,6 +59,7 @@ namespace BL
             parameters[22] = new SqlParameter("@Operator", SqlDbType.VarChar) { Value = se.OperatorCD };
             parameters[23] = new SqlParameter("@Program", SqlDbType.VarChar) { Value = se.ProgramID };
             parameters[24] = new SqlParameter("@PC", SqlDbType.VarChar) { Value = se.PC };
+            parameters[25] = new SqlParameter("@KouritenCD", SqlDbType.VarChar) { Value = se.KouritenCD };
 
 
             DataTable dt = ckmdl.SelectDatatable("ShukkasiziNyuuryoku_Display", GetConnectionString(), parameters);

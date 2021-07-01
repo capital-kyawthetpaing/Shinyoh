@@ -453,6 +453,7 @@ namespace ShukkaSiziNyuuryoku
                 TokuisakiJuusho2 = txtAddress.Text,
                 KouritenJuusho1 = txtAddress.Text,
                 KouritenJuusho2 = txtAddress.Text,
+                KouritenCD = txtJyokenKouritenCD.Text,
                 OperatorCD = OperatorCD,
                 ProgramID = ProgramID,
                 PC = PCID
@@ -915,6 +916,25 @@ namespace ShukkaSiziNyuuryoku
                 }
             }
         }
+        private void txtJyokenKouritenCD_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (!txtJyokenKouritenCD.IsErrorOccurs)
+                {
+                    DataTable dt = txtJyokenKouritenCD.IsDatatableOccurs;
+                    if (dt.Rows.Count > 0)
+                    {
+                        lblJyokenKouriten.Text = dt.Rows[0]["KouritenRyakuName"].ToString();
+                    }
+                    else
+                    {
+                        lblJyokenKouriten.Text = string.Empty;
+                    }
+                }
+                
+            }
+        }
         private void txtJuchuuNo_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -972,6 +992,8 @@ namespace ShukkaSiziNyuuryoku
                 sbShippingNO.E115Check(false, "ShukkaSiziNyuuryoku", sbShippingNO);
                 sbShippingNO.E160Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null);
                 sbShippingNO.E280Check(false, "ShukkaSiziNyuuryoku", sbShippingNO, null, null);
+                //条件部：小売店'
+                txtJyokenKouritenCD.E101Check(true, "M_Kouriten", txtJyokenKouritenCD, txtShippingDate, null);
             }
             else
             {
@@ -1206,6 +1228,8 @@ namespace ShukkaSiziNyuuryoku
         {
             txtJuchuuNo.Clear();
             txtSenpyouhachuuNo.Clear();
+            txtJyokenKouritenCD.Clear();
+            lblJyokenKouriten.Text = "";
             txtYubin1.Clear();
             txtYubin2.Clear();
             txtAddress.Clear();
@@ -1480,6 +1504,7 @@ namespace ShukkaSiziNyuuryoku
                     lblTokuisakiName.Text = string.Empty;
                     lblKouritenName.Text = string.Empty;
                     lblStaffName.Text = string.Empty;
+                    lblJyokenKouriten.Text = string.Empty;
                     dtResult.Clear();
                     break;
 
@@ -1507,6 +1532,8 @@ namespace ShukkaSiziNyuuryoku
                     sbTokuisaki.ChangeDate = txtShippingDate;
                     sbKouriten.ChangeDate = txtShippingDate;
                     sbStaffCD.ChangeDate = txtShippingDate;
+                    txtJyokenKouritenCD.ChangeDate = txtShippingDate;
+                    txtJyokenKouritenCD.lblName = lblJyokenKouriten;
                     break;
             }
         }
