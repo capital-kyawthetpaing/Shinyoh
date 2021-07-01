@@ -289,7 +289,7 @@ namespace JuchuuTorikomi
                         }
                         else
                         {
-                            bbl.ShowMessage("E274");
+                            //bbl.ShowMessage("E274");
                             txtDate1.Focus();
                         }
                     }   

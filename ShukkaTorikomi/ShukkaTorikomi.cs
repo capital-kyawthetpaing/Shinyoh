@@ -533,7 +533,7 @@ namespace ShukkaTorikomi
             DataTable gv_dt = gvShukkaTorikomi.DataSource as DataTable;
             if (gv_dt == null || gv_dt.Rows.Count==0)
             {
-                bbl.ShowMessage("E274");
+                //bbl.ShowMessage("E274");
                 txtDate1.Focus();
             }
             else
