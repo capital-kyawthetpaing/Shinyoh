@@ -414,7 +414,7 @@ namespace ShukkaTorikomi
                     //        .CopyToDataTable();
 
                     dt_Main = create_dt.AsEnumerable()
-                          .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["ShukkaSiziNO"] })
+                          .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"]})
                           .Select(g => g.OrderBy(r => r["TokuisakiCD"]).First())
                           .CopyToDataTable();
 
@@ -452,7 +452,7 @@ namespace ShukkaTorikomi
                         //string kouritenryakuName = dt_Main.Rows[i]["KouritenRyakuName"].ToString();
                         //string denpyouNO = dt_Main.Rows[i]["DenpyouNO"].ToString();
                         //string shukkadenpyouTekiyou= dt_Main.Rows[i]["ShukkadenpyouTekiyou"].ToString();
-                        string ShukkaSiziNO = dt_Main.Rows[i]["ShukkaSiziNO"].ToString();
+                        //string ShukkaSiziNO = dt_Main.Rows[i]["ShukkaSiziNO"].ToString();
                         string null_val= string.Empty;
                         DataRow[] select_dr = null;
                         //if (string.IsNullOrEmpty(shukkadenpyouTekiyou))
@@ -461,7 +461,7 @@ namespace ShukkaTorikomi
                         //    select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "'and DenpyouDate = '" + denpyouDate + "' and ChangeDate='" + changeDate + "'" + null_val + "");
                         //else select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "'and DenpyouDate = '" + denpyouDate + "' and ChangeDate='" + changeDate + "'");
 
-                         select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and ShukkaSiziNO='" + ShukkaSiziNO + "'");
+                         select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "' and KouritenCD='" + kouritenCD + "' ") ;
                         if (select_dr.Length > 0)
                         {
                             for (int j = 0; j < select_dr.Length; j++)
@@ -533,7 +533,7 @@ namespace ShukkaTorikomi
             DataTable gv_dt = gvShukkaTorikomi.DataSource as DataTable;
             if (gv_dt == null || gv_dt.Rows.Count==0)
             {
-                bbl.ShowMessage("E274");
+                //bbl.ShowMessage("E274");
                 txtDate1.Focus();
             }
             else
