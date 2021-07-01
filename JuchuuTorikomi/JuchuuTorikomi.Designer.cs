@@ -305,6 +305,7 @@
             this.gvJuchuuTorikomi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.gvJuchuuTorikomi.Size = new System.Drawing.Size(1235, 570);
             this.gvJuchuuTorikomi.TabIndex = 9;
+            this.gvJuchuuTorikomi.SelectionChanged += new System.EventHandler(this.gvJuchuuTorikomi_SelectionChanged);
             // 
             // colTorikomiDenpyouNO
             // 

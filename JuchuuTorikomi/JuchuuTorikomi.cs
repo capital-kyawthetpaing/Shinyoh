@@ -619,6 +619,15 @@ namespace JuchuuTorikomi
                 }
             }
         }
+
+        //TaskNo678 HET
+        private void gvJuchuuTorikomi_SelectionChanged(object sender, EventArgs e)
+        {
+            DataGridViewRow row = gvJuchuuTorikomi.CurrentRow;
+            if (row != null)
+                txtDenpyouNO.Text = row.Cells["colTorikomiDenpyouNO"].Value.ToString();
+        }
+
         private bool Data_Check()
         {
             dtResult = new DataTable();
