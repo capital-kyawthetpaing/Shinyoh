@@ -126,7 +126,7 @@ namespace JuchuuTorikomi
                     txtDenpyouNO.E265Check(false, "JuchuuTorikomi", txtDenpyouNO);
                 }
                 if (ErrorCheck(PanelDetail))
-                    GridviewBind();
+                    GridviewBind(false);
                 gvJuchuuTorikomi.ActionType = string.Empty;
             }
             if (tagID == "12")
@@ -235,7 +235,7 @@ namespace JuchuuTorikomi
                                 txtDate2.Clear();
                                 txtDenpyouNO.Clear();
                                 txtDenpyouNO.Focus();
-                                GridviewBind();
+                                GridviewBind(true);
 
                             }
                             //if (dtgv_row != null)
@@ -308,7 +308,7 @@ namespace JuchuuTorikomi
             gvJuchuuTorikomi.ClearSelection();
             rdo_Registration.Focus();
         }
-        private void GridviewBind()
+        private void GridviewBind(bool bl_F12)
         {
             JEntity.DateFrom = txtDate1.Text;
             JEntity.DateTo = txtDate2.Text;
@@ -319,10 +319,12 @@ namespace JuchuuTorikomi
             }
             else
             {
-                //bbl.ShowMessage("S013");//to need F10
+                if (bl_F12 != true)
+                    bbl.ShowMessage("S013");//to need F10
                 dtMain.Clear();
                 gvJuchuuTorikomi.DataSource = dtMain;  
                 txtDate1.Focus();
+                txtDenpyouNO.Text = string.Empty;
                 return;
             }
         }
@@ -634,7 +636,7 @@ namespace JuchuuTorikomi
             dtResult = JBL.TorikomiDenpyouNO_Check(ProgramID, txtDenpyouNO.Text);
             if (dtResult.Rows.Count > 0 && dtResult.Rows[0]["Result"].ToString().Equals("0"))
             {
-                bbl.ShowMessage("S013");
+               // bbl.ShowMessage("S013");
                 return true;
             }
             return false;
@@ -642,7 +644,7 @@ namespace JuchuuTorikomi
 
         private void txtDate2_KeyDown(object sender, KeyEventArgs e)
         {
-              GridviewBind();
+              GridviewBind(false);
         }
     }
 }

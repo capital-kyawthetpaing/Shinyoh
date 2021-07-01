@@ -230,7 +230,7 @@ namespace ShukkaTorikomi
                     txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
                 }               
                 if (ErrorCheck(PanelDetail))
-                    DataGridviewBind();
+                    DataGridviewBind(false);
                 gvShukkaTorikomi.ActionType = string.Empty;
             }
             //base.FunctionProcess(tagID);
@@ -339,7 +339,7 @@ namespace ShukkaTorikomi
                                     txtDate2.Clear();
                                     txtDenpyouNO.Clear();
                                     txtDenpyouNO.Focus();
-                                    DataGridviewBind();
+                                    DataGridviewBind(true);
                                 }
                                 else
                                 {
@@ -353,7 +353,7 @@ namespace ShukkaTorikomi
         }
             
         
-        private void DataGridviewBind()
+        private void DataGridviewBind(bool bl_F12)
         {  
             //TaskNo456 HET
             SEntity.DateFrom = txtDate1.Text;
@@ -365,10 +365,12 @@ namespace ShukkaTorikomi
             }
             else
             {
-                //bbl.ShowMessage("S013");
+                if (bl_F12 != true)
+                    bbl.ShowMessage("S013");
                 dt.Clear();
                 gvShukkaTorikomi.DataSource = dt;
                 txtDate1.Focus();
+                txtDenpyouNO.Text = string.Empty;
             }
         }
 
@@ -661,7 +663,7 @@ namespace ShukkaTorikomi
 
         private void txtDate2_KeyDown(object sender, KeyEventArgs e)
         {
-            DataGridviewBind();
+            DataGridviewBind(false);
         }
 
         private bool Data_Check()
@@ -670,7 +672,7 @@ namespace ShukkaTorikomi
             dt = JBL.TorikomiDenpyouNO_Check(ProgramID, txtDenpyouNO.Text);
             if (dt.Rows.Count > 0 && dt.Rows[0]["Result"].ToString().Equals("0"))
             {
-                bbl.ShowMessage("S013");
+               // bbl.ShowMessage("S013");
                 return true;
             }
             return false;
