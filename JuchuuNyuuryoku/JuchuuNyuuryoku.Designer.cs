@@ -1230,7 +1230,7 @@
             dataGridViewCellStyle3.Format = "N0";
             dataGridViewCellStyle3.NullValue = null;
             this.colGenZaikoSuu.DefaultCellStyle = dataGridViewCellStyle3;
-            this.colGenZaikoSuu.HeaderText = "現在庫数";
+            this.colGenZaikoSuu.HeaderText = "Free在庫";
             this.colGenZaikoSuu.MaxInputLength = 7;
             this.colGenZaikoSuu.Name = "colGenZaikoSuu";
             this.colGenZaikoSuu.ReadOnly = true;
