@@ -27,6 +27,8 @@ namespace HikiateHenkouShoukai
             gvMainDetail.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.gvMainDetail_DataError);
             gvMainDetail.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.gvMainDetail_CellFormatting);
 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
         }
 
         private void HikiateHenkouShoukai_Load(object sender, EventArgs e)
@@ -134,6 +136,8 @@ namespace HikiateHenkouShoukai
             gvFreeInventoryDetails.Columns[4].SortMode = DataGridViewColumnSortMode.NotSortable;
             gvFreeInventoryDetails.Columns[5].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
             gvFreeInventoryDetails.Columns[5].SortMode = DataGridViewColumnSortMode.NotSortable;
+            gvFreeInventoryDetails.Columns[6].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gvFreeInventoryDetails.Columns[6].SortMode = DataGridViewColumnSortMode.NotSortable;
 
         }
         private void Modified_Panel()
@@ -862,6 +866,10 @@ namespace HikiateHenkouShoukai
                 dt.Columns.Add("着荷予定数", typeof(int));
                 dt.Columns.Add("未引当数", typeof(int));
             }
+            else
+            {
+                dt.Columns.Add("現在庫数");
+            }
             dt.Columns.Add("引当済数", typeof(int));
             switch(type)
             {
@@ -883,7 +891,7 @@ namespace HikiateHenkouShoukai
                     dt.Columns.Add("希望納期");
                     break;
                 case 2:
-                    dt.Columns.Add("現在庫数");
+                    dt.Columns.Add("Free在庫");
                     dt.Columns.Add("管理番号");
                     break;
             }
