@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Shinyoh_Controls;
 
 namespace HikiateHenkouShoukai
 {
@@ -50,7 +51,13 @@ namespace HikiateHenkouShoukai
             base_entity = _GetBaseData();
             txtTokuisakiCD.E102Type = base_entity.LoginDate;        //ChangeDate value For E101 Error check of txtTokuisakiCD
             txtKouritenCD.E102Type = base_entity.LoginDate;         //ChangeDate value For E101 Error check of txtKouritenCD
-            if(rdoAggregation.Checked)
+            //NMW 2021-06-30 Task No 699 begin
+            STextBox txt_Date = new STextBox();
+            txt_Date.Text = base_entity.LoginDate;
+            txtShouhinCD.ChangeDate = txt_Date;
+            //NMW 2021-06-30 Task No 699 end
+
+            if (rdoAggregation.Checked)
                 Radio_Changed(0);
 
             gvAggregationDetails.SetGridDesign();
@@ -306,8 +313,10 @@ namespace HikiateHenkouShoukai
                     gvAggregationDetails.Visible = true;
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = false;
-                    gvAggregationDetails.Location = new Point(49, 262);
-                    gvAggregationDetails.Size = new Size(1430, 550);
+                    //Comment NMW Task 668 begin
+                    //gvAggregationDetails.Location = new Point(49, 262);
+                    //gvAggregationDetails.Size = new Size(1430, 550);
+                   //end Task 668
                     //this.gvAggregationDetails.Size = new System.Drawing.Size(1300, 387);
                      txtKanriNO.NextControlName = "txtTokuisakiCD";
                     //gvMainDetail.ReadOnly = true;
@@ -336,8 +345,10 @@ namespace HikiateHenkouShoukai
                     gvAggregationDetails.Visible = false;
                     gvMainDetail.Visible = true;
                     gvFreeInventoryDetails.Visible = false;
-                    gvMainDetail.Location = new Point(49, 262);
-                    gvMainDetail.Size = new Size(1632, 565);
+                    //Comment NMW Task 668 begin
+                    //gvMainDetail.Location = new Point(49, 262);
+                    //gvMainDetail.Size = new Size(1632, 565);
+                    //end Task 668
                     //this.gvMainDetail.Size = new System.Drawing.Size(1300, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = false;
@@ -367,8 +378,10 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Visible = false;
                     gvFreeInventoryDetails.Visible = true;
                     gvFreeInventoryDetails.DataSource = createMemoryTable(type);
-                    gvFreeInventoryDetails.Location = new Point(49, 262);
-                    gvFreeInventoryDetails.Size = new Size(1100, 550);
+                    //Comment NMW Task 668 begin
+                    //gvFreeInventoryDetails.Location = new Point(49, 262);
+                    //gvFreeInventoryDetails.Size = new Size(1100, 550);
+                    //end Task 668
                     //this.gvFreeInventoryDetails.Size = new System.Drawing.Size(1100, 387);
                     txtKanriNO.NextControlName = "txtShouhinCD";
                     //gvMainDetail.ReadOnly = true;
@@ -572,6 +585,7 @@ namespace HikiateHenkouShoukai
                     gvMainDetail.Memory_Row_Count = dtMain.Rows.Count;
                     gvAggregationDetails.Memory_Row_Count = dtMain.Rows.Count;
                 }
+                SetButton(ButtonType.BType.Search, F9, "検索(F9)", false);
             }
 
             if(dtTemp != null)
