@@ -299,6 +299,7 @@
             this.gvShukkaTorikomi.Name = "gvShukkaTorikomi";
             this.gvShukkaTorikomi.Size = new System.Drawing.Size(1235, 570);
             this.gvShukkaTorikomi.TabIndex = 8;
+            this.gvShukkaTorikomi.SelectionChanged += new System.EventHandler(this.gvShukkaTorikomi_SelectionChanged);
             // 
             // colTorikomiDenpyouNO
             // 
