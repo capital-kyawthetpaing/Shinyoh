@@ -431,6 +431,11 @@ namespace HikiateHenkouShoukai
                 dt = (DataTable)gvFreeInventoryDetails.DataSource;
                 dtExcel = dt.Copy();
                 dtExcel.Columns.Remove(dtExcel.Columns[4]);
+                //add NMW Task No. 673
+                dtExcel.Columns["Free在庫"].ColumnName = "現在庫";
+                dtExcel.Columns.Remove(dtExcel.Columns[4]);
+                
+                //end
                 dtExcel.AcceptChanges();
 
                 string fname = "在庫表";
