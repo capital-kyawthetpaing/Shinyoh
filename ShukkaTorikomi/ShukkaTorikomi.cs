@@ -420,9 +420,9 @@ namespace ShukkaTorikomi
                     //        .CopyToDataTable();
 
                     dt_Main = create_dt.AsEnumerable()
-                          //2021/07/01 Y.Nishikawa CHG↓↓
-                          //.GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["ShukkaSiziNO"] })
-                          .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"]})
+                         //2021/07/01 Y.Nishikawa CHG↓↓
+                         // .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"]})
+                         .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["ChangeDate"], Col4 = r["ShukkaSiziNO"] })
                           //2021/07/01 Y.Nishikawa CHG↑↑
                           .Select(g => g.OrderBy(r => r["TokuisakiCD"]).First())
                           .CopyToDataTable();
@@ -461,9 +461,7 @@ namespace ShukkaTorikomi
                         //string kouritenryakuName = dt_Main.Rows[i]["KouritenRyakuName"].ToString();
                         //string denpyouNO = dt_Main.Rows[i]["DenpyouNO"].ToString();
                         //string shukkadenpyouTekiyou= dt_Main.Rows[i]["ShukkadenpyouTekiyou"].ToString();
-                        //2021/07/01 Y.Nishikawa DEL↓↓
-                        //string ShukkaSiziNO = dt_Main.Rows[i]["ShukkaSiziNO"].ToString();
-                        //2021/07/01 Y.Nishikawa DEL↑↑
+                        string shukkaSiziNO = dt_Main.Rows[i]["ShukkaSiziNO"].ToString();
                         string null_val = string.Empty;
                         DataRow[] select_dr = null;
                         //if (string.IsNullOrEmpty(shukkadenpyouTekiyou))
@@ -473,9 +471,10 @@ namespace ShukkaTorikomi
                         //else select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "'and DenpyouDate = '" + denpyouDate + "' and ChangeDate='" + changeDate + "'");
 
                         //2021/07/01 Y.Nishikawa CHG↓↓
-                        //select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and ShukkaSiziNO='" + ShukkaSiziNO + "'");
-                        select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "' and KouritenCD='" + kouritenCD + "' ");
+                        //select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "' and KouritenCD='" + kouritenCD + "' ");
+                        select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "' and KouritenCD='" + kouritenCD + "' and ChangeDate = '" + changeDate + "' and (ISNULL(ShukkaSiziNO, '') ='" + shukkaSiziNO + "')");
                         //2021/07/01 Y.Nishikawa CHG↑↑
+
                         if (select_dr.Length > 0)
                         {
                             for (int j = 0; j < select_dr.Length; j++)
