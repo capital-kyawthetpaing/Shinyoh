@@ -332,7 +332,10 @@ namespace ShukkaTorikomi
                                     dt_Check.Columns.Add(dataColumn1);
                                     string del_XML = cf.DataTableToXml(dt_Check);
 
-                                    return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", del_XML, Xml.Item2, TorikomiDenpyouNO);
+                                    //2021/07/02 Y.Nishikawa CHG↓↓
+                                    //return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", del_XML, Xml.Item2, TorikomiDenpyouNO);
+                                    return_DT = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Delete", del_XML, Xml.Item2, TorikomiDenpyouNO);
+                                    //2021/07/02 Y.Nishikawa CHG↑↑
                                     bbl.ShowMessage("I002");
                                     rdo_Sakujo.Checked = true;
                                     txtDate1.Clear();
@@ -417,7 +420,10 @@ namespace ShukkaTorikomi
                     //        .CopyToDataTable();
 
                     dt_Main = create_dt.AsEnumerable()
+                          //2021/07/01 Y.Nishikawa CHG↓↓
+                          //.GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["ShukkaSiziNO"] })
                           .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"]})
+                          //2021/07/01 Y.Nishikawa CHG↑↑
                           .Select(g => g.OrderBy(r => r["TokuisakiCD"]).First())
                           .CopyToDataTable();
 
@@ -455,8 +461,10 @@ namespace ShukkaTorikomi
                         //string kouritenryakuName = dt_Main.Rows[i]["KouritenRyakuName"].ToString();
                         //string denpyouNO = dt_Main.Rows[i]["DenpyouNO"].ToString();
                         //string shukkadenpyouTekiyou= dt_Main.Rows[i]["ShukkadenpyouTekiyou"].ToString();
+                        //2021/07/01 Y.Nishikawa DEL↓↓
                         //string ShukkaSiziNO = dt_Main.Rows[i]["ShukkaSiziNO"].ToString();
-                        string null_val= string.Empty;
+                        //2021/07/01 Y.Nishikawa DEL↑↑
+                        string null_val = string.Empty;
                         DataRow[] select_dr = null;
                         //if (string.IsNullOrEmpty(shukkadenpyouTekiyou))
                         //    null_val = " and [ShukkadenpyouTekiyou] IS NULL";
@@ -464,7 +472,10 @@ namespace ShukkaTorikomi
                         //    select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "'and DenpyouDate = '" + denpyouDate + "' and ChangeDate='" + changeDate + "'" + null_val + "");
                         //else select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "'and DenpyouDate = '" + denpyouDate + "' and ChangeDate='" + changeDate + "'");
 
-                         select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "' and KouritenCD='" + kouritenCD + "' ") ;
+                        //2021/07/01 Y.Nishikawa CHG↓↓
+                        //select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and ShukkaSiziNO='" + ShukkaSiziNO + "'");
+                        select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "' and KouritenCD='" + kouritenCD + "' ");
+                        //2021/07/01 Y.Nishikawa CHG↑↑
                         if (select_dr.Length > 0)
                         {
                             for (int j = 0; j < select_dr.Length; j++)
