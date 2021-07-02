@@ -219,6 +219,7 @@ namespace ShukkaTorikomi
                 dataBind();
                 gvShukkaTorikomi.ClearSelection();
                 dt.Clear();
+                txtDenpyouNO.Text = "";
             }
             if (tagID == "10")
             {
@@ -229,7 +230,7 @@ namespace ShukkaTorikomi
                     txtDenpyouNO.E165Check(false, "ShukkaTorikom", txtDenpyouNO, null);
                 }               
                 if (ErrorCheck(PanelDetail))
-                    DataGridviewBind();
+                    DataGridviewBind(false);
                 gvShukkaTorikomi.ActionType = string.Empty;
             }
             //base.FunctionProcess(tagID);
@@ -331,14 +332,17 @@ namespace ShukkaTorikomi
                                     dt_Check.Columns.Add(dataColumn1);
                                     string del_XML = cf.DataTableToXml(dt_Check);
 
-                                    return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", del_XML, Xml.Item2, TorikomiDenpyouNO);
+                                    //2021/07/02 Y.Nishikawa CHG↓↓
+                                    //return_DT = bl.ShukkaTorikomi_CUD("NewShukkaTorikomi_Delete", del_XML, Xml.Item2, TorikomiDenpyouNO);
+                                    return_DT = bl.ShukkaTorikomi_CUD("ShukkaTorikomi_Delete", del_XML, Xml.Item2, TorikomiDenpyouNO);
+                                    //2021/07/02 Y.Nishikawa CHG↑↑
                                     bbl.ShowMessage("I002");
                                     rdo_Sakujo.Checked = true;
                                     txtDate1.Clear();
                                     txtDate2.Clear();
                                     txtDenpyouNO.Clear();
                                     txtDenpyouNO.Focus();
-                                    DataGridviewBind();
+                                    DataGridviewBind(true);
                                 }
                                 else
                                 {
@@ -352,7 +356,7 @@ namespace ShukkaTorikomi
         }
             
         
-        private void DataGridviewBind()
+        private void DataGridviewBind(bool bl_F12)
         {  
             //TaskNo456 HET
             SEntity.DateFrom = txtDate1.Text;
@@ -364,10 +368,12 @@ namespace ShukkaTorikomi
             }
             else
             {
-                //bbl.ShowMessage("S013");
+                if (bl_F12 != true)
+                    bbl.ShowMessage("S013");
                 dt.Clear();
                 gvShukkaTorikomi.DataSource = dt;
                 txtDate1.Focus();
+                txtDenpyouNO.Text = string.Empty;
             }
         }
 
@@ -414,7 +420,10 @@ namespace ShukkaTorikomi
                     //        .CopyToDataTable();
 
                     dt_Main = create_dt.AsEnumerable()
+                          //2021/07/01 Y.Nishikawa CHG↓↓
+                          //.GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"], Col3 = r["ShukkaSiziNO"] })
                           .GroupBy(r => new { Col1 = r["TokuisakiCD"], Col2 = r["KouritenCD"]})
+                          //2021/07/01 Y.Nishikawa CHG↑↑
                           .Select(g => g.OrderBy(r => r["TokuisakiCD"]).First())
                           .CopyToDataTable();
 
@@ -452,8 +461,10 @@ namespace ShukkaTorikomi
                         //string kouritenryakuName = dt_Main.Rows[i]["KouritenRyakuName"].ToString();
                         //string denpyouNO = dt_Main.Rows[i]["DenpyouNO"].ToString();
                         //string shukkadenpyouTekiyou= dt_Main.Rows[i]["ShukkadenpyouTekiyou"].ToString();
+                        //2021/07/01 Y.Nishikawa DEL↓↓
                         //string ShukkaSiziNO = dt_Main.Rows[i]["ShukkaSiziNO"].ToString();
-                        string null_val= string.Empty;
+                        //2021/07/01 Y.Nishikawa DEL↑↑
+                        string null_val = string.Empty;
                         DataRow[] select_dr = null;
                         //if (string.IsNullOrEmpty(shukkadenpyouTekiyou))
                         //    null_val = " and [ShukkadenpyouTekiyou] IS NULL";
@@ -461,7 +472,10 @@ namespace ShukkaTorikomi
                         //    select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "'and DenpyouDate = '" + denpyouDate + "' and ChangeDate='" + changeDate + "'" + null_val + "");
                         //else select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and TokuisakiRyakuName='" + tokuisakiryakuName + "' and KouritenRyakuName='" + kouritenryakuName + "' and DenpyouNO='" + denpyouNO + "'and DenpyouDate = '" + denpyouDate + "' and ChangeDate='" + changeDate + "'");
 
-                         select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "' and KouritenCD='" + kouritenCD + "' ") ;
+                        //2021/07/01 Y.Nishikawa CHG↓↓
+                        //select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "'and KouritenCD='" + kouritenCD + "' and ShukkaSiziNO='" + ShukkaSiziNO + "'");
+                        select_dr = create_dt.Select("TokuisakiCD = '" + tokuisakiCD + "' and KouritenCD='" + kouritenCD + "' ");
+                        //2021/07/01 Y.Nishikawa CHG↑↑
                         if (select_dr.Length > 0)
                         {
                             for (int j = 0; j < select_dr.Length; j++)
@@ -579,6 +593,13 @@ namespace ShukkaTorikomi
         //    return bl;
         //}
 
+        //private void gvShukkaTorikomi_SelectionChanged(object sender, EventArgs e)
+        //{
+        //    DataGridViewRow row = gvShukkaTorikomi.CurrentRow;
+        //    if (row != null)
+        //        txtDenpyouNO.Text = row.Cells["colTorikomiDenpyouNO"].Value.ToString();
+        //}
+
         public string Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
         {
             TextBox txt = new TextBox();
@@ -653,7 +674,7 @@ namespace ShukkaTorikomi
 
         private void txtDate2_KeyDown(object sender, KeyEventArgs e)
         {
-            DataGridviewBind();
+            DataGridviewBind(false);
         }
 
         private bool Data_Check()
@@ -662,7 +683,7 @@ namespace ShukkaTorikomi
             dt = JBL.TorikomiDenpyouNO_Check(ProgramID, txtDenpyouNO.Text);
             if (dt.Rows.Count > 0 && dt.Rows[0]["Result"].ToString().Equals("0"))
             {
-                bbl.ShowMessage("S013");
+               // bbl.ShowMessage("S013");
                 return true;
             }
             return false;
@@ -677,6 +698,13 @@ namespace ShukkaTorikomi
                     txtDenpyouNO.Focus();
                 }
             }
+        }
+
+        private void gvShukkaTorikomi_SelectionChanged(object sender, EventArgs e)
+        {
+            DataGridViewRow row = gvShukkaTorikomi.CurrentRow;
+            if (row != null)
+                txtDenpyouNO.Text = row.Cells["colTorikomiDenpyouNO"].Value.ToString();
         }
     }
 }
