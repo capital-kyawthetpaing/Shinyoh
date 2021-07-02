@@ -18,6 +18,7 @@ GO
 -- History    : 2021/05/12 Y.Nishikawa 出荷指示出力区分更新時、全出荷指示を対象としている
 --            : 2021/05/26 Y.Nishikawa 日付の条件が不正
 --            : 2021/06/14 Y.Nishikawa 改定日直近の意味をはきちがえてる
+--            : 2021/07/02 Y.Nishikawa 出荷指示番号を右から10桁に削る
 -- =============================================
 CREATE PROCEDURE [dbo].[ShukkaSiziDataShuturyoku_Excel]
 	@ShukkaYoteiDate		as date,
@@ -69,7 +70,10 @@ BEGIN
 		convert(int,isnull(dsm.UriageKingaku,0)) as UriageKingaku,--2021/05/21 ssa CHG TaskNO 426
 		--dsm.KouritenJuusho2,
 		djm.SenpouHacchuuNO,
-		ds.ShukkaSiziNO,
+		--2021/07/02 Y.Nishikawa CHG 出荷指示番号を右から10桁に削る↓↓
+		--ds.ShukkaSiziNO,
+		RIGHT('0000000000' + ds.ShukkaSiziNO, 10) ShukkaSiziNO,
+		--2021/07/02 Y.Nishikawa CHG 出荷指示番号を右から10桁に削る↑↑
 		dsm.ShukkaSiziMeisaiTekiyou
 
 		from D_ShukkaSizi ds
@@ -164,7 +168,10 @@ BEGIN
 		convert(int,isnull(dsm.UriageKingaku,0)) as UriageKingaku,--2021/05/21 ssa CHG TaskNO 426
 		--dsm.KouritenJuusho2,
 		djm.SenpouHacchuuNO,
-		ds.ShukkaSiziNO,
+		--2021/07/02 Y.Nishikawa CHG 出荷指示番号を右から10桁に削る↓↓
+		--ds.ShukkaSiziNO,
+		RIGHT('0000000000' + ds.ShukkaSiziNO, 10) ShukkaSiziNO,
+		--2021/07/02 Y.Nishikawa CHG 出荷指示番号を右から10桁に削る↑↑
 		dsm.ShukkaSiziMeisaiTekiyou
 
 		from D_ShukkaSizi ds
