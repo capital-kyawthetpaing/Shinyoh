@@ -130,7 +130,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             // panel1
             // 
-            this.panel1.Size = new System.Drawing.Size(1370, 69);
+            this.panel1.Size = new System.Drawing.Size(1770, 69);
             // 
             // PanelTitle
             // 
@@ -1113,7 +1113,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnSave.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSave.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(1572, 163);
+            this.btnSave.Location = new System.Drawing.Point(1572, 188);
             this.btnSave.Name = "btnSave";
             this.btnSave.NextControl = null;
             this.btnSave.NextControlName = null;
@@ -1129,7 +1129,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDisplay.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisplay.Location = new System.Drawing.Point(1473, 163);
+            this.btnDisplay.Location = new System.Drawing.Point(1473, 188);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.NextControl = null;
             this.btnDisplay.NextControlName = null;
@@ -1145,7 +1145,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnConfirm.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnConfirm.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.Location = new System.Drawing.Point(1372, 163);
+            this.btnConfirm.Location = new System.Drawing.Point(1372, 188);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.NextControl = null;
             this.btnConfirm.NextControlName = null;
@@ -1440,7 +1440,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1770, 749);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ShukkaSiziNyuuryoku";

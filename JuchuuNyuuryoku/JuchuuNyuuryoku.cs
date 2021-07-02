@@ -64,7 +64,7 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Empty, F7, "", false);
+            SetButton(ButtonType.BType.Empty, F7, "一括変更", false);
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
@@ -191,6 +191,8 @@ namespace JuchuuNyuuryoku
                     btn10.Visible = false;
                     Control btn11 = this.TopLevelControl.Controls.Find("BtnF11", true)[0];
                     btn11.Visible = false;
+                    Control btn7 = this.TopLevelControl.Controls.Find("BtnF7", true)[0];
+                    btn7.Visible = false;
                     btn_Tokuisaki.Enabled = true;
                     btn_Kouriten.Enabled = true;
                     kobj = new KouritenDetail(false);
@@ -288,7 +290,8 @@ namespace JuchuuNyuuryoku
             txtStaffCD.E102Check(true);
             txtStaffCD.E101Check(true, "M_Staff", txtStaffCD, txtJuchuuDate, null);
             txtStaffCD.E135Check(true, "M_Staff", txtStaffCD, txtJuchuuDate);
-            
+            sTextBox1.E103Check(true);
+
         }
 
         public override void FunctionProcess(string tagID)
@@ -316,6 +319,10 @@ namespace JuchuuNyuuryoku
                 {
                     Disable_UDI_Mode();
                 }
+            }
+            if (tagID == "7")
+            {
+                Function_F7();
             }
             if (tagID == "8")
             {
@@ -984,6 +991,61 @@ namespace JuchuuNyuuryoku
             if (return_error)
                 return (true, null);
             else return (false, dt);
+        }
+        private void btnNameF7_Click(object sender, EventArgs e)
+        {
+            Function_F7();
+        }
+        private void Function_F7()
+        {
+            if (string.IsNullOrEmpty(sTextBox1.Text))
+            {
+                base_bl.ShowMessage("E102");
+                sTextBox1.Focus();
+                return;
+            }
+            if (!cf.DateCheck(sTextBox1))
+            {
+                base_bl.ShowMessage("E103");
+                sTextBox1.Focus();
+                return;
+            }
+            //受注日より前の日付の場合、Error
+            DateTime JuchuuDate = string.IsNullOrEmpty(txtJuchuuDate.Text) ? Convert.ToDateTime(base_Entity.LoginDate) : Convert.ToDateTime(txtJuchuuDate.Text);
+            if (Convert.ToDateTime(sTextBox1.Text) < JuchuuDate)
+            {
+                base_bl.ShowMessage("E267", "受注日");
+                sTextBox1.Focus();
+                return;
+            }
+            int count = 0;
+            for (int t = 0; t < gv_JuchuuNyuuryoku.RowCount; t++)
+            {
+                DataGridViewRow row = gv_JuchuuNyuuryoku.Rows[t];
+                //明細部.数量<>0 かつ 明細部.Freeチェックボックス＝OFF　が存在しない時、メッセージ表示。                
+                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" && row.Cells["colFree"].Value.ToString() == "False")
+                {
+                    count++;
+                    break;
+                }
+            }
+            if (count.Equals(0))
+            {
+                //S013
+                obj_bl.ShowMessage("S013");
+                return;
+            }
+
+            gv_JuchuuNyuuryoku.ActionType = "F7";
+            for (int t = 0; t < gv_JuchuuNyuuryoku.RowCount; t++)
+            {
+                DataGridViewRow row = gv_JuchuuNyuuryoku.Rows[t];
+                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" && row.Cells["colFree"].Value.ToString() == "False")
+                {  //明細部.数量<>0 かつ 明細部.Freeチェックボックス＝OFF　が存在する時、該当行の明細部.着荷予定日にヘッダ部.着荷予定一括をセット。
+                    row.Cells["colexpectedDate"].Value = sTextBox1.Text;
+                }
+            }
+            gv_JuchuuNyuuryoku.ActionType = string.Empty;
         }
         private void btnNameF10_Click(object sender, EventArgs e)
         {
