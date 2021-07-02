@@ -64,7 +64,7 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Delete, F4, "削除(F4)", true);
             SetButton(ButtonType.BType.Inquiry, F5, "照会(F5)", true);
             SetButton(ButtonType.BType.Cancel, F6, "ｷｬﾝｾﾙ(F6)", true);
-            SetButton(ButtonType.BType.Empty, F7, "一括変更", false);
+            SetButton(ButtonType.BType.Confirm, F7, "一括変更", false);
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
             SetButton(ButtonType.BType.Search, F9, "検索(F9)", true);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
@@ -239,6 +239,7 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", false);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", false);
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", false);
+            SetButton(ButtonType.BType.Normal, F7, "一括変更(F7)", false);
             // F10_Gridview_Bind();
 
             gv_JuchuuNyuuryoku.Memory_Row_Count = 0;
@@ -649,6 +650,7 @@ namespace JuchuuNyuuryoku
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
             SetButton(ButtonType.BType.Display, F10, "表示(F10)", true);
             SetButton(ButtonType.BType.Memory, F11, "保存(F11)", true);
+            SetButton(ButtonType.BType.Confirm, F7, "一括変更(F7)", true);
             txtJuchuuDate.Focus();
             cf.DisablePanel(PanelTitle);
         }
@@ -1023,7 +1025,7 @@ namespace JuchuuNyuuryoku
             {
                 DataGridViewRow row = gv_JuchuuNyuuryoku.Rows[t];
                 //明細部.数量<>0 かつ 明細部.Freeチェックボックス＝OFF　が存在しない時、メッセージ表示。                
-                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" && row.Cells["colFree"].Value.ToString() == "False")
+                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" && row.Cells["colFree"].Value.ToString() != "1")
                 {
                     count++;
                     break;
@@ -1040,7 +1042,7 @@ namespace JuchuuNyuuryoku
             for (int t = 0; t < gv_JuchuuNyuuryoku.RowCount; t++)
             {
                 DataGridViewRow row = gv_JuchuuNyuuryoku.Rows[t];
-                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" && row.Cells["colFree"].Value.ToString() == "False")
+                if (row.Cells["colJuchuuSuu"].Value.ToString() != "0" && row.Cells["colFree"].Value.ToString() != "1")
                 {  //明細部.数量<>0 かつ 明細部.Freeチェックボックス＝OFF　が存在する時、該当行の明細部.着荷予定日にヘッダ部.着荷予定一括をセット。
                     row.Cells["colexpectedDate"].Value = sTextBox1.Text;
                 }
