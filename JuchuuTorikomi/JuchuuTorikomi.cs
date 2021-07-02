@@ -198,8 +198,8 @@ namespace JuchuuTorikomi
                         }
                         else if (dtMain.Rows.Count > 0)                            
                         {
-                            //if (bbl.ShowMessage("Q102") == DialogResult.Yes)
-                            //{
+                            if (bbl.ShowMessage("Q102") == DialogResult.Yes)  //open comment by HET
+                            {
                                 string Xml = string.Empty;
                                 spname = "JuchuuTorikomi_Delete";
 
@@ -280,12 +280,13 @@ namespace JuchuuTorikomi
                                         //}
                                     //}
                                 //}
-                           // }
-                            //else
-                            //{
-                            //    if (PreviousCtrl != null)
-                            //        PreviousCtrl.Focus();
-                            //}
+                            }
+                            else  //open comment by HET
+                            {
+                                if (PreviousCtrl != null)
+                                    // PreviousCtrl.Focus();
+                                    txtDate1.Focus();
+                            }
                         }
                         else
                         {
