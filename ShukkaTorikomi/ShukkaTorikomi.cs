@@ -593,12 +593,13 @@ namespace ShukkaTorikomi
         //    return bl;
         //}
 
-        //private void gvShukkaTorikomi_SelectionChanged(object sender, EventArgs e)
-        //{
-        //    DataGridViewRow row = gvShukkaTorikomi.CurrentRow;
-        //    if (row != null)
-        //        txtDenpyouNO.Text = row.Cells["colTorikomiDenpyouNO"].Value.ToString();
-        //}
+        //TaskNo676 KMMT
+        private void gvShukkaTorikomi_SelectionChanged(object sender, EventArgs e)
+        {
+            DataGridViewRow row = gvShukkaTorikomi.CurrentRow;
+            if (row != null)
+                txtDenpyouNO.Text = row.Cells["colTorikomiDenpyouNO"].Value.ToString();
+        }
 
         public string Date_Check(string csv_Date, int line_no, string error_msg1, string error_msg2)
         {
@@ -699,12 +700,7 @@ namespace ShukkaTorikomi
                 }
             }
         }
-
-        private void gvShukkaTorikomi_SelectionChanged(object sender, EventArgs e)
-        {
-            DataGridViewRow row = gvShukkaTorikomi.CurrentRow;
-            if (row != null)
-                txtDenpyouNO.Text = row.Cells["colTorikomiDenpyouNO"].Value.ToString();
-        }
+        
+       
     }
 }
