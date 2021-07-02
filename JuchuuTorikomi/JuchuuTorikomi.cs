@@ -394,6 +394,12 @@ namespace JuchuuTorikomi
                         create_dt.Rows[i]["JuchuuDate"] = txt.Text;
                         date = create_dt.Rows[i]["JuchuuDate"].ToString();
                     }
+                    TextBox d_txt = new TextBox();             //for date HET
+                    d_txt.Text = create_dt.Rows[i]["ChakuniYoteiDate"].ToString();
+                    if (cf.DateCheck(d_txt))
+                    {
+                        create_dt.Rows[i]["ChakuniYoteiDate"] = d_txt.Text;
+                    }
                     if (!string.IsNullOrEmpty(date))
                     {
                         DataTable Dt_JuchuuNO = JBL.GetJuchuuNO("1", date, "0");
