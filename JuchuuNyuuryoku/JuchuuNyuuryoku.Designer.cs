@@ -1463,7 +1463,7 @@
             this.sButton1.ButtonType = Entity.ButtonType.BType.Normal;
             this.sButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.sButton1.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
-            this.sButton1.Location = new System.Drawing.Point(1114, 199);
+            this.sButton1.Location = new System.Drawing.Point(1038, 199);
             this.sButton1.Name = "sButton1";
             this.sButton1.NextControl = null;
             this.sButton1.NextControlName = "BtnF12";
