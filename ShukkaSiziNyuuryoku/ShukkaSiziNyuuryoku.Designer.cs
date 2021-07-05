@@ -128,10 +128,6 @@ namespace ShukkaSiziNyuuryoku
             ((System.ComponentModel.ISupportInitialize)(this.dgvShukkasizi)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Size = new System.Drawing.Size(1770, 69);
-            // 
             // PanelTitle
             // 
             this.PanelTitle.Controls.Add(this.sbShippingNO);
@@ -147,10 +143,10 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.sLabel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel3.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel3.Location = new System.Drawing.Point(30, 8);
+            this.sLabel3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel3.Location = new System.Drawing.Point(30, 9);
             this.sLabel3.Name = "sLabel3";
-            this.sLabel3.Size = new System.Drawing.Size(100, 19);
+            this.sLabel3.Size = new System.Drawing.Size(100, 20);
             this.sLabel3.TabIndex = 2;
             this.sLabel3.Text = "出荷指示番号";
             this.sLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -207,9 +203,9 @@ namespace ShukkaSiziNyuuryoku
             this.PanelDetail.Controls.Add(this.txtSlip_Description);
             this.PanelDetail.Controls.Add(this.sLabel13);
             this.PanelDetail.Controls.Add(this.sbDenpyouCD);
-            this.PanelDetail.Location = new System.Drawing.Point(1, 71);
+            this.PanelDetail.Location = new System.Drawing.Point(1, 77);
             this.PanelDetail.Name = "PanelDetail";
-            this.PanelDetail.Size = new System.Drawing.Size(1710, 775);
+            this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
             this.PanelDetail.TabIndex = 7;
             // 
             // lblJyokenKouriten
@@ -217,10 +213,10 @@ namespace ShukkaSiziNyuuryoku
             this.lblJyokenKouriten.BackColor = System.Drawing.SystemColors.Control;
             this.lblJyokenKouriten.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblJyokenKouriten.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblJyokenKouriten.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
-            this.lblJyokenKouriten.Location = new System.Drawing.Point(358, 190);
+            this.lblJyokenKouriten.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.lblJyokenKouriten.Location = new System.Drawing.Point(358, 206);
             this.lblJyokenKouriten.Name = "lblJyokenKouriten";
-            this.lblJyokenKouriten.Size = new System.Drawing.Size(300, 19);
+            this.lblJyokenKouriten.Size = new System.Drawing.Size(300, 20);
             this.lblJyokenKouriten.TabIndex = 121;
             this.lblJyokenKouriten.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -233,7 +229,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJyokenKouritenCD.DecimalPlace = 0;
             this.txtJyokenKouritenCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtJyokenKouritenCD.DepandOnMode = false;
-            this.txtJyokenKouritenCD.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtJyokenKouritenCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtJyokenKouritenCD.IntegerPart = 0;
             this.txtJyokenKouritenCD.IsDatatableOccurs = null;
             this.txtJyokenKouritenCD.IsErrorOccurs = false;
@@ -241,15 +237,15 @@ namespace ShukkaSiziNyuuryoku
             this.txtJyokenKouritenCD.IsUseInitializedLayout = true;
             this.txtJyokenKouritenCD.lblName = null;
             this.txtJyokenKouritenCD.lblName1 = null;
-            this.txtJyokenKouritenCD.Location = new System.Drawing.Point(268, 190);
+            this.txtJyokenKouritenCD.Location = new System.Drawing.Point(268, 206);
             this.txtJyokenKouritenCD.MaxLength = 10;
-            this.txtJyokenKouritenCD.MinimumSize = new System.Drawing.Size(90, 18);
+            this.txtJyokenKouritenCD.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtJyokenKouritenCD.MoveNext = true;
             this.txtJyokenKouritenCD.Name = "txtJyokenKouritenCD";
             this.txtJyokenKouritenCD.NextControl = null;
             this.txtJyokenKouritenCD.NextControlName = "txtYubin1";
             this.txtJyokenKouritenCD.SearchType = Entity.SearchType.ScType.Kouriten;
-            this.txtJyokenKouritenCD.Size = new System.Drawing.Size(90, 19);
+            this.txtJyokenKouritenCD.Size = new System.Drawing.Size(90, 20);
             this.txtJyokenKouritenCD.TabIndex = 13;
             this.txtJyokenKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJyokenKouritenCD.TxtBox = null;
@@ -261,10 +257,10 @@ namespace ShukkaSiziNyuuryoku
             this.lblKouritenCD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lblKouritenCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblKouritenCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblKouritenCD.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
-            this.lblKouritenCD.Location = new System.Drawing.Point(168, 190);
+            this.lblKouritenCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblKouritenCD.Location = new System.Drawing.Point(168, 206);
             this.lblKouritenCD.Name = "lblKouritenCD";
-            this.lblKouritenCD.Size = new System.Drawing.Size(100, 19);
+            this.lblKouritenCD.Size = new System.Drawing.Size(100, 20);
             this.lblKouritenCD.TabIndex = 120;
             this.lblKouritenCD.Text = "小売店";
             this.lblKouritenCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -273,21 +269,21 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.panelRadio.Controls.Add(this.rdoNeed);
             this.panelRadio.Controls.Add(this.rdoNO);
-            this.panelRadio.Location = new System.Drawing.Point(879, 79);
+            this.panelRadio.Location = new System.Drawing.Point(879, 86);
             this.panelRadio.Name = "panelRadio";
-            this.panelRadio.Size = new System.Drawing.Size(200, 28);
+            this.panelRadio.Size = new System.Drawing.Size(200, 30);
             this.panelRadio.TabIndex = 10;
             // 
             // rdoNeed
             // 
             this.rdoNeed.Checked = true;
-            this.rdoNeed.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoNeed.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoNeed.Location = new System.Drawing.Point(4, 4);
             this.rdoNeed.MoveNext = true;
             this.rdoNeed.Name = "rdoNeed";
             this.rdoNeed.NextControl = null;
             this.rdoNeed.NextControlName = "txtJuchuuNo";
-            this.rdoNeed.Size = new System.Drawing.Size(72, 19);
+            this.rdoNeed.Size = new System.Drawing.Size(72, 21);
             this.rdoNeed.TabIndex = 10;
             this.rdoNeed.TabStop = true;
             this.rdoNeed.Text = "必要";
@@ -295,13 +291,13 @@ namespace ShukkaSiziNyuuryoku
             // 
             // rdoNO
             // 
-            this.rdoNO.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdoNO.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdoNO.Location = new System.Drawing.Point(77, 4);
             this.rdoNO.MoveNext = true;
             this.rdoNO.Name = "rdoNO";
             this.rdoNO.NextControl = null;
             this.rdoNO.NextControlName = "txtPhone1";
-            this.rdoNO.Size = new System.Drawing.Size(72, 19);
+            this.rdoNO.Size = new System.Drawing.Size(72, 21);
             this.rdoNO.TabIndex = 58;
             this.rdoNO.Text = "不要";
             this.rdoNO.UseVisualStyleBackColor = true;
@@ -311,10 +307,10 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.sLabel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel5.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel5.Location = new System.Drawing.Point(459, 163);
+            this.sLabel5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel5.Location = new System.Drawing.Point(459, 177);
             this.sLabel5.Name = "sLabel5";
-            this.sLabel5.Size = new System.Drawing.Size(100, 19);
+            this.sLabel5.Size = new System.Drawing.Size(100, 20);
             this.sLabel5.TabIndex = 79;
             this.sLabel5.Text = "住所";
             this.sLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -322,8 +318,8 @@ namespace ShukkaSiziNyuuryoku
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1051, 142);
+            this.label9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(1051, 154);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
             this.label9.TabIndex = 78;
@@ -338,7 +334,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbKouriten.DecimalPlace = 0;
             this.sbKouriten.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.sbKouriten.DepandOnMode = false;
-            this.sbKouriten.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.sbKouriten.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.sbKouriten.IntegerPart = 0;
             this.sbKouriten.IsDatatableOccurs = null;
             this.sbKouriten.IsErrorOccurs = false;
@@ -346,15 +342,15 @@ namespace ShukkaSiziNyuuryoku
             this.sbKouriten.IsUseInitializedLayout = true;
             this.sbKouriten.lblName = null;
             this.sbKouriten.lblName1 = null;
-            this.sbKouriten.Location = new System.Drawing.Point(268, 58);
+            this.sbKouriten.Location = new System.Drawing.Point(268, 63);
             this.sbKouriten.MaxLength = 10;
-            this.sbKouriten.MinimumSize = new System.Drawing.Size(70, 18);
+            this.sbKouriten.MinimumSize = new System.Drawing.Size(70, 19);
             this.sbKouriten.MoveNext = true;
             this.sbKouriten.Name = "sbKouriten";
             this.sbKouriten.NextControl = null;
             this.sbKouriten.NextControlName = "sbStaffCD";
             this.sbKouriten.SearchType = Entity.SearchType.ScType.Kouriten;
-            this.sbKouriten.Size = new System.Drawing.Size(80, 19);
+            this.sbKouriten.Size = new System.Drawing.Size(80, 20);
             this.sbKouriten.TabIndex = 5;
             this.sbKouriten.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.sbKouriten.TxtBox = null;
@@ -370,7 +366,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbStaffCD.DecimalPlace = 0;
             this.sbStaffCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.sbStaffCD.DepandOnMode = false;
-            this.sbStaffCD.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.sbStaffCD.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.sbStaffCD.IntegerPart = 0;
             this.sbStaffCD.IsDatatableOccurs = null;
             this.sbStaffCD.IsErrorOccurs = false;
@@ -378,15 +374,15 @@ namespace ShukkaSiziNyuuryoku
             this.sbStaffCD.IsUseInitializedLayout = true;
             this.sbStaffCD.lblName = null;
             this.sbStaffCD.lblName1 = null;
-            this.sbStaffCD.Location = new System.Drawing.Point(268, 82);
+            this.sbStaffCD.Location = new System.Drawing.Point(268, 89);
             this.sbStaffCD.MaxLength = 10;
-            this.sbStaffCD.MinimumSize = new System.Drawing.Size(70, 18);
+            this.sbStaffCD.MinimumSize = new System.Drawing.Size(70, 19);
             this.sbStaffCD.MoveNext = true;
             this.sbStaffCD.Name = "sbStaffCD";
             this.sbStaffCD.NextControl = null;
             this.sbStaffCD.NextControlName = "txtSlipDate";
             this.sbStaffCD.SearchType = Entity.SearchType.ScType.Staff;
-            this.sbStaffCD.Size = new System.Drawing.Size(80, 19);
+            this.sbStaffCD.Size = new System.Drawing.Size(80, 20);
             this.sbStaffCD.TabIndex = 7;
             this.sbStaffCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.sbStaffCD.TxtBox = null;
@@ -396,7 +392,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(983, 138);
+            this.label7.Location = new System.Drawing.Point(983, 150);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(15, 20);
             this.label7.TabIndex = 74;
@@ -406,7 +402,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(911, 138);
+            this.label8.Location = new System.Drawing.Point(911, 150);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 20);
             this.label8.TabIndex = 73;
@@ -419,21 +415,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone3.DecimalPlace = 0;
             this.txtPhone3.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone3.DepandOnMode = true;
-            this.txtPhone3.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtPhone3.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone3.IntegerPart = 0;
             this.txtPhone3.IsDatatableOccurs = null;
             this.txtPhone3.IsErrorOccurs = false;
             this.txtPhone3.IsRequire = false;
             this.txtPhone3.IsUseInitializedLayout = true;
-            this.txtPhone3.Location = new System.Drawing.Point(998, 139);
+            this.txtPhone3.Location = new System.Drawing.Point(998, 151);
             this.txtPhone3.MaxLength = 5;
-            this.txtPhone3.MinimumSize = new System.Drawing.Size(50, 18);
+            this.txtPhone3.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtPhone3.MoveNext = true;
             this.txtPhone3.Name = "txtPhone3";
             this.txtPhone3.NextControl = null;
             this.txtPhone3.NextControlName = "txtName";
             this.txtPhone3.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhone3.Size = new System.Drawing.Size(50, 19);
+            this.txtPhone3.Size = new System.Drawing.Size(50, 20);
             this.txtPhone3.TabIndex = 19;
             this.txtPhone3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -444,21 +440,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone2.DecimalPlace = 0;
             this.txtPhone2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone2.DepandOnMode = true;
-            this.txtPhone2.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtPhone2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone2.IntegerPart = 0;
             this.txtPhone2.IsDatatableOccurs = null;
             this.txtPhone2.IsErrorOccurs = false;
             this.txtPhone2.IsRequire = false;
             this.txtPhone2.IsUseInitializedLayout = true;
-            this.txtPhone2.Location = new System.Drawing.Point(930, 139);
+            this.txtPhone2.Location = new System.Drawing.Point(930, 151);
             this.txtPhone2.MaxLength = 5;
-            this.txtPhone2.MinimumSize = new System.Drawing.Size(50, 18);
+            this.txtPhone2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtPhone2.MoveNext = true;
             this.txtPhone2.Name = "txtPhone2";
             this.txtPhone2.NextControl = null;
             this.txtPhone2.NextControlName = "txtPhone3";
             this.txtPhone2.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhone2.Size = new System.Drawing.Size(50, 19);
+            this.txtPhone2.Size = new System.Drawing.Size(50, 20);
             this.txtPhone2.TabIndex = 18;
             this.txtPhone2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -469,21 +465,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone1.DecimalPlace = 0;
             this.txtPhone1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtPhone1.DepandOnMode = true;
-            this.txtPhone1.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtPhone1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtPhone1.IntegerPart = 0;
             this.txtPhone1.IsDatatableOccurs = null;
             this.txtPhone1.IsErrorOccurs = false;
             this.txtPhone1.IsRequire = false;
             this.txtPhone1.IsUseInitializedLayout = true;
-            this.txtPhone1.Location = new System.Drawing.Point(859, 138);
+            this.txtPhone1.Location = new System.Drawing.Point(859, 150);
             this.txtPhone1.MaxLength = 6;
-            this.txtPhone1.MinimumSize = new System.Drawing.Size(50, 18);
+            this.txtPhone1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtPhone1.MoveNext = true;
             this.txtPhone1.Name = "txtPhone1";
             this.txtPhone1.NextControl = null;
             this.txtPhone1.NextControlName = "txtPhone2";
             this.txtPhone1.SearchType = Entity.SearchType.ScType.None;
-            this.txtPhone1.Size = new System.Drawing.Size(50, 19);
+            this.txtPhone1.Size = new System.Drawing.Size(50, 20);
             this.txtPhone1.TabIndex = 17;
             this.txtPhone1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -492,11 +488,11 @@ namespace ShukkaSiziNyuuryoku
             this.lblPhone1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.lblPhone1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPhone1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblPhone1.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
-            this.lblPhone1.Location = new System.Drawing.Point(779, 138);
-            this.lblPhone1.MinimumSize = new System.Drawing.Size(80, 18);
+            this.lblPhone1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.lblPhone1.Location = new System.Drawing.Point(779, 150);
+            this.lblPhone1.MinimumSize = new System.Drawing.Size(80, 19);
             this.lblPhone1.Name = "lblPhone1";
-            this.lblPhone1.Size = new System.Drawing.Size(80, 19);
+            this.lblPhone1.Size = new System.Drawing.Size(80, 20);
             this.lblPhone1.TabIndex = 72;
             this.lblPhone1.Text = "電話番号";
             this.lblPhone1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -504,8 +500,8 @@ namespace ShukkaSiziNyuuryoku
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1594, 143);
+            this.label2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(1594, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 68;
@@ -520,7 +516,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbTokuisaki.DecimalPlace = 0;
             this.sbTokuisaki.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.sbTokuisaki.DepandOnMode = false;
-            this.sbTokuisaki.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.sbTokuisaki.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.sbTokuisaki.IntegerPart = 0;
             this.sbTokuisaki.IsDatatableOccurs = null;
             this.sbTokuisaki.IsErrorOccurs = false;
@@ -528,15 +524,15 @@ namespace ShukkaSiziNyuuryoku
             this.sbTokuisaki.IsUseInitializedLayout = true;
             this.sbTokuisaki.lblName = null;
             this.sbTokuisaki.lblName1 = null;
-            this.sbTokuisaki.Location = new System.Drawing.Point(268, 32);
+            this.sbTokuisaki.Location = new System.Drawing.Point(268, 35);
             this.sbTokuisaki.MaxLength = 10;
-            this.sbTokuisaki.MinimumSize = new System.Drawing.Size(70, 18);
+            this.sbTokuisaki.MinimumSize = new System.Drawing.Size(70, 19);
             this.sbTokuisaki.MoveNext = true;
             this.sbTokuisaki.Name = "sbTokuisaki";
             this.sbTokuisaki.NextControl = null;
             this.sbTokuisaki.NextControlName = "sbKouriten";
             this.sbTokuisaki.SearchType = Entity.SearchType.ScType.Tokuisaki;
-            this.sbTokuisaki.Size = new System.Drawing.Size(80, 19);
+            this.sbTokuisaki.Size = new System.Drawing.Size(80, 20);
             this.sbTokuisaki.TabIndex = 3;
             this.sbTokuisaki.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.sbTokuisaki.TxtBox = null;
@@ -548,10 +544,10 @@ namespace ShukkaSiziNyuuryoku
             this.lblTokuisakiName.BackColor = System.Drawing.SystemColors.Control;
             this.lblTokuisakiName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTokuisakiName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblTokuisakiName.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
-            this.lblTokuisakiName.Location = new System.Drawing.Point(347, 32);
+            this.lblTokuisakiName.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.lblTokuisakiName.Location = new System.Drawing.Point(347, 35);
             this.lblTokuisakiName.Name = "lblTokuisakiName";
-            this.lblTokuisakiName.Size = new System.Drawing.Size(250, 19);
+            this.lblTokuisakiName.Size = new System.Drawing.Size(250, 20);
             this.lblTokuisakiName.TabIndex = 66;
             this.lblTokuisakiName.Text = "ＸＸＸＸＸＸＸＸＸ10ＸＸＸＸＸＸＸＸＸ20";
             this.lblTokuisakiName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -559,8 +555,8 @@ namespace ShukkaSiziNyuuryoku
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(1063, 167);
+            this.label6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(1063, 181);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 65;
@@ -569,8 +565,8 @@ namespace ShukkaSiziNyuuryoku
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(675, 142);
+            this.label5.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(675, 154);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 60;
@@ -583,21 +579,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtAddress.DecimalPlace = 0;
             this.txtAddress.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtAddress.DepandOnMode = true;
-            this.txtAddress.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtAddress.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtAddress.IntegerPart = 0;
             this.txtAddress.IsDatatableOccurs = null;
             this.txtAddress.IsErrorOccurs = false;
             this.txtAddress.IsRequire = false;
             this.txtAddress.IsUseInitializedLayout = true;
-            this.txtAddress.Location = new System.Drawing.Point(559, 163);
+            this.txtAddress.Location = new System.Drawing.Point(559, 177);
             this.txtAddress.MaxLength = 80;
-            this.txtAddress.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtAddress.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtAddress.MoveNext = true;
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.NextControl = null;
             this.txtAddress.NextControlName = "txtPhone1";
             this.txtAddress.SearchType = Entity.SearchType.ScType.None;
-            this.txtAddress.Size = new System.Drawing.Size(500, 19);
+            this.txtAddress.Size = new System.Drawing.Size(500, 20);
             this.txtAddress.TabIndex = 16;
             this.txtAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -608,21 +604,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin2.DecimalPlace = 0;
             this.txtYubin2.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtYubin2.DepandOnMode = true;
-            this.txtYubin2.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtYubin2.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin2.IntegerPart = 0;
             this.txtYubin2.IsDatatableOccurs = null;
             this.txtYubin2.IsErrorOccurs = false;
             this.txtYubin2.IsRequire = false;
             this.txtYubin2.IsUseInitializedLayout = true;
-            this.txtYubin2.Location = new System.Drawing.Point(612, 139);
+            this.txtYubin2.Location = new System.Drawing.Point(612, 151);
             this.txtYubin2.MaxLength = 4;
-            this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 18);
+            this.txtYubin2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtYubin2.MoveNext = true;
             this.txtYubin2.Name = "txtYubin2";
             this.txtYubin2.NextControl = null;
             this.txtYubin2.NextControlName = "txtAddress";
             this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
-            this.txtYubin2.Size = new System.Drawing.Size(60, 19);
+            this.txtYubin2.Size = new System.Drawing.Size(60, 20);
             this.txtYubin2.TabIndex = 15;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
@@ -634,21 +630,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin1.DecimalPlace = 0;
             this.txtYubin1.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtYubin1.DepandOnMode = true;
-            this.txtYubin1.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtYubin1.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtYubin1.IntegerPart = 0;
             this.txtYubin1.IsDatatableOccurs = null;
             this.txtYubin1.IsErrorOccurs = false;
             this.txtYubin1.IsRequire = false;
             this.txtYubin1.IsUseInitializedLayout = true;
-            this.txtYubin1.Location = new System.Drawing.Point(559, 139);
+            this.txtYubin1.Location = new System.Drawing.Point(559, 151);
             this.txtYubin1.MaxLength = 3;
-            this.txtYubin1.MinimumSize = new System.Drawing.Size(30, 18);
+            this.txtYubin1.MinimumSize = new System.Drawing.Size(30, 19);
             this.txtYubin1.MoveNext = true;
             this.txtYubin1.Name = "txtYubin1";
             this.txtYubin1.NextControl = null;
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
-            this.txtYubin1.Size = new System.Drawing.Size(35, 19);
+            this.txtYubin1.Size = new System.Drawing.Size(35, 20);
             this.txtYubin1.TabIndex = 14;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
@@ -656,7 +652,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(596, 138);
+            this.label4.Location = new System.Drawing.Point(596, 150);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 20);
             this.label4.TabIndex = 62;
@@ -665,8 +661,8 @@ namespace ShukkaSiziNyuuryoku
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(400, 118);
+            this.label3.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(400, 128);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 12);
             this.label3.TabIndex = 59;
@@ -677,11 +673,11 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel18.BackColor = System.Drawing.Color.Red;
             this.sLabel18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel18.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel18.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel18.ForeColor = System.Drawing.Color.White;
-            this.sLabel18.Location = new System.Drawing.Point(779, 83);
+            this.sLabel18.Location = new System.Drawing.Point(779, 90);
             this.sLabel18.Name = "sLabel18";
-            this.sLabel18.Size = new System.Drawing.Size(100, 19);
+            this.sLabel18.Size = new System.Drawing.Size(100, 20);
             this.sLabel18.TabIndex = 56;
             this.sLabel18.Text = "出荷指示書";
             this.sLabel18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -693,21 +689,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlipDate.DecimalPlace = 0;
             this.txtSlipDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSlipDate.DepandOnMode = true;
-            this.txtSlipDate.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtSlipDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSlipDate.IntegerPart = 0;
             this.txtSlipDate.IsDatatableOccurs = null;
             this.txtSlipDate.IsErrorOccurs = false;
             this.txtSlipDate.IsRequire = false;
             this.txtSlipDate.IsUseInitializedLayout = true;
-            this.txtSlipDate.Location = new System.Drawing.Point(879, 10);
+            this.txtSlipDate.Location = new System.Drawing.Point(879, 11);
             this.txtSlipDate.MaxLength = 10;
-            this.txtSlipDate.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtSlipDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSlipDate.MoveNext = true;
             this.txtSlipDate.Name = "txtSlipDate";
             this.txtSlipDate.NextControl = null;
             this.txtSlipDate.NextControlName = "txtSlip_Description";
             this.txtSlipDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtSlipDate.Size = new System.Drawing.Size(100, 19);
+            this.txtSlipDate.Size = new System.Drawing.Size(100, 20);
             this.txtSlipDate.TabIndex = 8;
             this.txtSlipDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSlipDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
@@ -717,10 +713,10 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.sLabel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel4.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel4.Location = new System.Drawing.Point(168, 58);
+            this.sLabel4.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel4.Location = new System.Drawing.Point(168, 63);
             this.sLabel4.Name = "sLabel4";
-            this.sLabel4.Size = new System.Drawing.Size(100, 19);
+            this.sLabel4.Size = new System.Drawing.Size(100, 20);
             this.sLabel4.TabIndex = 53;
             this.sLabel4.Text = "小売店";
             this.sLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -730,10 +726,10 @@ namespace ShukkaSiziNyuuryoku
             this.lblKouritenName.BackColor = System.Drawing.SystemColors.Control;
             this.lblKouritenName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblKouritenName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblKouritenName.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblKouritenName.Location = new System.Drawing.Point(347, 58);
+            this.lblKouritenName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblKouritenName.Location = new System.Drawing.Point(347, 63);
             this.lblKouritenName.Name = "lblKouritenName";
-            this.lblKouritenName.Size = new System.Drawing.Size(250, 19);
+            this.lblKouritenName.Size = new System.Drawing.Size(250, 20);
             this.lblKouritenName.TabIndex = 51;
             this.lblKouritenName.Text = "ＸＸＸＸＸＸＸＸＸ10ＸＸＸＸＸＸＸＸＸ20";
             this.lblKouritenName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -744,12 +740,12 @@ namespace ShukkaSiziNyuuryoku
             this.btnKouriren_Detail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnKouriren_Detail.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnKouriren_Detail.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnKouriren_Detail.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnKouriren_Detail.Location = new System.Drawing.Point(598, 57);
+            this.btnKouriren_Detail.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnKouriren_Detail.Location = new System.Drawing.Point(598, 62);
             this.btnKouriren_Detail.Name = "btnKouriren_Detail";
             this.btnKouriren_Detail.NextControl = null;
             this.btnKouriren_Detail.NextControlName = null;
-            this.btnKouriren_Detail.Size = new System.Drawing.Size(50, 22);
+            this.btnKouriren_Detail.Size = new System.Drawing.Size(50, 24);
             this.btnKouriren_Detail.TabIndex = 6;
             this.btnKouriren_Detail.Text = "詳細";
             this.btnKouriren_Detail.UseVisualStyleBackColor = false;
@@ -764,7 +760,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJuchuuNo.DecimalPlace = 0;
             this.txtJuchuuNo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtJuchuuNo.DepandOnMode = false;
-            this.txtJuchuuNo.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtJuchuuNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtJuchuuNo.IntegerPart = 0;
             this.txtJuchuuNo.IsDatatableOccurs = null;
             this.txtJuchuuNo.IsErrorOccurs = false;
@@ -772,15 +768,15 @@ namespace ShukkaSiziNyuuryoku
             this.txtJuchuuNo.IsUseInitializedLayout = true;
             this.txtJuchuuNo.lblName = null;
             this.txtJuchuuNo.lblName1 = null;
-            this.txtJuchuuNo.Location = new System.Drawing.Point(269, 140);
+            this.txtJuchuuNo.Location = new System.Drawing.Point(269, 152);
             this.txtJuchuuNo.MaxLength = 12;
-            this.txtJuchuuNo.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtJuchuuNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtJuchuuNo.MoveNext = true;
             this.txtJuchuuNo.Name = "txtJuchuuNo";
             this.txtJuchuuNo.NextControl = null;
             this.txtJuchuuNo.NextControlName = "txtSenpyouhachuuNo";
             this.txtJuchuuNo.SearchType = Entity.SearchType.ScType.JuchuuNo;
-            this.txtJuchuuNo.Size = new System.Drawing.Size(100, 19);
+            this.txtJuchuuNo.Size = new System.Drawing.Size(100, 20);
             this.txtJuchuuNo.TabIndex = 11;
             this.txtJuchuuNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJuchuuNo.TxtBox = null;
@@ -792,11 +788,11 @@ namespace ShukkaSiziNyuuryoku
             this.slable1.BackColor = System.Drawing.Color.Red;
             this.slable1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.slable1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.slable1.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
+            this.slable1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.slable1.ForeColor = System.Drawing.Color.White;
-            this.slable1.Location = new System.Drawing.Point(168, 10);
+            this.slable1.Location = new System.Drawing.Point(168, 11);
             this.slable1.Name = "slable1";
-            this.slable1.Size = new System.Drawing.Size(100, 19);
+            this.slable1.Size = new System.Drawing.Size(100, 20);
             this.slable1.TabIndex = 3;
             this.slable1.Text = "出荷予定日";
             this.slable1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -848,9 +844,9 @@ namespace ShukkaSiziNyuuryoku
             this.JuchuuNO});
             this.dgvShukkasizi.IsErrorOccurs = false;
             this.dgvShukkasizi.ISRowColumn = null;
-            this.dgvShukkasizi.Location = new System.Drawing.Point(48, 217);
+            this.dgvShukkasizi.Location = new System.Drawing.Point(48, 235);
             this.dgvShukkasizi.Name = "dgvShukkasizi";
-            this.dgvShukkasizi.Size = new System.Drawing.Size(1600, 535);
+            this.dgvShukkasizi.Size = new System.Drawing.Size(1600, 580);
             this.dgvShukkasizi.TabIndex = 24;
             this.dgvShukkasizi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNo_KeyDown);
             // 
@@ -1112,12 +1108,12 @@ namespace ShukkaSiziNyuuryoku
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSave.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSave.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(1572, 188);
+            this.btnSave.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(1572, 204);
             this.btnSave.Name = "btnSave";
             this.btnSave.NextControl = null;
             this.btnSave.NextControlName = null;
-            this.btnSave.Size = new System.Drawing.Size(75, 21);
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 23;
             this.btnSave.Text = "F11 保存";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -1128,12 +1124,12 @@ namespace ShukkaSiziNyuuryoku
             this.btnDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnDisplay.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnDisplay.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisplay.Location = new System.Drawing.Point(1473, 188);
+            this.btnDisplay.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDisplay.Location = new System.Drawing.Point(1473, 204);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.NextControl = null;
             this.btnDisplay.NextControlName = null;
-            this.btnDisplay.Size = new System.Drawing.Size(75, 21);
+            this.btnDisplay.Size = new System.Drawing.Size(75, 23);
             this.btnDisplay.TabIndex = 21;
             this.btnDisplay.Text = "F10 表示";
             this.btnDisplay.UseVisualStyleBackColor = false;
@@ -1144,12 +1140,12 @@ namespace ShukkaSiziNyuuryoku
             this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnConfirm.ButtonType = Entity.ButtonType.BType.Normal;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnConfirm.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.Location = new System.Drawing.Point(1372, 188);
+            this.btnConfirm.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.Location = new System.Drawing.Point(1372, 204);
             this.btnConfirm.Name = "btnConfirm";
             this.btnConfirm.NextControl = null;
             this.btnConfirm.NextControlName = null;
-            this.btnConfirm.Size = new System.Drawing.Size(75, 21);
+            this.btnConfirm.Size = new System.Drawing.Size(75, 23);
             this.btnConfirm.TabIndex = 22;
             this.btnConfirm.Text = "F8 確認";
             this.btnConfirm.UseVisualStyleBackColor = false;
@@ -1162,21 +1158,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtShippingDate.DecimalPlace = 0;
             this.txtShippingDate.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtShippingDate.DepandOnMode = true;
-            this.txtShippingDate.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtShippingDate.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtShippingDate.IntegerPart = 0;
             this.txtShippingDate.IsDatatableOccurs = null;
             this.txtShippingDate.IsErrorOccurs = false;
             this.txtShippingDate.IsRequire = false;
             this.txtShippingDate.IsUseInitializedLayout = true;
-            this.txtShippingDate.Location = new System.Drawing.Point(268, 10);
+            this.txtShippingDate.Location = new System.Drawing.Point(268, 11);
             this.txtShippingDate.MaxLength = 10;
-            this.txtShippingDate.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtShippingDate.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtShippingDate.MoveNext = true;
             this.txtShippingDate.Name = "txtShippingDate";
             this.txtShippingDate.NextControl = null;
             this.txtShippingDate.NextControlName = "sbTokuisaki";
             this.txtShippingDate.SearchType = Entity.SearchType.ScType.None;
-            this.txtShippingDate.Size = new System.Drawing.Size(100, 19);
+            this.txtShippingDate.Size = new System.Drawing.Size(100, 20);
             this.txtShippingDate.TabIndex = 2;
             this.txtShippingDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtShippingDate.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Date;
@@ -1187,11 +1183,11 @@ namespace ShukkaSiziNyuuryoku
             this.sbLabel2.BackColor = System.Drawing.Color.Red;
             this.sbLabel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sbLabel2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sbLabel2.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
+            this.sbLabel2.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sbLabel2.ForeColor = System.Drawing.Color.White;
-            this.sbLabel2.Location = new System.Drawing.Point(168, 32);
+            this.sbLabel2.Location = new System.Drawing.Point(168, 35);
             this.sbLabel2.Name = "sbLabel2";
-            this.sbLabel2.Size = new System.Drawing.Size(100, 19);
+            this.sbLabel2.Size = new System.Drawing.Size(100, 20);
             this.sbLabel2.TabIndex = 4;
             this.sbLabel2.Text = "得意先";
             this.sbLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1203,21 +1199,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtName.DecimalPlace = 0;
             this.txtName.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtName.DepandOnMode = true;
-            this.txtName.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtName.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtName.IntegerPart = 0;
             this.txtName.IsDatatableOccurs = null;
             this.txtName.IsErrorOccurs = false;
             this.txtName.IsRequire = true;
             this.txtName.IsUseInitializedLayout = true;
-            this.txtName.Location = new System.Drawing.Point(1337, 139);
+            this.txtName.Location = new System.Drawing.Point(1337, 151);
             this.txtName.MaxLength = 40;
-            this.txtName.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtName.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtName.MoveNext = true;
             this.txtName.Name = "txtName";
             this.txtName.NextControl = null;
             this.txtName.NextControlName = "btnDisplay";
             this.txtName.SearchType = Entity.SearchType.ScType.None;
-            this.txtName.Size = new System.Drawing.Size(255, 19);
+            this.txtName.Size = new System.Drawing.Size(255, 20);
             this.txtName.TabIndex = 20;
             this.txtName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1227,12 +1223,12 @@ namespace ShukkaSiziNyuuryoku
             this.btn_Tokuisaki.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btn_Tokuisaki.ButtonType = Entity.ButtonType.BType.Normal;
             this.btn_Tokuisaki.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_Tokuisaki.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Tokuisaki.Location = new System.Drawing.Point(598, 32);
+            this.btn_Tokuisaki.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Tokuisaki.Location = new System.Drawing.Point(598, 35);
             this.btn_Tokuisaki.Name = "btn_Tokuisaki";
             this.btn_Tokuisaki.NextControl = this.sbKouriten;
             this.btn_Tokuisaki.NextControlName = null;
-            this.btn_Tokuisaki.Size = new System.Drawing.Size(50, 22);
+            this.btn_Tokuisaki.Size = new System.Drawing.Size(50, 24);
             this.btn_Tokuisaki.TabIndex = 4;
             this.btn_Tokuisaki.Text = "詳細";
             this.btn_Tokuisaki.UseVisualStyleBackColor = false;
@@ -1243,10 +1239,10 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.sLabel16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel16.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel16.Location = new System.Drawing.Point(1237, 139);
+            this.sLabel16.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel16.Location = new System.Drawing.Point(1237, 151);
             this.sLabel16.Name = "sLabel16";
-            this.sLabel16.Size = new System.Drawing.Size(100, 19);
+            this.sLabel16.Size = new System.Drawing.Size(100, 20);
             this.sLabel16.TabIndex = 25;
             this.sLabel16.Text = "名称";
             this.sLabel16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1256,10 +1252,10 @@ namespace ShukkaSiziNyuuryoku
             this.lblStaffName.BackColor = System.Drawing.SystemColors.Control;
             this.lblStaffName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblStaffName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblStaffName.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStaffName.Location = new System.Drawing.Point(347, 82);
+            this.lblStaffName.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStaffName.Location = new System.Drawing.Point(347, 89);
             this.lblStaffName.Name = "lblStaffName";
-            this.lblStaffName.Size = new System.Drawing.Size(250, 19);
+            this.lblStaffName.Size = new System.Drawing.Size(250, 20);
             this.lblStaffName.TabIndex = 40;
             this.lblStaffName.Text = "ＸＸＸＸＸＸＸＸＸ10ＸＸＸＸＸＸＸＸＸ20";
             this.lblStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1269,11 +1265,11 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel6.BackColor = System.Drawing.Color.Red;
             this.sLabel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel6.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel6.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sLabel6.ForeColor = System.Drawing.Color.White;
-            this.sLabel6.Location = new System.Drawing.Point(168, 82);
+            this.sLabel6.Location = new System.Drawing.Point(168, 89);
             this.sLabel6.Name = "sLabel6";
-            this.sLabel6.Size = new System.Drawing.Size(100, 19);
+            this.sLabel6.Size = new System.Drawing.Size(100, 20);
             this.sLabel6.TabIndex = 5;
             this.sLabel6.Text = "担当スタッフ";
             this.sLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1281,8 +1277,8 @@ namespace ShukkaSiziNyuuryoku
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(133, 119);
+            this.label1.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(133, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 12);
             this.label1.TabIndex = 6;
@@ -1295,21 +1291,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtSenpyouhachuuNo.DecimalPlace = 0;
             this.txtSenpyouhachuuNo.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.txtSenpyouhachuuNo.DepandOnMode = true;
-            this.txtSenpyouhachuuNo.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtSenpyouhachuuNo.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSenpyouhachuuNo.IntegerPart = 0;
             this.txtSenpyouhachuuNo.IsDatatableOccurs = null;
             this.txtSenpyouhachuuNo.IsErrorOccurs = false;
             this.txtSenpyouhachuuNo.IsRequire = false;
             this.txtSenpyouhachuuNo.IsUseInitializedLayout = true;
-            this.txtSenpyouhachuuNo.Location = new System.Drawing.Point(269, 165);
+            this.txtSenpyouhachuuNo.Location = new System.Drawing.Point(269, 179);
             this.txtSenpyouhachuuNo.MaxLength = 20;
-            this.txtSenpyouhachuuNo.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtSenpyouhachuuNo.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSenpyouhachuuNo.MoveNext = true;
             this.txtSenpyouhachuuNo.Name = "txtSenpyouhachuuNo";
             this.txtSenpyouhachuuNo.NextControl = null;
             this.txtSenpyouhachuuNo.NextControlName = "txtJyokenKouritenCD";
             this.txtSenpyouhachuuNo.SearchType = Entity.SearchType.ScType.None;
-            this.txtSenpyouhachuuNo.Size = new System.Drawing.Size(130, 19);
+            this.txtSenpyouhachuuNo.Size = new System.Drawing.Size(130, 20);
             this.txtSenpyouhachuuNo.TabIndex = 12;
             this.txtSenpyouhachuuNo.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1318,10 +1314,10 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.sLabel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel7.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel7.Location = new System.Drawing.Point(169, 140);
+            this.sLabel7.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel7.Location = new System.Drawing.Point(169, 152);
             this.sLabel7.Name = "sLabel7";
-            this.sLabel7.Size = new System.Drawing.Size(100, 19);
+            this.sLabel7.Size = new System.Drawing.Size(100, 20);
             this.sLabel7.TabIndex = 7;
             this.sLabel7.Text = "受注番号";
             this.sLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1331,10 +1327,10 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.sLabel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel8.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel8.Location = new System.Drawing.Point(169, 165);
+            this.sLabel8.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel8.Location = new System.Drawing.Point(169, 179);
             this.sLabel8.Name = "sLabel8";
-            this.sLabel8.Size = new System.Drawing.Size(100, 19);
+            this.sLabel8.Size = new System.Drawing.Size(100, 20);
             this.sLabel8.TabIndex = 8;
             this.sLabel8.Text = "先方発注番号";
             this.sLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1344,10 +1340,10 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.sLabel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel10.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel10.Location = new System.Drawing.Point(459, 139);
+            this.sLabel10.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel10.Location = new System.Drawing.Point(459, 151);
             this.sLabel10.Name = "sLabel10";
-            this.sLabel10.Size = new System.Drawing.Size(100, 19);
+            this.sLabel10.Size = new System.Drawing.Size(100, 20);
             this.sLabel10.TabIndex = 10;
             this.sLabel10.Text = "郵便番号";
             this.sLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1359,21 +1355,21 @@ namespace ShukkaSiziNyuuryoku
             this.txtSlip_Description.DecimalPlace = 0;
             this.txtSlip_Description.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.Japanese;
             this.txtSlip_Description.DepandOnMode = true;
-            this.txtSlip_Description.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.txtSlip_Description.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.txtSlip_Description.IntegerPart = 0;
             this.txtSlip_Description.IsDatatableOccurs = null;
             this.txtSlip_Description.IsErrorOccurs = false;
             this.txtSlip_Description.IsRequire = false;
             this.txtSlip_Description.IsUseInitializedLayout = true;
-            this.txtSlip_Description.Location = new System.Drawing.Point(879, 33);
+            this.txtSlip_Description.Location = new System.Drawing.Point(879, 36);
             this.txtSlip_Description.MaxLength = 80;
-            this.txtSlip_Description.MinimumSize = new System.Drawing.Size(100, 18);
+            this.txtSlip_Description.MinimumSize = new System.Drawing.Size(100, 19);
             this.txtSlip_Description.MoveNext = true;
             this.txtSlip_Description.Name = "txtSlip_Description";
             this.txtSlip_Description.NextControl = null;
             this.txtSlip_Description.NextControlName = "rdoNeed";
             this.txtSlip_Description.SearchType = Entity.SearchType.ScType.None;
-            this.txtSlip_Description.Size = new System.Drawing.Size(500, 19);
+            this.txtSlip_Description.Size = new System.Drawing.Size(500, 20);
             this.txtSlip_Description.TabIndex = 9;
             this.txtSlip_Description.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
@@ -1382,10 +1378,10 @@ namespace ShukkaSiziNyuuryoku
             this.sLabel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
             this.sLabel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sLabel13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sLabel13.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
-            this.sLabel13.Location = new System.Drawing.Point(779, 33);
+            this.sLabel13.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel13.Location = new System.Drawing.Point(779, 36);
             this.sLabel13.Name = "sLabel13";
-            this.sLabel13.Size = new System.Drawing.Size(100, 19);
+            this.sLabel13.Size = new System.Drawing.Size(100, 20);
             this.sLabel13.TabIndex = 19;
             this.sLabel13.Text = "伝票摘要";
             this.sLabel13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1395,11 +1391,11 @@ namespace ShukkaSiziNyuuryoku
             this.sbDenpyouCD.BackColor = System.Drawing.Color.Red;
             this.sbDenpyouCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.sbDenpyouCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.sbDenpyouCD.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold);
+            this.sbDenpyouCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
             this.sbDenpyouCD.ForeColor = System.Drawing.Color.White;
-            this.sbDenpyouCD.Location = new System.Drawing.Point(779, 10);
+            this.sbDenpyouCD.Location = new System.Drawing.Point(779, 11);
             this.sbDenpyouCD.Name = "sbDenpyouCD";
-            this.sbDenpyouCD.Size = new System.Drawing.Size(100, 19);
+            this.sbDenpyouCD.Size = new System.Drawing.Size(100, 20);
             this.sbDenpyouCD.TabIndex = 18;
             this.sbDenpyouCD.Text = "伝票日付";
             this.sbDenpyouCD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1413,7 +1409,7 @@ namespace ShukkaSiziNyuuryoku
             this.sbShippingNO.DecimalPlace = 0;
             this.sbShippingNO.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
             this.sbShippingNO.DepandOnMode = true;
-            this.sbShippingNO.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F);
+            this.sbShippingNO.Font = new System.Drawing.Font("MS Gothic", 9F);
             this.sbShippingNO.IntegerPart = 0;
             this.sbShippingNO.IsDatatableOccurs = null;
             this.sbShippingNO.IsErrorOccurs = false;
@@ -1421,15 +1417,15 @@ namespace ShukkaSiziNyuuryoku
             this.sbShippingNO.IsUseInitializedLayout = true;
             this.sbShippingNO.lblName = null;
             this.sbShippingNO.lblName1 = null;
-            this.sbShippingNO.Location = new System.Drawing.Point(130, 8);
+            this.sbShippingNO.Location = new System.Drawing.Point(130, 9);
             this.sbShippingNO.MaxLength = 12;
-            this.sbShippingNO.MinimumSize = new System.Drawing.Size(100, 18);
+            this.sbShippingNO.MinimumSize = new System.Drawing.Size(100, 19);
             this.sbShippingNO.MoveNext = true;
             this.sbShippingNO.Name = "sbShippingNO";
             this.sbShippingNO.NextControl = null;
             this.sbShippingNO.NextControlName = "txtShippingDate";
             this.sbShippingNO.SearchType = Entity.SearchType.ScType.ShippingNO;
-            this.sbShippingNO.Size = new System.Drawing.Size(100, 19);
+            this.sbShippingNO.Size = new System.Drawing.Size(100, 20);
             this.sbShippingNO.TabIndex = 0;
             this.sbShippingNO.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.sbShippingNO.TxtBox = null;
@@ -1438,9 +1434,9 @@ namespace ShukkaSiziNyuuryoku
             // 
             // ShukkaSiziNyuuryoku
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1770, 749);
+            this.ClientSize = new System.Drawing.Size(1713, 961);
             this.Controls.Add(this.PanelDetail);
             this.Location = new System.Drawing.Point(0, 0);
             this.Name = "ShukkaSiziNyuuryoku";
