@@ -151,8 +151,8 @@ namespace JuchuuTorikomi
                     {
                         (string, string) Xml = GetFile();
                         if (!string.IsNullOrEmpty(Xml.Item1) && !string.IsNullOrEmpty(Xml.Item2))
-                        {
                             {
+                                {
                                 spname = "JuchuuTorikomi_Insert";
                                 DataTable return_BL1 = JBL.JuchuuTorikomi_CUD(spname, Xml.Item1, Xml.Item2, "ErrorCheck");
                                 if (return_BL1.Rows.Count > 0)
@@ -401,27 +401,29 @@ namespace JuchuuTorikomi
                     {
                         create_dt.Rows[i]["ChakuniYoteiDate"] = d_txt.Text;
                     }
-                    if (!string.IsNullOrEmpty(date))
-                    {
-                        DataTable Dt_JuchuuNO = JBL.GetJuchuuNO("1", date, "0");
-                        DataTable Dt_HacchuuNO = JBL.GetHacchuuNO("2", date, "0");
-                        create_dt.Rows[i]["JuchuuNO"] = Dt_JuchuuNO.Rows[0]["Column1"];
-                        create_dt.Rows[i]["HacchuuNO"] = Dt_HacchuuNO.Rows[0]["Column1"];
-                    }
+                    //2021/07/07 Y.Nishikawa DEL↓↓
+                    //if (!string.IsNullOrEmpty(date))
+                    //{
+                    //    DataTable Dt_JuchuuNO = JBL.GetJuchuuNO("1", date, "0");
+                    //    DataTable Dt_HacchuuNO = JBL.GetHacchuuNO("2", date, "0");
+                    //    create_dt.Rows[i]["JuchuuNO"] = Dt_JuchuuNO.Rows[0]["Column1"];
+                    //    create_dt.Rows[i]["HacchuuNO"] = Dt_HacchuuNO.Rows[0]["Column1"];
+                    //}
+                    //2021/07/07 Y.Nishikawa DEL↑↑
 
                 }
-                    DataTable dt_Main = new DataTable();
-                    if (create_dt.Rows.Count > 0)
-                    {
-                        dt_Main = create_dt.AsEnumerable()
-                              .GroupBy(r => new { Col1 = r["JuchuuDate"], Col2 = r["TokuisakiCD"], Col3 = r["KouritenCD"], Col4 = r["SenpouHacchuuNO"], Col5 = r["SenpouBusho"], Col6 = r["KibouNouki"], Col7 = r["SoukoCD"] })
-                              .Select(g => g.OrderBy(r => r["JuchuuDate"]).First())
-                              .CopyToDataTable();
+                DataTable dt_Main = new DataTable();
+                if (create_dt.Rows.Count > 0)
+                {
+                    dt_Main = create_dt.AsEnumerable()
+                          .GroupBy(r => new { Col1 = r["JuchuuDate"], Col2 = r["TokuisakiCD"], Col3 = r["KouritenCD"], Col4 = r["SenpouHacchuuNO"], Col5 = r["SenpouBusho"], Col6 = r["KibouNouki"], Col7 = r["SoukoCD"] })
+                          .Select(g => g.OrderBy(r => r["JuchuuDate"]).First())
+                          .CopyToDataTable();
 
-                        Remove_Datatable_Column(dt_Main);
-                        Xml_Hacchuu = cf.DataTableToXml(dt_Main);
-                    }
-                    if (create_dt.Rows.Count > 0)
+                    Remove_Datatable_Column(dt_Main);
+                    Xml_Hacchuu = cf.DataTableToXml(dt_Main);
+                }
+                if (create_dt.Rows.Count > 0)
                     {
                         for (int r = 0; r < create_dt.Rows.Count; r++)
                         {
