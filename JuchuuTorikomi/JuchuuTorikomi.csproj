@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CKM_CommonFunction">
-      <HintPath>..\bin\Debug\CKM_CommonFunction.dll</HintPath>
+      <HintPath>..\Shinyoh\RequireDLL\CKM_CommonFunction.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
