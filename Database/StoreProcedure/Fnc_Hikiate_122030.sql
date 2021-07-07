@@ -15,6 +15,7 @@ GO
 -- Author:		Kyaw Thet Paing
 -- Create date: 2020-01-11
 -- Description:	<Description,,>
+-- History:       2021/04/13 Y.Nishikawa Remake
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_122030]
 	-- Add the parameters for the stored procedure here

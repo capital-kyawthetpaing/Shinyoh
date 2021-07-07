@@ -17,10 +17,10 @@ GO
 -- Description:	Fnc_Hikiate
 -- in連番区分 : 12:出荷指示
 -- in処理区分 : 10,21 (加算更新)
--- History    : 2021/04/13 Y.Nishikawa CHG 当Update内でのHikiateZumiSuuは、当更新時点では更新前の情報なので、HikiateZumiSuuと同じ内容をセット
---              2021/04/14 Y.Nishikawa ADD 出荷指示詳細履歴の更新追加
---              2021/04/14 Y.Nishikawa CHG @tmpHikiateSuuで計算するのではなく、ループ内の出荷指示数で計算する必要がある
---              2021/05/26 Y.Nishikawa ADD 完納処理した場合、残った引当は削除する
+-- History    : 2021/04/13 Y.Nishikawa Remake
+--              2021/04/14 Y.Nishikawa Remake
+--              2021/04/14 Y.Nishikawa Remake
+--              2021/05/26 Y.Nishikawa Remake
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_121021] 
 	-- Add the parameters for the stored procedure here
@@ -101,28 +101,28 @@ BEGIN
 							--Step3 : Update D_JuchuuShousai(受注詳細)
 							update D_JuchuuShousai
 							set HikiateZumiSuu = case when @ShukkaSiziSuu >= HikiateZumiSuu then 0 else HikiateZumiSuu - @ShukkaSiziSuu end,
-							    --2021/04/14 Y.Nishikawa CHG 出荷指示済数の算出が不正↓↓
+							    --2021/04/14 Y.Nishikawa CHG Remake↓↓
 								--ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + ( case when @ShukkaSiziSuu >= HikiateZumiSuu then HikiateZumiSuu else HikiateZumiSuu - @ShukkaSiziSuu end),
 								ShukkaSiziZumiSuu = ShukkaSiziZumiSuu + ( case when @ShukkaSiziSuu >= HikiateZumiSuu then HikiateZumiSuu else @ShukkaSiziSuu end),
-								--2021/04/14 Y.Nishikawa CHG 出荷指示済数の算出が不正↑↑
+								--2021/04/14 Y.Nishikawa CHG Remake↑↑
 								ShukkaZumiSuu = 0,
 								UriageZumiSuu = 0,
 								UpdateOperator = @UpdateOperator,
 								UpdateDateTime = @UpdateDateTime,
-								--2021/04/13 Y.Nishikawa CHG 当Update内でのHikiateZumiSuuは、当更新時点では更新前の情報なので、HikiateZumiSuuと同じ内容をセット↓↓
+								--2021/04/13 Y.Nishikawa CHG Remake↓↓
 								--@tmpHikiateSuu = HikiateZumiSuu,
 								@tmpHikiateSuu = case when @ShukkaSiziSuu >= HikiateZumiSuu then 0 else HikiateZumiSuu - @ShukkaSiziSuu end,
-								--2021/04/13 Y.Nishikawa CHG 当Update内でのHikiateZumiSuuは、当更新時点では更新前の情報なので、HikiateZumiSuuと同じ内容をセット↑↑
+								--2021/04/13 Y.Nishikawa CHG Remake↑↑
 								@tmpShukkasiziSuu = case when @ShukkaSiziSuu >= HikiateZumiSuu then HikiateZumiSuu else @ShukkaSiziSuu end
 							from D_JuchuuShousai
 							where JuchuuNO = @JuchuuNo
 							and JuchuuGyouNO = @JuchuuGyoNo 
 							and JuchuuShousaiNO = @JuchuuShousaiNO
 							
-							--2021/04/14 Y.Nishikawa CHG @tmpHikiateSuuで計算するのではなく、ループ内の出荷指示数で計算する必要がある↓↓
+							--2021/04/14 Y.Nishikawa CHG Remake↓↓
 							--set @ShukkaSiziSuu = case when @ShukkaSiziSuu > @tmpHikiateSuu then @ShukkaSiziSuu - @tmpHikiateSuu else 0 end
 							set @ShukkaSiziSuu = case when @ShukkaSiziSuu > @tmpShukkasiziSuu then @ShukkaSiziSuu - @tmpShukkasiziSuu else 0 end
-							--2021/04/14 Y.Nishikawa CHG @tmpHikiateSuuで計算するのではなく、ループ内の出荷指示数で計算する必要がある↑↑
+							--2021/04/14 Y.Nishikawa CHG Remake↑↑
 	
 							-- Step4 : Update D_HikiateZaiko(引当在庫)
 							update D_HikiateZaiko
@@ -166,9 +166,7 @@ BEGIN
 			close cursorInner
 			deallocate cursorInner
 
-			--2021/05/26 Y.Nishikawa ADD 完納処理した場合、残った引当は削除する↓↓
-			--完納時、引当情報をクリアする
-			--まず、引当在庫から差し引く
+			--2021/05/26 Y.Nishikawa ADD Remake↓↓
 			UPDATE DHZK
 			SET HikiateZumiSuu = DHZK.HikiateZumiSuu - DJUS.HikiateZumiSuu
 			   ,UpdateOperator = @UpdateOperator
@@ -240,7 +238,7 @@ BEGIN
 			AND DJUM.HikiateZumiSuu > 0
 			AND DJUM.JuchuuNO = @JuchuuNo
 			AND DJUM.JuchuuGyouNO = @JuchuuGyoNo
-			--2021/05/26 Y.Nishikawa ADD 完納処理した場合、残った引当は削除する↑↑
+			--2021/05/26 Y.Nishikawa ADD Remake↑↑
 			
 			fetch next from cursorOuter into  @ShukkaSiziNO,@ShukkaSiziGyouNO,@ShukkaSiziSuu,@JuchuuNo,@JuchuuGyoNo
 		end
@@ -248,7 +246,7 @@ BEGIN
 	close cursorOuter
 	deallocate cursorOuter
 
-	--2021/04/14 Y.Nishikawa ADD 出荷指示詳細履歴の更新追加↓↓
+	--2021/04/14 Y.Nishikawa ADD Remake↓↓
 	declare @Unique as uniqueidentifier
              , @OperatorCD as varchar(10)
              , @currentDate as datetime
@@ -308,7 +306,7 @@ BEGIN
        			,@currentDate
        FROM [dbo].[D_ShukkaSiziShousai]
        where ShukkaSiziNO=@ShukkaSiziNO
-	--2021/04/14 Y.Nishikawa ADD 出荷指示詳細履歴の更新追加↑↑
+	--2021/04/14 Y.Nishikawa ADD Remake↑↑
 
 END
 GO

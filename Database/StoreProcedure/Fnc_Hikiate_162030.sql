@@ -14,7 +14,7 @@ GO
 -- Author:		Kyaw Thet Paing
 -- Create date: 2021-01-12
 -- Description:	16:着荷予定 (in処理区分=20,30)
--- History    : 2021/04/19 Y.Nishikawa 未引当状態の着荷予定を削除すると、引当在庫にマイナス更新している
+-- History    : 2021/04/19 Y.Nishikawa Remake
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_162030]
 	-- Add the parameters for the stored procedure here
@@ -52,10 +52,10 @@ declare @ChakuniYoteiNO as varchar(12),
 	while @@FETCH_STATUS = 0
 		begin
 
-		--2021/04/19 Y.Nishikawa ADD 未引当状態の着荷予定を削除すると、引当在庫にマイナス更新している↓↓
+		--2021/04/19 Y.Nishikawa ADD Remake↓↓
 	    if @JuchuuNo IS NOT NULL
 	    begin
-	    --2021/04/19 Y.Nishikawa ADD 未引当状態の着荷予定を削除すると、引当在庫にマイナス更新している↑↑
+	    --2021/04/19 Y.Nishikawa ADD Remake↑↑
 
 		update D_JuchuuMeisai
 		set HikiateZumiSuu = HikiateZumiSuu - @ChakuniYoteiSuu,
@@ -77,9 +77,9 @@ declare @ChakuniYoteiNO as varchar(12),
 			UpdateDateTime = @UpdateDateTime
 		where SoukoCD = @SoukoCD and ShouhinCD = @ShouhinCD and KanriNO = @KanriNo and NyuukoDate = ''
 
-		--2021/04/19 Y.Nishikawa ADD 未引当状態の着荷予定を削除すると、引当在庫にマイナス更新している↓↓
+		--2021/04/19 Y.Nishikawa ADD Remake↓↓
 	    end
-	    --2021/04/19 Y.Nishikawa ADD 未引当状態の着荷予定を削除すると、引当在庫にマイナス更新している↑↑
+	    --2021/04/19 Y.Nishikawa ADD Remake↑↑
 
 		fetch next from cursorOuter 
 			into  @ChakuniYoteiNO,@ChakuniYoteiGyouNO,@SoukoCD,@ShouhinCD,@KanriNo,@ChakuniYoteiSuu,
