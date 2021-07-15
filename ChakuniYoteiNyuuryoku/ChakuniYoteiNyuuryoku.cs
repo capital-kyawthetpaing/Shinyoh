@@ -388,6 +388,15 @@ namespace ChakuniYoteiNyuuryoku
             chkLockEntity.OperatorCD = OperatorCD;
             cbl.D_Exclusive_Lock_Check(chkLockEntity);
         }
+        private void D_Exclusive_DeleteAll()
+        {
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
+        }
         //private void Gvrow_Delete(DataRow dr)
         //{
         //    DataRow[] existDr1;
@@ -575,12 +584,7 @@ namespace ChakuniYoteiNyuuryoku
 
             F8_dt1 = CreateTable_Detail();
 
-            BaseEntity be = new BaseEntity();
-            be.ProgramID = ProgramID;
-            be.OperatorCD = OperatorCD;
-            be.PC = PCID;
-            BaseBL bbl = new BaseBL();
-            bbl.D_Exclusive_Number_Remove(be);
+            D_Exclusive_DeleteAll();
 
             //HET
             if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
@@ -620,12 +624,7 @@ namespace ChakuniYoteiNyuuryoku
 
             F8_dt1 = CreateTable_Detail();
 
-            BaseEntity be = new BaseEntity();
-            be.ProgramID = ProgramID;
-            be.OperatorCD = OperatorCD;
-            be.PC = PCID;
-            BaseBL bbl = new BaseBL();
-            bbl.D_Exclusive_Number_Remove(be);
+            D_Exclusive_DeleteAll();
 
             //HET
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
@@ -946,9 +945,12 @@ namespace ChakuniYoteiNyuuryoku
                 dtTemp = dt_Details.Copy();
                 dtmain = dtTemp;
                 gvChakuniYoteiNyuuryoku.DataSource = dt_Details;
+                F11_Gridview_Bind(true);
             }
             else
+            {
                 gvChakuniYoteiNyuuryoku.DataSource = dtClear;
+            }
 
             foreach (DataRow dr in dt_Header.Rows)
             {
@@ -1066,10 +1068,9 @@ namespace ChakuniYoteiNyuuryoku
         {
             if (gvChakuniYoteiNyuuryoku.Columns[col].Name == "colYoteiSuu")
             {
+                long num = 0;
                 string value = gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString().Replace(",", "");
-                int Konkai_Number = string.IsNullOrEmpty(gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(value);
-                gvChakuniYoteiNyuuryoku.Rows[row].Cells["colYoteiSuu"].Value = Konkai_Number.ToString();
-                if (Convert.ToInt64(value) < 0)
+                if (!Int64.TryParse(value, out num) || num < 0)
                 {
                     bbl.ShowMessage("E109");
                     return false;
@@ -1110,7 +1111,7 @@ namespace ChakuniYoteiNyuuryoku
             }
             return true;
         }
-        private void F11_Gridview_Bind()
+        private void F11_Gridview_Bind(bool isModifyMode = false)
         {
             for (int t = 0; t < gvChakuniYoteiNyuuryoku.RowCount; t++)
             {
@@ -1127,7 +1128,7 @@ namespace ChakuniYoteiNyuuryoku
                 DataRow existDr1 = F8_dt1.Select("Hacchuu='" + Hacchu + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["colYoteiSuu"].Value.ToString() == "0")
+                    if (row.Cells["colYoteiSuu"].Value.ToString() == "0" && !isModifyMode)
                     {
                         //確認テーブルの中で１つの場合にはDeleteしてOK
                         DataRow[] dataRows = F8_dt1.Select("HacchuuNO ='" + existDr1["HacchuuNO"].ToString() + "'");
@@ -1148,7 +1149,7 @@ namespace ChakuniYoteiNyuuryoku
                     }
                 }
                 F8_drNew[0] = HinbanCD;
-                if (row.Cells["colYoteiSuu"].Value.ToString() != "0")
+                if (row.Cells["colYoteiSuu"].Value.ToString() != "0" || isModifyMode)
                 {
                     for (int c = 1; c < gvChakuniYoteiNyuuryoku.Columns.Count; c++)
                     {
@@ -1183,23 +1184,34 @@ namespace ChakuniYoteiNyuuryoku
                     //if (bl == true)
                     //{
                     if (existDr1 != null)
+                    {
                         F8_dt1.Rows.Remove(existDr1);
+                    }
+
                     F8_dt1.Rows.Add(F8_drNew);
 
-                    D_Exclusive_OneNumber_Insert(F8_drNew);
+                    if (!isModifyMode)
+                    {
+                        D_Exclusive_OneNumber_Insert(F8_drNew);
+                    }
                     // }
                 }
                 else
                 {
-                    if (select_dr1.Length > 0)
+                    if (select_dr1.Length > 0 && !isModifyMode)
+                    {
                         //排他Delete
                         D_Exclusive_OneNumber_Delete(select_dr1[0]);
+                    }
                 }
             }
             gvChakuniYoteiNyuuryoku.Memory_Row_Count = F8_dt1.Rows.Count;
 
-            Focus_Clear();
-            Disable();
+            if (!isModifyMode)
+            {
+                Focus_Clear();
+                Disable();
+            }
         }
         private void Focus_Clear()
         {
