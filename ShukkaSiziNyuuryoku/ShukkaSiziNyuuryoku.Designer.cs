@@ -14,6 +14,10 @@ namespace ShukkaSiziNyuuryoku
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
+            if (disposing)
+            {
+                D_Executive_DeleteAll();
+            }
             if (disposing && (components != null))
             {
                 components.Dispose();
@@ -37,6 +41,9 @@ namespace ShukkaSiziNyuuryoku
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.sLabel3 = new Shinyoh_Controls.SLabel();
             this.PanelDetail = new System.Windows.Forms.Panel();
+            this.txtJyokenTokuisakiCD = new Shinyoh_Search.SearchBox();
+            this.lblJyokenTokuisaki = new Shinyoh_Controls.SLabel();
+            this.sLabel9 = new Shinyoh_Controls.SLabel();
             this.lblJyokenKouriten = new Shinyoh_Controls.SLabel();
             this.txtJyokenKouritenCD = new Shinyoh_Search.SearchBox();
             this.lblKouritenCD = new Shinyoh_Controls.SLabel();
@@ -153,6 +160,9 @@ namespace ShukkaSiziNyuuryoku
             // 
             // PanelDetail
             // 
+            this.PanelDetail.Controls.Add(this.txtJyokenTokuisakiCD);
+            this.PanelDetail.Controls.Add(this.lblJyokenTokuisaki);
+            this.PanelDetail.Controls.Add(this.sLabel9);
             this.PanelDetail.Controls.Add(this.lblJyokenKouriten);
             this.PanelDetail.Controls.Add(this.txtJyokenKouritenCD);
             this.PanelDetail.Controls.Add(this.lblKouritenCD);
@@ -208,13 +218,71 @@ namespace ShukkaSiziNyuuryoku
             this.PanelDetail.Size = new System.Drawing.Size(1710, 840);
             this.PanelDetail.TabIndex = 7;
             // 
+            // txtJyokenTokuisakiCD
+            // 
+            this.txtJyokenTokuisakiCD.AllowMinus = false;
+            this.txtJyokenTokuisakiCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtJyokenTokuisakiCD.ChangeDate = null;
+            this.txtJyokenTokuisakiCD.Combo = null;
+            this.txtJyokenTokuisakiCD.DecimalPlace = 0;
+            this.txtJyokenTokuisakiCD.DefaultKeyboard = Shinyoh_Controls.STextBox.DefKey.English;
+            this.txtJyokenTokuisakiCD.DepandOnMode = false;
+            this.txtJyokenTokuisakiCD.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.txtJyokenTokuisakiCD.IntegerPart = 0;
+            this.txtJyokenTokuisakiCD.IsDatatableOccurs = null;
+            this.txtJyokenTokuisakiCD.IsErrorOccurs = false;
+            this.txtJyokenTokuisakiCD.IsRequire = false;
+            this.txtJyokenTokuisakiCD.IsUseInitializedLayout = true;
+            this.txtJyokenTokuisakiCD.lblName = null;
+            this.txtJyokenTokuisakiCD.lblName1 = null;
+            this.txtJyokenTokuisakiCD.Location = new System.Drawing.Point(269, 206);
+            this.txtJyokenTokuisakiCD.MaxLength = 10;
+            this.txtJyokenTokuisakiCD.MinimumSize = new System.Drawing.Size(70, 19);
+            this.txtJyokenTokuisakiCD.MoveNext = true;
+            this.txtJyokenTokuisakiCD.Name = "txtJyokenTokuisakiCD";
+            this.txtJyokenTokuisakiCD.NextControl = null;
+            this.txtJyokenTokuisakiCD.NextControlName = "txtJyokenKouritenCD";
+            this.txtJyokenTokuisakiCD.SearchType = Entity.SearchType.ScType.Tokuisaki;
+            this.txtJyokenTokuisakiCD.Size = new System.Drawing.Size(80, 20);
+            this.txtJyokenTokuisakiCD.TabIndex = 13;
+            this.txtJyokenTokuisakiCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
+            this.txtJyokenTokuisakiCD.TxtBox = null;
+            this.txtJyokenTokuisakiCD.TxtBox1 = null;
+            this.txtJyokenTokuisakiCD.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJyokenTokuisakiCD_KeyDown);
+            // 
+            // lblJyokenTokuisaki
+            // 
+            this.lblJyokenTokuisaki.BackColor = System.Drawing.SystemColors.Control;
+            this.lblJyokenTokuisaki.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblJyokenTokuisaki.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblJyokenTokuisaki.Font = new System.Drawing.Font("MS Gothic", 9F);
+            this.lblJyokenTokuisaki.Location = new System.Drawing.Point(347, 206);
+            this.lblJyokenTokuisaki.Name = "lblJyokenTokuisaki";
+            this.lblJyokenTokuisaki.Size = new System.Drawing.Size(250, 20);
+            this.lblJyokenTokuisaki.TabIndex = 124;
+            this.lblJyokenTokuisaki.Text = "ＸＸＸＸＸＸＸＸＸ10ＸＸＸＸＸＸＸＸＸ20";
+            this.lblJyokenTokuisaki.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // sLabel9
+            // 
+            this.sLabel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(153)))));
+            this.sLabel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.sLabel9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.sLabel9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.sLabel9.Location = new System.Drawing.Point(169, 206);
+            this.sLabel9.Name = "sLabel9";
+            this.sLabel9.Size = new System.Drawing.Size(100, 20);
+            this.sLabel9.TabIndex = 122;
+            this.sLabel9.Text = "得意先";
+            this.sLabel9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // lblJyokenKouriten
             // 
             this.lblJyokenKouriten.BackColor = System.Drawing.SystemColors.Control;
             this.lblJyokenKouriten.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblJyokenKouriten.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblJyokenKouriten.Font = new System.Drawing.Font("MS Gothic", 9F);
-            this.lblJyokenKouriten.Location = new System.Drawing.Point(358, 206);
+            this.lblJyokenKouriten.Location = new System.Drawing.Point(969, 206);
             this.lblJyokenKouriten.Name = "lblJyokenKouriten";
             this.lblJyokenKouriten.Size = new System.Drawing.Size(300, 20);
             this.lblJyokenKouriten.TabIndex = 121;
@@ -237,7 +305,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJyokenKouritenCD.IsUseInitializedLayout = true;
             this.txtJyokenKouritenCD.lblName = null;
             this.txtJyokenKouritenCD.lblName1 = null;
-            this.txtJyokenKouritenCD.Location = new System.Drawing.Point(268, 206);
+            this.txtJyokenKouritenCD.Location = new System.Drawing.Point(879, 206);
             this.txtJyokenKouritenCD.MaxLength = 10;
             this.txtJyokenKouritenCD.MinimumSize = new System.Drawing.Size(90, 19);
             this.txtJyokenKouritenCD.MoveNext = true;
@@ -246,7 +314,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtJyokenKouritenCD.NextControlName = "txtYubin1";
             this.txtJyokenKouritenCD.SearchType = Entity.SearchType.ScType.Kouriten;
             this.txtJyokenKouritenCD.Size = new System.Drawing.Size(90, 20);
-            this.txtJyokenKouritenCD.TabIndex = 13;
+            this.txtJyokenKouritenCD.TabIndex = 14;
             this.txtJyokenKouritenCD.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             this.txtJyokenKouritenCD.TxtBox = null;
             this.txtJyokenKouritenCD.TxtBox1 = null;
@@ -258,7 +326,7 @@ namespace ShukkaSiziNyuuryoku
             this.lblKouritenCD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblKouritenCD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblKouritenCD.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.lblKouritenCD.Location = new System.Drawing.Point(168, 206);
+            this.lblKouritenCD.Location = new System.Drawing.Point(779, 206);
             this.lblKouritenCD.Name = "lblKouritenCD";
             this.lblKouritenCD.Size = new System.Drawing.Size(100, 20);
             this.lblKouritenCD.TabIndex = 120;
@@ -319,7 +387,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1051, 154);
+            this.label9.Location = new System.Drawing.Point(1071, 154);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 12);
             this.label9.TabIndex = 78;
@@ -392,7 +460,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(983, 150);
+            this.label7.Location = new System.Drawing.Point(1000, 150);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(15, 20);
             this.label7.TabIndex = 74;
@@ -402,7 +470,7 @@ namespace ShukkaSiziNyuuryoku
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(911, 150);
+            this.label8.Location = new System.Drawing.Point(931, 150);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(15, 20);
             this.label8.TabIndex = 73;
@@ -421,7 +489,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone3.IsErrorOccurs = false;
             this.txtPhone3.IsRequire = false;
             this.txtPhone3.IsUseInitializedLayout = true;
-            this.txtPhone3.Location = new System.Drawing.Point(998, 151);
+            this.txtPhone3.Location = new System.Drawing.Point(1017, 151);
             this.txtPhone3.MaxLength = 5;
             this.txtPhone3.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtPhone3.MoveNext = true;
@@ -430,7 +498,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone3.NextControlName = "txtName";
             this.txtPhone3.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone3.Size = new System.Drawing.Size(50, 20);
-            this.txtPhone3.TabIndex = 19;
+            this.txtPhone3.TabIndex = 20;
             this.txtPhone3.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhone2
@@ -446,7 +514,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone2.IsErrorOccurs = false;
             this.txtPhone2.IsRequire = false;
             this.txtPhone2.IsUseInitializedLayout = true;
-            this.txtPhone2.Location = new System.Drawing.Point(930, 151);
+            this.txtPhone2.Location = new System.Drawing.Point(948, 151);
             this.txtPhone2.MaxLength = 5;
             this.txtPhone2.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtPhone2.MoveNext = true;
@@ -455,7 +523,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone2.NextControlName = "txtPhone3";
             this.txtPhone2.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone2.Size = new System.Drawing.Size(50, 20);
-            this.txtPhone2.TabIndex = 18;
+            this.txtPhone2.TabIndex = 19;
             this.txtPhone2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // txtPhone1
@@ -471,7 +539,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone1.IsErrorOccurs = false;
             this.txtPhone1.IsRequire = false;
             this.txtPhone1.IsUseInitializedLayout = true;
-            this.txtPhone1.Location = new System.Drawing.Point(859, 150);
+            this.txtPhone1.Location = new System.Drawing.Point(879, 150);
             this.txtPhone1.MaxLength = 6;
             this.txtPhone1.MinimumSize = new System.Drawing.Size(50, 19);
             this.txtPhone1.MoveNext = true;
@@ -480,7 +548,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtPhone1.NextControlName = "txtPhone2";
             this.txtPhone1.SearchType = Entity.SearchType.ScType.None;
             this.txtPhone1.Size = new System.Drawing.Size(50, 20);
-            this.txtPhone1.TabIndex = 17;
+            this.txtPhone1.TabIndex = 18;
             this.txtPhone1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // lblPhone1
@@ -492,7 +560,7 @@ namespace ShukkaSiziNyuuryoku
             this.lblPhone1.Location = new System.Drawing.Point(779, 150);
             this.lblPhone1.MinimumSize = new System.Drawing.Size(80, 19);
             this.lblPhone1.Name = "lblPhone1";
-            this.lblPhone1.Size = new System.Drawing.Size(80, 20);
+            this.lblPhone1.Size = new System.Drawing.Size(100, 20);
             this.lblPhone1.TabIndex = 72;
             this.lblPhone1.Text = "電話番号";
             this.lblPhone1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -594,7 +662,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtAddress.NextControlName = "txtPhone1";
             this.txtAddress.SearchType = Entity.SearchType.ScType.None;
             this.txtAddress.Size = new System.Drawing.Size(500, 20);
-            this.txtAddress.TabIndex = 16;
+            this.txtAddress.TabIndex = 17;
             this.txtAddress.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // txtYubin2
@@ -619,7 +687,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin2.NextControlName = "txtAddress";
             this.txtYubin2.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin2.Size = new System.Drawing.Size(60, 20);
-            this.txtYubin2.TabIndex = 15;
+            this.txtYubin2.TabIndex = 16;
             this.txtYubin2.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             this.txtYubin2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtYubin2_KeyDown);
             // 
@@ -645,7 +713,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtYubin1.NextControlName = "txtYubin2";
             this.txtYubin1.SearchType = Entity.SearchType.ScType.None;
             this.txtYubin1.Size = new System.Drawing.Size(35, 20);
-            this.txtYubin1.TabIndex = 14;
+            this.txtYubin1.TabIndex = 15;
             this.txtYubin1.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Number;
             // 
             // label4
@@ -847,7 +915,7 @@ namespace ShukkaSiziNyuuryoku
             this.dgvShukkasizi.Location = new System.Drawing.Point(48, 235);
             this.dgvShukkasizi.Name = "dgvShukkasizi";
             this.dgvShukkasizi.Size = new System.Drawing.Size(1600, 580);
-            this.dgvShukkasizi.TabIndex = 24;
+            this.dgvShukkasizi.TabIndex = 25;
             this.dgvShukkasizi.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtJuchuuNo_KeyDown);
             // 
             // colShouhinCD
@@ -1114,7 +1182,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnSave.NextControl = null;
             this.btnSave.NextControlName = null;
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 23;
+            this.btnSave.TabIndex = 24;
             this.btnSave.Text = "F11 保存";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -1130,7 +1198,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnDisplay.NextControl = null;
             this.btnDisplay.NextControlName = null;
             this.btnDisplay.Size = new System.Drawing.Size(75, 23);
-            this.btnDisplay.TabIndex = 21;
+            this.btnDisplay.TabIndex = 22;
             this.btnDisplay.Text = "F10 表示";
             this.btnDisplay.UseVisualStyleBackColor = false;
             this.btnDisplay.Click += new System.EventHandler(this.btnDisplay_Click);
@@ -1146,7 +1214,7 @@ namespace ShukkaSiziNyuuryoku
             this.btnConfirm.NextControl = null;
             this.btnConfirm.NextControlName = null;
             this.btnConfirm.Size = new System.Drawing.Size(75, 23);
-            this.btnConfirm.TabIndex = 22;
+            this.btnConfirm.TabIndex = 23;
             this.btnConfirm.Text = "F8 確認";
             this.btnConfirm.UseVisualStyleBackColor = false;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
@@ -1214,7 +1282,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtName.NextControlName = "btnDisplay";
             this.txtName.SearchType = Entity.SearchType.ScType.None;
             this.txtName.Size = new System.Drawing.Size(255, 20);
-            this.txtName.TabIndex = 20;
+            this.txtName.TabIndex = 21;
             this.txtName.TextBoxType = Shinyoh_Controls.STextBox.STextBoxType.Normal;
             // 
             // btn_Tokuisaki
@@ -1303,7 +1371,7 @@ namespace ShukkaSiziNyuuryoku
             this.txtSenpyouhachuuNo.MoveNext = true;
             this.txtSenpyouhachuuNo.Name = "txtSenpyouhachuuNo";
             this.txtSenpyouhachuuNo.NextControl = null;
-            this.txtSenpyouhachuuNo.NextControlName = "txtJyokenKouritenCD";
+            this.txtSenpyouhachuuNo.NextControlName = "txtJyokenTokuisakiCD";
             this.txtSenpyouhachuuNo.SearchType = Entity.SearchType.ScType.None;
             this.txtSenpyouhachuuNo.Size = new System.Drawing.Size(130, 20);
             this.txtSenpyouhachuuNo.TabIndex = 12;
@@ -1542,5 +1610,8 @@ namespace ShukkaSiziNyuuryoku
         private Shinyoh_Controls.SLabel lblJyokenKouriten;
         private Shinyoh_Search.SearchBox txtJyokenKouritenCD;
         private Shinyoh_Controls.SLabel lblKouritenCD;
+        private Shinyoh_Search.SearchBox txtJyokenTokuisakiCD;
+        private Shinyoh_Controls.SLabel lblJyokenTokuisaki;
+        private Shinyoh_Controls.SLabel sLabel9;
     }
 }

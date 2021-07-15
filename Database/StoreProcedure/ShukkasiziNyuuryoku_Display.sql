@@ -72,7 +72,8 @@ INSERT INTO  #WK_ShukkaKanouSou2
 	AND DJSS.[JuchuuGyouNO]=DJMS.[JuchuuGyouNO]
 	INNER JOIN F_Tokuisaki(@ShippingDate) FT
 	ON FT.TokuisakiCD=DJ.TokuisakiCD
-	WHERE DJ.TokuisakiCD=@TokuisakiCD
+	WHERE 
+        (@TokuisakiCD is null or DJ.TokuisakiCD=@TokuisakiCD)
 	AND (@JuchuuNO is null or (DJ.JuchuuNO=@JuchuuNO))
 	AND (@SenpouHacchuuNO is null or (DJMS.SenpouHacchuuNO=@SenpouHacchuuNO))
 	--2021/05/06 Y.Nishikawa CHG 完了区分が別の項目↓↓
@@ -168,7 +169,8 @@ SELECT
 	LEFT OUTER JOIN F_Tokuisaki(@ShippingDate) FT ON FT.TokuisakiCD=DJ.TokuisakiCD
 	LEFT OUTER JOIN M_Souko MS	ON MS.SoukoCD=DJMS.SoukoCD
 	LEFT OUTER JOIN F_Shouhin(@ShippingDate) FS ON FS.ShouhinCD=DJMS.ShouhinCD
-	WHERE DJ.TokuisakiCD=@TokuisakiCD
+	WHERE 
+        (@TokuisakiCD is null or DJ.TokuisakiCD=@TokuisakiCD)
 	AND (@JuchuuNO is null or (DJ.JuchuuNO=@JuchuuNO))
 	AND (@SenpouHacchuuNO is null or (DJMS.SenpouHacchuuNO=@SenpouHacchuuNO))
 	--2021/05/06 Y.Nishikawa CHG 完了区分が別の項目↓↓
