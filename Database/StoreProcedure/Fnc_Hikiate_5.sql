@@ -19,6 +19,7 @@ GO
 --            : 2021/05/07 Y.Nishikawa Remake
 --            : 2021/05/24 Y.Nishikawa Remake
 --            : 2021/05/26 Y.Nishikawa Remake
+--            : 2021/07/15 Y.Nishikawa Remake
 -- =============================================
 CREATE PROCEDURE [dbo].[Fnc_Hikiate_5]
 	-- Add the parameters for the stored procedure here
@@ -102,8 +103,10 @@ BEGIN
 			--and KanriNO = @KanriNO
 			--and ShukkaZumiSuu = 0
 
+			--2021/07/15 Y.Nishikawa ADD Remake««
 			IF(ISNULL(@JuchuuNO, '') != '')
 			BEGIN
+			--2021/07/15 Y.Nishikawa ADD Remakeªª
 
 			    --2021/05/26 Y.Nishikawa ADD Remake««
 			    DECLARE @IsShukkaSiziKanryou SMALLINT
@@ -1816,7 +1819,9 @@ BEGIN
 			    
 			    END
 			    --2021/04/20 Y.Nishikawa CHG Remake
+			--2021/07/15 Y.Nishikawa ADD Remake««
 			END
+			--2021/07/15 Y.Nishikawa ADD Remakeªª
 
 			fetch next from cursorOuter into @ChakuniNO,@ChakuniGyouNO,@SoukoCD,@ShouhinCD,@KanriNO,@NyuukoDate,@ChakuniSuu,@JuchuuNO,@JuchuuGyouNO
 
