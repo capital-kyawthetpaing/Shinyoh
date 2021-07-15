@@ -244,12 +244,7 @@ namespace JuchuuNyuuryoku
 
             gv_JuchuuNyuuryoku.Memory_Row_Count = 0;
 
-            BaseEntity be = new BaseEntity();
-            be.ProgramID = ProgramID;
-            be.OperatorCD = OperatorCD;
-            be.PC = PCID;
-            BaseBL bbl = new BaseBL();
-            bbl.D_Exclusive_Number_Remove(be);
+            D_Exclusive_DeleteAll();
 
             if (cboMode.SelectedValue.ToString()=="1")
             {
@@ -1208,7 +1203,8 @@ namespace JuchuuNyuuryoku
                         }
                         else
                         {
-                            if (((c == 32 && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString())) || (c == 34 &&  string.IsNullOrEmpty(row.Cells["colJuchuuGyouNO"].Value.ToString()))))
+                            if (((gv_JuchuuNyuuryoku.Columns[c].Name == "colHacchuuGyouNO" && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString())) 
+                                || (gv_JuchuuNyuuryoku.Columns[c].Name == "colJuchuuGyouNO" && string.IsNullOrEmpty(row.Cells["colJuchuuGyouNO"].Value.ToString()))))
                                 F8_drNew[c] = DBNull.Value;
                             else
                                 F8_drNew[c] = row.Cells[c].Value;
@@ -2100,7 +2096,7 @@ namespace JuchuuNyuuryoku
                 if(!string.IsNullOrEmpty(souko.soukoCD))
                 {
                     if (gv_JuchuuNyuuryoku.Rows.Count - 1 != row)
-                        gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[6, row + 1];
+                        gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku["colFree", row + 1];
                     else
                         gv_JuchuuNyuuryoku.CurrentCell = this.gv_JuchuuNyuuryoku[column, row];
                     this.gv_JuchuuNyuuryoku.CurrentCell.Selected = true;
@@ -2159,6 +2155,15 @@ namespace JuchuuNyuuryoku
             selectedRow.Cells["colSiiresakiTelNO21"].Value = obj.Tel21;
             selectedRow.Cells["colSiiresakiTelNO22"].Value = obj.Tel22;
             selectedRow.Cells["colSiiresakiTelNO23"].Value = obj.Tel23;
+        }
+        private void D_Exclusive_DeleteAll()
+        {
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
         }
     }
 }
