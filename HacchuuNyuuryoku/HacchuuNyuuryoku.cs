@@ -199,12 +199,7 @@ namespace HacchuuNyuuryoku
 
             gv_HacchuuNyuuryoku.Memory_Row_Count = 0;
 
-            BaseEntity be = new BaseEntity();
-            be.ProgramID = ProgramID;
-            be.OperatorCD = OperatorCD;
-            be.PC = PCID;
-            BaseBL bbl = new BaseBL();
-            bbl.D_Exclusive_Number_Remove(be);
+            D_Exclusive_DeleteAll();
 
             if (cboMode.SelectedValue.ToString() == "1")
             {
@@ -864,9 +859,10 @@ namespace HacchuuNyuuryoku
                 //if (row.Cells["colHacchuuSuu"].Value.ToString() != "0" && row.Cells[7].Value.ToString() != select_dr1[0][7].ToString())
                 if (row.Cells["colHacchuuSuu"].Value.ToString() != "0")
                 {
-                    for (int c = 1; c < gv_HacchuuNyuuryoku.Columns.Count; c++)
+                    var columns = gv_HacchuuNyuuryoku.Columns;
+                    for (int c = 1; c < columns.Count; c++)
                     {
-                        if (gv_HacchuuNyuuryoku.Columns[c].Name == "colHacchuuSuu" || gv_HacchuuNyuuryoku.Columns[c].Name == "colChakuniYoteiDate"  || gv_HacchuuNyuuryoku.Columns[c].Name == "colSoukoCD")
+                        if (columns[c].Name == "colHacchuuSuu" || columns[c].Name == "colChakuniYoteiDate"  || columns[c].Name == "colSoukoCD")
                         {
                             if (existDr1 != null)
                             {
@@ -890,7 +886,7 @@ namespace HacchuuNyuuryoku
                         }
                         else
                         {
-                            if (c == 14 && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString()))
+                            if (columns[c].Name == "colHacchuuGyouNO" && string.IsNullOrEmpty(row.Cells["colHacchuuGyouNO"].Value.ToString()))
                                 F8_drNew[c] = DBNull.Value;
                             else
                                 F8_drNew[c] = row.Cells[c].Value;
@@ -1146,7 +1142,7 @@ namespace HacchuuNyuuryoku
             {
                 if (gv_HacchuuNyuuryoku.CurrentCell != null)
                 {
-                    if (gv_HacchuuNyuuryoku.CurrentCell.ColumnIndex == 10)
+                    if (gv_HacchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSoukoCD")
                     {
                         gridKeyDown();
                     }
@@ -1169,7 +1165,7 @@ namespace HacchuuNyuuryoku
                 if (!string.IsNullOrEmpty(souko.soukoCD))
                 {
                     if (gv_HacchuuNyuuryoku.Rows.Count-1 != row)
-                        gv_HacchuuNyuuryoku.CurrentCell = this.gv_HacchuuNyuuryoku[5, row + 1];
+                        gv_HacchuuNyuuryoku.CurrentCell = this.gv_HacchuuNyuuryoku["colChakuniYoteiDate", row + 1];
                     else
                         gv_HacchuuNyuuryoku.CurrentCell = this.gv_HacchuuNyuuryoku[column, row];
                     this.gv_HacchuuNyuuryoku.CurrentCell.Selected = true;
@@ -1205,7 +1201,7 @@ namespace HacchuuNyuuryoku
         {
             if (gv_HacchuuNyuuryoku.CurrentCell != null)
             {
-                if (gv_HacchuuNyuuryoku.CurrentCell.ColumnIndex == 10)
+                if (gv_HacchuuNyuuryoku.CurrentCell.OwningColumn.Name == "colSoukoCD")
                 {
                     gridKeyDown();
                 }
@@ -1245,6 +1241,15 @@ namespace HacchuuNyuuryoku
                         btnF9.Visible = false;
                 }
             }
+        }
+        private void D_Exclusive_DeleteAll()
+        {
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
         }
     }
 }
