@@ -146,12 +146,7 @@ namespace ShukkaNyuuryoku {
                 }
                F8_dt1.Clear();
 
-                BaseEntity be = new BaseEntity();
-                be.ProgramID = ProgramID;
-                be.OperatorCD = OperatorCD;
-                be.PC = PCID;
-                BaseBL bbl = new BaseBL();
-                bbl.D_Exclusive_Number_Remove(be);
+                D_Exclusive_DeleteAll();
             }
             if (tagID == "8")
             {
@@ -496,12 +491,7 @@ namespace ShukkaNyuuryoku {
 
             F8_dt1 = CreateTable();
 
-            BaseEntity be = new BaseEntity();
-            be.ProgramID = ProgramID;
-            be.OperatorCD = OperatorCD;
-            be.PC = PCID;
-            BaseBL bbl = new BaseBL();
-            bbl.D_Exclusive_Number_Remove(be);
+            D_Exclusive_DeleteAll();
 
             if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
             {
@@ -788,6 +778,15 @@ namespace ShukkaNyuuryoku {
                 bl.D_Exclusive_Lock_Check(chkLockEntity);
             }
         }
+        private void D_Exclusive_DeleteAll()
+        {
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
+        }
         //private void Gvrow_Delete(DataRow dr)
         //{
         //    DataRow[] existDr1 = dtHaita.Select("ShukkaSiziNO ='" + dr["ShukkaSiziNO"] + "'");
@@ -807,7 +806,7 @@ namespace ShukkaNyuuryoku {
                 SetVisibleForGridColumns();
             }
         }
-        private void F11_Gridview_Bind()
+        private void F11_Gridview_Bind(bool isModifyMode = false)
         {
             for (int t = 0; t < current_gv.RowCount; t++)
             {
@@ -818,7 +817,8 @@ namespace ShukkaNyuuryoku {
                 DataGridViewRow row = current_gv.Rows[t];// grid view data
                 string JANCD = row.Cells["col_JANCD"].Value.ToString();
                 string HinbanCD = row.Cells["col_Shouhin"].Value.ToString();
-                string Konkai = row.Cells["col_Konkai"].Value.ToString();
+                string Konkai = row.Cells["col_Konkai"].EditedFormattedValue.ToString().Replace(",","");
+                row.Cells["col_Konkai"].Value = Konkai;
                 string ShukkaSiziNOGyouNO = row.Cells["col_ShukkaSiziNOGyouNO"].Value.ToString();
                 //string chk_value = row.Cells["colComplete"].EditedFormattedValue.ToString();
                 string Detail = row.Cells["col_Detail"].EditedFormattedValue.ToString();
@@ -832,7 +832,7 @@ namespace ShukkaNyuuryoku {
                 DataRow existDr1 = F8_dt1.Select("ShukkaSiziNOGyouNO='" + ShukkaSiziNOGyouNO + "'").SingleOrDefault();
                 if (existDr1 != null)
                 {
-                    if (row.Cells["col_Konkai"].Value.ToString() == "0")
+                    if (row.Cells["col_Konkai"].Value.ToString() == "0" && !isModifyMode)
                     {
                         D_Exclusive_OneNumber_Delete(existDr1);
                         F8_dt1.Rows.Remove(existDr1);
@@ -840,7 +840,7 @@ namespace ShukkaNyuuryoku {
                     }
                 }
                 F8_drNew[0] = JANCD;
-                if (row.Cells["col_Konkai"].Value.ToString() != "0" || row.Cells["col_Complete"].Value.ToString() == "1")
+                if (row.Cells["col_Konkai"].Value.ToString() != "0" || row.Cells["col_Complete"].Value.ToString() == "1" || isModifyMode)
                 {
                     for (int c = 1; c < current_gv.Columns.Count; c++)
                     {
@@ -882,18 +882,24 @@ namespace ShukkaNyuuryoku {
                         F8_dt1.Rows.Remove(existDr1);
                     F8_dt1.Rows.Add(F8_drNew);
 
-                    D_Exclusive_OneNumber_Insert(F8_drNew);
+                    if (!isModifyMode)
+                    {
+                        D_Exclusive_OneNumber_Insert(F8_drNew);
+                    }
                     // }
                 }
                 else
                 {
-                    if (select_dr1.Length > 0)
+                    if (select_dr1.Length > 0 && !isModifyMode)
                         //排他Delete
                         D_Exclusive_OneNumber_Delete(select_dr1[0]);
                 }
             }     
-            current_gv.Memory_Row_Count = F8_dt1.Rows.Count;          
-            Focus_Clear();
+            current_gv.Memory_Row_Count = F8_dt1.Rows.Count;
+            if (!isModifyMode)
+            {
+                Focus_Clear();
+            }
         }
 
         private void Focus_Clear()
@@ -962,15 +968,14 @@ namespace ShukkaNyuuryoku {
             if (col_Name == "col_Konkai")
             {
                 string split_val = current_gv.Rows[row].Cells["col_Konkai"].EditedFormattedValue.ToString().Replace(",", "");
-                int Konkai_Number = string.IsNullOrEmpty(current_gv.Rows[row].Cells["col_Konkai"].EditedFormattedValue.ToString()) ? 0 : Convert.ToInt32(split_val);
-                current_gv.Rows[row].Cells["col_Konkai"].Value = Konkai_Number.ToString();
+                decimal thisTimeVal = 0;
 
-                if (Konkai_Number < 0)
+                if (!Decimal.TryParse(split_val, out thisTimeVal) || thisTimeVal < 0)
                 {
                     bbl.ShowMessage("E109");
                     bl_error = true;
                 }
-                else if (Convert.ToDecimal(Konkai_Number) > c)
+                else if (thisTimeVal > c)
                 {
                     bbl.ShowMessage("E143", "出荷残数 - 未入荷数", "大きい");
                     bl_error = true;
@@ -1525,6 +1530,7 @@ namespace ShukkaNyuuryoku {
 
                 DataTable dt_temp = dt.Copy();
                 gvdt1 = dt_temp;
+                F11_Gridview_Bind(true);
 
                 //if (F8_dt1.Rows.Count == 0)
                 //    F8_dt1 = gvdt1.Clone();
