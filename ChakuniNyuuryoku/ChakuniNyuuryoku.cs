@@ -185,12 +185,7 @@ namespace ChakuniNyuuryoku
 
             F8_dt1 = CreateTable_Details();
 
-            BaseEntity be = new BaseEntity();
-            be.ProgramID = ProgramID;
-            be.OperatorCD = OperatorCD;
-            be.PC = PCID;
-            BaseBL bbl = new BaseBL();
-            bbl.D_Exclusive_Number_Remove(be);
+            D_Exclusive_DeleteAll();
 
             //HET
             if (cboMode.SelectedValue.Equals("2") || cboMode.SelectedValue.Equals("3") || cboMode.SelectedValue.Equals("4"))
@@ -236,12 +231,7 @@ namespace ChakuniNyuuryoku
             dtClear = CreateTable_Details();
             //dtGridSource = new DataTable();
 
-            BaseEntity be = new BaseEntity();
-            be.ProgramID = ProgramID;
-            be.OperatorCD = OperatorCD;
-            be.PC = PCID;
-            BaseBL bbl = new BaseBL();
-            bbl.D_Exclusive_Number_Remove(be);
+            D_Exclusive_DeleteAll();
 
             //HET
             SetButton(ButtonType.BType.Confirm, F8, "確認(F8)", true);
@@ -703,6 +693,15 @@ namespace ChakuniNyuuryoku
                 chkLockEntity.Number = HacchuuNO;
                 cbl.D_Exclusive_Lock_Check(chkLockEntity);
             }
+        }
+        private void D_Exclusive_DeleteAll()
+        {
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
         }
         //private void Gvrow_Delete(DataRow dr)
         //{

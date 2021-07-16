@@ -207,7 +207,7 @@ DECLARE  @hQuantityAdjust AS INT
                     ChakuniSuu              varchar(20) 'ChakuniSuu',
                     SiireKanryouKBN      varchar(10) 'SiireKanryouKBN',
                     ChakuniMeisaiTekiyou varchar(80) 'ChakuniMeisaiTekiyou',
-                    JanCD               varchar(13) 'JanCD',
+                    JanCD               varchar(13) 'JANCD',
                     ChakuniYoteiNO     varchar(12) 'ChakuniYoteiNO',
                     ChakuniYoteiGyouNO              varchar(12) 'ChakuniYoteiGyouNO',
                     HacchuuNO varchar(12) 'HacchuuNO',
@@ -338,7 +338,6 @@ exec dbo.Fnc_Hikiate 5,@ChakuniNO,20,@Operator
      --Update Sheet B
      Update D_ChakuniMeisai
      SET 
-         GyouHyouziJun=(Select ROW_NUMBER() OVER(ORDER BY (SELECT 1))),
          KanriNO=DCY.KanriNO,
          BrandCD=FS.BrandCD,
          ShouhinCD=TD.ShouhinCD,
@@ -373,11 +372,24 @@ exec dbo.Fnc_Hikiate 5,@ChakuniNO,20,@Operator
     Where not exists(Select 1 From #Temp_Detail AS TD Where TD.ChakuniGyouNO = D_ChakuniMeisai.ChakuniGyouNO And D_ChakuniMeisai.ChakuniNO = @ChakuniNO)
     And D_ChakuniMeisai.ChakuniNO = @ChakuniNO
     ;
-    
+ 
+     --表示順を振り直し
+    UPDATE M
+    SET M.GyouHyouziJun = S.RowNum
+    FROM D_ChakuniMeisai AS M
+    INNER JOIN (
+                SELECT ChakuniNO, ChakuniGyouNO, ROW_NUMBER() OVER(ORDER BY ChakuniGyouNO) AS RowNum
+                FROM D_ChakuniMeisai
+                WHERE ChakuniNO = @ChakuniNO
+            )AS S
+            ON M.ChakuniNO = S.ChakuniNO
+            AND M.ChakuniGyouNO = S.ChakuniGyouNO
+    WHERE M.ChakuniNO=@ChakuniNO
+
     Insert into D_ChakuniMeisai
     Select @ChakuniNO,
         (select MAX(ChakuniGyouNO) from D_ChakuniMeisai Where ChakuniNO = @ChakuniNO group by ChakuniNO) + ROW_NUMBER() OVER(ORDER BY (SELECT 1)),
-        (select MAX(ChakuniGyouNO) from D_ChakuniMeisai Where ChakuniNO = @ChakuniNO group by ChakuniNO) + ROW_NUMBER() OVER(ORDER BY (SELECT 1)),
+        (select MAX(GyouHyouziJun) from D_ChakuniMeisai Where ChakuniNO = @ChakuniNO group by ChakuniNO) + ROW_NUMBER() OVER(ORDER BY (SELECT 1)),
         dcm.KanriNO,fs.BrandCD,d.ShouhinCD,d.ShouhinName,d.JanCD,d.ColorRyakuName,d.ColorNO,d.SizeNO,
         d.ChakuniSuu,fs.TaniCD,d.ChakuniMeisaiTekiyou,0,0,
         dcm.ChakuniYoteiNO,
@@ -533,12 +545,14 @@ exec dbo.Fnc_Hikiate 5,@ChakuniNO,21,@Operator
 --Update UseFlg M_Siiresaki
 update M_Siiresaki 
 set UsedFlg = 1 
-where ChangeDate = (select ChangeDate from F_Siiresaki(@filter_date) where SiiresakiCD = @Siiresaki)
+where SiiresakiCD = @Siiresaki
+and ChangeDate = (select ChangeDate from F_Siiresaki(@filter_date) where SiiresakiCD = @Siiresaki)
 
 --Update UseFlg M_Shouhin
 update M_Shouhin
 set UsedFlg = 1 
-where ChangeDate = (select ChangeDate from F_Shouhin(@filter_date) where ShouhinCD = @ShouhinCD)
+where ShouhinCD = @ShouhinCD
+and ChangeDate = (select ChangeDate from F_Shouhin(@filter_date) where ShouhinCD = @ShouhinCD)
 
 --Update UseFlg M_Souko
 update M_Souko
@@ -548,7 +562,8 @@ where SoukoCD = @SoukoCD
 --Update UseFlg M_Staff
 Update M_Staff
 set UsedFlg=1
-where ChangeDate = (select ChangeDate from F_Staff(@filter_date) where StaffCD = @StaffCD)
+where StaffCD = @StaffCD
+and ChangeDate = (select ChangeDate from F_Staff(@filter_date) where StaffCD = @StaffCD)
 
 --Insert table Z
 declare @InsertOperator  varchar(10) = (select m.Operator from #Temp_Main m)

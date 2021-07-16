@@ -33,8 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CKM_CommonFunction, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="CKM_CommonFunction">
       <HintPath>..\bin\Debug\CKM_CommonFunction.dll</HintPath>
     </Reference>
     <Reference Include="System" />
