@@ -157,13 +157,8 @@ namespace HikiateHenkouShoukai
             gvAggregationDetails.Memory_Row_Count = 0;
             gvMainDetail.Memory_Row_Count = 0;
             gvFreeInventoryDetails.Memory_Row_Count = 0;
-            
-            BaseEntity be = new BaseEntity();
-            be.ProgramID = ProgramID;
-            be.OperatorCD = OperatorCD;
-            be.PC = PCID;
-            BaseBL bbl = new BaseBL();
-            bbl.D_Exclusive_Number_Remove(be);
+
+            D_Exclusive_DeleteAll();
         }
         private void initScr()
         {
@@ -646,6 +641,15 @@ namespace HikiateHenkouShoukai
                 chkLockEntity.OperatorCD = OperatorCD;
                 hbl.D_Exclusive_Lock_Check(chkLockEntity);
             }
+        }
+        private void D_Exclusive_DeleteAll()
+        {
+            BaseEntity be = new BaseEntity();
+            be.ProgramID = ProgramID;
+            be.OperatorCD = OperatorCD;
+            be.PC = PCID;
+            BaseBL bbl = new BaseBL();
+            bbl.D_Exclusive_Number_Remove(be);
         }
         private void TemporarySave_Data()
         {
